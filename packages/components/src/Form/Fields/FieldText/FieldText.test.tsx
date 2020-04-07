@@ -24,122 +24,85 @@
 
  */
 
+import 'jest-styled-components'
 import React from 'react'
-import {
-  createWithTheme,
-  mountWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
-import { Label } from '../../Label/Label'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldText } from './FieldText'
 
-test('A FieldText', () => {
-  assertSnapshot(<FieldText label="👍" name="thumbsUp" id="thumbs-up" />)
+test('A FieldText with default label', () => {
+  assertSnapshot(<FieldText label="👍" />)
 })
 
-test('FieldText supports labelWeight', () => {
+test('A FieldText with label inline', () => {
+  assertSnapshot(<FieldText label="👍" inline />)
+})
+
+test('A FieldText required with default label', () => {
+  assertSnapshot(<FieldText label="👍" required />)
+})
+
+test('A FieldText required  with label inline', () => {
+  assertSnapshot(<FieldText label="👍" inline required />)
+})
+
+test('A FieldText disabled with default label', () => {
+  assertSnapshot(<FieldText label="👍" disabled />)
+})
+
+test('A FieldText disabled  with label inline', () => {
+  assertSnapshot(<FieldText label="👍" inline disabled />)
+})
+
+test('A FieldText with description and with default label', () => {
   assertSnapshot(
     <FieldText
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      labelFontWeight="normal"
+      description="no vegetables allowed"
+      label="Text Input"
+      placeholder="placeholder"
     />
   )
 })
 
-test('Should accept a value', () => {
-  const wrapper = mountWithTheme(
+test('A FieldText with description and with label inline', () => {
+  assertSnapshot(
     <FieldText
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      value="foobar"
-      readOnly
+      description="no vegetables allowed"
+      inline
+      label="Text Input"
+      placeholder="placeholder"
     />
   )
-
-  const input = wrapper.find('input')
-  expect(input.prop('value')).toEqual('foobar')
 })
 
-test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+test('A FieldText with detail and with default label', () => {
+  assertSnapshot(
+    <FieldText label="hello" detail="5/50" placeholder="placeholder" />
+  )
+})
 
-  const wrapper = mountWithTheme(
+test('A FieldText with detail and  with label inline', () => {
+  assertSnapshot(
+    <FieldText label="hello" inline detail="5/50" placeholder="placeholder" />
+  )
+})
+
+test('A FieldText with validationMessage and with default label', () => {
+  assertSnapshot(
     <FieldText
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      value="foobar"
-      onChange={handleChange}
+      label="hello"
+      validationMessage={{ message: 'validation Message', type: 'error' }}
+      placeholder="placeholder"
     />
   )
-
-  wrapper.find('input').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
 })
 
-test('A required FieldText', () => {
-  const component = createWithTheme(
-    <FieldText label="👍" name="thumbsUp" id="thumbs-up" required />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A FieldText with an error validation aligned to the bottom', () => {
-  const id = 'thumbs-up'
-  const component = mountWithTheme(
+test('A FieldText with validationMessage and  with label inline', () => {
+  assertSnapshot(
     <FieldText
-      label="👍"
-      name="thumbsUp"
-      id={id}
-      validationMessage={{ message: 'This is an error', type: 'error' }}
+      label="hello"
+      inline
+      validationMessage={{ message: 'validation Message', type: 'error' }}
+      placeholder="placeholder"
     />
   )
-
-  expect(component.find(Label).props().htmlFor).toEqual(id)
-})
-
-test('A FieldText with an error validation aligned to the left', () => {
-  const id = 'thumbs-up'
-  const component = createWithTheme(
-    <FieldText
-      label="👍"
-      name="thumbsUp"
-      id={id}
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-    />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test("A FieldText htmlFor attribute references input's name", () => {
-  const id = 'thumbs-up'
-  const component = mountWithTheme(
-    <FieldText
-      label="👍"
-      name="thumbsUp"
-      id={id}
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-    />
-  )
-
-  expect(component.find(Label).props().htmlFor).toEqual(id)
-})
-
-test('A FieldText with an error validation aligned to the right', () => {
-  const component = createWithTheme(
-    <FieldText
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-    />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
