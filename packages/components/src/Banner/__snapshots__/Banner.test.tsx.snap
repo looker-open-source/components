@@ -153,6 +153,11 @@ exports[`Dismissable banner 1`] = `
   color: #939BA5;
 }
 
+.c5 .c8 {
+  width: 14px;
+  height: 14px;
+}
+
 .c5:active,
 .c5.active {
   background: #F5F6F7;

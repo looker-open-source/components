@@ -26,11 +26,15 @@
 
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
-import { Placement } from 'popper.js'
-import React, { useState, Ref, FC, ReactNode } from 'react'
-import { Popper } from 'react-popper'
+import { Placement } from '@popperjs/core'
+import React, { useMemo, useState, Ref, FC, ReactNode } from 'react'
 import { ModalContext } from '../Modal'
-import { useCallbackRef } from '../utils'
+import {
+  useCallbackRef,
+  usePopper,
+  UsePopperProps,
+  useForkedRef,
+} from '../utils'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { TooltipContent } from './TooltipContent'
 
@@ -114,7 +118,7 @@ export function useTooltip({
   disabled,
   surfaceStyles,
   triggerElement,
-  placement: propsPlacement,
+  placement: propsPlacement = 'bottom',
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
@@ -157,53 +161,62 @@ export function useTooltip({
     onMouseOver: handleOpen,
   }
 
+  const usePopperProps: UsePopperProps = useMemo(
+    () => ({
+      anchor: element,
+      arrow,
+      options: {
+        modifiers: [
+          {
+            enabled: true,
+            name: 'flip',
+            options: {
+              flipVariations: true,
+            },
+          },
+        ],
+        placement: propsPlacement,
+      },
+    }),
+    [arrow, element, propsPlacement]
+  )
+  const {
+    arrowProps,
+    placement,
+    popperInstanceRef,
+    style,
+    targetRef,
+  } = usePopper(usePopperProps)
+
+  const ref = useForkedRef(targetRef, surfaceCallbackRef)
+
   const popper =
     isOpen && content && !disabled ? (
       <ModalContext.Provider value={{ closeModal: handleClose }}>
-        <Popper
-          positionFixed
-          innerRef={surfaceCallbackRef}
-          placement={propsPlacement}
-          modifiers={{
-            flip: {
-              behavior: 'flip',
-              enabled: true,
-              flipVariations: true,
-              flipVariationsByContent: true,
-            },
-            preventOverflow: {
-              boundariesElement: 'window',
-              padding: 0,
-            },
-          }}
-          referenceElement={element || undefined}
+        <OverlaySurface
+          arrow={arrow}
+          arrowProps={arrowProps}
+          eventHandlers={{ onMouseOut: handleMouseOut }}
+          placement={placement}
+          ref={ref}
+          style={style}
+          zIndex={CustomizableTooltipAttributes.zIndex}
+          backgroundColor="palette.charcoal600"
+          borderRadius="medium"
+          boxShadow={3}
+          color="palette.charcoal000"
+          {...surfaceStyles}
         >
-          {({ ref, style, placement, arrowProps }) => (
-            <OverlaySurface
-              arrow={arrow}
-              arrowProps={arrowProps}
-              eventHandlers={{ onMouseOut: handleMouseOut }}
-              placement={placement}
-              ref={ref}
-              style={style}
-              zIndex={CustomizableTooltipAttributes.zIndex}
-              backgroundColor="palette.charcoal600"
-              borderRadius="medium"
-              boxShadow={3}
-              color="palette.charcoal000"
-              {...surfaceStyles}
-            >
-              <TooltipContent width={width} textAlign={textAlign}>
-                {content}
-              </TooltipContent>
-            </OverlaySurface>
-          )}
-        </Popper>
+          <TooltipContent width={width} textAlign={textAlign}>
+            {content}
+          </TooltipContent>
+        </OverlaySurface>
       </ModalContext.Provider>
     ) : null
 
   return {
     eventHandlers,
+    popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
   }

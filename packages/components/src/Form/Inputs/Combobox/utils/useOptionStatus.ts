@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ export function useOptionStatus<
   const contextOptions = (data as ComboboxMultiData).options
   const options = contextOption ? [contextOption] : contextOptions || []
   const isSelected =
-    options.find(option => option.value === value) !== undefined
+    options.find((option) => option.value === value) !== undefined
 
   return {
     isActive,

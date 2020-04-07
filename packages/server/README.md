@@ -29,8 +29,8 @@ Please note that the proxy is only set up to support GET requests at this time.
 
 ```js
 fetch('/api/user?fields=id,display_name,email')
-  .then(response => response.json())
-  .then(state => console.log(state))
+  .then((response) => response.json())
+  .then((state) => console.log(state))
 
 // Example CONSOLE.LOG OUTPUT:
 // {

@@ -39,7 +39,7 @@ const Section: FC<SectionProps> = ({ path = [], section }) => {
   const currentPath = useContext(LocationContext)
   const sectionPath = [...path, section.path]
 
-  const navigationChildren = section.children.map(child => {
+  const navigationChildren = section.children.map((child) => {
     const uri = pathToUri([...path, child.path])
 
     return (child as NavigationSection).children ? (

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -32,12 +32,17 @@ import {
 
 export function useAddOptionToContext<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
->(context: Context<CProps>, value: string, label?: string) {
+>(
+  context: Context<CProps>,
+  value: string,
+  label?: string,
+  scrollIntoView?: boolean
+) {
   const { optionsRef } = useContext(context)
   const indexRef = useRef<number>(-1)
 
   useEffect(() => {
-    const option = { label, value }
+    const option = { label, scrollIntoView, value }
     const optionsRefCurrent = optionsRef && optionsRef.current
     if (optionsRefCurrent) {
       // Was this option already in the list?
@@ -56,5 +61,5 @@ export function useAddOptionToContext<
         optionsRefCurrent.splice(index, 1)
       }
     }
-  }, [value, label, optionsRef])
+  }, [value, label, optionsRef, scrollIntoView])
 }

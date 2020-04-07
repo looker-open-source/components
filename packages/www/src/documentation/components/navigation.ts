@@ -107,6 +107,10 @@ const components: NavigationSection = {
           path: 'input-text',
         },
         {
+          title: 'InputTimeSelect',
+          path: 'input-time-select',
+        },
+        {
           title: 'Label',
           path: 'label',
         },
@@ -117,6 +121,10 @@ const components: NavigationSection = {
         {
           title: 'Select',
           path: 'select',
+        },
+        {
+          title: 'SelectMulti',
+          path: 'select-multi',
         },
         {
           title: 'Slider',

@@ -61,9 +61,7 @@ const recognize = (format: string) => {
   const reHslPercent = new RegExp('^hsl\\(' + [reN, reP, reP] + '\\)$')
   const reHslaPercent = new RegExp('^hsla\\(' + [reN, reP, reP, reN] + '\\)$')
 
-  format = String(format)
-    .trim()
-    .toLowerCase()
+  format = String(format).trim().toLowerCase()
 
   return reHex3.exec(format)
     ? ColorFormat.HEX3

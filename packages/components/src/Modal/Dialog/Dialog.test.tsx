@@ -47,7 +47,7 @@ const content = (
 test('Dialog Hidden', () => {
   assertSnapshotShallow(
     <DialogManager content={content}>
-      {onClick => <a onClick={onClick}>🥑</a>}
+      {(onClick) => <a onClick={onClick}>🥑</a>}
     </DialogManager>
   )
 })
@@ -68,7 +68,7 @@ describe('Click events', () => {
   test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
     const dialog = mountWithTheme(
       <DialogManager content={SimpleContent}>
-        {onClick => <a onClick={onClick}>Open Modal</a>}
+        {(onClick) => <a onClick={onClick}>Open Modal</a>}
       </DialogManager>
     )
 
@@ -91,7 +91,7 @@ describe('Click events', () => {
 test('Dialog opens on click', () => {
   const dialog = mountWithTheme(
     <DialogManager content={SimpleContent}>
-      {onClick => <a onClick={onClick}>Open Dialog</a>}
+      {(onClick) => <a onClick={onClick}>Open Dialog</a>}
     </DialogManager>
   )
 
@@ -116,7 +116,7 @@ test('Dialog opens on click', () => {
 test('contains the content passed to it', () => {
   const dialog = mountWithTheme(
     <DialogManager content={SimpleContent}>
-      {onClick => <a onClick={onClick}>Open Dialog</a>}
+      {(onClick) => <a onClick={onClick}>Open Dialog</a>}
     </DialogManager>
   )
 

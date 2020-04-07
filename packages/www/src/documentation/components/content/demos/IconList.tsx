@@ -33,7 +33,7 @@ import { IconGrid, IconGridItem } from './IconList.styles'
 export const IconList = () => {
   return (
     <IconGrid>
-      {iconNameList.map(name => (
+      {iconNameList.map((name) => (
         <CopyToClipboard
           text={`<Icon name="${name}" />`}
           onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}

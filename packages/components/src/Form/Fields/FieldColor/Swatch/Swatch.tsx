@@ -62,9 +62,9 @@ export const Swatch = styled.div<SwatchProps>`
     ${inputTextHover}
   }
 
-  ${props => (props.disabled ? inputTextDisabled : '')}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   margin-top: auto;
   flex-shrink: 0;
 `

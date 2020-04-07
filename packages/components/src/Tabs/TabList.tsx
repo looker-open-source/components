@@ -53,5 +53,5 @@ export const TabList: FC<TabListProps> = ({
 }
 
 const TabListContainer = styled.div`
-  border-bottom: 1px solid ${props => props.theme.colors.palette.charcoal200};
+  border-bottom: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
 `

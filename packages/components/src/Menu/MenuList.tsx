@@ -24,7 +24,7 @@
 
  */
 
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import React, { Ref, useRef, forwardRef, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
@@ -144,7 +144,7 @@ export const MenuListInternal = forwardRef(
 
 const dividersStyle = css`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border-top: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
   }
 `
 
@@ -166,5 +166,5 @@ export const MenuList = styled(MenuListInternal)`
   list-style: none;
   outline: none;
   user-select: none;
-  ${props => props.groupDividers !== false && dividersStyle};
+  ${(props) => props.groupDividers !== false && dividersStyle};
 `

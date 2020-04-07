@@ -78,10 +78,10 @@ export const cartesian2hsv = (
   coord: CartesianCoordinate
 ): SimpleHSV =>
   [coord]
-    .map(c => translateDiagonal(-radius, c))
+    .map((c) => translateDiagonal(-radius, c))
     .map(cartesian2polar)
-    .map(c => (c.radius <= radius ? { brightness, coord: c } : white()))
-    .map(pb => scalePBRadius(1 / radius, pb))
+    .map((c) => (c.radius <= radius ? { brightness, coord: c } : white()))
+    .map((pb) => scalePBRadius(1 / radius, pb))
     .map(polarbrightness2hsv)[0]
 
 export const hsv2cartesian = (
@@ -90,9 +90,9 @@ export const hsv2cartesian = (
 ): CartesianCoordinate =>
   [color]
     .map(hsv2polar)
-    .map(coord => scaleRadius(radius, coord))
+    .map((coord) => scaleRadius(radius, coord))
     .map(polar2cartesian)
-    .map(coord => translateDiagonal(radius, coord))[0]
+    .map((coord) => translateDiagonal(radius, coord))[0]
 
 /**
  * Generate a 2d representation of a color wheel.

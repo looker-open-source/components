@@ -50,7 +50,7 @@ export interface TableCellProps
 
 export const tableCellCSS = css`
   ${reset}
-  padding: ${props => props.theme.space.xsmall} 0;
+  padding: ${(props) => props.theme.space.xsmall} 0;
   ${border}
   ${color}
   ${layout}

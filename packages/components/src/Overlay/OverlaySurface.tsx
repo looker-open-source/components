@@ -33,7 +33,7 @@ import {
   color,
   fadeIn,
 } from '@looker/design-tokens'
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import React, {
   CSSProperties,
   DOMAttributes,
@@ -43,7 +43,6 @@ import React, {
   useContext,
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 import { ModalContext } from '../Modal'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
@@ -57,7 +56,7 @@ export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
   arrow?: boolean
-  arrowProps: PopperArrowProps
+  arrowProps: { ref: Ref<HTMLDivElement>; style: CSSProperties }
   children: ReactNode
   eventHandlers?: DOMAttributes<{}>
   placement: Placement
@@ -78,14 +77,6 @@ export const OverlaySurface = forwardRef(
       ...innerProps
     } = props
     const { closeModal } = useContext(ModalContext)
-    // workaround for react-popper -caused error:
-    // `NaN` is an invalid value for the `left` css style property
-    if (Number.isNaN(arrowProps.style.left as number)) {
-      delete arrowProps.style.left
-    }
-    if (Number.isNaN(arrowProps.style.top as number)) {
-      delete arrowProps.style.top
-    }
 
     return (
       <Outer
@@ -130,10 +121,13 @@ OverlaySurface.displayName = 'OverlaySurface'
 
 const Outer = styled.div<{ zIndex?: number }>`
   ${reset};
+  /* PopperJS adds position: fixed via the style prop
+  but this fixes an intermittent "flash" of un-positioned tooltip
+  while the PopperJS instance is initializing */
+  position: fixed;
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
-  padding: ${props => props.theme.space.xsmall};
-  z-index: ${props => props.zIndex};
+  z-index: ${(props) => props.zIndex};
 
   &:focus {
     outline: none;

@@ -82,7 +82,9 @@ const DialogManagerWidth = () => {
       }
       maxWidth="200px"
     >
-      {open => <Button onClick={open}>Open static width DialogManager</Button>}
+      {(open) => (
+        <Button onClick={open}>Open static width DialogManager</Button>
+      )}
     </DialogManager>
   )
 }
@@ -92,13 +94,13 @@ const ConfirmWidth = () => {
     <Confirm
       title="Confirm Something"
       message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      onConfirm={close => {
+      onConfirm={(close) => {
         alert('You did something')
         close()
       }}
       maxWidth={['10rem', '20rem', '30rem', '40rem']}
     >
-      {open => (
+      {(open) => (
         <Button onClick={open} mr="small">
           Open responsive width Confirm dialog
         </Button>

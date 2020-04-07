@@ -46,8 +46,9 @@ export function useKeyDown() {
     state,
     transition,
     autoCompletePropRef,
-    persistSelectionRef,
+    persistSelectionPropRef,
     readOnlyPropRef,
+    closeOnSelectPropRef,
   } = contextToUse
   const { navigationOption } = data
 
@@ -66,6 +67,19 @@ export function useKeyDown() {
     }
   }
 
+  function selectOption() {
+    checkOnChange()
+    transition &&
+      transition(ComboboxActionType.SELECT_WITH_KEYBOARD, {
+        persistSelection:
+          persistSelectionPropRef && persistSelectionPropRef.current,
+      })
+    if (closeOnSelectPropRef && closeOnSelectPropRef.current) {
+      // Closing an opened list
+      transition && transition(ComboboxActionType.ESCAPE)
+    }
+  }
+
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
@@ -78,11 +92,11 @@ export function useKeyDown() {
           transition &&
             transition(ComboboxActionType.NAVIGATE, {
               persistSelection:
-                persistSelectionRef && persistSelectionRef.current,
+                persistSelectionPropRef && persistSelectionPropRef.current,
             })
         } else {
           const index = navigationOption
-            ? findIndex(options, navigationOption)
+            ? findIndex(options, ['value', navigationOption.value])
             : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
@@ -169,8 +183,7 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          checkOnChange()
-          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
+          selectOption()
         }
         break
       }
@@ -181,8 +194,7 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
-          checkOnChange()
-          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
+          selectOption()
         }
         break
       }

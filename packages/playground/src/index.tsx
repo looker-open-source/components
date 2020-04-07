@@ -24,22 +24,20 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { SortableActionListDemo } from './ActionList/SortableActionListDemo'
+import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <SortableActionListDemo />
-      </>
+      <GlobalStyle />
+      <SelectMultiDemo />
     </ThemeProvider>
   )
 }
 
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
+/*
+  This is the binding site for the playground. If you want to edit the
+  primary application, do your work in App.tsx instead.
  */
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<App />, document.getElementById('container'))

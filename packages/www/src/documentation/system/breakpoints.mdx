@@ -27,12 +27,12 @@ const ResponsiveBox = styled(Box)`
   background: green;
 
   // make the background red at breakpoint[0](480px)
-  @media (min-width ${props => props.theme.breakpoints[0]}) {
+  @media (min-width ${(props) => props.theme.breakpoints[0]}) {
     background: red;
   }
 
   // make the background red at breakpoint[1](768x)
-  @media (min-width ${props => props.theme.breakpoints[1]}) {
+  @media (min-width ${(props) => props.theme.breakpoints[1]}) {
     background: blue;
   }
 `

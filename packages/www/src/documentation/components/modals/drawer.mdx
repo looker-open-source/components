@@ -43,7 +43,7 @@ DrawerManager gives an easy way to compose a Drawer without the need to manage s
     </ModalContent>
   }
 >
-  {onClick => <Button onClick={onClick}>Open Drawer</Button>}
+  {(onClick) => <Button onClick={onClick}>Open Drawer</Button>}
 </DrawerManager>
 ```
 
@@ -87,7 +87,7 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
     </React.Fragment>
   }
 >
-  {onClick => (
+  {(onClick) => (
     <ButtonOutline onClick={onClick}>Drawer with sample content</ButtonOutline>
   )}
 </DrawerManager>

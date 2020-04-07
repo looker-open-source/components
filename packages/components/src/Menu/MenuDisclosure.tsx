@@ -33,7 +33,7 @@ import React, {
   useCallback,
   useState,
 } from 'react'
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import { useTooltip } from '../Tooltip'
 import { MenuContext } from './MenuContext'
 
@@ -112,7 +112,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     const childProps = child.props
 
     const wrappedCallbacks: { [key: string]: MouseEventCallback } = {}
-    Object.keys(allCallbacks).forEach(cbName => {
+    Object.keys(allCallbacks).forEach((cbName) => {
       const cbParent = Reflect.get(allCallbacks, cbName)
       wrappedCallbacks[cbName] = wrapCallback(cbParent, childProps[cbName])
     })

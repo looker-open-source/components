@@ -16,6 +16,6 @@ export type ComboboxOptionType =
 
 export type ComboboxCallback<
   TOption extends ComboboxOptionType = MaybeComboboxOptionObject
-> = (option?: TOption) => void
+> = (option: TOption) => void
 
 export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>

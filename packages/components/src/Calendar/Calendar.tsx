@@ -145,7 +145,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     }
     &:focus {
       border-width: 2px;
-      border-color: ${props => props.theme.colors.palette.purple300};
+      border-color: ${(props) => props.theme.colors.palette.purple300};
       outline: none;
     }
   }

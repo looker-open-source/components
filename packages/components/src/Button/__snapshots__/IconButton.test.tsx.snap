@@ -57,6 +57,11 @@ exports[`IconButton accepts color 1`] = `
   color: #CC1F36;
 }
 
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
+}
+
 .c1:active,
 .c1.active {
   background: #FFE5E9;
@@ -186,6 +191,11 @@ exports[`IconButton accepts events 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+}
+
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
 }
 
 .c1:active,
@@ -320,6 +330,11 @@ exports[`IconButton accepts events 2`] = `
   color: #939BA5;
 }
 
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
+}
+
 .c1:active,
 .c1.active {
   background: #F5F6F7;
@@ -450,6 +465,11 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+}
+
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
 }
 
 .c1:active,
@@ -584,6 +604,11 @@ exports[`IconButton default 1`] = `
   color: #939BA5;
 }
 
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
+}
+
 .c1:active,
 .c1.active {
   background: #F5F6F7;
@@ -713,6 +738,11 @@ exports[`IconButton outline 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+}
+
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
 }
 
 .c1:active,
@@ -867,6 +897,11 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   color: #CC1F36;
 }
 
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
+}
+
 .c1:active,
 .c1.active {
   background: #FFE5E9;
@@ -998,6 +1033,11 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   color: #CC1F36;
 }
 
+.c1 .c5 {
+  width: 12px;
+  height: 12px;
+}
+
 .c1:active,
 .c1.active {
   background: #FFE5E9;
@@ -1127,6 +1167,11 @@ exports[`IconButton resized 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+}
+
+.c1 .c5 {
+  width: 18px;
+  height: 18px;
 }
 
 .c1:active,

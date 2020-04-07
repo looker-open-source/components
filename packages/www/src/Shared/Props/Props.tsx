@@ -45,14 +45,14 @@ const Props = ({ of, interfaceName = `${of}` }: PropsProps) => {
 }
 
 const PropsCode = styled(Code).attrs({ fontSize: 'small' })`
-  color: ${props => props.theme.colors.palette.purple400};
+  color: ${(props) => props.theme.colors.palette.purple400};
 `
 
 const Layout = styled(Flex).attrs({ py: 'small', mt: 'small', mb: 'large' })`
-  border-top: 1px solid ${props => props.theme.colors.palette.charcoal200};
-  border-bottom: 1px solid ${props => props.theme.colors.palette.charcoal200};
-  color: ${props => props.theme.colors.palette.charcoal500};
-  font-size: ${props => props.theme.fontSizes.small};
+  border-top: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
+  border-bottom: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
+  color: ${(props) => props.theme.colors.palette.charcoal500};
+  font-size: ${(props) => props.theme.fontSizes.small};
 `
 
 export default Props

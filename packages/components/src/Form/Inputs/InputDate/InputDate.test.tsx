@@ -39,7 +39,7 @@ beforeEach(() => {
 
 afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = realDateNow // reset Date.now mock
+  global.Date.now = realDateNow
   jest.clearAllMocks()
 })
 

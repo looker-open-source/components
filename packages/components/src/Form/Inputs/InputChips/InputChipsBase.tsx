@@ -60,13 +60,13 @@ export const InputChipsBaseInternal = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     function handleDeleteChip(value: string) {
-      const newValues = values.filter(v => value !== v)
+      const newValues = values.filter((v) => value !== v)
       onChange(newValues)
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Backspace') {
+      if (e.key === 'Backspace' && !e.defaultPrevented) {
         // If we hit backspace and there is no text left to delete, remove the last entry instead
         inputValue === '' && handleDeleteChip(values[values.length - 1])
       }
@@ -77,7 +77,7 @@ export const InputChipsBaseInternal = forwardRef(
       onInputChange('')
     }
 
-    const chips = values.map(value => {
+    const chips = values.map((value) => {
       function onChipDelete() {
         handleDeleteChip(value)
       }
@@ -113,22 +113,23 @@ InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   position: relative;
+  align-items: stretch;
 
   ${Flex} {
     flex: 1;
-    height: 100%;
     overflow: auto;
-    padding-right: ${props => props.theme.space.xlarge};
+    padding-right: ${(props) => props.theme.space.xlarge};
   }
 
   ${InputText} {
     width: auto;
     min-width: 25%;
+    padding-right: 0;
   }
 
   ${InputSearchControls} {
     position: absolute;
-    top: 2;
+    top: 2px;
     right: 0;
   }
 `

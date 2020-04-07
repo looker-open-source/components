@@ -31,14 +31,12 @@ import {
   ColorProps,
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
-import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 
 interface OverlaySurfaceArrowProps
   extends BorderProps,
     ColorProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'style'>,
-    PopperArrowProps {
+    CompatibleHTMLProps<HTMLDivElement> {
   ['data-placement']: string
 }
 
@@ -65,32 +63,28 @@ export const OverlaySurfaceArrow = styled.div.attrs(
   }
 
   &[data-placement*='top'] {
-    bottom: 0.25rem;
-    margin: 0 1rem;
+    bottom: -0.25rem;
     &::before {
       transform: rotate(45deg);
     }
   }
 
   &[data-placement*='right'] {
-    left: 0.25rem;
-    margin: 1rem 0;
+    left: -0.25rem;
     &::before {
       transform: rotate(135deg);
     }
   }
 
   &[data-placement*='bottom'] {
-    top: 0.25rem;
-    margin: 0 1rem;
+    top: -0.25rem;
     &::before {
       transform: rotate(225deg);
     }
   }
 
   &[data-placement*='left'] {
-    right: 0.25rem;
-    margin: 1rem 0;
+    right: -0.25rem;
     &::before {
       transform: rotate(315deg);
     }

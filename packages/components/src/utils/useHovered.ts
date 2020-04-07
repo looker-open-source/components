@@ -25,16 +25,8 @@
  */
 
 import { RefObject, useEffect, useState } from 'react'
+import { getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
-
-function getCurrentNode(
-  elementOrRefObject: HTMLElement | null | RefObject<HTMLElement>
-): HTMLElement | null {
-  if (elementOrRefObject === null) return null
-  return (elementOrRefObject as HTMLElement).addEventListener
-    ? (elementOrRefObject as HTMLElement)
-    : (elementOrRefObject as RefObject<HTMLElement>).current
-}
 
 // Get the current hover state of an element
 // Recommended to be used with useCallbackRef

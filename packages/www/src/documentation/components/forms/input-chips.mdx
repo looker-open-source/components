@@ -51,7 +51,7 @@ The `inputValue` and `onInputChange` props allow control of the typed value (`on
   const [inputValue, setInputValue] = React.useState('')
   const [confirmation, confirm] = useConfirm({
     message: 'Are you sure you want to clear all values?',
-    onConfirm: closeConfirm => {
+    onConfirm: (closeConfirm) => {
       setValues([])
       setInputValue('')
       closeConfirm()

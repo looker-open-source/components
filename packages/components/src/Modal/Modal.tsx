@@ -129,7 +129,7 @@ export function Modal({
       >
         {(state: string) => (
           <ModalPortal
-            ref={node => {
+            ref={(node) => {
               focusRef(node)
               scrollRef(node)
             }}

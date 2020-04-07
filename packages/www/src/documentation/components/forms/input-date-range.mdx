@@ -18,7 +18,7 @@ import { InputDateRangeLocales } from './demos'
   const handleButtonClick = () => {
     setValue({ from: new Date('Feb 1, 2020'), to: new Date('Feb 29, 2020') })
   }
-  const handleChange = dateRange => {
+  const handleChange = (dateRange) => {
     setValue(dateRange)
   }
   return (
@@ -55,7 +55,7 @@ import { InputDateRangeLocales } from './demos'
     from: new Date(),
     to: new Date(),
   })
-  const handleChange = dateRange => {
+  const handleChange = (dateRange) => {
     setSelectedDate(dateRange)
   }
   return (

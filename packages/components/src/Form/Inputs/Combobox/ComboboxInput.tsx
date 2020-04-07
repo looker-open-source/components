@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import btoa from 'btoa'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
@@ -101,7 +102,7 @@ export const ComboboxInputInternal = forwardRef(
     const isControlled = controlledValue !== undefined
 
     function handleClear() {
-      contextOnChange && contextOnChange()
+      contextOnChange && contextOnChange(undefined)
       transition && transition(ComboboxActionType.CLEAR)
     }
 
@@ -209,15 +210,14 @@ export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorS
 
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
-  typeof window !== 'undefined' &&
-  `url('${indicatorPrefix}${window.btoa(
+  `url('${indicatorPrefix}${btoa(
     indicatorRaw.replace('currentColor', color)
   )}')`
 
 const bgPosition = `right ${indicatorPadding} top calc(${indicatorPadding} + 2px), 0 0`
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  background-image: ${props => {
+  background-image: ${(props) => {
     const color = props.disabled
       ? props.theme.colors.palette.charcoal300
       : props.theme.colors.palette.charcoal500
@@ -229,15 +229,16 @@ export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
   padding-right: ${comboboxPaddingRight};
 
   ${InputText} {
-    cursor: ${props => (props.readOnly ? 'default' : 'text')};
+    cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
   }
 
   ${InputSearchControls} {
     &::after {
       content: ' ';
-      border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+      border-right: 1px solid
+        ${(props) => props.theme.colors.palette.charcoal200};
       height: 1.5rem;
-      width: ${props => props.theme.space.xsmall};
+      width: ${(props) => props.theme.space.xsmall};
       pointer-events: none;
     }
   }

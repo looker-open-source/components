@@ -91,7 +91,7 @@ export const ButtonSet = forwardRef(
     }: ButtonSetProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const clonedChildren = Children.map(children, child => {
+    const clonedChildren = Children.map(children, (child) => {
       if (!isValidElement(child)) return child
 
       const { props: childProps } = child

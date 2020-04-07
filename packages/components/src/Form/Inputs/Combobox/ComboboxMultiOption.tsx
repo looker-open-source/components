@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import { useForkedRef } from '../../../utils'
 import { CheckboxContainer, FauxCheckbox, CheckMark } from '../Checkbox'
 import {
   ComboboxMultiContext,
@@ -43,12 +44,19 @@ import {
   ComboboxOptionText,
 } from './ComboboxOption'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
-import { useOptionStatus } from './utils/useOptionStatus'
 import { useOptionEvents } from './utils/useOptionEvents'
+import { useOptionStatus } from './utils/useOptionStatus'
+import { useOptionScroll } from './utils/useOptionScroll'
 
 const ComboboxMultiOptionInternal = forwardRef(
   (
-    { children, ...props }: ComboboxOptionProps,
+    {
+      children,
+      highlightText = true,
+      scrollIntoView,
+      hideCheckMark,
+      ...props
+    }: ComboboxOptionProps & { hideCheckMark?: boolean },
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
@@ -56,7 +64,8 @@ const ComboboxMultiOptionInternal = forwardRef(
     useAddOptionToContext<ComboboxMultiContextProps>(
       ComboboxMultiContext,
       value,
-      label
+      label,
+      scrollIntoView
     )
     const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
       props,
@@ -67,21 +76,32 @@ const ComboboxMultiOptionInternal = forwardRef(
       value
     )
 
+    const scrollRef = useOptionScroll(
+      ComboboxMultiContext,
+      value,
+      label,
+      scrollIntoView,
+      isActive
+    )
+    const ref = useForkedRef(scrollRef, forwardedRef)
+
     return (
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        ref={forwardedRef}
+        ref={ref}
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
-          <CheckboxContainer checked={isSelected}>
-            <FauxCheckbox>
-              <CheckMark />
-            </FauxCheckbox>
-          </CheckboxContainer>
+          {!hideCheckMark && (
+            <CheckboxContainer checked={isSelected}>
+              <FauxCheckbox>
+                <CheckMark />
+              </FauxCheckbox>
+            </CheckboxContainer>
+          )}
         </ComboboxOptionDetail>
-        {children || <ComboboxOptionText />}
+        {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
   }
@@ -91,7 +111,8 @@ ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
 export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
   ${comboboxOptionStyle}
-  grid-template-columns: ${props => props.theme.space.xlarge} 1fr;
+  grid-template-columns: ${(props) =>
+    props.hideCheckMark ? 0 : props.theme.space.xlarge} 1fr;
 `
 
 ComboboxMultiOption.defaultProps = {

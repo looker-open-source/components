@@ -27,7 +27,7 @@ export function useMixedStateCheckbox({ parent, children }: CheckboxTree) {
   const handleParentChange = () => {
     const newState = parent.state !== true
     parent.setState(newState)
-    children.map(child => child.setState(newState))
+    children.map((child) => child.setState(newState))
   }
 
   return handleParentChange

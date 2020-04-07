@@ -11,6 +11,7 @@ import {
   Locales,
   formatDateString,
   parseDateFromString,
+  useReadOnlyWarn,
 } from '../../../utils'
 
 interface InputDateProps extends SpaceProps, BorderProps {
@@ -45,6 +46,8 @@ export const InputDate: FC<InputDateProps> = ({
   onValidationFail,
   value,
 }) => {
+  useReadOnlyWarn('InputDate', value, onChange)
+
   const [selectedDate, setSelectedDate] = useState(value || defaultValue)
   const [validDate, setValidDate] = useState(validationType !== 'error')
   const [textInputValue, setTextInputValue] = useState(
@@ -108,14 +111,6 @@ export const InputDate: FC<InputDateProps> = ({
         viewMonth &&
         !isDateInView(value, viewMonth) &&
         setViewMonth(value)
-    }
-
-    // render a console warning if developers pass in a value without a change listener
-    if (value && !onChange) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Warning: Failed prop type: You provided a `value` prop to <InputDate /> without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue` instead. Otherwise, please provide an `onChange` callback.'
-      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [textInputValue, value, onChange])

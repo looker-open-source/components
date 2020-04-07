@@ -33,12 +33,12 @@
     "@types/lodash": "^4.14.149",
     "@types/styled-components": "^4.4.1",
     "@types/styled-system": "^5.1.9",
-    "csstype": "^2.6.9",
+    "csstype": "^2.6.10",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.3"
   },
   "peerDependencies": {
     "react": "^16.9.0",

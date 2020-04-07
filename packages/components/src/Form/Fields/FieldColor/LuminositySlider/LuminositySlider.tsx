@@ -29,7 +29,7 @@ import styled from 'styled-components'
 export const LuminositySlider = styled.input.attrs({ type: 'range' })`
   appearance: none;
   background: transparent;
-  width: ${props => props.width};
+  width: ${(props) => props.width};
 
   :focus {
     outline: none;
@@ -39,7 +39,7 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
   &::-webkit-slider-thumb {
     appearance: none;
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
     height: 14px;
@@ -49,7 +49,7 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
 
   &::-webkit-slider-runnable-track {
     background-image: linear-gradient(to right, #000, #fff);
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
     cursor: pointer;
     height: 8px;
     width: 100%;
@@ -58,7 +58,7 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
   /* Mozilla Styling */
   &::-moz-range-thumb {
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
     height: 12px;
@@ -67,7 +67,7 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
 
   &::-moz-range-track {
     background-image: linear-gradient(to right, #000, #fff);
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
     cursor: pointer;
     height: 6px;
     width: 100%;
@@ -76,7 +76,7 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
   /* IE / Edge Styling */
   &::-ms-thumb {
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
     height: 12px;
@@ -95,12 +95,12 @@ export const LuminositySlider = styled.input.attrs({ type: 'range' })`
 
   &::-ms-fill-lower {
     background-image: linear-gradient(to right, #000, #fff);
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
   }
 
   &::-ms-fill-upper {
     background-image: linear-gradient(to right, #000, #fff);
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
   }
 
   &:focus::-webkit-slider-runnable-track {

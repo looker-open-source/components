@@ -46,6 +46,7 @@ import React, { forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
 import { ReplaceText, Text } from '../../../Text'
+import { useForkedRef } from '../../../utils'
 import { makeHash } from './utils/makeHash'
 import {
   OptionContext,
@@ -53,11 +54,12 @@ import {
   ComboboxContextProps,
   ComboboxMultiContext,
 } from './ComboboxContext'
+import { ComboboxData } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
-import { ComboboxData } from './utils/state'
+import { useOptionScroll } from './utils/useOptionScroll'
 
 export interface ComboboxOptionObject {
   /**
@@ -68,6 +70,10 @@ export interface ComboboxOptionObject {
    * The value to match against when suggesting.
    */
   value: string
+  /**
+   * Highlight and Scroll to this option if it appears in a long list.
+   */
+  scrollIntoView?: boolean
 }
 
 export interface HighlightTextProps {
@@ -128,12 +134,22 @@ ComboboxOptionWrapper.displayName = 'ComboboxOptionWrapper'
 
 const ComboboxOptionInternal = forwardRef(
   (
-    { children, highlightText = true, ...props }: ComboboxOptionProps,
+    {
+      children,
+      highlightText = true,
+      scrollIntoView,
+      ...props
+    }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
 
-    useAddOptionToContext<ComboboxContextProps>(ComboboxContext, value, label)
+    useAddOptionToContext<ComboboxContextProps>(
+      ComboboxContext,
+      value,
+      label,
+      scrollIntoView
+    )
     const optionEvents = useOptionEvents<ComboboxContextProps>(
       props,
       ComboboxContext
@@ -143,11 +159,20 @@ const ComboboxOptionInternal = forwardRef(
       value
     )
 
+    const scrollRef = useOptionScroll(
+      ComboboxContext,
+      value,
+      label,
+      scrollIntoView,
+      isActive
+    )
+    const ref = useForkedRef(scrollRef, forwardedRef)
+
     return (
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        ref={forwardedRef}
+        ref={ref}
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
@@ -165,13 +190,13 @@ export const ComboboxOptionDetail = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${props => props.theme.space.large};
+  height: ${(props) => props.theme.space.large};
 `
 
 export const comboboxOptionGrid = css`
   display: grid;
-  grid-gap: ${props => props.theme.space.xxsmall};
-  grid-template-columns: ${props => props.theme.space.medium} 1fr;
+  grid-gap: ${(props) => props.theme.space.xxsmall};
+  grid-template-columns: ${(props) => props.theme.space.medium} 1fr;
 `
 
 export const comboboxOptionStyle = css`
@@ -187,9 +212,9 @@ export const comboboxOptionStyle = css`
   outline: none;
 
   &[aria-selected='true'] {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.theme.colors.semanticColors.primary.lighter};
-    color:  ${props => props.theme.colors.semanticColors.primary.darker};
+    color:  ${(props) => props.theme.colors.semanticColors.primary.darker};
   }
 `
 

@@ -39,18 +39,18 @@ const Style = styled(ListItem).attrs({
   py: 'xsmall',
 })`
   align-items: center;
-  color: ${props => props.theme.colors.palette.charcoal500};
+  color: ${(props) => props.theme.colors.palette.charcoal500};
   display: flex;
 
   svg {
-    margin-right: ${props => props.theme.space.xsmall};
+    margin-right: ${(props) => props.theme.space.xsmall};
     width: 1.5rem;
-    transition: ${props =>
+    transition: ${(props) =>
       `transform ${props.theme.transitions.durationModerate} ${props.theme.easings.easeOut}`};
   }
 
   &:hover {
-    color: ${props => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.palette.charcoal600};
     text-decoration: none;
 
     svg {

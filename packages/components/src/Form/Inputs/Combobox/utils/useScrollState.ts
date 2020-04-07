@@ -24,18 +24,17 @@
 
  */
 
-// c.f. https://github.com/FezVrasta/popper.js#how-to-use-popperjs-in-jest
+import { useState } from 'react'
 
-/* eslint disable */
-import PopperJs from 'popper.js'
+export function useScrollState() {
+  // track and share dom information in context.
+  const [listScrollPosition, setListScrollPosition] = useState(0)
+  const [listClientRect, setListClientRect] = useState<DOMRect>()
 
-export default class Popper {
-  static placements = PopperJs.placements
-
-  constructor() {
-    return {
-      destroy: () => {},
-      scheduleUpdate: () => {},
-    }
+  return {
+    listClientRect,
+    listScrollPosition,
+    setListClientRect,
+    setListScrollPosition,
   }
 }

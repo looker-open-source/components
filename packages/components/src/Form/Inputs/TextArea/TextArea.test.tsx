@@ -45,3 +45,27 @@ test('TextArea should accept disabled', () => {
 test('TextArea with an error validation', () => {
   assertSnapshot(<TextArea validationType="error" />)
 })
+
+test('TextArea resizes with prop resize = true', () => {
+  assertSnapshot(<TextArea resize />)
+})
+
+test('TextArea resizes with prop resize = false', () => {
+  assertSnapshot(<TextArea resize={false} />)
+})
+
+test('TextArea resizes with prop resize = both', () => {
+  assertSnapshot(<TextArea resize="both" />)
+})
+
+test('TextArea resizes with prop resize = none', () => {
+  assertSnapshot(<TextArea resize="none" />)
+})
+
+test('TextArea resizes with prop resize = horizontal', () => {
+  assertSnapshot(<TextArea resize="horizontal" />)
+})
+
+test('TextArea resizes with prop resize = vertical', () => {
+  assertSnapshot(<TextArea resize="vertical" />)
+})

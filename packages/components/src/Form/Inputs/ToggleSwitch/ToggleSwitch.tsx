@@ -72,16 +72,16 @@ export interface ToggleSwitchProps
 }
 
 const Knob = styled(({ className }) => <div className={className} />)`
-  transform: ${props =>
+  transform: ${(props) =>
     props.on ? `translateX(${rem(props.size * 0.75)})` : ''};
-  transition: ${props => props.theme.transitions.durationModerate};
+  transition: ${(props) => props.theme.transitions.durationModerate};
   position: absolute;
-  bottom: ${props => rem(props.size * 0.1)};
-  left: ${props => rem(props.size * 0.1)};
-  width: ${props => rem(props.size * 0.8)};
-  height: ${props => rem(props.size * 0.8)};
+  bottom: ${(props) => rem(props.size * 0.1)};
+  left: ${(props) => rem(props.size * 0.1)};
+  width: ${(props) => rem(props.size * 0.8)};
+  height: ${(props) => rem(props.size * 0.8)};
   border-radius: 50%;
-  background: ${props =>
+  background: ${(props) =>
     props.on
       ? CustomizableToggleSwitchAttributes.knobOnColor
       : CustomizableToggleSwitchAttributes.knobOffColor};
@@ -109,14 +109,14 @@ const KnobContainerBase = styled(({ children, className }) => (
   ${reset}
   ${pseudoClasses}
 
-  transition: ${props => props.theme.transitions.durationModerate};
+  transition: ${(props) => props.theme.transitions.durationModerate};
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: ${props => rem(props.size)};
-  background: ${props =>
+  border-radius: ${(props) => rem(props.size)};
+  background: ${(props) =>
     props.on
       ? CustomizableToggleSwitchAttributes.onColor
       : CustomizableToggleSwitchAttributes.offColor};
@@ -140,8 +140,8 @@ const DisabledKnob = styled.div<{ size: number }>`
   left: 0;
   right: 0;
   opacity: 0.4;
-  background: ${props => props.theme.colors.palette.charcoal300};
-  border-radius: ${props => rem(props.size)};
+  background: ${(props) => props.theme.colors.palette.charcoal300};
+  border-radius: ${(props) => rem(props.size)};
 `
 
 export const ToggleSwitchComponent = forwardRef(
@@ -171,13 +171,13 @@ ToggleSwitchComponent.displayName = 'ToggleSwitchComponent'
 export const ToggleSwitch = styled(ToggleSwitchComponent)`
   ${reset}
   input {
-    cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
+    cursor: ${(props) => (!props.disabled ? 'pointer' : undefined)};
     &:focus + div {
       box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
     }
   }
-  width: ${props => rem((props.size || 20) * 1.75)};
-  height: ${props => rem(props.size || 20)};
+  width: ${(props) => rem((props.size || 20) * 1.75)};
+  height: ${(props) => rem(props.size || 20)};
   display: inline-block;
   position: relative;
   vertical-align: middle;

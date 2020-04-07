@@ -85,7 +85,7 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   flex-wrap: wrap;
   outline: none;
   text-decoration: none;
-  transition: ${props =>
+  transition: ${(props) =>
     `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
     color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
 
@@ -100,7 +100,7 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
       `${theme.space.medium} - ${itemStyle.marker.size}px`});
   }
 
-  ${props =>
+  ${(props) =>
     props.focusVisible &&
     `&:focus-within button,
     &:focus-within a {
@@ -113,7 +113,7 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${Icon} {
     color: ${iconColor};
     transition: color
-      ${props =>
+      ${(props) =>
         `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
   }
 `
