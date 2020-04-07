@@ -53,7 +53,7 @@ export const ActionListItemAction = (props: ActionListItemActionProps) => {
   return (
     <MenuItem
       {...props}
-      color={props.color === 'danger' ? '#cc1f36' : undefined}
+      color={props.color === 'danger' ? 'palette.red500' : undefined}
       onClick={handleActionClick}
     />
   )
