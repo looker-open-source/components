@@ -50,5 +50,11 @@ export const ActionListItemAction = (props: ActionListItemActionProps) => {
     setOpen && setOpen(false)
     props.onClick && props.onClick(event)
   }
-  return <MenuItem {...props} onClick={handleActionClick} />
+  return (
+    <MenuItem
+      {...props}
+      color={props.color === 'danger' ? '#cc1f36' : undefined}
+      onClick={handleActionClick}
+    />
+  )
 }
