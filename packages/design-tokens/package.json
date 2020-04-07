@@ -38,7 +38,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.3"
   },
   "peerDependencies": {
     "react": "^16.9.0",
