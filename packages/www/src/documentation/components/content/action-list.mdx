@@ -5,10 +5,7 @@ propsOf: ActionList
 ---
 
 import { Props } from '../../../Shared'
-import { sampleColumns } from './demos'
-
 An Action List, like a Table, displays tabular data. However, unlike a Table, an Action List allows you to bake in a set of actions on each row. Common use cases include:
-
 - A list of users with user details and a "Delete This User" action
 - A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
 - A list of recently run queries and a "Rerun This Query" action on each row
@@ -99,7 +96,7 @@ Passing in a React element into the `indicator` prop will display said element l
 ;() => {
   const MyDetail = () => (
     <Link
-      onClick={event => event.stopPropagation()}
+      onClick={(event) => event.stopPropagation()}
       href="https://en.wikipedia.org/wiki/Magic_Johnson"
     >
       Wikipedia
