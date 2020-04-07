@@ -136,8 +136,9 @@ export const FieldInline = styled(FieldInlineLayout)`
 
   ${Label} {
     grid-area: label;
+    font-size: ${(props) => props.theme.fontSizes.small};
     font-weight: normal;
-    padding-left: ${(props) => props.theme.space.small};
+    padding-left: ${(props) => props.theme.space.xsmall};
 
     color: ${({ theme, disabled }) =>
       disabled && theme.colors.palette.charcoal500};

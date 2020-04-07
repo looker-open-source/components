@@ -59,46 +59,15 @@ export interface TextAreaProps
   validationType?: ValidationType
 }
 
-const TextAreaLayout: FC<TextAreaProps> = ({
-  className,
-  validationType,
-  ...props
-}) => (
+const TextAreaLayout: FC<TextAreaProps> = ({ className, validationType }) => (
   <div className={className}>
-    <StyledTextArea {...props} />
+    <textarea />
     {validationType && <Icon name="Warning" color="palette.red500" />}
   </div>
 )
 
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'both' : resize
-
-const StyledTextArea = styled.textarea<TextAreaProps>`
-  ${layout}
-  ${space}
-  ${typography}
-
-  resize: ${(props) => TextAreaResize(props.resize)};
-  border: solid 1px;
-  border-color: ${(props) => props.theme.colors.palette.charcoal200};
-  border-radius: ${(props) => props.theme.radii.medium};
-  font-size: ${(props) => props.theme.fontSizes.small};
-  min-height: 6.25rem;
-  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
-  padding-right: ${(props) => props.theme.space.xlarge};
-
-  &:hover {
-    ${inputTextHover}
-  }
-  &:focus,
-  :focus-within {
-    ${inputTextFocus}
-  }
-
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-
-  ${inputTextValidation}
-`
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
@@ -109,6 +78,33 @@ export const TextArea = styled(TextAreaLayout)`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+  }
+
+  textarea {
+    ${layout}
+    ${space}
+    ${typography}
+
+    resize: ${(props) => TextAreaResize(props.resize)};
+    border: solid 1px;
+    border-color: ${(props) => props.theme.colors.palette.charcoal200};
+    border-radius: ${(props) => props.theme.radii.medium};
+    font-size: ${(props) => props.theme.fontSizes.small};
+    min-height: 6.25rem;
+    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
+    padding-right: ${(props) => props.theme.space.xlarge};
+
+    &:hover {
+      ${inputTextHover}
+    }
+    &:focus,
+    :focus-within {
+      ${inputTextFocus}
+    }
+
+    ${(props) => (props.disabled ? inputTextDisabled : '')}
+
+    ${inputTextValidation}
   }
 `
 
