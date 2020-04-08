@@ -30,33 +30,38 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldTextArea } from './FieldTextArea'
 
 test('A FieldTextArea with default label', () => {
-  assertSnapshot(<FieldTextArea label="👍" />)
+  assertSnapshot(<FieldTextArea id="FieldTextAreaID" label="👍" />)
 })
 
 test('A FieldTextArea with label inline', () => {
-  assertSnapshot(<FieldTextArea label="👍" inline />)
+  assertSnapshot(<FieldTextArea id="FieldTextAreaID" inline label="👍" />)
 })
 
 test('A FieldTextArea required with default label', () => {
-  assertSnapshot(<FieldTextArea label="👍" required />)
+  assertSnapshot(<FieldTextArea id="FieldTextAreaID" label="👍" required />)
 })
 
 test('A FieldTextArea required  with label inline', () => {
-  assertSnapshot(<FieldTextArea label="👍" inline required />)
+  assertSnapshot(
+    <FieldTextArea id="FieldTextAreaID" inline label="👍" required />
+  )
 })
 
 test('A FieldTextArea disabled with default label', () => {
-  assertSnapshot(<FieldTextArea label="👍" disabled />)
+  assertSnapshot(<FieldTextArea disabled id="FieldTextAreaID" label="👍" />)
 })
 
 test('A FieldTextArea disabled  with label inline', () => {
-  assertSnapshot(<FieldTextArea label="👍" inline disabled />)
+  assertSnapshot(
+    <FieldTextArea disabled id="FieldTextAreaID" inline label="👍" />
+  )
 })
 
 test('A FieldTextArea with description and with default label', () => {
   assertSnapshot(
     <FieldTextArea
       description="no vegetables allowed"
+      id="FieldTextAreaID"
       label="Text Input"
       placeholder="placeholder"
     />
@@ -67,6 +72,7 @@ test('A FieldTextArea with description and with label inline', () => {
   assertSnapshot(
     <FieldTextArea
       description="no vegetables allowed"
+      id="FieldTextAreaID"
       inline
       label="Text Input"
       placeholder="placeholder"
@@ -76,16 +82,22 @@ test('A FieldTextArea with description and with label inline', () => {
 
 test('A FieldTextArea with detail and with default label', () => {
   assertSnapshot(
-    <FieldTextArea label="hello" detail="5/50" placeholder="placeholder" />
+    <FieldTextArea
+      detail="5/50"
+      id="FieldTextAreaID"
+      label="hello"
+      placeholder="placeholder"
+    />
   )
 })
 
 test('A FieldTextArea with detail and  with label inline', () => {
   assertSnapshot(
     <FieldTextArea
-      label="hello"
-      inline
       detail="5/50"
+      id="FieldTextAreaID"
+      inline
+      label="hello"
       placeholder="placeholder"
     />
   )
@@ -94,6 +106,7 @@ test('A FieldTextArea with detail and  with label inline', () => {
 test('A FieldTextArea with validationMessage and with default label', () => {
   assertSnapshot(
     <FieldTextArea
+      id="FieldTextAreaID"
       label="hello"
       validationMessage={{ message: 'validation Message', type: 'error' }}
       placeholder="placeholder"
@@ -104,8 +117,9 @@ test('A FieldTextArea with validationMessage and with default label', () => {
 test('A FieldTextArea with validationMessage and  with label inline', () => {
   assertSnapshot(
     <FieldTextArea
-      label="hello"
+      id="FieldTextAreaID"
       inline
+      label="hello"
       validationMessage={{ message: 'validation Message', type: 'error' }}
       placeholder="placeholder"
     />

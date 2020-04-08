@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldRadio 1`] = `
-.c5 {
+.c6 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -12,7 +12,7 @@ exports[`A FieldRadio 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c3 {
+.c4 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -21,7 +21,7 @@ exports[`A FieldRadio 1`] = `
   vertical-align: middle;
 }
 
-.c3 input[type='radio'] {
+.c4 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -29,16 +29,16 @@ exports[`A FieldRadio 1`] = `
   z-index: 1;
 }
 
-.c3 .c4 {
+.c4 .c5 {
   background: #FFFFFF;
 }
 
-.c3 input[type='radio']:checked + .c4 {
+.c4 input[type='radio']:checked + .c5 {
   background: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c3 input[type='radio']:checked + .c4::after {
+.c4 input[type='radio']:checked + .c5::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -49,14 +49,15 @@ exports[`A FieldRadio 1`] = `
   right: calc(50% - 3px);
 }
 
-.c3 input[type='radio']:focus + .c4 {
+.c4 input[type='radio']:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c3 input[type='radio']:disabled + .c4 {
-  opacity: 0.5;
+.c4 input[type='radio']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 .c2 {
@@ -67,73 +68,66 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3,max-content);
 }
 
-.c0 .c6 {
-  width: 100%;
-}
-
-.c0 .c7 {
-  width: 100%;
+.c0 .c3 {
+  grid-area: input;
 }
 
 .c0 .c1 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  padding-right: 0.75rem;
+  grid-area: label;
+  font-size: 0.875rem;
+  font-weight: normal;
+  padding-left: 0.5rem;
 }
 
-<div
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
+<label
   className="c0 "
 >
-  <label
+  <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="thumbs-up"
   >
     👍
-  </label>
+  </span>
   <div
-    className=""
+    className="c3 "
   >
     <div
-      className="c3 "
+      className="c4 "
     >
       <input
         className=""
-        id="thumbs-up"
-        name="thumbsUp"
+        id="FieldRadioID"
         type="radio"
       />
       <div
-        className="c4 c5"
+        className="c5 c6"
       />
     </div>
   </div>
-</div>
+  <div
+    className="c7 "
+  />
+</label>
 `;
 
 exports[`A FieldRadio checked 1`] = `
-.c5 {
+.c6 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -144,7 +138,7 @@ exports[`A FieldRadio checked 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c3 {
+.c4 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -153,7 +147,7 @@ exports[`A FieldRadio checked 1`] = `
   vertical-align: middle;
 }
 
-.c3 input[type='radio'] {
+.c4 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -161,16 +155,16 @@ exports[`A FieldRadio checked 1`] = `
   z-index: 1;
 }
 
-.c3 .c4 {
+.c4 .c5 {
   background: #FFFFFF;
 }
 
-.c3 input[type='radio']:checked + .c4 {
+.c4 input[type='radio']:checked + .c5 {
   background: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c3 input[type='radio']:checked + .c4::after {
+.c4 input[type='radio']:checked + .c5::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -181,14 +175,15 @@ exports[`A FieldRadio checked 1`] = `
   right: calc(50% - 3px);
 }
 
-.c3 input[type='radio']:focus + .c4 {
+.c4 input[type='radio']:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c3 input[type='radio']:disabled + .c4 {
-  opacity: 0.5;
+.c4 input[type='radio']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 .c2 {
@@ -199,68 +194,205 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3,max-content);
 }
 
-.c0 .c6 {
-  width: 100%;
-}
-
-.c0 .c7 {
-  width: 100%;
+.c0 .c3 {
+  grid-area: input;
 }
 
 .c0 .c1 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  padding-right: 0.75rem;
+  grid-area: label;
+  font-size: 0.875rem;
+  font-weight: normal;
+  padding-left: 0.5rem;
 }
 
-<div
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
+<label
   className="c0 "
 >
-  <label
+  <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="thumbs-up"
   >
     👍
-  </label>
+  </span>
   <div
-    className=""
+    className="c3 "
   >
     <div
-      className="c3 "
+      className="c4 "
     >
       <input
         checked={true}
         className=""
-        id="thumbs-up"
-        name="thumbsUp"
+        id="FieldRadioID"
         type="radio"
       />
       <div
-        className="c4 c5"
+        className="c5 c6"
       />
     </div>
   </div>
-</div>
+  <div
+    className="c7 "
+  />
+</label>
+`;
+
+exports[`A FieldRadio disabled 1`] = `
+.c6 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 50%;
+  color: transparent;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+}
+
+.c4 {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c4 input[type='radio'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c4 .c5 {
+  background: #FFFFFF;
+}
+
+.c4 input[type='radio']:checked + .c5 {
+  background: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c4 input[type='radio']:checked + .c5::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  top: calc(50% - 3px);
+  right: calc(50% - 3px);
+}
+
+.c4 input[type='radio']:focus + .c5 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c4 input[type='radio']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c8 .c3 {
+  grid-area: input;
+}
+
+.c8 .c1 {
+  grid-area: label;
+  font-size: 0.875rem;
+  font-weight: normal;
+  padding-left: 0.5rem;
+}
+
+.c8 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3,max-content);
+}
+
+.c0 .c3 {
+  grid-area: input;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  font-size: 0.875rem;
+  font-weight: normal;
+  padding-left: 0.5rem;
+  color: #707781;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
+<label
+  className="c0 "
+>
+  <span
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+  >
+    👍
+  </span>
+  <div
+    className="c3 "
+  >
+    <div
+      className="c4 "
+    >
+      <input
+        className=""
+        disabled={true}
+        id="FieldRadioID"
+        type="radio"
+      />
+      <div
+        className="c5 c6"
+      />
+    </div>
+  </div>
+  <div
+    className="c7 "
+  />
+</label>
 `;

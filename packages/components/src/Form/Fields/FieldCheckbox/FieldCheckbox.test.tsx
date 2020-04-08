@@ -30,24 +30,27 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
-  assertSnapshot(<FieldCheckbox label="👍" />)
+  assertSnapshot(<FieldCheckbox id="FieldCheckboxID" label="👍" />)
 })
 
 test('A FieldCheckbox with checked value', () => {
-  assertSnapshot(<FieldCheckbox label="👍" defaultChecked />)
+  assertSnapshot(
+    <FieldCheckbox defaultChecked id="FieldCheckboxID" label="👍" />
+  )
 })
 
 test('A required FieldCheckbox', () => {
-  assertSnapshot(<FieldCheckbox label="👍" required />)
+  assertSnapshot(<FieldCheckbox id="FieldCheckboxID" label="👍" required />)
 })
 
 test('A disabled FieldCheckbox', () => {
-  assertSnapshot(<FieldCheckbox label="👍" disabled />)
+  assertSnapshot(<FieldCheckbox disabled id="FieldCheckboxID" label="👍" />)
 })
 
 test('A FieldCheckbox with an error validation aligned to the bottom', () => {
   assertSnapshot(
     <FieldCheckbox
+      id="FieldCheckboxID"
       label="👍"
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />

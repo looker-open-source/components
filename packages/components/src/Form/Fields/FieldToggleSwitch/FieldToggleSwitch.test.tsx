@@ -30,16 +30,19 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
 
 test('A FieldToggleSwitch', () => {
-  assertSnapshot(<FieldToggleSwitch label="👍" />)
+  assertSnapshot(<FieldToggleSwitch id="FieldToggleSwitchID" label="👍" />)
 })
 
 test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(<FieldToggleSwitch label="👍" on={true} />)
+  assertSnapshot(
+    <FieldToggleSwitch id="FieldToggleSwitchID" label="👍" on={true} />
+  )
 })
 
 test('A FieldToggleSwitch with validationMessage', () => {
   assertSnapshot(
     <FieldToggleSwitch
+      id="FieldToggleSwitchID"
       label="Toggle Switch"
       validationMessage={{ message: 'validation Message', type: 'error' }}
     />
@@ -47,9 +50,21 @@ test('A FieldToggleSwitch with validationMessage', () => {
 })
 
 test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(<FieldToggleSwitch disabled label="Toggle Switch" />)
+  assertSnapshot(
+    <FieldToggleSwitch
+      disabled
+      id="FieldToggleSwitchID"
+      label="Toggle Switch"
+    />
+  )
 })
 
 test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(<FieldToggleSwitch required label="Toggle Switch" />)
+  assertSnapshot(
+    <FieldToggleSwitch
+      id="FieldToggleSwitchID"
+      label="Toggle Switch"
+      required
+    />
+  )
 })

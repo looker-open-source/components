@@ -66,6 +66,7 @@ exports[`Radio checked set to false 1`] = `
   <input
     checked={false}
     className=""
+    id="radioID"
     type="radio"
   />
   <div
@@ -140,6 +141,7 @@ exports[`Radio checked set to true 1`] = `
   <input
     checked={true}
     className=""
+    id="radioID"
     type="radio"
   />
   <div
@@ -213,6 +215,7 @@ exports[`Radio default 1`] = `
 >
   <input
     className=""
+    id="radioID"
     type="radio"
   />
   <div
@@ -287,6 +290,7 @@ exports[`Radio should accept disabled 1`] = `
   <input
     className=""
     disabled={true}
+    id="radioID"
     type="radio"
   />
   <div
@@ -361,6 +365,7 @@ exports[`Radio with aria-describedby 1`] = `
   <input
     aria-describedby="some-id"
     className=""
+    id="radioID"
     type="radio"
   />
   <div
@@ -434,7 +439,7 @@ exports[`Radio with name and id 1`] = `
 >
   <input
     className=""
-    id="Chucky"
+    id="Chuck"
     name="Chuck"
     type="radio"
   />

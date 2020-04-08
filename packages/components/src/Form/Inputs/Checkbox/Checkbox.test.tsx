@@ -31,34 +31,36 @@ import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { Checkbox } from './Checkbox'
 
 test('Checkbox default', () => {
-  assertSnapshot(<Checkbox />)
+  assertSnapshot(<Checkbox id="checkboxID" />)
 })
 
 test('Checkbox checked set to true', () => {
-  assertSnapshot(<Checkbox checked={true} />)
+  assertSnapshot(<Checkbox checked={true} id="checkboxID" />)
 })
 
 test('Checkbox checked set to false', () => {
-  assertSnapshot(<Checkbox checked={false} />)
+  assertSnapshot(<Checkbox checked={false} id="checkboxID" />)
 })
 
 test('Checkbox checked set to mixed', () => {
-  assertSnapshot(<Checkbox checked="mixed" />)
+  assertSnapshot(<Checkbox checked="mixed" id="checkboxID" />)
 })
 
 test('Checkbox should accept disabled', () => {
-  assertSnapshot(<Checkbox disabled />)
+  assertSnapshot(<Checkbox disabled id="checkboxID" />)
 })
 
 test('Checkbox with aria-describedby', () => {
-  assertSnapshot(<Checkbox aria-describedby="some-id" />)
+  assertSnapshot(<Checkbox aria-describedby="some-id" id="checkboxID" />)
 })
 
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mountWithTheme(<Checkbox onChange={handleChange} />)
+  const wrapper = mountWithTheme(
+    <Checkbox id="checkboxID" onChange={handleChange} />
+  )
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)

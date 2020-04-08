@@ -148,6 +148,4 @@ export const FieldInline = styled(FieldInlineLayout)`
     grid-area: messages;
     padding-left: ${(props) => props.theme.space.small};
   }
-
-  ${ValidationMessage}
 `
