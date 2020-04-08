@@ -50,26 +50,38 @@ interface InputTimeProps extends SpaceProps, BorderProps {
   onValidationFail?: (value: string) => void
 }
 
+type Periods = 'AM' | 'PM' | ''
+
 type ActionTypes =
   | 'SET_FOCUS'
   | 'INCREMENT_CHAR_COUNT'
   | 'RESET_CHAR_COUNT'
   | 'FOCUS_NEXT_FIELD'
+  | 'SET_HOUR_VALUE'
+  | 'SET_MINUTE_VALUE'
+  | 'SET_PERIOD_VALUE'
+
 type SubInputs = 'NONE' | 'HOUR' | 'MINUTE' | 'PERIOD'
 
 interface InputState {
   charCount: number
   inputFocus?: SubInputs
+  hour: string
+  minute: string
+  period: Periods
 }
 
 interface InputAction {
   type: ActionTypes
-  payload?: SubInputs
+  payload?: SubInputs | string | Periods
 }
 
 const initialState: InputState = {
   charCount: 0,
+  hour: '',
   inputFocus: 'NONE',
+  minute: '',
+  period: '',
 }
 
 const isNumericKey = (e: KeyboardEvent) =>
@@ -99,21 +111,27 @@ const reducer: Reducer<InputState, InputAction> = (state, action) => {
   const { payload, type } = action
   switch (type) {
     case 'SET_FOCUS':
-      return { ...state, inputFocus: payload }
+      return { ...state, inputFocus: payload as SubInputs }
     case 'FOCUS_NEXT_FIELD':
       return { ...state, inputFocus: selectNextInput(state.inputFocus) }
     case 'INCREMENT_CHAR_COUNT':
       return { ...state, charCount: state.charCount + 1 }
     case 'RESET_CHAR_COUNT':
       return { ...state, charCount: 0 }
+    case 'SET_HOUR_VALUE':
+      return { ...state, hour: payload as string }
+    case 'SET_MINUTE_VALUE':
+      return { ...state, minute: payload as string }
+    case 'SET_PERIOD_VALUE':
+      return { ...state, period: payload as Periods }
+    default:
+      return state
   }
 }
 
 type RefMap = {
   [k in SubInputs]: RefObject<HTMLInputElement>
 }
-
-type SetStateFn = Dispatch<SetStateAction<string>>
 
 const cycleValue = (
   currentValue: string,
@@ -177,9 +195,7 @@ export const InputTime: FC<InputTimeProps> = ({
 }) => {
   const [inputState, dispatch] = useReducer(reducer, initialState)
 
-  const [hour, setHour] = useState('')
-  const [minute, setMinute] = useState('')
-  const [period, setPeriod] = useState('')
+  const { hour, minute, period } = inputState
 
   const inputRefs: RefMap = {
     HOUR: useRef(null),
@@ -196,13 +212,11 @@ export const InputTime: FC<InputTimeProps> = ({
     }
   }
 
-  const clearField = (setStateFn: SetStateFn) => {
-    setStateFn('')
-    dispatch({ type: 'RESET_CHAR_COUNT' })
-  }
-
   const handleHourKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearHourField = partial(clearField, setHour)
+    const clearHourField = () => {
+      dispatch({ payload: '', type: 'SET_HOUR_VALUE' })
+      dispatch({ type: 'RESET_CHAR_COUNT' })
+    }
     if (isNumericKey(e)) {
       // append or replace new char to existing value
       const value = parseBase10Int(
@@ -211,10 +225,16 @@ export const InputTime: FC<InputTimeProps> = ({
       if (value < 24) {
         // valid input!
         if (format === '12h' && value > 12) {
-          setHour(formatTimeString(value - 12))
-          setPeriod('PM')
+          dispatch({
+            payload: formatTimeString(value - 12),
+            type: 'SET_HOUR_VALUE',
+          })
+          dispatch({ payload: 'PM', type: 'SET_PERIOD_VALUE' })
         } else {
-          setHour(formatTimeString(value))
+          dispatch({
+            payload: formatTimeString(value),
+            type: 'SET_HOUR_VALUE',
+          })
         }
         handleValidKeyDown()
       } else {
@@ -225,15 +245,22 @@ export const InputTime: FC<InputTimeProps> = ({
       // cycle through possible values with up/down arrows
       const max = format === '12h' ? 12 : 23
       const min = format === '12h' ? 1 : 0
-      setHour(cycleValue(hour, e.key, max, min))
+      dispatch({
+        payload: cycleValue(hour, e.key, max, min),
+        type: 'SET_HOUR_VALUE',
+      })
     } else if (isDeleteKey(e)) {
       // user delete
       clearHourField()
+      onChange && onChange(undefined)
     }
   }
 
   const handleMinuteKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearMinuteField = partial(clearField, setMinute)
+    const clearMinuteField = () => {
+      dispatch({ payload: '', type: 'SET_MINUTE_VALUE' })
+      dispatch({ type: 'RESET_CHAR_COUNT' })
+    }
     if (isNumericKey(e)) {
       // append or replace new char to existing value
       const value = parseBase10Int(
@@ -241,7 +268,10 @@ export const InputTime: FC<InputTimeProps> = ({
       )
       if (value < 60) {
         // valid input!
-        setMinute(formatTimeString(value))
+        dispatch({
+          payload: formatTimeString(value),
+          type: 'SET_MINUTE_VALUE',
+        })
         handleValidKeyDown()
       } else {
         // reset if invalid value is entered (e.g. 62:87 pm)
@@ -249,26 +279,34 @@ export const InputTime: FC<InputTimeProps> = ({
       }
     } else if (isArrowKey(e)) {
       // cycle through possible values with up/down arrows
-      setMinute(cycleValue(minute, e.key, 59, 0))
+      dispatch({
+        payload: cycleValue(minute, e.key, 59, 0),
+        type: 'SET_MINUTE_VALUE',
+      })
     } else if (isDeleteKey(e)) {
       // user delete
       clearMinuteField()
+      onChange && onChange(undefined)
     }
   }
 
   const handlePeriodKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearPeriodField = partial(clearField, setPeriod)
+    const clearPeriodField = () => {
+      dispatch({ payload: '', type: 'SET_PERIOD_VALUE' })
+      dispatch({ type: 'RESET_CHAR_COUNT' })
+    }
     const key = e.key.toUpperCase()
     if (key === 'P' || key === 'A') {
-      setPeriod(`${key}M`)
+      dispatch({ payload: `${key}M`, type: 'SET_PERIOD_VALUE' })
       handleValidKeyDown()
     } else if (isArrowKey(e)) {
       // cycle through possible values with up/down arrows
       const nextPeriod = period === 'PM' ? 'AM' : 'PM'
-      setPeriod(nextPeriod)
+      dispatch({ payload: nextPeriod, type: 'SET_PERIOD_VALUE' })
     } else if (isDeleteKey(e)) {
       // user delete
       clearPeriodField()
+      onChange && onChange(undefined)
     }
   }
 
@@ -291,41 +329,38 @@ export const InputTime: FC<InputTimeProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputState.inputFocus])
 
-  // Change event: fire onChange when all sub inputs are filled and valid
-
-  // TODO: figure out infinite loop issue when firing the change event
-
-  // useEffect(() => {
-  //   if (isInputComplete(format, hour, minute, period) && onChange) {
-  //     const newValue = `${hour}:${minute}`
-  //     if (format === '12h') {
-  //       onChange(convert12To24HrString(`${newValue} ${period}`))
-  //     } else {
-  //       onChange(newValue)
-  //     }
-  //   } else {
-  //     onChange && onChange(undefined)
-  //   }
-  // }, [hour, minute, period, format, onChange])
-
-  // Controlled Component: update state on every value change
   useEffect(
     () => {
       const valueProp = value || defaultValue
+      // Controlled Component: update state on every value change
       if (isValidTime(valueProp)) {
         const [newHour, newMinute, newPeriod] = parseValue(format, valueProp)
-        setHour(newHour)
-        setMinute(newMinute)
-        setPeriod(newPeriod)
+        hour !== newHour &&
+          dispatch({ payload: newHour, type: 'SET_HOUR_VALUE' })
+        minute !== newMinute &&
+          dispatch({ payload: newMinute, type: 'SET_MINUTE_VALUE' })
+        period !== newPeriod &&
+          dispatch({ payload: newPeriod, type: 'SET_PERIOD_VALUE' })
       } else {
         // eslint-disable-next-line no-console
         console.error(
           `Invalid time ("${valueProp}") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
         )
       }
+
+      if (onChange && isInputComplete(format, hour, minute, period)) {
+        // const newValue =
+        //   format === '12h'
+        //     ? convert12To24HrString(`${hour}:${minute} ${period}`)
+        //     : `${hour}:${minute}`
+        // if (newValue !== value) {
+        //   console.log(value, newValue)
+        //   onChange(`${newValue}`)
+        // }
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value]
+    [value, hour, minute, onChange, period]
   )
 
   const hasInputValues = some([hour, minute, period], 'length')

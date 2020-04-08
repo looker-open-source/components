@@ -5,50 +5,37 @@ import { Button, Box, InputTime, Heading } from '@looker/components'
 
 export const InputTimeDemo: FC = () => {
   const [basicValue, setBasicValue] = useState<string>()
-  const [controlledTime, setControlledTime] = useState<string>('12:00')
+  const [controlledTime, setControlledTime] = useState<string | undefined>(
+    '12:00'
+  )
   const [format24Time, setFormat24Time] = useState<string>()
-  const handleControlledTimeClick = (value?: string) => {
-    setControlledTime(value)
-  }
   return (
     <DemoWrapper>
-      <div>
+      {/* <div>
         <HeadingGrid>
           <Heading as="h1">Basic Input</Heading>
           <SelectedDateWrapper>Selected: {basicValue}</SelectedDateWrapper>
         </HeadingGrid>
         <InputTime m="small" onChange={setBasicValue} />
-      </div>
+      </div> */}
       <div>
         <HeadingGrid>
           <Heading as="h1">Controlled Component</Heading>
         </HeadingGrid>
-        <Button
-          mr="small"
-          onClick={partial(handleControlledTimeClick, '14:00')}
-        >
+        <Button mr="small" onClick={partial(setControlledTime, '14:00')}>
           2:00pm
         </Button>
-        <Button
-          mr="small"
-          onClick={partial(handleControlledTimeClick, '15:15')}
-        >
+        <Button mr="small" onClick={partial(setControlledTime, '15:15')}>
           3:15pm
         </Button>
-        <Button
-          mr="small"
-          onClick={partial(handleControlledTimeClick, '16:32')}
-        >
+        <Button mr="small" onClick={partial(setControlledTime, '16:32')}>
           4:32pm
         </Button>
         <Box mt="large">
-          <InputTime
-            value={controlledTime}
-            onChange={handleControlledTimeClick}
-          />
+          <InputTime value={controlledTime} onChange={setControlledTime} />
         </Box>
       </div>
-      <div>
+      {/* <div>
         <HeadingGrid>
           <Heading as="h1">24 Hour Time</Heading>
           <SelectedDateWrapper>Selected: {format24Time}</SelectedDateWrapper>
@@ -66,7 +53,7 @@ export const InputTimeDemo: FC = () => {
           <Heading as="h1">defaultValue</Heading>
         </HeadingGrid>
         <InputTime defaultValue="14:34" />
-      </div>
+      </div> */}
     </DemoWrapper>
   )
 }
