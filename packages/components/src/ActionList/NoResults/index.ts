@@ -24,46 +24,4 @@
 
  */
 
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { Spinner } from '../Spinner'
-import { NoResults } from './NoResults'
-
-export interface ActionListManagerProps {
-  className?: string
-  isLoading?: boolean
-  noResults?: boolean
-  /**
-   * Text to be displayed when no results state displayed
-   *
-   * @default 'No Results'
-   */
-  noResultsText?: string
-}
-
-const ActionListManagerLayout: FC<ActionListManagerProps> = ({
-  children,
-  className,
-  isLoading,
-  noResults,
-  noResultsText,
-}) => {
-  if (isLoading) {
-    children = <Spinner />
-  } else if (noResults) {
-    children = <NoResults>{noResultsText || 'No Results'}</NoResults>
-  }
-
-  return <div className={className}>{children}</div>
-}
-
-const centerItemStates = css`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-`
-
-export const ActionListManager = styled(ActionListManagerLayout)`
-  ${({ isLoading, noResults }) => (isLoading || noResults) && centerItemStates}
-`
+export * from './NoResults'
