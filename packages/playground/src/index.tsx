@@ -24,13 +24,13 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { SelectMultiDemo } from './Select/SelectMultiDemo'
+import { TestPopovers } from './Popovers/Testing'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <SelectMultiDemo />
+      <TestPopovers />
     </ThemeProvider>
   )
 }
