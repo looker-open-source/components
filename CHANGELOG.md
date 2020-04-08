@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CodeBlock` component
 - `InputTimeSelect` component
 - `Board`, `ShareAlt` Icon
+- `ActionListItemAction` accepts color prop when value is "danger"
 
 ### Changed
 
