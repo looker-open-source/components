@@ -217,10 +217,18 @@ const parseValue = (format: TimeFormats, value = '') => {
 
 // take a 12hr string (e.g. '01:15 pm') and convert to equivalent 24hr string (e.g. '13:15')
 export const convert12To24HrString = (value: string) => {
-  const period = value.toLowerCase().includes('p') ? 'pm' : 'am'
-  const numericTime = value.replace(/[apm]/gi, '')
+  const period = value.includes('P') ? 'PM' : 'AM'
+  const numericTime = value.replace(/[APM]/gi, '')
   const [hour = 0, minute = 0] = numericTime.split(':').map(parseBase10Int)
-  const hr24 = hour + (period === 'pm' && hour < 12 ? 12 : 0)
+
+  let hr24
+  if (period === 'AM' && hour === 12) {
+    hr24 = 0
+  } else if (period === 'PM' && hour < 12) {
+    hr24 = hour + 12
+  } else {
+    hr24 = hour
+  }
 
   return `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 }

@@ -21,6 +21,7 @@ export const InputTimeDemo: FC = () => {
       <div>
         <HeadingGrid>
           <Heading as="h1">Controlled Component</Heading>
+          <SelectedDateWrapper>Selected: {controlledTime}</SelectedDateWrapper>
         </HeadingGrid>
         <Button mr="small" onClick={partial(setControlledTime, '14:00')}>
           2:00pm
@@ -35,7 +36,7 @@ export const InputTimeDemo: FC = () => {
           <InputTime value={controlledTime} onChange={setControlledTime} />
         </Box>
       </div>
-      {/* <div>
+      <div>
         <HeadingGrid>
           <Heading as="h1">24 Hour Time</Heading>
           <SelectedDateWrapper>Selected: {format24Time}</SelectedDateWrapper>
@@ -53,7 +54,7 @@ export const InputTimeDemo: FC = () => {
           <Heading as="h1">defaultValue</Heading>
         </HeadingGrid>
         <InputTime defaultValue="14:34" />
-      </div> */}
+      </div>
     </DemoWrapper>
   )
 }
