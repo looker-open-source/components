@@ -48,7 +48,17 @@ export function usePopper({
   arrow = true,
   options,
 }: UsePopperProps) {
-  const [styles, setStyles] = useState<State['styles']>({})
+  const [styles, setStyles] = useState<State['styles']>({
+    arrow: {
+      position: 'absolute',
+    },
+    popper: {
+      left: '0',
+      margin: '0',
+      position: 'fixed',
+      top: '0',
+    },
+  })
   const [truePlacement, setTruePlacement] = useState(options.placement)
   const popperInstanceRef = useRef<Instance>()
   const [targetElement, targetRef] = useCallbackRef<HTMLElement>()
@@ -92,7 +102,7 @@ export function usePopper({
             enabled: true,
             name: 'preventOverflow',
             options: {
-              boundariesElement: 'window',
+              boundary: 'viewport',
               // 8px away from edge of window
               padding: 8,
             },
@@ -102,6 +112,12 @@ export function usePopper({
             options: {
               // 8px away from anchor element
               offset: [0, 8],
+            },
+          },
+          {
+            name: 'computeStyles',
+            options: {
+              adaptive: false,
             },
           },
         ]),
