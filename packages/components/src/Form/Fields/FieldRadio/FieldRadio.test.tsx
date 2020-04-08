@@ -30,13 +30,17 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldRadio } from './FieldRadio'
 
 test('A FieldRadio', () => {
-  assertSnapshot(<FieldRadio id="FieldRadioID" label="👍" />)
+  assertSnapshot(<FieldRadio id="FieldRadioID" label="👍" name="thumbsUp" />)
 })
 
 test('A FieldRadio checked', () => {
-  assertSnapshot(<FieldRadio checked id="FieldRadioID" label="👍" />)
+  assertSnapshot(
+    <FieldRadio checked id="FieldRadioID" label="👍" name="thumbsUp" />
+  )
 })
 
 test('A FieldRadio disabled', () => {
-  assertSnapshot(<FieldRadio disabled id="FieldRadioID" label="👍" />)
+  assertSnapshot(
+    <FieldRadio disabled id="FieldRadioID" label="👍" name="thumbsUp" />
+  )
 })

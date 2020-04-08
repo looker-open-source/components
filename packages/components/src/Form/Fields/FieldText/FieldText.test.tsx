@@ -30,27 +30,37 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldText } from './FieldText'
 
 test('A FieldText with default label', () => {
-  assertSnapshot(<FieldText id="FieldTextID" label="👍" />)
+  assertSnapshot(<FieldText id="FieldTextID" label="👍" name="thumbsUp" />)
 })
 
 test('A FieldText with label inline', () => {
-  assertSnapshot(<FieldText id="FieldTextID" inline label="👍" />)
+  assertSnapshot(
+    <FieldText id="FieldTextID" inline label="👍" name="thumbsUp" />
+  )
 })
 
 test('A FieldText required with default label', () => {
-  assertSnapshot(<FieldText id="FieldTextID" label="👍" required />)
+  assertSnapshot(
+    <FieldText id="FieldTextID" label="👍" name="thumbsUp" required />
+  )
 })
 
 test('A FieldText required  with label inline', () => {
-  assertSnapshot(<FieldText id="FieldTextID" inline label="👍" required />)
+  assertSnapshot(
+    <FieldText id="FieldTextID" inline label="👍" name="thumbsUp" required />
+  )
 })
 
 test('A FieldText disabled with default label', () => {
-  assertSnapshot(<FieldText disabled id="FieldTextID" label="👍" />)
+  assertSnapshot(
+    <FieldText disabled id="FieldTextID" label="👍" name="thumbsUp" />
+  )
 })
 
 test('A FieldText disabled  with label inline', () => {
-  assertSnapshot(<FieldText disabled id="FieldTextID" inline label="👍" />)
+  assertSnapshot(
+    <FieldText disabled id="FieldTextID" inline label="👍" name="thumbsUp" />
+  )
 })
 
 test('A FieldText with description and with default label', () => {
@@ -58,7 +68,8 @@ test('A FieldText with description and with default label', () => {
     <FieldText
       description="no vegetables allowed"
       id="FieldTextID"
-      label="Text Input"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
     />
   )
@@ -70,7 +81,8 @@ test('A FieldText with description and with label inline', () => {
       description="no vegetables allowed"
       id="FieldTextID"
       inline
-      label="Text Input"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
     />
   )
@@ -81,7 +93,8 @@ test('A FieldText with detail and with default label', () => {
     <FieldText
       detail="5/50"
       id="FieldTextID"
-      label="hello"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
     />
   )
@@ -93,7 +106,8 @@ test('A FieldText with detail and  with label inline', () => {
       detail="5/50"
       id="FieldTextID"
       inline
-      label="hello"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
     />
   )
@@ -103,7 +117,8 @@ test('A FieldText with validationMessage and with default label', () => {
   assertSnapshot(
     <FieldText
       id="FieldTextID"
-      label="hello"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
       validationMessage={{ message: 'validation Message', type: 'error' }}
     />
@@ -115,7 +130,8 @@ test('A FieldText with validationMessage and  with label inline', () => {
     <FieldText
       id="FieldTextID"
       inline
-      label="hello"
+      label="👍"
+      name="thumbsUp"
       placeholder="placeholder"
       validationMessage={{ message: 'validation Message', type: 'error' }}
     />

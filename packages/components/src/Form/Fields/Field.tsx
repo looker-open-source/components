@@ -27,22 +27,15 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
-import {
-  CustomizableAttributes,
-  FontSizes,
-  FontWeights,
-  SpacingSizes,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Label } from '../Label/Label'
-import { Text } from '../../Text/Text'
-import { Paragraph } from '../../Text/Paragraph'
-import {
-  ValidationMessage,
-  ValidationMessageProps,
-} from '../ValidationMessage/ValidationMessage'
 import { InputText, inputHeight, Select } from '../Inputs'
+import { Label } from '../Label/Label'
+import { Paragraph } from '../../Text/Paragraph'
+import { Text } from '../../Text/Text'
+import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
+import { FieldBaseProps, RequiredStar } from './FieldBase'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -55,8 +48,7 @@ export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface =
   labelMargin: 'xsmall',
 }
 
-export interface FieldProps {
-  className?: string
+export interface FieldProps extends FieldBaseProps {
   /*
    * optional extra description
    */
@@ -74,32 +66,11 @@ export interface FieldProps {
    * @default false
    */
   inline?: boolean
-  /**
-   * Defines the label for the field.
-   */
-  label?: string
+
   /**
    * Specifies for horizontally aligned labels how much space to take up.
    */
   labelWidth?: ResponsiveSpaceValue
-  /**
-   * Specifies the fontWeight of the internal Label.
-   * TODO - Deprecate usage in HT, then here.
-   */
-  labelFontSize?: FontSizes
-  /**
-   * Specifies the fontWeight of the internal Label.
-   */
-  labelFontWeight?: FontWeights
-  /**
-   * Whether or not the field should display a `*` denoting it is required.
-   */
-  required?: boolean
-  /**
-   *
-   * Holds the type of validation (error, warning, etc.) and corresponding message.
-   */
-  validationMessage?: ValidationMessageProps
   /**
    *
    * Specify the width of the FieldText if different then 13rem
@@ -123,15 +94,6 @@ export const fieldPropKeys = [
 export const pickFieldProps = (props: FieldProps) =>
   pick(props, [...fieldPropKeys, 'disabled', 'required', 'className'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
-
-const RequiredStar = styled((props) => (
-  <span {...props} aria-hidden="true">
-    {' '}
-    *
-  </span>
-))`
-  color: ${(props) => props.theme.colors.palette.red500};
-`
 
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),

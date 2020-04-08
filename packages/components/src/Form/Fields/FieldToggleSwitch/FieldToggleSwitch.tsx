@@ -33,10 +33,11 @@ import {
   ToggleSwitchProps,
 } from '../../Inputs/ToggleSwitch/ToggleSwitch'
 import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline, FieldInlineProps } from '../FieldInline'
+import { FieldInline } from '../FieldInline'
+import { FieldBaseProps } from '../FieldBase'
 
 export interface FieldToggleSwitchProps
-  extends FieldInlineProps,
+  extends FieldBaseProps,
     ToggleSwitchProps {}
 
 const FieldToggleSwitchLayout = forwardRef(

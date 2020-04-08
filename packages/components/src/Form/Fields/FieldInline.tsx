@@ -26,66 +26,23 @@
 
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import {
-  CustomizableAttributes,
-  FontSizes,
-  FontWeights,
-  SpacingSizes,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import { Label } from '../Label/Label'
-import {
-  ValidationMessage,
-  ValidationMessageProps,
-} from '../ValidationMessage/ValidationMessage'
+import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
+import { FieldBaseProps, RequiredStar } from './FieldBase'
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
   labelMargin: SpacingSizes
 }
 
-export interface FieldInlineProps {
-  className?: string
-  disabled?: boolean
-  /**
-   * Defines the label for the field.
-   */
-  label?: string
-  /**
-   * Specifies the fontWeight of the internal Label.
-   * TODO - Deprecate usage in HT, then here.
-   */
-  labelFontSize?: FontSizes
-  /**
-   * Specifies the fontWeight of the internal Label.
-   */
-  labelFontWeight?: FontWeights
-  /**
-   * Whether or not the field should display a `*` denoting it is required.
-   */
-  required?: boolean
-  /**
-   *
-   * Holds the type of validation (error, warning, etc.) and corresponding message.
-   */
-  validationMessage?: ValidationMessageProps
-}
-
-const RequiredStar = styled((props) => (
-  <span {...props} aria-hidden="true">
-    {' '}
-    *
-  </span>
-))`
-  color: ${(props) => props.theme.colors.palette.red500};
-`
-
 /**
- * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
- * and can render a validation message. Generally, this component is used with form inputs to give user
- * feedback about the status of the input values.
+ * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
+ * and can render a validation message.
+ * The label will always be placed on the right side of the input.
  */
 
-const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
+const FieldInlineLayout: FunctionComponent<FieldBaseProps> = ({
   className,
   children,
   label,
@@ -110,17 +67,6 @@ const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
   )
 }
 
-/**
- * TODO:
- *
- * FieldInline grid layout  - ? why there is extra space on grid around "icon"
- * Disable validation on FieldRadio (that's silly) - done
- * Radio, ToggleSwitch & Checkbox disabled style - Label isn't respond to style when disabled
- * All Input should have red border on error
- * FieldTextArea label position
- *
- */
-
 const InputArea = styled.div``
 const MessageArea = styled.div``
 
@@ -135,17 +81,16 @@ export const FieldInline = styled(FieldInlineLayout)`
   }
 
   ${Label} {
-    grid-area: label;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    font-weight: normal;
-    padding-left: ${(props) => props.theme.space.xsmall};
-
     color: ${({ theme, disabled }) =>
       disabled && theme.colors.palette.charcoal500};
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-weight: normal;
+    grid-area: label;
+    padding-left: ${({ theme }) => theme.space.xsmall};
   }
 
   ${MessageArea} {
     grid-area: messages;
-    padding-left: ${(props) => props.theme.space.small};
+    padding-left: ${({ theme }) => theme.space.small};
   }
 `

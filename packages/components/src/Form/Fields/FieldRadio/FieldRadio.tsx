@@ -27,24 +27,20 @@
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
-import { useFormContext } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
 import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline, FieldInlineProps } from '../FieldInline'
+import { FieldInline } from '../FieldInline'
+import { FieldBaseProps } from '../FieldBase'
 
 export interface FieldRadioProps
   extends RadioProps,
-    Omit<FieldInlineProps, 'validationMessage'> {}
+    Omit<FieldBaseProps, 'validationMessage'> {}
 
 const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
     const { id = uuid() } = props
     return (
-      <FieldInline
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
+      <FieldInline {...pickFieldProps(props)}>
         <Radio {...omitFieldProps(props)} id={id} ref={ref} />
       </FieldInline>
     )

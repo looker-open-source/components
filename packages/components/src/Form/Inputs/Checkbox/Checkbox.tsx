@@ -31,6 +31,7 @@ import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, inputPropKeys } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
+import { inputTextValidation } from '../InputText'
 
 export type MixedBoolean = true | false | 'mixed'
 
@@ -125,32 +126,19 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
           `
     }}
     color: ${({ theme }) => theme.colors.palette.white};
-    ${(props) =>
-      props.validationType === 'error'
-        ? `
-      border-color: ${props.theme.colors.palette.red400};
-      &:hover {
-        border-color: ${props.theme.colors.palette.red500};
-      }
-      &:focus,
-      :focus-within {
-        border-color: ${props.theme.colors.palette.red500};
-        box-shadow: 0 0 0 2px ${props.theme.colors.palette.red100};
-      }
-      `
-        : ''}
+    ${inputTextValidation}
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
-      border-color: ${(props) => props.theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
+      border-color: ${({ theme }) => theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.palette.purple100};
       outline: none;
     }
   }
   input[type='checkbox']:disabled {
     & + ${FauxCheckbox} {
-      background: ${(props) => props.theme.colors.palette.charcoal100};
-      border-color: ${(props) => props.theme.colors.palette.charcoal200};
+      background: ${({ theme }) => theme.colors.palette.charcoal100};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal200};
       color: ${({ theme }) => theme.colors.palette.charcoal100};
     }
   }

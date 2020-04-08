@@ -30,9 +30,10 @@ import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline, FieldInlineProps } from '../FieldInline'
+import { FieldInline } from '../FieldInline'
+import { FieldBaseProps } from '../FieldBase'
 
-export interface FieldCheckboxProps extends CheckboxProps, FieldInlineProps {}
+export interface FieldCheckboxProps extends CheckboxProps, FieldBaseProps {}
 
 const FieldCheckboxLayout = forwardRef(
   (props: FieldCheckboxProps, ref: Ref<HTMLInputElement>) => {
