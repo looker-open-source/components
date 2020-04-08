@@ -151,6 +151,18 @@ Passing in a React element into the `indicator` prop will display said element l
 
 The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
 
+## ActionListLayout
+
+<Props of="ActionListLayout" />
+
+In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListLayout>` component to conditionally render a loading icon until your data is ready.
+
+Passing a falsy value into an `<ActionListLayout>`'s `isLoading` prop will render a `<Spinner>` icon. Once the `isLoading` prop receives a truthy value, its child will rendered instead.
+
+You can also use an `<ActionListLayout>` element to render a "No Results" message using the `noResults` prop.
+
+<i>Example coming soon...</i>
+
 ## Sorting an Action List
 
 <i>Coming Soon...</i>
