@@ -11,13 +11,13 @@ export const InputTimeDemo: FC = () => {
   const [format24Time, setFormat24Time] = useState<string>()
   return (
     <DemoWrapper>
-      {/* <div>
+      <div>
         <HeadingGrid>
           <Heading as="h1">Basic Input</Heading>
           <SelectedDateWrapper>Selected: {basicValue}</SelectedDateWrapper>
         </HeadingGrid>
         <InputTime m="small" onChange={setBasicValue} />
-      </div> */}
+      </div>
       <div>
         <HeadingGrid>
           <Heading as="h1">Controlled Component</Heading>

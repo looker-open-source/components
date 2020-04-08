@@ -69,6 +69,8 @@ interface InputState {
   hour: string
   minute: string
   period: Periods
+  isComplete: boolean
+  format: TimeFormats
 }
 
 interface InputAction {
@@ -78,8 +80,10 @@ interface InputAction {
 
 const initialState: InputState = {
   charCount: 0,
+  format: '12h',
   hour: '',
   inputFocus: 'NONE',
+  isComplete: false,
   minute: '',
   period: '',
 }
@@ -107,8 +111,33 @@ const selectNextInput = (current?: SubInputs) => {
   }
 }
 
+interface IsCompleteConfig {
+  format: TimeFormats
+  hour: string
+  minute: string
+  period: string
+}
+
+const isInputComplete = ({
+  format,
+  hour,
+  minute,
+  period,
+}: IsCompleteConfig): boolean => {
+  if (format === '12h') {
+    return !!(hour.length && minute.length && period.length)
+  }
+  return !!(hour.length && minute.length)
+}
+
 const reducer: Reducer<InputState, InputAction> = (state, action) => {
   const { payload, type } = action
+  const inputValues: IsCompleteConfig = {
+    format: state.format,
+    hour: state.hour,
+    minute: state.minute,
+    period: state.period,
+  }
   switch (type) {
     case 'SET_FOCUS':
       return { ...state, inputFocus: payload as SubInputs }
@@ -119,11 +148,32 @@ const reducer: Reducer<InputState, InputAction> = (state, action) => {
     case 'RESET_CHAR_COUNT':
       return { ...state, charCount: 0 }
     case 'SET_HOUR_VALUE':
-      return { ...state, hour: payload as string }
+      return {
+        ...state,
+        hour: payload as string,
+        isComplete: isInputComplete({
+          ...inputValues,
+          hour: payload as string,
+        }),
+      }
     case 'SET_MINUTE_VALUE':
-      return { ...state, minute: payload as string }
+      return {
+        ...state,
+        isComplete: isInputComplete({
+          ...inputValues,
+          minute: payload as string,
+        }),
+        minute: payload as string,
+      }
     case 'SET_PERIOD_VALUE':
-      return { ...state, period: payload as Periods }
+      return {
+        ...state,
+        isComplete: isInputComplete({
+          ...inputValues,
+          period: payload as string,
+        }),
+        period: payload as Periods,
+      }
     default:
       return state
   }
@@ -175,27 +225,18 @@ export const convert12To24HrString = (value: string) => {
   return `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 }
 
-const isInputComplete = (
-  format: TimeFormats,
-  hour: string,
-  minute: string,
-  period: string
-) => {
-  if (format === '12h') {
-    return hour.length && minute.length && period.length
-  }
-  return hour.length && minute.length
-}
-
 export const InputTime: FC<InputTimeProps> = ({
   format = '12h',
   onChange,
   defaultValue,
   value,
 }) => {
-  const [inputState, dispatch] = useReducer(reducer, initialState)
+  const [inputState, dispatch] = useReducer(reducer, {
+    ...initialState,
+    format,
+  })
 
-  const { hour, minute, period } = inputState
+  const { hour, minute, period, isComplete } = inputState
 
   const inputRefs: RefMap = {
     HOUR: useRef(null),
@@ -210,6 +251,11 @@ export const InputTime: FC<InputTimeProps> = ({
     if (inputState.charCount > 0) {
       dispatch({ type: 'FOCUS_NEXT_FIELD' })
     }
+  }
+
+  const handleDelete = (setStateCB: () => void) => {
+    onChange && onChange(undefined)
+    setStateCB()
   }
 
   const handleHourKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -251,8 +297,7 @@ export const InputTime: FC<InputTimeProps> = ({
       })
     } else if (isDeleteKey(e)) {
       // user delete
-      clearHourField()
-      onChange && onChange(undefined)
+      handleDelete(clearHourField)
     }
   }
 
@@ -285,8 +330,7 @@ export const InputTime: FC<InputTimeProps> = ({
       })
     } else if (isDeleteKey(e)) {
       // user delete
-      clearMinuteField()
-      onChange && onChange(undefined)
+      handleDelete(clearMinuteField)
     }
   }
 
@@ -305,8 +349,7 @@ export const InputTime: FC<InputTimeProps> = ({
       dispatch({ payload: nextPeriod, type: 'SET_PERIOD_VALUE' })
     } else if (isDeleteKey(e)) {
       // user delete
-      clearPeriodField()
-      onChange && onChange(undefined)
+      handleDelete(clearPeriodField)
     }
   }
 
@@ -347,21 +390,24 @@ export const InputTime: FC<InputTimeProps> = ({
           `Invalid time ("${valueProp}") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
         )
       }
-
-      if (onChange && isInputComplete(format, hour, minute, period)) {
-        // const newValue =
-        //   format === '12h'
-        //     ? convert12To24HrString(`${hour}:${minute} ${period}`)
-        //     : `${hour}:${minute}`
-        // if (newValue !== value) {
-        //   console.log(value, newValue)
-        //   onChange(`${newValue}`)
-        // }
-      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value, hour, minute, onChange, period]
+    [value]
   )
+
+  // controlled component: call 'onChange' if all sub-inputs are filled in
+  useEffect(() => {
+    if (isComplete) {
+      const newValue =
+        format === '12h'
+          ? convert12To24HrString(`${hour}:${minute} ${period}`)
+          : `${hour}:${minute}`
+      if (newValue !== value) {
+        onChange && onChange(`${newValue}`)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isComplete, hour, minute, period])
 
   const hasInputValues = some([hour, minute, period], 'length')
 
