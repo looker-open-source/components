@@ -1,9 +1,9 @@
-import React, { FC, FormEvent, ReactNode, useContext, useState } from 'react'
+import React, { FC, FormEvent, ReactNode, useState } from 'react'
 import { Button, ButtonTransparent } from '../../Button'
 import { FieldText } from '../../Form'
-import { ModalContent, ModalContext, ModalFooter, ModalHeader } from '..'
+import { Dialog, ModalContent, ModalFooter, ModalHeader } from '..'
 
-export interface PromptDialogProps {
+export interface PromptBaseProps {
   /**
    * Callback that is triggered when submit button is pressed
    */
@@ -30,6 +30,18 @@ export interface PromptDialogProps {
   secondaryOption?: ReactNode
 }
 
+export interface PromptDialogProps extends PromptBaseProps {
+  /**
+   * For triggering close from within the dialog
+   */
+  close: () => void
+  /**
+   * Toggling this after mounting will trigger the animation
+   * @default false
+   */
+  isOpen?: boolean
+}
+
 export const PromptDialog: FC<PromptDialogProps> = ({
   onSave,
   label,
@@ -37,12 +49,11 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   buttonText = 'Save',
   secondaryOption,
   defaultValue = '',
+  close,
+  isOpen,
 }) => {
   const [value, setValue] = useState(defaultValue)
   const hasValue = !!value.trim()
-
-  const { closeModal } = useContext(ModalContext)
-  const close = () => closeModal && closeModal()
 
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value)
@@ -55,25 +66,27 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <ModalHeader hideClose>{title}</ModalHeader>
-      <ModalContent>
-        <FieldText
-          required
-          label={label}
-          onChange={onChange}
-          width="100%"
-          value={value}
-        />
-      </ModalContent>
-      <ModalFooter secondary={secondaryOption}>
-        <Button disabled={!hasValue} type="submit">
-          {buttonText}
-        </Button>
-        <ButtonTransparent type="reset" color="neutral" onClick={close}>
-          Cancel
-        </ButtonTransparent>
-      </ModalFooter>
-    </form>
+    <Dialog width="30rem" isOpen={isOpen} onClose={close}>
+      <form onSubmit={onSubmit}>
+        <ModalHeader hideClose>{title}</ModalHeader>
+        <ModalContent>
+          <FieldText
+            required
+            label={label}
+            onChange={onChange}
+            width="100%"
+            value={value}
+          />
+        </ModalContent>
+        <ModalFooter secondary={secondaryOption}>
+          <Button disabled={!hasValue} type="submit">
+            {buttonText}
+          </Button>
+          <ButtonTransparent type="reset" color="neutral" onClick={close}>
+            Cancel
+          </ButtonTransparent>
+        </ModalFooter>
+      </form>
+    </Dialog>
   )
 }
