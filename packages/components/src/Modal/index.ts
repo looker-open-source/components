@@ -24,9 +24,11 @@
 
  */
 
+export * from './Confirm'
 export * from './Dialog'
 export * from './Drawer'
 export * from './Layout'
+export * from './Prompt'
 
 export * from './Modal'
 export * from './ModalBackdrop'

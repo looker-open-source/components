@@ -24,6 +24,5 @@
 
  */
 
-export * from './Dialog'
-export * from './DialogManager'
-export * from './DialogSurface'
+export * from './Confirm'
+export * from './ConfirmLayout'
