@@ -27,10 +27,10 @@ const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
 
 ### Building your own theme
 
-Once you've created your own theme object modeled after the values in this repo, you can override in production by wrapping components in a ThemeProvider.
+Once you've created your own theme object modeled after the values in this repo, you can override in production by wrapping components in via the `ComponentsProvider` (a Styled Components `ThemeProvider` is used under the hood).
 
 ```jsx
-import { ThemeProvider } from 'styled-components'
+import { ComponentsProvider } from '@looker/components'
 
 const myTheme = {
   ///... theme values here
@@ -38,9 +38,9 @@ const myTheme = {
 
 const MyApp = () => {
   return (
-    <ThemeProvider theme={myTheme}>
+    <ComponentsProvider theme={myTheme}>
       {/*... Looker UI Components here */}
-    </ThemeProvider>
+    </ComponentsProvider>
   )
 }
 ```

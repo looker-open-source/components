@@ -26,11 +26,12 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import {
+  assertSnapshotShallow,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
-import { theme } from '@looker/design-tokens'
+import { fireEvent } from '@testing-library/react'
 import { ButtonOutline } from './ButtonOutline'
 
 test('ButtonOutline is rendered ', () => {
@@ -38,23 +39,17 @@ test('ButtonOutline is rendered ', () => {
 })
 
 test('ButtonOutline has the correct style', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <ButtonOutline>Outline</ButtonOutline>
-    </ThemeProvider>
-  )
+  const { getByText } = renderWithTheme(<ButtonOutline>Outline</ButtonOutline>)
 
   expect(getByText('Outline')).toMatchSnapshot()
 })
 
 test('ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <ButtonOutline>ButtonOutline</ButtonOutline>
-        <ButtonOutline>focus</ButtonOutline>
-      </>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <>
+      <ButtonOutline>ButtonOutline</ButtonOutline>
+      <ButtonOutline>focus</ButtonOutline>
+    </>
   )
 
   fireEvent.click(getByText('ButtonOutline'))

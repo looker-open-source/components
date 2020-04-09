@@ -24,11 +24,12 @@
 
  */
 
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import {
+  assertSnapshotShallow,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
-import { theme } from '@looker/design-tokens'
+import { fireEvent } from '@testing-library/react'
 import { Button } from './Button'
 
 test('Button is rendered ', () => {
@@ -36,45 +37,33 @@ test('Button is rendered ', () => {
 })
 
 test('Button works with color danger', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <Button color="danger">danger</Button>
-    </ThemeProvider>
-  )
+  const { getByText } = renderWithTheme(<Button color="danger">danger</Button>)
 
   expect(getByText('danger')).toMatchSnapshot()
 })
 
 test('Button disable', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <Button disabled>disabled</Button>
-    </ThemeProvider>
-  )
+  const { getByText } = renderWithTheme(<Button disabled>disabled</Button>)
 
   expect(getByText('disabled')).toMatchSnapshot()
 })
 
 test('Button accepts a className prop', () => {
-  const { container } = render(
-    <ThemeProvider theme={theme}>
-      <Button className="foo">button with class</Button>
-    </ThemeProvider>
+  const { container } = renderWithTheme(
+    <Button className="foo">button with class</Button>
   )
 
   expect(container.firstChild).toHaveClass('foo')
 })
 
 test('Button validates all sizes', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <Button size={'xsmall'}>xsmall button</Button>
-        <Button size={'small'}>small button</Button>
-        <Button size={'medium'}>medium button</Button>
-        <Button size={'large'}>large button</Button>
-      </>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <>
+      <Button size={'xsmall'}>xsmall button</Button>
+      <Button size={'small'}>small button</Button>
+      <Button size={'medium'}>medium button</Button>
+      <Button size={'large'}>large button</Button>
+    </>
   )
 
   expect(getByText('xsmall button')).toMatchSnapshot()
@@ -84,23 +73,21 @@ test('Button validates all sizes', () => {
 })
 
 test('Button with icon validates all sizes', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <Button size={'xsmall'} iconBefore={'Account'}>
-          xsmall button
-        </Button>
-        <Button size={'small'} iconBefore={'Account'}>
-          small button
-        </Button>
-        <Button size={'medium'} iconBefore={'Account'}>
-          medium button
-        </Button>
-        <Button size={'large'} iconBefore={'Account'}>
-          large button
-        </Button>
-      </>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <>
+      <Button size={'xsmall'} iconBefore={'Account'}>
+        xsmall button
+      </Button>
+      <Button size={'small'} iconBefore={'Account'}>
+        small button
+      </Button>
+      <Button size={'medium'} iconBefore={'Account'}>
+        medium button
+      </Button>
+      <Button size={'large'} iconBefore={'Account'}>
+        large button
+      </Button>
+    </>
   )
 
   expect(getByText('xsmall button')).toMatchSnapshot()
@@ -110,23 +97,17 @@ test('Button with icon validates all sizes', () => {
 })
 
 test('Button can be full width', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <Button fullWidth>Full Width</Button>
-    </ThemeProvider>
-  )
+  const { getByText } = renderWithTheme(<Button fullWidth>Full Width</Button>)
 
   expect(getByText('Full Width')).toMatchSnapshot()
 })
 
 test('Button Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <Button>button</Button>
-        <Button>focus</Button>
-      </>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <>
+      <Button>button</Button>
+      <Button>focus</Button>
+    </>
   )
 
   fireEvent.click(getByText('button'))
