@@ -38,7 +38,7 @@ import {
 
 import { ValidationType } from '../../ValidationMessage'
 
-interface InputTimeProps extends SpaceProps, BorderProps {
+export interface InputTimeProps extends SpaceProps, BorderProps {
   format?: TimeFormats
   defaultValue?: string
   value?: string
@@ -271,8 +271,8 @@ const InternalInputTime: FC<InputTimeProps> = ({
       dispatch({ type: 'RESET_CHAR_COUNT' })
     }
     if (isNumericKey(e)) {
-      // append or replace new char to existing value
       const value = parseBase10Int(
+        // append or replace new char to existing value based on length of input
         inputState.charCount === 1 ? `${hour}${e.key}` : e.key
       )
       if (value < 24) {
@@ -431,6 +431,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
             onBlur={handleBlur}
             onChange={noop}
             ref={inputRefs.HOUR}
+            data-testid="input-hour"
           />
           <div>:</div>
           <InputText
@@ -442,6 +443,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
             onBlur={handleBlur}
             onChange={noop}
             ref={inputRefs.MINUTE}
+            data-testid="input-minute"
           />
           {format === '12h' ? (
             <InputText
@@ -453,6 +455,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
               onBlur={handleBlur}
               onChange={noop}
               ref={inputRefs.PERIOD}
+              data-testid="input-period"
             />
           ) : (
             <span />

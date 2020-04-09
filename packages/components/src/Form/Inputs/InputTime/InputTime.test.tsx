@@ -1,114 +1,189 @@
-// /*
+/*
 
-//  MIT License
+ MIT License
 
-//  Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
 
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
 
-//  */
+ */
 
-// import React from 'react'
-// import { fireEvent } from '@testing-library/react'
-// import { renderWithTheme } from '@looker/components-test-utils'
+import React from 'react'
+import { fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { InputTime, InputTimeProps } from './InputTime'
 
-// import { InputDate } from './InputTime'
+const globalConsole = global.console
 
-// const realDateNow = Date.now.bind(global.Date)
+beforeEach(() => {
+  global.console = ({
+    error: jest.fn(),
+    warn: jest.fn(),
+  } as unknown) as Console
+})
 
-// beforeEach(() => {
-//   global.Date.now = jest.fn(() => 1580517818172)
-// })
+afterEach(() => {
+  jest.resetAllMocks()
+  global.console = globalConsole
+})
 
-// afterEach(() => {
-//   global.Date.now = realDateNow // reset Date.now mock
-//   jest.clearAllMocks()
-// })
+const selectSubInputs = (mockProps: any) => {
+  const { getByTestId } = renderWithTheme(<InputTime {...mockProps} />)
+  const inputHour = getByTestId('input-hour')
+  const inputMinute = getByTestId('input-minute')
+  const inputPeriod = getByTestId('input-period')
 
-// test('calls onChange prop when a day is clicked', () => {
-//   const mockProps = {
-//     defaultValue: new Date('June 3, 2019'),
-//     onChange: jest.fn(),
-//   }
-//   const { getByText } = renderWithTheme(<InputDate {...mockProps} />)
-//   expect(mockProps.onChange).not.toHaveBeenCalled()
+  return {
+    inputHour,
+    inputMinute,
+    inputPeriod,
+  }
+}
 
-//   const date = getByText('15') // the 15th day of the month
-//   fireEvent.click(date)
-//   expect(mockProps.onChange).toHaveBeenCalledWith(
-//     new Date('June 15, 2019 12:00:00 PM')
-//   )
-// })
+test('fires onChange ONLY when all fields are filled in', () => {
+  const mockProps: InputTimeProps = {
+    onChange: jest.fn(),
+  }
 
-// test('updates text input value when day is clicked', () => {
-//   const mockProps = {
-//     onChange: jest.fn(),
-//   }
-//   const { getByText, getByTestId } = renderWithTheme(
-//     <InputDate {...mockProps} />
-//   )
-//   expect(mockProps.onChange).not.toHaveBeenCalled()
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
 
-//   const input = getByTestId('text-input') as HTMLInputElement
-//   expect(input.value).toEqual('')
+  fireEvent.keyDown(inputHour, {
+    key: '1',
+    keyCode: 49,
+  })
 
-//   const date = getByText('15') // the 15th day of the month
-//   fireEvent.click(date)
+  expect(mockProps.onChange).not.toHaveBeenCalled()
 
-//   expect(input.value).toEqual('02/15/2020')
-// })
+  fireEvent.keyDown(inputMinute, {
+    key: '1',
+    keyCode: 49,
+  })
 
-// test('fills TextInput with value, and updates when props.value changes', () => {
-//   const mockProps = {
-//     onChange: jest.fn(),
-//     value: new Date('June 3, 2019'),
-//   }
-//   const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-//   const input = getByTestId('text-input') as HTMLInputElement
-//   expect(input.value).toEqual('06/03/2019')
-// })
+  expect(mockProps.onChange).not.toHaveBeenCalled()
 
-// test('fills TextInput with defaultValue', () => {
-//   const mockProps = {
-//     defaultValue: new Date('June 3, 2019'),
-//     onChange: jest.fn(),
-//   }
-//   const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-//   const input = getByTestId('text-input') as HTMLInputElement
-//   expect(input.value).toEqual('06/03/2019')
-// })
+  fireEvent.keyDown(inputPeriod, {
+    key: 'p',
+  })
 
-// test('validates text input to match localized date format', () => {
-//   const mockProps = {
-//     defaultValue: new Date('June 3, 2019'),
-//     onValidationFail: jest.fn(),
-//   }
-//   const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-//   const input = getByTestId('text-input') as HTMLInputElement
+  // convert '01:01 PM' to 24-hour time ('13:01') and call onChange
+  expect(mockProps.onChange).toHaveBeenCalledWith('13:01')
+})
 
-//   fireEvent.change(input, { target: { value: '6/3/2019' } })
-//   fireEvent.blur(input) // validate on blur
+test('fires onChange when any sub-input is cleared', () => {
+  const mockProps: InputTimeProps = {
+    onChange: jest.fn(),
+    value: '14:52',
+  }
 
-//   expect(mockProps.onValidationFail).not.toHaveBeenCalled()
+  const { inputHour } = selectSubInputs(mockProps)
 
-//   fireEvent.change(input, { target: { value: 'not-a-valid-date' } })
-//   fireEvent.blur(input) // validate on blur
+  expect(mockProps.onChange).not.toHaveBeenCalled()
+  expect((inputHour as HTMLInputElement).value).toEqual('02')
 
-//   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
-// })
+  // reset sub-input value
+  fireEvent.keyDown(inputHour, {
+    key: 'Backspace',
+  })
+
+  expect((inputHour as HTMLInputElement).value).toEqual('')
+  expect(mockProps.onChange).toHaveBeenCalledWith(undefined)
+})
+
+test('accepts a 24-hour time value', () => {
+  const mockProps: InputTimeProps = {
+    value: '14:52',
+  }
+
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
+
+  expect((inputHour as HTMLInputElement).value).toEqual('02')
+  expect((inputMinute as HTMLInputElement).value).toEqual('52')
+  expect((inputPeriod as HTMLInputElement).value).toEqual('PM')
+})
+
+test('accepts a 24-hour time defautValue', () => {
+  const mockProps: InputTimeProps = {
+    defaultValue: '14:52',
+  }
+
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
+
+  expect((inputHour as HTMLInputElement).value).toEqual('02')
+  expect((inputMinute as HTMLInputElement).value).toEqual('52')
+  expect((inputPeriod as HTMLInputElement).value).toEqual('PM')
+})
+
+test('ignores invalid time value string', () => {
+  const mockProps: InputTimeProps = {
+    value: 'cheesecake',
+  }
+
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
+
+  expect((inputHour as HTMLInputElement).value).toEqual('')
+  expect((inputMinute as HTMLInputElement).value).toEqual('')
+  expect((inputPeriod as HTMLInputElement).value).toEqual('')
+
+  // eslint-disable-next-line no-console
+  expect(console.error).toHaveBeenCalledWith(
+    'Invalid time ("cheesecake") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").'
+  )
+})
+
+test('clears child input if an invalid number is entered', () => {
+  const mockProps: InputTimeProps = {
+    onChange: jest.fn(),
+  }
+
+  const { inputMinute } = selectSubInputs(mockProps)
+
+  fireEvent.keyDown(inputMinute, {
+    key: '7',
+    keyCode: 55,
+  })
+
+  expect((inputMinute as HTMLInputElement).value).toEqual('07')
+
+  // pressing 7 a second time would be an attempt to enter "77" into the minute field
+  fireEvent.keyDown(inputMinute, {
+    key: '7',
+    keyCode: 55,
+  })
+
+  // invalid input causes field to clear
+  expect((inputMinute as HTMLInputElement).value).toEqual('')
+})
+
+test('renders 24 hour formatted time', () => {
+  const mockProps: any = {
+    format: '24h',
+    value: '23:32',
+  }
+
+  const { getByTestId, queryByTestId } = renderWithTheme(
+    <InputTime {...mockProps} />
+  )
+  const inputHour = getByTestId('input-hour')
+  const inputMinute = getByTestId('input-minute')
+  const inputPeriod = queryByTestId('input-period')
+
+  expect((inputHour as HTMLInputElement).value).toEqual('23')
+  expect((inputMinute as HTMLInputElement).value).toEqual('32')
+  expect(inputPeriod).not.toBeInTheDocument()
+})
