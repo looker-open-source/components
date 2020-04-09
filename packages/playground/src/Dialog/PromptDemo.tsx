@@ -4,28 +4,40 @@ import { Button, Prompt, usePrompt } from '@looker/components'
 export const PromptDemo: FC = () => {
   return (
     <Prompt
-      buttonText={'Save'}
+      buttonColor="primary"
+      cancelColor="neutral"
+      cancelLabel={'Not into cheese'}
       title={'Choose a cheese!'}
-      label={'Name of Cheese'}
+      inputLabel={'Name of Cheese'}
+      saveLabel={'Save'}
       onSave={(value: string) => alert(`You chose ${value}`)}
+      secondary={
+        <Button onClick={() => alert('Secondary clicked')}>
+          Secondary Cheese
+        </Button>
+      }
     >
-      {(open) => <Button onClick={open}>Cheese it</Button>}
+      {(open) => (
+        <Button color="secondary" onClick={open}>
+          Prompt
+        </Button>
+      )}
     </Prompt>
   )
 }
 
 export const usePromptDemo = () => {
   const [modal, openModal] = usePrompt({
-    buttonText: 'Save',
-    label: 'Name of Cheese',
+    inputLabel: 'Name of Cheese',
     onSave: (value: string) => alert(`You chose ${value}`),
+    saveLabel: 'Save',
     title: 'Choose a cheese!',
   })
 
   return (
     <>
       {modal}
-      <Button onClick={openModal}>Say Cheese!</Button>
+      <Button onClick={openModal}>usePrompt</Button>
     </>
   )
 }

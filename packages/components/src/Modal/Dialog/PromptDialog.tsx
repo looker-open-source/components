@@ -25,11 +25,27 @@
  */
 
 import React, { FC, FormEvent, ReactNode, useState } from 'react'
+import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { FieldText } from '../../Form'
 import { Dialog, ModalContent, ModalFooter, ModalHeader } from '..'
 
 export interface PromptBaseProps {
+  /**
+   * Cancel button text
+   * @default 'Cancel'
+   */
+  cancelLabel?: string
+  /**
+   * Defines the color of the cancel button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "neutral"
+   */
+  cancelColor?: keyof SemanticColors
+  /**
+   * Defines the color of the save button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "primary"
+   */
+  buttonColor?: keyof SemanticColors
   /**
    * Callback that is triggered when submit button is pressed
    */
@@ -37,7 +53,7 @@ export interface PromptBaseProps {
   /**
    * Label above the rendered input
    */
-  label: string
+  inputLabel: string
   /**
    * Title of the modal
    */
@@ -49,11 +65,11 @@ export interface PromptBaseProps {
   /**
    * Text of the submit button
    */
-  buttonText?: string
+  saveLabel?: string
   /**
    * A React Element that is placed at the bottom left of the modal
    */
-  secondaryOption?: ReactNode
+  secondary?: ReactNode
 }
 
 export interface PromptDialogProps extends PromptBaseProps {
@@ -69,11 +85,14 @@ export interface PromptDialogProps extends PromptBaseProps {
 }
 
 export const PromptDialog: FC<PromptDialogProps> = ({
+  saveLabel = 'Save',
+  buttonColor = 'primary',
+  cancelColor = 'neutral',
+  cancelLabel = 'Cancel',
   onSave,
-  label,
+  inputLabel,
   title,
-  buttonText = 'Save',
-  secondaryOption,
+  secondary,
   defaultValue = '',
   close,
   isOpen,
@@ -98,18 +117,18 @@ export const PromptDialog: FC<PromptDialogProps> = ({
         <ModalContent>
           <FieldText
             required
-            label={label}
+            label={inputLabel}
             onChange={onChange}
             width="100%"
             value={value}
           />
         </ModalContent>
-        <ModalFooter secondary={secondaryOption}>
-          <Button disabled={!hasValue} type="submit">
-            {buttonText}
+        <ModalFooter secondary={secondary}>
+          <Button disabled={!hasValue} type="submit" color={buttonColor}>
+            {saveLabel}
           </Button>
-          <ButtonTransparent type="reset" color="neutral" onClick={close}>
-            Cancel
+          <ButtonTransparent type="reset" color={cancelColor} onClick={close}>
+            {cancelLabel}
           </ButtonTransparent>
         </ModalFooter>
       </form>
