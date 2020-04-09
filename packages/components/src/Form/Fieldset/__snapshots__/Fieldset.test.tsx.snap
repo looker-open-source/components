@@ -79,17 +79,6 @@ exports[`Fieldset with left aligned legend 1`] = `
   display: inline-block;
 }
 
-.c2 {
-  color: #262D33;
-  padding-bottom: 0.5rem;
-  font-size: 2.25rem;
-  font-weight: 300;
-}
-
-.c0 {
-  border: none;
-}
-
 .c4 {
   width: 13rem;
 }
@@ -100,6 +89,17 @@ exports[`Fieldset with left aligned legend 1`] = `
 
 .c4 .c10 {
   width: 100%;
+}
+
+.c2 {
+  color: #262D33;
+  padding-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+
+.c0 {
+  border: none;
 }
 
 <fieldset
