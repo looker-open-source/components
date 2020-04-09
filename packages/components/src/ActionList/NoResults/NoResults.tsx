@@ -24,10 +24,13 @@
 
  */
 
-export * from './ActionList'
-export * from './ActionListHeader'
-export * from './ActionListItem'
-export * from './ActionListItemAction'
-export * from './ActionListItemColumn'
-export * from './ActionListManager'
-export * from './utils'
+import styled from 'styled-components'
+import { Text } from '../../Text'
+
+export const NoResults = styled(Text)``
+
+NoResults.defaultProps = {
+  fontSize: 'xlarge',
+  fontWeight: 'light',
+  variant: 'subdued',
+}
