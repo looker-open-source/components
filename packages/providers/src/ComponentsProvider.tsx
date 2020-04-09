@@ -10,6 +10,6 @@ import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ComponentsProviderProps extends ThemeProviderProps {}
 
-export const ComponentsProvider: FC<ComponentsProviderProps> = ({
-  children,
-}) => <ThemeProvider>{children}</ThemeProvider>
+export const ComponentsProvider: FC<ComponentsProviderProps> = (props) => (
+  <ThemeProvider {...props} />
+)
