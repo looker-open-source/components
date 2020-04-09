@@ -27,6 +27,22 @@ exports[`A FieldSelect 1`] = `
   height: 36px;
 }
 
+.c9::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c9:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::placeholder {
+  color: #939BA5;
+}
+
 .c9:hover {
   border-color: #C1C6CC;
 }
@@ -247,6 +263,22 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 .c9 {
   height: 36px;
+}
+
+.c9::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c9:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::placeholder {
+  color: #939BA5;
 }
 
 .c9:hover {
@@ -516,6 +548,22 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: 36px;
 }
 
+.c9::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c9:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::placeholder {
+  color: #939BA5;
+}
+
 .c9:hover {
   border-color: #C1C6CC;
 }
@@ -783,6 +831,22 @@ exports[`A required FieldSelect 1`] = `
   height: 36px;
 }
 
+.c10::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c10::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c10:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c10::placeholder {
+  color: #939BA5;
+}
+
 .c10:hover {
   border-color: #C1C6CC;
 }
@@ -1015,6 +1079,22 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c9 {
   height: 36px;
+}
+
+.c9::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c9:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c9::placeholder {
+  color: #939BA5;
 }
 
 .c9:hover {

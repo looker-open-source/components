@@ -5,6 +5,22 @@ exports[`A FieldText disabled  with label inline 1`] = `
   height: 36px;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
+}
+
 .c4:hover {
   border-color: #C1C6CC;
 }
@@ -94,7 +110,7 @@ exports[`A FieldText disabled  with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c10 {
+.c0 .c9 {
   width: 100%;
 }
 
@@ -117,7 +133,7 @@ exports[`A FieldText disabled  with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -141,6 +157,7 @@ exports[`A FieldText disabled  with label inline 1`] = `
       className="c4 c5 c6 "
       disabled={true}
       id="FieldTextID"
+      name="thumbsUp"
       type="text"
     />
   </div>
@@ -153,6 +170,22 @@ exports[`A FieldText disabled  with label inline 1`] = `
 exports[`A FieldText disabled with default label 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -223,7 +256,7 @@ exports[`A FieldText disabled with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c10 {
+.c0 .c9 {
   width: 100%;
 }
 
@@ -237,7 +270,7 @@ exports[`A FieldText disabled with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -287,6 +320,7 @@ exports[`A FieldText disabled with default label 1`] = `
       className="c4 c5 c6 "
       disabled={true}
       id="FieldTextID"
+      name="thumbsUp"
       type="text"
     />
   </div>
@@ -299,6 +333,22 @@ exports[`A FieldText disabled with default label 1`] = `
 exports[`A FieldText required  with label inline 1`] = `
 .c5 {
   height: 36px;
+}
+
+.c5::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c5:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::placeholder {
+  color: #939BA5;
 }
 
 .c5:hover {
@@ -388,7 +438,7 @@ exports[`A FieldText required  with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c11 {
+.c0 .c10 {
   width: 100%;
 }
 
@@ -411,7 +461,7 @@ exports[`A FieldText required  with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -441,6 +491,7 @@ exports[`A FieldText required  with label inline 1`] = `
     <input
       className="c5 c6 c7 "
       id="FieldTextID"
+      name="thumbsUp"
       required={true}
       type="text"
     />
@@ -456,6 +507,22 @@ exports[`A FieldText required with default label 1`] = `
   height: 36px;
 }
 
+.c5::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c5:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::placeholder {
+  color: #939BA5;
+}
+
 .c5:hover {
   border-color: #C1C6CC;
 }
@@ -522,7 +589,7 @@ exports[`A FieldText required with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c11 {
+.c0 .c10 {
   width: 100%;
 }
 
@@ -536,7 +603,7 @@ exports[`A FieldText required with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -592,6 +659,7 @@ exports[`A FieldText required with default label 1`] = `
     <input
       className="c5 c6 c7 "
       id="FieldTextID"
+      name="thumbsUp"
       required={true}
       type="text"
     />
@@ -605,6 +673,22 @@ exports[`A FieldText required with default label 1`] = `
 exports[`A FieldText with default label 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -669,7 +753,7 @@ exports[`A FieldText with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   width: 100%;
 }
 
@@ -683,7 +767,7 @@ exports[`A FieldText with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -706,6 +790,7 @@ exports[`A FieldText with default label 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       type="text"
     />
   </div>
@@ -718,6 +803,22 @@ exports[`A FieldText with default label 1`] = `
 exports[`A FieldText with description and with default label 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -744,17 +845,18 @@ exports[`A FieldText with description and with default label 1`] = `
   color: #343C42;
 }
 
+.c8 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+  color: #707781;
+}
+
 .c2 {
   color: #343C42;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
-}
-
-.c8 {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  margin-top: 0.5rem;
 }
 
 .c0 {
@@ -788,7 +890,7 @@ exports[`A FieldText with description and with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c11 {
+.c0 .c10 {
   width: 100%;
 }
 
@@ -802,7 +904,7 @@ exports[`A FieldText with description and with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -843,7 +945,7 @@ exports[`A FieldText with description and with default label 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    Text Input
+    👍
   </label>
   <div
     className="c3 "
@@ -851,6 +953,7 @@ exports[`A FieldText with description and with default label 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />
@@ -860,6 +963,7 @@ exports[`A FieldText with description and with default label 1`] = `
   >
     <p
       className="c8"
+      color="palette.charcoal500"
       fontSize="xsmall"
     >
       no vegetables allowed
@@ -871,6 +975,22 @@ exports[`A FieldText with description and with default label 1`] = `
 exports[`A FieldText with description and with label inline 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -897,17 +1017,18 @@ exports[`A FieldText with description and with label inline 1`] = `
   color: #343C42;
 }
 
+.c8 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+  color: #707781;
+}
+
 .c2 {
   color: #343C42;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
-}
-
-.c8 {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  margin-top: 0.5rem;
 }
 
 .c9 .c3 {
@@ -962,7 +1083,7 @@ exports[`A FieldText with description and with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c11 {
+.c0 .c10 {
   width: 100%;
 }
 
@@ -985,7 +1106,7 @@ exports[`A FieldText with description and with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -1000,7 +1121,7 @@ exports[`A FieldText with description and with label inline 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    Text Input
+    👍
   </label>
   <div
     className="c3 "
@@ -1008,6 +1129,7 @@ exports[`A FieldText with description and with label inline 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />
@@ -1017,6 +1139,7 @@ exports[`A FieldText with description and with label inline 1`] = `
   >
     <p
       className="c8"
+      color="palette.charcoal500"
       fontSize="xsmall"
     >
       no vegetables allowed
@@ -1028,6 +1151,22 @@ exports[`A FieldText with description and with label inline 1`] = `
 exports[`A FieldText with detail and  with label inline 1`] = `
 .c6 {
   height: 36px;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
 }
 
 .c6:hover {
@@ -1123,7 +1262,7 @@ exports[`A FieldText with detail and  with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   width: 100%;
 }
 
@@ -1146,7 +1285,7 @@ exports[`A FieldText with detail and  with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -1161,7 +1300,7 @@ exports[`A FieldText with detail and  with label inline 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    hello
+    👍
   </label>
   <span
     className="c3 c4"
@@ -1175,6 +1314,7 @@ exports[`A FieldText with detail and  with label inline 1`] = `
     <input
       className="c6 c7 c8 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />
@@ -1190,6 +1330,22 @@ exports[`A FieldText with detail and with default label 1`] = `
   height: 36px;
 }
 
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
+}
+
 .c6:hover {
   border-color: #C1C6CC;
 }
@@ -1257,7 +1413,7 @@ exports[`A FieldText with detail and with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   width: 100%;
 }
 
@@ -1271,7 +1427,7 @@ exports[`A FieldText with detail and with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -1321,7 +1477,7 @@ exports[`A FieldText with detail and with default label 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    hello
+    👍
   </label>
   <span
     className="c3 c4"
@@ -1335,6 +1491,7 @@ exports[`A FieldText with detail and with default label 1`] = `
     <input
       className="c6 c7 c8 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />
@@ -1348,6 +1505,22 @@ exports[`A FieldText with detail and with default label 1`] = `
 exports[`A FieldText with label inline 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -1433,7 +1606,7 @@ exports[`A FieldText with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c10 {
+.c0 .c9 {
   width: 100%;
 }
 
@@ -1456,7 +1629,7 @@ exports[`A FieldText with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -1479,6 +1652,7 @@ exports[`A FieldText with label inline 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       type="text"
     />
   </div>
@@ -1491,6 +1665,22 @@ exports[`A FieldText with label inline 1`] = `
 exports[`A FieldText with validationMessage and  with label inline 1`] = `
 .c4 {
   height: 36px;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
 }
 
 .c4:hover {
@@ -1635,7 +1825,7 @@ exports[`A FieldText with validationMessage and  with label inline 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    hello
+    👍
   </label>
   <div
     className="c3 "
@@ -1643,6 +1833,7 @@ exports[`A FieldText with validationMessage and  with label inline 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />
@@ -1664,6 +1855,22 @@ exports[`A FieldText with validationMessage and with default label 1`] = `
   height: 36px;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
+}
+
 .c4:hover {
   border-color: #C1C6CC;
 }
@@ -1802,7 +2009,7 @@ exports[`A FieldText with validationMessage and with default label 1`] = `
     fontWeight="semiBold"
     htmlFor="FieldTextID"
   >
-    hello
+    👍
   </label>
   <div
     className="c3 "
@@ -1810,6 +2017,7 @@ exports[`A FieldText with validationMessage and with default label 1`] = `
     <input
       className="c4 c5 c6 "
       id="FieldTextID"
+      name="thumbsUp"
       placeholder="placeholder"
       type="text"
     />

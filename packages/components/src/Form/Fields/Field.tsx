@@ -114,7 +114,7 @@ const FieldLayout: FunctionComponent<FieldProps> = ({
   validationMessage,
 }) => {
   const fieldDescription = description && (
-    <Paragraph mt="xsmall" fontSize="xsmall">
+    <Paragraph mt="xsmall" fontSize="xsmall" color="palette.charcoal500">
       {description}
     </Paragraph>
   )

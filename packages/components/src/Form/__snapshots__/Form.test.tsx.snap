@@ -5,6 +5,22 @@ exports[`Form with one child 1`] = `
   height: 36px;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
+}
+
 .c4:hover {
   border-color: #C1C6CC;
 }
@@ -67,7 +83,7 @@ exports[`Form with one child 1`] = `
   width: 13rem;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   width: 100%;
 }
 
@@ -81,7 +97,7 @@ exports[`Form with one child 1`] = `
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }

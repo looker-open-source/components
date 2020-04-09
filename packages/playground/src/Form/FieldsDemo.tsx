@@ -1,24 +1,26 @@
 import React, { FC } from 'react'
 import {
-  Flex,
   FieldText,
   FieldTextArea,
   FieldSelect,
-  Box,
   FieldCheckbox,
   FieldRadio,
   FieldToggleSwitch,
 } from '@looker/components'
+import styled from 'styled-components'
 
 export const FieldsDemo: FC = () => {
   return (
     <>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldText label="Text Input" placeholder="placeholder" />
-        <FieldText inline label="Text Input" placeholder="placeholder" />
-      </Flex>
+      <Grid>
+        <FieldText width="100%" label="Text Input" placeholder="placeholder" />
+        <FieldText
+          width="100%"
+          inline
+          label="Text Input"
+          placeholder="placeholder"
+        />
 
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
           disabled
@@ -26,9 +28,7 @@ export const FieldsDemo: FC = () => {
           label="Text Input"
           placeholder="placeholder"
         />
-      </Flex>
 
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldText label="Text Input" placeholder="placeholder" required />
         <FieldText
           inline
@@ -36,9 +36,7 @@ export const FieldsDemo: FC = () => {
           placeholder="placeholder"
           required
         />
-      </Flex>
 
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldText
           description="no vegetables allowed"
           label="Text Input"
@@ -50,29 +48,22 @@ export const FieldsDemo: FC = () => {
           label="Text Input"
           placeholder="placeholder"
         />
-      </Flex>
 
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldText label="Label" prefix="$" />
         <FieldText inline label="Label" prefix="$" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText label="Label" iconBefore="GearOutline" />
         <FieldText inline label="Label" iconBefore="GearOutline" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText label="Label" suffix="%" />
         <FieldText inline label="Label" suffix="%" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText label="Label" iconAfter="Check" />
         <FieldText inline label="Label" iconAfter="Check" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText label="Label" prefix="$" iconAfter="Check" />
         <FieldText inline label="Label" prefix="$" iconAfter="Check" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText label="hello" detail="5/50" placeholder="placeholder" />
         <FieldText
           inline
@@ -80,8 +71,7 @@ export const FieldsDemo: FC = () => {
           detail="5/50"
           placeholder="placeholder"
         />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+
         <FieldText
           label="Label"
           required
@@ -97,90 +87,82 @@ export const FieldsDemo: FC = () => {
           description="A special kind of thing..."
           detail="What?"
         />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldTextArea label="Text Area" placeholder="placeholder" />
-        <FieldTextArea inline label="Text Area" placeholder="placeholder" />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldTextArea label="Text Area" placeholder="placeholder" disabled />
+
+        <FieldTextArea label="Text Area" />
+        <FieldTextArea placeholder="Neat stuff" inline label="Text Area" />
+
+        <FieldTextArea label="Text Area" disabled />
         <FieldTextArea
+          placeholder="Neat stuff"
           inline
           label="Text Area"
-          placeholder="placeholder"
           disabled
         />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldTextArea label="Text Area" placeholder="placeholder" required />
-        <FieldTextArea
-          inline
-          label="Text Area"
-          required
-          placeholder="placeholder"
-        />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldTextArea
-          label="Text Area"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldTextArea
-          inline
-          label="Text Area"
-          required
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldSelect
-          label="Label"
-          placeholder="placeholder"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-        />
-        <FieldSelect
-          inline
-          label="Label"
-          placeholder="placeholder"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-        />
-      </Flex>
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldSelect
-          label="Label"
-          placeholder="placeholder"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldSelect
-          inline
-          label="Label"
-          placeholder="placeholder"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-      </Flex>
 
-      <Flex>
-        <Box p="xlarge">
+        <FieldTextArea
+          label="Text Area"
+          required
+          value="Cheese and stuff"
+          placeholder="Hello world"
+        />
+        <FieldTextArea inline label="Text Area" required />
+
+        <FieldTextArea
+          label="Text Area"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldTextArea
+          inline
+          label="Text Area"
+          required
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+
+        <FieldSelect
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldSelect
+          inline
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+
+        <FieldSelect
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldSelect
+          inline
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+      </Grid>
+
+      <Grid columns={3}>
+        <div>
           <FieldCheckbox label="Checkbox" />
           <FieldCheckbox
             required
@@ -189,12 +171,12 @@ export const FieldsDemo: FC = () => {
           />
           <FieldCheckbox disabled label="Checkbox" />
           <FieldCheckbox required label="Checkbox" />
-        </Box>
-        <Box p="xlarge">
+        </div>
+        <div>
           <FieldRadio label="Radio" />
           <FieldRadio disabled label="Radio" />
-        </Box>
-        <Box p="xlarge">
+        </div>
+        <div>
           <FieldToggleSwitch label="Toggle Switch" />
           <FieldToggleSwitch
             required
@@ -203,8 +185,15 @@ export const FieldsDemo: FC = () => {
           />
           <FieldToggleSwitch disabled label="Toggle Switch" />
           <FieldToggleSwitch required label="Toggle Switch" />
-        </Box>
-      </Flex>
+        </div>
+      </Grid>
     </>
   )
 }
+
+const Grid = styled.div<{ columns?: number }>`
+  display: grid;
+  grid-template-columns: repeat(${({ columns }) => columns || 2}, 1fr);
+  grid-gap: ${(props) => props.theme.space.xxxlarge};
+  margin: ${(props) => props.theme.space.xxxlarge};
+`

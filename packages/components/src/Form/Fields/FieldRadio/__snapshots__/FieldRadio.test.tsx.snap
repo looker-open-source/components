@@ -82,9 +82,9 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -113,6 +113,7 @@ exports[`A FieldRadio 1`] = `
       <input
         className=""
         id="FieldRadioID"
+        name="thumbsUp"
         type="radio"
       />
       <div
@@ -208,9 +209,9 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -240,6 +241,7 @@ exports[`A FieldRadio checked 1`] = `
         checked={true}
         className=""
         id="FieldRadioID"
+        name="thumbsUp"
         type="radio"
       />
       <div
@@ -325,9 +327,9 @@ exports[`A FieldRadio disabled 1`] = `
 }
 
 .c8 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -351,11 +353,11 @@ exports[`A FieldRadio disabled 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
+  color: #707781;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
-  color: #707781;
 }
 
 .c0 .c7 {
@@ -384,6 +386,7 @@ exports[`A FieldRadio disabled 1`] = `
         className=""
         disabled={true}
         id="FieldRadioID"
+        name="thumbsUp"
         type="radio"
       />
       <div

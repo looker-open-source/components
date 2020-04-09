@@ -24,6 +24,7 @@
 
  */
 
+import pick from 'lodash/pick'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
@@ -44,6 +45,7 @@ import {
   inputTextValidation,
 } from '../InputText'
 import { Icon } from '../../../Icon'
+import { inputPropKeys } from '../InputProps'
 
 type TextAreaResize = 'both' | 'horizontal' | 'vertical' | 'none' | boolean
 export interface TextAreaProps
@@ -59,12 +61,20 @@ export interface TextAreaProps
   validationType?: ValidationType
 }
 
-const TextAreaLayout: FC<TextAreaProps> = ({ className, validationType }) => (
-  <div className={className}>
-    <textarea />
-    {validationType && <Icon name="Warning" color="palette.red500" />}
-  </div>
-)
+const TextAreaLayout: FC<TextAreaProps> = ({
+  className,
+  validationType,
+  ...props
+}) => {
+  const textareaProps = pick(props, inputPropKeys)
+
+  return (
+    <div className={className}>
+      <textarea {...textareaProps} />
+      {validationType && <Icon name="Warning" color="palette.red500" />}
+    </div>
+  )
+}
 
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'both' : resize

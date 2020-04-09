@@ -26,8 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
 import { FieldTextArea } from './FieldTextArea'
 
 test('A FieldTextArea with default label', () => {
@@ -128,21 +127,13 @@ test('A FieldTextArea with validationMessage and  with label inline', () => {
 })
 
 test('FieldTextArea supports onChange handler', () => {
-  const onChangeMock = jest.fn()
-  const { getByLabelText } = renderWithTheme(
-    <FieldTextArea
-      id="FieldTextAreaID"
-      inline
-      label="Background Color"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
-      onChange={onChangeMock}
-      placeholder="placeholder"
-    />
+  let counter = 0
+  const handleChange = () => counter++
+
+  const wrapper = mountWithTheme(
+    <FieldTextArea id="FieldTextAreaID" onChange={handleChange} />
   )
-  const input = getByLabelText('Background Color')
-  fireEvent.change(input, { target: { value: '#FFFF00' } })
-  expect(onChangeMock).toHaveBeenCalledWith({
-    currentTarget: { value: '#FFFF00' },
-    target: { value: '#FFFF00' },
-  })
+
+  wrapper.find('textarea').simulate('change', { target: { value: '' } })
+  expect(counter).toEqual(1)
 })

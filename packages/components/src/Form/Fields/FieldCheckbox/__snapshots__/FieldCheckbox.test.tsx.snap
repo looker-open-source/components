@@ -79,9 +79,9 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -110,6 +110,7 @@ exports[`A FieldCheckbox 1`] = `
       <input
         className=""
         id="FieldCheckboxID"
+        name="thumbsUp"
         role="checkbox"
         type="checkbox"
       />
@@ -271,9 +272,9 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -287,11 +288,11 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
 }
 
 .c11 .c1 {
-  grid-area: label;
+  color: #707781;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
-  color: #707781;
 }
 
 .c11 .c7 {
@@ -319,6 +320,7 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
       <input
         className=""
         id="FieldCheckboxID"
+        name="thumbsUp"
         role="checkbox"
         type="checkbox"
       />
@@ -452,9 +454,9 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -485,6 +487,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
         className=""
         defaultChecked={true}
         id="FieldCheckboxID"
+        name="thumbsUp"
         role="checkbox"
         type="checkbox"
       />
@@ -602,9 +605,9 @@ exports[`A disabled FieldCheckbox 1`] = `
 }
 
 .c9 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -628,11 +631,11 @@ exports[`A disabled FieldCheckbox 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
+  color: #707781;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
-  color: #707781;
 }
 
 .c0 .c7 {
@@ -661,6 +664,7 @@ exports[`A disabled FieldCheckbox 1`] = `
         className=""
         disabled={true}
         id="FieldCheckboxID"
+        name="thumbsUp"
         role="checkbox"
         type="checkbox"
       />
@@ -792,9 +796,9 @@ exports[`A required FieldCheckbox 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -830,6 +834,7 @@ exports[`A required FieldCheckbox 1`] = `
       <input
         className=""
         id="FieldCheckboxID"
+        name="thumbsUp"
         required={true}
         role="checkbox"
         type="checkbox"

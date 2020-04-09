@@ -77,9 +77,9 @@ exports[`A FieldToggleSwitch 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -206,9 +206,9 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -327,9 +327,9 @@ exports[`A FieldToggleSwitch turned on 2`] = `
 }
 
 .c10 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -353,11 +353,11 @@ exports[`A FieldToggleSwitch turned on 2`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
+  color: #707781;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
-  color: #707781;
 }
 
 .c0 .c9 {
@@ -489,9 +489,9 @@ exports[`A FieldToggleSwitch turned on 3`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 
@@ -505,11 +505,11 @@ exports[`A FieldToggleSwitch turned on 3`] = `
 }
 
 .c10 .c1 {
-  grid-area: label;
+  color: #707781;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
-  color: #707781;
 }
 
 .c10 .c9 {
@@ -645,9 +645,9 @@ exports[`A FieldToggleSwitch with validationMessage 1`] = `
 }
 
 .c0 .c1 {
-  grid-area: label;
   font-size: 0.875rem;
   font-weight: normal;
+  grid-area: label;
   padding-left: 0.5rem;
 }
 

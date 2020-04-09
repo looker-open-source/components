@@ -44,7 +44,9 @@ exports[`TextArea default 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -92,7 +94,9 @@ exports[`TextArea resizes with prop resize = both 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -140,7 +144,9 @@ exports[`TextArea resizes with prop resize = false 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -188,7 +194,9 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -236,7 +244,9 @@ exports[`TextArea resizes with prop resize = none 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -284,7 +294,9 @@ exports[`TextArea resizes with prop resize = true 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -332,7 +344,9 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -386,7 +400,10 @@ exports[`TextArea should accept disabled 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    disabled={true}
+    id="TextAreaID"
+  />
 </div>
 `;
 
@@ -471,7 +488,9 @@ exports[`TextArea with an error validation 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+  />
   <div
     className="c1 c2 "
     color="palette.red500"
@@ -539,6 +558,9 @@ exports[`TextArea with placeholder 1`] = `
 <div
   className="c0"
 >
-  <textarea />
+  <textarea
+    id="TextAreaID"
+    placeholder="this is a placeholder"
+  />
 </div>
 `;

@@ -5,6 +5,22 @@ exports[`Fieldset with left aligned legend 1`] = `
   height: 36px;
 }
 
+.c7::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c7:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::placeholder {
+  color: #939BA5;
+}
+
 .c7:hover {
   border-color: #C1C6CC;
 }
@@ -67,7 +83,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   width: 13rem;
 }
 
-.c3 .c12 {
+.c3 .c11 {
   width: 100%;
 }
 
@@ -81,7 +97,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   justify-self: end;
 }
 
-.c3 .c11 {
+.c3 .c12 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
