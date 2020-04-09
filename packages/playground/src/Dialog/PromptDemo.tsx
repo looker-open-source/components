@@ -4,7 +4,6 @@ import { Button, Prompt, usePrompt } from '@looker/components'
 export const PromptDemo: FC = () => {
   return (
     <Prompt
-      buttonColor="primary"
       cancelColor="neutral"
       cancelLabel={'Not into cheese'}
       title={'Choose a cheese!'}

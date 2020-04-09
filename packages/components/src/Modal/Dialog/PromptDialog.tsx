@@ -42,11 +42,6 @@ export interface PromptBaseProps {
    */
   cancelColor?: keyof SemanticColors
   /**
-   * Defines the color of the save button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "primary"
-   */
-  buttonColor?: keyof SemanticColors
-  /**
    * Callback if user clicks Cancel button or closes the dialog
    */
   onCancel?: (close: () => void) => void
@@ -90,7 +85,6 @@ export interface PromptDialogProps extends PromptBaseProps {
 
 export const PromptDialog: FC<PromptDialogProps> = ({
   saveLabel = 'Save',
-  buttonColor = 'primary',
   cancelColor = 'neutral',
   cancelLabel = 'Cancel',
   onSave,
@@ -137,7 +131,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           />
         </ModalContent>
         <ModalFooter secondary={secondary}>
-          <Button disabled={!hasValue} type="submit" color={buttonColor}>
+          <Button disabled={!hasValue} type="submit" color="primary">
             {saveLabel}
           </Button>
           <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
