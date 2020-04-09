@@ -26,12 +26,12 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldText } from '../Fields/FieldText'
 import { Fieldset } from './Fieldset'
 
 test('Fieldset with left aligned legend', () => {
-  assertSnapshotShallow(
+  assertSnapshot(
     <Fieldset legend="Legend" alignLegend="left">
       <FieldText label="One" name="name1" id="text-1" />
       <FieldText label="two" name="name2" id="text-2" />
