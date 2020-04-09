@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, FormEvent, ReactNode, useState } from 'react'
+import React, { FC, FormEvent, ReactNode, useState, useCallback } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { FieldText } from '../../Form'
@@ -46,6 +46,10 @@ export interface PromptBaseProps {
    * @default "primary"
    */
   buttonColor?: keyof SemanticColors
+  /**
+   * Callback if user clicks Cancel button or closes the dialog
+   */
+  onCancel?: (close: () => void) => void
   /**
    * Callback that is triggered when submit button is pressed
    */
@@ -90,6 +94,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   cancelColor = 'neutral',
   cancelLabel = 'Cancel',
   onSave,
+  onCancel,
   inputLabel,
   title,
   secondary,
@@ -110,8 +115,16 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     close()
   }
 
+  const cancel = useCallback(() => {
+    if (onCancel) {
+      onCancel(close)
+    } else {
+      close()
+    }
+  }, [close, onCancel])
+
   return (
-    <Dialog width="30rem" isOpen={isOpen} onClose={close}>
+    <Dialog width="30rem" isOpen={isOpen} onClose={cancel}>
       <form onSubmit={onSubmit}>
         <ModalHeader hideClose>{title}</ModalHeader>
         <ModalContent>
@@ -127,7 +140,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           <Button disabled={!hasValue} type="submit" color={buttonColor}>
             {saveLabel}
           </Button>
-          <ButtonTransparent type="reset" color={cancelColor} onClick={close}>
+          <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
             {cancelLabel}
           </ButtonTransparent>
         </ModalFooter>
