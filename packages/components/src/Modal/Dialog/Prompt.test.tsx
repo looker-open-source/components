@@ -39,7 +39,6 @@ const requiredProps = {
 }
 
 const optionalProps = {
-  buttonColor: 'secondary' as keyof SemanticColors,
   cancelColor: 'danger' as keyof SemanticColors,
   cancelLabel: 'Cancel Cheese',
   defaultValue: 'Default Value Cheese',
@@ -91,7 +90,7 @@ test('<Prompt/> with custom props', () => {
   expect(cancelButton).toBeInTheDocument()
   expect(cancelButton).toHaveStyle(`color: ${semanticColors.danger.main}`)
   expect(saveButton).toBeInTheDocument()
-  expect(saveButton).toHaveStyle(`background: ${semanticColors.secondary.main}`)
+  expect(saveButton).toHaveStyle(`background: ${semanticColors.primary.main}`)
   expect(getByDisplayValue(optionalProps.defaultValue)).toBeInTheDocument()
   expect(getByText('Secondary Cheese')).toBeInTheDocument()
 
