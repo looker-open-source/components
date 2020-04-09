@@ -26,14 +26,20 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import {
+  ComponentsProvider,
+  GlobalStyle,
+  ToggleSwitch,
+} from '@looker/components'
 
 const App: React.FC = () => {
+  const [on, setOn] = React.useState(false)
+  const handleChange = (event: any) => setOn(event.target.checked)
+
   return (
     <ComponentsProvider>
       <GlobalStyle />
-      <ActionListDemo />
+      <ToggleSwitch m="large" onChange={handleChange} on={on} id="switch" />
     </ComponentsProvider>
   )
 }
