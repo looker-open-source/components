@@ -10,21 +10,13 @@ github: Form/Inputs/InputTime/InputTime.tsx
 <InputTime />
 ```
 
-## Value and defaultValue
-
-Just like [InputTimeSelect](./input-time-select), this component accepts and returns a 24-hour formatted time string as it's value.
-
-```js
-<InputTime defaultValue="14:34" />
-```
-
 ## Time Format
 
 `InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
 
 ```js
 <>
-  <InputTime format="12h" defaultValue="14:34" />
+  <InputTime format="12h" defaultValue="14:34" mr="small" />
   <InputTime format="24h" defaultValue="14:34" />
 </>
 ```
@@ -58,4 +50,12 @@ Just like [InputTimeSelect](./input-time-select), this component accepts and ret
     </>
   )
 }
+```
+
+## defaultValue
+
+`InputTime` also accetpts a `defaultValue` prop if you don't want to control component value externally.
+
+```js
+<InputTime defaultValue="14:34" />
 ```

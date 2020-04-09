@@ -1,20 +1,17 @@
 import React, {
   KeyboardEvent,
   FC,
-  useState,
   useReducer,
   Reducer,
   useEffect,
   useRef,
   RefObject,
-  Dispatch,
-  SetStateAction,
 } from 'react'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
 import add from 'lodash/add'
 import subtract from 'lodash/subtract'
-import partial from 'lodash/partial'
+
 import some from 'lodash/some'
 import {
   BorderProps,
@@ -48,6 +45,7 @@ interface InputTimeProps extends SpaceProps, BorderProps {
   onChange?: (time?: string) => void
   validationType?: ValidationType
   onValidationFail?: (value: string) => void
+  className?: string
 }
 
 type Periods = 'AM' | 'PM' | ''
@@ -233,11 +231,12 @@ export const convert12To24HrString = (value: string) => {
   return `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 }
 
-export const InputTime: FC<InputTimeProps> = ({
+const InternalInputTime: FC<InputTimeProps> = ({
   format = '12h',
   onChange,
   defaultValue,
   value,
+  className,
 }) => {
   const [inputState, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -420,68 +419,65 @@ export const InputTime: FC<InputTimeProps> = ({
   const hasInputValues = some([hour, minute, period], 'length')
 
   return (
-    <InputTimeWrapper hasInputValues={hasInputValues}>
-      <InputTimeLayout>
-        <InputText
-          maxLength={2}
-          placeholder="--"
-          value={hour}
-          onKeyDown={handleHourKeyDown}
-          onFocus={handleHourFocus}
-          onBlur={handleBlur}
-          onChange={noop}
-          ref={inputRefs.HOUR}
-        />
-        <div>:</div>
-        <InputText
-          maxLength={2}
-          placeholder="--"
-          value={minute}
-          onKeyDown={handleMinuteKeyDown}
-          onFocus={handleMinuteFocus}
-          onBlur={handleBlur}
-          onChange={noop}
-          ref={inputRefs.MINUTE}
-        />
-        {format === '12h' ? (
+    <div className={className}>
+      <InputTimeWrapper hasInputValues={hasInputValues}>
+        <InputTimeLayout>
           <InputText
             maxLength={2}
             placeholder="--"
-            value={period}
-            onKeyDown={handlePeriodKeyDown}
-            onFocus={handlePeriodFocus}
+            value={hour}
+            onKeyDown={handleHourKeyDown}
+            onFocus={handleHourFocus}
             onBlur={handleBlur}
             onChange={noop}
-            ref={inputRefs.PERIOD}
+            ref={inputRefs.HOUR}
           />
-        ) : (
-          <span />
-        )}
-      </InputTimeLayout>
-    </InputTimeWrapper>
+          <div>:</div>
+          <InputText
+            maxLength={2}
+            placeholder="--"
+            value={minute}
+            onKeyDown={handleMinuteKeyDown}
+            onFocus={handleMinuteFocus}
+            onBlur={handleBlur}
+            onChange={noop}
+            ref={inputRefs.MINUTE}
+          />
+          {format === '12h' ? (
+            <InputText
+              maxLength={2}
+              placeholder="--"
+              value={period}
+              onKeyDown={handlePeriodKeyDown}
+              onFocus={handlePeriodFocus}
+              onBlur={handleBlur}
+              onChange={noop}
+              ref={inputRefs.PERIOD}
+            />
+          ) : (
+            <span />
+          )}
+        </InputTimeLayout>
+      </InputTimeWrapper>
+    </div>
   )
 }
 
-const InputTimeWrapper = styled.div.attrs({
+export const InputTime = styled(InternalInputTime).attrs({
   ...inputTextDefaults,
   ...CustomizableInputTextAttributes,
-})<{ hasInputValues: boolean }>`
+})`
   ${reset}
   ${border}
   ${space}
-
   display: inline-block;
   padding: ${({ theme }) => theme.space.xxsmall};
-  color: ${({ theme, hasInputValues }) =>
-    hasInputValues
-      ? theme.colors.palette.charcoal600
-      : theme.colors.palette.charcoal300};
-  &:hover {
-    ${inputTextHover}
-  }
 
   &:focus-within {
     ${inputTextFocus}
+  }
+  &:hover {
+    ${inputTextHover}
   }
 
   &:disabled {
@@ -489,6 +485,15 @@ const InputTimeWrapper = styled.div.attrs({
   }
 
   ${inputTextValidation}
+`
+
+const InputTimeWrapper = styled.div<{
+  hasInputValues: boolean
+}>`
+  color: ${({ theme, hasInputValues }) =>
+    hasInputValues
+      ? theme.colors.palette.charcoal600
+      : theme.colors.palette.charcoal300};
 
   ${InputText} {
     border: none;
