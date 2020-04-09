@@ -28,7 +28,7 @@ import { fireEvent } from '@testing-library/react'
 import React from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { semanticColors } from '@looker/design-tokens'
+import { semanticColors, SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Prompt } from './Prompt'
 
@@ -39,6 +39,8 @@ const requiredProps = {
 }
 
 const optionalProps = {
+  buttonColor: 'secondary' as keyof SemanticColors,
+  cancelColor: 'danger' as keyof SemanticColors,
   cancelLabel: 'Cancel Cheese',
   defaultValue: 'Default Value Cheese',
   onCancel: jest.fn(),
@@ -83,9 +85,14 @@ test('<Prompt/> with custom props', () => {
   const opener = getByText('Sesame')
   fireEvent.click(opener)
 
-  expect(getByText(optionalProps.cancelLabel)).toBeInTheDocument()
+  const saveButton = getByText(optionalProps.saveLabel)
+  const cancelButton = getByText(optionalProps.cancelLabel)
+
+  expect(cancelButton).toBeInTheDocument()
+  expect(cancelButton).toHaveStyle(`color: ${semanticColors.danger.main}`)
+  expect(saveButton).toBeInTheDocument()
+  expect(saveButton).toHaveStyle(`background: ${semanticColors.secondary.main}`)
   expect(getByDisplayValue(optionalProps.defaultValue)).toBeInTheDocument()
-  expect(getByText(optionalProps.saveLabel)).toBeInTheDocument()
   expect(getByText('Secondary Cheese')).toBeInTheDocument()
 
   fireEvent.click(getByText('Cancel Cheese'))
