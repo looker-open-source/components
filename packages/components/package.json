@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.7.24",
+    "@looker/components-providers": "0.7.0",
     "@looker/icons": "^0.7.25",
     "@popperjs/core": "^2.1.1",
     "btoa": "^1.2.1",

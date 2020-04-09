@@ -22,12 +22,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyle } from '@looker/components/dist/cjs/GlobalStyle/GlobalStyle'
 import { FieldsDemo } from './Form/FieldsDemo'
+import { GlobalStyle } from '@looker/components'
+
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <ComponentsProvider>
       <GlobalStyle />
       <FieldsDemo />
     </ThemeProvider>
