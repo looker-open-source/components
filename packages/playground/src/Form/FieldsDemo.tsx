@@ -99,12 +99,7 @@ export const FieldsDemo: FC = () => {
           disabled
         />
 
-        <FieldTextArea
-          label="Text Area"
-          required
-          value="Cheese and stuff"
-          placeholder="Hello world"
-        />
+        <FieldTextArea label="Text Area" required placeholder="Hello world" />
         <FieldTextArea inline label="Text Area" required />
 
         <FieldTextArea

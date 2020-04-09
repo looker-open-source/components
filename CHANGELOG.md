@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CodeBlock` component
 - `InputTimeSelect` component
 - `Board`, `ShareAlt` Icon
+- `ActionListItemAction` accepts color prop when value is "danger"
+- `ActionListManager` component
 
 ### Changed
 
@@ -23,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated Field to remove `alignLabel` and have only default (top) and inline (right) label.
 ### Fixed
 
+- `usePopper` (used in `Popover` and `Tooltip`) positioning issue with `placement="top"` and offset parent is the window
 - `Select` runtime error with no options, defaultValue or placeholder
 
 ## [0.7.25] - 2020-03-23

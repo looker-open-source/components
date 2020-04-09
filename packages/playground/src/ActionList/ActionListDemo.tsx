@@ -24,13 +24,14 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   ActionList,
   ActionListColumns,
   ActionListItem,
   ActionListItemColumn,
   ActionListItemAction,
+  ActionListManager,
   Icon,
   Link,
 } from '@looker/components'
@@ -95,7 +96,7 @@ const columns: ActionListColumns = [
 
 const MyActions = () => (
   <>
-    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
+    <ActionListItemAction color="danger" onClick={() => alert(`Go to LookML!`)}>
       Go to LookML
     </ActionListItemAction>
     <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
@@ -161,5 +162,12 @@ export const ActionListDemo: FC = () => {
     )
   )
 
-  return <ActionList columns={columns}>{items}</ActionList>
+  const [isLoading, setIsLoading] = useState(true)
+  setTimeout(() => setIsLoading(false), 3000)
+
+  return (
+    <ActionListManager isLoading={isLoading} noResults={false}>
+      <ActionList columns={columns}>{items}</ActionList>
+    </ActionListManager>
+  )
 }
