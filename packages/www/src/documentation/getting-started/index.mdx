@@ -55,12 +55,11 @@ The simplest way to accomplish this is via Google's hosted CDN:
 Now that we have `@looker/components` installed we can start using them in our application. To get things started import some components:
 
 ```jsx static
-import { Card, theme } from '@looker/components'
-import { ThemeProvider } from 'styled-components'
+import { Card, ComponentsProvider, theme } from '@looker/components'
 
-<ThemeProvider theme={theme}>
+<ComponentsProvider>
   <Card>{Source here...}</Card>
-</ThemeProvider>
+</ComponentsProvider>
 ```
 
 Which could be used to render the following:

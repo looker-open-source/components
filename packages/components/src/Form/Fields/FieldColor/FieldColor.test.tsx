@@ -32,8 +32,6 @@ import {
   assertSnapshotShallow,
   renderWithTheme,
 } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
 
 import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
@@ -65,9 +63,7 @@ describe('FieldColor', () => {
 
   const FieldColorValidationMessage = () => {
     return (
-      <ThemeProvider theme={theme}>
-        <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
-      </ThemeProvider>
+      <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
     )
   }
 
