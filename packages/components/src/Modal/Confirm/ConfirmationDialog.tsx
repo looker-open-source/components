@@ -28,7 +28,8 @@ import React, { FC, useCallback, ReactElement } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { ManagedModalProps } from '../Modal'
-import { Dialog, ConfirmLayout } from '.'
+import { Dialog } from '../Dialog'
+import { ConfirmLayout } from './ConfirmLayout'
 
 export type ConfirmationCallback = (close: () => void) => void
 

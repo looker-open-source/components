@@ -24,15 +24,12 @@
 
  */
 
-import { mount } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import {
   mountWithTheme,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
 import { ModalPortal } from './ModalPortal'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
@@ -58,22 +55,14 @@ describe('Modal', () => {
   })
 
   test('Verify initial state', () => {
-    const modal = mount(
-      <ThemeProvider theme={theme}>
-        <Modal render={simpleContentFactory} />
-      </ThemeProvider>
-    )
+    const modal = mountWithTheme(<Modal render={simpleContentFactory} />)
 
     expect(modal.find(ModalPortal).exists()).toEqual(false)
     expect(modal.contains(SimpleContent)).toBeFalsy()
   })
 
   test('Verify "open" prop', () => {
-    const modal = mount(
-      <ThemeProvider theme={theme}>
-        <Modal isOpen render={simpleContentFactory} />
-      </ThemeProvider>
-    )
+    const modal = mountWithTheme(<Modal isOpen render={simpleContentFactory} />)
 
     expect(modal.find(ModalPortal).exists()).toEqual(true)
     expect(modal.contains(SimpleContent)).toBeTruthy()

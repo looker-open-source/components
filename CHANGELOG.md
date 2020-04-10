@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InputTimeSelect` component
 - `Board`, `ShareAlt` Icon
 - `ActionListItemAction` accepts color prop when value is "danger"
+- `Prompt` component
 - `ActionListManager` component
+- `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
 
 ### Changed
 

@@ -24,10 +24,10 @@
 
  */
 
+export * from './Confirm'
 export * from './Dialog'
 export * from './Drawer'
 export * from './Layout'
-
 export * from './Modal'
 export * from './ModalBackdrop'
 export * from './ModalContext'
@@ -35,3 +35,4 @@ export * from './ModalManager'
 export * from './ModalPortal'
 export * from './modalRoot'
 export * from './ModalSurface'
+export * from './Prompt'

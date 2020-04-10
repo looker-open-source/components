@@ -1,0 +1,23 @@
+---
+title: Prompt
+propsOf: Prompt
+github: Modal/Prompt.tsx
+---
+
+The `<Prompt/>` component is similar to the `<Confirm/>` component in that you can use either to render a modal.
+
+However, unlike the `<Confirm/>`, the `<Prompt/>` component comes with a built in `<InputText/>` component. This makes it more suitable for use cases where you want to grab user input before performing an action.
+
+```jsx
+<Prompt
+  title={'Choose a cheese!'}
+  inputLabel={'Name of Cheese'}
+  onCancel={(close) => {
+    alert('Prompt closed')
+    close()
+  }}
+  onSave={(value) => alert(`You chose ${value}`)}
+>
+  {(open) => <Button onClick={open}>Prompt</Button>}
+</Prompt>
+```

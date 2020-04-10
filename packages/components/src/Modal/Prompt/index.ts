@@ -24,37 +24,4 @@
 
  */
 
-import 'jest-styled-components'
-import '@testing-library/jest-dom/extend-expect'
-import {
-  assertSnapshotShallow,
-  renderWithTheme,
-} from '@looker/components-test-utils'
-import React from 'react'
-import { fireEvent } from '@testing-library/react'
-import { ButtonOutline } from './ButtonOutline'
-
-test('ButtonOutline is rendered ', () => {
-  assertSnapshotShallow(<ButtonOutline>Outline</ButtonOutline>)
-})
-
-test('ButtonOutline has the correct style', () => {
-  const { getByText } = renderWithTheme(<ButtonOutline>Outline</ButtonOutline>)
-
-  expect(getByText('Outline')).toMatchSnapshot()
-})
-
-test('ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = renderWithTheme(
-    <>
-      <ButtonOutline>ButtonOutline</ButtonOutline>
-      <ButtonOutline>focus</ButtonOutline>
-    </>
-  )
-
-  fireEvent.click(getByText('ButtonOutline'))
-  expect(getByText('focus')).toMatchSnapshot()
-
-  fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-  expect(getByText('focus')).toMatchSnapshot()
-})
+export * from './Prompt'

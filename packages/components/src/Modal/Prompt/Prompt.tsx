@@ -24,37 +24,32 @@
 
  */
 
-import 'jest-styled-components'
-import '@testing-library/jest-dom/extend-expect'
-import {
-  assertSnapshotShallow,
-  renderWithTheme,
-} from '@looker/components-test-utils'
-import React from 'react'
-import { fireEvent } from '@testing-library/react'
-import { ButtonOutline } from './ButtonOutline'
+import React, { FC, ReactNode } from 'react'
+import { useToggle } from '../../utils'
+import { PromptDialog, PromptBaseProps } from './PromptDialog'
 
-test('ButtonOutline is rendered ', () => {
-  assertSnapshotShallow(<ButtonOutline>Outline</ButtonOutline>)
-})
+export interface PromptProps extends PromptBaseProps {
+  /**
+   * Render prop is passed the confirmation opener
+   */
+  children: (onClick: () => void) => ReactNode
+}
 
-test('ButtonOutline has the correct style', () => {
-  const { getByText } = renderWithTheme(<ButtonOutline>Outline</ButtonOutline>)
+export function usePrompt(props: PromptBaseProps): [ReactNode, () => void] {
+  const { value, setOn, setOff } = useToggle()
 
-  expect(getByText('Outline')).toMatchSnapshot()
-})
+  const rendered = <PromptDialog {...props} isOpen={value} close={setOff} />
 
-test('ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = renderWithTheme(
+  return [rendered, setOn]
+}
+
+export const Prompt: FC<PromptProps> = ({ children, ...props }) => {
+  const [promptModal, openPromptModal] = usePrompt(props)
+
+  return (
     <>
-      <ButtonOutline>ButtonOutline</ButtonOutline>
-      <ButtonOutline>focus</ButtonOutline>
+      {children(openPromptModal)}
+      {promptModal}
     </>
   )
-
-  fireEvent.click(getByText('ButtonOutline'))
-  expect(getByText('focus')).toMatchSnapshot()
-
-  fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-  expect(getByText('focus')).toMatchSnapshot()
-})
+}
