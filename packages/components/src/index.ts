@@ -50,7 +50,10 @@ export * from './Tabs'
 export * from './Tooltip'
 export * from './Text'
 export * from './VisuallyHidden'
+
 export * from './utils'
+
+export { ComponentsProvider } from '@looker/components-providers'
 
 /** Provided here for backwards compatibility.
  * @TODO - Remove before 1.0

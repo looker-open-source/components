@@ -24,10 +24,12 @@
 
  */
 
-import { GlobalStyle, CustomizableTooltipAttributes } from '@looker/components'
-import { theme } from '@looker/design-tokens'
+import {
+  GlobalStyle,
+  ComponentsProvider,
+  CustomizableTooltipAttributes,
+} from '@looker/components'
 import React, { FC } from 'react'
-import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { Props } from '../Shared'
 import MDXComponents from '../MDX'
@@ -38,7 +40,7 @@ const all = { ...MDXComponents, Props }
 
 const Page: FC = ({ children }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ComponentsProvider>
       <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
         rel="stylesheet"
@@ -47,7 +49,7 @@ const Page: FC = ({ children }) => {
         <GlobalStyle />
         {children}
       </MDXProvider>
-    </ThemeProvider>
+    </ComponentsProvider>
   )
 }
 
