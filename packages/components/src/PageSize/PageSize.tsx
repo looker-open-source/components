@@ -29,11 +29,23 @@ import styled from 'styled-components'
 import { Select } from '../Form'
 
 export interface PageSizeProps {
-  total: number
-  value: number
-  options?: number[]
   className?: string
-  onChange: (value: number) => Promise<void>
+  /**
+   * Total number of items on all pages
+   */
+  total: number
+  /**
+   * Number of items per page
+   */
+  value: number
+  /**
+   * Array of page size options
+   */
+  options?: number[]
+  /**
+   * Callback that triggers when new value is selected
+   */
+  onChange: (value: number) => void
 }
 
 const defaultPageSizes = [10, 25, 50, 100]
@@ -55,8 +67,8 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
 }) => {
   options = options || defaultPageSizes
 
-  const handleOnChange = async (newValue: string) => {
-    await onChange(Number(newValue))
+  const handleOnChange = (newValue: string) => {
+    onChange(Number(newValue))
   }
 
   return total > value ? (

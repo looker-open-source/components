@@ -24,24 +24,23 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { PageSizeDemo } from './PageSize/PageSizeDemo'
+import React, { FC, useState } from 'react'
+import { Box, Flex, PageSize } from '@looker/components'
 
-const App: React.FC = () => {
+export const PageSizeDemo: FC = () => {
+  const [perPage, setPerPage] = useState(10)
+  const options = [10, 25, 50]
+  const total = 100
+
   return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <PageSizeDemo />
-    </ComponentsProvider>
+    <Flex flexDirection="column">
+      <Box mb="20px">{`The page size is currently ${perPage}`}</Box>
+      <PageSize
+        value={perPage}
+        total={total}
+        options={options}
+        onChange={setPerPage}
+      />
+    </Flex>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
