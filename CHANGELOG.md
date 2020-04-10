@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Board`, `ShareAlt` Icon
 - `ActionListItemAction` accepts color prop when value is "danger"
 - `ActionListManager` component
+- `Pagination` component
 
 ### Changed
 
