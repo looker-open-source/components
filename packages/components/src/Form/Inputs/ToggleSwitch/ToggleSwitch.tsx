@@ -50,7 +50,7 @@ export const CustomizableToggleSwitchAttributes: CustomizableToggleSwitchAttribu
   knobOffColor: palette.white,
   knobOnColor: palette.white,
   offColor: palette.charcoal300,
-  onColor: palette.purple300,
+  onColor: palette.purple400,
 }
 
 export interface KnobProps {

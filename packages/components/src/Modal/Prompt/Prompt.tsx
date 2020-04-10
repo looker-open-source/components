@@ -24,29 +24,32 @@
 
  */
 
-import { BorderProps } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { TextBase, TextBaseProps } from './TextBase'
+import React, { FC, ReactNode } from 'react'
+import { useToggle } from '../../utils'
+import { PromptDialog, PromptBaseProps } from './PromptDialog'
 
-export interface CodeBlockProps extends TextBaseProps, BorderProps {}
+export interface PromptProps extends PromptBaseProps {
+  /**
+   * Render prop is passed the confirmation opener
+   */
+  children: (onClick: () => void) => ReactNode
+}
 
-const CodeBlockLayout: FC<CodeBlockProps> = ({ children, ...props }) => (
-  <TextBase as="pre" {...props}>
-    <code>{children}</code>
-  </TextBase>
-)
+export function usePrompt(props: PromptBaseProps): [ReactNode, () => void] {
+  const { value, setOn, setOff } = useToggle()
 
-export const CodeBlock = styled(CodeBlockLayout)`
-  border: 1px solid;
-  border-color: ${(props) => props.theme.colors.palette.charcoal200};
-  overflow-y: scroll;
-`
+  const rendered = <PromptDialog {...props} isOpen={value} close={setOff} />
 
-CodeBlock.defaultProps = {
-  border: '1px solid',
-  borderColor: 'palette.charcoal200',
-  fontFamily: 'code',
-  fontSize: 'small',
-  p: 'medium',
+  return [rendered, setOn]
+}
+
+export const Prompt: FC<PromptProps> = ({ children, ...props }) => {
+  const [promptModal, openPromptModal] = usePrompt(props)
+
+  return (
+    <>
+      {children(openPromptModal)}
+      {promptModal}
+    </>
+  )
 }

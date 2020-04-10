@@ -23,30 +23,49 @@
  SOFTWARE.
 
  */
-
-import { BorderProps } from '@looker/design-tokens'
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import { TextBase, TextBaseProps } from './TextBase'
+import { Button, Prompt, usePrompt } from '@looker/components'
 
-export interface CodeBlockProps extends TextBaseProps, BorderProps {}
+export const PromptDemo: FC = () => {
+  return (
+    <Prompt
+      cancelColor="neutral"
+      cancelLabel={'Not into cheese'}
+      title={'Choose a cheese!'}
+      inputLabel={'Name of Cheese'}
+      saveLabel={'Save'}
+      onCancel={(close: () => void) => {
+        alert('Prompt closed')
+        close()
+      }}
+      onSave={(value: string) => alert(`You chose ${value}`)}
+      secondary={
+        <Button onClick={() => alert('Secondary clicked')}>
+          Secondary Cheese
+        </Button>
+      }
+    >
+      {(open) => (
+        <Button color="secondary" onClick={open}>
+          Prompt
+        </Button>
+      )}
+    </Prompt>
+  )
+}
 
-const CodeBlockLayout: FC<CodeBlockProps> = ({ children, ...props }) => (
-  <TextBase as="pre" {...props}>
-    <code>{children}</code>
-  </TextBase>
-)
+export const usePromptDemo = () => {
+  const [modal, openModal] = usePrompt({
+    inputLabel: 'Name of Cheese',
+    onSave: (value: string) => alert(`You chose ${value}`),
+    saveLabel: 'Save',
+    title: 'Choose a cheese!',
+  })
 
-export const CodeBlock = styled(CodeBlockLayout)`
-  border: 1px solid;
-  border-color: ${(props) => props.theme.colors.palette.charcoal200};
-  overflow-y: scroll;
-`
-
-CodeBlock.defaultProps = {
-  border: '1px solid',
-  borderColor: 'palette.charcoal200',
-  fontFamily: 'code',
-  fontSize: 'small',
-  p: 'medium',
+  return (
+    <>
+      {modal}
+      <Button onClick={openModal}>usePrompt</Button>
+    </>
+  )
 }
