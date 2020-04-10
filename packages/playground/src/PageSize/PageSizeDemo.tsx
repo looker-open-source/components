@@ -29,7 +29,7 @@ import { Box, Flex, PageSize } from '@looker/components'
 
 export const PageSizeDemo: FC = () => {
   const [perPage, setPerPage] = useState(10)
-  const options = [10, 25, 50]
+  const options = [10, 25, 50, 100]
   const total = 100
 
   return (

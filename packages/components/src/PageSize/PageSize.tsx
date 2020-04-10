@@ -36,6 +36,7 @@ export interface PageSizeProps {
   total: number
   /**
    * Number of items per page
+   * Note: The first value passed into this prop should a number included in the options array prop (or defaultPageSizes)
    */
   value: number
   /**
@@ -71,7 +72,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
     onChange(Number(newValue))
   }
 
-  return total > value ? (
+  return Math.min(...options) < total ? (
     <div className={className}>
       Display
       <Select

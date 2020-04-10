@@ -23,3 +23,25 @@
  SOFTWARE.
 
  */
+
+// import React from 'react'
+// import { renderWithTheme } from '@looker/components-test-utils'
+// import { fireEvent } from '@testing-library/react'
+// import { PageSize } from './PageSize'
+
+// const onChange = jest.fn()
+// const defaultValue = 10
+// const defaultTotal = 500
+
+// afterEach(() => {
+//   onChange.mockClear()
+// })
+
+// test('<PageSize/> with defaults', () => {
+//   const { getByText } = renderWithTheme(
+//     <PageSize value={defaultValue} total={defaultTotal} onChange={onChange} />
+//   )
+
+//   const select = getByText(String(defaultValue))
+//   expect(select).toBeInTheDocument()
+// })
