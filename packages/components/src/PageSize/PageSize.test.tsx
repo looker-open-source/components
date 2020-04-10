@@ -24,24 +24,72 @@
 
  */
 
-// import React from 'react'
-// import { renderWithTheme } from '@looker/components-test-utils'
-// import { fireEvent } from '@testing-library/react'
-// import { PageSize } from './PageSize'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { PageSize } from './PageSize'
 
-// const onChange = jest.fn()
-// const defaultValue = 10
-// const defaultTotal = 500
+const onChange = jest.fn()
 
-// afterEach(() => {
-//   onChange.mockClear()
-// })
+afterEach(() => {
+  onChange.mockClear()
+})
 
-// test('<PageSize/> with defaults', () => {
-//   const { getByText } = renderWithTheme(
-//     <PageSize value={defaultValue} total={defaultTotal} onChange={onChange} />
-//   )
+test('<PageSize/> with defaults', () => {
+  const { getByDisplayValue, getByText } = renderWithTheme(
+    <PageSize value={10} total={1000} onChange={onChange} />
+  )
 
-//   const select = getByText(String(defaultValue))
-//   expect(select).toBeInTheDocument()
-// })
+  getByText('Display')
+  const select = getByDisplayValue('10')
+  getByText('of 1000')
+
+  fireEvent.click(select)
+
+  expect(getByText('10')).toBeInTheDocument()
+  expect(getByText('25')).toBeInTheDocument()
+  expect(getByText('50')).toBeInTheDocument()
+  expect(getByText('100')).toBeInTheDocument()
+
+  fireEvent.click(getByText('50'))
+  expect(onChange).toHaveBeenCalledTimes(1)
+})
+
+test('<PageSize/> with custom options prop', () => {
+  const { getByDisplayValue, getByText } = renderWithTheme(
+    <PageSize
+      value={20}
+      total={1000}
+      options={[20, 40, 60]}
+      onChange={onChange}
+    />
+  )
+
+  getByText('Display')
+  const select = getByDisplayValue('20')
+  getByText('of 1000')
+
+  fireEvent.click(select)
+
+  expect(getByText('20')).toBeInTheDocument()
+  expect(getByText('40')).toBeInTheDocument()
+  expect(getByText('60')).toBeInTheDocument()
+
+  fireEvent.click(getByText('40'))
+  expect(onChange).toHaveBeenCalledTimes(1)
+})
+
+test('<PageSize/> does not load when smallest option >= total', () => {
+  const { queryByDisplayValue, queryByText } = renderWithTheme(
+    <PageSize
+      value={100}
+      total={5}
+      options={[100, 200, 300]}
+      onChange={onChange}
+    />
+  )
+
+  expect(queryByText('Display')).not.toBeInTheDocument()
+  expect(queryByDisplayValue('100')).not.toBeInTheDocument()
+  expect(queryByText('of 5')).not.toBeInTheDocument()
+})

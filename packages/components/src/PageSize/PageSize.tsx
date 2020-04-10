@@ -27,6 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
+import { Text } from '../Text'
 
 export interface PageSizeProps {
   className?: string
@@ -74,7 +75,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
 
   return Math.min(...options) < total ? (
     <div className={className}>
-      Display
+      <Text>Display</Text>
       <Select
         width="5rem"
         mx="medium"
@@ -82,7 +83,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
         value={String(value)}
         onChange={handleOnChange}
       />
-      of {total}
+      <Text>of {total}</Text>
     </div>
   ) : null
 }
