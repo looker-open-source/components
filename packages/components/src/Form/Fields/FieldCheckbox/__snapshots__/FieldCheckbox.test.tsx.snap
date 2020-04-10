@@ -128,12 +128,16 @@ exports[`A FieldCheckbox 1`] = `
       className=""
     >
       <div
+        checked={false}
         className="c5 "
       >
         <input
+          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
+          onChange={[Function]}
+          onClick={[Function]}
           role="checkbox"
           type="checkbox"
         />
@@ -310,10 +314,12 @@ exports[`A FieldCheckbox with checked value 1`] = `
         className="c5 "
       >
         <input
+          checked={true}
           className=""
-          defaultChecked={true}
           id="thumbs-up"
           name="thumbsUp"
+          onChange={[Function]}
+          onClick={[Function]}
           role="checkbox"
           type="checkbox"
         />
@@ -497,12 +503,16 @@ exports[`A required FieldCheckbox 1`] = `
       className=""
     >
       <div
+        checked={false}
         className="c6 "
       >
         <input
+          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
+          onChange={[Function]}
+          onClick={[Function]}
           required={true}
           role="checkbox"
           type="checkbox"

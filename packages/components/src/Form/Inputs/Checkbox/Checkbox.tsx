@@ -24,6 +24,7 @@
 
  */
 
+import noop from 'lodash/noop'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
@@ -146,21 +147,22 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 const CheckboxComponent = forwardRef(
   (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
     const { checked, defaultChecked, onChange, ...restProps } = props
-    const [isChecked, setIsChecked] = useState<MixedBoolean | undefined>(
-      !!(checked || defaultChecked)
-    )
+    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
 
     const handleClick = (e: FormEvent<HTMLInputElement>) => {
-      const toggledValue = !isChecked
       if (isUndefined(checked)) {
-        setIsChecked(toggledValue)
-      } else if (onChange) {
+        setIsChecked(!isChecked)
+      }
+      if (onChange) {
         onChange(e)
       }
     }
 
+    // controlled component: update internal state when props.checked changes
     useEffect(() => {
-      setIsChecked(checked)
+      if (!isUndefined(checked)) {
+        setIsChecked(checked)
+      }
     }, [checked])
 
     return (
@@ -169,9 +171,11 @@ const CheckboxComponent = forwardRef(
           {...pick(restProps, inputPropKeys)}
           ref={ref}
           checked={!!isChecked}
-          onClick={handleClick}
           role="checkbox"
           aria-checked={checked}
+          onClick={handleClick}
+          // suppress read-only error as we rely on click rather than change event here
+          onChange={noop}
         />
         <FauxCheckbox>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
