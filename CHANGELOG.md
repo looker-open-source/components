@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Prompt` component
 - `ActionListManager` component
 - `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
+- `PageSize` component
 
 ### Changed
 
