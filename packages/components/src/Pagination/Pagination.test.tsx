@@ -69,6 +69,40 @@ test('First page and previous page buttons are disabled when current === 1', () 
   expect(onPageChange).toHaveBeenCalledTimes(2)
 })
 
+test('First page button is disabled when current === 2', () => {
+  const { getByTitle } = renderWithTheme(
+    <Pagination current={2} pages={10} onChange={onPageChange} />
+  )
+  fireEvent.click(getByTitle('Double Chevron Left'))
+  expect(onPageChange).toHaveBeenCalledTimes(0)
+
+  fireEvent.click(getByTitle('Caret Left'))
+  expect(onPageChange).toHaveBeenCalledTimes(1)
+
+  fireEvent.click(getByTitle('Caret Right'))
+  expect(onPageChange).toHaveBeenCalledTimes(2)
+
+  fireEvent.click(getByTitle('Double Chevron Right'))
+  expect(onPageChange).toHaveBeenCalledTimes(3)
+})
+
+test('Last page button is disabled when current === (pages - 1)', () => {
+  const { getByTitle } = renderWithTheme(
+    <Pagination current={9} pages={10} onChange={onPageChange} />
+  )
+  fireEvent.click(getByTitle('Double Chevron Left'))
+  expect(onPageChange).toHaveBeenCalledTimes(1)
+
+  fireEvent.click(getByTitle('Caret Left'))
+  expect(onPageChange).toHaveBeenCalledTimes(2)
+
+  fireEvent.click(getByTitle('Caret Right'))
+  expect(onPageChange).toHaveBeenCalledTimes(3)
+
+  fireEvent.click(getByTitle('Double Chevron Right'))
+  expect(onPageChange).toHaveBeenCalledTimes(3)
+})
+
 test('Last page and next page buttons are disabled when current === pages', () => {
   const { getByTitle } = renderWithTheme(
     <Pagination current={10} pages={10} onChange={onPageChange} />
