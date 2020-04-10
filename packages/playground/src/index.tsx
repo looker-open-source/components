@@ -26,20 +26,16 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  ComponentsProvider,
-  GlobalStyle,
-  ToggleSwitch,
-} from '@looker/components'
+import { ComponentsProvider, GlobalStyle } from '@looker/components'
+import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
+import { CheckboxDemo } from './Checkbox/CheckboxDemo'
 
 const App: React.FC = () => {
-  const [on, setOn] = React.useState(false)
-  const handleChange = (event: any) => setOn(event.target.checked)
-
   return (
     <ComponentsProvider>
       <GlobalStyle />
-      <ToggleSwitch m="large" onChange={handleChange} on={on} id="switch" />
+      <CheckboxDemo />
+      <MixedStateCheckboxDemo />
     </ComponentsProvider>
   )
 }
