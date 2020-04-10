@@ -26,114 +26,79 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
 import { FieldText } from './FieldText'
 
 test('A FieldText with default label', () => {
-  assertSnapshot(<FieldText id="FieldTextID" label="👍" name="thumbsUp" />)
+  assertSnapshot(<FieldText id="FieldTextID" label="👍" />)
 })
 
 test('A FieldText with label inline', () => {
-  assertSnapshot(
-    <FieldText id="FieldTextID" inline label="👍" name="thumbsUp" />
-  )
+  assertSnapshot(<FieldText id="FieldTextID" inline label="👍" />)
 })
 
-test('A FieldText required with default label', () => {
-  assertSnapshot(
-    <FieldText id="FieldTextID" label="👍" name="thumbsUp" required />
+test('A FieldText required', () => {
+  const wrapper = mountWithTheme(
+    <FieldText id="FieldTextID" label="👍" required />
   )
+
+  expect(wrapper.text()).toMatch(`👍 *`)
 })
 
-test('A FieldText required  with label inline', () => {
-  assertSnapshot(
-    <FieldText id="FieldTextID" inline label="👍" name="thumbsUp" required />
+test('A FieldText disabled', () => {
+  const wrapper = mountWithTheme(
+    <FieldText disabled id="FieldTextID" label="👍" />
   )
+  wrapper.find('input').html().includes('disabled=""')
 })
 
-test('A FieldText disabled with default label', () => {
-  assertSnapshot(
-    <FieldText disabled id="FieldTextID" label="👍" name="thumbsUp" />
-  )
-})
-
-test('A FieldText disabled  with label inline', () => {
-  assertSnapshot(
-    <FieldText disabled id="FieldTextID" inline label="👍" name="thumbsUp" />
-  )
-})
-
-test('A FieldText with description and with default label', () => {
-  assertSnapshot(
+test('A FieldText with description', () => {
+  const wrapper = mountWithTheme(
     <FieldText
       description="no vegetables allowed"
       id="FieldTextID"
-      label="👍"
-      name="thumbsUp"
+      label="Text Input"
       placeholder="placeholder"
     />
   )
+  expect(wrapper.text()).toMatch(`Text Inputno vegetables allowed`)
 })
 
-test('A FieldText with description and with label inline', () => {
-  assertSnapshot(
-    <FieldText
-      description="no vegetables allowed"
-      id="FieldTextID"
-      inline
-      label="👍"
-      name="thumbsUp"
-      placeholder="placeholder"
-    />
-  )
-})
-
-test('A FieldText with detail and with default label', () => {
-  assertSnapshot(
+test('A FieldText with detail', () => {
+  const wrapper = mountWithTheme(
     <FieldText
       detail="5/50"
       id="FieldTextID"
-      label="👍"
-      name="thumbsUp"
+      label="hello"
       placeholder="placeholder"
     />
   )
+  expect(wrapper.text()).toMatch(`hello5/50`)
 })
 
-test('A FieldText with detail and  with label inline', () => {
-  assertSnapshot(
+test('A FieldText with validationMessage', () => {
+  const wrapper = mountWithTheme(
     <FieldText
-      detail="5/50"
       id="FieldTextID"
-      inline
-      label="👍"
-      name="thumbsUp"
+      label="hello"
+      validationMessage={{
+        message: 'validation Message',
+        type: 'error',
+      }}
       placeholder="placeholder"
     />
   )
+  expect(wrapper.text()).toMatch(`hellovalidation Message`)
 })
 
-test('A FieldText with validationMessage and with default label', () => {
-  assertSnapshot(
-    <FieldText
-      id="FieldTextID"
-      label="👍"
-      name="thumbsUp"
-      placeholder="placeholder"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
-    />
-  )
-})
+test('FieldText supports onChange handler', () => {
+  let counter = 0
+  const handleChange = () => counter++
 
-test('A FieldText with validationMessage and  with label inline', () => {
-  assertSnapshot(
-    <FieldText
-      id="FieldTextID"
-      inline
-      label="👍"
-      name="thumbsUp"
-      placeholder="placeholder"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
-    />
+  const wrapper = mountWithTheme(
+    <FieldText id="FieldTextID" onChange={handleChange} />
   )
+
+  wrapper.find('input').simulate('change', { target: { value: '' } })
+  expect(counter).toEqual(1)
 })

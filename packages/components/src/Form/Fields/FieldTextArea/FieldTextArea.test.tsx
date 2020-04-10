@@ -37,28 +37,23 @@ test('A FieldTextArea with label inline', () => {
   assertSnapshot(<FieldTextArea id="FieldTextAreaID" inline label="👍" />)
 })
 
-test('A FieldTextArea required with default label', () => {
-  assertSnapshot(<FieldTextArea id="FieldTextAreaID" label="👍" required />)
-})
-
-test('A FieldTextArea required  with label inline', () => {
-  assertSnapshot(
-    <FieldTextArea id="FieldTextAreaID" inline label="👍" required />
+test('A FieldTextArea required', () => {
+  const wrapper = mountWithTheme(
+    <FieldTextArea id="FieldTextAreaID" label="👍" required />
   )
+
+  expect(wrapper.text()).toMatch(`👍 *`)
 })
 
-test('A FieldTextArea disabled with default label', () => {
-  assertSnapshot(<FieldTextArea disabled id="FieldTextAreaID" label="👍" />)
-})
-
-test('A FieldTextArea disabled  with label inline', () => {
-  assertSnapshot(
-    <FieldTextArea disabled id="FieldTextAreaID" inline label="👍" />
+test('A FieldTextArea disabled', () => {
+  const wrapper = mountWithTheme(
+    <FieldTextArea disabled id="FieldTextAreaID" label="👍" />
   )
+  wrapper.find('input:disabled')
 })
 
-test('A FieldTextArea with description and with default label', () => {
-  assertSnapshot(
+test('A FieldTextArea with description', () => {
+  const wrapper = mountWithTheme(
     <FieldTextArea
       description="no vegetables allowed"
       id="FieldTextAreaID"
@@ -66,22 +61,11 @@ test('A FieldTextArea with description and with default label', () => {
       placeholder="placeholder"
     />
   )
+  expect(wrapper.text()).toMatch(`Text Inputno vegetables allowed`)
 })
 
-test('A FieldTextArea with description and with label inline', () => {
-  assertSnapshot(
-    <FieldTextArea
-      description="no vegetables allowed"
-      id="FieldTextAreaID"
-      inline
-      label="Text Input"
-      placeholder="placeholder"
-    />
-  )
-})
-
-test('A FieldTextArea with detail and with default label', () => {
-  assertSnapshot(
+test('A FieldTextArea with detail', () => {
+  const wrapper = mountWithTheme(
     <FieldTextArea
       detail="5/50"
       id="FieldTextAreaID"
@@ -89,41 +73,22 @@ test('A FieldTextArea with detail and with default label', () => {
       placeholder="placeholder"
     />
   )
+  expect(wrapper.text()).toMatch(`hello5/50`)
 })
 
-test('A FieldTextArea with detail and  with label inline', () => {
-  assertSnapshot(
-    <FieldTextArea
-      detail="5/50"
-      id="FieldTextAreaID"
-      inline
-      label="hello"
-      placeholder="placeholder"
-    />
-  )
-})
-
-test('A FieldTextArea with validationMessage and with default label', () => {
-  assertSnapshot(
+test('A FieldTextArea with validationMessage', () => {
+  const wrapper = mountWithTheme(
     <FieldTextArea
       id="FieldTextAreaID"
       label="hello"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
+      validationMessage={{
+        message: 'validation Message',
+        type: 'error',
+      }}
       placeholder="placeholder"
     />
   )
-})
-
-test('A FieldTextArea with validationMessage and  with label inline', () => {
-  assertSnapshot(
-    <FieldTextArea
-      id="FieldTextAreaID"
-      inline
-      label="hello"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
-      placeholder="placeholder"
-    />
-  )
+  expect(wrapper.text()).toMatch(`helloWarningvalidation Message`)
 })
 
 test('FieldTextArea supports onChange handler', () => {

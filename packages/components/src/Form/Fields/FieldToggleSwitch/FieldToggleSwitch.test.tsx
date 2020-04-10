@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
 
 test('A FieldToggleSwitch', () => {
@@ -40,31 +40,34 @@ test('A FieldToggleSwitch turned on', () => {
 })
 
 test('A FieldToggleSwitch with validationMessage', () => {
-  assertSnapshot(
+  const wrapper = mountWithTheme(
     <FieldToggleSwitch
       id="FieldToggleSwitchID"
       label="Toggle Switch"
       validationMessage={{ message: 'validation Message', type: 'error' }}
     />
   )
+  expect(wrapper.text()).toMatch(`Toggle Switchvalidation Message`)
 })
 
-test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(
+test('A FieldToggleSwitch disabled', () => {
+  const wrapper = mountWithTheme(
     <FieldToggleSwitch
       disabled
       id="FieldToggleSwitchID"
       label="Toggle Switch"
     />
   )
+  wrapper.find('input').html().includes('disabled=""')
 })
 
-test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(
+test('A FieldToggleSwitch required', () => {
+  const wrapper = mountWithTheme(
     <FieldToggleSwitch
       id="FieldToggleSwitchID"
       label="Toggle Switch"
       required
     />
   )
+  expect(wrapper.text()).toMatch(`Toggle Switch *`)
 })

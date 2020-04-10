@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
 import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
@@ -47,19 +47,21 @@ test('A FieldCheckbox with checked value', () => {
 })
 
 test('A required FieldCheckbox', () => {
-  assertSnapshot(
+  const wrapper = mountWithTheme(
     <FieldCheckbox id="FieldCheckboxID" label="👍" name="thumbsUp" required />
   )
+  expect(wrapper.text()).toMatch(`👍 *`)
 })
 
 test('A disabled FieldCheckbox', () => {
-  assertSnapshot(
+  const wrapper = mountWithTheme(
     <FieldCheckbox disabled id="FieldCheckboxID" label="👍" name="thumbsUp" />
   )
+  wrapper.find('input').html().includes('disabled=""')
 })
 
 test('A FieldCheckbox with an error validation aligned to the bottom', () => {
-  assertSnapshot(
+  const wrapper = mountWithTheme(
     <FieldCheckbox
       id="FieldCheckboxID"
       label="👍"
@@ -67,4 +69,5 @@ test('A FieldCheckbox with an error validation aligned to the bottom', () => {
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
   )
+  expect(wrapper.text()).toMatch(`👍This is an error`)
 })
