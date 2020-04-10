@@ -24,12 +24,9 @@
 
  */
 
-import { mount } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'
@@ -81,12 +78,10 @@ test('Should trigger onInput handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <Form onInput={handleChange}>
-        <FieldText label="label" id="text-field" name="name" />
-      </Form>
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <Form onInput={handleChange}>
+      <FieldText label="label" id="text-field" name="name" />
+    </Form>
   )
 
   wrapper.find('input').simulate('input', { target: { value: '' } })
@@ -97,12 +92,10 @@ test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <Form onChange={handleChange}>
-        <FieldText label="label" id="text-field" name="name" />
-      </Form>
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <Form onChange={handleChange}>
+      <FieldText label="label" id="text-field" name="name" />
+    </Form>
   )
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
@@ -113,13 +106,11 @@ test('Should trigger onSubmit handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <Form onChange={handleChange}>
-        <FieldText label="label" id="text-field" name="name" />
-        <Button type="submit">Submit</Button>
-      </Form>
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <Form onChange={handleChange}>
+      <FieldText label="label" id="text-field" name="name" />
+      <Button type="submit">Submit</Button>
+    </Form>
   )
 
   wrapper.find('button').simulate('change', { target: { value: '' } })

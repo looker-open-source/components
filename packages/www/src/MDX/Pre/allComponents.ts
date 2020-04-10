@@ -50,6 +50,7 @@ import {
   Code,
   CodeBlock,
   ColorWheel,
+  ComponentsProvider,
   Confirm,
   ConfirmLayout,
   DateFormat,
@@ -133,7 +134,7 @@ import {
 } from '@looker/components'
 import { palette } from '@looker/design-tokens'
 
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
 
@@ -141,7 +142,6 @@ export const allComponents = {
   useState,
 
   styled,
-  ThemeProvider,
 
   isEqual,
 
@@ -171,6 +171,7 @@ export const allComponents = {
   Code,
   CodeBlock,
   ColorWheel,
+  ComponentsProvider,
   Confirm,
   ConfirmLayout,
   DateFormat,

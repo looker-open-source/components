@@ -24,17 +24,16 @@
 
  */
 
-import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { palette, theme } from '@looker/design-tokens'
+import { mountWithTheme, shallowWithTheme } from '@looker/components-test-utils'
+import { palette } from '@looker/design-tokens'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 
 test('Menu', () => {
-  const menu = shallow(
+  const menu = shallowWithTheme(
     <MenuList>
       <MenuItem>boo!</MenuItem>
       <MenuItem itemRole="link" href="test">
@@ -48,7 +47,7 @@ test('Menu', () => {
 })
 
 test('Menu - composed', () => {
-  const menu = shallow(
+  const menu = shallowWithTheme(
     <MenuList>
       <MenuGroup>
         <MenuItem icon="LogoRings">Looker</MenuItem>
@@ -73,24 +72,22 @@ test('Menu - composed', () => {
 const WrappedMenuItem = () => <MenuItem icon="Beaker">Scary Stuff</MenuItem>
 
 test('Menu - compact', () => {
-  const menu = mount(
-    <ThemeProvider theme={theme}>
-      <MenuList compact>
-        <MenuGroup>
-          <MenuItem icon="LogoRings">Looker</MenuItem>
-          <MenuItem icon="Validate">Validate</MenuItem>
-          <MenuItem icon="ChartPie">Pizza!</MenuItem>
-        </MenuGroup>
-        <MenuGroup label="Cheeses">
-          <MenuItem>Gouda</MenuItem>
-          <MenuItem>Cheddar</MenuItem>
-          <MenuItem>Swiss</MenuItem>
-        </MenuGroup>
-        <MenuGroup>
-          <WrappedMenuItem />
-        </MenuGroup>
-      </MenuList>
-    </ThemeProvider>
+  const menu = mountWithTheme(
+    <MenuList compact>
+      <MenuGroup>
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+        <MenuItem icon="ChartPie">Pizza!</MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Cheeses">
+        <MenuItem>Gouda</MenuItem>
+        <MenuItem>Cheddar</MenuItem>
+        <MenuItem>Swiss</MenuItem>
+      </MenuGroup>
+      <MenuGroup>
+        <WrappedMenuItem />
+      </MenuGroup>
+    </MenuList>
   )
 
   expect(menu).toMatchSnapshot()
@@ -121,7 +118,7 @@ test('Menu - menu customization', () => {
       // tslint:disable:enable-literal-sort-keys
     }
 
-  const menu = shallow(
+  const menu = shallowWithTheme(
     <MenuList customizationProps={menuCustomizations}>
       <MenuGroup>
         <MenuItem icon="LogoRings">Looker</MenuItem>

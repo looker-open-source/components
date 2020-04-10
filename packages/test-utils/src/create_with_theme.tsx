@@ -24,16 +24,15 @@
 
  */
 
-import { theme } from '@looker/design-tokens'
+import { ComponentsProvider } from '@looker/components-providers'
 import { render, RenderOptions } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import React, { ReactElement } from 'react'
 import { create } from 'react-test-renderer'
-import { ThemeProvider } from 'styled-components'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (
-  <ThemeProvider theme={theme}>{Component}</ThemeProvider>
+  <ComponentsProvider>{Component}</ComponentsProvider>
 )
 
 export const createWithTheme = (Component: ReactElement<any>) =>
