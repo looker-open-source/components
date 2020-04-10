@@ -24,49 +24,21 @@
 
  */
 
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './GlobalStyle'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import React, { FC, useState } from 'react'
+import { Flex, Pagination } from '@looker/components'
 
-export * from './utils'
+export const PaginationDemo: FC = () => {
+  const [currentPage, setCurrentPage] = useState(1)
 
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+  return (
+    <Flex
+      flexDirection="column"
+      justifyContent="space-around"
+      alignItems="center"
+      height="300px"
+    >
+      <h1>{`You're currently viewing page ${currentPage}`}</h1>
+      <Pagination current={currentPage} pages={10} onChange={setCurrentPage} />
+    </Flex>
+  )
+}
