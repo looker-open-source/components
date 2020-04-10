@@ -152,6 +152,7 @@ const components: NavigationSection = {
         { title: 'Confirm', path: 'confirm' },
         { title: 'Dialog', path: 'dialog' },
         { title: 'Drawer', path: 'drawer' },
+        { title: 'Prompt', path: 'prompt' },
       ],
     },
     {

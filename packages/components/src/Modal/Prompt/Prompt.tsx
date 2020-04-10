@@ -24,15 +24,32 @@
 
  */
 
-export * from './Confirm'
-export * from './Dialog'
-export * from './Drawer'
-export * from './Layout'
-export * from './Modal'
-export * from './ModalBackdrop'
-export * from './ModalContext'
-export * from './ModalManager'
-export * from './ModalPortal'
-export * from './modalRoot'
-export * from './ModalSurface'
-export * from './Prompt'
+import React, { FC, ReactNode } from 'react'
+import { useToggle } from '../../utils'
+import { PromptDialog, PromptBaseProps } from './PromptDialog'
+
+export interface PromptProps extends PromptBaseProps {
+  /**
+   * Render prop is passed the confirmation opener
+   */
+  children: (onClick: () => void) => ReactNode
+}
+
+export function usePrompt(props: PromptBaseProps): [ReactNode, () => void] {
+  const { value, setOn, setOff } = useToggle()
+
+  const rendered = <PromptDialog {...props} isOpen={value} close={setOff} />
+
+  return [rendered, setOn]
+}
+
+export const Prompt: FC<PromptProps> = ({ children, ...props }) => {
+  const [promptModal, openPromptModal] = usePrompt(props)
+
+  return (
+    <>
+      {children(openPromptModal)}
+      {promptModal}
+    </>
+  )
+}

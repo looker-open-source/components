@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import noop from 'lodash/noop'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, wait } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
@@ -99,9 +99,11 @@ test('IconButton has built-in tooltip', () => {
   const notTooltip = container.querySelector('p') // Get Tooltip content
   expect(notTooltip).toBeNull()
 
-  fireEvent.mouseOver(getByTitle('Favorite'))
-  const tooltip = container.querySelector('p') // Get Tooltip content
-  expect(tooltip).toHaveTextContent(label)
+  wait(() => {
+    fireEvent.mouseOver(getByTitle('Favorite'))
+    const tooltip = container.querySelector('p') // Get Tooltip content
+    expect(tooltip).toHaveTextContent(label)
+  })
 })
 
 test('IconButton tooltipDisabled actually disables tooltip', () => {
@@ -111,14 +113,17 @@ test('IconButton tooltipDisabled actually disables tooltip', () => {
   )
 
   fireEvent.mouseOver(getByTitle('Favorite'))
-  const notTooltip = container.querySelector('p') // Get Tooltip content
-  expect(notTooltip).toBeNull()
+
+  wait(() => {
+    const notTooltip = container.querySelector('p') // Get Tooltip content
+    expect(notTooltip).toBeNull()
+  })
 })
 
 test('IconButton built-in tooltip defers to outer tooltip', () => {
   const tooltip = 'Add to favorites'
   const label = 'Mark as my Favorite'
-  const { getByText, getByTitle } = renderWithTheme(
+  const { container, getByText, getByTitle } = renderWithTheme(
     <Tooltip content={tooltip}>
       {(eventHandlers, ref) => (
         <IconButton
@@ -133,6 +138,14 @@ test('IconButton built-in tooltip defers to outer tooltip', () => {
   )
 
   fireEvent.mouseOver(getByTitle('Favorite'))
-  expect(getByText(tooltip)).toBeInTheDocument()
-  expect(getByText(label)).toHaveStyle('height: 1px')
+
+  wait(() => {
+    expect(getByText(tooltip)).toBeInTheDocument()
+
+    const iconLabel = getByText(label)
+    expect(iconLabel).toBeInTheDocument()
+
+    const tooltipContents = container.querySelectorAll('p') // Get all Tooltip contents
+    expect(tooltipContents.length).toEqual(1)
+  })
 })

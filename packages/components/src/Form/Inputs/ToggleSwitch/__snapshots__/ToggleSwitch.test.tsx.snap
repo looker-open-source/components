@@ -246,7 +246,7 @@ exports[`ToggleSwitch on set to true 1`] = `
   left: 0;
   right: 0;
   border-radius: 1.25rem;
-  background: #9785F2;
+  background: #6C43E0;
 }
 
 .c2:hover {
@@ -324,7 +324,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   left: 0;
   right: 0;
   border-radius: 1.25rem;
-  background: #9785F2;
+  background: #6C43E0;
 }
 
 .c1 {
