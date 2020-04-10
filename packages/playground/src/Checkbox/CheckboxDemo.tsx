@@ -24,26 +24,26 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
-import { CheckboxDemo } from './Checkbox/CheckboxDemo'
+import React, { useState } from 'react'
+import { Checkbox, Heading } from '@looker/components'
 
-const App: React.FC = () => {
+/* eslint-disable sort-keys */
+export const CheckboxDemo = () => {
+  const [controlledChecked, setControlledChecked] = useState(true)
+  const handleChange = () => setControlledChecked(!controlledChecked)
   return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <CheckboxDemo />
-      <MixedStateCheckboxDemo />
-    </ComponentsProvider>
+    <>
+      <div>
+        <Heading mt="small">defaultChecked</Heading>
+        <Checkbox defaultChecked></Checkbox>
+      </div>
+      <div>
+        <Heading mt="small">Controlled component</Heading>
+        <Checkbox
+          checked={controlledChecked}
+          onChange={handleChange}
+        ></Checkbox>
+      </div>
+    </>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
