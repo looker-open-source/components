@@ -27,7 +27,10 @@
     "develop:server": "yarn workspace server develop",
     "develop:www": "yarn workspace www develop",
     "deploy": "yarn workspace www deploy",
-    "fix": "run-p -c 'lint:ts-* --fix'",
+    "fix": "run-p -c fix:*",
+    "fix:es": "yarn lint:es --fix",
+    "fix:mdx": "yarn lint:mdx --fix",
+    "fix:prettier": "yarn lint:prettier --write",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
     "lint:es": "eslint 'packages/**/*.ts{,x}'",
@@ -119,7 +122,10 @@
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
-      "header/header": [2, "config/license-header.js"]
+      "header/header": [
+        2,
+        "config/license-header.js"
+      ]
     }
   },
   "prettier": "@looker/prettier-config",
