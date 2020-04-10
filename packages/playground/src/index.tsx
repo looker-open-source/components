@@ -30,7 +30,6 @@ import { ComponentsProvider, GlobalStyle } from '@looker/components'
 import { FieldsDemo } from './Form/FieldsDemo'
 
 const App: React.FC = () => {
-
   return (
     <ComponentsProvider>
       <GlobalStyle />
