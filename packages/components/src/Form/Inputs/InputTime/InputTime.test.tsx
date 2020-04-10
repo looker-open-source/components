@@ -187,3 +187,55 @@ test('renders 24 hour formatted time', () => {
   expect((inputMinute as HTMLInputElement).value).toEqual('32')
   expect(inputPeriod).not.toBeInTheDocument()
 })
+
+test('up/down arrow keys cycle through possible values', () => {
+  const mockProps: InputTimeProps = {}
+
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
+
+  // HOUR
+  // --------------------------------------
+  fireEvent.keyDown(inputHour, {
+    key: 'ArrowUp',
+    keyCode: 38,
+  })
+  expect((inputHour as HTMLInputElement).value).toEqual('01')
+
+  fireEvent.keyDown(inputHour, {
+    key: 'ArrowDown',
+    keyCode: 40,
+  })
+  expect((inputHour as HTMLInputElement).value).toEqual('12')
+
+  // MINUTE
+  // --------------------------------------
+  fireEvent.keyDown(inputMinute, {
+    key: 'ArrowUp',
+    keyCode: 38,
+  })
+  expect((inputMinute as HTMLInputElement).value).toEqual('01')
+
+  fireEvent.keyDown(inputMinute, {
+    key: 'ArrowDown',
+    keyCode: 40,
+  })
+  fireEvent.keyDown(inputMinute, {
+    key: 'ArrowDown',
+    keyCode: 40,
+  })
+  expect((inputMinute as HTMLInputElement).value).toEqual('59')
+
+  // PERIOD
+  // --------------------------------------
+  fireEvent.keyDown(inputPeriod, {
+    key: 'ArrowUp',
+    keyCode: 38,
+  })
+  expect((inputPeriod as HTMLInputElement).value).toEqual('PM')
+
+  fireEvent.keyDown(inputPeriod, {
+    key: 'ArrowDown',
+    keyCode: 40,
+  })
+  expect((inputPeriod as HTMLInputElement).value).toEqual('AM')
+})
