@@ -26,13 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  Button,
-  ButtonOutline,
-  ComponentsProvider,
-  theme,
-} from '@looker/components'
+import { Button } from '@looker/components'
 
 const RoundBtnStyled = styled(Button)`
   border-radius: 2rem;
@@ -40,33 +34,4 @@ const RoundBtnStyled = styled(Button)`
 
 export const RoundBtn = () => (
   <RoundBtnStyled>Hello Round Button</RoundBtnStyled>
-)
-
-const primary = Object.assign({}, theme.colors.semanticColors.primary, {
-  main: '#2db264',
-  dark: '#198044',
-  darker: '#12593c',
-})
-const danger = Object.assign({}, theme.colors.semanticColors.danger, {
-  main: '#ffd200',
-  dark: '#e5ae17',
-  darker: '#a67e11',
-  lighter: '#fff1bf',
-  borderColor: '#ffd200',
-})
-
-const mildTheme = Object.assign({}, theme)
-mildTheme.colors = Object.assign({}, mildTheme.colors)
-mildTheme.colors.semanticColors.primary = primary
-mildTheme.colors.semanticColors.danger = danger
-
-export const ThemingButton = () => (
-  <ComponentsProvider theme={mildTheme}>
-    <Box>
-      <Button>Mild Button</Button>
-      <Box ml="small" display="inline-block">
-        <ButtonOutline color="danger">Mild Danger Outline Button</ButtonOutline>
-      </Box>
-    </Box>
-  </ComponentsProvider>
 )

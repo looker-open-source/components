@@ -24,11 +24,13 @@
 
  */
 
+import noop from 'lodash/noop'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
+import isUndefined from 'lodash/isUndefined'
 import { InputProps, inputPropKeys } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
 import { inputTextValidation } from '../InputText'
@@ -151,18 +153,36 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 
 const CheckboxComponent = forwardRef(
   (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
-    const { checked, ...restProps } = props
+    const { checked, defaultChecked, onChange, ...restProps } = props
+    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
+
+    const handleClick = (e: FormEvent<HTMLInputElement>) => {
+      if (isUndefined(checked)) {
+        setIsChecked(!isChecked)
+      }
+      if (onChange) {
+        onChange(e)
+      }
+    }
+
+    // controlled component: update internal state when props.checked changes
+    useEffect(() => {
+      if (!isUndefined(checked)) {
+        setIsChecked(checked)
+      }
+    }, [checked])
+
     return (
-      <CheckboxContainer
-        {...omit(props, inputPropKeys)}
-        checked={checked || restProps.defaultChecked}
-      >
+      <CheckboxContainer {...omit(props, inputPropKeys)} checked={isChecked}>
         <CheckboxInput
           {...pick(restProps, inputPropKeys)}
           ref={ref}
-          checked={checked === undefined ? undefined : checked === true}
+          checked={!!isChecked}
           role="checkbox"
           aria-checked={checked}
+          onClick={handleClick}
+          // suppress read-only error as we rely on click rather than change event here
+          onChange={noop}
         />
         <FauxCheckbox>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}

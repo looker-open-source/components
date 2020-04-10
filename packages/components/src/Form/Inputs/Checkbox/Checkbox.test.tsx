@@ -24,22 +24,55 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { Checkbox, CheckboxProps } from './Checkbox'
 
-import { Checkbox } from './Checkbox'
-
-test('Checkbox default', () => {
-  assertSnapshot(<Checkbox id="checkboxID" />)
+afterEach(() => {
+  jest.resetAllMocks()
 })
 
-test('Checkbox checked set to true', () => {
-  assertSnapshot(<Checkbox checked={true} id="checkboxID" />)
+test('Accepts defaultChecked prop, and toggles value without change handler', () => {
+  const { getByRole } = renderWithTheme(<Checkbox defaultChecked />)
+  const checkboxInput = getByRole('checkbox')
+
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+
+  fireEvent.click(checkboxInput)
+
+  // toggled state:
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(false)
 })
 
-test('Checkbox checked set to false', () => {
-  assertSnapshot(<Checkbox checked={false} id="checkboxID" />)
+test('Accepts checked prop, and is read only without a change handler', () => {
+  const { getByRole } = renderWithTheme(<Checkbox checked />)
+  const checkboxInput = getByRole('checkbox')
+
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+
+  fireEvent.click(checkboxInput)
+
+  // unchanged state:
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+})
+
+test('Triggers onChange handler', () => {
+  const mockProps: CheckboxProps = {
+    onChange: jest.fn(),
+  }
+
+  const { getByRole } = renderWithTheme(<Checkbox {...mockProps} />)
+
+  const checkboxInput = getByRole('checkbox')
+
+  expect(mockProps.onChange).not.toHaveBeenCalled()
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(false)
+
+  fireEvent.click(checkboxInput)
+
+  expect(mockProps.onChange).toHaveBeenCalledTimes(1)
+  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
 })
 
 test('Checkbox checked set to mixed', () => {
@@ -52,16 +85,4 @@ test('Checkbox should accept disabled', () => {
 
 test('Checkbox with aria-describedby', () => {
   assertSnapshot(<Checkbox aria-describedby="some-id" id="checkboxID" />)
-})
-
-test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(
-    <Checkbox id="checkboxID" onChange={handleChange} />
-  )
-
-  wrapper.find('input').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
 })
