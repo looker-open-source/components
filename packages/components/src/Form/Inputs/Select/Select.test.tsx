@@ -115,7 +115,7 @@ describe('Select / SelectMulti', () => {
     },
     // label is not required
     {
-      options: [{ value: 'FOO' }, { value: 'QUX' }],
+      options: [{ value: 'QUX' }, { value: 'TEST' }],
     },
   ]
 
