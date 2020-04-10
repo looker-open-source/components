@@ -27,7 +27,8 @@
 import React, { FC, FormEvent, ReactNode, useState, useCallback } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
-import { FieldText } from '../../Form/Fields/FieldText'
+import { Label, InputText } from '../../Form'
+import { VisuallyHidden } from '../../VisuallyHidden'
 import { Dialog, ModalContent, ModalFooter, ModalHeader } from '..'
 
 export interface PromptBaseProps {
@@ -50,7 +51,8 @@ export interface PromptBaseProps {
    */
   onSave: (value: string) => void
   /**
-   * Label above the rendered input
+   * Label for the rendered input.
+   * Rendered as placeholder and visually hidden label for screenreaders.
    */
   inputLabel: string
   /**
@@ -122,9 +124,12 @@ export const PromptDialog: FC<PromptDialogProps> = ({
       <form onSubmit={onSubmit}>
         <ModalHeader hideClose>{title}</ModalHeader>
         <ModalContent>
-          <FieldText
-            required
-            label={inputLabel}
+          <VisuallyHidden>
+            <Label htmlFor="promptInput">{inputLabel}</Label>
+          </VisuallyHidden>
+          <InputText
+            id="promptInput"
+            placeholder={inputLabel}
             onChange={onChange}
             width="100%"
             value={value}
