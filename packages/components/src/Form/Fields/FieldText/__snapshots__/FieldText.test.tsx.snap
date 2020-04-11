@@ -83,7 +83,7 @@ exports[`A FieldText with default label 1`] = `
   width: 13rem;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   width: 100%;
 }
 
@@ -97,7 +97,7 @@ exports[`A FieldText with default label 1`] = `
   justify-self: end;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -233,7 +233,7 @@ exports[`A FieldText with label inline 1`] = `
   width: 13rem;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   width: 100%;
 }
 
@@ -256,7 +256,7 @@ exports[`A FieldText with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c10 {
+.c0 .c9 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }

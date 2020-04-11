@@ -52,6 +52,32 @@ exports[`Fieldset with left aligned legend 1`] = `
   display: inline-block;
 }
 
+.c1 {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c2 {
+  color: #262D33;
+  padding-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+
+.c0 {
+  border: none;
+}
+
 .c3 {
   width: 13rem;
   -webkit-align-items: left;
@@ -83,7 +109,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   width: 13rem;
 }
 
-.c3 .c11 {
+.c3 .c12 {
   width: 100%;
 }
 
@@ -97,35 +123,9 @@ exports[`Fieldset with left aligned legend 1`] = `
   justify-self: end;
 }
 
-.c3 .c12 {
+.c3 .c11 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-}
-
-.c1 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c2 {
-  color: #262D33;
-  padding-bottom: 0.5rem;
-  font-size: 2.25rem;
-  font-weight: 300;
-}
-
-.c0 {
-  border: none;
 }
 
 <fieldset

@@ -8,7 +8,7 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -23,38 +23,38 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
-.c9 {
+.c8 {
   height: 36px;
 }
 
-.c9::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c9::-moz-placeholder {
+.c8::-moz-placeholder {
   color: #939BA5;
 }
 
-.c9:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c9::placeholder {
+.c8::placeholder {
   color: #939BA5;
 }
 
-.c9:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c9:focus,
-.c9:focus-within {
+.c8:focus,
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -67,11 +67,11 @@ exports[`A FieldSelect 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c7 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -79,17 +79,17 @@ exports[`A FieldSelect 1`] = `
   background-color: #FFFFFF;
 }
 
-.c7:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c7:focus-within {
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c7 .c10 {
+.c6 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -103,33 +103,13 @@ exports[`A FieldSelect 1`] = `
   height: calc(36px - 6px);
 }
 
-.c7 .c10::-webkit-search-decoration,
-.c7 .c10::-webkit-search-cancel-button,
-.c7 .c10::-webkit-search-results-button,
-.c7 .c10::-webkit-search-results-decoration {
+.c6 .c9::-webkit-search-decoration,
+.c6 .c9::-webkit-search-cancel-button,
+.c6 .c9::-webkit-search-results-button,
+.c6 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-.c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c8 .c10 {
-  cursor: default;
-}
-
-.c8 .c13::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 .c2 {
@@ -161,11 +141,11 @@ exports[`A FieldSelect 1`] = `
   grid-area: input;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   grid-area: messages;
 }
 
-.c0 .c5 {
+.c0 {
   width: 100%;
 }
 
@@ -174,14 +154,34 @@ exports[`A FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c14 {
+.c0 .c13 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.c7 {
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
+  background-repeat: no-repeat,repeat;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .5rem + 1rem);
+}
+
+.c7 .c9 {
+  cursor: default;
+}
+
+.c7 .c12::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 <div
@@ -203,14 +203,14 @@ exports[`A FieldSelect 1`] = `
       aria-expanded={false}
       aria-haspopup="listbox"
       aria-owns="listbox-thumbs-up"
-      className="c4 c5 "
+      className="c4 "
       display="flex"
       id="thumbs-up"
       name="thumbsUp"
       role="combobox"
     >
       <div
-        className="c6 c7 c8"
+        className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -219,7 +219,7 @@ exports[`A FieldSelect 1`] = `
         <input
           aria-autocomplete="both"
           autoComplete="off"
-          className="c9 c10 c11"
+          className="c8 c9 c10"
           id="listbox-thumbs-up"
           onBlur={[Function]}
           onChange={[Function]}
@@ -233,7 +233,7 @@ exports[`A FieldSelect 1`] = `
     </div>
   </div>
   <div
-    className="c12 "
+    className="c11 "
   />
 </div>
 `;
@@ -246,7 +246,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -261,38 +261,38 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
 }
 
-.c9 {
+.c8 {
   height: 36px;
 }
 
-.c9::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c9::-moz-placeholder {
+.c8::-moz-placeholder {
   color: #939BA5;
 }
 
-.c9:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c9::placeholder {
+.c8::placeholder {
   color: #939BA5;
 }
 
-.c9:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c9:focus,
-.c9:focus-within {
+.c8:focus,
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -305,11 +305,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c15 .c10 {
+.c14 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -323,16 +323,16 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c15 .c10::-webkit-search-decoration,
-.c15 .c10::-webkit-search-cancel-button,
-.c15 .c10::-webkit-search-results-button,
-.c15 .c10::-webkit-search-results-decoration {
+.c14 .c9::-webkit-search-decoration,
+.c14 .c9::-webkit-search-cancel-button,
+.c14 .c9::-webkit-search-results-button,
+.c14 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c7 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -341,27 +341,27 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   border-color: #ED3B53;
 }
 
-.c7:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c7:focus-within {
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c7:hover {
+.c6:hover {
   border-color: #CC1F36;
 }
 
-.c7:focus,
-.c7:focus-within {
+.c6:focus,
+.c6:focus-within {
   border-color: #CC1F36;
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c7 .c10 {
+.c6 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -375,33 +375,13 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c7 .c10::-webkit-search-decoration,
-.c7 .c10::-webkit-search-cancel-button,
-.c7 .c10::-webkit-search-results-button,
-.c7 .c10::-webkit-search-results-decoration {
+.c6 .c9::-webkit-search-decoration,
+.c6 .c9::-webkit-search-cancel-button,
+.c6 .c9::-webkit-search-results-button,
+.c6 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-.c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c8 .c10 {
-  cursor: default;
-}
-
-.c8 .c16::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 .c2 {
@@ -411,7 +391,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c14 {
+.c13 {
   font-size: 0.75rem;
   color: #CC1F36;
 }
@@ -438,11 +418,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   grid-area: input;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   grid-area: messages;
 }
 
-.c0 .c5 {
+.c0 {
   width: 100%;
 }
 
@@ -451,14 +431,34 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c17 {
+.c0 .c16 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c13 {
+.c0 .c12 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.c7 {
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
+  background-repeat: no-repeat,repeat;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .5rem + 1rem);
+}
+
+.c7 .c9 {
+  cursor: default;
+}
+
+.c7 .c15::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 <div
@@ -480,14 +480,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       aria-expanded={false}
       aria-haspopup="listbox"
       aria-owns="listbox-thumbs-up"
-      className="c4 c5 "
+      className="c4 "
       display="flex"
       id="thumbs-up"
       name="thumbsUp"
       role="combobox"
     >
       <div
-        className="c6 c7 c8"
+        className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -496,7 +496,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         <input
           aria-autocomplete="both"
           autoComplete="off"
-          className="c9 c10 c11"
+          className="c8 c9 c10"
           id="listbox-thumbs-up"
           onBlur={[Function]}
           onChange={[Function]}
@@ -510,10 +510,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
     </div>
   </div>
   <div
-    className="c12 "
+    className="c11 "
   >
     <div
-      className="c13 c14"
+      className="c12 c13"
     >
       This is an error
     </div>
@@ -529,6 +529,289 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
+.c5 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
+  height: 36px;
+}
+
+.c8::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c8::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c8:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c8::placeholder {
+  color: #939BA5;
+}
+
+.c8:hover {
+  border-color: #C1C6CC;
+}
+
+.c8:focus,
+.c8:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c10:focus {
+  outline: none;
+}
+
+.c14 .c9 {
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  height: calc(36px - 6px);
+}
+
+.c14 .c9::-webkit-search-decoration,
+.c14 .c9::-webkit-search-cancel-button,
+.c14 .c9::-webkit-search-results-button,
+.c14 .c9::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-color: #ED3B53;
+}
+
+.c6:hover {
+  border-color: #C1C6CC;
+}
+
+.c6:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6:hover {
+  border-color: #CC1F36;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c6 .c9 {
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  height: calc(36px - 6px);
+}
+
+.c6 .c9::-webkit-search-decoration,
+.c6 .c9::-webkit-search-cancel-button,
+.c6 .c9::-webkit-search-results-button,
+.c6 .c9::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c13 {
+  font-size: 0.75rem;
+  color: #CC1F36;
+}
+
+.c0 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c11 {
+  grid-area: messages;
+}
+
+.c0 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c16 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c12 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.c7 {
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
+  background-repeat: no-repeat,repeat;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .5rem + 1rem);
+}
+
+.c7 .c9 {
+  cursor: default;
+}
+
+.c7 .c15::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c3 "
+  >
+    <div
+      aria-expanded={false}
+      aria-haspopup="listbox"
+      aria-owns="listbox-thumbs-up"
+      className="c4 "
+      display="flex"
+      id="thumbs-up"
+      name="thumbsUp"
+      role="combobox"
+    >
+      <div
+        className="c5 c6 c7"
+        fontSize="small"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        width="100%"
+      >
+        <input
+          aria-autocomplete="both"
+          autoComplete="off"
+          className="c8 c9 c10"
+          id="listbox-thumbs-up"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          readOnly={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="c11 "
+  >
+    <div
+      className="c12 c13"
+    >
+      This is an error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A required FieldSelect 1`] = `
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c6 {
   border-radius: 0.25rem;
   border: solid 1px;
@@ -592,36 +875,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   outline: none;
 }
 
-.c15 .c10 {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  box-shadow: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
-  height: calc(36px - 6px);
-}
-
-.c15 .c10::-webkit-search-decoration,
-.c15 .c10::-webkit-search-cancel-button,
-.c15 .c10::-webkit-search-results-button,
-.c15 .c10::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 .c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background-color: #FFFFFF;
-  border-color: #ED3B53;
 }
 
 .c7:hover {
@@ -632,16 +891,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
-}
-
-.c7:hover {
-  border-color: #CC1F36;
-}
-
-.c7:focus,
-.c7:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c7 .c10 {
@@ -665,275 +914,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-.c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c8 .c10 {
-  cursor: default;
-}
-
-.c8 .c16::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
-}
-
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c14 {
-  font-size: 0.75rem;
-  color: #CC1F36;
-}
-
-.c0 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-}
-
-.c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  grid-area: input;
-}
-
-.c0 .c12 {
-  grid-area: messages;
-}
-
-.c0 .c5 {
-  width: 100%;
-}
-
-.c0 .c1 {
-  grid-area: label;
-  padding-bottom: 0.5rem;
-}
-
-.c0 .c17 {
-  grid-area: detail;
-  justify-self: end;
-}
-
-.c0 .c13 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className="c3 "
-  >
-    <div
-      aria-expanded={false}
-      aria-haspopup="listbox"
-      aria-owns="listbox-thumbs-up"
-      className="c4 c5 "
-      display="flex"
-      id="thumbs-up"
-      name="thumbsUp"
-      role="combobox"
-    >
-      <div
-        className="c6 c7 c8"
-        fontSize="small"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        width="100%"
-      >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
-          className="c9 c10 c11"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    className="c12 "
-  >
-    <div
-      className="c13 c14"
-    >
-      This is an error
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A required FieldSelect 1`] = `
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c7 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c10 {
-  height: 36px;
-}
-
-.c10::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c10::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c10:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c10::placeholder {
-  color: #939BA5;
-}
-
-.c10:hover {
-  border-color: #C1C6CC;
-}
-
-.c10:focus,
-.c10:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c12 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c12:focus {
-  outline: none;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-}
-
-.c8:hover {
-  border-color: #C1C6CC;
-}
-
-.c8:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c8 .c11 {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  box-shadow: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
-  height: calc(36px - 6px);
-}
-
-.c8 .c11::-webkit-search-decoration,
-.c8 .c11::-webkit-search-cancel-button,
-.c8 .c11::-webkit-search-results-button,
-.c8 .c11::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c9 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c9 .c11 {
-  cursor: default;
-}
-
-.c9 .c14::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 .c2 {
@@ -969,11 +949,11 @@ exports[`A required FieldSelect 1`] = `
   grid-area: input;
 }
 
-.c0 .c13 {
+.c0 .c12 {
   grid-area: messages;
 }
 
-.c0 .c6 {
+.c0 {
   width: 100%;
 }
 
@@ -982,14 +962,34 @@ exports[`A required FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c16 {
+.c0 .c15 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.c8 {
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
+  background-repeat: no-repeat,repeat;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .5rem + 1rem);
+}
+
+.c8 .c10 {
+  cursor: default;
+}
+
+.c8 .c13::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 <div
@@ -1018,7 +1018,7 @@ exports[`A required FieldSelect 1`] = `
       aria-expanded={false}
       aria-haspopup="listbox"
       aria-owns="listbox-thumbs-up"
-      className="c5 c6 "
+      className="c5 "
       display="flex"
       id="thumbs-up"
       name="thumbsUp"
@@ -1026,7 +1026,7 @@ exports[`A required FieldSelect 1`] = `
       role="combobox"
     >
       <div
-        className="c7 c8 c9"
+        className="c6 c7 c8"
         fontSize="small"
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1035,7 +1035,7 @@ exports[`A required FieldSelect 1`] = `
         <input
           aria-autocomplete="both"
           autoComplete="off"
-          className="c10 c11 c12"
+          className="c9 c10 c11"
           id="listbox-thumbs-up"
           onBlur={[Function]}
           onChange={[Function]}
@@ -1049,7 +1049,7 @@ exports[`A required FieldSelect 1`] = `
     </div>
   </div>
   <div
-    className="c13 "
+    className="c12 "
   />
 </div>
 `;
@@ -1062,7 +1062,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: flex;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -1077,38 +1077,38 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: flex;
 }
 
-.c9 {
+.c8 {
   height: 36px;
 }
 
-.c9::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c9::-moz-placeholder {
+.c8::-moz-placeholder {
   color: #939BA5;
 }
 
-.c9:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c9::placeholder {
+.c8::placeholder {
   color: #939BA5;
 }
 
-.c9:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c9:focus,
-.c9:focus-within {
+.c8:focus,
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -1121,11 +1121,11 @@ exports[`FieldSelect supports labelWeight 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c7 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1133,17 +1133,17 @@ exports[`FieldSelect supports labelWeight 1`] = `
   background-color: #FFFFFF;
 }
 
-.c7:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c7:focus-within {
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c7 .c10 {
+.c6 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1157,33 +1157,13 @@ exports[`FieldSelect supports labelWeight 1`] = `
   height: calc(36px - 6px);
 }
 
-.c7 .c10::-webkit-search-decoration,
-.c7 .c10::-webkit-search-cancel-button,
-.c7 .c10::-webkit-search-results-button,
-.c7 .c10::-webkit-search-results-decoration {
+.c6 .c9::-webkit-search-decoration,
+.c6 .c9::-webkit-search-cancel-button,
+.c6 .c9::-webkit-search-results-button,
+.c6 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-.c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c8 .c10 {
-  cursor: default;
-}
-
-.c8 .c13::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 .c2 {
@@ -1215,11 +1195,11 @@ exports[`FieldSelect supports labelWeight 1`] = `
   grid-area: input;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   grid-area: messages;
 }
 
-.c0 .c5 {
+.c0 {
   width: 100%;
 }
 
@@ -1228,14 +1208,34 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c14 {
+.c0 .c13 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.c7 {
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
+  background-repeat: no-repeat,repeat;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .5rem + 1rem);
+}
+
+.c7 .c9 {
+  cursor: default;
+}
+
+.c7 .c12::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 <div
@@ -1257,14 +1257,14 @@ exports[`FieldSelect supports labelWeight 1`] = `
       aria-expanded={false}
       aria-haspopup="listbox"
       aria-owns="listbox-thumbs-up"
-      className="c4 c5 "
+      className="c4 "
       display="flex"
       id="thumbs-up"
       name="thumbsUp"
       role="combobox"
     >
       <div
-        className="c6 c7 c8"
+        className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1273,7 +1273,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         <input
           aria-autocomplete="both"
           autoComplete="off"
-          className="c9 c10 c11"
+          className="c8 c9 c10"
           id="listbox-thumbs-up"
           onBlur={[Function]}
           onChange={[Function]}
@@ -1287,7 +1287,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
     </div>
   </div>
   <div
-    className="c12 "
+    className="c11 "
   />
 </div>
 `;
