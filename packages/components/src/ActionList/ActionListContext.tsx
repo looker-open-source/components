@@ -28,8 +28,16 @@ import { createContext } from 'react'
 import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
+  canSelect: boolean
   columns?: ActionListColumns
+  itemsSelected: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
+  onSelect?: (id: string) => void
+  onClickRowSelect: boolean
 }
 
-export const ActionListContext = createContext<ActionListContextProps>({})
+export const ActionListContext = createContext<ActionListContextProps>({
+  canSelect: false,
+  itemsSelected: [],
+  onClickRowSelect: false,
+})

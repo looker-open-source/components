@@ -61,7 +61,7 @@ const columns: ActionListColumns = [
 
 const data = [
   {
-    id: 1,
+    id: '1',
     name: 'Richard Garfield',
     type: 'Game Designer',
   },
@@ -83,7 +83,7 @@ const items = data.map(({ id, name, type }) => {
   )
 
   return (
-    <ActionListItem key={id} actions={availableActions}>
+    <ActionListItem key={id} id={id} actions={availableActions}>
       <ActionListItemColumn>{id}</ActionListItemColumn>
       <ActionListItemColumn>{name}</ActionListItemColumn>
       <ActionListItemColumn>{type}</ActionListItemColumn>
@@ -178,6 +178,7 @@ describe('ActionList', () => {
 
         return (
           <ActionListItem
+            id={id}
             key={id}
             actions={availableActions}
             onClick={handleListItemClick}
@@ -248,6 +249,12 @@ describe('ActionList', () => {
       expect(onSort.mock.calls.length).toBe(0)
 
       onSort.mockClear()
+    })
+  })
+
+  xdescribe('Selecting', () => {
+    xtest('Select tests needed', () => {
+      return null
     })
   })
 })
