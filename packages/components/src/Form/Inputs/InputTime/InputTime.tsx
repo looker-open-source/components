@@ -501,7 +501,7 @@ export const InputTime = styled(InternalInputTime).attrs({
   ${space}
   display: inline-block;
   padding: ${({ theme }) => theme.space.xxsmall};
-
+  background: ${({ theme }) => theme.colors.palette.white};
   &:focus-within {
     ${inputTextFocus}
   }
