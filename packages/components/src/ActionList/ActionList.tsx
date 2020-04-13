@@ -65,7 +65,7 @@ export interface ActionListColumn {
   widthPercent?: number
   /**
    * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
-   * Note: You must provide a doSort callback to the parent <ActionList/> component
+   * Note: You must provide a onSort callback to the parent <ActionList/> component
    * @default false
    */
   canSort?: boolean
@@ -82,7 +82,7 @@ export interface ActionListProps {
   /**
    * Sort function provided by the developer
    */
-  doSort?: (id: string, sortDirection: 'asc' | 'desc') => void
+  onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
@@ -90,7 +90,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   header = true,
   children,
   columns,
-  doSort,
+  onSort,
 }) => {
   const actionListHeader =
     header === true ? (
@@ -103,7 +103,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const context = {
     columns,
-    doSort,
+    onSort,
   }
 
   return (

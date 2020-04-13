@@ -41,7 +41,7 @@ export const useActionListSortManager = (
   const [data, setData] = useState(actionListData)
   const [columns, setColumns] = useState(actionListColumns)
 
-  const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
+  const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
     const {
       columns: sortedColumns,
       data: sortedData,
@@ -69,7 +69,7 @@ export const useActionListSortManager = (
   })
 
   return (
-    <ActionList columns={columns} doSort={doSort}>
+    <ActionList columns={columns} onSort={onSort}>
       {items}
     </ActionList>
   )
