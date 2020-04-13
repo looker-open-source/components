@@ -24,24 +24,20 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+describe('ActionListCheckbox', () => {
+  xtest('Renders checked', () => {
+    return null
+  })
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <ActionListDemo />
-    </ComponentsProvider>
-  )
-}
+  xtest('Renders unchecked', () => {
+    return null
+  })
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+  xtest('Renders disable', () => {
+    return null
+  })
+
+  xtest('Calls onChange callback', () => {
+    return null
+  })
 })

@@ -133,10 +133,13 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     }
   }
   input[type='checkbox']:disabled {
+    cursor: not-allowed;
+
     & + ${FauxCheckbox} {
       opacity: 0.5;
     }
   }
+
   ${space}
 `
 

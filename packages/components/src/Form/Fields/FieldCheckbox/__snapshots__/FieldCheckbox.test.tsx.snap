@@ -59,6 +59,10 @@ exports[`A FieldCheckbox 1`] = `
   outline: none;
 }
 
+.c5 input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
 .c5 input[type='checkbox']:disabled + .c6 {
   opacity: 0.5;
 }
@@ -241,6 +245,10 @@ exports[`A FieldCheckbox with checked value 1`] = `
   outline: none;
 }
 
+.c5 input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
 .c5 input[type='checkbox']:disabled + .c6 {
   opacity: 0.5;
 }
@@ -405,6 +413,10 @@ exports[`A required FieldCheckbox 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
+}
+
+.c6 input[type='checkbox']:disabled {
+  cursor: not-allowed;
 }
 
 .c6 input[type='checkbox']:disabled + .c7 {

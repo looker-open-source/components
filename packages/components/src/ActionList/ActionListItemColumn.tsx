@@ -62,12 +62,11 @@ export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
   display: ${(props) => (props.indicator ? 'flex' : undefined)};
   font-size: ${(props) => props.theme.fontSizes.xsmall};
   overflow: hidden;
-  padding-top: ${(props) => props.theme.space.medium};
-  padding-bottom: ${(props) => props.theme.space.medium};
 
   ${ActionListItemColumnInnerLayout} {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
   }
 `

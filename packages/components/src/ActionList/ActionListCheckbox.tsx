@@ -24,24 +24,39 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { Checkbox } from '../Form'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <ActionListDemo />
-    </ComponentsProvider>
-  )
+export interface ActionListCheckboxProps {
+  checked?: boolean
+  disabled?: boolean
+  onChange?: () => void
+  className?: string
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export const checkListProps = ['checked', 'disabled', 'onChange']
+
+const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
+  onChange,
+  checked,
+  disabled,
+  className,
+}) => (
+  <div onClick={onChange} className={className}>
+    <Checkbox
+      disabled={disabled}
+      checked={checked}
+      onChange={disabled ? undefined : onChange}
+    />
+  </div>
+)
+
+export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 3.5rem;
+
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
+`
