@@ -59,6 +59,8 @@ const components: NavigationSection = {
         },
         { title: 'IconButton', path: 'icon-button' },
         { title: 'Link', path: 'link' },
+        { title: 'PageSize', path: 'page-size' },
+        { title: 'Pagination', path: 'pagination' },
       ],
     },
     {
@@ -148,6 +150,7 @@ const components: NavigationSection = {
         { title: 'Confirm', path: 'confirm' },
         { title: 'Dialog', path: 'dialog' },
         { title: 'Drawer', path: 'drawer' },
+        { title: 'Prompt', path: 'prompt' },
       ],
     },
     {

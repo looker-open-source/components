@@ -42,6 +42,8 @@ export * from './Link'
 export * from './List'
 export * from './Menu'
 export * from './Modal'
+export * from './PageSize'
+export * from './Pagination'
 export * from './Popover'
 export * from './Spinner'
 export * from './Sidebar'
@@ -50,7 +52,10 @@ export * from './Tabs'
 export * from './Tooltip'
 export * from './Text'
 export * from './VisuallyHidden'
+
 export * from './utils'
+
+export { ComponentsProvider } from '@looker/components-providers'
 
 /** Provided here for backwards compatibility.
  * @TODO - Remove before 1.0

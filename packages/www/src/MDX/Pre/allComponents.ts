@@ -50,6 +50,7 @@ import {
   Code,
   CodeBlock,
   ColorWheel,
+  ComponentsProvider,
   Confirm,
   ConfirmLayout,
   DateFormat,
@@ -98,9 +99,12 @@ import {
   ModalFooter,
   ModalHeader,
   ModalSurface,
+  PageSize,
+  Pagination,
   Paragraph,
   Popover,
   PopoverContent,
+  Prompt,
   Radio,
   Select,
   SelectMulti,
@@ -132,7 +136,7 @@ import {
 } from '@looker/components'
 import { palette } from '@looker/design-tokens'
 
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
 
@@ -140,7 +144,6 @@ export const allComponents = {
   useState,
 
   styled,
-  ThemeProvider,
 
   isEqual,
 
@@ -170,6 +173,7 @@ export const allComponents = {
   Code,
   CodeBlock,
   ColorWheel,
+  ComponentsProvider,
   Confirm,
   ConfirmLayout,
   DateFormat,
@@ -218,9 +222,12 @@ export const allComponents = {
   ModalFooter,
   ModalHeader,
   ModalSurface,
+  PageSize,
+  Pagination,
   Paragraph,
   Popover,
   PopoverContent,
+  Prompt,
   Radio,
   Select,
   SelectMulti,

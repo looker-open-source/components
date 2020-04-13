@@ -26,15 +26,14 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import { shallow } from 'enzyme'
 import {
   assertSnapshotShallow,
   mountWithTheme,
+  renderWithTheme,
+  shallowWithTheme,
 } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import { Tab } from './Tab'
 import { TabList } from './TabList'
 import { TabPanel } from './TabPanel'
@@ -59,7 +58,7 @@ test('Tabs snapshot works as expected', () => {
 })
 
 test('shows the correct number of navigation tabs', () => {
-  const tabs = shallow(
+  const tabs = shallowWithTheme(
     <Tabs>
       <TabList>
         <Tab>tab1</Tab>
@@ -105,25 +104,23 @@ test('starts with Tab at index 0 opened', () => {
 
 const ChangingPanel = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Tabs>
-        <TabList>
-          <Tab>tab1</Tab>
-          <Tab>tab2</Tab>
-          <Tab disabled>tab3</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>this is tab1 content</TabPanel>
-          <TabPanel>this is tab2 content</TabPanel>
-          <TabPanel>this is tab3 content</TabPanel>
-        </TabPanels>
-      </Tabs>
-    </ThemeProvider>
+    <Tabs>
+      <TabList>
+        <Tab>tab1</Tab>
+        <Tab>tab2</Tab>
+        <Tab disabled>tab3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>this is tab1 content</TabPanel>
+        <TabPanel>this is tab2 content</TabPanel>
+        <TabPanel>this is tab3 content</TabPanel>
+      </TabPanels>
+    </Tabs>
   )
 }
 
 test('clicking on tab opens correct panel', () => {
-  const { getByText, queryByText } = render(<ChangingPanel />)
+  const { getByText, queryByText } = renderWithTheme(<ChangingPanel />)
 
   expect(queryByText('this is tab1 content')).toBeInTheDocument()
   expect(queryByText('this is tab2 content')).not.toBeInTheDocument()
@@ -134,25 +131,23 @@ test('clicking on tab opens correct panel', () => {
 
 const DisableTab = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Tabs>
-        <TabList>
-          <Tab>tab1</Tab>
-          <Tab>tab2</Tab>
-          <Tab disabled>tab3</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>this is tab1 content</TabPanel>
-          <TabPanel>this is tab2 content</TabPanel>
-          <TabPanel>this is the disable tab-panel</TabPanel>
-        </TabPanels>
-      </Tabs>
-    </ThemeProvider>
+    <Tabs>
+      <TabList>
+        <Tab>tab1</Tab>
+        <Tab>tab2</Tab>
+        <Tab disabled>tab3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>this is tab1 content</TabPanel>
+        <TabPanel>this is tab2 content</TabPanel>
+        <TabPanel>this is the disable tab-panel</TabPanel>
+      </TabPanels>
+    </Tabs>
   )
 }
 
 test('clicking on disable tab does not change panel', () => {
-  const { getByText, queryByText } = render(<DisableTab />)
+  const { getByText, queryByText } = renderWithTheme(<DisableTab />)
 
   expect(queryByText('this is tab1 content')).toBeInTheDocument()
   expect(queryByText('this is the disable tab-panel')).not.toBeInTheDocument()
@@ -164,23 +159,21 @@ test('clicking on disable tab does not change panel', () => {
 const TabHooks = () => {
   const tab = useTabs()
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <TabList {...tab}>
-          <Tab>Tab Hook 1</Tab>
-          <Tab>Tab Hook 2</Tab>
-        </TabList>
-        <TabPanels {...tab}>
-          <TabPanel>1 this is the panel of tab hook 1</TabPanel>
-          <TabPanel>2 this is the panel of tab hook 2</TabPanel>
-        </TabPanels>
-      </div>
-    </ThemeProvider>
+    <>
+      <TabList {...tab}>
+        <Tab>Tab Hook 1</Tab>
+        <Tab>Tab Hook 2</Tab>
+      </TabList>
+      <TabPanels {...tab}>
+        <TabPanel>1 this is the panel of tab hook 1</TabPanel>
+        <TabPanel>2 this is the panel of tab hook 2</TabPanel>
+      </TabPanels>
+    </>
   )
 }
 
 test('hooks working', () => {
-  const { getByText, queryByText } = render(<TabHooks />)
+  const { getByText, queryByText } = renderWithTheme(<TabHooks />)
 
   expect(queryByText('1 this is the panel of tab hook 1')).toBeInTheDocument()
   expect(
@@ -195,31 +188,27 @@ test('hooks working', () => {
 
 describe('focus behavior', () => {
   const TabTest = () => (
-    <ThemeProvider theme={theme}>
-      <>
-        <Tabs>
-          <TabList>
-            <Tab>tab1</Tab>
-            <Tab>tab2</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>this is tab1 content</TabPanel>
-            <TabPanel>this is tab2 content</TabPanel>
-          </TabPanels>
-        </Tabs>
-      </>
-    </ThemeProvider>
+    <Tabs>
+      <TabList>
+        <Tab>tab1</Tab>
+        <Tab>tab2</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>this is tab1 content</TabPanel>
+        <TabPanel>this is tab2 content</TabPanel>
+      </TabPanels>
+    </Tabs>
   )
 
   test('Tab Focus: does not render focus ring after click', () => {
-    const { getByText } = render(<TabTest />)
+    const { getByText } = renderWithTheme(<TabTest />)
 
     fireEvent.click(getByText('tab1'))
     expect(getByText('tab1')).toMatchSnapshot()
   })
 
   test('Tab Focus: renders focus ring for keyboard navigation', () => {
-    const { getByText } = render(<TabTest />)
+    const { getByText } = renderWithTheme(<TabTest />)
 
     fireEvent.keyUp(getByText('tab2'), { charCode: 9, code: 9, key: 'Tab' })
     expect(getByText('tab2')).toMatchSnapshot()

@@ -26,11 +26,12 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import {
+  assertSnapshotShallow,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
-import { theme } from '@looker/design-tokens'
+import { fireEvent } from '@testing-library/react'
 import { ButtonTransparent } from './ButtonTransparent'
 
 test('ButtonTransparent is rendered ', () => {
@@ -38,23 +39,19 @@ test('ButtonTransparent is rendered ', () => {
 })
 
 test('ButtonTransparent has the correct style', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <ButtonTransparent>transparent</ButtonTransparent>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <ButtonTransparent>transparent</ButtonTransparent>
   )
 
   expect(getByText('transparent')).toMatchSnapshot()
 })
 
 test('ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <ButtonTransparent>ButtonTransparent</ButtonTransparent>
-        <ButtonTransparent>focus</ButtonTransparent>
-      </>
-    </ThemeProvider>
+  const { getByText } = renderWithTheme(
+    <>
+      <ButtonTransparent>ButtonTransparent</ButtonTransparent>
+      <ButtonTransparent>focus</ButtonTransparent>
+    </>
   )
 
   fireEvent.click(getByText('ButtonTransparent'))

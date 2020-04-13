@@ -1,0 +1,39 @@
+{
+  "name": "@looker/components-providers",
+  "license": "MIT",
+  "version": "0.7.0",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/components",
+    "directory": "packages/components-providers"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:all": "yarn clean && yarn run build:esm && yarn run build:cjs",
+    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es6 --outDir dist/esm",
+    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es6 --outDir dist/cjs",
+    "clean": "rm -Rf ./dist",
+    "declaration": "ttsc --project tsconfig.json",
+    "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
+  },
+  "dependencies": {
+    "@looker/design-tokens": "^0.7.24",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.25",
+    "@types/styled-components": "^4.4.1",
+    "react": "^16.13.1"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  }
+}

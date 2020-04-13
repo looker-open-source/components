@@ -24,17 +24,13 @@
 
  */
 
-import { mount, render } from 'enzyme'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-
 import {
   createWithTheme,
+  mountWithTheme,
   renderWithTheme,
   assertSnapshot,
 } from '@looker/components-test-utils'
-
-import { theme } from '@looker/design-tokens'
 import { FieldSelect } from './FieldSelect'
 
 test('A FieldSelect', () => {
@@ -53,16 +49,14 @@ test('FieldSelect supports labelWeight', () => {
 })
 
 test('Should accept a value', () => {
-  const wrapper = render(
-    <ThemeProvider theme={theme}>
-      <FieldSelect
-        label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
-        value="foobar"
-        options={[{ label: 'Foobar', value: 'foobar' }]}
-      />
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <FieldSelect
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      value="foobar"
+      options={[{ label: 'Foobar', value: 'foobar' }]}
+    />
   )
 
   const input = wrapper.find('input')
@@ -72,17 +66,15 @@ test('Should accept a value', () => {
 test('Should trigger onChange handler', () => {
   const handleChange = jest.fn()
 
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <FieldSelect
-        label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
-        value="foobar"
-        onChange={handleChange}
-        options={[{ label: 'Foobar', value: 'foobar' }]}
-      />
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <FieldSelect
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      value="foobar"
+      onChange={handleChange}
+      options={[{ label: 'Foobar', value: 'foobar' }]}
+    />
   )
 
   wrapper.find('input').simulate('mousedown')

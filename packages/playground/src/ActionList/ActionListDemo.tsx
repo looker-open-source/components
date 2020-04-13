@@ -24,38 +24,52 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   ActionList,
   ActionListColumns,
   ActionListItem,
   ActionListItemColumn,
   ActionListItemAction,
+  ActionListManager,
+  Box,
+  Divider,
   Icon,
   Link,
 } from '@looker/components'
 
+const row1 = {
+  disabled: false,
+  error: undefined,
+  lastSuccessfulBuild: '1-22-20 33:33:33',
+  longPdtName: 'LR$B2DS91230SL_something_something_dark_side',
+  model: 'model_uno',
+  pdtName: 'my_great_pdt_name',
+  persistanceType: 'datagroup_trigger',
+  status: 'Success',
+}
+
 const data = [
+  row1,
   {
-    error: undefined,
-    lastSuccessfulBuild: '1-22-20 33:33:33',
-    longPdtName: 'LR$B2DS91230SL_something_something_dark_side',
-    model: 'model_uno',
-    pdtName: 'my_great_pdt_name',
-    persistanceType: 'datagroup_trigger',
-    status: 'Success',
-  },
-  {
+    ...row1,
     error: {
       link: 'https://google.com',
       message: 'Build Error',
     },
-    lastSuccessfulBuild: '1-22-20 33:33:33',
     longPdtName: 'LR$A4YAL15807AQ2_something_something_evil',
-    model: 'model_uno',
     pdtName: 'my_other_great_pdt_name',
-    persistanceType: 'datagroup_trigger',
     status: 'Failed',
+  },
+  {
+    ...row1,
+    disabled: true,
+    pdtName: 'my_other_great_pdt_name2',
+  },
+  {
+    ...row1,
+    disabled: true,
+    pdtName: 'my_other_great_pdt_name3',
   },
 ]
 
@@ -111,6 +125,18 @@ const MyActions = () => (
 )
 
 export const ActionListDemo: FC = () => {
+  const [selections, setSelections] = useState([
+    'my_other_great_pdt_name',
+    'my_other_great_pdt_name3',
+  ])
+  const onSelect = (selection: string) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+
   const items = data.map(
     ({
       error,
@@ -120,8 +146,11 @@ export const ActionListDemo: FC = () => {
       pdtName,
       persistanceType,
       status,
+      disabled,
     }) => (
       <ActionListItem
+        id={pdtName}
+        disabled={disabled}
         key={pdtName}
         onClick={() => alert(`Row clicked`)}
         actions={<MyActions />}
@@ -161,5 +190,33 @@ export const ActionListDemo: FC = () => {
     )
   )
 
-  return <ActionList columns={columns}>{items}</ActionList>
+  const [isLoading, setIsLoading] = useState(true)
+  setTimeout(() => setIsLoading(false), 750)
+
+  return (
+    <Box m="xxxlarge">
+      <ActionListManager isLoading={isLoading} noResults={false}>
+        <ActionList
+          canSelect
+          onSelect={onSelect}
+          itemsSelected={selections}
+          columns={columns}
+        >
+          {items}
+        </ActionList>
+      </ActionListManager>
+
+      <Divider my="large" />
+
+      <ActionList
+        canSelect
+        onClickRowSelect
+        onSelect={onSelect}
+        itemsSelected={selections}
+        columns={columns}
+      >
+        {items}
+      </ActionList>
+    </Box>
+  )
 }
