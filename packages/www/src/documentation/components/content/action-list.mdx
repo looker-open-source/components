@@ -47,24 +47,26 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
     },
   ]
 
-  const MyActions = () => (
-    <>
-      <ActionListItemAction onClick={() => alert(`Cheese selected!`)}>
-        Select Cheese
-      </ActionListItemAction>
-    </>
-  )
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
 
-  const items = data.map(({ id, name }) => (
-    <ActionListItem
-      key={id}
-      onClick={() => alert(`Row clicked`)}
-      actions={<MyActions />}
-    >
-      <ActionListItemColumn>{id}</ActionListItemColumn>
-      <ActionListItemColumn>{name}</ActionListItemColumn>
-    </ActionListItem>
-  ))
+    return (
+      <ActionListItem
+        key={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
 
   return <ActionList columns={columns}>{items}</ActionList>
 }
@@ -76,7 +78,7 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
 
 The `<ActionListItem>` component represents a row of data in your Action List.
 
-To define actions on a row, pass in `<ActionListItemAction>` elements (usually wrapped in a React.Fragment) into the `actions` prop.
+To define actions on a row, pass in `<ActionListItemAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
 
 You can also pass a callback to the `onClick` prop, but note that this callback will not fire when clicking on the Vertical Dots `<IconButton />`.
 
