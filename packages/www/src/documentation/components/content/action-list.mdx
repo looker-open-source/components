@@ -98,7 +98,7 @@ Passing in a React element into the `indicator` prop will display said element l
 
 ```jsx
 ;() => {
-  const MyDetail = () => (
+  const link = (
     <Link
       onClick={(event) => event.stopPropagation()}
       href="https://en.wikipedia.org/wiki/Cheddar_cheese"
@@ -107,36 +107,23 @@ Passing in a React element into the `indicator` prop will display said element l
     </Link>
   )
 
-  const MyIndicator = () => (
-    <Flex
-      width="100%"
-      height="100%"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Icon
-        name="User"
-        color="palette.purple300"
-        size={24}
-        marginRight="small"
-      />
-    </Flex>
+  const indicator = (
+    <Icon name="User" color="palette.purple300" size={24} marginRight="small" />
   )
 
+  const columns = [
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 100,
+    },
+  ]
+
   return (
-    <ActionList
-      columns={[
-        {
-          id: 'name',
-          title: 'Name',
-          type: 'string',
-          widthPercent: 100,
-        },
-      ]}
-    >
+    <ActionList columns={columns}>
       <ActionListItem onClick={() => alert(`Row clicked`)}>
-        <ActionListItemColumn detail={<MyDetail />} indicator={<MyIndicator />}>
+        <ActionListItemColumn detail={link} indicator={indicator}>
           Cheddar
         </ActionListItemColumn>
       </ActionListItem>
@@ -153,18 +140,111 @@ Passing in a React element into the `indicator` prop will display said element l
 
 The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
 
-## ActionListLayout
+## ActionListManager
 
-<Props of="ActionListLayout" />
+<Props of="ActionListManager" />
 
-In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListLayout>` component to conditionally render a loading icon until your data is ready.
+In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListManager>` component to conditionally render a loading icon until your data is ready.
 
-Passing a falsy value into an `<ActionListLayout>`'s `isLoading` prop will render a `<Spinner>` icon. Once the `isLoading` prop receives a truthy value, its child will rendered instead.
+Passing a falsy value into an `<ActionListManager>`'s `isLoading` prop will render a `<Spinner>` icon. Once the `isLoading` prop receives a boolean 'true', its child will rendered instead.
 
-You can also use an `<ActionListLayout>` element to render a "No Results" message using the `noResults` prop.
+You can also use an `<ActionListManager>` element to render a "No Results" message using the `noResults` prop.
 
-<i>Example coming soon...</i>
+```jsx
+;() => {
+  const [isLoading, setIsLoading] = useState(true)
+  setTimeout(() => setIsLoading(false), 5000)
+
+  return (
+    <ActionListManager isLoading={isLoading} noResults={false}>
+      Swiss
+    </ActionListManager>
+  )
+}
+```
 
 ## Sorting an Action List
 
-<i>Coming Soon...</i>
+You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop. Note that only columns whose corresponding column objects have `canSort: true` will be sortable.
+
+Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
+
+The function passed into `onSort`, generally speaking, should perform these actions for proper sorting behavior:
+
+- Update the corresponding column object to have a new sort direction
+- Sort the collection representing your data
+
+**Note:** If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+
+```jsx
+;() => {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ])
+
+  const [columns, setColumns] = useState([
+    {
+      canSort: true,
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      canSort: true,
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ])
+
+  const onSort = (id, sortDirection) => {
+    const {
+      columns: sortedColumns,
+      data: sortedData,
+    } = doDefaultActionListSort(data, columns, id, sortDirection)
+    setData(sortedData)
+    setColumns(sortedColumns)
+  }
+
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList onSort={onSort} columns={columns}>
+      {items}
+    </ActionList>
+  )
+}
+```
