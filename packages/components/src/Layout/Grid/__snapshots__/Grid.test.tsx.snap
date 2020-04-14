@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid default 1`] = `
+.c0 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 1rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Grid with specified columns 1`] = `
+.c0 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 1rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Grid with specified gap 1`] = `
+.c0 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 2rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;

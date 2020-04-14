@@ -1,7 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpaceVertical default  1`] = `ShallowWrapper {}`;
+exports[`SpaceVertical default 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
 
-exports[`SpaceVertical reversed  1`] = `ShallowWrapper {}`;
+.c0 > * {
+  margin-top: 1rem;
+}
 
-exports[`SpaceVertical with specified gap  1`] = `ShallowWrapper {}`;
+.c0 > :first-child {
+  margin-top: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`SpaceVertical reversed 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.c0 > * {
+  margin-top: 1rem;
+}
+
+.c0 > :last-child {
+  margin-top: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`SpaceVertical with specified gap 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 > * {
+  margin-top: 2rem;
+}
+
+.c0 > :first-child {
+  margin-top: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;

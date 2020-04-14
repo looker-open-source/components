@@ -26,11 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Space } from './Space'
 
-test('Space default ', () => {
-  assertSnapshotShallow(
+test('Space default', () => {
+  assertSnapshot(
     <Space>
       <div>🥑</div>
       <div>🐛</div>
@@ -40,8 +40,8 @@ test('Space default ', () => {
   )
 })
 
-test('Space with specified gap ', () => {
-  assertSnapshotShallow(
+test('Space with specified gap', () => {
+  assertSnapshot(
     <Space gap="xlarge">
       <div>🥑</div>
       <div>🐛</div>
@@ -51,8 +51,8 @@ test('Space with specified gap ', () => {
   )
 })
 
-test('Space reversed ', () => {
-  assertSnapshotShallow(
+test('Space reversed', () => {
+  assertSnapshot(
     <Space reverse>
       <div>🥑</div>
       <div>🐛</div>

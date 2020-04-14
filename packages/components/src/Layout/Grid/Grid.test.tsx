@@ -27,37 +27,37 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-import { SpaceVertical } from './SpaceVertical'
+import { Grid } from './Grid'
 
-test('SpaceVertical default', () => {
+test('Grid default', () => {
   assertSnapshot(
-    <SpaceVertical>
+    <Grid>
       <div>🥑</div>
       <div>🐛</div>
       <div>🦜</div>
       <div>🐈</div>
-    </SpaceVertical>
+    </Grid>
   )
 })
 
-test('SpaceVertical with specified gap', () => {
+test('Grid with specified gap', () => {
   assertSnapshot(
-    <SpaceVertical gap="xlarge">
+    <Grid gap="xlarge">
       <div>🥑</div>
       <div>🐛</div>
       <div>🦜</div>
       <div>🐈</div>
-    </SpaceVertical>
+    </Grid>
   )
 })
 
-test('SpaceVertical reversed', () => {
+test('Grid with specified columns', () => {
   assertSnapshot(
-    <SpaceVertical reverse>
+    <Grid columns={4}>
       <div>🥑</div>
       <div>🐛</div>
       <div>🦜</div>
       <div>🐈</div>
-    </SpaceVertical>
+    </Grid>
   )
 })
