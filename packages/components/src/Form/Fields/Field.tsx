@@ -35,7 +35,7 @@ import {
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { FlexItem } from '../../Layout/FlexItem'
+import { Flex, FlexItem } from '../../Layout'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
 import { Text } from '../../Text/Text'
@@ -44,7 +44,6 @@ import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
-import { Flex } from '../../Layout'
 import { InputText, Select } from '../Inputs'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>

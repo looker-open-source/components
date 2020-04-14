@@ -27,7 +27,7 @@ import { palette } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { Box } from '../../../Layout/Box'
+import { Box } from '../../../Layout'
 import { IconButton } from '../../../Button'
 import { Text } from '../../../Text'
 

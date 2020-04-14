@@ -37,7 +37,7 @@ import {
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
-import { Box } from '../../../Layout/Box'
+import { Box } from '../../../Layout'
 import { useFocusManagement } from './utils/useFocusManagement'
 import {
   ComboboxCallback,
