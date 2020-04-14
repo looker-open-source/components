@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.26] - 2020-04-14
 
+- `InputTime` component
+
 ### Added
 
 - `ActionListManager` component

@@ -139,7 +139,7 @@ test('values are removed by clicking remove on the chip', () => {
 
 test('new values are validated', () => {
   const onChangeMock = jest.fn()
-  const onInvalidMock = jest.fn()
+  const onValidationFailMock = jest.fn()
   const onDuplicateMock = jest.fn()
 
   const validate = jest.fn((value) => value === 'tag1')
@@ -149,7 +149,7 @@ test('new values are validated', () => {
       values={[]}
       placeholder="type here"
       validate={validate}
-      onInvalid={onInvalidMock}
+      onValidationFail={onValidationFailMock}
       onDuplicate={onDuplicateMock}
     />
   )
@@ -159,7 +159,7 @@ test('new values are validated', () => {
   expect(onChangeMock).not.toHaveBeenCalled()
   // invalid value remains in the input
   expect(input).toHaveValue('tag2')
-  expect(onInvalidMock).toHaveBeenCalledWith(['tag2'])
+  expect(onValidationFailMock).toHaveBeenCalledWith(['tag2'])
 
   // value should be trimmed before validation
   fireEvent.change(input, { target: { value: ' tag1,' } })

@@ -40,7 +40,7 @@ import {
  */
 
 export interface InputChipsProps
-  extends Omit<InputChipsCommonProps, 'onInvalid'>,
+  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
     InputChipsControlProps,
     Partial<InputChipsInputControlProps> {
   /**
@@ -50,7 +50,7 @@ export interface InputChipsProps
   /**
    * callback when values fail validation
    */
-  onInvalid?: (values: string[]) => void
+  onValidationFail?: (values: string[]) => void
   /**
    * callback when values are duplicates
    */
@@ -96,7 +96,7 @@ export const InputChipsInternal = forwardRef(
       inputValue: controlledInputValue,
       onInputChange,
       validate,
-      onInvalid,
+      onValidationFail,
       onDuplicate,
       ...props
     }: InputChipsProps,
@@ -142,7 +142,7 @@ export const InputChipsInternal = forwardRef(
       }
 
       if (invalidValues.length > 0) {
-        onInvalid && onInvalid(invalidValues)
+        onValidationFail && onValidationFail(invalidValues)
       }
       if (duplicateValues.length > 0) {
         onDuplicate && onDuplicate(duplicateValues)
