@@ -24,32 +24,14 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import { css } from 'styled-components'
+import { reset, space, SpaceProps } from '@looker/design-tokens'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SimpleLayoutProps extends SpaceProps {}
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
+export const simpleLayoutCSS = css`
+  ${reset}
+
+  ${space}
 `

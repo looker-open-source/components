@@ -24,32 +24,39 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import { Code, Heading, Space, Button, SpaceVertical } from '@looker/components'
+import React from 'react'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+export const SpaceExamples = () => (
+  <>
+    <Heading my="large">
+      <Code>Space</Code>
+    </Heading>
+    <Space>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </Space>
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
+    <Space reverse>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </Space>
+
+    <Heading my="large">
+      <Code>SpaceVertical</Code>
+    </Heading>
+    <SpaceVertical>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </SpaceVertical>
+
+    <SpaceVertical reverse>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </SpaceVertical>
+  </>
+)

@@ -30,12 +30,12 @@ import {
   flexbox,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { LayoutComponentProps, layoutCSS } from '../Layout/layout'
+import { ComplexLayoutProps, complexLayoutCSS } from '../Layout/utils/complex'
 
 export interface CardProps
   extends CompatibleHTMLProps<HTMLElement>,
     FlexboxProps,
-    LayoutComponentProps {
+    ComplexLayoutProps {
   /**
    * Show card with a BoxShadow applied
    * @default false
@@ -59,7 +59,7 @@ const raised = (props: CardProps) =>
   `
 
 export const Card = styled.div<CardProps>`
-  ${layoutCSS}
+  ${complexLayoutCSS}
   ${flexbox}
 
   transition: border ${cardTransition}, box-shadow ${cardTransition};

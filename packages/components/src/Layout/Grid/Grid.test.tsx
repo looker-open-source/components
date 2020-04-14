@@ -24,32 +24,40 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { Grid } from './Grid'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+test('Grid default', () => {
+  assertSnapshot(
+    <Grid>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Grid>
+  )
+})
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
+test('Grid with specified gap', () => {
+  assertSnapshot(
+    <Grid gap="xlarge">
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Grid>
+  )
+})
+
+test('Grid with specified columns', () => {
+  assertSnapshot(
+    <Grid columns={4}>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Grid>
+  )
+})

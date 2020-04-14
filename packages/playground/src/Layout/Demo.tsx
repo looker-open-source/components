@@ -24,32 +24,25 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import React, { FC } from 'react'
+import { Box, Divider, Heading } from '@looker/components'
+import { GridExamples } from './GridExamples'
+import { SpaceExamples } from './SpaceExamples'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+const DemoHeader: FC = ({ children }) => (
+  <Heading fontSize="xlarge" fontWeight="semiBold">
+    {children}
+  </Heading>
+)
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
+export const Demo = () => (
+  <Box m="xxxlarge">
+    <DemoHeader>Spaces</DemoHeader>
+    <SpaceExamples />
+
+    <Divider />
+
+    <DemoHeader>Grid</DemoHeader>
+    <GridExamples />
+  </Box>
+)

@@ -24,32 +24,18 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import { Box, BoxProps } from '@looker/components'
+import React, { FC } from 'react'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
-
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
+export const GridPlaceholder: FC<BoxProps> = (props) => (
+  <Box
+    color="white"
+    bg="palette.green400"
+    justifyContent="center"
+    alignItems="center"
+    height="100%"
+    width="100%"
+    display="flex"
+    {...props}
+  />
+)

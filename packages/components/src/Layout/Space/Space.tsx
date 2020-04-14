@@ -24,32 +24,43 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import styled, { css } from 'styled-components'
+import { SpacingSizes } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+export interface SpaceHelperProps extends SimpleLayoutProps {
+  /**
+   * Amount of space between grid cells
+   * @default 'medium'
+   */
+  gap?: SpacingSizes
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
+  /**
+   * reverse direction of content
+   * @default false
+   */
+  reverse?: boolean
+}
+
+export const defaultSpaceSize = 'medium'
+
+export const spaceCSS = css`
+  ${simpleLayoutCSS}
+
+  display: flex;
+  align-items: flex-start;
+`
+
+export const Space = styled.div<SpaceHelperProps>`
+  ${spaceCSS}
+  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
+
+  > * {
+    margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
+  }
+
+  ${({ theme, reverse }) =>
+    reverse
+      ? `> :last-child { margin-left: ${theme.space.none}; }`
+      : `> :first-child { margin-left: ${theme.space.none}; }`}
 `

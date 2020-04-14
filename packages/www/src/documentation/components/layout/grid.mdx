@@ -1,0 +1,60 @@
+---
+title: Space
+propsOf: Space
+github: Layout/Space
+---
+
+`<Grid />` provides a simple implementation of the CSS Grid.
+
+## Default
+
+Out-of-the-box the `Grid` has two columns with a "medium" `gap` between grid cells.
+
+```jsx
+<Grid>
+  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
+  <GridPlaceholder>B</GridPlaceholder>
+  <GridPlaceholder>C</GridPlaceholder>
+  <GridPlaceholder>D</GridPlaceholder>
+</Grid>
+```
+
+## Columns
+
+Use the `columns` prop to specify the number of columns to display.
+
+```jsx
+<Grid columns={4}>
+  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
+  <GridPlaceholder>B</GridPlaceholder>
+  <GridPlaceholder>C</GridPlaceholder>
+  <GridPlaceholder>D</GridPlaceholder>
+</Grid>
+```
+
+```jsx
+<Grid columns={1}>
+  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
+  <GridPlaceholder>B</GridPlaceholder>
+  <GridPlaceholder>C</GridPlaceholder>
+  <GridPlaceholder>D</GridPlaceholder>
+</Grid>
+```
+
+## Gap
+
+Specify `gap` to change the distance between grid cells (defaults to `medium`)
+
+```jsx
+<Grid gap="xxxlarge">
+  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
+  <GridPlaceholder>B</GridPlaceholder>
+</Grid>
+```
+
+```jsx
+<Grid gap="none">
+  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
+  <GridPlaceholder>B</GridPlaceholder>
+</Grid>
+```

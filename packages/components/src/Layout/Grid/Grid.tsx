@@ -24,56 +24,24 @@
 
  */
 
-import {
-  border,
-  boxShadow,
-  color,
-  position,
-  layout,
-  reset,
-  space,
-  typography,
-  BorderProps,
-  BoxShadowProps,
-  ColorProps,
-  PositionProps,
-  LayoutProps,
-  SpaceProps,
-  TypographyProps,
-} from '@looker/design-tokens'
-import { css } from 'styled-components'
+import styled from 'styled-components'
+import { defaultSpaceSize, SpaceHelperProps } from '../Space'
+import { simpleLayoutCSS } from '../utils/simple'
 
-export interface LayoutComponentProps
-  extends BorderProps,
-    BoxShadowProps,
-    ColorProps,
-    LayoutProps,
-    PositionProps,
-    SpaceProps,
-    TypographyProps {
-  color?: any
+export interface GridProps extends SpaceHelperProps {
+  /**
+   * Number of columns to display
+   * @default 2
+   */
+  columns?: number
 }
 
-export const layoutCSS = css`
-  /**
-   * Rules here should provide convenience styling for Box derived components.
-   * Generally anything here could be overwritten by explicit values set via
-   * Box's prop values. For example a function here that sets 'cursor: pointer'
-   * would be overwritten by an explicit <Box cursor='copy'/>.
-   */
-  ${reset}
+export const Grid = styled.div<GridProps>`
+  ${simpleLayoutCSS}
 
-  /**
-   * Style Utilities that extend Box's props. Most of these come from
-   * styled-system but some are Looker UI Components specific.
-   *
-   * These should be last to override rules with lower priority.
-   */
-  ${border}
-  ${boxShadow}
-  ${color}
-  ${layout}
-  ${position}
-  ${space}
-  ${typography}
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(${({ columns }) => columns || 2}, 1fr);
+  grid-gap: ${({ gap, theme }) => theme.space[gap || defaultSpaceSize]};
 `
