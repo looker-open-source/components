@@ -24,10 +24,17 @@
 
  */
 
-import { Box, Divider, Grid, Heading, SpaceVertical } from '@looker/components'
-import React from 'react'
+import {
+  Box,
+  BoxProps,
+  Divider,
+  Grid,
+  Heading,
+  SpaceVertical,
+} from '@looker/components'
+import React, { FC } from 'react'
 
-const Placeholder = (props) => (
+const Placeholder: FC<BoxProps> = (props) => (
   <Box
     color="white"
     bg="palette.purple500"

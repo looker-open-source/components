@@ -24,12 +24,12 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { Box, Divider, Heading } from '@looker/components'
 import { GridExamples } from './GridExamples'
 import { SpaceExamples } from './SpaceExamples'
 
-const DemoHeader = ({ children }) => (
+const DemoHeader: FC = ({ children }) => (
   <Heading fontSize="xlarge" fontWeight="semiBold">
     {children}
   </Heading>
