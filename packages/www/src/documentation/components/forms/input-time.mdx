@@ -109,3 +109,65 @@ You can combine the `id` prop with form label, so that when the label is clicked
   )
 }
 ```
+
+## Focus & Blur
+
+`onFocus` callback will fire when any of the three sub-fields (hour, minute, period) are focused. `onBlur` fires when the focus moves outside the component entirely.
+
+```js
+;() => {
+  const [isFocused, setIsFocused] = useState(false)
+  const handleFocus = () => setIsFocused(true)
+  const handleBlur = () => setIsFocused(false)
+
+  return (
+    <>
+      <InputTime onFocus={handleFocus} onBlur={handleBlur} />
+      {isFocused && (
+        <Text color="green" ml="small">
+          FOCUSED!!
+        </Text>
+      )}
+    </>
+  )
+}
+```
+
+## Validation Error State
+
+You can render a failed validation state with the prop `validationType="error"`.
+
+```js
+<InputTime validationType="error" />
+```
+
+## onValidationFail
+
+In addition, `InputTime` will automatically check whether the provided `value` prop is actually a valid 24 hour time string, and fire the `onValidationFail` callback.
+
+```js
+;() => {
+  const [validationType, setValidationType] = useState()
+  const value = 'Stardate 2004.14'
+  const handleValidationFail = () => {
+    setValidationType('error')
+  }
+  return (
+    <>
+      <InputTime
+        validationType={validationType}
+        value={value}
+        onValidationFail={handleValidationFail}
+      />
+      {validationType === 'error' && (
+        <Box mt="xsmall">
+          <Text color="red" fontSize="small" fontWeight="bold">
+            Error: <Code fontSize="small">{value}</Code> is not a valid 24-hour
+            time string
+          </Text>
+        </Box>
+      )}
+    </>
+  )
+}
+```

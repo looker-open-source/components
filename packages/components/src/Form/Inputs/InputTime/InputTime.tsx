@@ -71,13 +71,13 @@ export interface InputTimeProps extends SpaceProps, BorderProps {
   value?: string
   onChange?: (time?: string) => void
   validationType?: ValidationType
-  onValidationFail?: (value: string) => void
+  onValidationFail?: (value?: string) => void
   className?: string
   disabled?: boolean
   readOnly?: boolean
   id?: string
-  onFocus: (e: SyntheticEvent) => void
-  onBlur: (e: SyntheticEvent) => void
+  onFocus?: (e: SyntheticEvent) => void
+  onBlur?: (e: SyntheticEvent) => void
   required?: boolean
 }
 
@@ -276,6 +276,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
   onFocus,
   onBlur,
   required,
+  onValidationFail,
 }) => {
   const [inputState, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -433,6 +434,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
         period !== newPeriod &&
           dispatch({ payload: newPeriod, type: 'SET_PERIOD_VALUE' })
       } else {
+        onValidationFail && onValidationFail(valueProp)
         // eslint-disable-next-line no-console
         console.error(
           `Invalid time ("${valueProp}") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`

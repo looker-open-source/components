@@ -239,3 +239,19 @@ test('up/down arrow keys cycle through possible values', () => {
   })
   expect((inputPeriod as HTMLInputElement).value).toEqual('AM')
 })
+
+test('fires onValidationFail callback when an invalid time value prop is passed in', () => {
+  const mockProps: InputTimeProps = {
+    onValidationFail: jest.fn(),
+    value: 'Stardate 2004.14',
+  }
+
+  expect(mockProps.onValidationFail).not.toHaveBeenCalled()
+
+  const { inputHour, inputMinute, inputPeriod } = selectSubInputs(mockProps)
+
+  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
+  expect((inputHour as HTMLInputElement).value).toEqual('')
+  expect((inputMinute as HTMLInputElement).value).toEqual('')
+  expect((inputPeriod as HTMLInputElement).value).toEqual('')
+})
