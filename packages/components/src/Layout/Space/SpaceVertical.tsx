@@ -24,9 +24,19 @@
 
  */
 
-export { Box, BoxProps } from './Box'
-export { Flex, FlexProps } from './Flex'
-export { FlexItem, FlexItemProps } from './FlexItem'
+import styled from 'styled-components'
+import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
 
-export * from './Space'
-export * from './Grid'
+export const SpaceVertical = styled.div<SpaceHelperProps>`
+  ${spaceCSS}
+
+  flex-direction: column;
+
+  > * {
+    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
+  }
+
+  > :first-child {
+    margin-top: ${({ theme }) => theme.space.none};
+  }
+`

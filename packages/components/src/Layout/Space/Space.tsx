@@ -24,9 +24,35 @@
 
  */
 
-export { Box, BoxProps } from './Box'
-export { Flex, FlexProps } from './Flex'
-export { FlexItem, FlexItemProps } from './FlexItem'
+import styled, { css } from 'styled-components'
+import { SpacingSizes } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
-export * from './Space'
-export * from './Grid'
+export interface SpaceHelperProps extends SimpleLayoutProps {
+  /**
+   * @default 'medium'
+   */
+  gap?: SpacingSizes
+}
+
+export const defaultSpaceSize = 'medium'
+
+export const spaceCSS = css`
+  ${simpleLayoutCSS}
+
+  display: flex;
+  align-items: flex-start;
+`
+
+export const Space = styled.div<SpaceHelperProps>`
+  ${spaceCSS}
+  flex-direction: row;
+
+  > * {
+    margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
+  }
+
+  > :first-child {
+    margin-left: ${({ theme }) => theme.space.none};
+  }
+`
