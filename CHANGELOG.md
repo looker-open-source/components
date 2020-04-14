@@ -5,32 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.26] - 2020-04-14
 
 ### Added
 
-- Layout components
-  - `Grid` component
-  - `Space` & `SpaceVertical` components
-- `SelectMulti` component
-- `CodeBlock` component
-- `InputTimeSelect` component
-- `Board`, `ShareAlt` Icon
-- `ActionListItemAction` accepts color prop when value is "danger"
-- `Prompt` component
 - `ActionListManager` component
-- `Pagination` component
+- `CodeBlock` component
 - `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
-- New Icons `VisibilityOutline`, `SendEmail`, `SendSftp`, `SendWebhook`
+- `Grid` component
+- `InputTimeSelect` component
+- `Pagination` component
+- `Prompt` component
+- `SelectMulti` component
+- `Space` & `SpaceVertical` components
+- Icons - `Board`, `ShareAlt`,`SendEmail`, `SendSftp`, `SendWebhook`, `VisibilityOutline`,
 
 ### Changed
 
-- `Share` Icon updated
+- `ActionListItemAction` accepts `color` prop (only takes `danger`)
+- Icons - `Share` updated
 
 ### Fixed
 
 - `usePopper` (used in `Popover` and `Tooltip`) positioning issue with `placement="top"` and offset parent is the window
-- `Select` runtime error with no options, defaultValue or placeholder
+- `Select` no longer throws a runtime error when no options, defaultValue or placeholder are specified
 
 ## [0.7.25] - 2020-03-23
 

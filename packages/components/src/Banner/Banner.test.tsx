@@ -45,9 +45,9 @@ test('Confirmation banner', () => {
   assertSnapshot(<Banner intent="confirmation">Confirmation</Banner>)
 })
 
-test('Dismissable banner', () => {
+test('Banner can be dismissed', () => {
   assertSnapshot(
-    <Banner intent="info" dismissable>
+    <Banner intent="info" canDismiss>
       Info!
     </Banner>
   )
