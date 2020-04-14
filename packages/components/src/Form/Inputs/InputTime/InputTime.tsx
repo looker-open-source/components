@@ -32,7 +32,6 @@ import React, {
   useEffect,
   useRef,
   RefObject,
-  useState,
   SyntheticEvent,
 } from 'react'
 import styled from 'styled-components'
@@ -79,6 +78,7 @@ export interface InputTimeProps extends SpaceProps, BorderProps {
   id?: string
   onFocus: (e: SyntheticEvent) => void
   onBlur: (e: SyntheticEvent) => void
+  required?: boolean
 }
 
 type Periods = 'AM' | 'PM' | ''
@@ -275,6 +275,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
   id,
   onFocus,
   onBlur,
+  required,
 }) => {
   const [inputState, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -479,6 +480,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
             data-testid="input-hour"
             disabled={disabled}
             readOnly={readOnly}
+            required={required}
           />
           <div>:</div>
           <InputText
@@ -493,6 +495,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
             data-testid="input-minute"
             disabled={disabled}
             readOnly={readOnly}
+            required={required}
           />
           {format === '12h' ? (
             <InputText
@@ -507,6 +510,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
               data-testid="input-period"
               disabled={disabled}
               readOnly={readOnly}
+              required={required}
             />
           ) : (
             <span />
