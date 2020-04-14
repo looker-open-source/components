@@ -26,27 +26,41 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useRef } from 'react'
+import React, { FC, ReactNode, useContext, useRef } from 'react'
 import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
+import { ActionListContext } from './ActionListContext'
 
 export interface ActionListItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
   actions?: ReactNode
+  id: string
+  disabled?: boolean
 }
 
 const ActionListItemInternal: FC<ActionListItemProps> = ({
-  children,
   actions,
-  onClick,
+  children,
   className,
+  disabled,
+  id,
+  onClick,
 }) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
+  const { canSelect, itemsSelected, onSelect, onClickRowSelect } = useContext(
+    ActionListContext
+  )
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     onClick && onClick(event)
   }
+  const handleClick = disabled
+    ? undefined
+    : onClickRowSelect
+    ? handleOnSelect
+    : handleOnClick
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
@@ -70,6 +84,8 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
     </div>
   )
 
+  const onChange = onSelect ? () => onSelect(id) : undefined
+
   return (
     <ActionListRow
       className={className}
@@ -78,6 +94,11 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
+      hasCheckbox={canSelect}
+      onChange={onChange}
+      checked={itemsSelected.includes(id)}
+      disabled={disabled}
+      supportsRaised={!onClickRowSelect}
     >
       {children}
     </ActionListRow>
@@ -87,17 +108,4 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 export const ActionListItem = styled(ActionListItemInternal)`
   border-bottom: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
   display: flex;
-
-  &:focus,
-  &:hover {
-    box-shadow: ${({ theme, onClick }) => onClick && theme.shadows[2]};
-    cursor: ${({ onClick }) => onClick && 'pointer'};
-    outline: none;
-
-    /**
-      The hovered ActionListItem needs to sit above its siblings (otherwise the bottom box-shadow is covered up).
-      Using position relative to paint it above static siblings.
-     */
-    position: relative;
-  }
 `

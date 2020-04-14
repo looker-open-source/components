@@ -59,6 +59,8 @@ const components: NavigationSection = {
         },
         { title: 'IconButton', path: 'icon-button' },
         { title: 'Link', path: 'link' },
+        { title: 'PageSize', path: 'page-size' },
+        { title: 'Pagination', path: 'pagination' },
       ],
     },
     {

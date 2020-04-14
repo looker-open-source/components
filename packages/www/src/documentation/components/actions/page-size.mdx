@@ -1,0 +1,24 @@
+---
+title: PageSize
+github: PageSize
+---
+
+At its core, `<PageSize/>` is a composition of `<Select/>` and `<Text/>`.
+
+A typical use case of `<PageSize/>` is to set the number of viewable items on each page in a paginated list.
+
+Regarding implementation details, a `<PageSize/>` element will call the callback it received via its `onChange` prop any time a user selects a new options from the `<Select/>`, passing in the newly selected value.
+
+```jsx
+;() => {
+  const [value, setValue] = useState(10)
+  return (
+    <PageSize
+      value={value}
+      options={[5, 10, 20, 50]}
+      total={100}
+      onChange={setValue}
+    />
+  )
+}
+```

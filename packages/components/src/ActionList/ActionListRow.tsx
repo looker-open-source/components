@@ -25,37 +25,52 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
+import pick from 'lodash/pick'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
+import {
+  ActionListCheckbox,
+  ActionListCheckboxProps,
+  checkListProps,
+} from './ActionListCheckbox'
 
 export interface ActionListItemLayoutProps
-  extends CompatibleHTMLProps<HTMLElement> {
+  extends ActionListCheckboxProps,
+    Omit<CompatibleHTMLProps<HTMLElement>, 'onChange'> {
   secondary?: ReactNode
+  hasCheckbox?: boolean
+  /**
+   * @default true
+   */
+  supportsRaised?: boolean
 }
 
 export const ActionListRowColumns = styled.div``
-
 const ActionListRowSupplementary = styled.div``
 
 const ActionListRowLayout = forwardRef(
   (props: ActionListItemLayoutProps, ref: Ref<HTMLDivElement>) => {
     const {
       className,
+      hasCheckbox,
       children,
-      secondary,
       onClick,
       onKeyDown,
+      secondary,
       tabIndex,
     } = props
+
     return (
       <div
         ref={ref}
         className={className}
-        onClick={onClick}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
       >
-        <ActionListRowColumns>{children}</ActionListRowColumns>
+        {hasCheckbox && <ActionListCheckbox {...pick(props, checkListProps)} />}
+        <ActionListRowColumns onClick={onClick}>
+          {children}
+        </ActionListRowColumns>
         <ActionListRowSupplementary>{secondary}</ActionListRowSupplementary>
       </div>
     )
@@ -66,6 +81,29 @@ ActionListRowLayout.displayName = 'ActionListRowLayout'
 
 export const ActionListRow = styled(ActionListRowLayout)`
   display: flex;
+
+  background: ${({ checked, disabled, theme }) =>
+    disabled
+      ? theme.colors.palette.charcoal100
+      : checked
+      ? theme.colors.palette.purple000
+      : undefined};
+
+  &:focus,
+  &:hover {
+    box-shadow: ${({ theme, supportsRaised, onClick }) =>
+      supportsRaised && onClick && theme.shadows[2]};
+    background: ${({ theme, supportsRaised, onClick }) =>
+      !supportsRaised && onClick && theme.colors.palette.blue100};
+    cursor: ${({ onClick }) => onClick && 'pointer'};
+    outline: none;
+
+    /**
+      The hovered ActionListItem needs to sit above its siblings (otherwise the bottom box-shadow is covered up).
+      Using position relative to paint it above static siblings.
+     */
+    position: relative;
+  }
 
   ${ActionListRowColumns} {
     flex-grow: 1;
@@ -78,3 +116,5 @@ export const ActionListRow = styled(ActionListRowLayout)`
     align-items: center;
   }
 `
+
+ActionListRow.defaultProps = { supportsRaised: true }

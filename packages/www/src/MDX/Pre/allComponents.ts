@@ -25,6 +25,10 @@
  */
 
 import {
+  ActionList,
+  ActionListItem,
+  ActionListItemAction,
+  ActionListItemColumn,
   AvatarCombo,
   AvatarIcon,
   AvatarUser,
@@ -96,6 +100,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalSurface,
+  PageSize,
+  Pagination,
   Paragraph,
   Popover,
   PopoverContent,
@@ -143,6 +149,10 @@ export const allComponents = {
   isEqual,
 
   palette,
+  ActionList,
+  ActionListItem,
+  ActionListItemAction,
+  ActionListItemColumn,
   AvatarCombo,
   AvatarIcon,
   AvatarUser,
@@ -214,6 +224,8 @@ export const allComponents = {
   ModalFooter,
   ModalHeader,
   ModalSurface,
+  PageSize,
+  Pagination,
   Paragraph,
   Popover,
   PopoverContent,

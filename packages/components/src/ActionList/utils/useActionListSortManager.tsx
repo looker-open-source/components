@@ -41,7 +41,7 @@ export const useActionListSortManager = (
   const [data, setData] = useState(actionListData)
   const [columns, setColumns] = useState(actionListColumns)
 
-  const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
+  const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
     const {
       columns: sortedColumns,
       data: sortedData,
@@ -52,10 +52,12 @@ export const useActionListSortManager = (
 
   const items = data.map((dataObj) => {
     const assumedPrimaryKey = columns[0].id
+    const id = dataObj[assumedPrimaryKey]
 
     return (
       <ActionListItem
-        key={dataObj[assumedPrimaryKey]}
+        id={id}
+        key={id}
         onClick={() => alert(`Row clicked`)}
         actions={generateActions(dataObj)}
       >
@@ -69,7 +71,7 @@ export const useActionListSortManager = (
   })
 
   return (
-    <ActionList columns={columns} doSort={doSort}>
+    <ActionList columns={columns} onSort={onSort}>
       {items}
     </ActionList>
   )

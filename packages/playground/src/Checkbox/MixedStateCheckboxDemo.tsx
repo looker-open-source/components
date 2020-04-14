@@ -33,6 +33,7 @@ import {
   MixedBoolean,
   CheckboxTree,
   useMixedStateCheckbox,
+  Heading,
 } from '@looker/components'
 
 /* eslint-disable sort-keys */
@@ -64,6 +65,7 @@ export const MixedStateCheckboxDemo = () => {
 
   return (
     <>
+      <Heading mt="small">Mixed State Checkbox</Heading>
       <List p="large">
         <ListItem>
           <Checkbox

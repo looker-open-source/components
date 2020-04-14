@@ -26,17 +26,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import { ComponentsProvider, GlobalStyle } from '@looker/components'
 import { InputTimeDemo } from './Form/InputTimeDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <>
-        <GlobalStyle />
-        <InputTimeDemo />
-      </>
+      <GlobalStyle />
+      <InputTimeDemo />
     </ComponentsProvider>
   )
 }

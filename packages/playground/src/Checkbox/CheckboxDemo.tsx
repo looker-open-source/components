@@ -24,50 +24,26 @@
 
  */
 
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './GlobalStyle'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import React, { useState } from 'react'
+import { Checkbox, Heading } from '@looker/components'
 
-export * from './utils'
-
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+/* eslint-disable sort-keys */
+export const CheckboxDemo = () => {
+  const [controlledChecked, setControlledChecked] = useState(true)
+  const handleChange = () => setControlledChecked(!controlledChecked)
+  return (
+    <>
+      <div>
+        <Heading mt="small">defaultChecked</Heading>
+        <Checkbox defaultChecked></Checkbox>
+      </div>
+      <div>
+        <Heading mt="small">Controlled component</Heading>
+        <Checkbox
+          checked={controlledChecked}
+          onChange={handleChange}
+        ></Checkbox>
+      </div>
+    </>
+  )
+}
