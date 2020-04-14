@@ -18,16 +18,16 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
 ;() => {
   const data = [
     {
-      id: 6,
-      name: 'Gouda',
+      id: 1,
+      name: 'Gorgonzola',
     },
     {
-      id: 24,
-      name: 'Pepper Jack',
+      id: 2,
+      name: 'Cheddar',
     },
     {
-      id: 33,
-      name: `Swiss`,
+      id: 3,
+      name: `Blue`,
     },
   ]
 
@@ -59,6 +59,7 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
     return (
       <ActionListItem
         key={id}
+        id={id}
         onClick={() => alert('Row clicked')}
         actions={actions}
       >
@@ -122,7 +123,7 @@ Passing in a React element into the `indicator` prop will display said element l
 
   return (
     <ActionList columns={columns}>
-      <ActionListItem onClick={() => alert(`Row clicked`)}>
+      <ActionListItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
         <ActionListItemColumn detail={link} indicator={indicator}>
           Cheddar
         </ActionListItemColumn>
@@ -231,6 +232,7 @@ The function passed into `onSort`, generally speaking, should perform these acti
 
     return (
       <ActionListItem
+        id={id}
         key={id}
         onClick={() => alert('Row clicked')}
         actions={actions}
@@ -255,4 +257,86 @@ You can add row select behavior on an `<ActionList/>` by passing in the `canSele
 
 An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>`s on each of its rows.
 
-Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop that was passed in.
+Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
+
+The `itemsSelected` prop should be given the id's of all selected rows.
+
+**Note:** If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
+
+```jsx
+;() => {
+  const [selections, setSelections] = useState([2])
+  const onSelect = (selection) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        id={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+        disabled={id === 3 && true}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList
+      canSelect
+      onSelect={onSelect}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
