@@ -24,23 +24,27 @@
 
  */
 
-import styled from 'styled-components'
-import { defaultSpaceSize, SpaceHelperProps } from '../Space'
-import { simpleLayoutCSS } from '../utils/simple'
+import { Code, Heading, Space, Button, SpaceVertical } from '@looker/components'
+import React from 'react'
 
-export interface GridProps extends SpaceHelperProps {
-  /**
-   * @default 2
-   */
-  columns?: number
-}
+export const SpaceExamples = () => (
+  <>
+    <Heading my="large">
+      <Code>Space</Code>
+    </Heading>
+    <Space>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </Space>
 
-export const Grid = styled.div<GridProps>`
-  ${simpleLayoutCSS}
-
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(${({ columns }) => columns || 2}, 1fr);
-  grid-gap: ${({ gap, theme }) => theme.space[gap || defaultSpaceSize]};
-`
+    <Heading my="large">
+      <Code>SpaceVertical</Code>
+    </Heading>
+    <SpaceVertical>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </SpaceVertical>
+  </>
+)

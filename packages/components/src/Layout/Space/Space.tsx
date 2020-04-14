@@ -33,6 +33,12 @@ export interface SpaceHelperProps extends SimpleLayoutProps {
    * @default 'medium'
    */
   gap?: SpacingSizes
+
+  /**
+   * reverse direction of content
+   * @default false
+   */
+  reverse?: boolean
 }
 
 export const defaultSpaceSize = 'medium'
@@ -46,7 +52,7 @@ export const spaceCSS = css`
 
 export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
-  flex-direction: row;
+  flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
   > * {
     margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};

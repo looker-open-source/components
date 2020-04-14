@@ -24,24 +24,50 @@
 
  */
 
+import { Box, Divider, Grid, Heading, SpaceVertical } from '@looker/components'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { Demo } from './Layout'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <Demo />
-    </ComponentsProvider>
-  )
-}
+const Placeholder = (props) => (
+  <Box
+    color="white"
+    bg="palette.purple500"
+    justifyContent="center"
+    alignItems="center"
+    height="100%"
+    width="100%"
+    display="flex"
+    {...props}
+  />
+)
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export const GridExamples = () => (
+  <SpaceVertical>
+    <Heading>Two Column (default)</Heading>
+    <Grid>
+      <Placeholder minHeight="5rem">A</Placeholder>
+      <Placeholder>B</Placeholder>
+      <Placeholder>C</Placeholder>
+      <Placeholder>D</Placeholder>
+    </Grid>
+
+    <Divider />
+
+    <Heading>Four Column (xsmall gap)</Heading>
+    <Grid columns={4} gap="xsmall">
+      <Placeholder minHeight="5rem">A</Placeholder>
+      <Placeholder>B</Placeholder>
+      <Placeholder>C</Placeholder>
+      <Placeholder>D</Placeholder>
+    </Grid>
+
+    <Divider />
+
+    <Heading>1 Column (xxlarge gap)</Heading>
+    <Grid columns={1} gap="xxlarge">
+      <Placeholder minHeight="5rem">A</Placeholder>
+      <Placeholder>B</Placeholder>
+      <Placeholder>C</Placeholder>
+      <Placeholder>D</Placeholder>
+    </Grid>
+  </SpaceVertical>
+)
