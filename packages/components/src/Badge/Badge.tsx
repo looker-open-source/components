@@ -88,10 +88,10 @@ const size = variant({
 const intent = variant({
   prop: 'intent',
   variants: {
-    critical: { bg: 'palette.red100', color: 'palette.red500' },
+    critical: { bg: 'palette.red100', color: 'palette.red600' },
     default: { bg: 'palette.purple100', color: 'palette.purple600' },
     info: { bg: 'palette.blue100', color: 'palette.blue600' },
-    neutral: { bg: 'palette.charcoal100', color: 'palette.charcoal600' },
+    neutral: { bg: 'palette.charcoal200', color: 'palette.charcoal600' },
     plain: { bg: 'palette.white', color: 'palette.purple500' },
     positive: { bg: 'palette.green100', color: 'palette.green700' },
     warning: { bg: 'palette.yellow100', color: 'palette.yellow900' },
