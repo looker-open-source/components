@@ -36,6 +36,8 @@ const components: NavigationSection = {
       children: [
         { title: 'Box', path: 'box' },
         { title: 'Flex', path: 'flex' },
+        { title: 'Grid', path: 'grid' },
+        { title: 'Space', path: 'space' },
       ],
     },
     {

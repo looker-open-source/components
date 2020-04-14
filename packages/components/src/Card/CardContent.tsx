@@ -30,15 +30,15 @@ import {
   FlexboxProps,
   flexbox,
 } from '@looker/design-tokens'
-import { LayoutComponentProps, layoutCSS } from '../Layout/layout'
+import { ComplexLayoutProps, complexLayoutCSS } from '../Layout/utils/complex'
 
 export interface CardContentProps
-  extends LayoutComponentProps,
+  extends ComplexLayoutProps,
     FlexboxProps,
     CompatibleHTMLProps<HTMLElement> {}
 
 export const CardContent = styled.div<CardContentProps>`
-  ${layoutCSS}
+  ${complexLayoutCSS}
   ${flexbox}
 `
 

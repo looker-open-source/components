@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import { Flex, FlexProps } from '../../Layout/Flex'
+import { Flex, FlexProps } from '../../Layout'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 

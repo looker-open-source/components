@@ -24,32 +24,56 @@
 
  */
 
-import styled from 'styled-components'
 import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
+  border,
+  boxShadow,
+  color,
+  position,
+  layout,
+  reset,
+  space,
+  typography,
+  BorderProps,
+  BoxShadowProps,
+  ColorProps,
+  PositionProps,
+  LayoutProps,
+  SpaceProps,
+  TypographyProps,
 } from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import { css } from 'styled-components'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+export interface ComplexLayoutProps
+  extends BorderProps,
+    BoxShadowProps,
+    ColorProps,
+    LayoutProps,
+    PositionProps,
+    SpaceProps,
+    TypographyProps {
+  color?: any
+}
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
+export const complexLayoutCSS = css`
+  /**
+   * Rules here should provide convenience styling for Box derived components.
+   * Generally anything here could be overwritten by explicit values set via
+   * Box's prop values. For example a function here that sets 'cursor: pointer'
+   * would be overwritten by an explicit <Box cursor='copy'/>.
+   */
+  ${reset}
+
+  /**
+   * Style Utilities that extend Box's props. Most of these come from
+   * styled-system but some are Looker UI Components specific.
+   *
+   * These should be last to override rules with lower priority.
+   */
+  ${border}
+  ${boxShadow}
+  ${color}
+  ${layout}
+  ${position}
+  ${space}
+  ${typography}
 `

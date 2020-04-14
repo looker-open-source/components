@@ -24,32 +24,40 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { Space } from './Space'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+test('Space default', () => {
+  assertSnapshot(
+    <Space>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
+test('Space with specified gap', () => {
+  assertSnapshot(
+    <Space gap="xlarge">
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
+
+test('Space reversed', () => {
+  assertSnapshot(
+    <Space reverse>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})

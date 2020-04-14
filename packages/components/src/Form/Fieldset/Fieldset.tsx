@@ -38,7 +38,7 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import { BackgroundColorProps } from 'styled-system'
-import { FlexItem } from '../../Layout/FlexItem'
+import { FlexItem } from '../../Layout'
 import { FormControl, FormControlDirections } from '../FormControl'
 import { Legend } from './Legend'
 

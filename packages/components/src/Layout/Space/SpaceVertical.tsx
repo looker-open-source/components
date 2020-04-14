@@ -25,31 +25,19 @@
  */
 
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {}
+export const SpaceVertical = styled.div<SpaceHelperProps>`
+  ${spaceCSS}
 
-export const Box = styled.div<BoxProps>`
-  ${complexLayoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
+  flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
+
+  > * {
+    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
+  }
+
+  ${({ theme, reverse }) =>
+    reverse
+      ? `> :last-child { margin-top: ${theme.space.none}; }`
+      : `> :first-child { margin-top: ${theme.space.none}; }`}
 `
