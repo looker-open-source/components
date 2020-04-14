@@ -32,7 +32,7 @@
     "btoa": "^1.2.1",
     "d3-color": "^1.4.0",
     "d3-hsv": "^0.1.0",
-    "date-fns": "^2.11.1",
+    "date-fns": "^2.12.0",
     "focus-trap": "^5.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@looker/components-test-utils": "^0.7.25",
     "@testing-library/jest-dom": "^5.1.1",
-    "@testing-library/react": "^10.0.1",
+    "@testing-library/react": "^10.0.2",
     "@types/btoa": "^1.2.3",
     "@types/d3-color": "^1.2.2",
     "@types/d3-hsv": "^0.1.3",

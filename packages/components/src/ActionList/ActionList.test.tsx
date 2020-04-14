@@ -61,7 +61,7 @@ const columns: ActionListColumns = [
 
 const data = [
   {
-    id: 1,
+    id: '1',
     name: 'Richard Garfield',
     type: 'Game Designer',
   },
@@ -83,7 +83,7 @@ const items = data.map(({ id, name, type }) => {
   )
 
   return (
-    <ActionListItem key={id} actions={availableActions}>
+    <ActionListItem key={id} id={id} actions={availableActions}>
       <ActionListItemColumn>{id}</ActionListItemColumn>
       <ActionListItemColumn>{name}</ActionListItemColumn>
       <ActionListItemColumn>{type}</ActionListItemColumn>
@@ -178,6 +178,7 @@ describe('ActionList', () => {
 
         return (
           <ActionListItem
+            id={id}
             key={id}
             actions={availableActions}
             onClick={handleListItemClick}
@@ -223,31 +224,37 @@ describe('ActionList', () => {
   })
 
   describe('Sorting', () => {
-    const doSort = jest.fn()
+    const onSort = jest.fn()
     const actionListWithSort = (
-      <ActionList columns={columns} doSort={doSort}>
+      <ActionList columns={columns} onSort={onSort}>
         {items}
       </ActionList>
     )
 
-    test('Calls doSort if canSort property is true', () => {
+    test('Calls onSort if canSort property is true', () => {
       const { getByText } = renderWithTheme(actionListWithSort)
 
       const idColumnHeader = getByText('ID')
       fireEvent.click(idColumnHeader)
-      expect(doSort.mock.calls.length).toBe(1)
+      expect(onSort.mock.calls.length).toBe(1)
 
-      doSort.mockClear()
+      onSort.mockClear()
     })
 
-    test('Does not call doSort if canSort property is false', () => {
+    test('Does not call onSort if canSort property is false', () => {
       const { getByText } = renderWithTheme(actionListWithSort)
 
       const nameColumnHeader = getByText('Name')
       fireEvent.click(nameColumnHeader)
-      expect(doSort.mock.calls.length).toBe(0)
+      expect(onSort.mock.calls.length).toBe(0)
 
-      doSort.mockClear()
+      onSort.mockClear()
+    })
+  })
+
+  xdescribe('Selecting', () => {
+    xtest('Select tests needed', () => {
+      return null
     })
   })
 })
