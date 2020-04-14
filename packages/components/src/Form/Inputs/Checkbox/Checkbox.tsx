@@ -138,12 +138,15 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     }
   }
   input[type='checkbox']:disabled {
+    cursor: not-allowed;
+
     & + ${FauxCheckbox} {
       background: ${({ theme }) => theme.colors.palette.charcoal100};
       border-color: ${({ theme }) => theme.colors.palette.charcoal200};
       color: ${({ theme }) => theme.colors.palette.charcoal100};
     }
   }
+
   ${space}
 `
 

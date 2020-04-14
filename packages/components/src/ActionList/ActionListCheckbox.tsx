@@ -24,49 +24,39 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Box, Paragraph } from '../'
+import { Checkbox } from '../Form'
 
-interface ActionListItemColumnProps {
-  detail?: ReactNode
-  indicator?: ReactNode
+export interface ActionListCheckboxProps {
+  checked?: boolean
+  disabled?: boolean
+  onChange?: () => void
   className?: string
 }
 
-const ActionListItemColumnInnerLayout = styled.div``
+export const checkListProps = ['checked', 'disabled', 'onChange']
 
-const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
-  children,
-  detail,
+const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
+  onChange,
+  checked,
+  disabled,
   className,
-  indicator,
 }) => (
-  <div className={className}>
-    {indicator && <Box mr="xsmall">{indicator}</Box>}
-    <ActionListItemColumnInnerLayout>
-      {children}
-      {detail && (
-        <Paragraph fontSize="xsmall" variant="subdued" truncate>
-          {detail}
-        </Paragraph>
-      )}
-    </ActionListItemColumnInnerLayout>
+  <div onClick={onChange} className={className}>
+    <Checkbox
+      disabled={disabled}
+      checked={checked}
+      onChange={disabled ? undefined : onChange}
+    />
   </div>
 )
 
-export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
-  ActionListItemColumnProps
->`
-  color: ${(props) => props.theme.colors.palette.charcoal700};
-  display: ${(props) => (props.indicator ? 'flex' : undefined)};
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
-  overflow: hidden;
+export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 3.5rem;
 
-  ${ActionListItemColumnInnerLayout} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  }
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `

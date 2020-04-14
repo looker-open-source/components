@@ -24,20 +24,20 @@
 
  */
 
-import { createContext } from 'react'
-import { ActionListColumns } from './ActionList'
+describe('ActionListCheckbox', () => {
+  xtest('Renders checked', () => {
+    return null
+  })
 
-export interface ActionListContextProps {
-  canSelect: boolean
-  columns?: ActionListColumns
-  itemsSelected: string[]
-  onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
-  onSelect?: (id: string) => void
-  onClickRowSelect: boolean
-}
+  xtest('Renders unchecked', () => {
+    return null
+  })
 
-export const ActionListContext = createContext<ActionListContextProps>({
-  canSelect: false,
-  itemsSelected: [],
-  onClickRowSelect: false,
+  xtest('Renders disable', () => {
+    return null
+  })
+
+  xtest('Calls onChange callback', () => {
+    return null
+  })
 })
