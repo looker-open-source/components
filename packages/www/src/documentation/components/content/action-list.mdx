@@ -248,3 +248,11 @@ The function passed into `onSort`, generally speaking, should perform these acti
   )
 }
 ```
+
+## Selecting rows on an Action List
+
+You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
+
+An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>`s on each of its rows.
+
+Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop that was passed in.
