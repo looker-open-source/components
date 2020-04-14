@@ -29,7 +29,6 @@ import ReactDOM from 'react-dom'
 import { ComponentsProvider, GlobalStyle } from '@looker/components'
 import { Demo } from './Layout'
 
-
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
