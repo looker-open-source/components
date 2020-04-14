@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/react": "^16.9.25",
     "@types/react-test-renderer": "^16.9.2",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^5.1.0",
     "react": "^16.13.1"
   },
   "peerDependencies": {
