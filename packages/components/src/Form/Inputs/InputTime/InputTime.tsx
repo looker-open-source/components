@@ -32,6 +32,8 @@ import React, {
   useEffect,
   useRef,
   RefObject,
+  useState,
+  SyntheticEvent,
 } from 'react'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
@@ -74,6 +76,9 @@ export interface InputTimeProps extends SpaceProps, BorderProps {
   className?: string
   disabled?: boolean
   readOnly?: boolean
+  id?: string
+  onFocus: (e: SyntheticEvent) => void
+  onBlur: (e: SyntheticEvent) => void
 }
 
 type Periods = 'AM' | 'PM' | ''
@@ -91,7 +96,7 @@ type SubInputs = 'NONE' | 'HOUR' | 'MINUTE' | 'PERIOD'
 
 interface InputState {
   charCount: number
-  inputFocus?: SubInputs
+  subInputFocus?: SubInputs
   hour: string
   minute: string
   period: Periods
@@ -108,10 +113,10 @@ const initialState: InputState = {
   charCount: 0,
   format: '12h',
   hour: '',
-  inputFocus: 'NONE',
   isComplete: false,
   minute: '',
   period: '',
+  subInputFocus: 'NONE',
 }
 
 const isNumericKey = (e: KeyboardEvent) =>
@@ -166,9 +171,9 @@ const reducer: Reducer<InputState, InputAction> = (state, action) => {
   }
   switch (type) {
     case 'SET_FOCUS':
-      return { ...state, inputFocus: payload as SubInputs }
+      return { ...state, subInputFocus: payload as SubInputs }
     case 'FOCUS_NEXT_FIELD':
-      return { ...state, inputFocus: selectNextInput(state.inputFocus) }
+      return { ...state, subInputFocus: selectNextInput(state.subInputFocus) }
     case 'INCREMENT_CHAR_COUNT':
       return { ...state, charCount: state.charCount + 1 }
     case 'RESET_CHAR_COUNT':
@@ -267,13 +272,16 @@ const InternalInputTime: FC<InputTimeProps> = ({
   className,
   disabled,
   readOnly,
+  id,
+  onFocus,
+  onBlur,
 }) => {
   const [inputState, dispatch] = useReducer(reducer, {
     ...initialState,
     format,
   })
 
-  const { hour, minute, period, isComplete } = inputState
+  const { hour, minute, period, isComplete, subInputFocus } = inputState
 
   const inputRefs: RefMap = {
     HOUR: useRef(null),
@@ -401,13 +409,15 @@ const InternalInputTime: FC<InputTimeProps> = ({
   }
 
   // Input UX: automatically advance cursor to specified input
+  // Also track state for whether user is focusing or blurring any sub input
   useEffect(() => {
-    const ref = inputRefs[inputState.inputFocus || '']
+    const ref = inputRefs[subInputFocus || '']
     if (ref.current) {
       ref.current.focus()
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputState.inputFocus])
+  }, [subInputFocus])
 
   useEffect(
     () => {
@@ -449,10 +459,15 @@ const InternalInputTime: FC<InputTimeProps> = ({
   const hasInputValues = some([hour, minute, period], 'length')
 
   return (
-    <div className={`${className} ${disabled && 'disabled'}`}>
+    <div
+      className={`${className} ${disabled && 'disabled'}`}
+      onFocus={onFocus}
+      onBlur={onBlur}
+    >
       <InputTimeWrapper hasInputValues={hasInputValues}>
         <InputTimeLayout>
           <InputText
+            id={id}
             maxLength={2}
             placeholder="--"
             value={hour}
