@@ -43,8 +43,9 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   disabled,
   className,
 }) => {
-  const handleOnChange = () => {
-    !disabled && onChange && onChange()
+  const handleOnChange = (event: React.MouseEvent<HTMLInputElement>) => {
+    const isNotFromChild = event.currentTarget === event.target
+    isNotFromChild && !disabled && onChange && onChange()
   }
 
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

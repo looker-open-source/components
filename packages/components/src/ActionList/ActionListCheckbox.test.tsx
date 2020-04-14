@@ -24,20 +24,39 @@
 
  */
 
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { ActionListCheckbox } from './ActionListCheckbox'
+
 describe('ActionListCheckbox', () => {
-  xtest('Renders checked', () => {
-    return null
+  test('Renders checked', () => {
+    const { getByRole } = renderWithTheme(<ActionListCheckbox checked />)
+    const actionListCheckbox = getByRole('checkbox')
+    expect((actionListCheckbox as HTMLInputElement).checked).toEqual(true)
   })
 
-  xtest('Renders unchecked', () => {
-    return null
+  test('Renders unchecked', () => {
+    const { getByRole } = renderWithTheme(<ActionListCheckbox />)
+    const actionListCheckbox = getByRole('checkbox')
+    expect((actionListCheckbox as HTMLInputElement).checked).toEqual(false)
   })
 
-  xtest('Renders disable', () => {
-    return null
+  test('Renders disabled', () => {
+    const { getByRole } = renderWithTheme(<ActionListCheckbox disabled />)
+    const actionListCheckbox = getByRole('checkbox')
+    expect((actionListCheckbox as HTMLInputElement).disabled).toEqual(true)
   })
 
-  xtest('Calls onChange callback', () => {
-    return null
+  test('Calls onChange callback', () => {
+    const onChange = jest.fn()
+    const { getByRole } = renderWithTheme(
+      <ActionListCheckbox onChange={onChange} />
+    )
+    const actionListCheckbox = getByRole('checkbox')
+    fireEvent.click(actionListCheckbox)
+    expect(onChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(actionListCheckbox)
+    expect(onChange).toHaveBeenCalledTimes(2)
   })
 })
