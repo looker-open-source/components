@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActionListManager` component
 - `Pagination` component
 - `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
+- New Icons `VisibilityOutline`, `SendEmail`, `SendSftp`, `SendWebhook`
 
 ### Changed
 
