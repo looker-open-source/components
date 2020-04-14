@@ -30,6 +30,7 @@ import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
 export interface SpaceHelperProps extends SimpleLayoutProps {
   /**
+   * Amount of space between grid cells
    * @default 'medium'
    */
   gap?: SpacingSizes

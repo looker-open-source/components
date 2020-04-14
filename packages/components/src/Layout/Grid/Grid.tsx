@@ -30,6 +30,7 @@ import { simpleLayoutCSS } from '../utils/simple'
 
 export interface GridProps extends SpaceHelperProps {
   /**
+   * Number of columns to display
    * @default 2
    */
   columns?: number
