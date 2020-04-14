@@ -72,6 +72,8 @@ export interface InputTimeProps extends SpaceProps, BorderProps {
   validationType?: ValidationType
   onValidationFail?: (value: string) => void
   className?: string
+  disabled?: boolean
+  readOnly?: boolean
 }
 
 type Periods = 'AM' | 'PM' | ''
@@ -263,6 +265,8 @@ const InternalInputTime: FC<InputTimeProps> = ({
   defaultValue,
   value,
   className,
+  disabled,
+  readOnly,
 }) => {
   const [inputState, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -445,43 +449,49 @@ const InternalInputTime: FC<InputTimeProps> = ({
   const hasInputValues = some([hour, minute, period], 'length')
 
   return (
-    <div className={className}>
+    <div className={`${className} ${disabled && 'disabled'}`}>
       <InputTimeWrapper hasInputValues={hasInputValues}>
         <InputTimeLayout>
           <InputText
             maxLength={2}
             placeholder="--"
             value={hour}
-            onKeyDown={handleHourKeyDown}
+            onKeyDown={readOnly ? noop : handleHourKeyDown}
             onFocus={handleHourFocus}
             onBlur={handleBlur}
-            onChange={noop}
+            onChange={noop} // suppress controlled component warning
             ref={inputRefs.HOUR}
             data-testid="input-hour"
+            disabled={disabled}
+            readOnly={readOnly}
           />
           <div>:</div>
           <InputText
             maxLength={2}
             placeholder="--"
             value={minute}
-            onKeyDown={handleMinuteKeyDown}
+            onKeyDown={readOnly ? noop : handleMinuteKeyDown}
             onFocus={handleMinuteFocus}
             onBlur={handleBlur}
-            onChange={noop}
+            onChange={noop} // suppress controlled component warning
             ref={inputRefs.MINUTE}
             data-testid="input-minute"
+            disabled={disabled}
+            readOnly={readOnly}
           />
           {format === '12h' ? (
             <InputText
               maxLength={2}
               placeholder="--"
               value={period}
-              onKeyDown={handlePeriodKeyDown}
+              onKeyDown={readOnly ? noop : handlePeriodKeyDown}
               onFocus={handlePeriodFocus}
               onBlur={handleBlur}
-              onChange={noop}
+              onChange={noop} // suppress controlled component warning
               ref={inputRefs.PERIOD}
               data-testid="input-period"
+              disabled={disabled}
+              readOnly={readOnly}
             />
           ) : (
             <span />
@@ -509,7 +519,7 @@ export const InputTime = styled(InternalInputTime).attrs({
     ${inputTextHover}
   }
 
-  &:disabled {
+  &.disabled {
     ${inputTextDisabled}
   }
 

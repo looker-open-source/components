@@ -10,7 +10,7 @@ github: Form/Inputs/InputTime/InputTime.tsx
 <InputTime />
 ```
 
-## Time Format
+## 12 And 24 Hour Format
 
 `InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
 
@@ -58,4 +58,20 @@ github: Form/Inputs/InputTime/InputTime.tsx
 
 ```js
 <InputTime defaultValue="14:34" />
+```
+
+## disabled
+
+Use the disable property to make an input field uneditable.
+
+```js
+<InputTime disabled />
+```
+
+## readOnly
+
+As the name suggests, `readOnly` makes the text uneditable.
+
+```js
+<InputTime defaultValue="10:01" readOnly />
 ```
