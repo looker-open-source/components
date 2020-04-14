@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Share` Icon updated
+- `Badge` style updated to use lighter colors for intents. Badges are now always round.
 
 ### Fixed
 
