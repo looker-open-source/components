@@ -30,18 +30,18 @@ import {
   FlexboxProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { LayoutComponentProps, layoutCSS } from '../layout'
+import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
 
 /**
  * styled-system has its own FlexBoxProps, so we call this one FlexProps to disambiguate.
  */
 export interface FlexProps
   extends CompatibleHTMLProps<HTMLDivElement>,
-    Omit<LayoutComponentProps, 'display'>,
+    Omit<ComplexLayoutProps, 'display'>,
     FlexboxProps {}
 
 export const Flex = styled.div<FlexProps>`
-  ${layoutCSS}
+  ${complexLayoutCSS}
   ${flexbox};
   display: flex;
 `

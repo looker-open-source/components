@@ -43,7 +43,7 @@ import {
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
 
-export interface LayoutComponentProps
+export interface ComplexLayoutProps
   extends BorderProps,
     BoxShadowProps,
     ColorProps,
@@ -54,7 +54,7 @@ export interface LayoutComponentProps
   color?: any
 }
 
-export const layoutCSS = css`
+export const complexLayoutCSS = css`
   /**
    * Rules here should provide convenience styling for Box derived components.
    * Generally anything here could be overwritten by explicit values set via
