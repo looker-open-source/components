@@ -24,20 +24,18 @@
 
  */
 
-import styled from 'styled-components'
-import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
+import { Box, BoxProps } from '@looker/components'
+import React, { FC } from 'react'
 
-export const SpaceVertical = styled.div<SpaceHelperProps>`
-  ${spaceCSS}
-
-  flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
-
-  > * {
-    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
-  }
-
-  ${({ theme, reverse }) =>
-    reverse
-      ? `> :last-child { margin-top: ${theme.space.none}; }`
-      : `> :first-child { margin-top: ${theme.space.none}; }`}
-`
+export const GridPlaceholder: FC<BoxProps> = (props) => (
+  <Box
+    color="white"
+    bg="palette.green400"
+    justifyContent="center"
+    alignItems="center"
+    height="100%"
+    width="100%"
+    display="flex"
+    {...props}
+  />
+)

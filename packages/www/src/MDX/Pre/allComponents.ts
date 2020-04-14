@@ -143,12 +143,16 @@ import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
 
+import { GridPlaceholder } from '../../helpers/GridPlaceholder'
+
 export const allComponents = {
   useState,
 
   styled,
 
   isEqual,
+
+  GridPlaceholder,
 
   palette,
   ActionList,

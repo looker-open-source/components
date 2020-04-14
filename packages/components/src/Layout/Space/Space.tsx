@@ -58,7 +58,8 @@ export const Space = styled.div<SpaceHelperProps>`
     margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
   }
 
-  > :first-child {
-    margin-left: ${({ theme }) => theme.space.none};
-  }
+  ${({ theme, reverse }) =>
+    reverse
+      ? `> :last-child { margin-left: ${theme.space.none}; }`
+      : `> :first-child { margin-left: ${theme.space.none}; }`}
 `

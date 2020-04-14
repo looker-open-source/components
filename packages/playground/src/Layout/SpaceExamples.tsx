@@ -38,10 +38,22 @@ export const SpaceExamples = () => (
       <Button>Button C</Button>
     </Space>
 
+    <Space reverse>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </Space>
+
     <Heading my="large">
       <Code>SpaceVertical</Code>
     </Heading>
     <SpaceVertical>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </SpaceVertical>
+
+    <SpaceVertical reverse>
       <Button>Button A</Button>
       <Button>Button B</Button>
       <Button>Button C</Button>

@@ -24,20 +24,40 @@
 
  */
 
-import styled from 'styled-components'
-import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshotShallow } from '@looker/components-test-utils'
+import { Space } from './Space'
 
-export const SpaceVertical = styled.div<SpaceHelperProps>`
-  ${spaceCSS}
+test('Space default ', () => {
+  assertSnapshotShallow(
+    <Space>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
 
-  flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
+test('Space with specified gap ', () => {
+  assertSnapshotShallow(
+    <Space gap="xlarge">
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
 
-  > * {
-    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
-  }
-
-  ${({ theme, reverse }) =>
-    reverse
-      ? `> :last-child { margin-top: ${theme.space.none}; }`
-      : `> :first-child { margin-top: ${theme.space.none}; }`}
-`
+test('Space reversed ', () => {
+  assertSnapshotShallow(
+    <Space reverse>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})

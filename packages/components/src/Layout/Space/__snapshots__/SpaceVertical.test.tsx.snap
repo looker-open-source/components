@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpaceVertical default  1`] = `ShallowWrapper {}`;
+
+exports[`SpaceVertical reversed  1`] = `ShallowWrapper {}`;
+
+exports[`SpaceVertical with specified gap  1`] = `ShallowWrapper {}`;
