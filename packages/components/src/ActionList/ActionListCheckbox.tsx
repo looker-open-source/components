@@ -42,16 +42,28 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   checked,
   disabled,
   className,
-}) => (
-  <div onClick={onChange} className={className}>
-    <Checkbox
-      disabled={disabled}
-      checked={checked}
-      onChange={disabled ? undefined : onChange}
-    />
-  </div>
-)
+}) => {
+  const handleOnChange = () => {
+    !disabled && onChange && onChange()
+  }
 
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === 13) {
+      event.currentTarget.click()
+    }
+  }
+
+  return (
+    <div onClick={handleOnChange} className={className}>
+      <Checkbox
+        disabled={disabled}
+        checked={checked}
+        onChange={handleOnChange}
+        onKeyDown={handleOnKeyDown}
+      />
+    </div>
+  )
+}
 export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
   display: flex;
