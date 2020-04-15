@@ -47,13 +47,12 @@ const FieldInlineLayout: FunctionComponent<FieldBaseProps> = ({
   children,
   label,
   labelFontSize,
-  labelFontWeight,
   required,
   validationMessage,
 }) => {
   return (
     <label className={className}>
-      <Label as="span" fontWeight={labelFontWeight} fontSize={labelFontSize}>
+      <Label as="span" fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>
