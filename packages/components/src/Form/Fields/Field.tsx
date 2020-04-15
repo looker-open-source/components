@@ -146,14 +146,15 @@ const InputArea = styled.div``
 const MessageArea = styled.div``
 
 export const Field = styled(FieldLayout)`
-  width: ${(props) => props.width};
+  height: fit-content;
+  width: ${({ width }) => width || 'fit-content'};
   align-items: left;
   justify-content: space-between;
-  margin-bottom: ${(props) => props.theme.space.xsmall};
+  margin-bottom: ${({ theme }) => theme.space.xsmall};
 
   display: grid;
-  grid-template-areas: ${(props) =>
-    props.inline
+  grid-template-areas: ${({ inline }) =>
+    inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
 
@@ -167,7 +168,7 @@ export const Field = styled(FieldLayout)`
   }
 
   ${InputText} {
-    width: ${(props) => props.width};
+    width: ${({ width }) => width};
   }
 
   ${Select} {
@@ -177,18 +178,18 @@ export const Field = styled(FieldLayout)`
   ${Label} {
     grid-area: label;
 
-    ${(props) =>
-      props.inline
+    ${({ inline, theme }) =>
+      inline
         ? `
       text-align: right;
       line-height: ${inputHeight};
       justify-self: end;
       height: ${inputHeight};
-      padding-right: ${props.theme.space.small};
+      padding-right: ${theme.space.small};
         width: 150px;
       `
         : `
-        padding-bottom: ${props.theme.space.xsmall};
+        padding-bottom: ${theme.space.xsmall};
 
       `}
   }
@@ -196,16 +197,16 @@ export const Field = styled(FieldLayout)`
     grid-area: detail;
     justify-self: end;
 
-    ${(props) =>
-      props.inline &&
+    ${({ inline, theme }) =>
+      inline &&
       `
         align-self: center;
-        padding-left: ${props.theme.space.small};
+        padding-left: ${theme.space.small};
       `}
   }
 
   ${ValidationMessage} {
-    margin-right: ${(props) => props.theme.space.xsmall};
-    margin-top: ${(props) => props.theme.space.xsmall};
+    margin-right: ${({ theme }) => theme.space.xsmall};
+    margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `

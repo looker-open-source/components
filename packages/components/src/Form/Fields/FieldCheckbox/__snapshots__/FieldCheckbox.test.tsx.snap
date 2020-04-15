@@ -51,6 +51,10 @@ exports[`A FieldCheckbox 1`] = `
   outline: none;
 }
 
+.c4 input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
 .c4 input[type='checkbox']:disabled + .c5 {
   background: #F5F6F7;
   border-color: #DEE1E5;
@@ -105,12 +109,16 @@ exports[`A FieldCheckbox 1`] = `
     className="c3 "
   >
     <div
+      checked={false}
       className="c4 "
     >
       <input
+        checked={false}
         className=""
         id="FieldCheckboxID"
         name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
         role="checkbox"
         type="checkbox"
       />
@@ -210,6 +218,10 @@ exports[`A FieldCheckbox with checked value 1`] = `
   outline: none;
 }
 
+.c4 input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
 .c4 input[type='checkbox']:disabled + .c5 {
   background: #F5F6F7;
   border-color: #DEE1E5;
@@ -268,10 +280,12 @@ exports[`A FieldCheckbox with checked value 1`] = `
       className="c4 "
     >
       <input
+        checked={true}
         className=""
-        defaultChecked={true}
         id="FieldCheckboxID"
         name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
         role="checkbox"
         type="checkbox"
       />

@@ -31,21 +31,14 @@ import {
   FieldCheckbox,
   FieldRadio,
   FieldToggleSwitch,
+  Grid,
+  SpaceVertical,
 } from '@looker/components'
-import styled from 'styled-components'
 
 export const FieldsDemo: FC = () => {
   return (
-    <>
+    <SpaceVertical m="xxlarge">
       <Grid>
-        <FieldText width="100%" label="Text Input" placeholder="placeholder" />
-        <FieldText
-          width="100%"
-          inline
-          label="Text Input"
-          placeholder="placeholder"
-        />
-
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
           disabled
@@ -207,13 +200,6 @@ export const FieldsDemo: FC = () => {
           <FieldToggleSwitch required label="Toggle Switch" />
         </div>
       </Grid>
-    </>
+    </SpaceVertical>
   )
 }
-
-const Grid = styled.div<{ columns?: number }>`
-  display: grid;
-  grid-template-columns: repeat(${({ columns }) => columns || 2}, 1fr);
-  grid-gap: ${(props) => props.theme.space.xxxlarge};
-  margin: ${(props) => props.theme.space.xxxlarge};
-`

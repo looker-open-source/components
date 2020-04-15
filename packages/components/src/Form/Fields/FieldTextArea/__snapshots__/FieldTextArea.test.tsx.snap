@@ -49,6 +49,9 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c0 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 13rem;
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -191,6 +194,9 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c0 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 13rem;
   -webkit-align-items: left;
   -webkit-box-align: left;
