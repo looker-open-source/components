@@ -36,6 +36,8 @@ const components: NavigationSection = {
       children: [
         { title: 'Box', path: 'box' },
         { title: 'Flex', path: 'flex' },
+        { title: 'Grid', path: 'grid' },
+        { title: 'Space', path: 'space' },
       ],
     },
     {
@@ -107,6 +109,10 @@ const components: NavigationSection = {
         {
           title: 'InputText',
           path: 'input-text',
+        },
+        {
+          title: 'InputTime',
+          path: 'input-time',
         },
         {
           title: 'InputTimeSelect',

@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import { palette } from '@looker/design-tokens'
-import { Box } from '../../Layout/Box'
+import { Box } from '../../Layout'
 import { IconButton } from '../../Button'
 import { Text } from '../../Text'
 

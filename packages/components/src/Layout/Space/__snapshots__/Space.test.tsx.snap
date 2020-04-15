@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Space default 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  margin-left: 1rem;
+}
+
+.c0 > :first-child {
+  margin-left: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space reversed 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.c0 > * {
+  margin-left: 1rem;
+}
+
+.c0 > :last-child {
+  margin-left: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space with specified gap 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  margin-left: 2rem;
+}
+
+.c0 > :first-child {
+  margin-left: 0rem;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;

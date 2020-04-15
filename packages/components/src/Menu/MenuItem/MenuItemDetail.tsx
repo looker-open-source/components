@@ -26,7 +26,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import { palette } from '@looker/design-tokens'
-import { Box } from '../../Layout/Box'
+import { Box } from '../../Layout'
 
 export const MenuItemDetail: FC<{ children: ReactNode }> = ({ children }) => (
   <Box

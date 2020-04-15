@@ -1,0 +1,68 @@
+---
+title: Space
+propsOf: Space
+github: Layout/Space
+---
+
+`<Space />` & `<SpaceVertical>` are designed to put space between their children. `Space` operates on the horizontal axis while `SpaceVertical` operates on the vertical axis.
+
+```jsx
+<Space>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+```jsx
+<SpaceVertical>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</SpaceVertical>
+```
+
+### Space & SpaceVertical Support spacing properties
+
+1. Margin (`m`, `mx`, `ml`, etc...)
+2. Padding (`p`, `px`, `pl`, etc...)
+
+# Gap
+
+Specify the width of the gap between items:
+
+```jsx
+<Space gap="xlarge">
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+```jsx
+<SpaceVertical gap="xlarge">
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</SpaceVertical>
+```
+
+## Reverse
+
+Reverse the order of the items in the space.
+
+```jsx
+<Space reverse>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+```jsx
+<SpaceVertical reverse>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</SpaceVertical>
+```

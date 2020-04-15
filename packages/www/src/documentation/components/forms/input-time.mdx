@@ -4,4 +4,170 @@ propsOf: InputTime
 github: Form/Inputs/InputTime/InputTime.tsx
 ---
 
-`InputTime` will provide an HTML5-standard time picking experience. Coming soon.
+`InputTime` provides a themable HTML5-equivalent time picking experience.
+
+```js
+<InputTime />
+```
+
+## 12 And 24 Hour Format
+
+`InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
+
+```js
+<>
+  <InputTime format="12h" defaultValue="14:34" mr="small" />
+  <InputTime format="24h" defaultValue="14:34" />
+</>
+```
+
+## Controlled Component
+
+`InputTime` accepts a value and onChange listener for the standard controlled component pattern.
+
+```js
+;() => {
+  const [value, setValue] = useState('12:00')
+  const handle1400Click = () => setValue('14:00')
+  const handle1515Click = () => setValue('15:15')
+  const handle1632Click = () => setValue('16:32')
+
+  return (
+    <>
+      <Button mr="small" onClick={handle1400Click}>
+        2:00pm
+      </Button>
+      <Button mr="small" onClick={handle1515Click}>
+        3:15pm
+      </Button>
+      <Button mr="small" onClick={handle1632Click}>
+        4:32pm
+      </Button>
+      <Flex mt="large" alignItems="center">
+        <InputTime value={value} mr="small" />
+        Selected: {value}
+      </Flex>
+    </>
+  )
+}
+```
+
+## defaultValue
+
+`InputTime` also accetpts a `defaultValue` prop if you don't want to control component value externally.
+
+```js
+<InputTime defaultValue="14:34" />
+```
+
+## disabled
+
+Use the disable property to make an input field uneditable.
+
+```js
+<InputTime disabled />
+```
+
+## readOnly
+
+As the name suggests, `readOnly` makes the text uneditable.
+
+```js
+<InputTime defaultValue="10:01" readOnly />
+```
+
+## ID & Form Labels
+
+You can combine the `id` prop with form label, so that when the label is clicked it will focus on the `hour` input.
+
+```js
+<>
+  <Label htmlFor="demo-id">Label Text</Label>
+  <InputTime id="demo-id" />
+</>
+```
+
+## Focus & Blur
+
+`onFocus` callback will fire when any of the three sub-fields (hour, minute, period) are focused. `onBlur` fires when the focus moves outside the component entirely.
+
+```js
+;() => {
+  const [isFocused, setIsFocused] = useState(false)
+  const handleFocus = () => setIsFocused(true)
+  const handleBlur = () => setIsFocused(false)
+
+  return (
+    <>
+      <InputTime onFocus={handleFocus} onBlur={handleBlur} />
+      {isFocused && (
+        <Text color="green" ml="small">
+          FOCUSED!!
+        </Text>
+      )}
+    </>
+  )
+}
+```
+
+## Focus & Blur
+
+`onFocus` callback will fire when any of the three sub-fields (hour, minute, period) are focused. `onBlur` fires when the focus moves outside the component entirely.
+
+```js
+;() => {
+  const [isFocused, setIsFocused] = useState(false)
+  const handleFocus = () => setIsFocused(true)
+  const handleBlur = () => setIsFocused(false)
+
+  return (
+    <>
+      <InputTime onFocus={handleFocus} onBlur={handleBlur} />
+      {isFocused && (
+        <Text color="green" ml="small">
+          FOCUSED!!
+        </Text>
+      )}
+    </>
+  )
+}
+```
+
+## Validation Error State
+
+You can render a failed validation state with the prop `validationType="error"`.
+
+```js
+<InputTime validationType="error" />
+```
+
+## onValidationFail
+
+In addition, `InputTime` will automatically check whether the provided `value` prop is actually a valid 24 hour time string, and fire the `onValidationFail` callback.
+
+```js
+;() => {
+  const [validationType, setValidationType] = useState()
+  const value = 'Stardate 2004.14'
+  const handleValidationFail = () => {
+    setValidationType('error')
+  }
+  return (
+    <>
+      <InputTime
+        validationType={validationType}
+        value={value}
+        onValidationFail={handleValidationFail}
+      />
+      {validationType === 'error' && (
+        <Box mt="xsmall">
+          <Text color="red" fontSize="small" fontWeight="bold">
+            Error: <Code fontSize="small">{value}</Code> is not a valid 24-hour
+            time string
+          </Text>
+        </Box>
+      )}
+    </>
+  )
+}
+```

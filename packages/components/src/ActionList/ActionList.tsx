@@ -76,20 +76,44 @@ export interface ActionListProps {
   columns: ActionListColumns
   className?: string
   /**
-   * default: true
+   * @default: true
    */
   header?: boolean | ReactNode
   /**
    * Sort function provided by the developer
    */
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
+
+  /**
+   * Allow the user to select ActionListItems.
+   * Note: Implemented as a checkbox next to each item row.
+   * @default false
+   */
+  canSelect?: boolean
+  /**
+   * Callback performed when user makes a selection
+   */
+  onSelect?: (id: string) => void
+  /**
+   * ActionListItems which should be displayed as "selected"
+   */
+  itemsSelected?: string[]
+  /**
+   * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
+   * @default false
+   */
+  onClickRowSelect?: boolean
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
+  canSelect = false,
   className,
   header = true,
   children,
   columns,
+  itemsSelected,
+  onClickRowSelect,
+  onSelect,
   onSort,
 }) => {
   const actionListHeader =
@@ -102,7 +126,11 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   const context = {
+    canSelect: canSelect || false,
     columns,
+    itemsSelected: itemsSelected || [],
+    onClickRowSelect: onClickRowSelect || false,
+    onSelect,
     onSort,
   }
 
@@ -122,12 +150,21 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
     grid-template-columns: ${(props) =>
       props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
     align-items: center;
+
+    ${/* sc-selector */ ActionListItemColumn}:first-child {
+      padding-left: ${({ canSelect, theme }) =>
+        canSelect ? theme.space.none : undefined};
+    }
   }
 
   ${/* sc-selector */ ActionListItemColumn},
   ${/* sc-selector */ ActionListHeaderColumn} {
     display: flex;
     padding: ${(props) => props.theme.space.small};
+  }
+
+  ${ActionListHeader} {
+    padding-left: ${({ canSelect }) => (canSelect ? '2.75rem' : undefined)};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}

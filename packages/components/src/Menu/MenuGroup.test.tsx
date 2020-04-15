@@ -29,7 +29,7 @@ import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 
 import { palette } from '@looker/design-tokens'
-import { Box } from '../Layout/Box'
+import { Box } from '../Layout'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 

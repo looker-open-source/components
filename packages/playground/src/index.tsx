@@ -27,15 +27,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
-import { CheckboxDemo } from './Checkbox/CheckboxDemo'
+import { Demo } from './Layout'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
       <GlobalStyle />
-      <CheckboxDemo />
-      <MixedStateCheckboxDemo />
+      <Demo />
     </ComponentsProvider>
   )
 }

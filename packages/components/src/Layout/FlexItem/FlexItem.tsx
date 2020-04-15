@@ -35,17 +35,17 @@ import {
   FlexProps,
   OrderProps,
 } from 'styled-system'
-import { LayoutComponentProps, layoutCSS } from '../layout'
+import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
 
 export interface FlexItemProps
-  extends LayoutComponentProps,
+  extends ComplexLayoutProps,
     AlignSelfProps,
     FlexBasisProps,
     FlexProps,
     OrderProps {}
 
 export const FlexItem = styled.div<FlexItemProps>`
-  ${layoutCSS}
+  ${complexLayoutCSS}
   ${alignSelf}
   ${flexBasis}
   ${flex}

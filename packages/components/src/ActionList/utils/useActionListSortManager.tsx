@@ -25,13 +25,10 @@
  */
 
 import React, { useState, ReactNode } from 'react'
+import { ActionList, ActionListColumns } from '../ActionList'
+import { ActionListItem } from '../ActionListItem'
+import { ActionListItemColumn } from '../ActionListItemColumn'
 import { ActionListDatum, ActionListData, doDefaultActionListSort } from '.'
-import {
-  ActionList,
-  ActionListColumns,
-  ActionListItem,
-  ActionListItemColumn,
-} from '..'
 
 export const useActionListSortManager = (
   actionListData: ActionListData,
@@ -52,10 +49,12 @@ export const useActionListSortManager = (
 
   const items = data.map((dataObj) => {
     const assumedPrimaryKey = columns[0].id
+    const id = dataObj[assumedPrimaryKey]
 
     return (
       <ActionListItem
-        key={dataObj[assumedPrimaryKey]}
+        id={id}
+        key={id}
         onClick={() => alert(`Row clicked`)}
         actions={generateActions(dataObj)}
       >
