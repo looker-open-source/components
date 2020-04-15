@@ -7,30 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.26] - 2020-04-14
 
-- `InputTime` component
-
 ### Added
 
-- `ActionListManager` component
-- `CodeBlock` component
-- `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
-- `Grid` component
-- `InputTimeSelect` component
-- `Pagination` component
-- `Prompt` component
-- `SelectMulti` component
-- `Space` & `SpaceVertical` components
-- Icons - `Board`, `ShareAlt`,`SendEmail`, `SendSftp`, `SendWebhook`, `VisibilityOutline`,
+- Content
+  - `ActionList`
+    - Now supports sorting
+    - Now supports selections
+    - `ActionListManager` component
+    - `ActionListItemAction` accepts `color` prop (only takes `danger`)
+  - `PageSize` component
+  - `Pagination` component
+- Forms
+  - `InputTime` component
+  - `InputTimeSelect` component
+  - `SelectMulti` component
+  - `TextArea` component supports `resize` property
+- Icons
+  - `Board`
+  - `ShareAlt`
+  - `SendEmail`, `SendSftp`, `SendWebhook`
+  - `VisibilityOutline`,
+- Layout
+  - `Grid` component
+  - `Space` & `SpaceVertical` components
+- Overlay
+  - `Prompt` component & `usePrompt` hook
+- Typography
+  - `CodeBlock` component
+- Utilities
+  - `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
 
 ### Changed
 
-- `ActionListItemAction` accepts `color` prop (only takes `danger`)
-- Icons - `Share` updated
+48 direct dependency updates (https://github.com/looker-open-source/components/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+is%3Amerged+merged%3A2020-03-23..2020-04-15)
+
+- `ActionList` now gives proper white space to `indicator` element
+- `Banner` prop `dismissable` is now `canDismiss`
+- Icons -`Share` artwork updated
+- `Popper` upgraded to 2.x
+- ESLint now enforces license header on all files automatically (with `--fix` option)
 
 ### Fixed
 
-- `usePopper` (used in `Popover` and `Tooltip`) positioning issue with `placement="top"` and offset parent is the window
+- `IconSize` - corrected icon's size to adjust with `size` prop
 - `Select` no longer throws a runtime error when no options, defaultValue or placeholder are specified
+- `ToggleSwitch` enabled color corrected
+- `usePopper` (used in `Popover` and `Tooltip`) positioning issue with `placement="top"` and offset parent is the window
 
 ## [0.7.25] - 2020-03-23
 
