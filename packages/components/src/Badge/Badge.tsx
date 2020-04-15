@@ -56,12 +56,6 @@ export interface BadgeProps
     | 'neutral'
     | 'plain'
     | 'default'
-
-  /**
-   *  @default false
-   **/
-  rounded?: boolean
-
   /**
    * Defines the size of Badge diameter.
    * @default "medium"
@@ -76,7 +70,7 @@ const size = variant({
     small: {
       fontSize: 'xxsmall',
       lineHeight: '16px',
-      px: 'xxsmall',
+      px: 'xsmall',
     },
     medium: {
       fontSize: 'xsmall',
@@ -86,7 +80,7 @@ const size = variant({
     large: {
       fontSize: 'medium',
       lineHeight: '32px',
-      px: 'xsmall',
+      px: 'small',
     },
   },
 })
@@ -94,15 +88,16 @@ const size = variant({
 const intent = variant({
   prop: 'intent',
   variants: {
-    critical: { bg: 'palette.red500', color: 'palette.white' },
-    default: { bg: 'palette.purple500', color: 'palette.white' },
-    info: { bg: 'palette.blue500', color: 'palette.white' },
-    neutral: { bg: 'palette.charcoal500', color: 'palette.white' },
+    critical: { bg: 'palette.red100', color: 'palette.red600' },
+    default: { bg: 'palette.purple100', color: 'palette.purple600' },
+    info: { bg: 'palette.blue100', color: 'palette.blue600' },
+    neutral: { bg: 'palette.charcoal200', color: 'palette.charcoal600' },
     plain: { bg: 'palette.white', color: 'palette.purple500' },
-    positive: { bg: 'palette.green500', color: 'palette.white' },
-    warning: { bg: 'palette.yellow500', color: 'palette.white' },
+    positive: { bg: 'palette.green100', color: 'palette.green700' },
+    warning: { bg: 'palette.yellow100', color: 'palette.yellow900' },
   },
 })
+
 const BadgeLayout: FC<BadgeProps> = ({ children, ...props }) => {
   return <span {...props}>{children}</span>
 }
@@ -117,8 +112,7 @@ export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${intent}
 
   display: inline-flex;
-  border-radius: ${(props) =>
-    props.rounded ? '50px' : props.theme.radii.medium};
+  border-radius:50px;
 `
 
 Badge.defaultProps = {
