@@ -24,7 +24,7 @@
 
  */
 
-import { mount } from 'enzyme'
+import { mountWithTheme } from '@looker/components-test-utils'
 import React, { RefObject } from 'react'
 import { act } from 'react-dom/test-utils'
 import { useElementVisibility } from './MenuGroup.hooks'
@@ -54,7 +54,7 @@ describe('MenuGroup Hooks', () => {
 
   it('it returns true as the default visibility state', () => {
     act(() => {
-      mount(<TestHook callback={cb} testRef={testRef} />)
+      mountWithTheme(<TestHook callback={cb} testRef={testRef} />)
     })
     expect(isVisible).toEqual(true)
   })

@@ -24,5 +24,6 @@
 
  */
 
+export { ReactWrapper } from 'enzyme'
 export * from './create_with_theme'
 export * from './snapshot'

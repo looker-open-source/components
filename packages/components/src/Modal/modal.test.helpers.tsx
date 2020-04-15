@@ -24,9 +24,8 @@
 
  */
 
-import { ReactWrapper } from 'enzyme'
 import React, { ReactElement } from 'react'
-import { shallowWithTheme } from '@looker/components-test-utils'
+import { ReactWrapper, shallowWithTheme } from '@looker/components-test-utils'
 
 export const SimpleContent = (
   <div>
