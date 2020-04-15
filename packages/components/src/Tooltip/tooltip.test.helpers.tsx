@@ -24,7 +24,7 @@
 
  */
 
-import { ReactWrapper } from 'enzyme'
+import { ReactWrapper } from '@looker/components-test-utils'
 import React, { ReactElement } from 'react'
 
 export const SimpleContent = <div>simple content</div>

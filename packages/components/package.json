@@ -60,11 +60,9 @@
     "@types/styled-system": "^5.1.9",
     "@types/uuid": "^7.0.2",
     "csstype": "^2.6.10",
-    "enzyme": "^3.11.0",
     "jest-styled-components": "^6.3.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
     "styled-components": "^4.4.1"
   },
   "peerDependencies": {
