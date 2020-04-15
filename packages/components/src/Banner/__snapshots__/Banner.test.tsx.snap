@@ -1,59 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Confirmation banner 1`] = `
-.c2 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #e0ffe7;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div
-  aria-live="polite"
-  className="c0"
-  role="status"
->
-  <div
-    className="c1"
-  />
-  <div
-    className="c2"
-  >
-    Confirmation
-  </div>
-</div>
-`;
-
-exports[`Dismissable banner 1`] = `
+exports[`Banner can be dismissed 1`] = `
 .c1 {
   color: #49a9f2;
   margin-right: 0.75rem;
@@ -285,6 +232,59 @@ exports[`Dismissable banner 1`] = `
       </svg>
     </div>
   </button>
+</div>
+`;
+
+exports[`Confirmation banner 1`] = `
+.c2 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c0 {
+  border-radius: 0.25rem;
+  background-color: #e0ffe7;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1"
+  />
+  <div
+    className="c2"
+  >
+    Confirmation
+  </div>
 </div>
 `;
 

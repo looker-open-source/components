@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.25",
+  "version": "0.7.26",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.7",
@@ -15,11 +15,11 @@
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-manifest": "^2.3.3",
-    "gatsby-plugin-mdx": "^1.1.4",
+    "gatsby-plugin-mdx": "^1.1.7",
     "gatsby-plugin-offline": "^3.0.41",
-    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-react-helmet": "^3.2.2",
     "gatsby-plugin-sharp": "^2.5.4",
-    "gatsby-plugin-styled-components": "^3.1.21",
+    "gatsby-plugin-styled-components": "^3.2.1",
     "gatsby-plugin-typescript": "^2.3.1",
     "gatsby-remark-images": "^3.2.2",
     "gatsby-source-filesystem": "^2.2.2",
@@ -33,9 +33,9 @@
     "react-live": "^2.2.2"
   },
   "devDependencies": {
-    "@looker/components": "^0.7.25",
-    "@looker/design-tokens": "^0.7.24",
-    "@looker/icons": "^0.7.25",
+    "@looker/components": "^0.7.26",
+    "@looker/design-tokens": "^0.7.26",
+    "@looker/icons": "^0.7.26",
     "@types/react": "^16.9.25",
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-dom": "^16.9.5",

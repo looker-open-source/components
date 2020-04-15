@@ -31,9 +31,8 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { IconButton } from '../Button'
-import { Box } from '../Layout/Box'
+import { Box, Flex } from '../Layout'
 import { Icon } from '../Icon'
-import { Flex } from '../Layout/Flex'
 import { VisuallyHidden } from '../VisuallyHidden'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
@@ -46,7 +45,7 @@ export interface BannerProps
    * @default: 'info'
    */
   intent?: BannerIntent
-  dismissable?: boolean
+  canDismiss?: boolean
   onDismiss?: () => void
 }
 
@@ -99,7 +98,7 @@ export const Banner = forwardRef(
   (props: BannerProps, ref: Ref<HTMLDivElement>) => {
     const {
       children,
-      dismissable,
+      canDismiss,
       intent = 'warning',
       onDismiss,
       ...typeAndSpaceProps
@@ -127,7 +126,7 @@ export const Banner = forwardRef(
         {icon}
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
         <Box flex="auto">{children}</Box>
-        {dismissable && (
+        {canDismiss && (
           <IconButton
             ml="auto"
             style={{ padding: '1px' }}

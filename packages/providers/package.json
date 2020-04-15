@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "0.7.0",
+  "version": "0.7.26",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.24",
+    "@looker/design-tokens": "^0.7.26",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {

@@ -76,6 +76,7 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
   ${border}
   ${space}
 
+  width: 100%;
   height: ${(props) => props.size};
   ${(props) => (props.customColor ? color : appearanceVariant)}
 `
