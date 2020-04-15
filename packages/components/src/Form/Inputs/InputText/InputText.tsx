@@ -203,7 +203,7 @@ export const InputLayout = styled.div`
   background-color: ${(props) => props.theme.colors.palette.white};
   display: inline-flex;
   justify-content: space-evenly;
-  width: 174px;
+  width: 100%;
   input {
     border: none;
     background: transparent;
