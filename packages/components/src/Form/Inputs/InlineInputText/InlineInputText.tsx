@@ -24,7 +24,7 @@
 
  */
 
-import pick from 'lodash/omit'
+import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
