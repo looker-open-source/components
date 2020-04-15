@@ -31,41 +31,43 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { TextArea } from './TextArea'
 
 test('TextArea default', () => {
-  assertSnapshot(<TextArea />)
+  assertSnapshot(<TextArea id="TextAreaID" />)
 })
 
 test('TextArea with placeholder', () => {
-  assertSnapshot(<TextArea placeholder="this is a placeholder" />)
+  assertSnapshot(
+    <TextArea id="TextAreaID" placeholder="this is a placeholder" />
+  )
 })
 
 test('TextArea should accept disabled', () => {
-  assertSnapshot(<TextArea disabled />)
+  assertSnapshot(<TextArea disabled id="TextAreaID" />)
 })
 
 test('TextArea with an error validation', () => {
-  assertSnapshot(<TextArea validationType="error" />)
+  assertSnapshot(<TextArea id="TextAreaID" validationType="error" />)
 })
 
 test('TextArea resizes with prop resize = true', () => {
-  assertSnapshot(<TextArea resize />)
+  assertSnapshot(<TextArea id="TextAreaID" resize />)
 })
 
 test('TextArea resizes with prop resize = false', () => {
-  assertSnapshot(<TextArea resize={false} />)
+  assertSnapshot(<TextArea id="TextAreaID" resize={false} />)
 })
 
 test('TextArea resizes with prop resize = both', () => {
-  assertSnapshot(<TextArea resize="both" />)
+  assertSnapshot(<TextArea id="TextAreaID" resize="both" />)
 })
 
 test('TextArea resizes with prop resize = none', () => {
-  assertSnapshot(<TextArea resize="none" />)
+  assertSnapshot(<TextArea id="TextAreaID" resize="none" />)
 })
 
 test('TextArea resizes with prop resize = horizontal', () => {
-  assertSnapshot(<TextArea resize="horizontal" />)
+  assertSnapshot(<TextArea id="TextAreaID" resize="horizontal" />)
 })
 
 test('TextArea resizes with prop resize = vertical', () => {
-  assertSnapshot(<TextArea resize="vertical" />)
+  assertSnapshot(<TextArea id="TextAreaID" resize="vertical" />)
 })

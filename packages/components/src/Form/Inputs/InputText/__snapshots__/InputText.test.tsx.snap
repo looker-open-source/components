@@ -5,6 +5,22 @@ exports[`InputText default 1`] = `
   height: 36px;
 }
 
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
+}
+
 .c0:hover {
   border-color: #C1C6CC;
 }
@@ -38,6 +54,22 @@ exports[`InputText default 1`] = `
 exports[`InputText should accept disabled 1`] = `
 .c0 {
   height: 36px;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -82,6 +114,22 @@ exports[`InputText should accept readOnly 1`] = `
   height: 36px;
 }
 
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
+}
+
 .c0:hover {
   border-color: #C1C6CC;
 }
@@ -116,6 +164,22 @@ exports[`InputText should accept readOnly 1`] = `
 exports[`InputText should accept required 1`] = `
 .c0 {
   height: 36px;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -154,6 +218,22 @@ exports[`InputText with a placeholder 1`] = `
   height: 36px;
 }
 
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
+}
+
 .c0:hover {
   border-color: #C1C6CC;
 }
@@ -190,6 +270,22 @@ exports[`InputText with a value 1`] = `
   height: 36px;
 }
 
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
+}
+
 .c0:hover {
   border-color: #C1C6CC;
 }
@@ -224,6 +320,22 @@ exports[`InputText with a value 1`] = `
 exports[`InputText with an error validation 1`] = `
 .c0 {
   height: 36px;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -272,6 +384,22 @@ exports[`InputText with aria-describedby 1`] = `
   height: 36px;
 }
 
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
+}
+
 .c0:hover {
   border-color: #C1C6CC;
 }
@@ -306,6 +434,22 @@ exports[`InputText with aria-describedby 1`] = `
 exports[`InputText with name and id 1`] = `
 .c0 {
   height: 36px;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {

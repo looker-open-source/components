@@ -1,30 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextArea default 1`] = `
-.c1 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c1:hover {
-  border-color: #C1C6CC;
-}
-
-.c1:focus,
-.c1:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -35,48 +11,46 @@ exports[`TextArea default 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 <div
   className="c0"
 >
   <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
+    id="TextAreaID"
   />
 </div>
 `;
 
 exports[`TextArea resizes with prop resize = both 1`] = `
-.c1 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c1:hover {
-  border-color: #C1C6CC;
-}
-
-.c1:focus,
-.c1:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -87,25 +61,63 @@ exports[`TextArea resizes with prop resize = both 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 <div
   className="c0"
 >
   <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
+    id="TextAreaID"
   />
 </div>
 `;
 
 exports[`TextArea resizes with prop resize = false 1`] = `
-.c1 {
+.c0 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c0 .c1 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: none;
@@ -114,21 +126,31 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
+<div
+  className="c0"
+>
+  <textarea
+    id="TextAreaID"
+  />
+</div>
+`;
+
+exports[`TextArea resizes with prop resize = horizontal 1`] = `
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -139,25 +161,13 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-<div
-  className="c0"
->
-  <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = horizontal 1`] = `
-.c1 {
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: horizontal;
@@ -166,21 +176,31 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
+<div
+  className="c0"
+>
+  <textarea
+    id="TextAreaID"
+  />
+</div>
+`;
+
+exports[`TextArea resizes with prop resize = none 1`] = `
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -191,25 +211,13 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-<div
-  className="c0"
->
-  <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = none 1`] = `
-.c1 {
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: none;
@@ -218,21 +226,31 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
+<div
+  className="c0"
+>
+  <textarea
+    id="TextAreaID"
+  />
+</div>
+`;
+
+exports[`TextArea resizes with prop resize = true 1`] = `
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -243,25 +261,13 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-<div
-  className="c0"
->
-  <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = true 1`] = `
-.c1 {
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: both;
@@ -270,21 +276,31 @@ exports[`TextArea resizes with prop resize = true 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
+<div
+  className="c0"
+>
+  <textarea
+    id="TextAreaID"
+  />
+</div>
+`;
+
+exports[`TextArea resizes with prop resize = vertical 1`] = `
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -295,25 +311,13 @@ exports[`TextArea resizes with prop resize = true 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-<div
-  className="c0"
->
-  <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = vertical 1`] = `
-.c1 {
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: vertical;
@@ -322,21 +326,31 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
+<div
+  className="c0"
+>
+  <textarea
+    id="TextAreaID"
+  />
+</div>
+`;
+
+exports[`TextArea should accept disabled 1`] = `
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -347,25 +361,13 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-<div
-  className="c0"
->
-  <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
-  />
-</div>
-`;
-
-exports[`TextArea should accept disabled 1`] = `
-.c1 {
+.c0 textarea {
   height: 6.25rem;
   width: 16rem;
   resize: both;
@@ -374,57 +376,39 @@ exports[`TextArea should accept disabled 1`] = `
   border-radius: 0.25rem;
   font-size: 0.875rem;
   min-height: 6.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem;
   padding-right: 2rem;
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus,
-.c1:focus-within {
+.c0 textarea:focus,
+.c0 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c1:hover {
+.c0 textarea:hover {
   border-color: #DEE1E5;
-}
-
-.c0 {
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.c0 .c2 {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
 }
 
 <div
   className="c0"
 >
   <textarea
-    className="c1"
     disabled={true}
-    height="6.25rem"
-    width="16rem"
+    id="TextAreaID"
   />
 </div>
 `;
 
 exports[`TextArea with an error validation 1`] = `
-.c2 {
+.c1 {
   color: #CC1F36;
   width: 1rem;
   height: 1rem;
@@ -438,28 +422,16 @@ exports[`TextArea with an error validation 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
+.c3 .c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
-.c1:hover {
-  border-color: #C1C6CC;
-}
-
-.c1:focus,
-.c1:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
+.c4 .c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
 .c0 {
@@ -472,22 +444,55 @@ exports[`TextArea with an error validation 1`] = `
   height: fit-content;
 }
 
-.c0 .c3 {
+.c0 .c2 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+  border-color: #ED3B53;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 textarea:hover {
+  border-color: #CC1F36;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 <div
   className="c0"
 >
   <textarea
-    className="c1"
-    height="6.25rem"
-    width="16rem"
+    id="TextAreaID"
   />
   <div
-    className="c2 c3 "
+    className="c1 c2 "
     color="palette.red500"
     size="1rem"
   >
@@ -510,30 +515,6 @@ exports[`TextArea with an error validation 1`] = `
 `;
 
 exports[`TextArea with placeholder 1`] = `
-.c1 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c1:hover {
-  border-color: #C1C6CC;
-}
-
-.c1:focus,
-.c1:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
 .c0 {
   position: relative;
   width: -webkit-fit-content;
@@ -544,20 +525,42 @@ exports[`TextArea with placeholder 1`] = `
   height: fit-content;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 <div
   className="c0"
 >
   <textarea
-    className="c1"
-    height="6.25rem"
+    id="TextAreaID"
     placeholder="this is a placeholder"
-    width="16rem"
   />
 </div>
 `;

@@ -40,7 +40,6 @@ const FieldTextComponent = forwardRef(
     return (
       <Field
         id={id}
-        alignValidationMessage="bottom"
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >

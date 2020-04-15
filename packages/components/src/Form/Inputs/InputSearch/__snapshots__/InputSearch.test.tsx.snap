@@ -32,6 +32,22 @@ exports[`InputSearch default 1`] = `
   height: 36px;
 }
 
+.c4::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c4:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c4::placeholder {
+  color: #939BA5;
+}
+
 .c4:hover {
   border-color: #C1C6CC;
 }
@@ -156,6 +172,22 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
 
 .c2 {
   height: 36px;
+}
+
+.c2::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c2::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c2:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c2::placeholder {
+  color: #939BA5;
 }
 
 .c2:hover {

@@ -67,6 +67,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Popper` upgraded to 2.x
 - ESLint now enforces license header on all files automatically (with `--fix` option)
 
+### Change
+
+- updated Field to remove `alignLabel` and have only default (top) and inline (right) label.
+
 ### Fixed
 
 - `IconSize` - corrected icon's size to adjust with `size` prop

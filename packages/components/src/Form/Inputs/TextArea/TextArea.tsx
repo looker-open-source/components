@@ -24,6 +24,7 @@
 
  */
 
+import pick from 'lodash/pick'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
@@ -44,6 +45,7 @@ import {
   inputTextValidation,
 } from '../InputText'
 import { Icon } from '../../../Icon'
+import { inputPropKeys } from '../InputProps'
 
 type TextAreaResize = 'both' | 'horizontal' | 'vertical' | 'none' | boolean
 export interface TextAreaProps
@@ -63,42 +65,19 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   className,
   validationType,
   ...props
-}) => (
-  <div className={className}>
-    <StyledTextArea {...props} />
-    {validationType && <Icon name="Warning" color="palette.red500" />}
-  </div>
-)
+}) => {
+  const textareaProps = pick(props, inputPropKeys)
+
+  return (
+    <div className={className}>
+      <textarea {...textareaProps} />
+      {validationType && <Icon name="Warning" color="palette.red500" />}
+    </div>
+  )
+}
 
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'both' : resize
-
-const StyledTextArea = styled.textarea<TextAreaProps>`
-  ${layout}
-  ${space}
-  ${typography}
-
-  resize: ${(props) => TextAreaResize(props.resize)};
-  border: solid 1px;
-  border-color: ${(props) => props.theme.colors.palette.charcoal200};
-  border-radius: ${(props) => props.theme.radii.medium};
-  font-size: ${(props) => props.theme.fontSizes.small};
-  min-height: 6.25rem;
-  padding: ${(props) => props.theme.space.small};
-  padding-right: ${(props) => props.theme.space.xlarge};
-
-  &:hover {
-    ${inputTextHover}
-  }
-  &:focus,
-  :focus-within {
-    ${inputTextFocus}
-  }
-
-  ${inputTextValidation}
-
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-`
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
@@ -109,6 +88,33 @@ export const TextArea = styled(TextAreaLayout)`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+  }
+
+  textarea {
+    ${layout}
+    ${space}
+    ${typography}
+
+    resize: ${(props) => TextAreaResize(props.resize)};
+    border: solid 1px;
+    border-color: ${(props) => props.theme.colors.palette.charcoal200};
+    border-radius: ${(props) => props.theme.radii.medium};
+    font-size: ${(props) => props.theme.fontSizes.small};
+    min-height: 6.25rem;
+    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
+    padding-right: ${(props) => props.theme.space.xlarge};
+
+    &:hover {
+      ${inputTextHover}
+    }
+    &:focus,
+    :focus-within {
+      ${inputTextFocus}
+    }
+
+    ${(props) => (props.disabled ? inputTextDisabled : '')}
+
+    ${inputTextValidation}
   }
 `
 

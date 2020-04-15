@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fieldset with left aligned legend 1`] = `
-.c5 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c7 {
   height: 36px;
+}
+
+.c7::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c7:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::placeholder {
+  color: #939BA5;
 }
 
 .c7:hover {
@@ -45,6 +45,13 @@ exports[`Fieldset with left aligned legend 1`] = `
   color: #343C42;
 }
 
+.c5 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
 .c1 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -60,25 +67,6 @@ exports[`Fieldset with left aligned legend 1`] = `
   align-items: baseline;
 }
 
-.c3 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c6 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
 .c2 {
   color: #262D33;
   padding-bottom: 0.5rem;
@@ -90,16 +78,57 @@ exports[`Fieldset with left aligned legend 1`] = `
   border: none;
 }
 
-.c4 {
+.c3 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c3 .c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c3 .c10 {
+  grid-area: messages;
+}
+
+.c3 .c8 {
   width: 13rem;
 }
 
-.c4 .c8 {
+.c3 .c12 {
   width: 100%;
 }
 
-.c4 .c10 {
-  width: 100%;
+.c3 .c4 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c3 .c13 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c3 .c11 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <fieldset
@@ -124,100 +153,82 @@ exports[`Fieldset with left aligned legend 1`] = `
       className=""
     >
       <div
-        className="c3 c4 "
+        className="c3 "
       >
-        <div
-          className="c5"
-          width="13rem"
+        <label
+          className="c4 c5"
+          color="palette.charcoal700"
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          htmlFor="text-1"
         >
-          <label
-            className="c6"
-            color="palette.charcoal700"
-            fontSize="xsmall"
-            fontWeight="semiBold"
-            htmlFor="text-1"
-          >
-            One
-          </label>
+          One
+        </label>
+        <div
+          className="c6 "
+        >
+          <input
+            className="c7 c8 c9 "
+            id="text-1"
+            name="name1"
+            type="text"
+          />
         </div>
         <div
-          className="c3"
-        >
-          <div
-            className=""
-          >
-            <input
-              className="c7 c8 c9 "
-              id="text-1"
-              name="name1"
-              type="text"
-            />
-          </div>
-        </div>
+          className="c10 "
+        />
       </div>
       <div
-        className="c3 c4 "
+        className="c3 "
       >
-        <div
-          className="c5"
-          width="13rem"
+        <label
+          className="c4 c5"
+          color="palette.charcoal700"
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          htmlFor="text-2"
         >
-          <label
-            className="c6"
-            color="palette.charcoal700"
-            fontSize="xsmall"
-            fontWeight="semiBold"
-            htmlFor="text-2"
-          >
-            two
-          </label>
+          two
+        </label>
+        <div
+          className="c6 "
+        >
+          <input
+            className="c7 c8 c9 "
+            id="text-2"
+            name="name2"
+            type="text"
+          />
         </div>
         <div
-          className="c3"
-        >
-          <div
-            className=""
-          >
-            <input
-              className="c7 c8 c9 "
-              id="text-2"
-              name="name2"
-              type="text"
-            />
-          </div>
-        </div>
+          className="c10 "
+        />
       </div>
       <div
-        className="c3 c4 "
+        className="c3 "
       >
-        <div
-          className="c5"
-          width="13rem"
+        <label
+          className="c4 c5"
+          color="palette.charcoal700"
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          htmlFor="text-3"
         >
-          <label
-            className="c6"
-            color="palette.charcoal700"
-            fontSize="xsmall"
-            fontWeight="semiBold"
-            htmlFor="text-3"
-          >
-            three
-          </label>
+          three
+        </label>
+        <div
+          className="c6 "
+        >
+          <input
+            className="c7 c8 c9 "
+            id="text-3"
+            name="nam3"
+            type="text"
+          />
         </div>
         <div
-          className="c3"
-        >
-          <div
-            className=""
-          >
-            <input
-              className="c7 c8 c9 "
-              id="text-3"
-              name="nam3"
-              type="text"
-            />
-          </div>
-        </div>
+          className="c10 "
+        />
       </div>
     </div>
   </div>

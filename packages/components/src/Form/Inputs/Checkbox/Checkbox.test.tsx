@@ -76,17 +76,13 @@ test('Triggers onChange handler', () => {
 })
 
 test('Checkbox checked set to mixed', () => {
-  assertSnapshot(<Checkbox checked="mixed" />)
-})
-
-test('Checkbox with name and id', () => {
-  assertSnapshot(<Checkbox name="Chuck" id="Chucky" />)
+  assertSnapshot(<Checkbox checked="mixed" id="checkboxID" />)
 })
 
 test('Checkbox should accept disabled', () => {
-  assertSnapshot(<Checkbox disabled />)
+  assertSnapshot(<Checkbox disabled id="checkboxID" />)
 })
 
 test('Checkbox with aria-describedby', () => {
-  assertSnapshot(<Checkbox aria-describedby="some-id" />)
+  assertSnapshot(<Checkbox aria-describedby="some-id" id="checkboxID" />)
 })

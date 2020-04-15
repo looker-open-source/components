@@ -97,7 +97,6 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="bottom"
     />
   )
   expect(getByLabelText('thumbs up')).toBeVisible()
@@ -111,7 +110,6 @@ test('A FieldSelect with an error validation aligned to the left', () => {
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="left"
     />
   )
   const tree = component.toJSON()
@@ -125,7 +123,6 @@ test('A FieldSelect with an error validation aligned to the right', () => {
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="right"
     />
   )
   const tree = component.toJSON()

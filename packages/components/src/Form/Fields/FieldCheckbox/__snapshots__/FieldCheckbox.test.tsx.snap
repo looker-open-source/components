@@ -1,15 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldCheckbox 1`] = `
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c7 {
+.c6 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -30,7 +22,7 @@ exports[`A FieldCheckbox 1`] = `
   align-items: center;
 }
 
-.c5 {
+.c4 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -39,7 +31,7 @@ exports[`A FieldCheckbox 1`] = `
   vertical-align: middle;
 }
 
-.c5 input[type='checkbox'] {
+.c4 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -47,347 +39,158 @@ exports[`A FieldCheckbox 1`] = `
   z-index: 1;
 }
 
-.c5 .c6 {
+.c4 .c5 {
   background: #FFFFFF;
   border-color: #DEE1E5;
   color: #FFFFFF;
 }
 
-.c5 input[type='checkbox']:focus + .c6 {
+.c4 input[type='checkbox']:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5 input[type='checkbox']:disabled {
+.c4 input[type='checkbox']:disabled {
   cursor: not-allowed;
 }
 
-.c5 input[type='checkbox']:disabled + .c6 {
-  opacity: 0.5;
+.c4 input[type='checkbox']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
+  color: #F5F6F7;
 }
 
 .c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
 }
 
 .c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3,max-content);
 }
 
-.c1 .c8 {
-  width: 100%;
+.c0 .c3 {
+  grid-area: input;
 }
 
-.c1 .c9 {
-  width: 100%;
+.c0 .c1 {
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
 }
 
-.c1 .c3 {
-  text-align: right;
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
 }
 
-<div
-  className="c0 c1 "
+<label
+  className="c0 "
 >
-  <div
-    className="c2"
+  <span
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
   >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-    </label>
-  </div>
+    👍
+  </span>
   <div
-    className="c0"
+    className="c3 "
   >
     <div
-      className=""
+      checked={false}
+      className="c4 "
     >
-      <div
+      <input
         checked={false}
-        className="c5 "
+        className=""
+        id="FieldCheckboxID"
+        name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="checkbox"
+        type="checkbox"
+      />
+      <div
+        className="c5 c6"
       >
-        <input
-          checked={false}
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          onChange={[Function]}
-          onClick={[Function]}
-          role="checkbox"
-          type="checkbox"
-        />
-        <div
-          className="c6 c7"
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            fill="none"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 8L7 11L12 4"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
+          <path
+            d="M4 8L7 11L12 4"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
     </div>
   </div>
-</div>
+  <div
+    className="c7 "
+  />
+</label>
 `;
 
 exports[`A FieldCheckbox with checked value 1`] = `
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c7 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: solid 1px #DEE1E5;
-  border-radius: 0.125rem;
-  color: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c8 .c6 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
-  color: #FFFFFF;
-}
-
-.c8 input[type='checkbox']:focus + .c6 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c8 input[type='checkbox']:disabled + .c6 {
-  opacity: 0.5;
-}
-
-.c5 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c5 input[type='checkbox'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c5 .c6 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-  color: #FFFFFF;
-}
-
-.c5 input[type='checkbox']:focus + .c6 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5 input[type='checkbox']:disabled {
-  cursor: not-allowed;
-}
-
-.c5 input[type='checkbox']:disabled + .c6 {
-  opacity: 0.5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c1 .c9 {
-  width: 100%;
-}
-
-.c1 .c10 {
-  width: 100%;
-}
-
-.c1 .c3 {
-  text-align: right;
-}
-
-<div
-  className="c0 c1 "
->
-  <div
-    className="c2"
-  >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className=""
-    >
-      <div
-        checked={true}
-        className="c5 "
-      >
-        <input
-          checked={true}
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          onChange={[Function]}
-          onClick={[Function]}
-          role="checkbox"
-          type="checkbox"
-        />
-        <div
-          className="c6 c7"
-        >
-          <svg
-            fill="none"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 8L7 11L12 4"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A required FieldCheckbox 1`] = `
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c8 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: solid 1px #DEE1E5;
-  border-radius: 0.125rem;
-  color: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .c6 {
   position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 .c5 {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c8 input[type='checkbox']:focus + .c5 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8 input[type='checkbox']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
+  color: #F5F6F7;
+}
+
+.c4 {
+  position: relative;
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -395,7 +198,7 @@ exports[`A required FieldCheckbox 1`] = `
   vertical-align: middle;
 }
 
-.c6 input[type='checkbox'] {
+.c4 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -403,153 +206,112 @@ exports[`A required FieldCheckbox 1`] = `
   z-index: 1;
 }
 
-.c6 .c7 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
-  color: #FFFFFF;
-}
-
-.c6 input[type='checkbox']:focus + .c7 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c6 input[type='checkbox']:disabled {
-  cursor: not-allowed;
-}
-
-.c6 input[type='checkbox']:disabled + .c7 {
-  opacity: 0.5;
-}
-
-.c9 .c7 {
+.c4 .c5 {
   background: #6C43E0;
   border-color: #6C43E0;
   color: #FFFFFF;
 }
 
-.c9 input[type='checkbox']:focus + .c7 {
+.c4 input[type='checkbox']:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c9 input[type='checkbox']:disabled + .c7 {
-  opacity: 0.5;
+.c4 input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
+.c4 input[type='checkbox']:disabled + .c5 {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
+  color: #F5F6F7;
 }
 
 .c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
 }
 
 .c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3,max-content);
 }
 
-.c5 {
-  color: #CC1F36;
+.c0 .c3 {
+  grid-area: input;
 }
 
-.c1 .c10 {
-  width: 100%;
+.c0 .c1 {
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
 }
 
-.c1 .c11 {
-  width: 100%;
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
 }
 
-.c1 .c3 {
-  text-align: right;
-}
-
-<div
-  className="c0 c1 "
+<label
+  className="c0 "
 >
-  <div
-    className="c2"
+  <span
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
   >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-      <span
-        aria-hidden="true"
-        className="c5"
-      >
-         
-        *
-      </span>
-    </label>
-  </div>
+    👍
+  </span>
   <div
-    className="c0"
+    className="c3 "
   >
     <div
-      className=""
+      checked={true}
+      className="c4 "
     >
+      <input
+        checked={true}
+        className=""
+        id="FieldCheckboxID"
+        name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="checkbox"
+        type="checkbox"
+      />
       <div
-        checked={false}
-        className="c6 "
+        className="c5 c6"
       >
-        <input
-          checked={false}
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          onChange={[Function]}
-          onClick={[Function]}
-          required={true}
-          role="checkbox"
-          type="checkbox"
-        />
-        <div
-          className="c7 c8"
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            fill="none"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 8L7 11L12 4"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
+          <path
+            d="M4 8L7 11L12 4"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
     </div>
   </div>
-</div>
+  <div
+    className="c7 "
+  />
+</label>
 `;

@@ -136,6 +136,7 @@ const InputComponent = forwardRef(
         <Text fontSize="small">{suffix}</Text>
       </InputIconStyle>
     ) : null
+
     const inputProps = pick(
       omit(props, 'color', 'height', 'width'),
       inputPropKeys
@@ -177,8 +178,16 @@ export const inputTextDisabled = css`
     border-color: ${(props) => props.theme.colors.palette.charcoal200};
   }
 `
+
+export const inputHeight = '36px'
+
 const shared = css`
-  height: 36px;
+  height: ${inputHeight};
+
+  ::placeholder {
+    color: ${(props) => props.theme.colors.palette.charcoal400};
+  }
+
   &:hover {
     ${inputTextHover}
   }
@@ -199,6 +208,7 @@ export const InputLayout = styled.div`
     border: none;
     background: transparent;
     flex: 1;
+    font-size: ${(props) => props.theme.fontSizes.small};
     height: 100%;
     width: 100%;
     outline: none;

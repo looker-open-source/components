@@ -26,21 +26,22 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
 import { FieldRadio } from './FieldRadio'
 
 test('A FieldRadio', () => {
-  assertSnapshot(<FieldRadio label="👍" name="thumbsUp" id="thumbs-up" />)
-})
-
-test('A FieldRadio with label aligned left', () => {
-  assertSnapshot(
-    <FieldRadio label="👍" name="thumbsUp" id="thumbs-up" alignLabel="left" />
-  )
+  assertSnapshot(<FieldRadio id="FieldRadioID" label="👍" name="thumbsUp" />)
 })
 
 test('A FieldRadio checked', () => {
   assertSnapshot(
-    <FieldRadio label="👍" name="thumbsUp" id="thumbs-up" checked />
+    <FieldRadio checked id="FieldRadioID" label="👍" name="thumbsUp" />
   )
+})
+
+test('A FieldRadio disabled', () => {
+  const wrapper = mountWithTheme(
+    <FieldRadio disabled id="FieldRadioID" label="👍" name="thumbsUp" />
+  )
+  wrapper.find('input').html().includes('disabled=""')
 })

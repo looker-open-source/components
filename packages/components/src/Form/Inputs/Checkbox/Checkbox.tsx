@@ -32,11 +32,14 @@ import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import isUndefined from 'lodash/isUndefined'
 import { InputProps, inputPropKeys } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
+import { inputTextValidation } from '../InputText'
 
 export type MixedBoolean = true | false | 'mixed'
 
 interface CheckboxContainerProps extends SpaceProps {
   checked?: MixedBoolean
+  validationType?: ValidationType
 }
 
 export interface CheckboxProps
@@ -112,6 +115,7 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     height: 100%;
     z-index: 1;
   }
+
   ${FauxCheckbox} {
     ${({ theme, checked }) => {
       /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
@@ -124,11 +128,12 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
           `
     }}
     color: ${({ theme }) => theme.colors.palette.white};
+    ${inputTextValidation}
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
-      border-color: ${(props) => props.theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
+      border-color: ${({ theme }) => theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.palette.purple100};
       outline: none;
     }
   }
@@ -136,7 +141,9 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     cursor: not-allowed;
 
     & + ${FauxCheckbox} {
-      opacity: 0.5;
+      background: ${({ theme }) => theme.colors.palette.charcoal100};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal200};
+      color: ${({ theme }) => theme.colors.palette.charcoal100};
     }
   }
 

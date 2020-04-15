@@ -25,26 +25,18 @@
  */
 
 import React, { FunctionComponent, ReactNode } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
-import {
-  CustomizableAttributes,
-  FontSizes,
-  FontWeights,
-  SpacingSizes,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Flex, FlexItem } from '../../Layout'
-import { FormControl, FormControlDirections } from '../FormControl/FormControl'
-import { Label } from '../Label/Label'
-import { Text } from '../../Text/Text'
-import { Paragraph } from '../../Text/Paragraph'
-import {
-  ValidationMessage,
-  ValidationMessageProps,
-} from '../ValidationMessage/ValidationMessage'
 import { InputText, Select } from '../Inputs'
+import { inputHeight } from '../Inputs/InputText/InputText'
+import { Label } from '../Label/Label'
+import { Paragraph } from '../../Text/Paragraph'
+import { Text } from '../../Text/Text'
+import { ValidationMessage } from '../ValidationMessage'
+import { FieldBaseProps, RequiredStar } from './FieldBase'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -57,15 +49,7 @@ export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface =
   labelMargin: 'xsmall',
 }
 
-export interface FieldProps {
-  /**
-   * Determines where to place the label in relation to the input.
-   */
-  alignLabel?: FormControlDirections
-  /**
-   * Determines where to place the validation message in relation to the input.
-   */
-  alignValidationMessage?: FormControlDirections
+export interface FieldProps extends FieldBaseProps {
   /*
    * optional extra description
    */
@@ -79,31 +63,15 @@ export interface FieldProps {
    */
   id?: string
   /**
-   * Defines the label for the field.
+   * Determines where to place the label in relation to the input.
+   * @default false
    */
-  label?: string
+  inline?: boolean
+
   /**
    * Specifies for horizontally aligned labels how much space to take up.
    */
   labelWidth?: ResponsiveSpaceValue
-  /**
-   * Specifies the fontWeight of the internal Label.
-   * TODO - Deprecate usage in HT, then here.
-   */
-  labelFontSize?: FontSizes
-  /**
-   * Specifies the fontWeight of the internal Label.
-   */
-  labelFontWeight?: FontWeights
-  /**
-   * Whether or not the field should display a `*` denoting it is required.
-   */
-  required?: boolean
-  /**
-   *
-   * Holds the type of validation (error, warning, etc.) and corresponding message.
-   */
-  validationMessage?: ValidationMessageProps
   /**
    *
    * Specify the width of the FieldText if different then 13rem
@@ -112,11 +80,10 @@ export interface FieldProps {
 }
 
 export const fieldPropKeys = [
-  'alignLabel',
-  'alignValidationMessage',
   'description',
   'detail',
   'id',
+  'inline',
   'label',
   'labelFontSize',
   'labelFontWeight',
@@ -126,66 +93,17 @@ export const fieldPropKeys = [
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
-  pick(props, [...fieldPropKeys, 'required', 'className'])
+  pick(props, [...fieldPropKeys, 'disabled', 'required', 'className'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
-
-const RequiredStar = styled((props) => (
-  <span {...props} aria-hidden="true">
-    {' '}
-    *
-  </span>
-))`
-  color: ${(props) => props.theme.colors.palette.red500};
-`
-
-const handleHorizontalAlignment = (props: FieldProps) => {
-  const { alignLabel, labelWidth } = props
-  const width = labelWidth || CustomizableFieldAttributes.labelWidth
-  switch (alignLabel) {
-    case 'left':
-      return css`
-        text-align: right;
-        width: ${width};
-      `
-    case 'right':
-      return css`
-        text-align: left;
-        width: ${width};
-        margin-right: 0;
-        margin-left: ${(props) =>
-          props.theme.space[CustomizableFieldAttributes.labelMargin]};
-      `
-    case 'bottom':
-    case 'top':
-    default:
-      return ''
-  }
-}
-
-const getValidationMessageAlignment = (
-  alignValidationMessage?: FormControlDirections
-): FormControlDirections | undefined => {
-  switch (alignValidationMessage) {
-    case 'left':
-      return 'right'
-    case 'right':
-      return 'left'
-    case 'bottom':
-      return 'top'
-    case 'top':
-      return 'bottom'
-    default:
-      return undefined
-  }
-}
 
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
-const FieldComponent: FunctionComponent<FieldProps> = ({
-  alignValidationMessage,
+
+const FieldLayout: FunctionComponent<FieldProps> = ({
+  className,
   children,
   description,
   detail,
@@ -195,48 +113,62 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   labelFontWeight,
   required,
   validationMessage,
-  width,
-  ...props
 }) => {
+  const fieldDescription = description && (
+    <Paragraph mt="xsmall" fontSize="xsmall" color="palette.charcoal500">
+      {description}
+    </Paragraph>
+  )
+
   return (
-    <FormControl mb="xsmall" {...props}>
-      <Flex alignItems="left" justifyContent="space-between" width={width}>
-        <Label
-          htmlFor={id}
-          fontWeight={labelFontWeight}
-          fontSize={labelFontSize}
-        >
-          {label}
-          {required && <RequiredStar />}
-        </Label>
-        {detail && <Text fontSize="xsmall">{detail}</Text>}
-      </Flex>
-      <FormControl
-        alignLabel={getValidationMessageAlignment(alignValidationMessage)}
-        mb="xsmall"
-      >
-        <FlexItem>{children}</FlexItem>
-        {validationMessage ? (
-          <ValidationMessage
-            ml={alignValidationMessage === 'right' ? 'xsmall' : undefined}
-            {...validationMessage}
-          />
-        ) : null}
-      </FormControl>
-      {description && (
-        <Paragraph mt="none" fontSize="xsmall">
-          {description}
-        </Paragraph>
-      )}
-    </FormControl>
+    <div className={className}>
+      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
+        {label}
+        {required && <RequiredStar />}
+      </Label>
+      {detail && <FieldDetail>{detail}</FieldDetail>}
+      <InputArea>{children}</InputArea>
+      <MessageArea>
+        {validationMessage && <ValidationMessage {...validationMessage} />}
+        {fieldDescription}
+      </MessageArea>
+    </div>
   )
 }
 
-export const Field = styled(FieldComponent)`
-  width: ${(props) => props.width};
+const FieldDetail = styled(Text)``
+
+FieldDetail.defaultProps = {
+  fontSize: 'xsmall',
+}
+
+const InputArea = styled.div``
+const MessageArea = styled.div``
+
+export const Field = styled(FieldLayout)`
+  height: fit-content;
+  width: ${({ width }) => width || 'fit-content'};
+  align-items: left;
+  justify-content: space-between;
+  margin-bottom: ${({ theme }) => theme.space.xsmall};
+
+  display: grid;
+  grid-template-areas: ${({ inline }) =>
+    inline
+      ? '"label input detail" ". messages messages"'
+      : '"label detail" "input input" "messages messages"'};
+
+  ${InputArea} {
+    display: flex;
+    grid-area: input;
+  }
+
+  ${MessageArea} {
+    grid-area: messages;
+  }
 
   ${InputText} {
-    width: 100%;
+    width: ${({ width }) => width};
   }
 
   ${Select} {
@@ -244,6 +176,37 @@ export const Field = styled(FieldComponent)`
   }
 
   ${Label} {
-    ${handleHorizontalAlignment}
+    grid-area: label;
+
+    ${({ inline, theme }) =>
+      inline
+        ? `
+      text-align: right;
+      line-height: ${inputHeight};
+      justify-self: end;
+      height: ${inputHeight};
+      padding-right: ${theme.space.small};
+        width: 150px;
+      `
+        : `
+        padding-bottom: ${theme.space.xsmall};
+
+      `}
+  }
+  ${FieldDetail} {
+    grid-area: detail;
+    justify-self: end;
+
+    ${({ inline, theme }) =>
+      inline &&
+      `
+        align-self: center;
+        padding-left: ${theme.space.small};
+      `}
+  }
+
+  ${ValidationMessage} {
+    margin-right: ${({ theme }) => theme.space.xsmall};
+    margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `
