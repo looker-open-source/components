@@ -24,8 +24,8 @@
 
  */
 
+import { ActionListColumns } from '../ActionList'
 import { stringComparator, doDefaultActionListSort } from './sort_utils'
-import { ActionListColumns } from '..'
 
 describe('Action List Sort Utils', () => {
   test('Default string comparison', () => {

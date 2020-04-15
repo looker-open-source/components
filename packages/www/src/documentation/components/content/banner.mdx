@@ -13,15 +13,15 @@ The `<Banner />` component is used to alert the user with `warning`, `error`, `i
 <Banner intent="confirmation">Confirmation</Banner>
 ```
 
-## Dismissable
+## canDismiss
 
-Banners can also be set to be `dismissable`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
+Banners can also be set to be `canDismiss`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
 
 ```jsx
 ;() => {
   const { value, setOff, setOn } = useToggle(true)
   return value ? (
-    <Banner intent="warning" onDismiss={setOff} dismissable>
+    <Banner intent="warning" onDismiss={setOff} canDismiss>
       I can be closed
     </Banner>
   ) : (

@@ -33,8 +33,6 @@ import React, {
 import styled from 'styled-components'
 import reduce from 'lodash/reduce'
 import map from 'lodash/map'
-import padStart from 'lodash/padStart'
-import toString from 'lodash/toString'
 import isFunction from 'lodash/isFunction'
 import find from 'lodash/find'
 import trim from 'lodash/trim'
@@ -52,12 +50,17 @@ import {
 import { ComboboxCallback, MaybeComboboxOptionObject } from '../Combobox/types'
 import { ValidationType } from '../../ValidationMessage'
 import { useReadOnlyWarn } from '../../../utils'
+import {
+  formatTimeString,
+  parseBase10Int,
+  isValidTime,
+  TimeFormats,
+} from '../utils'
 
-type formats = '12h' | '24h'
 type intervals = 5 | 10 | 15 | 30
 
 export interface InputTimeSelectProps extends SpaceProps, BorderProps {
-  format?: formats
+  format?: TimeFormats
   interval?: intervals
   defaultValue?: string
   value?: string
@@ -67,7 +70,7 @@ export interface InputTimeSelectProps extends SpaceProps, BorderProps {
 }
 
 // if format is `12h`, repeat hours 1-12 twice
-const cycleHourDisplay = (format: formats, hour: number) => {
+const cycleHourDisplay = (format: TimeFormats, hour: number) => {
   if (format === '12h') {
     if (hour === 0) {
       return 12 // 12:00 am
@@ -78,14 +81,9 @@ const cycleHourDisplay = (format: formats, hour: number) => {
   return hour
 }
 
-// returns "01", "02", "03" instead of integers 1, 2, 3
-const formatTimeString = (number: number) => {
-  return padStart(toString(number), 2, '0')
-}
-
 // human readable value returned based on 12h or 24h formats
 // e.g. instead of 13:45 display "01:45 pm"
-const formatLabel = (format: formats, hour: number, minute: number) => {
+const formatLabel = (format: TimeFormats, hour: number, minute: number) => {
   const formattedHour = formatTimeString(cycleHourDisplay(format, hour))
   const formattedMinute = formatTimeString(minute)
   const period = format === '12h' && (hour < 12 ? 'am' : 'pm')
@@ -101,7 +99,7 @@ const generateMinuteIntervals = (interval: intervals) => {
 }
 
 // generates all time options based on format and interval settings
-const generateTimes = (format: formats, interval: intervals) => {
+const generateTimes = (format: TimeFormats, interval: intervals) => {
   const hours = new Array(24)
   const minutes = generateMinuteIntervals(interval)
 
@@ -127,9 +125,6 @@ const generateTimes = (format: formats, interval: intervals) => {
     []
   )
 }
-
-const parseBase10Int = (value: string) =>
-  value.length ? parseInt(value, 10) : 0
 
 // takes a non-normalized time value (e.g. 10:13) and rounds to the nearest valid interval (e.g. 10:15)
 const matchClosestMinute = (interval: intervals, timeCode?: string) => {
@@ -159,24 +154,9 @@ const matchClosestMinute = (interval: intervals, timeCode?: string) => {
   return `${formattedHour}:${formattedMinute}`
 }
 
-// take a 24 hour formatted time string ('14:34') and check whether it's a real time of day
-// rejects non-numeric inputs and illogical times ('64:1928')
-const isValidTime = (value?: string) => {
-  if (!value) {
-    return true
-  }
-  const [hour = 0, minute = 0] = map(value.split(':'), parseBase10Int)
-
-  if (hour < 24 && minute <= 60) {
-    return true
-  }
-
-  return false
-}
-
 // take in a string value ('03:45') and return a formatted option object
 // e.g. {label:'03:45 am', value: '03:45'}
-const createOptionFromStringValue = (format: formats, value: string) => {
+const createOptionFromStringValue = (format: TimeFormats, value: string) => {
   const [hour, minute] = map(value.split(':'), parseBase10Int)
 
   return {
@@ -187,9 +167,9 @@ const createOptionFromStringValue = (format: formats, value: string) => {
 
 // take in a shorthand string label ('2pm') and return a formatted object
 // e.g. {label: '02:00 pm', value: '14:00'}
-const createOptionFromLabel = (format: formats, label: string) => {
-  const period = label.includes('p') ? 'pm' : 'am'
-  const numericTime = label.replace(/[apm]/g, '')
+const createOptionFromLabel = (format: TimeFormats, label: string) => {
+  const period = label.toLowerCase().includes('p') ? 'pm' : 'am'
+  const numericTime = label.replace(/[apm]/gi, '')
   const [hour = 0, minute = 0] = numericTime.split(':').map(parseBase10Int)
   const hr24 = hour + (period === 'pm' ? 12 : 0)
   const value = `${formatTimeString(hr24)}:${formatTimeString(minute)}`
@@ -205,7 +185,7 @@ const createOptionFromLabel = (format: formats, label: string) => {
 // e.g. {label:'03:45 am', value: '03:45'}
 const matchStringValueToOption = (
   options: ComboboxOptionObject[],
-  format: formats,
+  format: TimeFormats,
   value?: string
 ) => {
   if (value && isValidTime(value)) {
@@ -261,13 +241,11 @@ export const InputTimeSelect: FC<InputTimeSelectProps> = ({
   defaultValue,
 }) => {
   useReadOnlyWarn('InputTimeSelect', value, onChange)
-
-  if (!isValidTime(value) || !isValidTime(defaultValue)) {
+  const valueProp = value || defaultValue
+  if (!isValidTime(valueProp)) {
     // eslint-disable-next-line no-console
     console.error(
-      `Invalid time (${
-        value || defaultValue
-      }) passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
+      `Invalid time ("${valueProp}") passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
     )
   }
 

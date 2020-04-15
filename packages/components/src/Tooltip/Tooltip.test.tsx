@@ -32,7 +32,7 @@ import {
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
 
-import { Box } from '../Layout/Box'
+import { Box } from '../Layout'
 import { Button } from '../Button'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import { Popover } from '../Popover'

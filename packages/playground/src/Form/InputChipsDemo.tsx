@@ -82,7 +82,7 @@ export function InputChipsDemo() {
         onChange={handleChange3}
         placeholder="Email validation"
         validate={(val) => emailValidator.test(val)}
-        onInvalid={handleInvalid}
+        onValidationFail={handleInvalid}
         onDuplicate={handleDuplicate}
       />
       <Paragraph>

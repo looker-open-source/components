@@ -95,7 +95,7 @@ The `inputValue` and `onInputChange` props allow control of the typed value (`on
 
 If a duplicate value is entered, it will not be added to the values list.
 The optional `validate` prop is a function returning a boolean that is called for each value that is entered.
-If it returns false, the value is not added. `onInvalid` and `onDuplicate` are optional handlers for when
+If it returns false, the value is not added. `onValidationFail` and `onDuplicate` are optional handlers for when
 invalid and duplicate values are entered.
 
 ```js
@@ -128,7 +128,7 @@ invalid and duplicate values are entered.
         values={values}
         validate={validate}
         onChange={handleChange}
-        onInvalid={handleInvalid}
+        onValidationFail={handleInvalid}
         onDuplicate={handleDuplicate}
         mb="small"
       />

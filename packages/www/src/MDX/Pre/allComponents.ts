@@ -71,6 +71,7 @@ import {
   Flex,
   FlexItem,
   Form,
+  Grid,
   Heading,
   Icon,
   IconButton,
@@ -81,6 +82,7 @@ import {
   InputHidden,
   InputSearch,
   InputText,
+  InputTime,
   InputTimeSelect,
   Label,
   Link,
@@ -109,6 +111,8 @@ import {
   Select,
   SelectMulti,
   Slider,
+  Space,
+  SpaceVertical,
   Spinner,
   Swatch,
   Tab,
@@ -140,12 +144,16 @@ import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
 
+import { GridPlaceholder } from '../../helpers/GridPlaceholder'
+
 export const allComponents = {
   useState,
 
   styled,
 
   isEqual,
+
+  GridPlaceholder,
 
   palette,
   ActionList,
@@ -194,6 +202,7 @@ export const allComponents = {
   Flex,
   FlexItem,
   Form,
+  Grid,
   Heading,
   Icon,
   IconButton,
@@ -204,6 +213,7 @@ export const allComponents = {
   InputHidden,
   InputSearch,
   InputText,
+  InputTime,
   InputTimeSelect,
   Label,
   Link,
@@ -232,6 +242,8 @@ export const allComponents = {
   Select,
   SelectMulti,
   Slider,
+  Space,
+  SpaceVertical,
   Spinner,
   Swatch,
   Tab,
