@@ -24,23 +24,60 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { RangeSliderDemo } from './Form/RangeSliderDemo'
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  FontSizes,
+} from '@looker/design-tokens'
+import { variant } from 'styled-system'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <RangeSliderDemo />
-    </ComponentsProvider>
-  )
+export type SliderSizes = SizeSmall | SizeMedium | SizeLarge
+
+export interface SliderSizeProps {
+  /**
+   * Defines the size of the slider.
+   * @default "medium"
+   */
+  size?: SliderSizes
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+interface SliderSizeMap {
+  prop: 'size'
+  variants: {
+    [key in SliderSizes]: {
+      knobSize: number
+      trackHeight: number
+      fontSize: FontSizes
+      valueSpacing: string
+    }
+  }
+}
+
+/* eslint-disable sort-keys */
+const sliderSizeMap: SliderSizeMap = {
+  prop: 'size',
+  variants: {
+    small: {
+      knobSize: 12,
+      trackHeight: 3,
+      fontSize: 'xxsmall',
+      valueSpacing: '-0.75rem',
+    },
+    medium: {
+      knobSize: 16,
+      trackHeight: 4,
+      fontSize: 'xsmall',
+      valueSpacing: '-0.85rem',
+    },
+    large: {
+      knobSize: 18,
+      trackHeight: 6,
+      fontSize: 'small',
+      valueSpacing: '-1rem',
+    },
+  },
+}
+/* eslint-enable sort-keys */
+
+export const sliderSize = variant(sliderSizeMap)

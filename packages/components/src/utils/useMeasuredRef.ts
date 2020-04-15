@@ -23,24 +23,54 @@
  SOFTWARE.
 
  */
+import { useCallback, useLayoutEffect, useState } from 'react'
+import ResizeObserver from 'resize-observer-polyfill'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { RangeSliderDemo } from './Form/RangeSliderDemo'
+function measureElement(element?: HTMLElement | null) {
+  if (!element) {
+    return {
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 0,
+    }
+  }
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <RangeSliderDemo />
-    </ComponentsProvider>
-  )
+  return element.getBoundingClientRect()
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export const useMeasuredRef = (ref: HTMLElement | null): ClientRect => {
+  const [rect, setRect] = useState(measureElement())
+
+  const handleResize = useCallback(() => {
+    // Update client rect
+    ref && setRect(measureElement(ref))
+  }, [ref])
+
+  useLayoutEffect(() => {
+    if (!ref) {
+      return
+    }
+
+    handleResize()
+    const resizeObserver = new ResizeObserver(() => handleResize())
+    if (ref) {
+      resizeObserver.observe((ref as unknown) as HTMLElement)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      if (!resizeObserver) {
+        return
+      }
+
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [handleResize, ref])
+
+  return rect
+}

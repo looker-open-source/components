@@ -25,22 +25,32 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { RangeSliderDemo } from './Form/RangeSliderDemo'
+import { Card, CardContent, RangeSlider, Heading } from '@looker/components'
+import styled from 'styled-components'
 
-const App: React.FC = () => {
+export const RangeSliderDemo = () => {
   return (
-    <ComponentsProvider>
-      <RangeSliderDemo />
-    </ComponentsProvider>
+    <DemoWrapper>
+      <DemoGrid>
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading mb="small">Basic Component:</Heading>
+            <RangeSlider />
+          </CardContent>
+        </Card>
+      </DemoGrid>
+    </DemoWrapper>
   )
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+const DemoWrapper = styled.div`
+  max-width: 1200px;
+  margin: 2rem auto;
+`
+
+const DemoGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+`

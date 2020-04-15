@@ -24,23 +24,4 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { RangeSliderDemo } from './Form/RangeSliderDemo'
-
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <RangeSliderDemo />
-    </ComponentsProvider>
-  )
-}
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export * from './RangeSlider'
