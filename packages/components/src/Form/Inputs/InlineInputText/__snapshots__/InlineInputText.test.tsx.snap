@@ -52,7 +52,6 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
     className="c1"
     onChange={[Function]}
     size={1}
-    title="type something"
     type="text"
     value=""
   />
