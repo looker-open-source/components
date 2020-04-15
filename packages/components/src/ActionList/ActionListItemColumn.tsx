@@ -26,7 +26,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Box, Paragraph } from '../'
+import { Flex, Paragraph } from '../'
 
 interface ActionListItemColumnProps {
   detail?: ReactNode
@@ -43,7 +43,11 @@ const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
   indicator,
 }) => (
   <div className={className}>
-    {indicator && <Box mr="xsmall">{indicator}</Box>}
+    {indicator && (
+      <Flex justifyContent="center" alignItems="center" mr="xsmall">
+        {indicator}
+      </Flex>
+    )}
     <ActionListItemColumnInnerLayout>
       {children}
       {detail && (

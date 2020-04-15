@@ -1,0 +1,342 @@
+---
+title: ActionList
+github: ActionList
+propsOf: ActionList
+---
+
+import { Props } from '../../../Shared'
+
+The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
+
+- A list of users with user details and a "Delete This User" action
+- A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
+- A list of recently run queries and a "Rerun This Query" action on each row
+
+The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your `<ActionList>`.
+
+```jsx
+;() => {
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        id={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return <ActionList columns={columns}>{items}</ActionList>
+}
+```
+
+## ActionListItem
+
+<Props of="ActionListItem" />
+
+The `<ActionListItem>` component represents a row of data in your Action List.
+
+To define actions on a row, pass in `<ActionListItemAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
+
+You can also pass a callback to the `onClick` prop, but note that this callback will not fire when clicking on the Vertical Dots `<IconButton />`.
+
+## ActionListItemColumn
+
+<Props of="ActionListItemColumn" />
+
+The `<ActionListItemColumn>` component is equivalent to a data cell in your Action List. `<ActionListItemColumn>` elements should always be children of an `<ActionListItem>` element (i.e. each row should contain some number of column elements).
+
+In its simplest form, an `<ActionListItemColumn>` element will display whatever child elements it has.
+
+You can also create more advanced layouts within your `<ActionListItemColumn>` by utilizing the optional `detail` and `indicator` props.
+
+Passing in a React element into the `detail` prop will display said element underneath any child elements of your `<ActionListItemColumn>`.
+
+Passing in a React element into the `indicator` prop will display said element left of any child elements (and any element passed into the `detail` prop).
+
+```jsx
+;() => {
+  const link = (
+    <Link
+      onClick={(event) => event.stopPropagation()}
+      href="https://en.wikipedia.org/wiki/Cheddar_cheese"
+    >
+      Wikipedia
+    </Link>
+  )
+
+  const indicator = (
+    <Icon name="User" color="palette.purple300" size={24} marginRight="small" />
+  )
+
+  const columns = [
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 100,
+    },
+  ]
+
+  return (
+    <ActionList columns={columns}>
+      <ActionListItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
+        <ActionListItemColumn detail={link} indicator={indicator}>
+          Cheddar
+        </ActionListItemColumn>
+      </ActionListItem>
+    </ActionList>
+  )
+}
+```
+
+**Note:** By default, clicking on any element within an `<ActionListItemColumn>` will trigger the `onClick` of the parent `<ActionListItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<ActionListItemColumn>`'s `onClick`.
+
+## ActionListItemAction
+
+<Props of="ActionListItemAction" />
+
+The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
+
+## ActionListManager
+
+<Props of="ActionListManager" />
+
+In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListManager>` component to conditionally render a loading icon until your data is ready.
+
+Passing a falsy value into an `<ActionListManager>`'s `isLoading` prop will render a `<Spinner>` icon. Once the `isLoading` prop receives a boolean 'true', its child will rendered instead.
+
+You can also use an `<ActionListManager>` element to render a "No Results" message using the `noResults` prop.
+
+```jsx
+;() => {
+  const [isLoading, setIsLoading] = useState(true)
+  setTimeout(() => setIsLoading(false), 5000)
+
+  return (
+    <ActionListManager isLoading={isLoading} noResults={false}>
+      Swiss
+    </ActionListManager>
+  )
+}
+```
+
+## Sorting an Action List
+
+You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop. Note that only columns whose corresponding column objects have `canSort: true` will be sortable.
+
+Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
+
+The function passed into `onSort`, generally speaking, should perform these actions for proper sorting behavior:
+
+- Update the corresponding column object to have a new sort direction
+- Sort the collection representing your data
+
+**Note:** If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+
+```jsx
+;() => {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ])
+
+  const [columns, setColumns] = useState([
+    {
+      canSort: true,
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      canSort: true,
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ])
+
+  const onSort = (id, sortDirection) => {
+    const {
+      columns: sortedColumns,
+      data: sortedData,
+    } = doDefaultActionListSort(data, columns, id, sortDirection)
+    setData(sortedData)
+    setColumns(sortedColumns)
+  }
+
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        id={id}
+        key={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList onSort={onSort} columns={columns}>
+      {items}
+    </ActionList>
+  )
+}
+```
+
+## Selecting rows on an Action List
+
+You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
+
+An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>`s on each of its rows.
+
+Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
+
+The `itemsSelected` prop should be given the id's of all selected rows.
+
+**Note:** If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
+
+```jsx
+;() => {
+  const [selections, setSelections] = useState([2])
+  const onSelect = (selection) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const items = data.map(({ id, name }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        id={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+        disabled={id === 3 && true}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList
+      canSelect
+      onSelect={onSelect}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
