@@ -5,16 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [UNRELEASED] 
+
+### Added
+
+- `ActionList` documentation
+
+## [0.7.27] - 2020-04-15
 
 ### Added
 
 - New icons for field types `FieldDate`, `FieldDistance`, `FieldDuration`,`FieldLocation`,`FieldNumber`,`FieldString`,`FieldTier`,`FieldYesNo`
-- `ActionList` documentation
 
 ### Changed
 
 - `Badge` style updated to use lighter colors for intents. Badges are now always round.
+
+### Fixed
+
+- `ComboBox` crash-bug related to `btoa` dependency needed for Gatsby static-generation reqs.
 
 ## [0.7.26] - 2020-04-14
 
