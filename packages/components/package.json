@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "0.7.26",
+  "version": "0.7.27",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@looker/components-providers": "^0.7.26",
     "@looker/design-tokens": "^0.7.26",
-    "@looker/icons": "^0.7.26",
+    "@looker/icons": "^0.7.27",
     "@popperjs/core": "^2.1.1",
     "btoa": "^1.2.1",
     "d3-color": "^1.4.0",
