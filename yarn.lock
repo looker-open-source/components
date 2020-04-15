@@ -3250,10 +3250,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/reach__router@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@types/reach__router/-/reach__router-1.3.0.tgz#4c05a947ccecca05c72bb335a0f7bb43fec12446"
-  integrity sha512-0aL79bFPJzJOJOOMZm2301ErQVaveBdpW88uuavXymUlcYIAOCmI1ujJ2XLH6Mzn76O94eQCHIl1FDzNNKJCYA==
+"@types/reach__router@^1.3.3":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@types/reach__router/-/reach__router-1.3.4.tgz#98ef393d06f59d296b5c021ba94b94e5fc463245"
+  integrity sha512-DZgYfxUIlVSjvf0AvBbYNbpXLrTFNNpU1HrvCRbnMtx3nvGUUWC1/zlAe4dD4FCPFtc+LQuIPEsDiTb0zQkthg==
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
@@ -8858,10 +8858,10 @@ functions-have-names@^1.2.0:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.0.tgz#83da7583e4ea0c9ac5ff530f73394b033e0bf77d"
   integrity sha512-zKXyzksTeaCSw5wIX79iCA40YAa6CJMJgNg9wdkU/ERBrIdPSimPICYiLp65lRbSBqtiHql/HZfS2DyI/AH6tQ==
 
-gatsby-cli@^2.11.3:
-  version "2.11.3"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.11.3.tgz#c445a1791f9920ff4ebbb9349a9313a24e459e9f"
-  integrity sha512-ek1L/CVB2ak+tbRgPUriotf2MhYVnZIQUogldD5PxPqLizN7expOTjoDcnV5DHG1zsmD19/TfXBj1hp6+DuOpQ==
+gatsby-cli@^2.11.8:
+  version "2.11.8"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.11.8.tgz#1517ae1aaef09e95b16d18c4bd6715bf6a43d354"
+  integrity sha512-oYEfPKZJXUkiYGHdds5+Rt5oOHziCKiy6/g1UVRqODMmYmB0InMGaDfRU0R9O7EXjmkFbmNWruoweyCMYpG57Q==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/runtime" "^7.8.7"
@@ -8879,7 +8879,7 @@ gatsby-cli@^2.11.3:
     fs-exists-cached "^1.0.0"
     fs-extra "^8.1.0"
     gatsby-core-utils "^1.1.1"
-    gatsby-telemetry "^1.2.2"
+    gatsby-telemetry "^1.2.3"
     hosted-git-info "^3.0.4"
     is-valid-path "^0.1.1"
     lodash "^4.17.15"
@@ -8922,13 +8922,13 @@ gatsby-graphiql-explorer@^0.3.1:
   dependencies:
     "@babel/runtime" "^7.8.7"
 
-gatsby-link@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.3.1.tgz#7c7b0d32087256735201ec58ed394e6abc6d7ae3"
-  integrity sha512-waVhJ7klcAOgAD3UjX5P3LWYCee4GwZ7jqJS7dj8tTeiumXV1NAur4gjNiUZF8w3+0HQ4uY0vBjy+TozRRVk6Q==
+gatsby-link@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.3.2.tgz#b0987dc63e54880afe20fa458ac6d14c2f4cc60c"
+  integrity sha512-A4aC6EEux/zumpgWnMlqcLhDq80uwzuCVrYfPVBxs/fFifVzzrMIvsPFhqw5w3l5DHC3XkxP4Y3TZq+EhypJhA==
   dependencies:
     "@babel/runtime" "^7.8.7"
-    "@types/reach__router" "^1.3.0"
+    "@types/reach__router" "^1.3.3"
     prop-types "^15.7.2"
 
 gatsby-page-utils@^0.1.1:
@@ -9113,10 +9113,10 @@ gatsby-source-filesystem@^2.2.2:
     valid-url "^1.0.9"
     xstate "^4.8.0"
 
-gatsby-telemetry@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.2.2.tgz#12d7e03373f67e7bd69dedbeda4239f3ff601183"
-  integrity sha512-I1RkcbLIR7jg+SRu71FT5c7eEqDScmJ8/sZ/mfYVwARo6Kq6obB0VzlYHVYd+KjdeiuQb6YIHhlxUn37eGq7Vw==
+gatsby-telemetry@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.2.3.tgz#0b38068bbc85a597afb7ee407fb0240997cec6ef"
+  integrity sha512-butEEIfuGAWZ9cVISrS6XVXMFPweFTDNO2Z5jj+mA1GkHlriahF4BtbVX3b4miQbQW16g2TfzNw/ztwIUfy0RQ==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/runtime" "^7.8.7"
@@ -9136,10 +9136,10 @@ gatsby-telemetry@^1.2.2:
     stack-utils "1.0.2"
     uuid "3.4.0"
 
-gatsby@^2.20.9:
-  version "2.20.9"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.20.9.tgz#a32a0e74fb518b792b8fb348bb9a8ea32c4658d7"
-  integrity sha512-qvLBT3SvMpFMaEIFMm9q8YGKyBD6/T/xbQN0Ong0I9ecnqCUY3y9riPnhTsqHCcs1jVCRcUxgavf5BjRhTLfvg==
+gatsby@^2.20.22:
+  version "2.20.22"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.20.22.tgz#326f287ea9192e32795d638d0bfc6b0c301bad2f"
+  integrity sha512-5msewsXA3/uSsEXp1NprZbxWf7h+AvGTA1wv8z68XYkhCmo9Z4/qtPwYitke36NoHSEM6Gi+4UEO+ThObtuVLA==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/core" "^7.8.7"
@@ -9202,13 +9202,13 @@ gatsby@^2.20.9:
     flat "^4.1.0"
     fs-exists-cached "1.0.0"
     fs-extra "^8.1.0"
-    gatsby-cli "^2.11.3"
+    gatsby-cli "^2.11.8"
     gatsby-core-utils "^1.1.1"
     gatsby-graphiql-explorer "^0.3.1"
-    gatsby-link "^2.3.1"
+    gatsby-link "^2.3.2"
     gatsby-plugin-page-creator "^2.2.1"
     gatsby-react-router-scroll "^2.2.1"
-    gatsby-telemetry "^1.2.2"
+    gatsby-telemetry "^1.2.3"
     glob "^7.1.6"
     got "8.3.2"
     graphql "^14.6.0"
@@ -13251,9 +13251,9 @@ mkdirp-promise@^5.0.1:
     mkdirp "*"
 
 mkdirp@*:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.3.tgz#4cf2e30ad45959dddea53ad97d518b6c8205e1ea"
-  integrity sha512-6uCP4Qc0sWsgMLy1EOqqS/3rjDHOEnsStVr/4vtAIK2Y5i2kA7lFFejYrpIyiN9w0pYf4ckeCYT9f1r1P9KX5g==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
+  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
 mkdirp@0.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   version "0.5.4"
@@ -17050,9 +17050,9 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.1.2, semver@^6.2.0, semver@^6.3.0:
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
 semver@^7.1.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.2.1.tgz#d997aa36bdbb00b501ae4ac4c7d17e9f7a587ae5"
-  integrity sha512-aHhm1pD02jXXkyIpq25qBZjr3CQgg8KST8uX0OWXch3xE6jw+1bfbWnCjzMwojsTquroUmKFHNzU6x26mEiRxw==
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
+  integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
 
 send@0.17.1:
   version "0.17.1"
