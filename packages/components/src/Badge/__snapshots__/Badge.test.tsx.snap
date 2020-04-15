@@ -1,86 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge rendered with rounded property 1`] = `
-.c0 {
-  font-weight: 600;
-  font-size: 0.75rem;
-  line-height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  border-radius: 50px;
-}
-
-<span
-  className="c0"
-  fontWeight="semiBold"
-  intent="default"
-  rounded={true}
-  size="medium"
->
-  small
-</span>
-`;
-
-exports[`Badge rendered with rounded property 2`] = `
-.c0 {
-  font-weight: 600;
-  font-size: 0.75rem;
-  line-height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  border-radius: 50px;
-}
-
-<span
-  className="c0"
-  fontWeight="semiBold"
-  intent="default"
-  rounded={true}
-  size="medium"
->
-  medium
-</span>
-`;
-
-exports[`Badge rendered with rounded property 3`] = `
-.c0 {
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 32px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #0087e1;
-  color: #FFFFFF;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  border-radius: 50px;
-}
-
-<span
-  className="c0"
-  fontWeight="semiBold"
-  intent="info"
-  rounded={true}
-  size="large"
->
-  large
-</span>
-`;
-
 exports[`Badge renders all intents 1`] = `
 .c0 {
   font-weight: 600;
@@ -94,7 +13,7 @@ exports[`Badge renders all intents 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -114,13 +33,13 @@ exports[`Badge renders all intents 2`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #24b25f;
-  color: #FFFFFF;
+  background-color: #e0ffe7;
+  color: #0b6b38;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -140,13 +59,13 @@ exports[`Badge renders all intents 3`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #0087e1;
-  color: #FFFFFF;
+  background-color: #e0f2ff;
+  color: #0059b2;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -166,13 +85,13 @@ exports[`Badge renders all intents 4`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #707781;
-  color: #FFFFFF;
+  background-color: #DEE1E5;
+  color: #4C535B;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -192,13 +111,13 @@ exports[`Badge renders all intents 5`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #FFA800;
-  color: #FFFFFF;
+  background-color: #FFEBC4;
+  color: #724B00;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -218,13 +137,13 @@ exports[`Badge renders all intents 6`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #CC1F36;
-  color: #FFFFFF;
+  background-color: #FFE5E9;
+  color: #B2121F;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -244,13 +163,13 @@ exports[`Badge renders all sizes 1`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
+  background-color: #E8E5FF;
+  color: #412399;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -268,15 +187,15 @@ exports[`Badge renders all sizes 2`] = `
   font-weight: 600;
   font-size: 0.6875rem;
   line-height: 16px;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #E8E5FF;
+  color: #412399;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -296,13 +215,13 @@ exports[`Badge renders all sizes 3`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
+  background-color: #E8E5FF;
+  color: #412399;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span
@@ -320,15 +239,15 @@ exports[`Badge renders all sizes 4`] = `
   font-weight: 600;
   font-size: 1rem;
   line-height: 32px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #4F2ABA;
-  color: #FFFFFF;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  background-color: #E8E5FF;
+  color: #412399;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 <span

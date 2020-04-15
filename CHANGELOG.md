@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- New icons for field types `FieldDate`, `FieldDistance`, `FieldDuration`,`FieldLocation`,`FieldNumber`,`FieldString`,`FieldTier`,`FieldYesNo`
 - `ActionList` documentation
+
+### Changed
+
+- `Badge` style updated to use lighter colors for intents. Badges are now always round.
 
 ## [0.7.26] - 2020-04-14
 
