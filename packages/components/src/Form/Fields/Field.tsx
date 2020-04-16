@@ -148,19 +148,15 @@ const InputArea = styled.div``
 const MessageArea = styled.div``
 
 export const Field = styled(FieldLayout)`
-  height: fit-content;
-  width: ${({ width }) => width || 'fit-content'};
   align-items: left;
-  justify-content: space-between;
-  margin-bottom: ${({ theme }) => theme.space.xsmall};
-
   display: grid;
   grid-template-areas: ${({ inline }) =>
     inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
-  grid-template-columns: ${({ inline, labelWidth }) =>
-    inline ? `${labelWidth} 1fr` : undefined};
+  height: fit-content;
+  justify-content: space-between;
+  width: ${({ width }) => width || 'fit-content'};
 
   ${InputArea} {
     display: flex;
@@ -177,16 +173,16 @@ export const Field = styled(FieldLayout)`
     ${({ inline, theme }) =>
       inline
         ? `
-      text-align: right;
-      line-height: ${inputHeight};
-      justify-self: end;
-      height: ${inputHeight};
-      padding-right: ${theme.space.small};
-      `
+        height: ${inputHeight};
+        justify-self: end;
+        line-height: ${inputHeight};
+        padding-right: ${theme.space.small};
+        width: 150px;
+        `
         : `
         padding-bottom: ${theme.space.xsmall};
 
-      `}
+        `}
   }
 
   ${FieldDetail} {
