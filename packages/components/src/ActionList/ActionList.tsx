@@ -150,11 +150,16 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
     grid-template-columns: ${(props) =>
       props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
     align-items: center;
+  }
 
-    ${/* sc-selector */ ActionListItemColumn}:first-child {
-      padding-left: ${({ canSelect, theme }) =>
-        canSelect ? theme.space.none : undefined};
-    }
+  ${/* sc-selector */ ActionListItemColumn}:first-child {
+    padding-left: ${({ canSelect, theme }) =>
+      canSelect ? theme.space.none : undefined};
+  }
+
+  ${/* sc-selector */ ActionListHeaderColumn}:first-child {
+    padding-left: ${({ canSelect, theme }) =>
+      canSelect ? theme.space.none : undefined};
   }
 
   ${/* sc-selector */ ActionListItemColumn},
@@ -164,7 +169,7 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   }
 
   ${ActionListHeader} {
-    padding-left: ${({ canSelect }) => (canSelect ? '2.75rem' : undefined)};
+    padding-left: ${({ canSelect }) => (canSelect ? '3.5rem' : undefined)};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
