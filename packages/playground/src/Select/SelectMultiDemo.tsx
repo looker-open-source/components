@@ -53,6 +53,7 @@ const selectOptions = [
 ]
 const selectGroups = [
   {
+    label: 'Fruits',
     options: [
       { label: 'Apples', value: '1' },
       { label: 'Bananas', value: '2' },
@@ -60,9 +61,9 @@ const selectGroups = [
       { label: 'Pineapples', value: '4' },
       { label: 'Kiwis', value: '5' },
     ],
-    title: 'Fruits',
   },
   {
+    label: 'Fruits 2',
     options: [
       { label: 'Apples2', value: '12' },
       { label: 'Bananas2', value: '22' },
@@ -70,9 +71,9 @@ const selectGroups = [
       { label: 'Pineapples2', value: '42' },
       { label: 'Kiwis2', value: '52' },
     ],
-    title: 'Fruits 2',
   },
   {
+    label: 'Fruits 3',
     options: [
       { label: 'Apples3', value: '13' },
       { label: 'Bananas3', value: '23' },
@@ -80,9 +81,9 @@ const selectGroups = [
       { label: 'Pineapples3', value: '43' },
       { label: 'Kiwis3', value: '53' },
     ],
-    title: 'Fruits 3',
   },
   {
+    label: 'Fruits 4',
     options: [
       { label: 'Apples4', value: '14' },
       { label: 'Bananas4', value: '24' },
@@ -90,9 +91,9 @@ const selectGroups = [
       { label: 'Pineapples4', value: '44' },
       { label: 'Kiwis4', value: '54' },
     ],
-    title: 'Fruits 4',
   },
   {
+    label: 'Fruits 5',
     options: [
       { label: 'Apples5', value: '15' },
       { label: 'Bananas5', value: '25' },
@@ -100,7 +101,6 @@ const selectGroups = [
       { label: 'Pineapples5', value: '45' },
       { label: 'Kiwis5', value: '55' },
     ],
-    title: 'Fruits 5',
   },
 ]
 
