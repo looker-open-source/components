@@ -91,12 +91,13 @@ export interface InputTextProps
 const InputComponent = forwardRef(
   (
     {
-      type = 'text',
+      className,
       iconAfter,
       iconBefore,
       prefix,
       suffix,
-      className,
+      type = 'text',
+      validationType,
       ...props
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -142,24 +143,18 @@ const InputComponent = forwardRef(
       inputPropKeys
     )
 
-    if (before || after) {
-      return (
-        <InputLayout className={className} onClick={focusInput}>
-          {before}
-          <input {...inputProps} type={type} ref={ref} />
-          {after}
-        </InputLayout>
-      )
-    } else {
-      return (
-        <StyledInput
-          {...inputProps}
-          className={className}
-          type={type}
-          ref={ref}
-        />
-      )
-    }
+    return (
+      <InputLayout className={className} onClick={focusInput}>
+        {before && before}
+        <input {...inputProps} type={type} ref={ref} />
+        {after && after}
+        {validationType && (
+          <InputIconStyle paddingLeft="xsmall">
+            <Icon color="palette.red500" name="Warning" size={18} />
+          </InputIconStyle>
+        )}
+      </InputLayout>
+    )
   }
 )
 
@@ -181,27 +176,11 @@ export const inputTextDisabled = css`
 
 export const inputHeight = '36px'
 
-const shared = css`
-  height: ${inputHeight};
-
-  ::placeholder {
-    color: ${(props) => props.theme.colors.palette.charcoal400};
-  }
-
-  &:hover {
-    ${inputTextHover}
-  }
-  &:focus,
-  :focus-within {
-    ${inputTextFocus}
-  }
-`
-
 export const InputLayout = styled.div`
-  ${shared}
   align-items: center;
   background-color: ${(props) => props.theme.colors.palette.white};
   display: inline-flex;
+  height: ${inputHeight};
   justify-content: space-evenly;
 
   input {
@@ -214,10 +193,18 @@ export const InputLayout = styled.div`
     outline: none;
     padding: 0;
   }
-`
 
-const StyledInput = styled.input`
-  ${shared}
+  ::placeholder {
+    color: ${(props) => props.theme.colors.palette.charcoal400};
+  }
+
+  &:hover {
+    ${inputTextHover}
+  }
+  &:focus,
+  :focus-within {
+    ${inputTextFocus}
+  }
 `
 
 export const InputIconStyle = styled(Flex)`
