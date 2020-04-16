@@ -2,7 +2,33 @@
 
 exports[`Form with one child 1`] = `
 .c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c4 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c4::-webkit-input-placeholder {
@@ -54,21 +80,20 @@ exports[`Form with one child 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
@@ -116,12 +141,16 @@ exports[`Form with one child 1`] = `
     <div
       className="c3 "
     >
-      <input
+      <div
         className="c4 c5 "
-        id="text-field"
-        name="name"
-        type="text"
-      />
+        onClick={[Function]}
+      >
+        <input
+          id="text-field"
+          name="name"
+          type="text"
+        />
+      </div>
     </div>
     <div
       className="c6 "
