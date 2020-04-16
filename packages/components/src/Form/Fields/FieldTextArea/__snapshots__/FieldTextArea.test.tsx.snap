@@ -47,21 +47,20 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
@@ -182,22 +181,20 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label input detail" ". messages messages";
-  grid-template-columns: 150px 1fr;
+  width: 100%;
 }
 
 .c0 .c3 {
@@ -214,11 +211,11 @@ exports[`A FieldTextArea with label inline 1`] = `
 
 .c0 .c1 {
   grid-area: label;
-  text-align: right;
-  line-height: 36px;
-  justify-self: end;
   height: 36px;
+  justify-self: end;
+  line-height: 36px;
   padding-right: 0.75rem;
+  width: 150px;
 }
 
 .c0 .c9 {
