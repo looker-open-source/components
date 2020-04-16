@@ -67,8 +67,8 @@ exports[`A FieldCheckbox 1`] = `
 
 .c2 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
+  font-weight: 600;
   display: inline-block;
 }
 
@@ -217,8 +217,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
 
 .c2 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
+  font-weight: 600;
   display: inline-block;
 }
 

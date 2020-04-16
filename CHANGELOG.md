@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Checkbox` & `Radio` disabled states match design spec correctly now
 
+### Changed
+
+- removed labelFontWeight from FieldInline and update test for it
+
 ## [0.7.27] - 2020-04-15
 
 ### Added
