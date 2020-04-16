@@ -123,9 +123,7 @@ exports[`A FieldSelect 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -151,7 +149,9 @@ exports[`A FieldSelect 1`] = `
   grid-area: messages;
 }
 
-.c0 {
+.c0 .c9,
+.c0,
+.c0 .sc-elJkPf {
   width: 100%;
 }
 
@@ -406,9 +406,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -434,7 +432,9 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   grid-area: messages;
 }
 
-.c0 {
+.c0 .c9,
+.c0,
+.c0 .sc-elJkPf {
   width: 100%;
 }
 
@@ -695,9 +695,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -723,7 +721,9 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   grid-area: messages;
 }
 
-.c0 {
+.c0 .c9,
+.c0,
+.c0 .sc-elJkPf {
   width: 100%;
 }
 
@@ -949,9 +949,7 @@ exports[`A required FieldSelect 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -977,7 +975,9 @@ exports[`A required FieldSelect 1`] = `
   grid-area: messages;
 }
 
-.c0 {
+.c0 .c10,
+.c0,
+.c0 .sc-elJkPf {
   width: 100%;
 }
 
@@ -1201,9 +1201,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -1229,7 +1227,9 @@ exports[`FieldSelect supports labelWeight 1`] = `
   grid-area: messages;
 }
 
-.c0 {
+.c0 .c9,
+.c0,
+.c0 .sc-elJkPf {
   width: 100%;
 }
 

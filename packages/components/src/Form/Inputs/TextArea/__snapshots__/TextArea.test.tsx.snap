@@ -3,9 +3,6 @@
 exports[`TextArea default 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -28,6 +25,7 @@ exports[`TextArea default 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -53,9 +51,6 @@ exports[`TextArea default 1`] = `
 exports[`TextArea resizes with prop resize = both 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -78,6 +73,7 @@ exports[`TextArea resizes with prop resize = both 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -103,9 +99,6 @@ exports[`TextArea resizes with prop resize = both 1`] = `
 exports[`TextArea resizes with prop resize = false 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -128,6 +121,7 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -153,9 +147,6 @@ exports[`TextArea resizes with prop resize = false 1`] = `
 exports[`TextArea resizes with prop resize = horizontal 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -178,6 +169,7 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -203,9 +195,6 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
 exports[`TextArea resizes with prop resize = none 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -228,6 +217,7 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -253,9 +243,6 @@ exports[`TextArea resizes with prop resize = none 1`] = `
 exports[`TextArea resizes with prop resize = true 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -278,6 +265,7 @@ exports[`TextArea resizes with prop resize = true 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -303,9 +291,6 @@ exports[`TextArea resizes with prop resize = true 1`] = `
 exports[`TextArea resizes with prop resize = vertical 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -328,6 +313,7 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {
@@ -353,9 +339,6 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
 exports[`TextArea should accept disabled 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -378,6 +361,7 @@ exports[`TextArea should accept disabled 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
   background: #F5F6F7;
   color: #939BA5;
 }
@@ -436,9 +420,6 @@ exports[`TextArea with an error validation 1`] = `
 
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -461,6 +442,7 @@ exports[`TextArea with an error validation 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
   border-color: #ED3B53;
 }
 
@@ -517,9 +499,6 @@ exports[`TextArea with an error validation 1`] = `
 exports[`TextArea with placeholder 1`] = `
 .c0 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -542,6 +521,7 @@ exports[`TextArea with placeholder 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
+  width: 100%;
 }
 
 .c0 textarea:hover {

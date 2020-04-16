@@ -53,4 +53,3 @@ const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
 FieldTextAreaComponent.displayName = 'FieldTextAreaComponent'
 
 export const FieldTextArea = styled(FieldTextAreaComponent)``
-FieldTextArea.defaultProps = { width: '13rem' }

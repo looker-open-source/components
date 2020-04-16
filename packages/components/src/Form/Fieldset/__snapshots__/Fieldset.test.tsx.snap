@@ -82,7 +82,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 13rem;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -108,11 +108,9 @@ exports[`Fieldset with left aligned legend 1`] = `
   grid-area: messages;
 }
 
-.c3 .c8 {
-  width: 13rem;
-}
-
-.c3 .c12 {
+.c3 .c8,
+.c3 .sc-tilXH,
+.c3 .sc-ktHwxA {
   width: 100%;
 }
 
@@ -121,7 +119,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c3 .c13 {
+.c3 .c12 {
   grid-area: detail;
   justify-self: end;
 }

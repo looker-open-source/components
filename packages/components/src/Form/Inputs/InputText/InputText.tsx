@@ -204,6 +204,7 @@ export const InputLayout = styled.div`
   display: inline-flex;
   justify-content: space-evenly;
   width: 100%;
+
   input {
     border: none;
     background: transparent;
