@@ -252,9 +252,17 @@ describe('ActionList', () => {
     })
   })
 
-  xdescribe('Selecting', () => {
-    xtest('Select tests needed', () => {
-      return null
+  describe('Selecting', () => {
+    const onSelect = jest.fn()
+    const actionListWithSelect = (
+      <ActionList columns={columns} canSelect onSelect={onSelect}>
+        {items}
+      </ActionList>
+    )
+    test('Checkboxes present when canSelect is true', () => {
+      const { getByRole } = renderWithTheme(actionListWithSelect)
+      const checkbox = getByRole('checkbox')
+      fireEvent.click(checkbox)
     })
   })
 })
