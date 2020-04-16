@@ -69,7 +69,8 @@ export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
   display: flex;
   justify-content: center;
-  width: 3.5rem;
+  flex-basis: 3.5rem;
+  flex-shrink: 0;
 
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `

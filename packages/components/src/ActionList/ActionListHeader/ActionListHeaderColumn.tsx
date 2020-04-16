@@ -74,4 +74,5 @@ ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   display: flex;
   align-items: center;
+  overflow: hidden;
 `
