@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - removed labelFontWeight from FieldInline and update test for it
 
+### Fixed
+
+- updated InputText to have Icon warning when ValidationType = error
+
 ## [0.7.27] - 2020-04-15
 
 ### Added
