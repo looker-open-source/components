@@ -27,13 +27,49 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
+import { Grid } from '@looker/components/src/Layout/Grid'
+import { FieldCheckbox } from '../../components/src/Form/Fields/FieldCheckbox'
+import { FieldRadio } from '../../components/src/Form/Fields/FieldRadio'
+import { Fieldset } from '../../components/src/Form/Fieldset'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
       <GlobalStyle />
-      <FieldsDemo />
+      <Grid columns={2}>
+        <Fieldset legend="Checkbox Legend">
+          <FieldCheckbox label="Checkbox" />
+          <FieldCheckbox
+            required
+            label="Checkbox"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
+          <FieldCheckbox disabled label="Checkbox" />
+          <FieldCheckbox required label="Checkbox" />
+        </Fieldset>
+
+        <Fieldset inline legend="Checkbox Legend inline">
+          <FieldCheckbox label="Checkbox" />
+          <FieldCheckbox
+            required
+            label="Checkbox"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
+          <FieldCheckbox disabled label="Checkbox" />
+          <FieldCheckbox required label="Checkbox" />
+        </Fieldset>
+      </Grid>
+
+      <Grid columns={2}>
+        <Fieldset legend="Radio Legend">
+          <FieldRadio label="Radio" />
+          <FieldRadio disabled label="Radio" />
+        </Fieldset>
+        <Fieldset inline legend="Radio Legend inline">
+          <FieldRadio label="Radio" />
+          <FieldRadio disabled label="Radio" />
+        </Fieldset>
+      </Grid>
     </ComponentsProvider>
   )
 }

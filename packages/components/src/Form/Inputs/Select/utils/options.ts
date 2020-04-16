@@ -35,7 +35,7 @@ export function flattenOptions(options: SelectOptionProps[]) {
   return options.reduce(
     (acc: SelectOptionObject[], option: SelectOptionProps) => {
       const optionAsGroup = option as SelectOptionGroupProps
-      if (optionAsGroup.title) {
+      if (optionAsGroup.options) {
         return [...acc, ...optionAsGroup.options]
       }
       return [...acc, option as SelectOptionObject]
@@ -71,7 +71,7 @@ export function getFirstOption(
   options: SelectOptionProps[]
 ): SelectOptionObject {
   const optionAsGroup = options[0] as SelectOptionGroupProps
-  if (optionAsGroup && optionAsGroup.title) return optionAsGroup.options[0]
+  if (optionAsGroup && optionAsGroup.options) return optionAsGroup.options[0]
   return options[0] as SelectOptionObject
 }
 

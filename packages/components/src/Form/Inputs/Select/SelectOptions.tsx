@@ -45,7 +45,7 @@ export interface SelectOptionObject extends ComboboxOptionObject {
 
 export interface SelectOptionGroupProps {
   options: SelectOptionObject[]
-  title: string | ReactNode
+  label?: string | ReactNode
 }
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
@@ -88,6 +88,7 @@ export function SelectOptionWithDescription({
 }
 
 const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
+  padding-top: ${({ theme }) => theme.space.xxsmall};
   ${comboboxOptionGrid}
   ${({ isMulti, theme }) =>
     isMulti ? `grid-template-columns: ${theme.space.xlarge} 1fr;` : ''}
@@ -103,17 +104,33 @@ SelectOptionGroupTitle.defaultProps = {
 
 export const SelectOptionGroup = ({
   options,
-  title,
+  label,
   isMulti,
 }: SelectOptionGroupProps & { isMulti?: boolean }) => (
-  <Box py="xxsmall">
-    <SelectOptionGroupTitle isMulti={isMulti}>
-      <span />
-      {title}
-    </SelectOptionGroupTitle>
+  <SelectOptionGroupContainer>
+    {label && (
+      <SelectOptionGroupTitle isMulti={isMulti}>
+        <span />
+        {label}
+      </SelectOptionGroupTitle>
+    )}
     {options.map(isMulti ? renderMultiOption : renderOption)}
-  </Box>
+  </SelectOptionGroupContainer>
 )
+
+const SelectOptionGroupContainer = styled.div`
+  padding: ${({ theme }) => theme.space.xsmall} 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: ${({ theme }) => theme.colors.palette.charcoal200};
+  &:first-child,
+  & + div {
+    border-top: none;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+`
 
 export interface SelectOptionsBaseProps {
   /**
@@ -179,7 +196,7 @@ export function SelectOptions({
         ? [
             ...options.map((option: SelectOptionProps, index: number) => {
               const optionAsGroup = option as SelectOptionGroupProps
-              return optionAsGroup.title ? (
+              return optionAsGroup.options ? (
                 <SelectOptionGroup
                   key={index}
                   {...optionAsGroup}
