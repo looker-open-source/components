@@ -61,7 +61,7 @@ const columns: ActionListColumns = [
 
 const data = [
   {
-    id: '1',
+    id: 1,
     name: 'Richard Garfield',
     type: 'Game Designer',
   },
@@ -83,7 +83,7 @@ const items = data.map(({ id, name, type }) => {
   )
 
   return (
-    <ActionListItem key={id} id={id} actions={availableActions}>
+    <ActionListItem key={id} id={String(id)} actions={availableActions}>
       <ActionListItemColumn>{id}</ActionListItemColumn>
       <ActionListItemColumn>{name}</ActionListItemColumn>
       <ActionListItemColumn>{type}</ActionListItemColumn>
@@ -178,7 +178,7 @@ describe('ActionList', () => {
 
         return (
           <ActionListItem
-            id={id}
+            id={String(id)}
             key={id}
             actions={availableActions}
             onClick={handleListItemClick}
@@ -231,14 +231,16 @@ describe('ActionList', () => {
       </ActionList>
     )
 
+    afterEach(() => {
+      onSort.mockClear()
+    })
+
     test('Calls onSort if canSort property is true', () => {
       const { getByText } = renderWithTheme(actionListWithSort)
 
       const idColumnHeader = getByText('ID')
       fireEvent.click(idColumnHeader)
       expect(onSort.mock.calls.length).toBe(1)
-
-      onSort.mockClear()
     })
 
     test('Does not call onSort if canSort property is false', () => {
@@ -247,22 +249,57 @@ describe('ActionList', () => {
       const nameColumnHeader = getByText('Name')
       fireEvent.click(nameColumnHeader)
       expect(onSort.mock.calls.length).toBe(0)
-
-      onSort.mockClear()
     })
   })
 
-  describe('Selecting', () => {
+  describe.only('Selecting', () => {
     const onSelect = jest.fn()
     const actionListWithSelect = (
       <ActionList columns={columns} canSelect onSelect={onSelect}>
         {items}
       </ActionList>
     )
-    test('Checkboxes present when canSelect is true', () => {
+    const actionListWithItemsSelected = (
+      <ActionList
+        columns={columns}
+        canSelect
+        itemsSelected={['1']}
+        onSelect={onSelect}
+      >
+        {items}
+      </ActionList>
+    )
+    const onClickRowSelect = (
+      <ActionList
+        columns={columns}
+        canSelect
+        onSelect={onSelect}
+        onClickRowSelect
+      >
+        {items}
+      </ActionList>
+    )
+    afterEach(() => {
+      onSelect.mockClear()
+    })
+
+    test('Checkbox click calls onSelect', () => {
       const { getByRole } = renderWithTheme(actionListWithSelect)
+      fireEvent.click(getByRole('checkbox'))
+      expect(onSelect).toHaveBeenCalledTimes(1)
+    })
+
+    test('Row click calls onSelect when onClickRowSelect is true', () => {
+      const { getByText } = renderWithTheme(onClickRowSelect)
+      const nameCell = getByText('Richard Garfield')
+      fireEvent.click(nameCell)
+      expect(onSelect).toHaveBeenCalledTimes(1)
+    })
+
+    test('itemsSelected determines if a checkbox is checked', () => {
+      const { getByRole } = renderWithTheme(actionListWithItemsSelected)
       const checkbox = getByRole('checkbox')
-      fireEvent.click(checkbox)
+      expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
   })
 })
