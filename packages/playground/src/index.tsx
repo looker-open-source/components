@@ -36,7 +36,7 @@ const App: React.FC = () => {
   return (
     <ComponentsProvider>
       <GlobalStyle />
-      <Grid columns={2}>
+      <Grid columns={1}>
         <Fieldset legend="Checkbox Legend">
           <FieldCheckbox label="Checkbox" />
           <FieldCheckbox
@@ -60,7 +60,7 @@ const App: React.FC = () => {
         </Fieldset>
       </Grid>
 
-      <Grid columns={2}>
+      <Grid columns={1}>
         <Fieldset legend="Radio Legend">
           <FieldRadio label="Radio" />
           <FieldRadio disabled label="Radio" />

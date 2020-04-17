@@ -38,7 +38,7 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import { BackgroundColorProps } from 'styled-system'
-import { FlexItem } from '../../Layout'
+import { Grid } from '../../Layout/Grid'
 import { Legend } from './Legend'
 
 interface FieldsetBaseProps
@@ -59,11 +59,19 @@ export interface FieldsetProps extends FieldsetBaseProps {
   legend?: string
 }
 
-const FieldsetLayout: FC<FieldsetProps> = ({ className, legend, ...props }) => {
+const FieldsetLayout: FC<FieldsetProps> = ({
+  className,
+  inline,
+  legend,
+  ...props
+}) => {
+  const columnValue = inline ? props.children.length : 1
   return (
     <div className={className}>
       {legend && <Legend>{legend}</Legend>}
-      <FlexItem>{props.children}</FlexItem>
+      <Grid columns={columnValue} gap="xsmall">
+        {props.children}
+      </Grid>
     </div>
   )
 }
@@ -80,11 +88,10 @@ export const Fieldset = styled(FieldsetLayout)`
   display: grid;
   grid-template-areas: ${({ inline }) =>
     inline ? '"legend input"' : '"legend" "input"'};
-  justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.space.xsmall};
   width: ${({ width }) => width || 'fit-content'};
 
-  ${FlexItem} {
+  ${Grid} {
     grid-area: input;
   }
 
@@ -101,7 +108,7 @@ export const Fieldset = styled(FieldsetLayout)`
       text-align: right;
       justify-self: end;
       height: 36px;
-      padding-right: ${theme.space.small};
+      padding: ${theme.space.small};
       width: 100%;
       `
         : `
