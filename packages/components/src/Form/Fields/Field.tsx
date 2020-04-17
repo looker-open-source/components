@@ -30,7 +30,6 @@ import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { InputText, Select } from '../Inputs'
 import { inputHeight } from '../Inputs/InputText/InputText'
 import { Label } from '../Label/Label'
 import { Paragraph } from '../../Text/Paragraph'
@@ -70,11 +69,14 @@ export interface FieldProps extends FieldBaseProps {
 
   /**
    * Specifies for horizontally aligned labels how much space to take up.
+   * @default '150px'
    */
   labelWidth?: ResponsiveSpaceValue
+
   /**
    *
-   * Specify the width of the FieldText if different then 13rem
+   * Specify the width of the FieldText if different then 100%
+   * @default '100%'
    */
   width?: ResponsiveSpaceValue
 }
@@ -157,6 +159,8 @@ export const Field = styled(FieldLayout)`
     inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
+  grid-template-columns: ${({ inline, labelWidth }) =>
+    inline ? `${labelWidth} 1fr` : undefined};
 
   ${InputArea} {
     display: flex;
@@ -165,14 +169,6 @@ export const Field = styled(FieldLayout)`
 
   ${MessageArea} {
     grid-area: messages;
-  }
-
-  ${InputText} {
-    width: ${({ width }) => width};
-  }
-
-  ${Select} {
-    width: 100%;
   }
 
   ${Label} {
@@ -186,13 +182,13 @@ export const Field = styled(FieldLayout)`
       justify-self: end;
       height: ${inputHeight};
       padding-right: ${theme.space.small};
-        width: 150px;
       `
         : `
         padding-bottom: ${theme.space.xsmall};
 
       `}
   }
+
   ${FieldDetail} {
     grid-area: detail;
     justify-self: end;
@@ -210,3 +206,5 @@ export const Field = styled(FieldLayout)`
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `
+
+Field.defaultProps = { labelWidth: '150px', width: '100%' }
