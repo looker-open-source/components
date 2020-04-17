@@ -166,16 +166,18 @@ You can also use an `<ActionListManager>` element to render a "No Results" messa
 
 ## Sorting an Action List
 
-You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop. Note that only columns whose corresponding column objects have `canSort: true` will be sortable.
+You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop.
 
 Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
 
+**Note:** Only columns whose corresponding column objects have `canSort: true` will be sortable. In addition, if your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
+
 The function passed into `onSort`, generally speaking, should perform these actions for proper sorting behavior:
 
-- Update the corresponding column object to have a new sort direction
+- Update the corresponding column object's `sortDirection`
 - Sort the collection representing your data
 
-**Note:** If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
 
 ```jsx
 ;() => {
@@ -201,6 +203,7 @@ The function passed into `onSort`, generally speaking, should perform these acti
       primaryKey: true,
       title: 'ID',
       type: 'number',
+      sortDirection: 'asc',
       widthPercent: 20,
     },
     {
