@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
   border,
@@ -39,7 +39,6 @@ import {
 } from '@looker/design-tokens'
 import { BackgroundColorProps } from 'styled-system'
 import { FlexItem } from '../../Layout'
-import { FormControl, FormControlDirections } from '../FormControl'
 import { Legend } from './Legend'
 
 interface FieldsetBaseProps
@@ -50,46 +49,63 @@ interface FieldsetBaseProps
     CompatibleHTMLProps<HTMLFieldSetElement> {}
 
 export interface FieldsetProps extends FieldsetBaseProps {
-  /**
-   * Specifies where to render the legend in relation to the set of inputs. Can be placed `left`, `right`, `bottom`, or `top`.
+  /** Determines where to place the label in relation to the input.
+   * @default false
    */
-  alignLegend?: FormControlDirections
+  inline?: boolean
   /**
    * The legend, or heading, of this fieldset.
    */
   legend?: string
 }
 
-const FieldsetBase = styled.fieldset<FieldsetBaseProps>`
+const FieldsetLayout: FC<FieldsetProps> = ({ className, legend, ...props }) => {
+  return (
+    <div className={className}>
+      {legend && <Legend>{legend}</Legend>}
+      <FlexItem>{props.children}</FlexItem>
+    </div>
+  )
+}
+
+export const Fieldset = styled(FieldsetLayout)`
   ${reset}
-  border: none;
 
   ${border}
   ${color}
   ${layout}
   ${space}
-`
+  align-items: left;
+  border: none;
+  display: grid;
+  grid-template-areas: ${({ inline }) =>
+    inline ? '"legend input"' : '"legend" "input"'};
+  justify-content: space-between;
+  margin-bottom: ${({ theme }) => theme.space.xsmall};
+  width: ${({ width }) => width || 'fit-content'};
 
-const FieldsetComponent = forwardRef(
-  (
-    { alignLegend, legend, ...props }: FieldsetProps,
-    ref: Ref<HTMLFieldSetElement>
-  ) => {
-    return (
-      <FieldsetBase {...props} ref={ref}>
-        <FormControl mb="xsmall" alignLabel={alignLegend}>
-          {legend ? (
-            <FlexItem>
-              <Legend>{legend}</Legend>
-            </FlexItem>
-          ) : null}
-          <FlexItem>{props.children}</FlexItem>
-        </FormControl>
-      </FieldsetBase>
-    )
+  ${FlexItem} {
+    grid-area: input;
   }
-)
 
-FieldsetComponent.displayName = 'FieldsetComponent'
+  ${Legend} {
+    color: ${({ theme }) => theme.colors.palette.charcoal700};
+    display: grid;
+    font-size: ${({ theme }) => theme.fontSizes.xsmall};
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    grid-area: legend;
 
-export const Fieldset = styled(FieldsetComponent)``
+    ${({ inline, theme }) =>
+      inline
+        ? `
+      text-align: right;
+      justify-self: end;
+      height: 36px;
+      padding-right: ${theme.space.small};
+      width: 100%;
+      `
+        : `
+      padding: ${theme.space.small};
+      `}
+  }
+`
