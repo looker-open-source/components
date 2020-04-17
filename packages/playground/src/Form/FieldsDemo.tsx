@@ -52,6 +52,7 @@ export const FieldsDemo: FC = () => {
           <FieldText label="Text Input" prefix="$" placeholder="Money" />
           <FieldText label="Text Input" prefix="$" placeholder="MONEY!!!" />
         </Form>
+        <Form>Placeholder</Form>
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
           disabled
