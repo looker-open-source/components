@@ -5,9 +5,10 @@ exports[`A FieldCheckbox 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 0.125rem;
-  color: transparent;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,42 +24,45 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c4 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
   margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
   vertical-align: middle;
 }
 
-.c4 input[type='checkbox'] {
+.c4 input {
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
-.c4 .c5 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
+.c4 input:checked + .c5 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c4 input:not(:checked) + .c5 {
   color: #FFFFFF;
 }
 
-.c4 input[type='checkbox']:focus + .c5 {
+.c4 input:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input[type='checkbox']:disabled {
-  cursor: not-allowed;
+.c4 input:disabled + .c5 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
-.c4 input[type='checkbox']:disabled + .c5 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
+.c4 input:disabled:not(:checked) + .c5 {
+  color: transparent;
 }
 
 .c2 {
@@ -109,17 +113,14 @@ exports[`A FieldCheckbox 1`] = `
     className="c3 "
   >
     <div
-      checked={false}
       className="c4 "
     >
       <input
         checked={false}
-        className=""
         id="FieldCheckboxID"
         name="thumbsUp"
         onChange={[Function]}
         onClick={[Function]}
-        role="checkbox"
         type="checkbox"
       />
       <div
@@ -154,9 +155,10 @@ exports[`A FieldCheckbox with checked value 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 0.125rem;
-  color: transparent;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -171,61 +173,46 @@ exports[`A FieldCheckbox with checked value 1`] = `
   align-items: center;
 }
 
-.c8 .c5 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
-  color: #FFFFFF;
-}
-
-.c8 input[type='checkbox']:focus + .c5 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c8 input[type='checkbox']:disabled + .c5 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
-}
-
 .c4 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
   margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
   vertical-align: middle;
 }
 
-.c4 input[type='checkbox'] {
+.c4 input {
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
-.c4 .c5 {
-  background: #6C43E0;
+.c4 input:checked + .c5 {
+  background-color: #6C43E0;
   border-color: #6C43E0;
+}
+
+.c4 input:not(:checked) + .c5 {
   color: #FFFFFF;
 }
 
-.c4 input[type='checkbox']:focus + .c5 {
+.c4 input:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input[type='checkbox']:disabled {
-  cursor: not-allowed;
+.c4 input:disabled + .c5 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
-.c4 input[type='checkbox']:disabled + .c5 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
+.c4 input:disabled:not(:checked) + .c5 {
+  color: transparent;
 }
 
 .c2 {
@@ -276,17 +263,14 @@ exports[`A FieldCheckbox with checked value 1`] = `
     className="c3 "
   >
     <div
-      checked={true}
       className="c4 "
     >
       <input
         checked={true}
-        className=""
         id="FieldCheckboxID"
         name="thumbsUp"
         onChange={[Function]}
         onClick={[Function]}
-        role="checkbox"
         type="checkbox"
       />
       <div

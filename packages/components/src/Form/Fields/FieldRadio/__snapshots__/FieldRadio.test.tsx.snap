@@ -5,40 +5,16 @@ exports[`A FieldRadio 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c4 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c4 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c4 .c5 {
-  background: #FFFFFF;
-}
-
-.c4 input[type='radio']:checked + .c5 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c4 input[type='radio']:checked + .c5::after {
+.c6::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -49,15 +25,49 @@ exports[`A FieldRadio 1`] = `
   right: calc(50% - 3px);
 }
 
-.c4 input[type='radio']:focus + .c5 {
+.c4 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c4 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c4 input:checked + .c5 {
+  color: #6C43E0;
+}
+
+.c4 input:not(:checked) + .c5 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c4 input:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input[type='radio']:disabled + .c5 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c4 input:disabled + .c5 {
+  color: #939BA5;
+}
+
+.c4 input:disabled:not(:checked) + .c5 {
+  background: transparent;
+}
+
+.c4 input:disabled:not(:checked) + .c5::after {
+  background: transparent;
 }
 
 .c2 {
@@ -111,12 +121,15 @@ exports[`A FieldRadio 1`] = `
       className="c4 "
     >
       <input
-        className=""
+        checked={false}
         id="FieldRadioID"
         name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
         type="radio"
       />
       <div
+        checked={false}
         className="c5 c6"
       />
     </div>
@@ -132,40 +145,16 @@ exports[`A FieldRadio checked 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c4 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c4 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c4 .c5 {
-  background: #FFFFFF;
-}
-
-.c4 input[type='radio']:checked + .c5 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c4 input[type='radio']:checked + .c5::after {
+.c6::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -176,15 +165,49 @@ exports[`A FieldRadio checked 1`] = `
   right: calc(50% - 3px);
 }
 
-.c4 input[type='radio']:focus + .c5 {
+.c4 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c4 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c4 input:checked + .c5 {
+  color: #6C43E0;
+}
+
+.c4 input:not(:checked) + .c5 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c4 input:focus + .c5 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input[type='radio']:disabled + .c5 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c4 input:disabled + .c5 {
+  color: #939BA5;
+}
+
+.c4 input:disabled:not(:checked) + .c5 {
+  background: transparent;
+}
+
+.c4 input:disabled:not(:checked) + .c5::after {
+  background: transparent;
 }
 
 .c2 {
@@ -238,13 +261,15 @@ exports[`A FieldRadio checked 1`] = `
       className="c4 "
     >
       <input
-        checked={true}
-        className=""
+        checked={false}
         id="FieldRadioID"
         name="thumbsUp"
+        onChange={[Function]}
+        onClick={[Function]}
         type="radio"
       />
       <div
+        checked={false}
         className="c5 c6"
       />
     </div>
