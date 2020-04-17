@@ -31,29 +31,15 @@ import React, {
   FormEventHandler,
   createContext,
 } from 'react'
-import styled from 'styled-components'
 import omit from 'lodash/omit'
-import {
-  CompatibleHTMLProps,
-  border,
-  flexbox,
-  layout,
-  reset,
-  space,
-  BorderProps,
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { SpaceVertical, SpaceHelperProps } from '../Layout'
 import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
 
 export interface FormProps
-  extends BorderProps,
-    FlexboxProps,
-    LayoutProps,
-    SpaceProps,
+  extends SpaceHelperProps,
     CompatibleHTMLProps<HTMLFormElement> {
   /**
    * A record of all validation messages for the form, where the key is the name
@@ -72,14 +58,6 @@ export interface FormContext {
 
 export const FormContext = createContext<FormContext>({})
 
-const FormBase = styled.form`
-  ${reset}
-  ${border}
-  ${flexbox}
-  ${layout}
-  ${space}
-`
-
 export const Form = forwardRef(
   (props: FormProps, ref: Ref<HTMLFormElement>) => (
     <FormContext.Provider
@@ -87,7 +65,11 @@ export const Form = forwardRef(
         validationMessages: props.validationMessages,
       }}
     >
-      <FormBase {...omit(props, 'validationMessages')} ref={ref} />
+      <SpaceVertical
+        as="form"
+        {...omit(props, 'validationMessages')}
+        ref={ref}
+      />
     </FormContext.Provider>
   )
 )

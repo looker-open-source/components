@@ -91,7 +91,8 @@ const RadioContainer = styled.div<SpaceProps>`
   }
   input[type='radio']:disabled {
     & + ${FauxRadio} {
-      opacity: 0.5;
+      background: ${(props) => props.theme.colors.palette.charcoal100};
+      border-color: ${(props) => props.theme.colors.palette.charcoal200};
     }
   }
   ${space}

@@ -208,9 +208,10 @@ export const indicatorSize = '1rem'
 export const indicatorPadding = '.5rem'
 export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorSize})`
 
+const base64 = typeof window !== 'undefined' ? window.btoa : btoa
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
-  `url('${indicatorPrefix}${btoa(
+  `url('${indicatorPrefix}${base64(
     indicatorRaw.replace('currentColor', color)
   )}')`
 

@@ -24,7 +24,6 @@
 
  */
 
-// import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
 import {

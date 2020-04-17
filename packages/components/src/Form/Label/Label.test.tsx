@@ -29,12 +29,16 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { Label } from './Label'
 
 test('A Label', () => {
-  assertSnapshot(<Label htmlFor="party">🎉</Label>)
+  assertSnapshot(
+    <Label id="LabelID" htmlFor="party">
+      🎉
+    </Label>
+  )
 })
 
 test('Label supports fontWeight', () => {
   assertSnapshot(
-    <Label htmlFor="party" fontWeight="normal">
+    <Label id="LabelID" fontWeight="normal" htmlFor="party">
       test
     </Label>
   )

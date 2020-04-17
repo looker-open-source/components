@@ -1,54 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A FieldTextArea 1`] = `
-.c2 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c5 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c5:hover {
-  border-color: #C1C6CC;
-}
-
-.c5:focus,
-.c5:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
+exports[`A FieldTextArea with default label 1`] = `
 .c4 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
 .c4 .c6 {
@@ -57,77 +15,42 @@ exports[`A FieldTextArea 1`] = `
   right: 0.5rem;
 }
 
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+.c4 textarea {
+  height: 6.25rem;
+  width: 100%;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
 }
 
-.c3 {
+.c4 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c4 textarea:focus,
+.c4 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c2 {
   color: #343C42;
-  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
 }
 
-.c1 {
-  width: 13rem;
-}
-
-.c1 .c7 {
+.c0 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
-}
-
-.c1 .c8 {
-  width: 100%;
-}
-
-<div
-  className="c0 c1 "
->
-  <div
-    className="c2"
-    width="13rem"
-  >
-    <label
-      className="c3"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="FieldTextArea"
-    >
-      this is a label
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className=""
-    >
-      <div
-        className="c4 "
-      >
-        <textarea
-          className="c5"
-          height="6.25rem"
-          width="16rem"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldTextArea with a validation message 1`] = `
-.c2 {
-  width: 13rem;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -136,58 +59,72 @@ exports[`A FieldTextArea with a validation message 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  grid-area: input;
 }
 
-.c6 {
-  color: #CC1F36;
-  width: 1rem;
-  height: 1rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.c0 .c5 {
+  grid-area: messages;
 }
 
-.c5 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
 }
 
-.c5:hover {
-  border-color: #C1C6CC;
+.c0 .c8 {
+  grid-area: detail;
+  justify-self: end;
 }
 
-.c5:focus,
-.c5:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
+.c0 .c7 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="FieldTextAreaID"
+  >
+    👍
+  </label>
+  <div
+    className="c3 "
+  >
+    <div
+      className="c4 "
+    >
+      <textarea />
+    </div>
+  </div>
+  <div
+    className="c5 "
+  />
+</div>
+`;
+
+exports[`A FieldTextArea with label inline 1`] = `
 .c4 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
 .c4 .c7 {
@@ -196,104 +133,131 @@ exports[`A FieldTextArea with a validation message 1`] = `
   right: 0.5rem;
 }
 
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+.c4 textarea {
+  height: 6.25rem;
+  width: 100%;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
 }
 
-.c3 {
+.c4 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c4 textarea:focus,
+.c4 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c2 {
   color: #343C42;
-  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
 }
 
-.c8 {
-  color: #CC1F36;
+.c6 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c6 .c5 {
+  grid-area: messages;
+}
+
+.c6 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+  grid-template-columns: 150px 1fr;
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c5 {
+  grid-area: messages;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+}
+
+.c0 .c9 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c8 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-}
-
-.c1 {
-  width: 13rem;
-}
-
-.c1 .c9 {
-  width: 100%;
-}
-
-.c1 .c10 {
-  width: 100%;
 }
 
 <div
-  className="c0 c1 "
+  className="c0 "
 >
-  <div
-    className="c2"
-    width="13rem"
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="FieldTextAreaID"
   >
-    <label
-      className="c3"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="errorMessage"
-    >
-      this is a label
-    </label>
-  </div>
+    👍
+  </label>
   <div
-    className="c0"
+    className="c3 "
   >
     <div
-      className=""
+      className="c4 "
     >
-      <div
-        className="c4 "
-      >
-        <textarea
-          className="c5"
-          height="6.25rem"
-          width="16rem"
-        />
-        <div
-          className="c6 c7 "
-          color="palette.red500"
-          size="1rem"
-        >
-          <svg
-            fill="currentColor"
-            height="100%"
-            viewBox="0 0 22 19"
-            width="100%"
-          >
-            <title>
-              Warning
-            </title>
-            <path
-              d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div
-      className="c8"
-      fontSize="xsmall"
-      type="error"
-    >
-      This is an error
+      <textarea />
     </div>
   </div>
+  <div
+    className="c5 "
+  />
 </div>
 `;

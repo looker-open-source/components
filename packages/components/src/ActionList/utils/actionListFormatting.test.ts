@@ -24,11 +24,11 @@
 
  */
 
+import { ActionListColumns } from '../ActionList'
 import {
   getPrimaryKeyColumnIndices,
   getNumericColumnIndices,
 } from './actionListFormatting'
-import { ActionListColumns } from '..'
 
 describe('Action List CSS Utils', () => {
   const columns: ActionListColumns = [

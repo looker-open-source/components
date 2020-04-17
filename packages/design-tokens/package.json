@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.7.24",
+  "version": "0.7.26",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -37,8 +37,7 @@
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^4.4.1",
-    "uuid": "^7.0.3"
+    "styled-components": "^4.4.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",

@@ -29,21 +29,18 @@ import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { omitFieldProps, pickFieldProps } from '../Field'
+import { FieldInline } from '../FieldInline'
+import { FieldBaseProps } from '../FieldBase'
 
-export interface FieldCheckboxProps
-  extends CheckboxProps,
-    Omit<FieldProps, 'description' | 'detail'> {}
+export interface FieldCheckboxProps extends CheckboxProps, FieldBaseProps {}
 
-const FieldCheckboxComponent = forwardRef(
+const FieldCheckboxLayout = forwardRef(
   (props: FieldCheckboxProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const { id = uuid() } = props
     return (
-      <Field
-        id={id}
-        alignLabel="left"
-        alignValidationMessage="right"
+      <FieldInline
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >
@@ -53,11 +50,11 @@ const FieldCheckboxComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FieldInline>
     )
   }
 )
 
-FieldCheckboxComponent.displayName = 'FieldCheckboxComponent'
+FieldCheckboxLayout.displayName = 'FieldCheckboxLayout'
 
-export const FieldCheckbox = styled(FieldCheckboxComponent)``
+export const FieldCheckbox = styled(FieldCheckboxLayout)``

@@ -9,28 +9,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Layout components
-  - `Grid` component
-  - `Space` & `SpaceVertical` components
-- `SelectMulti` component
-- `CodeBlock` component
-- `InputTimeSelect` component
-- `Board`, `ShareAlt` Icon
-- `ActionListItemAction` accepts color prop when value is "danger"
-- `Prompt` component
-- `ActionListManager` component
-- `Pagination` component
-- `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
-- New Icons `VisibilityOutline`, `SendEmail`, `SendSftp`, `SendWebhook`
+- `ActionList` documentation
 
 ### Changed
 
-- `Share` Icon updated
+- `InputText` will now show red error icon when validation fails
+- `Field*` components no longer have a bottom margin by default (see `Form` update)
+- `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
+
+### Removed
+
+- `FieldInline` no longer supports `labelFontWeight`
+
+## [0.7.27] - 2020-04-15
+
+### Added
+
+- New icons for field types `FieldDate`, `FieldDistance`, `FieldDuration`,`FieldLocation`,`FieldNumber`,`FieldString`,`FieldTier`,`FieldYesNo`
+
+### Changed
+
+- `Select` and `SelectMulti` option groups `title` is now `label` and optional.
+- `Badge` style updated to use lighter colors for intents. Badges are now always round.
 
 ### Fixed
 
+- `ComboBox` crash-bug related to `btoa` dependency needed for Gatsby static-generation reqs.
+
+## [0.7.26] - 2020-04-14
+
+### Added
+
+- Content
+  - `ActionList`
+    - Now supports sorting
+    - Now supports selections
+    - `ActionListManager` component
+    - `ActionListItemAction` accepts `color` prop (only takes `danger`)
+  - `PageSize` component
+  - `Pagination` component
+- Forms
+  - `InputTime` component
+  - `InputTimeSelect` component
+  - `SelectMulti` component
+  - `TextArea` component supports `resize` property
+- Icons
+  - `Board`
+  - `ShareAlt`
+  - `SendEmail`, `SendSftp`, `SendWebhook`
+  - `VisibilityOutline`,
+- Layout
+  - `Grid` component
+  - `Space` & `SpaceVertical` components
+- Overlay
+  - `Prompt` component & `usePrompt` hook
+- Typography
+  - `CodeBlock` component
+- Utilities
+  - `ComponentsProvider` component to provide a pre-packaged `ThemeProvider` + `theme`
+
+### Changed
+
+48 direct dependency updates (https://github.com/looker-open-source/components/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+is%3Amerged+merged%3A2020-03-23..2020-04-15)
+
+- `ActionList` now gives proper white space to `indicator` element
+- `Banner` prop `dismissable` is now `canDismiss`
+- Icons -`Share` artwork updated
+- `Popper` upgraded to 2.x
+- ESLint now enforces license header on all files automatically (with `--fix` option)
+
+### Change
+
+- updated Field to remove `alignLabel` and have only default (top) and inline (right) label.
+
+### Fixed
+
+- `IconSize` - corrected icon's size to adjust with `size` prop
+- `Select` no longer throws a runtime error when no options, defaultValue or placeholder are specified
+- `ToggleSwitch` enabled color corrected
 - `usePopper` (used in `Popover` and `Tooltip`) positioning issue with `placement="top"` and offset parent is the window
-- `Select` runtime error with no options, defaultValue or placeholder
 
 ## [0.7.25] - 2020-03-23
 

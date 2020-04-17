@@ -111,6 +111,10 @@ const components: NavigationSection = {
           path: 'input-text',
         },
         {
+          title: 'InputTime',
+          path: 'input-time',
+        },
+        {
           title: 'InputTimeSelect',
           path: 'input-time-select',
         },
@@ -168,6 +172,7 @@ const components: NavigationSection = {
       title: 'Content',
       path: 'content',
       children: [
+        { title: 'ActionList', path: 'action-list' },
         { title: 'Avatar', path: 'avatar' },
         { title: 'Badge', path: 'badge' },
         { title: 'Banner', path: 'banner' },

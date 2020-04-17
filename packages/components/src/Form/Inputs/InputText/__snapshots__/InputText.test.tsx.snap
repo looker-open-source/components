@@ -2,7 +2,49 @@
 
 exports[`InputText default 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -20,6 +62,7 @@ exports[`InputText default 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -29,15 +72,61 @@ exports[`InputText default 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText should accept disabled 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -55,6 +144,7 @@ exports[`InputText should accept disabled 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -70,16 +160,62 @@ exports[`InputText should accept disabled 1`] = `
   border-color: #DEE1E5;
 }
 
-<input
+<div
   className="c0 c1"
-  disabled={true}
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    disabled={true}
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText should accept readOnly 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -97,6 +233,7 @@ exports[`InputText should accept readOnly 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -106,16 +243,62 @@ exports[`InputText should accept readOnly 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  readOnly={true}
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    readOnly={true}
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText should accept required 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -133,6 +316,7 @@ exports[`InputText should accept required 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -142,16 +326,62 @@ exports[`InputText should accept required 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  required={true}
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    required={true}
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText with a placeholder 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -169,6 +399,7 @@ exports[`InputText with a placeholder 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -178,16 +409,62 @@ exports[`InputText with a placeholder 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  placeholder="I am a placeholder"
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    placeholder="I am a placeholder"
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText with a value 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -205,6 +482,7 @@ exports[`InputText with a value 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -214,16 +492,76 @@ exports[`InputText with a value 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  type="text"
-  value="Some value"
-/>
+  onClick={[Function]}
+>
+  <input
+    type="text"
+    value="Some value"
+  />
+</div>
 `;
 
 exports[`InputText with an error validation 1`] = `
+.c3 {
+  color: #CC1F36;
+  width: 18px;
+  height: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -237,10 +575,21 @@ exports[`InputText with an error validation 1`] = `
   outline: none;
 }
 
+.c2 {
+  padding-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #939BA5;
+  pointer-events: none;
+}
+
 .c1 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -261,15 +610,85 @@ exports[`InputText with an error validation 1`] = `
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-<input
+<div
   className="c0 c1"
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    type="text"
+  />
+  <div
+    className="c2"
+  >
+    <div
+      className="c3 "
+      color="palette.red500"
+      size={18}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 22 19"
+        width="100%"
+      >
+        <title>
+          Warning
+        </title>
+        <path
+          d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`InputText with aria-describedby 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -287,6 +706,7 @@ exports[`InputText with aria-describedby 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -296,16 +716,62 @@ exports[`InputText with aria-describedby 1`] = `
   color: #343C42;
 }
 
-<input
-  aria-describedby="some-id"
+<div
   className="c0 c1"
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    aria-describedby="some-id"
+    type="text"
+  />
+</div>
 `;
 
 exports[`InputText with name and id 1`] = `
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c0 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0::placeholder {
+  color: #939BA5;
 }
 
 .c0:hover {
@@ -323,6 +789,7 @@ exports[`InputText with name and id 1`] = `
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -332,10 +799,14 @@ exports[`InputText with name and id 1`] = `
   color: #343C42;
 }
 
-<input
+<div
   className="c0 c1"
-  id="Bobby"
-  name="Bob"
-  type="text"
-/>
+  onClick={[Function]}
+>
+  <input
+    id="Bobby"
+    name="Bob"
+    type="text"
+  />
+</div>
 `;

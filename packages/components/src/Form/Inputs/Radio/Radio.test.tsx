@@ -31,34 +31,34 @@ import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { Radio } from './Radio'
 
 test('Radio default', () => {
-  assertSnapshot(<Radio />)
+  assertSnapshot(<Radio id="radioID" />)
 })
 
 test('Radio checked set to true', () => {
-  assertSnapshot(<Radio checked={true} />)
+  assertSnapshot(<Radio checked={true} id="radioID" />)
 })
 
 test('Radio checked set to false', () => {
-  assertSnapshot(<Radio checked={false} />)
+  assertSnapshot(<Radio checked={false} id="radioID" />)
 })
 
 test('Radio with name and id', () => {
-  assertSnapshot(<Radio name="Chuck" id="Chucky" />)
+  assertSnapshot(<Radio id="Chuck" name="Chuck" />)
 })
 
 test('Radio should accept disabled', () => {
-  assertSnapshot(<Radio disabled />)
+  assertSnapshot(<Radio disabled id="radioID" />)
 })
 
 test('Radio with aria-describedby', () => {
-  assertSnapshot(<Radio aria-describedby="some-id" />)
+  assertSnapshot(<Radio aria-describedby="some-id" id="radioID" />)
 })
 
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mountWithTheme(<Radio onChange={handleChange} />)
+  const wrapper = mountWithTheme(<Radio id="radioID" onChange={handleChange} />)
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)

@@ -40,7 +40,6 @@ const FieldTextComponent = forwardRef(
     return (
       <Field
         id={id}
-        alignValidationMessage="bottom"
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >
@@ -58,4 +57,3 @@ const FieldTextComponent = forwardRef(
 FieldTextComponent.displayName = 'FieldTextComponent'
 
 export const FieldText = styled(FieldTextComponent)``
-FieldText.defaultProps = { width: '13rem' }
