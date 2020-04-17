@@ -80,20 +80,21 @@ exports[`Fieldset with left aligned legend 1`] = `
 }
 
 .c3 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
 }
 
 .c3 .c6 {
