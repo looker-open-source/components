@@ -32,12 +32,19 @@ import {
   FieldRadio,
   FieldToggleSwitch,
   Grid,
+  InputText,
+  Select,
   SpaceVertical,
+  TextArea,
 } from '@looker/components'
 
 export const FieldsDemo: FC = () => {
   return (
     <SpaceVertical m="xxlarge">
+      <TextArea />
+      <Select />
+      <InputText />
+
       <Grid>
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText

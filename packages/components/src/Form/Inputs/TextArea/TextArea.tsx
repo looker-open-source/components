@@ -81,8 +81,8 @@ const TextAreaResize = (resize?: TextAreaResize) =>
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
-  width: fit-content;
   height: fit-content;
+  width: 100%;
 
   ${Icon} {
     position: absolute;
@@ -118,10 +118,10 @@ export const TextArea = styled(TextAreaLayout)`
   }
 `
 
-TextArea.displayName = 'TextArea'
-
 TextArea.defaultProps = {
   height: '6.25rem',
   resize: true,
-  width: '16rem',
+  width: '100%',
 }
+
+TextArea.displayName = 'TextArea'

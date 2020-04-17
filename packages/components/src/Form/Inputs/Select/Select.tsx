@@ -164,3 +164,5 @@ const SelectComponent = forwardRef(
 SelectComponent.displayName = 'SelectComponent'
 
 export const Select = styled(SelectComponent)``
+
+Select.defaultProps = { width: '100%' }

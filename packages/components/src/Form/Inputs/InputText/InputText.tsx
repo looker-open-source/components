@@ -203,7 +203,7 @@ export const InputLayout = styled.div`
   background-color: ${(props) => props.theme.colors.palette.white};
   display: inline-flex;
   justify-content: space-evenly;
-  width: 174px;
+
   input {
     border: none;
     background: transparent;
@@ -278,6 +278,7 @@ export const inputTextDefaults = {
 }
 
 InputText.defaultProps = {
+  width: '100%',
   ...CustomizableInputTextAttributes,
   ...inputTextDefaults,
   type: 'text',

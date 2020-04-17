@@ -32,10 +32,11 @@ exports[`Form with one child 1`] = `
   outline: none;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -56,7 +57,7 @@ exports[`Form with one child 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 13rem;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -78,16 +79,8 @@ exports[`Form with one child 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   grid-area: messages;
-}
-
-.c0 .c5 {
-  width: 13rem;
-}
-
-.c0 .c9 {
-  width: 100%;
 }
 
 .c0 .c1 {
@@ -95,12 +88,12 @@ exports[`Form with one child 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c10 {
+.c0 .c8 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c7 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -124,14 +117,14 @@ exports[`Form with one child 1`] = `
       className="c3 "
     >
       <input
-        className="c4 c5 c6 "
+        className="c4 c5 "
         id="text-field"
         name="name"
         type="text"
       />
     </div>
     <div
-      className="c7 "
+      className="c6 "
     />
   </div>
 </form>
