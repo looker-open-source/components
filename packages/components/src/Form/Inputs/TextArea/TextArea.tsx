@@ -82,6 +82,7 @@ const TextAreaResize = (resize?: TextAreaResize) =>
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
   height: fit-content;
+  width: 100%;
 
   ${Icon} {
     position: absolute;
@@ -102,7 +103,6 @@ export const TextArea = styled(TextAreaLayout)`
     min-height: 6.25rem;
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
-    width: 100%;
 
     &:hover {
       ${inputTextHover}
@@ -118,10 +118,10 @@ export const TextArea = styled(TextAreaLayout)`
   }
 `
 
-TextArea.displayName = 'TextArea'
-
 TextArea.defaultProps = {
   height: '6.25rem',
   resize: true,
-  width: '16rem',
+  width: '100%',
 }
+
+TextArea.displayName = 'TextArea'

@@ -1,22 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldTextArea with default label 1`] = `
-.c5 {
+.c4 {
   position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
-.c5 .c7 {
+.c4 .c6 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.c5 textarea {
+.c4 textarea {
   height: 6.25rem;
-  width: 16rem;
+  width: 100%;
   resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -25,15 +26,14 @@ exports[`A FieldTextArea with default label 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
-  width: 100%;
 }
 
-.c5 textarea:hover {
+.c4 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c5 textarea:focus,
-.c5 textarea:focus-within {
+.c4 textarea:focus,
+.c4 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -72,14 +72,8 @@ exports[`A FieldTextArea with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .c5 {
   grid-area: messages;
-}
-
-.c0 .c8,
-.c0 .sc-hEsumM,
-.c0 .c4 {
-  width: 100%;
 }
 
 .c0 .c1 {
@@ -87,12 +81,12 @@ exports[`A FieldTextArea with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c10 {
+.c0 .c8 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c9 {
+.c0 .c7 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -113,34 +107,35 @@ exports[`A FieldTextArea with default label 1`] = `
     className="c3 "
   >
     <div
-      className="c4 c5 "
+      className="c4 "
     >
       <textarea />
     </div>
   </div>
   <div
-    className="c6 "
+    className="c5 "
   />
 </div>
 `;
 
 exports[`A FieldTextArea with label inline 1`] = `
-.c5 {
+.c4 {
   position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
-.c5 .c8 {
+.c4 .c7 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.c5 textarea {
+.c4 textarea {
   height: 6.25rem;
-  width: 16rem;
+  width: 100%;
   resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -149,15 +144,14 @@ exports[`A FieldTextArea with label inline 1`] = `
   min-height: 6.25rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
-  width: 100%;
 }
 
-.c5 textarea:hover {
+.c4 textarea:hover {
   border-color: #C1C6CC;
 }
 
-.c5 textarea:focus,
-.c5 textarea:focus-within {
+.c4 textarea:focus,
+.c4 textarea:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -170,7 +164,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   display: inline-block;
 }
 
-.c7 .c3 {
+.c6 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -178,17 +172,11 @@ exports[`A FieldTextArea with label inline 1`] = `
   grid-area: input;
 }
 
-.c7 .c6 {
+.c6 .c5 {
   grid-area: messages;
 }
 
-.c7 .c9,
-.c7 .sc-hEsumM,
-.c7 .c4 {
-  width: 100%;
-}
-
-.c7 .c1 {
+.c6 .c1 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -220,14 +208,8 @@ exports[`A FieldTextArea with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .c5 {
   grid-area: messages;
-}
-
-.c0 .c9,
-.c0 .sc-hEsumM,
-.c0 .c4 {
-  width: 100%;
 }
 
 .c0 .c1 {
@@ -239,7 +221,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   padding-right: 0.75rem;
 }
 
-.c0 .c11 {
+.c0 .c9 {
   grid-area: detail;
   justify-self: end;
   -webkit-align-self: center;
@@ -248,7 +230,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c10 {
+.c0 .c8 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -269,13 +251,13 @@ exports[`A FieldTextArea with label inline 1`] = `
     className="c3 "
   >
     <div
-      className="c4 c5 "
+      className="c4 "
     >
       <textarea />
     </div>
   </div>
   <div
-    className="c6 "
+    className="c5 "
   />
 </div>
 `;

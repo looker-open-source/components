@@ -30,7 +30,6 @@ import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { InputText, Select, TextArea } from '../Inputs'
 import { inputHeight } from '../Inputs/InputText/InputText'
 import { Label } from '../Label/Label'
 import { Paragraph } from '../../Text/Paragraph'
@@ -170,12 +169,6 @@ export const Field = styled(FieldLayout)`
 
   ${MessageArea} {
     grid-area: messages;
-  }
-
-  ${/* sc-sel */ InputText},
-  ${/* sc-sel */ Select},
-  ${/* sc-sel */ TextArea} {
-    width: 100%;
   }
 
   ${Label} {

@@ -32,10 +32,11 @@ exports[`A FieldText with default label 1`] = `
   outline: none;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -78,14 +79,8 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   grid-area: messages;
-}
-
-.c0 .c5,
-.c0 .sc-tilXH,
-.c0 .sc-ktHwxA {
-  width: 100%;
 }
 
 .c0 .c1 {
@@ -93,12 +88,12 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c7 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -119,13 +114,13 @@ exports[`A FieldText with default label 1`] = `
     className="c3 "
   >
     <input
-      className="c4 c5 c6 "
+      className="c4 c5 "
       id="FieldTextID"
       type="text"
     />
   </div>
   <div
-    className="c7 "
+    className="c6 "
   />
 </div>
 `;
@@ -162,10 +157,11 @@ exports[`A FieldText with label inline 1`] = `
   outline: none;
 }
 
-.c6 {
+.c5 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  width: 100%;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -182,7 +178,7 @@ exports[`A FieldText with label inline 1`] = `
   display: inline-block;
 }
 
-.c8 .c3 {
+.c7 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -190,17 +186,11 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c8 .c7 {
+.c7 .c6 {
   grid-area: messages;
 }
 
-.c8 .c5,
-.c8 .sc-tilXH,
-.c8 .sc-ktHwxA {
-  width: 100%;
-}
-
-.c8 .c1 {
+.c7 .c1 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -232,14 +222,8 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   grid-area: messages;
-}
-
-.c0 .c5,
-.c0 .sc-tilXH,
-.c0 .sc-ktHwxA {
-  width: 100%;
 }
 
 .c0 .c1 {
@@ -251,7 +235,7 @@ exports[`A FieldText with label inline 1`] = `
   padding-right: 0.75rem;
 }
 
-.c0 .c10 {
+.c0 .c9 {
   grid-area: detail;
   justify-self: end;
   -webkit-align-self: center;
@@ -260,7 +244,7 @@ exports[`A FieldText with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -281,13 +265,13 @@ exports[`A FieldText with label inline 1`] = `
     className="c3 "
   >
     <input
-      className="c4 c5 c6 "
+      className="c4 c5 "
       id="FieldTextID"
       type="text"
     />
   </div>
   <div
-    className="c7 "
+    className="c6 "
   />
 </div>
 `;
