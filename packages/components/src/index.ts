@@ -35,7 +35,6 @@ export * from './Chip'
 export * from './DateTimeFormat'
 export * from './Divider'
 export * from './Form'
-export * from './GlobalStyle'
 export * from './Icon'
 export * from './Layout'
 export * from './Link'
@@ -62,6 +61,7 @@ export { ComponentsProvider } from '@looker/components-providers'
  **/
 
 export {
+  GlobalStyle,
   palette,
   radii,
   semanticColors,
