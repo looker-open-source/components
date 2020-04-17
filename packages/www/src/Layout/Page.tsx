@@ -25,7 +25,6 @@
  */
 
 import {
-  GlobalStyle,
   ComponentsProvider,
   CustomizableTooltipAttributes,
 } from '@looker/components'
@@ -45,10 +44,7 @@ const Page: FC = ({ children }) => {
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
         rel="stylesheet"
       />
-      <MDXProvider components={all}>
-        <GlobalStyle />
-        {children}
-      </MDXProvider>
+      <MDXProvider components={all}>{children}</MDXProvider>
     </ComponentsProvider>
   )
 }

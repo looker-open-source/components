@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import { GlobalStyle } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
@@ -33,8 +35,21 @@ import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
  */
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ComponentsProviderProps extends ThemeProviderProps {}
+export interface ComponentsProviderProps extends ThemeProviderProps {
+  /**
+   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * @default true
+   */
+  globalStyle?: boolean
+}
 
-export const ComponentsProvider: FC<ComponentsProviderProps> = (props) => (
-  <ThemeProvider {...props} />
+export const ComponentsProvider: FC<ComponentsProviderProps> = ({
+  children,
+  globalStyle = true,
+  ...props
+}) => (
+  <ThemeProvider {...props}>
+    {globalStyle && <GlobalStyle />}
+    {children}
+  </ThemeProvider>
 )

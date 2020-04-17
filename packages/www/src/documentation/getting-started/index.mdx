@@ -37,6 +37,8 @@ echo '@types/react-native' > .yarnclean
 
 At the top-most level of the usage of `@looker/components` you need to load the `<GlobalStyle />` component. This will inject a simple CSS reset as well as basic font assignment. [GlobalStyle documentation &rarr;](/utilities/globalstyle)
 
+NOTE: The `ComponentsProvider` will automatically load the `GlobalStyle` component for you.
+
 ### Web Font Loading
 
 Users may not have the `@looker/components` default font, Open Sans, installed on their computers so we recommend importing the font to ensure that content is rendered with the proper font-face.
