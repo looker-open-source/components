@@ -18,11 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- removed labelFontWeight from FieldInline and update test for it
+- `InputText` will now show red error icon when validation fails
+- `Field*` components no longer have a bottom margin by default (see `Form` update)
+- `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
 
-### Fixed
+### Removed
 
-- updated InputText to have Icon warning when ValidationType = error
+- `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15
 

@@ -31,6 +31,7 @@ import {
   FieldCheckbox,
   FieldRadio,
   FieldToggleSwitch,
+  Form,
   Grid,
   InputText,
   Select,
@@ -46,6 +47,11 @@ export const FieldsDemo: FC = () => {
       <InputText />
 
       <Grid>
+        <Form>
+          <FieldText label="Text Input" prefix="$" placeholder="Money" />
+          <FieldText label="Text Input" prefix="$" placeholder="Money" />
+          <FieldText label="Text Input" prefix="$" placeholder="MONEY!!!" />
+        </Form>
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
           disabled
