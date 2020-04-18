@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { FieldTextArea } from './FieldTextArea'
 
 test('A FieldTextArea with default label', () => {
@@ -49,19 +53,41 @@ test('A FieldTextArea disabled', () => {
   const wrapper = mountWithTheme(
     <FieldTextArea disabled id="FieldTextAreaID" label="👍" />
   )
-  wrapper.find('input:disabled')
+  wrapper.find('textarea').html().includes('disabled=""')
 })
 
-test('A FieldTextArea with description', () => {
-  const wrapper = mountWithTheme(
+test('A FieldTextArea with description has proper aria setup', () => {
+  const description = 'This is a description'
+
+  const { container, getByDisplayValue } = renderWithTheme(
+    <FieldTextArea id="test" defaultValue="example" description={description} />
+  )
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(description)
+})
+
+test('A FieldTextArea with error has proper aria setup', () => {
+  const errorMessage = 'This is an error'
+
+  const { container, getByDisplayValue } = renderWithTheme(
     <FieldTextArea
-      description="no vegetables allowed"
-      id="FieldTextAreaID"
-      label="Text Input"
-      placeholder="placeholder"
+      id="test"
+      defaultValue="example"
+      validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
-  expect(wrapper.text()).toMatch(`Text Inputno vegetables allowed`)
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(errorMessage)
 })
 
 test('A FieldTextArea with detail', () => {

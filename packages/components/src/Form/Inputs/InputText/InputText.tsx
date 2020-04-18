@@ -146,7 +146,12 @@ const InputComponent = forwardRef(
     return (
       <InputLayout className={className} onClick={focusInput}>
         {before && before}
-        <input {...inputProps} type={type} ref={ref} />
+        <input
+          {...inputProps}
+          aria-invalid={validationType === 'error' && 'true'}
+          type={type}
+          ref={ref}
+        />
         {after && after}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">

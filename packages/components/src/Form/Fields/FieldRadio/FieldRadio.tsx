@@ -40,8 +40,13 @@ const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
     const { id = uuid() } = props
     return (
-      <FieldInline {...pickFieldProps(props)}>
-        <Radio {...omitFieldProps(props)} id={id} ref={ref} />
+      <FieldInline {...pickFieldProps(props)} id={id}>
+        <Radio
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          ref={ref}
+        />
       </FieldInline>
     )
   }

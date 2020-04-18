@@ -35,7 +35,8 @@ import { Label } from '../Label/Label'
 import { Paragraph } from '../../Text/Paragraph'
 import { Text } from '../../Text/Text'
 import { ValidationMessage } from '../ValidationMessage'
-import { FieldBaseProps, RequiredStar } from './FieldBase'
+import { FieldBaseProps } from './FieldBase'
+import { RequiredStar } from './RequiredStar'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -96,6 +97,7 @@ export const fieldPropKeys = [
 
 export const pickFieldProps = (props: FieldProps) =>
   pick(props, [...fieldPropKeys, 'disabled', 'required', 'className'])
+
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
 /**
@@ -104,7 +106,11 @@ export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
  * feedback about the status of the input values.
  */
 
-const FieldLayout: FunctionComponent<FieldProps> = ({
+interface FieldPropsInternal extends FieldProps {
+  id: string
+}
+
+const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   className,
   children,
   description,
@@ -122,6 +128,10 @@ const FieldLayout: FunctionComponent<FieldProps> = ({
     </Paragraph>
   )
 
+  const fieldValidation = validationMessage && (
+    <ValidationMessage {...validationMessage} />
+  )
+
   return (
     <div className={className}>
       <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
@@ -130,9 +140,9 @@ const FieldLayout: FunctionComponent<FieldProps> = ({
       </Label>
       {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
-      <MessageArea>
-        {validationMessage && <ValidationMessage {...validationMessage} />}
+      <MessageArea id={`${id}-describedby`}>
         {fieldDescription}
+        {fieldValidation}
       </MessageArea>
     </div>
   )
@@ -147,7 +157,7 @@ FieldDetail.defaultProps = {
 const InputArea = styled.div``
 const MessageArea = styled.div``
 
-export const Field = styled(FieldLayout)`
+export const Field = styled(FieldLayout)<FieldPropsInternal>`
   height: fit-content;
   width: ${({ width }) => width || 'fit-content'};
   align-items: left;

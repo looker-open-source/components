@@ -70,6 +70,7 @@ exports[`Checkbox checked set to mixed 1`] = `
 >
   <input
     aria-checked="mixed"
+    aria-invalid={false}
     checked={false}
     id="checkboxID"
     onChange={[Function]}
@@ -200,6 +201,7 @@ exports[`Checkbox should accept disabled & checked 1`] = `
 >
   <input
     aria-checked={true}
+    aria-invalid={false}
     checked={false}
     disabled={true}
     id="checkboxID"
@@ -325,6 +327,7 @@ exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
 >
   <input
     aria-checked="mixed"
+    aria-invalid={false}
     checked={false}
     disabled={true}
     id="checkboxID"
@@ -455,6 +458,7 @@ exports[`Checkbox should accept disabled 1`] = `
   className="c0"
 >
   <input
+    aria-invalid={false}
     checked={false}
     disabled={true}
     id="checkboxID"
@@ -580,6 +584,7 @@ exports[`Checkbox should accept readOnly & checked 1`] = `
 >
   <input
     aria-checked={true}
+    aria-invalid={false}
     checked={false}
     id="checkboxID"
     onChange={[Function]}
@@ -703,6 +708,7 @@ exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
 >
   <input
     aria-checked="mixed"
+    aria-invalid={false}
     checked={false}
     id="checkboxID"
     onChange={[Function]}
@@ -831,6 +837,7 @@ exports[`Checkbox should accept readOnly 1`] = `
   className="c0"
 >
   <input
+    aria-invalid={false}
     checked={false}
     id="checkboxID"
     onChange={[Function]}
@@ -953,6 +960,7 @@ exports[`Checkbox with aria-describedby 1`] = `
 >
   <input
     aria-describedby="some-id"
+    aria-invalid={false}
     checked={false}
     id="checkboxID"
     onChange={[Function]}

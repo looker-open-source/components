@@ -116,6 +116,8 @@ exports[`A FieldCheckbox 1`] = `
       className="c4 "
     >
       <input
+        aria-describedby="FieldCheckboxID-describedby"
+        aria-invalid={false}
         checked={false}
         id="FieldCheckboxID"
         name="thumbsUp"
@@ -146,6 +148,7 @@ exports[`A FieldCheckbox 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldCheckboxID-describedby"
   />
 </label>
 `;
@@ -266,6 +269,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
       className="c4 "
     >
       <input
+        aria-describedby="FieldCheckboxID-describedby"
+        aria-invalid={false}
         checked={true}
         id="FieldCheckboxID"
         name="thumbsUp"
@@ -296,6 +301,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldCheckboxID-describedby"
   />
 </label>
 `;

@@ -26,31 +26,15 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
-import { useFormContext } from '../../Form'
-import { TextArea, TextAreaProps } from '../../Inputs/TextArea'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { VisuallyHidden } from '../../VisuallyHidden'
 
-export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
+const RequiredStarLayout: FC<{ className?: string }> = () => (
+  <>
+    <span aria-hidden="true"> * </span>
+    <VisuallyHidden>required</VisuallyHidden>
+  </>
+)
 
-const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
-  const { id = uuid() } = props
-  const validationMessage = useFormContext(props)
-  return (
-    <Field
-      {...pickFieldProps(props)}
-      id={id}
-      validationMessage={validationMessage}
-    >
-      <TextArea
-        {...omitFieldProps(props)}
-        aria-describedby={`${id}-describedby`}
-        validationType={validationMessage && validationMessage.type}
-      />
-    </Field>
-  )
-}
-
-FieldTextAreaComponent.displayName = 'FieldTextAreaComponent'
-
-export const FieldTextArea = styled(FieldTextAreaComponent)``
+export const RequiredStar = styled(RequiredStarLayout)`
+  color: ${({ theme }) => theme.colors.palette.red500};
+`

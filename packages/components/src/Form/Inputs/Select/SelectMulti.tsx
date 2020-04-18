@@ -118,6 +118,7 @@ const SelectMultiComponent = forwardRef(
     }
 
     const ariaProps = {
+      'aria-invalid': validationType === 'error',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
     }

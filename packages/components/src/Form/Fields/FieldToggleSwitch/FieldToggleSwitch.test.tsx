@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
 
 test('A FieldToggleSwitch', () => {
@@ -39,15 +43,23 @@ test('A FieldToggleSwitch turned on', () => {
   )
 })
 
-test('A FieldToggleSwitch with validationMessage', () => {
-  const wrapper = mountWithTheme(
+test('A FieldToggleSwitch with error has proper aria setup', () => {
+  const errorMessage = 'This is an error'
+
+  const { container, getByDisplayValue } = renderWithTheme(
     <FieldToggleSwitch
-      id="FieldToggleSwitchID"
-      label="Toggle Switch"
-      validationMessage={{ message: 'validation Message', type: 'error' }}
+      id="test"
+      defaultValue="example"
+      validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
-  expect(wrapper.text()).toMatch(`Toggle Switchvalidation Message`)
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(errorMessage)
 })
 
 test('A FieldToggleSwitch disabled', () => {

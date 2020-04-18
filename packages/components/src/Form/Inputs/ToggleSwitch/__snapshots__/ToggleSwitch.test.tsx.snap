@@ -59,6 +59,7 @@ exports[`Big ToggleSwitch 1`] = `
   className="c0"
 >
   <input
+    aria-invalid={false}
     className="c1"
     role="switch"
     type="checkbox"
@@ -132,6 +133,7 @@ exports[`ToggleSwitch default 1`] = `
   className="c0"
 >
   <input
+    aria-invalid={false}
     className="c1"
     role="switch"
     type="checkbox"
@@ -206,6 +208,7 @@ exports[`ToggleSwitch on set to false 1`] = `
 >
   <input
     aria-checked={false}
+    aria-invalid={false}
     checked={false}
     className="c1"
     role="switch"
@@ -284,6 +287,7 @@ exports[`ToggleSwitch on set to true 1`] = `
 >
   <input
     aria-checked={true}
+    aria-invalid={false}
     checked={true}
     className="c1"
     role="switch"
@@ -365,6 +369,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
 >
   <input
     aria-checked={true}
+    aria-invalid={false}
     checked={true}
     className="c1"
     disabled={true}

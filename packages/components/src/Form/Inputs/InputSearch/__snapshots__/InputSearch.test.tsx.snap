@@ -178,6 +178,7 @@ exports[`InputSearch default 1`] = `
     onClick={[Function]}
   >
     <input
+      aria-invalid={false}
       onChange={[Function]}
       type="text"
       value=""
@@ -327,6 +328,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
     onClick={[Function]}
   >
     <input
+      aria-invalid={false}
       onChange={[Function]}
       type="text"
       value=""

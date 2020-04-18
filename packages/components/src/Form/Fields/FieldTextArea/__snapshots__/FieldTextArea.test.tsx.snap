@@ -109,11 +109,15 @@ exports[`A FieldTextArea with default label 1`] = `
     <div
       className="c4 "
     >
-      <textarea />
+      <textarea
+        aria-describedby="FieldTextAreaID-describedby"
+        aria-invalid={false}
+      />
     </div>
   </div>
   <div
     className="c5 "
+    id="FieldTextAreaID-describedby"
   />
 </div>
 `;
@@ -253,11 +257,15 @@ exports[`A FieldTextArea with label inline 1`] = `
     <div
       className="c4 "
     >
-      <textarea />
+      <textarea
+        aria-describedby="FieldTextAreaID-describedby"
+        aria-invalid={false}
+      />
     </div>
   </div>
   <div
     className="c5 "
+    id="FieldTextAreaID-describedby"
   />
 </div>
 `;

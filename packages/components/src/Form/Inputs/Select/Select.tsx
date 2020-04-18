@@ -94,6 +94,7 @@ const SelectComponent = forwardRef(
       value,
       defaultValue,
       noOptionsLabel,
+      'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
@@ -123,6 +124,8 @@ const SelectComponent = forwardRef(
     }
 
     const ariaProps = {
+      'aria-describedby': ariaDescribedby,
+      'aria-invalid': validationType === 'error',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
     }

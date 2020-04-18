@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
@@ -60,14 +64,21 @@ test('A disabled FieldCheckbox', () => {
   wrapper.find('input').html().includes('disabled=""')
 })
 
-test('A FieldCheckbox with an error validation aligned to the bottom', () => {
-  const wrapper = mountWithTheme(
+test('A FieldCheckbox with error has proper aria setup', () => {
+  const errorMessage = 'This is an error'
+
+  const { container, getByDisplayValue } = renderWithTheme(
     <FieldCheckbox
-      id="FieldCheckboxID"
-      label="👍"
-      name="thumbsUp"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
+      id="test"
+      defaultValue="example"
+      validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
-  expect(wrapper.text()).toMatch(`👍This is an error`)
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(errorMessage)
 })
