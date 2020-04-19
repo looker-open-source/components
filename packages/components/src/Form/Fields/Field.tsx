@@ -27,7 +27,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
-import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { inputHeight } from '../Inputs/InputText/InputText'
@@ -38,15 +37,6 @@ import { ValidationMessage } from '../ValidationMessage'
 import { FieldBaseProps, RequiredStar } from './FieldBase'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
-
-export interface CustomizableFieldAttributesInterface
-  extends CustomizableAttributes {
-  labelMargin: SpacingSizes
-}
-
-export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
-  labelMargin: 'xsmall',
-}
 
 export interface FieldProps extends FieldBaseProps {
   /*

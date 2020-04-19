@@ -32,7 +32,6 @@ import {
   typography,
   layout,
   LayoutProps,
-  CustomizableAttributes,
   pseudoClasses,
   PseudoProps,
   space,
@@ -40,6 +39,7 @@ import {
   TypographyProps,
   reset,
   color,
+  FontSizes,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref, useRef } from 'react'
@@ -49,14 +49,6 @@ import { Flex } from '../../../Layout'
 import { Icon } from '../../../Icon/Icon'
 import { Text } from '../../../Text/Text'
 import { useForkedRef } from '../../../utils'
-
-export const CustomizableInputTextAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-  fontSize: 'small',
-  height: '36px',
-  px: 'small',
-  py: 'none',
-}
 
 export interface InputTextProps
   extends BorderProps,
@@ -104,13 +96,13 @@ const InputComponent = forwardRef(
   ) => {
     if (iconBefore && prefix) {
       // eslint-disable-next-line no-console
-      console.warn(`Only use IconBefore or Prefix not both at the same time. `)
+      console.warn(`Only use IconBefore or prefix not both at the same time. `)
       return null
     }
 
     if (iconAfter && suffix) {
       // eslint-disable-next-line no-console
-      console.warn(`Only use IconAfter or Suffix not both at the same time. `)
+      console.warn(`Only use IconAfter or suffix not both at the same time. `)
       return null
     }
 
@@ -232,8 +224,8 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
 export const InputText = styled(InputComponent).attrs(
   (props: InputTextProps) => {
     const padding: SpaceProps = {
-      px: props.px || props.p || CustomizableInputTextAttributes.px,
-      py: props.py || props.p || CustomizableInputTextAttributes.py,
+      px: props.px || props.p || 'small',
+      py: props.py || props.p || 'none',
     }
     if (props.prefix || props.iconBefore) {
       padding.pl = 'xsmall'
@@ -262,11 +254,13 @@ export const InputText = styled(InputComponent).attrs(
 export const inputTextDefaults = {
   border: 'solid 1px',
   borderColor: 'palette.charcoal200',
+  borderRadius: 'medium',
+  fontSize: 'small' as FontSizes,
+  height: '36px',
+  width: '100%',
 }
 
 InputText.defaultProps = {
-  width: '100%',
-  ...CustomizableInputTextAttributes,
   ...inputTextDefaults,
   type: 'text',
 }

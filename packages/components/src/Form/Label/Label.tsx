@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  CustomizableAttributes,
   color,
   ColorProps,
   reset,
@@ -41,12 +40,6 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 
-export const CustomizableLabelAttributes: CustomizableAttributes = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-}
-
 export interface LabelProps
   extends ColorProps,
     SpaceProps,
@@ -55,11 +48,7 @@ export interface LabelProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLabelElement> {}
 
-export const Label = styled.label.attrs((props: LabelProps) => ({
-  color: props.color || CustomizableLabelAttributes.color,
-  fontSize: props.fontSize || CustomizableLabelAttributes.fontSize,
-  fontWeight: props.fontWeight || CustomizableLabelAttributes.fontWeight,
-}))<LabelProps>`
+export const Label = styled.label<LabelProps>`
   ${reset}
   ${color};
   ${space};
@@ -69,3 +58,9 @@ export const Label = styled.label.attrs((props: LabelProps) => ({
 
   display: inline-block; /* Ensure that applied padding/margin actually works */
 `
+
+Label.defaultProps = {
+  color: 'palette.charcoal700',
+  fontSize: 'xsmall',
+  fontWeight: 'semiBold',
+}

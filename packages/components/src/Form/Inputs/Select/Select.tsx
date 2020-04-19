@@ -26,7 +26,6 @@
 
 import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
-import { CustomizableAttributes } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -40,14 +39,6 @@ import {
   SelectOptionsBaseProps,
 } from './SelectOptions'
 import { getOption, getFirstOption } from './utils/options'
-
-export const CustomizableSelectAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-  fontSize: 'small',
-  height: '28px',
-  px: 'xsmall',
-  py: 'none',
-}
 
 export interface SelectBaseProps extends SelectOptionsBaseProps {
   placeholder?: string

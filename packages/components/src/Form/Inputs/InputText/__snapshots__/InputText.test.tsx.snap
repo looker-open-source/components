@@ -59,11 +59,11 @@ exports[`InputText default 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -141,11 +141,11 @@ exports[`InputText should accept disabled 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -230,11 +230,11 @@ exports[`InputText should accept readOnly 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -313,11 +313,11 @@ exports[`InputText should accept required 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -396,11 +396,11 @@ exports[`InputText with a placeholder 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -479,11 +479,11 @@ exports[`InputText with a value 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -586,11 +586,11 @@ exports[`InputText with an error validation 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -703,11 +703,11 @@ exports[`InputText with aria-describedby 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -786,11 +786,11 @@ exports[`InputText with name and id 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
