@@ -32,6 +32,7 @@ import {
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
+import { actionListCheckboxWidth } from './ActionListCheckbox'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 import {
@@ -169,7 +170,8 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   }
 
   ${ActionListHeader} {
-    padding-left: ${({ canSelect }) => (canSelect ? '3.5rem' : undefined)};
+    padding-left: ${({ canSelect }) =>
+      canSelect ? actionListCheckboxWidth : undefined};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}

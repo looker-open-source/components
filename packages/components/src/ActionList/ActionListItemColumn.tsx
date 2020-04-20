@@ -65,7 +65,7 @@ export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
   color: ${(props) => props.theme.colors.palette.charcoal700};
   display: ${(props) => (props.indicator ? 'flex' : undefined)};
   font-size: ${(props) => props.theme.fontSizes.xsmall};
-  overflow: hidden;
+  word-break: break-all;
 
   ${ActionListItemColumnInnerLayout} {
     display: flex;

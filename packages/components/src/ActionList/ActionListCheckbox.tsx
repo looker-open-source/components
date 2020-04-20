@@ -37,6 +37,8 @@ export interface ActionListCheckboxProps {
 
 export const checkListProps = ['checked', 'disabled', 'onChange']
 
+export const actionListCheckboxWidth = '2.75rem'
+
 const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   onChange,
   checked,
@@ -65,11 +67,12 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
     </div>
   )
 }
+
 export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
   display: flex;
   justify-content: center;
-  flex-basis: 3.5rem;
+  flex-basis: ${actionListCheckboxWidth};
   flex-shrink: 0;
 
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
