@@ -26,8 +26,6 @@
 
 import {
   CompatibleHTMLProps,
-  radii,
-  RadiusSizes,
   reset,
   SemanticColors,
   space,
@@ -46,14 +44,6 @@ import {
 } from 'styled-system'
 import { buttonSize, ButtonSizes, ButtonSizeProps } from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
-
-export interface CustomizableButtonAttributes {
-  borderRadius: RadiusSizes
-}
-
-export const CustomizableButtonAttributes: CustomizableButtonAttributes = {
-  borderRadius: 'medium',
-}
 
 type ButtonColors = keyof SemanticColors
 
@@ -105,7 +95,7 @@ export const buttonCSS = css<ButtonBaseProps>`
   `}
 
   align-items: center;
-  border-radius: ${radii[CustomizableButtonAttributes.borderRadius]};
+  border-radius: ${({ theme }) => theme.radii.medium};
   cursor: pointer;
   display: inline-flex;
   font-weight: 600;

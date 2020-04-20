@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Big ToggleSwitch 1`] = `
-.c3 {
+.c2 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -13,7 +13,7 @@ exports[`Big ToggleSwitch 1`] = `
   background: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -23,20 +23,6 @@ exports[`Big ToggleSwitch 1`] = `
   right: 0;
   border-radius: 3.75rem;
   background: #C1C6CC;
-}
-
-.c2:hover {
-  box-shadow: 0 0 .01rem 0.01rem rgba(79,42,186,0.5);
-}
-
-.c1 {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
 
 .c0 {
@@ -49,6 +35,13 @@ exports[`Big ToggleSwitch 1`] = `
 
 .c0 input {
   cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .c0 input:focus + div {
@@ -59,22 +52,22 @@ exports[`Big ToggleSwitch 1`] = `
   className="c0"
 >
   <input
-    className="c1"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
+      size={60}
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch default 1`] = `
-.c3 {
+.c2 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -86,7 +79,7 @@ exports[`ToggleSwitch default 1`] = `
   background: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -96,20 +89,6 @@ exports[`ToggleSwitch default 1`] = `
   right: 0;
   border-radius: 1.25rem;
   background: #C1C6CC;
-}
-
-.c2:hover {
-  box-shadow: 0 0 .01rem 0.01rem rgba(79,42,186,0.5);
-}
-
-.c1 {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
 
 .c0 {
@@ -122,6 +101,13 @@ exports[`ToggleSwitch default 1`] = `
 
 .c0 input {
   cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .c0 input:focus + div {
@@ -132,22 +118,22 @@ exports[`ToggleSwitch default 1`] = `
   className="c0"
 >
   <input
-    className="c1"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
+      size={20}
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch on set to false 1`] = `
-.c3 {
+.c2 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -159,7 +145,7 @@ exports[`ToggleSwitch on set to false 1`] = `
   background: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -169,20 +155,6 @@ exports[`ToggleSwitch on set to false 1`] = `
   right: 0;
   border-radius: 1.25rem;
   background: #C1C6CC;
-}
-
-.c2:hover {
-  box-shadow: 0 0 .01rem 0.01rem rgba(79,42,186,0.5);
-}
-
-.c1 {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
 
 .c0 {
@@ -195,6 +167,13 @@ exports[`ToggleSwitch on set to false 1`] = `
 
 .c0 input {
   cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .c0 input:focus + div {
@@ -207,22 +186,23 @@ exports[`ToggleSwitch on set to false 1`] = `
   <input
     aria-checked={false}
     checked={false}
-    className="c1"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
+      on={false}
+      size={20}
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch on set to true 1`] = `
-.c3 {
+.c2 {
   -webkit-transform: translateX(0.9375rem);
   -ms-transform: translateX(0.9375rem);
   transform: translateX(0.9375rem);
@@ -237,7 +217,7 @@ exports[`ToggleSwitch on set to true 1`] = `
   background: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -247,20 +227,6 @@ exports[`ToggleSwitch on set to true 1`] = `
   right: 0;
   border-radius: 1.25rem;
   background: #6C43E0;
-}
-
-.c2:hover {
-  box-shadow: 0 0 .01rem 0.01rem rgba(79,42,186,0.5);
-}
-
-.c1 {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
 
 .c0 {
@@ -273,6 +239,13 @@ exports[`ToggleSwitch on set to true 1`] = `
 
 .c0 input {
   cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .c0 input:focus + div {
@@ -285,22 +258,23 @@ exports[`ToggleSwitch on set to true 1`] = `
   <input
     aria-checked={true}
     checked={true}
-    className="c1"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
+      on={true}
+      size={20}
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch that is disabled 1`] = `
-.c3 {
+.c2 {
   -webkit-transform: translateX(0.9375rem);
   -ms-transform: translateX(0.9375rem);
   transform: translateX(0.9375rem);
@@ -315,7 +289,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   background: #FFFFFF;
 }
 
-.c2 {
+.c1 {
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -327,17 +301,11 @@ exports[`ToggleSwitch that is disabled 1`] = `
   background: #6C43E0;
 }
 
-.c1 {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.c1:hover {
+  box-shadow: 0 0 0.01rem 0.01rem rgba(79,42,186,0.5);
 }
 
-.c4 {
+.c3 {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -356,6 +324,16 @@ exports[`ToggleSwitch that is disabled 1`] = `
   vertical-align: middle;
 }
 
+.c0 input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .c0 input:focus + div {
   box-shadow: 0 0 0 0.2rem rgba(79,42,186,0.4);
 }
@@ -366,20 +344,22 @@ exports[`ToggleSwitch that is disabled 1`] = `
   <input
     aria-checked={true}
     checked={true}
-    className="c1"
     disabled={true}
     role="switch"
     type="checkbox"
   />
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
+      disabled={true}
+      on={true}
+      size={20}
     />
   </div>
   <div
-    className="c4"
+    className="c3"
     size={20}
   />
 </div>

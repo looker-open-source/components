@@ -26,15 +26,9 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import { Label } from '../Label/Label'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
 import { FieldBaseProps, RequiredStar } from './FieldBase'
-
-export interface CustomizableFieldAttributesInterface
-  extends CustomizableAttributes {
-  labelMargin: SpacingSizes
-}
 
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),

@@ -26,7 +26,6 @@
 
 import React, { forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { CustomizableAttributes } from '@looker/design-tokens'
 import {
   ComboboxMulti,
   ComboboxMultiInput,
@@ -40,14 +39,6 @@ import {
   SelectOptions,
 } from './SelectOptions'
 import { getOptions } from './utils/options'
-
-export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-  fontSize: 'small',
-  height: '28px',
-  px: 'xsmall',
-  py: 'none',
-}
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,

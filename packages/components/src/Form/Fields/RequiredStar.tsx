@@ -24,43 +24,23 @@
 
  */
 
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  color,
-  ColorProps,
-  reset,
-  space,
-  SpaceProps,
-  textDecoration,
-  TextDecorationProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { VisuallyHidden } from '../../VisuallyHidden'
 
-export interface LabelProps
-  extends ColorProps,
-    SpaceProps,
-    TextDecorationProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement> {}
-
-export const Label = styled.label<LabelProps>`
-  ${reset}
-  ${color};
-  ${space};
-  ${textDecoration}
-  ${textTransform};
-  ${typography};
-
-  display: inline-block; /* Ensure that applied padding/margin actually works */
-`
-
-Label.defaultProps = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
+interface RequiredStarProps {
+  className?: string
 }
+
+const RequiredStarLayout: FC<RequiredStarProps> = ({ className }) => (
+  <>
+    <span aria-hidden="true" className={className}>
+      *
+    </span>
+    <VisuallyHidden>required</VisuallyHidden>
+  </>
+)
+
+export const RequiredStar = styled(RequiredStarLayout)`
+  color: ${(props) => props.theme.colors.palette.red500};
+`
