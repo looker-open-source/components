@@ -5,40 +5,16 @@ exports[`Radio checked set to false 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -49,27 +25,63 @@ exports[`Radio checked set to false 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
     checked={false}
-    className=""
     id="radioID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>
@@ -80,40 +92,16 @@ exports[`Radio checked set to true 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -124,27 +112,63 @@ exports[`Radio checked set to true 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
-    checked={true}
-    className=""
+    checked={false}
     id="radioID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>
@@ -155,40 +179,16 @@ exports[`Radio default 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -199,26 +199,63 @@ exports[`Radio default 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
-    className=""
+    checked={false}
     id="radioID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>
@@ -229,40 +266,16 @@ exports[`Radio should accept disabled 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -273,27 +286,92 @@ exports[`Radio should accept disabled 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c3 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
+.c3 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c3 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
   border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
-    className=""
+    checked={false}
     disabled={true}
     id="radioID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>
@@ -304,40 +382,16 @@ exports[`Radio with aria-describedby 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -348,27 +402,91 @@ exports[`Radio with aria-describedby 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
+}
+
+.c3 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
   border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c3 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
     aria-describedby="some-id"
-    className=""
+    checked={false}
     id="radioID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>
@@ -379,40 +497,16 @@ exports[`Radio with name and id 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 50%;
+  border-color: currentColor;
   color: transparent;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c0 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='radio']:checked + .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c0 input[type='radio']:checked + .c1::after {
+.c2::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -423,27 +517,64 @@ exports[`Radio with name and id 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c1 {
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  background: #FFFFFF;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  border-color: #DEE1E5;
+  background: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='radio']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
+.c0 input:disabled + .c1 {
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  background: transparent;
+}
+
+.c0 input:disabled:not(:checked) + .c1::after {
+  background: transparent;
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <input
-    className=""
+    checked={false}
     id="Chuck"
     name="Chuck"
+    onChange={[Function]}
+    onClick={[Function]}
     type="radio"
   />
   <div
+    checked={false}
     className="c1 c2"
   />
 </div>

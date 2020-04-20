@@ -88,7 +88,7 @@ test('A FieldText with validationMessage', () => {
       placeholder="placeholder"
     />
   )
-  expect(wrapper.text()).toMatch(`hellovalidation Message`)
+  expect(wrapper.text()).toMatch(`helloWarningvalidation Message`)
 })
 
 test('FieldText supports onChange handler', () => {

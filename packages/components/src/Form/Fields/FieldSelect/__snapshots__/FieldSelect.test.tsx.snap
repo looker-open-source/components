@@ -25,7 +25,33 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c8 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c8::-webkit-input-placeholder {
@@ -219,19 +245,23 @@ exports[`A FieldSelect 1`] = `
         onMouseDown={[Function]}
         width="100%"
       >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
+        <div
           className="c8 c9 c10"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
+          onClick={[Function]}
+        >
+          <input
+            aria-autocomplete="both"
+            autoComplete="off"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -266,7 +296,33 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c8 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c8::-webkit-input-placeholder {
@@ -499,19 +555,23 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         onMouseDown={[Function]}
         width="100%"
       >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
+        <div
           className="c8 c9 c10"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
+          onClick={[Function]}
+        >
+          <input
+            aria-autocomplete="both"
+            autoComplete="off"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -552,7 +612,33 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c8 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c8::-webkit-input-placeholder {
@@ -785,19 +871,23 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         onMouseDown={[Function]}
         width="100%"
       >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
+        <div
           className="c8 c9 c10"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
+          onClick={[Function]}
+        >
+          <input
+            aria-autocomplete="both"
+            autoComplete="off"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -838,7 +928,33 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c9 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c9::-webkit-input-placeholder {
@@ -1044,19 +1160,23 @@ exports[`A required FieldSelect 1`] = `
         onMouseDown={[Function]}
         width="100%"
       >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
+        <div
           className="c9 c10 c11"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
+          onClick={[Function]}
+        >
+          <input
+            aria-autocomplete="both"
+            autoComplete="off"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1091,7 +1211,33 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c8 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c8::-webkit-input-placeholder {
@@ -1285,19 +1431,23 @@ exports[`FieldSelect supports labelWeight 1`] = `
         onMouseDown={[Function]}
         width="100%"
       >
-        <input
-          aria-autocomplete="both"
-          autoComplete="off"
+        <div
           className="c8 c9 c10"
-          id="listbox-thumbs-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          readOnly={true}
-          type="text"
-          value=""
-        />
+          onClick={[Function]}
+        >
+          <input
+            aria-autocomplete="both"
+            autoComplete="off"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>

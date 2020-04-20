@@ -26,13 +26,12 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
 import { FieldsDemo } from './Form/FieldsDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <GlobalStyle />
       <FieldsDemo />
     </ComponentsProvider>
   )

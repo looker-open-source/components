@@ -2,7 +2,33 @@
 
 exports[`A FieldText with default label 1`] = `
 .c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c4 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c4::-webkit-input-placeholder {
@@ -113,11 +139,15 @@ exports[`A FieldText with default label 1`] = `
   <div
     className="c3 "
   >
-    <input
+    <div
       className="c4 c5 "
-      id="FieldTextID"
-      type="text"
-    />
+      onClick={[Function]}
+    >
+      <input
+        id="FieldTextID"
+        type="text"
+      />
+    </div>
   </div>
   <div
     className="c6 "
@@ -127,7 +157,33 @@ exports[`A FieldText with default label 1`] = `
 
 exports[`A FieldText with label inline 1`] = `
 .c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c4 input {
+  border: none;
+  background: transparent;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0;
 }
 
 .c4::-webkit-input-placeholder {
@@ -264,11 +320,15 @@ exports[`A FieldText with label inline 1`] = `
   <div
     className="c3 "
   >
-    <input
+    <div
       className="c4 c5 "
-      id="FieldTextID"
-      type="text"
-    />
+      onClick={[Function]}
+    >
+      <input
+        id="FieldTextID"
+        type="text"
+      />
+    </div>
   </div>
   <div
     className="c6 "

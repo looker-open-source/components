@@ -24,50 +24,21 @@
 
  */
 
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
-
-export * from './utils'
-
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+import React from 'react'
+export const CheckMark = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 8L7 11L12 4"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)

@@ -24,50 +24,36 @@
 
  */
 
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import styled from 'styled-components'
+import { reset } from '@looker/design-tokens'
 
-export * from './utils'
+const dotSize = 6
 
-export { ComponentsProvider } from '@looker/components-providers'
+interface FauxRadioProps {
+  checked: boolean
+}
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+export const FauxRadio = styled.div<FauxRadioProps>`
+  ${reset}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  border: solid 1px ${({ theme }) => `${theme.colors.palette.charcoal200}`};
+  border-radius: 50%;
+  border-color: currentColor;
+  color: transparent;
+  transition: background-color 25ms linear, border-color 25ms linear,
+    box-shadow 25ms linear;
 
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+  &::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: ${dotSize}px;
+    height: ${dotSize}px;
+    border-radius: 50%;
+    top: calc(50% - ${dotSize / 2}px);
+    right: calc(50% - ${dotSize / 2}px);
+  }
+`

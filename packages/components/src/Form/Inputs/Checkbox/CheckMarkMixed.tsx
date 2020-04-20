@@ -24,50 +24,18 @@
 
  */
 
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import React from 'react'
 
-export * from './utils'
-
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+export const CheckMarkMixed = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
+      <line x1="5" y1="8" x2="11" y2="8"></line>
+    </g>
+  </svg>
+)

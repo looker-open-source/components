@@ -11,10 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionList` documentation
 - `CrossFilter` Icon
+- `Checkbox` & `Radio` now support `readOnly` property
+
+### Fixed
+
+- `Checkbox` & `Radio` disabled states match design spec correctly now
+- `ComponentsProvider` now automatically loads `GlobalStyle` (also provides `globalStyle={false}` prop to disable this behavior)
 
 ### Changed
 
-- removed labelFontWeight from FieldInline and update test for it
+- `InputText` will now show red error icon when validation fails
+- `Field*` components no longer have a bottom margin by default (see `Form` update)
+- `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
+
+### Removed
+
+- `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15
 
