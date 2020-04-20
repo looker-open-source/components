@@ -53,7 +53,14 @@ const DisabledKnob = styled.div<{ size: number }>`
 
 export const ToggleSwitchLayout = forwardRef(
   (
-    { className, disabled, on, size = 20, ...props }: ToggleSwitchProps,
+    {
+      className,
+      disabled,
+      on,
+      size = 20,
+      validationType,
+      ...props
+    }: ToggleSwitchProps,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
@@ -64,6 +71,7 @@ export const ToggleSwitchLayout = forwardRef(
           disabled={disabled}
           role="switch"
           aria-checked={on}
+          aria-invalid={validationType === 'error' ? 'true' : undefined}
           ref={ref}
           {...pick(props, inputPropKeys)}
         />

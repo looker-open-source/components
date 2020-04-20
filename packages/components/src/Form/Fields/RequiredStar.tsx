@@ -28,19 +28,15 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
-interface RequiredStarProps {
-  className?: string
-}
-
-const RequiredStarLayout: FC<RequiredStarProps> = ({ className }) => (
-  <>
-    <span aria-hidden="true" className={className}>
-      *
-    </span>
-    <VisuallyHidden>required</VisuallyHidden>
-  </>
+const RequiredStarLayout: FC<{ className?: string }> = () => (
+  <span aria-hidden="true">
+    <VisuallyHidden> required</VisuallyHidden>
+  </span>
 )
 
 export const RequiredStar = styled(RequiredStarLayout)`
-  color: ${(props) => props.theme.colors.palette.red500};
+  &::before {
+    content: ' *';
+    color: ${({ theme }) => theme.colors.palette.red500};
+  }
 `

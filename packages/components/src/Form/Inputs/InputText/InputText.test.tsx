@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 
 import { InputText } from './InputText'
 
@@ -72,7 +76,12 @@ test('InputText with aria-describedby', () => {
 })
 
 test('InputText with an error validation', () => {
-  assertSnapshot(<InputText validationType="error" />)
+  const { getByTitle, getByPlaceholderText } = renderWithTheme(
+    <InputText placeholder="Hello" validationType="error" />
+  )
+
+  expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
+  expect(getByTitle('Warning')).toBeDefined()
 })
 
 test('Should trigger onChange handler', () => {

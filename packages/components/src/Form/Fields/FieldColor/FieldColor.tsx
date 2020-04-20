@@ -182,9 +182,9 @@ export const FieldColorComponent = forwardRef(
 
     return (
       <Field
+        {...pickFieldProps(props)}
         id={inputID}
         validationMessage={validationMessage}
-        {...pickFieldProps(props)}
       >
         <FormControl alignLabel="left">
           <Swatch
@@ -202,6 +202,7 @@ export const FieldColorComponent = forwardRef(
           {!hideInput && (
             <InputText
               {...omitFieldProps(props)}
+              aria-describedby={`${id}-describedby`}
               id={inputID}
               ref={ref}
               borderRadius="none"

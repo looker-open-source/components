@@ -39,12 +39,13 @@ const FieldSelectComponent = forwardRef(
     const { id = uuid() } = props
     return (
       <Field
+        {...pickFieldProps(props)}
         id={id}
         validationMessage={validationMessage}
-        {...pickFieldProps(props)}
       >
         <Select
           {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}

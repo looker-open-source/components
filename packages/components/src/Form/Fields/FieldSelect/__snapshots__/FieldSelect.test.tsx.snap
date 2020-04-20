@@ -239,6 +239,7 @@ exports[`A FieldSelect 1`] = `
       width="100%"
     >
       <div
+        aria-invalid={false}
         className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
@@ -251,6 +252,7 @@ exports[`A FieldSelect 1`] = `
         >
           <input
             aria-autocomplete="both"
+            aria-describedby="thumbs-up-describedby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -267,323 +269,8 @@ exports[`A FieldSelect 1`] = `
   </div>
   <div
     className="c11 "
+    id="thumbs-up-describedby"
   />
-</div>
-`;
-
-exports[`A FieldSelect with an error validation aligned to the left 1`] = `
-.c4 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c5 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 36px;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-}
-
-.c8 input {
-  border: none;
-  background: transparent;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  height: 100%;
-  width: 100%;
-  outline: none;
-  padding: 0;
-}
-
-.c8::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c8:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::placeholder {
-  color: #939BA5;
-}
-
-.c8:hover {
-  border-color: #C1C6CC;
-}
-
-.c8:focus,
-.c8:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c10 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  height: 36px;
-  width: 100%;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c10:focus {
-  outline: none;
-}
-
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c13 {
-  font-size: 0.75rem;
-  color: #CC1F36;
-}
-
-.c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-}
-
-.c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  grid-area: input;
-}
-
-.c0 .c11 {
-  grid-area: messages;
-}
-
-.c0 .c1 {
-  grid-area: label;
-  padding-bottom: 0.5rem;
-}
-
-.c0 .c15 {
-  grid-area: detail;
-  justify-self: end;
-}
-
-.c0 .c12 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.c14 .c9 {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  box-shadow: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
-  height: calc(36px - 6px);
-}
-
-.c14 .c9::-webkit-search-decoration,
-.c14 .c9::-webkit-search-cancel-button,
-.c14 .c9::-webkit-search-results-button,
-.c14 .c9::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-color: #ED3B53;
-}
-
-.c6:hover {
-  border-color: #C1C6CC;
-}
-
-.c6:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c6:hover {
-  border-color: #CC1F36;
-}
-
-.c6:focus,
-.c6:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c6 .c9 {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  box-shadow: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
-  height: calc(36px - 6px);
-}
-
-.c6 .c9::-webkit-search-decoration,
-.c6 .c9::-webkit-search-cancel-button,
-.c6 .c9::-webkit-search-results-button,
-.c6 .c9::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c7 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
-}
-
-.c7 .c9 {
-  cursor: default;
-}
-
-.c7 .c16::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
-}
-
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className="c3 "
-  >
-    <div
-      aria-expanded={false}
-      aria-haspopup="listbox"
-      aria-owns="listbox-thumbs-up"
-      className="c4 "
-      display="flex"
-      id="thumbs-up"
-      name="thumbsUp"
-      role="combobox"
-      width="100%"
-    >
-      <div
-        className="c5 c6 c7"
-        fontSize="small"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        width="100%"
-      >
-        <div
-          className="c8 c9 c10"
-          onClick={[Function]}
-        >
-          <input
-            aria-autocomplete="both"
-            autoComplete="off"
-            id="listbox-thumbs-up"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            readOnly={true}
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c11 "
-  >
-    <div
-      className="c12 c13"
-    >
-      This is an error
-    </div>
-  </div>
 </div>
 `;
 
@@ -865,6 +552,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       width="100%"
     >
       <div
+        aria-invalid={true}
         className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
@@ -877,6 +565,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         >
           <input
             aria-autocomplete="both"
+            aria-describedby="thumbs-up-describedby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -893,6 +582,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   </div>
   <div
     className="c11 "
+    id="thumbs-up-describedby"
   >
     <div
       className="c12 c13"
@@ -1010,7 +700,12 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c3 {
-  color: #CC1F36;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
 }
 
 .c0 {
@@ -1132,10 +827,12 @@ exports[`A required FieldSelect 1`] = `
     👍
     <span
       aria-hidden="true"
-      className="c3"
     >
-       
-      *
+      <div
+        className="c3"
+      >
+         required
+      </div>
     </span>
   </label>
   <div
@@ -1154,6 +851,7 @@ exports[`A required FieldSelect 1`] = `
       width="100%"
     >
       <div
+        aria-invalid={false}
         className="c6 c7 c8"
         fontSize="small"
         onClick={[Function]}
@@ -1166,6 +864,7 @@ exports[`A required FieldSelect 1`] = `
         >
           <input
             aria-autocomplete="both"
+            aria-describedby="thumbs-up-describedby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1182,6 +881,7 @@ exports[`A required FieldSelect 1`] = `
   </div>
   <div
     className="c12 "
+    id="thumbs-up-describedby"
   />
 </div>
 `;
@@ -1425,6 +1125,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
       width="100%"
     >
       <div
+        aria-invalid={false}
         className="c5 c6 c7"
         fontSize="small"
         onClick={[Function]}
@@ -1437,6 +1138,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         >
           <input
             aria-autocomplete="both"
+            aria-describedby="thumbs-up-describedby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1453,6 +1155,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   </div>
   <div
     className="c11 "
+    id="thumbs-up-describedby"
   />
 </div>
 `;

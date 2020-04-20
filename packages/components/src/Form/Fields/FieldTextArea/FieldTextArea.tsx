@@ -38,12 +38,13 @@ const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
   const validationMessage = useFormContext(props)
   return (
     <Field
+      {...pickFieldProps(props)}
       id={id}
       validationMessage={validationMessage}
-      {...pickFieldProps(props)}
     >
       <TextArea
         {...omitFieldProps(props)}
+        aria-describedby={`${id}-describedby`}
         validationType={validationMessage && validationMessage.type}
       />
     </Field>

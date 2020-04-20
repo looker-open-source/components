@@ -121,6 +121,7 @@ exports[`A FieldRadio 1`] = `
       className="c4 "
     >
       <input
+        aria-describedby="FieldRadioID-describedby"
         checked={false}
         id="FieldRadioID"
         name="thumbsUp"
@@ -136,6 +137,7 @@ exports[`A FieldRadio 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldRadioID-describedby"
   />
 </label>
 `;
@@ -261,6 +263,7 @@ exports[`A FieldRadio checked 1`] = `
       className="c4 "
     >
       <input
+        aria-describedby="FieldRadioID-describedby"
         checked={false}
         id="FieldRadioID"
         name="thumbsUp"
@@ -276,6 +279,7 @@ exports[`A FieldRadio checked 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldRadioID-describedby"
   />
 </label>
 `;

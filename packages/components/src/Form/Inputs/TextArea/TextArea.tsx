@@ -70,7 +70,10 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 
   return (
     <div className={className}>
-      <textarea {...textareaProps} />
+      <textarea
+        aria-invalid={validationType === 'error' ? 'true' : undefined}
+        {...textareaProps}
+      />
       {validationType && <Icon name="Warning" color="palette.red500" />}
     </div>
   )

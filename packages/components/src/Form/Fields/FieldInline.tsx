@@ -28,7 +28,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Label } from '../Label/Label'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
-import { FieldBaseProps, RequiredStar } from './FieldBase'
+import { FieldBaseProps } from './FieldBase'
+import { RequiredStar } from './RequiredStar'
 
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
@@ -36,11 +37,19 @@ import { FieldBaseProps, RequiredStar } from './FieldBase'
  * The label will always be placed on the right side of the input.
  */
 
-const FieldInlineLayout: FC<Omit<FieldBaseProps, 'labelFontWeight'>> = ({
+interface FieldInlinePropsInternal extends FieldBaseProps {
+  id: string
+}
+
+const FieldInlineLayout: FC<Omit<
+  FieldInlinePropsInternal,
+  'labelFontWeight'
+>> = ({
   className,
   children,
   label,
   labelFontSize,
+  id,
   required,
   validationMessage,
 }) => {
@@ -51,7 +60,7 @@ const FieldInlineLayout: FC<Omit<FieldBaseProps, 'labelFontWeight'>> = ({
         {required && <RequiredStar />}
       </Label>
       <InputArea>{children}</InputArea>
-      <MessageArea>
+      <MessageArea id={`${id}-describedby`}>
         {validationMessage ? (
           <ValidationMessage {...validationMessage} />
         ) : null}

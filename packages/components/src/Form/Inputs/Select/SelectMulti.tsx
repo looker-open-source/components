@@ -80,6 +80,7 @@ const SelectMultiComponent = forwardRef(
       values,
       defaultValues,
       noOptionsLabel,
+      'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
@@ -109,6 +110,8 @@ const SelectMultiComponent = forwardRef(
     }
 
     const ariaProps = {
+      'aria-describedby': ariaDescribedby,
+      'aria-invalid': validationType === 'error',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
     }

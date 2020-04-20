@@ -46,11 +46,13 @@ const FieldToggleSwitchLayout = forwardRef(
     const { id = uuid() } = props
     return (
       <FieldInline
-        validationMessage={validationMessage}
         {...pickFieldProps(props)}
+        validationMessage={validationMessage}
+        id={id}
       >
         <ToggleSwitch
           {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}

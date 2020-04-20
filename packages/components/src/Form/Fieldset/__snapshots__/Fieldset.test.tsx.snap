@@ -191,6 +191,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             onClick={[Function]}
           >
             <input
+              aria-describedby="text-1-describedby"
               id="text-1"
               name="name1"
               type="text"
@@ -199,6 +200,7 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
         <div
           className="c9 "
+          id="text-1-describedby"
         />
       </div>
       <div
@@ -221,6 +223,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             onClick={[Function]}
           >
             <input
+              aria-describedby="text-2-describedby"
               id="text-2"
               name="name2"
               type="text"
@@ -229,6 +232,7 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
         <div
           className="c9 "
+          id="text-2-describedby"
         />
       </div>
       <div
@@ -251,6 +255,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             onClick={[Function]}
           >
             <input
+              aria-describedby="text-3-describedby"
               id="text-3"
               name="nam3"
               type="text"
@@ -259,6 +264,7 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
         <div
           className="c9 "
+          id="text-3-describedby"
         />
       </div>
     </div>

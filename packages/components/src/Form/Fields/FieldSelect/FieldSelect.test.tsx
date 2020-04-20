@@ -103,17 +103,38 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
   expect(getByText('This is an error')).toBeVisible()
 })
 
-test('A FieldSelect with an error validation aligned to the left', () => {
-  const component = createWithTheme(
+test('A FieldSelect with description has proper aria setup', () => {
+  const description = 'This is a description'
+
+  const { container, getByDisplayValue } = renderWithTheme(
+    <FieldSelect id="test" defaultValue="example" description={description} />
+  )
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(description)
+})
+
+test('A FieldText with error has proper aria setup', () => {
+  const errorMessage = 'This is an error'
+
+  const { container, getByDisplayValue } = renderWithTheme(
     <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
+      id="test"
+      defaultValue="example"
+      validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(errorMessage)
 })
 
 test('A FieldSelect with an error validation aligned to the right', () => {
