@@ -25,7 +25,6 @@
  */
 
 import noop from 'lodash/noop'
-import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
 import styled from 'styled-components'
@@ -35,138 +34,41 @@ import { InputProps, inputPropKeys } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
 import { inputTextValidation } from '../InputText'
 
+import { CheckMark } from './CheckMark'
+import { CheckMarkMixed } from './CheckMarkMixed'
+import { FauxCheckbox } from './FauxCheckbox'
+
 export type MixedBoolean = true | false | 'mixed'
 
-interface CheckboxContainerProps extends SpaceProps {
+export interface CheckboxProps
+  extends SpaceProps,
+    Omit<InputProps, 'type' | 'checked' | 'onClick'> {
   checked?: MixedBoolean
   validationType?: ValidationType
 }
 
-export interface CheckboxProps
-  extends Omit<InputProps, 'type' | 'checked'>,
-    CheckboxContainerProps {}
-
-export const CheckMark = () => {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 8L7 11L12 4"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-const CheckMarkMixed = () => {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      >
-        <line x1="5" y1="8" x2="11" y2="8"></line>
-      </g>
-    </svg>
-  )
-}
-
-export const FauxCheckbox = styled.div`
-  ${reset}
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: ${(props) => `solid 1px ${props.theme.colors.palette.charcoal200}`};
-  border-radius: ${(props) => props.theme.radii.small};
-  color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const CheckboxContainer = styled.div<CheckboxContainerProps>`
-  ${reset}
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-  input[type='checkbox'] {
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  ${FauxCheckbox} {
-    ${({ theme, checked }) => {
-      /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
-      const inputColor = theme.colors.palette.purple400
-      return `
-        background: ${checked ? inputColor : theme.colors.palette.white};
-        border-color: ${
-          checked ? inputColor : theme.colors.palette.charcoal200
-        };
-          `
-    }}
-    color: ${({ theme }) => theme.colors.palette.white};
-    ${inputTextValidation}
-  }
-  input[type='checkbox']:focus {
-    & + ${FauxCheckbox} {
-      border-color: ${({ theme }) => theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.palette.purple100};
-      outline: none;
-    }
-  }
-  input[type='checkbox']:disabled {
-    cursor: not-allowed;
-
-    & + ${FauxCheckbox} {
-      background: ${({ theme }) => theme.colors.palette.charcoal100};
-      border-color: ${({ theme }) => theme.colors.palette.charcoal200};
-      color: ${({ theme }) => theme.colors.palette.charcoal100};
-    }
-  }
-
-  ${space}
-`
-
-const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
-  ${reset}
-`
-
-const CheckboxComponent = forwardRef(
+const CheckboxLayout = forwardRef(
   (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
-    const { checked, defaultChecked, onChange, ...restProps } = props
+    const {
+      className,
+      checked,
+      defaultChecked,
+      onChange,
+      readOnly,
+      ...restProps
+    } = props
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
 
-    const handleClick = (e: FormEvent<HTMLInputElement>) => {
-      if (isUndefined(checked)) {
-        setIsChecked(!isChecked)
-      }
-      if (onChange) {
-        onChange(e)
-      }
-    }
+    const handleClick = readOnly
+      ? undefined
+      : (e: FormEvent<HTMLInputElement>) => {
+          if (isUndefined(checked)) {
+            setIsChecked(!isChecked)
+          }
+          if (onChange) {
+            onChange(e)
+          }
+        }
 
     // controlled component: update internal state when props.checked changes
     useEffect(() => {
@@ -176,24 +78,75 @@ const CheckboxComponent = forwardRef(
     }, [checked])
 
     return (
-      <CheckboxContainer {...omit(props, inputPropKeys)} checked={isChecked}>
-        <CheckboxInput
+      <div className={className}>
+        <input
+          type="checkbox"
           {...pick(restProps, inputPropKeys)}
-          ref={ref}
           checked={!!isChecked}
-          role="checkbox"
-          aria-checked={checked}
-          onClick={handleClick}
-          // suppress read-only error as we rely on click rather than change event here
           onChange={noop}
+          aria-checked={checked}
+          // suppress read-only error as we rely on click rather than change event here
+          onClick={handleClick}
+          ref={ref}
         />
         <FauxCheckbox>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
         </FauxCheckbox>
-      </CheckboxContainer>
+      </div>
     )
   }
 )
-CheckboxComponent.displayName = 'CheckboxComponent'
 
-export const Checkbox = styled(CheckboxComponent)``
+CheckboxLayout.displayName = 'CheckboxLayout'
+
+export const Checkbox = styled(CheckboxLayout)`
+  ${reset}
+  ${space}
+
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+
+  input {
+    cursor: ${({ readOnly, disabled }) =>
+      readOnly || disabled ? 'not-allowed' : undefined};
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  input + ${FauxCheckbox} {
+    ${inputTextValidation};
+  }
+
+  input:checked + ${FauxCheckbox} {
+    background-color: ${({ theme }) => theme.colors.palette.purple400};
+    border-color: ${({ theme }) => theme.colors.palette.purple400};
+  }
+
+  input:not(:checked) + ${FauxCheckbox} {
+    color: ${({ theme }) => theme.colors.palette.white};
+  }
+
+  input:focus + ${FauxCheckbox} {
+    border-color: ${({ theme }) => theme.colors.palette.purple300};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.palette.purple100};
+    outline: none;
+  }
+
+  input:disabled + ${FauxCheckbox} {
+    background: transparent;
+    border-color: ${({ theme }) => theme.colors.palette.charcoal200};
+    color: ${({ theme }) => theme.colors.palette.charcoal400};
+  }
+
+  input:disabled:not(:checked) + ${FauxCheckbox} {
+    color: transparent;
+  }
+`
+
+Checkbox.defaultProps = { m: '3px' }

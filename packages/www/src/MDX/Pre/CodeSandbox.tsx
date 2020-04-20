@@ -225,7 +225,7 @@ const SandboxWrapper = styled.div`
   ${({ theme: { lineHeights, colors, radii } }) => `
     line-height: ${lineHeights.medium};
     margin-bottom: ${lineHeights.medium};
-    background: ${colors.palette.charcoal100};
+    border: 1px solid ${colors.palette.charcoal200};
     border-radius: ${radii.medium};
     color: ${colors.white};
   `}

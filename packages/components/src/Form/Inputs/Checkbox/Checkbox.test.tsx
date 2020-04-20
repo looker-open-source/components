@@ -82,6 +82,36 @@ test('Checkbox checked set to mixed', () => {
 test('Checkbox should accept disabled', () => {
   assertSnapshot(<Checkbox disabled id="checkboxID" />)
 })
+test('Checkbox should accept disabled & checked', () => {
+  assertSnapshot(<Checkbox disabled checked id="checkboxID" />)
+})
+test('Checkbox should accept disabled & checked="mixed"', () => {
+  assertSnapshot(<Checkbox disabled checked="mixed" id="checkboxID" />)
+})
+
+test("Checkbox readOnly doesn't register change events", () => {
+  const mockProps: CheckboxProps = {
+    onChange: jest.fn(),
+  }
+
+  const { getByRole } = renderWithTheme(
+    <Checkbox readOnly id="checkboxID" {...mockProps} />
+  )
+
+  const checkboxInput = getByRole('checkbox')
+  fireEvent.click(checkboxInput)
+  expect(mockProps.onChange).toHaveBeenCalledTimes(0)
+})
+
+test('Checkbox should accept readOnly', () => {
+  assertSnapshot(<Checkbox readOnly id="checkboxID" />)
+})
+test('Checkbox should accept readOnly & checked', () => {
+  assertSnapshot(<Checkbox readOnly checked id="checkboxID" />)
+})
+test('Checkbox should accept readOnly & checked="mixed"', () => {
+  assertSnapshot(<Checkbox readOnly checked="mixed" id="checkboxID" />)
+})
 
 test('Checkbox with aria-describedby', () => {
   assertSnapshot(<Checkbox aria-describedby="some-id" id="checkboxID" />)

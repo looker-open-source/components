@@ -30,7 +30,7 @@
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
-import { CheckboxContainer, FauxCheckbox, CheckMark } from '../Checkbox'
+import { Checkbox } from '../Checkbox'
 import {
   ComboboxMultiContext,
   ComboboxMultiContextProps,
@@ -93,13 +93,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
-          {!hideCheckMark && (
-            <CheckboxContainer checked={isSelected}>
-              <FauxCheckbox>
-                <CheckMark />
-              </FauxCheckbox>
-            </CheckboxContainer>
-          )}
+          {!hideCheckMark && <Checkbox checked={isSelected} />}
         </ComboboxOptionDetail>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
