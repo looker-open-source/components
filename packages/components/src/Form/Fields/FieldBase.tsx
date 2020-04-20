@@ -23,8 +23,7 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import styled from 'styled-components'
+
 import { FontSizes, FontWeights } from '@looker/design-tokens'
 import { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
 
@@ -54,12 +53,3 @@ export interface FieldBaseProps {
    */
   validationMessage?: ValidationMessageProps
 }
-
-export const RequiredStar = styled((props) => (
-  <span {...props} aria-hidden="true">
-    {' '}
-    *
-  </span>
-))`
-  color: ${(props) => props.theme.colors.palette.red500};
-`

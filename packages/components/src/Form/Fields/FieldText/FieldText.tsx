@@ -46,6 +46,7 @@ const FieldTextComponent = forwardRef(
         <InputText
           {...omitFieldProps(props)}
           id={id}
+          aria-describedby={`${id}-describedby`}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />

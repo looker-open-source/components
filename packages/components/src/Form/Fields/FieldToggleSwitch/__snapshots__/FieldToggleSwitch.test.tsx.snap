@@ -99,6 +99,7 @@ exports[`A FieldToggleSwitch 1`] = `
       className="c4 "
     >
       <input
+        aria-describedby="FieldToggleSwitchID-describedby"
         id="FieldToggleSwitchID"
         role="switch"
         type="checkbox"
@@ -115,6 +116,7 @@ exports[`A FieldToggleSwitch 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldToggleSwitchID-describedby"
   />
 </label>
 `;
@@ -222,6 +224,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
     >
       <input
         aria-checked={true}
+        aria-describedby="FieldToggleSwitchID-describedby"
         checked={true}
         id="FieldToggleSwitchID"
         role="switch"
@@ -240,6 +243,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   </div>
   <div
     className="c7 "
+    id="FieldToggleSwitchID-describedby"
   />
 </label>
 `;

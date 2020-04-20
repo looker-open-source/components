@@ -55,6 +55,7 @@ const CheckboxLayout = forwardRef(
       defaultChecked,
       onChange,
       readOnly,
+      validationType,
       ...restProps
     } = props
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
@@ -83,10 +84,10 @@ const CheckboxLayout = forwardRef(
           type="checkbox"
           {...pick(restProps, inputPropKeys)}
           checked={!!isChecked}
-          onChange={noop}
           aria-checked={checked}
-          // suppress read-only error as we rely on click rather than change event here
+          aria-invalid={validationType === 'error' ? 'true' : undefined}
           onClick={handleClick}
+          onChange={noop} // suppress read-only error as we rely on click rather than change event here
           ref={ref}
         />
         <FauxCheckbox>

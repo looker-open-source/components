@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { FieldText } from './FieldText'
 
 test('A FieldText with default label', () => {
@@ -42,7 +46,7 @@ test('A FieldText required', () => {
     <FieldText id="FieldTextID" label="👍" required />
   )
 
-  expect(wrapper.text()).toMatch(`👍 *`)
+  expect(wrapper.text()).toMatch(`👍 required`)
 })
 
 test('A FieldText disabled', () => {
@@ -76,19 +80,38 @@ test('A FieldText with detail', () => {
   expect(wrapper.text()).toMatch(`hello5/50`)
 })
 
-test('A FieldText with validationMessage', () => {
-  const wrapper = mountWithTheme(
+test('A FieldText with description has proper aria setup', () => {
+  const description = 'This is a description'
+
+  const { container, getByDisplayValue } = renderWithTheme(
+    <FieldText id="test" defaultValue="example" description={description} />
+  )
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(description)
+})
+
+test('A FieldText with error has proper aria setup', () => {
+  const errorMessage = 'This is an error'
+
+  const { container, getByDisplayValue } = renderWithTheme(
     <FieldText
-      id="FieldTextID"
-      label="hello"
-      validationMessage={{
-        message: 'validation Message',
-        type: 'error',
-      }}
-      placeholder="placeholder"
+      id="test"
+      defaultValue="example"
+      validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
-  expect(wrapper.text()).toMatch(`helloWarningvalidation Message`)
+
+  const input = getByDisplayValue('example')
+  const id = input.getAttribute('aria-describedby')
+  expect(id).toBeDefined()
+
+  const describedBy = container.querySelector(`#${id}`)
+  expect(describedBy).toHaveTextContent(errorMessage)
 })
 
 test('FieldText supports onChange handler', () => {
