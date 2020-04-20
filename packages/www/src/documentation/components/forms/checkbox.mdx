@@ -27,11 +27,7 @@ The `<Checkbox />` component can be rendered in three different states: checked,
 ;() => {
   const [checked, setChecked] = React.useState(true)
   const handleChange = () => setChecked(!checked)
-  return (
-    <>
-      <Checkbox checked={checked} onChange={handleChange} />
-    </>
-  )
+  return <Checkbox checked={checked} onChange={handleChange} />
 }
 ```
 
@@ -127,6 +123,21 @@ Use the disable property to gray out the checkbox, making it unclickable.
 ```jsx
 <Checkbox disabled />
 <Checkbox disabled checked />
+<Checkbox disabled checked="mixed" />
+```
+
+## ReadOnly property
+
+`Checkbox` will ignore user-actions on a `Checkbox` with the `readOnly` property enabled, similar to `disabled` but without greying out the option.
+
+NOTE: In HTML specifying `readonly` on _only_ prevents changes to `value` attribute of the checkbox and therefore allowing the user to still check and uncheck the checkbox.
+
+In most cases we emulate the HTML specification where it has an existing decision or feature. However, the specification's behavior around checkboxes with a `readonly` attribute is rather unintuitive.
+
+```jsx
+<Checkbox readOnly />
+<Checkbox readOnly checked />
+<Checkbox readOnly checked="mixed" />
 ```
 
 ## Accessibility

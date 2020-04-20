@@ -5,9 +5,10 @@ exports[`Checkbox checked set to mixed 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 0.125rem;
-  color: transparent;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,75 +23,313 @@ exports[`Checkbox checked set to mixed 1`] = `
   align-items: center;
 }
 
-.c3 .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-  color: #FFFFFF;
-}
-
-.c3 input[type='checkbox']:focus + .c1 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
-}
-
 .c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
   margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
   vertical-align: middle;
 }
 
-.c0 input[type='checkbox'] {
+.c0 input {
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
-.c0 .c1 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
   color: #FFFFFF;
 }
 
-.c0 input[type='checkbox']:focus + .c1 {
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='checkbox']:disabled {
-  cursor: not-allowed;
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
-.c0 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
 }
 
 <div
-  checked={false}
-  className="c0 "
+  className="c0"
 >
   <input
     aria-checked="mixed"
     checked={false}
-    className=""
     id="checkboxID"
     onChange={[Function]}
     onClick={[Function]}
-    role="checkbox"
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      >
+        <line
+          x1="5"
+          x2="11"
+          y1="8"
+          y2="8"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should accept disabled & checked 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+<div
+  className="c0"
+>
+  <input
+    aria-checked={true}
+    checked={false}
+    disabled={true}
+    id="checkboxID"
+    onChange={[Function]}
+    onClick={[Function]}
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+<div
+  className="c0"
+>
+  <input
+    aria-checked="mixed"
+    checked={false}
+    disabled={true}
+    id="checkboxID"
+    onChange={[Function]}
+    onClick={[Function]}
     type="checkbox"
   />
   <div
@@ -126,9 +365,10 @@ exports[`Checkbox should accept disabled 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 0.125rem;
-  color: transparent;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -143,75 +383,457 @@ exports[`Checkbox should accept disabled 1`] = `
   align-items: center;
 }
 
-.c3 .c1 {
-  background: #6C43E0;
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
   border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
   color: #FFFFFF;
 }
 
-.c3 input[type='checkbox']:focus + .c1 {
+.c3 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c3 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
+.c3 input:disabled + .c1 {
+  background: transparent;
   border-color: #DEE1E5;
-  color: #F5F6F7;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
 }
 
 .c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
   margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
   vertical-align: middle;
 }
 
-.c0 input[type='checkbox'] {
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
-.c0 .c1 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
   color: #FFFFFF;
 }
 
-.c0 input[type='checkbox']:focus + .c1 {
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='checkbox']:disabled {
-  cursor: not-allowed;
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
-.c0 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
 }
 
 <div
-  checked={false}
-  className="c0 "
+  className="c0"
 >
   <input
     checked={false}
-    className=""
     disabled={true}
     id="checkboxID"
     onChange={[Function]}
     onClick={[Function]}
-    role="checkbox"
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should accept readOnly & checked 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+<div
+  className="c0"
+>
+  <input
+    aria-checked={true}
+    checked={false}
+    id="checkboxID"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+<div
+  className="c0"
+>
+  <input
+    aria-checked="mixed"
+    checked={false}
+    id="checkboxID"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      >
+        <line
+          x1="5"
+          x2="11"
+          y1="8"
+          y2="8"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should accept readOnly 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c0 {
+  margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+  vertical-align: middle;
+}
+
+.c0 input {
+  cursor: not-allowed;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c0 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
+}
+
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+<div
+  className="c0"
+>
+  <input
+    checked={false}
+    id="checkboxID"
+    onChange={[Function]}
     type="checkbox"
   />
   <div
@@ -241,9 +863,10 @@ exports[`Checkbox with aria-describedby 1`] = `
   position: relative;
   width: 100%;
   height: 100%;
+  background: currentColor;
   border: solid 1px #DEE1E5;
   border-radius: 0.125rem;
-  color: transparent;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -258,75 +881,82 @@ exports[`Checkbox with aria-describedby 1`] = `
   align-items: center;
 }
 
-.c3 .c1 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-  color: #FFFFFF;
-}
-
-.c3 input[type='checkbox']:focus + .c1 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
-  border-color: #DEE1E5;
-  color: #F5F6F7;
-}
-
 .c0 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
   margin: 3px;
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
   vertical-align: middle;
 }
 
-.c0 input[type='checkbox'] {
+.c0 input {
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
-.c0 .c1 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
+.c0 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c0 input:not(:checked) + .c1 {
   color: #FFFFFF;
 }
 
-.c0 input[type='checkbox']:focus + .c1 {
+.c0 input:focus + .c1 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c0 input[type='checkbox']:disabled {
-  cursor: not-allowed;
+.c0 input:disabled + .c1 {
+  background: transparent;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
-.c0 input[type='checkbox']:disabled + .c1 {
-  background: #F5F6F7;
+.c0 input:disabled:not(:checked) + .c1 {
+  color: transparent;
+}
+
+.c3 input:checked + .c1 {
+  background-color: #6C43E0;
+  border-color: #6C43E0;
+}
+
+.c3 input:not(:checked) + .c1 {
+  color: #FFFFFF;
+}
+
+.c3 input:focus + .c1 {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 input:disabled + .c1 {
+  background: transparent;
   border-color: #DEE1E5;
-  color: #F5F6F7;
+  color: #939BA5;
+}
+
+.c3 input:disabled:not(:checked) + .c1 {
+  color: transparent;
 }
 
 <div
-  checked={false}
-  className="c0 "
+  className="c0"
 >
   <input
     aria-describedby="some-id"
     checked={false}
-    className=""
     id="checkboxID"
     onChange={[Function]}
     onClick={[Function]}
-    role="checkbox"
     type="checkbox"
   />
   <div

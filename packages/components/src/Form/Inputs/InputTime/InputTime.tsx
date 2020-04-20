@@ -49,12 +49,11 @@ import {
 } from '@looker/design-tokens'
 import {
   InputText,
+  inputTextDefaults,
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
-  inputTextDefaults,
-  CustomizableInputTextAttributes,
 } from '../InputText'
 import {
   formatTimeString,
@@ -523,10 +522,7 @@ const InternalInputTime: FC<InputTimeProps> = ({
   )
 }
 
-export const InputTime = styled(InternalInputTime).attrs({
-  ...inputTextDefaults,
-  ...CustomizableInputTextAttributes,
-})`
+export const InputTime = styled(InternalInputTime)`
   ${reset}
   ${border}
   ${space}
@@ -546,6 +542,10 @@ export const InputTime = styled(InternalInputTime).attrs({
 
   ${inputTextValidation}
 `
+
+InputTime.defaultProps = {
+  ...inputTextDefaults,
+}
 
 const InputTimeWrapper = styled.div<{
   hasInputValues: boolean

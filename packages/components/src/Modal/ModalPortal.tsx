@@ -34,9 +34,7 @@ export interface CustomizableModalAttributes extends CustomizableAttributes {
   zIndex?: number
 }
 
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
-}
+export const CustomizableModalAttributes: CustomizableModalAttributes = {}
 
 export const ModalPortal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {

@@ -81,11 +81,11 @@ exports[`Form with one child 1`] = `
 }
 
 .c6 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;

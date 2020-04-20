@@ -25,42 +25,35 @@
  */
 
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  color,
-  ColorProps,
-  reset,
-  space,
-  SpaceProps,
-  textDecoration,
-  TextDecorationProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { reset } from '@looker/design-tokens'
 
-export interface LabelProps
-  extends ColorProps,
-    SpaceProps,
-    TextDecorationProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement> {}
+const dotSize = 6
 
-export const Label = styled.label<LabelProps>`
-  ${reset}
-  ${color};
-  ${space};
-  ${textDecoration}
-  ${textTransform};
-  ${typography};
-
-  display: inline-block; /* Ensure that applied padding/margin actually works */
-`
-
-Label.defaultProps = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
+interface FauxRadioProps {
+  checked: boolean
 }
+
+export const FauxRadio = styled.div<FauxRadioProps>`
+  ${reset}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  border: solid 1px ${({ theme }) => `${theme.colors.palette.charcoal200}`};
+  border-radius: 50%;
+  border-color: currentColor;
+  color: transparent;
+  transition: background-color 25ms linear, border-color 25ms linear,
+    box-shadow 25ms linear;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: ${dotSize}px;
+    height: ${dotSize}px;
+    border-radius: 50%;
+    top: calc(50% - ${dotSize / 2}px);
+    right: calc(50% - ${dotSize / 2}px);
+  }
+`

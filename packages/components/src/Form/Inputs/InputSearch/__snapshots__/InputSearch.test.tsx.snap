@@ -2,12 +2,13 @@
 
 exports[`InputSearch default 1`] = `
 .c0 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-right: 0.25rem;
   font-size: 0.875rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -86,11 +87,11 @@ exports[`InputSearch default 1`] = `
 }
 
 .c6 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
@@ -153,6 +154,7 @@ exports[`InputSearch default 1`] = `
   className="c0 c1"
   fontSize="small"
   onMouseDown={[Function]}
+  width="100%"
 >
   <div
     className="c2 c3"
@@ -188,12 +190,13 @@ exports[`InputSearch default 1`] = `
 
 exports[`InputSearch hideSearchIcon removes the icon 1`] = `
 .c0 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-right: 0.25rem;
   font-size: 0.875rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -259,11 +262,11 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
 }
 
 .c4 {
-  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  width: 100%;
+  border-radius: 0.25rem;
   height: 36px;
+  width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
@@ -321,6 +324,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   className="c0 c1"
   fontSize="small"
   onMouseDown={[Function]}
+  width="100%"
 >
   <div
     className="c2 c3 c4"

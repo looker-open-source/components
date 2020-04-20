@@ -24,43 +24,18 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  color,
-  ColorProps,
-  reset,
-  space,
-  SpaceProps,
-  textDecoration,
-  TextDecorationProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import React from 'react'
 
-export interface LabelProps
-  extends ColorProps,
-    SpaceProps,
-    TextDecorationProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement> {}
-
-export const Label = styled.label<LabelProps>`
-  ${reset}
-  ${color};
-  ${space};
-  ${textDecoration}
-  ${textTransform};
-  ${typography};
-
-  display: inline-block; /* Ensure that applied padding/margin actually works */
-`
-
-Label.defaultProps = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-}
+export const CheckMarkMixed = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
+      <line x1="5" y1="8" x2="11" y2="8"></line>
+    </g>
+  </svg>
+)

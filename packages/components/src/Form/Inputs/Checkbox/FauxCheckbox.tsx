@@ -25,42 +25,16 @@
  */
 
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  color,
-  ColorProps,
-  reset,
-  space,
-  SpaceProps,
-  textDecoration,
-  TextDecorationProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
 
-export interface LabelProps
-  extends ColorProps,
-    SpaceProps,
-    TextDecorationProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement> {}
-
-export const Label = styled.label<LabelProps>`
-  ${reset}
-  ${color};
-  ${space};
-  ${textDecoration}
-  ${textTransform};
-  ${typography};
-
-  display: inline-block; /* Ensure that applied padding/margin actually works */
+export const FauxCheckbox = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
+  border-radius: ${({ theme }) => theme.radii.small};
+  color: ${({ theme }) => theme.colors.palette.white};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
-
-Label.defaultProps = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-}

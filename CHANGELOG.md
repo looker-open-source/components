@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionList` documentation and select test suite
 - `ActionListCheckbox` test suite
+- `Checkbox` & `Radio` now support `readOnly` property
+
+### Fixed
+
+- `Checkbox` & `Radio` disabled states match design spec correctly now
+- `ComponentsProvider` now automatically loads `GlobalStyle` (also provides `globalStyle={false}` prop to disable this behavior)
 
 ### Changed
 

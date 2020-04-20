@@ -39,7 +39,6 @@ import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
 import {
-  CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
   inputTextDefaults,
@@ -64,7 +63,7 @@ const getHeight = (
     typeof py === 'number'
       ? `${((py || 0) + 1) * 2}px`
       : `(${String(py)} * 2) - 2px`
-  return `calc(${CustomizableInputTextAttributes.height} - ${verticalSpace})`
+  return `calc(${inputTextDefaults.height} - ${verticalSpace})`
 }
 
 export interface InputSearchProps extends InputTextProps {
@@ -261,8 +260,7 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  ...omit(CustomizableInputTextAttributes, ['height', 'px']),
-  ...inputTextDefaults,
+  ...omit(inputTextDefaults, ['height', 'px']),
   pr: 'xxsmall',
   py: 2,
 }
