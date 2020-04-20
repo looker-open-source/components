@@ -169,6 +169,7 @@ exports[`Form with one child 1`] = `
         onClick={[Function]}
       >
         <input
+          aria-describedby="text-field-describedby"
           id="text-field"
           name="name"
           type="text"
@@ -177,6 +178,7 @@ exports[`Form with one child 1`] = `
     </div>
     <div
       className="c7 "
+      id="text-field-describedby"
     />
   </div>
 </form>

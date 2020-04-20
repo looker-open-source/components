@@ -53,76 +53,7 @@ export const FieldsDemo: FC = () => {
           <FieldText label="Text Input" prefix="$" placeholder="MONEY!!!" />
         </Form>
         <Form>Placeholder</Form>
-        <FieldText disabled label="Text Input" placeholder="placeholder" />
-        <FieldText
-          disabled
-          inline
-          label="Text Input"
-          placeholder="placeholder"
-        />{' '}
-        <FieldText
-          label="Text Input"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          inline
-          label="Text Input"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          label="Text Input"
-          iconBefore="GearOutline"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          inline
-          label="Text Input"
-          iconBefore="GearOutline"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          label="Text Input"
-          iconAfter="Check"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          inline
-          label="Text Input"
-          iconAfter="Check"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          label="Text Input"
-          suffix="%"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          inline
-          label="Text Input"
-          suffix="%"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          label="Text Input"
-          prefix="$"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
-        <FieldText
-          inline
-          label="Text Input"
-          prefix="$"
-          placeholder="placeholder"
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-        />
+
         <FieldText label="Text Input" placeholder="placeholder" required />
         <FieldText
           inline
@@ -227,6 +158,8 @@ export const FieldsDemo: FC = () => {
           inline
           label="Label"
           placeholder="placeholder"
+          description="I'm a little teapot"
+          detail="0/50"
           options={[
             { label: 'Cheddar', value: 'cheddar' },
             { label: 'Gouda', value: 'gouda' },

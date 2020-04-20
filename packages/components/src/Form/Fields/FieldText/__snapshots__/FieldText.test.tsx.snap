@@ -144,6 +144,7 @@ exports[`A FieldText with default label 1`] = `
       onClick={[Function]}
     >
       <input
+        aria-describedby="FieldTextID-describedby"
         id="FieldTextID"
         type="text"
       />
@@ -151,6 +152,7 @@ exports[`A FieldText with default label 1`] = `
   </div>
   <div
     className="c6 "
+    id="FieldTextID-describedby"
   />
 </div>
 `;
@@ -325,6 +327,7 @@ exports[`A FieldText with label inline 1`] = `
       onClick={[Function]}
     >
       <input
+        aria-describedby="FieldTextID-describedby"
         id="FieldTextID"
         type="text"
       />
@@ -332,6 +335,7 @@ exports[`A FieldText with label inline 1`] = `
   </div>
   <div
     className="c6 "
+    id="FieldTextID-describedby"
   />
 </div>
 `;
