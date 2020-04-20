@@ -3,12 +3,10 @@
 exports[`A FieldTextArea with default label 1`] = `
 .c4 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
 .c4 .c6 {
@@ -19,7 +17,7 @@ exports[`A FieldTextArea with default label 1`] = `
 
 .c4 textarea {
   height: 6.25rem;
-  width: 16rem;
+  width: 100%;
   resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -52,7 +50,7 @@ exports[`A FieldTextArea with default label 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 13rem;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -78,25 +76,17 @@ exports[`A FieldTextArea with default label 1`] = `
   grid-area: messages;
 }
 
-.c0 .c7 {
-  width: 13rem;
-}
-
-.c0 .c9 {
-  width: 100%;
-}
-
 .c0 .c1 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
 
-.c0 .c10 {
+.c0 .c8 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c7 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -131,12 +121,10 @@ exports[`A FieldTextArea with default label 1`] = `
 exports[`A FieldTextArea with label inline 1`] = `
 .c4 {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
 }
 
 .c4 .c7 {
@@ -147,7 +135,7 @@ exports[`A FieldTextArea with label inline 1`] = `
 
 .c4 textarea {
   height: 6.25rem;
-  width: 16rem;
+  width: 100%;
   resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -197,7 +185,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 13rem;
+  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -209,6 +197,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   margin-bottom: 0.5rem;
   display: grid;
   grid-template-areas: "label input detail" ". messages messages";
+  grid-template-columns: 150px 1fr;
 }
 
 .c0 .c3 {
@@ -223,14 +212,6 @@ exports[`A FieldTextArea with label inline 1`] = `
   grid-area: messages;
 }
 
-.c0 .c8 {
-  width: 13rem;
-}
-
-.c0 .c10 {
-  width: 100%;
-}
-
 .c0 .c1 {
   grid-area: label;
   text-align: right;
@@ -238,10 +219,9 @@ exports[`A FieldTextArea with label inline 1`] = `
   justify-self: end;
   height: 36px;
   padding-right: 0.75rem;
-  width: 150px;
 }
 
-.c0 .c11 {
+.c0 .c9 {
   grid-area: detail;
   justify-self: end;
   -webkit-align-self: center;
@@ -250,7 +230,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   padding-left: 0.75rem;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }

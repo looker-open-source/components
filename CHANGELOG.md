@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Checkbox` & `Radio` disabled states match design spec correctly now
+- `ComponentsProvider` now automatically loads `GlobalStyle` (also provides `globalStyle={false}` prop to disable this behavior)
+
+### Changed
+
+- `InputText` will now show red error icon when validation fails
+- `Field*` components no longer have a bottom margin by default (see `Form` update)
+- `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
+
+### Removed
+
+- `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15
 
@@ -24,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Select` and `SelectMulti` option groups `title` is now `label` and optional.
 - `Badge` style updated to use lighter colors for intents. Badges are now always round.
 
 ### Fixed

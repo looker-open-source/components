@@ -31,22 +31,98 @@ import {
   FieldCheckbox,
   FieldRadio,
   FieldToggleSwitch,
+  Form,
   Grid,
+  InputText,
+  Select,
   SpaceVertical,
+  TextArea,
 } from '@looker/components'
 
 export const FieldsDemo: FC = () => {
   return (
     <SpaceVertical m="xxlarge">
+      <TextArea />
+      <Select />
+      <InputText />
+
       <Grid>
+        <Form>
+          <FieldText label="Text Input" prefix="$" placeholder="Money" />
+          <FieldText label="Text Input" prefix="$" placeholder="Money" />
+          <FieldText label="Text Input" prefix="$" placeholder="MONEY!!!" />
+        </Form>
+        <Form>Placeholder</Form>
         <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
           disabled
           inline
           label="Text Input"
           placeholder="placeholder"
+        />{' '}
+        <FieldText
+          label="Text Input"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
         />
-
+        <FieldText
+          inline
+          label="Text Input"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          label="Text Input"
+          iconBefore="GearOutline"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          inline
+          label="Text Input"
+          iconBefore="GearOutline"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          label="Text Input"
+          iconAfter="Check"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          inline
+          label="Text Input"
+          iconAfter="Check"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          label="Text Input"
+          suffix="%"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          inline
+          label="Text Input"
+          suffix="%"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          label="Text Input"
+          prefix="$"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          inline
+          label="Text Input"
+          prefix="$"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
         <FieldText label="Text Input" placeholder="placeholder" required />
         <FieldText
           inline
@@ -54,7 +130,6 @@ export const FieldsDemo: FC = () => {
           placeholder="placeholder"
           required
         />
-
         <FieldText
           description="no vegetables allowed"
           label="Text Input"
@@ -66,22 +141,16 @@ export const FieldsDemo: FC = () => {
           label="Text Input"
           placeholder="placeholder"
         />
-
         <FieldText label="Label" prefix="$" />
         <FieldText inline label="Label" prefix="$" />
-
         <FieldText label="Label" iconBefore="GearOutline" />
         <FieldText inline label="Label" iconBefore="GearOutline" />
-
         <FieldText label="Label" suffix="%" />
         <FieldText inline label="Label" suffix="%" />
-
         <FieldText label="Label" iconAfter="Check" />
         <FieldText inline label="Label" iconAfter="Check" />
-
         <FieldText label="Label" prefix="$" iconAfter="Check" />
         <FieldText inline label="Label" prefix="$" iconAfter="Check" />
-
         <FieldText label="hello" detail="5/50" placeholder="placeholder" />
         <FieldText
           inline
@@ -89,7 +158,6 @@ export const FieldsDemo: FC = () => {
           detail="5/50"
           placeholder="placeholder"
         />
-
         <FieldText
           label="Label"
           required
@@ -105,10 +173,8 @@ export const FieldsDemo: FC = () => {
           description="A special kind of thing..."
           detail="What?"
         />
-
         <FieldTextArea label="Text Area" />
         <FieldTextArea placeholder="Neat stuff" inline label="Text Area" />
-
         <FieldTextArea label="Text Area" disabled />
         <FieldTextArea
           placeholder="Neat stuff"
@@ -116,10 +182,8 @@ export const FieldsDemo: FC = () => {
           label="Text Area"
           disabled
         />
-
         <FieldTextArea label="Text Area" required placeholder="Hello world" />
         <FieldTextArea inline label="Text Area" required />
-
         <FieldTextArea
           label="Text Area"
           validationMessage={{ message: 'validation Message', type: 'error' }}
@@ -130,7 +194,6 @@ export const FieldsDemo: FC = () => {
           required
           validationMessage={{ message: 'validation Message', type: 'error' }}
         />
-
         <FieldSelect
           label="Label"
           placeholder="placeholder"
@@ -150,7 +213,6 @@ export const FieldsDemo: FC = () => {
             { label: 'Swiss', value: 'swiss' },
           ]}
         />
-
         <FieldSelect
           label="Label"
           placeholder="placeholder"

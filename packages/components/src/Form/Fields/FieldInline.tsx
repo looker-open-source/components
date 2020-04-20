@@ -24,7 +24,7 @@
 
  */
 
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import { Label } from '../Label/Label'
@@ -42,18 +42,17 @@ export interface CustomizableFieldAttributesInterface
  * The label will always be placed on the right side of the input.
  */
 
-const FieldInlineLayout: FunctionComponent<FieldBaseProps> = ({
+const FieldInlineLayout: FC<Omit<FieldBaseProps, 'labelFontWeight'>> = ({
   className,
   children,
   label,
   labelFontSize,
-  labelFontWeight,
   required,
   validationMessage,
 }) => {
   return (
     <label className={className}>
-      <Label as="span" fontWeight={labelFontWeight} fontSize={labelFontSize}>
+      <Label as="span" fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>

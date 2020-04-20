@@ -91,12 +91,13 @@ export interface InputTextProps
 const InputComponent = forwardRef(
   (
     {
-      type = 'text',
+      className,
       iconAfter,
       iconBefore,
       prefix,
       suffix,
-      className,
+      type = 'text',
+      validationType,
       ...props
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -142,24 +143,18 @@ const InputComponent = forwardRef(
       inputPropKeys
     )
 
-    if (before || after) {
-      return (
-        <InputLayout className={className} onClick={focusInput}>
-          {before}
-          <input {...inputProps} type={type} ref={ref} />
-          {after}
-        </InputLayout>
-      )
-    } else {
-      return (
-        <StyledInput
-          {...inputProps}
-          className={className}
-          type={type}
-          ref={ref}
-        />
-      )
-    }
+    return (
+      <InputLayout className={className} onClick={focusInput}>
+        {before && before}
+        <input {...inputProps} type={type} ref={ref} />
+        {after && after}
+        {validationType && (
+          <InputIconStyle paddingLeft="xsmall">
+            <Icon color="palette.red500" name="Warning" size={18} />
+          </InputIconStyle>
+        )}
+      </InputLayout>
+    )
   }
 )
 
@@ -181,8 +176,23 @@ export const inputTextDisabled = css`
 
 export const inputHeight = '36px'
 
-const shared = css`
+export const InputLayout = styled.div`
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.palette.white};
+  display: inline-flex;
   height: ${inputHeight};
+  justify-content: space-evenly;
+
+  input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: ${(props) => props.theme.fontSizes.small};
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0;
+  }
 
   ::placeholder {
     color: ${(props) => props.theme.colors.palette.charcoal400};
@@ -195,29 +205,6 @@ const shared = css`
   :focus-within {
     ${inputTextFocus}
   }
-`
-
-export const InputLayout = styled.div`
-  ${shared}
-  align-items: center;
-  background-color: ${(props) => props.theme.colors.palette.white};
-  display: inline-flex;
-  justify-content: space-evenly;
-  width: 174px;
-  input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    height: 100%;
-    width: 100%;
-    outline: none;
-    padding: 0;
-  }
-`
-
-const StyledInput = styled.input`
-  ${shared}
 `
 
 export const InputIconStyle = styled(Flex)`
@@ -278,6 +265,7 @@ export const inputTextDefaults = {
 }
 
 InputText.defaultProps = {
+  width: '100%',
   ...CustomizableInputTextAttributes,
   ...inputTextDefaults,
   type: 'text',

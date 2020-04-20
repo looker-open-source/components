@@ -46,21 +46,29 @@ const options = [
   { label: 'Oranges', value: '3' },
   { label: 'Pineapples', value: '4' },
   { label: 'Kiwis', value: '5' },
+]
+const options2 = [
   { label: 'Apples2', value: '12' },
   { label: 'Bananas2', value: '22' },
   { label: 'Oranges2', value: '32' },
   { label: 'Pineapples2', value: '42' },
-  { label: 'Kiwis3', value: '52' },
+  { label: 'Kiwis2', value: '52' },
+]
+const options3 = [
   { label: 'Apples3', value: '13' },
   { label: 'Bananas3', value: '23' },
   { label: 'Oranges3', value: '33' },
   { label: 'Pineapples3', value: '43' },
   { label: 'Kiwis3', value: '53' },
+]
+const options4 = [
   { label: 'Apples4', value: '14' },
   { label: 'Bananas4', value: '24' },
   { label: 'Oranges4', value: '34' },
   { label: 'Pineapples4', value: '44' },
   { label: 'Kiwis4', value: '54' },
+]
+const options5 = [
   { label: 'Apples5', value: '15' },
   { label: 'Bananas5', value: '25' },
   { label: 'Oranges5', value: '35' },
@@ -69,13 +77,17 @@ const options = [
 ]
 
 const optionsWithGroups = [
-  { options, title: 'FRUITS' },
+  { options },
+  { options: options2 },
+  { options: options3 },
+  { options: options4 },
+  { options: options5 },
   {
+    label: 'CARS',
     options: [
-      { label: 'Honda', value: 'honda' },
-      { label: 'Toyota', value: 'toyota' },
+      { description: 'Great resale value', label: 'Honda', value: 'honda' },
+      { description: 'Most popular make', label: 'Toyota', value: 'toyota' },
     ],
-    title: 'CARS',
   },
 ]
 
@@ -94,7 +106,7 @@ function checkOption(option: ComboboxOptionObject, searchTerm: string) {
 function optionReducer(searchTerm: string) {
   return (acc: SelectOptionProps[], option: SelectOptionProps) => {
     const optionAsGroup = option as SelectOptionGroupProps
-    if (optionAsGroup.title) {
+    if (optionAsGroup.options) {
       const filteredGroupOptions = optionAsGroup.options.filter((option) =>
         checkOption(option, searchTerm)
       )

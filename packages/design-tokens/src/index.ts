@@ -27,6 +27,8 @@
 export * from './system'
 export * from './theme'
 
+export * from './GlobalStyle'
+
 export { palette, radii, semanticColors } from './tokens'
 
 // Useful external helpers
