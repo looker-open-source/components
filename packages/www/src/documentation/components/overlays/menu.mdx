@@ -60,40 +60,25 @@ The `escapeWithReference` and `pin` props allow you to enforce the placement to 
 
 ## Controlled Menu
 
-Control the state of the menu React's `useState` hook,
-and access the `setOpen` function via `MenuContext` from deep within the menu.
-(The latter works on both controlled and uncontrolled usage.)
+Control the state of the menu with React's `useState` hook.
 
 ```jsx
 ;() => {
-  const ExportList = () => {
-    const { setOpen } = React.useContext(MenuContext)
-    handleClick = () => setOpen && setOpen(false)
-    return (
-      <MenuList onClick={handleClick}>
-        <MenuItem icon="Mail">Email</MenuItem>
-        <MenuItem icon="Table">Spreadsheet</MenuItem>
-      </MenuList>
-    )
-  }
-
-  const ExportMenu = () => {
-    const [isOpen, setOpen] = React.useState(false)
-    return (
-      <>
-        <Paragraph pb="medium">
-          {isOpen ? 'Menu Open' : 'Menu Closed'}
-        </Paragraph>
-        <Menu isOpen={isOpen} setOpen={setOpen}>
-          <MenuDisclosure tooltip="Select export format">
-            <Button>Export</Button>
-          </MenuDisclosure>
-          <ExportList />
-        </Menu>
-      </>
-    )
-  }
-  return <ExportMenu />
+  const [isOpen, setOpen] = React.useState(false)
+  return (
+    <>
+      <Menu isOpen={isOpen} setOpen={setOpen}>
+        <MenuDisclosure tooltip="Select export format">
+          <Button mr="medium">Export</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="Mail">Email</MenuItem>
+          <MenuItem icon="Table">Spreadsheet</MenuItem>
+        </MenuList>
+      </Menu>
+      {isOpen ? 'Menu Open' : 'Menu Closed'}
+    </>
+  )
 }
 ```
 
@@ -217,19 +202,25 @@ For accessibility reasons, if you want your `MenuItem` to link somewhere then yo
 
 An icon can optionally be assigned to each item via the `icon` property.
 
+**Note:** The `Menu` will close by default when `MenuItem` is clicked, after the `onClick` handler, if there is one. Any component, such as a `Modal`, that is meant to be conditionally shown on click, should not be nested inside `MenuList` since it will be removed.
+
 ```jsx
-<MenuList>
-  <MenuItem>Home</MenuItem>
-  <MenuItem icon="Home">Home</MenuItem>
-  <MenuItem
-    itemRole="link"
-    target="_blank"
-    icon="Public"
-    href="https://google.com"
-  >
-    Away
-  </MenuItem>
-</MenuList>
+<Menu>
+  <MenuDisclosure>
+    <Button>Places</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem icon="Home">Home</MenuItem>
+    <MenuItem
+      itemRole="link"
+      target="_blank"
+      icon="Public"
+      href="https://google.com"
+    >
+      Away
+    </MenuItem>
+  </MenuList>
+</Menu>
 ```
 
 ### Icon Support

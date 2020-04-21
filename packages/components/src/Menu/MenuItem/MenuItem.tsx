@@ -35,7 +35,7 @@ import {
 import { IconNames } from '@looker/icons'
 import React, { FC, ReactNode, useContext, useState } from 'react'
 import { Icon } from '../../Icon'
-import { MenuItemStyleContext } from '../MenuContext'
+import { MenuContext, MenuItemStyleContext } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -176,9 +176,14 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     onBlur && onBlur(event)
   }
 
+  const { setOpen } = useContext(MenuContext)
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
+    // Close the Menu (unless event has preventDefault in onClick)
+    if (setOpen && !event.defaultPrevented) {
+      setOpen(false)
+    }
   }
 
   const { customizationProps, compact } = useMenuItemStyleContext({

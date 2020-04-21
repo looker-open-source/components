@@ -26,11 +26,11 @@
 
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
-import React, { useContext, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
-import { Menu, MenuContext, MenuDisclosure, MenuItem, MenuList } from './'
+import { Menu, MenuDisclosure, MenuItem, MenuList } from './'
 
 const menu = (
   <Menu>
@@ -74,42 +74,42 @@ describe('<Menu />', () => {
     expect(queryByText('Select your favorite kind')).toBeInTheDocument()
   })
 
-  test('Use context to close menu', () => {
+  test('closes on MenuItem click', () => {
     const Closable = () => {
-      const { setOpen } = useContext(MenuContext)
-      const handleClick = () => setOpen && setOpen(false)
+      function handleClick(e: React.MouseEvent<HTMLLIElement>) {
+        e.preventDefault()
+      }
       return (
-        <>
+        <Menu>
           <MenuDisclosure tooltip="Select your favorite kind">
             <Button>Cheese</Button>
           </MenuDisclosure>
           <MenuList>
             <MenuItem icon="FavoriteOutline" onClick={handleClick}>
-              Swiss
+              Gouda
             </MenuItem>
+            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
           </MenuList>
-        </>
+        </Menu>
       )
     }
-    const menu2 = (
-      <Menu>
-        <Closable />
-      </Menu>
-    )
-    const { getByText, queryByText } = renderWithTheme(menu2)
+    const { getByText } = renderWithTheme(<Closable />)
 
     const button = getByText('Cheese')
-
-    expect(queryByText('Swiss')).not.toBeInTheDocument()
-
     fireEvent.click(button)
 
-    expect(queryByText('Swiss')).toBeInTheDocument()
+    const defaultPreventedItem = getByText('Gouda')
+    const item = getByText('Swiss')
 
-    const fancyItem = getByText('Swiss')
-    fireEvent.click(fancyItem)
+    fireEvent.click(defaultPreventedItem)
 
-    expect(fancyItem).not.toBeInTheDocument()
+    expect(defaultPreventedItem).toBeInTheDocument()
+    expect(item).toBeInTheDocument()
+
+    fireEvent.click(item)
+
+    expect(defaultPreventedItem).not.toBeInTheDocument()
+    expect(item).not.toBeInTheDocument()
   })
 
   test('Disabled Menu does not open when clicked and has disabled prop', () => {
