@@ -5,26 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.28] - 2020-04-20
 
 ### Added
 
-- `ActionList` documentation and select test suite
-- `ActionListCheckbox` test suite
-- `ActionList` documentation
-- `CrossFilter` Icon
+- `ActionList`
+  - Added test suite around "select" behaviors
+  - Added documentation
 - `Checkbox` & `Radio` now support `readOnly` property
+- Icons - `CrossFilter`
 
 ### Fixed
 
-- `Checkbox` & `Radio` disabled states match design spec correctly now
+- `Checkbox` & `Radio` disabled states match design spec
 - `ComponentsProvider` now automatically loads `GlobalStyle` (also provides `globalStyle={false}` prop to disable this behavior)
 
 ### Changed
 
-- `InputText` will now show red error icon when validation fails
 - `Field*` components no longer have a bottom margin by default (see `Form` update)
 - `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
+- `InputText` will now show red error icon when validation fails
 
 ### Removed
 
