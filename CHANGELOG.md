@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `ActionList` documentation and select test suite
+- `ActionListCheckbox` test suite
 - `ActionList` documentation
 - `CrossFilter` Icon
 - `Checkbox` & `Radio` now support `readOnly` property

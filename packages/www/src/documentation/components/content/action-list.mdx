@@ -166,16 +166,18 @@ You can also use an `<ActionListManager>` element to render a "No Results" messa
 
 ## Sorting an Action List
 
-You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop. Note that only columns whose corresponding column objects have `canSort: true` will be sortable.
+You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop.
 
 Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
 
+**Note:** Only columns whose corresponding column objects have `canSort: true` will be sortable. In addition, if your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
+
 The function passed into `onSort`, generally speaking, should perform these actions for proper sorting behavior:
 
-- Update the corresponding column object to have a new sort direction
+- Update the corresponding column object's `sortDirection`
 - Sort the collection representing your data
 
-**Note:** If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+If you want default sorting behavior, you can use the `doDefaultActionListSort` helper function. The `doDefaultActionListSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
 
 ```jsx
 ;() => {
@@ -201,6 +203,7 @@ The function passed into `onSort`, generally speaking, should perform these acti
       primaryKey: true,
       title: 'ID',
       type: 'number',
+      sortDirection: 'asc',
       widthPercent: 20,
     },
     {
@@ -259,13 +262,13 @@ An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>
 
 Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
 
-The `itemsSelected` prop should be given the id's of all selected rows.
+The `itemsSelected` prop should be given the id's of all selected `<ActionListItem>`s. Note that because the id of an `<ActionListItem>`s must be a string, the `itemSelected` prop should be an array of strings.
 
-**Note:** If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
+If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
 
 ```jsx
 ;() => {
-  const [selections, setSelections] = useState([2])
+  const [selections, setSelections] = useState([])
   const onSelect = (selection) => {
     setSelections(
       selections.includes(selection)
@@ -317,7 +320,7 @@ The `itemsSelected` prop should be given the id's of all selected rows.
     return (
       <ActionListItem
         key={id}
-        id={id}
+        id={String(id)}
         onClick={() => alert('Row clicked')}
         actions={actions}
         disabled={id === 3 && true}

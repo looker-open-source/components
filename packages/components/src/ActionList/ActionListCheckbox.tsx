@@ -37,26 +37,43 @@ export interface ActionListCheckboxProps {
 
 export const checkListProps = ['checked', 'disabled', 'onChange']
 
+export const actionListCheckboxWidth = '2.75rem'
+
 const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   onChange,
   checked,
   disabled,
   className,
-}) => (
-  <div onClick={onChange} className={className}>
-    <Checkbox
-      disabled={disabled}
-      checked={checked}
-      onChange={disabled ? undefined : onChange}
-    />
-  </div>
-)
+}) => {
+  const handleOnChange = (event: React.MouseEvent<HTMLInputElement>) => {
+    const isNotFromChild = event.currentTarget === event.target
+    isNotFromChild && !disabled && onChange && onChange()
+  }
+
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === 13) {
+      event.currentTarget.click()
+    }
+  }
+
+  return (
+    <div onClick={handleOnChange} className={className}>
+      <Checkbox
+        disabled={disabled}
+        checked={checked}
+        onChange={handleOnChange}
+        onKeyDown={handleOnKeyDown}
+      />
+    </div>
+  )
+}
 
 export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
   display: flex;
   justify-content: center;
-  width: 3.5rem;
+  flex-basis: ${actionListCheckboxWidth};
+  flex-shrink: 0;
 
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `
