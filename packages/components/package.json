@@ -39,7 +39,7 @@
     "polished": "^3.5.1",
     "react-day-picker": "^7.3.0",
     "react-hotkeys": "^2.0.0",
-    "react-resize-detector": "^4.2.1",
+    "react-resize-detector": "^4.2.3",
     "react-transition-group": "^4.3.0",
     "styled-system": "^5.1.5",
     "uuid": "^7.0.3"
