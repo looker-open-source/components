@@ -10,7 +10,7 @@
     "eslint-plugin-mdx": "^1.6.8",
     "gatsby": "^2.20.22",
     "gatsby-plugin-eslint": "^2.0.8",
-    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-manifest": "^2.3.6",
     "gatsby-plugin-mdx": "^1.1.7",
     "gatsby-plugin-react-helmet": "^3.2.2",
     "gatsby-plugin-sharp": "^2.5.4",
