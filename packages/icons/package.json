@@ -32,7 +32,7 @@
     "@types/rimraf": "^3.0.0",
     "glob": "^7.1.6",
     "lodash": "^4.17.15",
-    "ora": "^4.0.3",
+    "ora": "^4.0.4",
     "rimraf": "^3.0.2"
   },
   "gitHead": "6824d04c5c7c42fbf87e5ceb1172f5de59b6dfdd"
