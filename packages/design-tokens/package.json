@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.7.26",
+  "version": "0.7.28",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",

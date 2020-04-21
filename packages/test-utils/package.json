@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.7.26",
+  "version": "0.7.28",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -25,17 +25,17 @@
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "devDependencies": {
-    "@looker/components-providers": "^0.7.26",
+    "@looker/components-providers": "^0.7.28",
     "@testing-library/react": "^10.0.2",
-    "@types/jest": "^25.2.1",
     "@types/enzyme": "^3.10.5",
+    "@types/jest": "^25.2.1",
     "@types/react": "^16.9.25",
     "@types/react-test-renderer": "^16.9.2",
     "enzyme": "^3.11.0",
     "jest-styled-components": "^6.3.4",
-    "styled-components": "^4.4.1",
     "react": "^16.13.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "styled-components": "^4.4.1"
   },
   "peerDependencies": {
     "react": "^16.13.1"
