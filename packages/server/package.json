@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^3.0.2",
-    "nodemon": "^2.0.1",
+    "nodemon": "^2.0.3",
     "pino-colada": "^1.6.1"
   }
 }
