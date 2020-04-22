@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Legend 1`] = `
+.c0 {
+  color: #343C42;
+  padding: 0rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+<legend
+  className="c0"
+  color="palette.charcoal700"
+  fontSize="medium"
+  fontWeight="semiBold"
+>
+  This is a legend
+</legend>
+`;

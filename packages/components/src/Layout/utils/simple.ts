@@ -25,13 +25,19 @@
  */
 
 import { css } from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  layout,
+  LayoutProps,
+  reset,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SimpleLayoutProps extends SpaceProps {}
+export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
 
 export const simpleLayoutCSS = css`
   ${reset}
-
+  ${layout}
   ${space}
 `

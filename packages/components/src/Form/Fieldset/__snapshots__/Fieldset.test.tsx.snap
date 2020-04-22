@@ -1,6 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fieldset with left aligned legend 1`] = `
+exports[`Fieldset 1`] = `
+.c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c0.c0 > * {
+  margin-top: 1rem;
+}
+
+.c0.c0 > :first-child {
+  margin-top: 0rem;
+}
+
+.c2 {
+  width: 100%;
+  padding: 0rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c2.c2 > * {
+  margin-top: 0.5rem;
+}
+
+.c2.c2 > :first-child {
+  margin-top: 0rem;
+}
+
 .c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -74,9 +127,8 @@ exports[`Fieldset with left aligned legend 1`] = `
 
 .c5 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
-  display: inline-block;
+  font-weight: 600;
 }
 
 .c3 {
@@ -92,7 +144,6 @@ exports[`Fieldset with left aligned legend 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
   display: grid;
   grid-template-areas: "label detail" "input input" "messages messages";
 }
@@ -103,13 +154,17 @@ exports[`Fieldset with left aligned legend 1`] = `
   display: -ms-flexbox;
   display: flex;
   grid-area: input;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c3 .c9 {
   grid-area: messages;
 }
 
-.c3 .c4 {
+.c3 > .c4 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -125,149 +180,128 @@ exports[`Fieldset with left aligned legend 1`] = `
 }
 
 .c1 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+  color: #343C42;
+  padding: 0rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.c2 {
-  color: #262D33;
-  padding-bottom: 0.5rem;
-  font-size: 2.25rem;
-  font-weight: 300;
-}
-
-.c0 {
-  border: none;
-}
-
-<fieldset
-  className="c0 "
+<div
+  className="c0"
+  width="100%"
 >
-  <div
+  <legend
     className="c1"
+    color="palette.charcoal700"
+    fontSize="medium"
+    fontWeight="semiBold"
+  >
+    Legend
+  </legend>
+  <div
+    className="c2 "
+    role="group"
+    width="100%"
   >
     <div
-      className=""
+      className="c3 "
     >
-      <legend
-        className="c2"
-        color="palette.charcoal800"
-        fontSize="xxxlarge"
-        fontWeight="light"
+      <label
+        className="c4 c5"
+        color="palette.charcoal700"
+        fontSize="xsmall"
+        fontWeight="semiBold"
+        htmlFor="text-1"
+        id="text-1-labeledby"
       >
-        Legend
-      </legend>
+        One
+      </label>
+      <div
+        className="c6 "
+      >
+        <div
+          className="c7 c8 "
+          onClick={[Function]}
+        >
+          <input
+            aria-describedby="text-1-describedby"
+            id="text-1"
+            name="name1"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="c9 "
+        id="text-1-describedby"
+      />
     </div>
     <div
-      className=""
+      className="c3 "
     >
-      <div
-        className="c3 "
+      <label
+        className="c4 c5"
+        color="palette.charcoal700"
+        fontSize="xsmall"
+        fontWeight="semiBold"
+        htmlFor="text-2"
+        id="text-2-labeledby"
       >
-        <label
-          className="c4 c5"
-          color="palette.charcoal700"
-          fontSize="xsmall"
-          fontWeight="semiBold"
-          htmlFor="text-1"
-        >
-          One
-        </label>
+        two
+      </label>
+      <div
+        className="c6 "
+      >
         <div
-          className="c6 "
+          className="c7 c8 "
+          onClick={[Function]}
         >
-          <div
-            className="c7 c8 "
-            onClick={[Function]}
-          >
-            <input
-              aria-describedby="text-1-describedby"
-              id="text-1"
-              name="name1"
-              type="text"
-            />
-          </div>
+          <input
+            aria-describedby="text-2-describedby"
+            id="text-2"
+            name="name2"
+            type="text"
+          />
         </div>
-        <div
-          className="c9 "
-          id="text-1-describedby"
-        />
       </div>
       <div
-        className="c3 "
+        className="c9 "
+        id="text-2-describedby"
+      />
+    </div>
+    <div
+      className="c3 "
+    >
+      <label
+        className="c4 c5"
+        color="palette.charcoal700"
+        fontSize="xsmall"
+        fontWeight="semiBold"
+        htmlFor="text-3"
+        id="text-3-labeledby"
       >
-        <label
-          className="c4 c5"
-          color="palette.charcoal700"
-          fontSize="xsmall"
-          fontWeight="semiBold"
-          htmlFor="text-2"
-        >
-          two
-        </label>
+        three
+      </label>
+      <div
+        className="c6 "
+      >
         <div
-          className="c6 "
+          className="c7 c8 "
+          onClick={[Function]}
         >
-          <div
-            className="c7 c8 "
-            onClick={[Function]}
-          >
-            <input
-              aria-describedby="text-2-describedby"
-              id="text-2"
-              name="name2"
-              type="text"
-            />
-          </div>
+          <input
+            aria-describedby="text-3-describedby"
+            id="text-3"
+            name="nam3"
+            type="text"
+          />
         </div>
-        <div
-          className="c9 "
-          id="text-2-describedby"
-        />
       </div>
       <div
-        className="c3 "
-      >
-        <label
-          className="c4 c5"
-          color="palette.charcoal700"
-          fontSize="xsmall"
-          fontWeight="semiBold"
-          htmlFor="text-3"
-        >
-          three
-        </label>
-        <div
-          className="c6 "
-        >
-          <div
-            className="c7 c8 "
-            onClick={[Function]}
-          >
-            <input
-              aria-describedby="text-3-describedby"
-              id="text-3"
-              name="nam3"
-              type="text"
-            />
-          </div>
-        </div>
-        <div
-          className="c9 "
-          id="text-3-describedby"
-        />
-      </div>
+        className="c9 "
+        id="text-3-describedby"
+      />
     </div>
   </div>
-</fieldset>
+</div>
 `;

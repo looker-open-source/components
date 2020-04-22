@@ -33,20 +33,12 @@ import {
   FieldToggleSwitch,
   Form,
   Grid,
-  InputText,
-  Select,
-  SpaceVertical,
-  TextArea,
 } from '@looker/components'
 
 export const FieldsDemo: FC = () => {
   return (
-    <SpaceVertical m="xxlarge">
-      <TextArea />
-      <Select />
-      <InputText />
-
-      <Grid>
+    <>
+      <Grid m="xxlarge">
         <Form>
           <FieldText label="Text Input" prefix="$" placeholder="Money" />
           <FieldText label="Text Input" prefix="$" placeholder="Money" />
@@ -169,7 +161,7 @@ export const FieldsDemo: FC = () => {
         />
       </Grid>
 
-      <Grid columns={3}>
+      <Grid m="xxlarge" columns={3}>
         <div>
           <FieldCheckbox label="Checkbox" />
           <FieldCheckbox
@@ -195,6 +187,6 @@ export const FieldsDemo: FC = () => {
           <FieldToggleSwitch required label="Toggle Switch" />
         </div>
       </Grid>
-    </SpaceVertical>
+    </>
   )
 }

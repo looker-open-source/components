@@ -24,44 +24,4 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  color,
-  ColorProps,
-  CompatibleHTMLProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
-
-export interface LegendProps
-  extends ColorProps,
-    LayoutProps,
-    SpaceProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLegendElement> {}
-
-export const Legend = styled.legend.attrs((props: LegendProps) => ({
-  pb: props.pb || props.py || props.p ? undefined : 'xsmall',
-}))<LegendProps>`
-  ${reset}
-
-  ${color}
-  ${layout}
-  ${space}
-  ${textTransform};
-  ${typography}
-`
-
-Legend.defaultProps = {
-  color: 'palette.charcoal800',
-  fontSize: 'xxxlarge',
-  fontWeight: 'light',
-}
+export * from './Legend'

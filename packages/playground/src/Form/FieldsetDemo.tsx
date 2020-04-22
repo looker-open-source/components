@@ -24,11 +24,33 @@
 
  */
 
-export * from './Fields'
-export * from './Fieldset'
-export * from './Form'
-export * from './FormControl'
-export * from './Inputs'
-export * from './Label'
-export * from './Legend'
-export * from './ValidationMessage'
+import React, { FC } from 'react'
+import { FieldText, Grid, Fieldset } from '@looker/components'
+
+const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
+  <>
+    <FieldText inline={inline} required label="Neat Stuff" />
+    <FieldText inline={inline} label="Neat Stuff" />
+    <FieldText inline={inline} label="Neat Stuff" />
+  </>
+)
+
+export const FieldsetDemo = () => (
+  <Grid m="xxlarge" gap="xxlarge">
+    <Fieldset legend="Standard Legend, Standard FieldText">
+      <Fields />
+    </Fieldset>
+
+    <Fieldset inline legend="Inline Legend, Inline FieldText">
+      <Fields />
+    </Fieldset>
+
+    <Fieldset legend="Standard Legend, Inline FieldText">
+      <Fields inline />
+    </Fieldset>
+
+    <Fieldset inline legend="Inline Legend, Inline FieldText">
+      <Fields inline />
+    </Fieldset>
+  </Grid>
+)
