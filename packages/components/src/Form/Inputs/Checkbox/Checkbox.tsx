@@ -149,5 +149,3 @@ export const Checkbox = styled(CheckboxLayout)`
     color: transparent;
   }
 `
-
-Checkbox.defaultProps = { m: '3px' }

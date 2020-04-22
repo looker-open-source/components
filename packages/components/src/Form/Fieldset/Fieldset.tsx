@@ -24,72 +24,66 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import {
-  border,
-  BorderProps,
-  color,
-  CompatibleHTMLProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-} from '@looker/design-tokens'
-import { BackgroundColorProps } from 'styled-system'
-import { FlexItem } from '../../Layout'
-import { FormControl, FormControlDirections } from '../FormControl'
-import { Legend } from './Legend'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
+import { Legend } from '../Legend'
 
-interface FieldsetBaseProps
-  extends BackgroundColorProps,
-    BorderProps,
-    LayoutProps,
-    SpaceProps,
-    CompatibleHTMLProps<HTMLFieldSetElement> {}
+export interface FieldsetProps
+  extends SpaceHelperProps,
+    CompatibleHTMLProps<HTMLDivElement> {
+  /** Determines where to place the label in relation to the input.
+   * @default false
+   */
+  inline?: boolean
 
-export interface FieldsetProps extends FieldsetBaseProps {
-  /**
-   * Specifies where to render the legend in relation to the set of inputs. Can be placed `left`, `right`, `bottom`, or `top`.
-   */
-  alignLegend?: FormControlDirections
-  /**
-   * The legend, or heading, of this fieldset.
-   */
-  legend?: string
+  ariaLabeledby?: string
+
+  legend?: ReactNode
 }
 
-const FieldsetBase = styled.fieldset<FieldsetBaseProps>`
-  ${reset}
-  border: none;
+const FieldsetLayout = forwardRef(
+  (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
+    const { inline, className, legend, children, ...restProps } = props
+    const LayoutComponent = inline ? Space : SpaceVertical
 
-  ${border}
-  ${color}
-  ${layout}
-  ${space}
-`
+    /**
+     * Ideally this would be implemented by using `as="fieldset"` property on LayoutComponent directly
+     * but a long-standing bug in Chrome prevents styling a fieldset with flex (or grid)
+     * Chromium bug: https://bugs.chromium.org/p/chromium/issues/detail?id=375693
+     *
+     * Implemented using WAI-ARIA to create relationship between controls and legend or label:
+     * https://www.w3.org/WAI/tutorials/forms/grouping/#associating-related-controls-with-wai-aria
+     */
 
-const FieldsetComponent = forwardRef(
-  (
-    { alignLegend, legend, ...props }: FieldsetProps,
-    ref: Ref<HTMLFieldSetElement>
-  ) => {
+    const legendLayout =
+      legend && typeof legend === 'string' ? <Legend>{legend}</Legend> : legend
+
+    const gap = inline ? 'medium' : 'xsmall'
+
     return (
-      <FieldsetBase {...props} ref={ref}>
-        <FormControl mb="xsmall" alignLabel={alignLegend}>
-          {legend ? (
-            <FlexItem>
-              <Legend>{legend}</Legend>
-            </FlexItem>
-          ) : null}
-          <FlexItem>{props.children}</FlexItem>
-        </FormControl>
-      </FieldsetBase>
+      <SpaceVertical>
+        {legendLayout}
+
+        <LayoutComponent
+          {...restProps}
+          gap={gap}
+          className={className}
+          ref={ref}
+          role="group"
+        >
+          {children}
+        </LayoutComponent>
+      </SpaceVertical>
     )
   }
 )
 
-FieldsetComponent.displayName = 'FieldsetComponent'
+FieldsetLayout.displayName = 'FieldsetLayout'
 
-export const Fieldset = styled(FieldsetComponent)``
+export const Fieldset = styled(FieldsetLayout)``
+
+Fieldset.defaultProps = {
+  padding: 'none',
+}

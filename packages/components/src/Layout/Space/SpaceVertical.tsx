@@ -31,13 +31,16 @@ export const SpaceVertical = styled.div<SpaceHelperProps>`
   ${spaceCSS}
 
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
+  flex-shrink: 1;
 
-  > * {
+  & > * {
     margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
   }
 
   ${({ theme, reverse }) =>
     reverse
-      ? `> :last-child { margin-top: ${theme.space.none}; }`
-      : `> :first-child { margin-top: ${theme.space.none}; }`}
+      ? `& > :last-child { margin-top: ${theme.space.none}; }`
+      : `& > :first-child { margin-top: ${theme.space.none}; }`}
 `
+
+SpaceVertical.defaultProps = { width: '100%' }

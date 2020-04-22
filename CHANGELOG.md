@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Added
+
+- `Fieldset`
+  - `inline` prop for grouped fields
+  - `gap` prop to put space between fields with margin assignment to each field
+  - Switching to using `div` + WAI-ARIA attributes to construct `Fieldset` (`fieldset` has Chrome implementation bugs)
+
+### Changed
+
+- `Checkbox` & `Radio` no longer have 3px built-in margin
+- `Field` no longer has built-in bottom margin (use `Form` or `Fieldset` for whitespace management)
+- `Legend` has improved default styling
+- `Space` & `SpaceVertical` now support `LayoutProps` and have `width: 100%` by default
+
+### Fixed
+
+- `Grid` - corrected column width to prevent "grid blowouts"
+
 ## [0.7.28] - 2020-04-20
 
 ### Added

@@ -103,6 +103,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     top: 0;
     left: 0;
     z-index: 1;
+    margin: 0; /* Suppress browser default styling */
 
     &:focus + div {
       box-shadow: 0 0 0 0.2rem
