@@ -24,10 +24,25 @@
 
  */
 
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
+import React, { FC, useContext } from 'react'
 import { ActionListRow } from '../ActionListRow'
+import { ActionListContext } from '../ActionListContext'
 
-export const ActionListHeader = styled(ActionListRow)`
+const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
+  children,
+  className,
+}) => {
+  const { canSelect } = useContext(ActionListContext)
+  return (
+    <ActionListRow className={className} hasCheckbox={canSelect}>
+      {children}
+    </ActionListRow>
+  )
+}
+
+export const ActionListHeader = styled(ActionListHeaderInternal)`
   border-bottom: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
   color: ${(props) => props.theme.colors.palette.charcoal900};
   display: flex;

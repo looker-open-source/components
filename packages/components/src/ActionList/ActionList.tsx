@@ -169,11 +169,6 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
     padding: ${(props) => props.theme.space.small};
   }
 
-  ${ActionListHeader} {
-    padding-left: ${({ canSelect }) =>
-      canSelect ? actionListCheckboxWidth : undefined};
-  }
-
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
   ${(props) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(props.columns))}
 `
