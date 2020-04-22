@@ -124,7 +124,12 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
+      <Label
+        fontSize={labelFontSize}
+        fontWeight={labelFontWeight}
+        htmlFor={id}
+        id={`${id}-labeledby`}
+      >
         {label}
         {required && <RequiredStar />}
       </Label>
@@ -152,7 +157,6 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   width: ${({ width }) => width || 'fit-content'};
   align-items: left;
   justify-content: space-between;
-  margin-bottom: ${({ theme }) => theme.space.xsmall};
 
   display: grid;
   grid-template-areas: ${({ inline }) =>
@@ -165,13 +169,14 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   ${InputArea} {
     display: flex;
     grid-area: input;
+    align-items: center;
   }
 
   ${MessageArea} {
     grid-area: messages;
   }
 
-  ${Label} {
+  & > ${Label} {
     grid-area: label;
 
     ${({ inline, theme }) =>

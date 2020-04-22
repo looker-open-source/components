@@ -24,7 +24,6 @@ exports[`Checkbox checked set to mixed 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -153,7 +152,6 @@ exports[`Checkbox should accept disabled & checked 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -278,7 +276,6 @@ exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -409,7 +406,6 @@ exports[`Checkbox should accept disabled 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -533,7 +529,6 @@ exports[`Checkbox should accept readOnly & checked 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -656,7 +651,6 @@ exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -785,7 +779,6 @@ exports[`Checkbox should accept readOnly 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -882,7 +875,6 @@ exports[`Checkbox with aria-describedby 1`] = `
 }
 
 .c0 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;

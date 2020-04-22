@@ -135,5 +135,3 @@ export const Radio = styled(RadioLayout)`
     }
   }
 `
-
-Radio.defaultProps = { m: '3px' }

@@ -42,6 +42,7 @@ exports[`A FieldToggleSwitch 1`] = `
   top: 0;
   left: 0;
   z-index: 1;
+  margin: 0;
 }
 
 .c4 input:focus + div {
@@ -52,7 +53,6 @@ exports[`A FieldToggleSwitch 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {
@@ -166,6 +166,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   top: 0;
   left: 0;
   z-index: 1;
+  margin: 0;
 }
 
 .c4 input:focus + div {
@@ -176,7 +177,6 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {

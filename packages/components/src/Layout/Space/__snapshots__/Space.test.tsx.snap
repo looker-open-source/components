@@ -2,6 +2,7 @@
 
 exports[`Space default 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15,16 +16,17 @@ exports[`Space default 1`] = `
   flex-direction: row;
 }
 
-.c0 > * {
+.c0.c0 > * {
   margin-left: 1rem;
 }
 
-.c0 > :first-child {
+.c0.c0 > :first-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
+  width="100%"
 >
   <div>
     🥑
@@ -43,6 +45,7 @@ exports[`Space default 1`] = `
 
 exports[`Space reversed 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,16 +59,17 @@ exports[`Space reversed 1`] = `
   flex-direction: row-reverse;
 }
 
-.c0 > * {
+.c0.c0 > * {
   margin-left: 1rem;
 }
 
-.c0 > :last-child {
+.c0.c0 > :last-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
+  width="100%"
 >
   <div>
     🥑
@@ -84,6 +88,7 @@ exports[`Space reversed 1`] = `
 
 exports[`Space with specified gap 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -97,16 +102,17 @@ exports[`Space with specified gap 1`] = `
   flex-direction: row;
 }
 
-.c0 > * {
+.c0.c0 > * {
   margin-left: 2rem;
 }
 
-.c0 > :first-child {
+.c0.c0 > :first-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
+  width="100%"
 >
   <div>
     🥑

@@ -28,8 +28,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
-const RequiredStarLayout: FC<{ className?: string }> = () => (
-  <span aria-hidden="true">
+const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => (
+  <span aria-hidden="true" className={className}>
     <VisuallyHidden> required</VisuallyHidden>
   </span>
 )

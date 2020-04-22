@@ -2,6 +2,7 @@
 
 exports[`Form with one child 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,13 +14,16 @@ exports[`Form with one child 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
-.c0 > * {
+.c0.c0 > * {
   margin-top: 1rem;
 }
 
-.c0 > :first-child {
+.c0.c0 > :first-child {
   margin-top: 0rem;
 }
 
@@ -96,9 +100,8 @@ exports[`Form with one child 1`] = `
 
 .c3 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
-  display: inline-block;
+  font-weight: 600;
 }
 
 .c1 {
@@ -114,7 +117,6 @@ exports[`Form with one child 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
   display: grid;
   grid-template-areas: "label detail" "input input" "messages messages";
 }
@@ -125,13 +127,17 @@ exports[`Form with one child 1`] = `
   display: -ms-flexbox;
   display: flex;
   grid-area: input;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 .c7 {
   grid-area: messages;
 }
 
-.c1 .c2 {
+.c1 > .c2 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -148,6 +154,7 @@ exports[`Form with one child 1`] = `
 
 <form
   className="c0"
+  width="100%"
 >
   <div
     className="c1 "
@@ -158,6 +165,7 @@ exports[`Form with one child 1`] = `
       fontSize="xsmall"
       fontWeight="semiBold"
       htmlFor="text-field"
+      id="text-field-labeledby"
     >
       label
     </label>
