@@ -57,25 +57,25 @@ const FieldsetLayout = forwardRef(
      * https://www.w3.org/WAI/tutorials/forms/grouping/#associating-related-controls-with-wai-aria
      */
 
-    const legendLayout =
-      legend && typeof legend === 'string' ? <Legend>{legend}</Legend> : legend
+    const content = (
+      <LayoutComponent
+        {...restProps}
+        gap={inline ? 'medium' : 'xsmall'}
+        className={className}
+        ref={ref}
+        role="group"
+      >
+        {children}
+      </LayoutComponent>
+    )
 
-    const gap = inline ? 'medium' : 'xsmall'
-
-    return (
+    return legend ? (
       <SpaceVertical>
-        {legendLayout}
-
-        <LayoutComponent
-          {...restProps}
-          gap={gap}
-          className={className}
-          ref={ref}
-          role="group"
-        >
-          {children}
-        </LayoutComponent>
+        {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
+        {content}
       </SpaceVertical>
+    ) : (
+      content
     )
   }
 )

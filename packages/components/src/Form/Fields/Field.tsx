@@ -25,7 +25,7 @@
  */
 
 import React, { FunctionComponent, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
@@ -152,6 +152,19 @@ FieldDetail.defaultProps = {
 const InputArea = styled.div``
 const MessageArea = styled.div``
 
+const fieldLabelCSS = (inline?: boolean) =>
+  inline
+    ? css`
+        text-align: right;
+        line-height: ${inputHeight};
+        justify-self: end;
+        height: ${inputHeight};
+        padding-right: ${({ theme }) => theme.space.small};
+      `
+    : css`
+        padding-bottom: ${({ theme }) => theme.space.xsmall};
+      `
+
 export const Field = styled(FieldLayout)<FieldPropsInternal>`
   height: fit-content;
   width: ${({ width }) => width || 'fit-content'};
@@ -178,20 +191,7 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
 
   & > ${Label} {
     grid-area: label;
-
-    ${({ inline, theme }) =>
-      inline
-        ? `
-      text-align: right;
-      line-height: ${inputHeight};
-      justify-self: end;
-      height: ${inputHeight};
-      padding-right: ${theme.space.small};
-      `
-        : `
-        padding-bottom: ${theme.space.xsmall};
-
-      `}
+    ${({ inline }) => fieldLabelCSS(inline)}
   }
 
   ${FieldDetail} {
@@ -200,10 +200,8 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
 
     ${({ inline, theme }) =>
       inline &&
-      `
-        align-self: center;
-        padding-left: ${theme.space.small};
-      `}
+      ` align-self: center;
+        padding-left: ${theme.space.small}; `}
   }
 
   ${ValidationMessage} {
