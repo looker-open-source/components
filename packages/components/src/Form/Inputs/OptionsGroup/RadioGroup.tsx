@@ -24,20 +24,13 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { OptionsGroupProps } from './OptionsGroup'
+
+type RadioGroupValue = string
+
+export interface RadioGroupProps extends OptionsGroupProps {
+  value: RadioGroupValue
+  onChange: (value: RadioGroupValue) => void
+}
+
+// TODO

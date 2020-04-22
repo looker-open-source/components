@@ -24,20 +24,5 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+export * from './CheckboxGroup'
+export * from './RadioGroup'

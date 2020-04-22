@@ -25,6 +25,7 @@
  */
 
 export * from './FieldCheckbox'
+export * from './FieldCheckboxGroup'
 export * from './FieldColor'
 export * from './FieldRadio'
 export * from './FieldSelect'
