@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+<<<<<<< HEAD
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 
 ## [0.7.29] - 2020-04-24
@@ -52,6 +53,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
 - `TextArea` now only resizes on the Y access
+=======
+- `Fieldset`
+  - `inline` prop for grouped fields
+  - `gap` prop to put space between fields with margin assignment to each field
+  - Use `div` instead of `fieldset` for DOM object due to Chrome implementation bug of `fieldset` (doesn’t allow
+    for Flex / Grid layouts within `fieldset`
+- `simpleLayout` now includes `layout` / `layoutProps` to allow for default width specification
+
+### Changed
+
+- `Checkbox` & `Radio` no longer have 3px built-in margin
+- `Field`
+  - No longer has built-in bottom margin (use `Form` or `Fieldset` for whitespace management)
+  - Vertically center input (for checkbox & radio group) within Field
+  - Only apply Label styling to immediate child to prevent unintended consequences on nested Fields (e.g. CheckboxGroup)
+- `Legend` has improved default styling
+- `Space` & `SpaceVertical` now support `LayoutProps` and have `width: 100%` by default
+
+### Fixed
+
+- `FieldColor` defaults to `width=“100%”`
+- `Grid` - corrected column width to prevent "grid blowouts"
+- `RequiredStar` fixed to actually show red asterisk (`className` assignment missing)
+- `Space` & `SpaceVertical` now uses double selector to override theme reset behavior
+- `ToggleSwitch` Explicitly specify `margin: 0` to suppress browser-default styling
+>>>>>>> Fieldset, Legend improvements + more
 
 ## [0.7.28] - 2020-04-20
 

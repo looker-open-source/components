@@ -37,6 +37,7 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
 
 export const FieldsetDemo = () => (
   <Grid m="xxlarge" gap="xxlarge">
+<<<<<<< HEAD
     <Fieldset>
       <Fields />
     </Fieldset>
@@ -52,6 +53,20 @@ export const FieldsetDemo = () => (
     <Fieldset legend="Standard Legend, Inline FieldText">
       <Fields inline />
     </Fieldset>
+=======
+    <Fieldset legend="Standard Legend, Standard FieldText">
+      <Fields />
+    </Fieldset>
+
+    <Fieldset inline legend="Inline Legend, Inline FieldText">
+      <Fields />
+    </Fieldset>
+
+    <Fieldset legend="Standard Legend, Inline FieldText">
+      <Fields inline />
+    </Fieldset>
+
+>>>>>>> Fieldset, Legend improvements + more
     <Fieldset inline legend="Inline Legend, Inline FieldText">
       <Fields inline />
     </Fieldset>
