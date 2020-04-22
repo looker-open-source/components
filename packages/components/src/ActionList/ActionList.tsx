@@ -32,7 +32,6 @@ import {
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
-import { actionListCheckboxWidth } from './ActionListCheckbox'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 import {
