@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-<<<<<<< HEAD
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 
 ## [0.7.29] - 2020-04-24
@@ -53,7 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
 - `TextArea` now only resizes on the Y access
-=======
 - `Fieldset`
   - `inline` prop for grouped fields
   - `gap` prop to put space between fields with margin assignment to each field
@@ -78,7 +76,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `RequiredStar` fixed to actually show red asterisk (`className` assignment missing)
 - `Space` & `SpaceVertical` now uses double selector to override theme reset behavior
 - `ToggleSwitch` Explicitly specify `margin: 0` to suppress browser-default styling
->>>>>>> Fieldset, Legend improvements + more
 
 ## [0.7.28] - 2020-04-20
 
