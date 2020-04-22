@@ -33,6 +33,7 @@ export interface ActionListContextProps {
   itemsSelected: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   onSelect?: (id: string) => void
+  onSelectAll?: () => void
   onClickRowSelect: boolean
 }
 

@@ -84,7 +84,6 @@ export interface ActionListProps {
    * Sort function provided by the developer
    */
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
-
   /**
    * Allow the user to select ActionListItems.
    * Note: Implemented as a checkbox next to each item row.
@@ -95,6 +94,10 @@ export interface ActionListProps {
    * Callback performed when user makes a selection
    */
   onSelect?: (id: string) => void
+  /**
+   * Callback performed when user makes selects the header checkbox
+   */
+  onSelectAll?: () => void
   /**
    * ActionListItems which should be displayed as "selected"
    */
@@ -115,6 +118,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   itemsSelected,
   onClickRowSelect,
   onSelect,
+  onSelectAll,
   onSort,
 }) => {
   const actionListHeader =
@@ -132,6 +136,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     itemsSelected: itemsSelected || [],
     onClickRowSelect: onClickRowSelect || false,
     onSelect,
+    onSelectAll,
     onSort,
   }
 

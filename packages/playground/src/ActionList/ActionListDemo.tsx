@@ -125,16 +125,21 @@ const MyActions = () => (
 )
 
 export const ActionListDemo: FC = () => {
-  const [selections, setSelections] = useState([
-    'my_other_great_pdt_name',
-    'my_other_great_pdt_name3',
-  ])
+  const [selections, setSelections] = useState([] as string[])
   const onSelect = (selection: string) => {
     setSelections(
       selections.includes(selection)
         ? selections.filter((item) => item !== selection)
         : [...selections, selection]
     )
+  }
+
+  const allSelectableIds = data
+    .map(({ disabled, pdtName }) => !disabled && pdtName)
+    .filter((element) => element)
+
+  const onSelectAll = () => {
+    setSelections(allSelectableIds as string[])
   }
 
   const items = data.map(
@@ -199,6 +204,7 @@ export const ActionListDemo: FC = () => {
         <ActionList
           canSelect
           onSelect={onSelect}
+          onSelectAll={onSelectAll}
           itemsSelected={selections}
           columns={columns}
         >
