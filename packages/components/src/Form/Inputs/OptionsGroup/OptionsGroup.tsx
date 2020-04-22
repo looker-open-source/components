@@ -24,20 +24,24 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { FieldsetProps } from '../../Fieldset'
+import { ValidationMessageProps } from '../../ValidationMessage'
+
+export interface OptionsGroupOptionProps {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {
+  inline?: boolean
+}
+
+export interface OptionsGroupProps extends OptionsGroupLayout {
+  name: string
+  id?: string
+  disabled?: boolean
+  required?: boolean
+  options: OptionsGroupOptionProps[]
+  validationMessage?: ValidationMessageProps
+}
