@@ -159,14 +159,14 @@ exports[`Radio checked set to true 1`] = `
   className="c0"
 >
   <input
-    checked={false}
+    checked={true}
     id="radioID"
     onChange={[Function]}
     onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
+    checked={true}
     className="c1 c2"
   />
 </div>

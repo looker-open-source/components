@@ -50,14 +50,16 @@ const RadioLayout = forwardRef(
       readOnly,
       ...restProps
     } = props
-    const [isChecked, setIsChecked] = useState(!!defaultChecked)
+    const [isChecked, setIsChecked] = useState(
+      defaultChecked || checked || false
+    )
 
     const handleClick = readOnly
       ? undefined
       : (event: FormEvent<HTMLInputElement>) => {
-          setIsChecked(true)
-          if (onChange) {
-            onChange(event)
+          if (!isChecked) {
+            setIsChecked(true)
+            onChange && onChange(event)
           }
         }
 
