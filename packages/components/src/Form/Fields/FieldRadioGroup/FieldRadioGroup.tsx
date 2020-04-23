@@ -28,14 +28,20 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
-import { CheckboxGroup, CheckboxGroupProps } from '../../Inputs/OptionsGroup'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+  RadioGroup,
+  RadioGroupProps,
+} from '../Field'
 
-export interface FieldCheckboxGroupProps
-  extends CheckboxGroupProps,
+export interface FieldRadioGroupProps
+  extends RadioGroupProps,
     Omit<FieldProps, 'detail'> {}
 
-const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
+const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
   id = uuid(),
   options,
   value,
@@ -49,7 +55,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
       validationMessage={validationMessage}
       id={id}
     >
-      <CheckboxGroup
+      <RadioGroup
         {...omitFieldProps(props)}
         aria-describedby={`${id}-describedby`}
         aria-labeledby={`${id}-labeledby`}
@@ -63,6 +69,6 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
   )
 }
 
-FieldCheckboxGroupLayout.displayName = 'FieldCheckboxGroupLayout'
+FieldRadioGroupLayout.displayName = 'FieldRadioGroupLayout'
 
-export const FieldCheckboxGroup = styled(FieldCheckboxGroupLayout)``
+export const FieldRadioGroup = styled(FieldRadioGroupLayout)``
