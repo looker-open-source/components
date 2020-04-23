@@ -44,6 +44,7 @@ import React, {
 } from 'react'
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
+import debounce from 'lodash/debounce'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -181,16 +182,18 @@ const ComboboxListInternal = forwardRef(
           setListClientRect(containerElement.getBoundingClientRect())
       })
 
-      const scrollListener = () => {
+      const scrollListener = debounce(() => {
         if (contentContainer) {
           setListClientRectOnce(contentContainer)
           setListScrollPosition &&
             setListScrollPosition(contentContainer.scrollTop)
         }
-      }
+      }, 50)
 
-      contentContainer &&
+      if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
+        scrollListener()
+      }
 
       return () => {
         contentContainer &&

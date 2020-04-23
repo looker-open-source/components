@@ -30,6 +30,7 @@ import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
 import {
+  ComboboxContext,
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
@@ -167,6 +168,23 @@ export interface SelectOptionsProps
   isMulti?: boolean
 }
 
+const optHeight = 28
+
+function useScrollWindow(length: number) {
+  const { listClientRect, listScrollPosition } = useContext(ComboboxContext)
+  if (listScrollPosition === undefined || listClientRect === undefined)
+    return { end: Math.min(length - 1, 50), start: 0 }
+
+  const start = Math.floor(listScrollPosition / optHeight)
+  const end = Math.ceil(
+    (listClientRect.height + listScrollPosition) / optHeight
+  )
+  return {
+    end: end + 3 > length - 1 ? end : end + 3,
+    start: start - 3 < 0 ? start : start - 3,
+  }
+}
+
 export function SelectOptions({
   options,
   isFilterable,
@@ -175,6 +193,8 @@ export function SelectOptions({
   isMulti,
   noOptionsLabel = 'No options',
 }: SelectOptionsProps) {
+  const { start, end } = useScrollWindow(options ? options.length : 0)
+
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
       {noOptionsLabel}
@@ -190,11 +210,15 @@ export function SelectOptions({
     />
   )
 
+  const middle = options && options.slice(start, end)
+  const after = options ? options.length - end : 0
+
   return (
     <>
-      {options && options.length > 0
+      {start > 0 && <Box height={start * optHeight} />}
+      {middle && middle.length > 0
         ? [
-            ...options.map((option: SelectOptionProps, index: number) => {
+            ...middle.map((option: SelectOptionProps, index: number) => {
               const optionAsGroup = option as SelectOptionGroupProps
               return optionAsGroup.options ? (
                 <SelectOptionGroup
@@ -211,6 +235,7 @@ export function SelectOptions({
             createOption,
           ]
         : createOption || noOptions}
+      {after && <Box height={after * optHeight} />}
     </>
   )
 }

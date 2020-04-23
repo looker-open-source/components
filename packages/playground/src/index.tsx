@@ -27,12 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { InlineInputTextDemo } from './InlineInputText/InlineInputTextDemo'
+import { SelectContent } from './Select/SelectDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <InlineInputTextDemo />
+      <SelectContent />
     </ComponentsProvider>
   )
 }

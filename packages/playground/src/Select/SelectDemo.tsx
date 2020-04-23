@@ -39,6 +39,7 @@ import {
   SelectOptionGroupProps,
   Flex,
 } from '@looker/components'
+import { options1k } from './options1k'
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -178,6 +179,13 @@ export function SelectContent() {
         </Button>
       </Box>
       <Divider my="xlarge" />
+      <FieldSelect
+        label="Huge list of options"
+        width={300}
+        mb="medium"
+        options={options1k}
+        aria-label="Fruits"
+      />
       <FieldSelect
         label="Default Value"
         width={300}
