@@ -25,10 +25,11 @@
  */
 
 import { createContext } from 'react'
+import { MixedBoolean } from '../Form'
 import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
-  allSelectableItems: string[]
+  areAllItemsSelected?: MixedBoolean
   canSelect: boolean
   columns?: ActionListColumns
   itemsSelected: string[]
@@ -39,7 +40,6 @@ export interface ActionListContextProps {
 }
 
 export const ActionListContext = createContext<ActionListContextProps>({
-  allSelectableItems: [],
   canSelect: false,
   itemsSelected: [],
   onClickRowSelect: false,

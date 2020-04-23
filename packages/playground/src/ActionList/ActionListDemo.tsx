@@ -138,6 +138,14 @@ export const ActionListDemo: FC = () => {
     .map(({ disabled, pdtName }) => !disabled && pdtName)
     .filter((element) => element) as string[]
 
+  const areAllItemsSelected = allSelectableItems.every((itemId) =>
+    selections.includes(itemId)
+  )
+    ? true
+    : allSelectableItems.some((itemId) => selections.includes(itemId))
+    ? 'mixed'
+    : false
+
   const onSelectAll = () => {
     setSelections(selections.length ? [] : allSelectableItems)
   }
@@ -206,7 +214,7 @@ export const ActionListDemo: FC = () => {
           onSelect={onSelect}
           onSelectAll={onSelectAll}
           itemsSelected={selections}
-          allSelectableItems={allSelectableItems}
+          areAllItemsSelected={areAllItemsSelected}
           columns={columns}
         >
           {items}
@@ -221,7 +229,7 @@ export const ActionListDemo: FC = () => {
         onSelect={onSelect}
         onSelectAll={onSelectAll}
         itemsSelected={selections}
-        allSelectableItems={allSelectableItems}
+        areAllItemsSelected={areAllItemsSelected}
         columns={columns}
       >
         {items}
