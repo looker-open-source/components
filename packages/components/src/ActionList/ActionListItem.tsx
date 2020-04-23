@@ -53,14 +53,12 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
   )
 
   const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
-  const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    onClick && onClick(event)
-  }
+
   const handleClick = disabled
     ? undefined
     : onClickRowSelect
     ? handleOnSelect
-    : handleOnClick
+    : onClick || undefined
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()

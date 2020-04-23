@@ -107,6 +107,34 @@ const actionListWithNoHeader = (
   </ActionList>
 )
 
+const handleActionClick = jest.fn()
+const handleListItemClick = jest.fn()
+const clickableItems = data.map(({ id, name, type }) => {
+  const availableActions = (
+    <>
+      <ActionListItemAction onClick={handleActionClick}>
+        View Profile
+      </ActionListItemAction>
+    </>
+  )
+
+  return (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      actions={availableActions}
+      onClick={handleListItemClick}
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+      <ActionListItemColumn>{type}</ActionListItemColumn>
+    </ActionListItem>
+  )
+})
+const actionListWithClickableRows = (
+  <ActionList columns={columns}>{clickableItems}</ActionList>
+)
+
 describe('ActionList', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
 
@@ -118,6 +146,8 @@ describe('ActionList', () => {
 
   afterEach(() => {
     rafSpy.mockRestore()
+    handleActionClick.mockClear()
+    handleListItemClick.mockClear()
   })
 
   describe('General Layout', () => {
@@ -163,42 +193,12 @@ describe('ActionList', () => {
       expect(getByText('Game Designer')).toBeInTheDocument()
     })
 
-    test('Renders action menu on button click and handles clicks on list item and action', () => {
-      const handleActionClick = jest.fn()
-      const handleListItemClick = jest.fn()
-
-      const clickableItems = data.map(({ id, name, type }) => {
-        const availableActions = (
-          <>
-            <ActionListItemAction onClick={handleActionClick}>
-              View Profile
-            </ActionListItemAction>
-          </>
-        )
-
-        return (
-          <ActionListItem
-            id={String(id)}
-            key={id}
-            actions={availableActions}
-            onClick={handleListItemClick}
-          >
-            <ActionListItemColumn>{id}</ActionListItemColumn>
-            <ActionListItemColumn>{name}</ActionListItemColumn>
-            <ActionListItemColumn>{type}</ActionListItemColumn>
-          </ActionListItem>
-        )
-      })
-
+    test('Renders action menu on button click and handles action click', () => {
       const { getByRole, getByText, queryByText } = renderWithTheme(
-        <ActionList columns={columns}>{clickableItems}</ActionList>
+        actionListWithClickableRows
       )
 
       const listItemId = getByText('1')
-
-      expect(handleListItemClick.mock.calls.length).toBe(0)
-      fireEvent.click(listItemId)
-      expect(handleListItemClick.mock.calls.length).toBe(1)
 
       fireEvent(
         listItemId,
@@ -220,6 +220,24 @@ describe('ActionList', () => {
       expect(handleActionClick.mock.calls.length).toBe(1)
 
       expect(queryByText('View Profile')).not.toBeInTheDocument()
+    })
+
+    test('Handles item click', () => {
+      const { getByText } = renderWithTheme(actionListWithClickableRows)
+
+      const actionListItemColumn = getByText('1')
+
+      expect(handleListItemClick).toHaveBeenCalledTimes(0)
+      fireEvent.click(actionListItemColumn)
+      expect(handleListItemClick).toHaveBeenCalledTimes(1)
+    })
+
+    xtest('Item has pointer cursor and shadow when hovering over ActionListItem', () => {
+      /**
+       * mouseEnter events off of the fireEvent jest-dom function do not (currently)
+       * trigger hover styles (i.e. hover pseudo classes) on ActionListItems, which makes
+       * writing this particularly challenging at the moment.
+       */
     })
   })
 
@@ -252,7 +270,7 @@ describe('ActionList', () => {
     })
   })
 
-  describe.only('Selecting', () => {
+  describe('Selecting', () => {
     const onSelect = jest.fn()
     const actionListWithSelect = (
       <ActionList columns={columns} canSelect onSelect={onSelect}>
