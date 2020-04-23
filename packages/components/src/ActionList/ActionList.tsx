@@ -98,9 +98,13 @@ export interface ActionListProps {
    */
   onSelectAll?: () => void
   /**
-   * ActionListItems which should be displayed as "selected"
+   * The ids of all ActionListItems which should be displayed as "selected"
    */
   itemsSelected?: string[]
+  /**
+   * The ids of all selectable ActionListItems (i.e. all non-disabled items)
+   */
+  allSelectableItems?: string[]
   /**
    * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
    * @default false
@@ -109,6 +113,7 @@ export interface ActionListProps {
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
+  allSelectableItems,
   canSelect = false,
   className,
   header = true,
@@ -130,6 +135,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   const context = {
+    allSelectableItems: allSelectableItems || [],
     canSelect: canSelect || false,
     columns,
     itemsSelected: itemsSelected || [],

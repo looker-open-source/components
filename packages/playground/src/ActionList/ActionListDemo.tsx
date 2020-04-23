@@ -134,12 +134,12 @@ export const ActionListDemo: FC = () => {
     )
   }
 
-  const allSelectableIds = data
+  const allSelectableItems = data
     .map(({ disabled, pdtName }) => !disabled && pdtName)
-    .filter((element) => element)
+    .filter((element) => element) as string[]
 
   const onSelectAll = () => {
-    setSelections(allSelectableIds as string[])
+    setSelections(selections.length ? [] : allSelectableItems)
   }
 
   const items = data.map(
@@ -206,6 +206,7 @@ export const ActionListDemo: FC = () => {
           onSelect={onSelect}
           onSelectAll={onSelectAll}
           itemsSelected={selections}
+          allSelectableItems={allSelectableItems}
           columns={columns}
         >
           {items}
@@ -218,7 +219,9 @@ export const ActionListDemo: FC = () => {
         canSelect
         onClickRowSelect
         onSelect={onSelect}
+        onSelectAll={onSelectAll}
         itemsSelected={selections}
+        allSelectableItems={allSelectableItems}
         columns={columns}
       >
         {items}

@@ -28,6 +28,7 @@ import { createContext } from 'react'
 import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
+  allSelectableItems: string[]
   canSelect: boolean
   columns?: ActionListColumns
   itemsSelected: string[]
@@ -38,6 +39,7 @@ export interface ActionListContextProps {
 }
 
 export const ActionListContext = createContext<ActionListContextProps>({
+  allSelectableItems: [],
   canSelect: false,
   itemsSelected: [],
   onClickRowSelect: false,

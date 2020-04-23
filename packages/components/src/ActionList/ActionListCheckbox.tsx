@@ -26,10 +26,10 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Checkbox } from '../Form'
+import { Checkbox, MixedBoolean } from '../Form'
 
 export interface ActionListCheckboxProps {
-  checked?: boolean
+  checked?: MixedBoolean
   disabled?: boolean
   onChange?: () => void
   className?: string

@@ -36,7 +36,7 @@ import {
 
 export interface ActionListItemLayoutProps
   extends ActionListCheckboxProps,
-    Omit<CompatibleHTMLProps<HTMLElement>, 'onChange'> {
+    Omit<CompatibleHTMLProps<HTMLElement>, 'onChange' | 'checked'> {
   secondary?: ReactNode
   hasCheckbox?: boolean
   /**
