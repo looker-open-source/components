@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Menu` closes by default on `MenuItem` click
 
+### Fixed
+
+- `ActionListItem` no longer have shadow and cursor: pointer without an onClick
+- `ActionListItemColumn` aligns with header columns
+
 ## [0.7.28] - 2020-04-20
 
 ### Added
