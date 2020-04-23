@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `@types/styled-system` added to typescript section of getting started page.
+
 ### Changed
 
 - `Menu` closes by default on `MenuItem` click
