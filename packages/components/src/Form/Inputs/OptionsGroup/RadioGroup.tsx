@@ -23,14 +23,41 @@
  SOFTWARE.
 
  */
-
+import React, { FC, useState } from 'react'
+import { Fieldset } from '../../Fieldset'
+import { FieldRadio } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
 type RadioGroupValue = string
 
 export interface RadioGroupProps extends OptionsGroupProps {
-  value: RadioGroupValue
-  onChange: (value: RadioGroupValue) => void
+  onChange?: (value: RadioGroupValue) => void
+  value?: RadioGroupValue
 }
 
-// TODO
+export const RadioGroup: FC<RadioGroupProps> = ({
+  disabled,
+  inline,
+  onChange,
+  options,
+  value,
+}) => {
+  const [values, setValues] = useState(value)
+
+  const handleChange = (option: string) => {
+    !value && setValues(option)
+    onChange && onChange(option)
+  }
+  const radios = options.map((option, index) => (
+    <FieldRadio
+      onChange={() => handleChange(option.value)}
+      disabled={option.disabled || disabled}
+      key={index}
+      label={option.label}
+      checked={values}
+      value={option.value}
+    />
+  ))
+
+  return <Fieldset inline={inline}>{radios}</Fieldset>
+}

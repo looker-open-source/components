@@ -55,7 +55,6 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
     !value && setValues(newValues)
     onChange && onChange(newValues)
   }
-
   const checkboxes = options.map((option, index) => (
     <FieldCheckbox
       onChange={() => handleChange(option.value)}
@@ -67,5 +66,9 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
     />
   ))
 
-  return <Fieldset inline={inline}>{checkboxes}</Fieldset>
+  return (
+    <Fieldset data-testid="checkbox-list" inline={inline}>
+      {checkboxes}
+    </Fieldset>
+  )
 }

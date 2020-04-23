@@ -26,7 +26,13 @@
 
 import { noop } from 'lodash'
 import React from 'react'
-import { CheckboxGroup, Grid, FieldCheckboxGroup } from '@looker/components'
+import {
+  CheckboxGroup,
+  FieldCheckboxGroup,
+  FieldRadioGroup,
+  Grid,
+  RadioGroup,
+} from '@looker/components'
 
 export const OptionsGroupDemo = () => {
   const options = [
@@ -53,21 +59,21 @@ export const OptionsGroupDemo = () => {
   return (
     <Grid m="xxlarge">
       <CheckboxGroup
-        // onChange={noop}
+        onChange={noop}
         defaultValue={value}
         name="group1"
         options={options}
       />
       <CheckboxGroup
         onChange={noop}
-        value={value}
+        defaultValue={value}
         name="group2"
         inline
         options={options}
       />
       <FieldCheckboxGroup
         onChange={noop}
-        value={value}
+        defaultValue={value}
         name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
@@ -75,17 +81,16 @@ export const OptionsGroupDemo = () => {
       />
       <FieldCheckboxGroup
         onChange={noop}
-        value={value}
+        defaultValue={value}
         inline
         name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
-
       <FieldCheckboxGroup
         onChange={noop}
-        value={value}
+        defaultValue={value}
         name="group1"
         required
         label="Cheeses"
@@ -98,13 +103,106 @@ export const OptionsGroupDemo = () => {
       />
       <FieldCheckboxGroup
         onChange={noop}
-        value={value}
+        defaultValue={value}
         validationMessage={{
           message: 'Select at least 1 cheese',
           type: 'error',
         }}
         inline
         required
+        name="group1"
+        label="Cheeses"
+        description="Pick all your cheeses"
+        options={options}
+      />
+      <CheckboxGroup
+        disabled
+        onChange={noop}
+        defaultValue={value}
+        name="group1"
+        options={options}
+      />
+      <CheckboxGroup
+        disabled
+        onChange={noop}
+        defaultValue={value}
+        name="group2"
+        inline
+        options={options}
+      />
+      <FieldCheckboxGroup
+        disabled
+        onChange={noop}
+        defaultValue={['swiss']}
+        name="group1"
+        label="Cheeses"
+        description="Pick all your cheeses"
+        options={options}
+      />
+      <FieldCheckboxGroup
+        disabled
+        onChange={noop}
+        defaultValue={['swiss']}
+        inline
+        name="group1"
+        label="Cheeses"
+        description="Pick all your cheeses"
+        options={options}
+      />
+      <RadioGroup
+        onChange={noop}
+        value="cheddar"
+        name="group1"
+        options={options}
+      />
+      <RadioGroup
+        onChange={noop}
+        value="cheddar"
+        name="group2"
+        inline
+        options={options}
+      />
+      <FieldRadioGroup
+        onChange={noop}
+        defaultValue={value}
+        name="group1"
+        required
+        label="Cheeses"
+        description="Pick all your cheeses"
+        validationMessage={{
+          message: 'Select at least 1 cheese',
+          type: 'error',
+        }}
+        options={options}
+      />
+      <FieldRadioGroup
+        onChange={noop}
+        defaultValue={value}
+        validationMessage={{
+          message: 'Select at least 1 cheese',
+          type: 'error',
+        }}
+        inline
+        required
+        name="group1"
+        label="Cheeses"
+        description="Pick all your cheeses"
+        options={options}
+      />
+      <FieldRadioGroup
+        disabled
+        onChange={noop}
+        defaultValue={['swiss']}
+        name="group1"
+        label="Cheeses"
+        description="Pick all your cheeses"
+        options={options}
+      />
+      <FieldRadioGroup
+        disabled
+        onChange={noop}
+        defaultValue={['swiss']}
+        inline
         name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
