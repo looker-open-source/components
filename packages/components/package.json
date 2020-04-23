@@ -41,6 +41,7 @@
     "react-hotkeys": "^2.0.0",
     "react-resize-detector": "^4.2.3",
     "react-transition-group": "^4.3.0",
+    "@types/styled-system": "^5.1.9",
     "styled-system": "^5.1.5",
     "uuid": "^7.0.3"
   },
@@ -57,7 +58,6 @@
     "@types/react-resize-detector": "^4.2.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^4.4.1",
-    "@types/styled-system": "^5.1.9",
     "@types/uuid": "^7.0.2",
     "csstype": "^2.6.10",
     "jest-styled-components": "^6.3.4",

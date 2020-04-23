@@ -25,15 +25,16 @@
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.28",
-    "styled-components": "^4.4.1"
+    "@looker/design-tokens": "^0.7.28"
   },
   "devDependencies": {
     "@types/react": "^16.9.34",
     "@types/styled-components": "^4.4.1",
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "styled-components": "^4.4.1"
   },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.9.0",
+    "styled-components": "^4.3.2"
   }
 }

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Menu` closes by default on `MenuItem` click
+- Provide `@types/styled-system` as a package dependency
 
 ## [0.7.28] - 2020-04-20
 
