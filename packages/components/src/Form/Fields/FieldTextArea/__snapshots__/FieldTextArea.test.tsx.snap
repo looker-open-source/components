@@ -19,7 +19,6 @@ exports[`A FieldTextArea with default label 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: vertical;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -144,7 +143,6 @@ exports[`A FieldTextArea with label inline 1`] = `
 .c4 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: vertical;
   resize: vertical;
   border: solid 1px;
   width: 100%;

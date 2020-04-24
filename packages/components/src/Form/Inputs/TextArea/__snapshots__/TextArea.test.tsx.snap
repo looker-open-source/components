@@ -19,7 +19,6 @@ exports[`TextArea default 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: vertical;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -69,7 +68,6 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: none;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -119,7 +117,6 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: none;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -168,7 +165,6 @@ exports[`TextArea resizes with prop resize = true 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
   resize: vertical;
   border: solid 1px;
   width: 100%;
@@ -219,7 +215,6 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: vertical;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -268,7 +263,6 @@ exports[`TextArea should accept disabled 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: vertical;
   resize: vertical;
   border: solid 1px;
   width: 100%;
@@ -352,7 +346,6 @@ exports[`TextArea with an error validation 1`] = `
   height: 6.25rem;
   width: 100%;
   resize: vertical;
-  resize: vertical;
   border: solid 1px;
   width: 100%;
   border-color: #DEE1E5;
@@ -433,7 +426,6 @@ exports[`TextArea with placeholder 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: vertical;
   resize: vertical;
   border: solid 1px;
   width: 100%;
