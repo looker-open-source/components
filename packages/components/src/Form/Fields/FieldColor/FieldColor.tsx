@@ -37,7 +37,6 @@ import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
-import { FormControl } from '../../FormControl'
 import { useFormContext } from '../../Form'
 import {
   HueSaturation,
@@ -186,36 +185,34 @@ export const FieldColorComponent = forwardRef(
         id={inputID}
         validationMessage={validationMessage}
       >
-        <FormControl alignLabel="left">
-          <Swatch
-            ref={triggerRef}
-            color={hsv2hex(color)}
-            borderRadius={hideInput ? 'medium' : 'none'}
-            borderTopLeftRadius="medium"
-            borderBottomLeftRadius="medium"
-            border="1px solid"
-            borderRight={hideInput ? undefined : 'none'}
-            disabled={props.disabled}
-            onClick={open}
+        <Swatch
+          ref={triggerRef}
+          color={hsv2hex(color)}
+          borderRadius={hideInput ? 'medium' : 'none'}
+          borderTopLeftRadius="medium"
+          borderBottomLeftRadius="medium"
+          border="1px solid"
+          borderRight={hideInput ? undefined : 'none'}
+          disabled={props.disabled}
+          onClick={open}
+        />
+        {!props.disabled && popover}
+        {!hideInput && (
+          <InputText
+            {...omitFieldProps(props)}
+            aria-describedby={`${id}-describedby`}
+            id={inputID}
+            ref={ref}
+            borderRadius="none"
+            borderTopRightRadius="medium"
+            borderBottomRightRadius="medium"
+            validationType={validationMessage && validationMessage.type}
+            onChange={handleInputTextChange}
+            value={inputTextValue}
+            onFocus={wrappedOnFocus}
+            onBlur={wrappedOnBlur}
           />
-          {!props.disabled && popover}
-          {!hideInput && (
-            <InputText
-              {...omitFieldProps(props)}
-              aria-describedby={`${id}-describedby`}
-              id={inputID}
-              ref={ref}
-              borderRadius="none"
-              borderTopRightRadius="medium"
-              borderBottomRightRadius="medium"
-              validationType={validationMessage && validationMessage.type}
-              onChange={handleInputTextChange}
-              value={inputTextValue}
-              onFocus={wrappedOnFocus}
-              onBlur={wrappedOnBlur}
-            />
-          )}
-        </FormControl>
+        )}
       </Field>
     )
   }

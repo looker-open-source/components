@@ -5,7 +5,6 @@ exports[`A Label 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 <label
@@ -25,7 +24,6 @@ exports[`Label supports fontWeight 1`] = `
   color: #343C42;
   font-weight: 400;
   font-size: 0.75rem;
-  display: inline-block;
 }
 
 <label

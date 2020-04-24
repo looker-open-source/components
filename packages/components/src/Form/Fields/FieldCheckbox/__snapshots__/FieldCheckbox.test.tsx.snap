@@ -24,7 +24,6 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c4 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -69,7 +68,6 @@ exports[`A FieldCheckbox 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {
@@ -176,7 +174,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c4 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -221,7 +218,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {

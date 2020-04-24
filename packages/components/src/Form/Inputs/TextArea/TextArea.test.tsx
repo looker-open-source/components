@@ -56,16 +56,8 @@ test('TextArea resizes with prop resize = false', () => {
   assertSnapshot(<TextArea id="TextAreaID" resize={false} />)
 })
 
-test('TextArea resizes with prop resize = both', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize="both" />)
-})
-
 test('TextArea resizes with prop resize = none', () => {
   assertSnapshot(<TextArea id="TextAreaID" resize="none" />)
-})
-
-test('TextArea resizes with prop resize = horizontal', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize="horizontal" />)
 })
 
 test('TextArea resizes with prop resize = vertical', () => {

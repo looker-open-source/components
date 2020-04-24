@@ -39,9 +39,8 @@ export interface GridProps extends SpaceHelperProps {
 export const Grid = styled.div<GridProps>`
   ${simpleLayoutCSS}
 
-  width: 100%;
-
   display: grid;
-  grid-template-columns: repeat(${({ columns }) => columns || 2}, 1fr);
   grid-gap: ${({ gap, theme }) => theme.space[gap || defaultSpaceSize]};
+  grid-template-columns: ${({ columns }) =>
+    `repeat(${columns || 2}, minmax(0, 1fr))`};
 `

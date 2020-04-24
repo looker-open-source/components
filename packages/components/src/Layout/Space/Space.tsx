@@ -55,12 +55,14 @@ export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
-  > * {
+  && > * {
     margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
   }
 
   ${({ theme, reverse }) =>
     reverse
-      ? `> :last-child { margin-left: ${theme.space.none}; }`
-      : `> :first-child { margin-left: ${theme.space.none}; }`}
+      ? `&& > :last-child { margin-left: ${theme.space.none}; }`
+      : `&& > :first-child { margin-left: ${theme.space.none}; }`}
 `
+
+Space.defaultProps = { width: '100%' }

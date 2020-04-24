@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Menu` closes by default on `MenuItem` click
 - Provide `@types/styled-system` as a package dependency
+- `TextArea` only supports vertical resizing now
 
 ### Fixed
 

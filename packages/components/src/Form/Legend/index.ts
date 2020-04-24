@@ -24,11 +24,4 @@
 
  */
 
-export * from './Fields'
-export * from './Fieldset'
-export * from './Form'
-export * from './FormControl'
-export * from './Inputs'
-export * from './Label'
 export * from './Legend'
-export * from './ValidationMessage'

@@ -30,9 +30,9 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldText } from '../Fields/FieldText'
 import { Fieldset } from './Fieldset'
 
-test('Fieldset with left aligned legend', () => {
+test('Fieldset', () => {
   assertSnapshot(
-    <Fieldset legend="Legend" alignLegend="left">
+    <Fieldset legend="Legend">
       <FieldText label="One" name="name1" id="text-1" />
       <FieldText label="two" name="name2" id="text-2" />
       <FieldText label="three" name="nam3" id="text-3" />

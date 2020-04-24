@@ -24,11 +24,32 @@
 
  */
 
-export * from './Fields'
-export * from './Fieldset'
-export * from './Form'
-export * from './FormControl'
-export * from './Inputs'
-export * from './Label'
-export * from './Legend'
-export * from './ValidationMessage'
+import styled from 'styled-components'
+import {
+  CompatibleHTMLProps,
+  color,
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
+import { labelDefaults } from '../Label'
+
+export interface LegendProps
+  extends SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLLegendElement> {}
+
+export const Legend = styled.legend<LegendProps>`
+  ${reset}
+  ${color};
+  ${space};
+  ${typography};
+`
+
+Legend.defaultProps = {
+  ...labelDefaults,
+  fontSize: 'medium',
+  padding: 'none',
+}
