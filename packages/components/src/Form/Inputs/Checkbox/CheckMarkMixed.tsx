@@ -34,6 +34,7 @@ export const CheckMarkMixed = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Check Mark Mixed</title>
     <g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
       <line x1="5" y1="8" x2="11" y2="8"></line>
     </g>

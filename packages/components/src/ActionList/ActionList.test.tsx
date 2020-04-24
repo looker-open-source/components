@@ -320,4 +320,61 @@ describe('ActionList', () => {
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
   })
+
+  describe('Selecting All', () => {
+    const onSelect = jest.fn()
+    const onSelectAll = jest.fn()
+    const props = {
+      canSelect: true,
+      canSelectAll: true,
+      columns,
+      onSelect,
+      onSelectAll,
+    }
+
+    const actionListWithSelectAll = <ActionList {...props}>{items}</ActionList>
+
+    const actionListWithNoItemsSelected = (
+      <ActionList {...props} areAllItemsSelected={false}>
+        {items}
+      </ActionList>
+    )
+
+    const actionListWithSomeItemsSelected = (
+      <ActionList {...props} areAllItemsSelected={'mixed'}>
+        {items}
+      </ActionList>
+    )
+
+    const actionListWithAllItemsSelected = (
+      <ActionList {...props} areAllItemsSelected>
+        {items}
+      </ActionList>
+    )
+
+    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithSelectAll)
+
+      const headerCheckbox = getAllByRole('checkbox')[0]
+      fireEvent.click(headerCheckbox)
+      expect(onSelectAll).toHaveBeenCalledTimes(1)
+    })
+
+    test('Header checkbox is unchecked when areAllItemsSelected is false', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
+      const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
+      expect(headerCheckbox.checked).toEqual(false)
+    })
+
+    test('Header checkbox is mixed when areAllItemsSelected is false', () => {
+      const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
+      getByTitle('Check Mark Mixed')
+    })
+
+    test('Header checkbox is checked when areAllItemsSelected is true', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithAllItemsSelected)
+      const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
+      expect(headerCheckbox.checked).toEqual(true)
+    })
+  })
 })
