@@ -144,11 +144,11 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const context = {
     areAllItemsSelected,
-    canSelect: canSelect,
-    canSelectAll: canSelectAll,
+    canSelect,
+    canSelectAll,
     columns,
-    itemsSelected: itemsSelected,
-    onClickRowSelect: onClickRowSelect,
+    itemsSelected,
+    onClickRowSelect,
     onSelect,
     onSelectAll,
     onSort,
