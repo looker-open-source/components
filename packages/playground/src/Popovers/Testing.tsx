@@ -110,6 +110,19 @@ function PopoverFocusTrap() {
               aria-label="Fruits"
               defaultValue="1"
             />
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
+            <Paragraph>Long text</Paragraph>
           </PopoverContent>
         }
       >
@@ -136,18 +149,20 @@ function MenuOpenDialog() {
             Open Menu
           </Button>
         </MenuDisclosure>
-        <MenuList>
-          <DialogManager
-            content={
-              <ModalContent>
-                <Paragraph>Some content inside the Dialog</Paragraph>
-                <Button onClick={openAlert}>Open Alert</Button>
-              </ModalContent>
-            }
-          >
-            {(onClick) => <MenuItem onClick={onClick}>Open Modal</MenuItem>}
-          </DialogManager>
-        </MenuList>
+        <DialogManager
+          content={
+            <ModalContent>
+              <Paragraph>Some content inside the Dialog</Paragraph>
+              <Button onClick={openAlert}>Open Alert</Button>
+            </ModalContent>
+          }
+        >
+          {(onClick) => (
+            <MenuList>
+              <MenuItem onClick={onClick}>Open Modal</MenuItem>
+            </MenuList>
+          )}
+        </DialogManager>
       </Menu>
     </Box>
   )
@@ -343,7 +358,7 @@ function MovingTarget() {
 
 export function TestPopovers() {
   return (
-    <Box m="large" display="flex">
+    <Box m="large" display="flex" height={1500}>
       <Box>
         <MenuOpenDialog />
         <Divider my="large" />

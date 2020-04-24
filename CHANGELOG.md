@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionListItem` no longer have shadow and cursor: pointer without an onClick
 - `ActionListItemColumn` aligns with header columns
+- `useScrollLock` no longer jitters on attempted scroll (used in modals and overlays)
 
 ## [0.7.28] - 2020-04-20
 
