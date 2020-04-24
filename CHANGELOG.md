@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Radio` only sends `onChange` when state actually changes
 - `Field*` components no longer have a bottom margin by default (see `Form` update)
 - `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
 - `InputText` will now show red error icon when validation fails
