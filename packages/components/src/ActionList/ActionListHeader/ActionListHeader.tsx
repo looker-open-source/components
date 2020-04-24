@@ -34,16 +34,19 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   children,
   className,
 }) => {
-  const { areAllItemsSelected, canSelect, onSelectAll } = useContext(
-    ActionListContext
-  )
+  const {
+    areAllItemsSelected,
+    canSelect,
+    canSelectAll,
+    onSelectAll,
+  } = useContext(ActionListContext)
 
   const onChange = onSelectAll ? () => onSelectAll() : undefined
 
   return (
     <ActionListRow
       className={className}
-      hasCheckbox={canSelect}
+      hasCheckbox={canSelect && canSelectAll}
       onChange={onChange}
       checked={areAllItemsSelected}
     >

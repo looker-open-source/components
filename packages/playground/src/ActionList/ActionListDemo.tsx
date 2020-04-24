@@ -211,6 +211,7 @@ export const ActionListDemo: FC = () => {
       <ActionListManager isLoading={isLoading} noResults={false}>
         <ActionList
           canSelect
+          canSelectAll
           onSelect={onSelect}
           onSelectAll={onSelectAll}
           itemsSelected={selections}
@@ -225,6 +226,7 @@ export const ActionListDemo: FC = () => {
 
       <ActionList
         canSelect
+        canSelectAll
         onClickRowSelect
         onSelect={onSelect}
         onSelectAll={onSelectAll}

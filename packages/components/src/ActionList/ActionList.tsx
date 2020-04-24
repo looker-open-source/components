@@ -91,6 +91,12 @@ export interface ActionListProps {
    */
   canSelect?: boolean
   /**
+   * Allow the user to select all ActinoListItems
+   * Note: Implemented as a checkbox left of the header row
+   * @default false
+   */
+  canSelectAll?: boolean
+  /**
    * Callback performed when user makes a selection
    */
   onSelect?: (id: string) => void
@@ -116,12 +122,13 @@ export interface ActionListProps {
 export const ActionListLayout: FC<ActionListProps> = ({
   areAllItemsSelected,
   canSelect = false,
+  canSelectAll = false,
   className,
   header = true,
   children,
   columns,
-  itemsSelected,
-  onClickRowSelect,
+  itemsSelected = [],
+  onClickRowSelect = false,
   onSelect,
   onSelectAll,
   onSort,
@@ -137,10 +144,11 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const context = {
     areAllItemsSelected,
-    canSelect: canSelect || false,
+    canSelect: canSelect,
+    canSelectAll: canSelectAll,
     columns,
-    itemsSelected: itemsSelected || [],
-    onClickRowSelect: onClickRowSelect || false,
+    itemsSelected: itemsSelected,
+    onClickRowSelect: onClickRowSelect,
     onSelect,
     onSelectAll,
     onSort,
