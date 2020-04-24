@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Menu` closes by default on `MenuItem` click
 - Provide `@types/styled-system` as a package dependency
+- `ActionList`
+  - Added "select all" functionality and test suite
+  - Added documentation
 
 ### Fixed
 
