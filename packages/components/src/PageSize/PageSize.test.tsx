@@ -40,9 +40,7 @@ test('<PageSize/> with defaults', () => {
     <PageSize value={10} total={1000} onChange={onChange} />
   )
 
-  getByText('Display')
   const select = getByDisplayValue('10')
-  getByText('of 1000')
 
   fireEvent.click(select)
 
@@ -65,9 +63,7 @@ test('<PageSize/> with custom options prop', () => {
     />
   )
 
-  getByText('Display')
   const select = getByDisplayValue('20')
-  getByText('of 1000')
 
   fireEvent.click(select)
 
