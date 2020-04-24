@@ -33,6 +33,7 @@ import {
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
+import { actionListCheckboxWidth } from './ActionListCheckbox'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 import {
@@ -186,6 +187,11 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${/* sc-selector */ ActionListHeaderColumn} {
     display: flex;
     padding: ${(props) => props.theme.space.small};
+  }
+
+  ${ActionListHeader} {
+    padding-left: ${({ canSelect, canSelectAll }) =>
+      canSelect && !canSelectAll ? actionListCheckboxWidth : undefined};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
