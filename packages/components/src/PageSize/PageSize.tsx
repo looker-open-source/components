@@ -27,7 +27,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
-import { Text } from '../Text'
 
 export interface PageSizeProps {
   className?: string
@@ -65,30 +64,27 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
   total,
   className,
   onChange,
-  options,
+  options = defaultPageSizes,
 }) => {
-  options = options || defaultPageSizes
-
-  const handleOnChange = (newValue: string) => {
-    onChange(Number(newValue))
-  }
+  const handleOnChange = (newValue: string) => onChange(Number(newValue))
 
   return Math.min(...options) < total ? (
     <div className={className}>
-      <Text>Display</Text>
+      Display
       <Select
         width="5rem"
-        mx="medium"
+        mx="xsmall"
         options={arrayToSelectOptions(options)}
         value={String(value)}
         onChange={handleOnChange}
       />
-      <Text>of {total}</Text>
+      of {total}
     </div>
   ) : null
 }
 
 export const PageSize = styled(PageSizeLayout)`
-  display: flex;
   align-items: center;
+  display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.small};
 `
