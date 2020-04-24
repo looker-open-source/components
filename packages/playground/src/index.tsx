@@ -27,12 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import { TestPopovers } from './Popovers/Testing'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <ActionListDemo />
+      <TestPopovers />
     </ComponentsProvider>
   )
 }
