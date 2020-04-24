@@ -64,27 +64,3 @@ test('Radio should trigger onChange handler', () => {
   fireEvent.click(radioInput)
   expect(onChange).toHaveBeenCalledTimes(1)
 })
-
-test("Radio readOnly doesn't register onChange events", () => {
-  const onChange = jest.fn()
-  const { getByRole } = renderWithTheme(
-    <Radio readOnly id="checkboxID" onChange={onChange} />
-  )
-
-  const checkboxInput = getByRole('radio')
-  fireEvent.click(checkboxInput)
-  expect(onChange).toHaveBeenCalledTimes(0)
-})
-
-test('Radio should not send onChange on second click', () => {
-  const onChange = jest.fn()
-
-  const { getByRole } = renderWithTheme(
-    <Radio id="checkboxID" onChange={onChange} />
-  )
-
-  const checkboxInput = getByRole('radio')
-  fireEvent.click(checkboxInput)
-  fireEvent.click(checkboxInput)
-  expect(onChange).toHaveBeenCalledTimes(1)
-})

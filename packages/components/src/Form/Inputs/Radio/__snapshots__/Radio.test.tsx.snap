@@ -75,12 +75,9 @@ exports[`Radio checked set to false 1`] = `
   <input
     checked={false}
     id="radioID"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
     className="c1 c2"
   />
 </div>
@@ -161,12 +158,9 @@ exports[`Radio checked set to true 1`] = `
   <input
     checked={true}
     id="radioID"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={true}
     className="c1 c2"
   />
 </div>
@@ -245,14 +239,10 @@ exports[`Radio default 1`] = `
   className="c0"
 >
   <input
-    checked={false}
     id="radioID"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
     className="c1 c2"
   />
 </div>
@@ -359,15 +349,11 @@ exports[`Radio should accept disabled 1`] = `
   className="c0"
 >
   <input
-    checked={false}
     disabled={true}
     id="radioID"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
     className="c1 c2"
   />
 </div>
@@ -474,14 +460,10 @@ exports[`Radio with aria-describedby 1`] = `
 >
   <input
     aria-describedby="some-id"
-    checked={false}
     id="radioID"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
     className="c1 c2"
   />
 </div>
@@ -560,15 +542,11 @@ exports[`Radio with name and id 1`] = `
   className="c0"
 >
   <input
-    checked={false}
     id="Chuck"
     name="Chuck"
-    onChange={[Function]}
-    onClick={[Function]}
     type="radio"
   />
   <div
-    checked={false}
     className="c1 c2"
   />
 </div>

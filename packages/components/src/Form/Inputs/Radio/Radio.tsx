@@ -24,10 +24,8 @@
 
  */
 
-import noop from 'lodash/noop'
 import pick from 'lodash/pick'
-import isUndefined from 'lodash/isUndefined'
-import React, { FormEvent, forwardRef, Ref, useEffect, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, inputPropKeys } from '../InputProps'
@@ -35,53 +33,19 @@ import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
   extends SpaceProps,
-    Omit<InputProps, 'type' | 'checked' | 'onClick'> {
+    Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
   className?: string
 }
 
 const RadioLayout = forwardRef(
   (props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const {
-      className,
-      checked,
-      defaultChecked,
-      onChange,
-      readOnly,
-      ...restProps
-    } = props
-    const [isChecked, setIsChecked] = useState(
-      defaultChecked || checked || false
-    )
-
-    const handleClick = readOnly
-      ? undefined
-      : (event: FormEvent<HTMLInputElement>) => {
-          if (!isChecked) {
-            setIsChecked(true)
-            onChange && onChange(event)
-          }
-        }
-
-    // controlled component: update internal state when props.checked changes
-    useEffect(() => {
-      if (!isUndefined(checked)) {
-        setIsChecked(checked)
-      }
-    }, [checked])
+    const { className, ...restProps } = props
 
     return (
       <div className={className}>
-        <input
-          type="radio"
-          {...pick(restProps, inputPropKeys)}
-          checked={isChecked}
-          onChange={noop}
-          // suppress read-only error as we rely on click rather than change event here
-          onClick={handleClick}
-          ref={ref}
-        />
-        <FauxRadio checked={isChecked} />
+        <input type="radio" {...pick(restProps, inputPropKeys)} ref={ref} />
+        <FauxRadio />
       </div>
     )
   }

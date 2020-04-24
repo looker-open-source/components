@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
 - `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15

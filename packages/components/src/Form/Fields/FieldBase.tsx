@@ -24,6 +24,7 @@
 
  */
 
+import { ReactNode } from 'react'
 import { FontSizes, FontWeights } from '@looker/design-tokens'
 import { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
 
@@ -33,7 +34,7 @@ export interface FieldBaseProps {
   /**
    * Defines the label for the field.
    */
-  label?: string
+  label?: ReactNode
   /**
    * Specifies the fontWeight of the internal Label.
    * TODO - Deprecate usage in HT, then here.
