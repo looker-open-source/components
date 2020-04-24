@@ -164,7 +164,7 @@ You can also use an `<ActionListManager>` element to render a "No Results" messa
 }
 ```
 
-## Sorting an Action List
+## Sorting
 
 You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop.
 
@@ -254,7 +254,7 @@ If you want default sorting behavior, you can use the `doDefaultActionListSort` 
 }
 ```
 
-## Selecting rows on an Action List
+## Selecting rows
 
 You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
 
@@ -289,6 +289,7 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
     {
       id: 3,
       name: `Blue`,
+      disabled: true,
     },
   ]
 
@@ -308,6 +309,107 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
     },
   ]
 
+  const items = data.map(({ id, name, disabled }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        id={String(id)}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+        disabled={disabled}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList
+      canSelect
+      onSelect={onSelect}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
+
+### Selecting all rows
+
+Getting a "Select All Rows" checkbox on your `<ActionList/>` requires additional props on top of the ones listed in the "Selecting Rows" section.
+
+An `<ActionList/>` with the `canSelectAll` prop passed in will display a `<Checkbox/>` next to its header. Clicking on said `<Checkbox/>` will trigger a passed-in `onSelectAll` prop.
+
+Use the `areAllItemsChecked` prop to control the visual state of the header `<Checkbox/>`.
+
+**Note:** Passing a `canSelectAll` without also passing a `canSelect` will not render a `<Checkbox>` in the header.
+
+```jsx
+;() => {
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const [selections, setSelections] = useState([])
+  const onSelect = (selection) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+  const allSelectableItems = data
+    .map(({ id, disabled }) => !disabled && String(id))
+    .filter((element) => element)
+  const onSelectAll = () => {
+    setSelections(selections.length ? [] : allSelectableItems)
+  }
+  const areAllItemsSelected = allSelectableItems.every((itemId) =>
+    selections.includes(String(itemId))
+  )
+    ? true
+    : allSelectableItems.some((itemId) => selections.includes(String(itemId)))
+    ? 'mixed'
+    : false
+
   const items = data.map(({ id, name }) => {
     actions = (
       <>
@@ -323,7 +425,6 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
         id={String(id)}
         onClick={() => alert('Row clicked')}
         actions={actions}
-        disabled={id === 3 && true}
       >
         <ActionListItemColumn>{id}</ActionListItemColumn>
         <ActionListItemColumn>{name}</ActionListItemColumn>
@@ -334,8 +435,11 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
   return (
     <ActionList
       canSelect
+      canSelectAll
       onSelect={onSelect}
+      onSelectAll={onSelectAll}
       itemsSelected={selections}
+      areAllItemsSelected={areAllItemsSelected}
       columns={columns}
     >
       {items}
