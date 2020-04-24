@@ -47,7 +47,8 @@ import {
 import { Icon } from '../../../Icon'
 import { inputPropKeys } from '../InputProps'
 
-type TextAreaResize = 'both' | 'horizontal' | 'vertical' | 'none' | boolean
+type TextAreaResize = 'vertical' | 'none' | boolean
+
 export interface TextAreaProps
   extends BorderProps,
     Omit<LayoutProps, 'size'>,
@@ -55,7 +56,7 @@ export interface TextAreaProps
     TypographyProps,
     CompatibleHTMLProps<HTMLTextAreaElement> {
   /**
-   * @default: true
+   * @default: vertical
    */
   resize?: TextAreaResize
   validationType?: ValidationType
@@ -80,11 +81,11 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 }
 
 const TextAreaResize = (resize?: TextAreaResize) =>
-  resize === false ? 'none' : resize === true ? 'both' : resize
+  resize === false ? 'none' : resize === true ? 'vertical' : resize
 
 export const TextArea = styled(TextAreaLayout)`
-  position: relative;
   height: fit-content;
+  position: relative;
   width: 100%;
 
   ${Icon} {
@@ -100,6 +101,8 @@ export const TextArea = styled(TextAreaLayout)`
 
     resize: ${(props) => TextAreaResize(props.resize)};
     border: solid 1px;
+    width: 100%;
+
     border-color: ${(props) => props.theme.colors.palette.charcoal200};
     border-radius: ${(props) => props.theme.radii.medium};
     font-size: ${(props) => props.theme.fontSizes.small};
@@ -123,7 +126,7 @@ export const TextArea = styled(TextAreaLayout)`
 
 TextArea.defaultProps = {
   height: '6.25rem',
-  resize: true,
+  resize: 'vertical',
   width: '100%',
 }
 

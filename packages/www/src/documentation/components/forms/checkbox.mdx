@@ -14,9 +14,11 @@ The `<Checkbox />` component can be rendered in three different states: checked,
 **Note:** The "mixed" value is only available to the `checked` property and not available to `defaultChecked` property.
 
 ```jsx
-<Checkbox defaultChecked />
-<Checkbox defaultChecked={false} />
-<Checkbox checked='mixed' onChange={() => {}} />
+<Space>
+  <Checkbox defaultChecked />
+  <Checkbox defaultChecked={false} />
+  <Checkbox checked="mixed" onChange={() => {}} />
+</Space>
 ```
 
 ## onChange Property
@@ -64,40 +66,43 @@ This may not be sufficient for your own use case, but it may provide a good star
   return (
     <List>
       <ListItem>
-        <Checkbox
-          id="fruit-parent"
-          name="fruit"
-          value="all-fruit"
-          onChange={handleParentChange}
-          checked={parentState}
-        />
         <Label htmlFor="fruit-parent" fontSize="medium">
+          <Checkbox
+            id="fruit-parent"
+            name="fruit"
+            value="all-fruit"
+            onChange={handleParentChange}
+            checked={parentState}
+            mr="xsmall"
+          />
           All Fruit
         </Label>
       </ListItem>
       <ListItem>
         <List pl="large">
           <ListItem>
-            <Checkbox
-              id="fruit-apple"
-              name="fruit"
-              value="apple"
-              onChange={handleAppleChange}
-              checked={appleState}
-            />
             <Label htmlFor="fruit-apple" fontSize="large">
+              <Checkbox
+                id="fruit-apple"
+                name="fruit"
+                value="apple"
+                onChange={handleAppleChange}
+                checked={appleState}
+                mr="xsmall"
+              />
               🍏
             </Label>
           </ListItem>
           <ListItem>
-            <Checkbox
-              id="fruit-banana"
-              name="fruit"
-              value="apple"
-              onChange={handleBananaChange}
-              checked={bananaState}
-            />
             <Label htmlFor="fruit-banana" fontSize="large">
+              <Checkbox
+                id="fruit-banana"
+                name="fruit"
+                value="apple"
+                onChange={handleBananaChange}
+                checked={bananaState}
+                mr="xsmall"
+              />
               🍌
             </Label>
           </ListItem>
@@ -121,9 +126,11 @@ A name and ID can be specified in the `<Checkbox />` component. Names are import
 Use the disable property to gray out the checkbox, making it unclickable.
 
 ```jsx
-<Checkbox disabled />
-<Checkbox disabled checked />
-<Checkbox disabled checked="mixed" />
+<Space>
+  <Checkbox disabled />
+  <Checkbox disabled checked />
+  <Checkbox disabled checked="mixed" />
+</Space>
 ```
 
 ## ReadOnly property
@@ -135,9 +142,11 @@ NOTE: In HTML specifying `readonly` on _only_ prevents changes to `value` attrib
 In most cases we emulate the HTML specification where it has an existing decision or feature. However, the specification's behavior around checkboxes with a `readonly` attribute is rather unintuitive.
 
 ```jsx
-<Checkbox readOnly />
-<Checkbox readOnly checked />
-<Checkbox readOnly checked="mixed" />
+<Space>
+  <Checkbox readOnly />
+  <Checkbox readOnly checked />
+  <Checkbox readOnly checked="mixed" />
+</Space>
 ```
 
 ## Accessibility
@@ -168,12 +177,18 @@ In most cases we emulate the HTML specification where it has an existing decisio
 
 ```jsx
 <Fieldset legend="Pick your favorite emojis">
-  <Checkbox id="pizza" name="emoji" value="pizza" />
-  <Label htmlFor="pizza">🍕</Label>
-  <Checkbox id="avocado" name="emoji" value="avocado" />
-  <Label htmlFor="avocado">🥑</Label>
-  <Checkbox id="grapes" name="emoji" value="grapes" />
-  <Label htmlFor="grapes">🍇</Label>
+  <Label>
+    <Checkbox name="emoji" value="pizza" mr="xsmall" />
+    🍕
+  </Label>
+  <Label htmlFor="avocado">
+    <Checkbox id="avocado" name="emoji" value="avocado" mr="xsmall" />
+    🥑
+  </Label>
+  <Label htmlFor="grapes">
+    <Checkbox id="grapes" name="emoji" value="grapes" mr="xsmall" />
+    🍇
+  </Label>
 </Fieldset>
 ```
 
@@ -195,9 +210,17 @@ In most cases we emulate the HTML specification where it has an existing decisio
 Use this to provide a detailed descriptions of a field that contains errors.
 
 ```jsx
-<Label htmlFor="approve">Approve Changes</Label>
-<Checkbox id="approve" aria-describedby="confirm-error-message" />
-<p id="confirm-error-message">Confirm you approve these changes</p>
+<>
+  <Label>
+    <Checkbox
+      id="approve"
+      aria-describedby="confirm-error-message"
+      mr="xsmall"
+    />
+    Approve Changes
+  </Label>
+  <p id="confirm-error-message">Confirm you approve these changes</p>
+</>
 ```
 
 This would announce "Approve, unchecked checkbox. Confirm you approve these changes"
