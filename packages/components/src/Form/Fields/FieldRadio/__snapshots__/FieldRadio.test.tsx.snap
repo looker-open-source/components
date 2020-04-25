@@ -120,15 +120,11 @@ exports[`A FieldRadio 1`] = `
     >
       <input
         aria-describedby="FieldRadioID-describedby"
-        checked={false}
         id="FieldRadioID"
         name="thumbsUp"
-        onChange={[Function]}
-        onClick={[Function]}
         type="radio"
       />
       <div
-        checked={false}
         className="c5 c6"
       />
     </div>
@@ -260,15 +256,12 @@ exports[`A FieldRadio checked 1`] = `
     >
       <input
         aria-describedby="FieldRadioID-describedby"
-        checked={false}
+        checked={true}
         id="FieldRadioID"
         name="thumbsUp"
-        onChange={[Function]}
-        onClick={[Function]}
         type="radio"
       />
       <div
-        checked={false}
         className="c5 c6"
       />
     </div>

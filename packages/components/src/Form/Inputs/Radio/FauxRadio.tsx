@@ -29,11 +29,7 @@ import { reset } from '@looker/design-tokens'
 
 const dotSize = 6
 
-interface FauxRadioProps {
-  checked: boolean
-}
-
-export const FauxRadio = styled.div<FauxRadioProps>`
+export const FauxRadio = styled.div`
   ${reset}
   position: relative;
   width: 100%;
