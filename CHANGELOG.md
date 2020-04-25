@@ -5,19 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.29] - 2020-04-24
 
 ### Changed
 
+- `Checkbox` & `Radio` remove default margin (previously `3px)
+- `Field`
+  - Set `id` on label based on field.id to allow for `Fieldset` `legend` replacement / association
+  - Removed default margin-bottom
+- `FieldColor` defaults to `width=“100%”`
+- `Fieldset`
+  - Implement with a `Space` / `SpaceVertical` layout (emulate `Form`)
+  - Enable `inline` presentation
+  - Use `div` instead of `fieldset` for DOM object due to Chrome implementation bug of `fieldset` (doesn’t allow for Flex / Grid layouts within `fieldset`
+  - Minor fix-up to Fieldset composition (no visual impact)
+- `Form` - supports layout/simple props (spacing & layout)
+- `Grid`
+  - Correct column specification to prevent grid “blow-out”
+  - Remove explicitly specified `width: 100%` (it’s implied)
+- `Legend`
+  - Extend `Label` styles to keep Label & Legend presentation bound where appropriate
 - `Menu` closes by default on `MenuItem` click
-- Provide `@types/styled-system` as a package dependency
+- `Space` & `SpaceVertical`
+  - Add `layout` / `layoutProps` to `simpleLayoutProps` to allow for default width specification
+  - Improve specificity of child selectors to apply only to direct descendants.
+  - Use double selector to override theme reset behavior
 - `TextArea` only supports vertical resizing now
+- `ToggleSwitch` explicitly specify `margin: 0` to suppress browser-default styling
+- Provide `@types/styled-system` as a package dependency
 
 ### Fixed
 
 - `ActionListItem` no longer have shadow and cursor: pointer without an onClick
 - `ActionListItemColumn` aligns with header columns
+- `RequiredStar` wasn't visual artifact from being rendered (red asterisk)
 - `useScrollLock` no longer jitters on attempted scroll (used in modals and overlays)
+
+### Removed
+
+- `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
+- `TextArea` now only resizes on the Y access
 
 ## [0.7.28] - 2020-04-20
 
@@ -43,7 +70,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
 - `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15
