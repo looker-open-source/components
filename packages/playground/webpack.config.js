@@ -26,6 +26,7 @@
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const PATHS = {
   app: path.join(__dirname, 'src/index.tsx'),
@@ -47,6 +48,9 @@ module.exports = {
     rules: [
       {
         loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
         test: /\.tsx?$/,
       },
       {
@@ -62,5 +66,6 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    plugins: [new TsconfigPathsPlugin()],
   },
 }

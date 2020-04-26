@@ -19,50 +19,31 @@
     "yarn": ">=1.14.0"
   },
   "scripts": {
-    "build": "yarn lerna run 'build:all'",
+    "build": "yarn lerna run build --stream",
     "postbuild": "run-p -c 'lint'",
-    "develop": "npm-run-all build develop:components sleep --parallel develop:server develop:playground develop:www",
-    "develop:components": "yarn workspace @looker/components develop &",
-    "develop:playground": "yarn workspace playground develop",
-    "develop:server": "yarn workspace server develop",
-    "develop:www": "yarn workspace www develop",
-    "deploy": "yarn workspace www deploy",
     "clean": "rm -Rf packages/*/lib packages/*/*.tsbuildinfo",
+    "prepublishOnly": "yarn test",
+    "deploy": "yarn workspace www deploy",
+    "playground": "yarn workspace playground develop",
+    "server": "yarn workspace server develop",
+    "www": "yarn workspace www develop",
     "fix": "run-p -c fix:*",
     "fix:es": "yarn lint:es --fix",
     "fix:mdx": "yarn lint:mdx --fix",
     "fix:prettier": "yarn lint:prettier --write",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}'",
+    "lint:es": "eslint 'packages/**/*.ts{,x}' --cache",
     "lint:mdx": "yarn workspace www lint",
     "lint:ts": "tsc",
-    "lint:prettier": "prettier --check '{**/*.ts?(x),**/*.md?(x)}'",
     "lint-staged": "yarn exec lint-staged",
-    "npmrc": "bin/create_npmrc.sh",
-    "npmrc:clean": "rm .npmrc",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn test",
-    "postpublish": "git clean -fd",
-    "sleep": "sleep 10",
     "test": "yarn jest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
-    "@babel/plugin-transform-runtime": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
-    "@babel/runtime": "^7.9.2",
     "@looker/eslint-config": "^1.0.14",
     "@looker/prettier-config": "^1.0.15",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/node": "^13.13.1",
-    "babel-core": "^7.0.0-bridge",
-    "babel-plugin-styled-components": "^1.10.7",
     "core-js": "^3.6.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -79,8 +60,7 @@
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3",
-    "typescript-plugin-styled-components": "^1.4.4"
+    "typescript": "^3.8.3"
   },
   "resolutions": {
     "sharp": "0.24.0"
@@ -88,16 +68,13 @@
   "lint-staged": {
     "**/*.ts?(x)": [
       "stylelint",
-      "prettier --write",
       "eslint",
       "git add"
     ],
     "**/*.js?(x)": [
-      "prettier --write",
       "git add"
     ],
     "**/*.md?(x)": [
-      "prettier --write",
       "git add"
     ]
   },
@@ -109,9 +86,11 @@
       "@looker/eslint-config/no-type-checking"
     ],
     "plugins": [
-      "header"
+      "header",
+      "prettier"
     ],
     "rules": {
+      "prettier/prettier": "error",
       "@typescript-eslint/no-explicit-any": "off",
       "header/header": [
         2,
@@ -142,9 +121,6 @@
           ]
         }
       }
-    },
-    "parserOptions": {
-      "project": "./tsconfig.json"
     }
   },
   "prettier": "@looker/prettier-config",

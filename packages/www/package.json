@@ -38,7 +38,7 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "lint": "eslint . --ext mdx --config package.json --no-eslintrc",
+    "lint": "eslint . --ext mdx --config package.json --no-eslintrc --cache",
     "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
     "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "develop": "gatsby develop",
