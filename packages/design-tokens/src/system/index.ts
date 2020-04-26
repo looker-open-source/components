@@ -34,6 +34,8 @@ export {
   layout,
   space,
   typography,
+} from 'styled-system'
+export type {
   BorderProps,
   BorderRadiusProps,
   BoxShadowProps,
@@ -47,9 +49,10 @@ export type CompatibleHTMLProps<T> = Omit<
   'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
 >
 
-export { userSelect, UserSelectProps } from './userSelect'
-
-export { cursor, CursorProps } from './cursor'
+export { userSelect } from './userSelect'
+export type { UserSelectProps } from './userSelect'
+export { cursor } from './cursor'
+export type { CursorProps } from './cursor'
 export { Easings } from './easings'
 export { RadiusSizes, Radii } from './radii'
 export { Shadows } from './shadows'

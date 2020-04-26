@@ -35,6 +35,7 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+/* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
 import omit from 'lodash/omit'
 
@@ -46,7 +47,7 @@ export interface IconProps
   name: IconNames
 }
 
-export { IconNames }
+export type { IconNames }
 
 const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
   const Glyph = Glyphs[props.name]

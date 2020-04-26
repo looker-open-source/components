@@ -24,4 +24,4 @@
 
  */
 export * from './Calendar'
-export { CalendarSize } from './calendar-size'
+export type { CalendarSize } from './calendar-size'

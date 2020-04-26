@@ -42,8 +42,10 @@ export {
 export { FontSizes, FontSizeProps, FontSizeRamp } from './font_sizes'
 export { FontWeights, FontWeightProps, FontWeightRamp } from './font_weights'
 export { LineHeights, LineHeightProps, LineHeightRamp } from './line_heights'
-export { textDecoration, TextDecorationProps } from './text_decoration'
-export { textTransform, TextTransformProps } from './text_transform'
+export { textDecoration } from './text_decoration'
+export type { TextDecorationProps } from './text_decoration'
+export { textTransform } from './text_transform'
+export type { TextTransformProps } from './text_transform'
 
 // @TODO - Should we limit TextAlign to subset? (e.g. previous config for `align`)
 // export type TextAlignments = 'left' | 'center' | 'right'
