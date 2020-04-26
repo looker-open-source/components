@@ -5,6 +5,9 @@ looker.ini
 # dependencies
 node_modules
 
+# typescript incrementals
+*.tsbuildinfo
+
 # testing
 /coverage
 .cache
@@ -13,9 +16,8 @@ node_modules
 /packages/icons/src/generated
 public/
 
-
 # lerna
-/packages/*/dist
+/packages/*/lib
 
 # misc
 .DS_Store

@@ -41,16 +41,12 @@ module.exports = {
   entry: {
     app: PATHS.app,
   },
-  output: {
-    path: __dirname + '/dist',
-    filename: 'index_bundle.js',
-  },
-  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
+
   mode: 'development',
   module: {
     rules: [
       {
-        loader: 'babel-loader',
+        loader: 'ts-loader',
         test: /\.tsx?$/,
       },
       {
@@ -59,6 +55,11 @@ module.exports = {
       },
     ],
   },
+  output: {
+    filename: 'index_bundle.js',
+    path: __dirname + '/dist',
+  },
+  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

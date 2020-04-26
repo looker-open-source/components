@@ -1,9 +1,34 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
-    "declaration": true
+    "declaration": true,
+
+    "module": "esnext",
+    "target": "esnext",
+
+    "jsx": "react",
+    "lib": ["es6", "es2017.object", "dom"],
+
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": ["**/*.story.*", "**/*.test.*", "dist"],
+  "exclude": ["lib", "node_modules", "**/*.test.*"],
   "include": []
 }
