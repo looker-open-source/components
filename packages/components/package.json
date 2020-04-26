@@ -2,11 +2,10 @@
   "name": "@looker/components",
   "license": "MIT",
   "version": "0.7.28",
-  "main": "dist/cjs/index.js",
-  "types": "dist/types/index.d.ts",
-  "module": "dist/esm/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -17,17 +16,14 @@
     "access": "public"
   },
   "scripts": {
-    "build:all": "yarn clean && yarn run build:esm && yarn run build:cjs",
-    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es6 --outDir dist/esm",
-    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es6 --outDir dist/cjs",
-    "clean": "rm -Rf ./dist",
-    "develop": "yarn clean && ttsc --project tsconfig.build.json --watch --module commonjs --target es6 --outDir dist/cjs",
-    "develop-playground": "ttsc --project tsconfig.build.json --watch --module es2015 --target es6 --outDir dist/esm"
+    "build": "yarn compile",
+    "compile": "tsc -b tsconfig.build.json",
+    "develop": "yarn compile --watch"
   },
   "dependencies": {
     "@looker/components-providers": "^0.7.28",
     "@looker/design-tokens": "^0.7.28",
-    "@looker/icons": "^0.7.28",
+    "@looker/icons": "*",
     "@popperjs/core": "^2.3.3",
     "btoa": "^1.2.1",
     "d3-color": "^1.4.1",

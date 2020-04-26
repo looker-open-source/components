@@ -2,11 +2,10 @@
   "name": "@looker/icons",
   "license": "MIT",
   "version": "0.7.28",
-  "main": "dist/cjs/index.js",
-  "types": "dist/types/index.d.ts",
-  "module": "dist/esm/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -17,13 +16,10 @@
     "access": "public"
   },
   "scripts": {
-    "build:all": "yarn clean && yarn build:icons && yarn run build:esm && yarn run build:cjs",
-    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es6 --outDir dist/esm",
-    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es6 --outDir dist/cjs",
-    "build:icons": "node bin/build.js",
-    "clean": "rm -Rf ./dist",
-    "declaration": "ttsc --project tsconfig.json",
-    "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
+    "build": "yarn icons && yarn compile",
+    "compile": "tsc -b tsconfig.build.json",
+    "develop": "yarn compile --watch",
+    "icons": "node bin/build.js"
   },
   "devDependencies": {
     "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",

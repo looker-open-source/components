@@ -1,17 +1,14 @@
 {
-  "extends": "@looker/eslint-config/tsconfig.react",
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@looker/*": ["packages/*/src"],
-      "*": ["node_modules", "packages"]
-    },
-    "plugins": [
-      {
-        "transform": "typescript-plugin-styled-components",
-        "type": "config"
-      }
-    ]
+      "@looker/components": ["packages/components/src"],
+      "@looker/components-providers": ["packages/providers/src"],
+      "@looker/components-test-utils": ["packages/test-utils/src"],
+      "@looker/design-tokens": ["packages/design-tokens/src"],
+      "@looker/icons": ["packages/icons/src"]
+    }
   },
-  "include": ["packages"],
-  "exclude": ["dist"]
+  "include": ["packages"]
 }

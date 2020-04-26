@@ -27,6 +27,7 @@
     "develop:server": "yarn workspace server develop",
     "develop:www": "yarn workspace www develop",
     "deploy": "yarn workspace www deploy",
+    "clean": "rm -Rf packages/*/lib packages/*/*.tsbuildinfo",
     "fix": "run-p -c fix:*",
     "fix:es": "yarn lint:es --fix",
     "fix:mdx": "yarn lint:mdx --fix",
@@ -42,6 +43,7 @@
     "npmrc:clean": "rm .npmrc",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test",
+    "postpublish": "git clean -fd",
     "sleep": "sleep 10",
     "test": "yarn jest"
   },
@@ -65,6 +67,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-plugin-header": "^3.0.0",
+    "eslint-plugin-import": "^2.20.2",
     "jest": "^25.1.0",
     "jest-canvas-mock": "^2.2.0",
     "jest-styled-components": "^6.3.4",
@@ -76,7 +79,6 @@
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "ts-jest": "^25.2.1",
-    "ttypescript": "^1.5.10",
     "typescript": "^3.8.3",
     "typescript-plugin-styled-components": "^1.4.4"
   },
@@ -104,7 +106,7 @@
   ],
   "eslintConfig": {
     "extends": [
-      "@looker/eslint-config/workspaces"
+      "@looker/eslint-config/no-type-checking"
     ],
     "plugins": [
       "header"
@@ -115,6 +117,34 @@
         2,
         "config/license-header.js"
       ]
+    },
+    "settings": {
+      "workspaces": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "sources": {
+          "@looker/components": [
+            "packages/components/src"
+          ],
+          "@looker/components-providers": [
+            "packages/providers/src"
+          ],
+          "@looker/components-test-utils": [
+            "packages/test-utils/src"
+          ],
+          "@looker/design-tokens": [
+            "packages/design-tokens/src"
+          ],
+          "@looker/icons": [
+            "packages/icons/src"
+          ]
+        }
+      }
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json"
     }
   },
   "prettier": "@looker/prettier-config",

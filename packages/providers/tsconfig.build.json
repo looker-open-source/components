@@ -1,9 +1,14 @@
 {
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
-    "declarationDir": "./dist/types",
     "rootDir": "./src",
-    "baseUrl": "./"
+    "outDir": "./lib",
+    "composite": true
   },
-  "include": ["./src"]
+  "references": [
+    {
+      "path": "../design-tokens/tsconfig.build.json"
+    }
+  ],
+  "include": ["src/**/*"]
 }
