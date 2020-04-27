@@ -24,27 +24,45 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
-import { FieldsetDemo } from './Form/FieldsetDemo'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
+import { useFormContext } from '../../Form'
+import { CheckboxGroup, CheckboxGroupProps } from '../../Inputs/OptionsGroup'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-const App: React.FC = () => {
+export interface FieldCheckboxGroupProps
+  extends CheckboxGroupProps,
+    Omit<FieldProps, 'detail'> {}
+
+const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
+  id = uuid(),
+  options,
+  value,
+  ...props
+}) => {
+  const validationMessage = useFormContext(props)
+
   return (
-    <ComponentsProvider>
-      <OptionsGroupDemo />
-      <FieldsetDemo />
-      <FieldsDemo />
-    </ComponentsProvider>
+    <Field
+      {...pickFieldProps(props)}
+      validationMessage={validationMessage}
+      id={id}
+    >
+      <CheckboxGroup
+        {...omitFieldProps(props)}
+        aria-describedby={`${id}-describedby`}
+        aria-labeledby={`${id}-labeledby`}
+        id={id}
+        inline={props.inline}
+        name={name || id}
+        options={options}
+        value={value}
+      />
+    </Field>
   )
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+FieldCheckboxGroupLayout.displayName = 'FieldCheckboxGroupLayout'
+
+export const FieldCheckboxGroup = styled(FieldCheckboxGroupLayout)``

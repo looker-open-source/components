@@ -23,28 +23,44 @@
  SOFTWARE.
 
  */
-
+import 'jest-styled-components'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
-import { FieldsetDemo } from './Form/FieldsetDemo'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+import { fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { CheckboxGroup } from './CheckboxGroup'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <OptionsGroupDemo />
-      <FieldsetDemo />
-      <FieldsDemo />
-    </ComponentsProvider>
+test('CheckboxGroup render a list of checkbox', () => {
+  const handleChange = jest.fn()
+
+  const { getByLabelText } = renderWithTheme(
+    <CheckboxGroup
+      id="1"
+      name="group1"
+      onChange={handleChange}
+      options={[
+        {
+          label: 'Cheddar',
+          value: 'cheddar',
+        },
+        {
+          label: 'Gouda',
+          value: 'gouda',
+        },
+        {
+          disabled: true,
+          label: 'Swiss',
+          value: 'swiss',
+        },
+        {
+          label: 'Roquefort',
+          value: 'roquefort',
+        },
+      ]}
+    />
   )
-}
+  const checkbox = getByLabelText('Cheddar')
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+  fireEvent.click(checkbox)
+
+  expect(handleChange).toHaveBeenCalledWith(['cheddar'])
 })
