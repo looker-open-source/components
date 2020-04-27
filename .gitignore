@@ -19,6 +19,7 @@ public/
 
 # lerna
 /packages/*/lib
+/packages/*/dist
 
 # misc
 .DS_Store
