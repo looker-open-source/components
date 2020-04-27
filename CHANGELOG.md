@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TextArea` only supports vertical resizing now
 - `ToggleSwitch` explicitly specify `margin: 0` to suppress browser-default styling
 - Provide `@types/styled-system` as a package dependency
+- WWW site keyboard navigation improvement
 
 ### Fixed
 
