@@ -12,8 +12,10 @@ The `<Radio />` component renders a single radio button on the page, with no acc
 The `<Radio />` component accepts the `checked` property, which either sets the radio button as selected or not.
 
 ```jsx
-<Radio defaultChecked={false}  />
-<Radio defaultChecked  />
+<Space>
+  <Radio defaultChecked={false} />
+  <Radio defaultChecked />
+</Space>
 ```
 
 ## Disabled Property
@@ -21,8 +23,10 @@ The `<Radio />` component accepts the `checked` property, which either sets the 
 Use the disable property to gray out the radio button, making it un-clickable.
 
 ```jsx
-<Radio disabled />
-<Radio disabled checked />
+<Space>
+  <Radio disabled />
+  <Radio disabled checked />
+</Space>
 ```
 
 ## Name and ID
@@ -30,20 +34,9 @@ Use the disable property to gray out the radio button, making it un-clickable.
 A name and ID can be specified in the `<Radio />` component. Radio buttons of the same `name` are considered to be in a 'radio group' and only one radio button in a radio group can be selected at a time.
 
 ```jsx
-<Radio name="someName" id="one" value="one"  />
-<Radio name="someName" id="two" value="two" />
-<Radio name="someName" id="three" value="three" />
-```
-
-## ReadOnly property
-
-`Radio` will ignore user-actions when the `readOnly` property is enabled, similar to `disabled` but without greying out the option.
-
-NOTE: In HTML specifying `readonly` on _only_ prevents changes to `value` attribute of the checkbox and therefore allowing the user to still check and uncheck the checkbox.
-
-In most cases we emulate the HTML specification where it has an existing decision or feature. However, the specification's behavior around checkboxes with a `readonly` attribute is rather unintuitive.
-
-```jsx
-<Radio readOnly />
-<Radio readOnly checked />
+<Space>
+  <Radio name="someName" id="one" value="one" />
+  <Radio name="someName" id="two" value="two" />
+  <Radio name="someName" id="three" value="three" />
+</Space>
 ```

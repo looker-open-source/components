@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { Radio, RadioProps } from './Radio'
+import { Radio } from './Radio'
 
 test('Radio default', () => {
   assertSnapshot(<Radio id="radioID" />)
@@ -56,7 +56,6 @@ test('Radio with aria-describedby', () => {
 
 test('Radio should trigger onChange handler', () => {
   const onChange = jest.fn()
-
   const { getByRole } = renderWithTheme(
     <Radio id="radioID" onChange={onChange} />
   )
@@ -64,18 +63,4 @@ test('Radio should trigger onChange handler', () => {
   const radioInput = getByRole('radio')
   fireEvent.click(radioInput)
   expect(onChange).toHaveBeenCalledTimes(1)
-})
-
-test("Radio readOnly doesn't register onChange events", () => {
-  const mockProps: RadioProps = {
-    onChange: jest.fn(),
-  }
-
-  const { getByRole } = renderWithTheme(
-    <Radio readOnly id="checkboxID" {...mockProps} />
-  )
-
-  const checkboxInput = getByRole('radio')
-  fireEvent.click(checkboxInput)
-  expect(mockProps.onChange).toHaveBeenCalledTimes(0)
 })

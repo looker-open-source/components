@@ -38,6 +38,8 @@ import {
   TextTransformProps,
   typography,
   TypographyProps,
+  FontSizes,
+  FontWeights,
 } from '@looker/design-tokens'
 
 export interface LabelProps
@@ -55,12 +57,14 @@ export const Label = styled.label<LabelProps>`
   ${textDecoration}
   ${textTransform};
   ${typography};
-
-  display: inline-block; /* Ensure that applied padding/margin actually works */
 `
 
-Label.defaultProps = {
+export const labelDefaults = {
   color: 'palette.charcoal700',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
+  fontSize: 'xsmall' as FontSizes,
+  fontWeight: 'semiBold' as FontWeights,
+}
+
+Label.defaultProps = {
+  ...labelDefaults,
 }

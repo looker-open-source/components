@@ -24,44 +24,36 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  color,
-  ColorProps,
-  CompatibleHTMLProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  textTransform,
-  TextTransformProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import React, { FC } from 'react'
+import { FieldText, Grid, Fieldset } from '@looker/components'
 
-export interface LegendProps
-  extends ColorProps,
-    LayoutProps,
-    SpaceProps,
-    TextTransformProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLegendElement> {}
+const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
+  <>
+    <FieldText inline={inline} required label="Neat Stuff" />
+    <FieldText inline={inline} label="Neat Stuff" />
+    <FieldText inline={inline} label="Neat Stuff" />
+  </>
+)
 
-export const Legend = styled.legend.attrs((props: LegendProps) => ({
-  pb: props.pb || props.py || props.p ? undefined : 'xsmall',
-}))<LegendProps>`
-  ${reset}
-
-  ${color}
-  ${layout}
-  ${space}
-  ${textTransform};
-  ${typography}
-`
-
-Legend.defaultProps = {
-  color: 'palette.charcoal800',
-  fontSize: 'xxxlarge',
-  fontWeight: 'light',
-}
+export const FieldsetDemo = () => (
+  <Grid m="xxlarge" gap="xxlarge">
+    <Fieldset>
+      <Fields />
+    </Fieldset>
+    <Fieldset inline>
+      <Fields />
+    </Fieldset>
+    <Fieldset legend="Standard Legend, Standard FieldText">
+      <Fields />
+    </Fieldset>
+    <Fieldset inline legend="Inline Legend, Inline FieldText">
+      <Fields />
+    </Fieldset>
+    <Fieldset legend="Standard Legend, Inline FieldText">
+      <Fields inline />
+    </Fieldset>
+    <Fieldset inline legend="Inline Legend, Inline FieldText">
+      <Fields inline />
+    </Fieldset>
+  </Grid>
+)

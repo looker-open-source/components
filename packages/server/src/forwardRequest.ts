@@ -46,8 +46,10 @@ const settings = new NodeSettingsIniFile(localConfig, 'Looker')
  */
 const session = new NodeSession(settings)
 
-const forwardRequest = async (req: Request) => {
-  const endpoint = req.url.replace('/api/', '')
+const forwardRequest = async (req: Request<{ url: string }>) => {
+  /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+  // @ts-ignore
+  const endpoint = req.url.replace('/api/', '') // @types/express error omits req.url
   const apiUrl = `${settings.base_url}/api/3.1/${endpoint}`
   const sessionHeaders = await session.login()
 

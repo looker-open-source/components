@@ -74,9 +74,8 @@ exports[`A FieldText with default label 1`] = `
 
 .c2 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
-  display: inline-block;
+  font-weight: 600;
 }
 
 .c0 {
@@ -92,7 +91,6 @@ exports[`A FieldText with default label 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
   display: grid;
   grid-template-areas: "label detail" "input input" "messages messages";
 }
@@ -103,13 +101,17 @@ exports[`A FieldText with default label 1`] = `
   display: -ms-flexbox;
   display: flex;
   grid-area: input;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 .c6 {
   grid-area: messages;
 }
 
-.c0 .c1 {
+.c0 > .c1 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -133,6 +135,7 @@ exports[`A FieldText with default label 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"
+    id="FieldTextID-labeledby"
   >
     👍
   </label>
@@ -231,9 +234,8 @@ exports[`A FieldText with label inline 1`] = `
 
 .c2 {
   color: #343C42;
-  font-weight: 600;
   font-size: 0.75rem;
-  display: inline-block;
+  font-weight: 600;
 }
 
 .c7 .c3 {
@@ -242,13 +244,17 @@ exports[`A FieldText with label inline 1`] = `
   display: -ms-flexbox;
   display: flex;
   grid-area: input;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c7 .c6 {
   grid-area: messages;
 }
 
-.c7 .c1 {
+.c7 > .c1 {
   grid-area: label;
   padding-bottom: 0.5rem;
 }
@@ -266,7 +272,6 @@ exports[`A FieldText with label inline 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
   display: grid;
   grid-template-areas: "label input detail" ". messages messages";
   grid-template-columns: 150px 1fr;
@@ -278,13 +283,17 @@ exports[`A FieldText with label inline 1`] = `
   display: -ms-flexbox;
   display: flex;
   grid-area: input;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 .c6 {
   grid-area: messages;
 }
 
-.c0 .c1 {
+.c0 > .c1 {
   grid-area: label;
   text-align: right;
   line-height: 36px;
@@ -316,6 +325,7 @@ exports[`A FieldText with label inline 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"
+    id="FieldTextID-labeledby"
   >
     👍
   </label>

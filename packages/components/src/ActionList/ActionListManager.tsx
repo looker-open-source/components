@@ -61,7 +61,7 @@ const centerItemStates = css`
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 100%;
+  min-height: 8rem;
 `
 
 export const ActionListManager = styled(ActionListManagerLayout)`

@@ -26,7 +26,6 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c4 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -74,7 +73,6 @@ exports[`A FieldRadio 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {
@@ -122,15 +120,11 @@ exports[`A FieldRadio 1`] = `
     >
       <input
         aria-describedby="FieldRadioID-describedby"
-        checked={false}
         id="FieldRadioID"
         name="thumbsUp"
-        onChange={[Function]}
-        onClick={[Function]}
         type="radio"
       />
       <div
-        checked={false}
         className="c5 c6"
       />
     </div>
@@ -168,7 +162,6 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c4 {
-  margin: 3px;
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -216,7 +209,6 @@ exports[`A FieldRadio checked 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
 }
 
 .c0 {
@@ -264,15 +256,12 @@ exports[`A FieldRadio checked 1`] = `
     >
       <input
         aria-describedby="FieldRadioID-describedby"
-        checked={false}
+        checked={true}
         id="FieldRadioID"
         name="thumbsUp"
-        onChange={[Function]}
-        onClick={[Function]}
         type="radio"
       />
       <div
-        checked={false}
         className="c5 c6"
       />
     </div>

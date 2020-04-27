@@ -9,16 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- WWW site keyboard navigation improvement
 - `Menu` closes by default on `MenuItem` click
 - Provide `@types/styled-system` as a package dependency
 - `ActionList`
   - Added "select all" functionality and test suite
   - Added documentation
+- `TextArea` only supports vertical resizing now
 
 ### Fixed
 
 - `ActionListItem` no longer have shadow and cursor: pointer without an onClick
 - `ActionListItemColumn` aligns with header columns
+- `useScrollLock` no longer jitters on attempted scroll (used in modals and overlays)
 
 ## [0.7.28] - 2020-04-20
 
@@ -37,12 +40,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Radio` only sends `onChange` when state actually changes
 - `Field*` components no longer have a bottom margin by default (see `Form` update)
 - `Form` now acts as `SpaceVertical` component automatically putting a gap between each child item
 - `InputText` will now show red error icon when validation fails
 
 ### Removed
 
+- `Radio` no longer supports `readOnly` (was nice to know you, albeit briefly)
 - `FieldInline` no longer supports `labelFontWeight`
 
 ## [0.7.27] - 2020-04-15

@@ -26,7 +26,7 @@
 
 import { Icon, IconButton, IconNames, Tooltip } from '@looker/components'
 import { PrismTheme, Language } from 'prism-react-renderer'
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactNode, useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import {
   LiveProvider,
@@ -66,6 +66,18 @@ const CodeSandbox = ({
     setShowEditor(!showEditor)
   }
 
+  const liveEditorRef = useCallback(
+    (node: HTMLDivElement) => {
+      if (showEditor && node) {
+        const liveEditorInput = node.querySelector('textarea')
+        if (liveEditorInput) {
+          liveEditorInput.tabIndex = -1
+        }
+      }
+    },
+    [showEditor]
+  )
+
   return (
     <SandboxWrapper>
       <LiveProvider
@@ -98,7 +110,7 @@ const CodeSandbox = ({
             )}
           </LiveConsumer>
         </LivePreviewWrapper>
-        <EditorWrapper>
+        <EditorWrapper ref={liveEditorRef}>
           {showEditor && <LiveEditor />}
           <ActionLayout editorIsVisible={showEditor}>
             <ToggleCodeButton
