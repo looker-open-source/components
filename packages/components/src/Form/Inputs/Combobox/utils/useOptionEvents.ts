@@ -64,7 +64,9 @@ export function useOptionEvents<
 
   function handleMouseEnter() {
     const option = { label, value }
-    transition && transition(ComboboxActionType.NAVIGATE, { option })
+    window.setTimeout(() => {
+      transition && transition(ComboboxActionType.NAVIGATE, { option })
+    }, 20)
   }
 
   return {

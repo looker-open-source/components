@@ -188,7 +188,7 @@ const ComboboxListInternal = forwardRef(
           setListScrollPosition &&
             setListScrollPosition(contentContainer.scrollTop)
         }
-      }, 50)
+      }, 500)
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)

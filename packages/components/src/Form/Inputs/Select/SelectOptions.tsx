@@ -181,7 +181,7 @@ function useScrollWindow(length: number) {
   )
   return {
     end: end + 3 > length - 1 ? end : end + 3,
-    start: start - 3 < 0 ? start : start - 3,
+    start: start - 3 < 0 ? 0 : start - 3,
   }
 }
 
@@ -193,7 +193,8 @@ export function SelectOptions({
   isMulti,
   noOptionsLabel = 'No options',
 }: SelectOptionsProps) {
-  const { start, end } = useScrollWindow(options ? options.length : 0)
+  const start = 0
+  const { end } = useScrollWindow(options ? options.length : 0)
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
