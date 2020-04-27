@@ -23,28 +23,41 @@
  SOFTWARE.
 
  */
+import React, { FC, useState } from 'react'
+import { Fieldset } from '../../Fieldset'
+import { FieldRadio } from '../../Fields'
+import { OptionsGroupProps } from './OptionsGroup'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
-import { FieldsetDemo } from './Form/FieldsetDemo'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+type RadioGroupValue = string
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <OptionsGroupDemo />
-      <FieldsetDemo />
-      <FieldsDemo />
-    </ComponentsProvider>
-  )
+export interface RadioGroupProps extends OptionsGroupProps {
+  onChange?: (value: RadioGroupValue) => void
+  value?: RadioGroupValue
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export const RadioGroup: FC<RadioGroupProps> = ({
+  disabled,
+  inline,
+  onChange,
+  options,
+  value,
+}) => {
+  const [values, setValues] = useState(value)
+
+  const handleChange = (option: string) => {
+    !value && setValues(option)
+    onChange && onChange(option)
+  }
+  const radios = options.map((option, index) => (
+    <FieldRadio
+      onChange={() => handleChange(option.value)}
+      disabled={option.disabled || disabled}
+      key={index}
+      label={option.label}
+      checked={values}
+      value={option.value}
+    />
+  ))
+
+  return <Fieldset inline={inline}>{radios}</Fieldset>
+}
