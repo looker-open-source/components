@@ -62,7 +62,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   ))
 
   return (
-    <Fieldset disabled={disabled} inline={inline}>
+    <Fieldset data-testid="radio-list" disabled={disabled} inline={inline}>
       {radios}
     </Fieldset>
   )
