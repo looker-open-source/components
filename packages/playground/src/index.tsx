@@ -26,6 +26,8 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { InterpolationValue } from 'styled-components'
+import { theme } from '@looker/design-tokens'
 import { ComponentsProvider } from '@looker/components'
 import { FieldsDemo } from './Form/FieldsDemo'
 import { FieldsetDemo } from './Form/FieldsetDemo'

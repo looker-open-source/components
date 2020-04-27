@@ -2,10 +2,10 @@
 
 exports[`A FieldTextArea with default label 1`] = `
 .c4 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -18,8 +18,9 @@ exports[`A FieldTextArea with default label 1`] = `
 .c4 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -126,10 +127,10 @@ exports[`A FieldTextArea with default label 1`] = `
 
 exports[`A FieldTextArea with label inline 1`] = `
 .c4 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -142,8 +143,9 @@ exports[`A FieldTextArea with label inline 1`] = `
 .c4 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;

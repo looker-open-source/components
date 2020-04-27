@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Only apply Label styling to immediate child to prevent unintended consequences on nested Fields (e.g. CheckboxGroup)
 - `Legend` has improved default styling
 - `Space` & `SpaceVertical` now support `LayoutProps` and have `width: 100%` by default
+- `Menu` closes by default on `MenuItem` click
+- Provide `@types/styled-system` as a package dependency
+- `TextArea` only supports vertical resizing now
 
 ### Fixed
 
@@ -33,6 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `RequiredStar` fixed to actually show red asterisk (`className` assignment missing)
 - `Space` & `SpaceVertical` now uses double selector to override theme reset behavior
 - `ToggleSwitch` Explicitly specify `margin: 0` to suppress browser-default styling
+- `ActionListItem` no longer have shadow and cursor: pointer without an onClick
+- `ActionListItemColumn` aligns with header columns
+- `useScrollLock` no longer jitters on attempted scroll (used in modals and overlays)
 
 ## [0.7.28] - 2020-04-20
 

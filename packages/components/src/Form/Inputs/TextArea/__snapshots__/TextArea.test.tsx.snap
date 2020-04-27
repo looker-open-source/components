@@ -2,10 +2,10 @@
 
 exports[`TextArea default 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -18,56 +18,9 @@ exports[`TextArea default 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.5rem 0.75rem;
-  padding-right: 2rem;
-}
-
-.c0 textarea:hover {
-  border-color: #C1C6CC;
-}
-
-.c0 textarea:focus,
-.c0 textarea:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-<div
-  className="c0"
->
-  <textarea
-    id="TextAreaID"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = both 1`] = `
-.c0 {
-  position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   width: 100%;
-}
-
-.c0 .c1 {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-.c0 textarea {
-  height: 6.25rem;
-  width: 100%;
-  resize: both;
-  border: solid 1px;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -98,10 +51,10 @@ exports[`TextArea resizes with prop resize = both 1`] = `
 
 exports[`TextArea resizes with prop resize = false 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -116,54 +69,7 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   width: 100%;
   resize: none;
   border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.5rem 0.75rem;
-  padding-right: 2rem;
-}
-
-.c0 textarea:hover {
-  border-color: #C1C6CC;
-}
-
-.c0 textarea:focus,
-.c0 textarea:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-<div
-  className="c0"
->
-  <textarea
-    id="TextAreaID"
-  />
-</div>
-`;
-
-exports[`TextArea resizes with prop resize = horizontal 1`] = `
-.c0 {
-  position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   width: 100%;
-}
-
-.c0 .c1 {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-.c0 textarea {
-  height: 6.25rem;
-  width: 100%;
-  resize: horizontal;
-  border: solid 1px;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -194,10 +100,10 @@ exports[`TextArea resizes with prop resize = horizontal 1`] = `
 
 exports[`TextArea resizes with prop resize = none 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -212,6 +118,7 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   width: 100%;
   resize: none;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -242,10 +149,10 @@ exports[`TextArea resizes with prop resize = none 1`] = `
 
 exports[`TextArea resizes with prop resize = true 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -258,8 +165,9 @@ exports[`TextArea resizes with prop resize = true 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -290,10 +198,10 @@ exports[`TextArea resizes with prop resize = true 1`] = `
 
 exports[`TextArea resizes with prop resize = vertical 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -308,6 +216,7 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   width: 100%;
   resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -338,10 +247,10 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
 
 exports[`TextArea should accept disabled 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -354,8 +263,9 @@ exports[`TextArea should accept disabled 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -419,10 +329,10 @@ exports[`TextArea with an error validation 1`] = `
 }
 
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -435,8 +345,9 @@ exports[`TextArea with an error validation 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -499,10 +410,10 @@ exports[`TextArea with an error validation 1`] = `
 
 exports[`TextArea with placeholder 1`] = `
 .c0 {
-  position: relative;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
   width: 100%;
 }
 
@@ -515,8 +426,9 @@ exports[`TextArea with placeholder 1`] = `
 .c0 textarea {
   height: 6.25rem;
   width: 100%;
-  resize: both;
+  resize: vertical;
   border: solid 1px;
+  width: 100%;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   font-size: 0.875rem;

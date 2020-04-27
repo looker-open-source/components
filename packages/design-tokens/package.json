@@ -25,6 +25,7 @@
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "dependencies": {
+    "@types/styled-system": "^5.1.9",
     "lodash": "^4.17.15",
     "polished": "^3.5.1",
     "styled-system": "^5.1.5"
@@ -32,7 +33,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.149",
     "@types/styled-components": "^4.4.1",
-    "@types/styled-system": "^5.1.9",
     "csstype": "^2.6.10",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
