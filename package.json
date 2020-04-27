@@ -19,9 +19,11 @@
     "yarn": ">=1.14.0"
   },
   "scripts": {
-    "build": "yarn lerna run build --stream",
-    "postbuild": "run-p -c 'lint'",
-    "clean": "rm -Rf packages/*/lib packages/*/*.tsbuildinfo",
+    "prebuild": "yarn lerna run prebuild --stream",
+    "build": "yarn lerna exec --stream 'BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments'",
+    "declarations": "yarn lerna exec 'tsc -b tsconfig.build.json'",
+    "postbuild": "yarn declarations",
+    "clean": "rm -Rf packages/*/lib packages/*/dist packages/*/*.tsbuildinfo",
     "prepublishOnly": "yarn test",
     "deploy": "yarn workspace www deploy",
     "playground": "yarn workspace playground develop",
@@ -37,8 +39,7 @@
     "lint:mdx": "yarn workspace www lint",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
-    "test": "yarn jest",
-    "prepare": "yarn build"
+    "test": "yarn jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -49,6 +50,8 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "^7.9.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@looker/eslint-config": "^1.0.14",
     "@looker/prettier-config": "^1.0.15",

@@ -24,45 +24,41 @@
 
  */
 
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+module.exports = (api) => {
+  api.cache(true)
 
-const PATHS = {
-  app: path.join(__dirname, 'src/index.tsx'),
-}
-
-module.exports = {
-  devServer: {
-    index: 'index.html',
-    proxy: {
-      '/api': 'http://localhost:3001',
+  return {
+    env: {
+      build: {
+        ignore: [
+          '**/*.d.ts',
+          '**/*.test.js',
+          '**/*.test.jsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '__snapshots__',
+          '__tests__',
+        ],
+      },
     },
-  },
-  entry: {
-    app: PATHS.app,
-  },
-
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        loader: 'babel-loader',
-        test: /\.tsx?$/,
-      },
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
+    ignore: ['node_modules'],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-object-rest-spread',
+      '@babel/plugin-transform-runtime',
+      'babel-plugin-styled-components',
+      '@babel/plugin-proposal-optional-chaining',
+      '@babel/plugin-proposal-nullish-coalescing-operator',
     ],
-  },
-  output: {
-    filename: 'index_bundle.js',
-    path: path.join(__dirname, '/dist'),
-  },
-  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    plugins: [new TsconfigPathsPlugin()],
-  },
+
+    presets: [
+      [
+        '@babel/preset-react',
+        {
+          development: process.env.BABEL_ENV !== 'build',
+        },
+      ],
+      '@babel/preset-typescript',
+    ],
+  }
 }

@@ -39,12 +39,10 @@
   },
   "scripts": {
     "lint": "eslint . --ext mdx --config package.json --no-eslintrc --cache",
-    "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
-    "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "build": "gatsby build",
+    "postbuild": "echo \"components.looker.com\" > public/CNAME",
+    "deploy": "yarn build && yarn postbuild && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
+    "start": "gatsby develop"
   },
   "repository": {
     "type": "git",

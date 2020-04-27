@@ -24,45 +24,24 @@
 
  */
 
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+module.exports = (api) => {
+  api.cache(true)
 
-const PATHS = {
-  app: path.join(__dirname, 'src/index.tsx'),
-}
-
-module.exports = {
-  devServer: {
-    index: 'index.html',
-    proxy: {
-      '/api': 'http://localhost:3001',
-    },
-  },
-  entry: {
-    app: PATHS.app,
-  },
-
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        loader: 'babel-loader',
-        test: /\.tsx?$/,
-      },
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
+  return {
+    extends: '../../babel.config.js',
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          corejs: 3,
+          // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
+          targets: {
+            browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
+            node: 'current',
+          },
+          useBuiltIns: 'entry',
+        },
+      ],
     ],
-  },
-  output: {
-    filename: 'index_bundle.js',
-    path: path.join(__dirname, '/dist'),
-  },
-  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    plugins: [new TsconfigPathsPlugin()],
-  },
+  }
 }

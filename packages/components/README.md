@@ -18,7 +18,7 @@ You'll also need to satisfy `@looker/components` peer dependencies - Lodash, Rea
 
 yarn: `yarn add lodash react react-dom styled-components`
 
-Finally, if you're using Typescript you'll want to add the associated typings for the dependencies (note @looker/components is build in Typescript and therefore has built-in typings).
+Finally, if you're using Typescript you'll want to add the associated types for the dependencies (note @looker/components is build in Typescript and therefore has built-in types).
 
 `npm install --dev @types/lodash @types/react @types/react-dom @types/styled-components`
 

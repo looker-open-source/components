@@ -11,7 +11,7 @@
   },
   "private": true,
   "scripts": {
-    "develop": "webpack-dev-server --port 3000 --disable-host-check"
+    "start": "webpack-dev-server --port 3000"
   },
   "dependencies": {
     "@looker/components": "^0.7.30",

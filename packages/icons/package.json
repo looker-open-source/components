@@ -16,9 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn icons && yarn compile",
-    "compile": "tsc -b tsconfig.build.json",
-    "develop": "yarn compile --watch",
+    "prebuild": "yarn icons",
     "icons": "node bin/build.js"
   },
   "devDependencies": {
