@@ -168,44 +168,15 @@ export const OptionsGroupDemo = () => {
         name="group1"
         required
         label="Cheeses"
-        description="Pick all your cheeses"
-        validationMessage={{
-          message: 'Select at least 1 cheese',
-          type: 'error',
-        }}
         options={options}
       />
       <FieldRadioGroup
         onChange={noop}
         defaultValue={value}
-        validationMessage={{
-          message: 'Select at least 1 cheese',
-          type: 'error',
-        }}
         inline
         required
         name="group1"
         label="Cheeses"
-        description="Pick all your cheeses"
-        options={options}
-      />
-      <FieldRadioGroup
-        disabled
-        onChange={noop}
-        defaultValue={['swiss']}
-        name="group1"
-        label="Cheeses"
-        description="Pick all your cheeses"
-        options={options}
-      />
-      <FieldRadioGroup
-        disabled
-        onChange={noop}
-        defaultValue={['swiss']}
-        inline
-        name="group1"
-        label="Cheeses"
-        description="Pick all your cheeses"
         options={options}
       />
     </Grid>
