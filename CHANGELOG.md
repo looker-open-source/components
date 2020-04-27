@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 - Windowing (virtualization) to `Select` and `SelectMulti`,
   - `windowedOptions` prop overrides the default condition of >= 100 options
+- RangeSlider component
 
 ### Changed
 
