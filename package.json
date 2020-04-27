@@ -37,7 +37,8 @@
     "lint:mdx": "yarn workspace www lint",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
