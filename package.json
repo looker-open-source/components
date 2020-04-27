@@ -80,9 +80,6 @@
     "typescript": "^3.8.3",
     "typescript-plugin-styled-components": "^1.4.4"
   },
-  "resolutions": {
-    "sharp": "0.24.0"
-  },
   "lint-staged": {
     "**/*.ts?(x)": [
       "stylelint",
