@@ -31,6 +31,7 @@ import { OptionsGroupProps } from './OptionsGroup'
 type RadioGroupValue = string
 
 export interface RadioGroupProps extends OptionsGroupProps {
+  className?: string
   onChange?: (value: RadioGroupValue) => void
   value?: RadioGroupValue
 }
@@ -38,26 +39,31 @@ export interface RadioGroupProps extends OptionsGroupProps {
 export const RadioGroup: FC<RadioGroupProps> = ({
   disabled,
   inline,
-  onChange,
   options,
+  defaultValue = '',
   value,
+  onChange,
 }) => {
-  const [values, setValues] = useState(value)
+  const [currentOption, setCurrentOption] = useState(value || defaultValue)
 
-  const handleChange = (option: string) => {
-    !value && setValues(option)
+  const handleOnchange = (option: string) => {
+    !value && setCurrentOption(option)
     onChange && onChange(option)
   }
+
   const radios = options.map((option, index) => (
     <FieldRadio
-      onChange={() => handleChange(option.value)}
+      checked={currentOption === option.value}
       disabled={option.disabled || disabled}
       key={index}
       label={option.label}
-      checked={values}
-      value={option.value}
+      onChange={() => handleOnchange(option.value)}
     />
   ))
 
-  return <Fieldset inline={inline}>{radios}</Fieldset>
+  return (
+    <Fieldset disabled={disabled} inline={inline}>
+      {radios}
+    </Fieldset>
+  )
 }

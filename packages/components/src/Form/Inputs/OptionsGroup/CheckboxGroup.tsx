@@ -41,18 +41,18 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   disabled,
   inline,
   options,
-  onChange,
   defaultValue = [],
   value,
+  onChange,
 }) => {
-  const [values, setValues] = useState(value || defaultValue)
+  const [currentOptions, setCurrentOptions] = useState(value || defaultValue)
 
   const handleChange = (option: string) => {
-    const newValues = values.includes(option)
-      ? [...values.filter((v) => v !== option)]
-      : [...values, option]
+    const newValues = currentOptions.includes(option)
+      ? [...currentOptions.filter((v) => v !== option)]
+      : [...currentOptions, option]
 
-    !value && setValues(newValues)
+    !value && setCurrentOptions(newValues)
     onChange && onChange(newValues)
   }
   const checkboxes = options.map((option, index) => (
@@ -61,7 +61,7 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
       disabled={option.disabled || disabled}
       key={index}
       label={option.label}
-      checked={values.includes(option.value)}
+      checked={currentOptions.includes(option.value)}
       value={option.value}
     />
   ))

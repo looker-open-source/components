@@ -28,14 +28,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
-import {
-  Field,
-  FieldProps,
-  omitFieldProps,
-  pickFieldProps,
-  RadioGroup,
-  RadioGroupProps,
-} from '../Field'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { RadioGroup, RadioGroupProps } from '../../Inputs/OptionsGroup'
 
 export interface FieldRadioGroupProps
   extends RadioGroupProps,
@@ -44,7 +38,6 @@ export interface FieldRadioGroupProps
 const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
   id = uuid(),
   options,
-  value,
   ...props
 }) => {
   const validationMessage = useFormContext(props)
@@ -63,7 +56,6 @@ const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
         inline={props.inline}
         name={name || id}
         options={options}
-        value={value}
       />
     </Field>
   )
