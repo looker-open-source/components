@@ -52,7 +52,6 @@ export interface RangeSliderProps extends SpaceProps, WidthProps {
   min?: number
   step?: number
   value?: number[]
-  boundaries?: number[]
   disabled?: boolean
   readOnly?: boolean
   validationType?: ValidationType
@@ -89,11 +88,16 @@ const createNewValue = (
   return sort(newValue)
 }
 
+const roundToStep = (point: number, step: number) => {
+  return Math.round(point / step) * step
+}
+
 const calculatePointValue = (
   mouseX: number,
   containerRect: ClientRect,
   min: number,
-  max: number
+  max: number,
+  step: number
 ): number => {
   // calculate point value based on where user clicked within container
   const mousePosition = Math.min(
@@ -101,20 +105,19 @@ const calculatePointValue = (
     containerRect.width
   )
   const possibleValueRange = max - min
-  const newPoint = Math.round(
+  const newPoint =
     (mousePosition / containerRect.width) * possibleValueRange + min
-  )
 
-  return newPoint
+  return roundToStep(newPoint, step)
 }
 
 export const InternalRangeSlider: FC<RangeSliderProps> = ({
   className,
-  boundaries = [0, 10],
+  min = 0,
+  max = 10,
   step = 1,
 }) => {
-  const [minBound, maxBound] = boundaries
-  const [value, setValue] = useState(boundaries)
+  const [value, setValue] = useState([min, max])
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -134,8 +137,8 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 
   // calculate thumb position based on set value
   const [minValue, maxValue] = value
-  const minPos = (minValue / maxBound) * containerRect.width
-  const maxPos = (maxValue / maxBound) * containerRect.width
+  const minPos = ((minValue - min) / (max - min)) * containerRect.width
+  const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
   const fillWidth = maxPos - minPos
 
   const thumbRefs = [minThumbRef, maxThumbRef]
@@ -151,11 +154,11 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   }
 
   const incrementPoint = (point: number) => {
-    return Math.min(point + step, maxBound)
+    return Math.min(point + step, max)
   }
 
   const decrementPoint = (point: number) => {
-    return Math.max(point - step, minBound)
+    return Math.max(point - step, min)
   }
 
   const handleKeyboardNav = (e: KeyboardEvent) => {
@@ -189,8 +192,9 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
     const newPoint = calculatePointValue(
       mousePos.x,
       containerRect,
-      minBound,
-      maxBound
+      min,
+      max,
+      step
     )
     const newValue = createNewValue(
       value,
@@ -266,7 +270,6 @@ interface ThumbLabelProps {
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
-  transition: background 0.2s;
   user-select: none;
   position: absolute;
   top: -30px;

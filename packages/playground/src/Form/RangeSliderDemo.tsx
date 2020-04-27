@@ -37,6 +37,10 @@ export const RangeSliderDemo = () => {
             <Heading mb="small">Basic Component:</Heading>
             <RangeSlider />
           </CardContent>
+          <CardContent p="xxlarge">
+            <Heading mb="small">Min, Max, Step:</Heading>
+            <RangeSlider min={100} max={1000} step={50} />
+          </CardContent>
         </Card>
       </DemoGrid>
     </DemoWrapper>
