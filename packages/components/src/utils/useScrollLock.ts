@@ -31,7 +31,9 @@ import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
 function setBodyOverflowHidden() {
-  document.body.style.overflow = 'hidden'
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
 }
 
 export function useScrollLock(
@@ -47,9 +49,13 @@ export function useScrollLock(
   const { value, setOn, setOff } = useToggle(enabled)
 
   // save the existing body overflow value
-  const bodyOverflowRef = useRef(document.body.style.overflow)
+  const bodyOverflowRef = useRef(
+    typeof document !== 'undefined' ? document.body.style.overflow : ''
+  )
 
   useEffect(() => {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return
+
     let scrollTop = window.scrollY
     let scrollTarget: EventTarget | HTMLElement | null = document
 
