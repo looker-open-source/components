@@ -85,6 +85,9 @@ exports[`Checkbox checked set to mixed 1`] = `
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>
+        Check Mark Mixed
+      </title>
       <g
         fill="none"
         stroke="currentColor"
@@ -339,6 +342,9 @@ exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>
+        Check Mark Mixed
+      </title>
       <g
         fill="none"
         stroke="currentColor"
@@ -712,6 +718,9 @@ exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>
+        Check Mark Mixed
+      </title>
       <g
         fill="none"
         stroke="currentColor"
