@@ -26,30 +26,13 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { InterpolationValue } from 'styled-components'
-import { theme } from '@looker/design-tokens'
 import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
-import { FieldsetDemo } from './Form/FieldsetDemo'
-import { SpaceExamples } from './Layout/SpaceExamples'
-
-const resetTheme = {
-  ...theme,
-  reset: () => {
-    const reset: InterpolationValue = {
-      margin: 0,
-    }
-
-    return reset
-  },
-}
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: React.FC = () => {
   return (
-    <ComponentsProvider theme={resetTheme}>
-      <SpaceExamples />
-      <FieldsetDemo />
-      <FieldsDemo />
+    <ComponentsProvider>
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
