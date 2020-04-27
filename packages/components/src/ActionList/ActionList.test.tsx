@@ -65,6 +65,11 @@ const data = [
     name: 'Richard Garfield',
     type: 'Game Designer',
   },
+  {
+    id: 2,
+    name: 'John Carmack',
+    type: 'Programmer',
+  },
 ]
 
 const header = (
@@ -302,8 +307,8 @@ describe('ActionList', () => {
     })
 
     test('Checkbox click calls onSelect', () => {
-      const { getByRole } = renderWithTheme(actionListWithSelect)
-      fireEvent.click(getByRole('checkbox'))
+      const { getAllByRole } = renderWithTheme(actionListWithSelect)
+      fireEvent.click(getAllByRole('checkbox')[0])
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 
@@ -315,8 +320,8 @@ describe('ActionList', () => {
     })
 
     test('itemsSelected determines if a checkbox is checked', () => {
-      const { getByRole } = renderWithTheme(actionListWithItemsSelected)
-      const checkbox = getByRole('checkbox')
+      const { getAllByRole } = renderWithTheme(actionListWithItemsSelected)
+      const checkbox = getAllByRole('checkbox')[0]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
   })
@@ -335,19 +340,19 @@ describe('ActionList', () => {
     const actionListWithSelectAll = <ActionList {...props}>{items}</ActionList>
 
     const actionListWithNoItemsSelected = (
-      <ActionList {...props} areAllItemsSelected={false}>
+      <ActionList {...props} itemsSelected={[]}>
         {items}
       </ActionList>
     )
 
     const actionListWithSomeItemsSelected = (
-      <ActionList {...props} areAllItemsSelected={'mixed'}>
+      <ActionList {...props} itemsSelected={['1']}>
         {items}
       </ActionList>
     )
 
     const actionListWithAllItemsSelected = (
-      <ActionList {...props} areAllItemsSelected>
+      <ActionList {...props} itemsSelected={['1', '2']}>
         {items}
       </ActionList>
     )
@@ -360,13 +365,13 @@ describe('ActionList', () => {
       expect(onSelectAll).toHaveBeenCalledTimes(1)
     })
 
-    test('Header checkbox is unchecked when areAllItemsSelected is false', () => {
+    test('Header checkbox is unchecked when itemsSelected includes all row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(false)
     })
 
-    test('Header checkbox is mixed when areAllItemsSelected is false', () => {
+    test('Header checkbox is mixed when areAllItemsSelected is mixed', () => {
       const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
       getByTitle('Check Mark Mixed')
     })

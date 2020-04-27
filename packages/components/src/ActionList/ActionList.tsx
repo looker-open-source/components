@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import {
   ActionListHeader,
@@ -134,6 +134,8 @@ export const ActionListLayout: FC<ActionListProps> = ({
   onSelectAll,
   onSort,
 }) => {
+  const [allItems, setAllItems] = useState([] as string[])
+
   const actionListHeader =
     header === true ? (
       <ActionListHeader>
@@ -144,6 +146,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   const context = {
+    allItems,
     areAllItemsSelected,
     canSelect,
     canSelectAll: canSelect && canSelectAll,
@@ -153,6 +156,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     onSelect,
     onSelectAll,
     onSort,
+    setAllItems,
   }
 
   return (

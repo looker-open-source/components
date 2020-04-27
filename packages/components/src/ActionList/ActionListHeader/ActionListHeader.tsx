@@ -34,18 +34,27 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   children,
   className,
 }) => {
-  const { areAllItemsSelected, canSelectAll, onSelectAll } = useContext(
+  const { allItems, canSelectAll, itemsSelected, onSelectAll } = useContext(
     ActionListContext
   )
 
   const onChange = onSelectAll ? () => onSelectAll() : undefined
+
+  // Includes a check for allItems length to prevent the in-between state where ActionList first loads
+  // and allItems is an empty array (which leads to header checkbox being checked for a split-second)
+  const checked =
+    !!allItems.length && allItems.every((item) => itemsSelected.includes(item))
+      ? true
+      : allItems.some((item) => itemsSelected.includes(item))
+      ? 'mixed'
+      : false
 
   return (
     <ActionListRow
       className={className}
       hasCheckbox={canSelectAll}
       onChange={onChange}
-      checked={areAllItemsSelected}
+      checked={checked}
     >
       {children}
     </ActionListRow>

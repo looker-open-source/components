@@ -26,7 +26,7 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useRef } from 'react'
+import React, { FC, ReactNode, useContext, useRef, useEffect } from 'react'
 import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
@@ -48,9 +48,21 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
   onClick,
 }) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
-  const { canSelect, itemsSelected, onSelect, onClickRowSelect } = useContext(
-    ActionListContext
-  )
+  const {
+    allItems,
+    canSelect,
+    itemsSelected,
+    onSelect,
+    onClickRowSelect,
+    setAllItems,
+  } = useContext(ActionListContext)
+
+  useEffect(() => {
+    setAllItems &&
+      !disabled &&
+      !allItems.includes(id) &&
+      setAllItems([...allItems, id])
+  }, [allItems, disabled, id, setAllItems])
 
   const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
 
