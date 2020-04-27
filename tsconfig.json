@@ -1,6 +1,8 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
     "baseUrl": ".",
     "paths": {
       "@looker/components": ["packages/components/src"],
@@ -10,5 +12,6 @@
       "@looker/icons": ["packages/icons/src"]
     }
   },
-  "include": ["packages"]
+  "include": ["packages/*/src"],
+  "exclude": ["packages/www/src"]
 }
