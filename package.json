@@ -37,7 +37,8 @@
     "lint:mdx": "yarn workspace www lint",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "@looker/eslint-config": "^1.0.14",
