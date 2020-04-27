@@ -180,7 +180,7 @@ function useScrollWindow(length: number) {
     (listClientRect.height + listScrollPosition) / optHeight
   )
   return {
-    end: end + 3 > length - 1 ? end : end + 3,
+    end: end + 3 > length - 1 ? length - 1 : end + 3,
     start: start - 3 < 0 ? 0 : start - 3,
   }
 }
@@ -193,8 +193,7 @@ export function SelectOptions({
   isMulti,
   noOptionsLabel = 'No options',
 }: SelectOptionsProps) {
-  const start = 0
-  const { end } = useScrollWindow(options ? options.length : 0)
+  const { start, end } = useScrollWindow(options ? options.length : 0)
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -211,32 +210,41 @@ export function SelectOptions({
     />
   )
 
-  const middle = options && options.slice(start, end)
-  const after = options ? options.length - end : 0
+  const optionsToRender = options && options.slice(start, end)
+  const after = options ? options.length - 1 - end : 0
+  // console.log('optionsToRender', optionsToRender[optionsToRender.length - 1])
+  // const optionsToRender = options
+  // const after = 0
 
   return (
     <>
-      {start > 0 && <Box height={start * optHeight} />}
-      {middle && middle.length > 0
+      {start > 0 && <li style={{ height: `${start * optHeight}px` }} />}
+      {optionsToRender && optionsToRender.length > 0
         ? [
-            ...middle.map((option: SelectOptionProps, index: number) => {
-              const optionAsGroup = option as SelectOptionGroupProps
-              return optionAsGroup.options ? (
-                <SelectOptionGroup
-                  key={index}
-                  {...optionAsGroup}
-                  isMulti={isMulti}
-                />
-              ) : isMulti ? (
-                renderMultiOption(option as SelectOptionObject, index)
-              ) : (
-                renderOption(option as SelectOptionObject, index)
-              )
-            }),
+            ...optionsToRender.map(
+              (option: SelectOptionProps, index: number) => {
+                const optionAsGroup = option as SelectOptionGroupProps
+                const correctedIndex = index + start
+                return optionAsGroup.options ? (
+                  <SelectOptionGroup
+                    key={index}
+                    {...optionAsGroup}
+                    isMulti={isMulti}
+                  />
+                ) : isMulti ? (
+                  renderMultiOption(
+                    option as SelectOptionObject,
+                    correctedIndex
+                  )
+                ) : (
+                  renderOption(option as SelectOptionObject, correctedIndex)
+                )
+              }
+            ),
             createOption,
           ]
         : createOption || noOptions}
-      {after && <Box height={after * optHeight} />}
+      {after && <li style={{ height: `${after * optHeight}px` }} />}
     </>
   )
 }
