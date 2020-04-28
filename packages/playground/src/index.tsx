@@ -27,16 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
-import { FieldsetDemo } from './Form/FieldsetDemo'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+import { Demo } from './Form/Demo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <OptionsGroupDemo />
-      <FieldsetDemo />
-      <FieldsDemo />
+      <Demo />
     </ComponentsProvider>
   )
 }

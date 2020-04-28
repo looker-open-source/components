@@ -75,23 +75,6 @@ export const OptionsGroupDemo = () => {
         onChange={noop}
         defaultValue={value}
         name="group1"
-        label="Cheeses"
-        description="Pick all your cheeses"
-        options={options}
-      />
-      <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        inline
-        name="group1"
-        label="Cheeses"
-        description="Pick all your cheeses"
-        options={options}
-      />
-      <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
         required
         label="Cheeses"
         description="Pick all your cheeses"
@@ -115,22 +98,7 @@ export const OptionsGroupDemo = () => {
         description="Pick all your cheeses"
         options={options}
       />
-      <CheckboxGroup
-        disabled
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
-        options={options}
-      />
-      <CheckboxGroup
-        disabled
-        onChange={noop}
-        defaultValue={value}
-        name="group2"
-        inline
-        options={options}
-      />
-      <FieldCheckboxGroup
+      <FieldRadioGroup
         disabled
         onChange={noop}
         defaultValue={['swiss']}
@@ -139,7 +107,7 @@ export const OptionsGroupDemo = () => {
         description="Pick all your cheeses"
         options={options}
       />
-      <FieldCheckboxGroup
+      <FieldRadioGroup
         disabled
         onChange={noop}
         defaultValue={['swiss']}
