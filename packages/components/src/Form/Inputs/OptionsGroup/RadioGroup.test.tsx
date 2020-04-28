@@ -66,37 +66,34 @@ test('RadioGroup render a radio list', () => {
 })
 
 test('RadioGroup works with defaultValue', () => {
-  const { getByLabelText } = renderWithTheme(
-    <RadioGroup
-      defaultValue={'cheddar'}
-      id="1"
-      name="group1"
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
-  )
-
-  console.log(getByLabelText('Cheddar'))
-
+  // const { getByLabelText } = renderWithTheme(
+  //   <RadioGroup
+  //     defaultValue={'cheddar'}
+  //     id="1"
+  //     name="group1"
+  //     options={[
+  //       {
+  //         label: 'Cheddar',
+  //         value: 'cheddar',
+  //       },
+  //       {
+  //         label: 'Gouda',
+  //         value: 'gouda',
+  //       },
+  //       {
+  //         disabled: true,
+  //         label: 'Swiss',
+  //         value: 'swiss',
+  //       },
+  //       {
+  //         label: 'Roquefort',
+  //         value: 'roquefort',
+  //       },
+  //     ]}
+  //   />
+  // )
+  // console.log(getByLabelText('Cheddar'))
   // expect(
   // getByLabelText('Cheddar').currentOption)
-
   // getByLabelText('Cheddar').checked).toBe(true)
 })

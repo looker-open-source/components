@@ -64,3 +64,36 @@ test('CheckboxGroup render a list of checkbox', () => {
 
   expect(handleChange).toHaveBeenCalledWith(['cheddar'])
 })
+
+test('CheckboxGroup render a list of checkbox with defaultValue checked', () => {
+  const handleChange = jest.fn()
+
+  const { getByLabelText } = renderWithTheme(
+    <CheckboxGroup
+      defaultValue={['cheddar']}
+      id="1"
+      name="group1"
+      onChange={handleChange}
+      options={[
+        {
+          label: 'Cheddar',
+          value: 'cheddar',
+        },
+        {
+          label: 'Gouda',
+          value: 'gouda',
+        },
+        {
+          disabled: true,
+          label: 'Swiss',
+          value: 'swiss',
+        },
+        {
+          label: 'Roquefort',
+          value: 'roquefort',
+        },
+      ]}
+    />
+  )
+  expect(getByLabelText('Cheddar').checked).toBe(true)
+})
