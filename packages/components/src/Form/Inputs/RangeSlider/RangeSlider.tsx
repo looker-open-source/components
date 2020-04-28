@@ -53,6 +53,7 @@ export interface RangeSliderProps extends SpaceProps, WidthProps {
   step?: number
   onChange?: (value: number[]) => void
   value?: number[]
+  defaultValue?: number[]
   disabled?: boolean
   readOnly?: boolean
   validationType?: ValidationType
@@ -118,9 +119,14 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   max = 10,
   step = 1,
   value: valueProp,
+  defaultValue: defaultValueProp,
   onChange,
+  disabled = false,
+  readOnly = false,
 }) => {
-  const [value, setValue] = useState(valueProp || [min, max])
+  const [value, setValue] = useState(
+    valueProp || defaultValueProp || [min, max]
+  )
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -165,26 +171,32 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   }
 
   const handleKeyboardNav = (e: KeyboardEvent) => {
-    if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
-      const unfocusedThumb = focusedThumb === 0 ? 1 : 0
-      const mutationFn =
-        e.key === 'ArrowUp' || e.key === 'ArrowRight'
-          ? incrementPoint
-          : decrementPoint
-      const newPoint = mutationFn(value[focusedThumb])
-      const newValue = sort([newPoint, value[unfocusedThumb]])
-      focusChangedPoint(newValue, newPoint)
-      setValue(newValue)
-      onChange && onChange(newValue)
+    if (!disabled && !readOnly) {
+      if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
+        const unfocusedThumb = focusedThumb === 0 ? 1 : 0
+        const mutationFn =
+          e.key === 'ArrowUp' || e.key === 'ArrowRight'
+            ? incrementPoint
+            : decrementPoint
+        const newPoint = mutationFn(value[focusedThumb])
+        const newValue = sort([newPoint, value[unfocusedThumb]])
+        focusChangedPoint(newValue, newPoint)
+        setValue(newValue)
+        onChange && onChange(newValue)
+      }
     }
   }
 
   const focusMinValue = () => {
-    setFocusedThumb(0)
+    if (!disabled && !readOnly) {
+      setFocusedThumb(0)
+    }
   }
 
   const focusMaxValue = () => {
-    setFocusedThumb(1)
+    if (!disabled && !readOnly) {
+      setFocusedThumb(1)
+    }
   }
 
   const handleBlur = () => {
@@ -192,22 +204,24 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   }
 
   const handleMouseEvent = (maintainFocus: boolean) => {
-    // update slider positions when clicking
-    const newPoint = calculatePointValue(
-      mousePos.x,
-      containerRect,
-      min,
-      max,
-      step
-    )
-    const newValue = createNewValue(
-      value,
-      newPoint,
-      maintainFocus ? focusedThumb : undefined
-    )
-    focusChangedPoint(newValue, newPoint)
-    setValue(newValue)
-    onChange && onChange(newValue)
+    if (!disabled && !readOnly) {
+      // update slider positions when clicking
+      const newPoint = calculatePointValue(
+        mousePos.x,
+        containerRect,
+        min,
+        max,
+        step
+      )
+      const newValue = createNewValue(
+        value,
+        newPoint,
+        maintainFocus ? focusedThumb : undefined
+      )
+      focusChangedPoint(newValue, newPoint)
+      setValue(newValue)
+      onChange && onChange(newValue)
+    }
   }
 
   const handleMouseDown = partial(handleMouseEvent, false)
@@ -232,28 +246,42 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   return (
     <div onMouseDown={handleMouseDown} className={className} ref={callbackRef}>
       <SliderTrack>
-        <SliderFill fillStart={minPos} fillWidth={fillWidth} />
-        <ThumbLabel position={minPos} focus={focusedThumb === 0}>
+        <SliderFill
+          fillStart={minPos}
+          fillWidth={fillWidth}
+          disabled={disabled}
+        />
+        <ThumbLabel
+          position={minPos}
+          focus={focusedThumb === 0}
+          disabled={disabled}
+        >
           {minValue}
         </ThumbLabel>
-        <ThumbLabel position={maxPos} focus={focusedThumb === 1}>
+        <ThumbLabel
+          position={maxPos}
+          focus={focusedThumb === 1}
+          disabled={disabled}
+        >
           {maxValue}
         </ThumbLabel>
         <Thumb
           position={minPos}
-          tabIndex={'0' as never} // "as never" ¯\_(ツ)_/¯
+          tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
           onFocus={focusMinValue}
           onBlur={handleBlur}
           onKeyDown={handleKeyboardNav}
           ref={minThumbRef}
+          disabled={disabled}
         />
         <Thumb
           position={maxPos}
-          tabIndex={'0' as never} // "as never" ¯\_(ツ)_/¯
+          tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
           onFocus={focusMaxValue}
           onBlur={handleBlur}
           onKeyDown={handleKeyboardNav}
           ref={maxThumbRef}
+          disabled={disabled}
         />
       </SliderTrack>
     </div>
@@ -277,6 +305,7 @@ const SliderTrack = styled.div`
 interface ThumbLabelProps {
   position: number
   focus: boolean
+  disabled: boolean
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
@@ -285,7 +314,8 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
   top: -30px;
   transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
   text-align: center;
-  color: ${({ theme: { colors } }) => colors.semanticColors.primary.main};
+  color: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.palette.charcoal700 : colors.semanticColors.primary.main};
   padding: 0 0.5rem;
   border-radius: 1rem;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
@@ -296,12 +326,17 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
 interface ThumbProps {
   position: number
   tabIndex: string
+  disabled: boolean
 }
 
 const Thumb = styled.div<ThumbProps>`
   border-radius: 100%;
   cursor: pointer;
-  border: 3px solid ${({ theme }) => theme.colors.semanticColors.primary.main};
+  border: 3px solid
+    ${({ theme: { colors }, disabled }) =>
+      disabled
+        ? colors.palette.charcoal500
+        : colors.semanticColors.primary.main};
   height: 16px;
   width: 16px;
   background: ${({ theme }) => theme.colors.palette.white};
@@ -311,7 +346,7 @@ const Thumb = styled.div<ThumbProps>`
   transform: translateX(${({ position = 0 }) => `${position}px`});
   &:focus {
     outline: none;
-    border-width: 5px;
+    border-width: ${({ disabled }) => (disabled ? '3px' : '5px')};
     z-index: 1;
   }
 `
@@ -319,11 +354,13 @@ const Thumb = styled.div<ThumbProps>`
 interface SliderFillProps {
   fillStart: number
   fillWidth: number
+  disabled: boolean
 }
 
 const SliderFill = styled.div<SliderFillProps>`
   height: 100%;
-  background: ${({ theme: { colors } }) => colors.semanticColors.primary.main};
+  background: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.palette.charcoal400 : colors.semanticColors.primary.main};
   position: absolute;
   left: ${({ fillStart }) => fillStart}px;
   width: ${({ fillWidth }) => fillWidth}px;

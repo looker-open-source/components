@@ -55,10 +55,9 @@ export const RangeSliderDemo = () => {
           </CardContent>
           <CardContent p="xxlarge">
             <Heading>Controlled Component:</Heading>
-            <Text color="green" mr="small">
-              Min: {controlledValue[0]}
+            <Text color="#0e8c42" fontWeight="bold">
+              {controlledValue[0]} &mdash; {controlledValue[1]}
             </Text>
-            <Text color="green">Max: {controlledValue[1]}</Text>
             <RangeSlider
               min={20}
               max={50}
@@ -72,6 +71,17 @@ export const RangeSliderDemo = () => {
               30 — 37
             </Button>
             <Button onClick={() => handleChange([39, 40])}>39 — 40</Button>
+          </CardContent>
+        </Card>
+
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading>Disabled</Heading>
+            <RangeSlider disabled />
+          </CardContent>
+          <CardContent p="xxlarge">
+            <Heading>ReadOnly</Heading>
+            <RangeSlider defaultValue={[3, 7]} readOnly />
           </CardContent>
         </Card>
       </DemoGrid>
