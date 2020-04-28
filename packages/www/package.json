@@ -14,7 +14,7 @@
     "gatsby-plugin-mdx": "^1.1.9",
     "gatsby-plugin-react-helmet": "^3.2.4",
     "gatsby-plugin-sharp": "^2.6.0",
-    "gatsby-plugin-styled-components": "^3.2.1",
+    "gatsby-plugin-styled-components": "^3.3.0",
     "gatsby-plugin-typescript": "^2.3.3",
     "gatsby-remark-images": "^3.2.2",
     "gatsby-source-filesystem": "^2.2.4",
