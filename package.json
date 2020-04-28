@@ -55,7 +55,7 @@
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "@looker/eslint-config": "^1.0.14",
+    "@looker/eslint-config": "^1.0.16",
     "@looker/prettier-config": "^1.0.15",
     "@testing-library/jest-dom": "^5.5.0",
     "@types/node": "^13.13.1",
