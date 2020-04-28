@@ -38,7 +38,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "polished": "^3.5.1",
-    "react-day-picker": "^7.3.0",
+    "react-day-picker": "^7.4.8",
     "react-hotkeys": "^2.0.0",
     "react-resize-detector": "^4.2.3",
     "react-transition-group": "^4.3.0",
