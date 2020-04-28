@@ -290,7 +290,7 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
   border-radius: 1rem;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
   background: ${({ theme, focus }) =>
-    focus ? theme.colors.palette.purple100 : theme.colors.palette.white};
+    focus ? theme.colors.palette.purple100 : `rgba(255, 255, 255, 0.8)`};
 `
 
 interface ThumbProps {
