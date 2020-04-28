@@ -42,6 +42,7 @@ export const RangeSliderDemo = () => {
 
   return (
     <DemoWrapper>
+      <Heading as="h1">Range Slider</Heading>
       <DemoGrid>
         <Card height="auto">
           <CardContent p="xxlarge">
