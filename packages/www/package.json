@@ -20,7 +20,7 @@
     "gatsby-source-filesystem": "^2.2.4",
     "lodash": "^4.17.15",
     "polished": "^3.5.1",
-    "prism-react-renderer": "^1.0.2",
+    "prism-react-renderer": "^1.1.0",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
