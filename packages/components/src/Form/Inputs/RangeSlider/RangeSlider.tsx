@@ -43,6 +43,7 @@ import {
   useMeasuredRef,
   useMouseDragPosition,
   usePreviousValue,
+  useReadOnlyWarn,
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 
@@ -122,10 +123,17 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   defaultValue: defaultValueProp,
   onChange,
   disabled = false,
-  readOnly = false,
+  readOnly: readOnlyProp = false,
 }) => {
+  const unintentionalReadOnly = useReadOnlyWarn(
+    'RangeSlider',
+    valueProp,
+    onChange
+  )
+  const readOnly = readOnlyProp || unintentionalReadOnly
+
   const [value, setValue] = useState(
-    valueProp || defaultValueProp || [min, max]
+    sort(valueProp || defaultValueProp || [min, max])
   )
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
@@ -240,7 +248,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 
   // Controlled Component: update value state when external value prop changes
   useEffect(() => {
-    valueProp && setValue(valueProp)
+    valueProp && setValue(sort(valueProp))
   }, [valueProp])
 
   return (
