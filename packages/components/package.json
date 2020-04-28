@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.7.29",
-    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
     "@types/btoa": "^1.2.3",
     "@types/d3-color": "^1.2.2",
