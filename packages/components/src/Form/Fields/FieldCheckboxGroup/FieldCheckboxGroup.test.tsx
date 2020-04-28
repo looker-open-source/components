@@ -25,7 +25,7 @@
  */
 import 'jest-styled-components'
 import React from 'react'
-// import { fireEvent } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { FieldCheckboxGroup } from './FieldCheckboxGroup'
@@ -75,4 +75,45 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
     'Swiss',
     'Roquefort',
   ])
+})
+
+test('FieldCheckboxGroup checkbox onChange is working as expected', () => {
+  const handleChange = jest.fn()
+
+  const { getByLabelText } = renderWithTheme(
+    <FieldCheckboxGroup
+      id="1"
+      name="group1"
+      onChange={handleChange}
+      options={[
+        {
+          label: 'Cheddar',
+          value: 'cheddar',
+        },
+        {
+          label: 'Gouda',
+          value: 'gouda',
+        },
+        {
+          disabled: true,
+          label: 'Swiss',
+          value: 'swiss',
+        },
+        {
+          label: 'Roquefort',
+          value: 'roquefort',
+        },
+      ]}
+    />
+  )
+  const Cheddar = getByLabelText('Cheddar')
+  const Gouda = getByLabelText('Gouda')
+
+  fireEvent.click(Cheddar)
+
+  expect(handleChange).toHaveBeenCalledWith(['cheddar'])
+
+  fireEvent.click(Gouda)
+
+  expect(handleChange).toHaveBeenCalledWith(['cheddar', 'gouda'])
 })
