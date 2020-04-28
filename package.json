@@ -57,7 +57,7 @@
     "@babel/runtime": "^7.9.2",
     "@looker/eslint-config": "^1.0.14",
     "@looker/prettier-config": "^1.0.15",
-    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/jest-dom": "^5.5.0",
     "@types/node": "^13.13.1",
     "babel-core": "^7.0.0-bridge",
     "babel-plugin-styled-components": "^1.10.7",
