@@ -28,7 +28,7 @@
     "@looker/components-providers": "^0.7.29",
     "@looker/design-tokens": "^0.7.29",
     "@looker/icons": "^0.7.29",
-    "@popperjs/core": "^2.3.3",
+    "@popperjs/core": "^2.4.0",
     "@types/styled-system": "^5.1.9",
     "btoa": "^1.2.1",
     "d3-color": "^1.4.1",
