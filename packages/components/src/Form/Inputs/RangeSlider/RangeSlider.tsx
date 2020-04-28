@@ -51,6 +51,7 @@ export interface RangeSliderProps extends SpaceProps, WidthProps {
   max?: number
   min?: number
   step?: number
+  onChange?: (value: number[]) => void
   value?: number[]
   disabled?: boolean
   readOnly?: boolean
@@ -116,8 +117,10 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   min = 0,
   max = 10,
   step = 1,
+  value: valueProp,
+  onChange,
 }) => {
-  const [value, setValue] = useState([min, max])
+  const [value, setValue] = useState(valueProp || [min, max])
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -172,6 +175,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
       const newValue = sort([newPoint, value[unfocusedThumb]])
       focusChangedPoint(newValue, newPoint)
       setValue(newValue)
+      onChange && onChange(newValue)
     }
   }
 
@@ -203,6 +207,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
     )
     focusChangedPoint(newValue, newPoint)
     setValue(newValue)
+    onChange && onChange(newValue)
   }
 
   const handleMouseDown = partial(handleMouseEvent, false)
@@ -218,6 +223,11 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [mousePos, isMouseDown]
   )
+
+  // Controlled Component: update value state when external value prop changes
+  useEffect(() => {
+    valueProp && setValue(valueProp)
+  }, [valueProp])
 
   return (
     <div onMouseDown={handleMouseDown} className={className} ref={callbackRef}>
@@ -253,7 +263,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
   ${space}
-  padding: ${({ theme }) => theme.space.medium} 0;
+  padding: ${({ theme: { space } }) => `${space.xlarge} 0 ${space.small}`};
   max-width: 500px;
 `
 

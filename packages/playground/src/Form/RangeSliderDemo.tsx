@@ -24,22 +24,53 @@
 
  */
 
-import React from 'react'
-import { Card, CardContent, RangeSlider, Heading } from '@looker/components'
+import React, { useState } from 'react'
+import {
+  Card,
+  CardContent,
+  RangeSlider,
+  Heading,
+  Text,
+  Button,
+} from '@looker/components'
 import styled from 'styled-components'
 
 export const RangeSliderDemo = () => {
+  const [controlledValue, setControlledValue] = useState([30, 40])
+  const handleChange: (value: number[]) => void = (value: number[]) =>
+    setControlledValue(value)
+
   return (
     <DemoWrapper>
       <DemoGrid>
         <Card height="auto">
           <CardContent p="xxlarge">
-            <Heading mb="small">Basic Component:</Heading>
+            <Heading>Basic Component:</Heading>
             <RangeSlider />
           </CardContent>
           <CardContent p="xxlarge">
-            <Heading mb="small">Min, Max, Step:</Heading>
+            <Heading>Min, Max, Step:</Heading>
             <RangeSlider min={100} max={1000} step={50} />
+          </CardContent>
+          <CardContent p="xxlarge">
+            <Heading>Controlled Component:</Heading>
+            <Text color="green" mr="small">
+              Min: {controlledValue[0]}
+            </Text>
+            <Text color="green">Max: {controlledValue[1]}</Text>
+            <RangeSlider
+              min={20}
+              max={50}
+              value={controlledValue}
+              onChange={handleChange}
+            />
+            <Button onClick={() => handleChange([25, 45])} mr="small">
+              25 — 45
+            </Button>
+            <Button onClick={() => handleChange([30, 37])} mr="small">
+              30 — 37
+            </Button>
+            <Button onClick={() => handleChange([39, 40])}>39 — 40</Button>
           </CardContent>
         </Card>
       </DemoGrid>
