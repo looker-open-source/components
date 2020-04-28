@@ -96,8 +96,12 @@ const SliderInternal = forwardRef(
     const handleChange = isFunction(onChange) ? onChange : internalChangeHandler
     return (
       <div className={className} data-testid="container">
-        <SliderValueWrapper offsetPercent={fillPercent}>
-          <SliderValue disabled={disabled} isFocused={isFocused}>
+        <SliderValueWrapper>
+          <SliderValue
+            disabled={disabled}
+            isFocused={isFocused}
+            offsetPercent={fillPercent}
+          >
             {displayValue}
           </SliderValue>
         </SliderValueWrapper>
@@ -238,6 +242,7 @@ const SliderFill = styled.div<ControlProps>`
 interface SliderValueProps extends SliderInputProps, FontSizeProps {
   disabled?: boolean
   isFocused: boolean
+  offsetPercent: number
 }
 
 const SliderValue = styled.div<SliderValueProps>`
@@ -246,6 +251,8 @@ const SliderValue = styled.div<SliderValueProps>`
   line-height: 1;
   user-select: none;
   transform: translateX(-50%) translateY(-1.3rem);
+  left: ${({ offsetPercent }) => offsetPercent}%;
+  position: absolute;
   text-align: center;
   padding: 0.2rem 0.5rem;
   border-radius: 1rem;
@@ -253,23 +260,10 @@ const SliderValue = styled.div<SliderValueProps>`
     isFocused ? theme.colors.palette.purple100 : theme.colors.palette.white};
 `
 
-interface SliderValueWrapperProps {
-  offsetPercent: number
-}
-
-const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
-  text-align: center;
-  left: calc(
-    ${({ offsetPercent }) => {
-      const adjustment =
-        offsetPercent > 50
-          ? (offsetPercent / 100) * -6
-          : ((100 - offsetPercent) / 100) * 10
-
-      return `${offsetPercent}% + ${adjustment}px`
-    }}
-  );
-  position: absolute;
+const SliderValueWrapper = styled.div`
+  position: relative;
+  width: calc(100% - 14px);
+  margin: 0 auto;
 `
 
 export const Slider = styled(SliderInternal)<SliderProps>`
