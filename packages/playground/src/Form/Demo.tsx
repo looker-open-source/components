@@ -65,17 +65,17 @@ export const Demo = () => {
         <FieldTextArea
           label="Text Area"
           required
-          resize="both"
-          placeholder="resize in both directions"
+          resize="vertical"
+          placeholder="resize vertically"
         />
         <FieldTextArea
-          disabled
           inline
           label="Text Area"
           required
-          resize="both"
-          placeholder="resize in both directions"
+          resize="vertical"
+          placeholder="resize vertically"
         />
+
         <FieldTextArea
           label="Text Area"
           placeholder="no resize"
@@ -85,8 +85,7 @@ export const Demo = () => {
         <FieldTextArea
           inline
           label="Text Area"
-          placeholder="only resize horizontally"
-          resize="vertical"
+          resize="none"
           validationMessage={{ message: 'validation Message', type: 'error' }}
         />
         <FieldText
