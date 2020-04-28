@@ -16,7 +16,7 @@
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-styled-components": "^3.2.1",
     "gatsby-plugin-typescript": "^2.3.3",
-    "gatsby-remark-images": "^3.2.2",
+    "gatsby-remark-images": "^3.3.0",
     "gatsby-source-filesystem": "^2.2.4",
     "lodash": "^4.17.15",
     "polished": "^3.5.1",
