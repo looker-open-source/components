@@ -64,21 +64,23 @@ export const Demo = () => {
       <Grid m="xxlarge" columns={2}>
         <FieldTextArea
           label="Text Area"
+          required
           resize="both"
           placeholder="resize in both directions"
         />
         <FieldTextArea
-          inline
           disabled
+          inline
           label="Text Area"
-          placeholder="no resize"
-          resize="none"
+          required
+          resize="both"
+          placeholder="resize in both directions"
         />
         <FieldTextArea
           label="Text Area"
-          required
-          resize="horizontal"
-          placeholder="only resize vertically"
+          placeholder="no resize"
+          resize="none"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
         />
         <FieldTextArea
           inline

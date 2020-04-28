@@ -28,11 +28,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
 import { Demo } from './Form/Demo'
+import { FieldsetDemo } from './Form/FieldsetDemo'
+import { FieldColorDemo } from './Form/FieldColorDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
       <Demo />
+      <FieldsetDemo />
+      <FieldColorDemo />
     </ComponentsProvider>
   )
 }
