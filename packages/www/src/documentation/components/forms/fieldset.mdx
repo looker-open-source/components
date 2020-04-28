@@ -1,18 +1,18 @@
 ---
-title: Fieldset
+title: Fieldset, Label & Legend
 status: stable
 figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
 propsOf: Fieldset
 github: Form/Fieldset
 ---
 
-The `<Fieldset />` component is used to wrap Field components into meaningful groups. The `legend` property allows for a heading which is by default aligned above and to the left.
+The `<Fieldset />` component is used to wrap Field components into meaningful groups. The `legend` property allows for a heading which is by default aligned above and to the left. Using `label` as a props gives, the component associated with it, a larger clickable area since the area where the label is placed also is associated to the component that has the label.
 
 ```jsx
-<Fieldset legend="Legend">
-  <FieldText label="First" />
-  <FieldText label="Second" />
-  <FieldText label="Third" />
+<Fieldset legend="This is the Legend">
+  <FieldText label="First Label" />
+  <FieldText label="Second Label" />
+  <FieldText label="Third Label" />
 </Fieldset>
-<Button>Submit</Button>
+<Button mt="small">Submit</Button>
 ```

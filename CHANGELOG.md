@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 
+### Changed
+
+- updated documentation for Filedset to include label and legend
+
 ## [0.7.29] - 2020-04-24
 
 ### Changed
