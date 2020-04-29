@@ -145,6 +145,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 }) => {
   /*
    * Validate props and render any necessary warnings
+   * ------------------------------------------------------
    */
   const unintentionalReadOnly = useReadOnlyWarn(
     'RangeSlider',
@@ -169,6 +170,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 
   /*
    * Internal component state and refs
+   * ------------------------------------------------------
    */
   const [value, setValue] = useState(sort(boundedValue))
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
@@ -198,6 +200,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 
   /*
    * Behavioral callbacks
+   * ------------------------------------------------------
    */
 
   const focusChangedPoint = (newValue: number[], newPoint: number) => {
@@ -235,13 +238,13 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
     }
   }
 
-  const focusMinValue = () => {
+  const focusMinThumb = () => {
     if (!disabled && !readOnly) {
       setFocusedThumb(0)
     }
   }
 
-  const focusMaxValue = () => {
+  const focusMaxThumb = () => {
     if (!disabled && !readOnly) {
       setFocusedThumb(1)
     }
@@ -322,7 +325,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
         <Thumb
           position={minPos}
           tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
-          onFocus={focusMinValue}
+          onFocus={focusMinThumb}
           onBlur={handleBlur}
           onKeyDown={handleKeyboardNav}
           ref={minThumbRef}
@@ -331,7 +334,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
         <Thumb
           position={maxPos}
           tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
-          onFocus={focusMaxValue}
+          onFocus={focusMaxThumb}
           onBlur={handleBlur}
           onKeyDown={handleKeyboardNav}
           ref={maxThumbRef}
