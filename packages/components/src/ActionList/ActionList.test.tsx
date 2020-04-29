@@ -308,7 +308,7 @@ describe('ActionList', () => {
 
     test('Checkbox click calls onSelect', () => {
       const { getAllByRole } = renderWithTheme(actionListWithSelect)
-      fireEvent.click(getAllByRole('checkbox')[0])
+      fireEvent.click(getAllByRole('checkbox')[1])
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 
@@ -321,7 +321,7 @@ describe('ActionList', () => {
 
     test('itemsSelected determines if a checkbox is checked', () => {
       const { getAllByRole } = renderWithTheme(actionListWithItemsSelected)
-      const checkbox = getAllByRole('checkbox')[0]
+      const checkbox = getAllByRole('checkbox')[1]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
   })
