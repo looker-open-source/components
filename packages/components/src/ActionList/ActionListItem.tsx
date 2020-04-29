@@ -57,7 +57,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
   } = useContext(ActionListContext)
 
   useEffect(() => {
-    !disabled && addItemToAllItems(id)
+    addItemToAllItems(id)
   }, [addItemToAllItems, disabled, id])
 
   const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
