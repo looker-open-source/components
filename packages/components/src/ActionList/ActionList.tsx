@@ -122,7 +122,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   onSelectAll,
   onSort,
 }) => {
-  const [allItems, setAllItems] = useState([] as string[])
+  const [allItems, setAllItems] = useState<string[]>([])
 
   // Includes a check for allItems length to prevent the in-between state where ActionList first loads
   // and allItems is an empty array (which leads to header checkbox being checked for a split-second)
