@@ -39,6 +39,7 @@ import sortBy from 'lodash/sortBy'
 import indexOf from 'lodash/indexOf'
 import startsWith from 'lodash/startsWith'
 import partial from 'lodash/partial'
+import map from 'lodash/map'
 import {
   useMeasuredRef,
   useMouseDragPosition,
@@ -125,16 +126,34 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   disabled = false,
   readOnly: readOnlyProp = false,
 }) => {
+  /*
+   * Validate props and render any necessary warnings
+   */
   const unintentionalReadOnly = useReadOnlyWarn(
     'RangeSlider',
     valueProp,
     onChange
   )
   const readOnly = readOnlyProp || unintentionalReadOnly
-
-  const [value, setValue] = useState(
-    sort(valueProp || defaultValueProp || [min, max])
+  // make sure value array doesn't extend past min/max bounds
+  const boundedValue = map(
+    valueProp || defaultValueProp || [min, max],
+    (point: number) => {
+      const boundedPoint = Math.max(Math.min(point, max), min)
+      if (boundedPoint !== point) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `<RangeSlider />: The value '${point}' falls outside the possible range (MIN: ${min}, MAX: ${max}). Please adjust min and max props accordingly.`
+        )
+      }
+      return boundedPoint
+    }
   )
+
+  /*
+   * Internal component state and refs
+   */
+  const [value, setValue] = useState(sort(boundedValue))
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -159,6 +178,10 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   const fillWidth = maxPos - minPos
 
   const thumbRefs = [minThumbRef, maxThumbRef]
+
+  /*
+   * Behavioral callbacks
+   */
 
   const focusChangedPoint = (newValue: number[], newPoint: number) => {
     // focus/highlight the thumb that moved on click
@@ -246,10 +269,16 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
     [mousePos, isMouseDown]
   )
 
-  // Controlled Component: update value state when external value prop changes
+  /*
+   * Controlled Component: update value state when external value prop changes
+   */
   useEffect(() => {
     valueProp && setValue(sort(valueProp))
   }, [valueProp])
+
+  /*
+   * Render markup!
+   */
 
   return (
     <div onMouseDown={handleMouseDown} className={className} ref={callbackRef}>

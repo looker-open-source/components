@@ -83,6 +83,10 @@ export const RangeSliderDemo = () => {
             <Heading>ReadOnly</Heading>
             <RangeSlider defaultValue={[3, 7]} readOnly />
           </CardContent>
+          <CardContent p="xxlarge">
+            <Heading>Value outside range:</Heading>
+            <RangeSlider min={5} max={10} defaultValue={[0, 20]} />
+          </CardContent>
         </Card>
       </DemoGrid>
     </DemoWrapper>
