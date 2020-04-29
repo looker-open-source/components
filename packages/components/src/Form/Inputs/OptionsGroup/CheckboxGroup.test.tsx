@@ -30,6 +30,32 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { map } from 'lodash'
 import { CheckboxGroup } from './CheckboxGroup'
 
+const checkboxOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
+
+const checkboxProps = {
+  defaultValue: ['swiss', 'cheddar'],
+  id: '1',
+  name: 'group1',
+  options: checkboxOptions,
+}
+
 test('FieldCheckboxGroup render a list of checkbox', () => {
   const extractCheckboxFromDomList = (list: HTMLElement) => {
     const options = list.getElementsByTagName('label')
@@ -40,30 +66,7 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
 
   const renderListContent = () => {
     const { getByTestId } = renderWithTheme(
-      <CheckboxGroup
-        defaultValue={['swiss', 'cheddar']}
-        id="1"
-        name="group1"
-        options={[
-          {
-            label: 'Cheddar',
-            value: 'cheddar',
-          },
-          {
-            label: 'Gouda',
-            value: 'gouda',
-          },
-          {
-            disabled: true,
-            label: 'Swiss',
-            value: 'swiss',
-          },
-          {
-            label: 'Roquefort',
-            value: 'roquefort',
-          },
-        ]}
-      />
+      <CheckboxGroup {...checkboxProps} />
     )
     return getByTestId('checkbox-list')
   }
@@ -82,106 +85,35 @@ test('CheckboxGroup can be checked and unchecked when user clicks', () => {
 
   const { getByLabelText } = renderWithTheme(
     <CheckboxGroup
-      id="1"
-      name="group1"
+      {...checkboxProps}
+      defaultValue={[]}
       onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
     />
   )
-  const checkbox = getByLabelText('Cheddar')
+  const checkbox = getByLabelText('Roquefort')
 
   fireEvent.click(checkbox)
 
-  expect(handleChange).toHaveBeenCalledWith(['cheddar'])
+  expect(handleChange).toHaveBeenCalledWith(['roquefort'])
   expect((checkbox as HTMLInputElement).checked).toBe(true)
 
   fireEvent.click(checkbox)
 
-  expect(handleChange).toHaveBeenCalledWith(['cheddar'])
+  expect(handleChange).toHaveBeenCalledWith(['roquefort'])
   expect((checkbox as HTMLInputElement).checked).toBe(false)
 })
 
 test('CheckboxGroup render a list of checkbox with defaultValue checked', () => {
-  const handleChange = jest.fn()
-
   const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup
-      defaultValue={['cheddar']}
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <CheckboxGroup {...checkboxProps} defaultValue={['cheddar']} />
   )
   expect((getByLabelText('Cheddar') as HTMLInputElement).checked).toBe(true)
   expect((getByLabelText('Gouda') as HTMLInputElement).checked).toBe(false)
 })
 
 test('CheckboxGroup render a list of checkbox all unchecked after user clicked on defaultValue', () => {
-  const handleChange = jest.fn()
-
   const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup
-      defaultValue={['cheddar']}
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <CheckboxGroup {...checkboxProps} />
   )
   const Cheddar = getByLabelText('Cheddar')
   fireEvent.click(Cheddar)
@@ -189,34 +121,8 @@ test('CheckboxGroup render a list of checkbox all unchecked after user clicked o
 })
 
 test('CheckboxGroup disabled all checkbox', () => {
-  const handleChange = jest.fn()
-
   const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup
-      defaultValue={['cheddar']}
-      disabled
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <CheckboxGroup {...checkboxProps} disabled />
   )
 
   expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(true)
@@ -226,35 +132,17 @@ test('CheckboxGroup disabled all checkbox', () => {
 })
 
 test('CheckboxGroup disabled one specific checkbox', () => {
-  const handleChange = jest.fn()
+  const options = checkboxOptions.map((option) => {
+    return {
+      disabled: ['Roquefort'].includes(option.label),
+      ...option,
+    }
+  })
 
   const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <CheckboxGroup {...checkboxProps} options={options} />
   )
 
   expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(false)
-  expect((getByLabelText('Swiss') as HTMLInputElement).disabled).toBe(true)
+  expect((getByLabelText('Roquefort') as HTMLInputElement).disabled).toBe(true)
 })

@@ -30,6 +30,32 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { FieldCheckboxGroup } from './FieldCheckboxGroup'
 
+const fieldCheckboxOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
+
+const fieldCheckboxProps = {
+  defaultValue: ['swiss', 'cheddar'],
+  id: '1',
+  name: 'group1',
+  options: fieldCheckboxOptions,
+}
+
 test('FieldCheckboxGroup render a list of checkbox', () => {
   const extractCheckboxFromDomList = (list: HTMLElement) => {
     const options = list.getElementsByTagName('label')
@@ -40,30 +66,7 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
 
   const renderListContent = () => {
     const { getByTestId } = renderWithTheme(
-      <FieldCheckboxGroup
-        defaultValue={['swiss', 'cheddar']}
-        id="1"
-        name="group1"
-        options={[
-          {
-            label: 'Cheddar',
-            value: 'cheddar',
-          },
-          {
-            label: 'Gouda',
-            value: 'gouda',
-          },
-          {
-            disabled: true,
-            label: 'Swiss',
-            value: 'swiss',
-          },
-          {
-            label: 'Roquefort',
-            value: 'roquefort',
-          },
-        ]}
-      />
+      <FieldCheckboxGroup {...fieldCheckboxProps} />
     )
     return getByTestId('checkbox-list')
   }
@@ -82,28 +85,9 @@ test('FieldCheckboxGroup checkbox onChange is working as expected', () => {
 
   const { getByLabelText } = renderWithTheme(
     <FieldCheckboxGroup
-      id="1"
-      name="group1"
+      {...fieldCheckboxProps}
+      defaultValue={[]}
       onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
     />
   )
   const Cheddar = getByLabelText('Cheddar')

@@ -25,11 +25,35 @@
  */
 import 'jest-styled-components'
 import React from 'react'
-// import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { FieldRadioGroup } from './FieldRadioGroup'
 
+const fieldRadioOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
+
+const fieldRadioProps = {
+  defaultValue: ['swiss', 'cheddar'],
+  id: '1',
+  name: 'group1',
+  options: fieldRadioOptions,
+}
 test('FieldRadioGroup render a radio list', () => {
   const extractCheckboxFromDomList = (list: HTMLElement) => {
     const options = list.getElementsByTagName('label')
@@ -40,31 +64,7 @@ test('FieldRadioGroup render a radio list', () => {
 
   const renderListContent = () => {
     const { getByTestId } = renderWithTheme(
-      <FieldRadioGroup
-        id="1"
-        required
-        name="group1"
-        label="Cheeses"
-        options={[
-          {
-            label: 'Cheddar',
-            value: 'cheddar',
-          },
-          {
-            label: 'Gouda',
-            value: 'gouda',
-          },
-          {
-            disabled: true,
-            label: 'Swiss',
-            value: 'swiss',
-          },
-          {
-            label: 'Roquefort',
-            value: 'roquefort',
-          },
-        ]}
-      />
+      <FieldRadioGroup {...fieldRadioProps} required />
     )
     return getByTestId('radio-list')
   }

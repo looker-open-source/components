@@ -30,6 +30,32 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { map } from 'lodash'
 import { RadioGroup } from './RadioGroup'
 
+const radioOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
+
+const radioProps = {
+  defaultValue: ['swiss', 'cheddar'],
+  id: '1',
+  name: 'group1',
+  options: radioOptions,
+}
+
 test('RadioGroup render a list of radio', () => {
   const extractRadioFromDomList = (list: HTMLElement) => {
     const options = list.getElementsByTagName('label')
@@ -39,32 +65,7 @@ test('RadioGroup render a list of radio', () => {
   }
 
   const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <RadioGroup
-        defaultValue={['swiss', 'cheddar']}
-        id="1"
-        name="group1"
-        options={[
-          {
-            label: 'Cheddar',
-            value: 'cheddar',
-          },
-          {
-            label: 'Gouda',
-            value: 'gouda',
-          },
-          {
-            disabled: true,
-            label: 'Swiss',
-            value: 'swiss',
-          },
-          {
-            label: 'Roquefort',
-            value: 'roquefort',
-          },
-        ]}
-      />
-    )
+    const { getByTestId } = renderWithTheme(<RadioGroup {...radioProps} />)
     return getByTestId('radio-list')
   }
 
@@ -76,34 +77,12 @@ test('RadioGroup render a list of radio', () => {
     'Roquefort',
   ])
 })
+
 test('RadioGroup selects a radio on click', () => {
   const handleChange = jest.fn()
 
   const { getByLabelText } = renderWithTheme(
-    <RadioGroup
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <RadioGroup {...radioProps} onChange={handleChange} />
   )
   const radio = getByLabelText('Cheddar')
 
@@ -115,62 +94,14 @@ test('RadioGroup selects a radio on click', () => {
 
 test('RadioGroup works with defaultValue', () => {
   const { getByLabelText } = renderWithTheme(
-    <RadioGroup
-      defaultValue={'cheddar'}
-      id="1"
-      name="group1"
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <RadioGroup {...radioProps} defaultValue={'cheddar'} />
   )
   expect((getByLabelText('Cheddar') as HTMLInputElement).checked).toBe(true)
 })
 
-test('RadioGroup disabled all Radio', () => {
-  const handleChange = jest.fn()
-
+test('RadioGroup disabled all Radios', () => {
   const { getByLabelText } = renderWithTheme(
-    <RadioGroup
-      disabled
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <RadioGroup {...radioProps} disabled />
   )
 
   expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(true)
@@ -180,33 +111,15 @@ test('RadioGroup disabled all Radio', () => {
 })
 
 test('RadioGroup disabled one specific Radio', () => {
-  const handleChange = jest.fn()
+  const options = radioOptions.map((option) => {
+    return {
+      disabled: ['Swiss'].includes(option.label),
+      ...option,
+    }
+  })
 
   const { getByLabelText } = renderWithTheme(
-    <RadioGroup
-      id="1"
-      name="group1"
-      onChange={handleChange}
-      options={[
-        {
-          label: 'Cheddar',
-          value: 'cheddar',
-        },
-        {
-          label: 'Gouda',
-          value: 'gouda',
-        },
-        {
-          disabled: true,
-          label: 'Swiss',
-          value: 'swiss',
-        },
-        {
-          label: 'Roquefort',
-          value: 'roquefort',
-        },
-      ]}
-    />
+    <RadioGroup {...radioProps} options={options} />
   )
 
   expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(false)
