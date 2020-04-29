@@ -46,13 +46,19 @@ export const RangeSliderDemo = () => {
       <DemoGrid>
         <Card height="auto">
           <CardContent p="xxlarge">
-            <Heading>Basic Component:</Heading>
+            <Heading>Basic Component</Heading>
             <RangeSlider />
           </CardContent>
           <CardContent p="xxlarge">
-            <Heading>Min, Max, Step:</Heading>
+            <Heading>Min: 100, Max: 1000, Step: 50</Heading>
             <RangeSlider min={100} max={1000} step={50} />
           </CardContent>
+          <CardContent p="xxlarge">
+            <Heading>Min: 52, Max: 111, Step: 17</Heading>
+            <RangeSlider min={52} max={111} step={17} />
+          </CardContent>
+        </Card>
+        <Card height="auto">
           <CardContent p="xxlarge">
             <Heading>Controlled Component:</Heading>
             <Text color="#0e8c42" fontWeight="bold">
@@ -72,9 +78,6 @@ export const RangeSliderDemo = () => {
             </Button>
             <Button onClick={() => handleChange([39, 40])}>39 — 40</Button>
           </CardContent>
-        </Card>
-
-        <Card height="auto">
           <CardContent p="xxlarge">
             <Heading>Disabled</Heading>
             <RangeSlider disabled />
@@ -82,10 +85,6 @@ export const RangeSliderDemo = () => {
           <CardContent p="xxlarge">
             <Heading>ReadOnly</Heading>
             <RangeSlider defaultValue={[3, 7]} readOnly />
-          </CardContent>
-          <CardContent p="xxlarge">
-            <Heading>Value outside range:</Heading>
-            <RangeSlider min={5} max={10} defaultValue={[0, 20]} />
           </CardContent>
         </Card>
       </DemoGrid>

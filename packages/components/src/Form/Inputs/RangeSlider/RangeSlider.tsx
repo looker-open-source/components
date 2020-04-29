@@ -66,6 +66,9 @@ type ThumbIndices = 0 | 1 | undefined
 
 const sort = (arr: number[]) => arr.sort((a, b) => a - b)
 
+/*
+ *  Takes a new number (newPoint) and decides which min or max value should be replaced
+ */
 const findClosestIndex = (value: number[], newPoint: number): number => {
   const { index: closestIndex } = sortBy(
     value.map((p, i) => ({
@@ -78,6 +81,9 @@ const findClosestIndex = (value: number[], newPoint: number): number => {
   return closestIndex
 }
 
+/*
+ * Immutably updates value array with newPoint
+ */
 const createNewValue = (
   value: number[],
   newPoint: number,
@@ -92,10 +98,24 @@ const createNewValue = (
   return sort(newValue)
 }
 
-const roundToStep = (point: number, step: number) => {
-  return Math.round(point / step) * step
+/*
+ * Takes a number and rounds it to the nearest multiple of step above the `minBound` starting value
+ * Cannot exceed max value.
+ */
+const roundToStep = (
+  min: number,
+  max: number,
+  newPoint: number,
+  step: number
+) => {
+  const roundedPoint = Math.round((newPoint - min) / step) * step + min
+  return Math.max(Math.min(roundedPoint, max), min)
 }
 
+/*
+ * Returns a new point value based on mouse position relative to component wrapper.
+ * Cannot exceed max value.
+ */
 const calculatePointValue = (
   mouseX: number,
   containerRect: ClientRect,
@@ -104,15 +124,12 @@ const calculatePointValue = (
   step: number
 ): number => {
   // calculate point value based on where user clicked within container
-  const mousePosition = Math.min(
-    Math.max(mouseX - containerRect.left, 0),
-    containerRect.width
-  )
+  const mousePosition = mouseX - containerRect.left
   const possibleValueRange = max - min
   const newPoint =
     (mousePosition / containerRect.width) * possibleValueRange + min
 
-  return roundToStep(newPoint, step)
+  return roundToStep(min, max, newPoint, step)
 }
 
 export const InternalRangeSlider: FC<RangeSliderProps> = ({
