@@ -215,7 +215,7 @@ export const ActionListDemo: FC = () => {
       <Divider my="large" />
 
       <ActionList
-        canSelect={{ all: false }}
+        canSelect
         onClickRowSelect
         onSelect={onSelect}
         onSelectAll={onSelectAll}
