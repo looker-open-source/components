@@ -29,7 +29,7 @@ import { MixedBoolean } from '../Form'
 import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
-  allItems: string[]
+  addItemToAllItems: (id: string) => void
   allSelected?: MixedBoolean
   canSelect: boolean
   canSelectAll: boolean
@@ -39,11 +39,14 @@ export interface ActionListContextProps {
   onSelect?: (id: string) => void
   onSelectAll?: () => void
   onClickRowSelect: boolean
-  setAllItems?: (allItems: string[]) => void
 }
 
 export const ActionListContext = createContext<ActionListContextProps>({
-  allItems: [],
+  addItemToAllItems: (id: string) => {
+    // Using noop; addItemToAllItems is passed from ActionList component into context
+    // eslint-disable-next-line no-console
+    console.log(id)
+  },
   canSelect: false,
   canSelectAll: false,
   itemsSelected: [],

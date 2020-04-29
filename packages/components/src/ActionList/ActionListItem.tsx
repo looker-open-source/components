@@ -49,20 +49,16 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 }) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
   const {
-    allItems,
+    addItemToAllItems,
     canSelect,
     itemsSelected,
     onSelect,
     onClickRowSelect,
-    setAllItems,
   } = useContext(ActionListContext)
 
   useEffect(() => {
-    setAllItems &&
-      !disabled &&
-      !allItems.includes(id) &&
-      setAllItems([...allItems, id])
-  }, [allItems, disabled, id, setAllItems])
+    !disabled && addItemToAllItems(id)
+  }, [addItemToAllItems, disabled, id])
 
   const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
 

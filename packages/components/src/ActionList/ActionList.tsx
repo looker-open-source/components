@@ -140,6 +140,10 @@ export const ActionListLayout: FC<ActionListProps> = ({
       ? 'mixed'
       : false
 
+  const addItemToAllItems = (id: string) => {
+    !allItems.includes(id) && setAllItems([...allItems, id])
+  }
+
   const actionListHeader =
     header === true ? (
       <ActionListHeader>
@@ -150,7 +154,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   const context = {
-    allItems,
+    addItemToAllItems,
     allSelected,
     canSelect,
     canSelectAll: canSelect && canSelectAll,
@@ -160,7 +164,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     onSelect,
     onSelectAll,
     onSort,
-    setAllItems,
   }
 
   return (
