@@ -203,7 +203,6 @@ export const ActionListDemo: FC = () => {
       <ActionListManager isLoading={isLoading} noResults={false}>
         <ActionList
           canSelect
-          canSelectAll
           onSelect={onSelect}
           onSelectAll={onSelectAll}
           itemsSelected={selections}
@@ -216,8 +215,7 @@ export const ActionListDemo: FC = () => {
       <Divider my="large" />
 
       <ActionList
-        canSelect
-        canSelectAll
+        canSelect={{ all: false }}
         onClickRowSelect
         onSelect={onSelect}
         onSelectAll={onSelectAll}

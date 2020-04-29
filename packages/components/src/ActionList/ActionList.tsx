@@ -90,13 +90,7 @@ export interface ActionListProps {
    * Note: Implemented as a checkbox next to each item row.
    * @default false
    */
-  canSelect?: boolean
-  /**
-   * Allow the user to select all ActinoListItems
-   * Note: Implemented as a checkbox left of the header row
-   * @default false
-   */
-  canSelectAll?: boolean
+  canSelect?: boolean | { all: boolean }
   /**
    * Callback performed when user makes a selection
    */
@@ -118,7 +112,6 @@ export interface ActionListProps {
 
 export const ActionListLayout: FC<ActionListProps> = ({
   canSelect = false,
-  canSelectAll = false,
   className,
   header = true,
   children,
@@ -150,7 +143,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     addItemToAllItems,
     allSelected,
     canSelect,
-    canSelectAll: canSelect && canSelectAll,
     columns,
     itemsSelected,
     onClickRowSelect,
@@ -203,8 +195,10 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   }
 
   ${ActionListHeader} {
-    padding-left: ${({ canSelect, canSelectAll }) =>
-      canSelect && !canSelectAll ? actionListCheckboxWidth : undefined};
+    padding-left: ${({ canSelect }) =>
+      typeof canSelect === 'object' &&
+      !canSelect.all &&
+      actionListCheckboxWidth};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
