@@ -24,7 +24,8 @@
 
  */
 
-import React, { ReactNode, useContext, useMemo, useEffect, useRef } from 'react'
+import omit from 'lodash/omit'
+import React, { ReactNode, useContext, useMemo, useEffect } from 'react'
 import styled from 'styled-components'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
@@ -38,7 +39,7 @@ import {
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
-import { notInOptions } from './utils/options'
+import { flattenOptions, notInOptions } from './utils/options'
 
 export interface SelectOptionObject extends ComboboxOptionObject {
   description?: string | ReactNode
@@ -147,6 +148,10 @@ export interface SelectOptionsBaseProps {
    * @default 'No options'
    */
   noOptionsLabel?: string
+  /**
+   * Render only the options visible in the scroll window
+   */
+  virtualize?: boolean
 }
 
 export interface SelectMultiOptionsBaseProps {
@@ -169,10 +174,13 @@ export interface SelectOptionsProps
 }
 
 const optHeight = 28
-const buffer = 10
+const buffer = 5
 
-function useScrollWindow(length: number) {
+function useScrollWindow(virtualize: boolean, length: number) {
   const { listClientRect, listScrollPosition } = useContext(ComboboxContext)
+
+  if (!virtualize) return { end: length - 1, start: 0 }
+
   if (listScrollPosition === undefined || listClientRect === undefined)
     return { end: Math.min(length - 1, 50), start: 0 }
 
@@ -193,15 +201,22 @@ export function SelectOptions({
   formatCreateLabel,
   isMulti,
   noOptionsLabel = 'No options',
+  virtualize = false,
 }: SelectOptionsProps) {
-  const { start, end } = useScrollWindow(options ? options.length : 0)
-  const startRef = useRef(start)
+  const { start, end } = useScrollWindow(
+    virtualize,
+    options ? options.length : 0
+  )
+
+  // virtualize disables useAddOptionToContext, need to manage it here for keyboard nav
   const { optionsRef } = useContext(ComboboxContext)
   useEffect(() => {
-    if (options) {
-      optionsRef.current = options
+    if (virtualize && options && optionsRef) {
+      optionsRef.current = flattenOptions(options).map((selectOption) =>
+        omit(selectOption, 'description')
+      )
     }
-  }, [options, optionsRef])
+  }, [options, optionsRef, virtualize])
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -218,11 +233,8 @@ export function SelectOptions({
     />
   )
 
-  const optionsToRender = options && options.slice(start, end)
+  const optionsToRender = options && options.slice(start, end + 1)
   const after = options ? options.length - 1 - end : 0
-  // console.log('optionsToRender', optionsToRender[optionsToRender.length - 1])
-  // const optionsToRender = options
-  // const after = 0
 
   return (
     <>
@@ -255,7 +267,7 @@ export function SelectOptions({
             createOption,
           ]
         : createOption || noOptions}
-      {after && <LiSpacer height={after * optHeight} />}
+      {after > 0 ? <LiSpacer height={after * optHeight} /> : null}
     </>
   )
 }

@@ -140,7 +140,6 @@ export function useKeyDown() {
           const index = navigationOption
             ? findIndex(options, ['value', navigationOption.value])
             : -1
-          console.log(index, options[index])
           if (index === 0) {
             if (autoCompletePropRef && autoCompletePropRef.current) {
               // Go back to the value the user has typed because we are

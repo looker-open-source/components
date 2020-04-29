@@ -94,6 +94,7 @@ const ComboboxListInternal = forwardRef(
       persistSelection = false,
       // closes the list after an option is selected
       closeOnSelect = true,
+      // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
       virtualize = false,
       isMulti,
       ...props

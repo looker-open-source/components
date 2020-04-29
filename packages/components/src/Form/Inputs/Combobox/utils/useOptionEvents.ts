@@ -24,8 +24,9 @@
 
  */
 
+import throttle from 'lodash/throttle'
 import xorWith from 'lodash/xorWith'
-import { Context, useContext, useEffect, useRef } from 'react'
+import { Context, useContext } from 'react'
 import { useWrapEvent } from '../../../../utils'
 import {
   ComboboxContextProps,
@@ -62,20 +63,10 @@ export function useOptionEvents<
     }
   }
 
-  const hoverDelayRef = useRef(0)
-  function handleMouseEnter() {
+  const handleMouseEnter = throttle(() => {
     const option = { label, value }
-    hoverDelayRef.current = window.setTimeout(() => {
-      transition && transition(ComboboxActionType.NAVIGATE, { option })
-    }, 20)
-  }
-
-  useEffect(
-    () => () => {
-      hoverDelayRef.current && clearTimeout(hoverDelayRef.current)
-    },
-    []
-  )
+    transition && transition(ComboboxActionType.NAVIGATE, { option })
+  }, 100)
 
   return {
     onClick: useWrapEvent(handleClick, onClick),
