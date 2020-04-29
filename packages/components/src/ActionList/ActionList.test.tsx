@@ -365,18 +365,18 @@ describe('ActionList', () => {
       expect(onSelectAll).toHaveBeenCalledTimes(1)
     })
 
-    test('Header checkbox is unchecked when itemsSelected includes all row ids', () => {
+    test('Header checkbox is unchecked when itemsSelected includes no row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(false)
     })
 
-    test('Header checkbox is mixed when areAllItemsSelected is mixed', () => {
+    test('Header checkbox is mixed when itemsSelected includes some row ids', () => {
       const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
       getByTitle('Check Mark Mixed')
     })
 
-    test('Header checkbox is checked when areAllItemsSelected is true', () => {
+    test('Header checkbox is mixed when itemsSelected includes all row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithAllItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(true)
