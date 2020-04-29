@@ -70,6 +70,7 @@ const components: NavigationSection = {
       path: 'forms',
       children: [
         { title: 'Checkbox', path: 'checkbox' },
+        { title: 'CheckboxGroup', path: 'checkbox-group' },
         {
           title: 'Form',
           path: 'form',
@@ -125,6 +126,10 @@ const components: NavigationSection = {
         {
           title: 'Radio',
           path: 'radio',
+        },
+        {
+          title: 'RadioGroup',
+          path: 'radio-group',
         },
         {
           title: 'Select',

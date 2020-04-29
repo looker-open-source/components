@@ -1,0 +1,52 @@
+---
+title: RadioGroup
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+github: Form/OptionsGroup/RadioGroup.tsx
+---
+
+### RadioGroup
+
+Groups of radio can be displayed with `RadioGroup`. `Disabled` can be used on each radio specifically or on the group.
+
+```jsx
+;() => {
+  const options = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  const optionsDisabled = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      disabled: true,
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  return (
+    <Grid m="xxlarge">
+      <RadioGroup defaultValue={['cheddar']} name="group1" options={options} />
+      <RadioGroup
+        defaultValue={['cheddar']}
+        inline
+        name="group1"
+        options={options}
+      />
+      <RadioGroup name="group1" options={optionsDisabled} />
+      <RadioGroup inline name="group1" options={optionsDisabled} />
+      <RadioGroup disabled name="group1" options={options} />
+      <RadioGroup disabled inline name="group1" options={options} />
+    </Grid>
+  )
+}
+```
