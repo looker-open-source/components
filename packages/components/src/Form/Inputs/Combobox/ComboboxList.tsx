@@ -44,7 +44,7 @@ import React, {
 } from 'react'
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
-import debounce from 'lodash/debounce'
+import throttle from 'lodash/throttle'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -73,6 +73,13 @@ export interface ComboboxListProps
    * @default true
    */
   closeOnSelect?: boolean
+  /**
+   * Render only the options visible in the scroll window
+   * Requires manually updating ComboboxContext.optionsRef with complete
+   * list of options in order for keyboard navigation to work properly
+   * @default false
+   */
+  virtualize?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -87,6 +94,7 @@ const ComboboxListInternal = forwardRef(
       persistSelection = false,
       // closes the list after an option is selected
       closeOnSelect = true,
+      virtualize = false,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -98,6 +106,7 @@ const ComboboxListInternal = forwardRef(
     const {
       persistSelectionPropRef,
       closeOnSelectPropRef,
+      virtualizePropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -111,6 +120,7 @@ const ComboboxListInternal = forwardRef(
     if (persistSelectionPropRef)
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
+    if (virtualizePropRef) virtualizePropRef.current = virtualize
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout
@@ -182,13 +192,13 @@ const ComboboxListInternal = forwardRef(
           setListClientRect(containerElement.getBoundingClientRect())
       })
 
-      const scrollListener = debounce(() => {
+      const scrollListener = throttle(() => {
         if (contentContainer) {
           setListClientRectOnce(contentContainer)
           setListScrollPosition &&
             setListScrollPosition(contentContainer.scrollTop)
         }
-      }, 500)
+      }, 50)
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)

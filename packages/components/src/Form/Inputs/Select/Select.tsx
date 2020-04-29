@@ -146,7 +146,7 @@ const SelectComponent = forwardRef(
           ref={ref}
         />
         {!disabled && (
-          <ComboboxList persistSelection {...ariaProps}>
+          <ComboboxList persistSelection virtualize {...ariaProps}>
             <SelectOptions options={options} noOptionsLabel={noOptionsLabel} />
           </ComboboxList>
         )}

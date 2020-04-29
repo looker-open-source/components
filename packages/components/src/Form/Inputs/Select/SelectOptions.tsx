@@ -24,7 +24,7 @@
 
  */
 
-import React, { ReactNode, useContext, useMemo } from 'react'
+import React, { ReactNode, useContext, useMemo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
@@ -169,6 +169,7 @@ export interface SelectOptionsProps
 }
 
 const optHeight = 28
+const buffer = 10
 
 function useScrollWindow(length: number) {
   const { listClientRect, listScrollPosition } = useContext(ComboboxContext)
@@ -180,8 +181,8 @@ function useScrollWindow(length: number) {
     (listClientRect.height + listScrollPosition) / optHeight
   )
   return {
-    end: end + 3 > length - 1 ? length - 1 : end + 3,
-    start: start - 3 < 0 ? 0 : start - 3,
+    end: end + buffer > length - 1 ? length - 1 : end + buffer,
+    start: start - buffer < 0 ? 0 : start - buffer,
   }
 }
 
@@ -194,6 +195,13 @@ export function SelectOptions({
   noOptionsLabel = 'No options',
 }: SelectOptionsProps) {
   const { start, end } = useScrollWindow(options ? options.length : 0)
+  const startRef = useRef(start)
+  const { optionsRef } = useContext(ComboboxContext)
+  useEffect(() => {
+    if (options) {
+      optionsRef.current = options
+    }
+  }, [options, optionsRef])
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -218,12 +226,15 @@ export function SelectOptions({
 
   return (
     <>
-      {start > 0 && <li style={{ height: `${start * optHeight}px` }} />}
+      {start > 0 && <LiSpacer height={start * optHeight} />}
       {optionsToRender && optionsToRender.length > 0
         ? [
             ...optionsToRender.map(
               (option: SelectOptionProps, index: number) => {
                 const optionAsGroup = option as SelectOptionGroupProps
+                // Keep key consistent unless start # is reducing...
+                // ComboboxContext.optionsRef doesn't handle inserting new options at the top of the list well
+                // so we remount them all
                 const correctedIndex = index + start
                 return optionAsGroup.options ? (
                   <SelectOptionGroup
@@ -244,10 +255,14 @@ export function SelectOptions({
             createOption,
           ]
         : createOption || noOptions}
-      {after && <li style={{ height: `${after * optHeight}px` }} />}
+      {after && <LiSpacer height={after * optHeight} />}
     </>
   )
 }
+
+const LiSpacer = styled.li<{ height: number }>`
+  height: ${({ height }) => `${height}px`};
+`
 
 interface SelectMultiCreateOptionProps {
   options?: SelectOptionProps[]
