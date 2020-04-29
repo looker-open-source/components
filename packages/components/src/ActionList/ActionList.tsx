@@ -26,7 +26,6 @@
 
 import styled from 'styled-components'
 import React, { FC, ReactNode, useState } from 'react'
-import { MixedBoolean } from '../Form'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -110,10 +109,6 @@ export interface ActionListProps {
    */
   itemsSelected?: string[]
   /**
-   * The ids of all selectable ActionListItems (i.e. all non-disabled items)
-   */
-  areAllItemsSelected?: MixedBoolean
-  /**
    * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
    * @default false
    */
@@ -121,7 +116,6 @@ export interface ActionListProps {
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
-  areAllItemsSelected,
   canSelect = false,
   canSelectAll = false,
   className,
@@ -147,7 +141,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const context = {
     allItems,
-    areAllItemsSelected,
     canSelect,
     canSelectAll: canSelect && canSelectAll,
     columns,
