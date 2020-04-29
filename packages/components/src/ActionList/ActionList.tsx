@@ -26,6 +26,7 @@
 
 import styled from 'styled-components'
 import React, { FC, ReactNode, useState } from 'react'
+import { MixedBoolean } from '../Form'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -130,6 +131,15 @@ export const ActionListLayout: FC<ActionListProps> = ({
 }) => {
   const [allItems, setAllItems] = useState([] as string[])
 
+  // Includes a check for allItems length to prevent the in-between state where ActionList first loads
+  // and allItems is an empty array (which leads to header checkbox being checked for a split-second)
+  const allSelected: MixedBoolean =
+    !!allItems.length && allItems.every((item) => itemsSelected.includes(item))
+      ? true
+      : allItems.some((item) => itemsSelected.includes(item))
+      ? 'mixed'
+      : false
+
   const actionListHeader =
     header === true ? (
       <ActionListHeader>
@@ -141,6 +151,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const context = {
     allItems,
+    allSelected,
     canSelect,
     canSelectAll: canSelect && canSelectAll,
     columns,
