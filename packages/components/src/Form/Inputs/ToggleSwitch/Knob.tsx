@@ -35,7 +35,7 @@ export interface KnobProps {
   on?: boolean
 }
 
-const Knob = styled.div<KnobProps>`
+const Knob = styled(({ className }) => <div className={className} />)`
   transform: ${({ on, size }) => (on ? `translateX(${rem(size * 0.75)})` : '')};
   transition: ${({ theme }) => theme.transitions.durationModerate};
   position: absolute;

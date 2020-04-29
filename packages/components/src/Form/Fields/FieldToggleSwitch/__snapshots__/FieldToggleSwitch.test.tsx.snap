@@ -109,7 +109,6 @@ exports[`A FieldToggleSwitch 1`] = `
       >
         <div
           className="c6"
-          size={20}
         />
       </div>
     </div>
@@ -235,8 +234,6 @@ exports[`A FieldToggleSwitch turned on 1`] = `
       >
         <div
           className="c6"
-          on={true}
-          size={20}
         />
       </div>
     </div>
