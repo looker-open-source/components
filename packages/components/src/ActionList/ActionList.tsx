@@ -144,14 +144,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     !allItems.includes(id) && setAllItems([...allItems, id])
   }
 
-  const actionListHeader =
-    header === true ? (
-      <ActionListHeader>
-        {generateActionListHeaderColumns(columns)}
-      </ActionListHeader>
-    ) : header === false ? null : (
-      <ActionListHeader>{header}</ActionListHeader>
-    )
+  const handleSelectAll = onSelectAll ? () => onSelectAll() : undefined
 
   const context = {
     addItemToAllItems,
@@ -162,9 +155,18 @@ export const ActionListLayout: FC<ActionListProps> = ({
     itemsSelected,
     onClickRowSelect,
     onSelect,
-    onSelectAll,
+    onSelectAll: handleSelectAll,
     onSort,
   }
+
+  const actionListHeader =
+    header === true ? (
+      <ActionListHeader>
+        {generateActionListHeaderColumns(columns)}
+      </ActionListHeader>
+    ) : header === false ? null : (
+      <ActionListHeader>{header}</ActionListHeader>
+    )
 
   return (
     <ActionListContext.Provider value={context}>
