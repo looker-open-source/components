@@ -52,10 +52,19 @@ export interface SelectOptionGroupProps {
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
-const renderOption = (option: SelectOptionObject, index: number) => {
+const renderOption = (
+  option: SelectOptionObject,
+  index: number,
+  scrollIntoView?: boolean
+) => {
   if (option.description) {
     return (
-      <ComboboxOption {...option} key={index} py="xxsmall">
+      <ComboboxOption
+        {...option}
+        key={index}
+        py="xxsmall"
+        scrollIntoView={scrollIntoView}
+      >
         <SelectOptionWithDescription {...option} />
       </ComboboxOption>
     )
@@ -63,10 +72,19 @@ const renderOption = (option: SelectOptionObject, index: number) => {
   return <ComboboxOption {...option} key={index} />
 }
 
-const renderMultiOption = (option: SelectOptionObject, index: number) => {
+const renderMultiOption = (
+  option: SelectOptionObject,
+  index: number,
+  scrollIntoView?: boolean
+) => {
   if (option.description) {
     return (
-      <ComboboxMultiOption {...option} key={index} py="xxsmall">
+      <ComboboxMultiOption
+        {...option}
+        key={index}
+        py="xxsmall"
+        scrollIntoView={scrollIntoView}
+      >
         <SelectOptionWithDescription {...option} />
       </ComboboxMultiOption>
     )
@@ -116,7 +134,9 @@ export const SelectOptionGroup = ({
         {label}
       </SelectOptionGroupTitle>
     )}
-    {options.map(isMulti ? renderMultiOption : renderOption)}
+    {options.map((option, index) =>
+      isMulti ? renderMultiOption(option, index) : renderOption(option, index)
+    )}
   </SelectOptionGroupContainer>
 )
 
@@ -208,7 +228,35 @@ export function SelectOptions({
     options ? options.length : 0
   )
 
-  useVirtualizationOptions(virtualize, options, isMulti)
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = isMulti ? contextMulti : context
+  const {
+    data: { navigationOption },
+  } = contextToUse
+
+  // Manage ComboboxContext.optionsRef to support keyboard navigation
+  const virtualizationOptions = useVirtualizationOptions(
+    virtualize,
+    options,
+    isMulti
+  )
+
+  let scrollToFirst = false
+  let scrollToLast = false
+  if (
+    virtualize &&
+    virtualizationOptions &&
+    virtualizationOptions.length &&
+    navigationOption
+  ) {
+    scrollToFirst =
+      start > 0 && navigationOption.value === virtualizationOptions[0].value
+    scrollToLast =
+      end < virtualizationOptions.length - 1 &&
+      navigationOption.value ===
+        virtualizationOptions[virtualizationOptions.length - 1].value
+  }
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -228,8 +276,13 @@ export function SelectOptions({
   const optionsToRender = options && options.slice(start, end + 1)
   const after = options ? options.length - 1 - end : 0
 
+  const renderToUse = isMulti ? renderMultiOption : renderOption
+
   return (
     <>
+      {options && scrollToFirst
+        ? renderToUse(options[0] as SelectOptionObject, 0, true)
+        : null}
       {start > 0 && <LiSpacer height={start * optHeight} />}
       {optionsToRender && optionsToRender.length > 0
         ? [
@@ -246,13 +299,8 @@ export function SelectOptions({
                     {...optionAsGroup}
                     isMulti={isMulti}
                   />
-                ) : isMulti ? (
-                  renderMultiOption(
-                    option as SelectOptionObject,
-                    correctedIndex
-                  )
                 ) : (
-                  renderOption(option as SelectOptionObject, correctedIndex)
+                  renderToUse(option as SelectOptionObject, correctedIndex)
                 )
               }
             ),
@@ -260,6 +308,13 @@ export function SelectOptions({
           ]
         : createOption || noOptions}
       {after > 0 ? <LiSpacer height={after * optHeight} /> : null}
+      {options && scrollToLast
+        ? renderToUse(
+            options[options.length - 1] as SelectOptionObject,
+            0,
+            true
+          )
+        : null}
     </>
   )
 }

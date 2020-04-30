@@ -66,6 +66,7 @@ export interface ComboboxContextProps<
   closeOnSelectPropRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   virtualizePropRef?: MutableRefObject<boolean>
+  isScrollingRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
   listScrollPosition?: number

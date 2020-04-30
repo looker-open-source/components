@@ -72,4 +72,6 @@ export function useVirtualizationOptions(
       optionsRef.current = virtualizationOptions
     }
   }, [options, optionsRef, virtualizationOptions])
+
+  return virtualizationOptions
 }

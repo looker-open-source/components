@@ -58,12 +58,14 @@ export function useOptionScroll<
     transition,
     listScrollPosition = 0,
     listClientRect = { height: 0 },
+    isScrollingRef,
   } = useContext(context)
   /* scroll menu list to specified element on mount */
   const [newTriggerElement, callbackRef] = useCallbackRef()
   useEffect(() => {
     if (scrollIntoView) {
       if (newTriggerElement) {
+        // if (isScrollingRef) isScrollingRef.current = true
         newTriggerElement.scrollIntoView()
       }
       if (!isActive) {
@@ -85,6 +87,12 @@ export function useOptionScroll<
         listClientRect.height
       )
       if (visibility !== 'visible') {
+        // Prevent issue where keyboard nav & hover conflict
+        if (isScrollingRef) isScrollingRef.current = true
+        window.requestAnimationFrame(() => {
+          if (isScrollingRef) isScrollingRef.current = false
+        })
+
         const attachToTop = visibility === 'above'
         newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
       }
