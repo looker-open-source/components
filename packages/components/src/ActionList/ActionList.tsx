@@ -143,7 +143,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     addItemToAllItems,
     allSelected,
     canSelect: !!canSelect,
-    canSelectAll: typeof canSelect === 'boolean' ? canSelect : canSelect.all,
     columns,
     itemsSelected,
     onClickRowSelect,
