@@ -24,10 +24,43 @@
 
  */
 
-export * from './Fields'
-export * from './Fieldset'
-export * from './Form'
-export * from './Inputs'
-export * from './Label'
-export * from './Legend'
-export * from './ValidationMessage'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
+import { useFormContext } from '../../Form'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { RadioGroup, RadioGroupProps } from '../../Inputs/OptionsGroup'
+
+export interface FieldRadioGroupProps
+  extends RadioGroupProps,
+    Omit<FieldProps, 'detail'> {}
+
+const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
+  id = uuid(),
+  options,
+  ...props
+}) => {
+  const validationMessage = useFormContext(props)
+
+  return (
+    <Field
+      {...pickFieldProps(props)}
+      validationMessage={validationMessage}
+      id={id}
+    >
+      <RadioGroup
+        {...omitFieldProps(props)}
+        aria-describedby={`${id}-describedby`}
+        aria-labeledby={`${id}-labeledby`}
+        id={id}
+        inline={props.inline}
+        name={name || id}
+        options={options}
+      />
+    </Field>
+  )
+}
+
+FieldRadioGroupLayout.displayName = 'FieldRadioGroupLayout'
+
+export const FieldRadioGroup = styled(FieldRadioGroupLayout)``
