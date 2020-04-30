@@ -24,8 +24,7 @@
 
  */
 
-import omit from 'lodash/omit'
-import React, { ReactNode, useContext, useMemo, useEffect } from 'react'
+import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
@@ -39,7 +38,8 @@ import {
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
-import { flattenOptions, notInOptions } from './utils/options'
+import { notInOptions } from './utils/options'
+import { useVirtualizationOptions } from './utils/useVirtualizationOptions'
 
 export interface SelectOptionObject extends ComboboxOptionObject {
   description?: string | ReactNode
@@ -208,15 +208,7 @@ export function SelectOptions({
     options ? options.length : 0
   )
 
-  // virtualize disables useAddOptionToContext, need to manage it here for keyboard nav
-  const { optionsRef } = useContext(ComboboxContext)
-  useEffect(() => {
-    if (virtualize && options && optionsRef) {
-      optionsRef.current = flattenOptions(options).map((selectOption) =>
-        omit(selectOption, 'description')
-      )
-    }
-  }, [options, optionsRef, virtualize])
+  useVirtualizationOptions(virtualize, options, isMulti)
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
