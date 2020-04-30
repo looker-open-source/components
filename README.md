@@ -40,12 +40,12 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 ### Common Project Commands
 
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
-- **yarn workspace www develop** starts the Gatsby server
-- **yarn workspace @looker/components develop** builds the component library with a `--watch` flag. Useful when actively developing a component and you wish to see the changes appear in either the [style guide](./packages/www/README.md) or [react playground](./packages/playground/README.md)
-- **yarn workspace playground develop** starts a bare-bones React app used for developing our shared components
-- **yarn workspace server develop** starts a local proxy server to facilitate local fetch requests
+- **yarn playground** starts a bare-bones React app used for developing components
+- **yarn gatsby** starts the Gatsby server (powers [components.looker.com](https://components.looker.com))
+- **yarn server** starts a local proxy server to facilitate local fetch requests to a Looker instance
 - **yarn build** runs build across all packages. This calls several subtasks
-  - **yarn build:es** use lerna to do babel build on all packages in proper order
+  - **yarn prebuild** use lerna to do any pre-build tasks needed for packages
+  - **yarn build** use lerna to do babel build on all packages in proper order
   - **yarn postbuild** use lerna to typescript declarations in proper order and then run lint (see `lint` below)
 - **yarn lint** runs all lint checks in parallel
   - **yarn lint:css** run stylelint

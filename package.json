@@ -29,7 +29,7 @@
     "deploy": "yarn workspace www deploy",
     "playground": "yarn workspace playground start",
     "server": "yarn workspace server start",
-    "www": "yarn workspace www start",
+    "gatsby": "yarn workspace www start",
     "fix": "run-p -c fix:*",
     "fix:es": "yarn lint:es --fix",
     "fix:mdx": "yarn lint:mdx --fix",

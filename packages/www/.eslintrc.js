@@ -24,15 +24,20 @@
 
  */
 
+/*
+
+ This file is used to apply a different scope to
+
+ */
+
 module.exports = {
   root: true,
-  extends: ['@looker/eslint-config', 'plugin:mdx/recommended'],
+  extends: ['plugin:mdx/recommended'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': 'error',
     'mdx/no-unescaped-entities': 'off',
     'sort-keys': 'off',
-    /* @TODO - To level-up our code quality we shouldn't ever use `any` */
     '@typescript-eslint/no-explicit-any': 'off',
   },
 }
