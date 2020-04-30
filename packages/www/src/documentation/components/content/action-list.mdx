@@ -164,7 +164,7 @@ You can also use an `<ActionListManager>` element to render a "No Results" messa
 }
 ```
 
-## Sorting an Action List
+## Sorting
 
 You can implement sorting on an `<ActionList>` by passing a function into the optional `onSort` prop.
 
@@ -254,7 +254,7 @@ If you want default sorting behavior, you can use the `doDefaultActionListSort` 
 }
 ```
 
-## Selecting rows on an Action List
+## Selecting rows
 
 You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
 
@@ -262,7 +262,9 @@ An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>
 
 Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
 
-The `itemsSelected` prop should be given the id's of all selected `<ActionListItem>`s. Note that because the id of an `<ActionListItem>`s must be a string, the `itemSelected` prop should be an array of strings.
+The `itemsSelected` prop should be given the id's of all selected `<ActionListItem>`s.
+
+**Note:** The id of an `<ActionListItem>`s must be a string, the `itemSelected` prop should be an array of strings.
 
 If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
 
@@ -277,6 +279,84 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
     )
   }
 
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+      disabled: true,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const items = data.map(({ id, name, disabled }) => {
+    actions = (
+      <>
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
+        </ActionListItemAction>
+      </>
+    )
+
+    return (
+      <ActionListItem
+        key={id}
+        id={String(id)}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+        disabled={disabled}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList
+      canSelect
+      onSelect={onSelect}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
+
+### Selecting all rows
+
+A header checkbox is included next to your `<ActionList/>`'s header when the `canSelect` prop is `true`.
+
+Clicking on this header checkbox will trigger the callback passed into the `<ActionList/>`'s `onSelectAll` prop.
+
+**Note:** If you would like to remove the header checkbox, but retain the row checkboxes, pass in `{ all: false }` into your `canSelect` prop.
+
+```jsx
+;() => {
   const data = [
     {
       id: 1,
@@ -308,38 +388,69 @@ If you would like a row's `onClick` to toggle a row's selected state, rather tha
     },
   ]
 
-  const items = data.map(({ id, name }) => {
-    actions = (
-      <>
-        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
-          Select Cheese
-        </ActionListItemAction>
-      </>
+  const [selections, setSelections] = useState([])
+  const onSelect = (selection) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
     )
+  }
 
-    return (
-      <ActionListItem
-        key={id}
-        id={String(id)}
-        onClick={() => alert('Row clicked')}
-        actions={actions}
-        disabled={id === 3 && true}
-      >
-        <ActionListItemColumn>{id}</ActionListItemColumn>
-        <ActionListItemColumn>{name}</ActionListItemColumn>
-      </ActionListItem>
-    )
-  })
+  const allSelectableItems = data.map(({ id }) => String(id))
+
+  const onSelectAll = () => {
+    setSelections(selections.length ? [] : allSelectableItems)
+  }
+
+  const items = data.map(({ id, name }) => (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      onClick={() => alert(`${name} clicked`)}
+      actions={
+        <>
+          <ActionListItemAction
+            color="danger"
+            onClick={() => alert(`${name} deleted`)}
+          >
+            Delete
+          </ActionListItemAction>
+        </>
+      }
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  const [isLoading, setIsLoading] = useState(true)
+  setTimeout(() => setIsLoading(false), 750)
 
   return (
-    <ActionList
-      canSelect
-      onSelect={onSelect}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
+    <>
+      <ActionList
+        canSelect
+        onSelect={onSelect}
+        onSelectAll={onSelectAll}
+        itemsSelected={selections}
+        columns={columns}
+      >
+        {items}
+      </ActionList>
+
+      <Divider my="large" />
+
+      <ActionList
+        canSelect={{ all: false }}
+        onSelect={onSelect}
+        onSelectAll={onSelectAll}
+        itemsSelected={selections}
+        columns={columns}
+      >
+        {items}
+      </ActionList>
+    </>
   )
 }
 ```

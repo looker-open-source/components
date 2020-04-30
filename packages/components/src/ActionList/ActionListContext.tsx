@@ -25,18 +25,27 @@
  */
 
 import { createContext } from 'react'
+import { MixedBoolean } from '../Form'
 import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
-  canSelect: boolean
+  addItemToAllItems: (id: string) => void
+  allSelected?: MixedBoolean
+  canSelect: boolean | { all: boolean }
   columns?: ActionListColumns
   itemsSelected: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   onSelect?: (id: string) => void
+  onSelectAll?: () => void
   onClickRowSelect: boolean
 }
 
 export const ActionListContext = createContext<ActionListContextProps>({
+  addItemToAllItems: (id: string) => {
+    // Using noop; addItemToAllItems is passed from ActionList component into context
+    // eslint-disable-next-line no-console
+    console.log(id)
+  },
   canSelect: false,
   itemsSelected: [],
   onClickRowSelect: false,

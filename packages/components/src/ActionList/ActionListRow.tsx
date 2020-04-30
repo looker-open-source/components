@@ -36,7 +36,7 @@ import {
 
 export interface ActionListItemLayoutProps
   extends ActionListCheckboxProps,
-    Omit<CompatibleHTMLProps<HTMLElement>, 'onChange'> {
+    Omit<CompatibleHTMLProps<HTMLElement>, 'onChange' | 'checked'> {
   secondary?: ReactNode
   hasCheckbox?: boolean
   /**
@@ -82,10 +82,10 @@ ActionListRowLayout.displayName = 'ActionListRowLayout'
 export const ActionListRow = styled(ActionListRowLayout)`
   display: flex;
 
-  background: ${({ checked, disabled, theme }) =>
+  background: ${({ checked, disabled, hasCheckbox, theme }) =>
     disabled
       ? theme.colors.palette.charcoal100
-      : checked
+      : checked && hasCheckbox
       ? theme.colors.palette.purple000
       : undefined};
 

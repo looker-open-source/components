@@ -65,6 +65,11 @@ const data = [
     name: 'Richard Garfield',
     type: 'Game Designer',
   },
+  {
+    id: 2,
+    name: 'John Carmack',
+    type: 'Programmer',
+  },
 ]
 
 const header = (
@@ -302,8 +307,8 @@ describe('ActionList', () => {
     })
 
     test('Checkbox click calls onSelect', () => {
-      const { getByRole } = renderWithTheme(actionListWithSelect)
-      fireEvent.click(getByRole('checkbox'))
+      const { getAllByRole } = renderWithTheme(actionListWithSelect)
+      fireEvent.click(getAllByRole('checkbox')[1])
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 
@@ -315,9 +320,66 @@ describe('ActionList', () => {
     })
 
     test('itemsSelected determines if a checkbox is checked', () => {
-      const { getByRole } = renderWithTheme(actionListWithItemsSelected)
-      const checkbox = getByRole('checkbox')
+      const { getAllByRole } = renderWithTheme(actionListWithItemsSelected)
+      const checkbox = getAllByRole('checkbox')[1]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
+    })
+  })
+
+  describe('Selecting All', () => {
+    const onSelect = jest.fn()
+    const onSelectAll = jest.fn()
+    const props = {
+      canSelect: true,
+      canSelectAll: true,
+      columns,
+      onSelect,
+      onSelectAll,
+    }
+
+    const actionListWithSelectAll = <ActionList {...props}>{items}</ActionList>
+
+    const actionListWithNoItemsSelected = (
+      <ActionList {...props} itemsSelected={[]}>
+        {items}
+      </ActionList>
+    )
+
+    const actionListWithSomeItemsSelected = (
+      <ActionList {...props} itemsSelected={['1']}>
+        {items}
+      </ActionList>
+    )
+
+    const actionListWithAllItemsSelected = (
+      <ActionList {...props} itemsSelected={['1', '2']}>
+        {items}
+      </ActionList>
+    )
+
+    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithSelectAll)
+
+      const headerCheckbox = getAllByRole('checkbox')[0]
+      fireEvent.click(headerCheckbox)
+      expect(onSelectAll).toHaveBeenCalledTimes(1)
+    })
+
+    test('Header checkbox is unchecked when itemsSelected includes no row ids', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
+      const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
+      expect(headerCheckbox.checked).toEqual(false)
+    })
+
+    test('Header checkbox is mixed when itemsSelected includes some row ids', () => {
+      const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
+      getByTitle('Check Mark Mixed')
+    })
+
+    test('Header checkbox is mixed when itemsSelected includes all row ids', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithAllItemsSelected)
+      const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
+      expect(headerCheckbox.checked).toEqual(true)
     })
   })
 })

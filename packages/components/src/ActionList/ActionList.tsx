@@ -25,7 +25,8 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
+import { MixedBoolean } from '../Form'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -84,19 +85,22 @@ export interface ActionListProps {
    * Sort function provided by the developer
    */
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
-
   /**
    * Allow the user to select ActionListItems.
    * Note: Implemented as a checkbox next to each item row.
    * @default false
    */
-  canSelect?: boolean
+  canSelect?: boolean | { all: boolean }
   /**
    * Callback performed when user makes a selection
    */
   onSelect?: (id: string) => void
   /**
-   * ActionListItems which should be displayed as "selected"
+   * Callback performed when user makes selects the header checkbox
+   */
+  onSelectAll?: () => void
+  /**
+   * The ids of all ActionListItems which should be displayed as "selected"
    */
   itemsSelected?: string[]
   /**
@@ -112,11 +116,41 @@ export const ActionListLayout: FC<ActionListProps> = ({
   header = true,
   children,
   columns,
-  itemsSelected,
-  onClickRowSelect,
+  itemsSelected = [],
+  onClickRowSelect = false,
   onSelect,
+  onSelectAll,
   onSort,
 }) => {
+  const [allItems, setAllItems] = useState<string[]>([])
+
+  // Includes a check for allItems length to prevent the in-between state where ActionList first loads
+  // and allItems is an empty array (which leads to header checkbox being checked for a split-second)
+  const allSelected: MixedBoolean =
+    !!allItems.length && allItems.every((item) => itemsSelected.includes(item))
+      ? true
+      : allItems.some((item) => itemsSelected.includes(item))
+      ? 'mixed'
+      : false
+
+  const addItemToAllItems = (id: string) => {
+    !allItems.includes(id) && setAllItems([...allItems, id])
+  }
+
+  const handleSelectAll = onSelectAll ? () => onSelectAll() : undefined
+
+  const context = {
+    addItemToAllItems,
+    allSelected,
+    canSelect: !!canSelect,
+    columns,
+    itemsSelected,
+    onClickRowSelect,
+    onSelect,
+    onSelectAll: handleSelectAll,
+    onSort,
+  }
+
   const actionListHeader =
     header === true ? (
       <ActionListHeader>
@@ -125,15 +159,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     ) : header === false ? null : (
       <ActionListHeader>{header}</ActionListHeader>
     )
-
-  const context = {
-    canSelect: canSelect || false,
-    columns,
-    itemsSelected: itemsSelected || [],
-    onClickRowSelect: onClickRowSelect || false,
-    onSelect,
-    onSort,
-  }
 
   return (
     <ActionListContext.Provider value={context}>
@@ -171,7 +196,9 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
 
   ${ActionListHeader} {
     padding-left: ${({ canSelect }) =>
-      canSelect ? actionListCheckboxWidth : undefined};
+      typeof canSelect === 'object' &&
+      !canSelect.all &&
+      actionListCheckboxWidth};
   }
 
   ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}

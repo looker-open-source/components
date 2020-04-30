@@ -36,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Legend`
   - Extend `Label` styles to keep Label & Legend presentation bound where appropriate
 - `Menu` closes by default on `MenuItem` click
+- Provide `@types/styled-system` as a package dependency
+- `ActionList`
+  - Added "select all" functionality and test suite
+  - Added documentation
 - `Space` & `SpaceVertical`
   - Add `layout` / `layoutProps` to `simpleLayoutProps` to allow for default width specification
   - Improve specificity of child selectors to apply only to direct descendants.
