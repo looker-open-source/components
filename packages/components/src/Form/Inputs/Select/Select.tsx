@@ -57,7 +57,7 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
    * Render only the options visible in the scroll window
    * defaults to false for <100 options, true for >=100 options
    */
-  virtualize?: boolean
+  windowOptions?: boolean
 }
 
 export interface SelectProps
@@ -94,7 +94,7 @@ const SelectComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
-      virtualize: propsVirtualize,
+      windowOptions: propsVirtualize,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -133,7 +133,7 @@ const SelectComponent = forwardRef(
       validationType,
     }
 
-    const virtualize =
+    const windowOptions =
       propsVirtualize !== undefined
         ? propsVirtualize
         : options
@@ -159,10 +159,14 @@ const SelectComponent = forwardRef(
           ref={ref}
         />
         {!disabled && (
-          <ComboboxList persistSelection virtualize={virtualize} {...ariaProps}>
+          <ComboboxList
+            persistSelection
+            windowOptions={windowOptions}
+            {...ariaProps}
+          >
             <SelectOptions
               options={options}
-              virtualize={virtualize}
+              windowOptions={windowOptions}
               noOptionsLabel={noOptionsLabel}
             />
           </ComboboxList>

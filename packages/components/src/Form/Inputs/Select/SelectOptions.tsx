@@ -170,7 +170,7 @@ export interface SelectOptionsBaseProps {
   /**
    * Render only the options visible in the scroll window
    */
-  virtualize?: boolean
+  windowOptions?: boolean
 }
 
 export interface SelectMultiOptionsBaseProps {
@@ -199,7 +199,7 @@ export function SelectOptions({
   formatCreateLabel,
   isMulti,
   noOptionsLabel = 'No options',
-  virtualize = false,
+  windowOptions = false,
 }: SelectOptionsProps) {
   // Manage ComboboxContext.optionsRef to support keyboard navigation
   const {
@@ -209,7 +209,7 @@ export function SelectOptions({
     after,
     scrollToFirst,
     scrollToLast,
-  } = useWindowedOptions(virtualize, options, isMulti)
+  } = useWindowedOptions(windowOptions, options, isMulti)
   console.log(start, end, before, after, scrollToFirst, scrollToLast)
 
   const noOptions = (

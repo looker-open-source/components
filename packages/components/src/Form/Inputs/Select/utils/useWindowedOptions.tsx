@@ -42,7 +42,7 @@ import {
 export const optionHeight = 28
 
 export function useWindowedOptions(
-  virtualize: boolean,
+  windowOptions: boolean,
   options?: SelectOptionProps[],
   isMulti?: boolean
 ) {
@@ -56,12 +56,12 @@ export function useWindowedOptions(
     optionsRef,
   } = contextToUse
 
-  // virtualize prop disables useAddOptionToContext,
+  // windowOptions prop disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
   // Flatten & convert options to ComboboxOptionObject for TS and to warn if groups are used
-  const virtualizationOptions = useMemo(() => {
-    if (virtualize && options) {
+  const optionsToWindow = useMemo(() => {
+    if (windowOptions && options) {
       const flatOptions: ComboboxOptionObject[] = []
       const ableToVirtualize = options.every((option) => {
         if ((option as SelectOptionGroupProps).options) {
@@ -75,21 +75,21 @@ export function useWindowedOptions(
       }
     }
     return []
-  }, [options, virtualize])
+  }, [options, windowOptions])
 
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
-    // virtualizationOptions will be empty if virtualize is false, so no need to check virtualize as well
-    if (virtualizationOptions.length > 0 && options && optionsRef) {
-      optionsRef.current = virtualizationOptions
+    // optionsToWindow will be empty if windowOptions is false, so no need to check windowOptions as well
+    if (optionsToWindow.length > 0 && options && optionsRef) {
+      optionsRef.current = optionsToWindow
     }
-  }, [options, optionsRef, virtualizationOptions])
+  }, [options, optionsRef, optionsToWindow])
 
   // Get the windowed list boundaries and spacers
   const { start, end } = useWindowedListBoundaries({
     containerHeight: listClientRect && listClientRect.height,
     containerScrollPosition: listScrollPosition,
-    enabled: virtualize,
+    enabled: windowOptions,
     itemHeight: optionHeight,
     length: options ? options.length : 0,
   })
@@ -99,17 +99,17 @@ export function useWindowedOptions(
   let scrollToFirst = false
   let scrollToLast = false
   if (
-    virtualize &&
-    virtualizationOptions &&
-    virtualizationOptions.length &&
+    windowOptions &&
+    optionsToWindow &&
+    optionsToWindow.length &&
     navigationOption
   ) {
     scrollToFirst =
-      start > 0 && navigationOption.value === virtualizationOptions[0].value
+      start > 0 && navigationOption.value === optionsToWindow[0].value
     scrollToLast =
-      end < virtualizationOptions.length - 1 &&
+      end < optionsToWindow.length - 1 &&
       navigationOption.value ===
-        virtualizationOptions[virtualizationOptions.length - 1].value
+        optionsToWindow[optionsToWindow.length - 1].value
   }
   const afterLength = options ? options.length - 1 - end : 0
 

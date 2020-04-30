@@ -38,14 +38,14 @@ export function useAddOptionToContext<
   label?: string,
   scrollIntoView?: boolean
 ) {
-  const { optionsRef, virtualizePropRef } = useContext(context)
+  const { optionsRef, windowOptionsPropRef } = useContext(context)
   const indexRef = useRef<number>(-1)
 
   useEffect(() => {
     const option = { label, scrollIntoView, value }
     const optionsRefCurrent = optionsRef && optionsRef.current
-    const virtualize = virtualizePropRef && virtualizePropRef.current
-    if (optionsRefCurrent && !virtualize) {
+    const windowOptions = windowOptionsPropRef && windowOptionsPropRef.current
+    if (optionsRefCurrent && !windowOptions) {
       // Was this option already in the list?
       // If so, re-insert it at the same spot
       if (indexRef.current > -1) {
@@ -56,7 +56,7 @@ export function useAddOptionToContext<
     }
     return () => {
       // Delete option from the array but save the index so it can be re-inserted there
-      if (optionsRefCurrent && !virtualizePropRef) {
+      if (optionsRefCurrent && !windowOptionsPropRef) {
         const index = optionsRefCurrent.indexOf(option)
         indexRef.current = index
         optionsRefCurrent.splice(index, 1)
