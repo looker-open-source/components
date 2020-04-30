@@ -6,7 +6,9 @@ propsOf: Fieldset
 github: Form/Fieldset
 ---
 
-The `<Fieldset />` component is used to wrap Field components into meaningful groups. The `legend` property allows for a heading which is by default aligned above and to the left. Using `label` as a props gives, the component associated with it, a larger clickable area since the area where the label is placed also is associated to the component that has the label.
+### Fieldset
+
+The `<Fieldset />` component is used to wrap Field components into groups.
 
 ```jsx
 <Fieldset legend="This is the Legend">
@@ -29,13 +31,28 @@ The `<Fieldset />` component is used to wrap Field components into meaningful gr
 `Field` can be individually displayed as inline inside `Fieldset`
 
 ```jsx
-<Fieldset inline legend="This is the Legend">
+<Fieldset legend="This is the Legend">
   <FieldText inline label="First Label" />
   <FieldText inline label="Second Label" />
 </Fieldset>
 ```
 
-<!-- Example showing the Fieldset inline
-Example with Fieldset and Fields w/ inline
-Legend on it's own
-Label on it's own -->
+### Legend
+
+The `legend` property allows for a heading which is by default aligned above and to the left.
+
+```jsx
+<Fieldset legend="This is the Legend" />
+```
+
+### Label
+
+Using `label` as a props in `Field`, gives a larger clickable area since the area where the label is placed also is associated to the component that has the label.
+
+```jsx
+<Fieldset legend="This is the Legend">
+  <FieldCheckbox name="box1" label="you can click here" />
+  <FieldCheckbox name="box2" label="here too" />
+  <FieldCheckbox name="box3" label="also here" />
+</Fieldset>
+```
