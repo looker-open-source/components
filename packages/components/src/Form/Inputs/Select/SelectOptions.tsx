@@ -170,7 +170,7 @@ export interface SelectOptionsBaseProps {
   /**
    * Render only the options visible in the scroll window
    */
-  windowOptions?: boolean
+  windowedOptions?: boolean
 }
 
 export interface SelectMultiOptionsBaseProps {
@@ -199,8 +199,29 @@ export function SelectOptions({
   formatCreateLabel,
   isMulti,
   noOptionsLabel = 'No options',
-  windowOptions = false,
+  windowedOptions: propsWindowedOptions,
 }: SelectOptionsProps) {
+  const windowedOptions = useMemo(() => {
+    if (!options) return false
+    if (propsWindowedOptions === false) return false
+    // Without windowedOptions prop, default is to turn it on at 100 options
+    if (options.length < 100 && !propsWindowedOptions) return false
+    // But we can't use windowedOptions if there are groups
+    const groupedOptions = options.find(
+      (option) => (option as SelectOptionGroupProps).options !== undefined
+    )
+    if (groupedOptions) {
+      if (propsWindowedOptions) {
+        // If the windowedOptions prop is true but there are groups, give a warning
+        /* eslint-disable-next-line no-console */
+        console.warn(
+          'The `windowedOptions` prop does not support grouped options.'
+        )
+      }
+      return false
+    }
+    return true
+  }, [options, propsWindowedOptions])
   // Manage ComboboxContext.optionsRef to support keyboard navigation
   const {
     start,
@@ -209,8 +230,10 @@ export function SelectOptions({
     after,
     scrollToFirst,
     scrollToLast,
-  } = useWindowedOptions(windowOptions, options, isMulti)
-  console.log(start, end, before, after, scrollToFirst, scrollToLast)
+  } = useWindowedOptions(windowedOptions, options, isMulti)
+
+  const optionsToRender = options && options.slice(start, end + 1)
+  const renderToUse = isMulti ? renderMultiOption : renderOption
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -226,10 +249,6 @@ export function SelectOptions({
       key="create"
     />
   )
-
-  const optionsToRender = options && options.slice(start, end + 1)
-
-  const renderToUse = isMulti ? renderMultiOption : renderOption
 
   return (
     <>

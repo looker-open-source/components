@@ -26,7 +26,7 @@
 
 import { useMemo } from 'react'
 
-export interface GetWindowedListProps {
+export interface UseWindowedListBoundaryProps {
   /**
    * If false, the start and end values will be the entire list length
    * @default true
@@ -62,23 +62,23 @@ export function useWindowedListBoundaries({
   enabled = true,
   itemHeight,
   length,
-}: GetWindowedListProps) {
+}: UseWindowedListBoundaryProps) {
   return useMemo(() => {
     if (!enabled) return { end: length - 1, start: 0 }
 
     if (containerScrollPosition === undefined || containerHeight === undefined)
-      return { end: Math.min(length - 1, 50), start: 0 }
+      // scroll position and height probably undefined on initial render
+      // best to render no list items before we have these values
+      return { end: 0, start: 0 }
 
     const top = Math.floor(containerScrollPosition / itemHeight)
     const bottom = Math.ceil(
       (containerHeight + containerScrollPosition) / itemHeight
     )
-    const start = top - buffer < 0 ? 0 : top - buffer
-    const end = bottom + buffer > length - 1 ? length - 1 : bottom + buffer
 
     return {
-      end,
-      start,
+      end: bottom + buffer > length - 1 ? length - 1 : bottom + buffer,
+      start: top - buffer < 0 ? 0 : top - buffer,
     }
   }, [
     buffer,

@@ -79,7 +79,7 @@ export interface ComboboxListProps
    * list of options in order for keyboard navigation to work properly
    * @default false
    */
-  windowOptions?: boolean
+  windowedOptions?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -95,7 +95,7 @@ const ComboboxListInternal = forwardRef(
       // closes the list after an option is selected
       closeOnSelect = true,
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
-      windowOptions = false,
+      windowedOptions = false,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -107,7 +107,7 @@ const ComboboxListInternal = forwardRef(
     const {
       persistSelectionPropRef,
       closeOnSelectPropRef,
-      windowOptionsPropRef,
+      windowedOptionsPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -121,7 +121,7 @@ const ComboboxListInternal = forwardRef(
     if (persistSelectionPropRef)
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
-    if (windowOptionsPropRef) windowOptionsPropRef.current = windowOptions
+    if (windowedOptionsPropRef) windowedOptionsPropRef.current = windowedOptions
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout

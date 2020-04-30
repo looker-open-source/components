@@ -24,15 +24,10 @@
 
  */
 
-import omit from 'lodash/omit'
 import React, { useContext, useMemo, useEffect } from 'react'
 import { useWindowedListBoundaries } from '../../../../utils/useWindowedListBoundaries'
 import { ListItem } from '../../../../List'
-import {
-  ComboboxContext,
-  ComboboxMultiContext,
-  ComboboxOptionObject,
-} from '../../Combobox'
+import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
 import {
   SelectOptionProps,
   SelectOptionGroupProps,
@@ -42,7 +37,7 @@ import {
 export const optionHeight = 28
 
 export function useWindowedOptions(
-  windowOptions: boolean,
+  windowedOptions: boolean,
   options?: SelectOptionProps[],
   isMulti?: boolean
 ) {
@@ -56,42 +51,32 @@ export function useWindowedOptions(
     optionsRef,
   } = contextToUse
 
-  // windowOptions prop disables useAddOptionToContext,
+  // windowedOptions prop disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
-  // Flatten & convert options to ComboboxOptionObject for TS and to warn if groups are used
-  const optionsToWindow = useMemo(() => {
-    if (windowOptions && options) {
-      const flatOptions: ComboboxOptionObject[] = []
-      const ableToVirtualize = options.every((option) => {
-        if ((option as SelectOptionGroupProps).options) {
-          return false
-        }
-        flatOptions.push(omit(option as SelectOptionObject, 'description'))
-        return true
-      })
-      if (ableToVirtualize) {
-        return flatOptions
-      }
-    }
-    return []
-  }, [options, windowOptions])
+  // Let TS know we have no grouped options
+  const flatOptions = options as SelectOptionObject[]
 
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
-    // optionsToWindow will be empty if windowOptions is false, so no need to check windowOptions as well
-    if (optionsToWindow.length > 0 && options && optionsRef) {
-      optionsRef.current = optionsToWindow
+    // optionsToWindow will be empty if windowedOptions is false, so no need to check windowedOptions as well
+    if (
+      windowedOptions &&
+      flatOptions &&
+      flatOptions.length > 0 &&
+      optionsRef
+    ) {
+      optionsRef.current = flatOptions
     }
-  }, [options, optionsRef, optionsToWindow])
+  }, [flatOptions, optionsRef, windowedOptions])
 
   // Get the windowed list boundaries and spacers
   const { start, end } = useWindowedListBoundaries({
     containerHeight: listClientRect && listClientRect.height,
     containerScrollPosition: listScrollPosition,
-    enabled: windowOptions,
+    enabled: windowedOptions,
     itemHeight: optionHeight,
-    length: options ? options.length : 0,
+    length: flatOptions ? flatOptions.length : 0,
   })
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option
@@ -99,19 +84,17 @@ export function useWindowedOptions(
   let scrollToFirst = false
   let scrollToLast = false
   if (
-    windowOptions &&
-    optionsToWindow &&
-    optionsToWindow.length &&
+    windowedOptions &&
+    flatOptions &&
+    flatOptions.length &&
     navigationOption
   ) {
-    scrollToFirst =
-      start > 0 && navigationOption.value === optionsToWindow[0].value
+    scrollToFirst = start > 0 && navigationOption.value === flatOptions[0].value
     scrollToLast =
-      end < optionsToWindow.length - 1 &&
-      navigationOption.value ===
-        optionsToWindow[optionsToWindow.length - 1].value
+      end < flatOptions.length - 1 &&
+      navigationOption.value === flatOptions[flatOptions.length - 1].value
   }
-  const afterLength = options ? options.length - 1 - end : 0
+  const afterLength = flatOptions ? flatOptions.length - 1 - end : 0
 
   return {
     after:
