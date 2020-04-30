@@ -23,11 +23,47 @@
  SOFTWARE.
 
  */
+import React, { FC, useState } from 'react'
+import { Fieldset } from '../../Fieldset'
+import { FieldRadio } from '../../Fields'
+import { OptionsGroupProps } from './OptionsGroup'
 
-export * from './Fields'
-export * from './Fieldset'
-export * from './Form'
-export * from './Inputs'
-export * from './Label'
-export * from './Legend'
-export * from './ValidationMessage'
+type RadioGroupValue = string
+
+export interface RadioGroupProps extends OptionsGroupProps {
+  className?: string
+  onChange?: (value: RadioGroupValue) => void
+  value?: RadioGroupValue
+}
+
+export const RadioGroup: FC<RadioGroupProps> = ({
+  disabled,
+  inline,
+  options,
+  defaultValue = '',
+  value,
+  onChange,
+}) => {
+  const [currentOption, setCurrentOption] = useState(value || defaultValue)
+
+  const handleOnchange = (option: string) => {
+    !value && setCurrentOption(option)
+    onChange && onChange(option)
+  }
+
+  const radios = options.map((option, index) => (
+    <FieldRadio
+      checked={currentOption === option.value}
+      disabled={option.disabled || disabled}
+      key={index}
+      label={option.label}
+      onChange={() => handleOnchange(option.value)}
+    />
+  ))
+
+  return (
+    <Fieldset data-testid="radio-list" disabled={disabled} inline={inline}>
+      {radios}
+    </Fieldset>
+  )
+}

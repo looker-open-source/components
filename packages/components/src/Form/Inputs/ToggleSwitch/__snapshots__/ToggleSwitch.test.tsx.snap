@@ -61,7 +61,6 @@ exports[`Big ToggleSwitch 1`] = `
   >
     <div
       className="c2"
-      size={60}
     />
   </div>
 </div>
@@ -128,7 +127,6 @@ exports[`ToggleSwitch default 1`] = `
   >
     <div
       className="c2"
-      size={20}
     />
   </div>
 </div>
@@ -197,8 +195,6 @@ exports[`ToggleSwitch on set to false 1`] = `
   >
     <div
       className="c2"
-      on={false}
-      size={20}
     />
   </div>
 </div>
@@ -270,8 +266,6 @@ exports[`ToggleSwitch on set to true 1`] = `
   >
     <div
       className="c2"
-      on={true}
-      size={20}
     />
   </div>
 </div>
@@ -358,9 +352,6 @@ exports[`ToggleSwitch that is disabled 1`] = `
   >
     <div
       className="c2"
-      disabled={true}
-      on={true}
-      size={20}
     />
   </div>
   <div
