@@ -24,13 +24,24 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldSelect'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import { FieldsetProps } from '../../Fieldset'
+import { ValidationMessageProps } from '../../ValidationMessage'
+
+export interface OptionsGroupOptionProps {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {
+  inline?: boolean
+}
+
+export interface OptionsGroupProps extends OptionsGroupLayout {
+  name: string
+  id?: string
+  disabled?: boolean
+  required?: boolean
+  options: OptionsGroupOptionProps[]
+  validationMessage?: ValidationMessageProps
+}

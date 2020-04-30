@@ -23,24 +23,57 @@
  SOFTWARE.
 
  */
-
+import 'jest-styled-components'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+import { renderWithTheme } from '@looker/components-test-utils'
+import map from 'lodash/map'
+import { FieldRadioGroup } from './FieldRadioGroup'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <OptionsGroupDemo />
-    </ComponentsProvider>
-  )
+const fieldRadioOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
+
+const fieldRadioProps = {
+  defaultValue: ['swiss', 'cheddar'],
+  id: '1',
+  name: 'group1',
+  options: fieldRadioOptions,
 }
+test('FieldRadioGroup render a radio list', () => {
+  const extractCheckboxFromDomList = (list: HTMLElement) => {
+    const options = list.getElementsByTagName('label')
+    return map(options, (el: HTMLElement) => {
+      return el.textContent
+    })
+  }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+  const renderListContent = () => {
+    const { getByTestId } = renderWithTheme(
+      <FieldRadioGroup {...fieldRadioProps} required />
+    )
+    return getByTestId('radio-list')
+  }
+
+  const domList = renderListContent()
+  expect(extractCheckboxFromDomList(domList)).toEqual([
+    'Cheddar',
+    'Gouda',
+    'Swiss',
+    'Roquefort',
+  ])
 })
