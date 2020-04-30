@@ -14,5 +14,28 @@ The `<Fieldset />` component is used to wrap Field components into meaningful gr
   <FieldText label="Second Label" />
   <FieldText label="Third Label" />
 </Fieldset>
-<Button mt="small">Submit</Button>
 ```
+
+`Fieldset` can be displayed inline
+
+```jsx
+<Fieldset inline legend="This is the Legend">
+  <FieldText label="First Label" />
+  <FieldText label="Second Label" />
+  <FieldText label="Third Label" />
+</Fieldset>
+```
+
+`Field` can be individually displayed as inline inside `Fieldset`
+
+```jsx
+<Fieldset inline legend="This is the Legend">
+  <FieldText inline label="First Label" />
+  <FieldText inline label="Second Label" />
+</Fieldset>
+```
+
+<!-- Example showing the Fieldset inline
+Example with Fieldset and Fields w/ inline
+Legend on it's own
+Label on it's own -->
