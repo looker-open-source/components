@@ -40,6 +40,7 @@ import indexOf from 'lodash/indexOf'
 import startsWith from 'lodash/startsWith'
 import partial from 'lodash/partial'
 import map from 'lodash/map'
+import isEqual from 'lodash/isEqual'
 import {
   useMeasuredRef,
   useMouseDragPosition,
@@ -233,7 +234,6 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
         const newValue = sort([newPoint, value[unfocusedThumb]])
         focusChangedPoint(newValue, newPoint)
         setValue(newValue)
-        onChange && onChange(newValue)
       }
     }
   }
@@ -271,17 +271,18 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
       )
       focusChangedPoint(newValue, newPoint)
       setValue(newValue)
-      onChange && onChange(newValue)
     }
   }
 
   const handleMouseDown = partial(handleMouseEvent, false)
   const handleMouseDrag = partial(handleMouseEvent, true)
 
+  /*
+   * Only fire mouse drag event when mouse moves AFTER initial click
+   */
   useEffect(
     () => {
       if (isMouseDown && prevMouseDown) {
-        // only run callback when moving, but not on the initial down click
         handleMouseDrag()
       }
     },
@@ -293,15 +294,34 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
    * Controlled Component: update value state when external value prop changes
    */
   useEffect(() => {
-    valueProp && setValue(sort(valueProp))
+    if (!isEqual(value, valueProp)) {
+      valueProp && setValue(sort(valueProp))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueProp])
 
   /*
+   * Fire onChange callback when internal value changes
+   */
+  useEffect(() => {
+    if (!isEqual(value, valueProp)) {
+      onChange && onChange(value)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
+  /*
    * Render markup!
+   * -------------------------------------------
    */
 
   return (
-    <div onMouseDown={handleMouseDown} className={className} ref={callbackRef}>
+    <div
+      data-testid="range-slider-wrapper"
+      onMouseDown={handleMouseDown}
+      className={className}
+      ref={callbackRef}
+    >
       <SliderTrack>
         <SliderFill
           fillStart={minPos}
