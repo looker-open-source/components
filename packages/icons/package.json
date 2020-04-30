@@ -17,6 +17,7 @@
   },
   "scripts": {
     "prebuild": "yarn icons",
+    "prepare": "yarn icons",
     "icons": "node bin/build.js"
   },
   "devDependencies": {

@@ -2,22 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./lib",
-    "composite": true
+    "outDir": "./lib"
   },
-  "references": [
-    {
-      "path": "../design-tokens/tsconfig.build.json"
-    },
-    {
-      "path": "../providers/tsconfig.build.json"
-    },
-    {
-      "path": "../icons/tsconfig.build.json"
-    },
-    {
-      "path": "../test-utils/tsconfig.build.json"
-    }
-  ],
   "include": ["src/**/*"]
 }

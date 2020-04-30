@@ -15,11 +15,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "yarn compile",
-    "compile": "tsc -b tsconfig.build.json",
-    "develop": "yarn compile --watch"
-  },
   "devDependencies": {
     "@looker/components-providers": "^0.7.30",
     "@testing-library/react": "^10.0.4",

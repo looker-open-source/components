@@ -15,11 +15,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "yarn compile",
-    "compile": "tsc -b tsconfig.build.json",
-    "develop": "yarn compile --watch"
-  },
   "dependencies": {
     "@types/styled-system": "^5.1.9",
     "lodash": "^4.17.15",

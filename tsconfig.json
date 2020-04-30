@@ -1,8 +1,7 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "./tsconfig.common.json",
   "compilerOptions": {
     "noEmit": true,
-    "declaration": false,
     "baseUrl": ".",
     "paths": {
       "@looker/components": ["packages/components/src"],
