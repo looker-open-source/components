@@ -30,7 +30,6 @@ import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
 import {
-  ComboboxContext,
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
@@ -39,7 +38,7 @@ import {
   ComboboxOptionText,
 } from '../Combobox'
 import { notInOptions } from './utils/options'
-import { useVirtualizationOptions } from './utils/useVirtualizationOptions'
+import { useWindowedOptions } from './utils/useWindowedOptions'
 
 export interface SelectOptionObject extends ComboboxOptionObject {
   description?: string | ReactNode
@@ -193,27 +192,6 @@ export interface SelectOptionsProps
   isMulti?: boolean
 }
 
-const optHeight = 28
-const buffer = 5
-
-function useScrollWindow(virtualize: boolean, length: number) {
-  const { listClientRect, listScrollPosition } = useContext(ComboboxContext)
-
-  if (!virtualize) return { end: length - 1, start: 0 }
-
-  if (listScrollPosition === undefined || listClientRect === undefined)
-    return { end: Math.min(length - 1, 50), start: 0 }
-
-  const start = Math.floor(listScrollPosition / optHeight)
-  const end = Math.ceil(
-    (listClientRect.height + listScrollPosition) / optHeight
-  )
-  return {
-    end: end + buffer > length - 1 ? length - 1 : end + buffer,
-    start: start - buffer < 0 ? 0 : start - buffer,
-  }
-}
-
 export function SelectOptions({
   options,
   isFilterable,
@@ -223,40 +201,16 @@ export function SelectOptions({
   noOptionsLabel = 'No options',
   virtualize = false,
 }: SelectOptionsProps) {
-  const { start, end } = useScrollWindow(
-    virtualize,
-    options ? options.length : 0
-  )
-
-  const context = useContext(ComboboxContext)
-  const contextMulti = useContext(ComboboxMultiContext)
-  const contextToUse = isMulti ? contextMulti : context
-  const {
-    data: { navigationOption },
-  } = contextToUse
-
   // Manage ComboboxContext.optionsRef to support keyboard navigation
-  const virtualizationOptions = useVirtualizationOptions(
-    virtualize,
-    options,
-    isMulti
-  )
-
-  let scrollToFirst = false
-  let scrollToLast = false
-  if (
-    virtualize &&
-    virtualizationOptions &&
-    virtualizationOptions.length &&
-    navigationOption
-  ) {
-    scrollToFirst =
-      start > 0 && navigationOption.value === virtualizationOptions[0].value
-    scrollToLast =
-      end < virtualizationOptions.length - 1 &&
-      navigationOption.value ===
-        virtualizationOptions[virtualizationOptions.length - 1].value
-  }
+  const {
+    start,
+    end,
+    before,
+    after,
+    scrollToFirst,
+    scrollToLast,
+  } = useWindowedOptions(virtualize, options, isMulti)
+  console.log(start, end, before, after, scrollToFirst, scrollToLast)
 
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
@@ -274,7 +228,6 @@ export function SelectOptions({
   )
 
   const optionsToRender = options && options.slice(start, end + 1)
-  const after = options ? options.length - 1 - end : 0
 
   const renderToUse = isMulti ? renderMultiOption : renderOption
 
@@ -283,7 +236,7 @@ export function SelectOptions({
       {options && scrollToFirst
         ? renderToUse(options[0] as SelectOptionObject, 0, true)
         : null}
-      {start > 0 && <LiSpacer height={start * optHeight} />}
+      {before}
       {optionsToRender && optionsToRender.length > 0
         ? [
             ...optionsToRender.map(
@@ -295,7 +248,7 @@ export function SelectOptions({
                 const correctedIndex = index + start
                 return optionAsGroup.options ? (
                   <SelectOptionGroup
-                    key={index}
+                    key={correctedIndex}
                     {...optionAsGroup}
                     isMulti={isMulti}
                   />
@@ -307,7 +260,7 @@ export function SelectOptions({
             createOption,
           ]
         : createOption || noOptions}
-      {after > 0 ? <LiSpacer height={after * optHeight} /> : null}
+      {after}
       {options && scrollToLast
         ? renderToUse(
             options[options.length - 1] as SelectOptionObject,
@@ -318,10 +271,6 @@ export function SelectOptions({
     </>
   )
 }
-
-const LiSpacer = styled.li<{ height: number }>`
-  height: ${({ height }) => `${height}px`};
-`
 
 interface SelectMultiCreateOptionProps {
   options?: SelectOptionProps[]

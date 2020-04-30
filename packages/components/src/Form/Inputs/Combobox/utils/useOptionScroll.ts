@@ -41,7 +41,7 @@ const relativeElementVisibility = (
 ) => {
   const { offsetTop } = listElement
   const isAbove = offsetTop < containerScrollPosition
-  const isBelow = offsetTop > containerScrollPosition + containerHeight
+  const isBelow = offsetTop >= containerScrollPosition + containerHeight
   return (isAbove && 'above') || (isBelow && 'below') || 'visible'
 }
 
