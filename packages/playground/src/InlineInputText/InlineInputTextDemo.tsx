@@ -23,3 +23,15 @@
  SOFTWARE.
 
  */
+
+import React, { FC } from 'react'
+import { Flex, InlineInputText } from '@looker/components'
+
+export const InlineInputTextDemo: FC = () => {
+  return (
+    <Flex alignItems="center" justifyContent="space-around" mt="medium">
+      <InlineInputText value="Type here..." />
+      <InlineInputText placeholder="this is the placeholder" />
+    </Flex>
+  )
+}

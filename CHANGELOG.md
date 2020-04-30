@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `ToggleSwitch` React warning
+- add placeholder attribute to InlineInputText
 
 ## [0.7.29] - 2020-04-24
 
