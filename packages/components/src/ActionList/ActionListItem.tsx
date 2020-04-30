@@ -31,7 +31,6 @@ import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
-import { actionListCheckboxWidth } from './ActionListCheckbox'
 
 export interface ActionListItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -115,7 +114,4 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 export const ActionListItem = styled(ActionListItemInternal)`
   border-bottom: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
   display: flex;
-
-  padding-left: ${({ disabled }) =>
-    disabled ? actionListCheckboxWidth : undefined};
 `

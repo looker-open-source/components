@@ -52,7 +52,6 @@ const ActionListRowLayout = forwardRef(
   (props: ActionListItemLayoutProps, ref: Ref<HTMLDivElement>) => {
     const {
       className,
-      disabled,
       hasCheckbox,
       children,
       onClick,
@@ -68,9 +67,7 @@ const ActionListRowLayout = forwardRef(
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
       >
-        {hasCheckbox && !disabled && (
-          <ActionListCheckbox {...pick(props, checkListProps)} />
-        )}
+        {hasCheckbox && <ActionListCheckbox {...pick(props, checkListProps)} />}
         <ActionListRowColumns onClick={onClick}>
           {children}
         </ActionListRowColumns>
