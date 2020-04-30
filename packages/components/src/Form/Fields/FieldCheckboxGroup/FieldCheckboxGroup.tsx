@@ -24,41 +24,45 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { Flex, FlexProps } from '../../Layout'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
+import { useFormContext } from '../../Form'
+import { CheckboxGroup, CheckboxGroupProps } from '../../Inputs'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
+export interface FieldCheckboxGroupProps
+  extends CheckboxGroupProps,
+    Omit<FieldProps, 'detail'> {}
 
-export interface FormControlProps extends FlexProps {
-  alignLabel?: FormControlDirections
+const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
+  id = uuid(),
+  options,
+  value,
+  ...props
+}) => {
+  const validationMessage = useFormContext(props)
+
+  return (
+    <Field
+      {...pickFieldProps(props)}
+      validationMessage={validationMessage}
+      id={id}
+    >
+      <CheckboxGroup
+        {...omitFieldProps(props)}
+        aria-describedby={`${id}-describedby`}
+        aria-labeledby={`${id}-labeledby`}
+        id={id}
+        inline={props.inline}
+        name={name || id}
+        options={options}
+        value={value}
+      />
+    </Field>
+  )
 }
 
-const setFlexAlignment = ({ alignLabel }: FormControlProps) => {
-  switch (alignLabel) {
-    case 'left':
-      return css`
-        flex-direction: row;
-        align-items: baseline;
-      `
-    case 'right':
-      return css`
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: baseline;
-      `
-    case 'bottom':
-      return css`
-        flex-direction: column-reverse;
-        justify-content: flex-end;
-      `
-    case 'top':
-    default:
-      return css`
-        flex-direction: column;
-      `
-  }
-}
+FieldCheckboxGroupLayout.displayName = 'FieldCheckboxGroupLayout'
 
-export const FormControl = styled(Flex)<FormControlProps>`
-  ${setFlexAlignment}
-`
+export const FieldCheckboxGroup = styled(FieldCheckboxGroupLayout)``
