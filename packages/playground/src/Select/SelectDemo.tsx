@@ -186,6 +186,7 @@ export function SelectContent() {
         options={options1k}
         aria-label="Fruits"
         isClearable
+        value="Boulder Creek"
       />
       <FieldSelect
         label="Default Value"

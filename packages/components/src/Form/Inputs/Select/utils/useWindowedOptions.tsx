@@ -78,8 +78,8 @@ export function useWindowedOptions(
   // The current value is highlighted when the menu first opens
   // but it may be outside the windowed options
   // so we start the list with just that option
-  const isFirstRend = useRef(true)
-  if (windowedOptions && isFirstRend.current) {
+  const isFirstRender = useRef(true)
+  if (windowedOptions && isFirstRender.current) {
     if (navigationOption) {
       const selectedIndex = findIndex(options, [
         'value',
@@ -88,7 +88,7 @@ export function useWindowedOptions(
       start = selectedIndex
       end = selectedIndex
     }
-    isFirstRend.current = false
+    isFirstRender.current = false
   }
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option

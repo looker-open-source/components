@@ -177,6 +177,7 @@ export function SelectMultiDemo() {
         formatCreateLabel={formatCreate}
         removeOnBackspace={false}
         mb="xlarge"
+        values={['Boulder Creek']}
       />
     </Box>
   )

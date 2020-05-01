@@ -222,7 +222,7 @@ export function SelectOptions({
     }
     return true
   }, [options, propsWindowedOptions])
-  // Manage ComboboxContext.optionsRef to support keyboard navigation
+
   const {
     start,
     end,

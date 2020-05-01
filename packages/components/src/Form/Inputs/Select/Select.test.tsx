@@ -30,6 +30,7 @@ import React from 'react'
 
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
+import { SelectOptionObject } from './SelectOptions'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
@@ -204,6 +205,98 @@ describe('Select / SelectMulti', () => {
       fireEvent.click(noOptions)
 
       expect(handleChange).not.toHaveBeenCalled()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    const label = 'Your search returned no results'
+    test.each([
+      [
+        'Select',
+        <Select placeholder="Search" noOptionsLabel={label} key="select" />,
+      ],
+      [
+        'SelectMulti',
+        <SelectMulti
+          placeholder="Search"
+          noOptionsLabel={label}
+          key="select-multi"
+        />,
+      ],
+    ])('custom label text (%s)', (_, jsx) => {
+      const { getByPlaceholderText, queryByText } = renderWithTheme(jsx)
+
+      const input = getByPlaceholderText('Search')
+
+      fireEvent.mouseDown(input)
+
+      const noOptions = queryByText(label)
+      expect(noOptions).toBeVisible()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+  })
+
+  describe('windowed options', () => {
+    const testArray: Array<[
+      string,
+      (longOptions: SelectOptionObject[]) => JSX.Element
+    ]> = [
+      [
+        'Select',
+        (longOptions) => (
+          <Select placeholder="Search" options={longOptions} key="select" />
+        ),
+      ],
+      [
+        'SelectMulti',
+        (longOptions) => (
+          <SelectMulti
+            placeholder="Search"
+            options={longOptions}
+            key="select-multi"
+          />
+        ),
+      ],
+    ]
+
+    test.each(testArray)('100 options do not all render', (_, getJSX) => {
+      const longOptions = Array.from(Array(100), (_, index) => ({
+        value: `${index}`,
+      }))
+      const { getByPlaceholderText, queryByText } = renderWithTheme(
+        getJSX(longOptions)
+      )
+
+      const input = getByPlaceholderText('Search')
+
+      fireEvent.mouseDown(input)
+
+      expect(queryByText('0')).toBeInTheDocument()
+      expect(queryByText('5')).toBeInTheDocument()
+      // js-dom doesn't do layout so only the first option + 5 buffer are rendered
+      expect(queryByText('6')).not.toBeInTheDocument()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test.each(testArray)('99 options all render', (_, getJSX) => {
+      const longOptions = Array.from(Array(99), (_, index) => ({
+        value: `${index}`,
+      }))
+      const { getByPlaceholderText, queryByText } = renderWithTheme(
+        getJSX(longOptions)
+      )
+
+      const input = getByPlaceholderText('Search')
+
+      fireEvent.mouseDown(input)
+
+      expect(queryByText('0')).toBeInTheDocument()
+      expect(queryByText('99')).not.toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)
