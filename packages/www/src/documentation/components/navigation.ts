@@ -76,7 +76,7 @@ const components: NavigationSection = {
           path: 'form',
         },
         {
-          title: 'Fieldset',
+          title: 'Fieldset, Legend, Label',
           path: 'fieldset',
         },
         {
