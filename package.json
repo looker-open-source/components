@@ -65,6 +65,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-import-resolver-webpack": "^0.12.1",
     "eslint-plugin-header": "^3.0.0",
     "eslint-plugin-mdx": "^1.6.8",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
@@ -90,7 +91,8 @@
     "**/*.js?(x)": [
       "git add"
     ],
-    "**/*.md?(x)": [
+    "**/*.mdx": [
+      "eslint",
       "git add"
     ]
   },
@@ -115,16 +117,34 @@
       ],
       "import/default": "off",
       "import/no-named-as-default-member": "off",
-      "import/order": "off",
-      "sort-keys-fix/sort-keys-fix": "warn",
-      "sort-keys": "off"
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "parent",
+            "sibling",
+            "index"
+          ]
+        }
+      ],
+      "sort-keys-fix/sort-keys-fix": "warn"
     },
     "settings": {
       "import/resolver": {
         "typescript": {
           "directory": "./tsconfig.json"
         }
-      }
+      },
+      "import/external-module-folders": [
+        "node_modules",
+        "packages"
+      ]
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
     "overrides": [
       {
