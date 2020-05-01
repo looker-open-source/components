@@ -32,7 +32,7 @@ require('jest-styled-components')
 
 Enzyme.configure({ adapter: new Adapter() })
 
-const observeMock = function(cb, config) {
+const observeMock = function (cb, config) {
   this.observeCallback = cb
   this.observeConfig = config
   this.disconnect = jest.fn()
@@ -41,6 +41,9 @@ const observeMock = function(cb, config) {
 
 const globalAny = global
 globalAny.IntersectionObserver = observeMock
+
+// js-dom doesn't do scrollIntoView
+Element.prototype.scrollIntoView = jest.fn()
 
 beforeAll(() => {
   jest.resetAllMocks()
