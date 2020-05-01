@@ -209,6 +209,8 @@ const ComboboxListInternal = forwardRef(
       return () => {
         contentContainer &&
           contentContainer.removeEventListener('scroll', scrollListener)
+        setListScrollPosition && setListScrollPosition(0)
+        setListClientRect && setListClientRect(undefined)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contentContainer])

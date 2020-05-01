@@ -24,15 +24,11 @@
 
  */
 
-import React, { useContext, useMemo, useEffect } from 'react'
+import findIndex from 'lodash/findIndex'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useWindowedListBoundaries } from '../../../../utils/useWindowedListBoundaries'
-import { ListItem } from '../../../../List'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
-import {
-  SelectOptionProps,
-  SelectOptionGroupProps,
-  SelectOptionObject,
-} from '../SelectOptions'
+import { SelectOptionProps, SelectOptionObject } from '../SelectOptions'
 
 export const optionHeight = 28
 
@@ -66,18 +62,29 @@ export function useWindowedOptions(
       flatOptions.length > 0 &&
       optionsRef
     ) {
-      optionsRef.current = flatOptions
+      optionsRef.current = [...flatOptions]
     }
   }, [flatOptions, optionsRef, windowedOptions])
 
   // Get the windowed list boundaries and spacers
-  const { start, end } = useWindowedListBoundaries({
+  let { start, end } = useWindowedListBoundaries({
     containerHeight: listClientRect && listClientRect.height,
     containerScrollPosition: listScrollPosition,
     enabled: windowedOptions,
     itemHeight: optionHeight,
     length: flatOptions ? flatOptions.length : 0,
   })
+
+  // The current value is highlighted when the menu first opens
+  // but it may be outside the windowed options
+  // so we start the list with just that option
+  const isFirstRend = useRef(true)
+  if (windowedOptions && isFirstRend.current && navigationOption) {
+    const selectedIndex = findIndex(options, ['value', navigationOption.value])
+    start = selectedIndex
+    end = selectedIndex
+    isFirstRend.current = false
+  }
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option
   // we need to force-render the top or bottom of the list and scroll there
@@ -98,8 +105,11 @@ export function useWindowedOptions(
 
   return {
     after:
-      afterLength > 0 ? <ListItem height={afterLength * optionHeight} /> : null,
-    before: start > 0 ? <ListItem height={start * optionHeight} /> : null,
+      afterLength > 0 ? (
+        <li style={{ height: `${afterLength * optionHeight}px` }} />
+      ) : null,
+    before:
+      start > 0 ? <li style={{ height: `${start * optionHeight}px` }} /> : null,
     end,
     scrollToFirst,
     scrollToLast,
