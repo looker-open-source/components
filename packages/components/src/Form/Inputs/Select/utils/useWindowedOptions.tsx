@@ -79,10 +79,15 @@ export function useWindowedOptions(
   // but it may be outside the windowed options
   // so we start the list with just that option
   const isFirstRend = useRef(true)
-  if (windowedOptions && isFirstRend.current && navigationOption) {
-    const selectedIndex = findIndex(options, ['value', navigationOption.value])
-    start = selectedIndex
-    end = selectedIndex
+  if (windowedOptions && isFirstRend.current) {
+    if (navigationOption) {
+      const selectedIndex = findIndex(options, [
+        'value',
+        navigationOption.value,
+      ])
+      start = selectedIndex
+      end = selectedIndex
+    }
     isFirstRend.current = false
   }
 

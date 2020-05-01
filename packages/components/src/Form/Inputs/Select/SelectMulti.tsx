@@ -84,6 +84,7 @@ const SelectMultiComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
+      windowedOptions,
       closeOnSelect = false,
       showCreate = false,
       formatCreateLabel,
@@ -152,6 +153,7 @@ const SelectMultiComponent = forwardRef(
           <ComboboxMultiList
             persistSelection
             closeOnSelect={closeOnSelect}
+            windowedOptions={windowedOptions}
             {...ariaProps}
           >
             <SelectOptions

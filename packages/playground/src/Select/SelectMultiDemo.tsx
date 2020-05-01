@@ -33,6 +33,7 @@ import {
   SelectMulti,
   SelectOptionProps,
 } from '@looker/components'
+import { options1k } from './options1k'
 
 const selectOptions = [
   { label: 'Apples', value: '1' },
@@ -158,6 +159,17 @@ export function SelectMultiDemo() {
       <SelectMulti
         options={newOptions}
         placeholder="Search fruits"
+        isFilterable
+        onFilter={handleFilter}
+        alignSelf="flex-start"
+        showCreate
+        formatCreateLabel={formatCreate}
+        removeOnBackspace={false}
+        mb="xlarge"
+      />
+      <SelectMulti
+        options={options1k}
+        placeholder="Huge list of options"
         isFilterable
         onFilter={handleFilter}
         alignSelf="flex-start"

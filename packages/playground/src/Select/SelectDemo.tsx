@@ -185,6 +185,7 @@ export function SelectContent() {
         mb="medium"
         options={options1k}
         aria-label="Fruits"
+        isClearable
       />
       <FieldSelect
         label="Default Value"
