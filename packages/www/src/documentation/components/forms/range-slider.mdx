@@ -1,0 +1,93 @@
+---
+title: RangeSlider
+propsOf: RangeSlider
+github: Form/Inputs/RangeSlider/RangeSlider.tsx
+---
+
+`RangeSlider` is the 2-point alternative to the [single-value `Slider` component](/components/forms/slider).
+
+# Default RangeSlider
+
+The `<RangeSlider />` component renders a styled range slider on the page. It will render a range from 0 to 10, and select all possible values.
+
+```jsx
+<RangeSlider />
+```
+
+# Value and DefaultValue
+
+By default, this component will select the entire range from Min to Max values. You can control the selected range by passing a two-value array of integers to either `value` or `defaultValue`.
+
+```jsx
+<>
+  <RangeSlider defaultValue={[3, 8]} />
+  <RangeSlider value={[3, 8]} />
+</>
+```
+
+Like all standard form elements, you cannot interact with this component if you pass in a value without an onChange handler.
+
+# Min, Max
+
+It also accepts `min` and `max` values. These default to 0 and 10, respectively, but can be set to any integer value.
+
+```jsx
+<RangeSlider min={10} max={20} value={[13, 17]} />
+```
+
+Min and max default to the following values:
+
+- **min**: 0
+- **max**: 10
+
+The slider component will disregard any value prop that goes outside of the defined min or max. The following example illustrates passing a value that falls outside the acceptable range.
+
+```jsx
+<RangeSlider min={100} max={200} value={[0, 5000]} />
+```
+
+# Controlled component with an onChange callback
+
+If you'd like to read and control the input value externally, `Slider` accepts an onChange event callback.
+
+```jsx
+;() => {
+  const [sliderValue, setSliderValue] = useState([0, 10])
+  const onChange = (event) => {
+    setSliderValue(event.target.value)
+  }
+  return (
+    <div>
+      <RangeSlider onChange={onChange} value={sliderValue} />
+      <Heading>
+        <strong>Value:</strong> {sliderValue}
+      </Heading>
+    </div>
+  )
+}
+```
+
+# Step
+
+Just like the standard HTML range input, you change the granularity of slider options by using the `step` prop.
+
+```jsx
+<RangeSlider max={10000} step={2500} />
+```
+
+# Accessibility
+
+Slider accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+```jsx
+<label id="slider-label">Slider:</label>
+<RangeSlider aria-labelledby="slider-label" />
+```
+
+# Disabled
+
+Use the disable property to gray out the Input, making it a fixed value.
+
+```jsx
+<RangeSlider value={[2, 3]} disabled />
+```

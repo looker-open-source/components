@@ -128,6 +128,10 @@ const components: NavigationSection = {
           path: 'radio-group',
         },
         {
+          title: 'RangeSlider',
+          path: 'range-slider',
+        },
+        {
           title: 'Select',
           path: 'select',
         },

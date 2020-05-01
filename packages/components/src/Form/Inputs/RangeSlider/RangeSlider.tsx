@@ -223,6 +223,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   }
 
   const handleKeyboardNav = (e: KeyboardEvent) => {
+    e.preventDefault()
     if (!disabled && !readOnly) {
       if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
         const unfocusedThumb = focusedThumb === 0 ? 1 : 0
