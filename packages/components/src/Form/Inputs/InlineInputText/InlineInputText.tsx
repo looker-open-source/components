@@ -44,14 +44,15 @@ export const InlineInputTextInternal = forwardRef(
       className,
       onChange,
       underlineOnlyOnHover,
-      value,
+      value: valueProp,
+      placeholder,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [valueChange, setValueChange] = React.useState(value || '')
+    const [value, setValueChange] = React.useState(valueProp || '')
 
-    const displayValue = isFunction(onChange) ? value : valueChange
+    const displayValue = isFunction(onChange) ? valueProp : value
 
     const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setValueChange(event.currentTarget.value)
@@ -60,17 +61,18 @@ export const InlineInputTextInternal = forwardRef(
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
     return (
-      <span className={className}>
+      <div className={className} data-testid="inlineInputText">
         <Input
           onChange={handleChange}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
           ref={ref}
-          size={1}
           {...pick(props, inputPropKeys)}
         />
-        <HiddenText>{displayValue}</HiddenText>
-      </span>
+        <VisibleText displayValue={displayValue}>
+          {displayValue || placeholder}
+        </VisibleText>
+      </div>
     )
   }
 )
@@ -80,16 +82,44 @@ InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
+  color: transparent;
+  font: inherit;
+  caret-color: ${(props) => props.theme.colors.palette.charcoal900};
+  height: 100%;
+  left: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+`
+
+interface VisibleTextProps {
+  displayValue?: string
+}
+const VisibleText = styled.div<VisibleTextProps>`
+  color: ${({ displayValue, theme }) =>
+    displayValue
+      ? theme.colors.palette.charcoal900
+      : theme.colors.palette.charcoal400};
+`
+
+export const InlineInputText = styled(InlineInputTextInternal)`
+  ${typography}
+
+  border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
     props.underlineOnlyOnHover
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  text-transform: inherit;
-  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  min-width: 2rem;
+  min-height: ${(props) => props.theme.lineHeights.medium};
 
   :focus,
   :hover {
@@ -101,19 +131,4 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   :focus {
     border-bottom-style: solid;
   }
-`
-
-const HiddenText = styled.span`
-  height: 0;
-  overflow: hidden;
-  white-space: pre-wrap;
-  padding: 0 1px;
-`
-
-export const InlineInputText = styled(InlineInputTextInternal)`
-  ${typography}
-
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
 `
