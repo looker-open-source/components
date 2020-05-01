@@ -2,6 +2,7 @@
   "extends": "./tsconfig.common.json",
   "compilerOptions": {
     "noEmit": true,
+    "pretty": true,
     "baseUrl": ".",
     "paths": {
       "@looker/components": ["packages/components/src"],

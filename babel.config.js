@@ -25,7 +25,10 @@
  */
 
 module.exports = (api) => {
+  const isTest = api.env('test')
   api.cache(true)
+
+  const ignore = isTest ? [] : ['node_modules']
 
   return {
     env: {
@@ -41,11 +44,11 @@ module.exports = (api) => {
         ],
       },
     },
-    ignore: ['node_modules'],
+    ignore,
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
-      '@babel/plugin-transform-runtime',
+      // '@babel/plugin-transform-runtime',
       'babel-plugin-styled-components',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
