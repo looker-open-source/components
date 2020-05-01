@@ -76,7 +76,7 @@ const components: NavigationSection = {
           path: 'form',
         },
         {
-          title: 'Fieldset',
+          title: 'Fieldset, Legend, Label',
           path: 'fieldset',
         },
         {
@@ -118,10 +118,6 @@ const components: NavigationSection = {
         {
           title: 'InputTimeSelect',
           path: 'input-time-select',
-        },
-        {
-          title: 'Label',
-          path: 'label',
         },
         {
           title: 'Radio',
