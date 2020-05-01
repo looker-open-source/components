@@ -57,6 +57,10 @@ export const RangeSliderDemo = () => {
             <Heading>Min: 52, Max: 111, Step: 17</Heading>
             <RangeSlider min={52} max={111} step={17} />
           </CardContent>
+          <CardContent p="xxlarge">
+            <Heading>Floating point range</Heading>
+            <RangeSlider min={0.1} max={1.1} step={0.1} />
+          </CardContent>
         </Card>
         <Card height="auto">
           <CardContent p="xxlarge">
