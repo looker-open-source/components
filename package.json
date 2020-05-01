@@ -37,9 +37,8 @@
     "fix:prettier": "yarn lint:prettier --write",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}' --cache",
-    "lint:mdx": "yarn workspace www lint",
-    "lint:ts": "tsc",
+    "lint:es": "eslint 'packages/**/*.ts{,x}' 'packages/www/*.md{,x}' --cache",
+    "lint:types": "tsc",
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest"
   },
@@ -47,13 +46,13 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "^7.9.0",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@looker/eslint-config": "^1.0.14",
     "@looker/prettier-config": "^1.0.15",
@@ -67,6 +66,8 @@
     "eslint": "^6.8.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-header": "^3.0.0",
+    "eslint-plugin-mdx": "^1.6.8",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
     "jest": "^25.1.0",
     "jest-canvas-mock": "^2.2.0",
     "jest-styled-components": "^6.3.4",
@@ -97,10 +98,13 @@
     "lint-staged"
   ],
   "eslintConfig": {
-    "extends": "@looker/eslint-config",
+    "extends": [
+      "@looker/eslint-config/no-type-checking"
+    ],
     "plugins": [
       "header",
-      "prettier"
+      "prettier",
+      "sort-keys-fix"
     ],
     "rules": {
       "prettier/prettier": "error",
@@ -111,7 +115,9 @@
       ],
       "import/default": "off",
       "import/no-named-as-default-member": "off",
-      "import/order": "off"
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "warn",
+      "sort-keys": "off"
     },
     "settings": {
       "import/resolver": {
@@ -119,7 +125,29 @@
           "directory": "./tsconfig.json"
         }
       }
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.mdx"
+        ],
+        "extends": [
+          "plugin:mdx/recommended"
+        ],
+        "rules": {
+          "mdx/no-unescaped-entities": "off",
+          "sort-keys": "off",
+          "header/header": "off"
+        }
+      },
+      {
+        "files": [
+          "packages/www/**/*.ts",
+          "packages/www/**/*.tsx"
+        ],
+        "rules": {}
+      }
+    ]
   },
   "prettier": "@looker/prettier-config",
   "stylelint": {

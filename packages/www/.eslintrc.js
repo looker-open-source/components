@@ -30,14 +30,4 @@
 
  */
 
-module.exports = {
-  root: true,
-  extends: ['plugin:mdx/recommended'],
-  plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': 'error',
-    'mdx/no-unescaped-entities': 'off',
-    'sort-keys': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-  },
-}
+module.exports = {}
