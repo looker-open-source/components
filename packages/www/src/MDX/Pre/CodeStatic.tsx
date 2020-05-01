@@ -48,9 +48,9 @@ const CodeStatic: FC<CodeStaticProps> = ({ code, language, ...props }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <PreWrapper className={`${className} ${outerClassName}`} style={style}>
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })} key={i}>
+            <div {...getLineProps({ key: i, line })} key={i}>
               {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} key={key} />
+                <span {...getTokenProps({ key, token })} key={key} />
               ))}
             </div>
           ))}

@@ -37,7 +37,7 @@
     "fix:prettier": "yarn lint:prettier --write",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}' 'packages/www/*.md{,x}' --cache",
+    "lint:es": "eslint 'packages/**/*.ts{,x}' 'packages/www/**/*.mdx' --cache",
     "lint:types": "tsc",
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest"

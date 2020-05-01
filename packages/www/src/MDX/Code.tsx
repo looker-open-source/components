@@ -33,7 +33,7 @@ export default styled(Box).attrs({
   borderRadius: 'small',
   color: 'palette.purple500',
   fontFamily: 'code',
-  lineHeight: 'medium',
   fontSize: 'small',
+  lineHeight: 'medium',
   px: 'xxsmall',
 })``

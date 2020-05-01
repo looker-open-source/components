@@ -84,9 +84,9 @@ const checkContrast = (color: FigmaColor) => {
 
     // eslint-disable object-literal-sort-keys
     const hexValue = rgbToColorString({
-      red: Math.round(swatchFill.r * 255),
-      green: Math.round(swatchFill.g * 255),
       blue: Math.round(swatchFill.b * 255),
+      green: Math.round(swatchFill.g * 255),
+      red: Math.round(swatchFill.r * 255),
     })
     // eslint-enable object-literal-sort-keys
 

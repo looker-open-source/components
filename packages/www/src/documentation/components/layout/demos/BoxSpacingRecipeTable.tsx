@@ -29,29 +29,29 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const spacingTypes = [
-  { value: 'm', label: 'Margin' },
-  { value: 'p', label: 'Padding' },
+  { label: 'Margin', value: 'm' },
+  { label: 'Padding', value: 'p' },
 ]
 
 const spacingSides = [
-  { value: '-', label: 'All', defaultLabel: '(default)' },
-  { value: 't', label: 'Top' },
-  { value: 'r', label: 'Right' },
-  { value: 'b', label: 'Bottom' },
-  { value: 'l', label: 'Left' },
-  { value: 'x', label: 'Left & Right' },
-  { value: 'y', label: 'Top & Bottom' },
+  { defaultLabel: '(default)', label: 'All', value: '-' },
+  { label: 'Top', value: 't' },
+  { label: 'Right', value: 'r' },
+  { label: 'Bottom', value: 'b' },
+  { label: 'Left', value: 'l' },
+  { label: 'Left & Right', value: 'x' },
+  { label: 'Top & Bottom', value: 'y' },
 ]
 
 const spacingSizes = [
-  { value: 'xxsmall', label: '4px' },
-  { value: 'xsmall', label: '8px' },
-  { value: 'small', label: '12px' },
-  { value: 'medium', label: '16px' },
-  { value: 'large', label: '20px' },
-  { value: 'xlarge', label: '32px' },
-  { value: 'xxlarge', label: '40px' },
-  { value: 'xxxlarge', label: '60px' },
+  { label: '4px', value: 'xxsmall' },
+  { label: '8px', value: 'xsmall' },
+  { label: '12px', value: 'small' },
+  { label: '16px', value: 'medium' },
+  { label: '20px', value: 'large' },
+  { label: '32px', value: 'xlarge' },
+  { label: '40px', value: 'xxlarge' },
+  { label: '60px', value: 'xxxlarge' },
 ]
 
 export interface ColumnExample {
