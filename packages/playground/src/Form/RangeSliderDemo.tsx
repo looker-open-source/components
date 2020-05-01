@@ -36,7 +36,7 @@ import {
 import styled from 'styled-components'
 
 export const RangeSliderDemo = () => {
-  const [controlledValue, setControlledValue] = useState([30, 40])
+  const [controlledValue, setControlledValue] = useState([0, 40])
   const handleChange: (value: number[]) => void = (value: number[]) =>
     setControlledValue(value)
 

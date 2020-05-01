@@ -133,6 +133,22 @@ const calculatePointValue = (
   return roundToStep(min, max, newPoint, step)
 }
 
+/*
+ *Prevent value from exceeding min—max range
+ */
+const boundValueProp = (min: number, max: number, value?: number[]) => {
+  return map(value || [min, max], (point: number) => {
+    const boundedPoint = Math.max(Math.min(point, max), min)
+    if (boundedPoint !== point) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `<RangeSlider />: The value '${point}' falls outside the possible range (MIN: ${min}, MAX: ${max}). Please adjust min and max props accordingly.`
+      )
+    }
+    return boundedPoint
+  })
+}
+
 export const InternalRangeSlider: FC<RangeSliderProps> = ({
   className,
   min = 0,
@@ -143,6 +159,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   onChange,
   disabled = false,
   readOnly: readOnlyProp = false,
+  'aria-labelledby': ariaLabelledBy,
 }) => {
   /*
    * Validate props and render any necessary warnings
@@ -155,19 +172,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   )
   const readOnly = readOnlyProp || unintentionalReadOnly
   // make sure value array doesn't extend past min/max bounds
-  const boundedValue = map(
-    valueProp || defaultValueProp || [min, max],
-    (point: number) => {
-      const boundedPoint = Math.max(Math.min(point, max), min)
-      if (boundedPoint !== point) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `<RangeSlider />: The value '${point}' falls outside the possible range (MIN: ${min}, MAX: ${max}). Please adjust min and max props accordingly.`
-        )
-      }
-      return boundedPoint
-    }
-  )
+  const boundedValue = boundValueProp(min, max, valueProp || defaultValueProp)
 
   /*
    * Internal component state and refs
@@ -223,9 +228,9 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   }
 
   const handleKeyboardNav = (e: KeyboardEvent) => {
-    e.preventDefault()
     if (!disabled && !readOnly) {
       if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
+        e.preventDefault() // prevent arrows from browser window
         const unfocusedThumb = focusedThumb === 0 ? 1 : 0
         const mutationFn =
           e.key === 'ArrowUp' || e.key === 'ArrowRight'
@@ -294,8 +299,9 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
    * Controlled Component: update value state when external value prop changes
    */
   useEffect(() => {
-    if (!isEqual(value, valueProp)) {
-      valueProp && setValue(sort(valueProp))
+    const boundedValue = boundValueProp(min, max, valueProp)
+    if (!isEqual(value, boundedValue)) {
+      setValue(sort(boundedValue))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueProp])
@@ -350,7 +356,12 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
           onKeyDown={handleKeyboardNav}
           ref={minThumbRef}
           disabled={disabled}
-          aria-label="Minimum Value"
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-disabled={disabled}
+          aria-valuenow={value[0]}
+          aria-labelledBy={ariaLabelledBy}
         />
         <Thumb
           position={maxPos}
@@ -360,7 +371,12 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
           onKeyDown={handleKeyboardNav}
           ref={maxThumbRef}
           disabled={disabled}
-          aria-label="Maximum Value"
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-disabled={disabled}
+          aria-valuenow={value[1]}
+          aria-labelledby={ariaLabelledBy}
         />
       </SliderTrack>
     </div>
