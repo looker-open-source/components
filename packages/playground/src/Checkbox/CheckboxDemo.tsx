@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import { Checkbox, Heading } from '@looker/components'
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
 export const CheckboxDemo = () => {
   const [controlledChecked, setControlledChecked] = useState(true)
   const handleChange = () => setControlledChecked(!controlledChecked)

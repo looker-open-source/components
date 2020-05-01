@@ -76,7 +76,7 @@ test('MenuGroup - labelProps & labelStyles', () => {
 })
 
 test('MenuGroup - menu customization', () => {
-  /* eslint-disable sort-keys */
+  /* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
   const menuCustomizations = {
     bg: palette.purple500,
     color: palette.purple200,

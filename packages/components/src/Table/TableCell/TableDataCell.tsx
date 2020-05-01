@@ -36,7 +36,7 @@ export const TableDataCell = styled.td<TableDataCellProps>`
   ${tableCellCSS}
 `
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
 TableDataCell.defaultProps = {
   borderTop: 'solid 1px',
   borderColor: 'palette.charcoal200',

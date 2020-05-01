@@ -26,7 +26,7 @@
 
 import { FontWeightRamp } from '../../system'
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
 
 export const fontWeights: FontWeightRamp = {
   light: 300,

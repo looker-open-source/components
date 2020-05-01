@@ -59,7 +59,7 @@ test('MenuItem - current + marker', () => {
 
 test('MenuItem - with customizations', () => {
   const menuCustomizations =
-    /* eslint-disable sort-keys */
+    /* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
     {
       bg: palette.purple500,
       color: palette.purple200,
