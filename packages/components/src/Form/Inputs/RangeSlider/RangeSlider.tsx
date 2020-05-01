@@ -256,7 +256,6 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
 
   const handleMouseEvent = (maintainFocus: boolean) => {
     if (!disabled && !readOnly) {
-      // update slider positions when clicking
       const newPoint = calculatePointValue(
         mousePos.x,
         containerRect,
@@ -350,6 +349,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
           onKeyDown={handleKeyboardNav}
           ref={minThumbRef}
           disabled={disabled}
+          aria-label="Minimum Value"
         />
         <Thumb
           position={maxPos}
@@ -359,6 +359,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
           onKeyDown={handleKeyboardNav}
           ref={maxThumbRef}
           disabled={disabled}
+          aria-label="Maximum Value"
         />
       </SliderTrack>
     </div>

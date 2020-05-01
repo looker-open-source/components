@@ -32,6 +32,10 @@ interface MouseState {
   isMouseDown: boolean
 }
 
+/*
+ * Starts tracking mouse position when user clicks inside targetRef.
+ * Stops  updating mouse position when user releases mouse ANYWHERE in the window
+ */
 export function useMouseDragPosition(
   targetRef: HTMLElement | null
 ): MouseState {
@@ -49,7 +53,8 @@ export function useMouseDragPosition(
 
   const handleMouseMove = throttle((e: globalThis.MouseEvent) => {
     if (isMouseDown) {
-      setMousePos({ x: e.pageX, y: e.pageY })
+      // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
+      setMousePos({ x: e.pageX || e.clientX, y: e.pageY || e.clientY })
     }
   }, 50)
 
