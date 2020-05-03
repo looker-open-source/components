@@ -24,9 +24,7 @@
 
  */
 
-import { useMemo } from 'react'
-
-export interface UseWindowedListBoundaryProps {
+export interface GetWindowedListBoundaryProps {
   /**
    * If false, the start and end values will be the entire list length
    * @default true
@@ -55,37 +53,28 @@ export interface UseWindowedListBoundaryProps {
   containerScrollPosition?: number
 }
 
-export function useWindowedListBoundaries({
+export function getWindowedListBoundaries({
   buffer = 5,
   containerHeight,
   containerScrollPosition,
   enabled = true,
   itemHeight,
   length,
-}: UseWindowedListBoundaryProps) {
-  return useMemo(() => {
-    if (!enabled) return { end: length - 1, start: 0 }
+}: GetWindowedListBoundaryProps) {
+  if (!enabled) return { end: length - 1, start: 0 }
 
-    if (containerScrollPosition === undefined || containerHeight === undefined)
-      // scroll position and height probably undefined on initial render
-      // best to render no list items before we have these values
-      return { end: 0, start: 0 }
+  if (containerScrollPosition === undefined || containerHeight === undefined)
+    // scroll position and height probably undefined on initial render
+    // best to render no list items before we have these values
+    return { end: 0, start: 0 }
 
-    const top = Math.floor(containerScrollPosition / itemHeight)
-    const bottom = Math.ceil(
-      (containerHeight + containerScrollPosition) / itemHeight
-    )
+  const top = Math.floor(containerScrollPosition / itemHeight)
+  const bottom = Math.ceil(
+    (containerHeight + containerScrollPosition) / itemHeight
+  )
 
-    return {
-      end: bottom + buffer > length - 1 ? length - 1 : bottom + buffer,
-      start: top - buffer < 0 ? 0 : top - buffer,
-    }
-  }, [
-    buffer,
-    containerHeight,
-    containerScrollPosition,
-    enabled,
-    itemHeight,
-    length,
-  ])
+  return {
+    end: bottom + buffer > length - 1 ? length - 1 : bottom + buffer,
+    start: top - buffer < 0 ? 0 : top - buffer,
+  }
 }

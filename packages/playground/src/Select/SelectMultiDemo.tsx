@@ -125,6 +125,21 @@ export function SelectMultiDemo() {
     }, [] as SelectOptionProps[])
   }, [searchTerm])
 
+  const [searchTerm1k, setSearchTerm1k] = React.useState('')
+  function handleFilter1k(term: string) {
+    setSearchTerm1k(term)
+  }
+
+  const newOptions1k = React.useMemo(() => {
+    if (searchTerm1k === '') return options1k
+    return options1k.reduce((acc, option) => {
+      if (option.label.toLowerCase().includes(searchTerm1k.toLowerCase())) {
+        acc.push(option)
+      }
+      return acc
+    }, [] as SelectOptionProps[])
+  }, [searchTerm1k])
+
   function formatCreate(inputValue: string) {
     return (
       <span>
@@ -135,20 +150,40 @@ export function SelectMultiDemo() {
 
   return (
     <Box p="large" width={400}>
-      <Heading mb="medium">Option Groups</Heading>
+      <Heading mb="large">SelectMulti</Heading>
+      <Heading mb="medium" as="h4">
+        1k (windowed) options
+      </Heading>
+      <SelectMulti
+        options={newOptions1k}
+        placeholder="Select Brands"
+        isFilterable
+        onFilter={handleFilter1k}
+        alignSelf="flex-start"
+        showCreate
+        mb="xlarge"
+        defaultValues={['Boulder Creek']}
+      />
+      <Heading mb="medium" as="h4">
+        Option Groups
+      </Heading>
       <SelectMulti
         options={selectGroups}
         placeholder="Search fruits"
         mb="xlarge"
       />
-      <Heading mb="medium">Close on Select</Heading>
+      <Heading mb="medium" as="h4">
+        Close on Select
+      </Heading>
       <SelectMulti
         options={selectOptions}
         placeholder="Search fruits"
         closeOnSelect
         mb="xlarge"
       />
-      <Heading mb="medium">Kitchen Sink</Heading>
+      <Heading mb="medium" as="h4">
+        Kitchen Sink
+      </Heading>
       <List mb="small">
         <ListItem>Option descriptions</ListItem>
         <ListItem>isFilterable</ListItem>
@@ -166,18 +201,6 @@ export function SelectMultiDemo() {
         formatCreateLabel={formatCreate}
         removeOnBackspace={false}
         mb="xlarge"
-      />
-      <SelectMulti
-        options={options1k}
-        placeholder="Huge list of options"
-        isFilterable
-        onFilter={handleFilter}
-        alignSelf="flex-start"
-        showCreate
-        formatCreateLabel={formatCreate}
-        removeOnBackspace={false}
-        mb="xlarge"
-        values={['Boulder Creek']}
       />
     </Box>
   )

@@ -25,8 +25,8 @@
  */
 
 import findIndex from 'lodash/findIndex'
-import React, { useContext, useEffect, useRef } from 'react'
-import { useWindowedListBoundaries } from '../../../../utils/useWindowedListBoundaries'
+import React, { useContext, useEffect, useMemo, useRef } from 'react'
+import { getWindowedListBoundaries } from '../../../../utils/getWindowedListBoundaries'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
 import { SelectOptionProps, SelectOptionObject } from '../SelectOptions'
 
@@ -67,13 +67,18 @@ export function useWindowedOptions(
   }, [flatOptions, optionsRef, windowedOptions])
 
   // Get the windowed list boundaries and spacers
-  let { start, end } = useWindowedListBoundaries({
-    containerHeight: listClientRect && listClientRect.height,
-    containerScrollPosition: listScrollPosition,
-    enabled: windowedOptions,
-    itemHeight: optionHeight,
-    length: flatOptions ? flatOptions.length : 0,
-  })
+  const containerHeight = listClientRect && listClientRect.height
+  let { start, end } = useMemo(
+    () =>
+      getWindowedListBoundaries({
+        containerHeight,
+        containerScrollPosition: listScrollPosition,
+        enabled: windowedOptions,
+        itemHeight: optionHeight,
+        length: flatOptions ? flatOptions.length : 0,
+      }),
+    [flatOptions, containerHeight, listScrollPosition, windowedOptions]
+  )
 
   // The current value is highlighted when the menu first opens
   // but it may be outside the windowed options

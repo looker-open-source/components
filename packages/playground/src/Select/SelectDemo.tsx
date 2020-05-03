@@ -31,6 +31,7 @@ import {
   Divider,
   Label,
   Box,
+  Heading,
   Select,
   FieldSelect,
   ModalContent,
@@ -141,7 +142,18 @@ export function SelectContent() {
     return optionsWithGroups.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
   return (
-    <Box m="xlarge">
+    <Box p="large">
+      <Heading mb="large">Select</Heading>
+      <FieldSelect
+        label="1k (windowed) options"
+        width={300}
+        mb="medium"
+        options={options1k}
+        aria-label="Fruits"
+        isClearable
+        placeholder="Select Brand"
+        defaultValue="Boulder Creek"
+      />
       <Label>
         Use alignSelf="flex-start" to avoid filling height as a flex child
       </Label>
@@ -179,15 +191,6 @@ export function SelectContent() {
         </Button>
       </Box>
       <Divider my="xlarge" />
-      <FieldSelect
-        label="Huge list of options"
-        width={300}
-        mb="medium"
-        options={options1k}
-        aria-label="Fruits"
-        isClearable
-        value="Boulder Creek"
-      />
       <FieldSelect
         label="Default Value"
         width={300}
