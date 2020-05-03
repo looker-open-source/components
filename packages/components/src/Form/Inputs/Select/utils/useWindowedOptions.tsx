@@ -47,7 +47,7 @@ export function useWindowedOptions(
     optionsRef,
   } = contextToUse
 
-  // windowedOptions prop disables useAddOptionToContext,
+  // windowedOptions prop on ComboboxList disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
   // Let TS know we have no grouped options
