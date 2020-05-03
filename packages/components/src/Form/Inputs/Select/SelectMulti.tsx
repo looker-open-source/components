@@ -159,6 +159,7 @@ const SelectMultiComponent = forwardRef(
             <SelectOptions
               isMulti
               options={options}
+              windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}
