@@ -50,7 +50,7 @@ export function useWindowedOptions(
   // windowedOptions prop on ComboboxList disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
-  // Let TS know we have no grouped options
+  // Let TS know we have no grouped options (making it valid to assign to optionsRef)
   const flatOptions = options as SelectOptionObject[]
 
   // add options to ComboboxContext.optionsRef
@@ -66,7 +66,7 @@ export function useWindowedOptions(
     }
   }, [flatOptions, optionsRef, windowedOptions])
 
-  // Get the windowed list boundaries and spacers
+  // Get the windowed list boundaries
   const containerHeight = listClientRect && listClientRect.height
   let { start, end } = useMemo(
     () =>
@@ -97,7 +97,7 @@ export function useWindowedOptions(
   }
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option
-  // we need to force-render the top or bottom of the list and scroll there
+  // we need to render the top or bottom of the list (which are outside our "window") and scroll there
   let scrollToFirst = false
   let scrollToLast = false
   if (
@@ -114,6 +114,7 @@ export function useWindowedOptions(
   const afterLength = flatOptions ? flatOptions.length - 1 - end : 0
 
   return {
+    // after & before are spacers to make scrolling smooth
     after:
       afterLength > 0 ? (
         <li style={{ height: `${afterLength * optionHeight}px` }} />
