@@ -261,9 +261,7 @@ export function SelectOptions({
             ...optionsToRender.map(
               (option: SelectOptionProps, index: number) => {
                 const optionAsGroup = option as SelectOptionGroupProps
-                // Keep key consistent unless start # is reducing...
-                // ComboboxContext.optionsRef doesn't handle inserting new options at the top of the list well
-                // so we remount them all
+                // Keep key consistent if options are windowed
                 const correctedIndex = index + start
                 return optionAsGroup.options ? (
                   <SelectOptionGroup
