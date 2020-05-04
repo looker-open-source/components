@@ -31,11 +31,3 @@ import { InlineTextArea } from './InlineTextArea'
 test('InlineTextArea renders an input with a placeholder', () => {
   assertSnapshot(<InlineTextArea placeholder="this is the placeholder" />)
 })
-
-test('InlineTextArea renders an input with no value', () => {
-  assertSnapshot(<InlineTextArea />)
-})
-
-test('InlineTextArea renders an input with specific predefined value', () => {
-  assertSnapshot(<InlineTextArea value="type here..." />)
-})

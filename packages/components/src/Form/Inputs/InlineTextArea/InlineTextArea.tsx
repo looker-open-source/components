@@ -61,7 +61,7 @@ export const InlineTextAreaInternal = forwardRef(
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
     return (
-      <div className={className} data-testid="InlineTextArea">
+      <div className={className} data-testid="inline-text-area">
         <Input
           onChange={handleChange}
           underlineOnlyOnHover={underlineOnlyOnHover}

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineTextArea renders an input with a placeholder 1`] = `
+.c1 {
+  background: transparent;
+  border: none;
+  color: transparent;
+  font: inherit;
+  caret-color: #262D33;
+  height: 100%;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  left: 0;
+  outline: none;
+  overflow-wrap: break-word;
+  padding: 0;
+  position: absolute;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.c2 {
+  color: #939BA5;
+}
+
+.c0 {
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  min-width: 2rem;
+  min-height: 1.5rem;
+}
+
+.c0:focus,
+.c0:hover {
+  outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
+}
+
+.c0:focus {
+  border-bottom-style: solid;
+}
+
+<div
+  className="c0"
+  data-testid="inline-text-area"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className="c2"
+  >
+    this is the placeholder
+  </div>
+</div>
+`;
