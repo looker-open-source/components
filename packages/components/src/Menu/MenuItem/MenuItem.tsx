@@ -33,9 +33,10 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode, useContext, useState } from 'react'
+import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuItemStyleContext } from '../MenuContext'
+import { Box } from '../../Layout'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -52,6 +53,8 @@ import {
 export interface MenuSharedProps {
   customizationProps?: MenuItemCustomization
   compact?: boolean
+  preserveIconSpace?: boolean
+  setPreserveIconSpace?: (preserveIconSpace: boolean) => void
 }
 
 // For merging compact and customizationProps from props with those from context
@@ -166,6 +169,14 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
+  const { preserveIconSpace, setPreserveIconSpace } = useContext(
+    MenuItemStyleContext
+  )
+
+  useEffect(() => {
+    icon && setPreserveIconSpace && setPreserveIconSpace(true)
+  }, [setPreserveIconSpace, icon])
+
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
     setFocusVisible(true)
     onKeyUp && onKeyUp(event)
@@ -225,14 +236,16 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
         target={target}
         {...clickTargetProps}
       >
-        {icon && (
+        {icon ? (
           <Icon
             name={icon}
             mr="xsmall"
             size={iconSize / compactIconModifier}
             color={iconColor}
           />
-        )}
+        ) : preserveIconSpace ? (
+          <Box mr="xsmall" size={20} />
+        ) : undefined}
         {children}
       </MenuItemButton>
       {detail && <MenuItemDetail>{detail}</MenuItemDetail>}

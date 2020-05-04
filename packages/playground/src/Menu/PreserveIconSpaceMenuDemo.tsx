@@ -25,22 +25,22 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { PreserveIconSpaceMenuDemo } from './Menu/PreserveIconSpaceMenuDemo'
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuDisclosure,
+  Button,
+} from '@looker/components'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <PreserveIconSpaceMenuDemo />
-    </ComponentsProvider>
-  )
-}
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+export const PreserveIconSpaceMenuDemo = () => (
+  <Menu>
+    <MenuDisclosure>
+      <Button>Blurb</Button>
+    </MenuDisclosure>
+    <MenuList>
+      <MenuItem icon="User">Hello</MenuItem>
+      <MenuItem>World</MenuItem>
+    </MenuList>
+  </Menu>
+)
