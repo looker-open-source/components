@@ -27,12 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { PreserveIconSpaceMenuDemo } from './Menu/PreserveIconSpaceMenuDemo'
+import { IconSpaceMenuDemo } from './Menu/IconSpaceMenuDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <PreserveIconSpaceMenuDemo />
+      <IconSpaceMenuDemo />
     </ComponentsProvider>
   )
 }

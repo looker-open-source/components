@@ -34,7 +34,7 @@ import {
   Button,
 } from '@looker/components'
 
-export const PreserveIconSpaceMenuDemo = () => (
+export const IconSpaceMenuDemo = () => (
   <>
     <Menu>
       <MenuDisclosure>
