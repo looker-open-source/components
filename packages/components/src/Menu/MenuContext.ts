@@ -37,8 +37,19 @@ export interface MenuContextProps {
   triggerCallbackRef?: (node: HTMLElement | null) => void
 }
 
+export interface MenuItemStyleContextProps extends MenuSharedProps {
+  preservedIconSpaceSize: number
+  setPreservedIconSpaceSize: (size: number) => void
+}
+
 const menuContext: MenuContextProps = {}
-const menuItemStyleContext: MenuSharedProps = {}
+const menuItemStyleContext: MenuItemStyleContextProps = {
+  preservedIconSpaceSize: 0,
+  // Note: Using noop for default setPreservedIconSpaceSize since this callback will always
+  // be received via providers in MenuList or MenuGroup
+  // eslint-disable-next-line no-console
+  setPreservedIconSpaceSize: (size: number) => console.log(size),
+}
 
 export const MenuContext = createContext(menuContext)
 export const MenuItemStyleContext = createContext(menuItemStyleContext)

@@ -40,13 +40,13 @@ export const PreserveIconSpaceMenuDemo = () => (
       <MenuDisclosure>
         <Button>Blurb</Button>
       </MenuDisclosure>
-      <MenuList>
+      <MenuList customizationProps={{ iconSize: 50 }}>
         <MenuItem icon="User">Hello</MenuItem>
         <MenuItem>World</MenuItem>
       </MenuList>
     </Menu>
 
-    <MenuList>
+    <MenuList compact>
       <MenuGroup label="Cheeses">
         <MenuItem icon="LogoRings">Looker</MenuItem>
         <MenuItem>Pizza!</MenuItem>

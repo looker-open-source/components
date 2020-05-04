@@ -53,8 +53,6 @@ import {
 export interface MenuSharedProps {
   customizationProps?: MenuItemCustomization
   compact?: boolean
-  preserveIconSpace?: boolean
-  setPreserveIconSpace?: (preserveIconSpace: boolean) => void
 }
 
 // For merging compact and customizationProps from props with those from context
@@ -169,14 +167,6 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const { preserveIconSpace, setPreserveIconSpace } = useContext(
-    MenuItemStyleContext
-  )
-
-  useEffect(() => {
-    icon && setPreserveIconSpace && setPreserveIconSpace(true)
-  }, [setPreserveIconSpace, icon])
-
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
     setFocusVisible(true)
     onKeyUp && onKeyUp(event)
@@ -217,6 +207,17 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     pt: pt || py || p || compact ? 'xxsmall' : 'small',
   }
 
+  const { preservedIconSpaceSize, setPreservedIconSpaceSize } = useContext(
+    MenuItemStyleContext
+  )
+
+  useEffect(() => {
+    icon &&
+      setPreservedIconSpaceSize(
+        customizationProps.iconSize || defaultMenuItemStyle.initial.iconSize
+      )
+  }, [setPreservedIconSpaceSize, icon, customizationProps.iconSize])
+
   return (
     <MenuItemListItem
       aria-current={current && 'page'}
@@ -243,8 +244,11 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
             size={iconSize / compactIconModifier}
             color={iconColor}
           />
-        ) : preserveIconSpace ? (
-          <Box mr="xsmall" size={20} />
+        ) : preservedIconSpaceSize > 0 ? (
+          <Box
+            mr="xsmall"
+            size={preservedIconSpaceSize / compactIconModifier}
+          />
         ) : undefined}
         {children}
       </MenuItemButton>
