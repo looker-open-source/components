@@ -24,21 +24,18 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { assertSnapshot } from '@looker/components-test-utils'
+import React from 'react'
+import { InlineTextArea } from './InlineTextArea'
+
+test('InlineTextArea renders an input with a placeholder', () => {
+  assertSnapshot(<InlineTextArea placeholder="this is the placeholder" />)
+})
+
+test('InlineTextArea renders an input with no value', () => {
+  assertSnapshot(<InlineTextArea />)
+})
+
+test('InlineTextArea renders an input with specific predefined value', () => {
+  assertSnapshot(<InlineTextArea value="type here..." />)
+})
