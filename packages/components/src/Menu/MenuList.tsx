@@ -101,15 +101,15 @@ export const MenuListInternal = forwardRef(
 
     const innerRef = useRef<null | HTMLElement>(null)
 
+    const context = {
+      compact,
+      customizationProps,
+      preserveIconSpace,
+      setPreserveIconSpace,
+    }
+
     const menuList = (
-      <MenuItemStyleContext.Provider
-        value={{
-          compact,
-          customizationProps,
-          preserveIconSpace,
-          setPreserveIconSpace,
-        }}
-      >
+      <MenuItemStyleContext.Provider value={context}>
         <HotKeys
           innerRef={innerRef}
           keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}

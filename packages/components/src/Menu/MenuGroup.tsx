@@ -24,7 +24,7 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode } from 'react'
+import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -60,12 +60,21 @@ const MenuGroupInternal: FC<MenuGroupProps> = ({
   customizationProps,
   ...boxProps
 }) => {
+  const [preserveIconSpace, setPreserveIconSpace] = useState(false)
+
   const mergedContextValue = useMenuItemStyleContext({
     compact,
     customizationProps,
   })
+
+  const context = {
+    ...mergedContextValue,
+    preserveIconSpace,
+    setPreserveIconSpace,
+  }
+
   return (
-    <MenuItemStyleContext.Provider value={mergedContextValue}>
+    <MenuItemStyleContext.Provider value={context}>
       <MenuGroupWrapper
         {...boxProps}
         backgroundColor={customizationProps && customizationProps.bg}

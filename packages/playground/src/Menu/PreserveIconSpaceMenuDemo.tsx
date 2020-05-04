@@ -30,17 +30,28 @@ import {
   MenuItem,
   MenuList,
   MenuDisclosure,
+  MenuGroup,
   Button,
 } from '@looker/components'
 
 export const PreserveIconSpaceMenuDemo = () => (
-  <Menu>
-    <MenuDisclosure>
-      <Button>Blurb</Button>
-    </MenuDisclosure>
+  <>
+    <Menu>
+      <MenuDisclosure>
+        <Button>Blurb</Button>
+      </MenuDisclosure>
+      <MenuList>
+        <MenuItem icon="User">Hello</MenuItem>
+        <MenuItem>World</MenuItem>
+      </MenuList>
+    </Menu>
+
     <MenuList>
-      <MenuItem icon="User">Hello</MenuItem>
-      <MenuItem>World</MenuItem>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem>Pizza!</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+      </MenuGroup>
     </MenuList>
-  </Menu>
+  </>
 )
