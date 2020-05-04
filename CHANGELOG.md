@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - updated documentation for Filedset to include label and legend
+- `menuItemStyleContext` in `MenuContext` uses a new interface which contains "preserved icon space"-related properties
+- `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
 
 ### Fixed
 
