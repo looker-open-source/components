@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Updated `ViewColumn` icon to better match keylines and guides
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 
 ## [0.7.29] - 2020-04-24
