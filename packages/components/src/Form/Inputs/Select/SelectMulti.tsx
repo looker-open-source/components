@@ -39,6 +39,7 @@ import {
   SelectOptions,
 } from './SelectOptions'
 import { getOptions } from './utils/options'
+import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
@@ -84,6 +85,7 @@ const SelectMultiComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
+      windowedOptions: windowedOptionsProp,
       closeOnSelect = false,
       showCreate = false,
       formatCreateLabel,
@@ -131,6 +133,8 @@ const SelectMultiComponent = forwardRef(
           }),
     }
 
+    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+
     return (
       <ComboboxMulti
         {...props}
@@ -152,11 +156,13 @@ const SelectMultiComponent = forwardRef(
           <ComboboxMultiList
             persistSelection
             closeOnSelect={closeOnSelect}
+            windowedOptions={windowedOptions}
             {...ariaProps}
           >
             <SelectOptions
               isMulti
               options={options}
+              windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}

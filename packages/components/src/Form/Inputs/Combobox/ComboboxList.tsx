@@ -44,6 +44,7 @@ import React, {
 } from 'react'
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
+import throttle from 'lodash/throttle'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -72,6 +73,13 @@ export interface ComboboxListProps
    * @default true
    */
   closeOnSelect?: boolean
+  /**
+   * Render only the options visible in the scroll window
+   * Requires manually updating ComboboxContext.optionsRef with complete
+   * list of options in order for keyboard navigation to work properly
+   * @default false
+   */
+  windowedOptions?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -86,6 +94,8 @@ const ComboboxListInternal = forwardRef(
       persistSelection = false,
       // closes the list after an option is selected
       closeOnSelect = true,
+      // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
+      windowedOptions = false,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -97,6 +107,7 @@ const ComboboxListInternal = forwardRef(
     const {
       persistSelectionPropRef,
       closeOnSelectPropRef,
+      windowedOptionsPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -110,6 +121,7 @@ const ComboboxListInternal = forwardRef(
     if (persistSelectionPropRef)
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
+    if (windowedOptionsPropRef) windowedOptionsPropRef.current = windowedOptions
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout
@@ -181,20 +193,24 @@ const ComboboxListInternal = forwardRef(
           setListClientRect(containerElement.getBoundingClientRect())
       })
 
-      const scrollListener = () => {
+      const scrollListener = throttle(() => {
         if (contentContainer) {
           setListClientRectOnce(contentContainer)
           setListScrollPosition &&
             setListScrollPosition(contentContainer.scrollTop)
         }
-      }
+      }, 50)
 
-      contentContainer &&
+      if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
+        scrollListener()
+      }
 
       return () => {
         contentContainer &&
           contentContainer.removeEventListener('scroll', scrollListener)
+        setListScrollPosition && setListScrollPosition(0)
+        setListClientRect && setListClientRect(undefined)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contentContainer])

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated the `ViewColumn` icon to better match keylines and guides
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
+- Windowing (virtualization) to `Select` and `SelectMulti`,
+  - `windowedOptions` prop overrides the default condition of >= 100 options
 
 ### Changed
 
