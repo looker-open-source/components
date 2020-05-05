@@ -38,6 +38,7 @@ import {
   ComboboxOptionText,
 } from '../Combobox'
 import { notInOptions } from './utils/options'
+import { useWindowedOptions } from './utils/useWindowedOptions'
 
 export interface SelectOptionObject extends ComboboxOptionObject {
   description?: string | ReactNode
@@ -50,10 +51,19 @@ export interface SelectOptionGroupProps {
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
-const renderOption = (option: SelectOptionObject, index: number) => {
+const renderOption = (
+  option: SelectOptionObject,
+  index: number,
+  scrollIntoView?: boolean
+) => {
   if (option.description) {
     return (
-      <ComboboxOption {...option} key={index} py="xxsmall">
+      <ComboboxOption
+        {...option}
+        key={index}
+        py="xxsmall"
+        scrollIntoView={scrollIntoView}
+      >
         <SelectOptionWithDescription {...option} />
       </ComboboxOption>
     )
@@ -61,10 +71,19 @@ const renderOption = (option: SelectOptionObject, index: number) => {
   return <ComboboxOption {...option} key={index} />
 }
 
-const renderMultiOption = (option: SelectOptionObject, index: number) => {
+const renderMultiOption = (
+  option: SelectOptionObject,
+  index: number,
+  scrollIntoView?: boolean
+) => {
   if (option.description) {
     return (
-      <ComboboxMultiOption {...option} key={index} py="xxsmall">
+      <ComboboxMultiOption
+        {...option}
+        key={index}
+        py="xxsmall"
+        scrollIntoView={scrollIntoView}
+      >
         <SelectOptionWithDescription {...option} />
       </ComboboxMultiOption>
     )
@@ -114,7 +133,9 @@ export const SelectOptionGroup = ({
         {label}
       </SelectOptionGroupTitle>
     )}
-    {options.map(isMulti ? renderMultiOption : renderOption)}
+    {options.map((option, index) =>
+      isMulti ? renderMultiOption(option, index) : renderOption(option, index)
+    )}
   </SelectOptionGroupContainer>
 )
 
@@ -146,6 +167,10 @@ export interface SelectOptionsBaseProps {
    * @default 'No options'
    */
   noOptionsLabel?: string
+  /**
+   * Render only the options visible in the scroll window
+   */
+  windowedOptions?: boolean
 }
 
 export interface SelectMultiOptionsBaseProps {
@@ -174,7 +199,20 @@ export function SelectOptions({
   formatCreateLabel,
   isMulti,
   noOptionsLabel = 'No options',
+  windowedOptions,
 }: SelectOptionsProps) {
+  const {
+    start,
+    end,
+    before,
+    after,
+    scrollToFirst,
+    scrollToLast,
+  } = useWindowedOptions(windowedOptions, options, isMulti)
+
+  const optionsToRender = options && options.slice(start, end + 1)
+  const renderToUse = isMulti ? renderMultiOption : renderOption
+
   const noOptions = (
     <ListItem fontSize="small" px="medium" py="xxsmall">
       {noOptionsLabel}
@@ -192,25 +230,39 @@ export function SelectOptions({
 
   return (
     <>
-      {options && options.length > 0
+      {options && scrollToFirst
+        ? renderToUse(options[0] as SelectOptionObject, 0, true)
+        : null}
+      {before}
+      {optionsToRender && optionsToRender.length > 0
         ? [
-            ...options.map((option: SelectOptionProps, index: number) => {
-              const optionAsGroup = option as SelectOptionGroupProps
-              return optionAsGroup.options ? (
-                <SelectOptionGroup
-                  key={index}
-                  {...optionAsGroup}
-                  isMulti={isMulti}
-                />
-              ) : isMulti ? (
-                renderMultiOption(option as SelectOptionObject, index)
-              ) : (
-                renderOption(option as SelectOptionObject, index)
-              )
-            }),
+            ...optionsToRender.map(
+              (option: SelectOptionProps, index: number) => {
+                const optionAsGroup = option as SelectOptionGroupProps
+                // Keep key consistent if options are windowed
+                const correctedIndex = index + start
+                return optionAsGroup.options ? (
+                  <SelectOptionGroup
+                    key={correctedIndex}
+                    {...optionAsGroup}
+                    isMulti={isMulti}
+                  />
+                ) : (
+                  renderToUse(option as SelectOptionObject, correctedIndex)
+                )
+              }
+            ),
             createOption,
           ]
         : createOption || noOptions}
+      {after}
+      {options && scrollToLast
+        ? renderToUse(
+            options[options.length - 1] as SelectOptionObject,
+            0,
+            true
+          )
+        : null}
     </>
   )
 }

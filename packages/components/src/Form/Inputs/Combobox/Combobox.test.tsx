@@ -105,6 +105,9 @@ describe('<Combobox/> with children', () => {
 
     fireEvent.click(input)
     expect(queryByText('Foo')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   // Testing same behavior on both Combobox and ComboboxMulti
@@ -141,6 +144,9 @@ describe('<Combobox/> with children', () => {
     expect(getByText('Bar')).not.toHaveStyle(
       'font-weight: 600; text-decoration: underline'
     )
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test('Does not highlight current selected value', () => {
@@ -162,6 +168,9 @@ describe('<Combobox/> with children', () => {
     expect(getByText('FooBar')).not.toHaveStyle(
       'font-weight: 600; text-decoration: underline'
     )
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test.each([
@@ -194,6 +203,9 @@ describe('<Combobox/> with children', () => {
 
     getByPlaceholderText('Type here').focus()
     expect(getByRole('listbox')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })
 
@@ -280,6 +292,9 @@ describe('Keyboard navigation', () => {
       // Selected value is a chip
       expect(getByText('Bar')).toBeInTheDocument()
     }
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test('arrows and enter with autoComplete = false', () => {
@@ -333,5 +348,8 @@ describe('Keyboard navigation', () => {
     fireEvent.keyDown(input, enter)
     expect(input).toHaveValue('Bar')
     expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })
