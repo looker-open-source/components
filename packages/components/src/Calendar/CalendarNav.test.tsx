@@ -27,7 +27,7 @@
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { NavbarElementProps } from 'react-day-picker'
+import { NavbarElementProps, LocaleUtils } from 'react-day-picker'
 import { CalendarContext, CalendarContextValue } from './CalendarContext'
 
 import { CalendarNav } from './CalendarNav'
@@ -45,14 +45,22 @@ afterEach(() => {
   jest.clearAllMocks()
 })
 
-const mockProps: Partial<NavbarElementProps> = {
+const mockLocaleUtils: Partial<LocaleUtils> = {
+  formatMonthTitle: jest.fn(),
+}
+
+const mockClassNames: any = {}
+
+const mockProps: NavbarElementProps = {
+  className: '',
+  classNames: mockClassNames,
   labels: { nextMonth: 'next month', previousMonth: 'prev month' },
   locale: 'en',
-  localeUtils: {
-    formatMonthTitle: jest.fn(),
-  },
+  localeUtils: mockLocaleUtils as LocaleUtils,
   month: new Date('June 1, 2019'),
   nextMonth: new Date('July 1, 2019'),
+  onNextClick: jest.fn(),
+  onPreviousClick: jest.fn(),
   previousMonth: new Date('May 1, 2019'),
   showNextButton: true,
   showPreviousButton: true,
@@ -70,7 +78,7 @@ const mockContext: CalendarContextValue = {
 test('clicking "previous month" calls context.onNavClick with props.previousMonth', () => {
   const { getByText } = renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
-      <CalendarNav {...(mockProps as NavbarElementProps)} />
+      <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
   )
 
@@ -84,7 +92,7 @@ test('clicking "previous month" calls context.onNavClick with props.previousMont
 test('clicking "next month" calls context.onNavClick with props.nextMonth', () => {
   const { getByText } = renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
-      <CalendarNav {...(mockProps as NavbarElementProps)} />
+      <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
   )
 
@@ -96,11 +104,10 @@ test('clicking "next month" calls context.onNavClick with props.nextMonth', () =
 })
 
 test('clicking label text calls context.onNavClick with Date.now()', () => {
-  mockProps.localeUtils.formatMonthTitle.mockReturnValue('June 2019')
-
+  ;(mockProps.localeUtils.formatMonthTitle as any).mockReturnValue('June 2019')
   const { getByText } = renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
-      <CalendarNav {...(mockProps as NavbarElementProps)} />
+      <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
   )
 
