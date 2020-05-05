@@ -97,15 +97,15 @@ export const MenuListInternal = forwardRef(
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
-    const [preservedIconSpaceSize, setPreservedIconSpaceSize] = useState(0)
+    const [renderIcon, setRenderIcon] = useState(false)
 
     const innerRef = useRef<null | HTMLElement>(null)
 
     const context = {
       compact,
       customizationProps,
-      preservedIconSpaceSize,
-      setPreservedIconSpaceSize,
+      renderIcon,
+      setRenderIcon,
     }
 
     const menuList = (

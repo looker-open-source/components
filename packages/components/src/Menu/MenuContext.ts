@@ -39,16 +39,16 @@ export interface MenuContextProps {
 }
 
 export interface MenuItemStyleContextProps extends MenuSharedProps {
-  preservedIconSpaceSize: number
-  setPreservedIconSpaceSize: (size: number) => void
+  renderIcon: boolean
+  setRenderIcon: (size: boolean) => void
 }
 
 const menuContext: MenuContextProps = {}
 const menuItemStyleContext: MenuItemStyleContextProps = {
-  preservedIconSpaceSize: 0,
-  // Note: Using noop for default setPreservedIconSpaceSize since this callback will always
+  renderIcon: false,
+  // Note: Using noop for default setRenderIcon since this callback will always
   // be received via providers in MenuList or MenuGroup
-  setPreservedIconSpaceSize: (size: number) => noop(size),
+  setRenderIcon: (renderIcon: boolean) => noop(renderIcon),
 }
 
 export const MenuContext = createContext(menuContext)

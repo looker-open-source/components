@@ -33,10 +33,17 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import React, {
+  FC,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+  Children,
+} from 'react'
+import styled from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuItemStyleContext } from '../MenuContext'
-import { Box } from '../../Layout'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -207,16 +214,22 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     pt: pt || py || p || compact ? 'xxsmall' : 'small',
   }
 
-  const { preservedIconSpaceSize, setPreservedIconSpaceSize } = useContext(
-    MenuItemStyleContext
-  )
+  const { renderIcon, setRenderIcon } = useContext(MenuItemStyleContext)
 
   useEffect(() => {
-    icon &&
-      setPreservedIconSpaceSize(
-        customizationProps.iconSize || defaultMenuItemStyle.initial.iconSize
-      )
-  }, [setPreservedIconSpaceSize, icon, customizationProps.iconSize])
+    icon && setRenderIcon(true)
+  }, [icon, setRenderIcon])
+
+  const renderedIcon = icon ? (
+    <Icon
+      name={icon}
+      mr="xsmall"
+      size={iconSize / compactIconModifier}
+      color={iconColor}
+    />
+  ) : renderIcon ? (
+    <div />
+  ) : undefined
 
   return (
     <MenuItemListItem
@@ -237,22 +250,28 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
         target={target}
         {...clickTargetProps}
       >
-        {icon ? (
-          <Icon
-            name={icon}
-            mr="xsmall"
-            size={iconSize / compactIconModifier}
-            color={iconColor}
-          />
-        ) : preservedIconSpaceSize > 0 ? (
-          <Box
-            mr="xsmall"
-            size={preservedIconSpaceSize / compactIconModifier}
-          />
-        ) : undefined}
-        {children}
+        <MenuItemGrid
+          iconSize={
+            customizationProps.iconSize || defaultMenuItemStyle.initial.iconSize
+          }
+        >
+          {renderedIcon}
+          {children}
+        </MenuItemGrid>
       </MenuItemButton>
       {detail && <MenuItemDetail>{detail}</MenuItemDetail>}
     </MenuItemListItem>
   )
 }
+
+interface MenuItemGridProps {
+  iconSize: number
+}
+
+const MenuItemGrid = styled.div<MenuItemGridProps>`
+  display: grid;
+  grid-template-columns: ${({ children, iconSize }) =>
+    Children.toArray(children).length === 2 ? `${iconSize}px 1fr` : '1fr'};
+  grid-gap: 0.5rem;
+  align-items: center;
+`
