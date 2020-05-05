@@ -58,14 +58,13 @@ export function useOptionScroll<
     transition,
     listScrollPosition = 0,
     listClientRect = { height: 0 },
-    isScrollingRef,
+    isAutoScrollingRef,
   } = useContext(context)
   /* scroll menu list to specified element on mount */
   const [newTriggerElement, callbackRef] = useCallbackRef()
   useEffect(() => {
     if (scrollIntoView) {
       if (newTriggerElement) {
-        // if (isScrollingRef) isScrollingRef.current = true
         newTriggerElement.scrollIntoView()
       }
       if (!isActive) {
@@ -92,9 +91,9 @@ export function useOptionScroll<
         // the menu scrolls to that option – if the mouse happens to be resting over the menu
         // a mouseenter event is triggered on the respective option
         // (see handleMouseEnter in useOptionEvents.ts)
-        if (isScrollingRef) isScrollingRef.current = true
+        if (isAutoScrollingRef) isAutoScrollingRef.current = true
         window.requestAnimationFrame(() => {
-          if (isScrollingRef) isScrollingRef.current = false
+          if (isAutoScrollingRef) isAutoScrollingRef.current = false
         })
 
         const attachToTop = visibility === 'above'

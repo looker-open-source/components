@@ -45,7 +45,7 @@ export function useOptionEvents<
     onChange,
     transition,
     closeOnSelectPropRef,
-    isScrollingRef,
+    isAutoScrollingRef,
   } = useContext(context)
   const { options } = data as ComboboxMultiData
 
@@ -68,7 +68,7 @@ export function useOptionEvents<
   }
 
   const handleMouseEnter = throttle(() => {
-    if (isScrollingRef && isScrollingRef.current) return
+    if (isAutoScrollingRef && isAutoScrollingRef.current) return
     const option = { label, value }
     transition && transition(ComboboxActionType.NAVIGATE, { option })
   }, 50)

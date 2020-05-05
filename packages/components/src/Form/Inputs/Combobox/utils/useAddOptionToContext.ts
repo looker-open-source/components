@@ -63,5 +63,5 @@ export function useAddOptionToContext<
         optionsRefCurrent.splice(index, 1)
       }
     }
-  }, [value, label, optionsRef, scrollIntoView])
+  }, [value, label, optionsRef, scrollIntoView, windowedOptionsPropRef])
 }

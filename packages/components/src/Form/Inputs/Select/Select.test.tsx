@@ -296,7 +296,7 @@ describe('Select / SelectMulti', () => {
       fireEvent.mouseDown(input)
 
       expect(queryByText('0')).toBeInTheDocument()
-      expect(queryByText('99')).not.toBeInTheDocument()
+      expect(queryByText('98')).toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)

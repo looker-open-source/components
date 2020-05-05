@@ -39,6 +39,7 @@ import {
   SelectOptionsBaseProps,
 } from './SelectOptions'
 import { getOption, getFirstOption } from './utils/options'
+import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectBaseProps extends SelectOptionsBaseProps {
   placeholder?: string
@@ -94,7 +95,7 @@ const SelectComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
-      windowedOptions,
+      windowedOptions: windowedOptionsProp,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -132,6 +133,8 @@ const SelectComponent = forwardRef(
       placeholder,
       validationType,
     }
+
+    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
       <Combobox
