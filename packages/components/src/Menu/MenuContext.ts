@@ -25,6 +25,7 @@
  */
 
 import { createContext } from 'react'
+import { noop } from 'lodash'
 import { MenuSharedProps } from './MenuItem'
 
 export interface MenuContextProps {
@@ -47,8 +48,7 @@ const menuItemStyleContext: MenuItemStyleContextProps = {
   preservedIconSpaceSize: 0,
   // Note: Using noop for default setPreservedIconSpaceSize since this callback will always
   // be received via providers in MenuList or MenuGroup
-  // eslint-disable-next-line no-console
-  setPreservedIconSpaceSize: (size: number) => console.log(size),
+  setPreservedIconSpaceSize: (size: number) => noop(size),
 }
 
 export const MenuContext = createContext(menuContext)
