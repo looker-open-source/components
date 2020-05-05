@@ -42,7 +42,7 @@ import partial from 'lodash/partial'
 import map from 'lodash/map'
 import isEqual from 'lodash/isEqual'
 import {
-  useMeasuredRef,
+  useMeasuredElement,
   useMouseDragPosition,
   usePreviousValue,
   useReadOnlyWarn,
@@ -182,13 +182,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
   const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-  const callbackRef = useCallback((node) => {
-    if (node !== null) {
-      setContainerRef(node)
-    }
-  }, [])
-
-  const containerRect = useMeasuredRef(containerRef)
+  const containerRect = useMeasuredElement(containerRef)
 
   const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
   const prevMouseDown = usePreviousValue(isMouseDown)
@@ -326,7 +320,7 @@ export const InternalRangeSlider: FC<RangeSliderProps> = ({
       data-testid="range-slider-wrapper"
       onMouseDown={handleMouseDown}
       className={className}
-      ref={callbackRef}
+      ref={setContainerRef}
     >
       <SliderTrack>
         <SliderFill

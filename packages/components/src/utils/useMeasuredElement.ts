@@ -41,23 +41,23 @@ function measureElement(element?: HTMLElement | null) {
   return element.getBoundingClientRect()
 }
 
-export const useMeasuredRef = (ref: HTMLElement | null): ClientRect => {
+export const useMeasuredElement = (element: HTMLElement | null): ClientRect => {
   const [rect, setRect] = useState(measureElement())
 
   const handleResize = useCallback(() => {
     // Update client rect
-    ref && setRect(measureElement(ref))
-  }, [ref])
+    element && setRect(measureElement(element))
+  }, [element])
 
   useLayoutEffect(() => {
-    if (!ref) {
+    if (!element) {
       return
     }
 
     handleResize()
     const resizeObserver = new ResizeObserver(() => handleResize())
-    if (ref) {
-      resizeObserver.observe((ref as unknown) as HTMLElement)
+    if (element) {
+      resizeObserver.observe((element as unknown) as HTMLElement)
     }
 
     window.addEventListener('resize', handleResize)
@@ -70,7 +70,7 @@ export const useMeasuredRef = (ref: HTMLElement | null): ClientRect => {
       resizeObserver.disconnect()
       window.removeEventListener('resize', handleResize)
     }
-  }, [handleResize, ref])
+  }, [handleResize, element])
 
   return rect
 }

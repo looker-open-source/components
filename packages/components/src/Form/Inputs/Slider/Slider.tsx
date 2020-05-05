@@ -28,7 +28,7 @@ import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
-import { WidthProps, width, FontSizeProps } from 'styled-system'
+import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
 
@@ -215,7 +215,7 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   }
 `
 
-const SliderTrack = styled.div<SliderInputProps>`
+const SliderTrack = styled.div`
   width: calc(100% - 16px);
   height: 4px;
   background: ${({ theme }) => theme.colors.palette.charcoal200};
@@ -239,7 +239,7 @@ const SliderFill = styled.div<ControlProps>`
   border-radius: ${({ theme }) => theme.radii.small};
 `
 
-interface SliderValueProps extends SliderInputProps, FontSizeProps {
+interface SliderValueProps extends SliderInputProps {
   disabled?: boolean
   isFocused: boolean
   offsetPercent: number
