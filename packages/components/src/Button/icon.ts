@@ -45,7 +45,7 @@ export const iconMargins = (props: ButtonProps) => {
     case 'small':
     case 'large':
     default:
-      spacing.small = 4
+      spacing.small = 12
       spacing.large = 8
   }
 
@@ -65,20 +65,20 @@ export const iconMargins = (props: ButtonProps) => {
 }
 
 export const iconSizes = (props: ButtonProps) => {
-  let iconSize = 16
+  let iconSize = 18
   switch (props.size) {
     case 'xsmall':
       iconSize = 12
       break
     case 'small':
-      iconSize = 14
+      iconSize = 16
       break
     case 'large':
-      iconSize = 18
+      iconSize = 20
       break
     case 'medium':
     default:
-      iconSize = 16
+      iconSize = 18
   }
 
   return css`

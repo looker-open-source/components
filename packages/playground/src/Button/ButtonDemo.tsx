@@ -56,10 +56,10 @@ export const ButtonDemo: FC = () => {
         <Box bg="#f5f5f5" p="xlarge">
           <Space gap="small">
             <Button size="small">Button</Button>
-            <Button iconBefore="Account" size="small">
+            <Button iconBefore="Plus" size="small">
               Button
             </Button>
-            <Button iconAfter="Account" size="small">
+            <Button iconAfter="Plus" size="small">
               Button
             </Button>
           </Space>
@@ -67,17 +67,17 @@ export const ButtonDemo: FC = () => {
         <Box bg="#f5f5f5" p="xlarge">
           <Space gap="small">
             <Button>Button</Button>
-            <Button iconBefore="Account">Button</Button>
-            <Button iconAfter="Account">Button</Button>
+            <Button iconBefore="Plus">Button</Button>
+            <Button iconAfter="Plus">Button</Button>
           </Space>
         </Box>
         <Box bg="#f5f5f5" p="xlarge">
           <Space gap="small">
             <Button size="large">Button</Button>
-            <Button iconBefore="Account" size="large">
+            <Button iconBefore="Plus" size="large">
               Button
             </Button>
-            <Button iconAfter="Account" size="large">
+            <Button iconAfter="Plus" size="large">
               Button
             </Button>
           </Space>
