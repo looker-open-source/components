@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import {
   ToggleSwitch,
@@ -43,7 +43,7 @@ export interface FieldToggleSwitchProps
 const FieldToggleSwitchLayout = forwardRef(
   (props: FieldToggleSwitchProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
+    const id = useID(props.id)
     return (
       <FieldInline
         {...pickFieldProps(props)}

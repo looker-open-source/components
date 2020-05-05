@@ -34,6 +34,7 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
+import { useID } from '../utils'
 
 export interface ButtonItemProps
   extends SpaceProps,
@@ -116,6 +117,7 @@ const ButtonItemComponent = forwardRef(
     {
       children,
       disabled,
+      id: propsID,
       isControlled,
       name,
       onChange,
@@ -126,6 +128,7 @@ const ButtonItemComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const [uncontrolledSelected, setUncontrolledSelected] = useState(selected)
+    const id = useID(propsID)
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
       if (onChange) {
@@ -141,6 +144,7 @@ const ButtonItemComponent = forwardRef(
     return (
       <ButtonItemLabel
         disabled={disabled}
+        htmlFor={id}
         fontFamily="brand"
         py="small"
         selected={showSelected}
@@ -150,6 +154,7 @@ const ButtonItemComponent = forwardRef(
           type={props.type}
           disabled={disabled}
           name={name}
+          id={id}
           onChange={handleChange}
           checked={showSelected}
           value={value}
