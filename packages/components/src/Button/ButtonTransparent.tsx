@@ -32,6 +32,7 @@ export const ButtonTransparent = styled(ButtonBase)`
   border: 1px solid transparent;
   color: ${({ theme, color = 'primary' }) =>
     theme.colors.semanticColors[color].main};
+  padding: 0 ${({ theme }) => theme.space.xsmall};
 
   &:active,
   &.active {
