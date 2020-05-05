@@ -28,17 +28,25 @@ import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import { typography, TypographyProps } from '@looker/design-tokens'
-import { inputPropKeys, InputProps } from '../InputProps'
+import {
+  typography,
+  TypographyProps,
+  SpaceProps,
+  CompatibleHTMLProps,
+  LayoutProps,
+} from '@looker/design-tokens'
+import { inputPropKeys } from '../InputProps'
 
 interface InlineTextAreaProps
-  extends TypographyProps,
-    Omit<InputProps, 'type'> {
+  extends Omit<LayoutProps, 'size'>,
+    SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLTextAreaElement> {
   underlineOnlyOnHover?: boolean
   value?: string
 }
 
-export const InlineTextAreaInternal = forwardRef(
+export const InlineTextAreaLayout = forwardRef(
   (
     {
       className,
@@ -48,13 +56,15 @@ export const InlineTextAreaInternal = forwardRef(
       placeholder,
       ...props
     }: InlineTextAreaProps,
-    ref: Ref<HTMLInputElement>
+    ref: Ref<HTMLTextAreaElement>
   ) => {
     const [value, setValueChange] = React.useState(valueProp || '')
 
     const displayValue = isFunction(onChange) ? valueProp : value
 
-    const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleValueChange = (
+      event: React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
       setValueChange(event.currentTarget.value)
     }
 
@@ -64,9 +74,9 @@ export const InlineTextAreaInternal = forwardRef(
       <div className={className} data-testid="inline-text-area">
         <Input
           onChange={handleChange}
+          ref={ref}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
-          ref={ref}
           {...pick(props, inputPropKeys)}
         />
         <VisibleText displayValue={displayValue}>
@@ -77,25 +87,23 @@ export const InlineTextAreaInternal = forwardRef(
   }
 )
 
-InlineTextAreaInternal.displayName = 'InlineTextAreaInternal'
+InlineTextAreaLayout.displayName = 'InlineTextAreaLayout'
 
-const Input = styled.input.attrs({ type: 'text' })<InlineTextAreaProps>`
+const Input = styled.textarea<InlineTextAreaProps>`
   background: transparent;
   border: none;
   color: transparent;
   font: inherit;
   caret-color: ${(props) => props.theme.colors.palette.charcoal900};
   height: 100%;
-  hyphens: auto;
   left: 0;
   outline: none;
-  overflow-wrap: break-word;
   padding: 0;
   position: absolute;
+  resize: none;
   text-transform: inherit;
   top: 0;
   width: 100%;
-  word-wrap: break-word;
 `
 
 interface VisibleTextProps {
@@ -108,7 +116,7 @@ const VisibleText = styled.div<VisibleTextProps>`
       : theme.colors.palette.charcoal400};
 `
 
-export const InlineTextArea = styled(InlineTextAreaInternal)`
+export const InlineTextArea = styled(InlineTextAreaLayout)`
   ${typography}
 
   border: none;
@@ -123,6 +131,7 @@ export const InlineTextArea = styled(InlineTextAreaInternal)`
   position: relative;
   min-width: 2rem;
   min-height: ${(props) => props.theme.lineHeights.medium};
+  white-space: pre-wrap;
 
   :focus,
   :hover {
