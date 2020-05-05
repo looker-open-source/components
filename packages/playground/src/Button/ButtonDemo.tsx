@@ -33,77 +33,126 @@ import {
   ButtonTransparent,
   Confirm,
   Heading,
+  Grid,
   Space,
   SpaceVertical,
 } from '@looker/components'
 
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXSmall,
+  SizeXXSmall,
+  SemanticColors,
+} from '@looker/design-tokens'
+
+type ButtonColors = keyof SemanticColors
+
+type ButtonSizes = SizeXXSmall | SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+
+type ButtonStyles = 'default' | 'outline' | 'transparent'
+
+const ButtonContainer: FC = ({ ...props }) => {
+  return (
+    <Box bg="#F9FAFB" p="xlarge">
+      <SpaceVertical gap="xlarge">{props.children}</SpaceVertical>
+    </Box>
+  )
+}
+
 export const ButtonDemo: FC = () => {
+  const ButtonComponents = {
+    default: Button,
+    outline: ButtonOutline,
+    transparent: ButtonTransparent,
+  }
+
+  const buttonSizes: Array<ButtonSizes> = ['xsmall', 'small', 'medium', 'large']
+
+  const renderButtons = (
+    style: ButtonStyles,
+    size: ButtonSizes,
+    color: ButtonColors
+  ) => {
+    const ButtonTag = ButtonComponents[style]
+    return (
+      <Space gap="small">
+        <ButtonTag size={size} color={color}>
+          Button
+        </ButtonTag>
+        <ButtonTag size={size} iconBefore="Plus" color={color}>
+          Button
+        </ButtonTag>
+        <ButtonTag size={size} iconAfter="Plus" color={color}>
+          Button
+        </ButtonTag>
+      </Space>
+    )
+  }
+
   return (
     <Box p="xlarge">
-      <SpaceVertical gap="xlarge">
-        <Heading>Filled Buttons</Heading>
-        <Box bg="#f5f5f5" p="xlarge">
-          <Space gap="small">
-            <Button size="xsmall">Button</Button>
-            <Button iconBefore="Account" size="xsmall">
-              Button
-            </Button>
-            <Button iconAfter="Account" size="xsmall">
-              Button
-            </Button>
-          </Space>
-        </Box>
-        <Box bg="#f5f5f5" p="xlarge">
-          <Space gap="small">
-            <Button size="small">Button</Button>
-            <Button iconBefore="Plus" size="small">
-              Button
-            </Button>
-            <Button iconAfter="Plus" size="small">
-              Button
-            </Button>
-          </Space>
-        </Box>
-        <Box bg="#f5f5f5" p="xlarge">
-          <Space gap="small">
-            <Button>Button</Button>
-            <Button iconBefore="Plus">Button</Button>
-            <Button iconAfter="Plus">Button</Button>
-          </Space>
-        </Box>
-        <Box bg="#f5f5f5" p="xlarge">
-          <Space gap="small">
-            <Button size="large">Button</Button>
-            <Button iconBefore="Plus" size="large">
-              Button
-            </Button>
-            <Button iconAfter="Plus" size="large">
-              Button
-            </Button>
-          </Space>
-        </Box>
+      <SpaceVertical gap="small">
+        <Heading>Primary</Heading>
+        <Grid columns={3}>
+          <ButtonContainer>
+            <SpaceVertical gap="xlarge">
+              {buttonSizes.map((size) => {
+                return renderButtons('default', size, 'primary')
+              })}
+            </SpaceVertical>
+          </ButtonContainer>
 
-        <Space gap="small">
-          <Button size="xsmall">OK</Button>
-          <Button size="small">OK</Button>
-          <Button>OK</Button>
-          <Button size="large">OK</Button>
-        </Space>
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('outline', size, 'primary')
+            })}
+          </ButtonContainer>
 
-        <Heading>Outline Buttons</Heading>
-        <Space>
-          <ButtonOutline size="xsmall">ButtonOutline</ButtonOutline>
-          <ButtonOutline size="small">ButtonOutline</ButtonOutline>
-          <ButtonOutline>ButtonOutline</ButtonOutline>
-          <ButtonOutline size="large">ButtonOutline</ButtonOutline>.
-        </Space>
-        <Heading>Transparent Buttons</Heading>
-        <Space>
-          <ButtonTransparent size="xsmall">ButtonTransparent</ButtonTransparent>
-          <ButtonTransparent size="small">ButtonTransparent</ButtonTransparent>
-          <ButtonTransparent>ButtonTransparent</ButtonTransparent>
-          <ButtonTransparent size="large">ButtonTransparent</ButtonTransparent>.
-        </Space>
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('transparent', size, 'primary')
+            })}
+          </ButtonContainer>
+        </Grid>
+
+        <Heading>Neutral</Heading>
+        <Grid>
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('outline', size, 'neutral')
+            })}
+          </ButtonContainer>
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('transparent', size, 'neutral')
+            })}
+          </ButtonContainer>
+        </Grid>
+
+        <Heading>Critical</Heading>
+        <Grid columns={3}>
+          <ButtonContainer>
+            <SpaceVertical gap="xlarge">
+              {buttonSizes.map((size) => {
+                return renderButtons('default', size, 'danger')
+              })}
+            </SpaceVertical>
+          </ButtonContainer>
+
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('outline', size, 'danger')
+            })}
+          </ButtonContainer>
+
+          <ButtonContainer>
+            {buttonSizes.map((size) => {
+              return renderButtons('transparent', size, 'danger')
+            })}
+          </ButtonContainer>
+        </Grid>
       </SpaceVertical>
 
       <SpaceVertical gap="large">
