@@ -24,51 +24,20 @@
 
  */
 
-export * from './Accordian'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import React, { FC, useState } from 'react'
 
-export * from './utils'
+export interface AccordianProps {
+  testProp?: boolean
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+/**
+ * Pseudo-code (just uncontrolled)
+ * 1. useState that controls whether Accordion is open or not
+ * 2. JSX will accept ReactNode as children (basically anything the user wants to give)
+ * 3. Will wrap that JSX in a div and conditionally hide or show it
+ * 4. Takes a "label" property which sits next to the caret
+ * 5. Caret points right when Accordion IS NOT open and pointed down when Accordian IS open
+ */
+export const Accordian: FC<AccordianProps> = (props) => {
+  return <div>{props.testProp}</div>
+}
