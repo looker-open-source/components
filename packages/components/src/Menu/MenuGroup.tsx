@@ -60,7 +60,7 @@ const MenuGroupInternal: FC<MenuGroupProps> = ({
   customizationProps,
   ...boxProps
 }) => {
-  const [renderIcon, setRenderIcon] = useState(false)
+  const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
   const mergedContextValue = useMenuItemStyleContext({
     compact,
@@ -69,8 +69,8 @@ const MenuGroupInternal: FC<MenuGroupProps> = ({
 
   const context = {
     ...mergedContextValue,
-    renderIcon,
-    setRenderIcon,
+    renderIconPlaceholder,
+    setRenderIconPlaceholder,
   }
 
   return (

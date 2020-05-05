@@ -214,11 +214,13 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     pt: pt || py || p || compact ? 'xxsmall' : 'small',
   }
 
-  const { renderIcon, setRenderIcon } = useContext(MenuItemStyleContext)
+  const { renderIconPlaceholder, setRenderIconPlaceholder } = useContext(
+    MenuItemStyleContext
+  )
 
   useEffect(() => {
-    icon && setRenderIcon(true)
-  }, [icon, setRenderIcon])
+    icon && setRenderIconPlaceholder(true)
+  }, [icon, setRenderIconPlaceholder])
 
   const renderedIcon = icon ? (
     <Icon
@@ -227,7 +229,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
       size={iconSize / compactIconModifier}
       color={iconColor}
     />
-  ) : renderIcon ? (
+  ) : renderIconPlaceholder ? (
     <div />
   ) : undefined
 
