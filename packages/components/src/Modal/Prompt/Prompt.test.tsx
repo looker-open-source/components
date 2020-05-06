@@ -98,3 +98,6 @@ test('<Prompt/> with custom props', () => {
   expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
   expect(requiredProps.onSave).toHaveBeenCalledTimes(0)
 })
+
+xtest('<Prompt /> should clear value after closing', () => {})
+xtest('<Prompt /> should update when defaultValue changed', () => {})
