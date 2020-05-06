@@ -27,6 +27,7 @@
 import React, {
   FC,
   FormEvent,
+  KeyboardEvent,
   ReactNode,
   useState,
   useCallback,
@@ -116,8 +117,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     setValue(event.currentTarget.value)
   }
 
-  const onSubmit = (event: FormEvent<HTMLElement>) => {
-    event.preventDefault()
+  const onSubmit = () => {
     onSave(value)
     close()
     setValue('')
@@ -129,31 +129,43 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     onCancel && onCancel()
   }, [close, onCancel])
 
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && hasValue) {
+      onSubmit()
+    } else if (event.key === 'Escape') {
+      cancel()
+    }
+  }
+
   return (
     <Dialog width="30rem" isOpen={isOpen} onClose={cancel}>
-      <form onSubmit={onSubmit}>
-        <ModalHeader hideClose>{title}</ModalHeader>
-        <ModalContent>
-          <VisuallyHidden>
-            <Label htmlFor="promptInput">{inputLabel}</Label>
-          </VisuallyHidden>
-          <InputText
-            id="promptInput"
-            placeholder={inputLabel}
-            onChange={onChange}
-            width="100%"
-            value={value}
-          />
-        </ModalContent>
-        <ModalFooter secondary={secondary}>
-          <Button disabled={!hasValue} type="submit" color="primary">
-            {saveLabel}
-          </Button>
-          <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
-            {cancelLabel}
-          </ButtonTransparent>
-        </ModalFooter>
-      </form>
+      <ModalHeader hideClose>{title}</ModalHeader>
+      <ModalContent>
+        <VisuallyHidden>
+          <Label htmlFor="promptInput">{inputLabel}</Label>
+        </VisuallyHidden>
+        <InputText
+          onKeyDown={onKeyDown}
+          id="promptInput"
+          placeholder={inputLabel}
+          onChange={onChange}
+          width="100%"
+          value={value}
+        />
+      </ModalContent>
+      <ModalFooter secondary={secondary}>
+        <Button
+          disabled={!hasValue}
+          type="submit"
+          onClick={onSubmit}
+          color="primary"
+        >
+          {saveLabel}
+        </Button>
+        <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
+          {cancelLabel}
+        </ButtonTransparent>
+      </ModalFooter>
     </Dialog>
   )
 }
