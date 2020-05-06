@@ -24,14 +24,7 @@
 
  */
 
-import React, {
-  FC,
-  useState,
-  KeyboardEvent,
-  useRef,
-  useCallback,
-  useEffect,
-} from 'react'
+import React, { FC, useState, KeyboardEvent, useRef, useEffect } from 'react'
 import { SpaceProps, reset, space } from '@looker/design-tokens'
 import { WidthProps } from 'styled-system'
 import styled from 'styled-components'
