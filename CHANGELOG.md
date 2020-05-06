@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ToggleSwitch` React warning
 - add placeholder attribute to InlineInputText
 
+### Removed
+
+- `ActionListItemAction` no longer supports the `color` prop
+
 ## [0.7.29] - 2020-04-24
 
 ### Changed
