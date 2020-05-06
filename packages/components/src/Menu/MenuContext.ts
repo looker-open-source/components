@@ -25,6 +25,7 @@
  */
 
 import { createContext } from 'react'
+import noop from 'lodash/noop'
 import { MenuSharedProps } from './MenuItem'
 
 export interface MenuContextProps {
@@ -37,8 +38,18 @@ export interface MenuContextProps {
   triggerCallbackRef?: (node: HTMLElement | null) => void
 }
 
+export interface MenuItemStyleContextProps extends MenuSharedProps {
+  renderIconPlaceholder: boolean
+  setRenderIconPlaceholder: (size: boolean) => void
+}
+
 const menuContext: MenuContextProps = {}
-const menuItemStyleContext: MenuSharedProps = {}
+const menuItemStyleContext: MenuItemStyleContextProps = {
+  renderIconPlaceholder: false,
+  // Note: Using noop for default setRenderIconPlaceholder since this callback will always
+  // be received via providers in MenuList or MenuGroup
+  setRenderIconPlaceholder: (renderIcon: boolean) => noop(renderIcon),
+}
 
 export const MenuContext = createContext(menuContext)
 export const MenuItemStyleContext = createContext(menuItemStyleContext)

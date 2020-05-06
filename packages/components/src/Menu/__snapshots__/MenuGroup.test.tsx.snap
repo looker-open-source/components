@@ -98,14 +98,24 @@ exports[`MenuGroup - JSX label 1`] = `
   font-weight: #262D33;
 }
 
-.c4:hover .c6 {
+.c4:hover .c7 {
   color: #C1C6CC;
 }
 
-.c4 .c6 {
+.c4 .c7 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
@@ -156,7 +166,11 @@ exports[`MenuGroup - JSX label 1`] = `
         className="c5"
         role="menuitem"
       >
-        what?
+        <div
+          className="c6"
+        >
+          what?
+        </div>
       </button>
     </li>
     <li
@@ -173,7 +187,11 @@ exports[`MenuGroup - JSX label 1`] = `
         className="c5"
         role="menuitem"
       >
-        who?
+        <div
+          className="c6"
+        >
+          who?
+        </div>
       </button>
     </li>
     <li
@@ -190,7 +208,11 @@ exports[`MenuGroup - JSX label 1`] = `
         className="c5"
         role="menuitem"
       >
-        where?
+        <div
+          className="c6"
+        >
+          where?
+        </div>
       </button>
     </li>
   </ul>
@@ -295,14 +317,24 @@ exports[`MenuGroup - label 1`] = `
   font-weight: #262D33;
 }
 
-.c4:hover .c6 {
+.c4:hover .c7 {
   color: #C1C6CC;
 }
 
-.c4 .c6 {
+.c4 .c7 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
@@ -349,7 +381,11 @@ exports[`MenuGroup - label 1`] = `
         className="c5"
         role="menuitem"
       >
-        what?
+        <div
+          className="c6"
+        >
+          what?
+        </div>
       </button>
     </li>
     <li
@@ -366,7 +402,11 @@ exports[`MenuGroup - label 1`] = `
         className="c5"
         role="menuitem"
       >
-        who?
+        <div
+          className="c6"
+        >
+          who?
+        </div>
       </button>
     </li>
     <li
@@ -383,7 +423,11 @@ exports[`MenuGroup - label 1`] = `
         className="c5"
         role="menuitem"
       >
-        where?
+        <div
+          className="c6"
+        >
+          where?
+        </div>
       </button>
     </li>
   </ul>
@@ -488,14 +532,24 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   font-weight: #262D33;
 }
 
-.c4:hover .c6 {
+.c4:hover .c7 {
   color: #C1C6CC;
 }
 
-.c4 .c6 {
+.c4 .c7 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
@@ -547,7 +601,11 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
         className="c5"
         role="menuitem"
       >
-        what?
+        <div
+          className="c6"
+        >
+          what?
+        </div>
       </button>
     </li>
     <li
@@ -564,7 +622,11 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
         className="c5"
         role="menuitem"
       >
-        who?
+        <div
+          className="c6"
+        >
+          who?
+        </div>
       </button>
     </li>
     <li
@@ -581,7 +643,11 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
         className="c5"
         role="menuitem"
       >
-        where?
+        <div
+          className="c6"
+        >
+          where?
+        </div>
       </button>
     </li>
   </ul>
@@ -593,7 +659,7 @@ exports[`MenuGroup - menu customization 1`] = `
   list-style-type: none;
 }
 
-.c4 {
+.c5 {
   color: #9785F2;
   margin-right: 0.5rem;
   width: 20px;
@@ -642,11 +708,11 @@ exports[`MenuGroup - menu customization 1`] = `
   color: inherit;
 }
 
-.c6:hover .c5 {
+.c7:hover .c6 {
   color: #C1C6CC;
 }
 
-.c6 .c5 {
+.c7 .c6 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -691,14 +757,24 @@ exports[`MenuGroup - menu customization 1`] = `
   font-weight: #FFFFFF;
 }
 
-.c2:hover .c5 {
+.c2:hover .c6 {
   color: #E8E5FF;
 }
 
-.c2 .c5 {
+.c2 .c6 {
   color: #9785F2;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
@@ -729,47 +805,51 @@ exports[`MenuGroup - menu customization 1`] = `
         role="menuitem"
       >
         <div
-          className="c4 c5 "
-          color="#9785F2"
-          size={20}
+          className="c4"
         >
-          <svg
-            fill="currentColor"
-            height="100%"
-            viewBox="0 0 24 24"
-            width="100%"
+          <div
+            className="c5 c6 "
+            color="#9785F2"
+            size={20}
           >
-            <title>
-              Logo Rings
-            </title>
-            <g
-              clipPath="url(#LogoRings_svg__clip0)"
+            <svg
               fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
             >
-              <path
-                d="M13.594 11.467c-.97 0-1.881.263-2.666.72l.762 1.006a4.035 4.035 0 011.905-.477 4.067 4.067 0 014.063 4.063 4.067 4.067 0 01-4.063 4.062 4.067 4.067 0 01-4.062-4.062c0-1.103.442-2.103 1.158-2.835l-.76-1.005a5.295 5.295 0 00-1.648 3.84 5.319 5.319 0 005.312 5.312 5.319 5.319 0 005.313-5.312 5.319 5.319 0 00-5.313-5.313v.001zM10.155 9.28c0 .49-.165.943-.44 1.308l.773 1.02a3.417 3.417 0 00.266-4.334l-.916.877c.2.33.317.715.317 1.128v.001zM7.968 11.468A2.19 2.19 0 015.78 9.28a2.19 2.19 0 012.188-2.187c.337 0 .657.079.943.216l.942-.9a3.417 3.417 0 00-1.885-.566A3.442 3.442 0 004.53 9.28a3.442 3.442 0 003.438 3.438c.545 0 1.06-.132 1.52-.36l-.775-1.024a2.17 2.17 0 01-.745.134zM11.405 4.593c0-.69.561-1.25 1.25-1.25.69 0 1.25.56 1.25 1.25a1.252 1.252 0 01-1.6 1.199l-.965.923c.383.238.833.378 1.315.378 1.379 0 2.5-1.122 2.5-2.5 0-1.379-1.121-2.5-2.5-2.5a2.503 2.503 0 00-2.5 2.5c0 .443.118.859.32 1.22l.967-.925a1.236 1.236 0 01-.037-.296z"
-              />
-              <path
-                d="M10.487 11.609a3.453 3.453 0 01-1 .749l.44.58c.302-.287.637-.54 1-.751l-.44-.58v.002zM10.754 7.275l.586-.56a2.515 2.515 0 01-.865-.903l-.623.595c.352.232.657.526.903.868z"
-              />
-              <path
-                d="M11.688 13.194l-.762-1.006c-.363.211-.697.464-1 .752l.762 1.005a4.107 4.107 0 01.999-.75zM9.838 8.152l.916-.877a3.463 3.463 0 00-.902-.867l-.942.901a2.2 2.2 0 01.928.843zM10.489 11.608l-.773-1.02c-.253.338-.6.599-1.003.745l.775 1.024a3.461 3.461 0 001-.749zM11.342 6.716l.965-.924a1.252 1.252 0 01-.864-.903l-.966.925c.207.37.506.68.865.902z"
-              />
-            </g>
-            <defs>
-              <clipPath
-                id="LogoRings_svg__clip0"
+              <title>
+                Logo Rings
+              </title>
+              <g
+                clipPath="url(#LogoRings_svg__clip0)"
+                fill="currentColor"
               >
                 <path
-                  d="M0 0h20v20H0z"
-                  fill="#fff"
-                  transform="translate(2 2)"
+                  d="M13.594 11.467c-.97 0-1.881.263-2.666.72l.762 1.006a4.035 4.035 0 011.905-.477 4.067 4.067 0 014.063 4.063 4.067 4.067 0 01-4.063 4.062 4.067 4.067 0 01-4.062-4.062c0-1.103.442-2.103 1.158-2.835l-.76-1.005a5.295 5.295 0 00-1.648 3.84 5.319 5.319 0 005.312 5.312 5.319 5.319 0 005.313-5.312 5.319 5.319 0 00-5.313-5.313v.001zM10.155 9.28c0 .49-.165.943-.44 1.308l.773 1.02a3.417 3.417 0 00.266-4.334l-.916.877c.2.33.317.715.317 1.128v.001zM7.968 11.468A2.19 2.19 0 015.78 9.28a2.19 2.19 0 012.188-2.187c.337 0 .657.079.943.216l.942-.9a3.417 3.417 0 00-1.885-.566A3.442 3.442 0 004.53 9.28a3.442 3.442 0 003.438 3.438c.545 0 1.06-.132 1.52-.36l-.775-1.024a2.17 2.17 0 01-.745.134zM11.405 4.593c0-.69.561-1.25 1.25-1.25.69 0 1.25.56 1.25 1.25a1.252 1.252 0 01-1.6 1.199l-.965.923c.383.238.833.378 1.315.378 1.379 0 2.5-1.122 2.5-2.5 0-1.379-1.121-2.5-2.5-2.5a2.503 2.503 0 00-2.5 2.5c0 .443.118.859.32 1.22l.967-.925a1.236 1.236 0 01-.037-.296z"
                 />
-              </clipPath>
-            </defs>
-          </svg>
+                <path
+                  d="M10.487 11.609a3.453 3.453 0 01-1 .749l.44.58c.302-.287.637-.54 1-.751l-.44-.58v.002zM10.754 7.275l.586-.56a2.515 2.515 0 01-.865-.903l-.623.595c.352.232.657.526.903.868z"
+                />
+                <path
+                  d="M11.688 13.194l-.762-1.006c-.363.211-.697.464-1 .752l.762 1.005a4.107 4.107 0 01.999-.75zM9.838 8.152l.916-.877a3.463 3.463 0 00-.902-.867l-.942.901a2.2 2.2 0 01.928.843zM10.489 11.608l-.773-1.02c-.253.338-.6.599-1.003.745l.775 1.024a3.461 3.461 0 001-.749zM11.342 6.716l.965-.924a1.252 1.252 0 01-.864-.903l-.966.925c.207.37.506.68.865.902z"
+                />
+              </g>
+              <defs>
+                <clipPath
+                  id="LogoRings_svg__clip0"
+                >
+                  <path
+                    d="M0 0h20v20H0z"
+                    fill="#fff"
+                    transform="translate(2 2)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          Looker
         </div>
-        Looker
       </button>
     </li>
     <li
@@ -787,26 +867,30 @@ exports[`MenuGroup - menu customization 1`] = `
         role="menuitem"
       >
         <div
-          className="c4 c5 "
-          color="#9785F2"
-          size={20}
+          className="c4"
         >
-          <svg
-            fill="currentColor"
-            height="100%"
-            viewBox="0 0 24 24"
-            width="100%"
+          <div
+            className="c5 c6 "
+            color="#9785F2"
+            size={20}
           >
-            <title>
-              Validate
-            </title>
-            <path
-              d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
+            <svg
               fill="currentColor"
-            />
-          </svg>
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Validate
+              </title>
+              <path
+                d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          Validate
         </div>
-        Validate
       </button>
     </li>
     <li
@@ -824,26 +908,30 @@ exports[`MenuGroup - menu customization 1`] = `
         role="menuitem"
       >
         <div
-          className="c4 c5 "
-          color="#9785F2"
-          size={20}
+          className="c4"
         >
-          <svg
-            fill="currentColor"
-            height="100%"
-            viewBox="0 0 24 24"
-            width="100%"
+          <div
+            className="c5 c6 "
+            color="#9785F2"
+            size={20}
           >
-            <title>
-              Chart Pie
-            </title>
-            <path
-              d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+            <svg
               fill="currentColor"
-            />
-          </svg>
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Chart Pie
+              </title>
+              <path
+                d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          Pizza!
         </div>
-        Pizza!
       </button>
     </li>
   </ul>
@@ -930,14 +1018,24 @@ exports[`MenuGroup 1`] = `
   font-weight: #262D33;
 }
 
-.c2:hover .c4 {
+.c2:hover .c5 {
   color: #C1C6CC;
 }
 
-.c2 .c4 {
+.c2 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
@@ -966,7 +1064,11 @@ exports[`MenuGroup 1`] = `
         className="c3"
         role="menuitem"
       >
-        who!
+        <div
+          className="c4"
+        >
+          who!
+        </div>
       </button>
     </li>
   </ul>

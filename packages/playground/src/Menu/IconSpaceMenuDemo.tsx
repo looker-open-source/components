@@ -25,22 +25,33 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { IconSpaceMenuDemo } from './Menu/IconSpaceMenuDemo'
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuDisclosure,
+  MenuGroup,
+  Button,
+} from '@looker/components'
 
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <IconSpaceMenuDemo />
-    </ComponentsProvider>
-  )
-}
+export const IconSpaceMenuDemo = () => (
+  <>
+    <Menu>
+      <MenuDisclosure>
+        <Button>Blurb</Button>
+      </MenuDisclosure>
+      <MenuList customizationProps={{ iconSize: 50 }}>
+        <MenuItem icon="User">Hello</MenuItem>
+        <MenuItem>World</MenuItem>
+      </MenuList>
+    </Menu>
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+    <MenuList compact>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem>Pizza!</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+      </MenuGroup>
+    </MenuList>
+  </>
+)
