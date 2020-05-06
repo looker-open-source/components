@@ -44,7 +44,7 @@
     "react-transition-group": "^4.3.0",
     "resize-observer-polyfill": "^1.5.1",
     "styled-system": "^5.1.5",
-    "uuid": "^7.0.3"
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.7.29",
