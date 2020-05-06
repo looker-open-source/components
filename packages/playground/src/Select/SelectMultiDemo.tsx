@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import {
   Box,
   Heading,
@@ -106,12 +106,12 @@ const selectGroups = [
 ]
 
 export function SelectMultiDemo() {
-  const [searchTerm, setSearchTerm] = React.useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   function handleFilter(term: string) {
     setSearchTerm(term)
   }
 
-  const newOptions = React.useMemo(() => {
+  const newOptions = useMemo(() => {
     if (searchTerm === '')
       return selectOptions.map((option) => ({
         ...option,

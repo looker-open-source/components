@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Divider, Box, InputChips, Paragraph } from '@looker/components'
 
 const emailValidator = new RegExp(
@@ -32,12 +32,12 @@ const emailValidator = new RegExp(
 )
 
 export function InputChipsDemo() {
-  const [values, setValues] = React.useState<string[]>(['apples'])
-  const [values2, setValues2] = React.useState<string[]>(['bananas'])
-  const [values3, setValues3] = React.useState<string[]>(['someone@looker.com'])
-  const [inputValue, setInputValue] = React.useState('oranges')
-  const [invalid, setInvalid] = React.useState('')
-  const [duplicate, setDuplicate] = React.useState('')
+  const [values, setValues] = useState<string[]>(['apples'])
+  const [values2, setValues2] = useState<string[]>(['bananas'])
+  const [values3, setValues3] = useState<string[]>(['someone@looker.com'])
+  const [inputValue, setInputValue] = useState('oranges')
+  const [invalid, setInvalid] = useState('')
+  const [duplicate, setDuplicate] = useState('')
 
   function handleChange(vals: string[]) {
     setValues(vals)

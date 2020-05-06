@@ -16,9 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "yarn icons",
-    "prepare": "yarn icons",
-    "icons": "node bin/build.js"
+    "prepare": "node bin/build.js"
   },
   "devDependencies": {
     "@svgr/babel-plugin-add-jsx-attribute": "^5.4.0",

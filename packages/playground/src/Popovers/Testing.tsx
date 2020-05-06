@@ -24,7 +24,7 @@
 
  */
 
-import React, { Ref } from 'react'
+import React, { Ref, useEffect, useRef } from 'react'
 import {
   Box,
   Button,
@@ -234,7 +234,7 @@ function Placement() {
 }
 
 function Grouped() {
-  const groupRef = React.useRef<HTMLDivElement>(null)
+  const groupRef = useRef<HTMLDivElement>(null)
   const content = (
     <PopoverContent p="large" width="360px">
       Example Popover text.
@@ -323,11 +323,11 @@ function MovingTarget() {
     placement: 'right-end',
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     popperInstanceRef.current && popperInstanceRef.current.update()
   }, [popperInstanceRef, value])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const int = setInterval(() => {
       toggle()
     }, 6000)
