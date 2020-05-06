@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -35,7 +35,7 @@ export interface FieldTextProps extends FieldProps, InputTextProps {}
 
 const FieldTextComponent = forwardRef(
   (props: FieldTextProps, ref: Ref<HTMLInputElement>) => {
-    const { id = uuid() } = props
+    const id = useID(props.id)
     const validationMessage = useFormContext(props)
     return (
       <Field

@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
 import { omitFieldProps, pickFieldProps } from '../Field'
 import { FieldInline } from '../FieldInline'
@@ -38,7 +38,7 @@ export interface FieldRadioProps
 
 const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
-    const { id = uuid() } = props
+    const id = useID(props.id)
     return (
       <FieldInline {...pickFieldProps(props)} id={id}>
         <Radio

@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import { CheckboxGroup, CheckboxGroupProps } from '../../Inputs'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -36,12 +36,13 @@ export interface FieldCheckboxGroupProps
     Omit<FieldProps, 'detail'> {}
 
 const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
-  id = uuid(),
+  id: propsID,
   options,
   value,
   ...props
 }) => {
   const validationMessage = useFormContext(props)
+  const id = useID(propsID)
 
   return (
     <Field
