@@ -9,12 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Updated the `ViewColumn` icon to better match keylines and guides
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
 - `InlineTextArea` implemented with test and documentation.
+- Windowing (virtualization) to `Select` and `SelectMulti`,
+  - `windowedOptions` prop overrides the default condition of >= 100 options
 
 ### Changed
 
 - updated documentation for Filedset to include label and legend
+- `menuItemStyleContext` in `MenuContext` uses a new interface which contains "preserved icon space"-related properties
+- `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
+- `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
 
 ### Fixed
 

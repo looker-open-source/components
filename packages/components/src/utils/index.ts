@@ -24,6 +24,7 @@
 
  */
 
+export * from './getWindowedListBoundaries'
 export * from './useControlWarn'
 export * from './useReadOnlyWarn'
 export * from './useCallbackRef'

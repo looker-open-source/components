@@ -24,27 +24,34 @@
 
  */
 
-const Adapter = require('enzyme-adapter-react-16')
-const Enzyme = require('enzyme')
-require('@testing-library/jest-dom/extend-expect')
-require('jest-canvas-mock')
-require('jest-styled-components')
+import React from 'react'
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuDisclosure,
+  MenuGroup,
+  Button,
+} from '@looker/components'
 
-Enzyme.configure({ adapter: new Adapter() })
+export const IconSpaceMenuDemo = () => (
+  <>
+    <Menu>
+      <MenuDisclosure>
+        <Button>Blurb</Button>
+      </MenuDisclosure>
+      <MenuList customizationProps={{ iconSize: 50 }}>
+        <MenuItem icon="User">Hello</MenuItem>
+        <MenuItem>World</MenuItem>
+      </MenuList>
+    </Menu>
 
-const observeMock = function (cb, config) {
-  this.observeCallback = cb
-  this.observeConfig = config
-  this.disconnect = jest.fn()
-  this.observe = jest.fn()
-}
-
-const globalAny = global
-globalAny.IntersectionObserver = observeMock
-
-// js-dom doesn't do scrollIntoView
-Element.prototype.scrollIntoView = jest.fn()
-
-beforeAll(() => {
-  jest.resetAllMocks()
-})
+    <MenuList compact>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem>Pizza!</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+      </MenuGroup>
+    </MenuList>
+  </>
+)
