@@ -120,6 +120,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     event.preventDefault()
     onSave(value)
     close()
+    setValue('')
   }
 
   const cancel = useCallback(() => {
