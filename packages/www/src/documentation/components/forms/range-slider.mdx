@@ -1,0 +1,119 @@
+---
+title: RangeSlider
+propsOf: RangeSlider
+github: Form/Inputs/RangeSlider/RangeSlider.tsx
+---
+
+`RangeSlider` is the 2-point alternative to the [single-value `Slider` component](/components/forms/slider).
+
+# Default RangeSlider
+
+The `<RangeSlider />` component renders a styled range slider on the page. It will render a range from 0 to 10, and select all possible values inbetween.
+
+```jsx
+<CardContent>
+  <RangeSlider />
+</CardContent>
+```
+
+# Value and DefaultValue
+
+By default, this component will select the entire range from Min to Max values. You can control the selected range by passing an array of integers to either `value` or `defaultValue`.
+
+```jsx
+<CardContent>
+  <RangeSlider defaultValue={[3, 8]} />
+  <RangeSlider value={[3, 8]} />
+</CardContent>
+```
+
+Like all standard form elements, you cannot interact with this component if you pass in a value without an onChange handler.
+
+# Min, Max
+
+You can customize `min` and `max` values.
+
+```jsx
+<CardContent>
+  <RangeSlider min={10} max={20} defaultValue={[13, 17]} />
+</CardContent>
+```
+
+Min and max default to the following values:
+
+- **min**: 0
+- **max**: 10
+
+The slider component will disregard any value prop that goes outside of the defined min or max range. The following example illustrates passing a value that falls outside the acceptable range.
+
+```jsx
+<CardContent>
+  <RangeSlider min={100} max={200} defaultValue={[0, 5000]} />
+</CardContent>
+```
+
+# Controlled component with an onChange callback
+
+If you'd like to read and control the input value externally, `Slider` accepts an `onChange` event callback along with the `value` prop.
+
+```jsx
+;() => {
+  const [sliderValue, setSliderValue] = useState([3, 7])
+  return (
+    <CardContent>
+      <Heading>
+        <strong>Value:</strong> {sliderValue[0]} &mdash; {sliderValue[1]}
+      </Heading>
+      <RangeSlider onChange={setSliderValue} value={sliderValue} />
+      <Button onClick={() => setSliderValue([0, 10])} mr="small">
+        0 &mdash; 10
+      </Button>
+      <Button onClick={() => setSliderValue([2, 8])} mr="small">
+        2 &mdash; 8
+      </Button>
+      <Button onClick={() => setSliderValue([4, 6])}>4 &mdash; 6</Button>
+    </CardContent>
+  )
+}
+```
+
+# Step
+
+You change the granularity of the slider options by using the `step` prop.
+
+```jsx
+<CardContent>
+  <RangeSlider max={10000} step={2500} />
+</CardContent>
+```
+
+# Accessibility
+
+`RangeSlider` accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+```jsx
+<CardContent>
+  <label id="slider-label">Slider:</label>
+  <RangeSlider aria-labelledby="slider-label" />
+</CardContent>
+```
+
+# readOnly
+
+Use the readOnly property to render the component normally, but prevent user interaction.
+
+```jsx
+<CardContent>
+  <RangeSlider defaultValue={[2, 3]} readOnly />
+</CardContent>
+```
+
+# Disabled
+
+Use the `disabled` property to gray out the Input, making it a fixed value.
+
+```jsx
+<CardContent>
+  <RangeSlider defaultValue={[2, 3]} disabled />
+</CardContent>
+```
