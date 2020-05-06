@@ -29,20 +29,14 @@
 
 import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
-import { useForkedRef, useWrapEvent } from '../../../utils'
-import { Flex } from '../../../Layout'
+import { useForkedRef } from '../../../utils'
 import {
   InputChipsBase,
   InputChipsCommonProps,
   InputChipsInputControlProps,
 } from '../InputChips'
-import { InputSearchControls } from '../InputSearch'
 import { ComboboxMultiContext } from './ComboboxContext'
-import {
-  ComboboxInputCommonProps,
-  comboboxStyles,
-  comboboxPaddingRight,
-} from './ComboboxInput'
+import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
@@ -52,7 +46,9 @@ import { useInputPropRefs } from './utils/useInputPropRefs'
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
     ComboboxInputCommonProps,
-    Partial<InputChipsInputControlProps> {}
+    Partial<InputChipsInputControlProps> {
+  onClear?: () => void
+}
 
 export const ComboboxMultiInputInternal = forwardRef(
   (props: ComboboxMultiInputProps, forwardedRef: Ref<HTMLInputElement>) => {
@@ -77,6 +73,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       state,
       transition,
       id,
+      isVisible,
     } = useContext(ComboboxMultiContext)
 
     useInputPropRefs(props, ComboboxMultiContext)
@@ -84,6 +81,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     function handleClear() {
       transition && transition(ComboboxActionType.CLEAR)
       contextOnChange && contextOnChange([])
+      onClear && onClear()
     }
 
     // only called when user removes chips from the input
@@ -157,7 +155,6 @@ export const ComboboxMultiInputInternal = forwardRef(
       inputValue = getComboboxText(navigationOption)
     }
 
-    const wrappedOnClear = useWrapEvent(handleClear, onClear)
     const wrappedOnInputChange = useCallback(
       (value: string) => {
         handleInputChange(value)
@@ -178,10 +175,11 @@ export const ComboboxMultiInputInternal = forwardRef(
         readOnly={readOnly}
         values={inputValues}
         onChange={handleChange}
-        onClear={wrappedOnClear}
+        onClear={handleClear}
         inputValue={inputValue}
         onInputChange={wrappedOnInputChange}
         id={`listbox-${id}`}
+        isVisibleOptions={isVisible}
         autoComplete="off"
         aria-autocomplete="both"
         aria-activedescendant={
@@ -199,14 +197,6 @@ ComboboxMultiInputInternal.displayName = 'ComboboxMultiInputInternal'
 export const ComboboxMultiInput = styled(ComboboxMultiInputInternal)`
   ${comboboxStyles}
   padding-right: 0;
-
-  ${Flex} {
-    padding-right: calc(${(props) => props.theme.space.xlarge} * 2);
-  }
-
-  ${InputSearchControls} {
-    right: ${comboboxPaddingRight};
-  }
 `
 
 ComboboxMultiInput.defaultProps = {

@@ -27,16 +27,12 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import btoa from 'btoa'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import {
-  InputSearch,
-  InputSearchControls,
-  InputSearchProps,
-} from '../InputSearch'
+import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
 import { InputText } from '../InputText'
+import { ComboboxInputControls } from './ComboboxInputControls'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
@@ -66,10 +62,11 @@ export interface ComboboxInputCommonProps {
    * the `true` default.
    */
   autoComplete?: boolean
+  isClearable?: boolean
 }
 
 export interface ComboboxInputProps
-  extends Omit<InputSearchProps, 'autoComplete'>,
+  extends Omit<InputSearchBaseProps, 'autoComplete'>,
     ComboboxInputCommonProps {}
 
 export const ComboboxInputInternal = forwardRef(
@@ -79,10 +76,12 @@ export const ComboboxInputInternal = forwardRef(
       autoComplete = true,
       readOnly = false,
       // wrapped events
-      onClear,
       onChange,
       // might be controlled
       value: controlledValue,
+      validationType,
+      disabled,
+      isClearable,
       ...rest
     } = props
 
@@ -93,6 +92,7 @@ export const ComboboxInputInternal = forwardRef(
       state,
       transition,
       id,
+      isVisible,
     } = useContext(ComboboxContext)
 
     useInputPropRefs(props, ComboboxContext)
@@ -161,24 +161,32 @@ export const ComboboxInputInternal = forwardRef(
     }
     const inputValue = getComboboxText(inputOption)
 
-    const wrappedOnClear = useWrapEvent(handleClear, onClear)
     const wrappedOnChange = useWrapEvent(handleChange, onChange)
 
     const inputEvents = useInputEvents(props, ComboboxContext)
 
     return (
-      <InputSearch
+      <InputSearchBase
         {...rest}
         {...inputEvents}
-        hideSearchIcon
+        searchIcon={false}
+        searchControls={
+          <ComboboxInputControls
+            validationType={validationType}
+            onClear={handleClear}
+            isVisibleOptions={isVisible}
+            disabled={disabled}
+            renderSearchControls={!!(isClearable && inputValue)}
+          />
+        }
         ref={ref}
         value={inputValue}
         readOnly={readOnly}
-        onClear={wrappedOnClear}
         onChange={wrappedOnChange}
         id={`listbox-${id}`}
         autoComplete="off"
         aria-autocomplete="both"
+        validationType={validationType}
         aria-activedescendant={
           navigationOption
             ? String(makeHash(navigationOption ? navigationOption.value : ''))
@@ -191,57 +199,9 @@ export const ComboboxInputInternal = forwardRef(
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
-const indicatorRaw = `
-<svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M7.41 8.58984L12 13.1698L16.59 8.58984L18 9.99984L12 15.9998L6 9.99984L7.41 8.58984Z"
-    fill="currentColor"
-  />
-</svg>`
-export const indicatorSize = '1rem'
-export const indicatorPadding = '.5rem'
-export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorSize})`
-
-const base64 = typeof window !== 'undefined' ? window.btoa : btoa
-const indicatorPrefix = 'data:image/svg+xml;base64,'
-export const selectIndicatorBG = (color: string) =>
-  `url('${indicatorPrefix}${base64(
-    indicatorRaw.replace('currentColor', color)
-  )}')`
-
-const bgPosition = `right ${indicatorPadding} top calc(${indicatorPadding} + 2px), 0 0`
-
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  background-image: ${(props) => {
-    const color = props.disabled
-      ? props.theme.colors.palette.charcoal300
-      : props.theme.colors.palette.charcoal500
-    return selectIndicatorBG(color)
-  }};
-  background-repeat: no-repeat, repeat;
-  background-position: ${bgPosition};
-  background-size: ${indicatorSize}, 100%;
-  padding-right: ${comboboxPaddingRight};
-
   ${InputText} {
     cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
-  }
-
-  ${InputSearchControls} {
-    &::after {
-      content: ' ';
-      border-right: 1px solid
-        ${(props) => props.theme.colors.palette.charcoal200};
-      height: 1.5rem;
-      width: ${(props) => props.theme.space.xsmall};
-      pointer-events: none;
-    }
   }
 `
 

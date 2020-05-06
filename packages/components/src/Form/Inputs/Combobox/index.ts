@@ -27,6 +27,7 @@
 export * from './Combobox'
 export * from './ComboboxMulti'
 export * from './ComboboxMultiInput'
+export * from './ComboboxInputControls'
 export * from './ComboboxMultiOption'
 export * from './ComboboxContext'
 export * from './ComboboxInput'

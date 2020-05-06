@@ -202,6 +202,18 @@ export function SelectMultiDemo() {
         removeOnBackspace={false}
         mb="xlarge"
       />
+
+      <Heading mb="medium" as="h4">
+        Validation Errors
+      </Heading>
+      <SelectMulti
+        name="fruitError"
+        options={selectOptions}
+        placeholder="Search fruits"
+        closeOnSelect
+        mb="xlarge"
+        validationType="error"
+      />
     </Box>
   )
 }

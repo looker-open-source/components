@@ -26,15 +26,11 @@
 import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
-
 import { Chip } from '../../../Chip'
 import { Flex } from '../../../Layout'
 import { InputText } from '../InputText'
-import {
-  InputSearch,
-  InputSearchProps,
-  InputSearchControls,
-} from '../InputSearch'
+import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
+import { ComboboxInputControls } from '../Combobox/ComboboxInputControls'
 
 export interface InputChipsInputControlProps {
   /**
@@ -45,6 +41,7 @@ export interface InputChipsInputControlProps {
    * callback when the input text changes (use with inputValue to control the input text)
    */
   onInputChange: (value: string) => void
+  isVisibleOptions?: boolean
 }
 
 export interface InputChipsControlProps {
@@ -58,11 +55,12 @@ export interface InputChipsControlProps {
    * you can't easily access the current value via dom API
    */
   onChange: (values: string[]) => void
+  onClear?: () => void
 }
 
 export interface InputChipsCommonProps
   extends Omit<
-      InputSearchProps,
+      InputSearchBaseProps,
       'value' | 'defaultValue' | 'onChange' | 'summary'
     >,
     MaxHeightProps {}
@@ -80,6 +78,10 @@ export const InputChipsBaseInternal = forwardRef(
       onKeyDown,
       inputValue,
       onInputChange,
+      disabled,
+      validationType,
+      onClear,
+      isVisibleOptions,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     ref: Ref<HTMLInputElement>
@@ -98,6 +100,7 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleClear() {
+      onClear && onClear()
       onChange([])
       onInputChange('')
     }
@@ -117,19 +120,29 @@ export const InputChipsBaseInternal = forwardRef(
       onInputChange(e.currentTarget.value)
     }
 
+    const renderSearchControls = values.length > 0
+
     return (
-      <InputSearch
-        hideSearchIcon
+      <InputSearchBase
+        searchIcon={false}
+        searchControls={
+          <ComboboxInputControls
+            isVisibleOptions={isVisibleOptions}
+            onClear={handleClear}
+            renderSearchControls={renderSearchControls}
+            validationType={validationType}
+            disabled={disabled}
+          />
+        }
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        showClear={values.length > 0}
-        onClear={handleClear}
+        validationType={validationType}
         {...props}
       >
         {chips}
-      </InputSearch>
+      </InputSearchBase>
     )
   }
 )
@@ -143,18 +156,11 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   ${Flex} {
     flex: 1;
     overflow: auto;
-    padding-right: ${(props) => props.theme.space.xlarge};
   }
 
   ${InputText} {
     width: auto;
     min-width: 25%;
     padding-right: 0;
-  }
-
-  ${InputSearchControls} {
-    position: absolute;
-    top: 2px;
-    right: 0;
   }
 `
