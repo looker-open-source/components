@@ -27,14 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { RangeSliderDemo } from './Form/RangeSliderDemo'
-import { SliderDemo } from './Form/SliderDemo'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <RangeSliderDemo />
-      <SliderDemo />
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
