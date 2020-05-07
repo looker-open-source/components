@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
 - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
 - Labels in `FieldInline` and `ButtonItem` now include the `for` attribute
+- `ActionList` no longer highlights selected rows or hovered rows (when onClickRowSelect is true)
 
 ### Fixed
 
@@ -31,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Clears out old `defaultValue` when new `defaultValue` is passed in
   - Clears out any user input after pressing cancel button
   - Updated test suite to prevent future regressions for the above fixes
-- `InlineInputText` add placeholder attribute 
+- `InlineInputText` add placeholder attribute
 
 ### Removed
 
