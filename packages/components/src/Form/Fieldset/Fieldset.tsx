@@ -60,7 +60,7 @@ const FieldsetLayout = forwardRef(
     const content = (
       <LayoutComponent
         {...restProps}
-        gap={inline ? 'medium' : 'xsmall'}
+        gap={inline ? 'medium' : 'small'}
         className={className}
         ref={ref}
         role="group"

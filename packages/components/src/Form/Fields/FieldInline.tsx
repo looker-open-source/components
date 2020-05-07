@@ -77,6 +77,7 @@ export const FieldInline = styled(FieldInlineLayout)`
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3, max-content);
+  line-height: ${({ theme }) => theme.lineHeights.small};
 
   ${InputArea} {
     grid-area: input;

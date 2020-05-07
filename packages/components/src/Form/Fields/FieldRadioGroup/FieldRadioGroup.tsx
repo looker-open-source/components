@@ -38,6 +38,7 @@ export interface FieldRadioGroupProps
 const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
   id: propsID,
   options,
+  name,
   ...props
 }) => {
   const validationMessage = useFormContext(props)

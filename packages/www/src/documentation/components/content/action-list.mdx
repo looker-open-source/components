@@ -147,17 +147,24 @@ The `<ActionListItemAction>` component represents an actionable item on the rows
 
 In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListManager>` component to conditionally render a loading icon until your data is ready.
 
-Passing a falsy value into an `<ActionListManager>`'s `isLoading` prop will render a `<Spinner>` icon. Once the `isLoading` prop receives a boolean 'true', its child will rendered instead.
+Passing "false" into an `<ActionListManager>`'s `isLoading` prop will render a `<Spinner>` icon. Once you pass in "true" into the `isLoading` prop, the `<ActionListManager>` will render its children instead.
 
-You can also use an `<ActionListManager>` element to render a "No Results" message using the `noResults` prop.
+Additionally, you can render a "No Results" message using the `noResults` prop. When `noResults` is "true", the `<ActionListManager>` will display a "No Results" message in place of its children.
+
+To customize the "No Results" message text, use the `noResultsText` prop.
 
 ```jsx
 ;() => {
   const [isLoading, setIsLoading] = useState(true)
   setTimeout(() => setIsLoading(false), 5000)
 
+  // Change noResults to "true" to render the noResultsText
   return (
-    <ActionListManager isLoading={isLoading} noResults={false}>
+    <ActionListManager
+      isLoading={isLoading}
+      noResults={false}
+      noResultsText={'No Cheese Here :('}
+    >
       Swiss
     </ActionListManager>
   )

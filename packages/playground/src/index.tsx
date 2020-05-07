@@ -27,12 +27,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { TooltipDemo } from './Tooltip/TooltipDemo'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <TooltipDemo />
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
