@@ -49,7 +49,6 @@ export const Paragraph = styled(TextBase).attrs({ as: 'p' })<ParagraphProps>`
   ${textTransform}
   ${textVariant}
   ${truncate}
-  word-wrap: break-word;
 `
 
 Paragraph.defaultProps = { fontSize: 'medium' }

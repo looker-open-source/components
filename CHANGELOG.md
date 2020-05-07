@@ -44,9 +44,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+<<<<<<< HEAD
+
 - Clears out old `defaultValue` when new `defaultValue` is passed in
 - Clears out any user input after pressing cancel button
-- Updated test suite to prevent future regressions for the above fixes
+- # Updated test suite to prevent future regressions for the above fixes
+- `Prompt` behaves better
+- `ToggleSwitch` React warning
+- `Prompt`
+  - Clears out old `defaultValue` when new `defaultValue` is passed in
+  - Clears out any user input after pressing cancel button
+  - Updated test suite to prevent future regressions for the above fixes
+    > > > > > > > fix word wrapping on Confirm
 - `ToggleSwitch` React warning fixed
 
 ### Removed
