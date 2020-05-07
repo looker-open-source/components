@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- updated documentation for Filedset to include label and legend
+- `Fieldset` - updated documentation to include label and legend
 - `menuItemStyleContext` in `MenuContext` uses a new interface which contains "preserved icon space"-related properties
 - `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
 - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
@@ -27,7 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `ToggleSwitch` React warning
-- add placeholder attribute to InlineInputText
+- `Prompt`
+  - Clears out old `defaultValue` when new `defaultValue` is passed in
+  - Clears out any user input after pressing cancel button
+  - Updated test suite to prevent future regressions for the above fixes
+- `InlineInputText` add placeholder attribute 
 
 ### Removed
 
