@@ -26,11 +26,9 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c4 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c4 input {
@@ -83,6 +81,7 @@ exports[`A FieldRadio 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
@@ -163,11 +162,9 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c4 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c4 input {
@@ -220,6 +217,7 @@ exports[`A FieldRadio checked 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
