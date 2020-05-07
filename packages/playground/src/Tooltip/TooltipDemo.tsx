@@ -31,8 +31,9 @@ export function TooltipDemo() {
   return (
     <Box p="xxxlarge">
       <Tooltip content="Start editing" placement="top">
-        {(eventHandlers, ref) => (
+        {(eventHandlers, ref, tooltipId) => (
           <IconButton
+            aria-describedby={tooltipId}
             icon="Edit"
             label="Edit something"
             {...eventHandlers}

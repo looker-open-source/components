@@ -31,6 +31,7 @@ import React, { useMemo, useState, Ref, FC, ReactNode } from 'react'
 import { ModalContext } from '../Modal'
 import {
   useCallbackRef,
+  useID,
   usePopper,
   UsePopperProps,
   useForkedRef,
@@ -83,6 +84,11 @@ export interface UseTooltipProps {
   textAlign?: TextAlignProperty
 
   /**
+   * The id of the span containing the tooltip text (if absent, a random id will be generated)
+   */
+  tooltipId?: string
+
+  /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
   triggerElement?: HTMLElement | null
@@ -106,7 +112,11 @@ export interface TooltipProps extends UseTooltipProps {
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
-  children: (eventsHandlers: EventHandlers, ref: Ref<any>) => ReactNode
+  children: (
+    eventsHandlers: EventHandlers,
+    ref: Ref<any>,
+    tooltipId: string
+  ) => ReactNode
 }
 export function useTooltip({
   arrow = true,
@@ -117,6 +127,7 @@ export function useTooltip({
   textAlign,
   disabled,
   surfaceStyles,
+  tooltipId,
   triggerElement,
   placement: propsPlacement = 'bottom',
 }: UseTooltipProps) {
@@ -190,6 +201,8 @@ export function useTooltip({
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
+  const tooltipContentId = useID(tooltipId)
+
   const popper =
     isOpen && content && !disabled ? (
       <ModalContext.Provider value={{ closeModal: handleClose }}>
@@ -207,7 +220,12 @@ export function useTooltip({
           color="palette.charcoal000"
           {...surfaceStyles}
         >
-          <TooltipContent role="tooltip" width={width} textAlign={textAlign}>
+          <TooltipContent
+            role="tooltip"
+            id={tooltipContentId}
+            width={width}
+            textAlign={textAlign}
+          >
             {content}
           </TooltipContent>
         </OverlaySurface>
@@ -219,15 +237,16 @@ export function useTooltip({
     popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
+    tooltipId: tooltipContentId,
   }
 }
 
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { eventHandlers, tooltip, ref } = useTooltip(props)
+  const { eventHandlers, tooltip, tooltipId, ref } = useTooltip(props)
   return (
     <>
       {tooltip}
-      {children(eventHandlers, ref)}
+      {children(eventHandlers, ref, tooltipId)}
     </>
   )
 }
