@@ -139,6 +139,7 @@ exports[`Form with one child 1`] = `
 
 .c1 > .c2 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 
