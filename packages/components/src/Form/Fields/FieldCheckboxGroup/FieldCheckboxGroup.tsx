@@ -39,6 +39,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
   id: propsID,
   options,
   value,
+  name,
   ...props
 }) => {
   const validationMessage = useFormContext(props)
