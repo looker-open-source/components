@@ -109,6 +109,7 @@ exports[`A FieldRadio 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldRadioID"
   >
     👍
   </span>
@@ -245,6 +246,7 @@ exports[`A FieldRadio checked 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldRadioID"
   >
     👍
   </span>

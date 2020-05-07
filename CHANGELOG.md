@@ -11,21 +11,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated the `ViewColumn` icon to better match keylines and guides
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
+- `InlineTextArea` implemented with test and documentation.
 - Windowing (virtualization) to `Select` and `SelectMulti`,
   - `windowedOptions` prop overrides the default condition of >= 100 options
 - RangeSlider component
 
 ### Changed
 
-- updated documentation for Filedset to include label and legend
+- `Fieldset` - updated documentation to include label and legend
 - `menuItemStyleContext` in `MenuContext` uses a new interface which contains "preserved icon space"-related properties
 - `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
 - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
+- Labels in `FieldInline` and `ButtonItem` now include the `for` attribute
 
 ### Fixed
 
 - `ToggleSwitch` React warning
-- add placeholder attribute to InlineInputText
+- `Prompt`
+  - Clears out old `defaultValue` when new `defaultValue` is passed in
+  - Clears out any user input after pressing cancel button
+  - Updated test suite to prevent future regressions for the above fixes
+- `InlineInputText` add placeholder attribute 
+
+### Removed
+
+- `ActionListItemAction` no longer supports the `color` prop
 
 ## [0.7.29] - 2020-04-24
 

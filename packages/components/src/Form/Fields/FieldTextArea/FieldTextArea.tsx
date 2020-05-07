@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import { TextArea, TextAreaProps } from '../../Inputs/TextArea'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -34,7 +34,7 @@ import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
 
 const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
-  const { id = uuid() } = props
+  const id = useID(props.id)
   const validationMessage = useFormContext(props)
   return (
     <Field

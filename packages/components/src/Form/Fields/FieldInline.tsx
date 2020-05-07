@@ -55,7 +55,7 @@ const FieldInlineLayout: FC<Omit<
 }) => {
   return (
     <label className={className}>
-      <Label as="span" fontSize={labelFontSize}>
+      <Label as="span" fontSize={labelFontSize} htmlFor={id}>
         {label}
         {required && <RequiredStar />}
       </Label>

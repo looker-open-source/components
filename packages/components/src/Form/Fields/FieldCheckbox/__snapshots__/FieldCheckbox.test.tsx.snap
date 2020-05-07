@@ -104,6 +104,7 @@ exports[`A FieldCheckbox 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldCheckboxID"
   >
     👍
   </span>
@@ -254,6 +255,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldCheckboxID"
   >
     👍
   </span>

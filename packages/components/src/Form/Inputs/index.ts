@@ -27,6 +27,7 @@
 export * from './Checkbox'
 export * from './Combobox'
 export * from './InlineInputText'
+export * from './InlineTextArea'
 export * from './InputChips'
 export * from './InputDate'
 export * from './InputDateRange'
