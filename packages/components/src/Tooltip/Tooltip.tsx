@@ -207,7 +207,7 @@ export function useTooltip({
           color="palette.charcoal000"
           {...surfaceStyles}
         >
-          <TooltipContent width={width} textAlign={textAlign}>
+          <TooltipContent role="tooltip" width={width} textAlign={textAlign}>
             {content}
           </TooltipContent>
         </OverlaySurface>
