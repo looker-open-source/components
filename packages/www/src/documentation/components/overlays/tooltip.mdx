@@ -8,8 +8,8 @@ A simple Tooltip component with out of the box styles and behavior.
 
 ```jsx
 <Tooltip content="More things you should know...">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers}>
+  {(eventHandlers, ref, tooltipId) => (
+    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
       Hover for Tooltip
     </Button>
   )}
@@ -29,8 +29,8 @@ A simple Tooltip component with out of the box styles and behavior.
     </>
   }
 >
-  {(eventHandlers, ref) => (
-    <ButtonOutline {...eventHandlers} ref={ref}>
+  {(eventHandlers, ref, tooltipId) => (
+    <ButtonOutline aria-describedby={tooltipId} {...eventHandlers} ref={ref}>
       Tooltip with lots of text
     </ButtonOutline>
   )}
@@ -58,32 +58,32 @@ Tooltip allows you to specify where it should appear in relation to the target e
 
 ```jsx
 <Tooltip content="I'm on top" placement="top">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers} mr="small">
+  {(eventHandlers, ref, tooltipId) => (
+    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
       Top
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on bottom" placement="bottom">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers} mr="small">
+  {(eventHandlers, ref, tooltipId) => (
+    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
       Bottom
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on the left" placement="left">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers} mr="small">
+  {(eventHandlers, ref, tooltipId) => (
+    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
       Left
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on the right" placement="right">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers} mr="small">
+  {(eventHandlers, ref, tooltipId) => (
+    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
       Right
     </Button>
   )}
