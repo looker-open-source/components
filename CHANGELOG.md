@@ -10,10 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `GitBranch`, `ViewColumn`, `SectionDrop` icons
+- `Prompt` updated test suite to check for input bugs
 
 ### Fixed
 
 - `ToggleSwitch` React warning
+- `Prompt`
+  - Clears out old `defaultValue` when new `defaultValue` is passed in
+  - Clears out any user input after pressing cancel button
 
 ## [0.7.29] - 2020-04-24
 
