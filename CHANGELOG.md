@@ -13,11 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InlineInputText` supports placeholder attribute
 - `InlineTextArea` implemented with test and documentation.
 - `RangeSlider` component
-- `Menu` now supports automatically preserves spaces for icons if any items have an icon assigned
+- `Menu` now automatically preserves space for icons if any items have an icon assigned
   - `MenuContext` now includes `menuItemStyleContext` for "preserved icon space"-related properties
   - `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
   - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
-- `Select` and `SelectMulti` now suppoort windowing (virtualization)
+- `Select` and `SelectMulti` now supports windowing (virtualization)
   - `windowedOptions` prop overrides the default condition of >= 100 options
 
 ### Changed
