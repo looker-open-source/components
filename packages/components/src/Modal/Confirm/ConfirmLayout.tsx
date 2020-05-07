@@ -24,6 +24,10 @@
 
  */
 import React, { FC, ReactElement } from 'react'
+<<<<<<< HEAD
+=======
+import styled from 'styled-components'
+>>>>>>> fix message, but not title
 import { ButtonProps } from '../../Button'
 import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
@@ -61,9 +65,9 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
 }) => {
   return (
     <>
-      <ModalHeader hideClose headerIcon={titleIcon}>
+      <ModalHeaderLayout hideClose headerIcon={titleIcon}>
         {title}
-      </ModalHeader>
+      </ModalHeaderLayout>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
           <Paragraph wrap>{message}</Paragraph>
@@ -78,3 +82,7 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
     </>
   )
 }
+
+const ModalHeaderLayout = styled(ModalHeader)`
+  word-wrap: break-word;
+`
