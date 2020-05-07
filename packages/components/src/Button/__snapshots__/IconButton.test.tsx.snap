@@ -97,6 +97,7 @@ exports[`IconButton accepts color 1`] = `
 }
 
 <button
+  aria-describedby="37c6441a-6fd1-4b0a-ac98-8e3a0c83418d"
   className="c0 c1 c2"
   color="danger"
   onBlur={[Function]}
@@ -233,6 +234,7 @@ exports[`IconButton accepts events 1`] = `
 }
 
 <button
+  aria-describedby="5a7444d4-f28b-45ef-ac37-ae416ca1df11"
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
@@ -370,6 +372,7 @@ exports[`IconButton accepts events 2`] = `
 }
 
 <button
+  aria-describedby="bf451fae-2f0d-45d5-97c6-6e3d1d46f250"
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
@@ -507,6 +510,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 <button
+  aria-describedby="e2f8f893-c4ab-4370-92b2-95c806c76d3a"
   aria-haspopup={true}
   className="c0 c1 c2"
   color="neutral"
@@ -644,6 +648,7 @@ exports[`IconButton default 1`] = `
 }
 
 <button
+  aria-describedby="9bb4166e-bd6f-45b1-91e8-9de1bb318ecf"
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
@@ -801,6 +806,7 @@ exports[`IconButton outline 1`] = `
 }
 
 <button
+  aria-describedby="fa0872db-26b0-4ab1-87db-35c288ce68a5"
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
@@ -937,6 +943,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 }
 
 <button
+  aria-describedby="882e1284-9397-4b34-9217-194d9d6df0b5"
   className="c0 c1 c2"
   color="danger"
   onBlur={[Function]}
@@ -1073,6 +1080,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 }
 
 <button
+  aria-describedby="0ea83bf9-f88a-4c52-97cf-d74928229922"
   className="c0 c1 c2"
   color="danger"
   onBlur={[Function]}
@@ -1209,6 +1217,7 @@ exports[`IconButton resized 1`] = `
 }
 
 <button
+  aria-describedby="b5f81da0-e0cc-4d05-9e22-5cb280516b43"
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}

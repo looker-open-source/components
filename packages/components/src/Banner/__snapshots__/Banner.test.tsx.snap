@@ -189,6 +189,7 @@ exports[`Banner can be dismissed 1`] = `
     Info!
   </div>
   <button
+    aria-describedby="b62176fe-2892-4a09-aeff-2d0c67c712e4"
     aria-hidden={true}
     className="c4 c5 c6"
     color="neutral"
