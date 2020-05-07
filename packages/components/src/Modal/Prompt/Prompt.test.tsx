@@ -27,7 +27,10 @@
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import { renderWithTheme } from '@looker/components-test-utils'
+import {
+  renderWithTheme,
+  withThemeProvider,
+} from '@looker/components-test-utils'
 import { semanticColors, SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Prompt } from './Prompt'
@@ -127,4 +130,25 @@ test('<Prompt /> clears value after closing', () => {
   expect(input).toHaveValue('')
 })
 
-xtest('<Prompt /> updates when defaultValue changes', () => {})
+xtest('<Prompt /> updates when defaultValue changes', () => {
+  const { getByText, getByDisplayValue, rerender } = renderWithTheme(
+    <Prompt {...requiredProps} defaultValue={'Gouda'}>
+      {(open) => <Button onClick={open}>Sesame</Button>}
+    </Prompt>
+  )
+
+  fireEvent.click(getByText('Sesame'))
+  getByDisplayValue('Gouda')
+  fireEvent.click(getByText('Cancel'))
+
+  rerender(
+    withThemeProvider(
+      <Prompt {...requiredProps} defaultValue={'Swiss'}>
+        {(open) => <Button onClick={open}>Sesame</Button>}
+      </Prompt>
+    )
+  )
+
+  fireEvent.click(getByText('Sesame'))
+  getByDisplayValue('Swiss')
+})
