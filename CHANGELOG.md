@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- `Confirm` corrected word wrapping when long strings without white-space are used
+
 ## [0.7.31] - 2020-05-12
 
 ### Fixed
@@ -38,10 +44,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `Prompt` behaves better
-  - Clears out old `defaultValue` when new `defaultValue` is passed in
-  - Clears out any user input after pressing cancel button
-  - Updated test suite to prevent future regressions for the above fixes
+- Clears out old `defaultValue` when new `defaultValue` is passed in
+- Clears out any user input after pressing cancel button
+- Updated test suite to prevent future regressions for the above fixes
 - `ToggleSwitch` React warning fixed
 
 ### Removed

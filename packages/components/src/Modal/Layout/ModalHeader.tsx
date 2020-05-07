@@ -75,6 +75,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
         mr="xlarge"
         fontWeight="semiBold"
         style={{ gridArea: 'text' }}
+        truncate
       >
         {children}
       </Heading>
