@@ -52,7 +52,7 @@ afterEach(() => {
 })
 
 test('<Prompt/> with defaults', () => {
-  const { getByText, queryByText } = renderWithTheme(
+  const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
     <Prompt {...requiredProps}>
       {(open) => <Button onClick={open}>Sesame</Button>}
     </Prompt>
@@ -61,13 +61,18 @@ test('<Prompt/> with defaults', () => {
   const opener = getByText('Sesame')
   fireEvent.click(opener)
 
-  const button = getByText('Save')
+  const saveButton = getByText('Save')
+  const input = getByPlaceholderText(requiredProps.inputLabel)
 
-  expect(getByText(requiredProps.inputLabel)).toBeVisible()
+  expect(input).toBeVisible()
   expect(getByText(requiredProps.title)).toBeVisible()
-  expect(button).toHaveStyle(`background: ${semanticColors.primary.main}`)
+  expect(saveButton).toHaveStyle(`background: ${semanticColors.primary.main}`)
 
-  fireEvent.submit(button)
+  fireEvent.click(saveButton)
+  expect(requiredProps.onSave).toHaveBeenCalledTimes(0)
+
+  fireEvent.change(input, { target: { value: 'Has Text In It' } })
+  fireEvent.click(saveButton)
   expect(requiredProps.onSave).toHaveBeenCalledTimes(1)
 
   expect(queryByText(requiredProps.inputLabel)).toBeNull()
@@ -99,5 +104,27 @@ test('<Prompt/> with custom props', () => {
   expect(requiredProps.onSave).toHaveBeenCalledTimes(0)
 })
 
-xtest('<Prompt /> should clear value after closing', () => {})
-xtest('<Prompt /> should update when defaultValue changed', () => {})
+test('<Prompt /> clears value after closing', () => {
+  const { getByText, getByPlaceholderText } = renderWithTheme(
+    <Prompt {...requiredProps}>
+      {(open) => <Button onClick={open}>Sesame</Button>}
+    </Prompt>
+  )
+
+  const opener = getByText('Sesame')
+  fireEvent.click(opener)
+
+  const cancelButton = getByText('Cancel')
+  let input = getByPlaceholderText(requiredProps.inputLabel)
+
+  fireEvent.change(input, { target: { value: 'Hello World' } })
+  expect(input).toHaveValue('Hello World')
+  fireEvent.click(cancelButton)
+
+  fireEvent.click(opener)
+  // Note: Need to requery for the input; not doing so results in stale value on the input element
+  input = getByPlaceholderText(requiredProps.inputLabel)
+  expect(input).toHaveValue('')
+})
+
+xtest('<Prompt /> updates when defaultValue changes', () => {})
