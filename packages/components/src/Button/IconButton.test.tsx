@@ -125,8 +125,9 @@ test('IconButton built-in tooltip defers to outer tooltip', () => {
   const label = 'Mark as my Favorite'
   const { container, getByText, getByTitle } = renderWithTheme(
     <Tooltip content={tooltip}>
-      {(eventHandlers, ref) => (
+      {(eventHandlers, ref, tooltipId) => (
         <IconButton
+          aria-describedby={tooltipId}
           tooltipDisabled
           label={label}
           icon="Favorite"

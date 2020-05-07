@@ -165,12 +165,13 @@ interface CopyButtonProps extends ActionProps {
 export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
   return (
     <Tooltip content="Copy sample code" placement="left">
-      {(eventHandlers, ref) => (
+      {(eventHandlers, ref, tooltipId) => (
         <CopyToClipboard
           text={code}
           onCopy={() => alert(`Sample code copied to clipboard.`)}
         >
           <ActionButton
+            aria-describedby={tooltipId}
             ref={ref}
             {...eventHandlers}
             label="Copy"
@@ -197,8 +198,9 @@ export const ToggleCodeButton: FC<ToggleButtonProps> = ({
   const toggleLabel = editorIsVisible ? 'Hide code editor' : 'Show code editor'
   return (
     <Tooltip content={toggleLabel} placement="left">
-      {(eventHandlers, ref) => (
+      {(eventHandlers, ref, tooltipId) => (
         <ActionButton
+          aria-describedby={tooltipId}
           ref={ref}
           {...eventHandlers}
           editorIsVisible={editorIsVisible}

@@ -138,6 +138,7 @@ const IconButtonComponent = forwardRef(
       ref,
       tooltip,
       eventHandlers: { onFocus, onBlur, onMouseOver, onMouseOut },
+      tooltipId,
     } = useTooltip({
       content: label,
       disabled: tooltipDisabled || hasOuterTooltip,
@@ -157,6 +158,7 @@ const IconButtonComponent = forwardRef(
       <>
         {tooltip}
         <ButtonTransparent
+          aria-describedby={tooltipId}
           ref={actualRef}
           color={color}
           p="none"

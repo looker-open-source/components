@@ -147,8 +147,9 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 
 ```jsx
 <Tooltip content="I'm a little teapot">
-  {(eventHandlers, ref) => (
+  {(eventHandlers, ref, tooltipId) => (
     <IconButton
+      aria-describedby={tooltipId}
       {...eventHandlers}
       ref={ref}
       label="Add Something Neat"

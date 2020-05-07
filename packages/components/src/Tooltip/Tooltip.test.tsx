@@ -55,8 +55,8 @@ describe('Tooltip', () => {
   test('snapshot', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" isOpen>
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Example
           </Button>
         )}
@@ -67,8 +67,8 @@ describe('Tooltip', () => {
   test('Tooltip can hide its arrow', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" arrow={false} isOpen>
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Example
           </Button>
         )}
@@ -79,8 +79,8 @@ describe('Tooltip', () => {
   test('trigger: open on mouseover, close on mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -101,8 +101,8 @@ describe('Tooltip', () => {
   test('close on surface mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -120,8 +120,8 @@ describe('Tooltip', () => {
   test('contains content', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -137,8 +137,8 @@ describe('Tooltip', () => {
   test('open initially, collapse on mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -158,8 +158,8 @@ describe('Tooltip', () => {
   test('supports styling props', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" width="20rem" textAlign="right">
-        {(eventHandlers, ref) => (
-          <Button ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -181,8 +181,8 @@ describe('Tooltip', () => {
   test('tooltip can exceed bounds of containing overlay', () => {
     const tooltip = (
       <Tooltip content="Great knowledge here!" isOpen>
-        {(eventHandlers, ref) => (
-          <Box ref={ref} {...eventHandlers}>
+        {(eventHandlers, ref, tooltipId) => (
+          <Box aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
             I wish I knew more about this...
           </Box>
         )}

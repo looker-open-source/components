@@ -78,6 +78,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   const {
     eventHandlers: { onFocus, onBlur, ...eventHandlers },
     tooltip: renderedTooltip,
+    tooltipId,
   } = useTooltip({
     content: tooltip,
     disabled: isOpen,
@@ -120,6 +121,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     return cloneElement(child, {
       ...wrappedCallbacks,
       'aria-controls': id,
+      'aria-describedby': tooltipId,
       'aria-expanded': isOpen,
       'aria-haspopup': true,
       className: `${childProps.className || ''}${isOpen ? ' active' : ''}`,
