@@ -76,7 +76,7 @@ const components: NavigationSection = {
           path: 'form',
         },
         {
-          title: 'Fieldset',
+          title: 'Fieldset, Legend, Label',
           path: 'fieldset',
         },
         {
@@ -86,6 +86,10 @@ const components: NavigationSection = {
         {
           title: 'InlineInputText',
           path: 'inline-input-text',
+        },
+        {
+          title: 'InlineTextArea',
+          path: 'inline-text-area',
         },
         {
           title: 'InputChips',
@@ -120,16 +124,16 @@ const components: NavigationSection = {
           path: 'input-time-select',
         },
         {
-          title: 'Label',
-          path: 'label',
-        },
-        {
           title: 'Radio',
           path: 'radio',
         },
         {
           title: 'RadioGroup',
           path: 'radio-group',
+        },
+        {
+          title: 'RangeSlider',
+          path: 'range-slider',
         },
         {
           title: 'Select',

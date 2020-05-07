@@ -39,6 +39,7 @@ import {
   SelectOptionsBaseProps,
 } from './SelectOptions'
 import { getOption, getFirstOption } from './utils/options'
+import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectBaseProps extends SelectOptionsBaseProps {
   placeholder?: string
@@ -53,6 +54,11 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
   onFilter?: (term: string) => void
 
   validationType?: ValidationType
+  /**
+   * Render only the options visible in the scroll window
+   * defaults to false for <100 options, true for >=100 options
+   */
+  windowedOptions?: boolean
 }
 
 export interface SelectProps
@@ -89,6 +95,7 @@ const SelectComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
+      windowedOptions: windowedOptionsProp,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -127,6 +134,8 @@ const SelectComponent = forwardRef(
       validationType,
     }
 
+    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+
     return (
       <Combobox
         {...props}
@@ -146,8 +155,16 @@ const SelectComponent = forwardRef(
           ref={ref}
         />
         {!disabled && (
-          <ComboboxList persistSelection {...ariaProps}>
-            <SelectOptions options={options} noOptionsLabel={noOptionsLabel} />
+          <ComboboxList
+            persistSelection
+            windowedOptions={windowedOptions}
+            {...ariaProps}
+          >
+            <SelectOptions
+              options={options}
+              windowedOptions={windowedOptions}
+              noOptionsLabel={noOptionsLabel}
+            />
           </ComboboxList>
         )}
       </Combobox>

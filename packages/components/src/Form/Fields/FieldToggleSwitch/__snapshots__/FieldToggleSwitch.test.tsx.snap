@@ -89,6 +89,7 @@ exports[`A FieldToggleSwitch 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>
@@ -212,6 +213,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>

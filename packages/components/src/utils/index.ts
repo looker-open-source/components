@@ -24,6 +24,7 @@
 
  */
 
+export * from './getWindowedListBoundaries'
 export * from './useControlWarn'
 export * from './useReadOnlyWarn'
 export * from './useCallbackRef'
@@ -37,3 +38,6 @@ export * from './useScrollLock'
 export * from './useToggle'
 export * from './useWrapEvent'
 export * from './i18n'
+export * from './useMeasuredElement'
+export * from './useMouseDragPosition'
+export * from './usePreviousValue'

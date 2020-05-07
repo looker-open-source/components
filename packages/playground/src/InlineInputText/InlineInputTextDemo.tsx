@@ -23,3 +23,15 @@
  SOFTWARE.
 
  */
+
+import React, { FC } from 'react'
+import { Grid, InlineTextArea } from '@looker/components'
+
+export const InlineInputTextDemo: FC = () => {
+  return (
+    <Grid columns={2} gap="large">
+      <InlineTextArea value="Type here..." />
+      <InlineTextArea placeholder="this is the placeholder" />
+    </Grid>
+  )
+}

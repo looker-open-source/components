@@ -33,7 +33,15 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode, useContext, useState } from 'react'
+import React, {
+  FC,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+  Children,
+} from 'react'
+import styled from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuItemStyleContext } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
@@ -206,6 +214,25 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     pt: pt || py || p || compact ? 'xxsmall' : 'small',
   }
 
+  const { renderIconPlaceholder, setRenderIconPlaceholder } = useContext(
+    MenuItemStyleContext
+  )
+
+  useEffect(() => {
+    icon && setRenderIconPlaceholder(true)
+  }, [icon, setRenderIconPlaceholder])
+
+  const renderedIcon = icon ? (
+    <Icon
+      name={icon}
+      mr="xsmall"
+      size={iconSize / compactIconModifier}
+      color={iconColor}
+    />
+  ) : renderIconPlaceholder ? (
+    <div />
+  ) : undefined
+
   return (
     <MenuItemListItem
       aria-current={current && 'page'}
@@ -225,17 +252,28 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
         target={target}
         {...clickTargetProps}
       >
-        {icon && (
-          <Icon
-            name={icon}
-            mr="xsmall"
-            size={iconSize / compactIconModifier}
-            color={iconColor}
-          />
-        )}
-        {children}
+        <MenuItemGrid
+          iconSize={
+            customizationProps.iconSize || defaultMenuItemStyle.initial.iconSize
+          }
+        >
+          {renderedIcon}
+          {children}
+        </MenuItemGrid>
       </MenuItemButton>
       {detail && <MenuItemDetail>{detail}</MenuItemDetail>}
     </MenuItemListItem>
   )
 }
+
+interface MenuItemGridProps {
+  iconSize: number
+}
+
+const MenuItemGrid = styled.div<MenuItemGridProps>`
+  display: grid;
+  grid-template-columns: ${({ children, iconSize }) =>
+    Children.toArray(children).length === 2 ? `${iconSize}px 1fr` : '1fr'};
+  grid-gap: 0.5rem;
+  align-items: center;
+`

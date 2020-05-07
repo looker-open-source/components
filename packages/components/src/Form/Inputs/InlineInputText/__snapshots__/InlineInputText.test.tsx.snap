@@ -1,37 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InlineInputText renders an input with the correct styling 1`] = `
+exports[`InlineInputText renders an input with a placeholder 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  border-bottom: 1px dashed;
-  border-bottom-color: #C1C6CC;
-  padding: 0;
+  color: transparent;
   font: inherit;
-  color: inherit;
+  caret-color: #262D33;
+  height: 100%;
+  left: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
   text-transform: inherit;
+  top: 0;
   width: 100%;
 }
 
-.c1:focus,
-.c1:hover {
-  outline: none;
-  border-bottom-color: #6C43E0;
-  background-color: #F5F6F7;
-}
-
-.c1:focus {
-  border-bottom-style: solid;
-}
-
 .c2 {
-  height: 0;
-  overflow: hidden;
-  white-space: pre-wrap;
-  padding: 0 1px;
+  color: #939BA5;
 }
 
 .c0 {
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -43,22 +36,174 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  position: relative;
+  min-width: 2rem;
+  min-height: 1.5rem;
 }
 
-<span
+.c0:focus,
+.c0:hover {
+  outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
+}
+
+.c0:focus {
+  border-bottom-style: solid;
+}
+
+<div
   className="c0"
+  data-testid="inlineInputText"
 >
   <input
     className="c1"
     onChange={[Function]}
-    size={1}
     type="text"
     value=""
   />
-  <span
+  <div
     className="c2"
   >
-    
-  </span>
-</span>
+    this is the placeholder
+  </div>
+</div>
+`;
+
+exports[`InlineInputText renders an input with no value 1`] = `
+.c1 {
+  background: transparent;
+  border: none;
+  color: transparent;
+  font: inherit;
+  caret-color: #262D33;
+  height: 100%;
+  left: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c2 {
+  color: #939BA5;
+}
+
+.c0 {
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  min-width: 2rem;
+  min-height: 1.5rem;
+}
+
+.c0:focus,
+.c0:hover {
+  outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
+}
+
+.c0:focus {
+  border-bottom-style: solid;
+}
+
+<div
+  className="c0"
+  data-testid="inlineInputText"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className="c2"
+  />
+</div>
+`;
+
+exports[`InlineInputText renders an input with specific predefined value 1`] = `
+.c1 {
+  background: transparent;
+  border: none;
+  color: transparent;
+  font: inherit;
+  caret-color: #262D33;
+  height: 100%;
+  left: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c2 {
+  color: #262D33;
+}
+
+.c0 {
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  min-width: 2rem;
+  min-height: 1.5rem;
+}
+
+.c0:focus,
+.c0:hover {
+  outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
+}
+
+.c0:focus {
+  border-bottom-style: solid;
+}
+
+<div
+  className="c0"
+  data-testid="inlineInputText"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    type="text"
+    value="type here..."
+  />
+  <div
+    className="c2"
+  >
+    type here...
+  </div>
+</div>
 `;
