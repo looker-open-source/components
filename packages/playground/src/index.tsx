@@ -26,13 +26,37 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import { Button, Confirm, ComponentsProvider } from '@looker/components'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <ActionListDemo />
+      <Confirm
+        title="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+        message="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+        onConfirm={(close) => {
+          alert('You did something')
+          close()
+        }}
+      >
+        {(open) => <Button onClick={open}>Do Something</Button>}
+      </Confirm>{' '}
+      <Confirm
+        confirmLabel="Delete"
+        buttonColor="danger"
+        title="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+        message="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+        onConfirm={(close) => {
+          alert('You deleted something')
+          close()
+        }}
+      >
+        {(open) => (
+          <Button color="danger" onClick={open}>
+            Delete
+          </Button>
+        )}
+      </Confirm>
     </ComponentsProvider>
   )
 }
