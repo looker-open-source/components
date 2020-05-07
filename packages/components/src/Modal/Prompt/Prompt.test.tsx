@@ -25,12 +25,9 @@
  */
 
 import { fireEvent } from '@testing-library/react'
-import React from 'react'
+import React, { useState } from 'react'
 
-import {
-  renderWithTheme,
-  withThemeProvider,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { semanticColors, SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Prompt } from './Prompt'
@@ -57,11 +54,11 @@ afterEach(() => {
 test('<Prompt/> with defaults', () => {
   const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
     <Prompt {...requiredProps}>
-      {(open) => <Button onClick={open}>Sesame</Button>}
+      {(open) => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
-  const opener = getByText('Sesame')
+  const opener = getByText('Open Prompt')
   fireEvent.click(opener)
 
   const saveButton = getByText('Save')
@@ -85,11 +82,11 @@ test('<Prompt/> with defaults', () => {
 test('<Prompt/> with custom props', () => {
   const { getByDisplayValue, getByText } = renderWithTheme(
     <Prompt {...optionalProps} {...requiredProps}>
-      {(open) => <Button onClick={open}>Sesame</Button>}
+      {(open) => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
-  const opener = getByText('Sesame')
+  const opener = getByText('Open Prompt')
   fireEvent.click(opener)
 
   const saveButton = getByText(optionalProps.saveLabel)
@@ -110,11 +107,11 @@ test('<Prompt/> with custom props', () => {
 test('<Prompt /> clears value after closing', () => {
   const { getByText, getByPlaceholderText } = renderWithTheme(
     <Prompt {...requiredProps}>
-      {(open) => <Button onClick={open}>Sesame</Button>}
+      {(open) => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
-  const opener = getByText('Sesame')
+  const opener = getByText('Open Prompt')
   fireEvent.click(opener)
 
   const cancelButton = getByText('Cancel')
@@ -130,25 +127,29 @@ test('<Prompt /> clears value after closing', () => {
   expect(input).toHaveValue('')
 })
 
-xtest('<Prompt /> updates when defaultValue changes', () => {
-  const { getByText, getByDisplayValue, rerender } = renderWithTheme(
-    <Prompt {...requiredProps} defaultValue={'Gouda'}>
-      {(open) => <Button onClick={open}>Sesame</Button>}
-    </Prompt>
-  )
+test('<Prompt /> updates when defaultValue changes', () => {
+  const PromptTest = () => {
+    const [defaultValue, setDefaultValue] = useState('Gouda')
 
-  fireEvent.click(getByText('Sesame'))
+    return (
+      <>
+        <Prompt {...requiredProps} defaultValue={defaultValue}>
+          {(open) => <Button onClick={open}>Open Prompt</Button>}
+        </Prompt>
+        <Button onClick={() => setDefaultValue('Swiss')}>
+          Set Default Value to Swiss
+        </Button>
+      </>
+    )
+  }
+
+  const { getByText, getByDisplayValue } = renderWithTheme(<PromptTest />)
+
+  fireEvent.click(getByText('Open Prompt'))
   getByDisplayValue('Gouda')
   fireEvent.click(getByText('Cancel'))
 
-  rerender(
-    withThemeProvider(
-      <Prompt {...requiredProps} defaultValue={'Swiss'}>
-        {(open) => <Button onClick={open}>Sesame</Button>}
-      </Prompt>
-    )
-  )
-
-  fireEvent.click(getByText('Sesame'))
+  fireEvent.click(getByText('Set Default Value to Swiss'))
+  fireEvent.click(getByText('Open Prompt'))
   getByDisplayValue('Swiss')
 })
