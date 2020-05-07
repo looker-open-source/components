@@ -32,20 +32,10 @@ const App: React.FC = () => {
   return (
     <ComponentsProvider>
       <Confirm
-        title="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
-        message="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
-        onConfirm={(close) => {
-          alert('You did something')
-          close()
-        }}
-      >
-        {(open) => <Button onClick={open}>Do Something</Button>}
-      </Confirm>{' '}
-      <Confirm
         confirmLabel="Delete"
         buttonColor="danger"
-        title="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
-        message="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+        title="ksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdf"
+        message="ksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdfksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdf"
         onConfirm={(close) => {
           alert('You deleted something')
           close()

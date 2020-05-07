@@ -24,7 +24,7 @@
 
  */
 import React, { FC, ReactElement } from 'react'
-
+import styled from 'styled-components'
 import { ButtonProps } from '../../Button'
 import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
@@ -62,9 +62,9 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
 }) => {
   return (
     <>
-      <ModalHeader hideClose headerIcon={titleIcon}>
+      <ModalHeaderLayout hideClose headerIcon={titleIcon}>
         {title}
-      </ModalHeader>
+      </ModalHeaderLayout>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
           <Paragraph>{message}</Paragraph>
@@ -79,3 +79,7 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
     </>
   )
 }
+
+const ModalHeaderLayout = styled(ModalHeader)`
+  word-wrap: break-word;
+`
