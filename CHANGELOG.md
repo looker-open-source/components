@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
 - Labels in `FieldInline` and `ButtonItem` now include the `for` attribute
 - Fields have more explicit line-heights to enforce consistent layout.
+- `Fieldset` default spacing switched from `xsmall` to `small` to improve visual relationship with their `Input*`
 
 ### Fixed
 

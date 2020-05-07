@@ -47,7 +47,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c2.c2 > * {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .c2.c2 > :first-child {
