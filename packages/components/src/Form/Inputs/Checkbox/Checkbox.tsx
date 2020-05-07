@@ -104,11 +104,9 @@ export const Checkbox = styled(CheckboxLayout)`
   ${reset}
   ${space}
 
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 
   input {
     cursor: ${({ readOnly, disabled }) =>

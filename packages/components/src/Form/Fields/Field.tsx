@@ -162,6 +162,7 @@ const fieldLabelCSS = (inline?: boolean) =>
         padding-right: ${({ theme }) => theme.space.small};
       `
     : css`
+        line-height: ${({ theme }) => theme.lineHeights.xsmall};
         padding-bottom: ${({ theme }) => theme.space.xsmall};
       `
 
