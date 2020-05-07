@@ -89,8 +89,6 @@ export const ActionListRow = styled(ActionListRowLayout)`
   &:hover {
     box-shadow: ${({ theme, supportsRaised, onClick }) =>
       supportsRaised && onClick && theme.shadows[2]};
-    background: ${({ theme, supportsRaised, onClick }) =>
-      !supportsRaised && onClick && theme.colors.palette.blue100};
     cursor: ${({ onClick }) => onClick && 'pointer'};
     outline: none;
 
