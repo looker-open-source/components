@@ -28,6 +28,7 @@ import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, { useMemo, useState, Ref, FC, ReactNode } from 'react'
+import { omit } from 'lodash'
 import { ModalContext } from '../Modal'
 import {
   useCallbackRef,
@@ -38,13 +39,6 @@ import {
 } from '../utils'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { TooltipContent } from './TooltipContent'
-
-interface EventHandlers {
-  onBlur: () => void
-  onFocus: () => void
-  onMouseOut: (event: React.MouseEvent) => void
-  onMouseOver: () => void
-}
 
 export interface UseTooltipProps {
   /**
@@ -112,11 +106,14 @@ export interface TooltipProps extends UseTooltipProps {
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
-  children: (
-    eventsHandlers: EventHandlers,
-    ref: Ref<any>,
-    tooltipId: string
-  ) => ReactNode
+  children: (tooltipProps: {
+    'aria-describedby': string
+    onBlur: () => void
+    onFocus: () => void
+    onMouseOut: (event: React.MouseEvent<Element, MouseEvent>) => void
+    onMouseOver: () => void
+    ref: Ref<any>
+  }) => ReactNode
 }
 export function useTooltip({
   arrow = true,
@@ -233,7 +230,7 @@ export function useTooltip({
     ) : null
 
   return {
-    eventHandlers,
+    ...eventHandlers,
     popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
@@ -242,11 +239,18 @@ export function useTooltip({
 }
 
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { eventHandlers, tooltip, tooltipId, ref } = useTooltip(props)
+  const tooltipProps = useTooltip(props)
+
+  // Take tooltipId property and set it to aria-describedby property instead
+  const tooltipPropsLabeled = {
+    'aria-describedby': tooltipProps.tooltipId,
+    ...omit(tooltipProps, ['tooltip', 'tooltipId', 'popperInstanceRef']),
+  }
+
   return (
     <>
-      {tooltip}
-      {children(eventHandlers, ref, tooltipId)}
+      {tooltipProps.tooltip}
+      {children(tooltipPropsLabeled)}
     </>
   )
 }
