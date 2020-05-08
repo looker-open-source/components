@@ -24,6 +24,23 @@
 
  */
 
-export * from './Accordion'
-export * from './AccordionLabel'
-export * from './AccordionContent'
+export interface AccordianProps {
+  /**
+   * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
+   * Component will hold internal state and open and close on disclosure click
+   * @default true
+   **/
+  defaultOpen?: boolean
+
+  /**
+   * Use these properties if you wish to use the component in a `controlled` manner.
+   **/
+  isOpen?: boolean
+  toggleOpen?: (isOpen: boolean) => void
+
+  /**
+   * Callbacks
+   **/
+  onClose?: () => void // called when the component is closed
+  onOpen?: () => void // called when the component is opened
+}

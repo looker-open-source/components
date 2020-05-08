@@ -24,20 +24,8 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import { SimpleLayoutProps } from '../Layout/utils/simple'
 
-export interface AccordianProps {
-  testProp?: boolean
-}
-
-/**
- * Pseudo-code (just uncontrolled)
- * 1. useState that controls whether Accordion is open or not
- * 2. JSX will accept ReactNode as children (basically anything the user wants to give)
- * 3. Will wrap that JSX in a div and conditionally hide or show it
- * 4. Takes a "label" property which sits next to the caret
- * 5. Caret points right when Accordion IS NOT open and pointed down when Accordian IS open
- */
-export const Accordian: FC<AccordianProps> = (props) => {
-  return <div>{props.testProp}</div>
+export interface AccordianContentProps extends SimpleLayoutProps {
+  className?: string
 }

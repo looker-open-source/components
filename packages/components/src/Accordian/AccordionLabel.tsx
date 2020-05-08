@@ -24,6 +24,20 @@
 
  */
 
-export * from './Accordion'
-export * from './AccordionLabel'
-export * from './AccordionContent'
+import { IconNames } from '@looker/icons'
+import { SimpleLayoutProps } from '../Layout/utils/simple'
+
+export interface AccordianLabelProps extends SimpleLayoutProps {
+  className?: string
+
+  /**
+   * If true, the arrow will sit left of the label rather than right of it
+   * In addition, Arrow icons will be used in place of caret
+   * @default false
+   */
+  arrowLeft: boolean
+  /**
+   * Icon that sits directly left of the label (potentially)
+   */
+  icon: IconNames
+}
