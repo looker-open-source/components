@@ -136,7 +136,7 @@ test('defaultValue prop fills TextInputs with correct dates', () => {
   expect(toInput.value).toEqual('06/09/2019')
 })
 
-test('defaultValue highlights the correct dates in the Calendar', () => {
+test.skip('defaultValue highlights the correct dates in the Calendar', () => {
   const mockProps = {
     defaultValue: {
       from: new Date('June 3, 2019'),

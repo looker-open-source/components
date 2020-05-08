@@ -125,12 +125,12 @@ export function SelectMultiDemo() {
     }, [] as SelectOptionProps[])
   }, [searchTerm])
 
-  const [searchTerm1k, setSearchTerm1k] = React.useState('')
+  const [searchTerm1k, setSearchTerm1k] = useState('')
   function handleFilter1k(term: string) {
     setSearchTerm1k(term)
   }
 
-  const newOptions1k = React.useMemo(() => {
+  const newOptions1k = useMemo(() => {
     if (searchTerm1k === '') return options1k
     return options1k.reduce((acc, option) => {
       if (option.label.toLowerCase().includes(searchTerm1k.toLowerCase())) {

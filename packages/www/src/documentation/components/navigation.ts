@@ -84,14 +84,10 @@ const components: NavigationSection = {
           title: 'InlineInputText',
         },
         {
-<<<<<<< HEAD
-          title: 'InlineTextArea',
           path: 'inline-text-area',
+          title: 'InlineTextArea',
         },
         {
-          title: 'InputChips',
-=======
->>>>>>> ESLint passing FTW!
           path: 'input-chips',
           title: 'InputChips',
         },
@@ -124,14 +120,6 @@ const components: NavigationSection = {
           title: 'InputTimeSelect',
         },
         {
-<<<<<<< HEAD
-          title: 'Radio',
-=======
-          path: 'label',
-          title: 'Label',
-        },
-        {
->>>>>>> ESLint passing FTW!
           path: 'radio',
           title: 'Radio',
         },
@@ -140,14 +128,10 @@ const components: NavigationSection = {
           title: 'RadioGroup',
         },
         {
-<<<<<<< HEAD
-          title: 'RangeSlider',
           path: 'range-slider',
+          title: 'RangeSlider',
         },
         {
-          title: 'Select',
-=======
->>>>>>> ESLint passing FTW!
           path: 'select',
           title: 'Select',
         },

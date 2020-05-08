@@ -39,6 +39,8 @@ import { Label, InputText } from '../../Form'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { Dialog, ModalContent, ModalFooter, ModalHeader } from '..'
 
+export type PromptCallback = (close: () => void) => void
+
 export interface PromptBaseProps {
   /**
    * Cancel button text
@@ -53,11 +55,11 @@ export interface PromptBaseProps {
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: () => void
+  onCancel?: PromptCallback
   /**
    * Callback that is triggered when submit button is pressed
    */
-  onSave: (value: string) => void
+  onSave: PromptCallback
   /**
    * Label for the rendered input.
    * Rendered as placeholder and visually hidden label for screenreaders.
@@ -113,21 +115,26 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     setValue(defaultValue)
   }, [defaultValue])
 
+  const handleClose = useCallback(() => {
+    setValue('')
+    close()
+  }, [close])
+
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value)
   }
 
-  const onSubmit = () => {
-    onSave(value)
-    close()
-    setValue('')
-  }
+  const onSubmit = useCallback(() => {
+    onSave(handleClose)
+  }, [handleClose, onSave])
 
   const cancel = useCallback(() => {
-    close()
-    setValue('')
-    onCancel && onCancel()
-  }, [close, onCancel])
+    if (onCancel) {
+      onCancel(handleClose)
+    } else {
+      handleClose()
+    }
+  }, [handleClose, onCancel])
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && hasValue) {
