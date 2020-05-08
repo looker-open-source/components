@@ -36,12 +36,14 @@ test('ModalHeader', () => {
 
 test('ModalHeader with hideClose', () => {
   const withClose = mountWithTheme(
-    <ModalHeader>The Heading for a Dialog</ModalHeader>
+    <ModalHeader id="test-modalHeader">The Heading for a Dialog</ModalHeader>
   )
   expect(withClose.find(IconButton).exists()).toBeTruthy()
 
   const withoutClose = mountWithTheme(
-    <ModalHeader hideClose>The Heading for a Dialog</ModalHeader>
+    <ModalHeader id="test-modalHeader" hideClose>
+      The Heading for a Dialog
+    </ModalHeader>
   )
   expect(withoutClose.find(IconButton).exists()).toBeFalsy()
 })

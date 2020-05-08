@@ -33,35 +33,72 @@ import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
 test('IconButton default', () => {
-  assertSnapshot(<IconButton label="Test" icon="Favorite" />)
+  assertSnapshot(
+    <IconButton id="test-iconButton" label="Test" icon="Favorite" />
+  )
 })
 
 test('IconButton outline', () => {
-  assertSnapshot(<IconButton label="Test" icon="Favorite" outline />)
+  assertSnapshot(
+    <IconButton id="test-iconButton" label="Test" icon="Favorite" outline />
+  )
 })
 
 test('IconButton resized', () => {
-  assertSnapshot(<IconButton label="Test" icon="Favorite" size="large" />)
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Test"
+      icon="Favorite"
+      size="large"
+    />
+  )
 })
 
 test('IconButton accepts color', () => {
-  assertSnapshot(<IconButton label="Test" icon="Favorite" color="danger" />)
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Test"
+      icon="Favorite"
+      color="danger"
+    />
+  )
 })
 
 test('IconButton allows for ARIA attributes', () => {
-  assertSnapshot(<IconButton label="Test" icon="Favorite" aria-haspopup />)
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Test"
+      icon="Favorite"
+      aria-haspopup
+    />
+  )
 })
 
 test('IconButton accepts events', () => {
   assertSnapshot(
-    <IconButton label="Test" icon="Favorite" onMouseEnter={noop} />
+    <IconButton
+      id="test-iconButton"
+      label="Test"
+      icon="Favorite"
+      onMouseEnter={noop}
+    />
   )
-  assertSnapshot(<IconButton label="Test" icon="Favorite" onClick={noop} />)
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Test"
+      icon="Favorite"
+      onClick={noop}
+    />
+  )
 })
 
 test('IconButton is a square by default', () => {
   const { getByTitle } = renderWithTheme(
-    <IconButton label="Gear" icon="Gear" size="large" />
+    <IconButton id="test-iconButton" label="Gear" icon="Gear" size="large" />
   )
 
   expect(getByTitle('Gear')).toHaveStyle('width: 44')
@@ -71,8 +108,18 @@ test('IconButton is a square by default', () => {
 test('IconButton renders focus ring on tab input but not on click', () => {
   const { getByTitle } = renderWithTheme(
     <>
-      <IconButton label="Favorite" color="danger" icon="Favorite" />
-      <IconButton label="Trash" color="danger" icon="Trash" />
+      <IconButton
+        id="test-iconButton"
+        label="Favorite"
+        color="danger"
+        icon="Favorite"
+      />
+      <IconButton
+        id="test-iconButton"
+        label="Trash"
+        color="danger"
+        icon="Trash"
+      />
     </>
   )
 
@@ -86,14 +133,28 @@ test('IconButton renders focus ring on tab input but not on click', () => {
       key: 'Tab',
     })
 
-  assertSnapshot(<IconButton label="Favorite" color="danger" icon="Favorite" />)
-  assertSnapshot(<IconButton label="Trash" color="danger" icon="Trash" />)
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Favorite"
+      color="danger"
+      icon="Favorite"
+    />
+  )
+  assertSnapshot(
+    <IconButton
+      id="test-iconButton"
+      label="Trash"
+      color="danger"
+      icon="Trash"
+    />
+  )
 })
 
 test('IconButton has built-in tooltip', () => {
   const label = 'Mark as my Favorite'
   const { getByTitle, container } = renderWithTheme(
-    <IconButton label={label} icon="Favorite" />
+    <IconButton id="test-iconButton" label={label} icon="Favorite" />
   )
 
   const notTooltip = container.querySelector('p') // Get Tooltip content
@@ -109,7 +170,12 @@ test('IconButton has built-in tooltip', () => {
 test('IconButton tooltipDisabled actually disables tooltip', () => {
   const label = 'Mark as my Favorite'
   const { getByTitle, container } = renderWithTheme(
-    <IconButton tooltipDisabled label={label} icon="Favorite" />
+    <IconButton
+      id="test-iconButton"
+      tooltipDisabled
+      label={label}
+      icon="Favorite"
+    />
   )
 
   fireEvent.mouseOver(getByTitle('Favorite'))

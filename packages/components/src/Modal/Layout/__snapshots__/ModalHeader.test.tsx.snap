@@ -132,7 +132,7 @@ exports[`ModalHeader 1`] = `
     The Heading for a Dialog
   </h3>
   <button
-    aria-describedby="b31d5b1e-524f-446f-ac79-95f57242aed0"
+    aria-describedby="undefined-iconButton-tooltip"
     className="c2 c3 c4"
     color="neutral"
     onBlur={[Function]}
