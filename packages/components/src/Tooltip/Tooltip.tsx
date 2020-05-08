@@ -124,7 +124,7 @@ export function useTooltip({
   textAlign,
   disabled,
   surfaceStyles,
-  tooltipId,
+  id,
   triggerElement,
   placement: propsPlacement = 'bottom',
 }: UseTooltipProps) {
@@ -198,7 +198,7 @@ export function useTooltip({
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
-  const tooltipContentId = useID(tooltipId)
+  const tooltipId = useID(id)
 
   const popper =
     isOpen && content && !disabled ? (
@@ -219,7 +219,7 @@ export function useTooltip({
         >
           <TooltipContent
             role="tooltip"
-            id={tooltipContentId}
+            id={tooltipId}
             width={width}
             textAlign={textAlign}
           >
@@ -231,10 +231,10 @@ export function useTooltip({
 
   return {
     ...eventHandlers,
+    id: tooltipId,
     popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
-    tooltipId: tooltipContentId,
   }
 }
 
@@ -243,8 +243,8 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
 
   // Take tooltipId property and set it to aria-describedby property instead
   const tooltipPropsLabeled = {
-    'aria-describedby': tooltipProps.tooltipId,
-    ...omit(tooltipProps, ['tooltip', 'tooltipId', 'popperInstanceRef']),
+    'aria-describedby': tooltipProps.id,
+    ...omit(tooltipProps, ['tooltip', 'id', 'popperInstanceRef']),
   }
 
   return (
