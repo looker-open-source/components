@@ -81,7 +81,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       </Heading>
       {!hideClose && (
         <IconButton
-          id={`${id}-iconButton`}
+          id={id ? `${id}-iconButton` : undefined}
           tabIndex={-1}
           color="neutral"
           size="small"
