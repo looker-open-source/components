@@ -81,13 +81,13 @@ export class FormValidationDemo extends Component<{}, FormValidationState> {
         <FieldText
           name="val1"
           value={this.state.val1}
-          label="A Field requiring more than 5 characters"
+          label="A Field requiring less than 5 characters"
           onChange={this.changeHandler.bind(this, 'val1')}
         />
         <FieldText
           name="val2"
           value={this.state.val2}
-          label="A Field requiring less than 5 characters"
+          label="A Field requiring more than 5 characters"
           onChange={this.changeHandler.bind(this, 'val2')}
         />
       </Form>
