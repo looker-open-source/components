@@ -27,7 +27,7 @@
 import { IconNames } from '@looker/icons'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
-export interface AccordianLabelProps extends SimpleLayoutProps {
+export interface AccordionLabelProps extends SimpleLayoutProps {
   className?: string
 
   /**

@@ -24,23 +24,8 @@
 
  */
 
-export interface AccordionProps {
-  /**
-   * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
-   * Component will hold internal state and open and close on disclosure click
-   * @default true
-   **/
-  defaultOpen?: boolean
+import React from 'react'
 
-  /**
-   * Use these properties if you wish to use the component in a `controlled` manner.
-   **/
-  isOpen?: boolean
-  toggleOpen?: (isOpen: boolean) => void
-
-  /**
-   * Callbacks
-   **/
-  onClose?: () => void // called when the component is closed
-  onOpen?: () => void // called when the component is opened
+export const AccordionDemo = () => {
+  return <div></div>
 }

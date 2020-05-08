@@ -26,6 +26,6 @@
 
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
-export interface AccordianContentProps extends SimpleLayoutProps {
+export interface AccordionContentProps extends SimpleLayoutProps {
   className?: string
 }
