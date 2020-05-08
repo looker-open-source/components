@@ -55,11 +55,11 @@ export interface PromptBaseProps {
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: PromptCallback
+  onCancel?: (close: () => void) => void
   /**
    * Callback that is triggered when submit button is pressed
    */
-  onSave: PromptCallback
+  onSave: (value: string, close: () => void) => void
   /**
    * Label for the rendered input.
    * Rendered as placeholder and visually hidden label for screenreaders.
@@ -125,8 +125,8 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   }
 
   const onSubmit = useCallback(() => {
-    onSave(handleClose)
-  }, [handleClose, onSave])
+    onSave(value, handleClose)
+  }, [handleClose, onSave, value])
 
   const cancel = useCallback(() => {
     if (onCancel) {
