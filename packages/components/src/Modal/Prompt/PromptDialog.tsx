@@ -24,7 +24,15 @@
 
  */
 
-import React, { FC, FormEvent, ReactNode, useState, useCallback } from 'react'
+import React, {
+  FC,
+  FormEvent,
+  KeyboardEvent,
+  ReactNode,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { Label, InputText } from '../../Form'
@@ -45,7 +53,7 @@ export interface PromptBaseProps {
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: (close: () => void) => void
+  onCancel?: () => void
   /**
    * Callback that is triggered when submit button is pressed
    */
@@ -101,49 +109,63 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   const [value, setValue] = useState(defaultValue)
   const hasValue = !!value.trim()
 
+  useEffect(() => {
+    setValue(defaultValue)
+  }, [defaultValue])
+
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value)
   }
 
-  const onSubmit = (event: FormEvent<HTMLElement>) => {
-    event.preventDefault()
+  const onSubmit = () => {
     onSave(value)
     close()
+    setValue('')
   }
 
   const cancel = useCallback(() => {
-    if (onCancel) {
-      onCancel(close)
-    } else {
-      close()
-    }
+    close()
+    setValue('')
+    onCancel && onCancel()
   }, [close, onCancel])
+
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && hasValue) {
+      onSubmit()
+    } else if (event.key === 'Escape') {
+      cancel()
+    }
+  }
 
   return (
     <Dialog width="30rem" isOpen={isOpen} onClose={cancel}>
-      <form onSubmit={onSubmit}>
-        <ModalHeader hideClose>{title}</ModalHeader>
-        <ModalContent>
-          <VisuallyHidden>
-            <Label htmlFor="promptInput">{inputLabel}</Label>
-          </VisuallyHidden>
-          <InputText
-            id="promptInput"
-            placeholder={inputLabel}
-            onChange={onChange}
-            width="100%"
-            value={value}
-          />
-        </ModalContent>
-        <ModalFooter secondary={secondary}>
-          <Button disabled={!hasValue} type="submit" color="primary">
-            {saveLabel}
-          </Button>
-          <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
-            {cancelLabel}
-          </ButtonTransparent>
-        </ModalFooter>
-      </form>
+      <ModalHeader hideClose>{title}</ModalHeader>
+      <ModalContent>
+        <VisuallyHidden>
+          <Label htmlFor="promptInput">{inputLabel}</Label>
+        </VisuallyHidden>
+        <InputText
+          onKeyDown={onKeyDown}
+          id="promptInput"
+          placeholder={inputLabel}
+          onChange={onChange}
+          width="100%"
+          value={value}
+        />
+      </ModalContent>
+      <ModalFooter secondary={secondary}>
+        <Button
+          disabled={!hasValue}
+          type="submit"
+          onClick={onSubmit}
+          color="primary"
+        >
+          {saveLabel}
+        </Button>
+        <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
+          {cancelLabel}
+        </ButtonTransparent>
+      </ModalFooter>
     </Dialog>
   )
 }

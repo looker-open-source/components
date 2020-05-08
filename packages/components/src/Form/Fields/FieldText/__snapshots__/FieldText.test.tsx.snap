@@ -113,6 +113,7 @@ exports[`A FieldText with default label 1`] = `
 
 .c0 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 
@@ -256,6 +257,7 @@ exports[`A FieldText with label inline 1`] = `
 
 .c7 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 

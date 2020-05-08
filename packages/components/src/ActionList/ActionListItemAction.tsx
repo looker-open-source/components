@@ -32,7 +32,6 @@ import { MenuItem, MenuContext } from '../Menu'
 export interface ActionListItemActionProps
   extends CompatibleHTMLProps<HTMLElement> {
   children?: ReactNode
-  color?: 'danger'
   detail?: ReactNode
   icon?: IconNames
   role?: 'button' | 'link'
@@ -50,11 +49,5 @@ export const ActionListItemAction = (props: ActionListItemActionProps) => {
     setOpen && setOpen(false)
     props.onClick && props.onClick(event)
   }
-  return (
-    <MenuItem
-      {...props}
-      color={props.color === 'danger' ? 'palette.red500' : undefined}
-      onClick={handleActionClick}
-    />
-  )
+  return <MenuItem {...props} onClick={handleActionClick} />
 }

@@ -63,6 +63,7 @@ exports[`A FieldToggleSwitch 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
@@ -89,6 +90,7 @@ exports[`A FieldToggleSwitch 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>
@@ -186,6 +188,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
@@ -212,6 +215,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>

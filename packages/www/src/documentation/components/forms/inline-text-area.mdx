@@ -1,0 +1,25 @@
+---
+title: InlineTextArea
+propsOf: InlineTextArea
+github: InlineTextArea/InlineTextArea.tsx
+---
+
+## InlineTextArea
+
+Input styled to have underline follow the input and with word wrapping.
+
+```jsx
+<Grid columns={1} gap="large">
+  <InlineTextArea placeholder="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..." />
+  <InlineTextArea value="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..." />
+</Grid>
+```
+
+### underlineOnlyOnHover
+
+```jsx
+<InlineTextArea
+  underlineOnlyOnHover
+  value="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..."
+/>
+```

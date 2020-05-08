@@ -109,7 +109,7 @@ const columns: ActionListColumns = [
 
 const MyActions = () => (
   <>
-    <ActionListItemAction color="danger" onClick={() => alert(`Go to LookML!`)}>
+    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
       Go to LookML
     </ActionListItemAction>
     <ActionListItemAction onClick={() => alert(`PDT Details!`)}>

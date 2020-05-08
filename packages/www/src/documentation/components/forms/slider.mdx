@@ -4,6 +4,8 @@ propsOf: Slider
 github: Form/Inputs/Slider/Slider.tsx
 ---
 
+`Slider` is used for selecting a single value. If you need to specify a range of values, use the [`RangeSlider` component](/components/forms/range-slider) instead.
+
 # Default Slider
 
 The `<Slider />` component renders a styled range slider on the page, with no accompanying label.
@@ -51,16 +53,6 @@ If you'd like to read and control the input value externally, `Slider` accepts a
     </div>
   )
 }
-```
-
-# Sizes
-
-`Slider` comes in three sizes, which can be specified in the `size` prop:
-
-```jsx
-<Slider size="small" value={4} />
-<Slider size="medium" value={6} />
-<Slider size="large" value={8} />
 ```
 
 # Step

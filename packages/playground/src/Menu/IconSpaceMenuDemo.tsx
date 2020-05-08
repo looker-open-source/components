@@ -23,48 +23,35 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { Button, Prompt, usePrompt } from '@looker/components'
 
-export const PromptDemo: FC = () => {
-  return (
-    <Prompt
-      cancelColor="neutral"
-      cancelLabel={'Not into cheese'}
-      title={'Choose a cheese!'}
-      inputLabel={'Name of Cheese'}
-      saveLabel={'Save'}
-      onCancel={() => {
-        alert('Prompt closed')
-      }}
-      onSave={(value: string) => alert(`You chose ${value}`)}
-      secondary={
-        <Button onClick={() => alert('Secondary clicked')}>
-          Secondary Cheese
-        </Button>
-      }
-    >
-      {(open) => (
-        <Button color="secondary" onClick={open}>
-          Prompt
-        </Button>
-      )}
-    </Prompt>
-  )
-}
+import React from 'react'
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuDisclosure,
+  MenuGroup,
+  Button,
+} from '@looker/components'
 
-export const usePromptDemo = () => {
-  const [modal, openModal] = usePrompt({
-    inputLabel: 'Name of Cheese',
-    onSave: (value: string) => alert(`You chose ${value}`),
-    saveLabel: 'Save',
-    title: 'Choose a cheese!',
-  })
+export const IconSpaceMenuDemo = () => (
+  <>
+    <Menu>
+      <MenuDisclosure>
+        <Button>Blurb</Button>
+      </MenuDisclosure>
+      <MenuList customizationProps={{ iconSize: 50 }}>
+        <MenuItem icon="User">Hello</MenuItem>
+        <MenuItem>World</MenuItem>
+      </MenuList>
+    </Menu>
 
-  return (
-    <>
-      {modal}
-      <Button onClick={openModal}>usePrompt</Button>
-    </>
-  )
-}
+    <MenuList compact>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem>Pizza!</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+      </MenuGroup>
+    </MenuList>
+  </>
+)

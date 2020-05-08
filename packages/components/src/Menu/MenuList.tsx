@@ -25,7 +25,7 @@
  */
 
 import { Placement } from '@popperjs/core'
-import React, { Ref, useRef, forwardRef, useContext } from 'react'
+import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
 import {
@@ -97,10 +97,19 @@ export const MenuListInternal = forwardRef(
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
+    const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
+
     const innerRef = useRef<null | HTMLElement>(null)
 
+    const context = {
+      compact,
+      customizationProps,
+      renderIconPlaceholder,
+      setRenderIconPlaceholder,
+    }
+
     const menuList = (
-      <MenuItemStyleContext.Provider value={{ compact, customizationProps }}>
+      <MenuItemStyleContext.Provider value={context}>
         <HotKeys
           innerRef={innerRef}
           keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}

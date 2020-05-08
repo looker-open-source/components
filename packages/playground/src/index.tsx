@@ -26,17 +26,13 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Flex, ComponentsProvider } from '@looker/components'
-import { SelectContent } from './Select/SelectDemo'
-import { SelectMultiDemo } from './Select/SelectMultiDemo'
+import { ComponentsProvider } from '@looker/components'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <Flex>
-        <SelectContent />
-        <SelectMultiDemo />
-      </Flex>
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
