@@ -80,7 +80,7 @@ export interface UseTooltipProps {
   /**
    * The id of the span containing the tooltip text (if absent, a random id will be generated)
    */
-  tooltipId?: string
+  id?: string
 
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
