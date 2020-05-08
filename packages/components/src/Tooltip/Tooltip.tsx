@@ -162,13 +162,6 @@ export function useTooltip({
     })
   }
 
-  const eventHandlers = {
-    onBlur: handleClose,
-    onFocus: handleOpen,
-    onMouseOut: handleMouseOut,
-    onMouseOver: handleOpen,
-  }
-
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
       anchor: element,
@@ -198,7 +191,7 @@ export function useTooltip({
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
-  const tooltipId = useID(id)
+  const guaranteedId = useID(id)
 
   const popper =
     isOpen && content && !disabled ? (
@@ -219,7 +212,7 @@ export function useTooltip({
         >
           <TooltipContent
             role="tooltip"
-            id={tooltipId}
+            id={guaranteedId}
             width={width}
             textAlign={textAlign}
           >
@@ -230,8 +223,11 @@ export function useTooltip({
     ) : null
 
   return {
-    ...eventHandlers,
-    id: tooltipId,
+    'aria-describedby': guaranteedId,
+    onBlur: handleClose,
+    onFocus: handleOpen,
+    onMouseOut: handleMouseOut,
+    onMouseOver: handleOpen,
     popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
@@ -241,10 +237,8 @@ export function useTooltip({
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   const tooltipProps = useTooltip(props)
 
-  // Take tooltipId property and set it to aria-describedby property instead
   const tooltipPropsLabeled = {
-    'aria-describedby': tooltipProps.id,
-    ...omit(tooltipProps, ['tooltip', 'id', 'popperInstanceRef']),
+    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef']),
   }
 
   return (
