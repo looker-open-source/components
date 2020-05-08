@@ -116,6 +116,7 @@ const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
     const {
       icon,
+      id,
       size = 'xsmall',
       label,
       color,
@@ -135,7 +136,7 @@ const IconButtonComponent = forwardRef(
     )
 
     const {
-      'aria-describedby': tooltipId,
+      'aria-describedby': ariaDescribedBy,
       ref,
       tooltip,
       onFocus,
@@ -145,6 +146,7 @@ const IconButtonComponent = forwardRef(
     } = useTooltip({
       content: label,
       disabled: tooltipDisabled || hasOuterTooltip,
+      id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
     })
 
@@ -161,7 +163,7 @@ const IconButtonComponent = forwardRef(
       <>
         {tooltip}
         <ButtonTransparent
-          aria-describedby={tooltipId}
+          aria-describedby={ariaDescribedBy}
           ref={actualRef}
           color={color}
           p="none"
