@@ -76,12 +76,12 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   } = useContext(MenuContext)
 
   const {
+    'aria-describedby': tooltipId,
     onFocus,
     onBlur,
     onMouseOut,
     onMouseOver,
     tooltip: renderedTooltip,
-    tooltipId,
   } = useTooltip({
     content: tooltip,
     disabled: isOpen,
