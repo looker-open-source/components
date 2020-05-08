@@ -92,11 +92,9 @@ export const CalendarNav: FC<NavbarElementProps> = ({
       </NextButtonWrapper>
 
       <Tooltip content="View Current Month">
-        {(eventHandlers, ref, tooltipId) => (
+        {(tooltipProps) => (
           <ButtonTransparent
-            aria-describedby={tooltipId}
-            ref={ref}
-            {...eventHandlers}
+            {...tooltipProps}
             onClick={handleLabelClick}
             color="neutral"
           >

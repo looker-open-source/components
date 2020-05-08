@@ -76,7 +76,10 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   } = useContext(MenuContext)
 
   const {
-    eventHandlers: { onFocus, onBlur, ...eventHandlers },
+    onFocus,
+    onBlur,
+    onMouseOut,
+    onMouseOver,
     tooltip: renderedTooltip,
     tooltipId,
   } = useTooltip({
@@ -103,7 +106,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   if (!showDisclosure && !isOpen && !focused) return null
 
   const allCallbacks = {
-    ...(tooltip ? eventHandlers : {}),
+    ...(tooltip ? { onMouseOut, onMouseOver } : {}),
     onBlur: handleBlur,
     onClick: handleClick,
     onFocus: handleFocus,

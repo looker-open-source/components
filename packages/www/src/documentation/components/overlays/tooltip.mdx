@@ -8,11 +8,7 @@ A simple Tooltip component with out of the box styles and behavior.
 
 ```jsx
 <Tooltip content="More things you should know...">
-  {(eventHandlers, ref, tooltipId) => (
-    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers}>
-      Hover for Tooltip
-    </Button>
-  )}
+  {(tooltipProps) => <Button {...tooltipProps}>Hover for Tooltip</Button>}
 </Tooltip>
 ```
 
@@ -29,10 +25,8 @@ A simple Tooltip component with out of the box styles and behavior.
     </>
   }
 >
-  {(eventHandlers, ref, tooltipId) => (
-    <ButtonOutline aria-describedby={tooltipId} {...eventHandlers} ref={ref}>
-      Tooltip with lots of text
-    </ButtonOutline>
+  {(tooltipProps) => (
+    <ButtonOutline {...tooltipProps}>Tooltip with lots of text</ButtonOutline>
   )}
 </Tooltip>
 ```
@@ -58,32 +52,32 @@ Tooltip allows you to specify where it should appear in relation to the target e
 
 ```jsx
 <Tooltip content="I'm on top" placement="top">
-  {(eventHandlers, ref, tooltipId) => (
-    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
+  {(tooltipProps) => (
+    <Button {...tooltipProps}>
       Top
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on bottom" placement="bottom">
-  {(eventHandlers, ref, tooltipId) => (
-    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
+  {(tooltipProps) => (
+    <Button {...tooltipProps}>
       Bottom
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on the left" placement="left">
-  {(eventHandlers, ref, tooltipId) => (
-    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
+  {(tooltipProps) => (
+    <Button {...tooltipProps}>
       Left
     </Button>
   )}
 </Tooltip>
 
 <Tooltip content="I'm on the right" placement="right">
-  {(eventHandlers, ref, tooltipId) => (
-    <Button aria-describedby={tooltipId} ref={ref} {...eventHandlers} mr="small">
+  {(tooltipProps) => (
+    <Button {...tooltipProps}>
       Right
     </Button>
   )}

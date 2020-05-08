@@ -147,11 +147,9 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 
 ```jsx
 <Tooltip content="I'm a little teapot">
-  {(eventHandlers, ref, tooltipId) => (
+  {(tooltipProps) => (
     <IconButton
-      aria-describedby={tooltipId}
-      {...eventHandlers}
-      ref={ref}
+      {...tooltipProps}
       label="Add Something Neat"
       icon="Plus"
       size="xxsmall"

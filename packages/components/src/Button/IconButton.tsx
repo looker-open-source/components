@@ -137,7 +137,10 @@ const IconButtonComponent = forwardRef(
     const {
       ref,
       tooltip,
-      eventHandlers: { onFocus, onBlur, onMouseOver, onMouseOut },
+      onFocus,
+      onBlur,
+      onMouseOver,
+      onMouseOut,
       tooltipId,
     } = useTooltip({
       content: label,
