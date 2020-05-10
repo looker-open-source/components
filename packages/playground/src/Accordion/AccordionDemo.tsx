@@ -25,12 +25,18 @@
  */
 
 import React from 'react'
-import { Accordion, AccordionLabel, Box } from '@looker/components'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionLabel,
+  Box,
+} from '@looker/components'
 
 export const AccordionDemo = () => {
   const vanillaAccordion = (
     <Accordion>
       <AccordionLabel>HelloWorld</AccordionLabel>
+      <AccordionContent>Bleh</AccordionContent>
     </Accordion>
   )
   const spicyAccordion = (
@@ -38,6 +44,7 @@ export const AccordionDemo = () => {
       <AccordionLabel icon="Warning" arrowLeft>
         HelloWorld
       </AccordionLabel>
+      <AccordionContent>Blurg</AccordionContent>
     </Accordion>
   )
 

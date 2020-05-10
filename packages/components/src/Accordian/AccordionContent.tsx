@@ -24,6 +24,15 @@
 
  */
 
-import styled from 'styled-components'
+import React, { ReactNode, useContext, FC } from 'react'
+import { AccordionContext } from './AccordionContext'
 
-export const AccordionContent = styled.div``
+export interface AccordionContentProps {
+  children: ReactNode
+}
+
+export const AccordionContent: FC<AccordionContentProps> = ({ children }) => {
+  const { isOpen } = useContext(AccordionContext)
+
+  return <div>{isOpen && children}</div>
+}
