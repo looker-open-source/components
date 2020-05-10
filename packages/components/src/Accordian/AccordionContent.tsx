@@ -24,8 +24,6 @@
 
  */
 
-import { SimpleLayoutProps } from '../Layout/utils/simple'
+import styled from 'styled-components'
 
-export interface AccordionContentProps extends SimpleLayoutProps {
-  className?: string
-}
+export const AccordionContent = styled.div``
