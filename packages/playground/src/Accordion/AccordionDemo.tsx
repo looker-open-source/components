@@ -24,14 +24,21 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { AccordionLabel, Box } from '@looker/components'
 
 export const AccordionDemo = () => {
+  const [isOpen, setOpen] = useState(false)
+
   return (
     <Box width="300px" border="1px black solid">
       <AccordionLabel>HelloWorld</AccordionLabel>
-      <AccordionLabel icon="Warning" arrowLeft>
+      <AccordionLabel
+        icon="Warning"
+        arrowLeft
+        isOpen={isOpen}
+        toggleOpen={setOpen}
+      >
         HelloWorld
       </AccordionLabel>
     </Box>

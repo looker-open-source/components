@@ -43,6 +43,14 @@ export interface AccordionLabelProps extends SimpleLayoutProps {
    * Optional Icon that sits directly left of the label
    */
   icon?: IconNames
+  /**
+   * Describes whether the AccordionLabel should be open or closed
+   */
+  isOpen?: boolean
+  /**
+   * Toggles open state of the Accordion
+   */
+  toggleOpen?: (isOpen: boolean) => void
 }
 
 const AccordianLabelChildrenContainer = styled.div``
@@ -52,20 +60,32 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   children,
   className,
   icon,
+  isOpen,
+  toggleOpen,
 }) => {
+  const handleClick = () => toggleOpen && toggleOpen(!isOpen)
+
   const defaultIconSize = 20
   const arrowIconLeft = arrowLeft && (
-    <Icon name="ArrowRight" mr="xsmall" size={defaultIconSize} />
+    <Icon
+      name={isOpen ? 'ArrowDown' : 'ArrowRight'}
+      mr="xsmall"
+      size={defaultIconSize}
+    />
   )
   const propIcon = icon && (
     <Icon name={icon} mr="xsmall" size={defaultIconSize} />
   )
   const arrowIconRight = !arrowLeft && (
-    <Icon ml="xsmall" name="CaretDown" size={defaultIconSize} />
+    <Icon
+      ml="xsmall"
+      name={isOpen ? 'CaretUp' : 'CaretDown'}
+      size={defaultIconSize}
+    />
   )
 
   return (
-    <div className={className}>
+    <div className={className} onClick={handleClick}>
       {arrowIconLeft}
       {propIcon}
       <AccordianLabelChildrenContainer>
