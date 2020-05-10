@@ -24,11 +24,12 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { Icon } from '../Icon'
+import { AccordionContext } from './AccordionContext'
 
 export interface AccordionLabelProps extends SimpleLayoutProps {
   children: string | ReactNode
@@ -43,14 +44,6 @@ export interface AccordionLabelProps extends SimpleLayoutProps {
    * Optional Icon that sits directly left of the label
    */
   icon?: IconNames
-  /**
-   * Describes whether the AccordionLabel should be open or closed
-   */
-  isOpen?: boolean
-  /**
-   * Toggles open state of the Accordion
-   */
-  toggleOpen?: (isOpen: boolean) => void
 }
 
 const AccordianLabelChildrenContainer = styled.div``
@@ -60,9 +53,8 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   children,
   className,
   icon,
-  isOpen,
-  toggleOpen,
 }) => {
+  const { isOpen, toggleOpen } = useContext(AccordionContext)
   const handleClick = () => toggleOpen && toggleOpen(!isOpen)
 
   const defaultIconSize = 20

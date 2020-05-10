@@ -24,27 +24,17 @@
 
  */
 
-import React from 'react'
-import { Accordion, AccordionLabel, Box } from '@looker/components'
+import { createContext } from 'react'
+import noop from 'lodash/noop'
 
-export const AccordionDemo = () => {
-  const vanillaAccordion = (
-    <Accordion>
-      <AccordionLabel>HelloWorld</AccordionLabel>
-    </Accordion>
-  )
-  const spicyAccordion = (
-    <Accordion>
-      <AccordionLabel icon="Warning" arrowLeft>
-        HelloWorld
-      </AccordionLabel>
-    </Accordion>
-  )
-
-  return (
-    <Box width="300px" style={{ backgroundColor: 'chartreuse' }}>
-      {vanillaAccordion}
-      {spicyAccordion}
-    </Box>
-  )
+export interface AccordionContextProps {
+  isOpen: boolean
+  toggleOpen: (isOpen: boolean) => void
+  onClose?: () => void
+  onOpen?: () => void
 }
+
+export const AccordionContext = createContext<AccordionContextProps>({
+  isOpen: false,
+  toggleOpen: (isOpen: boolean) => noop(isOpen),
+})

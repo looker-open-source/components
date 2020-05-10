@@ -24,7 +24,11 @@
 
  */
 
+import React, { FC, useState, ReactNode } from 'react'
+import { AccordionContext } from './AccordionContext'
+
 export interface AccordionProps {
+  children: ReactNode
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -43,4 +47,25 @@ export interface AccordionProps {
    **/
   onClose?: () => void // called when the component is closed
   onOpen?: () => void // called when the component is opened
+}
+
+export const Accordion: FC<AccordionProps> = ({ children }) => {
+  /**
+   * 1. Pass appropriate props to AccordionLabel (aka first child)
+   *  - Note: If we end up creating AccordionContext, this won't be needed
+   *  - Instead, we would need to create a context provider div
+   * 2. Conditionally render AccordionContent (aka second child)
+   */
+  const [isOpen, setIsOpen] = useState(false)
+
+  const context = {
+    isOpen,
+    toggleOpen: setIsOpen,
+  }
+
+  return (
+    <AccordionContext.Provider value={context}>
+      {children}
+    </AccordionContext.Provider>
+  )
 }
