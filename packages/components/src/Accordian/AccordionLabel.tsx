@@ -89,17 +89,20 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
 }
 
 export const AccordionLabel = styled(AccordionLabelLayout)`
+  ${simpleLayoutCSS}
+
   ${AccordianLabelChildrenContainer} {
     flex-grow: 1;
   }
 
-  ${simpleLayoutCSS}
-
   display: flex;
   align-items: center;
+
+  padding-left: ${({ arrowLeft, theme }) =>
+    arrowLeft ? 'none' : theme.space.large};
 `
 
 AccordionLabel.defaultProps = {
-  px: 'large',
+  pr: 'large',
   py: 'xsmall',
 }
