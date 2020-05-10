@@ -24,20 +24,70 @@
 
  */
 
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
-import { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import { Icon } from '../Icon'
 
 export interface AccordionLabelProps extends SimpleLayoutProps {
+  children: string | ReactNode
   className?: string
-
   /**
    * If true, the arrow will sit left of the label rather than right of it
    * In addition, Arrow icons will be used in place of caret
    * @default false
    */
-  arrowLeft: boolean
+  arrowLeft?: boolean
   /**
-   * Icon that sits directly left of the label (potentially)
+   * Optional Icon that sits directly left of the label
    */
-  icon: IconNames
+  icon?: IconNames
+}
+
+const AccordianLabelChildrenContainer = styled.div``
+
+const AccordionLabelLayout: FC<AccordionLabelProps> = ({
+  arrowLeft,
+  children,
+  className,
+  icon,
+}) => {
+  const defaultIconSize = 20
+  const arrowIconLeft = arrowLeft && (
+    <Icon name="ArrowRight" mr="xsmall" size={defaultIconSize} />
+  )
+  const propIcon = icon && (
+    <Icon name={icon} mr="xsmall" size={defaultIconSize} />
+  )
+  const arrowIconRight = !arrowLeft && (
+    <Icon ml="xsmall" name="CaretDown" size={defaultIconSize} />
+  )
+
+  return (
+    <div className={className}>
+      {arrowIconLeft}
+      {propIcon}
+      <AccordianLabelChildrenContainer>
+        {children}
+      </AccordianLabelChildrenContainer>
+      {arrowIconRight}
+    </div>
+  )
+}
+
+export const AccordionLabel = styled(AccordionLabelLayout)`
+  ${AccordianLabelChildrenContainer} {
+    flex-grow: 1;
+  }
+
+  ${simpleLayoutCSS}
+
+  display: flex;
+  align-items: center;
+`
+
+AccordionLabel.defaultProps = {
+  px: 'large',
+  py: 'xsmall',
 }

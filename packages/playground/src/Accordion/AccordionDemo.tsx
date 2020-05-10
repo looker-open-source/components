@@ -25,7 +25,15 @@
  */
 
 import React from 'react'
+import { AccordionLabel, Box } from '@looker/components'
 
 export const AccordionDemo = () => {
-  return <div></div>
+  return (
+    <Box width="300px" border="1px black solid">
+      <AccordionLabel>HelloWorld</AccordionLabel>
+      <AccordionLabel icon="Warning" arrowLeft>
+        HelloWorld
+      </AccordionLabel>
+    </Box>
+  )
 }
