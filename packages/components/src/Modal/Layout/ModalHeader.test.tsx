@@ -31,7 +31,9 @@ import { IconButton } from '../../Button'
 import { ModalHeader } from './ModalHeader'
 
 test('ModalHeader', () => {
-  assertSnapshot(<ModalHeader>The Heading for a Dialog</ModalHeader>)
+  assertSnapshot(
+    <ModalHeader id="test-modalHeader">The Heading for a Dialog</ModalHeader>
+  )
 })
 
 test('ModalHeader with hideClose', () => {
