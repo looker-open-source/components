@@ -51,24 +51,31 @@ export interface AccordionProps {
 
 export const Accordion: FC<AccordionProps> = ({
   children,
+  defaultOpen = true,
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   onClose: propsOnClose,
   onOpen: propsOnOpen,
 }) => {
-  /**
-   * 1. Pass appropriate props to AccordionLabel (aka first child)
-   *  - Note: If we end up creating AccordionContext, this won't be needed
-   *  - Instead, we would need to create a context provider div
-   * 2. Conditionally render AccordionContent (aka second child)
-   */
   const [isOpen, setIsOpen] = useState(false)
 
+  if (
+    (propsIsOpen && propsToggleOpen === undefined) ||
+    (propsIsOpen === undefined && propsToggleOpen)
+  )
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Please provide both an isOpen prop and a toggleOpen prop if you wish to control a Accordion state. If you would like an uncontrolled Accordion, avoid passing in either prop into your Accordion element.'
+    )
+
   const context = {
-    isOpen: propsIsOpen || isOpen,
+    isOpen: defaultOpen || propsIsOpen === undefined ? isOpen : propsIsOpen,
     onClose: propsOnClose,
     onOpen: propsOnOpen,
-    toggleOpen: setIsOpen || propsToggleOpen,
+    toggleOpen:
+      defaultOpen || propsToggleOpen === undefined
+        ? setIsOpen
+        : propsToggleOpen,
   }
 
   return (
