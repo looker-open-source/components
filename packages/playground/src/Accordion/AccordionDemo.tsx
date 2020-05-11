@@ -33,10 +33,10 @@ import {
 } from '@looker/components'
 
 export const AccordionDemo = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   const vanillaAccordion = (
-    <Accordion>
+    <Accordion defaultOpen>
       <AccordionLabel>Hello World</AccordionLabel>
       <AccordionContent>
         <div style={{ backgroundColor: 'coral', padding: '10px' }}>Bleh</div>

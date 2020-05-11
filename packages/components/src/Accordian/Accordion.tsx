@@ -32,7 +32,6 @@ export interface AccordionProps {
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
-   * @default true
    **/
   defaultOpen?: boolean
   /**
@@ -57,13 +56,13 @@ export interface AccordionProps {
 
 export const Accordion: FC<AccordionProps> = ({
   children,
-  defaultOpen = true,
+  defaultOpen,
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   onClose: propsOnClose,
   onOpen: propsOnOpen,
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(!!defaultOpen)
 
   if (
     (propsIsOpen && propsToggleOpen === undefined) ||
@@ -75,13 +74,10 @@ export const Accordion: FC<AccordionProps> = ({
     )
 
   const context = {
-    isOpen: defaultOpen || propsIsOpen === undefined ? isOpen : propsIsOpen,
+    isOpen: propsIsOpen === undefined ? isOpen : propsIsOpen,
     onClose: propsOnClose,
     onOpen: propsOnOpen,
-    toggleOpen:
-      defaultOpen || propsToggleOpen === undefined
-        ? setIsOpen
-        : propsToggleOpen,
+    toggleOpen: propsToggleOpen === undefined ? setIsOpen : propsToggleOpen,
   }
 
   return (
