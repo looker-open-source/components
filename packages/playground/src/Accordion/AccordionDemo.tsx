@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -33,18 +33,31 @@ import {
 } from '@looker/components'
 
 export const AccordionDemo = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const vanillaAccordion = (
     <Accordion>
-      <AccordionLabel>HelloWorld</AccordionLabel>
-      <AccordionContent>Bleh</AccordionContent>
+      <AccordionLabel>Hello World</AccordionLabel>
+      <AccordionContent>
+        <div style={{ backgroundColor: 'coral', padding: '10px' }}>Bleh</div>
+      </AccordionContent>
     </Accordion>
   )
+
   const spicyAccordion = (
-    <Accordion>
+    <Accordion
+      isOpen={isOpen}
+      toggleOpen={setIsOpen}
+      onOpen={() => alert('Opening doors')}
+      onClose={() => alert('Closing doors')}
+    >
       <AccordionLabel icon="Warning" arrowLeft>
-        HelloWorld
+        Hello World
       </AccordionLabel>
-      <AccordionContent>Blurg</AccordionContent>
+      <AccordionContent>
+        {' '}
+        <div style={{ backgroundColor: 'coral', padding: '10px' }}>Bleh</div>
+      </AccordionContent>
     </Accordion>
   )
 

@@ -49,7 +49,13 @@ export interface AccordionProps {
   onOpen?: () => void // called when the component is opened
 }
 
-export const Accordion: FC<AccordionProps> = ({ children }) => {
+export const Accordion: FC<AccordionProps> = ({
+  children,
+  isOpen: propsIsOpen,
+  toggleOpen: propsToggleOpen,
+  onClose: propsOnClose,
+  onOpen: propsOnOpen,
+}) => {
   /**
    * 1. Pass appropriate props to AccordionLabel (aka first child)
    *  - Note: If we end up creating AccordionContext, this won't be needed
@@ -59,8 +65,10 @@ export const Accordion: FC<AccordionProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const context = {
-    isOpen,
-    toggleOpen: setIsOpen,
+    isOpen: propsIsOpen || isOpen,
+    onClose: propsOnClose,
+    onOpen: propsOnOpen,
+    toggleOpen: setIsOpen || propsToggleOpen,
   }
 
   return (

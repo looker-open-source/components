@@ -54,12 +54,21 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   className,
   icon,
 }) => {
-  const { isOpen, toggleOpen } = useContext(AccordionContext)
-  const handleClick = () => toggleOpen && toggleOpen(!isOpen)
+  const { isOpen, toggleOpen, onClose, onOpen } = useContext(AccordionContext)
+  const handleOpen = () => {
+    onOpen && onOpen()
+  }
+  const handleClose = () => {
+    onClose && onClose()
+  }
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.keyCode === 13) {
       event.currentTarget.click()
     }
+  }
+  const handleClick = () => {
+    isOpen ? handleClose() : handleOpen()
+    toggleOpen(!isOpen)
   }
 
   const defaultIconSize = 20
