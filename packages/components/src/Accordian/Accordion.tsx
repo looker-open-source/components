@@ -35,17 +35,23 @@ export interface AccordionProps {
    * @default true
    **/
   defaultOpen?: boolean
-
   /**
-   * Use these properties if you wish to use the component in a `controlled` manner.
+   * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
+   * isOpen determines whether the Accordion is currently open or closed
    **/
   isOpen?: boolean
-  toggleOpen?: (isOpen: boolean) => void
-
   /**
-   * Callbacks
-   **/
+   * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
+   * toggleOpen is a function taht should control the value / state of isOpen
+   */
+  toggleOpen?: (isOpen: boolean) => void
+  /**
+   * Callback that is triggered when closing the Accordion (i.e. when clicking on an open Accordion)
+   */
   onClose?: () => void // called when the component is closed
+  /**
+   * Callback that is triggered when opening the Accordion (i.e. when clicking on a closed Accordion)
+   */
   onOpen?: () => void // called when the component is opened
 }
 
