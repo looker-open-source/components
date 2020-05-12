@@ -44,6 +44,10 @@ export interface AccordionLabelProps extends SimpleLayoutProps {
    * Optional Icon that sits directly left of the label
    */
   icon?: IconNames
+  /**
+   * Color of optional Icon
+   */
+  iconColor?: string
 }
 
 const AccordianLabelChildrenContainer = styled.div``
@@ -53,6 +57,7 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   children,
   className,
   icon,
+  iconColor,
 }) => {
   const { isOpen, toggleOpen, onClose, onOpen } = useContext(AccordionContext)
   const handleOpen = () => {
@@ -80,7 +85,7 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
     />
   )
   const propIcon = icon && (
-    <Icon name={icon} mr="xsmall" size={defaultIconSize} />
+    <Icon name={icon} color={iconColor} mr="xsmall" size={defaultIconSize} />
   )
   const arrowIconRight = !arrowLeft && (
     <Icon

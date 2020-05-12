@@ -51,7 +51,7 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel icon="Warning" arrowLeft>
+      <AccordionLabel icon="Warning" iconColor="palette.green200" arrowLeft>
         Hello World
       </AccordionLabel>
       <AccordionContent>
@@ -62,7 +62,7 @@ export const AccordionDemo = () => {
   )
 
   return (
-    <Box width="300px" style={{ backgroundColor: 'chartreuse' }}>
+    <Box width="300px" style={{ backgroundColor: 'lightblue' }}>
       {vanillaAccordion}
       {spicyAccordion}
     </Box>
