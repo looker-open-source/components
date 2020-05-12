@@ -63,6 +63,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   closeIcon = 'Close',
   hideClose,
   headerIcon,
+  id,
   ...props
 }) => {
   const { closeModal } = useContext(ModalContext)
@@ -81,6 +82,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       </Heading>
       {!hideClose && (
         <IconButton
+          id={id ? `${id}-iconButton` : undefined}
           tabIndex={-1}
           color="neutral"
           size="small"

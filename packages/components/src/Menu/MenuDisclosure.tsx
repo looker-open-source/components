@@ -44,6 +44,7 @@ export interface MenuDisclosureProps {
    * unable to enforce typing of props https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34713
    */
   children: JSX.Element
+  disclosureId?: string
   tooltip?: string
   tooltipPlacement?: Placement
 }
@@ -62,6 +63,7 @@ function wrapCallback(
 
 export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   children,
+  disclosureId,
   tooltip,
   tooltipPlacement,
 }) => {
@@ -76,11 +78,16 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   } = useContext(MenuContext)
 
   const {
-    eventHandlers: { onFocus, onBlur, ...eventHandlers },
+    'aria-describedby': ariaDescribedBy,
+    onFocus,
+    onBlur,
+    onMouseOut,
+    onMouseOver,
     tooltip: renderedTooltip,
   } = useTooltip({
     content: tooltip,
     disabled: isOpen,
+    id: disclosureId ? `${disclosureId}-tooltip` : undefined,
     placement: tooltipPlacement || 'top',
     triggerElement,
   })
@@ -102,7 +109,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   if (!showDisclosure && !isOpen && !focused) return null
 
   const allCallbacks = {
-    ...(tooltip ? eventHandlers : {}),
+    ...(tooltip ? { onMouseOut, onMouseOver } : {}),
     onBlur: handleBlur,
     onClick: handleClick,
     onFocus: handleFocus,
@@ -120,6 +127,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     return cloneElement(child, {
       ...wrappedCallbacks,
       'aria-controls': id,
+      'aria-describedby': ariaDescribedBy,
       'aria-expanded': isOpen,
       'aria-haspopup': true,
       className: `${childProps.className || ''}${isOpen ? ' active' : ''}`,

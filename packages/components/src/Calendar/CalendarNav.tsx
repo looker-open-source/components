@@ -92,10 +92,9 @@ export const CalendarNav: FC<NavbarElementProps> = ({
       </NextButtonWrapper>
 
       <Tooltip content="View Current Month">
-        {(eventHandlers, ref) => (
+        {(tooltipProps) => (
           <ButtonTransparent
-            ref={ref}
-            {...eventHandlers}
+            {...tooltipProps}
             onClick={handleLabelClick}
             color="neutral"
           >
