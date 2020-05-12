@@ -36,7 +36,7 @@ import {
   Heading,
 } from '@looker/components'
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const MixedStateCheckboxDemo = () => {
   // Set up local state and child change handlers
   const [parentState, setParentState] = useState<MixedBoolean>(false)

@@ -24,7 +24,7 @@
 
  */
 
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -51,7 +51,7 @@ afterEach(() => {
   optionalProps.onCancel.mockClear()
 })
 
-test('<Confirm/> with defaults', () => {
+test('<Confirm/> with defaults', async () => {
   const { getByText, queryByText } = renderWithTheme(
     <Confirm {...requiredProps}>
       {(open) => <Button onClick={open}>Do Something</Button>}
@@ -71,6 +71,7 @@ test('<Confirm/> with defaults', () => {
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
 
   fireEvent.click(getByText('Cancel'))
+  await waitForElementToBeRemoved(() => queryByText(requiredProps.title))
   expect(queryByText(requiredProps.title)).toBeNull()
 })
 

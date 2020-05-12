@@ -26,6 +26,7 @@
 
 import { Placement } from '@popperjs/core'
 import React, {
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -384,7 +385,7 @@ export function usePopover({
     trapRef: focusTrapRef,
   } = useFocusTrap(controlledIsOpen && focusTrap)
 
-  const { focusTrapRef: parentFocusTrapRef } = React.useContext(ModalContext)
+  const { focusTrapRef: parentFocusTrapRef } = useContext(ModalContext)
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element

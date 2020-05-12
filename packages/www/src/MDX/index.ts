@@ -38,10 +38,10 @@ import Ul from './Ul'
 
 const MDXComponents = {
   ...headings,
-  a: Link,
-  blockquote: Blockquote,
   Banner,
   Code,
+  a: Link,
+  blockquote: Blockquote,
   hr: Hr,
   inlineCode: Code,
   li: Li,

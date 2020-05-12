@@ -28,8 +28,8 @@ import { Divider } from '@looker/components'
 import styled from 'styled-components'
 
 const Hr = styled(Divider).attrs(() => ({
-  my: 'xxlarge',
   mx: 'auto',
+  my: 'xxlarge',
   width: '50%',
 }))``
 

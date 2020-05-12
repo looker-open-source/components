@@ -24,29 +24,15 @@
 
  */
 
+import { ComponentsProvider } from '@looker/components'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button, Confirm, ComponentsProvider } from '@looker/components'
+import { render } from 'react-dom'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <Confirm
-        confirmLabel="Delete"
-        buttonColor="danger"
-        title="ksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdf"
-        message="ksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdfksjdhkjhdsfkjhdsjlhldksjhkjdlshfkjhdskjhdsfkjhdskjhfdskjhdskjhdskjdhsfkjdhskjdhskjhdsfkjldhskjdhskljdhskjlhdsklhdfskljhsdkjldshkljdshkdjshkdjfshkdjhdskjhdskjhfdskjshdf"
-        onConfirm={(close) => {
-          alert('You deleted something')
-          close()
-        }}
-      >
-        {(open) => (
-          <Button color="danger" onClick={open}>
-            Delete
-          </Button>
-        )}
-      </Confirm>
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
@@ -56,5 +42,5 @@ const App: React.FC = () => {
   primary application, do your work in App.tsx instead.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+  render(<App />, document.getElementById('container'))
 })

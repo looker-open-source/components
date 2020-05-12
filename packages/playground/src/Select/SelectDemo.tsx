@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useMemo, useState } from 'react'
 import {
   Button,
   Dialog,
@@ -125,8 +125,8 @@ function optionReducer(searchTerm: string) {
 }
 
 export function SelectContent() {
-  const [value, setValue] = React.useState('')
-  const [searchTerm, setSearchTerm] = React.useState('')
+  const [value, setValue] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
     setValue(fruit)
@@ -137,7 +137,7 @@ export function SelectContent() {
   function handleFilter(term: string) {
     setSearchTerm(term)
   }
-  const newOptions = React.useMemo(() => {
+  const newOptions = useMemo(() => {
     if (searchTerm === '') return optionsWithGroups
     return optionsWithGroups.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
@@ -247,7 +247,7 @@ const ModalInner = () => {
 }
 
 export const SelectDemo = () => {
-  const [isOpen, setOpen] = React.useState(false)
+  const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
   return (

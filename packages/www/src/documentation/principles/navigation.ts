@@ -27,18 +27,18 @@
 import { NavigationSection } from '../../Layout'
 
 const navigation: NavigationSection = {
-  title: 'Principles',
-  path: 'principles',
   children: [
     {
-      title: 'Accessibility',
       path: 'accessibility',
+      title: 'Accessibility',
     },
     {
-      title: 'Support Levels',
       path: 'support-levels',
+      title: 'Support Levels',
     },
   ],
+  path: 'principles',
+  title: 'Principles',
 }
 
 export default navigation
