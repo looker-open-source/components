@@ -41,6 +41,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `ComboboxList` now accepts `width`, `minWidth`, and `maxWidth`
+
+## [0.7.30] - 2020-05-07
+
+### Added
+
 - Icons: `GitBranch`, `ViewColumn`, `SectionDrop`
 - `InlineInputText` supports placeholder attribute
 - `InlineTextArea` implemented with test and documentation.

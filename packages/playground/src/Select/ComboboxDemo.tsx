@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import {
   Box,
   Combobox,
@@ -35,6 +35,7 @@ import {
   ComboboxOption,
   ComboboxList,
   ComboboxInput,
+  FieldText,
   Heading,
 } from '@looker/components'
 
@@ -48,8 +49,53 @@ export function ComboboxDemo() {
     setOptions(newOptions)
   }
 
+  const [containerWidth, setContainerWidth] = useState(300)
+  function handleWidthChange(e: FormEvent<HTMLInputElement>) {
+    setContainerWidth(parseInt(e.currentTarget.value, 10))
+  }
+
   return (
     <Box p="large">
+      <Heading>ComboboxList width override</Heading>
+      <Box width={containerWidth}>
+        <FieldText
+          label="Container width"
+          value={containerWidth}
+          type="number"
+          onChange={handleWidthChange}
+          mb="medium"
+        />
+        <Combobox mb="medium">
+          <ComboboxInput placeholder="width=400" />
+          <ComboboxList width={400}>
+            <ComboboxOption value="Apples" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+          </ComboboxList>
+        </Combobox>
+        <Combobox mb="medium">
+          <ComboboxInput placeholder="minWidth=320" />
+          <ComboboxList minWidth={320}>
+            <ComboboxOption value="Apples" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+          </ComboboxList>
+        </Combobox>
+        <Combobox mb="medium">
+          <ComboboxInput placeholder="maxWidth=800 width=calc(100vw - 50px)" />
+          <ComboboxList maxWidth={800} width="calc(100vw - 50px)">
+            <ComboboxOption value="Apples" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+          </ComboboxList>
+        </Combobox>
+      </Box>
       <Heading>Controlled</Heading>
       <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
         <ComboboxInput />

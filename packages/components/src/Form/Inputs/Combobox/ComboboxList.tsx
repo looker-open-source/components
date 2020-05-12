@@ -29,6 +29,7 @@
 
 import {
   CompatibleHTMLProps,
+  LayoutProps,
   reset,
   space,
   SpaceProps,
@@ -44,6 +45,7 @@ import React, {
 } from 'react'
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
+import pick from 'lodash/pick'
 import throttle from 'lodash/throttle'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
@@ -51,8 +53,11 @@ import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxActionType } from './utils/state'
 
+const widthKeys = ['width', 'minWidth', 'maxWidth'] as const
+
 export interface ComboboxListProps
   extends SpaceProps,
+    Pick<LayoutProps, typeof widthKeys[number]>,
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
   /**
@@ -97,6 +102,7 @@ const ComboboxListInternal = forwardRef(
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
       windowedOptions = false,
       isMulti,
+      className,
       ...props
     }: ComboboxListInternalProps,
     forwardedRef: Ref<HTMLUListElement>
@@ -138,13 +144,18 @@ const ComboboxListInternal = forwardRef(
 
     const handleKeyDown = useKeyDown()
     const handleBlur = useBlur()
-    const width = wrapperElement
-      ? wrapperElement.getBoundingClientRect().width
-      : 'auto'
+
+    const widthProps = pick(props, widthKeys)
+    if (!widthProps.width) {
+      widthProps.width = wrapperElement
+        ? wrapperElement.getBoundingClientRect().width
+        : 'auto'
+    }
 
     const content = (
       <PopoverContent
-        width={width}
+        {...widthProps}
+        className={className}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         ref={popoverRef}
@@ -171,7 +182,7 @@ const ComboboxListInternal = forwardRef(
       content,
       focusTrap: false,
       isOpen: isVisible,
-      placement: 'bottom',
+      placement: 'bottom-start',
       setOpen,
       triggerElement: wrapperElement,
       triggerToggle: false,
