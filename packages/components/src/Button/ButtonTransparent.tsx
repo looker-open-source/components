@@ -27,7 +27,7 @@
 import styled from 'styled-components'
 import { ButtonBase, ButtonBaseProps } from './ButtonBase'
 
-export const transprentButtonPadding = (props: ButtonBaseProps) => {
+export const transparentButtonPadding = (props: ButtonBaseProps) => {
   let padding = '20px'
   switch (props.size) {
     case 'xsmall':
@@ -55,7 +55,7 @@ export const ButtonTransparent = styled(ButtonBase)`
   padding: 0
     ${(props) =>
       props.iconBefore || props.iconAfter
-        ? transprentButtonPadding(props)
+        ? transparentButtonPadding(props)
         : props.theme.space.xsmall};
 
   &:active,
