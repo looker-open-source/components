@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `FieldInline` `for` attribute moved to the correct `label`
 
+### Changed
+
+- Updated artwork for `Download` icon
+
 ## [0.7.30] - 2020-05-07
 
 ### Added
