@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
+  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
+- `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
+
 ## [RELEASED]
 
 ### Changed
