@@ -47,7 +47,12 @@ export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
     <SearchControlGrid>
       {validationType === 'error' && (
         <>
-          <Icon name="Warning" size={20} color="palette.red500" mr="xxsmall" />
+          <Icon
+            name="CircleInfo"
+            size={20}
+            color="palette.red500"
+            mr="xxsmall"
+          />
           <SearchControlDivider />
         </>
       )}
