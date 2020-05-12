@@ -26,7 +26,7 @@
 
 import { Radii } from '../system'
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const radii: Radii = {
   none: '0rem',
   xsmall: '0.0625rem',

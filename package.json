@@ -114,7 +114,8 @@
         "config/license-header.js"
       ],
       "import/default": "off",
-      "sort-keys-fix/sort-keys-fix": "warn"
+      "sort-keys": "off",
+      "sort-keys-fix/sort-keys-fix": "error"
     },
     "settings": {
       "import/resolver": {

@@ -214,7 +214,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
   }
 
   const handleDateChange = (dateToSet: Endpoint, date?: Date) => {
-    /* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+    /* eslint-disable sort-keys-fix/sort-keys-fix */
     const newDateRange: Partial<RangeModifier> = {
       ...dateRange,
       [dateToSet]: date,

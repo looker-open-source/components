@@ -15,11 +15,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "yarn compile",
-    "compile": "tsc -b tsconfig.build.json",
-    "develop": "yarn compile --watch"
-  },
   "dependencies": {
     "@looker/design-tokens": "^0.7.30"
   },

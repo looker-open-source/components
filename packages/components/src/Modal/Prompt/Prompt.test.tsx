@@ -75,8 +75,8 @@ test.skip('<Prompt/> with defaults', async () => {
   fireEvent.click(saveButton)
   expect(requiredProps.onSave).toHaveBeenCalledTimes(1)
 
-  expect(queryByText(requiredProps.inputLabel)).not.toBeVisible()
-  expect(queryByText(requiredProps.title)).not.toBeVisible()
+  expect(queryByText(requiredProps.inputLabel)).toBeNull()
+  expect(queryByText(requiredProps.title)).toBeNull()
 })
 
 test('<Prompt/> with custom props', () => {

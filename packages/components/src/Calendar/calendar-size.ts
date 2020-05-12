@@ -29,14 +29,14 @@ import { variant } from 'styled-system'
 
 export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const daySizeMap = {
   small: 32,
   medium: 36,
   large: 44,
 }
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const calendarSize = variant({
   prop: 'size',
   variants: {

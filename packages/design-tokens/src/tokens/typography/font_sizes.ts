@@ -27,7 +27,7 @@
 import { rem } from 'polished'
 import { FontSizeRamp } from '../../system'
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const fontSizes: FontSizeRamp = {
   xxxxlarge: rem(46),
   xxxlarge: rem(36),

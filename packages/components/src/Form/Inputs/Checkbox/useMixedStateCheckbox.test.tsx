@@ -30,7 +30,7 @@ import { Label } from '../../Label'
 import { Checkbox, MixedBoolean } from './Checkbox'
 import { useMixedStateCheckbox, CheckboxTree } from './useMixedStateCheckbox'
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 
 const FormDemo = () => {
   // Set up local state and child change handlers

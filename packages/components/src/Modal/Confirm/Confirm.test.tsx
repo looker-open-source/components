@@ -52,7 +52,7 @@ afterEach(() => {
 })
 
 test.skip('<Confirm/> with defaults', () => {
-  const { getByText, findByText } = renderWithTheme(
+  const { getByText, queryByText } = renderWithTheme(
     <Confirm {...requiredProps}>
       {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
@@ -71,7 +71,7 @@ test.skip('<Confirm/> with defaults', () => {
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
 
   fireEvent.click(getByText('Cancel'))
-  expect(findByText(requiredProps.title)).toBeNull()
+  expect(queryByText(requiredProps.title)).toBeNull()
 })
 
 test('<Confirm/> with custom props', () => {

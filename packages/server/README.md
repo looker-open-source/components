@@ -16,10 +16,7 @@ Client ID and Client Secret values can be obtained by visiting your target looke
 
 ### Start Server
 
-Run the following commands from the root Looker Components directory:
-
-1. `yarn`
-1. `yarn server`
+Run `yarn server` from the Looker components root.
 
 ## Running Queries
 

@@ -54,7 +54,7 @@ interface SliderSizeMap {
   }
 }
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 const sliderSizeMap: SliderSizeMap = {
   prop: 'size',
   variants: {

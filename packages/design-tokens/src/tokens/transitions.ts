@@ -26,7 +26,7 @@
 
 import { Transitions } from '../system'
 
-/* eslint-disable sort-keys,sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const transitions: Transitions = {
   durationRapid: '100ms',
   durationQuick: '150ms',
