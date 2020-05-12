@@ -28,7 +28,6 @@ import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
 import { ActionListDemo } from './ActionList/ActionListDemo'
-import ReactDOM from 'react-dom'
 
 const App: React.FC = () => {
   return (
