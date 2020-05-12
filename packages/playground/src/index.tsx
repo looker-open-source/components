@@ -26,8 +26,7 @@
 
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
+import { render } from 'react-dom'
 import { TooltipDemo } from './Tooltip/TooltipDemo'
 
 const App: React.FC = () => {
