@@ -54,12 +54,7 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel
-        pl="large"
-        icon="Warning"
-        iconColor="palette.yellow300"
-        arrowLeft
-      >
+      <AccordionLabel icon="Warning" iconColor="palette.yellow300" arrowLeft>
         Hello World
       </AccordionLabel>
       <AccordionContent>
