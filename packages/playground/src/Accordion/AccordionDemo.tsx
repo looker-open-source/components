@@ -30,6 +30,7 @@ import {
   AccordionContent,
   AccordionLabel,
   Box,
+  Text,
 } from '@looker/components'
 
 export const AccordionDemo = () => {
@@ -39,7 +40,9 @@ export const AccordionDemo = () => {
     <Accordion defaultOpen>
       <AccordionLabel>Hello World</AccordionLabel>
       <AccordionContent>
-        <div style={{ backgroundColor: 'coral', padding: '10px' }}>Bleh</div>
+        <Text p={10} color="palette.red500">
+          I have content
+        </Text>
       </AccordionContent>
     </Accordion>
   )
@@ -51,18 +54,24 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel icon="Warning" iconColor="palette.green200" arrowLeft>
+      <AccordionLabel
+        pl="large"
+        icon="Warning"
+        iconColor="palette.yellow300"
+        arrowLeft
+      >
         Hello World
       </AccordionLabel>
       <AccordionContent>
-        {' '}
-        <div style={{ backgroundColor: 'coral', padding: '10px' }}>Bleh</div>
+        <Text p={10} color="palette.red500">
+          More content!
+        </Text>
       </AccordionContent>
     </Accordion>
   )
 
   return (
-    <Box width="300px" style={{ backgroundColor: 'lightblue' }}>
+    <Box width="300px">
       {vanillaAccordion}
       {spicyAccordion}
     </Box>
