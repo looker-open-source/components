@@ -35,8 +35,10 @@ import {
   ComboboxOption,
   ComboboxList,
   ComboboxInput,
-  FieldText,
+  Slider,
   Heading,
+  Label,
+  Divider,
 } from '@looker/components'
 
 export function ComboboxDemo() {
@@ -49,25 +51,27 @@ export function ComboboxDemo() {
     setOptions(newOptions)
   }
 
-  const [containerWidth, setContainerWidth] = useState(300)
+  const [containerWidth, setContainerWidth] = useState(400)
   function handleWidthChange(e: FormEvent<HTMLInputElement>) {
     setContainerWidth(parseInt(e.currentTarget.value, 10))
   }
 
   return (
     <Box p="large">
-      <Heading>ComboboxList width override</Heading>
-      <Box width={containerWidth}>
-        <FieldText
-          label="Container width"
-          value={containerWidth}
-          type="number"
-          onChange={handleWidthChange}
-          mb="medium"
-        />
+      <Heading mb="medium">ComboboxList width override</Heading>
+      <Label>Move slider to adjust container width:</Label>
+      <Slider
+        min={100}
+        max={1000}
+        step={10}
+        value={containerWidth}
+        onChange={handleWidthChange}
+        width={400}
+      />
+      <Box p={20} width={containerWidth + 40} bg="palette.charcoal100">
         <Combobox mb="medium">
-          <ComboboxInput placeholder="width=400" />
-          <ComboboxList width={400}>
+          <ComboboxInput placeholder="width=500" />
+          <ComboboxList width={500}>
             <ComboboxOption value="Apples" />
             <ComboboxOption value="Oranges" />
             <ComboboxOption value="Grapes" />
@@ -76,8 +80,8 @@ export function ComboboxDemo() {
           </ComboboxList>
         </Combobox>
         <Combobox mb="medium">
-          <ComboboxInput placeholder="minWidth=320" />
-          <ComboboxList minWidth={320}>
+          <ComboboxInput placeholder="minWidth=420" />
+          <ComboboxList minWidth={420}>
             <ComboboxOption value="Apples" />
             <ComboboxOption value="Oranges" />
             <ComboboxOption value="Grapes" />
@@ -85,19 +89,24 @@ export function ComboboxDemo() {
             <ComboboxOption value="Pineapples" />
           </ComboboxList>
         </Combobox>
-        <Combobox mb="medium">
-          <ComboboxInput placeholder="maxWidth=800 width=calc(100vw - 50px)" />
-          <ComboboxList maxWidth={800} width="calc(100vw - 50px)">
-            <ComboboxOption value="Apples" />
-            <ComboboxOption value="Oranges" />
-            <ComboboxOption value="Grapes" />
-            <ComboboxOption value="Bananas" />
-            <ComboboxOption value="Pineapples" />
-          </ComboboxList>
-        </Combobox>
+        <Label>Try shrinking down the window width with the list open:</Label>
+        <ComboboxMulti width={400}>
+          <ComboboxMultiInput
+            onClear={() => alert('CLEAR')}
+            placeholder="maxWidth=800 width=calc(100vw - 50px)"
+          />
+          <ComboboxMultiList maxWidth={800} width="calc(100vw - 50px)">
+            <ComboboxMultiOption value="Apples" />
+            <ComboboxMultiOption value="Oranges" />
+            <ComboboxMultiOption value="Grapes" />
+            <ComboboxMultiOption value="Bananas" />
+            <ComboboxMultiOption value="Pineapples" />
+          </ComboboxMultiList>
+        </ComboboxMulti>
       </Box>
+      <Divider my="large" />
       <Heading>Controlled</Heading>
-      <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
+      <Combobox width={400} mb="medium" value={option} onChange={handleChange}>
         <ComboboxInput />
         <ComboboxList>
           <ComboboxOption value="Apples" />
@@ -108,7 +117,7 @@ export function ComboboxDemo() {
         </ComboboxList>
       </Combobox>
       <ComboboxMulti
-        width={300}
+        width={400}
         maxHeight={75}
         mb="medium"
         values={options}
@@ -123,8 +132,9 @@ export function ComboboxDemo() {
           <ComboboxMultiOption value="Pineapples" />
         </ComboboxMultiList>
       </ComboboxMulti>
+      <Divider my="large" />
       <Heading>Uncontrolled</Heading>
-      <Combobox width={300} mb="medium">
+      <Combobox width={400} mb="medium">
         <ComboboxInput />
         <ComboboxList>
           <ComboboxOption value="Apples" />
@@ -139,7 +149,7 @@ export function ComboboxDemo() {
           />
         </ComboboxList>
       </Combobox>
-      <ComboboxMulti width={300}>
+      <ComboboxMulti width={400}>
         <ComboboxMultiInput onClear={() => alert('CLEAR')} />
         <ComboboxMultiList>
           <ComboboxMultiOption value="Apples" />
