@@ -102,13 +102,13 @@ exports[`A FieldRadio 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldRadioID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldRadioID"
   >
     👍
   </span>
@@ -238,13 +238,13 @@ exports[`A FieldRadio checked 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldRadioID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldRadioID"
   >
     👍
   </span>
