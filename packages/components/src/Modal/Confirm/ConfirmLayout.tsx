@@ -24,7 +24,6 @@
 
  */
 import React, { FC, ReactElement } from 'react'
-
 import { ButtonProps } from '../../Button'
 import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
@@ -67,7 +66,7 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
       </ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
-          <Paragraph>{message}</Paragraph>
+          <Paragraph wrap>{message}</Paragraph>
         ) : (
           message
         )}

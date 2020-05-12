@@ -97,13 +97,13 @@ exports[`A FieldCheckbox 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldCheckboxID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldCheckboxID"
   >
     👍
   </span>
@@ -247,13 +247,13 @@ exports[`A FieldCheckbox with checked value 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldCheckboxID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldCheckboxID"
   >
     👍
   </span>

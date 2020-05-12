@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
   - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
 - `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
+=======
+
+### Fixed
+
+- `Confirm` corrected word wrapping when long strings without white-space are used
+
+## [0.7.31] - 2020-05-12
+
+### Fixed
+
+- `FieldInline` `for` attribute moved to the correct `label`
 
 ## [0.7.30] - 2020-05-07
 
