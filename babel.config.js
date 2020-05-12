@@ -48,7 +48,7 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
-      // '@babel/plugin-transform-runtime',
+      ['@babel/plugin-transform-runtime', { corejs: 3 }],
       'babel-plugin-styled-components',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
