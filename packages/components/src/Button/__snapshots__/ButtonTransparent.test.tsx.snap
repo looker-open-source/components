@@ -25,8 +25,8 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   white-space: nowrap;
   font-size: 1rem;
   height: 36px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .c0[disabled] {
@@ -40,11 +40,12 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   background: transparent;
   border: 1px solid transparent;
   color: #6C43E0;
+  padding: 0 0.5rem;
 }
 
 .c1 .c2 {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .c1:active,
@@ -77,7 +78,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje kFWnwj"
+  class="sc-bxivhb RlxIa sc-ifAKCX sc-EHOje iSsvFx"
 >
   focus
 </button>
@@ -108,8 +109,8 @@ exports[`ButtonTransparent has the correct style 1`] = `
   white-space: nowrap;
   font-size: 1rem;
   height: 36px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .c0[disabled] {
@@ -123,11 +124,12 @@ exports[`ButtonTransparent has the correct style 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #6C43E0;
+  padding: 0 0.5rem;
 }
 
 .c1 .c2 {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .c1:active,

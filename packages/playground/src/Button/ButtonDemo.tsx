@@ -36,6 +36,7 @@ import {
   Grid,
   Space,
   SpaceVertical,
+  IconButton,
 } from '@looker/components'
 
 import {
@@ -77,7 +78,7 @@ export const ButtonDemo: FC = () => {
   ) => {
     const ButtonTag = ButtonComponents[style]
     return (
-      <Space gap="small">
+      <Space gap="small" key={`${style}-${color}-${size}-buttons`}>
         <ButtonTag size={size} color={color}>
           Button
         </ButtonTag>
@@ -154,6 +155,17 @@ export const ButtonDemo: FC = () => {
           </ButtonContainer>
         </Grid>
       </SpaceVertical>
+
+      <Box width="400px">
+        <Heading>Icon Button</Heading>
+        <Space>
+          <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
+          <IconButton icon="Favorite" size="xsmall" label="Favorite" />
+          <IconButton icon="Favorite" size="small" label="Favorite" />
+          <IconButton icon="Favorite" size="medium" label="Favorite" />
+          <IconButton icon="Favorite" size="large" label="Favorite" />
+        </Space>
+      </Box>
 
       <SpaceVertical gap="large">
         <Heading>Open this dialog</Heading>

@@ -25,14 +25,38 @@
  */
 
 import styled from 'styled-components'
-import { ButtonBase } from './ButtonBase'
+import { ButtonBase, ButtonBaseProps } from './ButtonBase'
+
+export const transprentButtonPadding = (props: ButtonBaseProps) => {
+  let padding = '20px'
+  switch (props.size) {
+    case 'xsmall':
+      padding = '8px'
+      break
+    case 'small':
+      padding = '16px'
+      break
+    case 'large':
+      padding = '20px'
+      break
+    case 'medium':
+    default:
+      padding = '20px'
+  }
+
+  return padding
+}
 
 export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
   border: 1px solid transparent;
   color: ${({ theme, color = 'primary' }) =>
     theme.colors.semanticColors[color].main};
-  padding: 0 ${({ theme }) => theme.space.xsmall};
+  padding: 0
+    ${(props) =>
+      props.iconBefore || props.iconAfter
+        ? transprentButtonPadding(props)
+        : props.theme.space.xsmall};
 
   &:active,
   &.active {

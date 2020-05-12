@@ -54,8 +54,8 @@ exports[`Banner can be dismissed 1`] = `
   white-space: nowrap;
   font-size: 0.875rem;
   height: 28px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   padding: 0rem;
   margin-left: auto;
 }
@@ -98,11 +98,12 @@ exports[`Banner can be dismissed 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c5 .c8 {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .c5:active,
@@ -137,6 +138,7 @@ exports[`Banner can be dismissed 1`] = `
 
 .c6 {
   margin-left: auto;
+  padding: 0;
 }
 
 .c6:hover {

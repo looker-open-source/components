@@ -207,9 +207,9 @@ const outlineCSS = (props: IconButtonProps) => {
 export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
-
+  /* remove padding applied to transparent buttons, so icon size is preserved correctly */
+  padding: 0;
   ${(props) => props.outline && outlineCSS}
-
   ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 

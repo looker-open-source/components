@@ -39,8 +39,8 @@ exports[`ModalHeader 1`] = `
   white-space: nowrap;
   font-size: 0.875rem;
   height: 28px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   padding: 0rem;
 }
 
@@ -55,11 +55,12 @@ exports[`ModalHeader 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c3 .c7 {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .c3:active,
@@ -110,6 +111,10 @@ exports[`ModalHeader 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c4 {
+  padding: 0;
 }
 
 .c4 svg {

@@ -39,8 +39,8 @@ exports[`IconButton accepts color 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -55,6 +55,7 @@ exports[`IconButton accepts color 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #CC1F36;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -90,6 +91,10 @@ exports[`IconButton accepts color 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -175,8 +180,8 @@ exports[`IconButton accepts events 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -191,6 +196,7 @@ exports[`IconButton accepts events 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -226,6 +232,10 @@ exports[`IconButton accepts events 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -312,8 +322,8 @@ exports[`IconButton accepts events 2`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -328,6 +338,7 @@ exports[`IconButton accepts events 2`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -363,6 +374,10 @@ exports[`IconButton accepts events 2`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -449,8 +464,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -465,6 +480,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -500,6 +516,10 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -586,8 +606,8 @@ exports[`IconButton default 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -602,6 +622,7 @@ exports[`IconButton default 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -637,6 +658,10 @@ exports[`IconButton default 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -722,8 +747,8 @@ exports[`IconButton outline 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -738,6 +763,7 @@ exports[`IconButton outline 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -776,6 +802,7 @@ exports[`IconButton outline 1`] = `
 }
 
 .c2 {
+  padding: 0;
   border: 1px solid #C1C6CC;
 }
 
@@ -879,8 +906,8 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -895,6 +922,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #CC1F36;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -930,6 +958,10 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -1015,8 +1047,8 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   white-space: nowrap;
   font-size: 0.75rem;
   height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
 }
 
@@ -1031,6 +1063,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #CC1F36;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
@@ -1066,6 +1099,10 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
@@ -1149,10 +1186,10 @@ exports[`IconButton resized 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1.375rem;
+  font-size: 1.125rem;
   height: 44px;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding: 0rem;
 }
 
@@ -1167,11 +1204,12 @@ exports[`IconButton resized 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
+  padding: 0 0.5rem;
 }
 
 .c1 .c5 {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .c1:active,
@@ -1202,6 +1240,10 @@ exports[`IconButton resized 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  padding: 0;
 }
 
 .c2 svg {
