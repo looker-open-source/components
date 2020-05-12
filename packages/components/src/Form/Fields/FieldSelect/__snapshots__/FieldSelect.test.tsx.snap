@@ -140,6 +140,7 @@ exports[`A FieldSelect 1`] = `
 
 .c0 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 
@@ -422,6 +423,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c0 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 
@@ -753,6 +755,7 @@ exports[`A required FieldSelect 1`] = `
 
 .c0 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 
@@ -1041,6 +1044,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c0 > .c1 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 

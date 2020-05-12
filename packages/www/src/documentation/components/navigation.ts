@@ -88,6 +88,10 @@ const components: NavigationSection = {
           path: 'inline-input-text',
         },
         {
+          title: 'InlineTextArea',
+          path: 'inline-text-area',
+        },
+        {
           title: 'InputChips',
           path: 'input-chips',
         },
@@ -126,6 +130,10 @@ const components: NavigationSection = {
         {
           title: 'RadioGroup',
           path: 'radio-group',
+        },
+        {
+          title: 'RangeSlider',
+          path: 'range-slider',
         },
         {
           title: 'Select',

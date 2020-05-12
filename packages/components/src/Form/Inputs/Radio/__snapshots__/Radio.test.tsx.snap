@@ -26,11 +26,9 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {
@@ -109,11 +107,9 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {
@@ -192,11 +188,9 @@ exports[`Radio default 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {
@@ -301,11 +295,9 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {
@@ -385,11 +377,9 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {
@@ -495,11 +485,9 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c0 input {

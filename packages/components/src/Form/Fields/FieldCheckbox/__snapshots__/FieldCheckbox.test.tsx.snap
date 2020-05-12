@@ -24,11 +24,9 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c4 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c4 input {
@@ -78,6 +76,7 @@ exports[`A FieldCheckbox 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
@@ -104,6 +103,7 @@ exports[`A FieldCheckbox 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldCheckboxID"
   >
     👍
   </span>
@@ -174,11 +174,9 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c4 {
-  display: inline-block;
   height: 1rem;
   position: relative;
   width: 1rem;
-  vertical-align: middle;
 }
 
 .c4 input {
@@ -228,6 +226,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3,max-content);
+  line-height: 1.25rem;
 }
 
 .c0 .c3 {
@@ -254,6 +253,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
+    htmlFor="FieldCheckboxID"
   >
     👍
   </span>

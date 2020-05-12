@@ -233,6 +233,16 @@ An icon can optionally be assigned to each item via the `icon` property.
 </MenuList>
 ```
 
+**Note:** If a `MenuItem` does not have an icon, but its sibling(s) does have an icon, the `MenuItem` without an icon will automatically allocate space on the left-hand side to align its text up with its sibling(s). This behavior applies to the `MenuItem` children of `MenuList` and `MenuGroup` elements.
+
+```jsx
+<MenuList>
+  <MenuItem icon="LogoRings">Cheddar</MenuItem>
+  <MenuItem>Gouda</MenuItem>
+  <MenuItem icon="ChartPie">Swiss</MenuItem>
+</MenuList>
+```
+
 ### Detail Text
 
 Use the `detail` prop to provide explanatory detail to a given item.

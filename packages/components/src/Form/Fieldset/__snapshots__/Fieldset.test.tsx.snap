@@ -47,7 +47,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c2.c2 > * {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .c2.c2 > :first-child {
@@ -166,6 +166,7 @@ exports[`Fieldset 1`] = `
 
 .c3 > .c4 {
   grid-area: label;
+  line-height: 1rem;
   padding-bottom: 0.5rem;
 }
 

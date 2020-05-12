@@ -82,19 +82,13 @@ ActionListRowLayout.displayName = 'ActionListRowLayout'
 export const ActionListRow = styled(ActionListRowLayout)`
   display: flex;
 
-  background: ${({ checked, disabled, hasCheckbox, theme }) =>
-    disabled
-      ? theme.colors.palette.charcoal100
-      : checked && hasCheckbox
-      ? theme.colors.palette.purple000
-      : undefined};
+  background: ${({ disabled, theme }) =>
+    disabled && theme.colors.palette.charcoal100};
 
   &:focus,
   &:hover {
     box-shadow: ${({ theme, supportsRaised, onClick }) =>
       supportsRaised && onClick && theme.shadows[2]};
-    background: ${({ theme, supportsRaised, onClick }) =>
-      !supportsRaised && onClick && theme.colors.palette.blue100};
     cursor: ${({ onClick }) => onClick && 'pointer'};
     outline: none;
 

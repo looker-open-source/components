@@ -27,18 +27,15 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
-import { WidthProps, width, fontSize, FontSizeProps } from 'styled-system'
+import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
-import { SliderSizeProps, sliderSize } from './slider_sizes'
 
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
-    Omit<InputProps, 'type'>,
-    SliderSizeProps {
+    Omit<InputProps, 'type'> {
   'aria-labelledby'?: string
   max?: number
   min?: number
@@ -54,7 +51,7 @@ const SliderInternal = forwardRef(
       value = 0,
       step,
       onChange,
-      size = 'medium',
+
       name,
       id,
       className,
@@ -81,11 +78,7 @@ const SliderInternal = forwardRef(
       ? boundSliderValue(value)
       : boundSliderValue(internalValue)
 
-    const fillPercent = (displayValue - min) / (max - min)
-
-    const { knobSize, trackHeight, fontSize, valueSpacing } = sliderSize({
-      size,
-    })
+    const fillPercent = Math.round(((displayValue - min) / (max - min)) * 100)
 
     const handleFocus = () => {
       setIsFocused(true)
@@ -101,36 +94,24 @@ const SliderInternal = forwardRef(
     }
 
     const handleChange = isFunction(onChange) ? onChange : internalChangeHandler
-
     return (
-      <div
-        className={className}
-        onBlur={handleUnfocus}
-        onKeyUp={handleFocus}
-        onMouseDown={handleUnfocus}
-        data-testid="container"
-      >
-        <SliderValueWrapper
-          offsetPercent={fillPercent}
-          valueSpacing={valueSpacing}
-          knobSize={knobSize}
-        >
+      <div className={className} data-testid="container">
+        <SliderValueWrapper>
           <SliderValue
-            fontSize={fontSize}
-            knobSize={knobSize}
             disabled={disabled}
+            isFocused={isFocused}
+            offsetPercent={fillPercent}
           >
             {displayValue}
           </SliderValue>
         </SliderValueWrapper>
-        <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
+        <SliderTrack>
           <SliderFill offsetPercent={fillPercent} disabled={disabled} />
         </SliderTrack>
         <SliderInput
           disabled={disabled}
           id={id}
           isFocused={isFocused}
-          knobSize={knobSize}
           max={max}
           min={min}
           name={name}
@@ -141,6 +122,8 @@ const SliderInternal = forwardRef(
           aria-labelledby={restProps['aria-labelledby']}
           data-testid="slider-input"
           ref={ref}
+          onBlur={handleUnfocus}
+          onFocus={handleFocus}
         />
       </div>
     )
@@ -148,29 +131,21 @@ const SliderInternal = forwardRef(
 )
 
 interface SliderInputProps {
-  knobSize: number
   isFocused?: boolean
 }
 
 const sliderThumbFocusCss = css<SliderInputProps>`
-  ${({ theme: { colors } }) => {
-    const focusRing = rgba(colors.semanticColors.primary.main, 0.2)
-    return css`
-      box-shadow: 0 0 0 3px ${focusRing};
-      transform: scale3d(1.15, 1.15, 1);
-      border-width: 4px;
-    `
-  }}
+  border-width: 5px;
 `
 
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
-  ${({ theme: { colors }, knobSize, isFocused }) => css`
+  ${({ theme: { colors }, isFocused }) => css`
     border: 3px solid ${colors.semanticColors.primary.main};
-    height: ${knobSize}px;
-    width: ${knobSize}px;
+    height: 16px;
+    width: 16px;
     background: ${colors.palette.white};
     ${isFocused && sliderThumbFocusCss}
   `}
@@ -179,7 +154,7 @@ const sliderThumbCss = css<SliderInputProps>`
 const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   background: transparent;
   display: block;
-  height: ${({ knobSize }) => knobSize + 6}px;
+  height: 22px;
   position: relative;
   width: 100%;
   -webkit-appearance: none; /* stylelint-disable-line */
@@ -224,20 +199,6 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
     }
   }
 
-  &:hover {
-    &::-webkit-slider-thumb {
-      transform: scale3d(1.15, 1.15, 1);
-    }
-
-    &::-moz-range-thumb {
-      transform: scale3d(1.15, 1.15, 1);
-    }
-
-    &::-ms-thumb {
-      transform: scale3d(1.15, 1.15, 1);
-    }
-  }
-
   &:disabled {
     &::-webkit-slider-thumb {
       border-color: ${({ theme }) => theme.colors.palette.charcoal500};
@@ -254,19 +215,15 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   }
 `
 
-interface SliderTrackProps extends SliderInputProps {
-  trackHeight: number
-}
-
-const SliderTrack = styled.div<SliderTrackProps>`
-  width: ${({ knobSize }) => `calc(100% - ${knobSize}px)`};
-  height: ${({ trackHeight }) => `${trackHeight}px`};
+const SliderTrack = styled.div`
+  width: calc(100% - 16px);
+  height: 4px;
   background: ${({ theme }) => theme.colors.palette.charcoal200};
   border-radius: ${({ theme }) => theme.radii.small};
   position: absolute;
   top: 50%;
-  left: ${({ knobSize }) => `${knobSize / 2}px`};
-  margin-top: ${({ trackHeight }) => `-${trackHeight / 2}px`};
+  left: 8px;
+  margin-top: -2px;
 `
 
 interface ControlProps {
@@ -278,37 +235,35 @@ const SliderFill = styled.div<ControlProps>`
   height: 100%;
   background: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.palette.charcoal400 : colors.semanticColors.primary.main};
-  width: ${({ offsetPercent }) => offsetPercent * 100}%;
+  width: ${({ offsetPercent }) => offsetPercent}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
 
-interface SliderValueProps extends SliderInputProps, FontSizeProps {
+interface SliderValueProps extends SliderInputProps {
   disabled?: boolean
+  isFocused: boolean
+  offsetPercent: number
 }
 
 const SliderValue = styled.div<SliderValueProps>`
-  ${fontSize}
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.palette.charcoal700 : colors.semanticColors.primary.main};
   line-height: 1;
   user-select: none;
-  transform: translate(-35%);
+  transform: translateX(-50%) translateY(-1.3rem);
+  left: ${({ offsetPercent }) => offsetPercent}%;
+  position: absolute;
+  text-align: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  background: ${({ theme, isFocused }) =>
+    isFocused ? theme.colors.palette.purple100 : theme.colors.palette.white};
 `
 
-interface SliderValueWrapperProps {
-  valueSpacing: string
-  offsetPercent: number
-  knobSize: number
-}
-
-const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
-  text-align: center;
-  left: calc(
-    ${({ offsetPercent, knobSize }) =>
-      `((100% - ${knobSize}px) * ${offsetPercent}) + ${knobSize / 2}px`}
-  );
-  position: absolute;
-  top: ${({ valueSpacing }) => valueSpacing};
+const SliderValueWrapper = styled.div`
+  position: relative;
+  width: calc(100% - 14px);
+  margin: 0 auto;
 `
 
 export const Slider = styled(SliderInternal)<SliderProps>`

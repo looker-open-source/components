@@ -55,7 +55,7 @@ const FieldInlineLayout: FC<Omit<
 }) => {
   return (
     <label className={className}>
-      <Label as="span" fontSize={labelFontSize}>
+      <Label as="span" fontSize={labelFontSize} htmlFor={id}>
         {label}
         {required && <RequiredStar />}
       </Label>
@@ -77,6 +77,7 @@ export const FieldInline = styled(FieldInlineLayout)`
   display: grid;
   grid-template-areas: 'input label' '. messages';
   grid-template-columns: repeat(3, max-content);
+  line-height: ${({ theme }) => theme.lineHeights.small};
 
   ${InputArea} {
     grid-area: input;

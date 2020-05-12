@@ -235,7 +235,6 @@ const ActionLayout = styled.div<ActionProps>`
 const SandboxWrapper = styled.div`
   overflow: hidden;
   ${({ theme: { lineHeights, colors, radii } }) => `
-    line-height: ${lineHeights.medium};
     margin-bottom: ${lineHeights.medium};
     border: 1px solid ${colors.palette.charcoal200};
     border-radius: ${radii.medium};
@@ -251,6 +250,7 @@ const PreviewWrapper = styled.div`
 
 const EditorWrapper = styled.div`
   background: ${({ theme }) => theme.colors.palette.charcoal700};
+  line-height: ${({ theme }) => theme.lineHeights.medium};
   display: grid;
   grid-template-columns: 1fr auto;
   textarea,

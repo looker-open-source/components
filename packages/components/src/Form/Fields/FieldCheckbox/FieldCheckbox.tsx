@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { omitFieldProps, pickFieldProps } from '../Field'
@@ -38,7 +38,7 @@ export interface FieldCheckboxProps extends CheckboxProps, FieldBaseProps {}
 const FieldCheckboxLayout = forwardRef(
   (props: FieldCheckboxProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
+    const id = useID(props.id)
     return (
       <FieldInline
         {...pickFieldProps(props)}

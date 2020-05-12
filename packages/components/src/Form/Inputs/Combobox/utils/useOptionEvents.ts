@@ -24,6 +24,7 @@
 
  */
 
+import throttle from 'lodash/throttle'
 import xorWith from 'lodash/xorWith'
 import { Context, useContext } from 'react'
 import { useWrapEvent } from '../../../../utils'
@@ -39,9 +40,13 @@ export function useOptionEvents<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
 >(props: ComboboxOptionProps, context: Context<CProps>) {
   const { label, value, onClick, onMouseEnter } = props
-  const { data, onChange, transition, closeOnSelectPropRef } = useContext(
-    context
-  )
+  const {
+    data,
+    onChange,
+    transition,
+    closeOnSelectPropRef,
+    isAutoScrollingRef,
+  } = useContext(context)
   const { options } = data as ComboboxMultiData
 
   function handleClick() {
@@ -62,10 +67,11 @@ export function useOptionEvents<
     }
   }
 
-  function handleMouseEnter() {
+  const handleMouseEnter = throttle(() => {
+    if (isAutoScrollingRef && isAutoScrollingRef.current) return
     const option = { label, value }
     transition && transition(ComboboxActionType.NAVIGATE, { option })
-  }
+  }, 50)
 
   return {
     onClick: useWrapEvent(handleClick, onClick),

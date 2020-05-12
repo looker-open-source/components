@@ -5,21 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.30] - 2020-05-07
 
 ### Added
 
-- Updated the `ViewColumn` icon to better match keylines and guides
-- `GitBranch`, `ViewColumn`, `SectionDrop` icons
+- Icons: `GitBranch`, `ViewColumn`, `SectionDrop`
+- `InlineInputText` supports placeholder attribute
+- `InlineTextArea` implemented with test and documentation.
+- `RangeSlider` component
+- `Menu` now automatically preserves space for icons if any items have an icon assigned
+  - `MenuContext` now includes `menuItemStyleContext` for "preserved icon space"-related properties
+  - `MenuItem` renders an empty Box with the same size as the icon(s) of sibling `MenuItem's (if any)
+  - `MenuList`, `MenuGroup` contain piece of state the tracks the size of the preserved icon space
+- `Select` and `SelectMulti` now supports windowing (virtualization)
+  - `windowedOptions` prop overrides the default condition of >= 100 options
 
 ### Changed
 
-- updated documentation for Filedset to include label and legend
+- `ActionList` no longer highlights selected rows or hovered rows (when onClickRowSelect is true)
+- `FieldInline` & `ButtonItem` labels now include the `for` attribute
+- `Field` & `FieldInline` (therefore all `Field*`) have more explicit line-heights to enforce consistent layout.
+- `Fieldset`
+  - updated documentation to include label and legend
+  - default spacing switched from `xsmall` to `small` to improve visual relationship with their `Input*`
+- Icon: `ViewColumn` updated to better match keylines and guides
 
 ### Fixed
 
-- `ToggleSwitch` React warning
-- add placeholder attribute to InlineInputText
+- `Prompt` behaves better
+  - Clears out old `defaultValue` when new `defaultValue` is passed in
+  - Clears out any user input after pressing cancel button
+  - Updated test suite to prevent future regressions for the above fixes
+- `ToggleSwitch` React warning fixed
+
+### Removed
+
+- `ActionListItemAction` no longer supports the `color` prop
 
 ## [0.7.29] - 2020-04-24
 

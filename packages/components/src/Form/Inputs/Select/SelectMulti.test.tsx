@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { act, cleanup, fireEvent, wait } from '@testing-library/react'
+import { cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -97,7 +97,7 @@ describe('SelectMulti', () => {
   })
 
   describe('showCreate', () => {
-    test('create option replaces "No options"', async () => {
+    test('create option replaces "No options"', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
         <SelectMulti
           defaultValues={['test value']}
@@ -108,27 +108,24 @@ describe('SelectMulti', () => {
       )
 
       const input = getByPlaceholderText('Search')
-      act(() => {
-        fireEvent.focus(input)
-        fireEvent.change(input, { target: { value: 'some text' } })
-      })
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'some text' } })
 
       expect(getByText('Create "some text"')).toBeVisible()
       expect(queryByText('No options')).not.toBeInTheDocument()
 
-      act(() => {
-        fireEvent.focus(input)
-        fireEvent.change(input, { target: { value: 'test value' } })
-      })
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'test value' } })
 
       // create option doesn't show if inputValue is already in current values
       expect(getByText('No options')).toBeVisible()
       expect(queryByText('Create "test value"')).not.toBeInTheDocument()
-      // Resolves "act" warning
-      await wait()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
     })
 
-    test('custom label, checks options', async () => {
+    test('custom label, checks options', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
         <SelectMulti
           options={basicOptions}
@@ -142,49 +139,43 @@ describe('SelectMulti', () => {
       )
 
       const input = getByPlaceholderText('Search')
-      act(() => {
-        fireEvent.focus(input)
-        fireEvent.change(input, { target: { value: 'some text' } })
-      })
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'some text' } })
 
       expect(getByText('some text CREATE LABEL')).toBeVisible()
 
-      act(() => {
-        fireEvent.focus(input)
-        fireEvent.change(input, { target: { value: 'foo' } })
-      })
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'foo' } })
 
       // create option doesn't show if inputValue is in options
       expect(queryByText('foo CREATE LABEL')).not.toBeInTheDocument()
-      // Resolves "act" warning
-      await wait()
+      // Close popover to silence act() warning
+      fireEvent.click(document)
     })
   })
 })
 
 describe('closeOnSelect', () => {
-  test('false by default', async () => {
+  test('false by default', () => {
     const { getByText, getAllByText, getByPlaceholderText } = renderWithTheme(
       <SelectMulti options={basicOptions} placeholder="Search" />
     )
 
     const input = getByPlaceholderText('Search')
-    act(() => {
-      fireEvent.mouseDown(input)
-    })
+    fireEvent.mouseDown(input)
 
     const bar = getByText('Bar')
 
     expect(getByText('Foo')).toBeVisible()
     expect(bar).toBeVisible()
 
-    act(() => {
-      fireEvent.click(bar)
-    })
+    fireEvent.click(bar)
+
     expect(getByText('Foo')).toBeVisible()
     expect(getAllByText('Bar')).toHaveLength(2)
-    // Resolves "act" warning
-    await wait()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test('true', () => {
@@ -193,18 +184,14 @@ describe('closeOnSelect', () => {
     )
 
     const input = getByPlaceholderText('Search')
-    act(() => {
-      fireEvent.mouseDown(input)
-    })
+    fireEvent.mouseDown(input)
 
     const bar = getByText('Bar')
 
     expect(getByText('Foo')).toBeVisible()
     expect(bar).toBeVisible()
 
-    act(() => {
-      fireEvent.click(bar)
-    })
+    fireEvent.click(bar)
     // Bar is now a chip
     expect(getByText('Bar')).toBeVisible()
     // list has closed
@@ -226,10 +213,8 @@ describe('closeOnSelect', () => {
       expect(getByText('Foo')).toBeVisible()
       expect(getByText('Bar')).toBeVisible()
 
-      act(() => {
-        fireEvent.keyDown(input, {
-          key: 'Backspace',
-        })
+      fireEvent.keyDown(input, {
+        key: 'Backspace',
       })
 
       expect(getByText('Foo')).toBeVisible()
@@ -251,10 +236,8 @@ describe('closeOnSelect', () => {
       expect(getByText('Foo')).toBeVisible()
       expect(getByText('Bar')).toBeVisible()
 
-      act(() => {
-        fireEvent.keyDown(input, {
-          key: 'Backspace',
-        })
+      fireEvent.keyDown(input, {
+        key: 'Backspace',
       })
 
       expect(getByText('Foo')).toBeVisible()

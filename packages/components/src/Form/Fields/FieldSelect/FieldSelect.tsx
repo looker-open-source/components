@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
+import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import { Select, SelectProps } from '../../Inputs/Select/Select'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -36,7 +36,7 @@ export interface FieldSelectProps extends FieldProps, SelectProps {}
 const FieldSelectComponent = forwardRef(
   (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
+    const id = useID(props.id)
     return (
       <Field
         {...pickFieldProps(props)}
