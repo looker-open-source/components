@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Leverages `lerna` to largely remove need for per-package scripts
 - `yarn playground` & `yarn gatsby` replace `yarn develop` - no need to pre-compile for local development now.
 
+### Fixed
+
+- `Confirm` corrected word wrapping when long strings without white-space are used
+
 ## [0.7.31] - 2020-05-12
 
 ### Fixed
