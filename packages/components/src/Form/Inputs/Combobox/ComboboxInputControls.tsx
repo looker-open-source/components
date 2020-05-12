@@ -26,7 +26,7 @@
 import React, { Children, FC } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../../Icon'
-import { InputSearchClear } from '../InputSearch/InputSearchClear'
+import { InputSearchControls } from '../InputSearch/InputSearchControls'
 
 interface ComboboxInputControlsProps {
   validationType?: 'error'
@@ -58,7 +58,7 @@ export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
       )}
       {renderSearchControls && (
         <>
-          <InputSearchClear
+          <InputSearchControls
             onClear={onClear}
             showClear={true}
             disabled={disabled}

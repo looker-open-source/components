@@ -39,7 +39,7 @@ export interface InputSearchControlsProps {
   disabled?: boolean
 }
 
-export const InputSearchClearInternal = forwardRef(
+export const InputSearchControlsInternal = forwardRef(
   (
     {
       onClear,
@@ -92,9 +92,9 @@ export const InputSearchClearInternal = forwardRef(
   }
 )
 
-InputSearchClearInternal.displayName = 'InputSearchClearInternal'
+InputSearchControlsInternal.displayName = 'InputSearchControlsInternal'
 
-export const InputSearchClear = styled(InputSearchClearInternal)`
+export const InputSearchControls = styled(InputSearchControlsInternal)`
   height: ${(props) => props.height};
   display: flex;
   align-items: center;

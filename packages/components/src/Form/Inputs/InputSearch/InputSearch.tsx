@@ -28,7 +28,7 @@ import React, { FC, useEffect, useState, FormEvent, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../../Icon'
 import { InputSearchBase, InputSearchBaseProps } from './InputSearchBase'
-import { InputSearchClear } from './InputSearchClear'
+import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
   extends Omit<
@@ -62,6 +62,7 @@ export const InputSearch: FC<InputSearchProps> = ({
   const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
     setValue('')
     onClear && onClear(e)
+    onChange && onChange(e)
   }
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
@@ -86,7 +87,7 @@ export const InputSearch: FC<InputSearchProps> = ({
       }
       searchControls={
         !hideControls ? (
-          <InputSearchClear
+          <InputSearchControls
             onClear={handleClear}
             disabled={disabled}
             summary={summary}
