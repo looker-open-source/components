@@ -27,14 +27,14 @@
 import { NavigationSection } from '../../Layout'
 
 const navigation: NavigationSection = {
-  title: 'Utilities',
-  path: 'utilities',
   children: [
     {
-      title: 'GlobalStyle',
       path: 'globalstyle',
+      title: 'GlobalStyle',
     },
   ],
+  path: 'utilities',
+  title: 'Utilities',
 }
 
 export default navigation

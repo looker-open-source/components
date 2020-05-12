@@ -94,6 +94,10 @@ const InputComponent = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+    const focusInput = () => internalRef.current && internalRef.current.focus()
+
     if (iconBefore && prefix) {
       // eslint-disable-next-line no-console
       console.warn(`Only use IconBefore or prefix not both at the same time. `)
@@ -105,10 +109,6 @@ const InputComponent = forwardRef(
       console.warn(`Only use IconAfter or suffix not both at the same time. `)
       return null
     }
-
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const before = iconBefore ? (
       <InputIconStyle paddingRight="xsmall">

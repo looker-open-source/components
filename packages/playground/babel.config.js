@@ -24,37 +24,24 @@
 
  */
 
-module.exports = api => {
+module.exports = (api) => {
   api.cache(true)
 
   return {
+    extends: '../../babel.config.js',
     presets: [
       [
         '@babel/preset-env',
         {
-          useBuiltIns: 'entry',
           corejs: 3,
           // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
           targets: {
             browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
             node: 'current',
           },
+          useBuiltIns: 'entry',
         },
       ],
-      [
-        '@babel/preset-react',
-        {
-          development: process.env.BABEL_ENV !== 'build',
-        },
-      ],
-      '@babel/preset-typescript',
-    ],
-    // ignore: ['node_modules'],
-    plugins: [
-      '@babel/plugin-proposal-class-properties',
-      '@babel/plugin-proposal-object-rest-spread',
-      '@babel/plugin-transform-runtime',
-      'babel-plugin-styled-components',
     ],
   }
 }

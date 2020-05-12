@@ -1,9 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.common.json",
   "compilerOptions": {
-    "noEmit": false,
-    "declaration": true
-  },
-  "exclude": ["**/*.story.*", "**/*.test.*", "dist"],
-  "include": []
+    "declaration": true,
+    "emitDeclarationOnly": true
+  }
 }

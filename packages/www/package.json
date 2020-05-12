@@ -1,23 +1,27 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.30",
-  "dependencies": {
+  "version": "0.7.31",
+  "devDependencies": {
+    "@looker/components": "^0.7.31",
+    "@looker/design-tokens": "^0.7.30",
+    "@looker/icons": "^0.7.30",
     "@mdx-js/mdx": "^1.6.0",
     "@mdx-js/react": "^1.6.1",
     "@reach/router": "^1.3.3",
+    "@types/react": "^16.9.34",
+    "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-helmet": "^5.0.15",
-    "eslint-plugin-mdx": "^1.6.8",
+    "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.20.22",
-    "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-manifest": "^2.3.6",
     "gatsby-plugin-mdx": "^1.2.6",
     "gatsby-plugin-react-helmet": "^3.2.4",
-    "gatsby-plugin-sharp": "^2.6.0",
-    "gatsby-plugin-styled-components": "^3.3.1",
+    "gatsby-plugin-styled-components": "^3.3.0",
+    "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.4.1",
-    "gatsby-remark-images": "^3.3.1",
     "gatsby-source-filesystem": "^2.3.1",
+    "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "polished": "^3.6.1",
     "prism-react-renderer": "^1.1.0",
@@ -25,36 +29,13 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-    "react-live": "^2.2.2"
-  },
-  "devDependencies": {
-    "@looker/components": "^0.7.30",
-    "@looker/design-tokens": "^0.7.30",
-    "@looker/icons": "^0.7.30",
-    "@types/react": "^16.9.34",
-    "@types/react-copy-to-clipboard": "^4.3.0",
-    "eslint": "^6.8.0",
-    "gh-pages": "^2.2.0",
+    "react-live": "^2.2.2",
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "lint": "eslint . --ext mdx --config package.json --no-eslintrc",
-    "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
-    "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/www"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@looker/eslint-config/no-type-checking",
-      "plugin:mdx/recommended"
-    ]
+    "build": "gatsby build",
+    "postbuild": "echo \"components.looker.com\" > public/CNAME",
+    "deploy": "yarn build && yarn postbuild && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
+    "start": "gatsby develop"
   }
 }

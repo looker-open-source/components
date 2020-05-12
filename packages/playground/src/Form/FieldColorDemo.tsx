@@ -24,11 +24,11 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, FieldColor, FieldSelect } from '@looker/components'
 
 export function FieldColorDemo() {
-  const [color, setColor] = React.useState('red')
+  const [color, setColor] = useState('red')
 
   function handleChange(value: string) {
     setColor(value)

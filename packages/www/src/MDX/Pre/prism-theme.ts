@@ -36,67 +36,70 @@ const prismTheme: PrismTheme = {
   },
   styles: [
     {
-      types: ['prolog', 'doctype', 'cdata'],
       style: {
         color: palette.yellow200,
       },
+      types: ['prolog', 'doctype', 'cdata'],
     },
     {
-      types: ['comment'],
       style: {
         color: palette.charcoal400,
       },
+      types: ['comment'],
     },
     {
-      types: ['namespace'],
       style: {
         opacity: 0.7,
       },
+      types: ['namespace'],
     },
     {
-      types: ['parameter'],
       style: {
         color: palette.red300,
       },
+      types: ['parameter'],
     },
     {
-      types: ['tag'],
       style: {
         color: palette.yellow300,
       },
+      types: ['tag'],
     },
     {
-      types: ['operator', 'number', 'keyword', 'attr-name'],
       style: {
         color: palette.purple200,
       },
+      types: ['operator', 'number', 'keyword', 'attr-name'],
     },
     {
-      types: ['punctuation'],
       style: {
         color: palette.blue200,
       },
+      types: ['punctuation'],
     },
     {
-      types: ['property', 'function', 'script'],
       style: {
         color: palette.blue400,
       },
+      types: ['property', 'function', 'script'],
     },
     {
-      types: ['tag-id', 'selector', 'atrule-id'],
       style: {
         color: '#eeebff',
       },
+      types: ['tag-id', 'selector', 'atrule-id'],
     },
 
     {
-      types: ['string', 'attr-value'],
       style: {
         color: palette.green300,
       },
+      types: ['string', 'attr-value'],
     },
     {
+      style: {
+        color: '#ffcc99',
+      },
       types: [
         'boolean',
         'entity',
@@ -110,39 +113,36 @@ const prismTheme: PrismTheme = {
         'placeholder',
         'variable',
       ],
-      style: {
-        color: '#ffcc99',
-      },
     },
     {
-      types: ['deleted'],
       style: {
         textDecorationLine: 'line-through',
       },
+      types: ['deleted'],
     },
     {
-      types: ['inserted'],
       style: {
         textDecorationLine: 'underline',
       },
+      types: ['inserted'],
     },
     {
-      types: ['italic'],
       style: {
         fontStyle: 'italic',
       },
+      types: ['italic'],
     },
     {
-      types: ['important', 'bold'],
       style: {
         fontWeight: 'bold',
       },
+      types: ['important', 'bold'],
     },
     {
-      types: ['important'],
       style: {
         color: '#c4b9fe',
       },
+      types: ['important'],
     },
   ],
 }

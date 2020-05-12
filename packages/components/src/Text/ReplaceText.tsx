@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC, ReactNode } from 'react'
+import React, { Children, FC, ReactNode } from 'react'
 import isRegExp from 'lodash/isRegExp'
 import escapeRegExp from 'lodash/escapeRegExp'
 import isString from 'lodash/isString'
@@ -77,7 +77,7 @@ export const ReplaceText: FC<ReplaceTextProps> = ({
   return (
     <>
       {flatten(
-        React.Children.map(children, (child: ReactNode) => {
+        Children.map(children, (child: ReactNode) => {
           return isString(child) ? replaceString(child, match, replace) : child
         })
       )}
