@@ -24,23 +24,4 @@
 
  */
 
-import { ComponentsProvider } from '@looker/components'
-import React from 'react'
-import { render } from 'react-dom'
-import { FieldSelectMultiDemo } from './Form/FieldSelectMultiDemo'
-
-const App: React.FC = () => {
-  return (
-    <ComponentsProvider>
-      <FieldSelectMultiDemo />
-    </ComponentsProvider>
-  )
-}
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+export * from './FieldSelectMulti'
