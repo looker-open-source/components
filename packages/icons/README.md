@@ -6,7 +6,7 @@ Icons are defined in SVG format and are automatically built by a build script to
 
 - `src/svg`: All source SVG icon files are placed here. The build process uses the files in this directory to create components.
 - `src/generated`: Built artifacts are placed into this directory, including a
-  set of SVGs converted to React components in icons/dist/glyphs.
+  set of SVGs converted to React components in icons/lib/glyphs.
 
 ### Building Icons
 

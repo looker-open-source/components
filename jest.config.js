@@ -30,9 +30,9 @@ module.exports = {
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleNameMapper: {
-    '\\.(css)$': '<rootDir>/__mocks__/fileMock.js',
-    '\\.(svg)$': '<rootDir>/__mocks__/fileMock.js',
-    '\\.(woff)$': '<rootDir>/__mocks__/fileMock.js',
+    '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/config/jest/fileMock.js',
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   testMatch: ['**/?(*.)(spec|test).(ts|js)?(x)'],

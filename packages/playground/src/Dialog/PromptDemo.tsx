@@ -34,10 +34,14 @@ export const PromptDemo: FC = () => {
       title={'Choose a cheese!'}
       inputLabel={'Name of Cheese'}
       saveLabel={'Save'}
-      onCancel={() => {
+      onCancel={(close) => {
         alert('Prompt closed')
+        close()
       }}
-      onSave={(value: string) => alert(`You chose ${value}`)}
+      onSave={(value: string, close: () => void) => {
+        alert(`You chose ${value}`)
+        close()
+      }}
       secondary={
         <Button onClick={() => alert('Secondary clicked')}>
           Secondary Cheese

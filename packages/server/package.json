@@ -13,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "develop": "node-env-run src --exec nodemon | pino-colada"
+    "start": "node-env-run src --exec nodemon | pino-colada"
   },
   "dependencies": {
     "@looker/sdk": "^0.2.0-beta.32",

@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Box,
   Combobox,
@@ -39,11 +39,11 @@ import {
 } from '@looker/components'
 
 export function ComboboxDemo() {
-  const [option, setOption] = React.useState({ value: 'Bananas' })
+  const [option, setOption] = useState({ value: 'Bananas' })
   function handleChange(newOption: any) {
     setOption(newOption)
   }
-  const [options, setOptions] = React.useState([{ value: 'Bananas' }])
+  const [options, setOptions] = useState([{ value: 'Bananas' }])
   function handleMultiChange(newOptions: any) {
     setOptions(newOptions)
   }

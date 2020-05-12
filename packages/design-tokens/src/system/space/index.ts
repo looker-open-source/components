@@ -49,4 +49,4 @@ export type SpacingSizes =
 
 export type SpaceRamp = Record<SpacingSizes, string>
 
-export { SpaceProps } from 'styled-system'
+export type { SpaceProps } from 'styled-system'

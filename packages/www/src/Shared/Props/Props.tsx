@@ -48,7 +48,7 @@ const PropsCode = styled(Code).attrs({ fontSize: 'small' })`
   color: ${(props) => props.theme.colors.palette.purple400};
 `
 
-const Layout = styled(Flex).attrs({ py: 'small', mt: 'small', mb: 'large' })`
+const Layout = styled(Flex).attrs({ mb: 'large', mt: 'small', py: 'small' })`
   border-top: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
   border-bottom: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
   color: ${(props) => props.theme.colors.palette.charcoal500};

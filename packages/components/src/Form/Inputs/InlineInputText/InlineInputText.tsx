@@ -25,7 +25,7 @@
  */
 
 import pick from 'lodash/pick'
-import React, { forwardRef, Ref } from 'react'
+import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import { typography, TypographyProps } from '@looker/design-tokens'
@@ -50,11 +50,11 @@ export const InlineInputTextInternal = forwardRef(
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValueChange] = React.useState(valueProp || '')
+    const [value, setValueChange] = useState(valueProp || '')
 
     const displayValue = isFunction(onChange) ? valueProp : value
 
-    const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleValueChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValueChange(event.currentTarget.value)
     }
 

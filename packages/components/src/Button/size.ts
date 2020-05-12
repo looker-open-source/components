@@ -55,7 +55,7 @@ export interface ButtonSizeProps {
   size?: ButtonBaseSizes
 }
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonSizeMap = {
   xxsmall: 20,
   xsmall: 24,
@@ -64,7 +64,7 @@ export const buttonSizeMap = {
   large: 44,
 }
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonSize = variant({
   prop: 'size',
   variants: {

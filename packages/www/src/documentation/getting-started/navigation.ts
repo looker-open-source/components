@@ -26,30 +26,30 @@
 
 import { NavigationSection } from '../../Layout'
 const navigation: NavigationSection = {
-  title: 'Getting Started',
-  path: 'getting-started',
   children: [
     {
-      title: 'Installation',
       path: '',
+      title: 'Installation',
     },
     {
-      title: 'Extending',
       path: 'extending',
+      title: 'Extending',
     },
     {
-      title: 'Data Fetching',
       path: 'data-fetching',
+      title: 'Data Fetching',
     },
     {
-      title: 'Theme',
       path: 'theme',
+      title: 'Theme',
     },
     {
-      title: 'Writing Components',
       path: 'writing-components',
+      title: 'Writing Components',
     },
   ],
+  path: 'getting-started',
+  title: 'Getting Started',
 }
 
 export default navigation
