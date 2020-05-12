@@ -26,12 +26,15 @@
 
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
+import { TypographyProps, typography } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { Icon } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionLabelProps extends SimpleLayoutProps {
+export interface AccordionLabelProps
+  extends SimpleLayoutProps,
+    TypographyProps {
   children: string | ReactNode
   className?: string
   /**
@@ -113,6 +116,7 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
 }
 
 export const AccordionLabel = styled(AccordionLabelLayout)`
+  ${typography}
   ${simpleLayoutCSS}
 
   ${AccordianLabelChildrenContainer} {
@@ -127,6 +131,8 @@ export const AccordionLabel = styled(AccordionLabelLayout)`
 `
 
 AccordionLabel.defaultProps = {
+  fontSize: 'small',
+  fontWeight: 'semiBold',
   pr: 'large',
   py: 'xsmall',
 }
