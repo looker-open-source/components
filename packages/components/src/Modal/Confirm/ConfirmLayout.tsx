@@ -24,13 +24,6 @@
 
  */
 import React, { FC, ReactElement } from 'react'
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import styled from 'styled-components'
->>>>>>> fix message, but not title
-=======
->>>>>>> fix word wrapping on Confirm
 import { ButtonProps } from '../../Button'
 import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
