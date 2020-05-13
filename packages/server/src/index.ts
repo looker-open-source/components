@@ -25,15 +25,15 @@
  */
 
 import express, { Request, Response } from 'express'
-import bodyParser from 'body-parser'
+import { urlencoded } from 'body-parser'
 import pino from 'express-pino-logger'
-import dotenv from 'dotenv'
+import { config } from 'dotenv'
 import forwardRequest from './forwardRequest'
 
-dotenv.config()
+config()
 
 const app = express()
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(urlencoded({ extended: false }))
 app.use(pino())
 
 app.get('/api/*', async (req: Request, res: Response) => {

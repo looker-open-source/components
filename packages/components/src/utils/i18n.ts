@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+/* eslint-disable import/no-duplicates */
 import format from 'date-fns/format'
 import isValid from 'date-fns/isValid'
 import parse from 'date-fns/parse'
@@ -44,6 +46,7 @@ import sv from 'date-fns/locale/sv'
 import tr from 'date-fns/locale/tr'
 import zhCn from 'date-fns/locale/zh-CN'
 import zhTw from 'date-fns/locale/zh-TW'
+/* eslint-enable import/no-duplicates */
 
 export enum Locales {
   Arabic = 'ar',

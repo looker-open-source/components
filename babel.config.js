@@ -24,31 +24,13 @@
 
  */
 
-module.exports = api => {
+module.exports = (api) => {
+  const isTest = api.env('test')
   api.cache(true)
 
-  return {
-    presets: [
-      [
-        '@babel/env',
-        {
-          useBuiltIns: 'usage',
-          corejs: 3,
-          targets: {
-            browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
-            node: 'current',
-          },
-        },
-      ],
+  const ignore = isTest ? [] : ['node_modules']
 
-      [
-        '@babel/preset-react',
-        {
-          development: process.env.BABEL_ENV !== 'build',
-        },
-      ],
-      '@babel/preset-typescript',
-    ],
+  return {
     env: {
       build: {
         ignore: [
@@ -62,12 +44,24 @@ module.exports = api => {
         ],
       },
     },
-    ignore: ['node_modules'],
+    ignore,
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
-      '@babel/plugin-transform-runtime',
+      ['@babel/plugin-transform-runtime', { corejs: 3 }],
       'babel-plugin-styled-components',
+      '@babel/plugin-proposal-optional-chaining',
+      '@babel/plugin-proposal-nullish-coalescing-operator',
+    ],
+
+    presets: [
+      [
+        '@babel/preset-react',
+        {
+          development: process.env.BABEL_ENV !== 'build',
+        },
+      ],
+      '@babel/preset-typescript',
     ],
   }
 }

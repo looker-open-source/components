@@ -28,22 +28,17 @@ import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, { useMemo, useState, Ref, FC, ReactNode } from 'react'
+import { omit } from 'lodash'
 import { ModalContext } from '../Modal'
 import {
   useCallbackRef,
+  useID,
   usePopper,
   UsePopperProps,
   useForkedRef,
 } from '../utils'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { TooltipContent } from './TooltipContent'
-
-interface EventHandlers {
-  onBlur: () => void
-  onFocus: () => void
-  onMouseOut: (event: React.MouseEvent) => void
-  onMouseOver: () => void
-}
 
 export interface UseTooltipProps {
   /**
@@ -83,6 +78,11 @@ export interface UseTooltipProps {
   textAlign?: TextAlignProperty
 
   /**
+   * The id of the span containing the tooltip text (if absent, a random id will be generated)
+   */
+  id?: string
+
+  /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
   triggerElement?: HTMLElement | null
@@ -106,7 +106,14 @@ export interface TooltipProps extends UseTooltipProps {
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
-  children: (eventsHandlers: EventHandlers, ref: Ref<any>) => ReactNode
+  children: (tooltipProps: {
+    'aria-describedby': string
+    onBlur: () => void
+    onFocus: () => void
+    onMouseOut: (event: React.MouseEvent<Element, MouseEvent>) => void
+    onMouseOver: () => void
+    ref: Ref<any>
+  }) => ReactNode
 }
 export function useTooltip({
   arrow = true,
@@ -117,6 +124,7 @@ export function useTooltip({
   textAlign,
   disabled,
   surfaceStyles,
+  id,
   triggerElement,
   placement: propsPlacement = 'bottom',
 }: UseTooltipProps) {
@@ -154,13 +162,6 @@ export function useTooltip({
     })
   }
 
-  const eventHandlers = {
-    onBlur: handleClose,
-    onFocus: handleOpen,
-    onMouseOut: handleMouseOut,
-    onMouseOver: handleOpen,
-  }
-
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
       anchor: element,
@@ -190,6 +191,8 @@ export function useTooltip({
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
+  const guaranteedId = useID(id)
+
   const popper =
     isOpen && content && !disabled ? (
       <ModalContext.Provider value={{ closeModal: handleClose }}>
@@ -207,7 +210,12 @@ export function useTooltip({
           color="palette.charcoal000"
           {...surfaceStyles}
         >
-          <TooltipContent width={width} textAlign={textAlign}>
+          <TooltipContent
+            role="tooltip"
+            id={guaranteedId}
+            width={width}
+            textAlign={textAlign}
+          >
             {content}
           </TooltipContent>
         </OverlaySurface>
@@ -215,7 +223,11 @@ export function useTooltip({
     ) : null
 
   return {
-    eventHandlers,
+    'aria-describedby': guaranteedId,
+    onBlur: handleClose,
+    onFocus: handleOpen,
+    onMouseOut: handleMouseOut,
+    onMouseOver: handleOpen,
     popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
@@ -223,11 +235,16 @@ export function useTooltip({
 }
 
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { eventHandlers, tooltip, ref } = useTooltip(props)
+  const tooltipProps = useTooltip(props)
+
+  const tooltipPropsLabeled = {
+    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef']),
+  }
+
   return (
     <>
-      {tooltip}
-      {children(eventHandlers, ref)}
+      {tooltipProps.tooltip}
+      {children(tooltipPropsLabeled)}
     </>
   )
 }

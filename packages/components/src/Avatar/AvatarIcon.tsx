@@ -48,7 +48,7 @@ export interface AvatarIconProps extends AvatarProps {
   bg?: string
 }
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 const size = variant({
   prop: 'size',
   variants: {

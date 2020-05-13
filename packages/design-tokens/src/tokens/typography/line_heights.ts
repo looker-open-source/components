@@ -27,7 +27,7 @@
 import { rem } from 'polished'
 import { LineHeightRamp } from '../../system'
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const lineHeights: LineHeightRamp = {
   xxxxlarge: rem(64),
   xxxlarge: rem(52),

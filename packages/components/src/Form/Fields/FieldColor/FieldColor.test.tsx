@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import { fireEvent } from '@testing-library/react'
 import {
   assertSnapshotShallow,
@@ -129,11 +129,11 @@ describe('FieldColor', () => {
 
   test('with controlled state', () => {
     function Wrapper() {
-      const [value, setValue] = React.useState('')
+      const [value, setValue] = useState('')
       function handleClick() {
         setValue('yellow')
       }
-      function handleChange(e: React.FormEvent<HTMLInputElement>) {
+      function handleChange(e: FormEvent<HTMLInputElement>) {
         setValue(e.currentTarget.value)
       }
       return (

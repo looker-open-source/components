@@ -33,10 +33,10 @@ module.exports = {
     url: 'http://localhost:3001',
   },
   plugins: [
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-tsconfig-paths`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -56,27 +56,6 @@ module.exports = {
         defaultLayouts: {
           documentation: require.resolve('./src/Layout/Documentation.tsx'),
           default: require.resolve('./src/Layout/Default.tsx'),
-        },
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-            },
-          },
-        ],
-        plugins: [`gatsby-remark-images`],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-eslint',
-      options: {
-        test: /\.ts$|\.tsx$/,
-        exclude: /(node_modules|.cache|public|dist)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: false,
-          failOnError: false,
         },
       },
     },

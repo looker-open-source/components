@@ -54,8 +54,8 @@ const FieldInlineLayout: FC<Omit<
   validationMessage,
 }) => {
   return (
-    <label className={className}>
-      <Label as="span" fontSize={labelFontSize} htmlFor={id}>
+    <label className={className} htmlFor={id}>
+      <Label as="span" fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>

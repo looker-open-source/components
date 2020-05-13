@@ -26,6 +26,7 @@
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const PATHS = {
   app: path.join(__dirname, 'src/index.tsx'),
@@ -41,11 +42,7 @@ module.exports = {
   entry: {
     app: PATHS.app,
   },
-  output: {
-    path: __dirname + '/dist',
-    filename: 'index_bundle.js',
-  },
-  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
+
   mode: 'development',
   module: {
     rules: [
@@ -59,7 +56,13 @@ module.exports = {
       },
     ],
   },
+  output: {
+    filename: 'index_bundle.js',
+    path: path.join(__dirname, '/dist'),
+  },
+  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    plugins: [new TsconfigPathsPlugin()],
   },
 }

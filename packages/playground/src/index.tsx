@@ -24,15 +24,16 @@
 
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
+import React from 'react'
+import { render } from 'react-dom'
+import { TooltipDemo } from './Tooltip/TooltipDemo'
+
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <FieldsDemo />
+      <TooltipDemo />
     </ComponentsProvider>
   )
 }
@@ -42,5 +43,5 @@ const App: React.FC = () => {
   primary application, do your work in App.tsx instead.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+  render(<App />, document.getElementById('container'))
 })

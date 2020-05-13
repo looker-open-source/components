@@ -67,7 +67,7 @@ const renderBorder = (border: BorderType, index: number) => {
       <BorderExamples>
         {border.examples.map((example, idx) => (
           <BorderExample
-            style={{ borderColor: border.hex, background: example.bgColor }}
+            style={{ background: example.bgColor, borderColor: border.hex }}
             key={`border-${idx}`}
           >
             <Text
@@ -108,9 +108,9 @@ export class BorderRender extends Component<{}, { borders: BorderType[] }> {
       borders: [
         {
           examples: [
-            { name: 'White', bgColor: '#ffffff' },
-            { name: 'Charcoal000', bgColor: charcoal000 },
-            { name: 'Charcoal100', bgColor: charcoal100 },
+            { bgColor: '#ffffff', name: 'White' },
+            { bgColor: charcoal000, name: 'Charcoal000' },
+            { bgColor: charcoal100, name: 'Charcoal100' },
           ],
           hex: charcoal300,
           label: 'Default Border',
@@ -119,10 +119,10 @@ export class BorderRender extends Component<{}, { borders: BorderType[] }> {
         },
         {
           examples: [
-            { name: 'White', bgColor: '#ffffff' },
-            { name: 'Charcoal000', bgColor: charcoal000 },
-            { name: 'Charcoal100', bgColor: charcoal100 },
-            { name: 'Charcoal200', bgColor: charcoal200 },
+            { bgColor: '#ffffff', name: 'White' },
+            { bgColor: charcoal000, name: 'Charcoal000' },
+            { bgColor: charcoal100, name: 'Charcoal100' },
+            { bgColor: charcoal200, name: 'Charcoal200' },
           ],
           hex: charcoal400,
           label: 'Dark Border',
@@ -131,9 +131,9 @@ export class BorderRender extends Component<{}, { borders: BorderType[] }> {
         },
         {
           examples: [
-            { name: 'White', bgColor: '#ffffff' },
-            { name: 'Charcoal000', bgColor: charcoal000 },
-            { name: 'Charcoal100', bgColor: charcoal100 },
+            { bgColor: '#ffffff', name: 'White' },
+            { bgColor: charcoal000, name: 'Charcoal000' },
+            { bgColor: charcoal100, name: 'Charcoal100' },
           ],
           hex: charcoal200,
           label: 'Light Border',
@@ -142,9 +142,9 @@ export class BorderRender extends Component<{}, { borders: BorderType[] }> {
         },
         {
           examples: [
-            { name: 'Charcoal800', bgColor: charcoal800 },
-            { name: 'Charcoal700', bgColor: charcoal700 },
-            { name: 'Charcoal600', bgColor: charcoal600 },
+            { bgColor: charcoal800, name: 'Charcoal800' },
+            { bgColor: charcoal700, name: 'Charcoal700' },
+            { bgColor: charcoal600, name: 'Charcoal600' },
           ],
           hex: charcoal500,
           label: 'Border on Dark',

@@ -2,7 +2,7 @@
 
 Looker UI Components style guide is built on [Gatsby](https://gatsby.org/), a framework for building static react websites. You can run the style guide locally with the following command:
 
-1.  `yarn workspace www develop`
+1.  `yarn gatsby`
 1.  Open [http://localhost:8000](http://localhost:8000)
 
 ## Integration with the Looker UI Component library

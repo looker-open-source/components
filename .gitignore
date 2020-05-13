@@ -5,16 +5,20 @@ looker.ini
 # dependencies
 node_modules
 
+# typescript incrementals
+*.tsbuildinfo
+
 # testing
 /coverage
 .cache
+.eslintcache
 
 # code-gen
 /packages/icons/src/generated
 public/
 
-
 # lerna
+/packages/*/lib
 /packages/*/dist
 
 # misc
