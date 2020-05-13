@@ -24,7 +24,7 @@
 
  */
 
-export * from './Accordian'
+export * from './Accordion'
 export * from './ActionList'
 export * from './Avatar'
 export * from './Badge'
