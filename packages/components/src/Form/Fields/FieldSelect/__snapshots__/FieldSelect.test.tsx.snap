@@ -212,7 +212,7 @@ exports[`A FieldSelect 1`] = `
 
 .c11 {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
   grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -220,7 +220,6 @@ exports[`A FieldSelect 1`] = `
   align-items: center;
   justify-items: center;
   max-height: 1.9rem;
-  height: 100%;
 }
 
 .c7 .c9 {
@@ -580,7 +579,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c11 {
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
+  grid-auto-flow: column dense;
   grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -588,13 +587,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: center;
   justify-items: center;
   max-height: 1.9rem;
-  height: 100%;
 }
 
 .c13 {
   background: #DEE1E5;
   height: 70%;
-  width: 100%;
+  width: 1px;
 }
 
 .c7 .c9 {
@@ -943,7 +941,7 @@ exports[`A required FieldSelect 1`] = `
 
 .c13 {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
   grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -951,7 +949,6 @@ exports[`A required FieldSelect 1`] = `
   align-items: center;
   justify-items: center;
   max-height: 1.9rem;
-  height: 100%;
 }
 
 .c9 .c11 {
@@ -1268,7 +1265,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c11 {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
   grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1276,7 +1273,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
   align-items: center;
   justify-items: center;
   max-height: 1.9rem;
-  height: 100%;
 }
 
 .c7 .c9 {
