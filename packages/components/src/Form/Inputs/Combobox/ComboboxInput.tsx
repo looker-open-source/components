@@ -170,6 +170,7 @@ export const ComboboxInputInternal = forwardRef(
         {...rest}
         {...inputEvents}
         searchIcon={false}
+        disabled={disabled}
         searchControls={
           <ComboboxInputControls
             validationType={validationType}
