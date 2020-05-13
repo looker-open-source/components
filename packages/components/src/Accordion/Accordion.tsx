@@ -26,13 +26,22 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import {
+  MarginProps,
+  margin,
+  PaddingProps,
+  padding,
+  TypographyProps,
+  typography,
+} from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
 import { AccordionLabel } from './AccordionLabel'
 import { AccordionContent } from './AccordionContent'
 
-export interface AccordionProps extends SimpleLayoutProps, TypographyProps {
+export interface AccordionProps
+  extends MarginProps,
+    PaddingProps,
+    TypographyProps {
   children: ReactNode
   className?: string
   /**
@@ -97,16 +106,17 @@ const AccordionLayout: FC<AccordionProps> = ({
 export const Accordion = styled(AccordionLayout)`
   ${AccordionLabel} {
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
-    ${simpleLayoutCSS}
+    ${padding}
     ${typography}
   }
 
   ${AccordionContent} {
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
-    ${simpleLayoutCSS}
+    ${padding}
     ${typography}
   }
 
+  ${margin}
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 `

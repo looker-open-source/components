@@ -32,6 +32,8 @@ export {
   flexbox,
   position,
   layout,
+  padding,
+  margin,
   space,
   typography,
 } from 'styled-system'
@@ -42,6 +44,8 @@ export type {
   FlexboxProps,
   PositionProps,
   LayoutProps,
+  PaddingProps,
+  MarginProps,
 } from 'styled-system'
 
 export type CompatibleHTMLProps<T> = Omit<

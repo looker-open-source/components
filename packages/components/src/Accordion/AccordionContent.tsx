@@ -26,13 +26,15 @@
 
 import React, { ReactNode, useContext, FC } from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import {
+  PaddingProps,
+  padding,
+  TypographyProps,
+  typography,
+} from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionContentProps
-  extends SimpleLayoutProps,
-    TypographyProps {
+export interface AccordionContentProps extends PaddingProps, TypographyProps {
   children: ReactNode
   className?: string
 }
@@ -48,7 +50,7 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
 
 export const AccordionContent = styled(AccordionContentLayout)`
   &&& {
-    ${simpleLayoutCSS}
+    ${padding}
     ${typography}
   }
 `

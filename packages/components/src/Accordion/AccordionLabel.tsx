@@ -26,14 +26,16 @@
 
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import {
+  PaddingProps,
+  padding,
+  TypographyProps,
+  typography,
+} from '@looker/design-tokens'
 import { Icon, IconNames } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionLabelProps
-  extends SimpleLayoutProps,
-    TypographyProps {
+export interface AccordionLabelProps extends PaddingProps, TypographyProps {
   children: string | ReactNode
   className?: string
   /**
@@ -98,7 +100,7 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
 export const AccordionLabel = styled(AccordionLabelLayout)`
   &&& {
     padding-left: ${({ arrowLeft }) => arrowLeft && '0'};
-    ${simpleLayoutCSS}
+    ${padding}
     ${typography}
   }
 
