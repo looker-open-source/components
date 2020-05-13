@@ -57,11 +57,6 @@ export interface ButtonBaseProps
   type?: 'button' | 'submit' | 'reset'
 
   /**
-   * Used along with `href` for an anchor link styled as a Button
-   */
-  forwardedAs?: 'a'
-
-  /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "primary"
    */
@@ -146,10 +141,10 @@ const ButtonJSX = forwardRef(
 
     return (
       <ButtonOuter
+        {...restProps}
         focusVisible={isFocusVisible}
         onKeyUp={handleOnKeyUp}
         onBlur={handleOnBlur}
-        {...restProps}
         ref={ref}
       >
         {iconBefore && <ButtonIcon name={iconBefore} />}

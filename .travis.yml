@@ -1,11 +1,25 @@
 language: node_js
+os: linux
+dist: xenial
+cache:
+  directories:
+    - node_modules
+jobs:
+  include:
+    - script: "yarn run-p -c lint:css lint:es"
+      name: ESLint & Stylelint
+    - script: "yarn test"
+      before_script: "yarn build"
+      name: "Babel, Typescript (lib/*.d.ts) & Tests"
+    - script: "yarn workspace www build"
+      name: "Gatsby"
+
 branches:
   only:
     - master
 deploy:
   - provider: script
     script: yarn && yarn deploy
-    script: yarn deploy
-    skip_cleanup: true
+    cleanup: false
     on:
       branch: master

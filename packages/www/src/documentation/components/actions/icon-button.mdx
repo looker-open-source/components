@@ -147,10 +147,9 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 
 ```jsx
 <Tooltip content="I'm a little teapot">
-  {(eventHandlers, ref) => (
+  {(tooltipProps) => (
     <IconButton
-      {...eventHandlers}
-      ref={ref}
+      {...tooltipProps}
       label="Add Something Neat"
       icon="Plus"
       size="xxsmall"

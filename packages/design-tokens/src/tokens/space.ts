@@ -27,7 +27,7 @@
 import { rem } from 'polished'
 import { SpaceRamp } from '../system'
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const space: SpaceRamp = {
   none: rem(0),
   xxsmall: rem(4),

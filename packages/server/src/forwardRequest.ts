@@ -46,7 +46,7 @@ const settings = new NodeSettingsIniFile(localConfig, 'Looker')
  */
 const session = new NodeSession(settings)
 
-const forwardRequest = async (req: Request<{ url: string }>) => {
+const forwardRequest = async (req: Request) => {
   /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
   // @ts-ignore
   const endpoint = req.url.replace('/api/', '') // @types/express error omits req.url

@@ -24,9 +24,12 @@
 
  */
 
-export { Box, BoxProps } from './Box'
-export { Flex, FlexProps } from './Flex'
-export { FlexItem, FlexItemProps } from './FlexItem'
+export { Box } from './Box'
+export type { BoxProps } from './Box'
+export { Flex } from './Flex'
+export type { FlexProps } from './Flex'
+export { FlexItem } from './FlexItem'
+export type { FlexItemProps } from './FlexItem'
 
 export * from './Space'
 export * from './Grid'

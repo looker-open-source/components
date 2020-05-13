@@ -27,30 +27,30 @@
 import { NavigationSection } from '../../Layout'
 
 const navigation: NavigationSection = {
-  title: 'Design System',
-  path: 'system',
   children: [
     {
-      title: 'Borders & Dividers',
       path: 'borders',
+      title: 'Borders & Dividers',
     },
     {
-      title: 'Breakpoints',
       path: 'breakpoints',
+      title: 'Breakpoints',
     },
     {
-      title: 'Color',
       path: 'color',
+      title: 'Color',
     },
     {
-      title: 'Spacing',
       path: 'spacing',
+      title: 'Spacing',
     },
     {
-      title: 'Typography',
       path: 'typography',
+      title: 'Typography',
     },
   ],
+  path: 'system',
+  title: 'Design System',
 }
 
 export default navigation

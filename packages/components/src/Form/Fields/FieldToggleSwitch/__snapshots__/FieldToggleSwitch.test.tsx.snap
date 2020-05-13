@@ -84,13 +84,13 @@ exports[`A FieldToggleSwitch 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldToggleSwitchID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>
@@ -209,13 +209,13 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 
 <label
   className="c0 "
+  htmlFor="FieldToggleSwitchID"
 >
   <span
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="FieldToggleSwitchID"
   >
     👍
   </span>

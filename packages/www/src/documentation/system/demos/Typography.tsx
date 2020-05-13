@@ -40,10 +40,10 @@ import { DocTable } from '../../../Shared'
 const specimen =
   "Open Sans is the typographic base for the tone and content of Looker's design system"
 const typeFamily: Array<{ weight: FontWeights; value: string }> = [
-  { weight: 'light', value: '300' },
-  { weight: 'normal', value: '400' },
-  { weight: 'semiBold', value: '600' },
-  { weight: 'bold', value: '700' },
+  { value: '300', weight: 'light' },
+  { value: '400', weight: 'normal' },
+  { value: '600', weight: 'semiBold' },
+  { value: '700', weight: 'bold' },
 ]
 
 const tableRows = typeFamily.map((t) => {
@@ -79,15 +79,15 @@ export function FontWeightDemo() {
 
 const specimen2 = 'Looker Components are great'
 const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
-  { size: 'xxxxlarge', px: '46px', lh: '64px' },
-  { size: 'xxxlarge', px: '36px', lh: '52px' },
-  { size: 'xxlarge', px: '25px', lh: '40px' },
-  { size: 'xlarge', px: '22px', lh: '32px' },
-  { size: 'large', px: '18px', lh: '28px' },
-  { size: 'medium', px: '16px', lh: '24px' },
-  { size: 'small', px: '14px', lh: '20px' },
-  { size: 'xsmall', px: '12px', lh: '16px' },
-  { size: 'xxsmall', px: '11px', lh: '16px' },
+  { lh: '64px', px: '46px', size: 'xxxxlarge' },
+  { lh: '52px', px: '36px', size: 'xxxlarge' },
+  { lh: '40px', px: '25px', size: 'xxlarge' },
+  { lh: '32px', px: '22px', size: 'xlarge' },
+  { lh: '28px', px: '18px', size: 'large' },
+  { lh: '24px', px: '16px', size: 'medium' },
+  { lh: '20px', px: '14px', size: 'small' },
+  { lh: '16px', px: '12px', size: 'xsmall' },
+  { lh: '16px', px: '11px', size: 'xxsmall' },
 ]
 
 const tableRows2 = typeRamp.map((t) => {
