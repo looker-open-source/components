@@ -27,12 +27,12 @@
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
-import { TooltipDemo } from './Tooltip/TooltipDemo'
+import { ListWidthDemo } from './Select/ListWidthDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <TooltipDemo />
+      <ListWidthDemo />
     </ComponentsProvider>
   )
 }
