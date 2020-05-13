@@ -1,0 +1,65 @@
+---
+title: DateFormat
+propsOf: DateFormat
+github: DateTimeFormat/DateFormat.tsx
+---
+
+import { DateFormatTable, LocaleTable } from './demos'
+
+As it's name implies, `DateFormat` is used to format a javascript Date object to human readable and localized text.
+
+This is the sibling component of [`TimeFormat`](time-format), which does the same thing for times. If no Date object is provided, it will default to `Now`.
+
+```jsx
+<DateFormat />
+```
+
+## Providing A Date Object
+
+Wrap the `DateFormat` component around a javascript Date object format accordingly.
+
+```jsx
+<DateFormat>{new Date(1589411215703)}</DateFormat>
+```
+
+## Format
+
+\* medium is the default format
+
+<DateFormatTable />
+
+## TimeZone
+
+TimeZone needs to be a specific string based on the [IANA standard](https://www.iana.org/time-zone)
+
+When adding the timeZone the format will be long - look below for details on formating.
+
+```jsx
+<Flex justifyContent="space-around" alignItems="center">
+  <Text>
+    <DateFormat timeZone="Asia/Kolkata" format="long" />
+  </Text>
+</Flex>
+```
+
+## I18n
+
+`DateFormat` automatically formats the rendered date to the provided language/locale code.
+
+```jsx
+<ul>
+  <li>
+    <strong>Arabic:</strong> <DateFormat locale="ar" />
+  </li>
+  <li>
+    <strong>Korean:</strong> <DateFormat locale="ko" />
+  </li>
+  <li>
+    <strong>German:</strong> <DateFormat locale="de" />
+  </li>
+</ul>
+```
+
+All supported Locales are listed below:
+
+<LocaleTable />

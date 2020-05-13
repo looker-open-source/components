@@ -51,7 +51,7 @@ export interface ExtendedDateTimeFormatOptions
 export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
   date,
-  format = 'short',
+  format = 'medium',
   locale = Locales.English,
   time,
   timeZone,
