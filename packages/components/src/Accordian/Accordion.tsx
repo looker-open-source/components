@@ -25,10 +25,12 @@
  */
 
 import React, { FC, useState, ReactNode } from 'react'
+import styled from 'styled-components'
 import { AccordionContext } from './AccordionContext'
 
 export interface AccordionProps {
   children: ReactNode
+  className?: string
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -54,8 +56,9 @@ export interface AccordionProps {
   onOpen?: () => void // called when the component is opened
 }
 
-export const Accordion: FC<AccordionProps> = ({
+const AccordionLayout: FC<AccordionProps> = ({
   children,
+  className,
   defaultOpen,
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
@@ -82,7 +85,9 @@ export const Accordion: FC<AccordionProps> = ({
 
   return (
     <AccordionContext.Provider value={context}>
-      {children}
+      <div className={className}>{children}</div>
     </AccordionContext.Provider>
   )
 }
+
+export const Accordion = styled(AccordionLayout)``

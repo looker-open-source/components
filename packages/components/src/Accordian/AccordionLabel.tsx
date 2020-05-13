@@ -101,6 +101,7 @@ export const AccordionLabel = styled(AccordionLabelLayout)`
   ${typography}
   ${simpleLayoutCSS}
 
+  cursor: pointer;
   outline: none;
 
   &:focus {
