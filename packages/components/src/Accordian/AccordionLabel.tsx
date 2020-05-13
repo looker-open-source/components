@@ -98,15 +98,18 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
 }
 
 export const AccordionLabel = styled(AccordionLabelLayout)`
-  ${typography}
-  ${simpleLayoutCSS}
-
-  cursor: pointer;
-  outline: none;
+  &&& {
+    padding-left: ${({ arrowLeft }) => arrowLeft && '0'};
+    ${simpleLayoutCSS}
+    ${typography}
+  }
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.palette.purple300};
   }
+
+  cursor: pointer;
+  outline: none;
 
   ${AccordianLabelChildrenContainer} {
     flex-grow: 1;
@@ -114,14 +117,4 @@ export const AccordionLabel = styled(AccordionLabelLayout)`
 
   display: flex;
   align-items: center;
-
-  padding-left: ${({ arrowLeft, theme }) =>
-    arrowLeft ? 'none' : theme.space.large};
 `
-
-AccordionLabel.defaultProps = {
-  fontSize: 'small',
-  fontWeight: 'semiBold',
-  pr: 'large',
-  py: 'xsmall',
-}

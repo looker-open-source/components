@@ -26,9 +26,13 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
+import { TypographyProps, typography } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
+import { AccordionLabel } from './AccordionLabel'
+import { AccordionContent } from './AccordionContent'
 
-export interface AccordionProps {
+export interface AccordionProps extends SimpleLayoutProps, TypographyProps {
   children: ReactNode
   className?: string
   /**
@@ -90,4 +94,19 @@ const AccordionLayout: FC<AccordionProps> = ({
   )
 }
 
-export const Accordion = styled(AccordionLayout)``
+export const Accordion = styled(AccordionLayout)`
+  ${AccordionLabel} {
+    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
+    ${simpleLayoutCSS}
+    ${typography}
+  }
+
+  ${AccordionContent} {
+    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
+    ${simpleLayoutCSS}
+    ${typography}
+  }
+
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+`

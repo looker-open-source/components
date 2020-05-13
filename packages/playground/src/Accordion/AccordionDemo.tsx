@@ -40,9 +40,7 @@ export const AccordionDemo = () => {
     <Accordion defaultOpen>
       <AccordionLabel>Hello World</AccordionLabel>
       <AccordionContent>
-        <Text p={10} color="palette.red500">
-          I have content
-        </Text>
+        <Text color="palette.red500">I have content</Text>
       </AccordionContent>
     </Accordion>
   )
@@ -54,13 +52,9 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel icon="Warning" iconColor="palette.yellow300" arrowLeft>
-        Hello World
-      </AccordionLabel>
+      <AccordionLabel arrowLeft>Hello World</AccordionLabel>
       <AccordionContent>
-        <Text p={10} color="palette.red500">
-          More content!
-        </Text>
+        <Text color="palette.red500">More content!</Text>
       </AccordionContent>
     </Accordion>
   )
