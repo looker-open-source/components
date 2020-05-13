@@ -28,7 +28,7 @@ import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
-import { Icon } from '../Icon'
+import { Icon, IconNames } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 
 export interface AccordionLabelProps
@@ -44,7 +44,8 @@ export interface AccordionLabelProps
   arrowLeft?: boolean
 }
 
-const AccordianLabelChildrenContainer = styled.div``
+const DisclosureIndicatorContainer = styled.div``
+const DisclosureChildrenContainer = styled.div``
 
 const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   arrowLeft,
@@ -66,17 +67,17 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   }
 
   const defaultIconSize = 20
-  const arrowIconLeft = arrowLeft && (
+  type IconSet = {
+    closed: IconNames
+    open: IconNames
+  }
+  const disclosureIconSet: IconSet = {
+    closed: arrowLeft ? 'ArrowDown' : 'CaretDown',
+    open: arrowLeft ? 'ArrowRight' : 'CaretUp',
+  }
+  const indicator = (
     <Icon
-      name={isOpen ? 'ArrowDown' : 'ArrowRight'}
-      mr="xsmall"
-      size={defaultIconSize}
-    />
-  )
-  const arrowIconRight = !arrowLeft && (
-    <Icon
-      ml="xsmall"
-      name={isOpen ? 'CaretUp' : 'CaretDown'}
+      name={isOpen ? disclosureIconSet.open : disclosureIconSet.closed}
       size={defaultIconSize}
     />
   )
@@ -88,11 +89,8 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      {arrowIconLeft}
-      <AccordianLabelChildrenContainer>
-        {children}
-      </AccordianLabelChildrenContainer>
-      {arrowIconRight}
+      <DisclosureIndicatorContainer>{indicator}</DisclosureIndicatorContainer>
+      <DisclosureChildrenContainer>{children}</DisclosureChildrenContainer>
     </div>
   )
 }
@@ -111,10 +109,19 @@ export const AccordionLabel = styled(AccordionLabelLayout)`
   cursor: pointer;
   outline: none;
 
-  ${AccordianLabelChildrenContainer} {
-    flex-grow: 1;
+  & > ${DisclosureIndicatorContainer} {
+    grid-area: indicator;
   }
 
-  display: flex;
+  & > ${DisclosureChildrenContainer} {
+    grid-area: children;
+  }
+
+  display: grid;
   align-items: center;
+  grid-gap: ${({ theme }) => theme.space.xsmall};
+  grid-template-columns: ${({ arrowLeft, theme }) =>
+    arrowLeft ? `${theme.space.large} 1fr` : `1fr ${theme.space.large}`};
+  grid-template-areas: ${({ arrowLeft }) =>
+    arrowLeft ? '"indicator children"' : '"children indicator"'};
 `

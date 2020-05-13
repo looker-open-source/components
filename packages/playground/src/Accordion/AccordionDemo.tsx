@@ -31,6 +31,7 @@ import {
   AccordionLabel,
   Box,
   Text,
+  Icon,
 } from '@looker/components'
 
 export const AccordionDemo = () => {
@@ -52,7 +53,25 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel arrowLeft>Hello World</AccordionLabel>
+      <AccordionLabel arrowLeft>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'grid',
+            gridGap: '0.5rem',
+            gridTemplateColumns: '1.25rem 1fr 1.25rem',
+            width: '100%',
+          }}
+        >
+          <Icon color="palette.yellow600" name="Warning" size={20} />
+          <Text color="palette.yellow600">Hello World</Text>
+          <Icon
+            color="palette.charcoal500"
+            name="CircleQuestionOutline"
+            size={20}
+          />
+        </div>
+      </AccordionLabel>
       <AccordionContent>
         <Text color="palette.red500">More content!</Text>
       </AccordionContent>
