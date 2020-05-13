@@ -26,6 +26,7 @@
 
 import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
+import { WidthProps } from '../../../Layout/utils/width'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -52,6 +53,11 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
    * or the menu opens with a pre-populated value
    */
   onFilter?: (term: string) => void
+
+  /**
+   * Control the width of the list separately from the input width
+   */
+  listWidthSettings: WidthProps
 
   validationType?: ValidationType
   /**

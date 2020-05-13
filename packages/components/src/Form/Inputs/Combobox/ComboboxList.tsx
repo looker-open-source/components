@@ -29,7 +29,6 @@
 
 import {
   CompatibleHTMLProps,
-  LayoutProps,
   reset,
   space,
   SpaceProps,
@@ -47,17 +46,16 @@ import styled, { css } from 'styled-components'
 import once from 'lodash/once'
 import pick from 'lodash/pick'
 import throttle from 'lodash/throttle'
+import { widthKeys, WidthProps } from '../../../Layout/utils/width'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxActionType } from './utils/state'
 
-const widthKeys = ['width', 'minWidth', 'maxWidth'] as const
-
 export interface ComboboxListProps
   extends SpaceProps,
-    Pick<LayoutProps, typeof widthKeys[number]>,
+    WidthProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
   /**
