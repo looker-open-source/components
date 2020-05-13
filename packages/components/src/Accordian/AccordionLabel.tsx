@@ -27,7 +27,6 @@
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { Icon } from '../Icon'
 import { AccordionContext } from './AccordionContext'
@@ -43,14 +42,6 @@ export interface AccordionLabelProps
    * @default false
    */
   arrowLeft?: boolean
-  /**
-   * Optional Icon that sits directly left of the label
-   */
-  icon?: IconNames
-  /**
-   * Color of optional Icon
-   */
-  iconColor?: string
 }
 
 const AccordianLabelChildrenContainer = styled.div``
@@ -59,16 +50,11 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   arrowLeft,
   children,
   className,
-  icon,
-  iconColor,
 }) => {
   const { isOpen, toggleOpen, onClose, onOpen } = useContext(AccordionContext)
-  const handleOpen = () => {
-    onOpen && onOpen()
-  }
-  const handleClose = () => {
-    onClose && onClose()
-  }
+  const handleOpen = () => onOpen && onOpen()
+  const handleClose = () => onClose && onClose()
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.keyCode === 13) {
       event.currentTarget.click()
@@ -87,9 +73,6 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
       size={defaultIconSize}
     />
   )
-  const propIcon = icon && (
-    <Icon name={icon} color={iconColor} mr="xsmall" size={defaultIconSize} />
-  )
   const arrowIconRight = !arrowLeft && (
     <Icon
       ml="xsmall"
@@ -106,7 +89,6 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
       tabIndex={0}
     >
       {arrowIconLeft}
-      {propIcon}
       <AccordianLabelChildrenContainer>
         {children}
       </AccordianLabelChildrenContainer>
@@ -118,6 +100,12 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
 export const AccordionLabel = styled(AccordionLabelLayout)`
   ${typography}
   ${simpleLayoutCSS}
+
+  outline: none;
+
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.palette.purple300};
+  }
 
   ${AccordianLabelChildrenContainer} {
     flex-grow: 1;

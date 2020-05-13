@@ -25,14 +25,21 @@
  */
 
 import React, { ReactNode, useContext, FC } from 'react'
+import styled from 'styled-components'
 import { AccordionContext } from './AccordionContext'
 
 export interface AccordionContentProps {
   children: ReactNode
+  className?: string
 }
 
-export const AccordionContent: FC<AccordionContentProps> = ({ children }) => {
+const AccordionContentLayout: FC<AccordionContentProps> = ({
+  children,
+  className,
+}) => {
   const { isOpen } = useContext(AccordionContext)
 
-  return <div>{isOpen && children}</div>
+  return <div className={className}>{isOpen && children}</div>
 }
+
+export const AccordionContent = styled(AccordionContentLayout)``
