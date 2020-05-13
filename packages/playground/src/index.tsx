@@ -30,6 +30,7 @@ import { render } from 'react-dom'
 import { SelectDemo } from './Select/SelectDemo'
 import { SelectMultiDemo } from './Select/SelectMultiDemo'
 import { InputSearchDemo } from './Form/InputSearchDemo'
+import { InputChipsDemo } from './Form/InputChipsDemo'
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
       <SelectDemo />
       <SelectMultiDemo />
       <InputSearchDemo />
+      <InputChipsDemo />
     </ComponentsProvider>
   )
 }

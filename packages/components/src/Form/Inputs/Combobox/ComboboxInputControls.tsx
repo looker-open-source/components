@@ -23,8 +23,11 @@
  SOFTWARE.
 
  */
-import React, { Children, FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import styled from 'styled-components'
+import flatMap from 'lodash/flatMap'
+import tail from 'lodash/tail'
+import compact from 'lodash/compact'
 import { Icon } from '../../../Icon'
 import { InputSearchControls } from '../InputSearch/InputSearchControls'
 
@@ -32,9 +35,16 @@ interface ComboboxInputControlsProps {
   validationType?: 'error'
   renderSearchControls?: boolean
   isVisibleOptions?: boolean
+  hasOptions?: boolean
   disabled?: boolean
   onClear: () => void
+  summary?: string
 }
+
+const intersperseDivider = (children: ReactElement[]) =>
+  tail(
+    flatMap(children, (child, i) => [<SearchControlDivider key={i} />, child])
+  )
 
 export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
   validationType,
@@ -42,62 +52,47 @@ export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
   onClear,
   disabled,
   isVisibleOptions,
+  summary,
+  hasOptions = true,
 }) => {
-  return (
-    <SearchControlGrid>
-      {validationType === 'error' && (
-        <>
-          <Icon
-            name="CircleInfo"
-            size={20}
-            color="palette.red500"
-            mr="xxsmall"
-          />
-          <SearchControlDivider />
-        </>
-      )}
-      {renderSearchControls && (
-        <>
-          <InputSearchControls
-            onClear={onClear}
-            showClear={true}
-            disabled={disabled}
-          />
-          <SearchControlDivider />
-        </>
-      )}
-      <Icon
-        name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
-        size={18}
-        color={disabled ? 'palette.charcoal300' : 'palette.charcoal500'}
-        mr="xsmall"
-      />
-    </SearchControlGrid>
+  const children = intersperseDivider(
+    compact([
+      validationType === 'error' && (
+        <Icon name="CircleInfo" size={20} color="palette.red500" mr="xxsmall" />
+      ),
+      renderSearchControls && (
+        <InputSearchControls
+          onClear={onClear}
+          showClear={true}
+          disabled={disabled}
+          summary={summary}
+        />
+      ),
+      hasOptions && (
+        <Icon
+          name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
+          size={18}
+          color={disabled ? 'palette.charcoal300' : 'palette.charcoal500'}
+          mr="xsmall"
+        />
+      ),
+    ])
   )
+
+  return <SearchControlGrid>{children}</SearchControlGrid>
 }
 
 const SearchControlGrid = styled.div`
   display: grid;
-  grid-template-columns: ${({ children }) => {
-    const childArray = Children.toArray(children)
-    switch (childArray.length) {
-      case 3:
-        return '1fr 1px 1fr 1px 1fr'
-      case 2:
-        return '1fr 1px 1fr'
-      default:
-        return '1fr'
-    }
-  }};
+  grid-auto-flow: column dense;
   grid-gap: ${({ theme }) => theme.space.xxsmall};
   align-items: center;
   justify-items: center;
   max-height: 1.9rem;
-  height: 100%;
 `
 
 const SearchControlDivider = styled.div`
   background: ${({ theme }) => theme.colors.palette.charcoal200};
   height: 70%;
-  width: 100%;
+  width: 1px;
 `

@@ -42,6 +42,7 @@ export interface InputChipsInputControlProps {
    */
   onInputChange: (value: string) => void
   isVisibleOptions?: boolean
+  hasOptions?: boolean
 }
 
 export interface InputChipsControlProps {
@@ -59,10 +60,7 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<
-      InputSearchBaseProps,
-      'value' | 'defaultValue' | 'onChange' | 'summary'
-    >,
+  extends Omit<InputSearchBaseProps, 'value' | 'defaultValue' | 'onChange'>,
     MaxHeightProps {}
 
 export interface InputChipsBaseProps
@@ -82,6 +80,8 @@ export const InputChipsBaseInternal = forwardRef(
       validationType,
       onClear,
       isVisibleOptions,
+      hasOptions = false,
+      summary,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     ref: Ref<HTMLInputElement>
@@ -132,6 +132,8 @@ export const InputChipsBaseInternal = forwardRef(
             renderSearchControls={renderSearchControls}
             validationType={validationType}
             disabled={disabled}
+            summary={summary}
+            hasOptions={hasOptions}
           />
         }
         ref={ref}
@@ -154,8 +156,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
 
   ${Flex} {
-    flex: 1;
-    overflow: auto;
+    width: 100%;
   }
 
   ${InputText} {

@@ -62,7 +62,10 @@ export const InputSearch: FC<InputSearchProps> = ({
   const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
     setValue('')
     onClear && onClear(e)
-    onChange && onChange(e)
+    onChange &&
+      onChange({
+        currentTarget: { value: '' },
+      } as FormEvent<HTMLInputElement>)
   }
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {

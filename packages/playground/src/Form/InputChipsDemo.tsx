@@ -74,6 +74,7 @@ export function InputChipsDemo() {
         inputValue={inputValue}
         onChange={handleChange2}
         onInputChange={handleInputChange}
+        summary="summary"
       />
       <Divider my="large" />
       <InputChips

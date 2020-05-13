@@ -179,6 +179,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         inputValue={inputValue}
         onInputChange={wrappedOnInputChange}
         id={`listbox-${id}`}
+        hasOptions={true}
         isVisibleOptions={isVisible}
         autoComplete="off"
         aria-autocomplete="both"
