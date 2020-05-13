@@ -25,13 +25,15 @@
  */
 
 import React, { FC } from 'react'
+import repeat from 'lodash/repeat'
+import { LocaleCodes, Locales, formatDateString } from '../utils'
 
 type DateFormats = 'short' | 'medium' | 'long' | 'full'
 
 export interface DateTimeFormatProps {
   children?: Date
   format?: DateFormats
-  locale?: string
+  locale?: LocaleCodes
   timeZone?: string
 }
 
@@ -49,21 +51,25 @@ export interface ExtendedDateTimeFormatOptions
 export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
   date,
-  format,
-  locale,
+  format = 'short',
+  locale = Locales.English,
   time,
-
   timeZone,
 }) => {
-  const options: ExtendedDateTimeFormatOptions = {
-    dateStyle: date ? format : undefined,
-    timeStyle: time ? format : undefined,
-    timeZone,
+  const repetitions = {
+    full: 4,
+    long: 3,
+    medium: 2,
+    short: 1,
   }
 
+  const dateFormat = repeat('P', repetitions[format]) // PPP... is localized date format in date-fns
+  const timeFormat = repeat('p', repetitions[format]) // ppp... is localized time format in date-fns
+
+  const stringFormat = `${date ? dateFormat : ''}${time ? timeFormat : ''}`
+
   try {
-    const formatted = children.toLocaleDateString(locale, options)
-    return <>{formatted}</>
+    return <>{formatDateString(children, locale, stringFormat)}</>
   } catch (error) {
     return <>{error}</>
   }

@@ -109,13 +109,14 @@ export const dateFnLocaleMap = {
 
 export const formatDateString = (
   date?: Date,
-  locale: LocaleCodes = Locales.English
+  locale: LocaleCodes = Locales.English,
+  stringFormat = 'P'
 ): string | '' => {
   if (!date) {
     return ''
   }
 
-  return format(date, 'P', {
+  return format(date, stringFormat, {
     locale: dateFnLocaleMap[locale],
   })
 }
