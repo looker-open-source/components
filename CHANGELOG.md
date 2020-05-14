@@ -5,10 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [RELEASED]
+## [UNRELEASED]
 
 ### Changed
 
+- `Banner` fontSize adjusted and external margin removed
 - Use Babel for building Monorepo ES artifacts
   - Change build artifact path from `dist/` to `lib.`
   - No longer produces multiple artifact formats (`es` only)

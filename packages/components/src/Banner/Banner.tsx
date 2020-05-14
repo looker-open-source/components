@@ -111,16 +111,12 @@ export const Banner = forwardRef(
 
     return (
       <Flex
-        ref={ref}
-        flex="auto"
-        {...bannerIntentStyling}
-        borderRadius="medium"
-        m="small"
-        py="xsmall"
-        px="small"
         alignItems="center"
         aria-live="polite"
+        borderRadius="medium"
+        ref={ref}
         role="status"
+        {...bannerIntentStyling}
         {...typeAndSpaceProps}
       >
         {icon}
@@ -129,9 +125,8 @@ export const Banner = forwardRef(
         {canDismiss && (
           <IconButton
             ml="auto"
-            style={{ padding: '1px' }}
             onClick={onDismiss}
-            hoverStyle={{ background: 'none' }}
+            hoverStyle={{ background: 'none', border: 'none' }}
             icon="Close"
             size="small"
             label={`Dismiss ${intent}`}
@@ -143,5 +138,10 @@ export const Banner = forwardRef(
   }
 )
 
-Banner.defaultProps = { intent: 'info' }
+Banner.defaultProps = {
+  fontSize: 'small',
+  intent: 'info',
+  px: 'small',
+  py: 'xsmall',
+}
 Banner.displayName = 'Banner'
