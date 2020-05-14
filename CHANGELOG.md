@@ -11,9 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Select` now accepts `listLayout` to control the layout of the list
 - `ComboboxList` now accepts properties from `LayoutProps`
-
-### Added
-
 - `Space`
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
