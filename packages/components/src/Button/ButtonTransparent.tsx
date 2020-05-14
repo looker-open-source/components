@@ -25,31 +25,40 @@
  */
 
 import styled from 'styled-components'
-import { ButtonBase, ButtonBaseProps } from './ButtonBase'
+import { variant } from 'styled-system'
+import { ButtonBase } from './ButtonBase'
 
-export const transparentButtonPadding = (props: ButtonBaseProps) => {
-  switch (props.size) {
-    case 'xsmall':
-      return props.theme.space.xsmall
-    case 'small':
-      return props.theme.space.medium
-    case 'large':
-    case 'medium':
-    default:
-      return props.theme.space.large
-  }
-}
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const transparentButtonPadding = variant({
+  prop: 'size',
+  variants: {
+    xxsmall: {
+      px: 'xsmall',
+    },
+    xsmall: {
+      px: 'xsmall',
+    },
+    small: {
+      px: 'small',
+    },
+    medium: {
+      px: 'large',
+    },
+    large: {
+      px: 'large',
+    },
+  },
+})
 
 export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
   border: 1px solid transparent;
   color: ${({ theme, color = 'primary' }) =>
     theme.colors.semanticColors[color].main};
-  padding: 0
-    ${(props) =>
-      props.iconBefore || props.iconAfter
-        ? transparentButtonPadding(props)
-        : props.theme.space.xsmall};
+  ${(props) =>
+    props.iconBefore || props.iconAfter
+      ? transparentButtonPadding
+      : `padding: 0 ${props.theme.space.xsmall};`}
 
   &:active,
   &.active {

@@ -78,7 +78,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb iVoNqv sc-ifAKCX sc-EHOje kFWnwj"
+  class="sc-bxivhb enwebB sc-ifAKCX sc-EHOje gBpHAk"
 >
   focus
 </button>
