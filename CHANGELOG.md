@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
+  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
+- `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
 - `Banner` fontSize adjusted and external margin removed
 - Use Babel for building Monorepo ES artifacts
   - Change build artifact path from `dist/` to `lib.`
@@ -25,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `FieldInline` `for` attribute moved to the correct `label`
+
+### Changed
+
+- Updated artwork for `Download` icon
 
 ## [0.7.30] - 2020-05-07
 
