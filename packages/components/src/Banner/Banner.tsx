@@ -94,6 +94,7 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
 export const Banner = forwardRef(
   (props: BannerProps, ref: Ref<HTMLDivElement>) => {
     const {
+      id,
       children,
       canDismiss,
       intent = 'warning',
@@ -121,6 +122,7 @@ export const Banner = forwardRef(
         <Box flex="auto">{children}</Box>
         {canDismiss && (
           <IconButton
+            id={id ? `${id}-iconButton` : undefined}
             ml="auto"
             onClick={onDismiss}
             hoverStyle={{ background: 'none', border: 'none' }}
