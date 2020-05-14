@@ -39,12 +39,6 @@ export interface AccordionDisclosureProps
     TypographyProps {
   children: string | ReactNode
   className?: string
-  /**
-   * If true, the arrow will sit left of the label rather than right of it
-   * In addition, Arrow icons will be used in place of caret
-   * @default false
-   */
-  arrowLeft?: boolean
 }
 
 const Indicator = styled.div`
@@ -54,12 +48,13 @@ const Label = styled.div`
   grid-area: children;
 `
 
-const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
-  arrowLeft,
+export const AccordionDisclosure: FC<AccordionDisclosureProps> = ({
   children,
   className,
 }) => {
-  const { isOpen, toggleOpen, onClose, onOpen } = useContext(AccordionContext)
+  const { indicatorPosition, isOpen, toggleOpen, onClose, onOpen } = useContext(
+    AccordionContext
+  )
   const handleOpen = () => onOpen && onOpen()
   const handleClose = () => onClose && onClose()
 
@@ -79,8 +74,8 @@ const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
     open: IconNames
   }
   const disclosureIconSet: IconSet = {
-    closed: arrowLeft ? 'ArrowDown' : 'CaretDown',
-    open: arrowLeft ? 'ArrowRight' : 'CaretUp',
+    closed: indicatorPosition === 'left' ? 'ArrowRight' : 'CaretDown',
+    open: indicatorPosition === 'left' ? 'ArrowDown' : 'CaretUp',
   }
   const indicator = (
     <Icon
@@ -90,19 +85,26 @@ const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
   )
 
   return (
-    <div
+    <AccordionDisclosureStyle
       className={className}
+      indicatorPosition={indicatorPosition}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
       <Indicator>{indicator}</Indicator>
       <Label>{children}</Label>
-    </div>
+    </AccordionDisclosureStyle>
   )
 }
 
-export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
+export interface AccordionDisclosureStyleProps extends TypographyProps {
+  indicatorPosition: 'left' | 'right'
+}
+
+export const AccordionDisclosureStyle = styled.div<
+  AccordionDisclosureStyleProps
+>`
   ${typography}
 
   align-items: center;
@@ -110,10 +112,14 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   display: grid;
   cursor: pointer;
   grid-gap: ${({ theme }) => theme.space.xsmall};
-  grid-template-areas: ${({ arrowLeft }) =>
-    arrowLeft ? '"indicator children"' : '"children indicator"'};
-  grid-template-columns: ${({ arrowLeft, theme }) =>
-    arrowLeft ? `${theme.space.large} 1fr` : `1fr ${theme.space.large}`};
+  grid-template-areas: ${({ indicatorPosition }) =>
+    indicatorPosition === 'left'
+      ? '"indicator children"'
+      : '"children indicator"'};
+  grid-template-columns: ${({ indicatorPosition, theme }) =>
+    indicatorPosition === 'left'
+      ? `${theme.space.large} 1fr`
+      : `1fr ${theme.space.large}`};
   outline: none;
 
   &:focus {
@@ -121,4 +127,7 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   }
 `
 
-AccordionDisclosure.defaultProps = { fontSize: 'small', fontWeight: 'semiBold' }
+AccordionDisclosureStyle.defaultProps = {
+  fontSize: 'small',
+  fontWeight: 'semiBold',
+}

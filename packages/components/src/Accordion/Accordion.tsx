@@ -29,12 +29,17 @@ import styled from 'styled-components'
 import { layout, margin, padding, reset } from '@looker/design-tokens'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
-import { AccordionDisclosure } from './AccordionDisclosure'
+import { AccordionDisclosureStyle } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
 
 export interface AccordionProps extends SimpleLayoutProps {
   children: ReactNode
   className?: string
+  /**
+   * Determines where the disclosure indicator will sit on
+   * @default 'right'
+   */
+  indicatorPosition?: 'left' | 'right'
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -64,6 +69,7 @@ const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
   defaultOpen,
+  indicatorPosition = 'right',
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   onClose: propsOnClose,
@@ -81,6 +87,7 @@ const AccordionLayout: FC<AccordionProps> = ({
     )
 
   const context = {
+    indicatorPosition,
     isOpen: propsIsOpen === undefined ? isOpen : propsIsOpen,
     onClose: propsOnClose,
     onOpen: propsOnOpen,
@@ -99,7 +106,7 @@ export const Accordion = styled(AccordionLayout)`
   ${layout}
   ${margin}
 
-  ${AccordionDisclosure} {
+  ${AccordionDisclosureStyle} {
     ${padding}
 
     /* Needs to just apply one these conditionally depending on the position of the indicator */

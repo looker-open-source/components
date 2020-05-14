@@ -65,19 +65,20 @@ export const AccordionDemo = () => {
 
   const spicyAccordion = (
     <Accordion
+      indicatorPosition="left"
       isOpen={isOpen}
       toggleOpen={setIsOpen}
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionDisclosure arrowLeft>{visibleLabel}</AccordionDisclosure>
+      <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
       <AccordionContent>{placeholder}</AccordionContent>
     </Accordion>
   )
 
   const spaceTest = (
-    <Accordion px="xxxlarge">
-      <AccordionDisclosure arrowLeft>Advanced Options</AccordionDisclosure>
+    <Accordion indicatorPosition="left" px="xxxlarge">
+      <AccordionDisclosure>Advanced Options</AccordionDisclosure>
       <AccordionContent>
         <Fieldset>
           <Fieldset inline legend="Customer">
@@ -94,21 +95,21 @@ export const AccordionDemo = () => {
 
   return (
     <Grid m="xxlarge">
-      <Accordion defaultOpen>
+      <Accordion indicatorPosition="left" defaultOpen>
         <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
       <Accordion defaultOpen>
-        <AccordionDisclosure arrowLeft>Hello World</AccordionDisclosure>
+        <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
 
-      <Accordion defaultOpen>
+      <Accordion indicatorPosition="left" defaultOpen>
         <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
       <Accordion defaultOpen>
-        <AccordionDisclosure arrowLeft>{visibleLabel}</AccordionDisclosure>
+        <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
 

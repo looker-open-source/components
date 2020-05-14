@@ -28,6 +28,7 @@ import { createContext } from 'react'
 import noop from 'lodash/noop'
 
 export interface AccordionContextProps {
+  indicatorPosition: 'left' | 'right'
   isOpen: boolean
   toggleOpen: (isOpen: boolean) => void
   onClose?: () => void
@@ -35,6 +36,7 @@ export interface AccordionContextProps {
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({
+  indicatorPosition: 'right',
   isOpen: false,
   toggleOpen: (isOpen: boolean) => noop(isOpen),
 })
