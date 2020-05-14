@@ -33,7 +33,7 @@ import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureStyle } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
 
-export type DiclosureIcons = {
+export type DisclosureIcons = {
   closed: IconNames
   open: IconNames
 }
