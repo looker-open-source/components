@@ -273,7 +273,6 @@ export const SelectDemo = () => {
               label="Fruit Groups"
               name="fruitGroups"
               width={300}
-              mb="medium"
               options={optionsWithGroups}
               aria-label="Fruits"
               defaultValue="1"
@@ -282,7 +281,6 @@ export const SelectDemo = () => {
               label="Another Grouped Dropdown"
               name="anotherGroup"
               width={300}
-              mb="medium"
               options={optionsWithGroups}
               aria-label="Fruits"
               defaultValue="1"

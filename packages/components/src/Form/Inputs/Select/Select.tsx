@@ -185,4 +185,4 @@ SelectComponent.displayName = 'SelectComponent'
 
 export const Select = styled(SelectComponent)``
 
-Select.defaultProps = { marginBottom: 'xsmall', width: '100%' }
+Select.defaultProps = { marginBottom: '0', width: '100%' }
