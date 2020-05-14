@@ -106,6 +106,7 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
 
   align-items: center;
+  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
   display: grid;
   cursor: pointer;
   grid-gap: ${({ theme }) => theme.space.xsmall};
