@@ -26,22 +26,13 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
-import {
-  MarginProps,
-  margin,
-  PaddingProps,
-  padding,
-  TypographyProps,
-  typography,
-} from '@looker/design-tokens'
+import { layout, margin, padding, reset } from '@looker/design-tokens'
+import { SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 import { AccordionLabel } from './AccordionLabel'
 import { AccordionContent } from './AccordionContent'
 
-export interface AccordionProps
-  extends MarginProps,
-    PaddingProps,
-    TypographyProps {
+export interface AccordionProps extends SimpleLayoutProps {
   children: ReactNode
   className?: string
   /**
@@ -56,7 +47,7 @@ export interface AccordionProps
   isOpen?: boolean
   /**
    * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
-   * toggleOpen is a function taht should control the value / state of isOpen
+   * toggleOpen is a function that should control the value / state of isOpen
    */
   toggleOpen?: (isOpen: boolean) => void
   /**
@@ -104,19 +95,31 @@ const AccordionLayout: FC<AccordionProps> = ({
 }
 
 export const Accordion = styled(AccordionLayout)`
+  ${reset}
+  ${layout}
+  ${margin}
+
   ${AccordionLabel} {
-    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
     ${padding}
-    ${typography}
+
+    /* Needs to just apply one these conditionally depending on the position of the indicator */
+    padding-left: calc(${({ theme, pl, px, p }) =>
+      `${theme.space[String(pl || px || p)]} - ${theme.space.large} - ${
+        theme.space.xsmall
+      }`});
+
+      padding-right: calc(${({ theme, pr, px, p }) =>
+        `${theme.space[String(pr || px || p)]} - ${theme.space.large} - ${
+          theme.space.xsmall
+        }`})
   }
 
   ${AccordionContent} {
-    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.large}`};
     ${padding}
-    ${typography}
   }
-
-  ${margin}
-  font-size: ${({ theme }) => theme.fontSizes.small};
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 `
+
+Accordion.defaultProps = {
+  px: 'large',
+  py: 'xsmall',
+}

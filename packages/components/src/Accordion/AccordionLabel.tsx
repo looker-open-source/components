@@ -28,7 +28,6 @@ import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import {
   PaddingProps,
-  padding,
   TypographyProps,
   typography,
 } from '@looker/design-tokens'
@@ -46,8 +45,12 @@ export interface AccordionLabelProps extends PaddingProps, TypographyProps {
   arrowLeft?: boolean
 }
 
-const DisclosureIndicatorContainer = styled.div``
-const DisclosureChildrenContainer = styled.div``
+const Indicator = styled.div`
+  grid-area: indicator;
+`
+const Label = styled.div`
+  grid-area: children;
+`
 
 const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   arrowLeft,
@@ -91,39 +94,28 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <DisclosureIndicatorContainer>{indicator}</DisclosureIndicatorContainer>
-      <DisclosureChildrenContainer>{children}</DisclosureChildrenContainer>
+      <Indicator>{indicator}</Indicator>
+      <Label>{children}</Label>
     </div>
   )
 }
 
 export const AccordionLabel = styled(AccordionLabelLayout)`
-  &&& {
-    padding-left: ${({ arrowLeft }) => arrowLeft && '0'};
-    ${padding}
-    ${typography}
-  }
+  ${typography}
+
+  align-items: center;
+  display: grid;
+  cursor: pointer;
+  grid-gap: ${({ theme }) => theme.space.xsmall};
+  grid-template-areas: ${({ arrowLeft }) =>
+    arrowLeft ? '"indicator children"' : '"children indicator"'};
+  grid-template-columns: ${({ arrowLeft, theme }) =>
+    arrowLeft ? `${theme.space.large} 1fr` : `1fr ${theme.space.large}`};
+  outline: none;
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.palette.purple300};
   }
-
-  cursor: pointer;
-  outline: none;
-
-  & > ${DisclosureIndicatorContainer} {
-    grid-area: indicator;
-  }
-
-  & > ${DisclosureChildrenContainer} {
-    grid-area: children;
-  }
-
-  display: grid;
-  align-items: center;
-  grid-gap: ${({ theme }) => theme.space.xsmall};
-  grid-template-columns: ${({ arrowLeft, theme }) =>
-    arrowLeft ? `${theme.space.large} 1fr` : `1fr ${theme.space.large}`};
-  grid-template-areas: ${({ arrowLeft }) =>
-    arrowLeft ? '"indicator children"' : '"children indicator"'};
 `
+
+AccordionLabel.defaultProps = { fontSize: 'small', fontWeight: 'semiBold' }
