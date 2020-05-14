@@ -24,7 +24,7 @@
 
  */
 
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {
   Box,
   Button,
@@ -61,8 +61,8 @@ const FancyMenuItem = ({
 }
 
 const HoverMenu = () => {
-  const hoverRef = React.useRef<HTMLDivElement>(null)
-  const [modalIsOpen, setOpen] = React.useState(false)
+  const hoverRef = useRef<HTMLDivElement>(null)
+  const [modalIsOpen, setOpen] = useState(false)
   function openModal() {
     setOpen(true)
   }
@@ -115,7 +115,7 @@ const HoverMenu = () => {
 }
 
 export function MenuDemo() {
-  const [isOpen, setOpen] = React.useState(false)
+  const [isOpen, setOpen] = useState(false)
   return (
     <Box m="large">
       <Paragraph pb="medium">{isOpen ? 'Menu Open' : 'Menu Closed'}</Paragraph>

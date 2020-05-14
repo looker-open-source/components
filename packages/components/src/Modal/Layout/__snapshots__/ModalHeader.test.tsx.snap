@@ -90,6 +90,9 @@ exports[`ModalHeader 1`] = `
   font-size: 1.125rem;
   margin-right: 2rem;
   color: #262D33;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .c0 {
@@ -137,6 +140,7 @@ exports[`ModalHeader 1`] = `
     The Heading for a Dialog
   </h3>
   <button
+    aria-describedby="test-modalHeader-iconButton-tooltip"
     className="c2 c3 c4"
     color="neutral"
     onBlur={[Function]}

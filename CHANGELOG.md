@@ -5,11 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
+
+### Changed
+- Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`
+- `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
+  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
+- `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
+
+## [RELEASED]
 
 ### Changed
 
-- Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`
+- Use Babel for building Monorepo ES artifacts
+  - Change build artifact path from `dist/` to `lib.`
+  - No longer produces multiple artifact formats (`es` only)
+  - Leverages `lerna` to largely remove need for per-package scripts
+- `yarn playground` & `yarn gatsby` replace `yarn develop` - no need to pre-compile for local development now.
+
+### Fixed
+
+- `Confirm` corrected word wrapping when long strings without white-space are used
+
+## [0.7.31] - 2020-05-12
+
+### Fixed
+
+- `FieldInline` `for` attribute moved to the correct `label`
+
+### Changed
+
+- Updated artwork for `Download` icon
 
 ## [0.7.30] - 2020-05-07
 

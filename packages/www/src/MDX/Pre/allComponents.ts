@@ -154,16 +154,26 @@ import { useState } from 'react'
 
 import { GridPlaceholder } from '../../helpers/GridPlaceholder'
 
-export const allComponents = {
-  useState,
-
-  styled,
-
-  isEqual,
-
+const otherLibraries = {
   GridPlaceholder,
-
+  isEqual,
   palette,
+  styled,
+  theme,
+  useState,
+}
+
+const hooks = {
+  doDefaultActionListSort,
+  useConfirm,
+  useMixedStateCheckbox,
+  useTabs,
+  useToggle,
+}
+
+export const allComponents = {
+  ...otherLibraries,
+  ...hooks,
   ActionList,
   ActionListItem,
   ActionListItemAction,
@@ -199,7 +209,6 @@ export const allComponents = {
   Dialog,
   DialogManager,
   Divider,
-  doDefaultActionListSort,
   Drawer,
   DrawerManager,
   FieldCheckbox,
@@ -208,10 +217,10 @@ export const allComponents = {
   FieldRadio,
   FieldRadioGroup,
   FieldSelect,
-  Fieldset,
   FieldText,
   FieldTextArea,
   FieldToggleSwitch,
+  Fieldset,
   Flex,
   FlexItem,
   Form,
@@ -263,25 +272,20 @@ export const allComponents = {
   Spinner,
   Swatch,
   Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
   Table,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
-  TabList,
-  TabPanel,
-  TabPanels,
   Tabs,
   Text,
   TextArea,
-  theme,
   TimeFormat,
   ToggleSwitch,
   Tooltip,
-  useConfirm,
-  useMixedStateCheckbox,
-  useTabs,
-  useToggle,
   VisuallyHidden,
 }

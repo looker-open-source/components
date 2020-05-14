@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import React, { forwardRef, KeyboardEvent, Ref, useState } from 'react'
+
+import React, { forwardRef, KeyboardEvent, Ref, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import { useControlWarn } from '../../../utils'
@@ -165,7 +166,7 @@ export const InputChipsInternal = forwardRef(
       }
     }
 
-    const isPasting = React.useRef(false)
+    const isPasting = useRef(false)
     function handlePaste() {
       isPasting.current = true
     }

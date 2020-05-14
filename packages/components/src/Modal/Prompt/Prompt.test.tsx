@@ -24,7 +24,7 @@
 
  */
 
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React, { useState } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -32,9 +32,14 @@ import { semanticColors, SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Prompt } from './Prompt'
 
+const onSaveCallback = jest.fn()
+
 const requiredProps = {
   inputLabel: 'Foo',
-  onSave: jest.fn(),
+  onSave: (_: string, close: () => void) => {
+    close()
+    onSaveCallback()
+  },
   title: 'Bar',
 }
 
@@ -48,10 +53,10 @@ const optionalProps = {
 }
 
 afterEach(() => {
-  requiredProps.onSave.mockClear()
+  onSaveCallback.mockClear()
 })
 
-test('<Prompt/> with defaults', () => {
+test('<Prompt/> with defaults', async () => {
   const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
     <Prompt {...requiredProps}>
       {(open) => <Button onClick={open}>Open Prompt</Button>}
@@ -69,12 +74,13 @@ test('<Prompt/> with defaults', () => {
   expect(saveButton).toHaveStyle(`background: ${semanticColors.primary.main}`)
 
   fireEvent.click(saveButton)
-  expect(requiredProps.onSave).toHaveBeenCalledTimes(0)
+  expect(onSaveCallback).toHaveBeenCalledTimes(0)
 
   fireEvent.change(input, { target: { value: 'Has Text In It' } })
   fireEvent.click(saveButton)
-  expect(requiredProps.onSave).toHaveBeenCalledTimes(1)
+  expect(onSaveCallback).toHaveBeenCalledTimes(1)
 
+  await waitForElementToBeRemoved(() => queryByText(requiredProps.inputLabel))
   expect(queryByText(requiredProps.inputLabel)).toBeNull()
   expect(queryByText(requiredProps.title)).toBeNull()
 })
@@ -101,7 +107,7 @@ test('<Prompt/> with custom props', () => {
 
   fireEvent.click(getByText('Cancel Cheese'))
   expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
-  expect(requiredProps.onSave).toHaveBeenCalledTimes(0)
+  expect(onSaveCallback).toHaveBeenCalledTimes(0)
 })
 
 test('<Prompt /> clears value after closing', () => {
@@ -122,7 +128,7 @@ test('<Prompt /> clears value after closing', () => {
   fireEvent.click(cancelButton)
 
   fireEvent.click(opener)
-  // Note: Need to requery for the input; not doing so results in stale value on the input element
+  // Note: Need to re-query for the input; not doing so results in stale value on the input element
   input = getByPlaceholderText(requiredProps.inputLabel)
   expect(input).toHaveValue('')
 })

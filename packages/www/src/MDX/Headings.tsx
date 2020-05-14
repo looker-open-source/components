@@ -34,10 +34,10 @@ const generateHeadingAnchor = (children?: ReactNode) => {
 
 const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
   return {
-    mb: 'medium',
-    lineHeight: 'xlarge',
     fontWeight: 'semiBold',
     id: generateHeadingAnchor(props.children),
+    lineHeight: 'xlarge',
+    mb: 'medium',
   }
 })``
 

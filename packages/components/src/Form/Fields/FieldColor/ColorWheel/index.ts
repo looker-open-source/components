@@ -25,4 +25,4 @@
  */
 
 export * from './ColorWheel'
-export { HueSaturation, SimpleHSV } from './color_wheel_utils'
+export type { HueSaturation, SimpleHSV } from './color_wheel_utils'

@@ -63,7 +63,7 @@ export interface BadgeProps
   size?: BadgeSizes
 }
 
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 const size = variant({
   prop: 'size',
   variants: {
