@@ -68,14 +68,18 @@ export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   const timeFormat = repeat('p', repetitions[format]) // ppp... is localized time format in date-fns
   const timeZoneFormat = repeat('z', repetitions[format]) /// zzz... is localize timezone format in date-fns
 
-  const stringFormat = trim(
+  const combinedDateTimeFormat = trim(
     `${date ? dateFormat : ''}${time ? timeFormat : ''} ${
       timeZone ? timeZoneFormat : ''
     }`
   )
 
   try {
-    return <>{formatDateString(children, locale, stringFormat, timeZone)}</>
+    return (
+      <>
+        {formatDateString(children, locale, combinedDateTimeFormat, timeZone)}
+      </>
+    )
   } catch (error) {
     return <>{error}</>
   }
