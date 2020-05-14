@@ -24,22 +24,23 @@
 
  */
 import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldTimeDemo } from './Form/FieldTimeDemo'
+import { FieldTime, Grid } from '@looker/components'
 
-const App: FC = () => {
+export const FieldTimeDemo: FC = () => {
   return (
-    <ComponentsProvider>
-      <FieldTimeDemo />
-    </ComponentsProvider>
+    <>
+      <Grid m="xxlarge">
+        <FieldTime defaultValue="14:34" format="12h" label="Label" />
+        <FieldTime
+          defaultValue="14:34"
+          description="this is the description is a very long one"
+          detail="detail"
+          label="Label"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldTime label="Label" defaultValue="14:34" required />
+        <FieldTime disabled label="Label" defaultValue="02:34" />
+      </Grid>
+    </>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})

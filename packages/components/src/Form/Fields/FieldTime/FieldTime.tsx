@@ -23,23 +23,37 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldTimeDemo } from './Form/FieldTimeDemo'
 
-const App: FC = () => {
+import React, { forwardRef } from 'react'
+import styled from 'styled-components'
+import { useID } from '../../../utils'
+import { useFormContext } from '../../Form'
+import { InputTime, InputTimeProps } from '../../Inputs/InputTime'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+
+export interface FieldInputTimeProps extends FieldProps, InputTimeProps {}
+
+const FieldTimeComponent = forwardRef((props: FieldInputTimeProps) => {
+  const validationMessage = useFormContext(props)
+  const id = useID(props.id)
   return (
-    <ComponentsProvider>
-      <FieldTimeDemo />
-    </ComponentsProvider>
+    <Field
+      {...pickFieldProps(props)}
+      id={id}
+      validationMessage={validationMessage}
+    >
+      <InputTime
+        {...omitFieldProps(props)}
+        aria-describedby={`${id}-describedby`}
+        id={id}
+        validationType={validationMessage && validationMessage.type}
+      />
+    </Field>
   )
-}
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
 })
+
+FieldTimeComponent.displayName = 'FieldTimeComponent'
+
+export const FieldTime = styled(FieldTimeComponent)`
+  width: min-content;
+`

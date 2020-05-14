@@ -442,6 +442,31 @@ If you have multiple fields in need of validation, it is recommended that you wr
 />
 ```
 
+## FieldTime
+
+The `<FieldTime />` component is composed of an `<InputTime />` component and a `<Label />` component. It has attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+```jsx
+<FieldTime
+  defaultValue="14:34"
+  description="this is the description"
+  detail="detail"
+  label="Label"
+  validationMessage={{ message: 'validation Message', type: 'error' }}
+/>
+```
+
+### FieldTime props
+
+`<FieldTime />` can be set as `desabled` and also as `required`.
+
+```jsx
+<Grid>
+  <FieldTime label="Label" defaultValue="14:34" required />
+  <FieldTime disabled label="Label" defaultValue="02:34" />
+</Grid>
+```
+
 ## FieldToggleSwitch
 
 <Props of="FieldToggleSwitch" />
