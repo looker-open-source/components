@@ -59,7 +59,7 @@ const extractTextFromDomList = (list: HTMLElement) => {
 }
 
 const renderListContent = (props: InputTimeSelectProps) => {
-  const { getByPlaceholderText, getByTestId } = renderWithTheme(
+  const { getByPlaceholderText, getByRole } = renderWithTheme(
     <InputTimeSelect {...props} />
   )
 
@@ -68,7 +68,7 @@ const renderListContent = (props: InputTimeSelectProps) => {
   fireEvent.click(inputBox)
 
   // select list container
-  const domList = getByTestId('combobox-list')
+  const domList = getByRole('listbox')
   return domList
 }
 

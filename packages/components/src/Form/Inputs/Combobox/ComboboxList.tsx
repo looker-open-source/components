@@ -29,6 +29,8 @@
 
 import {
   CompatibleHTMLProps,
+  layout,
+  LayoutProps,
   reset,
   space,
   SpaceProps,
@@ -45,7 +47,8 @@ import React, {
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
-import { PopoverContent, usePopover } from '../../../Popover'
+import { useForkedRef } from '../../../utils'
+import { usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
@@ -53,6 +56,7 @@ import { ComboboxActionType } from './utils/state'
 
 export interface ComboboxListProps
   extends SpaceProps,
+    LayoutProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
   /**
@@ -112,7 +116,7 @@ const ComboboxListInternal = forwardRef(
       wrapperElement,
       isVisible,
       optionsRef,
-      popoverRef,
+      listRef,
       setListScrollPosition,
       setListClientRect,
     } = contextToUse
@@ -138,26 +142,23 @@ const ComboboxListInternal = forwardRef(
 
     const handleKeyDown = useKeyDown()
     const handleBlur = useBlur()
-    const width = wrapperElement
-      ? wrapperElement.getBoundingClientRect().width
-      : 'auto'
+    const ref = useForkedRef(listRef, forwardedRef)
+
+    const width =
+      props.width ||
+      (wrapperElement && wrapperElement.getBoundingClientRect().width) ||
+      'auto'
 
     const content = (
-      <PopoverContent
+      <ComboboxUl
+        {...props}
         width={width}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
-        ref={popoverRef}
-        p="none"
-      >
-        <ul
-          {...props}
-          ref={forwardedRef}
-          role="listbox"
-          tabIndex={-1}
-          data-testid="combobox-list"
-        />
-      </PopoverContent>
+        ref={ref}
+        role="listbox"
+        tabIndex={-1}
+      />
     )
 
     const setOpen = (isOpen: boolean) => {
@@ -171,7 +172,7 @@ const ComboboxListInternal = forwardRef(
       content,
       focusTrap: false,
       isOpen: isVisible,
-      placement: 'bottom',
+      placement: 'bottom-start',
       setOpen,
       triggerElement: wrapperElement,
       triggerToggle: false,
@@ -221,28 +222,28 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-const comboboxListStyles = css<ComboboxListInternalProps>`
+const ComboboxUl = styled.ul<ComboboxListProps>`
   ${reset}
   ${typography}
   ${space}
   list-style-type: none;
   margin: 0;
-  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
   max-height: 30rem;
+  ${layout}
+`
+
+const isMultiPadding = css<ComboboxListInternalProps>`
+  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
 `
 
 export const ComboboxList = styled(ComboboxListInternal).attrs({
   isMulti: false,
 })`
-  ${comboboxListStyles}
+  ${isMultiPadding}
 `
 
 export const ComboboxMultiList = styled(ComboboxListInternal).attrs({
   isMulti: true,
 })`
-  ${comboboxListStyles}
+  ${isMultiPadding}
 `
-
-ComboboxList.defaultProps = {
-  py: 'xsmall',
-}
