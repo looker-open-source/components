@@ -19,10 +19,12 @@ Use a primary button for the most frequently used action or most important actio
 #### Primary states
 
 ```jsx
-<Button mr="xsmall">Primary Idle</Button>
-<Button mr="xsmall" className="hover">Primary Hover</Button>
-<Button mr="xsmall" className="active">Primary Active</Button>
-<Button disabled>Disabled</Button>
+<Space>
+  <Button>Primary Idle</Button>
+  <Button className="hover">Primary Hover</Button>
+  <Button className="active">Primary Active</Button>
+  <Button disabled>Disabled</Button>
+</Space>
 ```
 
 ### ButtonOutline
@@ -36,11 +38,13 @@ Use an outline button alongside a primary button to provide alternative actions 
 #### Outline states
 
 ```jsx
-<ButtonOutline m="xsmall">Outline Idle</ButtonOutline>
-<ButtonOutline m="xsmall" className="hover">Outline Hover</ButtonOutline>
-<ButtonOutline m="xsmall" className="active">Outline Active</ButtonOutline>
-<ButtonOutline m="xsmall" color="danger">Outline Danger</ButtonOutline>
-<ButtonOutline disabled>Outline Disabled</ButtonOutline>
+<Space wrap>
+  <ButtonOutline>Idle</ButtonOutline>
+  <ButtonOutline className="hover">Hover</ButtonOutline>
+  <ButtonOutline className="active">Active</ButtonOutline>
+  <ButtonOutline color="danger">Danger</ButtonOutline>
+  <ButtonOutline disabled>Disabled</ButtonOutline>
+</Space>
 ```
 
 ### ButtonTransparent
@@ -54,11 +58,13 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 #### Transparent states
 
 ```jsx
-<ButtonTransparent m="xsmall"> Transparent Idle </ButtonTransparent>
-<ButtonTransparent m="xsmall" className="hover"> Transparent Hover </ButtonTransparent>
-<ButtonTransparent m="xsmall" className="active"> Transparent Active </ButtonTransparent>
-<ButtonTransparent m="xsmall" color="danger"> Transparent Danger </ButtonTransparent>
-<ButtonTransparent disabled> Transparent Disabled </ButtonTransparent>
+<Space wrap>
+  <ButtonTransparent>Idle</ButtonTransparent>
+  <ButtonTransparent className="hover">Hover</ButtonTransparent>
+  <ButtonTransparent className="active">Active</ButtonTransparent>
+  <ButtonTransparent color="danger">Danger</ButtonTransparent>
+  <ButtonTransparent disabled>Disabled</ButtonTransparent>
+</Space>
 ```
 
 ## Colors
@@ -74,10 +80,18 @@ Danger Buttons are to be used in situations where you need to convey some very i
 #### Danger States
 
 ```jsx
-<Button mr="xsmall" color="danger">Danger Idle</Button>
-<Button mr="xsmall" color="danger" className="hover">Danger Hover</Button>
-<Button mr="xsmall" color="danger" className="active">Danger Active</Button>
-<Button color="danger" disabled>Danger Disabled</Button>
+<Space>
+  <Button color="danger">Danger Idle</Button>
+  <Button color="danger" className="hover">
+    Danger Hover
+  </Button>
+  <Button color="danger" className="active">
+    Danger Active
+  </Button>
+  <Button color="danger" disabled>
+    Danger Disabled
+  </Button>
+</Space>
 ```
 
 ## Size
@@ -85,10 +99,12 @@ Danger Buttons are to be used in situations where you need to convey some very i
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
 ```jsx
-<Button size="xsmall" mr="xsmall"> Xsmall Button </Button>
-<Button size="small" mr="xsmall"> Small Button </Button>
-<Button mr="xsmall">Medium (default) Button</Button>
-<Button size="large">Large Button</Button>
+<Space>
+  <Button size="xsmall">Xsmall Button</Button>
+  <Button size="small">Small Button</Button>
+  <Button>Medium (default) Button</Button>
+  <Button size="large">Large Button</Button>
+</Space>
 ```
 
 ## Full Width
@@ -121,14 +137,10 @@ Buttons can have an icon before or after their content, using the `iconBefore` a
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
 
 ```jsx
-<List>
-  <ListItem>
-    <Button color="danger">Move to Trash...</Button>
-  </ListItem>
-  <ListItem>
-    <Button>Print...</Button>
-  </ListItem>
-</List>
+<Space>
+  <Button color="danger">Move to Trash...</Button>
+  <Button>Print...</Button>
+</Space>
 ```
 
 ## Extending Button
@@ -141,8 +153,4 @@ Sometimes you may want to extend the Button defaults to create a specific stylin
 const RoundButton = styled(Button)`
   border-radius: 2rem;
 `
-
-render(
-  <RoundButton>
-)
 ```

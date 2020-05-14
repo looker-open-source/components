@@ -34,6 +34,7 @@ export const SpaceVertical = styled.div<SpaceHelperProps>`
   flex-shrink: 1;
 
   && > * {
+    width: 100%;
     margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
   }
 

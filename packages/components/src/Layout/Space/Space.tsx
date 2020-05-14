@@ -33,7 +33,31 @@ export interface SpaceHelperProps extends SimpleLayoutProps {
    * Amount of space between grid cells
    * @default 'medium'
    */
-  gap?: SpacingSizes
+  gap?: SpacingSizes | 'between' | 'evenly'
+
+  /**
+   * The spacing between each pair of adjacent items is the same. The empty space before the
+   * first and after the last item equals half of the space between each pair of adjacent items.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  around?: boolean
+
+  /**
+   * The spacing between each pair of adjacent items is the same. The first item is flush with
+   * the main-start edge, and the last item is flush with the main-end edge.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  between?: boolean
+
+  /**
+   * The spacing between each pair of adjacent items, the main-start edge and the first item,
+   * and the main-end edge and the last item, are all exactly the same.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  evenly?: boolean
 
   /**
    * reverse direction of content
@@ -51,18 +75,27 @@ export const spaceCSS = css`
   align-items: flex-start;
 `
 
+const fauxFlexGap = (space: SpaceHelperProps) => css`
+  && > * {
+    margin-left: ${({ theme }) => theme.space[space.gap || defaultSpaceSize]};
+  }
+
+  ${({ theme }) =>
+    space.reverse
+      ? `&& > *:last-child { margin-left: ${theme.space.none}; }`
+      : `&& > *:first-child { margin-left: ${theme.space.none}; }`}
+`
+
 export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
+  align-items: center;
 
-  && > * {
-    margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
-  }
-
-  ${({ theme, reverse }) =>
-    reverse
-      ? `&& > :last-child { margin-left: ${theme.space.none}; }`
-      : `&& > :first-child { margin-left: ${theme.space.none}; }`}
+  ${({ around }) => around && 'justify-content: space-around;'}
+  ${({ between }) => between && 'justify-content: space-between;'}
+  ${({ evenly }) => evenly && 'justify-content: space-evenly;'}
+  ${({ around, between, evenly }) =>
+    !around && !between && !evenly && fauxFlexGap}
 `
 
 Space.defaultProps = { width: '100%' }

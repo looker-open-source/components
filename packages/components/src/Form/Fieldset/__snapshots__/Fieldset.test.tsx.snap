@@ -20,6 +20,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c0.c0 > * {
+  width: 100%;
   margin-top: 1rem;
 }
 
@@ -47,6 +48,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c2.c2 > * {
+  width: 100%;
   margin-top: 0.75rem;
 }
 

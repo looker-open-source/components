@@ -14,13 +14,17 @@ exports[`Space default 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0.c0 > * {
   margin-left: 1rem;
 }
 
-.c0.c0 > :first-child {
+.c0.c0 > *:first-child {
   margin-left: 0rem;
 }
 
@@ -57,13 +61,17 @@ exports[`Space reversed 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0.c0 > * {
   margin-left: 1rem;
 }
 
-.c0.c0 > :last-child {
+.c0.c0 > *:last-child {
   margin-left: 0rem;
 }
 
@@ -100,13 +108,17 @@ exports[`Space with specified gap 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0.c0 > * {
   margin-left: 2rem;
 }
 
-.c0.c0 > :first-child {
+.c0.c0 > *:first-child {
   margin-left: 0rem;
 }
 

@@ -47,6 +47,42 @@ Specify the width of the gap between items:
 </SpaceVertical>
 ```
 
+## Between
+
+The spacing between each pair of adjacent items is the same. The first item is flush with the main-start edge, and the last item is flush with the main-end edge. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space between>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+## Around
+
+The spacing between each pair of adjacent items is the same. The empty space before the first and after the last item equals half of the space between each pair of adjacent items. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space around>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+## Evenly
+
+The spacing between each pair of adjacent items, the main-start edge and the first item, and the main-end edge and the last item, are all exactly the same. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space evenly>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
 ## Reverse
 
 Reverse the order of the items in the space.
