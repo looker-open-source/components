@@ -117,7 +117,7 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   outline: none;
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.palette.purple300};
+    border-color: ${({ theme }) => theme.colors.palette.purple300};
   }
 `
 
