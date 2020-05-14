@@ -25,10 +25,10 @@
  */
 
 import styled, { css } from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
+import { SpacingSizes, flexbox, FlexboxProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
-export interface SpaceHelperProps extends SimpleLayoutProps {
+export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   /**
    * Amount of space between grid cells
    * @default 'medium'
@@ -70,9 +70,9 @@ export const defaultSpaceSize = 'medium'
 
 export const spaceCSS = css`
   ${simpleLayoutCSS}
+  ${flexbox}
 
   display: flex;
-  align-items: flex-start;
 `
 
 const fauxFlexGap = (space: SpaceHelperProps) => css`
@@ -89,7 +89,6 @@ const fauxFlexGap = (space: SpaceHelperProps) => css`
 export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  align-items: center;
 
   ${({ around }) => around && 'justify-content: space-around;'}
   ${({ between }) => between && 'justify-content: space-between;'}
@@ -98,4 +97,4 @@ export const Space = styled.div<SpaceHelperProps>`
     !around && !between && !evenly && fauxFlexGap}
 `
 
-Space.defaultProps = { width: '100%' }
+Space.defaultProps = { alignItems: 'center', width: '100%' }

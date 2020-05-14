@@ -27,15 +27,15 @@ import { InputDateLocales } from './demos'
     setSelectedDate(date)
   }
   return (
-    <Flex>
+    <Space gap="xxlarge">
       <InputDate onChange={handleChange} defaultValue={selectedDate} />
-      <Box borderLeft="1px solid #ccc" pl="large">
-        <Heading mt="medium">Selected:</Heading>{' '}
+      <Box p="large" height="100%" borderLeft="1px solid #ccc">
+        <Heading>Selected:</Heading>
         <Text variant="secondary">
           <DateFormat>{selectedDate}</DateFormat>
         </Text>
       </Box>
-    </Flex>
+    </Space>
   )
 }
 ```
@@ -72,23 +72,21 @@ If you handle form validation externally (such as treating this date field as re
   const textVariant = isValid ? 'default' : 'critical'
 
   return (
-    <Flex>
-      <div>
-        <InputDate
-          onChange={handleChange}
-          onValidationFail={handleValidationFail}
-        />
-      </div>
-      <Box borderLeft="1px solid #ccc" pl="large">
-        <Text variant="secondary">
+    <Space gap="xxxlarge">
+      <InputDate
+        onChange={handleChange}
+        onValidationFail={handleValidationFail}
+      />
+      <SpaceVertical>
+        <Paragraph variant="secondary">
           INSTRUCTIONS: Try typing an invalid date string (ex:
           'not/a/valid/date') and clicking or tabbing away to trigger blur
           event.
-        </Text>
-        <Heading mt="medium">Result:</Heading>
+        </Paragraph>
+        <Heading>Result:</Heading>
         <Text variant={textVariant}>{message}</Text>
-      </Box>
-    </Flex>
+      </SpaceVertical>
+    </Space>
   )
 }
 ```

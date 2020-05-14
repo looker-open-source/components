@@ -20,25 +20,27 @@ The entire menu can be disabled via the `disabled` prop.
 - `ref` - tooltip and popover placement
 
 ```jsx
-<Menu>
-  <MenuDisclosure tooltip="Select your favorite kind">
-    <Button mr="small">Cheese</Button>
-  </MenuDisclosure>
-  <MenuList>
-    <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-  </MenuList>
-</Menu>
+<Space>
+  <Menu>
+    <MenuDisclosure tooltip="Select your favorite kind">
+      <Button>Cheese</Button>
+    </MenuDisclosure>
+    <MenuList>
+      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+    </MenuList>
+  </Menu>
 
-<Menu disabled>
-  <MenuDisclosure tooltip="Select your favorite kind">
-    <Button>Disabled Cheese</Button>
-  </MenuDisclosure>
-  <MenuList>
-    <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-  </MenuList>
-</Menu>
+  <Menu disabled>
+    <MenuDisclosure tooltip="Select your favorite kind">
+      <Button>Disabled Cheese</Button>
+    </MenuDisclosure>
+    <MenuList>
+      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+    </MenuList>
+  </Menu>
+</Space>
 ```
 
 ## Menu Placement
@@ -66,18 +68,18 @@ Control the state of the menu with React's `useState` hook.
 ;() => {
   const [isOpen, setOpen] = React.useState(false)
   return (
-    <>
+    <Space>
       <Menu isOpen={isOpen} setOpen={setOpen}>
         <MenuDisclosure tooltip="Select export format">
-          <Button mr="medium">Export</Button>
+          <Button>Export</Button>
         </MenuDisclosure>
         <MenuList>
           <MenuItem icon="Mail">Email</MenuItem>
           <MenuItem icon="Table">Spreadsheet</MenuItem>
         </MenuList>
       </Menu>
-      {isOpen ? 'Menu Open' : 'Menu Closed'}
-    </>
+      <Text>{isOpen ? 'Menu Open' : 'Menu Closed'}</Text>
+    </Space>
   )
 }
 ```
