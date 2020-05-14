@@ -41,6 +41,7 @@ interface ComboboxInputControlsProps {
   summary?: string
 }
 
+// inserts a divider line between each control element (item1 | item2 | item3)
 const intersperseDivider = (children: ReactElement[]) =>
   tail(
     flatMap(children, (child, i) => [<SearchControlDivider key={i} />, child])
@@ -58,10 +59,17 @@ export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
   const children = intersperseDivider(
     compact([
       validationType === 'error' && (
-        <Icon name="CircleInfo" size={20} color="palette.red500" mr="xxsmall" />
+        <Icon
+          key="warning"
+          name="CircleInfo"
+          size={20}
+          color="palette.red500"
+          mr="xxsmall"
+        />
       ),
       renderSearchControls && (
         <InputSearchControls
+          key="search-controls"
           onClear={onClear}
           showClear={true}
           disabled={disabled}
@@ -70,6 +78,7 @@ export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
       ),
       hasOptions && (
         <Icon
+          key="list-caret"
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
           size={18}
           color={disabled ? 'palette.charcoal300' : 'palette.charcoal500'}
