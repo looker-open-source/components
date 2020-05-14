@@ -26,6 +26,7 @@
 
 import React, { FC } from 'react'
 import repeat from 'lodash/repeat'
+import trim from 'lodash/trim'
 import { LocaleCodes, Locales, formatDateString } from '../utils'
 
 type DateFormats = 'short' | 'medium' | 'long' | 'full'
@@ -67,9 +68,11 @@ export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   const timeFormat = repeat('p', repetitions[format]) // ppp... is localized time format in date-fns
   const timeZoneFormat = repeat('z', repetitions[format]) /// zzz... is localize timezone format in date-fns
 
-  const stringFormat = `${date ? dateFormat : ''}${time ? timeFormat : ''} ${
-    timeZone ? timeZoneFormat : ''
-  }`
+  const stringFormat = trim(
+    `${date ? dateFormat : ''}${time ? timeFormat : ''} ${
+      timeZone ? timeZoneFormat : ''
+    }`
+  )
 
   try {
     return <>{formatDateString(children, locale, stringFormat, timeZone)}</>

@@ -25,6 +25,7 @@
  */
 import { assertSnapshot } from '@looker/components-test-utils'
 import React from 'react'
+import { Locales } from '../utils/i18n'
 import { DateFormat } from './DateFormat'
 import { DateTimeFormat } from './DateTimeFormat'
 import { TimeFormat } from './TimeFormat'
@@ -43,7 +44,9 @@ test('TimeFormat renders only time', () => {
 })
 
 test('DateTimeFormat renders when passing specific locale', () => {
-  assertSnapshot(<DateTimeFormat locale="ar-EG">{date}</DateTimeFormat>)
+  assertSnapshot(
+    <DateTimeFormat locale={Locales.Arabic}>{date}</DateTimeFormat>
+  )
 })
 
 test('DateTimeFormat displays timeZone prop if one is passed', () => {
