@@ -24,22 +24,19 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  SpaceProps,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { IconButton } from '../Button'
 import { Box, Flex } from '../Layout'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
+import { SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
 export interface BannerProps
   extends CompatibleHTMLProps<HTMLElement>,
-    SpaceProps,
+    SimpleLayoutProps,
     TypographyProps {
   /**
    * @default: 'info'
@@ -111,16 +108,12 @@ export const Banner = forwardRef(
 
     return (
       <Flex
-        ref={ref}
-        flex="auto"
-        {...bannerIntentStyling}
-        borderRadius="medium"
-        m="small"
-        py="xsmall"
-        px="small"
         alignItems="center"
         aria-live="polite"
+        borderRadius="medium"
+        ref={ref}
         role="status"
+        {...bannerIntentStyling}
         {...typeAndSpaceProps}
       >
         {icon}
@@ -129,9 +122,8 @@ export const Banner = forwardRef(
         {canDismiss && (
           <IconButton
             ml="auto"
-            style={{ padding: '1px' }}
             onClick={onDismiss}
-            hoverStyle={{ background: 'none' }}
+            hoverStyle={{ background: 'none', border: 'none' }}
             icon="Close"
             size="small"
             label={`Dismiss ${intent}`}
@@ -143,5 +135,11 @@ export const Banner = forwardRef(
   }
 )
 
-Banner.defaultProps = { intent: 'info' }
+Banner.defaultProps = {
+  fontSize: 'small',
+  intent: 'info',
+  px: 'small',
+  py: 'xsmall',
+  width: '100%',
+}
 Banner.displayName = 'Banner'
