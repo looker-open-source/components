@@ -23,13 +23,14 @@
  SOFTWARE.
 
  */
-
+import React, { FC } from 'react'
+import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
 import { FieldSelectMultiDemo } from './Form/FieldSelectMultiDemo'
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <ComponentsProvider>
       <FieldSelectMultiDemo />

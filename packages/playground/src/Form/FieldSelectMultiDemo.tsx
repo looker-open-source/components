@@ -47,33 +47,37 @@ const selectOptions = [
 
 export const FieldSelectMultiDemo: FC = () => {
   return (
-    <Grid m="xxlarge">
-      <FieldSelectMulti
-        label="Label"
-        options={selectOptions}
-        placeholder="Search fruits"
-        detail="5/50"
-      />
-      <FieldSelectMulti
-        label="Label"
-        placeholder="placeholder"
-        description="this is the description"
-        options={[
-          { label: 'Cheddar', value: 'cheddar' },
-          { label: 'Gouda', value: 'gouda' },
-          { label: 'Swiss', value: 'swiss' },
-        ]}
-      />
-      <FieldSelectMulti
-        label="Label"
-        placeholder="placeholder"
-        options={[
-          { label: 'Cheddar', value: 'cheddar' },
-          { label: 'Gouda', value: 'gouda' },
-          { label: 'Swiss', value: 'swiss' },
-        ]}
-        validationMessage={{ message: 'validation Message', type: 'error' }}
-      />
-    </Grid>
+    <>
+      <Grid m="xxlarge">
+        <FieldSelectMulti
+          description="this is the description"
+          detail="5/50"
+          label="Label"
+          options={selectOptions}
+          placeholder="Search fruits"
+        />
+        <FieldSelectMulti
+          label="Label"
+          required
+          options={selectOptions}
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldSelectMulti
+          description="this is the description"
+          detail="5/50"
+          label="Label"
+          options={selectOptions}
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldSelectMulti
+          disabled
+          label="Label"
+          options={selectOptions}
+          placeholder="placeholder"
+        />
+      </Grid>
+    </>
   )
 }

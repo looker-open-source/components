@@ -39,6 +39,7 @@ const FieldSelectMultiComponent = forwardRef(
     const id = useID(props.id)
     return (
       <Field
+        data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
         validationMessage={validationMessage}
@@ -57,4 +58,6 @@ const FieldSelectMultiComponent = forwardRef(
 
 FieldSelectMultiComponent.displayName = 'FieldSelectMultiComponent'
 
-export const FieldSelectMulti = styled(FieldSelectMultiComponent)``
+export const FieldSelectMulti = styled(FieldSelectMultiComponent)`
+  width: 100%;
+`
