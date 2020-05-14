@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `Select` now accepts `listLayout` to control the layout of the list
+- `ComboboxList` now accepts properties from `LayoutProps`
+
 ### Changed
 
 - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
@@ -36,12 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated artwork for `Download` icon
-
-## [0.7.30] - 2020-05-07
-
-### Added
-
-- `ComboboxList` now accepts `width`, `minWidth`, and `maxWidth`
 
 ## [0.7.30] - 2020-05-07
 

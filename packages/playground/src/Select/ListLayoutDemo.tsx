@@ -119,7 +119,7 @@ export function ListLayoutDemo() {
           options={options}
           aria-label="Fruits"
           defaultValue="1"
-          listDimensions={{ width: 500 }}
+          listLayout={{ width: 500 }}
         />
         <FieldSelect
           label="minWidth=420"
@@ -127,7 +127,7 @@ export function ListLayoutDemo() {
           options={options}
           aria-label="Fruits"
           defaultValue="1"
-          listDimensions={{ minWidth: 420 }}
+          listLayout={{ minWidth: 420 }}
         />
         <Heading>SelectMulti</Heading>
         <Label>maxWidth=800 width=calc(100vw - 50px)</Label>
@@ -135,7 +135,7 @@ export function ListLayoutDemo() {
           options={options}
           aria-label="Fruits"
           defaultValues={['1']}
-          listDimensions={{ maxWidth: 800, width: 'calc(100vw - 50px)' }}
+          listLayout={{ maxWidth: 800, width: 'calc(100vw - 50px)' }}
           mb="medium"
         />
         <Label>maxHeight=100</Label>
@@ -143,7 +143,7 @@ export function ListLayoutDemo() {
           options={options}
           aria-label="Fruits"
           defaultValues={['1']}
-          listDimensions={{ maxHeight: 100 }}
+          listLayout={{ maxHeight: 100 }}
         />
       </Box>
     </Box>

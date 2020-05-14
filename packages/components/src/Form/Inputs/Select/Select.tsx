@@ -58,7 +58,7 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
    * Control the dimensions of the list
    * (use this to untether the list width from the input width)
    */
-  listDimensions?: LayoutProps
+  listLayout?: LayoutProps
 
   validationType?: ValidationType
   /**
@@ -101,7 +101,7 @@ const SelectComponent = forwardRef(
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
-      listDimensions,
+      listLayout,
       validationType,
       windowedOptions: windowedOptionsProp,
       ...props
@@ -167,7 +167,7 @@ const SelectComponent = forwardRef(
             persistSelection
             windowedOptions={windowedOptions}
             {...ariaProps}
-            {...listDimensions}
+            {...listLayout}
           >
             <SelectOptions
               options={options}

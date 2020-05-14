@@ -116,7 +116,7 @@ const ComboboxListInternal = forwardRef(
       wrapperElement,
       isVisible,
       optionsRef,
-      popoverRef,
+      listRef,
       setListScrollPosition,
       setListClientRect,
     } = contextToUse
@@ -142,7 +142,7 @@ const ComboboxListInternal = forwardRef(
 
     const handleKeyDown = useKeyDown()
     const handleBlur = useBlur()
-    const ref = useForkedRef(popoverRef, forwardedRef)
+    const ref = useForkedRef(listRef, forwardedRef)
 
     const width =
       props.width ||
@@ -224,14 +224,12 @@ ComboboxListInternal.displayName = 'ComboboxListInternal'
 
 const ComboboxUl = styled.ul<ComboboxListProps>`
   ${reset}
-  ${space}
   ${typography}
-
+  ${space}
+  list-style-type: none;
+  margin: 0;
   max-height: 30rem;
   ${layout}
-
-  margin: 0;
-  list-style-type: none;
 `
 
 const isMultiPadding = css<ComboboxListInternalProps>`

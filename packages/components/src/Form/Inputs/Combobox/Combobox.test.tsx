@@ -149,12 +149,19 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(document)
   })
 
+  const dimensions = {
+    maxHeight: 400,
+    maxWidth: 800,
+    minWidth: 300,
+    width: '50vw',
+  }
+
   test.each([
     [
       'Combobox',
       <Combobox key="combobox">
         <ComboboxInput placeholder="Type here" />
-        <ComboboxList width="50vw" minWidth={300} maxWidth={800}>
+        <ComboboxList {...dimensions}>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
@@ -164,27 +171,23 @@ describe('<Combobox/> with children', () => {
       'ComboboxMulti',
       <ComboboxMulti key="combobox-multi">
         <ComboboxMultiInput placeholder="Type here" />
-        <ComboboxMultiList width="50vw" minWidth={300} maxWidth={800}>
+        <ComboboxMultiList {...dimensions}>
           <ComboboxMultiOption label="Foo" value="101" />
           <ComboboxMultiOption label="Bar" value="102" />
         </ComboboxMultiList>
       </ComboboxMulti>,
     ],
-  ])('Sets the list width styles', (_, jsx) => {
+  ])('Sets the list layout styles (%s)', (_, jsx) => {
     const { getByRole, getByPlaceholderText } = renderWithTheme(jsx)
 
     const input = getByPlaceholderText('Type here')
     fireEvent.click(input)
 
-    expect(getByRole('listbox').parentElement).toHaveStyleRule(
-      'max-width',
-      '800px'
-    )
-    expect(getByRole('listbox').parentElement).toHaveStyleRule(
-      'min-width',
-      '300px'
-    )
-    expect(getByRole('listbox').parentElement).toHaveStyleRule('width', '50vw')
+    const list = getByRole('listbox')
+    expect(list).toHaveStyleRule('max-height', '400px')
+    expect(list).toHaveStyleRule('max-width', '800px')
+    expect(list).toHaveStyleRule('min-width', '300px')
+    expect(list).toHaveStyleRule('width', '50vw')
 
     // Close popover to silence act() warning
     fireEvent.click(document)

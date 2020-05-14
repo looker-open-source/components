@@ -82,7 +82,7 @@ export function useKeyDown() {
   }
 
   return throttle(function handleKeyDown(
-    event: KeyboardEvent<HTMLUListElement>
+    event: KeyboardEvent<HTMLUListElement | HTMLDivElement>
   ) {
     const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
