@@ -26,6 +26,7 @@
 
 /* eslint-disable import/no-duplicates */
 import format from 'date-fns-tz/format'
+import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
 import isValid from 'date-fns/isValid'
 import parse from 'date-fns/parse'
 
@@ -117,7 +118,9 @@ export const formatDateString = (
     return ''
   }
 
-  return format(date, stringFormat, {
+  const renderedDate = timeZone ? utcToZonedTime(date, timeZone) : date
+
+  return format(renderedDate, stringFormat, {
     locale: dateFnLocaleMap[locale],
     ...(timeZone && { timeZone }),
   })

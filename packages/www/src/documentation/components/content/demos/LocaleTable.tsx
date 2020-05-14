@@ -51,7 +51,6 @@
  */
 import React from 'react'
 import toPairs from 'lodash/toPairs'
-import styled from 'styled-components'
 import {
   Locales,
   Table,

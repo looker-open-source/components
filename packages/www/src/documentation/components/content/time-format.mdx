@@ -30,10 +30,12 @@ Wrap the `TimeFormat` component around a javascript Date object format according
 
 ## TimeZone
 
-TimeZone needs to be a specific string based on the [IANA standard](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+`TimeFormat`, well as [`DateFormat`]('date-format') assume that the provided date object is anchored in UTC time. If you need to adjust this to display correctly, you can pass the user's preferred time zone into the `timeZone` prop. This component will accept any string listed in the the [IANA standard](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ```jsx
-<TimeFormat timeZone="Asia/Kolkata" />
+<TimeFormat timeZone="America/New_York">
+  {new Date(Date.parse('05 May 2020 12:00 UTC'))}
+</TimeFormat>
 ```
 
 ## I18n
