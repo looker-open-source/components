@@ -28,23 +28,16 @@ import styled from 'styled-components'
 import { ButtonBase, ButtonBaseProps } from './ButtonBase'
 
 export const transparentButtonPadding = (props: ButtonBaseProps) => {
-  let padding = '20px'
   switch (props.size) {
     case 'xsmall':
-      padding = '8px'
-      break
+      return props.theme.space.xsmall
     case 'small':
-      padding = '16px'
-      break
+      return props.theme.space.medium
     case 'large':
-      padding = '20px'
-      break
     case 'medium':
     default:
-      padding = '20px'
+      return props.theme.space.large
   }
-
-  return padding
 }
 
 export const ButtonTransparent = styled(ButtonBase)`
