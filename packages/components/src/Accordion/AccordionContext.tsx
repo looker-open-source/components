@@ -26,8 +26,10 @@
 
 import { createContext } from 'react'
 import noop from 'lodash/noop'
+import { DisclosureIcons } from './Accordion'
 
 export interface AccordionContextProps {
+  disclosureIcons: DisclosureIcons
   indicatorPosition: 'left' | 'right'
   isOpen: boolean
   toggleOpen: (isOpen: boolean) => void
@@ -36,6 +38,10 @@ export interface AccordionContextProps {
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({
+  disclosureIcons: {
+    closed: 'CaretDown',
+    open: 'CaretUp',
+  },
   indicatorPosition: 'right',
   isOpen: false,
   toggleOpen: (isOpen: boolean) => noop(isOpen),

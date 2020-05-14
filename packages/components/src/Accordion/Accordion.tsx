@@ -28,9 +28,15 @@ import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
 import { layout, margin, padding, reset } from '@looker/design-tokens'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
+import { IconNames } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureStyle } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
+
+export type DiclosureIcons = {
+  closed: IconNames
+  open: IconNames
+}
 
 export interface AccordionProps extends SimpleLayoutProps {
   children: ReactNode
@@ -40,6 +46,10 @@ export interface AccordionProps extends SimpleLayoutProps {
    * @default 'right'
    */
   indicatorPosition?: 'left' | 'right'
+  /**
+   * Replaces default caret icons for disclosure
+   */
+  disclosureIcons?: DiclosureIcons
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -69,6 +79,10 @@ const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
   defaultOpen,
+  disclosureIcons = {
+    closed: 'CaretDown',
+    open: 'CaretUp',
+  },
   indicatorPosition = 'right',
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
@@ -87,6 +101,7 @@ const AccordionLayout: FC<AccordionProps> = ({
     )
 
   const context = {
+    disclosureIcons,
     indicatorPosition,
     isOpen: propsIsOpen === undefined ? isOpen : propsIsOpen,
     onClose: propsOnClose,

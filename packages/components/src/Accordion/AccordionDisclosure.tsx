@@ -31,7 +31,7 @@ import {
   TypographyProps,
   typography,
 } from '@looker/design-tokens'
-import { Icon, IconNames } from '../Icon'
+import { Icon } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 
 export interface AccordionDisclosureProps
@@ -52,9 +52,14 @@ export const AccordionDisclosure: FC<AccordionDisclosureProps> = ({
   children,
   className,
 }) => {
-  const { indicatorPosition, isOpen, toggleOpen, onClose, onOpen } = useContext(
-    AccordionContext
-  )
+  const {
+    disclosureIcons,
+    indicatorPosition,
+    isOpen,
+    toggleOpen,
+    onClose,
+    onOpen,
+  } = useContext(AccordionContext)
   const handleOpen = () => onOpen && onOpen()
   const handleClose = () => onClose && onClose()
 
@@ -69,17 +74,10 @@ export const AccordionDisclosure: FC<AccordionDisclosureProps> = ({
   }
 
   const defaultIconSize = 20
-  type IconSet = {
-    closed: IconNames
-    open: IconNames
-  }
-  const disclosureIconSet: IconSet = {
-    closed: indicatorPosition === 'left' ? 'ArrowRight' : 'CaretDown',
-    open: indicatorPosition === 'left' ? 'ArrowDown' : 'CaretUp',
-  }
+
   const indicator = (
     <Icon
-      name={isOpen ? disclosureIconSet.open : disclosureIconSet.closed}
+      name={isOpen ? disclosureIcons.open : disclosureIcons.closed}
       size={defaultIconSize}
     />
   )
