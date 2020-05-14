@@ -34,7 +34,9 @@ import {
 import { Icon, IconNames } from '../Icon'
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionLabelProps extends PaddingProps, TypographyProps {
+export interface AccordionDisclosureProps
+  extends PaddingProps,
+    TypographyProps {
   children: string | ReactNode
   className?: string
   /**
@@ -52,7 +54,7 @@ const Label = styled.div`
   grid-area: children;
 `
 
-const AccordionLabelLayout: FC<AccordionLabelProps> = ({
+const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
   arrowLeft,
   children,
   className,
@@ -100,7 +102,7 @@ const AccordionLabelLayout: FC<AccordionLabelProps> = ({
   )
 }
 
-export const AccordionLabel = styled(AccordionLabelLayout)`
+export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
 
   align-items: center;
@@ -118,4 +120,4 @@ export const AccordionLabel = styled(AccordionLabelLayout)`
   }
 `
 
-AccordionLabel.defaultProps = { fontSize: 'small', fontWeight: 'semiBold' }
+AccordionDisclosure.defaultProps = { fontSize: 'small', fontWeight: 'semiBold' }

@@ -25,5 +25,5 @@
  */
 
 export * from './Accordion'
-export * from './AccordionLabel'
+export * from './AccordionDisclosure'
 export * from './AccordionContent'

@@ -28,7 +28,7 @@ import React, { useState } from 'react'
 import {
   Accordion,
   AccordionContent,
-  AccordionLabel,
+  AccordionDisclosure,
   Box,
   Grid,
   Text,
@@ -70,14 +70,14 @@ export const AccordionDemo = () => {
       onOpen={() => alert('Opening doors')}
       onClose={() => alert('Closing doors')}
     >
-      <AccordionLabel arrowLeft>{visibleLabel}</AccordionLabel>
+      <AccordionDisclosure arrowLeft>{visibleLabel}</AccordionDisclosure>
       <AccordionContent>{placeholder}</AccordionContent>
     </Accordion>
   )
 
   const spaceTest = (
     <Accordion px="xxxlarge">
-      <AccordionLabel arrowLeft>Advanced Options</AccordionLabel>
+      <AccordionDisclosure arrowLeft>Advanced Options</AccordionDisclosure>
       <AccordionContent>
         <Fieldset>
           <Fieldset inline legend="Customer">
@@ -95,20 +95,20 @@ export const AccordionDemo = () => {
   return (
     <Grid m="xxlarge">
       <Accordion defaultOpen>
-        <AccordionLabel>Hello World</AccordionLabel>
+        <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
       <Accordion defaultOpen>
-        <AccordionLabel arrowLeft>Hello World</AccordionLabel>
+        <AccordionDisclosure arrowLeft>Hello World</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
 
       <Accordion defaultOpen>
-        <AccordionLabel>{visibleLabel}</AccordionLabel>
+        <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
       <Accordion defaultOpen>
-        <AccordionLabel arrowLeft>{visibleLabel}</AccordionLabel>
+        <AccordionDisclosure arrowLeft>{visibleLabel}</AccordionDisclosure>
         <AccordionContent>{placeholder} </AccordionContent>
       </Accordion>
 

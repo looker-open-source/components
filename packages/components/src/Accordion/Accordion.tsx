@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { layout, margin, padding, reset } from '@looker/design-tokens'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
-import { AccordionLabel } from './AccordionLabel'
+import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
 
 export interface AccordionProps extends SimpleLayoutProps {
@@ -99,7 +99,7 @@ export const Accordion = styled(AccordionLayout)`
   ${layout}
   ${margin}
 
-  ${AccordionLabel} {
+  ${AccordionDisclosure} {
     ${padding}
 
     /* Needs to just apply one these conditionally depending on the position of the indicator */
@@ -108,10 +108,10 @@ export const Accordion = styled(AccordionLayout)`
         theme.space.xsmall
       }`});
 
-      padding-right: calc(${({ theme, pr, px, p }) =>
-        `${theme.space[String(pr || px || p)]} - ${theme.space.large} - ${
-          theme.space.xsmall
-        }`})
+    padding-right: calc(${({ theme, pr, px, p }) =>
+      `${theme.space[String(pr || px || p)]} - ${theme.space.large} - ${
+        theme.space.xsmall
+      }`});
   }
 
   ${AccordionContent} {

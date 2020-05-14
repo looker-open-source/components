@@ -27,13 +27,13 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { Accordion, AccordionContent, AccordionLabel } from '.'
+import { Accordion, AccordionContent, AccordionDisclosure } from '.'
 
 describe('Accordion', () => {
-  test('Renders AccordionLabel and AccordionContent (on label click)', () => {
+  test('Renders AccordionDisclosure and AccordionContent (on label click)', () => {
     const { getByText, queryByText } = renderWithTheme(
       <Accordion>
-        <AccordionLabel>My Accordion Label</AccordionLabel>
+        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
         <AccordionContent>My Accordion Content</AccordionContent>
       </Accordion>
     )
@@ -48,7 +48,7 @@ describe('Accordion', () => {
   test('Renders AccordionContent by default when defaultOpen === true', () => {
     const { getByText } = renderWithTheme(
       <Accordion defaultOpen>
-        <AccordionLabel>My Accordion Label</AccordionLabel>
+        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
         <AccordionContent>My Accordion Content</AccordionContent>
       </Accordion>
     )
@@ -56,13 +56,13 @@ describe('Accordion', () => {
     getByText('My Accordion Content')
   })
 
-  test('Triggers onClose and onOpen callbacks on AccordionLabel click', () => {
+  test('Triggers onClose and onOpen callbacks on AccordionDisclosure click', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
 
     const { getByText } = renderWithTheme(
       <Accordion onOpen={onOpen} onClose={onClose}>
-        <AccordionLabel>My Accordion Label</AccordionLabel>
+        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
         <AccordionContent>My Accordion Content</AccordionContent>
       </Accordion>
     )
@@ -73,13 +73,13 @@ describe('Accordion', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Shows and hides children of AccordionContent on AccordionLabel click with provided isOpen and toggleOpen props', () => {
+  test('Shows and hides children of AccordionContent on AccordionDisclosure click with provided isOpen and toggleOpen props', () => {
     const Wrapper = () => {
       const [isOpen, setIsOpen] = useState(true)
 
       return (
         <Accordion isOpen={isOpen} toggleOpen={setIsOpen}>
-          <AccordionLabel>My Accordion Label</AccordionLabel>
+          <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
           <AccordionContent>My Accordion Content</AccordionContent>
         </Accordion>
       )
