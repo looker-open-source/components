@@ -25,7 +25,7 @@
  */
 
 /* eslint-disable import/no-duplicates */
-import format from 'date-fns/format'
+import format from 'date-fns-tz/format'
 import isValid from 'date-fns/isValid'
 import parse from 'date-fns/parse'
 
@@ -110,7 +110,8 @@ export const dateFnLocaleMap = {
 export const formatDateString = (
   date?: Date,
   locale: LocaleCodes = Locales.English,
-  stringFormat = 'P'
+  stringFormat = 'P',
+  timeZone?: string
 ): string | '' => {
   if (!date) {
     return ''
@@ -118,6 +119,7 @@ export const formatDateString = (
 
   return format(date, stringFormat, {
     locale: dateFnLocaleMap[locale],
+    ...(timeZone && { timeZone }),
   })
 }
 

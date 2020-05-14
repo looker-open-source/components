@@ -30,16 +30,10 @@ Wrap the `DateFormat` component around a javascript Date object format according
 
 ## TimeZone
 
-TimeZone needs to be a specific string based on the [IANA standard](https://www.iana.org/time-zone)
-
-When adding the timeZone the format will be long - look below for details on formating.
+TimeZone needs to be a specific string based on the [IANA standard](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <Text>
-    <DateFormat timeZone="Asia/Kolkata" format="long" />
-  </Text>
-</Flex>
+<DateFormat timeZone="Asia/Kolkata" />
 ```
 
 ## I18n
