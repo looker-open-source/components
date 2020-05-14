@@ -49,7 +49,7 @@ export interface AccordionProps extends SimpleLayoutProps {
   /**
    * Replaces default caret icons for disclosure
    */
-  disclosureIcons?: DiclosureIcons
+  disclosureIcons?: DisclosureIcons
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
