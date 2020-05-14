@@ -50,7 +50,7 @@ const options = [
   { label: 'Kiwis', value: '5' },
 ]
 
-export function ListWidthDemo() {
+export function ListLayoutDemo() {
   const [containerWidth, setContainerWidth] = useState(400)
   function handleWidthChange(e: FormEvent<HTMLInputElement>) {
     setContainerWidth(parseInt(e.currentTarget.value, 10))
@@ -92,12 +92,19 @@ export function ListWidthDemo() {
         </Combobox>
         <Heading>ComboboxMulti</Heading>
         <Label>Try shrinking down the window width with the list open:</Label>
-        <ComboboxMulti mb="large">
-          <ComboboxMultiInput
-            onClear={() => alert('CLEAR')}
-            placeholder="maxWidth=800 width=calc(100vw - 50px)"
-          />
+        <ComboboxMulti mb="medium">
+          <ComboboxMultiInput placeholder="maxWidth=800 width=calc(100vw - 50px)" />
           <ComboboxMultiList maxWidth={800} width="calc(100vw - 50px)">
+            <ComboboxMultiOption value="Apples" />
+            <ComboboxMultiOption value="Oranges" />
+            <ComboboxMultiOption value="Grapes" />
+            <ComboboxMultiOption value="Bananas" />
+            <ComboboxMultiOption value="Pineapples" />
+          </ComboboxMultiList>
+        </ComboboxMulti>
+        <ComboboxMulti mb="large">
+          <ComboboxMultiInput placeholder="maxHeight={100}" />
+          <ComboboxMultiList maxHeight={100}>
             <ComboboxMultiOption value="Apples" />
             <ComboboxMultiOption value="Oranges" />
             <ComboboxMultiOption value="Grapes" />
@@ -112,7 +119,7 @@ export function ListWidthDemo() {
           options={options}
           aria-label="Fruits"
           defaultValue="1"
-          listWidthSettings={{ width: 500 }}
+          listDimensions={{ width: 500 }}
         />
         <FieldSelect
           label="minWidth=420"
@@ -120,7 +127,7 @@ export function ListWidthDemo() {
           options={options}
           aria-label="Fruits"
           defaultValue="1"
-          listWidthSettings={{ minWidth: 420 }}
+          listDimensions={{ minWidth: 420 }}
         />
         <Heading>SelectMulti</Heading>
         <Label>maxWidth=800 width=calc(100vw - 50px)</Label>
@@ -128,7 +135,15 @@ export function ListWidthDemo() {
           options={options}
           aria-label="Fruits"
           defaultValues={['1']}
-          listWidthSettings={{ maxWidth: 800, width: 'calc(100vw - 50px)' }}
+          listDimensions={{ maxWidth: 800, width: 'calc(100vw - 50px)' }}
+          mb="medium"
+        />
+        <Label>maxHeight=100</Label>
+        <SelectMulti
+          options={options}
+          aria-label="Fruits"
+          defaultValues={['1']}
+          listDimensions={{ maxHeight: 100 }}
         />
       </Box>
     </Box>

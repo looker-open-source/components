@@ -149,6 +149,47 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(document)
   })
 
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox">
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList width="50vw" minWidth={300} maxWidth={800}>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList width="50vw" minWidth={300} maxWidth={800}>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('Sets the list width styles', (_, jsx) => {
+    const { getByRole, getByPlaceholderText } = renderWithTheme(jsx)
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.click(input)
+
+    expect(getByRole('listbox').parentElement).toHaveStyleRule(
+      'max-width',
+      '800px'
+    )
+    expect(getByRole('listbox').parentElement).toHaveStyleRule(
+      'min-width',
+      '300px'
+    )
+    expect(getByRole('listbox').parentElement).toHaveStyleRule('width', '50vw')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
   test('Does not highlight current selected value', () => {
     const { getByText, getByPlaceholderText } = renderWithTheme(
       <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>

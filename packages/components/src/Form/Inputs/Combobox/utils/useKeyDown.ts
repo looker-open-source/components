@@ -81,7 +81,9 @@ export function useKeyDown() {
     }
   }
 
-  return throttle(function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+  return throttle(function handleKeyDown(
+    event: KeyboardEvent<HTMLUListElement>
+  ) {
     const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
       case 'ArrowDown': {
@@ -200,5 +202,6 @@ export function useKeyDown() {
         break
       }
     }
-  }, 50)
+  },
+  50)
 }

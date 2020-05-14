@@ -27,12 +27,12 @@
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
-import { ListWidthDemo } from './Select/ListWidthDemo'
+import { ListLayoutDemo } from './Select/ListLayoutDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <ListWidthDemo />
+      <ListLayoutDemo />
     </ComponentsProvider>
   )
 }

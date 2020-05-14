@@ -84,7 +84,7 @@ const SelectMultiComponent = forwardRef(
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
-      listWidthSettings,
+      listDimensions,
       validationType,
       windowedOptions: windowedOptionsProp,
       closeOnSelect = false,
@@ -159,7 +159,7 @@ const SelectMultiComponent = forwardRef(
             closeOnSelect={closeOnSelect}
             windowedOptions={windowedOptions}
             {...ariaProps}
-            {...listWidthSettings}
+            {...listDimensions}
           >
             <SelectOptions
               isMulti

@@ -55,7 +55,7 @@ export interface ComboboxContextProps<
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
   wrapperElement?: HTMLDivElement | null
-  popoverRef?: RefObject<HTMLDivElement>
+  popoverRef?: RefObject<HTMLUListElement>
   onChange?: TChange
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState

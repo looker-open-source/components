@@ -24,9 +24,9 @@
 
  */
 
+import { LayoutProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
-import { WidthProps } from '../../../Layout/utils/width'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -55,9 +55,10 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
   onFilter?: (term: string) => void
 
   /**
-   * Control the width of the list separately from the input width
+   * Control the dimensions of the list
+   * (use this to untether the list width from the input width)
    */
-  listWidthSettings?: WidthProps
+  listDimensions?: LayoutProps
 
   validationType?: ValidationType
   /**
@@ -100,7 +101,7 @@ const SelectComponent = forwardRef(
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
-      listWidthSettings,
+      listDimensions,
       validationType,
       windowedOptions: windowedOptionsProp,
       ...props
@@ -166,7 +167,7 @@ const SelectComponent = forwardRef(
             persistSelection
             windowedOptions={windowedOptions}
             {...ariaProps}
-            {...listWidthSettings}
+            {...listDimensions}
           >
             <SelectOptions
               options={options}
