@@ -31,14 +31,14 @@ import { ComboboxContext } from '../ComboboxContext'
 import { ComboboxActionType, ComboboxState } from './state'
 
 export function useBlur() {
-  const { state, transition, popoverRef, inputElement } = useContext(
+  const { state, transition, listRef, inputElement } = useContext(
     ComboboxContext
   )
 
   return function handleBlur() {
     requestAnimationFrame(() => {
       // we on want to close only if focus rests outside the select
-      const popoverCurrent = popoverRef ? popoverRef.current : null
+      const popoverCurrent = listRef ? listRef.current : null
       if (document.activeElement !== inputElement && popoverCurrent) {
         if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
           // focus landed inside the select, keep it open
