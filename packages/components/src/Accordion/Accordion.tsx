@@ -26,14 +26,20 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
-import { layout, margin, padding, reset } from '@looker/design-tokens'
+import {
+  layout,
+  margin,
+  padding,
+  reset,
+  SpacingSizes,
+} from '@looker/design-tokens'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 import { IconNames } from '../Icon'
-import { AccordionContext } from './AccordionContext'
+import { AccordionContext, accordionContextDefaults } from './AccordionContext'
 import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
 
-export type DisclosureIcons = {
+export type IndicatorIcons = {
   closed: IconNames
   open: IconNames
 }
@@ -49,7 +55,10 @@ export interface AccordionProps extends SimpleLayoutProps {
   /**
    * Replaces default caret icons for disclosure
    */
-  disclosureIcons?: DisclosureIcons
+  indicatorIcons?: IndicatorIcons
+
+  indicatorSize?: SpacingSizes
+
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -76,17 +85,13 @@ export interface AccordionProps extends SimpleLayoutProps {
   onOpen?: () => void // called when the component is opened
 }
 
-const defaultIndicatorPosition = 'right'
-
 const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
   defaultOpen,
-  disclosureIcons = {
-    closed: 'CaretDown',
-    open: 'CaretUp',
-  },
-  indicatorPosition = defaultIndicatorPosition,
+  indicatorSize,
+  indicatorIcons,
+  indicatorPosition,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(!!defaultOpen)
@@ -101,9 +106,12 @@ const AccordionLayout: FC<AccordionProps> = ({
     )
 
   const context = {
-    disclosureIcons,
-    indicatorPosition,
-    isOpen: props.isOpen === undefined ? isOpen : props.isOpen,
+    ...accordionContextDefaults,
+    indicatorIcons: indicatorIcons || accordionContextDefaults.indicatorIcons,
+    indicatorPosition:
+      indicatorPosition || accordionContextDefaults.indicatorPosition,
+    indicatorSize: indicatorSize || accordionContextDefaults.indicatorSize,
+    isOpen,
     onClose: props.onClose,
     onOpen: props.onOpen,
     toggleOpen: props.toggleOpen === undefined ? setIsOpen : props.toggleOpen,
@@ -123,27 +131,27 @@ export const Accordion = styled(AccordionLayout)`
 
   ${AccordionContent} {
     ${padding}
+
+    ${({ indicatorPosition, indicatorSize, theme }) =>
+      indicatorPosition === 'left' &&
+      `padding-left: calc(${theme.space[indicatorSize as SpacingSizes]} + ${
+        theme.space.xsmall
+      } );`}
+
+    ${({ indicatorPosition, indicatorSize, theme }) =>
+      indicatorPosition === 'right' &&
+      `padding-right: calc(${theme.space[indicatorSize as SpacingSizes]} + ${
+        theme.space.xsmall
+      } );`}
   }
 
   ${AccordionDisclosure} {
     ${padding}
-
-    ${({ indicatorPosition, theme, pl, px, p }) =>
-      indicatorPosition === 'left' &&
-      `padding-left: calc( ${theme.space[String(pl || px || p)]} - ${
-        theme.space.large
-      } - ${theme.space.xsmall} );`}
-
-    ${({ indicatorPosition, theme, pr, px, p }) =>
-      indicatorPosition === 'right' &&
-      `padding-right: calc( ${theme.space[String(pr || px || p)]} - ${
-        theme.space.large
-      } - ${theme.space.xsmall} );`}
   }
 `
 
 Accordion.defaultProps = {
-  indicatorPosition: defaultIndicatorPosition,
-  px: 'xlarge',
-  py: 'xsmall',
+  indicatorPosition: accordionContextDefaults.indicatorPosition,
+  indicatorSize: accordionContextDefaults.indicatorSize,
+  width: '100%',
 }

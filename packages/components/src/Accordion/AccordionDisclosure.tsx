@@ -27,9 +27,11 @@
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import {
+  padding,
   PaddingProps,
   TypographyProps,
   typography,
+  SpacingSizes,
 } from '@looker/design-tokens'
 import { Icon } from '../Icon'
 import { AccordionContext } from './AccordionContext'
@@ -53,8 +55,9 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
   className,
 }) => {
   const {
-    disclosureIcons,
+    indicatorIcons,
     indicatorPosition,
+    indicatorSize,
     isOpen,
     toggleOpen,
     onClose,
@@ -73,12 +76,10 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
     toggleOpen(!isOpen)
   }
 
-  const defaultIconSize = 20
-
   const indicator = (
     <Icon
-      name={isOpen ? disclosureIcons.open : disclosureIcons.closed}
-      size={defaultIconSize}
+      name={isOpen ? indicatorIcons.open : indicatorIcons.closed}
+      size={indicatorSize}
     />
   )
 
@@ -89,7 +90,10 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <AccordionDisclosureGrid indicatorPosition={indicatorPosition}>
+      <AccordionDisclosureGrid
+        indicatorPosition={indicatorPosition}
+        indicatorSize={indicatorSize}
+      >
         <Indicator>{indicator}</Indicator>
         <Label>{children}</Label>
       </AccordionDisclosureGrid>
@@ -99,6 +103,7 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
 
 interface AccordionDisclosureGridProps {
   indicatorPosition: 'left' | 'right'
+  indicatorSize: SpacingSizes
 }
 
 const AccordionDisclosureGrid = styled.div<AccordionDisclosureGridProps>`
@@ -109,15 +114,15 @@ const AccordionDisclosureGrid = styled.div<AccordionDisclosureGridProps>`
     indicatorPosition === 'left'
       ? '"indicator children"'
       : '"children indicator"'};
-  grid-template-columns: ${({ indicatorPosition, theme }) =>
+  grid-template-columns: ${({ indicatorPosition, indicatorSize, theme }) =>
     indicatorPosition === 'left'
-      ? `${theme.space.large} 1fr`
-      : `1fr ${theme.space.large}`};
+      ? `${theme.space[indicatorSize]} 1fr`
+      : `1fr ${theme.space[indicatorSize]}`};
 `
 
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
-
+  ${padding}
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
   cursor: pointer;
   outline: none;
@@ -130,4 +135,5 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
 AccordionDisclosure.defaultProps = {
   fontSize: 'small',
   fontWeight: 'semiBold',
+  py: 'xsmall',
 }

@@ -31,10 +31,13 @@ import {
   AccordionDisclosure,
   Box,
   Grid,
+  List,
+  ListItem,
   Text,
   Icon,
   Fieldset,
   FieldText,
+  Space,
 } from '@looker/components'
 
 const lorem = `"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`
@@ -43,21 +46,24 @@ const placeholder = (
     {lorem}
   </Box>
 )
+
+const form = (
+  <Fieldset>
+    <Fieldset inline>
+      <FieldText label="First name" />
+      <FieldText label="Middle" />
+      <FieldText label="Last name" />
+    </Fieldset>
+    <FieldText label="Email" />
+    <FieldText label="Phone" />
+  </Fieldset>
+)
+
 const visibleLabel = (
-  <Box
-    alignItems="center"
-    display="grid"
-    width="100%"
-    bg="palette.yellow100"
-    style={{
-      gridGap: '.5rem',
-      gridTemplateColumns: '1.25rem 1fr 1.25rem',
-    }}
-  >
-    <Icon color="palette.yellow600" name="Warning" size={20} />
-    <Text color="palette.yellow600">Hello World</Text>
+  <Space between>
+    <span>Customer Details</span>
     <Icon color="palette.charcoal500" name="CircleQuestionOutline" size={20} />
-  </Box>
+  </Space>
 )
 
 export const AccordionDemo = () => {
@@ -78,39 +84,133 @@ export const AccordionDemo = () => {
 
   return (
     <Grid m="xxlarge">
-      <Accordion indicatorPosition="left" defaultOpen>
+      <Accordion indicatorPosition="left">
         <AccordionDisclosure>Hello World</AccordionDisclosure>
-        <AccordionContent>{placeholder} </AccordionContent>
-      </Accordion>
-      <Accordion defaultOpen>
-        <AccordionDisclosure>Hello World</AccordionDisclosure>
-        <AccordionContent>{placeholder} </AccordionContent>
+        <AccordionContent>
+          <List>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>
+              <Accordion indicatorPosition="left">
+                <AccordionDisclosure>Hello World</AccordionDisclosure>
+                <AccordionContent>
+                  <List>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>
+                      <Accordion indicatorPosition="left">
+                        <AccordionDisclosure>Hello World</AccordionDisclosure>
+                        <AccordionContent>
+                          <List>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>
+                              <Accordion indicatorPosition="left">
+                                <AccordionDisclosure>
+                                  Hello World
+                                </AccordionDisclosure>
+                                <AccordionContent>
+                                  <List>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                  </List>
+                                </AccordionContent>
+                              </Accordion>
+                            </ListItem>
+                          </List>
+                        </AccordionContent>
+                      </Accordion>
+                    </ListItem>
+                  </List>
+                </AccordionContent>
+              </Accordion>
+            </ListItem>
+          </List>
+        </AccordionContent>
       </Accordion>
 
-      <Accordion indicatorPosition="left" defaultOpen>
-        <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
-        <AccordionContent>{placeholder} </AccordionContent>
-      </Accordion>
       <Accordion defaultOpen>
-        <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
-        <AccordionContent>{placeholder} </AccordionContent>
+        <AccordionDisclosure>Hello World</AccordionDisclosure>
+        <AccordionContent>
+          <List>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>
+              <Accordion>
+                <AccordionDisclosure>Hello World</AccordionDisclosure>
+                <AccordionContent>
+                  <List>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>Cheddar</ListItem>
+                    <ListItem>
+                      <Accordion>
+                        <AccordionDisclosure>Hello World</AccordionDisclosure>
+                        <AccordionContent>
+                          <List>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>Cheddar</ListItem>
+                            <ListItem>
+                              <Accordion>
+                                <AccordionDisclosure>
+                                  Hello World
+                                </AccordionDisclosure>
+                                <AccordionContent>
+                                  <List>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                    <ListItem>Cheddar</ListItem>
+                                  </List>
+                                </AccordionContent>
+                              </Accordion>
+                            </ListItem>
+                          </List>
+                        </AccordionContent>
+                      </Accordion>
+                    </ListItem>
+                  </List>
+                </AccordionContent>
+              </Accordion>
+            </ListItem>
+          </List>
+        </AccordionContent>
       </Accordion>
+
+      <Fieldset>
+        <FieldText label="I'm a little teapot" />
+        <Accordion indicatorPosition="left" defaultOpen>
+          <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
+          <AccordionContent>{form}</AccordionContent>
+        </Accordion>
+      </Fieldset>
+
+      <Fieldset>
+        <FieldText label="I'm a little teapot" />
+
+        <Accordion defaultOpen>
+          <AccordionDisclosure>{visibleLabel}</AccordionDisclosure>
+          <AccordionContent>{form}</AccordionContent>
+        </Accordion>
+      </Fieldset>
 
       {spicyAccordion}
 
-      <Accordion indicatorPosition="left" px="xxxlarge" isOpen>
+      <Accordion
+        indicatorSize="xxlarge"
+        indicatorPosition="left"
+        px="xxxlarge"
+        defaultOpen
+      >
         <AccordionDisclosure>Advanced Options</AccordionDisclosure>
-        <AccordionContent>
-          <Fieldset>
-            <Fieldset inline legend="Customer">
-              <FieldText label="First name" />
-              <FieldText label="Middle" />
-              <FieldText label="Last name" />
-            </Fieldset>
-            <FieldText label="Email" />
-            <FieldText label="Phone" />
-          </Fieldset>
-        </AccordionContent>
+        <AccordionContent>{form}</AccordionContent>
       </Accordion>
     </Grid>
   )
