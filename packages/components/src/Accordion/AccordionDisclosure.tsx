@@ -100,6 +100,8 @@ export interface AccordionDisclosureStyleProps extends TypographyProps {
   indicatorPosition: 'left' | 'right'
 }
 
+// Note: The typography object doesn't actually do anything in this current setup
+// because AccordionDisclosureStyle isn't passed any typography props from AccordionDisclosure atm.
 export const AccordionDisclosureStyle = styled.div<
   AccordionDisclosureStyleProps
 >`

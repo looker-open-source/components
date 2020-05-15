@@ -124,13 +124,14 @@ export const Accordion = styled(AccordionLayout)`
   ${AccordionDisclosureStyle} {
     ${padding}
 
-    /* Needs to just apply one these conditionally depending on the position of the indicator */
-    padding-left: calc(${({ theme, pl, px, p }) =>
+    padding-left: calc(${({ indicatorPosition, theme, pl, px, p }) =>
+      indicatorPosition === 'left' &&
       `${theme.space[String(pl || px || p)]} - ${theme.space.large} - ${
         theme.space.xsmall
       }`});
 
-    padding-right: calc(${({ theme, pr, px, p }) =>
+    padding-right: calc(${({ indicatorPosition, theme, pr, px, p }) =>
+      (indicatorPosition === 'right' || !indicatorPosition) &&
       `${theme.space[String(pr || px || p)]} - ${theme.space.large} - ${
         theme.space.xsmall
       }`});
@@ -138,6 +139,23 @@ export const Accordion = styled(AccordionLayout)`
 
   ${AccordionContent} {
     ${padding}
+
+    /*
+      Note: The below properties allow us to align disclosures with
+      content when the disclosure pr or pl is 0 (i.e. the given p/pr/pl/px for disclosure
+      if less than the width of the default icon size and the disclosure grid-gap).
+
+      However, it fails when the (padding for disclosure) > 0 (i.e. the "Advanced Options" example
+      in playground).
+    */
+
+    padding-left: calc(${({ indicatorPosition, theme, pl, px, p }) =>
+      indicatorPosition === 'left' &&
+      `${theme.space[String(pl || px || p)]} + ${theme.space.xsmall}`});
+
+    padding-right: calc(${({ indicatorPosition, theme, pr, px, p }) =>
+      (indicatorPosition === 'right' || !indicatorPosition) &&
+      `${theme.space[String(pr || px || p)]} + ${theme.space.xsmall}`});
   }
 `
 
