@@ -29,7 +29,7 @@ import { variant } from 'styled-system'
 import { ButtonBase } from './ButtonBase'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-export const transparentButtonPadding = variant({
+const transparentButtonPadding = variant({
   prop: 'size',
   variants: {
     xxsmall: {
