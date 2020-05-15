@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support Warning icon display on Select and SelectMulti inputs
 - Refactor use of InputSearch to support more flexible layouts
 
+### Removed
+
+- Deleted `MenuSearch` component in favor of `InputSearch`
+
 ## [RELEASED]
 
 ### Changed
