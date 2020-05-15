@@ -27,6 +27,50 @@ github: Layout/Space
 1. Margin (`m`, `mx`, `ml`, etc...)
 2. Padding (`p`, `px`, `pl`, etc...)
 
+# Alignment
+
+`Space` supports `verticalAlign` (defaults to `center`) while `SpaceVertical` supports `align` (defaults to `start`)
+
+```jsx
+<SpaceVertical>
+  <Space>
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+  <Space verticalAlign="start">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+  <Space verticalAlign="end">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+</SpaceVertical>
+```
+
+```jsx
+<Space>
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical align="center">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical align="end">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+</Space>
+```
+
 # Gap
 
 Specify the width of the gap between items:
@@ -100,5 +144,24 @@ Reverse the order of the items in the space.
   <Button>Button A</Button>
   <Button>Button B</Button>
   <Button>Button C</Button>
+</SpaceVertical>
+```
+
+# Stretch
+
+`SpaceVertical` supports an optional `stretch` property that will cause items within to stretch across the entire width of the container.
+
+```jsx
+<SpaceVertical>
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical stretch>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
 </SpaceVertical>
 ```

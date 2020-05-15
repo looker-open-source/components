@@ -24,10 +24,11 @@
 
  */
 import React, {
+  forwardRef,
   KeyboardEvent,
-  FC,
   useState,
   useEffect,
+  Ref,
   SyntheticEvent,
 } from 'react'
 import styled from 'styled-components'
@@ -39,7 +40,11 @@ import trim from 'lodash/trim'
 import last from 'lodash/last'
 import head from 'lodash/head'
 import sortedIndex from 'lodash/sortedIndex'
-import { BorderProps, SpaceProps } from '@looker/design-tokens'
+import {
+  BorderProps,
+  SpaceProps,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
 import {
   Combobox,
   ComboboxInput,
@@ -59,7 +64,10 @@ import {
 
 type intervals = 5 | 10 | 15 | 30
 
-export interface InputTimeSelectProps extends SpaceProps, BorderProps {
+export interface InputTimeSelectProps
+  extends SpaceProps,
+    BorderProps,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
   format?: TimeFormats
   interval?: intervals
   defaultValue?: string
@@ -233,82 +241,91 @@ const setScrollIntoView = (
   )
 }
 
-export const InputTimeSelect: FC<InputTimeSelectProps> = ({
-  interval = 15,
-  format = '12h',
-  onChange,
-  value = '',
-  defaultValue,
-}) => {
-  useReadOnlyWarn('InputTimeSelect', value, onChange)
-  const valueProp = value || defaultValue
-  if (!isValidTime(valueProp)) {
-    // eslint-disable-next-line no-console
-    console.error(
-      `Invalid time ("${valueProp}") passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
-    )
-  }
-
-  const timeOptions = generateTimes(format, interval)
-
-  const [selectedOption, setSelectedOption] = useState<
-    MaybeComboboxOptionObject
-  >()
-
-  const [inputTextValue, setInputTextValue] = useState('')
-
-  useEffect(() => {
-    // controlled component behavior: update state when value prop changes
-    setSelectedOption(
-      matchStringValueToOption(timeOptions, format, value || defaultValue)
-    )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
-
-  const handleChange: ComboboxCallback<MaybeComboboxOptionObject> = (
-    newSelectedOption: MaybeComboboxOptionObject
+const InputTimeSelectLayout = forwardRef(
+  (
+    {
+      className,
+      interval = 15,
+      format = '12h',
+      onChange,
+      value = '',
+      defaultValue,
+    }: InputTimeSelectProps,
+    ref: Ref<HTMLDivElement>
   ) => {
-    setSelectedOption(newSelectedOption)
-    const newValue = newSelectedOption ? newSelectedOption.value : undefined
-    if (isFunction(onChange) && isValidTime(newValue)) {
-      onChange(newValue)
+    useReadOnlyWarn('InputTimeSelect', value, onChange)
+    const valueProp = value || defaultValue
+    if (!isValidTime(valueProp)) {
+      // eslint-disable-next-line no-console
+      console.error(
+        `Invalid time ("${valueProp}") passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
+      )
     }
-  }
 
-  const handleTextInputChange = (e: SyntheticEvent) => {
-    setInputTextValue((e.target as HTMLInputElement).value)
-  }
+    const timeOptions = generateTimes(format, interval)
 
-  const handleTextInputBlur = () => {
-    setInputTextValue('')
-  }
+    const [selectedOption, setSelectedOption] = useState<
+      MaybeComboboxOptionObject
+    >()
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      if (inputTextValue.length) {
-        // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
-        const option = createOptionFromLabel(format, inputTextValue)
-        handleChange(option)
+    const [inputTextValue, setInputTextValue] = useState('')
+
+    useEffect(() => {
+      // controlled component behavior: update state when value prop changes
+      setSelectedOption(
+        matchStringValueToOption(timeOptions, format, value || defaultValue)
+      )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
+
+    const handleChange: ComboboxCallback<MaybeComboboxOptionObject> = (
+      newSelectedOption: MaybeComboboxOptionObject
+    ) => {
+      setSelectedOption(newSelectedOption)
+      const newValue = newSelectedOption ? newSelectedOption.value : undefined
+      if (isFunction(onChange) && isValidTime(newValue)) {
+        onChange(newValue)
       }
     }
-  }
 
-  // scroll dropdown to relevant value
-  // inputTextValue: user input typeahead match
-  // selectedOption.value: current component state
-  // value: prop value passed in externally
-  const optionToFocus =
-    matchStringLabelToOption(timeOptions, inputTextValue) || selectedOption
+    const handleTextInputChange = (e: SyntheticEvent) => {
+      setInputTextValue((e.target as HTMLInputElement).value)
+    }
 
-  const timeOptionsFocused = setScrollIntoView(
-    timeOptions,
-    interval,
-    optionToFocus
-  )
+    const handleTextInputBlur = () => {
+      setInputTextValue('')
+    }
 
-  return (
-    <InputTimeSelectWrapper>
-      <Combobox value={selectedOption} onChange={handleChange}>
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        if (inputTextValue.length) {
+          // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
+          const option = createOptionFromLabel(format, inputTextValue)
+          handleChange(option)
+        }
+      }
+    }
+
+    // scroll dropdown to relevant value
+    // inputTextValue: user input typeahead match
+    // selectedOption.value: current component state
+    // value: prop value passed in externally
+    const optionToFocus =
+      matchStringLabelToOption(timeOptions, inputTextValue) || selectedOption
+
+    const timeOptionsFocused = setScrollIntoView(
+      timeOptions,
+      interval,
+      optionToFocus
+    )
+
+    return (
+      <Combobox
+        className={className}
+        ref={ref}
+        onChange={handleChange}
+        value={selectedOption}
+      >
         <ComboboxInput
           placeholder="Select time"
           onChange={handleTextInputChange}
@@ -322,10 +339,12 @@ export const InputTimeSelect: FC<InputTimeSelectProps> = ({
           ))}
         </ComboboxList>
       </Combobox>
-    </InputTimeSelectWrapper>
-  )
-}
+    )
+  }
+)
 
-const InputTimeSelectWrapper = styled.div`
-  display: inline-block;
+InputTimeSelectLayout.displayName = 'InputTimeSelectLayout'
+
+export const InputTimeSelect = styled(InputTimeSelectLayout)`
+  width: 100%;
 `

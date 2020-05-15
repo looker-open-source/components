@@ -2,7 +2,6 @@
 
 exports[`Space around + gap (all you get is around) 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -14,10 +13,6 @@ exports[`Space around + gap (all you get is around) 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: space-around;
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
@@ -26,7 +21,6 @@ exports[`Space around + gap (all you get is around) 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -45,7 +39,6 @@ exports[`Space around + gap (all you get is around) 1`] = `
 
 exports[`Space around 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -57,10 +50,6 @@ exports[`Space around 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: space-around;
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
@@ -69,7 +58,6 @@ exports[`Space around 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -88,7 +76,6 @@ exports[`Space around 1`] = `
 
 exports[`Space between 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -100,10 +87,6 @@ exports[`Space between 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -112,7 +95,6 @@ exports[`Space between 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -131,7 +113,6 @@ exports[`Space between 1`] = `
 
 exports[`Space default 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -143,10 +124,6 @@ exports[`Space default 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c0.c0 > * {
@@ -159,7 +136,6 @@ exports[`Space default 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -178,7 +154,6 @@ exports[`Space default 1`] = `
 
 exports[`Space evenly 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -190,10 +165,6 @@ exports[`Space evenly 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
@@ -202,7 +173,6 @@ exports[`Space evenly 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -221,7 +191,6 @@ exports[`Space evenly 1`] = `
 
 exports[`Space reversed 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -233,10 +202,6 @@ exports[`Space reversed 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c0.c0 > * {
@@ -249,7 +214,6 @@ exports[`Space reversed 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -268,7 +232,6 @@ exports[`Space reversed 1`] = `
 
 exports[`Space with specified gap 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -280,10 +243,6 @@ exports[`Space with specified gap 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c0.c0 > * {
@@ -296,7 +255,6 @@ exports[`Space with specified gap 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
