@@ -81,7 +81,7 @@ test('InputText with an error validation', () => {
   )
 
   expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-  expect(getByTitle('Warning')).toBeDefined()
+  expect(getByTitle('Circle Info')).toBeDefined()
 })
 
 test('Should trigger onChange handler', () => {

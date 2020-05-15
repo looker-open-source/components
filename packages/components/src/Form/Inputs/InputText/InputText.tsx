@@ -147,7 +147,7 @@ const InputComponent = forwardRef(
         {after && after}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">
-            <Icon color="palette.red500" name="Warning" size={18} />
+            <Icon color="palette.red500" name="CircleInfo" size={20} />
           </InputIconStyle>
         )}
       </InputLayout>
