@@ -32,7 +32,7 @@ import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
 import { InputText } from '../InputText'
-import { ComboboxInputControls } from './ComboboxInputControls'
+import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
@@ -172,7 +172,7 @@ export const ComboboxInputInternal = forwardRef(
         searchIcon={false}
         disabled={disabled}
         searchControls={
-          <ComboboxInputControls
+          <AdvancedInputControls
             validationType={validationType}
             onClear={handleClear}
             isVisibleOptions={isVisible}

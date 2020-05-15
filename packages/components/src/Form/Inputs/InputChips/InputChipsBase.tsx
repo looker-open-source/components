@@ -30,7 +30,7 @@ import { Chip } from '../../../Chip'
 import { Flex } from '../../../Layout'
 import { InputText } from '../InputText'
 import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
-import { ComboboxInputControls } from '../Combobox/ComboboxInputControls'
+import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
   /**
@@ -126,7 +126,7 @@ export const InputChipsBaseInternal = forwardRef(
       <InputSearchBase
         searchIcon={false}
         searchControls={
-          <ComboboxInputControls
+          <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
             renderSearchControls={renderSearchControls}

@@ -28,10 +28,10 @@ import styled from 'styled-components'
 import flatMap from 'lodash/flatMap'
 import tail from 'lodash/tail'
 import compact from 'lodash/compact'
-import { Icon } from '../../../Icon'
-import { InputSearchControls } from '../InputSearch/InputSearchControls'
+import { Icon } from '../../Icon'
+import { InputSearchControls } from './InputSearch/InputSearchControls'
 
-interface ComboboxInputControlsProps {
+interface AdvancedInputControlsProps {
   validationType?: 'error'
   renderSearchControls?: boolean
   isVisibleOptions?: boolean
@@ -47,7 +47,7 @@ const intersperseDivider = (children: ReactElement[]) =>
     flatMap(children, (child, i) => [<SearchControlDivider key={i} />, child])
   )
 
-export const ComboboxInputControls: FC<ComboboxInputControlsProps> = ({
+export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   validationType,
   renderSearchControls,
   onClear,
