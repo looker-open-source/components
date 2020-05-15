@@ -123,7 +123,7 @@ const AccordionLayout: FC<AccordionProps> = ({
     indicatorPosition:
       indicatorPosition || accordionContextDefaults.indicatorPosition,
     indicatorSize: indicatorSize || accordionContextDefaults.indicatorSize,
-    isOpen,
+    isOpen: props.isOpen === undefined ? isOpen : props.isOpen,
     onClose: props.onClose,
     onOpen: props.onOpen,
     toggleOpen: props.toggleOpen === undefined ? setIsOpen : props.toggleOpen,

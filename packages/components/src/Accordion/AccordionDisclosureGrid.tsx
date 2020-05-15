@@ -37,6 +37,9 @@ interface AccordionDisclosureGridProps
 
 const Indicator = styled.div`
   grid-area: indicator;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 const Label = styled.div`
   grid-area: children;
