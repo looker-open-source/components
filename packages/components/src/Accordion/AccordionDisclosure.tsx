@@ -26,43 +26,22 @@
 
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import {
-  padding,
-  PaddingProps,
-  TypographyProps,
-  typography,
-  SpacingSizes,
-} from '@looker/design-tokens'
-import { Icon } from '../Icon'
+import { TypographyProps, typography } from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
+import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
-export interface AccordionDisclosureProps
-  extends PaddingProps,
-    TypographyProps {
-  children: string | ReactNode
+export interface AccordionDisclosureProps extends TypographyProps {
+  children: ReactNode
   className?: string
 }
-
-const Indicator = styled.div`
-  grid-area: indicator;
-`
-const Label = styled.div`
-  grid-area: children;
-`
 
 export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
   children,
   className,
 }) => {
-  const {
-    indicatorIcons,
-    indicatorPosition,
-    indicatorSize,
-    isOpen,
-    toggleOpen,
-    onClose,
-    onOpen,
-  } = useContext(AccordionContext)
+  const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
+    AccordionContext
+  )
   const handleOpen = () => onOpen && onOpen()
   const handleClose = () => onClose && onClose()
 
@@ -76,13 +55,6 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
     toggleOpen(!isOpen)
   }
 
-  const indicator = (
-    <Icon
-      name={isOpen ? indicatorIcons.open : indicatorIcons.closed}
-      size={indicatorSize}
-    />
-  )
-
   return (
     <div
       className={className}
@@ -90,42 +62,20 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <AccordionDisclosureGrid
-        indicatorPosition={indicatorPosition}
-        indicatorSize={indicatorSize}
-      >
-        <Indicator>{indicator}</Indicator>
-        <Label>{children}</Label>
+      <AccordionDisclosureGrid {...props} isOpen={isOpen}>
+        {children}
       </AccordionDisclosureGrid>
     </div>
   )
 }
 
-interface AccordionDisclosureGridProps {
-  indicatorPosition: 'left' | 'right'
-  indicatorSize: SpacingSizes
-}
-
-const AccordionDisclosureGrid = styled.div<AccordionDisclosureGridProps>`
-  display: grid;
-  align-items: center;
-  grid-gap: ${({ theme }) => theme.space.xsmall};
-  grid-template-areas: ${({ indicatorPosition }) =>
-    indicatorPosition === 'left'
-      ? '"indicator children"'
-      : '"children indicator"'};
-  grid-template-columns: ${({ indicatorPosition, indicatorSize, theme }) =>
-    indicatorPosition === 'left'
-      ? `${theme.space[indicatorSize]} 1fr`
-      : `1fr ${theme.space[indicatorSize]}`};
-`
-
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
-  ${padding}
+
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
   cursor: pointer;
   outline: none;
+  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.palette.purple300};
@@ -135,5 +85,4 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
 AccordionDisclosure.defaultProps = {
   fontSize: 'small',
   fontWeight: 'semiBold',
-  py: 'xsmall',
 }

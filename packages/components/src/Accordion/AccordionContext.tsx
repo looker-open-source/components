@@ -30,6 +30,7 @@ import noop from 'lodash/noop'
 import { IndicatorIcons } from './Accordion'
 
 export interface AccordionContextProps {
+  indicatorGap: SpacingSizes
   indicatorIcons: IndicatorIcons
   indicatorSize: SpacingSizes
   indicatorPosition: 'left' | 'right'
@@ -40,8 +41,9 @@ export interface AccordionContextProps {
 }
 
 export const accordionContextDefaults: AccordionContextProps = {
+  indicatorGap: 'xsmall',
   indicatorIcons: {
-    closed: 'CaretDown',
+    close: 'CaretDown',
     open: 'CaretUp',
   },
   indicatorPosition: 'right',

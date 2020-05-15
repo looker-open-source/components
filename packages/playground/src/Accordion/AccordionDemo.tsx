@@ -33,11 +33,11 @@ import {
   Grid,
   List,
   ListItem,
-  Text,
   Icon,
   Fieldset,
   FieldText,
   Space,
+  Badge,
 } from '@looker/components'
 
 const lorem = `"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`
@@ -83,8 +83,8 @@ export const AccordionDemo = () => {
   )
 
   return (
-    <Grid m="xxlarge">
-      <Accordion indicatorPosition="left">
+    <Grid m="xxlarge" gap="xxlarge">
+      <Accordion m="xlarge" pl="xlarge" indicatorPosition="left" defaultOpen>
         <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>
           <List>
@@ -92,7 +92,7 @@ export const AccordionDemo = () => {
             <ListItem>Cheddar</ListItem>
             <ListItem>Cheddar</ListItem>
             <ListItem>
-              <Accordion indicatorPosition="left">
+              <Accordion indicatorPosition="left" defaultOpen>
                 <AccordionDisclosure>Hello World</AccordionDisclosure>
                 <AccordionContent>
                   <List>
@@ -100,7 +100,7 @@ export const AccordionDemo = () => {
                     <ListItem>Cheddar</ListItem>
                     <ListItem>Cheddar</ListItem>
                     <ListItem>
-                      <Accordion indicatorPosition="left">
+                      <Accordion indicatorPosition="left" defaultOpen>
                         <AccordionDisclosure>Hello World</AccordionDisclosure>
                         <AccordionContent>
                           <List>
@@ -108,7 +108,7 @@ export const AccordionDemo = () => {
                             <ListItem>Cheddar</ListItem>
                             <ListItem>Cheddar</ListItem>
                             <ListItem>
-                              <Accordion indicatorPosition="left">
+                              <Accordion indicatorPosition="left" defaultOpen>
                                 <AccordionDisclosure>
                                   Hello World
                                 </AccordionDisclosure>
@@ -134,53 +134,31 @@ export const AccordionDemo = () => {
         </AccordionContent>
       </Accordion>
 
-      <Accordion defaultOpen>
+      <Accordion
+        defaultOpen
+        indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
+      >
         <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>
-          <List>
-            <ListItem>Cheddar</ListItem>
-            <ListItem>Cheddar</ListItem>
-            <ListItem>Cheddar</ListItem>
-            <ListItem>
-              <Accordion>
-                <AccordionDisclosure>Hello World</AccordionDisclosure>
-                <AccordionContent>
-                  <List>
-                    <ListItem>Cheddar</ListItem>
-                    <ListItem>Cheddar</ListItem>
-                    <ListItem>Cheddar</ListItem>
-                    <ListItem>
-                      <Accordion>
-                        <AccordionDisclosure>Hello World</AccordionDisclosure>
-                        <AccordionContent>
-                          <List>
-                            <ListItem>Cheddar</ListItem>
-                            <ListItem>Cheddar</ListItem>
-                            <ListItem>Cheddar</ListItem>
-                            <ListItem>
-                              <Accordion>
-                                <AccordionDisclosure>
-                                  Hello World
-                                </AccordionDisclosure>
-                                <AccordionContent>
-                                  <List>
-                                    <ListItem>Cheddar</ListItem>
-                                    <ListItem>Cheddar</ListItem>
-                                    <ListItem>Cheddar</ListItem>
-                                    <ListItem>Cheddar</ListItem>
-                                  </List>
-                                </AccordionContent>
-                              </Accordion>
-                            </ListItem>
-                          </List>
-                        </AccordionContent>
-                      </Accordion>
-                    </ListItem>
-                  </List>
-                </AccordionContent>
-              </Accordion>
-            </ListItem>
-          </List>
+          <Box borderLeft="1px dotted lightgrey" ml="xsmall" pl="small">
+            <List fontSize="small">
+              <ListItem>
+                <Badge intent="info">GET</Badge> Search Favorites
+              </ListItem>
+              <ListItem>
+                <Badge intent="info">GET</Badge> Get Favorites
+              </ListItem>
+              <ListItem>
+                <Badge intent="critical">GET</Badge> Delete Favorite
+              </ListItem>
+              <ListItem>
+                <Badge intent="positive">GET</Badge> Create Favorite
+              </ListItem>
+              <ListItem>
+                <Badge intent="warning">POST</Badge> Update Content
+              </ListItem>
+            </List>
+          </Box>
         </AccordionContent>
       </Accordion>
 
@@ -203,12 +181,7 @@ export const AccordionDemo = () => {
 
       {spicyAccordion}
 
-      <Accordion
-        indicatorSize="xxlarge"
-        indicatorPosition="left"
-        px="xxxlarge"
-        defaultOpen
-      >
+      <Accordion indicatorSize="xxlarge" indicatorPosition="left" defaultOpen>
         <AccordionDisclosure>Advanced Options</AccordionDisclosure>
         <AccordionContent>{form}</AccordionContent>
       </Accordion>
