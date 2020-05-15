@@ -7,7 +7,7 @@ exports[`A FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -166,7 +166,7 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c0 .c14 {
-  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c6 {
@@ -320,7 +320,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -499,7 +499,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c0 .c16 {
-  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c18 .c9 {
@@ -722,7 +722,7 @@ exports[`A required FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .c7 {
@@ -895,7 +895,7 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c0 .c16 {
-  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c8 {
@@ -1060,7 +1060,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -1219,7 +1219,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c0 .c14 {
-  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c6 {
