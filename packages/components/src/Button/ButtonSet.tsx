@@ -34,13 +34,16 @@ import React, {
   ReactNode,
   Ref,
 } from 'react'
+import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
+  border,
   BorderProps,
+  position,
   PositionProps,
+  space,
   SpaceProps,
 } from '@looker/design-tokens'
-import { Box } from '../Layout'
 import { ButtonItemProps } from './ButtonItem'
 
 export interface ButtonGroupOrToggleProps<
@@ -78,7 +81,7 @@ export type ButtonSetType<
   T extends string | string[] = string[]
 > = ForwardRefExoticComponent<ButtonSetProps<T> & { ref: Ref<HTMLDivElement> }>
 
-export const ButtonSet = forwardRef(
+export const ButtonSetInternal = forwardRef(
   (
     {
       children,
@@ -125,18 +128,22 @@ export const ButtonSet = forwardRef(
     })
 
     return (
-      <Box
-        alignItems="center"
-        display="inline-flex"
-        textAlign="center"
-        fontSize="small"
-        ref={ref}
-        {...props}
-      >
+      <div ref={ref} {...props}>
         {clonedChildren}
-      </Box>
+      </div>
     )
   }
 )
 
-ButtonSet.displayName = 'ButtonSet'
+ButtonSetInternal.displayName = 'ButtonSetInternal'
+
+export const ButtonSet = styled(ButtonSetInternal)`
+  ${border}
+  ${position}
+  ${space}
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  text-align: center;
+`

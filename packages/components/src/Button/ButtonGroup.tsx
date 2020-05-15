@@ -66,12 +66,17 @@ const ButtonGroupFactory = forwardRef(
 export const ButtonGroup = styled<FC<ButtonGroupOrToggleProps<string[]>>>(
   ButtonGroupFactory
 )`
+  margin-bottom: -${(props) => props.theme.space.xxsmall};
   ${ButtonItem} {
     height: 36px;
     border-radius: 4px;
-
-    + ${ButtonItem} {
-      margin-left: ${(props) => props.theme.space.xxsmall};
+    margin: ${({
+      theme: {
+        space: { xxsmall },
+      },
+    }) => `0 ${xxsmall} ${xxsmall} 0`};
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 

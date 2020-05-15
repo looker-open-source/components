@@ -60,7 +60,6 @@ const ButtonToggleFactory = forwardRef(
     return (
       <ButtonToggleComponent
         {...props}
-        borderRadius="4px"
         onChange={handleChange}
         isToggle
         ref={ref}
@@ -78,24 +77,29 @@ const ButtonToggleFactory = forwardRef(
 export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
   ButtonToggleFactory
 )`
-  border: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
+  border-radius: 4px;
 
   ${ButtonItemLabel} {
     position: relative;
     height: 36px;
+    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
+    border-left-width: 0;
+    border-right-width: 0;
     border-radius: 0;
 
     &:first-child {
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
+      border-left-width: 1px;
     }
     &:last-child {
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
+      border-right-width: 1px;
     }
 
     /* stylelint-disable */
-    & + ${ButtonItemLabel} {
+    &:not(:last-child) {
       &::after {
         content: '';
         display: block;
@@ -103,7 +107,7 @@ export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
         width: 1px;
         background: ${(props) => props.theme.colors.palette.charcoal200};
         position: absolute;
-        left: 0;
+        right: 0;
         top: 8px;
       }
     }
