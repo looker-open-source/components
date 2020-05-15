@@ -206,7 +206,6 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   }
 
   ${ValidationMessage} {
-    margin-right: ${({ theme }) => theme.space.xsmall};
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `

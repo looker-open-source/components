@@ -123,7 +123,6 @@ exports[`A FieldText with default label 1`] = `
 }
 
 .c0 .c7 {
-  margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
 
@@ -314,7 +313,6 @@ exports[`A FieldText with label inline 1`] = `
 }
 
 .c0 .c8 {
-  margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
 

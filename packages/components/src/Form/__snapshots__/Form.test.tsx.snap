@@ -145,7 +145,6 @@ exports[`Form with one child 1`] = `
 }
 
 .c1 .c8 {
-  margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
 

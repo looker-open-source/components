@@ -27,12 +27,18 @@
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
-import { ButtonDemo } from './Button/ButtonDemo'
+import { SelectDemo } from './Select/SelectDemo'
+import { SelectMultiDemo } from './Select/SelectMultiDemo'
+import { InputSearchDemo } from './Form/InputSearchDemo'
+import { InputChipsDemo } from './Form/InputChipsDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <ButtonDemo />
+      <SelectDemo />
+      <SelectMultiDemo />
+      <InputSearchDemo />
+      <InputChipsDemo />
     </ComponentsProvider>
   )
 }
