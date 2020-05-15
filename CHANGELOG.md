@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SpaceVertical` now supports `align` and `stretch` properties
 
 ### Changed
+- Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`
 -  Icon used for error states in inputs changed to `CircleInfo`
 - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
   - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
