@@ -48,7 +48,7 @@ const Label = styled.div`
   grid-area: children;
 `
 
-export const AccordionDisclosure: FC<AccordionDisclosureProps> = ({
+export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
   children,
   className,
 }) => {
@@ -83,34 +83,27 @@ export const AccordionDisclosure: FC<AccordionDisclosureProps> = ({
   )
 
   return (
-    <AccordionDisclosureStyle
+    <div
       className={className}
-      indicatorPosition={indicatorPosition}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <Indicator>{indicator}</Indicator>
-      <Label>{children}</Label>
-    </AccordionDisclosureStyle>
+      <AccordionDisclosureGrid indicatorPosition={indicatorPosition}>
+        <Indicator>{indicator}</Indicator>
+        <Label>{children}</Label>
+      </AccordionDisclosureGrid>
+    </div>
   )
 }
 
-export interface AccordionDisclosureStyleProps extends TypographyProps {
+interface AccordionDisclosureGridProps {
   indicatorPosition: 'left' | 'right'
 }
 
-// Note: The typography object doesn't actually do anything in this current setup
-// because AccordionDisclosureStyle isn't passed any typography props from AccordionDisclosure atm.
-export const AccordionDisclosureStyle = styled.div<
-  AccordionDisclosureStyleProps
->`
-  ${typography}
-
-  align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+const AccordionDisclosureGrid = styled.div<AccordionDisclosureGridProps>`
   display: grid;
-  cursor: pointer;
+  align-items: center;
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-areas: ${({ indicatorPosition }) =>
     indicatorPosition === 'left'
@@ -120,6 +113,13 @@ export const AccordionDisclosureStyle = styled.div<
     indicatorPosition === 'left'
       ? `${theme.space.large} 1fr`
       : `1fr ${theme.space.large}`};
+`
+
+export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
+  ${typography}
+
+  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+  cursor: pointer;
   outline: none;
 
   &:focus {
@@ -127,7 +127,7 @@ export const AccordionDisclosureStyle = styled.div<
   }
 `
 
-AccordionDisclosureStyle.defaultProps = {
+AccordionDisclosure.defaultProps = {
   fontSize: 'small',
   fontWeight: 'semiBold',
 }

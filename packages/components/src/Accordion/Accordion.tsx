@@ -30,7 +30,7 @@ import { layout, margin, padding, reset } from '@looker/design-tokens'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 import { IconNames } from '../Icon'
 import { AccordionContext } from './AccordionContext'
-import { AccordionDisclosureStyle } from './AccordionDisclosure'
+import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'
 
 export type DisclosureIcons = {
@@ -121,7 +121,7 @@ export const Accordion = styled(AccordionLayout)`
   ${layout}
   ${margin}
 
-  ${AccordionDisclosureStyle} {
+  ${AccordionDisclosure} {
     ${padding}
 
     padding-left: calc(${({ indicatorPosition, theme, pl, px, p }) =>
