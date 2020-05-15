@@ -25,21 +25,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
 - Support Warning icon display on Select and SelectMulti inputs
 - Refactor use of InputSearch to support more flexible layouts
-
-### Removed
-
-- Deleted `MenuSearch` component in favor of `InputSearch`
-
-## [RELEASED]
-
-### Changed
-
+- `Banner` fontSize adjusted and external margin removed
+- `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)
 - Use Babel for building Monorepo ES artifacts
   - Change build artifact path from `dist/` to `lib.`
   - No longer produces multiple artifact formats (`es` only)
   - Leverages `lerna` to largely remove need for per-package scripts
 - `yarn playground` & `yarn gatsby` replace `yarn develop` - no need to pre-compile for local development now.
 - Updated artwork for `Download` icon
+
+### Removed
+
+- Deleted `MenuSearch` component in favor of `InputSearch`
 
 ### Fixed
 

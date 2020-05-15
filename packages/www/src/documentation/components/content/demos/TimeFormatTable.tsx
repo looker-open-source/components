@@ -23,24 +23,52 @@
  SOFTWARE.
 
  */
-
-import { ComponentsProvider } from '@looker/components'
+import {
+  TimeFormat,
+  Table,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '@looker/components'
 import React from 'react'
-import { render } from 'react-dom'
-import { InputDateDemo } from './Form/InputDateDemo'
 
-const App: React.FC = () => {
+export const TimeFormatTable = () => {
   return (
-    <ComponentsProvider>
-      <InputDateDemo />
-    </ComponentsProvider>
+    <Table mb="large">
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>FORMAT</TableHeaderCell>
+          <TableHeaderCell>OUTPUT</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableDataCell>Short</TableDataCell>
+          <TableDataCell>
+            <TimeFormat format="short" />
+          </TableDataCell>
+        </TableRow>
+        <TableRow>
+          <TableDataCell>Medium *</TableDataCell>
+          <TableDataCell>
+            <TimeFormat />
+          </TableDataCell>
+        </TableRow>
+        <TableRow>
+          <TableDataCell>Long</TableDataCell>
+          <TableDataCell>
+            <TimeFormat format="long" />
+          </TableDataCell>
+        </TableRow>
+        <TableRow>
+          <TableDataCell>Full</TableDataCell>
+          <TableDataCell>
+            <TimeFormat format="full" />
+          </TableDataCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
