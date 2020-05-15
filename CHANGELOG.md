@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
 
+### Added
+
+- `Accordion`, `AccordionLabel`, `AccordionContent` components
+
 ### Changed
 
 - Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`

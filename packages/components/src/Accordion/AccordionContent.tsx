@@ -24,51 +24,22 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
+import React, { useContext, FC } from 'react'
+import styled from 'styled-components'
 
-export * from './utils'
+import { AccordionContext } from './AccordionContext'
 
-export { ComponentsProvider } from '@looker/components-providers'
+export interface AccordionContentProps {
+  className?: string
+}
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+const AccordionContentLayout: FC<AccordionContentProps> = ({
+  children,
+  className,
+}) => {
+  const { isOpen } = useContext(AccordionContext)
 
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+  return isOpen ? <div className={className}>{children}</div> : null
+}
+
+export const AccordionContent = styled(AccordionContentLayout)``

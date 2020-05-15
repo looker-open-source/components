@@ -27,12 +27,12 @@
 import { ComponentsProvider } from '@looker/components'
 import React from 'react'
 import { render } from 'react-dom'
-import { InputDateDemo } from './Form/InputDateDemo'
+import { AccordionDemo } from './Accordion/AccordionDemo'
 
 const App: React.FC = () => {
   return (
     <ComponentsProvider>
-      <InputDateDemo />
+      <AccordionDemo />
     </ComponentsProvider>
   )
 }

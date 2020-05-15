@@ -177,6 +177,7 @@ const components: NavigationSection = {
     },
     {
       children: [
+        { path: 'accordion', title: 'Accordion' },
         { path: 'action-list', title: 'ActionList' },
         { path: 'avatar', title: 'Avatar' },
         { path: 'badge', title: 'Badge' },

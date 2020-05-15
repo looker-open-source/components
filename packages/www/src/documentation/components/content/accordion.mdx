@@ -1,0 +1,115 @@
+---
+title: Accordion
+github: Accordion
+propsOf: Accordion
+---
+
+import { Props } from '../../../Shared'
+
+`<Accordion>` hides and shows content on click like a collapsible section.
+
+The `<Accordion>` component in particular acts as a wrapper and context provider for its companion components, `<AccordionDisclosure>` and `<AccordionContent>`.
+
+Use the `onClose` and `onOpen` props if you would like to trigger callbacks on `<Accordion>` open or close.
+
+If you want your `<Accordion>` open by default, use the `defaultOpen` prop.
+
+**Note:** `defaultOpen` should only be used when using an uncontrolled `<Accordion>`. For more details on controlled `<Accordion>`s, see the "Controlling an Accordion" section.
+
+```jsx
+<Accordion>
+  <AccordionDisclosure>Show me the cheese!</AccordionDisclosure>
+  <AccordionContent>Cheddar</AccordionContent>
+</Accordion>
+
+<Accordion defaultOpen onClose={() => alert('Closing doors')} onOpen={() => alert('Opening doors')}>
+  <AccordionDisclosure>Show me some other cheese!</AccordionDisclosure>
+  <AccordionContent>Swiss</AccordionContent>
+</Accordion>
+```
+
+## AccordionDisclosure
+
+<Props of="AccordionDisclosure" />
+
+Clicking on an `<AccordionDisclosure>` controls the appearance of its sibling `<AccordionContent>`.
+
+The child of `<AccordionDisclosure>` is rendered as a label, and can be either be a `string` or a `ReactNode`.
+
+```jsx
+<Accordion indicatorPosition="left">
+  <AccordionDisclosure>
+    <Space between align="center">
+      <span>Cheese is...</span>
+      <Icon
+        color="palette.charcoal500"
+        name="CircleQuestionOutline"
+        size={20}
+      />
+    </Space>
+  </AccordionDisclosure>
+  <AccordionContent>pretty great</AccordionContent>
+</Accordion>
+```
+
+## AccordionContent
+
+<Props of="AccordionDisclosure" />
+
+`<AccordionContent>` acts as the container for an `<Accordion>`'s content.
+
+## Styling an Accordion's indicator
+
+You can customize an `<Accordion>` indicator icon's size, position, and icon type via props.
+
+Use the `indicatorPosition` prop to set the indicator's position on either the left or right side of the `<AccordionDisclosure>`.
+
+```jsx
+<Accordion indicatorPosition="left">
+  <AccordionDisclosure>Show me the cheese!</AccordionDisclosure>
+  <AccordionContent>Cheddar</AccordionContent>
+</Accordion>
+```
+
+Use the `indicatorSize` prop to set the size of your indicator.
+
+```jsx
+<Accordion indicatorSize="xxlarge">
+  <AccordionDisclosure>Show me the cheese!</AccordionDisclosure>
+  <AccordionContent>Cheddar</AccordionContent>
+</Accordion>
+```
+
+Use the `indicatorIcons` prop to customize which icons represent an open or closed `<Accordion>`.
+
+By default, the `CaretDown` and `CaretUp` `<Icon>`s are used.
+
+```jsx
+<Accordion indicatorIcons={{ close: 'Close', open: 'FieldYesNo' }}>
+  <AccordionDisclosure>Show me the cheese!</AccordionDisclosure>
+  <AccordionContent>Cheddar</AccordionContent>
+</Accordion>
+```
+
+## Controlling an Accordion
+
+By default, the `<Accordion>` is an uncontrolled component and maintains its own opened/closed state.
+
+However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `<Accordion>`.
+
+When the `isOpen` prop receives `true`, your `<Accordion>` will reveal its content. When `false`, your content will be hidden.
+
+The `toggleOpen` prop should receive a function that has one parameter: a boolean. When the `<AccordionDisclosure>` is clicked, the `toggleOpen` callback will be triggered and passed the opposite boolean of the current `isOpen` prop value.
+
+```jsx
+;() => {
+  const [isOpen, setIsOpen] = useState(true)
+
+  return (
+    <Accordion isOpen={isOpen} toggleOpen={setIsOpen}>
+      <AccordionDisclosure>Show me the cheese!</AccordionDisclosure>
+      <AccordionContent>Cheddar</AccordionContent>
+    </Accordion>
+  )
+}
+```

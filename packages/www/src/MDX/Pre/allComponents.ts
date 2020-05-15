@@ -25,6 +25,9 @@
  */
 
 import {
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
   ActionList,
   ActionListItem,
   ActionListItemAction,
@@ -175,6 +178,9 @@ const hooks = {
 export const allComponents = {
   ...otherLibraries,
   ...hooks,
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
   ActionList,
   ActionListItem,
   ActionListItemAction,
