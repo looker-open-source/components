@@ -28,22 +28,28 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { InputTime, InputTimeProps } from '../../Inputs/InputTime'
+import {
+  InputTimeSelect,
+  InputTimeSelectProps,
+} from '../../Inputs/InputTimeSelect'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export interface FieldInputTimeProps extends FieldProps, InputTimeProps {}
+export interface FieldTimeSelectProps
+  extends FieldProps,
+    InputTimeSelectProps {}
 
-const FieldTimeComponent = forwardRef(
-  (props: FieldInputTimeProps, ref: Ref<HTMLInputElement>) => {
+const FieldTimeSelectComponent = forwardRef(
+  (props: FieldTimeSelectProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
       <Field
+        data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
         validationMessage={validationMessage}
       >
-        <InputTime
+        <InputTimeSelect
           {...omitFieldProps(props)}
           aria-describedby={`${id}-describedby`}
           id={id}
@@ -55,6 +61,6 @@ const FieldTimeComponent = forwardRef(
   }
 )
 
-FieldTimeComponent.displayName = 'FieldTimeComponent'
+FieldTimeSelectComponent.displayName = 'FieldTimeSelectComponent'
 
-export const FieldTime = styled(FieldTimeComponent)``
+export const FieldTimeSelect = styled(FieldTimeSelectComponent)``
