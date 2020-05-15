@@ -1,16 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Space default 1`] = `
+exports[`Space around + gap (all you get is around) 1`] = `
 .c0 {
-  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space around 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space between 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space default 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -20,13 +130,49 @@ exports[`Space default 1`] = `
   margin-left: 1rem;
 }
 
-.c0.c0 > :first-child {
+.c0.c0 > *:first-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
-  width="100%"
+>
+  <div>
+    🥑
+  </div>
+  <div>
+    🐛
+  </div>
+  <div>
+    🦜
+  </div>
+  <div>
+    🐈
+  </div>
+</div>
+`;
+
+exports[`Space evenly 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+<div
+  className="c0"
 >
   <div>
     🥑
@@ -45,15 +191,14 @@ exports[`Space default 1`] = `
 
 exports[`Space reversed 1`] = `
 .c0 {
-  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -63,13 +208,12 @@ exports[`Space reversed 1`] = `
   margin-left: 1rem;
 }
 
-.c0.c0 > :last-child {
+.c0.c0 > *:last-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -88,15 +232,14 @@ exports[`Space reversed 1`] = `
 
 exports[`Space with specified gap 1`] = `
 .c0 {
-  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -106,13 +249,12 @@ exports[`Space with specified gap 1`] = `
   margin-left: 2rem;
 }
 
-.c0.c0 > :first-child {
+.c0.c0 > *:first-child {
   margin-left: 0rem;
 }
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑

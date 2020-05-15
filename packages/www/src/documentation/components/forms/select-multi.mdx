@@ -13,7 +13,7 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
 - Values can be cleared individually or all at once (does not use the `Select` component's `isClearable` prop)
 
 ```jsx
-<Flex justifyContent="space-between" alignItems="flex-start">
+<Space>
   <SelectMulti
     options={[
       { value: 'Cheddar' },
@@ -28,7 +28,6 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
     ]}
     placeholder="Cheeses"
     flex={1}
-    mr="medium"
   />
   <SelectMulti
     options={[
@@ -43,7 +42,7 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
     defaultValues={['1']}
     flex={1}
   />
-</Flex>
+</Space>
 ```
 
 ## showCreate

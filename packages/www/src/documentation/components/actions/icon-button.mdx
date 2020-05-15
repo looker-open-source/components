@@ -9,25 +9,13 @@ It require a `label` that describes it's action. The `label` should be descripti
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```jsx
-;() => {
-  const ButtonCollection = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: ${({ theme }) => theme.space.medium};
-    justify-items: center;
-    align-items: center;
-  `
-
-  return (
-    <ButtonCollection>
-      <IconButton icon="Plus" label="Add Something Neat" />
-      <IconButton icon="Gear" label="Settings" />
-      <IconButton icon="Trash" label="Trash It" />
-      <IconButton icon="Close" label="Close" />
-      <IconButton icon="Favorite" label="Add to Favorites" />
-    </ButtonCollection>
-  )
-}
+<Space evenly>
+  <IconButton icon="Plus" label="Add Something Neat" />
+  <IconButton icon="Gear" label="Settings" />
+  <IconButton icon="Trash" label="Trash It" />
+  <IconButton icon="Close" label="Close" />
+  <IconButton icon="Favorite" label="Add to Favorites" />
+</Space>
 ```
 
 ### IconButton Options
@@ -37,24 +25,13 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 - `xxsmall` | `xsmall` (default) | `small` | `medium` | `large`
 
 ```jsx
-;() => {
-  const ButtonCollection = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: ${({ theme }) => theme.space.medium};
-    justify-items: center;
-    align-items: center;
-  `
-  return (
-    <ButtonCollection>
-      <IconButton icon="Favorite" label="Add to Favorites" size="xxsmall" />
-      <IconButton icon="Favorite" label="Add to Favorites" />
-      <IconButton icon="Favorite" label="Add to Favorites" size="small" />
-      <IconButton icon="Favorite" label="Add to Favorites" size="medium" />
-      <IconButton icon="Favorite" label="Add to Favorites" size="large" />
-    </ButtonCollection>
-  )
-}
+<Space evenly>
+  <IconButton icon="Favorite" label="Add to Favorites" size="xxsmall" />
+  <IconButton icon="Favorite" label="Add to Favorites" />
+  <IconButton icon="Favorite" label="Add to Favorites" size="small" />
+  <IconButton icon="Favorite" label="Add to Favorites" size="medium" />
+  <IconButton icon="Favorite" label="Add to Favorites" size="large" />
+</Space>
 ```
 
 ## Shapes
@@ -62,34 +39,22 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 - `round` | `square` (default)
 
 ```jsx
-;() => {
-  const ButtonCollection = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: ${({ theme }) => theme.space.medium};
-    justify-items: center;
-    align-items: center;
-  `
-
-  return (
-    <ButtonCollection>
-      <IconButton
-        icon="Trash"
-        label="Trash it"
-        outline
-        shape="round"
-        size="xxsmall"
-      />
-      <IconButton
-        icon="Trash"
-        label="Trash it"
-        outline
-        shape="round"
-        size="large"
-      />
-    </ButtonCollection>
-  )
-}
+<Space evenly>
+  <IconButton
+    icon="Trash"
+    label="Trash it"
+    outline
+    shape="round"
+    size="xxsmall"
+  />
+  <IconButton
+    icon="Trash"
+    label="Trash it"
+    outline
+    shape="round"
+    size="large"
+  />
+</Space>
 ```
 
 ## Color
@@ -97,24 +62,12 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 - `danger` | `neutral` (default) | `primary` | `secondary`
 
 ```jsx
-;() => {
-  const ButtonCollection = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: ${({ theme }) => theme.space.medium};
-    justify-items: center;
-    align-items: center;
-  `
-
-  return (
-    <ButtonCollection>
-      <IconButton color="danger" icon="Gear" label="Settings" size="large" />
-      <IconButton color="neutral" icon="Gear" label="Settings" size="large" />
-      <IconButton color="primary" icon="Gear" label="Settings" size="large" />
-      <IconButton color="secondary" icon="Gear" label="Settings" size="large" />
-    </ButtonCollection>
-  )
-}
+<Space evenly>
+  <IconButton color="danger" icon="Gear" label="Settings" size="large" />
+  <IconButton color="neutral" icon="Gear" label="Settings" size="large" />
+  <IconButton color="primary" icon="Gear" label="Settings" size="large" />
+  <IconButton color="secondary" icon="Gear" label="Settings" size="large" />
+</Space>
 ```
 
 ## Animation
@@ -129,15 +82,7 @@ Create the styled rules desired and wrap the `IconButton` component on it.
       transform: rotate(45deg);
     }
   `
-  return (
-    <HoverVariantButton
-      label="Close"
-      icon="Close"
-      size="large"
-      outline
-      mr="small"
-    />
-  )
+  return <HoverVariantButton label="Close" icon="Close" size="large" outline />
 }
 ```
 

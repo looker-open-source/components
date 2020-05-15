@@ -25,13 +25,40 @@
  */
 
 import styled from 'styled-components'
+import { variant } from 'styled-system'
 import { ButtonBase } from './ButtonBase'
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+const transparentButtonPadding = variant({
+  prop: 'size',
+  variants: {
+    xxsmall: {
+      px: 'xsmall',
+    },
+    xsmall: {
+      px: 'xsmall',
+    },
+    small: {
+      px: 'small',
+    },
+    medium: {
+      px: 'large',
+    },
+    large: {
+      px: 'large',
+    },
+  },
+})
 
 export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
   border: 1px solid transparent;
   color: ${({ theme, color = 'primary' }) =>
     theme.colors.semanticColors[color].main};
+  ${(props) =>
+    props.iconBefore || props.iconAfter
+      ? transparentButtonPadding
+      : `padding: 0 ${props.theme.space.xsmall};`}
 
   &:active,
   &.active {

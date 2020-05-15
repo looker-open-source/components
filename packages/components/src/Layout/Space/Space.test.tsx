@@ -61,3 +61,47 @@ test('Space reversed', () => {
     </Space>
   )
 })
+
+test('Space around + gap (all you get is around)', () => {
+  assertSnapshot(
+    <Space around gap="xxlarge">
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
+
+test('Space around', () => {
+  assertSnapshot(
+    <Space around>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
+
+test('Space between', () => {
+  assertSnapshot(
+    <Space between>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})
+
+test('Space evenly', () => {
+  assertSnapshot(
+    <Space evenly>
+      <div>🥑</div>
+      <div>🐛</div>
+      <div>🦜</div>
+      <div>🐈</div>
+    </Space>
+  )
+})

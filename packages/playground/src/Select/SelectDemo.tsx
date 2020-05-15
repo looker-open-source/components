@@ -26,6 +26,9 @@
 
 import React, { MouseEvent, useMemo, useState } from 'react'
 import {
+  Card,
+  CardContent,
+  Form,
   Button,
   Dialog,
   Divider,
@@ -258,6 +261,34 @@ export const SelectDemo = () => {
       <Button onClick={handleClick} m="large">
         Open
       </Button>
+      <Card maxWidth="500px" maxHeight="300px" m="large">
+        <CardContent>
+          <Form
+            validationMessages={{
+              fruitGroups: { message: 'This is an error', type: 'error' },
+            }}
+          >
+            <Heading>Error State</Heading>
+            <FieldSelect
+              label="Fruit Groups"
+              name="fruitGroups"
+              width={300}
+              options={optionsWithGroups}
+              aria-label="Fruits"
+              defaultValue="1"
+            />
+            <FieldSelect
+              label="Another Grouped Dropdown"
+              name="anotherGroup"
+              width={300}
+              options={optionsWithGroups}
+              aria-label="Fruits"
+              defaultValue="1"
+              isClearable
+            />
+          </Form>
+        </CardContent>
+      </Card>
     </>
   )
 }

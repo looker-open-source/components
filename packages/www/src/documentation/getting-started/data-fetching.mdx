@@ -30,24 +30,22 @@ To validate that the proxy server is configured correctly it's helpful to query 
     <>
       <Button onClick={fetchUser}>Fetch User Data</Button>
       {user && (
-        <List mt="large">
-          <>
-            <ListItem>
-              <strong>ID:</strong> {user.id}
-            </ListItem>
-            <ListItem>
-              <strong>Name:</strong> {user.display_name}
-            </ListItem>
-            <ListItem>
-              <strong>Email:</strong> {user.email}
-            </ListItem>
-            <ListItem>
-              <strong>Home Space:</strong> {user.home_space_id}
-            </ListItem>
-            <ListItem>
-              <strong>Role IDs:</strong> {JSON.stringify(user.role_ids)}
-            </ListItem>
-          </>
+        <List>
+          <ListItem>
+            <strong>ID:</strong> {user.id}
+          </ListItem>
+          <ListItem>
+            <strong>Name:</strong> {user.display_name}
+          </ListItem>
+          <ListItem>
+            <strong>Email:</strong> {user.email}
+          </ListItem>
+          <ListItem>
+            <strong>Home Space:</strong> {user.home_space_id}
+          </ListItem>
+          <ListItem>
+            <strong>Role IDs:</strong> {JSON.stringify(user.role_ids)}
+          </ListItem>
         </List>
       )}
     </>

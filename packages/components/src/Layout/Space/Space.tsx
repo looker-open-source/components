@@ -25,10 +25,11 @@
  */
 
 import styled, { css } from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
+import { variant } from 'styled-system'
+import { SpacingSizes, flexbox, FlexboxProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
-export interface SpaceHelperProps extends SimpleLayoutProps {
+export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   /**
    * Amount of space between grid cells
    * @default 'medium'
@@ -36,33 +37,92 @@ export interface SpaceHelperProps extends SimpleLayoutProps {
   gap?: SpacingSizes
 
   /**
+   * The spacing between each pair of adjacent items is the same. The empty space before the
+   * first and after the last item equals half of the space between each pair of adjacent items.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  around?: boolean
+
+  /**
+   * The spacing between each pair of adjacent items is the same. The first item is flush with
+   * the main-start edge, and the last item is flush with the main-end edge.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  between?: boolean
+
+  /**
+   * The spacing between each pair of adjacent items, the main-start edge and the first item,
+   * and the main-end edge and the last item, are all exactly the same.
+   * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+   * @default false
+   */
+  evenly?: boolean
+
+  /**
    * reverse direction of content
    * @default false
    */
   reverse?: boolean
+  /**
+   * Align items vertically within `Space`
+   * @default 'center'
+   */
+  align?: 'start' | 'center' | 'end'
+
+  /**
+   * Stretch items full width of space
+   * @default false
+   */
+  stretch?: boolean
 }
 
 export const defaultSpaceSize = 'medium'
 
 export const spaceCSS = css`
   ${simpleLayoutCSS}
+  ${flexbox}
 
   display: flex;
-  align-items: flex-start;
 `
+
+const fauxFlexGap = (space: SpaceHelperProps) => css`
+  && > * {
+    margin-left: ${({ theme }) => theme.space[space.gap || defaultSpaceSize]};
+  }
+
+  ${({ theme }) =>
+    space.reverse
+      ? `&& > *:last-child { margin-left: ${theme.space.none}; }`
+      : `&& > *:first-child { margin-left: ${theme.space.none}; }`}
+`
+
+const verticalAlign = variant({
+  prop: 'align',
+  variants: {
+    center: {
+      alignItems: 'center',
+    },
+    end: {
+      alignItems: 'flex-end',
+    },
+    start: {
+      alignItems: 'flex-start',
+    },
+  },
+})
 
 export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
+  ${({ stretch }) => !stretch && verticalAlign}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
-  && > * {
-    margin-left: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
-  }
-
-  ${({ theme, reverse }) =>
-    reverse
-      ? `&& > :last-child { margin-left: ${theme.space.none}; }`
-      : `&& > :first-child { margin-left: ${theme.space.none}; }`}
+  ${({ around }) => around && 'justify-content: space-around;'}
+  ${({ between }) => between && 'justify-content: space-between;'}
+  ${({ evenly }) => evenly && 'justify-content: space-evenly;'}
+  ${({ around, between, evenly }) =>
+    !around && !between && !evenly && fauxFlexGap}
 `
 
-Space.defaultProps = { width: '100%' }
+Space.defaultProps = { alignItems: 'center' }

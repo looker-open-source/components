@@ -173,6 +173,50 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
+  const dimensions = {
+    maxHeight: 400,
+    maxWidth: 800,
+    minWidth: 300,
+    width: '50vw',
+  }
+
+  test.each([
+    [
+      'Select',
+      <Select
+        options={groupedOptions}
+        placeholder="Search"
+        listLayout={dimensions}
+        key="select"
+      />,
+    ],
+    [
+      'SelectMulti',
+      <SelectMulti
+        options={groupedOptions}
+        placeholder="Search"
+        listLayout={dimensions}
+        key="select-multi"
+      />,
+    ],
+  ])('with listLayout (%s)', (_, jsx) => {
+    const { getByRole, getByPlaceholderText } = renderWithTheme(jsx)
+
+    const input = getByPlaceholderText('Search')
+    expect(input).toBeVisible()
+
+    fireEvent.mouseDown(input)
+
+    const list = getByRole('listbox')
+    expect(list).toHaveStyleRule('max-height', '400px')
+    expect(list).toHaveStyleRule('max-width', '800px')
+    expect(list).toHaveStyleRule('min-width', '300px')
+    expect(list).toHaveStyleRule('width', '50vw')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
   describe('no options', () => {
     test.each([
       [
