@@ -25,13 +25,42 @@
  */
 
 import styled from 'styled-components'
+import { variant } from 'styled-system'
 import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
 
-export const SpaceVertical = styled.div<SpaceHelperProps>`
-  ${spaceCSS}
+interface SpaceVerticalProps extends SpaceHelperProps {
+  /**
+   * Align items vertically within `Space`
+   * @default 'start'
+   */
+  align?: 'start' | 'center' | 'end'
 
+  /**
+   * Stretch items full width of space
+   * @default false
+   */
+  stretch?: boolean
+}
+
+const align = variant({
+  prop: 'align',
+  variants: {
+    center: {
+      alignItems: 'center',
+    },
+    end: {
+      alignItems: 'flex-end',
+    },
+    start: {
+      alignItems: 'flex-start',
+    },
+  },
+})
+
+export const SpaceVertical = styled.div<SpaceVerticalProps>`
+  ${spaceCSS}
+  ${({ stretch }) => !stretch && align}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
-  flex-shrink: 1;
 
   && > * {
     margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
@@ -39,8 +68,8 @@ export const SpaceVertical = styled.div<SpaceHelperProps>`
 
   ${({ theme, reverse }) =>
     reverse
-      ? `&& > :last-child { margin-top: ${theme.space.none}; }`
-      : `&& > :first-child { margin-top: ${theme.space.none}; }`}
+      ? `&& > *:last-child { margin-top: ${theme.space.none}; }`
+      : `&& > *:first-child { margin-top: ${theme.space.none}; }`}
 `
 
-SpaceVertical.defaultProps = { width: '100%' }
+SpaceVertical.defaultProps = { align: 'start' }

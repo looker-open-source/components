@@ -15,10 +15,10 @@ github: Form/Inputs/InputTime/InputTime.tsx
 `InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
 
 ```js
-<>
-  <InputTime format="12h" defaultValue="14:34" mr="small" />
+<Space>
+  <InputTime format="12h" defaultValue="14:34" />
   <InputTime format="24h" defaultValue="14:34" />
-</>
+</Space>
 ```
 
 ## Controlled Component
@@ -33,21 +33,13 @@ github: Form/Inputs/InputTime/InputTime.tsx
   const handle1632Click = () => setValue('16:32')
 
   return (
-    <>
-      <Button mr="small" onClick={handle1400Click}>
-        2:00pm
-      </Button>
-      <Button mr="small" onClick={handle1515Click}>
-        3:15pm
-      </Button>
-      <Button mr="small" onClick={handle1632Click}>
-        4:32pm
-      </Button>
-      <Flex mt="large" alignItems="center">
-        <InputTime value={value} mr="small" />
-        Selected: {value}
-      </Flex>
-    </>
+    <Space>
+      <Button onClick={handle1400Click}>2:00pm</Button>
+      <Button onClick={handle1515Click}>3:15pm</Button>
+      <Button onClick={handle1632Click}>4:32pm</Button>
+      <InputTime value={value} />
+      <span>Selected: {value}</span>
+    </Space>
   )
 }
 ```
@@ -81,10 +73,10 @@ As the name suggests, `readOnly` makes the text uneditable.
 You can combine the `id` prop with form label, so that when the label is clicked it will focus on the `hour` input.
 
 ```js
-<>
+<Space>
   <Label htmlFor="demo-id">Label Text</Label>
   <InputTime id="demo-id" />
-</>
+</Space>
 ```
 
 ## Focus & Blur
@@ -98,37 +90,10 @@ You can combine the `id` prop with form label, so that when the label is clicked
   const handleBlur = () => setIsFocused(false)
 
   return (
-    <>
+    <Space>
       <InputTime onFocus={handleFocus} onBlur={handleBlur} />
-      {isFocused && (
-        <Text color="green" ml="small">
-          FOCUSED!!
-        </Text>
-      )}
-    </>
-  )
-}
-```
-
-## Focus & Blur
-
-`onFocus` callback will fire when any of the three sub-fields (hour, minute, period) are focused. `onBlur` fires when the focus moves outside the component entirely.
-
-```js
-;() => {
-  const [isFocused, setIsFocused] = useState(false)
-  const handleFocus = () => setIsFocused(true)
-  const handleBlur = () => setIsFocused(false)
-
-  return (
-    <>
-      <InputTime onFocus={handleFocus} onBlur={handleBlur} />
-      {isFocused && (
-        <Text color="green" ml="small">
-          FOCUSED!!
-        </Text>
-      )}
-    </>
+      {isFocused && <Text color="green">FOCUSED!!</Text>}
+    </Space>
   )
 }
 ```
@@ -153,21 +118,19 @@ In addition, `InputTime` will automatically check whether the provided `value` p
     setValidationType('error')
   }
   return (
-    <>
+    <Space>
       <InputTime
         validationType={validationType}
         value={value}
         onValidationFail={handleValidationFail}
       />
       {validationType === 'error' && (
-        <Box mt="xsmall">
-          <Text color="red" fontSize="small" fontWeight="bold">
-            Error: <Code fontSize="small">{value}</Code> is not a valid 24-hour
-            time string
-          </Text>
-        </Box>
+        <Text variant="critical">
+          Error: <Code fontSize="small">{value}</Code> is not a valid 24-hour
+          time string
+        </Text>
       )}
-    </>
+    </Space>
   )
 }
 ```

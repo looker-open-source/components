@@ -75,7 +75,9 @@ const TextAreaLayout: FC<TextAreaProps> = ({
         aria-invalid={validationType === 'error' ? 'true' : undefined}
         {...textareaProps}
       />
-      {validationType && <Icon name="Warning" color="palette.red500" />}
+      {validationType && (
+        <Icon name="CircleInfo" color="palette.red500" size={20} />
+      )}
     </div>
   )
 }

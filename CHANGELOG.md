@@ -11,13 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Select` now accepts `listLayout` to control the layout of the list
 - `ComboboxList` now accepts properties from `LayoutProps`
+- `Space`
+  - now supports `around`, `between` and `evenly` as alternatives to `gap`
+  - now supports `verticalAlign` property
+- `SpaceVertical` now supports `align` and `stretch` properties
 
 ### Changed
 - Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`
+-  Icon used for error states in inputs changed to `CircleInfo`
 - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
   - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
 - `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
-- `Banner` fontSize adjusted and external margin removed
 - Use Babel for building Monorepo ES artifacts
   - Change build artifact path from `dist/` to `lib.`
   - No longer produces multiple artifact formats (`es` only)
@@ -28,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Confirm` corrected word wrapping when long strings without white-space are used
+- `IconButton` no longer generates spurious DOM outside of itself for `tooltip` (doesn't create funky layout bugs when `IconButton` is within `Space`)
 
 ## [0.7.31] - 2020-05-12
 

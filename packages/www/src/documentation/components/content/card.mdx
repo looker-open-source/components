@@ -60,83 +60,70 @@ The `CardMedia` component accepts and `image` property that will render the imag
 A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
 
 ```jsx
-<Flex>
-  <FlexItem width="33%" mr="small">
-    <Card raised>
-      <CardMedia
-        image="https://placeimg.com/640/480/nature"
-        title="Summer Nature"
-      />
-      <CardContent>
-        <Text
-          fontSize="xsmall"
-          textTransform="uppercase"
-          fontWeight="semiBold"
-          variant="subdued"
-        >
-          Summer
-        </Text>
-        <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
-          Life in The Great Outdoors
-        </Heading>
-        <div>
-          <Text fontSize="small">
-            10 reasons to get off the couch and head outside this summer.
-          </Text>
-        </div>
-      </CardContent>
-    </Card>
-  </FlexItem>
-  <FlexItem width="33%" mr="small">
-    <Card raised>
-      <CardMedia
-        image="https://placeimg.com/630/480/nature"
-        title="A Scenic Valley"
-      />
-      <CardContent>
-        <Text
-          fontSize="xsmall"
-          textTransform="uppercase"
-          fontWeight="semiBold"
-          variant="subdued"
-        >
-          Explore
-        </Text>
-        <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
-          Best Scenic Hikes
-        </Heading>
-        <div mt="xs">
-          <Text fontSize="small">
-            Looking for a new place to trailblaze? Make sure it has a great
-            view!
-          </Text>
-        </div>
-      </CardContent>
-    </Card>
-  </FlexItem>
-  <FlexItem width="33%">
-    <Card raised>
-      <CardMedia
-        image="https://placeimg.com/620/480/nature"
-        title="Relaxing Views"
-      />
-      <CardContent>
-        <Text
-          fontSize="xsmall"
-          textTransform="uppercase"
-          fontWeight="semiBold"
-          variant="subdued"
-        >
-          Relax
-        </Text>
-        <Heading as="h4" fontSize="large" fontWeight="semiBold" truncate>
-          Mindfull Wilderness
-        </Heading>
-        <div mt="xs">
-          <Text fontSize="small">Find a place to find your self.</Text>
-        </div>
-      </CardContent>
-    </Card>
-  </FlexItem>
-</Flex>
+<Grid columns={3}>
+  <Card raised>
+    <CardMedia
+      image="https://placeimg.com/640/480/nature"
+      title="Summer Nature"
+    />
+    <CardContent>
+      <Text
+        fontSize="xsmall"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+        variant="subdued"
+      >
+        Summer
+      </Text>
+      <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
+        Life in The Great Outdoors
+      </Heading>
+      <Paragraph fontSize="small">
+        10 reasons to get off the couch and head outside this summer.
+      </Paragraph>
+    </CardContent>
+  </Card>
+  <Card raised>
+    <CardMedia
+      image="https://placeimg.com/630/480/nature"
+      title="A Scenic Valley"
+    />
+    <CardContent>
+      <Text
+        fontSize="xsmall"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+        variant="subdued"
+      >
+        Explore
+      </Text>
+      <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
+        Best Scenic Hikes
+      </Heading>
+      <Paragraph fontSize="small">
+        Looking for a new place to trailblaze? Make sure it has a great view!
+      </Paragraph>
+    </CardContent>
+  </Card>
+  <Card raised>
+    <CardMedia
+      image="https://placeimg.com/620/480/nature"
+      title="Relaxing Views"
+    />
+    <CardContent>
+      <Text
+        fontSize="xsmall"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+        variant="subdued"
+      >
+        Relax
+      </Text>
+      <Heading as="h4" fontSize="large" fontWeight="semiBold" truncate>
+        Mindfull Wilderness
+      </Heading>
+      <Paragraph fontSize="small">Find a place to find your self.</Paragraph>
+    </CardContent>
+  </Card>
+</Grid>
 ```
