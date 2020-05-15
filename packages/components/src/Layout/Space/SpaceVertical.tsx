@@ -42,18 +42,17 @@ interface SpaceVerticalProps extends SpaceHelperProps {
   stretch?: boolean
 }
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 const align = variant({
   prop: 'align',
   variants: {
-    start: {
-      alignItems: 'flex-start',
-    },
     center: {
       alignItems: 'center',
     },
     end: {
       alignItems: 'flex-end',
+    },
+    start: {
+      alignItems: 'flex-start',
     },
   },
 })

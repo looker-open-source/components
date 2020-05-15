@@ -65,14 +65,17 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
    * @default false
    */
   reverse?: boolean
-}
-
-interface SpaceProps extends SpaceHelperProps {
   /**
    * Align items vertically within `Space`
    * @default 'center'
    */
-  verticalAlign?: 'start' | 'center' | 'end'
+  align?: 'start' | 'center' | 'end'
+
+  /**
+   * Stretch items full width of space
+   * @default false
+   */
+  stretch?: boolean
 }
 
 export const defaultSpaceSize = 'medium'
@@ -84,7 +87,7 @@ export const spaceCSS = css`
   display: flex;
 `
 
-const fauxFlexGap = (space: SpaceProps) => css`
+const fauxFlexGap = (space: SpaceHelperProps) => css`
   && > * {
     margin-left: ${({ theme }) => theme.space[space.gap || defaultSpaceSize]};
   }
@@ -95,25 +98,24 @@ const fauxFlexGap = (space: SpaceProps) => css`
       : `&& > *:first-child { margin-left: ${theme.space.none}; }`}
 `
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 const verticalAlign = variant({
-  prop: 'verticalAlign',
+  prop: 'align',
   variants: {
-    start: {
-      alignItems: 'flex-start',
-    },
     center: {
       alignItems: 'center',
     },
     end: {
       alignItems: 'flex-end',
     },
+    start: {
+      alignItems: 'flex-start',
+    },
   },
 })
 
-export const Space = styled.div<SpaceProps>`
+export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
-  ${verticalAlign}
+  ${({ stretch }) => !stretch && verticalAlign}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
   ${({ around }) => around && 'justify-content: space-around;'}
