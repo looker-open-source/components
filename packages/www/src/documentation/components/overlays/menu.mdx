@@ -319,17 +319,9 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 </MenuList>
 ```
 
-## MenuSearch
+## Recipe: A Filterable Menu Overlay
 
-<Props of="MenuItem" />
-
-```jsx
-  <MenuSearch />
-  <Divider my="medium" />
-  <MenuSearch value="Stuff" summary="Faux results" />
-  <Divider my="medium" />
-  <MenuSearch value="Stuff" hideControls />
-```
+[`InputSearch`](/forms/input-search) can be incorporated into a menu popover to filter menu items by search query. Click the `cheese` button below to try it out.
 
 ```jsx
 ;() => {
@@ -353,13 +345,15 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
       </MenuDisclosure>
 
       <MenuList ref={menuRef}>
-        <MenuSearch
-          placeholder="start your search..."
-          value={keywordSearch}
-          onChange={handleChange}
-          onClear={handleClear}
-          menuRef={menuRef}
-        />
+        <Box p="xsmall">
+          <InputSearch
+            placeholder="start your search..."
+            value={keywordSearch}
+            onChange={handleChange}
+            onClear={handleClear}
+            menuRef={menuRef}
+          />
+        </Box>
         <MenuGroup label="cheeses">
           {searchResults.map((cheese) => (
             <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
