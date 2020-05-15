@@ -34,7 +34,7 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
    * Amount of space between grid cells
    * @default 'medium'
    */
-  gap?: SpacingSizes | 'between' | 'evenly'
+  gap?: SpacingSizes
 
   /**
    * The spacing between each pair of adjacent items is the same. The empty space before the
