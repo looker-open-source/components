@@ -35,23 +35,14 @@ import React, {
   Ref,
 } from 'react'
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  border,
-  BorderProps,
-  position,
-  PositionProps,
-  space,
-  SpaceProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { ButtonItemProps } from './ButtonItem'
 
 export interface ButtonGroupOrToggleProps<
   ValueType extends string | string[] = string[]
 >
-  extends PositionProps,
-    BorderProps,
-    SpaceProps,
+  extends SimpleLayoutProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
   /**
    * Internal use only
@@ -81,7 +72,7 @@ export type ButtonSetType<
   T extends string | string[] = string[]
 > = ForwardRefExoticComponent<ButtonSetProps<T> & { ref: Ref<HTMLDivElement> }>
 
-export const ButtonSetInternal = forwardRef(
+export const ButtonSetLayout = forwardRef(
   (
     {
       children,
@@ -135,12 +126,10 @@ export const ButtonSetInternal = forwardRef(
   }
 )
 
-ButtonSetInternal.displayName = 'ButtonSetInternal'
+ButtonSetLayout.displayName = 'ButtonSetLayout'
 
-export const ButtonSet = styled(ButtonSetInternal)`
-  ${border}
-  ${position}
-  ${space}
+export const ButtonSet = styled(ButtonSetLayout)`
+  ${simpleLayoutCSS}
   align-items: center;
   display: inline-flex;
   flex-wrap: wrap;

@@ -26,7 +26,7 @@
 
 import uniqueId from 'lodash/uniqueId'
 import xor from 'lodash/xor'
-import React, { ChangeEvent, FC, forwardRef, Ref } from 'react'
+import React, { ChangeEvent, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../utils'
 import { ButtonItem, ButtonItemLabel } from './ButtonItem'
@@ -63,13 +63,15 @@ const ButtonGroupFactory = forwardRef(
   }
 )
 
-export const ButtonGroup = styled<FC<ButtonGroupOrToggleProps<string[]>>>(
-  ButtonGroupFactory
-)`
-  margin-bottom: -${(props) => props.theme.space.xxsmall};
+export const ButtonGroup = styled(ButtonGroupFactory)`
+  margin: ${({
+    theme: {
+      space: { xxsmall },
+    },
+  }) => `0 -${xxsmall} -${xxsmall} 0`};
   ${ButtonItem} {
     height: 36px;
-    border-radius: 4px;
+    border-radius: ${({ theme }) => theme.radii.medium};
     margin: ${({
       theme: {
         space: { xxsmall },

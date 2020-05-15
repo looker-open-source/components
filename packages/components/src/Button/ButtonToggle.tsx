@@ -25,7 +25,7 @@
  */
 
 import uniqueId from 'lodash/uniqueId'
-import React, { forwardRef, Ref, useState, ChangeEvent, FC } from 'react'
+import React, { forwardRef, Ref, useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../utils'
 import { ButtonItemLabel } from './ButtonItem'
@@ -74,43 +74,52 @@ const ButtonToggleFactory = forwardRef(
   }
 )
 
-export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
-  ButtonToggleFactory
-)`
-  border-radius: 4px;
+export const ButtonToggle = styled(ButtonToggleFactory)`
+  border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
+  border-radius: ${({ theme }) => theme.radii.medium};
+
+  /* prevents items in the last row from growing */
+  &::after {
+    content: '';
+    flex-grow: 100;
+  }
 
   ${ButtonItemLabel} {
+    /* In a wrapping scenario we want items in complete rows
+    to fill the full width evenly */
+    flex-grow: 1;
     position: relative;
     height: 36px;
-    border: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
-    border-left-width: 0;
-    border-right-width: 0;
     border-radius: 0;
 
     &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-      border-left-width: 1px;
+      border-top-left-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
     }
     &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      border-right-width: 1px;
+      border-top-right-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
     }
 
-    /* stylelint-disable */
-    &:not(:last-child) {
-      &::after {
-        content: '';
-        display: block;
-        height: 20px;
-        width: 1px;
-        background: ${(props) => props.theme.colors.palette.charcoal200};
-        position: absolute;
-        right: 0;
-        top: 8px;
-      }
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background: ${(props) => props.theme.colors.palette.charcoal200};
+      position: absolute;
+      z-index: 1;
     }
-    /* stylelint-enable */
+    &::before {
+      height: 1px;
+      width: 100%;
+      left: 0;
+      bottom: -1px;
+    }
+    &::after {
+      height: 100%;
+      width: 1px;
+      right: -1px;
+      top: 0;
+    }
   }
 `
