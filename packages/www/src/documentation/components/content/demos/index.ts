@@ -24,6 +24,8 @@
 
  */
 
-export * from './IconList'
-export * from './DateTimeFormat'
 export * from './CalendarPropTable'
+export * from './DateFormatTable'
+export * from './IconList'
+export * from './LocaleTable'
+export * from './TimeFormatTable'

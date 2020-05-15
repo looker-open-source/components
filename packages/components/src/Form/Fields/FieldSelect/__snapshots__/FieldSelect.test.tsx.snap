@@ -7,6 +7,7 @@ exports[`A FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -22,6 +23,21 @@ exports[`A FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c12 {
+  color: #707781;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c8 {
@@ -134,7 +150,7 @@ exports[`A FieldSelect 1`] = `
   align-items: center;
 }
 
-.c0 .c11 {
+.c0 .c13 {
   grid-area: messages;
 }
 
@@ -144,13 +160,12 @@ exports[`A FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c13 {
+.c0 .c15 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c12 {
-  margin-right: 0.5rem;
+.c0 .c14 {
   margin-top: 0.5rem;
 }
 
@@ -195,24 +210,20 @@ exports[`A FieldSelect 1`] = `
   appearance: none;
 }
 
-.c7 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
+.c11 {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  max-height: 1.9rem;
 }
 
 .c7 .c9 {
   cursor: default;
-}
-
-.c7 .c14::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 <div
@@ -268,11 +279,35 @@ exports[`A FieldSelect 1`] = `
             value=""
           />
         </div>
+        <div
+          className="c11"
+        >
+          <div
+            className="c12 "
+            color="palette.charcoal500"
+            size={18}
+          >
+            <svg
+              fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Caret Down
+              </title>
+              <path
+                d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c11 "
+    className="c13 "
     id="thumbs-up-describedby"
   />
 </div>
@@ -285,6 +320,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -300,6 +336,36 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c14 {
+  color: #707781;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c12 {
+  color: #CC1F36;
+  margin-right: 0.25rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c8 {
@@ -383,7 +449,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-weight: 600;
 }
 
-.c13 {
+.c17 {
   font-size: 0.75rem;
   color: #CC1F36;
 }
@@ -417,7 +483,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: center;
 }
 
-.c0 .c11 {
+.c0 .c15 {
   grid-area: messages;
 }
 
@@ -427,17 +493,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c19 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c12 {
-  margin-right: 0.5rem;
+.c0 .c16 {
   margin-top: 0.5rem;
 }
 
-.c14 .c9 {
+.c18 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -451,10 +516,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: calc(36px - 6px);
 }
 
-.c14 .c9::-webkit-search-decoration,
-.c14 .c9::-webkit-search-cancel-button,
-.c14 .c9::-webkit-search-results-button,
-.c14 .c9::-webkit-search-results-decoration {
+.c18 .c9::-webkit-search-decoration,
+.c18 .c9::-webkit-search-cancel-button,
+.c18 .c9::-webkit-search-results-button,
+.c18 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -512,24 +577,26 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   appearance: none;
 }
 
-.c7 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
+.c11 {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  max-height: 1.9rem;
+}
+
+.c13 {
+  background: #DEE1E5;
+  height: 70%;
+  width: 1px;
 }
 
 .c7 .c9 {
   cursor: default;
-}
-
-.c7 .c16::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 <div
@@ -585,15 +652,62 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
             value=""
           />
         </div>
+        <div
+          className="c11"
+        >
+          <div
+            className="c12 "
+            color="palette.red500"
+            size={20}
+          >
+            <svg
+              fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Circle Info
+              </title>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <div
+            className="c13"
+          />
+          <div
+            className="c14 "
+            color="palette.charcoal500"
+            size={18}
+          >
+            <svg
+              fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Caret Down
+              </title>
+              <path
+                d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c11 "
+    className="c15 "
     id="thumbs-up-describedby"
   >
     <div
-      className="c12 c13"
+      className="c16 c17"
     >
       This is an error
     </div>
@@ -608,6 +722,7 @@ exports[`A required FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 0;
 }
 
 .c7 {
@@ -623,6 +738,21 @@ exports[`A required FieldSelect 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c14 {
+  color: #707781;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c10 {
@@ -749,7 +879,7 @@ exports[`A required FieldSelect 1`] = `
   align-items: center;
 }
 
-.c0 .c13 {
+.c0 .c15 {
   grid-area: messages;
 }
 
@@ -759,13 +889,12 @@ exports[`A required FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c17 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c14 {
-  margin-right: 0.5rem;
+.c0 .c16 {
   margin-top: 0.5rem;
 }
 
@@ -810,24 +939,20 @@ exports[`A required FieldSelect 1`] = `
   appearance: none;
 }
 
-.c9 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
+.c13 {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  max-height: 1.9rem;
 }
 
 .c9 .c11 {
   cursor: default;
-}
-
-.c9 .c16::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 <div
@@ -894,11 +1019,35 @@ exports[`A required FieldSelect 1`] = `
             value=""
           />
         </div>
+        <div
+          className="c13"
+        >
+          <div
+            className="c14 "
+            color="palette.charcoal500"
+            size={18}
+          >
+            <svg
+              fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Caret Down
+              </title>
+              <path
+                d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c13 "
+    className="c15 "
     id="thumbs-up-describedby"
   />
 </div>
@@ -911,6 +1060,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -926,6 +1076,21 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c12 {
+  color: #707781;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c8 {
@@ -1038,7 +1203,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   align-items: center;
 }
 
-.c0 .c11 {
+.c0 .c13 {
   grid-area: messages;
 }
 
@@ -1048,13 +1213,12 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c13 {
+.c0 .c15 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c12 {
-  margin-right: 0.5rem;
+.c0 .c14 {
   margin-top: 0.5rem;
 }
 
@@ -1099,24 +1263,20 @@ exports[`FieldSelect supports labelWeight 1`] = `
   appearance: none;
 }
 
-.c7 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
-  background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px),0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .5rem + 1rem);
+.c11 {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  max-height: 1.9rem;
 }
 
 .c7 .c9 {
   cursor: default;
-}
-
-.c7 .c14::after {
-  content: ' ';
-  border-right: 1px solid #DEE1E5;
-  height: 1.5rem;
-  width: 0.5rem;
-  pointer-events: none;
 }
 
 <div
@@ -1172,11 +1332,35 @@ exports[`FieldSelect supports labelWeight 1`] = `
             value=""
           />
         </div>
+        <div
+          className="c11"
+        >
+          <div
+            className="c12 "
+            color="palette.charcoal500"
+            size={18}
+          >
+            <svg
+              fill="currentColor"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
+            >
+              <title>
+                Caret Down
+              </title>
+              <path
+                d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c11 "
+    className="c13 "
     id="thumbs-up-describedby"
   />
 </div>

@@ -24,6 +24,7 @@
 
  */
 
+import { LayoutProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
 import { ValidationType } from '../../ValidationMessage'
@@ -52,6 +53,12 @@ export interface SelectBaseProps extends SelectOptionsBaseProps {
    * or the menu opens with a pre-populated value
    */
   onFilter?: (term: string) => void
+
+  /**
+   * Control the dimensions of the list
+   * (use this to untether the list width from the input width)
+   */
+  listLayout?: LayoutProps
 
   validationType?: ValidationType
   /**
@@ -94,6 +101,7 @@ const SelectComponent = forwardRef(
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      listLayout,
       validationType,
       windowedOptions: windowedOptionsProp,
       ...props
@@ -147,10 +155,10 @@ const SelectComponent = forwardRef(
         <ComboboxInput
           {...inputProps}
           {...ariaProps}
+          isClearable={isClearable}
           autoComplete={false}
           readOnly={!isFilterable}
           onChange={handleInputChange}
-          hideControls={!isClearable}
           selectOnClick={isFilterable}
           ref={ref}
         />
@@ -159,6 +167,7 @@ const SelectComponent = forwardRef(
             persistSelection
             windowedOptions={windowedOptions}
             {...ariaProps}
+            {...listLayout}
           >
             <SelectOptions
               options={options}
@@ -176,4 +185,4 @@ SelectComponent.displayName = 'SelectComponent'
 
 export const Select = styled(SelectComponent)``
 
-Select.defaultProps = { width: '100%' }
+Select.defaultProps = { marginBottom: '0', width: '100%' }

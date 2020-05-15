@@ -39,7 +39,7 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   // I'm pretty excited about it.
   const optionsRef = useRef<ComboboxOptionObject[]>([])
 
-  const popoverRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLUListElement>(null)
 
   // When <ComboboxInput autoComplete={false} /> we don't want cycle back to
   // the user's value while navigating (because it's always the user's value),
@@ -59,9 +59,9 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
     autoCompletePropRef,
     closeOnSelectPropRef,
     isAutoScrollingRef,
+    listRef,
     optionsRef,
     persistSelectionPropRef,
-    popoverRef,
     readOnlyPropRef,
     ref,
     windowedOptionsPropRef,

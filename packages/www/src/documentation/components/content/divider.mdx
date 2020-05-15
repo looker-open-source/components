@@ -8,12 +8,12 @@ propsOf: Divider
 Dividers accept all the spacing props from `<Box />`, which gives you the ability to easily put spacing around your dividers. By default a divider's background color will be `charcoal300`
 
 ```jsx
-<Flex justifyContent="space-around">
-  <Box bg="white" p="xlarge" mr="large">
+<Space around>
+  <Box bg="white" p="xlarge">
     On White
     <Divider mt="medium" />
   </Box>
-  <Box bg="palette.charcoal000" p="xlarge" mr="large">
+  <Box bg="palette.charcoal000" p="xlarge">
     On Charcoal000
     <Divider mt="medium" />
   </Box>
@@ -21,7 +21,7 @@ Dividers accept all the spacing props from `<Box />`, which gives you the abilit
     On Charcoal100
     <Divider mt="medium" />
   </Box>
-</Flex>
+</Space>
 ```
 
 ## Divider Appearance
@@ -29,12 +29,12 @@ Dividers accept all the spacing props from `<Box />`, which gives you the abilit
 There are three divider appearances `light`, `dark` and `onDark`.
 
 ```jsx
-<Flex justifyContent="space-around">
-  <Box bg="white " p="xlarge" mr="large">
+<Space around>
+  <Box bg="white " p="xlarge">
     light appearance
     <Divider mt="medium" appearance="light" />
   </Box>
-  <Box bg="palette.charcoal000" p="xlarge" mr="large">
+  <Box bg="palette.charcoal000" p="xlarge">
     dark appearance
     <Divider mt="medium" appearance="dark" />
   </Box>
@@ -42,7 +42,7 @@ There are three divider appearances `light`, `dark` and `onDark`.
     onDark appearance
     <Divider mt="medium" appearance="onDark" />
   </Box>
-</Flex>
+</Space>
 ```
 
 ## Custom Divider
@@ -50,8 +50,6 @@ There are three divider appearances `light`, `dark` and `onDark`.
 You can adjust the dividers height and supply a custom color if needed
 
 ```jsx
-<Box p="xlarge">
   Custom Divider
   <Divider size="8px" customColor="turquoise" mt="large" borderRadius="100px" />
-</Box>
 ```

@@ -104,11 +104,13 @@ NOTE: You'll also see that `PrettyButton` in the example simply falls back to `B
 
   return (
     <ComponentsProvider>
-      <PrettyButton mr="large">Stock Theme</PrettyButton>
+      <Space>
+        <PrettyButton>Stock Theme</PrettyButton>
 
-      <ComponentsProvider theme={myTheme}>
-        <PrettyButton>Pretty Button with Custom Theme</PrettyButton>
-      </ComponentsProvider>
+        <ComponentsProvider theme={myTheme}>
+          <PrettyButton>Pretty Button with Custom Theme</PrettyButton>
+        </ComponentsProvider>
+      </Space>
     </ComponentsProvider>
   )
 }
