@@ -76,14 +76,12 @@ exports[`Banner can be dismissed 1`] = `
 .c0 {
   border-radius: 0.25rem;
   background-color: #e0f2ff;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -143,6 +141,7 @@ exports[`Banner can be dismissed 1`] = `
 
 .c6:hover {
   background: none;
+  border: none;
 }
 
 .c6 svg {
@@ -152,7 +151,9 @@ exports[`Banner can be dismissed 1`] = `
 <div
   aria-live="polite"
   className="c0"
+  fontSize="small"
   role="status"
+  width="100%"
 >
   <div
     className="c1 "
@@ -201,11 +202,6 @@ exports[`Banner can be dismissed 1`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     size="small"
-    style={
-      Object {
-        "padding": "1px",
-      }
-    }
     type="button"
     width={28}
   >
@@ -248,14 +244,12 @@ exports[`Confirmation banner 1`] = `
 .c0 {
   border-radius: 0.25rem;
   background-color: #e0ffe7;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -278,7 +272,9 @@ exports[`Confirmation banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
+  fontSize="small"
   role="status"
+  width="100%"
 >
   <div
     className="c1"
@@ -316,14 +312,12 @@ exports[`Error banner 1`] = `
 .c0 {
   border-radius: 0.25rem;
   background-color: #FFE5E9;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -346,7 +340,9 @@ exports[`Error banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
+  fontSize="small"
   role="status"
+  width="100%"
 >
   <div
     className="c1 "
@@ -412,14 +408,12 @@ exports[`Info banner 1`] = `
 .c0 {
   border-radius: 0.25rem;
   background-color: #e0f2ff;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -442,7 +436,9 @@ exports[`Info banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
+  fontSize="small"
   role="status"
+  width="100%"
 >
   <div
     className="c1 "
@@ -508,14 +504,12 @@ exports[`Warning banner 1`] = `
 .c0 {
   border-radius: 0.25rem;
   background-color: #FFEBC4;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -538,7 +532,9 @@ exports[`Warning banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
+  fontSize="small"
   role="status"
+  width="100%"
 >
   <div
     className="c1 "

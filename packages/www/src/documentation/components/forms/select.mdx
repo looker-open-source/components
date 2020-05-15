@@ -262,3 +262,38 @@ To observe the performance impact, add `windowedOptions={false}` after `options=
   return <Select placeholder="So many options..." options={options1k} />
 }
 ```
+
+## List Layout
+
+Use the `listLayout` prop to control layout properties of the list,
+like width and height, separately from the input.
+
+```jsx
+<Select
+  width={400}
+  listLayout={{ width: '90vw', maxWidth: 700, maxHeight: 300 }}
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+    { value: 'string', label: 'String' },
+    { value: 'parmesan', label: 'Parmigiano Reggiano' },
+    { value: 'roquefort', label: 'Roquefort' },
+    { value: 'brie', label: 'Brie' },
+    { value: 'gruyere', label: 'Gruyere' },
+    { value: 'feta', label: 'Feta' },
+    { value: 'mozzarella', label: 'Mozzarella' },
+    { value: 'manchego', label: 'Manchego' },
+    { value: 'gorgonzola', label: 'Gorgonzola' },
+    { value: 'epoisses', label: 'Epoisses' },
+    { value: 'monterey-jack', label: 'Monterey Jack' },
+    { value: 'muenster', label: 'Muenster' },
+    { value: 'provolone', label: 'Provolone' },
+    { value: 'blue', label: 'Blue' },
+    { value: 'camembert', label: 'Camembert' },
+    { value: 'havarti', label: 'Havarti' },
+    { value: 'ricotta', label: 'Ricotta' },
+    { value: 'mascarpone', label: 'Mascarpone' },
+  ]}
+/>
+```
