@@ -27,6 +27,50 @@ github: Layout/Space
 1. Margin (`m`, `mx`, `ml`, etc...)
 2. Padding (`p`, `px`, `pl`, etc...)
 
+# Alignment
+
+`Space` & `SpaceVertical` support `align`. `Space` defaults to `center` while `SpaceVertical` defaults to `start`
+
+```jsx
+<SpaceVertical>
+  <Space>
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+  <Space align="start">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+  <Space align="end">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </Space>
+</SpaceVertical>
+```
+
+```jsx
+<Space>
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical align="center">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical align="end">
+    <Button>Button A</Button>
+    <Button size="small">Button B</Button>
+    <Button size="large">Button C</Button>
+  </SpaceVertical>
+</Space>
+```
+
 # Gap
 
 Specify the width of the gap between items:
@@ -47,6 +91,42 @@ Specify the width of the gap between items:
 </SpaceVertical>
 ```
 
+## Between
+
+The spacing between each pair of adjacent items is the same. The first item is flush with the main-start edge, and the last item is flush with the main-end edge. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space between>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+## Around
+
+The spacing between each pair of adjacent items is the same. The empty space before the first and after the last item equals half of the space between each pair of adjacent items. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space around>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
+## Evenly
+
+The spacing between each pair of adjacent items, the main-start edge and the first item, and the main-end edge and the last item, are all exactly the same. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+```jsx
+<Space evenly>
+  <Button>Button A</Button>
+  <Button>Button B</Button>
+  <Button>Button C</Button>
+</Space>
+```
+
 ## Reverse
 
 Reverse the order of the items in the space.
@@ -64,5 +144,24 @@ Reverse the order of the items in the space.
   <Button>Button A</Button>
   <Button>Button B</Button>
   <Button>Button C</Button>
+</SpaceVertical>
+```
+
+# Stretch
+
+`SpaceVertical` supports an optional `stretch` property that will cause items within to stretch across the entire width of the container.
+
+```jsx
+<SpaceVertical>
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+  <SpaceVertical stretch>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
 </SpaceVertical>
 ```

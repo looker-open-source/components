@@ -95,23 +95,19 @@ import { InputDateRangeLocales } from './demos'
   const textVariant = isValid ? 'default' : 'critical'
 
   return (
-    <>
-      <Box borderBottom="1px solid #ccc" pb="small" mb="large">
-        <Text variant="secondary">
-          INSTRUCTIONS: Try typing an invalid date string (ex:
-          'not/a/valid/date') and clicking or tabbing away to trigger blur
-          event.
-        </Text>
-        <Heading mt="medium">Result:</Heading>
-        <Text variant={textVariant}>{message}</Text>
-      </Box>
-      <div>
-        <InputDateRange
-          onChange={handleChange}
-          onValidationFail={handleValidationFail}
-        />
-      </div>
-    </>
+    <SpaceVertical>
+      <Text variant="secondary">
+        INSTRUCTIONS: Try typing an invalid date string (ex: 'not/a/valid/date')
+        and clicking or tabbing away to trigger blur event.
+      </Text>
+      <Heading>Result:</Heading>
+      <Text variant={textVariant}>{message}</Text>
+      <Divider />
+      <InputDateRange
+        onChange={handleChange}
+        onValidationFail={handleValidationFail}
+      />
+    </SpaceVertical>
   )
 }
 ```

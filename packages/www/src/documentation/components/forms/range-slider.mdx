@@ -60,19 +60,17 @@ If you'd like to read and control the input value externally, `Slider` accepts a
 ;() => {
   const [sliderValue, setSliderValue] = useState([3, 7])
   return (
-    <CardContent>
+    <>
       <Heading>
         <strong>Value:</strong> {sliderValue[0]} &mdash; {sliderValue[1]}
       </Heading>
       <RangeSlider onChange={setSliderValue} value={sliderValue} />
-      <Button onClick={() => setSliderValue([0, 10])} mr="small">
-        0 &mdash; 10
-      </Button>
-      <Button onClick={() => setSliderValue([2, 8])} mr="small">
-        2 &mdash; 8
-      </Button>
-      <Button onClick={() => setSliderValue([4, 6])}>4 &mdash; 6</Button>
-    </CardContent>
+      <Space>
+        <Button onClick={() => setSliderValue([0, 10])}>0 &mdash; 10</Button>
+        <Button onClick={() => setSliderValue([2, 8])}>2 &mdash; 8</Button>
+        <Button onClick={() => setSliderValue([4, 6])}>4 &mdash; 6</Button>
+      </Space>
+    </>
   )
 }
 ```

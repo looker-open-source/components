@@ -17,22 +17,24 @@ The default implementation provides a dropdown list of times in 15-minute increm
 You can modify the list to increment time in 5, 10, 15, or 30 minute intervals.
 
 ```jsx
-<>
-  <Heading as="h3">5-minute</Heading>
-  <InputTimeSelect interval={5} />
-  <Heading as="h3" mt="small">
-    10-minute
-  </Heading>
-  <InputTimeSelect interval={10} />
-  <Heading as="h3" mt="small">
-    15-minute
-  </Heading>
-  <InputTimeSelect interval={15} />
-  <Heading as="h3" mt="small">
-    30-minute
-  </Heading>
-  <InputTimeSelect interval={30} />
-</>
+<Fieldset>
+  <SpaceVertical gap="xxsmall">
+    <Heading as="h4">5-minute</Heading>
+    <InputTimeSelect interval={5} />
+  </SpaceVertical>
+  <SpaceVertical gap="xxsmall">
+    <Heading as="h4">10-minute</Heading>
+    <InputTimeSelect interval={10} />
+  </SpaceVertical>
+  <SpaceVertical gap="xxsmall">
+    <Heading as="h4">15-minute</Heading>
+    <InputTimeSelect interval={15} />
+  </SpaceVertical>
+  <SpaceVertical gap="xxsmall">
+    <Heading as="h4">30-minute</Heading>
+    <InputTimeSelect interval={30} />
+  </SpaceVertical>
+</Fieldset>
 ```
 
 # 12- or 24-hour formatting
@@ -43,38 +45,22 @@ Depending on readability preference, the time picker can format the labels in ei
 ;() => {
   const [value, setValue] = useState('14:00')
   return (
-    <>
-      <Heading as="H3">12-hour</Heading>
-      <Flex>
-        <InputTimeSelect format="12h" value={value} onChange={setValue} />
-        <Text
-          variant="secondary"
-          fontWeight="bold"
-          mt="xsmall"
-          ml="small"
-          textTransform="uppercase"
-          fontSize="small"
-        >
-          Selected: {value}
-        </Text>
-      </Flex>
-      <Heading as="H3" mt="small">
-        24-hour
-      </Heading>
-      <Flex>
-        <InputTimeSelect format="24h" value={value} onChange={setValue} />
-        <Text
-          variant="secondary"
-          fontWeight="bold"
-          mt="xsmall"
-          ml="small"
-          textTransform="uppercase"
-          fontSize="small"
-        >
-          Selected: {value}
-        </Text>
-      </Flex>
-    </>
+    <Grid>
+      <SpaceVertical gap="xsmall">
+        <Heading as="h3">12-hour</Heading>
+        <Space>
+          <InputTimeSelect format="12h" value={value} onChange={setValue} />
+          <Text variant="secondary">{value}</Text>
+        </Space>
+      </SpaceVertical>
+      <SpaceVertical gap="xsmall">
+        <Heading as="h3">24-hour</Heading>
+        <Space>
+          <InputTimeSelect format="24h" value={value} onChange={setValue} />
+          <Text variant="secondary">{value}</Text>
+        </Space>
+      </SpaceVertical>
+    </Grid>
   )
 }
 ```
@@ -90,19 +76,10 @@ Consistent with all other inputs, `InputTimeSelect` accepts `value` and `onChang
 ;() => {
   const [value, setValue] = useState('14:00')
   return (
-    <Flex>
+    <Space>
       <InputTimeSelect value={value} onChange={setValue} />
-      <Text
-        variant="secondary"
-        fontWeight="bold"
-        mt="xsmall"
-        ml="small"
-        textTransform="uppercase"
-        fontSize="small"
-      >
-        Selected: {value}
-      </Text>
-    </Flex>
+      <Text variant="secondary">{value}</Text>
+    </Space>
   )
 }
 ```

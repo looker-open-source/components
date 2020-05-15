@@ -66,45 +66,30 @@ This may not be sufficient for your own use case, but it may provide a good star
   return (
     <List>
       <ListItem>
-        <Label htmlFor="fruit-parent" fontSize="medium">
-          <Checkbox
-            id="fruit-parent"
-            name="fruit"
-            value="all-fruit"
-            onChange={handleParentChange}
-            checked={parentState}
-            mr="xsmall"
-          />
-          All Fruit
-        </Label>
+        <FieldCheckbox
+          label="All Fruit"
+          value="all-fruit"
+          onChange={handleParentChange}
+          checked={parentState}
+        />
       </ListItem>
       <ListItem>
         <List pl="large">
           <ListItem>
-            <Label htmlFor="fruit-apple" fontSize="large">
-              <Checkbox
-                id="fruit-apple"
-                name="fruit"
-                value="apple"
-                onChange={handleAppleChange}
-                checked={appleState}
-                mr="xsmall"
-              />
-              🍏
-            </Label>
+            <FieldCheckbox
+              label="🍏"
+              value="apple"
+              onChange={handleAppleChange}
+              checked={appleState}
+            />
           </ListItem>
           <ListItem>
-            <Label htmlFor="fruit-banana" fontSize="large">
-              <Checkbox
-                id="fruit-banana"
-                name="fruit"
-                value="apple"
-                onChange={handleBananaChange}
-                checked={bananaState}
-                mr="xsmall"
-              />
-              🍌
-            </Label>
+            <FieldCheckbox
+              value="apple"
+              onChange={handleBananaChange}
+              checked={bananaState}
+              label="🍌"
+            />
           </ListItem>
         </List>
       </ListItem>
@@ -167,30 +152,10 @@ In most cases we emulate the HTML specification where it has an existing decisio
 - **Always** include a `<Label>` with a `for` property that matches the checkbox `id`.
 
 ```jsx
-<Label htmlFor="email-optin">
-  <Checkbox id="email-optin" value="confirm" />
-  Subscribe to our email list
-</Label>
+<FieldCheckbox label="Subscribe to our email list" value="confirm" />
 ```
 
-- Groups of checkboxes **must be** wrapped in a `<fieldset>` and have `<legend>` that describes the group
-
-```jsx
-<Fieldset legend="Pick your favorite emojis">
-  <Label>
-    <Checkbox name="emoji" value="pizza" mr="xsmall" />
-    🍕
-  </Label>
-  <Label htmlFor="avocado">
-    <Checkbox id="avocado" name="emoji" value="avocado" mr="xsmall" />
-    🥑
-  </Label>
-  <Label htmlFor="grapes">
-    <Checkbox id="grapes" name="emoji" value="grapes" mr="xsmall" />
-    🍇
-  </Label>
-</Fieldset>
-```
+- Groups of checkboxes **must be** wrapped in a `<fieldset>` and have `<legend>` that describes the group. We recommend utilizing `CheckboxGroup` for these use cases.
 
 ## Focus Expectations
 
@@ -210,17 +175,15 @@ In most cases we emulate the HTML specification where it has an existing decisio
 Use this to provide a detailed descriptions of a field that contains errors.
 
 ```jsx
-<>
-  <Label>
-    <Checkbox
-      id="approve"
-      aria-describedby="confirm-error-message"
-      mr="xsmall"
-    />
-    Approve Changes
-  </Label>
-  <p id="confirm-error-message">Confirm you approve these changes</p>
-</>
+<FieldCheckbox
+  id="approve"
+  aria-describedby="confirm-error-message"
+  label="Approve Changes"
+  validationMessage={{
+    type: 'error',
+    message: 'Confirm you approve these changes',
+  }}
+/>
 ```
 
-This would announce "Approve, unchecked checkbox. Confirm you approve these changes"
+This would announce "Approve, unchecked checkbox. Confirm you approve these changes."

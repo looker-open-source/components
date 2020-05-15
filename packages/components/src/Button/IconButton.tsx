@@ -160,22 +160,20 @@ const IconButtonComponent = forwardRef(
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
     return (
-      <>
+      <ButtonTransparent
+        aria-describedby={ariaDescribedBy}
+        ref={actualRef}
+        color={color}
+        p="none"
+        size={size}
+        width={buttonSizeMap[size]}
+        {...eventHandlers}
+        {...rest}
+      >
+        <VisuallyHidden>{label}</VisuallyHidden>
+        <Icon name={icon} size={buttonSizeMap[size] - 6} aria-hidden={true} />
         {tooltip}
-        <ButtonTransparent
-          aria-describedby={ariaDescribedBy}
-          ref={actualRef}
-          color={color}
-          p="none"
-          size={size}
-          width={buttonSizeMap[size]}
-          {...eventHandlers}
-          {...rest}
-        >
-          <VisuallyHidden>{label}</VisuallyHidden>
-          <Icon name={icon} size={buttonSizeMap[size] - 6} aria-hidden={true} />
-        </ButtonTransparent>
-      </>
+      </ButtonTransparent>
     )
   }
 )

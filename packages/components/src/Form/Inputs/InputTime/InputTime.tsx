@@ -25,12 +25,13 @@
  */
 
 import React, {
+  forwardRef,
   KeyboardEvent,
-  FC,
   useReducer,
   Reducer,
   useEffect,
   useRef,
+  Ref,
   RefObject,
   SyntheticEvent,
 } from 'react'
@@ -263,266 +264,280 @@ export const convert12To24HrString = (value: string) => {
   return `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 }
 
-const InternalInputTime: FC<InputTimeProps> = ({
-  format = '12h',
-  onChange,
-  defaultValue,
-  value,
-  className,
-  disabled,
-  readOnly,
-  id,
-  onFocus,
-  onBlur,
-  required,
-  onValidationFail,
-}) => {
-  const [inputState, dispatch] = useReducer(reducer, {
-    ...initialState,
-    format,
-  })
+const InputTimeInternal = forwardRef(
+  (
+    {
+      format = '12h',
+      onChange,
+      defaultValue,
+      value,
+      className,
+      disabled,
+      readOnly,
+      id,
+      onFocus,
+      onBlur,
+      required,
+      onValidationFail,
+    }: InputTimeProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const [inputState, dispatch] = useReducer(reducer, {
+      ...initialState,
+      format,
+    })
 
-  const { hour, minute, period, isComplete, subInputFocus } = inputState
+    const { hour, minute, period, isComplete, subInputFocus } = inputState
 
-  const inputRefs: RefMap = {
-    HOUR: useRef(null),
-    MINUTE: useRef(null),
-    NONE: useRef(null),
-    PERIOD: useRef(null),
-  }
-
-  // run this listener for every valid numeric entry
-  const handleValidKeyDown = () => {
-    dispatch({ type: 'INCREMENT_CHAR_COUNT' })
-    if (inputState.charCount > 0) {
-      dispatch({ type: 'FOCUS_NEXT_FIELD' })
+    const inputRefs: RefMap = {
+      HOUR: useRef(null),
+      MINUTE: useRef(null),
+      NONE: useRef(null),
+      PERIOD: useRef(null),
     }
-  }
 
-  const handleDelete = (setStateCB: () => void) => {
-    onChange && onChange(undefined)
-    setStateCB()
-  }
-
-  const handleHourKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearHourField = () => {
-      dispatch({ payload: '', type: 'SET_HOUR_VALUE' })
-      dispatch({ type: 'RESET_CHAR_COUNT' })
+    // run this listener for every valid numeric entry
+    const handleValidKeyDown = () => {
+      dispatch({ type: 'INCREMENT_CHAR_COUNT' })
+      if (inputState.charCount > 0) {
+        dispatch({ type: 'FOCUS_NEXT_FIELD' })
+      }
     }
-    if (isNumericKey(e)) {
-      const value = parseBase10Int(
-        // append or replace new char to existing value based on length of input
-        inputState.charCount === 1 ? `${hour}${e.key}` : e.key
-      )
-      if (value < 24) {
-        // valid input!
-        if (format === '12h' && value > 12) {
-          dispatch({
-            payload: formatTimeString(value - 12),
-            type: 'SET_HOUR_VALUE',
-          })
-          dispatch({ payload: 'PM', type: 'SET_PERIOD_VALUE' })
+
+    const handleDelete = (setStateCB: () => void) => {
+      onChange && onChange(undefined)
+      setStateCB()
+    }
+
+    const handleHourKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      const clearHourField = () => {
+        dispatch({ payload: '', type: 'SET_HOUR_VALUE' })
+        dispatch({ type: 'RESET_CHAR_COUNT' })
+      }
+      if (isNumericKey(e)) {
+        const value = parseBase10Int(
+          // append or replace new char to existing value based on length of input
+          inputState.charCount === 1 ? `${hour}${e.key}` : e.key
+        )
+        if (value < 24) {
+          // valid input!
+          if (format === '12h' && value > 12) {
+            dispatch({
+              payload: formatTimeString(value - 12),
+              type: 'SET_HOUR_VALUE',
+            })
+            dispatch({ payload: 'PM', type: 'SET_PERIOD_VALUE' })
+          } else {
+            dispatch({
+              payload: formatTimeString(value),
+              type: 'SET_HOUR_VALUE',
+            })
+          }
+          handleValidKeyDown()
         } else {
+          // reset if invalid value is entered (e.g. 62:87 pm)
+          clearHourField()
+        }
+      } else if (isArrowKey(e)) {
+        // cycle through possible values with up/down arrows
+        const max = format === '12h' ? 12 : 23
+        const min = format === '12h' ? 1 : 0
+        dispatch({
+          payload: cycleValue(hour, e.key, max, min),
+          type: 'SET_HOUR_VALUE',
+        })
+      } else if (isDeleteKey(e)) {
+        // user delete
+        handleDelete(clearHourField)
+      }
+    }
+
+    const handleMinuteKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      const clearMinuteField = () => {
+        dispatch({ payload: '', type: 'SET_MINUTE_VALUE' })
+        dispatch({ type: 'RESET_CHAR_COUNT' })
+      }
+      if (isNumericKey(e)) {
+        // append or replace new char to existing value
+        const value = parseBase10Int(
+          inputState.charCount === 1 ? `${minute}${e.key}` : e.key
+        )
+        if (value < 60) {
+          // valid input!
           dispatch({
             payload: formatTimeString(value),
-            type: 'SET_HOUR_VALUE',
+            type: 'SET_MINUTE_VALUE',
           })
+          handleValidKeyDown()
+        } else {
+          // reset if invalid value is entered (e.g. 62:87 pm)
+          clearMinuteField()
         }
-        handleValidKeyDown()
-      } else {
-        // reset if invalid value is entered (e.g. 62:87 pm)
-        clearHourField()
-      }
-    } else if (isArrowKey(e)) {
-      // cycle through possible values with up/down arrows
-      const max = format === '12h' ? 12 : 23
-      const min = format === '12h' ? 1 : 0
-      dispatch({
-        payload: cycleValue(hour, e.key, max, min),
-        type: 'SET_HOUR_VALUE',
-      })
-    } else if (isDeleteKey(e)) {
-      // user delete
-      handleDelete(clearHourField)
-    }
-  }
-
-  const handleMinuteKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearMinuteField = () => {
-      dispatch({ payload: '', type: 'SET_MINUTE_VALUE' })
-      dispatch({ type: 'RESET_CHAR_COUNT' })
-    }
-    if (isNumericKey(e)) {
-      // append or replace new char to existing value
-      const value = parseBase10Int(
-        inputState.charCount === 1 ? `${minute}${e.key}` : e.key
-      )
-      if (value < 60) {
-        // valid input!
+      } else if (isArrowKey(e)) {
+        // cycle through possible values with up/down arrows
         dispatch({
-          payload: formatTimeString(value),
+          payload: cycleValue(minute, e.key, 59, 0),
           type: 'SET_MINUTE_VALUE',
         })
-        handleValidKeyDown()
-      } else {
-        // reset if invalid value is entered (e.g. 62:87 pm)
-        clearMinuteField()
+      } else if (isDeleteKey(e)) {
+        // user delete
+        handleDelete(clearMinuteField)
       }
-    } else if (isArrowKey(e)) {
-      // cycle through possible values with up/down arrows
-      dispatch({
-        payload: cycleValue(minute, e.key, 59, 0),
-        type: 'SET_MINUTE_VALUE',
-      })
-    } else if (isDeleteKey(e)) {
-      // user delete
-      handleDelete(clearMinuteField)
     }
-  }
 
-  const handlePeriodKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    const clearPeriodField = () => {
-      dispatch({ payload: '', type: 'SET_PERIOD_VALUE' })
+    const handlePeriodKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      const clearPeriodField = () => {
+        dispatch({ payload: '', type: 'SET_PERIOD_VALUE' })
+        dispatch({ type: 'RESET_CHAR_COUNT' })
+      }
+      const key = e.key.toUpperCase()
+      if (key === 'P' || key === 'A') {
+        dispatch({ payload: `${key}M`, type: 'SET_PERIOD_VALUE' })
+        handleValidKeyDown()
+      } else if (isArrowKey(e)) {
+        // cycle through possible values with up/down arrows
+        const nextPeriod = period === 'PM' ? 'AM' : 'PM'
+        dispatch({ payload: nextPeriod, type: 'SET_PERIOD_VALUE' })
+      } else if (isDeleteKey(e)) {
+        // user delete
+        handleDelete(clearPeriodField)
+      }
+    }
+
+    const handleHourFocus = () =>
+      dispatch({ payload: 'HOUR', type: 'SET_FOCUS' })
+    const handleMinuteFocus = () =>
+      dispatch({ payload: 'MINUTE', type: 'SET_FOCUS' })
+    const handlePeriodFocus = () =>
+      dispatch({ payload: 'PERIOD', type: 'SET_FOCUS' })
+    const handleBlur = () => {
+      dispatch({ payload: 'NONE', type: 'SET_FOCUS' })
       dispatch({ type: 'RESET_CHAR_COUNT' })
     }
-    const key = e.key.toUpperCase()
-    if (key === 'P' || key === 'A') {
-      dispatch({ payload: `${key}M`, type: 'SET_PERIOD_VALUE' })
-      handleValidKeyDown()
-    } else if (isArrowKey(e)) {
-      // cycle through possible values with up/down arrows
-      const nextPeriod = period === 'PM' ? 'AM' : 'PM'
-      dispatch({ payload: nextPeriod, type: 'SET_PERIOD_VALUE' })
-    } else if (isDeleteKey(e)) {
-      // user delete
-      handleDelete(clearPeriodField)
-    }
-  }
 
-  const handleHourFocus = () => dispatch({ payload: 'HOUR', type: 'SET_FOCUS' })
-  const handleMinuteFocus = () =>
-    dispatch({ payload: 'MINUTE', type: 'SET_FOCUS' })
-  const handlePeriodFocus = () =>
-    dispatch({ payload: 'PERIOD', type: 'SET_FOCUS' })
-  const handleBlur = () => {
-    dispatch({ payload: 'NONE', type: 'SET_FOCUS' })
-    dispatch({ type: 'RESET_CHAR_COUNT' })
-  }
-
-  // Input UX: automatically advance cursor to specified input
-  // Also track state for whether user is focusing or blurring any sub input
-  useEffect(() => {
-    const ref = inputRefs[subInputFocus || '']
-    if (ref.current) {
-      ref.current.focus()
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subInputFocus])
-
-  useEffect(
-    () => {
-      const valueProp = value || defaultValue
-      // Controlled Component: update state on every value change
-      if (isValidTime(valueProp)) {
-        const [newHour, newMinute, newPeriod] = parseValue(format, valueProp)
-        hour !== newHour &&
-          dispatch({ payload: newHour, type: 'SET_HOUR_VALUE' })
-        minute !== newMinute &&
-          dispatch({ payload: newMinute, type: 'SET_MINUTE_VALUE' })
-        period !== newPeriod &&
-          dispatch({ payload: newPeriod, type: 'SET_PERIOD_VALUE' })
-      } else {
-        onValidationFail && onValidationFail(valueProp)
-        // eslint-disable-next-line no-console
-        console.error(
-          `Invalid time ("${valueProp}") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
-        )
+    // Input UX: automatically advance cursor to specified input
+    // Also track state for whether user is focusing or blurring any sub input
+    useEffect(() => {
+      const ref = inputRefs[subInputFocus || '']
+      if (ref.current) {
+        ref.current.focus()
       }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value]
-  )
 
-  // controlled component: call 'onChange' if all sub-inputs are filled in
-  useEffect(() => {
-    if (isComplete) {
-      const newValue =
-        format === '12h'
-          ? convert12To24HrString(`${hour}:${minute} ${period}`)
-          : `${hour}:${minute}`
-      if (newValue !== value) {
-        onChange && onChange(`${newValue}`)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [subInputFocus])
+
+    useEffect(
+      () => {
+        const valueProp = value || defaultValue
+        // Controlled Component: update state on every value change
+        if (isValidTime(valueProp)) {
+          const [newHour, newMinute, newPeriod] = parseValue(format, valueProp)
+          hour !== newHour &&
+            dispatch({ payload: newHour, type: 'SET_HOUR_VALUE' })
+          minute !== newMinute &&
+            dispatch({ payload: newMinute, type: 'SET_MINUTE_VALUE' })
+          period !== newPeriod &&
+            dispatch({ payload: newPeriod, type: 'SET_PERIOD_VALUE' })
+        } else {
+          onValidationFail && onValidationFail(valueProp)
+          // eslint-disable-next-line no-console
+          console.error(
+            `Invalid time ("${valueProp}") passed to <InputTime />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
+          )
+        }
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [value]
+    )
+
+    // controlled component: call 'onChange' if all sub-inputs are filled in
+    useEffect(() => {
+      if (isComplete) {
+        const newValue =
+          format === '12h'
+            ? convert12To24HrString(`${hour}:${minute} ${period}`)
+            : `${hour}:${minute}`
+        if (newValue !== value) {
+          onChange && onChange(`${newValue}`)
+        }
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isComplete, hour, minute, period])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isComplete, hour, minute, period])
 
-  const hasInputValues = some([hour, minute, period], 'length')
+    const hasInputValues = some([hour, minute, period], 'length')
 
-  return (
-    <div
-      className={`${className} ${disabled && 'disabled'}`}
-      onFocus={onFocus}
-      onBlur={onBlur}
-    >
-      <InputTimeWrapper hasInputValues={hasInputValues}>
-        <InputTimeLayout>
-          <InputText
-            id={id}
-            maxLength={2}
-            placeholder="--"
-            value={hour}
-            onKeyDown={readOnly ? noop : handleHourKeyDown}
-            onFocus={handleHourFocus}
-            onBlur={handleBlur}
-            onChange={noop} // suppress controlled component warning
-            ref={inputRefs.HOUR}
-            data-testid="input-hour"
-            disabled={disabled}
-            readOnly={readOnly}
-            required={required}
-          />
-          <div>:</div>
-          <InputText
-            maxLength={2}
-            placeholder="--"
-            value={minute}
-            onKeyDown={readOnly ? noop : handleMinuteKeyDown}
-            onFocus={handleMinuteFocus}
-            onBlur={handleBlur}
-            onChange={noop} // suppress controlled component warning
-            ref={inputRefs.MINUTE}
-            data-testid="input-minute"
-            disabled={disabled}
-            readOnly={readOnly}
-            required={required}
-          />
-          {format === '12h' ? (
+    return (
+      <div
+        className={`${className} ${disabled && 'disabled'}`}
+        ref={ref}
+        onFocus={onFocus}
+        onBlur={onBlur}
+      >
+        <InputTimeWrapper hasInputValues={hasInputValues}>
+          <InputTimeLayout>
             <InputText
+              id={id}
               maxLength={2}
               placeholder="--"
-              value={period}
-              onKeyDown={readOnly ? noop : handlePeriodKeyDown}
-              onFocus={handlePeriodFocus}
+              value={hour}
+              onKeyDown={readOnly ? noop : handleHourKeyDown}
+              onFocus={handleHourFocus}
               onBlur={handleBlur}
               onChange={noop} // suppress controlled component warning
-              ref={inputRefs.PERIOD}
-              data-testid="input-period"
+              ref={inputRefs.HOUR}
+              data-testid="input-hour"
               disabled={disabled}
               readOnly={readOnly}
               required={required}
             />
-          ) : (
-            <span />
-          )}
-        </InputTimeLayout>
-      </InputTimeWrapper>
-    </div>
-  )
-}
+            <div>:</div>
+            <InputText
+              maxLength={2}
+              placeholder="--"
+              value={minute}
+              onKeyDown={readOnly ? noop : handleMinuteKeyDown}
+              onFocus={handleMinuteFocus}
+              onBlur={handleBlur}
+              onChange={noop} // suppress controlled component warning
+              ref={inputRefs.MINUTE}
+              data-testid="input-minute"
+              disabled={disabled}
+              readOnly={readOnly}
+              required={required}
+            />
+            {format === '12h' ? (
+              <InputText
+                maxLength={2}
+                placeholder="--"
+                value={period}
+                onKeyDown={readOnly ? noop : handlePeriodKeyDown}
+                onFocus={handlePeriodFocus}
+                onBlur={handleBlur}
+                onChange={noop} // suppress controlled component warning
+                ref={inputRefs.PERIOD}
+                data-testid="input-period"
+                disabled={disabled}
+                readOnly={readOnly}
+                required={required}
+              />
+            ) : (
+              <span />
+            )}
+          </InputTimeLayout>
+        </InputTimeWrapper>
+      </div>
+    )
+  }
+)
 
-export const InputTime = styled(InternalInputTime)`
+const InputTimeLayout = styled.div`
+  display: grid;
+  grid-gap: 0.15rem;
+  grid-template-columns: repeat(4, auto);
+  align-items: center;
+`
+
+export const InputTime = styled(InputTimeInternal)`
   ${reset}
   ${border}
   ${space}
@@ -574,11 +589,4 @@ const InputTimeWrapper = styled.div<{
       background: ${({ theme }) => theme.colors.palette.purple100};
     }
   }
-`
-
-const InputTimeLayout = styled.div`
-  display: grid;
-  grid-gap: 0.15rem;
-  grid-template-columns: repeat(4, auto);
-  align-items: center;
 `
