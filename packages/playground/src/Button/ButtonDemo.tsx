@@ -39,6 +39,7 @@ import {
   IconButton,
 } from '@looker/components'
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   SizeLarge,
   SizeMedium,
