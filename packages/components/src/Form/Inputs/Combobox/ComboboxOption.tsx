@@ -42,7 +42,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { forwardRef, useContext, Ref } from 'react'
+import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
 import { ReplaceText, Text } from '../../../Text'
@@ -105,7 +105,12 @@ export interface ComboboxOptionProps
    *     🍎 <ComboboxOptionText />
    *   </ComboboxOption>
    */
-  children?: React.ReactNode
+  children?: ReactNode
+  /**
+   * Customize the area to the left of the label, which by default
+   * renders a check mark for the selected option or a spacer
+   */
+  detail?: ReactNode | false
 }
 
 export const ComboboxOptionWrapper = forwardRef(
@@ -136,6 +141,7 @@ const ComboboxOptionInternal = forwardRef(
   (
     {
       children,
+      detail: propsDetail,
       highlightText = true,
       scrollIntoView,
       ...props
@@ -168,6 +174,15 @@ const ComboboxOptionInternal = forwardRef(
     )
     const ref = useForkedRef(scrollRef, forwardedRef)
 
+    const detail =
+      propsDetail !== undefined ? (
+        propsDetail
+      ) : (
+        <ComboboxOptionDetail>
+          {isSelected && <Icon name="Check" mr={0} />}
+        </ComboboxOptionDetail>
+      )
+
     return (
       <ComboboxOptionWrapper
         {...props}
@@ -175,9 +190,7 @@ const ComboboxOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail>
-          {isSelected && <Icon name="Check" mr={0} />}
-        </ComboboxOptionDetail>
+        {detail}
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
