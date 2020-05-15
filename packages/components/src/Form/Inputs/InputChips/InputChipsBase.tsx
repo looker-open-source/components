@@ -100,9 +100,9 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleClear() {
-      onClear && onClear()
       onChange([])
       onInputChange('')
+      onClear && onClear()
     }
 
     const chips = values.map((value) => {

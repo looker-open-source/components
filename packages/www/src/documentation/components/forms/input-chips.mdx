@@ -43,30 +43,27 @@ The `values` and `onChange` props are required – `InputChips` is a controlled 
 
 ## Controlled Input Value
 
-The `inputValue` and `onInputChange` props allow control of the typed value (`onClear` is optional).
+The `inputValue` and `onInputChange` props allow control of the typed value. We also provide an optional `onClear` event hook that can be used for post-event cleanup or rendering helpful undo functionality.
 
 ```js
 ;() => {
   const [values, setValues] = React.useState([])
+  const previousInputValues = usePreviousValue(values)
   const [inputValue, setInputValue] = React.useState('')
-  const [confirmation, confirm] = useConfirm({
-    message: 'Are you sure you want to clear all values?',
-    onConfirm: (closeConfirm) => {
-      setValues([])
-      setInputValue('')
-      closeConfirm()
-    },
-    title: 'Please Confirm',
-  })
-
+  const [renderUndoButton, setRenderUndoButton] = React.useState(false)
   function handleChange(newValues) {
     setValues(newValues)
+    setRenderUndoButton(false)
   }
   function handleInputChange(newValue) {
     setInputValue(newValue)
   }
   function handleClear() {
-    confirm()
+    setRenderUndoButton(true)
+  }
+  function handleUndo() {
+    setValues(previousInputValues)
+    setRenderUndoButton(false)
   }
   return (
     <>
@@ -80,12 +77,16 @@ The `inputValue` and `onInputChange` props allow control of the typed value (`on
         onClear={handleClear}
         mb="small"
       />
+      {renderUndoButton && (
+        <>
+          You cleared the values! <Button onClick={handleUndo}>Undo</Button>
+        </>
+      )}
       {inputValue !== '' && (
         <Paragraph>
           You are typing: <strong>{inputValue}</strong>
         </Paragraph>
       )}
-      {confirmation}
     </>
   )
 }

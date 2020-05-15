@@ -140,6 +140,7 @@ import {
   ToggleSwitch,
   Tooltip,
   useConfirm,
+  usePreviousValue,
   useMixedStateCheckbox,
   useTabs,
   useToggle,
@@ -166,6 +167,7 @@ const hooks = {
   doDefaultActionListSort,
   useConfirm,
   useMixedStateCheckbox,
+  usePreviousValue,
   useTabs,
   useToggle,
 }
