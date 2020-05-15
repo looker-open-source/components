@@ -24,18 +24,12 @@
 
  */
 
-import React, { ReactNode, useContext, FC } from 'react'
+import React, { useContext, FC } from 'react'
 import styled from 'styled-components'
-import {
-  PaddingProps,
-  padding,
-  TypographyProps,
-  typography,
-} from '@looker/design-tokens'
+
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionContentProps extends PaddingProps, TypographyProps {
-  children: ReactNode
+export interface AccordionContentProps {
   className?: string
 }
 
@@ -45,12 +39,7 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
 }) => {
   const { isOpen } = useContext(AccordionContext)
 
-  return <div className={className}>{isOpen && children}</div>
+  return isOpen ? <div className={className}>{children}</div> : null
 }
 
-export const AccordionContent = styled(AccordionContentLayout)`
-  &&& {
-    ${padding}
-    ${typography}
-  }
-`
+export const AccordionContent = styled(AccordionContentLayout)``

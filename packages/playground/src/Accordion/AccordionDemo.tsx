@@ -76,23 +76,6 @@ export const AccordionDemo = () => {
     </Accordion>
   )
 
-  const spaceTest = (
-    <Accordion indicatorPosition="left" px="xxxlarge">
-      <AccordionDisclosure>Advanced Options</AccordionDisclosure>
-      <AccordionContent>
-        <Fieldset>
-          <Fieldset inline legend="Customer">
-            <FieldText label="First name" />
-            <FieldText label="Middle" />
-            <FieldText label="Last name" />
-          </Fieldset>
-          <FieldText label="Email" />
-          <FieldText label="Phone" />
-        </Fieldset>
-      </AccordionContent>
-    </Accordion>
-  )
-
   return (
     <Grid m="xxlarge">
       <Accordion indicatorPosition="left" defaultOpen>
@@ -114,7 +97,21 @@ export const AccordionDemo = () => {
       </Accordion>
 
       {spicyAccordion}
-      {spaceTest}
+
+      <Accordion indicatorPosition="left" px="xxxlarge" isOpen>
+        <AccordionDisclosure>Advanced Options</AccordionDisclosure>
+        <AccordionContent>
+          <Fieldset>
+            <Fieldset inline legend="Customer">
+              <FieldText label="First name" />
+              <FieldText label="Middle" />
+              <FieldText label="Last name" />
+            </Fieldset>
+            <FieldText label="Email" />
+            <FieldText label="Phone" />
+          </Fieldset>
+        </AccordionContent>
+      </Accordion>
     </Grid>
   )
 }

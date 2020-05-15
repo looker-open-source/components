@@ -58,6 +58,7 @@ export interface AccordionProps extends SimpleLayoutProps {
   /**
    * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
    * isOpen determines whether the Accordion is currently open or closed
+   * @default false
    **/
   isOpen?: boolean
   /**
@@ -75,6 +76,8 @@ export interface AccordionProps extends SimpleLayoutProps {
   onOpen?: () => void // called when the component is opened
 }
 
+const defaultIndicatorPosition = 'right'
+
 const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
@@ -83,17 +86,14 @@ const AccordionLayout: FC<AccordionProps> = ({
     closed: 'CaretDown',
     open: 'CaretUp',
   },
-  indicatorPosition = 'right',
-  isOpen: propsIsOpen,
-  toggleOpen: propsToggleOpen,
-  onClose: propsOnClose,
-  onOpen: propsOnOpen,
+  indicatorPosition = defaultIndicatorPosition,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState(!!defaultOpen)
 
   if (
-    (propsIsOpen && propsToggleOpen === undefined) ||
-    (propsIsOpen === undefined && propsToggleOpen)
+    (props.isOpen && props.toggleOpen === undefined) ||
+    (props.isOpen === undefined && props.toggleOpen)
   )
     // eslint-disable-next-line no-console
     console.warn(
@@ -103,10 +103,10 @@ const AccordionLayout: FC<AccordionProps> = ({
   const context = {
     disclosureIcons,
     indicatorPosition,
-    isOpen: propsIsOpen === undefined ? isOpen : propsIsOpen,
-    onClose: propsOnClose,
-    onOpen: propsOnOpen,
-    toggleOpen: propsToggleOpen === undefined ? setIsOpen : propsToggleOpen,
+    isOpen: props.isOpen === undefined ? isOpen : props.isOpen,
+    onClose: props.onClose,
+    onOpen: props.onOpen,
+    toggleOpen: props.toggleOpen === undefined ? setIsOpen : props.toggleOpen,
   }
 
   return (
@@ -121,45 +121,29 @@ export const Accordion = styled(AccordionLayout)`
   ${layout}
   ${margin}
 
+  ${AccordionContent} {
+    ${padding}
+  }
+
   ${AccordionDisclosure} {
     ${padding}
 
-    padding-left: calc(${({ indicatorPosition, theme, pl, px, p }) =>
+    ${({ indicatorPosition, theme, pl, px, p }) =>
       indicatorPosition === 'left' &&
-      `${theme.space[String(pl || px || p)]} - ${theme.space.large} - ${
-        theme.space.xsmall
-      }`});
+      `padding-left: calc( ${theme.space[String(pl || px || p)]} - ${
+        theme.space.large
+      } - ${theme.space.xsmall} );`}
 
-    padding-right: calc(${({ indicatorPosition, theme, pr, px, p }) =>
-      (indicatorPosition === 'right' || !indicatorPosition) &&
-      `${theme.space[String(pr || px || p)]} - ${theme.space.large} - ${
-        theme.space.xsmall
-      }`});
-  }
-
-  ${AccordionContent} {
-    ${padding}
-
-    /*
-      Note: The below properties allow us to align disclosures with
-      content when the disclosure pr or pl is 0 (i.e. the given p/pr/pl/px for disclosure
-      if less than the width of the default icon size and the disclosure grid-gap).
-
-      However, it fails when the (padding for disclosure) > 0 (i.e. the "Advanced Options" example
-      in playground).
-    */
-
-    padding-left: calc(${({ indicatorPosition, theme, pl, px, p }) =>
-      indicatorPosition === 'left' &&
-      `${theme.space[String(pl || px || p)]} + ${theme.space.xsmall}`});
-
-    padding-right: calc(${({ indicatorPosition, theme, pr, px, p }) =>
-      (indicatorPosition === 'right' || !indicatorPosition) &&
-      `${theme.space[String(pr || px || p)]} + ${theme.space.xsmall}`});
+    ${({ indicatorPosition, theme, pr, px, p }) =>
+      indicatorPosition === 'right' &&
+      `padding-right: calc( ${theme.space[String(pr || px || p)]} - ${
+        theme.space.large
+      } - ${theme.space.xsmall} );`}
   }
 `
 
 Accordion.defaultProps = {
-  px: 'large',
+  indicatorPosition: defaultIndicatorPosition,
+  px: 'xlarge',
   py: 'xsmall',
 }
