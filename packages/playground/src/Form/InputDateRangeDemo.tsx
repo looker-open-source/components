@@ -34,6 +34,7 @@ import {
   Popover,
   Button,
   Box,
+  Locales,
 } from '@looker/components'
 
 interface DateRange {
@@ -49,7 +50,7 @@ export const InputDateRangeDemo: FC = () => {
 
   const [dateRange, setDateRange] = useState<DateRange | undefined>()
   const [localizedDate, setLocalizedDate] = useState<DateRange | undefined>()
-  const [locale, setLocale] = useState('ko')
+  const [locale, setLocale] = useState<Locales>(Locales.Korean)
 
   const handleRangeChange = (range: any) => {
     setDateRange(range)

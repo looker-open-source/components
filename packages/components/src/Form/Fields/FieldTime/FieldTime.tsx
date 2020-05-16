@@ -24,16 +24,37 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { useID } from '../../../utils'
+import { useFormContext } from '../../Form'
+import { InputTime, InputTimeProps } from '../../Inputs/InputTime'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+
+export interface FieldInputTimeProps extends FieldProps, InputTimeProps {}
+
+const FieldTimeComponent = forwardRef(
+  (props: FieldInputTimeProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputTime
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldTimeComponent.displayName = 'FieldTimeComponent'
+
+export const FieldTime = styled(FieldTimeComponent)``

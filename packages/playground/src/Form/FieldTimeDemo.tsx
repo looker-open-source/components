@@ -23,17 +23,24 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { FieldTime, Grid } from '@looker/components'
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+export const FieldTimeDemo: FC = () => {
+  return (
+    <>
+      <Grid m="xxlarge">
+        <FieldTime defaultValue="14:34" format="12h" label="Label" />
+        <FieldTime
+          defaultValue="14:34"
+          description="this is the description is a very long one"
+          detail="detail"
+          label="Label"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldTime label="Label" defaultValue="14:34" required />
+        <FieldTime disabled label="Label" defaultValue="02:34" />
+      </Grid>
+    </>
+  )
+}

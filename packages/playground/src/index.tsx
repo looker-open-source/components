@@ -23,16 +23,17 @@
  SOFTWARE.
 
  */
-
-import { ComponentsProvider } from '@looker/components'
-import React from 'react'
+import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { AccordionDemo } from './Accordion/AccordionDemo'
+import { ComponentsProvider } from '@looker/components'
+import { FieldTimeDemo } from './Form/FieldTimeDemo'
+import { FieldTimeSelectDemo } from './Form/FieldTimeSelectDemo'
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <ComponentsProvider>
-      <AccordionDemo />
+      <FieldTimeDemo />
+      <FieldTimeSelectDemo />
     </ComponentsProvider>
   )
 }

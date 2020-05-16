@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `FieldSelectMulti` component
+- `FieldTime` component
+- `FieldTimeSelect` component
 - `Select` now accepts `listLayout` to control the layout of the list
 - `ComboboxList` now accepts properties from `LayoutProps`
 - `Space`
