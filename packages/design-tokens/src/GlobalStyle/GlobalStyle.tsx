@@ -76,7 +76,11 @@ const reset = css`
   }
 `
 
-export const GlobalStyle = createGlobalStyle`
+export const globalCSS = css`
   ${fonts}
   ${reset}
+`
+
+export const GlobalStyle = createGlobalStyle`
+  ${globalCSS}
 `

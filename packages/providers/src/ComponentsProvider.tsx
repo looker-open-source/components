@@ -24,7 +24,7 @@
 
  */
 
-import { GlobalStyle } from '@looker/design-tokens'
+import { GlobalStyle, IEGlobalStyle } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
@@ -41,15 +41,23 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
    * @default true
    */
   globalStyle?: boolean
+
+  /**
+   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * @default false
+   */
+  ie11Support?: boolean
 }
 
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
+  ie11Support = false,
   ...props
 }) => (
   <ThemeProvider {...props}>
     {globalStyle && <GlobalStyle />}
+    {ie11Support && <IEGlobalStyle />}
     {children}
   </ThemeProvider>
 )

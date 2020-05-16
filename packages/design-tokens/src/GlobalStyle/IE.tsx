@@ -24,5 +24,13 @@
 
  */
 
-export * from './GlobalStyle'
-export * from './IE'
+import React from 'react'
+import { globalCSS } from './GlobalStyle'
+
+export const ieGlobalCSS = `
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    ${globalCSS}
+  }
+`
+
+export const IEGlobalStyle = () => <style>{ieGlobalCSS}</style>

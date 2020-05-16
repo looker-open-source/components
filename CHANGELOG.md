@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `ComponentsProvider` now accepts `ie11support` parameter to emit IE11 compatibility style
+  - `IEGlobalStyle` component (underlying component used by `ComponentsProvider` for IE11)
 - `Select` now accepts `listLayout` to control the layout of the list
 - `ComboboxList` now accepts properties from `LayoutProps`
 - `Space`
