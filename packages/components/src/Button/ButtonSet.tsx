@@ -31,6 +31,7 @@ import React, {
   forwardRef,
   ForwardRefExoticComponent,
   isValidElement,
+  MouseEvent,
   ReactNode,
   Ref,
 } from 'react'
@@ -39,15 +40,9 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { ButtonItemProps } from './ButtonItem'
 
-export interface ButtonGroupOrToggleProps<
-  ValueType extends string | string[] = string[]
->
+interface ButtonSetProps<ValueType extends string | string[] = string[]>
   extends SimpleLayoutProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
-  /**
-   * Internal use only
-   */
-  isControlled?: boolean
   /**
    * One or more ButtonItem
    */
@@ -56,17 +51,17 @@ export interface ButtonGroupOrToggleProps<
    * Value for controlling the component
    */
   value?: ValueType
+  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void
+  isToggle?: boolean
   /**
-   * Change callback for controlling the component
+   * Value can be unset by clicking selected button (ButtonToggle only)
    */
-  onChange?: (value: ValueType) => void
+  nullable?: boolean
 }
 
-interface ButtonSetProps<ValueType extends string | string[] = string[]>
-  extends Omit<ButtonGroupOrToggleProps<ValueType>, 'onChange'> {
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  isToggle?: boolean
-}
+export type ButtonGroupOrToggleBaseProps<
+  ValueType extends string | string[] = string[]
+> = Omit<ButtonSetProps<ValueType>, 'isToggle' | 'onChange'>
 
 export type ButtonSetType<
   T extends string | string[] = string[]
@@ -79,6 +74,7 @@ export const ButtonSetLayout = forwardRef(
       disabled,
       isToggle,
       name,
+      nullable,
       onChange: groupOnChange,
       value,
       ...props
@@ -105,13 +101,29 @@ export const ButtonSetLayout = forwardRef(
                 ? value === childValue
                 : value.includes(childValue),
             }
-          : { selected: childProps.selected }),
+          : typeof value === 'string' && value === ''
+          ? { selected: undefined }
+          : {}),
         ...(disabled ? { disabled } : {}),
         ...(groupOnChange
           ? {
               onChange: (e: ChangeEvent<HTMLInputElement>) => {
                 groupOnChange && groupOnChange(e)
                 childProps.onChange && childProps.onChange(e)
+              },
+            }
+          : {}),
+        ...(nullable && isToggle && groupOnChange
+          ? {
+              onClick: (e: MouseEvent<HTMLLabelElement>) => {
+                // The onClick is attached to the label but the browser will
+                // call it twice (2nd time with the input as target)
+                // If we un-check the radio in the 1st event (on label), the browser will immediately
+                // re - check it, so we wait for the 2nd event (on input)
+                if ((e.target as HTMLElement).tagName === 'INPUT') {
+                  groupOnChange()
+                }
+                childProps.onClick && childProps.onClick(e)
               },
             }
           : {}),

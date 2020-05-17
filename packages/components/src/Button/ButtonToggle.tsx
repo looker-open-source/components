@@ -24,24 +24,34 @@
 
  */
 
-import uniqueId from 'lodash/uniqueId'
 import React, { forwardRef, Ref, useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
-import { useControlWarn } from '../utils'
+import { useControlWarn, useID } from '../utils'
 import { ButtonItemLabel } from './ButtonItem'
-import { ButtonGroupOrToggleProps, ButtonSet, ButtonSetType } from './ButtonSet'
+import {
+  ButtonGroupOrToggleBaseProps,
+  ButtonSet,
+  ButtonSetType,
+} from './ButtonSet'
+
+export interface ButtonToggleProps
+  extends ButtonGroupOrToggleBaseProps<string> {
+  /**
+   * Change callback for controlling the component
+   */
+  onChange?: (value: string) => void
+}
 
 const ButtonToggleComponent = (ButtonSet as unknown) as ButtonSetType<string>
 
 const ButtonToggleFactory = forwardRef(
   (
-    {
-      onChange,
-      value: controlledValue,
-      ...props
-    }: ButtonGroupOrToggleProps<string>,
+    { onChange, value: controlledValue, ...props }: ButtonToggleProps,
     ref: Ref<HTMLDivElement>
   ) => {
+    //
+    const name = useID(props.name)
+
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'value'],
       isControlledCheck: () => onChange !== undefined,
@@ -50,11 +60,12 @@ const ButtonToggleFactory = forwardRef(
 
     const [value, setValue] = useState<string>()
 
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    function handleChange(e?: ChangeEvent<HTMLInputElement>) {
+      const newValue = e ? e.target.value : ''
       if (onChange) {
-        onChange(e.target.value)
+        onChange(newValue)
       } else {
-        setValue(e.target.value)
+        setValue(newValue)
       }
     }
     return (
@@ -65,10 +76,12 @@ const ButtonToggleFactory = forwardRef(
         ref={ref}
         {...(isControlled
           ? {
-              name: props.name || uniqueId(),
               value: controlledValue,
             }
-          : { value })}
+          : {
+              name,
+              value,
+            })}
       />
     )
   }
