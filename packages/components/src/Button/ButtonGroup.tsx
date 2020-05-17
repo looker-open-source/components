@@ -39,7 +39,7 @@ export interface ButtonGroupProps
   onChange?: (value: string[]) => void
 }
 
-const ButtonGroupFactory = forwardRef(
+const ButtonGroupLayout = forwardRef(
   (
     { onChange, value, ...props }: ButtonGroupProps,
     ref: Ref<HTMLDivElement>
@@ -75,7 +75,7 @@ const ButtonGroupFactory = forwardRef(
   }
 )
 
-export const ButtonGroup = styled(ButtonGroupFactory)`
+export const ButtonGroup = styled(ButtonGroupLayout)`
   --spacing: ${({ theme }) => theme.space.xxsmall};
   margin-bottom: calc(var(--spacing) * -1);
   margin-right: calc(var(--spacing) * -1);

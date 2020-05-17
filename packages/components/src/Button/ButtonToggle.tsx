@@ -44,7 +44,7 @@ export interface ButtonToggleProps
 
 const ButtonToggleComponent = (ButtonSet as unknown) as ButtonSetType<string>
 
-const ButtonToggleFactory = forwardRef(
+const ButtonToggleLayout = forwardRef(
   (
     { onChange, value: controlledValue, ...props }: ButtonToggleProps,
     ref: Ref<HTMLDivElement>
@@ -87,7 +87,7 @@ const ButtonToggleFactory = forwardRef(
   }
 )
 
-export const ButtonToggle = styled(ButtonToggleFactory)`
+export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
   border-radius: ${({ theme }) => theme.radii.medium};
 
