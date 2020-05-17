@@ -59,9 +59,11 @@ interface ButtonSetProps<ValueType extends string | string[] = string[]>
   nullable?: boolean
 }
 
-export type ButtonGroupOrToggleBaseProps<
+export interface ButtonGroupOrToggleBaseProps<
   ValueType extends string | string[] = string[]
-> = Omit<ButtonSetProps<ValueType>, 'isToggle' | 'onChange'>
+> extends Omit<ButtonSetProps<ValueType>, 'isToggle' | 'onChange'> {
+  onChange?: (value: ValueType) => void
+}
 
 export type ButtonSetType<
   T extends string | string[] = string[]

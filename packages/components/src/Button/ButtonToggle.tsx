@@ -34,19 +34,15 @@ import {
   ButtonSetType,
 } from './ButtonSet'
 
-export interface ButtonToggleProps
-  extends ButtonGroupOrToggleBaseProps<string> {
-  /**
-   * Change callback for controlling the component
-   */
-  onChange?: (value: string) => void
-}
-
 const ButtonToggleComponent = (ButtonSet as unknown) as ButtonSetType<string>
 
 const ButtonToggleLayout = forwardRef(
   (
-    { onChange, value: controlledValue, ...props }: ButtonToggleProps,
+    {
+      onChange,
+      value: controlledValue,
+      ...props
+    }: ButtonGroupOrToggleBaseProps<string>,
     ref: Ref<HTMLDivElement>
   ) => {
     //

@@ -39,6 +39,7 @@ import React, { FormEvent, useState } from 'react'
 
 function ButtonGroupDemo() {
   const [value, setValue] = useState<string[]>([])
+  const [value2, setValue2] = useState<string[]>(['CA', 'AK'])
 
   return (
     <Box p="large" flex={1}>
@@ -52,6 +53,24 @@ function ButtonGroupDemo() {
       <Divider />
       <Paragraph>Controlled</Paragraph>
       <ButtonGroup value={value} onChange={setValue}>
+        <ButtonItem value="CA">California</ButtonItem>
+        <ButtonItem value="AK">Alaska</ButtonItem>
+        <ButtonItem value="UT">Utah</ButtonItem>
+      </ButtonGroup>
+      <Divider />
+      <Paragraph>Uncontrolled with items selected</Paragraph>
+      <ButtonGroup>
+        <ButtonItem value="CA" selected>
+          California
+        </ButtonItem>
+        <ButtonItem value="AK" selected>
+          Alaska
+        </ButtonItem>
+        <ButtonItem value="UT">Utah</ButtonItem>
+      </ButtonGroup>
+      <Divider />
+      <Paragraph>Controlled with initial values</Paragraph>
+      <ButtonGroup value={value2} onChange={setValue2}>
         <ButtonItem value="CA">California</ButtonItem>
         <ButtonItem value="AK">Alaska</ButtonItem>
         <ButtonItem value="UT">Utah</ButtonItem>

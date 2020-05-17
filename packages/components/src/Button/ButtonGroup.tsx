@@ -31,17 +31,13 @@ import { useControlWarn, useID } from '../utils'
 import { ButtonItem, ButtonItemLabel } from './ButtonItem'
 import { ButtonGroupOrToggleBaseProps, ButtonSet } from './ButtonSet'
 
-export interface ButtonGroupProps
-  extends Omit<ButtonGroupOrToggleBaseProps<string[]>, 'nullable'> {
-  /**
-   * Change callback for controlling the component
-   */
-  onChange?: (value: string[]) => void
-}
-
 const ButtonGroupLayout = forwardRef(
   (
-    { onChange, value, ...props }: ButtonGroupProps,
+    {
+      onChange,
+      value,
+      ...props
+    }: Omit<ButtonGroupOrToggleBaseProps<string[]>, 'nullable'>,
     ref: Ref<HTMLDivElement>
   ) => {
     const name = useID(props.name)
