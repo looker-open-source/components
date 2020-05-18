@@ -158,6 +158,22 @@ This component is composed of a `FieldText` and a `ColorWheel` that appears in a
 <FieldColor label="Pick a color" inline />
 ```
 
+## FieldDate
+
+<Props of="FieldDate" />
+
+This component is composed of a `FieldDate` and a `Label`.
+
+```jsx
+<FieldDate label="Pick a date" />
+<FieldDate
+  validationMessage={{
+    message: 'Select a valid calendar date',
+    type: 'error',
+  }}
+/>
+```
+
 ## FieldRadio
 
 <Props of="FieldRadio" />

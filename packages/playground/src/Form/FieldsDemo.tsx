@@ -31,6 +31,7 @@ import {
   FieldCheckbox,
   FieldRadio,
   FieldToggleSwitch,
+  FieldDate,
   Form,
   Grid,
 } from '@looker/components'
@@ -185,6 +186,18 @@ export const FieldsDemo: FC = () => {
           />
           <FieldToggleSwitch disabled label="Toggle Switch" />
           <FieldToggleSwitch required label="Toggle Switch" />
+        </div>
+      </Grid>
+
+      <Grid m="xxlarge" columns={2}>
+        <div>
+          <FieldDate label="Field Date" />
+        </div>
+        <div>
+          <FieldDate
+            label="Field Date Validation"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
         </div>
       </Grid>
     </>

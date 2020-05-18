@@ -23,23 +23,5 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <FieldsDemo />
-    </ComponentsProvider>
-  )
-}
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+export * from './FieldDate'

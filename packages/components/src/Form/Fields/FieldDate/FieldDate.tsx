@@ -23,23 +23,38 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsDemo } from './Form/FieldsDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <FieldsDemo />
-    </ComponentsProvider>
-  )
-}
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { useID } from '../../../utils'
+import { useFormContext } from '../..'
+import { InputDate, InputDateProps } from '../../Inputs/InputDate'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+export interface FieldInputDateProps extends FieldProps, InputDateProps {}
+
+const FieldDateComponent = forwardRef(
+  (props: FieldInputDateProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputDate
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldDateComponent.displayName = 'FieldDateComponent'
+
+export const FieldDate = styled(FieldDateComponent)``
