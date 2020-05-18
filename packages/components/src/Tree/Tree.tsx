@@ -24,52 +24,39 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import React, { FC, ReactNode } from 'react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
+  AccordionProps,
+} from '../Accordion'
+import { Space } from '../Layout'
 
-export * from './utils'
+export interface TreeProps extends Omit<AccordionProps, 'className'> {
+  detail?: ReactNode
 
-export { ComponentsProvider } from '@looker/components-providers'
+  label: string
+}
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+export const Tree: FC<TreeProps> = (props) => {
+  const { children, detail, label, ...restProps } = props
 
-export {
-  GlobalStyle,
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+  return (
+    <Accordion
+      indicatorGap="xxsmall"
+      indicatorIcons={{ close: 'ArrowRight', open: 'ArrowDown' }}
+      indicatorPosition="left"
+      indicatorSize="small"
+      {...restProps}
+    >
+      <AccordionDisclosure fontSize="xsmall" py="xxsmall">
+        <Space gap="xsmall">
+          <div style={{ flexGrow: 1 }}>{label}</div>
+          <div>{detail}</div>
+        </Space>
+      </AccordionDisclosure>
+      <AccordionContent>{children}</AccordionContent>
+    </Accordion>
+  )
+}
