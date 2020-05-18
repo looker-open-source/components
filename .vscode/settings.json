@@ -36,6 +36,7 @@
     "xxlarge",
     "xxsmall",
     "xxxlarge",
+    "xxxsmall",
     "xxxxlarge"
   ],
   "prettier.arrowParens": "always"
