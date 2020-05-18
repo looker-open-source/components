@@ -26,14 +26,12 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { FieldTimeDemo } from './Form/FieldTimeDemo'
-import { FieldTimeSelectDemo } from './Form/FieldTimeSelectDemo'
+import { AccordionDemo } from './Accordion/AccordionDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <FieldTimeDemo />
-      <FieldTimeSelectDemo />
+      <AccordionDemo />
     </ComponentsProvider>
   )
 }

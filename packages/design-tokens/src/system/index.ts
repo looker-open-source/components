@@ -30,6 +30,7 @@ export {
   boxShadow,
   color,
   flexbox,
+  padding,
   position,
   layout,
   space,
@@ -40,6 +41,7 @@ export type {
   BorderRadiusProps,
   BoxShadowProps,
   FlexboxProps,
+  PaddingProps,
   PositionProps,
   LayoutProps,
 } from 'styled-system'

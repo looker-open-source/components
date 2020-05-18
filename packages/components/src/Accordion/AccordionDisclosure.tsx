@@ -26,11 +26,18 @@
 
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
+import {
+  PaddingProps,
+  padding,
+  TypographyProps,
+  typography,
+} from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
-export interface AccordionDisclosureProps extends TypographyProps {
+export interface AccordionDisclosureProps
+  extends PaddingProps,
+    TypographyProps {
   children: ReactNode
   className?: string
 }
@@ -71,11 +78,11 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
 
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
+  ${padding}
 
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
   cursor: pointer;
   outline: none;
-  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.palette.purple300};
@@ -85,4 +92,6 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
 AccordionDisclosure.defaultProps = {
   fontSize: 'small',
   fontWeight: 'semiBold',
+  px: 'none',
+  py: 'xsmall',
 }
