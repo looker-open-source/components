@@ -84,7 +84,7 @@ export const AccordionDemo = () => {
 
   return (
     <Grid m="xxlarge" gap="xxlarge">
-      <Accordion m="xlarge" indicatorPosition="left" defaultOpen>
+      <Accordion m="xlarge" pl="xlarge" indicatorPosition="left" defaultOpen>
         <AccordionDisclosure>Hello World</AccordionDisclosure>
         <AccordionContent>
           <List>
