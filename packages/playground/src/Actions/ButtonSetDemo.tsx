@@ -50,7 +50,7 @@ function ButtonGroupDemo() {
         <ButtonItem value="AK">Alaska</ButtonItem>
         <ButtonItem value="UT">Utah</ButtonItem>
       </ButtonGroup>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Controlled</Paragraph>
       <ButtonGroup value={value} onChange={setValue}>
         <ButtonItem value="CA">California</ButtonItem>
@@ -106,35 +106,35 @@ function ButtonToggleDemo() {
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Controlled</Paragraph>
       <ButtonToggle value={toggle} onChange={handleChange}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Uncontrolled with item selected</Paragraph>
       <ButtonToggle>
         <ButtonItem selected>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Controlled with initial value</Paragraph>
       <ButtonToggle value={toggle2} onChange={handleChange2}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Nullable Uncontrolled</Paragraph>
       <ButtonToggle nullable>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
+      <Divider m="none" />
       <Paragraph>Nullable Controlled</Paragraph>
       <ButtonToggle nullable value={toggle3} onChange={handleChange3}>
         <ButtonItem>Ruby</ButtonItem>
@@ -175,7 +175,7 @@ export function ButtonSetDemo() {
           on={border}
           onChange={handleChange}
         />
-        <Divider />
+        <Divider m="none" />
         <ButtonGroup>
           <ButtonItem value="CA" selected>
             California
@@ -184,14 +184,14 @@ export function ButtonSetDemo() {
           <ButtonItem value="UT">Utah</ButtonItem>
         </ButtonGroup>
         Inline text
-        <Divider />
+        <Divider m="none" />
         <ButtonToggle>
           <ButtonItem selected>Ruby</ButtonItem>
           <ButtonItem>TypeScript</ButtonItem>
           <ButtonItem>Python</ButtonItem>
         </ButtonToggle>
         Inline text
-        <Divider />
+        <Divider m="none" />
         <ButtonGroup>
           <ButtonItem value="CA" selected>
             California
@@ -210,7 +210,7 @@ export function ButtonSetDemo() {
           <ButtonItem value="OR">Oregon</ButtonItem>
         </ButtonGroup>
         Inline text
-        <Divider />
+        <Divider m="none" />
         <ButtonToggle>
           <ButtonItem selected>Ruby</ButtonItem>
           <ButtonItem>TypeScript</ButtonItem>

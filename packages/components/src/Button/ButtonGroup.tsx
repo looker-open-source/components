@@ -72,14 +72,12 @@ const ButtonGroupLayout = forwardRef(
 )
 
 export const ButtonGroup = styled(ButtonGroupLayout)`
-  --spacing: ${({ theme }) => theme.space.xxsmall};
-  margin-bottom: calc(var(--spacing) * -1);
-  margin-right: calc(var(--spacing) * -1);
+  margin: -${({ theme }) => theme.space.xxxsmall};
+
   ${ButtonItem} {
-    height: 36px;
     border-radius: ${({ theme }) => theme.radii.medium};
-    margin-bottom: var(--spacing);
-    margin-right: var(--spacing);
+    height: 36px;
+    margin: ${({ theme }) => theme.space.xxxsmall};
   }
 
   ${ButtonItemLabel} {
