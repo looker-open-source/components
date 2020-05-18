@@ -31,7 +31,7 @@ import { AccordionDemo } from './Accordion/AccordionDemo'
 
 const App: React.FC = () => {
   return (
-    <ComponentsProvider>
+    <ComponentsProvider ie11Support>
       <AccordionDemo />
     </ComponentsProvider>
   )
