@@ -52,9 +52,10 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  padding: 0 ${(props) => props.theme.space.small};
+  text-align: center;
+  padding: 0 ${({ theme }) => theme.space.small};
   user-select: none;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radii.medium};
   background: ${(props) =>
     props.selected
       ? `hsla(${

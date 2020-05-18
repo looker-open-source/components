@@ -330,6 +330,72 @@ const options = [
 />
 ```
 
+## FieldSelectMulti
+
+The `<FieldSelectMulti />` component is composed of an `<SelectMulti />` component and a `<Label />` component.
+
+```jsx
+<FieldSelectMulti
+  label="Label"
+  options={[
+    { value: 'grape', label: 'Grape' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'apple', label: 'Apple' },
+  ]}
+  placeholder="Search fruits"
+/>
+```
+
+### FieldSelectMulti attributes
+
+`<FieldSelectMulti />` have attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+```jsx
+<FieldSelectMulti
+  description="this is the description"
+  detail="detail..."
+  label="Label"
+  options={[
+    { value: 'grape', label: 'Grape' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'apple', label: 'Apple' },
+  ]}
+  placeholder="Search fruits"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+/>
+```
+
+### FieldSelectMulti props
+
+`<FieldSelectMulti />` can be set as `desabled` and also as `required`. Aslo the width of the component will be 100% based of the parent and sibiling components. Using `Grid`can be helpful to position the compoents.
+
+```jsx
+<Grid>
+  <FieldSelectMulti
+    description="this is required"
+    label="Label"
+    options={[
+      { value: 'grape', label: 'Grape' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'apple', label: 'Apple' },
+    ]}
+    placeholder="Search fruits"
+    required
+  />
+  <FieldSelectMulti
+    description="this is disabled"
+    disabled
+    label="Label"
+    options={[
+      { value: 'grape', label: 'Grape' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'apple', label: 'Apple' },
+    ]}
+    placeholder="Search fruits"
+  />
+</Grid>
+```
+
 ## FieldText
 
 <Props of="FieldText" />
@@ -373,6 +439,45 @@ If you have multiple fields in need of validation, it is recommended that you wr
   label="Some Field"
   validationMessage={{ type: 'error', message: 'This is an error' }}
   alignValidationMessage="right"
+/>
+```
+
+## FieldTime
+
+The `<FieldTime />` component is composed of an `<InputTime />` component and a `<Label />` component. It has attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+```jsx
+<FieldTime
+  defaultValue="14:34"
+  description="this is the description"
+  detail="detail"
+  label="Label"
+  validationMessage={{ message: 'validation Message', type: 'error' }}
+/>
+```
+
+### FieldTime props
+
+`<FieldTime />` can be set as `desabled` and also as `required`.
+
+```jsx
+<Grid>
+  <FieldTime label="Label" defaultValue="14:34" required />
+  <FieldTime disabled label="Label" defaultValue="02:34" />
+</Grid>
+```
+
+## FieldTimeSelect
+
+The `<FieldTimeSelect />` component is composed of an `<InputTimeSelect />` component and a `<Label />` component. It has attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+```jsx
+<FieldTimeSelect
+  defaultValue="10:30"
+  description="this is the description"
+  detail="detail"
+  label="Label"
+  validationMessage={{ message: 'validation Message', type: 'error' }}
 />
 ```
 

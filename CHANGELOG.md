@@ -11,16 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ComponentsProvider` now accepts `ie11support` parameter to emit IE11 compatibility style
   - `IEGlobalStyle` component (underlying component used by `ComponentsProvider` for IE11)
+- `FieldSelectMulti` component
+- `FieldTime` component
+- `FieldTimeSelect` component
 - `Select` now accepts `listLayout` to control the layout of the list
 - `ComboboxList` now accepts properties from `LayoutProps`
 - `Space`
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
-
-### Added
-
 - `Accordion`, `AccordionLabel`, `AccordionContent` components
+- `ButtonToggle` now accepts `nullable`
+- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
 
 ### Changed
 
@@ -48,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Confirm` corrected word wrapping when long strings without white-space are used
 - `IconButton` no longer generates spurious DOM outside of itself for `tooltip` (doesn't create funky layout bugs when `IconButton` is within `Space`)
+- FieldTime update width to be 100%
 
 ## [0.7.31] - 2020-05-12
 

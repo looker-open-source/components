@@ -34,12 +34,13 @@ import {
   LocaleCodes,
   DateFormat,
   Popover,
+  Locales,
 } from '@looker/components'
 
 export const InputDateDemo: FC = () => {
   const [date, setDate] = useState<Date | undefined>()
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
-  const [locale, setLocale] = useState('ko')
+  const [locale, setLocale] = useState<Locales>(Locales.Korean)
 
   const handleLocaleChange = (val: any) => {
     setLocale(val)

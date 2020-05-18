@@ -24,22 +24,23 @@
 
  */
 import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ButtonSetDemo } from './Actions/ButtonSetDemo'
+import { FieldTimeSelect, Grid } from '@looker/components'
 
-const App: FC = () => {
+export const FieldTimeSelectDemo: FC = () => {
   return (
-    <ComponentsProvider ie11Support>
-      <AccordionDemo />
-    </ComponentsProvider>
+    <>
+      <Grid m="xxlarge">
+        <FieldTimeSelect interval={10} label="Label" />
+        <FieldTimeSelect
+          interval={10}
+          description="this is the description is a very long one"
+          detail="detail"
+          label="Label"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldTimeSelect interval={10} label="Label" required />
+        <FieldTimeSelect interval={10} disabled label="Label" />
+      </Grid>
+    </>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
