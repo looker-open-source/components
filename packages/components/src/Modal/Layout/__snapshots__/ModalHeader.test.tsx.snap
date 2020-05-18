@@ -37,7 +37,7 @@ exports[`ModalHeader 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   height: 28px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;

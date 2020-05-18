@@ -37,7 +37,7 @@ exports[`IconButton accepts color 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -179,7 +179,7 @@ exports[`IconButton accepts events 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -322,7 +322,7 @@ exports[`IconButton accepts events 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -465,7 +465,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -608,7 +608,7 @@ exports[`IconButton default 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -750,7 +750,7 @@ exports[`IconButton outline 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -910,7 +910,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1052,7 +1052,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
