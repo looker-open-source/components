@@ -24,28 +24,36 @@
 
  */
 
-import uniqueId from 'lodash/uniqueId'
 import xor from 'lodash/xor'
-import React, { ChangeEvent, FC, forwardRef, Ref } from 'react'
+import React, { ChangeEvent, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useControlWarn } from '../utils'
+import { useControlWarn, useID } from '../utils'
 import { ButtonItem, ButtonItemLabel } from './ButtonItem'
-import { ButtonGroupOrToggleProps, ButtonSet } from './ButtonSet'
+import { ButtonGroupOrToggleBaseProps, ButtonSet } from './ButtonSet'
 
-const ButtonGroupFactory = forwardRef(
+const ButtonGroupLayout = forwardRef(
   (
-    { onChange, value, ...props }: ButtonGroupOrToggleProps<string[]>,
+    {
+      onChange,
+      value,
+      ...props
+    }: Omit<ButtonGroupOrToggleBaseProps<string[]>, 'nullable'>,
     ref: Ref<HTMLDivElement>
   ) => {
+    const name = useID(props.name)
+
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'value'],
       isControlledCheck: () => onChange !== undefined,
       name: 'ButtonGroup',
     })
 
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-      const newValue = xor(value, [e.target.value])
-      onChange && onChange(newValue)
+    function handleChange(e?: ChangeEvent<HTMLInputElement>) {
+      // event is only ever missing for nullable ButtonToggle
+      if (e) {
+        const newValue = xor(value, [e.target.value])
+        onChange && onChange(newValue)
+      }
     }
 
     return (
@@ -57,22 +65,19 @@ const ButtonGroupFactory = forwardRef(
               onChange: handleChange,
               value,
             }
-          : { name: props.name || uniqueId() })}
+          : { name })}
       />
     )
   }
 )
 
-export const ButtonGroup = styled<FC<ButtonGroupOrToggleProps<string[]>>>(
-  ButtonGroupFactory
-)`
-  ${ButtonItem} {
-    height: 36px;
-    border-radius: 4px;
+export const ButtonGroup = styled(ButtonGroupLayout)`
+  margin: -${({ theme }) => theme.space.xxxsmall};
 
-    + ${ButtonItem} {
-      margin-left: ${(props) => props.theme.space.xxsmall};
-    }
+  ${ButtonItem} {
+    border-radius: ${({ theme }) => theme.radii.medium};
+    height: 36px;
+    margin: ${({ theme }) => theme.space.xxxsmall};
   }
 
   ${ButtonItemLabel} {
