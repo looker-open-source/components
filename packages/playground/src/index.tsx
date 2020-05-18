@@ -25,13 +25,54 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ButtonSetDemo } from './Actions/ButtonSetDemo'
+import {
+  ComponentsProvider,
+  FieldRangeSlider,
+  FieldSlider,
+  Grid,
+} from '@looker/components'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <ButtonSetDemo />
+      <Grid columns={2}>
+        <FieldSlider
+          detail="detail"
+          description="description"
+          label="Label"
+          min={10}
+          max={20}
+          value={15}
+        />
+        <FieldSlider
+          detail="detail"
+          description="description"
+          label="Label"
+          min={10}
+          max={20}
+          value={15}
+          validationMessage={{ message: 'errorMessage', type: 'error' }}
+        />
+      </Grid>
+      <Grid columns={2}>
+        <FieldRangeSlider
+          defaultValue={[13, 17]}
+          detail="detail"
+          description="description"
+          label="Label"
+          min={10}
+          max={20}
+        />
+        <FieldRangeSlider
+          defaultValue={[13, 17]}
+          detail="detail"
+          description="description"
+          label="Label"
+          min={10}
+          max={20}
+          validationMessage={{ message: 'errorMessage', type: 'error' }}
+        />
+      </Grid>
     </ComponentsProvider>
   )
 }

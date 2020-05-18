@@ -24,18 +24,38 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { FieldSlider } from './FieldSlider'
+
+test('FieldSlider should accept detail and description attributes', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldSlider
+      detail="5/50"
+      description="this is the description"
+      label="Label"
+      name="FieldSlider"
+      id="field-slider"
+    />
+  )
+
+  const input = getByLabelText('Label')
+  expect(input.getAttribute('detail')).toBeDefined()
+  expect(input.getAttribute('description')).toBeDefined()
+})
+
+test('FieldSlider should accept a disabled prop', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldSlider disabled id="test" label="Test Label" name="test" />
+  )
+
+  const input = getByLabelText('Test Label')
+  expect(input.getAttribute('disabled')).toBeDefined()
+})
+
+test('FieldSlider should accept required attributes', () => {
+  const { getByText } = renderWithTheme(
+    <FieldSlider label="Label" name="fieldSlider" id="field-slider" required />
+  )
+  expect(getByText('required')).toBeVisible()
+})
