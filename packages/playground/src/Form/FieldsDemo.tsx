@@ -32,6 +32,7 @@ import {
   FieldRadio,
   FieldToggleSwitch,
   FieldDate,
+  FieldDateRange,
   Form,
   Grid,
 } from '@looker/components'
@@ -194,8 +195,17 @@ export const FieldsDemo: FC = () => {
           <FieldDate label="Field Date" />
         </div>
         <div>
+          <FieldDateRange label="Field Date Range" />
+        </div>
+        <div>
           <FieldDate
             label="Field Date Validation"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
+        </div>
+        <div>
+          <FieldDateRange
+            label="Field Date Range Validation"
             validationMessage={{ message: 'validation Message', type: 'error' }}
           />
         </div>

@@ -198,7 +198,7 @@ const InputDateWrapper = styled.div`
 `
 
 const InputTextWrapper = styled.div`
-  padding: ${({ theme }) => theme.space.small};
+  padding: ${({ theme }) => `${theme.space.xxsmall} ${theme.space.small}`};
   ${InputText} {
     width: 100%;
   }
