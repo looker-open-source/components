@@ -28,9 +28,13 @@ import React, { FC, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { fonts, reset } from './GlobalStyle'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-const isIE11 = !!window.MSInputMethodContext && !!document.documentMode
+const isIE11 =
+  typeof window === `undefined` ||
+  typeof document === `undefined` ||
+  (!!window.MSInputMethodContext &&
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    !!document.documentMode)
 
 const ieGlobalCSS = (font: string, background: string) => `
   @media screen and (-ms-high-contrast: active),
