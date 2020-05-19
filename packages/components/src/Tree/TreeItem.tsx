@@ -24,5 +24,18 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+
+export interface TreeItemProps {
+  children: ReactNode
+  className?: string
+}
+
+const TreeItemLayout: FC<TreeItemProps> = ({ children, className }) => {
+  return <div className={className}>{children}</div>
+}
+
+export const TreeItem = styled(TreeItemLayout)`
+  padding: ${({ theme }) => theme.space.xxsmall};
+`

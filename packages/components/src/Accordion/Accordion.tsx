@@ -145,9 +145,9 @@ export const Accordion = styled(AccordionLayout)`
         space[indicatorSize as SpacingSizes]
       }
   + ${space[indicatorGap as SpacingSizes]})`};
-  }
 
-  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+    border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+  }
 `
 
 Accordion.defaultProps = {

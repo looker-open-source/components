@@ -25,13 +25,13 @@
  */
 
 import React from 'react'
-import { Tree, Box } from '@looker/components'
+import { Tree, TreeItem, Box } from '@looker/components'
 
 export const TreeDemo = () => {
   return (
     <Box width="300px">
       <Tree pl="large" detail="HELLO" label="Model Name">
-        Test
+        <TreeItem>Hello World</TreeItem>
       </Tree>
     </Box>
   )
