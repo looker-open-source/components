@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "0.7.30",
+  "version": "0.7.32",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.30"
+    "@looker/design-tokens": "^0.7.32"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
