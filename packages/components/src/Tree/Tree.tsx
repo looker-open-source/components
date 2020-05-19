@@ -35,7 +35,6 @@ import { Space } from '../Layout'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
-
   label: string
 }
 
@@ -50,7 +49,7 @@ export const Tree: FC<TreeProps> = (props) => {
       indicatorSize="small"
       {...restProps}
     >
-      <AccordionDisclosure fontSize="xsmall" py="xxsmall">
+      <AccordionDisclosure fontSize="xsmall" p="xxsmall">
         <Space gap="xsmall">
           <div style={{ flexGrow: 1 }}>{label}</div>
           <div>{detail}</div>
