@@ -196,16 +196,13 @@ export const ToggleCodeButton: FC<ToggleButtonProps> = ({
   const toggleLabel = editorIsVisible ? 'Hide code editor' : 'Show code editor'
   return (
     <Tooltip content={toggleLabel} placement="left">
-      {(tooltipProps) => (
-        <ActionButton
-          {...tooltipProps}
-          editorIsVisible={editorIsVisible}
-          onClick={onClick}
-          label={toggleLabel}
-          icon={toggleIcon}
-          size="xsmall"
-        />
-      )}
+      <ActionButton
+        editorIsVisible={editorIsVisible}
+        onClick={onClick}
+        label={toggleLabel}
+        icon={toggleIcon}
+        size="xsmall"
+      />
     </Tooltip>
   )
 }

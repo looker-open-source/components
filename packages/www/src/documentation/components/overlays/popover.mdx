@@ -73,7 +73,7 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
 
   return (
     <SpaceVertical>
-      <Space between>
+      <Space between width="100%">
         <Popover content={popoverContent}>
           {(onClick, ref, className) =>
             button('Default', onClick, ref, className)
@@ -88,7 +88,7 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
           {(onClick, ref, className) => button('Left', onClick, ref, className)}
         </Popover>
       </Space>
-      <Space>
+      <Space between width="100%">
         <Popover content={popoverContent} placement="bottom-start">
           {(onClick, ref, className) =>
             button('Bottom Start', onClick, ref, className)
