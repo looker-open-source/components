@@ -24,14 +24,27 @@
 
  */
 
-import React, { FC } from 'react'
-import { globalCSS } from './GlobalStyle'
+import React, { FC, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import { fonts, reset } from './GlobalStyle'
 
-const ieGlobalCSS = `
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+const isIE11 = !!window.MSInputMethodContext && !!document.documentMode
+
+const ieGlobalCSS = (font: string, background: string) => `
   @media screen and (-ms-high-contrast: active),
     screen and (-ms-high-contrast: none) {
-    ${globalCSS}
+    ${fonts(font)}
+    ${reset(background)}
   }
 `
 
-export const IEGlobalStyle: FC = () => <style>{ieGlobalCSS}</style>
+export const IEGlobalStyle: FC = () => {
+  const theme = useContext(ThemeContext)
+  if (!isIE11) return null
+
+  return (
+    <style>{ieGlobalCSS(theme.fonts.brand, theme.colors.palette.white)}</style>
+  )
+}

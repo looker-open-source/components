@@ -24,5 +24,5 @@
 
  */
 
-export * from './GlobalStyle'
-export * from './IE'
+export { GlobalStyle } from './GlobalStyle'
+export { IEGlobalStyle } from './IE'
