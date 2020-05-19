@@ -52,7 +52,6 @@ import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 
 import {
-  InputText,
   inputTextDefaults,
   inputTextHover,
   inputTextFocus,
