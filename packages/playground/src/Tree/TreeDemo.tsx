@@ -30,8 +30,11 @@ import { Tree, TreeItem, Box } from '@looker/components'
 export const TreeDemo = () => {
   return (
     <Box width="300px">
-      <Tree pl="large" detail="HELLO" label="Model Name">
+      <Tree detail="HELLO" label="Model Name">
         <TreeItem>Hello World</TreeItem>
+        <Tree label="Testing">
+          <TreeItem>Hello Again</TreeItem>
+        </Tree>
       </Tree>
     </Box>
   )

@@ -26,16 +26,29 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { Space } from '../Layout'
+import { Icon, IconNames } from '../Icon'
+import { Text } from '../Text'
 
 export interface TreeItemProps {
   children: ReactNode
   className?: string
+  icon?: IconNames
 }
 
-const TreeItemLayout: FC<TreeItemProps> = ({ children, className }) => {
-  return <div className={className}>{children}</div>
+const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => {
+  const defaultIconSize = 12
+
+  return (
+    <div className={className}>
+      <Space p="xxsmall" gap="xxsmall">
+        <Icon name={icon || 'FieldNumber'} size={defaultIconSize} />
+        <Text fontSize="xsmall">{children}</Text>
+      </Space>
+    </div>
+  )
 }
 
 export const TreeItem = styled(TreeItemLayout)`
-  padding: ${({ theme }) => theme.space.xxsmall};
+  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
 `

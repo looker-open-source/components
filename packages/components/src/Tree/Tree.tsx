@@ -30,8 +30,9 @@ import {
   AccordionContent,
   AccordionDisclosure,
   AccordionProps,
+  AccordionIndicatorProps,
 } from '../Accordion'
-import { Space } from '../Layout'
+import { FlexItem, Space } from '../Layout'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
@@ -40,20 +41,23 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
 
 export const Tree: FC<TreeProps> = (props) => {
   const { children, detail, label, ...restProps } = props
+  const indicatorProps: AccordionIndicatorProps = {
+    indicatorGap: 'xxsmall',
+    indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
+    indicatorPosition: 'left',
+    indicatorSize: 'small',
+  }
+  const accordionDisclosureChildren = (
+    <Space gap="xsmall">
+      <FlexItem flex="1">{label}</FlexItem>
+      <FlexItem>{detail}</FlexItem>
+    </Space>
+  )
 
   return (
-    <Accordion
-      indicatorGap="xxsmall"
-      indicatorIcons={{ close: 'ArrowRight', open: 'ArrowDown' }}
-      indicatorPosition="left"
-      indicatorSize="small"
-      {...restProps}
-    >
+    <Accordion {...indicatorProps} {...restProps}>
       <AccordionDisclosure fontSize="xsmall" p="xxsmall">
-        <Space gap="xsmall">
-          <div style={{ flexGrow: 1 }}>{label}</div>
-          <div>{detail}</div>
-        </Space>
+        {accordionDisclosureChildren}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
