@@ -59,7 +59,7 @@ import {
   useReadOnlyWarn,
 } from '../../../utils'
 
-interface InputDateRangeProps {
+export interface InputDateRangeProps {
   value?: RangeModifier
   defaultValue?: RangeModifier
   onChange?: (range?: Partial<RangeModifier>) => void
