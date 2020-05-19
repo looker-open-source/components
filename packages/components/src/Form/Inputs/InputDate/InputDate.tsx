@@ -97,7 +97,9 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     )
 
     const handleDateChange = (date?: Date) => {
-      setValidDate(true)
+      if (!validationType) {
+        setValidDate(true)
+      }
       setSelectedDate(date)
       setViewMonth(date)
       if (isFunction(onChange)) {
@@ -126,7 +128,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
 
     const handleValidation = (e: SyntheticEvent<HTMLInputElement>) => {
       // don't re-validate if validationType is passed in externally
-      if (validationType !== 'error') {
+      if (!validationType) {
         const value = (e.target as HTMLInputElement).value
         // is valid if text input is blank or parseDateFromString returns a date object
         const isValid =

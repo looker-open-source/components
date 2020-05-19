@@ -37,6 +37,7 @@ import isFunction from 'lodash/isFunction'
 import partial from 'lodash/partial'
 import min from 'lodash/min'
 import max from 'lodash/max'
+import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
 import {
@@ -47,6 +48,7 @@ import {
   BorderProps,
   ColorProps,
 } from '@looker/design-tokens'
+import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 
 import {
@@ -56,6 +58,7 @@ import {
   inputTextFocus,
   inputTextValidation,
 } from '../InputText'
+import { InlineInputText } from '../InlineInputText'
 import { Calendar } from '../../../Calendar'
 import {
   LocaleCodes,
@@ -255,9 +258,11 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         formatDateString(newDateRange[nonActiveInput], locale)
       )
 
-      // clear potentially stale date validation errors
-      inputs.from.isValid || inputs.from.setIsValid(true)
-      inputs.to.isValid || inputs.to.setIsValid(true)
+      if (!validationType) {
+        // clear potentially stale date validation errors
+        inputs.from.isValid || inputs.from.setIsValid(true)
+        inputs.to.isValid || inputs.to.setIsValid(true)
+      }
 
       // update final selected date range
       setDateRange(newDateRange)
@@ -328,15 +333,12 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
     return (
       <InputDateRangeWrapper ref={ref}>
-        <MultiCalendarLayout px="small">
-          <InputTextWrapper
-            active={activeDateInput === 'from'}
-            validationType={inputs.from.isValid ? undefined : 'error'}
-          >
-            <InputLabel active={activeDateInput === 'from'} htmlFor={fromID}>
-              From:
-            </InputLabel>
-            <InputText
+        <InputTextGroupWrapper
+          active={activeDateInput === 'from'}
+          validationType={inputs.from.isValid ? undefined : 'error'}
+        >
+          <InputTextWrapper inputLength={inputs.from.value.length}>
+            <InlineInputText
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
                 locale
@@ -347,16 +349,14 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               data-testid="date-from-text-input"
               id={fromID}
               onFocus={partial(handleTextInputFocus, 'from')}
+              fontSize="small"
             />
           </InputTextWrapper>
-          <InputTextWrapper
-            active={activeDateInput === 'to'}
-            validationType={inputs.to.isValid ? undefined : 'error'}
-          >
-            <InputLabel active={activeDateInput === 'to'} htmlFor={toID}>
-              To:
-            </InputLabel>
-            <InputText
+          <HyphenWrapper hasInputValues={!isEmpty(dateRange)}>
+            &ndash;
+          </HyphenWrapper>
+          <InputTextWrapper inputLength={inputs.to.value.length}>
+            <InlineInputText
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
                 locale
@@ -367,9 +367,19 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               data-testid="date-to-text-input"
               id={toID}
               onFocus={partial(handleTextInputFocus, 'to')}
+              fontSize="small"
             />
           </InputTextWrapper>
-        </MultiCalendarLayout>
+          {(inputs.from.isValid && inputs.to.isValid) || (
+            <Icon
+              key="warning"
+              name="CircleInfo"
+              size={20}
+              color="palette.red500"
+              mr="xxsmall"
+            />
+          )}
+        </InputTextGroupWrapper>
         <MultiCalendarLayout>
           <CalendarWrapper>
             <Calendar
@@ -403,17 +413,11 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
 InputDateRange.displayName = 'InputDateRange'
 
-const InputLabel = styled.label<{ active: boolean }>`
-  color: ${({ theme: { colors }, active }) =>
-    active
-      ? colors.semanticColors.primary.main
-      : colors.semanticColors.neutral.main};
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  border-top-left-radius: ${({ theme }) => theme.radii.medium};
-  border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
-  padding: 0.5rem;
+const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
+  color: ${({ theme, hasInputValues }) =>
+    hasInputValues
+      ? theme.colors.palette.charcoal600
+      : theme.colors.palette.charcoal300};
 `
 
 const InputDateRangeWrapper = styled.div`
@@ -427,19 +431,21 @@ const MultiCalendarLayout = styled.div<SpaceProps>`
   grid-column-gap: ${({ theme }) => theme.space.large};
 `
 
-interface InputTextWrapperProps extends BorderProps, ColorProps {
+interface InputTextGroupWrapperProps extends BorderProps, ColorProps {
   active: boolean
   validationType?: 'error'
 }
 
-const InputTextWrapper = styled.div<InputTextWrapperProps>`
+const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${border}
   ${color}
 
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: inline-grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  grid-gap: ${({ theme }) => theme.space.xsmall};
   align-items: center;
   margin: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  padding: ${({ theme }) => `0 ${theme.space.small}`};
 
   &:hover {
     ${inputTextHover}
@@ -450,18 +456,24 @@ const InputTextWrapper = styled.div<InputTextWrapperProps>`
   }
 
   ${inputTextValidation}
+`
 
-  ${InputText} {
+const InputTextWrapper = styled.div<{ inputLength: number }>`
+  padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  ${InlineInputText} {
     border: none;
     border-radius: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
+    height: ${({ theme }) => theme.lineHeights.large};
     background: transparent;
+    /* stylelint-disable */
+    &:focus-within {
+      background: ${({ theme }) => theme.colors.palette.purple100};
+    }
+    /* stylelint-enabled */
   }
 `
 
-InputTextWrapper.defaultProps = {
+InputTextGroupWrapper.defaultProps = {
   ...inputTextDefaults,
 }
 
