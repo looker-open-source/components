@@ -41,7 +41,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => {
 
   return (
     <div className={className}>
-      <Space p="xxsmall" gap="xxsmall">
+      <Space p="xxsmall" gap="xxsmall" align="center">
         <Icon name={icon || 'FieldNumber'} size={defaultIconSize} />
         <Text fontSize="xsmall">{children}</Text>
       </Space>

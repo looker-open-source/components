@@ -25,17 +25,92 @@
  */
 
 import React from 'react'
-import { Tree, TreeItem, Box } from '@looker/components'
+import { Icon, Tree, TreeItem, Box, Space, Grid } from '@looker/components'
+
+const addButton = (
+  <Box color="palette.purple400">
+    <Space align="center">
+      <Icon size={12} name="Plus" />
+      Add
+    </Space>
+  </Box>
+)
+
+const exploreExample = (
+  <Box>
+    Explore Example
+    <Tree detail={addButton} label="Custom Fields">
+      <TreeItem>Cost</TreeItem>
+      <Tree label="Created">
+        <TreeItem icon="Calendar">Created Date</TreeItem>
+        <TreeItem icon="Calendar">Created Month</TreeItem>
+        <TreeItem icon="Calendar">Created Year</TreeItem>
+        <TreeItem icon="Calendar">Created Quarter</TreeItem>
+      </Tree>
+      <TreeItem icon="FieldDistance">Location</TreeItem>
+      <TreeItem icon="FieldTier">Tier</TreeItem>
+      <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+    </Tree>
+  </Box>
+)
+
+const lookmlIdeExample = (
+  <Box color="palette.charcoal600">
+    LookML IDE Example
+    <Tree label="thelook" icon="ExploreOutline">
+      <Tree label="Orders" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Status</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+        <Tree label="Products" icon="Table">
+          <TreeItem icon="IdeDimension">Brand</TreeItem>
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Department</TreeItem>
+          <TreeItem icon="IdeDimension">Sku</TreeItem>
+        </Tree>
+        <Tree label="Users" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Name</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+      </Tree>
+      <Tree label="Users" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Status</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+        <Tree label="Users" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Name</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+      </Tree>
+    </Tree>
+    <Tree label="thelook2" icon="ExploreOutline">
+      <Tree label="Users" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Status</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+        <Tree label="Users" icon="Table">
+          <TreeItem icon="IdeDimension">ID</TreeItem>
+          <TreeItem icon="IdeDimension">Name</TreeItem>
+          <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        </Tree>
+      </Tree>
+    </Tree>
+  </Box>
+)
 
 export const TreeDemo = () => {
   return (
-    <Box width="300px">
-      <Tree detail="HELLO" label="Model Name">
-        <TreeItem>Hello World</TreeItem>
-        <Tree label="Testing">
-          <TreeItem>Hello Again</TreeItem>
-        </Tree>
-      </Tree>
-    </Box>
+    <Grid m="xxlarge" gap="xxlarge">
+      {exploreExample}
+      {lookmlIdeExample}
+    </Grid>
   )
 }

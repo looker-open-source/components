@@ -24,6 +24,7 @@
 
  */
 
+import { FontWeights } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
 import {
   Accordion,
@@ -33,14 +34,17 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { FlexItem, Space } from '../Layout'
+import { IconNames, Icon } from '../Icon'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
+  fontWeight?: FontWeights
+  icon?: IconNames
   label: string
 }
 
 export const Tree: FC<TreeProps> = (props) => {
-  const { children, detail, label, ...restProps } = props
+  const { children, detail, fontWeight, icon, label, ...restProps } = props
   const indicatorProps: AccordionIndicatorProps = {
     indicatorGap: 'xxsmall',
     indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
@@ -48,15 +52,24 @@ export const Tree: FC<TreeProps> = (props) => {
     indicatorSize: 'small',
   }
   const accordionDisclosureChildren = (
-    <Space gap="xsmall">
+    <Space gap="xsmall" align="center">
+      {icon && (
+        <FlexItem>
+          <Icon name={icon} />
+        </FlexItem>
+      )}
       <FlexItem flex="1">{label}</FlexItem>
-      <FlexItem>{detail}</FlexItem>
+      {detail && <FlexItem>{detail}</FlexItem>}
     </Space>
   )
 
   return (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontSize="xsmall" p="xxsmall">
+      <AccordionDisclosure
+        fontSize="xsmall"
+        fontWeight={fontWeight}
+        p="xxsmall"
+      >
         {accordionDisclosureChildren}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
