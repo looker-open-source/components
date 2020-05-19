@@ -26,12 +26,12 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { ButtonSetDemo } from './Actions/ButtonSetDemo'
+import { AccordionDemo } from './Accordion/AccordionDemo'
 
 const App: FC = () => {
   return (
-    <ComponentsProvider>
-      <ButtonSetDemo />
+    <ComponentsProvider ie11Support>
+      <AccordionDemo />
     </ComponentsProvider>
   )
 }
