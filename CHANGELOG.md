@@ -48,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `InlineInputText` no longer collapses when value is empty
 - `Confirm` corrected word wrapping when long strings without white-space are used
 - `IconButton` no longer generates spurious DOM outside of itself for `tooltip` (doesn't create funky layout bugs when `IconButton` is within `Space`)
 - FieldTime update width to be 100%
