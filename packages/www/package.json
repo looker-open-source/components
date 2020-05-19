@@ -24,7 +24,7 @@
     "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "polished": "^3.6.3",
-    "prism-react-renderer": "^1.1.0",
+    "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
