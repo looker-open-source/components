@@ -24,17 +24,22 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import xor from 'lodash/xor'
+import React, { FC } from 'react'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
-export type CheckboxGroupValue = string[]
+export type CheckboxGroupProps = OptionsGroupProps<string[]>
 
-export interface CheckboxGroupProps extends OptionsGroupProps {
-  defaultValue?: CheckboxGroupValue
-  value?: CheckboxGroupValue
-  onChange?: (value: CheckboxGroupValue) => void
+function getCheckedProps(
+  optionValue: string,
+  value?: string[],
+  defaultValue?: string[]
+) {
+  const key = value ? 'checked' : 'defaultChecked'
+  const valueToUse = value || defaultValue || []
+  return { [key]: valueToUse.includes(optionValue) }
 }
 
 export const CheckboxGroup: FC<CheckboxGroupProps> = ({
@@ -45,26 +50,22 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   value,
   onChange,
 }) => {
-  const [currentOptions, setCurrentOptions] = useState(value || defaultValue)
-
-  const handleChange = (option: string) => {
-    const newValues = currentOptions.includes(option)
-      ? [...currentOptions.filter((v) => v !== option)]
-      : [...currentOptions, option]
-
-    !value && setCurrentOptions(newValues)
-    onChange && onChange(newValues)
-  }
-  const checkboxes = options.map((option, index) => (
-    <FieldCheckbox
-      onChange={() => handleChange(option.value)}
-      disabled={option.disabled || disabled}
-      key={index}
-      label={option.label}
-      checked={currentOptions.includes(option.value)}
-      value={option.value}
-    />
-  ))
+  const checkboxes = options.map((option) => {
+    const checkedProps = getCheckedProps(option.value, value, defaultValue)
+    const handleChange = onChange
+      ? () => onChange(xor(value, [option.value]))
+      : undefined
+    return (
+      <FieldCheckbox
+        onChange={handleChange}
+        disabled={option.disabled || disabled}
+        key={option.value}
+        label={option.label}
+        value={option.value}
+        {...checkedProps}
+      />
+    )
+  })
 
   return (
     <Fieldset data-testid="checkbox-list" inline={inline}>

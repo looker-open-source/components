@@ -23,20 +23,23 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
-type RadioGroupValue = string
-
-export interface RadioGroupProps extends OptionsGroupProps {
-  className?: string
-  onChange?: (value: RadioGroupValue) => void
-  value?: RadioGroupValue
+function getCheckedProps(
+  optionValue: string,
+  isControlled: boolean,
+  value?: string,
+  defaultValue?: string
+) {
+  const key = isControlled ? 'checked' : 'defaultChecked'
+  const valueToUse = isControlled ? value : defaultValue
+  return { [key]: valueToUse === optionValue }
 }
 
-export const RadioGroup: FC<RadioGroupProps> = ({
+export const RadioGroup: FC<OptionsGroupProps> = ({
   disabled,
   inline,
   options,
@@ -44,22 +47,25 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   value,
   onChange,
 }) => {
-  const [currentOption, setCurrentOption] = useState(value || defaultValue)
-
-  const handleOnchange = (option: string) => {
-    !value && setCurrentOption(option)
-    onChange && onChange(option)
-  }
-
-  const radios = options.map((option, index) => (
-    <FieldRadio
-      checked={currentOption === option.value}
-      disabled={option.disabled || disabled}
-      key={index}
-      label={option.label}
-      onChange={() => handleOnchange(option.value)}
-    />
-  ))
+  const isControlled = onChange !== undefined
+  const radios = options.map((option) => {
+    const checkedProps = getCheckedProps(
+      option.value,
+      isControlled,
+      value,
+      defaultValue
+    )
+    const handleChange = onChange ? () => onChange(option.value) : undefined
+    return (
+      <FieldRadio
+        disabled={option.disabled || disabled}
+        key={option.value}
+        label={option.label}
+        onChange={handleChange}
+        {...checkedProps}
+      />
+    )
+  })
 
   return (
     <Fieldset data-testid="radio-list" disabled={disabled} inline={inline}>

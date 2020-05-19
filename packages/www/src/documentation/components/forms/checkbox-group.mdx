@@ -4,8 +4,6 @@ figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
 github: Form/OptionsGroup/CheckboxGroup.tsx
 ---
 
-### CheckboxGroup
-
 Groups of checkbox can be displayed with `CheckboxGroup`. `Disabled` can be used on each checkbox specifically or on the group. Using `defaultValue` will render a checked checkbox.
 
 ```jsx
@@ -51,6 +49,32 @@ Groups of checkbox can be displayed with `CheckboxGroup`. `Disabled` can be used
       <CheckboxGroup disabled name="group1" options={options} />
       <CheckboxGroup disabled inline name="group1" options={options} />
     </Grid>
+  )
+}
+```
+
+## Controlled
+
+Control externally via `value` and `onChange` props.
+
+```js
+;() => {
+  const options = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+  const [value, setValue] = useState(['cheddar'])
+  return (
+    <Space align="start">
+      <CheckboxGroup value={value} onChange={setValue} options={options} />
+      <Paragraph>Current selection: {value.join(', ')}</Paragraph>
+    </Space>
   )
 }
 ```
