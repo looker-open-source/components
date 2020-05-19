@@ -30,6 +30,7 @@ import { SpaceRamp } from '../system'
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const space: SpaceRamp = {
   none: rem(0),
+  xxxsmall: rem(2),
   xxsmall: rem(4),
   xsmall: rem(8),
   small: rem(12),
