@@ -139,6 +139,16 @@ export const FieldsDemo: FC = () => {
           ]}
         />
         <FieldSelect
+          disabled
+          label="Field Select Disabled"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldSelect
           label="Label"
           placeholder="placeholder"
           options={[
@@ -196,6 +206,19 @@ export const FieldsDemo: FC = () => {
         </div>
         <div>
           <FieldDateRange label="Field Date Range" />
+        </div>
+        <div>
+          <FieldDate label="Disabled Field Date" disabled value={new Date()} />
+        </div>
+        <div>
+          <FieldDateRange
+            label="Disabled Field Date Range"
+            disabled
+            value={{
+              from: new Date('May 18, 2020'),
+              to: new Date('May 21, 2020'),
+            }}
+          />
         </div>
         <div>
           <FieldDate

@@ -55,6 +55,7 @@ export interface InputDateProps extends SpaceProps, BorderProps {
   locale?: LocaleCodes
   id?: string
   ref?: Ref<HTMLInputElement>
+  disabled?: boolean
 }
 
 const isDateInView = (value: Date, viewMonth: Date) => {
@@ -82,6 +83,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       onValidationFail,
       value,
       id,
+      disabled,
     },
     ref: Ref<HTMLInputElement>
   ) => {
@@ -175,6 +177,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
             data-testid="text-input"
             id={id}
             ref={ref}
+            disabled={disabled}
           />
         </InputTextWrapper>
         <CalendarWrapper>
@@ -186,6 +189,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
             onNowClick={handleNavClick}
             onNextClick={handleNavClick}
             onPrevClick={handleNavClick}
+            disabled={disabled}
           />
         </CalendarWrapper>
       </InputDateWrapper>

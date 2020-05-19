@@ -53,6 +53,7 @@ import { ValidationType } from '../../ValidationMessage'
 
 import {
   inputTextDefaults,
+  inputTextDisabled,
   inputTextHover,
   inputTextFocus,
   inputTextValidation,
@@ -77,6 +78,7 @@ export interface InputDateRangeProps {
   validationType?: ValidationType
   id?: string
   ref?: Ref<HTMLDivElement>
+  disabled?: boolean
 }
 
 type Endpoint = 'to' | 'from'
@@ -140,6 +142,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       validationType,
       value,
       id,
+      disabled,
     },
     ref: Ref<HTMLDivElement>
   ) => {
@@ -333,6 +336,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     return (
       <InputDateRangeWrapper ref={ref}>
         <InputTextGroupWrapper
+          disabled={disabled}
           active={activeDateInput === 'from'}
           validationType={
             inputs.from.isValid && inputs.to.isValid ? undefined : 'error'
@@ -351,6 +355,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               id={fromID}
               onFocus={partial(handleTextInputFocus, 'from')}
               fontSize="small"
+              disabled={disabled}
             />
           </InputTextWrapper>
           <HyphenWrapper hasInputValues={!isEmpty(dateRange)}>
@@ -369,6 +374,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               id={toID}
               onFocus={partial(handleTextInputFocus, 'to')}
               fontSize="small"
+              disabled={disabled}
             />
           </InputTextWrapper>
           {(inputs.from.isValid && inputs.to.isValid) || (
@@ -392,6 +398,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               onPrevClick={handlePrevClick}
               showNextButton={false}
               onMonthChange={partial(handleMonthChange, 0)}
+              disabled={disabled}
             />
           </CalendarWrapper>
           <CalendarWrapper>
@@ -404,6 +411,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               onNextClick={handleNextClick}
               showPreviousButton={false}
               onMonthChange={partial(handleMonthChange, -1)}
+              disabled={disabled}
             />
           </CalendarWrapper>
         </MultiCalendarLayout>
@@ -455,6 +463,8 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   &:focus-within {
     ${inputTextFocus}
   }
+
+  ${({ disabled }) => disabled && inputTextDisabled}
 
   ${inputTextValidation}
 `
