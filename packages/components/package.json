@@ -46,7 +46,7 @@
     "@types/react-resize-detector": "^4.2.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^4.4.1",
-    "@types/uuid": "^7.0.3",
+    "@types/uuid": "^8.0.0",
     "csstype": "^2.6.10",
     "jest-styled-components": "^6.3.4",
     "react": "^16.13.1",
