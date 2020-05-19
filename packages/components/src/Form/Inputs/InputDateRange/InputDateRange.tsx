@@ -334,7 +334,9 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       <InputDateRangeWrapper ref={ref}>
         <InputTextGroupWrapper
           active={activeDateInput === 'from'}
-          validationType={inputs.from.isValid ? undefined : 'error'}
+          validationType={
+            inputs.from.isValid && inputs.to.isValid ? undefined : 'error'
+          }
         >
           <InputTextWrapper inputLength={inputs.from.value.length}>
             <InlineInputText
