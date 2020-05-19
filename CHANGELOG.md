@@ -5,36 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.32] - 2020-05-19
 
 ### Added
 
+- `Accordion`, `AccordionLabel`, `AccordionContent` components
+- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
+- `ButtonToggle` now accepts `nullable`
+- `ComboboxList` now accepts properties from `LayoutProps`
 - `ComponentsProvider` now accepts `ie11support` parameter to emit IE11 compatibility style
   - `IEGlobalStyle` component (underlying component used by `ComponentsProvider` for IE11)
 - `FieldSelectMulti` component
 - `FieldTime` component
 - `FieldTimeSelect` component
 - `Select` now accepts `listLayout` to control the layout of the list
-- `ComboboxList` now accepts properties from `LayoutProps`
 - `Space`
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
-- `Accordion`, `AccordionLabel`, `AccordionContent` components
-- `ButtonToggle` now accepts `nullable`
-- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
 
 ### Changed
 
-- Horizontal padding on `Button` and `ButtonOutline` increased, decreased for `ButtonTransparent`
-- Icon used for error states in inputs changed to `CircleInfo`
+- `Banner` fontSize adjusted and external margin removed
+- `Button` and `ButtonOutline` horizontal padding on increased, decreased for `ButtonTransparent`
+- `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)
 - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
-  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
 - `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
+- Icon used for error states in inputs changed to `CircleInfo`
+  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
 - Support Warning icon display on Select and SelectMulti inputs
 - Refactor use of InputSearch to support more flexible layouts
-- `Banner` fontSize adjusted and external margin removed
-- `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)
 - Use Babel for building Monorepo ES artifacts
   - Change build artifact path from `dist/` to `lib.`
   - No longer produces multiple artifact formats (`es` only)
@@ -42,16 +42,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `yarn playground` & `yarn gatsby` replace `yarn develop` - no need to pre-compile for local development now.
 - Updated artwork for `Download` icon
 
+### Fixed
+
+- `Confirm` corrected word wrapping when long strings without white-space are used
+- `IconButton` no longer generates spurious DOM outside of itself for `tooltip` (doesn't create funky layout bugs when `IconButton` is within `Space`)
+- `InlineInputText` no longer collapses when value is empty
+- `FieldTime` update width to be 100%
+
 ### Removed
 
 - Deleted `MenuSearch` component in favor of `InputSearch`
-
-### Fixed
-
-- `InlineInputText` no longer collapses when value is empty
-- `Confirm` corrected word wrapping when long strings without white-space are used
-- `IconButton` no longer generates spurious DOM outside of itself for `tooltip` (doesn't create funky layout bugs when `IconButton` is within `Space`)
-- FieldTime update width to be 100%
 
 ## [0.7.31] - 2020-05-12
 
