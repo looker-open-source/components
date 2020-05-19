@@ -25,7 +25,15 @@
  */
 
 import React from 'react'
-import { Icon, Tree, TreeItem, Box, Space, Grid } from '@looker/components'
+import {
+  Icon,
+  Tree,
+  TreeItem,
+  Box,
+  Space,
+  Grid,
+  theme,
+} from '@looker/components'
 
 const addButton = (
   <Box color="palette.purple400">
@@ -40,7 +48,7 @@ const exploreExample = (
   <Box>
     Explore Example
     <Tree detail={addButton} label="Custom Fields">
-      <TreeItem>Cost</TreeItem>
+      <TreeItem icon="FieldNumber">Cost</TreeItem>
       <Tree label="Created">
         <TreeItem icon="Calendar">Created Date</TreeItem>
         <TreeItem icon="Calendar">Created Month</TreeItem>
@@ -106,11 +114,37 @@ const lookmlIdeExample = (
   </Box>
 )
 
+const filterPickerExample = (
+  <Box>
+    Filter Picker Example
+    <Tree
+      label="Orders"
+      detail={<Box color="palette.charcoal500">thelook</Box>}
+    >
+      <Tree label="Orders">
+        <Box borderLeft={`1px solid ${theme.colors.palette.blue200}`}>
+          <TreeItem>ID</TreeItem>
+          <TreeItem>Status</TreeItem>
+        </Box>
+        <Tree label="Created">
+          <Box borderLeft={`1px solid ${theme.colors.palette.blue200}`}>
+            <TreeItem>Created Date</TreeItem>
+            <TreeItem>Created Month</TreeItem>
+            <TreeItem>Created Year</TreeItem>
+            <TreeItem>Created Quarter</TreeItem>
+          </Box>
+        </Tree>
+      </Tree>
+    </Tree>
+  </Box>
+)
+
 export const TreeDemo = () => {
   return (
     <Grid m="xxlarge" gap="xxlarge">
       {exploreExample}
       {lookmlIdeExample}
+      {filterPickerExample}
     </Grid>
   )
 }
