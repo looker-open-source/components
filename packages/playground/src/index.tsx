@@ -26,12 +26,12 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { AccordionDemo } from './Accordion/AccordionDemo'
+import { TooltipDemo } from './Tooltip/TooltipDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider ie11Support>
-      <AccordionDemo />
+      <TooltipDemo />
     </ComponentsProvider>
   )
 }

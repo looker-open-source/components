@@ -92,13 +92,6 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 
 ```jsx
 <Tooltip content="I'm a little teapot">
-  {(tooltipProps) => (
-    <IconButton
-      {...tooltipProps}
-      label="Add Something Neat"
-      icon="Plus"
-      size="xxsmall"
-    />
-  )}
+  <IconButton label="Add Something Neat" icon="Plus" size="xxsmall" />
 </Tooltip>
 ```

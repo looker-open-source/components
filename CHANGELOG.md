@@ -29,10 +29,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Banner` fontSize adjusted and external margin removed
 - `Button` and `ButtonOutline` horizontal padding on increased, decreased for `ButtonTransparent`
 - `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)
-- `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
+- `Tooltip`
+  - Now offers a cloneElement version as well as the existing render props version
+  - Documentation update to reflect new `children` structure
+  - now supports `aria-describedby`
+  - `useTooltip` includes a generated id (or passed-in prop value) for the resulting tooltip in the return object
 - `MenuDisclosure`, `Banner`, `IconButton`, `ModalHeader` explicitly use their id props to either provide `useTooltip` with an id or to provide another component that uses `useTooltip` with an id to generate the tooltip's id
 - Icon used for error states in inputs changed to `CircleInfo`
-  - Doing this means that tooltip trigger elements can now have an `aria-describedby` property with said id as the value
 - Support Warning icon display on Select and SelectMulti inputs
 - Refactor use of InputSearch to support more flexible layouts
 - Use Babel for building Monorepo ES artifacts
