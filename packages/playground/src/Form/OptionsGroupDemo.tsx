@@ -24,7 +24,7 @@
 
  */
 
-import { noop } from 'lodash'
+import noop from 'lodash/noop'
 import React from 'react'
 import {
   CheckboxGroup,
