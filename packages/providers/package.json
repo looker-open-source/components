@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "0.7.34",
+  "version": "0.7.35-beta.1+a66911d11",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.34"
+    "@looker/design-tokens": "^0.7.35-beta.1+a66911d11"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
@@ -27,5 +27,6 @@
   "peerDependencies": {
     "react": "^16.9.0",
     "styled-components": "^4"
-  }
+  },
+  "gitHead": "a66911d11418049c25319d4b283635e29d0d94a9"
 }
