@@ -378,13 +378,15 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             />
           </InputTextWrapper>
           {(inputs.from.isValid && inputs.to.isValid) || (
-            <Icon
-              key="warning"
-              name="CircleInfo"
-              size={20}
-              color="palette.red500"
-              mr="xxsmall"
-            />
+            <IconWrapper>
+              <Icon
+                key="warning"
+                name="CircleInfo"
+                size={20}
+                color="palette.red500"
+                mr="xxsmall"
+              />
+            </IconWrapper>
           )}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
@@ -430,12 +432,12 @@ const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
 `
 
 const InputDateRangeWrapper = styled.div`
-  display: inline-block;
+  width: 100%;
 `
 
 const MultiCalendarLayout = styled.div<SpaceProps>`
   ${space}
-  display: grid;
+  display: inline-grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: ${({ theme }) => theme.space.large};
 `
@@ -451,11 +453,12 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${color}
 
   display: inline-grid;
-  grid-template-columns: 1fr auto 1fr auto;
+  grid-template-columns: auto auto auto 1fr;
   grid-gap: ${({ theme }) => theme.space.xsmall};
   align-items: center;
   margin: ${({ theme }) => `${theme.space.xxsmall} 0`};
   padding: ${({ theme }) => `0 ${theme.space.small}`};
+  width: 100%;
 
   &:hover {
     ${inputTextHover}
@@ -468,6 +471,10 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${({ disabled }) => disabled && inputTextDisabled}
 
   ${inputTextValidation}
+`
+
+const IconWrapper = styled.div`
+  justify-self: right;
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
