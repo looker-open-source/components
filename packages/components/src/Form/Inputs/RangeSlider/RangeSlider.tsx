@@ -163,7 +163,7 @@ export const InternalRangeSlider = forwardRef(
       onChange,
       disabled = false,
       readOnly: readOnlyProp = false,
-      'aria-labelledby': ariaLabelledBy,
+      'aria-labelledby': ariaLabelledby,
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -363,7 +363,7 @@ export const InternalRangeSlider = forwardRef(
             aria-valuemax={max}
             aria-disabled={disabled}
             aria-valuenow={value[0]}
-            aria-labelledBy={ariaLabelledBy}
+            aria-labelledby={ariaLabelledby}
           />
           <Thumb
             position={maxPos}
@@ -379,7 +379,7 @@ export const InternalRangeSlider = forwardRef(
             aria-valuemax={max}
             aria-disabled={disabled}
             aria-valuenow={value[1]}
-            aria-labelledby={ariaLabelledBy}
+            aria-labelledby={ariaLabelledby}
           />
         </SliderTrack>
       </div>

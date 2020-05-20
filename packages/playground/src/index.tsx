@@ -57,20 +57,18 @@ const App: FC = () => {
       </Grid>
       <Grid columns={2}>
         <FieldRangeSlider
-          defaultValue={[13, 17]}
           detail="detail"
           description="description"
           label="Label"
-          min={10}
-          max={20}
+          min={300}
+          max={500}
         />
         <FieldRangeSlider
-          defaultValue={[13, 17]}
           detail="detail"
           description="description"
           label="Label"
-          min={10}
-          max={20}
+          min={5}
+          max={50}
         />
         <RangeSlider min={10} max={20} />
       </Grid>

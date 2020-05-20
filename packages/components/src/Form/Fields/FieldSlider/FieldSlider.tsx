@@ -44,7 +44,6 @@ const FieldSliderComponent = forwardRef(
         {...pickFieldProps(omit(props, 'validationMessage'))}
         id={id}
       >
-        {' '}
         <Slider
           {...omitFieldProps(props)}
           aria-describedby={`${id}-describedby`}
