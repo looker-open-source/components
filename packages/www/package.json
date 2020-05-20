@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.34",
+  "version": "0.7.36",
   "devDependencies": {
     "@looker/components": "*",
     "@looker/design-tokens": "*",
