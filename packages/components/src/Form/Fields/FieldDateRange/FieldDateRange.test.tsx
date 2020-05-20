@@ -45,7 +45,10 @@ afterEach(() => {
 test('FieldDateRange renders and displays label', () => {
   const wrapper = mountWithTheme(
     <FieldDateRange
-      defaultValue={[new Date(Date.now()), new Date(Date.now())]}
+      defaultValue={{
+        from: new Date('June 3, 2019'),
+        to: new Date('June 9, 2019'),
+      }}
       id="FieldDateRangeID"
       label="Test Label"
     />
@@ -54,40 +57,31 @@ test('FieldDateRange renders and displays label', () => {
   expect(wrapper.text()).toMatch(`Test Label`)
 })
 
-test('FieldDateRange should accept detail and description attributes', () => {
-  const { getByLabelText } = renderWithTheme(
-    <FieldDateRange
-      defaultValue={[new Date(Date.now()), new Date(Date.now())]}
-      description="this is the description"
-      detail="5/50"
-      id="FieldDateRangeID"
-      label="Label"
-    />
-  )
-
-  const input = getByLabelText('Label')
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
-})
-
 test('FieldDateRange should accept a disabled prop', () => {
-  const { getByLabelText } = renderWithTheme(
+  const { getAllByRole } = renderWithTheme(
     <FieldDateRange
-      defaultValue={[new Date(Date.now()), new Date(Date.now())]}
+      defaultValue={{
+        from: new Date('June 3, 2019'),
+        to: new Date('June 9, 2019'),
+      }}
       disabled
       id="FieldDateRangeID"
       label="Disabled Label"
     />
   )
 
-  const input = getByLabelText('Disabled Label')
-  expect(input.getAttribute('disabled')).toBeDefined()
+  const input = getAllByRole('textbox')
+  expect(input[0].getAttribute('disabled')).toBeDefined()
+  expect(input[1].getAttribute('disabled')).toBeDefined()
 })
 
 test('FieldDateRange should accept required attributes', () => {
   const { getByText } = renderWithTheme(
     <FieldDateRange
-      defaultValue={[new Date(Date.now()), new Date(Date.now())]}
+      defaultValue={{
+        from: new Date('June 3, 2019'),
+        to: new Date('June 9, 2019'),
+      }}
       id="FieldDateRangeID"
       label="Required Label"
       required
@@ -101,7 +95,10 @@ test('FieldDateRange should display error message', () => {
 
   const { getByText } = renderWithTheme(
     <FieldDateRange
-      defaultValue={[new Date(Date.now()), new Date(Date.now())]}
+      defaultValue={{
+        from: new Date('June 3, 2019'),
+        to: new Date('June 9, 2019'),
+      }}
       id="FieldDateRangeID"
       label="Validation Label"
       validationMessage={{ message: errorMessage, type: 'error' }}

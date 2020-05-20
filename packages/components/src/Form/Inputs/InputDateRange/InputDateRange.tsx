@@ -442,6 +442,7 @@ const MultiCalendarLayout = styled.div<SpaceProps>`
 
 interface InputTextGroupWrapperProps extends BorderProps, ColorProps {
   active: boolean
+  disabled?: boolean
   validationType?: 'error'
 }
 
