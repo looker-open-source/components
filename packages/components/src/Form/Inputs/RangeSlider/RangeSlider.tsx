@@ -393,7 +393,6 @@ export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
   ${space}
   padding: ${({ theme: { space } }) => `${space.xlarge} 0 ${space.small}`};
-  max-width: 500px;
 `
 
 const SliderTrack = styled.div`

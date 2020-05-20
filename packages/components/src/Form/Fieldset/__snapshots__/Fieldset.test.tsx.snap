@@ -141,10 +141,6 @@ exports[`Fieldset 1`] = `
 }
 
 .c3 .c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
