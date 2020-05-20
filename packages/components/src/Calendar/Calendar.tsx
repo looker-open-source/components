@@ -29,6 +29,7 @@ import 'react-day-picker/lib/style.css'
 import styled from 'styled-components'
 import has from 'lodash/has'
 import { mix } from 'polished'
+import noop from 'lodash/noop'
 import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from '../utils/i18n'
 import { inputTextFocus } from '../Form/Inputs/InputText'
@@ -49,6 +50,7 @@ interface CalendarProps {
   onPrevClick?: (date: Date) => void
   onMonthChange?: (month: Date) => void
   viewMonth?: Date
+  disabled?: boolean
 }
 
 const NoopComponent: FC = () => null
@@ -66,18 +68,24 @@ const InternalCalendar: FC<CalendarProps> = ({
   onPrevClick,
   viewMonth,
   selectedDates,
+  disabled,
 }) => {
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
+  const disableCallback = (cb: any) => {
+    // allows provided callback to be circumvented by disabled prop
+    return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
+  }
+
   return (
     <CalendarContext.Provider
       value={{
-        onNextClick,
-        onNowClick,
-        onPrevClick,
-        showNextButton,
-        showPreviousButton,
+        onNextClick: disableCallback(onNextClick),
+        onNowClick: disableCallback(onNowClick),
+        onPrevClick: disableCallback(onPrevClick),
+        showNextButton: !disabled && showNextButton,
+        showPreviousButton: !disabled && showPreviousButton,
         size,
       }}
     >
@@ -87,7 +95,7 @@ const InternalCalendar: FC<CalendarProps> = ({
         locale={locale}
         month={viewMonth}
         showOutsideDays={true}
-        onDayClick={onDayClick}
+        onDayClick={disableCallback(onDayClick)}
         navbarElement={CalendarNav}
         captionElement={NoopComponent}
         modifiers={modifiers}
@@ -107,7 +115,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     border: 1px solid transparent;
     &:focus {
       outline: none;
-      ${inputTextFocus}
+      ${({ disabled }) => !disabled && inputTextFocus}
     }
   }
   .DayPicker-Month {
@@ -132,25 +140,35 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     justify-items: center;
     border: 1px solid transparent;
     transition: background-color 110ms linear;
-    color: ${({ theme }) => theme.colors.palette.charcoal700};
+    color: ${({ theme, disabled }) =>
+      disabled
+        ? theme.colors.palette.charcoal500
+        : theme.colors.palette.charcoal700};
+    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
     &.DayPicker-Day--outside {
       color: ${({ theme }) => theme.colors.palette.charcoal300};
     }
     &--today {
-      color: ${({ theme }) => theme.colors.semanticColors.primary.main};
+      color: ${({ theme, disabled }) =>
+        !disabled && theme.colors.semanticColors.primary.main};
     }
     &--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
       position: static;
-      background-color: ${({ theme }) =>
-        theme.colors.semanticColors.primary.main};
+      background-color: ${({ theme, disabled }) =>
+        disabled
+          ? theme.colors.palette.charcoal500
+          : theme.colors.semanticColors.primary.main};
       &:hover {
-        background-color: ${({ theme }) =>
-          theme.colors.semanticColors.primary.dark};
+        background-color: ${({ theme, disabled }) =>
+          disabled
+            ? theme.colors.palette.charcoal500
+            : theme.colors.semanticColors.primary.dark};
       }
     }
     &:focus {
       border-width: 2px;
-      border-color: ${(props) => props.theme.colors.palette.purple300};
+      border-color: ${({ theme: { colors }, disabled }) =>
+        disabled ? colors.palette.charcoal200 : colors.palette.purple300};
       outline: none;
     }
   }
@@ -162,8 +180,10 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     .DayPicker-Day--selected {
       &.DayPicker-Day--outside,
       &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
-        background-color: ${({ theme }) =>
-          theme.colors.semanticColors.primary.light};
+        background-color: ${({ theme, disabled }) =>
+          disabled
+            ? theme.colors.palette.charcoal200
+            : theme.colors.semanticColors.primary.light};
         color: ${({ theme }) =>
           mix(
             0.65,
@@ -207,9 +227,10 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   &:not(.DayPicker--interactionDisabled) {
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
       &:hover {
-        background-color: ${({ theme }) =>
-          theme.colors.semanticColors.primary.light};
-        color: ${({ theme }) => theme.colors.semanticColors.primary.main};
+        background-color: ${({ theme, disabled }) =>
+          disabled ? 'transparent' : theme.colors.semanticColors.primary.light};
+        color: ${({ theme, disabled }) =>
+          !disabled && theme.colors.semanticColors.primary.main};
       }
     }
   }
