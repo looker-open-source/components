@@ -24,8 +24,9 @@
     "build": "run-p -c build:*",
     "build:es": "yarn lerna exec --scope '@looker/*' --stream 'BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --no-comments'",
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
+    "prerelease": "yarn build",
+    "release": "yarn lerna publish",
     "clean": "rm -Rf packages/*/lib",
-    "prepublishOnly": "yarn build",
     "deploy": "yarn workspace www deploy",
     "playground": "yarn workspace playground start",
     "server": "yarn workspace server start",
@@ -85,16 +86,13 @@
   "lint-staged": {
     "**/*.ts?(x)": [
       "stylelint",
-      "eslint --cache",
-      "git add"
+      "eslint --cache"
     ],
     "**/*.js?(x)": [
-      "eslint --cache",
-      "git add"
+      "eslint --cache"
     ],
     "**/*.mdx": [
-      "eslint",
-      "git add"
+      "eslint"
     ]
   },
   "pre-commit": [

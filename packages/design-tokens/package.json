@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.7.34",
+  "version": "0.7.35-beta.1+a66911d11",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -35,5 +35,5 @@
     "react-dom": "^16.9.0",
     "styled-components": "^4"
   },
-  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
+  "gitHead": "a66911d11418049c25319d4b283635e29d0d94a9"
 }
