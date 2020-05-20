@@ -185,11 +185,12 @@ export const InternalRangeSlider = forwardRef(
      * ------------------------------------------------------
      */
     const [value, setValue] = useState(sort(boundedValue))
+    const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-    const containerRect = useMeasuredElement(ref)
+    const containerRect = useMeasuredElement(containerRef)
 
-    const { mousePos, isMouseDown } = useMouseDragPosition(ref)
+    const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
     const prevMouseDown = usePreviousValue(isMouseDown)
 
     const minThumbRef = useRef<HTMLDivElement>(null)
@@ -326,9 +327,9 @@ export const InternalRangeSlider = forwardRef(
         onMouseDown={handleMouseDown}
         className={className}
         id={id}
-        ref={ref}
+        ref={setContainerRef}
       >
-        <SliderTrack>
+        <SliderTrack ref={ref}>
           <SliderFill
             fillStart={minPos}
             fillWidth={fillWidth}
@@ -385,6 +386,8 @@ export const InternalRangeSlider = forwardRef(
     )
   }
 )
+
+InternalRangeSlider.displayName = 'InternalRangeSlider'
 
 export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
