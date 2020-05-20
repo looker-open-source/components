@@ -55,7 +55,7 @@ describe('Tooltip', () => {
   test('snapshot', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" isOpen>
-        {(tooltipProps) => <Button {...tooltipProps}>Example</Button>}
+        <Button>Example</Button>
       </Tooltip>
     )
   })
@@ -63,7 +63,7 @@ describe('Tooltip', () => {
   test('Tooltip can hide its arrow', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" arrow={false} isOpen>
-        {(tooltipProps) => <Button {...tooltipProps}>Example</Button>}
+        <Button>Example</Button>
       </Tooltip>
     )
   })
@@ -71,7 +71,7 @@ describe('Tooltip', () => {
   test('trigger: open on mouseover, close on mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
-        {(tooltipProps) => <Button {...tooltipProps}>Test</Button>}
+        <Button>Test</Button>
       </Tooltip>
     )
 
@@ -89,7 +89,7 @@ describe('Tooltip', () => {
   test('close on surface mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
-        {(tooltipProps) => <Button {...tooltipProps}>Test</Button>}
+        <Button>Test</Button>
       </Tooltip>
     )
 
@@ -104,7 +104,7 @@ describe('Tooltip', () => {
   test('contains content', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
-        {(tooltipProps) => <Button {...tooltipProps}>Test</Button>}
+        <Button>Test</Button>
       </Tooltip>
     )
 
@@ -117,7 +117,7 @@ describe('Tooltip', () => {
   test('open initially, collapse on mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
-        {(tooltipProps) => <Button {...tooltipProps}>Test</Button>}
+        <Button>Test</Button>
       </Tooltip>
     )
 
@@ -134,7 +134,7 @@ describe('Tooltip', () => {
   test('supports styling props', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" width="20rem" textAlign="right">
-        {(tooltipProps) => <Button {...tooltipProps}>Test</Button>}
+        <Button>Test</Button>
       </Tooltip>
     )
 
@@ -153,9 +153,7 @@ describe('Tooltip', () => {
   test('tooltip can exceed bounds of containing overlay', () => {
     const tooltip = (
       <Tooltip content="Great knowledge here!" isOpen>
-        {(tooltipProps) => (
-          <Box {...tooltipProps}>I wish I knew more about this...</Box>
-        )}
+        <Box>I wish I knew more about this...</Box>
       </Tooltip>
     )
 
@@ -170,5 +168,41 @@ describe('Tooltip', () => {
     )
 
     assertSnapshotShallow(popover)
+  })
+
+  test('Render props version works', () => {
+    const tooltip = mountWithTheme(
+      <Tooltip content="Hello world">
+        {(props) => <Button {...props}>Test</Button>}
+      </Tooltip>
+    )
+
+    const trigger = tooltip.find(Button)
+
+    trigger.simulate('mouseover', mouseEventSimulator)
+    const surface = tooltip.find(OverlaySurface)
+    expect(surface.exists()).toBeTruthy()
+
+    trigger.simulate('mouseout', mouseEventSimulator)
+    const postMouseoutSurface = tooltip.find(OverlaySurface)
+    expect(postMouseoutSurface.exists()).toBeFalsy()
+  })
+
+  test('Render props version works', () => {
+    const tooltip = mountWithTheme(
+      <Tooltip content="Hello world">
+        {(props) => <Button {...props}>Test</Button>}
+      </Tooltip>
+    )
+
+    const trigger = tooltip.find(Button)
+
+    trigger.simulate('mouseover', mouseEventSimulator)
+    const surface = tooltip.find(OverlaySurface)
+    expect(surface.exists()).toBeTruthy()
+
+    trigger.simulate('mouseout', mouseEventSimulator)
+    const postMouseoutSurface = tooltip.find(OverlaySurface)
+    expect(postMouseoutSurface.exists()).toBeFalsy()
   })
 })

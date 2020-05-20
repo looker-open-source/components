@@ -25,16 +25,28 @@
  */
 
 import React from 'react'
-import { Box, IconButton, Tooltip } from '@looker/components'
+import { SpaceVertical, IconButton, Tooltip } from '@looker/components'
 
 export function TooltipDemo() {
   return (
-    <Box p="xxxlarge">
-      <Tooltip content="Start editing" placement="top">
-        {(tooltipProps) => (
-          <IconButton icon="Edit" label="Edit something" {...tooltipProps} />
-        )}
-      </Tooltip>
-    </Box>
+    <SpaceVertical m="xxxlarge">
+      <div>
+        <Tooltip content="I'm a little teapot">Some Text</Tooltip>
+      </div>
+
+      <div>
+        <Tooltip content="Start editing" placement="top">
+          {(tooltipProps) => (
+            <IconButton icon="Edit" label="Edit something" {...tooltipProps} />
+          )}
+        </Tooltip>
+      </div>
+
+      <div>
+        <Tooltip content="Start editing" placement="top">
+          <IconButton icon="Edit" label="Edit something" />
+        </Tooltip>
+      </div>
+    </SpaceVertical>
   )
 }

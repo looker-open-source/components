@@ -24,61 +24,31 @@
 
  */
 
-import { css, createGlobalStyle } from 'styled-components'
+import React, { FC, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import { fonts, reset } from './GlobalStyle'
 
-export const fonts = (brand: string) => `
-  body,
-  button,
-  input,
-  textarea,
-  select {
-    font-family: ${brand};
+const isIE11 =
+  typeof window === `undefined` ||
+  typeof document === `undefined` ||
+  (!!window.MSInputMethodContext &&
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    !!document.documentMode)
+
+const ieGlobalCSS = (font: string, background: string) => `
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    ${fonts(font)}
+    ${reset(background)}
   }
 `
 
-export const reset = (background: string) => `
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+export const IEGlobalStyle: FC = () => {
+  const theme = useContext(ThemeContext)
+  if (!isIE11) return null
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ol,
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  ol,
-  ul {
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  body {
-    background-color: ${background};
-  }
-`
-
-export const GlobalStyle = createGlobalStyle`
-  ${css`
-    ${({ theme }) => fonts(theme.fonts.brand)}
-    ${({ theme }) => reset(theme.colors.palette.white)}
-  `}
-`
+  return (
+    <style>{ieGlobalCSS(theme.fonts.brand, theme.colors.palette.white)}</style>
+  )
+}

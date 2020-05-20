@@ -533,7 +533,7 @@ const InputTimeInternal = forwardRef(
 const InputTimeLayout = styled.div`
   display: grid;
   grid-gap: 0.15rem;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, min-content);
   align-items: center;
 `
 
@@ -542,7 +542,7 @@ export const InputTime = styled(InputTimeInternal)`
   ${border}
   ${space}
   display: inline-block;
-  padding: ${({ theme }) => theme.space.xxsmall};
+  padding: 0 ${({ theme }) => theme.space.xsmall};
   background: ${({ theme }) => theme.colors.palette.white};
   &:focus-within {
     ${inputTextFocus}
@@ -571,17 +571,21 @@ const InputTimeWrapper = styled.div<{
       : theme.colors.palette.charcoal300};
 
   ${InputText} {
+    background: transparent;
     border: none;
     border-radius: 0;
+    box-shadow: none;
+    color: inherit;
+    height: 34px;
+    line-height: ${({ theme }) => theme.lineHeights.medium};
     padding: 0;
     margin: 0;
-    box-shadow: none;
-    background: transparent;
-    width: 1.75rem;
-    height: auto;
-    line-height: ${({ theme }) => theme.lineHeights.medium};
-    text-align: center;
-    color: inherit;
+    width: 1.25rem;
+
+    input {
+      text-align: center;
+    }
+
     &::placeholder {
       color: inherit;
     }
