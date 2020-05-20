@@ -28,6 +28,8 @@ import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
+export type RadioGroupProps = OptionsGroupProps<string>
+
 function getCheckedProps(
   optionValue: string,
   isControlled: boolean,
@@ -39,7 +41,7 @@ function getCheckedProps(
   return { [key]: valueToUse === optionValue }
 }
 
-export const RadioGroup: FC<OptionsGroupProps> = ({
+export const RadioGroup: FC<RadioGroupProps> = ({
   disabled,
   inline,
   options,

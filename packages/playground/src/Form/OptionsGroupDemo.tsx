@@ -24,8 +24,7 @@
 
  */
 
-import noop from 'lodash/noop'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CheckboxGroup,
   FieldCheckboxGroup,
@@ -55,42 +54,43 @@ export const OptionsGroupDemo = () => {
     },
   ]
 
-  const value = ['swiss', 'cheddar']
+  const defaultValueCheckbox = ['swiss', 'cheddar']
+  const defaultValueRadio = 'swiss'
+
+  const [valueCheckbox, setValueCheckbox] = useState(['cheddar'])
+  const [valueRadio, setValueRadio] = useState('cheddar')
+
   return (
     <Grid m="xxlarge">
       <CheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group1"
         options={options}
       />
       <CheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group2"
         inline
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        value={valueCheckbox}
+        onChange={setValueCheckbox}
         inline
         name="group1"
-        label="Cheeses"
+        label="Cheeses (controlled)"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group1"
         required
         label="Cheeses"
@@ -102,8 +102,7 @@ export const OptionsGroupDemo = () => {
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         validationMessage={{
           message: 'Select at least 1 cheese',
           type: 'error',
@@ -117,22 +116,19 @@ export const OptionsGroupDemo = () => {
       />
       <CheckboxGroup
         disabled
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group1"
         options={options}
       />
       <CheckboxGroup
         disabled
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         name="group2"
         inline
         options={options}
       />
       <FieldCheckboxGroup
         disabled
-        onChange={noop}
         defaultValue={['swiss']}
         name="group1"
         label="Cheeses"
@@ -141,7 +137,6 @@ export const OptionsGroupDemo = () => {
       />
       <FieldCheckboxGroup
         disabled
-        onChange={noop}
         defaultValue={['swiss']}
         inline
         name="group1"
@@ -150,29 +145,26 @@ export const OptionsGroupDemo = () => {
         options={options}
       />
       <RadioGroup
-        onChange={noop}
-        value="cheddar"
+        defaultValue={defaultValueRadio}
         name="group1"
         options={options}
       />
       <RadioGroup
-        onChange={noop}
-        value="cheddar"
+        defaultValue={defaultValueRadio}
         name="group2"
         inline
         options={options}
       />
       <FieldRadioGroup
-        onChange={noop}
-        defaultValue={value}
+        onChange={setValueRadio}
+        value={valueRadio}
         name="group1"
         required
-        label="Cheeses"
+        label="Cheeses (controlled)"
         options={options}
       />
       <FieldRadioGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueRadio}
         inline
         required
         name="group1"

@@ -37,9 +37,8 @@ interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {
   inline?: boolean
 }
 
-export interface OptionsGroupProps<
-  ValueType extends string | string[] = string
-> extends OptionsGroupLayout {
+export interface OptionsGroupProps<ValueType extends string | string[]>
+  extends OptionsGroupLayout {
   name: string
   id?: string
   disabled?: boolean
