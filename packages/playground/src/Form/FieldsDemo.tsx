@@ -202,10 +202,18 @@ export const FieldsDemo: FC = () => {
 
       <Grid m="xxlarge" columns={2}>
         <div>
-          <FieldDate label="Field Date" />
+          <FieldDate
+            label="Field Date"
+            description="FieldDate description here"
+            detail="FieldDate detail here"
+          />
         </div>
         <div>
-          <FieldDateRange label="Field Date Range" />
+          <FieldDateRange
+            label="Field Date Range"
+            description="FieldDateRange description here"
+            detail="FieldDateRange detail here"
+          />
         </div>
         <div>
           <FieldDate label="Disabled Field Date" disabled value={new Date()} />

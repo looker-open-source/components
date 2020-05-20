@@ -164,22 +164,21 @@ export const InputDate: FC<InputDateProps> = forwardRef(
 
     return (
       <InputDateWrapper>
-        <InputTextWrapper>
-          <InputText
-            placeholder={`Date (${formatDateString(
-              new Date(Date.now()),
-              locale
-            )})`}
-            value={textInputValue}
-            onChange={handleTextInputChange}
-            validationType={renderedValidationType}
-            onBlur={handleValidation}
-            data-testid="text-input"
-            id={id}
-            ref={ref}
-            disabled={disabled}
-          />
-        </InputTextWrapper>
+        <InputText
+          placeholder={`Date (${formatDateString(
+            new Date(Date.now()),
+            locale
+          )})`}
+          value={textInputValue}
+          onChange={handleTextInputChange}
+          validationType={renderedValidationType}
+          onBlur={handleValidation}
+          data-testid="text-input"
+          id={id}
+          ref={ref}
+          disabled={disabled}
+          my="xxsmall"
+        />
         <CalendarWrapper>
           <Calendar
             selectedDates={selectedDate}
@@ -200,14 +199,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
 InputDate.displayName = 'InputDate'
 
 const InputDateWrapper = styled.div`
-  display: inline-block;
-`
-
-const InputTextWrapper = styled.div`
-  padding: ${({ theme }) => `${theme.space.xxsmall} ${theme.space.small}`};
-  ${InputText} {
-    width: 100%;
-  }
+  width: 100%;
 `
 
 const CalendarWrapper = styled.div`
