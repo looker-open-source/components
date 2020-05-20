@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React, { FC, useCallback } from 'react'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields'
@@ -54,6 +54,13 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   const name = useID(propsName)
   const isControlled = onChange !== undefined && defaultValue === undefined
 
+  const getChangeHandler = useCallback(
+    (optionValue: string) => {
+      return onChange ? () => onChange(optionValue) : undefined
+    },
+    [onChange]
+  )
+
   const radios = options.map((option) => {
     const checkedProps = getCheckedProps(
       option.value,
@@ -61,7 +68,6 @@ export const RadioGroup: FC<RadioGroupProps> = ({
       value,
       defaultValue
     )
-    const handleChange = onChange ? () => onChange(option.value) : undefined
 
     return (
       <FieldRadio
@@ -69,7 +75,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
         key={option.value}
         label={option.label}
         name={name}
-        onChange={handleChange}
+        onChange={getChangeHandler(option.value)}
         {...checkedProps}
       />
     )

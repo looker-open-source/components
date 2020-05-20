@@ -25,7 +25,7 @@
  */
 
 import xor from 'lodash/xor'
-import React, { FC, useRef } from 'react'
+import React, { FC, useCallback, useRef } from 'react'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields'
@@ -45,28 +45,35 @@ function getCheckedProps(
 
 export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   disabled,
-  inline,
   name: propsName,
   options,
   defaultValue = [],
   value,
   onChange,
+  ...rest
 }) => {
   const name = useID(propsName)
   // Keep track of the group's value for onChange argument if value prop is not used
   // (i.e.uncontrolled but with onChange prop)
   const uncontrolledValueRef = useRef(defaultValue)
 
+  const getChangeHandler = useCallback(
+    (optionValue: string) => {
+      return onChange
+        ? () => {
+            const oldValue = value || uncontrolledValueRef.current
+            const newValue = xor(oldValue, [optionValue])
+            onChange(newValue)
+            uncontrolledValueRef.current = newValue
+          }
+        : undefined
+    },
+    [onChange, value]
+  )
+
   const checkboxes = options.map((option) => {
     const checkedProps = getCheckedProps(option.value, value, defaultValue)
-    const handleChange = onChange
-      ? () => {
-          const oldValue = value || uncontrolledValueRef.current
-          const newValue = xor(oldValue, [option.value])
-          onChange(newValue)
-          uncontrolledValueRef.current = newValue
-        }
-      : undefined
+    const handleChange = getChangeHandler(option.value)
 
     return (
       <FieldCheckbox
@@ -82,7 +89,7 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   })
 
   return (
-    <Fieldset data-testid="checkbox-list" inline={inline}>
+    <Fieldset data-testid="checkbox-list" {...rest}>
       {checkboxes}
     </Fieldset>
   )
