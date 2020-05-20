@@ -68,7 +68,12 @@ Control externally via `value` and `onChange` props.
   const [value, setValue] = useState('cheddar')
   return (
     <Space align="start">
-      <RadioGroup value={value} onChange={setValue} options={options} />
+      <RadioGroup
+        name="cheeses"
+        value={value}
+        onChange={setValue}
+        options={options}
+      />
       <Paragraph>Current selection: {value}</Paragraph>
     </Space>
   )

@@ -72,7 +72,12 @@ Control externally via `value` and `onChange` props.
   const [value, setValue] = useState(['cheddar'])
   return (
     <Space align="start">
-      <CheckboxGroup value={value} onChange={setValue} options={options} />
+      <CheckboxGroup
+        name="cheeses"
+        value={value}
+        onChange={setValue}
+        options={options}
+      />
       <Paragraph>Current selection: {value.join(', ')}</Paragraph>
     </Space>
   )
