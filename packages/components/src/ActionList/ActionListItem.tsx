@@ -27,6 +27,7 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useEffect } from 'react'
+import { useID } from '../utils'
 import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
@@ -34,13 +35,28 @@ import { ActionListContext } from './ActionListContext'
 
 export interface ActionListItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
+  /**
+   *  The available actions for this item
+   */
   actions?: ReactNode
+  /**
+   *  A hidden text label for the child Actions IconButton that is accessible to assistive technology
+   *  If unprovided by the user, a random string will generated instead
+   */
+  actionsButtonLabel?: string
+  /**
+   *  The id of this item
+   */
   id: string
+  /**
+   * A boolean indicating whether this item is selectable or not (the item will appear greyed out if true)
+   */
   disabled?: boolean
 }
 
 const ActionListItemInternal: FC<ActionListItemProps> = ({
   actions,
+  actionsButtonLabel,
   children,
   className,
   disabled,
@@ -79,11 +95,17 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
     }
   }
 
+  const itemActionsButtonLabel = useID(actionsButtonLabel)
+
   const itemActions = actions && (
     <div onClick={handleMenuClick}>
       <Menu hoverDisclosureRef={actionListItemRef}>
         <MenuDisclosure>
-          <IconButton icon="DotsVert" label="Actions" size="medium" />
+          <IconButton
+            icon="DotsVert"
+            label={itemActionsButtonLabel}
+            size="medium"
+          />
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
