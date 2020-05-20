@@ -57,4 +57,6 @@ const FieldTimeComponent = forwardRef(
 
 FieldTimeComponent.displayName = 'FieldTimeComponent'
 
-export const FieldTime = styled(FieldTimeComponent)``
+export const FieldTime = styled(FieldTimeComponent)`
+  width: 100%;
+`

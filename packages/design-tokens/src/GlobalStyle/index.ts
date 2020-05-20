@@ -23,4 +23,6 @@
  SOFTWARE.
 
  */
-export * from './GlobalStyle'
+
+export { GlobalStyle } from './GlobalStyle'
+export { IEGlobalStyle } from './IE'

@@ -8,7 +8,7 @@ A simple Tooltip component with out of the box styles and behavior.
 
 ```jsx
 <Tooltip content="More things you should know...">
-  {(tooltipProps) => <Button {...tooltipProps}>Hover for Tooltip</Button>}
+  <Button>Hover for Tooltip</Button>
 </Tooltip>
 ```
 
@@ -25,13 +25,9 @@ A simple Tooltip component with out of the box styles and behavior.
     </>
   }
 >
-  {(tooltipProps) => (
-    <ButtonOutline {...tooltipProps}>Tooltip with lots of text</ButtonOutline>
-  )}
+  <ButtonOutline>Tooltip with lots of text</ButtonOutline>
 </Tooltip>
 ```
-
-## Tooltip Placement
 
 Tooltip allows you to specify where it should appear in relation to the target element. It accepts the following values:
 
@@ -51,35 +47,49 @@ Tooltip allows you to specify where it should appear in relation to the target e
 1. `left-start`
 
 ```jsx
-<Tooltip content="I'm on top" placement="top">
-  {(tooltipProps) => (
-    <Button {...tooltipProps}>
-      Top
-    </Button>
-  )}
-</Tooltip>
+<Space around>
+  <Tooltip content="I'm on top" placement="top">
+    <Button>Top</Button>
+  </Tooltip>
+  <Tooltip content="I'm on bottom" placement="bottom">
+    <Button>Bottom</Button>
+  </Tooltip>
+  <Tooltip content="I'm on the left" placement="left">
+    <Button>Left</Button>
+  </Tooltip>
+  <Tooltip content="I'm on the right" placement="right">
+    <Button>Right</Button>
+  </Tooltip>
+</Space>
+```
 
-<Tooltip content="I'm on bottom" placement="bottom">
-  {(tooltipProps) => (
-    <Button {...tooltipProps}>
-      Bottom
-    </Button>
-  )}
-</Tooltip>
+## "Render Prop" style
 
-<Tooltip content="I'm on the left" placement="left">
-  {(tooltipProps) => (
-    <Button {...tooltipProps}>
-      Left
-    </Button>
-  )}
-</Tooltip>
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
 
-<Tooltip content="I'm on the right" placement="right">
-  {(tooltipProps) => (
-    <Button {...tooltipProps}>
-      Right
+```jsx
+<Tooltip content="Example using render props">
+  {(props) => <Button {...props}>Render Props Example</Button>}
+</Tooltip>
+```
+
+If you need to be very specific
+
+```jsx
+<Tooltip content="Example using render props exploded">
+  {(props) => (
+    <Button
+      aria-describedby={props['aria-describedby']}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
+      onMouseOut={props.onMouseOut}
+      onMouseOver={props.onMouseOver}
+      ref={props.ref}
+    >
+      Render Props Example
     </Button>
   )}
 </Tooltip>
 ```
+
+## Tooltip Placement

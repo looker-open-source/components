@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.7.30",
+  "version": "0.7.34",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -22,7 +22,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.149",
+    "@types/lodash": "^4.14.151",
     "@types/styled-components": "^4.4.1",
     "csstype": "^2.6.10",
     "lodash": "^4.17.15",

@@ -60,6 +60,10 @@ export const InlineInputTextInternal = forwardRef(
 
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
+    /**
+     * &#8203; is a zero-width space – ensures that visibleText gets accurate line-height applied
+     */
+
     return (
       <div className={className} data-testid="inlineInputText">
         <Input
@@ -70,7 +74,7 @@ export const InlineInputTextInternal = forwardRef(
           {...pick(props, inputPropKeys)}
         />
         <VisibleText displayValue={displayValue}>
-          {displayValue || placeholder}
+          {displayValue || placeholder}&#8203;
         </VisibleText>
       </div>
     )
@@ -119,7 +123,6 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   justify-content: center;
   position: relative;
   min-width: 2rem;
-  min-height: ${(props) => props.theme.lineHeights.medium};
 
   :focus,
   :hover {
