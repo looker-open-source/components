@@ -135,7 +135,7 @@ exports[`A FieldText with default label 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"
-    id="FieldTextID-labeledby"
+    id="FieldTextID-labelledby"
   >
     👍
   </label>
@@ -325,7 +325,7 @@ exports[`A FieldText with label inline 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"
-    id="FieldTextID-labeledby"
+    id="FieldTextID-labelledby"
   >
     👍
   </label>

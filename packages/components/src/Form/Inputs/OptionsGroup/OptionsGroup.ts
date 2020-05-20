@@ -39,7 +39,7 @@ interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {
 
 export interface OptionsGroupProps<ValueType extends string | string[]>
   extends OptionsGroupLayout {
-  name: string
+  name?: string
   id?: string
   disabled?: boolean
   required?: boolean

@@ -103,7 +103,7 @@ exports[`A FieldTextArea with default label 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labeledby"
+    id="FieldTextAreaID-labelledby"
   >
     👍
   </label>
@@ -258,7 +258,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labeledby"
+    id="FieldTextAreaID-labelledby"
   >
     👍
   </label>

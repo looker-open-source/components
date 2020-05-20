@@ -24,6 +24,7 @@
 
  */
 import React, { FC } from 'react'
+import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
@@ -43,13 +44,16 @@ function getCheckedProps(
 
 export const RadioGroup: FC<RadioGroupProps> = ({
   disabled,
-  inline,
+  name: propsName,
   options,
-  defaultValue = '',
+  defaultValue,
   value,
   onChange,
+  ...rest
 }) => {
-  const isControlled = onChange !== undefined
+  const name = useID(propsName)
+  const isControlled = onChange !== undefined && defaultValue === undefined
+
   const radios = options.map((option) => {
     const checkedProps = getCheckedProps(
       option.value,
@@ -58,11 +62,13 @@ export const RadioGroup: FC<RadioGroupProps> = ({
       defaultValue
     )
     const handleChange = onChange ? () => onChange(option.value) : undefined
+
     return (
       <FieldRadio
         disabled={option.disabled || disabled}
         key={option.value}
         label={option.label}
+        name={name}
         onChange={handleChange}
         {...checkedProps}
       />
@@ -70,7 +76,12 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   })
 
   return (
-    <Fieldset data-testid="radio-list" disabled={disabled} inline={inline}>
+    <Fieldset
+      data-testid="radio-list"
+      role="radiogroup"
+      disabled={disabled}
+      {...rest}
+    >
       {radios}
     </Fieldset>
   )

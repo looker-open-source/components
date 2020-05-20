@@ -62,20 +62,14 @@ export const OptionsGroupDemo = () => {
 
   return (
     <Grid m="xxlarge">
+      <CheckboxGroup defaultValue={defaultValueCheckbox} options={options} />
       <CheckboxGroup
         defaultValue={defaultValueCheckbox}
-        name="group1"
-        options={options}
-      />
-      <CheckboxGroup
-        defaultValue={defaultValueCheckbox}
-        name="group2"
         inline
         options={options}
       />
       <FieldCheckboxGroup
         defaultValue={defaultValueCheckbox}
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
@@ -84,14 +78,12 @@ export const OptionsGroupDemo = () => {
         value={valueCheckbox}
         onChange={setValueCheckbox}
         inline
-        name="group1"
         label="Cheeses (controlled)"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
         defaultValue={defaultValueCheckbox}
-        name="group1"
         required
         label="Cheeses"
         description="Pick all your cheeses"
@@ -109,7 +101,6 @@ export const OptionsGroupDemo = () => {
         }}
         inline
         required
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
@@ -117,20 +108,17 @@ export const OptionsGroupDemo = () => {
       <CheckboxGroup
         disabled
         defaultValue={defaultValueCheckbox}
-        name="group1"
         options={options}
       />
       <CheckboxGroup
         disabled
         defaultValue={defaultValueCheckbox}
-        name="group2"
         inline
         options={options}
       />
       <FieldCheckboxGroup
         disabled
         defaultValue={['swiss']}
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
@@ -139,26 +127,19 @@ export const OptionsGroupDemo = () => {
         disabled
         defaultValue={['swiss']}
         inline
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <RadioGroup
         defaultValue={defaultValueRadio}
-        name="group1"
         options={options}
+        onChange={alert}
       />
-      <RadioGroup
-        defaultValue={defaultValueRadio}
-        name="group2"
-        inline
-        options={options}
-      />
+      <RadioGroup defaultValue={defaultValueRadio} inline options={options} />
       <FieldRadioGroup
         onChange={setValueRadio}
         value={valueRadio}
-        name="group1"
         required
         label="Cheeses (controlled)"
         options={options}
@@ -167,7 +148,6 @@ export const OptionsGroupDemo = () => {
         defaultValue={defaultValueRadio}
         inline
         required
-        name="group1"
         label="Cheeses"
         options={options}
       />
