@@ -26,6 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import omit from 'lodash/omit'
 import { useID } from '../../../utils'
 import { Slider, SliderProps } from '../../Inputs/Slider'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -38,7 +39,12 @@ const FieldSliderComponent = forwardRef(
   (props: FieldSliderProps, ref: Ref<HTMLInputElement>) => {
     const id = useID(props.id)
     return (
-      <Field data-testid="FieldSliderId" {...pickFieldProps(props)} id={id}>
+      <Field
+        data-testid="FieldSliderId"
+        {...pickFieldProps(omit(props, 'validationMessage'))}
+        id={id}
+      >
+        {' '}
         <Slider
           {...omitFieldProps(props)}
           aria-describedby={`${id}-describedby`}

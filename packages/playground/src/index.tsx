@@ -30,6 +30,7 @@ import {
   FieldRangeSlider,
   FieldSlider,
   Grid,
+  RangeSlider,
 } from '@looker/components'
 
 const App: FC = () => {
@@ -70,8 +71,8 @@ const App: FC = () => {
           label="Label"
           min={10}
           max={20}
-          validationMessage={{ message: 'errorMessage', type: 'error' }}
         />
+        <RangeSlider min={10} max={20} />
       </Grid>
     </ComponentsProvider>
   )
