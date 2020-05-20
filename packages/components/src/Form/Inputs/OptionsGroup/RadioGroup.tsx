@@ -76,12 +76,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   })
 
   return (
-    <Fieldset
-      data-testid="radio-list"
-      role="radiogroup"
-      disabled={disabled}
-      {...rest}
-    >
+    <Fieldset data-testid="radio-list" disabled={disabled} {...rest}>
       {radios}
     </Fieldset>
   )

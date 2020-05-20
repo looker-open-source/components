@@ -26,6 +26,7 @@
 
 import xor from 'lodash/xor'
 import React, { FC, useRef } from 'react'
+import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
@@ -45,11 +46,13 @@ function getCheckedProps(
 export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   disabled,
   inline,
+  name: propsName,
   options,
   defaultValue = [],
   value,
   onChange,
 }) => {
+  const name = useID(propsName)
   // Keep track of the group's value for onChange argument if value prop is not used
   // (i.e.uncontrolled but with onChange prop)
   const uncontrolledValueRef = useRef(defaultValue)
@@ -71,6 +74,7 @@ export const CheckboxGroup: FC<CheckboxGroupProps> = ({
         disabled={option.disabled || disabled}
         key={option.value}
         label={option.label}
+        name={name}
         value={option.value}
         {...checkedProps}
       />
