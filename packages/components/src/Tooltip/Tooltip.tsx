@@ -27,7 +27,15 @@
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from '@popperjs/core'
-import React, { useMemo, useState, Ref, FC, ReactNode } from 'react'
+import React, {
+  cloneElement,
+  FC,
+  isValidElement,
+  useMemo,
+  useState,
+  ReactNode,
+  Ref,
+} from 'react'
 import { omit } from 'lodash'
 import { ModalContext } from '../Modal'
 import {
@@ -100,20 +108,22 @@ export interface UseTooltipProps {
 
 export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
+type TooltipRenderProp = (tooltipProps: {
+  'aria-describedby': string
+  onBlur: () => void
+  onFocus: () => void
+  onMouseOut: (event: React.MouseEvent<Element, MouseEvent>) => void
+  onMouseOver: () => void
+  ref: Ref<any>
+}) => ReactNode
+
 export interface TooltipProps extends UseTooltipProps {
   content: ReactNode
   /**
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
-  children: (tooltipProps: {
-    'aria-describedby': string
-    onBlur: () => void
-    onFocus: () => void
-    onMouseOut: (event: React.MouseEvent<Element, MouseEvent>) => void
-    onMouseOver: () => void
-    ref: Ref<any>
-  }) => ReactNode
+  children: ReactNode | TooltipRenderProp
 }
 export function useTooltip({
   arrow = true,
@@ -234,6 +244,12 @@ export function useTooltip({
   }
 }
 
+function isRenderProp(
+  children: ReactNode | TooltipRenderProp
+): children is TooltipRenderProp {
+  return typeof children === 'function'
+}
+
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   const tooltipProps = useTooltip(props)
 
@@ -241,10 +257,23 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
     ...omit(tooltipProps, ['tooltip', 'popperInstanceRef']),
   }
 
+  let target = children
+
+  if (isValidElement(children)) {
+    target = cloneElement(children, { ...tooltipPropsLabeled })
+  } else if (isRenderProp(children)) {
+    target = children(tooltipPropsLabeled)
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Element "${typeof target}" can't be used as target for Tooltip`
+    )
+  }
+
   return (
     <>
       {tooltipProps.tooltip}
-      {children(tooltipPropsLabeled)}
+      {target}
     </>
   )
 }

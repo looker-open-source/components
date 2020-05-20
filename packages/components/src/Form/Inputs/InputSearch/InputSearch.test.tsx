@@ -25,7 +25,7 @@
  */
 
 import 'jest-styled-components'
-import React from 'react'
+import React, { createRef } from 'react'
 import {
   mountWithTheme,
   assertSnapshot,
@@ -45,6 +45,13 @@ test('InputSearch hideSearchIcon removes the icon', () => {
 test('InputSearch displays placeholder', () => {
   const wrapper = mountWithTheme(<InputSearch placeholder="Type your search" />)
   expect(wrapper.props().children.props.placeholder).toEqual('Type your search')
+})
+
+test('InputSearch supports ref assignment', () => {
+  const inputRef = createRef<HTMLInputElement>()
+
+  const wrapper = mountWithTheme(<InputSearch ref={inputRef} />)
+  expect(wrapper.find('input')).toBeDefined()
 })
 
 test('InputSearch displays value', () => {

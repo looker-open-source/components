@@ -25,6 +25,7 @@
  */
 
 export type SizeNone = 'none'
+export type SizeXXXSmall = 'xxxsmall'
 export type SizeXXSmall = 'xxsmall'
 export type SizeXSmall = 'xsmall'
 export type SizeSmall = 'small'
@@ -37,6 +38,7 @@ export type SizeXXXXLarge = 'xxxxlarge'
 
 export type SpacingSizes =
   | SizeNone
+  | SizeXXXSmall
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall

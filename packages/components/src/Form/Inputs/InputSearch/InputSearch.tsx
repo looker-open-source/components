@@ -24,7 +24,14 @@
 
  */
 
-import React, { FC, useEffect, useState, FormEvent, MouseEvent } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useEffect,
+  useState,
+  FormEvent,
+  MouseEvent,
+} from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../../Icon'
 import { InputSearchBase, InputSearchBaseProps } from './InputSearchBase'
@@ -46,58 +53,66 @@ export const SearchIcon = styled(Icon)`
   padding-left: ${(props) => props.theme.space.small};
 `
 
-export const InputSearch: FC<InputSearchProps> = ({
-  summary,
-  value: valueProp,
-  disabled,
-  hideControls = false,
-  hideSearchIcon = false,
-  onChange,
-  onClear,
-  defaultValue,
-  ...props
-}) => {
-  const [value, setValue] = useState<string | undefined>()
+export const InputSearch = forwardRef(
+  (
+    {
+      summary,
+      value: valueProp,
+      disabled,
+      hideControls = false,
+      hideSearchIcon = false,
+      onChange,
+      onClear,
+      defaultValue,
+      ...props
+    }: InputSearchProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
+    const [value, setValue] = useState<string | undefined>()
 
-  const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
-    setValue('')
-    onClear && onClear(e)
-    onChange &&
-      onChange({
-        currentTarget: { value: '' },
-      } as FormEvent<HTMLInputElement>)
+    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
+      setValue('')
+      onClear && onClear(e)
+      onChange &&
+        onChange({
+          currentTarget: { value: '' },
+        } as FormEvent<HTMLInputElement>)
+    }
+
+    const handleChange = (e: FormEvent<HTMLInputElement>) => {
+      const newValue = (e.target as HTMLInputElement).value
+      setValue(newValue)
+      onChange && onChange(e)
+    }
+
+    // only update when valueProp changes, but not defaultValue
+    useEffect(() => {
+      setValue(valueProp || defaultValue)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [valueProp])
+
+    return (
+      <InputSearchBase
+        {...props}
+        value={value}
+        ref={ref}
+        onChange={handleChange}
+        searchIcon={
+          hideSearchIcon ? undefined : <SearchIcon name="Search" size={30} />
+        }
+        searchControls={
+          !hideControls ? (
+            <InputSearchControls
+              onClear={handleClear}
+              disabled={disabled}
+              summary={summary}
+              showClear={!!(value && value.length >= 0)}
+            />
+          ) : undefined
+        }
+      />
+    )
   }
+)
 
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    const newValue = (e.target as HTMLInputElement).value
-    setValue(newValue)
-    onChange && onChange(e)
-  }
-
-  // only update when valueProp changes, but not defaultValue
-  useEffect(() => {
-    setValue(valueProp || defaultValue)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueProp])
-
-  return (
-    <InputSearchBase
-      {...props}
-      value={value}
-      onChange={handleChange}
-      searchIcon={
-        hideSearchIcon ? undefined : <SearchIcon name="Search" size={30} />
-      }
-      searchControls={
-        !hideControls ? (
-          <InputSearchControls
-            onClear={handleClear}
-            disabled={disabled}
-            summary={summary}
-            showClear={!!(value && value.length >= 0)}
-          />
-        ) : undefined
-      }
-    />
-  )
-}
+InputSearch.displayName = 'InputSearch'

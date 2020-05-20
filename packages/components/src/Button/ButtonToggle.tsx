@@ -24,24 +24,30 @@
 
  */
 
-import uniqueId from 'lodash/uniqueId'
-import React, { forwardRef, Ref, useState, ChangeEvent, FC } from 'react'
+import React, { forwardRef, Ref, useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
-import { useControlWarn } from '../utils'
+import { useControlWarn, useID } from '../utils'
 import { ButtonItemLabel } from './ButtonItem'
-import { ButtonGroupOrToggleProps, ButtonSet, ButtonSetType } from './ButtonSet'
+import {
+  ButtonGroupOrToggleBaseProps,
+  ButtonSet,
+  ButtonSetType,
+} from './ButtonSet'
 
 const ButtonToggleComponent = (ButtonSet as unknown) as ButtonSetType<string>
 
-const ButtonToggleFactory = forwardRef(
+const ButtonToggleLayout = forwardRef(
   (
     {
       onChange,
       value: controlledValue,
       ...props
-    }: ButtonGroupOrToggleProps<string>,
+    }: ButtonGroupOrToggleBaseProps<string>,
     ref: Ref<HTMLDivElement>
   ) => {
+    //
+    const name = useID(props.name)
+
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'value'],
       isControlledCheck: () => onChange !== undefined,
@@ -50,63 +56,79 @@ const ButtonToggleFactory = forwardRef(
 
     const [value, setValue] = useState<string>()
 
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    function handleChange(e?: ChangeEvent<HTMLInputElement>) {
+      const newValue = e ? e.target.value : ''
       if (onChange) {
-        onChange(e.target.value)
+        onChange(newValue)
       } else {
-        setValue(e.target.value)
+        setValue(newValue)
       }
     }
     return (
       <ButtonToggleComponent
         {...props}
-        borderRadius="4px"
         onChange={handleChange}
         isToggle
         ref={ref}
         {...(isControlled
           ? {
-              name: props.name || uniqueId(),
               value: controlledValue,
             }
-          : { value })}
+          : {
+              name,
+              value,
+            })}
       />
     )
   }
 )
 
-export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
-  ButtonToggleFactory
-)`
-  border: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
+export const ButtonToggle = styled(ButtonToggleLayout)`
+  border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
+  border-radius: ${({ theme }) => theme.radii.medium};
+
+  /* prevents items in the last row from growing */
+  &::after {
+    content: '';
+    flex-grow: 100;
+  }
 
   ${ButtonItemLabel} {
+    /* In a wrapping scenario we want items in complete rows
+    to fill the full width evenly */
+    flex-grow: 1;
     position: relative;
     height: 36px;
     border-radius: 0;
 
     &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
+      border-top-left-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
     }
     &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+      border-top-right-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
     }
 
-    /* stylelint-disable */
-    & + ${ButtonItemLabel} {
-      &::after {
-        content: '';
-        display: block;
-        height: 20px;
-        width: 1px;
-        background: ${(props) => props.theme.colors.palette.charcoal200};
-        position: absolute;
-        left: 0;
-        top: 8px;
-      }
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background: ${(props) => props.theme.colors.palette.charcoal200};
+      position: absolute;
+      z-index: 1;
     }
-    /* stylelint-enable */
+    &::before {
+      height: 1px;
+      width: 100%;
+      left: 0;
+      bottom: -1px;
+    }
+    &::after {
+      height: 100%;
+      width: 1px;
+      right: -1px;
+      top: 0;
+    }
   }
 `
