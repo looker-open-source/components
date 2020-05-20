@@ -30,9 +30,7 @@ import { useID } from '../../../utils'
 import { RangeSlider, RangeSliderProps } from '../../Inputs/RangeSlider'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export interface FieldRangeSliderProps
-  extends RangeSliderProps,
-    Omit<FieldProps, 'validationMessage'> {}
+export interface FieldRangeSliderProps extends FieldProps, RangeSliderProps {}
 
 const FieldRangeSliderComponent = forwardRef(
   (props: FieldRangeSliderProps, ref: Ref<HTMLInputElement>) => {
