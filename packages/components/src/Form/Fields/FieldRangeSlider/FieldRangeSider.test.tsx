@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { FieldRangeSlider } from './FieldRangeSlider'
 
 test('FieldRangeSlider should accept detail and description attributes', () => {
@@ -57,16 +57,4 @@ test('FieldSelectMulti should accept required attributes', () => {
     <FieldRangeSlider label="👍" id="thumbs-up" required />
   )
   expect(getByText('required')).toBeVisible()
-})
-
-test('FieldSelectMulti Should trigger onChange handler', () => {
-  const handleChange = jest.fn()
-
-  const wrapper = mountWithTheme(
-    <FieldRangeSlider label="👍" id="thumbs-up" onChange={handleChange} />
-  )
-
-  wrapper.find('input').simulate('mousedown')
-  wrapper.find('li').at(0).simulate('click')
-  expect(handleChange).toHaveBeenCalledTimes(1)
 })
