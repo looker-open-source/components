@@ -25,50 +25,13 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  FieldRangeSlider,
-  FieldSlider,
-  Grid,
-} from '@looker/components'
+import { ComponentsProvider, InputColor } from '@looker/components'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <Grid columns={2}>
-        <FieldSlider
-          detail="detail"
-          description="description"
-          label="Label"
-          min={10}
-          max={20}
-          value={15}
-        />
-        <FieldSlider
-          detail="detail"
-          description="description"
-          label="Label"
-          min={10}
-          max={20}
-          value={15}
-        />
-      </Grid>
-      <Grid columns={2} gap="xxxlarge" mx="20px">
-        <FieldRangeSlider
-          detail="detail"
-          description="description"
-          label="Label"
-          min={300}
-          max={500}
-        />
-        <FieldRangeSlider
-          detail="detail"
-          description="description"
-          label="Label"
-          min={5}
-          max={50}
-        />
-      </Grid>
+      <InputColor value="green" />
+      <InputColor />
     </ComponentsProvider>
   )
 }

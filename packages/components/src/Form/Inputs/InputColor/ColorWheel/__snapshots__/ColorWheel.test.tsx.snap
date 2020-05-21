@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorWheel updates color on click 1`] = `
+Array [
+  Array [
+    Object {
+      "h": -135,
+      "s": 1,
+    },
+  ],
+  Array [
+    Object {
+      "h": 45,
+      "s": 0.7421052631578947,
+    },
+  ],
+]
+`;

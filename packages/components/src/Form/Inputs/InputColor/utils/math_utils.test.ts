@@ -24,23 +24,19 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { toPercent } from './math_utils'
+
+describe('math_utils', () => {
+  const correctValues = [60, 24, 10, 13, 25]
+  test('toPercent', () => {
+    ;[
+      [60, 100],
+      [60, 255],
+      [25, 255],
+      [32, 255],
+      [96, 384],
+    ].map((values, index) => {
+      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
+    })
+  })
+})

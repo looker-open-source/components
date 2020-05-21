@@ -24,23 +24,19 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { Swatch } from './Swatch'
+
+test('Default Swatch', () => {
+  assertSnapshot(<Swatch />)
+})
+
+test('Swatch with hex value passed', () => {
+  assertSnapshot(<Swatch color="#4c6670" />)
+})
+
+test('Swatch with width and height set', () => {
+  assertSnapshot(<Swatch color="blue" width="50px" height="25px" />)
+})

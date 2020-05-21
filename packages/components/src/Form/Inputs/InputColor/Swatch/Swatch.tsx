@@ -23,24 +23,53 @@
  SOFTWARE.
 
  */
+import omit from 'lodash/omit'
+import styled from 'styled-components'
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  border,
+  BorderProps,
+  height,
+  HeightProps,
+  width,
+  WidthProps,
+} from 'styled-system'
+import {
+  inputTextDefaults,
+  inputTextDisabled,
+  inputTextHover,
+} from '../../../Inputs/InputText'
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+export interface SwatchProps
+  extends BorderProps,
+    WidthProps,
+    HeightProps,
+    CompatibleHTMLProps<HTMLDivElement> {
+  /**
+   * The background color to display on the swatch.
+   */
+  color?: string
+}
+
+export const Swatch = styled.div<SwatchProps>`
+  ${reset}
+  ${width}
+  ${height}
+  ${border}
+
+  &:hover {
+    ${inputTextHover}
+  }
+
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
+
+  background-color: ${(props) => props.color};
+  margin-top: auto;
+  flex-shrink: 0;
+`
+
+Swatch.defaultProps = {
+  ...omit(inputTextDefaults, 'fontSize'),
+  color: 'white',
+  width: inputTextDefaults.height,
+}

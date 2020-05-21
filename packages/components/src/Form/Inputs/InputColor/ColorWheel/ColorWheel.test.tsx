@@ -24,23 +24,46 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { render, fireEvent } from '@testing-library/react'
+import React from 'react'
+import { ColorWheel } from './ColorWheel'
+
+test('ColorWheel updates color on click', async () => {
+  const handleColorChange = jest.fn()
+  const { findByTestId } = render(
+    <ColorWheel
+      hue={260}
+      saturation={0.5}
+      value={1}
+      size={400}
+      onColorChange={handleColorChange}
+    />
+  )
+
+  expect(handleColorChange).not.toHaveBeenCalled()
+
+  const mouseMarkerCanvas = await findByTestId('mouse-marker')
+  expect(mouseMarkerCanvas).toBeInTheDocument()
+
+  fireEvent(
+    mouseMarkerCanvas,
+    new MouseEvent('mousedown', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 20,
+      clientY: 20,
+    })
+  )
+
+  fireEvent(
+    mouseMarkerCanvas,
+    new MouseEvent('mousedown', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 300,
+      clientY: 300,
+    })
+  )
+
+  expect(handleColorChange.mock.calls).toMatchSnapshot()
+})
