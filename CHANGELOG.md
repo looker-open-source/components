@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- `Popover` positioning when placement is "top" and the height changes
+  - `usePopper` reinstate the `adaptive` option of `computeStyles`
+
 ## [0.7.36] - 2020-05-20
 
 ### Added
