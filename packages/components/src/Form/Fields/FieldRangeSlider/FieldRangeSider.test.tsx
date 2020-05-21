@@ -24,20 +24,37 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldDate'
-export * from './FieldDateRange'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { FieldRangeSlider } from './FieldRangeSlider'
+
+test('FieldRangeSlider should accept detail and description attributes', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldRangeSlider
+      detail="5/50"
+      description="this is the description"
+      label="👍"
+      id="thumbs-up"
+    />
+  )
+
+  const input = getByLabelText('👍')
+  expect(input.getAttribute('detail')).toBeDefined()
+  expect(input.getAttribute('description')).toBeDefined()
+})
+
+test('FieldSelectMulti should accept a disabled prop', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldRangeSlider disabled id="test" label="Test Label" />
+  )
+
+  const input = getByLabelText('Test Label')
+  expect(input.getAttribute('disabled')).toBeDefined()
+})
+
+test('FieldSelectMulti should accept required attributes', () => {
+  const { getByText } = renderWithTheme(
+    <FieldRangeSlider label="👍" id="thumbs-up" required />
+  )
+  expect(getByText('required')).toBeVisible()
+})

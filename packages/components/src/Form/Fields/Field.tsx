@@ -181,7 +181,6 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
     inline ? `${labelWidth} 1fr` : undefined};
 
   ${InputArea} {
-    display: flex;
     grid-area: input;
     align-items: center;
   }
