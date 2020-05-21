@@ -119,10 +119,6 @@ exports[`Form with one child 1`] = `
 }
 
 .c1 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;

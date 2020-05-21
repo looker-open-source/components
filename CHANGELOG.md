@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
+- `Accordion`, `AccordionLabel`, `AccordionContent` components
+- `ButtonToggle` now accepts `nullable`
+- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
+- created `FieldRangeSlider` and `FieldSlider` components
 
 ### Changed
 
