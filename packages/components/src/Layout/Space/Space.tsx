@@ -125,4 +125,4 @@ export const Space = styled.div<SpaceHelperProps>`
     !around && !between && !evenly && fauxFlexGap}
 `
 
-Space.defaultProps = { alignItems: 'center' }
+Space.defaultProps = { alignItems: 'center', width: '100%' }

@@ -2,6 +2,7 @@
 
 exports[`Form with one child 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -146,6 +147,7 @@ exports[`Form with one child 1`] = `
 
 <form
   className="c0"
+  width="100%"
 >
   <div
     className="c1 "
