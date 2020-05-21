@@ -31,6 +31,8 @@ import { OptionsGroupProps } from './OptionsGroup'
 
 export type RadioGroupProps = OptionsGroupProps<string>
 
+// For controlled scenario we want to use checked & value,
+// for uncontrolled, defaultChecked & defaultValue
 function getCheckedProps(
   optionValue: string,
   isControlled: boolean,

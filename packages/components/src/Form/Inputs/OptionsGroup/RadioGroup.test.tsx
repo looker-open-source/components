@@ -50,7 +50,7 @@ const radioOptions = [
 ]
 
 const radioProps = {
-  defaultValue: 'cheddar',
+  defaultValue: 'swiss',
   id: '1',
   name: 'group1',
   options: radioOptions,
@@ -84,11 +84,11 @@ test('RadioGroup selects a radio on click', () => {
   const { getByLabelText } = renderWithTheme(
     <RadioGroup {...radioProps} onChange={handleChange} />
   )
-  const radio = getByLabelText('Swiss')
+  const radio = getByLabelText('Cheddar')
 
   fireEvent.click(radio)
 
-  expect(handleChange).toHaveBeenCalledWith('swiss')
+  expect(handleChange).toHaveBeenCalledWith('cheddar')
   expect(radio).toBeChecked()
 })
 
