@@ -250,6 +250,7 @@ const InputTimeSelectLayout = forwardRef(
       onChange,
       value = '',
       defaultValue,
+      validationType,
     }: InputTimeSelectProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -332,6 +333,7 @@ const InputTimeSelectLayout = forwardRef(
           onBlur={handleTextInputBlur}
           onKeyDown={handleKeyDown}
           autoComplete={false}
+          validationType={validationType}
         />
         <ComboboxList persistSelection>
           {timeOptionsFocused.map((option, index) => (

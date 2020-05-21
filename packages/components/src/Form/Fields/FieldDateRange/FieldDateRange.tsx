@@ -24,52 +24,42 @@
 
  */
 
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
-import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
+import { useID } from '../../../utils'
+import { useFormContext } from '../..'
+import {
+  InputDateRange,
+  InputDateRangeProps,
+} from '../../Inputs/InputDateRange'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-interface SpaceVerticalProps extends SpaceHelperProps {
-  /**
-   * Align items vertically within `Space`
-   * @default 'start'
-   */
-  align?: 'start' | 'center' | 'end'
+export interface FieldInputDateRangeProps
+  extends FieldProps,
+    InputDateRangeProps {}
 
-  /**
-   * Stretch items full width of space
-   * @default false
-   */
-  stretch?: boolean
-}
-
-const align = variant({
-  prop: 'align',
-  variants: {
-    center: {
-      alignItems: 'center',
-    },
-    end: {
-      alignItems: 'flex-end',
-    },
-    start: {
-      alignItems: 'flex-start',
-    },
-  },
-})
-
-export const SpaceVertical = styled.div<SpaceVerticalProps>`
-  ${spaceCSS}
-  ${({ stretch }) => !stretch && align}
-  flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
-
-  && > * {
-    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
+const FieldDateRangeComponent = forwardRef(
+  (props: FieldInputDateRangeProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputDateRange
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
   }
+)
 
-  ${({ theme, reverse }) =>
-    reverse
-      ? `&& > *:last-child { margin-top: ${theme.space.none}; }`
-      : `&& > *:first-child { margin-top: ${theme.space.none}; }`}
-`
+FieldDateRangeComponent.displayName = 'FieldDateRangeComponent'
 
-SpaceVertical.defaultProps = { align: 'start', width: '100%' }
+export const FieldDateRange = styled(FieldDateRangeComponent)``

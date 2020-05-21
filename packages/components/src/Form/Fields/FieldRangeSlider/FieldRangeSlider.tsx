@@ -24,20 +24,37 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldColor'
-export * from './FieldDate'
-export * from './FieldDateRange'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import omit from 'lodash/omit'
+import { useID } from '../../../utils'
+import { RangeSlider, RangeSliderProps } from '../../Inputs/RangeSlider'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+
+export interface FieldRangeSliderProps
+  extends RangeSliderProps,
+    Omit<FieldProps, 'validationMessage'> {}
+
+const FieldRangeSliderComponent = forwardRef(
+  (props: FieldRangeSliderProps, ref: Ref<HTMLInputElement>) => {
+    const id = useID(props.id)
+    return (
+      <Field
+        data-testid="FieldSliderId"
+        {...pickFieldProps(omit(props, 'validationMessage'))}
+        id={id}
+      >
+        <RangeSlider
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldRangeSliderComponent.displayName = 'FieldRangeSliderComponent'
+
+export const FieldRangeSlider = styled(FieldRangeSliderComponent)``
