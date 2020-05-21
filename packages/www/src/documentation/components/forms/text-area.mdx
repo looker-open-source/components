@@ -6,7 +6,7 @@ propsOf: TextArea
 
 ## TextArea
 
-`TextArea` component offeres a multi-line text editor. If you are bulding a form `FieldTextArea` may be a better fit.
+`TextArea` component offers a multi-line text editor. If you are building a form `FieldTextArea` may be a better fit.
 
 ```jsx
 <TextArea />
@@ -14,20 +14,15 @@ propsOf: TextArea
 
 ## Allowing TextArea to be resized
 
-`both` and `true` will allow for the `TextArea` to be resized on height and width. Alternatively, `none` and `false` will not allow any resizing.
-
-You can also specify only `horizontal` or `vertical` resizing.
+`true` and `vertical` will allow the `TextArea` height to be resized. Alternatively, `none` and `false` will not allow resizing.
 
 ```jsx
-<TextArea resize="both" placeholder="resize in both directions" />
-<TextArea resize placeholder="resize in both directions" />
+<TextArea resize placeholder="resize vertically" />
 <Divider my="medium" />
 <TextArea resize="none" placeholder="no resize" />
 <TextArea resize={false} placeholder="no resize" />
 <Divider my="medium" />
 <TextArea resize="vertical" placeholder="only resize vertically" />
-<TextArea resize="horizontal" placeholder="only resize horizontally" />
-
 ```
 
 ## Disabled
