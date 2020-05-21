@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import {
   Box,
   ButtonTransparent,
@@ -34,9 +34,8 @@ import {
   TreeItem,
 } from '@looker/components'
 
-const onClick = (event: MouseEvent<HTMLButtonElement>) => {
+const onClick = () => {
   alert("I'm a little teapot")
-  event.stopPropagation()
   return false
 }
 

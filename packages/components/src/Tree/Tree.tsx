@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { FontWeights } from '@looker/design-tokens'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, MouseEvent, ReactNode } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -59,11 +59,16 @@ const TreeLayout: FC<TreeProps> = ({
   label,
   ...restProps
 }) => {
+  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
+    // Automatically prevents detail click from opening Accordion
+    event.stopPropagation()
+  }
+
   const accordionDisclosureChildren = (
     <Space gap="xsmall" align="center">
       {icon && <Icon name={icon} />}
       <FlexItem flex="1">{label}</FlexItem>
-      {detail && <span>{detail}</span>}
+      {detail && <span onClick={handleDetailClick}>{detail}</span>}
     </Space>
   )
 
