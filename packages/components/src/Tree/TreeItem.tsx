@@ -34,6 +34,10 @@ export interface TreeItemProps {
   children: ReactNode
   className?: string
   detail?: ReactNode
+  /**
+   * Gap size of the internal Space component
+   */
+  gapSize?: SpacingSizes
   icon?: IconNames
   iconSize?: SpacingSizes
 }
@@ -42,6 +46,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   detail,
+  gapSize = 'xxsmall',
   icon,
   iconSize,
 }) => {
@@ -51,7 +56,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   }
 
   return (
-    <Space p="xxsmall" gap="xxsmall" className={className}>
+    <Space className={className} gap={gapSize}>
       {icon && <Icon name={icon} size={iconSize} />}
       <FlexItem flex="1">{children}</FlexItem>
       {detail && <span onClick={handleDetailClick}>{detail}</span>}
@@ -61,4 +66,5 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
 export const TreeItem = styled(TreeItemLayout)`
   font-size: ${({ theme }) => theme.space.small};
+  padding: ${({ theme }) => theme.space.xxsmall};
 `

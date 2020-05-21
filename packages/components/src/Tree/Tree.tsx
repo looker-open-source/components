@@ -64,7 +64,12 @@ const TreeLayout: FC<TreeProps> = ({
   return (
     <Accordion {...indicatorProps} {...restProps}>
       <AccordionDisclosure fontWeight={fontWeight}>
-        <TreeItem detail={detail} icon={icon} iconSize={iconSize}>
+        <TreeItem
+          detail={detail}
+          gapSize="xsmall"
+          icon={icon}
+          iconSize={iconSize}
+        >
           {label}
         </TreeItem>
       </AccordionDisclosure>
