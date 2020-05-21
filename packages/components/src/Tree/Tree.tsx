@@ -44,14 +44,21 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
   label: string
 }
 
-const TreeLayout: FC<TreeProps> = (props) => {
-  const { children, detail, fontWeight, icon, label, ...restProps } = props
-  const indicatorProps: AccordionIndicatorProps = {
-    indicatorGap: 'xxsmall',
-    indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
-    indicatorPosition: 'left',
-    indicatorSize: 'small',
-  }
+const indicatorProps: AccordionIndicatorProps = {
+  indicatorGap: 'xxsmall',
+  indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
+  indicatorPosition: 'left',
+  indicatorSize: 'small',
+}
+
+const TreeLayout: FC<TreeProps> = ({
+  children,
+  detail,
+  fontWeight,
+  icon,
+  label,
+  ...restProps
+}) => {
   const accordionDisclosureChildren = (
     <Space gap="xsmall" align="center">
       {icon && <Icon name={icon} />}

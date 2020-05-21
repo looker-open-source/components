@@ -36,15 +36,11 @@ export interface TreeItemProps {
   icon?: IconNames
 }
 
-const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => {
-  const defaultIconSize = 12
-
-  return (
-    <Space p="xxsmall" gap="xxsmall" className={className}>
-      {icon && <Icon name={icon} size={defaultIconSize} />}
-      <Text fontSize="xsmall">{children}</Text>
-    </Space>
-  )
-}
+const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => (
+  <Space p="xxsmall" gap="xxsmall" className={className}>
+    {icon && <Icon name={icon} size={12} />}
+    <Text fontSize="xsmall">{children}</Text>
+  </Space>
+)
 
 export const TreeItem = styled(TreeItemLayout)``
