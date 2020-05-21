@@ -72,4 +72,4 @@ export const SpaceVertical = styled.div<SpaceVerticalProps>`
       : `&& > *:first-child { margin-top: ${theme.space.none}; }`}
 `
 
-SpaceVertical.defaultProps = { align: 'start' }
+SpaceVertical.defaultProps = { align: 'start', width: '100%' }

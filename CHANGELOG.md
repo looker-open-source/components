@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Popover` positioning when placement is "top" and the height changes
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
 
+## [0.7.37] - 2020-05-20
+
+### Fixed
+
+- `Space` & `SpaceVertical` default to 100% width of their container again
+
 ## [0.7.36] - 2020-05-20
 
 ### Added
