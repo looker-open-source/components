@@ -24,23 +24,41 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Space } from '../Layout'
+import { SpacingSizes } from '@looker/design-tokens'
+import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
-import { Text } from '../Text'
 
 export interface TreeItemProps {
   children: ReactNode
   className?: string
+  detail?: ReactNode
   icon?: IconNames
+  iconSize?: SpacingSizes
 }
 
-const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => (
-  <Space p="xxsmall" gap="xxsmall" className={className}>
-    {icon && <Icon name={icon} size={12} />}
-    <Text fontSize="xsmall">{children}</Text>
-  </Space>
-)
+const TreeItemLayout: FC<TreeItemProps> = ({
+  children,
+  className,
+  detail,
+  icon,
+  iconSize,
+}) => {
+  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
+    // Automatically prevents detail click from opening Accordion
+    event.stopPropagation()
+  }
 
-export const TreeItem = styled(TreeItemLayout)``
+  return (
+    <Space p="xxsmall" gap="xxsmall" className={className}>
+      {icon && <Icon name={icon} size={iconSize} />}
+      <FlexItem flex="1">{children}</FlexItem>
+      {detail && <span onClick={handleDetailClick}>{detail}</span>}
+    </Space>
+  )
+}
+
+export const TreeItem = styled(TreeItemLayout)`
+  font-size: ${({ theme }) => theme.space.small};
+`

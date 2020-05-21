@@ -25,8 +25,8 @@
  */
 
 import styled from 'styled-components'
-import { FontWeights } from '@looker/design-tokens'
-import React, { FC, MouseEvent, ReactNode } from 'react'
+import { FontWeights, SpacingSizes } from '@looker/design-tokens'
+import React, { FC, ReactNode } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -34,13 +34,14 @@ import {
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
-import { FlexItem, Space } from '../Layout'
-import { IconNames, Icon } from '../Icon'
+import { IconNames } from '../Icon'
+import { TreeItem } from './TreeItem'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
   fontWeight?: FontWeights
   icon?: IconNames
+  iconSize?: SpacingSizes
   label: string
 }
 
@@ -56,26 +57,16 @@ const TreeLayout: FC<TreeProps> = ({
   detail,
   fontWeight,
   icon,
+  iconSize,
   label,
   ...restProps
 }) => {
-  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
-    // Automatically prevents detail click from opening Accordion
-    event.stopPropagation()
-  }
-
-  const accordionDisclosureChildren = (
-    <Space gap="xsmall" align="center">
-      {icon && <Icon name={icon} />}
-      <FlexItem flex="1">{label}</FlexItem>
-      {detail && <span onClick={handleDetailClick}>{detail}</span>}
-    </Space>
-  )
-
   return (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontSize="xsmall" fontWeight={fontWeight}>
-        {accordionDisclosureChildren}
+      <AccordionDisclosure fontWeight={fontWeight}>
+        <TreeItem detail={detail} icon={icon} iconSize={iconSize}>
+          {label}
+        </TreeItem>
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
@@ -83,10 +74,10 @@ const TreeLayout: FC<TreeProps> = ({
 }
 
 /**
- * Border is applied for alignment consistent with Tree
+ * Padding on <AccordionDisclosure> is removed since the <TreeItem> child of <AccordionDisclosure> has its own padding
  */
 export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
-    padding: ${({ theme }) => theme.space.xxsmall};
+    padding: ${({ theme }) => theme.space.none};
   }
 `
