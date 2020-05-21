@@ -40,6 +40,7 @@ import { TreeItem } from './TreeItem'
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
   fontWeight?: FontWeights
+  border?: boolean
   icon?: IconNames
   iconSize?: SpacingSizes
   label: string
@@ -78,11 +79,29 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-/**
- * Padding on <AccordionDisclosure> is removed since the <TreeItem> child of <AccordionDisclosure> has its own padding
- */
 export const Tree = styled(TreeLayout)`
+  /* Padding on <AccordionDisclosure> is removed since the <TreeItem> child of <AccordionDisclosure> has its own padding */
   ${AccordionDisclosure} {
     padding: ${({ theme }) => theme.space.none};
+  }
+
+  ${AccordionContent} {
+    /* Margin is used to center the optional border line */
+    border-left: ${({ border, theme }) =>
+      border && `1px solid ${theme.colors.palette.charcoal200}`};
+    margin-left: ${({ border, theme }) =>
+      border &&
+      `calc((${
+        theme.space[indicatorProps.indicatorSize as SpacingSizes]
+      } + 1px)/2)`};
+
+    ${({ border, theme }) =>
+      border &&
+      `padding-left: calc(${
+        theme.space[indicatorProps.indicatorSize as SpacingSizes]
+      }
+  + ${theme.space[indicatorProps.indicatorGap as SpacingSizes]} - (${
+        theme.space[indicatorProps.indicatorSize as SpacingSizes]
+      } + 1px)/2)`};
   }
 `

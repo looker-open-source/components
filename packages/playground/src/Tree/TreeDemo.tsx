@@ -119,21 +119,18 @@ const filterPickerExample = (
   <Box>
     Filter Picker Example
     <Tree
+      border
       label="Orders"
       detail={<Box color="palette.charcoal500">thelook</Box>}
     >
       <Tree label="Orders">
-        <Box borderLeft={`1px solid ${theme.colors.palette.blue200}`}>
-          <TreeItem>ID</TreeItem>
-          <TreeItem>Status</TreeItem>
-        </Box>
+        <TreeItem>ID</TreeItem>
+        <TreeItem>Status</TreeItem>
         <Tree label="Created">
-          <Box borderLeft={`1px solid ${theme.colors.palette.blue200}`}>
-            <TreeItem>Created Date</TreeItem>
-            <TreeItem>Created Month</TreeItem>
-            <TreeItem>Created Year</TreeItem>
-            <TreeItem>Created Quarter</TreeItem>
-          </Box>
+          <TreeItem>Created Date</TreeItem>
+          <TreeItem>Created Month</TreeItem>
+          <TreeItem>Created Year</TreeItem>
+          <TreeItem>Created Quarter</TreeItem>
         </Tree>
       </Tree>
     </Tree>
