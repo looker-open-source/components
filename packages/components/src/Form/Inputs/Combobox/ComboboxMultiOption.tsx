@@ -52,6 +52,7 @@ const ComboboxMultiOptionInternal = forwardRef(
   (
     {
       children,
+      detail: propsDetail,
       highlightText = true,
       scrollIntoView,
       hideCheckMark,
@@ -85,6 +86,15 @@ const ComboboxMultiOptionInternal = forwardRef(
     )
     const ref = useForkedRef(scrollRef, forwardedRef)
 
+    const detail =
+      propsDetail !== undefined ? (
+        propsDetail
+      ) : (
+        <ComboboxOptionDetail>
+          {!hideCheckMark && <Checkbox checked={isSelected} />}
+        </ComboboxOptionDetail>
+      )
+
     return (
       <ComboboxOptionWrapper
         {...props}
@@ -92,9 +102,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail>
-          {!hideCheckMark && <Checkbox checked={isSelected} />}
-        </ComboboxOptionDetail>
+        {detail}
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )

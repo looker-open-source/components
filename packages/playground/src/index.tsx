@@ -25,17 +25,16 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Status } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
-const App = () => (
-  <ComponentsProvider>
-    <Status intent="critical" />
-    <Status intent="inform" />
-    <Status intent="neutral" />
-    <Status intent="positive" />
-    <Status intent="warning" />
-  </ComponentsProvider>
-)
+const App: FC = () => {
+  return (
+    <ComponentsProvider>
+      <SelectMultiDemo />
+    </ComponentsProvider>
+  )
+}
 
 /*
   This is the binding site for the playground. If you want to edit the
