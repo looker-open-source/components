@@ -77,8 +77,4 @@ export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
     padding: ${({ theme }) => theme.space.xxsmall};
   }
-
-  ${AccordionContent} {
-    border-left: 1px solid ${({ theme }) => theme.colors.palette.transparent};
-  }
 `

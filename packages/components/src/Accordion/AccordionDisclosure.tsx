@@ -70,16 +70,12 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
 }
 
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
-  /*
-    - Default padding is placed before padding styleFn so that it is overwriteable by padding props
-    - defaultProps is not currently an option due to styled-system not accounting for CSS cascading
-   */
-  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
   ${typography}
 
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
   cursor: pointer;
   outline: none;
+  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.palette.purple300};
