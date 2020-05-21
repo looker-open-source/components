@@ -40,15 +40,11 @@ const TreeItemLayout: FC<TreeItemProps> = ({ children, className, icon }) => {
   const defaultIconSize = 12
 
   return (
-    <div className={className}>
-      <Space p="xxsmall" gap="xxsmall" align="center">
-        {icon && <Icon name={icon} size={defaultIconSize} />}
-        <Text fontSize="xsmall">{children}</Text>
-      </Space>
-    </div>
+    <Space p="xxsmall" gap="xxsmall" className={className}>
+      {icon && <Icon name={icon} size={defaultIconSize} />}
+      <Text fontSize="xsmall">{children}</Text>
+    </Space>
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)`
-  border-left: 1px solid ${({ theme }) => theme.colors.palette.transparent};
-`
+export const TreeItem = styled(TreeItemLayout)``

@@ -26,18 +26,11 @@
 
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import {
-  PaddingProps,
-  padding,
-  TypographyProps,
-  typography,
-} from '@looker/design-tokens'
+import { TypographyProps, typography } from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
-export interface AccordionDisclosureProps
-  extends PaddingProps,
-    TypographyProps {
+export interface AccordionDisclosureProps extends TypographyProps {
   children: ReactNode
   className?: string
 }
@@ -82,7 +75,6 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
     - defaultProps is not currently an option due to styled-system not accounting for CSS cascading
    */
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
-  ${padding}
   ${typography}
 
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};

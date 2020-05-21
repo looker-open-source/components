@@ -24,24 +24,26 @@
 
  */
 
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import {
-  Icon,
-  Tree,
-  TreeItem,
   Box,
-  Space,
+  ButtonTransparent,
   Grid,
   theme,
+  Tree,
+  TreeItem,
 } from '@looker/components'
 
+const onClick = (event: MouseEvent<HTMLButtonElement>) => {
+  alert("I'm a little teapot")
+  event.stopPropagation()
+  return false
+}
+
 const addButton = (
-  <Box color="palette.purple400">
-    <Space align="center">
-      <Icon size={12} name="Plus" />
-      Add
-    </Space>
-  </Box>
+  <ButtonTransparent onClick={onClick} size="xxsmall" iconBefore="Plus">
+    Add
+  </ButtonTransparent>
 )
 
 const exploreExample = (

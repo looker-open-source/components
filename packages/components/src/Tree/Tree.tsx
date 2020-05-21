@@ -24,6 +24,7 @@
 
  */
 
+import styled from 'styled-components'
 import { FontWeights } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
 import {
@@ -43,7 +44,7 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
   label: string
 }
 
-export const Tree: FC<TreeProps> = (props) => {
+const TreeLayout: FC<TreeProps> = (props) => {
   const { children, detail, fontWeight, icon, label, ...restProps } = props
   const indicatorProps: AccordionIndicatorProps = {
     indicatorGap: 'xxsmall',
@@ -53,26 +54,31 @@ export const Tree: FC<TreeProps> = (props) => {
   }
   const accordionDisclosureChildren = (
     <Space gap="xsmall" align="center">
-      {icon && (
-        <FlexItem>
-          <Icon name={icon} />
-        </FlexItem>
-      )}
+      {icon && <Icon name={icon} />}
       <FlexItem flex="1">{label}</FlexItem>
-      {detail && <FlexItem>{detail}</FlexItem>}
+      {detail && <span>{detail}</span>}
     </Space>
   )
 
   return (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure
-        fontSize="xsmall"
-        fontWeight={fontWeight}
-        p="xxsmall"
-      >
+      <AccordionDisclosure fontSize="xsmall" fontWeight={fontWeight}>
         {accordionDisclosureChildren}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
   )
 }
+
+/**
+ * Border is applied for alignment consistent with Tree
+ */
+export const Tree = styled(TreeLayout)`
+  ${AccordionDisclosure} {
+    padding: ${({ theme }) => theme.space.xxsmall};
+  }
+
+  ${AccordionContent} {
+    border-left: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+  }
+`
