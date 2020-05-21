@@ -25,13 +25,15 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, InputColor } from '@looker/components'
+import { ComponentsProvider, FieldColor, InputColor } from '@looker/components'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
       <InputColor value="green" />
       <InputColor />
+      <InputColor defaultValue="purple" />
+      <FieldColor label="FieldColor" inline />
     </ComponentsProvider>
   )
 }

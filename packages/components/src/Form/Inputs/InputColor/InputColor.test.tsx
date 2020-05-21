@@ -61,27 +61,6 @@ describe('InputColor', () => {
     expect(getByDisplayValue('blue')).toBeInTheDocument()
   })
 
-  test('with an onChange', () => {
-    const onChangeMock = jest.fn()
-    const { getByLabelText } = renderWithTheme(
-      <InputColor onChange={onChangeMock} label="Background Color" />
-    )
-    const input = getByLabelText('Background Color')
-    fireEvent.change(input, { target: { value: '#FFFF00' } })
-    expect(onChangeMock).toHaveBeenCalledWith({
-      currentTarget: { value: '#FFFF00' },
-      target: { value: '#FFFF00' },
-    })
-  })
-
-  test('with a defaultValue', () => {
-    const { getByLabelText } = renderWithTheme(
-      <InputColor defaultValue="purple" label="Background Color" />
-    )
-    const input = getByLabelText('Background Color')
-    expect(input).toHaveValue('purple')
-  })
-
   test('with controlled state', () => {
     function Wrapper() {
       const [value, setValue] = useState('')

@@ -37,30 +37,9 @@ import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
 
 describe('FieldColor', () => {
-  test('Default render', () => {
-    assertSnapshotShallow(<FieldColor />)
+  test('Default render with label', () => {
+    assertSnapshotShallow(<FieldColor label="FieldColor" />)
   })
-
-  test('with hidden input', () => {
-    const { queryByDisplayValue } = renderWithTheme(
-      <FieldColor value="yellow" hideInput />
-    )
-    expect(queryByDisplayValue('yellow')).not.toBeInTheDocument()
-  })
-
-  test('starts with a named color value', () => {
-    const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
-    expect(getByDisplayValue('green')).toBeInTheDocument()
-  })
-
-  test('responds to input value change', () => {
-    const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
-    const input = getByDisplayValue('green')
-    input.focus()
-    fireEvent.change(input, { target: { value: 'blue' } })
-    expect(getByDisplayValue('blue')).toBeInTheDocument()
-  })
-
   const FieldColorValidationMessage = () => {
     return (
       <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />

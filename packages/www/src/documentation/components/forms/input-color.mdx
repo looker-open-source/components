@@ -1,0 +1,16 @@
+---
+title: InputColor
+github: Form/Inputs/InputColor/InputColor.tsx
+propsOf: InputColor
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+---
+
+The `InputColor` component has an input to add a color value and a color wheel to pick color directly. A value can be set in the component directly, that becomes a fixed value, To set a value that can be changed use `defaultValue`.
+
+```js
+<Grid columns={1}>
+  <InputColor />
+  <InputColor value="green" />
+  <InputColor defaultValue="purple" />
+</Grid>
+```
