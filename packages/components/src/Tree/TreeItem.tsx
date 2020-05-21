@@ -66,5 +66,4 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
 export const TreeItem = styled(TreeItemLayout)`
   font-size: ${({ theme }) => theme.space.small};
-  padding: ${({ theme }) => theme.space.xxsmall};
 `

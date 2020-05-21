@@ -80,9 +80,12 @@ const TreeLayout: FC<TreeProps> = ({
 }
 
 export const Tree = styled(TreeLayout)`
-  /* Padding on <AccordionDisclosure> is removed since the <TreeItem> child of <AccordionDisclosure> has its own padding */
   ${AccordionDisclosure} {
-    padding: ${({ theme }) => theme.space.none};
+    padding: ${({ theme }) => theme.space.xxsmall};
+  }
+
+  ${AccordionContent} > ${TreeItem} {
+    padding: ${({ theme }) => theme.space.xxsmall};
   }
 
   ${AccordionContent} {
@@ -91,10 +94,9 @@ export const Tree = styled(TreeLayout)`
       border && `1px solid ${theme.colors.palette.charcoal200}`};
     margin-left: ${({ border, theme }) =>
       border &&
-      `calc((${
-        theme.space[indicatorProps.indicatorSize as SpacingSizes]
-      } + 1px)/2)`};
-
+      `calc(${theme.space[indicatorProps.indicatorSize as SpacingSizes]}/2 + ${
+        theme.space.xxsmall
+      } + 1px - 0.5px)`};
     ${({ border, theme }) =>
       border &&
       `padding-left: calc(${
@@ -102,6 +104,7 @@ export const Tree = styled(TreeLayout)`
       }
   + ${theme.space[indicatorProps.indicatorGap as SpacingSizes]} - (${
         theme.space[indicatorProps.indicatorSize as SpacingSizes]
-      } + 1px)/2)`};
+      } + 1px)/2);
+      `}
   }
 `
