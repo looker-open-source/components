@@ -29,7 +29,6 @@ import {
   Box,
   ButtonTransparent,
   Grid,
-  theme,
   Tree,
   TreeItem,
 } from '@looker/components'

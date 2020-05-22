@@ -24,7 +24,7 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FontWeights, SpacingSizes } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
 import {
@@ -79,32 +79,32 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
+const centeredVerticalBorder = css`
+  ${({ theme: { space, colors } }) => css`
+    border-left: 1px solid ${colors.palette.charcoal200};
+    /* Margin is used to center the optional border line */
+    margin-left: calc(
+      ${space[indicatorProps.indicatorSize as SpacingSizes]} / 2 +
+        ${space.xxsmall} + 1px - 0.5px
+    );
+    padding-left: calc(
+      ${space[indicatorProps.indicatorSize as SpacingSizes]} +
+        ${space[indicatorProps.indicatorGap as SpacingSizes]} -
+        (space[indicatorProps.indicatorSize as SpacingSizes]} + 1px) / 2
+    );
+  `}
+`
+
 export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
-  ${AccordionContent} > ${TreeItem} {
+  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem} {
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
   ${AccordionContent} {
-    /* Margin is used to center the optional border line */
-    border-left: ${({ border, theme }) =>
-      border && `1px solid ${theme.colors.palette.charcoal200}`};
-    margin-left: ${({ border, theme }) =>
-      border &&
-      `calc(${theme.space[indicatorProps.indicatorSize as SpacingSizes]}/2 + ${
-        theme.space.xxsmall
-      } + 1px - 0.5px)`};
-    ${({ border, theme }) =>
-      border &&
-      `padding-left: calc(${
-        theme.space[indicatorProps.indicatorSize as SpacingSizes]
-      }
-  + ${theme.space[indicatorProps.indicatorGap as SpacingSizes]} - (${
-        theme.space[indicatorProps.indicatorSize as SpacingSizes]
-      } + 1px)/2);
-      `}
+    ${({ border }) => border && centeredVerticalBorder}
   }
 `
