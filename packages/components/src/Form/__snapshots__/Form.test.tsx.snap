@@ -158,7 +158,7 @@ exports[`Form with one child 1`] = `
       fontSize="xsmall"
       fontWeight="semiBold"
       htmlFor="text-field"
-      id="text-field-labeledby"
+      id="text-field-labelledby"
     >
       label
     </label>

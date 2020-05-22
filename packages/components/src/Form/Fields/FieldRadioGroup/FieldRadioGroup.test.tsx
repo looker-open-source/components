@@ -49,7 +49,7 @@ const fieldRadioOptions = [
 ]
 
 const fieldRadioProps = {
-  defaultValue: ['swiss', 'cheddar'],
+  defaultValue: 'cheddar',
   id: '1',
   name: 'group1',
   options: fieldRadioOptions,
