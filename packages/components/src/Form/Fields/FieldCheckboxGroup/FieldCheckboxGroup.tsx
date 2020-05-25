@@ -54,7 +54,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
       <CheckboxGroup
         {...omitFieldProps(props)}
         aria-describedby={`${id}-describedby`}
-        aria-labeledby={`${id}-labeledby`}
+        aria-labelledby={`${id}-labelledby`}
         id={id}
         inline={props.inline}
         name={name || id}

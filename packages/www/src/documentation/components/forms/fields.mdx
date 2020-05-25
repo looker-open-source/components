@@ -443,6 +443,60 @@ The `<FieldSelectMulti />` component is composed of an `<SelectMulti />` compone
 </Grid>
 ```
 
+## FieldSlider
+
+The `<FieldSlider />` component is composed of an `<Slider />` component and a `<Label />` component. The component also allows for the attributes `details` and `description`. This component does not support `ValidationMessage`
+
+```jsx
+<FieldSlider
+  detail="detail"
+  description="description"
+  label="Label"
+/>
+<FieldSlider
+  disabled
+  detail="detail"
+  description="description"
+  label="Label disabled"
+  min={10}
+  max={20}
+  value={15}
+/>
+<FieldSlider
+  detail="detail"
+  description="description"
+  label="Label required"
+  required
+/>
+```
+
+## FieldRangeSlider
+
+The `<FieldRangeSlider />` component is composed of an `<RangeSlider />` component and a `<Label />` component. The component also allows for the attributes `details` and `description`. This component does not support `ValidationMessage`
+
+```jsx
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label"
+/>
+<FieldRangeSlider
+  disabled
+  detail="detail"
+  description="description"
+  label="Label disabled"
+  min={10}
+  max={20}
+  value={15}
+/>
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label required"
+  required
+/>
+```
+
 ## FieldText
 
 <Props of="FieldText" />

@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Changed
+
+- `CheckboxGroup` and `RadioGroup` `name` is now optional
+
 ### Fixed
 
 - `Popover` positioning when placement is "top" and the height changes
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
+- `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
 
 ## [0.7.37] - 2020-05-20
 
@@ -36,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
+- `Accordion`, `AccordionLabel`, `AccordionContent` components
+- `ButtonToggle` now accepts `nullable`
+- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
+- created `FieldRangeSlider` and `FieldSlider` components
 
 ### Changed
 

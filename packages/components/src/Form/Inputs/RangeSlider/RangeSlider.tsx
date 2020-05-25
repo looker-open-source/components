@@ -24,7 +24,14 @@
 
  */
 
-import React, { FC, useState, KeyboardEvent, useRef, useEffect } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useState,
+  KeyboardEvent,
+  useRef,
+  useEffect,
+} from 'react'
 import { SpaceProps, reset, space } from '@looker/design-tokens'
 import { WidthProps } from 'styled-system'
 import styled from 'styled-components'
@@ -51,6 +58,7 @@ export interface RangeSliderProps extends SpaceProps, WidthProps {
   value?: number[]
   defaultValue?: number[]
   disabled?: boolean
+  id?: string
   readOnly?: boolean
   validationType?: ValidationType
   className?: string
@@ -142,241 +150,249 @@ const boundValueProp = (min: number, max: number, value?: number[]) => {
   })
 }
 
-export const InternalRangeSlider: FC<RangeSliderProps> = ({
-  className,
-  min = 0,
-  max = 10,
-  step = 1,
-  value: valueProp,
-  defaultValue: defaultValueProp,
-  onChange,
-  disabled = false,
-  readOnly: readOnlyProp = false,
-  'aria-labelledby': ariaLabelledBy,
-}) => {
-  /*
-   * Validate props and render any necessary warnings
-   * ------------------------------------------------------
-   */
-  const unintentionalReadOnly = useReadOnlyWarn(
-    'RangeSlider',
-    valueProp,
-    onChange
-  )
-  const readOnly = readOnlyProp || unintentionalReadOnly
-  // make sure value array doesn't extend past min/max bounds
-  const boundedValue = boundValueProp(min, max, valueProp || defaultValueProp)
+export const InternalRangeSlider = forwardRef(
+  (
+    {
+      className,
+      id,
+      min = 0,
+      max = 10,
+      step = 1,
+      value: valueProp,
+      defaultValue: defaultValueProp,
+      onChange,
+      disabled = false,
+      readOnly: readOnlyProp = false,
+      'aria-labelledby': ariaLabelledby,
+    }: RangeSliderProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    /*
+     * Validate props and render any necessary warnings
+     * ------------------------------------------------------
+     */
+    const unintentionalReadOnly = useReadOnlyWarn(
+      'RangeSlider',
+      valueProp,
+      onChange
+    )
+    const readOnly = readOnlyProp || unintentionalReadOnly
+    // make sure value array doesn't extend past min/max bounds
+    const boundedValue = boundValueProp(min, max, valueProp || defaultValueProp)
 
-  /*
-   * Internal component state and refs
-   * ------------------------------------------------------
-   */
-  const [value, setValue] = useState(sort(boundedValue))
-  const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
-  const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
+    /*
+     * Internal component state and refs
+     * ------------------------------------------------------
+     */
+    const [value, setValue] = useState(sort(boundedValue))
+    const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
+    const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-  const containerRect = useMeasuredElement(containerRef)
+    const containerRect = useMeasuredElement(containerRef)
 
-  const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
-  const prevMouseDown = usePreviousValue(isMouseDown)
+    const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
+    const prevMouseDown = usePreviousValue(isMouseDown)
 
-  const minThumbRef = useRef<HTMLDivElement>(null)
-  const maxThumbRef = useRef<HTMLDivElement>(null)
+    const minThumbRef = useRef<HTMLDivElement>(null)
+    const maxThumbRef = useRef<HTMLDivElement>(null)
 
-  // calculate thumb position based on set value
-  const [minValue, maxValue] = value
-  const minPos = ((minValue - min) / (max - min)) * containerRect.width
-  const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
-  const fillWidth = maxPos - minPos
+    // calculate thumb position based on set value
+    const [minValue, maxValue] = value
+    const minPos = ((minValue - min) / (max - min)) * containerRect.width
+    const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
+    const fillWidth = maxPos - minPos
 
-  const thumbRefs = [minThumbRef, maxThumbRef]
+    const thumbRefs = [minThumbRef, maxThumbRef]
 
-  /*
-   * Behavioral callbacks
-   * ------------------------------------------------------
-   */
+    /*
+     * Behavioral callbacks
+     * ------------------------------------------------------
+     */
 
-  const focusChangedPoint = (newValue: number[], newPoint: number) => {
-    // focus/highlight the thumb that moved on click
-    const indexToFocus = indexOf(newValue, newPoint)
-    const refToFocus = thumbRefs[indexToFocus]
-    requestAnimationFrame(() => {
-      // delaying focus is necessary for it to work with mouseDown event
-      refToFocus.current && refToFocus.current.focus()
-    })
-  }
+    const focusChangedPoint = (newValue: number[], newPoint: number) => {
+      // focus/highlight the thumb that moved on click
+      const indexToFocus = indexOf(newValue, newPoint)
+      const refToFocus = thumbRefs[indexToFocus]
+      requestAnimationFrame(() => {
+        // delaying focus is necessary for it to work with mouseDown event
+        refToFocus.current && refToFocus.current.focus()
+      })
+    }
 
-  const incrementPoint = (point: number) => {
-    return Math.min(point + step, max)
-  }
+    const incrementPoint = (point: number) => {
+      return Math.min(point + step, max)
+    }
 
-  const decrementPoint = (point: number) => {
-    return Math.max(point - step, min)
-  }
+    const decrementPoint = (point: number) => {
+      return Math.max(point - step, min)
+    }
 
-  const handleKeyboardNav = (e: KeyboardEvent) => {
-    if (!disabled && !readOnly) {
-      if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
-        e.preventDefault() // prevent arrows from browser window
-        const unfocusedThumb = focusedThumb === 0 ? 1 : 0
-        const mutationFn =
-          e.key === 'ArrowUp' || e.key === 'ArrowRight'
-            ? incrementPoint
-            : decrementPoint
-        const newPoint = mutationFn(value[focusedThumb])
-        const newValue = sort([newPoint, value[unfocusedThumb]])
+    const handleKeyboardNav = (e: KeyboardEvent) => {
+      if (!disabled && !readOnly) {
+        if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
+          e.preventDefault() // prevent arrows from browser window
+          const unfocusedThumb = focusedThumb === 0 ? 1 : 0
+          const mutationFn =
+            e.key === 'ArrowUp' || e.key === 'ArrowRight'
+              ? incrementPoint
+              : decrementPoint
+          const newPoint = mutationFn(value[focusedThumb])
+          const newValue = sort([newPoint, value[unfocusedThumb]])
+          focusChangedPoint(newValue, newPoint)
+          setValue(newValue)
+        }
+      }
+    }
+
+    const focusMinThumb = () => {
+      if (!disabled && !readOnly) {
+        setFocusedThumb(0)
+      }
+    }
+
+    const focusMaxThumb = () => {
+      if (!disabled && !readOnly) {
+        setFocusedThumb(1)
+      }
+    }
+
+    const handleBlur = () => {
+      setFocusedThumb(undefined)
+    }
+
+    const handleMouseEvent = (maintainFocus: boolean) => {
+      if (!disabled && !readOnly) {
+        const newPoint = calculatePointValue(
+          mousePos.x,
+          containerRect,
+          min,
+          max,
+          step
+        )
+        const newValue = createNewValue(
+          value,
+          newPoint,
+          maintainFocus ? focusedThumb : undefined
+        )
         focusChangedPoint(newValue, newPoint)
         setValue(newValue)
       }
     }
-  }
 
-  const focusMinThumb = () => {
-    if (!disabled && !readOnly) {
-      setFocusedThumb(0)
-    }
-  }
+    const handleMouseDown = partial(handleMouseEvent, false)
+    const handleMouseDrag = partial(handleMouseEvent, true)
 
-  const focusMaxThumb = () => {
-    if (!disabled && !readOnly) {
-      setFocusedThumb(1)
-    }
-  }
+    /*
+     * Only fire mouse drag event when mouse moves AFTER initial click
+     */
+    useEffect(
+      () => {
+        if (isMouseDown && prevMouseDown) {
+          handleMouseDrag()
+        }
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [mousePos, isMouseDown]
+    )
 
-  const handleBlur = () => {
-    setFocusedThumb(undefined)
-  }
-
-  const handleMouseEvent = (maintainFocus: boolean) => {
-    if (!disabled && !readOnly) {
-      const newPoint = calculatePointValue(
-        mousePos.x,
-        containerRect,
-        min,
-        max,
-        step
-      )
-      const newValue = createNewValue(
-        value,
-        newPoint,
-        maintainFocus ? focusedThumb : undefined
-      )
-      focusChangedPoint(newValue, newPoint)
-      setValue(newValue)
-    }
-  }
-
-  const handleMouseDown = partial(handleMouseEvent, false)
-  const handleMouseDrag = partial(handleMouseEvent, true)
-
-  /*
-   * Only fire mouse drag event when mouse moves AFTER initial click
-   */
-  useEffect(
-    () => {
-      if (isMouseDown && prevMouseDown) {
-        handleMouseDrag()
+    /*
+     * Controlled Component: update value state when external value prop changes
+     */
+    useEffect(() => {
+      const boundedValue = boundValueProp(min, max, valueProp)
+      if (!isEqual(value, boundedValue)) {
+        setValue(sort(boundedValue))
       }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mousePos, isMouseDown]
-  )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [valueProp])
 
-  /*
-   * Controlled Component: update value state when external value prop changes
-   */
-  useEffect(() => {
-    const boundedValue = boundValueProp(min, max, valueProp)
-    if (!isEqual(value, boundedValue)) {
-      setValue(sort(boundedValue))
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueProp])
+    /*
+     * Fire onChange callback when internal value changes
+     */
+    useEffect(() => {
+      if (!isEqual(value, valueProp)) {
+        onChange && onChange(value)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
 
-  /*
-   * Fire onChange callback when internal value changes
-   */
-  useEffect(() => {
-    if (!isEqual(value, valueProp)) {
-      onChange && onChange(value)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
+    /*
+     * Render markup!
+     * -------------------------------------------
+     */
 
-  /*
-   * Render markup!
-   * -------------------------------------------
-   */
+    return (
+      <div
+        data-testid="range-slider-wrapper"
+        onMouseDown={handleMouseDown}
+        className={className}
+        id={id}
+        ref={setContainerRef}
+      >
+        <SliderTrack ref={ref}>
+          <SliderFill
+            fillStart={minPos}
+            fillWidth={fillWidth}
+            disabled={disabled}
+          />
+          <ThumbLabel
+            position={minPos}
+            focus={focusedThumb === 0}
+            disabled={disabled}
+          >
+            {minValue}
+          </ThumbLabel>
+          <ThumbLabel
+            position={maxPos}
+            focus={focusedThumb === 1}
+            disabled={disabled}
+          >
+            {maxValue}
+          </ThumbLabel>
+          <Thumb
+            position={minPos}
+            tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
+            onFocus={focusMinThumb}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyboardNav}
+            ref={minThumbRef}
+            disabled={disabled}
+            aria-label="Minimum Value"
+            role="slider"
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-disabled={disabled}
+            aria-valuenow={value[0]}
+            aria-labelledby={ariaLabelledby}
+          />
+          <Thumb
+            position={maxPos}
+            tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
+            onFocus={focusMaxThumb}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyboardNav}
+            ref={maxThumbRef}
+            disabled={disabled}
+            aria-label="Maximum Value"
+            role="slider"
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-disabled={disabled}
+            aria-valuenow={value[1]}
+            aria-labelledby={ariaLabelledby}
+          />
+        </SliderTrack>
+      </div>
+    )
+  }
+)
 
-  return (
-    <div
-      data-testid="range-slider-wrapper"
-      onMouseDown={handleMouseDown}
-      className={className}
-      ref={setContainerRef}
-    >
-      <SliderTrack>
-        <SliderFill
-          fillStart={minPos}
-          fillWidth={fillWidth}
-          disabled={disabled}
-        />
-        <ThumbLabel
-          position={minPos}
-          focus={focusedThumb === 0}
-          disabled={disabled}
-        >
-          {minValue}
-        </ThumbLabel>
-        <ThumbLabel
-          position={maxPos}
-          focus={focusedThumb === 1}
-          disabled={disabled}
-        >
-          {maxValue}
-        </ThumbLabel>
-        <Thumb
-          position={minPos}
-          tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
-          onFocus={focusMinThumb}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyboardNav}
-          ref={minThumbRef}
-          disabled={disabled}
-          aria-label="Minimum Value"
-          role="slider"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-disabled={disabled}
-          aria-valuenow={value[0]}
-          aria-labelledBy={ariaLabelledBy}
-        />
-        <Thumb
-          position={maxPos}
-          tabIndex={(disabled ? '-1' : '0') as never} // "as never" ¯\_(ツ)_/¯
-          onFocus={focusMaxThumb}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyboardNav}
-          ref={maxThumbRef}
-          disabled={disabled}
-          aria-label="Maximum Value"
-          role="slider"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-disabled={disabled}
-          aria-valuenow={value[1]}
-          aria-labelledby={ariaLabelledBy}
-        />
-      </SliderTrack>
-    </div>
-  )
-}
+InternalRangeSlider.displayName = 'InternalRangeSlider'
 
 export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
   ${space}
   padding: ${({ theme: { space } }) => `${space.xlarge} 0 ${space.small}`};
-  max-width: 500px;
 `
 
 const SliderTrack = styled.div`

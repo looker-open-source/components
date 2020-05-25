@@ -23,57 +23,38 @@
  SOFTWARE.
 
  */
-import 'jest-styled-components'
+
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import map from 'lodash/map'
-import { FieldRadioGroup } from './FieldRadioGroup'
+import { FieldRangeSlider } from './FieldRangeSlider'
 
-const fieldRadioOptions = [
-  {
-    label: 'Cheddar',
-    value: 'cheddar',
-  },
-  {
-    label: 'Gouda',
-    value: 'gouda',
-  },
-  {
-    label: 'Swiss',
-    value: 'swiss',
-  },
-  {
-    label: 'Roquefort',
-    value: 'roquefort',
-  },
-]
+test('FieldRangeSlider should accept detail and description attributes', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldRangeSlider
+      detail="5/50"
+      description="this is the description"
+      label="👍"
+      id="thumbs-up"
+    />
+  )
 
-const fieldRadioProps = {
-  defaultValue: 'cheddar',
-  id: '1',
-  name: 'group1',
-  options: fieldRadioOptions,
-}
-test('FieldRadioGroup render a radio list', () => {
-  const extractCheckboxFromDomList = (list: HTMLElement) => {
-    const options = list.getElementsByTagName('label')
-    return map(options, (el: HTMLElement) => {
-      return el.textContent
-    })
-  }
+  const input = getByLabelText('👍')
+  expect(input.getAttribute('detail')).toBeDefined()
+  expect(input.getAttribute('description')).toBeDefined()
+})
 
-  const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <FieldRadioGroup {...fieldRadioProps} required />
-    )
-    return getByTestId('radio-list')
-  }
+test('FieldSelectMulti should accept a disabled prop', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldRangeSlider disabled id="test" label="Test Label" />
+  )
 
-  const domList = renderListContent()
-  expect(extractCheckboxFromDomList(domList)).toEqual([
-    'Cheddar',
-    'Gouda',
-    'Swiss',
-    'Roquefort',
-  ])
+  const input = getByLabelText('Test Label')
+  expect(input.getAttribute('disabled')).toBeDefined()
+})
+
+test('FieldSelectMulti should accept required attributes', () => {
+  const { getByText } = renderWithTheme(
+    <FieldRangeSlider label="👍" id="thumbs-up" required />
+  )
+  expect(getByText('required')).toBeVisible()
 })

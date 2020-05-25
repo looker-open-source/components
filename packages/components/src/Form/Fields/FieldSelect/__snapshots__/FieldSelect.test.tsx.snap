@@ -139,10 +139,6 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -235,7 +231,7 @@ exports[`A FieldSelect 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
-    id="thumbs-up-labeledby"
+    id="thumbs-up-labelledby"
   >
     👍
   </label>
@@ -472,10 +468,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -608,7 +600,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
-    id="thumbs-up-labeledby"
+    id="thumbs-up-labelledby"
   >
     👍
   </label>
@@ -868,10 +860,6 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c0 .c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -964,7 +952,7 @@ exports[`A required FieldSelect 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
-    id="thumbs-up-labeledby"
+    id="thumbs-up-labelledby"
   >
     👍
     <span
@@ -1192,10 +1180,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1288,7 +1272,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
     fontSize="xsmall"
     fontWeight="normal"
     htmlFor="thumbs-up"
-    id="thumbs-up-labeledby"
+    id="thumbs-up-labelledby"
   >
     👍
   </label>
