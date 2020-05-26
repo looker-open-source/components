@@ -4,7 +4,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -22,6 +22,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -74,7 +75,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -92,6 +93,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -143,7 +145,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -161,6 +163,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
