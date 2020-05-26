@@ -42,7 +42,6 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 
 .c0:focus,
 .c0:hover {
-  background: blue;
   outline: none;
   border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
@@ -113,7 +112,6 @@ exports[`InlineInputText renders an input with no value 1`] = `
 
 .c0:focus,
 .c0:hover {
-  background: blue;
   outline: none;
   border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
@@ -183,7 +181,6 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 
 .c0:focus,
 .c0:hover {
-  background: blue;
   outline: none;
   border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
