@@ -202,7 +202,7 @@ exports[`Fieldset 1`] = `
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-1"
-        id="text-1-labeledby"
+        id="text-1-labelledby"
       >
         One
       </label>
@@ -235,7 +235,7 @@ exports[`Fieldset 1`] = `
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-2"
-        id="text-2-labeledby"
+        id="text-2-labelledby"
       >
         two
       </label>
@@ -268,7 +268,7 @@ exports[`Fieldset 1`] = `
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-3"
-        id="text-3-labeledby"
+        id="text-3-labelledby"
       >
         three
       </label>

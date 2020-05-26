@@ -128,7 +128,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
         fontSize={labelFontSize}
         fontWeight={labelFontWeight}
         htmlFor={id}
-        id={`${id}-labeledby`}
+        id={`${id}-labelledby`}
       >
         {label}
         {required && <RequiredStar />}

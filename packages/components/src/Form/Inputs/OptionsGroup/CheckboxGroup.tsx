@@ -24,50 +24,74 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import xor from 'lodash/xor'
+import React, { FC, useCallback, useRef } from 'react'
+import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
-export type CheckboxGroupValue = string[]
+export type CheckboxGroupProps = OptionsGroupProps<string[]>
 
-export interface CheckboxGroupProps extends OptionsGroupProps {
-  defaultValue?: CheckboxGroupValue
-  value?: CheckboxGroupValue
-  onChange?: (value: CheckboxGroupValue) => void
+// For controlled scenario we want to use checked & value,
+// for uncontrolled, defaultChecked & defaultValue
+function getCheckedProps(
+  optionValue: string,
+  value?: string[],
+  defaultValue?: string[]
+) {
+  const key = value ? 'checked' : 'defaultChecked'
+  const valueToUse = value || defaultValue || []
+  return { [key]: valueToUse.includes(optionValue) }
 }
 
 export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   disabled,
-  inline,
+  name: propsName,
   options,
   defaultValue = [],
   value,
   onChange,
+  ...rest
 }) => {
-  const [currentOptions, setCurrentOptions] = useState(value || defaultValue)
+  const name = useID(propsName)
+  // Keep track of the group's value for onChange argument if value prop is not used
+  // (i.e.uncontrolled but with onChange prop)
+  const uncontrolledValueRef = useRef(defaultValue)
 
-  const handleChange = (option: string) => {
-    const newValues = currentOptions.includes(option)
-      ? [...currentOptions.filter((v) => v !== option)]
-      : [...currentOptions, option]
+  const getChangeHandler = useCallback(
+    (optionValue: string) => {
+      return onChange
+        ? () => {
+            const oldValue = value || uncontrolledValueRef.current
+            const newValue = xor(oldValue, [optionValue])
+            onChange(newValue)
+            uncontrolledValueRef.current = newValue
+          }
+        : undefined
+    },
+    [onChange, value]
+  )
 
-    !value && setCurrentOptions(newValues)
-    onChange && onChange(newValues)
-  }
-  const checkboxes = options.map((option, index) => (
-    <FieldCheckbox
-      onChange={() => handleChange(option.value)}
-      disabled={option.disabled || disabled}
-      key={index}
-      label={option.label}
-      checked={currentOptions.includes(option.value)}
-      value={option.value}
-    />
-  ))
+  const checkboxes = options.map((option) => {
+    const checkedProps = getCheckedProps(option.value, value, defaultValue)
+    const handleChange = getChangeHandler(option.value)
+
+    return (
+      <FieldCheckbox
+        onChange={handleChange}
+        disabled={option.disabled || disabled}
+        key={option.value}
+        label={option.label}
+        name={name}
+        value={option.value}
+        {...checkedProps}
+      />
+    )
+  })
 
   return (
-    <Fieldset data-testid="checkbox-list" inline={inline}>
+    <Fieldset data-testid="checkbox-list" {...rest}>
       {checkboxes}
     </Fieldset>
   )

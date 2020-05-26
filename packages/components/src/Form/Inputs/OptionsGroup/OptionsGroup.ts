@@ -37,11 +37,15 @@ interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {
   inline?: boolean
 }
 
-export interface OptionsGroupProps extends OptionsGroupLayout {
-  name: string
+export interface OptionsGroupProps<ValueType extends string | string[]>
+  extends OptionsGroupLayout {
+  name?: string
   id?: string
   disabled?: boolean
   required?: boolean
   options: OptionsGroupOptionProps[]
   validationMessage?: ValidationMessageProps
+  defaultValue?: ValueType
+  value?: ValueType
+  onChange?: (value: ValueType) => void
 }

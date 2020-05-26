@@ -114,12 +114,6 @@ export function usePopper({
               offset: [0, 8],
             },
           },
-          {
-            name: 'computeStyles',
-            options: {
-              adaptive: false,
-            },
-          },
         ]),
         strategy: 'fixed',
       }),
