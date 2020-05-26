@@ -34,6 +34,7 @@ export interface TreeItemProps {
   children: ReactNode
   className?: string
   detail?: ReactNode
+  detailStopPropagation?: boolean
   /**
    * Gap size of the internal Space component
    */
@@ -46,13 +47,14 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   detail,
+  detailStopPropagation,
   gapSize = 'xxsmall',
   icon,
   iconSize,
 }) => {
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    event.stopPropagation()
+    detailStopPropagation && event.stopPropagation()
   }
 
   return (

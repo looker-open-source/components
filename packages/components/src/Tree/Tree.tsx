@@ -39,6 +39,7 @@ import { TreeItem } from './TreeItem'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   detail?: ReactNode
+  detailStopPropagation?: boolean
   fontWeight?: FontWeights
   border?: boolean
   icon?: IconNames
@@ -56,6 +57,7 @@ const indicatorProps: AccordionIndicatorProps = {
 const TreeLayout: FC<TreeProps> = ({
   children,
   detail,
+  detailStopPropagation,
   fontWeight,
   icon,
   iconSize,
@@ -67,6 +69,7 @@ const TreeLayout: FC<TreeProps> = ({
       <AccordionDisclosure fontWeight={fontWeight}>
         <TreeItem
           detail={detail}
+          detailStopPropagation={detailStopPropagation}
           gapSize="xsmall"
           icon={icon}
           iconSize={iconSize}
