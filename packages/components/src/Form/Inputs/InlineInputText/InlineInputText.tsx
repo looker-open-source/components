@@ -36,6 +36,7 @@ interface InlineInputTextProps
     Omit<InputProps, 'type'> {
   underlineOnlyOnHover?: boolean
   value?: string
+  simple?: boolean
 }
 
 export const InlineInputTextInternal = forwardRef(
@@ -46,6 +47,7 @@ export const InlineInputTextInternal = forwardRef(
       underlineOnlyOnHover,
       value: valueProp,
       placeholder,
+      simple = false,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -68,6 +70,7 @@ export const InlineInputTextInternal = forwardRef(
       <div className={className} data-testid="inlineInputText">
         <Input
           onChange={handleChange}
+          simple={simple}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
           ref={ref}
@@ -115,7 +118,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
-    props.underlineOnlyOnHover
+    props.underlineOnlyOnHover || props.simple
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
   display: inline-flex;
