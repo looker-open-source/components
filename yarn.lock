@@ -2053,47 +2053,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@looker/components-providers@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/components-providers/-/components-providers-0.7.34.tgz#e722fc19faa9e67d63c37abef2b4ab9a794789bb"
-  integrity sha512-qLE7L4PSYm7g6RWF7JkQvDG/M1dLXjpZ9MFruUEkZWd8A1onzbbniGajEMQrUEWkf5VJoX9uXrn2guec4LytdQ==
-  dependencies:
-    "@looker/design-tokens" "^0.7.34"
-
-"@looker/components@*":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/components/-/components-0.7.34.tgz#79b87aa69f66d073a2030b7fe0abec02544f5a57"
-  integrity sha512-+WfAxVv03gtrY9RIoY1/v9A4TnT3lroKtt9f/A7zW4TvBKwEsGFP4aZC/OPUUPzpcCpnjjcvMoWsLGYFKSI9Zg==
-  dependencies:
-    "@looker/components-providers" "^0.7.34"
-    "@looker/design-tokens" "^0.7.34"
-    "@looker/icons" "^0.7.34"
-    "@popperjs/core" "^2.4.0"
-    d3-color "^1.4.1"
-    d3-hsv "^0.1.0"
-    date-fns "^2.14.0"
-    date-fns-tz "^1.0.10"
-    focus-trap "^5.1.0"
-    lodash "^4.17.15"
-    polished "^3.6.3"
-    react-day-picker "^7.4.8"
-    react-hotkeys "^2.0.0"
-    react-resize-detector "^4.2.3"
-    react-transition-group "^4.3.0"
-    resize-observer-polyfill "^1.5.1"
-    styled-system "^5.1.5"
-    uuid "^8.0.0"
-
-"@looker/design-tokens@*", "@looker/design-tokens@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/design-tokens/-/design-tokens-0.7.34.tgz#94b8b7b744602c12ba21778efca1638205cad197"
-  integrity sha512-uPuHSYZeY53Zv9BnhLtFnKUZbZSkW48LYaN+Es+Y8Lz8lq5eIC3AvT9kcoprOMmlDhScF1WFBrGnqoGflaC1lg==
-  dependencies:
-    "@types/styled-system" "^5.1.9"
-    lodash "^4.17.15"
-    polished "^3.6.3"
-    styled-system "^5.1.5"
-
 "@looker/eslint-config@^1.0.14":
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.0.16.tgz#6221efeb686b7c82f82817975892895599a231a7"
@@ -2118,11 +2077,6 @@
     stylelint-config-styled-components "^0.1.1"
     stylelint-processor-styled-components "^1.10.0"
     typescript "^3.8.3"
-
-"@looker/icons@*", "@looker/icons@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-0.7.34.tgz#119fc8257278dd72fb8990eb459737ebf592b3d4"
-  integrity sha512-nwNPV+azo4DqHTh+9jf1XkyiKliLy2EhJUjBaoBCOyIR4jyk8TXL8w00x96G9GgdvfXcNS4UdLqjsCWdcYzJyQ==
 
 "@looker/prettier-config@^1.0.15":
   version "1.0.15"
@@ -5194,7 +5148,7 @@ cli-table3@^0.5.1:
   optionalDependencies:
     colors "^1.1.2"
 
-cli-truncate@^2.1.0:
+cli-truncate@2.1.0, cli-truncate@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-truncate/-/cli-truncate-2.1.0.tgz#c39e28bf05edcde5be3b98992a22deed5a2b93c7"
   integrity sha512-n8fOixwDD6b/ObinzTrp1ZKFzbgvKZvuz/TvejnLn1aQfC6r52XEx85FmuC+3HI+JM7coBRXUvNqEU2PHVrHpg==
@@ -11478,12 +11432,13 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@^10.2.4:
-  version "10.2.4"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.4.tgz#0ed5d1cf06bdac0d3fbb003931bb6df3771fbf42"
-  integrity sha512-doTMGKXQAT34c3S3gwDrTnXmCZp/z1/92D8suPqqh755sKPT18ew1NoPNHxJdrvv1D4WrJ7CEnx79Ns3EdEFbg==
+lint-staged@^10.2.6:
+  version "10.2.6"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.6.tgz#7d9658bd89dee946a859cbfc6e09566a9fb50b53"
+  integrity sha512-2oEBWyPZHkdyjKcIv2U6ay80Q52ZMlZZrUnfsV0WTVcgzPlt3o2t5UFy2v8ETUTsIDZ0xSJVnffWCgD3LF6xTQ==
   dependencies:
     chalk "^4.0.0"
+    cli-truncate "2.1.0"
     commander "^5.1.0"
     cosmiconfig "^6.0.0"
     debug "^4.1.1"
