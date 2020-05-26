@@ -99,6 +99,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   padding: 0;
   position: absolute;
   resize: none;
+  text-align: inherit;
   text-transform: inherit;
   top: 0;
   width: 100%;
@@ -129,6 +130,7 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   position: relative;
   min-width: 2rem;
   min-height: ${(props) => props.theme.lineHeights.medium};
+  text-align: inherit;
   white-space: pre-wrap;
 
   :focus,

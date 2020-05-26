@@ -126,6 +126,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 
   :focus,
   :hover {
