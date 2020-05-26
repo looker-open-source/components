@@ -23,23 +23,37 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { InputDateDemo } from './Form/InputDateDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <InputDateDemo />
-    </ComponentsProvider>
-  )
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
+import type { LocaleSettings } from './localeUtils'
+
+export const en: LocaleSettings = {
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
+  weekdays: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
+  weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  firstDay: 0, // sunday
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+/* eslint-enable sort-keys-fix/sort-keys-fix */

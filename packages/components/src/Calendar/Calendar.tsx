@@ -36,6 +36,7 @@ import { inputTextFocus } from '../Form/Inputs/InputText'
 import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
+import { localeUtils } from './locales/localeUtils'
 
 interface CalendarProps {
   locale?: LocaleCodes
@@ -100,6 +101,7 @@ const InternalCalendar: FC<CalendarProps> = ({
         captionElement={NoopComponent}
         modifiers={modifiers}
         onMonthChange={onMonthChange}
+        localeUtils={localeUtils}
       />
     </CalendarContext.Provider>
   )
