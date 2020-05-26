@@ -80,7 +80,7 @@
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.3",
     "webpack": "^4.43.0"
   },
   "lint-staged": {
