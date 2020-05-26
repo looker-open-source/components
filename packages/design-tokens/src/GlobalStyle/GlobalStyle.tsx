@@ -26,17 +26,17 @@
 
 import { css, createGlobalStyle } from 'styled-components'
 
-const fonts = css`
+export const fonts = (brand: string) => `
   body,
   button,
   input,
   textarea,
   select {
-    font-family: ${(props) => props.theme.fonts.brand};
+    font-family: ${brand};
   }
 `
 
-const reset = css`
+export const reset = (background: string) => `
   html {
     box-sizing: border-box;
     font-size: 16px;
@@ -72,11 +72,13 @@ const reset = css`
   }
 
   body {
-    background-color: ${(props) => props.theme.colors.palette.white};
+    background-color: ${background};
   }
 `
 
 export const GlobalStyle = createGlobalStyle`
-  ${fonts}
-  ${reset}
+  ${css`
+    ${({ theme }) => fonts(theme.fonts.brand)}
+    ${({ theme }) => reset(theme.colors.palette.white)}
+  `}
 `

@@ -24,10 +24,10 @@
 
  */
 import 'jest-styled-components'
-import React from 'react'
+import React, { useState } from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { map } from 'lodash'
+import map from 'lodash/map'
 import { RadioGroup } from './RadioGroup'
 
 const radioOptions = [
@@ -50,7 +50,7 @@ const radioOptions = [
 ]
 
 const radioProps = {
-  defaultValue: ['swiss', 'cheddar'],
+  defaultValue: 'swiss',
   id: '1',
   name: 'group1',
   options: radioOptions,
@@ -89,14 +89,38 @@ test('RadioGroup selects a radio on click', () => {
   fireEvent.click(radio)
 
   expect(handleChange).toHaveBeenCalledWith('cheddar')
-  expect((radio as HTMLInputElement).checked).toBe(true)
+  expect(radio).toBeChecked()
 })
 
 test('RadioGroup works with defaultValue', () => {
   const { getByLabelText } = renderWithTheme(
     <RadioGroup {...radioProps} defaultValue={'cheddar'} />
   )
-  expect((getByLabelText('Cheddar') as HTMLInputElement).checked).toBe(true)
+  expect(getByLabelText('Cheddar')).toBeChecked()
+})
+
+test('RadioGroup works with value', () => {
+  function ControlledTest() {
+    const [value, setValue] = useState('cheddar')
+    return (
+      <RadioGroup
+        options={radioOptions}
+        name="controlled"
+        value={value}
+        onChange={setValue}
+      />
+    )
+  }
+  const { getByLabelText } = renderWithTheme(<ControlledTest />)
+
+  const cheddar = getByLabelText('Cheddar')
+  const swiss = getByLabelText('Swiss')
+  expect(cheddar).toBeChecked()
+  expect(swiss).not.toBeChecked()
+
+  fireEvent.click(swiss)
+  expect(cheddar).not.toBeChecked()
+  expect(swiss).toBeChecked()
 })
 
 test('RadioGroup disabled all Radios', () => {

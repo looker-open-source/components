@@ -24,8 +24,7 @@
 
  */
 
-import { noop } from 'lodash'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CheckboxGroup,
   FieldCheckboxGroup,
@@ -55,43 +54,36 @@ export const OptionsGroupDemo = () => {
     },
   ]
 
-  const value = ['swiss', 'cheddar']
+  const defaultValueCheckbox = ['swiss', 'cheddar']
+  const defaultValueRadio = 'swiss'
+
+  const [valueCheckbox, setValueCheckbox] = useState(['cheddar'])
+  const [valueRadio, setValueRadio] = useState('cheddar')
+
   return (
     <Grid m="xxlarge">
+      <CheckboxGroup defaultValue={defaultValueCheckbox} options={options} />
       <CheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
-        options={options}
-      />
-      <CheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group2"
+        defaultValue={defaultValueCheckbox}
         inline
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
+        defaultValue={defaultValueCheckbox}
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        value={valueCheckbox}
+        onChange={setValueCheckbox}
         inline
-        name="group1"
-        label="Cheeses"
+        label="Cheeses (controlled)"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
+        defaultValue={defaultValueCheckbox}
         required
         label="Cheeses"
         description="Pick all your cheeses"
@@ -102,80 +94,60 @@ export const OptionsGroupDemo = () => {
         options={options}
       />
       <FieldCheckboxGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueCheckbox}
         validationMessage={{
           message: 'Select at least 1 cheese',
           type: 'error',
         }}
         inline
         required
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <CheckboxGroup
         disabled
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
+        defaultValue={defaultValueCheckbox}
         options={options}
       />
       <CheckboxGroup
         disabled
-        onChange={noop}
-        defaultValue={value}
-        name="group2"
+        defaultValue={defaultValueCheckbox}
         inline
         options={options}
       />
       <FieldCheckboxGroup
         disabled
-        onChange={noop}
         defaultValue={['swiss']}
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <FieldCheckboxGroup
         disabled
-        onChange={noop}
         defaultValue={['swiss']}
         inline
-        name="group1"
         label="Cheeses"
         description="Pick all your cheeses"
         options={options}
       />
       <RadioGroup
-        onChange={noop}
-        value="cheddar"
-        name="group1"
+        defaultValue={defaultValueRadio}
         options={options}
+        onChange={alert}
       />
-      <RadioGroup
-        onChange={noop}
-        value="cheddar"
-        name="group2"
-        inline
+      <RadioGroup defaultValue={defaultValueRadio} inline options={options} />
+      <FieldRadioGroup
+        onChange={setValueRadio}
+        value={valueRadio}
+        required
+        label="Cheeses (controlled)"
         options={options}
       />
       <FieldRadioGroup
-        onChange={noop}
-        defaultValue={value}
-        name="group1"
-        required
-        label="Cheeses"
-        options={options}
-      />
-      <FieldRadioGroup
-        onChange={noop}
-        defaultValue={value}
+        defaultValue={defaultValueRadio}
         inline
         required
-        name="group1"
         label="Cheeses"
         options={options}
       />

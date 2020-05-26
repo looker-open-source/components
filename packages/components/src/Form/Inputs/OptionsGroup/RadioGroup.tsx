@@ -23,46 +23,68 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback } from 'react'
+import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields'
 import { OptionsGroupProps } from './OptionsGroup'
 
-type RadioGroupValue = string
+export type RadioGroupProps = OptionsGroupProps<string>
 
-export interface RadioGroupProps extends OptionsGroupProps {
-  className?: string
-  onChange?: (value: RadioGroupValue) => void
-  value?: RadioGroupValue
+// For controlled scenario we want to use checked & value,
+// for uncontrolled, defaultChecked & defaultValue
+function getCheckedProps(
+  optionValue: string,
+  isControlled: boolean,
+  value?: string,
+  defaultValue?: string
+) {
+  const key = isControlled ? 'checked' : 'defaultChecked'
+  const valueToUse = isControlled ? value : defaultValue
+  return { [key]: valueToUse === optionValue }
 }
 
 export const RadioGroup: FC<RadioGroupProps> = ({
   disabled,
-  inline,
+  name: propsName,
   options,
-  defaultValue = '',
+  defaultValue,
   value,
   onChange,
+  ...rest
 }) => {
-  const [currentOption, setCurrentOption] = useState(value || defaultValue)
+  const name = useID(propsName)
+  const isControlled = onChange !== undefined && defaultValue === undefined
 
-  const handleOnchange = (option: string) => {
-    !value && setCurrentOption(option)
-    onChange && onChange(option)
-  }
+  const getChangeHandler = useCallback(
+    (optionValue: string) => {
+      return onChange ? () => onChange(optionValue) : undefined
+    },
+    [onChange]
+  )
 
-  const radios = options.map((option, index) => (
-    <FieldRadio
-      checked={currentOption === option.value}
-      disabled={option.disabled || disabled}
-      key={index}
-      label={option.label}
-      onChange={() => handleOnchange(option.value)}
-    />
-  ))
+  const radios = options.map((option) => {
+    const checkedProps = getCheckedProps(
+      option.value,
+      isControlled,
+      value,
+      defaultValue
+    )
+
+    return (
+      <FieldRadio
+        disabled={option.disabled || disabled}
+        key={option.value}
+        label={option.label}
+        name={name}
+        onChange={getChangeHandler(option.value)}
+        {...checkedProps}
+      />
+    )
+  })
 
   return (
-    <Fieldset data-testid="radio-list" disabled={disabled} inline={inline}>
+    <Fieldset data-testid="radio-list" disabled={disabled} {...rest}>
       {radios}
     </Fieldset>
   )

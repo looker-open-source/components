@@ -64,10 +64,6 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -103,7 +99,7 @@ exports[`A FieldTextArea with default label 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labeledby"
+    id="FieldTextAreaID-labelledby"
   >
     👍
   </label>
@@ -172,10 +168,6 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c6 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -212,10 +204,6 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c0 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -258,7 +246,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labeledby"
+    id="FieldTextAreaID-labelledby"
   >
     👍
   </label>

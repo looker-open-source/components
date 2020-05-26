@@ -2,6 +2,7 @@
 
 exports[`Form with one child 1`] = `
 .c0 {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,10 +119,6 @@ exports[`Form with one child 1`] = `
 }
 
 .c1 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -150,6 +147,7 @@ exports[`Form with one child 1`] = `
 
 <form
   className="c0"
+  width="100%"
 >
   <div
     className="c1 "
@@ -160,7 +158,7 @@ exports[`Form with one child 1`] = `
       fontSize="xsmall"
       fontWeight="semiBold"
       htmlFor="text-field"
-      id="text-field-labeledby"
+      id="text-field-labelledby"
     >
       label
     </label>
