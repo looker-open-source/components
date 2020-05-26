@@ -85,12 +85,11 @@ const centeredVerticalBorder = css`
     /* Margin is used to center the optional border line */
     margin-left: calc(
       ${space[indicatorProps.indicatorSize as SpacingSizes]} / 2 +
-        ${space.xxsmall} + 1px - 0.5px
+        ${space.xxsmall}
     );
     padding-left: calc(
-      ${space[indicatorProps.indicatorSize as SpacingSizes]} +
-        ${space[indicatorProps.indicatorGap as SpacingSizes]} -
-        (space[indicatorProps.indicatorSize as SpacingSizes]} + 1px) / 2
+      (${space[indicatorProps.indicatorSize as SpacingSizes]} / 2) +
+        ${space[indicatorProps.indicatorGap as SpacingSizes]} - ${space.xxsmall}
     );
   `}
 `
