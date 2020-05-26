@@ -26,12 +26,12 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
+import { TestPopovers } from './Popovers/Testing'
 
 const App: FC = () => {
   return (
     <ComponentsProvider ie11Support>
-      <OptionsGroupDemo />
+      <TestPopovers />
     </ComponentsProvider>
   )
 }
