@@ -26,7 +26,6 @@
 
 import React, { useState } from 'react'
 import {
-  Box,
   Combobox,
   ComboboxMulti,
   ComboboxMultiInput,
@@ -36,6 +35,8 @@ import {
   ComboboxList,
   ComboboxInput,
   Heading,
+  Space,
+  SpaceVertical,
 } from '@looker/components'
 
 export function ComboboxDemo() {
@@ -49,60 +50,89 @@ export function ComboboxDemo() {
   }
 
   return (
-    <Box p="large">
-      <Heading>Controlled</Heading>
-      <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
-        <ComboboxInput />
-        <ComboboxList>
-          <ComboboxOption value="Apples" />
-          <ComboboxOption value="Oranges" />
-          <ComboboxOption value="Grapes" />
-          <ComboboxOption value="Bananas" />
-          <ComboboxOption value="Pineapples" />
-        </ComboboxList>
-      </Combobox>
-      <ComboboxMulti
-        width={300}
-        maxHeight={75}
-        mb="medium"
-        values={options}
-        onChange={handleMultiChange}
-      >
-        <ComboboxMultiInput onClear={() => alert('CLEAR')} />
-        <ComboboxMultiList>
-          <ComboboxMultiOption value="Apples" />
-          <ComboboxMultiOption value="Oranges" />
-          <ComboboxMultiOption value="Grapes" />
-          <ComboboxMultiOption value="Bananas" />
-          <ComboboxMultiOption value="Pineapples" />
-        </ComboboxMultiList>
-      </ComboboxMulti>
-      <Heading>Uncontrolled</Heading>
-      <Combobox width={300} mb="medium">
-        <ComboboxInput />
-        <ComboboxList>
-          <ComboboxOption value="Apples" />
-          <ComboboxOption value="Oranges" />
-          <ComboboxOption value="Grapes" />
-          <ComboboxOption value="Bananas" />
-          <ComboboxOption value="Pineapples" />
-          <ComboboxOption
-            value=""
-            label="Create New Option"
-            highlightText={false}
-          />
-        </ComboboxList>
-      </Combobox>
-      <ComboboxMulti width={300}>
-        <ComboboxMultiInput onClear={() => alert('CLEAR')} />
-        <ComboboxMultiList>
-          <ComboboxMultiOption value="Apples" />
-          <ComboboxMultiOption value="Oranges" />
-          <ComboboxMultiOption value="Grapes" />
-          <ComboboxMultiOption value="Bananas" />
-          <ComboboxMultiOption value="Pineapples" />
-        </ComboboxMultiList>
-      </ComboboxMulti>
-    </Box>
+    <Space p="large" align="start">
+      <SpaceVertical>
+        <Heading>Controlled</Heading>
+        <Combobox width={300} value={option} onChange={handleChange}>
+          <ComboboxInput />
+          <ComboboxList>
+            <ComboboxOption value="Apples" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+          </ComboboxList>
+        </Combobox>
+        <ComboboxMulti
+          width={300}
+          maxHeight={75}
+          values={options}
+          onChange={handleMultiChange}
+        >
+          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
+          <ComboboxMultiList>
+            <ComboboxMultiOption value="Apples" />
+            <ComboboxMultiOption value="Oranges" />
+            <ComboboxMultiOption value="Grapes" />
+            <ComboboxMultiOption value="Bananas" />
+            <ComboboxMultiOption value="Pineapples" />
+          </ComboboxMultiList>
+        </ComboboxMulti>
+        <Heading>Uncontrolled</Heading>
+        <Combobox width={300}>
+          <ComboboxInput />
+          <ComboboxList>
+            <ComboboxOption value="Apples super long text to see what wrapping looks like" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+            <ComboboxOption
+              value=""
+              label="Create New Option"
+              highlightText={false}
+            />
+          </ComboboxList>
+        </Combobox>
+        <ComboboxMulti width={300}>
+          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
+          <ComboboxMultiList>
+            <ComboboxMultiOption value="Apples" />
+            <ComboboxMultiOption value="Oranges" />
+            <ComboboxMultiOption value="Grapes" />
+            <ComboboxMultiOption value="Bananas" />
+            <ComboboxMultiOption value="Pineapples" />
+          </ComboboxMultiList>
+        </ComboboxMulti>
+      </SpaceVertical>
+      <SpaceVertical>
+        <Heading>Detail</Heading>
+        <Combobox width={300}>
+          <ComboboxInput placeholder="detail={false}" />
+          <ComboboxList detail={false}>
+            <ComboboxOption value="Apples" />
+            <ComboboxOption value="Oranges" />
+            <ComboboxOption value="Grapes" />
+            <ComboboxOption value="Bananas" />
+            <ComboboxOption value="Pineapples" />
+            <ComboboxOption
+              value=""
+              label="Create New Option"
+              highlightText={false}
+            />
+          </ComboboxList>
+        </Combobox>
+        <ComboboxMulti width={300}>
+          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
+          <ComboboxMultiList>
+            <ComboboxMultiOption value="Apples" />
+            <ComboboxMultiOption value="Oranges" />
+            <ComboboxMultiOption value="Grapes" />
+            <ComboboxMultiOption value="Bananas" />
+            <ComboboxMultiOption value="Pineapples" />
+          </ComboboxMultiList>
+        </ComboboxMulti>
+      </SpaceVertical>
+    </Space>
   )
 }

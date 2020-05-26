@@ -49,13 +49,15 @@ import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { useForkedRef } from '../../../utils'
 import { usePopover } from '../../../Popover'
+import { ComboboxOptionDetailProps } from './ComboboxOptionDetail'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxActionType } from './utils/state'
 
 export interface ComboboxListProps
-  extends SpaceProps,
+  extends Pick<ComboboxOptionDetailProps, 'detail'>,
+    SpaceProps,
     LayoutProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
@@ -100,6 +102,7 @@ const ComboboxListInternal = forwardRef(
       closeOnSelect = true,
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
       windowedOptions = false,
+      detail,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -112,6 +115,7 @@ const ComboboxListInternal = forwardRef(
       persistSelectionPropRef,
       closeOnSelectPropRef,
       windowedOptionsPropRef,
+      detailPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -126,6 +130,7 @@ const ComboboxListInternal = forwardRef(
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
     if (windowedOptionsPropRef) windowedOptionsPropRef.current = windowedOptions
+    if (detailPropRef) detailPropRef.current = detail
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout

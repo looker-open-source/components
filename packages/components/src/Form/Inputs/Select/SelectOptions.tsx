@@ -33,7 +33,6 @@ import {
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
-  comboboxOptionGrid,
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
@@ -108,9 +107,6 @@ export function SelectOptionWithDescription({
 
 const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
   padding-top: ${({ theme }) => theme.space.xxsmall};
-  ${comboboxOptionGrid}
-  ${({ isMulti, theme }) =>
-    isMulti ? `grid-template-columns: ${theme.space.xlarge} 1fr;` : ''}
 `
 
 SelectOptionGroupTitle.defaultProps = {

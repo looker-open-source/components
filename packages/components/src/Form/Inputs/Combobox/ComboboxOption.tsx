@@ -59,6 +59,10 @@ import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
+import {
+  ComboboxOptionDetail,
+  ComboboxOptionDetailProps,
+} from './ComboboxOptionDetail'
 import { useOptionScroll } from './utils/useOptionScroll'
 
 export interface ComboboxOptionObject {
@@ -86,6 +90,7 @@ export interface HighlightTextProps {
 
 export interface ComboboxOptionProps
   extends ComboboxOptionObject,
+    Pick<ComboboxOptionDetailProps, 'detail'>,
     HighlightTextProps,
     ColorProps,
     FlexboxProps,
@@ -106,11 +111,6 @@ export interface ComboboxOptionProps
    *   </ComboboxOption>
    */
   children?: ReactNode
-  /**
-   * Customize the area to the left of the label, which by default
-   * renders a check mark for the selected option or a spacer
-   */
-  detail?: ReactNode | false
 }
 
 export const ComboboxOptionWrapper = forwardRef(
@@ -141,7 +141,7 @@ const ComboboxOptionInternal = forwardRef(
   (
     {
       children,
-      detail: propsDetail,
+      detail,
       highlightText = true,
       scrollIntoView,
       ...props
@@ -174,15 +174,6 @@ const ComboboxOptionInternal = forwardRef(
     )
     const ref = useForkedRef(scrollRef, forwardedRef)
 
-    const detail =
-      propsDetail !== undefined ? (
-        propsDetail
-      ) : (
-        <ComboboxOptionDetail>
-          {isSelected && <Icon name="Check" mr={0} />}
-        </ComboboxOptionDetail>
-      )
-
     return (
       <ComboboxOptionWrapper
         {...props}
@@ -190,7 +181,13 @@ const ComboboxOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        {detail}
+        <ComboboxOptionDetail
+          detail={detail}
+          isActive={isActive}
+          isSelected={isSelected}
+        >
+          {isSelected && <Icon name="Check" mr={0} />}
+        </ComboboxOptionDetail>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
@@ -198,19 +195,6 @@ const ComboboxOptionInternal = forwardRef(
 )
 
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
-
-export const ComboboxOptionDetail = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: ${(props) => props.theme.space.large};
-`
-
-export const comboboxOptionGrid = css`
-  display: grid;
-  grid-gap: ${(props) => props.theme.space.xxsmall};
-  grid-template-columns: ${(props) => props.theme.space.medium} 1fr;
-`
 
 export const comboboxOptionStyle = css`
   ${reset}
@@ -220,8 +204,7 @@ export const comboboxOptionStyle = css`
   ${space}
   ${typography}
   cursor: default;
-  align-items: flex-start;
-  ${comboboxOptionGrid}
+  align-items: stretch;
   outline: none;
 
   &[aria-selected='true'] {

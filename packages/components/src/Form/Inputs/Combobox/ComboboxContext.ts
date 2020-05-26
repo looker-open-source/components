@@ -33,6 +33,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react'
+import { ComboboxOptionDetailProps } from './ComboboxOptionDetail'
 import {
   ComboboxData,
   ComboboxMultiData,
@@ -67,6 +68,7 @@ export interface ComboboxContextProps<
   readOnlyPropRef?: MutableRefObject<boolean>
   windowedOptionsPropRef?: MutableRefObject<boolean>
   isAutoScrollingRef?: MutableRefObject<boolean>
+  detailPropRef?: MutableRefObject<ComboboxOptionDetailProps['detail']>
   isVisible?: boolean
   openOnFocus?: boolean
   listScrollPosition?: number
