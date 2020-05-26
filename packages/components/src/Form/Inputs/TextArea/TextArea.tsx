@@ -108,7 +108,6 @@ export const TextArea = styled(TextAreaLayout)`
     border-color: ${(props) => props.theme.colors.palette.charcoal200};
     border-radius: ${(props) => props.theme.radii.medium};
     font-size: ${(props) => props.theme.fontSizes.small};
-    min-height: 6.25rem;
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
 
@@ -127,7 +126,7 @@ export const TextArea = styled(TextAreaLayout)`
 `
 
 TextArea.defaultProps = {
-  height: '6.25rem',
+  minHeight: '6.25rem',
   resize: 'vertical',
   width: '100%',
 }
