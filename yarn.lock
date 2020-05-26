@@ -2053,47 +2053,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@looker/components-providers@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/components-providers/-/components-providers-0.7.34.tgz#e722fc19faa9e67d63c37abef2b4ab9a794789bb"
-  integrity sha512-qLE7L4PSYm7g6RWF7JkQvDG/M1dLXjpZ9MFruUEkZWd8A1onzbbniGajEMQrUEWkf5VJoX9uXrn2guec4LytdQ==
-  dependencies:
-    "@looker/design-tokens" "^0.7.34"
-
-"@looker/components@*":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/components/-/components-0.7.34.tgz#79b87aa69f66d073a2030b7fe0abec02544f5a57"
-  integrity sha512-+WfAxVv03gtrY9RIoY1/v9A4TnT3lroKtt9f/A7zW4TvBKwEsGFP4aZC/OPUUPzpcCpnjjcvMoWsLGYFKSI9Zg==
-  dependencies:
-    "@looker/components-providers" "^0.7.34"
-    "@looker/design-tokens" "^0.7.34"
-    "@looker/icons" "^0.7.34"
-    "@popperjs/core" "^2.4.0"
-    d3-color "^1.4.1"
-    d3-hsv "^0.1.0"
-    date-fns "^2.14.0"
-    date-fns-tz "^1.0.10"
-    focus-trap "^5.1.0"
-    lodash "^4.17.15"
-    polished "^3.6.3"
-    react-day-picker "^7.4.8"
-    react-hotkeys "^2.0.0"
-    react-resize-detector "^4.2.3"
-    react-transition-group "^4.3.0"
-    resize-observer-polyfill "^1.5.1"
-    styled-system "^5.1.5"
-    uuid "^8.0.0"
-
-"@looker/design-tokens@*", "@looker/design-tokens@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/design-tokens/-/design-tokens-0.7.34.tgz#94b8b7b744602c12ba21778efca1638205cad197"
-  integrity sha512-uPuHSYZeY53Zv9BnhLtFnKUZbZSkW48LYaN+Es+Y8Lz8lq5eIC3AvT9kcoprOMmlDhScF1WFBrGnqoGflaC1lg==
-  dependencies:
-    "@types/styled-system" "^5.1.9"
-    lodash "^4.17.15"
-    polished "^3.6.3"
-    styled-system "^5.1.5"
-
 "@looker/eslint-config@^1.0.14":
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.0.16.tgz#6221efeb686b7c82f82817975892895599a231a7"
@@ -2118,11 +2077,6 @@
     stylelint-config-styled-components "^0.1.1"
     stylelint-processor-styled-components "^1.10.0"
     typescript "^3.8.3"
-
-"@looker/icons@*", "@looker/icons@^0.7.34":
-  version "0.7.34"
-  resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-0.7.34.tgz#119fc8257278dd72fb8990eb459737ebf592b3d4"
-  integrity sha512-nwNPV+azo4DqHTh+9jf1XkyiKliLy2EhJUjBaoBCOyIR4jyk8TXL8w00x96G9GgdvfXcNS4UdLqjsCWdcYzJyQ==
 
 "@looker/prettier-config@^1.0.15":
   version "1.0.15"
@@ -8418,10 +8372,10 @@ gatsby-plugin-page-creator@^2.3.4:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-react-helmet@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.3.1.tgz#e1600bdcf575250707281a85024d10b1ee64048a"
-  integrity sha512-DZ/IWs+zlGL8N3JAcewPJJUPkl1st6/hIWQ3YphKoTK64DUIoMd2wWSJCrC6LiurS7knGHa4pdGyc5clwV1EKA==
+gatsby-plugin-react-helmet@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.3.2.tgz#5619a1808d9607eb89c19d3f04854f497c6fb890"
+  integrity sha512-uRZlX4ejy0Txlw+9qbIVkULsuc6iniSwDgD+Ed6BOryKmF42qaqmdbcc78ZwPVN2SZJCDhcZKXoJf6QftTwwDg==
   dependencies:
     "@babel/runtime" "^7.9.6"
 
