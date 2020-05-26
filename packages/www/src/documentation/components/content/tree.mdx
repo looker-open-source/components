@@ -9,3 +9,112 @@ import { Props } from '../../../Shared'
 `<Tree>`, like `<Accordion>`, is a collapsible section component designed for hiding and showing content.
 
 However, unlike `<Accordion>`, `<Tree>` has a more structured interface and is best used when building tree views like a file structure or a sidebar.
+
+Use the `label` prop to set the text of the `<Tree>`'s disclosure. Note that this prop is required.
+
+To further customize the look of the `<Tree>`'s disclosure, you can use the `icon`, `iconSize`, and `detail` props.
+
+Passing in an icon name into the `icon` prop will result in an icon being displayed left of the `<Tree>`'s label.
+
+Passing in an element into the `detail` prop will result in that element being displayed right of the `<Tree>`'s label.
+
+**Note:** Use the `detailStopPropagation` prop if you would like to prevent `<Tree>` opening and closing when the `detail` element is clicked.
+
+```jsx
+<Tree
+  label="Orders"
+  icon="Table"
+  detail={<Box color="palette.charcoal500">thelook</Box>}
+>
+  <TreeItem icon="FieldNumber">Cost</TreeItem>
+  <TreeItem icon="FieldDistance">Location</TreeItem>
+  <TreeItem icon="FieldTier">Tier</TreeItem>
+  <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+</Tree>
+```
+
+Use the `border` prop if you would like to have vertical lines expand from your `<Tree>`'s indicator icon when open.
+
+**Note:** Using the `border prop` on a `<Tree>` will enable the vertical lines on all child `<Tree>`s.
+
+```jsx
+<Tree
+  border
+  label="Orders"
+  icon="Table"
+  detail={<Box color="palette.charcoal500">thelook</Box>}
+  defaultOpen
+>
+  <Tree label="Created" defaultOpen>
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </Tree>
+</Tree>
+```
+
+## Nesting Trees
+
+You can nest trees within each other by passing `<Tree>`s in as children to parent `<Tree>`s.
+
+```jsx
+<Tree label="Orders" icon="Table">
+  <Tree label="Created">
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </Tree>
+</Tree>
+```
+
+## Tree Callbacks
+
+Use the `onOpen` and `onClose` props if you would like to trigger callbacks on `<Tree>` open or close, respectively.
+
+```jsx
+<Tree
+  onOpen={() => alert('Open!')}
+  onClose={() => alert('Close!')}
+  label="Cheese"
+  icon="Table"
+>
+  <TreeItem>Gouda</TreeItem>
+</Tree>
+```
+
+## Controlling a Tree
+
+Like `<Accordion>`, a `<Tree>` can be either uncontrolled or controlled.
+
+By default, the `<Tree>` is an uncontrolled component and maintains its own opened/closed state. If you are using an uncontrolled `<Tree>` and want it initially open, use the `defaultOpen` prop.
+
+However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `<Tree>`.
+
+When the `isOpen` prop receives `true`, your `<Tree>` will reveal its content. When `false`, your content will be hidden.
+
+The `toggleOpen` prop should receive a function that has one parameter: a boolean. When the `<Tree>`'s disclosure is clicked, the `toggleOpen` callback will be triggered and passed the opposite boolean of the current `isOpen` prop value.
+
+```jsx
+;() => {
+  const [isOpen, setIsOpen] = useState(true)
+
+  return (
+    <Tree label="Orders" icon="Table" isOpen={isOpen} toggleOpen={setIsOpen}>
+      <TreeItem icon="FieldNumber">Cost</TreeItem>
+      <TreeItem icon="FieldDistance">Location</TreeItem>
+      <TreeItem icon="FieldTier">Tier</TreeItem>
+      <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+    </Tree>
+  )
+}
+```
+
+## TreeItem
+
+<Props of="TreeItem" />
+
+`<TreeItem>` is used to create branches in a tree view. It is best used as the direct child of a `<Tree>`.
+
+`<TreeItem>` is meant to look cohesive alongside `<Tree>`s and thus shares a similar interface.

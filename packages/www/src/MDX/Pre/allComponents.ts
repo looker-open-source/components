@@ -150,6 +150,7 @@ import {
   ToggleSwitch,
   Tooltip,
   Tree,
+  TreeItem,
   useConfirm,
   usePreviousValue,
   useMixedStateCheckbox,
@@ -309,5 +310,6 @@ export const allComponents = {
   ToggleSwitch,
   Tooltip,
   Tree,
+  TreeItem,
   VisuallyHidden,
 }
