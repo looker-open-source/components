@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `InlineInputText` prop simple removes border-bottom
 - `Popover` positioning when placement is "top" and the height changes
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
