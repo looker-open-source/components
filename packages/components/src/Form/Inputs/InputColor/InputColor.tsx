@@ -38,7 +38,6 @@ import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
 import { Flex } from '../../../Layout/Flex'
-import { omitFieldProps } from '../../Fields'
 import {
   HueSaturation,
   polarbrightness2hsv,
@@ -195,7 +194,7 @@ export const InputColorComponent = forwardRef(
         {!props.disabled && popover}
         {!hideInput && (
           <InputText
-            {...omitFieldProps(props)}
+            {...props}
             aria-describedby={`${id}-describedby`}
             id={inputID}
             ref={ref}

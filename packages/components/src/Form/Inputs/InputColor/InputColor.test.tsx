@@ -28,19 +28,12 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent, useState } from 'react'
 import { fireEvent } from '@testing-library/react'
-import {
-  assertSnapshotShallow,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Button } from '../../../Button'
 import { InputColor } from './InputColor'
 
 describe('InputColor', () => {
-  test('Default render', () => {
-    assertSnapshotShallow(<InputColor />)
-  })
-
   test('with hidden input', () => {
     const { queryByDisplayValue } = renderWithTheme(
       <InputColor value="yellow" hideInput />
