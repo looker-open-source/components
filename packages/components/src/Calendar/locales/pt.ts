@@ -52,7 +52,6 @@ export const pt: LocaleSettings = {
     'Quinta-feira',
     'Sexta-feira',
     'Sábado',
-    ,
   ],
   weekdaysShort: ['Do', '2ª', '3ª', '4ª', '5ª', '6ª', 'Sá'],
   firstDay: 1, // monday
