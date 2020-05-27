@@ -35,6 +35,14 @@ import { fr } from './fr'
 import { it } from './it'
 import { ja } from './ja'
 import { nl } from './nl'
+import { pl } from './pl'
+import { ptBr } from './pt-br'
+import { pt } from './pt'
+import { ru } from './ru'
+import { sv } from './sv'
+import { tr } from './tr'
+import { zhCn } from './zh-cn'
+import { zhTw } from './zh-tw'
 
 export interface LocaleSettings {
   weekdays: string[]
@@ -54,6 +62,14 @@ const locales: { [key in LocaleCodes]: LocaleSettings } = {
   ja,
   ko,
   nl,
+  pl,
+  pt,
+  'pt-br': ptBr,
+  ru,
+  sv,
+  tr,
+  'zh-cn': zhCn,
+  'zh-tw': zhTw,
 }
 
 function formatDay(d: Date, localeCode = 'en' as LocaleCodes) {

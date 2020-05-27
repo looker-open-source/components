@@ -29,31 +29,31 @@
 import identity from 'lodash/identity'
 import type { LocaleSettings } from './localeUtils'
 
-export const nl: LocaleSettings = {
+export const tr: LocaleSettings = {
   months: [
-    'januari',
-    'februari',
-    'maart',
-    'april',
-    'mei',
-    'juni',
-    'juli',
-    'augustus',
-    'september',
-    'oktober',
-    'november',
-    'december',
+    'Ocak',
+    'Şubat',
+    'Mart',
+    'Nisan',
+    'Mayıs',
+    'Haziran',
+    'Temmuz',
+    'Ağustos',
+    'Eylül',
+    'Ekim',
+    'Kasım',
+    'Aralık',
   ],
   weekdays: [
-    'zondag',
-    'maandag',
-    'dinsdag',
-    'woensdag',
-    'donderdag',
-    'vrijdag',
-    'zaterdag',
+    'Pazar',
+    'Pazartesi',
+    'Salı',
+    'Çarşamba',
+    'Perşembe',
+    'Cuma',
+    'Cumartesi',
   ],
-  weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  weekdaysShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
   firstDay: 1, // monday
   localizeYear: identity,
 }
