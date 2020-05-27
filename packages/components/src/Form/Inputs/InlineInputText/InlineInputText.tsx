@@ -77,7 +77,7 @@ export const InlineInputTextInternal = forwardRef(
           {...pick(props, inputPropKeys)}
         />
         <VisibleText displayValue={displayValue}>
-          {displayValue || placeholder}&#8203;
+          {displayValue || placeholder || ' '}
         </VisibleText>
       </div>
     )
@@ -106,6 +106,7 @@ interface VisibleTextProps {
   displayValue?: string
 }
 const VisibleText = styled.div<VisibleTextProps>`
+  white-space: pre;
   color: ${({ displayValue, theme }) =>
     displayValue
       ? theme.colors.palette.charcoal900
