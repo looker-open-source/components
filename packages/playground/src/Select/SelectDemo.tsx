@@ -153,7 +153,6 @@ export function SelectContent() {
         mb="medium"
         options={options1k}
         aria-label="Fruits"
-        isClearable
         placeholder="Select Brand"
         defaultValue="Boulder Creek"
       />
