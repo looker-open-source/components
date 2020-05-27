@@ -25,15 +25,22 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, FieldColor, InputColor } from '@looker/components'
+import {
+  ComponentsProvider,
+  InlineInputText,
+  Paragraph,
+} from '@looker/components'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <InputColor value="green" />
-      <InputColor />
-      <InputColor defaultValue="purple" />
-      <FieldColor label="FieldColor" inline />
+      <Paragraph variant="critical">some text...</Paragraph>
+      <Paragraph variant="critical">
+        <InlineInputText value="Type here..." />
+      </Paragraph>
+      <Paragraph variant="critical">
+        <InlineInputText placeholder="Type here..." />
+      </Paragraph>
     </ComponentsProvider>
   )
 }

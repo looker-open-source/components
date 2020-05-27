@@ -89,7 +89,7 @@ InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: ${(props) => props.theme.colors.palette.charcoal900};
   height: 100%;
@@ -114,7 +114,7 @@ const VisibleText = styled.div<VisibleTextProps>`
 
 export const InlineInputText = styled(InlineInputTextInternal)`
   ${typography}
-
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
@@ -126,6 +126,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 
   :focus,
   :hover {
