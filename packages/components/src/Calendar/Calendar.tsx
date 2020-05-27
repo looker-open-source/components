@@ -102,6 +102,7 @@ const InternalCalendar: FC<CalendarProps> = ({
         modifiers={modifiers}
         onMonthChange={onMonthChange}
         localeUtils={localeUtils}
+        dir="rtl"
       />
     </CalendarContext.Provider>
   )

@@ -26,36 +26,54 @@
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
-import identity from 'lodash/identity'
 import type { LocaleSettings } from './localeUtils'
 
-export const ko: LocaleSettings = {
+const numericSymbols = {
+  '1': '١',
+  '2': '٢',
+  '3': '٣',
+  '4': '٤',
+  '5': '٥',
+  '6': '٦',
+  '7': '٧',
+  '8': '٨',
+  '9': '٩',
+  '0': '٠',
+}
+
+export const ar: LocaleSettings = {
   months: [
-    '1월',
-    '2월',
-    '3월',
-    '4월',
-    '5월',
-    '6월',
-    '7월',
-    '8월',
-    '9월',
-    '10월',
-    '11월',
-    '12월',
+    'يناير',
+    'فبراير',
+    'مارس',
+    'أبريل',
+    'مايو',
+    'يونيو',
+    'يوليو',
+    'أغسطس',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر',
   ],
   weekdays: [
-    '일요일',
-    '월요일',
-    '화요일',
-    '수요일',
-    '목요일',
-    '금요일',
-    '토요일',
+    'الأحد',
+    'الإثنين',
+    'الثلاثاء',
+    'الأربعاء',
+    'الخميس',
+    'الجمعة',
+    'السبت',
   ],
-  weekdaysShort: ['일', '월', '화', '수', '목', '금', '토'],
-  firstDay: 0, // sunday
-  localizeYear: identity,
+  weekdaysShort: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
+  firstDay: 6, // saturday
+  localizeYear: (year: number) => {
+    return `${year}`
+      .replace(/\d/g, function (match) {
+        return numericSymbols[match]
+      })
+      .replace(/,/g, '،')
+  },
 }
 
 /* eslint-enable sort-keys-fix/sort-keys-fix */

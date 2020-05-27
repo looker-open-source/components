@@ -26,6 +26,7 @@
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
+import identity from 'lodash/identity'
 import type { LocaleSettings } from './localeUtils'
 
 export const en: LocaleSettings = {
@@ -54,6 +55,7 @@ export const en: LocaleSettings = {
   ],
   weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   firstDay: 0, // sunday
+  localizeYear: identity,
 }
 
 /* eslint-enable sort-keys-fix/sort-keys-fix */

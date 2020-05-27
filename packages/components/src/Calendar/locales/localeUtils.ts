@@ -28,52 +28,50 @@ import { LocaleUtils } from 'react-day-picker'
 import { LocaleCodes } from '../../utils/i18n'
 import { ko } from './ko'
 import { en } from './en'
+import { ar } from './ar'
+import { de } from './de'
 
 export interface LocaleSettings {
   weekdays: string[]
   weekdaysShort: string[]
   months: string[]
-  firstDay: 0 | 1
+  firstDay: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+  localizeYear: (year: number) => string
 }
 
-const WEEKDAYS_LONG = {
-  en: en.weekdays,
-  ko: ko.weekdays,
-}
-const WEEKDAYS_SHORT = {
-  en: en.weekdaysShort,
-  ko: ko.weekdaysShort,
-}
-const MONTHS = {
-  en: en.months,
-  ko: ko.months,
+const locales: { [key in LocaleCodes]: LocaleSettings } = {
+  ar,
+  de,
+  en,
+  ko,
 }
 
-const FIRST_DAY = {
-  en: en.firstDay,
-  ko: ko.firstDay,
-}
-
-function formatDay(d: any, locale = 'en' as LocaleCodes) {
-  return `${WEEKDAYS_LONG[locale][d.getDay()]}, ${d.getDate()} ${
-    MONTHS[locale][d.getMonth()]
+function formatDay(d: Date, localeCode = 'en' as LocaleCodes) {
+  const locale = locales[localeCode]
+  return `${locale.weekdays[d.getDay()]}, ${d.getDate()} ${
+    locale.months[d.getMonth()]
   } ${d.getFullYear()}`
 }
 
-function formatMonthTitle(d: any, locale = 'en' as LocaleCodes) {
-  return `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`
+function formatMonthTitle(d: Date, localeCode = 'en' as LocaleCodes) {
+  const locale = locales[localeCode]
+  const monthTitle = `${locale.months[d.getMonth()]} ${locale.localizeYear(
+    d.getFullYear()
+  )}`
+  return monthTitle
 }
 
-function formatWeekdayShort(i: number, locale: LocaleCodes) {
-  return WEEKDAYS_SHORT[locale][i]
+function formatWeekdayShort(i: number, localeCode: LocaleCodes) {
+  const locale = locales[localeCode]
+  return locale.weekdaysShort[i]
 }
 
-function formatWeekdayLong(i: number, locale: LocaleCodes) {
-  return WEEKDAYS_SHORT[locale][i]
+function formatWeekdayLong(i: number, localeCode: LocaleCodes) {
+  return locales[localeCode].weekdaysShort[i]
 }
 
-function getFirstDayOfWeek(locale: LocaleCodes) {
-  return FIRST_DAY[locale]
+function getFirstDayOfWeek(localeCode: LocaleCodes) {
+  return locales[localeCode].firstDay
 }
 
 export const localeUtils = {
