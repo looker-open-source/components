@@ -39,8 +39,9 @@ export interface ActionListItemProps
    */
   actions?: ReactNode
   /**
-   *  A hidden text label for the child Actions IconButton that is accessible to assistive technology
-   *  If unprovided by the user, a random string will generated instead
+   *  Sets the tooltip text and a hidden text label for the actions button (accessible to assistive technology)
+   *  If unprovided by the user, a default string will be used instead
+   *  @default 'Options'
    */
   actionsTooltip?: string
   /**
@@ -55,7 +56,7 @@ export interface ActionListItemProps
 
 const ActionListItemInternal: FC<ActionListItemProps> = ({
   actions,
-  actionsTooltip = 'Actions Button',
+  actionsTooltip = 'Options',
   children,
   className,
   disabled,
