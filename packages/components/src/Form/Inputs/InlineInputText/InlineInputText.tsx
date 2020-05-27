@@ -36,6 +36,7 @@ interface InlineInputTextProps
     Omit<InputProps, 'type'> {
   underlineOnlyOnHover?: boolean
   value?: string
+  simple?: boolean
 }
 
 export const InlineInputTextInternal = forwardRef(
@@ -46,6 +47,7 @@ export const InlineInputTextInternal = forwardRef(
       underlineOnlyOnHover,
       value: valueProp,
       placeholder,
+      simple = false,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -68,13 +70,14 @@ export const InlineInputTextInternal = forwardRef(
       <div className={className} data-testid="inlineInputText">
         <Input
           onChange={handleChange}
+          simple={simple}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
           ref={ref}
           {...pick(props, inputPropKeys)}
         />
         <VisibleText displayValue={displayValue}>
-          {displayValue || placeholder}&#8203;
+          {displayValue || placeholder || ' '}
         </VisibleText>
       </div>
     )
@@ -86,7 +89,7 @@ InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: ${(props) => props.theme.colors.palette.charcoal900};
   height: 100%;
@@ -103,6 +106,7 @@ interface VisibleTextProps {
   displayValue?: string
 }
 const VisibleText = styled.div<VisibleTextProps>`
+  white-space: pre;
   color: ${({ displayValue, theme }) =>
     displayValue
       ? theme.colors.palette.charcoal900
@@ -111,11 +115,11 @@ const VisibleText = styled.div<VisibleTextProps>`
 
 export const InlineInputText = styled(InlineInputTextInternal)`
   ${typography}
-
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
-    props.underlineOnlyOnHover
+    props.underlineOnlyOnHover || props.simple
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
   display: inline-flex;
@@ -123,6 +127,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 
   :focus,
   :hover {
