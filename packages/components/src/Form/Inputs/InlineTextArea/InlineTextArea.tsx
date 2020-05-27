@@ -99,6 +99,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   padding: 0;
   position: absolute;
   resize: none;
+  text-align: inherit;
   text-transform: inherit;
   top: 0;
   width: 100%;
@@ -107,11 +108,10 @@ const Input = styled.textarea<InlineTextAreaProps>`
 interface VisibleTextProps {
   displayValue?: string
 }
+
 const VisibleText = styled.div<VisibleTextProps>`
   color: ${({ displayValue, theme }) =>
-    displayValue
-      ? theme.colors.palette.charcoal900
-      : theme.colors.palette.charcoal400};
+    displayValue ? 'inherit' : theme.colors.palette.charcoal400};
 `
 
 export const InlineTextArea = styled(InlineTextAreaLayout)`
@@ -123,12 +123,14 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
     props.underlineOnlyOnHover
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
+  color: inherit;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   min-width: 2rem;
   min-height: ${(props) => props.theme.lineHeights.medium};
+  text-align: inherit;
   white-space: pre-wrap;
 
   :focus,
