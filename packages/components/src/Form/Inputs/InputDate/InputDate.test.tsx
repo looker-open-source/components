@@ -26,7 +26,12 @@
 
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import {
+  renderWithTheme,
+  withThemeProvider,
+} from '@looker/components-test-utils'
+import toPairs from 'lodash/toPairs'
+import { Locales } from '../../../utils/i18n'
 
 import { InputDate } from './InputDate'
 
@@ -96,7 +101,7 @@ test('fills TextInput with defaultValue', () => {
   expect(input.value).toEqual('06/03/2019')
 })
 
-test('validates text input to match localized date format', () => {
+test('I18n: validates text input to match localized date format', () => {
   const mockProps = {
     defaultValue: new Date('June 3, 2019'),
     onValidationFail: jest.fn(),
@@ -113,4 +118,27 @@ test('validates text input to match localized date format', () => {
   fireEvent.blur(input) // validate on blur
 
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
+})
+
+test('I18n: renders calendar in all supported locale formats', () => {
+  const { rerender, getByTestId, container } = renderWithTheme(
+    <InputDate defaultValue={new Date('June 3, 2019')} />
+  )
+
+  // render snapshots for each locale
+  toPairs(Locales).forEach((locale) => {
+    rerender(withThemeProvider(<InputDate locale={locale[1]} />))
+    // month/year label, i.e. "June 2019"
+    expect(getByTestId('calendar-nav-label').textContent).toMatchSnapshot()
+    // weekday column labels, i.e. "Su Mo Tu We Th Fr Sa"
+    expect(
+      (container.querySelector('.DayPicker-Weekdays') as HTMLElement)
+        .textContent
+    ).toMatchSnapshot()
+    // aria labels on day cells, i.e. "Monday June 3 2019"
+    const ariaLabels = Array.from(
+      container.querySelectorAll('.DayPicker-Day')
+    ).map((node) => node.getAttribute('aria-label'))
+    expect(ariaLabels).toMatchSnapshot()
+  })
 })

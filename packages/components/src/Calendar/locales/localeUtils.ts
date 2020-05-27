@@ -45,11 +45,12 @@ import { zhCn } from './zh-cn'
 import { zhTw } from './zh-tw'
 
 export interface LocaleSettings {
-  weekdays: string[]
-  weekdaysShort: string[]
-  months: string[]
   firstDay: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
   localizeYear: (year: number) => string
+  months: string[]
+  monthsShort: string[]
+  weekdays: string[]
+  weekdaysShort: string[]
 }
 
 const locales: { [key in LocaleCodes]: LocaleSettings } = {
@@ -74,26 +75,24 @@ const locales: { [key in LocaleCodes]: LocaleSettings } = {
 
 function formatDay(d: Date, localeCode = 'en' as LocaleCodes) {
   const locale = locales[localeCode]
-  return `${locale.weekdays[d.getDay()]}, ${d.getDate()} ${
-    locale.months[d.getMonth()]
-  } ${d.getFullYear()}`
+  const dayName = locale.weekdays[d.getDay()]
+  const monthName = locale.monthsShort[d.getMonth()]
+  return `${dayName} ${monthName} ${d.getDate()} ${d.getFullYear()}`
 }
 
 function formatMonthTitle(d: Date, localeCode = 'en' as LocaleCodes) {
   const locale = locales[localeCode]
-  const monthTitle = `${locale.months[d.getMonth()]} ${locale.localizeYear(
-    d.getFullYear()
-  )}`
-  return monthTitle
+  const monthName = locale.months[d.getMonth()]
+  const formattedYear = locale.localizeYear(d.getFullYear())
+  return `${monthName} ${formattedYear}`
 }
 
 function formatWeekdayShort(i: number, localeCode: LocaleCodes) {
-  const locale = locales[localeCode]
-  return locale.weekdaysShort[i]
+  return locales[localeCode].weekdaysShort[i]
 }
 
 function formatWeekdayLong(i: number, localeCode: LocaleCodes) {
-  return locales[localeCode].weekdaysShort[i]
+  return locales[localeCode].weekdays[i]
 }
 
 function getFirstDayOfWeek(localeCode: LocaleCodes) {
