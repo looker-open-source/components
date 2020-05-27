@@ -54,7 +54,7 @@ export const zhTw: LocaleSettings = {
     '星期六',
   ],
   weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
-  firstDay: 1, // monday
+  firstDay: 0, // sunday
   localizeYear: identity,
 }
 
