@@ -30,6 +30,11 @@ import { ko } from './ko'
 import { en } from './en'
 import { ar } from './ar'
 import { de } from './de'
+import { es } from './es'
+import { fr } from './fr'
+import { it } from './it'
+import { ja } from './ja'
+import { nl } from './nl'
 
 export interface LocaleSettings {
   weekdays: string[]
@@ -43,7 +48,12 @@ const locales: { [key in LocaleCodes]: LocaleSettings } = {
   ar,
   de,
   en,
+  es,
+  fr,
+  it,
+  ja,
   ko,
+  nl,
 }
 
 function formatDay(d: Date, localeCode = 'en' as LocaleCodes) {
