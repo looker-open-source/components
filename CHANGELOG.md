@@ -5,13 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
 
-### Changed
+## [UNRELEASED]
+
+### Added
 
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 
-## [0.7.32] - 2020-05-19
+### Changed
+
+- `CheckboxGroup` and `RadioGroup` `name` is now optional
+- Updated `LookerLogo` and `LogoRings` to match new branding
+
+### Fixed
+
+- update `TextArea` to have min-height as `defaultProps`
+- `InlineInputText` prop simple removes border-bottom
+- `Popover` positioning when placement is "top" and the height changes
+  - `usePopper` reinstate the `adaptive` option of `computeStyles`
+- `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
+
+## [0.7.37] - 2020-05-20
+
+### Fixed
+
+- `Space` & `SpaceVertical` default to 100% width of their container again
+
+## [0.7.36] - 2020-05-20
 
 ### Added
 
@@ -29,6 +49,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - now supports `around`, `between` and `evenly` as alternatives to `gap`
   - now supports `verticalAlign` property
 - `SpaceVertical` now supports `align` and `stretch` properties
+- `Accordion`, `AccordionLabel`, `AccordionContent` components
+- `ButtonToggle` now accepts `nullable`
+- `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
+- created `FieldRangeSlider` and `FieldSlider` components
 
 ### Changed
 

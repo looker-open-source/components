@@ -27,7 +27,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { map } from 'lodash'
+import map from 'lodash/map'
 import { CheckboxGroup } from './CheckboxGroup'
 
 const checkboxOptions = [

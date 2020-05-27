@@ -1,7 +1,6 @@
 {
   "name": "playground",
-  "version": "0.7.34",
-  "main": "index.js",
+  "version": "0.7.37",
   "license": "MIT",
   "author": "Looker",
   "repository": {
@@ -14,7 +13,7 @@
     "start": "webpack-dev-server --port 3000"
   },
   "dependencies": {
-    "@looker/components": "^0.7.34",
+    "@looker/components": "^0.7.37",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

@@ -74,10 +74,11 @@ We follow a [semantic versioning scheme](https://semver.org/). That means:
 
 ### Update Changelog & Version
 
-1.  Increment the version number according to sematic versioning philosophy in [package.json](package.json)
 1.  Update CHANGELOG
-1.  PR for package.json & CHANGELOG changes
+1.  Open PR for change review
 1.  Merge PR
+1.  Pull latest master
+1.  `yarn release`
 
 ### 4. Tooling
 

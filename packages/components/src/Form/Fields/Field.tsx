@@ -128,7 +128,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
         fontSize={labelFontSize}
         fontWeight={labelFontWeight}
         htmlFor={id}
-        id={`${id}-labeledby`}
+        id={`${id}-labelledby`}
       >
         {label}
         {required && <RequiredStar />}
@@ -181,7 +181,6 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
     inline ? `${labelWidth} 1fr` : undefined};
 
   ${InputArea} {
-    display: flex;
     grid-area: input;
     align-items: center;
   }

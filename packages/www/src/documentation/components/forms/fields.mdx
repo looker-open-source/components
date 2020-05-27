@@ -6,6 +6,8 @@ github: Form/Fields
 
 import { Props } from '../../../Shared'
 
+The `Field` variants of our input components provide convenient shorthand for the composition of Label, Component, and Validation message. As this is a normal use case for all form inputs, we will do our best to ensure that every `Input...` has an equivalent `Field...`.
+
 ## FieldCheckbox
 
 <Props of="FieldCheckbox" />
@@ -153,24 +155,69 @@ Groups of checkboxes can be displayed with `FieldCheckboxGroup`
 This component is composed of a `FieldText` and a `ColorWheel` that appears in a `Popover` upon click of the color swatch.
 
 ```jsx
-<FieldColor label="Pick a color" alignLabel="left" />
+<FieldColor label="Pick a color" inline />
+```
+
+## FieldDate
+
+<Props of="FieldDate" />
+
+This component is composed of an `InputDate` and a `Label`.
+
+```jsx
+<Grid columns={2}>
+  <FieldDate label="Pick a date" />
+  <FieldDate
+    label="Validation Error"
+    validationMessage={{
+      message: 'Select a valid calendar date',
+      type: 'error',
+    }}
+  />
+  <FieldDate
+    label="Disabled Field"
+    defaultValue={new Date('May 18, 2020')}
+    disabled
+  />
+</Grid>
+```
+
+## FieldDateRange
+
+<Props of="FieldDate" />
+
+This component is composed of an `InputDateRange` and a `Label`.
+
+```jsx
+<Grid columns={1}>
+  <FieldDateRange label="Pick a date" />
+  <FieldDateRange
+    label="Validation Error"
+    validationMessage={{
+      message: 'Select a valid calendar date',
+      type: 'error',
+    }}
+  />
+  <FieldDateRange
+    label="Disabled Field"
+    defaultValue={{
+      from: new Date('May 18, 2020'),
+      to: new Date('May 21, 2020'),
+    }}
+    disabled
+  />
+</Grid>
 ```
 
 ## FieldRadio
 
 <Props of="FieldRadio" />
 
-The `<FieldRadio />` component is composed of a `<Radio />` component and a `<Label />` component. Using `<FieldRadio />` allows for rendering validation messages. By default, the label will render to the right of the radio button, however this is adjustable with the `alignLabel` property.
+The `<FieldRadio />` component is composed of a `<Radio />` component and a `<Label />` component. Using `<FieldRadio />` allows for rendering validation messages. By default, the label will render to the right of the radio button, however this is adjustable with the `inline` property.
 
 ```jsx
 <FieldRadio name="radio" label="Radio" />
-<FieldRadio name="radio" label="Radio 2" alignLabel="left" />
-<FieldRadio
-  name="radio"
-  label="Radio 3"
-  labelFontWeight="normal"
-  alignLabel="right"
-/>
+<FieldRadio name="radio" label="Radio 2" inline />
 ```
 
 ### FieldRadioGroup
@@ -277,7 +324,7 @@ Groups of radios can be displayed with `FieldRadioGroup`
 
 <Props of="FieldSelect" />
 
-The `<FieldSelect />` component is composed of an `<Select />` component and a `<Label />` component. Using `<FieldSelect />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+The `<FieldSelect />` component is composed of an `<Select />` component and a `<Label />` component. Using `<FieldSelect />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
 
 ```jsx
 <FieldSelect
@@ -396,16 +443,70 @@ The `<FieldSelectMulti />` component is composed of an `<SelectMulti />` compone
 </Grid>
 ```
 
+## FieldSlider
+
+The `<FieldSlider />` component is composed of an `<Slider />` component and a `<Label />` component. The component also allows for the attributes `details` and `description`. This component does not support `ValidationMessage`
+
+```jsx
+<FieldSlider
+  detail="detail"
+  description="description"
+  label="Label"
+/>
+<FieldSlider
+  disabled
+  detail="detail"
+  description="description"
+  label="Label disabled"
+  min={10}
+  max={20}
+  value={15}
+/>
+<FieldSlider
+  detail="detail"
+  description="description"
+  label="Label required"
+  required
+/>
+```
+
+## FieldRangeSlider
+
+The `<FieldRangeSlider />` component is composed of an `<RangeSlider />` component and a `<Label />` component. The component also allows for the attributes `details` and `description`. This component does not support `ValidationMessage`
+
+```jsx
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label"
+/>
+<FieldRangeSlider
+  disabled
+  detail="detail"
+  description="description"
+  label="Label disabled"
+  min={10}
+  max={20}
+  value={15}
+/>
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label required"
+  required
+/>
+```
+
 ## FieldText
 
 <Props of="FieldText" />
 
-The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
 
 ```jsx
 <SpaceVertical>
   <FieldText name="firstName" label="First Name" />
-  <FieldText name="lastName" label=" Last Name" alignLabel="left" />
+  <FieldText name="lastName" label=" Last Name" inline />
   <FieldText name="requiredField" label="A required field" required />
 </SpaceVertical>
 ```
@@ -485,7 +586,7 @@ The `<FieldTimeSelect />` component is composed of an `<InputTimeSelect />` comp
 
 <Props of="FieldToggleSwitch" />
 
-The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the inline property.
 
 ```jsx
 ;() => {
@@ -496,7 +597,7 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
   return (
     <FieldToggleSwitch
       label="Development Mode"
-      alignLabel="left"
+      inline
       onChange={onChange}
       on={on}
     />

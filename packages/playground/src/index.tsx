@@ -25,13 +25,15 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { TooltipDemo } from './Tooltip/TooltipDemo'
+import { ComponentsProvider, Grid, InlineInputText } from '@looker/components'
 
 const App: FC = () => {
   return (
-    <ComponentsProvider ie11Support>
-      <TooltipDemo />
+    <ComponentsProvider>
+      <Grid>
+        <InlineInputText simple value="Type here..." />
+        <InlineInputText value="Type here..." />
+      </Grid>
     </ComponentsProvider>
   )
 }

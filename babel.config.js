@@ -48,13 +48,22 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
-      ['@babel/plugin-transform-runtime', { corejs: 3 }],
+      // ['@babel/plugin-transform-runtime', { corejs: 3 }],
       'babel-plugin-styled-components',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
     ],
 
     presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            esmodules: true,
+          },
+          useBuiltIns: false,
+        },
+      ],
       [
         '@babel/preset-react',
         {
