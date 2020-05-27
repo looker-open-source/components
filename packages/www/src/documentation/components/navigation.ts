@@ -92,6 +92,10 @@ const components: NavigationSection = {
           title: 'InputChips',
         },
         {
+          path: 'input-color',
+          title: 'InputColor',
+        },
+        {
           path: 'input-date',
           title: 'InputDate',
         },

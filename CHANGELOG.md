@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- created `InputColor`
 - `Accordion`, `AccordionLabel`, `AccordionContent` components
 - `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
 - `ButtonToggle` now accepts `nullable`
@@ -52,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- updated `FieldColor` to use `InputColor`
 - `Banner` fontSize adjusted and external margin removed
 - `Button` and `ButtonOutline` horizontal padding on increased, decreased for `ButtonTransparent`
 - `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)
