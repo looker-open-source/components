@@ -31,73 +31,27 @@ import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Button } from '../../../Button'
-import { FieldColor } from './FieldColor'
+import { InputColor } from './InputColor'
 
-describe('FieldColor', () => {
-  const FieldColorValidationMessage = () => {
-    return (
-      <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
+describe('InputColor', () => {
+  test('with hidden input', () => {
+    const { queryByDisplayValue } = renderWithTheme(
+      <InputColor value="yellow" hideInput />
     )
-  }
-
-  test('with a validation message', () => {
-    const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
-    expect(queryByText('Error!')).toBeInTheDocument()
+    expect(queryByDisplayValue('yellow')).not.toBeInTheDocument()
   })
 
-  test('A FieldColor with description has proper aria setup', () => {
-    const description = 'This is a description'
-
-    const { container, getByDisplayValue } = renderWithTheme(
-      <FieldColor id="test" defaultValue="example" description={description} />
-    )
-
-    const input = getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
-
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(description)
+  test('starts with a named color value', () => {
+    const { getByDisplayValue } = renderWithTheme(<InputColor value="green" />)
+    expect(getByDisplayValue('green')).toBeInTheDocument()
   })
 
-  test('A FieldColor with error has proper aria setup', () => {
-    const errorMessage = 'This is an error'
-
-    const { container, getByDisplayValue } = renderWithTheme(
-      <FieldColor
-        id="test"
-        defaultValue="example"
-        validationMessage={{ message: errorMessage, type: 'error' }}
-      />
-    )
-
-    const input = getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
-
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(errorMessage)
-  })
-
-  test('with an onChange', () => {
-    const onChangeMock = jest.fn()
-    const { getByLabelText } = renderWithTheme(
-      <FieldColor onChange={onChangeMock} label="Background Color" />
-    )
-    const input = getByLabelText('Background Color')
-    fireEvent.change(input, { target: { value: '#FFFF00' } })
-    expect(onChangeMock).toHaveBeenCalledWith({
-      currentTarget: { value: '#FFFF00' },
-      target: { value: '#FFFF00' },
-    })
-  })
-
-  test('with a defaultValue', () => {
-    const { getByLabelText } = renderWithTheme(
-      <FieldColor defaultValue="purple" label="Background Color" />
-    )
-    const input = getByLabelText('Background Color')
-    expect(input).toHaveValue('purple')
+  test('responds to input value change', () => {
+    const { getByDisplayValue } = renderWithTheme(<InputColor value="green" />)
+    const input = getByDisplayValue('green')
+    input.focus()
+    fireEvent.change(input, { target: { value: 'blue' } })
+    expect(getByDisplayValue('blue')).toBeInTheDocument()
   })
 
   test('with controlled state', () => {
@@ -112,7 +66,7 @@ describe('FieldColor', () => {
       return (
         <>
           <Button onClick={handleClick}>Turn yellow</Button>
-          <FieldColor
+          <InputColor
             value={value}
             onChange={handleChange}
             placeholder="Select a color"
