@@ -84,9 +84,8 @@ export const TreeItem = styled(TreeItemLayout)`
   cursor: ${({ onClick }) => onClick && 'pointer'};
   font-size: ${({ theme }) => theme.space.small};
   outline: none;
-  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
 
-  &:focus {
+  &&&:focus {
     border-color: ${({ theme, onClick }) =>
       onClick && theme.colors.palette.purple300};
   }

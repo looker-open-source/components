@@ -99,10 +99,13 @@ const centeredVerticalBorder = css`
 
 export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
+    height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem} {
+    border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+    height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
