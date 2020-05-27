@@ -43,7 +43,7 @@ export interface ActionListItemProps
    *  A hidden text label for the child Actions IconButton that is accessible to assistive technology
    *  If unprovided by the user, a random string will generated instead
    */
-  actionsButtonLabel?: string
+  actionsTooltip?: string
   /**
    *  The id of this item
    */
