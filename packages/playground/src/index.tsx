@@ -25,15 +25,13 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Grid, InlineInputText } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <Grid>
-        <InlineInputText simple value="Type here..." />
-        <InlineInputText value="Type here..." />
-      </Grid>
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }

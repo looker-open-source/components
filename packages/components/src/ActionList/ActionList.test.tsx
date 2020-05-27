@@ -128,7 +128,7 @@ const clickableItems = data.map(({ id, name, type }) => {
       id={String(id)}
       key={id}
       actions={availableActions}
-      actionsButtonLabel="My Actions Button"
+      actionsTooltip="My Actions Button"
       onClick={handleListItemClick}
     >
       <ActionListItemColumn>{id}</ActionListItemColumn>
