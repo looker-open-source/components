@@ -75,4 +75,5 @@ export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
     indicatorPosition === 'left'
       ? `${theme.space[indicatorSize]} 1fr`
       : `1fr ${theme.space[indicatorSize]}`};
+  width: 100%;
 `
