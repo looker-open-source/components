@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
+- `InlineInputText` no longer adds a special character to prevent vertical-collapse when empty
 
 ## [0.7.37] - 2020-05-20
 
