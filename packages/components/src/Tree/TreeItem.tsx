@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, MouseEvent, ReactNode } from 'react'
+import React, { FC, KeyboardEvent, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { Space, FlexItem } from '../Layout'
@@ -41,6 +41,7 @@ export interface TreeItemProps {
   gapSize?: SpacingSizes
   icon?: IconNames
   iconSize?: SpacingSizes
+  onClick?: () => void
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -51,14 +52,27 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   gapSize = 'xxsmall',
   icon,
   iconSize,
+  onClick,
 }) => {
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
     detailStopPropagation && event.stopPropagation()
   }
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === 13) {
+      event.currentTarget.click()
+    }
+  }
+
   return (
-    <Space className={className} gap={gapSize}>
+    <Space
+      className={className}
+      gap={gapSize}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={onClick ? 0 : -1}
+    >
       {icon && <Icon name={icon} size={iconSize} />}
       <FlexItem flex="1">{children}</FlexItem>
       {detail && <span onClick={handleDetailClick}>{detail}</span>}
@@ -67,5 +81,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 export const TreeItem = styled(TreeItemLayout)`
+  cursor: ${({ onClick }) => onClick && 'pointer'};
   font-size: ${({ theme }) => theme.space.small};
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+
+  &:focus {
+    border-color: ${({ theme, onClick }) =>
+      onClick && theme.colors.palette.purple300};
+  }
 `

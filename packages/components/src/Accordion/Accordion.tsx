@@ -136,8 +136,6 @@ const AccordionLayout: FC<AccordionProps> = ({
   )
 }
 
-const accordionDisclosureBorderSize = '1px'
-
 export const Accordion = styled(AccordionLayout)`
   ${simpleLayoutCSS}
 
@@ -146,9 +144,7 @@ export const Accordion = styled(AccordionLayout)`
       `padding-${indicatorPosition}: calc(${
         space[indicatorSize as SpacingSizes]
       }
-  + ${
-    space[indicatorGap as SpacingSizes]
-  } + ${accordionDisclosureBorderSize})`};
+  + ${space[indicatorGap as SpacingSizes]})`};
   }
 `
 

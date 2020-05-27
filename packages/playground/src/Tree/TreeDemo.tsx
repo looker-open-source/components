@@ -48,7 +48,9 @@ const exploreExample = (
   <Box>
     Explore Example
     <Tree detail={addButton} detailStopPropagation label="Custom Fields">
-      <TreeItem icon="FieldNumber">Cost</TreeItem>
+      <TreeItem icon="FieldNumber" onClick={() => alert('aiweodnfae')}>
+        Cost
+      </TreeItem>
       <Tree label="Created">
         <TreeItem icon="Calendar">Created Date</TreeItem>
         <TreeItem icon="Calendar">Created Month</TreeItem>
