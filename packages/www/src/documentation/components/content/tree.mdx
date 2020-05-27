@@ -115,6 +115,28 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 
 <Props of="TreeItem" />
 
-`<TreeItem>` is used to create branches in a tree view. It is best used as the direct child of a `<Tree>`.
+`<TreeItem>` is used to create branches in a tree view; it is best used as the direct child of a `<Tree>`.
 
-`<TreeItem>` is meant to look cohesive alongside `<Tree>`s and thus shares a similar interface.
+Unlike `<Tree>`, `<TreeItem>` has no `label` prop and instead displays its child as its content.
+
+In addition, `<TreeItem>` can accept a callback via its `onClick` prop.
+
+Use the `detail` prop to display a detail element right of the `<TreeItem>`'s content.
+
+To prevent clicks on the `detail` element from triggering the `onClick` callback, use the `detailStopPropagation` prop.
+
+`icon` and `iconSize` can be used to create and customize an icon element left of the `<TreeItem>`'s content.
+
+Use `gapSize` to control the distance between elements in your `<TreeItem>`.
+
+```jsx
+<Tree label="Cheeses" defaultOpen>
+  <TreeItem
+    icon="LogoRings"
+    detail={<Box color="palette.charcoal500">is great</Box>}
+    onClick={() => alert('Clicked Swiss')}
+  >
+    Swiss
+  </TreeItem>
+</Tree>
+```
