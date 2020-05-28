@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## [UNRELEASED]
+
+### Added
+
+- `Tree`, `TreeItem` components
+- `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 
 ### Changed
 - Font sizes for the various `Button`'s updated to match spec
@@ -15,10 +21,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - update `TextArea` to have min-height as `defaultProps`
+- `InlineInputText` & `InlineInputTextArea` inherit color and text-alignment from parent
 - `InlineInputText` prop simple removes border-bottom
 - `Popover` positioning when placement is "top" and the height changes
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
+- `InlineInputText` no longer adds a special character to prevent vertical-collapse when empty
 
 ## [0.7.37] - 2020-05-20
 
@@ -30,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- created `InputColor`
 - `Accordion`, `AccordionLabel`, `AccordionContent` components
 - `ButtonGroup` and `ButtonToggle` will now wrap if there are too many items for the container width
 - `ButtonToggle` now accepts `nullable`
@@ -51,6 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- updated `FieldColor` to use `InputColor`
 - `Banner` fontSize adjusted and external margin removed
 - `Button` and `ButtonOutline` horizontal padding on increased, decreased for `ButtonTransparent`
 - `DateTimeFormat` uses date-fns to format human-readable date string (rather than built-in browser default functionality)

@@ -92,6 +92,10 @@ const components: NavigationSection = {
           title: 'InputChips',
         },
         {
+          path: 'input-color',
+          title: 'InputColor',
+        },
+        {
           path: 'input-date',
           title: 'InputDate',
         },
@@ -195,6 +199,7 @@ const components: NavigationSection = {
         { path: 'table', title: 'Table' },
         { path: 'tabs', title: 'Tabs' },
         { path: 'time-format', title: 'TimeFormat' },
+        { path: 'tree', title: 'Tree' },
         { path: 'visually-hidden', title: 'VisuallyHidden' },
       ],
       path: 'content',

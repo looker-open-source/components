@@ -24,23 +24,13 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { TreeItem } from '.'
+
+describe('TreeItem', () => {
+  test('Renders children', () => {
+    const { getByText } = renderWithTheme(<TreeItem>Dimension</TreeItem>)
+    getByText('Dimension')
+  })
+})

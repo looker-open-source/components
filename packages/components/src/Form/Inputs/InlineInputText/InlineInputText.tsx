@@ -77,7 +77,7 @@ export const InlineInputTextInternal = forwardRef(
           {...pick(props, inputPropKeys)}
         />
         <VisibleText displayValue={displayValue}>
-          {displayValue || placeholder}&#8203;
+          {displayValue || placeholder || ' '}
         </VisibleText>
       </div>
     )
@@ -89,7 +89,7 @@ InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: ${(props) => props.theme.colors.palette.charcoal900};
   height: 100%;
@@ -106,6 +106,7 @@ interface VisibleTextProps {
   displayValue?: string
 }
 const VisibleText = styled.div<VisibleTextProps>`
+  white-space: pre;
   color: ${({ displayValue, theme }) =>
     displayValue
       ? theme.colors.palette.charcoal900
@@ -114,7 +115,7 @@ const VisibleText = styled.div<VisibleTextProps>`
 
 export const InlineInputText = styled(InlineInputTextInternal)`
   ${typography}
-
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
@@ -126,6 +127,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 
   :focus,
   :hover {

@@ -4,7 +4,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -18,10 +18,12 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 }
 
 .c2 {
+  white-space: pre;
   color: #939BA5;
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -38,6 +40,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 }
 
 .c0:focus,
@@ -65,7 +68,6 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
     className="c2"
   >
     this is the placeholder
-    ​
   </div>
 </div>
 `;
@@ -74,7 +76,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -88,10 +90,12 @@ exports[`InlineInputText renders an input with no value 1`] = `
 }
 
 .c2 {
+  white-space: pre;
   color: #939BA5;
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -108,6 +112,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 }
 
 .c0:focus,
@@ -134,7 +139,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
   <div
     className="c2"
   >
-    ​
+     
   </div>
 </div>
 `;
@@ -143,7 +148,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 .c1 {
   background: transparent;
   border: none;
-  color: transparent;
+  color: inherit;
   font: inherit;
   caret-color: #262D33;
   height: 100%;
@@ -157,10 +162,12 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 }
 
 .c2 {
+  white-space: pre;
   color: #262D33;
 }
 
 .c0 {
+  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -177,6 +184,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   justify-content: center;
   position: relative;
   min-width: 2rem;
+  text-align: inherit;
 }
 
 .c0:focus,
@@ -204,7 +212,6 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
     className="c2"
   >
     type here...
-    ​
   </div>
 </div>
 `;

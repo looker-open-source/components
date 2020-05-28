@@ -51,6 +51,7 @@ export * from './Table'
 export * from './Tabs'
 export * from './Tooltip'
 export * from './Text'
+export * from './Tree'
 export * from './VisuallyHidden'
 
 export * from './utils'
