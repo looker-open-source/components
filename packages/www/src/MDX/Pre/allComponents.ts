@@ -150,6 +150,8 @@ import {
   TimeFormat,
   ToggleSwitch,
   Tooltip,
+  Tree,
+  TreeItem,
   useConfirm,
   usePreviousValue,
   useMixedStateCheckbox,
@@ -309,5 +311,7 @@ export const allComponents = {
   TimeFormat,
   ToggleSwitch,
   Tooltip,
+  Tree,
+  TreeItem,
   VisuallyHidden,
 }

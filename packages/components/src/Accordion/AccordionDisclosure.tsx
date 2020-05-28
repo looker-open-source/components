@@ -72,7 +72,9 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
 
+  align-items: center;
   border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+  display: flex;
   cursor: pointer;
   outline: none;
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};

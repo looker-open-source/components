@@ -26,12 +26,14 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import { AccordionDemo } from './Accordion/AccordionDemo'
+import { TreeDemo } from './Tree/TreeDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <ActionListDemo />
+      <TreeDemo />
+      <AccordionDemo />
     </ComponentsProvider>
   )
 }
