@@ -96,10 +96,7 @@ export function useInputEvents<
 
   function handleFocus(e: FocusEvent<HTMLInputElement>) {
     if (readOnly) {
-      const target = e.currentTarget
-      window.requestAnimationFrame(() => {
-        target.selectionEnd = target.selectionStart
-      })
+      e.currentTarget.selectionEnd = e.currentTarget.selectionStart
     } else if (selectOnClick) {
       selectOnClickRef.current = true
     }
@@ -123,7 +120,7 @@ export function useInputEvents<
   const selectText = useCallback(() => {
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
-      // inputElement && inputElement.select()
+      inputElement && inputElement.select()
     }
   }, [inputElement])
 
