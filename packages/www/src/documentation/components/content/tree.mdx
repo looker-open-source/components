@@ -6,19 +6,15 @@ propsOf: Tree
 
 import { Props } from '../../../Shared'
 
-`<Tree>`, like `<Accordion>`, is a collapsible section component designed for hiding and showing content.
+`Tree`, like `Accordion`, is a collapsible section component designed for hiding and showing content. However, unlike `Accordion`, `Tree` has a more structured interface and is best used when building tree views like a file structure or a sidebar.
 
-However, unlike `<Accordion>`, `<Tree>` has a more structured interface and is best used when building tree views like a file structure or a sidebar.
+Use the required `label` prop to set the text of the `Tree`'s disclosure.
 
-Use the `label` prop to set the text of the `<Tree>`'s disclosure. Note that this prop is required.
+To further customize the look of the `Tree`'s disclosure, you can use the `icon`, `iconSize`, and `detail` props.
 
-To further customize the look of the `<Tree>`'s disclosure, you can use the `icon`, `iconSize`, and `detail` props.
+Passing in an element into the `detail` prop will result in that element being displayed right of the `Tree`'s label.
 
-Passing in an icon name into the `icon` prop will result in an icon being displayed left of the `<Tree>`'s label.
-
-Passing in an element into the `detail` prop will result in that element being displayed right of the `<Tree>`'s label.
-
-**Note:** Use the `detailStopPropagation` prop if you would like to prevent `<Tree>` opening and closing when the `detail` element is clicked.
+**Note:** Use the `detailStopPropagation` prop if you would like to prevent `Tree` opening and closing when the `detail` element is clicked.
 
 ```jsx
 <Tree
@@ -33,9 +29,7 @@ Passing in an element into the `detail` prop will result in that element being d
 </Tree>
 ```
 
-Use the `border` prop if you would like to have vertical lines expand from your `<Tree>`'s indicator icon when open.
-
-**Note:** Using the `border prop` on a `<Tree>` will enable the vertical lines on all child `<Tree>`s.
+Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
 
 ```jsx
 <Tree
@@ -56,7 +50,7 @@ Use the `border` prop if you would like to have vertical lines expand from your 
 
 ## Nesting Trees
 
-You can nest trees within each other by passing `<Tree>`s in as children to parent `<Tree>`s.
+You can nest trees within each other by passing a `Tree` in as child of the parent `Tree`.
 
 ```jsx
 <Tree label="Orders" icon="Table">
@@ -71,7 +65,7 @@ You can nest trees within each other by passing `<Tree>`s in as children to pare
 
 ## Tree Callbacks
 
-Use the `onOpen` and `onClose` props if you would like to trigger callbacks on `<Tree>` open or close, respectively.
+Use the `onOpen` and `onClose` props if you would like to trigger callbacks on `Tree` open or close, respectively.
 
 ```jsx
 <Tree
@@ -86,15 +80,15 @@ Use the `onOpen` and `onClose` props if you would like to trigger callbacks on `
 
 ## Controlling a Tree
 
-Like `<Accordion>`, a `<Tree>` can be either uncontrolled or controlled.
+Like `Accordion`, a `Tree` can be either uncontrolled or controlled.
 
-By default, the `<Tree>` is an uncontrolled component and maintains its own opened/closed state. If you are using an uncontrolled `<Tree>` and want it initially open, use the `defaultOpen` prop.
+By default, the `Tree` is an uncontrolled component and maintains its own opened/closed state. If you are using an uncontrolled `Tree` and want it initially open, use the `defaultOpen` prop.
 
-However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `<Tree>`.
+However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `Tree`.
 
-When the `isOpen` prop receives `true`, your `<Tree>` will reveal its content. When `false`, your content will be hidden.
+When the `isOpen` prop receives `true`, your `Tree` will reveal its content. When `false`, your content will be hidden.
 
-The `toggleOpen` prop should receive a function that has one parameter: a boolean. When the `<Tree>`'s disclosure is clicked, the `toggleOpen` callback will be triggered and passed the opposite boolean of the current `isOpen` prop value.
+The `toggleOpen` prop should receive a function that has one parameter: a boolean. When the `Tree`'s disclosure is clicked, the `toggleOpen` callback will be triggered and passed the opposite boolean of the current `isOpen` prop value.
 
 ```jsx
 ;() => {
@@ -115,19 +109,19 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 
 <Props of="TreeItem" />
 
-`<TreeItem>` is used to create branches in a tree view; it is best used as the direct child of a `<Tree>`.
+`TreeItem` is used to create branches in a tree view; it is best used as the direct child of a `<Tree>`.
 
-Unlike `<Tree>`, `<TreeItem>` has no `label` prop and instead displays its child as its content.
+Unlike `Tree`, `TreeItem` has no `label` prop and instead displays its child as its content.
 
-In addition, `<TreeItem>` can accept a callback via its `onClick` prop.
+In addition, `TreeItem` can accept a callback via its `onClick` prop.
 
-Use the `detail` prop to display a detail element right of the `<TreeItem>`'s content.
+Use the `detail` prop to display a detail element right of the `TreeItem`'s content.
 
 To prevent clicks on the `detail` element from triggering the `onClick` callback, use the `detailStopPropagation` prop.
 
-`icon` and `iconSize` can be used to create and customize an icon element left of the `<TreeItem>`'s content.
+`icon` and `iconSize` can be used to create and customize an icon element left of the `TreeItem`'s content.
 
-Use `gapSize` to control the distance between elements in your `<TreeItem>`.
+Use `gapSize` to control the distance between elements in your `TreeItem`.
 
 ```jsx
 <Tree label="Cheeses" defaultOpen>
