@@ -24,7 +24,7 @@
 
  */
 
-import { Banner } from '@looker/components'
+import { MessageBar } from '@looker/components'
 import * as headings from './Headings'
 import Blockquote from './Blockquote'
 import Code from './Code'
@@ -38,8 +38,8 @@ import Ul from './Ul'
 
 const MDXComponents = {
   ...headings,
-  Banner,
   Code,
+  MessageBar,
   a: Link,
   blockquote: Blockquote,
   hr: Hr,

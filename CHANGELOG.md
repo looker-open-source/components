@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Button*` font sizes updated to match design specifications
 - `theme.colors` shape has been significantly refactored (documentation updates to follow)
+- updates on `Banner` now `MessageBar`
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
 - Updated `LookerLogo` and `LogoRings` to match new branding
 

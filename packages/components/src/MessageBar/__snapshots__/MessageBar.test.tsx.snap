@@ -1,8 +1,294 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Banner can be dismissed 1`] = `
+exports[`Confirmation MessageBar 1`] = `
 .c1 {
-  color: #49a9f2;
+  color: #24b25f;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c0 {
+  border-radius: 0.25rem;
+  background-color: #F5F6F7;
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  fontSize="small"
+  role="status"
+  width="100%"
+>
+  <div
+    className="c1 "
+    color="palette.green500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Check
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  />
+  <div
+    className="c3"
+  >
+    Confirmation
+  </div>
+</div>
+`;
+
+exports[`Error MessageBar 1`] = `
+.c1 {
+  color: #CC1F36;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c0 {
+  border-radius: 0.25rem;
+  background-color: #FFE5E9;
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  fontSize="small"
+  role="status"
+  width="100%"
+>
+  <div
+    className="c1 "
+    color="palette.red500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Error
+  </div>
+  <div
+    className="c3"
+  >
+    Error
+  </div>
+</div>
+`;
+
+exports[`Info MessageBar 1`] = `
+.c1 {
+  color: #0087e1;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c0 {
+  border-radius: 0.25rem;
+  background-color: #F5F6F7;
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  fontSize="small"
+  role="status"
+  width="100%"
+>
+  <div
+    className="c1 "
+    color="palette.blue500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Info
+  </div>
+  <div
+    className="c3"
+  >
+    Info
+  </div>
+</div>
+`;
+
+exports[`MessageBar can be dismissed 1`] = `
+.c1 {
+  color: #0087e1;
   margin-right: 0.75rem;
   width: 20px;
   height: 20px;
@@ -110,7 +396,7 @@ exports[`Banner can be dismissed 1`] = `
 
 .c0 {
   border-radius: 0.25rem;
-  background-color: #e0f2ff;
+  background-color: #F5F6F7;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -159,7 +445,7 @@ exports[`Banner can be dismissed 1`] = `
 >
   <div
     className="c1 "
-    color="palette.blue400"
+    color="palette.blue500"
     size={20}
     style={
       Object {
@@ -194,7 +480,7 @@ exports[`Banner can be dismissed 1`] = `
     Info!
   </div>
   <button
-    aria-describedby="test-banner-iconButton-tooltip"
+    aria-describedby="test-message-bar-iconButton-tooltip"
     aria-hidden={true}
     className="c4 c5 c6"
     color="neutral"
@@ -236,252 +522,7 @@ exports[`Banner can be dismissed 1`] = `
 </div>
 `;
 
-exports[`Confirmation banner 1`] = `
-.c2 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #e0ffe7;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div
-  aria-live="polite"
-  className="c0"
-  fontSize="small"
-  role="status"
-  width="100%"
->
-  <div
-    className="c1"
-  />
-  <div
-    className="c2"
-  >
-    Confirmation
-  </div>
-</div>
-`;
-
-exports[`Error banner 1`] = `
-.c1 {
-  color: #B2121F;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #FFE5E9;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div
-  aria-live="polite"
-  className="c0"
-  fontSize="small"
-  role="status"
-  width="100%"
->
-  <div
-    className="c1 "
-    color="palette.red600"
-    size={20}
-    style={
-      Object {
-        "flexBasis": "20px",
-        "flexShrink": 0,
-      }
-    }
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 22 19"
-      width="100%"
-    >
-      <title>
-        Warning
-      </title>
-      <path
-        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-  <div
-    className="c2"
-  >
-    Error
-  </div>
-  <div
-    className="c3"
-  >
-    Error
-  </div>
-</div>
-`;
-
-exports[`Info banner 1`] = `
-.c1 {
-  color: #49a9f2;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #e0f2ff;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div
-  aria-live="polite"
-  className="c0"
-  fontSize="small"
-  role="status"
-  width="100%"
->
-  <div
-    className="c1 "
-    color="palette.blue400"
-    size={20}
-    style={
-      Object {
-        "flexBasis": "20px",
-        "flexShrink": 0,
-      }
-    }
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <title>
-        Circle Info
-      </title>
-      <path
-        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-  <div
-    className="c2"
-  >
-    Info
-  </div>
-  <div
-    className="c3"
-  >
-    Info
-  </div>
-</div>
-`;
-
-exports[`Warning banner 1`] = `
+exports[`Warning MessageBar 1`] = `
 .c1 {
   color: #FFA800;
   margin-right: 0.75rem;
@@ -505,7 +546,7 @@ exports[`Warning banner 1`] = `
 
 .c0 {
   border-radius: 0.25rem;
-  background-color: #FFEBC4;
+  background-color: #F5F6F7;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;

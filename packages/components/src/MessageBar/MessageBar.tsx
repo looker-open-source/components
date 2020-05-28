@@ -32,28 +32,28 @@ import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
-export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
+export type MessageBarIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
-export interface BannerProps
+export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
     SimpleLayoutProps,
     TypographyProps {
   /**
    * @default: 'info'
    */
-  intent?: BannerIntent
+  intent?: MessageBarIntent
   canDismiss?: boolean
   onDismiss?: () => void
 }
 
-interface BannerTypeStyling {
+interface MessageBarTypeStyling {
   bg?: string
   accessibilityLabel?: string
   icon?: JSX.Element
 }
 
-const getBannerIntentStyling = (intent: BannerIntent) => {
-  const bannerTypeStyling: BannerTypeStyling = {}
+const getMessageBarIntentStyling = (intent: MessageBarIntent) => {
+  const messageBarTypeStyling: MessageBarTypeStyling = {}
   const iconProps = {
     mr: 'small',
     size: 20,
@@ -61,51 +61,54 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
   }
 
   switch (intent) {
-    case 'warning':
-      bannerTypeStyling.bg = 'palette.yellow100'
-      bannerTypeStyling.icon = (
-        <Icon {...iconProps} name="Warning" color="palette.yellow500" />
+    case 'confirmation':
+      messageBarTypeStyling.bg = 'palette.charcoal100'
+      messageBarTypeStyling.icon = (
+        <Icon {...iconProps} name="CircleCheck" color="palette.green500" />
       )
-      bannerTypeStyling.accessibilityLabel = 'Warning'
-      break
-    case 'info':
-      bannerTypeStyling.bg = 'palette.blue100'
-      bannerTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleInfo" color="palette.blue400" />
-      )
-      bannerTypeStyling.accessibilityLabel = 'Info'
       break
     case 'error':
-      bannerTypeStyling.bg = 'palette.red100'
-      bannerTypeStyling.icon = (
-        <Icon {...iconProps} name="Warning" color="palette.red600" />
+      messageBarTypeStyling.bg = 'palette.red100'
+      messageBarTypeStyling.icon = (
+        <Icon {...iconProps} name="Warning" color="palette.red500" />
       )
-      bannerTypeStyling.accessibilityLabel = 'Error'
+      messageBarTypeStyling.accessibilityLabel = 'Error'
       break
-    case 'confirmation':
-      bannerTypeStyling.bg = 'palette.green100'
+    case 'info':
+      messageBarTypeStyling.bg = 'palette.charcoal100'
+      messageBarTypeStyling.icon = (
+        <Icon {...iconProps} name="CircleInfo" color="palette.blue500" />
+      )
+      messageBarTypeStyling.accessibilityLabel = 'Info'
+      break
+    case 'warning':
+      messageBarTypeStyling.bg = 'palette.charcoal100'
+      messageBarTypeStyling.icon = (
+        <Icon {...iconProps} name="Warning" color="palette.yellow500" />
+      )
+      messageBarTypeStyling.accessibilityLabel = 'Warning'
       break
     default:
       break
   }
-  return bannerTypeStyling
+  return messageBarTypeStyling
 }
 
-export const Banner = forwardRef(
-  (props: BannerProps, ref: Ref<HTMLDivElement>) => {
+export const MessageBar = forwardRef(
+  (props: MessageBarProps, ref: Ref<HTMLDivElement>) => {
     const {
       id,
       children,
       canDismiss,
-      intent = 'warning',
+      intent = 'info',
       onDismiss,
       ...typeAndSpaceProps
     } = props
     const {
       icon,
       accessibilityLabel,
-      ...bannerIntentStyling
-    } = getBannerIntentStyling(intent)
+      ...messageBarIntentStyling
+    } = getMessageBarIntentStyling(intent)
 
     return (
       <Flex
@@ -114,7 +117,7 @@ export const Banner = forwardRef(
         borderRadius="medium"
         ref={ref}
         role="status"
-        {...bannerIntentStyling}
+        {...messageBarIntentStyling}
         {...typeAndSpaceProps}
       >
         {icon}
@@ -137,11 +140,11 @@ export const Banner = forwardRef(
   }
 )
 
-Banner.defaultProps = {
+MessageBar.defaultProps = {
   fontSize: 'small',
   intent: 'info',
   px: 'small',
   py: 'xsmall',
   width: '100%',
 }
-Banner.displayName = 'Banner'
+MessageBar.displayName = 'MessageBar'
