@@ -241,9 +241,13 @@ export function SelectMultiDemo() {
         placeholder="Search fruits"
         closeOnSelect
         mb="xlarge"
-        indicator={({ isActive }) =>
-          isActive ? <Icon name="CaretRight" /> : <Icon name="CaretDown" />
-        }
+        indicator={({ isActive, isSelected }) => (
+          <Icon
+            name={
+              isActive ? 'CaretRight' : isSelected ? 'Favorite' : 'CaretDown'
+            }
+          />
+        )}
       />
     </Box>
   )

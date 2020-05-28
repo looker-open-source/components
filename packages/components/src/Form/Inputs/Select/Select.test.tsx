@@ -28,6 +28,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
+import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
 import { SelectOptionObject } from './SelectOptions'
@@ -212,6 +213,76 @@ describe('Select / SelectMulti', () => {
     expect(list).toHaveStyleRule('max-width', '800px')
     expect(list).toHaveStyleRule('min-width', '300px')
     expect(list).toHaveStyleRule('width', '50vw')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test.each([
+    [
+      'Select',
+      (indicator: ComboboxOptionIndicatorFunction) => (
+        <Select
+          options={options}
+          value="FOO"
+          placeholder="Search"
+          indicator={indicator}
+          key="select"
+        />
+      ),
+    ],
+    [
+      'SelectMulti',
+      (indicator: ComboboxOptionIndicatorFunction) => (
+        <SelectMulti
+          options={options}
+          values={['FOO']}
+          placeholder="Search"
+          indicator={indicator}
+          key="select-multi"
+        />
+      ),
+    ],
+  ])('Customize the indicator (%s)', (_, getJSX) => {
+    const indicator = jest.fn()
+    const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
+      getJSX(indicator)
+    )
+
+    const input = getByPlaceholderText('Search')
+    fireEvent.click(input)
+
+    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenNthCalledWith(1, {
+      // ComboboxList.persistSelection is true for Select/SelectMulti
+      isActive: true,
+      isSelected: true,
+    })
+    expect(indicator).toHaveBeenNthCalledWith(2, {
+      isActive: false,
+      isSelected: false,
+    })
+
+    const check = queryByTitle('Check')
+    expect(check).not.toBeInTheDocument()
+
+    indicator.mockClear()
+
+    const bar = getByText('BAR')
+    fireEvent.keyDown(bar, {
+      key: 'ArrowDown',
+    })
+
+    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenNthCalledWith(1, {
+      // ComboboxList.persistSelection is true for Select/SelectMulti
+      isActive: false,
+      isSelected: true,
+    })
+    expect(indicator).toHaveBeenNthCalledWith(2, {
+      isActive: true,
+      isSelected: false,
+    })
 
     // Close popover to silence act() warning
     fireEvent.click(document)

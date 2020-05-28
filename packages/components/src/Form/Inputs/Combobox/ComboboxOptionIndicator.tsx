@@ -30,6 +30,7 @@ import React, {
   isValidElement,
   ReactNode,
   useContext,
+  useMemo,
 } from 'react'
 import styled from 'styled-components'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
@@ -39,7 +40,7 @@ export interface OptionStatuses {
   isSelected: boolean
 }
 
-type ComboboxOptionIndicatorFunction = (
+export type ComboboxOptionIndicatorFunction = (
   indicatorProps: OptionStatuses
 ) => ReactNode
 
@@ -61,7 +62,7 @@ export interface ComboboxOptionIndicatorProps
   isMulti?: boolean
 }
 
-export const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
+const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
   children,
   indicator: propsIndicator,
   isActive,
@@ -73,19 +74,22 @@ export const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = (
   const contextMulti = useContext(ComboboxMultiContext)
   const contextToUse = isMulti ? contextMulti : context
   const { indicatorPropRef } = contextToUse
-
-  const indicator =
+  const indicatorToUse =
     propsIndicator !== undefined
       ? propsIndicator
       : indicatorPropRef && indicatorPropRef.current
-  const statuses = { isActive, isSelected }
 
-  if (indicator !== undefined) {
-    if (isValidElement(indicator)) {
-      return <>{cloneElement(indicator, statuses)}</>
-    } else if (isIndicatorFunction(indicator)) {
-      return <>{indicator(statuses)}</>
+  const indicator = useMemo(() => {
+    const statuses = { isActive, isSelected }
+    if (isValidElement(indicatorToUse)) {
+      return cloneElement(indicatorToUse, statuses)
+    } else if (isIndicatorFunction(indicatorToUse)) {
+      return indicatorToUse(statuses)
     }
+    return indicatorToUse
+  }, [indicatorToUse, isActive, isSelected])
+
+  if (indicatorToUse !== undefined) {
     return <>{indicator}</>
   } else {
     return <div {...props}>{children}</div>

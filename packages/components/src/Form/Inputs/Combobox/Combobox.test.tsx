@@ -33,6 +33,7 @@ import {
   ComboboxInput,
   ComboboxList,
   ComboboxOption,
+  ComboboxOptionIndicatorFunction,
   ComboboxMulti,
   ComboboxMultiInput,
   ComboboxMultiList,
@@ -188,6 +189,92 @@ describe('<Combobox/> with children', () => {
     expect(list).toHaveStyleRule('max-width', '800px')
     expect(list).toHaveStyleRule('min-width', '300px')
     expect(list).toHaveStyleRule('width', '50vw')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  const getIndicatorJSX = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
+      <ComboboxInput placeholder="Type here" />
+      <ComboboxList indicator={listLevel ? indicator : undefined}>
+        >
+        <ComboboxOption
+          label="Foo"
+          value="101"
+          indicator={listLevel ? undefined : indicator}
+        />
+        <ComboboxOption
+          label="Bar"
+          value="102"
+          indicator={listLevel ? undefined : indicator}
+        />
+      </ComboboxList>
+    </Combobox>
+  )
+
+  const getIndicatorJSXMulti = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <ComboboxMulti
+      key="combobox-multi"
+      values={[{ label: 'Foo', value: '101' }]}
+    >
+      <ComboboxMultiInput placeholder="Type here" />
+      <ComboboxMultiList indicator={listLevel ? indicator : undefined}>
+        <ComboboxMultiOption
+          label="Foo"
+          value="101"
+          indicator={listLevel ? undefined : indicator}
+        />
+        <ComboboxMultiOption
+          label="Bar"
+          value="102"
+          indicator={listLevel ? undefined : indicator}
+        />
+      </ComboboxMultiList>
+    </ComboboxMulti>
+  )
+
+  test.each([
+    ['list level (Combobox)', getIndicatorJSX(true)],
+    ['list level (ComboboxMulti)', getIndicatorJSXMulti(true)],
+    ['option level (Combobox)', getIndicatorJSX(false)],
+    ['option level (ComboboxMulti)', getIndicatorJSXMulti(false)],
+  ])('Customize the indicator at the %s', (_, getJSX) => {
+    const indicator = jest.fn()
+    const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
+      getJSX(indicator)
+    )
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.click(input)
+
+    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenNthCalledWith(1, {
+      isActive: false,
+      isSelected: true,
+    })
+    expect(indicator).toHaveBeenNthCalledWith(2, {
+      isActive: false,
+      isSelected: false,
+    })
+
+    const check = queryByTitle('Check')
+    expect(check).not.toBeInTheDocument()
+
+    indicator.mockClear()
+
+    const bar = getByText('Bar')
+    fireEvent.mouseOver(bar)
+
+    expect(indicator).toHaveBeenCalledTimes(1)
+    expect(indicator).toHaveBeenCalledWith({
+      isActive: true,
+      isSelected: false,
+    })
 
     // Close popover to silence act() warning
     fireEvent.click(document)
