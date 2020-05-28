@@ -128,6 +128,7 @@ const clickableItems = data.map(({ id, name, type }) => {
       id={String(id)}
       key={id}
       actions={availableActions}
+      actionsTooltip="My Actions Button"
       onClick={handleListItemClick}
     >
       <ActionListItemColumn>{id}</ActionListItemColumn>
@@ -199,7 +200,7 @@ describe('ActionList', () => {
     })
 
     test('Renders action menu on button click and handles action click', () => {
-      const { getByRole, getByText, queryByText } = renderWithTheme(
+      const { getByText, queryByText } = renderWithTheme(
         actionListWithClickableRows
       )
 
@@ -213,7 +214,7 @@ describe('ActionList', () => {
         })
       )
 
-      const listItemButton = getByRole('button')
+      const listItemButton = getByText('My Actions Button')
       expect(queryByText('View Profile')).not.toBeInTheDocument()
 
       fireEvent.click(listItemButton)

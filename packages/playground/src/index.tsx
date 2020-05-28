@@ -25,22 +25,13 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  InlineInputText,
-  Paragraph,
-} from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { ActionListDemo } from './ActionList/ActionListDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <Paragraph variant="critical">some text...</Paragraph>
-      <Paragraph variant="critical">
-        <InlineInputText value="Type here..." />
-      </Paragraph>
-      <Paragraph variant="critical">
-        <InlineInputText placeholder="Type here..." />
-      </Paragraph>
+      <ActionListDemo />
     </ComponentsProvider>
   )
 }
