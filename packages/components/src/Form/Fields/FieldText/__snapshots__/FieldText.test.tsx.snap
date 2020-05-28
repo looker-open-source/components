@@ -27,6 +27,7 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
@@ -183,6 +184,7 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
