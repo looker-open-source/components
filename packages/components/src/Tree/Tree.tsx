@@ -103,13 +103,22 @@ export const Tree = styled(TreeLayout)`
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
+  ${AccordionContent} {
+    ${({ border }) => border && centeredVerticalBorder}
+  }
+
+  ${TreeItem} {
+    font-size: ${({ theme }) => theme.space.small};
+    outline: none;
+  }
+
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem} {
     border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
-  ${AccordionContent} {
-    ${({ border }) => border && centeredVerticalBorder}
+  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
+    border-color: ${({ theme }) => theme.colors.palette.purple300};
   }
 `
