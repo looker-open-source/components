@@ -37,6 +37,7 @@ export interface TreeItemProps {
   detailStopPropagation?: boolean
   /**
    * Gap size of the internal Space component
+   * @default 'xsmall'
    */
   gapSize?: SpacingSizes
   icon?: IconNames
@@ -82,11 +83,4 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
 export const TreeItem = styled(TreeItemLayout)`
   cursor: ${({ onClick }) => onClick && 'pointer'};
-  font-size: ${({ theme }) => theme.space.small};
-  outline: none;
-
-  &&&:focus {
-    border-color: ${({ theme, onClick }) =>
-      onClick && theme.colors.palette.purple300};
-  }
 `

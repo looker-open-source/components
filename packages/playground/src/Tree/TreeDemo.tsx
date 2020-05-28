@@ -48,7 +48,7 @@ const exploreExample = (
   <Box>
     Explore Example
     <Tree detail={addButton} detailStopPropagation label="Custom Fields">
-      <TreeItem icon="FieldNumber" onClick={() => alert('aiweodnfae')}>
+      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
         Cost
       </TreeItem>
       <Tree label="Created">
