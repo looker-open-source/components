@@ -33,15 +33,19 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
-import { ComboboxOptionStatuses } from './utils/useOptionStatus'
 
-type ComboboxOptionIndicatorRenderProp = (
+export interface ComboboxOptionStatuses {
+  isActive: boolean
+  isSelected: boolean
+}
+
+type ComboboxOptionIndicatorFunction = (
   indicatorProps: ComboboxOptionStatuses
 ) => ReactNode
 
-function isRenderProp(
-  children: ReactNode | ComboboxOptionIndicatorRenderProp
-): children is ComboboxOptionIndicatorRenderProp {
+function isIndicatorFunction(
+  children: ReactNode | ComboboxOptionIndicatorFunction
+): children is ComboboxOptionIndicatorFunction {
   return typeof children === 'function'
 }
 
@@ -51,8 +55,9 @@ export interface ComboboxOptionIndicatorProps
   /**
    * Customize the area to the left of the label, which by default
    * renders a check mark for the selected option or a spacer
+   * Use a ReactNode, function component or render-prop-style function, or false to remove
    */
-  indicator?: ReactNode | ComboboxOptionIndicatorRenderProp
+  indicator?: ReactNode | ComboboxOptionIndicatorFunction
   isMulti?: boolean
 }
 
@@ -78,7 +83,7 @@ export const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = (
   if (indicator !== undefined) {
     if (isValidElement(indicator)) {
       return <>{cloneElement(indicator, statuses)}</>
-    } else if (isRenderProp(indicator)) {
+    } else if (isIndicatorFunction(indicator)) {
       return <>{indicator(statuses)}</>
     }
     return <>{indicator}</>

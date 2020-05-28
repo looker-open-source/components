@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import {
   Combobox,
   ComboboxMulti,
@@ -32,12 +32,20 @@ import {
   ComboboxMultiList,
   ComboboxMultiOption,
   ComboboxOption,
+  ComboboxOptionStatuses,
   ComboboxList,
   ComboboxInput,
   Heading,
   Space,
   SpaceVertical,
 } from '@looker/components'
+
+const CustomIndicator: FC<ComboboxOptionStatuses> = ({
+  isActive,
+  isSelected,
+}) => {
+  return <>{isSelected ? '>>' : isActive ? '>' : ''}</>
+}
 
 export function ComboboxDemo() {
   const [option, setOption] = useState({ value: 'Bananas' })
@@ -106,10 +114,10 @@ export function ComboboxDemo() {
         </ComboboxMulti>
       </SpaceVertical>
       <SpaceVertical>
-        <Heading>Detail</Heading>
+        <Heading>Indicator</Heading>
         <Combobox width={300}>
-          <ComboboxInput placeholder="detail={false}" />
-          <ComboboxList detail={false}>
+          <ComboboxInput placeholder="indicator={false}" />
+          <ComboboxList indicator={false} persistSelection>
             <ComboboxOption value="Apples" />
             <ComboboxOption value="Oranges" />
             <ComboboxOption value="Grapes" />
@@ -123,8 +131,11 @@ export function ComboboxDemo() {
           </ComboboxList>
         </Combobox>
         <ComboboxMulti width={300}>
-          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
-          <ComboboxMultiList>
+          <ComboboxMultiInput
+            onClear={() => alert('CLEAR')}
+            placeholder="Custom indicator"
+          />
+          <ComboboxMultiList indicator={CustomIndicator} persistSelection>
             <ComboboxMultiOption value="Apples" />
             <ComboboxMultiOption value="Oranges" />
             <ComboboxMultiOption value="Grapes" />

@@ -29,6 +29,7 @@ import {
   Box,
   FieldSelectMulti,
   Heading,
+  Icon,
   List,
   ListItem,
   SelectMulti,
@@ -230,6 +231,19 @@ export function SelectMultiDemo() {
         closeOnSelect
         mb="xlarge"
         validationType="error"
+      />
+      <Heading mb="medium" as="h4">
+        Custom Indicator
+      </Heading>
+      <SelectMulti
+        name="fruitIndicator"
+        options={selectOptions}
+        placeholder="Search fruits"
+        closeOnSelect
+        mb="xlarge"
+        indicator={({ isActive }) =>
+          isActive ? <Icon name="CaretRight" /> : <Icon name="CaretDown" />
+        }
       />
     </Box>
   )

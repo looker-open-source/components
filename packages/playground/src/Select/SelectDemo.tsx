@@ -35,6 +35,7 @@ import {
   Label,
   Box,
   Heading,
+  Icon,
   Select,
   FieldSelect,
   ModalContent,
@@ -235,6 +236,15 @@ export function SelectContent() {
         placeholder="Select One"
         disabled
         defaultValue="1"
+      />
+      <FieldSelect
+        label="Indicator"
+        width={300}
+        mb="medium"
+        options={options}
+        aria-label="Fruits"
+        defaultValue="1"
+        indicator={<Icon name="Favorite" />}
       />
     </Box>
   )

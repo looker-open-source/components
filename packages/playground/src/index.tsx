@@ -27,14 +27,14 @@ import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
 import { ComboboxDemo } from './Select/ComboboxDemo'
-import { SelectDemo } from './Select/SelectDemo'
+import { SelectContent } from './Select/SelectDemo'
 import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
       <ComboboxDemo />
-      <SelectDemo />
+      <SelectContent />
       <SelectMultiDemo />
     </ComponentsProvider>
   )

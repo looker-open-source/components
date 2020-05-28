@@ -29,12 +29,8 @@ import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
+import { ComboboxOptionStatuses } from '../ComboboxOptionIndicator'
 import { ComboboxData, ComboboxMultiData } from './state'
-
-export interface ComboboxOptionStatuses {
-  isActive: boolean
-  isSelected: boolean
-}
 
 export function useOptionStatus<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
