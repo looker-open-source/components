@@ -38,12 +38,33 @@ import { IconNames } from '../Icon'
 import { TreeItem } from './TreeItem'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
-  detail?: ReactNode
-  detailStopPropagation?: boolean
-  fontWeight?: FontWeights
+  /**
+   * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
+   * @default false
+   */
   border?: boolean
+  /**
+   * Supplementary element that appears right of the Tree's label
+   */
+  detail?: ReactNode
+  /**
+   * If true, clicking on the detail element will not trigger the Tree's other click handlers
+   * @default false
+   */
+  detailStopPropagation?: boolean
+  /**
+   * The font weight of the Tree's text
+   * @default 'semiBold'
+   */
+  fontWeight?: FontWeights
+  /**
+   * Icon element that appears between the Tree indicator and the Tree label
+   */
   icon?: IconNames
-  iconSize?: SpacingSizes
+  /**
+   * Text label of the Tree
+   * Note: This is a required prop
+   */
   label: string
 }
 
@@ -60,7 +81,6 @@ const TreeLayout: FC<TreeProps> = ({
   detailStopPropagation,
   fontWeight,
   icon,
-  iconSize,
   label,
   ...restProps
 }) => {
@@ -72,7 +92,6 @@ const TreeLayout: FC<TreeProps> = ({
           detailStopPropagation={detailStopPropagation}
           gapSize="xsmall"
           icon={icon}
-          iconSize={iconSize}
         >
           {label}
         </TreeItem>

@@ -98,4 +98,55 @@ describe('Tree', () => {
     fireEvent.click(treeLabel)
     expect(onClose).toHaveBeenCalledTimes(1)
   })
+
+  test('Clicks on detail open the Tree and trigger callbacks by default', () => {
+    const onOpen = jest.fn()
+    const onClose = jest.fn()
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree
+        label="Tree Label"
+        detail="Tree Detail"
+        onClose={onClose}
+        onOpen={onOpen}
+      >
+        Hello World
+      </Tree>
+    )
+
+    const detail = getByText('Tree Detail')
+
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    fireEvent.click(detail)
+    expect(getByText('Hello World')).toBeInTheDocument()
+    expect(onOpen).toHaveBeenCalledTimes(1)
+    fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  test('Clicks on detail do not open the Tree or trigger callbacks when detailStopPropagation is true', () => {
+    const onOpen = jest.fn()
+    const onClose = jest.fn()
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree
+        label="Tree Label"
+        detail="Tree Detail"
+        detailStopPropagation
+        onClose={onClose}
+        onOpen={onOpen}
+      >
+        Hello World
+      </Tree>
+    )
+
+    const detail = getByText('Tree Detail')
+
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onOpen).toHaveBeenCalledTimes(0)
+    fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onClose).toHaveBeenCalledTimes(0)
+  })
 })

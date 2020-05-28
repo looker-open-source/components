@@ -26,11 +26,38 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
 import { TreeItem } from '.'
 
 describe('TreeItem', () => {
   test('Renders children', () => {
     const { getByText } = renderWithTheme(<TreeItem>Dimension</TreeItem>)
     getByText('Dimension')
+  })
+
+  test('Triggers onClick on label click and detail click by default', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <TreeItem detail="Detail" onClick={onClick}>
+        Dimension
+      </TreeItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(2)
+  })
+
+  test('Does not trigger onClick on detail click when detailStopPropagation is true', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <TreeItem detail="Detail" detailStopPropagation onClick={onClick}>
+        Dimension
+      </TreeItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })

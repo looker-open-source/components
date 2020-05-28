@@ -33,15 +33,27 @@ import { Icon, IconNames } from '../Icon'
 export interface TreeItemProps {
   children: ReactNode
   className?: string
+  /**
+   * Supplementary element that appears right of the TreeItem's label
+   */
   detail?: ReactNode
+  /**
+   * If true, clicking on the detail element will not trigger the TreeItem's onClick
+   * @default false
+   */
   detailStopPropagation?: boolean
   /**
    * Gap size of the internal Space component
    * @default 'xsmall'
    */
   gapSize?: SpacingSizes
+  /**
+   * Icon element that appears left of the TreeItem children
+   */
   icon?: IconNames
-  iconSize?: SpacingSizes
+  /**
+   * Callback that is triggered on TreeItem click
+   */
   onClick?: () => void
 }
 
@@ -52,7 +64,6 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   detailStopPropagation,
   gapSize = 'xxsmall',
   icon,
-  iconSize,
   onClick,
 }) => {
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
@@ -66,6 +77,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
   }
 
+  const defaultIconSize = 12
+
   return (
     <Space
       className={className}
@@ -74,7 +87,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={onClick ? 0 : -1}
     >
-      {icon && <Icon name={icon} size={iconSize} />}
+      {icon && <Icon name={icon} size={defaultIconSize} />}
       <FlexItem flex="1">{children}</FlexItem>
       {detail && <span onClick={handleDetailClick}>{detail}</span>}
     </Space>
