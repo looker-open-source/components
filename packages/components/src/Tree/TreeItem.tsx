@@ -37,6 +37,7 @@ export interface TreeItemProps {
   detailStopPropagation?: boolean
   /**
    * Gap size of the internal Space component
+   * @default 'xsmall'
    */
   gapSize?: SpacingSizes
   icon?: IconNames
