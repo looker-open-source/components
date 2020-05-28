@@ -66,6 +66,7 @@ exports[`A FieldSelect 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
@@ -390,6 +391,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
@@ -773,6 +775,7 @@ exports[`A required FieldSelect 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
@@ -1107,6 +1110,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }

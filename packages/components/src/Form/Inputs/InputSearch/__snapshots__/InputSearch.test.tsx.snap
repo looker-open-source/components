@@ -55,6 +55,7 @@ exports[`InputSearch default 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }
@@ -230,6 +231,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   font-size: 0.875rem;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   outline: none;
   padding: 0;
 }

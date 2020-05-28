@@ -187,6 +187,7 @@ export const InputLayout = styled.div`
     font-size: ${(props) => props.theme.fontSizes.small};
     height: 100%;
     width: 100%;
+    max-width: 100%;
     outline: none;
     padding: 0;
   }
