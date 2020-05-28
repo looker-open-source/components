@@ -49,14 +49,14 @@ import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { useForkedRef } from '../../../utils'
 import { usePopover } from '../../../Popover'
-import { ComboboxOptionDetailProps } from './ComboboxOptionDetail'
+import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxActionType } from './utils/state'
 
 export interface ComboboxListProps
-  extends Pick<ComboboxOptionDetailProps, 'detail'>,
+  extends Pick<ComboboxOptionIndicatorProps, 'indicator'>,
     SpaceProps,
     LayoutProps,
     TypographyProps,
@@ -102,7 +102,7 @@ const ComboboxListInternal = forwardRef(
       closeOnSelect = true,
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
       windowedOptions = false,
-      detail,
+      indicator,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -115,7 +115,7 @@ const ComboboxListInternal = forwardRef(
       persistSelectionPropRef,
       closeOnSelectPropRef,
       windowedOptionsPropRef,
-      detailPropRef,
+      indicatorPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -130,7 +130,7 @@ const ComboboxListInternal = forwardRef(
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
     if (windowedOptionsPropRef) windowedOptionsPropRef.current = windowedOptions
-    if (detailPropRef) detailPropRef.current = detail
+    if (indicatorPropRef) indicatorPropRef.current = indicator
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout

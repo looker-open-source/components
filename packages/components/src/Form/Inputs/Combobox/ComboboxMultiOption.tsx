@@ -42,7 +42,7 @@ import {
   ComboboxOptionWrapper,
   ComboboxOptionText,
 } from './ComboboxOption'
-import { ComboboxOptionDetail } from './ComboboxOptionDetail'
+import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
@@ -52,7 +52,7 @@ const ComboboxMultiOptionInternal = forwardRef(
   (
     {
       children,
-      detail,
+      indicator,
       highlightText = true,
       scrollIntoView,
       hideCheckMark,
@@ -93,14 +93,14 @@ const ComboboxMultiOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail
-          detail={detail}
+        <ComboboxOptionIndicator
+          indicator={indicator}
           isActive={isActive}
           isSelected={isSelected}
           isMulti={true}
         >
           {!hideCheckMark && <Checkbox checked={isSelected} />}
-        </ComboboxOptionDetail>
+        </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )

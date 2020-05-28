@@ -35,30 +35,30 @@ import styled from 'styled-components'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxOptionStatuses } from './utils/useOptionStatus'
 
-type ComboboxOptionDetailRenderProp = (
-  detailProps: ComboboxOptionStatuses
+type ComboboxOptionIndicatorRenderProp = (
+  indicatorProps: ComboboxOptionStatuses
 ) => ReactNode
 
 function isRenderProp(
-  children: ReactNode | ComboboxOptionDetailRenderProp
-): children is ComboboxOptionDetailRenderProp {
+  children: ReactNode | ComboboxOptionIndicatorRenderProp
+): children is ComboboxOptionIndicatorRenderProp {
   return typeof children === 'function'
 }
 
-export interface ComboboxOptionDetailProps
+export interface ComboboxOptionIndicatorProps
   extends ComboboxOptionStatuses,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Customize the area to the left of the label, which by default
    * renders a check mark for the selected option or a spacer
    */
-  detail?: ReactNode | ComboboxOptionDetailRenderProp
+  indicator?: ReactNode | ComboboxOptionIndicatorRenderProp
   isMulti?: boolean
 }
 
-export const ComboboxOptionDetailLayout: FC<ComboboxOptionDetailProps> = ({
+export const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
   children,
-  detail: propsDetail,
+  indicator: propsIndicator,
   isActive,
   isSelected,
   isMulti,
@@ -67,27 +67,27 @@ export const ComboboxOptionDetailLayout: FC<ComboboxOptionDetailProps> = ({
   const context = useContext(ComboboxContext)
   const contextMulti = useContext(ComboboxMultiContext)
   const contextToUse = isMulti ? contextMulti : context
-  const { detailPropRef } = contextToUse
+  const { indicatorPropRef } = contextToUse
 
-  const detail =
-    propsDetail !== undefined
-      ? propsDetail
-      : detailPropRef && detailPropRef.current
+  const indicator =
+    propsIndicator !== undefined
+      ? propsIndicator
+      : indicatorPropRef && indicatorPropRef.current
   const statuses = { isActive, isSelected }
 
-  if (detail !== undefined) {
-    if (isValidElement(detail)) {
-      return <>{cloneElement(detail, statuses)}</>
-    } else if (isRenderProp(detail)) {
-      return <>{detail(statuses)}</>
+  if (indicator !== undefined) {
+    if (isValidElement(indicator)) {
+      return <>{cloneElement(indicator, statuses)}</>
+    } else if (isRenderProp(indicator)) {
+      return <>{indicator(statuses)}</>
     }
-    return <>{detail}</>
+    return <>{indicator}</>
   } else {
     return <div {...props}>{children}</div>
   }
 }
 
-export const ComboboxOptionDetail = styled(ComboboxOptionDetailLayout)`
+export const ComboboxOptionIndicator = styled(ComboboxOptionIndicatorLayout)`
   display: flex;
   align-items: center;
   justify-content: center;

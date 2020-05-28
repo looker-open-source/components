@@ -54,12 +54,12 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   const closeOnSelectPropRef = useRef(true)
   const windowedOptionsPropRef = useRef(false)
   const isAutoScrollingRef = useRef(false)
-  const detailPropRef = useRef(false)
+  const indicatorPropRef = useRef(false)
 
   return {
     autoCompletePropRef,
     closeOnSelectPropRef,
-    detailPropRef,
+    indicatorPropRef,
     isAutoScrollingRef,
     listRef,
     optionsRef,

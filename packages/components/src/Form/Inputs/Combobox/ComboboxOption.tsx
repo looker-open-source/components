@@ -60,9 +60,9 @@ import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import {
-  ComboboxOptionDetail,
-  ComboboxOptionDetailProps,
-} from './ComboboxOptionDetail'
+  ComboboxOptionIndicator,
+  ComboboxOptionIndicatorProps,
+} from './ComboboxOptionIndicator'
 import { useOptionScroll } from './utils/useOptionScroll'
 
 export interface ComboboxOptionObject {
@@ -90,7 +90,7 @@ export interface HighlightTextProps {
 
 export interface ComboboxOptionProps
   extends ComboboxOptionObject,
-    Pick<ComboboxOptionDetailProps, 'detail'>,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'>,
     HighlightTextProps,
     ColorProps,
     FlexboxProps,
@@ -141,7 +141,7 @@ const ComboboxOptionInternal = forwardRef(
   (
     {
       children,
-      detail,
+      indicator,
       highlightText = true,
       scrollIntoView,
       ...props
@@ -181,13 +181,13 @@ const ComboboxOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail
-          detail={detail}
+        <ComboboxOptionIndicator
+          indicator={indicator}
           isActive={isActive}
           isSelected={isSelected}
         >
           {isSelected && <Icon name="Check" mr={0} />}
-        </ComboboxOptionDetail>
+        </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
