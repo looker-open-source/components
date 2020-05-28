@@ -32,7 +32,7 @@ import {
   ComboboxMultiList,
   ComboboxMultiOption,
   ComboboxOption,
-  ComboboxOptionStatuses,
+  OptionStatuses,
   ComboboxList,
   ComboboxInput,
   Heading,
@@ -40,10 +40,7 @@ import {
   SpaceVertical,
 } from '@looker/components'
 
-const CustomIndicator: FC<ComboboxOptionStatuses> = ({
-  isActive,
-  isSelected,
-}) => {
+const CustomIndicator: FC<OptionStatuses> = ({ isActive, isSelected }) => {
   return <>{isSelected ? '>>' : isActive ? '>' : ''}</>
 }
 

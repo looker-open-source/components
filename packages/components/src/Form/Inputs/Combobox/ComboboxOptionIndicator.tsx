@@ -34,13 +34,13 @@ import React, {
 import styled from 'styled-components'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 
-export interface ComboboxOptionStatuses {
+export interface OptionStatuses {
   isActive: boolean
   isSelected: boolean
 }
 
 type ComboboxOptionIndicatorFunction = (
-  indicatorProps: ComboboxOptionStatuses
+  indicatorProps: OptionStatuses
 ) => ReactNode
 
 function isIndicatorFunction(
@@ -50,7 +50,7 @@ function isIndicatorFunction(
 }
 
 export interface ComboboxOptionIndicatorProps
-  extends ComboboxOptionStatuses,
+  extends OptionStatuses,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Customize the area to the left of the label, which by default
