@@ -27,44 +27,20 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-import { Banner } from './Banner'
+import { Status } from './Status'
 
-test('Warning banner', () => {
-  assertSnapshot(
-    <Banner intent="warning" id="test-banner">
-      Warning
-    </Banner>
-  )
+test('Warning Status', () => {
+  assertSnapshot(<Status intent="warning" />)
 })
 
-test('Error banner', () => {
-  assertSnapshot(
-    <Banner intent="error" id="test-banner">
-      Error
-    </Banner>
-  )
+test('Error Status', () => {
+  assertSnapshot(<Status intent="critical" />)
 })
 
-test('Info banner', () => {
-  assertSnapshot(
-    <Banner intent="info" id="test-banner">
-      Info
-    </Banner>
-  )
+test('Info Status', () => {
+  assertSnapshot(<Status intent="inform" />)
 })
 
-test('Confirmation banner', () => {
-  assertSnapshot(
-    <Banner intent="confirmation" id="test-banner">
-      Confirmation
-    </Banner>
-  )
-})
-
-test('Banner can be dismissed', () => {
-  assertSnapshot(
-    <Banner intent="info" id="test-banner" canDismiss>
-      Info!
-    </Banner>
-  )
+test('Confirmation Status', () => {
+  assertSnapshot(<Status intent="success" />)
 })
