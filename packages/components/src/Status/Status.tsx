@@ -98,15 +98,19 @@ const getStatusIntentStyling = (intent: StatusIntent) => {
   return statusTypeStyling
 }
 
-export const Status = forwardRef(props: StatusProps, ref: Ref<HTMLInputElement>) => {
-  const  { className, intent = 'neutral' } = props
-  const { icon, accessibilityLabel } = getStatusIntentStyling(intent)
-         return (
-           <div className={className} ref={ref}>
-             {icon}
-             <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-           </div>
-         )
-       }
+export const Status = forwardRef(
+  (
+    { className, intent = 'neutral' }: StatusProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
+    const { icon, accessibilityLabel } = getStatusIntentStyling(intent)
+    return (
+      <div className={className} ref={ref}>
+        {icon}
+        <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+      </div>
+    )
+  }
+)
 
 Status.displayName = 'Status'
