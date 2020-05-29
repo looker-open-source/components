@@ -59,20 +59,20 @@ export const ButtonTransparent = styled(ButtonBase)`
       ? transparentButtonPadding
       : `padding: 0 ${props.theme.space.xsmall};`}
 
-  &:active,
-  &.active {
-    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
-    border-color: ${({ theme, color = 'key' }) =>
-      theme.colors[`${color}Accent`]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
-  }
-
   &:hover,
   &:focus,
   &.hover {
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Subtle`]};
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Subtle`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
+  }
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Accent`]};
     color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
   }
 

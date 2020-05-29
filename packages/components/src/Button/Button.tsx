@@ -32,13 +32,6 @@ export const Button = styled(ButtonBase)`
   border: 1px solid ${({ theme, color = 'key' }) => theme.colors[color]};
   color: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
 
-  &:active,
-  &.active {
-    background: ${({ theme, color = 'key' }) =>
-      theme.colors[`${color}Pressed`]};
-    border-color: ${({ theme, color = 'key' }) =>
-      theme.colors[`${color}Pressed`]};
-  }
   &:hover,
   &:focus,
   &.hover {
@@ -47,6 +40,15 @@ export const Button = styled(ButtonBase)`
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Interactive`]};
   }
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Pressed`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Pressed`]};
+  }
+
   &[disabled] {
     &:hover,
     &:active,
