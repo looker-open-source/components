@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import React from 'react'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
@@ -51,7 +53,7 @@ export interface SwatchProps
   color?: string
 }
 
-export const Swatch = styled.div<SwatchProps>`
+const ColorSwatch = styled.div<SwatchProps>`
   ${reset}
   ${width}
   ${height}
@@ -68,8 +70,32 @@ export const Swatch = styled.div<SwatchProps>`
   flex-shrink: 0;
 `
 
+const TransparentSwatch = styled(ColorSwatch)`
+  position: relative;
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    height: 1px;
+    width: calc(100% + 12px);
+    background: red;
+    /* left: 50%; */
+    top: 50%;
+    margin-left: -6px;
+    transform: rotate(-45deg);
+  }
+`
+export const Swatch = ({ color }) => {
+  return color === 'transparent' ? (
+    <TransparentSwatch />
+  ) : (
+    <ColorSwatch color={color} />
+  )
+}
+
 Swatch.defaultProps = {
   ...omit(inputTextDefaults, 'fontSize'),
-  color: 'white',
+  color: 'transparent',
   width: inputTextDefaults.height,
 }

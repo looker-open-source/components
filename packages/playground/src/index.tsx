@@ -25,15 +25,14 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { AccordionDemo } from './Accordion/AccordionDemo'
-import { TreeDemo } from './Tree/TreeDemo'
+import { ComponentsProvider, InputColor } from '@looker/components'
 
 const App: FC = () => {
   return (
     <ComponentsProvider>
-      <TreeDemo />
-      <AccordionDemo />
+      <InputColor />
+      <InputColor value="green" />
+      <InputColor defaultValue="purple" />
     </ComponentsProvider>
   )
 }
