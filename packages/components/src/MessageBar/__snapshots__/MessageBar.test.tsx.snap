@@ -3,7 +3,6 @@
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
   color: #24b25f;
-  margin-right: 1.25rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -16,31 +15,6 @@ exports[`Confirmation MessageBar 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #F5F6F7;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   position: absolute;
   height: 1px;
@@ -50,23 +24,50 @@ exports[`Confirmation MessageBar 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
 <div
   aria-live="polite"
   className="c0"
-  fontSize="small"
   role="status"
-  width="100%"
 >
   <div
     className="c1 "
-    color="palette.green500"
+    color="positive"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -85,9 +86,11 @@ exports[`Confirmation MessageBar 1`] = `
   </div>
   <div
     className="c2"
-  />
+  >
+    Success
+  </div>
   <div
-    className="c3"
+    className="c3 "
   >
     Positive
   </div>
@@ -97,7 +100,6 @@ exports[`Confirmation MessageBar 1`] = `
 exports[`Error MessageBar 1`] = `
 .c1 {
   color: #CC1F36;
-  margin-right: 1.25rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -110,31 +112,6 @@ exports[`Error MessageBar 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #FFE5E9;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   position: absolute;
   height: 1px;
@@ -144,35 +121,62 @@ exports[`Error MessageBar 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #FFE5E9;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
 <div
   aria-live="polite"
   className="c0"
-  fontSize="small"
   role="status"
-  width="100%"
 >
   <div
     className="c1 "
-    color="palette.red500"
+    color="critical"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
       height="100%"
-      viewBox="0 0 22 19"
+      viewBox="0 0 24 24"
       width="100%"
     >
       <title>
-        Warning
+        Error
       </title>
       <path
-        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
         fill="currentColor"
       />
     </svg>
@@ -183,7 +187,7 @@ exports[`Error MessageBar 1`] = `
     Error
   </div>
   <div
-    className="c3"
+    className="c3 "
   >
     Error
   </div>
@@ -193,7 +197,6 @@ exports[`Error MessageBar 1`] = `
 exports[`Info MessageBar 1`] = `
 .c1 {
   color: #0087e1;
-  margin-right: 1.25rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -206,31 +209,6 @@ exports[`Info MessageBar 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #F5F6F7;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   position: absolute;
   height: 1px;
@@ -240,23 +218,50 @@ exports[`Info MessageBar 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
 <div
   aria-live="polite"
   className="c0"
-  fontSize="small"
   role="status"
-  width="100%"
 >
   <div
     className="c1 "
-    color="palette.blue500"
+    color="inform"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -276,10 +281,10 @@ exports[`Info MessageBar 1`] = `
   <div
     className="c2"
   >
-    Info
+    Inform
   </div>
   <div
-    className="c3"
+    className="c3 "
   >
     Info
   </div>
@@ -289,7 +294,6 @@ exports[`Info MessageBar 1`] = `
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
   color: #0087e1;
-  margin-right: 1.25rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -360,7 +364,7 @@ exports[`MessageBar can be dismissed 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 .c8 {
+.c5 .c9 {
   width: 16px;
   height: 16px;
 }
@@ -388,31 +392,6 @@ exports[`MessageBar can be dismissed 1`] = `
   color: #939BA5;
 }
 
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #F5F6F7;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   position: absolute;
   height: 1px;
@@ -436,23 +415,50 @@ exports[`MessageBar can be dismissed 1`] = `
   pointer-events: none;
 }
 
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c8 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
 <div
   aria-live="polite"
   className="c0"
-  fontSize="small"
   role="status"
-  width="100%"
 >
   <div
     className="c1 "
-    color="palette.blue500"
+    color="inform"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -472,10 +478,10 @@ exports[`MessageBar can be dismissed 1`] = `
   <div
     className="c2"
   >
-    Info
+    Inform
   </div>
   <div
-    className="c3"
+    className="c3 "
   >
     Info!
   </div>
@@ -496,7 +502,7 @@ exports[`MessageBar can be dismissed 1`] = `
     <div
       className="c2"
     >
-      Dismiss info
+      Dismiss inform
     </div>
     <div
       aria-hidden={true}
@@ -522,10 +528,9 @@ exports[`MessageBar can be dismissed 1`] = `
 </div>
 `;
 
-exports[`Warning MessageBar 1`] = `
+exports[`Warn MessageBar 1`] = `
 .c1 {
   color: #FFA800;
-  margin-right: 1.25rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -538,31 +543,6 @@ exports[`Warning MessageBar 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  background-color: #F5F6F7;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 0.875rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   position: absolute;
   height: 1px;
@@ -572,23 +552,42 @@ exports[`Warning MessageBar 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
 <div
   aria-live="polite"
   className="c0"
-  fontSize="small"
   role="status"
-  width="100%"
 >
   <div
     className="c1 "
-    color="palette.yellow500"
+    color="warn"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -611,9 +610,9 @@ exports[`Warning MessageBar 1`] = `
     Warning
   </div>
   <div
-    className="c3"
+    className="c3 "
   >
-    Warning
+    Warn
   </div>
 </div>
 `;

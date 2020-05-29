@@ -49,10 +49,10 @@ export interface BadgeProps
    *  @default `default`
    **/
   intent?:
-    | 'warning'
+    | 'warn'
     | 'positive'
     | 'critical'
-    | 'info'
+    | 'inform'
     | 'neutral'
     | 'plain'
     | 'key'

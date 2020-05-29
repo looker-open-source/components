@@ -29,10 +29,10 @@ import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { MessageBar } from './MessageBar'
 
-test('Warning MessageBar', () => {
+test('Warn MessageBar', () => {
   assertSnapshot(
-    <MessageBar intent="warning" id="test-message-bar">
-      Warning
+    <MessageBar intent="warn" id="test-message-bar">
+      Warn
     </MessageBar>
   )
 })
@@ -47,7 +47,7 @@ test('Error MessageBar', () => {
 
 test('Info MessageBar', () => {
   assertSnapshot(
-    <MessageBar intent="info" id="test-message-bar">
+    <MessageBar intent="inform" id="test-message-bar">
       Info
     </MessageBar>
   )
@@ -63,7 +63,7 @@ test('Confirmation MessageBar', () => {
 
 test('MessageBar can be dismissed', () => {
   assertSnapshot(
-    <MessageBar intent="info" id="test-message-bar" canDismiss>
+    <MessageBar intent="inform" id="test-message-bar" canDismiss>
       Info!
     </MessageBar>
   )

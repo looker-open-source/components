@@ -73,7 +73,7 @@ export interface IntentColors {
   neutral: string
   /**
    * Positive intent color
-   * Used for: Success banner
+   * Used for: Positive banner
    * @default green500
    */
   positive: string

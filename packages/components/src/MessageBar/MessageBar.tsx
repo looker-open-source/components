@@ -26,125 +26,80 @@
 
 import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import { IconButton } from '../Button'
-import { Box, Flex } from '../Layout'
-import { Icon } from '../Icon'
-import { VisuallyHidden } from '../VisuallyHidden'
-import { SimpleLayoutProps } from '../Layout/utils/simple'
+import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
+import { Status } from '../Status'
 
-export type MessageBarIntent = 'critical' | 'info' | 'positive' | 'warning'
+export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
 
 export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
     SimpleLayoutProps,
     TypographyProps {
   /**
-   * @default: 'info'
+   * @default: 'inform'
    */
   intent?: MessageBarIntent
   canDismiss?: boolean
   onDismiss?: () => void
+  className?: string
 }
 
-interface MessageBarTypeStyling {
-  bg?: string
-  accessibilityLabel?: string
-  icon?: JSX.Element
-}
+const MessageBarContent = styled.div``
 
-const getMessageBarIntentStyling = (intent: MessageBarIntent) => {
-  const messageBarTypeStyling: MessageBarTypeStyling = {}
-  const iconProps = {
-    mr: 'large',
-    size: 24,
-    style: { flexBasis: '24px', flexShrink: 0 },
-  }
-
-  switch (intent) {
-    case 'positive':
-      messageBarTypeStyling.bg = 'palette.charcoal100'
-      messageBarTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleCheck" color="palette.green500" />
-      )
-      break
-    case 'critical':
-      messageBarTypeStyling.bg = 'palette.red100'
-      messageBarTypeStyling.icon = (
-        <Icon {...iconProps} name="Warning" color="palette.red500" />
-      )
-      messageBarTypeStyling.accessibilityLabel = 'Error'
-      break
-    case 'info':
-      messageBarTypeStyling.bg = 'palette.charcoal100'
-      messageBarTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleInfo" color="palette.blue500" />
-      )
-      messageBarTypeStyling.accessibilityLabel = 'Info'
-      break
-    case 'warning':
-      messageBarTypeStyling.bg = 'palette.charcoal100'
-      messageBarTypeStyling.icon = (
-        <Icon {...iconProps} name="Warning" color="palette.yellow500" />
-      )
-      messageBarTypeStyling.accessibilityLabel = 'Warning'
-      break
-    default:
-      break
-  }
-  return messageBarTypeStyling
-}
-
-export const MessageBar = forwardRef(
-  (props: MessageBarProps, ref: Ref<HTMLDivElement>) => {
-    const {
+const MessageBarLayout = forwardRef(
+  (
+    {
       id,
       children,
       canDismiss,
-      intent = 'info',
+      className,
+      intent = 'inform',
       onDismiss,
-      ...typeAndSpaceProps
-    } = props
-    const {
-      icon,
-      accessibilityLabel,
-      ...messageBarIntentStyling
-    } = getMessageBarIntentStyling(intent)
-
-    return (
-      <Flex
-        alignItems="center"
-        aria-live="polite"
-        borderRadius="medium"
-        ref={ref}
-        role="status"
-        {...messageBarIntentStyling}
-        {...typeAndSpaceProps}
-      >
-        {icon}
-        <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-        <Box flex="auto">{children}</Box>
-        {canDismiss && (
-          <IconButton
-            id={id ? `${id}-iconButton` : undefined}
-            ml="auto"
-            onClick={onDismiss}
-            hoverStyle={{ background: 'none', border: 'none' }}
-            icon="Close"
-            size="small"
-            label={`Dismiss ${intent}`}
-            aria-hidden
-          />
-        )}
-      </Flex>
-    )
-  }
+    }: MessageBarProps,
+    ref: Ref<HTMLDivElement>
+  ) => (
+    <div className={className} aria-live="polite" ref={ref} role="status">
+      <Status intent={intent} />
+      <MessageBarContent>{children}</MessageBarContent>
+      {canDismiss && (
+        <IconButton
+          id={id ? `${id}-iconButton` : undefined}
+          ml="auto"
+          onClick={onDismiss}
+          hoverStyle={{ background: 'none', border: 'none' }}
+          icon="Close"
+          size="small"
+          label={`Dismiss ${intent}`}
+          aria-hidden
+        />
+      )}
+    </div>
+  )
 )
 
+MessageBarLayout.displayName = 'MessageBarLayout'
+
+export const MessageBar = styled(MessageBarLayout)`
+  ${simpleLayoutCSS};
+
+  align-items: center;
+  border-radius: ${({ theme: { radii } }) => radii.medium};
+  background: ${({ intent, theme: { colors } }) =>
+    intent === 'critical' ? colors.criticalAccent : colors.neutralAccent};
+  display: flex;
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+
+  ${MessageBarContent} {
+    flex: 1;
+    margin-left: ${({ theme: { space } }) => space.large};
+    margin-right: ${({ theme: { space } }) => space.xxxxlarge};
+  }
+`
+
 MessageBar.defaultProps = {
-  fontSize: 'small',
-  intent: 'info',
   px: 'medium',
   py: 'small',
   width: '100%',
 }
-MessageBar.displayName = 'MessageBar'

@@ -4,12 +4,12 @@ propsOf: MessageBar
 github: MessageBar
 ---
 
-The `<MessageBar />` component is used to alert the user with `warning`, `critical`, `info`, or `positive` messages, settable via the `intent` property.
+The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `info`, or `positive` messages, settable via the `intent` property.
 
 ```jsx
 <SpaceVertical gap="xsmall">
-  <MessageBar intent="warning">Warning</MessageBar>
-  <MessageBar intent="info">Info</MessageBar>
+  <MessageBar intent="warn">Warning</MessageBar>
+  <MessageBar intent="inform">Inform</MessageBar>
   <MessageBar intent="positive">Positive</MessageBar>
   <MessageBar intent="critical">Critical</MessageBar>
 </SpaceVertical>
@@ -23,7 +23,7 @@ MessageBars can also be set to be `canDismiss`, giving them a close button, and 
 ;() => {
   const { value, setOff, setOn } = useToggle(true)
   return value ? (
-    <MessageBar intent="warning" onDismiss={setOff} canDismiss>
+    <MessageBar intent="warn" onDismiss={setOff} canDismiss>
       I can be closed
     </MessageBar>
   ) : (

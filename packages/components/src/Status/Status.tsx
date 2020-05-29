@@ -35,7 +35,7 @@ export type StatusIntent =
   | 'inform'
   | 'neutral'
   | 'positive'
-  | 'warning'
+  | 'warn'
 
 export interface StatusProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -47,66 +47,50 @@ export interface StatusProps
   intent?: StatusIntent
 }
 
-interface StatusTypeStyling {
-  accessibilityLabel: string
-  color: string
-  icon: IconNames
-}
-
-const getStatusIntentStyling = (intent: StatusIntent): StatusTypeStyling => {
+const getIntentIcon = (intent?: StatusIntent): IconNames => {
   switch (intent) {
     case 'critical':
-      return {
-        accessibilityLabel: 'Critical',
-        color: 'critical',
-        icon: 'Error',
-      }
-    case 'inform':
-      return {
-        accessibilityLabel: 'Inform',
-        color: 'inform',
-        icon: 'CircleInfo',
-      }
+      return 'Error'
     case 'positive':
-      return {
-        accessibilityLabel: 'Positive',
-        color: 'positive',
-        icon: 'CircleCheck',
-      }
-    case 'warning':
-      return {
-        accessibilityLabel: 'Warning',
-        color: 'warn',
-        icon: 'Warning',
-      }
+      return 'CircleCheck'
+    case 'warn':
+      return 'Warning'
+    case 'neutral':
+    case 'inform':
+    default:
+      return 'CircleInfo'
+  }
+}
+
+const getIntentLabel = (intent?: StatusIntent) => {
+  switch (intent) {
+    case 'critical':
+      return 'Error'
+    case 'inform':
+      return 'Inform'
+    case 'positive':
+      return 'Success'
+    case 'warn':
+      return 'Warning'
     case 'neutral':
     default:
-      return {
-        accessibilityLabel: 'Neutral',
-        color: 'neutral',
-        icon: 'CircleInfo',
-      }
+      return undefined
   }
 }
 
 export const Status = forwardRef(
-  (
-    { className, intent = 'neutral' }: StatusProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
-    const { accessibilityLabel, color, icon } = getStatusIntentStyling(intent)
-    const iconProps = {
-      mr: 'small',
-      size: 24,
-      style: { flexBasis: '24px', flexShrink: 0 },
-    }
-    return (
-      <div className={className} ref={ref}>
-        <Icon color={color} name={icon} {...iconProps} />
-        <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-      </div>
-    )
-  }
+  ({ className, intent }: StatusProps, ref: Ref<HTMLInputElement>) => (
+    <>
+      <Icon
+        className={className}
+        ref={ref}
+        color={intent}
+        name={getIntentIcon(intent)}
+        size={24}
+      />
+      <VisuallyHidden>{getIntentLabel(intent)}</VisuallyHidden>
+    </>
+  )
 )
 
 Status.displayName = 'Status'
