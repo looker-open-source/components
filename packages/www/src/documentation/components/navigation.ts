@@ -195,6 +195,7 @@ const components: NavigationSection = {
         { path: 'icon', title: 'Icon' },
         { path: 'list', title: 'List' },
         { path: 'spinner', title: 'Spinner' },
+        { path: 'status', title: 'Status' },
         { path: 'swatch', title: 'Swatch' },
         { path: 'table', title: 'Table' },
         { path: 'tabs', title: 'Tabs' },

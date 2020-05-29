@@ -25,14 +25,15 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ButtonDemo } from './Button/ButtonDemo'
-import { ThemeColorDemo } from './Theme/ThemeColorDemo'
+import { ComponentsProvider, Status } from '@looker/components'
 
 const App = () => (
-  <ComponentsProvider ie11Support>
-    <ThemeColorDemo />
-    <ButtonDemo />
+  <ComponentsProvider>
+    <Status intent="critical" />
+    <Status intent="inform" />
+    <Status intent="neutral" />
+    <Status intent="positive" />
+    <Status intent="warning" />
   </ComponentsProvider>
 )
 
