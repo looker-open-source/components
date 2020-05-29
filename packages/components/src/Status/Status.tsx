@@ -25,7 +25,7 @@
  */
 
 import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
@@ -34,7 +34,7 @@ export type StatusIntent =
   | 'critical'
   | 'inform'
   | 'neutral'
-  | 'success'
+  | 'positive'
   | 'warning'
 
 export interface StatusProps
@@ -56,7 +56,7 @@ const getStatusIntentStyling = (intent: StatusIntent) => {
   const statusTypeStyling: StatusTypeStyling = {}
   const iconProps = {
     mr: 'small',
-    size: 20,
+    size: 24,
     style: { flexBasis: '20px', flexShrink: 0 },
   }
 
@@ -73,11 +73,11 @@ const getStatusIntentStyling = (intent: StatusIntent) => {
       )
       statusTypeStyling.accessibilityLabel = 'Inform'
       break
-    case 'success':
+    case 'positive':
       statusTypeStyling.icon = (
         <Icon {...iconProps} name="CircleCheck" color="palette.green500" />
       )
-      statusTypeStyling.accessibilityLabel = 'Success'
+      statusTypeStyling.accessibilityLabel = 'positive'
       break
     case 'neutral':
       statusTypeStyling.icon = (
@@ -98,20 +98,15 @@ const getStatusIntentStyling = (intent: StatusIntent) => {
   return statusTypeStyling
 }
 
-export const Status: FC<StatusProps> = ({ intent = 'neutral' }) => {
+export const Status = forwardRef(props: StatusProps, ref: Ref<HTMLInputElement>) => {
+  const  { className, intent = 'neutral' } = props
   const { icon, accessibilityLabel } = getStatusIntentStyling(intent)
-  return (
-    <>
-      {icon}
-      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-    </>
-  )
-}
+         return (
+           <div className={className} ref={ref}>
+             {icon}
+             <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+           </div>
+         )
+       }
 
-Status.defaultProps = {
-  fontSize: 'small',
-  px: 'small',
-  py: 'xsmall',
-  width: '100%',
-}
 Status.displayName = 'Status'

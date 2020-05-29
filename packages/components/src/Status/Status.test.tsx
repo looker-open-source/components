@@ -41,8 +41,8 @@ test('neutral status', () => {
   assertSnapshot(<Status intent="neutral" />)
 })
 
-test('success Status', () => {
-  assertSnapshot(<Status intent="success" />)
+test('positive Status', () => {
+  assertSnapshot(<Status intent="positive" />)
 })
 
 test('warning Status', () => {
