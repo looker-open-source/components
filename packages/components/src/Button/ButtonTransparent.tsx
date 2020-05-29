@@ -53,44 +53,36 @@ const transparentButtonPadding = variant({
 export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
   border: 1px solid transparent;
-  color: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].main};
+  color: ${({ theme, color = 'key' }) => theme.colors[color]};
   ${(props) =>
     props.iconBefore || props.iconAfter
       ? transparentButtonPadding
       : `padding: 0 ${props.theme.space.xsmall};`}
 
-  &:active,
-  &.active {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].light};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].light};
-    color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].altText};
-  }
-
   &:hover,
   &:focus,
   &.hover {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].lighter};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].lighter};
-    color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].altText};
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Subtle`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Subtle`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
+  }
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Accent`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
   }
 
   &[disabled] {
     &:hover,
     &:active,
     &:focus {
-      background-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].transparent};
-      border-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].transparent};
-      color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].main};
+      background-color: transparent;
+      border-color: transparent;
+      color: ${({ theme, color = 'key' }) => theme.colors[color]};
     }
   }
 `

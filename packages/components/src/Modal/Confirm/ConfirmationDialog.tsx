@@ -25,7 +25,7 @@
  */
 
 import React, { FC, useCallback, ReactElement } from 'react'
-import { SemanticColors } from '@looker/design-tokens'
+import { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { ManagedModalProps } from '../Modal'
 import { Dialog } from '../Dialog'
@@ -41,14 +41,14 @@ export interface ConfirmationProps extends ManagedModalProps {
   cancelLabel?: string
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "primary"
+   * @default 'key'
    */
-  buttonColor?: keyof SemanticColors
+  buttonColor?: StatefulColor
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "neutral"
    */
-  cancelColor?: keyof SemanticColors
+  cancelColor?: StatefulColor
   /**
    * Confirmation button text
    * @default 'Confirm'
@@ -89,7 +89,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   cancelLabel = 'Cancel',
   close,
   confirmLabel = 'Confirm',
-  buttonColor = 'primary',
+  buttonColor = 'key',
   cancelColor = 'neutral',
   isOpen = false,
   message,

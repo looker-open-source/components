@@ -27,9 +27,9 @@
 import {
   CompatibleHTMLProps,
   reset,
-  SemanticColors,
   space,
   SpaceProps,
+  StatefulColor,
 } from '@looker/design-tokens'
 import { rgba } from 'polished'
 import React, { forwardRef, Ref, useState } from 'react'
@@ -45,8 +45,6 @@ import {
 import { buttonSize, ButtonSizes, ButtonSizeProps } from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
-type ButtonColors = keyof SemanticColors
-
 export interface ButtonBaseProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     ButtonSizeProps,
@@ -58,9 +56,9 @@ export interface ButtonBaseProps
 
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "primary"
+   * @default "key"
    */
-  color?: ButtonColors
+  color?: StatefulColor
 
   focusVisible?: boolean
 }
@@ -83,10 +81,7 @@ export const buttonCSS = css<ButtonBaseProps>`
     props.focusVisible &&
     `
     box-shadow: 0 0 0 0.15rem
-      ${rgba(
-        props.theme.colors.semanticColors[props.color || 'primary'].main,
-        0.25
-      )};
+      ${rgba(props.theme.colors[props.color || 'key'], 0.25)};
   `}
 
   align-items: center;

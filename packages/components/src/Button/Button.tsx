@@ -28,36 +28,34 @@ import styled from 'styled-components'
 import { ButtonBase } from './ButtonBase'
 
 export const Button = styled(ButtonBase)`
-  background: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].main};
-  border: 1px solid
-    ${({ theme, color = 'primary' }) => theme.colors.semanticColors[color].main};
-  color: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].text};
+  background: ${({ theme, color = 'key' }) => theme.colors[color]};
+  border: 1px solid ${({ theme, color = 'key' }) => theme.colors[color]};
+  color: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
 
-  &:active,
-  &.active {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].darker};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].darker};
-  }
   &:hover,
   &:focus,
   &.hover {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].dark};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].dark};
+    background: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Interactive`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Interactive`]};
   }
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Pressed`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Pressed`]};
+  }
+
   &[disabled] {
     &:hover,
     &:active,
     &:focus {
-      background-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].main};
-      border-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].borderColor};
+      background-color: ${({ theme, color = 'key' }) => theme.colors[color]};
+      border-color: ${({ theme, color = 'key' }) =>
+        theme.colors[`${color}Border`]};
     }
   }
 `

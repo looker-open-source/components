@@ -32,7 +32,6 @@ import {
   pseudoClasses,
   PseudoProps,
   reset,
-  SemanticColors,
   SpaceProps,
   space,
   SizeLarge,
@@ -40,6 +39,7 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
+  StatefulColor,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
@@ -51,7 +51,20 @@ import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
 import { buttonSizeMap } from './size'
-import { IconButtonVariantProps } from './variant'
+
+interface IconButtonVariantProps {
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "neutral"
+   */
+  color?: StatefulColor
+
+  /**
+   * Defines the variant or mapping of colors to style properties, like border of the button.
+   * @default false
+   */
+  outline?: boolean
+}
 
 export type IconButtonSizes =
   | SizeXXSmall
@@ -59,8 +72,6 @@ export type IconButtonSizes =
   | SizeSmall
   | SizeMedium
   | SizeLarge
-
-type ButtonColors = keyof SemanticColors
 
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
@@ -72,7 +83,7 @@ export interface IconButtonProps
   /*
    * @default 'neutral'
    */
-  color?: ButtonColors
+  color?: StatefulColor
   /*
    * this props refer to the keyboard expected focus behavior
    */
@@ -181,29 +192,27 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { color = 'primary' } = props
+  const { color = 'key' } = props
 
   return css`
-    border: 1px solid
-      ${(props) => props.theme.colors.semanticColors[color].borderColor};
+    border: 1px solid ${({ theme: { colors } }) => colors[`${color}Border`]};
 
     &:hover,
     &:focus,
     &.hover {
-      border-color: ${(props) => props.theme.colors.semanticColors[color].main};
+      border-color: ${({ theme: { colors } }) => colors[color]};
     }
 
     &:active,
     &.active {
-      border-color: ${(props) => props.theme.colors.semanticColors[color].main};
+      border-color: ${({ theme: { colors } }) => colors[color]};
     }
 
     &[disabled] {
       &:hover,
       &:active,
       &:focus {
-        border-color: ${(props) =>
-          props.theme.colors.semanticColors[color].borderColor};
+        border-color: ${({ theme: { colors } }) => colors[`${color}Border`]};
       }
     }
   `

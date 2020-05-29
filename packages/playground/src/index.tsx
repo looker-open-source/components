@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
 import { ButtonDemo } from './Button/ButtonDemo'
+import { ThemeColorDemo } from './Theme/ThemeColorDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <ButtonDemo />
-    </ComponentsProvider>
-  )
-}
+const App = () => (
+  <ComponentsProvider ie11Support>
+    <ThemeColorDemo />
+    <ButtonDemo />
+  </ComponentsProvider>
+)
 
 /*
   This is the binding site for the playground. If you want to edit the

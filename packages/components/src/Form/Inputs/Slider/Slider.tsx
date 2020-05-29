@@ -143,7 +143,7 @@ const sliderThumbCss = css<SliderInputProps>`
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
   ${({ theme: { colors }, isFocused }) => css`
-    border: 3px solid ${colors.semanticColors.primary.main};
+    border: 3px solid ${colors.key};
     height: 16px;
     width: 16px;
     background: ${colors.palette.white};
@@ -234,7 +234,7 @@ interface ControlProps {
 const SliderFill = styled.div<ControlProps>`
   height: 100%;
   background: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.palette.charcoal400 : colors.semanticColors.primary.main};
+    disabled ? colors.neutral : colors.key};
   width: ${({ offsetPercent }) => offsetPercent}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
@@ -247,7 +247,7 @@ interface SliderValueProps extends SliderInputProps {
 
 const SliderValue = styled.div<SliderValueProps>`
   color: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.palette.charcoal700 : colors.semanticColors.primary.main};
+    disabled ? colors.neutral : colors.key};
   line-height: 1;
   user-select: none;
   transform: translateX(-50%) translateY(-1.3rem);

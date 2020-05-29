@@ -53,7 +53,7 @@ describe('Box', () => {
   })
 
   test('Box supports background-color', () => {
-    assertSnapshot(<Box bg="semanticColors.primary.main" />)
+    assertSnapshot(<Box bg="key" />)
   })
 
   test('Box supports display', () => {

@@ -29,7 +29,10 @@ export * from './theme'
 
 export * from './GlobalStyle'
 
-export { palette, radii, semanticColors } from './tokens'
+/**
+ * @TODO - This should not be directly exported or utilized. It should be consumed via theme.
+ */
+export { palette } from './tokens'
 
 // Useful external helpers
 export * from './customizeable_attributes'

@@ -136,7 +136,7 @@ export const CanCloseDialogManagerDemo: React.FC = () => {
             message="Are you sure you want to close the dialog? Unsaved changes will be
     lost."
             primaryButton={
-              <ButtonTransparent onClick={handleConfirmClose} color="danger">
+              <ButtonTransparent onClick={handleConfirmClose} color="critical">
                 Discard Changes
               </ButtonTransparent>
             }
