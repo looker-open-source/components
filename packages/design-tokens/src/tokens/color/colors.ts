@@ -54,7 +54,7 @@ const generateSurfaceColors = (coreColors: CoreColors): SurfaceColors => {
   return {
     field: coreColors.background,
     inverse: coreColors.text,
-    onInverse: coreColors.background,
+    inverseText: coreColors.background,
   }
 }
 
