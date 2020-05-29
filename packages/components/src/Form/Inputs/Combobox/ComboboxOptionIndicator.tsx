@@ -85,11 +85,11 @@ const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
   const { label, value } = option
 
   const indicator = useMemo(() => {
-    const props = { isActive, isSelected, label, value }
+    const indicatorProps = { isActive, isSelected, label, value }
     if (isValidElement(indicatorToUse)) {
-      return cloneElement(indicatorToUse, props)
+      return cloneElement(indicatorToUse, indicatorProps)
     } else if (isIndicatorFunction(indicatorToUse)) {
-      return indicatorToUse(props)
+      return indicatorToUse(indicatorProps)
     }
     return indicatorToUse
   }, [indicatorToUse, isActive, isSelected, value, label])
