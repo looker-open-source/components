@@ -33,15 +33,17 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
+import { ComboboxOptionObject, ComboboxOptionStatuses } from './types'
+import {
+  ComboboxContext,
+  ComboboxMultiContext,
+  OptionContext,
+} from './ComboboxContext'
 
-export interface OptionStatuses {
-  isActive: boolean
-  isSelected: boolean
-}
+export type OptionIndicatorProps = ComboboxOptionStatuses & ComboboxOptionObject
 
 export type ComboboxOptionIndicatorFunction = (
-  indicatorProps: OptionStatuses
+  indicatorProps: OptionIndicatorProps
 ) => ReactNode
 
 function isIndicatorFunction(
@@ -51,7 +53,7 @@ function isIndicatorFunction(
 }
 
 export interface ComboboxOptionIndicatorProps
-  extends OptionStatuses,
+  extends ComboboxOptionStatuses,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Customize the area to the left of the label, which by default
@@ -79,15 +81,18 @@ const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
       ? propsIndicator
       : indicatorPropRef && indicatorPropRef.current
 
+  const option = useContext(OptionContext) || { value: '' }
+  const { label, value } = option
+
   const indicator = useMemo(() => {
-    const statuses = { isActive, isSelected }
+    const props = { isActive, isSelected, label, value }
     if (isValidElement(indicatorToUse)) {
-      return cloneElement(indicatorToUse, statuses)
+      return cloneElement(indicatorToUse, props)
     } else if (isIndicatorFunction(indicatorToUse)) {
-      return indicatorToUse(statuses)
+      return indicatorToUse(props)
     }
     return indicatorToUse
-  }, [indicatorToUse, isActive, isSelected])
+  }, [indicatorToUse, isActive, isSelected, value, label])
 
   if (indicatorToUse !== undefined) {
     return <>{indicator}</>

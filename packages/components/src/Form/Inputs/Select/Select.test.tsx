@@ -218,32 +218,42 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
+  const getIndicatorJSX = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <Select
+      options={options.map((opt) => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      value="FOO"
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select"
+    />
+  )
+
+  const getIndicatorJSXMulti = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <SelectMulti
+      options={options.map((opt) => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      values={['FOO']}
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select-multi"
+    />
+  )
+
   test.each([
-    [
-      'Select',
-      (indicator: ComboboxOptionIndicatorFunction) => (
-        <Select
-          options={options}
-          value="FOO"
-          placeholder="Search"
-          indicator={indicator}
-          key="select"
-        />
-      ),
-    ],
-    [
-      'SelectMulti',
-      (indicator: ComboboxOptionIndicatorFunction) => (
-        <SelectMulti
-          options={options}
-          values={['FOO']}
-          placeholder="Search"
-          indicator={indicator}
-          key="select-multi"
-        />
-      ),
-    ],
-  ])('Customize the indicator (%s)', (_, getJSX) => {
+    ['list level (Select)', getIndicatorJSX(true)],
+    ['list level (SelectMulti)', getIndicatorJSXMulti(true)],
+    ['option level (Select)', getIndicatorJSX(false)],
+    ['option level (SelectMulti)', getIndicatorJSXMulti(false)],
+  ])('Customize the indicator at the %s', (_, getJSX) => {
     const indicator = jest.fn()
     const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
       getJSX(indicator)
@@ -257,10 +267,14 @@ describe('Select / SelectMulti', () => {
       // ComboboxList.persistSelection is true for Select/SelectMulti
       isActive: true,
       isSelected: true,
+      label: undefined,
+      value: 'FOO',
     })
     expect(indicator).toHaveBeenNthCalledWith(2, {
       isActive: false,
       isSelected: false,
+      label: undefined,
+      value: 'BAR',
     })
 
     const check = queryByTitle('Check')
@@ -278,10 +292,14 @@ describe('Select / SelectMulti', () => {
       // ComboboxList.persistSelection is true for Select/SelectMulti
       isActive: false,
       isSelected: true,
+      label: undefined,
+      value: 'FOO',
     })
     expect(indicator).toHaveBeenNthCalledWith(2, {
       isActive: true,
       isSelected: false,
+      label: undefined,
+      value: 'BAR',
     })
 
     // Close popover to silence act() warning

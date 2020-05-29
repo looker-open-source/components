@@ -29,12 +29,12 @@ import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
-import { OptionStatuses } from '../ComboboxOptionIndicator'
+import { ComboboxOptionStatuses } from '../types'
 import { ComboboxData, ComboboxMultiData } from './state'
 
 export function useOptionStatus<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
->(context: Context<CProps>, value: string): OptionStatuses {
+>(context: Context<CProps>, value: string): ComboboxOptionStatuses {
   const { data } = useContext(context)
   const { navigationOption } = data
   const isActive = navigationOption ? navigationOption.value === value : false

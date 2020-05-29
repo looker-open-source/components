@@ -33,13 +33,16 @@ import {
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
+  ComboboxOptionIndicatorProps,
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
-export interface SelectOptionObject extends ComboboxOptionObject {
+export interface SelectOptionObject
+  extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
 }
 

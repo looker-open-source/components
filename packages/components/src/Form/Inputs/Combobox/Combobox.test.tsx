@@ -256,10 +256,14 @@ describe('<Combobox/> with children', () => {
     expect(indicator).toHaveBeenNthCalledWith(1, {
       isActive: false,
       isSelected: true,
+      label: 'Foo',
+      value: '101',
     })
     expect(indicator).toHaveBeenNthCalledWith(2, {
       isActive: false,
       isSelected: false,
+      label: 'Bar',
+      value: '102',
     })
 
     const check = queryByTitle('Check')
@@ -274,6 +278,8 @@ describe('<Combobox/> with children', () => {
     expect(indicator).toHaveBeenCalledWith({
       isActive: true,
       isSelected: false,
+      label: 'Bar',
+      value: '102',
     })
 
     // Close popover to silence act() warning

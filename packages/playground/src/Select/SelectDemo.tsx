@@ -42,6 +42,8 @@ import {
   ComboboxOptionObject,
   SelectOptionProps,
   SelectOptionGroupProps,
+  SpaceVertical,
+  Text,
   Flex,
 } from '@looker/components'
 import { options1k } from './options1k'
@@ -128,6 +130,10 @@ function optionReducer(searchTerm: string) {
   }
 }
 
+function TestIndicator() {
+  return <Text color="pink">***</Text>
+}
+
 export function SelectContent() {
   const [value, setValue] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
@@ -194,58 +200,67 @@ export function SelectContent() {
         </Button>
       </Box>
       <Divider my="xlarge" />
-      <FieldSelect
-        label="Default Value"
-        width={300}
-        mb="medium"
-        options={options}
-        aria-label="Fruits"
-        defaultValue="1"
-      />
-      <FieldSelect
-        label="Groups"
-        width={300}
-        mb="medium"
-        options={optionsWithGroups}
-        aria-label="Fruits"
-        defaultValue="1"
-      />
-      <FieldSelect
-        label="Descriptions"
-        width={300}
-        mb="medium"
-        options={optionsWithDescriptions}
-        aria-label="Fruits"
-        defaultValue="1"
-      />
-      <FieldSelect
-        label="Error"
-        width={300}
-        options={options}
-        aria-label="Fruits"
-        placeholder="Select One"
-        defaultValue="1"
-        validationMessage={{ message: 'An error message', type: 'error' }}
-      />
-      <FieldSelect
-        label="Disabled"
-        width={300}
-        mb="medium"
-        options={options}
-        aria-label="Fruits"
-        placeholder="Select One"
-        disabled
-        defaultValue="1"
-      />
-      <FieldSelect
-        label="Indicator"
-        width={300}
-        mb="medium"
-        options={options}
-        aria-label="Fruits"
-        defaultValue="1"
-        indicator={<Icon name="Favorite" />}
-      />
+      <SpaceVertical>
+        <FieldSelect
+          label="Default Value"
+          width={300}
+          mb="medium"
+          options={options}
+          aria-label="Fruits"
+          defaultValue="1"
+        />
+        <FieldSelect
+          label="Groups"
+          width={300}
+          mb="medium"
+          options={optionsWithGroups}
+          aria-label="Fruits"
+          defaultValue="1"
+        />
+        <FieldSelect
+          label="Descriptions"
+          width={300}
+          mb="medium"
+          options={optionsWithDescriptions}
+          aria-label="Fruits"
+          defaultValue="1"
+        />
+        <FieldSelect
+          label="Error"
+          width={300}
+          options={options}
+          aria-label="Fruits"
+          placeholder="Select One"
+          defaultValue="1"
+          validationMessage={{ message: 'An error message', type: 'error' }}
+        />
+        <FieldSelect
+          label="Disabled"
+          width={300}
+          mb="medium"
+          options={options}
+          aria-label="Fruits"
+          placeholder="Select One"
+          disabled
+          defaultValue="1"
+        />
+        <FieldSelect
+          label="Indicator"
+          width={300}
+          mb="medium"
+          options={[
+            ...options,
+            {
+              indicator: TestIndicator,
+              label: 'I have my own indicator',
+              value: 'indicator',
+            },
+          ]}
+          aria-label="Fruits"
+          defaultValue="1"
+          indicator={<Icon name="Favorite" />}
+        />
+      </SpaceVertical>
     </Box>
   )
 }

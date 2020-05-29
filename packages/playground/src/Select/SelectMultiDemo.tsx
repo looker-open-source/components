@@ -34,6 +34,8 @@ import {
   ListItem,
   SelectMulti,
   SelectOptionProps,
+  SpaceVertical,
+  Text,
 } from '@looker/components'
 import { options1k } from './options1k'
 
@@ -107,6 +109,10 @@ const selectGroups = [
   },
 ]
 
+function TestIndicator() {
+  return <Text color="pink">***</Text>
+}
+
 export function SelectMultiDemo() {
   const [searchTerm, setSearchTerm] = useState('')
   function handleFilter(term: string) {
@@ -152,23 +158,26 @@ export function SelectMultiDemo() {
 
   return (
     <Box p="large" width={400}>
-      <FieldSelectMulti
-        label="Label"
-        options={selectOptions}
-        placeholder="Search fruits"
-        detail="5/50"
-      />
-      <FieldSelectMulti
-        label="Label"
-        placeholder="placeholder"
-        description="this is the description"
-        options={[
-          { label: 'Cheddar', value: 'cheddar' },
-          { label: 'Gouda', value: 'gouda' },
-          { label: 'Swiss', value: 'swiss' },
-        ]}
-      />
-      <Heading mb="large">SelectMulti</Heading>
+      <Heading mb="large">FieldSelectMulti</Heading>
+      <SpaceVertical>
+        <FieldSelectMulti
+          label="Label"
+          options={selectOptions}
+          placeholder="Search fruits"
+          detail="5/50"
+        />
+        <FieldSelectMulti
+          label="Label"
+          placeholder="placeholder"
+          description="this is the description"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+      </SpaceVertical>
+      <Heading my="large">SelectMulti</Heading>
       <Heading mb="medium" as="h4">
         1k (windowed) options
       </Heading>
@@ -237,7 +246,14 @@ export function SelectMultiDemo() {
       </Heading>
       <SelectMulti
         name="fruitIndicator"
-        options={selectOptions}
+        options={[
+          ...selectOptions,
+          {
+            indicator: TestIndicator,
+            label: 'I have my own indicator',
+            value: 'indicator',
+          },
+        ]}
         placeholder="Search fruits"
         closeOnSelect
         mb="xlarge"
