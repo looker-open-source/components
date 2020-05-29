@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tree`, `TreeItem` components
   - Includes docs and test suite
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
+- `ComboboxList` and `ComboboxOption` now both support a custom `indicator`
+  - `Select` and `SelectMulti` also support `indicator` at both the component and option level
 
 ### Changed
 
