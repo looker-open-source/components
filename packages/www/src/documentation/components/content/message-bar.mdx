@@ -4,14 +4,14 @@ propsOf: MessageBar
 github: MessageBar
 ---
 
-The `<MessageBar />` component is used to alert the user with `warning`, `error`, `info`, or `confirmation` messages, settable via the `intent` property.
+The `<MessageBar />` component is used to alert the user with `warning`, `critical`, `info`, or `positive` messages, settable via the `intent` property.
 
 ```jsx
 <SpaceVertical gap="xsmall">
   <MessageBar intent="warning">Warning</MessageBar>
-  <MessageBar intent="error">Error</MessageBar>
   <MessageBar intent="info">Info</MessageBar>
-  <MessageBar intent="confirmation">Confirmation</MessageBar>
+  <MessageBar intent="positive">Positive</MessageBar>
+  <MessageBar intent="critical">Critical</MessageBar>
 </SpaceVertical>
 ```
 

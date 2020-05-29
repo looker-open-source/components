@@ -39,7 +39,7 @@ test('Warning MessageBar', () => {
 
 test('Error MessageBar', () => {
   assertSnapshot(
-    <MessageBar intent="error" id="test-message-bar">
+    <MessageBar intent="critical" id="test-message-bar">
       Error
     </MessageBar>
   )
@@ -55,7 +55,7 @@ test('Info MessageBar', () => {
 
 test('Confirmation MessageBar', () => {
   assertSnapshot(
-    <MessageBar intent="confirmation" id="test-message-bar">
+    <MessageBar intent="positive" id="test-message-bar">
       Confirmation
     </MessageBar>
   )

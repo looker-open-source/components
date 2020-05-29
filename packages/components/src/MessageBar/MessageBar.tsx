@@ -32,7 +32,7 @@ import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
-export type MessageBarIntent = 'warning' | 'info' | 'error' | 'confirmation'
+export type MessageBarIntent = 'critical' | 'info' | 'positive' | 'warning'
 
 export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -55,19 +55,19 @@ interface MessageBarTypeStyling {
 const getMessageBarIntentStyling = (intent: MessageBarIntent) => {
   const messageBarTypeStyling: MessageBarTypeStyling = {}
   const iconProps = {
-    mr: 'small',
-    size: 20,
-    style: { flexBasis: '20px', flexShrink: 0 },
+    mr: 'large',
+    size: 24,
+    style: { flexBasis: '24px', flexShrink: 0 },
   }
 
   switch (intent) {
-    case 'confirmation':
+    case 'positive':
       messageBarTypeStyling.bg = 'palette.charcoal100'
       messageBarTypeStyling.icon = (
         <Icon {...iconProps} name="CircleCheck" color="palette.green500" />
       )
       break
-    case 'error':
+    case 'critical':
       messageBarTypeStyling.bg = 'palette.red100'
       messageBarTypeStyling.icon = (
         <Icon {...iconProps} name="Warning" color="palette.red500" />
@@ -143,8 +143,8 @@ export const MessageBar = forwardRef(
 MessageBar.defaultProps = {
   fontSize: 'small',
   intent: 'info',
-  px: 'small',
-  py: 'xsmall',
+  px: 'medium',
+  py: 'small',
   width: '100%',
 }
 MessageBar.displayName = 'MessageBar'

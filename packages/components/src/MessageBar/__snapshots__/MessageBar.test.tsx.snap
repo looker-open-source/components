@@ -3,9 +3,9 @@
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
   color: #24b25f;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
+  margin-right: 1.25rem;
+  width: 24px;
+  height: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -26,10 +26,10 @@ exports[`Confirmation MessageBar 1`] = `
   border-radius: 0.25rem;
   background-color: #F5F6F7;
   width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -60,10 +60,10 @@ exports[`Confirmation MessageBar 1`] = `
   <div
     className="c1 "
     color="palette.green500"
-    size={20}
+    size={24}
     style={
       Object {
-        "flexBasis": "20px",
+        "flexBasis": "24px",
         "flexShrink": 0,
       }
     }
@@ -97,9 +97,9 @@ exports[`Confirmation MessageBar 1`] = `
 exports[`Error MessageBar 1`] = `
 .c1 {
   color: #CC1F36;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
+  margin-right: 1.25rem;
+  width: 24px;
+  height: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -120,10 +120,10 @@ exports[`Error MessageBar 1`] = `
   border-radius: 0.25rem;
   background-color: #FFE5E9;
   width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -154,10 +154,10 @@ exports[`Error MessageBar 1`] = `
   <div
     className="c1 "
     color="palette.red500"
-    size={20}
+    size={24}
     style={
       Object {
-        "flexBasis": "20px",
+        "flexBasis": "24px",
         "flexShrink": 0,
       }
     }
@@ -193,9 +193,9 @@ exports[`Error MessageBar 1`] = `
 exports[`Info MessageBar 1`] = `
 .c1 {
   color: #0087e1;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
+  margin-right: 1.25rem;
+  width: 24px;
+  height: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -216,10 +216,10 @@ exports[`Info MessageBar 1`] = `
   border-radius: 0.25rem;
   background-color: #F5F6F7;
   width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -250,10 +250,10 @@ exports[`Info MessageBar 1`] = `
   <div
     className="c1 "
     color="palette.blue500"
-    size={20}
+    size={24}
     style={
       Object {
-        "flexBasis": "20px",
+        "flexBasis": "24px",
         "flexShrink": 0,
       }
     }
@@ -289,9 +289,9 @@ exports[`Info MessageBar 1`] = `
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
   color: #0087e1;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
+  margin-right: 1.25rem;
+  width: 24px;
+  height: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -398,10 +398,10 @@ exports[`MessageBar can be dismissed 1`] = `
   border-radius: 0.25rem;
   background-color: #F5F6F7;
   width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -446,10 +446,10 @@ exports[`MessageBar can be dismissed 1`] = `
   <div
     className="c1 "
     color="palette.blue500"
-    size={20}
+    size={24}
     style={
       Object {
-        "flexBasis": "20px",
+        "flexBasis": "24px",
         "flexShrink": 0,
       }
     }
@@ -525,9 +525,9 @@ exports[`MessageBar can be dismissed 1`] = `
 exports[`Warning MessageBar 1`] = `
 .c1 {
   color: #FFA800;
-  margin-right: 0.75rem;
-  width: 20px;
-  height: 20px;
+  margin-right: 1.25rem;
+  width: 24px;
+  height: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -548,10 +548,10 @@ exports[`Warning MessageBar 1`] = `
   border-radius: 0.25rem;
   background-color: #F5F6F7;
   width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -582,10 +582,10 @@ exports[`Warning MessageBar 1`] = `
   <div
     className="c1 "
     color="palette.yellow500"
-    size={20}
+    size={24}
     style={
       Object {
-        "flexBasis": "20px",
+        "flexBasis": "24px",
         "flexShrink": 0,
       }
     }

@@ -175,7 +175,7 @@ exports[`Badge renders all sizes 1`] = `
 <span
   className="c0"
   fontWeight="semiBold"
-  intent="default"
+  intent="key"
   size="medium"
 >
   default (medium)
@@ -201,7 +201,7 @@ exports[`Badge renders all sizes 2`] = `
 <span
   className="c0"
   fontWeight="semiBold"
-  intent="default"
+  intent="key"
   size="small"
 >
   small
@@ -227,7 +227,7 @@ exports[`Badge renders all sizes 3`] = `
 <span
   className="c0"
   fontWeight="semiBold"
-  intent="default"
+  intent="key"
   size="medium"
 >
   medium
@@ -253,7 +253,7 @@ exports[`Badge renders all sizes 4`] = `
 <span
   className="c0"
   fontWeight="semiBold"
-  intent="default"
+  intent="key"
   size="large"
 >
   large
