@@ -26,7 +26,7 @@
 
 import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import { Icon } from '../Icon'
+import { Icon, IconNames } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
@@ -42,57 +42,47 @@ export interface StatusProps
     SimpleLayoutProps,
     TypographyProps {
   /**
-   * @default: 'inform'
+   * @default: 'neutral'
    */
   intent?: StatusIntent
 }
 
 interface StatusTypeStyling {
   accessibilityLabel?: string
-  icon?: JSX.Element
+  color?: string
+  icon?: IconNames
 }
 
 const getStatusIntentStyling = (intent: StatusIntent) => {
   const statusTypeStyling: StatusTypeStyling = {}
-  const iconProps = {
-    mr: 'small',
-    size: 24,
-    style: { flexBasis: '20px', flexShrink: 0 },
-  }
 
   switch (intent) {
     case 'critical':
-      statusTypeStyling.icon = (
-        <Icon {...iconProps} name="Error" color="palette.red500" />
-      )
+      statusTypeStyling.icon = 'Error'
+      statusTypeStyling.color = 'palette.red500'
       statusTypeStyling.accessibilityLabel = 'Critical'
       break
     case 'inform':
-      statusTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleInfo" color="palette.blue500" />
-      )
+      statusTypeStyling.icon = 'CircleInfo'
+      statusTypeStyling.color = 'palette.blue500'
       statusTypeStyling.accessibilityLabel = 'Inform'
       break
     case 'positive':
-      statusTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleCheck" color="palette.green500" />
-      )
-      statusTypeStyling.accessibilityLabel = 'positive'
+      statusTypeStyling.icon = 'CircleCheck'
+      statusTypeStyling.color = 'palette.green500'
+      statusTypeStyling.accessibilityLabel = 'Positive'
       break
-    case 'neutral':
-      statusTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleInfo" color="palette.charcoal400" />
-      )
-      statusTypeStyling.accessibilityLabel = 'Neutral'
-      break
-
     case 'warning':
-      statusTypeStyling.icon = (
-        <Icon {...iconProps} name="Warning" color="palette.yellow500" />
-      )
+      statusTypeStyling.icon = 'Warning'
+      statusTypeStyling.color = 'palette.yellow500'
       statusTypeStyling.accessibilityLabel = 'Warning'
       break
+    case 'neutral':
     default:
+      statusTypeStyling.icon = 'CircleInfo'
+      statusTypeStyling.color = 'palette.charcoal400'
+      statusTypeStyling.accessibilityLabel = 'Neutral'
+
       break
   }
   return statusTypeStyling
@@ -103,10 +93,15 @@ export const Status = forwardRef(
     { className, intent = 'neutral' }: StatusProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const { icon, accessibilityLabel } = getStatusIntentStyling(intent)
+    const { accessibilityLabel, color, icon } = getStatusIntentStyling(intent)
+    const iconProps = {
+      mr: 'small',
+      size: 24,
+      style: { flexBasis: '20px', flexShrink: 0 },
+    }
     return (
       <div className={className} ref={ref}>
-        {icon}
+        <Icon color={color} name={icon} {...iconProps} />
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
       </div>
     )
