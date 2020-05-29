@@ -29,7 +29,7 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
-import { Status } from '../Status'
+import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
 
@@ -71,7 +71,7 @@ const MessageBarLayout = forwardRef(
           hoverStyle={{ background: 'none', border: 'none' }}
           icon="Close"
           size="small"
-          label={`Dismiss ${intent}`}
+          label={`Dismiss ${getIntentLabel(intent)}`}
           aria-hidden
         />
       )}

@@ -502,7 +502,7 @@ exports[`MessageBar can be dismissed 1`] = `
     <div
       className="c2"
     >
-      Dismiss inform
+      Dismiss Inform
     </div>
     <div
       aria-hidden={true}

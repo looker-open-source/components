@@ -62,7 +62,7 @@ const getIntentIcon = (intent?: StatusIntent): IconNames => {
   }
 }
 
-const getIntentLabel = (intent?: StatusIntent) => {
+export const getIntentLabel = (intent?: StatusIntent) => {
   switch (intent) {
     case 'critical':
       return 'Error'
