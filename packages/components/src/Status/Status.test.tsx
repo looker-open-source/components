@@ -29,18 +29,22 @@ import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { Status } from './Status'
 
-test('Warning Status', () => {
-  assertSnapshot(<Status intent="warning" />)
-})
-
-test('Error Status', () => {
+test('critical Status', () => {
   assertSnapshot(<Status intent="critical" />)
 })
 
-test('Info Status', () => {
+test('inform Status', () => {
   assertSnapshot(<Status intent="inform" />)
 })
 
-test('Confirmation Status', () => {
+test('neutral status', () => {
+  assertSnapshot(<Status intent="neutral" />)
+})
+
+test('success Status', () => {
   assertSnapshot(<Status intent="success" />)
+})
+
+test('warning Status', () => {
+  assertSnapshot(<Status intent="warning" />)
 })

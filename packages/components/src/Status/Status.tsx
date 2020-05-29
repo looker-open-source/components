@@ -63,7 +63,7 @@ const getStatusIntentStyling = (intent: StatusIntent) => {
   switch (intent) {
     case 'critical':
       statusTypeStyling.icon = (
-        <Icon {...iconProps} name="CircleInfo" color="palette.red500" />
+        <Icon {...iconProps} name="Error" color="palette.red500" />
       )
       statusTypeStyling.accessibilityLabel = 'Critical'
       break
@@ -110,7 +110,6 @@ export const Status: FC<StatusProps> = ({ intent = 'neutral' }) => {
 
 Status.defaultProps = {
   fontSize: 'small',
-  intent: 'inform ',
   px: 'small',
   py: 'xsmall',
   width: '100%',

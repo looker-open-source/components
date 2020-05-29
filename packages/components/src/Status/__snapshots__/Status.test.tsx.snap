@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`critical Status 1`] = `
+Array [
+  .c0 {
+  color: #CC1F36;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    className="c0 "
+    color="palette.red500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Error
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  >
+    Critical
+  </div>,
+]
+`;
+
+exports[`inform Status 1`] = `
+Array [
+  .c0 {
+  color: #0087e1;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    className="c0 "
+    color="palette.blue500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  >
+    Inform
+  </div>,
+]
+`;
+
+exports[`neutral status 1`] = `
+Array [
+  .c0 {
+  color: #939BA5;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    className="c0 "
+    color="palette.charcoal400"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  >
+    Neutral
+  </div>,
+]
+`;
+
+exports[`success Status 1`] = `
+Array [
+  .c0 {
+  color: #24b25f;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    className="c0 "
+    color="palette.green500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Check
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  >
+    Success
+  </div>,
+]
+`;
+
+exports[`warning Status 1`] = `
+Array [
+  .c0 {
+  color: #FFA800;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    className="c0 "
+    color="palette.yellow500"
+    size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+        "flexShrink": 0,
+      }
+    }
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  >
+    Warning
+  </div>,
+]
+`;
