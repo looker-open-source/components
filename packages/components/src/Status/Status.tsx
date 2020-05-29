@@ -48,44 +48,45 @@ export interface StatusProps
 }
 
 interface StatusTypeStyling {
-  accessibilityLabel?: string
-  color?: string
-  icon?: IconNames
+  accessibilityLabel: string
+  color: string
+  icon: IconNames
 }
 
-const getStatusIntentStyling = (intent: StatusIntent) => {
-  const statusTypeStyling: StatusTypeStyling = {}
-
+const getStatusIntentStyling = (intent: StatusIntent): StatusTypeStyling => {
   switch (intent) {
     case 'critical':
-      statusTypeStyling.icon = 'Error'
-      statusTypeStyling.color = 'palette.red500'
-      statusTypeStyling.accessibilityLabel = 'Critical'
-      break
+      return {
+        accessibilityLabel: 'Critical',
+        color: 'critical',
+        icon: 'Error',
+      }
     case 'inform':
-      statusTypeStyling.icon = 'CircleInfo'
-      statusTypeStyling.color = 'palette.blue500'
-      statusTypeStyling.accessibilityLabel = 'Inform'
-      break
+      return {
+        accessibilityLabel: 'Inform',
+        color: 'inform',
+        icon: 'CircleInfo',
+      }
     case 'positive':
-      statusTypeStyling.icon = 'CircleCheck'
-      statusTypeStyling.color = 'palette.green500'
-      statusTypeStyling.accessibilityLabel = 'Positive'
-      break
+      return {
+        accessibilityLabel: 'Positive',
+        color: 'positive',
+        icon: 'CircleCheck',
+      }
     case 'warning':
-      statusTypeStyling.icon = 'Warning'
-      statusTypeStyling.color = 'palette.yellow500'
-      statusTypeStyling.accessibilityLabel = 'Warning'
-      break
+      return {
+        accessibilityLabel: 'Warning',
+        color: 'warn',
+        icon: 'Warning',
+      }
     case 'neutral':
     default:
-      statusTypeStyling.icon = 'CircleInfo'
-      statusTypeStyling.color = 'palette.charcoal400'
-      statusTypeStyling.accessibilityLabel = 'Neutral'
-
-      break
+      return {
+        accessibilityLabel: 'Neutral',
+        color: 'neutral',
+        icon: 'CircleInfo',
+      }
   }
-  return statusTypeStyling
 }
 
 export const Status = forwardRef(
@@ -97,7 +98,7 @@ export const Status = forwardRef(
     const iconProps = {
       mr: 'small',
       size: 24,
-      style: { flexBasis: '20px', flexShrink: 0 },
+      style: { flexBasis: '24px', flexShrink: 0 },
     }
     return (
       <div className={className} ref={ref}>
