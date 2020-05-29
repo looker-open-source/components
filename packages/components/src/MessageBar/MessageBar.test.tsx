@@ -56,7 +56,7 @@ test('Info MessageBar', () => {
 test('Confirmation MessageBar', () => {
   assertSnapshot(
     <MessageBar intent="positive" id="test-message-bar">
-      Confirmation
+      Positive
     </MessageBar>
   )
 })

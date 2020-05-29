@@ -89,7 +89,7 @@ exports[`Confirmation MessageBar 1`] = `
   <div
     className="c3"
   >
-    Confirmation
+    Positive
   </div>
 </div>
 `;
