@@ -200,7 +200,6 @@ describe('<Combobox/> with children', () => {
     <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
       <ComboboxInput placeholder="Type here" />
       <ComboboxList indicator={listLevel ? indicator : undefined}>
-        >
         <ComboboxOption
           label="Foo"
           value="101"
