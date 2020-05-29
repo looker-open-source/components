@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 
 ### Changed
-
+- Font sizes for the various `Button`'s updated to match spec
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
 - Updated `LookerLogo` and `LogoRings` to match new branding
 

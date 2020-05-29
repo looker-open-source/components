@@ -69,22 +69,22 @@ export const buttonSize = variant({
   prop: 'size',
   variants: {
     xxsmall: {
-      fontSize: 'xsmall',
+      fontSize: 'xxsmall',
       height: `${buttonSizeMap.xxsmall}px`,
       px: 'xsmall',
     },
     xsmall: {
-      fontSize: 'xsmall',
+      fontSize: 'xxsmall',
       height: `${buttonSizeMap.xsmall}px`,
       px: 'small',
     },
     small: {
-      fontSize: 'small',
+      fontSize: 'xsmall',
       height: `${buttonSizeMap.small}px`,
       px: 'large',
     },
     medium: {
-      fontSize: 'medium',
+      fontSize: 'small',
       height: `${buttonSizeMap.medium}px`,
       px: '24px',
     },
