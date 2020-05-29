@@ -79,18 +79,18 @@ exports[`Banner can be dismissed 1`] = `
   height: 16px;
 }
 
-.c5:active,
-.c5.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c5:hover,
 .c5:focus,
 .c5.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c5:active,
+.c5.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 

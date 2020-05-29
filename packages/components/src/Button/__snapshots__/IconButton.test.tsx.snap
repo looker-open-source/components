@@ -63,18 +63,18 @@ exports[`IconButton accepts color 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FFF2F4;
   border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
   color: #ED3B53;
 }
 
@@ -207,18 +207,18 @@ exports[`IconButton accepts events 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
@@ -352,18 +352,18 @@ exports[`IconButton accepts events 2`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
@@ -497,18 +497,18 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
@@ -642,18 +642,18 @@ exports[`IconButton default 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
@@ -786,18 +786,18 @@ exports[`IconButton outline 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
@@ -948,18 +948,18 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FFF2F4;
   border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
   color: #ED3B53;
 }
 
@@ -1092,18 +1092,18 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FFF2F4;
   border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
   color: #ED3B53;
 }
 
@@ -1236,18 +1236,18 @@ exports[`IconButton resized 1`] = `
   height: 20px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 

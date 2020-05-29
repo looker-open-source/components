@@ -63,18 +63,18 @@ exports[`ModalHeader 1`] = `
   height: 16px;
 }
 
-.c3:active,
-.c3.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c3:hover,
 .c3:focus,
 .c3.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c3:active,
+.c3.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
   color: #4C535B;
 }
 
