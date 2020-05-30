@@ -44,3 +44,8 @@ export type ComboboxCallback<
 > = (option: TOption) => void
 
 export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>
+
+export interface ComboboxOptionStatuses {
+  isActive: boolean
+  isSelected: boolean
+}

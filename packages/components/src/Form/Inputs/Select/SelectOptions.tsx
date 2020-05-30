@@ -33,14 +33,16 @@ import {
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
-  comboboxOptionGrid,
+  ComboboxOptionIndicatorProps,
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
-export interface SelectOptionObject extends ComboboxOptionObject {
+export interface SelectOptionObject
+  extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
 }
 
@@ -108,9 +110,6 @@ export function SelectOptionWithDescription({
 
 const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
   padding-top: ${({ theme }) => theme.space.xxsmall};
-  ${comboboxOptionGrid}
-  ${({ isMulti, theme }) =>
-    isMulti ? `grid-template-columns: ${theme.space.xlarge} 1fr;` : ''}
 `
 
 SelectOptionGroupTitle.defaultProps = {

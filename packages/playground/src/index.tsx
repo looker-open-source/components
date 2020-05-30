@@ -25,15 +25,16 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Status } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { ComboboxDemo } from './Select/ComboboxDemo'
+import { SelectContent } from './Select/SelectDemo'
+import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
 const App = () => (
   <ComponentsProvider>
-    <Status intent="critical" />
-    <Status intent="inform" />
-    <Status intent="neutral" />
-    <Status intent="positive" />
-    <Status intent="warn" />
+    <ComboboxDemo />
+    <SelectContent />
+    <SelectMultiDemo />
   </ComponentsProvider>
 )
 

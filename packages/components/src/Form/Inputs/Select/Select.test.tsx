@@ -28,6 +28,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
+import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
 import { SelectOptionObject } from './SelectOptions'
@@ -212,6 +213,94 @@ describe('Select / SelectMulti', () => {
     expect(list).toHaveStyleRule('max-width', '800px')
     expect(list).toHaveStyleRule('min-width', '300px')
     expect(list).toHaveStyleRule('width', '50vw')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  const getIndicatorJSX = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <Select
+      options={options.map((opt) => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      value="FOO"
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select"
+    />
+  )
+
+  const getIndicatorJSXMulti = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <SelectMulti
+      options={options.map((opt) => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      values={['FOO']}
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select-multi"
+    />
+  )
+
+  test.each([
+    ['list level (Select)', getIndicatorJSX(true)],
+    ['list level (SelectMulti)', getIndicatorJSXMulti(true)],
+    ['option level (Select)', getIndicatorJSX(false)],
+    ['option level (SelectMulti)', getIndicatorJSXMulti(false)],
+  ])('Customize the indicator at the %s', (_, getJSX) => {
+    const indicator = jest.fn()
+    const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
+      getJSX(indicator)
+    )
+
+    const input = getByPlaceholderText('Search')
+    fireEvent.click(input)
+
+    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenNthCalledWith(1, {
+      // ComboboxList.persistSelection is true for Select/SelectMulti
+      isActive: true,
+      isSelected: true,
+      label: undefined,
+      value: 'FOO',
+    })
+    expect(indicator).toHaveBeenNthCalledWith(2, {
+      isActive: false,
+      isSelected: false,
+      label: undefined,
+      value: 'BAR',
+    })
+
+    const check = queryByTitle('Check')
+    expect(check).not.toBeInTheDocument()
+
+    indicator.mockClear()
+
+    const bar = getByText('BAR')
+    fireEvent.keyDown(bar, {
+      key: 'ArrowDown',
+    })
+
+    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenNthCalledWith(1, {
+      // ComboboxList.persistSelection is true for Select/SelectMulti
+      isActive: false,
+      isSelected: true,
+      label: undefined,
+      value: 'FOO',
+    })
+    expect(indicator).toHaveBeenNthCalledWith(2, {
+      isActive: true,
+      isSelected: false,
+      label: undefined,
+      value: 'BAR',
+    })
 
     // Close popover to silence act() warning
     fireEvent.click(document)

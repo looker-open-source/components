@@ -42,7 +42,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { forwardRef, useContext, Ref } from 'react'
+import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
 import { ReplaceText, Text } from '../../../Text'
@@ -59,6 +59,10 @@ import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
+import {
+  ComboboxOptionIndicator,
+  ComboboxOptionIndicatorProps,
+} from './ComboboxOptionIndicator'
 import { useOptionScroll } from './utils/useOptionScroll'
 
 export interface ComboboxOptionObject {
@@ -86,6 +90,7 @@ export interface HighlightTextProps {
 
 export interface ComboboxOptionProps
   extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'>,
     HighlightTextProps,
     ColorProps,
     FlexboxProps,
@@ -105,7 +110,7 @@ export interface ComboboxOptionProps
    *     🍎 <ComboboxOptionText />
    *   </ComboboxOption>
    */
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 export const ComboboxOptionWrapper = forwardRef(
@@ -136,6 +141,7 @@ const ComboboxOptionInternal = forwardRef(
   (
     {
       children,
+      indicator,
       highlightText = true,
       scrollIntoView,
       ...props
@@ -175,9 +181,13 @@ const ComboboxOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail>
+        <ComboboxOptionIndicator
+          indicator={indicator}
+          isActive={isActive}
+          isSelected={isSelected}
+        >
           {isSelected && <Icon name="Check" mr={0} />}
-        </ComboboxOptionDetail>
+        </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
@@ -185,19 +195,6 @@ const ComboboxOptionInternal = forwardRef(
 )
 
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
-
-export const ComboboxOptionDetail = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: ${(props) => props.theme.space.large};
-`
-
-export const comboboxOptionGrid = css`
-  display: grid;
-  grid-gap: ${(props) => props.theme.space.xxsmall};
-  grid-template-columns: ${(props) => props.theme.space.medium} 1fr;
-`
 
 export const comboboxOptionStyle = css`
   ${reset}
@@ -207,8 +204,7 @@ export const comboboxOptionStyle = css`
   ${space}
   ${typography}
   cursor: default;
-  align-items: flex-start;
-  ${comboboxOptionGrid}
+  align-items: stretch;
   outline: none;
 
   &[aria-selected='true'] {
