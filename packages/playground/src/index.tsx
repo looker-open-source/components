@@ -33,7 +33,7 @@ const App = () => (
     <Status intent="inform" />
     <Status intent="neutral" />
     <Status intent="positive" />
-    <Status intent="warning" />
+    <Status intent="warn" />
   </ComponentsProvider>
 )
 

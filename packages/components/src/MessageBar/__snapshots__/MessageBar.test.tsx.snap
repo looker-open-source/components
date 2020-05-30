@@ -1,0 +1,618 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Confirmation MessageBar 1`] = `
+.c1 {
+  color: #24b25f;
+  width: 24px;
+  height: 24px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="positive"
+    size={24}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Check
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Success
+  </div>
+  <div
+    className="c3 "
+  >
+    Positive
+  </div>
+</div>
+`;
+
+exports[`Error MessageBar 1`] = `
+.c1 {
+  color: #CC1F36;
+  width: 24px;
+  height: 24px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #FFE5E9;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="critical"
+    size={24}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Error
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Error
+  </div>
+  <div
+    className="c3 "
+  >
+    Error
+  </div>
+</div>
+`;
+
+exports[`Info MessageBar 1`] = `
+.c1 {
+  color: #0087e1;
+  width: 24px;
+  height: 24px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c4 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="inform"
+    size={24}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Inform
+  </div>
+  <div
+    className="c3 "
+  >
+    Info
+  </div>
+</div>
+`;
+
+exports[`MessageBar can be dismissed 1`] = `
+.c1 {
+  color: #0087e1;
+  width: 24px;
+  height: 24px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c7 {
+  width: 22px;
+  height: 22px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c4 {
+  width: 28px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 28px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding: 0rem;
+  margin-left: auto;
+}
+
+.c4[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c5 {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #939BA5;
+  padding: 0 0.5rem;
+}
+
+.c5 .c9 {
+  width: 16px;
+  height: 16px;
+}
+
+.c5:hover,
+.c5:focus,
+.c5.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c5:active,
+.c5.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c5[disabled]:hover,
+.c5[disabled]:active,
+.c5[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c6 {
+  margin-left: auto;
+  padding: 0;
+}
+
+.c6:hover {
+  background: none;
+  border: none;
+}
+
+.c6 svg {
+  pointer-events: none;
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+.c8 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="inform"
+    size={24}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Inform
+  </div>
+  <div
+    className="c3 "
+  >
+    Info!
+  </div>
+  <button
+    aria-describedby="test-message-bar-iconButton-tooltip"
+    aria-hidden={true}
+    className="c4 c5 c6"
+    color="neutral"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    size="small"
+    type="button"
+    width={28}
+  >
+    <div
+      className="c2"
+    >
+      Dismiss Inform
+    </div>
+    <div
+      aria-hidden={true}
+      className="c7 "
+      size={22}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Close
+        </title>
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Warn MessageBar 1`] = `
+.c1 {
+  color: #FFA800;
+  width: 24px;
+  height: 24px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #F5F6F7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.c0 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 5rem;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="warn"
+    size={24}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Warning
+  </div>
+  <div
+    className="c3 "
+  >
+    Warn
+  </div>
+</div>
+`;
