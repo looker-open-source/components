@@ -45,7 +45,7 @@ const Props = ({ of, interfaceName = `${of}` }: PropsProps) => {
 }
 
 const PropsCode = styled(Code).attrs({ fontSize: 'small' })`
-  color: ${(props) => props.theme.colors.palette.purple400};
+  color: ${(props) => props.theme.colors.key};
 `
 
 const Layout = styled(Flex).attrs({ mb: 'large', mt: 'small', py: 'small' })`

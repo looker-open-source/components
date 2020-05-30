@@ -123,8 +123,8 @@ export const Checkbox = styled(CheckboxLayout)`
   }
 
   input:checked + ${FauxCheckbox} {
-    background-color: ${({ theme }) => theme.colors.palette.purple400};
-    border-color: ${({ theme }) => theme.colors.palette.purple400};
+    background-color: ${({ theme }) => theme.colors.key};
+    border-color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxCheckbox} {

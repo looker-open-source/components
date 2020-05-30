@@ -71,7 +71,7 @@ export const KnobContainer = styled(KnobContainerLayout)<KnobContainerProps>`
   right: 0;
   border-radius: ${({ size }) => rem(size)};
   background: ${({ on, theme }) =>
-    on ? theme.colors.palette.purple400 : theme.colors.palette.charcoal300};
+    on ? theme.colors.key : theme.colors.palette.charcoal300};
 
   &:hover {
     ${({ disabled, theme }) =>

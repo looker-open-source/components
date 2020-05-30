@@ -132,7 +132,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   :focus,
   :hover {
     outline: none;
-    border-bottom-color: ${(props) => props.theme.colors.palette.purple400};
+    border-bottom-color: ${(props) => props.theme.colors.key};
     background-color: ${(props) => props.theme.colors.palette.charcoal100};
   }
 

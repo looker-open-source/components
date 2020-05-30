@@ -106,7 +106,7 @@ const MessageGrid = styled.div`
 `
 
 const IconWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.palette.purple400};
+  color: ${({ theme }) => theme.colors.key};
   border-radius: 100%;
 `
 

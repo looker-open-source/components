@@ -64,7 +64,7 @@ const TabStyle = styled.button<TabProps>`
   background: transparent;
   border-bottom: 3px solid;
   border-bottom-color: ${(props) =>
-    props.selected ? props.theme.colors.palette.purple400 : 'transparent'};
+    props.selected ? props.theme.colors.key : 'transparent'};
   border-radius: 0;
   color: ${(props) =>
     props.selected
@@ -79,7 +79,7 @@ const TabStyle = styled.button<TabProps>`
   &:active {
     border-bottom-color: ${(props) =>
       props.selected
-        ? props.theme.colors.palette.purple400
+        ? props.theme.colors.key
         : props.theme.colors.palette.charcoal400};
   }
 
@@ -102,7 +102,7 @@ const TabStyle = styled.button<TabProps>`
   &:hover {
     border-bottom-color: ${(props) =>
       props.selected
-        ? props.theme.colors.palette.purple400
+        ? props.theme.colors.key
         : props.theme.colors.palette.charcoal300};
   }
 

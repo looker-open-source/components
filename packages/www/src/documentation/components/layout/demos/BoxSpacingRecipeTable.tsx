@@ -106,7 +106,7 @@ const ListRender = (
         bg="palette.charcoal100"
         borderRadius="4px"
         display="inline-block"
-        color="palette.purple400"
+        color="key"
       >
         <Code fontSize="xsmall">{value}</Code>
       </Box>

@@ -72,7 +72,7 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:checked + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.palette.purple400};
+    color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxRadio} {
