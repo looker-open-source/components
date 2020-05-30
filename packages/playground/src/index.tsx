@@ -38,7 +38,6 @@ const App = () => (
   </ComponentsProvider>
 )
 
-
 /*
   This is the binding site for the playground. If you want to edit the
   primary application, do your work in App.tsx instead.
