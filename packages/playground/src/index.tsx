@@ -30,15 +30,14 @@ import { ComboboxDemo } from './Select/ComboboxDemo'
 import { SelectContent } from './Select/SelectDemo'
 import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <ComboboxDemo />
-      <SelectContent />
-      <SelectMultiDemo />
-    </ComponentsProvider>
-  )
-}
+const App = () => (
+  <ComponentsProvider>
+    <ComboboxDemo />
+    <SelectContent />
+    <SelectMultiDemo />
+  </ComponentsProvider>
+)
+
 
 /*
   This is the binding site for the playground. If you want to edit the

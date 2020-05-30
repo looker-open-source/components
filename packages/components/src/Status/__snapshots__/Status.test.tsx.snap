@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`critical Status 1`] = `
-.c0 {
+Array [
+  .c0 {
   color: #CC1F36;
-  margin-right: 0.75rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -16,26 +16,10 @@ exports[`critical Status 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div>
-  <div
+<div
     className="c0 "
     color="critical"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -51,19 +35,28 @@ exports[`critical Status 1`] = `
         fill="currentColor"
       />
     </svg>
-  </div>
-  <div
-    className="c1"
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
   >
-    Critical
-  </div>
-</div>
+    Error
+  </div>,
+]
 `;
 
 exports[`inform Status 1`] = `
-.c0 {
+Array [
+  .c0 {
   color: #0087e1;
-  margin-right: 0.75rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -76,26 +69,10 @@ exports[`inform Status 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div>
-  <div
+<div
     className="c0 "
     color="inform"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -111,19 +88,28 @@ exports[`inform Status 1`] = `
         fill="currentColor"
       />
     </svg>
-  </div>
-  <div
-    className="c1"
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
   >
     Inform
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`neutral status 1`] = `
-.c0 {
+Array [
+  .c0 {
   color: #939BA5;
-  margin-right: 0.75rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -136,26 +122,10 @@ exports[`neutral status 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div>
-  <div
+<div
     className="c0 "
     color="neutral"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -171,19 +141,26 @@ exports[`neutral status 1`] = `
         fill="currentColor"
       />
     </svg>
-  </div>
-  <div
-    className="c1"
-  >
-    Neutral
-  </div>
-</div>
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
+  />,
+]
 `;
 
 exports[`positive Status 1`] = `
-.c0 {
+Array [
+  .c0 {
   color: #24b25f;
-  margin-right: 0.75rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -196,26 +173,10 @@ exports[`positive Status 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div>
-  <div
+<div
     className="c0 "
     color="positive"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -231,19 +192,28 @@ exports[`positive Status 1`] = `
         fill="currentColor"
       />
     </svg>
-  </div>
-  <div
-    className="c1"
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
   >
-    Positive
-  </div>
-</div>
+    Success
+  </div>,
+]
 `;
 
-exports[`warning Status 1`] = `
-.c0 {
+exports[`warn Status 1`] = `
+Array [
+  .c0 {
   color: #FFA800;
-  margin-right: 0.75rem;
   width: 24px;
   height: 24px;
   -webkit-align-items: center;
@@ -256,26 +226,10 @@ exports[`warning Status 1`] = `
   display: inline-flex;
 }
 
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<div>
-  <div
+<div
     className="c0 "
     color="warn"
     size={24}
-    style={
-      Object {
-        "flexBasis": "24px",
-        "flexShrink": 0,
-      }
-    }
   >
     <svg
       fill="currentColor"
@@ -291,11 +245,20 @@ exports[`warning Status 1`] = `
         fill="currentColor"
       />
     </svg>
-  </div>
-  <div
-    className="c1"
+  </div>,
+  .c0 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+    className="c0"
   >
     Warning
-  </div>
-</div>
+  </div>,
+]
 `;

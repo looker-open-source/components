@@ -143,10 +143,10 @@ export const AccordionDemo = () => {
           <Box borderLeft="1px dotted lightgrey" ml="xsmall" pl="small">
             <List fontSize="small">
               <ListItem>
-                <Badge intent="info">GET</Badge> Search Favorites
+                <Badge intent="inform">GET</Badge> Search Favorites
               </ListItem>
               <ListItem>
-                <Badge intent="info">GET</Badge> Get Favorites
+                <Badge intent="inform">GET</Badge> Get Favorites
               </ListItem>
               <ListItem>
                 <Badge intent="critical">GET</Badge> Delete Favorite
@@ -155,7 +155,7 @@ export const AccordionDemo = () => {
                 <Badge intent="positive">GET</Badge> Create Favorite
               </ListItem>
               <ListItem>
-                <Badge intent="warning">POST</Badge> Update Content
+                <Badge intent="warn">POST</Badge> Update Content
               </ListItem>
             </List>
           </Box>

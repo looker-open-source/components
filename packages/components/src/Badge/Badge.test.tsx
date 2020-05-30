@@ -37,8 +37,8 @@ test('Badge renders all sizes', () => {
 test('Badge renders all intents', () => {
   assertSnapshot(<Badge intent="plain">plain</Badge>)
   assertSnapshot(<Badge intent="positive">positive</Badge>)
-  assertSnapshot(<Badge intent="info">info</Badge>)
+  assertSnapshot(<Badge intent="inform">info</Badge>)
   assertSnapshot(<Badge intent="neutral">neutral</Badge>)
-  assertSnapshot(<Badge intent="warning">warning</Badge>)
+  assertSnapshot(<Badge intent="warn">warning</Badge>)
   assertSnapshot(<Badge intent="critical">critical</Badge>)
 })

@@ -24,4 +24,47 @@
 
  */
 
-export * from './Banner'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { MessageBar } from './MessageBar'
+
+test('Warn MessageBar', () => {
+  assertSnapshot(
+    <MessageBar intent="warn" id="test-message-bar">
+      Warn
+    </MessageBar>
+  )
+})
+
+test('Error MessageBar', () => {
+  assertSnapshot(
+    <MessageBar intent="critical" id="test-message-bar">
+      Error
+    </MessageBar>
+  )
+})
+
+test('Info MessageBar', () => {
+  assertSnapshot(
+    <MessageBar intent="inform" id="test-message-bar">
+      Info
+    </MessageBar>
+  )
+})
+
+test('Confirmation MessageBar', () => {
+  assertSnapshot(
+    <MessageBar intent="positive" id="test-message-bar">
+      Positive
+    </MessageBar>
+  )
+})
+
+test('MessageBar can be dismissed', () => {
+  assertSnapshot(
+    <MessageBar intent="inform" id="test-message-bar" canDismiss>
+      Info!
+    </MessageBar>
+  )
+})

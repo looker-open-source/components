@@ -45,6 +45,6 @@ test('positive Status', () => {
   assertSnapshot(<Status intent="positive" />)
 })
 
-test('warning Status', () => {
-  assertSnapshot(<Status intent="warning" />)
+test('warn Status', () => {
+  assertSnapshot(<Status intent="warn" />)
 })
