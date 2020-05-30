@@ -128,6 +128,6 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 }
 
 export const ActionListItem = styled(ActionListItemInternal)`
-  border-bottom: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
+  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
   display: flex;
 `

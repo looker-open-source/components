@@ -103,7 +103,7 @@ const TreeLayout: FC<TreeProps> = ({
 
 const centeredVerticalBorder = css`
   ${({ theme: { space, colors } }) => css`
-    border-left: 1px solid ${colors.palette.charcoal200};
+    border-left: 1px solid ${colors.ui2};
     /* Margin is used to center the optional border line */
     margin-left: calc(
       ${space[indicatorProps.indicatorSize as SpacingSizes]} / 2 +
@@ -132,12 +132,12 @@ export const Tree = styled(TreeLayout)`
   }
 
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem} {
-    border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+    border: 1px solid transparent;
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
-    border-color: ${({ theme }) => theme.colors.palette.purple300};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `

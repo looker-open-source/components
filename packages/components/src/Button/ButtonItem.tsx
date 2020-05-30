@@ -80,12 +80,11 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
   }
 
   &:focus-within {
-    box-shadow: ${(props) =>
-      `0 0 .5px 1px ${props.theme.colors.palette.purple200}`};
+    box-shadow: ${(props) => `0 0 .5px 1px ${props.theme.colors.keyFocus}`};
   }
 
   ${ButtonItemLabelText} {
-    color: ${(props) => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.text3};
   }
 
   input:checked + ${ButtonItemLabelText} {

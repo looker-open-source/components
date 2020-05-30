@@ -38,8 +38,10 @@ const {
   charcoal600,
   charcoal700,
   charcoal800,
+  charcoal900,
   purple000,
   purple100,
+  purple300,
   purple400,
   purple500,
   purple600,
@@ -59,17 +61,19 @@ export const fallbackBlends: BlendColors = {
   ui3: charcoal300,
   ui4: charcoal400,
   ui5: charcoal800,
+  text0: charcoal900,
   text1: charcoal800,
   text2: charcoal700,
   text3: charcoal600,
   text4: charcoal500,
   text5: charcoal400,
+  text6: charcoal300,
 }
 
 export const fallbackStateful: StatefulColors = {
   keySubtle: purple000,
   keyAccent: purple100,
-  keyBorder: charcoal300,
+  keyFocus: purple300,
   keyInteractive: purple500,
   keyPressed: purple600,
   keyText: white,
@@ -77,7 +81,6 @@ export const fallbackStateful: StatefulColors = {
 
   criticalSubtle: red000,
   criticalAccent: red100,
-  criticalBorder: charcoal300,
   criticalInteractive: red600,
   criticalPressed: red700,
   criticalText: white,
@@ -85,7 +88,6 @@ export const fallbackStateful: StatefulColors = {
 
   neutralSubtle: charcoal000,
   neutralAccent: charcoal100,
-  neutralBorder: charcoal300,
   neutralInteractive: charcoal500,
   neutralPressed: charcoal600,
   neutralText: white,

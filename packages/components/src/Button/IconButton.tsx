@@ -195,7 +195,7 @@ const outlineCSS = (props: IconButtonProps) => {
   const { color = 'key' } = props
 
   return css`
-    border: 1px solid ${({ theme: { colors } }) => colors[`${color}Border`]};
+    border: 1px solid ${({ theme: { colors } }) => colors.ui3};
 
     &:hover,
     &:focus,
@@ -205,14 +205,14 @@ const outlineCSS = (props: IconButtonProps) => {
 
     &:active,
     &.active {
-      border-color: ${({ theme: { colors } }) => colors[color]};
+      border-color: ${({ theme: { colors } }) => colors[`${color}Interactive`]};
     }
 
     &[disabled] {
       &:hover,
       &:active,
       &:focus {
-        border-color: ${({ theme: { colors } }) => colors[`${color}Border`]};
+        border-color: ${({ theme: { colors } }) => colors.ui3};
       }
     }
   `

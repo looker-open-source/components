@@ -63,20 +63,19 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
 const Header = styled(HeaderJsx)`
   display: flex;
   align-items: center;
-  height: ${(props) => props.height};
+  height: ${({ height }) => height};
 
-  padding: 0 ${(props) => props.theme.space.large}
-    ${(props) => props.theme.space.xxsmall};
+  padding: 0 ${({ theme }) => theme.space.large}
+    ${({ theme }) => theme.space.xxsmall};
 
-  border-bottom: 1px solid ${(props) => props.theme.colors.palette.purple100};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
 `
 
 const DividerVertical = styled.div<SpaceProps>`
   ${space}
-  background: ${(props) => props.theme.colors.palette.purple300};
+  background: ${({ theme }) => theme.colors.keyFocus};
   height: 20px;
   width: 1px;
-  /* margin-bottom: -2px; */
 `
 
 export default Header

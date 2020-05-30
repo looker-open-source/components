@@ -76,18 +76,18 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:not(:checked) + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.palette.charcoal200};
+    border-color: ${({ theme }) => theme.colors.ui2};
     background: ${({ theme }) => theme.colors.palette.white};
   }
 
   input:focus + ${FauxRadio} {
-    border-color: ${(props) => props.theme.colors.palette.purple300};
-    box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
     outline: none;
   }
 
   input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.palette.charcoal400};
+    color: ${({ theme }) => theme.colors.text5};
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {

@@ -38,12 +38,12 @@ export interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
 
   /**
-   * @default 'palette.purple300'
+   * @default 'keyFocus'
    */
   color?: string
 
   /**
-   * @default 'palette.white'
+   * @default 'keyText'
    */
   bg?: string
 }
@@ -95,7 +95,7 @@ export const AvatarIcon = styled(AvatarLayout)`
 `
 
 AvatarIcon.defaultProps = {
-  bg: 'palette.white',
-  color: 'palette.purple300',
+  bg: 'keyText',
+  color: 'keyFocus',
   size: 'small',
 }

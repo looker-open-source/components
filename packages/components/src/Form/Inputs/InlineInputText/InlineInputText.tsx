@@ -91,7 +91,7 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   border: none;
   color: inherit;
   font: inherit;
-  caret-color: ${(props) => props.theme.colors.palette.charcoal900};
+  caret-color: ${({ theme }) => theme.colors.text0};
   height: 100%;
   left: 0;
   outline: none;
@@ -108,9 +108,7 @@ interface VisibleTextProps {
 const VisibleText = styled.div<VisibleTextProps>`
   white-space: pre;
   color: ${({ displayValue, theme }) =>
-    displayValue
-      ? theme.colors.palette.charcoal900
-      : theme.colors.palette.charcoal400};
+    displayValue ? theme.colors.text0 : theme.colors.text5};
 `
 
 export const InlineInputText = styled(InlineInputTextInternal)`
@@ -118,10 +116,8 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   color: inherit;
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${(props) =>
-    props.underlineOnlyOnHover || props.simple
-      ? 'transparent'
-      : props.theme.colors.palette.charcoal300};
+  border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
+    underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -132,8 +128,8 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   :focus,
   :hover {
     outline: none;
-    border-bottom-color: ${(props) => props.theme.colors.key};
-    background-color: ${(props) => props.theme.colors.palette.charcoal100};
+    border-bottom-color: ${({ theme }) => theme.colors.key};
+    background-color: ${({ theme }) => theme.colors.palette.ui1};
   }
 
   :focus {

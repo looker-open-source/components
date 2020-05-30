@@ -67,9 +67,7 @@ const TabStyle = styled.button<TabProps>`
     props.selected ? props.theme.colors.key : 'transparent'};
   border-radius: 0;
   color: ${(props) =>
-    props.selected
-      ? props.theme.colors.palette.charcoal800
-      : props.theme.colors.palette.charcoal500};
+    props.selected ? props.theme.colors.text1 : props.theme.colors.text4};
   cursor: pointer;
 
   & + & {
@@ -78,9 +76,7 @@ const TabStyle = styled.button<TabProps>`
 
   &:active {
     border-bottom-color: ${(props) =>
-      props.selected
-        ? props.theme.colors.key
-        : props.theme.colors.palette.charcoal400};
+      props.selected ? props.theme.colors.key : props.theme.colors.text4};
   }
 
   &:active,
@@ -92,23 +88,18 @@ const TabStyle = styled.button<TabProps>`
     outline: none;
   }
 
-  ${(props) =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`};
+  ${({ focusVisible, theme }) =>
+    focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`};
 
   &:hover {
     border-bottom-color: ${(props) =>
-      props.selected
-        ? props.theme.colors.key
-        : props.theme.colors.palette.charcoal300};
+      props.selected ? props.theme.colors.key : props.theme.colors.ui3};
   }
 
   &:disabled {
     cursor: default;
-    color: ${(props) => props.theme.colors.palette.charcoal300};
+    color: ${({ theme }) => theme.colors.text6};
     border-bottom-color: transparent;
   }
 `

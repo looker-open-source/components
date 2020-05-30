@@ -34,7 +34,6 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import { labelDefaults } from '../Label'
 
 export interface LegendProps
   extends SpaceProps,
@@ -49,7 +48,8 @@ export const Legend = styled.legend<LegendProps>`
 `
 
 Legend.defaultProps = {
-  ...labelDefaults,
+  color: 'text2',
   fontSize: 'medium',
+  fontWeight: 'semiBold',
   padding: 'none',
 }

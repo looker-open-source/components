@@ -54,8 +54,7 @@ export const Button = styled(ButtonBase)`
     &:active,
     &:focus {
       background-color: ${({ theme, color = 'key' }) => theme.colors[color]};
-      border-color: ${({ theme, color = 'key' }) =>
-        theme.colors[`${color}Border`]};
+      border-color: ${({ theme }) => theme.colors.ui3};
     }
   }
 `

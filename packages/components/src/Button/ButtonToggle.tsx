@@ -84,7 +84,7 @@ const ButtonToggleLayout = forwardRef(
 )
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
-  border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
+  border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.medium};
 
   /* prevents items in the last row from growing */
@@ -114,7 +114,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
     &::after {
       content: '';
       display: block;
-      background: ${(props) => props.theme.colors.palette.charcoal200};
+      background: ${({ theme }) => theme.colors.ui2};
       position: absolute;
       z-index: 1;
     }

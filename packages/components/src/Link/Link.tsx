@@ -55,6 +55,6 @@ export const Link = styled.a<LinkProps>`
 `
 
 Link.defaultProps = {
-  color: 'palette.blue500',
+  color: 'link',
   textDecoration: 'none',
 }

@@ -25,7 +25,6 @@
  */
 
 import {
-  palette,
   CompatibleHTMLProps,
   SpaceProps,
   reset,
@@ -112,8 +111,8 @@ const Outer = styled.div`
   flex: 8;
 
   &.overflow {
-    box-shadow: inset 0 -16px 16px -16px ${palette.charcoal200},
-      inset 0 16px 16px -16px ${palette.charcoal200};
+    box-shadow: inset 0 -16px 16px -16px ${({ theme }) => theme.colors.ui2},
+      inset 0 16px 16px -16px ${({ theme }) => theme.colors.ui2};
   }
 `
 

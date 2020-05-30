@@ -32,8 +32,8 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem = styled.a.attrs(({ current }: SidebarItemProps) => ({
-  backgroundColor: current && 'palette.purple100',
-  color: current ? 'palette.purple700' : 'palette.charcoal600',
+  backgroundColor: current && 'keyAccent',
+  color: current ? 'keyPressed' : 'neutralPressed',
   fontWeight: current ? 'semiBold' : undefined,
 }))<SidebarItemProps>`
   ${reset}

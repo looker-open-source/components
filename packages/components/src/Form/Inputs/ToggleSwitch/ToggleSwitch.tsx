@@ -47,8 +47,8 @@ const DisabledKnob = styled.div<{ size: number }>`
   left: 0;
   right: 0;
   opacity: 0.4;
-  background: ${(props) => props.theme.colors.palette.charcoal300};
-  border-radius: ${(props) => rem(props.size)};
+  background: ${({ theme }) => theme.colors.ui3};
+  border-radius: ${({ size }) => rem(size)};
 `
 
 export const ToggleSwitchLayout = forwardRef(
@@ -107,7 +107,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
 
     &:focus + div {
       box-shadow: 0 0 0 0.2rem
-        ${({ theme }) => rgba(theme.colors.palette.primary500, 0.4)};
+        ${({ theme }) => rgba(theme.colors.key, 0.4)};
     }
   }
 `

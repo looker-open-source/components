@@ -37,7 +37,7 @@ export const TableHeaderCell = styled.th<TableHeaderCellProps>`
 `
 
 TableHeaderCell.defaultProps = {
-  color: 'palette.charcoal400',
+  color: 'ui4',
   fontSize: 'xsmall',
   fontWeight: 'semiBold',
 }

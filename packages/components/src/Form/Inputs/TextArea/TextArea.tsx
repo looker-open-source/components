@@ -75,9 +75,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
         aria-invalid={validationType === 'error' ? 'true' : undefined}
         {...textareaProps}
       />
-      {validationType && (
-        <Icon name="CircleInfo" color="palette.red500" size={20} />
-      )}
+      {validationType && <Icon name="CircleInfo" color="critical" size={20} />}
     </div>
   )
 }
@@ -105,7 +103,7 @@ export const TextArea = styled(TextAreaLayout)`
     border: solid 1px;
     width: 100%;
 
-    border-color: ${(props) => props.theme.colors.palette.charcoal200};
+    border-color: ${(props) => props.theme.colors.ui2};
     border-radius: ${(props) => props.theme.radii.medium};
     font-size: ${(props) => props.theme.fontSizes.small};
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};

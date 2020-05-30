@@ -47,23 +47,23 @@ export interface MenuItemStyle {
 
 const initial: MenuItemStateStyle = {
   bg: palette.white,
-  color: palette.charcoal600,
+  color: 'text3',
   fontSize: 'small',
   fontWeight: 'normal',
-  iconColor: palette.charcoal300,
+  iconColor: 'text6',
   iconSize: 20,
 }
 
 const hover: MenuItemStateStyle = {
   ...initial,
-  bg: palette.charcoal100,
-  color: palette.charcoal900,
+  bg: 'ui1',
+  color: 'text0',
 }
 
 const current: MenuItemStateStyle = {
   ...hover,
   fontWeight: 'bold',
-  iconColor: palette.charcoal900,
+  iconColor: 'text0',
 }
 
 export const defaultMenuItemStyle: MenuItemStyle = {
@@ -71,7 +71,7 @@ export const defaultMenuItemStyle: MenuItemStyle = {
   hover,
   initial,
   marker: {
-    color: palette.charcoal900,
+    color: 'text0',
     size: 4,
   },
 }

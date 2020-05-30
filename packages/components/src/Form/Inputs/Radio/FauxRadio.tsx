@@ -35,7 +35,7 @@ export const FauxRadio = styled.div`
   width: 100%;
   height: 100%;
   background-color: currentColor;
-  border: solid 1px ${({ theme }) => `${theme.colors.palette.charcoal200}`};
+  border: solid 1px ${({ theme }) => `${theme.colors.ui2}`};
   border-radius: 50%;
   border-color: currentColor;
   color: transparent;

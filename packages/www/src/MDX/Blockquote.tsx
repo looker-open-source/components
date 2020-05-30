@@ -33,8 +33,8 @@ const Blockquote = styled.blockquote`
     line-height: ${lineHeights.medium};
     margin: 0 0 ${lineHeights.medium} ${lineHeights.medium};
     padding: 0 0 0 ${space.medium};
-    border-left: 5px solid ${colors.palette.primary500};
-    color: ${colors.palette.primary600};
+    border-left: 5px solid ${colors.key};
+    color: ${colors.keyInteractive};
     border-radius: ${radii.medium};
   `}
   strong {

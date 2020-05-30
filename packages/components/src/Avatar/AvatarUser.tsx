@@ -72,7 +72,7 @@ const AvatarPhoto = styled.object`
 const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
   bg: props.color,
 }))`
-  color: ${(props) => props.theme.colors.palette.white};
+  color: ${({ theme }) => theme.colors.keyText};
 `
 
 export const AvatarUser = styled(AvatarLayout).attrs((props) => ({

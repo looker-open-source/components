@@ -92,7 +92,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   border: none;
   color: transparent;
   font: inherit;
-  caret-color: ${(props) => props.theme.colors.palette.charcoal900};
+  caret-color: ${({ theme }) => theme.colors.text0};
   height: 100%;
   left: 0;
   outline: none;
@@ -111,7 +111,7 @@ interface VisibleTextProps {
 
 const VisibleText = styled.div<VisibleTextProps>`
   color: ${({ displayValue, theme }) =>
-    displayValue ? 'inherit' : theme.colors.palette.charcoal400};
+    displayValue ? 'inherit' : theme.colors.text5};
 `
 
 export const InlineTextArea = styled(InlineTextAreaLayout)`
@@ -120,9 +120,7 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${(props) =>
-    props.underlineOnlyOnHover
-      ? 'transparent'
-      : props.theme.colors.palette.charcoal300};
+    props.underlineOnlyOnHover ? 'transparent' : props.theme.colors.ui3};
   color: inherit;
   display: inline-flex;
   flex-direction: column;
@@ -137,7 +135,7 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   :hover {
     outline: none;
     border-bottom-color: ${(props) => props.theme.colors.key};
-    background-color: ${(props) => props.theme.colors.palette.charcoal100};
+    background-color: ${(props) => props.theme.colors.ui1};
   }
 
   :focus {

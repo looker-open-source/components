@@ -132,15 +132,15 @@ export const Checkbox = styled(CheckboxLayout)`
   }
 
   input:focus + ${FauxCheckbox} {
-    border-color: ${({ theme }) => theme.colors.palette.purple300};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.palette.purple100};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
     outline: none;
   }
 
   input:disabled + ${FauxCheckbox} {
     background: transparent;
-    border-color: ${({ theme }) => theme.colors.palette.charcoal200};
-    color: ${({ theme }) => theme.colors.palette.charcoal400};
+    border-color: ${({ theme }) => theme.colors.ui2};
+    color: ${({ theme }) => theme.colors.text5};
   }
 
   input:disabled:not(:checked) + ${FauxCheckbox} {

@@ -104,7 +104,7 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
     props.focusVisible &&
     `&:focus-within button,
     &:focus-within a {
-      box-shadow: 0 0 3px 1px ${props.theme.colors.palette.blue400};
+      box-shadow: 0 0 3px 1px ${props.theme.colors.key};
     }
 `}
 

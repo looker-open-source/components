@@ -153,7 +153,7 @@ export const MenuListInternal = forwardRef(
 
 const dividersStyle = css`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
+    border-top: 1px solid ${(props) => props.theme.colors.ui2};
   }
 `
 

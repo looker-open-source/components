@@ -80,7 +80,7 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.palette.purple300};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
 
