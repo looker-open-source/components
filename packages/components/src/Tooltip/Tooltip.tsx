@@ -214,10 +214,10 @@ export function useTooltip({
           ref={ref}
           style={style}
           zIndex={CustomizableTooltipAttributes.zIndex}
-          backgroundColor="palette.charcoal600"
+          backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
-          color="palette.charcoal000"
+          color="inverseText"
           {...surfaceStyles}
         >
           <TooltipContent

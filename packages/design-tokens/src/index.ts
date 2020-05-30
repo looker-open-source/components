@@ -32,7 +32,7 @@ export * from './GlobalStyle'
 /**
  * @TODO - This should not be directly exported or utilized. It should be consumed via theme.
  */
-export { palette } from './tokens'
+export { palette } from './tokens/color/palette'
 
 // Useful external helpers
 export * from './customizeable_attributes'
