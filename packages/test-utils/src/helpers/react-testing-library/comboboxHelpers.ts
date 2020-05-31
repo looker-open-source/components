@@ -38,4 +38,3 @@ export const getComboboxOptionText = (el: HTMLElement) =>
 
 export const getAllComboboxOptionText = () =>
   getComboboxOptions().map(getComboboxOptionText)
-

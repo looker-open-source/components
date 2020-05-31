@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tree`, `TreeItem` components
   - Includes docs and test suite
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
+- Test helper functions for `Combobox` component using react-testing-library.
 
 ### Changed
 - Font sizes for the various `Button`'s updated to match spec
