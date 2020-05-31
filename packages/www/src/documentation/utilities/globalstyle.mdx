@@ -2,7 +2,7 @@
 title: GlobalStyle
 ---
 
-import { Banner } from '@looker/components'
+import { MessageBar } from '@looker/components'
 
 This component provides a basic set of styles to enable Looker Components. While not strictly required, failing to import this component will degrade the appearance of some components.
 
@@ -16,11 +16,11 @@ It's composed of two primary pieces:
 
 The GlobalStyle component will assign the theme's "brand" font family ('Open Sans' in Looker's default theme) broadly across all components except a few that explicitly specify something different (`<Code>` for example leverages what's specified in theme.font.code)
 
-<Banner>
+<MessageBar>
   Note that the `GlobalStyle` component will not load any fonts specified. Refer
   to the <a href="/getting-started">Getting Started</a> documentation for font
   import recommendations.
-</Banner>
+</MessageBar>
 
 ## CSS Reset
 

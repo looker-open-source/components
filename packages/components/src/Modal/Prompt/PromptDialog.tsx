@@ -33,7 +33,7 @@ import React, {
   useCallback,
   useEffect,
 } from 'react'
-import { SemanticColors } from '@looker/design-tokens'
+import { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { Label, InputText } from '../../Form'
 import { VisuallyHidden } from '../../VisuallyHidden'
@@ -51,7 +51,7 @@ export interface PromptBaseProps {
    * Defines the color of the cancel button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "neutral"
    */
-  cancelColor?: keyof SemanticColors
+  cancelColor?: StatefulColor
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
@@ -165,7 +165,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           disabled={!hasValue}
           type="submit"
           onClick={onSubmit}
-          color="primary"
+          color="key"
         >
           {saveLabel}
         </Button>

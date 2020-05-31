@@ -286,3 +286,22 @@ like width and height, separately from the input.
   ]}
 />
 ```
+
+## Indicator
+
+The default indicator renders a checkmark for the selected option and a spacer for the unselected options.
+To customize this, use `indicator` property (either at the component or option level), which accepts a React node (including `false` to remove it
+completely) or a function accepting `OptionIndicatorProps` and returning a React node.
+
+```jsx
+<Select
+  indicator={({ isActive, isSelected }) => (
+    <Icon name={isSelected ? 'Favorite' : isActive ? 'Plus' : 'Minus'} />
+  )}
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda', indicator: '***' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+/>
+```

@@ -1,0 +1,35 @@
+---
+title: MessageBar
+propsOf: MessageBar
+github: MessageBar
+---
+
+The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `info`, or `positive` messages, settable via the `intent` property.
+
+```jsx
+<SpaceVertical gap="xsmall">
+  <MessageBar intent="warn">Warning</MessageBar>
+  <MessageBar intent="inform">Inform</MessageBar>
+  <MessageBar intent="positive">Positive</MessageBar>
+  <MessageBar intent="critical">Critical</MessageBar>
+</SpaceVertical>
+```
+
+## canDismiss
+
+MessageBars can also be set to be `canDismiss`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
+
+```jsx
+;() => {
+  const { value, setOff, setOn } = useToggle(true)
+  return value ? (
+    <MessageBar intent="warn" onDismiss={setOff} canDismiss>
+      I can be closed
+    </MessageBar>
+  ) : (
+    <ButtonOutline m="medium" onClick={setOn}>
+      Show MessageBar
+    </ButtonOutline>
+  )
+}
+```

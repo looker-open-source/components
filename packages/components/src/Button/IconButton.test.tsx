@@ -61,7 +61,7 @@ test('IconButton accepts color', () => {
       id="test-iconButton"
       label="Test"
       icon="Favorite"
-      color="danger"
+      color="critical"
     />
   )
 })
@@ -111,13 +111,13 @@ test('IconButton renders focus ring on tab input but not on click', () => {
       <IconButton
         id="test-iconButton"
         label="Favorite"
-        color="danger"
+        color="critical"
         icon="Favorite"
       />
       <IconButton
         id="test-iconButton"
         label="Trash"
-        color="danger"
+        color="critical"
         icon="Trash"
       />
     </>
@@ -137,7 +137,7 @@ test('IconButton renders focus ring on tab input but not on click', () => {
     <IconButton
       id="test-iconButton"
       label="Favorite"
-      color="danger"
+      color="critical"
       icon="Favorite"
     />
   )
@@ -145,7 +145,7 @@ test('IconButton renders focus ring on tab input but not on click', () => {
     <IconButton
       id="test-iconButton"
       label="Trash"
-      color="danger"
+      color="critical"
       icon="Trash"
     />
   )

@@ -24,9 +24,32 @@
 
  */
 
-import { css } from 'styled-components'
+import { Swatch, Theme, Heading, Card, Grid } from '@looker/components'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import omit from 'lodash/omit'
 
-export const inputColor = css`
-  background: ${(props) => props.theme.colors.semanticColors.primary.main};
-  border-color: ${(props) => props.theme.colors.semanticColors.primary.main};
-`
+export const ThemeColorDemo = () => {
+  const theme = useContext<Theme>(ThemeContext)
+
+  const colors = omit(theme.colors, 'palette')
+
+  const swatches = Object.entries(colors).map(([name, color]) => (
+    <Card key={name} minWidth="auto">
+      <Swatch color={color} width="100%" />
+      <Heading p="small" as="h5">
+        {name}
+      </Heading>
+    </Card>
+  ))
+
+  return (
+    <Grid m="xlarge" columns={6} gap="medium">
+      {swatches}
+    </Grid>
+  )
+
+  // console.log(theme.colors)
+
+  // return <pre>{String(theme.colors)}</pre>
+}

@@ -23,18 +23,20 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { ButtonDemo } from './Button/ButtonDemo'
+import { ComboboxDemo } from './Select/ComboboxDemo'
+import { SelectContent } from './Select/SelectDemo'
+import { SelectMultiDemo } from './Select/SelectMultiDemo'
 
-const App: FC = () => {
-  return (
-    <ComponentsProvider>
-      <ButtonDemo />
-    </ComponentsProvider>
-  )
-}
+const App = () => (
+  <ComponentsProvider>
+    <ComboboxDemo />
+    <SelectContent />
+    <SelectMultiDemo />
+  </ComponentsProvider>
+)
 
 /*
   This is the binding site for the playground. If you want to edit the

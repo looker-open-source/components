@@ -28,7 +28,6 @@ export * from './Accordion'
 export * from './ActionList'
 export * from './Avatar'
 export * from './Badge'
-export * from './Banner'
 export * from './Button'
 export * from './Calendar'
 export * from './Card'
@@ -41,11 +40,13 @@ export * from './Layout'
 export * from './Link'
 export * from './List'
 export * from './Menu'
+export * from './MessageBar'
 export * from './Modal'
 export * from './PageSize'
 export * from './Pagination'
 export * from './Popover'
 export * from './Spinner'
+export * from './Status'
 export * from './Sidebar'
 export * from './Table'
 export * from './Tabs'
@@ -65,10 +66,6 @@ export { ComponentsProvider } from '@looker/components-providers'
 export {
   GlobalStyle,
   palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
   SpacingSizes,
   theme,
   Theme,

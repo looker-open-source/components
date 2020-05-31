@@ -24,4 +24,4 @@
 
  */
 
-export * from './Banner'
+export * from './Status'
