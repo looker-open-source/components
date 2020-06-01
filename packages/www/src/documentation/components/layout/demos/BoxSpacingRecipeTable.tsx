@@ -66,7 +66,7 @@ const SpacingTable = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   margin: 2rem 0;
   & > div {
-    border-right: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
+    border-right: 1px solid ${(props) => props.theme.colors.ui2};
     &:last-child {
       border-right: none;
     }
@@ -103,7 +103,7 @@ const ListRender = (
       <Box
         px="small"
         as="span"
-        bg="palette.charcoal100"
+        bg="ui1"
         borderRadius="4px"
         display="inline-block"
         color="key"

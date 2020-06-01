@@ -44,7 +44,7 @@ const Knob = styled(({ className }) => <div className={className} />)`
   width: ${({ size }) => rem(size * 0.8)};
   height: ${({ size }) => rem(size * 0.8)};
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.palette.white};
+  background: ${({ theme }) => theme.colors.field};
 `
 
 interface KnobContainerProps extends KnobProps {

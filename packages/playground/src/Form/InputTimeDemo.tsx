@@ -92,7 +92,7 @@ const DemoWrapper = styled.div`
 const HeadingGrid = styled.div`
   display: grid;
   grid-template-columns: auto auto 1fr;
-  border-bottom: 3px solid ${({ theme }) => theme.colors.palette.charcoal300};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.ui3};
   padding-top: 3rem;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -102,5 +102,5 @@ const HeadingGrid = styled.div`
 
 const SelectedDateWrapper = styled.div`
   display: inline-block;
-  color: ${({ theme }) => theme.colors.palette.blue500};
+  color: ${({ theme }) => theme.colors.key};
 `

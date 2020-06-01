@@ -29,9 +29,9 @@ import styled from 'styled-components'
 
 export default styled(Box).attrs({
   as: 'code',
-  bg: 'palette.charcoal100',
+  bg: 'ui1',
   borderRadius: 'small',
-  color: 'palette.purple500',
+  color: 'key',
   fontFamily: 'code',
   fontSize: 'small',
   lineHeight: 'medium',

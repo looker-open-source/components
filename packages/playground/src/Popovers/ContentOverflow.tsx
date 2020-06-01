@@ -41,7 +41,7 @@ export const ContentOverflow: FC = ({ children }) => (
       content={
         <PopoverContent width="18rem">
           <Paragraph>Stuff above spacer</Paragraph>
-          <Box height="60vh" bg="palette.blue100">
+          <Box height="60vh" bg="ui1">
             Spacer
           </Box>
           <Paragraph>Content below spacer</Paragraph>

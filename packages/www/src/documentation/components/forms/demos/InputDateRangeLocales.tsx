@@ -63,7 +63,7 @@ export const InputDateRangeLocales = () => {
 }
 
 const SelectWrapper = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.palette.charcoal300};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui3};
   padding: ${({ theme }) => theme.space.small} 0;
   margin-bottom: ${({ theme }) => theme.space.large};
 `

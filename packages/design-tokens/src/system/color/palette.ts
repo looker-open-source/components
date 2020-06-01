@@ -25,8 +25,6 @@
  */
 
 export interface Palette {
-  /** Inverted text color. */
-  textInverted: string
   /** White color for theme. */
   white: string
 

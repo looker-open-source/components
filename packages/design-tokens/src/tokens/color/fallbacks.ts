@@ -26,9 +26,7 @@
 
 import { BlendColors } from '../../system/color/blends'
 import { StatefulColors } from '../../system/color/stateful'
-import { palette } from './palette'
-
-const {
+import {
   charcoal000,
   charcoal100,
   charcoal200,
@@ -51,7 +49,7 @@ const {
   red700,
   red600,
   white,
-} = palette
+} from './palette'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

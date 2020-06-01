@@ -437,7 +437,7 @@ const Thumb = styled.div<ThumbProps>`
       disabled ? colors.neutral : colors.key};
   height: 16px;
   width: 16px;
-  background: ${({ theme }) => theme.colors.palette.white};
+  background: ${({ theme }) => theme.colors.field};
   position: absolute;
   top: -6px;
   margin-left: -8px;

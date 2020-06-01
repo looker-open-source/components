@@ -25,10 +25,10 @@
  */
 
 import React from 'react'
-import CopyToClipboard from 'react-copy-to-clipboard'
 import { Icon } from '@looker/components'
 import { iconNameList, IconNames } from '@looker/icons'
-import { IconGrid, IconGridItem } from './IconList.styles'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import styled from 'styled-components'
 
 export const IconList = () => {
   return (
@@ -48,3 +48,24 @@ export const IconList = () => {
     </IconGrid>
   )
 }
+
+const IconGrid = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, 160px);
+  margin-top: 2rem;
+`
+
+const IconGridItem = styled.div`
+  text-align: center;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  cursor: pointer;
+  border: 1px solid ${({ theme }) => theme.colors.ui1};
+  padding: 1rem;
+  border-radius: ${({ theme }) => theme.radii.medium};
+  color: ${({ theme }) => theme.colors.text3};
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+    color: ${({ theme }) => theme.colors.key};
+  }
+`

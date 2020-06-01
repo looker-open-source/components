@@ -41,7 +41,7 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
       <Icon
         name="LookerLogo"
         alt="Looker"
-        color="palette.charcoal800"
+        color="text1"
         width="60px"
         height="26px"
       />

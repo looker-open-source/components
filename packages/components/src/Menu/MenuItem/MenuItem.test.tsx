@@ -27,7 +27,6 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-import { palette } from '@looker/design-tokens'
 
 import { MenuItem } from './MenuItem'
 

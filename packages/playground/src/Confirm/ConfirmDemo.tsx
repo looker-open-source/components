@@ -111,13 +111,13 @@ const IconWrapper = styled.div`
 `
 
 const MessageHighlight = styled.span`
-  color: ${({ theme }) => theme.colors.palette.purple500};
+  color: ${({ theme }) => theme.colors.key};
   font-weight: 600;
 `
 
 const Source = styled.cite`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  color: ${({ theme }) => theme.colors.palette.charcoal300};
+  color: ${({ theme }) => theme.colors.text6};
   margin-top: ${({ theme }) => theme.space.xsmall};
   display: block;
 `

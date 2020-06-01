@@ -146,7 +146,7 @@ const sliderThumbCss = css<SliderInputProps>`
     border: 3px solid ${colors.key};
     height: 16px;
     width: 16px;
-    background: ${colors.palette.white};
+    background: ${colors.field};
     ${isFocused && sliderThumbFocusCss}
   `}
 `

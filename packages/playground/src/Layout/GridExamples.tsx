@@ -37,7 +37,7 @@ import React, { FC } from 'react'
 const Placeholder: FC<BoxProps> = (props) => (
   <Box
     color="white"
-    bg="palette.purple500"
+    bg="key"
     justifyContent="center"
     alignItems="center"
     height="100%"

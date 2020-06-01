@@ -89,11 +89,11 @@ Avatars allow the developer to specify a color to use. Default Colors:
     <Flex justifyContent="space-around" alignItems="center">
       <AvatarUser user={data} />
       <AvatarIcon />
-      <AvatarUser color="palette.blue500" user={data} />
-      <AvatarIcon color="palette.blue400" />
-      <AvatarUser color="palette.green500" user={data} />
-      <AvatarIcon color="palette.green400" />
-      <AvatarIcon color="palette.white" bg="palette.green500" />
+      <AvatarUser color="inform" user={data} />
+      <AvatarIcon color="inform" />
+      <AvatarUser color="positive" user={data} />
+      <AvatarIcon color="positive" />
+      <AvatarIcon color="inverseText" bg="positive" />
     </Flex>
   )
 }
@@ -105,7 +105,7 @@ A combination of `AvatarUser` and `AvatarIcon`.
 
 - `secondaryIcon` - icon used for secondary avatar. Default: `User`
 - `secondaryColor` - color to use for secondary avatar border & icon. Default: `key`
-- `secondaryBg` - color to use for secondary avatar background. Default: `palette.white`
+- `secondaryBg` - color to use for secondary avatar background. Default: `inverseText`
 
 ```jsx
 ;() => {
@@ -123,9 +123,9 @@ A combination of `AvatarUser` and `AvatarIcon`.
       <AvatarCombo user={data} />
       <AvatarCombo
         user={noImageData}
-        color="palette.blue400"
-        secondaryBg="palette.purple500"
-        secondaryColor="palette.white"
+        color="inform"
+        secondaryBg="key"
+        secondaryColor="inverseText"
         secondaryIcon="User"
       />
     </Flex>

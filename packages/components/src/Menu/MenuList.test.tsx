@@ -27,7 +27,6 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme, shallowWithTheme } from '@looker/components-test-utils'
-import { palette } from '@looker/design-tokens'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'

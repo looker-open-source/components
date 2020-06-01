@@ -79,6 +79,6 @@ export const reset = (background: string) => `
 export const GlobalStyle = createGlobalStyle`
   ${css`
     ${({ theme }) => fonts(theme.fonts.brand)}
-    ${({ theme }) => reset(theme.colors.palette.white)}
+    ${({ theme }) => reset(theme.colors.background)}
   `}
 `

@@ -68,7 +68,7 @@ export function ListLayoutDemo() {
         onChange={handleWidthChange}
         width={400}
       />
-      <Box p={20} width={containerWidth + 40} bg="palette.charcoal100">
+      <Box p={20} width={containerWidth + 40} bg="ui1">
         <Heading>Combobox</Heading>
         <Combobox mb="medium">
           <ComboboxInput placeholder="width=500" />

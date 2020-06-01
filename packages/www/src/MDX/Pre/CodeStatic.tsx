@@ -25,9 +25,9 @@
  */
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+import { prismTheme } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import prismTheme from './prism-theme'
 
 interface CodeStaticProps {
   code: string

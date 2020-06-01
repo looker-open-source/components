@@ -61,7 +61,7 @@ export const Radio = styled(RadioLayout)`
   position: relative;
   width: 1rem;
   input {
-    background: ${(props) => props.theme.colors.palette.white};
+    background: ${(props) => props.theme.colors.field};
     cursor: ${({ readOnly, disabled }) =>
       readOnly || disabled ? 'not-allowed' : undefined};
     height: 100%;
@@ -77,7 +77,7 @@ export const Radio = styled(RadioLayout)`
 
   input:not(:checked) + ${FauxRadio} {
     border-color: ${({ theme }) => theme.colors.ui2};
-    background: ${({ theme }) => theme.colors.palette.white};
+    background: ${({ theme }) => theme.colors.field};
   }
 
   input:focus + ${FauxRadio} {

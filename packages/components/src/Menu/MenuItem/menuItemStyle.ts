@@ -24,7 +24,7 @@
 
  */
 
-import { FontWeights, palette, FontSizes } from '@looker/design-tokens'
+import { FontWeights, FontSizes } from '@looker/design-tokens'
 
 export interface MenuItemStateStyle {
   bg: string
@@ -46,7 +46,7 @@ export interface MenuItemStyle {
 }
 
 const initial: MenuItemStateStyle = {
-  bg: palette.white,
+  bg: 'background',
   color: 'text3',
   fontSize: 'small',
   fontWeight: 'normal',

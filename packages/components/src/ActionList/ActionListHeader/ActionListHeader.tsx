@@ -51,7 +51,7 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 }
 
 export const ActionListHeader = styled(ActionListHeaderInternal)`
-  border-bottom: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
+  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   color: ${(props) => props.theme.colors.text0};
   display: flex;
   font-size: ${(props) => props.theme.fontSizes.xsmall};

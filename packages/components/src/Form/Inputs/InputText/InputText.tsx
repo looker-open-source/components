@@ -175,7 +175,7 @@ export const inputHeight = '36px'
 
 export const InputLayout = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.palette.white};
+  background-color: ${(props) => props.theme.colors.field};
   display: inline-flex;
   height: ${inputHeight};
   justify-content: space-evenly;

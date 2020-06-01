@@ -20,7 +20,7 @@ Passing in an element into the `detail` prop will result in that element being d
 <Tree
   label="Orders"
   icon="Table"
-  detail={<Box color="palette.charcoal500">thelook</Box>}
+  detail={<Text variant="subdued">thelook</Box>}
 >
   <TreeItem icon="FieldNumber">Cost</TreeItem>
   <TreeItem icon="FieldDistance">Location</TreeItem>
@@ -36,7 +36,7 @@ Use the `border` prop if you would like to have vertical lines expand from your 
   border
   label="Orders"
   icon="Table"
-  detail={<Box color="palette.charcoal500">thelook</Box>}
+  detail={<Text variant="secondary">thelook</Text>}
   defaultOpen
 >
   <Tree label="Created" defaultOpen>
@@ -127,7 +127,7 @@ Use `gapSize` to control the distance between elements in your `TreeItem`.
 <Tree label="Cheeses" defaultOpen>
   <TreeItem
     icon="LogoRings"
-    detail={<Box color="palette.charcoal500">is great</Box>}
+    detail={<Text variant="text4">is great</Text>}
     onClick={() => alert('Clicked Swiss')}
   >
     Swiss

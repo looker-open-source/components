@@ -129,7 +129,7 @@ export const InlineInputText = styled(InlineInputTextInternal)`
   :hover {
     outline: none;
     border-bottom-color: ${({ theme }) => theme.colors.key};
-    background-color: ${({ theme }) => theme.colors.palette.ui1};
+    background-color: ${({ theme }) => theme.colors.ui1};
   }
 
   :focus {

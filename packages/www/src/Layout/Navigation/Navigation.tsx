@@ -66,7 +66,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
 
   /* stylelint-disable max-nesting-depth */
   h2 {
-    color: ${(props) => props.theme.colors.palette.purple700};
+    color: ${(props) => props.theme.colors.keyPressed};
   }
 
   ${SidebarGroup} {
@@ -79,7 +79,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       padding: ${(props) => `${props.theme.space.xxsmall} 0`};
 
       h2 {
-        color: ${(props) => props.theme.colors.palette.charcoal500};
+        color: ${(props) => props.theme.colors.text4};
         font-size: ${(props) => props.theme.fontSizes.xsmall};
         text-transform: uppercase;
       }

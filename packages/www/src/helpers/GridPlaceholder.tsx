@@ -30,7 +30,7 @@ import React, { FC } from 'react'
 export const GridPlaceholder: FC<BoxProps> = (props) => (
   <Box
     color="white"
-    bg="palette.green400"
+    bg="positive"
     justifyContent="center"
     alignItems="center"
     height="100%"

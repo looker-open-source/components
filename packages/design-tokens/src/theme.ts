@@ -56,7 +56,7 @@ import {
   space,
   transitions,
 } from './tokens'
-import { palette } from './tokens/color/palette'
+import * as palette from './tokens/color/palette'
 
 interface ThemeColors extends Colors {
   palette: Palette
