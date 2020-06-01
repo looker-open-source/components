@@ -24,6 +24,27 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
-export * from './TreeGroup'
+import React, { ReactNode, FC } from 'react'
+import styled from 'styled-components'
+
+export interface TreeGroupProps {
+  children: ReactNode
+  className?: string
+  /**
+   * Visible label of the TreeGroup
+   */
+  label: string
+}
+
+const TreeGroupLayout: FC<TreeGroupProps> = ({
+  children,
+  className,
+  label,
+}) => (
+  <div className={className}>
+    {label}
+    {children}
+  </div>
+)
+
+export const TreeGroup = styled(TreeGroupLayout)``

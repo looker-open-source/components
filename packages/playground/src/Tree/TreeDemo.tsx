@@ -31,6 +31,7 @@ import {
   Grid,
   Tree,
   TreeItem,
+  TreeGroup,
 } from '@looker/components'
 
 const onClick = () => {
@@ -48,9 +49,11 @@ const exploreExample = (
   <Box>
     Explore Example
     <Tree detail={addButton} detailStopPropagation label="Custom Fields">
-      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
-        Cost
-      </TreeItem>
+      <TreeGroup label="Blank">
+        <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
+          Cost
+        </TreeItem>
+      </TreeGroup>
       <Tree label="Created">
         <TreeItem icon="Calendar">Created Date</TreeItem>
         <TreeItem icon="Calendar">Created Month</TreeItem>
