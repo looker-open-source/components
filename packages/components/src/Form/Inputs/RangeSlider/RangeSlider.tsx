@@ -397,7 +397,7 @@ export const RangeSlider = styled(InternalRangeSlider)`
 
 const SliderTrack = styled.div`
   height: 4px;
-  background: ${({ theme }) => theme.colors.palette.charcoal200};
+  background: ${({ theme }) => theme.colors.ui2};
   border-radius: 2px;
   position: relative;
 `
@@ -420,7 +420,7 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
   border-radius: 1rem;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
   background: ${({ theme, focus }) =>
-    focus ? theme.colors.palette.purple100 : `rgba(255, 255, 255, 0.8)`};
+    focus ? theme.colors.keyAccent : `rgba(255, 255, 255, 0.8)`};
 `
 
 interface ThumbProps {
@@ -437,7 +437,7 @@ const Thumb = styled.div<ThumbProps>`
       disabled ? colors.neutral : colors.key};
   height: 16px;
   width: 16px;
-  background: ${({ theme }) => theme.colors.palette.white};
+  background: ${({ theme }) => theme.colors.field};
   position: absolute;
   top: -6px;
   margin-left: -8px;

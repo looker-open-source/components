@@ -46,7 +46,7 @@ export const primaryKeyColumnCSS = (columnIndices: number[]) =>
       (columnIndex) =>
         css`
           ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
-            color: ${(props) => props.theme.colors.palette.charcoal900};
+            color: ${({ theme }) => theme.colors.text0};
             font-size: ${(props) => props.theme.fontSizes.small};
           }
         `

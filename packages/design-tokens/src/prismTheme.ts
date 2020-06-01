@@ -25,25 +25,36 @@
  */
 
 import { PrismTheme } from 'prism-react-renderer'
-import { palette, theme } from '@looker/design-tokens'
+import { theme } from './theme'
+import {
+  blue200,
+  blue400,
+  green300,
+  purple200,
+  red300,
+  yellow200,
+  yellow300,
+} from './tokens/color/palette'
 
-const prismTheme: PrismTheme = {
+const { inverse, text5, text6 } = theme.colors
+
+export const prismTheme: PrismTheme = {
   plain: {
-    backgroundColor: palette.charcoal800,
-    color: palette.charcoal300,
+    backgroundColor: inverse,
+    color: text6,
     fontFamily: theme.fonts.code,
     fontSize: theme.fontSizes.small,
   },
   styles: [
     {
       style: {
-        color: palette.yellow200,
+        color: yellow200,
       },
       types: ['prolog', 'doctype', 'cdata'],
     },
     {
       style: {
-        color: palette.charcoal400,
+        color: text5,
       },
       types: ['comment'],
     },
@@ -55,31 +66,31 @@ const prismTheme: PrismTheme = {
     },
     {
       style: {
-        color: palette.red300,
+        color: red300,
       },
       types: ['parameter'],
     },
     {
       style: {
-        color: palette.yellow300,
+        color: yellow300,
       },
       types: ['tag'],
     },
     {
       style: {
-        color: palette.purple200,
+        color: purple200,
       },
       types: ['operator', 'number', 'keyword', 'attr-name'],
     },
     {
       style: {
-        color: palette.blue200,
+        color: blue200,
       },
       types: ['punctuation'],
     },
     {
       style: {
-        color: palette.blue400,
+        color: blue400,
       },
       types: ['property', 'function', 'script'],
     },
@@ -92,7 +103,7 @@ const prismTheme: PrismTheme = {
 
     {
       style: {
-        color: palette.green300,
+        color: green300,
       },
       types: ['string', 'attr-value'],
     },
@@ -146,5 +157,3 @@ const prismTheme: PrismTheme = {
     },
   ],
 }
-
-export default prismTheme

@@ -82,8 +82,7 @@ ActionListRowLayout.displayName = 'ActionListRowLayout'
 export const ActionListRow = styled(ActionListRowLayout)`
   display: flex;
 
-  background: ${({ disabled, theme }) =>
-    disabled && theme.colors.palette.charcoal100};
+  background: ${({ disabled, theme }) => disabled && theme.colors.ui1};
 
   &:focus,
   &:hover {

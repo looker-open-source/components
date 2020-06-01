@@ -68,12 +68,3 @@ const ComponentResources: FC<ComponentResourcesProps> = ({
 }
 
 export default ComponentResources
-
-/* border-top: solid 1px ${props => props.theme.colors.palette.charcoal200};
-  border-bottom: solid 1px ${props => props.theme.colors.palette.charcoal200};
-  display: flex;
-  padding: ${props => props.theme.space.medium};
-  ${props => props.theme.space.small};
-  justify-content: space-between;
-  align-items: center;
- */

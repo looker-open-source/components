@@ -35,17 +35,17 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
 
 ```jsx
 <Flex
-  bg="palette.charcoal800"
+  bg="inverse"
   px="small"
   height="50px"
   alignItems="center"
   justifyContent="space-between"
 >
   <FlexItem mr="medium" pt="xsmall">
-    <Icon name="Hamburger" color="palette.white" size={24} />
+    <Icon name="Hamburger" color="inverseOn" size={24} />
   </FlexItem>
   <FlexItem>
-    <Icon name="LookerLogo" color="palette.white" size={60} />
+    <Icon name="LookerLogo" color="inverseOn" size={60} />
   </FlexItem>
   <FlexItem flex="1">
     <Flex justifyContent="center">
@@ -74,13 +74,13 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
   <FlexItem>
     <Flex>
       <FlexItem mr="small">
-        <Icon name="Search" color="palette.white" size={24} />
+        <Icon name="Search" color="inverseOn" size={24} />
       </FlexItem>
       <FlexItem mr="small">
-        <Icon name="Chat" color="palette.white" size={24} />
+        <Icon name="Chat" color="inverseOn" size={24} />
       </FlexItem>
       <FlexItem>
-        <Icon name="Group" color="palette.white" size={24} />
+        <Icon name="Group" color="inverseOn" size={24} />
       </FlexItem>
     </Flex>
   </FlexItem>
@@ -125,7 +125,7 @@ The `<Flex>` component allows you to control how its children are distributed wi
 Here is a visual example of how using `justifyContent` affects the distribution of items in a `<Flex />` component.
 
 ```jsx
-<Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="flex-start" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -136,7 +136,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
     <Text fontSize="xxxxlarge">💃</Text>
   </Box>
 </Flex>
-<Flex justifyContent="space-between" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="space-between" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -147,7 +147,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
     <Text fontSize="xxxxlarge">💃</Text>
   </Box>
 </Flex>
-<Flex justifyContent="space-around" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="space-around" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -158,7 +158,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
     <Text fontSize="xxxxlarge">💃</Text>
   </Box>
 </Flex>
-<Flex justifyContent="space-evenly" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="space-evenly" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -169,7 +169,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
     <Text fontSize="xxxxlarge">💃</Text>
   </Box>
 </Flex>
-<Flex justifyContent="center" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="center" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -180,7 +180,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
     <Text fontSize="xxxxlarge">💃</Text>
   </Box>
 </Flex>
-<Flex justifyContent="flex-end" mb="medium" bg="palette.charcoal000">
+<Flex justifyContent="flex-end" mb="medium" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
   </Box>
@@ -203,72 +203,72 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 
 ```jsx
 <Flex mb="xxlarge">
-  <FlexItem p="xxlarge" bg="palette.purple200">
+  <FlexItem p="xxlarge" bg="ui1">
     Default (stretch)
   </FlexItem>
-  <FlexItem p="large" bg="palette.blue200">
+  <FlexItem p="large" bg="ui2">
     One
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     Two
   </FlexItem>
-  <FlexItem p="small" bg="palette.red200">
+  <FlexItem p="small" bg="ui4">
     Three
   </FlexItem>
 </Flex>
 <Flex alignItems="center" mb="xxlarge">
-  <FlexItem p="xxlarge" bg="palette.purple200">
+  <FlexItem p="xxlarge" bg="ui1">
     Center
   </FlexItem>
-  <FlexItem p="large" bg="palette.blue200">
+  <FlexItem p="large" bg="ui2">
     One
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     Two
   </FlexItem>
-  <FlexItem p="small" bg="palette.red200">
+  <FlexItem p="small" bg="ui4">
     Three
   </FlexItem>
 </Flex>
 <Flex alignItems="flex-start" mb="xxlarge">
-  <FlexItem p="xxlarge" bg="palette.purple200">
+  <FlexItem p="xxlarge" bg="ui1">
     Start
   </FlexItem>
-  <FlexItem p="large" bg="palette.blue200">
+  <FlexItem p="large" bg="ui2">
     Two
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     Three
   </FlexItem>
-  <FlexItem p="small" bg="palette.red200">
+  <FlexItem p="small" bg="ui4">
     Four
   </FlexItem>
 </Flex>
 <Flex alignItems="flex-end" mb="xxlarge">
-  <FlexItem p="xxlarge" bg="palette.purple200">
+  <FlexItem p="xxlarge" bg="ui1">
     End
   </FlexItem>
-  <FlexItem p="large" bg="palette.blue200">
+  <FlexItem p="large" bg="ui2">
     Two
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     Three
   </FlexItem>
-  <FlexItem p="small" bg="palette.red200">
+  <FlexItem p="small" bg="ui4">
     Four
   </FlexItem>
 </Flex>
 <Flex alignItems="baseline" mb="xxlarge">
-  <FlexItem p="xxlarge" bg="palette.purple200">
+  <FlexItem p="xxlarge" bg="ui1">
     Baseline
   </FlexItem>
-  <FlexItem p="large" bg="palette.blue200">
+  <FlexItem p="large" bg="ui2">
     Two
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     Three
   </FlexItem>
-  <FlexItem p="small" bg="palette.red200">
+  <FlexItem p="small" bg="ui4">
     Four
   </FlexItem>
 </Flex>
@@ -287,15 +287,15 @@ If you have multiple rows of flex items, the `alignContent` property determines 
     width="30%"
     height="150px"
     flexWrap="wrap"
-    bg="palette.purple400"
+    bg="key"
   >
-    <FlexItem width="70%" m="small" p="xsmall" bg="palette.purple200">
+    <FlexItem width="70%" m="small" p="xsmall" bg="ui1">
       Aligned w/
     </FlexItem>
-    <FlexItem width="30%" m="small" p="xsmall" bg="palette.purple200">
+    <FlexItem width="30%" m="small" p="xsmall" bg="ui1">
       Space
     </FlexItem>
-    <FlexItem width="50%" m="small" p="xsmall" bg="palette.purple200">
+    <FlexItem width="50%" m="small" p="xsmall" bg="ui1">
       Betwen
     </FlexItem>
   </Flex>
@@ -304,15 +304,15 @@ If you have multiple rows of flex items, the `alignContent` property determines 
     width="30%"
     height="150px"
     flexWrap="wrap"
-    bg="palette.blue400"
+    bg="inform"
   >
-    <FlexItem width="70%" m="small" p="xsmall" bg="palette.blue200">
+    <FlexItem width="70%" m="small" p="xsmall" bg="ui2">
       Aligned w/
     </FlexItem>
-    <FlexItem width="30%" m="small" p="xsmall" bg="palette.blue200">
+    <FlexItem width="30%" m="small" p="xsmall" bg="ui2">
       Flex
     </FlexItem>
-    <FlexItem width="50%" m="small" p="xsmall" bg="palette.blue200">
+    <FlexItem width="50%" m="small" p="xsmall" bg="ui2">
       End
     </FlexItem>
   </Flex>
@@ -321,15 +321,15 @@ If you have multiple rows of flex items, the `alignContent` property determines 
     width="30%"
     height="150px"
     flexWrap="wrap"
-    bg="palette.green400"
+    bg="positive"
   >
-    <FlexItem width="70%" m="small" p="xsmall" bg="palette.green200">
+    <FlexItem width="70%" m="small" p="xsmall" bg="ui3">
       Aligned w/
     </FlexItem>
-    <FlexItem width="30%" m="small" p="xsmall" bg="palette.green200">
+    <FlexItem width="30%" m="small" p="xsmall" bg="ui3">
       Flex
     </FlexItem>
-    <FlexItem width="50%" m="small" p="xsmall" bg="palette.green200">
+    <FlexItem width="50%" m="small" p="xsmall" bg="ui3">
       Center
     </FlexItem>
   </Flex>
@@ -342,35 +342,35 @@ The `flexWrap` property determines if flex items should be forced into a single 
 
 ```jsx
 <Flex width="80%" flexWrap="nowrap" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">
+  <FlexItem width="40%" p="large" bg="ui4">
     These Lines
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">
+  <FlexItem width="40%" p="large" bg="ui2">
     Will NOT
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">
+  <FlexItem width="40%" p="large" bg="ui3">
     Wrap
   </FlexItem>
 </Flex>
 <Flex width="50%" flexWrap="wrap" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">
+  <FlexItem width="40%" p="large" bg="ui4">
     These Lines
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">
+  <FlexItem width="40%" p="large" bg="ui2">
     Will
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">
+  <FlexItem width="40%" p="large" bg="ui3">
     Wrap
   </FlexItem>
 </Flex>
 <Flex width="50%" flexWrap="wrap-reverse" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">
+  <FlexItem width="40%" p="large" bg="ui4">
     These Lines
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">
+  <FlexItem width="40%" p="large" bg="ui2">
     Will
   </FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">
+  <FlexItem width="40%" p="large" bg="ui3">
     Wrap Reverse
   </FlexItem>
 </Flex>
@@ -388,13 +388,13 @@ Many of the properties you can set on the `<Flex />` component will accept an ar
     'row', // switch to row layout after second breakpoint
   ]}
 >
-  <FlexItem p="medium" bg="palette.yellow200">
+  <FlexItem p="medium" bg="ui5">
     👋
   </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
+  <FlexItem p="medium" bg="ui3">
     💪
   </FlexItem>
-  <FlexItem p="medium" bg="palette.purple200">
+  <FlexItem p="medium" bg="ui1">
     📦
   </FlexItem>
 </Flex>
@@ -413,24 +413,24 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
 <AdjustingIndividualAlignment />
 
 ```jsx
-<Flex height="200px" bg="palette.purple400">
+<Flex height="200px" bg="key">
   <FlexItem alignSelf="flex-start">
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       Flex Start
     </Box>
   </FlexItem>
   <FlexItem alignSelf="flex-end">
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       Flex End
     </Box>
   </FlexItem>
   <FlexItem alignSelf="center">
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       Center
     </Box>
   </FlexItem>
   <FlexItem alignSelf="baseline">
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       Baseline
     </Box>
   </FlexItem>
@@ -444,56 +444,56 @@ By default flex items are laid our in source order, the `order` property on a `<
 **Note:** the `order` value default is `0`, so setting an `order="1"` will put the item at the end unless another flex item has a higher `order` set. You can also use negative numbers to set an item at the beginning.
 
 ```jsx
-<Flex bg="palette.charcoal000" mb="large">
+<Flex bg="ui1" mb="large">
   <FlexItem>
-    <Box m="small" p="large" bg="palette.blue200">
+    <Box m="small" p="large" bg="ui2">
       0
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       1
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box m="small" p="large" bg="palette.green200">
+    <Box m="small" p="large" bg="ui3">
       2
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box m="small" p="large" bg="palette.yellow200">
+    <Box m="small" p="large" bg="ui5" color="inverseOn">
       3
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box m="small" p="large" bg="palette.red200">
+    <Box m="small" p="large" bg="ui4">
       4
     </Box>
   </FlexItem>
 </Flex>
-<Flex bg="palette.charcoal000">
+<Flex bg="ui1">
   <FlexItem>
-    <Box m="small" p="large" bg="palette.blue200">
+    <Box m="small" p="large" bg="ui2">
       0
     </Box>
   </FlexItem>
   <FlexItem order="2">
-    <Box m="small" p="large" bg="palette.purple200">
+    <Box m="small" p="large" bg="ui1">
       1
     </Box>
   </FlexItem>
   <FlexItem order="1">
-    <Box m="small" p="large" bg="palette.green200">
+    <Box m="small" p="large" bg="ui3">
       2
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box m="small" p="large" bg="palette.yellow200">
+    <Box m="small" p="large" bg="ui5" color="inverseOn">
       3
     </Box>
   </FlexItem>
   <FlexItem order="-1">
-    <Box m="small" p="large" bg="palette.red200">
+    <Box m="small" p="large" bg="ui4">
       4
     </Box>
   </FlexItem>
@@ -511,22 +511,22 @@ The `flexBasis` property defines the flex-items' default size before the remaini
 ```jsx
 <Flex>
   <FlexItem flexBasis="20%">
-    <Box p="small" m="small" bg="palette.red200">
+    <Box p="small" m="small" bg="ui4">
       I am 20% of container
     </Box>
   </FlexItem>
   <FlexItem flexBasis="5.5rem">
-    <Box p="small" m="small" bg="palette.green200">
+    <Box p="small" m="small" bg="ui3">
       I am 5.5rem of container
     </Box>
   </FlexItem>
   <FlexItem flexBasis="150px">
-    <Box p="small" m="small" bg="palette.blue200">
+    <Box p="small" m="small" bg="ui2">
       I am 150px of container
     </Box>
   </FlexItem>
   <FlexItem>
-    <Box p="small" m="small" bg="palette.purple200">
+    <Box p="small" m="small" bg="ui1">
       I am sized to my content
     </Box>
   </FlexItem>
@@ -548,17 +548,17 @@ Below we set the flex grow value of the first flex item to `2` so it will take u
 ```jsx
 <Flex>
   <FlexItem flex="2">
-    <Box p="small" bg="palette.red200">
+    <Box p="small" bg="ui4">
       Flex: 2
     </Box>
   </FlexItem>
   <FlexItem flex="1">
-    <Box p="small" bg="palette.green200">
+    <Box p="small" bg="ui3">
       Flex: 1
     </Box>
   </FlexItem>
   <FlexItem flex="1">
-    <Box p="small" bg="palette.blue200">
+    <Box p="small" bg="ui2">
       Flex: 1
     </Box>
   </FlexItem>
@@ -572,17 +572,17 @@ Below we have a flex container with a set width of 500px and each child's `flex-
 ```jsx
 <Flex width="500px">
   <FlexItem flex="1 0 200px">
-    <Box p="small" bg="palette.red200">
+    <Box p="small" bg="ui4">
       No Shrink
     </Box>
   </FlexItem>
   <FlexItem flex="1 1 200px">
-    <Box p="small" bg="palette.green200">
+    <Box p="small" bg="ui3">
       I'll shrink
     </Box>
   </FlexItem>
   <FlexItem flex="1 1 200px">
-    <Box p="small" bg="palette.blue200">
+    <Box p="small" bg="ui2">
       I'll shrink
     </Box>
   </FlexItem>

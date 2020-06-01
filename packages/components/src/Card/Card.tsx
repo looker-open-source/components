@@ -65,16 +65,16 @@ export const Card = styled.div<CardProps>`
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
   &:hover {
-    border-color: ${(props) => props.theme.colors.palette.charcoal400};
+    border-color: ${(props) => props.theme.colors.ui4};
   }
 
   ${raised}
 `
 
 Card.defaultProps = {
-  bg: 'palette.white',
+  bg: 'background',
   border: '1px solid',
-  borderColor: 'palette.charcoal300',
+  borderColor: 'ui3',
   borderRadius: 'medium',
   display: 'flex',
   flexDirection: 'column',

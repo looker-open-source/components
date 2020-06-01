@@ -65,7 +65,7 @@ export const ButtonTransparent = styled(ButtonBase)`
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Subtle`]};
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Subtle`]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Border`]};
   }
 
   &:active,
@@ -73,7 +73,7 @@ export const ButtonTransparent = styled(ButtonBase)`
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Accent`]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}TextAlt`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Border`]};
   }
 
   &[disabled] {

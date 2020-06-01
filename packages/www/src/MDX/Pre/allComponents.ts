@@ -160,7 +160,6 @@ import {
   useToggle,
   VisuallyHidden,
 } from '@looker/components'
-import { palette } from '@looker/design-tokens'
 
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
@@ -171,7 +170,6 @@ import { GridPlaceholder } from '../../helpers/GridPlaceholder'
 const otherLibraries = {
   GridPlaceholder,
   isEqual,
-  palette,
   styled,
   theme,
   useState,

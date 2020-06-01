@@ -26,9 +26,7 @@
 
 import { BlendColors } from '../../system/color/blends'
 import { StatefulColors } from '../../system/color/stateful'
-import { palette } from './palette'
-
-const {
+import {
   charcoal000,
   charcoal100,
   charcoal200,
@@ -38,8 +36,10 @@ const {
   charcoal600,
   charcoal700,
   charcoal800,
+  charcoal900,
   purple000,
   purple100,
+  purple300,
   purple400,
   purple500,
   purple600,
@@ -49,7 +49,7 @@ const {
   red700,
   red600,
   white,
-} = palette
+} from './palette'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -59,35 +59,35 @@ export const fallbackBlends: BlendColors = {
   ui3: charcoal300,
   ui4: charcoal400,
   ui5: charcoal800,
+  text0: charcoal900,
   text1: charcoal800,
   text2: charcoal700,
   text3: charcoal600,
   text4: charcoal500,
   text5: charcoal400,
+  text6: charcoal300,
 }
 
 export const fallbackStateful: StatefulColors = {
   keySubtle: purple000,
   keyAccent: purple100,
-  keyBorder: charcoal300,
+  keyFocus: purple300,
   keyInteractive: purple500,
   keyPressed: purple600,
   keyText: white,
-  keyTextAlt: purple400,
+  keyBorder: purple400,
 
   criticalSubtle: red000,
   criticalAccent: red100,
-  criticalBorder: charcoal300,
   criticalInteractive: red600,
   criticalPressed: red700,
   criticalText: white,
-  criticalTextAlt: red400,
+  criticalBorder: red400,
 
   neutralSubtle: charcoal000,
   neutralAccent: charcoal100,
-  neutralBorder: charcoal300,
   neutralInteractive: charcoal500,
   neutralPressed: charcoal600,
   neutralText: white,
-  neutralTextAlt: charcoal600,
+  neutralBorder: charcoal400,
 }

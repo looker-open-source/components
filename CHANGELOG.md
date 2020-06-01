@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `theme.colors.palette` no longer used internally except in very limited (and soon-to-be-deprecated) cases.
 - `Button*` font sizes updated to match design specifications
 - `theme.colors` shape has been significantly refactored (documentation updates to follow)
 - `Banner` is now `MessageBar`

@@ -75,7 +75,7 @@ const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
 
   const sections = toc.items.map(({ url, title }) => (
     <ListItem fontSize="small" key={url} my="medium">
-      <Link color="palette.charcoal500" href={url}>
+      <Link color="neutralInteractive" href={url}>
         {title}
       </Link>
     </ListItem>
@@ -83,7 +83,7 @@ const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
 
   return (
     <>
-      <Divider color="palette.charcoal200" my="large" />
+      <Divider color="ui2" my="large" />
       <List>{sections}</List>
     </>
   )
@@ -121,7 +121,7 @@ const DocumentationLayout = (props: DocQuery) => {
 export default DocumentationLayout
 
 const Meta = styled.div`
-  background: ${(props) => props.theme.colors.palette.charcoal000};
+  background: ${({ theme }) => theme.colors.neutralSubtle};
   height: 100vh;
   overflow-y: auto;
   padding: ${(props) => props.theme.space.large};

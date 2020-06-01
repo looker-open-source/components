@@ -24,15 +24,14 @@
 
  */
 
+import * as palette from './tokens/color/palette'
+
 export * from './system'
 export * from './theme'
-
 export * from './GlobalStyle'
 
-/**
- * @TODO - This should not be directly exported or utilized. It should be consumed via theme.
- */
-export { palette } from './tokens/color/palette'
+export { palette }
+export { prismTheme } from './prismTheme'
 
 // Useful external helpers
 export * from './customizeable_attributes'

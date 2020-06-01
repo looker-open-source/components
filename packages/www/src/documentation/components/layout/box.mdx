@@ -74,7 +74,8 @@ Boxes provide a low-level customization interface which allows them to have diff
 <Box
   display="inline-block"
   height="100px"
-  bg="palette.green200"
+  bg="positive"
+  color="inverseOn"
   p="small"
   minWidth="200px"
 >
@@ -83,7 +84,8 @@ Boxes provide a low-level customization interface which allows them to have diff
 <Box
   display="inline-block"
   height="50px"
-  bg="palette.blue200"
+  bg="inform"
+  color="inverseOn"
   ml="small"
   p="small"
   width="100px"
@@ -98,7 +100,9 @@ Boxes provide a low-level customization interface which allows them to have diff
 Boxes can reference colors from the theme object, pulling any color on the theme's `colors` property.
 
 ```jsx
-<Box bg="palette.purple200">My background is purple200.</Box>
+<Box bg="positive" color="inverseOn" p="medium">
+  My background is <Code>positive</Code>.
+</Box>
 ```
 
 ### Positioning
@@ -107,7 +111,7 @@ Boxes can set positioning when needed.
 
 ```jsx
 <Box p="small" position="relative">
-  <Box position="absolute" top="0" right="0" bg="palette.red300">
+  <Box position="absolute" top="0" right="0" bg="negative" color="inverseOn">
     I'm absolutely positioned!
   </Box>
 </Box>
@@ -121,7 +125,7 @@ Boxes can have borders.
 <Box
   width="50px"
   height="50px"
-  bg="palette.purple200"
+  bg="keyAccent"
   border="1px solid black"
   borderRadius="4px"
 >

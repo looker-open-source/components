@@ -76,17 +76,17 @@ exports[`renders focus styles on keypress 1`] = `
 }
 
 .c0:disabled::-webkit-slider-thumb {
-  border-color: #707781;
+  border-color: #939BA5;
   cursor: default;
 }
 
 .c0:disabled::-moz-range-thumb {
-  border-color: #707781;
+  border-color: #939BA5;
   cursor: default;
 }
 
 .c0:disabled::-ms-thumb {
-  border-color: #707781;
+  border-color: #939BA5;
   cursor: default;
 }
 

@@ -26,10 +26,7 @@
 
 import { IntentColors, SurfaceColors } from '../../system/color/specifiable'
 import { CoreColors, Colors, SpecifiableColors } from '../../system'
-import { palette } from './palette'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
-
-const {
+import {
   blue500,
   blue600,
   charcoal400,
@@ -39,7 +36,8 @@ const {
   red500,
   yellow500,
   white,
-} = palette
+} from './palette'
+import { fallbackBlends, fallbackStateful } from './fallbacks'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -53,7 +51,7 @@ const generateSurfaceColors = (coreColors: CoreColors): SurfaceColors => {
   return {
     field: coreColors.background,
     inverse: coreColors.text,
-    inverseText: coreColors.background,
+    inverseOn: coreColors.background,
   }
 }
 

@@ -68,7 +68,7 @@ export const ModalBackdrop = styled.div.attrs((props: ModalBackdropProps) => ({
 `
 
 ModalBackdrop.defaultProps = {
-  backgroundColor: 'palette.charcoal200',
+  backgroundColor: 'ui2',
   opacity: 0.6,
   visible: true,
 }

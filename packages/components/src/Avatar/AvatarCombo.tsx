@@ -35,11 +35,11 @@ export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
   secondaryIcon: IconNames
   /**
-   *  @default `palette.purple300`
+   *  @default `keyFocus`
    **/
   secondaryColor?: string
   /**
-   *  @default `palette.purple300`
+   *  @default `keyFocus`
    **/
   secondaryBg?: string
 }

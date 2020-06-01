@@ -61,7 +61,7 @@ export const Radio = styled(RadioLayout)`
   position: relative;
   width: 1rem;
   input {
-    background: ${(props) => props.theme.colors.palette.white};
+    background: ${(props) => props.theme.colors.field};
     cursor: ${({ readOnly, disabled }) =>
       readOnly || disabled ? 'not-allowed' : undefined};
     height: 100%;
@@ -72,22 +72,22 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:checked + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.palette.purple400};
+    color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.palette.charcoal200};
-    background: ${({ theme }) => theme.colors.palette.white};
+    border-color: ${({ theme }) => theme.colors.ui2};
+    background: ${({ theme }) => theme.colors.field};
   }
 
   input:focus + ${FauxRadio} {
-    border-color: ${(props) => props.theme.colors.palette.purple300};
-    box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
     outline: none;
   }
 
   input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.palette.charcoal400};
+    color: ${({ theme }) => theme.colors.text5};
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {

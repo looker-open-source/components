@@ -170,7 +170,7 @@ export function SelectContent() {
         <Flex
           height={200}
           width={200}
-          bg="palette.charcoal300"
+          bg="ui3"
           alignItems="center"
           justifyContent="center"
           mr="small"

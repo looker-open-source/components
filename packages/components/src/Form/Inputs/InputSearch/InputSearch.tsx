@@ -49,7 +49,7 @@ export interface InputSearchProps
 }
 
 export const SearchIcon = styled(Icon)`
-  color: ${(props) => props.theme.colors.palette.charcoal400};
+  color: ${(props) => props.theme.colors.text5};
   padding-left: ${(props) => props.theme.space.small};
 `
 

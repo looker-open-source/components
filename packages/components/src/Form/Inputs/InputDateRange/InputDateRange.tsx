@@ -383,7 +383,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
                 key="warning"
                 name="CircleInfo"
                 size={20}
-                color="palette.red500"
+                color="critical"
                 mr="xxsmall"
               />
             </IconWrapper>
@@ -426,9 +426,7 @@ InputDateRange.displayName = 'InputDateRange'
 
 const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
   color: ${({ theme, hasInputValues }) =>
-    hasInputValues
-      ? theme.colors.palette.charcoal600
-      : theme.colors.palette.charcoal300};
+    hasInputValues ? theme.colors.text3 : theme.colors.text6};
 `
 
 const InputDateRangeWrapper = styled.div`
@@ -486,7 +484,7 @@ const InputTextWrapper = styled.div<{ inputLength: number }>`
     background: transparent;
     /* stylelint-disable */
     &:focus-within {
-      background: ${({ theme }) => theme.colors.palette.purple100};
+      background: ${({ theme }) => theme.colors.keyAccent};
     }
     /* stylelint-enabled */
   }

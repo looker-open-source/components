@@ -49,6 +49,6 @@ export const IEGlobalStyle: FC = () => {
   if (!isIE11) return null
 
   return (
-    <style>{ieGlobalCSS(theme.fonts.brand, theme.colors.palette.white)}</style>
+    <style>{ieGlobalCSS(theme.fonts.brand, theme.colors.background)}</style>
   )
 }

@@ -84,8 +84,7 @@ export const FieldInline = styled(FieldInlineLayout)`
   }
 
   ${Label} {
-    color: ${({ theme, disabled }) =>
-      disabled && theme.colors.palette.charcoal500};
+    color: ${({ theme, disabled }) => disabled && theme.colors.text4};
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
     grid-area: label;

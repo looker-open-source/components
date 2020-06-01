@@ -145,9 +145,9 @@ export const CalendarPropTable = () => {
 }
 
 const TableKey = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.palette.charcoal200};
-  background: ${({ theme }) => theme.colors.palette.charcoal100};
-  color: ${({ theme }) => theme.colors.palette.charcoal600};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  background: ${({ theme }) => theme.colors.ui1};
+  color: ${({ theme }) => theme.colors.text3};
   font-weight: bold;
   padding: 0.5rem;
   margin-bottom: 2rem;

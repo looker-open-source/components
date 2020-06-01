@@ -52,16 +52,16 @@ const appearanceVariant = variant({
   prop: 'appearance',
   variants: {
     dark: {
-      bg: 'palette.charcoal400',
+      bg: 'ui4',
     },
     default: {
-      bg: 'palette.charcoal300',
+      bg: 'ui3',
     },
     light: {
-      bg: 'palette.charcoal200',
+      bg: 'ui2',
     },
     onDark: {
-      bg: 'palette.charcoal500',
+      bg: 'text4',
     },
   },
 })

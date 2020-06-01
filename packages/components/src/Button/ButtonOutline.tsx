@@ -29,8 +29,7 @@ import { ButtonBase } from './ButtonBase'
 
 export const ButtonOutline = styled(ButtonBase)`
   background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
-  border: 1px solid
-    ${({ theme, color = 'key' }) => theme.colors[`${color}Border`]};
+  border: 1px solid ${({ theme }) => theme.colors.ui3};
   color: ${({ theme, color = 'key' }) => theme.colors[color]};
 
   &:hover,
@@ -54,8 +53,7 @@ export const ButtonOutline = styled(ButtonBase)`
     &:focus {
       background-color: ${({ theme, color = 'key' }) =>
         theme.colors[`${color}Text`]};
-      border-color: ${({ theme, color = 'key' }) =>
-        theme.colors[`${color}Border`]};
+      border-color: ${({ theme }) => theme.colors.ui3};
       color: ${({ theme, color = 'key' }) => theme.colors[color]};
     }
   }

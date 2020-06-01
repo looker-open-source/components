@@ -11,8 +11,8 @@ To use an Icon you pass the `name` of the icon to the name property on the `<Ico
 
 ```jsx
 <Icon name="Check" size={24} />
-<Icon name="Favorite" size={24} color="palette.red400" />
-<Icon name="GearOutline" size={32} color="palette.charcoal500" />
+<Icon name="Favorite" size={24} color="critical" />
+<Icon name="GearOutline" size={32} color="neutral />
 ```
 
 ```jsx
@@ -24,8 +24,8 @@ within and can be sized using the `size` property:
 
 ```jsx
 <Box
-  color="palette.red300"
-  bg="palette.charcoal800"
+  color="critical"
+  bg="ui5"
   p="large"
   width="210px"
   display="flex"
@@ -42,8 +42,8 @@ break the relationship between a container's text color and the icon color:
 
 ```jsx
 <Box
-  color="palette.red300"
-  bg="palette.charcoal800"
+  color="critical"
+  bg="ui5"
   p="large"
   display="flex"
   width="210px"
@@ -51,7 +51,7 @@ break the relationship between a container's text color and the icon color:
   borderRadius="medium"
 >
   The text in this Box is red, but the Icon is purple.
-  <Icon color="palette.purple300" name="Trash" size="32px" mx="auto" />
+  <Icon color="key" name="Trash" size="32px" mx="auto" />
 </Box>
 ```
 

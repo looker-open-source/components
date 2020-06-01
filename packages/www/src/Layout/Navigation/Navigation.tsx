@@ -61,16 +61,16 @@ const SidebarNavWrapper = styled(Box)`
 `
 
 const StyledSidebar = styled(Sidebar)<SidebarProps>`
-  background: ${(props) => lighten(0.6, props.theme.colors.palette.purple000)};
+  background: ${(props) => lighten(0.6, props.theme.colors.keySubtle)};
   height: 100%;
 
   /* stylelint-disable max-nesting-depth */
   h2 {
-    color: ${(props) => props.theme.colors.palette.purple700};
+    color: ${(props) => props.theme.colors.keyPressed};
   }
 
   ${SidebarGroup} {
-    border-bottom: solid 1px ${(props) => props.theme.colors.palette.purple100};
+    border-bottom: solid 1px ${(props) => props.theme.colors.keyAccent};
     cursor: pointer;
     padding: ${(props) =>
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
@@ -79,7 +79,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       padding: ${(props) => `${props.theme.space.xxsmall} 0`};
 
       h2 {
-        color: ${(props) => props.theme.colors.palette.charcoal500};
+        color: ${(props) => props.theme.colors.text4};
         font-size: ${(props) => props.theme.fontSizes.xsmall};
         text-transform: uppercase;
       }
@@ -96,7 +96,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
         `${props.theme.space.xsmall} ${props.theme.space.small}`};
 
       &:hover {
-        background-color: ${(props) => props.theme.colors.palette.purple000};
+        background-color: ${(props) => props.theme.colors.keySubtle};
       }
     }
     /* stylelint-enable max-nesting-depth */

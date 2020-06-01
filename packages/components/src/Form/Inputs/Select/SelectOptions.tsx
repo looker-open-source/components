@@ -142,7 +142,7 @@ const SelectOptionGroupContainer = styled.div`
   padding: ${({ theme }) => theme.space.xsmall} 0;
   border-top: 1px solid;
   border-bottom: 1px solid;
-  border-color: ${({ theme }) => theme.colors.palette.charcoal200};
+  border-color: ${({ theme }) => theme.colors.ui2};
   &:first-child,
   & + div {
     border-top: none;

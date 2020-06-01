@@ -24,7 +24,9 @@
 
  */
 
-import { FontWeights, palette, FontSizes } from '@looker/design-tokens'
+import { FontWeights, FontSizes, theme } from '@looker/design-tokens'
+
+const { colors } = theme
 
 export interface MenuItemStateStyle {
   bg: string
@@ -46,24 +48,24 @@ export interface MenuItemStyle {
 }
 
 const initial: MenuItemStateStyle = {
-  bg: palette.white,
-  color: palette.charcoal600,
+  bg: colors.background,
+  color: colors.text3,
   fontSize: 'small',
   fontWeight: 'normal',
-  iconColor: palette.charcoal300,
+  iconColor: colors.text6,
   iconSize: 20,
 }
 
 const hover: MenuItemStateStyle = {
   ...initial,
-  bg: palette.charcoal100,
-  color: palette.charcoal900,
+  bg: colors.ui1,
+  color: colors.text0,
 }
 
 const current: MenuItemStateStyle = {
   ...hover,
   fontWeight: 'bold',
-  iconColor: palette.charcoal900,
+  iconColor: colors.text0,
 }
 
 export const defaultMenuItemStyle: MenuItemStyle = {
@@ -71,7 +73,7 @@ export const defaultMenuItemStyle: MenuItemStyle = {
   hover,
   initial,
   marker: {
-    color: palette.charcoal900,
+    color: colors.text0,
     size: 4,
   },
 }

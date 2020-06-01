@@ -32,13 +32,7 @@ import { EdgeOverflow } from './EdgeOverflow'
 
 export const PopoverExamples: FC = () => {
   return (
-    <Box
-      p="xxlarge"
-      width="100%"
-      position="relative"
-      height="100%"
-      bg="palette.purple200"
-    >
+    <Box p="xxlarge" width="100%" position="relative" height="100%">
       <EdgeOverflow top={0} left={0}>
         Top Left
       </EdgeOverflow>

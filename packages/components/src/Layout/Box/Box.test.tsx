@@ -95,7 +95,7 @@ describe('Box', () => {
     })
 
     test('supports borderColor', () => {
-      assertSnapshot(<Box borderColor="palette.charcoal200" />)
+      assertSnapshot(<Box borderColor="ui2" />)
     })
   })
 
@@ -107,7 +107,7 @@ describe('Box', () => {
       assertSnapshot(<Box letterSpacing="10" />)
       assertSnapshot(<Box lineHeight="medium" />)
       assertSnapshot(<Box textAlign="right" />)
-      assertSnapshot(<Box color="palette.charcoal400" />)
+      assertSnapshot(<Box color="ui4" />)
     })
   })
 

@@ -147,7 +147,7 @@ const InputComponent = forwardRef(
         {after && after}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">
-            <Icon color="palette.red500" name="CircleInfo" size={20} />
+            <Icon color="critical" name="CircleInfo" size={20} />
           </InputIconStyle>
         )}
       </InputLayout>
@@ -156,18 +156,18 @@ const InputComponent = forwardRef(
 )
 
 export const inputTextHover = css`
-  border-color: ${(props) => props.theme.colors.palette.charcoal300};
+  border-color: ${(props) => props.theme.colors.ui3};
 `
 export const inputTextFocus = css`
-  border-color: ${(props) => props.theme.colors.palette.purple300};
-  box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
+  border-color: ${(props) => props.theme.colors.keyFocus};
+  box-shadow: 0 0 0 2px ${(props) => props.theme.colors.keyAccent};
   outline: none;
 `
 export const inputTextDisabled = css`
-  background: ${(props) => props.theme.colors.palette.charcoal100};
-  color: ${(props) => props.theme.colors.palette.charcoal400};
+  background: ${(props) => props.theme.colors.ui1};
+  color: ${(props) => props.theme.colors.text5};
   &:hover {
-    border-color: ${(props) => props.theme.colors.palette.charcoal200};
+    border-color: ${(props) => props.theme.colors.ui2};
   }
 `
 
@@ -175,7 +175,7 @@ export const inputHeight = '36px'
 
 export const InputLayout = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.palette.white};
+  background-color: ${(props) => props.theme.colors.field};
   display: inline-flex;
   height: ${inputHeight};
   justify-content: space-evenly;
@@ -193,7 +193,7 @@ export const InputLayout = styled.div`
   }
 
   ::placeholder {
-    color: ${(props) => props.theme.colors.palette.charcoal400};
+    color: ${(props) => props.theme.colors.text5};
   }
 
   &:hover {
@@ -206,7 +206,7 @@ export const InputLayout = styled.div`
 `
 
 export const InputIconStyle = styled(Flex)`
-  color: ${(props) => props.theme.colors.palette.charcoal400};
+  color: ${(props) => props.theme.colors.text5};
   pointer-events: none;
 `
 
@@ -214,14 +214,14 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
     props.validationType === 'error'
       ? `
-      border-color: ${props.theme.colors.palette.red400};
+      border-color: ${props.theme.colors.criticalBorder};
       &:hover {
-        border-color: ${props.theme.colors.palette.red500};
+        border-color: ${props.theme.colors.critical};
       }
       &:focus,
       :focus-within {
-        border-color: ${props.theme.colors.palette.red500};
-        box-shadow: 0 0 0 2px ${props.theme.colors.palette.red100};
+        border-color: ${props.theme.colors.critical};
+        box-shadow: 0 0 0 2px ${props.theme.colors.criticalAccent};
       }
       `
       : ''}
@@ -250,7 +250,7 @@ export const InputText = styled(InputComponent).attrs(
   ${typography}
   ${pseudoClasses}
 
-  color: ${(props) => props.theme.colors.palette.charcoal700};
+  color: ${(props) => props.theme.colors.text2};
 
   ${(props) => (props.disabled ? inputTextDisabled : '')}
 
@@ -259,7 +259,7 @@ export const InputText = styled(InputComponent).attrs(
 
 export const inputTextDefaults = {
   border: 'solid 1px',
-  borderColor: 'palette.charcoal200',
+  borderColor: 'ui2',
   borderRadius: 'medium',
   fontSize: 'small' as FontSizes,
   height: '36px',

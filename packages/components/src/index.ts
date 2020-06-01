@@ -63,10 +63,4 @@ export { ComponentsProvider } from '@looker/components-providers'
  * @TODO - Remove before 1.0
  **/
 
-export {
-  GlobalStyle,
-  palette,
-  SpacingSizes,
-  theme,
-  Theme,
-} from '@looker/design-tokens'
+export { SpacingSizes, theme, Theme } from '@looker/design-tokens'

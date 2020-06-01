@@ -39,7 +39,7 @@ const Style = styled(ListItem).attrs({
   py: 'xsmall',
 })`
   align-items: center;
-  color: ${(props) => props.theme.colors.palette.charcoal500};
+  color: ${(props) => props.theme.colors.text4};
   display: flex;
 
   svg {
@@ -50,7 +50,7 @@ const Style = styled(ListItem).attrs({
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.text3};
     text-decoration: none;
 
     svg {

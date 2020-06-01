@@ -29,12 +29,11 @@ export type StatefulColor = 'key' | 'critical' | 'neutral'
 export interface StatefulColorChoices {
   subtle: string
   accent: string
-  border: string
   main: string
   interactive: string
   pressed: string
   text: string
-  textAlt: string
+  border: string
 }
 
 export interface StatefulColors
@@ -45,21 +44,19 @@ export interface StatefulColors
 interface CriticalStatefulColors {
   criticalSubtle: string
   criticalAccent: string
-  criticalBorder: string
   criticalInteractive: string
   criticalPressed: string
   criticalText: string
-  criticalTextAlt: string
+  criticalBorder: string
 }
 
 interface NeutralStatefulColors {
   neutralSubtle: string
   neutralAccent: string
-  neutralBorder: string
   neutralInteractive: string
   neutralPressed: string
   neutralText: string
-  neutralTextAlt: string
+  neutralBorder: string
 }
 
 interface KeyStatefulColors {
@@ -77,10 +74,10 @@ interface KeyStatefulColors {
   keyAccent: string
   /**
    * TBD
-   * Used for border on ...
+   * Used for focus states for interactive components
    * @default `purple300`
    */
-  keyBorder: string
+  keyFocus: string
   /**
    * Interaction state color - often `:hover` & `:focus`
    * Used for TBD
@@ -104,5 +101,5 @@ interface KeyStatefulColors {
    * TBD too
    * @default `purple400`
    */
-  keyTextAlt: string
+  keyBorder: string
 }

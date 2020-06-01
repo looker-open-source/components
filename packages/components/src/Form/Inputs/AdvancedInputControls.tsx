@@ -63,7 +63,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           key="warning"
           name="CircleInfo"
           size={20}
-          color="palette.red500"
+          color="critical"
           mr="xxsmall"
         />
       ),
@@ -81,7 +81,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           key="list-caret"
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
           size={18}
-          color={disabled ? 'palette.charcoal300' : 'palette.charcoal500'}
+          color={disabled ? 'text6' : 'text4'}
           mr="xsmall"
         />
       ),
@@ -101,7 +101,7 @@ const SearchControlGrid = styled.div`
 `
 
 const SearchControlDivider = styled.div`
-  background: ${({ theme }) => theme.colors.palette.charcoal200};
+  background: ${({ theme }) => theme.colors.ui2};
   height: 70%;
   width: 1px;
 `

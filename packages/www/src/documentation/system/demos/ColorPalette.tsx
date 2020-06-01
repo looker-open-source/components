@@ -26,14 +26,8 @@
 
 import { getLuminance, rgba, rgbToColorString } from 'polished'
 import React, { Component, ReactNode } from 'react'
-import { Text } from '@looker/components'
-import {
-  SwatchGrid,
-  SwatchHolder,
-  SwatchHeader,
-  SwatchItem,
-  ContrastBox,
-} from './ColorPalette.styles'
+import styled from 'styled-components'
+import { Grid, Text } from '@looker/components'
 
 interface FigmaColor {
   name: string
@@ -190,7 +184,7 @@ export class ColorPalette extends Component<
       renderSwatch(swatchList)
     )
 
-    return <SwatchGrid>{swatches}</SwatchGrid>
+    return <Grid gap="xxlarge">{swatches}</Grid>
   }
 
   private async apiRequest(endpoint: string) {
@@ -228,3 +222,27 @@ export class ColorPalette extends Component<
     })
   }
 }
+
+const SwatchHolder = styled.div`
+  border-radius: 6px;
+  overflow: hidden;
+`
+
+const SwatchHeader = styled.div`
+  padding: 1.5rem 1rem;
+`
+
+const SwatchItem = styled.div`
+  padding: 4px 12px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const ContrastBox = styled.div`
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 2px 8px;
+  border-radius: 10px;
+`

@@ -88,13 +88,13 @@ const size = variant({
 const intent = variant({
   prop: 'intent',
   variants: {
-    critical: { bg: 'palette.red100', color: 'palette.red600' },
-    key: { bg: 'palette.purple100', color: 'palette.purple600' },
-    info: { bg: 'palette.blue100', color: 'palette.blue600' },
-    neutral: { bg: 'palette.charcoal200', color: 'palette.charcoal600' },
-    plain: { bg: 'palette.white', color: 'palette.purple500' },
+    critical: { bg: 'criticalAccent', color: 'criticalInteractive' },
+    key: { bg: 'keyAccent', color: 'keyPressed' },
+    inform: { bg: 'palette.blue100', color: 'palette.blue600' },
+    neutral: { bg: 'neutralAccent', color: 'neutralPressed' },
+    plain: { bg: 'keyText', color: 'keyInteractive' },
     positive: { bg: 'palette.green100', color: 'palette.green700' },
-    warning: { bg: 'palette.yellow100', color: 'palette.yellow900' },
+    warn: { bg: 'palette.yellow100', color: 'palette.yellow900' },
   },
 })
 

@@ -44,7 +44,7 @@ const Knob = styled(({ className }) => <div className={className} />)`
   width: ${({ size }) => rem(size * 0.8)};
   height: ${({ size }) => rem(size * 0.8)};
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.palette.white};
+  background: ${({ theme }) => theme.colors.field};
 `
 
 interface KnobContainerProps extends KnobProps {
@@ -70,14 +70,13 @@ export const KnobContainer = styled(KnobContainerLayout)<KnobContainerProps>`
   left: 0;
   right: 0;
   border-radius: ${({ size }) => rem(size)};
-  background: ${({ on, theme }) =>
-    on ? theme.colors.palette.purple400 : theme.colors.palette.charcoal300};
+  background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
 
   &:hover {
     ${({ disabled, theme }) =>
       disabled &&
       `box-shadow: 0 0 0.01rem 0.01rem ${rgba(
-        theme.colors.palette.primary500,
+        theme.colors.keyInteractive,
         0.5
       )}`};
   }

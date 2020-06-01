@@ -94,7 +94,7 @@ exports[`A FieldTextArea with default label 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"
@@ -240,7 +240,7 @@ exports[`A FieldTextArea with label inline 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextAreaID"

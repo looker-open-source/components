@@ -31,9 +31,9 @@ export const FauxCheckbox = styled.div`
   width: 100%;
   height: 100%;
   background: currentColor;
-  border: solid 1px ${({ theme }) => theme.colors.palette.charcoal200};
+  border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
-  color: ${({ theme }) => theme.colors.palette.white};
+  color: ${({ theme }) => theme.colors.keyText};
   display: flex;
   justify-content: center;
   align-items: center;
