@@ -91,7 +91,7 @@ const intent = variant({
     critical: { bg: 'criticalAccent', color: 'criticalInteractive' },
     key: { bg: 'keyAccent', color: 'keyPressed' },
     inform: { bg: 'palette.blue100', color: 'palette.blue600' },
-    neutral: { bg: 'neutralAccent', color: 'neutralInteractive' },
+    neutral: { bg: 'neutralAccent', color: 'neutralPressed' },
     plain: { bg: 'keyText', color: 'keyInteractive' },
     positive: { bg: 'palette.green100', color: 'palette.green700' },
     warn: { bg: 'palette.yellow100', color: 'palette.yellow900' },

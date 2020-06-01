@@ -75,19 +75,19 @@ export const fallbackStateful: StatefulColors = {
   keyInteractive: purple500,
   keyPressed: purple600,
   keyText: white,
-  keyTextAlt: purple400,
+  keyBorder: purple400,
 
   criticalSubtle: red000,
   criticalAccent: red100,
   criticalInteractive: red600,
   criticalPressed: red700,
   criticalText: white,
-  criticalTextAlt: red400,
+  criticalBorder: red400,
 
   neutralSubtle: charcoal000,
   neutralAccent: charcoal100,
   neutralInteractive: charcoal500,
   neutralPressed: charcoal600,
   neutralText: white,
-  neutralTextAlt: charcoal600,
+  neutralBorder: charcoal400,
 }

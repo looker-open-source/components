@@ -41,7 +41,7 @@ exports[`Chip renders correctly 1`] = `
 }
 
 .c1:focus {
-  background-color: #BFB2FF;
+  background-color: #BBB2FF;
   outline: none;
 }
 
@@ -118,7 +118,7 @@ exports[`Chip renders disabled 1`] = `
 }
 
 .c1:focus {
-  background-color: #BFB2FF;
+  background-color: #BBB2FF;
   outline: none;
 }
 

@@ -59,6 +59,8 @@ exports[`Badge renders all intents 3`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  background-color: #e0f2ff;
+  color: #0059b2;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -83,8 +85,8 @@ exports[`Badge renders all intents 4`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #DEE1E5;
-  color: #4C535B;
+  background-color: #F5F6F7;
+  color: #707781;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -109,6 +111,8 @@ exports[`Badge renders all intents 5`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  background-color: #FFEBC4;
+  color: #724B00;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

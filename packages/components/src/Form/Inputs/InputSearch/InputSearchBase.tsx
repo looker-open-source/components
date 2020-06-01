@@ -176,7 +176,7 @@ InputSearchBaseComponent.displayName = 'InputSearchBaseComponent'
 
 export const InputSearchBase = styled(InputSearchBaseComponent)`
   align-items: center;
-  background: ${(props) => props.theme.colors.field};
+  background-color: ${({ theme: { colors } }) => colors.field};
 
   &:hover {
     ${inputTextHover}

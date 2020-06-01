@@ -75,6 +75,9 @@ export const KnobContainer = styled(KnobContainerLayout)<KnobContainerProps>`
   &:hover {
     ${({ disabled, theme }) =>
       disabled &&
-      `box-shadow: 0 0 0.01rem 0.01rem ${rgba(theme.colors.key, 0.5)}`};
+      `box-shadow: 0 0 0.01rem 0.01rem ${rgba(
+        theme.colors.keyInteractive,
+        0.5
+      )}`};
   }
 `

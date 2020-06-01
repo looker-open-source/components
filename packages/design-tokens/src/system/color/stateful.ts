@@ -33,7 +33,7 @@ export interface StatefulColorChoices {
   interactive: string
   pressed: string
   text: string
-  textAlt: string
+  border: string
 }
 
 export interface StatefulColors
@@ -47,7 +47,7 @@ interface CriticalStatefulColors {
   criticalInteractive: string
   criticalPressed: string
   criticalText: string
-  criticalTextAlt: string
+  criticalBorder: string
 }
 
 interface NeutralStatefulColors {
@@ -56,7 +56,7 @@ interface NeutralStatefulColors {
   neutralInteractive: string
   neutralPressed: string
   neutralText: string
-  neutralTextAlt: string
+  neutralBorder: string
 }
 
 interface KeyStatefulColors {
@@ -101,5 +101,5 @@ interface KeyStatefulColors {
    * TBD too
    * @default `purple400`
    */
-  keyTextAlt: string
+  keyBorder: string
 }

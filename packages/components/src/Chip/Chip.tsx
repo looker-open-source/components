@@ -37,7 +37,7 @@ import {
 } from '@looker/design-tokens'
 import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { rgba } from 'polished'
+import { darken, rgba } from 'polished'
 import { IconButton } from '../Button'
 import { Text, TextProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
@@ -77,25 +77,26 @@ const ChipStyle = styled.span<ChipProps>`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.keyAccent};
+    background-color: ${(props) => props.theme.colors.keyAccent};
   }
 
   &:focus {
-    background-color: ${({ theme }) => theme.colors.keyFocus};
+    background-color: ${({ theme }) =>
+      darken(0.1, theme.colors.keyAccent).toUpperCase()};
     outline: none;
   }
 
-  ${({ focusVisible, theme }) =>
+  ${({ focusVisible, theme: { colors } }) =>
     focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`};
+    `box-shadow: 0 0 0 0.15rem ${rgba(colors.keyFocus, 0.25)};`};
 
-  ${({ disabled, theme }) =>
+  ${({ disabled, theme: { colors } }) =>
     disabled &&
-    `color: ${theme.colors.neutral};
-      background-color: ${theme.colors.neutralAccent};
+    `color: ${colors.neutral};
+      background-color: ${colors.neutralAccent};
 
       &:hover {
-        background-color: ${theme.colors.neutralAccent};
+        background-color: ${colors.neutralAccent};
       }
     `}
 `

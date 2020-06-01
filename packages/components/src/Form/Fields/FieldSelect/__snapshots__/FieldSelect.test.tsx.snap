@@ -228,7 +228,7 @@ exports[`A FieldSelect 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
@@ -281,7 +281,7 @@ exports[`A FieldSelect 1`] = `
         >
           <div
             className="c12 "
-            color="palette.charcoal500"
+            color="text4"
             size={18}
           >
             <svg
@@ -598,7 +598,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
@@ -651,7 +651,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         >
           <div
             className="c12 "
-            color="palette.red500"
+            color="critical"
             size={20}
           >
             <svg
@@ -674,7 +674,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           />
           <div
             className="c14 "
-            color="palette.charcoal500"
+            color="text4"
             size={18}
           >
             <svg
@@ -951,7 +951,7 @@ exports[`A required FieldSelect 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
@@ -1015,7 +1015,7 @@ exports[`A required FieldSelect 1`] = `
         >
           <div
             className="c14 "
-            color="palette.charcoal500"
+            color="text4"
             size={18}
           >
             <svg
@@ -1272,7 +1272,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="normal"
     htmlFor="thumbs-up"
@@ -1325,7 +1325,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         >
           <div
             className="c12 "
-            color="palette.charcoal500"
+            color="text4"
             size={18}
           >
             <svg

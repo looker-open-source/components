@@ -200,10 +200,16 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   }
 
   &:disabled {
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb,
+    &::-webkit-slider-thumb {
+      border-color: ${({ theme }) => theme.colors.neutral};
+      cursor: default;
+    }
+    &::-moz-range-thumb {
+      border-color: ${({ theme }) => theme.colors.neutral};
+      cursor: default;
+    }
     &::-ms-thumb {
-      border-color: ${({ theme }) => theme.colors.ui4};
+      border-color: ${({ theme }) => theme.colors.neutral};
       cursor: default;
     }
   }

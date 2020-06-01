@@ -214,13 +214,13 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
     props.validationType === 'error'
       ? `
-      border-color: ${props.theme.colors.critical};
+      border-color: ${props.theme.colors.criticalBorder};
       &:hover {
-        border-color: ${props.theme.colors.criticalInteractive};
+        border-color: ${props.theme.colors.critical};
       }
       &:focus,
       :focus-within {
-        border-color: ${props.theme.colors.criticalPressed};
+        border-color: ${props.theme.colors.critical};
         box-shadow: 0 0 0 2px ${props.theme.colors.criticalAccent};
       }
       `

@@ -107,7 +107,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
 
     &:focus + div {
       box-shadow: 0 0 0 0.2rem
-        ${({ theme }) => rgba(theme.colors.key, 0.4)};
+        ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
     }
   }
 `
