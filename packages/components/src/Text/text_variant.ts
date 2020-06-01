@@ -49,7 +49,7 @@ export const textVariant = variant({
       color: 'text1',
     },
     inverted: {
-      color: 'inverseText',
+      color: 'inverseOn',
     },
     positive: {
       color: 'positive',

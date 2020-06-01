@@ -71,7 +71,7 @@ test('<ButtonGroup/> uncontrolled', () => {
   expect(apples).toHaveAttribute('checked')
   expect(oranges).not.toHaveAttribute('checked')
   expect(getByText('Apples')).toHaveStyle(`color: ${theme.colors.key}`)
-  expect(getByText('Oranges')).toHaveStyle(`color: ${theme.colors.key}`)
+  expect(getByText('Oranges')).toHaveStyle(`color: ${theme.colors.text3}`)
 
   expect(getByLabelText('Bananas')).toBeInTheDocument()
 

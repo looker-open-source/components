@@ -212,14 +212,14 @@ exports[`IconButton accepts events 1`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,
@@ -357,14 +357,14 @@ exports[`IconButton accepts events 2`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,
@@ -502,14 +502,14 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,
@@ -647,14 +647,14 @@ exports[`IconButton default 1`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,
@@ -791,14 +791,14 @@ exports[`IconButton outline 1`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,
@@ -1241,14 +1241,14 @@ exports[`IconButton resized 1`] = `
 .c1.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1:active,
 .c1.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c1[disabled]:hover,

@@ -93,7 +93,7 @@ Avatars allow the developer to specify a color to use. Default Colors:
       <AvatarIcon color="inform" />
       <AvatarUser color="positive" user={data} />
       <AvatarIcon color="positive" />
-      <AvatarIcon color="inverseText" bg="positive" />
+      <AvatarIcon color="inverseOn" bg="positive" />
     </Flex>
   )
 }
@@ -105,7 +105,7 @@ A combination of `AvatarUser` and `AvatarIcon`.
 
 - `secondaryIcon` - icon used for secondary avatar. Default: `User`
 - `secondaryColor` - color to use for secondary avatar border & icon. Default: `key`
-- `secondaryBg` - color to use for secondary avatar background. Default: `inverseText`
+- `secondaryBg` - color to use for secondary avatar background. Default: `inverseOn`
 
 ```jsx
 ;() => {
@@ -125,7 +125,7 @@ A combination of `AvatarUser` and `AvatarIcon`.
         user={noImageData}
         color="inform"
         secondaryBg="key"
-        secondaryColor="inverseText"
+        secondaryColor="inverseOn"
         secondaryIcon="User"
       />
     </Flex>
