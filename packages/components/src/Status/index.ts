@@ -24,9 +24,4 @@
 
  */
 
-import { css } from 'styled-components'
-
-export const inputColor = css`
-  background: ${(props) => props.theme.colors.semanticColors.primary.main};
-  border-color: ${(props) => props.theme.colors.semanticColors.primary.main};
-`
+export * from './Status'

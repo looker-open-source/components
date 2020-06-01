@@ -24,4 +24,10 @@
 
  */
 
-export * from './Banner'
+export {
+  closeCombobox,
+  getAllComboboxOptionText,
+  getComboboxOptions,
+  getComboboxOptionText,
+  openCombobox,
+} from './comboboxHelpers'

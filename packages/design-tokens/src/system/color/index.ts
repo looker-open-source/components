@@ -24,6 +24,41 @@
 
  */
 
+import { BlendColors } from './blends'
+import { IntentColors, SurfaceColors } from './specifiable'
+import { StatefulColors } from './stateful'
+
 export type { ColorProps } from 'styled-system'
-export { Palette } from './palette'
-export { SemanticColor, SemanticColors } from './semantic_colors'
+
+export interface CoreColors {
+  /**
+   * Default page background
+   * Used for: application background
+   * @default white
+   */
+  background: string
+  /**
+   * TODO
+   * Used for: Text
+   * @default charcoal800
+   */
+  text: string
+  /**
+   * Key color is applied strategically across the UI
+   * Used for: default action buttons, toggle switches, interactive component accents
+   * @default purple400
+   */
+  key: string
+}
+
+export interface SpecifiableColors
+  extends CoreColors,
+    SurfaceColors,
+    IntentColors {}
+
+export interface Colors
+  extends SpecifiableColors,
+    BlendColors,
+    StatefulColors {}
+
+export { StatefulColor } from './stateful'

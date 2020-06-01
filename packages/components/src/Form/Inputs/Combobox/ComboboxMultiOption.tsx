@@ -37,12 +37,12 @@ import {
 } from './ComboboxContext'
 import {
   comboboxOptionDefaultProps,
-  ComboboxOptionDetail,
   ComboboxOptionProps,
   comboboxOptionStyle,
   ComboboxOptionWrapper,
   ComboboxOptionText,
 } from './ComboboxOption'
+import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
@@ -52,6 +52,7 @@ const ComboboxMultiOptionInternal = forwardRef(
   (
     {
       children,
+      indicator,
       highlightText = true,
       scrollIntoView,
       hideCheckMark,
@@ -92,9 +93,14 @@ const ComboboxMultiOptionInternal = forwardRef(
         ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail>
+        <ComboboxOptionIndicator
+          indicator={indicator}
+          isActive={isActive}
+          isSelected={isSelected}
+          isMulti={true}
+        >
           {!hideCheckMark && <Checkbox checked={isSelected} />}
-        </ComboboxOptionDetail>
+        </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
@@ -105,8 +111,6 @@ ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
 export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
   ${comboboxOptionStyle}
-  grid-template-columns: ${(props) =>
-    props.hideCheckMark ? 0 : props.theme.space.xlarge} 1fr;
 `
 
 ComboboxMultiOption.defaultProps = {

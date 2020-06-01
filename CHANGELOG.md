@@ -9,12 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Status` component
 - `Tree`, `TreeItem` components
   - Includes docs and test suite
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
+- `ComboboxList` and `ComboboxOption` now both support a custom `indicator`
+  - `Select` and `SelectMulti` also support `indicator` at both the component and option level
+- Test helper functions for `Combobox` component using react-testing-library
 
 ### Changed
 
+- `Button*` font sizes updated to match design specifications
+- `theme.colors` shape has been significantly refactored (documentation updates to follow)
+- `Banner` is now `MessageBar`
+  - Major style changes to be more Material-esque
+  - `warning` is now `warn`
+  - `error` is now `critical`
+  - `info` is now `inform`
+  - `confirmation` is now `positive`
+- ``
+- `Badge` - `default` intent is now `key`
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
 - Updated `LookerLogo` and `LogoRings` to match new branding
 
@@ -27,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
 - `InlineInputText` no longer adds a special character to prevent vertical-collapse when empty
+
+### Removed
+
+- `SemanticColor[s]` are no longer supported (see new `theme.colors` shape above)
 
 ## [0.7.37] - 2020-05-20
 

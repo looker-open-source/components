@@ -28,45 +28,35 @@ import styled from 'styled-components'
 import { ButtonBase } from './ButtonBase'
 
 export const ButtonOutline = styled(ButtonBase)`
-  background: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].text};
+  background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
   border: 1px solid
-    ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].borderColor};
-  color: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].main};
+    ${({ theme, color = 'key' }) => theme.colors[`${color}Border`]};
+  color: ${({ theme, color = 'key' }) => theme.colors[color]};
 
   &:hover,
   &:focus,
   &.hover {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].text};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].main};
-    color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].darker};
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
+    border-color: ${({ theme, color = 'key' }) => theme.colors[color]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Pressed`]};
   }
 
   &:active,
   &.active {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].main};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].main};
-    color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].text};
+    background: ${({ theme, color = 'key' }) => theme.colors[color]};
+    border-color: ${({ theme, color = 'key' }) => theme.colors[color]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
   }
 
   &[disabled] {
     &:hover,
     &:active,
     &:focus {
-      background-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].text};
-      border-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].borderColor};
-      color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].main};
+      background-color: ${({ theme, color = 'key' }) =>
+        theme.colors[`${color}Text`]};
+      border-color: ${({ theme, color = 'key' }) =>
+        theme.colors[`${color}Border`]};
+      color: ${({ theme, color = 'key' }) => theme.colors[color]};
     }
   }
 `

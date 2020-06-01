@@ -32,6 +32,7 @@ import {
   Combobox,
   ComboboxInput,
   ComboboxList,
+  ComboboxOptionIndicatorProps,
   ComboboxProps,
 } from '../Combobox'
 import {
@@ -42,7 +43,9 @@ import {
 import { getOption, getFirstOption } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
-export interface SelectBaseProps extends SelectOptionsBaseProps {
+export interface SelectBaseProps
+  extends SelectOptionsBaseProps,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   placeholder?: string
   /**
    * The user can clear the current value by clicking an x icon button
@@ -101,6 +104,7 @@ const SelectComponent = forwardRef(
       'aria-describedby': ariaDescribedby,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      indicator,
       listLayout,
       validationType,
       windowedOptions: windowedOptionsProp,
@@ -166,6 +170,7 @@ const SelectComponent = forwardRef(
           <ComboboxList
             persistSelection
             windowedOptions={windowedOptions}
+            indicator={indicator}
             {...ariaProps}
             {...listLayout}
           >

@@ -24,7 +24,7 @@
 
  */
 
-import { Palette } from '../../system'
+import { Palette } from '../../system/color/palette'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

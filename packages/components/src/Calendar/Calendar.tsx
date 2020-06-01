@@ -149,26 +149,23 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       color: ${({ theme }) => theme.colors.palette.charcoal300};
     }
     &--today {
-      color: ${({ theme, disabled }) =>
-        !disabled && theme.colors.semanticColors.primary.main};
+      color: ${({ theme, disabled }) => !disabled && theme.colors.key};
     }
     &--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
       position: static;
       background-color: ${({ theme, disabled }) =>
-        disabled
-          ? theme.colors.palette.charcoal500
-          : theme.colors.semanticColors.primary.main};
+        disabled ? theme.colors.neutral : theme.colors.key};
       &:hover {
         background-color: ${({ theme, disabled }) =>
           disabled
-            ? theme.colors.palette.charcoal500
-            : theme.colors.semanticColors.primary.dark};
+            ? theme.colors.neutralInteractive
+            : theme.colors.keyInteractive};
       }
     }
     &:focus {
       border-width: 2px;
       border-color: ${({ theme: { colors }, disabled }) =>
-        disabled ? colors.palette.charcoal200 : colors.palette.purple300};
+        disabled ? colors.neutralBorder : colors.keyBorder};
       outline: none;
     }
   }
@@ -181,18 +178,12 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       &.DayPicker-Day--outside,
       &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
         background-color: ${({ theme, disabled }) =>
-          disabled
-            ? theme.colors.palette.charcoal200
-            : theme.colors.semanticColors.primary.light};
+          disabled ? theme.colors.neutralAccent : theme.colors.keyAccent};
         color: ${({ theme }) =>
-          mix(
-            0.65,
-            theme.colors.semanticColors.primary.light,
-            theme.colors.semanticColors.neutral.altText
-          )};
+          mix(0.65, theme.colors.keyAccent, theme.colors.neutralInteractive)};
       }
       &:not(.DayPicker-Day--to):not(.DayPicker-Day--from):not(.DayPicker-Day--outside) {
-        color: ${({ theme }) => theme.colors.semanticColors.neutral.altText};
+        color: ${({ theme }) => theme.colors.neutralInteractive};
       }
       border-radius: 0;
       &:not(.DayPicker-Day--from) {
@@ -228,9 +219,8 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
       &:hover {
         background-color: ${({ theme, disabled }) =>
-          disabled ? 'transparent' : theme.colors.semanticColors.primary.light};
-        color: ${({ theme, disabled }) =>
-          !disabled && theme.colors.semanticColors.primary.main};
+          disabled ? 'transparent' : theme.colors.keyAccent};
+        color: ${({ theme, disabled }) => !disabled && theme.colors.key};
       }
     }
   }

@@ -46,10 +46,8 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  SemanticColors,
+  StatefulColor,
 } from '@looker/design-tokens'
-
-type ButtonColors = keyof SemanticColors
 
 type ButtonSizes = SizeXXSmall | SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
@@ -75,7 +73,7 @@ export const ButtonDemo: FC = () => {
   const renderButtons = (
     style: ButtonStyles,
     size: ButtonSizes,
-    color: ButtonColors
+    color: StatefulColor
   ) => {
     const ButtonTag = ButtonComponents[style]
     return (
@@ -96,25 +94,25 @@ export const ButtonDemo: FC = () => {
   return (
     <Box p="xlarge">
       <SpaceVertical gap="small">
-        <Heading>Primary</Heading>
+        <Heading>Key</Heading>
         <Grid columns={3}>
           <ButtonContainer>
             <SpaceVertical gap="xlarge">
               {buttonSizes.map((size) => {
-                return renderButtons('default', size, 'primary')
+                return renderButtons('default', size, 'key')
               })}
             </SpaceVertical>
           </ButtonContainer>
 
           <ButtonContainer>
             {buttonSizes.map((size) => {
-              return renderButtons('outline', size, 'primary')
+              return renderButtons('outline', size, 'key')
             })}
           </ButtonContainer>
 
           <ButtonContainer>
             {buttonSizes.map((size) => {
-              return renderButtons('transparent', size, 'primary')
+              return renderButtons('transparent', size, 'key')
             })}
           </ButtonContainer>
         </Grid>
@@ -138,20 +136,20 @@ export const ButtonDemo: FC = () => {
           <ButtonContainer>
             <SpaceVertical gap="xlarge">
               {buttonSizes.map((size) => {
-                return renderButtons('default', size, 'danger')
+                return renderButtons('default', size, 'critical')
               })}
             </SpaceVertical>
           </ButtonContainer>
 
           <ButtonContainer>
             {buttonSizes.map((size) => {
-              return renderButtons('outline', size, 'danger')
+              return renderButtons('outline', size, 'critical')
             })}
           </ButtonContainer>
 
           <ButtonContainer>
             {buttonSizes.map((size) => {
-              return renderButtons('transparent', size, 'danger')
+              return renderButtons('transparent', size, 'critical')
             })}
           </ButtonContainer>
         </Grid>

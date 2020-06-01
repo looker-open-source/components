@@ -23,7 +23,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -47,17 +47,17 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -76,7 +76,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb enwebB sc-ifAKCX sc-EHOje fuVpOj"
+  class="sc-bxivhb keNUCd sc-ifAKCX sc-EHOje dGzJFz"
 >
   focus
 </button>
@@ -105,7 +105,7 @@ exports[`Button can be full width 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -130,17 +130,17 @@ exports[`Button can be full width 1`] = `
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -180,7 +180,7 @@ exports[`Button disable 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -204,17 +204,17 @@ exports[`Button disable 1`] = `
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -257,7 +257,7 @@ exports[`Button validates all sizes 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -281,17 +281,17 @@ exports[`Button validates all sizes 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -331,7 +331,7 @@ exports[`Button validates all sizes 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   height: 28px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -355,17 +355,17 @@ exports[`Button validates all sizes 2`] = `
   height: 16px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -405,7 +405,7 @@ exports[`Button validates all sizes 3`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -429,17 +429,17 @@ exports[`Button validates all sizes 3`] = `
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -503,17 +503,17 @@ exports[`Button validates all sizes 4`] = `
   height: 20px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -566,7 +566,7 @@ exports[`Button with icon validates all sizes 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -617,17 +617,17 @@ exports[`Button with icon validates all sizes 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -719,7 +719,7 @@ exports[`Button with icon validates all sizes 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   height: 28px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -777,17 +777,17 @@ exports[`Button with icon validates all sizes 2`] = `
   height: 16px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -872,7 +872,7 @@ exports[`Button with icon validates all sizes 3`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -937,17 +937,17 @@ exports[`Button with icon validates all sizes 3`] = `
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -1097,17 +1097,17 @@ exports[`Button with icon validates all sizes 4`] = `
   height: 20px;
 }
 
-.c1:active,
-.c1.active {
-  background: #412399;
-  border-color: #412399;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #4F2ABA;
   border-color: #4F2ABA;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
 }
 
 .c1[disabled]:hover,
@@ -1142,7 +1142,7 @@ exports[`Button with icon validates all sizes 4`] = `
 </button>
 `;
 
-exports[`Button works with color danger 1`] = `
+exports[`Button works with color critical 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1165,7 +1165,7 @@ exports[`Button works with color danger 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.875rem;
   height: 36px;
   padding-left: 24px;
   padding-right: 24px;
@@ -1189,17 +1189,17 @@ exports[`Button works with color danger 1`] = `
   height: 18px;
 }
 
-.c1:active,
-.c1.active {
-  background: #990F14;
-  border-color: #990F14;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
   background: #B2121F;
   border-color: #B2121F;
+}
+
+.c1:active,
+.c1.active {
+  background: #990F14;
+  border-color: #990F14;
 }
 
 .c1[disabled]:hover,
@@ -1211,8 +1211,8 @@ exports[`Button works with color danger 1`] = `
 
 <button
   class="c0 c1"
-  color="danger"
+  color="critical"
 >
-  danger
+  critical
 </button>
 `;

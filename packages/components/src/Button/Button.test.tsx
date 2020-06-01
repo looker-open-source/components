@@ -36,10 +36,12 @@ test('Button is rendered ', () => {
   assertSnapshotShallow(<Button>click here</Button>)
 })
 
-test('Button works with color danger', () => {
-  const { getByText } = renderWithTheme(<Button color="danger">danger</Button>)
+test('Button works with color critical', () => {
+  const { getByText } = renderWithTheme(
+    <Button color="critical">critical</Button>
+  )
 
-  expect(getByText('danger')).toMatchSnapshot()
+  expect(getByText('critical')).toMatchSnapshot()
 })
 
 test('Button disable', () => {

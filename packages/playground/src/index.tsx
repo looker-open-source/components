@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
 

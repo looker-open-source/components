@@ -28,7 +28,7 @@ import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { semanticColors } from '@looker/design-tokens'
+import { theme } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Confirm } from './Confirm'
 
@@ -65,7 +65,7 @@ test('<Confirm/> with defaults', async () => {
 
   expect(getByText(requiredProps.title)).toBeVisible()
   expect(getByText(requiredProps.message)).toBeVisible()
-  expect(button).toHaveStyle(`background: ${semanticColors.primary.main}`)
+  expect(button).toHaveStyle(`background: ${theme.colors.key}`)
 
   fireEvent.click(button)
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
@@ -77,7 +77,7 @@ test('<Confirm/> with defaults', async () => {
 
 test('<Confirm/> with custom props', () => {
   const { getByText } = renderWithTheme(
-    <Confirm {...requiredProps} {...optionalProps} buttonColor="danger">
+    <Confirm {...requiredProps} {...optionalProps} buttonColor="critical">
       {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
@@ -86,7 +86,7 @@ test('<Confirm/> with custom props', () => {
   fireEvent.click(opener)
 
   const button = getByText(optionalProps.confirmLabel || '')
-  expect(button).toHaveStyle(`background: ${semanticColors.danger.main}`)
+  expect(button).toHaveStyle(`background: ${theme.colors.critical}`)
 
   fireEvent.click(getByText(optionalProps.cancelLabel || ''))
   fireEvent.click(button)

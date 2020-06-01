@@ -37,7 +37,7 @@ exports[`ModalHeader 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   height: 28px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -63,13 +63,6 @@ exports[`ModalHeader 1`] = `
   height: 16px;
 }
 
-.c3:active,
-.c3.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c3:hover,
 .c3:focus,
 .c3.hover {
@@ -78,9 +71,18 @@ exports[`ModalHeader 1`] = `
   color: #4C535B;
 }
 
+.c3:active,
+.c3.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c3[disabled]:hover,
 .c3[disabled]:active,
 .c3[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 

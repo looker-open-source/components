@@ -27,3 +27,4 @@
 export { ReactWrapper } from 'enzyme'
 export * from './create_with_theme'
 export * from './snapshot'
+export * from './helpers/react-testing-library'

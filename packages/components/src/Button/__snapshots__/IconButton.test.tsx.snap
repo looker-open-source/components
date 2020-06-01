@@ -37,7 +37,7 @@ exports[`IconButton accepts color 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -63,13 +63,6 @@ exports[`IconButton accepts color 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -78,9 +71,18 @@ exports[`IconButton accepts color 1`] = `
   color: #ED3B53;
 }
 
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #CC1F36;
 }
 
@@ -104,7 +106,7 @@ exports[`IconButton accepts color 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="danger"
+  color="critical"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -179,7 +181,7 @@ exports[`IconButton accepts events 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -205,13 +207,6 @@ exports[`IconButton accepts events 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -220,9 +215,18 @@ exports[`IconButton accepts events 1`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 
@@ -322,7 +326,7 @@ exports[`IconButton accepts events 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -348,13 +352,6 @@ exports[`IconButton accepts events 2`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -363,9 +360,18 @@ exports[`IconButton accepts events 2`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 
@@ -465,7 +471,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -491,13 +497,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -506,9 +505,18 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 
@@ -608,7 +616,7 @@ exports[`IconButton default 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -634,13 +642,6 @@ exports[`IconButton default 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -649,9 +650,18 @@ exports[`IconButton default 1`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 
@@ -750,7 +760,7 @@ exports[`IconButton outline 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -776,13 +786,6 @@ exports[`IconButton outline 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -791,9 +794,18 @@ exports[`IconButton outline 1`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 
@@ -910,7 +922,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -936,13 +948,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -951,9 +956,18 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   color: #ED3B53;
 }
 
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #CC1F36;
 }
 
@@ -977,7 +991,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="danger"
+  color="critical"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -1052,7 +1066,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   height: 24px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1078,13 +1092,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   height: 12px;
 }
 
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -1093,9 +1100,18 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   color: #ED3B53;
 }
 
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #CC1F36;
 }
 
@@ -1119,7 +1135,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="danger"
+  color="critical"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -1220,13 +1236,6 @@ exports[`IconButton resized 1`] = `
   height: 20px;
 }
 
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -1235,9 +1244,18 @@ exports[`IconButton resized 1`] = `
   color: #4C535B;
 }
 
+.c1:active,
+.c1.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 

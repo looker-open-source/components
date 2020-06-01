@@ -49,13 +49,13 @@ export interface BadgeProps
    *  @default `default`
    **/
   intent?:
-    | 'warning'
+    | 'warn'
     | 'positive'
     | 'critical'
-    | 'info'
+    | 'inform'
     | 'neutral'
     | 'plain'
-    | 'default'
+    | 'key'
   /**
    * Defines the size of Badge diameter.
    * @default "medium"
@@ -89,7 +89,7 @@ const intent = variant({
   prop: 'intent',
   variants: {
     critical: { bg: 'palette.red100', color: 'palette.red600' },
-    default: { bg: 'palette.purple100', color: 'palette.purple600' },
+    key: { bg: 'palette.purple100', color: 'palette.purple600' },
     info: { bg: 'palette.blue100', color: 'palette.blue600' },
     neutral: { bg: 'palette.charcoal200', color: 'palette.charcoal600' },
     plain: { bg: 'palette.white', color: 'palette.purple500' },
@@ -116,6 +116,6 @@ export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
 `
 
 Badge.defaultProps = {
-  intent: 'default',
+  intent: 'key',
   size: 'medium',
 }
