@@ -10,7 +10,7 @@ exports[`A <TableHeaderCell> should render 1`] = `
 
 <th
   className="c0"
-  color="palette.charcoal400"
+  color="ui4"
   fontSize="xsmall"
   fontWeight="semiBold"
 >

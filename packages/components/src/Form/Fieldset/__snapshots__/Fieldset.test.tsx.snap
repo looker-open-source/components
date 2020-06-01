@@ -183,7 +183,7 @@ exports[`Fieldset 1`] = `
 >
   <legend
     className="c1"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="medium"
     fontWeight="semiBold"
   >
@@ -199,7 +199,7 @@ exports[`Fieldset 1`] = `
     >
       <label
         className="c4 c5"
-        color="palette.charcoal700"
+        color="text2"
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-1"
@@ -232,7 +232,7 @@ exports[`Fieldset 1`] = `
     >
       <label
         className="c4 c5"
-        color="palette.charcoal700"
+        color="text2"
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-2"
@@ -265,7 +265,7 @@ exports[`Fieldset 1`] = `
     >
       <label
         className="c4 c5"
-        color="palette.charcoal700"
+        color="text2"
         fontSize="xsmall"
         fontWeight="semiBold"
         htmlFor="text-3"

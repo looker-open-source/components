@@ -421,6 +421,6 @@ exports[`Box fonts font helpers 7`] = `
 
 <div
   className="c0"
-  color="palette.charcoal400"
+  color="ui4"
 />
 `;
