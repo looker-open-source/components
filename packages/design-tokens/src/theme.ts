@@ -50,13 +50,13 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  palette,
   radii,
   colors,
   shadows,
   space,
   transitions,
 } from './tokens'
+import { palette } from './tokens/color/palette'
 
 interface ThemeColors extends Colors {
   palette: Palette
