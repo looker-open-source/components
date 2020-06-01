@@ -217,7 +217,7 @@ export function useTooltip({
           backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
-          color="inverseOn"
+          color="onInverse"
           {...surfaceStyles}
         >
           <TooltipContent

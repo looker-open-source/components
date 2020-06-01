@@ -42,7 +42,7 @@ export interface SurfaceColors {
    * Used for: Icons in main nav, Text on primary buttons
    * @default white
    */
-  inverseOn: string
+  onInverse: string
 }
 
 export interface IntentColors {
