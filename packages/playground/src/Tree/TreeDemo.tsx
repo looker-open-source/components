@@ -48,21 +48,63 @@ const addButton = (
 const exploreExample = (
   <Box>
     Explore Example
-    <Tree detail={addButton} detailStopPropagation label="Custom Fields">
-      <TreeGroup label="Blank">
+    <Tree
+      defaultOpen
+      detail={addButton}
+      detailStopPropagation
+      label="Custom Fields"
+    >
+      <TreeGroup label="Dimensions">
         <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
           Cost
         </TreeItem>
+        <Tree label="Created">
+          <TreeItem
+            icon="Calendar"
+            onClick={() => alert('Clicked on Created Date!')}
+          >
+            Created Date
+          </TreeItem>
+          <TreeItem
+            icon="Calendar"
+            onClick={() => alert('Clicked on Created Month!')}
+          >
+            Created Month
+          </TreeItem>
+          <TreeItem
+            icon="Calendar"
+            onClick={() => alert('Clicked on Created Year!')}
+          >
+            Created Year
+          </TreeItem>
+          <TreeItem
+            icon="Calendar"
+            onClick={() => alert('Clicked on Created Quarter!')}
+          >
+            Created Quarter
+          </TreeItem>
+        </Tree>
+        <TreeItem
+          icon="FieldDistance"
+          onClick={() => alert('Clicked on Location!')}
+        >
+          Location
+        </TreeItem>
+        <TreeItem icon="FieldTier" onClick={() => alert('Clicked on Tier!')}>
+          Tier
+        </TreeItem>
+        <TreeItem
+          icon="FieldYesNo"
+          onClick={() => alert('Clicked on French Yes-No!')}
+        >
+          Oui ou Non
+        </TreeItem>
       </TreeGroup>
-      <Tree label="Created">
-        <TreeItem icon="Calendar">Created Date</TreeItem>
-        <TreeItem icon="Calendar">Created Month</TreeItem>
-        <TreeItem icon="Calendar">Created Year</TreeItem>
-        <TreeItem icon="Calendar">Created Quarter</TreeItem>
-      </Tree>
-      <TreeItem icon="FieldDistance">Location</TreeItem>
-      <TreeItem icon="FieldTier">Tier</TreeItem>
-      <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+      <TreeGroup label="Measures">
+        <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Count!')}>
+          Count
+        </TreeItem>
+      </TreeGroup>
     </Tree>
   </Box>
 )

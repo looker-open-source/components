@@ -36,13 +36,19 @@ export interface TreeGroupProps {
   label: string
 }
 
+const TreeGroupLabel = styled.div`
+  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
+  font-size: ${({ theme }) => theme.space.small};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+`
+
 const TreeGroupLayout: FC<TreeGroupProps> = ({
   children,
   className,
   label,
 }) => (
   <div className={className}>
-    {label}
+    <TreeGroupLabel>{label}</TreeGroupLabel>
     {children}
   </div>
 )
