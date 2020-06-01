@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref, useState } from 'react'
+import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { ButtonItem } from './ButtonItem'
 import {
@@ -71,6 +71,7 @@ ButtonToggleLayout.displayName = 'ButtonToggleLayout'
 export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.medium};
+  opacity: 0.99;
 
   /* prevents items in the last row from growing */
   &::after {
@@ -87,13 +88,29 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
     height: 36px;
     border-radius: 0;
 
+    &:focus {
+      box-shadow: ${({
+        theme: {
+          colors: { palette: purple200 },
+        },
+      }) => `inset 1px 1px 0 ${purple200}, inset -1px -1px 0 ${purple200}`};
+    }
+
+    &:last-child {
+      border-top-right-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
+    }
     &:first-child {
       border-top-left-radius: ${({ theme }) => theme.radii.medium};
       border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
     }
-    &:last-child {
-      border-top-right-radius: ${({ theme }) => theme.radii.medium};
-      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
+
+    &:first-child:focus {
+      box-shadow: ${({
+        theme: {
+          colors: { palette: purple200 },
+        },
+      }) => `inset 1px 1px 0 ${purple200}, inset -1px -1px 0 ${purple200}`};
     }
 
     &::before,

@@ -74,58 +74,70 @@ Use the `nullable` if the user should be able to click the selected item to de-s
 ;() => {
   const [value, setValue] = useState('')
   return (
-    <ButtonToggle value={value} onChange={setValue} nullable>
-      <ButtonItem>Alabama</ButtonItem>
-      <ButtonItem>Alaska</ButtonItem>
-      <ButtonItem>Arizona</ButtonItem>
-      <ButtonItem>Arkansas</ButtonItem>
-      <ButtonItem>California</ButtonItem>
-      <ButtonItem>Colorado</ButtonItem>
-      <ButtonItem>Connecticut</ButtonItem>
-      <ButtonItem>Delaware</ButtonItem>
-      <ButtonItem>Florida</ButtonItem>
-      <ButtonItem>Georgia</ButtonItem>
-      <ButtonItem>Hawaii</ButtonItem>
-      <ButtonItem>Idaho</ButtonItem>
-      <ButtonItem>Illinois</ButtonItem>
-      <ButtonItem>Indiana</ButtonItem>
-      <ButtonItem>Iowa</ButtonItem>
-      <ButtonItem>Kansas</ButtonItem>
-      <ButtonItem>Kentucky</ButtonItem>
-      <ButtonItem>Louisiana</ButtonItem>
-      <ButtonItem>Maine</ButtonItem>
-      <ButtonItem>Maryland</ButtonItem>
-      <ButtonItem>Massachusetts</ButtonItem>
-      <ButtonItem>Michigan</ButtonItem>
-      <ButtonItem>Minnesota</ButtonItem>
-      <ButtonItem>Mississippi</ButtonItem>
-      <ButtonItem>Missouri</ButtonItem>
-      <ButtonItem>Montana</ButtonItem>
-      <ButtonItem>Nebraska</ButtonItem>
-      <ButtonItem>Nevada</ButtonItem>
-      <ButtonItem>New Hampshire</ButtonItem>
-      <ButtonItem>New Jersey</ButtonItem>
-      <ButtonItem>New Mexico</ButtonItem>
-      <ButtonItem>New York</ButtonItem>
-      <ButtonItem>North Carolina</ButtonItem>
-      <ButtonItem>North Dakota</ButtonItem>
-      <ButtonItem>Ohio</ButtonItem>
-      <ButtonItem>Oklahoma</ButtonItem>
-      <ButtonItem>Oregon</ButtonItem>
-      <ButtonItem>Pennsylvania</ButtonItem>
-      <ButtonItem>Rhode Island</ButtonItem>
-      <ButtonItem>South Carolina</ButtonItem>
-      <ButtonItem>South Dakota</ButtonItem>
-      <ButtonItem>Tennessee</ButtonItem>
-      <ButtonItem>Texas</ButtonItem>
-      <ButtonItem>Utah</ButtonItem>
-      <ButtonItem>Vermont</ButtonItem>
-      <ButtonItem>Virginia</ButtonItem>
-      <ButtonItem>Washington</ButtonItem>
-      <ButtonItem>West Virginia</ButtonItem>
-      <ButtonItem>Wisconsin</ButtonItem>
-      <ButtonItem>Wyoming</ButtonItem>
-    </ButtonToggle>
+    <>
+      <Confirm
+        title="Confirm Something"
+        message="Is this what you want to do?"
+        onConfirm={(close) => {
+          alert('You did something')
+          close()
+        }}
+      >
+        {(open) => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+      <ButtonToggle value={value} onChange={setValue} nullable>
+        <ButtonItem>Alabama</ButtonItem>
+        <ButtonItem>Alaska</ButtonItem>
+        <ButtonItem>Arizona</ButtonItem>
+        <ButtonItem>Arkansas</ButtonItem>
+        <ButtonItem>California</ButtonItem>
+        <ButtonItem>Colorado</ButtonItem>
+        <ButtonItem>Connecticut</ButtonItem>
+        <ButtonItem>Delaware</ButtonItem>
+        <ButtonItem>Florida</ButtonItem>
+        <ButtonItem>Georgia</ButtonItem>
+        <ButtonItem>Hawaii</ButtonItem>
+        <ButtonItem>Idaho</ButtonItem>
+        <ButtonItem>Illinois</ButtonItem>
+        <ButtonItem>Indiana</ButtonItem>
+        <ButtonItem>Iowa</ButtonItem>
+        <ButtonItem>Kansas</ButtonItem>
+        <ButtonItem>Kentucky</ButtonItem>
+        <ButtonItem>Louisiana</ButtonItem>
+        <ButtonItem>Maine</ButtonItem>
+        <ButtonItem>Maryland</ButtonItem>
+        <ButtonItem>Massachusetts</ButtonItem>
+        <ButtonItem>Michigan</ButtonItem>
+        <ButtonItem>Minnesota</ButtonItem>
+        <ButtonItem>Mississippi</ButtonItem>
+        <ButtonItem>Missouri</ButtonItem>
+        <ButtonItem>Montana</ButtonItem>
+        <ButtonItem>Nebraska</ButtonItem>
+        <ButtonItem>Nevada</ButtonItem>
+        <ButtonItem>New Hampshire</ButtonItem>
+        <ButtonItem>New Jersey</ButtonItem>
+        <ButtonItem>New Mexico</ButtonItem>
+        <ButtonItem>New York</ButtonItem>
+        <ButtonItem>North Carolina</ButtonItem>
+        <ButtonItem>North Dakota</ButtonItem>
+        <ButtonItem>Ohio</ButtonItem>
+        <ButtonItem>Oklahoma</ButtonItem>
+        <ButtonItem>Oregon</ButtonItem>
+        <ButtonItem>Pennsylvania</ButtonItem>
+        <ButtonItem>Rhode Island</ButtonItem>
+        <ButtonItem>South Carolina</ButtonItem>
+        <ButtonItem>South Dakota</ButtonItem>
+        <ButtonItem>Tennessee</ButtonItem>
+        <ButtonItem>Texas</ButtonItem>
+        <ButtonItem>Utah</ButtonItem>
+        <ButtonItem>Vermont</ButtonItem>
+        <ButtonItem>Virginia</ButtonItem>
+        <ButtonItem>Washington</ButtonItem>
+        <ButtonItem>West Virginia</ButtonItem>
+        <ButtonItem>Wisconsin</ButtonItem>
+        <ButtonItem>Wyoming</ButtonItem>
+      </ButtonToggle>
+    </>
   )
 }
 ```

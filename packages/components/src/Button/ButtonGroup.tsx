@@ -25,7 +25,7 @@
  */
 
 import xor from 'lodash/xor'
-import React, { forwardRef, MouseEvent, Ref, useState } from 'react'
+import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { ButtonItem } from './ButtonItem'
 import { ButtonGroupOrToggleBaseProps, ButtonSet } from './ButtonSet'
@@ -35,8 +35,6 @@ const ButtonGroupLayout = forwardRef(
     { onChange, value = [], ...props }: ButtonGroupOrToggleBaseProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const newPp = document.createElement('ping-pong')
-    newPp.setAttribute('sdk', sdk)
     function handleItemClick(e: MouseEvent<HTMLButtonElement>) {
       const newValue = xor(value, [e.currentTarget.value])
       if (onChange) {
@@ -66,5 +64,9 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
     border-radius: ${({ theme }) => theme.radii.medium};
     height: 36px;
     margin: ${({ theme }) => theme.space.xxxsmall};
+
+    &:focus {
+      box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
+    }
   }
 `

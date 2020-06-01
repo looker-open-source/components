@@ -120,7 +120,6 @@ export const ButtonItem = styled(ButtonLayout)`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
   }
 
   color: ${({ theme }) => theme.colors.text3};
