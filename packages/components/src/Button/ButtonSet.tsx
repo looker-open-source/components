@@ -25,12 +25,8 @@
  */
 
 import React, {
-  cloneElement,
-  ChangeEvent,
-  Children,
   forwardRef,
   ForwardRefExoticComponent,
-  isValidElement,
   MouseEvent,
   ReactNode,
   Ref,
@@ -38,11 +34,11 @@ import React, {
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
-import { ButtonItemProps } from './ButtonItem'
+import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
 
 interface ButtonSetProps<ValueType extends string | string[] = string[]>
   extends SimpleLayoutProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   /**
    * One or more ButtonItem
    */
@@ -51,91 +47,38 @@ interface ButtonSetProps<ValueType extends string | string[] = string[]>
    * Value for controlling the component
    */
   value?: ValueType
-  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void
-  isToggle?: boolean
-  /**
-   * Value can be unset by clicking selected button (ButtonToggle only)
-   */
-  nullable?: boolean
+  onItemClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface ButtonGroupOrToggleBaseProps<
   ValueType extends string | string[] = string[]
-> extends Omit<ButtonSetProps<ValueType>, 'isToggle' | 'onChange'> {
-  onChange?: (value: ValueType) => void
+> extends Omit<ButtonSetProps<ValueType>, 'onChange' | 'onItemClick'> {
+  onChange?: ButtonSetCallback<ValueType>
 }
 
 export type ButtonSetType<
-  T extends string | string[] = string[]
-> = ForwardRefExoticComponent<ButtonSetProps<T> & { ref: Ref<HTMLDivElement> }>
+  TValue extends string | string[] = string[]
+> = ForwardRefExoticComponent<
+  ButtonSetProps<TValue> & { ref: Ref<HTMLDivElement> }
+>
 
 export const ButtonSetLayout = forwardRef(
   (
-    {
-      children,
-      disabled,
-      isToggle,
-      name,
-      nullable,
-      onChange: groupOnChange,
-      value,
-      ...props
-    }: ButtonSetProps,
+    { children, disabled, onItemClick, value, ...props }: ButtonSetProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const clonedChildren = Children.map(children, (child) => {
-      if (!isValidElement(child)) return child
-
-      const { props: childProps } = child
-      const childValue =
-        childProps.value ||
-        (typeof childProps.children === 'string' ? childProps.children : null)
-
-      return cloneElement<ButtonItemProps>(child, {
-        isControlled: groupOnChange !== undefined,
-        name,
-        type: isToggle ? 'radio' : 'checkbox',
-        value: childValue,
-        // pass down these optional props only if they're defined (overriding child props)
-        ...(value && value.length !== 0
-          ? {
-              selected: isToggle
-                ? value === childValue
-                : value.includes(childValue),
-            }
-          : typeof value === 'string' && value === ''
-          ? { selected: undefined }
-          : {}),
-        ...(disabled ? { disabled } : {}),
-        ...(groupOnChange
-          ? {
-              onChange: (e: ChangeEvent<HTMLInputElement>) => {
-                groupOnChange && groupOnChange(e)
-                childProps.onChange && childProps.onChange(e)
-              },
-            }
-          : {}),
-        ...(nullable && isToggle && groupOnChange
-          ? {
-              onClick: (e: MouseEvent<HTMLLabelElement>) => {
-                // The onClick is attached to the label but the browser will
-                // call it twice (2nd time with the input as target)
-                // If we un-check the radio in the 1st event (on label), the browser will immediately
-                // re - check it, so we wait for the 2nd event (on input)
-                if ((e.target as HTMLElement).tagName === 'INPUT') {
-                  groupOnChange()
-                }
-                childProps.onClick && childProps.onClick(e)
-              },
-            }
-          : {}),
-      })
-    })
+    const context = {
+      disabled,
+      onItemClick,
+      value,
+    }
 
     return (
-      <div ref={ref} {...props}>
-        {clonedChildren}
-      </div>
+      <ButtonSetContext.Provider value={context}>
+        <div role="group" ref={ref} {...props}>
+          {children}
+        </div>
+      </ButtonSetContext.Provider>
     )
   }
 )

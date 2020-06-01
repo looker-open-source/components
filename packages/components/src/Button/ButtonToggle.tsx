@@ -24,64 +24,49 @@
 
  */
 
-import React, { forwardRef, Ref, useState, ChangeEvent } from 'react'
+import React, { forwardRef, MouseEvent, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { useControlWarn, useID } from '../utils'
-import { ButtonItemLabel } from './ButtonItem'
+import { ButtonItem } from './ButtonItem'
 import {
   ButtonGroupOrToggleBaseProps,
   ButtonSet,
   ButtonSetType,
 } from './ButtonSet'
 
-const ButtonToggleComponent = (ButtonSet as unknown) as ButtonSetType<string>
+export interface ButtonToggleProps
+  extends ButtonGroupOrToggleBaseProps<string> {
+  nullable?: boolean
+}
+
+const ButtonToggleComponent = ButtonSet as ButtonSetType<string>
 
 const ButtonToggleLayout = forwardRef(
   (
-    {
-      onChange,
-      value: controlledValue,
-      ...props
-    }: ButtonGroupOrToggleBaseProps<string>,
+    { nullable, onChange, value = '', ...props }: ButtonToggleProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    //
-    const name = useID(props.name)
-
-    const isControlled = useControlWarn({
-      controllingProps: ['onChange', 'value'],
-      isControlledCheck: () => onChange !== undefined,
-      name: 'ButtonToggle',
-    })
-
-    const [value, setValue] = useState<string>()
-
-    function handleChange(e?: ChangeEvent<HTMLInputElement>) {
-      const newValue = e ? e.target.value : ''
-      if (onChange) {
-        onChange(newValue)
-      } else {
-        setValue(newValue)
+    function handleItemClick(e: MouseEvent<HTMLButtonElement>) {
+      const newValue = e.currentTarget.value
+      const deselecting = newValue === value
+      if (!deselecting || nullable) {
+        if (onChange) {
+          onChange(newValue)
+        }
       }
     }
+
     return (
       <ButtonToggleComponent
         {...props}
-        onChange={handleChange}
-        isToggle
+        value={value}
+        onItemClick={handleItemClick}
         ref={ref}
-        {...(isControlled
-          ? {
-              value: controlledValue,
-            }
-          : {
-              name,
-              value,
-            })}
       />
     )
   }
 )
+
+ButtonToggleLayout.displayName = 'ButtonToggleLayout'
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
@@ -93,7 +78,8 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
     flex-grow: 100;
   }
 
-  ${ButtonItemLabel} {
+  ${ButtonItem} {
+    border: none;
     /* In a wrapping scenario we want items in complete rows
     to fill the full width evenly */
     flex-grow: 1;
