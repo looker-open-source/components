@@ -27,7 +27,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
 
-const App: FC = () => {
+const App = () => {
   return (
     <ComponentsProvider>
       <InputColor />

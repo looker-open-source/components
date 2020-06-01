@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- update InputColor to have an empty `Swatch`
 - `Status` component
 - `Tree`, `TreeItem` components
   - Includes docs and test suite
