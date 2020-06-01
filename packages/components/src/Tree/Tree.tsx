@@ -124,6 +124,10 @@ export const Tree = styled(TreeLayout)`
 
   ${AccordionContent} {
     ${({ border }) => border && centeredVerticalBorder}
+    padding-left: ${({ theme: { space } }) =>
+      `calc(${space[indicatorProps.indicatorSize as SpacingSizes]} + ${
+        space[indicatorProps.indicatorGap as SpacingSizes]
+      } + ${space.xxsmall})`}
   }
 
   ${TreeItem} {
