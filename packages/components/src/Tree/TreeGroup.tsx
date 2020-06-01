@@ -31,6 +31,10 @@ export interface TreeGroupProps {
   children: ReactNode
   className?: string
   /**
+   * Color of the text of the label and children
+   */
+  color?: string
+  /**
    * Visible label of the TreeGroup
    */
   label: string
@@ -53,4 +57,6 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
   </div>
 )
 
-export const TreeGroup = styled(TreeGroupLayout)``
+export const TreeGroup = styled(TreeGroupLayout)`
+  color: ${({ color }) => color};
+`

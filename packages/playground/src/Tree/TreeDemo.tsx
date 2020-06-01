@@ -100,9 +100,15 @@ const exploreExample = (
           Oui ou Non
         </TreeItem>
       </TreeGroup>
-      <TreeGroup label="Measures">
+      <TreeGroup color="#BD892B" label="Measures">
         <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Count!')}>
           Count
+        </TreeItem>
+        <TreeItem
+          icon="FieldNumber"
+          onClick={() => alert('Clicked on Count Distinct!')}
+        >
+          Count Distinct
         </TreeItem>
       </TreeGroup>
     </Tree>
