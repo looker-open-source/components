@@ -95,7 +95,7 @@ export const AvatarIcon = styled(AvatarLayout)`
 `
 
 AvatarIcon.defaultProps = {
-  bg: 'keyText',
+  bg: 'background',
   color: 'keyFocus',
   size: 'small',
 }
