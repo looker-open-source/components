@@ -25,7 +25,7 @@
  */
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, InputColor } from '@looker/components'
+import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
 
 const App: FC = () => {
   return (
@@ -33,6 +33,7 @@ const App: FC = () => {
       <InputColor />
       <InputColor value="green" />
       <InputColor defaultValue="purple" />
+      <Swatch />
     </ComponentsProvider>
   )
 }

@@ -182,7 +182,7 @@ export const InputColorComponent = forwardRef(
       <Flex>
         <Swatch
           ref={triggerRef}
-          color={hsv2hex(color)}
+          color={color ? hsv2hex(color) : undefined}
           borderRadius={hideInput ? 'medium' : 'none'}
           borderTopLeftRadius="medium"
           borderBottomLeftRadius="medium"
