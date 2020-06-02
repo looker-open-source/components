@@ -33,7 +33,7 @@ export const generateThemeFromCoreColors = (
   theme: Theme,
   coreColors: Partial<CoreColors>
 ): Theme => {
-  const colors = generateColors(theme, coreColors)
+  const colors = generateColors(theme.colors, coreColors)
 
   return {
     ...theme,

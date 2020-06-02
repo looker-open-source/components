@@ -25,11 +25,11 @@
  */
 
 import { BlendColors } from './blends'
-import { IntentColors, SurfaceColors } from './specifiable'
 import { StatefulColors } from './stateful'
+import { IntentColors, SurfaceColors } from './specifiable'
 
-export { BlendColors } from './blends'
-export { StatefulColors, StatefulColorChoices } from './stateful'
+export type { BlendColors } from './blends'
+export type { StatefulColors, StatefulColorChoices } from './stateful'
 export type { ColorProps } from 'styled-system'
 
 export interface CoreColors {

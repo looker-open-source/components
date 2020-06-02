@@ -26,9 +26,7 @@
 
 import {
   Card,
-  Box,
   Grid,
-  Heading,
   Button,
   Tabs,
   TabList,
@@ -37,7 +35,7 @@ import {
   TabPanel,
   CardContent,
 } from '@looker/components'
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { ThemeColorDemo } from './ThemeColorDemo'
 import { ThemeEditor } from './ThemeEditor'
 

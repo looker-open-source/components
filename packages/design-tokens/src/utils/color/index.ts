@@ -24,26 +24,28 @@
 
  */
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-
-import { CoreColors, SpecifiableColors } from '../../system'
-import { Theme } from '../../theme'
+import { Colors, CoreColors, SpecifiableColors } from '../../system'
 import { defaultIntentColors } from '../../tokens'
 import { generateSurfaceColors } from './surface'
 import { generateBlendColors } from './blend'
 import { generateStatefulColors } from './stateful'
 
-export const generateColors = (theme: Theme, colors: Partial<CoreColors>) => {
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
+export const generateColors = (
+  themeColors: Colors,
+  colors: Partial<CoreColors>
+) => {
   const { background, text, key } = colors
 
   if (!background && !text && !key) {
-    return theme.colors
+    return themeColors
   }
 
   const coreColors = {
-    background: colors.background || theme.colors.background,
-    text: colors.text || theme.colors.text,
-    key: colors.key || theme.colors.key,
+    background: colors.background || themeColors.background,
+    text: colors.text || themeColors.text,
+    key: colors.key || themeColors.key,
   }
 
   const specifiableColors: SpecifiableColors = {

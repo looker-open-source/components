@@ -31,7 +31,6 @@ import {
   SpecifiableColors,
 } from '../../system/color'
 import { mixColors } from './blend'
-import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
 const keyBlends = [8, 12, 20, 30, 40]
 
