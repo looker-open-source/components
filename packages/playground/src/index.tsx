@@ -25,15 +25,19 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
+import { ComponentsProvider, Flex, Icon } from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <InputColor />
-      <InputColor value="green" />
-      <InputColor defaultValue="purple" />
-      <Swatch />
+      <Flex alignItems="center" justifyContent="center">
+        <Icon name="GearOutline" size="xxsmall" />
+        <Icon name="GearOutline" size="xsmall" />
+        <Icon name="GearOutline" size="small" />
+        <Icon name="GearOutline" size="medium" />
+        <Icon name="GearOutline" />
+        <Icon name="GearOutline" size="large" />
+      </Flex>
     </ComponentsProvider>
   )
 }
