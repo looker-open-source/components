@@ -33,6 +33,6 @@ export const generateSurfaceColors = (
   return {
     field: coreColors.background,
     inverse: coreColors.text,
-    onInverse: coreColors.background,
+    inverseOn: coreColors.background,
   }
 }

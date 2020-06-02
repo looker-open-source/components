@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `ComponentsProvider` now supports `coreColors` attribute for dynamic theme generation
 - update InputColor to have an empty `Swatch`
 - `Status` component
 - `Tree`, `TreeItem` components
