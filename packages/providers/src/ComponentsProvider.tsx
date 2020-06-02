@@ -24,7 +24,13 @@
 
  */
 
-import { GlobalStyle, IEGlobalStyle } from '@looker/design-tokens'
+import {
+  GlobalStyle,
+  IEGlobalStyle,
+  CoreColors,
+  theme,
+  generateThemeFromCoreColors,
+} from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
@@ -47,17 +53,30 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
    * @default false
    */
   ie11Support?: boolean
+
+  /**
+   *
+   */
+  coreColors?: Partial<CoreColors>
 }
 
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
   ie11Support = false,
+  coreColors,
   ...props
-}) => (
-  <ThemeProvider {...props}>
-    {globalStyle && <GlobalStyle />}
-    {ie11Support && <IEGlobalStyle />}
-    {children}
-  </ThemeProvider>
-)
+}) => {
+  const baseTheme = props.theme || theme
+
+  const generatedTheme =
+    coreColors && generateThemeFromCoreColors(baseTheme, coreColors)
+
+  return (
+    <ThemeProvider {...props} theme={generatedTheme}>
+      {globalStyle && <GlobalStyle />}
+      {ie11Support && <IEGlobalStyle />}
+      {children}
+    </ThemeProvider>
+  )
+}

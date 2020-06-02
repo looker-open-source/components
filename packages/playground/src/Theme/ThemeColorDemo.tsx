@@ -44,7 +44,7 @@ export const ThemeColorDemo = () => {
   ))
 
   return (
-    <Grid m="xlarge" columns={6} gap="medium">
+    <Grid columns={6} gap="medium">
       {swatches}
     </Grid>
   )
