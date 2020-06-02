@@ -40,5 +40,7 @@
     "xxxsmall",
     "xxxxlarge"
   ],
-  "prettier.arrowParens": "always"
+  "prettier.arrowParens": "always",
+  "files.autoSave": "off",
+  "debug.allowBreakpointsEverywhere": true
 }

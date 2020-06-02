@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
@@ -51,25 +52,38 @@ export interface SwatchProps
   color?: string
 }
 
+const emptySwatch = `position: relative;
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    height: 1px;
+    width: calc(100% + 12px);
+    background: red;
+    /* left: 50%; */
+    top: 50%;
+    margin-left: -6px;
+    transform: rotate(-45deg);
+  }`
+
 export const Swatch = styled.div<SwatchProps>`
   ${reset}
   ${width}
   ${height}
   ${border}
-
   &:hover {
     ${inputTextHover}
   }
-
   ${(props) => (props.disabled ? inputTextDisabled : '')}
-
   background-color: ${(props) => props.color};
   margin-top: auto;
   flex-shrink: 0;
+
+  ${(props) => props.color === 'transparent' && emptySwatch}
 `
 
 Swatch.defaultProps = {
   ...omit(inputTextDefaults, 'fontSize'),
-  color: 'white',
+  color: 'transparent',
   width: inputTextDefaults.height,
 }

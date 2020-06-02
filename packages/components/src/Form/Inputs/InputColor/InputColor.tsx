@@ -33,17 +33,13 @@ import React, {
   useEffect,
 } from 'react'
 import styled from 'styled-components'
+import get from 'lodash/get'
 import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
 import { Flex } from '../../../Layout/Flex'
-import {
-  HueSaturation,
-  polarbrightness2hsv,
-  SimpleHSV,
-  white,
-} from './ColorWheel/color_wheel_utils'
+import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
 import { ColorWheel } from './ColorWheel'
 import { LuminositySlider } from './LuminositySlider'
 import { Swatch } from './Swatch'
@@ -86,8 +82,7 @@ const createEventWithHSVValue = (
 }
 
 function getColorFromText(text?: string) {
-  const initialWhite = polarbrightness2hsv(white())
-  return text && isValidColor(text) ? str2simpleHsv(text) : initialWhite
+  return text && isValidColor(text) ? str2simpleHsv(text) : undefined
 }
 
 export const InputColorComponent = forwardRef(
@@ -106,10 +101,9 @@ export const InputColorComponent = forwardRef(
   ) => {
     const inputID = useID(id)
     const validationMessage = useFormContext(props)
-    const initialWhite = polarbrightness2hsv(white())
     const initialColor = getColorFromText(value || defaultValue)
 
-    const [color, setColor] = useState<SimpleHSV>(initialColor)
+    const [color, setColor] = useState<SimpleHSV | undefined>(initialColor)
     const [inputTextValue, setInputTextValue] = useState(
       value || defaultValue || ''
     )
@@ -127,7 +121,7 @@ export const InputColorComponent = forwardRef(
       }
     }, [isFocused, value, inputTextValue])
 
-    const callOnChange = (newColor: SimpleHSV | string) => {
+    const callOnChange = (newColor?: SimpleHSV | string) => {
       if (!onChange || !newColor) return
       onChange(createEventWithHSVValue(newColor))
     }
@@ -138,12 +132,13 @@ export const InputColorComponent = forwardRef(
       callOnChange(newColor)
     }
 
-    const handleColorChange = (hs: HueSaturation) =>
-      setColorState({ ...hs, v: color.v })
+    const handleColorChange = (hs: HueSaturation) => {
+      setColorState({ h: 0, s: 100, ...hs, v: get(color, 'v', 1) })
+    }
 
     const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
       setColorState({
-        ...color,
+        ...(color || { h: 0, s: 100, v: 100 }),
         v: Number(event.currentTarget.value) / 100,
       })
 
@@ -152,7 +147,7 @@ export const InputColorComponent = forwardRef(
       setInputTextValue(newValue)
 
       const isValid = isValidColor(newValue)
-      callOnChange(isValid ? newValue : initialWhite)
+      callOnChange(isValid ? newValue : undefined)
       setColor(getColorFromText(event.currentTarget.value))
     }
 
@@ -160,16 +155,16 @@ export const InputColorComponent = forwardRef(
       <PopoverContent display="flex" flexDirection="column">
         <ColorWheel
           size={colorWheelSize}
-          hue={color.h}
-          saturation={color.s}
-          value={color.v}
+          hue={get(color, 'h')}
+          saturation={get(color, 's')}
+          value={get(color, 'v')}
           onColorChange={handleColorChange}
         />
         <LuminositySlider
           min={0}
           max={100}
           step={1}
-          value={color.v * 100}
+          value={get(color, 'v', 1) * 100}
           width={colorWheelSize}
           onChange={handleSliderChange}
         />
@@ -182,7 +177,7 @@ export const InputColorComponent = forwardRef(
       <Flex>
         <Swatch
           ref={triggerRef}
-          color={hsv2hex(color)}
+          color={color ? hsv2hex(color) : undefined}
           borderRadius={hideInput ? 'medium' : 'none'}
           borderTopLeftRadius="medium"
           borderBottomLeftRadius="medium"
