@@ -26,7 +26,7 @@
 
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { ButtonItem } from './ButtonItem'
+import { ButtonItem, buttonItemHeight } from './ButtonItem'
 import {
   ButtonGroupOrToggleBaseProps,
   ButtonSet,
@@ -50,7 +50,7 @@ const ButtonToggleLayout = forwardRef(
       const deselecting = newValue === value
       if (!deselecting || nullable) {
         if (onChange) {
-          onChange(newValue)
+          onChange(deselecting ? '' : newValue)
         }
       }
     }
@@ -70,31 +70,65 @@ ButtonToggleLayout.displayName = 'ButtonToggleLayout'
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-left-width: 0;
   border-radius: ${({ theme }) => theme.radii.medium};
-  opacity: 0.99;
+  background-color: ${({ theme }) => theme.colors.background};
 
-  /* prevents items in the last row from growing */
-  &::after {
-    content: '';
-    flex-grow: 100;
+  &.wrapping {
+    /* Slightly mitigates top-right and bottom-left square items overflowing rounded corners
+    (those ones can't be targeted for rounding) */
+    overflow: hidden;
+    /* Creates horizontal rules between rows
+    (and hide the last one that's flush with the bottom border) */
+    /* stylelint-disable */
+    background-image: linear-gradient(
+        0deg,
+        ${({ theme }) => theme.colors.background} 0,
+        ${({ theme }) => theme.colors.background} 1px,
+        transparent 1px,
+        transparent 100%
+      ),
+      repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 35px,
+        ${({ theme }) => theme.colors.ui2} 35px,
+        ${({ theme }) => theme.colors.ui2} ${buttonItemHeight}px
+      );
+    /* stylelint-enabled */
+
+    /* prevents items in the last row from growing */
+    &::after {
+      content: '';
+      flex-grow: 100;
+      height: ${buttonItemHeight}px;
+      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
+    }
+
+    ${ButtonItem} {
+      /* Items in complete rows need to fill the full width evenly */
+      flex-grow: 1;
+      /* Removes some item-level rounded corners */
+      &:first-child {
+        border-bottom-left-radius: 0;
+      }
+      &:last-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      /* Fix bottom "border" when the item background obscures the parent's horizontal rows */
+      &[aria-pressed='false']:hover:not(:focus),
+      &[aria-pressed='true']:not(:focus) {
+        box-shadow: inset 0 -1px 0 0 ${({ theme }) => theme.colors.ui2};
+      }
+    }
   }
 
   ${ButtonItem} {
+    height: ${buttonItemHeight}px;
     border: none;
-    /* In a wrapping scenario we want items in complete rows
-    to fill the full width evenly */
-    flex-grow: 1;
-    position: relative;
-    height: 36px;
+    border-left: solid 1px ${({ theme }) => theme.colors.ui2};
     border-radius: 0;
-
-    &:focus {
-      box-shadow: ${({
-        theme: {
-          colors: { palette: purple200 },
-        },
-      }) => `inset 1px 1px 0 ${purple200}, inset -1px -1px 0 ${purple200}`};
-    }
 
     &:last-child {
       border-top-right-radius: ${({ theme }) => theme.radii.medium};
@@ -105,33 +139,8 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
     }
 
-    &:first-child:focus {
-      box-shadow: ${({
-        theme: {
-          colors: { palette: purple200 },
-        },
-      }) => `inset 1px 1px 0 ${purple200}, inset -1px -1px 0 ${purple200}`};
-    }
-
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      background: ${({ theme }) => theme.colors.ui2};
-      position: absolute;
-      z-index: 1;
-    }
-    &::before {
-      height: 1px;
-      width: 100%;
-      left: 0;
-      bottom: -1px;
-    }
-    &::after {
-      height: 100%;
-      width: 1px;
-      right: -1px;
-      top: 0;
+    &:focus {
+      box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.keyFocus};
     }
   }
 `

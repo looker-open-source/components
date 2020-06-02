@@ -40,7 +40,7 @@ export interface ButtonItemProps
   extends SpaceProps,
     TypographyProps,
     Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
-  value: string
+  value?: string
 }
 
 const ButtonLayout = forwardRef(
@@ -83,11 +83,14 @@ const ButtonLayout = forwardRef(
 
 ButtonLayout.displayName = 'ButtonLayout'
 
+export const buttonItemHeight = 36
+
 export const ButtonItem = styled(ButtonLayout)`
   cursor: pointer;
+  height: ${buttonItemHeight}px;
   display: inline-flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   padding: ${({ theme }) => theme.space.small};
   user-select: none;
   border-radius: ${({ theme }) => theme.radii.medium};

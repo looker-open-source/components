@@ -26,13 +26,15 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { TreeDemo } from './Tree/TreeDemo'
+import { ButtonSetDemo } from './Actions/ButtonSetDemo'
 
-const App = () => (
-  <ComponentsProvider>
-    <TreeDemo />
-  </ComponentsProvider>
-)
+const App = () => {
+  return (
+    <ComponentsProvider>
+      <ButtonSetDemo />
+    </ComponentsProvider>
+  )
+}
 
 /*
   This is the binding site for the playground. If you want to edit the

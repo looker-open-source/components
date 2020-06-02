@@ -56,17 +56,24 @@ const ButtonGroupLayout = forwardRef(
 ButtonGroupLayout.displayName = 'ButtonGroupLayout'
 
 export const ButtonGroup = styled(ButtonGroupLayout)`
-  margin: -${({ theme }) => theme.space.xxxsmall};
-
   ${ButtonItem} {
     border-style: solid;
     border-width: 1px;
     border-radius: ${({ theme }) => theme.radii.medium};
-    height: 36px;
-    margin: ${({ theme }) => theme.space.xxxsmall};
+    margin-right: ${({ theme }) => theme.space.xxsmall};
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &:focus {
       box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
+    }
+  }
+  &.wrapping {
+    margin: -${({ theme }) => theme.space.xxxsmall};
+    ${ButtonItem} {
+      margin: ${({ theme }) => theme.space.xxxsmall};
     }
   }
 `

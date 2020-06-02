@@ -30,11 +30,15 @@ import React, {
   MouseEvent,
   ReactNode,
   Ref,
+  useCallback,
+  useState,
 } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import { useForkedRef } from '../utils'
 import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
+import { buttonItemHeight } from './ButtonItem'
 
 interface ButtonSetProps<ValueType extends string | string[] = string[]>
   extends SimpleLayoutProps,
@@ -64,8 +68,15 @@ export type ButtonSetType<
 
 export const ButtonSetLayout = forwardRef(
   (
-    { children, disabled, onItemClick, value, ...props }: ButtonSetProps,
-    ref: Ref<HTMLDivElement>
+    {
+      children,
+      className,
+      disabled,
+      onItemClick,
+      value,
+      ...props
+    }: ButtonSetProps,
+    forwardedRef: Ref<HTMLDivElement>
   ) => {
     const context = {
       disabled,
@@ -73,9 +84,32 @@ export const ButtonSetLayout = forwardRef(
       value,
     }
 
+    const [isWrapping, setIsWrapping] = useState(false)
+    const measureRef = useCallback((node: HTMLElement | null) => {
+      if (node) {
+        const { height } = node.getBoundingClientRect()
+        const firstItem = node.childNodes[0] as HTMLElement
+        const rowHeight = firstItem
+          ? firstItem.getBoundingClientRect().height
+          : buttonItemHeight
+        if (height > rowHeight * 2) {
+          setIsWrapping(true)
+        } else {
+          setIsWrapping(false)
+        }
+      }
+    }, [])
+
+    const ref = useForkedRef(measureRef, forwardedRef)
+
     return (
       <ButtonSetContext.Provider value={context}>
-        <div role="group" ref={ref} {...props}>
+        <div
+          role="group"
+          className={`${isWrapping ? 'wrapping ' : ''}${className}`}
+          ref={ref}
+          {...props}
+        >
           {children}
         </div>
       </ButtonSetContext.Provider>

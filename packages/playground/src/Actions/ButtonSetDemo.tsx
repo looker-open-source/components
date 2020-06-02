@@ -96,6 +96,7 @@ function ButtonToggleDemo() {
   function handleChange4(value: string) {
     setToggle4(value)
   }
+  const [value3, setValue3] = useState('')
 
   return (
     <Box p="large" flex={1}>
@@ -154,6 +155,59 @@ function ButtonToggleDemo() {
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
+      </ButtonToggle>
+      <Divider />
+      <ButtonToggle value={value3} onChange={setValue3} nullable>
+        <ButtonItem>Alabama</ButtonItem>
+        <ButtonItem>Alaska</ButtonItem>
+        <ButtonItem>Arizona</ButtonItem>
+        <ButtonItem>Arkansas</ButtonItem>
+        <ButtonItem>California</ButtonItem>
+        <ButtonItem>Colorado</ButtonItem>
+        <ButtonItem>Connecticut</ButtonItem>
+        <ButtonItem>Delaware</ButtonItem>
+        <ButtonItem>Florida</ButtonItem>
+        <ButtonItem>Georgia</ButtonItem>
+        <ButtonItem>Hawaii</ButtonItem>
+        <ButtonItem>Idaho</ButtonItem>
+        <ButtonItem>Illinois</ButtonItem>
+        <ButtonItem>Indiana</ButtonItem>
+        <ButtonItem>Iowa</ButtonItem>
+        <ButtonItem>Kansas</ButtonItem>
+        <ButtonItem>Kentucky</ButtonItem>
+        <ButtonItem>Louisiana</ButtonItem>
+        <ButtonItem>Maine</ButtonItem>
+        <ButtonItem>Maryland</ButtonItem>
+        <ButtonItem>Massachusetts</ButtonItem>
+        <ButtonItem>Michigan</ButtonItem>
+        <ButtonItem>Minnesota</ButtonItem>
+        <ButtonItem>Mississippi</ButtonItem>
+        <ButtonItem>Missouri</ButtonItem>
+        <ButtonItem>Montana</ButtonItem>
+        <ButtonItem>Nebraska</ButtonItem>
+        <ButtonItem>Nevada</ButtonItem>
+        <ButtonItem>New Hampshire</ButtonItem>
+        <ButtonItem>New Jersey</ButtonItem>
+        <ButtonItem>New Mexico</ButtonItem>
+        <ButtonItem>New York</ButtonItem>
+        <ButtonItem>North Carolina</ButtonItem>
+        <ButtonItem>North Dakota</ButtonItem>
+        <ButtonItem>Ohio</ButtonItem>
+        <ButtonItem>Oklahoma</ButtonItem>
+        <ButtonItem>Oregon</ButtonItem>
+        <ButtonItem>Pennsylvania</ButtonItem>
+        <ButtonItem>Rhode Island</ButtonItem>
+        <ButtonItem>South Carolina</ButtonItem>
+        <ButtonItem>South Dakota</ButtonItem>
+        <ButtonItem>Tennessee</ButtonItem>
+        <ButtonItem>Texas</ButtonItem>
+        <ButtonItem>Utah</ButtonItem>
+        <ButtonItem>Vermont</ButtonItem>
+        <ButtonItem>Virginia</ButtonItem>
+        <ButtonItem>Washington</ButtonItem>
+        <ButtonItem>West Virginia</ButtonItem>
+        <ButtonItem>Wisconsin</ButtonItem>
+        <ButtonItem>Wyoming</ButtonItem>
       </ButtonToggle>
     </Box>
   )
