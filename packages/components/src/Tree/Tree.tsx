@@ -143,7 +143,7 @@ export const Tree = styled(TreeLayout)`
   }
 
   ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem} {
-    border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+    border: 1px solid transparent;
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
   }
@@ -153,6 +153,6 @@ export const Tree = styled(TreeLayout)`
   }
 
   ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem}:focus {
-    border-color: ${({ theme }) => theme.colors.palette.purple300};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
