@@ -24,41 +24,12 @@
 
  */
 
-import { variant } from 'styled-system'
+import { mix } from 'polished'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
-
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export const mixColors = (
+  mixAmount: number,
+  foreground: string,
+  background: string
+) => {
+  return mix(mixAmount / 100, foreground, background)
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})

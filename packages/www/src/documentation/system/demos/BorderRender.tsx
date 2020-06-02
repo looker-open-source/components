@@ -63,7 +63,7 @@ const borderData: BorderType[] = [
     color: 'text4',
     examples: ['inverse'],
     label: 'Border on Dark',
-    textColor: 'onInverse',
+    textColor: 'inverseOn',
   },
 ]
 

@@ -24,7 +24,7 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, Grid } from '@looker/components'
+import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import omit from 'lodash/omit'
@@ -35,21 +35,13 @@ export const ThemeColorDemo = () => {
   const colors = omit(theme.colors, 'palette')
 
   const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} minWidth="auto">
+    <Card key={name} width="100%">
       <Swatch color={color} width="100%" />
-      <Heading p="small" as="h5">
+      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
         {name}
       </Heading>
     </Card>
   ))
 
-  return (
-    <Grid m="xlarge" columns={6} gap="medium">
-      {swatches}
-    </Grid>
-  )
-
-  // console.log(theme.colors)
-
-  // return <pre>{String(theme.colors)}</pre>
+  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
 }

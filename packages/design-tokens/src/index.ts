@@ -33,6 +33,7 @@ export * from './GlobalStyle'
 export { palette }
 export { prismTheme } from './prismTheme'
 
-// Useful external helpers
+// Useful external utilities
 export * from './customizeable_attributes'
-export * from './helpers/animations'
+export * from './utils/animations'
+export { generateThemeFromCoreColors } from './utils/theme'

@@ -25,18 +25,14 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { ThemeDemo } from './Theme/ThemeDemo'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <InputColor />
-      <InputColor value="green" />
-      <InputColor defaultValue="purple" />
-      <Swatch />
-    </ComponentsProvider>
-  )
-}
+const App = () => (
+  <ComponentsProvider>
+    <ThemeDemo />
+  </ComponentsProvider>
+)
 
 /*
   This is the binding site for the playground. If you want to edit the
