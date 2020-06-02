@@ -42,39 +42,46 @@ import { ThemeColorDemo } from './ThemeColorDemo'
 import { ThemeEditor } from './ThemeEditor'
 
 const demoSuite = (
-  <Box width="100%">
-    <Tabs>
-      <TabList>
-        <Tab>Colors</Tab>
-        <Tab>Components</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>
-          <ThemeColorDemo />
-        </TabPanel>
-        <TabPanel>
-          <Card raised>
-            <CardContent>
-              <Button>My neat button</Button>
-            </CardContent>
-          </Card>
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
-  </Box>
+  <Card width="100%">
+    <CardContent>
+      <Tabs>
+        <TabList>
+          <Tab>Colors</Tab>
+          <Tab>Components</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ThemeColorDemo />
+          </TabPanel>
+          <TabPanel>
+            <Card raised>
+              <CardContent>
+                <Button>My neat button</Button>
+              </CardContent>
+            </Card>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </CardContent>
+  </Card>
 )
 
-export const ThemeDemo: FC = () => {
-  // const [instances, setInstances] = useState(3)
-
-  return (
-    <Grid m="xxlarge" gap="xxlarge" columns={2}>
-      <ThemeEditor>{demoSuite}</ThemeEditor>
-      <ThemeEditor colors={{ key: '#6C43E0' }}>{demoSuite}</ThemeEditor>
-    </Grid>
-  )
-}
-
-// #6443E0
-
-// wix - 116DFF
+export const ThemeDemo: FC = () => (
+  <Grid m="xlarge" gap="large" columns={4}>
+    <ThemeEditor name="Default">{demoSuite}</ThemeEditor>
+    <ThemeEditor name="Generated" keyColor="#6C43E0">
+      {demoSuite}
+    </ThemeEditor>
+    <ThemeEditor name="Customer Blue" keyColor="#116DFF">
+      {demoSuite}
+    </ThemeEditor>
+    <ThemeEditor
+      name="THUNDER Salmon"
+      keyColor="#ff3ca0"
+      backgroundColor="#000000"
+      textColor="#FFFFFF"
+    >
+      {demoSuite}
+    </ThemeEditor>
+  </Grid>
+)

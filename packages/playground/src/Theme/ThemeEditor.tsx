@@ -32,10 +32,25 @@ import {
 } from '@looker/components'
 import React, { FC, FormEvent, useState } from 'react'
 
-export const ThemeEditor: FC = ({ children }) => {
-  const [background, setBackground] = useState<string | undefined>()
-  const [key, setKey] = useState<string | undefined>()
-  const [text, setText] = useState<string | undefined>()
+interface ThemeEditorProps {
+  name: string
+  keyColor?: string
+  backgroundColor?: string
+  textColor?: string
+}
+
+export const ThemeEditor: FC<ThemeEditorProps> = ({
+  children,
+  name,
+  keyColor,
+  backgroundColor,
+  textColor,
+}) => {
+  const [background, setBackground] = useState<string | undefined>(
+    backgroundColor
+  )
+  const [key, setKey] = useState<string | undefined>(keyColor)
+  const [text, setText] = useState<string | undefined>(textColor)
 
   const handleKeyChange = (event: FormEvent<HTMLInputElement>) => {
     setKey(event.currentTarget.value)
@@ -53,7 +68,7 @@ export const ThemeEditor: FC = ({ children }) => {
 
   return (
     <SpaceVertical>
-      <Fieldset>
+      <Fieldset legend={name}>
         <FieldColor
           label="Key"
           placeholder="Key Color (default #6C43E0)"
