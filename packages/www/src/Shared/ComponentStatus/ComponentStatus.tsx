@@ -68,12 +68,10 @@ const Status: FC<StatusProps> = (props) => {
 const statusBackground = (props: StatusProps) => {
   switch (props.status) {
     case 'experimental':
-      return css`
-        background-color: ${(props) => props.theme.colors.palette.yellow000};
-      `
+      return css``
     case 'deprecated':
       return css`
-        background-color: ${(props) => props.theme.colors.palette.red000};
+        background-color: ${(props) => props.theme.colors.criticalAccent};
       `
     case 'stable':
     default:
@@ -86,10 +84,10 @@ const StyledBox = styled(Box)``
 const StatusFlag = styled(Paragraph).attrs({ py: 'xsmall' })<StatusProps>`
   ${statusBackground}
   text-transform: capitalize;
-  color: ${(props) => props.theme.colors.palette.charcoal500};
+  color: ${(props) => props.theme.colors.text};
 
   &:hover {
-    color: ${(props) => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.text3};
     text-decoration: none;
 
     ${StyledBox} {

@@ -76,8 +76,8 @@ Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values ar
 
 Avatars allow the developer to specify a color to use. Default Colors:
 
-- `AvatarIcon`: `palette.purple300`
-- `AvatarUser`: `palette.purple400`
+- `AvatarIcon`: `keyFocus`
+- `AvatarUser`: `key`
 
 ```jsx
 ;() => {
@@ -89,11 +89,11 @@ Avatars allow the developer to specify a color to use. Default Colors:
     <Flex justifyContent="space-around" alignItems="center">
       <AvatarUser user={data} />
       <AvatarIcon />
-      <AvatarUser color="palette.blue500" user={data} />
-      <AvatarIcon color="palette.blue400" />
-      <AvatarUser color="palette.green500" user={data} />
-      <AvatarIcon color="palette.green400" />
-      <AvatarIcon color="palette.white" bg="palette.green500" />
+      <AvatarUser color="inform" user={data} />
+      <AvatarIcon color="inform" />
+      <AvatarUser color="positive" user={data} />
+      <AvatarIcon color="positive" />
+      <AvatarIcon color="onInverse" bg="positive" />
     </Flex>
   )
 }
@@ -104,8 +104,8 @@ Avatars allow the developer to specify a color to use. Default Colors:
 A combination of `AvatarUser` and `AvatarIcon`.
 
 - `secondaryIcon` - icon used for secondary avatar. Default: `User`
-- `secondaryColor` - color to use for secondary avatar border & icon. Default: `palette.purple400`
-- `secondaryBg` - color to use for secondary avatar background. Default: `palette.white`
+- `secondaryColor` - color to use for secondary avatar border & icon. Default: `key`
+- `secondaryBg` - color to use for secondary avatar background. Default: `onInverse`
 
 ```jsx
 ;() => {
@@ -123,9 +123,9 @@ A combination of `AvatarUser` and `AvatarIcon`.
       <AvatarCombo user={data} />
       <AvatarCombo
         user={noImageData}
-        color="palette.blue400"
-        secondaryBg="palette.purple500"
-        secondaryColor="palette.white"
+        color="inform"
+        secondaryBg="key"
+        secondaryColor="onInverse"
         secondaryIcon="User"
       />
     </Flex>

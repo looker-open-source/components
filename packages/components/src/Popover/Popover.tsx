@@ -493,12 +493,12 @@ export function usePopover({
           placement={placement}
           ref={ref}
           style={style}
-          backgroundColor="palette.white"
+          backgroundColor="background"
           border="1px solid"
-          borderColor="palette.charcoal200"
+          borderColor="ui2"
           borderRadius="medium"
           boxShadow={3}
-          color="palette.charcoal900"
+          color="text1"
         >
           <Box
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}

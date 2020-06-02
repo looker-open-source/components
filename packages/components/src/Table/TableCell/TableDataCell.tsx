@@ -39,7 +39,7 @@ export const TableDataCell = styled.td<TableDataCellProps>`
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 TableDataCell.defaultProps = {
   borderTop: 'solid 1px',
-  borderColor: 'palette.charcoal200',
+  borderColor: 'ui2',
   /**
    * It's important that `borderColor` go after `borderTop`,
    *   otherwise borderColor is inferred to black

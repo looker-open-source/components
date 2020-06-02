@@ -132,7 +132,7 @@ export const CanCloseDialogManagerDemo: React.FC = () => {
         content={
           <ConfirmLayout
             title="Discard Changes?"
-            titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
+            titleIcon={<Icon name="Warning" color="critical" size={22} />}
             message="Are you sure you want to close the dialog? Unsaved changes will be
     lost."
             primaryButton={

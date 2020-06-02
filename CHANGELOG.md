@@ -9,15 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- update InputColor to have an empty `Swatch`
 - `Status` component
 - `Tree`, `TreeItem` components
   - Includes docs and test suite
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 - `ComboboxList` and `ComboboxOption` now both support a custom `indicator`
   - `Select` and `SelectMulti` also support `indicator` at both the component and option level
+- Test helper functions for `Combobox` component using react-testing-library
 
 ### Changed
 
+- `theme.colors.palette` no longer used internally except in very limited (and soon-to-be-deprecated) cases.
 - `Button*` font sizes updated to match design specifications
 - `theme.colors` shape has been significantly refactored (documentation updates to follow)
 - `Banner` is now `MessageBar`
@@ -30,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` - `default` intent is now `key`
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
 - Updated `LookerLogo` and `LogoRings` to match new branding
+- `Tooltip` now uses `keyAccent` for link color
 
 ### Fixed
 

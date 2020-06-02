@@ -9,7 +9,7 @@ exports[`A Label 1`] = `
 
 <label
   className="c0"
-  color="palette.charcoal700"
+  color="text2"
   fontSize="xsmall"
   fontWeight="semiBold"
   htmlFor="party"
@@ -28,7 +28,7 @@ exports[`Label supports fontWeight 1`] = `
 
 <label
   className="c0"
-  color="palette.charcoal700"
+  color="text2"
   fontSize="xsmall"
   fontWeight="normal"
   htmlFor="party"

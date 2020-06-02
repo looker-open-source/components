@@ -49,7 +49,7 @@ export type AvatarSizes =
 export interface AvatarProps extends SpaceProps {
   className?: string
   /**
-   *  @default `palette.purple400`
+   *  @default `key`
    **/
   color?: string
   /**

@@ -32,7 +32,7 @@ const DocTable = styled(Table)`
   font-size: ${(props) => props.theme.fontSizes.small};
 
   ${Code} {
-    color: ${(props) => props.theme.colors.palette.purple400};
+    color: ${(props) => props.theme.colors.key};
   }
 `
 

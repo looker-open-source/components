@@ -25,17 +25,10 @@
  */
 
 import React, { FC, ReactNode } from 'react'
-import { palette } from '@looker/design-tokens'
 import { Box } from '../../Layout'
 
 export const MenuItemDetail: FC<{ children: ReactNode }> = ({ children }) => (
-  <Box
-    pl="large"
-    ml="auto"
-    mr="medium"
-    fontSize="xsmall"
-    color={palette.charcoal300}
-  >
+  <Box pl="large" ml="auto" mr="medium" fontSize="xsmall" color="text6">
     {children}
   </Box>
 )

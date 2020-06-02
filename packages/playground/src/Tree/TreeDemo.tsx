@@ -116,7 +116,7 @@ const exploreExample = (
 )
 
 const lookmlIdeExample = (
-  <Box color="palette.charcoal600">
+  <Box color="text3">
     LookML IDE Example
     <Tree label="thelook" icon="ExploreOutline">
       <Tree label="Orders" icon="VisibilityOutline">
@@ -170,11 +170,7 @@ const lookmlIdeExample = (
 const filterPickerExample = (
   <Box>
     Filter Picker Example
-    <Tree
-      border
-      label="Orders"
-      detail={<Box color="palette.charcoal500">thelook</Box>}
-    >
+    <Tree border label="Orders" detail={<Box color="text4">thelook</Box>}>
       <Tree label="Orders">
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>

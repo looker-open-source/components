@@ -146,7 +146,7 @@ const sliderThumbCss = css<SliderInputProps>`
     border: 3px solid ${colors.key};
     height: 16px;
     width: 16px;
-    background: ${colors.palette.white};
+    background: ${colors.field};
     ${isFocused && sliderThumbFocusCss}
   `}
 `
@@ -201,15 +201,15 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 
   &:disabled {
     &::-webkit-slider-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
+      border-color: ${({ theme }) => theme.colors.neutral};
       cursor: default;
     }
     &::-moz-range-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
+      border-color: ${({ theme }) => theme.colors.neutral};
       cursor: default;
     }
     &::-ms-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
+      border-color: ${({ theme }) => theme.colors.neutral};
       cursor: default;
     }
   }
@@ -218,7 +218,7 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 const SliderTrack = styled.div`
   width: calc(100% - 16px);
   height: 4px;
-  background: ${({ theme }) => theme.colors.palette.charcoal200};
+  background: ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
   position: absolute;
   top: 50%;
@@ -257,7 +257,7 @@ const SliderValue = styled.div<SliderValueProps>`
   padding: 0.2rem 0.5rem;
   border-radius: 1rem;
   background: ${({ theme, isFocused }) =>
-    isFocused ? theme.colors.palette.purple100 : theme.colors.palette.white};
+    isFocused ? theme.colors.keyAccent : theme.colors.keyText};
 `
 
 const SliderValueWrapper = styled.div`

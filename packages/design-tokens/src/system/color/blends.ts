@@ -61,6 +61,12 @@ export interface UIColors {
 
 export interface TextColors {
   /**
+   * Extra-dark Text
+   * Used for: Inputs
+   * @default charcoal900
+   */
+  text0: string
+  /**
    * Primary Text
    * Used for: Headers, Labels, Dashboard tile titles
    * @default charcoal800
@@ -90,4 +96,10 @@ export interface TextColors {
    * @default charcoal400
    */
   text5: string
+  /**
+   * DEPRECATE - Should be defined
+   * Used for: TBD
+   * @default charcoal300
+   */
+  text6: string
 }

@@ -48,11 +48,7 @@ export const PromptDemo: FC = () => {
         </Button>
       }
     >
-      {(open) => (
-        <Button color="neutral" onClick={open}>
-          Prompt
-        </Button>
-      )}
+      {(open) => <Button onClick={open}>Prompt</Button>}
     </Prompt>
   )
 }

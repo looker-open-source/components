@@ -25,16 +25,8 @@
  */
 
 export interface Palette {
-  /** Inverted text color. */
-  textInverted: string
-  /** Transparent color for theme. */
-  transparent: string
   /** White color for theme. */
   white: string
-
-  primary500: string
-  primary600: string
-  primary700: string
 
   charcoal000: string
   charcoal100: string

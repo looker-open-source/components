@@ -78,14 +78,12 @@ interface MenuGroupLabelWrapperProps {
 const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
   ${color}
   box-shadow: ${({ renderBoxShadow, theme }) =>
-    renderBoxShadow
-      ? `0 4px 8px -2px ${theme.colors.palette.charcoal200}`
-      : 'none'};
+    renderBoxShadow ? `0 4px 8px -2px ${theme.colors.ui2}` : 'none'};
   position: sticky;
   top: -1px;
   margin-bottom: ${({ theme }) => theme.space.xxsmall};
 `
 
 MenuGroupLabel.defaultProps = {
-  backgroundColor: 'palette.white',
+  backgroundColor: 'background',
 }

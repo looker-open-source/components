@@ -128,7 +128,7 @@ exports[`A FieldText with default label 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"
@@ -311,7 +311,7 @@ exports[`A FieldText with label inline 1`] = `
 >
   <label
     className="c1 c2"
-    color="palette.charcoal700"
+    color="text2"
     fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="FieldTextID"

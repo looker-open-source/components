@@ -27,7 +27,6 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme, shallowWithTheme } from '@looker/components-test-utils'
-import { palette } from '@looker/design-tokens'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
@@ -74,52 +73,6 @@ const WrappedMenuItem = () => <MenuItem icon="Beaker">Scary Stuff</MenuItem>
 test('Menu - compact', () => {
   const menu = mountWithTheme(
     <MenuList compact>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup>
-        <WrappedMenuItem />
-      </MenuGroup>
-    </MenuList>
-  )
-
-  expect(menu).toMatchSnapshot()
-})
-
-test('Menu - menu customization', () => {
-  const menuCustomizations =
-    // tslint:disable:object-literal-sort-keys
-    {
-      bg: palette.purple500,
-      color: palette.purple200,
-      current: {
-        bg: palette.purple200,
-        color: palette.purple900,
-        iconColor: palette.purple500,
-      },
-      hover: {
-        bg: palette.purple700,
-        color: palette.white,
-        iconColor: palette.purple100,
-      },
-      iconColor: palette.purple300,
-      iconSize: 20,
-      marker: {
-        color: palette.purple900,
-        size: 10,
-      },
-      // tslint:disable:enable-literal-sort-keys
-    }
-
-  const menu = shallowWithTheme(
-    <MenuList customizationProps={menuCustomizations}>
       <MenuGroup>
         <MenuItem icon="LogoRings">Looker</MenuItem>
         <MenuItem icon="Validate">Validate</MenuItem>

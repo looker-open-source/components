@@ -543,7 +543,7 @@ export const InputTime = styled(InputTimeInternal)`
   ${space}
   display: inline-block;
   padding: 0 ${({ theme }) => theme.space.xsmall};
-  background: ${({ theme }) => theme.colors.palette.white};
+  background: ${({ theme }) => theme.colors.field};
   &:focus-within {
     ${inputTextFocus}
   }
@@ -565,10 +565,8 @@ InputTime.defaultProps = {
 const InputTimeWrapper = styled.div<{
   hasInputValues: boolean
 }>`
-  color: ${({ theme, hasInputValues }) =>
-    hasInputValues
-      ? theme.colors.palette.charcoal600
-      : theme.colors.palette.charcoal300};
+  color: ${({ theme: { colors }, hasInputValues }) =>
+    hasInputValues ? colors.text3 : colors.text6};
 
   ${InputText} {
     background: transparent;
@@ -590,7 +588,7 @@ const InputTimeWrapper = styled.div<{
       color: inherit;
     }
     &:focus {
-      background: ${({ theme }) => theme.colors.palette.purple100};
+      background: ${({ theme }) => theme.colors.keyAccent};
     }
   }
 `

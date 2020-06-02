@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { palette } from '@looker/design-tokens'
+
 import omit from 'lodash/omit'
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
@@ -65,7 +65,8 @@ export const InputSearchControlsInternal = forwardRef(
 
     const separator = (
       <Box
-        borderRight={`1px solid ${palette.charcoal200}`}
+        borderRight="1px solid"
+        borderColor="ui2"
         height="1.5rem"
         style={{
           pointerEvents: 'none',

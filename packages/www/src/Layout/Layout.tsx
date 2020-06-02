@@ -94,17 +94,13 @@ export const LayoutMain = styled.main`
 const SidebarDivider = styled.div<SidebarStyleProps>`
   transition: border 0.3s;
   border-left: 1px solid
-    ${({ theme, open }) =>
-      open ? theme.colors.palette.charcoal200 : 'transparent'};
+    ${({ theme, open }) => (open ? theme.colors.ui2 : 'transparent')};
   grid-area: divider;
   overflow: visible;
   position: relative;
   &:hover {
     border-left: 1px solid
-      ${({ theme, open }) =>
-        open
-          ? theme.colors.palette.charcoal300
-          : theme.colors.palette.charcoal200};
+      ${({ theme, open }) => (open ? theme.colors.ui3 : theme.colors.ui2)};
   }
 `
 

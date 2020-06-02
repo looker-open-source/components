@@ -80,9 +80,7 @@ ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 `ModalHeader` also accepts an optional `headerIcon` prop which can be used to communicate context or intent of the modal. For example: if you need the user to confirm a destructive action, it can be helpful to render an eyecatching warning icon next to the title text:
 
 ```jsx
-<ModalHeader
-  headerIcon={<Icon name="Warning" color="palette.red500" size={22} />}
->
+<ModalHeader headerIcon={<Icon name="Warning" color="critical" size={22} />}>
   Delete user account? This cannot be undone.
 </ModalHeader>
 ```

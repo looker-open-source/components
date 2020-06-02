@@ -37,7 +37,7 @@ import {
 } from '@looker/design-tokens'
 import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { rgba } from 'polished'
+import { darken, rgba } from 'polished'
 import { IconButton } from '../Button'
 import { Text, TextProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
@@ -67,38 +67,36 @@ const ChipStyle = styled.span<ChipProps>`
   }
 
   align-items: center;
-  background-color: ${(props) => props.theme.colors.palette.purple000};
+  background-color: ${({ theme }) => theme.colors.keySubtle};
   border-radius: 4px;
-  color: ${(props) => props.theme.colors.palette.purple500};
+  color: ${({ theme }) => theme.colors.keyInteractive};
   display: flex;
   justify-items: center;
   & + & {
-    margin-left: ${(props) => props.theme.space.xxsmall};
+    margin-left: ${({ theme }) => theme.space.xxsmall};
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.palette.purple100};
+    background-color: ${(props) => props.theme.colors.keyAccent};
   }
 
   &:focus {
-    background-color: ${(props) => props.theme.colors.palette.purple200};
+    background-color: ${({ theme }) =>
+      darken(0.1, theme.colors.keyAccent).toUpperCase()};
     outline: none;
   }
 
-  ${(props) =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`};
+  ${({ focusVisible, theme: { colors } }) =>
+    focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(colors.keyFocus, 0.25)};`};
 
-  ${(props) =>
-    props.disabled &&
-    `color: ${props.theme.colors.palette.charcoal400};
-      background-color: ${props.theme.colors.palette.charcoal100};
+  ${({ disabled, theme: { colors } }) =>
+    disabled &&
+    `color: ${colors.neutral};
+      background-color: ${colors.neutralAccent};
 
       &:hover {
-        background-color: ${props.theme.colors.palette.charcoal100};
+        background-color: ${colors.neutralAccent};
       }
     `}
 `

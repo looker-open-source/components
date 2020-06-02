@@ -133,10 +133,10 @@ const Style = styled.div<ModalSurfaceProps>`
 `
 
 Style.defaultProps = {
-  backgroundColor: 'palette.white',
+  backgroundColor: 'background',
   borderRadius: 'medium',
   boxShadow: 3,
-  color: 'palette.charcoal900',
+  color: 'text1',
   maxHeight: '90vh',
   maxWidth: ['90vw', '90vw', '600px'],
 }

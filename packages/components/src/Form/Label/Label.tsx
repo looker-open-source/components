@@ -38,8 +38,6 @@ import {
   TextTransformProps,
   typography,
   TypographyProps,
-  FontSizes,
-  FontWeights,
 } from '@looker/design-tokens'
 
 export interface LabelProps
@@ -59,12 +57,8 @@ export const Label = styled.label<LabelProps>`
   ${typography};
 `
 
-export const labelDefaults = {
-  color: 'palette.charcoal700',
-  fontSize: 'xsmall' as FontSizes,
-  fontWeight: 'semiBold' as FontWeights,
-}
-
 Label.defaultProps = {
-  ...labelDefaults,
+  color: 'text2',
+  fontSize: 'xsmall',
+  fontWeight: 'semiBold',
 }

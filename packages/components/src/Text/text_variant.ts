@@ -43,22 +43,22 @@ export const textVariant = variant({
   prop: 'variant',
   variants: {
     critical: {
-      color: 'palette.red500',
+      color: 'critical',
     },
     default: {
-      color: 'palette.charcoal800',
+      color: 'text1',
     },
     inverted: {
-      color: 'palette.textInverted',
+      color: 'onInverse',
     },
     positive: {
-      color: 'palette.green500',
+      color: 'positive',
     },
     secondary: {
-      color: 'palette.charcoal500',
+      color: 'text4',
     },
     subdued: {
-      color: 'palette.charcoal400',
+      color: 'text5',
     },
   },
 })

@@ -52,8 +52,7 @@ export const ValidationMessage = styled(ValidationMessageLayout)`
 
   font-size: ${(props) => props.theme.fontSizes.xsmall};
 
-  ${({ theme, type }) =>
-    type === 'error' && `color: ${theme.colors.palette.red500};`}
+  ${({ theme, type }) => type === 'error' && `color: ${theme.colors.critical};`}
 `
 
 ValidationMessage.displayName = 'ValidationMessage'

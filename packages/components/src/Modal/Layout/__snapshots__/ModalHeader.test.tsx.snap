@@ -68,14 +68,14 @@ exports[`ModalHeader 1`] = `
 .c3.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c3:active,
 .c3.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #4C535B;
+  color: #939BA5;
 }
 
 .c3[disabled]:hover,

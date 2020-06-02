@@ -58,48 +58,37 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
   border-radius: ${({ theme }) => theme.radii.medium};
   background: ${(props) =>
     props.selected
-      ? `hsla(${
-          parseToHsl(props.theme.colors.palette.purple400).hue
-        }, 100%, 98%, 1)`
+      ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 100%, 98%, 1)`
       : 'transparent'};
   border-color: ${(props) =>
     props.selected
-      ? `hsla(${
-          parseToHsl(props.theme.colors.palette.purple400).hue
-        }, 100%, 98%, 1)`
-      : `hsla(${
-          parseToHsl(props.theme.colors.palette.purple400).hue
-        }, 25%, 90%, 1)`};
+      ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 100%, 98%, 1)`
+      : `hsla(${parseToHsl(props.theme.colors.key).hue}, 25%, 90%, 1)`};
   transition: background ${(props) => props.theme.transitions.durationQuick}
     ease;
 
   &:hover {
     background: ${(props) =>
       !props.selected
-        ? `hsla(${
-            parseToHsl(props.theme.colors.palette.purple400).hue
-          }, 25%, 97%, 0.7)`
+        ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 25%, 97%, 0.7)`
         : false};
   }
 
   &:active {
     background: ${(props) =>
-      `hsla(${
-        parseToHsl(props.theme.colors.palette.purple400).hue
-      }, 50%, 96%, 0.9)`};
+      `hsla(${parseToHsl(props.theme.colors.key).hue}, 50%, 96%, 0.9)`};
   }
 
   &:focus-within {
-    box-shadow: ${(props) =>
-      `0 0 .5px 1px ${props.theme.colors.palette.purple200}`};
+    box-shadow: ${(props) => `0 0 .5px 1px ${props.theme.colors.keyFocus}`};
   }
 
   ${ButtonItemLabelText} {
-    color: ${(props) => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.text3};
   }
 
   input:checked + ${ButtonItemLabelText} {
-    color: ${(props) => props.theme.colors.palette.purple400};
+    color: ${(props) => props.theme.colors.key};
 
     /* stylelint-disable */
     text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;

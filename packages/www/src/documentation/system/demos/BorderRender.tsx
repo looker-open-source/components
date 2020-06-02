@@ -24,69 +24,9 @@
 
  */
 
-import React, { Component } from 'react'
-import { Heading, Code, Text } from '@looker/components'
-import { palette } from '@looker/design-tokens'
-import {
-  BorderExamples,
-  BorderLabel,
-  BorderExample,
-  BorderDividerExample,
-} from './BorderRender.styles'
-
-const {
-  charcoal000,
-  charcoal100,
-  charcoal200,
-  charcoal300,
-  charcoal400,
-  charcoal500,
-  charcoal600,
-  charcoal700,
-  charcoal800,
-} = palette
-
-const renderBorder = (border: BorderType, index: number) => {
-  const labels = [['Color: ', border.name]]
-
-  return (
-    <div key={index}>
-      <Heading fontSize="small" fontWeight="bold">
-        {border.label}
-      </Heading>
-      <BorderLabel>
-        {labels.map((label, idx) => (
-          <div key={`label-${idx}`}>
-            <Text variant="subdued" fontSize="small" fontWeight="semiBold">
-              {label[0]}
-            </Text>
-            <Code fontSize="medium">{label[1]}</Code>
-          </div>
-        ))}
-      </BorderLabel>
-      <BorderExamples>
-        {border.examples.map((example, idx) => (
-          <BorderExample
-            style={{ background: example.bgColor, borderColor: border.hex }}
-            key={`border-${idx}`}
-          >
-            <Text
-              fontSize="xsmall"
-              fontWeight="semiBold"
-              color={border.textColor}
-            >
-              On {example.name}
-            </Text>
-
-            <BorderDividerExample style={{ background: border.hex }}>
-              {' '}
-            </BorderDividerExample>
-          </BorderExample>
-        ))}
-      </BorderExamples>
-    </div>
-  )
-}
+import React, { FC } from 'react'
+import { Box, Heading, Code } from '@looker/components'
+import styled from 'styled-components'
 
 export interface BorderExample {
   name: string
@@ -94,72 +34,72 @@ export interface BorderExample {
 }
 
 export interface BorderType {
-  hex: string
+  color: string
   label: string
-  name: string
   textColor: string
-  examples: BorderExample[]
+  examples: string[]
 }
 
-export class BorderRender extends Component<{}, { borders: BorderType[] }> {
-  constructor(props: {}) {
-    super(props)
-    this.state = {
-      borders: [
-        {
-          examples: [
-            { bgColor: '#ffffff', name: 'White' },
-            { bgColor: charcoal000, name: 'Charcoal000' },
-            { bgColor: charcoal100, name: 'Charcoal100' },
-          ],
-          hex: charcoal300,
-          label: 'Default Border',
-          name: 'charcoal300',
-          textColor: charcoal600,
-        },
-        {
-          examples: [
-            { bgColor: '#ffffff', name: 'White' },
-            { bgColor: charcoal000, name: 'Charcoal000' },
-            { bgColor: charcoal100, name: 'Charcoal100' },
-            { bgColor: charcoal200, name: 'Charcoal200' },
-          ],
-          hex: charcoal400,
-          label: 'Dark Border',
-          name: 'charcoal400',
-          textColor: charcoal600,
-        },
-        {
-          examples: [
-            { bgColor: '#ffffff', name: 'White' },
-            { bgColor: charcoal000, name: 'Charcoal000' },
-            { bgColor: charcoal100, name: 'Charcoal100' },
-          ],
-          hex: charcoal200,
-          label: 'Light Border',
-          name: 'charcoal200',
-          textColor: charcoal600,
-        },
-        {
-          examples: [
-            { bgColor: charcoal800, name: 'Charcoal800' },
-            { bgColor: charcoal700, name: 'Charcoal700' },
-            { bgColor: charcoal600, name: 'Charcoal600' },
-          ],
-          hex: charcoal500,
-          label: 'Border on Dark',
-          name: 'charcoal500',
-          textColor: charcoal300,
-        },
-      ],
-    }
-  }
+const borderData: BorderType[] = [
+  {
+    color: 'ui3',
+    examples: ['background', 'ui1', 'ui2'],
+    label: 'Default Border',
+    textColor: 'text3',
+  },
+  {
+    color: 'ui4',
+    examples: ['background', 'ui1', 'ui2', 'ui3'],
+    label: 'Dark Border',
+    textColor: 'text3',
+  },
+  {
+    color: 'ui2',
+    examples: ['background', 'ui1', 'ui3'],
+    label: 'Light Border',
+    textColor: 'text3',
+  },
+  {
+    color: 'text4',
+    examples: ['inverse'],
+    label: 'Border on Dark',
+    textColor: 'onInverse',
+  },
+]
 
-  public render() {
-    return (
-      <div>
-        {this.state.borders.map((border, index) => renderBorder(border, index))}
-      </div>
-    )
+export const BorderRender = () =>
+  borderData.map((border) => <Example border={border} key={border.color} />)
+
+const Example: FC<{ border: BorderType }> = ({
+  border: { color, examples, label, textColor },
+}) => (
+  <Box mb="xlarge">
+    <Heading as="h3" fontWeight="semiBold" mb="small">
+      {label} <Code fontSize="medium">{color}</Code>
+    </Heading>
+    {examples.map((example) => (
+      <BorderExample bg={example} key={example} color={textColor}>
+        <Code>{example}</Code>
+        <BorderDividerExample bg={color} />
+      </BorderExample>
+    ))}
+  </Box>
+)
+
+const BorderExample = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${({ theme }) => theme.space.large};
+  border: 1px solid;
+  border-color: ${({ theme }) => theme.colors.ui3};
+
+  &:not(:last-child) {
+    border-bottom: none;
   }
-}
+`
+
+const BorderDividerExample = styled(Box)`
+  width: 70%;
+  height: 1px;
+`

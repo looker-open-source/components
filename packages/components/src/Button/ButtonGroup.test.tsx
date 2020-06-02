@@ -30,7 +30,7 @@ import React from 'react'
 import { Simulate } from 'react-dom/test-utils'
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { palette } from '@looker/design-tokens'
+import { theme } from '@looker/design-tokens'
 import { ButtonGroup } from './ButtonGroup'
 import { ButtonItem } from './ButtonItem'
 
@@ -70,8 +70,8 @@ test('<ButtonGroup/> uncontrolled', () => {
 
   expect(apples).toHaveAttribute('checked')
   expect(oranges).not.toHaveAttribute('checked')
-  expect(getByText('Apples')).toHaveStyle(`color: ${palette.purple400}`)
-  expect(getByText('Oranges')).toHaveStyle(`color: ${palette.charcoal600}`)
+  expect(getByText('Apples')).toHaveStyle(`color: ${theme.colors.key}`)
+  expect(getByText('Oranges')).toHaveStyle(`color: ${theme.colors.text3}`)
 
   expect(getByLabelText('Bananas')).toBeInTheDocument()
 

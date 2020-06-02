@@ -25,6 +25,7 @@
  */
 
 import { Icon, IconButton, IconNames, Tooltip } from '@looker/components'
+import { prismTheme } from '@looker/design-tokens'
 import { PrismTheme, Language } from 'prism-react-renderer'
 import React, { FC, ReactNode, useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -36,7 +37,6 @@ import {
   withLive,
 } from 'react-live'
 import styled from 'styled-components'
-import prismTheme from './prism-theme'
 import { allComponents } from './allComponents'
 
 interface CodeSandboxProps {
@@ -209,9 +209,7 @@ export const ToggleCodeButton: FC<ToggleButtonProps> = ({
 
 const ActionButton = styled(IconButton)<ActionProps>`
   color: ${({ theme, editorIsVisible }) =>
-    editorIsVisible
-      ? theme.colors.palette.charcoal200
-      : theme.colors.palette.charcoal500};
+    editorIsVisible ? theme.colors.text6 : theme.colors.text4};
 `
 
 const ActionLayout = styled.div<ActionProps>`
@@ -222,16 +220,14 @@ const ActionLayout = styled.div<ActionProps>`
   justify-content: right;
   padding: ${({ theme }) => `${theme.space.xsmall}`};
   background: ${({ theme, editorIsVisible }) =>
-    editorIsVisible
-      ? theme.colors.palette.charcoal700
-      : theme.colors.palette.charcoal200};
+    editorIsVisible ? theme.colors.ui5 : theme.colors.ui2};
 `
 
 const SandboxWrapper = styled.div`
   overflow: hidden;
   ${({ theme: { lineHeights, colors, radii } }) => `
     margin-bottom: ${lineHeights.medium};
-    border: 1px solid ${colors.palette.charcoal200};
+    border: 1px solid ${colors.ui2};
     border-radius: ${radii.medium};
     color: ${colors.white};
   `}
@@ -244,7 +240,7 @@ const PreviewWrapper = styled.div`
 `
 
 const EditorWrapper = styled.div`
-  background: ${({ theme }) => theme.colors.palette.charcoal700};
+  background: ${({ theme }) => theme.colors.ui5};
   line-height: ${({ theme }) => theme.lineHeights.medium};
   display: grid;
   grid-template-columns: 1fr auto;
@@ -261,9 +257,9 @@ const ErrorWrapper = styled.div`
   grid-template-columns: auto 1fr;
   ${({ theme: { colors, space } }) => `
     grid-column-gap: ${space.small};
-    color: ${colors.palette.red600};
+    color: ${colors.criticalInteractive};
     padding: ${space.small};
-    background: ${colors.palette.red100};
+    background: ${colors.criticalAccent};
   `}
   pre {
     margin: 0;
@@ -278,8 +274,8 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-content: center;
   ${({ theme: { colors } }) => `
-    background: ${colors.palette.red500};
-    color: ${colors.palette.white};
+    background: ${colors.critical};
+    color: ${colors.onInverse};
   `}
   svg {
     transform: translateY(-2px);

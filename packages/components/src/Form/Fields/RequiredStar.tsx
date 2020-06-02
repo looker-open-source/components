@@ -37,6 +37,6 @@ const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => (
 export const RequiredStar = styled(RequiredStarLayout)`
   &::before {
     content: ' *';
-    color: ${({ theme }) => theme.colors.palette.red500};
+    color: ${({ theme }) => theme.colors.critical};
   }
 `

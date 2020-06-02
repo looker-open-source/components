@@ -95,13 +95,13 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   >
     <div
       className="c2"
-      color="palette.purple400"
+      color="key"
     >
       JS
     </div>
     <object
       className="c3"
-      color="palette.purple400"
+      color="key"
       data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
       type="image/png"
     />
@@ -111,7 +111,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   >
     <div
       className="c6 c7 "
-      color="palette.purple300"
+      color="keyFocus"
       size="1rem"
     >
       <svg
@@ -228,13 +228,13 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   >
     <div
       className="c2"
-      color="palette.purple400"
+      color="key"
     >
       JS
     </div>
     <object
       className="c3"
-      color="palette.purple400"
+      color="key"
       data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
       type="image/png"
     />
@@ -244,7 +244,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   >
     <div
       className="c6 c7 "
-      color="palette.purple300"
+      color="keyFocus"
       size="1rem"
     >
       <svg
@@ -352,7 +352,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   >
     <div
       className="c2 c3 "
-      color="palette.purple300"
+      color="keyFocus"
       size="1rem"
     >
       <svg
@@ -376,7 +376,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   >
     <div
       className="c2 c3 "
-      color="palette.purple300"
+      color="keyFocus"
       size="1rem"
     >
       <svg
@@ -457,7 +457,7 @@ exports[`AvatarIcon renders  1`] = `
 >
   <div
     className="c1 c2 "
-    color="palette.purple300"
+    color="keyFocus"
     size="1rem"
   >
     <svg
@@ -535,7 +535,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 >
   <div
     className="c1 c2 "
-    color="palette.purple300"
+    color="keyFocus"
     size="1rem"
   >
     <svg
@@ -593,13 +593,13 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 >
   <div
     className="c1"
-    color="palette.purple400"
+    color="key"
   >
     JS
   </div>
   <object
     className="c2"
-    color="palette.purple400"
+    color="key"
     data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
     type="image/png"
   />
@@ -633,7 +633,7 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
 >
   <div
     className="c1"
-    color="palette.purple400"
+    color="key"
   >
     JS
   </div>
@@ -677,13 +677,13 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
 >
   <div
     className="c1"
-    color="palette.purple400"
+    color="key"
   >
     JS
   </div>
   <object
     className="c2"
-    color="palette.purple400"
+    color="key"
     data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
     type="image/png"
   />
