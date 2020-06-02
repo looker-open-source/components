@@ -24,24 +24,40 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 
-export const ThemeColorDemo = () => {
-  const theme = useContext<Theme>(ThemeContext)
+import { CoreColors, SpecifiableColors } from '../../system'
+import { Theme } from '../../theme'
+import { defaultIntentColors } from '../../tokens'
+import { generateSurfaceColors } from './surface'
+import { generateBlendColors } from './blend'
+import { generateStatefulColors } from './stateful'
 
-  const colors = omit(theme.colors, 'palette')
+export const generateColors = (theme: Theme, colors: Partial<CoreColors>) => {
+  const { background, text, key } = colors
 
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
+  if (!background && !text && !key) {
+    return theme.colors
+  }
 
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+  const coreColors = {
+    background: colors.background || theme.colors.background,
+    text: colors.text || theme.colors.text,
+    key: colors.key || theme.colors.key,
+  }
+
+  const specifiableColors: SpecifiableColors = {
+    ...coreColors,
+    ...generateSurfaceColors(coreColors),
+    ...defaultIntentColors,
+  }
+
+  const blends = generateBlendColors(specifiableColors)
+  const statefulColors = generateStatefulColors(specifiableColors)
+
+  return {
+    ...specifiableColors,
+    ...blends,
+    ...statefulColors,
+  }
 }

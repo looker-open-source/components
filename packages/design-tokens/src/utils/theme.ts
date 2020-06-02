@@ -24,24 +24,22 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+import { Theme } from '../theme'
+import { CoreColors } from '../system/color'
+import * as palette from '../tokens/color/palette'
+import { generateColors } from './color'
 
-export const ThemeColorDemo = () => {
-  const theme = useContext<Theme>(ThemeContext)
+export const generateThemeFromCoreColors = (
+  theme: Theme,
+  coreColors: Partial<CoreColors>
+): Theme => {
+  const colors = generateColors(theme, coreColors)
 
-  const colors = omit(theme.colors, 'palette')
-
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
-
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+  return {
+    ...theme,
+    colors: {
+      ...colors,
+      palette,
+    },
+  }
 }

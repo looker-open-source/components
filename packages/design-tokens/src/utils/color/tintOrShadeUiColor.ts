@@ -24,24 +24,13 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+import { getLuminance, shade, tint } from 'polished'
 
-export const ThemeColorDemo = () => {
-  const theme = useContext<Theme>(ThemeContext)
-
-  const colors = omit(theme.colors, 'palette')
-
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
-
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
+  const colorLuminance = getLuminance(color)
+  if (colorLuminance > 0.5) {
+    return shade(mixAmount / 100, color)
+  } else {
+    return tint(mixAmount / 100, color)
+  }
 }

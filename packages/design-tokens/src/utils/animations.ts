@@ -24,24 +24,19 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+import { keyframes, Keyframes } from 'styled-components'
 
-export const ThemeColorDemo = () => {
-  const theme = useContext<Theme>(ThemeContext)
+export const fadeIn: Keyframes = keyframes`
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+`
 
-  const colors = omit(theme.colors, 'palette')
+export const fadeOut: Keyframes = keyframes`
+  0% {opacity: 100;}
+  100% {opacity: 0;}
+`
 
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
-
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
-}
+export const quarterFade: Keyframes = keyframes`
+  0% {opacity: 1;}
+  100% {opacity: 0.25;}
+`

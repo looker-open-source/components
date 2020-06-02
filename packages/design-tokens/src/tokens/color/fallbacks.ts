@@ -45,6 +45,7 @@ import {
   purple600,
   red000,
   red100,
+  red300,
   red400,
   red700,
   red600,
@@ -79,6 +80,7 @@ export const fallbackStateful: StatefulColors = {
 
   criticalSubtle: red000,
   criticalAccent: red100,
+  criticalFocus: red300,
   criticalInteractive: red600,
   criticalPressed: red700,
   criticalText: white,
@@ -86,6 +88,7 @@ export const fallbackStateful: StatefulColors = {
 
   neutralSubtle: charcoal000,
   neutralAccent: charcoal100,
+  neutralFocus: charcoal300,
   neutralInteractive: charcoal500,
   neutralPressed: charcoal600,
   neutralText: white,

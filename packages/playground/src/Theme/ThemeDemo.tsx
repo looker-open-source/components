@@ -24,24 +24,57 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+import {
+  Card,
+  Box,
+  Grid,
+  Heading,
+  Button,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  CardContent,
+} from '@looker/components'
+import React, { FC, useState } from 'react'
+import { ThemeColorDemo } from './ThemeColorDemo'
+import { ThemeEditor } from './ThemeEditor'
 
-export const ThemeColorDemo = () => {
-  const theme = useContext<Theme>(ThemeContext)
+const demoSuite = (
+  <Box width="100%">
+    <Tabs>
+      <TabList>
+        <Tab>Colors</Tab>
+        <Tab>Components</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <ThemeColorDemo />
+        </TabPanel>
+        <TabPanel>
+          <Card raised>
+            <CardContent>
+              <Button>My neat button</Button>
+            </CardContent>
+          </Card>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  </Box>
+)
 
-  const colors = omit(theme.colors, 'palette')
+export const ThemeDemo: FC = () => {
+  // const [instances, setInstances] = useState(3)
 
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
-
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+  return (
+    <Grid m="xxlarge" gap="xxlarge" columns={2}>
+      <ThemeEditor>{demoSuite}</ThemeEditor>
+      <ThemeEditor colors={{ key: '#6C43E0' }}>{demoSuite}</ThemeEditor>
+    </Grid>
+  )
 }
+
+// #6443E0
+
+// wix - 116DFF
