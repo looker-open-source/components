@@ -128,7 +128,7 @@ export const Tree = styled(TreeLayout)`
     padding-left: ${({ theme: { space } }) =>
       `calc(${space[indicatorProps.indicatorSize as SpacingSizes]} + ${
         space[indicatorProps.indicatorGap as SpacingSizes]
-      } + ${space.xxsmall})`}
+      })`}
   }
 
   ${TreeItem} {

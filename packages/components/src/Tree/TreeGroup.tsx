@@ -41,6 +41,8 @@ export interface TreeGroupProps {
 }
 
 const TreeGroupLabel = styled.div`
+  /* Border is here to get proper alignment with Tree and TreeItem text */
+  border: 1px transparent solid;
   padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
   font-size: ${({ theme }) => theme.space.small};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
