@@ -25,18 +25,18 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ComboboxDemo } from './Select/ComboboxDemo'
-import { SelectContent } from './Select/SelectDemo'
-import { SelectMultiDemo } from './Select/SelectMultiDemo'
+import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
 
-const App = () => (
-  <ComponentsProvider>
-    <ComboboxDemo />
-    <SelectContent />
-    <SelectMultiDemo />
-  </ComponentsProvider>
-)
+const App = () => {
+  return (
+    <ComponentsProvider>
+      <InputColor />
+      <InputColor value="green" />
+      <InputColor defaultValue="purple" />
+      <Swatch />
+    </ComponentsProvider>
+  )
+}
 
 /*
   This is the binding site for the playground. If you want to edit the
