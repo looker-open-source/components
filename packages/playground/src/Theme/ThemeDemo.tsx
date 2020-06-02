@@ -25,15 +25,23 @@
  */
 
 import {
-  Card,
-  Grid,
   Button,
+  ButtonOutline,
+  ButtonTransparent,
+  Card,
+  CardContent,
+  Grid,
+  Tab,
   Tabs,
   TabList,
-  Tab,
-  TabPanels,
   TabPanel,
-  CardContent,
+  TabPanels,
+  SpaceVertical,
+  FieldText,
+  IconButton,
+  FieldSlider,
+  ButtonGroup,
+  ButtonItem,
 } from '@looker/components'
 import React, { FC } from 'react'
 import { ThemeColorDemo } from './ThemeColorDemo'
@@ -54,7 +62,30 @@ const demoSuite = (
           <TabPanel>
             <Card raised>
               <CardContent>
-                <Button>My neat button</Button>
+                <SpaceVertical gap="xsmall">
+                  <Button>My neat button</Button>
+                  <Button color="neutral">My neat button</Button>
+                  <Button color="critical">My neat button</Button>
+                  <ButtonOutline>My neat button</ButtonOutline>
+                  <ButtonOutline color="neutral">My neat button</ButtonOutline>
+                  <ButtonOutline color="critical">My neat button</ButtonOutline>
+                  <ButtonTransparent>My neat button</ButtonTransparent>
+                  <ButtonTransparent color="neutral">
+                    My neat button
+                  </ButtonTransparent>
+                  <ButtonTransparent color="critical">
+                    My neat button
+                  </ButtonTransparent>
+
+                  <ButtonGroup>
+                    <ButtonItem>One</ButtonItem>
+                    <ButtonItem>Two</ButtonItem>
+                  </ButtonGroup>
+
+                  <FieldText label="Hello" />
+                  <IconButton icon="Check" label="Check" size="large" />
+                  <FieldSlider label="slider" />
+                </SpaceVertical>
               </CardContent>
             </Card>
           </TabPanel>

@@ -32,8 +32,6 @@ import {
 } from '../../system/color'
 import { mixColors } from './blend'
 
-const keyBlends = [8, 12, 20, 30, 40]
-
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
 const generateStatefulColor = (
@@ -41,8 +39,8 @@ const generateStatefulColor = (
   color: string
 ): StatefulColorChoices => {
   return {
-    subtle: mixColors(keyBlends[0], color, background),
-    accent: mixColors(keyBlends[1], color, background),
+    subtle: mixColors(8, color, background),
+    accent: mixColors(12, color, background),
     focus: mixColors(60, color, background),
     interactive: darken(0.1, color),
     pressed: darken(0.18, color),
