@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - update InputColor to have an empty `Swatch`
 - `Status` component
-- `Tree`, `TreeItem` components
+- `Tree`, `TreeItem`, `TreeGroup` components
   - Includes docs and test suite
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 - `ComboboxList` and `ComboboxOption` now both support a custom `indicator`
