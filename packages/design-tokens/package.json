@@ -18,7 +18,7 @@
   "dependencies": {
     "@types/styled-system": "^5.1.9",
     "lodash": "^4.17.15",
-    "polished": "^3.6.3",
+    "polished": "^3.6.4",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
