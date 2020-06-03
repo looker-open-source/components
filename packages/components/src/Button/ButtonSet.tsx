@@ -89,6 +89,11 @@ export const ButtonSetLayout = forwardRef(
     }: ButtonSetProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
+    if (children && options) {
+      // eslint-disable-next-line no-console
+      console.warn('Use children or options but not both at the same time.')
+    }
+
     const context = {
       disabled,
       onItemClick,
