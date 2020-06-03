@@ -46,6 +46,8 @@ describe('ButtonToggle', () => {
 
     renderWithTheme(<TestComponent />)
 
+    expect(screen.getByRole('group')).toMatchSnapshot()
+
     const apples = screen.getByText('Apples')
     const bananas = screen.getByText('Bananas')
     const oranges = screen.getByText('Oranges')
