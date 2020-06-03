@@ -44,38 +44,20 @@ function ButtonGroupDemo() {
   return (
     <Box p="large" flex={1}>
       <Heading>Button Group State</Heading>
-      <Paragraph>Uncontrolled</Paragraph>
-      <ButtonGroup>
-        <ButtonItem value="CA">California</ButtonItem>
-        <ButtonItem value="AK">Alaska</ButtonItem>
-        <ButtonItem value="UT">Utah</ButtonItem>
-      </ButtonGroup>
-      <Divider m="none" />
-      <Paragraph>Controlled</Paragraph>
       <ButtonGroup value={value} onChange={setValue}>
         <ButtonItem value="CA">California</ButtonItem>
         <ButtonItem value="AK">Alaska</ButtonItem>
         <ButtonItem value="UT">Utah</ButtonItem>
       </ButtonGroup>
-      <Divider />
-      <Paragraph>Uncontrolled with items selected</Paragraph>
-      <ButtonGroup>
-        <ButtonItem value="CA" selected>
-          California
-        </ButtonItem>
-        <ButtonItem value="AK" selected>
-          Alaska
-        </ButtonItem>
-        <ButtonItem value="UT">Utah</ButtonItem>
-      </ButtonGroup>
-      <Divider />
-      <Paragraph>Controlled with initial values</Paragraph>
+      <Divider my="large" />
+      <Divider my="large" />
+      <Paragraph>With initial values</Paragraph>
       <ButtonGroup value={value2} onChange={setValue2}>
         <ButtonItem value="CA">California</ButtonItem>
         <ButtonItem value="AK">Alaska</ButtonItem>
         <ButtonItem value="UT">Utah</ButtonItem>
       </ButtonGroup>
-      <Divider />
+      <Divider my="large" />
     </Box>
   )
 }
@@ -96,118 +78,35 @@ function ButtonToggleDemo() {
   function handleChange4(value: string) {
     setToggle4(value)
   }
-  const [value3, setValue3] = useState('')
 
   return (
     <Box p="large" flex={1}>
       <Heading>Button Toggle State</Heading>
-      <Paragraph>Uncontrolled</Paragraph>
-      <ButtonToggle>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider m="none" />
-      <Paragraph>Controlled</Paragraph>
       <ButtonToggle value={toggle} onChange={handleChange}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider m="none" />
-      <Paragraph>Uncontrolled with item selected</Paragraph>
-      <ButtonToggle>
-        <ButtonItem selected>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider m="none" />
-      <Paragraph>Controlled with initial value</Paragraph>
+      <Divider my="large" />
+      <Paragraph>With initial value</Paragraph>
       <ButtonToggle value={toggle2} onChange={handleChange2}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider m="none" />
-      <Paragraph>Nullable Uncontrolled</Paragraph>
-      <ButtonToggle nullable>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider m="none" />
-      <Paragraph>Nullable Controlled</Paragraph>
+      <Divider my="large" />
+      <Paragraph>Nullable</Paragraph>
       <ButtonToggle nullable value={toggle3} onChange={handleChange3}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
-      <Divider />
-      <Paragraph>Nullable Uncontrolled with item selected</Paragraph>
-      <ButtonToggle nullable>
-        <ButtonItem selected>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider />
-      <Paragraph>Nullable Controlled with initial value</Paragraph>
+      <Divider my="large" />
+      <Paragraph>Nullable with initial value</Paragraph>
       <ButtonToggle nullable value={toggle4} onChange={handleChange4}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider />
-      <ButtonToggle value={value3} onChange={setValue3} nullable>
-        <ButtonItem>Alabama</ButtonItem>
-        <ButtonItem>Alaska</ButtonItem>
-        <ButtonItem>Arizona</ButtonItem>
-        <ButtonItem>Arkansas</ButtonItem>
-        <ButtonItem>California</ButtonItem>
-        <ButtonItem>Colorado</ButtonItem>
-        <ButtonItem>Connecticut</ButtonItem>
-        <ButtonItem>Delaware</ButtonItem>
-        <ButtonItem>Florida</ButtonItem>
-        <ButtonItem>Georgia</ButtonItem>
-        <ButtonItem>Hawaii</ButtonItem>
-        <ButtonItem>Idaho</ButtonItem>
-        <ButtonItem>Illinois</ButtonItem>
-        <ButtonItem>Indiana</ButtonItem>
-        <ButtonItem>Iowa</ButtonItem>
-        <ButtonItem>Kansas</ButtonItem>
-        <ButtonItem>Kentucky</ButtonItem>
-        <ButtonItem>Louisiana</ButtonItem>
-        <ButtonItem>Maine</ButtonItem>
-        <ButtonItem>Maryland</ButtonItem>
-        <ButtonItem>Massachusetts</ButtonItem>
-        <ButtonItem>Michigan</ButtonItem>
-        <ButtonItem>Minnesota</ButtonItem>
-        <ButtonItem>Mississippi</ButtonItem>
-        <ButtonItem>Missouri</ButtonItem>
-        <ButtonItem>Montana</ButtonItem>
-        <ButtonItem>Nebraska</ButtonItem>
-        <ButtonItem>Nevada</ButtonItem>
-        <ButtonItem>New Hampshire</ButtonItem>
-        <ButtonItem>New Jersey</ButtonItem>
-        <ButtonItem>New Mexico</ButtonItem>
-        <ButtonItem>New York</ButtonItem>
-        <ButtonItem>North Carolina</ButtonItem>
-        <ButtonItem>North Dakota</ButtonItem>
-        <ButtonItem>Ohio</ButtonItem>
-        <ButtonItem>Oklahoma</ButtonItem>
-        <ButtonItem>Oregon</ButtonItem>
-        <ButtonItem>Pennsylvania</ButtonItem>
-        <ButtonItem>Rhode Island</ButtonItem>
-        <ButtonItem>South Carolina</ButtonItem>
-        <ButtonItem>South Dakota</ButtonItem>
-        <ButtonItem>Tennessee</ButtonItem>
-        <ButtonItem>Texas</ButtonItem>
-        <ButtonItem>Utah</ButtonItem>
-        <ButtonItem>Vermont</ButtonItem>
-        <ButtonItem>Virginia</ButtonItem>
-        <ButtonItem>Washington</ButtonItem>
-        <ButtonItem>West Virginia</ButtonItem>
-        <ButtonItem>Wisconsin</ButtonItem>
-        <ButtonItem>Wyoming</ButtonItem>
       </ButtonToggle>
     </Box>
   )
@@ -215,11 +114,15 @@ function ButtonToggleDemo() {
 
 export function ButtonSetDemo() {
   const [border, setBorder] = useState(true)
+  const [value, setValue] = useState<string[]>([])
+  const [value2, setValue2] = useState<string[]>([])
+  const [toggle, setToggle] = useState('')
+  const [toggle2, setToggle2] = useState('')
   function handleChange(e: FormEvent<HTMLInputElement>) {
     setBorder(e.currentTarget.checked)
   }
   return (
-    <Space width="100%">
+    <Space width="100%" alignItems="flex-start">
       <ButtonToggleDemo />
       <ButtonGroupDemo />
       <Box flex={1} m="xlarge" border={border ? '1px solid' : 'none'}>
@@ -229,8 +132,8 @@ export function ButtonSetDemo() {
           on={border}
           onChange={handleChange}
         />
-        <Divider m="none" />
-        <ButtonGroup>
+        <Divider my="large" />
+        <ButtonGroup value={value} onChange={setValue}>
           <ButtonItem value="CA" selected>
             California
           </ButtonItem>
@@ -238,15 +141,15 @@ export function ButtonSetDemo() {
           <ButtonItem value="UT">Utah</ButtonItem>
         </ButtonGroup>
         Inline text
-        <Divider m="none" />
-        <ButtonToggle>
+        <Divider my="large" />
+        <ButtonToggle value={toggle} onChange={setToggle}>
           <ButtonItem selected>Ruby</ButtonItem>
           <ButtonItem>TypeScript</ButtonItem>
           <ButtonItem>Python</ButtonItem>
         </ButtonToggle>
         Inline text
-        <Divider m="none" />
-        <ButtonGroup>
+        <Divider my="large" />
+        <ButtonGroup value={value2} onChange={setValue2}>
           <ButtonItem value="CA" selected>
             California
           </ButtonItem>
@@ -264,18 +167,58 @@ export function ButtonSetDemo() {
           <ButtonItem value="OR">Oregon</ButtonItem>
         </ButtonGroup>
         Inline text
-        <Divider m="none" />
-        <ButtonToggle>
-          <ButtonItem selected>Ruby</ButtonItem>
-          <ButtonItem>TypeScript</ButtonItem>
-          <ButtonItem>Python</ButtonItem>
-          <ButtonItem>Java</ButtonItem>
-          <ButtonItem>Kotlin</ButtonItem>
-          <ButtonItem>Go</ButtonItem>
-          <ButtonItem>C++</ButtonItem>
-          <ButtonItem>Clojure</ButtonItem>
-          <ButtonItem>Perl</ButtonItem>
-          <ButtonItem>Scala</ButtonItem>
+        <Divider my="large" />
+        <ButtonToggle value={toggle2} onChange={setToggle2} nullable>
+          <ButtonItem>Alabama</ButtonItem>
+          <ButtonItem>Alaska</ButtonItem>
+          <ButtonItem>Arizona</ButtonItem>
+          <ButtonItem>Arkansas</ButtonItem>
+          <ButtonItem>California</ButtonItem>
+          <ButtonItem>Colorado</ButtonItem>
+          <ButtonItem>Connecticut</ButtonItem>
+          <ButtonItem>Delaware</ButtonItem>
+          <ButtonItem>Florida</ButtonItem>
+          <ButtonItem>Georgia</ButtonItem>
+          <ButtonItem>Hawaii</ButtonItem>
+          <ButtonItem>Idaho</ButtonItem>
+          <ButtonItem>Illinois</ButtonItem>
+          <ButtonItem>Indiana</ButtonItem>
+          <ButtonItem>Iowa</ButtonItem>
+          <ButtonItem>Kansas</ButtonItem>
+          <ButtonItem>Kentucky</ButtonItem>
+          <ButtonItem>Louisiana</ButtonItem>
+          <ButtonItem>Maine</ButtonItem>
+          <ButtonItem>Maryland</ButtonItem>
+          <ButtonItem>Massachusetts</ButtonItem>
+          <ButtonItem>Michigan</ButtonItem>
+          <ButtonItem>Minnesota</ButtonItem>
+          <ButtonItem>Mississippi</ButtonItem>
+          <ButtonItem>Missouri</ButtonItem>
+          <ButtonItem>Montana</ButtonItem>
+          <ButtonItem>Nebraska</ButtonItem>
+          <ButtonItem>Nevada</ButtonItem>
+          <ButtonItem>New Hampshire</ButtonItem>
+          <ButtonItem>New Jersey</ButtonItem>
+          <ButtonItem>New Mexico</ButtonItem>
+          <ButtonItem>New York</ButtonItem>
+          <ButtonItem>North Carolina</ButtonItem>
+          <ButtonItem>North Dakota</ButtonItem>
+          <ButtonItem>Ohio</ButtonItem>
+          <ButtonItem>Oklahoma</ButtonItem>
+          <ButtonItem>Oregon</ButtonItem>
+          <ButtonItem>Pennsylvania</ButtonItem>
+          <ButtonItem>Rhode Island</ButtonItem>
+          <ButtonItem>South Carolina</ButtonItem>
+          <ButtonItem>South Dakota</ButtonItem>
+          <ButtonItem>Tennessee</ButtonItem>
+          <ButtonItem>Texas</ButtonItem>
+          <ButtonItem>Utah</ButtonItem>
+          <ButtonItem>Vermont</ButtonItem>
+          <ButtonItem>Virginia</ButtonItem>
+          <ButtonItem>Washington</ButtonItem>
+          <ButtonItem>West Virginia</ButtonItem>
+          <ButtonItem>Wisconsin</ButtonItem>
+          <ButtonItem>Wyoming</ButtonItem>
         </ButtonToggle>
         Inline text
       </Box>
