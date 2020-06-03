@@ -26,11 +26,11 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { ThemeDemo } from './Theme/ThemeDemo'
+import { TreeDemo } from './Tree/TreeDemo'
 
 const App = () => (
   <ComponentsProvider>
-    <ThemeDemo />
+    <TreeDemo />
   </ComponentsProvider>
 )
 
