@@ -46,7 +46,7 @@ export interface ButtonSetOption {
   disabled?: boolean
 }
 
-interface ButtonSetProps<ValueType extends string | string[] = string[]>
+interface ButtonSetProps<TValue extends string | string[] = string[]>
   extends SimpleLayoutProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   /**
@@ -60,14 +60,14 @@ interface ButtonSetProps<ValueType extends string | string[] = string[]>
   /**
    * Value for controlling the component
    */
-  value?: ValueType
+  value?: TValue
   onItemClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface ButtonGroupOrToggleBaseProps<
-  ValueType extends string | string[] = string[]
-> extends Omit<ButtonSetProps<ValueType>, 'onChange' | 'onItemClick'> {
-  onChange?: ButtonSetCallback<ValueType>
+  TValue extends string | string[] = string[]
+> extends Omit<ButtonSetProps<TValue>, 'onChange' | 'onItemClick'> {
+  onChange?: ButtonSetCallback<TValue>
 }
 
 export type ButtonSetType<

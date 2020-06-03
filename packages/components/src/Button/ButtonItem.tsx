@@ -90,16 +90,10 @@ export const ButtonItem = styled(ButtonLayout)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => theme.space.small};
+  padding: 0 ${({ theme }) => theme.space.small};
   user-select: none;
-  border-radius: ${({ theme }) => theme.radii.medium};
+  border: none;
   background: transparent;
-  border-color: hsla(
-    ${({ theme }) => parseToHsl(theme.colors.key).hue},
-    25%,
-    90%,
-    1
-  );
   transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
 
   &[aria-pressed='false']:not([disabled]):hover {
@@ -127,6 +121,7 @@ export const ButtonItem = styled(ButtonLayout)`
 
   &:focus {
     outline: none;
+    box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
   }
 
   color: ${({ theme }) => theme.colors.text3};

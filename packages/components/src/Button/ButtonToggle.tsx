@@ -38,7 +38,7 @@ export interface ButtonToggleProps
   nullable?: boolean
 }
 
-const ButtonToggleComponent = ButtonSet as ButtonSetType<string>
+const ButtSetAsToggle = ButtonSet as ButtonSetType<string>
 
 const ButtonToggleLayout = forwardRef(
   (
@@ -56,7 +56,7 @@ const ButtonToggleLayout = forwardRef(
     }
 
     return (
-      <ButtonToggleComponent
+      <ButtSetAsToggle
         {...props}
         value={value}
         onItemClick={handleItemClick}
@@ -74,12 +74,27 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
   border-radius: ${({ theme }) => theme.radii.medium};
   background-color: ${({ theme }) => theme.colors.background};
 
+  ${ButtonItem} {
+    height: ${buttonItemHeight}px;
+    border-left: solid 1px ${({ theme }) => theme.colors.ui2};
+
+    &:last-child {
+      border-top-right-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
+    }
+    &:first-child {
+      border-top-left-radius: ${({ theme }) => theme.radii.medium};
+      border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
+    }
+    &:focus {
+      /* Allows selected button to stack above so box-shadow isn't blocked on the right */
+      position: relative;
+    }
+  }
+
   &.wrapping {
-    /* Slightly mitigates top-right and bottom-left square items overflowing rounded corners
-    (those ones can't be targeted for rounding) */
-    overflow: hidden;
     /* Creates horizontal rules between rows
-    (and hide the last one that's flush with the bottom border) */
+  (and hide the last one that's flush with the bottom border) */
     /* stylelint-disable */
     background-image: linear-gradient(
         0deg,
@@ -116,31 +131,11 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
-      /* Fix bottom "border" when the item background obscures the parent's horizontal rows */
+      /* Fixes bottom "border" when the item background obscures the parent's horizontal rows */
       &[aria-pressed='false']:hover:not(:focus),
       &[aria-pressed='true']:not(:focus) {
         box-shadow: inset 0 -1px 0 0 ${({ theme }) => theme.colors.ui2};
       }
-    }
-  }
-
-  ${ButtonItem} {
-    height: ${buttonItemHeight}px;
-    border: none;
-    border-left: solid 1px ${({ theme }) => theme.colors.ui2};
-    border-radius: 0;
-
-    &:last-child {
-      border-top-right-radius: ${({ theme }) => theme.radii.medium};
-      border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
-    }
-    &:first-child {
-      border-top-left-radius: ${({ theme }) => theme.radii.medium};
-      border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
-    }
-
-    &:focus {
-      box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.keyFocus};
     }
   }
 `
