@@ -70,22 +70,6 @@ describe('ButtonToggle', () => {
     expect(oranges).toHaveAttribute('aria-pressed', 'true')
   })
 
-  test('nullable', () => {
-    const onChangeMock = jest.fn()
-    renderWithTheme(
-      <ButtonToggle nullable onChange={onChangeMock} value="Oranges">
-        <ButtonItem>Apples</ButtonItem>
-        <ButtonItem>Oranges</ButtonItem>
-        <ButtonItem>Bananas</ButtonItem>
-      </ButtonToggle>
-    )
-    const orangesButton = screen.getByText('Oranges')
-    expect(orangesButton).toHaveAttribute('aria-pressed', 'true')
-
-    fireEvent.click(orangesButton)
-    expect(onChangeMock).toHaveBeenCalledWith('')
-  })
-
   test('options', () => {
     const options = [
       { label: 'Smoked Gouda', value: 'Gouda' },
@@ -115,5 +99,21 @@ describe('ButtonToggle', () => {
     // Disabled
     fireEvent.click(swissButton)
     expect(onChangeMock).not.toHaveBeenCalled()
+  })
+
+  test('nullable', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <ButtonToggle nullable onChange={onChangeMock} value="Oranges">
+        <ButtonItem>Apples</ButtonItem>
+        <ButtonItem>Oranges</ButtonItem>
+        <ButtonItem>Bananas</ButtonItem>
+      </ButtonToggle>
+    )
+    const orangesButton = screen.getByText('Oranges')
+    expect(orangesButton).toHaveAttribute('aria-pressed', 'true')
+
+    fireEvent.click(orangesButton)
+    expect(onChangeMock).toHaveBeenCalledWith('')
   })
 })
