@@ -95,7 +95,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       selectedDate ? formatDateString(selectedDate, locale) : ''
     )
     const [viewMonth, setViewMonth] = useState<Date | undefined>(
-      defaultValue || new Date(Date.now())
+      value || defaultValue || new Date(Date.now())
     )
 
     const handleDateChange = (date?: Date) => {
