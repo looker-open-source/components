@@ -24,7 +24,6 @@
 
  */
 
-import { color, ColorProps } from '@looker/design-tokens'
 import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 
@@ -34,7 +33,7 @@ export interface TreeGroupProps {
   /**
    * Color of the text of the label and children
    */
-  color?: ColorProps
+  color?: string
   /**
    * Visible label of the TreeGroup
    */
@@ -61,5 +60,5 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
 )
 
 export const TreeGroup = styled(TreeGroupLayout)`
-  ${color}
+  color: ${({ color }) => color};
 `
