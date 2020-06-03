@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `MessageBar` needs to allow DOM properties to be passed through (aria support and the like)
+- Fix issue where InputDate did not render the correct month when setting a value prop
 
 ## [0.8.0]
 
