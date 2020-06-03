@@ -24,8 +24,10 @@
 
  */
 
-import { IntentColors, SurfaceColors } from '../../system/color/specifiable'
+import { IntentColors } from '../../system/color/specifiable'
 import { CoreColors, Colors, SpecifiableColors } from '../../system'
+import { generateSurfaceColors } from '../../utils/color/surface'
+import { fallbackBlends, fallbackStateful } from './fallbacks'
 import {
   blue500,
   blue600,
@@ -37,25 +39,16 @@ import {
   yellow500,
   white,
 } from './palette'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
-const defaultCoreColors: CoreColors = {
+export const defaultCoreColors: CoreColors = {
   background: white,
   text: charcoal800,
   key: purple400,
 }
 
-const generateSurfaceColors = (coreColors: CoreColors): SurfaceColors => {
-  return {
-    field: coreColors.background,
-    inverse: coreColors.text,
-    onInverse: coreColors.background,
-  }
-}
-
-const defaultIntentColors: IntentColors = {
+export const defaultIntentColors: IntentColors = {
   link: blue600,
   critical: red500,
   warn: yellow500,

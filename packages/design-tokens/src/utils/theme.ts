@@ -24,41 +24,22 @@
 
  */
 
-import { variant } from 'styled-system'
+import { Theme } from '../theme'
+import { CoreColors } from '../system/color'
+import * as palette from '../tokens/color/palette'
+import { generateColors } from './color'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
+export const generateThemeFromCoreColors = (
+  theme: Theme,
+  coreColors: Partial<CoreColors>
+): Theme => {
+  const colors = generateColors(theme.colors, coreColors)
 
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+  return {
+    ...theme,
+    colors: {
+      ...colors,
+      palette,
+    },
+  }
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})

@@ -24,41 +24,13 @@
 
  */
 
-import { variant } from 'styled-system'
+import { getLuminance, shade, tint } from 'polished'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
-
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
+  const colorLuminance = getLuminance(color)
+  if (colorLuminance > 0.5) {
+    return shade(mixAmount / 100, color)
+  } else {
+    return tint(mixAmount / 100, color)
+  }
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})
