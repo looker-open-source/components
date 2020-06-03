@@ -27,22 +27,19 @@
 import {
   color,
   CompatibleHTMLProps,
-  layout,
-  LayoutProps,
-  reset,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  SpaceProps,
-  space,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
 import omit from 'lodash/omit'
+import { variant } from 'styled-system'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type IconSize =
   | SizeXXSmall
@@ -53,49 +50,62 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    LayoutProps,
-    SpaceProps {
+    Omit<SimpleLayoutProps, 'size' | 'height' | 'width'> {
   color?: string
   name: IconNames
-  size?: IconSize
+  size?: IconSize | number | string
 }
 
-const iconSizeMap = {
-  xxsmall: 12,
-  xsmall: 16,
-  small: 18,
-  medium: 24,
-  large: 32,
-}
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+const size = variant({
+  prop: 'size',
+  variants: {
+    xxsmall: {
+      height: '12px',
+      width: '12px',
+    },
+    xsmall: {
+      height: '16px',
+      width: '16px',
+    },
+    small: {
+      height: '18px',
+      width: '18px',
+    },
+    medium: {
+      height: '24px',
+      width: '24px',
+    },
+    large: {
+      height: '32px',
+      width: '32px',
+    },
+  },
+})
+/* eslint-enable sort-keys-fix/sort-keys-fix */
 
 export type { IconNames }
 
 const IconFactory = forwardRef(
-  ({ size = 'medium', ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
-    const Glyph = Glyphs[props.name]
-
+  ({ name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
+    const Glyph = Glyphs[name]
     return (
-      <Styled ref={ref} size={iconSizeMap[size]} {...omit(props, 'name')}>
+      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
         <Glyph width="100%" height="100%" fill="currentColor" />
-      </Styled>
+      </div>
     )
   }
 )
 
 IconFactory.displayName = 'IconFactory'
 
-const Styled = styled.div<Omit<IconProps, 'name'>>`
-  ${reset}
+export const Icon = styled(IconFactory)`
+  ${simpleLayoutCSS}
   ${color}
-  ${space}
-  ${layout}
+  ${size}
 
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
   align-items: center;
   display: inline-flex;
 `
 
-Styled.defaultProps = { size: 'medium' }
-
-export const Icon = styled(IconFactory)``
+Icon.defaultProps = { size: 'medium' }

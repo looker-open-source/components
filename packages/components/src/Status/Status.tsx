@@ -26,7 +26,7 @@
 
 import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import { Icon, IconNames } from '../Icon'
+import { Icon, IconNames, IconSize } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SimpleLayoutProps } from '../Layout/utils/simple'
 
@@ -45,6 +45,7 @@ export interface StatusProps
    * @default: 'neutral'
    */
   intent?: StatusIntent
+  size?: IconSize
 }
 
 const getIntentIcon = (intent?: StatusIntent): IconNames => {
@@ -79,14 +80,14 @@ export const getIntentLabel = (intent?: StatusIntent) => {
 }
 
 export const Status = forwardRef(
-  ({ className, intent }: StatusProps, ref: Ref<HTMLInputElement>) => (
+  ({ className, intent, size }: StatusProps, ref: Ref<HTMLInputElement>) => (
     <>
       <Icon
         className={className}
         ref={ref}
         color={intent}
         name={getIntentIcon(intent)}
-        size={24}
+        size={size}
       />
       <VisuallyHidden>{getIntentLabel(intent)}</VisuallyHidden>
     </>
@@ -94,3 +95,5 @@ export const Status = forwardRef(
 )
 
 Status.displayName = 'Status'
+
+Status.defaultProps = { size: 'medium' }
