@@ -48,7 +48,9 @@ const ButtonLayout = forwardRef(
     { children, onClick, value, ...props }: ButtonItemProps,
     ref: Ref<HTMLButtonElement>
   ) => {
-    const { value: contextValue, onItemClick } = useContext(ButtonSetContext)
+    const { disabled, value: contextValue, onItemClick } = useContext(
+      ButtonSetContext
+    )
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -73,6 +75,7 @@ const ButtonLayout = forwardRef(
         ref={ref}
         onClick={handleClick}
         value={itemValue}
+        disabled={disabled}
         {...props}
       >
         {children}
@@ -95,6 +98,7 @@ export const ButtonItem = styled(ButtonLayout)`
   border: none;
   background: transparent;
   transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
+  color: ${({ theme }) => theme.colors.text3};
 
   &[aria-pressed='false']:not([disabled]):hover {
     background: hsla(
@@ -103,11 +107,6 @@ export const ButtonItem = styled(ButtonLayout)`
       97%,
       0.7
     );
-  }
-
-  &[disabled] {
-    cursor: default;
-    color: ${(props) => props.theme.colors.text5};
   }
 
   &:active {
@@ -124,7 +123,10 @@ export const ButtonItem = styled(ButtonLayout)`
     box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
   }
 
-  color: ${({ theme }) => theme.colors.text3};
+  &[disabled] {
+    cursor: default;
+    color: ${(props) => props.theme.colors.text5};
+  }
 
   &[aria-pressed='true'] {
     background: hsla(
@@ -142,6 +144,9 @@ export const ButtonItem = styled(ButtonLayout)`
     );
 
     color: ${({ theme }) => theme.colors.key};
+    &[disabled] {
+      color: ${({ theme }) => theme.colors.keyFocus};
+    }
 
     /* stylelint-disable */
     text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;

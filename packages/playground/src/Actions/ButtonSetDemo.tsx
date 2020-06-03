@@ -108,6 +108,13 @@ function ButtonToggleDemo() {
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
       <Divider my="large" />
+      <Paragraph>Disabled</Paragraph>
+      <ButtonToggle disabled value="Ruby">
+        <ButtonItem>Ruby</ButtonItem>
+        <ButtonItem>TypeScript</ButtonItem>
+        <ButtonItem>Python</ButtonItem>
+      </ButtonToggle>
+      <Divider my="large" />
       <Paragraph>Options</Paragraph>
       <ButtonToggle options={options} value={toggle5} onChange={setToggle5} />
     </Box>

@@ -105,4 +105,16 @@ describe('ButtonGroup', () => {
     fireEvent.click(swissButton)
     expect(onChangeMock).not.toHaveBeenCalled()
   })
+
+  test('disabled', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <ButtonGroup disabled onChange={onChangeMock}>
+        <ButtonItem>Apples</ButtonItem>
+      </ButtonGroup>
+    )
+    const applesButton = screen.getByText('Apples')
+    fireEvent.click(applesButton)
+    expect(onChangeMock).not.toHaveBeenCalled()
+  })
 })

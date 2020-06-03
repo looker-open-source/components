@@ -103,6 +103,18 @@ describe('ButtonToggle', () => {
     expect(onChangeMock).not.toHaveBeenCalled()
   })
 
+  test('disabled', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <ButtonToggle disabled onChange={onChangeMock}>
+        <ButtonItem>Apples</ButtonItem>
+      </ButtonToggle>
+    )
+    const applesButton = screen.getByText('Apples')
+    fireEvent.click(applesButton)
+    expect(onChangeMock).not.toHaveBeenCalled()
+  })
+
   test('nullable', () => {
     const onChangeMock = jest.fn()
     renderWithTheme(
