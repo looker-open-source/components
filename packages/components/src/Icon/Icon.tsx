@@ -53,40 +53,7 @@ export interface IconProps
     Omit<SimpleLayoutProps, 'size' | 'height' | 'width'> {
   color?: string
   name: IconNames
-<<<<<<< HEAD
 }
-=======
-  size?: IconSize | number | string
-}
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-const size = variant({
-  prop: 'size',
-  variants: {
-    xxsmall: {
-      height: '12px',
-      width: '12px',
-    },
-    xsmall: {
-      height: '16px',
-      width: '16px',
-    },
-    small: {
-      height: '18px',
-      width: '18px',
-    },
-    medium: {
-      height: '24px',
-      width: '24px',
-    },
-    large: {
-      height: '32px',
-      width: '32px',
-    },
-  },
-})
-/* eslint-enable sort-keys-fix/sort-keys-fix */
->>>>>>> Icon t-shirt size implemented
 
 export type { IconNames }
 
