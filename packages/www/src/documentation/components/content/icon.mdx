@@ -7,52 +7,52 @@ github: Icon
 
 import { IconList } from './demos'
 
-To use an Icon you pass the `name` of the icon to the name property on the `<Icon />` component.
+`<Icon />` component uses the property `name` to display the correct icon.
 
 ```jsx
-<Icon name="Check" size={24} />
-<Icon name="Favorite" size={24} color="critical" />
-<Icon name="GearOutline" size={32} color="neutral" />
+<Flex justifyContent="space-around">
+  <Icon name="Check" />
+  <Icon name="Favorite" />
+  <Icon name="GearOutline" />
+</Flex>
 ```
 
+## Icon Attributes
+
+### color
+
+`color` by default, icons inherit the text color of the component they are embedded within. But it can also have it specify as a prop.
+
 ```jsx
-<Icon name="Trash" />
+<Flex justifyContent="space-around">
+  <Icon name="Trash" color="inform" />
+  <Box
+    color="critical"
+    bg="ui5"
+    p="large"
+    width="210px"
+    display="flex"
+    flexDirection="column"
+    borderRadius="medium"
+  >
+    The text in this Box is red and so is the icon.
+    <Icon name="Trash" size="32px" mx="auto" />
+  </Box>
+</Flex>
 ```
 
-By default, icons inherit the text color of the component they are embedded
-within and can be sized using the `size` property:
+### size
+
+`size` can be specified by using the size prop. By default the size will be medium.
 
 ```jsx
-<Box
-  color="critical"
-  bg="ui5"
-  p="large"
-  width="210px"
-  display="flex"
-  flexDirection="column"
-  borderRadius="medium"
->
-  The text in this Box is red and so is the icon.
-  <Icon name="Trash" size="32px" mx="auto" />
-</Box>
-```
-
-Alternatively, Icon can have its own color property, when it's appropriate to
-break the relationship between a container's text color and the icon color:
-
-```jsx
-<Box
-  color="critical"
-  bg="ui5"
-  p="large"
-  display="flex"
-  width="210px"
-  flexDirection="column"
-  borderRadius="medium"
->
-  The text in this Box is red, but the Icon is purple.
-  <Icon color="key" name="Trash" size="32px" mx="auto" />
-</Box>
+<Flex justifyContent="space-around" alignItems="flex-end">
+  <Icon name="Beaker" color="inform" size="xxsmall" />
+  <Icon name="Beaker" color="inform" size="xsmall" />
+  <Icon name="Beaker" color="inform" size="small" />
+  <Icon name="Beaker" color="inform" size="medium" />
+  <Icon name="Beaker" color="inform" size="large" />
+</Flex>
 ```
 
 ## Icon Library
