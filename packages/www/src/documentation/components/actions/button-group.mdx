@@ -6,7 +6,7 @@ github: Button/ButtonGroup.tsx
 
 ## ButtonGroup
 
-`<ButtonGroup />` behaves like a checkbox group. Use this when the user may select zero or more of a small set of options.
+`ButtonGroup` behaves like a checkbox group. Use this when the user may select zero or more of a small set of options.
 Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
 
 ```js
@@ -27,7 +27,7 @@ Control externally via `value` and `onChange` props. On individual `ButtonItem`,
 
 ## ButtonToggle
 
-`<ButtonToggle />` behaves as radio button group. Use this when the user may select only one of a small set of options.
+`ButtonToggle` behaves as radio button group. Use this when the user may select only one of a small set of options.
 Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
 
 ```jsx
@@ -60,5 +60,21 @@ Use the `nullable` if the user should be able to click the selected item to de-s
       <ButtonItem>Bananas</ButtonItem>
     </ButtonToggle>
   )
+}
+```
+
+## Options
+
+An alternative to composing a `ButtonGroup` or `ButtonToggle` with `ButtonItem` children is to pass it an array of `options`.
+
+```jsx
+;() => {
+  const options = [
+    { value: 'Gouda', label: 'Smoked Gouda' },
+    { value: 'Cheddar' },
+    { value: 'Swiss', disabled: true },
+  ]
+  const [value, setValue] = useState([options[0].value])
+  return <ButtonGroup options={options} value={value} onChange={setValue} />
 }
 ```

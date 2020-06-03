@@ -38,15 +38,25 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useForkedRef } from '../utils'
 import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
-import { buttonItemHeight } from './ButtonItem'
+import { ButtonItem, buttonItemHeight } from './ButtonItem'
+
+export interface ButtonSetOption {
+  value: string
+  label?: string
+  disabled?: boolean
+}
 
 interface ButtonSetProps<ValueType extends string | string[] = string[]>
   extends SimpleLayoutProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   /**
-   * One or more ButtonItem
+   * One or more ButtonItem (do not use if using options)
    */
-  children: ReactNode
+  children?: ReactNode
+  /**
+   * Available options (do not use if using ButtonItem children)
+   */
+  options?: ButtonSetOption[]
   /**
    * Value for controlling the component
    */
@@ -73,6 +83,7 @@ export const ButtonSetLayout = forwardRef(
       className,
       disabled,
       onItemClick,
+      options,
       value,
       ...props
     }: ButtonSetProps,
@@ -102,6 +113,16 @@ export const ButtonSetLayout = forwardRef(
 
     const ref = useForkedRef(measureRef, forwardedRef)
 
+    const optionItems =
+      options &&
+      options.map(({ disabled, label, value }) => {
+        return (
+          <ButtonItem key={value} disabled={disabled} value={value}>
+            {label || value}
+          </ButtonItem>
+        )
+      })
+
     return (
       <ButtonSetContext.Provider value={context}>
         <div
@@ -110,7 +131,7 @@ export const ButtonSetLayout = forwardRef(
           ref={ref}
           {...props}
         >
-          {children}
+          {children || optionItems}
         </div>
       </ButtonSetContext.Provider>
     )

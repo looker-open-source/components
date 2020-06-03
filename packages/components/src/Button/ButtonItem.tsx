@@ -86,7 +86,6 @@ ButtonLayout.displayName = 'ButtonLayout'
 export const buttonItemHeight = 36
 
 export const ButtonItem = styled(ButtonLayout)`
-  cursor: pointer;
   height: ${buttonItemHeight}px;
   display: inline-flex;
   align-items: center;
@@ -103,13 +102,18 @@ export const ButtonItem = styled(ButtonLayout)`
   );
   transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
 
-  &[aria-pressed='false']:hover {
+  &[aria-pressed='false']:not([disabled]):hover {
     background: hsla(
       ${({ theme }) => parseToHsl(theme.colors.key).hue},
       25%,
       97%,
       0.7
     );
+  }
+
+  &[disabled] {
+    cursor: default;
+    color: ${(props) => props.theme.colors.text5};
   }
 
   &:active {

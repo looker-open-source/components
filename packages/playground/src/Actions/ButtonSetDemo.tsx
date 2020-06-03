@@ -37,9 +37,16 @@ import {
 } from '@looker/components'
 import React, { FormEvent, useState } from 'react'
 
+const options = [
+  { label: 'Smoked Gouda', value: 'Gouda' },
+  { value: 'Cheddar' },
+  { disabled: true, value: 'Swiss' },
+]
+
 function ButtonGroupDemo() {
   const [value, setValue] = useState<string[]>([])
   const [value2, setValue2] = useState<string[]>(['CA', 'AK'])
+  const [value3, setValue3] = useState<string[]>(['Gouda'])
 
   return (
     <Box p="large" flex={1}>
@@ -58,56 +65,51 @@ function ButtonGroupDemo() {
         <ButtonItem value="UT">Utah</ButtonItem>
       </ButtonGroup>
       <Divider my="large" />
+      <Paragraph>Options</Paragraph>
+      <ButtonGroup options={options} value={value3} onChange={setValue3} />
+      <Divider my="large" />
     </Box>
   )
 }
 function ButtonToggleDemo() {
   const [toggle, setToggle] = useState<string>()
-  function handleChange(value: string) {
-    setToggle(value)
-  }
   const [toggle2, setToggle2] = useState('Ruby')
-  function handleChange2(value: string) {
-    setToggle2(value)
-  }
   const [toggle3, setToggle3] = useState<string>()
-  function handleChange3(value: string) {
-    setToggle3(value)
-  }
   const [toggle4, setToggle4] = useState('Ruby')
-  function handleChange4(value: string) {
-    setToggle4(value)
-  }
+  const [toggle5, setToggle5] = useState('Gouda')
 
   return (
     <Box p="large" flex={1}>
       <Heading>Button Toggle State</Heading>
-      <ButtonToggle value={toggle} onChange={handleChange}>
+      <ButtonToggle value={toggle} onChange={setToggle}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
       <Divider my="large" />
       <Paragraph>With initial value</Paragraph>
-      <ButtonToggle value={toggle2} onChange={handleChange2}>
+      <ButtonToggle value={toggle2} onChange={setToggle2}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
       <Divider my="large" />
       <Paragraph>Nullable</Paragraph>
-      <ButtonToggle nullable value={toggle3} onChange={handleChange3}>
+      <ButtonToggle nullable value={toggle3} onChange={setToggle3}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
       <Divider my="large" />
       <Paragraph>Nullable with initial value</Paragraph>
-      <ButtonToggle nullable value={toggle4} onChange={handleChange4}>
+      <ButtonToggle nullable value={toggle4} onChange={setToggle4}>
         <ButtonItem>Ruby</ButtonItem>
         <ButtonItem>TypeScript</ButtonItem>
         <ButtonItem>Python</ButtonItem>
       </ButtonToggle>
+      <Divider my="large" />
+      <Paragraph>Options</Paragraph>
+      <ButtonToggle options={options} value={toggle5} onChange={setToggle5} />
     </Box>
   )
 }
@@ -159,7 +161,9 @@ export function ButtonSetDemo() {
           <ButtonItem value="MS">Missouri</ButtonItem>
           <ButtonItem value="MI">Mississippi</ButtonItem>
           <ButtonItem value="MA">Massachusets</ButtonItem>
-          <ButtonItem value="VT">Vermont</ButtonItem>
+          <ButtonItem value="VT" disabled>
+            Vermont
+          </ButtonItem>
           <ButtonItem value="NH">New Hampshire</ButtonItem>
           <ButtonItem value="DE">Delaware</ButtonItem>
           <ButtonItem value="ME">Maine</ButtonItem>
@@ -173,7 +177,7 @@ export function ButtonSetDemo() {
           <ButtonItem>Alaska</ButtonItem>
           <ButtonItem>Arizona</ButtonItem>
           <ButtonItem>Arkansas</ButtonItem>
-          <ButtonItem>California</ButtonItem>
+          <ButtonItem disabled>California</ButtonItem>
           <ButtonItem>Colorado</ButtonItem>
           <ButtonItem>Connecticut</ButtonItem>
           <ButtonItem>Delaware</ButtonItem>
