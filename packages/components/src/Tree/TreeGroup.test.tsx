@@ -24,6 +24,15 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
-export * from './TreeGroup'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { TreeGroup } from '.'
+
+test('Renders label and children', () => {
+  const { getByText } = renderWithTheme(
+    <TreeGroup label="My Tree Group">My Children</TreeGroup>
+  )
+
+  getByText('My Tree Group')
+  getByText('My Children')
+})

@@ -36,6 +36,7 @@ import {
 } from '../Accordion'
 import { IconNames } from '../Icon'
 import { TreeItem } from './TreeItem'
+import { TreeGroup } from './TreeGroup'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   /**
@@ -124,6 +125,10 @@ export const Tree = styled(TreeLayout)`
 
   ${AccordionContent} {
     ${({ border }) => border && centeredVerticalBorder}
+    padding-left: ${({ theme: { space } }) =>
+      `calc(${space[indicatorProps.indicatorSize as SpacingSizes]} + ${
+        space[indicatorProps.indicatorGap as SpacingSizes]
+      })`}
   }
 
   ${TreeItem} {
@@ -137,7 +142,17 @@ export const Tree = styled(TreeLayout)`
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
+  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem} {
+    border: 1px solid transparent;
+    height: 25px;
+    padding: ${({ theme }) => theme.space.xxsmall};
+  }
+
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+  }
+
+  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem}:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `

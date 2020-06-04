@@ -65,4 +65,4 @@ export type {
   StatefulColors,
   StatefulColorChoices,
 } from './stateful'
-export type { ColorProps } from 'styled-system'
+export type { ColorProps, TextColorProps } from 'styled-system'
