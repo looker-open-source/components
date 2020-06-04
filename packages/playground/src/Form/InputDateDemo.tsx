@@ -48,7 +48,7 @@ export const InputDateDemo: FC = () => {
   const [date, setDate] = useState<Date | undefined>()
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
   const [locale, setLocale] = useState<Locales>(Locales.Italian)
-  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1 as 1)
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1)
   const [months, setMonths] = useState([
     'Gennaio',
     'Febbraio',

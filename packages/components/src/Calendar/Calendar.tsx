@@ -37,22 +37,9 @@ import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 
 export interface CalendarLocalization {
-  months: [
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string
-  ]
-  weekdaysShort: [string, string, string, string, string, string, string]
-  firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  months: string[]
+  weekdaysShort: string[]
+  firstDayOfWeek: number
 }
 
 interface CalendarProps {

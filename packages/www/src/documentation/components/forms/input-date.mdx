@@ -4,8 +4,6 @@ propsOf: InputDate
 github: Form/Inputs/InputDate/InputDate.tsx
 ---
 
-import { InputDateLocales } from './demos'
-
 `InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
 
 ## Value & Default Value
@@ -40,14 +38,6 @@ import { InputDateLocales } from './demos'
   )
 }
 ```
-
-## Internationalization
-
-`InputDate` comes with a range of supported language formats, which will automatically update month/day translations, as well as the appropriate first day of the week. Simply pass in the two-character locale code and everything will be formatted accordingly.
-
-**Default: `en`**
-
-<InputDateLocales />
 
 ## Date Validation
 
@@ -89,6 +79,54 @@ If you handle form validation externally (such as treating this date field as re
       </SpaceVertical>
     </Space>
   )
+}
+```
+
+## I18n
+
+`InputDate` acccepts two different props for use in localizing calendar output. The first is `dateStringLocale` accepts a country code and is used to format the rendered date string in the input box (i.e. `06/04/2020`). The second is `localization`, which is used to translate the calendar format and naming.
+
+### dateStringLocale
+
+```jsx
+<Grid columns={2}>
+  <FieldDate
+    dateStringLocale="ko"
+    label="Korea (YYYY.MM.DD)"
+    value={new Date(Date.now())}
+  />
+  <FieldDate
+    dateStringLocale="it"
+    label="Italy (DD/MM/YYYY)"
+    value={new Date(Date.now())}
+  />
+</Grid>
+```
+
+### localization
+
+The `localization` prop can be used to provide translation strings for the names of the months, the days of the week, and what day the week starts on (usually `0` or `1`).
+
+```jsx
+;() => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
+  return <InputDate localization={localizationProps} dateStringLocale="it" />
 }
 ```
 
