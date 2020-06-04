@@ -25,34 +25,20 @@
  */
 
 import xor from 'lodash/xor'
-import React, { ChangeEvent, forwardRef, Ref } from 'react'
+import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { useControlWarn, useID } from '../utils'
-import { ButtonItem, ButtonItemLabel } from './ButtonItem'
+import { ButtonItem } from './ButtonItem'
 import { ButtonGroupOrToggleBaseProps, ButtonSet } from './ButtonSet'
 
 const ButtonGroupLayout = forwardRef(
   (
-    {
-      onChange,
-      value,
-      ...props
-    }: Omit<ButtonGroupOrToggleBaseProps<string[]>, 'nullable'>,
+    { onChange, value = [], ...props }: ButtonGroupOrToggleBaseProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const name = useID(props.name)
-
-    const isControlled = useControlWarn({
-      controllingProps: ['onChange', 'value'],
-      isControlledCheck: () => onChange !== undefined,
-      name: 'ButtonGroup',
-    })
-
-    function handleChange(e?: ChangeEvent<HTMLInputElement>) {
-      // event is only ever missing for nullable ButtonToggle
-      if (e) {
-        const newValue = xor(value, [e.target.value])
-        onChange && onChange(newValue)
+    function handleItemClick(e: MouseEvent<HTMLButtonElement>) {
+      const newValue = xor(value, [e.currentTarget.value])
+      if (onChange) {
+        onChange(newValue)
       }
     }
 
@@ -60,28 +46,32 @@ const ButtonGroupLayout = forwardRef(
       <ButtonSet
         {...props}
         ref={ref}
-        {...(isControlled
-          ? {
-              onChange: handleChange,
-              value,
-            }
-          : { name })}
+        value={value}
+        onItemClick={handleItemClick}
       />
     )
   }
 )
 
+ButtonGroupLayout.displayName = 'ButtonGroupLayout'
+
 export const ButtonGroup = styled(ButtonGroupLayout)`
-  margin: -${({ theme }) => theme.space.xxxsmall};
-
   ${ButtonItem} {
+    border: 1px solid ${({ theme }) => theme.colors.keyAccent};
     border-radius: ${({ theme }) => theme.radii.medium};
-    height: 36px;
-    margin: ${({ theme }) => theme.space.xxxsmall};
-  }
+    margin-right: ${({ theme }) => theme.space.xxsmall};
+    &:last-child {
+      margin-right: 0;
+    }
 
-  ${ButtonItemLabel} {
-    border-style: solid;
-    border-width: 1px;
+    &[aria-pressed='false']:not(:hover) {
+      background: ${({ theme }) => theme.colors.background};
+    }
+  }
+  &.wrapping {
+    margin: -${({ theme }) => theme.space.xxxsmall};
+    ${ButtonItem} {
+      margin: ${({ theme }) => theme.space.xxxsmall};
+    }
   }
 `
