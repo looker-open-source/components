@@ -9,41 +9,63 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- update InputColor to have an empty `Swatch`
-- `Status` component
-- `Tree`, `TreeItem`, `TreeGroup` components
-  - Includes docs and test suite
+- `TreeGroup` component
+
+## [0.8.2]
+
+### Fixed
+
+- `InlineInputText` was mis-rendering underlying text and not absorbing `text-align` from parent element
+
+## [0.8.1]
+
+### Fixed
+
+- `MessageBar` needs to allow DOM properties to be passed through (aria support and the like)
+- Fix issue where InputDate did not render the correct month when setting a value prop
+
+## [0.8.0]
+
+### NOTABLE
+
+- `ComponentsProvider` now supports `coreColors` attribute for dynamic theme generation
+- `theme.colors.palette` no longer used internally except in very limited (and soon-to-be-deprecated) cases.
+- `theme.colors` shape has been significantly refactored (documentation updates to follow)
+- `Tooltip` now uses `keyAccent` for link color
+
+### Added
+
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 - `ComboboxList` and `ComboboxOption` now both support a custom `indicator`
   - `Select` and `SelectMulti` also support `indicator` at both the component and option level
+- `InputColor` now supports a "null" state
+- `Status` component
+- `Tree`, `TreeItem` components
+  - Includes docs and test suite
 - Test helper functions for `Combobox` component using react-testing-library
 
 ### Changed
 
-- `theme.colors.palette` no longer used internally except in very limited (and soon-to-be-deprecated) cases.
-- `Button*` font sizes updated to match design specifications
-- `theme.colors` shape has been significantly refactored (documentation updates to follow)
+- `Badge` - `default` intent is now `key`
 - `Banner` is now `MessageBar`
   - Major style changes to be more Material-esque
   - `warning` is now `warn`
   - `error` is now `critical`
   - `info` is now `inform`
   - `confirmation` is now `positive`
-- ``
-- `Badge` - `default` intent is now `key`
+- `Button*` font sizes updated to match design specifications
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
-- Updated `LookerLogo` and `LogoRings` to match new branding
-- `Tooltip` now uses `keyAccent` for link color
+- `TextArea` now supports min-height
+- Icons: `LookerLogo` and `LogoRings` updated to match new branding
 
 ### Fixed
 
-- update `TextArea` to have min-height as `defaultProps`
-- `InlineInputText` & `InlineInputTextArea` inherit color and text-alignment from parent
-- `InlineInputText` prop simple removes border-bottom
-- `Popover` positioning when placement is "top" and the height changes
-  - `usePopper` reinstate the `adaptive` option of `computeStyles`
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
 - `InlineInputText` no longer adds a special character to prevent vertical-collapse when empty
+- `InlineInputText` `simple` option _actually_ removes border-bottom
+- `InlineInputText` & `InlineInputTextArea` inherit color and text-alignment from parent
+- `Popover` positioning when placement is "top" and the height changes
+  - `usePopper` reinstate the `adaptive` option of `computeStyles`
 
 ### Removed
 
