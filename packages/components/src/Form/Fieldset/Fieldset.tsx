@@ -28,19 +28,23 @@ import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
 import { Legend } from '../Legend'
 import {
   Accordion,
   AccordionContent,
+  AccordionControlProps,
+  AccordionControlPropKeys,
   AccordionDisclosure,
   AccordionIndicatorProps,
-  AccordionPropKeys,
+  AccordionIndicatorPropKeys,
 } from '../../Accordion'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
     CompatibleHTMLProps<HTMLDivElement>,
+    AccordionControlProps,
     AccordionIndicatorProps {
   /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
    * @default false
@@ -65,7 +69,14 @@ const FieldsetLayout = forwardRef(
       legend,
       children,
       ...restProps
-    } = omit(props, AccordionPropKeys)
+    } = omit(props, [
+      ...AccordionControlPropKeys,
+      ...AccordionIndicatorPropKeys,
+    ])
+    const accordionProps = pick(props, [
+      ...AccordionControlPropKeys,
+      ...AccordionIndicatorPropKeys,
+    ])
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**
@@ -98,7 +109,10 @@ const FieldsetLayout = forwardRef(
 
     return legend ? (
       accordion ? (
-        <Accordion indicatorPosition="left">
+        <Accordion
+          {...accordionProps}
+          indicatorPosition={accordionProps.indicatorPosition || 'left'}
+        >
           <AccordionDisclosure>
             <Legend>{legend}</Legend>
           </AccordionDisclosure>

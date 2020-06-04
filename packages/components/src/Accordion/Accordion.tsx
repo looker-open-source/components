@@ -37,18 +37,6 @@ export type IndicatorIcons = {
   open: IconNames
 }
 
-export const AccordionPropKeys = [
-  'defaultOpen',
-  'isOpen',
-  'toggleOpen',
-  'onClose',
-  'onOpen',
-  'indicatorPosition',
-  'indicatorSize',
-  'indicatorGap',
-  'indicatorIcons',
-]
-
 export interface AccordionIndicatorProps {
   /**
    * Determines where the disclosure indicator will sit on
@@ -101,6 +89,23 @@ export interface AccordionControlProps {
    */
   onOpen?: () => void // called when the component is opened
 }
+
+/**
+ * Keys below are used by Fieldset to omit Accordion related props so they can be spread onto the internal Accordion component
+ */
+export const AccordionIndicatorPropKeys = [
+  'indicatorPosition',
+  'indicatorSize',
+  'indicatorGap',
+  'indicatorIcons',
+]
+export const AccordionControlPropKeys = [
+  'defaultOpen',
+  'isOpen',
+  'toggleOpen',
+  'onClose',
+  'onOpen',
+]
 
 export interface AccordionProps
   extends AccordionControlProps,

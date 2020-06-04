@@ -30,7 +30,7 @@ import { Fieldset, FieldCheckbox, Box } from '@looker/components'
 export const FieldsetAccordionDemo = () => {
   return (
     <Box p="medium">
-      <Fieldset legend="This is the Legend" accordion>
+      <Fieldset legend="This is the Legend" accordion defaultOpen>
         <FieldCheckbox name="box1" label="you can click here" />
         <FieldCheckbox name="box2" label="here too" />
         <FieldCheckbox name="box3" label="also here" />
