@@ -47,44 +47,35 @@ type DayOfWeekNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export const InputDateDemo: FC = () => {
   const [date, setDate] = useState<Date | undefined>()
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
-  const [locale, setLocale] = useState<Locales>(Locales.Korean)
-  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(0 as 0)
+  const [locale, setLocale] = useState<Locales>(Locales.Italian)
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1 as 1)
   const [months, setMonths] = useState([
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ])
-  const [weekdaysLong, setWeekdaysLong] = useState([
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
   ])
   const [weekdaysShort, setWeekdaysShort] = useState([
-    'su',
-    'mo',
-    'tu',
-    'we',
-    'th',
-    'fr',
-    'sa',
+    'Do',
+    'Lu',
+    'Ma',
+    'Me',
+    'Gi',
+    'Ve',
+    'Sa',
   ])
 
   const localizationProps = {
     firstDayOfWeek,
     months,
-    weekdaysLong,
     weekdaysShort,
   }
 
@@ -98,14 +89,7 @@ export const InputDateDemo: FC = () => {
   ) => {
     setMonths(Object.assign([], months, { [key]: e.currentTarget.value }))
   }
-  const handleWeekdaysLongChange = (
-    key: number,
-    e: SyntheticEvent<HTMLInputElement>
-  ) => {
-    setWeekdaysLong(
-      Object.assign([], weekdaysLong, { [key]: e.currentTarget.value })
-    )
-  }
+
   const handleWeekdaysShortChange = (
     key: number,
     e: SyntheticEvent<HTMLInputElement>
@@ -239,16 +223,6 @@ export const InputDateDemo: FC = () => {
             ))}
           </Fieldset>
           <Fieldset>
-            <legend>Weekdays (long)</legend>
-            {weekdaysLong.map((weekday, key) => (
-              <InputText
-                value={weekday}
-                key={key}
-                onChange={partial(handleWeekdaysLongChange, key)}
-              />
-            ))}
-          </Fieldset>
-          <Fieldset>
             <legend>Weekdays (short)</legend>
             {weekdaysShort.map((weekday, key) => (
               <InputText
@@ -293,6 +267,6 @@ const SelectedDateWrapper = styled.div`
 
 const LocaleGrid = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr 1fr;
   grid-gap: 2rem;
 `
