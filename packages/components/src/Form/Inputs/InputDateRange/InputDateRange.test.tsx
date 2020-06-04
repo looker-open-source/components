@@ -238,25 +238,25 @@ test('localizes calendar', () => {
 })
 
 test('localizes text input', () => {
-  const { getAllByDisplayValue, rerender } = renderWithTheme(
+  const { getByDisplayValue, rerender } = renderWithTheme(
     <InputDateRange
       dateStringLocale={Locales.Korean}
-      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
+      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
     />
   )
-  expect(getAllByDisplayValue('2020.02.01')).toBeInTheDocument()
+  expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
   rerender(
     <InputDateRange
       dateStringLocale={Locales.Italian}
-      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
+      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
     />
   )
-  expect(getAllByDisplayValue('01/02/2020')).toBeInTheDocument()
+  expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
   rerender(
     <InputDateRange
       dateStringLocale={Locales.English}
-      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
+      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
     />
   )
-  expect(getAllByDisplayValue('02/01/2020')).toBeInTheDocument()
+  expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
 })
