@@ -28,6 +28,7 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
+import { Locales } from '../../../utils'
 import { InputDate } from './InputDate'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -113,4 +114,52 @@ test('validates text input to match localized date format', () => {
   fireEvent.blur(input) // validate on blur
 
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
+})
+
+test('localizes calendar', () => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { firstDayOfWeek, months, weekdaysShort }
+
+  const { getByText, container } = renderWithTheme(
+    <InputDate localization={localizationProps} />
+  )
+
+  expect(getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(
+    (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
+      .textContent
+  ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
+})
+
+test('localizes text input', () => {
+  const { getByDisplayValue, rerender } = renderWithTheme(
+    <InputDate
+      dateStringLocale={Locales.Korean}
+      defaultValue={new Date(Date.now())}
+    />
+  )
+  expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+  rerender(
+    <InputDate dateStringLocale={Locales.Italian} defaultValue={new Date()} />
+  )
+  expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+  rerender(
+    <InputDate dateStringLocale={Locales.English} defaultValue={new Date()} />
+  )
+  expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
 })
