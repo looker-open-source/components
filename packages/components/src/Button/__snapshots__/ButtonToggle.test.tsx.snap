@@ -2,6 +2,7 @@
 
 exports[`ButtonToggle controlled 1`] = `
 .c3 {
+  cursor: pointer;
   height: 36px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -28,11 +29,7 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c3[aria-pressed='false']:not([disabled]):hover {
-  background: hsla( 255.6687898089172, 25%, 97%, 0.7 );
-}
-
-.c3:active {
-  background: hsla( 255.6687898089172, 50%, 96%, 0.9 );
+  background: #F3F2FF;
 }
 
 .c3:focus {
@@ -46,8 +43,8 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c3[aria-pressed='true'] {
-  background: hsla( 255.6687898089172, 100%, 98%, 1 );
-  border-color: hsla( 255.6687898089172, 100%, 98%, 1 );
+  background: #E8E5FF;
+  border-color: #E8E5FF;
   color: #6C43E0;
   text-shadow: -0.025ex 0 currentColor,0.025ex 0 currentColor;
 }
