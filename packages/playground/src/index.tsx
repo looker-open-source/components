@@ -26,7 +26,6 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider, Tooltip, Button } from '@looker/components'
-import { ComponentsProvider } from '@looker/components'
 
 const App = () => {
   return (
