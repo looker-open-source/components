@@ -8,11 +8,12 @@ import { InputDateLocales } from './demos'
 
 `InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
 
-## Default Value
+## Value & Default Value
 
 `InputDate` can be initialized with a default selected date.
 
 ```jsx
+<InputDate value={new Date('February 3, 2009')} />
 <InputDate defaultValue={new Date('June 3, 2019')} />
 ```
 

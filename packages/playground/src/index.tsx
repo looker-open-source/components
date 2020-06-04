@@ -25,24 +25,14 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Tooltip, Button } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { InputDateDemo } from './Form/InputDateDemo'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <div>
-        <Tooltip content="Hello Darkness My Old Friend" placement="right">
-          <Button>Hello World</Button>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip content="Hello Darkness My Old Friend" placement="right">
-          {(props) => <Button {...props}>Hello World</Button>}
-        </Tooltip>
-      </div>
-    </ComponentsProvider>
-  )
-}
+const App = () => (
+  <ComponentsProvider>
+    <InputDateDemo />
+  </ComponentsProvider>
+)
 
 /*
   This is the binding site for the playground. If you want to edit the

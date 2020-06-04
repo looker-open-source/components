@@ -31,14 +31,20 @@ import has from 'lodash/has'
 import { mix } from 'polished'
 import noop from 'lodash/noop'
 import { reset } from '@looker/design-tokens'
-import { LocaleCodes } from '../utils/i18n'
 import { inputTextFocus } from '../Form/Inputs/InputText'
 import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 
+export interface CalendarLocalization {
+  months: string[]
+  weekdaysLong: string[]
+  weekdaysShort: string[]
+  firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6
+}
+
 interface CalendarProps {
-  locale?: LocaleCodes
+  localization?: CalendarLocalization
   selectedDates?: Date | Date[] | RangeModifier
   onDayClick?: (day: Date) => void
   className?: string
@@ -56,7 +62,7 @@ interface CalendarProps {
 const NoopComponent: FC = () => null
 
 const InternalCalendar: FC<CalendarProps> = ({
-  locale = 'en',
+  localization = {},
   onDayClick,
   className,
   size,
@@ -90,9 +96,9 @@ const InternalCalendar: FC<CalendarProps> = ({
       }}
     >
       <DayPicker
+        {...localization}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
-        locale={locale}
         month={viewMonth}
         showOutsideDays={true}
         onDayClick={disableCallback(onDayClick)}
