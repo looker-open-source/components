@@ -29,23 +29,39 @@ import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
 import { Legend } from '../Legend'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
+} from '../../Accordion'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
     CompatibleHTMLProps<HTMLDivElement> {
+  /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
+   * @default false
+   */
+  accordion?: boolean
+  ariaLabeledby?: string
   /** Determines where to place the label in relation to the input.
    * @default false
    */
   inline?: boolean
-
-  ariaLabeledby?: string
-
+  /** Displayed above the children of Fieldset
+   */
   legend?: ReactNode
 }
 
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
-    const { inline, className, legend, children, ...restProps } = props
+    const {
+      accordion,
+      inline,
+      className,
+      legend,
+      children,
+      ...restProps
+    } = props
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**
@@ -69,11 +85,27 @@ const FieldsetLayout = forwardRef(
       </LayoutComponent>
     )
 
+    !legend &&
+      accordion &&
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Please provide a value for the "legend" prop if using accordion mode'
+      )
+
     return legend ? (
-      <SpaceVertical>
-        {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
-        {content}
-      </SpaceVertical>
+      accordion ? (
+        <Accordion indicatorPosition="left">
+          <AccordionDisclosure>
+            <Legend>{legend}</Legend>
+          </AccordionDisclosure>
+          <AccordionContent>{content}</AccordionContent>
+        </Accordion>
+      ) : (
+        <SpaceVertical>
+          {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
+          {content}
+        </SpaceVertical>
+      )
     ) : (
       content
     )
