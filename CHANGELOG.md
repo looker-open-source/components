@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `TreeGroup` component
 - `ButtonGroup` and `ButtonToggle` now support `options` as an alternative to nested `ButtonItem` children
+- `Fieldset` supports an accordion mode via an `accordion` prop
 
 ### Fixed
 
