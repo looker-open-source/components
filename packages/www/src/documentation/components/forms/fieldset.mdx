@@ -47,10 +47,55 @@ The `legend` property allows for a heading which is by default aligned above and
 
 ### Label
 
-Using `label` as a props in `Field`, gives a larger clickable area since the area where the label is placed also is associated to the component that has the label.
+Using `label` as a prop in `Field` gives a larger clickable area since the area where the label is placed also is associated to the component that has the label.
 
 ```jsx
 <Fieldset legend="This is the Legend">
+  <FieldCheckbox name="box1" label="you can click here" />
+  <FieldCheckbox name="box2" label="here too" />
+  <FieldCheckbox name="box3" label="also here" />
+</Fieldset>
+```
+
+### Accordion Mode
+
+`Fieldset` offers an accordion mode via the `accordion` prop.
+
+In accordion mode, the `legend` acts as a disclosure and clicking on it will show (or hide) the `Fieldset`'s `children`.
+
+```jsx
+<Fieldset legend="This is the Legend" accordion>
+  <FieldCheckbox name="box1" label="you can click here" />
+  <FieldCheckbox name="box2" label="here too" />
+  <FieldCheckbox name="box3" label="also here" />
+</Fieldset>
+```
+
+All `Accordion` props pertaining to open state control and indicator icon styling can be used on `Fieldset`. Simply pass said props to `Fieldset` while the `accordion` prop is true.
+
+Viable `Accordion` props include:
+
+- defaultOpen
+- isOpen
+- toggleOpen
+- onOpen
+- onClose
+- indicatorGap
+- indicatorSize
+- indicatorIcons
+- indicatorPosition
+
+For more details on all available open state control and indicator styling props for `Accordion`, visit the [Accordion documentation](https://components.looker.com/components/content/accordion).
+
+```jsx
+<Fieldset
+  legend="This is the Legend"
+  accordion
+  defaultOpen
+  onOpen={() => alert('Opening the pod bay doors')}
+  onClose={() => alert('Closing the pod bay doors')}
+  indicatorGap="xxlarge"
+>
   <FieldCheckbox name="box1" label="you can click here" />
   <FieldCheckbox name="box2" label="here too" />
   <FieldCheckbox name="box3" label="also here" />
