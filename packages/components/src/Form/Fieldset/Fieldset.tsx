@@ -27,17 +27,21 @@
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
 import { Legend } from '../Legend'
 import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
+  AccordionIndicatorProps,
+  AccordionPropKeys,
 } from '../../Accordion'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
-    CompatibleHTMLProps<HTMLDivElement> {
+    CompatibleHTMLProps<HTMLDivElement>,
+    AccordionIndicatorProps {
   /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
    * @default false
    */
@@ -61,7 +65,7 @@ const FieldsetLayout = forwardRef(
       legend,
       children,
       ...restProps
-    } = props
+    } = omit(props, AccordionPropKeys)
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**

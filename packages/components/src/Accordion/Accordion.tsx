@@ -37,6 +37,18 @@ export type IndicatorIcons = {
   open: IconNames
 }
 
+export const AccordionPropKeys = [
+  'defaultOpen',
+  'isOpen',
+  'toggleOpen',
+  'onClose',
+  'onOpen',
+  'indicatorPosition',
+  'indicatorSize',
+  'indicatorGap',
+  'indicatorIcons',
+]
+
 export interface AccordionIndicatorProps {
   /**
    * Determines where the disclosure indicator will sit on
@@ -63,12 +75,7 @@ export interface AccordionIndicatorProps {
   indicatorIcons?: IndicatorIcons
 }
 
-export interface AccordionProps
-  extends AccordionIndicatorProps,
-    SimpleLayoutProps {
-  children: ReactNode
-  className?: string
-
+export interface AccordionControlProps {
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -93,6 +100,14 @@ export interface AccordionProps
    * Callback that is triggered when opening the Accordion (i.e. when clicking on a closed Accordion)
    */
   onOpen?: () => void // called when the component is opened
+}
+
+export interface AccordionProps
+  extends AccordionControlProps,
+    AccordionIndicatorProps,
+    SimpleLayoutProps {
+  children: ReactNode
+  className?: string
 }
 
 const AccordionLayout: FC<AccordionProps> = ({
