@@ -29,12 +29,17 @@ import {
   Button,
   Box,
   InputDate,
-  Select,
+  Fieldset,
   Heading,
   LocaleCodes,
   DateFormat,
   Popover,
   Locales,
+  FieldSelect,
+  FieldText,
+  Grid,
+  FieldSlider,
+  Divider,
 } from '@looker/components'
 
 export const InputDateDemo: FC = () => {
@@ -102,32 +107,6 @@ export const InputDateDemo: FC = () => {
       <div>
         <HeadingGrid>
           <Heading as="h1">I18n</Heading>
-          <div>
-            <Select
-              options={[
-                { label: 'Arabic (ar)', value: 'ar' },
-                { label: 'German (de)', value: 'de' },
-                { label: 'English (en)', value: 'en' },
-                { label: 'Spanish (es)', value: 'es' },
-                { label: 'French (fr)', value: 'fr' },
-                { label: 'Italian (it)', value: 'it' },
-                { label: 'Japanese (ja)', value: 'ja' },
-                { label: 'Korean (ko)', value: 'ko' },
-                { label: 'Dutch (nl)', value: 'nl' },
-                { label: 'Polish (pl)', value: 'pl' },
-                { label: 'Portuguese (pt)', value: 'pt' },
-                { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
-                { label: 'Russian (ru)', value: 'ru' },
-                { label: 'Swedish (sv)', value: 'sv' },
-                { label: 'Turkish (tr)', value: 'tr' },
-                { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
-                { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
-              ]}
-              value={locale}
-              onChange={handleLocaleChange}
-              width="auto"
-            />
-          </div>
           <SelectedDateWrapper>
             Selected:{' '}
             {localizedDate && (
@@ -135,10 +114,74 @@ export const InputDateDemo: FC = () => {
             )}
           </SelectedDateWrapper>
         </HeadingGrid>
+        <Grid columns={5}>
+          <FieldSelect
+            label="Date String Format"
+            options={[
+              { label: 'Arabic (ar)', value: 'ar' },
+              { label: 'German (de)', value: 'de' },
+              { label: 'English (en)', value: 'en' },
+              { label: 'Spanish (es)', value: 'es' },
+              { label: 'French (fr)', value: 'fr' },
+              { label: 'Italian (it)', value: 'it' },
+              { label: 'Japanese (ja)', value: 'ja' },
+              { label: 'Korean (ko)', value: 'ko' },
+              { label: 'Dutch (nl)', value: 'nl' },
+              { label: 'Polish (pl)', value: 'pl' },
+              { label: 'Portuguese (pt)', value: 'pt' },
+              { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
+              { label: 'Russian (ru)', value: 'ru' },
+              { label: 'Swedish (sv)', value: 'sv' },
+              { label: 'Turkish (tr)', value: 'tr' },
+              { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
+              { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
+            ]}
+            value={locale}
+            onChange={handleLocaleChange}
+            width="auto"
+          />
+          <FieldSlider label="First Day Of Week" min={0} max={6} />
+          <Fieldset>
+            <legend>Months</legend>
+            <FieldText label="January" />
+            <FieldText label="Febrary" />
+            <FieldText label="March" />
+            <FieldText label="April" />
+            <FieldText label="May" />
+            <FieldText label="June" />
+            <FieldText label="July" />
+            <FieldText label="August" />
+            <FieldText label="September" />
+            <FieldText label="October" />
+            <FieldText label="November" />
+            <FieldText label="December" />
+          </Fieldset>
+          <Fieldset>
+            <legend>Weekdays (long)</legend>
+            <FieldText label="Sunday" />
+            <FieldText label="Monday" />
+            <FieldText label="Tuesday" />
+            <FieldText label="Wednesday" />
+            <FieldText label="Thursday" />
+            <FieldText label="Friday" />
+            <FieldText label="Saturday" />
+          </Fieldset>
+          <Fieldset>
+            <legend>Weekdays (short)</legend>
+            <FieldText label="Sunday" />
+            <FieldText label="Monday" />
+            <FieldText label="Tuesday" />
+            <FieldText label="Wednesday" />
+            <FieldText label="Thursday" />
+            <FieldText label="Friday" />
+            <FieldText label="Saturday" />
+          </Fieldset>
+        </Grid>
+        <Divider />
         <div>
           <InputDate
             onChange={setLocalizedDate}
-            locale={locale as LocaleCodes}
+            dateFormatLocale={locale as LocaleCodes}
             key={locale}
             m="small"
           />
