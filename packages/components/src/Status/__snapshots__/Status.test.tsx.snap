@@ -3,9 +3,11 @@
 exports[`critical Status 1`] = `
 Array [
   .c0 {
+  width: medium;
+  height: medium;
   color: #CC1F36;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -17,9 +19,7 @@ Array [
 }
 
 <div
-    className="c0 "
-    color="critical"
-    size={24}
+    className="c0"
   >
     <svg
       fill="currentColor"
@@ -56,9 +56,11 @@ Array [
 exports[`inform Status 1`] = `
 Array [
   .c0 {
+  width: medium;
+  height: medium;
   color: #0087e1;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -70,9 +72,7 @@ Array [
 }
 
 <div
-    className="c0 "
-    color="inform"
-    size={24}
+    className="c0"
   >
     <svg
       fill="currentColor"
@@ -109,9 +109,11 @@ Array [
 exports[`neutral status 1`] = `
 Array [
   .c0 {
+  width: medium;
+  height: medium;
   color: #939BA5;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -123,9 +125,7 @@ Array [
 }
 
 <div
-    className="c0 "
-    color="neutral"
-    size={24}
+    className="c0"
   >
     <svg
       fill="currentColor"
@@ -160,9 +160,11 @@ Array [
 exports[`positive Status 1`] = `
 Array [
   .c0 {
+  width: medium;
+  height: medium;
   color: #24b25f;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -174,9 +176,7 @@ Array [
 }
 
 <div
-    className="c0 "
-    color="positive"
-    size={24}
+    className="c0"
   >
     <svg
       fill="currentColor"
@@ -213,9 +213,11 @@ Array [
 exports[`warn Status 1`] = `
 Array [
   .c0 {
+  width: medium;
+  height: medium;
   color: #FFA800;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -227,9 +229,7 @@ Array [
 }
 
 <div
-    className="c0 "
-    color="warn"
-    size={24}
+    className="c0"
   >
     <svg
       fill="currentColor"

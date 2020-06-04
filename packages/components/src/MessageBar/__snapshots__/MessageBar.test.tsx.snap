@@ -2,9 +2,11 @@
 
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
+  width: medium;
+  height: medium;
   color: #24b25f;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -65,9 +67,7 @@ exports[`Confirmation MessageBar 1`] = `
   role="status"
 >
   <div
-    className="c1 "
-    color="positive"
-    size={24}
+    className="c1"
   >
     <svg
       fill="currentColor"
@@ -99,9 +99,11 @@ exports[`Confirmation MessageBar 1`] = `
 
 exports[`Error MessageBar 1`] = `
 .c1 {
+  width: medium;
+  height: medium;
   color: #CC1F36;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -162,9 +164,7 @@ exports[`Error MessageBar 1`] = `
   role="status"
 >
   <div
-    className="c1 "
-    color="critical"
-    size={24}
+    className="c1"
   >
     <svg
       fill="currentColor"
@@ -196,9 +196,11 @@ exports[`Error MessageBar 1`] = `
 
 exports[`Info MessageBar 1`] = `
 .c1 {
+  width: medium;
+  height: medium;
   color: #0087e1;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -259,9 +261,7 @@ exports[`Info MessageBar 1`] = `
   role="status"
 >
   <div
-    className="c1 "
-    color="inform"
-    size={24}
+    className="c1"
   >
     <svg
       fill="currentColor"
@@ -293,9 +293,11 @@ exports[`Info MessageBar 1`] = `
 
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
+  width: medium;
+  height: medium;
   color: #0087e1;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -464,9 +466,7 @@ exports[`MessageBar can be dismissed 1`] = `
   role="status"
 >
   <div
-    className="c1 "
-    color="inform"
-    size={24}
+    className="c1"
   >
     <svg
       fill="currentColor"
@@ -514,8 +514,7 @@ exports[`MessageBar can be dismissed 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c7 "
-      size={22}
+      className="c7"
     >
       <svg
         fill="currentColor"
@@ -538,9 +537,11 @@ exports[`MessageBar can be dismissed 1`] = `
 
 exports[`Warn MessageBar 1`] = `
 .c1 {
+  width: medium;
+  height: medium;
   color: #FFA800;
-  width: 24px;
   height: 24px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -593,9 +594,7 @@ exports[`Warn MessageBar 1`] = `
   role="status"
 >
   <div
-    className="c1 "
-    color="warn"
-    size={24}
+    className="c1"
   >
     <svg
       fill="currentColor"

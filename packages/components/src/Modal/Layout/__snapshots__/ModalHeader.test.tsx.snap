@@ -167,8 +167,7 @@ exports[`ModalHeader 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c6 "
-      size={22}
+      className="c6"
     >
       <svg
         fill="currentColor"
