@@ -275,7 +275,7 @@ const IconWrapper = styled.div`
   align-content: center;
   ${({ theme: { colors } }) => `
     background: ${colors.critical};
-    color: ${colors.onInverse};
+    color: ${colors.inverseOn};
   `}
   svg {
     transform: translateY(-2px);

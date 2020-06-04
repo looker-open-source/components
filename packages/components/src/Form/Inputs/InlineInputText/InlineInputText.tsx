@@ -97,6 +97,7 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   outline: none;
   padding: 0;
   position: absolute;
+  text-align: inherit;
   text-transform: inherit;
   top: 0;
   width: 100%;
@@ -105,10 +106,12 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
 interface VisibleTextProps {
   displayValue?: string
 }
+
 const VisibleText = styled.div<VisibleTextProps>`
   white-space: pre;
   color: ${({ displayValue, theme }) =>
-    displayValue ? theme.colors.text0 : theme.colors.text5};
+    displayValue ? 'transparent' : theme.colors.text5};
+  text-align: inherit;
 `
 
 export const InlineInputText = styled(InlineInputTextInternal)`

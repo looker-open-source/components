@@ -41,7 +41,6 @@
     "xxxxlarge"
   ],
   "prettier.arrowParens": "always",
-  "extensions.ignoreRecommendations": true,
   "files.autoSave": "off",
   "debug.allowBreakpointsEverywhere": true
 }

@@ -24,41 +24,15 @@
 
  */
 
-import { variant } from 'styled-system'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { TreeGroup } from '.'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
+test('Renders label and children', () => {
+  const { getByText } = renderWithTheme(
+    <TreeGroup label="My Tree Group">My Children</TreeGroup>
+  )
 
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
-}
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
+  getByText('My Tree Group')
+  getByText('My Children')
 })
