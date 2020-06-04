@@ -53,7 +53,6 @@ exports[`Fieldset 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -79,36 +78,33 @@ exports[`Fieldset 1`] = `
   padding: 0;
 }
 
-.c7::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c7::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c7:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c7::placeholder {
-  color: #939BA5;
-}
-
-.c7:hover {
-  border-color: #C1C6CC;
+.c7:focus,
+.c7:focus-within {
+  box-shadow: 0 0 0 2px;
+  outline: none;
 }
 
 .c7:focus,
 .c7:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
+  box-shadow: 0 0 0 2px;
+  outline: none;
+}
+
+.c7:focus,
+.c7:focus-within {
+  box-shadow: 0 0 0 2px;
+  outline: none;
+}
+
+.c7:focus,
+.c7:focus-within {
+  box-shadow: 0 0 0 2px;
   outline: none;
 }
 
 .c8 {
   border: solid 1px;
-  border-color: #DEE1E5;
+  border-color: ui2;
   border-radius: 0.25rem;
   height: 36px;
   width: 100%;
@@ -117,11 +113,10 @@ exports[`Fieldset 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  color: #343C42;
 }
 
 .c5 {
-  color: #343C42;
+  color: text2;
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -171,7 +166,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c1 {
-  color: #343C42;
+  color: text2;
   padding: 0rem;
   font-size: 1rem;
   font-weight: 600;
@@ -205,7 +200,7 @@ exports[`Fieldset 1`] = `
         htmlFor="text-1"
         id="text-1-labelledby"
       >
-        One
+        one
       </label>
       <div
         className="c6 "
