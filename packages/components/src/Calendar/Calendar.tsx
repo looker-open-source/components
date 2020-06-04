@@ -37,8 +37,21 @@ import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 
 export interface CalendarLocalization {
-  months: string[]
-  weekdaysShort: string[]
+  months: [
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string
+  ]
+  weekdaysShort: [string, string, string, string, string, string, string]
   firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6
 }
 
@@ -78,7 +91,7 @@ const InternalCalendar: FC<CalendarProps> = ({
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
-  const disableCallback = (cb: any) => {
+  const disableCallback = (cb: Function = noop) => {
     // allows provided callback to be circumvented by disabled prop
     return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
   }
