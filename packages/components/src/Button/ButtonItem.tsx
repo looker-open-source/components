@@ -24,8 +24,7 @@
 
  */
 
-import { parseToHsl } from 'polished'
-import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -34,128 +33,101 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import { useID } from '../utils'
+import { ButtonSetContext } from './ButtonSetContext'
 
 export interface ButtonItemProps
   extends SpaceProps,
     TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement | HTMLInputElement> {
-  /**
-   * Internal use only
-   */
-  isControlled?: boolean
+    Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
+  value?: string
 }
 
-export const ButtonItemLabelText = styled.span``
+const ButtonLayout = forwardRef(
+  (
+    { children, onClick, value, ...props }: ButtonItemProps,
+    ref: Ref<HTMLButtonElement>
+  ) => {
+    const { disabled, value: contextValue, onItemClick } = useContext(
+      ButtonSetContext
+    )
 
-export const ButtonItemLabel = styled.label<ButtonItemProps>`
+    function handleClick(e: MouseEvent<HTMLButtonElement>) {
+      onClick && onClick(e)
+      if (!e.defaultPrevented) {
+        onItemClick && onItemClick(e)
+      }
+    }
+
+    const itemValue =
+      value !== undefined ? value : typeof children === 'string' ? children : ''
+
+    const selected = contextValue
+      ? typeof contextValue === 'string'
+        ? contextValue === itemValue
+        : contextValue.includes(itemValue)
+      : false
+
+    return (
+      <button
+        type="button"
+        aria-pressed={selected}
+        ref={ref}
+        onClick={handleClick}
+        value={itemValue}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    )
+  }
+)
+
+ButtonLayout.displayName = 'ButtonLayout'
+
+export const buttonItemHeight = 36
+
+export const ButtonItem = styled(ButtonLayout)`
   cursor: pointer;
+  height: ${buttonItemHeight}px;
   display: inline-flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   padding: 0 ${({ theme }) => theme.space.small};
   user-select: none;
-  border-radius: ${({ theme }) => theme.radii.medium};
-  background: ${(props) =>
-    props.selected
-      ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 100%, 98%, 1)`
-      : 'transparent'};
-  border-color: ${(props) =>
-    props.selected
-      ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 100%, 98%, 1)`
-      : `hsla(${parseToHsl(props.theme.colors.key).hue}, 25%, 90%, 1)`};
-  transition: background ${(props) => props.theme.transitions.durationQuick}
-    ease;
+  border: none;
+  background: transparent;
+  transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
+  color: ${({ theme }) => theme.colors.text3};
 
-  &:hover {
-    background: ${(props) =>
-      !props.selected
-        ? `hsla(${parseToHsl(props.theme.colors.key).hue}, 25%, 97%, 0.7)`
-        : false};
+  &[aria-pressed='false']:not([disabled]):hover {
+    background: ${({ theme }) => theme.colors.keySubtle};
   }
 
-  &:active {
-    background: ${(props) =>
-      `hsla(${parseToHsl(props.theme.colors.key).hue}, 50%, 96%, 0.9)`};
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
   }
 
-  &:focus-within {
-    box-shadow: ${(props) => `0 0 .5px 1px ${props.theme.colors.keyFocus}`};
+  &[disabled] {
+    cursor: default;
+    color: ${(props) => props.theme.colors.text5};
   }
 
-  ${ButtonItemLabelText} {
-    color: ${(props) => props.theme.colors.text3};
-  }
+  &[aria-pressed='true'] {
+    background: ${({ theme }) => theme.colors.keyAccent};
+    border-color: ${({ theme }) => theme.colors.keyAccent};
 
-  input:checked + ${ButtonItemLabelText} {
-    color: ${(props) => props.theme.colors.key};
+    color: ${({ theme }) => theme.colors.key};
+    &[disabled] {
+      color: ${({ theme }) => theme.colors.keyFocus};
+    }
 
     /* stylelint-disable */
     text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;
     /* stylelint-enabled */
   }
+
   ${space}
   ${typography}
 `
-
-const ButtonInput = styled.input`
-  display: none;
-`
-
-const ButtonItemComponent = forwardRef(
-  (
-    {
-      children,
-      disabled,
-      id: propsID,
-      isControlled,
-      name,
-      onChange,
-      selected = false,
-      value,
-      ...props
-    }: ButtonItemProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
-    const [uncontrolledSelected, setUncontrolledSelected] = useState(selected)
-    const id = useID(propsID)
-
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-      if (onChange) {
-        onChange(e)
-      }
-      if (!isControlled) {
-        setUncontrolledSelected(!uncontrolledSelected)
-      }
-    }
-
-    const showSelected = isControlled ? selected : uncontrolledSelected
-
-    return (
-      <ButtonItemLabel
-        disabled={disabled}
-        htmlFor={id}
-        fontFamily="brand"
-        py="small"
-        selected={showSelected}
-        {...props}
-      >
-        <ButtonInput
-          type={props.type}
-          disabled={disabled}
-          name={name}
-          id={id}
-          onChange={handleChange}
-          checked={showSelected}
-          value={value}
-          ref={ref}
-        />
-        <ButtonItemLabelText>{children}</ButtonItemLabelText>
-      </ButtonItemLabel>
-    )
-  }
-)
-
-ButtonItemComponent.displayName = 'ButtonItemComponent'
-
-export const ButtonItem = styled(ButtonItemComponent)``

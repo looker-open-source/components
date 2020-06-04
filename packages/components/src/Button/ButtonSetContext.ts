@@ -23,32 +23,22 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider, Tooltip, Button } from '@looker/components'
-import { ComponentsProvider } from '@looker/components'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <div>
-        <Tooltip content="Hello Darkness My Old Friend" placement="right">
-          <Button>Hello World</Button>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip content="Hello Darkness My Old Friend" placement="right">
-          {(props) => <Button {...props}>Hello World</Button>}
-        </Tooltip>
-      </div>
-    </ComponentsProvider>
-  )
+import { createContext, MouseEvent } from 'react'
+
+export type ButtonSetCallback<TValue extends string | string[] = string[]> = (
+  option: TValue,
+  event?: MouseEvent<HTMLButtonElement>
+) => void
+
+export interface ButtonSetContextProps<
+  TValue extends string | string[] = string[]
+> {
+  disabled?: boolean
+  value?: TValue
+  onItemClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+const buttonSetContext: ButtonSetContextProps = {}
+
+export const ButtonSetContext = createContext(buttonSetContext)
