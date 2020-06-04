@@ -74,7 +74,7 @@ export interface InputDateRangeProps {
   onChange?: (range?: Partial<RangeModifier>) => void
   onValidationFail?: (value: string) => void
   localization?: CalendarLocalization
-  dateFormatLocale?: Locales
+  dateStringLocale?: Locales
   validationType?: ValidationType
   id?: string
   ref?: Ref<HTMLDivElement>
@@ -137,7 +137,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     {
       defaultValue = {},
       localization,
-      dateFormatLocale,
+      dateStringLocale,
       onChange,
       onValidationFail,
       validationType,
@@ -176,7 +176,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
      * FROM State
      */
     const [fromTextInputValue, setFromTextInputValue] = useState(
-      formatDateString(dateRange.from, dateFormatLocale)
+      formatDateString(dateRange.from, dateStringLocale)
     )
     const [validFromDate, setValidFromDate] = useState(
       validationType !== 'error'
@@ -187,7 +187,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
      * TO State
      */
     const [toTextInputValue, setToTextInputValue] = useState(
-      formatDateString(dateRange.to, dateFormatLocale)
+      formatDateString(dateRange.to, dateStringLocale)
     )
     const [validToDate, setValidToDate] = useState(validationType !== 'error')
     const toID = useID(id && `to-${id}`)
@@ -219,9 +219,9 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       if (value && !isEqual(value, dateRange)) {
         setDateRange(value)
         value.from &&
-          inputs.from.setValue(formatDateString(value.from, dateFormatLocale))
+          inputs.from.setValue(formatDateString(value.from, dateStringLocale))
         value.to &&
-          inputs.to.setValue(formatDateString(value.to, dateFormatLocale))
+          inputs.to.setValue(formatDateString(value.to, dateStringLocale))
         value.from &&
           !isDateRangeInView(value, viewMonth) &&
           setViewMonth(value.from)
@@ -260,7 +260,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       // only update inactive input so as not to block manual keyboard input
       const nonActiveInput = dateToSet === 'from' ? 'to' : 'from'
       inputs[nonActiveInput].setValue(
-        formatDateString(newDateRange[nonActiveInput], dateFormatLocale)
+        formatDateString(newDateRange[nonActiveInput], dateStringLocale)
       )
 
       if (!validationType) {
@@ -278,7 +278,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
     const handleCalendarClick = (date: Date) => {
       const dateToSet = chooseDateToSet(activeDateInput, date, dateRange)
-      inputs[dateToSet].setValue(formatDateString(date, dateFormatLocale))
+      inputs[dateToSet].setValue(formatDateString(date, dateStringLocale))
       handleDateChange(dateToSet, date)
       if (dateToSet === activeDateInput) {
         toggleActiveDateInput()
@@ -292,7 +292,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       if (value.length === 0) {
         handleDateChange(activeDateInput)
       } else {
-        const parsedValue = parseDateFromString(value, dateFormatLocale)
+        const parsedValue = parseDateFromString(value, dateStringLocale)
         if (parsedValue) {
           const newMonthFocus =
             activeDateInput === 'to'
@@ -310,7 +310,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         const value = (e.target as HTMLInputElement).value
         // is valid if text input is blank or parseDateFromString returns a date object
         const isValid =
-          value.length === 0 || !!parseDateFromString(value, dateFormatLocale)
+          value.length === 0 || !!parseDateFromString(value, dateStringLocale)
         inputs[activeDateInput].setIsValid(isValid)
         if (!isValid && isFunction(onValidationFail)) {
           onValidationFail(value)
@@ -349,7 +349,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             <InlineInputText
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
-                dateFormatLocale
+                dateStringLocale
               )})`}
               value={inputs.from.value}
               onChange={handleTextInputChange}
@@ -368,7 +368,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             <InlineInputText
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
-                dateFormatLocale
+                dateStringLocale
               )})`}
               value={inputs.to.value}
               onChange={handleTextInputChange}

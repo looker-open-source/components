@@ -171,7 +171,7 @@ export const InputDateDemo: FC = () => {
             <InputDate
               onChange={setLocalizedDate}
               localization={localizationProps}
-              dateFormatLocale={locale as LocaleCodes}
+              dateStringLocale={locale as LocaleCodes}
               key={locale}
               m="small"
             />
