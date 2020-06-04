@@ -24,7 +24,7 @@
 
  */
 import React, { FC } from 'react'
-import DayPicker, { RangeModifier } from 'react-day-picker'
+import DayPicker, { RangeModifier, LocaleUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import styled from 'styled-components'
 import has from 'lodash/has'
@@ -84,6 +84,14 @@ const InternalCalendar: FC<CalendarProps> = ({
     return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
   }
 
+  const formatMonthTitle = (month: Date) => {
+    if (localization.months) {
+      return `${localization.months[month.getMonth()]} ${month.getFullYear()}`
+    } else {
+      return LocaleUtils.formatMonthTitle(month)
+    }
+  }
+
   return (
     <CalendarContext.Provider
       value={{
@@ -97,6 +105,7 @@ const InternalCalendar: FC<CalendarProps> = ({
     >
       <DayPicker
         {...localization}
+        localeUtils={{ ...LocaleUtils, formatMonthTitle }}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
         month={viewMonth}
