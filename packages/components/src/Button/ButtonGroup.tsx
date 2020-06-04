@@ -24,7 +24,6 @@
 
  */
 
-import { parseToHsl } from 'polished'
 import xor from 'lodash/xor'
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
@@ -58,15 +57,14 @@ ButtonGroupLayout.displayName = 'ButtonGroupLayout'
 
 export const ButtonGroup = styled(ButtonGroupLayout)`
   ${ButtonItem} {
-    border: 1px solid
-      hsla(${({ theme }) => parseToHsl(theme.colors.key).hue}, 25%, 90%, 1);
+    border: 1px solid ${({ theme }) => theme.colors.keyAccent};
     border-radius: ${({ theme }) => theme.radii.medium};
     margin-right: ${({ theme }) => theme.space.xxsmall};
     &:last-child {
       margin-right: 0;
     }
 
-    &[aria-pressed='false'] {
+    &[aria-pressed='false']:not(:hover) {
       background: ${({ theme }) => theme.colors.background};
     }
   }

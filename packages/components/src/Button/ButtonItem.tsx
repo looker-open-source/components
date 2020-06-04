@@ -24,7 +24,6 @@
 
  */
 
-import { parseToHsl } from 'polished'
 import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
 import styled from 'styled-components'
 import {
@@ -89,6 +88,7 @@ ButtonLayout.displayName = 'ButtonLayout'
 export const buttonItemHeight = 36
 
 export const ButtonItem = styled(ButtonLayout)`
+  cursor: pointer;
   height: ${buttonItemHeight}px;
   display: inline-flex;
   align-items: center;
@@ -101,21 +101,7 @@ export const ButtonItem = styled(ButtonLayout)`
   color: ${({ theme }) => theme.colors.text3};
 
   &[aria-pressed='false']:not([disabled]):hover {
-    background: hsla(
-      ${({ theme }) => parseToHsl(theme.colors.key).hue},
-      25%,
-      97%,
-      0.7
-    );
-  }
-
-  &:active {
-    background: hsla(
-      ${({ theme }) => parseToHsl(theme.colors.key).hue},
-      50%,
-      96%,
-      0.9
-    );
+    background: ${({ theme }) => theme.colors.keySubtle};
   }
 
   &:focus {
@@ -129,19 +115,8 @@ export const ButtonItem = styled(ButtonLayout)`
   }
 
   &[aria-pressed='true'] {
-    background: hsla(
-      ${({ theme }) => parseToHsl(theme.colors.key).hue},
-      100%,
-      98%,
-      1
-    );
-
-    border-color: hsla(
-      ${({ theme }) => parseToHsl(theme.colors.key).hue},
-      100%,
-      98%,
-      1
-    );
+    background: ${({ theme }) => theme.colors.keyAccent};
+    border-color: ${({ theme }) => theme.colors.keyAccent};
 
     color: ${({ theme }) => theme.colors.key};
     &[disabled] {
@@ -152,6 +127,7 @@ export const ButtonItem = styled(ButtonLayout)`
     text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;
     /* stylelint-enabled */
   }
+
   ${space}
   ${typography}
 `
