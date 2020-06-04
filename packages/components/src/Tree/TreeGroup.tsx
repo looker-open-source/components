@@ -26,13 +26,11 @@
 
 import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
-import { color } from '@looker/design-tokens'
-import { TextColorProps } from 'styled-system'
+import { color, TextColorProps } from '@looker/design-tokens'
 
 export interface TreeGroupProps extends TextColorProps {
   children: ReactNode
   className?: string
-
   /**
    * Visible label of the TreeGroup
    */

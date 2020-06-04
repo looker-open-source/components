@@ -100,7 +100,7 @@ const exploreExample = (
           Oui ou Non
         </TreeItem>
       </TreeGroup>
-      <TreeGroup color="#BD892B" label="Measures">
+      <TreeGroup color="critical" label="Measures">
         <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Count!')}>
           Count
         </TreeItem>
