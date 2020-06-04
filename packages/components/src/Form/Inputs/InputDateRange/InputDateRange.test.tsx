@@ -28,6 +28,7 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
+import { Locales } from '../../../utils'
 import { InputDateRange } from './InputDateRange'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -237,25 +238,25 @@ test('localizes calendar', () => {
 })
 
 test('localizes text input', () => {
-  const { getByDisplayValue, rerender } = renderWithTheme(
+  const { getAllByDisplayValue, rerender } = renderWithTheme(
     <InputDateRange
       dateStringLocale={Locales.Korean}
-      defaultValue={new Date(Date.now())}
+      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
     />
   )
-  expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+  expect(getAllByDisplayValue('2020.02.01')).toBeInTheDocument()
   rerender(
     <InputDateRange
       dateStringLocale={Locales.Italian}
-      defaultValue={new Date()}
+      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
     />
   )
-  expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+  expect(getAllByDisplayValue('01/02/2020')).toBeInTheDocument()
   rerender(
     <InputDateRange
       dateStringLocale={Locales.English}
-      defaultValue={new Date()}
+      defaultValue={{ from: new Date(Date.now()), to: new Date(Date.now()) }}
     />
   )
-  expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+  expect(getAllByDisplayValue('02/01/2020')).toBeInTheDocument()
 })
