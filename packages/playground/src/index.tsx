@@ -25,15 +25,21 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, InputColor, Swatch } from '@looker/components'
+import { ComponentsProvider, Tooltip, Button } from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <InputColor />
-      <InputColor value="green" />
-      <InputColor defaultValue="purple" />
-      <Swatch />
+      <div>
+        <Tooltip content="Hello Darkness My Old Friend" placement="right">
+          <Button>Hello World</Button>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip content="Hello Darkness My Old Friend" placement="right">
+          {(props) => <Button {...props}>Hello World</Button>}
+        </Tooltip>
+      </div>
     </ComponentsProvider>
   )
 }
