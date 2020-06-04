@@ -29,6 +29,8 @@ A simple Tooltip component with out of the box styles and behavior.
 </Tooltip>
 ```
 
+## Tooltip Placement
+
 Tooltip allows you to specify where it should appear in relation to the target element. It accepts the following values:
 
 1. `auto`
@@ -92,4 +94,8 @@ If you need to be very specific
 </Tooltip>
 ```
 
-## Tooltip Placement
+## Tooltip passes a hover class
+
+In both the regular and "Render Prop" styles, `Tooltip` will pass a `hover` class to its child element (or function) when the `Tooltip` is open.
+
+This will preserve any hover styling when the cursor is on the tooltip text and off of the trigger element itself.
