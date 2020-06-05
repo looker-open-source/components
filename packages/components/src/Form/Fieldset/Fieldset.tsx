@@ -64,6 +64,7 @@ const FieldsetLayout = forwardRef(
         className={className}
         ref={ref}
         role="group"
+        align="start"
       >
         {children}
       </LayoutComponent>

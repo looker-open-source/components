@@ -29,7 +29,7 @@ github: Layout/Space
 
 # Alignment
 
-`Space` & `SpaceVertical` support `align`. `Space` defaults to `center` while `SpaceVertical` defaults to `start`
+`Space` & `SpaceVertical` support `align`. `Space` defaults to `center` while `SpaceVertical` defaults to `stretch`
 
 ```jsx
 <SpaceVertical>
@@ -144,24 +144,5 @@ Reverse the order of the items in the space.
   <Button>Button A</Button>
   <Button>Button B</Button>
   <Button>Button C</Button>
-</SpaceVertical>
-```
-
-# Stretch
-
-`SpaceVertical` supports an optional `stretch` property that will cause items within to stretch across the entire width of the container.
-
-```jsx
-<SpaceVertical>
-  <SpaceVertical>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </SpaceVertical>
-  <SpaceVertical stretch>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </SpaceVertical>
 </SpaceVertical>
 ```
