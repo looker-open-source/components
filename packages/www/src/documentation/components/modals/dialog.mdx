@@ -24,10 +24,25 @@ Dialogs break out of the standard application flow and UI to present new informa
   return (
     <div>
       <Dialog isOpen={value} onClose={() => setOff()}>
+        <ModalHeader>A Dialog Example</ModalHeader>
         <ModalContent>
-          <Paragraph>Some content inside the Dialog</Paragraph>
-          <Button>A button too!</Button>
+          <SpaceVertical>
+            <Paragraph>
+              {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque dui sodales efficitur vehicula. Praesent at aliquet nisi. Fusce risus quam, scelerisque non lacus mollis, feugiat molestie sem. Praesent augue erat, molestie id sem quis, fermentum venenatis lacus. Morbi vehicula lacus id fringilla scelerisque. Nulla dignissim nisi nisl, ac porttitor orci accumsan nec. Vestibulum pulvinar risus felis, vel bibendum odio luctus a. Morbi pharetra, ipsum sit amet vehicula malesuada, lacus quam viverra sapien, eget malesuada sem risus quis ligula. Vestibulum non laoreet est. Nullam blandit sollicitudin cursus. Nam cursus nisl id ipsum ullamcorper consequat.`}
+            </Paragraph>
+            <Paragraph>
+              {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
+              `
+            </Paragraph>
+            <Paragraph>
+              {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
+            </Paragraph>
+          </SpaceVertical>
         </ModalContent>
+        <ModalFooter>
+          <ButtonTransparent color="neutral">Cancel</ButtonTransparent>
+          <Button>Close Example Dialog</Button>
+        </ModalFooter>
       </Dialog>
       <Button onClick={() => setOn()}>Open Dialog</Button>
     </div>

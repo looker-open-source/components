@@ -56,20 +56,22 @@ export interface ModalHeaderProps
    * Render an icon next to the title text
    */
   headerIcon?: ReactElement<IconProps>
+
+  className?: string
 }
 
-export const ModalHeader: FC<ModalHeaderProps> = ({
+const ModalHeaderLayout: FC<ModalHeaderProps> = ({
+  className,
   children,
   closeIcon = 'Close',
   hideClose,
   headerIcon,
   id,
-  ...props
 }) => {
   const { closeModal } = useContext(ModalContext)
 
   return (
-    <Header {...props}>
+    <header className={className}>
       {headerIcon && <HeaderIconWrapper>{headerIcon}</HeaderIconWrapper>}
       <Heading
         as="h3"
@@ -92,11 +94,11 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
           style={{ gridArea: 'close' }}
         />
       )}
-    </Header>
+    </header>
   )
 }
 
-const Header = styled.header<SpaceProps>`
+export const ModalHeader = styled(ModalHeaderLayout)`
   ${reset}
   ${space}
   display: grid;
@@ -104,7 +106,7 @@ const Header = styled.header<SpaceProps>`
   align-items: center;
 `
 
-Header.defaultProps = {
+ModalHeader.defaultProps = {
   p: 'large',
   pr: 'medium',
   px: 'xlarge',
