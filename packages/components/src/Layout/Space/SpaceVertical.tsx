@@ -28,18 +28,12 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
 
-interface SpaceVerticalProps extends SpaceHelperProps {
+interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
-   * Align items vertically within `Space`
-   * @default 'start'
+   * Align items vertically within `Space`. `stretch` will cause items to stretch the full-width the `SpaceVertical`
+   * @default 'stretch'
    */
-  align?: 'start' | 'center' | 'end'
-
-  /**
-   * Stretch items full width of space
-   * @default false
-   */
-  stretch?: boolean
+  align?: 'start' | 'center' | 'end' | 'stretch'
 }
 
 const align = variant({
@@ -54,12 +48,15 @@ const align = variant({
     start: {
       alignItems: 'flex-start',
     },
+    stretch: {
+      alignItems: 'stretch',
+    },
   },
 })
 
 export const SpaceVertical = styled.div<SpaceVerticalProps>`
   ${spaceCSS}
-  ${({ stretch }) => !stretch && align}
+  ${align}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
 
   && > * {
@@ -72,4 +69,4 @@ export const SpaceVertical = styled.div<SpaceVerticalProps>`
       : `&& > *:first-child { margin-top: ${theme.space.none}; }`}
 `
 
-SpaceVertical.defaultProps = { align: 'start', width: '100%' }
+SpaceVertical.defaultProps = { align: 'stretch', width: '100%' }

@@ -9,13 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `TreeGroup` component
-- `ButtonGroup` and `ButtonToggle` now support `options` as an alternative to nested `ButtonItem` children
 - `Fieldset` supports an accordion mode via an `accordion` prop
+
+### Changed
+
+- `SpaceVertical` now has `align=stretch` by default
+
+### Fixed
+
+- `Fieldset` with inline properly aligns `Field`s with error messages
+
+## [0.8.3]
+
+### Added
+
+- `ButtonGroup` and `ButtonToggle` now support `options` as an alternative to nested `ButtonItem` children
+- `TreeGroup` component
 
 ### Fixed
 
 - `ButtonGroup` and `ButtonToggle` accessibility issues due to hidden `input`s (they now render a list of `button`s instead)
+- `Calendar`, `InputDate`, and `InputDateRange` localization props
 
 ### Removed
 

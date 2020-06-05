@@ -98,6 +98,7 @@ const FieldsetLayout = forwardRef(
         gap={inline ? 'medium' : 'small'}
         ref={ref}
         role="group"
+        align="start"
       >
         {children}
       </LayoutComponent>
