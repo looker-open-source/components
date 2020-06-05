@@ -23,24 +23,81 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
+import React, { FC, useState, SyntheticEvent } from 'react'
 import styled from 'styled-components'
+import partial from 'lodash/partial'
 import {
   Button,
   Box,
   InputDate,
-  Select,
+  Fieldset,
   Heading,
   LocaleCodes,
   DateFormat,
   Popover,
   Locales,
+  FieldSelect,
+  InputText,
+  FieldSlider,
+  Grid,
 } from '@looker/components'
+
+type DayOfWeekNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export const InputDateDemo: FC = () => {
   const [date, setDate] = useState<Date | undefined>()
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
-  const [locale, setLocale] = useState<Locales>(Locales.Korean)
+  const [locale, setLocale] = useState<Locales>(Locales.Italian)
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1)
+  const [months, setMonths] = useState([
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ])
+  const [weekdaysShort, setWeekdaysShort] = useState([
+    'Do',
+    'Lu',
+    'Ma',
+    'Me',
+    'Gi',
+    'Ve',
+    'Sa',
+  ])
+
+  const localizationProps = {
+    firstDayOfWeek,
+    months,
+    weekdaysShort,
+  }
+
+  const handleFirstDayOfWeekChange = (e: SyntheticEvent<HTMLInputElement>) => {
+    setFirstDayOfWeek(parseInt(e.currentTarget.value, 10) as DayOfWeekNumbers)
+  }
+
+  const handleMonthChange = (
+    key: number,
+    e: SyntheticEvent<HTMLInputElement>
+  ) => {
+    setMonths(Object.assign([], months, { [key]: e.currentTarget.value }))
+  }
+
+  const handleWeekdaysShortChange = (
+    key: number,
+    e: SyntheticEvent<HTMLInputElement>
+  ) => {
+    setWeekdaysShort(
+      Object.assign([], weekdaysShort, { [key]: e.currentTarget.value })
+    )
+  }
 
   const handleLocaleChange = (val: any) => {
     setLocale(val)
@@ -102,32 +159,6 @@ export const InputDateDemo: FC = () => {
       <div>
         <HeadingGrid>
           <Heading as="h1">I18n</Heading>
-          <div>
-            <Select
-              options={[
-                { label: 'Arabic (ar)', value: 'ar' },
-                { label: 'German (de)', value: 'de' },
-                { label: 'English (en)', value: 'en' },
-                { label: 'Spanish (es)', value: 'es' },
-                { label: 'French (fr)', value: 'fr' },
-                { label: 'Italian (it)', value: 'it' },
-                { label: 'Japanese (ja)', value: 'ja' },
-                { label: 'Korean (ko)', value: 'ko' },
-                { label: 'Dutch (nl)', value: 'nl' },
-                { label: 'Polish (pl)', value: 'pl' },
-                { label: 'Portuguese (pt)', value: 'pt' },
-                { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
-                { label: 'Russian (ru)', value: 'ru' },
-                { label: 'Swedish (sv)', value: 'sv' },
-                { label: 'Turkish (tr)', value: 'tr' },
-                { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
-                { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
-              ]}
-              value={locale}
-              onChange={handleLocaleChange}
-              width="auto"
-            />
-          </div>
           <SelectedDateWrapper>
             Selected:{' '}
             {localizedDate && (
@@ -135,14 +166,74 @@ export const InputDateDemo: FC = () => {
             )}
           </SelectedDateWrapper>
         </HeadingGrid>
-        <div>
-          <InputDate
-            onChange={setLocalizedDate}
-            locale={locale as LocaleCodes}
-            key={locale}
-            m="small"
-          />
-        </div>
+        <LocaleGrid>
+          <div>
+            <InputDate
+              onChange={setLocalizedDate}
+              localization={localizationProps}
+              dateStringLocale={locale as LocaleCodes}
+              key={locale}
+              m="small"
+            />
+          </div>
+          <div>
+            <Grid gap="large" columns={1}>
+              <FieldSelect
+                label="Date String Format"
+                options={[
+                  { label: 'Arabic (ar)', value: 'ar' },
+                  { label: 'German (de)', value: 'de' },
+                  { label: 'English (en)', value: 'en' },
+                  { label: 'Spanish (es)', value: 'es' },
+                  { label: 'French (fr)', value: 'fr' },
+                  { label: 'Italian (it)', value: 'it' },
+                  { label: 'Japanese (ja)', value: 'ja' },
+                  { label: 'Korean (ko)', value: 'ko' },
+                  { label: 'Dutch (nl)', value: 'nl' },
+                  { label: 'Polish (pl)', value: 'pl' },
+                  { label: 'Portuguese (pt)', value: 'pt' },
+                  { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
+                  { label: 'Russian (ru)', value: 'ru' },
+                  { label: 'Swedish (sv)', value: 'sv' },
+                  { label: 'Turkish (tr)', value: 'tr' },
+                  { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
+                  { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
+                ]}
+                value={locale}
+                onChange={handleLocaleChange}
+                width="auto"
+              />
+              <FieldSlider
+                label="First Day Of Week"
+                min={0}
+                max={6}
+                value={firstDayOfWeek}
+                onChange={handleFirstDayOfWeekChange}
+              />
+            </Grid>
+          </div>
+          <Fieldset>
+            <legend>Months</legend>
+            {months.map((month, key) => (
+              <InputText
+                value={month}
+                key={key}
+                onChange={partial(handleMonthChange, key)}
+              />
+            ))}
+          </Fieldset>
+          <Fieldset>
+            <legend>Weekdays (short)</legend>
+            {weekdaysShort.map((weekday, key) => (
+              <InputText
+                value={weekday}
+                key={key}
+                onChange={partial(handleWeekdaysShortChange, key)}
+                maxLength={2}
+              />
+            ))}
+          </Fieldset>
+        </LocaleGrid>
       </div>
       <div>
         <HeadingGrid>
@@ -172,4 +263,10 @@ const HeadingGrid = styled.div`
 const SelectedDateWrapper = styled.div`
   display: inline-block;
   color: ${({ theme }) => theme.colors.inform};
+`
+
+const LocaleGrid = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  grid-gap: 2rem;
 `

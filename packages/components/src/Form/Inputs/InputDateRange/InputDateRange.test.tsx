@@ -28,6 +28,7 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
+import { Locales } from '../../../utils'
 import { InputDateRange } from './InputDateRange'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -204,4 +205,73 @@ test('validates TO text input to match localized date format', () => {
   fireEvent.blur(toInput) // validate on blur
 
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
+})
+
+test('localizes calendar', () => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { firstDayOfWeek, months, weekdaysShort }
+
+  const { getByText, container } = renderWithTheme(
+    <InputDateRange localization={localizationProps} />
+  )
+
+  expect(getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(
+    (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
+      .textContent
+  ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
+})
+
+describe('localizes text input', () => {
+  test('Korean', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.Korean}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+  })
+  test('Italian', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.Italian}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+  })
+  test('English', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.English}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+  })
 })
