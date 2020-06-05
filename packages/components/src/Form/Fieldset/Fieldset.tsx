@@ -38,14 +38,12 @@ import {
   AccordionControlPropKeys,
   AccordionDisclosure,
   AccordionIndicatorProps,
-  AccordionIndicatorPropKeys,
 } from '../../Accordion'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
     CompatibleHTMLProps<HTMLDivElement>,
-    AccordionControlProps,
-    AccordionIndicatorProps {
+    AccordionControlProps {
   /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
    * @default false
    */
@@ -69,14 +67,20 @@ const FieldsetLayout = forwardRef(
       legend,
       children,
       ...restProps
-    } = omit(props, [
-      ...AccordionControlPropKeys,
-      ...AccordionIndicatorPropKeys,
-    ])
-    const accordionProps = pick(props, [
-      ...AccordionControlPropKeys,
-      ...AccordionIndicatorPropKeys,
-    ])
+    } = omit(props, [...AccordionControlPropKeys])
+    const accordionIndicatorDefaults: AccordionIndicatorProps = {
+      indicatorGap: 'xsmall',
+      indicatorIcons: {
+        close: 'ArrowRight',
+        open: 'ArrowDown',
+      },
+      indicatorPosition: 'left',
+      indicatorSize: 'small',
+    }
+    const accordionProps = {
+      ...pick(props, [...AccordionControlPropKeys]),
+      ...accordionIndicatorDefaults,
+    }
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**
@@ -92,7 +96,6 @@ const FieldsetLayout = forwardRef(
       <LayoutComponent
         {...restProps}
         gap={inline ? 'medium' : 'small'}
-        className={className}
         ref={ref}
         role="group"
       >
@@ -107,15 +110,10 @@ const FieldsetLayout = forwardRef(
         'Please provide a value for the "legend" prop if using accordion mode'
       )
 
-    return legend ? (
+    const renderedFieldset = legend ? (
       accordion ? (
-        <Accordion
-          {...accordionProps}
-          indicatorPosition={accordionProps.indicatorPosition || 'left'}
-        >
-          <AccordionDisclosure>
-            <Legend>{legend}</Legend>
-          </AccordionDisclosure>
+        <Accordion {...accordionProps}>
+          <AccordionDisclosure>{legend}</AccordionDisclosure>
           <AccordionContent>{content}</AccordionContent>
         </Accordion>
       ) : (
@@ -127,12 +125,21 @@ const FieldsetLayout = forwardRef(
     ) : (
       content
     )
+
+    return <div className={className}>{renderedFieldset}</div>
   }
 )
 
 FieldsetLayout.displayName = 'FieldsetLayout'
 
-export const Fieldset = styled(FieldsetLayout)``
+export const Fieldset = styled(FieldsetLayout)`
+  ${AccordionDisclosure} {
+    font-size: ${({ theme }) => theme.fontSizes.xsmall};
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    height: 24px;
+    padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  }
+`
 
 Fieldset.defaultProps = {
   padding: 'none',
