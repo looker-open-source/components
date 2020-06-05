@@ -24,6 +24,38 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
-export * from './TreeGroup'
+import React, { ReactNode, FC } from 'react'
+import styled from 'styled-components'
+import { color, TextColorProps } from '@looker/design-tokens'
+
+export interface TreeGroupProps extends TextColorProps {
+  children: ReactNode
+  className?: string
+  /**
+   * Visible label of the TreeGroup
+   */
+  label: string
+}
+
+const TreeGroupLabel = styled.div`
+  /* Border is here to get proper alignment with Tree and TreeItem text */
+  border: 1px transparent solid;
+  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
+  font-size: ${({ theme }) => theme.space.small};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+`
+
+const TreeGroupLayout: FC<TreeGroupProps> = ({
+  children,
+  className,
+  label,
+}) => (
+  <div className={className}>
+    <TreeGroupLabel>{label}</TreeGroupLabel>
+    {children}
+  </div>
+)
+
+export const TreeGroup = styled(TreeGroupLayout)`
+  ${color}
+`

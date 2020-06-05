@@ -7,9 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `TreeGroup` component
+- `ButtonGroup` and `ButtonToggle` now support `options` as an alternative to nested `ButtonItem` children
+
 ### Fixed
 
+- `ButtonGroup` and `ButtonToggle` accessibility issues due to hidden `input`s (they now render a list of `button`s instead)
 - `Banner` no longer extra wide margin-right by default
+
+### Removed
+
+- `ButtonGroup` and `ButtonToggle` no longer support an uncontrolled version, since they now render a list of `button`s instead of checkbox and radio groups.
 
 ## [0.8.2]
 

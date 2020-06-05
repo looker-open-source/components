@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup controlled 1`] = `
+.c3 {
+  cursor: pointer;
+  height: 36px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  background: transparent;
+  -webkit-transition: background 150ms ease;
+  transition: background 150ms ease;
+  color: #4C535B;
+}
+
+.c3[aria-pressed='false']:not([disabled]):hover {
+  background: #F3F2FF;
+}
+
+.c3:focus {
+  outline: none;
+  box-shadow: 0 0 0.5px 1px #9785F2;
+}
+
+.c3[disabled] {
+  cursor: default;
+  color: #939BA5;
+}
+
+.c3[aria-pressed='true'] {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+  text-shadow: -0.025ex 0 currentColor,0.025ex 0 currentColor;
+}
+
+.c3[aria-pressed='true'][disabled] {
+  color: #9785F2;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.c1 .c2 {
+  border: 1px solid #E8E5FF;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.c1 .c2:last-child {
+  margin-right: 0;
+}
+
+.c1 .c2[aria-pressed='false']:not(:hover) {
+  background: #FFFFFF;
+}
+
+.c1.wrapping {
+  margin: -0.125rem;
+}
+
+.c1.wrapping .c2 {
+  margin: 0.125rem;
+}
+
+<div
+  class="c0 c1"
+  role="group"
+>
+  <button
+    aria-pressed="false"
+    class="c2 c3"
+    type="button"
+    value="Apples"
+  >
+    Apples
+  </button>
+  <button
+    aria-pressed="false"
+    class="c2 c3"
+    type="button"
+    value="Oranges"
+  >
+    Oranges
+  </button>
+  <button
+    aria-pressed="true"
+    class="c2 c3"
+    type="button"
+    value="Bananas"
+  >
+    Bananas
+  </button>
+</div>
+`;
