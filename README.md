@@ -78,7 +78,7 @@ We follow a [semantic versioning scheme](https://semver.org/). That means:
 1.  Open PR for change review
 1.  Merge PR
 1.  Pull latest master
-1.  `yarn release`
+1.  `yarn lerna release`
 
 ### 4. Tooling
 
