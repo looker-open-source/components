@@ -237,26 +237,41 @@ test('localizes calendar', () => {
   ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
 })
 
-test('localizes text input', () => {
-  const { getByDisplayValue, rerender } = renderWithTheme(
-    <InputDateRange
-      dateStringLocale={Locales.Korean}
-      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
-    />
-  )
-  expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
-  rerender(
-    <InputDateRange
-      dateStringLocale={Locales.Italian}
-      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
-    />
-  )
-  expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
-  rerender(
-    <InputDateRange
-      dateStringLocale={Locales.English}
-      defaultValue={{ from: new Date(Date.now()), to: new Date('May 2, 2020') }}
-    />
-  )
-  expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+describe('localizes text input', () => {
+  test('Korean', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.Korean}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+  })
+  test('Italian', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.Italian}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+  })
+  test('English', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InputDateRange
+        dateStringLocale={Locales.English}
+        defaultValue={{
+          from: new Date(Date.now()),
+          to: new Date('May 2, 2020'),
+        }}
+      />
+    )
+    expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+  })
 })
