@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Icon accepts artwork as props.
 - update InputColor to have an empty `Swatch`
 - `Status` component
 - `Tree`, `TreeItem` components

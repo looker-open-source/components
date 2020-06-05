@@ -33,7 +33,7 @@ import {
   SizeMedium,
   SizeLarge,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Fragment, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
@@ -51,8 +51,9 @@ export type IconSize =
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     Omit<SimpleLayoutProps, 'size' | 'height' | 'width'> {
+  artwork?: ReactNode
   color?: string
-  name: IconNames
+  name?: IconNames
   size?: IconSize | number | string
 }
 
@@ -87,11 +88,23 @@ const size = variant({
 export type { IconNames }
 
 const IconFactory = forwardRef(
-  ({ name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
-    const Glyph = Glyphs[name]
+  (
+    { artwork = undefined, name, ...props }: IconProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    if ((artwork && name) || (!artwork && !name)) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Please pass ether name or artwork as Icon prop. If both are passed the default will be artwork.'
+      )
+    }
+    const Glyph = name ? Glyphs[name] : Fragment
+    const value = artwork || (
+      <Glyph width="100%" height="100%" fill="currentColor" />
+    )
     return (
       <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
-        <Glyph width="100%" height="100%" fill="currentColor" />
+        {value}
       </div>
     )
   }
