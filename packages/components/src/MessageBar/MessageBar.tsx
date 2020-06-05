@@ -27,6 +27,7 @@
 import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import { omitStyledProps } from '@looker/design-tokens'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
 import { getIntentLabel, Status } from '../Status'
@@ -54,13 +55,13 @@ const MessageBarLayout = forwardRef(
       id,
       children,
       canDismiss,
-      className,
       intent = 'inform',
       onDismiss,
+      ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
   ) => (
-    <div className={className} aria-live="polite" ref={ref} role="status">
+    <div aria-live="polite" ref={ref} role="status" {...omitStyledProps(props)}>
       <Status intent={intent} />
       <MessageBarContent>{children}</MessageBarContent>
       {canDismiss && (

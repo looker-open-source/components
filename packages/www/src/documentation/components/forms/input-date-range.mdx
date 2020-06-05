@@ -4,8 +4,6 @@ propsOf: InputDateRange
 github: Form/Inputs/InputDateRange/InputDateRange.tsx
 ---
 
-import { InputDateRangeLocales } from './demos'
-
 `InputDateRange` provides an interface to select to a date range, either through the calendar interface or text input boxes.
 
 ## Value
@@ -73,14 +71,6 @@ import { InputDateRangeLocales } from './demos'
 }
 ```
 
-## Internationalization
-
-`InputDateRange` comes with a range of supported language formats, which will automatically update month/day translations, as well as the appropriate first day of the week. Simply pass in the two-character locale code and everything will be formatted accordingly.
-
-**Default: `en`**
-
-<InputDateRangeLocales />
-
 ## onValidationFail
 
 `InputDateRange` has built-in validation to verify that users enter a valid date string when manually typing into the provided textarea. If you wish to hook into this validation, you can pass an `onValidationFail` callback which will fire on blur if the text value does not match expected localized format.
@@ -108,6 +98,49 @@ import { InputDateRangeLocales } from './demos'
         onValidationFail={handleValidationFail}
       />
     </SpaceVertical>
+  )
+}
+```
+
+## I18n
+
+`InputDateRange` acccepts two different props for use in localizing calendar output. The first is `dateStringLocale` accepts a country code and is used to format the rendered date string in the input box (i.e. `06/04/2020`). The second is `localization`, which is used to translate the calendar format and naming.
+
+### dateStringLocale
+
+```jsx
+<FieldDateRange
+  dateStringLocale="ko"
+  label="Korea (YYYY.MM.DD)"
+  value={{ from: new Date('June 2, 2020'), to: new Date('June 9, 2020') }}
+/>
+```
+
+### localization
+
+The `localization` prop can be used to provide translation strings for the names of the months, the days of the week, and what day the week starts on (usually `0` or `1`).
+
+```jsx
+;() => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
+  return (
+    <InputDateRange localization={localizationProps} dateStringLocale="it" />
   )
 }
 ```

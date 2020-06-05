@@ -29,7 +29,7 @@ export type StatefulColor = 'key' | 'critical' | 'neutral'
 export interface StatefulColorChoices {
   subtle: string
   accent: string
-  main: string
+  focus: string
   interactive: string
   pressed: string
   text: string
@@ -44,6 +44,7 @@ export interface StatefulColors
 interface CriticalStatefulColors {
   criticalSubtle: string
   criticalAccent: string
+  criticalFocus: string
   criticalInteractive: string
   criticalPressed: string
   criticalText: string
@@ -53,6 +54,7 @@ interface CriticalStatefulColors {
 interface NeutralStatefulColors {
   neutralSubtle: string
   neutralAccent: string
+  neutralFocus: string
   neutralInteractive: string
   neutralPressed: string
   neutralText: string

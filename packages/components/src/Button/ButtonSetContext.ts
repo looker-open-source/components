@@ -24,41 +24,21 @@
 
  */
 
-import { variant } from 'styled-system'
+import { createContext, MouseEvent } from 'react'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
+export type ButtonSetCallback<TValue extends string | string[] = string[]> = (
+  option: TValue,
+  event?: MouseEvent<HTMLButtonElement>
+) => void
 
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export interface ButtonSetContextProps<
+  TValue extends string | string[] = string[]
+> {
+  disabled?: boolean
+  value?: TValue
+  onItemClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})
+const buttonSetContext: ButtonSetContextProps = {}
+
+export const ButtonSetContext = createContext(buttonSetContext)

@@ -24,41 +24,15 @@
 
  */
 
-import { variant } from 'styled-system'
+import { CoreColors } from '../../system'
+import { SurfaceColors } from '../../system/color/specifiable'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
-
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export const generateSurfaceColors = (
+  coreColors: CoreColors
+): SurfaceColors => {
+  return {
+    field: coreColors.background,
+    inverse: coreColors.text,
+    inverseOn: coreColors.background,
+  }
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})

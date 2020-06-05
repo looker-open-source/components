@@ -24,41 +24,42 @@
 
  */
 
-import { variant } from 'styled-system'
+import { Colors, CoreColors, SpecifiableColors } from '../../system'
+import { defaultIntentColors } from '../../tokens'
+import { generateSurfaceColors } from './surface'
+import { generateBlendColors } from './blend'
+import { generateStatefulColors } from './stateful'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export const generateColors = (
+  themeColors: Colors,
+  colors: Partial<CoreColors>
+) => {
+  const { background, text, key } = colors
+
+  if (!background && !text && !key) {
+    return themeColors
+  }
+
+  const coreColors = {
+    background: colors.background || themeColors.background,
+    text: colors.text || themeColors.text,
+    key: colors.key || themeColors.key,
+  }
+
+  const specifiableColors: SpecifiableColors = {
+    ...coreColors,
+    ...generateSurfaceColors(coreColors),
+    ...defaultIntentColors,
+  }
+
+  const blends = generateBlendColors(specifiableColors)
+  const statefulColors = generateStatefulColors(specifiableColors)
+
+  return {
+    ...specifiableColors,
+    ...blends,
+    ...statefulColors,
+  }
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})

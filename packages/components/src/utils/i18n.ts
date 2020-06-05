@@ -140,7 +140,7 @@ export const formatYear = (date: Date): number => {
 
 export const parseDateFromString = (
   value: string,
-  locale: Locales
+  locale: Locales = Locales.English
 ): Date | false => {
   // Date format 'P' represents localized dates in date-fns
   const parsedValue = parse(value, 'P', new Date(), {

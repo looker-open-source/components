@@ -152,6 +152,7 @@ import {
   ToggleSwitch,
   Tooltip,
   Tree,
+  TreeGroup,
   TreeItem,
   useConfirm,
   usePreviousValue,
@@ -312,6 +313,7 @@ export const allComponents = {
   ToggleSwitch,
   Tooltip,
   Tree,
+  TreeGroup,
   TreeItem,
   VisuallyHidden,
 }

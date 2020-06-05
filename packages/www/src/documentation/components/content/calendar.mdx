@@ -78,3 +78,30 @@ We support four different callbacks to hook into various navigation events:
   )
 }
 ```
+
+## I18n
+
+For localization purposes, `Calendar` accepts a localization object to pass transated month/weekday names and the standard first-day-of-the-week.
+
+```jsx
+;() => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
+  return <Calendar localization={localizationProps} />
+}
+```

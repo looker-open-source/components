@@ -217,7 +217,7 @@ export function useTooltip({
           backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
-          color="onInverse"
+          color="inverseOn"
           {...surfaceStyles}
         >
           <TooltipContent
@@ -234,6 +234,7 @@ export function useTooltip({
 
   return {
     'aria-describedby': guaranteedId,
+    isOpen,
     onBlur: handleClose,
     onFocus: handleOpen,
     onMouseOut: handleMouseOut,
@@ -254,7 +255,8 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   const tooltipProps = useTooltip(props)
 
   const tooltipPropsLabeled = {
-    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef']),
+    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef', 'isOpen']),
+    className: tooltipProps.isOpen ? 'hover' : '',
   }
 
   let target = children

@@ -24,41 +24,38 @@
 
  */
 
-import { variant } from 'styled-system'
+import React, { ReactNode, FC } from 'react'
+import styled from 'styled-components'
+import { color, TextColorProps } from '@looker/design-tokens'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
-
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export interface TreeGroupProps extends TextColorProps {
+  children: ReactNode
+  className?: string
+  /**
+   * Visible label of the TreeGroup
+   */
+  label: string
 }
 
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text1',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text4',
-    },
-    subdued: {
-      color: 'text5',
-    },
-  },
-})
+const TreeGroupLabel = styled.div`
+  /* Border is here to get proper alignment with Tree and TreeItem text */
+  border: 1px transparent solid;
+  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
+  font-size: ${({ theme }) => theme.space.small};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+`
+
+const TreeGroupLayout: FC<TreeGroupProps> = ({
+  children,
+  className,
+  label,
+}) => (
+  <div className={className}>
+    <TreeGroupLabel>{label}</TreeGroupLabel>
+    {children}
+  </div>
+)
+
+export const TreeGroup = styled(TreeGroupLayout)`
+  ${color}
+`

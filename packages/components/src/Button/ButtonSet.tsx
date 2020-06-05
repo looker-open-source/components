@@ -25,117 +25,120 @@
  */
 
 import React, {
-  cloneElement,
-  ChangeEvent,
-  Children,
   forwardRef,
   ForwardRefExoticComponent,
-  isValidElement,
   MouseEvent,
   ReactNode,
   Ref,
+  useCallback,
+  useState,
 } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
-import { ButtonItemProps } from './ButtonItem'
+import { useForkedRef } from '../utils'
+import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
+import { ButtonItem, buttonItemHeight } from './ButtonItem'
 
-interface ButtonSetProps<ValueType extends string | string[] = string[]>
+export interface ButtonSetOption {
+  value: string
+  label?: string
+  disabled?: boolean
+}
+
+interface ButtonSetProps<TValue extends string | string[] = string[]>
   extends SimpleLayoutProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   /**
-   * One or more ButtonItem
+   * One or more ButtonItem (do not use if using options)
    */
-  children: ReactNode
+  children?: ReactNode
+  /**
+   * Available options (do not use if using ButtonItem children)
+   */
+  options?: ButtonSetOption[]
   /**
    * Value for controlling the component
    */
-  value?: ValueType
-  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void
-  isToggle?: boolean
-  /**
-   * Value can be unset by clicking selected button (ButtonToggle only)
-   */
-  nullable?: boolean
+  value?: TValue
+  onItemClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface ButtonGroupOrToggleBaseProps<
-  ValueType extends string | string[] = string[]
-> extends Omit<ButtonSetProps<ValueType>, 'isToggle' | 'onChange'> {
-  onChange?: (value: ValueType) => void
+  TValue extends string | string[] = string[]
+> extends Omit<ButtonSetProps<TValue>, 'onChange' | 'onItemClick'> {
+  onChange?: ButtonSetCallback<TValue>
 }
 
 export type ButtonSetType<
-  T extends string | string[] = string[]
-> = ForwardRefExoticComponent<ButtonSetProps<T> & { ref: Ref<HTMLDivElement> }>
+  TValue extends string | string[] = string[]
+> = ForwardRefExoticComponent<
+  ButtonSetProps<TValue> & { ref: Ref<HTMLDivElement> }
+>
 
 export const ButtonSetLayout = forwardRef(
   (
     {
       children,
+      className,
       disabled,
-      isToggle,
-      name,
-      nullable,
-      onChange: groupOnChange,
+      onItemClick,
+      options,
       value,
       ...props
     }: ButtonSetProps,
-    ref: Ref<HTMLDivElement>
+    forwardedRef: Ref<HTMLDivElement>
   ) => {
-    const clonedChildren = Children.map(children, (child) => {
-      if (!isValidElement(child)) return child
+    if (children && options) {
+      // eslint-disable-next-line no-console
+      console.warn('Use children or options but not both at the same time.')
+    }
 
-      const { props: childProps } = child
-      const childValue =
-        childProps.value ||
-        (typeof childProps.children === 'string' ? childProps.children : null)
+    const context = {
+      disabled,
+      onItemClick,
+      value,
+    }
 
-      return cloneElement<ButtonItemProps>(child, {
-        isControlled: groupOnChange !== undefined,
-        name,
-        type: isToggle ? 'radio' : 'checkbox',
-        value: childValue,
-        // pass down these optional props only if they're defined (overriding child props)
-        ...(value && value.length !== 0
-          ? {
-              selected: isToggle
-                ? value === childValue
-                : value.includes(childValue),
-            }
-          : typeof value === 'string' && value === ''
-          ? { selected: undefined }
-          : {}),
-        ...(disabled ? { disabled } : {}),
-        ...(groupOnChange
-          ? {
-              onChange: (e: ChangeEvent<HTMLInputElement>) => {
-                groupOnChange && groupOnChange(e)
-                childProps.onChange && childProps.onChange(e)
-              },
-            }
-          : {}),
-        ...(nullable && isToggle && groupOnChange
-          ? {
-              onClick: (e: MouseEvent<HTMLLabelElement>) => {
-                // The onClick is attached to the label but the browser will
-                // call it twice (2nd time with the input as target)
-                // If we un-check the radio in the 1st event (on label), the browser will immediately
-                // re - check it, so we wait for the 2nd event (on input)
-                if ((e.target as HTMLElement).tagName === 'INPUT') {
-                  groupOnChange()
-                }
-                childProps.onClick && childProps.onClick(e)
-              },
-            }
-          : {}),
+    const [isWrapping, setIsWrapping] = useState(false)
+    const measureRef = useCallback((node: HTMLElement | null) => {
+      if (node) {
+        const { height } = node.getBoundingClientRect()
+        const firstItem = node.childNodes[0] as HTMLElement
+        const rowHeight = firstItem
+          ? firstItem.getBoundingClientRect().height
+          : buttonItemHeight
+        if (height > rowHeight * 2) {
+          setIsWrapping(true)
+        } else {
+          setIsWrapping(false)
+        }
+      }
+    }, [])
+
+    const ref = useForkedRef(measureRef, forwardedRef)
+
+    const optionItems =
+      options &&
+      options.map(({ disabled, label, value }) => {
+        return (
+          <ButtonItem key={value} disabled={disabled} value={value}>
+            {label || value}
+          </ButtonItem>
+        )
       })
-    })
 
     return (
-      <div ref={ref} {...props}>
-        {clonedChildren}
-      </div>
+      <ButtonSetContext.Provider value={context}>
+        <div
+          role="group"
+          className={`${isWrapping ? 'wrapping ' : ''}${className}`}
+          ref={ref}
+          {...props}
+        >
+          {children || optionItems}
+        </div>
+      </ButtonSetContext.Provider>
     )
   }
 )
