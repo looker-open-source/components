@@ -58,6 +58,16 @@ export interface FieldsetProps
   legend?: ReactNode
 }
 
+const accordionIndicatorDefaults: AccordionIndicatorProps = {
+  indicatorGap: 'xsmall',
+  indicatorIcons: {
+    close: 'ArrowRight',
+    open: 'ArrowDown',
+  },
+  indicatorPosition: 'left',
+  indicatorSize: 'medium',
+}
+
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
     const {
@@ -68,15 +78,6 @@ const FieldsetLayout = forwardRef(
       children,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
-    const accordionIndicatorDefaults: AccordionIndicatorProps = {
-      indicatorGap: 'xsmall',
-      indicatorIcons: {
-        close: 'ArrowRight',
-        open: 'ArrowDown',
-      },
-      indicatorPosition: 'left',
-      indicatorSize: 'medium',
-    }
     const accordionProps = {
       ...pick(props, [...AccordionControlPropKeys]),
       ...accordionIndicatorDefaults,

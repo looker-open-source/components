@@ -76,9 +76,9 @@ In accordion mode, the `legend` acts as a disclosure and clicking on it will sho
 
 **Note:** Using accordion mode without passing a value to `legend` will throw a console warning and will result in a regular `Fieldset`.
 
-### Customizing a Fieldset Accordion
+### Controlling a Fieldset Accordion
 
-All `Accordion` props pertaining to open state control and indicator icon styling can be used on `Fieldset`. Simply pass said props to `Fieldset` while the `accordion` prop is true.
+All `Accordion` props pertaining to open state control can be used on `Fieldset`. Simply pass said props to `Fieldset` while the `accordion` prop is true.
 
 Viable `Accordion` props include:
 
@@ -87,12 +87,8 @@ Viable `Accordion` props include:
 - toggleOpen
 - onOpen
 - onClose
-- indicatorGap
-- indicatorSize
-- indicatorIcons
-- indicatorPosition
 
-For more details on all available open state control and indicator styling props for `Accordion`, visit the [Accordion documentation](https://components.looker.com/components/content/accordion).
+For more details on the props listed above, visit the [Accordion documentation](https://components.looker.com/components/content/accordion).
 
 ```jsx
 <Fieldset
@@ -101,7 +97,6 @@ For more details on all available open state control and indicator styling props
   defaultOpen
   onOpen={() => alert('Opening the pod bay doors')}
   onClose={() => alert('Closing the pod bay doors')}
-  indicatorGap="xxlarge"
 >
   <FieldCheckbox name="box1" label="you can click here" />
   <FieldCheckbox name="box2" label="here too" />
