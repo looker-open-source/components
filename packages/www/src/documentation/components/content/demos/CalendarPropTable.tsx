@@ -24,7 +24,6 @@
 
  */
 import React from 'react'
-import initial from 'lodash/initial'
 import {
   Code,
   Table,
@@ -33,23 +32,10 @@ import {
   TableRow,
   TableHeaderCell,
   TableDataCell,
-  Locales,
 } from '@looker/components'
 import styled from 'styled-components'
 
 export const CalendarPropTable = () => {
-  const localeList = initial(
-    Object.values(Locales).reduce((list: any, locale: any) => {
-      return [
-        ...list,
-        <Code key={locale}>
-          {locale === 'en' ? <strong>{locale}*</strong> : locale}
-        </Code>,
-        ', ',
-      ]
-    }, [])
-  )
-
   return (
     <>
       <Table>
@@ -61,8 +47,10 @@ export const CalendarPropTable = () => {
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableDataCell pr="large">locale</TableDataCell>
-            <TableDataCell pr="large">One of: {localeList}</TableDataCell>
+            <TableDataCell pr="large">localization</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>{`{month: string[], weekdaysShort:[], firstDayOfWeek: number}`}</Code>
+            </TableDataCell>
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">onDayClick</TableDataCell>

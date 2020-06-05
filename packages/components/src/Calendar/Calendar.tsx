@@ -24,21 +24,26 @@
 
  */
 import React, { FC } from 'react'
-import DayPicker, { RangeModifier } from 'react-day-picker'
+import DayPicker, { RangeModifier, LocaleUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import styled from 'styled-components'
 import has from 'lodash/has'
 import { mix } from 'polished'
 import noop from 'lodash/noop'
 import { reset } from '@looker/design-tokens'
-import { LocaleCodes } from '../utils/i18n'
 import { inputTextFocus } from '../Form/Inputs/InputText'
 import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 
+export interface CalendarLocalization {
+  months: string[]
+  weekdaysShort: string[]
+  firstDayOfWeek: number
+}
+
 interface CalendarProps {
-  locale?: LocaleCodes
+  localization?: CalendarLocalization
   selectedDates?: Date | Date[] | RangeModifier
   onDayClick?: (day: Date) => void
   className?: string
@@ -56,7 +61,7 @@ interface CalendarProps {
 const NoopComponent: FC = () => null
 
 const InternalCalendar: FC<CalendarProps> = ({
-  locale = 'en',
+  localization = {},
   onDayClick,
   className,
   size,
@@ -73,9 +78,17 @@ const InternalCalendar: FC<CalendarProps> = ({
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
-  const disableCallback = (cb: any) => {
+  const disableCallback = (cb: Function = noop) => {
     // allows provided callback to be circumvented by disabled prop
     return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
+  }
+
+  const formatMonthTitle = (month: Date) => {
+    if (localization.months) {
+      return `${localization.months[month.getMonth()]} ${month.getFullYear()}`
+    } else {
+      return LocaleUtils.formatMonthTitle(month)
+    }
   }
 
   return (
@@ -90,9 +103,10 @@ const InternalCalendar: FC<CalendarProps> = ({
       }}
     >
       <DayPicker
+        {...localization}
+        localeUtils={{ ...LocaleUtils, formatMonthTitle }}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
-        locale={locale}
         month={viewMonth}
         showOutsideDays={true}
         onDayClick={disableCallback(onDayClick)}
