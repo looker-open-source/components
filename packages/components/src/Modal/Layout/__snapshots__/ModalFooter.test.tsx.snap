@@ -2,6 +2,11 @@
 
 exports[`ModalFooter with Button 1`] = `
 .c0 {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -13,25 +18,42 @@ exports[`ModalFooter with Button 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  padding: 1.25rem 2rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c1 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-auto-flow: column;
-  direction: rtl;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
-.c1 * {
-  direction: ltr;
+.c1.c1 > * {
+  margin-left: 1rem;
+}
+
+.c1.c1 > *:last-child {
+  margin-left: 0rem;
 }
 
 <footer
-  className="c0"
+  className="c0 "
+  width="100%"
 >
   <div
     className="c1"
+    width="100%"
   >
     <button>
       Cancel
@@ -42,6 +64,11 @@ exports[`ModalFooter with Button 1`] = `
 
 exports[`ModalFooter with ModalContext 1`] = `
 .c0 {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -53,25 +80,42 @@ exports[`ModalFooter with ModalContext 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  padding: 1.25rem 2rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c1 {
-  display: grid;
-  grid-gap: 1rem;
-  grid-auto-flow: column;
-  direction: rtl;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
-.c1 * {
-  direction: ltr;
+.c1.c1 > * {
+  margin-left: 1rem;
+}
+
+.c1.c1 > *:last-child {
+  margin-left: 0rem;
 }
 
 <footer
-  className="c0"
+  className="c0 "
+  width="100%"
 >
   <div
     className="c1"
+    width="100%"
   >
     <button>
       Cancel
