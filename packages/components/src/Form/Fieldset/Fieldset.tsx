@@ -75,7 +75,7 @@ const FieldsetLayout = forwardRef(
         open: 'ArrowDown',
       },
       indicatorPosition: 'left',
-      indicatorSize: 'small',
+      indicatorSize: 'medium',
     }
     const accordionProps = {
       ...pick(props, [...AccordionControlPropKeys]),
@@ -134,10 +134,14 @@ FieldsetLayout.displayName = 'FieldsetLayout'
 
 export const Fieldset = styled(FieldsetLayout)`
   ${AccordionDisclosure} {
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
+    font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: ${({ theme }) => theme.fontWeights.semiBold};
     height: 24px;
     padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  }
+
+  ${AccordionContent} {
+    padding-top: ${({ theme }) => theme.space.medium};
   }
 `
 
