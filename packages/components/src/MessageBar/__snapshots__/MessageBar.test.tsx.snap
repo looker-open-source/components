@@ -48,7 +48,7 @@ exports[`Confirmation MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 .c4 .c3 {
@@ -56,7 +56,7 @@ exports[`Confirmation MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 <div
@@ -126,7 +126,7 @@ exports[`Error MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 .c0 {
@@ -153,7 +153,7 @@ exports[`Error MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 <div
@@ -242,7 +242,7 @@ exports[`Info MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 .c4 .c3 {
@@ -250,7 +250,7 @@ exports[`Info MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 <div
@@ -364,7 +364,7 @@ exports[`MessageBar can be dismissed 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 .c9 {
+.c5 .c10 {
   width: 16px;
   height: 16px;
 }
@@ -415,6 +415,22 @@ exports[`MessageBar can be dismissed 1`] = `
   pointer-events: none;
 }
 
+.c8 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 0rem;
+}
+
+.c9 .c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 1.25rem;
+  margin-right: 0rem;
+}
+
 .c0 {
   width: 100%;
   padding-left: 1rem;
@@ -435,14 +451,6 @@ exports[`MessageBar can be dismissed 1`] = `
 }
 
 .c0 .c3 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin-left: 1.25rem;
-  margin-right: 5rem;
-}
-
-.c8 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -576,7 +584,7 @@ exports[`Warn MessageBar 1`] = `
   -ms-flex: 1;
   flex: 1;
   margin-left: 1.25rem;
-  margin-right: 5rem;
+  margin-right: 0rem;
 }
 
 <div

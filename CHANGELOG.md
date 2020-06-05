@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.8.4]
+## [UNRELEASED]
 
 ### Changed
 
@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - now supports `borderBottom` that will always display a border at the bottom of the content area regardless of whether the content overflows the container.
 - `ModalFooter` now leverages `Space` components internally
 - `ModalHeader` refactored to invert Styled Components usage
+- `SpaceVertical` now has `align=stretch` by default
+
+### Fixed
+
+- `Fieldset` with inline properly aligns `Field`s with error messages
 
 ## [0.8.3]
 
@@ -25,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `ButtonGroup` and `ButtonToggle` accessibility issues due to hidden `input`s (they now render a list of `button`s instead)
+- `Banner` no longer extra wide margin-right by default
 - `Calendar`, `InputDate`, and `InputDateRange` localization props
 
 ### Removed

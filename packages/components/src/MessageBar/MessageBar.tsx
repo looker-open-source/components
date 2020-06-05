@@ -95,7 +95,8 @@ export const MessageBar = styled(MessageBarLayout)`
   ${MessageBarContent} {
     flex: 1;
     margin-left: ${({ theme: { space } }) => space.large};
-    margin-right: ${({ theme: { space } }) => space.xxxxlarge};
+    margin-right: ${({ canDismiss, theme: { space } }) =>
+      canDismiss ? space.xxxxlarge : space.none};
   }
 `
 
