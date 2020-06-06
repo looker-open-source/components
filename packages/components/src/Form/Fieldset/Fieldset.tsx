@@ -27,25 +27,61 @@
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
+import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
 import { Legend } from '../Legend'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionControlProps,
+  AccordionControlPropKeys,
+  AccordionDisclosure,
+  AccordionIndicatorProps,
+} from '../../Accordion'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
-    CompatibleHTMLProps<HTMLDivElement> {
+    CompatibleHTMLProps<HTMLDivElement>,
+    AccordionControlProps {
+  /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
+   * @default false
+   */
+  accordion?: boolean
+  ariaLabeledby?: string
   /** Determines where to place the label in relation to the input.
    * @default false
    */
   inline?: boolean
-
-  ariaLabeledby?: string
-
+  /** Displayed above the children of Fieldset
+   */
   legend?: ReactNode
+}
+
+const accordionIndicatorDefaults: AccordionIndicatorProps = {
+  indicatorGap: 'xsmall',
+  indicatorIcons: {
+    close: 'ArrowRight',
+    open: 'ArrowDown',
+  },
+  indicatorPosition: 'left',
+  indicatorSize: 'medium',
 }
 
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
-    const { inline, className, legend, children, ...restProps } = props
+    const {
+      accordion,
+      inline,
+      className,
+      legend,
+      children,
+      ...restProps
+    } = omit(props, [...AccordionControlPropKeys])
+    const accordionProps = {
+      ...pick(props, [...AccordionControlPropKeys]),
+      ...accordionIndicatorDefaults,
+    }
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**
@@ -61,7 +97,6 @@ const FieldsetLayout = forwardRef(
       <LayoutComponent
         {...restProps}
         gap={inline ? 'medium' : 'small'}
-        className={className}
         ref={ref}
         role="group"
         align="start"
@@ -70,20 +105,47 @@ const FieldsetLayout = forwardRef(
       </LayoutComponent>
     )
 
-    return legend ? (
-      <SpaceVertical>
-        {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
-        {content}
-      </SpaceVertical>
+    !legend &&
+      accordion &&
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Please provide a value for the "legend" prop if using accordion mode'
+      )
+
+    const renderedFieldset = legend ? (
+      accordion ? (
+        <Accordion {...accordionProps}>
+          <AccordionDisclosure>{legend}</AccordionDisclosure>
+          <AccordionContent>{content}</AccordionContent>
+        </Accordion>
+      ) : (
+        <SpaceVertical>
+          {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
+          {content}
+        </SpaceVertical>
+      )
     ) : (
       content
     )
+
+    return <div className={className}>{renderedFieldset}</div>
   }
 )
 
 FieldsetLayout.displayName = 'FieldsetLayout'
 
-export const Fieldset = styled(FieldsetLayout)``
+export const Fieldset = styled(FieldsetLayout)`
+  ${AccordionDisclosure} {
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    height: 24px;
+    padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  }
+
+  ${AccordionContent} {
+    padding-top: ${({ theme }) => theme.space.medium};
+  }
+`
 
 Fieldset.defaultProps = {
   padding: 'none',

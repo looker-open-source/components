@@ -23,23 +23,18 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsetAccordionDemo } from './Form/FieldsetAccordionDemo'
 
-const App = () => {
+import React from 'react'
+import { Fieldset, FieldCheckbox, Box } from '@looker/components'
+
+export const FieldsetAccordionDemo = () => {
   return (
-    <ComponentsProvider>
-      <FieldsetAccordionDemo />
-    </ComponentsProvider>
+    <Box p="medium">
+      <Fieldset legend="This is the Legend" accordion defaultOpen>
+        <FieldCheckbox name="box1" label="you can click here" />
+        <FieldCheckbox name="box2" label="here too" />
+        <FieldCheckbox name="box3" label="also here" />
+      </Fieldset>
+    </Box>
   )
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})

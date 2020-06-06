@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `Fieldset` supports an accordion mode via an `accordion` prop
+
 ### Changed
 
 - `SpaceVertical` now has `align=stretch` by default

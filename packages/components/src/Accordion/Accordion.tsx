@@ -63,12 +63,7 @@ export interface AccordionIndicatorProps {
   indicatorIcons?: IndicatorIcons
 }
 
-export interface AccordionProps
-  extends AccordionIndicatorProps,
-    SimpleLayoutProps {
-  children: ReactNode
-  className?: string
-
+export interface AccordionControlProps {
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
@@ -93,6 +88,31 @@ export interface AccordionProps
    * Callback that is triggered when opening the Accordion (i.e. when clicking on a closed Accordion)
    */
   onOpen?: () => void // called when the component is opened
+}
+
+/**
+ * Keys below are used by Fieldset to omit Accordion related props so they can be spread onto the internal Accordion component
+ */
+export const AccordionIndicatorPropKeys = [
+  'indicatorPosition',
+  'indicatorSize',
+  'indicatorGap',
+  'indicatorIcons',
+]
+export const AccordionControlPropKeys = [
+  'defaultOpen',
+  'isOpen',
+  'toggleOpen',
+  'onClose',
+  'onOpen',
+]
+
+export interface AccordionProps
+  extends AccordionControlProps,
+    AccordionIndicatorProps,
+    SimpleLayoutProps {
+  children: ReactNode
+  className?: string
 }
 
 const AccordionLayout: FC<AccordionProps> = ({
