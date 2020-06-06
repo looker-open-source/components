@@ -3,11 +3,9 @@
 exports[`critical Status 1`] = `
 Array [
   .c0 {
-  width: medium;
-  height: medium;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #CC1F36;
-  height: 24px;
-  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -56,11 +54,9 @@ Array [
 exports[`inform Status 1`] = `
 Array [
   .c0 {
-  width: medium;
-  height: medium;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #0087e1;
-  height: 24px;
-  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -109,11 +105,9 @@ Array [
 exports[`neutral status 1`] = `
 Array [
   .c0 {
-  width: medium;
-  height: medium;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #939BA5;
-  height: 24px;
-  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -160,11 +154,9 @@ Array [
 exports[`positive Status 1`] = `
 Array [
   .c0 {
-  width: medium;
-  height: medium;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #24b25f;
-  height: 24px;
-  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -213,11 +205,9 @@ Array [
 exports[`warn Status 1`] = `
 Array [
   .c0 {
-  width: medium;
-  height: medium;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #FFA800;
-  height: 24px;
-  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

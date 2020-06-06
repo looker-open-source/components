@@ -33,6 +33,7 @@ import {
   FontWeightRamp,
   LineHeightRamp,
   Radii,
+  SizeRamp,
   Shadows,
   SpaceRamp,
   Transitions,
@@ -52,6 +53,7 @@ import {
   lineHeights,
   radii,
   colors,
+  sizes,
   shadows,
   space,
   transitions,
@@ -76,6 +78,7 @@ export interface Theme {
    * or null to remove all resets. Most base elements implement the reset.
    */
   reset?: () => InterpolationValue
+  sizes: SizeRamp
   shadows: Shadows
   space: SpaceRamp
   transitions: Transitions
@@ -91,6 +94,7 @@ export const theme: Theme = {
   lineHeights,
   radii,
   shadows,
+  sizes,
   space,
   transitions,
 }

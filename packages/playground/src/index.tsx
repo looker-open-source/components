@@ -37,6 +37,8 @@ const App = () => {
         <Icon name="GearOutline" size="medium" />
         <Icon name="GearOutline" />
         <Icon name="GearOutline" size="large" />
+        <Icon name="GearOutline" size="78px" />
+        <Icon name="GearOutline" size="90px" />
       </Flex>
     </ComponentsProvider>
   )

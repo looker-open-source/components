@@ -532,10 +532,8 @@ exports[`Button validates all sizes 4`] = `
 
 exports[`Button with icon validates all sizes 1`] = `
 .c3 {
-  width: medium;
-  height: medium;
-  height: 24px;
-  width: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -687,10 +685,8 @@ exports[`Button with icon validates all sizes 1`] = `
 
 exports[`Button with icon validates all sizes 2`] = `
 .c3 {
-  width: medium;
-  height: medium;
-  height: 24px;
-  width: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -842,10 +838,8 @@ exports[`Button with icon validates all sizes 2`] = `
 
 exports[`Button with icon validates all sizes 3`] = `
 .c3 {
-  width: medium;
-  height: medium;
-  height: 24px;
-  width: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -997,10 +991,8 @@ exports[`Button with icon validates all sizes 3`] = `
 
 exports[`Button with icon validates all sizes 4`] = `
 .c3 {
-  width: medium;
-  height: medium;
-  height: 24px;
-  width: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

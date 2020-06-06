@@ -24,17 +24,19 @@
 
  */
 
-export type SizeNone = 'none'
-export type SizeXXXSmall = 'xxxsmall'
-export type SizeXXSmall = 'xxsmall'
-export type SizeXSmall = 'xsmall'
-export type SizeSmall = 'small'
-export type SizeMedium = 'medium'
-export type SizeLarge = 'large'
-export type SizeXLarge = 'xlarge'
-export type SizeXXLarge = 'xxlarge'
-export type SizeXXXLarge = 'xxxlarge'
-export type SizeXXXXLarge = 'xxxxlarge'
+import {
+  SizeNone,
+  SizeXXXSmall,
+  SizeXXSmall,
+  SizeXSmall,
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
+  SizeXLarge,
+  SizeXXLarge,
+  SizeXXXLarge,
+  SizeXXXXLarge,
+} from './size'
 
 export type SpacingSizes =
   | SizeNone

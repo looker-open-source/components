@@ -37,8 +37,6 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import omit from 'lodash/omit'
-import { variant } from 'styled-system'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type IconSize =
@@ -50,7 +48,7 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    Omit<SimpleLayoutProps, 'size' | 'height' | 'width'> {
+    Omit<SimpleLayoutProps, 'height' | 'width'> {
   color?: string
   name: IconNames
 }
@@ -58,10 +56,11 @@ export interface IconProps
 export type { IconNames }
 
 const IconFactory = forwardRef(
-  ({ name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
+  ({ className, name }: IconProps, ref: Ref<HTMLDivElement>) => {
     const Glyph = Glyphs[name]
+
     return (
-      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+      <div className={className} ref={ref}>
         <Glyph width="100%" height="100%" fill="currentColor" />
       </div>
     )
@@ -73,7 +72,6 @@ IconFactory.displayName = 'IconFactory'
 export const Icon = styled(IconFactory)`
   ${simpleLayoutCSS}
   ${color}
-  ${size}
 
   align-items: center;
   display: inline-flex;

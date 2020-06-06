@@ -58,8 +58,9 @@ export { RadiusSizes, Radii } from './radii'
 export { Shadows } from './shadows'
 export { Transitions } from './transitions'
 export * from './color'
-export * from './typography'
+export * from './size'
 export * from './space'
+export * from './typography'
 
 // Custom Extensions
 export * from './reset'
