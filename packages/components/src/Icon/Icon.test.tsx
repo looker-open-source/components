@@ -23,29 +23,20 @@
  SOFTWARE.
 
  */
+
+import 'jest-styled-components'
 import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider, Flex, Icon } from '@looker/components'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { Icon } from './Icon'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="center">
-        <Icon name="GearOutline" size="xxsmall" />
-        <Icon name="GearOutline" size="xsmall" />
-        <Icon name="GearOutline" size="small" />
-        <Icon name="GearOutline" size="medium" />
-        <Icon name="GearOutline" />
-        <Icon name="GearOutline" size="large" />
-      </Flex>
-    </ComponentsProvider>
-  )
-}
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size="large" />)
+})
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size={12} />)
+})
+
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size="1rem" />)
 })

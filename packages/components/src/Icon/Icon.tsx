@@ -27,9 +27,14 @@
 import {
   color,
   CompatibleHTMLProps,
-  LayoutProps,
   layout,
+  LayoutProps,
   reset,
+  SizeXXSmall,
+  SizeXSmall,
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
   SpaceProps,
   space,
 } from '@looker/design-tokens'
@@ -38,6 +43,13 @@ import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
 import omit from 'lodash/omit'
+
+export type IconSize =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
@@ -49,15 +61,17 @@ export interface IconProps
 
 export type { IconNames }
 
-const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
-  const Glyph = Glyphs[props.name]
+const IconFactory = forwardRef(
+  ({ size = 'medium', ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
+    const Glyph = Glyphs[props.name]
 
-  return (
-    <Styled ref={ref} {...omit(props, 'name')}>
-      <Glyph width="100%" height="100%" fill="currentColor" />
-    </Styled>
-  )
-})
+    return (
+      <Styled ref={ref} size={iconSizeMap[size]} {...omit(props, 'name')}>
+        <Glyph width="100%" height="100%" fill="currentColor" />
+      </Styled>
+    )
+  }
+)
 
 IconFactory.displayName = 'IconFactory'
 
@@ -73,6 +87,6 @@ const Styled = styled.div<Omit<IconProps, 'name'>>`
   display: inline-flex;
 `
 
-Styled.defaultProps = { size: '1rem' }
+Styled.defaultProps = { size: 'medium' }
 
 export const Icon = styled(IconFactory)``

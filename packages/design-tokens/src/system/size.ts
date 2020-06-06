@@ -23,29 +23,24 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider, Flex, Icon } from '@looker/components'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="center">
-        <Icon name="GearOutline" size="xxsmall" />
-        <Icon name="GearOutline" size="xsmall" />
-        <Icon name="GearOutline" size="small" />
-        <Icon name="GearOutline" size="medium" />
-        <Icon name="GearOutline" />
-        <Icon name="GearOutline" size="large" />
-      </Flex>
-    </ComponentsProvider>
-  )
-}
+export type SizeNone = 'none'
+export type SizeXXXSmall = 'xxxsmall'
+export type SizeXXSmall = 'xxsmall'
+export type SizeXSmall = 'xsmall'
+export type SizeSmall = 'small'
+export type SizeMedium = 'medium'
+export type SizeLarge = 'large'
+export type SizeXLarge = 'xlarge'
+export type SizeXXLarge = 'xxlarge'
+export type SizeXXXLarge = 'xxxlarge'
+export type SizeXXXXLarge = 'xxxxlarge'
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+export type Sizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+
+export type SizeRamp = Record<Sizes, string>

@@ -23,29 +23,15 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider, Flex, Icon } from '@looker/components'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="center">
-        <Icon name="GearOutline" size="xxsmall" />
-        <Icon name="GearOutline" size="xsmall" />
-        <Icon name="GearOutline" size="small" />
-        <Icon name="GearOutline" size="medium" />
-        <Icon name="GearOutline" />
-        <Icon name="GearOutline" size="large" />
-      </Flex>
-    </ComponentsProvider>
-  )
+import { rem } from 'polished'
+import { SizeRamp } from '../system'
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const sizes: SizeRamp = {
+  xxsmall: rem(12),
+  xsmall: rem(16),
+  small: rem(18),
+  medium: rem(24),
+  large: rem(32),
 }
-
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
