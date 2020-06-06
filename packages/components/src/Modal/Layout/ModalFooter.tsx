@@ -27,42 +27,33 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { SpaceProps, space } from 'styled-system'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 
-export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement> {
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
   /**
    * Secondary content to place in the footer
    */
   secondary?: ReactNode
 }
 
-export const ModalFooter: FC<ModalFooterProps> = ({
+export const ModalFooterLayout: FC<ModalFooterProps> = ({
   children,
   secondary,
   ...props
 }) => {
   return (
-    <Layout {...props}>
-      <SpaceChildren>{children}</SpaceChildren>
-      {secondary && <SpaceChildren mr="auto">{secondary}</SpaceChildren>}
-    </Layout>
+    <Space as="footer" reverse between {...props}>
+      <Space reverse>{children}</Space>
+      {secondary && <Space>{secondary}</Space>}
+    </Space>
   )
 }
 
-const Layout = styled.footer`
-  align-items: center;
-  display: flex;
-  flex-direction: row-reverse;
-  padding: ${({ theme }) => `${theme.space.large} ${theme.space.xlarge}`};
-`
+export const ModalFooter = styled(ModalFooterLayout)``
 
-const SpaceChildren = styled.div<SpaceProps>`
-  ${space};
-  display: grid;
-  grid-gap: ${({ theme }) => theme.space.medium};
-  grid-auto-flow: column;
-  direction: rtl; /* Grid equivalent to flex-direction: row-reverse */
-  * {
-    direction: ltr;
-  }
-`
+ModalFooter.defaultProps = {
+  px: 'xlarge',
+  py: 'large',
+}

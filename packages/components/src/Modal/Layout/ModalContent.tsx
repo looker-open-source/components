@@ -46,6 +46,8 @@ export interface ModalContentProps
    * touch the container edges.
    */
   innerProps?: SpaceProps
+
+  borderBottom?: boolean
 }
 
 interface ContentState {
@@ -77,7 +79,13 @@ class Internal extends Component<InternalContentProps, ContentState> {
   }
 
   public render() {
-    const { children, className, innerProps, ...props } = this.props
+    const {
+      borderBottom,
+      children,
+      className,
+      innerProps,
+      ...props
+    } = this.props
 
     if (innerProps && innerProps.p && !innerProps.px) {
       innerProps.px = innerProps.p
@@ -85,6 +93,7 @@ class Internal extends Component<InternalContentProps, ContentState> {
 
     return (
       <Outer
+        borderBottom={borderBottom}
         className={`${className} ${this.state.overflow && 'overflow'}`}
         ref={this.ref}
         {...omit(props, ['renderedHeight'])}
@@ -103,16 +112,19 @@ export const ModalContent = (props: ModalContentProps) => {
   )
 }
 
-const Outer = styled.div`
+const Outer = styled.div<{ borderBottom?: boolean }>`
   ${reset}
   ${layout}
 
   overflow: auto;
   flex: 8;
+  ${({ borderBottom, theme: { colors } }) =>
+    borderBottom && `border-bottom: 1px solid ${colors.ui2}`};
 
   &.overflow {
-    box-shadow: inset 0 -16px 16px -16px ${({ theme }) => theme.colors.ui2},
-      inset 0 16px 16px -16px ${({ theme }) => theme.colors.ui2};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+    border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+    box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
   }
 `
 

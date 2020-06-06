@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `ModalContent`
+  - Tweaked the presentation of overflow state (simple border on top, more subtle shadow + border at bottom)
+  - now supports `borderBottom` that will always display a border at the bottom of the content area regardless of whether the content overflows the container.
+- `ModalFooter` now leverages `Space` components internally
+- `ModalHeader` refactored to invert Styled Components usage
 - `SpaceVertical` now has `align=stretch` by default
 
 ### Fixed
