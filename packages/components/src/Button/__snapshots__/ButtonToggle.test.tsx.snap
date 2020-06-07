@@ -96,7 +96,7 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1.wrapping {
-  background-image: linear-gradient( 0deg, #FFFFFF 0, #FFFFFF 1px, transparent 1px, transparent 100% ), repeating-linear-gradient( 180deg, transparent, transparent 35px, #DEE1E5 35px, #DEE1E5 36px );
+  background-image: linear-gradient( 0deg,#FFFFFF 0,#FFFFFF 1px,transparent 1px,transparent 100% ),repeating-linear-gradient( 180deg,transparent,transparent 35px,#DEE1E5 35px,#DEE1E5 36px );
 }
 
 .c1.wrapping::after {
