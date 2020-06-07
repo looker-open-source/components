@@ -24,10 +24,13 @@
 
  */
 
-import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  omitStyledProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { omitStyledProps } from '@looker/design-tokens'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
 import { getIntentLabel, Status } from '../Status'

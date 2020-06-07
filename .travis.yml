@@ -8,9 +8,10 @@ jobs:
   include:
     - script: "yarn run-p -c lint:css lint:es"
       name: ESLint & Stylelint
+    - script: "yarn build"
+      name: "Build: Babel, Typescript (lib/*.d.ts)"
     - script: "yarn test"
-      before_script: "yarn build"
-      name: "Babel, Typescript (lib/*.d.ts) & Tests"
+      name: "Jest Test Suite"
     - script: "yarn workspace www build"
       name: "Gatsby"
 
