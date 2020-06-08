@@ -28,9 +28,10 @@ import React, { FC, useContext, ReactElement } from 'react'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import {
+  CompatibleHTMLProps,
+  omitStyledProps,
   SpaceProps,
   space,
-  CompatibleHTMLProps,
   reset,
 } from '@looker/design-tokens'
 
@@ -56,22 +57,20 @@ export interface ModalHeaderProps
    * Render an icon next to the title text
    */
   headerIcon?: ReactElement<IconProps>
-
-  className?: string
 }
 
 const ModalHeaderLayout: FC<ModalHeaderProps> = ({
-  className,
   children,
   closeIcon = 'Close',
   hideClose,
   headerIcon,
-  id,
+  ...props
 }) => {
   const { closeModal } = useContext(ModalContext)
+  const { id } = props
 
   return (
-    <header className={className}>
+    <header {...omitStyledProps(props)}>
       {headerIcon && <HeaderIconWrapper>{headerIcon}</HeaderIconWrapper>}
       <Heading
         as="h3"
