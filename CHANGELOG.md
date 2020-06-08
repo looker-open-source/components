@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Icon` now supports "t-shirt" sizing. (i.e.: `size="small"`)
 
+- Jest no longer requires artifact build before being run
+
 ## [0.8.4]
 
 ### Added

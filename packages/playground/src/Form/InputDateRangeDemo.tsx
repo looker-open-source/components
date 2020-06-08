@@ -28,7 +28,6 @@ import styled from 'styled-components'
 import {
   Select,
   Heading,
-  LocaleCodes,
   DateFormat,
   InputDateRange,
   Popover,
@@ -164,11 +163,7 @@ export const InputDateRangeDemo: FC = () => {
           </SelectedDateWrapper>
         </HeadingGrid>
         <div>
-          <InputDateRange
-            onChange={setLocalizedDate}
-            locale={locale as LocaleCodes}
-            key={locale}
-          />
+          <InputDateRange onChange={setLocalizedDate} />
         </div>
       </div>
       <div>

@@ -10,8 +10,8 @@ exports[`A FieldRadio 1`] = `
   border-radius: 50%;
   border-color: currentColor;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
 }
 
 .c6::after {
@@ -146,8 +146,8 @@ exports[`A FieldRadio checked 1`] = `
   border-radius: 50%;
   border-color: currentColor;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
 }
 
 .c6::after {
