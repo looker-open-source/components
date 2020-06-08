@@ -62,7 +62,3 @@ export const ContentOverflow: FC = ({ children }) => (
     </Popover>
   </Box>
 )
-
-export default {
-  title: 'Overlays/Popover',
-}

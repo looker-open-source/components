@@ -25,104 +25,67 @@
  */
 
 import {
-  Box,
   ButtonGroup,
   ButtonItem,
-  ButtonToggle,
-  Divider,
-  Paragraph,
   Space,
-  Heading,
+  Box,
+  Grid,
   FieldToggleSwitch,
+  Divider,
+  ButtonToggle,
 } from '@looker/components'
-import React, { FormEvent, useState } from 'react'
+import React, { useState, FormEvent } from 'react'
 
-const options = [
-  { label: 'Smoked Gouda', value: 'Gouda' },
-  { value: 'Cheddar' },
-  { disabled: true, value: 'Swiss' },
-]
+export const All = () => (
+  <Grid columns={1}>
+    <Basic />
+    <InitialValues />
+    <Options />
+    <Wrapping />
+  </Grid>
+)
 
-function ButtonGroupDemo() {
+export default {
+  component: All,
+  title: 'Buttons/ButtonGroup',
+}
+
+export const Basic = () => {
   const [value, setValue] = useState<string[]>([])
-  const [value2, setValue2] = useState<string[]>(['CA', 'AK'])
-  const [value3, setValue3] = useState<string[]>(['Gouda'])
-
   return (
-    <Box p="large" flex={1}>
-      <Heading>Button Group State</Heading>
-      <ButtonGroup value={value} onChange={setValue}>
-        <ButtonItem value="CA">California</ButtonItem>
-        <ButtonItem value="AK">Alaska</ButtonItem>
-        <ButtonItem value="UT">Utah</ButtonItem>
-      </ButtonGroup>
-      <Divider my="large" />
-      <Divider my="large" />
-      <Paragraph>With initial values</Paragraph>
-      <ButtonGroup value={value2} onChange={setValue2}>
-        <ButtonItem value="CA">California</ButtonItem>
-        <ButtonItem value="AK">Alaska</ButtonItem>
-        <ButtonItem value="UT">Utah</ButtonItem>
-      </ButtonGroup>
-      <Divider my="large" />
-      <Paragraph>Options</Paragraph>
-      <ButtonGroup options={options} value={value3} onChange={setValue3} />
-      <Divider my="large" />
-    </Box>
-  )
-}
-function ButtonToggleDemo() {
-  const [toggle, setToggle] = useState<string>()
-  const [toggle2, setToggle2] = useState('Ruby')
-  const [toggle3, setToggle3] = useState<string>()
-  const [toggle4, setToggle4] = useState('Ruby')
-  const [toggle5, setToggle5] = useState('Gouda')
-
-  return (
-    <Box p="large" flex={1}>
-      <Heading>Button Toggle State</Heading>
-      <ButtonToggle value={toggle} onChange={setToggle}>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider my="large" />
-      <Paragraph>With initial value</Paragraph>
-      <ButtonToggle value={toggle2} onChange={setToggle2}>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider my="large" />
-      <Paragraph>Nullable</Paragraph>
-      <ButtonToggle nullable value={toggle3} onChange={setToggle3}>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider my="large" />
-      <Paragraph>Nullable with initial value</Paragraph>
-      <ButtonToggle nullable value={toggle4} onChange={setToggle4}>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider my="large" />
-      <Paragraph>Disabled</Paragraph>
-      <ButtonToggle disabled value="Ruby">
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Divider my="large" />
-      <Paragraph>Options</Paragraph>
-      <ButtonToggle options={options} value={toggle5} onChange={setToggle5} />
-    </Box>
+    <ButtonGroup value={value} onChange={setValue}>
+      <ButtonItem value="CA">California</ButtonItem>
+      <ButtonItem value="AK">Alaska</ButtonItem>
+      <ButtonItem value="UT">Utah</ButtonItem>
+    </ButtonGroup>
   )
 }
 
-export function ButtonSetDemo() {
-  const [border, setBorder] = useState(true)
+export const InitialValues = () => {
+  const [value, setValue] = useState<string[]>(['CA', 'AK'])
+
+  return (
+    <ButtonGroup value={value} onChange={setValue}>
+      <ButtonItem value="CA">California</ButtonItem>
+      <ButtonItem value="AK">Alaska</ButtonItem>
+      <ButtonItem value="UT">Utah</ButtonItem>
+    </ButtonGroup>
+  )
+}
+
+export const Options = () => {
+  const options = [
+    { label: 'Smoked Gouda', value: 'Gouda' },
+    { value: 'Cheddar' },
+    { disabled: true, value: 'Swiss' },
+  ]
+
+  const [value, setValue] = useState<string[]>(['Gouda'])
+  return <ButtonGroup options={options} value={value} onChange={setValue} />
+}
+
+export const Wrapping = () => {
+  const [border, setBorder] = useState(false)
   const [value, setValue] = useState<string[]>([])
   const [value2, setValue2] = useState<string[]>([])
   const [toggle, setToggle] = useState('')
@@ -131,11 +94,8 @@ export function ButtonSetDemo() {
     setBorder(e.currentTarget.checked)
   }
   return (
-    <Space width="100%" alignItems="flex-start">
-      <ButtonToggleDemo />
-      <ButtonGroupDemo />
-      <Box flex={1} m="xlarge" border={border ? '1px solid' : 'none'}>
-        <Heading>Wrapping</Heading>
+    <Space>
+      <Box flex={1} border={border ? '1px solid' : 'none'}>
         <FieldToggleSwitch
           label="Show border"
           on={border}

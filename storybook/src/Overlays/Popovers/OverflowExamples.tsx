@@ -24,13 +24,13 @@
 
  */
 
-import React, { FC } from 'react'
+import React from 'react'
 import { Box } from '@looker/components'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'
 
-export const PopoverExamples: FC = () => {
+export const OverflowExamples = () => {
   return (
     <Box p="xxlarge" width="100%" position="relative" height="100%">
       <EdgeOverflow top={0} left={0}>
@@ -100,5 +100,6 @@ export const PopoverExamples: FC = () => {
 }
 
 export default {
+  component: OverflowExamples,
   title: 'Overlays/Popover',
 }

@@ -24,42 +24,23 @@
 
  */
 
-import React, { FC } from 'react'
-import { Box, ButtonOutline, Popover, PopoverContent } from '@looker/components'
+import React from 'react'
 
-interface Props {
-  top?: number
-  left?: number
-  bottom?: number
-  right?: number
+import { Space, IconButton } from '@looker/components'
+
+export const Basic = () => {
+  return (
+    <Space>
+      <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="xsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="small" label="Favorite" />
+      <IconButton icon="Favorite" size="medium" label="Favorite" />
+      <IconButton icon="Favorite" size="large" label="Favorite" />
+    </Space>
+  )
 }
 
-export const EdgeOverflow: FC<Props> = ({
-  children,
-  top,
-  left,
-  bottom,
-  right,
-}) => (
-  <Box position="absolute" top={top} left={left} bottom={bottom} right={right}>
-    <Popover
-      content={
-        <PopoverContent width="18rem" height="5rem">
-          There's stuff here... it hits the edge{' '}
-        </PopoverContent>
-      }
-    >
-      {(onClick, ref, className) => (
-        <ButtonOutline
-          iconAfter="ArrowDown"
-          m="xxlarge"
-          className={className}
-          onClick={onClick}
-          ref={ref}
-        >
-          {children}
-        </ButtonOutline>
-      )}
-    </Popover>
-  </Box>
-)
+export default {
+  component: Basic,
+  title: 'Buttons/IconButtons',
+}
