@@ -25,41 +25,13 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, ButtonOutline, Tooltip } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
+import { OptionsGroupDemo } from './Form/OptionsGroupDemo'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <Tooltip
-        width="20rem"
-        placement="right"
-        textAlign="left"
-        content={
-          <>
-            This is a tooltip with quite a bit of text. It's probably not ideal
-            to have this much text in a Tooltip. Perhaps you should link to
-            another document
-          </>
-        }
-      >
-        <ButtonOutline>Tooltip with lots of text</ButtonOutline>
-      </Tooltip>
-      <Tooltip
-        width="20rem"
-        placement="right"
-        textAlign="left"
-        content={
-          <>
-            This is a tooltip with quite a bit of text. It's probably not ideal
-            to have this much text in a Tooltip. Perhaps you should link to
-            another document
-          </>
-        }
-      >
-        <ButtonOutline className="hover">
-          Tooltip with lots of text
-        </ButtonOutline>
-      </Tooltip>
+      <OptionsGroupDemo />
     </ComponentsProvider>
   )
 }
