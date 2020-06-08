@@ -10,8 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Icon` now supports "t-shirt" sizing. (i.e.: `size="small"`)
-
 - Jest no longer requires artifact build before being run
+
+### Fixed
+
+- `InputTime` now renders warning icon when validationType="error"
 
 ## [0.8.4]
 

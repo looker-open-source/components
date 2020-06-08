@@ -25,20 +25,13 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Flex, Icon } from '@looker/components'
+import { ComponentsProvider, Flex, InputTime } from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="center">
-        <Icon name="GearOutline" size="xxsmall" />
-        <Icon name="GearOutline" size="xsmall" />
-        <Icon name="GearOutline" size="small" />
-        <Icon name="GearOutline" size="medium" />
-        <Icon name="GearOutline" />
-        <Icon name="GearOutline" size="large" />
-        <Icon name="GearOutline" size="78px" />
-        <Icon name="GearOutline" size="90px" />
+      <Flex alignItems="center" justifyContent="space-around" mt="10px">
+        <InputTime validationType="error" />
       </Flex>
     </ComponentsProvider>
   )

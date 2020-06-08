@@ -56,6 +56,7 @@ import {
   inputTextDisabled,
   inputTextValidation,
 } from '../InputText'
+import { Icon } from '../../../Icon'
 import {
   formatTimeString,
   TimeFormats,
@@ -279,6 +280,7 @@ const InputTimeInternal = forwardRef(
       onBlur,
       required,
       onValidationFail,
+      validationType,
     }: InputTimeProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -472,6 +474,7 @@ const InputTimeInternal = forwardRef(
         ref={ref}
         onFocus={onFocus}
         onBlur={onBlur}
+        aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
         <InputTimeWrapper hasInputValues={hasInputValues}>
           <InputTimeLayout>
@@ -523,6 +526,9 @@ const InputTimeInternal = forwardRef(
             ) : (
               <span />
             )}
+            {validationType && (
+              <Icon name="CircleInfo" color="critical" size={20} />
+            )}
           </InputTimeLayout>
         </InputTimeWrapper>
       </div>
@@ -533,7 +539,7 @@ const InputTimeInternal = forwardRef(
 const InputTimeLayout = styled.div`
   display: grid;
   grid-gap: 0.15rem;
-  grid-template-columns: repeat(4, min-content);
+  grid-template-columns: repeat(5, min-content);
   align-items: center;
 `
 
