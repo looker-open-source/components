@@ -1,0 +1,19 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "start-storybook"
+  },
+  "dependencies": {
+    "@looker/components": "*",
+    "@looker/design-tokens": "*",
+    "@looker/icons": "*",
+    "@storybook/react": "^5.3.19",
+    "lodash": "^4.17.15",
+    "react": "^16.13.1",
+    "styled-components": "4"
+  }
+}
