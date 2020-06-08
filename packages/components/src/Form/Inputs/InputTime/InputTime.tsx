@@ -480,6 +480,7 @@ const InputTimeInternal = forwardRef(
           <InputTimeLayout>
             <InputText
               id={id}
+              grid-area="hour"
               maxLength={2}
               placeholder="--"
               value={hour}
@@ -493,8 +494,9 @@ const InputTimeInternal = forwardRef(
               readOnly={readOnly}
               required={required}
             />
-            <div>:</div>
+            <div grid-area="colon">:</div>
             <InputText
+              grid-area="minute"
               maxLength={2}
               placeholder="--"
               value={minute}
@@ -510,6 +512,7 @@ const InputTimeInternal = forwardRef(
             />
             {format === '12h' ? (
               <InputText
+                grid-area="second"
                 maxLength={2}
                 placeholder="--"
                 value={period}
@@ -527,7 +530,12 @@ const InputTimeInternal = forwardRef(
               <span />
             )}
             {validationType && (
-              <Icon name="CircleInfo" color="critical" size={20} />
+              <IconWarning
+                name="CircleInfo"
+                color="critical"
+                grid-area="warning"
+                size={20}
+              />
             )}
           </InputTimeLayout>
         </InputTimeWrapper>
@@ -539,8 +547,12 @@ const InputTimeInternal = forwardRef(
 const InputTimeLayout = styled.div`
   display: grid;
   grid-gap: 0.15rem;
-  grid-template-columns: repeat(5, min-content);
+  grid-template-columns: repeat(6, min-content);
+  grid-template-areas: 'hour colon minute 12 . warning';
   align-items: center;
+`
+const IconWarning = styled(Icon)`
+  justify-self: end;
 `
 
 export const InputTime = styled(InputTimeInternal)`

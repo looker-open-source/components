@@ -25,14 +25,26 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Flex, InputTime } from '@looker/components'
+import {
+  ComponentsProvider,
+  FieldTime,
+  Grid,
+  InputTime,
+} from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="space-around" mt="10px">
+      <Grid columns={1} m="10px">
         <InputTime validationType="error" />
-      </Flex>
+        <FieldTime
+          defaultValue="14:34"
+          description="this is the description"
+          detail="detail"
+          label="Label"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+      </Grid>
     </ComponentsProvider>
   )
 }
