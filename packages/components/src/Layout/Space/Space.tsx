@@ -88,12 +88,19 @@ export const spaceCSS = css`
 `
 
 const fauxFlexGap = (space: SpaceHelperProps) => css`
+  ${({ theme }) =>
+    space.flexWrap === 'wrap'
+      ? `margin-left: -${theme.space[space.gap || defaultSpaceSize]};`
+      : ''}
+
   && > * {
     margin-left: ${({ theme }) => theme.space[space.gap || defaultSpaceSize]};
   }
 
   ${({ theme }) =>
-    space.reverse
+    space.flexWrap === 'wrap'
+      ? ''
+      : space.reverse
       ? `&& > *:last-child { margin-left: ${theme.space.none}; }`
       : `&& > *:first-child { margin-left: ${theme.space.none}; }`}
 `

@@ -39,6 +39,8 @@ import {
   AccordionDisclosure,
   AccordionIndicatorProps,
 } from '../../Accordion'
+import { FieldInline } from '../Fields/FieldInline'
+import { inputHeight } from '../Inputs/InputText/InputText'
 
 export interface FieldsetProps
   extends SpaceHelperProps,
@@ -95,11 +97,11 @@ const FieldsetLayout = forwardRef(
 
     const content = (
       <LayoutComponent
-        {...restProps}
         gap={inline ? 'medium' : 'small'}
         ref={ref}
         role="group"
         align="start"
+        {...restProps}
       >
         {children}
       </LayoutComponent>
@@ -145,8 +147,8 @@ export const Fieldset = styled(FieldsetLayout)`
   ${AccordionContent} {
     padding-top: ${({ theme }) => theme.space.medium};
   }
-`
 
-Fieldset.defaultProps = {
-  padding: 'none',
-}
+  ${FieldInline} {
+    line-height: ${inputHeight};
+  }
+`
