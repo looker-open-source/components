@@ -27,7 +27,8 @@ import React, { forwardRef, useCallback, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
-import { FieldRadio } from '../../Fields'
+import { FieldRadio } from '../../Fields/FieldRadio'
+import { inputHeight } from '../InputText/InputText'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type RadioGroupProps = OptionsGroupProps<string>
@@ -94,7 +95,7 @@ const RadioGroupLayout = forwardRef(
         data-testid="radio-list"
         inline={inline}
         flexWrap={inline ? 'wrap' : undefined}
-        gap={inline ? undefined : 'none'}
+        width={inline ? 'auto' : undefined}
         ref={ref}
         {...rest}
       >
@@ -106,4 +107,8 @@ const RadioGroupLayout = forwardRef(
 
 RadioGroupLayout.displayName = 'RadioGroupLayout'
 
-export const RadioGroup = styled(RadioGroupLayout)``
+export const RadioGroup = styled(RadioGroupLayout)`
+  ${FieldRadio} {
+    ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
+  }
+`

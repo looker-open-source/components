@@ -44,9 +44,16 @@ The `alignValidationMessage` can also be used to adjust where the validation mes
 />
 ```
 
-### FieldCheckboxGroup
+## FieldCheckboxGroup
 
-Groups of checkboxes can be displayed with `FieldCheckboxGroup`
+<Props of="FieldCheckboxGroup" />
+
+Groups of checkboxes can be displayed with `FieldCheckboxGroup`.
+
+There are two "inline" variations:
+
+- The `inline` prop will put the group label and all the inputs in one line (wrapping the inputs as necessary)
+- The `inputsInline` prop will stack the group label on top but keep all the inputs inline
 
 ```jsx
 ;() => {
@@ -74,7 +81,7 @@ Groups of checkboxes can be displayed with `FieldCheckboxGroup`
   ]
 
   return (
-    <Grid m="xxlarge">
+    <Grid>
       <FieldCheckboxGroup
         defaultValue={['cheddar']}
         description="defaultValue checked"
@@ -103,8 +110,8 @@ Groups of checkboxes can be displayed with `FieldCheckboxGroup`
       />
       <FieldCheckboxGroup
         description="Validation message and requited"
-        inline
-        label="Cheeses inline layout"
+        inputsInline
+        label="Cheeses inline inputs layout"
         name="group1"
         options={options}
         required
@@ -221,9 +228,16 @@ The `<FieldRadio />` component is composed of a `<Radio />` component and a `<La
 <FieldRadio name="radio" label="Radio 2" inline />
 ```
 
-### FieldRadioGroup
+## FieldRadioGroup
+
+<Props of="FieldRadioGroup" />
 
 Groups of radios can be displayed with `FieldRadioGroup`
+
+There are two "inline" variations:
+
+- The `inline` prop will put the group label and all the inputs in one line (wrapping the inputs as necessary)
+- The `inputsInline` prop will stack the group label on top but keep all the inputs inline
 
 ```jsx
 ;() => {
@@ -251,7 +265,7 @@ Groups of radios can be displayed with `FieldRadioGroup`
   ]
 
   return (
-    <Grid m="xxlarge">
+    <Grid>
       <FieldRadioGroup
         description="default layout"
         label="Cheeses"
@@ -278,8 +292,8 @@ Groups of radios can be displayed with `FieldRadioGroup`
       />
       <FieldRadioGroup
         description="Validation message and requited"
-        inline
-        label="Cheeses inline layout"
+        inputsInline
+        label="Cheeses inline inputs layout"
         name="group1"
         options={options}
         required

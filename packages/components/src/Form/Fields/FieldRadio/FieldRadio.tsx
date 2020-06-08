@@ -39,6 +39,7 @@ export interface FieldRadioProps
 const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
     const id = useID(props.id)
+    console.log(pickFieldProps(props))
     return (
       <FieldInline {...pickFieldProps(props)} id={id}>
         <Radio

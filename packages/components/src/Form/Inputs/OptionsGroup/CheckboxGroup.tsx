@@ -29,7 +29,8 @@ import React, { forwardRef, useCallback, useRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
-import { FieldCheckbox } from '../../Fields'
+import { FieldCheckbox } from '../../Fields/FieldCheckbox'
+import { inputHeight } from '../InputText/InputText'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type CheckboxGroupProps = OptionsGroupProps<string[]>
@@ -101,7 +102,7 @@ const CheckboxGroupLayout = forwardRef(
         data-testid="checkbox-list"
         inline={inline}
         flexWrap={inline ? 'wrap' : undefined}
-        gap={inline ? undefined : 'none'}
+        width={inline ? 'auto' : undefined}
         ref={ref}
         {...rest}
       >
@@ -113,4 +114,8 @@ const CheckboxGroupLayout = forwardRef(
 
 CheckboxGroupLayout.displayName = 'CheckboxGroupLayout'
 
-export const CheckboxGroup = styled(CheckboxGroupLayout)``
+export const CheckboxGroup = styled(CheckboxGroupLayout)`
+  ${FieldCheckbox} {
+    ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
+  }
+`
