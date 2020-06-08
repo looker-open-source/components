@@ -95,11 +95,11 @@ const FieldsetLayout = forwardRef(
 
     const content = (
       <LayoutComponent
+        {...restProps}
         gap={inline ? 'medium' : 'small'}
         ref={ref}
         role="group"
         align="start"
-        {...restProps}
       >
         {children}
       </LayoutComponent>
@@ -146,3 +146,7 @@ export const Fieldset = styled(FieldsetLayout)`
     padding-top: ${({ theme }) => theme.space.medium};
   }
 `
+
+Fieldset.defaultProps = {
+  padding: 'none',
+}

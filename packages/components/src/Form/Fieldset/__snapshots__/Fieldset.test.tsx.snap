@@ -26,6 +26,7 @@ exports[`Fieldset 1`] = `
 
 .c3 {
   width: 100%;
+  padding: 0rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,10 +186,6 @@ exports[`Fieldset 1`] = `
 
 .c0 .c13 {
   padding-top: 1rem;
-}
-
-.c0 .c15 {
-  line-height: 36px;
 }
 
 <div
