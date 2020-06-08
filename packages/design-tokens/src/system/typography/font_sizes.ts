@@ -35,7 +35,7 @@ import {
   SizeXXSmall,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from '../space'
+} from '../size'
 
 export type FontSizes =
   | SizeXXSmall

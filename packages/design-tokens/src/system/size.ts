@@ -24,44 +24,23 @@
 
  */
 
-import { HTMLProps } from 'react'
-export {
-  border,
-  boxShadow,
-  color,
-  flexbox,
-  position,
-  layout,
-  space,
-  typography,
-} from 'styled-system'
-export type {
-  BorderProps,
-  BorderRadiusProps,
-  BoxShadowProps,
-  FlexboxProps,
-  PositionProps,
-  LayoutProps,
-} from 'styled-system'
+export type SizeNone = 'none'
+export type SizeXXXSmall = 'xxxsmall'
+export type SizeXXSmall = 'xxsmall'
+export type SizeXSmall = 'xsmall'
+export type SizeSmall = 'small'
+export type SizeMedium = 'medium'
+export type SizeLarge = 'large'
+export type SizeXLarge = 'xlarge'
+export type SizeXXLarge = 'xxlarge'
+export type SizeXXXLarge = 'xxxlarge'
+export type SizeXXXXLarge = 'xxxxlarge'
 
-export type CompatibleHTMLProps<T> = Omit<
-  HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
->
+export type Sizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export { Transitions } from './transitions'
-export * from './color'
-export * from './size'
-export * from './space'
-export * from './typography'
-
-// Custom Extensions
-export * from './reset'
-export * from './pseudo'
+export type SizeRamp = Record<Sizes, string>

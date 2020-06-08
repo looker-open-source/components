@@ -24,44 +24,19 @@
 
  */
 
-import { HTMLProps } from 'react'
-export {
-  border,
-  boxShadow,
-  color,
-  flexbox,
-  position,
-  layout,
-  space,
-  typography,
-} from 'styled-system'
-export type {
-  BorderProps,
-  BorderRadiusProps,
-  BoxShadowProps,
-  FlexboxProps,
-  PositionProps,
-  LayoutProps,
-} from 'styled-system'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { Icon } from './Icon'
 
-export type CompatibleHTMLProps<T> = Omit<
-  HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
->
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size="large" />)
+})
 
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export { Transitions } from './transitions'
-export * from './color'
-export * from './size'
-export * from './space'
-export * from './typography'
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size={12} />)
+})
 
-// Custom Extensions
-export * from './reset'
-export * from './pseudo'
+test('Icon with styled system size', () => {
+  assertSnapshot(<Icon name="Plus" size="1rem" />)
+})

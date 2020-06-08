@@ -25,13 +25,21 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldsetAccordionDemo } from './Form/FieldsetAccordionDemo'
+import { ComponentsProvider, Flex, Icon } from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <FieldsetAccordionDemo />
+      <Flex alignItems="center" justifyContent="center">
+        <Icon name="GearOutline" size="xxsmall" />
+        <Icon name="GearOutline" size="xsmall" />
+        <Icon name="GearOutline" size="small" />
+        <Icon name="GearOutline" size="medium" />
+        <Icon name="GearOutline" />
+        <Icon name="GearOutline" size="large" />
+        <Icon name="GearOutline" size="78px" />
+        <Icon name="GearOutline" size="90px" />
+      </Flex>
     </ComponentsProvider>
   )
 }

@@ -296,10 +296,10 @@ exports[`TextArea should accept disabled 1`] = `
 `;
 
 exports[`TextArea with an error validation 1`] = `
-.c1 {
-  color: #CC1F36;
+.c2 {
   width: 20px;
   height: 20px;
+  color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -310,13 +310,13 @@ exports[`TextArea with an error validation 1`] = `
   display: inline-flex;
 }
 
-.c3 .c2 {
+.c3 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.c4 .c2 {
+.c4 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -330,7 +330,7 @@ exports[`TextArea with an error validation 1`] = `
   width: 100%;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -379,9 +379,7 @@ exports[`TextArea with an error validation 1`] = `
     id="TextAreaID"
   />
   <div
-    className="c1 c2 "
-    color="critical"
-    size={20}
+    className="c1 c2"
   >
     <svg
       fill="currentColor"

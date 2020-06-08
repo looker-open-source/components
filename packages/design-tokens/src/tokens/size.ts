@@ -24,44 +24,14 @@
 
  */
 
-import { HTMLProps } from 'react'
-export {
-  border,
-  boxShadow,
-  color,
-  flexbox,
-  position,
-  layout,
-  space,
-  typography,
-} from 'styled-system'
-export type {
-  BorderProps,
-  BorderRadiusProps,
-  BoxShadowProps,
-  FlexboxProps,
-  PositionProps,
-  LayoutProps,
-} from 'styled-system'
+import { rem } from 'polished'
+import { SizeRamp } from '../system'
 
-export type CompatibleHTMLProps<T> = Omit<
-  HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
->
-
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export { Transitions } from './transitions'
-export * from './color'
-export * from './size'
-export * from './space'
-export * from './typography'
-
-// Custom Extensions
-export * from './reset'
-export * from './pseudo'
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const sizes: SizeRamp = {
+  xxsmall: rem(12),
+  xsmall: rem(16),
+  small: rem(18),
+  medium: rem(24),
+  large: rem(32),
+}

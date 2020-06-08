@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
-.c6 {
+.c7 {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #9785F2;
-  width: 1rem;
-  height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -63,7 +63,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   border: solid 1px currentColor;
 }
 
-.c5 .c7 {
+.c5 .c6 {
   height: 20px;
   width: 20px;
 }
@@ -82,7 +82,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   width: 20px;
 }
 
-.c0 .c4 .c7 {
+.c0 .c4 .c6 {
   height: 14px;
   width: 14px;
 }
@@ -110,9 +110,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
     className="c4 c5"
   >
     <div
-      className="c6 c7 "
-      color="keyFocus"
-      size="1rem"
+      className="c6 c7"
     >
       <svg
         fill="currentColor"
@@ -134,10 +132,10 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 `;
 
 exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
-.c6 {
+.c7 {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #9785F2;
-  width: 1rem;
-  height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -196,7 +194,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   border: solid 1px currentColor;
 }
 
-.c5 .c7 {
+.c5 .c6 {
   height: 20px;
   width: 20px;
 }
@@ -215,7 +213,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   width: 20px;
 }
 
-.c0 .c4 .c7 {
+.c0 .c4 .c6 {
   height: 14px;
   width: 14px;
 }
@@ -243,9 +241,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
     className="c4 c5"
   >
     <div
-      className="c6 c7 "
-      color="keyFocus"
-      size="1rem"
+      className="c6 c7"
     >
       <svg
         fill="currentColor"
@@ -267,10 +263,10 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 `;
 
 exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
-.c2 {
+.c3 {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #9785F2;
-  width: 1rem;
-  height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -298,7 +294,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   border: solid 1px currentColor;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   height: 20px;
   width: 20px;
 }
@@ -320,7 +316,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   border: solid 1px currentColor;
 }
 
-.c5 .c3 {
+.c5 .c2 {
   height: 20px;
   width: 20px;
 }
@@ -339,7 +335,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   width: 20px;
 }
 
-.c0 .c4 .c3 {
+.c0 .c4 .c2 {
   height: 14px;
   width: 14px;
 }
@@ -351,9 +347,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c1"
   >
     <div
-      className="c2 c3 "
-      color="keyFocus"
-      size="1rem"
+      className="c2 c3"
     >
       <svg
         fill="currentColor"
@@ -375,9 +369,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c4 c5"
   >
     <div
-      className="c2 c3 "
-      color="keyFocus"
-      size="1rem"
+      className="c2 c3"
     >
       <svg
         fill="currentColor"
@@ -401,10 +393,10 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 `;
 
 exports[`AvatarIcon renders  1`] = `
-.c1 {
+.c2 {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #9785F2;
-  width: 1rem;
-  height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -415,7 +407,7 @@ exports[`AvatarIcon renders  1`] = `
   display: inline-flex;
 }
 
-.c3 .c2 {
+.c3 .c1 {
   height: 20px;
   width: 20px;
 }
@@ -437,17 +429,17 @@ exports[`AvatarIcon renders  1`] = `
   border: solid 1px currentColor;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   height: 20px;
   width: 20px;
 }
 
-.c4 .c2 {
+.c4 .c1 {
   height: 20px;
   width: 20px;
 }
 
-.c5 .c6 .c2 {
+.c5 .c6 .c1 {
   height: 14px;
   width: 14px;
 }
@@ -456,9 +448,7 @@ exports[`AvatarIcon renders  1`] = `
   className="c0"
 >
   <div
-    className="c1 c2 "
-    color="keyFocus"
-    size="1rem"
+    className="c1 c2"
   >
     <svg
       fill="currentColor"
@@ -479,10 +469,10 @@ exports[`AvatarIcon renders  1`] = `
 `;
 
 exports[`AvatarIcon renders different icon if specified 1`] = `
-.c1 {
+.c2 {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #9785F2;
-  width: 1rem;
-  height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -493,7 +483,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   display: inline-flex;
 }
 
-.c3 .c2 {
+.c3 .c1 {
   height: 20px;
   width: 20px;
 }
@@ -515,17 +505,17 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   border: solid 1px currentColor;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   height: 20px;
   width: 20px;
 }
 
-.c4 .c2 {
+.c4 .c1 {
   height: 20px;
   width: 20px;
 }
 
-.c5 .c6 .c2 {
+.c5 .c6 .c1 {
   height: 14px;
   width: 14px;
 }
@@ -534,9 +524,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2 "
-    color="keyFocus"
-    size="1rem"
+    className="c1 c2"
   >
     <svg
       fill="currentColor"

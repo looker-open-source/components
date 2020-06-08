@@ -531,9 +531,9 @@ exports[`Button validates all sizes 4`] = `
 `;
 
 exports[`Button with icon validates all sizes 1`] = `
-.c2 {
-  width: 1rem;
-  height: 1rem;
+.c3 {
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -579,27 +579,27 @@ exports[`Button with icon validates all sizes 1`] = `
   opacity: 0.25;
 }
 
-.c4 .c3 {
+.c4 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c5 .c3 {
+.c5 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c6 .c3 {
+.c6 .c2 {
   width: 12px;
   height: 12px;
 }
 
-.c7 .c3 {
+.c7 .c2 {
   width: 16px;
   height: 16px;
 }
 
-.c8 .c3 {
+.c8 .c2 {
   width: 20px;
   height: 20px;
 }
@@ -610,7 +610,7 @@ exports[`Button with icon validates all sizes 1`] = `
   color: #FFFFFF;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   width: 12px;
@@ -637,21 +637,21 @@ exports[`Button with icon validates all sizes 1`] = `
   border-color: #C1C6CC;
 }
 
-.c9 .c3 {
+.c9 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   width: 16px;
   height: 16px;
 }
 
-.c10 .c3 {
+.c10 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 18px;
   height: 18px;
 }
 
-.c11 .c3 {
+.c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 20px;
@@ -662,7 +662,7 @@ exports[`Button with icon validates all sizes 1`] = `
   class="c0 c1"
 >
   <div
-    class="c2 c3 "
+    class="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -684,9 +684,9 @@ exports[`Button with icon validates all sizes 1`] = `
 `;
 
 exports[`Button with icon validates all sizes 2`] = `
-.c2 {
-  width: 1rem;
-  height: 1rem;
+.c3 {
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -732,32 +732,32 @@ exports[`Button with icon validates all sizes 2`] = `
   opacity: 0.25;
 }
 
-.c4 .c3 {
+.c4 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c5 .c3 {
+.c5 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c6 .c3 {
+.c6 .c2 {
   width: 12px;
   height: 12px;
 }
 
-.c7 .c3 {
+.c7 .c2 {
   width: 16px;
   height: 16px;
 }
 
-.c8 .c3 {
+.c8 .c2 {
   width: 20px;
   height: 20px;
 }
 
-.c9 .c3 {
+.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   width: 12px;
@@ -770,7 +770,7 @@ exports[`Button with icon validates all sizes 2`] = `
   color: #FFFFFF;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   width: 16px;
@@ -797,14 +797,14 @@ exports[`Button with icon validates all sizes 2`] = `
   border-color: #C1C6CC;
 }
 
-.c10 .c3 {
+.c10 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 18px;
   height: 18px;
 }
 
-.c11 .c3 {
+.c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 20px;
@@ -815,7 +815,7 @@ exports[`Button with icon validates all sizes 2`] = `
   class="c0 c1"
 >
   <div
-    class="c2 c3 "
+    class="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -837,9 +837,9 @@ exports[`Button with icon validates all sizes 2`] = `
 `;
 
 exports[`Button with icon validates all sizes 3`] = `
-.c2 {
-  width: 1rem;
-  height: 1rem;
+.c3 {
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -885,39 +885,39 @@ exports[`Button with icon validates all sizes 3`] = `
   opacity: 0.25;
 }
 
-.c4 .c3 {
+.c4 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c5 .c3 {
+.c5 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c6 .c3 {
+.c6 .c2 {
   width: 12px;
   height: 12px;
 }
 
-.c7 .c3 {
+.c7 .c2 {
   width: 16px;
   height: 16px;
 }
 
-.c8 .c3 {
+.c8 .c2 {
   width: 20px;
   height: 20px;
 }
 
-.c9 .c3 {
+.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   width: 12px;
   height: 12px;
 }
 
-.c10 .c3 {
+.c10 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   width: 16px;
@@ -930,7 +930,7 @@ exports[`Button with icon validates all sizes 3`] = `
   color: #FFFFFF;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 18px;
@@ -957,7 +957,7 @@ exports[`Button with icon validates all sizes 3`] = `
   border-color: #C1C6CC;
 }
 
-.c11 .c3 {
+.c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 20px;
@@ -968,7 +968,7 @@ exports[`Button with icon validates all sizes 3`] = `
   class="c0 c1"
 >
   <div
-    class="c2 c3 "
+    class="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -990,9 +990,9 @@ exports[`Button with icon validates all sizes 3`] = `
 `;
 
 exports[`Button with icon validates all sizes 4`] = `
-.c2 {
-  width: 1rem;
-  height: 1rem;
+.c3 {
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1038,46 +1038,46 @@ exports[`Button with icon validates all sizes 4`] = `
   opacity: 0.25;
 }
 
-.c4 .c3 {
+.c4 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c5 .c3 {
+.c5 .c2 {
   width: 18px;
   height: 18px;
 }
 
-.c6 .c3 {
+.c6 .c2 {
   width: 12px;
   height: 12px;
 }
 
-.c7 .c3 {
+.c7 .c2 {
   width: 16px;
   height: 16px;
 }
 
-.c8 .c3 {
+.c8 .c2 {
   width: 20px;
   height: 20px;
 }
 
-.c9 .c3 {
+.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   width: 12px;
   height: 12px;
 }
 
-.c10 .c3 {
+.c10 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   width: 16px;
   height: 16px;
 }
 
-.c11 .c3 {
+.c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 18px;
@@ -1090,7 +1090,7 @@ exports[`Button with icon validates all sizes 4`] = `
   color: #FFFFFF;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   width: 20px;
@@ -1121,7 +1121,7 @@ exports[`Button with icon validates all sizes 4`] = `
   class="c0 c1"
 >
   <div
-    class="c2 c3 "
+    class="c2 c3"
   >
     <svg
       fill="currentColor"
