@@ -24,44 +24,51 @@
 
  */
 
-import { Code, Heading, Space, Button, SpaceVertical } from '@looker/components'
+import { Button, Space, SpaceVertical } from '@looker/components'
 import React from 'react'
 
-export const SpaceExamples = () => (
-  <>
-    <Heading my="large">
-      <Code>Space</Code>
-    </Heading>
-    <Space>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </Space>
-
-    <Space reverse>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </Space>
-
-    <Heading my="large">
-      <Code>SpaceVertical</Code>
-    </Heading>
-    <SpaceVertical>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </SpaceVertical>
-
-    <SpaceVertical reverse>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </SpaceVertical>
-  </>
+export const All = () => (
+  <SpaceVertical>
+    <Basic />
+    <Reverse />
+    <BasicSpaceVertical />
+    <ReverseSpaceVertical />
+  </SpaceVertical>
 )
 
 export default {
-  component: SpaceExamples,
+  component: All,
   title: 'Layout/Space',
 }
+
+export const Basic = () => (
+  <Space>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
+)
+
+export const Reverse = () => (
+  <Space reverse>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
+)
+
+export const BasicSpaceVertical = () => (
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+)
+
+export const ReverseSpaceVertical = () => (
+  <SpaceVertical reverse>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+)

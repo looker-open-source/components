@@ -24,62 +24,56 @@
 
  */
 
-import {
-  Box,
-  BoxProps,
-  Divider,
-  Grid,
-  Heading,
-  SpaceVertical,
-} from '@looker/components'
-import React, { FC } from 'react'
+import { Grid, SpaceVertical } from '@looker/components'
+import React from 'react'
+import { Placeholder } from './Placeholder'
 
-const Placeholder: FC<BoxProps> = (props) => (
-  <Box
-    color="white"
-    bg="key"
-    justifyContent="center"
-    alignItems="center"
-    height="100%"
-    width="100%"
-    display="flex"
-    {...props}
-  />
+export const All = () => (
+  <SpaceVertical>
+    <Basic />
+    <Columns />
+    <GapSize />
+    <VerticalGrid />
+  </SpaceVertical>
 )
 
-export const GridExamples = () => (
-  <SpaceVertical>
-    <Heading>Two Column (default)</Heading>
-    <Grid>
-      <Placeholder minHeight="5rem">A</Placeholder>
-      <Placeholder>B</Placeholder>
-      <Placeholder>C</Placeholder>
-      <Placeholder>D</Placeholder>
-    </Grid>
+export default {
+  component: All,
+  title: 'Layout/Grid',
+}
 
-    <Divider />
+export const Basic = () => (
+  <Grid>
+    <Placeholder minHeight="5rem">A</Placeholder>
+    <Placeholder>B</Placeholder>
+    <Placeholder>C</Placeholder>
+    <Placeholder>D</Placeholder>
+  </Grid>
+)
 
-    <Heading>Four Column (xsmall gap)</Heading>
-    <Grid columns={4} gap="xsmall">
-      <Placeholder minHeight="5rem">A</Placeholder>
-      <Placeholder>B</Placeholder>
-      <Placeholder>C</Placeholder>
-      <Placeholder>D</Placeholder>
-    </Grid>
+export const Columns = () => (
+  <Grid columns={4}>
+    <Placeholder minHeight="5rem">A</Placeholder>
+    <Placeholder>B</Placeholder>
+    <Placeholder>C</Placeholder>
+    <Placeholder>D</Placeholder>
+  </Grid>
+)
 
-    <Divider />
+export const GapSize = () => (
+  <Grid gap="xxlarge">
+    <Placeholder>C</Placeholder>
+    <Placeholder>D</Placeholder>
+  </Grid>
+)
 
-    <Heading>1 Column (xxlarge gap)</Heading>
+export const VerticalGrid = () => (
+  <Grid columns={4}>
     <Grid columns={1} gap="xxlarge">
       <Placeholder minHeight="5rem">A</Placeholder>
       <Placeholder>B</Placeholder>
       <Placeholder>C</Placeholder>
       <Placeholder>D</Placeholder>
     </Grid>
-  </SpaceVertical>
+  </Grid>
 )
-
-export default {
-  component: GridExamples,
-  title: 'Layout/Grid',
-}
