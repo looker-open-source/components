@@ -25,10 +25,12 @@
  */
 
 import xor from 'lodash/xor'
-import React, { FC, useCallback, useRef } from 'react'
+import React, { forwardRef, useCallback, useRef, Ref } from 'react'
+import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
-import { FieldCheckbox } from '../../Fields'
+import { FieldCheckbox } from '../../Fields/FieldCheckbox'
+import { inputHeight } from '../InputText/InputText'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type CheckboxGroupProps = OptionsGroupProps<string[]>
@@ -45,54 +47,75 @@ function getCheckedProps(
   return { [key]: valueToUse.includes(optionValue) }
 }
 
-export const CheckboxGroup: FC<CheckboxGroupProps> = ({
-  disabled,
-  name: propsName,
-  options,
-  defaultValue = [],
-  value,
-  onChange,
-  ...rest
-}) => {
-  const name = useID(propsName)
-  // Keep track of the group's value for onChange argument if value prop is not used
-  // (i.e.uncontrolled but with onChange prop)
-  const uncontrolledValueRef = useRef(defaultValue)
+const CheckboxGroupLayout = forwardRef(
+  (
+    {
+      disabled,
+      inline,
+      name: propsName,
+      options,
+      defaultValue = [],
+      value,
+      onChange,
+      ...rest
+    }: CheckboxGroupProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const name = useID(propsName)
+    // Keep track of the group's value for onChange argument if value prop is not used
+    // (i.e.uncontrolled but with onChange prop)
+    const uncontrolledValueRef = useRef(defaultValue)
 
-  const getChangeHandler = useCallback(
-    (optionValue: string) => {
-      return onChange
-        ? () => {
-            const oldValue = value || uncontrolledValueRef.current
-            const newValue = xor(oldValue, [optionValue])
-            onChange(newValue)
-            uncontrolledValueRef.current = newValue
-          }
-        : undefined
-    },
-    [onChange, value]
-  )
+    const getChangeHandler = useCallback(
+      (optionValue: string) => {
+        return onChange
+          ? () => {
+              const oldValue = value || uncontrolledValueRef.current
+              const newValue = xor(oldValue, [optionValue])
+              onChange(newValue)
+              uncontrolledValueRef.current = newValue
+            }
+          : undefined
+      },
+      [onChange, value]
+    )
 
-  const checkboxes = options.map((option) => {
-    const checkedProps = getCheckedProps(option.value, value, defaultValue)
-    const handleChange = getChangeHandler(option.value)
+    const checkboxes = options.map((option) => {
+      const checkedProps = getCheckedProps(option.value, value, defaultValue)
+      const handleChange = getChangeHandler(option.value)
+
+      return (
+        <FieldCheckbox
+          onChange={handleChange}
+          disabled={option.disabled || disabled}
+          key={option.value}
+          label={option.label}
+          name={name}
+          value={option.value}
+          {...checkedProps}
+        />
+      )
+    })
 
     return (
-      <FieldCheckbox
-        onChange={handleChange}
-        disabled={option.disabled || disabled}
-        key={option.value}
-        label={option.label}
-        name={name}
-        value={option.value}
-        {...checkedProps}
-      />
+      <Fieldset
+        data-testid="checkbox-list"
+        inline={inline}
+        flexWrap={inline ? 'wrap' : undefined}
+        width={inline ? 'auto' : undefined}
+        ref={ref}
+        {...rest}
+      >
+        {checkboxes}
+      </Fieldset>
     )
-  })
+  }
+)
 
-  return (
-    <Fieldset data-testid="checkbox-list" {...rest}>
-      {checkboxes}
-    </Fieldset>
-  )
-}
+CheckboxGroupLayout.displayName = 'CheckboxGroupLayout'
+
+export const CheckboxGroup = styled(CheckboxGroupLayout)`
+  ${FieldCheckbox} {
+    ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
+  }
+`

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+### Added
+
+- `CheckboxGroup` and `RadioGroup` now support wrapping when `inline` is used, and they use the same height as other inputs
+
 ### Changed
 
 - `Icon` now supports "t-shirt" sizing. (i.e.: `size="small"`)

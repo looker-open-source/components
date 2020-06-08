@@ -33,13 +33,16 @@ import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldCheckboxGroupProps
   extends CheckboxGroupProps,
-    Omit<FieldProps, 'detail'> {}
+    Omit<FieldProps, 'detail'> {
+  inputsInline?: boolean
+}
 
 const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
   id: propsID,
   options,
   value,
   name,
+  inputsInline,
   ...props
 }) => {
   const validationMessage = useFormContext(props)
@@ -56,7 +59,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
         aria-describedby={`${id}-describedby`}
         aria-labelledby={`${id}-labelledby`}
         id={id}
-        inline={props.inline}
+        inline={props.inline || inputsInline}
         name={name || id}
         options={options}
         value={value}
