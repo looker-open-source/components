@@ -24,13 +24,33 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
+import { Space, IconButton, Tooltip } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const All = () => (
+  <Space>
+    <Basic />
+    <Placement />
+    <RenderProp />
+  </Space>
+)
+
+export default {
+  component: All,
+  title: 'Overlays/Tooltip',
+}
+
+const Basic = () => <Tooltip content="I'm a little teapot">Some Text</Tooltip>
+const Placement = () => (
+  <Tooltip content="I'm a little teapot" placement="top">
+    Some Text
+  </Tooltip>
+)
+
+const RenderProp = () => (
+  <Tooltip content="Start editing" placement="top">
+    {(tooltipProps) => (
+      <IconButton icon="Edit" label="Edit something" {...tooltipProps} />
+    )}
+  </Tooltip>
+)

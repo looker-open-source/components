@@ -23,14 +23,40 @@
  SOFTWARE.
 
  */
+import React from 'react'
+import { FieldTextArea, Fieldset, Grid, TextArea } from '@looker/components'
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+export const All = () => (
+  <Grid>
+    <Basic />
+    <Disabled />
+    <Required />
+    <Error />
+    <Inline />
+    <Resize />>
+  </Grid>
+)
 
-export type { ButtonSizes } from './size'
+export default {
+  component: All,
+  title: 'Forms/TextArea',
+}
+
+export const Basic = () => <FieldTextArea label="Text Area" />
+export const Disabled = () => <FieldTextArea label="Text Area" disabled />
+export const Required = () => <FieldTextArea label="Text Area" required />
+export const Error = () => (
+  <FieldTextArea
+    label="Text Area"
+    validationMessage={{ message: 'Error Message', type: 'error' }}
+  />
+)
+
+export const Inline = () => <FieldTextArea label="Text Area" inline />
+
+export const Resize = () => (
+  <Fieldset>
+    <TextArea resize={false} placeholder="no resize" />
+    <TextArea resize="vertical" placeholder="resize vertically" />
+  </Fieldset>
+)

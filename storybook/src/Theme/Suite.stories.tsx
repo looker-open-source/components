@@ -24,13 +24,43 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import {
+  Button,
+  ButtonOutline,
+  ButtonTransparent,
+  SpaceVertical,
+  FieldText,
+  IconButton,
+  FieldSlider,
+  ButtonGroup,
+  ButtonItem,
+} from '@looker/components'
+import React from 'react'
 
-export type { ButtonSizes } from './size'
+export const Suite = () => (
+  <SpaceVertical gap="xsmall">
+    <Button>My neat button</Button>
+    <Button color="neutral">My neat button</Button>
+    <Button color="critical">My neat button</Button>
+    <ButtonOutline>My neat button</ButtonOutline>
+    <ButtonOutline color="neutral">My neat button</ButtonOutline>
+    <ButtonOutline color="critical">My neat button</ButtonOutline>
+    <ButtonTransparent>My neat button</ButtonTransparent>
+    <ButtonTransparent color="neutral">My neat button</ButtonTransparent>
+    <ButtonTransparent color="critical">My neat button</ButtonTransparent>
+
+    <ButtonGroup>
+      <ButtonItem>One</ButtonItem>
+      <ButtonItem>Two</ButtonItem>
+    </ButtonGroup>
+
+    <FieldText label="Hello" />
+    <IconButton icon="Check" label="Check" size="large" />
+    <FieldSlider label="slider" />
+  </SpaceVertical>
+)
+
+export default {
+  component: Suite,
+  title: 'Theme',
+}

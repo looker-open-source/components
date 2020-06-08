@@ -24,13 +24,23 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
 
-export type { ButtonSizes } from './size'
+import { Space, IconButton } from '@looker/components'
+
+export const Basic = () => {
+  return (
+    <Space>
+      <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="xsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="small" label="Favorite" />
+      <IconButton icon="Favorite" size="medium" label="Favorite" />
+      <IconButton icon="Favorite" size="large" label="Favorite" />
+    </Space>
+  )
+}
+
+export default {
+  component: Basic,
+  title: 'Buttons/IconButtons',
+}

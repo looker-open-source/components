@@ -23,14 +23,40 @@
  SOFTWARE.
 
  */
+import React from 'react'
+import { Form, InputSearch } from '@looker/components'
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+export const All = () => (
+  <Form>
+    <Basic />
+    <Placeholder />
+    <Value />
+    <Summary />
+    <DefaultValue />
+    <NoIcon />
+  </Form>
+)
 
-export type { ButtonSizes } from './size'
+export default {
+  component: All,
+  title: 'Forms/Search',
+}
+
+export const Basic = () => <InputSearch />
+export const Placeholder = () => <InputSearch placeholder="Type your search" />
+export const Value = () => (
+  <InputSearch placeholder="Type your search" value="Search term" />
+)
+export const Summary = () => (
+  <InputSearch
+    placeholder="Type your search"
+    value="Search term"
+    summary="5/10 results"
+  />
+)
+export const DefaultValue = () => (
+  <InputSearch placeholder="Type your search" defaultValue="Search term" />
+)
+export const NoIcon = () => (
+  <InputSearch hideSearchIcon placeholder="Type your search" />
+)

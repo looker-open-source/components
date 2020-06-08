@@ -24,13 +24,26 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
+import { Fieldset, InlineInputText } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const All = () => (
+  <Fieldset>
+    <Basic />
+    <Value />
+    <Placeholder />
+    <Simple />
+  </Fieldset>
+)
+
+export default {
+  component: All,
+  title: 'Inline/Text',
+}
+
+export const Basic = () => <InlineInputText />
+export const Value = () => <InlineInputText value="Some text here" />
+export const Placeholder = () => (
+  <InlineInputText placeholder="This is the placeholder" />
+)
+export const Simple = () => <InlineInputText value="Some text here" simple />

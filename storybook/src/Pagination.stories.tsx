@@ -24,13 +24,21 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React, { useState } from 'react'
+import { Paragraph, Pagination } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const Basic = () => {
+  const [currentPage, setCurrentPage] = useState(1)
+
+  return (
+    <>
+      <Paragraph>{`You're currently viewing page ${currentPage}`}</Paragraph>
+      <Pagination current={currentPage} pages={10} onChange={setCurrentPage} />
+    </>
+  )
+}
+
+export default {
+  component: Basic,
+  title: 'Pagination',
+}

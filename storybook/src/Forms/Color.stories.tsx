@@ -24,13 +24,30 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React, { useState } from 'react'
+import { FieldColor, FieldSelect } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export default { title: 'Forms/Color' }
+
+export const ControlledColor = () => {
+  const [color, setColor] = useState('red')
+
+  function handleChange(value: string) {
+    setColor(value)
+  }
+
+  function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
+    setColor(e.currentTarget.value)
+  }
+
+  return (
+    <>
+      <FieldSelect
+        options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
+        value={color}
+        onChange={handleChange}
+      />
+      <FieldColor value={color} onChange={handleColorChange} />
+    </>
+  )
+}

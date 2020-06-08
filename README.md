@@ -34,8 +34,12 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - [@looker/icons](./packages/icons/README.md) — SVG icon library, normally consumed by the `<Icon />` component in our shared component library
 - [@looker/components-test-utils](./packages/test-utils/README.md) — Useful functions for mocking values and testing components.
 - [www](./packages/www/README.md) — The Gatsby site which powers our living style guide
-- [playground](./packages/playground/README.md) — A convenient React environment used for developing Looker UI Components
 - [server](./packages/server/README.md) — A local proxy server used for querying data from production endpoints while in development.
+
+## Applications
+
+- [playground](./playground/README.md) — A convenient React environment used for developing Looker UI Components
+- [storybook](./storybook/README.md) — Storybook is a tool for developing UI components in isolation
 
 ### Common Project Commands
 

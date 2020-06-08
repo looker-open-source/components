@@ -4,7 +4,9 @@
   "author": "Looker",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "playground",
+    "storybook"
   ],
   "homepage": "http://components.looker.com",
   "repository": {
@@ -37,6 +39,7 @@
     "lint:es": "eslint 'packages/**/*.ts{,x}' 'packages/www/**/*.mdx' --cache",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
+    "storybook": "yarn workspace storybook start",
     "test": "yarn jest"
   },
   "devDependencies": {

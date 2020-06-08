@@ -24,13 +24,54 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React, {
+  useState,
+  SyntheticEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react'
+import { Form, FieldSlider, Slider } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const All = () => (
+  <Form>
+    <Basic />
+    <Disabled />
+    <Steps />
+    <Controlled />
+  </Form>
+)
+
+export default {
+  component: All,
+  title: 'Forms/Slider',
+}
+
+const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
+  return (event: SyntheticEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement
+    cb(parseInt(target.value, 10))
+  }
+}
+
+export const Basic = () => <Slider min={0} max={5} />
+export const Disabled = () => <Slider min={0} max={5} value={3} disabled />
+export const Steps = () => (
+  <FieldSlider label="Step" min={100} max={10000} step={100} />
+)
+
+export const Controlled = () => {
+  const [value, setValue] = useState(8)
+  const onChange = handleEvent(setValue)
+
+  return (
+    <FieldSlider
+      label="Controlled"
+      description="Min: 0, Max: 11"
+      min={0}
+      max={11}
+      value={value}
+      onChange={onChange}
+      aria-labelledby="test-id"
+    />
+  )
+}

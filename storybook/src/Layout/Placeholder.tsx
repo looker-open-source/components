@@ -24,13 +24,23 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import { Box, BoxProps } from '@looker/components'
+import React, { FC } from 'react'
 
-export type { ButtonSizes } from './size'
+export const Placeholder: FC<BoxProps> = (props) => (
+  <Box
+    color="white"
+    bg="key"
+    justifyContent="center"
+    alignItems="center"
+    height="100%"
+    width="100%"
+    display="flex"
+    minHeight="3rem"
+    {...props}
+  />
+)
+
+export default {
+  title: 'Layout',
+}

@@ -24,13 +24,30 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
+import { Fieldset, InlineTextArea } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const All = () => (
+  <Fieldset>
+    <Basic />
+    <Value />
+    <Placeholder />
+    <Simple />
+  </Fieldset>
+)
+
+export default {
+  component: All,
+  title: 'Inline/TextArea',
+}
+
+const exampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`
+
+export const Basic = () => <InlineTextArea />
+export const Value = () => <InlineTextArea value={exampleText} />
+export const Placeholder = () => (
+  <InlineTextArea placeholder="This is the placeholder" />
+)
+export const Simple = () => (
+  <InlineTextArea value="Some text here" underlineOnlyOnHover />
+)

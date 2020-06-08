@@ -24,13 +24,23 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
+import { render } from 'react-dom'
+import { ComponentsProvider } from '@looker/components'
+import { GetMe } from './data/GetMe'
 
-export type { ButtonSizes } from './size'
+const App = () => {
+  return (
+    <ComponentsProvider>
+      <GetMe />
+    </ComponentsProvider>
+  )
+}
+
+/*
+  This is the binding site for the playground. If you want to edit the
+  primary application, do your work in App.tsx instead.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  render(<App />, document.getElementById('container'))
+})

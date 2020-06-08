@@ -23,14 +23,37 @@
  SOFTWARE.
 
  */
+import React from 'react'
+import { Fieldset, FieldToggleSwitch } from '@looker/components'
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+export const All = () => (
+  <Fieldset>
+    <Basic />
+    <Checked />
+    <Disabled />
+    <Required />
+    <Error />
+  </Fieldset>
+)
 
-export type { ButtonSizes } from './size'
+export default {
+  component: All,
+  title: 'Forms/ToggleSwitch',
+}
+
+export const Basic = () => <FieldToggleSwitch label="Example Label" />
+export const Checked = () => (
+  <FieldToggleSwitch defaultChecked label="Example Label" />
+)
+export const Disabled = () => (
+  <FieldToggleSwitch label="Example Label" disabled />
+)
+export const Required = () => (
+  <FieldToggleSwitch label="Example Label" required />
+)
+export const Error = () => (
+  <FieldToggleSwitch
+    label="Example Label"
+    validationMessage={{ message: 'Error Message', type: 'error' }}
+  />
+)

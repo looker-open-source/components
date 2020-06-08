@@ -24,13 +24,24 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+module.exports = (api) => {
+  api.cache(true)
 
-export type { ButtonSizes } from './size'
+  return {
+    extends: '../babel.config.js',
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          corejs: 3,
+          // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
+          targets: {
+            browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
+            node: 'current',
+          },
+          useBuiltIns: 'entry',
+        },
+      ],
+    ],
+  }
+}

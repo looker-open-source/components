@@ -24,13 +24,51 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import { Button, Space, SpaceVertical } from '@looker/components'
+import React from 'react'
 
-export type { ButtonSizes } from './size'
+export const All = () => (
+  <SpaceVertical>
+    <Basic />
+    <Reverse />
+    <BasicSpaceVertical />
+    <ReverseSpaceVertical />
+  </SpaceVertical>
+)
+
+export default {
+  component: All,
+  title: 'Layout/Space',
+}
+
+export const Basic = () => (
+  <Space>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
+)
+
+export const Reverse = () => (
+  <Space reverse>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
+)
+
+export const BasicSpaceVertical = () => (
+  <SpaceVertical>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+)
+
+export const ReverseSpaceVertical = () => (
+  <SpaceVertical reverse>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
+)

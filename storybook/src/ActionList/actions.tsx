@@ -24,13 +24,22 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React from 'react'
+import { ActionListItemAction } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const Actions = () => (
+  <>
+    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
+      Go to LookML
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
+      PDT Details
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
+      Recent Build Events
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
+      Recent Trigger Events
+    </ActionListItemAction>
+  </>
+)

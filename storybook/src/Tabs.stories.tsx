@@ -24,13 +24,37 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import React, { FC } from 'react'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
 
-export type { ButtonSizes } from './size'
+export const Basic: FC = () => (
+  <Tabs>
+    <TabList>
+      <Tab>Light Blue</Tab>
+      <Tab>Coral</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'lightblue',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'coral',
+            height: '200px',
+          }}
+        />
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+)
+
+export default {
+  component: Basic,
+  title: 'Tabs',
+}

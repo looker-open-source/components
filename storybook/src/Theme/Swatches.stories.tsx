@@ -24,13 +24,29 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import omit from 'lodash/omit'
 
-export type { ButtonSizes } from './size'
+export const Swatches = () => {
+  const theme = useContext<Theme>(ThemeContext)
+
+  const colors = omit(theme.colors, 'palette')
+
+  const swatches = Object.entries(colors).map(([name, color]) => (
+    <Card key={name} width="100%">
+      <Swatch color={color} width="100%" />
+      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
+        {name}
+      </Heading>
+    </Card>
+  ))
+
+  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+}
+
+export default {
+  component: Swatches,
+  title: 'Theme',
+}

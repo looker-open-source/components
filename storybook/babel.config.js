@@ -24,13 +24,10 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
+module.exports = (api) => {
+  api.cache(true)
 
-export type { ButtonSizes } from './size'
+  return {
+    extends: '../babel.config.js',
+  }
+}
