@@ -92,8 +92,8 @@ const RadioGroupLayout = forwardRef(
     return (
       <Fieldset
         data-testid="radio-list"
-        flexWrap={inline ? 'wrap' : undefined}
         inline={inline}
+        flexWrap={inline ? 'wrap' : undefined}
         gap={inline ? undefined : 'none'}
         ref={ref}
         {...rest}
