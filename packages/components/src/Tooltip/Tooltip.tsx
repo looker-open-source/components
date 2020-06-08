@@ -110,6 +110,7 @@ export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
 type TooltipRenderProp = (tooltipProps: {
   'aria-describedby': string
+  className?: string
   onBlur: () => void
   onFocus: () => void
   onMouseOut: (event: React.MouseEvent<Element, MouseEvent>) => void
@@ -254,15 +255,24 @@ function isRenderProp(
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   const tooltipProps = useTooltip(props)
 
-  const tooltipPropsLabeled = {
-    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef', 'isOpen']),
-    className: tooltipProps.isOpen ? 'hover' : '',
-  }
-
   let target = children
 
+  const tooltipPropsLabeled = {
+    ...omit(tooltipProps, [
+      'tooltip',
+      'popperInstanceRef',
+      'isOpen',
+      'className',
+    ]),
+  }
+
   if (isValidElement(children)) {
-    target = cloneElement(children, { ...tooltipPropsLabeled })
+    target = cloneElement(children, {
+      ...tooltipPropsLabeled,
+      className: tooltipProps.isOpen
+        ? `${children.props.className} hover`
+        : children.props.className,
+    })
   } else if (isRenderProp(children)) {
     target = children(tooltipPropsLabeled)
   } else {
