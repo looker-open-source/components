@@ -26,12 +26,12 @@
 
 import {
   color,
-  CompatibleHTMLProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
@@ -47,7 +47,7 @@ export type IconSize =
   | SizeLarge
 
 export interface IconProps
-  extends Omit<HTMLDivElement, 'onClick'>,
+  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SimpleLayoutProps {
   color?: string
   name: IconNames
