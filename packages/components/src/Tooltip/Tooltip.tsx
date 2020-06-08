@@ -269,7 +269,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
         : children.props.className,
     })
   } else if (isRenderProp(children)) {
-    target = children({ ...tooltipPropsLabeled, className: 'hover' })
+    target = children(tooltipPropsLabeled)
   } else {
     // eslint-disable-next-line no-console
     console.warn(
