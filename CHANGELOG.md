@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Jest no longer requires artifact build before being run
 
+### Fixed
+
+- `Tooltip` appends `hover` class if tooltip is open rather and doesn't replace given `className` prop value
+
 ## [0.8.4]
 
 ### Added
