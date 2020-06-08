@@ -33,4 +33,4 @@ export * from './ButtonToggle'
 export * from './ButtonTransparent'
 export * from './IconButton'
 
-export { ButtonSizes } from './size'
+export type { ButtonSizes } from './size'
