@@ -258,12 +258,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   let target = children
 
   const tooltipPropsLabeled = {
-    ...omit(tooltipProps, [
-      'tooltip',
-      'popperInstanceRef',
-      'isOpen',
-      'className',
-    ]),
+    ...omit(tooltipProps, ['tooltip', 'popperInstanceRef', 'isOpen']),
   }
 
   if (isValidElement(children)) {
@@ -274,7 +269,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
         : children.props.className,
     })
   } else if (isRenderProp(children)) {
-    target = children(tooltipPropsLabeled)
+    target = children({ ...tooltipPropsLabeled, className: 'hover' })
   } else {
     // eslint-disable-next-line no-console
     console.warn(
