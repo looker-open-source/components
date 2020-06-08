@@ -5,21 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.8.5]
 
 ### Added
 
 - `CheckboxGroup` and `RadioGroup` now support wrapping when `inline` is used, and they use the same height as other inputs
+- Storybook replaces Playground as preferred development location for components `yarn storybook`
 
 ### Changed
 
 - `Icon` now supports "t-shirt" sizing. (i.e.: `size="small"`)
-
 - Jest no longer requires artifact build before being run
 
 ### Fixed
 
 - `Tooltip` appends `hover` class if tooltip is open rather and doesn't replace given `className` prop value
+- Fixed documentation header
+- Fixed a bug in Slider documentation that cause Gatsby to fall over on documentation deployment
 
 ## [0.8.4]
 

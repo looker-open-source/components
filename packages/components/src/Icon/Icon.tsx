@@ -47,8 +47,8 @@ export type IconSize =
   | SizeLarge
 
 export interface IconProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    Omit<SimpleLayoutProps, 'height' | 'width'> {
+  extends Omit<HTMLDivElement, 'onClick'>,
+    SimpleLayoutProps {
   color?: string
   name: IconNames
 }
@@ -69,12 +69,16 @@ const IconFactory = forwardRef(
 
 IconFactory.displayName = 'IconFactory'
 
-export const Icon = styled(IconFactory)`
+export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
+  size: !height && !width ? size || 'medium' : undefined,
+}))`
   ${simpleLayoutCSS}
   ${color}
 
   align-items: center;
   display: inline-flex;
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
 `
 
-Icon.defaultProps = { size: 'medium' }
+// Icon.defaultProps = { size: 'medium' }
