@@ -29,6 +29,10 @@ import React from 'react'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from './Icon'
 
+test('Icon default', () => {
+  assertSnapshot(<Icon name="Plus" />)
+})
+
 test('Icon with styled system size', () => {
   assertSnapshot(<Icon name="Plus" size="large" />)
 })
