@@ -547,8 +547,7 @@ const InputTimeInternal = forwardRef(
 const InputTimeLayout = styled.div`
   display: grid;
   grid-gap: 0.15rem;
-  grid-template-columns: repeat(6, min-content);
-  grid-template-areas: 'hour colon minute 12 . warning';
+  grid-template-columns: auto auto auto auto 1fr;
   align-items: center;
 `
 const IconWarning = styled(Icon)`
