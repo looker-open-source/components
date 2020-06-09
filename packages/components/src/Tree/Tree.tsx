@@ -90,10 +90,14 @@ const TreeStyle = styled.div<TreeStyleProps>`
       `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth})`}
   }
 
-  ${AccordionContent} {
-    background: ${({ border }) =>
-      border &&
-      `linear-gradient(90deg, transparent 11px, red 1px, transparent 12px)`};
+  & > ${AccordionContent} {
+    background: ${({ border, depth, theme }) => {
+      const spacer = `${theme.space.xxsmall} + (${theme.space.small} / 2) + (${depth} * ${theme.space.large})`
+      return (
+        border &&
+        `linear-gradient(90deg, transparent calc(${spacer} - 5px), red, transparent calc(${spacer} + 5px))`
+      )
+    }};
   }
 
   ${TreeGroupLabel} {
