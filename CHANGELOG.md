@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `InputTime` now renders warning icon when validationType="error" is passed
 - `Icon` properly passes through DOM elements
 
 ## [0.8.5]

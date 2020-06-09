@@ -26,13 +26,18 @@
 
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { GetMe } from './data/GetMe'
-
+import { ComponentsProvider, FieldTime, InputTime } from '@looker/components'
 const App = () => {
   return (
     <ComponentsProvider>
-      <GetMe />
+      <InputTime validationType="error" />
+      <FieldTime
+        defaultValue="14:34"
+        description="this is the description"
+        detail="detail"
+        label="Label"
+        validationMessage={{ message: 'validation Message', type: 'error' }}
+      />
     </ComponentsProvider>
   )
 }
