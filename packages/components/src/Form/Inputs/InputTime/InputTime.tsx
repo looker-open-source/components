@@ -56,6 +56,7 @@ import {
   inputTextDisabled,
   inputTextValidation,
 } from '../InputText'
+import { Icon } from '../../../Icon'
 import {
   formatTimeString,
   TimeFormats,
@@ -267,18 +268,19 @@ export const convert12To24HrString = (value: string) => {
 const InputTimeInternal = forwardRef(
   (
     {
-      format = '12h',
-      onChange,
-      defaultValue,
-      value,
       className,
+      defaultValue,
       disabled,
-      readOnly,
+      format = '12h',
       id,
-      onFocus,
+      onChange,
+      readOnly,
       onBlur,
-      required,
+      onFocus,
       onValidationFail,
+      required,
+      validationType,
+      value,
     }: InputTimeProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -472,6 +474,7 @@ const InputTimeInternal = forwardRef(
         ref={ref}
         onFocus={onFocus}
         onBlur={onBlur}
+        aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
         <InputTimeWrapper hasInputValues={hasInputValues}>
           <InputTimeLayout>
@@ -523,6 +526,14 @@ const InputTimeInternal = forwardRef(
             ) : (
               <span />
             )}
+            {validationType && (
+              <WarningIcon
+                name="CircleInfo"
+                color="critical"
+                grid-area="warning"
+                size={20}
+              />
+            )}
           </InputTimeLayout>
         </InputTimeWrapper>
       </div>
@@ -530,11 +541,17 @@ const InputTimeInternal = forwardRef(
   }
 )
 
+const WarningIcon = styled(Icon)``
+
 const InputTimeLayout = styled.div`
   display: grid;
   grid-gap: 0.15rem;
-  grid-template-columns: repeat(4, min-content);
+  grid-template-columns: auto auto auto auto 1fr;
   align-items: center;
+
+  ${WarningIcon} {
+    justify-self: end;
+  }
 `
 
 export const InputTime = styled(InputTimeInternal)`
