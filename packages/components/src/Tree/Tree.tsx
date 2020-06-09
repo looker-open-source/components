@@ -118,7 +118,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 `
 
-export const Tree: FC<TreeProps> = ({
+const TreeLayout: FC<TreeProps> = ({
   border,
   children,
   detail,
@@ -151,3 +151,5 @@ export const Tree: FC<TreeProps> = ({
     </TreeContext.Provider>
   )
 }
+
+export const Tree = styled(TreeLayout)``
