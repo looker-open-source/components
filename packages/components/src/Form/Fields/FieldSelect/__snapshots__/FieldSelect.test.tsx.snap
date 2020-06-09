@@ -281,7 +281,6 @@ exports[`A FieldSelect 1`] = `
         >
           <div
             className="c12"
-            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -650,7 +649,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         >
           <div
             className="c12"
-            mr="xxsmall"
           >
             <svg
               fill="currentColor"
@@ -672,7 +670,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           />
           <div
             className="c14"
-            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -1012,7 +1009,6 @@ exports[`A required FieldSelect 1`] = `
         >
           <div
             className="c14"
-            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -1321,7 +1317,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
         >
           <div
             className="c12"
-            mr="xsmall"
           >
             <svg
               fill="currentColor"
