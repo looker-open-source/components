@@ -83,15 +83,21 @@ interface TreeStyleProps {
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
-  ${AccordionDisclosure} {
+  & > ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth})`}
   }
 
+  ${AccordionContent} {
+    background: ${({ border }) =>
+      border &&
+      `linear-gradient(90deg, transparent 11px, red 1px, transparent 12px)`};
+  }
+
   ${TreeGroupLabel} {
-    padding-left: ${({ depth = 0, theme }) =>
+    padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
   }
 
@@ -100,12 +106,14 @@ const TreeStyle = styled.div<TreeStyleProps>`
     outline: none;
   }
 
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem},
-  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem} {
+  & > ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem},
+  & > ${/* sc-selector */ AccordionContent} > ${
+  /* sc-selector */ TreeGroup
+} > ${/* sc-selector */ TreeItem} {
     border: 1px solid transparent;
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
-    padding-left: ${({ depth = 0, theme }) =>
+    padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
   }
 
@@ -126,15 +134,15 @@ const TreeLayout: FC<TreeProps> = ({
   fontWeight,
   icon,
   label,
-  ...accordionControlProps
+  ...restProps
 }) => {
   const { depth } = useContext(TreeContext)
   const nextDepth = depth + 1
 
   return (
     <TreeContext.Provider value={{ depth: nextDepth }}>
-      <TreeStyle depth={depth} border={border}>
-        <Accordion {...indicatorProps} {...accordionControlProps}>
+      <Accordion {...indicatorProps} {...restProps}>
+        <TreeStyle depth={depth} border={border}>
           <AccordionDisclosure fontWeight={fontWeight}>
             <TreeItem
               detail={detail}
@@ -146,8 +154,8 @@ const TreeLayout: FC<TreeProps> = ({
             </TreeItem>
           </AccordionDisclosure>
           <AccordionContent>{children}</AccordionContent>
-        </Accordion>
-      </TreeStyle>
+        </TreeStyle>
+      </Accordion>
     </TreeContext.Provider>
   )
 }
