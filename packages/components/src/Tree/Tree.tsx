@@ -24,8 +24,8 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { FontWeights, SpacingSizes } from '@looker/design-tokens'
+import styled from 'styled-components'
+import { FontWeights } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
 import {
   Accordion,
@@ -36,7 +36,7 @@ import {
 } from '../Accordion'
 import { IconNames } from '../Icon'
 import { TreeItem } from './TreeItem'
-import { TreeGroup } from './TreeGroup'
+import { TreeGroup, TreeGroupLabel } from './TreeGroup'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   /**
@@ -44,6 +44,11 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    * @default false
    */
   border?: boolean
+  /**
+   * Determines how much left padding this Tree will have
+   * @default 0
+   */
+  depth?: number
   /**
    * Supplementary element that appears right of the Tree's label
    */
@@ -106,6 +111,13 @@ export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
+    padding-left: ${({ depth, theme }) =>
+      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth})`}
+  }
+
+  ${TreeGroupLabel} {
+    padding-left: ${({ depth = 0, theme }) =>
+      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
   }
 
   ${TreeItem} {
@@ -117,12 +129,16 @@ export const Tree = styled(TreeLayout)`
     border: 1px solid transparent;
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
+    padding-left: ${({ depth = 0, theme }) =>
+      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
   }
 
   ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem} {
     border: 1px solid transparent;
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
+    padding-left: ${({ depth = 0, theme }) =>
+      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
   }
 
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
@@ -133,3 +149,7 @@ export const Tree = styled(TreeLayout)`
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
+
+Tree.defaultProps = {
+  depth: 0,
+}
