@@ -10,11 +10,11 @@ import { IconList } from './demos'
 `<Icon />` component uses the property `name` to display the correct icon.
 
 ```jsx
-<Flex justifyContent="space-around">
+<Space around>
   <Icon name="Check" />
-  <Icon name="Favorite" />
-  <Icon name="GearOutline" />
-</Flex>
+  <Icon name="Favorite" size="large" />
+  <Icon name="GearOutline" size="small" />
+</Space>
 ```
 
 ## Icon Attributes
@@ -24,7 +24,7 @@ import { IconList } from './demos'
 `color` by default, icons inherit the text color of the component they are embedded within. But it can also have it specify as a prop.
 
 ```jsx
-<Flex justifyContent="space-around">
+<Space around>
   <Icon name="Trash" color="inform" />
   <Box
     color="critical"
@@ -38,7 +38,7 @@ import { IconList } from './demos'
     The text in this Box is red and so is the icon.
     <Icon name="Trash" size="large" mx="auto" />
   </Box>
-</Flex>
+</Space>
 ```
 
 ### size
@@ -46,13 +46,13 @@ import { IconList } from './demos'
 `size` can be specified by using the size prop. By default the size will be medium.
 
 ```jsx
-<Flex justifyContent="space-around" alignItems="flex-end">
+<Space around>
   <Icon name="Beaker" color="inform" size="xxsmall" />
   <Icon name="Beaker" color="inform" size="xsmall" />
   <Icon name="Beaker" color="inform" size="small" />
   <Icon name="Beaker" color="inform" size="medium" />
   <Icon name="Beaker" color="inform" size="large" />
-</Flex>
+</Space>
 ```
 
 ## Icon Library

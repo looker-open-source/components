@@ -37,7 +37,7 @@ interface HeaderProps {
 
 export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
   <a href="/" className={className}>
-    <Flex alignItems="flex-end">
+    <Flex alignItems="center">
       <Icon
         name="LookerLogo"
         alt="Looker"
@@ -61,14 +61,11 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
 )
 
 const Header = styled(HeaderJsx)`
-  display: flex;
   align-items: center;
-  height: ${({ height }) => height};
-
-  padding: 0 ${({ theme }) => theme.space.large}
-    ${({ theme }) => theme.space.xxsmall};
-
+  display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
+  height: ${({ height }) => height};
+  padding: 0 ${({ theme: { space } }) => `${space.large} ${space.xxsmall}`};
 `
 
 const DividerVertical = styled.div<SpaceProps>`
