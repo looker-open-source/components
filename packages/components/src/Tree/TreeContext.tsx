@@ -24,7 +24,10 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
-export * from './TreeGroup'
-export * from './TreeContext'
+import { createContext } from 'react'
+
+export interface TreeContextProps {
+  depth: number
+}
+
+export const TreeContext = createContext<TreeContextProps>({ depth: 0 })

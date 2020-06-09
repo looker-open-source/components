@@ -49,7 +49,6 @@ const exploreExample = (
   <Box>
     Explore Example
     <Tree
-      depth={0}
       defaultOpen
       detail={addButton}
       detailStopPropagation
@@ -59,7 +58,7 @@ const exploreExample = (
         <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
           Cost
         </TreeItem>
-        <Tree depth={1} label="Created">
+        <Tree label="Created">
           <TreeItem
             icon="Calendar"
             onClick={() => alert('Clicked on Created Date!')}
@@ -119,46 +118,46 @@ const exploreExample = (
 const lookmlIdeExample = (
   <Box color="text3">
     LookML IDE Example
-    <Tree depth={0} label="thelook" icon="ExploreOutline">
-      <Tree depth={1} label="Orders" icon="VisibilityOutline">
-        <Tree depth={2} label="Orders" icon="Table">
+    <Tree label="thelook" icon="ExploreOutline">
+      <Tree label="Orders" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Status</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
         </Tree>
-        <Tree depth={2} label="Products" icon="Table">
+        <Tree label="Products" icon="Table">
           <TreeItem icon="IdeDimension">Brand</TreeItem>
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Department</TreeItem>
           <TreeItem icon="IdeDimension">Sku</TreeItem>
         </Tree>
-        <Tree depth={2} label="Users" icon="Table">
+        <Tree label="Users" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Name</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
         </Tree>
       </Tree>
-      <Tree depth={1} label="Users" icon="VisibilityOutline">
-        <Tree depth={2} label="Orders" icon="Table">
+      <Tree label="Users" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Status</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
         </Tree>
-        <Tree depth={1} label="Users" icon="Table">
+        <Tree label="Users" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Name</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
         </Tree>
       </Tree>
     </Tree>
-    <Tree depth={0} label="thelook2" icon="ExploreOutline">
-      <Tree depth={1} label="Users" icon="VisibilityOutline">
-        <Tree depth={2} label="Orders" icon="Table">
+    <Tree label="thelook2" icon="ExploreOutline">
+      <Tree label="Users" icon="VisibilityOutline">
+        <Tree label="Orders" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Status</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
         </Tree>
-        <Tree depth={2} label="Users" icon="Table">
+        <Tree label="Users" icon="Table">
           <TreeItem icon="IdeDimension">ID</TreeItem>
           <TreeItem icon="IdeDimension">Name</TreeItem>
           <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
@@ -171,16 +170,11 @@ const lookmlIdeExample = (
 const filterPickerExample = (
   <Box>
     Filter Picker Example
-    <Tree
-      depth={0}
-      border
-      label="Orders"
-      detail={<Box color="text4">thelook</Box>}
-    >
-      <Tree depth={1} label="Orders">
+    <Tree border label="Orders" detail={<Box color="text4">thelook</Box>}>
+      <Tree label="Orders">
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>
-        <Tree depth={1} label="Created">
+        <Tree label="Created">
           <TreeItem>Created Date</TreeItem>
           <TreeItem>Created Month</TreeItem>
           <TreeItem>Created Year</TreeItem>

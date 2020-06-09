@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { FontWeights } from '@looker/design-tokens'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -37,6 +37,7 @@ import {
 import { IconNames } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeGroup, TreeGroupLabel } from './TreeGroup'
+import { TreeContext } from './TreeContext'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
   /**
@@ -44,11 +45,6 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    * @default false
    */
   border?: boolean
-  /**
-   * Determines how much left padding this Tree will have
-   * @default 0
-   */
-  depth?: number
   /**
    * Supplementary element that appears right of the Tree's label
    */
@@ -81,33 +77,12 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
-const TreeLayout: FC<TreeProps> = ({
-  children,
-  detail,
-  detailStopPropagation,
-  fontWeight,
-  icon,
-  label,
-  ...restProps
-}) => {
-  return (
-    <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontWeight={fontWeight}>
-        <TreeItem
-          detail={detail}
-          detailStopPropagation={detailStopPropagation}
-          gapSize="xsmall"
-          icon={icon}
-        >
-          {label}
-        </TreeItem>
-      </AccordionDisclosure>
-      <AccordionContent>{children}</AccordionContent>
-    </Accordion>
-  )
+interface TreeStyleProps {
+  border?: boolean
+  depth: number
 }
 
-export const Tree = styled(TreeLayout)`
+const TreeStyle = styled.div<TreeStyleProps>`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
@@ -143,6 +118,36 @@ export const Tree = styled(TreeLayout)`
   }
 `
 
-Tree.defaultProps = {
-  depth: 0,
+export const Tree: FC<TreeProps> = ({
+  border,
+  children,
+  detail,
+  detailStopPropagation,
+  fontWeight,
+  icon,
+  label,
+  ...accordionControlProps
+}) => {
+  const { depth } = useContext(TreeContext)
+  const nextDepth = depth + 1
+
+  return (
+    <TreeContext.Provider value={{ depth: nextDepth }}>
+      <TreeStyle depth={depth} border={border}>
+        <Accordion {...indicatorProps} {...accordionControlProps}>
+          <AccordionDisclosure fontWeight={fontWeight}>
+            <TreeItem
+              detail={detail}
+              detailStopPropagation={detailStopPropagation}
+              gapSize="xsmall"
+              icon={icon}
+            >
+              {label}
+            </TreeItem>
+          </AccordionDisclosure>
+          <AccordionContent>{children}</AccordionContent>
+        </Accordion>
+      </TreeStyle>
+    </TreeContext.Provider>
+  )
 }
