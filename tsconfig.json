@@ -8,6 +8,10 @@
       "@looker/*": ["packages/*/src"]
     }
   },
-  "include": ["packages/*/src"],
-  "exclude": ["packages/www/src"]
+  "include": [
+    "packages/*/src",
+    "playground/*/src",
+    "server/*/src",
+    "storybook/*/src"
+  ]
 }

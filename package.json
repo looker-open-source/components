@@ -37,7 +37,7 @@
     "fix": "yarn lint:es --fix",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}' 'packages/www/**/*.mdx' --cache",
+    "lint:es": "eslint 'packages/**/*.ts{,x}' 'playground/**/*.ts{,x}'  'server/**/*.ts{,x}'  'storybook/**/*.ts{,x}' 'www/**/*.ts{,x}' 'www/**/*.mdx' --cache",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
     "storybook": "yarn workspace storybook start",
@@ -147,8 +147,8 @@
       },
       {
         "files": [
-          "packages/www/**/*.ts",
-          "packages/www/**/*.tsx"
+          "www/**/*.ts",
+          "www/**/*.tsx"
         ],
         "rules": {}
       }
