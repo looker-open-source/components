@@ -33,12 +33,15 @@ import { RadioGroup, RadioGroupProps } from '../../Inputs/OptionsGroup'
 
 export interface FieldRadioGroupProps
   extends RadioGroupProps,
-    Omit<FieldProps, 'detail'> {}
+    Omit<FieldProps, 'detail'> {
+  inputsInline?: boolean
+}
 
 const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
   id: propsID,
   options,
   name,
+  inputsInline,
   ...props
 }) => {
   const validationMessage = useFormContext(props)
@@ -55,7 +58,7 @@ const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
         aria-describedby={`${id}-describedby`}
         aria-labelledby={`${id}-labelledby`}
         id={id}
-        inline={props.inline}
+        inline={props.inline || inputsInline}
         name={name || id}
         options={options}
       />

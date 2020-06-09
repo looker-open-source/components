@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from './Icon'
 
 test('Icon with styled system size', () => {
@@ -39,4 +39,11 @@ test('Icon with styled system size', () => {
 
 test('Icon with styled system size', () => {
   assertSnapshot(<Icon name="Plus" size="1rem" />)
+})
+
+test('Icon supports DOM attributes', () => {
+  const { findByLabelText } = renderWithTheme(
+    <Icon name="Plus" aria-label="Add" />
+  )
+  expect(findByLabelText('Add')).toBeTruthy()
 })

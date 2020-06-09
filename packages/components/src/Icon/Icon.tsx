@@ -27,6 +27,7 @@
 import {
   color,
   CompatibleHTMLProps,
+  omitStyledProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
@@ -37,7 +38,6 @@ import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import omit from 'lodash/omit'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type IconSize =
@@ -49,7 +49,7 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    Omit<SimpleLayoutProps, 'height' | 'width'> {
+    SimpleLayoutProps {
   artwork?: ReactNode
   color?: string
   name?: IconNames
@@ -73,7 +73,7 @@ const IconFactory = forwardRef(
       <Glyph width="100%" height="100%" fill="currentColor" />
     )
     return (
-      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+      <div ref={ref} {...omitStyledProps(props)}>
         {value}
       </div>
     )
@@ -82,12 +82,14 @@ const IconFactory = forwardRef(
 
 IconFactory.displayName = 'IconFactory'
 
-export const Icon = styled(IconFactory)`
+export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
+  size: !height && !width ? size || 'medium' : undefined,
+}))`
   ${simpleLayoutCSS}
   ${color}
 
   align-items: center;
   display: inline-flex;
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
 `
-
-Icon.defaultProps = { size: 'medium' }
