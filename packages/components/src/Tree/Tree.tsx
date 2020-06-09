@@ -125,14 +125,7 @@ export const Tree = styled(TreeLayout)`
     outline: none;
   }
 
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem} {
-    border: 1px solid transparent;
-    height: 25px;
-    padding: ${({ theme }) => theme.space.xxsmall};
-    padding-left: ${({ depth = 0, theme }) =>
-      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
-  }
-
+  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem},
   ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem} {
     border: 1px solid transparent;
     height: 25px;
