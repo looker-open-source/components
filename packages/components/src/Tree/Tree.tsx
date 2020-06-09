@@ -102,21 +102,6 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-const centeredVerticalBorder = css`
-  ${({ theme: { space, colors } }) => css`
-    border-left: 1px solid ${colors.ui2};
-    /* Margin is used to center the optional border line */
-    margin-left: calc(
-      ${space[indicatorProps.indicatorSize as SpacingSizes]} / 2 +
-        ${space.xxsmall}
-    );
-    padding-left: calc(
-      (${space[indicatorProps.indicatorSize as SpacingSizes]} / 2) +
-        ${space[indicatorProps.indicatorGap as SpacingSizes]} - ${space.xxsmall}
-    );
-  `}
-`
-
 export const Tree = styled(TreeLayout)`
   ${AccordionDisclosure} {
     height: 25px;
