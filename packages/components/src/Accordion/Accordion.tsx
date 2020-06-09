@@ -158,14 +158,6 @@ const AccordionLayout: FC<AccordionProps> = ({
 
 export const Accordion = styled(AccordionLayout)`
   ${simpleLayoutCSS}
-
-  ${AccordionContent} {
-    ${({ indicatorSize, indicatorGap, indicatorPosition, theme: { space } }) =>
-      `padding-${indicatorPosition}: calc(${
-        space[indicatorSize as SpacingSizes]
-      }
-  + ${space[indicatorGap as SpacingSizes]})`};
-  }
 `
 
 Accordion.defaultProps = {

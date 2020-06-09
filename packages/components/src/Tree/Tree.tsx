@@ -123,14 +123,6 @@ export const Tree = styled(TreeLayout)`
     padding: ${({ theme }) => theme.space.xxsmall};
   }
 
-  ${AccordionContent} {
-    ${({ border }) => border && centeredVerticalBorder}
-    padding-left: ${({ theme: { space } }) =>
-      `calc(${space[indicatorProps.indicatorSize as SpacingSizes]} + ${
-        space[indicatorProps.indicatorGap as SpacingSizes]
-      })`}
-  }
-
   ${TreeItem} {
     font-size: ${({ theme }) => theme.space.small};
     outline: none;
