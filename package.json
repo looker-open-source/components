@@ -5,8 +5,9 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "playground",
-    "storybook"
+    "server",
+    "storybook",
+    "www"
   ],
   "homepage": "http://components.looker.com",
   "repository": {
