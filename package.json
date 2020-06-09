@@ -5,6 +5,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
+    "playground",
     "server",
     "storybook",
     "www"
