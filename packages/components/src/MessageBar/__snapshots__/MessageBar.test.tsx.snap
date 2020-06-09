@@ -505,6 +505,7 @@ exports[`MessageBar can be dismissed 1`] = `
       Dismiss Inform
     </div>
     <div
+      aria-hidden={true}
       className="c7"
     >
       <svg

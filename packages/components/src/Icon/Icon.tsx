@@ -26,12 +26,13 @@
 
 import {
   color,
+  CompatibleHTMLProps,
+  omitStyledProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
@@ -56,11 +57,11 @@ export interface IconProps
 export type { IconNames }
 
 const IconFactory = forwardRef(
-  ({ className, name }: IconProps, ref: Ref<HTMLDivElement>) => {
+  ({ className, name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
     const Glyph = Glyphs[name]
 
     return (
-      <div className={className} ref={ref}>
+      <div className={className} ref={ref} {...omitStyledProps(props)}>
         <Glyph width="100%" height="100%" fill="currentColor" />
       </div>
     )
