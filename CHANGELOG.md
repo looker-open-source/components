@@ -61,6 +61,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - No longer supports `labelWidth` property (unused feature)
   - No longer supports `labelFontSize` and `labelFontWeight` properties (all your fonts belong to us)
 
+### Added
+
+- `FieldCollapseLabel` component
+
 ## [0.8.6]
 
 ### Fixed
