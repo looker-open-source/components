@@ -101,7 +101,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   ${TreeItem} {
-    font-size: ${({ theme }) => theme.space.small};
+    font-size: ${({ theme }) => theme.fontSizes.xxsmall};
     outline: none;
   }
 
