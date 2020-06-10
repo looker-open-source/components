@@ -99,5 +99,3 @@ export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
     width: 100%;
   }
 `
-
-// Icon.defaultProps = { size: 'medium' }
