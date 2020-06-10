@@ -53,7 +53,7 @@ export const AccordionContent = styled(AccordionContentLayout)`
     const spacer = `${borderSize} + ${itemPadding} + ${depthPadding} + (${indicatorSize} / 2)`
     return (
       border &&
-      `linear-gradient(90deg, transparent calc(${spacer} - 0.5px), ${theme.colors.ui3}, transparent calc(${spacer} + 0.5px))`
+      `linear-gradient(90deg, transparent calc(${spacer} - 1px), ${theme.colors.ui3}, transparent calc(${spacer} + 1px))`
     )
   }};
 `
