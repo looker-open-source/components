@@ -23,10 +23,12 @@
  SOFTWARE.
 
  */
-import React, { FC, useCallback } from 'react'
+import React, { forwardRef, useCallback, Ref } from 'react'
+import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
-import { FieldRadio } from '../../Fields'
+import { FieldRadio } from '../../Fields/FieldRadio'
+import { inputHeight } from '../InputText/InputText'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type RadioGroupProps = OptionsGroupProps<string>
@@ -44,48 +46,69 @@ function getCheckedProps(
   return { [key]: valueToUse === optionValue }
 }
 
-export const RadioGroup: FC<RadioGroupProps> = ({
-  disabled,
-  name: propsName,
-  options,
-  defaultValue,
-  value,
-  onChange,
-  ...rest
-}) => {
-  const name = useID(propsName)
-  const isControlled = onChange !== undefined && defaultValue === undefined
-
-  const getChangeHandler = useCallback(
-    (optionValue: string) => {
-      return onChange ? () => onChange(optionValue) : undefined
-    },
-    [onChange]
-  )
-
-  const radios = options.map((option) => {
-    const checkedProps = getCheckedProps(
-      option.value,
-      isControlled,
+const RadioGroupLayout = forwardRef(
+  (
+    {
+      disabled,
+      inline,
+      name: propsName,
+      options,
+      defaultValue,
       value,
-      defaultValue
+      onChange,
+      ...rest
+    }: RadioGroupProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const name = useID(propsName)
+    const isControlled = onChange !== undefined && defaultValue === undefined
+
+    const getChangeHandler = useCallback(
+      (optionValue: string) => {
+        return onChange ? () => onChange(optionValue) : undefined
+      },
+      [onChange]
     )
+
+    const radios = options.map((option) => {
+      const checkedProps = getCheckedProps(
+        option.value,
+        isControlled,
+        value,
+        defaultValue
+      )
+
+      return (
+        <FieldRadio
+          disabled={option.disabled || disabled}
+          key={option.value}
+          label={option.label}
+          name={name}
+          onChange={getChangeHandler(option.value)}
+          {...checkedProps}
+        />
+      )
+    })
 
     return (
-      <FieldRadio
-        disabled={option.disabled || disabled}
-        key={option.value}
-        label={option.label}
-        name={name}
-        onChange={getChangeHandler(option.value)}
-        {...checkedProps}
-      />
+      <Fieldset
+        data-testid="radio-list"
+        inline={inline}
+        flexWrap={inline ? 'wrap' : undefined}
+        width={inline ? 'auto' : undefined}
+        ref={ref}
+        {...rest}
+      >
+        {radios}
+      </Fieldset>
     )
-  })
+  }
+)
 
-  return (
-    <Fieldset data-testid="radio-list" disabled={disabled} {...rest}>
-      {radios}
-    </Fieldset>
-  )
-}
+RadioGroupLayout.displayName = 'RadioGroupLayout'
+
+export const RadioGroup = styled(RadioGroupLayout)`
+  ${FieldRadio} {
+    ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
+  }
+`

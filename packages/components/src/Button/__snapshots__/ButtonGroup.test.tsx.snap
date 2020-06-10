@@ -92,7 +92,7 @@ exports[`ButtonGroup controlled 1`] = `
 }
 
 <div
-  class="c0 c1"
+  class="wrapping c0 c1"
   role="group"
 >
   <button

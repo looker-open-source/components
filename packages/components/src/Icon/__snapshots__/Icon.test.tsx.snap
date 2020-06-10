@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Icon default 1`] = `
+.c0 {
+  width: 1.5rem;
+  height: 1.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+  className="c0"
+>
+  <svg
+    fill="currentColor"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  >
+    <title>
+      Plus
+    </title>
+    <path
+      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon with styled system size 1`] = `
 .c0 {
   width: 2rem;

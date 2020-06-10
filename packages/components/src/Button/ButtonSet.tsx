@@ -108,7 +108,7 @@ export const ButtonSetLayout = forwardRef(
         const rowHeight = firstItem
           ? firstItem.getBoundingClientRect().height
           : buttonItemHeight
-        if (height > rowHeight * 2) {
+        if (height >= rowHeight * 2) {
           setIsWrapping(true)
         } else {
           setIsWrapping(false)

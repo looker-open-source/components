@@ -33,13 +33,18 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - [@looker/design-tokens](./packagen/design-tokens/README.md) — Default design values as well as our connection to styled-system
 - [@looker/icons](./packages/icons/README.md) — SVG icon library, normally consumed by the `<Icon />` component in our shared component library
 - [@looker/components-test-utils](./packages/test-utils/README.md) — Useful functions for mocking values and testing components.
-- [www](./packages/www/README.md) — The Gatsby site which powers our living style guide
-- [playground](./packages/playground/README.md) — A convenient React environment used for developing Looker UI Components
-- [server](./packages/server/README.md) — A local proxy server used for querying data from production endpoints while in development.
+
+## Applications
+
+- [playground](./playground/README.md) — A convenient React environment used for developing Looker UI Components
+- [server](./server/README.md) — A local proxy server used for querying data from production endpoints while in development.
+- [storybook](./storybook/README.md) — Storybook is a tool for developing UI components in isolation
+- [www](./www/README.md) — The Gatsby site which powers our living style guide
 
 ### Common Project Commands
 
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
+- **yarn storybook** starts Storybook, a tool for developing components in isolation
 - **yarn playground** starts a bare-bones React app used for developing components
 - **yarn gatsby** starts the Gatsby server (powers [components.looker.com](https://components.looker.com))
 - **yarn server** starts a local proxy server to facilitate local fetch requests to a Looker instance

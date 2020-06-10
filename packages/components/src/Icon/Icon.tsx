@@ -27,6 +27,7 @@
 import {
   color,
   CompatibleHTMLProps,
+  omitStyledProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
@@ -48,7 +49,7 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    Omit<SimpleLayoutProps, 'height' | 'width'> {
+    SimpleLayoutProps {
   color?: string
   name: IconNames
 }
@@ -56,11 +57,11 @@ export interface IconProps
 export type { IconNames }
 
 const IconFactory = forwardRef(
-  ({ className, name }: IconProps, ref: Ref<HTMLDivElement>) => {
+  ({ className, name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
     const Glyph = Glyphs[name]
 
     return (
-      <div className={className} ref={ref}>
+      <div className={className} ref={ref} {...omitStyledProps(props)}>
         <Glyph width="100%" height="100%" fill="currentColor" />
       </div>
     )
@@ -69,12 +70,16 @@ const IconFactory = forwardRef(
 
 IconFactory.displayName = 'IconFactory'
 
-export const Icon = styled(IconFactory)`
+export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
+  size: !height && !width ? size || 'medium' : undefined,
+}))`
   ${simpleLayoutCSS}
   ${color}
 
   align-items: center;
   display: inline-flex;
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
 `
 
-Icon.defaultProps = { size: 'medium' }
+// Icon.defaultProps = { size: 'medium' }

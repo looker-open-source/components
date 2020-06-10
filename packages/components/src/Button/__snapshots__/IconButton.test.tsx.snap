@@ -122,6 +122,7 @@ exports[`IconButton accepts color 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -265,6 +266,7 @@ exports[`IconButton accepts events 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -408,6 +410,7 @@ exports[`IconButton accepts events 2`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -551,6 +554,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -693,6 +697,7 @@ exports[`IconButton default 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -853,6 +858,7 @@ exports[`IconButton outline 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -995,6 +1001,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
     Favorite
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -1137,6 +1144,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
     Trash
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -1279,6 +1287,7 @@ exports[`IconButton resized 1`] = `
     Test
   </div>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg

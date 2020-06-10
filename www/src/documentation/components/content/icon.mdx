@@ -1,0 +1,62 @@
+---
+title: Icon
+figma: file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1
+propsOf: Icon
+github: Icon
+---
+
+import { IconList } from './demos'
+
+`<Icon />` component uses the property `name` to display the correct icon.
+
+```jsx
+<Space around>
+  <Icon name="Check" />
+  <Icon name="Favorite" size="large" />
+  <Icon name="GearOutline" size="small" />
+</Space>
+```
+
+## Icon Attributes
+
+### color
+
+`color` by default, icons inherit the text color of the component they are embedded within. But it can also have it specify as a prop.
+
+```jsx
+<Space around>
+  <Icon name="Trash" color="inform" />
+  <Box
+    color="critical"
+    bg="ui5"
+    p="large"
+    width="210px"
+    display="flex"
+    flexDirection="column"
+    borderRadius="medium"
+  >
+    The text in this Box is red and so is the icon.
+    <Icon name="Trash" size="large" mx="auto" />
+  </Box>
+</Space>
+```
+
+### size
+
+`size` can be specified by using the size prop. By default the size will be medium.
+
+```jsx
+<Space around>
+  <Icon name="Beaker" color="inform" size="xxsmall" />
+  <Icon name="Beaker" color="inform" size="xsmall" />
+  <Icon name="Beaker" color="inform" size="small" />
+  <Icon name="Beaker" color="inform" size="medium" />
+  <Icon name="Beaker" color="inform" size="large" />
+</Space>
+```
+
+## Icon Library
+
+**Tip:** you can click an icon below to copy it to your clipboard.
+
+<IconList />
