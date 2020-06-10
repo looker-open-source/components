@@ -87,12 +87,17 @@ const TreeStyle = styled.div<TreeStyleProps>`
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth})`}
+      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`}
   }
 
   ${TreeGroupLabel} {
+    /*
+      border + inherent padding left + icon size + gap size
+     */
     padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
+      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
+        theme.space.small
+      }) * ${depth + 1})`};
   }
 
   ${TreeItem} {
@@ -108,7 +113,9 @@ const TreeStyle = styled.div<TreeStyleProps>`
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + ${theme.space.large} * ${depth + 1})`}
+      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
+        theme.space.small
+      }) * ${depth + 1})`}
   }
 
   ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
