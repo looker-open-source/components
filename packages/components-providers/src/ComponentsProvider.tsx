@@ -69,8 +69,9 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
 }) => {
   const baseTheme = props.theme || theme
 
-  const generatedTheme =
-    coreColors && generateThemeFromCoreColors(baseTheme, coreColors)
+  const generatedTheme = coreColors
+    ? generateThemeFromCoreColors(baseTheme, coreColors)
+    : baseTheme
 
   return (
     <ThemeProvider {...props} theme={generatedTheme}>
