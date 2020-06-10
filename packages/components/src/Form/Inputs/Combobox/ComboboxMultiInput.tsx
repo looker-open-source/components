@@ -31,6 +31,7 @@ import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
+  InputChips,
   InputChipsBase,
   InputChipsCommonProps,
   InputChipsInputControlProps,
@@ -39,7 +40,11 @@ import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
-import { ComboboxActionType, ComboboxState } from './utils/state'
+import {
+  ComboboxActionType,
+  ComboboxState,
+  getOptionsFromValues,
+} from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputPropRefs } from './utils/useInputPropRefs'
 
@@ -48,6 +53,12 @@ export interface ComboboxMultiInputProps
     ComboboxInputCommonProps,
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
+  /**
+   * Allows creation of values outside of options
+   * by typing or pasting items separated by commas, tabs, or newlines
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -63,6 +74,9 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // might be controlled
       inputValue: controlledInputValue,
+
+      // free form input
+      freeInput = false,
       ...rest
     } = props
 
@@ -84,13 +98,14 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear && onClear()
     }
 
-    // only called when user removes chips from the input
+    // if freeInput = true, this is called when user inputs
+    // if freeInput = false, only called when user removes chips from the input
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
-      const newOptions = options.filter((option) =>
-        values.includes(getComboboxText(option))
-      )
+
+      const newOptions = getOptionsFromValues(options, values)
+
       contextOnChange && contextOnChange(newOptions)
     }
 
@@ -167,8 +182,12 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
+    const InputComponent: typeof InputChips = freeInput
+      ? InputChips
+      : InputChipsBase
+
     return (
-      <InputChipsBase
+      <InputComponent
         {...rest}
         {...inputEvents}
         ref={ref}
