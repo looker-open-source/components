@@ -38,7 +38,6 @@ import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import omit from 'lodash/omit'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type IconSize =
@@ -75,7 +74,7 @@ const IconFactory = forwardRef(
       <Glyph width="100%" height="100%" fill="currentColor" />
     )
     return (
-      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+      <div ref={ref} {...omitStyledProps(props)}>
         {value}
       </div>
     )
