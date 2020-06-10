@@ -30,7 +30,6 @@ import { SpacingSizes } from '@looker/design-tokens'
 import { IconNames } from '../Icon'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext, accordionContextDefaults } from './AccordionContext'
-import { AccordionContent } from './AccordionContent'
 
 export type IndicatorIcons = {
   close: IconNames
