@@ -50,14 +50,10 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-<<<<<<< HEAD
-    Omit<SimpleLayoutProps, 'height' | 'width'> {
-=======
     SimpleLayoutProps {
   /**
    * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
    */
->>>>>>> artwork ready for review
   artwork?: ReactNode
   color?: string
   name?: IconNames
@@ -104,5 +100,3 @@ export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
     width: 100%;
   }
 `
-
-// Icon.defaultProps = { size: 'medium' }
