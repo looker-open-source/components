@@ -16,6 +16,11 @@ exports[`MenuItem - current + marker 1`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c1 {
   padding-bottom: 0.75rem;
   padding-left: 1rem;
@@ -164,6 +169,11 @@ exports[`MenuItem - current 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c1 {
@@ -446,6 +456,11 @@ exports[`MenuItem - icon 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c1 {

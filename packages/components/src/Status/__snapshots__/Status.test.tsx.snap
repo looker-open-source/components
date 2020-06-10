@@ -16,6 +16,11 @@ Array [
   display: inline-flex;
 }
 
+.c0 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
     className="c0"
   >
@@ -65,6 +70,11 @@ Array [
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -118,6 +128,11 @@ Array [
   display: inline-flex;
 }
 
+.c0 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
     className="c0"
   >
@@ -165,6 +180,11 @@ Array [
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -216,6 +236,11 @@ Array [
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div

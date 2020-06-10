@@ -14,6 +14,11 @@ exports[`IconButton accepts color 1`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   width: 24px;
   -webkit-align-items: center;
@@ -155,6 +160,11 @@ exports[`IconButton accepts events 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -301,6 +311,11 @@ exports[`IconButton accepts events 2`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   width: 24px;
   -webkit-align-items: center;
@@ -443,6 +458,11 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -589,6 +609,11 @@ exports[`IconButton default 1`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   width: 24px;
   -webkit-align-items: center;
@@ -730,6 +755,11 @@ exports[`IconButton outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -893,6 +923,11 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   width: 24px;
   -webkit-align-items: center;
@@ -1036,6 +1071,11 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   display: inline-flex;
 }
 
+.c4 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   width: 24px;
   -webkit-align-items: center;
@@ -1177,6 +1217,11 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {

@@ -544,6 +544,11 @@ exports[`Button with icon validates all sizes 1`] = `
   display: inline-flex;
 }
 
+.c3 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -695,6 +700,11 @@ exports[`Button with icon validates all sizes 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c3 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -850,6 +860,11 @@ exports[`Button with icon validates all sizes 3`] = `
   display: inline-flex;
 }
 
+.c3 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1001,6 +1016,11 @@ exports[`Button with icon validates all sizes 4`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c3 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {

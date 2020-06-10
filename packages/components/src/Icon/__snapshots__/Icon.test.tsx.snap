@@ -14,6 +14,11 @@ exports[`Icon default 1`] = `
   display: inline-flex;
 }
 
+.c0 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
   className="c0"
 >
@@ -46,6 +51,11 @@ exports[`Icon with styled system size 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -82,6 +92,11 @@ exports[`Icon with styled system size 2`] = `
   display: inline-flex;
 }
 
+.c0 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
   className="c0"
 >
@@ -114,6 +129,11 @@ exports[`Icon with styled system size 3`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
