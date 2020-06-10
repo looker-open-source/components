@@ -26,60 +26,14 @@
 
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Flex, Icon } from '@looker/components'
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <Flex alignItems="center" justifyContent="space-evenly">
-        <Icon
-          artwork={
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-                fill="#1C2125"
-              />
-            </svg>
-          }
-          name="GearOutline"
-          size="large"
-        />
-        <Icon name="GearOutline" size="xxsmall" />
-        <Icon
-          artwork={
-            <svg width="100" height="100">
-              <rect
-                width="100"
-                height="100"
-                fill="rgb(0,0,255)"
-                strokeWidth="3"
-                stroke="rgb(0,0,0)"
-              />
-            </svg>
-          }
-        />
-        <Icon
-          artwork={
-            <svg>
-              <polygon
-                points="100,10 40,198 190,78 10,78 160,198"
-                fill="lime"
-                stroke="purple"
-                strokeWidth="5"
-                fillRule="nonzero"
-              />
-            </svg>
-          }
-        />
-      </Flex>
-    </ComponentsProvider>
-  )
-}
+import { ComponentsProvider } from '@looker/components'
+import { GetMe } from './data/GetMe'
+
+const App = () => (
+  <ComponentsProvider>
+    <GetMe />
+  </ComponentsProvider>
+)
 
 /*
   This is the binding site for the playground. If you want to edit the
