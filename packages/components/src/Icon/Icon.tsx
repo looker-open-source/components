@@ -27,7 +27,6 @@
 import {
   color,
   CompatibleHTMLProps,
-  omitStyledProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
