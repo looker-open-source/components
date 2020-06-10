@@ -14,6 +14,11 @@ exports[`ModalHeader 1`] = `
   display: inline-flex;
 }
 
+.c6 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c2 {
   width: 28px;
   -webkit-align-items: center;

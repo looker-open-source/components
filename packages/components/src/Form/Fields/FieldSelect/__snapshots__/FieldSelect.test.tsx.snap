@@ -40,6 +40,11 @@ exports[`A FieldSelect 1`] = `
   display: inline-flex;
 }
 
+.c12 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -348,6 +353,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-flex;
 }
 
+.c14 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c12 {
   width: 20px;
   height: 20px;
@@ -361,6 +371,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c12 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c8 {
@@ -743,6 +758,11 @@ exports[`A required FieldSelect 1`] = `
   display: inline-flex;
 }
 
+.c14 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1074,6 +1094,11 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c12 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c8 {
