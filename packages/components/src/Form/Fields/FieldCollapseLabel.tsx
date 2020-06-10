@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import { Label } from '..'
+import { Label } from '../Label'
 
 export const FieldCollapseLabel = styled.div`
   ${Label} {

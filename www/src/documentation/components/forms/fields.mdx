@@ -155,6 +155,26 @@ There are two "inline" variations:
 }
 ```
 
+## FieldCollapseLabel
+
+`FieldCollapseLabel` hides the Field `Label` but maintains it for accessibility
+
+```jsx
+<FieldCollapseLabel>
+  <Fieldset inline legend="This is the Legend">
+    <FieldText label="First Label" />
+    <FieldText label="Second Label" />
+    <FieldText
+      label="Third Label"
+      validationMessage={{
+        message: 'This is an error',
+        type: 'error',
+      }}
+    />
+  </Fieldset>
+</FieldCollapseLabel>
+```
+
 ## FieldColor
 
 <Props of="FieldColor" />
