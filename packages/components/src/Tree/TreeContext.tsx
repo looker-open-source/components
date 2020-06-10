@@ -27,7 +27,10 @@
 import { createContext } from 'react'
 
 export interface TreeContextProps {
+  border?: boolean
   depth: number
 }
 
-export const TreeContext = createContext<TreeContextProps>({ depth: 0 })
+export const TreeContext = createContext<TreeContextProps>({
+  depth: 0,
+})

@@ -30,7 +30,9 @@ import styled from 'styled-components'
 import { AccordionContext } from './AccordionContext'
 
 export interface AccordionContentProps {
+  border?: boolean
   className?: string
+  depth?: number
 }
 
 const AccordionContentLayout: FC<AccordionContentProps> = ({
@@ -42,4 +44,16 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
   return isOpen ? <div className={className}>{children}</div> : null
 }
 
-export const AccordionContent = styled(AccordionContentLayout)``
+export const AccordionContent = styled(AccordionContentLayout)`
+  background: ${({ border, depth, theme }) => {
+    const borderSize = '1px'
+    const itemPadding = theme.space.xxsmall
+    const depthPadding = `${theme.space.large} * ${depth}`
+    const indicatorSize = theme.space.small
+    const spacer = `${borderSize} + ${itemPadding} + ${depthPadding} + (${indicatorSize} / 2)`
+    return (
+      border &&
+      `linear-gradient(90deg, transparent calc(${spacer} - 0.5px), ${theme.colors.ui3}, transparent calc(${spacer} + 0.5px))`
+    )
+  }};
+`
