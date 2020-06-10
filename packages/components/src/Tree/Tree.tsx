@@ -148,7 +148,7 @@ const TreeLayout: FC<TreeProps> = ({
               {label}
             </TreeItem>
           </AccordionDisclosure>
-          <AccordionContent border={isBorderEnabled} depth={depth}>
+          <AccordionContent border={isBorderEnabled} borderDepth={depth}>
             {children}
           </AccordionContent>
         </Accordion>

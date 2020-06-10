@@ -31,8 +31,8 @@ import { AccordionContext } from './AccordionContext'
 
 export interface AccordionContentProps {
   border?: boolean
+  borderDepth?: number
   className?: string
-  depth?: number
 }
 
 const AccordionContentLayout: FC<AccordionContentProps> = ({
@@ -45,10 +45,10 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
 }
 
 export const AccordionContent = styled(AccordionContentLayout)`
-  background: ${({ border, depth, theme }) => {
+  background: ${({ border, borderDepth, theme }) => {
     const borderSize = '1px'
     const itemPadding = theme.space.xxsmall
-    const depthPadding = `${theme.space.large} * ${depth}`
+    const depthPadding = `${theme.space.large} * ${borderDepth}`
     const indicatorSize = theme.space.small
     const spacer = `${borderSize} + ${itemPadding} + ${depthPadding} + (${indicatorSize} / 2)`
     return (
