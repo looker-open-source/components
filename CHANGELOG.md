@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ButtonGroup` space between rows when wrapping
 - `InputChips` separates chips by newline when pasting
 
+### Added
+
+- `FieldCollapseLabel` component
+
 ## [0.8.6]
 
 ### Fixed
