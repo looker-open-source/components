@@ -50,7 +50,10 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    Omit<SimpleLayoutProps, 'height' | 'width'> {
+    SimpleLayoutProps {
+  /**
+   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
+   */
   artwork?: ReactNode
   color?: string
   name?: IconNames
@@ -65,9 +68,7 @@ const IconFactory = forwardRef(
   ) => {
     if ((artwork && name) || (!artwork && !name)) {
       // eslint-disable-next-line no-console
-      console.warn(
-        "Please pass ether name or artwork as Icon prop. If both are passed the default will be artwork. If non is passed Icon won't be displayed"
-      )
+      console.warn('You may only specify name OR artwork, not both.')
     }
     const Glyph = name ? Glyphs[name] : 'div'
     const value = artwork || (
@@ -93,6 +94,11 @@ export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
   display: inline-flex;
   height: ${({ height }) => height};
   width: ${({ width }) => width};
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 // Icon.defaultProps = { size: 'medium' }
