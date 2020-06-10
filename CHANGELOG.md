@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Icons: `Globe`, `TimeZone`, `SectionDrop`
+
 ### Fixed
 
 - `ButtonGroup` space between rows when wrapping
