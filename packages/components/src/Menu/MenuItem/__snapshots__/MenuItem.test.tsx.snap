@@ -133,6 +133,7 @@ exports[`MenuItem - current + marker 1`] = `
     >
       <div
         className="c3 c4"
+        mr="xsmall"
       >
         <svg
           fill="currentColor"
@@ -288,6 +289,7 @@ exports[`MenuItem - current 1`] = `
     >
       <div
         className="c3 c4"
+        mr="xsmall"
       >
         <svg
           fill="currentColor"
@@ -575,6 +577,7 @@ exports[`MenuItem - icon 1`] = `
     >
       <div
         className="c3 c4"
+        mr="xsmall"
       >
         <svg
           fill="currentColor"
