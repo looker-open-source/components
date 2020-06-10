@@ -46,14 +46,15 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
 
 export const AccordionContent = styled(AccordionContentLayout)`
   background: ${({ border, borderDepth, theme }) => {
-    const borderSize = '1px'
-    const itemPadding = theme.space.xxsmall
-    const depthPadding = `${theme.space.large} * ${borderDepth}`
-    const indicatorSize = theme.space.small
-    const spacer = `${borderSize} + ${itemPadding} + ${depthPadding} + (${indicatorSize} / 2)`
+    const itemBorderSize = '1px'
+    const itemPaddingSize = theme.space.xxsmall
+    const indicatorIconSize = theme.space.small
+    const indicatorGapSize = theme.space.xxsmall
+    const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${borderDepth}`
+    const borderSpacer = `(${theme.space.small} / 2) + ${depthSize}`
     return (
       border &&
-      `linear-gradient(90deg, transparent calc(${spacer} - 1px), ${theme.colors.ui3}, transparent calc(${spacer} + 1px))`
+      `linear-gradient(90deg, transparent calc(${borderSpacer} - 1px), ${theme.colors.ui3}, transparent calc(${borderSpacer} + 1px))`
     )
   }};
 `
