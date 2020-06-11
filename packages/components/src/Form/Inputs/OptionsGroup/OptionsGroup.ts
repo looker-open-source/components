@@ -24,6 +24,7 @@
 
  */
 
+import { ReactNode } from 'react'
 import { FieldsetProps } from '../../Fieldset'
 import { ValidationMessageProps } from '../../ValidationMessage'
 
@@ -31,6 +32,7 @@ export interface OptionsGroupOptionProps {
   label: string
   value: string
   disabled?: boolean
+  detail?: ReactNode
 }
 
 interface OptionsGroupLayout extends Omit<FieldsetProps, 'onChange'> {

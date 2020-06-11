@@ -24,34 +24,55 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
-import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldBaseProps } from '../FieldBase'
-import { FieldInline } from '../FieldInline'
+import {
+  ComponentsProvider,
+  FieldText,
+  Fieldset,
+  SpaceVertical,
+  Heading,
+  Paragraph,
+  theme,
+} from '@looker/components'
+import React, { FC, FormEvent, useState } from 'react'
 
-export interface FieldRadioProps
-  extends RadioProps,
-    Omit<FieldBaseProps, 'validationMessage'> {}
+export const Font: FC = () => {
+  const [brand, setBrand] = useState('Comic Sans MS')
 
-const FieldRadioLayout = forwardRef(
-  (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
-    const id = useID(props.id)
-    return (
-      <FieldInline {...pickFieldProps(props)} id={id}>
-        <Radio
-          {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
-          id={id}
-          ref={ref}
-        />
-      </FieldInline>
-    )
+  const handleBrandChange = (event: FormEvent<HTMLInputElement>) => {
+    setBrand(event.currentTarget.value)
   }
-)
 
-FieldRadioLayout.displayName = 'FieldRadioLayout'
+  const actualTheme = {
+    ...theme,
+    fonts: {
+      ...theme.fonts,
+      brand,
+    },
+  }
 
-export const FieldRadio = styled(FieldRadioLayout)``
+  // const coreColors = useState<CoreColors>(theme)
+
+  return (
+    <SpaceVertical>
+      <Fieldset legend={name}>
+        <FieldText
+          label="Brand Font Face"
+          value={brand}
+          onChange={handleBrandChange}
+        />
+      </Fieldset>
+
+      <pre>{JSON.stringify(theme, null, 1)}</pre>
+
+      <ComponentsProvider theme={actualTheme}>
+        <Heading>A Header</Heading>
+        <Paragraph>Paragraph text.</Paragraph>
+      </ComponentsProvider>
+    </SpaceVertical>
+  )
+}
+
+export default {
+  component: Font,
+  title: 'Theme',
+}

@@ -60,11 +60,11 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div
@@ -141,11 +141,11 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div
@@ -222,11 +222,11 @@ exports[`Radio default 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div
@@ -287,11 +287,11 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c3 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c3 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 {
@@ -330,11 +330,11 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div
@@ -411,11 +411,11 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c3 input:checked + .c1 {
@@ -438,11 +438,11 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c3 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c3 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div
@@ -519,11 +519,11 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1 {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: transparent;
+  background: #F5F6F7;
 }
 
 <div

@@ -42,6 +42,7 @@ import {
   StatefulColor,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
+import { TextAlignProperty } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
 import { Icon } from '../Icon'
@@ -116,6 +117,10 @@ export interface IconButtonProps
    * Assign the placement of the built-in Tooltip.
    */
   tooltipPlacement?: Placement
+  /**
+   * Assign the placement of the built-in Tooltip.
+   */
+  tooltipTextAlign?: TextAlignProperty
 }
 
 export const IconButtonStyle = styled.button<IconButtonProps>`
@@ -133,6 +138,7 @@ const IconButtonComponent = forwardRef(
       color,
       tooltipDisabled,
       tooltipPlacement,
+      tooltipTextAlign,
       onFocus: propsOnFocus,
       onBlur: propsOnBlur,
       onMouseOver: propsOnMouseOver,
@@ -159,6 +165,7 @@ const IconButtonComponent = forwardRef(
       disabled: tooltipDisabled || hasOuterTooltip,
       id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
+      textAlign: tooltipTextAlign,
     })
 
     const eventHandlers = {

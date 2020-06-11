@@ -38,14 +38,7 @@ test('A FieldSelect', () => {
 })
 
 test('FieldSelect supports labelWeight', () => {
-  assertSnapshot(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      labelFontWeight="normal"
-    />
-  )
+  assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
 })
 
 test('Should accept a value', () => {

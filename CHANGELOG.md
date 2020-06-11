@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Icons: `TimeZone`
+
 ### Fixed
 
+- `ComponentsProvider` actually uses the `theme` passed in
+- `Select` selected option check mark icon size
 - `ButtonGroup` space between rows when wrapping
 - `InputChips` separates chips by newline when pasting
 

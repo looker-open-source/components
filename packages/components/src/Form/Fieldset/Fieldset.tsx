@@ -26,7 +26,7 @@
 
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, SpacingSizes } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
@@ -56,6 +56,11 @@ export interface FieldsetProps
   /** Displayed above the children of Fieldset
    */
   legend?: ReactNode
+  /**
+   * Amount of space between fields
+   * @default 'inline ? 'medium' : 'small'
+   */
+  gap?: SpacingSizes
 }
 
 const accordionIndicatorDefaults: AccordionIndicatorProps = {
@@ -73,15 +78,17 @@ const FieldsetLayout = forwardRef(
     const {
       accordion,
       inline,
-      className,
+      gap,
       legend,
       children,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
+
     const accordionProps = {
       ...pick(props, [...AccordionControlPropKeys]),
       ...accordionIndicatorDefaults,
     }
+
     const LayoutComponent = inline ? Space : SpaceVertical
 
     /**
@@ -95,8 +102,7 @@ const FieldsetLayout = forwardRef(
 
     const content = (
       <LayoutComponent
-        {...restProps}
-        gap={inline ? 'medium' : 'small'}
+        gap={gap || (inline ? 'medium' : 'small')}
         ref={ref}
         role="group"
         align="start"
@@ -128,7 +134,7 @@ const FieldsetLayout = forwardRef(
       content
     )
 
-    return <div className={className}>{renderedFieldset}</div>
+    return <div {...restProps}>{renderedFieldset}</div>
   }
 )
 
@@ -149,4 +155,5 @@ export const Fieldset = styled(FieldsetLayout)`
 
 Fieldset.defaultProps = {
   padding: 'none',
+  width: '100%',
 }

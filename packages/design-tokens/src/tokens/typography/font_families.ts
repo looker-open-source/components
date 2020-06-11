@@ -27,6 +27,6 @@
 import { FontFamilyChoices } from '../../system'
 
 export const fontFamilies: FontFamilyChoices = {
-  brand: `'Open Sans', Helvetica, Arial, sans-serif`,
+  brand: `'Open Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif, 'Noto Sans'`,
   code: `'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace`,
 }

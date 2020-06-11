@@ -35,7 +35,6 @@ export interface RadioProps
   extends SpaceProps,
     Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
-  className?: string
 }
 
 const RadioLayout = forwardRef(
@@ -91,10 +90,10 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {
-    background: transparent;
+    background: ${({ theme }) => theme.colors.ui1};
 
     &::after {
-      background: transparent;
+      background: ${({ theme }) => theme.colors.ui1};
     }
   }
 `

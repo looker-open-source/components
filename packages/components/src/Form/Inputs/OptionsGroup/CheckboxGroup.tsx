@@ -90,6 +90,7 @@ const CheckboxGroupLayout = forwardRef(
           disabled={option.disabled || disabled}
           key={option.value}
           label={option.label}
+          detail={option.detail}
           name={name}
           value={option.value}
           {...checkedProps}
@@ -102,6 +103,7 @@ const CheckboxGroupLayout = forwardRef(
         data-testid="checkbox-list"
         inline={inline}
         flexWrap={inline ? 'wrap' : undefined}
+        gap={!inline ? 'xxsmall' : undefined}
         width={inline ? 'auto' : undefined}
         ref={ref}
         {...rest}
