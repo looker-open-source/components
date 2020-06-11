@@ -24,14 +24,16 @@
 
  */
 
-import React, { forwardRef, KeyboardEvent, Ref } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
   ComboboxMulti,
   ComboboxMultiInput,
+  ComboboxMultiInputProps,
   ComboboxMultiList,
   ComboboxMultiProps,
 } from '../Combobox'
+import { InputChipsCommonProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
 import {
   SelectMultiOptionsBaseProps,
@@ -44,6 +46,8 @@ import { useShouldWindowOptions } from './utils/useWindowedOptions'
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
+    Pick<InputChipsCommonProps, 'removeOnBackspace'>,
+    Pick<ComboboxMultiInputProps, 'freeInput'>,
     SelectMultiOptionsBaseProps {
   /**
    * Values of the current selected option (controlled)
@@ -62,17 +66,6 @@ export interface SelectMultiProps
    * @default false
    */
   closeOnSelect?: boolean
-  /**
-   * Set to false to disable the removal of the last value on backspace key
-   * @default true
-   */
-  removeOnBackspace?: boolean
-  /**
-   * Allows inputting of values outside of options via typing or pasting
-   * Not recommended for use when options have labels that are different from their values
-   * @default false
-   */
-  freeInput?: boolean
 }
 
 const SelectMultiComponent = forwardRef(
@@ -127,13 +120,6 @@ const SelectMultiComponent = forwardRef(
       'aria-labelledby': ariaLabelledby,
     }
 
-    const inputProps = {
-      disabled,
-      placeholder,
-      removeOnBackspace,
-      validationType,
-    }
-
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
@@ -145,8 +131,11 @@ const SelectMultiComponent = forwardRef(
         onClose={handleClose}
       >
         <ComboboxMultiInput
-          {...inputProps}
           {...ariaProps}
+          disabled={disabled}
+          placeholder={placeholder}
+          removeOnBackspace={removeOnBackspace}
+          validationType={validationType}
           autoComplete={false}
           readOnly={!isFilterable}
           onInputChange={handleInputChange}

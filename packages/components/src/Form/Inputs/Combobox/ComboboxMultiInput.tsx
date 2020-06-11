@@ -56,6 +56,7 @@ export interface ComboboxMultiInputProps
   onClear?: () => void
   /**
    * Allows inputting of values outside of options via typing or pasting
+   * Not recommended for use when options have labels that are different from their values
    * @default false
    */
   freeInput?: boolean
