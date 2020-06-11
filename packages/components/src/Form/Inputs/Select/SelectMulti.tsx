@@ -24,14 +24,16 @@
 
  */
 
-import React, { forwardRef, KeyboardEvent, Ref } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
   ComboboxMulti,
   ComboboxMultiInput,
+  ComboboxMultiInputProps,
   ComboboxMultiList,
   ComboboxMultiProps,
 } from '../Combobox'
+import { InputChipsCommonProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
 import {
   SelectMultiOptionsBaseProps,
@@ -44,6 +46,8 @@ import { useShouldWindowOptions } from './utils/useWindowedOptions'
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
+    Pick<InputChipsCommonProps, 'removeOnBackspace'>,
+    Pick<ComboboxMultiInputProps, 'freeInput'>,
     SelectMultiOptionsBaseProps {
   /**
    * Values of the current selected option (controlled)
@@ -62,11 +66,6 @@ export interface SelectMultiProps
    * @default false
    */
   closeOnSelect?: boolean
-  /**
-   * Set to false to disable the removal of the last value on backspace key
-   * @default true
-   */
-  removeOnBackspace?: boolean
 }
 
 const SelectMultiComponent = forwardRef(
@@ -92,6 +91,7 @@ const SelectMultiComponent = forwardRef(
       showCreate = false,
       formatCreateLabel,
       removeOnBackspace = true,
+      freeInput = false,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -120,21 +120,6 @@ const SelectMultiComponent = forwardRef(
       'aria-labelledby': ariaLabelledby,
     }
 
-    const inputProps = {
-      disabled,
-      placeholder,
-      validationType,
-      ...(removeOnBackspace
-        ? {}
-        : {
-            onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => {
-              if (e.currentTarget.value === '' && e.key === 'Backspace') {
-                e.preventDefault()
-              }
-            },
-          }),
-    }
-
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
@@ -146,12 +131,16 @@ const SelectMultiComponent = forwardRef(
         onClose={handleClose}
       >
         <ComboboxMultiInput
-          {...inputProps}
           {...ariaProps}
+          disabled={disabled}
+          placeholder={placeholder}
+          removeOnBackspace={removeOnBackspace}
+          validationType={validationType}
           autoComplete={false}
           readOnly={!isFilterable}
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
+          freeInput={freeInput}
           ref={ref}
         />
         {!disabled && (

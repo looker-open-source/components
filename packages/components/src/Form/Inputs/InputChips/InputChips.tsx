@@ -75,8 +75,18 @@ function getUpdatedValues(
   const unusedValues: string[] = []
   const validValues: string[] = []
 
+  // Preserve escaped commas & tabs
+  const commaKey = Math.random() + ''
+  const tabKey = Math.random() + ''
+  const removedEscapes = inputValue
+    .replace(/\\,/, commaKey)
+    .replace(/\\\t/, tabKey)
+
   // Values may be separated by ',' '\t', '\n' and ' '
-  const inputValues: string[] = inputValue.split(/[,\t\n\r]+/)
+  const inputValues: string[] = removedEscapes
+    .split(/[,\t\n\r]+/)
+    .map((value) => value.replace(commaKey, ',').replace(tabKey, '\t'))
+
   inputValues.forEach((val: string) => {
     const trimmedValue = val.trim()
     if (trimmedValue === '') return
@@ -165,7 +175,7 @@ export const InputChipsInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Enter') {
+      if (!e.defaultPrevented && e.key === 'Enter') {
         // Don't submit a form if there is one
         e.preventDefault()
         // Update values when the user hits return

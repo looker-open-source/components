@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent } from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 
 import {
@@ -65,20 +65,16 @@ describe('<ComboboxMulti/> with values', () => {
   })
 
   test('Adds new values to existing', () => {
-    const {
-      getByText,
-      getAllByText,
-      getByPlaceholderText,
-    } = renderComboboxMulti()
-    const input = getByPlaceholderText('Type here')
+    renderComboboxMulti()
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
-    const foo = getByText('Foo')
+    const foo = screen.getByText('Foo')
     expect(foo).toBeInTheDocument()
-    expect(getByText('Baz')).toBeInTheDocument()
+    expect(screen.getByText('Baz')).toBeInTheDocument()
     // Current values will be a chip in the input
-    expect(getAllByText('Bar')).toHaveLength(2)
-    expect(getAllByText('Qux')).toHaveLength(2)
+    expect(screen.getAllByText('Bar')).toHaveLength(2)
+    expect(screen.getAllByText('Qux')).toHaveLength(2)
     expect(handleClick).toHaveBeenCalledTimes(0)
     expect(handleChange).toHaveBeenCalledTimes(0)
 
@@ -91,27 +87,66 @@ describe('<ComboboxMulti/> with values', () => {
       { label: 'Qux', value: '104' },
       { label: 'Foo', value: '101' },
     ])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test('Removes existing values via option click', () => {
-    const { getAllByText, getByPlaceholderText } = renderComboboxMulti()
-    const input = getByPlaceholderText('Type here')
+    renderComboboxMulti()
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
-    const bar = getAllByText('Bar')[0]
+    const bar = screen.getAllByText('Bar')[0]
 
     fireEvent.click(bar)
 
     expect(handleClick).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledWith([{ label: 'Qux', value: '104' }])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
   test('Removes existing values via chip delete', () => {
-    const { getAllByRole } = renderComboboxMulti()
+    renderComboboxMulti()
 
-    const removeChip = getAllByRole('button')[1]
+    const removeChip = screen.getAllByRole('button')[1]
     fireEvent.click(removeChip)
     expect(handleChange).toHaveBeenCalledWith([{ label: 'Bar', value: '102' }])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('freeInput allows values to be added', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <ComboboxMulti
+        onChange={onChangeMock}
+        values={[{ value: 'Bar' }, { value: 'Qux' }]}
+      >
+        <ComboboxMultiInput placeholder="Type here" freeInput />
+        <ComboboxMultiList>
+          <ComboboxMultiOption value="Foo" onClick={handleClick} />
+          <ComboboxMultiOption value="Bar" onClick={handleClick} />
+          <ComboboxMultiOption value="Baz" onClick={handleClick} />
+          <ComboboxMultiOption value="Qux" onClick={handleClick} />
+        </ComboboxMultiList>
+      </ComboboxMulti>
+    )
+    const input = screen.getByPlaceholderText('Type here')
+    fireEvent.change(input, { target: { value: 'apples,bananas,' } })
+
+    expect(onChangeMock).toHaveBeenCalledWith([
+      { value: 'Bar' },
+      { value: 'Qux' },
+      { value: 'apples' },
+      { value: 'bananas' },
+    ])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })

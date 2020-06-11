@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent } from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -242,6 +242,45 @@ describe('closeOnSelect', () => {
 
       expect(getByText('Foo')).toBeVisible()
       expect(queryByText('Bar')).toBeVisible()
+    })
+  })
+
+  describe('freeInput', () => {
+    test('false by default', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          defaultValues={['FOO', 'BAR']}
+          placeholder="Search"
+          onChange={onChangeMock}
+        />
+      )
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.change(input, { target: { value: 'baz,qux,' } })
+
+      expect(onChangeMock).not.toHaveBeenCalled()
+      expect(input).toHaveValue('baz,qux,')
+    })
+
+    test('true', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          defaultValues={['FOO', 'BAR']}
+          placeholder="Search"
+          onChange={onChangeMock}
+          freeInput
+        />
+      )
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.change(input, { target: { value: 'baz,qux,' } })
+
+      expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'baz', 'qux'])
+      expect(input).toHaveValue('')
     })
   })
 })

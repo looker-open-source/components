@@ -61,7 +61,13 @@ export interface InputChipsControlProps {
 
 export interface InputChipsCommonProps
   extends Omit<InputSearchBaseProps, 'value' | 'defaultValue' | 'onChange'>,
-    MaxHeightProps {}
+    MaxHeightProps {
+  /**
+   * Set to false to disable the removal of the last value on backspace key
+   * @default true
+   */
+  removeOnBackspace?: boolean
+}
 
 export interface InputChipsBaseProps
   extends InputChipsCommonProps,
@@ -82,6 +88,7 @@ export const InputChipsBaseInternal = forwardRef(
       isVisibleOptions,
       hasOptions = false,
       summary,
+      removeOnBackspace = true,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     ref: Ref<HTMLInputElement>
@@ -93,7 +100,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Backspace' && !e.defaultPrevented) {
+      if (e.key === 'Backspace' && removeOnBackspace && !e.defaultPrevented) {
         // If we hit backspace and there is no text left to delete, remove the last entry instead
         inputValue === '' && handleDeleteChip(values[values.length - 1])
       }

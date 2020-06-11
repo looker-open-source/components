@@ -42,7 +42,10 @@ export function useFocusManagement(lastActionType?: ComboboxActionType) {
       lastActionType === ComboboxActionType.ESCAPE ||
       lastActionType === ComboboxActionType.SELECT_WITH_CLICK
     ) {
-      inputElement && inputElement.focus()
+      if (inputElement) {
+        inputElement.focus()
+        inputElement.scrollLeft = 0
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastActionType])

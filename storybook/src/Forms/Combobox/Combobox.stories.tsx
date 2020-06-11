@@ -73,11 +73,10 @@ export function ComboboxDemo() {
         </Combobox>
         <ComboboxMulti
           width={300}
-          maxHeight={75}
           values={options}
           onChange={handleMultiChange}
         >
-          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
+          <ComboboxMultiInput onClear={() => alert('CLEAR')} freeInput />
           <ComboboxMultiList>
             <ComboboxMultiOption value="Apples" />
             <ComboboxMultiOption value="Oranges" />
@@ -103,7 +102,7 @@ export function ComboboxDemo() {
           </ComboboxList>
         </Combobox>
         <ComboboxMulti width={300}>
-          <ComboboxMultiInput onClear={() => alert('CLEAR')} />
+          <ComboboxMultiInput onClear={() => alert('CLEAR')} freeInput />
           <ComboboxMultiList>
             <ComboboxMultiOption value="Apples" />
             <ComboboxMultiOption value="Oranges" />

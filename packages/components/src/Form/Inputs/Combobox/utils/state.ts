@@ -274,6 +274,35 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
   }
 }
 
+// Update options from as input values are added / removed via InputChips(Base)
+export function getOptionsFromValues(
+  currentOptions: ComboboxOptionObject[],
+  newValues?: string[]
+) {
+  if (!newValues) return []
+  // Save any values not found in current options
+  const freeInputValues = [...newValues]
+
+  const newOptions = currentOptions.filter((option) => {
+    const text = getComboboxText(option)
+    const foundInOptions = newValues.includes(text)
+    if (foundInOptions) {
+      const index = freeInputValues.indexOf(text)
+      if (index > -1) {
+        freeInputValues.splice(index, 1)
+      }
+    }
+    return foundInOptions
+  })
+  // Convert new values into options
+  // ****NOTE****
+  // freeInput options may be near-duplicates of existing options (different case, value / label mismatch, etc)
+  // this option should be used only when exact matching to existing values is not important or can be handled externally
+  const freeInputOptions = freeInputValues.map((value) => ({ value }))
+
+  return [...newOptions, ...freeInputOptions]
+}
+
 const reducerMulti: Reducer<
   ComboboxMultiData,
   ComboboxMultiActionWithPayload
@@ -290,11 +319,7 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         navigationOption: undefined,
-        options: nextState.options.filter(
-          (option) =>
-            action.inputValues &&
-            action.inputValues.includes(getComboboxText(option))
-        ),
+        options: getOptionsFromValues(nextState.options, action.inputValues),
       }
     case ComboboxActionType.NAVIGATE:
       return {

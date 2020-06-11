@@ -140,12 +140,6 @@ const SelectComponent = forwardRef(
       'aria-labelledby': ariaLabelledby,
     }
 
-    const inputProps = {
-      disabled,
-      placeholder,
-      validationType,
-    }
-
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
@@ -157,8 +151,10 @@ const SelectComponent = forwardRef(
         onClose={handleClose}
       >
         <ComboboxInput
-          {...inputProps}
           {...ariaProps}
+          disabled={disabled}
+          placeholder={placeholder}
+          validationType={validationType}
           isClearable={isClearable}
           autoComplete={false}
           readOnly={!isFilterable}

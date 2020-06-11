@@ -79,6 +79,8 @@ export const Basic = () => (
     label="Label"
     options={selectOptions}
     placeholder="Search fruits"
+    isFilterable
+    freeInput
   />
 )
 

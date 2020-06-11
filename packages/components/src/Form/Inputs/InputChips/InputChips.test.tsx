@@ -26,188 +26,241 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { createEvent, fireEvent } from '@testing-library/react'
+import { createEvent, fireEvent, screen } from '@testing-library/react'
 
 import { InputChips } from './InputChips'
 
-test('values are added on Enter keydown', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-  )
-  const input = getByPlaceholderText('type here')
-  fireEvent.change(input, { target: { value: 'tag1' } })
-  expect(onChangeMock).not.toHaveBeenCalled()
+describe('InputChips', () => {
+  test('values are added on Enter keydown', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: 'tag1' } })
+    expect(onChangeMock).not.toHaveBeenCalled()
 
-  fireEvent.keyDown(input, { key: 'Enter' })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-  expect(input).toHaveValue('')
-})
+    fireEvent.keyDown(input, { key: 'Enter' })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
+    expect(input).toHaveValue('')
+  })
 
-test('values are added when a comma is last character entered', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-  )
-  const input = getByPlaceholderText('type here')
+  test('values are added when a comma is last character entered', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
 
-  // if the last character entered is a comma, values are added
-  fireEvent.change(input, { target: { value: 'tag1,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-  expect(input).toHaveValue('')
-})
+    // if the last character entered is a comma, values are added
+    fireEvent.change(input, { target: { value: 'tag1,' } })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
+    expect(input).toHaveValue('')
+  })
 
-function firePasteEvent(element: HTMLElement, value: string) {
-  const eventProperties = {
-    clipboardData: {
-      getData: () => value,
-    },
+  function firePasteEvent(element: HTMLElement, value: string) {
+    const eventProperties = {
+      clipboardData: {
+        getData: () => value,
+      },
+    }
+
+    const pasteEvent = createEvent.paste(element, eventProperties) as any
+    pasteEvent.clipboardData = eventProperties.clipboardData
+
+    fireEvent(element, pasteEvent)
   }
 
-  const pasteEvent = createEvent.paste(element, eventProperties) as any
-  pasteEvent.clipboardData = eventProperties.clipboardData
-
-  fireEvent(element, pasteEvent)
-}
-
-test('values are added when pasting', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-  )
-  const input = getByPlaceholderText('type here')
-  // Newlines are stripped when pasting into a text input,
-  // but InputChips saves the clipboard with newlines intact from the onPaste
-  firePasteEvent(
-    input,
-    `tag1
+  test('values are added when pasting', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    // Newlines are stripped when pasting into a text input,
+    // but InputChips saves the clipboard with newlines intact from the onPaste
+    firePasteEvent(
+      input,
+      `tag1
 tag2`
-  )
-  fireEvent.change(input, { target: { value: 'tag1  tag2' } })
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+    )
+    fireEvent.change(input, { target: { value: 'tag1  tag2' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
 
-  // If change follows a paste, no need for the last character to be a comma
-  onChangeMock.mockClear()
-  firePasteEvent(input, `tag1,tag2`)
-  fireEvent.change(input, { target: { value: 'tag1, tag2' } })
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
-})
+    // If change follows a paste, no need for the last character to be a comma
+    onChangeMock.mockClear()
+    firePasteEvent(input, `tag1,tag2`)
+    fireEvent.change(input, { target: { value: 'tag1, tag2' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+  })
 
-test('values are added on blur', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-  )
-  const input = getByPlaceholderText('type here')
-  fireEvent.change(input, { target: { value: 'tag1' } })
-  expect(onChangeMock).not.toHaveBeenCalled()
+  test('values are added on blur', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: 'tag1' } })
+    expect(onChangeMock).not.toHaveBeenCalled()
 
-  fireEvent.blur(input)
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-  expect(input).toHaveValue('')
-})
+    fireEvent.blur(input)
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
+    expect(input).toHaveValue('')
+  })
 
-test('new values are appended to existing values', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips
-      onChange={onChangeMock}
-      values={['tag1']}
-      placeholder="type here"
-    />
-  )
-  const input = getByPlaceholderText('type here')
-  fireEvent.change(input, { target: { value: 'tag2,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
-  expect(input).toHaveValue('')
-})
+  test('new values are appended to existing values', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips
+        onChange={onChangeMock}
+        values={['tag1']}
+        placeholder="type here"
+      />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: 'tag2,' } })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+    expect(input).toHaveValue('')
+  })
 
-test('values are removed on backspace keydown', () => {
-  const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips
-      onChange={onChangeMock}
-      values={['tag1']}
-      placeholder="type here"
-    />
-  )
-  const input = getByPlaceholderText('type here')
+  test('values are removed on backspace keydown', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips
+        onChange={onChangeMock}
+        values={['tag1']}
+        placeholder="type here"
+      />
+    )
+    const input = screen.getByPlaceholderText('type here')
 
-  // If there is text in the input, Backspace doesn't remove values
-  fireEvent.change(input, { target: { value: 't' } })
-  fireEvent.keyDown(input, { key: 'Backspace' })
-  expect(onChangeMock).not.toHaveBeenCalled()
+    // If there is text in the input, Backspace doesn't remove values
+    fireEvent.change(input, { target: { value: 't' } })
+    fireEvent.keyDown(input, { key: 'Backspace' })
+    expect(onChangeMock).not.toHaveBeenCalled()
 
-  fireEvent.change(input, { target: { value: '' } })
-  fireEvent.keyDown(input, { key: 'Backspace' })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith([])
-})
+    fireEvent.change(input, { target: { value: '' } })
+    fireEvent.keyDown(input, { key: 'Backspace' })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith([])
+  })
 
-test('values are removed by clicking remove on the chip', () => {
-  const onChangeMock = jest.fn()
-  const { getByText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={['tag1']} />
-  )
-  const remove = getByText('Delete')
+  test('values are removed by clicking remove on the chip', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(<InputChips onChange={onChangeMock} values={['tag1']} />)
+    const remove = screen.getByText('Delete')
 
-  fireEvent.click(remove)
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith([])
-})
+    fireEvent.click(remove)
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith([])
+  })
 
-test('new values are validated', () => {
-  const onChangeMock = jest.fn()
-  const onValidationFailMock = jest.fn()
-  const onDuplicateMock = jest.fn()
+  test('new values are validated', () => {
+    const onChangeMock = jest.fn()
+    const onValidationFailMock = jest.fn()
+    const onDuplicateMock = jest.fn()
 
-  const validate = jest.fn((value) => value === 'tag1')
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips
-      onChange={onChangeMock}
-      values={[]}
-      placeholder="type here"
-      validate={validate}
-      onValidationFail={onValidationFailMock}
-      onDuplicate={onDuplicateMock}
-    />
-  )
-  const input = getByPlaceholderText('type here')
-  fireEvent.change(input, { target: { value: 'tag2,' } })
-  // onChange is not called if there are now new valid values
-  expect(onChangeMock).not.toHaveBeenCalled()
-  // invalid value remains in the input
-  expect(input).toHaveValue('tag2')
-  expect(onValidationFailMock).toHaveBeenCalledWith(['tag2'])
+    const validate = jest.fn((value) => value === 'tag1')
+    renderWithTheme(
+      <InputChips
+        onChange={onChangeMock}
+        values={[]}
+        placeholder="type here"
+        validate={validate}
+        onValidationFail={onValidationFailMock}
+        onDuplicate={onDuplicateMock}
+      />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: 'tag2,' } })
+    // onChange is not called if there are now new valid values
+    expect(onChangeMock).not.toHaveBeenCalled()
+    // invalid value remains in the input
+    expect(input).toHaveValue('tag2')
+    expect(onValidationFailMock).toHaveBeenCalledWith(['tag2'])
 
-  // value should be trimmed before validation
-  fireEvent.change(input, { target: { value: ' tag1,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-  expect(input).toHaveValue('')
-})
+    // value should be trimmed before validation
+    fireEvent.change(input, { target: { value: ' tag1,' } })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
+    expect(input).toHaveValue('')
+  })
 
-test('duplicate values are not added', () => {
-  const onChangeMock = jest.fn()
-  const onDuplicateMock = jest.fn()
+  test('duplicate values are not added', () => {
+    const onChangeMock = jest.fn()
+    const onDuplicateMock = jest.fn()
 
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputChips
-      onChange={onChangeMock}
-      values={['tag1']}
-      placeholder="type here"
-      onDuplicate={onDuplicateMock}
-    />
-  )
-  const input = getByPlaceholderText('type here')
+    renderWithTheme(
+      <InputChips
+        onChange={onChangeMock}
+        values={['tag1']}
+        placeholder="type here"
+        onDuplicate={onDuplicateMock}
+      />
+    )
+    const input = screen.getByPlaceholderText('type here')
 
-  // value should be trimmed before validation
-  fireEvent.change(input, { target: { value: ' tag1,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(0)
-  expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
-  expect(input).toHaveValue('tag1')
+    // value should be trimmed before validation
+    fireEvent.change(input, { target: { value: ' tag1,' } })
+    expect(onChangeMock).toHaveBeenCalledTimes(0)
+    expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
+    expect(input).toHaveValue('tag1')
+  })
+
+  test('escaped commas and tabs are preserved', () => {
+    const onChangeMock = jest.fn()
+
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+
+    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2'])
+  })
+
+  describe('removeOnBackspace', () => {
+    test('true by default', () => {
+      const onChangeMock = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+
+      fireEvent.keyDown(input, {
+        key: 'Backspace',
+      })
+
+      expect(onChangeMock).toHaveBeenCalledWith(['foo'])
+    })
+
+    test('false', () => {
+      const onChangeMock = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={['foo', 'bar']}
+          placeholder="type here"
+          removeOnBackspace={false}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+
+      fireEvent.keyDown(input, {
+        key: 'Backspace',
+      })
+
+      expect(onChangeMock).not.toHaveBeenCalled()
+    })
+  })
 })

@@ -31,7 +31,9 @@ import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
+  InputChips,
   InputChipsBase,
+  InputChipsBaseProps,
   InputChipsCommonProps,
   InputChipsInputControlProps,
 } from '../InputChips'
@@ -39,7 +41,11 @@ import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
-import { ComboboxActionType, ComboboxState } from './utils/state'
+import {
+  ComboboxActionType,
+  ComboboxState,
+  getOptionsFromValues,
+} from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputPropRefs } from './utils/useInputPropRefs'
 
@@ -48,6 +54,12 @@ export interface ComboboxMultiInputProps
     ComboboxInputCommonProps,
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
+  /**
+   * Allows inputting of values outside of options via typing or pasting
+   * Not recommended for use when options have labels that are different from their values
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -63,6 +75,9 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // might be controlled
       inputValue: controlledInputValue,
+
+      // free form input
+      freeInput = false,
       ...rest
     } = props
 
@@ -84,13 +99,13 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear && onClear()
     }
 
-    // only called when user removes chips from the input
+    // if freeInput = false, only called when user removes chips from the input
+    // if freeInput = true, this is called when user inputs values via separators (enter key, comma, tab char, newline)
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
-      const newOptions = options.filter((option) =>
-        values.includes(getComboboxText(option))
-      )
+
+      const newOptions = getOptionsFromValues(options, values)
       contextOnChange && contextOnChange(newOptions)
     }
 
@@ -165,30 +180,31 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
+    const commonProps: InputChipsBaseProps = {
+      ...rest,
+      ...inputEvents,
+      'aria-activedescendant': navigationOption
+        ? String(makeHash(navigationOption ? navigationOption.value : ''))
+        : undefined,
+      'aria-autocomplete': 'both',
+      autoComplete: 'off',
+      hasOptions: true,
+      id: `listbox-${id}`,
+      inputValue,
+      isVisibleOptions: isVisible,
+      onChange: handleChange,
+      onClear: handleClear,
+      onInputChange: wrappedOnInputChange,
+      readOnly,
+      values: inputValues,
+    }
+
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-    return (
-      <InputChipsBase
-        {...rest}
-        {...inputEvents}
-        ref={ref}
-        readOnly={readOnly}
-        values={inputValues}
-        onChange={handleChange}
-        onClear={handleClear}
-        inputValue={inputValue}
-        onInputChange={wrappedOnInputChange}
-        id={`listbox-${id}`}
-        hasOptions={true}
-        isVisibleOptions={isVisible}
-        autoComplete="off"
-        aria-autocomplete="both"
-        aria-activedescendant={
-          navigationOption
-            ? String(makeHash(navigationOption ? navigationOption.value : ''))
-            : undefined
-        }
-      />
+    return freeInput ? (
+      <InputChips {...commonProps} ref={ref} />
+    ) : (
+      <InputChipsBase {...commonProps} ref={ref} />
     )
   }
 )
