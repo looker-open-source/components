@@ -148,6 +148,11 @@ exports[`InputSearch default 1`] = `
   padding-left: 0.75rem;
 }
 
+.c2 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
   className="c0 c1"
   fontSize="small"
