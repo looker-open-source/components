@@ -5,15 +5,20 @@ Array [
   .c0 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -56,15 +61,20 @@ Array [
   .c0 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -107,15 +117,20 @@ Array [
   .c0 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #939BA5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -156,15 +171,20 @@ Array [
   .c0 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #24b25f;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -207,15 +227,20 @@ Array [
   .c0 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #FFA800;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div

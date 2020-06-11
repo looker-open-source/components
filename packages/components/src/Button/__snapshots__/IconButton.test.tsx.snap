@@ -4,14 +4,19 @@ exports[`IconButton accepts color 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -147,14 +152,19 @@ exports[`IconButton accepts events 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -291,14 +301,19 @@ exports[`IconButton accepts events 2`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -435,14 +450,19 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -579,14 +599,19 @@ exports[`IconButton default 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -722,14 +747,19 @@ exports[`IconButton outline 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -883,14 +913,19 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -1026,14 +1061,19 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c4 {
   width: 18px;
   height: 18px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {
@@ -1169,14 +1209,19 @@ exports[`IconButton resized 1`] = `
 .c4 {
   width: 38px;
   height: 38px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c0 {

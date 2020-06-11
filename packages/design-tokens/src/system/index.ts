@@ -36,6 +36,7 @@ export {
   overflow,
   position,
   space,
+  size,
   typography,
   verticalAlign,
   width,
@@ -44,9 +45,13 @@ export type {
   BorderProps,
   BorderRadiusProps,
   BoxShadowProps,
+  DisplayProps,
   FlexboxProps,
-  PositionProps,
   LayoutProps,
+  OverflowProps,
+  PositionProps,
+  SizeProps,
+  VerticalAlignProps,
 } from 'styled-system'
 
 export type CompatibleHTMLProps<T> = Omit<
