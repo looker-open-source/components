@@ -37,11 +37,11 @@ export interface TreeGroupProps extends TextColorProps {
   label: string
 }
 
-const TreeGroupLabel = styled.div`
+export const TreeGroupLabel = styled.div`
   /* Border is here to get proper alignment with Tree and TreeItem text */
   border: 1px transparent solid;
   padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
-  font-size: ${({ theme }) => theme.space.small};
+  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 `
 

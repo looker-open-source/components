@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Tree`, `AccordionContent` no longer add automatic padding at the container level
+  - Padding happens at the individual item level
 - `Icon` can now only be sized via `size` (no height/width since it's a square)
 
 ### Fixed

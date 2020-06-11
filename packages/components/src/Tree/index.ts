@@ -27,3 +27,4 @@
 export * from './Tree'
 export * from './TreeItem'
 export * from './TreeGroup'
+export * from './TreeContext'
