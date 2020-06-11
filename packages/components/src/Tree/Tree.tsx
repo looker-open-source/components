@@ -82,7 +82,7 @@ interface TreeBorderProps {
   depth: number
 }
 
-const treeBorder = (depth: number, theme: Theme) => {
+const generateTreeBorder = (depth: number, theme: Theme) => {
   const {
     colors,
     space: { xxsmall, small },
@@ -106,7 +106,7 @@ const treeBorder = (depth: number, theme: Theme) => {
 }
 
 const TreeBorder = styled.div<TreeBorderProps>`
-  ${({ border, depth, theme }) => border && treeBorder(depth, theme)}
+  ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
 `
 
 const TreeStyle = styled.div<{ depth: number }>`
