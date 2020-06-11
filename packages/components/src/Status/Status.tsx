@@ -24,11 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps, TypographyProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import { Icon, IconNames, IconSize } from '../Icon'
+import { Icon, IconProps, IconNames } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type StatusIntent =
   | 'critical'
@@ -37,15 +35,11 @@ export type StatusIntent =
   | 'positive'
   | 'warn'
 
-export interface StatusProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    SimpleLayoutProps,
-    TypographyProps {
+export interface StatusProps extends Omit<IconProps, 'color' | 'name'> {
   /**
    * @default: 'neutral'
    */
   intent?: StatusIntent
-  size?: IconSize
 }
 
 const getIntentIcon = (intent?: StatusIntent): IconNames => {
