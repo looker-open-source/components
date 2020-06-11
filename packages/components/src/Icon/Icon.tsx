@@ -32,12 +32,12 @@ import {
   SizeSmall,
   SizeMedium,
   SizeLarge,
+  omitStyledProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import omit from 'lodash/omit'
 import {
   sizeSimpleLayoutCSS,
   SizeSimpleLayoutProps,
@@ -77,7 +77,7 @@ const IconLayout = forwardRef(
       <Glyph width="100%" height="100%" fill="currentColor" />
     )
     return (
-      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+      <div ref={ref} {...omitStyledProps(props)}>
         {value}
       </div>
     )

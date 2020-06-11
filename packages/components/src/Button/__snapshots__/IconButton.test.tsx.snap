@@ -2,12 +2,12 @@
 
 exports[`IconButton accepts color 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -129,7 +129,6 @@ exports[`IconButton accepts color 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -151,12 +150,12 @@ exports[`IconButton accepts color 1`] = `
 
 exports[`IconButton accepts events 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -279,7 +278,6 @@ exports[`IconButton accepts events 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -301,12 +299,12 @@ exports[`IconButton accepts events 1`] = `
 
 exports[`IconButton accepts events 2`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -429,7 +427,6 @@ exports[`IconButton accepts events 2`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -451,12 +448,12 @@ exports[`IconButton accepts events 2`] = `
 
 exports[`IconButton allows for ARIA attributes 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -579,7 +576,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -601,12 +597,12 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 
 exports[`IconButton default 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -728,7 +724,6 @@ exports[`IconButton default 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -750,12 +745,12 @@ exports[`IconButton default 1`] = `
 
 exports[`IconButton outline 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -895,7 +890,6 @@ exports[`IconButton outline 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -917,12 +911,12 @@ exports[`IconButton outline 1`] = `
 
 exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1044,7 +1038,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -1066,12 +1059,12 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 
 exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c4 {
+  width: 18px;
+  height: 18px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1193,7 +1186,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -1215,12 +1207,12 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 
 exports[`IconButton resized 1`] = `
 .c4 {
+  width: 38px;
+  height: 38px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 38px;
-  height: 38px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1342,7 +1334,6 @@ exports[`IconButton resized 1`] = `
   <div
     aria-hidden={true}
     className="c4"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"

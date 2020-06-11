@@ -2,12 +2,12 @@
 
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #24b25f;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -71,7 +71,6 @@ exports[`Confirmation MessageBar 1`] = `
 >
   <div
     className="c1"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -103,12 +102,12 @@ exports[`Confirmation MessageBar 1`] = `
 
 exports[`Error MessageBar 1`] = `
 .c1 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -172,7 +171,6 @@ exports[`Error MessageBar 1`] = `
 >
   <div
     className="c1"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -204,12 +202,12 @@ exports[`Error MessageBar 1`] = `
 
 exports[`Info MessageBar 1`] = `
 .c1 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -273,7 +271,6 @@ exports[`Info MessageBar 1`] = `
 >
   <div
     className="c1"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -305,12 +302,12 @@ exports[`Info MessageBar 1`] = `
 
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -324,12 +321,12 @@ exports[`MessageBar can be dismissed 1`] = `
 }
 
 .c7 {
+  width: 22px;
+  height: 22px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 22px;
-  height: 22px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -487,7 +484,6 @@ exports[`MessageBar can be dismissed 1`] = `
 >
   <div
     className="c1"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -536,7 +532,6 @@ exports[`MessageBar can be dismissed 1`] = `
     <div
       aria-hidden={true}
       className="c7"
-      display="inline-flex"
     >
       <svg
         fill="currentColor"
@@ -559,12 +554,12 @@ exports[`MessageBar can be dismissed 1`] = `
 
 exports[`Warn MessageBar 1`] = `
 .c1 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #FFA800;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -620,7 +615,6 @@ exports[`Warn MessageBar 1`] = `
 >
   <div
     className="c1"
-    display="inline-flex"
   >
     <svg
       fill="currentColor"

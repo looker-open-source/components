@@ -59,9 +59,9 @@ export interface SizeSimpleLayoutProps
 
 export const sizeSimpleLayoutCSS = css`
   ${reset}
-  ${space}
-  ${display}
-  ${overflow}
   ${size}
+  ${space}
+  ${overflow}
   ${verticalAlign}
+  ${display}
 `
