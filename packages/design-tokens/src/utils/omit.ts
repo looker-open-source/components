@@ -37,30 +37,30 @@ export const typographyProps = [
 ]
 
 const borderProps = [
-  'BorderWidthProps',
-  'BorderStyleProps',
-  'BorderColorProps',
-  'BorderRadiusProps',
-  'BorderTopProps',
-  'BorderRightProps',
-  'BorderBottomProps',
-  'BorderLeftProps',
+  'borderWidth',
+  'borderStyle',
+  'borderColor',
+  'borderRadius',
+  'borderTop',
+  'borderRight',
+  'borderBottom',
+  'borderLeft',
 ]
 const colorProps = ['backgroundColor', 'bg', 'color', 'opacity']
 const flexProps = [
-  'AlignItemsProps',
-  'AlignContentProps',
-  'JustifyItemsProps',
-  'JustifyContentProps',
-  'FlexWrapProps',
-  'FlexDirectionProps',
-  'FlexProps',
-  'FlexGrowProps',
-  'FlexShrinkProps',
-  'FlexBasisProps',
-  'JustifySelfProps',
-  'AlignSelfProps',
-  'OrderProps',
+  'alignItems',
+  'alignContent',
+  'justifyItems',
+  'justifyContent',
+  'flexWrap',
+  'flexDirection',
+  'flex',
+  'flexGrow',
+  'flexShrink',
+  'flexBasis',
+  'justifySelf',
+  'alignSelf',
+  'order',
 ]
 const positionProps = ['bottom', 'left', 'position', 'right', 'top', 'zIndex']
 const layoutProps = [

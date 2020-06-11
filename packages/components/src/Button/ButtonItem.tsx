@@ -32,6 +32,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  omitStyledProps,
 } from '@looker/design-tokens'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -75,7 +76,7 @@ const ButtonLayout = forwardRef(
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
-        {...props}
+        {...omitStyledProps(props)}
       >
         {children}
       </button>

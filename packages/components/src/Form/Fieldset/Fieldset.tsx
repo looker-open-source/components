@@ -26,7 +26,11 @@
 
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps, SpacingSizes } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  SpacingSizes,
+  omitStyledProps,
+} from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
@@ -134,7 +138,7 @@ const FieldsetLayout = forwardRef(
       content
     )
 
-    return <div {...restProps}>{renderedFieldset}</div>
+    return <div {...omitStyledProps(restProps)}>{renderedFieldset}</div>
   }
 )
 

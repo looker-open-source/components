@@ -51,7 +51,7 @@ const InternalSidebarGroup: FC<SidebarGroupProps> = ({
   }
 
   return (
-    <section className={className} {...props}>
+    <section className={className} {...omitStyledProps(props)}>
       <SidebarGroupHeading onClick={toggle}>
         <button aria-expanded={isOpen ? 'true' : 'false'}>
           {label}
