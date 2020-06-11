@@ -75,8 +75,18 @@ function getUpdatedValues(
   const unusedValues: string[] = []
   const validValues: string[] = []
 
+  // Preserve escaped commas & tabs
+  const commaKey = Math.random() + ''
+  const tabKey = Math.random() + ''
+  const removedEscapes = inputValue
+    .replace(/\\,/, commaKey)
+    .replace(/\\\t/, tabKey)
+
   // Values may be separated by ',' '\t', '\n' and ' '
-  const inputValues: string[] = inputValue.split(/[,\t\n\r]+/)
+  const inputValues: string[] = removedEscapes
+    .split(/[,\t\n\r]+/)
+    .map((value) => value.replace(commaKey, ',').replace(tabKey, '\t'))
+
   inputValues.forEach((val: string) => {
     const trimmedValue = val.trim()
     if (trimmedValue === '') return

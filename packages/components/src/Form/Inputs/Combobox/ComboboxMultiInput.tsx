@@ -33,6 +33,7 @@ import { useForkedRef } from '../../../utils'
 import {
   InputChips,
   InputChipsBase,
+  InputChipsBaseProps,
   InputChipsCommonProps,
   InputChipsInputControlProps,
 } from '../InputChips'
@@ -54,8 +55,7 @@ export interface ComboboxMultiInputProps
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
   /**
-   * Allows creation of values outside of options
-   * by typing or pasting items separated by commas, tabs, or newlines
+   * Allows inputting of values outside of options via typing or pasting
    * @default false
    */
   freeInput?: boolean
@@ -98,14 +98,13 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear && onClear()
     }
 
-    // if freeInput = true, this is called when user inputs
     // if freeInput = false, only called when user removes chips from the input
+    // if freeInput = true, this is called when user inputs values via separators (enter key, comma, tab char, newline)
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
 
       const newOptions = getOptionsFromValues(options, values)
-
       contextOnChange && contextOnChange(newOptions)
     }
 
@@ -180,34 +179,31 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
+    const commonProps: InputChipsBaseProps = {
+      ...rest,
+      ...inputEvents,
+      'aria-activedescendant': navigationOption
+        ? String(makeHash(navigationOption ? navigationOption.value : ''))
+        : undefined,
+      'aria-autocomplete': 'both',
+      autoComplete: 'off',
+      hasOptions: true,
+      id: `listbox-${id}`,
+      inputValue,
+      isVisibleOptions: isVisible,
+      onChange: handleChange,
+      onClear: handleClear,
+      onInputChange: wrappedOnInputChange,
+      readOnly,
+      values: inputValues,
+    }
+
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-    const InputComponent: typeof InputChips = freeInput
-      ? InputChips
-      : InputChipsBase
-
-    return (
-      <InputComponent
-        {...rest}
-        {...inputEvents}
-        ref={ref}
-        readOnly={readOnly}
-        values={inputValues}
-        onChange={handleChange}
-        onClear={handleClear}
-        inputValue={inputValue}
-        onInputChange={wrappedOnInputChange}
-        id={`listbox-${id}`}
-        hasOptions={true}
-        isVisibleOptions={isVisible}
-        autoComplete="off"
-        aria-autocomplete="both"
-        aria-activedescendant={
-          navigationOption
-            ? String(makeHash(navigationOption ? navigationOption.value : ''))
-            : undefined
-        }
-      />
+    return freeInput ? (
+      <InputChips {...commonProps} ref={ref} />
+    ) : (
+      <InputChipsBase {...commonProps} ref={ref} />
     )
   }
 )

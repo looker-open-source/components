@@ -67,6 +67,12 @@ export interface SelectMultiProps
    * @default true
    */
   removeOnBackspace?: boolean
+  /**
+   * Allows inputting of values outside of options via typing or pasting
+   * Not recommended for use when options have labels that are different from their values
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 const SelectMultiComponent = forwardRef(
@@ -92,6 +98,7 @@ const SelectMultiComponent = forwardRef(
       showCreate = false,
       formatCreateLabel,
       removeOnBackspace = true,
+      freeInput = false,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -123,16 +130,8 @@ const SelectMultiComponent = forwardRef(
     const inputProps = {
       disabled,
       placeholder,
+      removeOnBackspace,
       validationType,
-      ...(removeOnBackspace
-        ? {}
-        : {
-            onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => {
-              if (e.currentTarget.value === '' && e.key === 'Backspace') {
-                e.preventDefault()
-              }
-            },
-          }),
     }
 
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
@@ -152,6 +151,7 @@ const SelectMultiComponent = forwardRef(
           readOnly={!isFilterable}
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
+          freeInput={freeInput}
           ref={ref}
         />
         {!disabled && (

@@ -26,16 +26,16 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { createEvent, fireEvent } from '@testing-library/react'
+import { createEvent, fireEvent, screen } from '@testing-library/react'
 
 import { InputChips } from './InputChips'
 
 test('values are added on Enter keydown', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag1' } })
   expect(onChangeMock).not.toHaveBeenCalled()
 
@@ -47,10 +47,10 @@ test('values are added on Enter keydown', () => {
 
 test('values are added when a comma is last character entered', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
 
   // if the last character entered is a comma, values are added
   fireEvent.change(input, { target: { value: 'tag1,' } })
@@ -74,10 +74,10 @@ function firePasteEvent(element: HTMLElement, value: string) {
 
 test('values are added when pasting', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
   // Newlines are stripped when pasting into a text input,
   // but InputChips saves the clipboard with newlines intact from the onPaste
   firePasteEvent(
@@ -97,10 +97,10 @@ tag2`
 
 test('values are added on blur', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag1' } })
   expect(onChangeMock).not.toHaveBeenCalled()
 
@@ -112,14 +112,14 @@ test('values are added on blur', () => {
 
 test('new values are appended to existing values', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips
       onChange={onChangeMock}
       values={['tag1']}
       placeholder="type here"
     />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag2,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(1)
   expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
@@ -128,14 +128,14 @@ test('new values are appended to existing values', () => {
 
 test('values are removed on backspace keydown', () => {
   const onChangeMock = jest.fn()
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips
       onChange={onChangeMock}
       values={['tag1']}
       placeholder="type here"
     />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
 
   // If there is text in the input, Backspace doesn't remove values
   fireEvent.change(input, { target: { value: 't' } })
@@ -150,10 +150,8 @@ test('values are removed on backspace keydown', () => {
 
 test('values are removed by clicking remove on the chip', () => {
   const onChangeMock = jest.fn()
-  const { getByText } = renderWithTheme(
-    <InputChips onChange={onChangeMock} values={['tag1']} />
-  )
-  const remove = getByText('Delete')
+  renderWithTheme(<InputChips onChange={onChangeMock} values={['tag1']} />)
+  const remove = screen.getByText('Delete')
 
   fireEvent.click(remove)
   expect(onChangeMock).toHaveBeenCalledTimes(1)
@@ -166,7 +164,7 @@ test('new values are validated', () => {
   const onDuplicateMock = jest.fn()
 
   const validate = jest.fn((value) => value === 'tag1')
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips
       onChange={onChangeMock}
       values={[]}
@@ -176,7 +174,7 @@ test('new values are validated', () => {
       onDuplicate={onDuplicateMock}
     />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag2,' } })
   // onChange is not called if there are now new valid values
   expect(onChangeMock).not.toHaveBeenCalled()
@@ -195,7 +193,7 @@ test('duplicate values are not added', () => {
   const onChangeMock = jest.fn()
   const onDuplicateMock = jest.fn()
 
-  const { getByPlaceholderText } = renderWithTheme(
+  renderWithTheme(
     <InputChips
       onChange={onChangeMock}
       values={['tag1']}
@@ -203,11 +201,27 @@ test('duplicate values are not added', () => {
       onDuplicate={onDuplicateMock}
     />
   )
-  const input = getByPlaceholderText('type here')
+  const input = screen.getByPlaceholderText('type here')
 
   // value should be trimmed before validation
   fireEvent.change(input, { target: { value: ' tag1,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(0)
   expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('tag1')
+})
+
+test('escaped commas and tabs are preserved', () => {
+  const onChangeMock = jest.fn()
+
+  renderWithTheme(
+    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+  )
+  const input = screen.getByPlaceholderText('type here')
+
+  // value should be trimmed before validation
+  // prettier-ignore
+  /* eslint-disable */
+  fireEvent.change(input, { target: { value: ' tag\,1,tag\	2,' } })
+  /* eslint-enable */
+  expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2'])
 })

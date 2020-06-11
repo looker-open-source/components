@@ -162,3 +162,28 @@ When set to false, hitting the `Backspace` key while focused in the input will n
   )
 }
 ```
+
+## freeInput
+
+Use the `freeInput` prop when the user needs to be able to easily enter values not found in the list of options.
+This enables the inputting behavior of [`InputChips`](/components/forms/input-chips/) where values are separated
+by the enter key, comma, or tab or newline character when pasting.
+
+```jsx
+<SelectMulti
+  options={[
+    { value: 'Cheddar' },
+    { value: 'Gouda' },
+    { value: 'Swiss' },
+    { value: 'Feta' },
+    { value: 'Mascarpone' },
+    { value: 'Brie' },
+    { value: 'Mozzarella' },
+    { value: 'Cotija' },
+    { value: 'Pepperjack' },
+  ]}
+  isFilterable
+  placeholder="Type values or select from the list"
+  freeInput
+/>
+```

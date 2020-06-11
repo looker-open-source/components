@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Icons: `TimeZone`
+- `ComboboxMultiInput` supports `freeInput` to allow inputting of values outside of options, using the behavior of `InputChips`
+- `InputChips` preserves escaped comma and tab characters
 
 ### Fixed
 
