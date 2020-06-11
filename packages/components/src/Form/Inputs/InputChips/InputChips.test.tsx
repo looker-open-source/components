@@ -218,10 +218,6 @@ test('escaped commas and tabs are preserved', () => {
   )
   const input = screen.getByPlaceholderText('type here')
 
-  // value should be trimmed before validation
-  // prettier-ignore
-  /* eslint-disable */
-  fireEvent.change(input, { target: { value: ' tag\,1,tag\	2,' } })
-  /* eslint-enable */
+  fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,' } })
   expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2'])
 })
