@@ -80,9 +80,13 @@ export const getIntentLabel = (intent?: StatusIntent) => {
 }
 
 export const Status = forwardRef(
-  ({ className, intent, size }: StatusProps, ref: Ref<HTMLInputElement>) => (
+  (
+    { className, intent, size, ...props }: StatusProps,
+    ref: Ref<HTMLInputElement>
+  ) => (
     <>
       <Icon
+        {...props}
         className={className}
         ref={ref}
         color={intent}

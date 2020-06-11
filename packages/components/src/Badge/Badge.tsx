@@ -35,7 +35,7 @@ import {
   typography,
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
-import React, { ReactNode, FC } from 'react'
+import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
@@ -98,9 +98,17 @@ const intent = variant({
   },
 })
 
-const BadgeLayout: FC<BadgeProps> = ({ children, ...props }) => {
-  return <span {...props}>{children}</span>
-}
+const BadgeLayout = forwardRef(
+  ({ children, ...props }: BadgeProps, ref: Ref<HTMLElement>) => {
+    return (
+      <span ref={ref} {...props}>
+        {children}
+      </span>
+    )
+  }
+)
+
+BadgeLayout.displayName = 'BadgeLayout'
 
 export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${reset}

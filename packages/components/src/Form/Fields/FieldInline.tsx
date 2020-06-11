@@ -41,42 +41,38 @@ interface FieldInlinePropsInternal extends FieldBaseProps {
   id: string
 }
 
-const FieldInlineLayout: FC<Omit<
-  FieldInlinePropsInternal,
-  'labelFontWeight'
->> = ({
+const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   className,
   children,
+  detail,
   label,
-  labelFontSize,
   id,
   required,
   validationMessage,
-}) => {
-  return (
-    <label className={className} htmlFor={id}>
-      <Label as="span" fontSize={labelFontSize}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
-      <InputArea>{children}</InputArea>
-      <MessageArea id={`${id}-describedby`}>
-        {validationMessage ? (
-          <ValidationMessage {...validationMessage} />
-        ) : null}
-      </MessageArea>
-    </label>
-  )
-}
+}) => (
+  <label className={className} htmlFor={id}>
+    <Label as="span">
+      {label}
+      {required && <RequiredStar />}
+    </Label>
+    {detail && <FieldDetail>{detail}</FieldDetail>}
+    <InputArea>{children}</InputArea>
+    <MessageArea id={`${id}-describedby`}>
+      {validationMessage ? <ValidationMessage {...validationMessage} /> : null}
+    </MessageArea>
+  </label>
+)
 
 const InputArea = styled.div``
+const FieldDetail = styled.div``
+
 const MessageArea = styled.div``
 
 export const FieldInline = styled(FieldInlineLayout)`
   align-items: center;
   display: grid;
-  grid-template-areas: 'input label' '. messages';
-  grid-template-columns: repeat(3, max-content);
+  grid-template-areas: 'input label detail' '. messages messages';
+  grid-template-columns: repeat(2, max-content) 1fr;
   line-height: ${({ theme }) => theme.lineHeights.small};
 
   ${InputArea} {
@@ -84,11 +80,21 @@ export const FieldInline = styled(FieldInlineLayout)`
   }
 
   ${Label} {
-    color: ${({ theme, disabled }) => disabled && theme.colors.text4};
+    color: ${({ theme, disabled }) => disabled && theme.colors.text5};
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
     grid-area: label;
     padding-left: ${({ theme }) => theme.space.xsmall};
+    display: flex;
+    align-items: center;
+  }
+
+  ${FieldDetail} {
+    grid-area: detail;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin-left: ${({ theme: { space } }) => space.xxsmall};
   }
 
   ${MessageArea} {

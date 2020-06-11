@@ -24,7 +24,7 @@
 
  */
 
-import { FontSizes, FontWeights } from '@looker/design-tokens'
+import { ReactNode } from 'react'
 import { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
 
 export interface FieldBaseProps {
@@ -35,18 +35,13 @@ export interface FieldBaseProps {
    */
   label?: string
   /**
-   * Specifies the fontWeight of the internal Label.
-   * TODO - Deprecate usage in HT, then here.
-   */
-  labelFontSize?: FontSizes
-  /**
-   * Specifies the fontWeight of the internal Label.
-   */
-  labelFontWeight?: FontWeights
-  /**
    * Whether or not the field should display a `*` denoting it is required.
    */
   required?: boolean
+  /**
+   * notes and details added to the top right corner of the field
+   */
+  detail?: ReactNode
   /**
    *
    * Holds the type of validation (error, warning, etc.) and corresponding message.
