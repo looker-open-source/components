@@ -94,3 +94,5 @@ export const Icon = styled(IconLayout)<IconProps>`
     width: 100%;
   }
 `
+
+Icon.defaultProps = { size: 'medium' }
