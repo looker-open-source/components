@@ -29,11 +29,16 @@ export {
   border,
   boxShadow,
   color,
+  display,
+  height,
   flexbox,
+  overflow,
   position,
   layout,
   space,
   typography,
+  width,
+  verticalAlign,
 } from 'styled-system'
 export type {
   BorderProps,
