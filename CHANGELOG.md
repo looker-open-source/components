@@ -63,7 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `FieldCollapseLabel` component
+- `labelsCollapse` added to Field and Fieldset
 
 ## [0.8.6]
 

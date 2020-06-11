@@ -26,7 +26,6 @@
 
 export * from './FieldCheckbox'
 export * from './FieldCheckboxGroup'
-export * from './FieldCollapseLabel'
 export * from './FieldColor'
 export * from './FieldDate'
 export * from './FieldDateRange'
