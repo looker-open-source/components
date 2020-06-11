@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import React, { forwardRef, ReactNode, Ref, createContext } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
@@ -56,6 +56,11 @@ export interface FieldsetProps
   /** Displayed above the children of Fieldset
    */
   legend?: ReactNode
+  /**
+   * Hide labels on Fields within this Fieldset=
+   * @default false
+   */
+  labelsCollapse?: boolean
 }
 
 const accordionIndicatorDefaults: AccordionIndicatorProps = {
@@ -68,6 +73,12 @@ const accordionIndicatorDefaults: AccordionIndicatorProps = {
   indicatorSize: 'medium',
 }
 
+export interface FieldsetContext {
+  labelsCollapse?: boolean
+}
+
+export const FieldsetContext = createContext<FieldsetContext>({})
+
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
     const {
@@ -76,6 +87,7 @@ const FieldsetLayout = forwardRef(
       className,
       legend,
       children,
+      labelsCollapse,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
     const accordionProps = {
@@ -128,7 +140,13 @@ const FieldsetLayout = forwardRef(
       content
     )
 
-    return <div className={className}>{renderedFieldset}</div>
+    return (
+      <FieldsetContext.Provider
+        value={{ labelsCollapse: labelsCollapse || false }}
+      >
+        <div className={className}>{renderedFieldset}</div>
+      </FieldsetContext.Provider>
+    )
   }
 )
 

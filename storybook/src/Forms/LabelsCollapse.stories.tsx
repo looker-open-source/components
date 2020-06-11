@@ -24,24 +24,28 @@
 
  */
 
-import { FieldCollapseLabel, Fieldset, FieldText } from '@looker/components'
+import { Fieldset, FieldText, FieldTextArea } from '@looker/components'
 import React from 'react'
 
 export const FieldCollapse = () => (
   <>
-    <FieldCollapseLabel>
-      <Fieldset inline legend="This is the Legend">
-        <FieldText label="First Label" />
-        <FieldText label="Second Label" />
-        <FieldText
-          label="Third Label"
-          validationMessage={{
-            message: 'This is an error',
-            type: 'error',
-          }}
-        />
-      </Fieldset>
-    </FieldCollapseLabel>
+    <Fieldset labelsCollapse legend="This is the Legend">
+      <FieldText label="First Label" />
+      <FieldText label="Second Label" labelCollapse />
+      <FieldText
+        label="Third Label"
+        validationMessage={{
+          message: 'This is an error',
+          type: 'error',
+        }}
+      />
+    </Fieldset>
+    <Fieldset legend="This is the Legend">
+      <FieldText label="First Label" />
+      <FieldText label="Second Label" />
+      <FieldText label="Third Label" labelCollapse />
+    </Fieldset>
+    <FieldTextArea label="FieldTextArea Label" labelCollapse />
   </>
 )
 export default {
