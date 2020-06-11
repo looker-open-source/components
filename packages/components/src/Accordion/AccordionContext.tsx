@@ -27,12 +27,13 @@
 import { SpacingSizes } from '@looker/design-tokens'
 import { createContext } from 'react'
 import noop from 'lodash/noop'
+import { IconSize } from '../Icon'
 import { IndicatorIcons } from './Accordion'
 
 export interface AccordionContextProps {
   indicatorGap: SpacingSizes
   indicatorIcons: IndicatorIcons
-  indicatorSize: SpacingSizes
+  indicatorSize: IconSize
   indicatorPosition: 'left' | 'right'
   isOpen: boolean
   toggleOpen: (isOpen: boolean) => void
@@ -47,7 +48,7 @@ export const accordionContextDefaults: AccordionContextProps = {
     open: 'CaretUp',
   },
   indicatorPosition: 'right',
-  indicatorSize: 'large',
+  indicatorSize: 'small',
   isOpen: false,
   toggleOpen: (isOpen: boolean) => noop(isOpen),
 }

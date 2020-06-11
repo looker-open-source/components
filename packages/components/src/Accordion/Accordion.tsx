@@ -27,7 +27,7 @@
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
-import { IconNames } from '../Icon'
+import { IconNames, IconSize } from '../Icon'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext, accordionContextDefaults } from './AccordionContext'
 
@@ -47,7 +47,7 @@ export interface AccordionIndicatorProps {
    * Size of icon on disclosure
    * @default 'large'
    */
-  indicatorSize?: SpacingSizes
+  indicatorSize?: IconSize
 
   /**
    * Space between label and indicator within disclosure
