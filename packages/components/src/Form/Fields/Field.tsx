@@ -75,6 +75,9 @@ export const fieldPropKeys = [
   'id',
   'inline',
   'label',
+  'labelCollapse',
+  'labelFontSize',
+  'labelFontWeight',
   'labelWidth',
   'validationMessage',
   'width',
@@ -102,7 +105,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   detail,
   id,
   label,
-  labelCollapse,
+  labelCollapse = false,
   labelFontSize,
   labelFontWeight,
   required,
@@ -134,7 +137,9 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      {labelCollapse || labelsCollapse ? (
+      {labelCollapse ? (
+        <VisuallyHidden>{labelComponent}</VisuallyHidden>
+      ) : labelsCollapse ? (
         <VisuallyHidden>{labelComponent}</VisuallyHidden>
       ) : (
         labelComponent

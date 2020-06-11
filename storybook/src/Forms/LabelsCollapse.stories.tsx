@@ -31,7 +31,7 @@ export const FieldCollapse = () => (
   <>
     <Fieldset labelsCollapse legend="This is the Legend">
       <FieldText label="First Label" />
-      <FieldText label="Second Label" labelCollapse />
+      <FieldText label="Second Label" labelCollapse={false} />
       <FieldText
         label="Third Label"
         validationMessage={{
