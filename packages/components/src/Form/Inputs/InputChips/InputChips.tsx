@@ -175,7 +175,7 @@ export const InputChipsInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Enter') {
+      if (!e.defaultPrevented && e.key === 'Enter') {
         // Don't submit a form if there is one
         e.preventDefault()
         // Update values when the user hits return
