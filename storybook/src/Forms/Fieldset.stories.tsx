@@ -25,7 +25,18 @@
  */
 
 import React, { FC } from 'react'
-import { Fieldset, FieldText, FieldCheckbox } from '@looker/components'
+import {
+  Button,
+  Fieldset,
+  FieldText,
+  FieldCheckbox,
+  FieldCheckboxGroup,
+  FieldRadioGroup,
+  Link,
+  Status,
+  Tooltip,
+  Divider,
+} from '@looker/components'
 
 export default {
   title: 'Forms/Fieldset',
@@ -33,9 +44,19 @@ export default {
 
 const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
   <>
-    <FieldText inline={inline} required label="Neat Stuff" />
-    <FieldText inline={inline} label="Neat Stuff" />
-    <FieldText inline={inline} label="Neat Stuff" />
+    <FieldText
+      inline={inline}
+      placeholder="First name"
+      required
+      label="First name"
+    />
+    <FieldText inline={inline} label="Middle" placeholder="Middle" />
+    <FieldText
+      inline={inline}
+      required
+      label="Last name"
+      placeholder="Last name"
+    />
   </>
 )
 
@@ -74,5 +95,101 @@ export const Accordion = () => (
     <FieldCheckbox name="box1" label="you can click here" />
     <FieldCheckbox name="box2" label="here too" />
     <FieldCheckbox name="box3" label="also here" />
+  </Fieldset>
+)
+
+export const AccordionAlt = () => {
+  const options = [
+    {
+      detail: (
+        <Tooltip content="PNW > Wisconsin" placement="right">
+          <Status size="small" intent="neutral" />
+        </Tooltip>
+      ),
+      label: 'Cheddar',
+      required: true,
+      value: 'cheddar',
+    },
+    {
+      detail: (
+        <Tooltip
+          placement="right"
+          content={
+            <>
+              Some helpful explanatory text. <Link>Learn more</Link>
+            </>
+          }
+        >
+          <Status size="small" intent="neutral" />
+
+          {/* <Badge intent="neutral">&gt; 100,000 results</Badge> */}
+        </Tooltip>
+      ),
+      disabled: true,
+      label: 'Green',
+      value: 'blue',
+    },
+    { label: 'Swiss', tooltip: 'Has holes', value: 'swiss' },
+  ]
+
+  const value = 'blue'
+
+  return (
+    <>
+      <Fieldset
+        width="26rem"
+        legend="Advanced Cheese Options"
+        accordion
+        defaultOpen
+      >
+        <FieldRadioGroup
+          defaultValue={value}
+          label="Favorite"
+          options={options}
+        />
+        <FieldRadioGroup defaultValue={value} label="Worst" options={options} />
+        <FieldCheckboxGroup
+          defaultValue={[value]}
+          label="Would Eat"
+          options={options}
+        />
+      </Fieldset>
+      <Divider my="xxlarge" />
+      <Fieldset legend="Advanced Cheese Options" accordion defaultOpen>
+        {' '}
+        <FieldRadioGroup
+          defaultValue={value}
+          label="Favorite"
+          options={options}
+          inline
+        />
+        <FieldCheckboxGroup
+          defaultValue={[value]}
+          label="Edible"
+          options={options}
+          inline
+        />
+      </Fieldset>
+    </>
+  )
+}
+
+export const Nesting = () => (
+  <Fieldset gap="xxlarge">
+    <Button fullWidth>Button A</Button>
+    <Button fullWidth>Button B</Button>
+    <Button fullWidth>Button C</Button>
+
+    <Fieldset gap="none">
+      <Button fullWidth>Button A</Button>
+      <Button fullWidth>Button B</Button>
+      <Button fullWidth>Button C</Button>
+
+      <Fieldset gap="medium">
+        <Button fullWidth>Button A</Button>
+        <Button fullWidth>Button B</Button>
+        <Button fullWidth>Button C</Button>
+      </Fieldset>
+    </Fieldset>
   </Fieldset>
 )

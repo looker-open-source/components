@@ -1155,7 +1155,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 .c2 {
   color: #343C42;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .c0 {
@@ -1266,7 +1266,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
     className="c1 c2"
     color="text2"
     fontSize="xsmall"
-    fontWeight="normal"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
     id="thumbs-up-labelledby"
   >

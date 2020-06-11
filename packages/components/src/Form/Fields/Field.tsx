@@ -29,10 +29,9 @@ import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
+import { Paragraph, Text } from '../../Text'
 import { inputHeight } from '../Inputs/InputText/InputText'
-import { Label } from '../Label/Label'
-import { Paragraph } from '../../Text/Paragraph'
-import { Text } from '../../Text/Text'
+import { Label } from '../Label'
 import { ValidationMessage } from '../ValidationMessage'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
@@ -44,10 +43,7 @@ export interface FieldProps extends FieldBaseProps {
    * optional extra description
    */
   description?: ReactNode
-  /**
-   * notes and details added to the top right corner of the field
-   */
-  detail?: ReactNode
+
   /**
    * Id of the input element to match a label to.
    */
@@ -57,13 +53,6 @@ export interface FieldProps extends FieldBaseProps {
    * @default false
    */
   inline?: boolean
-
-  /**
-   * Specifies for horizontally aligned labels how much space to take up.
-   * @default '150px'
-   */
-  labelWidth?: ResponsiveSpaceValue
-
   /**
    *
    * Specify the width of the FieldText if different then 100%
@@ -107,8 +96,6 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   detail,
   id,
   label,
-  labelFontSize,
-  labelFontWeight,
   required,
   validationMessage,
 }) => {
@@ -124,12 +111,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      <Label
-        fontSize={labelFontSize}
-        fontWeight={labelFontWeight}
-        htmlFor={id}
-        id={`${id}-labelledby`}
-      >
+      <Label htmlFor={id} id={`${id}-labelledby`}>
         {label}
         {required && <RequiredStar />}
       </Label>
@@ -177,8 +159,7 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
     inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
-  grid-template-columns: ${({ inline, labelWidth }) =>
-    inline ? `${labelWidth} 1fr` : undefined};
+  grid-template-columns: ${({ inline }) => (inline ? `150px 1fr` : undefined)};
 
   ${InputArea} {
     grid-area: input;
@@ -209,4 +190,4 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   }
 `
 
-Field.defaultProps = { labelWidth: '150px', width: '100%' }
+Field.defaultProps = { width: '100%' }
