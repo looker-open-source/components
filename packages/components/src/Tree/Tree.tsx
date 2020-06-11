@@ -77,12 +77,27 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
-interface TreeStyleProps {
+interface TreeBorderProps {
   border?: boolean
   depth: number
 }
 
-const TreeStyle = styled.div<TreeStyleProps>`
+const TreeBorder = styled.div<TreeBorderProps>`
+  background: ${({ border, depth, theme }) => {
+    const itemBorderSize = '1px'
+    const itemPaddingSize = theme.space.xxsmall
+    const indicatorIconSize = theme.space.small
+    const indicatorGapSize = theme.space.xxsmall
+    const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+    const borderSpacer = `(${theme.space.small} / 2) + ${depthSize}`
+    return (
+      border &&
+      `linear-gradient(90deg, transparent calc(${borderSpacer} - 1px), ${theme.colors.ui3}, transparent calc(${borderSpacer} + 1px))`
+    )
+  }};
+`
+
+const TreeStyle = styled.div<{ depth: number }>`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
@@ -91,9 +106,6 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   ${TreeGroupLabel} {
-    /*
-      border + inherent padding left + icon size + gap size
-     */
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
@@ -105,8 +117,8 @@ const TreeStyle = styled.div<TreeStyleProps>`
     outline: none;
   }
 
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem},
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeGroup} > ${
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem},
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
 } {
     border: 1px solid transparent;
@@ -118,11 +130,15 @@ const TreeStyle = styled.div<TreeStyleProps>`
       }) * ${depth + 1})`}
   }
 
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeItem}:focus {
+  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeBorder} > ${
+  /* sc-selector */ TreeItem
+}:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 
-  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeItem}:focus {
+  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeBorder} > ${
+  /* sc-selector */ TreeItem
+}:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
@@ -143,7 +159,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   return (
     <TreeContext.Provider value={{ border: isBorderEnabled, depth: nextDepth }}>
-      <TreeStyle depth={depth} border={border}>
+      <TreeStyle depth={depth}>
         <Accordion {...indicatorProps} {...restProps}>
           <AccordionDisclosure fontWeight={fontWeight}>
             <TreeItem
@@ -155,8 +171,10 @@ const TreeLayout: FC<TreeProps> = ({
               {label}
             </TreeItem>
           </AccordionDisclosure>
-          <AccordionContent border={isBorderEnabled} borderDepth={depth}>
-            {children}
+          <AccordionContent>
+            <TreeBorder border={isBorderEnabled} depth={depth}>
+              {children}
+            </TreeBorder>
           </AccordionContent>
         </Accordion>
       </TreeStyle>
