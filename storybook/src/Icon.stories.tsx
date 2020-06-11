@@ -24,38 +24,40 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { Icon } from './Icon'
+import { Icon, Space, SpaceVertical } from '@looker/components'
 
-test('Icon default', () => {
-  assertSnapshot(<Icon name="Plus" />)
-})
+export default {
+  title: 'Icons',
+}
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size="large" />)
-})
+export const Icons = () => (
+  <SpaceVertical>
+    <Space>
+      <Icon name="Trash" size="xxsmall" />
+      <Icon name="Trash" size="xsmall" />
+      <Icon name="Trash" size="small" />
+      <Icon name="Trash" size="medium" />
+      <Icon name="Trash" size="large" />
+      <Icon name="Trash" />
+    </Space>
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size={12} />)
-})
+    <Space>
+      <Icon name="Trash" width="3rem" size="xxsmall" />
+      <Icon name="Trash" width="3rem" size="xsmall" />
+      <Icon name="Trash" width="3rem" size="small" />
+      <Icon name="Trash" width="3rem" size="medium" />
+      <Icon name="Trash" width="3rem" size="large" />
+      <Icon name="Trash" width="3rem" />
+    </Space>
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size="1rem" />)
-})
-
-test('Icon default + specified width', () => {
-  assertSnapshot(<Icon name="Plus" width="2rem" />)
-})
-
-test('Icon with styled system size + specified height', () => {
-  assertSnapshot(<Icon name="Plus" size="large" height="12px" />)
-})
-
-test('Icon supports DOM attributes', () => {
-  const { findByLabelText } = renderWithTheme(
-    <Icon name="Plus" aria-label="Add" />
-  )
-  expect(findByLabelText('Add')).toBeTruthy()
-})
+    <Space>
+      <Icon name="Trash" height="3rem" size="xxsmall" />
+      <Icon name="Trash" height="3rem" size="xsmall" />
+      <Icon name="Trash" height="3rem" size="small" />
+      <Icon name="Trash" height="3rem" size="medium" />
+      <Icon name="Trash" height="3rem" size="large" />
+      <Icon name="Trash" height="3rem" />
+    </Space>
+  </SpaceVertical>
+)

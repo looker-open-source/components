@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `ButtonGroup` space between rows when wrapping
+- `Icon` now properly sizes when just a width or height is specified
 
 ## [0.8.6]
 

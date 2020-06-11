@@ -26,18 +26,18 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c12 {
+  color: #707781;
   width: 18px;
   height: 18px;
-  margin-right: 0.5rem;
-  color: #707781;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-right: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -334,33 +334,33 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c14 {
+  color: #707781;
   width: 18px;
   height: 18px;
-  margin-right: 0.5rem;
-  color: #707781;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-right: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c12 {
+  color: #CC1F36;
   width: 20px;
   height: 20px;
-  margin-right: 0.25rem;
-  color: #CC1F36;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-right: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -729,18 +729,18 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c14 {
+  color: #707781;
   width: 18px;
   height: 18px;
-  margin-right: 0.5rem;
-  color: #707781;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-right: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c10 {
@@ -1062,18 +1062,18 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c12 {
+  color: #707781;
   width: 18px;
   height: 18px;
-  margin-right: 0.5rem;
-  color: #707781;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-right: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
