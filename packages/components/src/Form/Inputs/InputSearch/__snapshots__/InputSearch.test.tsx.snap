@@ -136,6 +136,12 @@ exports[`InputSearch default 1`] = `
 .c2 {
   width: 30px;
   height: 30px;
+  width: 30px;
+  height: 30px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

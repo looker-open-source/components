@@ -4,6 +4,12 @@ exports[`IconButton accepts color 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -147,6 +153,12 @@ exports[`IconButton accepts events 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -291,6 +303,12 @@ exports[`IconButton accepts events 2`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -435,6 +453,12 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -579,6 +603,12 @@ exports[`IconButton default 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -722,6 +752,12 @@ exports[`IconButton outline 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -883,6 +919,12 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1026,6 +1068,12 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c4 {
   width: 18px;
   height: 18px;
+  width: 18px;
+  height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1169,6 +1217,12 @@ exports[`IconButton resized 1`] = `
 .c4 {
   width: 38px;
   height: 38px;
+  width: 38px;
+  height: 38px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

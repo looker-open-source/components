@@ -3,11 +3,17 @@
 exports[`Icon default + specified width 1`] = `
 .c0 {
   width: 2rem;
+  height: 1.5rem;
+  width: 2rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -36,12 +42,18 @@ exports[`Icon default + specified width 1`] = `
 
 exports[`Icon default 1`] = `
 .c0 {
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.5rem;
   width: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -72,6 +84,12 @@ exports[`Icon with styled system size + specified height 1`] = `
 .c0 {
   width: 2rem;
   height: 12px;
+  width: 2rem;
+  height: 12px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -106,6 +124,12 @@ exports[`Icon with styled system size 1`] = `
 .c0 {
   width: 2rem;
   height: 2rem;
+  width: 2rem;
+  height: 2rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -140,6 +164,12 @@ exports[`Icon with styled system size 2`] = `
 .c0 {
   width: 12px;
   height: 12px;
+  width: 12px;
+  height: 12px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -174,6 +204,12 @@ exports[`Icon with styled system size 3`] = `
 .c0 {
   width: 1rem;
   height: 1rem;
+  width: 1rem;
+  height: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
