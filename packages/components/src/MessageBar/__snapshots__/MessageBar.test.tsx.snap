@@ -2,19 +2,12 @@
 
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
-  color: #24b25f;
-  width: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -103,19 +96,12 @@ exports[`Confirmation MessageBar 1`] = `
 
 exports[`Error MessageBar 1`] = `
 .c1 {
-  color: #CC1F36;
-  width: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -204,19 +190,12 @@ exports[`Error MessageBar 1`] = `
 
 exports[`Info MessageBar 1`] = `
 .c1 {
-  color: #0087e1;
-  width: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -305,19 +284,12 @@ exports[`Info MessageBar 1`] = `
 
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
-  color: #0087e1;
-  width: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -325,18 +297,12 @@ exports[`MessageBar can be dismissed 1`] = `
 }
 
 .c7 {
-  width: 22px;
-  height: 22px;
-  width: 22px;
-  height: 22px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 22px;
+  height: 22px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -559,19 +525,12 @@ exports[`MessageBar can be dismissed 1`] = `
 
 exports[`Warn MessageBar 1`] = `
 .c1 {
-  color: #FFA800;
-  width: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

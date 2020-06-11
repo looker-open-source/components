@@ -25,28 +25,22 @@
  */
 
 import {
-  color,
   CompatibleHTMLProps,
-  display,
-  height,
-  layout,
   omitStyledProps,
-  overflow,
-  reset,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  space,
-  width,
-  verticalAlign,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import { SimpleLayoutProps } from '../Layout/utils/simple'
+import {
+  sizeSimpleLayoutCSS,
+  SizeSimpleLayoutProps,
+} from '../Layout/utils/simple'
 
 export type IconSize =
   | SizeXXSmall
@@ -57,7 +51,7 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    SimpleLayoutProps {
+    SizeSimpleLayoutProps {
   color?: string
   name: IconNames
 }
@@ -78,23 +72,9 @@ const IconLayout = forwardRef(
 
 IconLayout.displayName = 'IconLayout'
 
-const defaultIconSize = 'medium'
-
-export const Icon = styled(IconLayout).attrs(({ size, height, width }) => ({
-  height: height || size || defaultIconSize,
-  width: width || size || defaultIconSize,
-}))<IconProps>`
-  ${reset}
-  ${color}
-  ${width}
-  ${height}
-  ${layout}
-  ${overflow}
-  ${space}
-  ${display}
-  ${verticalAlign}
-
+export const Icon = styled(IconLayout)<IconProps>`
+  ${sizeSimpleLayoutCSS}
   align-items: center;
 `
 
-Icon.defaultProps = { display: 'inline-flex' }
+Icon.defaultProps = { display: 'inline-flex', size: 'medium' }

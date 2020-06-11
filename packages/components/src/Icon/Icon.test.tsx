@@ -45,14 +45,6 @@ test('Icon with styled system size', () => {
   assertSnapshot(<Icon name="Plus" size="1rem" />)
 })
 
-test('Icon default + specified width', () => {
-  assertSnapshot(<Icon name="Plus" width="2rem" />)
-})
-
-test('Icon with styled system size + specified height', () => {
-  assertSnapshot(<Icon name="Plus" size="large" height="12px" />)
-})
-
 test('Icon supports DOM attributes', () => {
   const { findByLabelText } = renderWithTheme(
     <Icon name="Plus" aria-label="Add" />
