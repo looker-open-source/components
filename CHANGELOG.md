@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Icons: `TimeZone`
 
+### Changed
+
+- `Icon` can now only be sized via `size` (no height/width since it's a square)
+
 ### Fixed
 
 - `ComponentsProvider` actually uses the `theme` passed in

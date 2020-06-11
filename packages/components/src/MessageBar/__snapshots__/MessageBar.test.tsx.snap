@@ -4,15 +4,15 @@ exports[`Confirmation MessageBar 1`] = `
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #24b25f;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .c1 svg {
@@ -104,15 +104,15 @@ exports[`Error MessageBar 1`] = `
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .c1 svg {
@@ -204,15 +204,15 @@ exports[`Info MessageBar 1`] = `
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .c1 svg {
@@ -304,15 +304,15 @@ exports[`MessageBar can be dismissed 1`] = `
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .c1 svg {
@@ -323,14 +323,14 @@ exports[`MessageBar can be dismissed 1`] = `
 .c7 {
   width: 22px;
   height: 22px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c7 svg {
@@ -556,15 +556,15 @@ exports[`Warn MessageBar 1`] = `
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #FFA800;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .c1 svg {

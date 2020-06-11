@@ -32,13 +32,16 @@ import {
   SizeSmall,
   SizeMedium,
   SizeLarge,
+  omitStyledProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
-import omit from 'lodash/omit'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import {
+  sizeSimpleLayoutCSS,
+  SizeSimpleLayoutProps,
+} from '../Layout/utils/simple'
 
 export type IconSize =
   | SizeXXSmall
@@ -49,7 +52,7 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    SimpleLayoutProps {
+    SizeSimpleLayoutProps {
   /**
    * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
    */
@@ -60,7 +63,7 @@ export interface IconProps
 
 export type { IconNames }
 
-const IconFactory = forwardRef(
+const IconLayout = forwardRef(
   (
     { artwork = undefined, name, ...props }: IconProps,
     ref: Ref<HTMLDivElement>
@@ -74,28 +77,24 @@ const IconFactory = forwardRef(
       <Glyph width="100%" height="100%" fill="currentColor" />
     )
     return (
-      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+      <div ref={ref} {...omitStyledProps(props)}>
         {value}
       </div>
     )
   }
 )
 
-IconFactory.displayName = 'IconFactory'
+IconLayout.displayName = 'IconLayout'
 
-export const Icon = styled(IconFactory).attrs(({ size, height, width }) => ({
-  size: !height && !width ? size || 'medium' : undefined,
-}))`
-  ${simpleLayoutCSS}
+export const Icon = styled(IconLayout)<IconProps>`
+  ${sizeSimpleLayoutCSS}
   ${color}
-
   align-items: center;
-  display: inline-flex;
-  height: ${({ height }) => height};
-  width: ${({ width }) => width};
 
   svg {
     height: 100%;
     width: 100%;
   }
 `
+
+Icon.defaultProps = { display: 'inline-flex', size: 'medium' }
