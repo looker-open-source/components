@@ -92,7 +92,7 @@ const TreeBorder = styled.div<TreeBorderProps>`
     const borderSpacer = `(${theme.space.small} / 2) + ${depthSize}`
     return (
       border &&
-      `linear-gradient(90deg, transparent calc(${borderSpacer} - 1px), ${theme.colors.ui3}, transparent calc(${borderSpacer} + 1px))`
+      `linear-gradient(90deg, transparent calc(${borderSpacer} - 1px), ${theme.colors.ui2}, transparent calc(${borderSpacer}))`
     )
   }};
 `
