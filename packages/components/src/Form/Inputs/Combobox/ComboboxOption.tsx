@@ -186,7 +186,7 @@ const ComboboxOptionInternal = forwardRef(
           isActive={isActive}
           isSelected={isSelected}
         >
-          {isSelected && <Icon name="Check" mr={0} />}
+          {isSelected && <Icon name="Check" size="1rem" mr={0} />}
         </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
