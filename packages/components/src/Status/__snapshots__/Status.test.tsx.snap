@@ -3,8 +3,13 @@
 exports[`critical Status 1`] = `
 Array [
   .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -18,6 +23,7 @@ Array [
 
 <div
     className="c0"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -54,8 +60,13 @@ Array [
 exports[`inform Status 1`] = `
 Array [
   .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #0087e1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -69,6 +80,7 @@ Array [
 
 <div
     className="c0"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -105,8 +117,13 @@ Array [
 exports[`neutral status 1`] = `
 Array [
   .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #939BA5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -120,6 +137,7 @@ Array [
 
 <div
     className="c0"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -154,8 +172,13 @@ Array [
 exports[`positive Status 1`] = `
 Array [
   .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #24b25f;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -169,6 +192,7 @@ Array [
 
 <div
     className="c0"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -205,8 +229,13 @@ Array [
 exports[`warn Status 1`] = `
 Array [
   .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #FFA800;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -220,6 +249,7 @@ Array [
 
 <div
     className="c0"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"

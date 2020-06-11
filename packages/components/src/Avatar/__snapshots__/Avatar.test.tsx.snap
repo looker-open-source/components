@@ -2,8 +2,13 @@
 
 exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #9785F2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -111,6 +116,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   >
     <div
       className="c6 c7"
+      display="inline-flex"
     >
       <svg
         fill="currentColor"
@@ -133,8 +139,13 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 
 exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
 .c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #9785F2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -242,6 +253,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   >
     <div
       className="c6 c7"
+      display="inline-flex"
     >
       <svg
         fill="currentColor"
@@ -264,8 +276,13 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 
 exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
 .c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #9785F2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -348,6 +365,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   >
     <div
       className="c2 c3"
+      display="inline-flex"
     >
       <svg
         fill="currentColor"
@@ -370,6 +388,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   >
     <div
       className="c2 c3"
+      display="inline-flex"
     >
       <svg
         fill="currentColor"
@@ -394,8 +413,13 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 
 exports[`AvatarIcon renders  1`] = `
 .c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #9785F2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -449,6 +473,7 @@ exports[`AvatarIcon renders  1`] = `
 >
   <div
     className="c1 c2"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -470,8 +495,13 @@ exports[`AvatarIcon renders  1`] = `
 
 exports[`AvatarIcon renders different icon if specified 1`] = `
 .c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
+  color: #9785F2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -525,6 +555,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 >
   <div
     className="c1 c2"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"

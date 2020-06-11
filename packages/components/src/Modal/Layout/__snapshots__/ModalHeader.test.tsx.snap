@@ -2,6 +2,10 @@
 
 exports[`ModalHeader 1`] = `
 .c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
@@ -170,6 +174,7 @@ exports[`ModalHeader 1`] = `
     <div
       aria-hidden={true}
       className="c6"
+      display="inline-flex"
     >
       <svg
         fill="currentColor"

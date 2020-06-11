@@ -2,6 +2,10 @@
 
 exports[`Icon default 1`] = `
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -17,6 +21,7 @@ exports[`Icon default 1`] = `
 
 <div
   className="c0"
+  display="inline-flex"
 >
   <svg
     fill="currentColor"
@@ -37,6 +42,10 @@ exports[`Icon default 1`] = `
 
 exports[`Icon with styled system size 1`] = `
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 2rem;
   height: 2rem;
   -webkit-align-items: center;
@@ -52,6 +61,7 @@ exports[`Icon with styled system size 1`] = `
 
 <div
   className="c0"
+  display="inline-flex"
 >
   <svg
     fill="currentColor"
@@ -72,6 +82,10 @@ exports[`Icon with styled system size 1`] = `
 
 exports[`Icon with styled system size 2`] = `
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 12px;
   height: 12px;
   -webkit-align-items: center;
@@ -87,6 +101,7 @@ exports[`Icon with styled system size 2`] = `
 
 <div
   className="c0"
+  display="inline-flex"
 >
   <svg
     fill="currentColor"
@@ -107,6 +122,10 @@ exports[`Icon with styled system size 2`] = `
 
 exports[`Icon with styled system size 3`] = `
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1rem;
   height: 1rem;
   -webkit-align-items: center;
@@ -122,6 +141,7 @@ exports[`Icon with styled system size 3`] = `
 
 <div
   className="c0"
+  display="inline-flex"
 >
   <svg
     fill="currentColor"

@@ -532,6 +532,10 @@ exports[`Button validates all sizes 4`] = `
 
 exports[`Button with icon validates all sizes 1`] = `
 .c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -664,6 +668,7 @@ exports[`Button with icon validates all sizes 1`] = `
 >
   <div
     class="c2 c3"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -686,6 +691,10 @@ exports[`Button with icon validates all sizes 1`] = `
 
 exports[`Button with icon validates all sizes 2`] = `
 .c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -818,6 +827,7 @@ exports[`Button with icon validates all sizes 2`] = `
 >
   <div
     class="c2 c3"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -840,6 +850,10 @@ exports[`Button with icon validates all sizes 2`] = `
 
 exports[`Button with icon validates all sizes 3`] = `
 .c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -972,6 +986,7 @@ exports[`Button with icon validates all sizes 3`] = `
 >
   <div
     class="c2 c3"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"
@@ -994,6 +1009,10 @@ exports[`Button with icon validates all sizes 3`] = `
 
 exports[`Button with icon validates all sizes 4`] = `
 .c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -1126,6 +1145,7 @@ exports[`Button with icon validates all sizes 4`] = `
 >
   <div
     class="c2 c3"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"

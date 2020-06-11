@@ -134,6 +134,10 @@ exports[`InputSearch default 1`] = `
 }
 
 .c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 30px;
   height: 30px;
   -webkit-align-items: center;
@@ -157,6 +161,7 @@ exports[`InputSearch default 1`] = `
 >
   <div
     className="c2"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"

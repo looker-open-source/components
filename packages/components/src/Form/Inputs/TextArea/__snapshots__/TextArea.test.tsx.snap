@@ -297,8 +297,13 @@ exports[`TextArea should accept disabled 1`] = `
 
 exports[`TextArea with an error validation 1`] = `
 .c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 20px;
   height: 20px;
+  color: #CC1F36;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -380,6 +385,7 @@ exports[`TextArea with an error validation 1`] = `
   />
   <div
     className="c1 c2"
+    display="inline-flex"
   >
     <svg
       fill="currentColor"

@@ -25,6 +25,7 @@
  */
 
 import {
+  color,
   CompatibleHTMLProps,
   SizeXXSmall,
   SizeXSmall,
@@ -87,6 +88,7 @@ IconLayout.displayName = 'IconLayout'
 
 export const Icon = styled(IconLayout)<IconProps>`
   ${sizeSimpleLayoutCSS}
+  ${color}
   align-items: center;
 
   svg {
@@ -95,4 +97,4 @@ export const Icon = styled(IconLayout)<IconProps>`
   }
 `
 
-Icon.defaultProps = { size: 'medium' }
+Icon.defaultProps = { display: 'inline-flex', size: 'medium' }
