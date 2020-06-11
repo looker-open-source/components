@@ -296,8 +296,8 @@ export function getOptionsFromValues(
   })
   // Convert new values into options
   // ****NOTE****
-  // freeInput options may be duplicates of available options
-  // de-duping must be performed at a level where all available options are known, e.g. SelectMulti
+  // freeInput options may be near-duplicates of existing options (different case, value / label mismatch, etc)
+  // this option should be used only when exact matching to existing values is not important or can be handled externally
   const freeInputOptions = freeInputValues.map((value) => ({ value }))
 
   return [...newOptions, ...freeInputOptions]
