@@ -24,7 +24,14 @@
 
  */
 
-import React, { forwardRef, KeyboardEvent, Ref, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  ClipboardEvent,
+  KeyboardEvent,
+  Ref,
+  useRef,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 
 import { useControlWarn } from '../../../utils'
@@ -68,8 +75,8 @@ function getUpdatedValues(
   const unusedValues: string[] = []
   const validValues: string[] = []
 
-  // Values may be separated by ',' '\t' and ' '
-  const inputValues: string[] = inputValue.split(/[,\t]+/)
+  // Values may be separated by ',' '\t', '\n' and ' '
+  const inputValues: string[] = inputValue.split(/[,\t\n\r]+/)
   inputValues.forEach((val: string) => {
     const trimmedValue = val.trim()
     if (trimmedValue === '') return
@@ -166,18 +173,21 @@ export const InputChipsInternal = forwardRef(
       }
     }
 
-    const isPasting = useRef(false)
-    function handlePaste() {
-      isPasting.current = true
+    const pastedValue = useRef<string | null>()
+    function handlePaste(e: ClipboardEvent<HTMLInputElement>) {
+      // Save the pasted value to detect newlines before the browser strips them
+      pastedValue.current = e.clipboardData.getData('Text')
     }
 
     function handleInputChange(value: string) {
       // If the last character is a comma, update the values
       // Or, if the user pastes content, we assume that the final value is complete
       // even if there's no comma at the end
-      if (isPasting.current || value.endsWith(',')) {
-        updateValues(value)
-        isPasting.current = false
+      if (pastedValue.current || value.endsWith(',')) {
+        // Use the pasted value if there is one
+        // (before newlines are stripped by the browser)
+        updateValues(pastedValue.current || value)
+        pastedValue.current = null
       } else {
         setInputValue(value)
       }

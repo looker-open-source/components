@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Icons: `TimeZone`
+
 ### Fixed
 
 - `ButtonGroup` space between rows when wrapping
 - `Icon` now properly sizes when just a width or height is specified
+- `InputChips` separates chips by newline when pasting
 
 ## [0.8.6]
 

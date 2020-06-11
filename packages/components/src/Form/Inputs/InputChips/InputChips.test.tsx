@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { createEvent, fireEvent } from '@testing-library/react'
 
 import { InputChips } from './InputChips'
 
@@ -59,15 +59,38 @@ test('values are added when a comma is last character entered', () => {
   expect(input).toHaveValue('')
 })
 
+function firePasteEvent(element: HTMLElement, value: string) {
+  const eventProperties = {
+    clipboardData: {
+      getData: () => value,
+    },
+  }
+
+  const pasteEvent = createEvent.paste(element, eventProperties) as any
+  pasteEvent.clipboardData = eventProperties.clipboardData
+
+  fireEvent(element, pasteEvent)
+}
+
 test('values are added when pasting', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
   const input = getByPlaceholderText('type here')
-  fireEvent.paste(input)
-  // If a paste is detected before the value change
-  // no need for the last character to be a comma
+  // Newlines are stripped when pasting into a text input,
+  // but InputChips saves the clipboard with newlines intact from the onPaste
+  firePasteEvent(
+    input,
+    `tag1
+tag2`
+  )
+  fireEvent.change(input, { target: { value: 'tag1  tag2' } })
+  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+
+  // If change follows a paste, no need for the last character to be a comma
+  onChangeMock.mockClear()
+  firePasteEvent(input, `tag1,tag2`)
   fireEvent.change(input, { target: { value: 'tag1, tag2' } })
   expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
 })
