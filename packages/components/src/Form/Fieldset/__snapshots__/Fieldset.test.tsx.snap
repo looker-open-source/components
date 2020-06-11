@@ -119,6 +119,24 @@ exports[`Fieldset 1`] = `
   color: #343C42;
 }
 
+.c2 {
+  color: #343C42;
+  padding: 0rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.c0 .c12 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 24px;
+  padding: 0.25rem 0;
+}
+
+.c0 .c11 {
+  padding-top: 1rem;
+}
+
 .c6 {
   color: #343C42;
   font-size: 0.75rem;
@@ -160,31 +178,13 @@ exports[`Fieldset 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c4 .c12 {
+.c4 .c14 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c4 .c11 {
+.c4 .c13 {
   margin-top: 0.5rem;
-}
-
-.c2 {
-  color: #343C42;
-  padding: 0rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.c0 .c13 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  height: 24px;
-  padding: 0.25rem 0;
-}
-
-.c0 .c14 {
-  padding-top: 1rem;
 }
 
 <div
