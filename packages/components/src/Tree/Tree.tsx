@@ -24,8 +24,8 @@
 
  */
 
-import styled from 'styled-components'
-import { FontWeights } from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
+import { FontWeights, Theme } from '@looker/design-tokens'
 import React, { FC, ReactNode, useContext } from 'react'
 import {
   Accordion,
@@ -82,19 +82,31 @@ interface TreeBorderProps {
   depth: number
 }
 
+const treeBorder = (depth: number, theme: Theme) => {
+  const {
+    colors,
+    space: { xxsmall, small },
+  } = theme
+
+  const itemBorderSize = '1px'
+  const itemPaddingSize = xxsmall
+  const indicatorIconSize = small
+  const indicatorGapSize = xxsmall
+  const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+  const borderSpacer = `(${small} / 2) + ${depthSize}`
+
+  return css`
+    background: linear-gradient(
+      90deg,
+      transparent calc(${borderSpacer} - 1px),
+      ${colors.ui2},
+      transparent calc(${borderSpacer})
+    );
+  `
+}
+
 const TreeBorder = styled.div<TreeBorderProps>`
-  background: ${({ border, depth, theme }) => {
-    const itemBorderSize = '1px'
-    const itemPaddingSize = theme.space.xxsmall
-    const indicatorIconSize = theme.space.small
-    const indicatorGapSize = theme.space.xxsmall
-    const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-    const borderSpacer = `(${theme.space.small} / 2) + ${depthSize}`
-    return (
-      border &&
-      `linear-gradient(90deg, transparent calc(${borderSpacer} - 1px), ${theme.colors.ui2}, transparent calc(${borderSpacer}))`
-    )
-  }};
+  ${({ border, depth, theme }) => border && treeBorder(depth, theme)}
 `
 
 const TreeStyle = styled.div<{ depth: number }>`
