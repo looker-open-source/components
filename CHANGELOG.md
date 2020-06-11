@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `ComponentsProvider` actually uses the `theme` passed in
 - `Select` selected option check mark icon size
 - `ButtonGroup` space between rows when wrapping
 - `Icon` now properly sizes when just a width or height is specified
