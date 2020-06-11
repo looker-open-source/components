@@ -67,8 +67,6 @@ export const fieldPropKeys = [
   'id',
   'inline',
   'label',
-  'labelFontSize',
-  'labelFontWeight',
   'labelWidth',
   'validationMessage',
   'width',
