@@ -127,16 +127,14 @@ const TreeStyle = styled.div<{ depth: number }>`
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
-      }) * ${depth + 1})`}
+      }) * ${depth + 1})`};
   }
 
-  ${/* sc-selector */ AccordionContent} > ${/* sc-selector */ TreeBorder} > ${
-  /* sc-selector */ TreeItem
-}:focus {
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 
-  ${/* sc-selector */ TreeGroup} > ${/* sc-selector */ TreeBorder} > ${
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
 }:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
