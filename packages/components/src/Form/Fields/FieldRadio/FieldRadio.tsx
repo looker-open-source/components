@@ -29,8 +29,8 @@ import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
 import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline } from '../FieldInline'
 import { FieldBaseProps } from '../FieldBase'
+import { FieldInline } from '../FieldInline'
 
 export interface FieldRadioProps
   extends RadioProps,

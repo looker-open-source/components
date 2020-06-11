@@ -82,6 +82,7 @@ const RadioGroupLayout = forwardRef(
         <FieldRadio
           disabled={option.disabled || disabled}
           key={option.value}
+          detail={option.detail}
           label={option.label}
           name={name}
           onChange={getChangeHandler(option.value)}
@@ -95,6 +96,7 @@ const RadioGroupLayout = forwardRef(
         data-testid="radio-list"
         inline={inline}
         flexWrap={inline ? 'wrap' : undefined}
+        gap={!inline ? 'xxsmall' : undefined}
         width={inline ? 'auto' : undefined}
         ref={ref}
         {...rest}
