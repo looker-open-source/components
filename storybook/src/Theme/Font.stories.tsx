@@ -62,7 +62,7 @@ export const Font: FC = () => {
         />
       </Fieldset>
 
-      <pre>{String(theme)}</pre>
+      <pre>{JSON.stringify(theme, null, 1)}</pre>
 
       <ComponentsProvider theme={actualTheme}>
         <Heading>A Header</Heading>
