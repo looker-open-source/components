@@ -157,27 +157,35 @@ const TreeLayout: FC<TreeProps> = ({
   const isBorderEnabled = border || contextBorder
   const nextDepth = depth + 1
 
+  const disclosure = (
+    <TreeItem
+      detail={detail}
+      detailStopPropagation={detailStopPropagation}
+      gapSize="xsmall"
+      icon={icon}
+    >
+      {label}
+    </TreeItem>
+  )
+
+  const content = (
+    <TreeBorder border={isBorderEnabled} depth={depth}>
+      {children}
+    </TreeBorder>
+  )
+
+  const internalAccordion = (
+    <Accordion {...indicatorProps} {...restProps}>
+      <AccordionDisclosure fontWeight={fontWeight}>
+        {disclosure}
+      </AccordionDisclosure>
+      <AccordionContent>{content}</AccordionContent>
+    </Accordion>
+  )
+
   return (
     <TreeContext.Provider value={{ border: isBorderEnabled, depth: nextDepth }}>
-      <TreeStyle depth={depth}>
-        <Accordion {...indicatorProps} {...restProps}>
-          <AccordionDisclosure fontWeight={fontWeight}>
-            <TreeItem
-              detail={detail}
-              detailStopPropagation={detailStopPropagation}
-              gapSize="xsmall"
-              icon={icon}
-            >
-              {label}
-            </TreeItem>
-          </AccordionDisclosure>
-          <AccordionContent>
-            <TreeBorder border={isBorderEnabled} depth={depth}>
-              {children}
-            </TreeBorder>
-          </AccordionContent>
-        </Accordion>
-      </TreeStyle>
+      <TreeStyle depth={depth}>{internalAccordion}</TreeStyle>
     </TreeContext.Provider>
   )
 }
