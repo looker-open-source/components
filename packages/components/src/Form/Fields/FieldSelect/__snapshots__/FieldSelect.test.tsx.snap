@@ -27,16 +27,17 @@ exports[`A FieldSelect 1`] = `
 
 .c12 {
   margin-right: 0.5rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c12 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c8 {
@@ -280,6 +281,7 @@ exports[`A FieldSelect 1`] = `
         >
           <div
             className="c12"
+            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -334,10 +336,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c14 {
   margin-right: 0.5rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -346,18 +344,24 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: center;
 }
 
+.c14 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c12 {
   margin-right: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 20px;
   height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c12 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c8 {
@@ -646,6 +650,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         >
           <div
             className="c12"
+            mr="xxsmall"
           >
             <svg
               fill="currentColor"
@@ -667,6 +672,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           />
           <div
             className="c14"
+            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -727,16 +733,17 @@ exports[`A required FieldSelect 1`] = `
 
 .c14 {
   margin-right: 0.5rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c14 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c10 {
@@ -1005,6 +1012,7 @@ exports[`A required FieldSelect 1`] = `
         >
           <div
             className="c14"
+            mr="xsmall"
           >
             <svg
               fill="currentColor"
@@ -1059,16 +1067,17 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c12 {
   margin-right: 0.5rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c12 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c8 {
@@ -1312,6 +1321,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         >
           <div
             className="c12"
+            mr="xsmall"
           >
             <svg
               fill="currentColor"

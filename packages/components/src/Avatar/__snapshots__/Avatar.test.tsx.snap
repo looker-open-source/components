@@ -2,16 +2,15 @@
 
 exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 .c7 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c7 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c3 {
@@ -132,16 +131,15 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 
 exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
 .c7 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c7 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c3 {
@@ -262,16 +260,15 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 
 exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c3 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c1 {
@@ -391,16 +388,15 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 
 exports[`AvatarIcon renders  1`] = `
 .c2 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c2 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c3 .c1 {
@@ -466,16 +462,15 @@ exports[`AvatarIcon renders  1`] = `
 
 exports[`AvatarIcon renders different icon if specified 1`] = `
 .c2 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c2 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c3 .c1 {

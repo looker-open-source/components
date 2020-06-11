@@ -2,16 +2,15 @@
 
 exports[`Icon default 1`] = `
 .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -36,16 +35,17 @@ exports[`Icon default 1`] = `
 
 exports[`Icon with styled system size 1`] = `
 .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 2rem;
   height: 2rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -70,16 +70,17 @@ exports[`Icon with styled system size 1`] = `
 
 exports[`Icon with styled system size 2`] = `
 .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 12px;
   height: 12px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div
@@ -104,16 +105,17 @@ exports[`Icon with styled system size 2`] = `
 
 exports[`Icon with styled system size 3`] = `
 .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1rem;
   height: 1rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c0 svg {
+  height: 100%;
+  width: 100%;
 }
 
 <div

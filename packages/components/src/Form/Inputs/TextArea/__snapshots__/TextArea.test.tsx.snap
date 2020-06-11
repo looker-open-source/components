@@ -297,16 +297,17 @@ exports[`TextArea should accept disabled 1`] = `
 
 exports[`TextArea with an error validation 1`] = `
 .c2 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 20px;
   height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c2 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c3 .c1 {

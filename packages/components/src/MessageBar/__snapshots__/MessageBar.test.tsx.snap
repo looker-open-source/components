@@ -2,16 +2,17 @@
 
 exports[`Confirmation MessageBar 1`] = `
 .c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c1 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c2 {
@@ -96,16 +97,17 @@ exports[`Confirmation MessageBar 1`] = `
 
 exports[`Error MessageBar 1`] = `
 .c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c1 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c2 {
@@ -190,16 +192,17 @@ exports[`Error MessageBar 1`] = `
 
 exports[`Info MessageBar 1`] = `
 .c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c1 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c2 {
@@ -284,10 +287,6 @@ exports[`Info MessageBar 1`] = `
 
 exports[`MessageBar can be dismissed 1`] = `
 .c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
@@ -296,17 +295,23 @@ exports[`MessageBar can be dismissed 1`] = `
   align-items: center;
 }
 
+.c1 svg {
+  height: 100%;
+  width: 100%;
+}
+
 .c7 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c7 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c4 {
@@ -525,16 +530,17 @@ exports[`MessageBar can be dismissed 1`] = `
 
 exports[`Warn MessageBar 1`] = `
 .c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c1 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .c2 {

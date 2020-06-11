@@ -26,17 +26,17 @@
 
 import {
   CompatibleHTMLProps,
-  omitStyledProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 /* eslint import/namespace: ['error', { allowComputed: true }] */
 import { Glyphs, IconNames } from '@looker/icons'
+import omit from 'lodash/omit'
 import {
   sizeSimpleLayoutCSS,
   SizeSimpleLayoutProps,
@@ -52,19 +52,32 @@ export type IconSize =
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SizeSimpleLayoutProps {
+  /**
+   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
+   */
+  artwork?: ReactNode
   color?: string
-  name: IconNames
+  name?: IconNames
 }
 
 export type { IconNames }
 
 const IconLayout = forwardRef(
-  ({ className, name, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
-    const Glyph = Glyphs[name]
-
+  (
+    { artwork = undefined, name, ...props }: IconProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    if ((artwork && name) || (!artwork && !name)) {
+      // eslint-disable-next-line no-console
+      console.warn('You may only specify name OR artwork, not both.')
+    }
+    const Glyph = name ? Glyphs[name] : 'div'
+    const value = artwork || (
+      <Glyph width="100%" height="100%" fill="currentColor" />
+    )
     return (
-      <div className={className} ref={ref} {...omitStyledProps(props)}>
-        <Glyph width="100%" height="100%" fill="currentColor" />
+      <div ref={ref} {...omit(props, 'color', 'name', 'size')}>
+        {value}
       </div>
     )
   }
@@ -75,6 +88,9 @@ IconLayout.displayName = 'IconLayout'
 export const Icon = styled(IconLayout)<IconProps>`
   ${sizeSimpleLayoutCSS}
   align-items: center;
-`
 
-Icon.defaultProps = { display: 'inline-flex', size: 'medium' }
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+`

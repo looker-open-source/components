@@ -35,7 +35,8 @@ export type StatusIntent =
   | 'positive'
   | 'warn'
 
-export interface StatusProps extends Omit<IconProps, 'color' | 'name'> {
+export interface StatusProps
+  extends Omit<IconProps, 'artwork' | 'color' | 'name'> {
   /**
    * @default: 'neutral'
    */
