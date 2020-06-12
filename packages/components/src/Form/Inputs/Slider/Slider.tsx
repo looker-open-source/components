@@ -255,9 +255,8 @@ interface SliderValueProps extends SliderInputProps {
 const SliderValue = styled.div<SliderValueProps>`
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
-  line-height: 1;
   user-select: none;
-  transform: translateX(-50%) translateY(-0.85rem);
+  transform: translateX(-50%) translateY(-0.9rem);
   left: ${({ offsetPercent }) => offsetPercent}%;
   position: absolute;
   text-align: center;
@@ -282,4 +281,9 @@ export const Slider = styled(SliderInternal)<SliderProps>`
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { fontSize: 'small', mt: 'medium', width: '100%' }
+Slider.defaultProps = {
+  fontSize: 'small',
+  lineHeight: 'xsmall',
+  mt: 'medium',
+  width: '100%',
+}

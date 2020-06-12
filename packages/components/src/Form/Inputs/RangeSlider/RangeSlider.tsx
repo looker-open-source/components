@@ -405,7 +405,7 @@ export const RangeSlider = styled(InternalRangeSlider)`
   padding: 1.5rem 0 0.5rem;
 `
 
-RangeSlider.defaultProps = { fontSize: 'small' }
+RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
 
 const SliderTrack = styled.div`
   height: 4px;
