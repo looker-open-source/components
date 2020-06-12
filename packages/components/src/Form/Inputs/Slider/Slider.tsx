@@ -27,7 +27,13 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
@@ -35,7 +41,8 @@ import { InputProps } from '../InputProps'
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
-    Omit<InputProps, 'type'> {
+    Omit<InputProps, 'type'>,
+    TypographyProps {
   'aria-labelledby'?: string
   max?: number
   min?: number
@@ -250,11 +257,11 @@ const SliderValue = styled.div<SliderValueProps>`
     disabled ? colors.neutral : colors.key};
   line-height: 1;
   user-select: none;
-  transform: translateX(-50%) translateY(-1.3rem);
+  transform: translateX(-50%) translateY(-0.85rem);
   left: ${({ offsetPercent }) => offsetPercent}%;
   position: absolute;
   text-align: center;
-  padding: 0.2rem 0.5rem;
+  padding: 0 0.5rem;
   border-radius: 1rem;
   background: ${({ theme, isFocused }) =>
     isFocused ? theme.colors.keyAccent : theme.colors.keyText};
@@ -270,8 +277,9 @@ export const Slider = styled(SliderInternal)<SliderProps>`
   ${reset}
   ${space}
   ${width}
+  ${typography}
   position: relative;
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { mt: 'large', width: '100%' }
+Slider.defaultProps = { fontSize: 'small', mt: 'medium', width: '100%' }

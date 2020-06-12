@@ -173,7 +173,6 @@ export const InternalRangeSlider = forwardRef(
       disabled = false,
       readOnly: readOnlyProp = false,
       'aria-labelledby': ariaLabelledby,
-      fontSize,
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -349,7 +348,6 @@ export const InternalRangeSlider = forwardRef(
             position={minPos}
             focus={focusedThumb === 0}
             disabled={disabled}
-            fontSize={fontSize}
           >
             {minValue}
           </ThumbLabel>
@@ -357,7 +355,6 @@ export const InternalRangeSlider = forwardRef(
             position={maxPos}
             focus={focusedThumb === 1}
             disabled={disabled}
-            fontSize={fontSize}
           >
             {maxValue}
           </ThumbLabel>
@@ -404,6 +401,7 @@ InternalRangeSlider.displayName = 'InternalRangeSlider'
 export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
   ${space}
+  ${typography}
   padding: 1.5rem 0 0.5rem;
 `
 
@@ -423,7 +421,6 @@ interface ThumbLabelProps extends TypographyProps {
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
-  ${typography}
   user-select: none;
   position: absolute;
   top: -24px;
