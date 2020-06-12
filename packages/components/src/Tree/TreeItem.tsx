@@ -24,11 +24,18 @@
 
  */
 
-import React, { FC, KeyboardEvent, MouseEvent, ReactNode } from 'react'
+import React, {
+  FC,
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
+  useContext,
+} from 'react'
 import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
+import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps {
   children: ReactNode
@@ -55,7 +62,26 @@ export interface TreeItemProps {
    * Callback that is triggered on TreeItem click
    */
   onClick?: () => void
+  /**
+   * Determines if this TreeItem is in a selected state or not
+   */
+  selected?: boolean
 }
+
+interface TreeItemStyle {
+  selected?: boolean
+  selectedColor: string
+}
+
+const TreeItemStyle = styled.div<TreeItemStyle>`
+  background-color: ${({ selected, selectedColor, theme }) =>
+    selected && theme.colors[selectedColor]};
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+
+  & > * {
+    outline: none;
+  }
+`
 
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
@@ -65,7 +91,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   gapSize = 'xxsmall',
   icon,
   onClick,
+  selected,
 }) => {
+  const { selectedColor = 'ui2' } = useContext(TreeContext)
+
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
     detailStopPropagation && event.stopPropagation()
@@ -80,17 +109,22 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const defaultIconSize = 12
 
   return (
-    <Space
+    <TreeItemStyle
       className={className}
-      gap={gapSize}
-      onClick={onClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={onClick ? 0 : -1}
+      selected={selected}
+      selectedColor={selectedColor}
     >
-      {icon && <Icon name={icon} size={defaultIconSize} />}
-      <FlexItem flex="1">{children}</FlexItem>
-      {detail && <span onClick={handleDetailClick}>{detail}</span>}
-    </Space>
+      <Space
+        gap={gapSize}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        tabIndex={onClick ? 0 : -1}
+      >
+        {icon && <Icon name={icon} size={defaultIconSize} />}
+        <FlexItem flex="1">{children}</FlexItem>
+        {detail && <span onClick={handleDetailClick}>{detail}</span>}
+      </Space>
+    </TreeItemStyle>
   )
 }
 

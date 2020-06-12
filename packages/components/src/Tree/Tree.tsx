@@ -73,6 +73,11 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    * Note: This is a required prop
    */
   label: string
+  /**
+   * The background color of selected TreeItems
+   * @default ui1
+   */
+  selectedColor?: string
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -134,11 +139,6 @@ const TreeStyle = styled.div<TreeStyleProps>`
       }) * ${depth + 1})`};
   }
 
-  ${TreeItem} {
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
-    outline: none;
-  }
-
   ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem},
   ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
@@ -182,11 +182,14 @@ const TreeLayout: FC<TreeProps> = ({
   hoverColor = 'ui2',
   icon,
   label,
+  selectedColor = 'ui1',
   ...restProps
 }) => {
   const context = useContext(TreeContext)
   const isBorderEnabled = border || context.border
   const nextDepth = context.depth + 1
+  const renderedHoverColor = context.hoverColor || hoverColor
+  const renderedSelectedColor = context.selectedColor || selectedColor
 
   const disclosure = (
     <TreeItem
@@ -219,13 +222,11 @@ const TreeLayout: FC<TreeProps> = ({
       value={{
         border: isBorderEnabled,
         depth: nextDepth,
-        hoverColor: context.hoverColor || hoverColor,
+        hoverColor: renderedHoverColor,
+        selectedColor: renderedSelectedColor,
       }}
     >
-      <TreeStyle
-        depth={context.depth}
-        hoverColor={context.hoverColor || hoverColor}
-      >
+      <TreeStyle depth={context.depth} hoverColor={renderedHoverColor}>
         {internalAccordion}
       </TreeStyle>
     </TreeContext.Provider>

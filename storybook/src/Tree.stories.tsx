@@ -168,8 +168,13 @@ export const Border = () => (
 )
 
 export const HoverState = () => (
-  <Tree hoverColor="keyFocus" label="Orders" defaultOpen>
-    <TreeItem>ID</TreeItem>
+  <Tree
+    hoverColor="keyFocus"
+    selectedColor="critical"
+    label="Orders"
+    defaultOpen
+  >
+    <TreeItem selected>ID</TreeItem>
     <TreeItem>Status</TreeItem>
     <Tree label="Created" defaultOpen>
       <TreeItem>Created Date</TreeItem>

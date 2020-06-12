@@ -30,6 +30,7 @@ export interface TreeContextProps {
   border?: boolean
   depth: number
   hoverColor?: string
+  selectedColor?: string
 }
 
 export const TreeContext = createContext<TreeContextProps>({
