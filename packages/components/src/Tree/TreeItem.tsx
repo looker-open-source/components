@@ -68,19 +68,21 @@ export interface TreeItemProps {
   selected?: boolean
 }
 
-interface TreeItemStyle {
+interface TreeItemSpaceProps {
   selected?: boolean
   selectedColor: string
 }
 
-const TreeItemStyle = styled.div<TreeItemStyle>`
+const TreeItemSpace = styled(Space).attrs(
+  ({ selected, selectedColor }: TreeItemSpaceProps) => ({
+    selected,
+    selectedColor,
+  })
+)`
   background-color: ${({ selected, selectedColor, theme }) =>
     selected && theme.colors[selectedColor]};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
-
-  & > * {
-    outline: none;
-  }
+  outline: none;
 `
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -109,22 +111,19 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const defaultIconSize = 12
 
   return (
-    <TreeItemStyle
+    <TreeItemSpace
       className={className}
       selected={selected}
       selectedColor={selectedColor}
+      gap={gapSize}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={onClick ? 0 : -1}
     >
-      <Space
-        gap={gapSize}
-        onClick={onClick}
-        onKeyDown={handleKeyDown}
-        tabIndex={onClick ? 0 : -1}
-      >
-        {icon && <Icon name={icon} size={defaultIconSize} />}
-        <FlexItem flex="1">{children}</FlexItem>
-        {detail && <span onClick={handleDetailClick}>{detail}</span>}
-      </Space>
-    </TreeItemStyle>
+      {icon && <Icon name={icon} size={defaultIconSize} />}
+      <FlexItem flex="1">{children}</FlexItem>
+      {detail && <span onClick={handleDetailClick}>{detail}</span>}
+    </TreeItemSpace>
   )
 }
 
