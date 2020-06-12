@@ -60,6 +60,11 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    */
   fontWeight?: FontWeights
   /**
+   * The background color of hovered TreeItems
+   * @default ui2
+   */
+  hoverColor?: string
+  /**
    * Icon element that appears between the Tree indicator and the Tree label
    */
   icon?: IconNames
@@ -109,7 +114,12 @@ const TreeBorder = styled.div<TreeBorderProps>`
   ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
 `
 
-const TreeStyle = styled.div<{ depth: number }>`
+interface TreeStyleProps {
+  hoverColor: string
+  depth: number
+}
+
+const TreeStyle = styled.div<TreeStyleProps>`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
@@ -142,6 +152,16 @@ const TreeStyle = styled.div<{ depth: number }>`
       }) * ${depth + 1})`};
   }
 
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:hover {
+    background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
+  }
+
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+  /* sc-selector */ TreeItem
+}:hover {
+    background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
+  }
+
   ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
@@ -159,13 +179,14 @@ const TreeLayout: FC<TreeProps> = ({
   detail,
   detailStopPropagation,
   fontWeight,
+  hoverColor = 'ui2',
   icon,
   label,
   ...restProps
 }) => {
-  const { border: contextBorder, depth } = useContext(TreeContext)
-  const isBorderEnabled = border || contextBorder
-  const nextDepth = depth + 1
+  const context = useContext(TreeContext)
+  const isBorderEnabled = border || context.border
+  const nextDepth = context.depth + 1
 
   const disclosure = (
     <TreeItem
@@ -179,7 +200,7 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   const content = (
-    <TreeBorder border={isBorderEnabled} depth={depth}>
+    <TreeBorder border={isBorderEnabled} depth={context.depth}>
       {children}
     </TreeBorder>
   )
@@ -194,8 +215,19 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   return (
-    <TreeContext.Provider value={{ border: isBorderEnabled, depth: nextDepth }}>
-      <TreeStyle depth={depth}>{internalAccordion}</TreeStyle>
+    <TreeContext.Provider
+      value={{
+        border: isBorderEnabled,
+        depth: nextDepth,
+        hoverColor: context.hoverColor || hoverColor,
+      }}
+    >
+      <TreeStyle
+        depth={context.depth}
+        hoverColor={context.hoverColor || hoverColor}
+      >
+        {internalAccordion}
+      </TreeStyle>
     </TreeContext.Provider>
   )
 }

@@ -168,7 +168,7 @@ export const Border = () => (
 )
 
 export const HoverState = () => (
-  <Tree label="Orders" defaultOpen>
+  <Tree hoverColor="keyFocus" label="Orders" defaultOpen>
     <TreeItem>ID</TreeItem>
     <TreeItem>Status</TreeItem>
     <Tree label="Created" defaultOpen>
@@ -176,6 +176,12 @@ export const HoverState = () => (
       <TreeItem>Created Month</TreeItem>
       <TreeItem>Created Year</TreeItem>
       <TreeItem>Created Quarter</TreeItem>
+      <Tree label="Created" defaultOpen>
+        <TreeItem>Created Date</TreeItem>
+        <TreeItem>Created Month</TreeItem>
+        <TreeItem>Created Year</TreeItem>
+        <TreeItem>Created Quarter</TreeItem>
+      </Tree>
     </Tree>
   </Tree>
 )
