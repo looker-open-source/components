@@ -120,8 +120,8 @@ const TreeBorder = styled.div<TreeBorderProps>`
 `
 
 interface TreeStyleProps {
-  hoverColor: string
   depth: number
+  hoverColor: string
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
@@ -187,7 +187,8 @@ const TreeLayout: FC<TreeProps> = ({
 }) => {
   const context = useContext(TreeContext)
   const isBorderEnabled = border || context.border
-  const nextDepth = context.depth + 1
+  const currentDepth = context.depth ? context.depth : 0
+  const nextDepth = currentDepth + 1
   const renderedHoverColor = context.hoverColor || hoverColor
   const renderedSelectedColor = context.selectedColor || selectedColor
 
@@ -203,7 +204,7 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   const content = (
-    <TreeBorder border={isBorderEnabled} depth={context.depth}>
+    <TreeBorder border={isBorderEnabled} depth={currentDepth}>
       {children}
     </TreeBorder>
   )
@@ -226,7 +227,7 @@ const TreeLayout: FC<TreeProps> = ({
         selectedColor: renderedSelectedColor,
       }}
     >
-      <TreeStyle depth={context.depth} hoverColor={renderedHoverColor}>
+      <TreeStyle depth={currentDepth} hoverColor={renderedHoverColor}>
         {internalAccordion}
       </TreeStyle>
     </TreeContext.Provider>

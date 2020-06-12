@@ -28,7 +28,7 @@ import { createContext } from 'react'
 
 export interface TreeContextProps {
   border?: boolean
-  depth: number
+  depth?: number
   hoverColor?: string
   selectedColor?: string
 }
