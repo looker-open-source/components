@@ -5,33 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.8.7]
 
 ### Added
 
-- Icons: `TimeZone`
+- `Badge` now supports `ref` assignment (Tooltip badge is now possible)
 - `ComboboxMultiInput` supports `freeInput` to allow inputting of values outside of options, using the behavior of `InputChips`
-- `InputChips` preserves escaped comma and tab characters
-- `InputChips` supports `removeOnBackspace` (true by default)
+- `Icon` accepts SVG as via `artwork` prop
+- `IconButton` now supports `tooltipTextAlign`
+- `InputChips`
+  - preserves escaped comma and tab characters
+  - supports `removeOnBackspace` (true by default)
+- Icons: `TimeZone`
 
 ### Changed
 
-- `Tree`, `AccordionContent` no longer add automatic padding at the container level
-  - Padding happens at the individual item level
+- `AccordionContent` & `Tree` no longer add automatic padding at the container level. Padding happens at the individual item level
 - `Icon` can now only be sized via `size` (no height/width since it's a square)
+- `InputTime` now renders warning icon when validationType="error" is passed
+- `FieldInline` (`FieldCheckbox`, `FieldRadio` & `FieldToggleSwitch`)
+  - Now supports `detail` property
+  - Disabled state slightly more discernable from default state now
+- `OptionsGroup` (`CheckboxGroup`, `RadioGroup`)
+  - Now have tighter vertical spacing to feel more connected
+  - Supports `detail` on Options array
+- `Status` now allows DOM attributes (`aria-*` and the like)
 
 ### Fixed
 
+- `Radio` & `Checkbox` disabled states corrected
 - `ComponentsProvider` actually uses the `theme` passed in
 - `Select` selected option check mark icon size
 - `ButtonGroup` space between rows when wrapping
 - `InputChips` separates chips by newline when pasting
 
+### Removed
+
+- `Field`
+  - No longer supports `labelWidth` property (unused feature)
+  - No longer supports `labelFontSize` and `labelFontWeight` properties (all your fonts belong to us)
+
 ## [0.8.6]
 
 ### Fixed
 
-- `InputTime` now renders warning icon when validationType="error" is passed
 - `Icon` properly passes through DOM elements
 
 ## [0.8.5]
@@ -56,7 +73,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Icon accepts artwork as props.
 - `Fieldset` supports an accordion mode via an `accordion` prop
 
 ### Changed
