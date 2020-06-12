@@ -24,12 +24,15 @@
 
  */
 
-import { mix } from 'polished'
+import { mix, rgba } from 'polished'
 import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
 const textBlends = [30, 40, 60, 70, 80, 100]
-const uiBlends = [4, 12, 20, 30, 85]
+export const uiBlends = [4, 12, 20, 30, 85]
+
+export const uiTransparencyBlend = (color: string, level: number) =>
+  rgba(color, uiBlends[level] / 100)
 
 export const mixColors = (
   mixAmount: number,
