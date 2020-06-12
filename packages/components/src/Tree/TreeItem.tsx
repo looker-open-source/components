@@ -24,7 +24,6 @@
 
  */
 
-import { rgba } from 'polished'
 import React, { FC, KeyboardEvent, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
@@ -100,10 +99,10 @@ export const TreeItem = styled(TreeItemLayout)`
   cursor: ${({ onClick }) => onClick && 'pointer'};
 
   &:hover {
-    background: ${({ theme }) => uiTransparencyBlend(theme.colors.text, 0)};
+    background: ${uiTransparencyBlend(1)};
   }
 
   &:active {
-    background: ${({ theme }) => uiTransparencyBlend(theme.colors.text, 1)};
+    background: ${uiTransparencyBlend(2)};
   }
 `
