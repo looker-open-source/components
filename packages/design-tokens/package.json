@@ -16,6 +16,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@styled-system/props": "^5.1.5",
     "@types/styled-system": "^5.1.9",
     "lodash": "^4.17.15",
     "polished": "^3.6.4",
