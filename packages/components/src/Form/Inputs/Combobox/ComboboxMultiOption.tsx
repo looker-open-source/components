@@ -94,7 +94,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         aria-selected={isActive}
       >
         <ComboboxOptionIndicator
-          indicator={indicator}
+          indicator={indicator || (hideCheckMark ? false : undefined)}
           isActive={isActive}
           isSelected={isSelected}
           isMulti={true}
