@@ -128,5 +128,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 export const TreeItem = styled(TreeItemLayout)`
+  border: 1px solid transparent;
   cursor: ${({ onClick }) => onClick && 'pointer'};
+  height: 25px;
+  padding: ${({ theme }) => theme.space.xxsmall};
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+  }
 `

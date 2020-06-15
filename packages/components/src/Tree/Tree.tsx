@@ -129,7 +129,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`}
+      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
   }
 
   ${TreeGroupLabel} {
@@ -143,9 +143,6 @@ const TreeStyle = styled.div<TreeStyleProps>`
   ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
 } {
-    border: 1px solid transparent;
-    height: 25px;
-    padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
@@ -160,16 +157,6 @@ const TreeStyle = styled.div<TreeStyleProps>`
   /* sc-selector */ TreeItem
 }:hover {
     background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
-  }
-
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-  }
-
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
-  /* sc-selector */ TreeItem
-}:focus {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
 
