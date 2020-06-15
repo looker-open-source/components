@@ -101,20 +101,24 @@ export const ButtonSetLayout = forwardRef(
     }
 
     const [isWrapping, setIsWrapping] = useState(false)
-    const measureRef = useCallback((node: HTMLElement | null) => {
-      if (node) {
-        const { height } = node.getBoundingClientRect()
-        const firstItem = node.childNodes[0] as HTMLElement
-        const rowHeight = firstItem
-          ? firstItem.getBoundingClientRect().height
-          : buttonItemHeight
-        if (height >= rowHeight * 2) {
-          setIsWrapping(true)
-        } else {
-          setIsWrapping(false)
+    const measureRef = useCallback(
+      (node: HTMLElement | null) => {
+        if (node) {
+          const { height } = node.getBoundingClientRect()
+          const firstItem = node.childNodes[0] as HTMLElement
+          const rowHeight = firstItem
+            ? firstItem.getBoundingClientRect().height
+            : buttonItemHeight
+          if (height >= rowHeight * 2) {
+            setIsWrapping(true)
+          } else {
+            setIsWrapping(false)
+          }
         }
-      }
-    }, [])
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [options]
+    )
 
     const ref = useForkedRef(measureRef, forwardedRef)
 

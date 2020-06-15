@@ -34,7 +34,7 @@ import {
   Divider,
   ButtonToggle,
 } from '@looker/components'
-import React, { useState, FormEvent } from 'react'
+import React, { useEffect, useState, FormEvent } from 'react'
 
 export const All = () => (
   <Grid columns={1}>
@@ -84,6 +84,59 @@ export const Options = () => {
   return <ButtonGroup options={options} value={value} onChange={setValue} />
 }
 
+const stateOptions = [
+  { label: 'Alabama', value: 'Alabama' },
+  { label: 'Alaska', value: 'Alaska' },
+  { label: 'Arizona', value: 'Arizona' },
+  { label: 'Arkansas', value: 'Arkansas' },
+  { label: 'California', value: 'California' },
+  { label: 'Colorado', value: 'Colorado' },
+  { label: 'Connecticut', value: 'Connecticut' },
+  { label: 'Delaware', value: 'Delaware' },
+  { label: 'Florida', value: 'Florida' },
+  { label: 'Georgia', value: 'Georgia' },
+  { label: 'Hawaii', value: 'Hawaii' },
+  { label: 'Idaho', value: 'Idaho' },
+  { label: 'Illinois', value: 'Illinois' },
+  { label: 'Indiana', value: 'Indiana' },
+  { label: 'Iowa', value: 'Iowa' },
+  { label: 'Kansas', value: 'Kansas' },
+  { label: 'Kentucky', value: 'Kentucky' },
+  { label: 'Louisiana', value: 'Louisiana' },
+  { label: 'Maine', value: 'Maine' },
+  { label: 'Maryland', value: 'Maryland' },
+  { label: 'Massachusetts', value: 'Massachusetts' },
+  { label: 'Michigan', value: 'Michigan' },
+  { label: 'Minnesota', value: 'Minnesota' },
+  { label: 'Mississippi', value: 'Mississippi' },
+  { label: 'Missouri', value: 'Missouri' },
+  { label: 'Montana', value: 'Montana' },
+  { label: 'Nebraska', value: 'Nebraska' },
+  { label: 'Nevada', value: 'Nevada' },
+  { label: 'New Hampshire', value: 'New Hampshire' },
+  { label: 'New Jersey', value: 'New Jersey' },
+  { label: 'New Mexico', value: 'New Mexico' },
+  { label: 'New York', value: 'New York' },
+  { label: 'North Carolina', value: 'North Carolina' },
+  { label: 'North Dakota', value: 'North Dakota' },
+  { label: 'Ohio', value: 'Ohio' },
+  { label: 'Oklahoma', value: 'Oklahoma' },
+  { label: 'Oregon', value: 'Oregon' },
+  { label: 'Pennsylvania', value: 'Pennsylvania' },
+  { label: 'Rhode Island', value: 'Rhode Island' },
+  { label: 'South Carolina', value: 'South Carolina' },
+  { label: 'South Dakota', value: 'South Dakota' },
+  { label: 'Tennessee', value: 'Tennessee' },
+  { label: 'Texas', value: 'Texas' },
+  { label: 'Utah', value: 'Utah' },
+  { label: 'Vermont', value: 'Vermont' },
+  { label: 'Virginia', value: 'Virginia' },
+  { label: 'Washington', value: 'Washington' },
+  { label: 'West Virginia', value: 'West Virginia' },
+  { label: 'Wisconsin', value: 'Wisconsin' },
+  { label: 'Wyoming', value: 'Wyoming' },
+]
+
 export const Wrapping = () => {
   const [border, setBorder] = useState(false)
   const [value, setValue] = useState<string[]>([])
@@ -93,6 +146,16 @@ export const Wrapping = () => {
   function handleChange(e: FormEvent<HTMLInputElement>) {
     setBorder(e.currentTarget.checked)
   }
+
+  const [states, setStates] = useState<Array<{ label: string; value: string }>>(
+    []
+  )
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setStates(stateOptions)
+    }, 1000)
+    return () => clearTimeout(t)
+  }, [])
   return (
     <Space>
       <Box flex={1} border={border ? '1px solid' : 'none'}>
@@ -139,58 +202,12 @@ export const Wrapping = () => {
         </ButtonGroup>
         Inline text
         <Divider my="large" />
-        <ButtonToggle value={toggle2} onChange={setToggle2} nullable>
-          <ButtonItem>Alabama</ButtonItem>
-          <ButtonItem>Alaska</ButtonItem>
-          <ButtonItem>Arizona</ButtonItem>
-          <ButtonItem>Arkansas</ButtonItem>
-          <ButtonItem disabled>California</ButtonItem>
-          <ButtonItem>Colorado</ButtonItem>
-          <ButtonItem>Connecticut</ButtonItem>
-          <ButtonItem>Delaware</ButtonItem>
-          <ButtonItem>Florida</ButtonItem>
-          <ButtonItem>Georgia</ButtonItem>
-          <ButtonItem>Hawaii</ButtonItem>
-          <ButtonItem>Idaho</ButtonItem>
-          <ButtonItem>Illinois</ButtonItem>
-          <ButtonItem>Indiana</ButtonItem>
-          <ButtonItem>Iowa</ButtonItem>
-          <ButtonItem>Kansas</ButtonItem>
-          <ButtonItem>Kentucky</ButtonItem>
-          <ButtonItem>Louisiana</ButtonItem>
-          <ButtonItem>Maine</ButtonItem>
-          <ButtonItem>Maryland</ButtonItem>
-          <ButtonItem>Massachusetts</ButtonItem>
-          <ButtonItem>Michigan</ButtonItem>
-          <ButtonItem>Minnesota</ButtonItem>
-          <ButtonItem>Mississippi</ButtonItem>
-          <ButtonItem>Missouri</ButtonItem>
-          <ButtonItem>Montana</ButtonItem>
-          <ButtonItem>Nebraska</ButtonItem>
-          <ButtonItem>Nevada</ButtonItem>
-          <ButtonItem>New Hampshire</ButtonItem>
-          <ButtonItem>New Jersey</ButtonItem>
-          <ButtonItem>New Mexico</ButtonItem>
-          <ButtonItem>New York</ButtonItem>
-          <ButtonItem>North Carolina</ButtonItem>
-          <ButtonItem>North Dakota</ButtonItem>
-          <ButtonItem>Ohio</ButtonItem>
-          <ButtonItem>Oklahoma</ButtonItem>
-          <ButtonItem>Oregon</ButtonItem>
-          <ButtonItem>Pennsylvania</ButtonItem>
-          <ButtonItem>Rhode Island</ButtonItem>
-          <ButtonItem>South Carolina</ButtonItem>
-          <ButtonItem>South Dakota</ButtonItem>
-          <ButtonItem>Tennessee</ButtonItem>
-          <ButtonItem>Texas</ButtonItem>
-          <ButtonItem>Utah</ButtonItem>
-          <ButtonItem>Vermont</ButtonItem>
-          <ButtonItem>Virginia</ButtonItem>
-          <ButtonItem>Washington</ButtonItem>
-          <ButtonItem>West Virginia</ButtonItem>
-          <ButtonItem>Wisconsin</ButtonItem>
-          <ButtonItem>Wyoming</ButtonItem>
-        </ButtonToggle>
+        <ButtonToggle
+          value={toggle2}
+          onChange={setToggle2}
+          nullable
+          options={states}
+        />
         Inline text
       </Box>
     </Space>
