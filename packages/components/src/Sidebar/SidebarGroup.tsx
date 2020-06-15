@@ -24,6 +24,7 @@
 
  */
 
+import { omitStyledProps } from '@looker/design-tokens'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text'
