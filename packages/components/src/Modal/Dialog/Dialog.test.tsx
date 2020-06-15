@@ -84,7 +84,7 @@ describe('Click events', () => {
 
     const backdrop = dialog.find(ModalBackdrop)
     expect(backdrop.exists()).toBeTruthy()
-    backdrop.simulate('click')
+    window.document.body.click()
   })
 })
 
@@ -105,12 +105,7 @@ test('Dialog opens on click', () => {
 
   const backdrop = dialog.find(ModalBackdrop)
   expect(backdrop.exists()).toEqual(true)
-  backdrop.simulate('click')
-
-  //
-  // @TODO - Deal with animation timing
-  //
-  // expect(dialog.find(ModalContainer).exists()).toBeFalsy()
+  window.document.body.click()
 })
 
 test('contains the content passed to it', () => {
@@ -124,6 +119,7 @@ test('contains the content passed to it', () => {
   expect(button.exists()).toBeTruthy()
   button.simulate('click') // Click to open
   expect(dialog.contains(SimpleContent)).toBeTruthy()
+  window.document.body.click()
 })
 
 describe('Dialog Styling', () => {
