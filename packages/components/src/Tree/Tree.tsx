@@ -125,6 +125,10 @@ interface TreeStyleProps {
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
+  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItem} {
+    padding: ${({ theme }) => theme.space.none};
+  }
+
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
