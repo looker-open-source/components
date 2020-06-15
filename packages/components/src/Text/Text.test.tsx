@@ -61,7 +61,7 @@ test('A Text component text transformed', () => {
 })
 
 test('A Text component wrapped', () => {
-  const component = createWithTheme(<Text wrap>Hello</Text>)
+  const component = createWithTheme(<Text breakword>Hello</Text>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
