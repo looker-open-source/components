@@ -13,6 +13,9 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c7 svg {
@@ -149,6 +152,9 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c7 svg {
@@ -285,6 +291,9 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c3 svg {
@@ -420,6 +429,9 @@ exports[`AvatarIcon renders  1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c2 svg {
@@ -501,6 +513,9 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c2 svg {

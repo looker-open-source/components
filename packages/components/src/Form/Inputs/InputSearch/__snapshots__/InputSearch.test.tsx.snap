@@ -144,6 +144,9 @@ exports[`InputSearch default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   color: #939BA5;
   padding-left: 0.75rem;
 }

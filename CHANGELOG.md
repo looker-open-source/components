@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Smaller text in Safari and Firefox
   - White space between highlighted item and border (`ButtonToggle`)
   - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
+- `Icon` will no longer shrink when placed inside a flex layout
 
 ## [0.8.7]
 
