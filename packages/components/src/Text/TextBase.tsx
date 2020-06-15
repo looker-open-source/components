@@ -43,7 +43,7 @@ export interface TextBaseProps
   /** Should browser insert line breaks within words to prevent text from overflowing its content box
    * @default: false
    */
-  wrap?: boolean
+  breakword?: boolean
 }
 
 export const TextBase = styled.span.attrs((props: TypographyProps) => ({
@@ -54,5 +54,5 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${space}
   ${color}
   ${textDecoration}
-  ${(props) => props.wrap && 'overflow-wrap: break-word'};
+  ${(props) => props.breakword && 'overflow-wrap: break-word'};
 `
