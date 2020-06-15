@@ -32,7 +32,6 @@ import {
   TreeContext,
   TreeItem,
   TreeGroup,
-  IconButton,
 } from '@looker/components'
 
 export const All = () => (
@@ -169,30 +168,25 @@ export const Border = () => (
   </Tree>
 )
 
-const detailButtons = (
-  <>
-    <IconButton icon="Filter" label="Filter" />
-    <IconButton icon="CircleInfoOutline" label="Description" />
-    <IconButton icon="DotsVert" label="Options" />
-  </>
-)
-
-export const HoverAndSelectedState = () => (
-  <Tree label="Orders" defaultOpen>
-    <TreeItem selected detail={detailButtons}>
-      ID
-    </TreeItem>
-    <TreeItem detail={detailButtons}>Status</TreeItem>
+export const HoverState = () => (
+  <Tree
+    hoverColor="keyFocus"
+    selectedColor="critical"
+    label="Orders"
+    defaultOpen
+  >
+    <TreeItem selected>ID</TreeItem>
+    <TreeItem>Status</TreeItem>
     <Tree label="Created" defaultOpen>
-      <TreeItem detail={detailButtons}>Created Date</TreeItem>
-      <TreeItem detail={detailButtons}>Created Month</TreeItem>
-      <TreeItem detail={detailButtons}>Created Year</TreeItem>
-      <TreeItem detail={detailButtons}>Created Quarter</TreeItem>
+      <TreeItem>Created Date</TreeItem>
+      <TreeItem>Created Month</TreeItem>
+      <TreeItem>Created Year</TreeItem>
+      <TreeItem>Created Quarter</TreeItem>
       <Tree label="Created" defaultOpen>
-        <TreeItem detail={detailButtons}>Created Date</TreeItem>
-        <TreeItem detail={detailButtons}>Created Month</TreeItem>
-        <TreeItem detail={detailButtons}>Created Year</TreeItem>
-        <TreeItem detail={detailButtons}>Created Quarter</TreeItem>
+        <TreeItem>Created Date</TreeItem>
+        <TreeItem>Created Month</TreeItem>
+        <TreeItem>Created Year</TreeItem>
+        <TreeItem>Created Quarter</TreeItem>
       </Tree>
     </Tree>
   </Tree>
