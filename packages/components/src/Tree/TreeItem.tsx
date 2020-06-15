@@ -77,9 +77,10 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   background-color: ${({ selected, selectedColor, theme }) =>
     selected && theme.colors[selectedColor]};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  outline: none;
 
-  & > * {
-    outline: none;
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
 
@@ -113,13 +114,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       className={className}
       selected={selected}
       selectedColor={selectedColor}
+      tabIndex={onClick ? 0 : -1}
     >
-      <Space
-        gap={gapSize}
-        onClick={onClick}
-        onKeyDown={handleKeyDown}
-        tabIndex={onClick ? 0 : -1}
-      >
+      <Space gap={gapSize} onClick={onClick} onKeyDown={handleKeyDown}>
         {icon && <Icon name={icon} size={defaultIconSize} />}
         <FlexItem flex="1">{children}</FlexItem>
         {detail && <span onClick={handleDetailClick}>{detail}</span>}
@@ -129,8 +126,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 export const TreeItem = styled(TreeItemLayout)`
+  align-items: center;
   border: 1px solid transparent;
   cursor: ${({ onClick }) => onClick && 'pointer'};
+  display: flex;
   height: 25px;
   padding: ${({ theme }) => theme.space.xxsmall};
 `
