@@ -88,6 +88,8 @@ ButtonLayout.displayName = 'ButtonLayout'
 export const buttonItemHeight = 36
 
 export const ButtonItem = styled(ButtonLayout)`
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  margin: 0;
   cursor: pointer;
   height: ${buttonItemHeight}px;
   display: inline-flex;

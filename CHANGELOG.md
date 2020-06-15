@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- `ButtonGroup`/`ButtonToggle` display issues
+  - Smaller text in Safari and Firefox
+  - White space between highlighted item and border (`ButtonToggle`)
+  - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
+
 ## [0.8.7]
 
 ### Added
