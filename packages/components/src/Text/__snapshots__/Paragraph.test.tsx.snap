@@ -137,7 +137,6 @@ exports[`A Paragraph component wrapped 1`] = `
 <p
   className="c0"
   fontSize="medium"
-  wrap={true}
 >
   Hello
 </p>

@@ -66,7 +66,7 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
       </ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
-          <Paragraph wrap>{message}</Paragraph>
+          <Paragraph breakword>{message}</Paragraph>
         ) : (
           message
         )}

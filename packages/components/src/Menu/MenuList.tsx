@@ -42,7 +42,11 @@ import {
   minWidth,
   maxWidth,
 } from 'styled-system'
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  omitStyledProps,
+} from '@looker/design-tokens'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemStyleContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -125,7 +129,7 @@ export const MenuListInternal = forwardRef(
             role="menu"
             id={id}
             aria-labelledby={id && `button-${id}`}
-            {...props}
+            {...omitStyledProps(props)}
           >
             {children}
           </ul>

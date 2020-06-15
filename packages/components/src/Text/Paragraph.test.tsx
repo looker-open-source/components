@@ -75,7 +75,7 @@ test('A Paragraph component text transformed', () => {
 })
 
 test('A Paragraph component wrapped', () => {
-  const component = createWithTheme(<Paragraph wrap>Hello</Paragraph>)
+  const component = createWithTheme(<Paragraph breakword>Hello</Paragraph>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

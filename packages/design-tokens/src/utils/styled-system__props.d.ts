@@ -24,6 +24,6 @@
 
  */
 
-import { omit } from '@styled-system/props'
-
-export const omitStyledProps = omit
+declare module '@styled-system/props' {
+  export function omit(props: any): {}
+}
