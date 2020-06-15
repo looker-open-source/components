@@ -32,7 +32,13 @@ import React, {
   useRef,
   useEffect,
 } from 'react'
-import { SpaceProps, reset, space } from '@looker/design-tokens'
+import {
+  SpaceProps,
+  reset,
+  space,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import { WidthProps } from 'styled-system'
 import styled from 'styled-components'
 import sortBy from 'lodash/sortBy'
@@ -49,7 +55,10 @@ import {
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 
-export interface RangeSliderProps extends SpaceProps, WidthProps {
+export interface RangeSliderProps
+  extends SpaceProps,
+    WidthProps,
+    TypographyProps {
   'aria-labelledby'?: string
   max?: number
   min?: number
@@ -392,8 +401,11 @@ InternalRangeSlider.displayName = 'InternalRangeSlider'
 export const RangeSlider = styled(InternalRangeSlider)`
   ${reset}
   ${space}
-  padding: ${({ theme: { space } }) => `${space.xlarge} 0 ${space.small}`};
+  ${typography}
+  padding: 1.5rem 0 0.5rem;
 `
+
+RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
 
 const SliderTrack = styled.div`
   height: 4px;
@@ -402,7 +414,7 @@ const SliderTrack = styled.div`
   position: relative;
 `
 
-interface ThumbLabelProps {
+interface ThumbLabelProps extends TypographyProps {
   position: number
   focus: boolean
   disabled: boolean
@@ -411,7 +423,7 @@ interface ThumbLabelProps {
 const ThumbLabel = styled.div<ThumbLabelProps>`
   user-select: none;
   position: absolute;
-  top: -30px;
+  top: -24px;
   transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
   text-align: center;
   color: ${({ theme: { colors }, disabled }) =>

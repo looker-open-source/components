@@ -27,7 +27,13 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
@@ -35,7 +41,8 @@ import { InputProps } from '../InputProps'
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
-    Omit<InputProps, 'type'> {
+    Omit<InputProps, 'type'>,
+    TypographyProps {
   'aria-labelledby'?: string
   max?: number
   min?: number
@@ -117,7 +124,7 @@ const SliderInternal = forwardRef(
           name={name}
           onChange={handleChange}
           step={step}
-          type="range"
+          offsetPercent={fillPercent}
           value={displayValue}
           aria-labelledby={restProps['aria-labelledby']}
           data-testid="slider-input"
@@ -132,6 +139,7 @@ const SliderInternal = forwardRef(
 
 interface SliderInputProps {
   isFocused?: boolean
+  offsetPercent: number
 }
 
 const sliderThumbFocusCss = css<SliderInputProps>`
@@ -142,6 +150,10 @@ const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
+  position: absolute;
+  left: ${({ offsetPercent = 0 }) => `${offsetPercent}%`};
+  transform: translateX(-50%);
+  top: 3px;
   ${({ theme: { colors }, isFocused }) => css`
     border: 3px solid ${colors.key};
     height: 16px;
@@ -156,9 +168,11 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   display: block;
   height: 22px;
   position: relative;
-  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   -webkit-appearance: none; /* stylelint-disable-line */
-
+  width: calc(100% - 16px);
+  left: 8px;
   &::-webkit-slider-thumb {
     -webkit-appearance: none; /* stylelint-disable-line */
     ${sliderThumbCss}
@@ -216,14 +230,14 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 `
 
 const SliderTrack = styled.div`
-  width: calc(100% - 16px);
   height: 4px;
   background: ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
   position: absolute;
   top: 50%;
-  left: 8px;
   margin-top: -2px;
+  width: calc(100% - 16px);
+  left: 8px;
 `
 
 interface ControlProps {
@@ -248,13 +262,12 @@ interface SliderValueProps extends SliderInputProps {
 const SliderValue = styled.div<SliderValueProps>`
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
-  line-height: 1;
   user-select: none;
-  transform: translateX(-50%) translateY(-1.3rem);
+  transform: translateX(-50%) translateY(-0.9rem);
   left: ${({ offsetPercent }) => offsetPercent}%;
   position: absolute;
   text-align: center;
-  padding: 0.2rem 0.5rem;
+  padding: 0 0.5rem;
   border-radius: 1rem;
   background: ${({ theme, isFocused }) =>
     isFocused ? theme.colors.keyAccent : theme.colors.keyText};
@@ -270,8 +283,14 @@ export const Slider = styled(SliderInternal)<SliderProps>`
   ${reset}
   ${space}
   ${width}
+  ${typography}
   position: relative;
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { mt: 'large', width: '100%' }
+Slider.defaultProps = {
+  fontSize: 'small',
+  lineHeight: 'xsmall',
+  mt: 'medium',
+  width: '100%',
+}
