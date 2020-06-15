@@ -55,9 +55,8 @@ const ComboboxMultiOptionInternal = forwardRef(
       indicator,
       highlightText = true,
       scrollIntoView,
-      hideCheckMark,
       ...props
-    }: ComboboxOptionProps & { hideCheckMark?: boolean },
+    }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
@@ -94,12 +93,12 @@ const ComboboxMultiOptionInternal = forwardRef(
         aria-selected={isActive}
       >
         <ComboboxOptionIndicator
-          indicator={indicator || (hideCheckMark ? false : undefined)}
+          indicator={indicator}
           isActive={isActive}
           isSelected={isSelected}
           isMulti={true}
         >
-          {!hideCheckMark && <Checkbox checked={isSelected} />}
+          <Checkbox checked={isSelected} />
         </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>

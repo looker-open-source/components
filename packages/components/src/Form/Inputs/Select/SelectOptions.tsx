@@ -293,7 +293,11 @@ function SelectMultiCreateOption({
   }
 
   return (
-    <ComboboxMultiOption value={inputValue} highlightText={false} hideCheckMark>
+    <ComboboxMultiOption
+      value={inputValue}
+      highlightText={false}
+      indicator={false}
+    >
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
     </ComboboxMultiOption>
   )
