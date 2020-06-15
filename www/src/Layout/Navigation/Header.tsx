@@ -42,8 +42,7 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
         name="LookerLogo"
         alt="Looker"
         color="text1"
-        width="60px"
-        height="26px"
+        style={{ height: '26px', width: '60px' }}
       />
       <DividerVertical ml="medium" mr="small" />
       <ComponentsLogo />
