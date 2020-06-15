@@ -162,6 +162,16 @@ const TreeStyle = styled.div<TreeStyleProps>`
 }:hover {
     background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   }
+
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+  }
+
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+  /* sc-selector */ TreeItem
+}:focus {
+    border-color: ${({ theme }) => theme.colors.keyFocus};
+  }
 `
 
 const TreeLayout: FC<TreeProps> = ({
