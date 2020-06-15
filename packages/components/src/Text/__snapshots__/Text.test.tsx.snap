@@ -87,7 +87,6 @@ exports[`A Text component wrapped 1`] = `
 <span
   className="c0"
   fontSize="medium"
-  wrap={true}
 >
   Hello
 </span>
