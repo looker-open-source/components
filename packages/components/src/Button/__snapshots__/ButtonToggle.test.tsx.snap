@@ -2,6 +2,8 @@
 
 exports[`ButtonToggle controlled 1`] = `
 .c3 {
+  font-size: 0.875rem;
+  margin: 0;
   cursor: pointer;
   height: 36px;
   display: -webkit-inline-box;
