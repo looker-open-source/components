@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
 - `Select`/`SelectMulti` keyboard navigation when filtering options
 - `SelectMulti` create option unnecessary left padding
+- `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
 
 ### Removed
 
