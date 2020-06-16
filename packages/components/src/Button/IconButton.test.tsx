@@ -28,11 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import noop from 'lodash/noop'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import {
-  fireEvent,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
