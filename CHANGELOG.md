@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select`/`SelectMulti` keyboard navigation when filtering options
 - `SelectMulti` create option unnecessary left padding
 
+### Removed
+
+- `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+
 ## [0.8.7]
 
 ### Added
