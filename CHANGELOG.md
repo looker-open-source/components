@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Smaller text in Safari and Firefox
   - White space between highlighted item and border (`ButtonToggle`)
   - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
+- `Select`/`SelectMulti` keyboard navigation when filtering options
+- `SelectMulti` create option unnecessary left padding
 
 ## [0.8.7]
 
