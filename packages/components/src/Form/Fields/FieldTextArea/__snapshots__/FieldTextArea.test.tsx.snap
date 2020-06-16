@@ -110,6 +110,7 @@ exports[`A FieldTextArea with default label 1`] = `
     >
       <textarea
         aria-describedby="FieldTextAreaID-describedby"
+        id="FieldTextAreaID"
       />
     </div>
   </div>
@@ -256,6 +257,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     >
       <textarea
         aria-describedby="FieldTextAreaID-describedby"
+        id="FieldTextAreaID"
       />
     </div>
   </div>
