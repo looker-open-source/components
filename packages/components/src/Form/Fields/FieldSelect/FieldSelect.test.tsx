@@ -84,7 +84,7 @@ test('A required FieldSelect', () => {
 })
 
 test('A FieldSelect with an error validation aligned to the bottom', () => {
-  const { getByLabelText, getByText } = renderWithTheme(
+  const { getAllByLabelText, getByText } = renderWithTheme(
     <FieldSelect
       label="thumbs up"
       name="thumbsUp"
@@ -92,7 +92,7 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
   )
-  expect(getByLabelText('thumbs up')).toBeVisible()
+  expect(getAllByLabelText('thumbs up')[1]).toBeVisible()
   expect(getByText('This is an error')).toBeVisible()
 })
 

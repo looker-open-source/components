@@ -270,6 +270,7 @@ exports[`A FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -648,6 +649,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1013,6 +1015,7 @@ exports[`A required FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1326,6 +1329,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
