@@ -30,7 +30,6 @@ module.exports = {
     'stylelint-config-styled-components',
   ],
   plugins: ['stylelint-order'],
-  processors: ['stylelint-processor-styled-components'],
   rules: {
     'block-closing-brace-empty-line-before': 'never',
     'block-closing-brace-newline-after': 'always',
@@ -55,7 +54,7 @@ module.exports = {
     'no-extra-semicolons': true,
     'no-unknown-animations': true,
     'number-no-trailing-zeros': true,
-    'order/properties-alphabetical-order': [true, { disableFix: true }],
+    'order/properties-alphabetical-order': true,
     'selector-attribute-brackets-space-inside': 'never',
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
@@ -69,6 +68,12 @@ module.exports = {
     'selector-pseudo-element-case': 'lower',
     'selector-pseudo-element-colon-notation': 'double',
     'selector-type-case': 'lower',
+    'selector-type-no-unknown': [
+      true,
+      {
+        ignoreTypes: ['/^-styled-mixin/'],
+      },
+    ],
     'shorthand-property-no-redundant-values': true,
     'string-quotes': 'single',
     'unit-case': 'lower',
