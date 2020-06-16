@@ -65,6 +65,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `labelsCollapse` added to Field and Fieldset
 
+### Added
+
+- `labelsCollapse` added to Field and Fieldset
+
 ## [0.8.6]
 
 ### Fixed
