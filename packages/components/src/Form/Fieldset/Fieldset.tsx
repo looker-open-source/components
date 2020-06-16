@@ -92,6 +92,7 @@ const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
     const {
       accordion,
+      className,
       inline,
       gap,
       legend,
@@ -150,17 +151,15 @@ const FieldsetLayout = forwardRef(
       content
     )
 
-<<<<<<< HEAD
-    return <div {...omitStyledProps(restProps)}>{renderedFieldset}</div>
-=======
     return (
       <FieldsetContext.Provider
         value={{ labelsCollapse: labelsCollapse || false }}
       >
-        <div className={className}>{renderedFieldset}</div>
+        <div {...omitStyledProps(restProps)} className={className}>
+          {renderedFieldset}
+        </div>
       </FieldsetContext.Provider>
     )
->>>>>>> labelsCollapse as prop and using context
   }
 )
 

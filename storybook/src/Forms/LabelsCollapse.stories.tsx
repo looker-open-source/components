@@ -41,9 +41,9 @@ export const FieldCollapse = () => (
       />
     </Fieldset>
     <Fieldset legend="This is the Legend">
-      <FieldText label="First Label" />
+      <FieldText label="First Label" labelCollapse />
       <FieldText label="Second Label" />
-      <FieldText label="Third Label" labelCollapse />
+      <FieldText label="Third Label" labelCollapse={false} />
     </Fieldset>
     <FieldTextArea label="FieldTextArea Label" labelCollapse />
   </>

@@ -45,7 +45,6 @@ export interface FieldProps extends FieldBaseProps {
    * optional extra description
    */
   description?: ReactNode
-
   /**
    * Id of the input element to match a label to.
    */
@@ -106,8 +105,6 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   id,
   label,
   labelCollapse = false,
-  labelFontSize,
-  labelFontWeight,
   required,
   validationMessage,
 }) => {
@@ -124,12 +121,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 
   const labelComponent = (
-    <Label
-      fontSize={labelFontSize}
-      fontWeight={labelFontWeight}
-      htmlFor={id}
-      id={`${id}-labelledby`}
-    >
+    <Label htmlFor={id} id={`${id}-labelledby`}>
       {label}
       {required && <RequiredStar />}
     </Label>
@@ -137,9 +129,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      {labelCollapse ? (
-        <VisuallyHidden>{labelComponent}</VisuallyHidden>
-      ) : labelsCollapse ? (
+      {labelsCollapse || labelCollapse ? (
         <VisuallyHidden>{labelComponent}</VisuallyHidden>
       ) : (
         labelComponent
