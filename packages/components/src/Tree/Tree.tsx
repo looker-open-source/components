@@ -125,15 +125,15 @@ interface TreeStyleProps {
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
-  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItem} {
-    padding: ${({ theme }) => theme.space.none};
-  }
-
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
+  }
+
+  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItem} {
+    padding: ${({ theme }) => theme.space.none};
   }
 
   ${TreeGroupLabel} {
@@ -151,16 +151,6 @@ const TreeStyle = styled.div<TreeStyleProps>`
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
       }) * ${depth + 1})`};
-  }
-
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:hover {
-    background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
-  }
-
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
-  /* sc-selector */ TreeItem
-}:hover {
-    background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   }
 `
 
@@ -189,6 +179,7 @@ const TreeLayout: FC<TreeProps> = ({
       detailStopPropagation={detailStopPropagation}
       gapSize="xsmall"
       icon={icon}
+      noHover={true}
     >
       {label}
     </TreeItem>

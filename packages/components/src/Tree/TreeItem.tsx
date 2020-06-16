@@ -63,12 +63,19 @@ export interface TreeItemProps {
    */
   onClick?: () => void
   /**
+   * Determines if hover styling is applied or not to a TreeItem
+   * Note: Used to keep hover styling off of a Tree's internal TreeItem
+   */
+  noHover?: boolean
+  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
 }
 
 interface TreeItemStyle {
+  hoverColor: string
+  noHover?: boolean
   selected?: boolean
   selectedColor: string
 }
@@ -82,6 +89,11 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   &:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
+
+  &:hover {
+    background-color: ${({ hoverColor, noHover, theme }) =>
+      !noHover && theme.colors[hoverColor]};
+  }
 `
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -92,9 +104,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   gapSize = 'xxsmall',
   icon,
   onClick,
+  noHover,
   selected,
 }) => {
-  const { selectedColor = 'ui2' } = useContext(TreeContext)
+  const { hoverColor = 'ui2', selectedColor = 'ui1' } = useContext(TreeContext)
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
@@ -112,6 +125,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   return (
     <TreeItemStyle
       className={className}
+      hoverColor={hoverColor}
+      noHover={noHover}
       selected={selected}
       selectedColor={selectedColor}
       tabIndex={onClick ? 0 : -1}
