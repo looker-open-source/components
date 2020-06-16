@@ -29,8 +29,10 @@ import {
   ButtonTransparent,
   Grid,
   Tree,
+  TreeContext,
   TreeItem,
   TreeGroup,
+  IconButton,
 } from '@looker/components'
 
 export const All = () => (
@@ -110,39 +112,72 @@ export const FileSelectorClosed = () => (
   </Tree>
 )
 
+const fieldDetailButtons = (
+  <>
+    <IconButton icon="Filter" label="Filter" />
+    <IconButton icon="CircleInfoOutline" label="Info" />
+    <IconButton icon="DotsVert" label="Options" />
+  </>
+)
+
 export const FieldPicker = () => (
   <Tree
     defaultOpen
     detail={addButton}
+    detailHoverDisclosure
     detailStopPropagation
     label="Custom Fields"
   >
-    <TreeGroup label="Dimensions">
-      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
+    <TreeGroup label="DIMENSIONS">
+      <TreeItem
+        detail={fieldDetailButtons}
+        icon="FieldNumber"
+        onClick={() => alert('Clicked on Cost!')}
+      >
         Cost
       </TreeItem>
       <Tree label="Created">
-        <TreeItem icon="Calendar">Created Date</TreeItem>
-        <TreeItem icon="Calendar">Created Month</TreeItem>
-        <TreeItem icon="Calendar">Created Year</TreeItem>
-        <TreeItem icon="Calendar">Created Quarter</TreeItem>
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+          Created Date
+        </TreeItem>
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+          Created Month
+        </TreeItem>
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+          Created Year
+        </TreeItem>
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+          Created Quarter
+        </TreeItem>
       </Tree>
-      <TreeItem icon="FieldDistance">Location</TreeItem>
-      <TreeItem icon="FieldTier" onClick={() => alert('Clicked on Tier!')}>
+      <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
+        Location
+      </TreeItem>
+      <TreeItem
+        detail={fieldDetailButtons}
+        icon="FieldTier"
+        onClick={() => alert('Clicked on Tier!')}
+      >
         Tier
       </TreeItem>
       <TreeItem
+        detail={fieldDetailButtons}
         icon="FieldYesNo"
         onClick={() => alert('Clicked on French Yes-No!')}
       >
         Oui ou Non
       </TreeItem>
     </TreeGroup>
-    <TreeGroup color="critical" label="Measures">
-      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Count!')}>
+    <TreeGroup color="critical" label="MEASURES">
+      <TreeItem
+        detail={fieldDetailButtons}
+        icon="FieldNumber"
+        onClick={() => alert('Clicked on Count!')}
+      >
         Count
       </TreeItem>
       <TreeItem
+        detail={fieldDetailButtons}
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count Distinct!')}
       >
@@ -192,12 +227,14 @@ export const HoverState = () => (
 )
 
 export const Flat = () => (
-  <TreeGroup label="Inventory Items">
-    <TreeItem icon="Calendar">Date</TreeItem>
-    <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
-      Cost
-    </TreeItem>
-    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
-    <TreeItem icon="FieldNumber">Another Number</TreeItem>
-  </TreeGroup>
+  <TreeContext.Provider value={{ hoverColor: 'keyFocus' }}>
+    <TreeGroup label="Inventory Items">
+      <TreeItem icon="Calendar">Date</TreeItem>
+      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
+        Cost
+      </TreeItem>
+      <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
+      <TreeItem icon="FieldNumber">Another Number</TreeItem>
+    </TreeGroup>
+  </TreeContext.Provider>
 )

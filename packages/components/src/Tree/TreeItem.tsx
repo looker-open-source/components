@@ -30,11 +30,13 @@ import React, {
   MouseEvent,
   ReactNode,
   useContext,
+  useRef,
 } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
+import { useHovered } from '../utils/useHovered'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps {
@@ -107,7 +109,11 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   noHover,
   selected,
 }) => {
-  const { hoverColor = 'ui2', selectedColor = 'ui1' } = useContext(TreeContext)
+  const {
+    detailHoverDisclosure,
+    hoverColor = 'ui2',
+    selectedColor = 'ui1',
+  } = useContext(TreeContext)
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
@@ -122,6 +128,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const defaultIconSize = 12
 
+  const treeItemRef = useRef<HTMLDivElement>(null)
+  const [isTreeItemHovered] = useHovered(treeItemRef)
+
   return (
     <TreeItemStyle
       className={className}
@@ -131,10 +140,17 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       selectedColor={selectedColor}
       tabIndex={onClick ? 0 : -1}
     >
-      <Space gap={gapSize} onClick={onClick} onKeyDown={handleKeyDown}>
+      <Space
+        gap={gapSize}
+        ref={treeItemRef}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+      >
         {icon && <Icon name={icon} size={defaultIconSize} />}
         <FlexItem flex="1">{children}</FlexItem>
-        {detail && <span onClick={handleDetailClick}>{detail}</span>}
+        {detail && (!detailHoverDisclosure || isTreeItemHovered) && (
+          <span onClick={handleDetailClick}>{detail}</span>
+        )}
       </Space>
     </TreeItemStyle>
   )

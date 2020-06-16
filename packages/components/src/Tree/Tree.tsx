@@ -50,6 +50,11 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    */
   detail?: ReactNode
   /**
+   * If true, then the detail elements on child Tree elements will only appear on hover
+   * @default false
+   */
+  detailHoverDisclosure?: boolean
+  /**
    * If true, clicking on the detail element will not trigger the Tree's other click handlers
    * @default false
    */
@@ -158,6 +163,7 @@ const TreeLayout: FC<TreeProps> = ({
   border,
   children,
   detail,
+  detailHoverDisclosure,
   detailStopPropagation,
   fontWeight,
   hoverColor = 'ui2',
@@ -205,6 +211,7 @@ const TreeLayout: FC<TreeProps> = ({
       value={{
         border: isBorderEnabled,
         depth: nextDepth,
+        detailHoverDisclosure: detailHoverDisclosure,
         hoverColor: renderedHoverColor,
         selectedColor: renderedSelectedColor,
       }}
