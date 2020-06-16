@@ -61,7 +61,7 @@ export interface FieldsetProps
    */
   legend?: ReactNode
   /*
-   * Hide labels on Fields within this Fieldset=
+   * Hide labels on Fields within this Fieldset
    * @default false
    */
   hideLabels?: boolean

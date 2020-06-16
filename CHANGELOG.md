@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Field now support CollapseLabel
+- Field now support hideLabel
 
 ### Fixed
 
