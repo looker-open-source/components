@@ -59,7 +59,7 @@
     "@looker/eslint-config": "^1.0.14",
     "@looker/prettier-config": "^1.0.15",
     "@testing-library/jest-dom": "^5.9.0",
-    "@types/node": "^14.0.12",
+    "@types/node": "^14.0.13",
     "babel-plugin-styled-components": "^1.10.7",
     "core-js": "^3.6.5",
     "enzyme": "^3.11.0",
