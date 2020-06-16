@@ -1,0 +1,26 @@
+{
+  "name": "@looker/stylelint-config",
+  "license": "MIT",
+  "author": "Looker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/looker-open-source/components.git"
+  },
+  "version": "1.0.13",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=10",
+    "yarn": ">=1.14.0"
+  },
+  "dependencies": {
+    "stylelint": "^13.6.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "resolutions": {
+    "minimist": ">=1.2.2"
+  }
+}
