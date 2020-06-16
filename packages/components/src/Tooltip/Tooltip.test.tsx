@@ -46,7 +46,7 @@ describe('Tooltip', () => {
 
   test('trigger: open on mouseover, close on mouseout', () => {
     renderWithTheme(
-      <Tooltip content="Hello world">
+      <Tooltip content="Hello world" id="stable-id">
         <Button>Test</Button>
       </Tooltip>
     )

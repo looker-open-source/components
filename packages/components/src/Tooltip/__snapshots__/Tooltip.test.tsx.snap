@@ -110,7 +110,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   <p
     class="c1"
     font-size="xsmall"
-    id="0ac6327b-c4f0-4e71-aba9-b55376f5e344"
+    id="stable-id"
     role="tooltip"
     width="auto"
   >
