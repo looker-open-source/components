@@ -29,7 +29,6 @@ import {
   ButtonTransparent,
   Grid,
   Tree,
-  TreeContext,
   TreeItem,
   TreeGroup,
 } from '@looker/components'
@@ -193,17 +192,12 @@ export const HoverState = () => (
 )
 
 export const Flat = () => (
-  <TreeContext.Provider
-    value={{
-      hoverColor: 'critical',
-    }}
-  >
+  <TreeGroup label="Inventory Items">
+    <TreeItem icon="Calendar">Date</TreeItem>
     <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
       Cost
     </TreeItem>
-    <TreeItem icon="Calendar">Created Date</TreeItem>
-    <TreeItem icon="Calendar">Created Month</TreeItem>
-    <TreeItem icon="Calendar">Created Year</TreeItem>
-    <TreeItem icon="Calendar">Created Quarter</TreeItem>
-  </TreeContext.Provider>
+    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
+    <TreeItem icon="FieldNumber">Another Number</TreeItem>
+  </TreeGroup>
 )
