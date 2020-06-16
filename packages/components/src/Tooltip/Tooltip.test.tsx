@@ -55,8 +55,8 @@ describe('Tooltip', () => {
 
     fireEvent.mouseOver(trigger)
 
-    const tooltip = screen.queryByText('Hello world')
-    expect(tooltip).toBeVisible()
+    const tooltip = screen.getByText('Hello world')
+    expect(tooltip.parentNode).toMatchSnapshot()
 
     fireEvent.mouseOut(trigger)
     expect(tooltip).not.toBeInTheDocument()
