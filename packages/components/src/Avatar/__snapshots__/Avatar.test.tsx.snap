@@ -21,13 +21,13 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c3 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  width: 100%;
 }
 
 .c2 {
@@ -74,16 +74,16 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c0 {
-  position: relative;
   height: 40px;
+  position: relative;
   width: 40px;
 }
 
 .c0 .c4 {
   bottom: -4px;
-  right: -4px;
-  position: absolute;
   height: 20px;
+  position: absolute;
+  right: -4px;
   width: 20px;
 }
 
@@ -157,13 +157,13 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 }
 
 .c3 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  width: 100%;
 }
 
 .c2 {
@@ -210,16 +210,16 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 }
 
 .c0 {
-  position: relative;
   height: 40px;
+  position: relative;
   width: 40px;
 }
 
 .c0 .c4 {
   bottom: -4px;
-  right: -4px;
-  position: absolute;
   height: 20px;
+  position: absolute;
+  right: -4px;
   width: 20px;
 }
 
@@ -337,16 +337,16 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 }
 
 .c0 {
-  position: relative;
   height: 40px;
+  position: relative;
   width: 40px;
 }
 
 .c0 .c4 {
   bottom: -4px;
-  right: -4px;
-  position: absolute;
   height: 20px;
+  position: absolute;
+  right: -4px;
   width: 20px;
 }
 
@@ -571,13 +571,13 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 
 exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 .c2 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  width: 100%;
 }
 
 .c1 {
@@ -655,13 +655,13 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
 
 exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = `
 .c2 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  width: 100%;
 }
 
 .c1 {

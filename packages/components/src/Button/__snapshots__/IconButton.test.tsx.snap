@@ -64,8 +64,8 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -92,12 +92,12 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -212,8 +212,8 @@ exports[`IconButton accepts events 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -240,12 +240,12 @@ exports[`IconButton accepts events 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -361,8 +361,8 @@ exports[`IconButton accepts events 2`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -389,12 +389,12 @@ exports[`IconButton accepts events 2`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -510,8 +510,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -538,12 +538,12 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -659,8 +659,8 @@ exports[`IconButton default 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -687,12 +687,12 @@ exports[`IconButton default 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -807,8 +807,8 @@ exports[`IconButton outline 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -835,12 +835,12 @@ exports[`IconButton outline 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -973,8 +973,8 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -1001,12 +1001,12 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -1121,8 +1121,8 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 }
 
 .c1 .c5 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -1149,12 +1149,12 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
@@ -1269,8 +1269,8 @@ exports[`IconButton resized 1`] = `
 }
 
 .c1 .c5 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c1:hover,
@@ -1297,12 +1297,12 @@ exports[`IconButton resized 1`] = `
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {

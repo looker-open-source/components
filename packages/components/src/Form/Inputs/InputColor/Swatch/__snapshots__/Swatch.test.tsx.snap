@@ -8,15 +8,11 @@ exports[`Default Swatch 1`] = `
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   background-color: transparent;
-  margin-top: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  margin-top: auto;
   position: relative;
-}
-
-.c0:hover {
-  border-color: #C1C6CC;
 }
 
 .c0:after {
@@ -31,6 +27,10 @@ exports[`Default Swatch 1`] = `
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
 }
 
 <div
@@ -49,10 +49,10 @@ exports[`Swatch with hex value passed 1`] = `
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   background-color: #4c6670;
-  margin-top: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  margin-top: auto;
 }
 
 .c0:hover {
@@ -75,10 +75,10 @@ exports[`Swatch with width and height set 1`] = `
   border-color: #DEE1E5;
   border-radius: 0.25rem;
   background-color: blue;
-  margin-top: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  margin-top: auto;
 }
 
 .c0:hover {

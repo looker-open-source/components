@@ -38,10 +38,10 @@ exports[`MenuItem - current + marker 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   -webkit-text-decoration: none;
@@ -50,9 +50,9 @@ exports[`MenuItem - current + marker 1`] = `
 
 .c1:hover,
 .c1:focus {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
 }
 
 .c5:hover .c3 {
@@ -90,9 +90,9 @@ exports[`MenuItem - current + marker 1`] = `
 
 .c0 button,
 .c0 a {
-  border-left-width: 4px;
-  border-left-style: solid;
   border-left-color: #262D33;
+  border-left-style: solid;
+  border-left-width: 4px;
   outline: none;
   padding-left: calc(1rem - 4px);
 }
@@ -104,13 +104,13 @@ exports[`MenuItem - current + marker 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 20px 1fr;
 }
 
 <li
@@ -193,10 +193,10 @@ exports[`MenuItem - current 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   -webkit-text-decoration: none;
@@ -205,9 +205,9 @@ exports[`MenuItem - current 1`] = `
 
 .c1:hover,
 .c1:focus {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
 }
 
 .c5:hover .c3 {
@@ -245,9 +245,9 @@ exports[`MenuItem - current 1`] = `
 
 .c0 button,
 .c0 a {
-  border-left-width: 4px;
-  border-left-style: solid;
   border-left-color: #262D33;
+  border-left-style: solid;
+  border-left-width: 4px;
   outline: none;
   padding-left: calc(1rem - 4px);
 }
@@ -259,13 +259,13 @@ exports[`MenuItem - current 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 20px 1fr;
 }
 
 <li
@@ -328,10 +328,10 @@ exports[`MenuItem - detail 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   -webkit-text-decoration: none;
@@ -340,9 +340,9 @@ exports[`MenuItem - detail 1`] = `
 
 .c1:hover,
 .c1:focus {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
 }
 
 .c3 {
@@ -378,9 +378,9 @@ exports[`MenuItem - detail 1`] = `
 
 .c0 button,
 .c0 a {
-  border-left-width: 4px;
-  border-left-style: solid;
   border-left-color: transparent;
+  border-left-style: solid;
+  border-left-width: 4px;
   outline: none;
   padding-left: calc(1rem - 4px);
 }
@@ -403,13 +403,13 @@ exports[`MenuItem - detail 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
 }
 
 <li
@@ -480,10 +480,10 @@ exports[`MenuItem - icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   -webkit-text-decoration: none;
@@ -492,9 +492,9 @@ exports[`MenuItem - icon 1`] = `
 
 .c1:hover,
 .c1:focus {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
 }
 
 .c0 {
@@ -522,9 +522,9 @@ exports[`MenuItem - icon 1`] = `
 
 .c0 button,
 .c0 a {
-  border-left-width: 4px;
-  border-left-style: solid;
   border-left-color: transparent;
+  border-left-style: solid;
+  border-left-width: 4px;
   outline: none;
   padding-left: calc(1rem - 4px);
 }
@@ -547,13 +547,13 @@ exports[`MenuItem - icon 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 20px 1fr;
 }
 
 <li
@@ -615,10 +615,10 @@ exports[`MenuItem 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   -webkit-text-decoration: none;
@@ -627,9 +627,9 @@ exports[`MenuItem 1`] = `
 
 .c1:hover,
 .c1:focus {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
 }
 
 .c0 {
@@ -657,9 +657,9 @@ exports[`MenuItem 1`] = `
 
 .c0 button,
 .c0 a {
-  border-left-width: 4px;
-  border-left-style: solid;
   border-left-color: transparent;
+  border-left-style: solid;
+  border-left-width: 4px;
   outline: none;
   padding-left: calc(1rem - 4px);
 }
@@ -682,13 +682,13 @@ exports[`MenuItem 1`] = `
 }
 
 .c2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 0.5rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
 }
 
 <li
