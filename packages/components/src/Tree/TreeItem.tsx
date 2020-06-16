@@ -136,16 +136,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       className={className}
       hoverColor={hoverColor}
       noHover={noHover}
+      ref={treeItemRef}
       selected={selected}
       selectedColor={selectedColor}
       tabIndex={onClick ? 0 : -1}
     >
-      <Space
-        gap={gapSize}
-        ref={treeItemRef}
-        onClick={onClick}
-        onKeyDown={handleKeyDown}
-      >
+      <Space gap={gapSize} onClick={onClick} onKeyDown={handleKeyDown}>
         {icon && <Icon name={icon} size={defaultIconSize} />}
         <FlexItem flex="1">{children}</FlexItem>
         {detail && (!detailHoverDisclosure || isTreeItemHovered) && (

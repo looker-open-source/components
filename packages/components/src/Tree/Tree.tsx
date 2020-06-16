@@ -173,7 +173,9 @@ const TreeLayout: FC<TreeProps> = ({
   ...restProps
 }) => {
   const context = useContext(TreeContext)
-  const isBorderEnabled = border || context.border
+  const isBorderEnabled = context.border || border
+  const isDetailHoverDisclosureEnabled =
+    context.detailHoverDisclosure || detailHoverDisclosure
   const currentDepth = context.depth ? context.depth : 0
   const nextDepth = currentDepth + 1
   const renderedHoverColor = context.hoverColor || hoverColor
@@ -211,7 +213,7 @@ const TreeLayout: FC<TreeProps> = ({
       value={{
         border: isBorderEnabled,
         depth: nextDepth,
-        detailHoverDisclosure: detailHoverDisclosure,
+        detailHoverDisclosure: isDetailHoverDisclosureEnabled,
         hoverColor: renderedHoverColor,
         selectedColor: renderedSelectedColor,
       }}
