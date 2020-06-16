@@ -36,15 +36,15 @@ export interface KnobProps {
 }
 
 const Knob = styled(({ className }) => <div className={className} />)`
+  background: ${({ theme }) => theme.colors.field};
+  border-radius: 50%;
+  bottom: ${({ size }) => rem(size * 0.1)};
+  height: ${({ size }) => rem(size * 0.8)};
+  left: ${({ size }) => rem(size * 0.1)};
+  position: absolute;
   transform: ${({ on, size }) => (on ? `translateX(${rem(size * 0.75)})` : '')};
   transition: ${({ theme }) => theme.transitions.durationModerate};
-  position: absolute;
-  bottom: ${({ size }) => rem(size * 0.1)};
-  left: ${({ size }) => rem(size * 0.1)};
   width: ${({ size }) => rem(size * 0.8)};
-  height: ${({ size }) => rem(size * 0.8)};
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.field};
 `
 
 interface KnobContainerProps extends KnobProps {
@@ -63,14 +63,14 @@ const KnobContainerLayout: FC<KnobContainerProps> = ({
 export const KnobContainer = styled(KnobContainerLayout)<KnobContainerProps>`
   ${reset}
 
-  transition: ${({ theme }) => theme.transitions.durationModerate};
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: ${({ size }) => rem(size)};
   background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
+  border-radius: ${({ size }) => size};
+  bottom: 0;
+  left: 0; /* stylelint-disable-line */
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: ${({ theme }) => theme.transitions.durationModerate};
 
   &:hover {
     ${({ disabled, theme }) =>

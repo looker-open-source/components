@@ -41,14 +41,15 @@ export interface ToggleSwitchProps
 
 const DisabledKnob = styled.div<{ size: number }>`
   ${reset}
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.4;
+
   background: ${({ theme }) => theme.colors.ui3};
   border-radius: ${({ size }) => rem(size)};
+  bottom: 0;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
+  top: 0;
 `
 
 export const ToggleSwitchLayout = forwardRef(
@@ -88,22 +89,22 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   ${reset}
   ${space}
 
-  width: ${(props) => rem((props.size || 20) * 1.75)};
-  height: ${(props) => rem(props.size || 20)};
   display: inline-block;
+  height: ${(props) => rem(props.size || 20)};
   position: relative;
   vertical-align: middle;
+  width: ${(props) => rem((props.size || 20) * 1.75)};
 
   input {
     cursor: ${({ disabled }) => (!disabled ? 'pointer' : undefined)};
-    opacity: 0;
-    width: 100%;
     height: 100%;
+    left: 0;
+    margin: 0; /* Suppress browser default styling */
+    opacity: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    width: 100%;
     z-index: 1;
-    margin: 0; /* Suppress browser default styling */
 
     &:focus + div {
       box-shadow: 0 0 0 0.2rem
