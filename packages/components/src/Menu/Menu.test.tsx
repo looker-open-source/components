@@ -25,7 +25,7 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React, { useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -44,7 +44,6 @@ const menu = (
   </Menu>
 )
 
-// Note to self: use "yarn jest Menu.test" to run Menu.test.tsx
 describe('<Menu />', () => {
   test('Menu Opens and Closes', () => {
     const { getByText, queryByText } = renderWithTheme(menu)
@@ -62,16 +61,22 @@ describe('<Menu />', () => {
     expect(queryByText('Swiss')).not.toBeInTheDocument()
   })
 
-  test('Menu Button has the tooltip', () => {
+  test('Menu Button has the tooltip', async () => {
     const { getByText, queryByText } = renderWithTheme(menu)
 
     const button = getByText('Cheese')
 
     expect(queryByText('Select your favorite kind')).not.toBeInTheDocument()
 
-    button.focus()
+    fireEvent.mouseOver(button)
 
     expect(queryByText('Select your favorite kind')).toBeInTheDocument()
+
+    fireEvent.mouseOut(button)
+
+    await waitForElementToBeRemoved(() =>
+      queryByText('Select your favorite kind')
+    )
   })
 
   test('closes on MenuItem click', () => {
@@ -110,6 +115,8 @@ describe('<Menu />', () => {
 
     expect(defaultPreventedItem).not.toBeInTheDocument()
     expect(item).not.toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 
   test('Disabled Menu does not open when clicked and has disabled prop', () => {
@@ -134,6 +141,8 @@ describe('<Menu />', () => {
     fireEvent.click(button)
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 
   test('Starting with Menu open', () => {
@@ -150,6 +159,8 @@ describe('<Menu />', () => {
     )
 
     expect(getByText('Swiss')).toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 
   test('MenuDisclosure is shown/hidden on hover of hoverDisclosureRef', () => {
@@ -188,5 +199,7 @@ describe('<Menu />', () => {
     expect(queryByText('Gouda')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Menu
     expect(queryByText('Gouda')).toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 })
