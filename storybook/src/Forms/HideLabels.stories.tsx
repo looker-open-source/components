@@ -29,18 +29,18 @@ import React from 'react'
 
 export const FieldCollapse = () => (
   <>
-    <Fieldset labelsCollapse legend="This is the Legend 1">
+    <Fieldset hideLabels legend="This is the Legend 1">
       <FieldText label="First Label" />
       <FieldText label="Second Label" />
-      <FieldText label="Third Label" labelCollapse={false} />
+      <FieldText label="Third Label" hideLabel={false} />
     </Fieldset>
     <Fieldset legend="This is the Legend 1">
-      <FieldText label="First Label" labelCollapse />
+      <FieldText label="First Label" hideLabel />
       <FieldText label="Second Label" />
       <FieldText label="Third Label" />
     </Fieldset>
-    <FieldText label="FieldText Label" labelCollapse={false} />
-    <FieldText label="FieldText Label" labelCollapse />
+    <FieldText label="FieldText Label" hideLabel={false} />
+    <FieldText label="FieldText Label" hideLabel />
   </>
 )
 

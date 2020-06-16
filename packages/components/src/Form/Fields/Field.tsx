@@ -59,7 +59,7 @@ export interface FieldProps extends FieldBaseProps {
    * Hide label on Field
    * @default false
    */
-  labelCollapse?: boolean
+  hideLabel?: boolean
   /**
    *
    * Specify the width of the FieldText if different then 100%
@@ -74,7 +74,7 @@ export const fieldPropKeys = [
   'id',
   'inline',
   'label',
-  'labelCollapse',
+  'hideLabel',
   'labelWidth',
   'validationMessage',
   'width',
@@ -102,11 +102,11 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   detail,
   id,
   label,
-  labelCollapse,
+  hideLabel,
   required,
   validationMessage,
 }) => {
-  const { labelsCollapse } = useContext(FieldsetContext)
+  const { hideLabels } = useContext(FieldsetContext)
 
   const fieldDescription = description && (
     <Paragraph mt="xsmall" fontSize="xsmall" color="text4">
@@ -127,7 +127,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      {labelsCollapse || labelCollapse ? (
+      {(hideLabels || hideLabel) && hideLabel !== false ? (
         <VisuallyHidden>{labelComponent}</VisuallyHidden>
       ) : (
         labelComponent
