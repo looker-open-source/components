@@ -24,14 +24,16 @@
 
  */
 
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Paragraph, Text } from '../../Text'
+import { FieldsetContext } from '../Fieldset'
 import { inputHeight } from '../Inputs/InputText/InputText'
 import { Label } from '../Label'
+import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
@@ -54,6 +56,11 @@ export interface FieldProps extends FieldBaseProps {
    */
   inline?: boolean
   /**
+   * Hide label on Field
+   * @default false
+   */
+  labelCollapse?: boolean
+  /**
    *
    * Specify the width of the FieldText if different then 100%
    * @default '100%'
@@ -67,6 +74,7 @@ export const fieldPropKeys = [
   'id',
   'inline',
   'label',
+  'labelCollapse',
   'labelWidth',
   'validationMessage',
   'width',
@@ -94,9 +102,12 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   detail,
   id,
   label,
+  labelCollapse,
   required,
   validationMessage,
 }) => {
+  const { labelsCollapse } = useContext(FieldsetContext)
+
   const fieldDescription = description && (
     <Paragraph mt="xsmall" fontSize="xsmall" color="text4">
       {description}
@@ -107,12 +118,20 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
     <ValidationMessage {...validationMessage} />
   )
 
+  const labelComponent = (
+    <Label htmlFor={id} id={`${id}-labelledby`}>
+      {label}
+      {required && <RequiredStar />}
+    </Label>
+  )
+
   return (
     <div className={className}>
-      <Label htmlFor={id} id={`${id}-labelledby`}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
+      {labelsCollapse || labelCollapse ? (
+        <VisuallyHidden>{labelComponent}</VisuallyHidden>
+      ) : (
+        labelComponent
+      )}
       {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
       <MessageArea id={`${id}-describedby`}>
