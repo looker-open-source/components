@@ -50,11 +50,11 @@ export interface LabelProps
 
 export const Label = styled.label<LabelProps>`
   ${reset}
-  ${color};
-  ${space};
+  ${color}
+  ${space}
   ${textDecoration}
-  ${textTransform};
-  ${typography};
+  ${textTransform}
+  ${typography}
 `
 
 Label.defaultProps = {

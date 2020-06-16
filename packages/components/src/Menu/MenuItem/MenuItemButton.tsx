@@ -46,15 +46,15 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
   color: inherit;
   cursor: pointer;
   display: flex;
-  font-size: inherit;
   flex: 1;
+  font-size: inherit;
   outline: none;
   text-align: left;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
 `

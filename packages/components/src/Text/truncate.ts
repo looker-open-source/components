@@ -37,20 +37,20 @@ const textTruncate = (props: TruncateProps) => {
   const { truncateLines } = props
 
   if (truncateLines && truncateLines > 1) {
-    // Despite the vendor prefixes below, this works in all mondern browsers (not IE11)
+    // Despite the vendor prefixes below, this works in all modern browsers (not IE11)
     return css`
-      overflow: hidden;
       /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
-      display: -webkit-box;
       -webkit-box-orient: vertical;
+      display: -webkit-box;
       -webkit-line-clamp: ${truncateLines};
+      overflow: hidden;
       /* stylelint-enable */
     `
   }
   return css`
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   `
 }
 

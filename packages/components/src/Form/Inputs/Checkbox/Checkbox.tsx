@@ -119,7 +119,7 @@ export const Checkbox = styled(CheckboxLayout)`
   }
 
   input + ${FauxCheckbox} {
-    ${inputTextValidation};
+    ${inputTextValidation}
   }
 
   input:checked + ${FauxCheckbox} {

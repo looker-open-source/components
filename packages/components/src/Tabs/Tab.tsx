@@ -28,8 +28,6 @@ import React, { forwardRef, Ref, useState } from 'react'
 import { rgba } from 'polished'
 import styled from 'styled-components'
 import {
-  border,
-  BorderProps,
   CompatibleHTMLProps,
   layout,
   LayoutProps,
@@ -42,7 +40,6 @@ import {
 
 export interface TabProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    BorderProps,
     LayoutProps,
     SpaceProps,
     TypographyProps {
@@ -54,14 +51,12 @@ export interface TabProps
 
 const TabStyle = styled.button<TabProps>`
   ${reset}
-  border: none;
-
-  ${border}
   ${layout}
   ${space}
   ${typography}
 
   background: transparent;
+  border: none;
   border-bottom: 3px solid;
   border-bottom-color: ${(props) =>
     props.selected ? props.theme.colors.key : 'transparent'};
@@ -90,7 +85,7 @@ const TabStyle = styled.button<TabProps>`
 
   ${({ focusVisible, theme }) =>
     focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`};
+    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`}
 
   &:hover {
     border-bottom-color: ${(props) =>
@@ -98,9 +93,9 @@ const TabStyle = styled.button<TabProps>`
   }
 
   &:disabled {
-    cursor: default;
-    color: ${({ theme }) => theme.colors.text6};
     border-bottom-color: transparent;
+    color: ${({ theme }) => theme.colors.text6};
+    cursor: default;
   }
 `
 

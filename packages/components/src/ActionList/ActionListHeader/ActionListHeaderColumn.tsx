@@ -72,7 +72,7 @@ const ActionListHeaderColumnLayout = forwardRef(
 ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
-  display: flex;
   align-items: center;
+  display: flex;
   word-break: break-all;
 `

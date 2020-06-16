@@ -96,7 +96,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   width: ${(props) => rem((props.size || 20) * 1.75)};
 
   input {
-    cursor: ${({ disabled }) => (!disabled ? 'pointer' : undefined)};
+    cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
     height: 100%;
     left: 0;
     margin: 0; /* Suppress browser default styling */

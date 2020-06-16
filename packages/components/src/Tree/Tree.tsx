@@ -110,47 +110,47 @@ const TreeBorder = styled.div<TreeBorderProps>`
 `
 
 const TreeStyle = styled.div<{ depth: number }>`
-  ${AccordionDisclosure} {
-    height: 25px;
-    padding: ${({ theme }) => theme.space.xxsmall};
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`}
-  }
+${AccordionDisclosure} {
+  height: 25px;
+  padding: ${({ theme }) => theme.space.xxsmall};
+  padding-left: ${({ depth, theme }) =>
+    `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
+}
 
-  ${TreeGroupLabel} {
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
-        theme.space.small
-      }) * ${depth + 1})`};
-  }
+${TreeGroupLabel} {
+  padding-left: ${({ depth, theme }) =>
+    `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
+      theme.space.small
+    }) * ${depth + 1})`};
+}
 
-  ${TreeItem} {
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
-    outline: none;
-  }
+${TreeItem} {
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  outline: none;
+}
 
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem},
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem},
+${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
 } {
-    border: 1px solid transparent;
-    height: 25px;
-    padding: ${({ theme }) => theme.space.xxsmall};
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
-        theme.space.small
-      }) * ${depth + 1})`};
-  }
+  border: 1px solid transparent;
+  height: 25px;
+  padding: ${({ theme }) => theme.space.xxsmall};
+  padding-left: ${({ depth, theme }) =>
+    `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
+      theme.space.small
+    }) * ${depth + 1})`};
+}
 
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-  }
+${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem}:focus {
+  border-color: ${({ theme }) => theme.colors.keyFocus};
+}
 
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
   /* sc-selector */ TreeItem
 }:focus {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-  }
+  border-color: ${({ theme }) => theme.colors.keyFocus};
+}
 `
 
 const TreeLayout: FC<TreeProps> = ({

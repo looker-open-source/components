@@ -36,10 +36,10 @@ interface AccordionDisclosureGridProps
 }
 
 const Indicator = styled.div`
-  grid-area: indicator;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  grid-area: indicator;
+  justify-content: center;
 `
 const Label = styled.div`
   grid-area: children;
@@ -64,8 +64,8 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
 )
 
 export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
-  display: grid;
   align-items: center;
+  display: grid;
   grid-gap: ${({ indicatorGap, theme }) => theme.space[indicatorGap]};
   grid-template-areas: ${({ indicatorPosition }) =>
     indicatorPosition === 'left'
@@ -73,7 +73,7 @@ export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
       : '"children indicator"'};
   grid-template-columns: ${({ indicatorPosition, indicatorSize, theme }) =>
     indicatorPosition === 'left'
-      ? `${theme.space[indicatorSize]} 1fr`
+      ? `${theme.space[indicatorSize]}` + ' 1fr'
       : `1fr ${theme.space[indicatorSize]}`};
   width: 100%;
 `
