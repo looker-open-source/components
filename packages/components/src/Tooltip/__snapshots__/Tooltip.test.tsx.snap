@@ -6,17 +6,17 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
 }
 
 .c2::before {
-  content: '';
-  display: block;
-  margin: auto;
-  width: 0.5rem;
-  height: 0.5rem;
   background-color: #262D33;
   color: #FFFFFF;
   border-radius: 0.25rem;
-  border-top: none;
   border-left: none;
   border-radius: 0;
+  border-top: none;
+  content: '';
+  display: block;
+  height: 0.5rem;
+  margin: auto;
+  width: 0.5rem;
 }
 
 .c2[data-placement*='top'] {
@@ -78,14 +78,14 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   padding: 0.5rem;
   width: auto;
   max-width: 16rem;
-  white-space: normal;
-  text-transform: none;
-  word-break: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
   overflow-wrap: anywhere;
+  text-transform: none;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .c1 .c3 {

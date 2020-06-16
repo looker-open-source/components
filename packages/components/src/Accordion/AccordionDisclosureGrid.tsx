@@ -73,7 +73,7 @@ export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
       : '"children indicator"'};
   grid-template-columns: ${({ indicatorPosition, indicatorSize, theme }) =>
     indicatorPosition === 'left'
-      ? `${theme.space[indicatorSize]}` + ' 1fr'
-      : `1fr ${theme.space[indicatorSize]}`};
+      ? theme.space[indicatorSize] + ' 1fr'
+      : '1fr ' + theme.space[indicatorSize]};
   width: 100%;
 `

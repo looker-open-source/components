@@ -60,24 +60,22 @@ const KnobContainerLayout: FC<KnobContainerProps> = ({
   </div>
 )
 
-export const KnobContainer = styled(KnobContainerLayout)<KnobContainerProps>`
+export const KnobContainer = styled(KnobContainerLayout)`
   ${reset}
 
   background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
   border-radius: ${({ size }) => size};
   bottom: 0;
-  left: 0; /* stylelint-disable-line */
+  left: 0;
   position: absolute;
   right: 0;
   top: 0;
   transition: ${({ theme }) => theme.transitions.durationModerate};
 
   &:hover {
-    ${({ disabled, theme }) =>
-      disabled &&
-      `box-shadow: 0 0 0.01rem 0.01rem ${rgba(
-        theme.colors.keyInteractive,
-        0.5
-      )}`};
+    box-shadow: ${({ disabled, theme: { colors } }) =>
+      disabled
+        ? `0 0 0.01rem 0.01rem ${rgba(colors.keyInteractive, 0.5)}`
+        : undefined};
   }
 `
