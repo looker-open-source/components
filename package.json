@@ -92,6 +92,5 @@
   "pre-commit": [
     "lint-staged"
   ],
-  "prettier": "@looker/prettier-config",
-  "stylelint": "@looker/stylelint-config"
+  "prettier": "@looker/prettier-config"
 }
