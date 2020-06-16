@@ -86,7 +86,7 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   outline: none;
 
-  &:focus {
+  & > *:focus {
     border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 
