@@ -64,7 +64,7 @@ export interface FieldsetProps
    * Hide labels on Fields within this Fieldset
    * @default false
    */
-  hideChildLabels?: boolean
+  fieldsHideLabel?: boolean
   /**
    * Amount of space between fields
    * @default 'inline ? 'medium' : 'small'
@@ -83,7 +83,7 @@ const accordionIndicatorDefaults: AccordionIndicatorProps = {
 }
 
 export interface FieldsetContext {
-  hideChildLabels?: boolean
+  fieldsHideLabel?: boolean
 }
 
 export const FieldsetContext = createContext<FieldsetContext>({})
@@ -96,7 +96,7 @@ const FieldsetLayout = forwardRef(
       inline,
       gap,
       legend,
-      hideChildLabels,
+      fieldsHideLabel,
       children,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
@@ -153,7 +153,7 @@ const FieldsetLayout = forwardRef(
 
     return (
       <FieldsetContext.Provider
-        value={{ hideChildLabels: hideChildLabels || false }}
+        value={{ fieldsHideLabel: fieldsHideLabel || false }}
       >
         <div {...omitStyledProps(restProps)} className={className}>
           {renderedFieldset}

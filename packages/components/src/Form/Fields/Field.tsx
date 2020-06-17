@@ -106,7 +106,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   required,
   validationMessage,
 }) => {
-  const { hideChildLabels } = useContext(FieldsetContext)
+  const { fieldsHideLabel } = useContext(FieldsetContext)
 
   const fieldDescription = description && (
     <Paragraph mt="xsmall" fontSize="xsmall" color="text4">
@@ -127,7 +127,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
 
   return (
     <div className={className}>
-      {(hideChildLabels || hideLabel) && hideLabel !== false ? (
+      {(fieldsHideLabel || hideLabel) && hideLabel !== false ? (
         <VisuallyHidden>{labelComponent}</VisuallyHidden>
       ) : (
         labelComponent

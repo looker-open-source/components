@@ -619,15 +619,15 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
 }
 ```
 
-## hideLabel and hideChildLabels
+## hideLabel and fieldsHideLabel
 
-`hideChildLabels` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
+`fieldsHideLabel` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
 
 Additionally, each individual `Field` accepts a `hideLabel` prop to hide that single label, or override the containing `Fieldset` label settings.
 
 ```jsx
 <>
-  <Fieldset hideChildLabels legend="This is the Legend 1">
+  <Fieldset fieldsHideLabel legend="This is the Legend 1">
     <FieldText label="First Label" />
     <FieldText label="Second Label" />
     <FieldText label="Third Label" hideLabel={false} />
