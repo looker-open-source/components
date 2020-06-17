@@ -630,7 +630,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         className="c5 c6"
         onClick={[Function]}
         onMouseDown={[Function]}
-        validationType="error"
         width="100%"
       >
         <div

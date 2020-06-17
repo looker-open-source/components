@@ -154,7 +154,7 @@ const InputSearchBaseComponent = forwardRef(
     return (
       <div
         className={className}
-        {...omit(props, inputPropKeys)}
+        {...omit(props, [...inputPropKeys, 'validationType'])}
         {...mouseHandlers}
       >
         {searchIcon && searchIcon}
