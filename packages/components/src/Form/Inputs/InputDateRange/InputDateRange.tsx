@@ -446,8 +446,8 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   display: inline-grid;
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
-  margin: ${({ theme: { space } }) => space.xxsmall + ' 0'};
-  padding: ${({ theme: { space } }) => '0 ' + space.small};
+  margin: ${({ theme: { space } }) => space.xxsmall} 0;
+  padding: 0 ${({ theme: { space } }) => space.small};
   width: 100%;
 
   &:hover {
@@ -468,8 +468,7 @@ const IconWrapper = styled.div`
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
-  padding: ${({ theme: { space } }) => space.xxsmall + ' 0'};
-
+  padding: ${({ theme: { space } }) => space.xxsmall} 0;
   ${InlineInputText} {
     background: transparent;
     border: none;
