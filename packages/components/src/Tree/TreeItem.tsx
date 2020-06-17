@@ -48,9 +48,10 @@ export interface TreeItemProps {
   detail?: ReactNode
   /**
    * If true, clicking on the detail element will not trigger the TreeItem's onClick
+   * and no hover background appearing behind the detail elements
    * @default false
    */
-  detailStopPropagation?: boolean
+  detailAccessory?: boolean
   /**
    * Gap size of the internal Space component
    * @default 'xsmall'
@@ -109,7 +110,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   detail,
-  detailStopPropagation,
+  detailAccessory,
   gapSize = 'xxsmall',
   icon,
   onClick,
@@ -125,7 +126,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    detailStopPropagation && event.stopPropagation()
+    detailAccessory && event.stopPropagation()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {

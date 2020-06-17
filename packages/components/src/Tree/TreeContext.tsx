@@ -30,6 +30,7 @@ export interface TreeContextProps {
   border?: boolean
   depth?: number
   detailHoverDisclosure?: boolean
+  detailAccessory?: boolean
   hoverColor?: string
   selectedColor?: string
 }

@@ -130,31 +130,36 @@ export const FieldPicker = () => (
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
-        detailStopPropagation
+        detailAccessory
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
       >
         Cost
       </TreeItem>
       <Tree label="Created">
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
           Created Date
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
           Created Month
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
           Created Year
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
           Created Quarter
         </TreeItem>
       </Tree>
-      <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
+      <TreeItem
+        detail={fieldDetailButtons}
+        detailAccessory
+        icon="FieldDistance"
+      >
         Location
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
+        detailAccessory
         icon="FieldTier"
         onClick={() => alert('Clicked on Tier!')}
       >
@@ -162,6 +167,7 @@ export const FieldPicker = () => (
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
+        detailAccessory
         icon="FieldYesNo"
         onClick={() => alert('Clicked on French Yes-No!')}
       >
@@ -171,6 +177,7 @@ export const FieldPicker = () => (
     <TreeGroup color="critical" label="MEASURES">
       <TreeItem
         detail={fieldDetailButtons}
+        detailAccessory
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count!')}
       >
@@ -178,6 +185,7 @@ export const FieldPicker = () => (
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
+        detailAccessory
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count Distinct!')}
       >
