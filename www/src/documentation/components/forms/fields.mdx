@@ -619,6 +619,30 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
 }
 ```
 
+## hideLabel and fieldsHideLabel
+
+`fieldsHideLabel` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
+
+Additionally, each individual `Field` accepts a `hideLabel` prop to hide that single label, or override the containing `Fieldset` label settings.
+
+```jsx
+<>
+  <Fieldset fieldsHideLabel legend="This is the Legend 1">
+    <FieldText label="First Label" />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" hideLabel={false} />
+  </Fieldset>
+  <Fieldset legend="This is the Legend 1">
+    <FieldText label="First Label" hideLabel />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" />
+  </Fieldset>
+  <FieldText label="FieldText First Label" hideLabel={false} />
+  <FieldText label="FieldText Second Label" />
+  <FieldText label="FieldText Third Label" hideLabel />
+</>
+```
+
 ## ValidationMessage
 
 This component renders a validation message, and is used by Field components after they are validated.

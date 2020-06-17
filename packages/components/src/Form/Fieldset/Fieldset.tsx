@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import React, { createContext, forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -60,6 +60,11 @@ export interface FieldsetProps
   /** Displayed above the children of Fieldset
    */
   legend?: ReactNode
+  /*
+   * Hide labels on Fields within this Fieldset
+   * @default false
+   */
+  fieldsHideLabel?: boolean
   /**
    * Amount of space between fields
    * @default 'inline ? 'medium' : 'small'
@@ -77,13 +82,21 @@ const accordionIndicatorDefaults: AccordionIndicatorProps = {
   indicatorSize: 'medium',
 }
 
+export interface FieldsetContext {
+  fieldsHideLabel?: boolean
+}
+
+export const FieldsetContext = createContext<FieldsetContext>({})
+
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
     const {
       accordion,
+      className,
       inline,
       gap,
       legend,
+      fieldsHideLabel,
       children,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
@@ -138,7 +151,15 @@ const FieldsetLayout = forwardRef(
       content
     )
 
-    return <div {...omitStyledProps(restProps)}>{renderedFieldset}</div>
+    return (
+      <FieldsetContext.Provider
+        value={{ fieldsHideLabel: fieldsHideLabel || false }}
+      >
+        <div {...omitStyledProps(restProps)} className={className}>
+          {renderedFieldset}
+        </div>
+      </FieldsetContext.Provider>
+    )
   }
 )
 
