@@ -94,11 +94,6 @@ export const MessageBar = styled(MessageBarLayout)`
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 
-  ${IconButton}:hover {
-    background: none;
-    border: none;
-  }
-
   ${MessageBarContent} {
     flex: 1;
     margin-left: ${({ theme: { space } }) => space.large};
