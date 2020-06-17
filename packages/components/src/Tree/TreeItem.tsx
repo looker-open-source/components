@@ -84,6 +84,14 @@ export interface TreeItemProps {
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
+  /**
+   * Determines hover background color of TreeItem
+   */
+  hoverColor?: string
+  /**
+   * Determines selected background color of TreeItem
+   */
+  selectedColor?: string
 }
 
 interface TreeItemStyle {
@@ -113,6 +121,7 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
 
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
   const {
+    detailAccessory,
     detailHoverDisclosure,
     hoverColor = 'ui2',
     selectedColor = 'ui1',
@@ -120,7 +129,12 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    props.detailAccessory && event.stopPropagation()
+    const flag =
+      props.detailAccessory !== undefined
+        ? props.detailAccessory
+        : detailAccessory
+
+    flag && event.stopPropagation()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -148,12 +162,16 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
   return (
     <TreeItemStyle
       className={props.className}
-      hoverColor={hoverColor}
+      hoverColor={
+        props.hoverColor !== undefined ? props.hoverColor : hoverColor
+      }
       noBorderStyle={props.noBorderStyle}
       noHoverStyle={props.noHoverStyle}
       ref={treeItemRef}
       selected={props.selected}
-      selectedColor={selectedColor}
+      selectedColor={
+        props.selectedColor !== undefined ? props.selectedColor : selectedColor
+      }
       tabIndex={props.onClick ? 0 : -1}
     >
       <Space

@@ -126,49 +126,50 @@ export const FieldPicker = () => (
     detail={addButton}
     detailAccessory
     detailHoverDisclosure
+    hoverColor="criticalFocus"
     label="Custom Fields"
+    selectedColor="ui3"
   >
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
+        detailAccessory={false}
+        detailHoverDisclosure={false}
+        hoverColor="keyFocus"
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
+        selected
+        selectedColor="critical"
       >
-        Cost
+        Cost (Overwrites context behavior / styling)
       </TreeItem>
       <Tree label="Created">
-        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
           Created Date
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
           Created Month
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
           Created Year
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} detailAccessory icon="Calendar">
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
           Created Quarter
         </TreeItem>
       </Tree>
-      <TreeItem
-        detail={fieldDetailButtons}
-        detailAccessory
-        icon="FieldDistance"
-      >
+      <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
         Location
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
         icon="FieldTier"
         onClick={() => alert('Clicked on Tier!')}
+        selected
       >
         Tier
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
         icon="FieldYesNo"
         onClick={() => alert('Clicked on French Yes-No!')}
       >
