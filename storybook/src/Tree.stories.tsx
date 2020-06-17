@@ -125,12 +125,12 @@ export const FieldPicker = () => (
     defaultOpen
     detail={addButton}
     detailHoverDisclosure
-    detailStopPropagation
     label="Custom Fields"
   >
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
+        detailStopPropagation
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
       >

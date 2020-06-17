@@ -187,7 +187,8 @@ const TreeLayout: FC<TreeProps> = ({
       detailStopPropagation={detailStopPropagation}
       gapSize="xsmall"
       icon={icon}
-      noHover={true}
+      noBorder
+      noHover
     >
       {label}
     </TreeItem>

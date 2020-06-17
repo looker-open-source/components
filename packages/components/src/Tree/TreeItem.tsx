@@ -70,6 +70,11 @@ export interface TreeItemProps {
    */
   noHover?: boolean
   /**
+   * If true, disables the border effect
+   * Note: Used to keep hover styling off of a Tree's internal TreeItem
+   */
+  noBorder?: boolean
+  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
@@ -77,6 +82,7 @@ export interface TreeItemProps {
 
 interface TreeItemStyle {
   hoverColor: string
+  noBorder?: boolean
   noHover?: boolean
   selected?: boolean
   selectedColor: string
@@ -88,8 +94,9 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   outline: none;
 
-  & > *:focus {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
+  &:focus {
+    border-color: ${({ noBorder, theme }) =>
+      !noBorder && theme.colors.keyFocus};
   }
 
   &:hover {
@@ -106,6 +113,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   gapSize = 'xxsmall',
   icon,
   onClick,
+  noBorder,
   noHover,
   selected,
 }) => {
@@ -131,10 +139,17 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const treeItemRef = useRef<HTMLDivElement>(null)
   const [isTreeItemHovered] = useHovered(treeItemRef)
 
+  const renderedIcon = icon && <Icon name={icon} size={defaultIconSize} />
+  const renderedDetail = detail &&
+    (!detailHoverDisclosure || isTreeItemHovered) && (
+      <span onClick={handleDetailClick}>{detail}</span>
+    )
+
   return (
     <TreeItemStyle
       className={className}
       hoverColor={hoverColor}
+      noBorder={noBorder}
       noHover={noHover}
       ref={treeItemRef}
       selected={selected}
@@ -142,11 +157,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       tabIndex={onClick ? 0 : -1}
     >
       <Space gap={gapSize} onClick={onClick} onKeyDown={handleKeyDown}>
-        {icon && <Icon name={icon} size={defaultIconSize} />}
+        {renderedIcon}
         <FlexItem flex="1">{children}</FlexItem>
-        {detail && (!detailHoverDisclosure || isTreeItemHovered) && (
-          <span onClick={handleDetailClick}>{detail}</span>
-        )}
+        {renderedDetail}
       </Space>
     </TreeItemStyle>
   )
