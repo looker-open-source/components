@@ -163,23 +163,21 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     transition: background-color 110ms linear;
 
     &.DayPicker-Day--outside {
-      color: ${({ theme }) => theme.colors.text6};
+      color: ${({ theme: { colors } }) => colors.text6};
     }
 
     &--today {
-      color: ${({ theme, disabled }) => !disabled && theme.colors.key};
+      color: ${({ theme: { colors }, disabled }) => !disabled && colors.key};
     }
 
     &--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-      background-color: ${({ theme, disabled }) =>
-        disabled ? theme.colors.neutral : theme.colors.key};
+      background-color: ${({ theme: { colors }, disabled }) =>
+        disabled ? colors.neutral : colors.key};
       position: static;
 
       &:hover {
-        background-color: ${({ theme, disabled }) =>
-          disabled
-            ? theme.colors.neutralInteractive
-            : theme.colors.keyInteractive};
+        background-color: ${({ theme: { colors }, disabled }) =>
+          disabled ? colors.neutralInteractive : colors.keyInteractive};
       }
     }
 
@@ -194,42 +192,45 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   /*
    * Date range style overrides
    */
-  &.render-date-range.DayPicker-Day--selected {
-    border-radius: 0;
 
-    &.DayPicker-Day--outside,
-    &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
-      background-color: ${({ theme, disabled }) =>
-        disabled ? theme.colors.neutralAccent : theme.colors.keyAccent};
-      color: ${({ theme }) =>
-        mix(0.65, theme.colors.keyAccent, theme.colors.neutralInteractive)};
+  /* stylelint-disable no-descending-specificity */
+  &.render-date-range {
+    .DayPicker-Day--selected {
+      border-radius: 0;
+
+      &:not(.DayPicker-Day--from):first-child {
+        border-bottom-left-radius: ${({ theme: { radii } }) => radii.medium};
+        border-top-left-radius: ${({ theme: { radii } }) => radii.medium};
+      }
+
+      &:not(.DayPicker-Day--to):last-child {
+        border-bottom-right-radius: ${({ theme: { radii } }) => radii.medium};
+        border-top-right-radius: ${({ theme: { radii } }) => radii.medium};
+      }
+
+      &.DayPicker-Day--outside,
+      &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
+        background-color: ${({ theme: { colors }, disabled }) =>
+          disabled ? colors.neutralAccent : colors.keyAccent};
+        color: ${({ theme: { colors } }) =>
+          mix(0.65, colors.keyAccent, colors.neutralInteractive)};
+      }
+
+      &:not(.DayPicker-Day--to):not(.DayPicker-Day--from):not(.DayPicker-Day--outside) {
+        color: ${({ theme: { colors } }) => colors.neutralInteractive};
+      }
+    }
+    /* stylelint-enable no-descending-specificity */
+
+    .DayPicker-Day--from {
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
     }
 
-    &:not(.DayPicker-Day--from):first-child {
-      ${({ theme: { radii } }) => `
-            border-top-left-radius: ${radii.medium};
-            border-bottom-left-radius: ${radii.medium};`}
+    .DayPicker-Day--to {
+      border-bottom-right-radius: 50%;
+      border-top-right-radius: 50%;
     }
-
-    &:not(.DayPicker-Day--to):last-child {
-      ${({ theme: { radii } }) => `
-            border-top-right-radius: ${radii.medium};
-            border-bottom-right-radius: ${radii.medium};`}
-    }
-
-    &:not(.DayPicker-Day--to):not(.DayPicker-Day--from):not(.DayPicker-Day--outside) {
-      color: ${({ theme }) => theme.colors.neutralInteractive};
-    }
-  }
-
-  .DayPicker-Day--from {
-    border-bottom-left-radius: 50%;
-    border-top-left-radius: 50%;
-  }
-
-  .DayPicker-Day--to {
-    border-bottom-right-radius: 50%;
-    border-top-right-radius: 50%;
   }
 
   /*
@@ -239,9 +240,9 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   &:not(.DayPicker--interactionDisabled) {
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
       &:hover {
-        background-color: ${({ theme, disabled }) =>
-          disabled ? 'transparent' : theme.colors.keyAccent};
-        color: ${({ theme, disabled }) => !disabled && theme.colors.key};
+        background-color: ${({ theme: { colors }, disabled }) =>
+          disabled ? 'transparent' : colors.keyAccent};
+        color: ${({ theme: { colors }, disabled }) => !disabled && colors.key};
       }
     }
   }
