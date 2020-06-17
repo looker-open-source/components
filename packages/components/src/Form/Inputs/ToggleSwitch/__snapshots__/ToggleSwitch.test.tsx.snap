@@ -15,7 +15,7 @@ exports[`Big ToggleSwitch 1`] = `
 
 .c1 {
   background: #C1C6CC;
-  border-radius: 60;
+  border-radius: 3.75rem;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -81,7 +81,7 @@ exports[`ToggleSwitch default 1`] = `
 
 .c1 {
   background: #C1C6CC;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -147,7 +147,7 @@ exports[`ToggleSwitch on set to false 1`] = `
 
 .c1 {
   background: #C1C6CC;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -218,7 +218,7 @@ exports[`ToggleSwitch on set to true 1`] = `
 
 .c1 {
   background: #6C43E0;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -289,7 +289,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
 
 .c1 {
   background: #6C43E0;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;

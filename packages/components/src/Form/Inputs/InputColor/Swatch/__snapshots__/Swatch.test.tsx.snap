@@ -15,6 +15,10 @@ exports[`Default Swatch 1`] = `
   position: relative;
 }
 
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
 .c0:after {
   position: absolute;
   display: block;
@@ -27,10 +31,6 @@ exports[`Default Swatch 1`] = `
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
-}
-
-.c0:hover {
-  border-color: #C1C6CC;
 }
 
 <div

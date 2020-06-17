@@ -15,7 +15,7 @@ exports[`A FieldToggleSwitch 1`] = `
 
 .c5 {
   background: #C1C6CC;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -164,7 +164,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 
 .c5 {
   background: #6C43E0;
-  border-radius: 20;
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;

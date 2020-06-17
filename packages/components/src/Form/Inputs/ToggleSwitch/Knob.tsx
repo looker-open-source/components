@@ -64,7 +64,7 @@ export const KnobContainer = styled(KnobContainerLayout)`
   ${reset}
 
   background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
-  border-radius: ${({ size }) => size};
+  border-radius: ${({ size }) => rem(size)};
   bottom: 0;
   left: 0;
   position: absolute;

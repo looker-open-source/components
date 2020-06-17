@@ -76,12 +76,12 @@ export const Swatch = styled.div<SwatchProps>`
   flex-shrink: 0;
   margin-top: auto;
 
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-  ${(props) => props.color === 'transparent' && emptySwatch}
-
   &:hover {
     ${inputTextHover}
   }
+
+  ${(props) => props.color === 'transparent' && emptySwatch}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 `
 
 Swatch.defaultProps = {
