@@ -76,44 +76,44 @@ const Li = forwardRef((props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
 Li.displayName = 'Li'
 
 export const MenuItemListItem = styled(Li)<MenuListItemProps>`
-  ${color}
-  ${space}
-  ${typography}
+${color}
+${space}
+${typography}
 
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+outline: none;
+text-decoration: none;
+transition: ${(props) =>
+  `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
+  color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
+
+button,
+a {
+  border-left-color: ${({ itemStyle, current }) =>
+    current ? itemStyle.marker.color : 'transparent'};
+  border-left-style: solid;
+  border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
   outline: none;
-  text-decoration: none;
-  transition: ${(props) =>
-    `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
-    color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
+  padding-left: calc(${({ theme, itemStyle }) =>
+    `${theme.space.medium} - ${itemStyle.marker.size}px`});
+}
 
-  button,
-  a {
-    border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
-    border-left-style: solid;
-    border-left-color: ${({ itemStyle, current }) =>
-      current ? itemStyle.marker.color : 'transparent'};
-    outline: none;
-    padding-left: calc(${({ theme, itemStyle }) =>
-      `${theme.space.medium} - ${itemStyle.marker.size}px`});
-  }
-
-  ${(props) =>
-    props.focusVisible &&
-    `&:focus-within button,
-    &:focus-within a {
-      box-shadow: 0 0 3px 1px ${props.theme.colors.key};
-    }
+${(props) =>
+  props.focusVisible &&
+  `&:focus-within button,
+&:focus-within a {
+box-shadow: 0 0 3px 1px ${props.theme.colors.key};
+}
 `}
 
-  ${hoverStyles};
+${hoverStyles}
 
-  ${Icon} {
-    color: ${iconColor};
-    transition: color
-      ${(props) =>
-        `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
-  }
+${Icon} {
+  color: ${iconColor};
+  transition: color
+    ${(props) =>
+      `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
+}
 `

@@ -63,17 +63,17 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c8 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c8::-webkit-input-placeholder {
@@ -128,28 +128,28 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
 .c0 .c13 {
@@ -190,17 +190,17 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c6 .c9 {
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
 .c6 .c9::-webkit-search-decoration,
@@ -213,13 +213,13 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
@@ -397,17 +397,17 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c8 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c8::-webkit-input-placeholder {
@@ -467,28 +467,28 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
 .c0 .c15 {
@@ -511,17 +511,17 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c18 .c9 {
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
 .c18 .c9::-webkit-search-decoration,
@@ -563,17 +563,17 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c6 .c9 {
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
 .c6 .c9::-webkit-search-decoration,
@@ -586,13 +586,13 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
@@ -783,17 +783,17 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c10 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c10::-webkit-input-placeholder {
@@ -848,42 +848,42 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c3::before {
-  content: ' *';
   color: #CC1F36;
+  content: ' *';
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c5 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
 .c0 .c15 {
@@ -924,17 +924,17 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c8 .c11 {
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
 .c8 .c11::-webkit-search-decoration,
@@ -947,13 +947,13 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c13 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
@@ -1122,17 +1122,17 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c8 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c8::-webkit-input-placeholder {
@@ -1187,28 +1187,28 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
 .c0 .c13 {
@@ -1249,17 +1249,17 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c6 .c9 {
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
 .c6 .c9::-webkit-search-decoration,
@@ -1272,13 +1272,13 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }

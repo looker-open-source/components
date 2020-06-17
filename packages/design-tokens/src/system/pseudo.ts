@@ -55,7 +55,7 @@ const pseudoClassHover = (props: PseudoProps) => {
     props.hoverStyle &&
     css`
       :hover {
-        ${props.hoverStyle};
+        ${props.hoverStyle}
       }
     `
   )
@@ -66,7 +66,7 @@ const pseudoClassFocus = (props: PseudoProps) => {
     props.focusStyle &&
     css`
       :focus {
-        ${props.focusStyle};
+        ${props.focusStyle}
       }
     `
   )
@@ -77,7 +77,7 @@ const pseudoClassActive = (props: PseudoProps) => {
     props.activeStyle &&
     css`
       :active {
-        ${props.activeStyle};
+        ${props.activeStyle}
       }
     `
   )

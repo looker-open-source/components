@@ -408,9 +408,9 @@ export const RangeSlider = styled(InternalRangeSlider)`
 RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
 
 const SliderTrack = styled.div`
-  height: 4px;
   background: ${({ theme }) => theme.colors.ui2};
   border-radius: 2px;
+  height: 4px;
   position: relative;
 `
 
@@ -421,18 +421,18 @@ interface ThumbLabelProps extends TypographyProps {
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
-  user-select: none;
-  position: absolute;
-  top: -24px;
-  transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
-  text-align: center;
+  background: ${({ theme, focus }) =>
+    focus ? theme.colors.keyAccent : `rgba(255, 255, 255, 0.8)`};
+  border-radius: 1rem;
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
   padding: 0 0.5rem;
-  border-radius: 1rem;
+  position: absolute;
+  text-align: center;
+  top: -24px;
+  transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
+  user-select: none;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
-  background: ${({ theme, focus }) =>
-    focus ? theme.colors.keyAccent : `rgba(255, 255, 255, 0.8)`};
 `
 
 interface ThumbProps {
@@ -442,21 +442,21 @@ interface ThumbProps {
 }
 
 const Thumb = styled.div<ThumbProps>`
-  border-radius: 100%;
-  cursor: pointer;
+  background: ${({ theme }) => theme.colors.field};
   border: 3px solid
     ${({ theme: { colors }, disabled }) =>
       disabled ? colors.neutral : colors.key};
+  border-radius: 100%;
+  cursor: pointer;
   height: 16px;
-  width: 16px;
-  background: ${({ theme }) => theme.colors.field};
+  margin-left: -8px;
   position: absolute;
   top: -6px;
-  margin-left: -8px;
   transform: translateX(${({ position = 0 }) => `${position}px`});
+  width: 16px;
   &:focus {
-    outline: none;
     border-width: ${({ disabled }) => (disabled ? '3px' : '5px')};
+    outline: none;
     z-index: 1;
   }
 `
@@ -468,10 +468,10 @@ interface SliderFillProps {
 }
 
 const SliderFill = styled.div<SliderFillProps>`
-  height: 100%;
   background: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
-  position: absolute;
+  height: 100%;
   left: ${({ fillStart }) => fillStart}px;
+  position: absolute;
   width: ${({ fillWidth }) => fillWidth}px;
 `

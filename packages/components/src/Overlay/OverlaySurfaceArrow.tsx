@@ -48,18 +48,18 @@ export const OverlaySurfaceArrow = styled.div.attrs(
   position: absolute;
 
   &::before {
-    content: '';
-    display: block;
-    margin: auto;
-    width: 0.5rem;
-    height: 0.5rem;
-
     ${color}
     ${border}
+
     /* only want border-right and border-bottom from styled-system's border */
-    border-top: none;
     border-left: none;
     border-radius: 0;
+    border-top: none;
+    content: '';
+    display: block;
+    height: 0.5rem;
+    margin: auto;
+    width: 0.5rem;
   }
 
   &[data-placement*='top'] {

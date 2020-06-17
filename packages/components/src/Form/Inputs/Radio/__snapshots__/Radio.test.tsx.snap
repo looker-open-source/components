@@ -2,27 +2,27 @@
 
 exports[`Radio checked set to false 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c0 {
@@ -45,8 +45,8 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {
@@ -83,27 +83,27 @@ exports[`Radio checked set to false 1`] = `
 
 exports[`Radio checked set to true 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c0 {
@@ -126,8 +126,8 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {
@@ -164,27 +164,27 @@ exports[`Radio checked set to true 1`] = `
 
 exports[`Radio default 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c0 {
@@ -207,8 +207,8 @@ exports[`Radio default 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {
@@ -244,27 +244,27 @@ exports[`Radio default 1`] = `
 
 exports[`Radio should accept disabled 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c3 input:checked + .c1 {
@@ -272,8 +272,8 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c3 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c3 input:focus + .c1 {
@@ -315,8 +315,8 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {
@@ -353,27 +353,27 @@ exports[`Radio should accept disabled 1`] = `
 
 exports[`Radio with aria-describedby 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c0 {
@@ -396,8 +396,8 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {
@@ -423,8 +423,8 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c3 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c3 input:focus + .c1 {
@@ -461,27 +461,27 @@ exports[`Radio with aria-describedby 1`] = `
 
 exports[`Radio with name and id 1`] = `
 .c2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c2::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c0 {
@@ -504,8 +504,8 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 input:not(:checked) + .c1 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c0 input:focus + .c1 {

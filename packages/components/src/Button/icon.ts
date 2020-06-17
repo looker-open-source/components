@@ -85,8 +85,8 @@ export const iconSizes = (props: ButtonProps) => {
   }
 
   return css`
-    width: ${iconSize}px;
     height: ${iconSize}px;
+    width: ${iconSize}px;
   `
 }
 
@@ -94,7 +94,7 @@ export const ButtonIcon = styled(Icon)``
 
 export const buttonIcon = (props: ButtonProps) => css`
   ${ButtonIcon} {
-    ${iconMargins(props)};
+    ${iconMargins(props)}
     ${iconSizes(props)}
   }
 `

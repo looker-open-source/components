@@ -544,10 +544,10 @@ const InputTimeInternal = forwardRef(
 const WarningIcon = styled(Icon)``
 
 const InputTimeLayout = styled.div`
+  align-items: center;
   display: grid;
   grid-gap: 0.15rem;
   grid-template-columns: auto auto auto auto 1fr;
-  align-items: center;
 
   ${WarningIcon} {
     justify-self: end;
@@ -558,9 +558,11 @@ export const InputTime = styled(InputTimeInternal)`
   ${reset}
   ${border}
   ${space}
+
+  background: ${({ theme }) => theme.colors.field};
   display: inline-block;
   padding: 0 ${({ theme }) => theme.space.xsmall};
-  background: ${({ theme }) => theme.colors.field};
+
   &:focus-within {
     ${inputTextFocus}
   }
@@ -593,8 +595,8 @@ const InputTimeWrapper = styled.div<{
     color: inherit;
     height: 34px;
     line-height: ${({ theme }) => theme.lineHeights.medium};
-    padding: 0;
     margin: 0;
+    padding: 0;
     width: 1.25rem;
 
     input {

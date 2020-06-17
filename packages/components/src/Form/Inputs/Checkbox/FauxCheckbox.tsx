@@ -27,14 +27,14 @@
 import styled from 'styled-components'
 
 export const FauxCheckbox = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
+  align-items: center;
   background: currentColor;
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
   color: ${({ theme }) => theme.colors.keyText};
   display: flex;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  position: relative;
+  width: 100%;
 `

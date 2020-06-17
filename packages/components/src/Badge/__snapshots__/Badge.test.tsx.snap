@@ -9,11 +9,11 @@ exports[`Badge renders all intents 1`] = `
   padding-right: 0.5rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -35,11 +35,11 @@ exports[`Badge renders all intents 2`] = `
   padding-right: 0.5rem;
   background-color: #e0ffe7;
   color: #0b6b38;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -61,11 +61,11 @@ exports[`Badge renders all intents 3`] = `
   padding-right: 0.5rem;
   background-color: #e0f2ff;
   color: #0059b2;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -87,11 +87,11 @@ exports[`Badge renders all intents 4`] = `
   padding-right: 0.5rem;
   background-color: #F5F6F7;
   color: #4C535B;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -113,11 +113,11 @@ exports[`Badge renders all intents 5`] = `
   padding-right: 0.5rem;
   background-color: #FFEBC4;
   color: #724B00;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -139,11 +139,11 @@ exports[`Badge renders all intents 6`] = `
   padding-right: 0.5rem;
   background-color: #FFE5E9;
   color: #B2121F;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -165,11 +165,11 @@ exports[`Badge renders all sizes 1`] = `
   padding-right: 0.5rem;
   background-color: #E8E5FF;
   color: #412399;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -191,11 +191,11 @@ exports[`Badge renders all sizes 2`] = `
   padding-right: 0.5rem;
   background-color: #E8E5FF;
   color: #412399;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -217,11 +217,11 @@ exports[`Badge renders all sizes 3`] = `
   padding-right: 0.5rem;
   background-color: #E8E5FF;
   color: #412399;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -243,11 +243,11 @@ exports[`Badge renders all sizes 4`] = `
   padding-right: 0.75rem;
   background-color: #E8E5FF;
   color: #412399;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span

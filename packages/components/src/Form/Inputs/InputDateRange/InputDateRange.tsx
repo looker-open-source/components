@@ -439,8 +439,8 @@ const InputDateRangeWrapper = styled.div`
 const MultiCalendarLayout = styled.div<SpaceProps>`
   ${space}
   display: inline-grid;
-  grid-template-columns: 1fr 1fr;
   grid-column-gap: ${({ theme }) => theme.space.large};
+  grid-template-columns: 1fr 1fr;
 `
 
 interface InputTextGroupWrapperProps extends BorderProps, ColorProps {
@@ -453,12 +453,12 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${border}
   ${color}
 
-  display: inline-grid;
-  grid-template-columns: auto auto auto 1fr;
-  grid-gap: ${({ theme }) => theme.space.xsmall};
   align-items: center;
-  margin: ${({ theme }) => `${theme.space.xxsmall} 0`};
-  padding: ${({ theme }) => `0 ${theme.space.small}`};
+  display: inline-grid;
+  grid-gap: ${({ theme }) => theme.space.xsmall};
+  grid-template-columns: auto auto auto 1fr;
+  margin: ${({ theme: { space } }) => space.xxsmall} 0;
+  padding: 0 ${({ theme: { space } }) => space.small};
   width: 100%;
 
   &:hover {
@@ -479,17 +479,16 @@ const IconWrapper = styled.div`
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
-  padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+  padding: ${({ theme: { space } }) => space.xxsmall} 0;
   ${InlineInputText} {
+    background: transparent;
     border: none;
     border-radius: 0;
     height: ${({ theme }) => theme.lineHeights.large};
-    background: transparent;
-    /* stylelint-disable */
+
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};
     }
-    /* stylelint-enabled */
   }
 `
 

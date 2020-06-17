@@ -203,8 +203,9 @@ export const comboboxOptionStyle = css`
   ${layout}
   ${space}
   ${typography}
-  cursor: default;
+
   align-items: stretch;
+  cursor: default;
   outline: none;
 
   &[aria-selected='true'] {

@@ -4,9 +4,9 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 .c1 {
   background: transparent;
   border: none;
+  caret-color: #262D33;
   color: inherit;
   font: inherit;
-  caret-color: #262D33;
   height: 100%;
   left: 0;
   outline: none;
@@ -19,16 +19,16 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 }
 
 .c2 {
-  white-space: pre;
   color: #939BA5;
   text-align: inherit;
+  white-space: pre;
 }
 
 .c0 {
-  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
+  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -40,16 +40,16 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: relative;
   min-width: 2rem;
+  position: relative;
   text-align: inherit;
 }
 
 .c0:focus,
 .c0:hover {
-  outline: none;
-  border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+  outline: none;
 }
 
 .c0:focus {
@@ -78,9 +78,9 @@ exports[`InlineInputText renders an input with no value 1`] = `
 .c1 {
   background: transparent;
   border: none;
+  caret-color: #262D33;
   color: inherit;
   font: inherit;
-  caret-color: #262D33;
   height: 100%;
   left: 0;
   outline: none;
@@ -93,16 +93,16 @@ exports[`InlineInputText renders an input with no value 1`] = `
 }
 
 .c2 {
-  white-space: pre;
   color: #939BA5;
   text-align: inherit;
+  white-space: pre;
 }
 
 .c0 {
-  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
+  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -114,16 +114,16 @@ exports[`InlineInputText renders an input with no value 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: relative;
   min-width: 2rem;
+  position: relative;
   text-align: inherit;
 }
 
 .c0:focus,
 .c0:hover {
-  outline: none;
-  border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+  outline: none;
 }
 
 .c0:focus {
@@ -152,9 +152,9 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 .c1 {
   background: transparent;
   border: none;
+  caret-color: #262D33;
   color: inherit;
   font: inherit;
-  caret-color: #262D33;
   height: 100%;
   left: 0;
   outline: none;
@@ -167,16 +167,16 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 }
 
 .c2 {
-  white-space: pre;
   color: transparent;
   text-align: inherit;
+  white-space: pre;
 }
 
 .c0 {
-  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
+  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -188,16 +188,16 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: relative;
   min-width: 2rem;
+  position: relative;
   text-align: inherit;
 }
 
 .c0:focus,
 .c0:hover {
-  outline: none;
-  border-bottom-color: #6C43E0;
   background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+  outline: none;
 }
 
 .c0:focus {

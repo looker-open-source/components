@@ -191,14 +191,14 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
   ${inputTextValidation}
 
   ${InputText} {
-    border: none;
     appearance: none;
     background: transparent;
+    border: none;
     box-shadow: none;
     flex: 1;
+    height: ${(props) => getHeight(props.py)};
 
     width: 100%;
-    height: ${(props) => getHeight(props.py)};
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,

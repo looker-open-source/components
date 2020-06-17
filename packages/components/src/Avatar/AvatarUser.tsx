@@ -60,13 +60,13 @@ const AvatarLayout: FC<AvatarUserProps> = ({
 }
 
 const AvatarPhoto = styled.object`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  width: 100%;
 `
 
 const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({

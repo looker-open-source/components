@@ -154,11 +154,11 @@ const MessageArea = styled.div``
 const fieldLabelCSS = (inline?: boolean) =>
   inline
     ? css`
-        text-align: right;
-        line-height: ${inputHeight};
-        justify-self: end;
         height: ${inputHeight};
+        justify-self: end;
+        line-height: ${inputHeight};
         padding-right: ${({ theme }) => theme.space.small};
+        text-align: right;
       `
     : css`
         line-height: ${({ theme }) => theme.lineHeights.xsmall};
@@ -166,21 +166,21 @@ const fieldLabelCSS = (inline?: boolean) =>
       `
 
 export const Field = styled(FieldLayout)<FieldPropsInternal>`
-  height: fit-content;
-  width: ${({ width }) => width || 'fit-content'};
   align-items: left;
-  justify-content: space-between;
 
   display: grid;
   grid-template-areas: ${({ inline }) =>
     inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
-  grid-template-columns: ${({ inline }) => (inline ? `150px 1fr` : undefined)};
+  grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
+  height: fit-content;
+  justify-content: space-between;
+  width: ${({ width }) => width || 'fit-content'};
 
   ${InputArea} {
-    grid-area: input;
     align-items: center;
+    grid-area: input;
   }
 
   ${MessageArea} {

@@ -75,8 +75,8 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:not(:checked) + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.ui2};
     background: ${({ theme }) => theme.colors.field};
+    border-color: ${({ theme }) => theme.colors.ui2};
   }
 
   input:focus + ${FauxRadio} {

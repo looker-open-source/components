@@ -69,16 +69,15 @@ export const ModalPortal = forwardRef(
 ModalPortal.displayName = 'ModalPortal'
 
 const InvisiBox = styled.div<{ zIndex?: number }>`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-
   align-items: center;
+  bottom: 0;
   display: flex;
   justify-content: center;
+  left: 0;
   pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
   z-index: ${(props) => props.zIndex};
 
   * {

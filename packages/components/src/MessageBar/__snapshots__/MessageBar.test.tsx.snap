@@ -21,12 +21,12 @@ exports[`Confirmation MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -39,8 +39,8 @@ exports[`Confirmation MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -121,12 +121,12 @@ exports[`Error MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c4 .c3 {
@@ -147,8 +147,8 @@ exports[`Error MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #FFE5E9;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -221,12 +221,12 @@ exports[`Info MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -239,8 +239,8 @@ exports[`Info MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -384,8 +384,8 @@ exports[`MessageBar can be dismissed 1`] = `
 }
 
 .c5 .c10 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c5:hover,
@@ -412,12 +412,12 @@ exports[`MessageBar can be dismissed 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c6 {
@@ -460,8 +460,8 @@ exports[`MessageBar can be dismissed 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -573,12 +573,12 @@ exports[`Warn MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -591,8 +591,8 @@ exports[`Warn MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -41,7 +41,7 @@ export interface ModalContentProps
   extends LayoutProps,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
-   * Style the scrollable space within the ModalContent.
+   * Style the scroll-able space within the ModalContent.
    * Often p="none" is applied if components within the the ModalContent need to the
    * touch the container edges.
    */
@@ -116,10 +116,11 @@ const Outer = styled.div<{ borderBottom?: boolean }>`
   ${reset}
   ${layout}
 
-  overflow: auto;
-  flex: 8;
   ${({ borderBottom, theme: { colors } }) =>
-    borderBottom && `border-bottom: 1px solid ${colors.ui2}`};
+    borderBottom && `border-bottom: 1px solid ${colors.ui2}`}
+
+  flex: 8;
+  overflow: auto;
 
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};

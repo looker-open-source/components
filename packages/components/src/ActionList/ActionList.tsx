@@ -172,10 +172,10 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListRowColumns} {
+    align-items: center;
     display: grid;
     grid-template-columns: ${(props) =>
       props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
-    align-items: center;
   }
 
   ${/* sc-selector */ ActionListItemColumn}:first-child {
@@ -197,10 +197,10 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListHeader} {
     padding-left: ${({ canSelect }) =>
       typeof canSelect === 'object' &&
-      !canSelect.all &&
+      canSelect.all === false &&
       actionListCheckboxWidth};
   }
 
-  ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
-  ${(props) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(props.columns))}
+  ${({ columns }) => numericColumnCSS(getNumericColumnIndices(columns))}
+  ${({ columns }) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(columns))}
 `

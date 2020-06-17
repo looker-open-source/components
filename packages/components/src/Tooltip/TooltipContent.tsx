@@ -37,11 +37,11 @@ export const TooltipContent = styled(Paragraph).attrs(
     width: 'auto',
   })
 )`
-  white-space: normal;
-  text-transform: none;
-  word-break: break-word;
   hyphens: auto;
   overflow-wrap: anywhere;
+  text-transform: none;
+  white-space: normal;
+  word-break: break-word;
 
   ${Link} {
     color: ${(props) => props.theme.colors.keyAccent};

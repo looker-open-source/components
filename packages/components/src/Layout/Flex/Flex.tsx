@@ -42,6 +42,6 @@ export interface FlexProps
 
 export const Flex = styled.div<FlexProps>`
   ${complexLayoutCSS}
-  ${flexbox};
+  ${flexbox}
   display: flex;
 `

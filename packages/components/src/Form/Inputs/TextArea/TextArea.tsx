@@ -90,8 +90,8 @@ export const TextArea = styled(TextAreaLayout)`
 
   ${Icon} {
     position: absolute;
-    top: 0.5rem;
     right: 0.5rem;
+    top: 0.5rem;
   }
 
   textarea {
@@ -99,15 +99,14 @@ export const TextArea = styled(TextAreaLayout)`
     ${space}
     ${typography}
 
-    resize: ${(props) => TextAreaResize(props.resize)};
     border: solid 1px;
-    width: 100%;
-
     border-color: ${(props) => props.theme.colors.ui2};
     border-radius: ${(props) => props.theme.radii.medium};
     font-size: ${(props) => props.theme.fontSizes.small};
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
+    resize: ${(props) => TextAreaResize(props.resize)};
+    width: 100%;
 
     &:hover {
       ${inputTextHover}

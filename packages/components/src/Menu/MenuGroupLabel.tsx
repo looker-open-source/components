@@ -79,9 +79,9 @@ const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
   ${color}
   box-shadow: ${({ renderBoxShadow, theme }) =>
     renderBoxShadow ? `0 4px 8px -2px ${theme.colors.ui2}` : 'none'};
+  margin-bottom: ${({ theme }) => theme.space.xxsmall};
   position: sticky;
   top: -1px;
-  margin-bottom: ${({ theme }) => theme.space.xxsmall};
 `
 
 MenuGroupLabel.defaultProps = {

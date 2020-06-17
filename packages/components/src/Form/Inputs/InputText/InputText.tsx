@@ -181,15 +181,15 @@ export const InputLayout = styled.div`
   justify-content: space-evenly;
 
   input {
-    border: none;
     background: transparent;
+    border: none;
     flex: 1;
     font-size: ${(props) => props.theme.fontSizes.small};
     height: 100%;
-    width: 100%;
     max-width: 100%;
     outline: none;
     padding: 0;
+    width: 100%;
   }
 
   ::placeholder {
