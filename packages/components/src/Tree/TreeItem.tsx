@@ -94,6 +94,12 @@ export interface TreeItemProps {
   selectedColor?: string
 }
 
+const TreeItemDetail = styled.span`
+  align-items: center;
+  display: flex;
+  height: 100%;
+`
+
 interface TreeItemStyle {
   hovered: boolean
   hoverColor: string
@@ -165,7 +171,9 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       ? !props.detailHoverDisclosure
       : !detailHoverDisclosure) ||
       isTreeItemHovered) && (
-      <span onClick={handleDetailClick}>{props.detail}</span>
+      <TreeItemDetail onClick={handleDetailClick}>
+        {props.detail}
+      </TreeItemDetail>
     )
 
   const isDetailAccesoryEnabled =
