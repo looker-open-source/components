@@ -72,7 +72,6 @@ const MessageBarLayout = forwardRef(
           id={id ? `${id}-iconButton` : undefined}
           ml="auto"
           onClick={onDismiss}
-          hoverStyle={{ background: 'none', border: 'none' }}
           icon="Close"
           size="small"
           label={`Dismiss ${getIntentLabel(intent)}`}

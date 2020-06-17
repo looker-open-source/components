@@ -425,11 +425,6 @@ exports[`MessageBar can be dismissed 1`] = `
   padding: 0;
 }
 
-.c6:hover {
-  background: none;
-  border: none;
-}
-
 .c6 svg {
   pointer-events: none;
 }

@@ -8,9 +8,10 @@ figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
 The `InputColor` component has an input to add a color value and a color wheel to pick color directly. The value prop can be used as a control component. To set an initial value on an uncontrolled component use defaultValue.
 
 ```js
-<Grid columns={1}>
+<SpaceVertical>
   <InputColor />
   <InputColor value="green" />
   <InputColor defaultValue="purple" />
-</Grid>
+  <InputColor disabled />
+</SpaceVertical>
 ```

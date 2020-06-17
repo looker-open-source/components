@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import omit from 'lodash/omit'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
@@ -167,7 +168,7 @@ export const ComboboxInputInternal = forwardRef(
 
     return (
       <InputSearchBase
-        {...rest}
+        {...omit(rest, 'selectOnClick')}
         {...inputEvents}
         searchIcon={false}
         disabled={disabled}

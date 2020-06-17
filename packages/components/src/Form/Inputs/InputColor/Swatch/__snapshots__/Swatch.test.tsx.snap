@@ -2,11 +2,13 @@
 
 exports[`Default Swatch 1`] = `
 .c0 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   width: 36px;
   height: 36px;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   background-color: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -43,11 +45,13 @@ exports[`Default Swatch 1`] = `
 
 exports[`Swatch with hex value passed 1`] = `
 .c0 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   width: 36px;
   height: 36px;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   background-color: #4c6670;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -69,11 +73,13 @@ exports[`Swatch with hex value passed 1`] = `
 
 exports[`Swatch with width and height set 1`] = `
 .c0 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   width: 50px;
   height: 25px;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   background-color: blue;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
