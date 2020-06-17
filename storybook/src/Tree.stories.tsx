@@ -40,6 +40,7 @@ export const All = () => (
     <FileSelector />
     <FileSelectorClosed />
     <FieldPicker />
+    <FieldPickerCustom />
     <Border />
   </Grid>
 )
@@ -126,22 +127,15 @@ export const FieldPicker = () => (
     detail={addButton}
     detailAccessory
     detailHoverDisclosure
-    hoverColor="criticalFocus"
     label="Custom Fields"
-    selectedColor="ui3"
   >
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory={false}
-        detailHoverDisclosure={false}
-        hoverColor="keyFocus"
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
-        selected
-        selectedColor="critical"
       >
-        Cost (Overwrites context behavior / styling)
+        Cost
       </TreeItem>
       <Tree label="Created">
         <TreeItem detail={fieldDetailButtons} icon="Calendar">
@@ -164,7 +158,6 @@ export const FieldPicker = () => (
         detail={fieldDetailButtons}
         icon="FieldTier"
         onClick={() => alert('Clicked on Tier!')}
-        selected
       >
         Tier
       </TreeItem>
@@ -194,6 +187,34 @@ export const FieldPicker = () => (
         Count Distinct
       </TreeItem>
     </TreeGroup>
+  </Tree>
+)
+
+export const FieldPickerCustom = () => (
+  <Tree
+    defaultOpen
+    detail={addButton}
+    detailAccessory
+    detailHoverDisclosure
+    hoverColor="criticalFocus"
+    label="Custom Fields"
+    selectedColor="ui3"
+  >
+    <TreeItem
+      detail={fieldDetailButtons}
+      detailAccessory={false}
+      detailHoverDisclosure={false}
+      hoverColor="keyFocus"
+      icon="FieldNumber"
+      onClick={() => alert('Clicked on Cost!')}
+      selected
+      selectedColor="critical"
+    >
+      Cost (Overwrites context behavior / styling)
+    </TreeItem>
+    <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
+      Location
+    </TreeItem>
   </Tree>
 )
 

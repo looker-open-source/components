@@ -35,6 +35,7 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
+import { Space } from '../Layout'
 import { TreeItem } from './TreeItem'
 import { TreeGroup, TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
@@ -148,10 +149,18 @@ const TreeStyle = styled.div<TreeStyleProps>`
       }) * ${depth + 1})`};
   }
 
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeItem},
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ Space} > ${
   /* sc-selector */ TreeItem
 } {
+    padding-left: ${({ depth, theme }) =>
+      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
+        theme.space.small
+      }) * ${depth + 1})`};
+  }
+
+  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
+  /* sc-selector */ Space
+} > ${/* sc-selector */ TreeItem} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small

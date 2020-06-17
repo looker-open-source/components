@@ -95,6 +95,7 @@ export interface TreeItemProps {
 }
 
 interface TreeItemStyle {
+  hovered: boolean
   hoverColor: string
   noBorderStyle?: boolean
   noHoverStyle?: boolean
@@ -103,19 +104,27 @@ interface TreeItemStyle {
 }
 
 const TreeItemStyle = styled.div<TreeItemStyle>`
-  background-color: ${({ selected, selectedColor, theme }) =>
-    selected && theme.colors[selectedColor]};
+  background-color: ${({
+    hovered,
+    hoverColor,
+    noHoverStyle,
+    selected,
+    selectedColor,
+    theme,
+  }) => {
+    return selected
+      ? theme.colors[selectedColor]
+      : hovered && !noHoverStyle
+      ? theme.colors[hoverColor]
+      : undefined
+  }};
+  flex: 1;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   outline: none;
 
   &:focus {
     border-color: ${({ noBorderStyle, theme }) =>
       !noBorderStyle && theme.colors.keyFocus};
-  }
-
-  &:hover {
-    background-color: ${({ hoverColor, noHoverStyle, theme }) =>
-      !noHoverStyle && theme.colors[hoverColor]};
   }
 `
 
@@ -159,31 +168,45 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       <span onClick={handleDetailClick}>{props.detail}</span>
     )
 
+  const isDetailAccesoryEnabled =
+    props.detailAccessory !== undefined
+      ? props.detailAccessory
+      : detailAccessory
+
   return (
-    <TreeItemStyle
-      className={props.className}
-      hoverColor={
-        props.hoverColor !== undefined ? props.hoverColor : hoverColor
-      }
-      noBorderStyle={props.noBorderStyle}
-      noHoverStyle={props.noHoverStyle}
+    <Space
+      gap="none"
       ref={treeItemRef}
-      selected={props.selected}
-      selectedColor={
-        props.selectedColor !== undefined ? props.selectedColor : selectedColor
-      }
-      tabIndex={props.onClick ? 0 : -1}
+      pr={isDetailAccesoryEnabled ? 'xxsmall' : 'none'}
     >
-      <Space
-        gap={props.gapSize || 'xxsmall'}
-        onClick={props.onClick}
-        onKeyDown={handleKeyDown}
+      <TreeItemStyle
+        className={props.className}
+        hovered={isTreeItemHovered}
+        hoverColor={
+          props.hoverColor !== undefined ? props.hoverColor : hoverColor
+        }
+        noBorderStyle={props.noBorderStyle}
+        noHoverStyle={props.noHoverStyle}
+        selected={props.selected}
+        selectedColor={
+          props.selectedColor !== undefined
+            ? props.selectedColor
+            : selectedColor
+        }
+        tabIndex={props.onClick ? 0 : -1}
       >
-        {renderedIcon}
-        <FlexItem flex="1">{props.children}</FlexItem>
-        {renderedDetail}
-      </Space>
-    </TreeItemStyle>
+        <Space
+          gap={props.gapSize || 'xxsmall'}
+          onClick={props.onClick}
+          onKeyDown={handleKeyDown}
+        >
+          {renderedIcon}
+          <FlexItem flex="1">{props.children}</FlexItem>
+          {!isDetailAccesoryEnabled && renderedDetail}
+        </Space>
+      </TreeItemStyle>
+      {isDetailAccesoryEnabled && renderedDetail}
+    </Space>
   )
 }
 
