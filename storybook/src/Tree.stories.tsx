@@ -124,6 +124,7 @@ export const FieldPicker = () => (
   <Tree
     defaultOpen
     detail={addButton}
+    detailAccessory
     detailHoverDisclosure
     label="Custom Fields"
   >

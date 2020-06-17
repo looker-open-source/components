@@ -58,7 +58,7 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    * If true, clicking on the detail element will not trigger the Tree's other click handlers
    * @default false
    */
-  detailStopPropagation?: boolean
+  detailAccessory?: boolean
   /**
    * The font weight of the Tree's text
    * @default 'semiBold'
@@ -164,7 +164,7 @@ const TreeLayout: FC<TreeProps> = ({
   children,
   detail,
   detailHoverDisclosure,
-  detailStopPropagation,
+  detailAccessory,
   fontWeight,
   hoverColor = 'ui2',
   icon,
@@ -184,7 +184,7 @@ const TreeLayout: FC<TreeProps> = ({
   const disclosure = (
     <TreeItem
       detail={detail}
-      detailStopPropagation={detailStopPropagation}
+      detailAccessory={detailAccessory}
       gapSize="xsmall"
       icon={icon}
       noBorder
