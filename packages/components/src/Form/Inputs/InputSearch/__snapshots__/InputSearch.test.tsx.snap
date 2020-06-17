@@ -88,6 +88,7 @@ exports[`InputSearch default 1`] = `
   display: -ms-flexbox;
   display: flex;
   padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
 .c0:hover {
@@ -270,6 +271,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   display: -ms-flexbox;
   display: flex;
   padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
 .c0:hover {

@@ -181,6 +181,7 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
   display: flex;
   padding: ${({ theme: { space } }) =>
     `${space.xxxsmall} ${space.xxsmall} ${space.xxxsmall}` + ' 0'};
+  width: 100%;
 
   &:hover {
     ${inputTextHover}
