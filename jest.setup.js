@@ -24,6 +24,7 @@
 
  */
 
+import { format } from 'util'
 import Adapter from 'enzyme-adapter-react-16'
 import { configure } from 'enzyme'
 
@@ -45,6 +46,17 @@ globalAny.IntersectionObserver = observeMock
 
 // js-dom doesn't do scrollIntoView
 Element.prototype.scrollIntoView = jest.fn()
+
+/**
+ * Throw a hard-error if an underlying library (e.g.: React) is throwing console.error
+ * Inspired by: https://github.com/facebook/jest/issues/6121#issuecomment-529591574
+ */
+const error = global.console.error
+
+global.console.error = function (...args) {
+  error(...args)
+  throw new Error(format(...args))
+}
 
 beforeAll(() => {
   jest.resetAllMocks()
