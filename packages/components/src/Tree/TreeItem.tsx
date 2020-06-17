@@ -53,6 +53,11 @@ export interface TreeItemProps {
    */
   detailAccessory?: boolean
   /**
+   * If true, then the detail element this TreeItem will only appear on hover
+   * @default false
+   */
+  detailHoverDisclosure?: boolean
+  /**
    * Gap size of the internal Space component
    * @default 'xsmall'
    */
@@ -69,12 +74,12 @@ export interface TreeItemProps {
    * Determines if hover styling is applied or not to a TreeItem
    * Note: Used to keep hover styling off of a Tree's internal TreeItem
    */
-  noHover?: boolean
+  noHoverStyle?: boolean
   /**
    * If true, disables the border effect
    * Note: Used to keep hover styling off of a Tree's internal TreeItem
    */
-  noBorder?: boolean
+  noBorderStyle?: boolean
   /**
    * Determines if this TreeItem is in a selected state or not
    */
@@ -83,8 +88,8 @@ export interface TreeItemProps {
 
 interface TreeItemStyle {
   hoverColor: string
-  noBorder?: boolean
-  noHover?: boolean
+  noBorderStyle?: boolean
+  noHoverStyle?: boolean
   selected?: boolean
   selectedColor: string
 }
@@ -96,28 +101,17 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   outline: none;
 
   &:focus {
-    border-color: ${({ noBorder, theme }) =>
-      !noBorder && theme.colors.keyFocus};
+    border-color: ${({ noBorderStyle, theme }) =>
+      !noBorderStyle && theme.colors.keyFocus};
   }
 
   &:hover {
-    background-color: ${({ hoverColor, noHover, theme }) =>
-      !noHover && theme.colors[hoverColor]};
+    background-color: ${({ hoverColor, noHoverStyle, theme }) =>
+      !noHoverStyle && theme.colors[hoverColor]};
   }
 `
 
-const TreeItemLayout: FC<TreeItemProps> = ({
-  children,
-  className,
-  detail,
-  detailAccessory,
-  gapSize = 'xxsmall',
-  icon,
-  onClick,
-  noBorder,
-  noHover,
-  selected,
-}) => {
+const TreeItemLayout: FC<TreeItemProps> = (props) => {
   const {
     detailHoverDisclosure,
     hoverColor = 'ui2',
@@ -126,7 +120,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    detailAccessory && event.stopPropagation()
+    props.detailAccessory && event.stopPropagation()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -140,26 +134,35 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const treeItemRef = useRef<HTMLDivElement>(null)
   const [isTreeItemHovered] = useHovered(treeItemRef)
 
-  const renderedIcon = icon && <Icon name={icon} size={defaultIconSize} />
-  const renderedDetail = detail &&
-    (!detailHoverDisclosure || isTreeItemHovered) && (
-      <span onClick={handleDetailClick}>{detail}</span>
+  const renderedIcon = props.icon && (
+    <Icon name={props.icon} size={defaultIconSize} />
+  )
+  const renderedDetail = props.detail &&
+    ((props.detailHoverDisclosure !== undefined
+      ? !props.detailHoverDisclosure
+      : !detailHoverDisclosure) ||
+      isTreeItemHovered) && (
+      <span onClick={handleDetailClick}>{props.detail}</span>
     )
 
   return (
     <TreeItemStyle
-      className={className}
+      className={props.className}
       hoverColor={hoverColor}
-      noBorder={noBorder}
-      noHover={noHover}
+      noBorderStyle={props.noBorderStyle}
+      noHoverStyle={props.noHoverStyle}
       ref={treeItemRef}
-      selected={selected}
+      selected={props.selected}
       selectedColor={selectedColor}
-      tabIndex={onClick ? 0 : -1}
+      tabIndex={props.onClick ? 0 : -1}
     >
-      <Space gap={gapSize} onClick={onClick} onKeyDown={handleKeyDown}>
+      <Space
+        gap={props.gapSize || 'xxsmall'}
+        onClick={props.onClick}
+        onKeyDown={handleKeyDown}
+      >
         {renderedIcon}
-        <FlexItem flex="1">{children}</FlexItem>
+        <FlexItem flex="1">{props.children}</FlexItem>
         {renderedDetail}
       </Space>
     </TreeItemStyle>

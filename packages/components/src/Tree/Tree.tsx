@@ -50,7 +50,7 @@ export interface TreeProps extends Omit<AccordionProps, 'className'> {
    */
   detail?: ReactNode
   /**
-   * If true, then the detail elements on child Tree elements will only appear on hover
+   * If true, then the detail elements on Trees and TreeItems will only appear on hover
    * @default false
    */
   detailHoverDisclosure?: boolean
@@ -187,8 +187,8 @@ const TreeLayout: FC<TreeProps> = ({
       detailAccessory={detailAccessory}
       gapSize="xsmall"
       icon={icon}
-      noBorder
-      noHover
+      noBorderStyle
+      noHoverStyle
     >
       {label}
     </TreeItem>
