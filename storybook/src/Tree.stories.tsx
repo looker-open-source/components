@@ -233,30 +233,6 @@ export const Border = () => (
   </Tree>
 )
 
-export const HoverState = () => (
-  <Tree
-    hoverColor="keyFocus"
-    selectedColor="critical"
-    label="Orders"
-    defaultOpen
-  >
-    <TreeItem selected>ID</TreeItem>
-    <TreeItem>Status</TreeItem>
-    <Tree label="Created" defaultOpen>
-      <TreeItem>Created Date</TreeItem>
-      <TreeItem>Created Month</TreeItem>
-      <TreeItem>Created Year</TreeItem>
-      <TreeItem>Created Quarter</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
-      </Tree>
-    </Tree>
-  </Tree>
-)
-
 export const Flat = () => (
   <TreeContext.Provider value={{ hoverColor: 'keyFocus' }}>
     <TreeGroup label="Inventory Items">
