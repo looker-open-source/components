@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Switch from using defaultProps to `css` block to share common styles with other components
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
+- `IconButton` improved hover/active states and no background on hover
 
 ### Fixed
 

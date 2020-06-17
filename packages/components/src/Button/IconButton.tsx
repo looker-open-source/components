@@ -47,8 +47,7 @@ import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { ButtonBaseProps, buttonCSS } from './ButtonBase'
-import { ButtonTransparent } from './ButtonTransparent'
+import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { buttonSizeMap } from './size'
 
 interface IconButtonVariantProps {
@@ -175,7 +174,7 @@ const IconButtonComponent = forwardRef(
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
     return (
-      <ButtonTransparent
+      <ButtonBase
         aria-describedby={ariaDescribedBy}
         ref={actualRef}
         color={color}
@@ -188,7 +187,7 @@ const IconButtonComponent = forwardRef(
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon name={icon} size={buttonSizeMap[size] - 6} aria-hidden={true} />
         {tooltip}
-      </ButtonTransparent>
+      </ButtonBase>
     )
   }
 )
@@ -196,10 +195,11 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { color = 'key' } = props
+  const { shape, color = 'key' } = props
 
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
+    ${shape === 'round' && 'border-radius: 100%;'}
 
     &:hover,
     &:focus,
@@ -226,13 +226,29 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
+
+  background: none;
+  border: none;
+  color: ${({ theme, color = 'neutral' }) => theme.colors[color]};
   padding: 0;
+
+  &:hover,
+  &:focus,
+  &.hover {
+    color: ${({ theme, color = 'neutral' }) =>
+      theme.colors[`${color}Interactive`]};
+  }
+
+  &:active,
+  &.active {
+    color: ${({ theme, color = 'neutral' }) => theme.colors[`${color}Pressed`]};
+  }
+
   ${(props) => props.outline && outlineCSS}
-  ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 
   svg {
     pointer-events: none;
   }
 `
 
-IconButton.defaultProps = { color: 'neutral', type: 'button' }
+IconButton.defaultProps = { type: 'button' }
