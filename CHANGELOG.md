@@ -607,6 +607,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldTextArea` now properly links label + textarea via `id` assignment to textarea
 - `MenuItem` improved for use-case where itemRole="link" interacted poorly with unrelated CSS in applying :hover and :focus pseudo-styles
 
 ## [0.7.13] - 2020-01-16
