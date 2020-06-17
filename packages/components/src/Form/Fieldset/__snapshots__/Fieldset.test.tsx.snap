@@ -106,17 +106,17 @@ exports[`Fieldset 1`] = `
 }
 
 .c9 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 .c2 {

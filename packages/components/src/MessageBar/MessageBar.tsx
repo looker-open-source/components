@@ -72,7 +72,6 @@ const MessageBarLayout = forwardRef(
           id={id ? `${id}-iconButton` : undefined}
           ml="auto"
           onClick={onDismiss}
-          hoverStyle={{ background: 'none', border: 'none' }}
           icon="Close"
           size="small"
           label={`Dismiss ${getIntentLabel(intent)}`}
@@ -94,6 +93,11 @@ export const MessageBar = styled(MessageBarLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+
+  ${IconButton}:hover {
+    background: none;
+    border: none;
+  }
 
   ${MessageBarContent} {
     flex: 1;

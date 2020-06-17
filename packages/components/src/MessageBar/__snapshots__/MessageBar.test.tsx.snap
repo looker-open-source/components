@@ -48,6 +48,11 @@ exports[`Confirmation MessageBar 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 .c5:hover {
+  background: none;
+  border: none;
+}
+
 .c0 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -156,6 +161,11 @@ exports[`Error MessageBar 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 .c5:hover {
+  background: none;
+  border: none;
+}
+
 .c0 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -248,6 +258,11 @@ exports[`Info MessageBar 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 .c5:hover {
+  background: none;
+  border: none;
+}
+
 .c0 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -320,7 +335,7 @@ exports[`MessageBar can be dismissed 1`] = `
   width: 100%;
 }
 
-.c7 {
+.c8 {
   width: 22px;
   height: 22px;
   display: -webkit-inline-box;
@@ -333,7 +348,7 @@ exports[`MessageBar can be dismissed 1`] = `
   align-items: center;
 }
 
-.c7 svg {
+.c8 svg {
   height: 100%;
   width: 100%;
 }
@@ -383,7 +398,7 @@ exports[`MessageBar can be dismissed 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 .c10 {
+.c5 .c11 {
   height: 16px;
   width: 16px;
 }
@@ -420,21 +435,21 @@ exports[`MessageBar can be dismissed 1`] = `
   width: 1px;
 }
 
-.c6 {
+.c7 {
   margin-left: auto;
   padding: 0;
 }
 
-.c6:hover {
+.c7 svg {
+  pointer-events: none;
+}
+
+.c9 .c6:hover {
   background: none;
   border: none;
 }
 
-.c6 svg {
-  pointer-events: none;
-}
-
-.c8 .c3 {
+.c9 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -442,7 +457,12 @@ exports[`MessageBar can be dismissed 1`] = `
   margin-right: 0rem;
 }
 
-.c9 .c3 {
+.c10 .c6:hover {
+  background: none;
+  border: none;
+}
+
+.c10 .c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -467,6 +487,11 @@ exports[`MessageBar can be dismissed 1`] = `
   display: -ms-flexbox;
   display: flex;
   font-size: 0.875rem;
+}
+
+.c0 .c6:hover {
+  background: none;
+  border: none;
 }
 
 .c0 .c3 {
@@ -513,7 +538,7 @@ exports[`MessageBar can be dismissed 1`] = `
   <button
     aria-describedby="test-message-bar-iconButton-tooltip"
     aria-hidden={true}
-    className="c4 c5 c6"
+    className="c4 c5 c6 c7"
     color="neutral"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -531,7 +556,7 @@ exports[`MessageBar can be dismissed 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c7"
+      className="c8"
     >
       <svg
         fill="currentColor"
@@ -598,6 +623,11 @@ exports[`Warn MessageBar 1`] = `
   display: -ms-flexbox;
   display: flex;
   font-size: 0.875rem;
+}
+
+.c0 .c4:hover {
+  background: none;
+  border: none;
 }
 
 .c0 .c3 {

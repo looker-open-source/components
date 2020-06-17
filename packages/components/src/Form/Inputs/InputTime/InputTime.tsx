@@ -40,33 +40,28 @@ import noop from 'lodash/noop'
 import add from 'lodash/add'
 import subtract from 'lodash/subtract'
 
-import some from 'lodash/some'
-import {
-  BorderProps,
-  SpaceProps,
-  border,
-  space,
-  reset,
-} from '@looker/design-tokens'
 import {
   InputText,
-  inputTextDefaults,
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
+  inputCSS,
 } from '../InputText'
 import { Icon } from '../../../Icon'
+import {
+  simpleLayoutCSS,
+  SimpleLayoutProps,
+} from '../../../Layout/utils/simple'
 import {
   formatTimeString,
   TimeFormats,
   parseBase10Int,
   isValidTime,
 } from '../utils'
-
 import { ValidationType } from '../../ValidationMessage'
 
-export interface InputTimeProps extends SpaceProps, BorderProps {
+export interface InputTimeProps extends Omit<SimpleLayoutProps, 'size'> {
   format?: TimeFormats
   defaultValue?: string
   value?: string
@@ -466,8 +461,6 @@ const InputTimeInternal = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isComplete, hour, minute, period])
 
-    const hasInputValues = some([hour, minute, period], 'length')
-
     return (
       <div
         className={`${className} ${disabled && 'disabled'}`}
@@ -476,66 +469,62 @@ const InputTimeInternal = forwardRef(
         onBlur={onBlur}
         aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
-        <InputTimeWrapper hasInputValues={hasInputValues}>
-          <InputTimeLayout>
-            <InputText
-              id={id}
-              maxLength={2}
-              placeholder="--"
-              value={hour}
-              onKeyDown={readOnly ? noop : handleHourKeyDown}
-              onFocus={handleHourFocus}
-              onBlur={handleBlur}
-              onChange={noop} // suppress controlled component warning
-              ref={inputRefs.HOUR}
-              data-testid="input-hour"
-              disabled={disabled}
-              readOnly={readOnly}
-              required={required}
-            />
-            <div>:</div>
-            <InputText
-              maxLength={2}
-              placeholder="--"
-              value={minute}
-              onKeyDown={readOnly ? noop : handleMinuteKeyDown}
-              onFocus={handleMinuteFocus}
-              onBlur={handleBlur}
-              onChange={noop} // suppress controlled component warning
-              ref={inputRefs.MINUTE}
-              data-testid="input-minute"
-              disabled={disabled}
-              readOnly={readOnly}
-              required={required}
-            />
-            {format === '12h' ? (
-              <InputText
-                maxLength={2}
-                placeholder="--"
-                value={period}
-                onKeyDown={readOnly ? noop : handlePeriodKeyDown}
-                onFocus={handlePeriodFocus}
-                onBlur={handleBlur}
-                onChange={noop} // suppress controlled component warning
-                ref={inputRefs.PERIOD}
-                data-testid="input-period"
-                disabled={disabled}
-                readOnly={readOnly}
-                required={required}
-              />
-            ) : (
-              <span />
-            )}
-            {validationType && (
-              <WarningIcon
-                name="CircleInfo"
-                color="critical"
-                grid-area="warning"
-                size={20}
-              />
-            )}
-          </InputTimeLayout>
-        </InputTimeWrapper>
+        <InputText
+          id={id}
+          maxLength={2}
+          placeholder="--"
+          value={hour}
+          onKeyDown={readOnly ? noop : handleHourKeyDown}
+          onFocus={handleHourFocus}
+          onBlur={handleBlur}
+          onChange={noop} // suppress controlled component warning
+          ref={inputRefs.HOUR}
+          data-testid="input-hour"
+          disabled={disabled}
+          readOnly={readOnly}
+          required={required}
+        />
+        <div>:</div>
+        <InputText
+          maxLength={2}
+          placeholder="--"
+          value={minute}
+          onKeyDown={readOnly ? noop : handleMinuteKeyDown}
+          onFocus={handleMinuteFocus}
+          onBlur={handleBlur}
+          onChange={noop} // suppress controlled component warning
+          ref={inputRefs.MINUTE}
+          data-testid="input-minute"
+          disabled={disabled}
+          readOnly={readOnly}
+          required={required}
+        />
+        {format === '12h' ? (
+          <InputText
+            maxLength={2}
+            placeholder="--"
+            value={period}
+            onKeyDown={readOnly ? noop : handlePeriodKeyDown}
+            onFocus={handlePeriodFocus}
+            onBlur={handleBlur}
+            onChange={noop} // suppress controlled component warning
+            ref={inputRefs.PERIOD}
+            data-testid="input-period"
+            disabled={disabled}
+            readOnly={readOnly}
+            required={required}
+          />
+        ) : (
+          <span />
+        )}
+        {validationType && (
+          <WarningIcon
+            name="CircleInfo"
+            color="critical"
+            grid-area="warning"
+            size={20}
+          />
+        )}
       </div>
     )
   }
@@ -543,49 +532,15 @@ const InputTimeInternal = forwardRef(
 
 const WarningIcon = styled(Icon)``
 
-const InputTimeLayout = styled.div`
+export const InputTime = styled(InputTimeInternal)`
+  ${simpleLayoutCSS}
+  ${inputCSS}
+
   align-items: center;
-  display: grid;
+  display: inline-grid;
   grid-gap: 0.15rem;
   grid-template-columns: auto auto auto auto 1fr;
-
-  ${WarningIcon} {
-    justify-self: end;
-  }
-`
-
-export const InputTime = styled(InputTimeInternal)`
-  ${reset}
-  ${border}
-  ${space}
-
-  background: ${({ theme }) => theme.colors.field};
-  display: inline-block;
   padding: 0 ${({ theme }) => theme.space.xsmall};
-
-  &:focus-within {
-    ${inputTextFocus}
-  }
-  &:hover {
-    ${inputTextHover}
-  }
-
-  &.disabled {
-    ${inputTextDisabled}
-  }
-
-  ${inputTextValidation}
-`
-
-InputTime.defaultProps = {
-  ...inputTextDefaults,
-}
-
-const InputTimeWrapper = styled.div<{
-  hasInputValues: boolean
-}>`
-  color: ${({ theme: { colors }, hasInputValues }) =>
-    hasInputValues ? colors.text3 : colors.text6};
 
   ${InputText} {
     background: transparent;
@@ -603,11 +558,26 @@ const InputTimeWrapper = styled.div<{
       text-align: center;
     }
 
-    &::placeholder {
-      color: inherit;
-    }
-    &:focus {
+    &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};
     }
   }
+
+  ${WarningIcon} {
+    justify-self: end;
+  }
+
+  &:focus-within {
+    ${inputTextFocus}
+  }
+
+  &:hover {
+    ${inputTextHover}
+  }
+
+  &.disabled {
+    ${inputTextDisabled}
+  }
+
+  ${inputTextValidation}
 `

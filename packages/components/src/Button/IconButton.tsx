@@ -29,8 +29,6 @@ import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
-  pseudoClasses,
-  PseudoProps,
   reset,
   SpaceProps,
   space,
@@ -78,7 +76,6 @@ export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     ButtonBaseProps,
     IconButtonVariantProps,
-    PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
   /*
@@ -231,7 +228,6 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
   padding: 0;
   ${(props) => props.outline && outlineCSS}
-  ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 
   svg {

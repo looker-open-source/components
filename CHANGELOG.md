@@ -9,10 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-
 - Field now support hideLabel and fieldsHideLabel
 - `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
 
+### Changed
+
+- `InputText` interface simplified / narrowed
+  - No longer supports typography or pseudo props
+  - Switch from using defaultProps to `css` block to share common styles with other components
+- `TextArea` interface simplified / narrowed
+  - No longer supports border or typography props
 
 ### Fixed
 
@@ -28,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+- `psuedo` support from design-tokens (prefer using `styled` when psuedo selectors are required)
+  - Includes changes to `Box` & `IconButton`
 
 ## [0.8.7]
 

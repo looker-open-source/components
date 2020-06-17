@@ -40,9 +40,10 @@ import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
 import {
+  inputCSS,
+  inputHeight,
   InputText,
   InputTextProps,
-  inputTextDefaults,
   inputTextDisabled,
   inputTextFocus,
   inputTextHover,
@@ -62,7 +63,7 @@ const getHeight = (
     typeof py === 'number'
       ? `${((py || 0) + 1) * 2}px`
       : `(${String(py)} * 2) - 2px`
-  return `calc(${inputTextDefaults.height} - ${verticalSpace})`
+  return `calc(${inputHeight} - ${verticalSpace})`
 }
 
 export interface InputSearchBaseProps extends InputTextProps {
@@ -145,14 +146,13 @@ const InputSearchBaseComponent = forwardRef(
       <InputText
         onChange={handleChange}
         value={inputValue}
-        focusStyle={{ outline: 'none' }}
         pr="0"
         {...pick(props, inputPropKeys)}
         ref={ref}
       />
     )
     return (
-      <Flex
+      <div
         className={className}
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
@@ -167,7 +167,7 @@ const InputSearchBaseComponent = forwardRef(
           input
         )}
         {searchControls && searchControls}
-      </Flex>
+      </div>
     )
   }
 )
@@ -175,8 +175,12 @@ const InputSearchBaseComponent = forwardRef(
 InputSearchBaseComponent.displayName = 'InputSearchBaseComponent'
 
 export const InputSearchBase = styled(InputSearchBaseComponent)`
+  ${inputCSS}
+
   align-items: center;
-  background-color: ${({ theme: { colors } }) => colors.field};
+  display: flex;
+  padding: ${({ theme: { space } }) =>
+    `${space.xxxsmall} ${space.xxsmall} ${space.xxxsmall}` + ' 0'};
 
   &:hover {
     ${inputTextHover}
@@ -196,7 +200,7 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
     border: none;
     box-shadow: none;
     flex: 1;
-    height: ${(props) => getHeight(props.py)};
+    height: ${(props) => getHeight(props.py || 2)};
 
     width: 100%;
 
@@ -206,11 +210,9 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
     &::-webkit-search-results-decoration {
       appearance: none;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 `
-
-InputSearchBase.defaultProps = {
-  ...omit(inputTextDefaults, ['height', 'px']),
-  pr: 'xxsmall',
-  py: 2,
-}

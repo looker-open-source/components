@@ -17,10 +17,10 @@ exports[`A FieldTextArea with default label 1`] = `
 
 .c4 textarea {
   min-height: 6.25rem;
-  width: 100%;
-  border: solid 1px;
-  border-color: #DEE1E5;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
+  color: #343C42;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -138,10 +138,10 @@ exports[`A FieldTextArea with label inline 1`] = `
 
 .c4 textarea {
   min-height: 6.25rem;
-  width: 100%;
-  border: solid 1px;
-  border-color: #DEE1E5;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
+  color: #343C42;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
