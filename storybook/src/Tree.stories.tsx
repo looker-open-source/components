@@ -122,40 +122,56 @@ const fieldDetailButtons = (
 )
 
 export const FieldPicker = () => (
-  <Tree
-    defaultOpen
-    detail={addButton}
-    detailAccessory
-    detailHoverDisclosure
-    label="Custom Fields"
-  >
+  <Tree defaultOpen detail={addButton} detailAccessory label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
+        detailHoverDisclosure
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
       >
         Cost
       </TreeItem>
       <Tree label="Created">
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem
+          detail={fieldDetailButtons}
+          detailHoverDisclosure
+          icon="Calendar"
+        >
           Created Date
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem
+          detail={fieldDetailButtons}
+          detailHoverDisclosure
+          icon="Calendar"
+        >
           Created Month
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem
+          detail={fieldDetailButtons}
+          detailHoverDisclosure
+          icon="Calendar"
+        >
           Created Year
         </TreeItem>
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
+        <TreeItem
+          detail={fieldDetailButtons}
+          detailHoverDisclosure
+          icon="Calendar"
+        >
           Created Quarter
         </TreeItem>
       </Tree>
-      <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
+      <TreeItem
+        detail={fieldDetailButtons}
+        detailHoverDisclosure
+        icon="FieldDistance"
+      >
         Location
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
+        detailHoverDisclosure
         icon="FieldTier"
         onClick={() => alert('Clicked on Tier!')}
       >
@@ -163,6 +179,7 @@ export const FieldPicker = () => (
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
+        detailHoverDisclosure
         icon="FieldYesNo"
         onClick={() => alert('Clicked on French Yes-No!')}
       >
@@ -172,7 +189,7 @@ export const FieldPicker = () => (
     <TreeGroup color="critical" label="MEASURES">
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
+        detailHoverDisclosure
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count!')}
       >
@@ -180,7 +197,7 @@ export const FieldPicker = () => (
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
+        detailHoverDisclosure
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count Distinct!')}
       >
