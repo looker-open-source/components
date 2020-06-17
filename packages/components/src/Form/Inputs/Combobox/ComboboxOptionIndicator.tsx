@@ -102,11 +102,11 @@ const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
 }
 
 export const ComboboxOptionIndicator = styled(ComboboxOptionIndicatorLayout)`
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: ${(props) => props.theme.space.large};
+  display: flex;
   flex-shrink: 0;
+  height: ${(props) => props.theme.space.large};
+  justify-content: center;
   margin-right: ${(props) => props.theme.space.xxsmall};
   width: ${({ theme, isMulti }) =>
     isMulti ? theme.space.xlarge : theme.space.medium};

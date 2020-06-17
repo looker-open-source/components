@@ -155,29 +155,30 @@ export const MenuListInternal = forwardRef(
   }
 )
 
-const dividersStyle = css`
-  ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${(props) => props.theme.colors.ui2};
+const dividersStyle = ({ groupDividers }: MenuListProps) =>
+  groupDividers &&
+  css`
+  ${MenuGroup} ~ ${MenuGroup} {
+    border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
   }
 `
 
 export const MenuList = styled(MenuListInternal)`
   ${reset}
 
+  ${height}
   ${minHeight}
   ${maxHeight}
-  ${height}
-
-  min-width: 12rem;
   ${minWidth}
   ${maxWidth}
   ${width}
 
-  overflow: auto;
   border-radius: inherit;
-
   list-style: none;
   outline: none;
+  overflow: auto;
   user-select: none;
-  ${(props) => props.groupDividers !== false && dividersStyle};
+  ${dividersStyle}
 `
+
+MenuList.defaultProps = { minWidth: '12rem' }

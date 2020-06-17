@@ -149,7 +149,7 @@ export const Fieldset = styled(FieldsetLayout)`
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: ${({ theme }) => theme.fontWeights.semiBold};
     height: 24px;
-    padding: ${({ theme }) => `${theme.space.xxsmall} 0`};
+    padding: ${({ theme: { space } }) => space.xxsmall} 0;
   }
 
   ${AccordionContent} {

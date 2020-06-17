@@ -42,9 +42,9 @@ export interface LegendProps
 
 export const Legend = styled.legend<LegendProps>`
   ${reset}
-  ${color};
-  ${space};
-  ${typography};
+  ${color}
+  ${space}
+  ${typography}
 `
 
 Legend.defaultProps = {

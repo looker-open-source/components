@@ -2,27 +2,27 @@
 
 exports[`A FieldRadio 1`] = `
 .c6 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c6::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c4 {
@@ -45,8 +45,8 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c4 input:not(:checked) + .c5 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c4 input:focus + .c5 {
@@ -89,33 +89,33 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c0 .c1 {
-  font-size: 0.875rem;
-  font-weight: normal;
-  grid-area: label;
-  padding-left: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0 .c8 {
-  grid-area: detail;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
+}
+
+.c0 .c8 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: detail;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
   margin-left: 0.25rem;
 }
 
@@ -162,27 +162,27 @@ exports[`A FieldRadio 1`] = `
 
 exports[`A FieldRadio checked 1`] = `
 .c6 {
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
   transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  width: 100%;
 }
 
 .c6::after {
-  content: '';
-  position: absolute;
   background: #fff;
-  width: 6px;
-  height: 6px;
   border-radius: 50%;
-  top: calc(50% - 3px);
+  content: '';
+  height: 6px;
+  position: absolute;
   right: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
 }
 
 .c4 {
@@ -205,8 +205,8 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c4 input:not(:checked) + .c5 {
-  border-color: #DEE1E5;
   background: #FFFFFF;
+  border-color: #DEE1E5;
 }
 
 .c4 input:focus + .c5 {
@@ -249,33 +249,33 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c0 .c1 {
-  font-size: 0.875rem;
-  font-weight: normal;
-  grid-area: label;
-  padding-left: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0 .c8 {
-  grid-area: detail;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
+}
+
+.c0 .c8 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: detail;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
   margin-left: 0.25rem;
 }
 

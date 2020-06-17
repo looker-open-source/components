@@ -44,8 +44,8 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -80,7 +80,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 lfjrGk"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 cXFzKH"
 >
   focus
 </button>
@@ -130,8 +130,8 @@ exports[`ButtonTransparent has the correct style 1`] = `
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,

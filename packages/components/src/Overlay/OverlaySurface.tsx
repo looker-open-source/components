@@ -120,7 +120,7 @@ export const OverlaySurface = forwardRef(
 OverlaySurface.displayName = 'OverlaySurface'
 
 const Outer = styled.div<{ zIndex?: number }>`
-  ${reset};
+  ${reset}
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
   z-index: ${(props) => props.zIndex};

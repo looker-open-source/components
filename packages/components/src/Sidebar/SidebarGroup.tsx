@@ -72,11 +72,11 @@ const SidebarGroupHeading = styled(Heading).attrs({
   button {
     align-items: center;
     all: inherit;
+    background: transparent;
+    border: none;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: transparent;
-    border: none;
 
     ${Icon} {
       align-self: center;

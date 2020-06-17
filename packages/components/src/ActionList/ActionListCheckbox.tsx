@@ -70,10 +70,10 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
 
 export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-basis: ${actionListCheckboxWidth};
-  flex-shrink: 0;
 
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
+  display: flex;
+  flex-basis: ${actionListCheckboxWidth};
+  flex-shrink: 0;
+  justify-content: center;
 `

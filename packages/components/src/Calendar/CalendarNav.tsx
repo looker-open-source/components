@@ -115,9 +115,9 @@ export const CalendarNav: FC<NavbarElementProps> = ({
 }
 
 const NavGrid = styled.div`
+  align-items: center;
   display: grid;
   grid-template-columns: 40px 1fr 40px;
-  align-items: center;
   justify-items: center;
 `
 

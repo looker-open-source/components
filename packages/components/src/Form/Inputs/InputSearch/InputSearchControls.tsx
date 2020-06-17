@@ -96,7 +96,7 @@ export const InputSearchControlsInternal = forwardRef(
 InputSearchControlsInternal.displayName = 'InputSearchControlsInternal'
 
 export const InputSearchControls = styled(InputSearchControlsInternal)`
-  height: ${(props) => props.height};
-  display: flex;
   align-items: center;
+  display: flex;
+  height: ${(props) => props.height};
 `

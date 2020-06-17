@@ -71,15 +71,17 @@ export const Swatch = styled.div<SwatchProps>`
   ${width}
   ${height}
   ${border}
+
+  background-color: ${(props) => props.color};
+  flex-shrink: 0;
+  margin-top: auto;
+
   &:hover {
     ${inputTextHover}
   }
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-  background-color: ${(props) => props.color};
-  margin-top: auto;
-  flex-shrink: 0;
 
   ${(props) => props.color === 'transparent' && emptySwatch}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 `
 
 Swatch.defaultProps = {

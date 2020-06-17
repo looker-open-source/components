@@ -69,22 +69,22 @@ const ButtonToggleLayout = forwardRef(
 ButtonToggleLayout.displayName = 'ButtonToggleLayout'
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
+  background-color: ${({ theme }) => theme.colors.background};
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-left-width: 0;
   border-radius: ${({ theme }) => theme.radii.medium};
-  background-color: ${({ theme }) => theme.colors.background};
 
   ${ButtonItem} {
-    height: ${buttonItemHeight}px;
     border-left: solid 1px ${({ theme }) => theme.colors.ui2};
+    height: ${buttonItemHeight}px;
 
     &:last-child {
-      border-top-right-radius: ${({ theme }) => theme.radii.medium};
       border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
+      border-top-right-radius: ${({ theme }) => theme.radii.medium};
     }
     &:first-child {
-      border-top-left-radius: ${({ theme }) => theme.radii.medium};
       border-bottom-left-radius: ${({ theme }) => theme.radii.medium};
+      border-top-left-radius: ${({ theme }) => theme.radii.medium};
     }
     &:focus {
       /* Allows selected button to stack above so box-shadow isn't blocked on the right */
@@ -95,7 +95,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
   &.wrapping {
     /* Creates horizontal rules between rows
   (and hide the last one that's flush with the bottom border) */
-    /* stylelint-disable */
+
     background-image: linear-gradient(
         0deg,
         ${({ theme }) => theme.colors.background} 0,
@@ -110,14 +110,13 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
         ${({ theme }) => theme.colors.ui2} 35px,
         ${({ theme }) => theme.colors.ui2} ${buttonItemHeight}px
       );
-    /* stylelint-enabled */
 
     /* prevents items in the last row from growing */
     &::after {
+      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
       content: '';
       flex-grow: 100;
       height: ${buttonItemHeight}px;
-      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
     }
 
     ${ButtonItem} {
@@ -128,8 +127,8 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
         border-bottom-left-radius: 0;
       }
       &:last-child {
-        border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
       }
       /* Fixes bottom "border" when the item background obscures the parent's horizontal rows */
       &[aria-pressed='false']:hover:not(:focus),

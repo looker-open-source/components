@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
+
 ### Fixed
 
 - `ButtonGroup`/`ButtonToggle` display issues
@@ -16,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select`/`SelectMulti` keyboard navigation when filtering options
 - `SelectMulti` create option unnecessary left padding
 - `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
+- Major CSS linting clean-up
 
 ### Removed
 

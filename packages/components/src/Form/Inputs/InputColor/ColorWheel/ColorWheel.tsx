@@ -196,7 +196,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
     const centerX = this.valueCanvas.width / 2
     const centerY = this.valueCanvas.height / 2
     if (ctx) {
-      const { r, g, b } = hsv(0, 0, this.props.value).rgb() // convert greyscale value to rgb
+      const { r, g, b } = hsv(0, 0, this.props.value).rgb() // convert grayscale value to rgb
       ctx.beginPath()
       ctx.arc(centerX, centerY, this.radius, 0, 2 * Math.PI, false)
       ctx.fillStyle = `rgb(${r},${g},${b})`
@@ -336,13 +336,13 @@ interface CanvasProps {
 }
 
 const ColorWheelWrapper = styled.div<CanvasProps>`
+  height: ${({ size }) => size}px;
   position: relative;
   width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
 `
 
 const Canvas = styled.canvas`
-  position: absolute;
   left: 0;
+  position: absolute;
   top: 0;
 `

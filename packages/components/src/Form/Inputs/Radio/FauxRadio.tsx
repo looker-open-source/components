@@ -31,25 +31,25 @@ const dotSize = 6
 
 export const FauxRadio = styled.div`
   ${reset}
-  position: relative;
-  width: 100%;
-  height: 100%;
   background-color: currentColor;
   border: solid 1px ${({ theme }) => `${theme.colors.ui2}`};
-  border-radius: 50%;
   border-color: currentColor;
+  border-radius: 50%;
   color: transparent;
+  height: 100%;
+  position: relative;
   transition: background-color 25ms linear, border-color 25ms linear,
     box-shadow 25ms linear;
+  width: 100%;
 
   &::after {
-    content: '';
-    position: absolute;
     background: #fff;
-    width: ${dotSize}px;
-    height: ${dotSize}px;
     border-radius: 50%;
-    top: calc(50% - ${dotSize / 2}px);
+    content: '';
+    height: ${dotSize}px;
+    position: absolute;
     right: calc(50% - ${dotSize / 2}px);
+    top: calc(50% - ${dotSize / 2}px);
+    width: ${dotSize}px;
   }
 `

@@ -5,75 +5,75 @@ exports[`renders focus styles on keypress 1`] = `
   background: transparent;
   display: block;
   height: 22px;
-  position: relative;
+  left: 8px;
   margin-left: 0;
   margin-right: 0;
+  position: relative;
   -webkit-appearance: none;
   width: calc(100% - 16px);
-  left: 8px;
 }
 
 .c0::-webkit-slider-thumb {
   -webkit-appearance: none;
   border-radius: 100%;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  position: absolute;
   left: 0%;
+  position: absolute;
+  top: 3px;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  top: 3px;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
+  background: #FFFFFF;
   border: 3px solid #6C43E0;
   height: 16px;
   width: 16px;
-  background: #FFFFFF;
 }
 
 .c0::-moz-range-thumb {
   border-radius: 100%;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  position: absolute;
   left: 0%;
+  position: absolute;
+  top: 3px;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  top: 3px;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
+  background: #FFFFFF;
   border: 3px solid #6C43E0;
   height: 16px;
   width: 16px;
-  background: #FFFFFF;
 }
 
 .c0::-ms-thumb {
   border-radius: 100%;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  position: absolute;
   left: 0%;
+  position: absolute;
+  top: 3px;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  top: 3px;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
+  background: #FFFFFF;
   border: 3px solid #6C43E0;
   height: 16px;
   width: 16px;
-  background: #FFFFFF;
 }
 
 .c0::-ms-track {
-  width: 100%;
-  cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
+  cursor: pointer;
+  width: 100%;
 }
 
 .c0::-moz-focus-outer {

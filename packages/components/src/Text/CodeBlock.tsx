@@ -44,7 +44,7 @@ const CodeBlockLayout: FC<CodeBlockProps> = ({
 )
 
 export const CodeBlock = styled(CodeBlockLayout)`
-  ${border};
+  ${border}
   overflow-y: scroll;
 `
 

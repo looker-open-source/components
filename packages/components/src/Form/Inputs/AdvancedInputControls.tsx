@@ -92,10 +92,10 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
 }
 
 const SearchControlGrid = styled.div`
+  align-items: center;
   display: grid;
   grid-auto-flow: column dense;
   grid-gap: ${({ theme }) => theme.space.xxsmall};
-  align-items: center;
   justify-items: center;
   max-height: 1.9rem;
 `
