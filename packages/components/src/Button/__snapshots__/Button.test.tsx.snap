@@ -43,8 +43,8 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -76,7 +76,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 gkFqSX"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 byWDyn"
 >
   focus
 </button>
@@ -126,8 +126,8 @@ exports[`Button can be full width 1`] = `
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -200,8 +200,8 @@ exports[`Button disable 1`] = `
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -277,8 +277,8 @@ exports[`Button validates all sizes 1`] = `
 }
 
 .c1 .c2 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -351,8 +351,8 @@ exports[`Button validates all sizes 2`] = `
 }
 
 .c1 .c2 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c1:hover,
@@ -425,8 +425,8 @@ exports[`Button validates all sizes 3`] = `
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -499,8 +499,8 @@ exports[`Button validates all sizes 4`] = `
 }
 
 .c1 .c2 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c1:hover,
@@ -588,28 +588,28 @@ exports[`Button with icon validates all sizes 1`] = `
 }
 
 .c4 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c5 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c6 .c2 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c7 .c2 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c8 .c2 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c1 {
@@ -621,8 +621,8 @@ exports[`Button with icon validates all sizes 1`] = `
 .c1 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1:hover,
@@ -648,22 +648,22 @@ exports[`Button with icon validates all sizes 1`] = `
 .c9 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c10 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 <button
@@ -749,35 +749,35 @@ exports[`Button with icon validates all sizes 2`] = `
 }
 
 .c4 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c5 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c6 .c2 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c7 .c2 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c8 .c2 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c1 {
@@ -789,8 +789,8 @@ exports[`Button with icon validates all sizes 2`] = `
 .c1 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c1:hover,
@@ -816,15 +816,15 @@ exports[`Button with icon validates all sizes 2`] = `
 .c10 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 <button
@@ -910,42 +910,42 @@ exports[`Button with icon validates all sizes 3`] = `
 }
 
 .c4 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c5 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c6 .c2 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c7 .c2 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c8 .c2 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c10 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c1 {
@@ -957,8 +957,8 @@ exports[`Button with icon validates all sizes 3`] = `
 .c1 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,
@@ -984,8 +984,8 @@ exports[`Button with icon validates all sizes 3`] = `
 .c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 <button
@@ -1071,49 +1071,49 @@ exports[`Button with icon validates all sizes 4`] = `
 }
 
 .c4 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c5 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c6 .c2 {
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c7 .c2 {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c8 .c2 {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
-  width: 12px;
   height: 12px;
+  width: 12px;
 }
 
 .c10 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c11 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1 {
@@ -1125,8 +1125,8 @@ exports[`Button with icon validates all sizes 4`] = `
 .c1 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c1:hover,
@@ -1217,8 +1217,8 @@ exports[`Button works with color critical 1`] = `
 }
 
 .c1 .c2 {
-  width: 18px;
   height: 18px;
+  width: 18px;
 }
 
 .c1:hover,

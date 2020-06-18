@@ -100,9 +100,9 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
 export const ModalHeader = styled(ModalHeaderLayout)`
   ${reset}
   ${space}
+  align-items: center;
   display: grid;
   grid-template-columns: [icon] auto [text] 1fr [close] auto;
-  align-items: center;
 `
 
 ModalHeader.defaultProps = {

@@ -193,3 +193,20 @@ export const Nesting = () => (
     </Fieldset>
   </Fieldset>
 )
+
+export const fieldsHideLabel = () => (
+  <>
+    <Fieldset fieldsHideLabel legend="This is the Legend 1">
+      <FieldText label="First Label" />
+      <FieldText label="Second Label" />
+      <FieldText label="Third Label" hideLabel={false} />
+    </Fieldset>
+    <Fieldset legend="This is the Legend 1">
+      <FieldText label="First Label" hideLabel />
+      <FieldText label="Second Label" />
+      <FieldText label="Third Label" />
+    </Fieldset>
+    <FieldText label="FieldText Label" hideLabel={false} />
+    <FieldText label="FieldText Label" hideLabel />
+  </>
+)

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Field now support hideLabel and fieldsHideLabel
+- `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
+
+### Changed
+
+- `InputText` interface simplified / narrowed
+  - No longer supports typography or pseudo props
+  - Switch from using defaultProps to `css` block to share common styles with other components
+- `TextArea` interface simplified / narrowed
+  - No longer supports border or typography props
+
 ### Fixed
 
 - `ButtonGroup`/`ButtonToggle` display issues
@@ -14,6 +27,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - White space between highlighted item and border (`ButtonToggle`)
   - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
 - `Icon` will no longer shrink when placed inside a flex layout
+- `Select`/`SelectMulti` keyboard navigation when filtering options
+- `SelectMulti` create option unnecessary left padding
+- `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
+- Major CSS linting clean-up
+
+### Removed
+
+- `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+- `psuedo` support from design-tokens (prefer using `styled` when psuedo selectors are required)
+  - Includes changes to `Box` & `IconButton`
 
 ## [0.8.7]
 
@@ -596,6 +619,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldTextArea` now properly links label + textarea via `id` assignment to textarea
 - `MenuItem` improved for use-case where itemRole="link" interacted poorly with unrelated CSS in applying :hover and :focus pseudo-styles
 
 ## [0.7.13] - 2020-01-16

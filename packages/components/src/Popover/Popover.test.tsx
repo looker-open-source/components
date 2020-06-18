@@ -115,6 +115,8 @@ describe('Popover', () => {
     fireEvent.click(trigger)
     expect(getByText('simple content')).toBeInTheDocument()
     expect(mockContainerOnClick).not.toHaveBeenCalled()
+
+    fireEvent.click(document)
   })
 
   test('Open popover cancels event on "dismissal click"', () => {
@@ -205,5 +207,7 @@ describe('Popover', () => {
     expect(queryByText('simple content')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Popover
     expect(queryByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 })

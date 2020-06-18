@@ -72,7 +72,6 @@ const MessageBarLayout = forwardRef(
           id={id ? `${id}-iconButton` : undefined}
           ml="auto"
           onClick={onDismiss}
-          hoverStyle={{ background: 'none', border: 'none' }}
           icon="Close"
           size="small"
           label={`Dismiss ${getIntentLabel(intent)}`}
@@ -86,12 +85,12 @@ const MessageBarLayout = forwardRef(
 MessageBarLayout.displayName = 'MessageBarLayout'
 
 export const MessageBar = styled(MessageBarLayout)`
-  ${simpleLayoutCSS};
+  ${simpleLayoutCSS}
 
   align-items: center;
-  border-radius: ${({ theme: { radii } }) => radii.medium};
   background: ${({ intent, theme: { colors } }) =>
     intent === 'critical' ? colors.criticalAccent : colors.neutralAccent};
+  border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 

@@ -25,90 +25,98 @@
  */
 
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { FieldSelectMulti } from './FieldSelectMulti'
 
-const FieldSelectMultiOptions = [
+const fieldSelectMultiOptions = [
   { label: 'Apples', value: '1' },
   { label: 'Bananas', value: '2' },
   { label: 'Oranges', value: '3' },
 ]
 
 test('FieldSelectMulti should accept detail and description attributes', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldSelectMulti
       detail="5/50"
       description="this is the description"
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      options={FieldSelectMultiOptions}
+      options={fieldSelectMultiOptions}
     />
   )
 
-  const input = getByLabelText('👍')
+  const input = screen.getAllByLabelText('👍')[1]
   expect(input.getAttribute('detail')).toBeDefined()
   expect(input.getAttribute('description')).toBeDefined()
 })
 
 test('FieldSelectMulti should accept a disabled prop', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldSelectMulti
       disabled
       id="test"
       label="Test Label"
       name="test"
-      options={FieldSelectMultiOptions}
+      options={fieldSelectMultiOptions}
     />
   )
 
-  const input = getByLabelText('Test Label')
+  const input = screen.getAllByLabelText('Test Label')[1]
   expect(input.getAttribute('disabled')).toBeDefined()
 })
 
 test('FieldSelectMulti should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldSelectMulti
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      options={FieldSelectMultiOptions}
+      options={fieldSelectMultiOptions}
       required
     />
   )
-  expect(getByText('required')).toBeVisible()
+  expect(screen.getByText('required')).toBeVisible()
 })
 
 test('FieldSelectMulti should display error message', () => {
   const errorMessage = 'This is an error'
 
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldSelectMulti
       id="testFieldSelectMulti"
       label="Label"
       name="test"
-      options={FieldSelectMultiOptions}
+      options={fieldSelectMultiOptions}
       validationMessage={{ message: errorMessage, type: 'error' }}
     />
   )
 
-  expect(getByText('This is an error')).toBeVisible()
+  expect(screen.getByText('This is an error')).toBeVisible()
 })
 
 test('FieldSelectMulti Should trigger onChange handler', () => {
   const handleChange = jest.fn()
 
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldSelectMulti
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
       onChange={handleChange}
-      options={FieldSelectMultiOptions}
+      options={fieldSelectMultiOptions}
     />
   )
 
-  wrapper.find('input').simulate('mousedown')
-  wrapper.find('li').at(0).simulate('click')
+  // The combobox container and the input share the label
+  const input = screen.getAllByLabelText('👍')[1]
+  fireEvent.click(input)
+
+  const apples = screen.getByText('Apples')
+  fireEvent.click(apples)
+
   expect(handleChange).toHaveBeenCalledTimes(1)
+
+  fireEvent.click(document)
 })

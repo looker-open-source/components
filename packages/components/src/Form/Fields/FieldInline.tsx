@@ -80,20 +80,20 @@ export const FieldInline = styled(FieldInlineLayout)`
   }
 
   ${Label} {
+    align-items: center;
     color: ${({ theme, disabled }) => disabled && theme.colors.text5};
+    display: flex;
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
     grid-area: label;
     padding-left: ${({ theme }) => theme.space.xsmall};
-    display: flex;
-    align-items: center;
   }
 
   ${FieldDetail} {
-    grid-area: detail;
-    display: flex;
-    justify-content: flex-end;
     align-content: center;
+    display: flex;
+    grid-area: detail;
+    justify-content: flex-end;
     margin-left: ${({ theme: { space } }) => space.xxsmall};
   }
 

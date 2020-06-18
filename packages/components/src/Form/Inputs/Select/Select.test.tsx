@@ -25,13 +25,13 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent } from '@testing-library/react'
-import React from 'react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
+import React, { useState } from 'react'
 
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
-import { SelectOptionObject } from './SelectOptions'
+import { SelectOptionObject, SelectOptionProps } from './SelectOptions'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
@@ -65,22 +65,17 @@ describe('Select / SelectMulti', () => {
     ],
   ])('with options and handleChange (%s)', (name, getJSX) => {
     const handleChange = jest.fn()
-    const {
-      // getAllByRole,
-      queryByText,
-      getByText,
-      getByPlaceholderText,
-    } = renderWithTheme(getJSX(handleChange))
-    expect(queryByText('FOO')).not.toBeInTheDocument()
-    expect(queryByText('BAR')).not.toBeInTheDocument()
+    renderWithTheme(getJSX(handleChange))
+    expect(screen.queryByText('FOO')).not.toBeInTheDocument()
+    expect(screen.queryByText('BAR')).not.toBeInTheDocument()
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     expect(input).toBeVisible()
 
     fireEvent.mouseDown(input)
 
     // const foo = getByText('FOO')
-    const bar = getByText('BAR')
+    const bar = screen.getByText('BAR')
 
     // Clicking on the options should fire onBlur on the input and
     // trigger the state transition that allows in an updated input value.
@@ -96,6 +91,79 @@ describe('Select / SelectMulti', () => {
     // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
     const onChangeArg = name === 'SelectMulti' ? ['BAR'] : 'BAR'
     expect(handleChange).toHaveBeenCalledWith(onChangeArg)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  const initialOptions = [...options, { value: 'BAZ' }]
+
+  test.each([
+    [
+      'Select',
+      (onFilter: (term: string) => void) => (
+        <Select
+          options={options}
+          placeholder="Search"
+          onFilter={onFilter}
+          key="select"
+        />
+      ),
+    ],
+    [
+      'SelectMulti',
+      (onFilter: (term: string) => void, optionsToUse: SelectOptionProps[]) => (
+        <SelectMulti
+          options={optionsToUse}
+          placeholder="Search"
+          onFilter={onFilter}
+          key="select-multi"
+        />
+      ),
+    ],
+  ])('with onFilter (%s)', (_, getJSX) => {
+    const mockOnFilter = jest.fn()
+
+    function Component() {
+      const [optionsToUse, setOptions] = useState(initialOptions)
+      function handleFilter(term: string) {
+        mockOnFilter(term)
+        setOptions(
+          initialOptions.filter((option) => option.value.indexOf(term) > -1)
+        )
+      }
+
+      return getJSX(handleFilter, optionsToUse)
+    }
+
+    renderWithTheme(<Component />)
+    expect(screen.queryByText('FOO')).not.toBeInTheDocument()
+    expect(screen.queryByText('BAR')).not.toBeInTheDocument()
+
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.change(input, { target: { value: 'BA' } })
+
+    expect(mockOnFilter).toHaveBeenCalledWith('BA')
+
+    // Verify keyboard nav hasn't been messed up by updating options
+    const items = screen.getAllByRole('option')
+    expect(items).toHaveLength(2)
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
+    const fireArrowDown = () => fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireArrowDown()
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
+    fireArrowDown()
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+
+    // Back to the top
+    fireArrowDown()
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -143,18 +211,16 @@ describe('Select / SelectMulti', () => {
     ],
   ])('with option descriptions and group labels (%s)', (name, getJSX) => {
     const handleChange = jest.fn()
-    const { getByText, getByPlaceholderText } = renderWithTheme(
-      getJSX(handleChange)
-    )
+    renderWithTheme(getJSX(handleChange))
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     expect(input).toBeVisible()
 
     fireEvent.mouseDown(input)
 
-    const foo = getByText('FOO')
-    const other = getByText('OTHER')
-    const desc = getByText('A description for something')
+    const foo = screen.getByText('FOO')
+    const other = screen.getByText('OTHER')
+    const desc = screen.getByText('A description for something')
 
     expect(foo).toBeInTheDocument()
     expect(other).toBeInTheDocument()
@@ -201,14 +267,14 @@ describe('Select / SelectMulti', () => {
       />,
     ],
   ])('with listLayout (%s)', (_, jsx) => {
-    const { getByRole, getByPlaceholderText } = renderWithTheme(jsx)
+    renderWithTheme(jsx)
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     expect(input).toBeVisible()
 
     fireEvent.mouseDown(input)
 
-    const list = getByRole('listbox')
+    const list = screen.getByRole('listbox')
     expect(list).toHaveStyleRule('max-height', '400px')
     expect(list).toHaveStyleRule('max-width', '800px')
     expect(list).toHaveStyleRule('min-width', '300px')
@@ -255,11 +321,9 @@ describe('Select / SelectMulti', () => {
     ['option level (SelectMulti)', getIndicatorJSXMulti(false)],
   ])('Customize the indicator at the %s', (_, getJSX) => {
     const indicator = jest.fn()
-    const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
-      getJSX(indicator)
-    )
+    renderWithTheme(getJSX(indicator))
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     fireEvent.click(input)
 
     expect(indicator).toHaveBeenCalledTimes(2)
@@ -277,12 +341,12 @@ describe('Select / SelectMulti', () => {
       value: 'BAR',
     })
 
-    const check = queryByTitle('Check')
+    const check = screen.queryByTitle('Check')
     expect(check).not.toBeInTheDocument()
 
     indicator.mockClear()
 
-    const bar = getByText('BAR')
+    const bar = screen.getByText('BAR')
     fireEvent.keyDown(bar, {
       key: 'ArrowDown',
     })
@@ -471,7 +535,7 @@ describe('Select', () => {
       { label: 'Foo', value: 'FOO' },
       { label: 'Bar', value: 'BAR' },
     ]
-    const { getByPlaceholderText, queryByRole } = renderWithTheme(
+    renderWithTheme(
       <Select
         options={options}
         placeholder="Search"
@@ -480,11 +544,11 @@ describe('Select', () => {
       />
     )
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     // should not default to first option
     expect(input).toHaveValue('Bar')
     // verify that clear all icon button is not show (isClearable not set)
-    expect(queryByRole('button')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
   test('defaultValue', () => {
@@ -492,11 +556,11 @@ describe('Select', () => {
       { label: 'Foo', value: 'FOO' },
       { label: 'Bar', value: 'BAR' },
     ]
-    const { getByPlaceholderText } = renderWithTheme(
+    renderWithTheme(
       <Select options={options} placeholder="Search" defaultValue="BAR" />
     )
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     // should not default to first option
     expect(input).toHaveValue('Bar')
   })
@@ -507,7 +571,7 @@ describe('Select', () => {
       { label: 'Foo', value: 'FOO' },
       { label: 'Bar', value: 'BAR' },
     ]
-    const { getByPlaceholderText, getByRole } = renderWithTheme(
+    renderWithTheme(
       <Select
         options={options}
         placeholder="Search"
@@ -517,10 +581,10 @@ describe('Select', () => {
       />
     )
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     expect(input).toHaveValue('Bar')
 
-    const clearButton = getByRole('button')
+    const clearButton = screen.getByRole('button')
     fireEvent.click(clearButton)
 
     expect(input).toHaveValue('')
@@ -529,22 +593,20 @@ describe('Select', () => {
 
   test('placeholder, no defaultValue', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const { getByPlaceholderText } = renderWithTheme(
-      <Select options={options} placeholder="Search" />
-    )
+    renderWithTheme(<Select options={options} placeholder="Search" />)
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     // should not default to first option
     expect(input).toHaveValue('')
   })
 
   test('isClearable, no defaultValue', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const { getByTestId } = renderWithTheme(
+    renderWithTheme(
       <Select options={options} isClearable data-testid="wrapper" />
     )
 
-    const input = getByTestId('wrapper').querySelector('input')
+    const input = screen.getByTestId('wrapper').querySelector('input')
     // should not default to first option
     expect(input).not.toHaveValue()
   })
@@ -554,11 +616,9 @@ describe('Select', () => {
       { label: 'Foo', value: 'FOO' },
       { label: 'Bar', value: 'BAR' },
     ]
-    const { getByTestId } = renderWithTheme(
-      <Select options={options} data-testid="wrapper" />
-    )
+    renderWithTheme(<Select options={options} data-testid="wrapper" />)
 
-    const input = getByTestId('wrapper').querySelector('input')
+    const input = screen.getByTestId('wrapper').querySelector('input')
     // should default to first option
     expect(input).toHaveValue('Foo')
   })

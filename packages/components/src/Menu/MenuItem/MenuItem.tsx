@@ -271,9 +271,9 @@ interface MenuItemGridProps {
 }
 
 const MenuItemGrid = styled.div<MenuItemGridProps>`
-  display: grid;
-  grid-template-columns: ${({ children, iconSize }) =>
-    Children.toArray(children).length === 2 ? `${iconSize}px 1fr` : '1fr'};
-  grid-gap: 0.5rem;
   align-items: center;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: ${({ children, iconSize }) =>
+    Children.toArray(children).length === 2 ? `${iconSize}px` + ' 1fr' : '1fr'};
 `

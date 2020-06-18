@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import noop from 'lodash/noop'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, wait } from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
@@ -151,7 +151,7 @@ test('IconButton renders focus ring on tab input but not on click', () => {
   )
 })
 
-test('IconButton has built-in tooltip', () => {
+test('IconButton has built-in tooltip', async () => {
   const label = 'Mark as my Favorite'
   const { getByTitle, container } = renderWithTheme(
     <IconButton id="test-iconButton" label={label} icon="Favorite" />
@@ -160,11 +160,13 @@ test('IconButton has built-in tooltip', () => {
   const notTooltip = container.querySelector('p') // Get Tooltip content
   expect(notTooltip).toBeNull()
 
-  wait(() => {
-    fireEvent.mouseOver(getByTitle('Favorite'))
-    const tooltip = container.querySelector('p') // Get Tooltip content
-    expect(tooltip).toHaveTextContent(label)
-  })
+  const icon = getByTitle('Favorite')
+  fireEvent.mouseOver(icon)
+  const tooltip = container.querySelector('p') // Get Tooltip content
+  expect(tooltip).toHaveTextContent(label)
+
+  fireEvent.mouseOut(icon)
+  await waitForElementToBeRemoved(() => container.querySelector('p'))
 })
 
 test('IconButton tooltipDisabled actually disables tooltip', () => {
@@ -180,13 +182,11 @@ test('IconButton tooltipDisabled actually disables tooltip', () => {
 
   fireEvent.mouseOver(getByTitle('Favorite'))
 
-  wait(() => {
-    const notTooltip = container.querySelector('p') // Get Tooltip content
-    expect(notTooltip).toBeNull()
-  })
+  const notTooltip = container.querySelector('p') // Get Tooltip content
+  expect(notTooltip).toBeNull()
 })
 
-test('IconButton built-in tooltip defers to outer tooltip', () => {
+test('IconButton built-in tooltip defers to outer tooltip', async () => {
   const tooltip = 'Add to favorites'
   const label = 'Mark as my Favorite'
   const { container, getByText, getByTitle } = renderWithTheme(
@@ -195,15 +195,17 @@ test('IconButton built-in tooltip defers to outer tooltip', () => {
     </Tooltip>
   )
 
-  fireEvent.mouseOver(getByTitle('Favorite'))
+  const icon = getByTitle('Favorite')
+  fireEvent.mouseOver(icon)
 
-  wait(() => {
-    expect(getByText(tooltip)).toBeInTheDocument()
+  expect(getByText(tooltip)).toBeInTheDocument()
 
-    const iconLabel = getByText(label)
-    expect(iconLabel).toBeInTheDocument()
+  const iconLabel = getByText(label)
+  expect(iconLabel).toBeInTheDocument()
 
-    const tooltipContents = container.querySelectorAll('p') // Get all Tooltip contents
-    expect(tooltipContents.length).toEqual(1)
-  })
+  const tooltipContents = container.querySelectorAll('p') // Get all Tooltip contents
+  expect(tooltipContents.length).toEqual(1)
+
+  fireEvent.mouseOut(icon)
+  await waitForElementToBeRemoved(() => container.querySelector('p'))
 })

@@ -26,18 +26,10 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  mountWithTheme,
-  assertSnapshotShallow,
-} from '@looker/components-test-utils'
-
-import { Box } from '../Layout'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
-import { OverlaySurface } from '../Overlay/OverlaySurface'
-import { Popover } from '../Popover'
 import { Tooltip } from './Tooltip'
-import { TooltipContent } from './TooltipContent'
-import { mouseEventSimulator } from './tooltip.test.helpers'
 
 describe('Tooltip', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
@@ -52,157 +44,91 @@ describe('Tooltip', () => {
     rafSpy.mockRestore()
   })
 
-  test('snapshot', () => {
-    assertSnapshotShallow(
-      <Tooltip content="Hello world" isOpen>
-        <Button>Example</Button>
-      </Tooltip>
-    )
-  })
-
-  test('Tooltip can hide its arrow', () => {
-    assertSnapshotShallow(
-      <Tooltip content="Hello world" arrow={false} isOpen>
-        <Button>Example</Button>
-      </Tooltip>
-    )
-  })
-
   test('trigger: open on mouseover, close on mouseout', () => {
-    const tooltip = mountWithTheme(
-      <Tooltip content="Hello world">
+    renderWithTheme(
+      <Tooltip content="Hello world" id="stable-id">
         <Button>Test</Button>
       </Tooltip>
     )
 
-    const trigger = tooltip.find(Button)
+    const trigger = screen.getByText('Test')
 
-    trigger.simulate('mouseover', mouseEventSimulator)
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
+    fireEvent.mouseOver(trigger)
 
-    trigger.simulate('mouseout', mouseEventSimulator)
-    const postMouseoutSurface = tooltip.find(OverlaySurface)
-    expect(postMouseoutSurface.exists()).toBeFalsy()
+    const tooltip = screen.getByText('Hello world')
+    expect(tooltip.parentNode).toMatchSnapshot()
+
+    fireEvent.mouseOut(trigger)
+    expect(tooltip).not.toBeInTheDocument()
   })
 
   test('close on surface mouseout', () => {
-    const tooltip = mountWithTheme(
+    renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
       </Tooltip>
     )
 
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
-    surface.simulate('mouseout', mouseEventSimulator)
+    const trigger = screen.getByText('Test')
 
-    const postMouseoutSurface = tooltip.find(OverlaySurface)
-    expect(postMouseoutSurface.exists()).toBeFalsy()
-  })
+    fireEvent.mouseOver(trigger)
 
-  test('contains content', () => {
-    const tooltip = mountWithTheme(
-      <Tooltip content="Hello world">
-        <Button>Test</Button>
-      </Tooltip>
-    )
+    const tooltip = screen.getByText('Hello world')
+    expect(tooltip).toBeVisible()
 
-    const trigger = tooltip.find(Button)
-    trigger.simulate('mouseover', mouseEventSimulator)
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.text()).toEqual('Hello world')
+    fireEvent.mouseOut(tooltip)
+    expect(tooltip).not.toBeInTheDocument()
   })
 
   test('open initially, collapse on mouseout', () => {
-    const tooltip = mountWithTheme(
+    renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
       </Tooltip>
     )
 
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
+    const trigger = screen.getByText('Test')
+    const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).toBeVisible()
 
-    const trigger = tooltip.find(Button)
-    trigger.simulate('mouseout', mouseEventSimulator)
-
-    const postMouseoutSurface = tooltip.find(OverlaySurface)
-    expect(postMouseoutSurface.exists()).toBeFalsy()
+    fireEvent.mouseOut(trigger)
+    expect(tooltip).not.toBeInTheDocument()
   })
 
   test('supports styling props', () => {
-    const tooltip = mountWithTheme(
+    renderWithTheme(
       <Tooltip content="Hello world" width="20rem" textAlign="right">
         <Button>Test</Button>
       </Tooltip>
     )
 
-    const trigger = tooltip.find(Button)
+    const trigger = screen.getByText('Test')
 
-    trigger.simulate('mouseover', mouseEventSimulator)
+    fireEvent.mouseOver(trigger)
 
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
+    const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).toBeVisible()
 
-    const content = surface.find(TooltipContent)
-    expect(content.props().width).toEqual('20rem')
-    expect(content.props().textAlign).toEqual('right')
-  })
-
-  test('tooltip can exceed bounds of containing overlay', () => {
-    const tooltip = (
-      <Tooltip content="Great knowledge here!" isOpen>
-        <Box>I wish I knew more about this...</Box>
-      </Tooltip>
-    )
-
-    const popover = (
-      <Popover isOpen content={tooltip}>
-        {(onClick, ref) => (
-          <Button onClick={onClick} ref={ref}>
-            Test
-          </Button>
-        )}
-      </Popover>
-    )
-
-    assertSnapshotShallow(popover)
+    expect(tooltip).toHaveStyle('max-width: 20rem')
+    expect(tooltip).toHaveStyle('text-align: right')
+    fireEvent.mouseOut(trigger)
   })
 
   test('Render props version works', () => {
-    const tooltip = mountWithTheme(
+    renderWithTheme(
       <Tooltip content="Hello world">
         {(props) => <Button {...props}>Test</Button>}
       </Tooltip>
     )
 
-    const trigger = tooltip.find(Button)
+    const trigger = screen.getByText('Test')
 
-    trigger.simulate('mouseover', mouseEventSimulator)
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
+    fireEvent.mouseOver(trigger)
 
-    trigger.simulate('mouseout', mouseEventSimulator)
-    const postMouseoutSurface = tooltip.find(OverlaySurface)
-    expect(postMouseoutSurface.exists()).toBeFalsy()
-  })
+    const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).toBeVisible()
 
-  test('Render props version works', () => {
-    const tooltip = mountWithTheme(
-      <Tooltip content="Hello world">
-        {(props) => <Button {...props}>Test</Button>}
-      </Tooltip>
-    )
-
-    const trigger = tooltip.find(Button)
-
-    trigger.simulate('mouseover', mouseEventSimulator)
-    const surface = tooltip.find(OverlaySurface)
-    expect(surface.exists()).toBeTruthy()
-
-    trigger.simulate('mouseout', mouseEventSimulator)
-    const postMouseoutSurface = tooltip.find(OverlaySurface)
-    expect(postMouseoutSurface.exists()).toBeFalsy()
+    fireEvent.mouseOut(trigger)
+    expect(tooltip).not.toBeInTheDocument()
   })
 })

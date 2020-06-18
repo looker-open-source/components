@@ -174,7 +174,6 @@ describe('closeOnSelect', () => {
     expect(getByText('Foo')).toBeVisible()
     expect(getAllByText('Bar')).toHaveLength(2)
 
-    // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
@@ -196,6 +195,8 @@ describe('closeOnSelect', () => {
     expect(getByText('Bar')).toBeVisible()
     // list has closed
     expect(queryByText('Foo')).not.toBeInTheDocument()
+
+    fireEvent.click(document)
   })
 
   describe('removeOnBackspace', () => {
@@ -262,6 +263,8 @@ describe('closeOnSelect', () => {
 
       expect(onChangeMock).not.toHaveBeenCalled()
       expect(input).toHaveValue('baz,qux,')
+
+      fireEvent.click(document)
     })
 
     test('true', () => {
@@ -281,6 +284,8 @@ describe('closeOnSelect', () => {
 
       expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'baz', 'qux'])
       expect(input).toHaveValue('')
+
+      fireEvent.click(document)
     })
   })
 })

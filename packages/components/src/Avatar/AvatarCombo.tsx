@@ -72,15 +72,15 @@ const AvatarLayout: FC<AvatarComboProps> = ({
 }
 
 export const AvatarCombo = styled(AvatarLayout)`
-  position: relative;
   height: 40px;
+  position: relative;
   width: 40px;
 
   ${AvatarIconSecondary} {
     bottom: -4px;
-    right: -4px;
-    position: absolute;
     height: 20px;
+    position: absolute;
+    right: -4px;
     width: 20px;
 
     ${Icon} {

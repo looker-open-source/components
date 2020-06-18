@@ -38,7 +38,6 @@ import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
-import { Flex } from '../../../Layout/Flex'
 import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
 import { ColorWheel } from './ColorWheel'
 import { LuminositySlider } from './LuminositySlider'
@@ -52,8 +51,7 @@ import { isValidColor } from './utils/color_utils'
 
 const colorWheelSize = 164
 
-export interface InputColorProps
-  extends Omit<InputTextProps, 'height' | 'size'> {
+export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**
    * If true, hides input and only show color swatch.
    */
@@ -88,6 +86,7 @@ function getColorFromText(text?: string) {
 export const InputColorComponent = forwardRef(
   (
     {
+      className,
       hideInput,
       id,
       onChange,
@@ -174,15 +173,10 @@ export const InputColorComponent = forwardRef(
     const { open, popover, ref: triggerRef } = usePopover({ content })
 
     return (
-      <Flex>
+      <div className={className}>
         <Swatch
           ref={triggerRef}
           color={color ? hsv2hex(color) : undefined}
-          borderRadius={hideInput ? 'medium' : 'none'}
-          borderTopLeftRadius="medium"
-          borderBottomLeftRadius="medium"
-          border="1px solid"
-          borderRight={hideInput ? undefined : 'none'}
           disabled={props.disabled}
           onClick={open}
         />
@@ -193,9 +187,6 @@ export const InputColorComponent = forwardRef(
             aria-describedby={`${id}-describedby`}
             id={inputID}
             ref={ref}
-            borderRadius="none"
-            borderTopRightRadius="medium"
-            borderBottomRightRadius="medium"
             validationType={validationMessage && validationMessage.type}
             onChange={handleInputTextChange}
             value={inputTextValue}
@@ -203,11 +194,27 @@ export const InputColorComponent = forwardRef(
             onBlur={wrappedOnBlur}
           />
         )}
-      </Flex>
+      </div>
     )
   }
 )
 
 InputColorComponent.displayName = 'InputColorComponent'
 
-export const InputColor = styled(InputColorComponent)``
+export const InputColor = styled(InputColorComponent)`
+  display: flex;
+
+  ${Swatch} {
+    border-radius: ${({ hideInput, theme: { radii } }) =>
+      hideInput ? radii.medium : radii.none};
+    border-bottom-left-radius: ${({ theme: { radii } }) => radii.medium};
+    border-right: ${({ hideInput }) => (hideInput ? undefined : 'none')};
+    border-top-left-radius: ${({ theme: { radii } }) => radii.medium};
+  }
+
+  ${InputText} {
+    border-radius: ${({ theme: { radii } }) => radii.none};
+    border-bottom-right-radius: ${({ theme: { radii } }) => radii.medium};
+    border-top-right-radius: ${({ theme: { radii } }) => radii.medium};
+  }
+`

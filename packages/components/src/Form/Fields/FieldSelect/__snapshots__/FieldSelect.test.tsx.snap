@@ -10,22 +10,7 @@ exports[`A FieldSelect 1`] = `
   margin-bottom: 0;
 }
 
-.c5 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c12 {
+.c11 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -43,12 +28,12 @@ exports[`A FieldSelect 1`] = `
   flex-shrink: 0;
 }
 
-.c12 svg {
+.c11 svg {
   height: 100%;
   width: 100%;
 }
 
-.c8 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -65,63 +50,59 @@ exports[`A FieldSelect 1`] = `
   justify-content: space-evenly;
 }
 
-.c8 input {
-  border: none;
+.c7 input {
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
-.c8::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c8::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #939BA5;
 }
 
-.c8:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c8::placeholder {
+.c7::placeholder {
   color: #939BA5;
 }
 
-.c8:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus,
-.c8:focus-within {
+.c7:focus,
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c10 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
+.c9 {
   height: 36px;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
-}
-
-.c10:focus {
-  outline: none;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -131,31 +112,31 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
-.c0 .c13 {
+.c0 .c12 {
   grid-area: messages;
 }
 
@@ -165,69 +146,83 @@ exports[`A FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c14 {
+.c0 .c13 {
   margin-top: 0.5rem;
 }
 
-.c6 {
+.c5 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
-.c6:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c6:focus-within {
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c6 .c9 {
-  border: none;
+.c5 .c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
-.c6 .c9::-webkit-search-decoration,
-.c6 .c9::-webkit-search-cancel-button,
-.c6 .c9::-webkit-search-results-button,
-.c6 .c9::-webkit-search-results-decoration {
+.c5 .c8::-webkit-search-decoration,
+.c5 .c8::-webkit-search-cancel-button,
+.c5 .c8::-webkit-search-results-button,
+.c5 .c8::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
+.c5 .c8:focus {
+  outline: none;
+}
+
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
 
-.c7 .c9 {
+.c6 .c8 {
   cursor: default;
 }
 
@@ -260,19 +255,19 @@ exports[`A FieldSelect 1`] = `
     >
       <div
         aria-invalid={false}
-        className="c5 c6 c7"
-        fontSize="small"
+        className="c5 c6"
         onClick={[Function]}
         onMouseDown={[Function]}
         width="100%"
       >
         <div
-          className="c8 c9 c10"
+          className="c7 c8 c9"
           onClick={[Function]}
         >
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -285,10 +280,10 @@ exports[`A FieldSelect 1`] = `
           />
         </div>
         <div
-          className="c11"
+          className="c10"
         >
           <div
-            className="c12"
+            className="c11"
           >
             <svg
               fill="currentColor"
@@ -310,7 +305,7 @@ exports[`A FieldSelect 1`] = `
     </div>
   </div>
   <div
-    className="c13 "
+    className="c12 "
     id="thumbs-up-describedby"
   />
 </div>
@@ -326,22 +321,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   margin-bottom: 0;
 }
 
-.c5 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c14 {
+.c13 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -359,12 +339,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   flex-shrink: 0;
 }
 
-.c14 svg {
+.c13 svg {
   height: 100%;
   width: 100%;
 }
 
-.c12 {
+.c11 {
   width: 20px;
   height: 20px;
   margin-right: 0.25rem;
@@ -382,12 +362,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   flex-shrink: 0;
 }
 
-.c12 svg {
+.c11 svg {
   height: 100%;
   width: 100%;
 }
 
-.c8 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -404,63 +384,59 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   justify-content: space-evenly;
 }
 
-.c8 input {
-  border: none;
+.c7 input {
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
-.c8::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c8::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #939BA5;
 }
 
-.c8:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c8::placeholder {
+.c7::placeholder {
   color: #939BA5;
 }
 
-.c8:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus,
-.c8:focus-within {
+.c7:focus,
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c10 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
+.c9 {
   height: 36px;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
-}
-
-.c10:focus {
-  outline: none;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -469,37 +445,37 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-weight: 600;
 }
 
-.c17 {
+.c16 {
   font-size: 0.75rem;
   color: #CC1F36;
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: messages;
 }
 
@@ -509,109 +485,127 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c19 {
+.c0 .c18 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c16 {
+.c0 .c15 {
   margin-top: 0.5rem;
 }
 
-.c18 .c9 {
-  border: none;
+.c17 .c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
-.c18 .c9::-webkit-search-decoration,
-.c18 .c9::-webkit-search-cancel-button,
-.c18 .c9::-webkit-search-results-button,
-.c18 .c9::-webkit-search-results-decoration {
+.c17 .c8::-webkit-search-decoration,
+.c17 .c8::-webkit-search-cancel-button,
+.c17 .c8::-webkit-search-results-button,
+.c17 .c8::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c17 .c8:focus {
+  outline: none;
+}
+
+.c5 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
   border-color: #ED3B53;
 }
 
-.c6:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c6:focus-within {
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c6:hover {
+.c5:hover {
   border-color: #CC1F36;
 }
 
-.c6:focus,
-.c6:focus-within {
+.c5:focus,
+.c5:focus-within {
   border-color: #CC1F36;
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c6 .c9 {
-  border: none;
+.c5 .c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
-.c6 .c9::-webkit-search-decoration,
-.c6 .c9::-webkit-search-cancel-button,
-.c6 .c9::-webkit-search-results-button,
-.c6 .c9::-webkit-search-results-decoration {
+.c5 .c8::-webkit-search-decoration,
+.c5 .c8::-webkit-search-cancel-button,
+.c5 .c8::-webkit-search-results-button,
+.c5 .c8::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
+.c5 .c8:focus {
+  outline: none;
+}
+
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
 
-.c13 {
+.c12 {
   background: #DEE1E5;
   height: 70%;
   width: 1px;
 }
 
-.c7 .c9 {
+.c6 .c8 {
   cursor: default;
 }
 
@@ -644,19 +638,19 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     >
       <div
         aria-invalid={true}
-        className="c5 c6 c7"
-        fontSize="small"
+        className="c5 c6"
         onClick={[Function]}
         onMouseDown={[Function]}
         width="100%"
       >
         <div
-          className="c8 c9 c10"
+          className="c7 c8 c9"
           onClick={[Function]}
         >
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -669,10 +663,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           />
         </div>
         <div
-          className="c11"
+          className="c10"
         >
           <div
-            className="c12"
+            className="c11"
           >
             <svg
               fill="currentColor"
@@ -690,10 +684,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
             </svg>
           </div>
           <div
-            className="c13"
+            className="c12"
           />
           <div
-            className="c14"
+            className="c13"
           >
             <svg
               fill="currentColor"
@@ -715,11 +709,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     </div>
   </div>
   <div
-    className="c15 "
+    className="c14 "
     id="thumbs-up-describedby"
   >
     <div
-      className="c16 c17"
+      className="c15 c16"
     >
       This is an error
     </div>
@@ -737,22 +731,7 @@ exports[`A required FieldSelect 1`] = `
   margin-bottom: 0;
 }
 
-.c7 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c14 {
+.c13 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -770,12 +749,12 @@ exports[`A required FieldSelect 1`] = `
   flex-shrink: 0;
 }
 
-.c14 svg {
+.c13 svg {
   height: 100%;
   width: 100%;
 }
 
-.c10 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -792,63 +771,59 @@ exports[`A required FieldSelect 1`] = `
   justify-content: space-evenly;
 }
 
-.c10 input {
-  border: none;
+.c9 input {
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
-.c10::-webkit-input-placeholder {
+.c9::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c10::-moz-placeholder {
+.c9::-moz-placeholder {
   color: #939BA5;
 }
 
-.c10:-ms-input-placeholder {
+.c9:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c10::placeholder {
+.c9::placeholder {
   color: #939BA5;
 }
 
-.c10:hover {
+.c9:hover {
   border-color: #C1C6CC;
 }
 
-.c10:focus,
-.c10:focus-within {
+.c9:focus,
+.c9:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c12 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
+.c11 {
   height: 36px;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
-}
-
-.c12:focus {
-  outline: none;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -858,45 +833,45 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c4 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c3::before {
-  content: ' *';
   color: #CC1F36;
+  content: ' *';
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c5 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: messages;
 }
 
@@ -906,69 +881,83 @@ exports[`A required FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c17 {
+.c0 .c16 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c16 {
+.c0 .c15 {
   margin-top: 0.5rem;
 }
 
-.c8 {
+.c7 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
-.c8:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus-within {
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c8 .c11 {
-  border: none;
+.c7 .c10 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
-.c8 .c11::-webkit-search-decoration,
-.c8 .c11::-webkit-search-cancel-button,
-.c8 .c11::-webkit-search-results-button,
-.c8 .c11::-webkit-search-results-decoration {
+.c7 .c10::-webkit-search-decoration,
+.c7 .c10::-webkit-search-cancel-button,
+.c7 .c10::-webkit-search-results-button,
+.c7 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c13 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
+.c7 .c10:focus {
+  outline: none;
+}
+
+.c12 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
 
-.c9 .c11 {
+.c8 .c10 {
   cursor: default;
 }
 
@@ -1012,19 +1001,19 @@ exports[`A required FieldSelect 1`] = `
     >
       <div
         aria-invalid={false}
-        className="c7 c8 c9"
-        fontSize="small"
+        className="c7 c8"
         onClick={[Function]}
         onMouseDown={[Function]}
         width="100%"
       >
         <div
-          className="c10 c11 c12"
+          className="c9 c10 c11"
           onClick={[Function]}
         >
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1037,10 +1026,10 @@ exports[`A required FieldSelect 1`] = `
           />
         </div>
         <div
-          className="c13"
+          className="c12"
         >
           <div
-            className="c14"
+            className="c13"
           >
             <svg
               fill="currentColor"
@@ -1062,7 +1051,7 @@ exports[`A required FieldSelect 1`] = `
     </div>
   </div>
   <div
-    className="c15 "
+    className="c14 "
     id="thumbs-up-describedby"
   />
 </div>
@@ -1078,22 +1067,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   margin-bottom: 0;
 }
 
-.c5 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c12 {
+.c11 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -1111,12 +1085,12 @@ exports[`FieldSelect supports labelWeight 1`] = `
   flex-shrink: 0;
 }
 
-.c12 svg {
+.c11 svg {
   height: 100%;
   width: 100%;
 }
 
-.c8 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1133,63 +1107,59 @@ exports[`FieldSelect supports labelWeight 1`] = `
   justify-content: space-evenly;
 }
 
-.c8 input {
-  border: none;
+.c7 input {
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
-.c8::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c8::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #939BA5;
 }
 
-.c8:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c8::placeholder {
+.c7::placeholder {
   color: #939BA5;
 }
 
-.c8:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus,
-.c8:focus-within {
+.c7:focus,
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c10 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
+.c9 {
   height: 36px;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
-}
-
-.c10:focus {
-  outline: none;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -1199,31 +1169,31 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c0 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c0 .c3 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
-.c0 .c13 {
+.c0 .c12 {
   grid-area: messages;
 }
 
@@ -1233,69 +1203,83 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c14 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c14 {
+.c0 .c13 {
   margin-top: 0.5rem;
 }
 
-.c6 {
+.c5 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
-.c6:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c6:focus-within {
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c6 .c9 {
-  border: none;
+.c5 .c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  border: none;
   box-shadow: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
   height: calc(36px - 6px);
+  width: 100%;
 }
 
-.c6 .c9::-webkit-search-decoration,
-.c6 .c9::-webkit-search-cancel-button,
-.c6 .c9::-webkit-search-results-button,
-.c6 .c9::-webkit-search-results-decoration {
+.c5 .c8::-webkit-search-decoration,
+.c5 .c8::-webkit-search-cancel-button,
+.c5 .c8::-webkit-search-results-button,
+.c5 .c8::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c11 {
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: 0.25rem;
+.c5 .c8:focus {
+  outline: none;
+}
+
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
   justify-items: center;
   max-height: 1.9rem;
 }
 
-.c7 .c9 {
+.c6 .c8 {
   cursor: default;
 }
 
@@ -1328,19 +1312,19 @@ exports[`FieldSelect supports labelWeight 1`] = `
     >
       <div
         aria-invalid={false}
-        className="c5 c6 c7"
-        fontSize="small"
+        className="c5 c6"
         onClick={[Function]}
         onMouseDown={[Function]}
         width="100%"
       >
         <div
-          className="c8 c9 c10"
+          className="c7 c8 c9"
           onClick={[Function]}
         >
           <input
             aria-autocomplete="both"
             aria-describedby="thumbs-up-describedby"
+            aria-labelledby="thumbs-up-labelledby"
             autoComplete="off"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -1353,10 +1337,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
           />
         </div>
         <div
-          className="c11"
+          className="c10"
         >
           <div
-            className="c12"
+            className="c11"
           >
             <svg
               fill="currentColor"
@@ -1378,7 +1362,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
     </div>
   </div>
   <div
-    className="c13 "
+    className="c12 "
     id="thumbs-up-describedby"
   />
 </div>

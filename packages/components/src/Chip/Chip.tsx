@@ -87,8 +87,7 @@ const ChipStyle = styled.span<ChipProps>`
   }
 
   ${({ focusVisible, theme: { colors } }) =>
-    focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(colors.keyFocus, 0.25)};`};
+    focusVisible && `box-shadow: 0 0 0 0.15rem ${rgba(colors.keyFocus, 0.25)};`}
 
   ${({ disabled, theme: { colors } }) =>
     disabled &&

@@ -35,11 +35,11 @@ export interface CardMediaProps
 }
 
 export const CardMedia = styled.div<CardMediaProps>`
-  background-size: cover;
+  background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   ${backgroundPosition}
-  background-image: url(${(props) => props.image});
-  overflow: hidden;
+  background-size: cover;
   height: 0;
+  overflow: hidden;
   padding-top: 56%;
 `
