@@ -161,35 +161,6 @@ describe('Box', () => {
     })
   })
 
-  describe('hover, focus, active', () => {
-    test('Box has hover style', () => {
-      const tree = createWithTheme(
-        <Box hoverStyle={{ backgroundColor: 'red' }} />
-      ).toJSON()
-      expect(tree).toHaveStyleRule('background-color', 'red', {
-        modifier: ':hover',
-      })
-    })
-
-    test('Box has focus style', () => {
-      const tree = createWithTheme(
-        <Box focusStyle={{ backgroundColor: 'red' }} />
-      ).toJSON()
-      expect(tree).toHaveStyleRule('background-color', 'red', {
-        modifier: ':focus',
-      })
-    })
-
-    test('Box has active style', () => {
-      const tree = createWithTheme(
-        <Box activeStyle={{ backgroundColor: 'red' }} />
-      ).toJSON()
-      expect(tree).toHaveStyleRule('background-color', 'red', {
-        modifier: ':active',
-      })
-    })
-  })
-
   describe('user select', () => {
     test('Box cannot be selected', () => {
       const tree = createWithTheme(<Box userSelect="none" />).toJSON()

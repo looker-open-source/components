@@ -40,19 +40,11 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
-import {
-  border,
-  SpaceProps,
-  color,
-  space,
-  BorderProps,
-  ColorProps,
-} from '@looker/design-tokens'
 import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 
 import {
-  inputTextDefaults,
+  inputCSS,
   inputTextDisabled,
   inputTextHover,
   inputTextFocus,
@@ -436,23 +428,20 @@ const InputDateRangeWrapper = styled.div`
   width: 100%;
 `
 
-const MultiCalendarLayout = styled.div<SpaceProps>`
-  ${space}
+const MultiCalendarLayout = styled.div`
   display: inline-grid;
   grid-column-gap: ${({ theme }) => theme.space.large};
   grid-template-columns: 1fr 1fr;
 `
 
-interface InputTextGroupWrapperProps extends BorderProps, ColorProps {
+interface InputTextGroupWrapperProps {
   active: boolean
   disabled?: boolean
   validationType?: 'error'
 }
 
 const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
-  ${border}
-  ${color}
-
+  ${inputCSS}
   align-items: center;
   display: inline-grid;
   grid-gap: ${({ theme }) => theme.space.xsmall};
@@ -491,10 +480,6 @@ const InputTextWrapper = styled.div<{ inputLength: number }>`
     }
   }
 `
-
-InputTextGroupWrapper.defaultProps = {
-  ...inputTextDefaults,
-}
 
 const CalendarWrapper = styled.div`
   ${Calendar} {

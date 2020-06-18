@@ -42,13 +42,14 @@ A name and ID can be specified in the `<InputText />` component. Names are impor
 <InputText name="someName" id="someId" />
 ```
 
-### #Disabled Property
+### Disabled
 
-Use the disable property to make an input field uneditable.
+Use the disable property to make an input field un-editable.
 
 ```jsx
 <InputText disabled />
 <InputText value="Hello!" disabled />
+<InputText placeholder="Placeholder example" disabled />
 ```
 
 ### Placeholders
@@ -61,7 +62,7 @@ Placeholders are used to give a hint to the user of the expected value for the i
 
 ### ReadOnly Property
 
-As the name suggests, `readOnly` makes the text uneditable.
+As the name suggests, `readOnly` makes the text un-editable.
 
 ```jsx
 <InputText value="You can't change me." readOnly />

@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import omit from 'lodash/omit'
 import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
@@ -181,7 +182,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
     const commonProps: InputChipsBaseProps = {
-      ...rest,
+      ...omit(rest, 'selectOnClick'),
       ...inputEvents,
       'aria-activedescendant': navigationOption
         ? String(makeHash(navigationOption ? navigationOption.value : ''))

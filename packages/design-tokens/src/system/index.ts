@@ -74,4 +74,3 @@ export * from './typography'
 
 // Custom Extensions
 export * from './reset'
-export * from './pseudo'

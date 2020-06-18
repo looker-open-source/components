@@ -1,211 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputSearch default 1`] = `
-.c0 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 36px;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-}
-
-.c3 input {
-  background: transparent;
-  border: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  height: 100%;
-  max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
-}
-
-.c3::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c3::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c3:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c3::placeholder {
-  color: #939BA5;
-}
-
-.c3:hover {
-  border-color: #C1C6CC;
-}
-
-.c3:focus,
-.c3:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  height: 36px;
-  width: 100%;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c5:focus {
-  outline: none;
-}
-
-.c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-}
-
-.c1:hover {
-  border-color: #C1C6CC;
-}
-
-.c1:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c1 .c4 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  height: calc(36px - 6px);
-  width: 100%;
-}
-
-.c1 .c4::-webkit-search-decoration,
-.c1 .c4::-webkit-search-cancel-button,
-.c1 .c4::-webkit-search-results-button,
-.c1 .c4::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c2 {
-  width: 30px;
-  height: 30px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #939BA5;
-  padding-left: 0.75rem;
-}
-
-.c2 svg {
-  height: 100%;
-  width: 100%;
-}
-
-<div
-  className="c0 c1"
-  fontSize="small"
-  onMouseDown={[Function]}
-  width="100%"
->
-  <div
-    className="c2"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <title>
-        Search
-      </title>
-      <path
-        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-  <div
-    className="c3 c4 c5"
-    onClick={[Function]}
-  >
-    <input
-      onChange={[Function]}
-      type="text"
-      value=""
-    />
-  </div>
-</div>
-`;
-
-exports[`InputSearch hideSearchIcon removes the icon 1`] = `
-.c0 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -265,42 +60,48 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
 }
 
 .c4 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
-.c4:focus {
-  outline: none;
-}
-
-.c1 {
+.c0 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
 }
 
-.c1:hover {
+.c0:hover {
   border-color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c1 .c3 {
+.c0 .c3 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -314,23 +115,208 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   width: 100%;
 }
 
-.c1 .c3::-webkit-search-decoration,
-.c1 .c3::-webkit-search-cancel-button,
-.c1 .c3::-webkit-search-results-button,
-.c1 .c3::-webkit-search-results-decoration {
+.c0 .c3::-webkit-search-decoration,
+.c0 .c3::-webkit-search-cancel-button,
+.c0 .c3::-webkit-search-results-button,
+.c0 .c3::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+.c0 .c3:focus {
+  outline: none;
+}
+
+.c1 {
+  width: 30px;
+  height: 30px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #939BA5;
+  padding-left: 0.75rem;
+}
+
+.c1 svg {
+  height: 100%;
+  width: 100%;
+}
+
 <div
-  className="c0 c1"
-  fontSize="small"
+  className="c0"
   onMouseDown={[Function]}
-  width="100%"
 >
   <div
+    className="c1"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Search
+      </title>
+      <path
+        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
     className="c2 c3 c4"
+    onClick={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`InputSearch hideSearchIcon removes the icon 1`] = `
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 36px;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c1 input {
+  background: transparent;
+  border: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  height: 100%;
+  max-width: 100%;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c1:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::placeholder {
+  color: #939BA5;
+}
+
+.c1:hover {
+  border-color: #C1C6CC;
+}
+
+.c1:focus,
+.c1:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3 {
+  height: 36px;
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 {
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  width: 100%;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 .c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 6px);
+  width: 100%;
+}
+
+.c0 .c2::-webkit-search-decoration,
+.c0 .c2::-webkit-search-cancel-button,
+.c0 .c2::-webkit-search-results-button,
+.c0 .c2::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 .c2:focus {
+  outline: none;
+}
+
+<div
+  className="c0"
+  onMouseDown={[Function]}
+>
+  <div
+    className="c1 c2 c3"
     onClick={[Function]}
   >
     <input

@@ -27,33 +27,26 @@
 import pick from 'lodash/pick'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import {
-  BorderProps,
-  LayoutProps,
-  SpaceProps,
-  TypographyProps,
-  CompatibleHTMLProps,
-  layout,
-  space,
-  typography,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
+  inputCSS,
 } from '../InputText'
 import { Icon } from '../../../Icon'
+import {
+  simpleLayoutCSS,
+  SimpleLayoutProps,
+} from '../../../Layout/utils/simple'
 import { inputPropKeys } from '../InputProps'
 
 type TextAreaResize = 'vertical' | 'none' | boolean
 
 export interface TextAreaProps
-  extends BorderProps,
-    Omit<LayoutProps, 'size'>,
-    SpaceProps,
-    TypographyProps,
+  extends Omit<SimpleLayoutProps, 'size'>,
     CompatibleHTMLProps<HTMLTextAreaElement> {
   /**
    * @default: vertical
@@ -95,14 +88,8 @@ export const TextArea = styled(TextAreaLayout)`
   }
 
   textarea {
-    ${layout}
-    ${space}
-    ${typography}
-
-    border: solid 1px;
-    border-color: ${(props) => props.theme.colors.ui2};
-    border-radius: ${(props) => props.theme.radii.medium};
-    font-size: ${(props) => props.theme.fontSizes.small};
+    ${simpleLayoutCSS}
+    ${inputCSS}
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
     resize: ${(props) => TextAreaResize(props.resize)};
@@ -111,6 +98,7 @@ export const TextArea = styled(TextAreaLayout)`
     &:hover {
       ${inputTextHover}
     }
+
     &:focus,
     :focus-within {
       ${inputTextFocus}
@@ -125,7 +113,6 @@ export const TextArea = styled(TextAreaLayout)`
 TextArea.defaultProps = {
   minHeight: '6.25rem',
   resize: 'vertical',
-  width: '100%',
 }
 
 TextArea.displayName = 'TextArea'
