@@ -13,11 +13,11 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #FFFFFF;
   color: #262D33;
 }
 
 .c1 {
+  background: #FFFFFF;
   box-shadow: none;
   margin-bottom: 0.25rem;
   position: -webkit-sticky;
@@ -25,49 +25,16 @@ exports[`MenuGroup - JSX label 1`] = `
   top: -1px;
 }
 
-.c5 {
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: inherit;
-  outline: none;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5:hover,
-.c5:focus {
-  color: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0 {
+  padding: 0.75rem 0;
 }
 
 .c4 {
-  background-color: #FFFFFF;
-  color: #4C535B;
-  font-size: 0.875rem;
-  font-weight: 400;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -75,6 +42,8 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  font-size: 0.875rem;
+  font-weight: 400;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -84,47 +53,55 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c4 button,
 .c4 a {
-  border-left-color: transparent;
-  border-left-style: solid;
-  border-left-width: 4px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
   outline: none;
-  padding-left: calc(1rem - 4px);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 button:hover,
+.c4 a:hover,
+.c4 button:focus,
+.c4 a:focus {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c4:hover {
   background: #F5F6F7;
   color: #262D33;
-  font-size: #262D33;
-  font-weight: #262D33;
 }
 
-.c4:hover .c7 {
+.c4:hover .c5 {
   color: #C1C6CC;
 }
 
-.c4 .c7 {
+.c4 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr;
-}
-
-.c0 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 <li
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1"
@@ -153,66 +130,42 @@ exports[`MenuGroup - JSX label 1`] = `
     type="none"
   >
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          what?
-        </div>
+        what?
       </button>
     </li>
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          who?
-        </div>
+        who?
       </button>
     </li>
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          where?
-        </div>
+        where?
       </button>
     </li>
   </ul>
@@ -232,11 +185,11 @@ exports[`MenuGroup - label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #FFFFFF;
   color: #262D33;
 }
 
 .c1 {
+  background: #FFFFFF;
   box-shadow: none;
   margin-bottom: 0.25rem;
   position: -webkit-sticky;
@@ -244,49 +197,16 @@ exports[`MenuGroup - label 1`] = `
   top: -1px;
 }
 
-.c5 {
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: inherit;
-  outline: none;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5:hover,
-.c5:focus {
-  color: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0 {
+  padding: 0.75rem 0;
 }
 
 .c4 {
-  background-color: #FFFFFF;
-  color: #4C535B;
-  font-size: 0.875rem;
-  font-weight: 400;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -294,6 +214,8 @@ exports[`MenuGroup - label 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  font-size: 0.875rem;
+  font-weight: 400;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -303,47 +225,55 @@ exports[`MenuGroup - label 1`] = `
 
 .c4 button,
 .c4 a {
-  border-left-color: transparent;
-  border-left-style: solid;
-  border-left-width: 4px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
   outline: none;
-  padding-left: calc(1rem - 4px);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 button:hover,
+.c4 a:hover,
+.c4 button:focus,
+.c4 a:focus {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c4:hover {
   background: #F5F6F7;
   color: #262D33;
-  font-size: #262D33;
-  font-weight: #262D33;
 }
 
-.c4:hover .c7 {
+.c4:hover .c5 {
   color: #C1C6CC;
 }
 
-.c4 .c7 {
+.c4 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr;
-}
-
-.c0 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 <li
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1"
@@ -368,286 +298,42 @@ exports[`MenuGroup - label 1`] = `
     type="none"
   >
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          what?
-        </div>
+        what?
       </button>
     </li>
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          who?
-        </div>
+        who?
       </button>
     </li>
     <li
-      bg="#FFFFFF"
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c5"
         role="menuitem"
       >
-        <div
-          className="c6"
-        >
-          where?
-        </div>
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - labelProps & labelStyles 1`] = `
-.c3 {
-  list-style-type: none;
-}
-
-.c2 {
-  font-size: 1.5625rem;
-  font-weight: 600;
-  line-height: 2.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background-color: #FFFFFF;
-  color: #262D33;
-}
-
-.c1 {
-  box-shadow: none;
-  margin-bottom: 0.25rem;
-  position: -webkit-sticky;
-  position: sticky;
-  top: -1px;
-}
-
-.c5 {
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: inherit;
-  outline: none;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5:hover,
-.c5:focus {
-  color: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4 {
-  background-color: #FFFFFF;
-  color: #4C535B;
-  font-size: 0.875rem;
-  font-weight: 400;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c4 button,
-.c4 a {
-  border-left-color: transparent;
-  border-left-style: solid;
-  border-left-width: 4px;
-  outline: none;
-  padding-left: calc(1rem - 4px);
-}
-
-.c4:hover {
-  background: #F5F6F7;
-  color: #262D33;
-  font-size: #262D33;
-  font-weight: #262D33;
-}
-
-.c4:hover .c7 {
-  color: #C1C6CC;
-}
-
-.c4 .c7 {
-  color: #C1C6CC;
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr;
-}
-
-.c0 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-<li
-  className="c0 "
->
-  <div
-    className="c1"
-  >
-    <div
-      style={
-        Object {
-          "height": "0",
-        }
-      }
-    />
-    <h2
-      className="c2"
-      fontSize="xxlarge"
-      fontWeight="semiBold"
-      style={
-        Object {
-          "color": "rebeccapurple",
-        }
-      }
-    >
-      Questions
-    </h2>
-  </div>
-  <ul
-    className="c3"
-    type="none"
-  >
-    <li
-      bg="#FFFFFF"
-      className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        className="c5"
-        role="menuitem"
-      >
-        <div
-          className="c6"
-        >
-          what?
-        </div>
-      </button>
-    </li>
-    <li
-      bg="#FFFFFF"
-      className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        className="c5"
-        role="menuitem"
-      >
-        <div
-          className="c6"
-        >
-          who?
-        </div>
-      </button>
-    </li>
-    <li
-      bg="#FFFFFF"
-      className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        className="c5"
-        role="menuitem"
-      >
-        <div
-          className="c6"
-        >
-          where?
-        </div>
+        where?
       </button>
     </li>
   </ul>
@@ -659,49 +345,16 @@ exports[`MenuGroup 1`] = `
   list-style-type: none;
 }
 
-.c3 {
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: inherit;
-  outline: none;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:hover,
-.c3:focus {
-  color: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0 {
+  padding: 0.75rem 0;
 }
 
 .c2 {
-  background-color: #FFFFFF;
-  color: #4C535B;
-  font-size: 0.875rem;
-  font-weight: 400;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -709,6 +362,8 @@ exports[`MenuGroup 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  font-size: 0.875rem;
+  font-weight: 400;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -718,71 +373,71 @@ exports[`MenuGroup 1`] = `
 
 .c2 button,
 .c2 a {
-  border-left-color: transparent;
-  border-left-style: solid;
-  border-left-width: 4px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
   outline: none;
-  padding-left: calc(1rem - 4px);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 button:hover,
+.c2 a:hover,
+.c2 button:focus,
+.c2 a:focus {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c2:hover {
   background: #F5F6F7;
   color: #262D33;
-  font-size: #262D33;
-  font-weight: #262D33;
 }
 
-.c2:hover .c5 {
+.c2:hover .c3 {
   color: #C1C6CC;
 }
 
-.c2 .c5 {
+.c2 .c3 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr;
-}
-
-.c0 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 <li
-  className="c0 "
+  className="c0"
 >
   <ul
     className="c1"
     type="none"
   >
     <li
-      bg="#FFFFFF"
       className="c2"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
+      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
     >
       <button
-        className="c3"
         role="menuitem"
       >
-        <div
-          className="c4"
-        >
-          who!
-        </div>
+        who!
       </button>
     </li>
   </ul>
