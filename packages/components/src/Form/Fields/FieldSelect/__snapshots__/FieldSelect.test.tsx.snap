@@ -228,9 +228,6 @@ exports[`A FieldSelect 1`] = `
 >
   <label
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
     htmlFor="thumbs-up"
     id="thumbs-up-labelledby"
   >
@@ -605,9 +602,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 >
   <label
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
     htmlFor="thumbs-up"
     id="thumbs-up-labelledby"
   >
@@ -954,9 +948,6 @@ exports[`A required FieldSelect 1`] = `
 >
   <label
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
     htmlFor="thumbs-up"
     id="thumbs-up-labelledby"
   >
@@ -1273,9 +1264,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
 >
   <label
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
     htmlFor="thumbs-up"
     id="thumbs-up-labelledby"
   >

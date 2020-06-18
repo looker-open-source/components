@@ -112,9 +112,6 @@ exports[`A FieldToggleSwitch 1`] = `
 >
   <span
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
   >
     👍
   </span>
@@ -261,9 +258,6 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 >
   <span
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
   >
     👍
   </span>
