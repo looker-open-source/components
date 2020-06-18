@@ -413,8 +413,6 @@ exports[`MessageBar can be dismissed 1`] = `
   padding: 0;
 }
 
-<<<<<<< HEAD
-=======
 .c6:hover,
 .c6:focus,
 .c6.hover {
@@ -426,12 +424,6 @@ exports[`MessageBar can be dismissed 1`] = `
   color: #4C535B;
 }
 
-.c6:hover {
-  background: none;
-  border: none;
-}
-
->>>>>>> IconButton improved hover/active states and no background on hover
 .c6 svg {
   pointer-events: none;
 }
@@ -516,6 +508,7 @@ exports[`MessageBar can be dismissed 1`] = `
     aria-describedby="test-message-bar-iconButton-tooltip"
     aria-hidden={true}
     className="c4 c5 c6"
+    color="neutral"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyUp={[Function]}
