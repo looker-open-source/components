@@ -50,7 +50,7 @@ import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { buttonSizeMap } from './size'
 
-const iconButtonDefaultColor = 'default'
+const iconButtonDefaultColor = 'neutral'
 
 interface IconButtonVariantProps {
   /**
