@@ -124,14 +124,14 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Clicks on detail do not open the Tree or trigger callbacks when detailStopPropagation is true', () => {
+  test('Clicks on detail do not open the Tree or trigger callbacks when detailAccessory is true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     const { getByText, queryByText } = renderWithTheme(
       <Tree
         label="Tree Label"
         detail="Tree Detail"
-        detailStopPropagation
+        detailAccessory
         onClose={onClose}
         onOpen={onOpen}
       >

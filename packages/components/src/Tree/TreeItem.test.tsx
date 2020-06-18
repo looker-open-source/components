@@ -48,10 +48,10 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(2)
   })
 
-  test('Does not trigger onClick on detail click when detailStopPropagation is true', () => {
+  test('Does not trigger onClick on detail click when detailAccessory is true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
-      <TreeItem detail="Detail" detailStopPropagation onClick={onClick}>
+      <TreeItem detail="Detail" detailAccessory onClick={onClick}>
         Dimension
       </TreeItem>
     )
