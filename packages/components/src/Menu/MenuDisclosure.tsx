@@ -139,8 +139,8 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 
   return (
     <>
-      {renderedTooltip}
       {cloned}
+      {renderedTooltip}
     </>
   )
 }

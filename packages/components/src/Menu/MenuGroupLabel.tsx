@@ -24,26 +24,12 @@
 
  */
 
-import React, { FC, useRef, RefObject, CSSProperties, ReactNode } from 'react'
+import React, { FC, useRef, RefObject } from 'react'
 import styled from 'styled-components'
-import { color, BackgroundColorProps, BorderRadiusProps } from 'styled-system'
-import { Heading, HeadingProps } from '../Text/Heading'
+import { Heading } from '../Text/Heading'
 import { useElementVisibility } from './MenuGroup.hooks'
 
-interface MenuGroupLabelProps
-  extends BackgroundColorProps,
-    HeadingProps,
-    BorderRadiusProps {
-  labelContent: ReactNode
-  labelStyles?: CSSProperties
-}
-
-export const MenuGroupLabel: FC<MenuGroupLabelProps> = ({
-  labelContent,
-  labelStyles,
-  fontSize,
-  ...props
-}) => {
+export const MenuGroupLabel: FC = ({ children }) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
@@ -57,15 +43,13 @@ export const MenuGroupLabel: FC<MenuGroupLabelProps> = ({
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
-        fontSize={fontSize || 'small'}
+        fontSize="small"
         as="h2"
         px="medium"
         py="xsmall"
         fontWeight="semiBold"
-        style={labelStyles}
-        {...props}
       >
-        {labelContent}
+        {children}
       </Heading>
     </MenuGroupLabelWrapper>
   )
@@ -76,14 +60,10 @@ interface MenuGroupLabelWrapperProps {
 }
 
 const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
-  ${color}
-  box-shadow: ${({ renderBoxShadow, theme }) =>
-    renderBoxShadow ? `0 4px 8px -2px ${theme.colors.ui2}` : 'none'};
+  background: ${({ theme: { colors } }) => colors.background};
+  box-shadow: ${({ renderBoxShadow, theme: { colors } }) =>
+    renderBoxShadow ? `0 4px 8px -2px ${colors.ui2}` : 'none'};
   margin-bottom: ${({ theme }) => theme.space.xxsmall};
   position: sticky;
   top: -1px;
 `
-
-MenuGroupLabel.defaultProps = {
-  backgroundColor: 'background',
-}

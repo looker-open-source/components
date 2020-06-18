@@ -48,9 +48,8 @@ import {
   omitStyledProps,
 } from '@looker/design-tokens'
 import { usePopover } from '../Popover'
-import { MenuContext, MenuItemStyleContext } from './MenuContext'
+import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
-import { MenuSharedProps } from './MenuItem'
 import { moveFocus } from './moveFocus'
 
 export interface MenuListProps
@@ -60,8 +59,7 @@ export interface MenuListProps
     HeightProps,
     MaxWidthProps,
     MinWidthProps,
-    WidthProps,
-    MenuSharedProps {
+    WidthProps {
   compact?: boolean
   groupDividers?: boolean
 
@@ -88,15 +86,7 @@ export interface MenuListProps
 
 export const MenuListInternal = forwardRef(
   (
-    {
-      children,
-      compact,
-      customizationProps,
-      disabled,
-      pin,
-      placement,
-      ...props
-    }: MenuListProps,
+    { children, compact, disabled, pin, placement, ...props }: MenuListProps,
     ref: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
@@ -107,13 +97,12 @@ export const MenuListInternal = forwardRef(
 
     const context = {
       compact,
-      customizationProps,
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }
 
     const menuList = (
-      <MenuItemStyleContext.Provider value={context}>
+      <MenuItemContext.Provider value={context}>
         <HotKeys
           innerRef={innerRef}
           keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
@@ -134,7 +123,7 @@ export const MenuListInternal = forwardRef(
             {children}
           </ul>
         </HotKeys>
-      </MenuItemStyleContext.Provider>
+      </MenuItemContext.Provider>
     )
 
     const isMenu = isOpen !== undefined

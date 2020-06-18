@@ -16,7 +16,7 @@ The entire menu can be disabled via the `disabled` prop.
 - `disabled`
 - `onClick` – toggles the menu
 - `onFocus` - and `onMouseOver` - show the tooltip
-- `onBlur` - and `onMouseOut` - hides the toolitp
+- `onBlur` - and `onMouseOut` - hides the tooltip
 - `ref` - tooltip and popover placement
 
 ```jsx
@@ -62,7 +62,7 @@ The `escapeWithReference` and `pin` props allow you to enforce the placement to 
 
 ## Controlled Menu
 
-Control the state of the menu with React's `useState` hook.
+Control the state of the menu with the React `useState` hook.
 
 ```jsx
 ;() => {
@@ -121,7 +121,7 @@ When a `MenuList` is focused the `up` and `down` arrow keys will move focus thro
 ```jsx
 <MenuList>
   <MenuItem onClick={() => alert('Hello world!')}>Gouda</MenuItem>
-  <MenuItem>Cheedar</MenuItem>
+  <MenuItem>Cheddar</MenuItem>
   <MenuItem>Swiss</MenuItem>
 </MenuList>
 ```
@@ -208,8 +208,6 @@ Use the `detail` prop to provide explanatory detail to a given item.
 
 It supports an optional `label` prop to place a heading above the `MenuItem`s. When placed within a scrolling container the label will stick to the top edge while the `MenuGroup` is visible. Look at the "Menu + Drawer" example above and try scrolling.
 
-`labelProps` and `labelStyles` can be used to apply styling to the label.
-
 ```jsx
 <MenuList>
   <MenuGroup>
@@ -219,7 +217,7 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
   </MenuGroup>
   <MenuGroup label="Cheeses">
     <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mozzarella</MenuItem>
     <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
   </MenuGroup>
   <MenuGroup label="Meats">

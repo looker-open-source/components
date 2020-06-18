@@ -24,23 +24,26 @@
 
  */
 
-import { FontWeights, FontSizes } from '@looker/design-tokens'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
 
-export interface MenuItemCustomization extends MenuItemStateCustomizations {
-  fontSize?: FontSizes
-  iconSize?: number
+import { MenuItem } from './MenuItem'
 
-  current?: MenuItemStateCustomizations
-  hover?: MenuItemStateCustomizations
-  marker?: {
-    color?: string
-    size?: number
-  }
-}
+test('MenuItem', () => {
+  assertSnapshot(<MenuItem>who!</MenuItem>)
+})
+test('MenuItem - icon', () => {
+  assertSnapshot(<MenuItem icon="Beaker">who!</MenuItem>)
+})
+test('MenuItem - detail', () => {
+  assertSnapshot(<MenuItem detail="Is an excellent question">who!</MenuItem>)
+})
 
-export interface MenuItemStateCustomizations {
-  bg?: string
-  color?: string
-  fontWeight?: FontWeights
-  iconColor?: string
-}
+test('MenuItem - current', () => {
+  assertSnapshot(
+    <MenuItem current icon="Home">
+      who!
+    </MenuItem>
+  )
+})

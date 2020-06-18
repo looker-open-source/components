@@ -24,17 +24,10 @@
 
  */
 
-import { CustomizableAttributes } from '@looker/design-tokens'
 import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { getModalRoot } from './modalRoot'
-
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  zIndex?: number
-}
-
-export const CustomizableModalAttributes: CustomizableModalAttributes = {}
 
 export const ModalPortal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
@@ -53,11 +46,7 @@ export const ModalPortal = forwardRef(
     }, [el])
 
     const content = (
-      <InvisiBox
-        ref={ref}
-        tabIndex={-1}
-        zIndex={CustomizableModalAttributes.zIndex}
-      >
+      <InvisiBox ref={ref} tabIndex={-1}>
         {children}
       </InvisiBox>
     )
@@ -78,7 +67,7 @@ const InvisiBox = styled.div<{ zIndex?: number }>`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: ${(props) => props.zIndex};
+  z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 
   * {
     pointer-events: auto;
