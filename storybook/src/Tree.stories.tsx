@@ -122,15 +122,19 @@ const fieldDetailButtons = (
         height: '100%',
       }}
     >
-      <IconButton
-        icon="Sync"
-        label="Pivot"
-        onClick={() => alert('HELLO WORLD')}
-      />
+      <IconButton icon="Sync" label="Pivot" onClick={() => alert('Pivot')} />
     </span>
-    <IconButton icon="Filter" label="Filter" />
-    <IconButton icon="CircleInfoOutline" label="Info" />
-    <IconButton icon="DotsVert" label="Options" />
+    <IconButton icon="Filter" label="Filter" onClick={() => alert('Filter')} />
+    <IconButton
+      icon="CircleInfoOutline"
+      label="Info"
+      onClick={() => alert('Info')}
+    />
+    <IconButton
+      icon="DotsVert"
+      label="Options"
+      onClick={() => alert('Options')}
+    />
   </>
 )
 

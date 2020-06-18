@@ -103,7 +103,7 @@ const TreeItemMain = styled(Space)<TreeItemMainProps>`
   border: 1px solid transparent;
   outline: none;
 
-  &:focus {
+  &:focus-within {
     border-color: ${({ theme, noBorderStyle }) =>
       !noBorderStyle && theme.colors.keyFocus};
   }
