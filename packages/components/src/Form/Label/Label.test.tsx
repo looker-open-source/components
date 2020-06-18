@@ -35,11 +35,3 @@ test('A Label', () => {
     </Label>
   )
 })
-
-test('Label supports fontWeight', () => {
-  assertSnapshot(
-    <Label id="LabelID" fontWeight="normal" htmlFor="party">
-      test
-    </Label>
-  )
-})

@@ -27,38 +27,17 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  color,
-  ColorProps,
   reset,
-  space,
-  SpaceProps,
-  textDecoration,
-  TextDecorationProps,
-  textTransform,
-  TextTransformProps,
-  typography,
   TypographyProps,
 } from '@looker/design-tokens'
 
 export interface LabelProps
-  extends ColorProps,
-    SpaceProps,
-    TextDecorationProps,
-    TextTransformProps,
-    TypographyProps,
+  extends TypographyProps,
     CompatibleHTMLProps<HTMLLabelElement> {}
 
 export const Label = styled.label<LabelProps>`
-  ${reset}
-  ${color}
-  ${space}
-  ${textDecoration}
-  ${textTransform}
-  ${typography}
+${reset}
+  color: ${({ theme: { colors } }) => colors.text2};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
 `
-
-Label.defaultProps = {
-  color: 'text2',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-}

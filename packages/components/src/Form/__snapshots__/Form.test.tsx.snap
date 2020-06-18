@@ -155,9 +155,6 @@ exports[`Form with one child 1`] = `
   >
     <label
       className="c2 c3"
-      color="text2"
-      fontSize="xsmall"
-      fontWeight="semiBold"
       htmlFor="text-field"
       id="text-field-labelledby"
     >
