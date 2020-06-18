@@ -94,22 +94,36 @@ export interface TreeItemProps {
   selectedColor?: string
 }
 
+interface TreeItemMainProps {
+  noBorderStyle?: boolean
+}
+
+// TODO: Figure out why this throws TS error
+const TreeItemMain = styled(Space)<TreeItemMainProps>`
+  border: 1px solid transparent;
+  outline: none;
+
+  &:focus {
+    border-color: ${({ theme, noBorderStyle }) =>
+      !noBorderStyle && theme.colors.keyFocus};
+  }
+`
+
 const TreeItemDetail = styled.span`
   align-items: center;
   display: flex;
   height: 100%;
 `
 
-interface TreeItemStyle {
+interface TreeItemStyleProps {
   hovered: boolean
   hoverColor: string
-  noBorderStyle?: boolean
   noHoverStyle?: boolean
   selected?: boolean
   selectedColor: string
 }
 
-const TreeItemStyle = styled.div<TreeItemStyle>`
+const TreeItemStyle = styled.div<TreeItemStyleProps>`
   background-color: ${({
     hovered,
     hoverColor,
@@ -127,11 +141,6 @@ const TreeItemStyle = styled.div<TreeItemStyle>`
   flex: 1;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   outline: none;
-
-  &:focus {
-    border-color: ${({ noBorderStyle, theme }) =>
-      !noBorderStyle && theme.colors.keyFocus};
-  }
 `
 
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
@@ -144,12 +153,22 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    const flag =
+    const isDetailAcccessoryEnabled =
       props.detailAccessory !== undefined
         ? props.detailAccessory
         : detailAccessory
 
-    flag && event.stopPropagation()
+    isDetailAcccessoryEnabled && event.stopPropagation()
+  }
+
+  const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    // Automatically prevents detail click from opening Accordion
+    const isDetailAcccessoryEnabled =
+      props.detailAccessory !== undefined
+        ? props.detailAccessory
+        : detailAccessory
+
+    isDetailAcccessoryEnabled && event.stopPropagation()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -171,7 +190,10 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       ? !props.detailHoverDisclosure
       : !detailHoverDisclosure) ||
       isTreeItemHovered) && (
-      <TreeItemDetail onClick={handleDetailClick}>
+      <TreeItemDetail
+        onClick={handleDetailClick}
+        onKeyDown={handleDetailKeyDown}
+      >
         {props.detail}
       </TreeItemDetail>
     )
@@ -182,10 +204,14 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       : detailAccessory
 
   return (
-    <Space
+    <TreeItemMain
       gap="none"
-      ref={treeItemRef}
+      noBorderStyle={props.noBorderStyle}
+      onClick={props.onClick}
+      onKeyDown={handleKeyDown}
       pr={isDetailAccesoryEnabled ? 'xxsmall' : 'none'}
+      ref={treeItemRef}
+      tabIndex={props.onClick ? 0 : -1}
     >
       <TreeItemStyle
         className={props.className}
@@ -193,7 +219,6 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
         hoverColor={
           props.hoverColor !== undefined ? props.hoverColor : hoverColor
         }
-        noBorderStyle={props.noBorderStyle}
         noHoverStyle={props.noHoverStyle}
         selected={props.selected}
         selectedColor={
@@ -201,26 +226,20 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
             ? props.selectedColor
             : selectedColor
         }
-        tabIndex={props.onClick ? 0 : -1}
       >
-        <Space
-          gap={props.gapSize || 'xxsmall'}
-          onClick={props.onClick}
-          onKeyDown={handleKeyDown}
-        >
+        <Space gap={props.gapSize || 'xxsmall'}>
           {renderedIcon}
           <FlexItem flex="1">{props.children}</FlexItem>
           {!isDetailAccesoryEnabled && renderedDetail}
         </Space>
       </TreeItemStyle>
       {isDetailAccesoryEnabled && renderedDetail}
-    </Space>
+    </TreeItemMain>
   )
 }
 
 export const TreeItem = styled(TreeItemLayout)`
   align-items: center;
-  border: 1px solid transparent;
   cursor: ${({ onClick }) => onClick && 'pointer'};
   display: flex;
   height: 25px;

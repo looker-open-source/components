@@ -122,7 +122,11 @@ const fieldDetailButtons = (
         height: '100%',
       }}
     >
-      <IconButton icon="Sync" label="Pivot" />
+      <IconButton
+        icon="Sync"
+        label="Pivot"
+        onClick={() => alert('HELLO WORLD')}
+      />
     </span>
     <IconButton icon="Filter" label="Filter" />
     <IconButton icon="CircleInfoOutline" label="Info" />
