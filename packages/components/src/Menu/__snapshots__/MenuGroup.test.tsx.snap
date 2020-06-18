@@ -102,6 +102,10 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #262D33;
 }
 
+.c4[aria-current] {
+  font-weight: 600;
+}
+
 <li
   className="c0"
 >
@@ -273,6 +277,10 @@ exports[`MenuGroup - label 1`] = `
   color: #262D33;
 }
 
+.c4[aria-current] {
+  font-weight: 600;
+}
+
 <li
   className="c0"
 >
@@ -418,6 +426,10 @@ exports[`MenuGroup 1`] = `
 .c2:hover .c3,
 .c2[aria-current] .c3 {
   color: #262D33;
+}
+
+.c2[aria-current] {
+  font-weight: 600;
 }
 
 <li

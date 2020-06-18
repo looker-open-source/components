@@ -59,8 +59,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   display: flex;
   flex-wrap: wrap;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-  font-weight: ${({ current, theme: { fontWeights } }) =>
-    current ? fontWeights.semiBold : fontWeights.normal};
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
   outline: none;
   text-decoration: none;
   transition: ${({ theme: { easings, transitions } }) =>
@@ -122,5 +121,9 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     ${Icon} {
       color: ${({ theme: { colors } }) => colors.text1};
     }
+  }
+
+  &[aria-current] {
+    font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 `

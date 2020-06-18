@@ -108,6 +108,10 @@ exports[`MenuItem - current 1`] = `
   color: #262D33;
 }
 
+.c0[aria-current] {
+  font-weight: 600;
+}
+
 <li
   aria-current="page"
   className="c0"
@@ -213,6 +217,10 @@ exports[`MenuItem - detail 1`] = `
 .c0:hover .c2,
 .c0[aria-current] .c2 {
   color: #262D33;
+}
+
+.c0[aria-current] {
+  font-weight: 600;
 }
 
 .c1 {
@@ -349,6 +357,10 @@ exports[`MenuItem - icon 1`] = `
   color: #262D33;
 }
 
+.c0[aria-current] {
+  font-weight: 600;
+}
+
 <li
   className="c0"
   onBlur={[Function]}
@@ -453,6 +465,10 @@ exports[`MenuItem 1`] = `
 .c0:hover .c1,
 .c0[aria-current] .c1 {
   color: #262D33;
+}
+
+.c0[aria-current] {
+  font-weight: 600;
 }
 
 <li
