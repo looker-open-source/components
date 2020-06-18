@@ -74,14 +74,6 @@ export interface TreeItemProps {
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
-  /**
-   * Determines hover background color of TreeItem
-   */
-  hoverColor?: string
-  /**
-   * Determines selected background color of TreeItem
-   */
-  selectedColor?: string
 }
 
 // TODO: Figure out why this throws TS error
@@ -102,24 +94,12 @@ const TreeItemDetail = styled.span`
 
 interface TreeItemStyleProps {
   hovered: boolean
-  hoverColor: string
   selected?: boolean
-  selectedColor: string
 }
 
 export const TreeItemStyle = styled.div<TreeItemStyleProps>`
-  background-color: ${({
-    hovered,
-    hoverColor,
-    selected,
-    selectedColor,
-    theme,
-  }) => {
-    return selected
-      ? theme.colors[selectedColor]
-      : hovered
-      ? theme.colors[hoverColor]
-      : undefined
+  background-color: ${({ hovered, selected, theme }) => {
+    return selected ? theme.colors.ui1 : hovered ? theme.colors.ui2 : undefined
   }};
   flex: 1;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
@@ -127,12 +107,7 @@ export const TreeItemStyle = styled.div<TreeItemStyleProps>`
 `
 
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
-  const {
-    detailAccessory,
-    detailHoverDisclosure,
-    hoverColor = 'ui2',
-    selectedColor = 'ui1',
-  } = useContext(TreeContext)
+  const { detailAccessory, detailHoverDisclosure } = useContext(TreeContext)
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
@@ -198,15 +173,7 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       <TreeItemStyle
         className={props.className}
         hovered={isTreeItemHovered}
-        hoverColor={
-          props.hoverColor !== undefined ? props.hoverColor : hoverColor
-        }
         selected={props.selected}
-        selectedColor={
-          props.selectedColor !== undefined
-            ? props.selectedColor
-            : selectedColor
-        }
       >
         <Space gap={props.gapSize || 'xxsmall'}>
           {renderedIcon}

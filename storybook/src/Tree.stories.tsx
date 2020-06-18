@@ -268,14 +268,12 @@ export const Border = () => (
 )
 
 export const Flat = () => (
-  <TreeContext.Provider value={{ hoverColor: 'keyFocus' }}>
-    <TreeGroup label="Inventory Items">
-      <TreeItem icon="Calendar">Date</TreeItem>
-      <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
-        Cost
-      </TreeItem>
-      <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
-      <TreeItem icon="FieldNumber">Another Number</TreeItem>
-    </TreeGroup>
-  </TreeContext.Provider>
+  <TreeGroup label="Inventory Items">
+    <TreeItem icon="Calendar">Date</TreeItem>
+    <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
+      Cost
+    </TreeItem>
+    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
+    <TreeItem icon="FieldNumber">Another Number</TreeItem>
+  </TreeGroup>
 )
