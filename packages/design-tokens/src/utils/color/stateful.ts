@@ -34,6 +34,9 @@ import { mixColors } from './blend'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
+export const generateInteractive = (color: string) => darken(0.1, color)
+export const generatePressed = (color: string) => darken(0.18, color)
+
 const generateStatefulColor = (
   background: string,
   color: string
@@ -42,8 +45,8 @@ const generateStatefulColor = (
     subtle: mixColors(8, color, background),
     accent: mixColors(12, color, background),
     focus: mixColors(60, color, background),
-    interactive: darken(0.1, color),
-    pressed: darken(0.18, color),
+    interactive: generateInteractive(color),
+    pressed: generatePressed(color),
     text: background,
     border: color,
   }

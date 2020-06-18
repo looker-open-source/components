@@ -24,12 +24,22 @@
 
  */
 
-import { mix } from 'polished'
+import { mix, rgba } from 'polished'
+import { css } from 'styled-components'
 import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
 const textBlends = [30, 40, 60, 70, 80, 100]
-const uiBlends = [4, 12, 20, 30, 85]
+export const uiBlends = [4, 12, 20, 30, 85]
+type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
+
+export const blendColorTransparency = (color: string, level: UIColorLevels) =>
+  rgba(color, uiBlends[level - 1] / 100)
+
+export const uiTransparencyBlend = (level: UIColorLevels) =>
+  css`
+    ${({ theme: { colors } }) => blendColorTransparency(colors.text, level)}
+  `
 
 export const mixColors = (
   mixAmount: number,
@@ -38,6 +48,11 @@ export const mixColors = (
 ) => {
   return mix(mixAmount / 100, foreground, background)
 }
+
+export const intentUIBlend = (intent: string, level: UIColorLevels) => css`
+  ${({ theme: { colors } }) =>
+    mixColors(uiBlends[level], colors[intent], colors.background)}
+`
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

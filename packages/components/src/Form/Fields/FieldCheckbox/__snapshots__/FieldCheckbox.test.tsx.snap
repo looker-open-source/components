@@ -125,9 +125,6 @@ exports[`A FieldCheckbox 1`] = `
 >
   <span
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
   >
     👍
   </span>
@@ -299,9 +296,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 >
   <span
     className="c1 c2"
-    color="text2"
-    fontSize="xsmall"
-    fontWeight="semiBold"
   >
     👍
   </span>

@@ -212,9 +212,6 @@ exports[`Fieldset 1`] = `
       >
         <label
           className="c5 c6"
-          color="text2"
-          fontSize="xsmall"
-          fontWeight="semiBold"
           htmlFor="text-1"
           id="text-1-labelledby"
         >
@@ -245,9 +242,6 @@ exports[`Fieldset 1`] = `
       >
         <label
           className="c5 c6"
-          color="text2"
-          fontSize="xsmall"
-          fontWeight="semiBold"
           htmlFor="text-2"
           id="text-2-labelledby"
         >
@@ -278,9 +272,6 @@ exports[`Fieldset 1`] = `
       >
         <label
           className="c5 c6"
-          color="text2"
-          fontSize="xsmall"
-          fontWeight="semiBold"
           htmlFor="text-3"
           id="text-3-labelledby"
         >
