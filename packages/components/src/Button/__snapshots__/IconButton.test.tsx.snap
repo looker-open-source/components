@@ -211,19 +211,7 @@ exports[`IconButton accepts events 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
 }
 
 .c2 svg {
@@ -233,7 +221,6 @@ exports[`IconButton accepts events 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -347,19 +334,7 @@ exports[`IconButton accepts events 2`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
 }
 
 .c2 svg {
@@ -369,7 +344,6 @@ exports[`IconButton accepts events 2`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -483,19 +457,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
 }
 
 .c2 svg {
@@ -506,7 +468,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   aria-describedby="test-iconButton-tooltip"
   aria-haspopup={true}
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -619,19 +580,7 @@ exports[`IconButton default 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
 }
 
 .c2 svg {
@@ -641,7 +590,6 @@ exports[`IconButton default 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -754,31 +702,8 @@ exports[`IconButton outline 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
   border: 1px solid #C1C6CC;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  border-color: #939BA5;
-}
-
-.c2:active,
-.c2.active {
-  border-color: #707781;
 }
 
 .c2[disabled]:hover,
@@ -794,7 +719,6 @@ exports[`IconButton outline 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -1177,19 +1101,7 @@ exports[`IconButton resized 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
   padding: 0;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  color: #707781;
-}
-
-.c2:active,
-.c2.active {
-  color: #4C535B;
 }
 
 .c2 svg {
@@ -1199,7 +1111,6 @@ exports[`IconButton resized 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
