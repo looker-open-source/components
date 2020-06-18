@@ -71,16 +71,6 @@ export interface TreeItemProps {
    */
   onClick?: () => void
   /**
-   * Determines if hover styling is applied or not to a TreeItem
-   * Note: Used to keep hover styling off of a Tree's internal TreeItem
-   */
-  noHoverStyle?: boolean
-  /**
-   * If true, disables the border effect
-   * Note: Used to keep hover styling off of a Tree's internal TreeItem
-   */
-  noBorderStyle?: boolean
-  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
@@ -94,18 +84,13 @@ export interface TreeItemProps {
   selectedColor?: string
 }
 
-interface TreeItemMainProps {
-  noBorderStyle?: boolean
-}
-
 // TODO: Figure out why this throws TS error
-const TreeItemMain = styled(Space)<TreeItemMainProps>`
+export const TreeItemMain = styled(Space)`
   border: 1px solid transparent;
   outline: none;
 
   &:focus-within {
-    border-color: ${({ theme, noBorderStyle }) =>
-      !noBorderStyle && theme.colors.keyFocus};
+    border-color: ${({ theme }) => theme.colors.keyFocus};
   }
 `
 
@@ -118,23 +103,21 @@ const TreeItemDetail = styled.span`
 interface TreeItemStyleProps {
   hovered: boolean
   hoverColor: string
-  noHoverStyle?: boolean
   selected?: boolean
   selectedColor: string
 }
 
-const TreeItemStyle = styled.div<TreeItemStyleProps>`
+export const TreeItemStyle = styled.div<TreeItemStyleProps>`
   background-color: ${({
     hovered,
     hoverColor,
-    noHoverStyle,
     selected,
     selectedColor,
     theme,
   }) => {
     return selected
       ? theme.colors[selectedColor]
-      : hovered && !noHoverStyle
+      : hovered
       ? theme.colors[hoverColor]
       : undefined
   }};
@@ -206,7 +189,6 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
   return (
     <TreeItemMain
       gap="none"
-      noBorderStyle={props.noBorderStyle}
       onClick={props.onClick}
       onKeyDown={handleKeyDown}
       pr={isDetailAccesoryEnabled ? 'xxsmall' : 'none'}
@@ -219,7 +201,6 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
         hoverColor={
           props.hoverColor !== undefined ? props.hoverColor : hoverColor
         }
-        noHoverStyle={props.noHoverStyle}
         selected={props.selected}
         selectedColor={
           props.selectedColor !== undefined
