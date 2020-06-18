@@ -59,17 +59,3 @@ test('MenuGroup - JSX label', () => {
     </MenuGroup>
   )
 })
-
-test('MenuGroup - labelProps & labelStyles', () => {
-  assertSnapshot(
-    <MenuGroup
-      label="Questions"
-      labelStyles={{ color: 'rebeccapurple' }}
-      labelProps={{ fontSize: 'xxlarge' }}
-    >
-      <MenuItem>what?</MenuItem>
-      <MenuItem>who?</MenuItem>
-      <MenuItem>where?</MenuItem>
-    </MenuGroup>
-  )
-})

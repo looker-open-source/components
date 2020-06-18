@@ -88,15 +88,7 @@ export interface MenuListProps
 
 export const MenuListInternal = forwardRef(
   (
-    {
-      children,
-      compact,
-      customizationProps,
-      disabled,
-      pin,
-      placement,
-      ...props
-    }: MenuListProps,
+    { children, compact, disabled, pin, placement, ...props }: MenuListProps,
     ref: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
@@ -107,7 +99,6 @@ export const MenuListInternal = forwardRef(
 
     const context = {
       compact,
-      customizationProps,
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }

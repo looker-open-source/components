@@ -24,120 +24,20 @@
 
  */
 
-import merge from 'lodash/merge'
-import {
-  CompatibleHTMLProps,
-  ColorProps,
-  FontSizes,
-  SpaceProps,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, {
-  FC,
-  ReactNode,
-  useContext,
-  useState,
-  useEffect,
-  Children,
-} from 'react'
 import styled from 'styled-components'
+import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuItemStyleContext } from '../MenuContext'
-import { MenuItemButton } from './MenuItemButton'
-import {
-  MenuItemCustomization,
-  MenuItemStateCustomizations,
-} from './menuItemCustomization'
-import { MenuItemDetail } from './MenuItemDetail'
-import { MenuItemListItem } from './MenuItemListItem'
-import {
-  defaultMenuItemStyle,
-  MenuItemStateStyle,
-  MenuItemStyle,
-} from './menuItemStyle'
+import { MenuItemLayout } from './MenuItemLayout'
 
 export interface MenuSharedProps {
-  customizationProps?: MenuItemCustomization
   compact?: boolean
-}
-
-// For merging compact and customizationProps from props with those from context
-export function useMenuItemStyleContext(props: MenuSharedProps) {
-  const { customizationProps: propCustomizations, compact: compactProp } = props
-  const {
-    customizationProps: contextCustomizations,
-    compact: contextCompact,
-  } = useContext(MenuItemStyleContext)
-  const parentCustomizations = contextCustomizations || {}
-
-  let customizationProps = parentCustomizations || propCustomizations
-  if (customizationProps && parentCustomizations) {
-    customizationProps = merge({}, parentCustomizations, propCustomizations)
-  }
-
-  const compact = compactProp === undefined ? contextCompact : compactProp
-
-  return { compact, customizationProps }
-}
-
-const assignCustomizations = (
-  defaultStyle: MenuItemStyle,
-  changes?: MenuItemCustomization
-): MenuItemStyle => {
-  const { bg, color, iconColor, fontWeight, fontSize, iconSize } =
-    changes || ({} as MenuItemCustomization)
-
-  const customMarker = changes ? changes.marker : {}
-
-  // Need to spread fontSize & iconSize across all states
-  const defaults = {
-    fontSize: fontSize || ('small' as FontSizes),
-    iconSize: iconSize || 20,
-  }
-
-  const base: MenuItemStateCustomizations = {}
-
-  bg && (base.bg = bg)
-  color && (base.color = color)
-  fontWeight && (base.fontWeight = fontWeight)
-  iconColor && (base.iconColor = iconColor)
-
-  const initial: MenuItemStateStyle = {
-    ...defaultStyle.initial,
-    ...defaults,
-    ...base,
-  }
-
-  const current: MenuItemStateStyle = {
-    ...defaultStyle.current,
-    ...defaults,
-    ...base,
-    ...(changes ? changes.current : {}),
-  }
-
-  const hover: MenuItemStateStyle = {
-    ...defaultStyle.hover,
-    ...defaults,
-    ...base,
-    ...(changes ? changes.hover : {}),
-  }
-
-  const marker = { ...defaultStyle.marker, ...customMarker }
-
-  return {
-    current,
-    hover,
-    initial,
-    marker,
-  }
 }
 
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLElement>,
-    ColorProps,
-    SpaceProps,
-    TypographyProps,
     MenuSharedProps {
   detail?: ReactNode
   icon?: IconNames
@@ -159,7 +59,6 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
   const {
     children,
     compact: propCompact,
-    customizationProps: propCustomizations,
     current,
     detail,
     href,
@@ -169,10 +68,11 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
-    ...remainingProps
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
+  const { compact: contextCompact } = useContext(MenuItemStyleContext)
+  const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
     setFocusVisible(true)
@@ -194,26 +94,6 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     }
   }
 
-  const { customizationProps, compact } = useMenuItemStyleContext({
-    compact: propCompact,
-    customizationProps: propCustomizations,
-  })
-  const compactIconModifier = compact ? 1.25 : 1
-
-  const style = assignCustomizations(defaultMenuItemStyle, customizationProps)
-  const styleState = current ? style.current : style.initial
-  const { iconSize, iconColor, ...listItemProps } = styleState
-
-  const { p, py, px, pr, pl, pt, pb, ...outerProps } = remainingProps
-
-  const clickTargetProps = {
-    p,
-    pb: pb || py || p || compact ? 'xxsmall' : 'small',
-    pl: pl || px || p || 'medium',
-    pr: pr || px || p || 'medium',
-    pt: pt || py || p || compact ? 'xxsmall' : 'small',
-  }
-
   const { renderIconPlaceholder, setRenderIconPlaceholder } = useContext(
     MenuItemStyleContext
   )
@@ -226,54 +106,38 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     <Icon
       name={icon}
       mr="xsmall"
-      size={iconSize / compactIconModifier}
-      color={iconColor}
+      size={20 / (compact ? 1.25 : 1)}
+      color="text6"
     />
-  ) : renderIconPlaceholder ? (
-    <div />
-  ) : undefined
+  ) : (
+    renderIconPlaceholder && <div />
+  )
+
+  const Component = itemRole === 'link' ? 'a' : 'button'
 
   return (
-    <MenuItemListItem
+    <MenuItemLayout
       aria-current={current && 'page'}
       onClick={handleOnClick}
       current={current}
       focusVisible={isFocusVisible}
-      itemStyle={style}
       onKeyUp={handleOnKeyUp}
       onBlur={handleOnBlur}
-      {...listItemProps}
-      {...outerProps}
+      compact={compact}
+      hasIcon={Boolean(renderedIcon)}
     >
-      <MenuItemButton
-        as={itemRole === 'link' ? 'a' : 'button'}
-        href={href}
-        role="menuitem"
-        target={target}
-        {...clickTargetProps}
-      >
-        <MenuItemGrid
-          iconSize={
-            customizationProps.iconSize || defaultMenuItemStyle.initial.iconSize
-          }
-        >
-          {renderedIcon}
-          {children}
-        </MenuItemGrid>
-      </MenuItemButton>
-      {detail && <MenuItemDetail>{detail}</MenuItemDetail>}
-    </MenuItemListItem>
+      <Component href={href} role="menuitem" target={target}>
+        {renderedIcon}
+        {children}
+      </Component>
+      {detail && <Detail>{detail}</Detail>}
+    </MenuItemLayout>
   )
 }
 
-interface MenuItemGridProps {
-  iconSize: number
-}
-
-const MenuItemGrid = styled.div<MenuItemGridProps>`
-  align-items: center;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: ${({ children, iconSize }) =>
-    Children.toArray(children).length === 2 ? `${iconSize}px` + ' 1fr' : '1fr'};
+const Detail = styled.div`
+  color: ${({ theme: { colors } }) => colors.text6};
+  margin-left: auto;
+  margin-right: ${({ theme: { space } }) => space.medium};
+  padding-left: ${({ theme: { space } }) => space.large};
 `
