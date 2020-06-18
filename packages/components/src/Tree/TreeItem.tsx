@@ -33,7 +33,7 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
+import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
@@ -98,8 +98,12 @@ interface TreeItemStyleProps {
 }
 
 export const TreeItemStyle = styled.div<TreeItemStyleProps>`
-  background-color: ${({ hovered, selected, theme }) => {
-    return selected ? theme.colors.ui1 : hovered ? theme.colors.ui2 : undefined
+  background-color: ${({ hovered, selected }) => {
+    return selected
+      ? uiTransparencyBlend(1)
+      : hovered
+      ? uiTransparencyBlend(2)
+      : undefined
   }};
   flex: 1;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};

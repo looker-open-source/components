@@ -115,15 +115,7 @@ export const FileSelectorClosed = () => (
 
 const fieldDetailButtons = (
   <>
-    <span
-      style={{
-        backgroundColor: '#DEE1E5',
-        display: 'inline-block',
-        height: '100%',
-      }}
-    >
-      <IconButton icon="Sync" label="Pivot" onClick={() => alert('Pivot')} />
-    </span>
+    <IconButton icon="Sync" label="Pivot" onClick={() => alert('Pivot')} />
     <IconButton icon="Filter" label="Filter" onClick={() => alert('Filter')} />
     <IconButton
       icon="CircleInfoOutline"
