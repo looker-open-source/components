@@ -77,7 +77,7 @@ export interface TreeItemProps {
 }
 
 // TODO: Figure out why this throws TS error
-export const TreeItemMain = styled(Space)`
+export const TreeItemSpace = styled(Space)`
   border: 1px solid transparent;
   outline: none;
 
@@ -89,15 +89,15 @@ export const TreeItemMain = styled(Space)`
 const TreeItemDetail = styled.span`
   align-items: center;
   display: flex;
-  height: 100%;
 `
 
-interface TreeItemStyleProps {
+interface TreeItemPrimaryProps {
   hovered: boolean
   selected?: boolean
 }
 
-export const TreeItemStyle = styled.div<TreeItemStyleProps>`
+// TODO: Figure out why this throws TS error
+export const TreeItemPrimary = styled(Space)<TreeItemPrimaryProps>`
   background-color: ${({ hovered, selected }) => {
     return selected
       ? uiTransparencyBlend(1)
@@ -107,7 +107,16 @@ export const TreeItemStyle = styled.div<TreeItemStyleProps>`
   }};
   flex: 1;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  height: 100%;
   outline: none;
+  padding: ${({ theme }) => theme.space.xxsmall};
+`
+
+const TreeItemSecondary = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: ${({ theme }) => theme.space.xxsmall};
 `
 
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
@@ -166,27 +175,27 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       : detailAccessory
 
   return (
-    <TreeItemMain
+    <TreeItemSpace
+      className={props.className}
       gap="none"
       onClick={props.onClick}
       onKeyDown={handleKeyDown}
-      pr={isDetailAccesoryEnabled ? 'xxsmall' : 'none'}
       ref={treeItemRef}
       tabIndex={props.onClick ? 0 : -1}
     >
-      <TreeItemStyle
-        className={props.className}
+      <TreeItemPrimary
+        gap={props.gapSize || 'xxsmall'}
         hovered={isTreeItemHovered}
         selected={props.selected}
       >
-        <Space gap={props.gapSize || 'xxsmall'}>
-          {renderedIcon}
-          <FlexItem flex="1">{props.children}</FlexItem>
-          {!isDetailAccesoryEnabled && renderedDetail}
-        </Space>
-      </TreeItemStyle>
-      {isDetailAccesoryEnabled && renderedDetail}
-    </TreeItemMain>
+        {renderedIcon}
+        <FlexItem flex="1">{props.children}</FlexItem>
+        {!isDetailAccesoryEnabled && renderedDetail}
+      </TreeItemPrimary>
+      {isDetailAccesoryEnabled && (
+        <TreeItemSecondary>{renderedDetail}</TreeItemSecondary>
+      )}
+    </TreeItemSpace>
   )
 }
 
@@ -195,5 +204,4 @@ export const TreeItem = styled(TreeItemLayout)`
   cursor: ${({ onClick }) => onClick && 'pointer'};
   display: flex;
   height: 25px;
-  padding: ${({ theme }) => theme.space.xxsmall};
 `

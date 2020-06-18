@@ -35,9 +35,8 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
-import { Space } from '../Layout'
-import { TreeItem } from './TreeItem'
-import { TreeGroup, TreeGroupLabel } from './TreeGroup'
+import { TreeItem, TreeItemPrimary, TreeItemSpace } from './TreeItem'
+import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
 export interface TreeProps extends Omit<AccordionProps, 'className'> {
@@ -120,36 +119,30 @@ interface TreeStyleProps {
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
-  ${AccordionDisclosure} {
+  ${/* sc-selector */ AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
   }
 
-  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItem} {
+  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemPrimary} {
     padding: ${({ theme }) => theme.space.none};
+    background-color: transparent;
   }
 
-  ${TreeGroupLabel} {
+  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemSpace}:focus-within {
+    border-color: transparent;
+  }
+
+  ${/* sc-selector */ TreeGroupLabel} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
       }) * ${depth + 1})`};
   }
 
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ Space} > ${
-  /* sc-selector */ TreeItem
-} {
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
-        theme.space.small
-      }) * ${depth + 1})`};
-  }
-
-  ${/* sc-selector */ TreeBorder} > ${/* sc-selector */ TreeGroup} > ${
-  /* sc-selector */ Space
-} > ${/* sc-selector */ TreeItem} {
+  ${/* sc-selector */ TreeItemPrimary} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small

@@ -28,11 +28,10 @@ import React from 'react'
 import {
   ButtonTransparent,
   Grid,
+  IconButton,
   Tree,
-  TreeContext,
   TreeItem,
   TreeGroup,
-  IconButton,
 } from '@looker/components'
 
 export const All = () => (
@@ -40,7 +39,6 @@ export const All = () => (
     <FileSelector />
     <FileSelectorClosed />
     <FieldPicker />
-    <FieldPickerCustom />
     <Border />
   </Grid>
 )
@@ -175,6 +173,7 @@ export const FieldPicker = () => (
         detail={fieldDetailButtons}
         detailHoverDisclosure
         icon="FieldDistance"
+        onClick={() => alert('Clicked on Location!')}
       >
         Location
       </TreeItem>
@@ -195,7 +194,7 @@ export const FieldPicker = () => (
         Oui ou Non
       </TreeItem>
     </TreeGroup>
-    <TreeGroup color="critical" label="MEASURES">
+    <TreeGroup color="warn" label="MEASURES">
       <TreeItem
         detail={fieldDetailButtons}
         detailHoverDisclosure
@@ -213,34 +212,6 @@ export const FieldPicker = () => (
         Count Distinct
       </TreeItem>
     </TreeGroup>
-  </Tree>
-)
-
-export const FieldPickerCustom = () => (
-  <Tree
-    defaultOpen
-    detail={addButton}
-    detailAccessory
-    detailHoverDisclosure
-    hoverColor="criticalFocus"
-    label="Custom Fields"
-    selectedColor="ui3"
-  >
-    <TreeItem
-      detail={fieldDetailButtons}
-      detailAccessory={false}
-      detailHoverDisclosure={false}
-      hoverColor="keyFocus"
-      icon="FieldNumber"
-      onClick={() => alert('Clicked on Cost!')}
-      selected
-      selectedColor="critical"
-    >
-      Cost (Overwrites context behavior / styling)
-    </TreeItem>
-    <TreeItem detail={fieldDetailButtons} icon="FieldDistance">
-      Location
-    </TreeItem>
   </Tree>
 )
 
