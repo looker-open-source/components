@@ -65,7 +65,7 @@ export const numericColumnCSS = (columnIndices: number[]) =>
         css`
         ${ActionListItemColumn}:nth-child(${columnIndex + 1}),
         ${ActionListHeaderColumn}:nth-child(${columnIndex + 1}) {
-          flex-direction: row-reverse
+          flex-direction: row-reverse;
         }
       `
     )}

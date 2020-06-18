@@ -24,7 +24,14 @@
 
  */
 
-import { Button, Space, SpaceVertical } from '@looker/components'
+import {
+  Button,
+  Space,
+  SpaceVertical,
+  Icon,
+  Paragraph,
+  Status,
+} from '@looker/components'
 import React from 'react'
 
 export const All = () => (
@@ -71,4 +78,29 @@ export const ReverseSpaceVertical = () => (
     <Button>Button B</Button>
     <Button>Button C</Button>
   </SpaceVertical>
+)
+
+export const SpaceCrush = () => (
+  <Space>
+    <Icon name="Account" size="large" />
+    <Status intent="inform" />
+    <Paragraph>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </Paragraph>
+    <Paragraph>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </Paragraph>
+  </Space>
 )

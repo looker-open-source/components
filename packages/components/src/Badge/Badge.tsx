@@ -26,6 +26,8 @@
 
 import {
   color,
+  CompatibleHTMLProps,
+  generatePressed,
   reset,
   SizeLarge,
   SizeMedium,
@@ -33,13 +35,20 @@ import {
   space,
   SpaceProps,
   typography,
-  CompatibleHTMLProps,
+  intentUIBlend,
 } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
 
 export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge
+type BadgeIntent =
+  | 'warn'
+  | 'positive'
+  | 'critical'
+  | 'inform'
+  | 'neutral'
+  | 'key'
 
 export interface BadgeProps
   extends SpaceProps,
@@ -48,14 +57,8 @@ export interface BadgeProps
   /**
    *  @default `default`
    **/
-  intent?:
-    | 'warn'
-    | 'positive'
-    | 'critical'
-    | 'inform'
-    | 'neutral'
-    | 'plain'
-    | 'key'
+  intent?: BadgeIntent
+
   /**
    * Defines the size of Badge diameter.
    * @default "medium"
@@ -85,19 +88,6 @@ const size = variant({
   },
 })
 
-const intent = variant({
-  prop: 'intent',
-  variants: {
-    critical: { bg: 'criticalAccent', color: 'criticalInteractive' },
-    key: { bg: 'keyAccent', color: 'keyPressed' },
-    inform: { bg: 'palette.blue100', color: 'palette.blue600' },
-    neutral: { bg: 'neutralAccent', color: 'neutralPressed' },
-    plain: { bg: 'keyText', color: 'keyInteractive' },
-    positive: { bg: 'palette.green100', color: 'palette.green700' },
-    warn: { bg: 'palette.yellow100', color: 'palette.yellow900' },
-  },
-})
-
 const BadgeLayout = forwardRef(
   ({ children, ...props }: BadgeProps, ref: Ref<HTMLElement>) => {
     return (
@@ -110,6 +100,12 @@ const BadgeLayout = forwardRef(
 
 BadgeLayout.displayName = 'BadgeLayout'
 
+const badgeIntent = (intent: BadgeIntent) =>
+  css`
+    background: ${intentUIBlend(intent, 1)};
+    color: ${({ theme: { colors } }) => generatePressed(colors[intent])};
+  `
+
 export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${reset}
 
@@ -117,10 +113,10 @@ export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${space}
   ${typography}
   ${size}
-  ${intent}
+  ${({ intent }) => badgeIntent(intent || 'key')}
 
-  display: inline-flex;
   border-radius:50px;
+  display: inline-flex;
 `
 
 Badge.defaultProps = {

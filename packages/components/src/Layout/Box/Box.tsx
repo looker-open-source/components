@@ -31,8 +31,6 @@ import {
   CursorProps,
   flexbox,
   FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
   userSelect,
   UserSelectProps,
 } from '@looker/design-tokens'
@@ -42,13 +40,11 @@ export interface BoxProps
   extends CompatibleHTMLProps<HTMLElement>,
     ComplexLayoutProps,
     FlexboxProps,
-    PseudoProps,
     CursorProps,
     UserSelectProps {}
 
 export const Box = styled.div<BoxProps>`
   ${complexLayoutCSS}
-  ${pseudoClasses}
   ${userSelect}
   ${flexbox}
   ${cursor}

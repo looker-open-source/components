@@ -32,6 +32,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  omitStyledProps,
 } from '@looker/design-tokens'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -75,7 +76,7 @@ const ButtonLayout = forwardRef(
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
-        {...props}
+        {...omitStyledProps(props)}
       >
         {children}
       </button>
@@ -88,44 +89,43 @@ ButtonLayout.displayName = 'ButtonLayout'
 export const buttonItemHeight = 36
 
 export const ButtonItem = styled(ButtonLayout)`
-  cursor: pointer;
-  height: ${buttonItemHeight}px;
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 ${({ theme }) => theme.space.small};
-  user-select: none;
-  border: none;
   background: transparent;
-  transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
+  border: none;
   color: ${({ theme }) => theme.colors.text3};
+  cursor: pointer;
+  display: inline-flex;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  height: ${buttonItemHeight}px;
+  justify-content: center;
+  margin: 0;
+  padding: 0 ${({ theme }) => theme.space.small};
+  transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
+  user-select: none;
 
   &[aria-pressed='false']:not([disabled]):hover {
     background: ${({ theme }) => theme.colors.keySubtle};
   }
 
   &:focus {
-    outline: none;
     box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
+    outline: none;
   }
 
   &[disabled] {
-    cursor: default;
     color: ${(props) => props.theme.colors.text5};
+    cursor: default;
   }
 
   &[aria-pressed='true'] {
     background: ${({ theme }) => theme.colors.keyAccent};
     border-color: ${({ theme }) => theme.colors.keyAccent};
-
     color: ${({ theme }) => theme.colors.key};
+    text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;
+
     &[disabled] {
       color: ${({ theme }) => theme.colors.keyFocus};
     }
-
-    /* stylelint-disable */
-    text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;
-    /* stylelint-enabled */
   }
 
   ${space}

@@ -48,9 +48,9 @@ exports[`Chip renders correctly 1`] = `
 .c2 {
   font-size: 0.75rem;
   line-height: 1rem;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 <span
@@ -129,9 +129,9 @@ exports[`Chip renders disabled 1`] = `
 .c2 {
   font-size: 0.75rem;
   line-height: 1rem;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 <span

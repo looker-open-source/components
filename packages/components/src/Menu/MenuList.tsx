@@ -42,11 +42,14 @@ import {
   minWidth,
   maxWidth,
 } from 'styled-system'
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  omitStyledProps,
+} from '@looker/design-tokens'
 import { usePopover } from '../Popover'
-import { MenuContext, MenuItemStyleContext } from './MenuContext'
+import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
-import { MenuSharedProps } from './MenuItem'
 import { moveFocus } from './moveFocus'
 
 export interface MenuListProps
@@ -56,8 +59,7 @@ export interface MenuListProps
     HeightProps,
     MaxWidthProps,
     MinWidthProps,
-    WidthProps,
-    MenuSharedProps {
+    WidthProps {
   compact?: boolean
   groupDividers?: boolean
 
@@ -84,15 +86,7 @@ export interface MenuListProps
 
 export const MenuListInternal = forwardRef(
   (
-    {
-      children,
-      compact,
-      customizationProps,
-      disabled,
-      pin,
-      placement,
-      ...props
-    }: MenuListProps,
+    { children, compact, disabled, pin, placement, ...props }: MenuListProps,
     ref: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
@@ -103,13 +97,12 @@ export const MenuListInternal = forwardRef(
 
     const context = {
       compact,
-      customizationProps,
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }
 
     const menuList = (
-      <MenuItemStyleContext.Provider value={context}>
+      <MenuItemContext.Provider value={context}>
         <HotKeys
           innerRef={innerRef}
           keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
@@ -125,12 +118,12 @@ export const MenuListInternal = forwardRef(
             role="menu"
             id={id}
             aria-labelledby={id && `button-${id}`}
-            {...props}
+            {...omitStyledProps(props)}
           >
             {children}
           </ul>
         </HotKeys>
-      </MenuItemStyleContext.Provider>
+      </MenuItemContext.Provider>
     )
 
     const isMenu = isOpen !== undefined
@@ -151,29 +144,30 @@ export const MenuListInternal = forwardRef(
   }
 )
 
-const dividersStyle = css`
-  ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${(props) => props.theme.colors.ui2};
+const dividersStyle = ({ groupDividers }: MenuListProps) =>
+  groupDividers &&
+  css`
+  ${MenuGroup} ~ ${MenuGroup} {
+    border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
   }
 `
 
 export const MenuList = styled(MenuListInternal)`
   ${reset}
 
+  ${height}
   ${minHeight}
   ${maxHeight}
-  ${height}
-
-  min-width: 12rem;
   ${minWidth}
   ${maxWidth}
   ${width}
 
-  overflow: auto;
   border-radius: inherit;
-
   list-style: none;
   outline: none;
+  overflow: auto;
   user-select: none;
-  ${(props) => props.groupDividers !== false && dividersStyle};
+  ${dividersStyle}
 `
+
+MenuList.defaultProps = { minWidth: '12rem' }

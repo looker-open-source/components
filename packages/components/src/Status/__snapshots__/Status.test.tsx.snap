@@ -14,6 +14,9 @@ Array [
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 svg {
@@ -40,12 +43,12 @@ Array [
     </svg>
   </div>,
   .c0 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 <div
@@ -70,6 +73,9 @@ Array [
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 svg {
@@ -96,12 +102,12 @@ Array [
     </svg>
   </div>,
   .c0 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 <div
@@ -126,6 +132,9 @@ Array [
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 svg {
@@ -152,12 +161,12 @@ Array [
     </svg>
   </div>,
   .c0 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 <div
@@ -180,6 +189,9 @@ Array [
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 svg {
@@ -206,12 +218,12 @@ Array [
     </svg>
   </div>,
   .c0 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 <div
@@ -236,6 +248,9 @@ Array [
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 svg {
@@ -262,12 +277,12 @@ Array [
     </svg>
   </div>,
   .c0 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 <div

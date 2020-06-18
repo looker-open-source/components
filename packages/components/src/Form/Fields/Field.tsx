@@ -24,14 +24,16 @@
 
  */
 
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Paragraph, Text } from '../../Text'
+import { FieldsetContext } from '../Fieldset'
 import { inputHeight } from '../Inputs/InputText/InputText'
 import { Label } from '../Label'
+import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
@@ -54,6 +56,11 @@ export interface FieldProps extends FieldBaseProps {
    */
   inline?: boolean
   /**
+   * Hide label on Field
+   * @default false
+   */
+  hideLabel?: boolean
+  /**
    *
    * Specify the width of the FieldText if different then 100%
    * @default '100%'
@@ -67,6 +74,7 @@ export const fieldPropKeys = [
   'id',
   'inline',
   'label',
+  'hideLabel',
   'labelWidth',
   'validationMessage',
   'width',
@@ -94,9 +102,12 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   detail,
   id,
   label,
+  hideLabel,
   required,
   validationMessage,
 }) => {
+  const { fieldsHideLabel } = useContext(FieldsetContext)
+
   const fieldDescription = description && (
     <Paragraph mt="xsmall" fontSize="xsmall" color="text4">
       {description}
@@ -107,12 +118,20 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
     <ValidationMessage {...validationMessage} />
   )
 
+  const labelComponent = (
+    <Label htmlFor={id} id={`${id}-labelledby`}>
+      {label}
+      {required && <RequiredStar />}
+    </Label>
+  )
+
   return (
     <div className={className}>
-      <Label htmlFor={id} id={`${id}-labelledby`}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
+      {(fieldsHideLabel || hideLabel) && hideLabel !== false ? (
+        <VisuallyHidden>{labelComponent}</VisuallyHidden>
+      ) : (
+        labelComponent
+      )}
       {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
       <MessageArea id={`${id}-describedby`}>
@@ -135,11 +154,11 @@ const MessageArea = styled.div``
 const fieldLabelCSS = (inline?: boolean) =>
   inline
     ? css`
-        text-align: right;
-        line-height: ${inputHeight};
-        justify-self: end;
         height: ${inputHeight};
+        justify-self: end;
+        line-height: ${inputHeight};
         padding-right: ${({ theme }) => theme.space.small};
+        text-align: right;
       `
     : css`
         line-height: ${({ theme }) => theme.lineHeights.xsmall};
@@ -147,21 +166,21 @@ const fieldLabelCSS = (inline?: boolean) =>
       `
 
 export const Field = styled(FieldLayout)<FieldPropsInternal>`
-  height: fit-content;
-  width: ${({ width }) => width || 'fit-content'};
   align-items: left;
-  justify-content: space-between;
 
   display: grid;
   grid-template-areas: ${({ inline }) =>
     inline
       ? '"label input detail" ". messages messages"'
       : '"label detail" "input input" "messages messages"'};
-  grid-template-columns: ${({ inline }) => (inline ? `150px 1fr` : undefined)};
+  grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
+  height: fit-content;
+  justify-content: space-between;
+  width: ${({ width }) => width || 'fit-content'};
 
   ${InputArea} {
-    grid-area: input;
     align-items: center;
+    grid-area: input;
   }
 
   ${MessageArea} {

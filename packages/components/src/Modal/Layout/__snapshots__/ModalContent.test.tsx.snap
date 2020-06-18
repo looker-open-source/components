@@ -2,10 +2,10 @@
 
 exports[`ModalContent - no overflow 1`] = `
 .c0 {
-  overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
   flex: 8;
+  overflow: auto;
 }
 
 .c0.overflow {
@@ -34,10 +34,10 @@ exports[`ModalContent - no overflow 1`] = `
 
 exports[`ModalContent - no overflow 2`] = `
 .c0 {
-  overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
   flex: 8;
+  overflow: auto;
 }
 
 .c0.overflow {

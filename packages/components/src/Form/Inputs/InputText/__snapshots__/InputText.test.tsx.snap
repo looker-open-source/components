@@ -19,17 +19,17 @@ exports[`InputText default 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -60,17 +60,17 @@ exports[`InputText default 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -102,17 +102,17 @@ exports[`InputText should accept disabled 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -143,17 +143,17 @@ exports[`InputText should accept disabled 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
   background: #F5F6F7;
   color: #939BA5;
 }
@@ -192,17 +192,17 @@ exports[`InputText should accept readOnly 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -233,17 +233,17 @@ exports[`InputText should accept readOnly 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -276,17 +276,17 @@ exports[`InputText should accept required 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -317,17 +317,17 @@ exports[`InputText should accept required 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -360,17 +360,17 @@ exports[`InputText with a placeholder 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -401,17 +401,17 @@ exports[`InputText with a placeholder 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -444,17 +444,17 @@ exports[`InputText with a value 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -485,17 +485,17 @@ exports[`InputText with a value 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -528,17 +528,17 @@ exports[`InputText with aria-describedby 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -569,17 +569,17 @@ exports[`InputText with aria-describedby 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div
@@ -612,17 +612,17 @@ exports[`InputText with name and id 1`] = `
 }
 
 .c0 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c0::-webkit-input-placeholder {
@@ -653,17 +653,17 @@ exports[`InputText with name and id 1`] = `
 }
 
 .c1 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 <div

@@ -2,30 +2,32 @@
 
 exports[`ButtonToggle controlled 1`] = `
 .c3 {
-  cursor: pointer;
-  height: 36px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background: transparent;
+  border: none;
+  color: #4C535B;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  height: 36px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin: 0;
   padding: 0 0.75rem;
+  -webkit-transition: background 150ms ease;
+  transition: background 150ms ease;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border: none;
-  background: transparent;
-  -webkit-transition: background 150ms ease;
-  transition: background 150ms ease;
-  color: #4C535B;
 }
 
 .c3[aria-pressed='false']:not([disabled]):hover {
@@ -33,13 +35,13 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c3:focus {
-  outline: none;
   box-shadow: 0 0 0.5px 1px #9785F2;
+  outline: none;
 }
 
 .c3[disabled] {
-  cursor: default;
   color: #939BA5;
+  cursor: default;
 }
 
 .c3[aria-pressed='true'] {
@@ -70,25 +72,25 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1 {
+  background-color: #FFFFFF;
   border: solid 1px #DEE1E5;
   border-left-width: 0;
   border-radius: 0.25rem;
-  background-color: #FFFFFF;
 }
 
 .c1 .c2 {
-  height: 36px;
   border-left: solid 1px #DEE1E5;
+  height: 36px;
 }
 
 .c1 .c2:last-child {
-  border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .c1 .c2:first-child {
-  border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .c1 .c2:focus {
@@ -100,13 +102,13 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1.wrapping::after {
+  border-left: 1px solid #DEE1E5;
   content: '';
   -webkit-box-flex: 100;
   -webkit-flex-grow: 100;
   -ms-flex-positive: 100;
   flex-grow: 100;
   height: 36px;
-  border-left: 1px solid #DEE1E5;
 }
 
 .c1.wrapping .c2 {
@@ -121,8 +123,8 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1.wrapping .c2:last-child {
-  border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .c1.wrapping .c2[aria-pressed='false']:hover:not(:focus),

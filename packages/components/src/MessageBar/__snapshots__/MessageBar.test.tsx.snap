@@ -13,6 +13,9 @@ exports[`Confirmation MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c1 svg {
@@ -21,12 +24,12 @@ exports[`Confirmation MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -39,8 +42,8 @@ exports[`Confirmation MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -113,6 +116,9 @@ exports[`Error MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c1 svg {
@@ -121,12 +127,12 @@ exports[`Error MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c4 .c3 {
@@ -147,8 +153,8 @@ exports[`Error MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #FFE5E9;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -213,6 +219,9 @@ exports[`Info MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c1 svg {
@@ -221,12 +230,12 @@ exports[`Info MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -239,8 +248,8 @@ exports[`Info MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,6 +322,9 @@ exports[`MessageBar can be dismissed 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c1 svg {
@@ -331,6 +343,9 @@ exports[`MessageBar can be dismissed 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c7 svg {
@@ -376,58 +391,37 @@ exports[`MessageBar can be dismissed 1`] = `
   opacity: 0.25;
 }
 
-.c5 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c5 .c10 {
-  width: 16px;
   height: 16px;
-}
-
-.c5:hover,
-.c5:focus,
-.c5.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c5:active,
-.c5.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c5[disabled]:hover,
-.c5[disabled]:active,
-.c5[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 16px;
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c6 {
   margin-left: auto;
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
 }
 
-.c6:hover {
-  background: none;
-  border: none;
+.c6:hover,
+.c6:focus,
+.c6.hover {
+  color: #707781;
+}
+
+.c6:active,
+.c6.active {
+  color: #4C535B;
 }
 
 .c6 svg {
@@ -460,8 +454,8 @@ exports[`MessageBar can be dismissed 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -514,7 +508,6 @@ exports[`MessageBar can be dismissed 1`] = `
     aria-describedby="test-message-bar-iconButton-tooltip"
     aria-hidden={true}
     className="c4 c5 c6"
-    color="neutral"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyUp={[Function]}
@@ -565,6 +558,9 @@ exports[`Warn MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c1 svg {
@@ -573,12 +569,12 @@ exports[`Warn MessageBar 1`] = `
 }
 
 .c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c0 {
@@ -591,8 +587,8 @@ exports[`Warn MessageBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0.25rem;
   background: #F5F6F7;
+  border-radius: 0.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

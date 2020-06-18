@@ -139,10 +139,10 @@ export const SelectOptionGroup = ({
 )
 
 const SelectOptionGroupContainer = styled.div`
-  padding: ${({ theme }) => theme.space.xsmall} 0;
-  border-top: 1px solid;
   border-bottom: 1px solid;
   border-color: ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid;
+  padding: ${({ theme }) => theme.space.xsmall} 0;
   &:first-child,
   & + div {
     border-top: none;
@@ -293,7 +293,11 @@ function SelectMultiCreateOption({
   }
 
   return (
-    <ComboboxMultiOption value={inputValue} highlightText={false} hideCheckMark>
+    <ComboboxMultiOption
+      value={inputValue}
+      highlightText={false}
+      indicator={false}
+    >
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
     </ComboboxMultiOption>
   )

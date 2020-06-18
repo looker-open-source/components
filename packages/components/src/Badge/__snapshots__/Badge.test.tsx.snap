@@ -7,39 +7,13 @@ exports[`Badge renders all intents 1`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #FFFFFF;
-  color: #4F2ABA;
+  background: #e4f5eb;
+  color: #156636;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
-}
-
-<span
-  className="c0"
-  fontWeight="semiBold"
-  intent="plain"
-  size="medium"
->
-  plain
-</span>
-`;
-
-exports[`Badge renders all intents 2`] = `
-.c0 {
-  font-weight: 600;
-  font-size: 0.75rem;
-  line-height: 24px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #e0ffe7;
-  color: #0b6b38;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -52,20 +26,20 @@ exports[`Badge renders all intents 2`] = `
 </span>
 `;
 
-exports[`Badge renders all intents 3`] = `
+exports[`Badge renders all intents 2`] = `
 .c0 {
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #e0f2ff;
-  color: #0059b2;
+  background: #e0f0fb;
+  color: #005085;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -78,20 +52,20 @@ exports[`Badge renders all intents 3`] = `
 </span>
 `;
 
-exports[`Badge renders all intents 4`] = `
+exports[`Badge renders all intents 3`] = `
 .c0 {
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #F5F6F7;
-  color: #4C535B;
+  background: #f2f3f4;
+  color: #646d78;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -104,20 +78,20 @@ exports[`Badge renders all intents 4`] = `
 </span>
 `;
 
-exports[`Badge renders all intents 5`] = `
+exports[`Badge renders all intents 4`] = `
 .c0 {
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #FFEBC4;
-  color: #724B00;
+  background: #fff4e0;
+  color: #a36c00;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -130,20 +104,20 @@ exports[`Badge renders all intents 5`] = `
 </span>
 `;
 
-exports[`Badge renders all intents 6`] = `
+exports[`Badge renders all intents 5`] = `
 .c0 {
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #FFE5E9;
-  color: #B2121F;
+  background: #f8e4e6;
+  color: #7c1321;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -163,13 +137,13 @@ exports[`Badge renders all sizes 1`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #E8E5FF;
-  color: #412399;
+  background: #ede8fb;
+  color: #411cab;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -189,13 +163,13 @@ exports[`Badge renders all sizes 2`] = `
   line-height: 16px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #E8E5FF;
-  color: #412399;
+  background: #ede8fb;
+  color: #411cab;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -215,13 +189,13 @@ exports[`Badge renders all sizes 3`] = `
   line-height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-color: #E8E5FF;
-  color: #412399;
+  background: #ede8fb;
+  color: #411cab;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span
@@ -241,13 +215,13 @@ exports[`Badge renders all sizes 4`] = `
   line-height: 32px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  background-color: #E8E5FF;
-  color: #412399;
+  background: #ede8fb;
+  color: #411cab;
+  border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 50px;
 }
 
 <span

@@ -1,0 +1,47 @@
+{
+  "name": "@looker/eslint-config",
+  "license": "MIT",
+  "author": "Looker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/looker-open-source/eslint-config.git"
+  },
+  "version": "1.0.13",
+  "bugs": {
+    "url": "https://github.com/looker-open-source/eslint-config/issues"
+  },
+  "files": [
+    "index.js",
+    "license-header.js",
+    "ts-workspaces.js"
+  ],
+  "engines": {
+    "node": ">=10",
+    "yarn": ">=1.14.0"
+  },
+  "dependencies": {
+    "@types/vfile-message": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-import-resolver-webpack": "^0.12.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-header": "^3.0.0",
+    "eslint-plugin-mdx": "^1.7.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "minimist": ">=1.2.2"
+  }
+}

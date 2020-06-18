@@ -3,8 +3,8 @@
 exports[`A custom Divider 1`] = `
 .c0 {
   border: none;
-  width: 100%;
   height: 20px;
+  width: 100%;
   background-color: turquoise;
 }
 
@@ -17,8 +17,8 @@ exports[`A custom Divider 1`] = `
 exports[`Default Divider 1`] = `
 .c0 {
   border: none;
-  width: 100%;
   height: 1px;
+  width: 100%;
   background-color: #C1C6CC;
 }
 
@@ -31,8 +31,8 @@ exports[`Default Divider 1`] = `
 exports[`Divider with a variant 1`] = `
 .c0 {
   border: none;
-  width: 100%;
   height: 1px;
+  width: 100%;
   background-color: #707781;
 }
 

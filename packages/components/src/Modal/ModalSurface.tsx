@@ -125,7 +125,7 @@ const Style = styled.div<ModalSurfaceProps>`
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
-  ${(props) => props.surfaceStyles};
+  ${(props) => props.surfaceStyles}
 
   &:focus {
     outline: none;

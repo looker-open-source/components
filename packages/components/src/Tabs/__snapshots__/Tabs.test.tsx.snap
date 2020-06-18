@@ -4,13 +4,13 @@ exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
 
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c1 {
-  border: none;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   background: transparent;
+  border: none;
   border-bottom: 3px solid;
   border-bottom-color: #6C43E0;
   border-radius: 0;
@@ -40,9 +40,9 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 }
 
 .c1:disabled {
-  cursor: default;
-  color: #C1C6CC;
   border-bottom-color: transparent;
+  color: #C1C6CC;
+  cursor: default;
 }
 
 .c2 + .c0 {
@@ -68,13 +68,13 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 .c1 {
-  border: none;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   background: transparent;
+  border: none;
   border-bottom: 3px solid;
   border-bottom-color: transparent;
   border-radius: 0;
@@ -105,9 +105,9 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 .c1:disabled {
-  cursor: default;
-  color: #C1C6CC;
   border-bottom-color: transparent;
+  color: #C1C6CC;
+  cursor: default;
 }
 
 <button

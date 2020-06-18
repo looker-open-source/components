@@ -32,9 +32,9 @@ import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 const textBlends = [30, 40, 60, 70, 80, 100]
 export const uiBlends = [4, 12, 20, 30, 85]
 
-type UIColorLevels = 1 | 2 | 3 | 4 | 5
+type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
 
-const blendColorTransparency = (color: string, level: UIColorLevels) =>
+export const blendColorTransparency = (color: string, level: UIColorLevels) =>
   rgba(color, uiBlends[level - 1] / 100)
 
 export const uiTransparencyBlend = (level: UIColorLevels) =>
@@ -49,6 +49,11 @@ export const mixColors = (
 ) => {
   return mix(mixAmount / 100, foreground, background)
 }
+
+export const intentUIBlend = (intent: string, level: UIColorLevels) => css`
+  ${({ theme: { colors } }) =>
+    mixColors(uiBlends[level], colors[intent], colors.background)}
+`
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

@@ -159,16 +159,16 @@ export const InputChipsBaseInternal = forwardRef(
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
-  position: relative;
   align-items: stretch;
+  position: relative;
 
   ${Flex} {
     width: 100%;
   }
 
   ${InputText} {
-    width: auto;
     min-width: 25%;
     padding-right: 0;
+    width: auto;
   }
 `

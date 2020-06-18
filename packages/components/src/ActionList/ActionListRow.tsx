@@ -80,9 +80,8 @@ const ActionListRowLayout = forwardRef(
 ActionListRowLayout.displayName = 'ActionListRowLayout'
 
 export const ActionListRow = styled(ActionListRowLayout)`
-  display: flex;
-
   background: ${({ disabled, theme }) => disabled && theme.colors.ui1};
+  display: flex;
 
   &:focus,
   &:hover {
@@ -103,10 +102,10 @@ export const ActionListRow = styled(ActionListRowLayout)`
   }
 
   ${ActionListRowSupplementary} {
+    align-items: center;
+    display: flex;
     flex-basis: 2.5rem;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
   }
 `
 

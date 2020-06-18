@@ -24,56 +24,20 @@
 
  */
 
-import { FontWeights, FontSizes, theme } from '@looker/design-tokens'
-
-const { colors } = theme
-
-export interface MenuItemStateStyle {
-  bg: string
-  color: string
-  fontWeight: FontWeights
-  fontSize: FontSizes
-  iconColor: string
-  iconSize: number
-}
-
-export interface MenuItemStyle {
-  current: MenuItemStateStyle
-  hover: MenuItemStateStyle
-  initial: MenuItemStateStyle
-  marker: {
-    color: string
-    size: number
-  }
-}
-
-const initial: MenuItemStateStyle = {
-  bg: colors.background,
-  color: colors.text3,
-  fontSize: 'small',
-  fontWeight: 'normal',
-  iconColor: colors.text6,
-  iconSize: 20,
-}
-
-const hover: MenuItemStateStyle = {
-  ...initial,
-  bg: colors.ui1,
-  color: colors.text0,
-}
-
-const current: MenuItemStateStyle = {
-  ...hover,
-  fontWeight: 'bold',
-  iconColor: colors.text0,
-}
-
-export const defaultMenuItemStyle: MenuItemStyle = {
-  current,
-  hover,
-  initial,
-  marker: {
-    color: colors.text0,
-    size: 4,
+module.exports = {
+  overrides: [
+    {
+      extends: ['plugin:mdx/recommended'],
+      files: ['**/*.mdx'],
+      rules: {
+        'header/header': 'off',
+        'mdx/no-unescaped-entities': 'off',
+        'sort-keys': 'off',
+      },
+    },
+  ],
+  plugins: ['header'],
+  rules: {
+    'header/header': [2, './config/license-header.js'],
   },
 }

@@ -12,6 +12,9 @@ exports[`ModalHeader 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c6 svg {
@@ -56,39 +59,9 @@ exports[`ModalHeader 1`] = `
   opacity: 0.25;
 }
 
-.c3 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c3 .c7 {
-  width: 16px;
   height: 16px;
-}
-
-.c3:hover,
-.c3:focus,
-.c3.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c3:active,
-.c3.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c3[disabled]:hover,
-.c3[disabled]:active,
-.c3[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 16px;
 }
 
 .c1 {
@@ -97,34 +70,48 @@ exports[`ModalHeader 1`] = `
   font-size: 1.125rem;
   margin-right: 2rem;
   color: #262D33;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .c0 {
   padding: 1.25rem;
   padding-right: 2rem;
   padding-left: 2rem;
-  display: grid;
-  grid-template-columns: [icon] auto [text] 1fr [close] auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: grid;
+  grid-template-columns: [icon] auto [text] 1fr [close] auto;
 }
 
 .c5 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c4 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c4:hover,
+.c4:focus,
+.c4.hover {
+  color: #707781;
+}
+
+.c4:active,
+.c4.active {
+  color: #4C535B;
 }
 
 .c4 svg {

@@ -24,26 +24,18 @@
 
  */
 
-import omit from 'lodash/omit'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import { height, HeightProps, width, WidthProps } from 'styled-system'
 import {
-  border,
-  BorderProps,
-  height,
-  HeightProps,
-  width,
-  WidthProps,
-} from 'styled-system'
-import {
-  inputTextDefaults,
+  inputCSS,
+  inputHeight,
   inputTextDisabled,
   inputTextHover,
 } from '../../../Inputs/InputText'
 
 export interface SwatchProps
-  extends BorderProps,
-    WidthProps,
+  extends WidthProps,
     HeightProps,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
@@ -68,22 +60,24 @@ const emptySwatch = `position: relative;
 
 export const Swatch = styled.div<SwatchProps>`
   ${reset}
+
+  ${inputCSS}
   ${width}
   ${height}
-  ${border}
+  background-color: ${(props) => props.color};
+  flex-shrink: 0;
+  margin-top: auto;
+
   &:hover {
     ${inputTextHover}
   }
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-  background-color: ${(props) => props.color};
-  margin-top: auto;
-  flex-shrink: 0;
 
   ${(props) => props.color === 'transparent' && emptySwatch}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 `
 
 Swatch.defaultProps = {
-  ...omit(inputTextDefaults, 'fontSize'),
   color: 'transparent',
-  width: inputTextDefaults.height,
+  height: inputHeight,
+  width: inputHeight,
 }

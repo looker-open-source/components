@@ -26,36 +26,22 @@
 
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
-import {
-  border,
-  BorderProps,
-  typography,
-  layout,
-  LayoutProps,
-  pseudoClasses,
-  PseudoProps,
-  space,
-  SpaceProps,
-  TypographyProps,
-  reset,
-  color,
-  FontSizes,
-} from '@looker/design-tokens'
+import { SpaceProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
 import { Flex } from '../../../Layout'
-import { Icon } from '../../../Icon/Icon'
-import { Text } from '../../../Text/Text'
+import {
+  SimpleLayoutProps,
+  simpleLayoutCSS,
+} from '../../../Layout/utils/simple'
+import { Icon } from '../../../Icon'
+import { Text } from '../../../Text'
 import { useForkedRef } from '../../../utils'
 
 export interface InputTextProps
-  extends BorderProps,
-    Omit<LayoutProps, 'size'>,
-    PseudoProps,
-    SpaceProps,
-    TypographyProps,
+  extends Omit<SimpleLayoutProps, 'size'>,
     Omit<InputProps, 'type'> {
   iconAfter?: IconNames
   iconBefore?: IconNames
@@ -181,15 +167,15 @@ export const InputLayout = styled.div`
   justify-content: space-evenly;
 
   input {
-    border: none;
     background: transparent;
+    border: none;
     flex: 1;
     font-size: ${(props) => props.theme.fontSizes.small};
     height: 100%;
-    width: 100%;
     max-width: 100%;
     outline: none;
     padding: 0;
+    width: 100%;
   }
 
   ::placeholder {
@@ -227,6 +213,14 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
       : ''}
 `
 
+export const inputCSS = css`
+  background: ${({ theme: { colors } }) => colors.field};
+  border: 1px solid ${({ theme: { colors } }) => colors.ui2};
+  border-radius: ${({ theme: { radii } }) => radii.medium};
+  color: ${({ theme: { colors } }) => colors.text2};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+`
+
 export const InputText = styled(InputComponent).attrs(
   (props: InputTextProps) => {
     const padding: SpaceProps = {
@@ -242,33 +236,16 @@ export const InputText = styled(InputComponent).attrs(
     return padding
   }
 )<InputTextProps>`
-  ${reset}
-  ${border}
-  ${color}
-  ${layout}
-  ${space}
-  ${typography}
-  ${pseudoClasses}
-
-  color: ${(props) => props.theme.colors.text2};
-
+  ${simpleLayoutCSS}
+  ${inputCSS}
   ${(props) => (props.disabled ? inputTextDisabled : '')}
-
   ${inputTextValidation}
 `
 
-export const inputTextDefaults = {
-  border: 'solid 1px',
-  borderColor: 'ui2',
-  borderRadius: 'medium',
-  fontSize: 'small' as FontSizes,
-  height: '36px',
-  width: '100%',
-}
-
 InputText.defaultProps = {
-  ...inputTextDefaults,
+  height: inputHeight,
   type: 'text',
+  width: '100%',
 }
 
 InputComponent.displayName = 'InputComponent'

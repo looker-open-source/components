@@ -90,9 +90,9 @@ InlineTextAreaLayout.displayName = 'InlineTextAreaLayout'
 const Input = styled.textarea<InlineTextAreaProps>`
   background: transparent;
   border: none;
+  caret-color: ${({ theme }) => theme.colors.text0};
   color: transparent;
   font: inherit;
-  caret-color: ${({ theme }) => theme.colors.text0};
   height: 100%;
   left: 0;
   outline: none;
@@ -125,17 +125,17 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
-  min-width: 2rem;
   min-height: ${(props) => props.theme.lineHeights.medium};
+  min-width: 2rem;
+  position: relative;
   text-align: inherit;
   white-space: pre-wrap;
 
   :focus,
   :hover {
-    outline: none;
-    border-bottom-color: ${(props) => props.theme.colors.key};
     background-color: ${(props) => props.theme.colors.ui1};
+    border-bottom-color: ${(props) => props.theme.colors.key};
+    outline: none;
   }
 
   :focus {

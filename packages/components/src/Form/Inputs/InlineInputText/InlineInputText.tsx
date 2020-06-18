@@ -89,9 +89,9 @@ InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
+  caret-color: ${({ theme }) => theme.colors.text0};
   color: inherit;
   font: inherit;
-  caret-color: ${({ theme }) => theme.colors.text0};
   height: 100%;
   left: 0;
   outline: none;
@@ -108,31 +108,31 @@ interface VisibleTextProps {
 }
 
 const VisibleText = styled.div<VisibleTextProps>`
-  white-space: pre;
   color: ${({ displayValue, theme }) =>
     displayValue ? 'transparent' : theme.colors.text5};
   text-align: inherit;
+  white-space: pre;
 `
 
 export const InlineInputText = styled(InlineInputTextInternal)`
   ${typography}
-  color: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
     underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
+  color: inherit;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
   min-width: 2rem;
+  position: relative;
   text-align: inherit;
 
   :focus,
   :hover {
-    outline: none;
-    border-bottom-color: ${({ theme }) => theme.colors.key};
     background-color: ${({ theme }) => theme.colors.ui1};
+    border-bottom-color: ${({ theme }) => theme.colors.key};
+    outline: none;
   }
 
   :focus {

@@ -24,37 +24,28 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  reset,
-  space,
-  CompatibleHTMLProps,
-  SpaceProps,
-} from '@looker/design-tokens'
+import React from 'react'
+import { Badge, Space } from '@looker/components'
 
-export interface MenuItemButtonProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement> {}
+export default {
+  title: 'Badge',
+}
 
-export const MenuItemButton = styled.button<MenuItemButtonProps>`
-  ${reset}
-  ${space}
+export const Sizes = () => (
+  <Space around>
+    <Badge size="small">Small</Badge>
+    <Badge size="medium">Medium</Badge>
+    <Badge size="large">Large</Badge>
+  </Space>
+)
 
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  font-size: inherit;
-  flex: 1;
-  outline: none;
-  text-align: left;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: inherit;
-  }
-`
+export const Intents = () => (
+  <Space around>
+    <Badge intent="key">Key</Badge>
+    <Badge intent="positive">Positive</Badge>
+    <Badge intent="inform">Inform</Badge>
+    <Badge intent="neutral">Neutral</Badge>
+    <Badge intent="warn">Warn</Badge>
+    <Badge intent="critical">Critical</Badge>
+  </Space>
+)

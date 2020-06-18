@@ -24,80 +24,46 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, useState } from 'react'
+import React, { FC, ReactNode, useContext, useState } from 'react'
 import styled from 'styled-components'
-import {
-  color,
-  CompatibleHTMLProps,
-  reset,
-  SpaceProps,
-  space,
-} from '@looker/design-tokens'
-import { BackgroundColorProps } from 'styled-system'
-import { HeadingProps } from '../Text/Heading'
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { List } from '../List'
-
-import { MenuItemStyleContext } from './MenuContext'
+import { MenuItemContext } from './MenuContext'
 import { MenuGroupLabel } from './MenuGroupLabel'
-import { MenuSharedProps, useMenuItemStyleContext } from './MenuItem'
 
 export interface MenuGroupProps
-  extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
-    BackgroundColorProps,
-    SpaceProps,
-    MenuSharedProps {
+  extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'> {
+  compact?: boolean
   label?: ReactNode
-  labelProps?: HeadingProps
-  labelStyles?: CSSProperties
+  className?: string
 }
 
-const MenuGroupInternal: FC<MenuGroupProps> = ({
+const MenuGroupLayout: FC<MenuGroupProps> = ({
   children,
+  className,
   compact,
   label,
-  labelProps,
-  labelStyles,
-  customizationProps,
-  ...boxProps
 }) => {
   const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
-
-  const mergedContextValue = useMenuItemStyleContext({
-    compact,
-    customizationProps,
-  })
+  const { compact: contextCompact } = useContext(MenuItemContext)
 
   const context = {
-    ...mergedContextValue,
+    compact: compact === undefined ? contextCompact : compact,
     renderIconPlaceholder,
     setRenderIconPlaceholder,
   }
 
   return (
-    <MenuItemStyleContext.Provider value={context}>
-      <MenuGroupWrapper
-        {...boxProps}
-        backgroundColor={customizationProps && customizationProps.bg}
-        py="small"
-      >
-        {label && (
-          <MenuGroupLabel
-            backgroundColor={customizationProps && customizationProps.bg}
-            labelStyles={labelStyles}
-            labelContent={label}
-            {...labelProps}
-          />
-        )}
-        <List nomarker>{children}</List>
-      </MenuGroupWrapper>
-    </MenuItemStyleContext.Provider>
+    <li className={className}>
+      <MenuItemContext.Provider value={context}>
+        {label && <MenuGroupLabel>{label}</MenuGroupLabel>}
+        <List>{children}</List>
+      </MenuItemContext.Provider>
+    </li>
   )
 }
 
-const MenuGroupWrapper = styled.li<MenuGroupProps>`
+export const MenuGroup = styled(MenuGroupLayout)`
   ${reset}
-  ${space}
-  ${color}
+  padding: ${({ theme: { space } }) => space.small} 0;
 `
-
-export const MenuGroup = styled(MenuGroupInternal)``

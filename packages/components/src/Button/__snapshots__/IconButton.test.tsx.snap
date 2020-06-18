@@ -12,6 +12,9 @@ exports[`IconButton accepts color 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -56,52 +59,36 @@ exports[`IconButton accepts color 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFF2F4;
-  border-color: #FFF2F4;
-  color: #ED3B53;
-}
-
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #CC1F36;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #CC1F36;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #B2121F;
+}
+
+.c2:active,
+.c2.active {
+  color: #990F14;
 }
 
 .c2 svg {
@@ -160,6 +147,9 @@ exports[`IconButton accepts events 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -204,52 +194,36 @@ exports[`IconButton accepts events 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2 svg {
@@ -259,7 +233,6 @@ exports[`IconButton accepts events 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -309,6 +282,9 @@ exports[`IconButton accepts events 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -353,52 +329,36 @@ exports[`IconButton accepts events 2`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2 svg {
@@ -408,7 +368,6 @@ exports[`IconButton accepts events 2`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -458,6 +417,9 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -502,52 +464,36 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2 svg {
@@ -558,7 +504,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   aria-describedby="test-iconButton-tooltip"
   aria-haspopup={true}
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -607,6 +552,9 @@ exports[`IconButton default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -651,52 +599,36 @@ exports[`IconButton default 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2 svg {
@@ -706,7 +638,6 @@ exports[`IconButton default 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -755,6 +686,9 @@ exports[`IconButton outline 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -799,53 +733,37 @@ exports[`IconButton outline 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
   border: 1px solid #C1C6CC;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2:hover,
@@ -872,7 +790,6 @@ exports[`IconButton outline 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -921,6 +838,9 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -965,52 +885,36 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFF2F4;
-  border-color: #FFF2F4;
-  color: #ED3B53;
-}
-
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #CC1F36;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #CC1F36;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #B2121F;
+}
+
+.c2:active,
+.c2.active {
+  color: #990F14;
 }
 
 .c2 svg {
@@ -1069,6 +973,9 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -1113,52 +1020,36 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 12px;
   height: 12px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFF2F4;
-  border-color: #FFF2F4;
-  color: #ED3B53;
-}
-
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #CC1F36;
+  width: 12px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #CC1F36;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #B2121F;
+}
+
+.c2:active,
+.c2.active {
+  color: #990F14;
 }
 
 .c2 svg {
@@ -1217,6 +1108,9 @@ exports[`IconButton resized 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c4 svg {
@@ -1261,52 +1155,36 @@ exports[`IconButton resized 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c1 .c5 {
-  width: 20px;
   height: 20px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c1:active,
-.c1.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+  width: 20px;
 }
 
 .c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .c2 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
+  color: #707781;
+}
+
+.c2:active,
+.c2.active {
+  color: #4C535B;
 }
 
 .c2 svg {
@@ -1316,7 +1194,6 @@ exports[`IconButton resized 1`] = `
 <button
   aria-describedby="test-iconButton-tooltip"
   className="c0 c1 c2"
-  color="neutral"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}

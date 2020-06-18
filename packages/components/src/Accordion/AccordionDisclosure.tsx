@@ -74,8 +74,8 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
 
   align-items: center;
   border: 1px solid transparent;
-  display: flex;
   cursor: pointer;
+  display: flex;
   outline: none;
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
 

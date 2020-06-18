@@ -24,6 +24,7 @@
 
  */
 
+import { omitStyledProps } from '@looker/design-tokens'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text'
@@ -51,7 +52,7 @@ const InternalSidebarGroup: FC<SidebarGroupProps> = ({
   }
 
   return (
-    <section className={className} {...props}>
+    <section className={className} {...omitStyledProps(props)}>
       <SidebarGroupHeading onClick={toggle}>
         <button aria-expanded={isOpen ? 'true' : 'false'}>
           {label}
@@ -71,11 +72,11 @@ const SidebarGroupHeading = styled(Heading).attrs({
   button {
     align-items: center;
     all: inherit;
+    background: transparent;
+    border: none;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: transparent;
-    border: none;
 
     ${Icon} {
       align-self: center;

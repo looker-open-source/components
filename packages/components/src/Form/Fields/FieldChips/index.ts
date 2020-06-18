@@ -24,11 +24,4 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import { Box } from '../../Layout'
-
-export const MenuItemDetail: FC<{ children: ReactNode }> = ({ children }) => (
-  <Box pl="large" ml="auto" mr="medium" fontSize="xsmall" color="text6">
-    {children}
-  </Box>
-)
+export * from './FieldChips'

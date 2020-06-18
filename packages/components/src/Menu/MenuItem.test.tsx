@@ -47,11 +47,3 @@ test('MenuItem - current', () => {
     </MenuItem>
   )
 })
-
-test('MenuItem - current + marker', () => {
-  assertSnapshot(
-    <MenuItem current icon="Home">
-      who!
-    </MenuItem>
-  )
-})

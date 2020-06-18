@@ -27,7 +27,13 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
@@ -35,7 +41,8 @@ import { InputProps } from '../InputProps'
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
-    Omit<InputProps, 'type'> {
+    Omit<InputProps, 'type'>,
+    TypographyProps {
   'aria-labelledby'?: string
   max?: number
   min?: number
@@ -117,7 +124,7 @@ const SliderInternal = forwardRef(
           name={name}
           onChange={handleChange}
           step={step}
-          type="range"
+          offsetPercent={fillPercent}
           value={displayValue}
           aria-labelledby={restProps['aria-labelledby']}
           data-testid="slider-input"
@@ -132,6 +139,7 @@ const SliderInternal = forwardRef(
 
 interface SliderInputProps {
   isFocused?: boolean
+  offsetPercent: number
 }
 
 const sliderThumbFocusCss = css<SliderInputProps>`
@@ -141,12 +149,17 @@ const sliderThumbFocusCss = css<SliderInputProps>`
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
+  left: ${({ offsetPercent = 0 }) => `${offsetPercent}%`};
+  position: absolute;
+  top: 3px;
+  transform: translateX(-50%);
   transition: transform 0.25s, box-shadow 0.25s;
+
   ${({ theme: { colors }, isFocused }) => css`
+    background: ${colors.field};
     border: 3px solid ${colors.key};
     height: 16px;
     width: 16px;
-    background: ${colors.field};
     ${isFocused && sliderThumbFocusCss}
   `}
 `
@@ -155,9 +168,12 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   background: transparent;
   display: block;
   height: 22px;
+  left: 8px;
+  margin-left: 0;
+  margin-right: 0;
   position: relative;
-  width: 100%;
   -webkit-appearance: none; /* stylelint-disable-line */
+  width: calc(100% - 16px);
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none; /* stylelint-disable-line */
@@ -173,11 +189,11 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   }
 
   &::-ms-track {
-    width: 100%;
-    cursor: pointer;
     background: transparent;
     border-color: transparent;
     color: transparent;
+    cursor: pointer;
+    width: 100%;
   }
 
   &::-moz-focus-outer {
@@ -216,14 +232,14 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 `
 
 const SliderTrack = styled.div`
-  width: calc(100% - 16px);
-  height: 4px;
   background: ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
-  position: absolute;
-  top: 50%;
+  height: 4px;
   left: 8px;
   margin-top: -2px;
+  position: absolute;
+  top: 50%;
+  width: calc(100% - 16px);
 `
 
 interface ControlProps {
@@ -232,11 +248,11 @@ interface ControlProps {
 }
 
 const SliderFill = styled.div<ControlProps>`
-  height: 100%;
   background: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
-  width: ${({ offsetPercent }) => offsetPercent}%;
   border-radius: ${({ theme }) => theme.radii.small};
+  height: 100%;
+  width: ${({ offsetPercent }) => offsetPercent}%;
 `
 
 interface SliderValueProps extends SliderInputProps {
@@ -246,32 +262,37 @@ interface SliderValueProps extends SliderInputProps {
 }
 
 const SliderValue = styled.div<SliderValueProps>`
-  color: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.neutral : colors.key};
-  line-height: 1;
-  user-select: none;
-  transform: translateX(-50%) translateY(-1.3rem);
-  left: ${({ offsetPercent }) => offsetPercent}%;
-  position: absolute;
-  text-align: center;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
   background: ${({ theme, isFocused }) =>
     isFocused ? theme.colors.keyAccent : theme.colors.keyText};
+  border-radius: 1rem;
+  color: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.neutral : colors.key};
+  left: ${({ offsetPercent }) => offsetPercent}%;
+  padding: 0 0.5rem;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%) translateY(-0.9rem);
+  user-select: none;
 `
 
 const SliderValueWrapper = styled.div`
+  margin: 0 auto;
   position: relative;
   width: calc(100% - 14px);
-  margin: 0 auto;
 `
 
 export const Slider = styled(SliderInternal)<SliderProps>`
   ${reset}
   ${space}
   ${width}
+  ${typography}
   position: relative;
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { mt: 'large', width: '100%' }
+Slider.defaultProps = {
+  fontSize: 'small',
+  lineHeight: 'xsmall',
+  mt: 'medium',
+  width: '100%',
+}

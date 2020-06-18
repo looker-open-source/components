@@ -5,6 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Added
+
+- FieldChips component
+- Field now support hideLabel and fieldsHideLabel
+- `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
+- `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+
+### Changed
+
+- `Badge` now uses generated colors rather than referencing colors.palette
+- `InputText` interface simplified / narrowed
+  - No longer supports typography or pseudo props
+  - Switch from using defaultProps to `css` block to share common styles with other components
+- `TextArea` interface simplified / narrowed
+  - No longer supports border or typography props
+- `IconButton` improved hover/active states and no background on hover
+
+### Fixed
+
+- `ButtonGroup`/`ButtonToggle` display issues
+  - Smaller text in Safari and Firefox
+  - White space between highlighted item and border (`ButtonToggle`)
+  - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
+- `Icon` will no longer shrink when placed inside a flex layout
+- `Select`/`SelectMulti` keyboard navigation when filtering options
+- `SelectMulti` create option unnecessary left padding
+- `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
+- Major CSS linting clean-up
+
+### Removed
+
+- `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+- `CustomizableAttributes` are no longer supported
+- `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
+  - `Menu` no longer supports `marker` presentation
+- `Label` interface has significantly pared-down (to just DOM-native properties)
+- `psuedo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
+  - Includes changes to `Box` & `IconButton`
+
 ## [0.8.7]
 
 ### Added
@@ -38,6 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` selected option check mark icon size
 - `ButtonGroup` space between rows when wrapping
 - `InputChips` separates chips by newline when pasting
+- `Slider` and `RangeSlider` design tweaks
 
 ### Removed
 
@@ -585,6 +627,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldTextArea` now properly links label + textarea via `id` assignment to textarea
 - `MenuItem` improved for use-case where itemRole="link" interacted poorly with unrelated CSS in applying :hover and :focus pseudo-styles
 
 ## [0.7.13] - 2020-01-16

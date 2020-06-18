@@ -42,17 +42,17 @@ exports[`Form with one child 1`] = `
 }
 
 .c5 input {
-  border: none;
   background: transparent;
+  border: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
   height: 100%;
-  width: 100%;
   max-width: 100%;
   outline: none;
   padding: 0;
+  width: 100%;
 }
 
 .c5::-webkit-input-placeholder {
@@ -83,17 +83,17 @@ exports[`Form with one child 1`] = `
 }
 
 .c6 {
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  font-size: 0.875rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
   color: #343C42;
+  font-size: 0.875rem;
 }
 
 .c3 {
@@ -103,28 +103,28 @@ exports[`Form with one child 1`] = `
 }
 
 .c1 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  width: 100%;
 }
 
 .c1 .c4 {
-  grid-area: input;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  grid-area: input;
 }
 
 .c1 .c7 {
@@ -155,9 +155,6 @@ exports[`Form with one child 1`] = `
   >
     <label
       className="c2 c3"
-      color="text2"
-      fontSize="xsmall"
-      fontWeight="semiBold"
       htmlFor="text-field"
       id="text-field-labelledby"
     >

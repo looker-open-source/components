@@ -40,9 +40,9 @@ export interface TreeGroupProps extends TextColorProps {
 export const TreeGroupLabel = styled.div`
   /* Border is here to get proper alignment with Tree and TreeItem text */
   border: 1px transparent solid;
-  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
   font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
 `
 
 const TreeGroupLayout: FC<TreeGroupProps> = ({

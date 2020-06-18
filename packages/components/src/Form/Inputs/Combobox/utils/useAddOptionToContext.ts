@@ -57,7 +57,7 @@ export function useAddOptionToContext<
     }
     return () => {
       // Delete option from the array but save the index so it can be re-inserted there
-      if (optionsRefCurrent && !windowedOptionsPropRef) {
+      if (optionsRefCurrent && !windowedOptions) {
         const index = optionsRefCurrent.indexOf(option)
         indexRef.current = index
         optionsRefCurrent.splice(index, 1)

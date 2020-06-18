@@ -26,6 +26,7 @@
 
 export * from './FieldCheckbox'
 export * from './FieldCheckboxGroup'
+export * from './FieldChips'
 export * from './FieldColor'
 export * from './FieldDate'
 export * from './FieldDateRange'

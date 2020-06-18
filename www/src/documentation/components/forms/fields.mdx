@@ -154,6 +154,67 @@ There are two "inline" variations:
 }
 ```
 
+## FielsChips
+
+The `<FieldChips />` component is composed of an `<InputChips />` component and a `<Label />` component. Using `<FieldChips />` allows for rendering validation messages, label, details and description. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      label="FieldChip's Label"
+      onChange={handleChange}
+      values={values}
+    />
+  )
+}
+```
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      detail="5/50"
+      description="this is a description"
+      label="FieldChip's Label"
+      onChange={handleChange}
+      values={values}
+    />
+  )
+}
+```
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      label="FieldChip's Label"
+      onChange={handleChange}
+      validationMessage={{
+        message: 'This is an error',
+        type: 'error',
+      }}
+      values={values}
+    />
+  )
+}
+```
+
 ## FieldColor
 
 <Props of="FieldColor" />
@@ -617,6 +678,30 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
     />
   )
 }
+```
+
+## hideLabel and fieldsHideLabel
+
+`fieldsHideLabel` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
+
+Additionally, each individual `Field` accepts a `hideLabel` prop to hide that single label, or override the containing `Fieldset` label settings.
+
+```jsx
+<>
+  <Fieldset fieldsHideLabel legend="This is the Legend 1">
+    <FieldText label="First Label" />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" hideLabel={false} />
+  </Fieldset>
+  <Fieldset legend="This is the Legend 1">
+    <FieldText label="First Label" hideLabel />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" />
+  </Fieldset>
+  <FieldText label="FieldText First Label" hideLabel={false} />
+  <FieldText label="FieldText Second Label" />
+  <FieldText label="FieldText Third Label" hideLabel />
+</>
 ```
 
 ## ValidationMessage

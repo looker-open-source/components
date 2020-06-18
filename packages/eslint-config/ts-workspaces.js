@@ -24,5 +24,13 @@
 
  */
 
-export * from './MenuItem'
-export * from './menuItemCustomization'
+module.exports = {
+  settings: {
+    'import/external-module-folders': ['node_modules', 'packages'],
+    'import/resolver': {
+      typescript: {
+        directory: './tsconfig.json',
+      },
+    },
+  },
+}

@@ -44,6 +44,7 @@ const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
     >
       <TextArea
         {...omitFieldProps(props)}
+        id={id}
         aria-describedby={`${id}-describedby`}
         validationType={validationMessage && validationMessage.type}
       />
