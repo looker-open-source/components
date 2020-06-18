@@ -31,7 +31,6 @@ import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
 const textBlends = [30, 40, 60, 70, 80, 100]
 export const uiBlends = [4, 12, 20, 30, 85]
-
 type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
 
 export const blendColorTransparency = (color: string, level: UIColorLevels) =>
@@ -39,7 +38,7 @@ export const blendColorTransparency = (color: string, level: UIColorLevels) =>
 
 export const uiTransparencyBlend = (level: UIColorLevels) =>
   css`
-    ${({ theme: { colors } }) => blendColorTransparency(colors.text, level)};
+    ${({ theme: { colors } }) => blendColorTransparency(colors.text, level)}
   `
 
 export const mixColors = (
