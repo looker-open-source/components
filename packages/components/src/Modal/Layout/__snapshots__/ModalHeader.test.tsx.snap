@@ -59,39 +59,9 @@ exports[`ModalHeader 1`] = `
   opacity: 0.25;
 }
 
-.c3 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-  padding: 0 0.5rem;
-}
-
 .c3 .c7 {
   height: 16px;
   width: 16px;
-}
-
-.c3:hover,
-.c3:focus,
-.c3.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #939BA5;
-}
-
-.c3:active,
-.c3.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #939BA5;
-}
-
-.c3[disabled]:hover,
-.c3[disabled]:active,
-.c3[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
 }
 
 .c1 {
@@ -127,7 +97,21 @@ exports[`ModalHeader 1`] = `
 }
 
 .c4 {
+  background: none;
+  border: none;
+  color: #939BA5;
   padding: 0;
+}
+
+.c4:hover,
+.c4:focus,
+.c4.hover {
+  color: #707781;
+}
+
+.c4:active,
+.c4.active {
+  color: #4C535B;
 }
 
 .c4 svg {
