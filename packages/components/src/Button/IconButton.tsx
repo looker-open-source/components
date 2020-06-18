@@ -50,6 +50,8 @@ import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { buttonSizeMap } from './size'
 
+const iconButtonDefaultColor = 'default'
+
 interface IconButtonVariantProps {
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
@@ -195,7 +197,7 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { shape, color } = props
+  const { shape, color = iconButtonDefaultColor } = props
 
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
@@ -222,29 +224,27 @@ const outlineCSS = (props: IconButtonProps) => {
   `
 }
 
-export const IconButton = styled(IconButtonComponent).attrs((props) => {
-  return {
-    color: props.color || 'neutral',
-  }
-})<IconButtonProps>`
+export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
 
   background: none;
   border: none;
-  color: ${({ theme, color }) => theme.colors[color]};
+  color: ${({ theme, color = iconButtonDefaultColor }) => theme.colors[color]};
   padding: 0;
 
   &:hover,
   &:focus,
   &.hover {
-    color: ${({ theme, color }) => theme.colors[`${color}Interactive`]};
+    color: ${({ theme, color = iconButtonDefaultColor }) =>
+      theme.colors[`${color}Interactive`]};
   }
 
   &:active,
   &.active {
-    color: ${({ theme, color }) => theme.colors[`${color}Pressed`]};
+    color: ${({ theme, color = iconButtonDefaultColor }) =>
+      theme.colors[`${color}Pressed`]};
   }
 
   ${(props) => props.outline && outlineCSS}
