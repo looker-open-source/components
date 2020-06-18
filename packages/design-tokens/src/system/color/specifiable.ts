@@ -46,7 +46,6 @@ export interface SurfaceColors {
 }
 
 export type IntentNames =
-  | 'link'
   | 'critical'
   | 'warn'
   | 'neutral'

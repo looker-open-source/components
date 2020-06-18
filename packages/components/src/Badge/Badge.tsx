@@ -48,7 +48,6 @@ type BadgeIntent =
   | 'critical'
   | 'inform'
   | 'neutral'
-  | 'plain'
   | 'key'
 
 export interface BadgeProps
@@ -102,15 +101,10 @@ const BadgeLayout = forwardRef(
 BadgeLayout.displayName = 'BadgeLayout'
 
 const badgeIntent = (intent: BadgeIntent) =>
-  intent === 'plain'
-    ? css`
-        background: ${({ theme: { colors } }) => colors.background};
-        color: ${({ theme: { colors } }) => generatePressed(colors.key)};
-      `
-    : css`
-        background: ${intentUIBlend(intent, 1)};
-        color: ${({ theme: { colors } }) => generatePressed(colors[intent])};
-      `
+  css`
+    background: ${intentUIBlend(intent, 1)};
+    color: ${({ theme: { colors } }) => generatePressed(colors[intent])};
+  `
 
 export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${reset}

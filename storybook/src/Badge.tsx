@@ -41,7 +41,6 @@ export const Sizes = () => (
 
 export const Intents = () => (
   <Space around>
-    <Badge intent="plain">Plain</Badge>
     <Badge intent="key">Key</Badge>
     <Badge intent="positive">Positive</Badge>
     <Badge intent="inform">Inform</Badge>
