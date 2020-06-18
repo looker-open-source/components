@@ -195,7 +195,7 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { shape, color = 'key' } = props
+  const { shape, color } = props
 
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
@@ -222,26 +222,29 @@ const outlineCSS = (props: IconButtonProps) => {
   `
 }
 
-export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
+export const IconButton = styled(IconButtonComponent).attrs((props) => {
+  return {
+    color: props.color || 'neutral',
+  }
+})<IconButtonProps>`
   ${reset}
   ${space}
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
 
   background: none;
   border: none;
-  color: ${({ theme, color = 'neutral' }) => theme.colors[color]};
+  color: ${({ theme, color }) => theme.colors[color]};
   padding: 0;
 
   &:hover,
   &:focus,
   &.hover {
-    color: ${({ theme, color = 'neutral' }) =>
-      theme.colors[`${color}Interactive`]};
+    color: ${({ theme, color }) => theme.colors[`${color}Interactive`]};
   }
 
   &:active,
   &.active {
-    color: ${({ theme, color = 'neutral' }) => theme.colors[`${color}Pressed`]};
+    color: ${({ theme, color }) => theme.colors[`${color}Pressed`]};
   }
 
   ${(props) => props.outline && outlineCSS}
