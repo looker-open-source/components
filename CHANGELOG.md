@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Field now support hideLabel and fieldsHideLabel
 - `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
+- `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
 
 ### Changed
 
@@ -34,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+- `CustomizableAttributes` are no longer supported
 - `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
   - `Menu` no longer supports `marker` presentation
 - `psuedo` support from design-tokens (prefer using `styled` when psuedo selectors are required)
