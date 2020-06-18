@@ -44,7 +44,7 @@ const MenuItemLayoutInternal = forwardRef(
   (props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(props, 'compact', 'current', 'focusVisible', 'hasIcon')}
+        {...omit(props, 'compact', 'focusVisible', 'hasIcon')}
         ref={ref}
       />
     )
