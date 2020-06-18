@@ -114,13 +114,12 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
   return (
     <MenuItemLayout
       aria-current={current && 'page'}
-      onClick={handleOnClick}
-      current={current}
-      focusVisible={isFocusVisible}
-      onKeyUp={handleOnKeyUp}
-      onBlur={handleOnBlur}
       compact={compact}
+      focusVisible={isFocusVisible}
       hasIcon={Boolean(renderedIcon)}
+      onBlur={handleOnBlur}
+      onClick={handleOnClick}
+      onKeyUp={handleOnKeyUp}
     >
       <Component href={href} role="menuitem" target={target}>
         {renderedIcon}

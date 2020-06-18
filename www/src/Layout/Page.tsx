@@ -24,22 +24,19 @@
 
  */
 
-import {
-  ComponentsProvider,
-  CustomizableTooltipAttributes,
-} from '@looker/components'
+import { ComponentsProvider, theme } from '@looker/components'
 import React, { FC } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { Props } from '../Shared'
 import MDXComponents from '../MDX'
 
-CustomizableTooltipAttributes.zIndex = 1
+const newTheme = { ...theme, zIndexFloor: 1 }
 
 const all = { ...MDXComponents, Props }
 
 const Page: FC = ({ children }) => {
   return (
-    <ComponentsProvider>
+    <ComponentsProvider theme={newTheme}>
       <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
         rel="stylesheet"

@@ -27,11 +27,10 @@
 import omit from 'lodash/omit'
 import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Icon } from '../Icon'
 
 export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
-  current?: boolean
   compact?: boolean
   focusVisible?: boolean
   hasIcon?: boolean
@@ -53,19 +52,6 @@ const MenuItemLayoutInternal = forwardRef(
 )
 
 MenuItemLayoutInternal.displayName = 'MenuItemLayoutInternal'
-
-const hoverStyles = ({ current }: MenuListItemProps) =>
-  !current &&
-  css`
-    &:hover {
-      background: ${({ theme: { colors } }) => colors.ui1};
-      color: ${({ theme: { colors } }) => colors.text0};
-
-      ${Icon} {
-        color: ${({ theme: { colors } }) => colors.text6};
-      }
-    }
-  `
 
 export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   align-items: center;
@@ -121,13 +107,20 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   }
   `}
 
-  ${hoverStyles}
-
   ${Icon} {
-    color: ${({ current, theme: { colors } }) =>
-      current ? colors.text0 : colors.text6};
+    color: ${({ theme: { colors } }) => colors.text6};
     transition: color
       ${({ theme: { easings, transitions } }) =>
         `${transitions.durationQuick} ${easings.ease}`};
+  }
+
+  :hover,
+  &[aria-current] {
+    background: ${({ theme: { colors } }) => colors.ui1};
+    color: ${({ theme: { colors } }) => colors.text0};
+
+    ${Icon} {
+      color: ${({ theme: { colors } }) => colors.text1};
+    }
   }
 `

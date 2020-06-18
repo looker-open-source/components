@@ -85,19 +85,21 @@ exports[`MenuGroup - JSX label 1`] = `
   text-decoration: none;
 }
 
-.c4:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c4:hover .c5 {
-  color: #C1C6CC;
-}
-
 .c4 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4:hover,
+.c4[aria-current] {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c4:hover .c5,
+.c4[aria-current] .c5 {
+  color: #262D33;
 }
 
 <li
@@ -254,19 +256,21 @@ exports[`MenuGroup - label 1`] = `
   text-decoration: none;
 }
 
-.c4:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c4:hover .c5 {
-  color: #C1C6CC;
-}
-
 .c4 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4:hover,
+.c4[aria-current] {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c4:hover .c5,
+.c4[aria-current] .c5 {
+  color: #262D33;
 }
 
 <li
@@ -399,19 +403,21 @@ exports[`MenuGroup 1`] = `
   text-decoration: none;
 }
 
-.c2:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c2:hover .c3 {
-  color: #C1C6CC;
-}
-
 .c2 .c3 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c2:hover,
+.c2[aria-current] {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c2:hover .c3,
+.c2[aria-current] .c3 {
+  color: #262D33;
 }
 
 <li
