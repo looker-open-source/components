@@ -25,10 +25,11 @@
  */
 
 import React, { useState } from 'react'
-import { Grid, InputChips, Paragraph } from '@looker/components'
+import { FieldChips, Grid, InputChips, Paragraph } from '@looker/components'
 
 export const All = () => (
   <Grid>
+    <FieldChipOptions />
     <Basic />
     <Controlled />
     <ValidationDuplicate />
@@ -40,17 +41,42 @@ export default {
   title: 'Forms/Chips',
 }
 
-export const Basic = () => {
+export const FieldChipOptions = () => {
   const [values, setValues] = useState<string[]>(['apples'])
   const handleChange = (vals: string[]) => setValues(vals)
 
   return (
-    <InputChips
-      values={values}
-      onChange={handleChange}
-      placeholder="Uncontrolled input text"
-    />
+    <Grid columns={1}>
+      <FieldChips
+        label="FieldChip's Label"
+        onChange={handleChange}
+        values={values}
+      />
+      <FieldChips
+        detail="5/50"
+        description="this is a description"
+        label="FieldChip's Label"
+        onChange={handleChange}
+        values={values}
+      />
+      <FieldChips
+        label="FieldChip's Label"
+        onChange={handleChange}
+        validationMessage={{
+          message: 'This is an error',
+          type: 'error',
+        }}
+        values={values}
+      />
+    </Grid>
   )
+}
+
+export const Basic = () => {
+  const [values, setValues] = useState<string[]>(['apples'])
+  const handleChange = (vals: string[]) => setValues(vals)
+
+  return <InputChips values={values} onChange={handleChange} />
 }
 
 export const Controlled = () => {

@@ -24,21 +24,22 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldChips'
-export * from './FieldColor'
-export * from './FieldDate'
-export * from './FieldDateRange'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import 'jest-styled-components'
+import React from 'react'
+import { mountWithTheme } from '@looker/components-test-utils'
+import { FieldChips } from './FieldChips'
+
+test('A FieldChip with description', () => {
+  const handleChange = jest.fn()
+
+  const wrapper = mountWithTheme(
+    <FieldChips
+      description="no vegetables allowed"
+      id="FieldChipsID"
+      label="Chip label"
+      onChange={handleChange}
+      values={[]}
+    />
+  )
+  expect(wrapper.text()).toMatch(`Chip labelno vegetables allowed`)
+})
