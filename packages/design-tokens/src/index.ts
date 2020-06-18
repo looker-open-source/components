@@ -34,7 +34,6 @@ export { palette }
 export { prismTheme } from './prismTheme'
 
 // Useful external utilities
-export * from './customizeable_attributes'
 export * from './utils/animations'
 export * from './utils/omit'
 export { generateThemeFromCoreColors } from './utils/theme'

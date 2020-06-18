@@ -24,7 +24,6 @@
 
  */
 
-import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, {
@@ -105,8 +104,6 @@ export interface UseTooltipProps {
    */
   surfaceStyles?: SurfaceStyleProps
 }
-
-export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
 type TooltipRenderProp = (tooltipProps: {
   'aria-describedby': string
@@ -214,7 +211,6 @@ export function useTooltip({
           placement={placement}
           ref={ref}
           style={style}
-          zIndex={CustomizableTooltipAttributes.zIndex}
           backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
