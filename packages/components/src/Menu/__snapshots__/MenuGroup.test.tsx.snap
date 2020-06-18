@@ -131,7 +131,6 @@ exports[`MenuGroup - JSX label 1`] = `
   >
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -144,7 +143,6 @@ exports[`MenuGroup - JSX label 1`] = `
     </li>
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -157,7 +155,6 @@ exports[`MenuGroup - JSX label 1`] = `
     </li>
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -299,7 +296,6 @@ exports[`MenuGroup - label 1`] = `
   >
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -312,7 +308,6 @@ exports[`MenuGroup - label 1`] = `
     </li>
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -325,7 +320,6 @@ exports[`MenuGroup - label 1`] = `
     </li>
     <li
       className="c4"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -429,7 +423,6 @@ exports[`MenuGroup 1`] = `
   >
     <li
       className="c2"
-      hasIcon={false}
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}

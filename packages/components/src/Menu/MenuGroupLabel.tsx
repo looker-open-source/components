@@ -43,7 +43,7 @@ export const MenuGroupLabel: FC = ({ children }) => {
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
-        fontSize={'small'}
+        fontSize="small"
         as="h2"
         px="medium"
         py="xsmall"

@@ -28,17 +28,13 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
-import { Icon } from '../../Icon'
-import { MenuContext, MenuItemStyleContext } from '../MenuContext'
+import { Icon } from '../Icon'
+import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
-export interface MenuSharedProps {
+export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   compact?: boolean
-}
 
-export interface MenuItemProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    MenuSharedProps {
   detail?: ReactNode
   icon?: IconNames
   /**
@@ -71,7 +67,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
-  const { compact: contextCompact } = useContext(MenuItemStyleContext)
+  const { compact: contextCompact } = useContext(MenuItemContext)
   const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
@@ -95,7 +91,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
   }
 
   const { renderIconPlaceholder, setRenderIconPlaceholder } = useContext(
-    MenuItemStyleContext
+    MenuItemContext
   )
 
   useEffect(() => {

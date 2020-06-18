@@ -28,15 +28,14 @@ import React, { FC, ReactNode, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { List } from '../List'
-import { MenuItemStyleContext } from './MenuContext'
+import { MenuItemContext } from './MenuContext'
 import { MenuGroupLabel } from './MenuGroupLabel'
-import { MenuSharedProps } from './MenuItem'
 
 export interface MenuGroupProps
-  extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
-    MenuSharedProps {
-  className?: string
+  extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'> {
+  compact?: boolean
   label?: ReactNode
+  className?: string
 }
 
 const MenuGroupLayout: FC<MenuGroupProps> = ({
@@ -46,7 +45,7 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
   label,
 }) => {
   const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
-  const { compact: contextCompact } = useContext(MenuItemStyleContext)
+  const { compact: contextCompact } = useContext(MenuItemContext)
 
   const context = {
     compact: compact === undefined ? contextCompact : compact,
@@ -56,10 +55,10 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
 
   return (
     <li className={className}>
-      <MenuItemStyleContext.Provider value={context}>
+      <MenuItemContext.Provider value={context}>
         {label && <MenuGroupLabel>{label}</MenuGroupLabel>}
         <List>{children}</List>
-      </MenuItemStyleContext.Provider>
+      </MenuItemContext.Provider>
     </li>
   )
 }

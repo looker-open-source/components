@@ -206,7 +206,6 @@ exports[`MenuItem - current 1`] = `
 <li
   aria-current="page"
   className="c0"
-  hasIcon={true}
   onBlur={[Function]}
   onClick={[Function]}
   onKeyUp={[Function]}
@@ -318,7 +317,6 @@ exports[`MenuItem - detail 1`] = `
 
 <li
   className="c0"
-  hasIcon={false}
   onBlur={[Function]}
   onClick={[Function]}
   onKeyUp={[Function]}
@@ -443,7 +441,6 @@ exports[`MenuItem - icon 1`] = `
 
 <li
   className="c0"
-  hasIcon={true}
   onBlur={[Function]}
   onClick={[Function]}
   onKeyUp={[Function]}
@@ -548,7 +545,6 @@ exports[`MenuItem 1`] = `
 
 <li
   className="c0"
-  hasIcon={false}
   onBlur={[Function]}
   onClick={[Function]}
   onKeyUp={[Function]}

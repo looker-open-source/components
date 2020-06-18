@@ -36,6 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
+- `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
+  - `Menu` no longer supports `marker` presentation
 - `psuedo` support from design-tokens (prefer using `styled` when psuedo selectors are required)
   - Includes changes to `Box` & `IconButton`
 - `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
