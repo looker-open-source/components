@@ -127,8 +127,8 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemPrimary} {
-    padding: ${({ theme }) => theme.space.none};
     background-color: transparent;
+    padding: ${({ theme }) => theme.space.none};
   }
 
   ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemSpace}:focus-within {
