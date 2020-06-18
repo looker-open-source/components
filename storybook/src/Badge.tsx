@@ -24,46 +24,29 @@
 
  */
 
-import { BlendColors } from './blends'
-import { StatefulColors } from './stateful'
-import { IntentColors, SurfaceColors } from './specifiable'
+import React from 'react'
+import { Badge, Space } from '@looker/components'
 
-export interface CoreColors {
-  /**
-   * Default page background
-   * Used for: application background
-   * @default white
-   */
-  background: string
-  /**
-   * TODO
-   * Used for: Text
-   * @default charcoal800
-   */
-  text: string
-  /**
-   * Key color is applied strategically across the UI
-   * Used for: default action buttons, toggle switches, interactive component accents
-   * @default purple400
-   */
-  key: string
+export default {
+  title: 'Badge',
 }
 
-export interface SpecifiableColors
-  extends CoreColors,
-    SurfaceColors,
-    IntentColors {}
+export const Sizes = () => (
+  <Space around>
+    <Badge size="small">Small</Badge>
+    <Badge size="medium">Medium</Badge>
+    <Badge size="large">Large</Badge>
+  </Space>
+)
 
-export interface Colors
-  extends SpecifiableColors,
-    BlendColors,
-    StatefulColors {}
-
-export type { IntentNames } from './specifiable'
-export type { BlendColors } from './blends'
-export type {
-  StatefulColor,
-  StatefulColors,
-  StatefulColorChoices,
-} from './stateful'
-export type { ColorProps, TextColorProps } from 'styled-system'
+export const Intents = () => (
+  <Space around>
+    <Badge intent="plain">Plain</Badge>
+    <Badge intent="key">Key</Badge>
+    <Badge intent="positive">Positive</Badge>
+    <Badge intent="inform">Inform</Badge>
+    <Badge intent="neutral">Neutral</Badge>
+    <Badge intent="warn">Warn</Badge>
+    <Badge intent="critical">Critical</Badge>
+  </Space>
+)
