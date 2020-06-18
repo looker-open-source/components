@@ -34,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
-- `psuedo` support from design-tokens (prefer using `styled` when psuedo selectors are required)
+- `Label` interface has significantly pared-down (to just DOM-native properties)
+- `psuedo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
 
 ## [0.8.7]
