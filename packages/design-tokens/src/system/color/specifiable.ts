@@ -45,6 +45,13 @@ export interface SurfaceColors {
   inverseOn: string
 }
 
+export type IntentNames =
+  | 'critical'
+  | 'warn'
+  | 'neutral'
+  | 'positive'
+  | 'inform'
+
 export interface IntentColors {
   /**
    * Link text color

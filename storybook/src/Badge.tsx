@@ -23,21 +23,29 @@
  SOFTWARE.
 
  */
-import { assertSnapshot } from '@looker/components-test-utils'
+
 import React from 'react'
-import { Badge } from './Badge'
+import { Badge, Space } from '@looker/components'
 
-test('Badge renders all sizes', () => {
-  assertSnapshot(<Badge>default (medium)</Badge>)
-  assertSnapshot(<Badge size="small">small</Badge>)
-  assertSnapshot(<Badge size="medium">medium</Badge>)
-  assertSnapshot(<Badge size="large">large</Badge>)
-})
+export default {
+  title: 'Badge',
+}
 
-test('Badge renders all intents', () => {
-  assertSnapshot(<Badge intent="positive">positive</Badge>)
-  assertSnapshot(<Badge intent="inform">info</Badge>)
-  assertSnapshot(<Badge intent="neutral">neutral</Badge>)
-  assertSnapshot(<Badge intent="warn">warning</Badge>)
-  assertSnapshot(<Badge intent="critical">critical</Badge>)
-})
+export const Sizes = () => (
+  <Space around>
+    <Badge size="small">Small</Badge>
+    <Badge size="medium">Medium</Badge>
+    <Badge size="large">Large</Badge>
+  </Space>
+)
+
+export const Intents = () => (
+  <Space around>
+    <Badge intent="key">Key</Badge>
+    <Badge intent="positive">Positive</Badge>
+    <Badge intent="inform">Inform</Badge>
+    <Badge intent="neutral">Neutral</Badge>
+    <Badge intent="warn">Warn</Badge>
+    <Badge intent="critical">Critical</Badge>
+  </Space>
+)

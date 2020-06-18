@@ -59,6 +59,7 @@ export interface Colors
     BlendColors,
     StatefulColors {}
 
+export type { IntentNames } from './specifiable'
 export type { BlendColors } from './blends'
 export type {
   StatefulColor,

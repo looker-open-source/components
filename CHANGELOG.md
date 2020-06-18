@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Badge` now uses generated colors rather than referencing colors.palette
 - `InputText` interface simplified / narrowed
   - No longer supports typography or pseudo props
   - Switch from using defaultProps to `css` block to share common styles with other components
