@@ -43,10 +43,7 @@ export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
 const MenuItemLayoutInternal = forwardRef(
   (props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
     return (
-      <li
-        {...omit(props, 'compact', 'focusVisible', 'hasIcon')}
-        ref={ref}
-      />
+      <li {...omit(props, 'compact', 'focusVisible', 'hasIcon')} ref={ref} />
     )
   }
 )
