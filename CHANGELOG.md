@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
 - `IconButton` improved hover/active states and no background on hover
+- `Tree` and `TreeItem`
+  - Accept `detailAccessory` and `detailHoverDisclosure` props
+  - `TreeItem` styling moved from `Tree` into `TreeItem` itself
+  - `TreeItem` layout follows primary-secondary structure
 
 ### Fixed
 
