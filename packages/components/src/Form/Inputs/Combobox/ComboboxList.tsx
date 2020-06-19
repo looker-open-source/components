@@ -240,6 +240,7 @@ const ComboboxUl = styled.ul<ComboboxListProps>`
   list-style-type: none;
   margin: 0;
   max-height: 30rem;
+  outline: none;
   ${layout}
 `
 

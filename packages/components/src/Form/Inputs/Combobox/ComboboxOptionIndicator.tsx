@@ -40,7 +40,8 @@ import {
   OptionContext,
 } from './ComboboxContext'
 
-export type OptionIndicatorProps = ComboboxOptionStatuses & ComboboxOptionObject
+export type OptionIndicatorProps = Partial<ComboboxOptionStatuses> &
+  ComboboxOptionObject
 
 export type ComboboxOptionIndicatorFunction = (
   indicatorProps: OptionIndicatorProps
@@ -53,7 +54,7 @@ function isIndicatorFunction(
 }
 
 export interface ComboboxOptionIndicatorProps
-  extends ComboboxOptionStatuses,
+  extends Partial<ComboboxOptionStatuses>,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Customize the area to the left of the label, which by default
