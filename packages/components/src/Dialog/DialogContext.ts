@@ -41,3 +41,8 @@ export interface DialogContextProps {
 const dialogContext: DialogContextProps = {}
 
 export const DialogContext = createContext(dialogContext)
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalContext = DialogContext

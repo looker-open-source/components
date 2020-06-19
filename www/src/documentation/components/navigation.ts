@@ -166,8 +166,8 @@ const components: NavigationSection = {
         { path: 'dialog', title: 'Dialog' },
         { path: 'prompt', title: 'Prompt' },
       ],
-      path: 'modals',
-      title: 'Modal',
+      path: 'dialogs',
+      title: 'Dialog',
     },
     {
       children: [
