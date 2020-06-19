@@ -36,7 +36,8 @@ import React, {
   SyntheticEvent,
 } from 'react'
 import { Box } from '../Layout'
-import { ModalPortal, DialogContext } from '../Dialog'
+import { Portal } from '../Portal'
+import { DialogContext } from '../Dialog'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import {
   useCallbackRef,
@@ -486,7 +487,7 @@ export function usePopover({
         scrollLockEnabled,
       }}
     >
-      <ModalPortal ref={scrollRef}>
+      <Portal ref={scrollRef}>
         <OverlaySurface
           arrow={arrow}
           arrowProps={arrowProps}
@@ -509,7 +510,7 @@ export function usePopover({
             {content}
           </Box>
         </OverlaySurface>
-      </ModalPortal>
+      </Portal>
     </DialogContext.Provider>
   )
   return {

@@ -24,12 +24,4 @@
 
  */
 
-export * from './Confirm'
-export * from './Dialog'
-export * from './Layout'
-export * from './Modal'
-export * from './ModalBackdrop'
-export * from './DialogContext'
-export * from './ModalManager'
-export * from './ModalSurface'
-export * from './Prompt'
+export * from './Portal'

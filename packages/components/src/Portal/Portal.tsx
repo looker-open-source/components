@@ -24,7 +24,11 @@
 
  */
 
-export const getModalRoot = () => {
+import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
+import { createPortal } from 'react-dom'
+import styled from 'styled-components'
+
+const getPortalRoot = () => {
   const existing = document.getElementById('modal-root')
 
   if (existing) {
@@ -37,3 +41,48 @@ export const getModalRoot = () => {
     return newElement
   }
 }
+
+export const Portal = forwardRef(
+  ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
+    const el = useRef(document.createElement('div'))
+
+    useEffect(() => {
+      const modalRoot = getPortalRoot()
+      if (!modalRoot) return
+
+      const elCurrent = el.current
+      modalRoot.appendChild(elCurrent)
+
+      return () => {
+        modalRoot.removeChild(elCurrent)
+      }
+    }, [el])
+
+    const content = (
+      <InvisiBox ref={ref} tabIndex={-1}>
+        {children}
+      </InvisiBox>
+    )
+
+    return createPortal(content, el.current)
+  }
+)
+
+Portal.displayName = 'Portal'
+
+const InvisiBox = styled.div<{ zIndex?: number }>`
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};
+
+  * {
+    pointer-events: auto;
+  }
+`
