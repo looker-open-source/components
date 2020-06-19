@@ -133,12 +133,20 @@ exports[`Space default 1`] = `
   flex-direction: row;
 }
 
-.c0.c0 > * {
-  margin-left: 1rem;
+@supports (-moz-appearance:none) {
+  .c0 {
+    gap: 1rem;
+  }
 }
 
-.c0.c0 > *:first-child {
-  margin-left: 0rem;
+@supports not (-moz-appearance:none) {
+  .c0.c0 > * {
+    margin-right: 1rem;
+  }
+
+  .c0.c0 > *:last-child {
+    margin-right: 0rem;
+  }
 }
 
 <div
@@ -215,12 +223,20 @@ exports[`Space reversed 1`] = `
   flex-direction: row-reverse;
 }
 
-.c0.c0 > * {
-  margin-left: 1rem;
+@supports (-moz-appearance:none) {
+  .c0 {
+    gap: 1rem;
+  }
 }
 
-.c0.c0 > *:last-child {
-  margin-left: 0rem;
+@supports not (-moz-appearance:none) {
+  .c0.c0 > * {
+    margin-right: 1rem;
+  }
+
+  .c0.c0 > *:first-child {
+    margin-right: 0rem;
+  }
 }
 
 <div
@@ -258,12 +274,20 @@ exports[`Space with specified gap 1`] = `
   flex-direction: row;
 }
 
-.c0.c0 > * {
-  margin-left: 2rem;
+@supports (-moz-appearance:none) {
+  .c0 {
+    gap: 2rem;
+  }
 }
 
-.c0.c0 > *:first-child {
-  margin-left: 0rem;
+@supports not (-moz-appearance:none) {
+  .c0.c0 > * {
+    margin-right: 2rem;
+  }
+
+  .c0.c0 > *:last-child {
+    margin-right: 0rem;
+  }
 }
 
 <div

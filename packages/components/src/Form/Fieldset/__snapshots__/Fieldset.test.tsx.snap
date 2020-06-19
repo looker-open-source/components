@@ -16,14 +16,6 @@ exports[`Fieldset 1`] = `
   flex-direction: column;
 }
 
-.c1.c1 > * {
-  margin-top: 1rem;
-}
-
-.c1.c1 > *:first-child {
-  margin-top: 0rem;
-}
-
 .c3 {
   width: 100%;
   display: -webkit-box;
@@ -37,14 +29,6 @@ exports[`Fieldset 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c3.c3 > * {
-  margin-top: 0.75rem;
-}
-
-.c3.c3 > *:first-child {
-  margin-top: 0rem;
 }
 
 .c8 {
@@ -185,6 +169,38 @@ exports[`Fieldset 1`] = `
 
 .c4 .c13 {
   margin-top: 0.5rem;
+}
+
+@supports (-moz-appearance:none) {
+  .c1 {
+    gap: 1rem;
+  }
+}
+
+@supports not (-moz-appearance:none) {
+  .c1.c1 > * {
+    margin-top: 1rem;
+  }
+
+  .c1.c1 > *:first-child {
+    margin-top: 0rem;
+  }
+}
+
+@supports (-moz-appearance:none) {
+  .c3 {
+    gap: 0.75rem;
+  }
+}
+
+@supports not (-moz-appearance:none) {
+  .c3.c3 > * {
+    margin-top: 0.75rem;
+  }
+
+  .c3.c3 > *:first-child {
+    margin-top: 0rem;
+  }
 }
 
 <div

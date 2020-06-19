@@ -24,9 +24,9 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
-import { defaultSpaceSize, spaceCSS, SpaceHelperProps } from './Space'
+import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
 
 interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
@@ -54,19 +54,28 @@ const align = variant({
   },
 })
 
+const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
+  @supports (-moz-appearance: none) {
+    gap: ${({ theme: { space } }) => space[gap]};
+  }
+
+  @supports not (-moz-appearance: none) {
+    && > * {
+      margin-top: ${({ theme: { space } }) => space[gap]};
+    }
+
+    ${({ theme: { space } }) =>
+      reverse
+        ? `&& > *:last-child { margin-top: ${space.none}; }`
+        : `&& > *:first-child { margin-top: ${space.none}; }`}
+  }
+`
+
 export const SpaceVertical = styled.div<SpaceVerticalProps>`
   ${spaceCSS}
   ${align}
+  ${flexGap}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
-
-  && > * {
-    margin-top: ${({ theme, gap }) => theme.space[gap || defaultSpaceSize]};
-  }
-
-  ${({ theme, reverse }) =>
-    reverse
-      ? `&& > *:last-child { margin-top: ${theme.space.none}; }`
-      : `&& > *:first-child { margin-top: ${theme.space.none}; }`}
 `
 
 SpaceVertical.defaultProps = { align: 'stretch', width: '100%' }

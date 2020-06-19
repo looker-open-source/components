@@ -39,12 +39,20 @@ exports[`ModalFooter with Button 1`] = `
   flex-direction: row-reverse;
 }
 
-.c1.c1 > * {
-  margin-left: 1rem;
+@supports (-moz-appearance:none) {
+  .c1 {
+    gap: 1rem;
+  }
 }
 
-.c1.c1 > *:last-child {
-  margin-left: 0rem;
+@supports not (-moz-appearance:none) {
+  .c1.c1 > * {
+    margin-right: 1rem;
+  }
+
+  .c1.c1 > *:first-child {
+    margin-right: 0rem;
+  }
 }
 
 <footer
@@ -101,12 +109,20 @@ exports[`ModalFooter with ModalContext 1`] = `
   flex-direction: row-reverse;
 }
 
-.c1.c1 > * {
-  margin-left: 1rem;
+@supports (-moz-appearance:none) {
+  .c1 {
+    gap: 1rem;
+  }
 }
 
-.c1.c1 > *:last-child {
-  margin-left: 0rem;
+@supports not (-moz-appearance:none) {
+  .c1.c1 > * {
+    margin-right: 1rem;
+  }
+
+  .c1.c1 > *:first-child {
+    margin-right: 0rem;
+  }
 }
 
 <footer

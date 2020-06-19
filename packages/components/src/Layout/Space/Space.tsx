@@ -78,7 +78,7 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   stretch?: boolean
 }
 
-export const defaultSpaceSize = 'medium'
+export const defaultGap = 'medium'
 
 export const spaceCSS = css`
   ${simpleLayoutCSS}
@@ -87,22 +87,31 @@ export const spaceCSS = css`
   display: flex;
 `
 
-const fauxFlexGap = (space: SpaceHelperProps) => css`
-  ${({ theme }) =>
-    space.flexWrap === 'wrap'
-      ? `margin-left: -${theme.space[space.gap || defaultSpaceSize]};`
-      : ''}
+/**
+ * Sadly, there's no way to detect if a browser supports flexbox-gap ("gap" is supported via grid)
+ * Chrome 84 will purportedly support flexbox "gap" if it does so we'll look for a fix that allows
+ * for specific targeting of that browser as well
+ *
+ * The `gap` implementation properly adds space between items both horizontally and vertically
+ * when `flexGap="gap"` whereas the home-grown version only produces gaps on the horizontal axis.
+ *
+ */
 
-  && > * {
-    margin-left: ${({ theme }) => theme.space[space.gap || defaultSpaceSize]};
+const flexGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
+  @supports (-moz-appearance: none) {
+    gap: ${({ theme: { space } }) => space[gap]};
   }
 
-  ${({ theme }) =>
-    space.flexWrap === 'wrap'
-      ? ''
-      : space.reverse
-      ? `&& > *:last-child { margin-left: ${theme.space.none}; }`
-      : `&& > *:first-child { margin-left: ${theme.space.none}; }`}
+  @supports not (-moz-appearance: none) {
+    && > * {
+      margin-right: ${({ theme: { space } }) => space[gap]};
+    }
+
+    ${({ theme: { space } }) =>
+      reverse
+        ? `&& > *:first-child { margin-right: ${space.none}; }`
+        : `&& > *:last-child { margin-right: ${space.none}; }`}
+  }
 `
 
 const verticalAlign = variant({
@@ -128,8 +137,7 @@ export const Space = styled.div<SpaceHelperProps>`
   ${({ around }) => around && 'justify-content: space-around;'}
   ${({ between }) => between && 'justify-content: space-between;'}
   ${({ evenly }) => evenly && 'justify-content: space-evenly;'}
-  ${({ around, between, evenly }) =>
-    !around && !between && !evenly && fauxFlexGap}
+  ${({ around, between, evenly }) => !around && !between && !evenly && flexGap}
 `
 
 Space.defaultProps = { alignItems: 'center', width: '100%' }

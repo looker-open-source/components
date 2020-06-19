@@ -31,6 +31,7 @@ import {
   Icon,
   Paragraph,
   Status,
+  IconButton,
 } from '@looker/components'
 import React from 'react'
 
@@ -103,4 +104,50 @@ export const SpaceCrush = () => (
       est laborum.
     </Paragraph>
   </Space>
+)
+
+export const SpaceWrap = () => (
+  <>
+    <Space maxWidth="20rem" flexWrap="wrap">
+      <IconButton label="boo" icon="Trash" />
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+    </Space>
+
+    <Space reverse maxWidth="20rem" flexWrap="wrap">
+      <IconButton label="boo" icon="Trash" />
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+      <button>boo</button>
+    </Space>
+  </>
 )
