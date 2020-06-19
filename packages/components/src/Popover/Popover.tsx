@@ -34,6 +34,8 @@ import React, {
   RefObject,
   Ref,
   SyntheticEvent,
+  isValidElement,
+  cloneElement,
 } from 'react'
 import { Box } from '../Layout'
 import { ModalPortal, ModalContext } from '../Modal'
@@ -134,20 +136,29 @@ export interface UsePopoverProps {
   focusTrap?: boolean
 }
 
+type PopoverRenderProp = (
+  onClick: (event: SyntheticEvent) => void,
+  /**
+   * Used by popper.js to position the OverlaySurface relative to the trigger
+   */
+  ref: Ref<any>,
+  className?: string,
+  ariaHaspopup?: boolean
+) => ReactNode
+
+function isRenderProp(
+  children: ReactNode | PopoverRenderProp
+): children is PopoverRenderProp {
+  return typeof children === 'function'
+}
+
 export interface PopoverProps extends UsePopoverProps {
   /**
    * Component to wrap. The HOC will listen for mouse events on this
    * component, maintain the state of isOpen accordingly, and pass that state into
    * the modal renderProp.
    */
-  children: (
-    onClick: (event: SyntheticEvent) => void,
-    /**
-     * Used by popper.js to position the OverlaySurface relative to the trigger
-     */
-    ref: Ref<any>,
-    className?: string
-  ) => JSX.Element
+  children: ReactNode | PopoverRenderProp
 
   /**
    * The element which hovering on/off of will show/hide the triggering element
@@ -527,16 +538,44 @@ export function Popover({
   hoverDisclosureRef,
   ...props
 }: PopoverProps) {
-  const { popover, open, ref, isOpen } = usePopover(props)
-  const childrenOutput = children(open, ref, isOpen ? 'active' : '')
+  const popoverProps = usePopover(props)
+
+  let target = children
+
+  // const popoverPropsLabeled = {
+  //   ...omit(popoverProps, ['popover', 'isOpen']),
+  // }
+
+  if (isValidElement(children)) {
+    target = cloneElement(children, {
+      'aria-haspopup': true,
+      className: popoverProps.isOpen
+        ? `${children.props.className} hover`
+        : children.props.className,
+      onClick: popoverProps.open,
+      ref: popoverProps.ref,
+    })
+  } else if (isRenderProp(children)) {
+    target = children(
+      popoverProps.open,
+      popoverProps.ref,
+      popoverProps.isOpen ? 'hover' : '',
+      true
+    )
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Element "${typeof target}" can't be used as target for Popover`
+    )
+  }
 
   const [isHovered] = useHovered(hoverDisclosureRef)
-  const triggerShown = isHovered || isOpen
+  const triggerShown = isHovered || popoverProps.isOpen
 
   return (
     <>
-      {popover}
-      {triggerShown && childrenOutput}
+      {popoverProps.popover}
+      {triggerShown && target}
     </>
   )
 }

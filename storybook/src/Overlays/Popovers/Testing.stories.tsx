@@ -24,7 +24,7 @@
 
  */
 
-import React, { Ref, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   Box,
   Button,
@@ -77,6 +77,7 @@ export const PopoverFocusTrap = () => {
   function getButtonAlert(text: string) {
     return () => alert(text)
   }
+
   return (
     <Box mt="large">
       <Heading>Focus Trap Test</Heading>
@@ -125,11 +126,7 @@ export const PopoverFocusTrap = () => {
           </PopoverContent>
         }
       >
-        {(onClick, ref, className) => (
-          <Button mt="medium" onClick={onClick} ref={ref} className={className}>
-            Open Focus Trap Test Popover
-          </Button>
-        )}
+        <Button mt="medium">Open Focus Trap Test Popover</Button>
       </Popover>
     </Box>
   )
@@ -167,6 +164,34 @@ export const MenuOpenDialog = () => {
   )
 }
 
+const popoverContent = (
+  <PopoverContent>
+    <Paragraph width={300} p="xxlarge">
+      👋 Hello, I am a popover!
+    </Paragraph>
+  </PopoverContent>
+)
+export const RenderProps = () => (
+  <Popover content={popoverContent}>
+    {(onClick, ref, className, ariaHaspopup) => (
+      <button
+        onClick={onClick}
+        ref={ref}
+        className={className}
+        aria-haspopup={ariaHaspopup}
+      >
+        Test
+      </button>
+    )}
+  </Popover>
+)
+
+export const RenderPropsSpread = () => (
+  <Popover content={popoverContent}>
+    {(...props) => <button {...props}>Test</button>}
+  </Popover>
+)
+
 export const Placement = () => {
   const popoverContent = (
     <PopoverContent>
@@ -176,56 +201,16 @@ export const Placement = () => {
     </PopoverContent>
   )
 
-  const button = (
-    title: string,
-    onClick: (e: any) => void,
-    ref: Ref<HTMLButtonElement>,
-    className?: string
-  ) => (
-    <Button
-      aria-haspopup="true"
-      onClick={onClick}
-      ref={ref}
-      className={className}
-      mr="xlarge"
-    >
-      {title}
-    </Button>
-  )
-
   return (
     <Box mt="large">
       <Heading>Placement</Heading>
       <Box my="medium">
         <Popover content={popoverContent}>
-          {(onClick, ref, className) =>
-            button('Default', onClick, ref, className)
-          }
+          <Button>Default</Button>
         </Popover>
-        <Popover content={popoverContent} placement="right">
-          {(onClick, ref, className) =>
-            button('Right', onClick, ref, className)
-          }
-        </Popover>
-        <Popover content={popoverContent} placement="left">
-          {(onClick, ref, className) => button('Left', onClick, ref, className)}
-        </Popover>
-      </Box>
-      <Box my="medium">
-        <Popover content={popoverContent} placement="bottom-start">
-          {(onClick, ref, className) =>
-            button('Bottom Start', onClick, ref, className)
-          }
-        </Popover>
-        <Popover content={popoverContent} placement="right-end">
-          {(onClick, ref, className) =>
-            button('Right End', onClick, ref, className)
-          }
-        </Popover>
-        <Popover content={popoverContent} placement="top-start" arrow={false}>
-          {(onClick, ref, className) =>
-            button('Top Start - No arrow', onClick, ref, className)
-          }
+
+        <Popover content={popoverContent}>
+          <Button>Default</Button>
         </Popover>
       </Box>
     </Box>
@@ -251,56 +236,19 @@ export const Grouped = () => {
           border="3px solid green"
         >
           <Popover content={content} groupedPopoversRef={groupRef}>
-            {(onClick, ref, className) => (
-              <Button
-                aria-haspopup="true"
-                onClick={onClick}
-                ref={ref}
-                className={className}
-              >
-                Instant Click
-              </Button>
-            )}
+            <Button>Instant Click</Button>
           </Popover>
           <Popover content={content} groupedPopoversRef={groupRef}>
-            {(onClick, ref, className) => (
-              <Button
-                aria-haspopup="true"
-                onClick={onClick}
-                ref={ref}
-                mx="large"
-                className={className}
-              >
-                Instant Click
-              </Button>
-            )}
+            <Button mx="large">Instant Click</Button>
           </Popover>
           <Popover content={content}>
-            {(onClick, ref, className) => (
-              <ButtonOutline
-                aria-haspopup="true"
-                onClick={onClick}
-                ref={ref}
-                className={className}
-              >
-                Defer Click
-              </ButtonOutline>
-            )}
+            <ButtonOutline>Defer Click</ButtonOutline>
           </Popover>
         </Box>
         <Popover content={content}>
-          {(onClick, ref, className) => (
-            <ButtonTransparent
-              aria-haspopup="true"
-              mx="xlarge"
-              my="large"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              Outside Group
-            </ButtonTransparent>
-          )}
+          <ButtonTransparent mx="xlarge" my="large">
+            Outside Group
+          </ButtonTransparent>
         </Popover>
       </Box>
     </Box>

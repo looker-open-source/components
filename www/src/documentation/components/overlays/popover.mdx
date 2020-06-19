@@ -31,16 +31,7 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Modals](
     </PopoverContent>
   }
 >
-  {(onClick, ref, className) => (
-    <Button
-      aria-haspopup="true"
-      onClick={onClick}
-      ref={ref}
-      className={className}
-    >
-      A Wikipedia article about Wildebeests
-    </Button>
-  )}
+  <Button>A Wikipedia article about Wildebeests</Button>
 </Popover>
 ```
 
@@ -60,49 +51,28 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
     </PopoverContent>
   )
 
-  const button = (title, onClick, ref, className) => (
-    <Button
-      aria-haspopup="true"
-      onClick={onClick}
-      ref={ref}
-      className={className}
-    >
-      {title}
-    </Button>
-  )
-
   return (
     <SpaceVertical>
       <Space between width="100%">
         <Popover content={popoverContent}>
-          {(onClick, ref, className) =>
-            button('Default', onClick, ref, className)
-          }
+          <Button>Default</Button>
         </Popover>
         <Popover content={popoverContent} placement="right">
-          {(onClick, ref, className) =>
-            button('Right', onClick, ref, className)
-          }
+          <Button>Right</Button>
         </Popover>
         <Popover content={popoverContent} placement="left">
-          {(onClick, ref, className) => button('Left', onClick, ref, className)}
+          <Button>Left</Button>
         </Popover>
       </Space>
       <Space between width="100%">
         <Popover content={popoverContent} placement="bottom-start">
-          {(onClick, ref, className) =>
-            button('Bottom Start', onClick, ref, className)
-          }
+          <Button>Bottom Start</Button>
         </Popover>
         <Popover content={popoverContent} placement="right-end">
-          {(onClick, ref, className) =>
-            button('Right End', onClick, ref, className)
-          }
+          <Button>Right End</Button>
         </Popover>
         <Popover content={popoverContent} placement="top-start" arrow={false}>
-          {(onClick, ref, className) =>
-            button('Top Start - No arrow', onClick, ref, className)
-          }
+          <Button>Top Start</Button>
         </Popover>
       </Space>
     </SpaceVertical>
@@ -135,56 +105,21 @@ To create a group, assigned a reference to an containing element and then assign
         style={{ border: '3px solid green' }}
       >
         <Popover content={content} groupedPopoversRef={groupRef}>
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              Instant Click
-            </Button>
+          <Button>Instant Click</Button>
           )}
         </Popover>
         <Popover content={content} groupedPopoversRef={groupRef}>
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              mx="large"
-              className={className}
-            >
-              Instant Click
-            </Button>
-          )}
+          <Button mx="large">Instant Click</Button>
         </Popover>
         <Popover content={content}>
           {(onClick, ref, className) => (
-            <ButtonOutline
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              Defer Click
-            </ButtonOutline>
-          )}
+            <ButtonOutline>Defer Click</ButtonOutline>
         </Popover>
       </Space>
       <Popover content={content}>
-        {(onClick, ref, className) => (
-          <ButtonTransparent
-            aria-haspopup="true"
-            mx="xlarge"
-            my="large"
-            onClick={onClick}
-            ref={ref}
-            className={className}
-          >
+          <ButtonTransparent mx="xlarge" my="large">
             Outside Group
           </ButtonTransparent>
-        )}
       </Popover>
     </Space>
   )
@@ -206,16 +141,7 @@ To create a group, assigned a reference to an containing element and then assign
             popover.
           </Paragraph>
           <Popover content={content} hoverDisclosureRef={hoverRef}>
-            {(onClick, ref, className) => (
-              <IconButton
-                icon="DotsVert"
-                aria-haspopup="true"
-                label="More Options"
-                onClick={onClick}
-                ref={ref}
-                className={className}
-              />
-            )}
+            <IconButton icon="DotsVert" label="More Options" />
           </Popover>
         </Space>
       </CardContent>
@@ -228,6 +154,21 @@ To create a group, assigned a reference to an containing element and then assign
 
 `PopoverContent` is a simple container component that can be used to apply a consistent style to content placed within a Popover surface.
 
-## Accessibility
+## "Render Prop" style
 
-Popover triggers should have the `aria-haspopover` attribute set to `true`, you can see an example on the buttons that trigger the popovers below.
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
+
+```jsx
+<Popover content="Example using render props exploded">
+  {(onClick, ref, className, ariaHaspopup) => (
+    <Button
+      aria-haspopup={ariaHaspopup}
+      className={className}
+      onClick={onClick}
+      ref={ref}
+    >
+      Render Props Example
+    </Button>
+  )}
+</Popover>
+```
