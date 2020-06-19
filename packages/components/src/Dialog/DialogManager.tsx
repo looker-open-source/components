@@ -32,28 +32,28 @@ import React, {
   RefObject,
   SyntheticEvent,
 } from 'react'
-import { ManagedModalProps } from '.'
+import { Dialog, ManagedDialogProps } from './Dialog'
 
-type ModalManagerRenderProp = (
+type DialogManagerRenderProp = (
   onClick: () => void,
   ref: RefObject<any>
 ) => ReactNode
 
-export interface ModalManagerProps extends ManagedModalProps {
-  children?: ModalManagerRenderProp
+export interface DialogManagerProps extends ManagedDialogProps {
+  children?: DialogManagerRenderProp
   /**
-   * Content that will be placed inside the Modal
+   * Content that will be placed inside the Dialog
    * @required
    */
   content: ReactNode
   /**
-   * Specify a callback to be called before trying to close the Modal. This allows for
+   * Specify a callback to be called before trying to close the Dialog. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Dialog is closed
    */
   canClose?: () => boolean
   /**
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Dialog is closed
    */
   onClose?: () => void
   /**
@@ -73,17 +73,17 @@ export interface ModalManagerProps extends ManagedModalProps {
   stopPropagation?: boolean
 }
 
-export interface ModalManagerState {
+export interface DialogManagerState {
   isOpen: boolean
 }
 
-export abstract class ModalManager extends Component<
-  ModalManagerProps,
-  ModalManagerState
+export class DialogManager extends Component<
+  DialogManagerProps,
+  DialogManagerState
 > {
   protected triggerRef: RefObject<any>
 
-  constructor(props: ModalManagerProps) {
+  constructor(props: DialogManagerProps) {
     super(props)
     this.state = { isOpen: false }
     this.triggerRef = createRef()
@@ -96,13 +96,11 @@ export abstract class ModalManager extends Component<
   public render() {
     const { content, children, ...otherProps } = this.props
 
-    const modalProps = {
-      ...otherProps,
-    }
-
     return (
       <>
-        {this.renderModal(content, modalProps)}
+        <Dialog isOpen={this.state.isOpen} onClose={this.close} {...otherProps}>
+          {content}
+        </Dialog>
         {children && children(this.open, this.triggerRef)}
       </>
     )
@@ -126,9 +124,4 @@ export abstract class ModalManager extends Component<
     this.props.onClose && this.props.onClose()
     this.setState({ isOpen: false })
   }
-
-  protected abstract renderModal(
-    content: ReactNode,
-    props: ManagedModalProps
-  ): ReactNode
 }

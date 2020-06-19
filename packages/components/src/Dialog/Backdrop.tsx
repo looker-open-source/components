@@ -24,35 +24,45 @@
 
  */
 
-import React, { ReactElement } from 'react'
-import { ReactWrapper, shallowWithTheme } from '@looker/components-test-utils'
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
+import styled, { CSSObject } from 'styled-components'
 
-export const SimpleContent = (
-  <div>
-    simple content
-    <button>Done</button>
-  </div>
-)
-export const SimpleContentSFC = () => SimpleContent
-
-export const assertModalState = (
-  modal: ReactWrapper,
-  content: ReactElement<any>,
-  open = true
-) => {
-  expect(modal.contains(content)).toEqual(open)
+export interface BackdropProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    BackgroundColorProps,
+    OpacityProps {
+  visible?: boolean
+  inlineStyle?: CSSObject
 }
 
-export const assertOpen = (modal: ReactWrapper) =>
-  assertModalState(modal, SimpleContent)
+// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
+// transitions will still apply to backdrop
+export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
+  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
+}))<BackdropProps>`
+  ${reset}
+  ${color}
 
-export const assertClosed = (modal: ReactWrapper) =>
-  assertModalState(modal, SimpleContent, false)
+  ${(props) => props.inlineStyle}
 
-export const returnTriggerAndModal = (
-  Inst: ReactElement<any>,
-  trigger = 'button'
-) => {
-  const modal = shallowWithTheme(Inst)
-  return [modal, modal.find(trigger)]
+  bottom: 0;
+  cursor: default;
+  left: 0;
+  opacity: ${(props) => props.opacity || 0.4};
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity ${(props) => props.theme.transitions.durationSimple};
+
+  &.entering,
+  &.exiting {
+    opacity: 0.01;
+  }
+`
+
+Backdrop.defaultProps = {
+  backgroundColor: 'ui2',
+  opacity: 0.6,
+  visible: true,
 }

@@ -45,7 +45,7 @@ export const All = () => (
 
 export default {
   component: All,
-  title: 'Overlays/Dialog/MaxWidth',
+  title: 'Dialog/MaxWidth',
 }
 
 export const DialogFixedWidth = () => {

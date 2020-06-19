@@ -24,26 +24,17 @@
 
  */
 
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, FC } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
+import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { Portal } from '../Portal'
 import { useFocusTrap, useScrollLock } from '../utils'
-import { ModalBackdrop } from './ModalBackdrop'
+import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
+import { Surface } from './Surface'
 
-export interface ModalSurfaceStyleProps {
-  animation?: FlattenSimpleInterpolation
-  backgroundColor: string
-  border: string
-  borderColor: string
-  borderRadius: string
-  boxShadow: string
-  color: string
-}
-
-export interface ManagedModalProps {
+export interface ManagedDialogProps {
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
@@ -66,33 +57,27 @@ export interface ManagedModalProps {
   maxWidth?: ResponsiveValue<string>
 }
 
-export interface ModalProps extends ManagedModalProps {
+export interface DialogProps extends ManagedDialogProps {
   /**
    * When true, renders the Backdrop, Surface and it's contained content.
    * @default false
    */
   isOpen?: boolean
   /**
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Dialog is closed
    */
   onClose?: () => void
 }
 
-export interface ModalInternalProps extends ModalProps {
-  /**
-   * To implement Modal the Surface is supplied as a function so it can consume the animationState of the Modal.
-   * animationState will be null, 'exited', 'entering' or 'exiting' and can be used to set CSS class on Surface
-   * element to provide CSS transitions. (See DialogSurface for implementation examples)
-   */
-  render: (animationState: string) => JSX.Element
-}
-
-export function Modal({
+export const Dialog: FC<DialogProps> = ({
   backdrop,
+  children,
   isOpen,
   onClose,
-  render,
-}: ModalInternalProps) {
+  maxWidth,
+  surfaceStyles,
+  width,
+}) => {
   const {
     callbackRef: focusRef,
     disable: disableFocusTrap,
@@ -134,7 +119,7 @@ export function Modal({
               scrollRef(node)
             }}
           >
-            <ModalBackdrop
+            <Backdrop
               className={state}
               onClick={onClose}
               visible={backdrop === undefined ? true : !!backdrop}
@@ -144,7 +129,14 @@ export function Modal({
                   : undefined
               }
             />
-            {render(state)}
+            <Surface
+              style={surfaceStyles}
+              className={state}
+              width={width}
+              maxWidth={maxWidth}
+            >
+              {children}
+            </Surface>
           </Portal>
         )}
       </CSSTransition>

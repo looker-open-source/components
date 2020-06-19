@@ -141,7 +141,7 @@ export const MenuOpenDialog = () => {
   }
   return (
     <Box mt="large">
-      <Heading>Menu Opening Modal</Heading>
+      <Heading>Menu Opening Dialog</Heading>
       <Menu>
         <MenuDisclosure tooltip="Select your favorite kind">
           <Button mr="small" mt="medium">
@@ -158,7 +158,7 @@ export const MenuOpenDialog = () => {
         >
           {(onClick) => (
             <MenuList>
-              <MenuItem onClick={onClick}>Open Modal</MenuItem>
+              <MenuItem onClick={onClick}>Open Dialog</MenuItem>
             </MenuList>
           )}
         </DialogManager>

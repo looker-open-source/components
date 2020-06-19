@@ -84,7 +84,7 @@ exports[`DialogHeader 1`] = `
   -ms-flex-align: center;
   align-items: center;
   display: grid;
-  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+  grid-template-columns: [text] 1fr [close] auto;
 }
 
 .c5 {

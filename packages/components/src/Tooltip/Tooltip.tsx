@@ -55,9 +55,9 @@ export interface UseTooltipProps {
   arrow?: boolean
 
   /**
-   * Specify a callback to be called before trying to close the Modal. This allows for
+   * Specify a callback to be called before trying to close the Tooltip. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Tooltip is closed
    */
   canClose?: () => boolean
 

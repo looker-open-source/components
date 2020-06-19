@@ -63,7 +63,7 @@ export interface UsePopoverProps {
    */
   isOpen?: boolean
   /**
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Popover is closed
    */
   onClose?: () => void
   /**
@@ -82,9 +82,9 @@ export interface UsePopoverProps {
   content: ReactNode
 
   /**
-   * Specify a callback to be called before trying to close the Modal. This allows for
+   * Specify a callback to be called before trying to close the Popover. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Modal is closed
+   * Specify a callback to be called each time this Popover is closed
    */
   canClose?: () => boolean
 
@@ -139,7 +139,7 @@ export interface PopoverProps extends UsePopoverProps {
   /**
    * Component to wrap. The HOC will listen for mouse events on this
    * component, maintain the state of isOpen accordingly, and pass that state into
-   * the modal renderProp.
+   * the Popover renderProp.
    */
   children: (
     onClick: (event: SyntheticEvent) => void,

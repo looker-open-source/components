@@ -212,5 +212,5 @@ const UserForm: FC<UserFormProps> = ({
 
 export default {
   component: CanCloseDialogManagerDemo,
-  title: 'Overlays/Dialog/ManagerCanClose',
+  title: 'Dialog/ManagerCanClose',
 }
