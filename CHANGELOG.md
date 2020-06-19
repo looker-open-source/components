@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SelectMulti` create option unnecessary left padding
 - `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
 - Major CSS linting clean-up
+- `CheckboxGroup` & `RadioGroup` options now properly wrap when the exceed the container width
 
 ### Removed
 

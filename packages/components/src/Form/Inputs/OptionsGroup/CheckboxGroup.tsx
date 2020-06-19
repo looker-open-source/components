@@ -102,7 +102,7 @@ const CheckboxGroupLayout = forwardRef(
       <Fieldset
         data-testid="checkbox-list"
         inline={inline}
-        flexWrap={inline ? 'wrap' : undefined}
+        wrap={inline}
         gap={!inline ? 'xxsmall' : undefined}
         width={inline ? 'auto' : undefined}
         ref={ref}

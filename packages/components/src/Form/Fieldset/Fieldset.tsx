@@ -33,7 +33,8 @@ import {
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
+import { Space, SpaceVertical } from '../../Layout'
+import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend } from '../Legend'
 import {
   Accordion,
@@ -45,19 +46,29 @@ import {
 } from '../../Accordion'
 
 export interface FieldsetProps
-  extends SpaceHelperProps,
-    CompatibleHTMLProps<HTMLDivElement>,
+  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'>,
+    SimpleLayoutProps,
     AccordionControlProps {
-  /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
+  /**
+   * If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
    * @default false
    */
   accordion?: boolean
   ariaLabeledby?: string
-  /** Determines where to place the label in relation to the input.
+  /**
+   * Determines where to place the label in relation to the input.
    * @default false
    */
   inline?: boolean
-  /** Displayed above the children of Fieldset
+
+  /**
+   * Allowed fields to wrap if they exceed the container width
+   * @default false
+   */
+  wrap?: boolean
+
+  /**
+   *  Displayed above the children of Fieldset
    */
   legend?: ReactNode
   /*
@@ -98,6 +109,7 @@ const FieldsetLayout = forwardRef(
       legend,
       fieldsHideLabel,
       children,
+      wrap,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
 
@@ -123,6 +135,7 @@ const FieldsetLayout = forwardRef(
         ref={ref}
         role="group"
         align="start"
+        flexWrap={wrap ? 'wrap' : undefined}
       >
         {children}
       </LayoutComponent>
@@ -166,19 +179,18 @@ const FieldsetLayout = forwardRef(
 FieldsetLayout.displayName = 'FieldsetLayout'
 
 export const Fieldset = styled(FieldsetLayout)`
+  ${simpleLayoutCSS}
+
+  ${AccordionContent} {
+    padding-top: ${({ theme }) => theme.space.medium};
+  }
+
   ${AccordionDisclosure} {
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: ${({ theme }) => theme.fontWeights.semiBold};
     height: 24px;
     padding: ${({ theme: { space } }) => space.xxsmall} 0;
   }
-
-  ${AccordionContent} {
-    padding-top: ${({ theme }) => theme.space.medium};
-  }
 `
 
-Fieldset.defaultProps = {
-  padding: 'none',
-  width: '100%',
-}
+Fieldset.defaultProps = { width: '100%' }
