@@ -46,18 +46,28 @@ import {
 
 export interface FieldsetProps
   extends SpaceHelperProps,
-    CompatibleHTMLProps<HTMLDivElement>,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'>,
     AccordionControlProps {
-  /** If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
+  /**
+   * If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
    * @default false
    */
   accordion?: boolean
   ariaLabeledby?: string
-  /** Determines where to place the label in relation to the input.
+  /**
+   * Determines where to place the label in relation to the input.
    * @default false
    */
   inline?: boolean
-  /** Displayed above the children of Fieldset
+
+  /**
+   * Allowed fields to wrap if they exceed the container width
+   * @default false
+   */
+  wrap?: boolean
+
+  /**
+   *  Displayed above the children of Fieldset
    */
   legend?: ReactNode
   /*
@@ -98,6 +108,7 @@ const FieldsetLayout = forwardRef(
       legend,
       fieldsHideLabel,
       children,
+      wrap,
       ...restProps
     } = omit(props, [...AccordionControlPropKeys])
 
@@ -123,6 +134,7 @@ const FieldsetLayout = forwardRef(
         ref={ref}
         role="group"
         align="start"
+        flexWrap={wrap ? 'wrap' : undefined}
       >
         {children}
       </LayoutComponent>

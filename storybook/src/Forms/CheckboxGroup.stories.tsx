@@ -61,6 +61,40 @@ const options = [
     label: 'Roquefort',
     value: 'roquefort',
   },
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    disabled: true,
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    disabled: true,
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
 ]
 
 const defaultValueCheckbox = ['swiss', 'cheddar']
