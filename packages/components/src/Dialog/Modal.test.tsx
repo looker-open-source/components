@@ -30,7 +30,7 @@ import {
   mountWithTheme,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-import { ModalPortal } from './ModalPortal'
+import { Portal } from '../Portal'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 import { ModalBackdrop } from './ModalBackdrop'
@@ -57,14 +57,14 @@ describe('Modal', () => {
   test('Verify initial state', () => {
     const modal = mountWithTheme(<Modal render={simpleContentFactory} />)
 
-    expect(modal.find(ModalPortal).exists()).toEqual(false)
+    expect(modal.find(Portal).exists()).toEqual(false)
     expect(modal.contains(SimpleContent)).toBeFalsy()
   })
 
   test('Verify "open" prop', () => {
     const modal = mountWithTheme(<Modal isOpen render={simpleContentFactory} />)
 
-    expect(modal.find(ModalPortal).exists()).toEqual(true)
+    expect(modal.find(Portal).exists()).toEqual(true)
     expect(modal.contains(SimpleContent)).toBeTruthy()
   })
 

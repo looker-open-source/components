@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `ModalPortal` is now `Portal`
 - `Modal*` has moved to `Dialog*`
   - `ModalContext` is now `DialogContext`
   - `ModalContent` is now `DialogContent`

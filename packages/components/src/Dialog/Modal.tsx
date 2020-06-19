@@ -28,9 +28,9 @@ import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
+import { Portal } from '../Portal'
 import { useFocusTrap, useScrollLock } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalPortal } from './ModalPortal'
 import { DialogContext } from './DialogContext'
 
 export interface ModalSurfaceStyleProps {
@@ -128,7 +128,7 @@ export function Modal({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal
+          <Portal
             ref={(node) => {
               focusRef(node)
               scrollRef(node)
@@ -145,7 +145,7 @@ export function Modal({
               }
             />
             {render(state)}
-          </ModalPortal>
+          </Portal>
         )}
       </CSSTransition>
     </DialogContext.Provider>
