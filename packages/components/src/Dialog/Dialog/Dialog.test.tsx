@@ -33,7 +33,7 @@ import {
 import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 import { ModalBackdrop } from '../ModalBackdrop'
-import { ModalPortal } from '../../Modal/ModalPortal'
+import { ModalPortal } from '../ModalPortal'
 import { ModalSurface } from '../ModalSurface'
 import { Dialog } from './Dialog'
 import { DialogManager } from './DialogManager'
@@ -72,14 +72,14 @@ describe('Click events', () => {
       </DialogManager>
     )
 
-    // Drawer closed
+    // Dialog closed
     expect(dialog.find(ModalPortal).exists()).toBeFalsy()
 
     const button = dialog.find('a')
     expect(button.exists()).toBeTruthy()
     button.simulate('click') // Click to open
 
-    // Drawer open
+    // Dialog open
     expect(dialog.find(ModalPortal).exists()).toBeTruthy()
 
     const backdrop = dialog.find(ModalBackdrop)

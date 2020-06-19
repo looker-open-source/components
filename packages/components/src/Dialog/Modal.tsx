@@ -82,7 +82,7 @@ export interface ModalInternalProps extends ModalProps {
   /**
    * To implement Modal the Surface is supplied as a function so it can consume the animationState of the Modal.
    * animationState will be null, 'exited', 'entering' or 'exiting' and can be used to set CSS class on Surface
-   * element to provide CSS transitions. (See DialogSurface & DrawerSurface for implementation examples)
+   * element to provide CSS transitions. (See DialogSurface for implementation examples)
    */
   render: (animationState: string) => JSX.Element
 }

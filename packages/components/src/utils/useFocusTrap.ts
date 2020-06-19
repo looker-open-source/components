@@ -26,7 +26,7 @@
 
 import createFocusTrap, { FocusTrap } from 'focus-trap'
 import { useContext, useEffect, useRef } from 'react'
-import { ModalContext } from '../Modal/ModalContext'
+import { ModalContext } from '../Dialog/ModalContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 

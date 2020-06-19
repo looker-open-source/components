@@ -44,7 +44,7 @@ import React, {
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled from 'styled-components'
-import { ModalContext } from '../Modal'
+import { ModalContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
 export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {

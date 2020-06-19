@@ -36,7 +36,7 @@ import React, {
   Ref,
 } from 'react'
 import omit from 'lodash/omit'
-import { ModalContext } from '../Modal'
+import { ModalContext } from '../Dialog'
 import {
   useCallbackRef,
   useID,

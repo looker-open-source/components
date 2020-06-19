@@ -32,10 +32,15 @@ import React, {
   RefObject,
   SyntheticEvent,
 } from 'react'
-import { ManagedModalProps } from '../Modal'
+import { ManagedModalProps } from '.'
+
+type ModalManagerRenderProp = (
+  onClick: () => void,
+  ref: RefObject<any>
+) => ReactNode
 
 export interface ModalManagerProps extends ManagedModalProps {
-  children?: (onClick: () => void, ref: RefObject<any>) => ReactNode
+  children?: ModalManagerRenderProp
   /**
    * Content that will be placed inside the Modal
    * @required

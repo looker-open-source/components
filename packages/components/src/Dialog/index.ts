@@ -24,17 +24,14 @@
 
  */
 
-import React, { ReactNode } from 'react'
-import { ManagedModalProps } from '../Modal'
-import { ModalManager } from '../ModalManager'
-import { Drawer } from '.'
-
-export class DrawerManager extends ModalManager {
-  protected renderModal(content: ReactNode, props: ManagedModalProps) {
-    return (
-      <Drawer isOpen={this.state.isOpen} onClose={this.close} {...props}>
-        {content}
-      </Drawer>
-    )
-  }
-}
+export * from './Confirm'
+export * from './Dialog'
+export * from './Layout'
+export * from './Modal'
+export * from './ModalBackdrop'
+export * from './ModalContext'
+export * from './ModalManager'
+export * from './ModalPortal'
+export * from './modalRoot'
+export * from './ModalSurface'
+export * from './Prompt'

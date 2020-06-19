@@ -164,7 +164,6 @@ const components: NavigationSection = {
         { path: '', title: 'Layout and Styling' },
         { path: 'confirm', title: 'Confirm' },
         { path: 'dialog', title: 'Dialog' },
-        { path: 'drawer', title: 'Drawer' },
         { path: 'prompt', title: 'Prompt' },
       ],
       path: 'modals',

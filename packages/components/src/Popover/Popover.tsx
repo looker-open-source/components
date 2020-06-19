@@ -36,7 +36,7 @@ import React, {
   SyntheticEvent,
 } from 'react'
 import { Box } from '../Layout'
-import { ModalPortal, ModalContext } from '../Modal'
+import { ModalPortal, ModalContext } from '../Dialog'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import {
   useCallbackRef,

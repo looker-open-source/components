@@ -67,7 +67,7 @@ const InvisiBox = styled.div<{ zIndex?: number }>`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
+  z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};
 
   * {
     pointer-events: auto;
