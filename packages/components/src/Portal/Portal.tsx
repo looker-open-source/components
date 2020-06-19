@@ -30,19 +30,24 @@ import styled from 'styled-components'
 
 const rootId = 'modal-root'
 
-const getPortalRoot = () => {
+export const getPortalRoot = () => {
   const existing = document.getElementById(rootId)
 
   if (existing) {
     return existing
   } else {
     const newElement = document.createElement('div')
-    newElement.id = rootId
+    newElement.id = 'modal-root'
     document.body.appendChild(newElement)
 
     return newElement
   }
 }
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const getModalRoot = getPortalRoot
 
 export const Portal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {

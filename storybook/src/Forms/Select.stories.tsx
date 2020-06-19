@@ -326,7 +326,7 @@ export const SelectDemo = () => {
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <DialogContent>
           <SelectContent />
-        </DialogContent>{' '}
+        </DialogContent>
       </Dialog>
       <Button onClick={handleClick} m="large">
         Open
