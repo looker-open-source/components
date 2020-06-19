@@ -26,7 +26,7 @@
 
 import once from 'lodash/once'
 import { useContext, useEffect, useRef } from 'react'
-import { ModalContext } from '../Dialog/ModalContext'
+import { DialogContext } from '../Dialog/DialogContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
@@ -45,7 +45,7 @@ export function useScrollLock(
   // If the keepFocusWithin is passed in arguments, use that instead of the new element
   const element =
     typeof allowScrollWithin === 'undefined' ? newElement : allowScrollWithin
-  const { disableScrollLock, enableScrollLock } = useContext(ModalContext)
+  const { disableScrollLock, enableScrollLock } = useContext(DialogContext)
   const { value, setOn, setOff } = useToggle(enabled)
 
   // save the existing body overflow value

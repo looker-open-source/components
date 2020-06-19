@@ -26,7 +26,7 @@
 
 import createFocusTrap, { FocusTrap } from 'focus-trap'
 import { useContext, useEffect, useRef } from 'react'
-import { ModalContext } from '../Dialog/ModalContext'
+import { DialogContext } from '../Dialog/DialogContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
@@ -48,7 +48,7 @@ export function useFocusTrap(
   // If the keepFocusWithin is passed in arguments, use that instead of the new element
   const element =
     typeof keepFocusWithin === 'undefined' ? newElement : keepFocusWithin
-  const { disableFocusTrap, enableFocusTrap } = useContext(ModalContext)
+  const { disableFocusTrap, enableFocusTrap } = useContext(DialogContext)
   const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {

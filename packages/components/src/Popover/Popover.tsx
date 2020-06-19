@@ -36,7 +36,7 @@ import React, {
   SyntheticEvent,
 } from 'react'
 import { Box } from '../Layout'
-import { ModalPortal, ModalContext } from '../Dialog'
+import { ModalPortal, DialogContext } from '../Dialog'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import {
   useCallbackRef,
@@ -385,7 +385,7 @@ export function usePopover({
     trapRef: focusTrapRef,
   } = useFocusTrap(controlledIsOpen && focusTrap)
 
-  const { focusTrapRef: parentFocusTrapRef } = useContext(ModalContext)
+  const { focusTrapRef: parentFocusTrapRef } = useContext(DialogContext)
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element
@@ -474,7 +474,7 @@ export function usePopover({
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
   const popover = !openWithoutElem && isOpen && (
-    <ModalContext.Provider
+    <DialogContext.Provider
       value={{
         closeModal: handleClose,
         disableFocusTrap,
@@ -510,7 +510,7 @@ export function usePopover({
           </Box>
         </OverlaySurface>
       </ModalPortal>
-    </ModalContext.Provider>
+    </DialogContext.Provider>
   )
   return {
     contentContainer: containerElement,

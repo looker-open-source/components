@@ -39,7 +39,7 @@ import {
   Select,
   Fieldset,
   FieldSelect,
-  ModalContent,
+  DialogContent,
   ComboboxOptionObject,
   SelectOptionProps,
   SelectOptionGroupProps,
@@ -319,9 +319,9 @@ export function SelectContent() {
 
 const ModalInner = () => {
   return (
-    <ModalContent>
+    <DialogContent>
       <SelectContent />
-    </ModalContent>
+    </DialogContent>
   )
 }
 

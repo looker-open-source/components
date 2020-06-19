@@ -142,13 +142,13 @@ A `MenuList` accepts a `compact` prop that will make the spacing between the `Me
 
 <Props of="MenuItem" />
 
-`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `MenuList`. For example, opening a modal.
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `MenuList`. For example, opening a dialog.
 
 For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
 
 An icon can optionally be assigned to each item via the `icon` property.
 
-**Note:** The `Menu` will close by default when `MenuItem` is clicked, after the `onClick` handler, if there is one. Any component, such as a `Modal`, that is meant to be conditionally shown on click, should not be nested inside `MenuList` since it will be removed.
+**Note:** The `Menu` will close by default when `MenuItem` is clicked, after the `onClick` handler, if there is one. Any component, such as a `Dialog`, that is meant to be conditionally shown on click, should not be nested inside `MenuList` since it will be removed.
 
 ```jsx
 <Menu>

@@ -24,19 +24,20 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
-import { ModalContent } from './ModalContent'
+import { createContext, MutableRefObject } from 'react'
+import { FocusTrap } from 'focus-trap'
 
-test('ModalContent - no overflow', () => {
-  assertSnapshot(<ModalContent>Stuff</ModalContent>)
-})
+export interface DialogContextProps {
+  closeModal?: () => void
+  enableScrollLock?: () => void
+  disableScrollLock?: () => void
+  enableFocusTrap?: () => void
+  disableFocusTrap?: () => void
+  focusTrapEnabled?: boolean
+  focusTrapRef?: MutableRefObject<FocusTrap | undefined>
+  scrollLockEnabled?: boolean
+}
 
-test('ModalContent - no overflow', () => {
-  assertSnapshot(
-    <ModalContent>
-      <div style={{ height: '4rem' }}>Stuff</div>
-    </ModalContent>
-  )
-})
+const dialogContext: DialogContextProps = {}
+
+export const DialogContext = createContext(dialogContext)

@@ -24,20 +24,42 @@
 
  */
 
-import { createContext, MutableRefObject } from 'react'
-import { FocusTrap } from 'focus-trap'
+import 'jest-styled-components'
+import React from 'react'
+import {
+  assertSnapshot,
+  mountWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
+import { IconButton } from '../../Button'
+import { DialogHeader } from './DialogHeader'
 
-export interface ModalContextProps {
-  closeModal?: () => void
-  enableScrollLock?: () => void
-  disableScrollLock?: () => void
-  enableFocusTrap?: () => void
-  disableFocusTrap?: () => void
-  focusTrapEnabled?: boolean
-  focusTrapRef?: MutableRefObject<FocusTrap | undefined>
-  scrollLockEnabled?: boolean
-}
+test('DialogHeader', () => {
+  assertSnapshot(
+    <DialogHeader id="test-DialogHeader">The Heading for a Dialog</DialogHeader>
+  )
+})
 
-const modalContext: ModalContextProps = {}
+test('DialogHeader passes through DOM props', () => {
+  const { findByLabelText } = renderWithTheme(
+    <DialogHeader aria-label="This is the ARIA label">
+      The Heading for a Dialog
+    </DialogHeader>
+  )
 
-export const ModalContext = createContext(modalContext)
+  expect(findByLabelText('This is the ARIA label')).toBeTruthy()
+})
+
+test('DialogHeader with hideClose', () => {
+  const withClose = mountWithTheme(
+    <DialogHeader id="test-DialogHeader">The Heading for a Dialog</DialogHeader>
+  )
+  expect(withClose.find(IconButton).exists()).toBeTruthy()
+
+  const withoutClose = mountWithTheme(
+    <DialogHeader id="test-DialogHeader" hideClose>
+      The Heading for a Dialog
+    </DialogHeader>
+  )
+  expect(withoutClose.find(IconButton).exists()).toBeFalsy()
+})

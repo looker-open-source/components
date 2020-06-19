@@ -24,6 +24,6 @@
 
  */
 
-export * from './ModalContent'
-export * from './ModalFooter'
-export * from './ModalHeader'
+export * from './DialogContent'
+export * from './DialogFooter'
+export * from './DialogHeader'

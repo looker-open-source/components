@@ -40,70 +40,70 @@ This provides the backdrop behind Modal containers. It can be customized via the
 </ModalSurface>
 ```
 
-## ModalContent
+## DialogContent
 
-<Props of="ModalContent" />
+<Props of="DialogContent" />
 
-Using the `ModalContent` component quickly gives your content consistent spacing inside a modal component as well as managing overflow of content of the dialog is taller than the viewport.
+Using the `DialogContent` component quickly gives your content consistent spacing inside a modal component as well as managing overflow of content of the dialog is taller than the viewport.
 
-ModalContent supports all [`Box`](/src-documentation-components-box) properties.
+DialogContent supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
-<ModalContent>
+<DialogContent>
   <Box height="2rem" bg="rebeccapurple" />
-</ModalContent>
+</DialogContent>
 ```
 
 If content overflows the component's height an visual indicator of content that extends beyond the visible edges is added (border on top and shadow on the bottom).
 
 ```jsx
 <Box height="10rem" display="flex" bg="white" p="large">
-  <ModalContent>
+  <DialogContent>
     <Paragraph>Scroll down here...</Paragraph>
     <Box height="6rem" bg="rebeccapurple" />
-  </ModalContent>
+  </DialogContent>
 </Box>
 ```
 
-## ModalHeader
+## DialogHeader
 
-<Props of="ModalHeader" />
+<Props of="DialogHeader" />
 
-`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `ModalContext` to get access to the `closeModal` callback.
+`DialogHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `DialogContext` to get access to the `closeModal` callback.
 
-ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
+DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
-<ModalHeader>This is a ModalHeader</ModalHeader>
+<DialogHeader>This is a DialogHeader</DialogHeader>
 ```
 
-`ModalHeader` also accepts an optional `headerIcon` prop which can be used to communicate context or intent of the modal. For example: if you need the user to confirm a destructive action, it can be helpful to render an eyecatching warning icon next to the title text:
+`DialogHeader` also accepts an optional `headerIcon` prop which can be used to communicate context or intent of the modal. For example: if you need the user to confirm a destructive action, it can be helpful to render an eyecatching warning icon next to the title text:
 
 ```jsx
-<ModalHeader headerIcon={<Icon name="Warning" color="critical" size={22} />}>
+<DialogHeader headerIcon={<Icon name="Warning" color="critical" size={22} />}>
   Delete user account? This cannot be undone.
-</ModalHeader>
+</DialogHeader>
 ```
 
-## ModalFooter
+## DialogFooter
 
-<Props of="ModalFooter" />
+<Props of="DialogFooter" />
 
-`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `ModalContext.Provider` to get access to the `ModalContext.closeModal()` method.
+`DialogFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `DialogContext.Provider` to get access to the `DialogContext.closeModal()` method.
 
-ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
+DialogFooter supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
-<ModalFooter>
+<DialogFooter>
   <Button>Save Changes</Button>
-</ModalFooter>
+</DialogFooter>
 <Divider />
-<ModalFooter>
+<DialogFooter>
   <Button>Save Changes</Button>
   <ButtonTransparent>Cancel</ButtonTransparent>
-</ModalFooter>
+</DialogFooter>
 <Divider />
-<ModalFooter
+<DialogFooter
   secondary={
     <ButtonOutline iconBefore="Plus">
       Create Item
@@ -112,9 +112,9 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 >
   <Button>Save Changes</Button>
   <ButtonTransparent>Cancel</ButtonTransparent>
-</ModalFooter>
+</DialogFooter>
 <Divider />
-<ModalFooter
+<DialogFooter
   secondary={
     <React.Fragment>
       <ButtonOutline iconBefore="Plus">
@@ -128,24 +128,24 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 >
   <Button>Save Changes</Button>
   <ButtonTransparent>Cancel</ButtonTransparent>
-</ModalFooter>
+</DialogFooter>
 <Divider />
-<ModalContent>
+<DialogContent>
   <Box bg="lavender" p="medium">
     Example content
   </Box>
-</ModalContent>
-<ModalFooter>
+</DialogContent>
+<DialogFooter>
   <Button size="xsmall">Save Changes</Button>
   <ButtonTransparent size="xsmall">
     Cancel
   </ButtonTransparent>
-</ModalFooter>
+</DialogFooter>
 ```
 
-## ModalContext
+## DialogContext
 
-`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
+`DialogContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
 
 - `close`
 - `enableFocusTrap` and `disableFocusTrap`
@@ -162,18 +162,18 @@ The other methods and values above are for rare use when the modal behaviors of 
 
 ```js static
 import React, { useContext } from 'react'
-import { Button, ModalContext } from '@looker/components'
+import { Button, DialogContext } from '@looker/components'
 
-export function ModalContextDemo() {
+export function DialogContextDemo() {
   return (
-    <ModalContext.Consumer>
+    <DialogContext.Consumer>
       {({ close }) => <Button onClick={close}>Close!</Button>}
-    </ModalContext.Consumer>
+    </DialogContext.Consumer>
   )
 }
 
 export function ModalUseContextDemo() {
-  const { close } = useContext(ModalContext)
+  const { close } = useContext(DialogContext)
   return <Button onClick={close}>Close!</Button>
 }
 ```

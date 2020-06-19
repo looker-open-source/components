@@ -37,12 +37,12 @@ import ReactResizeDetector from 'react-resize-detector'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
 
-export interface ModalContentProps
+export interface DialogContentProps
   extends LayoutProps,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
-   * Style the scroll-able space within the ModalContent.
-   * Often p="none" is applied if components within the the ModalContent need to the
+   * Style the scroll-able space within the DialogContent.
+   * Often p="none" is applied if components within the the DialogContent need to the
    * touch the container edges.
    */
   innerProps?: SpaceProps
@@ -54,7 +54,7 @@ interface ContentState {
   overflow: boolean
 }
 
-interface InternalContentProps extends ModalContentProps {
+interface InternalContentProps extends DialogContentProps {
   renderedHeight: string
 }
 
@@ -104,7 +104,7 @@ class Internal extends Component<InternalContentProps, ContentState> {
   }
 }
 
-export const ModalContent = (props: ModalContentProps) => {
+export const DialogContent = (props: DialogContentProps) => {
   return (
     <ReactResizeDetector handleHeight>
       {(height: string) => <Internal renderedHeight={height} {...props} />}
@@ -135,3 +135,8 @@ const Inner = styled.div<SpaceProps>`
 `
 
 Inner.defaultProps = { px: 'xlarge', py: 'large' }
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalContent = DialogContent

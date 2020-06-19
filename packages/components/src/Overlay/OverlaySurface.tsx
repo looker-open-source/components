@@ -44,7 +44,7 @@ import React, {
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled from 'styled-components'
-import { ModalContext } from '../Dialog'
+import { DialogContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
 export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
@@ -73,10 +73,9 @@ export const OverlaySurface = forwardRef(
       eventHandlers,
       placement,
       style,
-      zIndex,
       ...innerProps
     } = props
-    const { closeModal } = useContext(ModalContext)
+    const { closeModal } = useContext(DialogContext)
 
     return (
       <Outer ref={ref} style={style} {...eventHandlers} tabIndex={-1}>

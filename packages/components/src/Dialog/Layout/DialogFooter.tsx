@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceHelperProps } from '../../Layout/Space'
 
-export interface ModalFooterProps
+export interface DialogFooterProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     SpaceHelperProps {
   /**
@@ -38,7 +38,7 @@ export interface ModalFooterProps
   secondary?: ReactNode
 }
 
-export const ModalFooterLayout: FC<ModalFooterProps> = ({
+export const DialogFooterLayout: FC<DialogFooterProps> = ({
   children,
   secondary,
   ...props
@@ -51,9 +51,14 @@ export const ModalFooterLayout: FC<ModalFooterProps> = ({
   )
 }
 
-export const ModalFooter = styled(ModalFooterLayout)``
+export const DialogFooter = styled(DialogFooterLayout)``
 
-ModalFooter.defaultProps = {
+DialogFooter.defaultProps = {
   px: 'xlarge',
   py: 'large',
 }
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalFooter = DialogFooter

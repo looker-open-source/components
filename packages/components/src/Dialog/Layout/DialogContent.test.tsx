@@ -26,40 +26,17 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
-import { IconButton } from '../../Button'
-import { ModalHeader } from './ModalHeader'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { DialogContent } from './DialogContent'
 
-test('ModalHeader', () => {
+test('DialogContent - no overflow', () => {
+  assertSnapshot(<DialogContent>Stuff</DialogContent>)
+})
+
+test('DialogContent - no overflow', () => {
   assertSnapshot(
-    <ModalHeader id="test-modalHeader">The Heading for a Dialog</ModalHeader>
+    <DialogContent>
+      <div style={{ height: '4rem' }}>Stuff</div>
+    </DialogContent>
   )
-})
-
-test('ModalHeader passes through DOM props', () => {
-  const { findByLabelText } = renderWithTheme(
-    <ModalHeader aria-label="This is the ARIA label">
-      The Heading for a Dialog
-    </ModalHeader>
-  )
-
-  expect(findByLabelText('This is the ARIA label')).toBeTruthy()
-})
-
-test('ModalHeader with hideClose', () => {
-  const withClose = mountWithTheme(
-    <ModalHeader id="test-modalHeader">The Heading for a Dialog</ModalHeader>
-  )
-  expect(withClose.find(IconButton).exists()).toBeTruthy()
-
-  const withoutClose = mountWithTheme(
-    <ModalHeader id="test-modalHeader" hideClose>
-      The Heading for a Dialog
-    </ModalHeader>
-  )
-  expect(withoutClose.find(IconButton).exists()).toBeFalsy()
 })

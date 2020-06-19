@@ -61,7 +61,12 @@ import {
   DateTimeFormat,
   doDefaultActionListSort,
   Dialog,
+  DialogContent,
+  DialogContext,
+  DialogFooter,
+  DialogHeader,
   DialogManager,
+  DialogSurface,
   Divider,
   FieldCheckbox,
   FieldCheckboxGroup,
@@ -111,11 +116,6 @@ import {
   MenuItem,
   MenuList,
   MessageBar,
-  ModalContent,
-  ModalContext,
-  ModalFooter,
-  ModalHeader,
-  ModalSurface,
   PageSize,
   Pagination,
   Paragraph,
@@ -160,11 +160,9 @@ import {
   useToggle,
   VisuallyHidden,
 } from '@looker/components'
-
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
-
 import { GridPlaceholder } from '../../helpers/GridPlaceholder'
 
 const otherLibraries = {
@@ -222,7 +220,12 @@ export const allComponents = {
   DateFormat,
   DateTimeFormat,
   Dialog,
+  DialogContent,
+  DialogContext,
+  DialogFooter,
+  DialogHeader,
   DialogManager,
+  DialogSurface,
   Divider,
   FieldCheckbox,
   FieldCheckboxGroup,
@@ -272,11 +275,6 @@ export const allComponents = {
   MenuItem,
   MenuList,
   MessageBar,
-  ModalContent,
-  ModalContext,
-  ModalFooter,
-  ModalHeader,
-  ModalSurface,
   PageSize,
   Pagination,
   Paragraph,

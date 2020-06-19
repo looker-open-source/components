@@ -27,33 +27,33 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-import { ModalContext } from '../ModalContext'
-import { ModalFooter } from './ModalFooter'
+import { DialogContext } from '../DialogContext'
+import { DialogFooter } from './DialogFooter'
 
-test('ModalFooter with Button', () => {
+test('DialogFooter with Button', () => {
   assertSnapshot(
-    <ModalFooter>
+    <DialogFooter>
       <button>Cancel</button>
-    </ModalFooter>
+    </DialogFooter>
   )
 })
 
-test('ModalFooter with ModalContext', () => {
+test('DialogFooter with DialogContext', () => {
   assertSnapshot(
-    <ModalContext.Consumer>
+    <DialogContext.Consumer>
       {({ closeModal }) => (
-        <ModalFooter>
+        <DialogFooter>
           <button onClick={closeModal}>Cancel</button>
           <button
             onClick={() => {
-              alert("doin' things...")
+              alert('Doing things...')
               closeModal && closeModal()
             }}
           >
             Yes, Delete "Stuff"
           </button>
-        </ModalFooter>
+        </DialogFooter>
       )}
-    </ModalContext.Consumer>
+    </DialogContext.Consumer>
   )
 })

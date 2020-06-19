@@ -38,9 +38,9 @@ import {
 import { Icon, IconProps } from '../../Icon'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
-import { ModalContext } from '../ModalContext'
+import { DialogContext } from '../DialogContext'
 
-export interface ModalHeaderProps
+export interface DialogHeaderProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement> {
   children: string | string[]
@@ -59,14 +59,14 @@ export interface ModalHeaderProps
   headerIcon?: ReactElement<IconProps>
 }
 
-const ModalHeaderLayout: FC<ModalHeaderProps> = ({
+const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
   closeIcon = 'Close',
   hideClose,
   headerIcon,
   ...props
 }) => {
-  const { closeModal } = useContext(ModalContext)
+  const { closeModal } = useContext(DialogContext)
   const { id } = props
 
   return (
@@ -97,7 +97,7 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   )
 }
 
-export const ModalHeader = styled(ModalHeaderLayout)`
+export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}
   ${space}
   align-items: center;
@@ -105,7 +105,7 @@ export const ModalHeader = styled(ModalHeaderLayout)`
   grid-template-columns: [icon] auto [text] 1fr [close] auto;
 `
 
-ModalHeader.defaultProps = {
+DialogHeader.defaultProps = {
   p: 'large',
   pr: 'medium',
   px: 'xlarge',
@@ -118,3 +118,8 @@ const HeaderIconWrapper = styled.div`
     display: block;
   }
 `
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalHeader = DialogHeader

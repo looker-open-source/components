@@ -31,7 +31,7 @@ import { ResponsiveValue } from 'styled-system'
 import { useFocusTrap, useScrollLock } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalPortal } from './ModalPortal'
-import { ModalContext } from './ModalContext'
+import { DialogContext } from './DialogContext'
 
 export interface ModalSurfaceStyleProps {
   animation?: FlattenSimpleInterpolation
@@ -108,7 +108,7 @@ export function Modal({
   } = useScrollLock(isOpen, false)
 
   return (
-    <ModalContext.Provider
+    <DialogContext.Provider
       value={{
         closeModal: onClose,
         disableFocusTrap,
@@ -148,6 +148,6 @@ export function Modal({
           </ModalPortal>
         )}
       </CSSTransition>
-    </ModalContext.Provider>
+    </DialogContext.Provider>
   )
 }

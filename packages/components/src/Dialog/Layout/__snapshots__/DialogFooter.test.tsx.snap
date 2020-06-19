@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalFooter with Button 1`] = `
+exports[`DialogFooter with Button 1`] = `
 .c0 {
   width: 100%;
   padding-left: 2rem;
@@ -70,7 +70,7 @@ exports[`ModalFooter with Button 1`] = `
 </footer>
 `;
 
-exports[`ModalFooter with ModalContext 1`] = `
+exports[`DialogFooter with DialogContext 1`] = `
 .c0 {
   width: 100%;
   padding-left: 2rem;

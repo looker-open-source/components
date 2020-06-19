@@ -30,7 +30,7 @@ import {
   mountWithTheme,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-import { ModalFooter, ModalHeader } from '../Layout'
+import { DialogFooter, DialogHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 import { ModalBackdrop } from '../ModalBackdrop'
 import { ModalPortal } from '../ModalPortal'
@@ -147,11 +147,11 @@ describe('Dialog Styling', () => {
 test('Confirmation Dialog, Shown', () => {
   assertSnapshotShallow(
     <Dialog isOpen>
-      <ModalHeader>Are you sure you want to delete "Stuff"?</ModalHeader>
-      <ModalFooter>
+      <DialogHeader>Are you sure you want to delete "Stuff"?</DialogHeader>
+      <DialogFooter>
         <button>Yes, Delete "Stuff"</button>
         <button>Cancel</button>
-      </ModalFooter>
+      </DialogFooter>
     </Dialog>
   )
 })

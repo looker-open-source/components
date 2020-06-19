@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalContent - no overflow 1`] = `
+exports[`DialogContent - no overflow 1`] = `
 .c0 {
   -webkit-flex: 8;
   -ms-flex: 8;
@@ -32,7 +32,7 @@ exports[`ModalContent - no overflow 1`] = `
 </div>
 `;
 
-exports[`ModalContent - no overflow 2`] = `
+exports[`DialogContent - no overflow 2`] = `
 .c0 {
   -webkit-flex: 8;
   -ms-flex: 8;

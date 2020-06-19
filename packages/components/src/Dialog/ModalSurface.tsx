@@ -38,7 +38,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { ModalContext } from './ModalContext'
+import { DialogContext } from './DialogContext'
 
 export interface ModalSurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -58,7 +58,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   ...props
 }) => {
   const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    ModalContext
+    DialogContext
   )
 
   useEffect(() => {
