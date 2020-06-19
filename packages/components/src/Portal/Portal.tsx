@@ -28,7 +28,7 @@ import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
-const getPortalRoot = () => {
+export const getPortalRoot = () => {
   const existing = document.getElementById('modal-root')
 
   if (existing) {
@@ -41,6 +41,11 @@ const getPortalRoot = () => {
     return newElement
   }
 }
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const getModalRoot = getPortalRoot
 
 export const Portal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
