@@ -24,6 +24,7 @@
 
  */
 
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import * as CSS from 'csstype'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
@@ -36,13 +37,12 @@ import React, {
   useRef,
   ReactElement,
 } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
 import {
   inputCSS,
   inputHeight,
-  InputText,
   InputTextProps,
   inputTextDisabled,
   inputTextFocus,
@@ -70,6 +70,7 @@ export interface InputSearchBaseProps extends InputTextProps {
   /**
    * hides or customizes search Icon
    */
+  autoResize?: boolean
   searchIcon?: ReactElement | false
   searchControls?: ReactElement
   defaultValue?: string
@@ -95,6 +96,7 @@ const InputSearchBaseComponent = forwardRef(
       onMouseOut,
       onMouseOver,
       onMouseUp,
+      autoResize,
       children,
       className,
       defaultValue,
@@ -113,7 +115,7 @@ const InputSearchBaseComponent = forwardRef(
     const [uncontrolledValue, setValue] = useState(
       defaultValue || controlledValue
     )
-    const inputValue = isControlled ? controlledValue : uncontrolledValue
+    const inputValue = isControlled ? controlledValue || '' : uncontrolledValue
 
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
@@ -142,12 +144,14 @@ const InputSearchBaseComponent = forwardRef(
 
     // 12/17/2019 removing type="search" since React doesn't support onSearch yet
     // resulting in undetectable changes that effect the value
+    const inputProps = pick(props, inputPropKeys) as CompatibleHTMLProps<
+      HTMLInputElement
+    >
     const input = (
-      <InputText
+      <input
         onChange={handleChange}
         value={inputValue}
-        pr="0"
-        {...pick(props, inputPropKeys)}
+        {...inputProps}
         ref={ref}
       />
     )
@@ -166,6 +170,9 @@ const InputSearchBaseComponent = forwardRef(
         ) : (
           input
         )}
+        {autoResize && inputValue !== '' ? (
+          <span className="visibleText">{inputValue}</span>
+        ) : null}
         {searchControls && searchControls}
       </div>
     )
@@ -195,14 +202,13 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
 
   ${inputTextValidation}
 
-  ${InputText} {
+  input {
     appearance: none;
     background: transparent;
     border: none;
-    box-shadow: none;
     flex: 1;
     height: ${(props) => getHeight(props.py || 2)};
-
+    padding: ${({ theme: { space } }) => `0 ${space.xsmall} 0 ${space.small}`};
     width: 100%;
 
     &::-webkit-search-decoration,
@@ -216,4 +222,26 @@ export const InputSearchBase = styled(InputSearchBaseComponent)`
       outline: none;
     }
   }
+
+  ${({ py, theme, autoResize }) =>
+    autoResize &&
+    css`
+      position: relative;
+      input:not([value='']) {
+        color: ${theme.colors.background};
+        height: 1px;
+        left: 0;
+        margin-top: ${getHeight(py || 2)};
+        position: absolute;
+        top: 0;
+      }
+      .visibleText {
+        font-size: ${theme.fontSizes.small};
+        height: ${getHeight(py || 2)};
+        line-height: ${getHeight(py || 2)};
+        padding: ${`0 ${theme.space.xsmall} 0 ${theme.space.small}`};
+        white-space: nowrap;
+        width: 100%;
+      }
+    `}
 `

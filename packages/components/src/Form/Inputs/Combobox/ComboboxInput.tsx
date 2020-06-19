@@ -32,7 +32,6 @@ import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
-import { InputText } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
@@ -172,6 +171,7 @@ export const ComboboxInputInternal = forwardRef(
         {...inputEvents}
         searchIcon={false}
         disabled={disabled}
+        autoResize={readOnly}
         searchControls={
           <AdvancedInputControls
             validationType={validationType}
@@ -202,7 +202,7 @@ export const ComboboxInputInternal = forwardRef(
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  ${InputText} {
+  input {
     cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
   }
 `
