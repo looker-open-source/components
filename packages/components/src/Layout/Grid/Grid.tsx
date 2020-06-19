@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import { defaultSpaceSize, SpaceHelperProps } from '../Space'
+import { defaultGap, SpaceHelperProps } from '../Space'
 import { simpleLayoutCSS } from '../utils/simple'
 
 export interface GridProps extends SpaceHelperProps {
@@ -40,7 +40,7 @@ export const Grid = styled.div<GridProps>`
   ${simpleLayoutCSS}
 
   display: grid;
-  grid-gap: ${({ gap, theme }) => theme.space[gap || defaultSpaceSize]};
+  grid-gap: ${({ gap, theme }) => theme.space[gap || defaultGap]};
   grid-template-columns: ${({ columns }) =>
     `repeat(${columns || 2}, minmax(0, 1fr))`};
 `
