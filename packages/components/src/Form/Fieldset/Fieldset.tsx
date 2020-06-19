@@ -33,7 +33,8 @@ import {
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Space, SpaceHelperProps, SpaceVertical } from '../../Layout'
+import { Space, SpaceVertical } from '../../Layout'
+import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend } from '../Legend'
 import {
   Accordion,
@@ -45,8 +46,8 @@ import {
 } from '../../Accordion'
 
 export interface FieldsetProps
-  extends SpaceHelperProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'>,
+  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'>,
+    SimpleLayoutProps,
     AccordionControlProps {
   /**
    * If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
@@ -178,19 +179,18 @@ const FieldsetLayout = forwardRef(
 FieldsetLayout.displayName = 'FieldsetLayout'
 
 export const Fieldset = styled(FieldsetLayout)`
+  ${simpleLayoutCSS}
+
+  ${AccordionContent} {
+    padding-top: ${({ theme }) => theme.space.medium};
+  }
+
   ${AccordionDisclosure} {
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: ${({ theme }) => theme.fontWeights.semiBold};
     height: 24px;
     padding: ${({ theme: { space } }) => space.xxsmall} 0;
   }
-
-  ${AccordionContent} {
-    padding-top: ${({ theme }) => theme.space.medium};
-  }
 `
 
-Fieldset.defaultProps = {
-  padding: 'none',
-  width: '100%',
-}
+Fieldset.defaultProps = { width: '100%' }
