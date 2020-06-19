@@ -37,7 +37,7 @@ import {
   MenuDisclosure,
   MenuList,
   MenuItem,
-  ModalContent,
+  DialogContent,
   Paragraph,
   Popover,
   PopoverContent,
@@ -150,10 +150,10 @@ export const MenuOpenDialog = () => {
         </MenuDisclosure>
         <DialogManager
           content={
-            <ModalContent>
+            <DialogContent>
               <Paragraph>Some content inside the Dialog</Paragraph>
               <Button onClick={openAlert}>Open Alert</Button>
-            </ModalContent>
+            </DialogContent>
           }
         >
           {(onClick) => (

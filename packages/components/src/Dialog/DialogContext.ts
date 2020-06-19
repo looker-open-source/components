@@ -24,43 +24,25 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Status'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import { createContext, MutableRefObject } from 'react'
+import { FocusTrap } from 'focus-trap'
 
-export * from './utils'
+export interface DialogContextProps {
+  closeModal?: () => void
+  enableScrollLock?: () => void
+  disableScrollLock?: () => void
+  enableFocusTrap?: () => void
+  disableFocusTrap?: () => void
+  focusTrapEnabled?: boolean
+  focusTrapRef?: MutableRefObject<FocusTrap | undefined>
+  scrollLockEnabled?: boolean
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
+const dialogContext: DialogContextProps = {}
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+export const DialogContext = createContext(dialogContext)
 
-export { SpacingSizes, theme, Theme } from '@looker/design-tokens'
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalContext = DialogContext

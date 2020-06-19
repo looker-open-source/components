@@ -24,43 +24,41 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Calendar'
-export * from './Card'
-export * from './Chip'
-export * from './DateTimeFormat'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Spinner'
-export * from './Status'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 
-export * from './utils'
+export interface DialogFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
+export const DialogFooterLayout: FC<DialogFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => {
+  return (
+    <Space as="footer" reverse between {...props}>
+      <Space reverse>{children}</Space>
+      {secondary && <Space>{secondary}</Space>}
+    </Space>
+  )
+}
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+export const DialogFooter = styled(DialogFooterLayout)``
 
-export { SpacingSizes, theme, Theme } from '@looker/design-tokens'
+DialogFooter.defaultProps = {
+  px: 'xlarge',
+  py: 'large',
+}
+
+/**
+ * Legacy fallback until all existing call sites are updated
+ */
+export const ModalFooter = DialogFooter

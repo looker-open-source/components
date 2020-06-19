@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DialogHeader 1`] = `
+.c6 {
+  width: 22px;
+  height: 22px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c6 svg {
+  height: 100%;
+  width: 100%;
+}
+
+.c2 {
+  width: 28px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 28px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding: 0rem;
+}
+
+.c2[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c3 .c7 {
+  height: 16px;
+  width: 16px;
+}
+
+.c1 {
+  font-weight: 600;
+  line-height: 1.75rem;
+  font-size: 1.125rem;
+  margin-right: 2rem;
+  color: #262D33;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c0 {
+  padding: 1.25rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+}
+
+.c5 {
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.c4 {
+  background: none;
+  border: none;
+  color: #939BA5;
+  padding: 0;
+}
+
+.c4:hover,
+.c4:focus,
+.c4.hover {
+  color: #707781;
+}
+
+.c4:active,
+.c4.active {
+  color: #4C535B;
+}
+
+.c4 svg {
+  pointer-events: none;
+}
+
+<header
+  className="c0"
+  id="test-DialogHeader"
+>
+  <h3
+    className="c1"
+    fontSize="large"
+    fontWeight="semiBold"
+    style={
+      Object {
+        "gridArea": "text",
+      }
+    }
+  >
+    The Heading for a Dialog
+  </h3>
+  <button
+    aria-describedby="test-DialogHeader-iconButton-tooltip"
+    className="c2 c3 c4"
+    color="neutral"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    size="small"
+    style={
+      Object {
+        "gridArea": "close",
+      }
+    }
+    tabIndex={-1}
+    type="button"
+    width={28}
+  >
+    <div
+      className="c5"
+    >
+      Close
+    </div>
+    <div
+      aria-hidden={true}
+      className="c6"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Close
+        </title>
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </button>
+</header>
+`;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DialogContent - no overflow 1`] = `
+.c0 {
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  overflow: auto;
+}
+
+.c0.overflow {
+  border-bottom: 1px solid #DEE1E5;
+  border-top: 1px solid #DEE1E5;
+  box-shadow: inset 0 -4px 4px -4px #DEE1E5;
+}
+
+.c1 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+<div
+  className="c0 undefined false"
+>
+  <div
+    className="c1"
+  >
+    Stuff
+  </div>
+</div>
+`;
+
+exports[`DialogContent - no overflow 2`] = `
+.c0 {
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  overflow: auto;
+}
+
+.c0.overflow {
+  border-bottom: 1px solid #DEE1E5;
+  border-top: 1px solid #DEE1E5;
+  box-shadow: inset 0 -4px 4px -4px #DEE1E5;
+}
+
+.c1 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+<div
+  className="c0 undefined false"
+>
+  <div
+    className="c1"
+  >
+    <div
+      style={
+        Object {
+          "height": "4rem",
+        }
+      }
+    >
+      Stuff
+    </div>
+  </div>
+</div>
+`;

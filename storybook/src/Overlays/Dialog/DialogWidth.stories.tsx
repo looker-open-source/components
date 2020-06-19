@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import {
   Button,
-  ModalContent,
+  DialogContent,
   Dialog,
   DialogManager,
   Confirm,
@@ -55,14 +55,14 @@ export const DialogFixedWidth = () => {
   return (
     <>
       <Dialog isOpen={isOpen} onClose={handleClose} maxWidth="300px">
-        <ModalContent>
+        <DialogContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et eros
           sed nisi pellentesque vulputate ac eu augue. Sed commodo sagittis
           neque, vel vulputate massa. Sed a velit nec ligula maximus lacinia.
           Morbi congue imperdiet sem, rhoncus convallis enim bibendum et. Class
           aptent taciti sociosqu ad litora torquent per conubia nostra, per
           inceptos himenaeos.
-        </ModalContent>
+        </DialogContent>
       </Dialog>
       <Button onClick={handleClick}>Open fixed max width dialog</Button>
     </>
@@ -80,11 +80,11 @@ export const DialogResponsiveWidth = () => {
         onClose={handleClose}
         maxWidth={['90vw', '50vw', '500px']}
       >
-        <ModalContent>
+        <DialogContent>
           Sed a velit nec ligula maximus lacinia. Morbi congue imperdiet sem,
           rhoncus convallis enim bibendum et. Class aptent taciti sociosqu ad
           litora torquent per conubia nostra, per inceptos himenaeos.
-        </ModalContent>
+        </DialogContent>
       </Dialog>
       <Button onClick={handleClick}>Open dynamic max width dialog</Button>
     </>
@@ -95,11 +95,11 @@ export const DialogManagerWidth = () => {
   return (
     <DialogManager
       content={
-        <ModalContent>
+        <DialogContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et eros
           sed nisi pellentesque vulputate ac eu augue. Sed commodo sagittis
           neque, vel vulputate massa.
-        </ModalContent>
+        </DialogContent>
       }
       maxWidth="200px"
     >
