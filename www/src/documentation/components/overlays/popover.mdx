@@ -106,20 +106,18 @@ To create a group, assigned a reference to an containing element and then assign
       >
         <Popover content={content} groupedPopoversRef={groupRef}>
           <Button>Instant Click</Button>
-          )}
         </Popover>
         <Popover content={content} groupedPopoversRef={groupRef}>
           <Button mx="large">Instant Click</Button>
         </Popover>
         <Popover content={content}>
-          {(onClick, ref, className) => (
-            <ButtonOutline>Defer Click</ButtonOutline>
+          <ButtonOutline>Defer Click</ButtonOutline>
         </Popover>
       </Space>
       <Popover content={content}>
-          <ButtonTransparent mx="xlarge" my="large">
-            Outside Group
-          </ButtonTransparent>
+        <ButtonTransparent mx="xlarge" my="large">
+          Outside Group
+        </ButtonTransparent>
       </Popover>
     </Space>
   )
@@ -160,14 +158,9 @@ Sometimes you may need to control how `Tooltip` applies handlers to the componen
 
 ```jsx
 <Popover content="Example using render props exploded">
-  {(onClick, ref, className, ariaHaspopup) => (
-    <Button
-      aria-haspopup={ariaHaspopup}
-      className={className}
-      onClick={onClick}
-      ref={ref}
-    >
-      Render Props Example
+  {(props) => (
+    <Button {...props}>
+      Render Props Example: {props['aria-expanded'] ? 'open' : 'closed'}
     </Button>
   )}
 </Popover>

@@ -173,16 +173,7 @@ const popoverContent = (
 )
 export const RenderProps = () => (
   <Popover content={popoverContent}>
-    {(onClick, ref, className, ariaHaspopup) => (
-      <button
-        onClick={onClick}
-        ref={ref}
-        className={className}
-        aria-haspopup={ariaHaspopup}
-      >
-        Test
-      </button>
-    )}
+    {(props) => <button {...props}>Test</button>}
   </Popover>
 )
 
