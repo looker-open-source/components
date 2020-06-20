@@ -137,15 +137,16 @@ export interface UsePopoverProps {
   focusTrap?: boolean
 }
 
-type PopoverRenderProp = (
-  onClick: (event: SyntheticEvent) => void,
+type PopoverRenderProp = (popoverProps: {
+  onClick: (event: SyntheticEvent) => void
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
    */
-  ref: Ref<any>,
-  className?: string,
-  ariaHaspopup?: boolean
-) => ReactNode
+  ref: Ref<any>
+  className?: string
+  'aria-expanded': boolean
+  'aria-haspopup': boolean
+}) => ReactNode
 
 function isRenderProp(
   children: ReactNode | PopoverRenderProp
@@ -547,22 +548,23 @@ export function Popover({
   //   ...omit(popoverProps, ['popover', 'isOpen']),
   // }
 
+  const popoverPropsLabeled = {
+    'aria-expanded': popoverProps.isOpen,
+    'aria-haspopup': true,
+    className: popoverProps.isOpen ? 'active' : '',
+    onClick: popoverProps.open,
+    ref: popoverProps.ref,
+  }
+
   if (isValidElement(children)) {
     target = cloneElement(children, {
-      'aria-haspopup': true,
+      ...popoverPropsLabeled,
       className: popoverProps.isOpen
-        ? `${children.props.className} hover`
+        ? `${children.props.className} active`
         : children.props.className,
-      onClick: popoverProps.open,
-      ref: popoverProps.ref,
     })
   } else if (isRenderProp(children)) {
-    target = children(
-      popoverProps.open,
-      popoverProps.ref,
-      popoverProps.isOpen ? 'hover' : '',
-      true
-    )
+    target = children(popoverPropsLabeled)
   } else {
     // eslint-disable-next-line no-console
     console.warn(

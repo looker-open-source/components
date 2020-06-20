@@ -72,12 +72,53 @@ describe('Popover', () => {
   test('renderProps style opens and closes', () => {
     const { getByText, queryByText } = renderWithTheme(
       <Popover content={SimpleContent}>
-        {(onClick, ref, className, ariaHaspopup) => (
+        {(popoverProps) => <button {...popoverProps}>Test</button>}
+      </Popover>
+    )
+
+    // Verify hidden
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+
+    const trigger = getByText('Test')
+    fireEvent.click(trigger)
+
+    // Find content
+    expect(getByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(trigger)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+  })
+
+  test('cloneElement style opens and closes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Popover content={SimpleContent}>
+        <button>Test</button>
+      </Popover>
+    )
+
+    // Verify hidden
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+
+    const trigger = getByText('Test')
+    fireEvent.click(trigger)
+
+    // Find content
+    expect(getByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(trigger)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+  })
+
+  test('renderProps style expanded opens and closes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Popover content={SimpleContent}>
+        {({ className, onClick, ref, ...props }) => (
           <button
+            aria-expanded={props['aria-expanded']}
+            aria-haspopup={props['aria-haspopup']}
+            className={className}
             onClick={onClick}
             ref={ref}
-            className={className}
-            aria-haspopup={ariaHaspopup}
           >
             Test
           </button>
