@@ -29,6 +29,7 @@ import omit from 'lodash/omit'
 import { SpaceProps } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
+import { InlineInputTextBase, InlineInputTextProps } from '../InlineInputText'
 import { InputProps, inputPropKeys } from '../InputProps'
 import { Flex } from '../../../Layout'
 import {
@@ -41,6 +42,11 @@ import { useForkedRef } from '../../../utils'
 export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
     Omit<InputProps, 'type'> {
+  /**
+   * Allows the input width to resize with the value or placeholder
+   * Recommended to use with `width="auto"`
+   */
+  autoResize?: boolean
   before?: ReactNode
   after?: ReactNode
   /**
@@ -65,6 +71,7 @@ export interface InputTextBaseProps
 const InputTextBaseLayout = forwardRef(
   (
     {
+      autoResize,
       className,
       before,
       after,
@@ -78,20 +85,23 @@ const InputTextBaseLayout = forwardRef(
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
     const focusInput = () => internalRef.current && internalRef.current.focus()
 
-    const inputProps = pick(
-      omit(props, 'color', 'height', 'width'),
-      inputPropKeys
-    )
+    const inputProps: InputProps = {
+      ...pick(omit(props, 'color', 'height', 'width'), inputPropKeys),
+      'aria-invalid': validationType === 'error' ? 'true' : undefined,
+      type,
+    }
 
     return (
       <div className={className} onClick={focusInput}>
         {before && before}
-        <input
-          {...inputProps}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          type={type}
-          ref={ref}
-        />
+        {autoResize ? (
+          <InlineInputTextBase
+            {...(inputProps as InlineInputTextProps)}
+            ref={ref}
+          />
+        ) : (
+          <input {...inputProps} ref={ref} />
+        )}
         {after && after}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">
@@ -170,14 +180,18 @@ export const InputTextBase = styled(InputTextBaseLayout).attrs(
 )<InputTextBaseProps>`
   align-items: center;
   background-color: ${(props) => props.theme.colors.field};
+  cursor: text;
   display: inline-flex;
-  height: ${inputHeight};
   justify-content: space-evenly;
-
   ${simpleLayoutCSS}
   ${inputCSS}
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
   ${inputTextValidation}
+
+  ${InlineInputTextBase} {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
 
   input {
     background: transparent;
@@ -202,6 +216,7 @@ export const InputTextBase = styled(InputTextBaseLayout).attrs(
   :focus-within {
     ${inputTextFocus}
   }
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 `
 
 InputTextBase.defaultProps = {

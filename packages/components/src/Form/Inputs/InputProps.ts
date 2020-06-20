@@ -69,6 +69,7 @@ export const inputPropKeys = [
   'step',
   'value',
   'aria-autocomplete',
+  'aria-invalid',
   'aria-label',
   'aria-describedby',
   'aria-labelledby',

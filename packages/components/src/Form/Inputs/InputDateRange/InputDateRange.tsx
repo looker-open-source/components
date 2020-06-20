@@ -50,7 +50,7 @@ import {
   inputTextFocus,
   inputTextValidation,
 } from '../InputText'
-import { InlineInputText } from '../InlineInputText'
+import { InlineInputTextBase } from '../InlineInputText'
 import { Calendar, CalendarLocalization } from '../../../Calendar'
 import {
   Locales,
@@ -338,7 +338,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           }
         >
           <InputTextWrapper inputLength={inputs.from.value.length}>
-            <InlineInputText
+            <InlineInputTextBase
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
@@ -357,7 +357,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             &ndash;
           </HyphenWrapper>
           <InputTextWrapper inputLength={inputs.to.value.length}>
-            <InlineInputText
+            <InlineInputTextBase
               placeholder={`Date (${formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
@@ -469,11 +469,8 @@ const IconWrapper = styled.div`
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
   padding: ${({ theme: { space } }) => space.xxsmall} 0;
-  ${InlineInputText} {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    height: ${({ theme }) => theme.lineHeights.large};
+  ${InlineInputTextBase} {
+    line-height: ${({ theme }) => theme.lineHeights.large};
 
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};

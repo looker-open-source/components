@@ -39,7 +39,7 @@ export interface InlineInputTextProps
   simple?: boolean
 }
 
-export const InlineInputTextInternal = forwardRef(
+const InlineInputTextLayout = forwardRef(
   (
     {
       className,
@@ -62,12 +62,8 @@ export const InlineInputTextInternal = forwardRef(
 
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
-    /**
-     * &#8203; is a zero-width space – ensures that visibleText gets accurate line-height applied
-     */
-
     return (
-      <div className={className} data-testid="inlineInputText">
+      <div className={className}>
         <Input
           onChange={handleChange}
           simple={simple}
@@ -76,7 +72,7 @@ export const InlineInputTextInternal = forwardRef(
           ref={ref}
           {...pick(props, inputPropKeys)}
         />
-        <VisibleText displayValue={displayValue}>
+        <VisibleText className={displayValue ? '' : 'placeholder'}>
           {displayValue || placeholder || ' '}
         </VisibleText>
       </div>
@@ -84,7 +80,7 @@ export const InlineInputTextInternal = forwardRef(
   }
 )
 
-InlineInputTextInternal.displayName = 'InlineInputTextInternal'
+InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
@@ -108,24 +104,30 @@ interface VisibleTextProps {
 }
 
 const VisibleText = styled.div<VisibleTextProps>`
-  color: ${({ displayValue, theme }) =>
-    displayValue ? 'transparent' : theme.colors.text5};
+  color: transparent;
+  &.placeholder {
+    color: ${({ theme }) => theme.colors.text5};
+  }
+  line-height: inherit;
   text-align: inherit;
   white-space: pre;
 `
 
-export const InlineInputText = styled(InlineInputTextInternal)`
+export const InlineInputTextBase = styled(InlineInputTextLayout)`
+  display: inline-flex;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+`
+
+export const InlineInputText = styled(InlineInputTextBase)`
   ${typography}
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
     underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
   color: inherit;
-  display: inline-flex;
   flex-direction: column;
-  justify-content: center;
-  min-width: 2rem;
-  position: relative;
   text-align: inherit;
 
   :focus,
