@@ -28,7 +28,7 @@ import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields/FieldRadio'
-import { inputHeight } from '../InputText/InputText'
+import { inputHeight } from '../InputText'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type RadioGroupProps = OptionsGroupProps<string>

@@ -24,66 +24,30 @@
 
  */
 
-import pick from 'lodash/pick'
-import omit from 'lodash/omit'
-import { SpaceProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { forwardRef, Ref, useRef } from 'react'
-import styled, { css } from 'styled-components'
-import { InputProps, inputPropKeys } from '../InputProps'
-import { Flex } from '../../../Layout'
-import {
-  SimpleLayoutProps,
-  simpleLayoutCSS,
-} from '../../../Layout/utils/simple'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
-import { useForkedRef } from '../../../utils'
+import {
+  InputIconStyle,
+  InputTextBase,
+  InputTextBaseProps,
+} from './InputTextBase'
 
 export interface InputTextProps
-  extends Omit<SimpleLayoutProps, 'size'>,
-    Omit<InputProps, 'type'> {
+  extends Omit<InputTextBaseProps, 'after' | 'before'> {
   iconAfter?: IconNames
   iconBefore?: IconNames
   prefix?: string
   suffix?: string
-  /**
-   *
-   * @default 'text'
-   */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
 }
 
-const InputComponent = forwardRef(
+const InputTextLayout = forwardRef(
   (
-    {
-      className,
-      iconAfter,
-      iconBefore,
-      prefix,
-      suffix,
-      type = 'text',
-      validationType,
-      ...props
-    }: InputTextProps,
-    forwardedRef: Ref<HTMLInputElement>
+    { iconAfter, iconBefore, prefix, suffix, ...props }: InputTextProps,
+    ref: Ref<HTMLInputElement>
   ) => {
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const focusInput = () => internalRef.current && internalRef.current.focus()
-
     if (iconBefore && prefix) {
       // eslint-disable-next-line no-console
       console.warn(`Only use IconBefore or prefix not both at the same time. `)
@@ -116,136 +80,10 @@ const InputComponent = forwardRef(
       </InputIconStyle>
     ) : null
 
-    const inputProps = pick(
-      omit(props, 'color', 'height', 'width'),
-      inputPropKeys
-    )
-
-    return (
-      <InputLayout className={className} onClick={focusInput}>
-        {before && before}
-        <input
-          {...inputProps}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          type={type}
-          ref={ref}
-        />
-        {after && after}
-        {validationType && (
-          <InputIconStyle paddingLeft="xsmall">
-            <Icon color="critical" name="CircleInfo" size={20} />
-          </InputIconStyle>
-        )}
-      </InputLayout>
-    )
+    return <InputTextBase after={after} before={before} ref={ref} {...props} />
   }
 )
 
-export const inputTextHover = css`
-  border-color: ${(props) => props.theme.colors.ui3};
-`
-export const inputTextFocus = css`
-  border-color: ${(props) => props.theme.colors.keyFocus};
-  box-shadow: 0 0 0 2px ${(props) => props.theme.colors.keyAccent};
-  outline: none;
-`
-export const inputTextDisabled = css`
-  background: ${(props) => props.theme.colors.ui1};
-  color: ${(props) => props.theme.colors.text5};
-  &:hover {
-    border-color: ${(props) => props.theme.colors.ui2};
-  }
-`
+InputTextLayout.displayName = 'InputTextLayout'
 
-export const inputHeight = '36px'
-
-export const InputLayout = styled.div`
-  align-items: center;
-  background-color: ${(props) => props.theme.colors.field};
-  display: inline-flex;
-  height: ${inputHeight};
-  justify-content: space-evenly;
-
-  input {
-    background: transparent;
-    border: none;
-    flex: 1;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    height: 100%;
-    max-width: 100%;
-    outline: none;
-    padding: 0;
-    width: 100%;
-  }
-
-  ::placeholder {
-    color: ${(props) => props.theme.colors.text5};
-  }
-
-  &:hover {
-    ${inputTextHover}
-  }
-  &:focus,
-  :focus-within {
-    ${inputTextFocus}
-  }
-`
-
-export const InputIconStyle = styled(Flex)`
-  color: ${(props) => props.theme.colors.text5};
-  pointer-events: none;
-`
-
-export const inputTextValidation = css<{ validationType?: 'error' }>`
-  ${(props) =>
-    props.validationType === 'error'
-      ? `
-      border-color: ${props.theme.colors.criticalBorder};
-      &:hover {
-        border-color: ${props.theme.colors.critical};
-      }
-      &:focus,
-      :focus-within {
-        border-color: ${props.theme.colors.critical};
-        box-shadow: 0 0 0 2px ${props.theme.colors.criticalAccent};
-      }
-      `
-      : ''}
-`
-
-export const inputCSS = css`
-  background: ${({ theme: { colors } }) => colors.field};
-  border: 1px solid ${({ theme: { colors } }) => colors.ui2};
-  border-radius: ${({ theme: { radii } }) => radii.medium};
-  color: ${({ theme: { colors } }) => colors.text2};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-`
-
-export const InputText = styled(InputComponent).attrs(
-  (props: InputTextProps) => {
-    const padding: SpaceProps = {
-      px: props.px || props.p || 'small',
-      py: props.py || props.p || 'none',
-    }
-    if (props.prefix || props.iconBefore) {
-      padding.pl = 'xsmall'
-    }
-    if (props.suffix || props.iconAfter) {
-      padding.pr = 'xsmall'
-    }
-    return padding
-  }
-)<InputTextProps>`
-  ${simpleLayoutCSS}
-  ${inputCSS}
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
-  ${inputTextValidation}
-`
-
-InputText.defaultProps = {
-  height: inputHeight,
-  type: 'text',
-  width: '100%',
-}
-
-InputComponent.displayName = 'InputComponent'
+export const InputText = styled(InputTextLayout)``
