@@ -550,7 +550,7 @@ export function Popover({
     target = cloneElement(children, {
       'aria-haspopup': true,
       className: popoverProps.isOpen
-        ? `${children.props.className} hover`
+        ? `${children.props.className} active`
         : children.props.className,
       onClick: popoverProps.open,
       ref: popoverProps.ref,
@@ -559,7 +559,7 @@ export function Popover({
     target = children(
       popoverProps.open,
       popoverProps.ref,
-      popoverProps.isOpen ? 'hover' : '',
+      popoverProps.isOpen ? 'active' : '',
       true
     )
   } else {
