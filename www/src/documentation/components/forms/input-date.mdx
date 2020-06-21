@@ -145,16 +145,9 @@ A common UI pattern is to combine `InputDate` with [Popover](/components/overlay
         </Box>
       }
     >
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-        >
-          <DateFormat>{selectedDate}</DateFormat>
-        </Button>
-      )}
+      <Button>
+        <DateFormat>{selectedDate}</DateFormat>
+      </Button>
     </Popover>
   )
 }

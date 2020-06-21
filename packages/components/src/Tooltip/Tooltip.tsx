@@ -123,6 +123,7 @@ export interface TooltipProps extends UseTooltipProps {
    */
   children: ReactNode | TooltipRenderProp
 }
+
 export function useTooltip({
   arrow = true,
   canClose,

@@ -95,22 +95,15 @@ export const Controlled: FC = () => {
         </PopoverContent>
       }
     >
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-        >
-          {controlledDate ? (
-            <>
-              <DateFormat>{controlledDate}</DateFormat>
-            </>
-          ) : (
-            'Select Dates'
-          )}
-        </Button>
-      )}
+      <Button>
+        {controlledDate ? (
+          <>
+            <DateFormat>{controlledDate}</DateFormat>
+          </>
+        ) : (
+          'Select Dates'
+        )}
+      </Button>
     </Popover>
   )
 }

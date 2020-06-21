@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InputText` interface simplified / narrowed
   - No longer supports typography or pseudo props
   - Switch from using defaultProps to `css` block to share common styles with other components
+- `Popover` now supports the preferred `cloneElement` style usage in addition to the existing render prop style
+  - Additionally the render prop style now exposes `aria-haspopup` for use
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
 - `IconButton` improved hover/active states and no background on hover

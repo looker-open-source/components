@@ -48,17 +48,9 @@ export const ContentOverflow: FC = ({ children }) => (
         </PopoverContent>
       }
     >
-      {(onClick, ref, className) => (
-        <ButtonOutline
-          iconAfter="ArrowDown"
-          m="xxlarge"
-          className={className}
-          onClick={onClick}
-          ref={ref}
-        >
-          {children}
-        </ButtonOutline>
-      )}
+      <ButtonOutline iconAfter="ArrowDown" m="xxlarge">
+        {children}
+      </ButtonOutline>
     </Popover>
   </Box>
 )

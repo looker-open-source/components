@@ -44,11 +44,7 @@ const PopoverGroup = () => {
     <>
       <div ref={groupRef}>
         <Popover content={SimpleContent} groupedPopoversRef={groupRef}>
-          {(onClick, ref, className) => (
-            <a onClick={onClick} ref={ref} className={className}>
-              Instant Click
-            </a>
-          )}
+          <a>Instant Click</a>
         </Popover>
 
         <a onClick={instantClick} id="instant">
@@ -73,14 +69,80 @@ describe('Popover', () => {
     }
   })
 
-  test('opens and closes', () => {
+  test('renderProps style opens and closes', () => {
     const { getByText, queryByText } = renderWithTheme(
       <Popover content={SimpleContent}>
-        {(onClick, ref, className) => (
-          <button ref={ref} onClick={onClick} className={className}>
+        {(popoverProps) => <button {...popoverProps}>Test</button>}
+      </Popover>
+    )
+
+    // Verify hidden
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+
+    const trigger = getByText('Test')
+    fireEvent.click(trigger)
+
+    // Find content
+    expect(getByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(trigger)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+  })
+
+  test('cloneElement style opens and closes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Popover content={SimpleContent}>
+        <button>Test</button>
+      </Popover>
+    )
+
+    // Verify hidden
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+
+    const trigger = getByText('Test')
+    fireEvent.click(trigger)
+
+    // Find content
+    expect(getByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(trigger)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+  })
+
+  test('renderProps style expanded opens and closes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Popover content={SimpleContent}>
+        {({ className, onClick, ref, ...props }) => (
+          <button
+            aria-expanded={props['aria-expanded']}
+            aria-haspopup={props['aria-haspopup']}
+            className={className}
+            onClick={onClick}
+            ref={ref}
+          >
             Test
           </button>
         )}
+      </Popover>
+    )
+
+    // Verify hidden
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+
+    const trigger = getByText('Test')
+    fireEvent.click(trigger)
+
+    // Find content
+    expect(getByText('simple content')).toBeInTheDocument()
+
+    fireEvent.click(trigger)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+  })
+
+  test('cloneElement style opens and closes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Popover content={SimpleContent}>
+        <button>Test</button>
       </Popover>
     )
 
@@ -103,11 +165,7 @@ describe('Popover', () => {
     const { getByText } = renderWithTheme(
       <div onClick={mockContainerOnClick}>
         <Popover content={SimpleContent}>
-          {(onClick, ref, className) => (
-            <button ref={ref} onClick={onClick} className={className}>
-              Test
-            </button>
-          )}
+          <button>Test</button>
         </Popover>
       </div>
     )
@@ -125,11 +183,7 @@ describe('Popover', () => {
     const { getByText, queryByText } = renderWithTheme(
       <>
         <Popover content={SimpleContent}>
-          {(onClick, ref, className) => (
-            <button onClick={onClick} ref={ref} className={className}>
-              Instant Click
-            </button>
-          )}
+          <button>Instant Click</button>
         </Popover>
         <a onClick={doThing}>Do thing...</a>
       </>
@@ -179,11 +233,7 @@ describe('Popover', () => {
       return (
         <div ref={hoverRef}>
           <Popover content={SimpleContent} hoverDisclosureRef={hoverRef}>
-            {(onClick, ref, className) => (
-              <Button onClick={onClick} ref={ref} className={className}>
-                Instant Click
-              </Button>
-            )}
+            <Button>Instant Click</Button>
           </Popover>
           Some text in the div
         </div>
