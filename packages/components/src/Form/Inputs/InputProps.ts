@@ -27,8 +27,32 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ValidationType } from '../ValidationMessage'
 
-export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
+/**
+ * Omits type since it's specific to each implementation
+ */
+export interface InputProps
+  extends Omit<CompatibleHTMLProps<HTMLInputElement>, 'type'> {
   validationType?: ValidationType
+}
+
+export interface InputTextTypeProps {
+  /**
+   *
+   * @default 'text'
+   */
+  type?:
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week'
 }
 
 export const inputPropKeys = [

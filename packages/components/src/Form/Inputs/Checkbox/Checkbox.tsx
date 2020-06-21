@@ -42,7 +42,7 @@ export type MixedBoolean = true | false | 'mixed'
 
 export interface CheckboxProps
   extends SpaceProps,
-    Omit<InputProps, 'type' | 'checked' | 'onClick'> {
+    Omit<InputProps, 'checked' | 'onClick'> {
   checked?: MixedBoolean
   validationType?: ValidationType
 }

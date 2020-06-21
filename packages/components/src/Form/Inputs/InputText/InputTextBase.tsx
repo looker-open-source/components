@@ -26,82 +26,110 @@
 
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
-import { SpaceProps } from '@looker/design-tokens'
-import React, { forwardRef, ReactNode, Ref, useRef } from 'react'
+import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
+import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
-import { InlineInputTextBase, InlineInputTextProps } from '../InlineInputText'
-import { InputProps, inputPropKeys } from '../InputProps'
-import { Flex } from '../../../Layout'
+import { InlineInputTextBase } from '../InlineInputText'
+import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
 import {
   SimpleLayoutProps,
   simpleLayoutCSS,
 } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
-import { useForkedRef } from '../../../utils'
+import { useForkedRef, useWrapEvent } from '../../../utils'
 
 export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
-    Omit<InputProps, 'type'> {
+    InputProps,
+    InputTextTypeProps {
   /**
    * Allows the input width to resize with the value or placeholder
    * Recommended to use with `width="auto"`
+   * Do not use with children
    */
   autoResize?: boolean
   before?: ReactNode
   after?: ReactNode
-  /**
-   *
-   * @default 'text'
-   */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseLeave?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
 const InputTextBaseLayout = forwardRef(
   (
     {
       autoResize,
+      children,
       className,
       before,
       after,
       type = 'text',
       validationType,
+
+      onClick,
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+
       ...props
     }: InputTextBaseProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const focusInput = () => internalRef.current && internalRef.current.focus()
 
-    const inputProps: InputProps = {
-      ...pick(omit(props, 'color', 'height', 'width'), inputPropKeys),
-      'aria-invalid': validationType === 'error' ? 'true' : undefined,
-      type,
+    function handleMouseDown() {
+      // set focus to input on mousedown of container
+      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      window.requestAnimationFrame(() => {
+        internalRef.current && internalRef.current.focus()
+      })
     }
 
+    const mouseHandlers = {
+      onClick,
+      onMouseDown: useWrapEvent(handleMouseDown, onMouseDown),
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+    }
+
+    const inputProps = {
+      ...pick(omitStyledProps(props), inputPropKeys),
+      'aria-invalid': validationType === 'error' ? true : undefined,
+      type,
+    }
+    const input = <input {...inputProps} ref={ref} />
+
+    const inner = children ? (
+      <div className="inner">
+        {children}
+        {input}
+      </div>
+    ) : autoResize ? (
+      <InlineInputTextBase {...inputProps} ref={ref} />
+    ) : (
+      input
+    )
+
     return (
-      <div className={className} onClick={focusInput}>
+      <div
+        className={className}
+        {...mouseHandlers}
+        {...omitStyledProps(omit(props, [...inputPropKeys, 'validationType']))}
+      >
         {before && before}
-        {autoResize ? (
-          <InlineInputTextBase
-            {...(inputProps as InlineInputTextProps)}
-            ref={ref}
-          />
-        ) : (
-          <input {...inputProps} ref={ref} />
-        )}
+        {inner}
         {after && after}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">
@@ -133,8 +161,10 @@ export const inputTextDisabled = css`
 
 export const inputHeight = '36px'
 
-export const InputIconStyle = styled(Flex)`
+export const InputIconStyle = styled.div<SpaceProps>`
+  ${space}
   color: ${(props) => props.theme.colors.text5};
+  display: flex;
   pointer-events: none;
 `
 
@@ -163,26 +193,14 @@ export const inputCSS = css`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-export const InputTextBase = styled(InputTextBaseLayout).attrs(
-  (props: InputTextBaseProps) => {
-    const padding: SpaceProps = {
-      px: props.px || props.p || 'small',
-      py: props.py || props.p || 'none',
-    }
-    if (props.before) {
-      padding.pl = 'xsmall'
-    }
-    if (props.after) {
-      padding.pr = 'xsmall'
-    }
-    return padding
-  }
-)<InputTextBaseProps>`
+export const InputTextBase = styled(InputTextBaseLayout)<InputTextBaseProps>`
   align-items: center;
   background-color: ${(props) => props.theme.colors.field};
   cursor: text;
-  display: inline-flex;
+  display: flex;
   justify-content: space-evenly;
+  padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+
   ${simpleLayoutCSS}
   ${inputCSS}
   ${inputTextValidation}
@@ -191,6 +209,9 @@ export const InputTextBase = styled(InputTextBaseLayout).attrs(
     height: 100%;
     max-width: 100%;
     width: 100%;
+    div {
+      padding-left: ${({ theme: { space } }) => space.xsmall};
+    }
   }
 
   input {
@@ -201,8 +222,15 @@ export const InputTextBase = styled(InputTextBaseLayout).attrs(
     height: 100%;
     max-width: 100%;
     outline: none;
-    padding: 0;
+    padding: 0 0 0 ${({ theme: { space } }) => space.xsmall};
     width: 100%;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      appearance: none;
+    }
   }
 
   ::placeholder {

@@ -36,7 +36,7 @@ import {
 } from './InputTextBase'
 
 export interface InputTextProps
-  extends Omit<InputTextBaseProps, 'after' | 'before'> {
+  extends Omit<InputTextBaseProps, 'children' | 'after' | 'before'> {
   iconAfter?: IconNames
   iconBefore?: IconNames
   prefix?: string
@@ -60,25 +60,27 @@ const InputTextLayout = forwardRef(
       return null
     }
 
-    const before = iconBefore ? (
-      <InputIconStyle paddingRight="xsmall">
-        <Icon name={iconBefore} size={20} />
-      </InputIconStyle>
-    ) : prefix ? (
-      <InputIconStyle paddingRight="xsmall">
-        <Text fontSize="small">{prefix}</Text>
-      </InputIconStyle>
-    ) : null
+    const before =
+      iconBefore || prefix ? (
+        <InputIconStyle pl="xxsmall">
+          {iconBefore ? (
+            <Icon name={iconBefore} size={20} />
+          ) : (
+            <Text fontSize="small">{prefix}</Text>
+          )}
+        </InputIconStyle>
+      ) : null
 
-    const after = iconAfter ? (
-      <InputIconStyle paddingLeft="xsmall">
-        <Icon name={iconAfter} size={20} />
-      </InputIconStyle>
-    ) : suffix ? (
-      <InputIconStyle paddingLeft="xsmall">
-        <Text fontSize="small">{suffix}</Text>
-      </InputIconStyle>
-    ) : null
+    const after =
+      iconAfter || suffix ? (
+        <InputIconStyle pl="xsmall" pr="xxsmall">
+          {iconAfter ? (
+            <Icon name={iconAfter} size={20} />
+          ) : (
+            <Text fontSize="small">{suffix}</Text>
+          )}
+        </InputIconStyle>
+      ) : null
 
     return <InputTextBase after={after} before={before} ref={ref} {...props} />
   }

@@ -28,14 +28,18 @@ import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import { typography, TypographyProps } from '@looker/design-tokens'
-import { inputPropKeys, InputProps } from '../InputProps'
+import {
+  typography,
+  TypographyProps,
+  omitStyledProps,
+} from '@looker/design-tokens'
+import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
 
 export interface InlineInputTextProps
   extends TypographyProps,
-    Omit<InputProps, 'type'> {
+    InputProps,
+    InputTextTypeProps {
   underlineOnlyOnHover?: boolean
-  value?: string
   simple?: boolean
 }
 
@@ -64,17 +68,16 @@ const InlineInputTextLayout = forwardRef(
 
     return (
       <div className={className}>
-        <Input
+        <StyledInput
           onChange={handleChange}
           simple={simple}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
+          placeholder={placeholder}
           ref={ref}
-          {...pick(props, inputPropKeys)}
+          {...omitStyledProps(pick(props, inputPropKeys))}
         />
-        <VisibleText className={displayValue ? '' : 'placeholder'}>
-          {displayValue || placeholder || ' '}
-        </VisibleText>
+        <StyledText>{displayValue || placeholder || ' '}</StyledText>
       </div>
     )
   }
@@ -82,7 +85,7 @@ const InlineInputTextLayout = forwardRef(
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
-const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
+const StyledInput = styled.input<InlineInputTextProps>`
   background: transparent;
   border: none;
   caret-color: ${({ theme }) => theme.colors.text0};
@@ -97,17 +100,17 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   text-transform: inherit;
   top: 0;
   width: 100%;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+  &[type='number'] {
+    appearance: textfield;
+  }
 `
 
-interface VisibleTextProps {
-  displayValue?: string
-}
-
-const VisibleText = styled.div<VisibleTextProps>`
+const StyledText = styled.div`
   color: transparent;
-  &.placeholder {
-    color: ${({ theme }) => theme.colors.text5};
-  }
   line-height: inherit;
   text-align: inherit;
   white-space: pre;

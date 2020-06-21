@@ -75,6 +75,11 @@ export interface SelectProps
   extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'>,
     SelectBaseProps {
   /**
+   * Allows the select width to resize with the current value or placeholder
+   * Container will default to `display: inline-flex` and container & list will default to `width: auto`
+   */
+  autoResize?: boolean
+  /**
    * Value of the current selected option (controlled)
    */
   value?: string
@@ -106,6 +111,7 @@ const SelectComponent = forwardRef(
       'aria-labelledby': ariaLabelledby,
       indicator,
       listLayout,
+      autoResize,
       validationType,
       windowedOptions: windowedOptionsProp,
       ...props
@@ -144,11 +150,12 @@ const SelectComponent = forwardRef(
 
     return (
       <Combobox
-        {...props}
         value={optionValue}
         defaultValue={defaultOptionValue}
         onChange={handleChange}
         onClose={handleClose}
+        {...(autoResize ? { display: 'inline-flex', width: 'auto' } : {})}
+        {...props}
       >
         <ComboboxInput
           {...ariaProps}
@@ -157,6 +164,7 @@ const SelectComponent = forwardRef(
           validationType={validationType}
           isClearable={isClearable}
           autoComplete={false}
+          autoResize={autoResize}
           readOnly={!isFilterable}
           onChange={handleInputChange}
           selectOnClick={isFilterable}

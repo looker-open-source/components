@@ -34,18 +34,21 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../../Icon'
-import { InputSearchBase, InputSearchBaseProps } from './InputSearchBase'
+import { InputIconStyle, InputTextBase, InputTextBaseProps } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
   extends Omit<
-    InputSearchBaseProps,
-    'searchIcon' | 'searchControls' | 'validationType'
+    InputTextBaseProps,
+    'children' | 'after' | 'before' | 'value' | 'defaultValue'
   > {
   summary?: string
   hideControls?: boolean
   hideSearchIcon?: boolean
   onClear?: (e: MouseEvent<HTMLButtonElement>) => void
+
+  defaultValue?: string
+  value?: string
 }
 
 export const SearchIcon = styled(Icon)`
@@ -92,15 +95,19 @@ export const InputSearch = forwardRef(
     }, [valueProp])
 
     return (
-      <InputSearchBase
+      <InputTextBase
         {...props}
         value={value}
         ref={ref}
         onChange={handleChange}
-        searchIcon={
-          hideSearchIcon ? undefined : <SearchIcon name="Search" size={30} />
+        before={
+          hideSearchIcon ? undefined : (
+            <InputIconStyle>
+              <Icon name="Search" size={20} />
+            </InputIconStyle>
+          )
         }
-        searchControls={
+        after={
           !hideControls ? (
             <InputSearchControls
               onClear={handleClear}

@@ -27,9 +27,7 @@ import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import { Flex } from '../../../Layout'
-import { InputText } from '../InputText'
-import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
+import { inputHeight, InputTextBase, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -60,7 +58,10 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<InputSearchBaseProps, 'value' | 'defaultValue' | 'onChange'>,
+  extends Omit<
+      InputTextBaseProps,
+      'children' | 'after' | 'before' | 'value' | 'defaultValue' | 'onChange'
+    >,
     MaxHeightProps {
   /**
    * Set to false to disable the removal of the last value on backspace key
@@ -117,7 +118,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} ml="xxsmall">
+        <Chip onDelete={onChipDelete} key={value} mt={1} mb={1} mr="xxsmall">
           {value}
         </Chip>
       )
@@ -130,9 +131,8 @@ export const InputChipsBaseInternal = forwardRef(
     const renderSearchControls = values.length > 0
 
     return (
-      <InputSearchBase
-        searchIcon={false}
-        searchControls={
+      <InputTextBase
+        after={
           <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
@@ -148,10 +148,11 @@ export const InputChipsBaseInternal = forwardRef(
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         validationType={validationType}
+        height="auto"
         {...props}
       >
         {chips}
-      </InputSearchBase>
+      </InputTextBase>
     )
   }
 )
@@ -162,11 +163,20 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
 
-  ${Flex} {
+  .inner {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
+    ${Chip} + ${Chip} {
+      margin-left: 0;
+    }
   }
 
-  ${InputText} {
+  input {
+    flex: 1;
+    height: calc(${inputHeight} - ((${({ theme: { space } }) =>
+  space.xxxsmall} + 1px) * 2));
     min-width: 25%;
     padding-right: 0;
     width: auto;
