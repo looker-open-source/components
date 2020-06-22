@@ -41,7 +41,7 @@ import { InputProps } from '../InputProps'
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
-    InputProps,
+    Omit<InputProps, 'type'>,
     TypographyProps {
   'aria-labelledby'?: string
   max?: number

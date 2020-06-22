@@ -34,7 +34,7 @@ import { KnobContainer, KnobProps } from './Knob'
 
 export interface ToggleSwitchProps
   extends SpaceProps,
-    InputProps,
+    Omit<InputProps, 'type'>,
     Omit<KnobProps, 'size'> {
   size?: number
 }

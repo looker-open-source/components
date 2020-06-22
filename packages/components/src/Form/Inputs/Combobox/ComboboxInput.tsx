@@ -31,7 +31,7 @@ import omit from 'lodash/omit'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputText, InputTextProps } from '../InputText'
+import { InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
@@ -67,13 +67,8 @@ export interface ComboboxInputCommonProps {
 
 export interface ComboboxInputProps
   extends Omit<
-      InputTextProps,
-      | 'children'
-      | 'after'
-      | 'before'
-      | 'autoComplete'
-      | 'value'
-      | 'defaultValue'
+      InputTextBaseProps,
+      'children' | 'autoComplete' | 'value' | 'defaultValue'
     >,
     ComboboxInputCommonProps {
   value?: string

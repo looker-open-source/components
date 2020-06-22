@@ -27,7 +27,7 @@ import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import { inputHeight, InputText, InputTextProps } from '../InputText'
+import { inputHeight, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -58,10 +58,7 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<
-      InputTextProps,
-      'children' | 'after' | 'before' | 'value' | 'defaultValue' | 'onChange'
-    >,
+  extends Omit<InputTextBaseProps, 'children' | 'defaultValue' | 'onChange'>,
     MaxHeightProps {
   /**
    * Set to false to disable the removal of the last value on backspace key
@@ -118,7 +115,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mt={1} mb={1} mr="xxsmall">
+        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} mr="xxsmall">
           {value}
         </Chip>
       )

@@ -30,8 +30,7 @@ import { ValidationType } from '../ValidationMessage'
 /**
  * Omits type since it's specific to each implementation
  */
-export interface InputProps
-  extends Omit<CompatibleHTMLProps<HTMLInputElement>, 'type'> {
+export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
   validationType?: ValidationType
 }
 

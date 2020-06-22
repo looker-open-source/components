@@ -24,12 +24,13 @@
 
  */
 
-import { IconNames } from '@looker/icons'
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
+import { IconNames } from '@looker/icons'
 import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
+import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
 import {
   SimpleLayoutProps,
   simpleLayoutCSS,
@@ -38,11 +39,10 @@ import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputText } from '../InlineInputText'
-import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
 
-export interface InputTextProps
+export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
-    InputProps,
+    Omit<InputProps, 'type'>,
     InputTextTypeProps {
   /**
    * Allows the input width to resize with the value or placeholder
@@ -50,14 +50,6 @@ export interface InputTextProps
    * Do not use with children
    */
   autoResize?: boolean
-
-  after?: ReactNode
-  iconAfter?: IconNames
-  suffix?: string
-
-  before?: ReactNode
-  iconBefore?: IconNames
-  prefix?: string
 
   onClick?: (e: MouseEvent<HTMLDivElement>) => void
   onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
@@ -68,6 +60,16 @@ export interface InputTextProps
   onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
+export interface InputTextProps extends InputTextBaseProps {
+  after?: ReactNode
+  iconAfter?: IconNames
+  suffix?: string
+
+  before?: ReactNode
+  iconBefore?: IconNames
+  prefix?: string
+}
+
 const InputTextLayout = forwardRef(
   (
     {
@@ -75,11 +77,11 @@ const InputTextLayout = forwardRef(
       children,
       className,
 
-      before: beforeProp,
+      before,
       iconBefore,
       prefix,
 
-      after: afterProp,
+      after,
       iconAfter,
       suffix,
 
@@ -118,20 +120,21 @@ const InputTextLayout = forwardRef(
       onMouseOver,
       onMouseUp,
     }
-    if (iconBefore && prefix) {
+
+    if ((before && (iconBefore || prefix)) || (iconBefore && prefix)) {
       // eslint-disable-next-line no-console
-      console.warn(`Only use IconBefore or prefix not both at the same time. `)
+      console.warn(`Use only one of before, iconBefore, or prefix.`)
       return null
     }
 
-    if (iconAfter && suffix) {
+    if ((after && (iconAfter || suffix)) || (iconAfter && suffix)) {
       // eslint-disable-next-line no-console
-      console.warn(`Only use IconAfter or suffix not both at the same time. `)
+      console.warn(`Use only one of after, iconAfter, or suffix.`)
       return null
     }
 
-    const before =
-      beforeProp || iconBefore || prefix ? (
+    const iconBeforeOrPrefix =
+      iconBefore || prefix ? (
         <InputIconStyle pl="xxsmall">
           {iconBefore ? (
             <Icon name={iconBefore} size={20} />
@@ -141,8 +144,10 @@ const InputTextLayout = forwardRef(
         </InputIconStyle>
       ) : null
 
-    const after =
-      afterProp || iconAfter || suffix ? (
+    const beforeToUse = before || iconBeforeOrPrefix
+
+    const iconAfterOrSuffix =
+      iconAfter || suffix ? (
         <InputIconStyle pl="xsmall" pr="xxsmall">
           {iconAfter ? (
             <Icon name={iconAfter} size={20} />
@@ -151,6 +156,8 @@ const InputTextLayout = forwardRef(
           )}
         </InputIconStyle>
       ) : null
+
+    const afterToUse = after || iconAfterOrSuffix
 
     const inputProps = {
       ...pick(omitStyledProps(props), inputPropKeys),
@@ -176,9 +183,9 @@ const InputTextLayout = forwardRef(
         {...mouseHandlers}
         {...omitStyledProps(omit(props, [...inputPropKeys, 'validationType']))}
       >
-        {before && before}
+        {beforeToUse && beforeToUse}
         {inner}
-        {after && after}
+        {afterToUse && afterToUse}
         {validationType && (
           <InputIconStyle paddingLeft="xsmall">
             <Icon color="critical" name="CircleInfo" size={20} />
@@ -190,6 +197,13 @@ const InputTextLayout = forwardRef(
 )
 
 InputTextLayout.displayName = 'InputComponent'
+
+export const InputIconStyle = styled.div<SpaceProps>`
+  ${space}
+  color: ${(props) => props.theme.colors.text5};
+  display: flex;
+  pointer-events: none;
+`
 
 export const inputTextHover = css`
   border-color: ${(props) => props.theme.colors.ui3};
@@ -208,13 +222,6 @@ export const inputTextDisabled = css`
 `
 
 export const inputHeight = '36px'
-
-export const InputIconStyle = styled.div<SpaceProps>`
-  ${space}
-  color: ${(props) => props.theme.colors.text5};
-  display: flex;
-  pointer-events: none;
-`
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>

@@ -32,16 +32,12 @@ import React, {
   FormEvent,
   MouseEvent,
 } from 'react'
-import styled from 'styled-components'
 import { Icon } from '../../../Icon'
-import { InputIconStyle, InputText, InputTextProps } from '../InputText'
+import { InputIconStyle, InputText, InputTextBaseProps } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
-  extends Omit<
-    InputTextProps,
-    'children' | 'after' | 'before' | 'value' | 'defaultValue'
-  > {
+  extends Omit<InputTextBaseProps, 'children' | 'value' | 'defaultValue'> {
   summary?: string
   hideControls?: boolean
   hideSearchIcon?: boolean
@@ -50,11 +46,6 @@ export interface InputSearchProps
   defaultValue?: string
   value?: string
 }
-
-export const SearchIcon = styled(Icon)`
-  color: ${(props) => props.theme.colors.text5};
-  padding-left: ${(props) => props.theme.space.small};
-`
 
 export const InputSearch = forwardRef(
   (

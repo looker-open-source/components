@@ -33,7 +33,7 @@ import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
   extends SpaceProps,
-    Omit<InputProps, 'readonly' | 'checked' | 'onClick'> {
+    Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
 }
 

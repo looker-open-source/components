@@ -37,7 +37,7 @@ import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
 
 export interface InlineInputTextProps
   extends TypographyProps,
-    InputProps,
+    Omit<InputProps, 'type'>,
     InputTextTypeProps {
   underlineOnlyOnHover?: boolean
   simple?: boolean
