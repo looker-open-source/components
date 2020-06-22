@@ -133,6 +133,7 @@ export const FieldPicker = () => (
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
+        detailAccessory={false}
         detailHoverDisclosure
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}

@@ -79,28 +79,28 @@ export interface TreeItemProps {
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
   const { detailAccessory, detailHoverDisclosure } = useContext(TreeContext)
 
-  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
-    // Automatically prevents detail click from opening Accordion
+  const stopDetailEventPropagation = (
+    event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
+  ) => {
     const isDetailAccessoryEnabled =
       props.detailAccessory !== undefined
         ? props.detailAccessory
         : detailAccessory
 
     isDetailAccessoryEnabled && event.stopPropagation()
+  }
+
+  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
+    stopDetailEventPropagation(event)
   }
 
   const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    // Automatically prevents detail click from opening Accordion
-    const isDetailAccessoryEnabled =
-      props.detailAccessory !== undefined
-        ? props.detailAccessory
-        : detailAccessory
-
-    isDetailAccessoryEnabled && event.stopPropagation()
+    stopDetailEventPropagation(event)
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.keyCode === 13) {
+    const isEventFromChild = event.currentTarget !== event.target
+    if (event.keyCode === 13 && !isEventFromChild) {
       event.currentTarget.click()
     }
   }
