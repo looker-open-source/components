@@ -35,7 +35,7 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
-import { TreeItem, TreeItemPrimary } from './TreeItem'
+import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
@@ -178,7 +178,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
   }
 
-  ${AccordionDisclosure} ${TreeItemPrimary} {
+  ${AccordionDisclosure} ${TreeItemLabel} {
     background-color: transparent;
     padding: ${({ theme }) => theme.space.none};
   }
@@ -194,7 +194,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
       }) * ${depth + 1})`};
   }
 
-  ${TreeItemPrimary} {
+  ${TreeItemLabel} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small

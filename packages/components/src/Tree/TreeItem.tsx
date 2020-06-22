@@ -137,7 +137,7 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       ref={treeItemRef}
       tabIndex={props.onClick ? 0 : -1}
     >
-      <TreeItemPrimary
+      <TreeItemLabel
         gap={props.gapSize || 'xxsmall'}
         hovered={isTreeItemHovered}
         selected={props.selected}
@@ -145,7 +145,7 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
         {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
         <FlexItem flex="1">{props.children}</FlexItem>
         {!isDetailAccessoryEnabled && detail}
-      </TreeItemPrimary>
+      </TreeItemLabel>
       {isDetailAccessoryEnabled && detail}
     </Space>
   )
@@ -164,12 +164,12 @@ export const TreeItem = styled(TreeItemLayout)`
   }
 `
 
-interface TreeItemPrimaryProps {
+interface TreeItemLabelProps {
   hovered: boolean
   selected?: boolean
 }
 
-export const TreeItemPrimary = styled(Space)<TreeItemPrimaryProps>`
+export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
