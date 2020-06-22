@@ -32,8 +32,7 @@ import React, {
   FormEvent,
   MouseEvent,
 } from 'react'
-import { Icon } from '../../../Icon'
-import { InputIconStyle, InputText, InputTextBaseProps } from '../InputText'
+import { InputText, InputTextBaseProps } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
@@ -91,13 +90,7 @@ export const InputSearch = forwardRef(
         value={value}
         ref={ref}
         onChange={handleChange}
-        before={
-          hideSearchIcon ? undefined : (
-            <InputIconStyle>
-              <Icon name="Search" size={20} />
-            </InputIconStyle>
-          )
-        }
+        iconBefore={hideSearchIcon ? undefined : 'Search'}
         after={
           !hideControls ? (
             <InputSearchControls

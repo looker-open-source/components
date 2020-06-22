@@ -41,13 +41,13 @@ import add from 'lodash/add'
 import subtract from 'lodash/subtract'
 
 import {
-  InputText,
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
   inputCSS,
 } from '../InputText'
+import { InlineInputTextBase } from '../InlineInputText'
 import { Icon } from '../../../Icon'
 import {
   simpleLayoutCSS,
@@ -469,7 +469,7 @@ const InputTimeInternal = forwardRef(
         onBlur={onBlur}
         aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
-        <InputText
+        <InlineInputTextBase
           id={id}
           maxLength={2}
           placeholder="--"
@@ -485,7 +485,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         <div>:</div>
-        <InputText
+        <InlineInputTextBase
           maxLength={2}
           placeholder="--"
           value={minute}
@@ -500,7 +500,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         {format === '12h' ? (
-          <InputText
+          <InlineInputTextBase
             maxLength={2}
             placeholder="--"
             value={period}
@@ -542,21 +542,13 @@ export const InputTime = styled(InputTimeInternal)`
   grid-template-columns: auto auto auto auto 1fr;
   padding: 0 ${({ theme }) => theme.space.xsmall};
 
-  ${InputText} {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    color: inherit;
+  ${InlineInputTextBase} {
     height: 34px;
     line-height: ${({ theme }) => theme.lineHeights.medium};
     margin: 0;
+    min-width: 1.25rem;
     padding: 0;
-    width: 1.25rem;
-
-    input {
-      text-align: center;
-    }
+    text-align: center;
 
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};

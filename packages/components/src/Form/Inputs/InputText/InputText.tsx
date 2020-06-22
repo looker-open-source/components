@@ -61,10 +61,17 @@ export interface InputTextBaseProps
 }
 
 export interface InputTextProps extends InputTextBaseProps {
+  /**
+   * JSX to render after the input
+   * Note: this will replace the built-in validationType icon
+   */
   after?: ReactNode
   iconAfter?: IconNames
   suffix?: string
 
+  /**
+   * JSX to render before the input
+   */
   before?: ReactNode
   iconBefore?: IconNames
   prefix?: string
@@ -88,6 +95,7 @@ const InputTextLayout = forwardRef(
       type = 'text',
       validationType,
 
+      // mouse handlers need to be applied to the external div rather than the iput
       onClick,
       onMouseDown,
       onMouseEnter,
@@ -104,7 +112,7 @@ const InputTextLayout = forwardRef(
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
     function handleMouseDown() {
-      // set focus to input on mousedown of container
+      // set focus to input on mousedown of container to mimic natural input behavior
       // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
       window.requestAnimationFrame(() => {
         internalRef.current && internalRef.current.focus()
@@ -135,29 +143,38 @@ const InputTextLayout = forwardRef(
 
     const iconBeforeOrPrefix =
       iconBefore || prefix ? (
-        <InputIconStyle pl="xxsmall">
+        <InputTextContent pl="xxsmall">
           {iconBefore ? (
             <Icon name={iconBefore} size={20} />
           ) : (
             <Text fontSize="small">{prefix}</Text>
           )}
-        </InputIconStyle>
+        </InputTextContent>
       ) : null
 
     const beforeToUse = before || iconBeforeOrPrefix
 
     const iconAfterOrSuffix =
       iconAfter || suffix ? (
-        <InputIconStyle pl="xsmall" pr="xxsmall">
+        <InputTextContent pl="xsmall" pr="xxsmall">
           {iconAfter ? (
             <Icon name={iconAfter} size={20} />
           ) : (
             <Text fontSize="small">{suffix}</Text>
           )}
-        </InputIconStyle>
+        </InputTextContent>
       ) : null
 
-    const afterToUse = after || iconAfterOrSuffix
+    const afterToUse = after || (
+      <>
+        {iconAfterOrSuffix}
+        {validationType === 'error' && (
+          <InputTextContent pl="xsmall" pr="xxsmall">
+            <Icon color="critical" name="CircleInfo" size={20} />
+          </InputTextContent>
+        )}
+      </>
+    )
 
     const inputProps = {
       ...pick(omitStyledProps(props), inputPropKeys),
@@ -181,16 +198,11 @@ const InputTextLayout = forwardRef(
       <div
         className={className}
         {...mouseHandlers}
-        {...omitStyledProps(omit(props, [...inputPropKeys, 'validationType']))}
+        {...omitStyledProps(omit(props, inputPropKeys))}
       >
         {beforeToUse && beforeToUse}
         {inner}
         {afterToUse && afterToUse}
-        {validationType && (
-          <InputIconStyle paddingLeft="xsmall">
-            <Icon color="critical" name="CircleInfo" size={20} />
-          </InputIconStyle>
-        )}
       </div>
     )
   }
@@ -198,10 +210,12 @@ const InputTextLayout = forwardRef(
 
 InputTextLayout.displayName = 'InputComponent'
 
-export const InputIconStyle = styled.div<SpaceProps>`
+export const InputTextContent = styled.div<SpaceProps>`
   ${space}
+  align-items: center;
   color: ${(props) => props.theme.colors.text5};
   display: flex;
+  height: 100%;
   pointer-events: none;
 `
 
@@ -257,7 +271,6 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
 
   ${simpleLayoutCSS}
   ${inputCSS}
-  ${inputTextValidation}
 
   ${InlineInputText} {
     height: 100%;
@@ -299,6 +312,7 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
     ${inputTextFocus}
   }
   ${(props) => (props.disabled ? inputTextDisabled : '')}
+  ${inputTextValidation}
 `
 
 InputText.defaultProps = {

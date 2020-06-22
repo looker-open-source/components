@@ -24,10 +24,15 @@
 
  */
 import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import { inputHeight, InputText, InputTextBaseProps } from '../InputText'
+import {
+  inputHeight,
+  InputTextContent,
+  InputText,
+  InputTextBaseProps,
+} from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -60,6 +65,8 @@ export interface InputChipsControlProps {
 export interface InputChipsCommonProps
   extends Omit<InputTextBaseProps, 'children' | 'defaultValue' | 'onChange'>,
     MaxHeightProps {
+  summary?: string
+  hideControls?: boolean
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
@@ -85,6 +92,7 @@ export const InputChipsBaseInternal = forwardRef(
       onClear,
       isVisibleOptions,
       hasOptions = false,
+      hideControls = false,
       summary,
       removeOnBackspace = true,
       ...props
@@ -130,15 +138,17 @@ export const InputChipsBaseInternal = forwardRef(
     return (
       <InputText
         after={
-          <AdvancedInputControls
-            isVisibleOptions={isVisibleOptions}
-            onClear={handleClear}
-            renderSearchControls={renderSearchControls}
-            validationType={validationType}
-            disabled={disabled}
-            summary={summary}
-            hasOptions={hasOptions}
-          />
+          !hideControls && (
+            <AdvancedInputControls
+              isVisibleOptions={isVisibleOptions}
+              onClear={handleClear}
+              renderSearchControls={renderSearchControls}
+              validationType={validationType}
+              disabled={disabled}
+              summary={summary}
+              hasOptions={hasOptions}
+            />
+          )
         }
         ref={ref}
         value={inputValue}
@@ -156,6 +166,12 @@ export const InputChipsBaseInternal = forwardRef(
 
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
+const inputHeightStyle = css`
+  height: calc(
+    ${inputHeight} - ((${({ theme: { space } }) => space.xxxsmall} + 1px) * 2)
+  );
+`
+
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
@@ -172,10 +188,13 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
 
   input {
     flex: 1;
-    height: calc(${inputHeight} - ((${({ theme: { space } }) =>
-  space.xxxsmall} + 1px) * 2));
     min-width: 25%;
     padding-right: 0;
     width: auto;
+    ${inputHeightStyle}
+  }
+
+  ${InputTextContent} {
+    ${inputHeightStyle}
   }
 `
