@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Field now support hideLabel and fieldsHideLabel
 - `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
 - `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+- `MultiSelect` icon added
 
 ### Changed
 
