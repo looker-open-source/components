@@ -161,6 +161,21 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
   `
 }
 
+const generateIndent = (depth: number, theme: Theme) => {
+  const {
+    space: { xxsmall, small },
+  } = theme
+
+  const itemPaddingSize = xxsmall
+  const indicatorIconSize = small
+  const indicatorGapSize = xxsmall
+  const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+
+  return css`
+    padding-left: calc(${indentCalculation});
+  `
+}
+
 interface TreeStyleProps {
   border?: boolean
   depth: number
@@ -174,8 +189,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
+    ${({ depth, theme }) => generateIndent(depth, theme)}
   }
 
   ${AccordionDisclosure} ${TreeItemLabel} {
@@ -188,16 +202,10 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   ${TreeGroupLabel} {
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
-        theme.space.small
-      }) * ${depth + 1})`};
+    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 
   ${TreeItemLabel} {
-    padding-left: ${({ depth, theme }) =>
-      `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
-        theme.space.small
-      }) * ${depth + 1})`};
+    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 `
