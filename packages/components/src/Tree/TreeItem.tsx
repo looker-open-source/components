@@ -40,8 +40,6 @@ import { useHovered } from '../utils/useHovered'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps {
-  children: ReactNode
-  className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
    */
@@ -74,6 +72,8 @@ export interface TreeItemProps {
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
+
+  className?: string
 }
 
 const TreeItemLayout: FC<TreeItemProps> = (props) => {

@@ -39,7 +39,7 @@ import { TreeItem, TreeItemPrimary } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
-export interface TreeProps extends Omit<AccordionProps, 'className'> {
+export interface TreeProps extends AccordionProps {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false
