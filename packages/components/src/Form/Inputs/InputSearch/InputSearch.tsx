@@ -34,12 +34,12 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../../Icon'
-import { InputIconStyle, InputTextBase, InputTextBaseProps } from '../InputText'
+import { InputIconStyle, InputText, InputTextProps } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
   extends Omit<
-    InputTextBaseProps,
+    InputTextProps,
     'children' | 'after' | 'before' | 'value' | 'defaultValue'
   > {
   summary?: string
@@ -95,7 +95,7 @@ export const InputSearch = forwardRef(
     }, [valueProp])
 
     return (
-      <InputTextBase
+      <InputText
         {...props}
         value={value}
         ref={ref}

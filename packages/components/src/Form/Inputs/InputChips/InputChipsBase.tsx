@@ -27,7 +27,7 @@ import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import { inputHeight, InputTextBase, InputTextBaseProps } from '../InputText'
+import { inputHeight, InputText, InputTextProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -59,7 +59,7 @@ export interface InputChipsControlProps {
 
 export interface InputChipsCommonProps
   extends Omit<
-      InputTextBaseProps,
+      InputTextProps,
       'children' | 'after' | 'before' | 'value' | 'defaultValue' | 'onChange'
     >,
     MaxHeightProps {
@@ -131,7 +131,7 @@ export const InputChipsBaseInternal = forwardRef(
     const renderSearchControls = values.length > 0
 
     return (
-      <InputTextBase
+      <InputText
         after={
           <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
@@ -152,7 +152,7 @@ export const InputChipsBaseInternal = forwardRef(
         {...props}
       >
         {chips}
-      </InputTextBase>
+      </InputText>
     )
   }
 )
