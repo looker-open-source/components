@@ -76,70 +76,27 @@ export interface TreeItemProps {
   selected?: boolean
 }
 
-// TODO: Figure out why this throws TS error
-export const TreeItemSpace = styled(Space)`
-  border: 1px solid transparent;
-  outline: none;
-
-  &:focus-within {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-  }
-`
-
-const TreeItemDetail = styled.span`
-  align-items: center;
-  display: flex;
-`
-
-interface TreeItemPrimaryProps {
-  hovered: boolean
-  selected?: boolean
-}
-
-// TODO: Figure out why this throws TS error
-export const TreeItemPrimary = styled(Space)<TreeItemPrimaryProps>`
-  background-color: ${({ hovered, selected }) => {
-    return selected
-      ? uiTransparencyBlend(1)
-      : hovered
-      ? uiTransparencyBlend(2)
-      : undefined
-  }};
-  flex: 1;
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  height: 100%;
-  outline: none;
-  padding: ${({ theme }) => theme.space.xxsmall};
-`
-
-const TreeItemSecondary = styled.div`
-  align-items: center;
-  display: flex;
-  height: 100%;
-  padding: ${({ theme }) => theme.space.xxsmall};
-`
-
 const TreeItemLayout: FC<TreeItemProps> = (props) => {
   const { detailAccessory, detailHoverDisclosure } = useContext(TreeContext)
 
   const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    const isDetailAcccessoryEnabled =
+    const isDetailAccessoryEnabled =
       props.detailAccessory !== undefined
         ? props.detailAccessory
         : detailAccessory
 
-    isDetailAcccessoryEnabled && event.stopPropagation()
+    isDetailAccessoryEnabled && event.stopPropagation()
   }
 
   const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     // Automatically prevents detail click from opening Accordion
-    const isDetailAcccessoryEnabled =
+    const isDetailAccessoryEnabled =
       props.detailAccessory !== undefined
         ? props.detailAccessory
         : detailAccessory
 
-    isDetailAcccessoryEnabled && event.stopPropagation()
+    isDetailAccessoryEnabled && event.stopPropagation()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -153,10 +110,7 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
   const treeItemRef = useRef<HTMLDivElement>(null)
   const [isTreeItemHovered] = useHovered(treeItemRef)
 
-  const renderedIcon = props.icon && (
-    <Icon name={props.icon} size={defaultIconSize} />
-  )
-  const renderedDetail = props.detail &&
+  const detail = props.detail &&
     ((props.detailHoverDisclosure !== undefined
       ? !props.detailHoverDisclosure
       : !detailHoverDisclosure) ||
@@ -169,13 +123,13 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
       </TreeItemDetail>
     )
 
-  const isDetailAccesoryEnabled =
+  const isDetailAccessoryEnabled =
     props.detailAccessory !== undefined
       ? props.detailAccessory
       : detailAccessory
 
   return (
-    <TreeItemSpace
+    <Space
       className={props.className}
       gap="none"
       onClick={props.onClick}
@@ -188,20 +142,46 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
         hovered={isTreeItemHovered}
         selected={props.selected}
       >
-        {renderedIcon}
+        {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
         <FlexItem flex="1">{props.children}</FlexItem>
-        {!isDetailAccesoryEnabled && renderedDetail}
+        {!isDetailAccessoryEnabled && detail}
       </TreeItemPrimary>
-      {isDetailAccesoryEnabled && (
-        <TreeItemSecondary>{renderedDetail}</TreeItemSecondary>
-      )}
-    </TreeItemSpace>
+      {isDetailAccessoryEnabled && detail}
+    </Space>
   )
 }
 
 export const TreeItem = styled(TreeItemLayout)`
   align-items: center;
+  border: 1px solid transparent;
   cursor: ${({ onClick }) => onClick && 'pointer'};
   display: flex;
   height: 25px;
+  outline: none;
+
+  &:focus-within {
+    border-color: ${({ theme: { colors } }) => colors.keyFocus};
+  }
+`
+
+interface TreeItemPrimaryProps {
+  hovered: boolean
+  selected?: boolean
+}
+
+export const TreeItemPrimary = styled(Space)<TreeItemPrimaryProps>`
+  background-color: ${({ hovered, selected }) =>
+    selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
+  flex: 1;
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
+  height: 100%;
+  outline: none;
+  padding: ${({ theme: { space } }) => space.xxsmall};
+`
+
+const TreeItemDetail = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: ${({ theme: { space } }) => space.xxsmall};
 `

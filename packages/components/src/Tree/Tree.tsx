@@ -35,7 +35,7 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
-import { TreeItem, TreeItemPrimary, TreeItemSpace } from './TreeItem'
+import { TreeItem, TreeItemPrimary } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
@@ -82,10 +82,65 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
-interface TreeBorderProps {
-  border?: boolean
-  depth: number
+const TreeLayout: FC<TreeProps> = ({
+  border,
+  children,
+  detail,
+  detailHoverDisclosure,
+  detailAccessory,
+  fontWeight,
+  icon,
+  label,
+  ...restProps
+}) => {
+  const context = useContext(TreeContext)
+  const hasBorder = context.border || border
+  const hasDetailHoverDisclosure =
+    context.detailHoverDisclosure || detailHoverDisclosure
+  const hasDetailAccessory = context.detailAccessory || detailAccessory
+  const depth = context.depth ? context.depth : 0
+
+  const disclosure = (
+    <TreeItem
+      detail={detail}
+      detailAccessory={detailAccessory}
+      gapSize="xsmall"
+      icon={icon}
+    >
+      {label}
+    </TreeItem>
+  )
+
+  const content = (
+    <TreeBorder border={hasBorder} depth={depth}>
+      {children}
+    </TreeBorder>
+  )
+
+  const internalAccordion = (
+    <Accordion {...indicatorProps} {...restProps}>
+      <AccordionDisclosure fontWeight={fontWeight}>
+        {disclosure}
+      </AccordionDisclosure>
+      <AccordionContent>{content}</AccordionContent>
+    </Accordion>
+  )
+
+  return (
+    <TreeContext.Provider
+      value={{
+        border: hasBorder,
+        depth: depth + 1,
+        detailAccessory: hasDetailAccessory,
+        detailHoverDisclosure: hasDetailHoverDisclosure,
+      }}
+    >
+      <TreeStyle depth={depth}>{internalAccordion}</TreeStyle>
+    </TreeContext.Provider>
+  )
 }
+
+export const Tree = styled(TreeLayout)``
 
 const generateTreeBorder = (depth: number, theme: Theme) => {
   const {
@@ -110,103 +165,43 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
   `
 }
 
+interface TreeBorderProps {
+  border?: boolean
+  depth: number
+}
+
 const TreeBorder = styled.div<TreeBorderProps>`
   ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
 `
 
-interface TreeStyleProps {
-  depth: number
-}
-
-const TreeStyle = styled.div<TreeStyleProps>`
-  ${/* sc-selector */ AccordionDisclosure} {
+const TreeStyle = styled.div<{ depth: number }>`
+  ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${theme.space.small}) * ${depth})`};
   }
 
-  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemPrimary} {
+  ${AccordionDisclosure} ${TreeItemPrimary} {
     background-color: transparent;
     padding: ${({ theme }) => theme.space.none};
   }
 
-  ${/* sc-selector */ AccordionDisclosure} ${/* sc-selector */ TreeItemSpace}:focus-within {
+  ${AccordionDisclosure} ${TreeItem}:focus-within {
     border-color: transparent;
   }
 
-  ${/* sc-selector */ TreeGroupLabel} {
+  ${TreeGroupLabel} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
       }) * ${depth + 1})`};
   }
 
-  ${/* sc-selector */ TreeItemPrimary} {
+  ${TreeItemPrimary} {
     padding-left: ${({ depth, theme }) =>
       `calc(${theme.space.xxsmall} + (${theme.space.xxsmall} + ${
         theme.space.small
       }) * ${depth + 1})`};
   }
 `
-
-const TreeLayout: FC<TreeProps> = ({
-  border,
-  children,
-  detail,
-  detailHoverDisclosure,
-  detailAccessory,
-  fontWeight,
-  icon,
-  label,
-  ...restProps
-}) => {
-  const context = useContext(TreeContext)
-  const isBorderEnabled = context.border || border
-  const isDetailHoverDisclosureEnabled =
-    context.detailHoverDisclosure || detailHoverDisclosure
-  const isDetailAccessoryEnabled = context.detailAccessory || detailAccessory
-  const currentDepth = context.depth ? context.depth : 0
-  const nextDepth = currentDepth + 1
-
-  const disclosure = (
-    <TreeItem
-      detail={detail}
-      detailAccessory={detailAccessory}
-      gapSize="xsmall"
-      icon={icon}
-    >
-      {label}
-    </TreeItem>
-  )
-
-  const content = (
-    <TreeBorder border={isBorderEnabled} depth={currentDepth}>
-      {children}
-    </TreeBorder>
-  )
-
-  const internalAccordion = (
-    <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontWeight={fontWeight}>
-        {disclosure}
-      </AccordionDisclosure>
-      <AccordionContent>{content}</AccordionContent>
-    </Accordion>
-  )
-
-  return (
-    <TreeContext.Provider
-      value={{
-        border: isBorderEnabled,
-        depth: nextDepth,
-        detailAccessory: isDetailAccessoryEnabled,
-        detailHoverDisclosure: isDetailHoverDisclosureEnabled,
-      }}
-    >
-      <TreeStyle depth={currentDepth}>{internalAccordion}</TreeStyle>
-    </TreeContext.Provider>
-  )
-}
-
-export const Tree = styled(TreeLayout)``
