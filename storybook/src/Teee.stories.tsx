@@ -127,7 +127,7 @@ export const FieldPicker = () => (
         <TreeItem icon="Calendar">Created Year</TreeItem>
         <TreeItem icon="Calendar">Created Quarter</TreeItem>
       </Tree>
-      <TreeItem icon="FieldDistance">Location</TreeItem>
+      <TreeItem icon="FieldLocation">Location</TreeItem>
       <TreeItem icon="FieldTier" onClick={() => alert('Clicked on Tier!')}>
         Tier
       </TreeItem>
