@@ -111,18 +111,12 @@ const TreeLayout: FC<TreeProps> = ({
     </TreeItem>
   )
 
-  const content = (
-    <TreeBorder border={hasBorder} depth={depth}>
-      {children}
-    </TreeBorder>
-  )
-
   const internalAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
       <AccordionDisclosure fontWeight={fontWeight}>
         {disclosure}
       </AccordionDisclosure>
-      <AccordionContent>{content}</AccordionContent>
+      <AccordionContent>{children}</AccordionContent>
     </Accordion>
   )
 
@@ -135,7 +129,9 @@ const TreeLayout: FC<TreeProps> = ({
         detailHoverDisclosure: hasDetailHoverDisclosure,
       }}
     >
-      <TreeStyle depth={depth}>{internalAccordion}</TreeStyle>
+      <TreeStyle border={hasBorder} depth={depth}>
+        {internalAccordion}
+      </TreeStyle>
     </TreeContext.Provider>
   )
 }
@@ -165,16 +161,16 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
   `
 }
 
-interface TreeBorderProps {
+interface TreeStyleProps {
   border?: boolean
   depth: number
 }
 
-const TreeBorder = styled.div<TreeBorderProps>`
-  ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
-`
+const TreeStyle = styled.div<TreeStyleProps>`
+  ${AccordionContent} {
+    ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
+  }
 
-const TreeStyle = styled.div<{ depth: number }>`
   ${AccordionDisclosure} {
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
