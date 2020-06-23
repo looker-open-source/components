@@ -470,7 +470,7 @@ const IconWrapper = styled.div`
 const InputTextWrapper = styled.div<{ inputLength: number }>`
   padding: ${({ theme: { space } }) => space.xxsmall} 0;
   ${InlineInputTextBase} {
-    line-height: ${({ theme }) => theme.lineHeights.large};
+    height: ${({ theme }) => theme.lineHeights.large};
 
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};
