@@ -167,9 +167,7 @@ export const InputChipsBaseInternal = forwardRef(
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
 const inputHeightStyle = css`
-  height: calc(
-    ${inputHeight} - ((${({ theme: { space } }) => space.xxxsmall} + 1px) * 2)
-  );
+  height: calc(${inputHeight} - 6px);
 `
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
