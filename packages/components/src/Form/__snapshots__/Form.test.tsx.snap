@@ -21,45 +21,73 @@ exports[`Form with one child 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  cursor: text;
+  font-size: 0.875rem;
+}
+
+.c5 .c7 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c7 span {
+  padding: 0 0.5rem;
 }
 
 .c5 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c5::-webkit-input-placeholder {
+.c5 input::-webkit-search-decoration,
+.c5 input::-webkit-search-cancel-button,
+.c5 input::-webkit-search-results-button,
+.c5 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c5::-moz-placeholder {
+.c5 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c5:-ms-input-placeholder {
+.c5 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c5::placeholder {
+.c5 input::placeholder {
   color: #939BA5;
 }
 
@@ -72,20 +100,6 @@ exports[`Form with one child 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
-}
-
-.c6 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
 }
 
 .c3 {
@@ -119,7 +133,7 @@ exports[`Form with one child 1`] = `
   grid-area: input;
 }
 
-.c1 .c7 {
+.c1 .c6 {
   grid-area: messages;
 }
 
@@ -172,8 +186,8 @@ exports[`Form with one child 1`] = `
       className="c4 "
     >
       <div
-        className="c5 c6 "
-        onClick={[Function]}
+        className="c5 "
+        onMouseDown={[Function]}
       >
         <input
           aria-describedby="text-field-describedby"
@@ -184,7 +198,7 @@ exports[`Form with one child 1`] = `
       </div>
     </div>
     <div
-      className="c7 "
+      className="c6 "
       id="text-field-describedby"
     />
   </div>

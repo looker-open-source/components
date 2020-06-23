@@ -6,42 +6,81 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   border: none;
   caret-color: #262D33;
   color: inherit;
-  font: inherit;
   height: 100%;
-  left: 0;
   outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
   padding: 0;
   position: absolute;
   text-align: inherit;
   text-transform: inherit;
   top: 0;
-  width: 100%;
+}
+
+.c1::-webkit-search-decoration,
+.c1::-webkit-search-cancel-button,
+.c1::-webkit-search-results-button,
+.c1::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c1:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::placeholder {
+  color: #939BA5;
+}
+
+.c1::-webkit-outer-spin-button,
+.c1::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .c2 {
-  color: #939BA5;
+  color: transparent;
+  line-height: inherit;
   text-align: inherit;
   white-space: pre;
 }
 
 .c0 {
-  border: none;
-  border-bottom: 1px dashed;
-  border-bottom-color: #C1C6CC;
-  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   min-width: 2rem;
   position: relative;
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  color: inherit;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-align: inherit;
 }
 
@@ -56,22 +95,21 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   border-bottom-style: solid;
 }
 
-<div
+<span
   className="c0"
-  data-testid="inlineInputText"
 >
   <input
     className="c1"
     onChange={[Function]}
-    type="text"
+    placeholder="this is the placeholder"
     value=""
   />
-  <div
+  <span
     className="c2"
   >
     this is the placeholder
-  </div>
-</div>
+  </span>
+</span>
 `;
 
 exports[`InlineInputText renders an input with no value 1`] = `
@@ -80,42 +118,81 @@ exports[`InlineInputText renders an input with no value 1`] = `
   border: none;
   caret-color: #262D33;
   color: inherit;
-  font: inherit;
   height: 100%;
-  left: 0;
   outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
   padding: 0;
   position: absolute;
   text-align: inherit;
   text-transform: inherit;
   top: 0;
-  width: 100%;
+}
+
+.c1::-webkit-search-decoration,
+.c1::-webkit-search-cancel-button,
+.c1::-webkit-search-results-button,
+.c1::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c1:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::placeholder {
+  color: #939BA5;
+}
+
+.c1::-webkit-outer-spin-button,
+.c1::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .c2 {
-  color: #939BA5;
+  color: transparent;
+  line-height: inherit;
   text-align: inherit;
   white-space: pre;
 }
 
 .c0 {
-  border: none;
-  border-bottom: 1px dashed;
-  border-bottom-color: #C1C6CC;
-  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   min-width: 2rem;
   position: relative;
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  color: inherit;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-align: inherit;
 }
 
@@ -130,22 +207,20 @@ exports[`InlineInputText renders an input with no value 1`] = `
   border-bottom-style: solid;
 }
 
-<div
+<span
   className="c0"
-  data-testid="inlineInputText"
 >
   <input
     className="c1"
     onChange={[Function]}
-    type="text"
     value=""
   />
-  <div
+  <span
     className="c2"
   >
      
-  </div>
-</div>
+  </span>
+</span>
 `;
 
 exports[`InlineInputText renders an input with specific predefined value 1`] = `
@@ -154,42 +229,81 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   border: none;
   caret-color: #262D33;
   color: inherit;
-  font: inherit;
   height: 100%;
-  left: 0;
   outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
   padding: 0;
   position: absolute;
   text-align: inherit;
   text-transform: inherit;
   top: 0;
-  width: 100%;
+}
+
+.c1::-webkit-search-decoration,
+.c1::-webkit-search-cancel-button,
+.c1::-webkit-search-results-button,
+.c1::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c1:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c1::placeholder {
+  color: #939BA5;
+}
+
+.c1::-webkit-outer-spin-button,
+.c1::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .c2 {
   color: transparent;
+  line-height: inherit;
   text-align: inherit;
   white-space: pre;
 }
 
 .c0 {
-  border: none;
-  border-bottom: 1px dashed;
-  border-bottom-color: #C1C6CC;
-  color: inherit;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   min-width: 2rem;
   position: relative;
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  color: inherit;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-align: inherit;
 }
 
@@ -204,20 +318,18 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   border-bottom-style: solid;
 }
 
-<div
+<span
   className="c0"
-  data-testid="inlineInputText"
 >
   <input
     className="c1"
     onChange={[Function]}
-    type="text"
     value="type here..."
   />
-  <div
+  <span
     className="c2"
   >
     type here...
-  </div>
-</div>
+  </span>
+</span>
 `;

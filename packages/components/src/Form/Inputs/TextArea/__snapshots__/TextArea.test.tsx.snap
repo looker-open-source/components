@@ -21,6 +21,7 @@ exports[`TextArea default 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -69,6 +70,7 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -117,6 +119,7 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -165,6 +168,7 @@ exports[`TextArea resizes with prop resize = true 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -213,6 +217,7 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -261,6 +266,7 @@ exports[`TextArea should accept disabled 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -350,6 +356,7 @@ exports[`TextArea with an error validation 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;
@@ -428,6 +435,7 @@ exports[`TextArea with placeholder 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
+  cursor: text;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
   padding-right: 2rem;

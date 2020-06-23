@@ -37,10 +37,6 @@ test('A FieldSelect', () => {
   assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
 })
 
-test('FieldSelect supports labelWeight', () => {
-  assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
-})
-
 test('Should accept a value', () => {
   const wrapper = mountWithTheme(
     <FieldSelect
@@ -73,14 +69,6 @@ test('Should trigger onChange handler', () => {
   wrapper.find('input').simulate('mousedown')
   wrapper.find('li').at(0).simulate('click')
   expect(handleChange).toHaveBeenCalledTimes(1)
-})
-
-test('A required FieldSelect', () => {
-  const component = createWithTheme(
-    <FieldSelect label="👍" name="thumbsUp" id="thumbs-up" required />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('A FieldSelect with an error validation aligned to the bottom', () => {
