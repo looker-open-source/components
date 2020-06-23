@@ -27,9 +27,6 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ValidationType } from '../ValidationMessage'
 
-/**
- * Omits type since it's specific to each implementation
- */
 export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
   validationType?: ValidationType
 }

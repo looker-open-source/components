@@ -112,6 +112,18 @@ const InputTextLayout = forwardRef(
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
+    if ((before && (iconBefore || prefix)) || (iconBefore && prefix)) {
+      // eslint-disable-next-line no-console
+      console.warn(`Use only one of before, iconBefore, or prefix.`)
+      return null
+    }
+
+    if ((after && (iconAfter || suffix)) || (iconAfter && suffix)) {
+      // eslint-disable-next-line no-console
+      console.warn(`Use only one of after, iconAfter, or suffix.`)
+      return null
+    }
+
     function handleMouseDown() {
       // set focus to input on mousedown of container to mimic natural input behavior
       // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
@@ -128,18 +140,6 @@ const InputTextLayout = forwardRef(
       onMouseOut,
       onMouseOver,
       onMouseUp,
-    }
-
-    if ((before && (iconBefore || prefix)) || (iconBefore && prefix)) {
-      // eslint-disable-next-line no-console
-      console.warn(`Use only one of before, iconBefore, or prefix.`)
-      return null
-    }
-
-    if ((after && (iconAfter || suffix)) || (iconAfter && suffix)) {
-      // eslint-disable-next-line no-console
-      console.warn(`Use only one of after, iconAfter, or suffix.`)
-      return null
     }
 
     const iconBeforeOrPrefix =
@@ -211,15 +211,6 @@ const InputTextLayout = forwardRef(
 
 InputTextLayout.displayName = 'InputComponent'
 
-export const InputTextContent = styled.div<SpaceProps>`
-  ${space}
-  align-items: center;
-  color: ${(props) => props.theme.colors.text5};
-  display: flex;
-  height: 100%;
-  pointer-events: none;
-`
-
 export const inputTextHover = css`
   border-color: ${(props) => props.theme.colors.ui3};
 `
@@ -237,6 +228,15 @@ export const inputTextDisabled = css`
 `
 
 export const inputHeight = '36px'
+
+export const InputTextContent = styled.div<SpaceProps>`
+  ${space}
+  align-items: center;
+  color: ${(props) => props.theme.colors.text5};
+  display: flex;
+  height: 100%;
+  pointer-events: none;
+`
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
