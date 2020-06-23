@@ -40,6 +40,7 @@ export interface DialogProps {
    * @default false
    */
   isOpen?: boolean
+
   /**
    * Specify a callback to be called each time this Dialog is closed
    */
@@ -97,7 +98,6 @@ export const Dialog: FC<DialogProps> = ({
   return (
     <DialogContext.Provider
       value={{
-        close: handleClose,
         closeModal: handleClose,
         disableFocusTrap,
         disableScrollLock,

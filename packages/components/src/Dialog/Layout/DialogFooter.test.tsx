@@ -41,9 +41,9 @@ test('DialogFooter with Button', () => {
 test('DialogFooter with DialogContext', () => {
   assertSnapshot(
     <DialogContext.Consumer>
-      {({ close }) => (
+      {({ closeModal }) => (
         <DialogFooter>
-          <button onClick={close}>Cancel</button>
+          <button onClick={closeModal}>Cancel</button>
           <button
             onClick={() => {
               alert('Doing things...')
