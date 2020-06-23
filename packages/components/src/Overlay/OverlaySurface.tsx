@@ -78,7 +78,13 @@ export const OverlaySurface = forwardRef(
     const { closeModal } = useContext(DialogContext)
 
     return (
-      <Outer ref={ref} style={style} {...eventHandlers} tabIndex={-1}>
+      <Outer
+        ref={ref}
+        style={style}
+        {...eventHandlers}
+        tabIndex={-1}
+        data-placement={placement}
+      >
         <HotKeys
           className="hotkeys"
           keyMap={{
@@ -116,6 +122,7 @@ const Outer = styled.div<{ zIndex?: number }>`
   ${reset}
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
+  padding: ${({ theme }) => theme.space.xsmall};
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 
   &:focus {
