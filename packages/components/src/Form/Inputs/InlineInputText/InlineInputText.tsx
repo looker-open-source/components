@@ -29,11 +29,12 @@ import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import {
+  omitStyledProps,
   typography,
   TypographyProps,
-  omitStyledProps,
 } from '@looker/design-tokens'
 import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
+import { InnerInputText } from '../InnerInputText'
 
 export interface InlineInputTextProps
   extends TypographyProps,
@@ -48,10 +49,8 @@ const InlineInputTextLayout = forwardRef(
     {
       className,
       onChange,
-      underlineOnlyOnHover,
       value: valueProp,
       placeholder,
-      simple = false,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -67,39 +66,30 @@ const InlineInputTextLayout = forwardRef(
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
     return (
-      <div className={className}>
+      <span className={className}>
         <StyledInput
           onChange={handleChange}
-          simple={simple}
-          underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
           placeholder={placeholder}
           ref={ref}
           {...omitStyledProps(pick(props, inputPropKeys))}
         />
         <StyledText>{displayValue || placeholder || ' '}</StyledText>
-      </div>
+      </span>
     )
   }
 )
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
-const StyledInput = styled.input<InlineInputTextProps>`
-  background: transparent;
-  border: none;
-  caret-color: ${({ theme }) => theme.colors.text0};
-  color: inherit;
+const StyledInput = styled(InnerInputText)`
   font: inherit;
-  height: 100%;
   left: 0;
-  outline: none;
   padding: 0;
   position: absolute;
   text-align: inherit;
   text-transform: inherit;
   top: 0;
-  width: 100%;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;
@@ -109,7 +99,7 @@ const StyledInput = styled.input<InlineInputTextProps>`
   }
 `
 
-const StyledText = styled.div`
+const StyledText = styled.span`
   color: transparent;
   line-height: inherit;
   text-align: inherit;

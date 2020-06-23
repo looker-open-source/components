@@ -66,10 +66,7 @@ export interface ComboboxInputCommonProps {
 }
 
 export interface ComboboxInputProps
-  extends Omit<
-      InputTextBaseProps,
-      'children' | 'autoComplete' | 'value' | 'defaultValue'
-    >,
+  extends Omit<InputTextBaseProps, 'autoComplete' | 'value' | 'defaultValue'>,
     ComboboxInputCommonProps {
   value?: string
   defaultValue?: string

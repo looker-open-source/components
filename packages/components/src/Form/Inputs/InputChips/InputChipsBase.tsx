@@ -63,7 +63,7 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<InputTextBaseProps, 'children' | 'defaultValue' | 'onChange'>,
+  extends Omit<InputTextBaseProps, 'defaultValue' | 'onChange'>,
     MaxHeightProps {
   summary?: string
   hideControls?: boolean

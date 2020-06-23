@@ -47,7 +47,7 @@ import {
   inputTextValidation,
   inputCSS,
 } from '../InputText'
-import { InlineInputTextBase } from '../InlineInputText'
+import { InnerInputText } from '../InnerInputText'
 import { Icon } from '../../../Icon'
 import {
   simpleLayoutCSS,
@@ -469,7 +469,7 @@ const InputTimeInternal = forwardRef(
         onBlur={onBlur}
         aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
-        <InlineInputTextBase
+        <InnerInputText
           id={id}
           maxLength={2}
           placeholder="--"
@@ -485,7 +485,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         <div>:</div>
-        <InlineInputTextBase
+        <InnerInputText
           maxLength={2}
           placeholder="--"
           value={minute}
@@ -500,7 +500,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         {format === '12h' ? (
-          <InlineInputTextBase
+          <InnerInputText
             maxLength={2}
             placeholder="--"
             value={period}
@@ -542,13 +542,13 @@ export const InputTime = styled(InputTimeInternal)`
   grid-template-columns: auto auto auto auto 1fr;
   padding: 0 ${({ theme }) => theme.space.xsmall};
 
-  ${InlineInputTextBase} {
+  ${InnerInputText} {
     height: 34px;
     line-height: ${({ theme }) => theme.lineHeights.medium};
     margin: 0;
-    min-width: 1.25rem;
     padding: 0;
     text-align: center;
+    width: 1.25rem;
 
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};

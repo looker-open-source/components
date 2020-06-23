@@ -154,7 +154,8 @@ const SelectComponent = forwardRef(
         defaultValue={defaultOptionValue}
         onChange={handleChange}
         onClose={handleClose}
-        {...(autoResize ? { display: 'inline-flex', width: 'auto' } : {})}
+        width={autoResize ? 'auto' : '100%'}
+        display={autoResize ? 'inline-flex' : undefined}
         {...props}
       >
         <ComboboxInput
@@ -175,6 +176,7 @@ const SelectComponent = forwardRef(
             persistSelection
             windowedOptions={windowedOptions}
             indicator={indicator}
+            width={autoResize ? 'auto' : undefined}
             {...ariaProps}
             {...listLayout}
           >
@@ -193,5 +195,3 @@ const SelectComponent = forwardRef(
 SelectComponent.displayName = 'SelectComponent'
 
 export const Select = styled(SelectComponent)``
-
-Select.defaultProps = { marginBottom: '0', width: '100%' }

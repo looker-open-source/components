@@ -31,6 +31,7 @@ import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
+import { InnerInputText } from '../InnerInputText'
 import {
   SimpleLayoutProps,
   simpleLayoutCSS,
@@ -38,7 +39,7 @@ import {
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InlineInputText } from '../InlineInputText'
+import { InlineInputTextBase } from '../InlineInputText'
 
 export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
@@ -46,7 +47,7 @@ export interface InputTextBaseProps
     InputTextTypeProps {
   /**
    * Allows the input width to resize with the value or placeholder
-   * Recommended to use with `width="auto"`
+   * Styles will default to `width: auto` and `display: inline-flex`
    * Do not use with children
    */
   autoResize?: boolean
@@ -95,7 +96,7 @@ const InputTextLayout = forwardRef(
       type = 'text',
       validationType,
 
-      // mouse handlers need to be applied to the external div rather than the iput
+      // mouse handlers need to be applied to the external div rather than the input
       onClick,
       onMouseDown,
       onMouseEnter,
@@ -181,7 +182,7 @@ const InputTextLayout = forwardRef(
       'aria-invalid': validationType === 'error' ? true : undefined,
       type,
     }
-    const input = <input {...inputProps} ref={ref} />
+    const input = <InnerInputText {...inputProps} ref={ref} />
 
     const inner = children ? (
       <div className="inner">
@@ -189,7 +190,7 @@ const InputTextLayout = forwardRef(
         {input}
       </div>
     ) : autoResize ? (
-      <InlineInputText {...inputProps} ref={ref} />
+      <InlineInputTextBase {...inputProps} ref={ref} />
     ) : (
       input
     )
@@ -265,43 +266,25 @@ export const inputCSS = css`
 
 export const InputText = styled(InputTextLayout)<InputTextProps>`
   align-items: center;
-  display: flex;
+  display: ${({ autoResize }) => (autoResize ? 'inline-flex' : 'flex')};
   justify-content: space-evenly;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
 
   ${simpleLayoutCSS}
   ${inputCSS}
 
-  ${InlineInputText} {
+  ${InlineInputTextBase} {
     height: 100%;
     max-width: 100%;
     width: 100%;
-    div {
-      padding-left: ${({ theme: { space } }) => space.xsmall};
+    span {
+      padding: 0 ${({ theme: { space } }) => space.xsmall};
     }
   }
 
-  input {
-    background: transparent;
-    border: none;
-    flex: 1;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    height: 100%;
-    max-width: 100%;
-    outline: none;
-    padding: 0 0 0 ${({ theme: { space } }) => space.xsmall};
-    width: 100%;
-
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
-      appearance: none;
-    }
-  }
-
-  ::placeholder {
-    color: ${(props) => props.theme.colors.text5};
+  ${InnerInputText} {
+    padding: 0 ${({ theme: { space } }) => space.xsmall};
   }
 
   &:hover {
@@ -318,5 +301,4 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
 InputText.defaultProps = {
   height: inputHeight,
   type: 'text',
-  width: '100%',
 }
