@@ -66,7 +66,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogManager,
-  DialogSurface,
   Divider,
   FieldCheckbox,
   FieldCheckboxGroup,
@@ -132,7 +131,6 @@ import {
   SpaceVertical,
   Spinner,
   Status,
-  Surface,
   Swatch,
   Tab,
   Table,
@@ -161,6 +159,7 @@ import {
   useToggle,
   VisuallyHidden,
 } from '@looker/components'
+import { Surface } from '@looker/components/src/Dialog/Surface'
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
@@ -226,7 +225,6 @@ export const allComponents = {
   DialogFooter,
   DialogHeader,
   DialogManager,
-  DialogSurface,
   Divider,
   FieldCheckbox,
   FieldCheckboxGroup,

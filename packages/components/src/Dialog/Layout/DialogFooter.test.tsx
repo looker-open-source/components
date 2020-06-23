@@ -41,13 +41,13 @@ test('DialogFooter with Button', () => {
 test('DialogFooter with DialogContext', () => {
   assertSnapshot(
     <DialogContext.Consumer>
-      {({ closeModal }) => (
+      {({ close }) => (
         <DialogFooter>
-          <button onClick={closeModal}>Cancel</button>
+          <button onClick={close}>Cancel</button>
           <button
             onClick={() => {
               alert('Doing things...')
-              closeModal && closeModal()
+              close()
             }}
           >
             Yes, Delete "Stuff"

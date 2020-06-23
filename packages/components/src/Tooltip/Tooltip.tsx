@@ -36,7 +36,6 @@ import React, {
   Ref,
 } from 'react'
 import omit from 'lodash/omit'
-import { DialogContext } from '../Dialog'
 import {
   useCallbackRef,
   useID,
@@ -203,30 +202,28 @@ export function useTooltip({
 
   const popper =
     isOpen && content && !disabled ? (
-      <DialogContext.Provider value={{ closeModal: handleClose }}>
-        <OverlaySurface
-          arrow={arrow}
-          arrowProps={arrowProps}
-          eventHandlers={{ onMouseOut: handleMouseOut }}
-          placement={placement}
-          ref={ref}
-          style={style}
-          backgroundColor="inverse"
-          borderRadius="medium"
-          boxShadow={3}
-          color="inverseOn"
-          {...surfaceStyles}
+      <OverlaySurface
+        arrow={arrow}
+        arrowProps={arrowProps}
+        eventHandlers={{ onMouseOut: handleMouseOut }}
+        placement={placement}
+        ref={ref}
+        style={style}
+        backgroundColor="inverse"
+        borderRadius="medium"
+        boxShadow={3}
+        color="inverseOn"
+        {...surfaceStyles}
+      >
+        <TooltipContent
+          role="tooltip"
+          id={guaranteedId}
+          width={width}
+          textAlign={textAlign}
         >
-          <TooltipContent
-            role="tooltip"
-            id={guaranteedId}
-            width={width}
-            textAlign={textAlign}
-          >
-            {content}
-          </TooltipContent>
-        </OverlaySurface>
-      </DialogContext.Provider>
+          {content}
+        </TooltipContent>
+      </OverlaySurface>
     ) : null
 
   return {

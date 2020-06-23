@@ -59,7 +59,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   hideClose,
   ...props
 }) => {
-  const { closeModal } = useContext(DialogContext)
+  const { close } = useContext(DialogContext)
   const { id } = props
 
   return (
@@ -79,7 +79,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
           tabIndex={-1}
           color="neutral"
           size="small"
-          onClick={closeModal}
+          onClick={close}
           label="Close"
           icon={closeIcon}
           style={{ gridArea: 'close' }}

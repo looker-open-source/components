@@ -139,6 +139,7 @@ exports[`DialogHeader 1`] = `
     className="c2 c3 c4"
     color="neutral"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyUp={[Function]}
     onMouseOut={[Function]}

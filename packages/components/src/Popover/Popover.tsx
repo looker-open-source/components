@@ -477,6 +477,7 @@ export function usePopover({
   const popover = !openWithoutElem && isOpen && (
     <DialogContext.Provider
       value={{
+        close: handleClose,
         closeModal: handleClose,
         disableFocusTrap,
         disableScrollLock,

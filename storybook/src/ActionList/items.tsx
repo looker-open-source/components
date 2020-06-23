@@ -24,15 +24,34 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import {
   ActionListItem,
   ActionListItemColumn,
   Icon,
   Link,
+  Heading,
+  InlineInputText,
+  InputTextProps,
 } from '@looker/components'
 import { data } from './data'
 import { Actions } from './actions'
+
+interface HeadingInputProps extends Omit<InputTextProps, 'type' | 'value'> {
+  value?: string
+}
+
+export const HeadingInput: FC<HeadingInputProps> = ({
+  children,
+  ...styledInputTextProps
+}) => (
+  <>
+    <Heading fontSize="xxlarge">
+      <InlineInputText {...styledInputTextProps} />
+    </Heading>
+    {children}
+  </>
+)
 
 export const items = data.map(
   ({

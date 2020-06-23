@@ -96,7 +96,7 @@ describe('DialogManager - click events', () => {
   test('inactive', () => {
     assertSnapshotShallow(
       <DialogManager content={content}>
-        {(onClick) => <a onClick={onClick}>🥑</a>}
+        {(props) => <a {...props}>🥑</a>}
       </DialogManager>
     )
   })
@@ -104,7 +104,7 @@ describe('DialogManager - click events', () => {
   test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
     const dialog = mountWithTheme(
       <DialogManager content={simpleContent}>
-        {(onClick) => <a onClick={onClick}>Open Dialog</a>}
+        {({ onClick }) => <a onClick={onClick}>Open Dialog</a>}
       </DialogManager>
     )
 
@@ -127,7 +127,7 @@ describe('DialogManager - click events', () => {
 test('contains the content passed to it', () => {
   const dialog = mountWithTheme(
     <DialogManager content={simpleContent}>
-      {(onClick) => <a onClick={onClick}>Open Dialog</a>}
+      <a>Open Dialog</a>
     </DialogManager>
   )
 

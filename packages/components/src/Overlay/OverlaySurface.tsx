@@ -75,7 +75,7 @@ export const OverlaySurface = forwardRef(
       style,
       ...innerProps
     } = props
-    const { closeModal } = useContext(DialogContext)
+    const { close } = useContext(DialogContext)
 
     return (
       <Outer ref={ref} style={style} {...eventHandlers} tabIndex={-1}>
@@ -89,9 +89,7 @@ export const OverlaySurface = forwardRef(
             },
           }}
           handlers={{
-            CLOSE_MODAL: () => {
-              closeModal && closeModal()
-            },
+            CLOSE_MODAL: () => close(),
           }}
         >
           <Inner {...innerProps}>

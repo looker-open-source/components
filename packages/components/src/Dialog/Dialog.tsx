@@ -34,7 +34,17 @@ import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
 import { Surface } from './Surface'
 
-export interface ManagedDialogProps {
+export interface DialogProps {
+  /**
+   * When true, renders the Backdrop, Surface and it's contained content.
+   * @default false
+   */
+  isOpen?: boolean
+  /**
+   * Specify a callback to be called each time this Dialog is closed
+   */
+  onClose?: () => void
+
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
@@ -55,18 +65,6 @@ export interface ManagedDialogProps {
    */
   width?: ResponsiveValue<string>
   maxWidth?: ResponsiveValue<string>
-}
-
-export interface DialogProps extends ManagedDialogProps {
-  /**
-   * When true, renders the Backdrop, Surface and it's contained content.
-   * @default false
-   */
-  isOpen?: boolean
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
 }
 
 export const Dialog: FC<DialogProps> = ({
@@ -92,10 +90,15 @@ export const Dialog: FC<DialogProps> = ({
     isEnabled: scrollLockEnabled,
   } = useScrollLock(isOpen, false)
 
+  const handleClose = () => {
+    onClose && onClose()
+  }
+
   return (
     <DialogContext.Provider
       value={{
-        closeModal: onClose,
+        close: handleClose,
+        closeModal: handleClose,
         disableFocusTrap,
         disableScrollLock,
         enableFocusTrap,

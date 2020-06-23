@@ -27,12 +27,12 @@
 import React, { FC, useCallback, ReactElement } from 'react'
 import { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
-import { Dialog, ManagedDialogProps } from '../Dialog'
+import { Dialog, DialogProps } from '../Dialog'
 import { ConfirmLayout } from './ConfirmLayout'
 
 export type ConfirmationCallback = (close: () => void) => void
 
-export interface ConfirmationProps extends ManagedDialogProps {
+export interface ConfirmationProps extends DialogProps {
   /**
    * Cancel button text
    * @default 'Cancel'

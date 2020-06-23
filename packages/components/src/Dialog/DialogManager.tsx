@@ -24,23 +24,34 @@
 
  */
 
-import { Placement } from '@popperjs/core'
+import omit from 'lodash/omit'
 import React, {
-  Component,
-  createRef,
+  cloneElement,
+  FC,
+  isValidElement,
   ReactNode,
-  RefObject,
-  SyntheticEvent,
+  Ref,
+  useRef,
+  useState,
 } from 'react'
-import { Dialog, ManagedDialogProps } from './Dialog'
+import { Dialog, DialogProps } from './Dialog'
 
-type DialogManagerRenderProp = (
-  onClick: () => void,
-  ref: RefObject<any>
-) => ReactNode
+type DialogRenderProp = (dialogProps: {
+  onClick: () => void
+  className?: string
+  ref: Ref<any>
+  role?: string
+  'aria-expanded'?: boolean
+}) => ReactNode
 
-export interface DialogManagerProps extends ManagedDialogProps {
-  children?: DialogManagerRenderProp
+function isRenderProp(
+  children: ReactNode | DialogRenderProp
+): children is DialogRenderProp {
+  return typeof children === 'function'
+}
+
+export interface DialogManagerProps extends DialogProps {
+  children?: DialogRenderProp | ReactNode
   /**
    * Content that will be placed inside the Dialog
    * @required
@@ -52,76 +63,61 @@ export interface DialogManagerProps extends ManagedDialogProps {
    * Specify a callback to be called each time this Dialog is closed
    */
   canClose?: () => boolean
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
-  /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popper.js. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
-  isOpen?: boolean
-  /**
-   * The onClick event applied to the trigger will automatically stop the event
-   * from being propagated further up into the DOM. This is most frequently used when
-   * and Popover is placed inside another, larger clickable item.
-   */
-  stopPropagation?: boolean
 }
 
-export interface DialogManagerState {
-  isOpen: boolean
-}
+export const DialogManager: FC<DialogManagerProps> = ({
+  canClose,
+  content,
+  children,
+  onClose,
+  ...props
+}) => {
+  const triggerRef = useRef()
 
-export class DialogManager extends Component<
-  DialogManagerProps,
-  DialogManagerState
-> {
-  protected triggerRef: RefObject<any>
-
-  constructor(props: DialogManagerProps) {
-    super(props)
-    this.state = { isOpen: false }
-    this.triggerRef = createRef()
+  const [isOpen, setOpen] = useState(props.isOpen || false)
+  const open = () => setOpen(true)
+  const close = () => {
+    if (canClose && !canClose()) return
+    onClose && onClose()
+    setOpen(false)
   }
 
-  public componentDidMount() {
-    if (this.props.isOpen) this.open()
+  const dialogPropsLabeled = {
+    'aria-expanded': isOpen,
+    className: isOpen ? 'active' : '',
+    onClick: open,
+    ref: triggerRef,
+    role: 'button',
   }
 
-  public render() {
-    const { content, children, ...otherProps } = this.props
+  const dialog = (
+    <Dialog isOpen={isOpen} onClose={close} {...omit(props, 'isOpen')}>
+      {content}
+    </Dialog>
+  )
 
-    return (
-      <>
-        <Dialog isOpen={this.state.isOpen} onClose={this.close} {...otherProps}>
-          {content}
-        </Dialog>
-        {children && children(this.open, this.triggerRef)}
-      </>
+  let target = children
+
+  if (isValidElement(children)) {
+    target = cloneElement(children, {
+      ...dialogPropsLabeled,
+      className: isOpen
+        ? `${children.props.className} active`
+        : children.props.className,
+    })
+  } else if (isRenderProp(children)) {
+    target = children(dialogPropsLabeled)
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Element "${typeof target}" can't be used as target for DialogManager`
     )
   }
 
-  public open = (event?: SyntheticEvent) => {
-    if (event && this.props.stopPropagation) {
-      event.stopPropagation()
-
-      const nativeEvent = event.nativeEvent
-      nativeEvent.preventDefault && nativeEvent.preventDefault()
-      nativeEvent.stopImmediatePropagation &&
-        nativeEvent.stopImmediatePropagation()
-    }
-
-    this.setState({ isOpen: true })
-  }
-
-  public close = () => {
-    if (this.props.canClose && !this.props.canClose()) return
-    this.props.onClose && this.props.onClose()
-    this.setState({ isOpen: false })
-  }
+  return (
+    <>
+      {dialog}
+      {target}
+    </>
+  )
 }

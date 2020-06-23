@@ -62,9 +62,7 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    DialogContext
-  )
+  const { close, enableFocusTrap, enableScrollLock } = useContext(DialogContext)
 
   useEffect(() => {
     enableScrollLock && enableScrollLock()
@@ -86,9 +84,7 @@ const SurfaceLayout: FC<SurfaceProps> = ({
         },
       }}
       handlers={{
-        CLOSE_MODAL: () => {
-          closeModal && closeModal()
-        },
+        CLOSE_MODAL: () => close(),
       }}
       style={{
         alignItems: 'center',
