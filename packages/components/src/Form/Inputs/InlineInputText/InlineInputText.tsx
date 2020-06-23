@@ -51,6 +51,7 @@ const InlineInputTextLayout = forwardRef(
       onChange,
       value: valueProp,
       placeholder,
+      type = 'text',
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -71,6 +72,7 @@ const InlineInputTextLayout = forwardRef(
           onChange={handleChange}
           value={displayValue}
           placeholder={placeholder}
+          type={type}
           ref={ref}
           {...omitStyledProps(pick(props, inputPropKeys))}
         />

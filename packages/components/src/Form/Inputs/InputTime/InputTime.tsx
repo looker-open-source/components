@@ -470,6 +470,7 @@ const InputTimeInternal = forwardRef(
         aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
         <input
+          type="text"
           id={id}
           maxLength={2}
           placeholder="--"
@@ -486,6 +487,7 @@ const InputTimeInternal = forwardRef(
         />
         <div>:</div>
         <input
+          type="text"
           maxLength={2}
           placeholder="--"
           value={minute}
@@ -501,6 +503,7 @@ const InputTimeInternal = forwardRef(
         />
         {format === '12h' ? (
           <input
+            type="text"
             maxLength={2}
             placeholder="--"
             value={period}

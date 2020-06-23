@@ -102,6 +102,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
     className="c1"
     onChange={[Function]}
     placeholder="this is the placeholder"
+    type="text"
     value=""
   />
   <span
@@ -213,6 +214,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
   <input
     className="c1"
     onChange={[Function]}
+    type="text"
     value=""
   />
   <span
@@ -324,6 +326,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   <input
     className="c1"
     onChange={[Function]}
+    type="text"
     value="type here..."
   />
   <span

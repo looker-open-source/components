@@ -61,7 +61,7 @@ export const InputSearch = forwardRef(
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValue] = useState<string | undefined>()
+    const [value, setValue] = useState('')
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
@@ -80,7 +80,7 @@ export const InputSearch = forwardRef(
 
     // only update when valueProp changes, but not defaultValue
     useEffect(() => {
-      setValue(valueProp || defaultValue)
+      setValue(valueProp || defaultValue || '')
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [valueProp])
 
