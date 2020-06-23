@@ -109,9 +109,6 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-
     if ((before && (iconBefore || prefix)) || (iconBefore && prefix)) {
       // eslint-disable-next-line no-console
       console.warn(`Use only one of before, iconBefore, or prefix.`)
@@ -123,6 +120,9 @@ const InputTextLayout = forwardRef(
       console.warn(`Use only one of after, iconAfter, or suffix.`)
       return null
     }
+
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
     function handleMouseDown() {
       // set focus to input on mousedown of container to mimic natural input behavior
