@@ -65,7 +65,6 @@ export const Swatch = styled.div<SwatchProps>`
   ${width}
   ${height}
   background-color: ${(props) => props.color};
-  cursor: pointer;
   flex-shrink: 0;
   margin-top: auto;
 

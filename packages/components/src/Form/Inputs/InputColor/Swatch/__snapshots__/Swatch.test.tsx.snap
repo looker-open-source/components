@@ -6,12 +6,10 @@ exports[`Default Swatch 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
-  cursor: text;
   font-size: 0.875rem;
   width: 36px;
   height: 36px;
   background-color: transparent;
-  cursor: pointer;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -51,12 +49,10 @@ exports[`Swatch with hex value passed 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
-  cursor: text;
   font-size: 0.875rem;
   width: 36px;
   height: 36px;
   background-color: #4c6670;
-  cursor: pointer;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -81,12 +77,10 @@ exports[`Swatch with width and height set 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
-  cursor: text;
   font-size: 0.875rem;
   width: 50px;
   height: 25px;
   background-color: blue;
-  cursor: pointer;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;

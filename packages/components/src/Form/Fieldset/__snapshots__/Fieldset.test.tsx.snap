@@ -36,6 +36,7 @@ exports[`Fieldset 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -51,7 +52,6 @@ exports[`Fieldset 1`] = `
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   color: #343C42;
-  cursor: text;
   font-size: 0.875rem;
 }
 

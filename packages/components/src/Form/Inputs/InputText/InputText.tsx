@@ -260,12 +260,12 @@ export const inputCSS = css`
   border: 1px solid ${({ theme: { colors } }) => colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   color: ${({ theme: { colors } }) => colors.text2};
-  cursor: text;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
 export const InputText = styled(InputTextLayout)<InputTextProps>`
   align-items: center;
+  cursor: text;
   display: inline-flex;
   justify-content: space-evenly;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
