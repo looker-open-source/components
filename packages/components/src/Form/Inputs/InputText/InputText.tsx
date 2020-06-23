@@ -63,15 +63,16 @@ export interface InputTextBaseProps
 
 export interface InputTextProps extends InputTextBaseProps {
   /**
-   * JSX to render after the input
-   * Note: this will replace the built-in validationType icon
+   * Experimental, will likely be removed in a future release
+   * @private
    */
   after?: ReactNode
   iconAfter?: IconNames
   suffix?: string
 
   /**
-   * JSX to render before the input
+   * Experimental, will likely be removed in a future release
+   * @private
    */
   before?: ReactNode
   iconBefore?: IconNames
