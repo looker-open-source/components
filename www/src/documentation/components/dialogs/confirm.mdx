@@ -1,0 +1,107 @@
+---
+title: Confirm
+propsOf: Confirm
+github: Dialog/Confirm.tsx
+---
+
+Confirm provides a helpful composition of dialog components to drive the most common use case: driving user action to confirm or cancel a specific outcome.
+
+# Standard Use
+
+Confirm makes use of the render prop pattern to provide `open` and `close` functions to be called when needed.
+
+```jsx
+<Confirm
+  title="Confirm Something"
+  message="Is this what you want to do?"
+  onConfirm={(close) => {
+    alert('You did something')
+    close()
+  }}
+>
+  {(open) => <Button onClick={open}>Do Something</Button>}
+</Confirm>
+```
+
+Updating color and text of the button
+
+```jsx
+<Confirm
+  confirmLabel="Delete"
+  buttonColor="critical"
+  title="Delete Something"
+  message="Is this what you want to do?"
+  onConfirm={(close) => {
+    alert('You deleted something')
+    close()
+  }}
+>
+  {(open) => (
+    <Button color="critical" onClick={open}>
+      Delete
+    </Button>
+  )}
+</Confirm>
+```
+
+# useConfirm
+
+If you want more control over markup and state, we provide a custom hook that returns the opener function and rendered confirmation dialog. The following example illustrates how the opener can be called outside the Confirm component.
+
+```jsx
+;() => {
+  function handleConfirm(close) {
+    alert('You deleted it')
+    close()
+  }
+
+  const [confirmationDialog, openDialog] = useConfirm({
+    confirmLabel: 'Yes, Delete all',
+    buttonColor: 'critical',
+    title: `Delete all`,
+    message: 'Are you sure you want to delete all?',
+    onConfirm: handleConfirm,
+  })
+
+  return (
+    <>
+      {confirmationDialog}
+      <ButtonOutline onClick={openDialog}>useConfirm</ButtonOutline>
+    </>
+  )
+}
+```
+
+# ConfirmLayout
+
+We've found that most Dialogs involve the same common elements: Title, Message, a primary action (usually "Confirm"), and a secondary action (usually "Cancel").
+To help standardize that layout, we created the `ConfirmLayout` component for composing the relevant pieces. This is handy if you need something like Confirm in a separate context (e.g. when you need to lay out surface content for use in [`DialogManager`](/components/modals/dialog#dialogmanager)).
+
+```jsx
+;() => {
+  function handleConfirm() {
+    alert('Changes discarded')
+  }
+  function handleCancel() {
+    alert('Went back')
+  }
+
+  return (
+    <ConfirmLayout
+      title="Discard Changes?"
+      titleIcon={<Icon name="Warning" color="critical" size={22} />}
+      message="Are you sure you want to close the dialog? Unsaved changes will be lost."
+      primaryButton={
+        <Button onClick={handleConfirm} color="critical">
+          Discard Changes
+        </Button>
+      }
+      secondaryButton={
+        <ButtonTransparent onClick={handleCancel} color="neutral">
+          Go Back
+        </ButtonTransparent>
+      }
+    />
+  )
+}
+```

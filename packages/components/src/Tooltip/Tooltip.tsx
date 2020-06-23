@@ -36,7 +36,7 @@ import React, {
   Ref,
 } from 'react'
 import omit from 'lodash/omit'
-import { ModalContext } from '../Modal'
+import { DialogContext } from '../Dialog'
 import {
   useCallbackRef,
   useID,
@@ -123,6 +123,7 @@ export interface TooltipProps extends UseTooltipProps {
    */
   children: ReactNode | TooltipRenderProp
 }
+
 export function useTooltip({
   arrow = true,
   canClose,
@@ -203,7 +204,7 @@ export function useTooltip({
 
   const popper =
     isOpen && content && !disabled ? (
-      <ModalContext.Provider value={{ closeModal: handleClose }}>
+      <DialogContext.Provider value={{ closeModal: handleClose }}>
         <OverlaySurface
           arrow={arrow}
           arrowProps={arrowProps}
@@ -226,7 +227,7 @@ export function useTooltip({
             {content}
           </TooltipContent>
         </OverlaySurface>
-      </ModalContext.Provider>
+      </DialogContext.Provider>
     ) : null
 
   return {

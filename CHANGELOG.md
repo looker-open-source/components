@@ -13,13 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Field now support hideLabel and fieldsHideLabel
 - `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
 - `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+- `MultiSelect` icon added
 
 ### Changed
 
+- `ModalPortal` is now `Portal`
+- `Modal*` has moved to `Dialog*`
+  - `ModalContext` is now `DialogContext`
+  - `ModalContent` is now `DialogContent`
+  - `ModalFooter` is now `DialogFooter`
+  - `ModalHeader` is now `DialogHeader`
+  - Aliases for the old names are in place to ease the upgrade but these aliases will be deprecated shortly
 - `Badge` now uses generated colors rather than referencing colors.palette
 - `InputText` interface simplified / narrowed
   - No longer supports typography or pseudo props
   - Switch from using defaultProps to `css` block to share common styles with other components
+- `Popover` now supports the preferred `cloneElement` style usage in addition to the existing render prop style
+  - Additionally the render prop style now exposes `aria-haspopup` for use
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
 - `IconButton` improved hover/active states and no background on hover
@@ -27,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Accept `detailAccessory` and `detailHoverDisclosure` props
   - `TreeItem` styling moved from `Tree` into `TreeItem` itself
   - `TreeItem` layout follows primary-secondary structure
+- `FieldLoction`, `FieldString`, `FieldDuration` icon artwork update
 
 ### Fixed
 
@@ -39,9 +50,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SelectMulti` create option unnecessary left padding
 - `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
 - Major CSS linting clean-up
+- `CheckboxGroup` & `RadioGroup` options now properly wrap when the exceed the container width
+- `Select` & `SelectMulti` option group label alignment
 
 ### Removed
 
+- `Drawer` no longer available
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
 - `CustomizableAttributes` are no longer supported
 - `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
@@ -49,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Label` interface has significantly pared-down (to just DOM-native properties)
 - `psuedo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
+- `FieldDistance` icon removed
 
 ## [0.8.7]
 

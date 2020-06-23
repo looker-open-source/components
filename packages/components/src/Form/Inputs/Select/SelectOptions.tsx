@@ -34,6 +34,7 @@ import {
   ComboboxMultiOption,
   ComboboxOption,
   ComboboxOptionIndicatorProps,
+  ComboboxOptionIndicator,
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
@@ -109,6 +110,7 @@ export function SelectOptionWithDescription({
 }
 
 const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
+  display: flex;
   padding-top: ${({ theme }) => theme.space.xxsmall};
 `
 
@@ -128,7 +130,7 @@ export const SelectOptionGroup = ({
   <SelectOptionGroupContainer>
     {label && (
       <SelectOptionGroupTitle isMulti={isMulti}>
-        <span />
+        <ComboboxOptionIndicator isMulti={isMulti} />
         {label}
       </SelectOptionGroupTitle>
     )}

@@ -16,14 +16,6 @@ exports[`Form with one child 1`] = `
   flex-direction: column;
 }
 
-.c0.c0 > * {
-  margin-top: 1rem;
-}
-
-.c0.c0 > *:first-child {
-  margin-top: 0rem;
-}
-
 .c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -144,6 +136,22 @@ exports[`Form with one child 1`] = `
 
 .c1 .c8 {
   margin-top: 0.5rem;
+}
+
+@supports (-moz-appearance:none) {
+  .c0 {
+    gap: 1rem;
+  }
+}
+
+@supports not (-moz-appearance:none) {
+  .c0.c0 > * {
+    margin-top: 1rem;
+  }
+
+  .c0.c0 > *:first-child {
+    margin-top: 0rem;
+  }
 }
 
 <form

@@ -166,17 +166,10 @@ A common UI pattern is to combine `InputDateRange` with [Popover](/components/ov
         </Box>
       }
     >
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-        >
-          <DateFormat>{selectedDateRange.from}</DateFormat> &mdash;
-          <DateFormat>{selectedDateRange.to}</DateFormat>
-        </Button>
-      )}
+      <Button>
+        <DateFormat>{selectedDateRange.from}</DateFormat> &mdash;
+        <DateFormat>{selectedDateRange.to}</DateFormat>
+      </Button>
     </Popover>
   )
 }

@@ -8,7 +8,7 @@ Popovers are containers for things like contextual information, menus, and relat
 
 ## Terminology
 
-Popovers are assembled of two pieces: an overlay and a surface. Unlike [Modals](/components/modals/), the `Popover` overlay is transparent, but it still blocks the application behind it until it is closed, with the exception of [grouped Popovers](#grouped-popovers). The `Popover`'s surface renders the content above the overlay and the rest of the application.
+Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs](/components/dialogs/), the `Popover` overlay is transparent, but it still blocks the application behind it until it is closed, with the exception of [grouped Popovers](#grouped-popovers). The `Popover`'s surface renders the content above the overlay and the rest of the application.
 
 ```jsx
 <Popover
@@ -31,16 +31,7 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Modals](
     </PopoverContent>
   }
 >
-  {(onClick, ref, className) => (
-    <Button
-      aria-haspopup="true"
-      onClick={onClick}
-      ref={ref}
-      className={className}
-    >
-      A Wikipedia article about Wildebeests
-    </Button>
-  )}
+  <Button>A Wikipedia article about Wildebeests</Button>
 </Popover>
 ```
 
@@ -60,49 +51,28 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
     </PopoverContent>
   )
 
-  const button = (title, onClick, ref, className) => (
-    <Button
-      aria-haspopup="true"
-      onClick={onClick}
-      ref={ref}
-      className={className}
-    >
-      {title}
-    </Button>
-  )
-
   return (
     <SpaceVertical>
       <Space between width="100%">
         <Popover content={popoverContent}>
-          {(onClick, ref, className) =>
-            button('Default', onClick, ref, className)
-          }
+          <Button>Default</Button>
         </Popover>
         <Popover content={popoverContent} placement="right">
-          {(onClick, ref, className) =>
-            button('Right', onClick, ref, className)
-          }
+          <Button>Right</Button>
         </Popover>
         <Popover content={popoverContent} placement="left">
-          {(onClick, ref, className) => button('Left', onClick, ref, className)}
+          <Button>Left</Button>
         </Popover>
       </Space>
       <Space between width="100%">
         <Popover content={popoverContent} placement="bottom-start">
-          {(onClick, ref, className) =>
-            button('Bottom Start', onClick, ref, className)
-          }
+          <Button>Bottom Start</Button>
         </Popover>
         <Popover content={popoverContent} placement="right-end">
-          {(onClick, ref, className) =>
-            button('Right End', onClick, ref, className)
-          }
+          <Button>Right End</Button>
         </Popover>
         <Popover content={popoverContent} placement="top-start" arrow={false}>
-          {(onClick, ref, className) =>
-            button('Top Start - No arrow', onClick, ref, className)
-          }
+          <Button>Top Start</Button>
         </Popover>
       </Space>
     </SpaceVertical>
@@ -116,7 +86,7 @@ By default Popover cancels event bubbling when a click event triggers the closur
 
 However, where several related Popover components are grouped together, cancelling event bubbling for the "dismissal click" can make for an awkward UX. This functionality is used for items grouped to create a larger navigation component or associated controls such as a collection of filters.
 
-To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propogation on the clicks outside of the `ModalPortal` associated with the `Popover`. The first click outside of the `ModalPortal` will still close the `Popover` but click event propogation or otherwise surpressed and instead will be allowed to produce its usual behavior.
+To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propagation on the clicks outside of the `Portal` associated with the `Popover`. The first click outside of the `Portal` will still close the `Popover` but click event propagation or otherwise suppressed and instead will be allowed to produce its usual behavior.
 
 ```jsx
 ;() => {
@@ -135,56 +105,19 @@ To create a group, assigned a reference to an containing element and then assign
         style={{ border: '3px solid green' }}
       >
         <Popover content={content} groupedPopoversRef={groupRef}>
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              Instant Click
-            </Button>
-          )}
+          <Button>Instant Click</Button>
         </Popover>
         <Popover content={content} groupedPopoversRef={groupRef}>
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              mx="large"
-              className={className}
-            >
-              Instant Click
-            </Button>
-          )}
+          <Button mx="large">Instant Click</Button>
         </Popover>
         <Popover content={content}>
-          {(onClick, ref, className) => (
-            <ButtonOutline
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              Defer Click
-            </ButtonOutline>
-          )}
+          <ButtonOutline>Defer Click</ButtonOutline>
         </Popover>
       </Space>
       <Popover content={content}>
-        {(onClick, ref, className) => (
-          <ButtonTransparent
-            aria-haspopup="true"
-            mx="xlarge"
-            my="large"
-            onClick={onClick}
-            ref={ref}
-            className={className}
-          >
-            Outside Group
-          </ButtonTransparent>
-        )}
+        <ButtonTransparent mx="xlarge" my="large">
+          Outside Group
+        </ButtonTransparent>
       </Popover>
     </Space>
   )
@@ -206,16 +139,7 @@ To create a group, assigned a reference to an containing element and then assign
             popover.
           </Paragraph>
           <Popover content={content} hoverDisclosureRef={hoverRef}>
-            {(onClick, ref, className) => (
-              <IconButton
-                icon="DotsVert"
-                aria-haspopup="true"
-                label="More Options"
-                onClick={onClick}
-                ref={ref}
-                className={className}
-              />
-            )}
+            <IconButton icon="DotsVert" label="More Options" />
           </Popover>
         </Space>
       </CardContent>
@@ -228,6 +152,16 @@ To create a group, assigned a reference to an containing element and then assign
 
 `PopoverContent` is a simple container component that can be used to apply a consistent style to content placed within a Popover surface.
 
-## Accessibility
+## "Render Prop" style
 
-Popover triggers should have the `aria-haspopover` attribute set to `true`, you can see an example on the buttons that trigger the popovers below.
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
+
+```jsx
+<Popover content="Example using render props exploded">
+  {(props) => (
+    <Button {...props}>
+      Render Props Example: {props['aria-expanded'] ? 'open' : 'closed'}
+    </Button>
+  )}
+</Popover>
+```
