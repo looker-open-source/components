@@ -203,7 +203,7 @@ export const ComboboxInputInternal = forwardRef(
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  input {
+  ${InputText} {
     cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
   }
 `

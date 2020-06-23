@@ -181,9 +181,6 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    ${Chip} + ${Chip} {
-      margin-left: 0;
-    }
   }
 
   input {

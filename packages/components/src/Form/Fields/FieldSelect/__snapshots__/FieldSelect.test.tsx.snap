@@ -9,7 +9,7 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
-.c8 {
+.c9 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -27,12 +27,12 @@ exports[`A FieldSelect 1`] = `
   flex-shrink: 0;
 }
 
-.c8 svg {
+.c9 svg {
   height: 100%;
   width: 100%;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -57,17 +57,17 @@ exports[`A FieldSelect 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c10 {
+.c6 .c11 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c10 span {
+.c6 .c11 span {
   padding: 0 0.5rem;
 }
 
-.c5 input {
+.c6 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -83,37 +83,37 @@ exports[`A FieldSelect 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
+.c6 input::-webkit-search-decoration,
+.c6 input::-webkit-search-cancel-button,
+.c6 input::-webkit-search-results-button,
+.c6 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 input::-webkit-input-placeholder {
+.c6 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::-moz-placeholder {
+.c6 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c5 input:-ms-input-placeholder {
+.c6 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::placeholder {
+.c6 input::placeholder {
   color: #939BA5;
 }
 
-.c5:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c6:focus,
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -150,7 +150,7 @@ exports[`A FieldSelect 1`] = `
   grid-area: input;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   grid-area: messages;
 }
 
@@ -160,16 +160,16 @@ exports[`A FieldSelect 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c12 {
+.c0 .c13 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   margin-top: 0.5rem;
 }
 
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -181,7 +181,7 @@ exports[`A FieldSelect 1`] = `
   max-height: 1.9rem;
 }
 
-.c6 input {
+.c7 .c5 {
   cursor: default;
 }
 
@@ -210,7 +210,7 @@ exports[`A FieldSelect 1`] = `
       width="100%"
     >
       <div
-        className="c5 c6"
+        className="c5 c6 c7"
         onClick={[Function]}
         onMouseDown={[Function]}
       >
@@ -229,10 +229,10 @@ exports[`A FieldSelect 1`] = `
           value=""
         />
         <div
-          className="c7"
+          className="c8"
         >
           <div
-            className="c8"
+            className="c9"
           >
             <svg
               fill="currentColor"
@@ -254,7 +254,7 @@ exports[`A FieldSelect 1`] = `
     </div>
   </div>
   <div
-    className="c9 "
+    className="c10 "
     id="thumbs-up-describedby"
   />
 </div>
@@ -269,7 +269,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
-.c10 {
+.c11 {
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -287,12 +287,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   flex-shrink: 0;
 }
 
-.c10 svg {
+.c11 svg {
   height: 100%;
   width: 100%;
 }
 
-.c8 {
+.c9 {
   width: 20px;
   height: 20px;
   margin-right: 0.25rem;
@@ -310,12 +310,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   flex-shrink: 0;
 }
 
-.c8 svg {
+.c9 svg {
   height: 100%;
   width: 100%;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -341,17 +341,17 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   border-color: #ED3B53;
 }
 
-.c5 .c14 {
+.c6 .c15 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c14 span {
+.c6 .c15 span {
   padding: 0 0.5rem;
 }
 
-.c5 input {
+.c6 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -367,48 +367,48 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
+.c6 input::-webkit-search-decoration,
+.c6 input::-webkit-search-cancel-button,
+.c6 input::-webkit-search-results-button,
+.c6 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 input::-webkit-input-placeholder {
+.c6 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::-moz-placeholder {
+.c6 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c5 input:-ms-input-placeholder {
+.c6 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::placeholder {
+.c6 input::placeholder {
   color: #939BA5;
 }
 
-.c5:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c6:focus,
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5:hover {
+.c6:hover {
   border-color: #CC1F36;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c6:focus,
+.c6:focus-within {
   border-color: #CC1F36;
   box-shadow: 0 0 0 2px #FFE5E9;
 }
@@ -419,7 +419,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-weight: 600;
 }
 
-.c13 {
+.c14 {
   font-size: 0.75rem;
   color: #CC1F36;
 }
@@ -449,7 +449,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   grid-area: input;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   grid-area: messages;
 }
 
@@ -459,16 +459,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c15 {
+.c0 .c16 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c12 {
+.c0 .c13 {
   margin-top: 0.5rem;
 }
 
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -480,13 +480,13 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   max-height: 1.9rem;
 }
 
-.c9 {
+.c10 {
   background: #DEE1E5;
   height: 70%;
   width: 1px;
 }
 
-.c6 input {
+.c7 .c5 {
   cursor: default;
 }
 
@@ -515,7 +515,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       width="100%"
     >
       <div
-        className="c5 c6"
+        className="c5 c6 c7"
         onClick={[Function]}
         onMouseDown={[Function]}
       >
@@ -535,10 +535,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           value=""
         />
         <div
-          className="c7"
+          className="c8"
         >
           <div
-            className="c8"
+            className="c9"
           >
             <svg
               fill="currentColor"
@@ -556,10 +556,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
             </svg>
           </div>
           <div
-            className="c9"
+            className="c10"
           />
           <div
-            className="c10"
+            className="c11"
           >
             <svg
               fill="currentColor"
@@ -581,11 +581,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     </div>
   </div>
   <div
-    className="c11 "
+    className="c12 "
     id="thumbs-up-describedby"
   >
     <div
-      className="c12 c13"
+      className="c13 c14"
     >
       This is an error
     </div>
