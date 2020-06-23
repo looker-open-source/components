@@ -184,9 +184,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   }
 
   input {
-    flex: 1;
     min-width: 25%;
-    padding-right: 0;
     width: auto;
     ${inputHeightStyle}
   }
