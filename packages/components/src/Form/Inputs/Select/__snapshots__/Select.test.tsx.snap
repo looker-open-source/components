@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select autoResize 1`] = `
+.c0 {
+  width: auto;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c9 {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #707781;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c9 svg {
+  height: 100%;
+  width: 100%;
+}
+
+.c6 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+}
+
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
+}
+
+.c6::-webkit-outer-spin-button,
+.c6::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c7 {
+  color: transparent;
+  line-height: inherit;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
+.c10 .c4 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c10 .c4 span {
+  padding: 0 0.5rem;
+}
+
+.c11 .c4 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c11 .c4 span {
+  padding: 0 0.5rem;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: auto;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c2 .c4 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c2 .c4 span {
+  padding: 0 0.5rem;
+}
+
+.c2 input {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.c2 input::-webkit-search-decoration,
+.c2 input::-webkit-search-cancel-button,
+.c2 input::-webkit-search-results-button,
+.c2 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c2 input::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c2 input::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c2 input:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c2 input::placeholder {
+  color: #939BA5;
+}
+
+.c2:hover {
+  border-color: #C1C6CC;
+}
+
+.c2:focus,
+.c2:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-gap: 0.25rem;
+  justify-items: center;
+  max-height: 1.9rem;
+}
+
+.c3 .c1 {
+  cursor: default;
+}
+
+.c12 .c1 {
+  cursor: default;
+}
+
+<div
+  aria-expanded="false"
+  aria-haspopup="listbox"
+  aria-owns="listbox-resizable"
+  class="c0 "
+  data-testid="resizable"
+  display="inline-flex"
+  id="resizable"
+  role="combobox"
+  width="auto"
+>
+  <div
+    class="c1 c2 c3"
+  >
+    <span
+      class="c4 c5"
+    >
+      <input
+        aria-autocomplete="both"
+        autocomplete="off"
+        class="c6"
+        id="listbox-resizable"
+        readonly=""
+        type="text"
+        value="Foo"
+      />
+      <span
+        class="c7"
+      >
+        Foo
+      </span>
+    </span>
+    <div
+      class="c8"
+    >
+      <div
+        class="c9"
+      >
+        <svg
+          fill="currentColor"
+          height="100%"
+          viewBox="0 0 24 24"
+          width="100%"
+        >
+          <title>
+            Caret Down
+          </title>
+          <path
+            d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

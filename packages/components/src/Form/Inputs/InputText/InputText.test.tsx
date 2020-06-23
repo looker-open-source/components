@@ -47,6 +47,10 @@ test('InputText default', () => {
   assertSnapshot(<InputText />)
 })
 
+test('InputText autoResize', () => {
+  assertSnapshot(<InputText autoResize />)
+})
+
 test('InputText with name and id', () => {
   assertSnapshot(<InputText name="Bob" id="Bobby" />)
 })
@@ -82,6 +86,19 @@ test('InputText with an error validation', () => {
 
   expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
   expect(getByTitle('Circle Info')).toBeDefined()
+})
+
+test('InputText with a before & after', () => {
+  const { getByText } = renderWithTheme(
+    <InputText
+      placeholder="Hello"
+      before={<span>before</span>}
+      after={<span>after</span>}
+    />
+  )
+
+  expect(getByText('before')).toBeVisible()
+  expect(getByText('after')).toBeVisible()
 })
 
 test('Should trigger onChange handler', () => {

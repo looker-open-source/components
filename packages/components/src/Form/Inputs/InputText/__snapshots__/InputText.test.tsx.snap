@@ -1,5 +1,199 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`InputText autoResize 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: auto;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
+}
+
+.c0 input {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c0 input::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c0 input:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c0 input::placeholder {
+  color: #939BA5;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus,
+.c0:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+<div
+  className="c0"
+  onMouseDown={[Function]}
+>
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
+</div>
+`;
+
 exports[`InputText default 1`] = `
 .c0 {
   -webkit-align-items: center;

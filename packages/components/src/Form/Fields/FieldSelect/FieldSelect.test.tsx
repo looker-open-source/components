@@ -37,6 +37,12 @@ test('A FieldSelect', () => {
   assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
 })
 
+test('A FieldSelect with autoResize', () => {
+  assertSnapshot(
+    <FieldSelect label="👍" name="thumbsUp" id="thumbs-up" autoResize />
+  )
+})
+
 test('Should accept a value', () => {
   const wrapper = mountWithTheme(
     <FieldSelect
