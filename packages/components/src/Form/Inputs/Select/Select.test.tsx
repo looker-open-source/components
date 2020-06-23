@@ -622,21 +622,4 @@ describe('Select', () => {
     // should default to first option
     expect(input).toHaveValue('Foo')
   })
-
-  test('autoResize', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
-    renderWithTheme(
-      <Select
-        options={options}
-        autoResize
-        id="resizable"
-        data-testid="resizable"
-      />
-    )
-
-    expect(screen.getByTestId('resizable')).toMatchSnapshot()
-  })
 })
