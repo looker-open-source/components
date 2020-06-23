@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Added
+
+- `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
+- `before` and `after` added to `InputText`
+
 ## [0.9.3] - 2020-06-26
 
 ### Fixed
@@ -102,7 +109,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
 - `pseudo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
-- Icons: `FieldDistance` removed
+    <<<<<<< HEAD
+- # Icons: `FieldDistance` removed
+- `FieldDistance` icon removed
+- `InputSearchBase` removed, with functionality absorbed by `InputText`
+  > > > > > > > Update changelog
 
 ## [0.8.7]
 
