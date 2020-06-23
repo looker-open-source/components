@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Field now support hideLabel and fieldsHideLabel
 - `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
 - `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+- `MultiSelect` icon added
 
 ### Changed
 
@@ -32,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
 - `IconButton` improved hover/active states and no background on hover
+- `FieldLoction`, `FieldString`, `FieldDuration` icon artwork update
 
 ### Fixed
 
@@ -57,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Label` interface has significantly pared-down (to just DOM-native properties)
 - `psuedo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
+- `FieldDistance` icon removed
 
 ## [0.8.7]
 

@@ -23,7 +23,7 @@ Passing in an element into the `detail` prop will result in that element being d
   detail={<Text variant="subdued">thelook</Text>}
 >
   <TreeItem icon="FieldNumber">Cost</TreeItem>
-  <TreeItem icon="FieldDistance">Location</TreeItem>
+  <TreeItem icon="FieldLocation">Location</TreeItem>
   <TreeItem icon="FieldTier">Tier</TreeItem>
   <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
 </Tree>
@@ -97,7 +97,7 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
   return (
     <Tree label="Orders" icon="Table" isOpen={isOpen} toggleOpen={setIsOpen}>
       <TreeItem icon="FieldNumber">Cost</TreeItem>
-      <TreeItem icon="FieldDistance">Location</TreeItem>
+      <TreeItem icon="FieldLocation">Location</TreeItem>
       <TreeItem icon="FieldTier">Tier</TreeItem>
       <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
     </Tree>
