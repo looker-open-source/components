@@ -99,8 +99,7 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    const isEventFromChild = event.currentTarget !== event.target
-    if (event.keyCode === 13 && !isEventFromChild) {
+    if (event.keyCode === 13) {
       event.currentTarget.click()
     }
   }
@@ -183,5 +182,4 @@ const TreeItemDetail = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
-  padding: ${({ theme: { space } }) => space.xxsmall};
 `
