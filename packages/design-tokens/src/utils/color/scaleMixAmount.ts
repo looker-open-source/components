@@ -24,18 +24,6 @@
 
  */
 
-import { getLuminance, shade, tint } from 'polished'
-import { scaleMixAmount } from './scaleMixAmount'
-
-export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
-  const colorLuminance = getLuminance(color)
-
-  const mixAdjustment =
-    colorLuminance > 0.5 ? mixAmount : scaleMixAmount(mixAmount, 1.5)
-
-  if (colorLuminance > 0.5) {
-    return shade(mixAdjustment / 100, color)
-  } else {
-    return tint(mixAdjustment / 100, color)
-  }
+export const scaleMixAmount = (amount: number, number: number) => {
+  return amount * number
 }

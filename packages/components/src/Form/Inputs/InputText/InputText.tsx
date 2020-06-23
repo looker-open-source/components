@@ -169,6 +169,7 @@ export const InputLayout = styled.div`
   input {
     background: transparent;
     border: none;
+    color: ${({ theme }) => theme.colors.text};
     flex: 1;
     font-size: ${(props) => props.theme.fontSizes.small};
     height: 100%;

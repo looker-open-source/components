@@ -35,30 +35,33 @@ import {
   ButtonGroup,
   ButtonItem,
 } from '@looker/components'
-import React from 'react'
+import React, { useState } from 'react'
 
-export const Suite = () => (
-  <SpaceVertical gap="xsmall">
-    <Button>My neat button</Button>
-    <Button color="neutral">My neat button</Button>
-    <Button color="critical">My neat button</Button>
-    <ButtonOutline>My neat button</ButtonOutline>
-    <ButtonOutline color="neutral">My neat button</ButtonOutline>
-    <ButtonOutline color="critical">My neat button</ButtonOutline>
-    <ButtonTransparent>My neat button</ButtonTransparent>
-    <ButtonTransparent color="neutral">My neat button</ButtonTransparent>
-    <ButtonTransparent color="critical">My neat button</ButtonTransparent>
+export const Suite = () => {
+  const [value, setValue] = useState(['One'])
+  return (
+    <SpaceVertical gap="xsmall">
+      <Button>My neat button</Button>
+      <Button color="neutral">My neat button</Button>
+      <Button color="critical">My neat button</Button>
+      <ButtonOutline>My neat button</ButtonOutline>
+      <ButtonOutline color="neutral">My neat button</ButtonOutline>
+      <ButtonOutline color="critical">My neat button</ButtonOutline>
+      <ButtonTransparent>My neat button</ButtonTransparent>
+      <ButtonTransparent color="neutral">My neat button</ButtonTransparent>
+      <ButtonTransparent color="critical">My neat button</ButtonTransparent>
 
-    <ButtonGroup>
-      <ButtonItem>One</ButtonItem>
-      <ButtonItem>Two</ButtonItem>
-    </ButtonGroup>
+      <ButtonGroup value={value} onChange={setValue}>
+        <ButtonItem>One</ButtonItem>
+        <ButtonItem>Two</ButtonItem>
+      </ButtonGroup>
 
-    <FieldText label="Hello" />
-    <IconButton icon="Check" label="Check" size="large" />
-    <FieldSlider label="slider" />
-  </SpaceVertical>
-)
+      <FieldText label="Hello" />
+      <IconButton icon="Check" label="Check" size="large" />
+      <FieldSlider label="slider" />
+    </SpaceVertical>
+  )
+}
 
 export default {
   component: Suite,
