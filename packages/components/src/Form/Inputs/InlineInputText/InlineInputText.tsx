@@ -34,7 +34,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
-import { InnerInputText } from '../InnerInputText'
+import { innerInputStyle } from '../innerInputStyle'
 
 export interface InlineInputTextProps
   extends TypographyProps,
@@ -82,7 +82,8 @@ const InlineInputTextLayout = forwardRef(
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
-const StyledInput = styled(InnerInputText)`
+const StyledInput = styled.input`
+  ${innerInputStyle}
   font: inherit;
   left: 0;
   padding: 0;

@@ -31,7 +31,7 @@ import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
-import { InnerInputText } from '../InnerInputText'
+import { innerInputStyle } from '../innerInputStyle'
 import {
   SimpleLayoutProps,
   simpleLayoutCSS,
@@ -182,7 +182,7 @@ const InputTextLayout = forwardRef(
       'aria-invalid': validationType === 'error' ? true : undefined,
       type,
     }
-    const input = <InnerInputText {...inputProps} ref={ref} />
+    const input = <input {...inputProps} ref={ref} />
 
     const inner = children ? (
       <div className="inner">
@@ -266,7 +266,7 @@ export const inputCSS = css`
 
 export const InputText = styled(InputTextLayout)<InputTextProps>`
   align-items: center;
-  display: ${({ autoResize }) => (autoResize ? 'inline-flex' : 'flex')};
+  display: inline-flex;
   justify-content: space-evenly;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
@@ -283,7 +283,11 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
     }
   }
 
-  ${InnerInputText} {
+  input {
+    ${innerInputStyle}
+    flex: 1;
+    font-size: ${(props) => props.theme.fontSizes.small};
+    max-width: 100%;
     padding: 0 ${({ theme: { space } }) => space.xsmall};
   }
 

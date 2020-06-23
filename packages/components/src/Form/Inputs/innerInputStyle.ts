@@ -24,18 +24,14 @@
 
  */
 
-import styled from 'styled-components'
-import { InputProps } from './InputProps'
+import { css } from 'styled-components'
 
-export const InnerInputText = styled.input<InputProps>`
+export const innerInputStyle = css`
   background: transparent;
   border: none;
   caret-color: ${({ theme }) => theme.colors.text0};
   color: inherit;
-  flex: 1;
-  font-size: ${(props) => props.theme.fontSizes.small};
   height: 100%;
-  max-width: 100%;
   outline: none;
   width: 100%;
 
