@@ -65,10 +65,6 @@ const TabStyle = styled.button<TabProps>`
     props.selected ? props.theme.colors.text1 : props.theme.colors.text4};
   cursor: pointer;
 
-  & + & {
-    margin-left: ${(props) => props.theme.space.xlarge};
-  }
-
   &:active {
     border-bottom-color: ${(props) =>
       props.selected ? props.theme.colors.key : props.theme.colors.text4};
@@ -141,9 +137,10 @@ TabJSX.displayName = 'TabJSX'
 export const Tab = styled(TabJSX)``
 
 Tab.defaultProps = {
-  fontSize: 'small',
+  fontSize: 'xsmall',
   fontWeight: 'semiBold',
   minWidth: '3rem',
   pb: 'small',
   pt: 'xsmall',
+  px: 0,
 }

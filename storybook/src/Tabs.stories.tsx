@@ -25,7 +25,26 @@
  */
 
 import React, { FC } from 'react'
-import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
+import {
+  SpaceVertical,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel,
+  TabPanels,
+} from '@looker/components'
+
+export const All = () => (
+  <SpaceVertical>
+    <Basic />
+    <SecondaryTabs />
+  </SpaceVertical>
+)
+
+export default {
+  component: All,
+  title: 'Tabs',
+}
 
 export const Basic: FC = () => (
   <Tabs>
@@ -54,7 +73,110 @@ export const Basic: FC = () => (
   </Tabs>
 )
 
-export default {
-  component: Basic,
-  title: 'Tabs',
-}
+export const SecondaryTabs: FC = () => (
+  <Tabs>
+    <TabList>
+      <Tab>Rebecca Purple</Tab>
+      <Tab>Coral</Tab>
+      <Tab>Forest Green</Tab>
+      <Tab>Cornflower Blue</Tab>
+      <Tab>Light Blue</Tab>
+      <Tab>Dark Orange</Tab>
+      <Tab>Deep Pink</Tab>
+      <Tab>Gold</Tab>
+      <Tab>Gainsboro</Tab>
+      <Tab>Yellow Green</Tab>
+      <Tab>Dark Magenta</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'RebeccaPurple',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'coral',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'ForestGreen',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'CornflowerBlue',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'lightblue',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'DarkOrange',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'DeepPink',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'Gold',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'Gainsboro',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'YellowGreen',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: 'DarkMagenta',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+)

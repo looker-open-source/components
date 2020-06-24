@@ -54,4 +54,7 @@ export const TabList: FC<TabListProps> = ({
 
 const TabListContainer = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  column-gap: ${(props) => props.theme.space.medium};
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3rem, auto));
 `

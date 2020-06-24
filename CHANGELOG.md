@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Tabs evenly distribute their width based on the amount of space
 - `ModalPortal` is now `Portal`
 - `Modal*` has moved to `Dialog*`
   - `ModalContext` is now `DialogContext`
