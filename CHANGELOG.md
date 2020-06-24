@@ -5,17 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.0] - 2020-06-24
 
 ### Added
 
-- FieldChips component
-- Field now support hideLabel and fieldsHideLabel
-- `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
-- `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+- `FieldChips` component
+- `Field` now support `hideLabel`
+- `Fieldset` now supports `fieldsHideLabel` (hides labels for Fields within)
 - `MultiSelect` icon added
+- `zIndexFloor` added to `theme` (used as base value for Overlay & Modal z-index value:q)
+- `eslint-config`, `prettier-config` and `stylelint-config` packages moved from separate repository and updated to integrate any overrides needed previously.
 
 ### Changed
+
+- `Badge` now uses generated colors rather than referencing colors.palette
+- `Dialog` now supports a non render-props style interface
+- `IconButton` improved hover/active states and no background on hover
+- `InputText` interface simplified / narrowed
+  - No longer supports typography or pseudo props
+  - Switch from using defaultProps to `css` block to share common styles with other components
+- `Popover` now supports the preferred `cloneElement` style usage in addition to the existing render prop style
+  - Additionally the render prop style now exposes `aria-haspopup` for use
+- `TextArea` interface simplified / narrowed
+  - No longer supports border or typography props
+- Icons: `FieldLoction`, `FieldString`, `FieldDuration` artwork update
 
 - Deprecate use of `Modal` term throughout code base
 - `ModalPortal` is now `Portal`
@@ -25,16 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `ModalFooter` is now `DialogFooter`
   - `ModalHeader` is now `DialogHeader`
   - Aliases for the old names are in place to ease the upgrade but these aliases will be deprecated shortly
-- `Badge` now uses generated colors rather than referencing colors.palette
-- `InputText` interface simplified / narrowed
-  - No longer supports typography or pseudo props
-  - Switch from using defaultProps to `css` block to share common styles with other components
-- `Popover` now supports the preferred `cloneElement` style usage in addition to the existing render prop style
-  - Additionally the render prop style now exposes `aria-haspopup` for use
-- `TextArea` interface simplified / narrowed
-  - No longer supports border or typography props
-- `IconButton` improved hover/active states and no background on hover
-- `FieldLoction`, `FieldString`, `FieldDuration` icon artwork update
 
 ### Fixed
 
@@ -42,27 +45,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Smaller text in Safari and Firefox
   - White space between highlighted item and border (`ButtonToggle`)
   - Missing horizontal borders in wrapping `ButtonToggle` when `options` are loaded asynchronously
+- `CheckboxGroup` & `RadioGroup` options now properly wrap when the exceed the container width
+- `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
 - `Icon` will no longer shrink when placed inside a flex layout
 - `Select`/`SelectMulti` keyboard navigation when filtering options
-- `SelectMulti` create option unnecessary left padding
-- `FieldSelect`/`FieldSelectMulti` missing `aria-labelledby` attribute on the input
-- Major CSS linting clean-up
-- `CheckboxGroup` & `RadioGroup` options now properly wrap when the exceed the container width
 - `Select` & `SelectMulti` option group label alignment
+- `SelectMulti` create option unnecessary left padding
 - `Tooltip` closing when mouse moves from trigger element to tooltip
+
+- Major CSS linting clean-up
 
 ### Removed
 
-- `ModalHeader` no longer supports `headerIcon`
-- `Drawer` no longer available
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
 - `CustomizableAttributes` are no longer supported
-- `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
-  - `Menu` no longer supports `marker` presentation
+- `DialogHeader` / `ModalHeader` no longer supports `headerIcon`
+- `Drawer` no longer available
 - `Label` interface has significantly pared-down (to just DOM-native properties)
-- `psuedo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
+- `Menu` no longer supports `marker` presentation
+- `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
+- `pseudo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
-- `FieldDistance` icon removed
+- Icons: `FieldDistance` removed
 
 ## [0.8.7]
 
