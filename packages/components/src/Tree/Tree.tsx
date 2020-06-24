@@ -55,7 +55,7 @@ export interface TreeProps extends AccordionProps {
    */
   detailHoverDisclosure?: boolean
   /**
-   * If true, clicking on the detail element will not trigger the Tree's other click handlers
+   * If true, the detail elements of child TreeItems will appear outside of the grey background on hover
    * @default false
    */
   detailAccessory?: boolean

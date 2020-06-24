@@ -49,8 +49,7 @@ export interface TreeItemProps {
    */
   detail?: ReactNode
   /**
-   * If true, clicking on the detail element will not trigger the TreeItem's onClick
-   * and no hover background appearing behind the detail elements
+   * If true, the detail elements will appear outside of the TreeItem's grey background on hover
    * @default false
    */
   detailAccessory?: boolean
@@ -93,6 +92,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
+      event.stopPropagation()
       return
     }
 
@@ -101,6 +101,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
+      event.stopPropagation()
       return
     }
 
