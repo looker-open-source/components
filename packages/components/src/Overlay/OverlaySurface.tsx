@@ -78,13 +78,7 @@ export const OverlaySurface = forwardRef(
     const { closeModal } = useContext(DialogContext)
 
     return (
-      <Outer
-        ref={ref}
-        style={style}
-        {...eventHandlers}
-        tabIndex={-1}
-        data-placement={placement}
-      >
+      <Outer ref={ref} style={style} {...eventHandlers} tabIndex={-1}>
         <HotKeys
           className="hotkeys"
           keyMap={{
