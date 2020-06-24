@@ -33,7 +33,7 @@
     "react-transition-group": "^4.3.0",
     "resize-observer-polyfill": "^1.5.1",
     "styled-system": "^5.1.5",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.8.7",
