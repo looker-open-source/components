@@ -89,9 +89,7 @@ export const OverlaySurface = forwardRef(
             },
           }}
           handlers={{
-            CLOSE_MODAL: () => {
-              closeModal && closeModal()
-            },
+            CLOSE_MODAL: () => closeModal(),
           }}
         >
           <Inner {...innerProps}>

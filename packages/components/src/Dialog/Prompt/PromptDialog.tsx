@@ -66,7 +66,7 @@ export interface PromptBaseProps {
    */
   inputLabel: string
   /**
-   * Title of the modal
+   * Title of the dialog
    */
   title: string
   /**
@@ -78,7 +78,7 @@ export interface PromptBaseProps {
    */
   saveLabel?: string
   /**
-   * A React Element that is placed at the bottom left of the modal
+   * A React Element that is placed at the bottom left of the dialog
    */
   secondary?: ReactNode
 }

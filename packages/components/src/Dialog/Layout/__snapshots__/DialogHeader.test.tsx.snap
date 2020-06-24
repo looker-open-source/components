@@ -84,7 +84,7 @@ exports[`DialogHeader 1`] = `
   -ms-flex-align: center;
   align-items: center;
   display: grid;
-  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+  grid-template-columns: [text] 1fr [close] auto;
 }
 
 .c5 {
@@ -139,6 +139,7 @@ exports[`DialogHeader 1`] = `
     className="c2 c3 c4"
     color="neutral"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyUp={[Function]}
     onMouseOut={[Function]}

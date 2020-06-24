@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Tabs evenly distribute their width based on the amount of space
+- Deprecate use of `Modal` term throughout code base
 - `ModalPortal` is now `Portal`
 - `Modal*` has moved to `Dialog*`
   - `ModalContext` is now `DialogContext`
@@ -52,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `ModalHeader` no longer supports `headerIcon`
 - `Drawer` no longer available
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
 - `CustomizableAttributes` are no longer supported
