@@ -47,10 +47,6 @@ test('InputText default', () => {
   assertSnapshot(<InputText />)
 })
 
-test('InputText autoResize', () => {
-  assertSnapshot(<InputText autoResize />)
-})
-
 test('InputText with name and id', () => {
   assertSnapshot(<InputText name="Bob" id="Bobby" />)
 })
@@ -77,6 +73,11 @@ test('InputText with a value', () => {
 
 test('InputText with aria-describedby', () => {
   assertSnapshot(<InputText aria-describedby="some-id" />)
+})
+
+test('InputText autoResize', () => {
+  const { container } = renderWithTheme(<InputText autoResize />)
+  expect(container.firstChild).toHaveStyle('width: auto')
 })
 
 test('InputText with an error validation', () => {

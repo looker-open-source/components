@@ -38,9 +38,11 @@ test('A FieldSelect', () => {
 })
 
 test('A FieldSelect with autoResize', () => {
-  assertSnapshot(
-    <FieldSelect label="👍" name="thumbsUp" id="thumbs-up" autoResize />
+  const { getAllByLabelText } = renderWithTheme(
+    <FieldSelect label="Auto resize" autoResize />
   )
+  // Both the div[role="combobox"] and the input share the label
+  expect(getAllByLabelText('Auto resize')[0]).toHaveStyle('width: auto')
 })
 
 test('Should accept a value', () => {
