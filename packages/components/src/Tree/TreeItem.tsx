@@ -76,50 +76,36 @@ export interface TreeItemProps {
   className?: string
 }
 
-const TreeItemLayout: FC<TreeItemProps> = (props) => {
+const TreeItemLayout: FC<TreeItemProps> = ({ onClick, ...props }) => {
   const { detailAccessory, detailHoverDisclosure } = useContext(TreeContext)
+  const treeItemRef = useRef<HTMLDivElement>(null)
+  const detailRef = useRef<HTMLDivElement>(null)
+  const [isTreeItemHovered] = useHovered(treeItemRef)
 
-  const stopDetailEventPropagation = (
-    event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
-  ) => {
-    const isDetailAccessoryEnabled =
-      props.detailAccessory !== undefined
-        ? props.detailAccessory
-        : detailAccessory
-
-    isDetailAccessoryEnabled && event.stopPropagation()
-  }
-
-  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
-    stopDetailEventPropagation(event)
-  }
-
-  const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    stopDetailEventPropagation(event)
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    if (detailRef.current && detailRef.current.contains(event.target as Node))
+      return
+    onClick && onClick()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.keyCode === 13) {
+    if (
+      event.keyCode === 13 &&
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node)
+    ) {
       event.currentTarget.click()
     }
   }
 
   const defaultIconSize = 12
 
-  const treeItemRef = useRef<HTMLDivElement>(null)
-  const [isTreeItemHovered] = useHovered(treeItemRef)
-
   const detail = props.detail &&
     ((props.detailHoverDisclosure !== undefined
       ? !props.detailHoverDisclosure
       : !detailHoverDisclosure) ||
       isTreeItemHovered) && (
-      <TreeItemDetail
-        onClick={handleDetailClick}
-        onKeyDown={handleDetailKeyDown}
-      >
-        {props.detail}
-      </TreeItemDetail>
+      <TreeItemDetail ref={detailRef}>{props.detail}</TreeItemDetail>
     )
 
   const isDetailAccessoryEnabled =
@@ -131,10 +117,10 @@ const TreeItemLayout: FC<TreeItemProps> = (props) => {
     <Space
       className={props.className}
       gap="none"
-      onClick={props.onClick}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       ref={treeItemRef}
-      tabIndex={props.onClick ? 0 : -1}
+      tabIndex={onClick ? 0 : -1}
     >
       <TreeItemLabel
         gap={props.gapSize || 'xxsmall'}

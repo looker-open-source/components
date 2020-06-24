@@ -114,18 +114,6 @@ export const FileSelectorClosed = () => (
 const fieldDetailButtons = (
   <>
     <IconButton icon="Sync" label="Pivot" onClick={() => alert('Pivot')} />
-    <div
-      tabIndex={0}
-      onClick={() => alert('EJFNWOEFS')}
-      onKeyDown={(event) =>
-        event.keyCode === 13 &&
-        alert(
-          'Not Button, so does not fire onClick and onKeyDown events on Enter press'
-        )
-      }
-    >
-      Not Button
-    </div>
     <IconButton icon="Filter" label="Filter" onClick={() => alert('Filter')} />
     <IconButton
       icon="CircleInfoOutline"
