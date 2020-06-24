@@ -30,14 +30,9 @@ import {
   ActionListItemColumn,
   Icon,
   Link,
-  InputTextProps,
 } from '@looker/components'
 import { data } from './data'
 import { Actions } from './actions'
-
-interface HeadingInputProps extends Omit<InputTextProps, 'type' | 'value'> {
-  value?: string
-}
 
 export const items = data.map(
   ({
