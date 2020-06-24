@@ -44,7 +44,7 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   /**
    * Sets the correct accessible role for the MenuItem:
    * - Use **'link'** for items that navigation to another page
-   * - Use **'button'** for items that trigger in page interactions, like displaying a modal
+   * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
    * @default 'button'
    *
    */

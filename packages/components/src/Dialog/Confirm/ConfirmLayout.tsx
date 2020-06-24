@@ -25,7 +25,6 @@
  */
 import React, { FC, ReactElement } from 'react'
 import { ButtonProps } from '../../Button'
-import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
 import { DialogContent, DialogFooter, DialogHeader } from '../Layout'
 
@@ -34,12 +33,9 @@ interface ConfirmLayoutProps {
    * Header content
    */
   title: string
+
   /**
-   * Optional icon to display next to the title
-   */
-  titleIcon?: ReactElement<IconProps>
-  /**
-   * Primary modal content
+   * Primary dialog content
    */
   message: ReactElement | string
   /**
@@ -57,13 +53,10 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
   primaryButton,
   message,
   title,
-  titleIcon = undefined,
 }) => {
   return (
     <>
-      <DialogHeader hideClose headerIcon={titleIcon}>
-        {title}
-      </DialogHeader>
+      <DialogHeader hideClose>{title}</DialogHeader>
       <DialogContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
           <Paragraph breakword>{message}</Paragraph>

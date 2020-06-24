@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useContext, ReactElement } from 'react'
+import React, { FC, useContext } from 'react'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import {
@@ -34,8 +34,6 @@ import {
   space,
   reset,
 } from '@looker/design-tokens'
-
-import { Icon, IconProps } from '../../Icon'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
 import { DialogContext } from '../DialogContext'
@@ -53,17 +51,12 @@ export interface DialogHeaderProps
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
-  /**
-   * Render an icon next to the title text
-   */
-  headerIcon?: ReactElement<IconProps>
 }
 
 const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
   closeIcon = 'Close',
   hideClose,
-  headerIcon,
   ...props
 }) => {
   const { closeModal } = useContext(DialogContext)
@@ -71,7 +64,6 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
 
   return (
     <header {...omitStyledProps(props)}>
-      {headerIcon && <HeaderIconWrapper>{headerIcon}</HeaderIconWrapper>}
       <Heading
         as="h3"
         mr="xlarge"
@@ -102,7 +94,7 @@ export const DialogHeader = styled(DialogHeaderLayout)`
   ${space}
   align-items: center;
   display: grid;
-  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+  grid-template-columns: [text] 1fr [close] auto;
 `
 
 DialogHeader.defaultProps = {
@@ -110,14 +102,6 @@ DialogHeader.defaultProps = {
   pr: 'medium',
   px: 'xlarge',
 }
-
-const HeaderIconWrapper = styled.div`
-  grid-area: icon;
-  padding-right: 0.5rem;
-  ${Icon} {
-    display: block;
-  }
-`
 
 /**
  * Legacy fallback until all existing call sites are updated

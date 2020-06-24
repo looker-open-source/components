@@ -317,14 +317,6 @@ export function SelectContent() {
   )
 }
 
-const ModalInner = () => {
-  return (
-    <DialogContent>
-      <SelectContent />
-    </DialogContent>
-  )
-}
-
 export const SelectDemo = () => {
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
@@ -332,7 +324,9 @@ export const SelectDemo = () => {
   return (
     <>
       <Dialog isOpen={isOpen} onClose={handleClose}>
-        <ModalInner />
+        <DialogContent>
+          <SelectContent />
+        </DialogContent>
       </Dialog>
       <Button onClick={handleClick} m="large">
         Open
