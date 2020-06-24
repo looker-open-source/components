@@ -89,9 +89,7 @@ export const OverlaySurface = forwardRef(
             },
           }}
           handlers={{
-            CLOSE_MODAL: () => {
-              closeModal && closeModal()
-            },
+            CLOSE_MODAL: () => closeModal(),
           }}
         >
           <Inner {...innerProps}>
@@ -116,6 +114,7 @@ const Outer = styled.div<{ zIndex?: number }>`
   ${reset}
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
+  padding: ${({ theme }) => theme.space.xsmall};
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 
   &:focus {

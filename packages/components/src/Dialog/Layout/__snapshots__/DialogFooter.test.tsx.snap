@@ -133,7 +133,9 @@ exports[`DialogFooter with DialogContext 1`] = `
     className="c1"
     width="100%"
   >
-    <button>
+    <button
+      onClick={[Function]}
+    >
       Cancel
     </button>
     <button

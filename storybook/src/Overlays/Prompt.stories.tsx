@@ -66,7 +66,7 @@ export const Basic: FC = () => {
 }
 
 export const Hook = () => {
-  const [modal, openModal] = usePrompt({
+  const [prompt, open] = usePrompt({
     inputLabel: 'Name of Cheese',
     onSave: (value: string) => alert(`You chose ${value}`),
     saveLabel: 'Save',
@@ -75,8 +75,8 @@ export const Hook = () => {
 
   return (
     <>
-      {modal}
-      <Button onClick={openModal}>usePrompt</Button>
+      {prompt}
+      <Button onClick={open}>usePrompt</Button>
     </>
   )
 }

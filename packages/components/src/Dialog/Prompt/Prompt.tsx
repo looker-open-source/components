@@ -44,12 +44,12 @@ export function usePrompt(props: PromptBaseProps): [ReactNode, () => void] {
 }
 
 export const Prompt: FC<PromptProps> = ({ children, ...props }) => {
-  const [promptModal, openPromptModal] = usePrompt(props)
+  const [dialog, open] = usePrompt(props)
 
   return (
     <>
-      {children(openPromptModal)}
-      {promptModal}
+      {children(open)}
+      {dialog}
     </>
   )
 }

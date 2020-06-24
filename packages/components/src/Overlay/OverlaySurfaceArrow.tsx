@@ -63,28 +63,28 @@ export const OverlaySurfaceArrow = styled.div.attrs(
   }
 
   &[data-placement*='top'] {
-    bottom: -0.25rem;
+    bottom: ${({ theme: { space } }) => space.xxsmall};
     &::before {
       transform: rotate(45deg);
     }
   }
 
   &[data-placement*='right'] {
-    left: -0.25rem;
+    left: ${({ theme: { space } }) => space.xxsmall};
     &::before {
       transform: rotate(135deg);
     }
   }
 
   &[data-placement*='bottom'] {
-    top: -0.25rem;
+    top: ${({ theme: { space } }) => space.xxsmall};
     &::before {
       transform: rotate(225deg);
     }
   }
 
   &[data-placement*='left'] {
-    right: -0.25rem;
+    right: ${({ theme: { space } }) => space.xxsmall};
     &::before {
       transform: rotate(315deg);
     }

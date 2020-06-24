@@ -45,7 +45,7 @@ export const All = () => (
 
 export default {
   component: All,
-  title: 'Overlays/Dialog/MaxWidth',
+  title: 'Dialog/MaxWidth',
 }
 
 export const DialogFixedWidth = () => {
@@ -103,9 +103,7 @@ export const DialogManagerWidth = () => {
       }
       maxWidth="200px"
     >
-      {(open) => (
-        <Button onClick={open}>Open static width DialogManager</Button>
-      )}
+      <Button>Open static width DialogManager</Button>
     </DialogManager>
   )
 }
