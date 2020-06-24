@@ -32,6 +32,8 @@ import {
   Tree,
   TreeItem,
   TreeGroup,
+  Space,
+  HoverDisclosure,
 } from '@looker/components'
 
 export const All = () => (
@@ -113,7 +115,6 @@ export const FileSelectorClosed = () => (
 
 const fieldDetailButtons = (
   <>
-    <IconButton icon="Sync" label="Pivot" onClick={() => alert('Pivot')} />
     <IconButton icon="Filter" label="Filter" onClick={() => alert('Filter')} />
     <IconButton
       icon="CircleInfoOutline"
@@ -129,23 +130,33 @@ const fieldDetailButtons = (
 )
 
 export const FieldPicker = () => (
-  <Tree defaultOpen detail={addButton} detailAccessory label="Custom Fields">
+  <Tree defaultOpen detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory={false}
+        detailAccessory
         detailHoverDisclosure
         icon="FieldNumber"
         onClick={() => alert('Clicked on Cost!')}
       >
-        Cost
+        <Space between px="xxsmall">
+          <span>Cost</span>
+          <HoverDisclosure>
+            <IconButton
+              icon="Sync"
+              label="Pivot"
+              color="key"
+              onClick={() => alert('Pivot')}
+              style={{
+                background: '#fff',
+                height: '18px',
+              }}
+            />
+          </HoverDisclosure>
+        </Space>
       </TreeItem>
       <Tree label="Created">
-        <TreeItem
-          detail={fieldDetailButtons}
-          detailHoverDisclosure
-          icon="Calendar"
-        >
+        <TreeItem detail={fieldDetailButtons} icon="Calendar">
           Created Date
         </TreeItem>
         <TreeItem
@@ -172,9 +183,9 @@ export const FieldPicker = () => (
       </Tree>
       <TreeItem
         detail={fieldDetailButtons}
-        detailHoverDisclosure
         icon="FieldDistance"
         onClick={() => alert('Clicked on Location!')}
+        detailHoverDisclosure={false}
       >
         Location
       </TreeItem>

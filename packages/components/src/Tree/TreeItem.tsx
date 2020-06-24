@@ -37,6 +37,10 @@ import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
+import {
+  HoverDisclosureContext,
+  HoverDisclosure,
+} from '../utils/HoverDisclosure'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps {
@@ -76,11 +80,16 @@ export interface TreeItemProps {
   className?: string
 }
 
-const TreeItemLayout: FC<TreeItemProps> = ({ onClick, ...props }) => {
-  const { detailAccessory, detailHoverDisclosure } = useContext(TreeContext)
+const TreeItemLayout: FC<TreeItemProps> = ({
+  onClick,
+  gapSize = 'xxsmall',
+  selected,
+  ...props
+}) => {
+  const treeContext = useContext(TreeContext)
   const treeItemRef = useRef<HTMLDivElement>(null)
   const detailRef = useRef<HTMLDivElement>(null)
-  const [isTreeItemHovered] = useHovered(treeItemRef)
+  const [isHovered] = useHovered(treeItemRef)
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node))
@@ -89,50 +98,48 @@ const TreeItemLayout: FC<TreeItemProps> = ({ onClick, ...props }) => {
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (
-      event.keyCode === 13 &&
-      detailRef.current &&
-      detailRef.current.contains(event.target as Node)
-    ) {
+    if (detailRef.current && detailRef.current.contains(event.target as Node))
+      return
+    if (event.keyCode === 13) {
       event.currentTarget.click()
     }
   }
-
   const defaultIconSize = 12
 
-  const detail = props.detail &&
-    ((props.detailHoverDisclosure !== undefined
-      ? !props.detailHoverDisclosure
-      : !detailHoverDisclosure) ||
-      isTreeItemHovered) && (
-      <TreeItemDetail ref={detailRef}>{props.detail}</TreeItemDetail>
-    )
+  const detailAccessory =
+    props.detailHoverDisclosure !== undefined
+      ? !props.detailAccessory
+      : !treeContext.detailAccessory
 
-  const isDetailAccessoryEnabled =
-    props.detailAccessory !== undefined
-      ? props.detailAccessory
-      : detailAccessory
+  const detailHoverDisclosure =
+    props.detailHoverDisclosure !== undefined
+      ? props.detailHoverDisclosure
+      : treeContext.detailHoverDisclosure
+
+  const detail = (
+    <HoverDisclosure visible={!detailHoverDisclosure}>
+      <TreeItemDetail ref={detailRef}>{props.detail}</TreeItemDetail>
+    </HoverDisclosure>
+  )
 
   return (
-    <Space
-      className={props.className}
-      gap="none"
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      ref={treeItemRef}
-      tabIndex={onClick ? 0 : -1}
-    >
-      <TreeItemLabel
-        gap={props.gapSize || 'xxsmall'}
-        hovered={isTreeItemHovered}
-        selected={props.selected}
+    <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
+      <Space
+        className={props.className}
+        gap="none"
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        ref={treeItemRef}
+        tabIndex={onClick ? 0 : -1}
       >
-        {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
-        <FlexItem flex="1">{props.children}</FlexItem>
-        {!isDetailAccessoryEnabled && detail}
-      </TreeItemLabel>
-      {isDetailAccessoryEnabled && detail}
-    </Space>
+        <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
+          {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
+          <FlexItem flex="1">{props.children}</FlexItem>
+          {!detailAccessory && detail}
+        </TreeItemLabel>
+        {detailAccessory && detail}
+      </Space>
+    </HoverDisclosureContext.Provider>
   )
 }
 
