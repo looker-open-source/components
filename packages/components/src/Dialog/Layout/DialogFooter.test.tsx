@@ -47,7 +47,7 @@ test('DialogFooter with DialogContext', () => {
           <button
             onClick={() => {
               alert('Doing things...')
-              close()
+              closeModal()
             }}
           >
             Yes, Delete "Stuff"

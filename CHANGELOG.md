@@ -48,10 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-<<<<<<< HEAD
-
-- # `ModalHeader` no longer supports `headerIcon`
-  > > > > > > > master
+- `ModalHeader` no longer supports `headerIcon`
 - `Drawer` no longer available
 - `ComboboxMultiOption` prop `hideCheckMark` (instead use `indicator={false}`)
 - `CustomizableAttributes` are no longer supported
