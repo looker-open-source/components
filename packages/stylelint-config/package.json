@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/looker-open-source/components.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.9.0",
   "files": [
     "index.js"
@@ -25,5 +28,6 @@
   },
   "resolutions": {
     "minimist": ">=1.2.2"
-  }
+  },
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }
