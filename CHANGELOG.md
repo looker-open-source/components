@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Major CSS linting clean-up
 - `CheckboxGroup` & `RadioGroup` options now properly wrap when the exceed the container width
 - `Select` & `SelectMulti` option group label alignment
+- `Tooltip` closing when mouse moves from trigger element to tooltip
 
 ### Removed
 

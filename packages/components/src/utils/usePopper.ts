@@ -107,13 +107,6 @@ export function usePopper({
               padding: 8,
             },
           },
-          {
-            name: 'offset',
-            options: {
-              // 8px away from anchor element
-              offset: [0, 8],
-            },
-          },
         ]),
         strategy: 'fixed',
       }),
