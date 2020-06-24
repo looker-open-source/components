@@ -129,65 +129,78 @@ const fieldDetailButtons = (
   </>
 )
 
+const FieldLabel = ({ label }: { label: string }) => {
+  return (
+    <Space between px="xxsmall">
+      <span>{label}</span>
+      <HoverDisclosure>
+        <IconButton
+          icon="Sync"
+          label="Pivot"
+          color="key"
+          onClick={(event) => {
+            event.stopPropagation()
+            alert('Pivot')
+          }}
+          onKeyDown={(event) => {
+            event.stopPropagation()
+          }}
+          style={{
+            background: '#fff',
+            height: '18px',
+          }}
+        />
+      </HoverDisclosure>
+    </Space>
+  )
+}
+
 export const FieldPicker = () => (
-  <Tree defaultOpen detail={addButton} label="Custom Fields">
+  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <TreeItem
         detail={fieldDetailButtons}
-        detailAccessory
         detailHoverDisclosure
         icon="FieldNumber"
-        onClick={() => alert('Clicked on Cost!')}
+        onClick={() => {
+          alert('Clicked on Cost!')
+        }}
       >
-        <Space between px="xxsmall">
-          <span>Cost</span>
-          <HoverDisclosure>
-            <IconButton
-              icon="Sync"
-              label="Pivot"
-              color="key"
-              onClick={() => alert('Pivot')}
-              style={{
-                background: '#fff',
-                height: '18px',
-              }}
-            />
-          </HoverDisclosure>
-        </Space>
+        <FieldLabel label="Cost" />
       </TreeItem>
       <Tree label="Created">
         <TreeItem detail={fieldDetailButtons} icon="Calendar">
-          Created Date
+          <FieldLabel label="Created Date" />
         </TreeItem>
         <TreeItem
           detail={fieldDetailButtons}
           detailHoverDisclosure
           icon="Calendar"
         >
-          Created Month
+          <FieldLabel label="Created Month" />
         </TreeItem>
         <TreeItem
           detail={fieldDetailButtons}
           detailHoverDisclosure
           icon="Calendar"
         >
-          Created Year
+          <FieldLabel label="Created Year" />
         </TreeItem>
         <TreeItem
           detail={fieldDetailButtons}
           detailHoverDisclosure
           icon="Calendar"
         >
-          Created Quarter
+          <FieldLabel label="Created Quarter" />
         </TreeItem>
       </Tree>
       <TreeItem
         detail={fieldDetailButtons}
         icon="FieldDistance"
         onClick={() => alert('Clicked on Location!')}
-        detailHoverDisclosure={false}
+        detailHoverDisclosure
       >
-        Location
+        <FieldLabel label="Location" />
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
@@ -195,15 +208,15 @@ export const FieldPicker = () => (
         icon="FieldTier"
         onClick={() => alert('Clicked on Tier!')}
       >
-        Tier
+        <FieldLabel label="Tier" />
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
         detailHoverDisclosure
         icon="FieldYesNo"
-        onClick={() => alert('Clicked on French Yes-No!')}
+        onClick={() => alert('Clicked on Yes No!')}
       >
-        Oui ou Non
+        <FieldLabel label="Yes No" />
       </TreeItem>
     </TreeGroup>
     <TreeGroup color="warn" label="MEASURES">
@@ -213,7 +226,7 @@ export const FieldPicker = () => (
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count!')}
       >
-        Count
+        <FieldLabel label="Count" />
       </TreeItem>
       <TreeItem
         detail={fieldDetailButtons}
@@ -221,7 +234,7 @@ export const FieldPicker = () => (
         icon="FieldNumber"
         onClick={() => alert('Clicked on Count Distinct!')}
       >
-        Count Distinct
+        <FieldLabel label="Count Distinct" />
       </TreeItem>
     </TreeGroup>
   </Tree>

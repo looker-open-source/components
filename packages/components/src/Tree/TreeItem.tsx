@@ -92,14 +92,18 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(treeItemRef)
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node))
+    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
       return
+    }
+
     onClick && onClick()
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node))
+    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
       return
+    }
+
     if (event.keyCode === 13) {
       event.currentTarget.click()
     }
@@ -107,9 +111,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const defaultIconSize = 12
 
   const detailAccessory =
-    props.detailHoverDisclosure !== undefined
-      ? !props.detailAccessory
-      : !treeContext.detailAccessory
+    props.detailAccessory !== undefined
+      ? props.detailAccessory
+      : treeContext.detailAccessory
 
   const detailHoverDisclosure =
     props.detailHoverDisclosure !== undefined
