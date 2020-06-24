@@ -196,7 +196,7 @@ export const FieldPicker = () => (
       </Tree>
       <TreeItem
         detail={fieldDetailButtons}
-        icon="FieldDistance"
+        icon="FieldLocation"
         onClick={() => alert('Clicked on Location!')}
         detailHoverDisclosure
       >

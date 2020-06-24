@@ -86,9 +86,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   ...props
 }) => {
   const treeContext = useContext(TreeContext)
-  const treeItemRef = useRef<HTMLDivElement>(null)
+  const itemRef = useRef<HTMLDivElement>(null)
   const detailRef = useRef<HTMLDivElement>(null)
-  const [isHovered] = useHovered(treeItemRef)
+  const [isHovered] = useHovered(itemRef)
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
@@ -134,7 +134,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         gap="none"
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        ref={treeItemRef}
+        ref={itemRef}
         tabIndex={onClick ? 0 : -1}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
