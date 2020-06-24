@@ -30,8 +30,6 @@ import React, {
   FC,
   isValidElement,
   ReactNode,
-  Ref,
-  useRef,
   useState,
 } from 'react'
 import { Dialog, DialogProps } from './Dialog'
@@ -39,7 +37,6 @@ import { Dialog, DialogProps } from './Dialog'
 type DialogRenderProp = (dialogProps: {
   onClick: () => void
   className?: string
-  ref: Ref<any>
   role?: string
   'aria-expanded'?: boolean
 }) => ReactNode
@@ -72,8 +69,6 @@ export const DialogManager: FC<DialogManagerProps> = ({
   onClose,
   ...props
 }) => {
-  const triggerRef = useRef()
-
   const [isOpen, setOpen] = useState(props.isOpen || false)
   const open = () => setOpen(true)
   const close = () => {
@@ -86,7 +81,6 @@ export const DialogManager: FC<DialogManagerProps> = ({
     'aria-expanded': isOpen,
     className: isOpen ? 'active' : '',
     onClick: open,
-    ref: triggerRef,
     role: 'button',
   }
 

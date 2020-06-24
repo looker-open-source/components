@@ -43,10 +43,6 @@ const simpleContent = (
 )
 
 describe('Dialog', () => {
-  test('Inactive', () => {
-    assertSnapshotShallow(<Dialog>{simpleContent}</Dialog>)
-  })
-
   test('Active', () => {
     assertSnapshotShallow(<Dialog isOpen>{simpleContent}</Dialog>)
   })
@@ -86,21 +82,7 @@ describe('Dialog', () => {
   })
 })
 
-const content = (
-  <>
-    words and stuff <button>Hello</button>
-  </>
-)
-
 describe('DialogManager - click events', () => {
-  test('inactive', () => {
-    assertSnapshotShallow(
-      <DialogManager content={content}>
-        {(props) => <a {...props}>🥑</a>}
-      </DialogManager>
-    )
-  })
-
   test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
     const dialog = mountWithTheme(
       <DialogManager content={simpleContent}>

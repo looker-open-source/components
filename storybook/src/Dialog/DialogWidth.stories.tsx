@@ -103,9 +103,7 @@ export const DialogManagerWidth = () => {
       }
       maxWidth="200px"
     >
-      {(open) => (
-        <Button onClick={open}>Open static width DialogManager</Button>
-      )}
+      <Button>Open static width DialogManager</Button>
     </DialogManager>
   )
 }

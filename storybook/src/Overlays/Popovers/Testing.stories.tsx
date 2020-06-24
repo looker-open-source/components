@@ -156,11 +156,9 @@ export const MenuOpenDialog = () => {
             </DialogContent>
           }
         >
-          {(onClick) => (
-            <MenuList>
-              <MenuItem onClick={onClick}>Open Dialog</MenuItem>
-            </MenuList>
-          )}
+          <MenuList>
+            <MenuItem>Open Dialog</MenuItem>
+          </MenuList>
         </DialogManager>
       </Menu>
     </Box>
