@@ -41,6 +41,7 @@ import {
   Paragraph,
   Popover,
   PopoverContent,
+  Select,
   usePopover,
   useToggle,
 } from '@looker/components'
@@ -133,9 +134,16 @@ export const PopoverFocusTrap = () => {
 }
 
 export const MenuOpenDialog = () => {
-  function openAlert() {
-    alert(`It's working!`)
+  const { value, toggle } = useToggle(true)
+  function togglePopovers() {
+    toggle()
   }
+  useEffect(() => {
+    const int = window.setInterval(() => toggle(), 2000)
+    return () => {
+      window.clearInterval(int)
+    }
+  }, [toggle])
   return (
     <Box mt="large">
       <Heading>Menu Opening Dialog</Heading>
@@ -149,7 +157,8 @@ export const MenuOpenDialog = () => {
           content={
             <DialogContent>
               <Paragraph>Some content inside the Dialog</Paragraph>
-              <Button onClick={openAlert}>Open Alert</Button>
+              <Button onClick={togglePopovers}>Open Alert</Button>
+              {value && <Placement />}
             </DialogContent>
           }
         >
@@ -158,6 +167,17 @@ export const MenuOpenDialog = () => {
           </MenuList>
         </DialogManager>
       </Menu>
+      <DialogManager
+        content={
+          <DialogContent>
+            <Paragraph>Some content inside the Dialog</Paragraph>
+            <Button onClick={togglePopovers}>Open Alert</Button>
+            {value && <Placement />}
+          </DialogContent>
+        }
+      >
+        {(onClick) => <Button onClick={onClick}>Open Modal</Button>}
+      </DialogManager>
     </Box>
   )
 }
@@ -186,6 +206,9 @@ export const Placement = () => {
     <PopoverContent>
       <Paragraph width={300} p="xxlarge">
         👋 Hello, I am a popover!
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Select options={[{ value: 'Apples' }, { value: 'Oranges' }]} />
       </Paragraph>
     </PopoverContent>
   )
@@ -198,8 +221,8 @@ export const Placement = () => {
           <Button>Default</Button>
         </Popover>
 
-        <Popover content={popoverContent}>
-          <Button>Default</Button>
+        <Popover placement="top" content={popoverContent}>
+          <Button>Top</Button>
         </Popover>
       </Box>
     </Box>
