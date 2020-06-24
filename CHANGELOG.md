@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Badge` now uses generated colors rather than referencing colors.palette
-- `Dialog` now supports a non render-props style interface
+- `DialogManager` now supports a non render-props style interface
 - `IconButton` improved hover/active states and no background on hover
 - `InputText` interface simplified / narrowed
   - No longer supports typography or pseudo props
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Additionally the render prop style now exposes `aria-haspopup` for use
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
-- Icons: `FieldLoction`, `FieldString`, `FieldDuration` artwork update
+- Icons: `FieldLocation`, `FieldString`, `FieldDuration` artwork update
 
 - Deprecate use of `Modal` term throughout code base
 - `ModalPortal` is now `Portal`
