@@ -163,6 +163,7 @@ exports[`A FieldSelect 1`] = `
 .c0 .c13 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
 }
 
 .c0 .c12 {
@@ -341,13 +342,13 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   border-color: #ED3B53;
 }
 
-.c6 .c15 {
+.c6 .c16 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c6 .c15 span {
+.c6 .c16 span {
   padding: 0 0.5rem;
 }
 
@@ -459,12 +460,46 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c16 {
+.c0 .c17 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
 }
 
 .c0 .c13 {
+  margin-top: 0.5rem;
+}
+
+.c15 .c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  grid-area: input;
+}
+
+.c15 .c12 {
+  grid-area: messages;
+}
+
+.c15 > .c1 {
+  grid-area: label;
+  line-height: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.c15 .c13 {
   margin-top: 0.5rem;
 }
 

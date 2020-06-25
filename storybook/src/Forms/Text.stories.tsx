@@ -30,6 +30,8 @@ import {
   Fieldset,
   FieldRadio,
   FieldToggleSwitch,
+  InputText,
+  Space,
 } from '@looker/components'
 
 export const All = () => (
@@ -48,6 +50,7 @@ export const All = () => (
     <IconBefore />
     <IconAfter />
     <Toggles />
+    <AutoResize />
   </Fieldset>
 )
 
@@ -64,7 +67,9 @@ export const Description = () => (
     description="Some important information about this field"
   />
 )
-export const Inline = () => <FieldText label="Text Input" inline />
+export const Inline = () => (
+  <FieldText label="Text Input" inline detail="Detail inline looks like this" />
+)
 export const Disabled = () => <FieldText label="Text Input" disabled />
 export const Required = () => <FieldText label="Text Input" required />
 export const Placeholder = () => (
@@ -110,3 +115,24 @@ export const Toggles = () => (
     <FieldToggleSwitch required label="Toggle Switch" />
   </>
 )
+
+export function AutoResize() {
+  return (
+    <Space alignItems="flex-end">
+      <InputText autoResize placeholder="Start typing to resize me" />
+      <FieldText
+        label="I also resize"
+        autoResize
+        defaultValue="Some default text"
+        detail="Detail lines up"
+      />
+      <FieldText
+        label="Inline autoResize"
+        inline
+        autoResize
+        defaultValue="Some default text"
+        detail="Detail text"
+      />
+    </Space>
+  )
+}

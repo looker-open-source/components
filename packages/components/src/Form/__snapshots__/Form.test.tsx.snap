@@ -146,6 +146,7 @@ exports[`Form with one child 1`] = `
 .c1 .c9 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
 }
 
 .c1 .c8 {

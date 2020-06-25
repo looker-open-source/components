@@ -131,6 +131,7 @@ exports[`A FieldText with default label 1`] = `
 .c0 .c8 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
 }
 
 .c0 .c7 {
@@ -321,10 +322,10 @@ exports[`A FieldText with label inline 1`] = `
 .c0 .c9 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  padding-left: 0.75rem;
 }
 
 .c0 .c8 {

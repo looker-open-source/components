@@ -183,6 +183,7 @@ exports[`Fieldset 1`] = `
 .c4 .c14 {
   grid-area: detail;
   justify-self: end;
+  padding-left: 0.75rem;
 }
 
 .c4 .c13 {

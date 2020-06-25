@@ -81,7 +81,13 @@ export const fieldPropKeys = [
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
-  pick(props, [...fieldPropKeys, 'disabled', 'required', 'className'])
+  pick(props, [
+    ...fieldPropKeys,
+    'disabled',
+    'required',
+    'className',
+    'autoResize',
+  ])
 
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
@@ -168,7 +174,7 @@ const fieldLabelCSS = (inline?: boolean) =>
 export const Field = styled(FieldLayout)<FieldPropsInternal>`
   align-items: left;
 
-  display: grid;
+  display: ${({ autoResize }) => (autoResize ? 'inline-grid' : 'grid')};
   grid-template-areas: ${({ inline }) =>
     inline
       ? '"label input detail" ". messages messages"'
@@ -176,10 +182,18 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
   height: fit-content;
   justify-content: space-between;
-  width: ${({ width }) => width || 'fit-content'};
+  width: ${({ autoResize, width }) =>
+    width || autoResize ? 'fit-content' : '100%'};
 
   ${InputArea} {
     align-items: center;
+    ${({ autoResize }) =>
+      autoResize &&
+      css`
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+      `}
     grid-area: input;
   }
 
@@ -195,16 +209,16 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   ${FieldDetail} {
     grid-area: detail;
     justify-self: end;
+    padding-left: ${({ theme: { space } }) => space.small};
 
-    ${({ inline, theme }) =>
+    ${({ inline }) =>
       inline &&
-      ` align-self: center;
-        padding-left: ${theme.space.small}; `}
+      css`
+        align-self: center;
+      `}
   }
 
   ${ValidationMessage} {
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `
-
-Field.defaultProps = { width: '100%' }

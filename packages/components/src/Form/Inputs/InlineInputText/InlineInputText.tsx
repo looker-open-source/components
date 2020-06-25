@@ -50,13 +50,14 @@ const InlineInputTextLayout = forwardRef(
       className,
       onChange,
       value: valueProp,
+      defaultValue,
       placeholder,
       type = 'text',
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValueChange] = useState(valueProp || '')
+    const [value, setValueChange] = useState(valueProp || defaultValue || '')
 
     const displayValue = isFunction(onChange) ? valueProp : value
 
