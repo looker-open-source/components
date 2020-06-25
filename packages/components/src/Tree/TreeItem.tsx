@@ -41,6 +41,7 @@ import {
   HoverDisclosureContext,
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
+import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps {
@@ -111,15 +112,15 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   }
   const defaultIconSize = 12
 
-  const detailAccessory =
-    props.detailAccessory !== undefined
-      ? props.detailAccessory
-      : treeContext.detailAccessory
+  const detailAccessory = undefinedCoalesce([
+    props.detailAccessory,
+    treeContext.detailAccessory,
+  ])
 
-  const detailHoverDisclosure =
-    props.detailHoverDisclosure !== undefined
-      ? props.detailHoverDisclosure
-      : treeContext.detailHoverDisclosure
+  const detailHoverDisclosure = undefinedCoalesce([
+    props.detailHoverDisclosure,
+    treeContext.detailHoverDisclosure,
+  ])
 
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>

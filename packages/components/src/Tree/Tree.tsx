@@ -35,6 +35,7 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
+import { undefinedCoalesce } from '../utils'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
@@ -83,27 +84,34 @@ const indicatorProps: AccordionIndicatorProps = {
 }
 
 const TreeLayout: FC<TreeProps> = ({
-  border,
+  border: propsBorder,
   children,
   detail,
-  detailHoverDisclosure,
-  detailAccessory,
+  detailHoverDisclosure: propsDetailHoverDisclosure,
+  detailAccessory: propsDetailAccessory,
   fontWeight,
   icon,
   label,
   ...restProps
 }) => {
-  const context = useContext(TreeContext)
-  const hasBorder = context.border || border
-  const hasDetailHoverDisclosure =
-    context.detailHoverDisclosure || detailHoverDisclosure
-  const hasDetailAccessory = context.detailAccessory || detailAccessory
-  const depth = context.depth ? context.depth : 0
+  const treeContext = useContext(TreeContext)
+  const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const hasDetailHoverDisclosure = undefinedCoalesce([
+    propsDetailHoverDisclosure,
+    treeContext.detailHoverDisclosure,
+  ])
+  const hasDetailAccessory = undefinedCoalesce([
+    propsDetailAccessory,
+    treeContext.detailAccessory,
+  ])
+  const startingDepth = 0
+  const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const disclosure = (
     <TreeItem
       detail={detail}
-      detailAccessory={detailAccessory}
+      detailAccessory={hasDetailAccessory}
+      detailHoverDisclosure={hasDetailHoverDisclosure}
       gapSize="xsmall"
       icon={icon}
     >
