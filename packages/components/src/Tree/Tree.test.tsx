@@ -159,12 +159,7 @@ describe('Tree', () => {
     )
 
     expect(queryByText('Tree Detail')).not.toBeInTheDocument()
-    fireEvent(
-      getByText('Tree Label'),
-      new MouseEvent('mouseenter', {
-        bubbles: true,
-      })
-    )
+    fireEvent.mouseEnter(getByText('Tree Label'), { bubbles: true })
     getByText('Tree Detail')
   })
 })
