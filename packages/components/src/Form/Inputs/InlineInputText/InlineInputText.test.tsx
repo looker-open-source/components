@@ -24,7 +24,8 @@
 
  */
 
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import React from 'react'
 import { InlineInputText, InlineInputTextBase } from './InlineInputText'
 
@@ -41,5 +42,8 @@ test('InlineInputText renders an input with specific predefined value', () => {
 })
 
 test('InlineInputTextBase renders a subset of styles', () => {
-  assertSnapshot(<InlineInputTextBase />)
+  renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
+  expect(
+    screen.getByPlaceholderText('type here...').parentElement
+  ).not.toHaveStyle('border-bottom: 1px dashed')
 })
