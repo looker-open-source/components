@@ -126,7 +126,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <TreeItemDetail ref={detailRef}>{props.detail}</TreeItemDetail>
+      <TreeItemDetail detailAccessory={detailAccessory} ref={detailRef}>
+        {props.detail}
+      </TreeItemDetail>
     </HoverDisclosure>
   )
 
@@ -179,8 +181,10 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
-const TreeItemDetail = styled.div`
+const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   align-items: center;
   display: flex;
   height: 100%;
+  padding-right: ${({ detailAccessory, theme }) =>
+    detailAccessory && theme.space.xxsmall};
 `
