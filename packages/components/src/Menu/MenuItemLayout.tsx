@@ -123,4 +123,22 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   &[aria-current] {
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
+
+  &[disabled] {
+    color: ${({ theme: { colors } }) => colors.text5};
+
+    button,
+    a {
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background: ${({ theme: { colors } }) => colors.background};
+      color: ${({ theme: { colors } }) => colors.text5};
+
+      ${Icon} {
+        color: ${({ theme: { colors } }) => colors.text6};
+      }
+    }
+  }
 `
