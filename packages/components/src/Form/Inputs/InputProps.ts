@@ -37,8 +37,6 @@ export interface InputTextTypeProps {
    * @default 'text'
    */
   type?:
-    | 'date'
-    | 'datetime-local'
     | 'email'
     | 'month'
     | 'number'
@@ -46,7 +44,6 @@ export interface InputTextTypeProps {
     | 'search'
     | 'tel'
     | 'text'
-    | 'time'
     | 'url'
     | 'week'
 }
