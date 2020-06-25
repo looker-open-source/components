@@ -95,7 +95,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      treeContext.detailAccessory && event.stopPropagation()
+      event.stopPropagation()
       return
     }
 
@@ -104,7 +104,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      treeContext.detailAccessory && event.stopPropagation()
+      event.stopPropagation()
       return
     }
 
