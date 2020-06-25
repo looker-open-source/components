@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Changed
+
+- `Tree` and `TreeItem`
+  - Accept `detailAccessory` and `detailHoverDisclosure` props
+  - `TreeItem` styling moved from `Tree` into `TreeItem` itself
+  - `TreeItem` layout follows primary-secondary structure
+
 ## [0.9.0] - 2020-06-24
 
 ### Added
@@ -29,12 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TextArea` interface simplified / narrowed
   - No longer supports border or typography props
 - `IconButton` improved hover/active states and no background on hover
-- `Tree` and `TreeItem`
-  - Accept `detailAccessory` and `detailHoverDisclosure` props
-  - `TreeItem` styling moved from `Tree` into `TreeItem` itself
-  - `TreeItem` layout follows primary-secondary structure
 - Icons: `FieldLocation`, `FieldString`, `FieldDuration` artwork update
-
 - Deprecate use of `Modal` term throughout code base
 - `ModalPortal` is now `Portal`
 - `Modal*` has moved to `Dialog*`
