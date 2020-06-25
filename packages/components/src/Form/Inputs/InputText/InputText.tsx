@@ -39,6 +39,7 @@ import {
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
+import { hasRedundantProps } from '../../../utils/hasRedundantProps'
 import { InlineInputTextBase } from '../InlineInputText'
 
 export interface InputTextBaseProps
@@ -110,13 +111,13 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    if ((before && (iconBefore || prefix)) || (iconBefore && prefix)) {
+    if (hasRedundantProps(before, iconBefore, prefix)) {
       // eslint-disable-next-line no-console
       console.warn(`Use only one of before, iconBefore, or prefix.`)
       return null
     }
 
-    if ((after && (iconAfter || suffix)) || (iconAfter && suffix)) {
+    if (hasRedundantProps(after, iconAfter, suffix)) {
       // eslint-disable-next-line no-console
       console.warn(`Use only one of after, iconAfter, or suffix.`)
       return null
