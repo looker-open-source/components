@@ -118,7 +118,7 @@ const ButtonJSX = forwardRef(
       iconBefore,
       iconAfter,
       onBlur,
-      onKeyDown,
+      onKeyUp,
       ...restProps
     } = props
 
@@ -126,7 +126,7 @@ const ButtonJSX = forwardRef(
 
     const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       setFocusVisible(true)
-      onKeyDown && onKeyDown(event)
+      onKeyUp && onKeyUp(event)
     }
 
     const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {

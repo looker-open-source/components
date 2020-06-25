@@ -24,21 +24,17 @@
 
  */
 
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './i18n'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
+import React, { FC, useContext } from 'react'
+import { HoverDisclosureContext } from './HoverDisclosureContext'
+
+export interface HoverDisclosureProps {
+  visible?: boolean
+}
+
+export const HoverDisclosure: FC<HoverDisclosureProps> = ({
+  children,
+  visible,
+}) => {
+  const context = useContext(HoverDisclosureContext)
+  return visible || context.visible ? <>{children}</> : null
+}

@@ -35,23 +35,10 @@ describe('TreeItem', () => {
     getByText('Dimension')
   })
 
-  test('Triggers onClick on label click and detail click by default', () => {
+  test('Does not trigger onClick on detail click', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
       <TreeItem detail="Detail" onClick={onClick}>
-        Dimension
-      </TreeItem>
-    )
-    fireEvent.click(getByText('Dimension'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText('Detail'))
-    expect(onClick).toHaveBeenCalledTimes(2)
-  })
-
-  test('Does not trigger onClick on detail click when detailStopPropagation is true', () => {
-    const onClick = jest.fn()
-    const { getByText } = renderWithTheme(
-      <TreeItem detail="Detail" detailStopPropagation onClick={onClick}>
         Dimension
       </TreeItem>
     )
