@@ -469,11 +469,8 @@ const InputTimeInternal = forwardRef(
         onBlur={onBlur}
         aria-invalid={validationType === 'error' ? 'true' : undefined}
       >
-        <input
-          type="text"
+        <StyledInput
           id={id}
-          maxLength={2}
-          placeholder="--"
           value={hour}
           onKeyDown={readOnly ? noop : handleHourKeyDown}
           onFocus={handleHourFocus}
@@ -486,10 +483,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         <div>:</div>
-        <input
-          type="text"
-          maxLength={2}
-          placeholder="--"
+        <StyledInput
           value={minute}
           onKeyDown={readOnly ? noop : handleMinuteKeyDown}
           onFocus={handleMinuteFocus}
@@ -502,10 +496,7 @@ const InputTimeInternal = forwardRef(
           required={required}
         />
         {format === '12h' ? (
-          <input
-            type="text"
-            maxLength={2}
-            placeholder="--"
+          <StyledInput
             value={period}
             onKeyDown={readOnly ? noop : handlePeriodKeyDown}
             onFocus={handlePeriodFocus}
@@ -535,6 +526,24 @@ const InputTimeInternal = forwardRef(
 
 const WarningIcon = styled(Icon)``
 
+const StyledInput = styled.input.attrs({
+  maxLength: 2,
+  placeholder: '--',
+  type: 'text',
+})`
+  ${innerInputStyle}
+  font-size: ${(props) => props.theme.fontSizes.small};
+  height: 34px;
+  line-height: ${({ theme }) => theme.lineHeights.medium};
+  padding: 0;
+  text-align: center;
+  width: 1.25rem;
+
+  &:focus {
+    background: ${({ theme }) => theme.colors.keyAccent};
+  }
+`
+
 export const InputTime = styled(InputTimeInternal)`
   ${simpleLayoutCSS}
   ${inputCSS}
@@ -544,20 +553,6 @@ export const InputTime = styled(InputTimeInternal)`
   grid-gap: 0.15rem;
   grid-template-columns: auto auto auto auto 1fr;
   padding: 0 ${({ theme }) => theme.space.xsmall};
-
-  input {
-    ${innerInputStyle}
-    font-size: ${(props) => props.theme.fontSizes.small};
-    height: 34px;
-    line-height: ${({ theme }) => theme.lineHeights.medium};
-    padding: 0;
-    text-align: center;
-    width: 1.25rem;
-
-    &:focus-within {
-      background: ${({ theme }) => theme.colors.keyAccent};
-    }
-  }
 
   ${WarningIcon} {
     justify-self: end;
