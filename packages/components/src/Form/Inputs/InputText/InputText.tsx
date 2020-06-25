@@ -187,6 +187,7 @@ const InputTextLayout = forwardRef(
     const input = <input {...inputProps} ref={ref} />
 
     const inner = children ? (
+      // Support for rendering chips in InputChips and SelectMulti
       <div className="inner">
         {children}
         {input}
