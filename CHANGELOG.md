@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Fixed
+
 - `Popover` offset issue
+
+## [Unreleased]
+
+### Added
+
+- `Pivot` icon
 
 ## [0.9.1]- 2020-06-24
 
