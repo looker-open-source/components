@@ -47,6 +47,8 @@ import { TreeContext } from './TreeContext'
 export interface TreeItemProps {
   /**
    * Supplementary element that appears right of the TreeItem's label
+   * Note: The detail container will stop propagation of events. Place your element(s) in the label
+   *  prop if you'd like events on them to bubble.
    */
   detail?: ReactNode
   /**
@@ -93,7 +95,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      event.stopPropagation()
+      treeContext.detailAccessory && event.stopPropagation()
       return
     }
 
@@ -102,7 +104,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      event.stopPropagation()
+      treeContext.detailAccessory && event.stopPropagation()
       return
     }
 

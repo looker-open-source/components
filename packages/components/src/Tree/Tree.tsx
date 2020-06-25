@@ -48,6 +48,8 @@ export interface TreeProps extends AccordionProps {
   border?: boolean
   /**
    * Supplementary element that appears right of the Tree's label
+   * Note: The detail container will stop propagation of events. Place your element(s) in the label
+   *  prop if you'd like clicks on them to bubble.
    */
   detail?: ReactNode
   /**
@@ -73,7 +75,7 @@ export interface TreeProps extends AccordionProps {
    * Text label of the Tree
    * Note: This is a required prop
    */
-  label: string
+  label: ReactNode
 }
 
 const indicatorProps: AccordionIndicatorProps = {

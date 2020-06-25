@@ -241,7 +241,16 @@ export const FieldPicker = () => (
 )
 
 export const Border = () => (
-  <Tree border label="Orders" defaultOpen>
+  <Tree
+    border
+    label={
+      <Space between>
+        <span>Orders</span>
+        <span>thelook</span>
+      </Space>
+    }
+    defaultOpen
+  >
     <Tree label="Orders" defaultOpen>
       <TreeItem>ID</TreeItem>
       <TreeItem>Status</TreeItem>
