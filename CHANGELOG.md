@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `MenuList` now supports `disabled` property
+- `Popover` offset issue
 
 ### Fixed
 
 - `MenuList` `groupDividers` now displayed correctly
+- Icon: `Pivot`
 
 ## [0.9.1]- 2020-06-24
 
