@@ -30,8 +30,11 @@ import {
   Fieldset,
   FieldRadio,
   FieldToggleSwitch,
+  Icon,
   InputText,
   Space,
+  Text,
+  Tooltip,
 } from '@looker/components'
 
 export const All = () => (
@@ -51,6 +54,7 @@ export const All = () => (
     <IconAfter />
     <Toggles />
     <AutoResize />
+    <BeforeAfter />
   </Fieldset>
 )
 
@@ -132,6 +136,30 @@ export function AutoResize() {
         autoResize
         defaultValue="Some default text"
         detail="Detail text"
+      />
+    </Space>
+  )
+}
+
+export function BeforeAfter() {
+  return (
+    <Space>
+      <FieldText label="iconBefore" iconBefore="Favorite" />
+      <FieldText label="iconAfter" iconAfter="Account" />
+      <FieldText label="prefix" prefix="$" />
+      <FieldText label="suffix" suffix="%" validationType="error" />
+      <FieldText
+        label="before &amp; after"
+        before={
+          <Tooltip content="Some very important info">
+            <Icon name="AddAlerts" size="small" />
+          </Tooltip>
+        }
+        after={
+          <Text fontSize="small" color="critical">
+            Helper text
+          </Text>
+        }
       />
     </Space>
   )
