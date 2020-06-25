@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.1]- 2020-06-24
 
 ### Changed
 
@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Accept `detailAccessory` and `detailHoverDisclosure` props
   - `TreeItem` styling moved from `Tree` into `TreeItem` itself
   - `TreeItem` layout follows primary-secondary structure
+
+### Fixed
+
+- `ButtonBase` now correctly maps `onKeyDown` & `onKeyUp` props to underlying DOM element
+- `ModalContext` alias to `DialogContext`
+- `Portal` is now actually exported for use
 
 ## [0.9.0] - 2020-06-24
 
