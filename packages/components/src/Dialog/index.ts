@@ -26,7 +26,7 @@
 
 export * from './Confirm'
 export * from './Dialog'
-export * from './Layout'
 export * from './DialogContext'
 export * from './DialogManager'
+export * from './Layout'
 export * from './Prompt'
