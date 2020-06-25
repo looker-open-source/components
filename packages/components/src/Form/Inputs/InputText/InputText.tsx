@@ -39,7 +39,6 @@ import {
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { hasRedundantProps } from '../../../utils/hasRedundantProps'
 import { InlineInputTextBase } from '../InlineInputText'
 
 export interface InputTextBaseProps
@@ -64,20 +63,19 @@ export interface InputTextBaseProps
 
 export interface InputTextProps extends InputTextBaseProps {
   /**
-   * Experimental, will likely be removed in a future release
-   * @private
+   * Content to place after the input
+   * If a string is used, formatting will be automatically applied
+   * If JSX is used, it will displace the built-in validation icon
    */
   after?: ReactNode
   iconAfter?: IconNames
-  suffix?: string
 
   /**
-   * Experimental, will likely be removed in a future release
-   * @private
+   * Content to place before the input
+   * If a string is used, formatting will be automatically applied
    */
   before?: ReactNode
   iconBefore?: IconNames
-  prefix?: string
 }
 
 const InputTextLayout = forwardRef(
@@ -89,11 +87,9 @@ const InputTextLayout = forwardRef(
 
       before,
       iconBefore,
-      prefix,
 
       after,
       iconAfter,
-      suffix,
 
       type = 'text',
       validationType,
@@ -111,15 +107,15 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    if (hasRedundantProps(before, iconBefore, prefix)) {
+    if (before && iconBefore) {
       // eslint-disable-next-line no-console
-      console.warn(`Use only one of before, iconBefore, or prefix.`)
+      console.warn('Use before or iconBefore, but not both at the same time.')
       return null
     }
 
-    if (hasRedundantProps(after, iconAfter, suffix)) {
+    if (after && iconAfter) {
       // eslint-disable-next-line no-console
-      console.warn(`Use only one of after, iconAfter, or suffix.`)
+      console.warn('Use after or iconAfter, but not both at the same time.')
       return null
     }
 
@@ -144,39 +140,44 @@ const InputTextLayout = forwardRef(
       onMouseUp,
     }
 
-    const iconBeforeOrPrefix =
-      iconBefore || prefix ? (
-        <InputTextContent pl="xxsmall">
-          {iconBefore ? (
-            <Icon name={iconBefore} size={20} />
-          ) : (
-            <Text fontSize="small">{prefix}</Text>
-          )}
-        </InputTextContent>
-      ) : null
+    const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
+      <InputTextContent pl="xxsmall">
+        {iconBefore ? (
+          <Icon name={iconBefore} size={20} />
+        ) : (
+          <Text fontSize="small">{before}</Text>
+        )}
+      </InputTextContent>
+    )
 
-    const beforeToUse = before || iconBeforeOrPrefix
+    const beforeToUse = iconBeforeOrPrefix || before || null
 
-    const iconAfterOrSuffix =
-      iconAfter || suffix ? (
-        <InputTextContent pl="xsmall" pr="xxsmall">
-          {iconAfter ? (
-            <Icon name={iconAfter} size={20} />
-          ) : (
-            <Text fontSize="small">{suffix}</Text>
-          )}
-        </InputTextContent>
-      ) : null
+    const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
+      <InputTextContent pl="xsmall" pr="xxsmall">
+        {iconAfter ? (
+          <Icon name={iconAfter} size={20} />
+        ) : (
+          <Text fontSize="small">{after}</Text>
+        )}
+      </InputTextContent>
+    )
 
-    const afterToUse = after || (
+    const validationIcon = validationType === 'error' && (
+      <InputTextContent
+        pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
+        pr="xxsmall"
+      >
+        <Icon color="critical" name="CircleInfo" size={20} />
+      </InputTextContent>
+    )
+
+    const afterToUse = iconAfterOrSuffix ? (
       <>
         {iconAfterOrSuffix}
-        {validationType === 'error' && (
-          <InputTextContent pl="xsmall" pr="xxsmall">
-            <Icon color="critical" name="CircleInfo" size={20} />
-          </InputTextContent>
-        )}
+        {validationIcon}
       </>
+    ) : (
+      after || validationIcon
     )
 
     const inputProps = {

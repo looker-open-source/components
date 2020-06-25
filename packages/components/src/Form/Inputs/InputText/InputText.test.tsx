@@ -34,13 +34,18 @@ import {
 
 import { InputText } from './InputText'
 
+const globalConsole = global.console
+const warnMock = jest.fn()
+
 beforeEach(() => {
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.console.warn = jest.fn()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
 })
 
 afterEach(() => {
-  jest.clearAllMocks()
+  jest.resetAllMocks()
+  global.console = globalConsole
 })
 
 test('InputText default', () => {
@@ -95,15 +100,42 @@ test('InputText with an error validation', () => {
 
 test('InputText with a before & after', () => {
   const { getByText } = renderWithTheme(
-    <InputText
-      placeholder="Hello"
-      before={<span>before</span>}
-      after={<span>after</span>}
-    />
+    <InputText before={<span>before</span>} after={<span>after</span>} />
   )
 
   expect(getByText('before')).toBeVisible()
   expect(getByText('after')).toBeVisible()
+})
+
+test('InputText with an iconBefore & iconAfter', () => {
+  const { getByTitle } = renderWithTheme(
+    <InputText iconBefore="Favorite" iconAfter="Account" />
+  )
+
+  expect(getByTitle('Favorite')).toBeInTheDocument()
+  expect(getByTitle('Account')).toBeInTheDocument()
+})
+
+test('InputText with redundant before/after props', () => {
+  const { queryByPlaceholderText } = renderWithTheme(
+    <>
+      <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
+      <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
+    </>
+  )
+
+  expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
+  expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+  expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "Use before or iconBefore, but not both at the same time.",
+      ],
+      Array [
+        "Use after or iconAfter, but not both at the same time.",
+      ],
+    ]
+  `)
 })
 
 test('Should trigger onChange handler', () => {

@@ -10,7 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
-- `before` and `after` added to `InputText`
+
+### Removed
+
+- `InputText` props `prefix` and `suffix` are replaced with `before` and `after`, which accept `ReactNode`
 
 ## [0.9.3] - 2020-06-26
 
