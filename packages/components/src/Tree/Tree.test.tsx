@@ -99,13 +99,14 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Clicks on detail do not open the Tree or trigger callbacks', () => {
+  test('Clicks on detail do not open the Tree or trigger callbacks when detailAccessory === true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     const { getByText, queryByText } = renderWithTheme(
       <Tree
         label="Tree Label"
         detail="Tree Detail"
+        detailAccessory
         onClose={onClose}
         onOpen={onOpen}
       >
@@ -122,5 +123,48 @@ describe('Tree', () => {
     fireEvent.click(detail)
     expect(queryByText('Hello World')).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(0)
+  })
+
+  test('Clicks on detail do not open the Tree or trigger callbacks when detailAccessory === false', () => {
+    const onOpen = jest.fn()
+    const onClose = jest.fn()
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree
+        label="Tree Label"
+        detail="Tree Detail"
+        detailAccessory={false}
+        onClose={onClose}
+        onOpen={onOpen}
+      >
+        Hello World
+      </Tree>
+    )
+
+    const detail = getByText('Tree Detail')
+
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onOpen).toHaveBeenCalledTimes(0)
+    fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onClose).toHaveBeenCalledTimes(0)
+  })
+
+  test('Shows and hides detail on Tree hover when detailHoverDisclosure === true', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree label="Tree Label" detail="Tree Detail" detailHoverDisclosure>
+        Hello World
+      </Tree>
+    )
+
+    expect(queryByText('Tree Detail')).not.toBeInTheDocument()
+    fireEvent(
+      getByText('Tree Label'),
+      new MouseEvent('mouseenter', {
+        bubbles: true,
+      })
+    )
+    getByText('Tree Detail')
   })
 })
