@@ -112,11 +112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuList`, `MenuGroup` & `MenuItem` no longer supports `customizationProps`
 - `pseudo` support from design-tokens (prefer using `styled` when pseudo selectors are required)
   - Includes changes to `Box` & `IconButton`
-    <<<<<<< HEAD
-- # Icons: `FieldDistance` removed
-- `FieldDistance` icon removed
-- `InputSearchBase` removed, with functionality absorbed by `InputText`
-  > > > > > > > Update changelog
+- Icons: `FieldDistance` removed
 
 ## [0.8.7]
 
