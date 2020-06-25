@@ -47,4 +47,16 @@ describe('TreeItem', () => {
     fireEvent.click(getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(1)
   })
+
+  test('Hides and shows default when detailHoverDisclosure is true', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <TreeItem detail="Detail" detailHoverDisclosure>
+        Dimension
+      </TreeItem>
+    )
+
+    expect(queryByText('Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(getByText('Dimension'), { bubbles: true })
+    getByText('Detail')
+  })
 })
