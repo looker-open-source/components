@@ -93,7 +93,7 @@ export const generateIntentShade = (color: string) => {
   const intentColorLuminance = getLuminance(color)
 
   const adjustAmount =
-    intentColorLuminance > 0.3 ? intentColorLuminance * 0.575 : 0.125
+    intentColorLuminance > 0.3 ? intentColorLuminance * 0.55 : 0.125
   return css`
     ${({ theme: { colors } }) =>
       getLuminance(colors.background) > 0.5
