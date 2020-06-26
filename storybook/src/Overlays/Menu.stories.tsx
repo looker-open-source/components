@@ -59,9 +59,17 @@ export default {
 
 const menuItems = (
   <>
-    <MenuItem>Gouda</MenuItem>
-    <MenuItem current> Swiss</MenuItem>
-    <MenuItem>Cheddar</MenuItem>
+    <MenuGroup>
+      <MenuItem>Gouda</MenuItem>
+      <MenuItem current> Swiss</MenuItem>
+      <MenuItem>Cheddar</MenuItem>
+    </MenuGroup>
+    <MenuGroup label="Create">
+      <MenuItem>Gouda</MenuItem>
+      <MenuItem> Swiss</MenuItem>
+      <MenuItem>Cheddar</MenuItem>
+    </MenuGroup>
+
     <MenuGroup>
       <MenuItem>Gouda</MenuItem>
       <MenuItem> Swiss</MenuItem>
@@ -155,5 +163,86 @@ export const Hover = () => {
         <Box p="large">Alert icon should be hidden now.</Box>
       </Dialog>
     </Card>
+  )
+}
+
+export const RealisticMenus = () => {
+  return (
+    <Space gap="xxlarge">
+      <Menu>
+        <MenuDisclosure>
+          <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+            Icon Space Preseved
+          </IconButton>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuGroup>
+            <MenuItem icon="Refresh" detail="⌘⇧↵">
+              Clear cache & refresh
+            </MenuItem>
+          </MenuGroup>
+
+          <MenuGroup>
+            <MenuItem icon="EditOutline" detail="⌘⇧E">
+              Edit dashboard
+            </MenuItem>
+            <MenuItem>Get LookMl</MenuItem>
+            <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
+          </MenuGroup>
+
+          <MenuGroup>
+            <MenuItem icon="Download" detail="⌥⇧D">
+              Edit dashboard
+            </MenuItem>
+          </MenuGroup>
+
+          <MenuGroup>
+            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
+
+      <Menu>
+        <MenuDisclosure>
+          <IconButton label="IDE actions" size="medium" icon="DotsVert" />
+        </MenuDisclosure>
+        <MenuList compact>
+          <MenuGroup>
+            <MenuItem icon="EditOutline">Rename</MenuItem>
+            <MenuItem icon="TrashOutline">Delete</MenuItem>
+          </MenuGroup>
+          <MenuGroup label="Create">
+            <MenuItem icon="FolderNew">Folder</MenuItem>
+            <MenuItem icon="ExploreOutline">Model</MenuItem>
+            <MenuItem icon="IdeFileView">New Item</MenuItem>
+            <MenuItem icon="IdeFileView">View</MenuItem>
+            <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
+            <MenuItem icon="IdeFileDocument">Document</MenuItem>
+            <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
+
+      <Menu>
+        <MenuDisclosure>
+          <IconButton label="Menu No Icons" size="medium" icon="DotsVert" />
+        </MenuDisclosure>
+        <MenuList compact>
+          <MenuGroup>
+            <MenuItem>Rename</MenuItem>
+            <MenuItem>Delete</MenuItem>
+          </MenuGroup>
+          <MenuGroup label="Create">
+            <MenuItem>Folder</MenuItem>
+            <MenuItem>Model</MenuItem>
+            <MenuItem>New Item</MenuItem>
+            <MenuItem>View</MenuItem>
+            <MenuItem>Dasbhaord</MenuItem>
+            <MenuItem>Document</MenuItem>
+            <MenuItem>Generic LookML file</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
+    </Space>
   )
 }

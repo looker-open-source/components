@@ -24,14 +24,17 @@
 
  */
 
-import React, { FC, useRef, RefObject } from 'react'
+import React, { FC, useRef, useContext, RefObject } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text/Heading'
 import { useElementVisibility } from './MenuGroup.hooks'
+import { MenuItemContext } from './MenuContext'
 
 export const MenuGroupLabel: FC = ({ children }) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
+
+  const iconContext = useContext(MenuItemContext)
 
   return (
     <MenuGroupLabelWrapper renderBoxShadow={!isLabelShimVisible}>
@@ -45,9 +48,11 @@ export const MenuGroupLabel: FC = ({ children }) => {
       <Heading
         fontSize="small"
         as="h2"
-        px="medium"
-        py="xsmall"
+        pl={iconContext.renderIconPlaceholder ? 'xxlarge' : 'medium'}
+        ml={iconContext.renderIconPlaceholder ? 'xsmall' : 'none'}
+        pb="xxsmall"
         fontWeight="semiBold"
+        color="text4"
       >
         {children}
       </Heading>

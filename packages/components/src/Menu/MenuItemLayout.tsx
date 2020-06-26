@@ -52,7 +52,7 @@ MenuItemLayoutInternal.displayName = 'MenuItemLayoutInternal'
 
 export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text1};
+  color: ${({ theme: { colors } }) => colors.text2};
   display: flex;
   flex-wrap: wrap;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
@@ -76,15 +76,17 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    grid-gap: 0.5rem;
-    grid-template-columns: ${({ hasIcon }) => (hasIcon ? '20px 1fr' : '1fr')};
+    grid-gap: ${({ compact, theme }) =>
+      compact ? theme.space.xsmall : theme.space.small};
+    grid-template-columns: ${({ hasIcon }) => (hasIcon ? '24px 1fr' : '1fr')};
+    height: ${({ compact }) => (compact ? '32px' : '40px')};
     outline: none;
     padding: ${({
       compact,
       theme: {
-        space: { xxsmall, small, medium },
+        space: { xxsmall, xsmall, medium },
       },
-    }) => (compact ? `${xxsmall} ${medium}` : `${small} ${medium}`)};
+    }) => (compact ? `${xxsmall} ${medium}` : `${xsmall} ${medium}`)};
     text-align: left;
     text-decoration: none;
 
@@ -116,7 +118,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     color: ${({ theme: { colors } }) => colors.text0};
 
     ${Icon} {
-      color: ${({ theme: { colors } }) => colors.text1};
+      color: ${({ theme: { colors } }) => colors.text5};
     }
   }
 
