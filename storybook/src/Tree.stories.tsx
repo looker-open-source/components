@@ -159,6 +159,7 @@ export const FieldPicker = () => (
   <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <TreeItem
+        selected
         detail={fieldDetailButtons}
         detailHoverDisclosure
         icon="FieldNumber"
@@ -168,7 +169,7 @@ export const FieldPicker = () => (
       >
         <FieldLabel label="Cost" />
       </TreeItem>
-      <Tree label="Created">
+      <Tree defaultOpen label="Created">
         <TreeItem detail={fieldDetailButtons} icon="Calendar">
           <FieldLabel label="Created Date" />
         </TreeItem>
@@ -195,6 +196,7 @@ export const FieldPicker = () => (
         </TreeItem>
       </Tree>
       <TreeItem
+        selected
         detail={fieldDetailButtons}
         icon="FieldLocation"
         onClick={() => alert('Clicked on Location!')}
@@ -203,6 +205,7 @@ export const FieldPicker = () => (
         <FieldLabel label="Location" />
       </TreeItem>
       <TreeItem
+        selected
         detail={fieldDetailButtons}
         detailHoverDisclosure
         icon="FieldTier"
