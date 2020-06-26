@@ -44,7 +44,7 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   /**
    * Sets the correct accessible role for the MenuItem:
    * - Use **'link'** for items that navigation to another page
-   * - Use **'button'** for items that trigger in page interactions, like displaying a modal
+   * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
    * @default 'button'
    *
    */
@@ -57,6 +57,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     compact: propCompact,
     current,
     detail,
+    disabled,
     href,
     icon,
     itemRole,
@@ -115,6 +116,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     <MenuItemLayout
       aria-current={current && 'page'}
       compact={compact}
+      disabled={disabled}
       focusVisible={isFocusVisible}
       hasIcon={Boolean(renderedIcon)}
       onBlur={handleOnBlur}

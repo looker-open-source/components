@@ -35,6 +35,10 @@ exports[`MenuItem - current 1`] = `
   color: #262D33;
 }
 
+.c3[disabled]:hover .c1 {
+  color: #C1C6CC;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -110,6 +114,24 @@ exports[`MenuItem - current 1`] = `
 
 .c0[aria-current] {
   font-weight: 600;
+}
+
+.c0[disabled] {
+  color: #939BA5;
+}
+
+.c0[disabled] button,
+.c0[disabled] a {
+  cursor: not-allowed;
+}
+
+.c0[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c0[disabled]:hover .c1 {
+  color: #C1C6CC;
 }
 
 <li
@@ -223,6 +245,24 @@ exports[`MenuItem - detail 1`] = `
   font-weight: 600;
 }
 
+.c0[disabled] {
+  color: #939BA5;
+}
+
+.c0[disabled] button,
+.c0[disabled] a {
+  cursor: not-allowed;
+}
+
+.c0[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c0[disabled]:hover .c2 {
+  color: #C1C6CC;
+}
+
 .c1 {
   color: #C1C6CC;
   margin-left: auto;
@@ -282,6 +322,10 @@ exports[`MenuItem - icon 1`] = `
 .c3:hover .c1,
 .c3[aria-current] .c1 {
   color: #262D33;
+}
+
+.c3[disabled]:hover .c1 {
+  color: #C1C6CC;
 }
 
 .c0 {
@@ -359,6 +403,24 @@ exports[`MenuItem - icon 1`] = `
 
 .c0[aria-current] {
   font-weight: 600;
+}
+
+.c0[disabled] {
+  color: #939BA5;
+}
+
+.c0[disabled] button,
+.c0[disabled] a {
+  cursor: not-allowed;
+}
+
+.c0[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c0[disabled]:hover .c1 {
+  color: #C1C6CC;
 }
 
 <li
@@ -469,6 +531,24 @@ exports[`MenuItem 1`] = `
 
 .c0[aria-current] {
   font-weight: 600;
+}
+
+.c0[disabled] {
+  color: #939BA5;
+}
+
+.c0[disabled] button,
+.c0[disabled] a {
+  cursor: not-allowed;
+}
+
+.c0[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c0[disabled]:hover .c1 {
+  color: #C1C6CC;
 }
 
 <li

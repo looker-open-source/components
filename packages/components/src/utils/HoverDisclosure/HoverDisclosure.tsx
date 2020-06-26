@@ -24,35 +24,17 @@
 
  */
 
-import React, { ReactElement } from 'react'
-import { ReactWrapper, shallowWithTheme } from '@looker/components-test-utils'
+import React, { FC, useContext } from 'react'
+import { HoverDisclosureContext } from './HoverDisclosureContext'
 
-export const SimpleContent = (
-  <div>
-    simple content
-    <button>Done</button>
-  </div>
-)
-export const SimpleContentSFC = () => SimpleContent
-
-export const assertModalState = (
-  modal: ReactWrapper,
-  content: ReactElement<any>,
-  open = true
-) => {
-  expect(modal.contains(content)).toEqual(open)
+export interface HoverDisclosureProps {
+  visible?: boolean
 }
 
-export const assertOpen = (modal: ReactWrapper) =>
-  assertModalState(modal, SimpleContent)
-
-export const assertClosed = (modal: ReactWrapper) =>
-  assertModalState(modal, SimpleContent, false)
-
-export const returnTriggerAndModal = (
-  Inst: ReactElement<any>,
-  trigger = 'button'
-) => {
-  const modal = shallowWithTheme(Inst)
-  return [modal, modal.find(trigger)]
+export const HoverDisclosure: FC<HoverDisclosureProps> = ({
+  children,
+  visible,
+}) => {
+  const context = useContext(HoverDisclosureContext)
+  return visible || context.visible ? <>{children}</> : null
 }

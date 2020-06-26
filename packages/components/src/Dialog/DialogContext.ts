@@ -26,9 +26,10 @@
 
 import { createContext, MutableRefObject } from 'react'
 import { FocusTrap } from 'focus-trap'
+import noop from 'lodash/noop'
 
 export interface DialogContextProps {
-  closeModal?: () => void
+  closeModal: () => void
   enableScrollLock?: () => void
   disableScrollLock?: () => void
   enableFocusTrap?: () => void
@@ -38,11 +39,10 @@ export interface DialogContextProps {
   scrollLockEnabled?: boolean
 }
 
-const dialogContext: DialogContextProps = {}
+const dialogContext: DialogContextProps = {
+  closeModal: () => noop,
+}
 
 export const DialogContext = createContext(dialogContext)
 
-/**
- * Legacy fallback until all existing call sites are updated
- */
 export const ModalContext = DialogContext

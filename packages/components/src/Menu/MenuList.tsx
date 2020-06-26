@@ -25,6 +25,7 @@
  */
 
 import { Placement } from '@popperjs/core'
+import omit from 'lodash/omit'
 import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
@@ -61,6 +62,11 @@ export interface MenuListProps
     MinWidthProps,
     WidthProps {
   compact?: boolean
+
+  /**
+   * Display a horizonal rule between each MenuGroup item
+   * @default true
+   */
   groupDividers?: boolean
 
   /**
@@ -118,7 +124,7 @@ export const MenuListInternal = forwardRef(
             role="menu"
             id={id}
             aria-labelledby={id && `button-${id}`}
-            {...omitStyledProps(props)}
+            {...omitStyledProps(omit(props, 'groupDividers'))}
           >
             {children}
           </ul>
@@ -144,7 +150,7 @@ export const MenuListInternal = forwardRef(
   }
 )
 
-const dividersStyle = ({ groupDividers }: MenuListProps) =>
+const dividersStyle = ({ groupDividers = true }: MenuListProps) =>
   groupDividers &&
   css`
   ${MenuGroup} ~ ${MenuGroup} {

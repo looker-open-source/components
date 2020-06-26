@@ -61,11 +61,11 @@ const PopoverGroup = () => {
 
 describe('Popover', () => {
   afterEach(() => {
-    const modalRoot = document.getElementById('modal-root')
-    if (modalRoot) {
+    const root = document.getElementById('modal-root')
+    if (root) {
       // remove modalRoot after every test so the DOCUMENT_POSITION_FOLLOWING check
       // won't misleadingly fail since render adds the output to the end of the body
-      document.body.removeChild(modalRoot)
+      document.body.removeChild(root)
     }
   })
 

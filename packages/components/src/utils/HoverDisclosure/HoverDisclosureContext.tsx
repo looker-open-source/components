@@ -24,18 +24,14 @@
 
  */
 
-import styled from 'styled-components'
-import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
+import { createContext } from 'react'
 
-export const DialogSurface = styled(ModalSurface)<ModalSurfaceProps>`
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-    transform: translateY(100%);
-  }
+export interface HoverDisclosureContextProps {
+  visible: boolean
+}
 
-  &.exited {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-`
+const hoverDisclosureContext = {
+  visible: false,
+}
+
+export const HoverDisclosureContext = createContext(hoverDisclosureContext)

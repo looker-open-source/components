@@ -28,8 +28,10 @@ import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
+const rootId = 'modal-root'
+
 export const getPortalRoot = () => {
-  const existing = document.getElementById('modal-root')
+  const existing = document.getElementById(rootId)
 
   if (existing) {
     return existing
@@ -52,14 +54,14 @@ export const Portal = forwardRef(
     const el = useRef(document.createElement('div'))
 
     useEffect(() => {
-      const modalRoot = getPortalRoot()
-      if (!modalRoot) return
+      const root = getPortalRoot()
+      if (!root) return
 
       const elCurrent = el.current
-      modalRoot.appendChild(elCurrent)
+      root.appendChild(elCurrent)
 
       return () => {
-        modalRoot.removeChild(elCurrent)
+        root.removeChild(elCurrent)
       }
     }, [el])
 

@@ -31,7 +31,7 @@ import styled from 'styled-components'
 import { typography, TypographyProps } from '@looker/design-tokens'
 import { inputPropKeys, InputProps } from '../InputProps'
 
-interface InlineInputTextProps
+export interface InlineInputTextProps
   extends TypographyProps,
     Omit<InputProps, 'type'> {
   underlineOnlyOnHover?: boolean

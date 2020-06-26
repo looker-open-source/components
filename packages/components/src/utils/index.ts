@@ -25,6 +25,7 @@
  */
 
 export * from './getWindowedListBoundaries'
+export * from './HoverDisclosure'
 export * from './useControlWarn'
 export * from './useReadOnlyWarn'
 export * from './useCallbackRef'

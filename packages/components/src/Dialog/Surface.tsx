@@ -24,12 +24,17 @@
 
  */
 
-import { CompatibleHTMLProps, reset, theme } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  theme,
+  omitStyledProps,
+} from '@looker/design-tokens'
 import React, { FC, useContext, useEffect } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, css } from 'styled-components'
 import {
-  BackgroundColorProps,
+  ColorProps,
   BorderProps,
   BoxShadowProps,
   boxShadow,
@@ -40,20 +45,20 @@ import {
 } from 'styled-system'
 import { DialogContext } from './DialogContext'
 
-export interface ModalSurfaceProps
+interface SurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     BorderProps,
     BoxShadowProps,
-    BackgroundColorProps,
+    ColorProps,
     LayoutProps {
   surfaceStyles?: CSSObject
   anchor?: 'right'
   animationState?: string
 }
 
-export const ModalSurface: FC<ModalSurfaceProps> = ({
+const SurfaceLayout: FC<SurfaceProps> = ({
   anchor,
-  style,
+  surfaceStyles,
   className,
   ...props
 }) => {
@@ -81,9 +86,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
         },
       }}
       handlers={{
-        CLOSE_MODAL: () => {
-          closeModal && closeModal()
-        },
+        CLOSE_MODAL: () => closeModal(),
       }}
       style={{
         alignItems: 'center',
@@ -98,10 +101,10 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
       //
       // display: contents would be another workaround when it gains broader (corrected) support
     >
-      <Style
+      <div
         className={`surface-overflow ${className}`}
-        surfaceStyles={style as CSSObject}
-        {...props}
+        style={surfaceStyles as CSSObject}
+        {...omitStyledProps(props)}
       />
     </HotKeys>
   )
@@ -112,7 +115,7 @@ const surfaceTransition = () => css`
     `${props.theme.transitions.durationModerate} ${props.theme.easings.ease}`}
 `
 
-const Style = styled.div<ModalSurfaceProps>`
+export const Surface = styled(SurfaceLayout)`
   ${reset}
   ${boxShadow}
   ${border}
@@ -125,14 +128,23 @@ const Style = styled.div<ModalSurfaceProps>`
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
-  ${(props) => props.surfaceStyles}
-
   &:focus {
     outline: none;
   }
+
+  &.entering,
+  &.exiting {
+    opacity: 0.01;
+    transform: translateY(100%);
+  }
+
+  &.exited {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 `
 
-Style.defaultProps = {
+Surface.defaultProps = {
   backgroundColor: 'background',
   borderRadius: 'medium',
   boxShadow: 3,

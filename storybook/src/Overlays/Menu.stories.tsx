@@ -115,13 +115,10 @@ export const IconSpace = () => (
 
 export const Hover = () => {
   const hoverRef = useRef<HTMLDivElement>(null)
-  const [modalIsOpen, setOpen] = useState(false)
-  function openModal() {
-    setOpen(true)
-  }
-  function closeModal() {
-    setOpen(false)
-  }
+  const [dialogIsOpen, setOpen] = useState(false)
+  const open = () => setOpen(true)
+  const close = () => setOpen(false)
+
   return (
     <Card ref={hoverRef} p="large" raised height="auto">
       <Space between>
@@ -137,7 +134,7 @@ export const Hover = () => {
                   <IconButton
                     icon="AddAlerts"
                     label="Add Alert"
-                    onClick={openModal}
+                    onClick={open}
                   />
                 )
               }
@@ -154,7 +151,7 @@ export const Hover = () => {
         </div>
       </Space>
 
-      <Dialog isOpen={modalIsOpen} onClose={closeModal}>
+      <Dialog isOpen={dialogIsOpen} onClose={close}>
         <Box p="large">Alert icon should be hidden now.</Box>
       </Dialog>
     </Card>

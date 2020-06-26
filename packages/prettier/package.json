@@ -1,6 +1,6 @@
 {
   "name": "@looker/prettier-config",
-  "version": "1.0.14",
+  "version": "0.9.1",
   "main": "index.json",
   "author": "Looker",
   "license": "MIT",
@@ -11,10 +11,14 @@
   "bugs": {
     "url": "https://github.com/looker-open-source/components/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "index.json"
   ],
   "dependencies": {
     "prettier": ">=2.0.5"
-  }
+  },
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

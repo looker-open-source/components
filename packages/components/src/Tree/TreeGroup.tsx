@@ -24,26 +24,17 @@
 
  */
 
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 
 export interface TreeGroupProps extends TextColorProps {
-  children: ReactNode
-  className?: string
   /**
    * Visible label of the TreeGroup
    */
   label: string
+  className?: string
 }
-
-export const TreeGroupLabel = styled.div`
-  /* Border is here to get proper alignment with Tree and TreeItem text */
-  border: 1px transparent solid;
-  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.xxsmall}`};
-`
 
 const TreeGroupLayout: FC<TreeGroupProps> = ({
   children,
@@ -58,4 +49,12 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
 
 export const TreeGroup = styled(TreeGroupLayout)`
   ${color}
+`
+
+export const TreeGroupLabel = styled.div`
+  /* Border is here to get proper alignment with Tree and TreeItem text */
+  border: 1px transparent solid;
+  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xxsmall}`};
 `

@@ -106,6 +106,24 @@ exports[`MenuGroup - JSX label 1`] = `
   font-weight: 600;
 }
 
+.c4[disabled] {
+  color: #939BA5;
+}
+
+.c4[disabled] button,
+.c4[disabled] a {
+  cursor: not-allowed;
+}
+
+.c4[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c4[disabled]:hover .c5 {
+  color: #C1C6CC;
+}
+
 <li
   className="c0"
 >
@@ -281,6 +299,24 @@ exports[`MenuGroup - label 1`] = `
   font-weight: 600;
 }
 
+.c4[disabled] {
+  color: #939BA5;
+}
+
+.c4[disabled] button,
+.c4[disabled] a {
+  cursor: not-allowed;
+}
+
+.c4[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c4[disabled]:hover .c5 {
+  color: #C1C6CC;
+}
+
 <li
   className="c0"
 >
@@ -430,6 +466,24 @@ exports[`MenuGroup 1`] = `
 
 .c2[aria-current] {
   font-weight: 600;
+}
+
+.c2[disabled] {
+  color: #939BA5;
+}
+
+.c2[disabled] button,
+.c2[disabled] a {
+  cursor: not-allowed;
+}
+
+.c2[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c2[disabled]:hover .c3 {
+  color: #C1C6CC;
 }
 
 <li

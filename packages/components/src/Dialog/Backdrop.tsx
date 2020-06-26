@@ -25,16 +25,10 @@
  */
 
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import {
-  OpacityProps,
-  // opacity,
-  BackgroundColorProps,
-  // backgroundColor,
-  color,
-} from 'styled-system'
+import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
 import styled, { CSSObject } from 'styled-components'
 
-export interface ModalBackdropProps
+export interface BackdropProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     BackgroundColorProps,
     OpacityProps {
@@ -44,9 +38,9 @@ export interface ModalBackdropProps
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
-export const ModalBackdrop = styled.div.attrs((props: ModalBackdropProps) => ({
+export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
   backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-}))<ModalBackdropProps>`
+}))<BackdropProps>`
   ${reset}
   ${color}
 
@@ -67,7 +61,7 @@ export const ModalBackdrop = styled.div.attrs((props: ModalBackdropProps) => ({
   }
 `
 
-ModalBackdrop.defaultProps = {
+Backdrop.defaultProps = {
   backgroundColor: 'ui2',
   opacity: 0.6,
   visible: true,
