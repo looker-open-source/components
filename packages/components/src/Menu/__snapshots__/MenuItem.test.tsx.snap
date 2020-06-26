@@ -146,7 +146,7 @@ exports[`MenuItem - current 1`] = `
 }
 
 <li
-  aria-current="page"
+  aria-current="true"
   className="c0 "
   onBlur={[Function]}
   onClick={[Function]}
