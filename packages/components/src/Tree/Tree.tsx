@@ -216,6 +216,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
 
   ${AccordionDisclosure} ${TreeItem} {
     border-width: 0;
+    height: 100%;
   }
 
   ${TreeGroupLabel} {
