@@ -8,20 +8,12 @@ import { Props } from '../../../Shared'
 
 `Tree`, like `Accordion`, is a collapsible section component designed for hiding and showing content. However, unlike `Accordion`, `Tree` has a more structured interface and is best used when building tree views like a file structure or a sidebar.
 
-Use the required `label` prop to set the text of the `Tree`'s disclosure.
+Use the required `label` prop to set the text of the `Tree` disclosure. `label` alternatively accepts a `ReactNode` for more advanced layouts.
 
-To further customize the look of the `Tree`'s disclosure, you can use the `icon`, `iconSize`, and `detail` props.
-
-Passing in an element into the `detail` prop will result in that element being displayed right of the `Tree`'s label.
-
-**Note:** Use the `detailStopPropagation` prop if you would like to prevent `Tree` opening and closing when the `detail` element is clicked.
+Use the `icon` prop to display an icon left of the `Tree` label.
 
 ```jsx
-<Tree
-  label="Orders"
-  icon="Table"
-  detail={<Text variant="subdued">thelook</Text>}
->
+<Tree label="Orders" icon="Table">
   <TreeItem icon="FieldNumber">Cost</TreeItem>
   <TreeItem icon="FieldLocation">Location</TreeItem>
   <TreeItem icon="FieldTier">Tier</TreeItem>
@@ -29,16 +21,48 @@ Passing in an element into the `detail` prop will result in that element being d
 </Tree>
 ```
 
-Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
+Use the `detail` prop to display an element right of the `Tree` label.
+
+**Note:** Any elements passed into the `detail` prop will not propagate events (i.e. clicking on a `detail` element will not open or close the `Tree`).
 
 ```jsx
 <Tree
-  border
   label="Orders"
   icon="Table"
-  detail={<Text variant="secondary">thelook</Text>}
-  defaultOpen
+  detail={
+    <IconButton
+      icon="CircleInfo"
+      label="Get Info"
+      onClick={() => alert("You've got info!")}
+    />
+  }
 >
+  <TreeItem icon="FieldNumber">Cost</TreeItem>
+</Tree>
+```
+
+If you'd like a `Tree`'s entire disclosure to trigger opening and closing on click, avoid the `detail` prop and instead pass a composition into the `label` prop, like so:
+
+```jsx
+<Tree
+  label={
+    <Space between>
+      <Text fontSize="xsmall">Orders</Text>
+      <Text fontSize="xsmall" color="ui4">
+        thelook
+      </Text>
+    </Space>
+  }
+  icon="Table"
+>
+  <TreeItem icon="FieldNumber">Cost</TreeItem>
+</Tree>
+```
+
+Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
+
+```jsx
+<Tree border label="Orders" icon="Table" defaultOpen>
   <Tree label="Created" defaultOpen>
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
@@ -50,7 +74,9 @@ Use the `border` prop if you would like to have vertical lines expand from your 
 
 ## Nesting Trees
 
-You can nest trees within each other by passing a `Tree` in as child of the parent `Tree`.
+You can nest trees within each other by passing a `Tree` in as a child of another `Tree`.
+
+**Note:** `Tree` will automatically indent any child `Tree` and `TreeItem`s based on their depth in the hierarchy.
 
 ```jsx
 <Tree label="Orders" icon="Table">
@@ -111,17 +137,13 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 
 `TreeItem` is used to create branches in a tree view; it is best used as the direct child of a `<Tree>`.
 
-Unlike `Tree`, `TreeItem` has no `label` prop and instead displays its child as its content.
-
-In addition, `TreeItem` can accept a callback via its `onClick` prop.
+Unlike `Tree`, `TreeItem` has no `label` prop and instead displays its child as its content. In addition, `TreeItem` accepts a callback via its `onClick` prop rather than `onOpen` and `onClose` props.
 
 Use the `detail` prop to display a detail element right of the `TreeItem`'s content.
 
-To prevent clicks on the `detail` element from triggering the `onClick` callback, use the `detailStopPropagation` prop.
+Use the `icon` prop to display an icon left of the `TreeItem`'s content.
 
-`icon` and `iconSize` can be used to create and customize an icon element left of the `TreeItem`'s content.
-
-Use `gapSize` to control the distance between elements in your `TreeItem`.
+Use the `gapSize` prop to control the distance between elements in your `TreeItem`.
 
 ```jsx
 <Tree label="Cheeses" defaultOpen>
@@ -133,6 +155,190 @@ Use `gapSize` to control the distance between elements in your `TreeItem`.
     Swiss
   </TreeItem>
 </Tree>
+```
+
+## Customizing Detail Elements on Tree and TreeItem
+
+You can customize the look and behavior of `detail` elements using the `detailAccessory` and `detailHoverDisclosure` props.
+
+Use the `detailAccessory` prop if you do not want to apply the hover background onto the `detail` elements.
+
+```jsx
+;() => {
+  const detail = (
+    <>
+      <IconButton
+        icon="Filter"
+        label="Filter"
+        onClick={() => alert('Filter')}
+      />
+      <IconButton
+        icon="CircleInfoOutline"
+        label="Info"
+        onClick={() => alert('Info')}
+      />
+      <IconButton
+        icon="DotsVert"
+        label="Options"
+        onClick={() => alert('Options')}
+      />
+    </>
+  )
+
+  return (
+    <Tree label="Orders" icon="Table" defaultOpen detailAccessory>
+      <TreeItem icon="FieldNumber" detail={detail}>
+        Cost
+      </TreeItem>
+      <TreeItem icon="FieldLocation" detail={detail}>
+        Location
+      </TreeItem>
+      <TreeItem icon="FieldTier" detail={detail}>
+        Tier
+      </TreeItem>
+    </Tree>
+  )
+}
+```
+
+Setting `detailAccessory` on a parent `Tree` will also apply it to all child `TreeItem`s, as seen above.
+
+However, you can override a parent `Tree`'s `detailAccessory` prop at the `TreeItem` level.
+
+```jsx
+;() => {
+  const detail = (
+    <>
+      <IconButton
+        icon="Filter"
+        label="Filter"
+        onClick={() => alert('Filter')}
+      />
+      <IconButton
+        icon="CircleInfoOutline"
+        label="Info"
+        onClick={() => alert('Info')}
+      />
+      <IconButton
+        icon="DotsVert"
+        label="Options"
+        onClick={() => alert('Options')}
+      />
+    </>
+  )
+
+  return (
+    <Tree label="Orders" icon="Table" defaultOpen detailAccessory>
+      <TreeItem icon="FieldNumber" detail={detail} detailAccessory={false}>
+        Cost
+      </TreeItem>
+      <TreeItem icon="FieldLocation" detail={detail}>
+        Location
+      </TreeItem>
+      <TreeItem icon="FieldTier" detail={detail}>
+        Tier
+      </TreeItem>
+    </Tree>
+  )
+}
+```
+
+Use `detailHoverDisclosure` to hide and show `detail` elements on hover.
+
+```jsx
+;() => {
+  const detail = (
+    <>
+      <IconButton
+        icon="Filter"
+        label="Filter"
+        onClick={() => alert('Filter')}
+      />
+      <IconButton
+        icon="CircleInfoOutline"
+        label="Info"
+        onClick={() => alert('Info')}
+      />
+      <IconButton
+        icon="DotsVert"
+        label="Options"
+        onClick={() => alert('Options')}
+      />
+    </>
+  )
+
+  return (
+    <Tree
+      label="Orders"
+      icon="Table"
+      defaultOpen
+      detailHoverDisclosure
+      detail="thelook"
+    >
+      <TreeItem icon="FieldNumber" detail={detail}>
+        Cost
+      </TreeItem>
+      <TreeItem icon="FieldLocation" detail={detail}>
+        Location
+      </TreeItem>
+      <TreeItem icon="FieldTier" detail={detail}>
+        Tier
+      </TreeItem>
+    </Tree>
+  )
+}
+```
+
+Setting `detailHoverDisclosure` on a parent `Tree` will apply it to all child `TreeItem`s.
+
+However, you can override a parent `Tree`'s `detailHoverDisclosure` prop at the `TreeItem` level.
+
+```jsx
+;() => {
+  const detail = (
+    <>
+      <IconButton
+        icon="Filter"
+        label="Filter"
+        onClick={() => alert('Filter')}
+      />
+      <IconButton
+        icon="CircleInfoOutline"
+        label="Info"
+        onClick={() => alert('Info')}
+      />
+      <IconButton
+        icon="DotsVert"
+        label="Options"
+        onClick={() => alert('Options')}
+      />
+    </>
+  )
+
+  return (
+    <Tree
+      label="Orders"
+      icon="Table"
+      defaultOpen
+      detailHoverDisclosure
+      detail="thelook"
+    >
+      <TreeItem
+        icon="FieldNumber"
+        detail={detail}
+        detailHoverDisclosure={false}
+      >
+        Cost
+      </TreeItem>
+      <TreeItem icon="FieldLocation" detail={detail}>
+        Location
+      </TreeItem>
+      <TreeItem icon="FieldTier" detail={detail}>
+        Tier
+      </TreeItem>
+    </Tree>
+  )
+}
 ```
 
 ## TreeGroup
