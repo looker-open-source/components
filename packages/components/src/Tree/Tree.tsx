@@ -202,6 +202,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   & > ${Accordion} > ${AccordionDisclosure} {
+    background-clip: padding-box;
     background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
@@ -213,8 +214,8 @@ const TreeStyle = styled.div<TreeStyleProps>`
     padding: ${({ theme }) => theme.space.none};
   }
 
-  ${AccordionDisclosure} ${TreeItem}:focus-within {
-    border-color: transparent;
+  ${AccordionDisclosure} ${TreeItem} {
+    border-width: 0;
   }
 
   ${TreeGroupLabel} {
