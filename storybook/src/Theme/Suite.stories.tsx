@@ -29,11 +29,13 @@ import {
   ButtonOutline,
   ButtonTransparent,
   SpaceVertical,
+  Grid,
   FieldText,
   IconButton,
   FieldSlider,
   ButtonGroup,
   ButtonItem,
+  Badge,
 } from '@looker/components'
 import React, { useState } from 'react'
 
@@ -59,6 +61,15 @@ export const Suite = () => {
       <FieldText label="Hello" />
       <IconButton icon="Check" label="Check" size="large" />
       <FieldSlider label="slider" />
+
+      <Grid columns={3}>
+        <Badge intent="key">Key</Badge>
+        <Badge intent="positive">Positive</Badge>
+        <Badge intent="inform">Inform</Badge>
+        <Badge intent="critical">Crtical</Badge>
+        <Badge intent="warn">Warn</Badge>
+        <Badge intent="neutral">Neutral</Badge>
+      </Grid>
     </SpaceVertical>
   )
 }
