@@ -24,50 +24,54 @@
 
  */
 
-import React, { FC, ReactNode, useContext } from 'react'
+import React, { FC, ReactNode, useContext, Ref, forwardRef } from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
+import { Space } from '../Layout'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
 export interface AccordionDisclosureProps extends TypographyProps {
   children: ReactNode
   className?: string
+  ref?: Ref<HTMLDivElement>
 }
 
-export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
-  children,
-  className,
-}) => {
-  const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
-    AccordionContext
-  )
-  const handleOpen = () => onOpen && onOpen()
-  const handleClose = () => onClose && onClose()
+export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
+  ({ children, className }, ref) => {
+    const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
+      AccordionContext
+    )
+    const handleOpen = () => onOpen && onOpen()
+    const handleClose = () => onClose && onClose()
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.keyCode === 13) {
-      event.currentTarget.click()
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 13) {
+        event.currentTarget.click()
+      }
     }
-  }
-  const handleClick = () => {
-    isOpen ? handleClose() : handleOpen()
-    toggleOpen(!isOpen)
-  }
+    const handleClick = () => {
+      isOpen ? handleClose() : handleOpen()
+      toggleOpen(!isOpen)
+    }
 
-  return (
-    <div
-      className={className}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-    >
-      <AccordionDisclosureGrid {...props} isOpen={isOpen}>
-        {children}
-      </AccordionDisclosureGrid>
-    </div>
-  )
-}
+    return (
+      <Space
+        className={className}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        ref={ref}
+        tabIndex={0}
+      >
+        <AccordionDisclosureGrid {...props} isOpen={isOpen}>
+          {children}
+        </AccordionDisclosureGrid>
+      </Space>
+    )
+  }
+)
+
+AccordionDisclosureLayout.displayName = 'AccordionDisclosureLayout'
 
 export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}

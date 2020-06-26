@@ -154,10 +154,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 export const TreeItem = styled(TreeItemLayout)`
-  align-items: center;
   border: 1px solid transparent;
   cursor: ${({ onClick }) => onClick && 'pointer'};
-  display: flex;
   height: 25px;
   outline: none;
 

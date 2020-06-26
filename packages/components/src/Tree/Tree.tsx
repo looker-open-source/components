@@ -25,8 +25,8 @@
  */
 
 import styled, { css } from 'styled-components'
-import { FontWeights, Theme } from '@looker/design-tokens'
-import React, { FC, ReactNode, useContext } from 'react'
+import { FontWeights, Theme, uiTransparencyBlend } from '@looker/design-tokens'
+import React, { FC, ReactNode, useContext, useRef } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -35,6 +35,7 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
+import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
@@ -96,6 +97,9 @@ const TreeLayout: FC<TreeProps> = ({
   label,
   ...restProps
 }) => {
+  const disclosureRef = useRef<HTMLDivElement>(null)
+  const [isHovered] = useHovered(disclosureRef)
+
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
   const hasDetailHoverDisclosure = undefinedCoalesce([
@@ -123,7 +127,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const internalAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontWeight={fontWeight}>
+      <AccordionDisclosure ref={disclosureRef} fontWeight={fontWeight}>
         {disclosure}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
@@ -139,7 +143,7 @@ const TreeLayout: FC<TreeProps> = ({
         detailHoverDisclosure: hasDetailHoverDisclosure,
       }}
     >
-      <TreeStyle border={hasBorder} depth={depth}>
+      <TreeStyle border={hasBorder} depth={depth} hovered={isHovered}>
         {internalAccordion}
       </TreeStyle>
     </TreeContext.Provider>
@@ -189,6 +193,7 @@ const generateIndent = (depth: number, theme: Theme) => {
 interface TreeStyleProps {
   border?: boolean
   depth: number
+  hovered: boolean
 }
 
 const TreeStyle = styled.div<TreeStyleProps>`
@@ -196,7 +201,8 @@ const TreeStyle = styled.div<TreeStyleProps>`
     ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
   }
 
-  ${AccordionDisclosure} {
+  & > ${Accordion} > ${AccordionDisclosure} {
+    background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     ${({ depth, theme }) => generateIndent(depth, theme)}
@@ -216,6 +222,10 @@ const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   ${TreeItemLabel} {
+    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
+  }
+
+  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 `
