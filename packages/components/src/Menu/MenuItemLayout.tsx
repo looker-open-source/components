@@ -111,7 +111,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   }
 
   :hover,
-  &[aria-current] {
+  &[aria-current='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
     color: ${({ theme: { colors } }) => colors.text0};
 
@@ -120,7 +120,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     }
   }
 
-  &[aria-current] {
+  &[aria-current='true'] {
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 
