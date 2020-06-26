@@ -115,7 +115,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
 
   return (
     <MenuItemLayout
-      aria-current={current && 'page'}
+      aria-current={current && 'true'}
       compact={compact}
       disabled={disabled}
       focusVisible={isFocusVisible}
