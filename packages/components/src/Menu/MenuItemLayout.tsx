@@ -40,7 +40,7 @@ export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
  * All of this drama is to deal with SC's behavior of auto-spreading the Element interface
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
-const MenuItemLayoutInternal = forwardRef(
+const MenuItemWrapper = forwardRef(
   (props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li {...omit(props, 'compact', 'focusVisible', 'hasIcon')} ref={ref} />
@@ -48,9 +48,15 @@ const MenuItemLayoutInternal = forwardRef(
   }
 )
 
-MenuItemLayoutInternal.displayName = 'MenuItemLayoutInternal'
+MenuItemWrapper.displayName = 'MenuItemWrapper'
 
-export const MenuItemLayout = styled(MenuItemLayoutInternal)`
+/**
+ * Make Safari (and older Chrome) happy.
+ * See: https://github.com/rachelandrew/gridbugs#10-some-html-elements-cant-be-grid-containers
+ **/
+export const MenuItemLayoutGrid = styled.div``
+
+export const MenuItemLayout = styled(MenuItemWrapper)`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text1};
   display: flex;
@@ -72,12 +78,9 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     border: none;
     color: inherit;
     cursor: pointer;
-    display: grid;
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    grid-gap: 0.5rem;
-    grid-template-columns: ${({ hasIcon }) => (hasIcon ? '20px 1fr' : '1fr')};
     outline: none;
     padding: ${({
       compact,
@@ -92,6 +95,12 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     &:focus {
       color: inherit;
       text-decoration: none;
+    }
+
+    ${MenuItemLayoutGrid} {
+      display: grid;
+      grid-gap: 0.5rem;
+      grid-template-columns: ${({ hasIcon }) => (hasIcon ? '20px 1fr' : '1fr')};
     }
   }
 
@@ -111,7 +120,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
   }
 
   :hover,
-  &[aria-current] {
+  &[aria-current='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
     color: ${({ theme: { colors } }) => colors.text0};
 
@@ -120,7 +129,7 @@ export const MenuItemLayout = styled(MenuItemLayoutInternal)`
     }
   }
 
-  &[aria-current] {
+  &[aria-current='true'] {
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 

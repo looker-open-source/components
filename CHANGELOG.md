@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - InputTimeSelect tab key behavior
 
+## [0.9.3] - 2020-06-26
+
+### Fixed
+
+- `MenuItem`
+  - properly renders when `[aria-current='false']`
+  - is now exported as Styled Component
+  - renders properly in Safari / older Chrome implementations
+
 ## [0.9.2] - 2020-06-25
 
 ### Added
