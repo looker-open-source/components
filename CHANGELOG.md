@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
+
+### Removed
+
+- `InputText` props `prefix` and `suffix` are replaced with `before` and `after`, which accept `ReactNode`
+
 ### Fixed
 
 - InputTimeSelect tab key behavior

@@ -24,70 +24,25 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { ValidationType } from '../ValidationMessage'
+import { css } from 'styled-components'
 
-export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
-  validationType?: ValidationType
-}
+export const innerInputStyle = css`
+  background: transparent;
+  border: none;
+  caret-color: ${({ theme }) => theme.colors.text0};
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
 
-export interface InputTextTypeProps {
-  /**
-   *
-   * @default 'text'
-   */
-  type?:
-    | 'email'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'url'
-    | 'week'
-}
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    appearance: none;
+  }
 
-export const inputPropKeys = [
-  'accept',
-  'autoFocus',
-  'autoComplete',
-  'checked',
-  'data-autofocus',
-  'data-testid',
-  'defaultValue',
-  'defaultChecked',
-  'disabled',
-  'id',
-  'list',
-  'max',
-  'maxLength',
-  'min',
-  'minLength',
-  'multiple',
-  'name',
-  'onBlur',
-  'onChange',
-  'onClick',
-  'onMouseDown',
-  'onMouseEnter',
-  'onMouseLeave',
-  'onMouseOut',
-  'onMouseOver',
-  'onMouseUp',
-  'onFocus',
-  'onKeyDown',
-  'onKeyPress',
-  'onPaste',
-  'placeholder',
-  'readOnly',
-  'required',
-  'pattern',
-  'step',
-  'value',
-  'aria-autocomplete',
-  'aria-invalid',
-  'aria-label',
-  'aria-describedby',
-  'aria-labelledby',
-]
+  ::placeholder {
+    color: ${(props) => props.theme.colors.text5};
+  }
+`

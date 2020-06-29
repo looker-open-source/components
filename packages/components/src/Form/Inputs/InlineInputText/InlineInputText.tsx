@@ -28,31 +28,36 @@ import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import { typography, TypographyProps } from '@looker/design-tokens'
-import { inputPropKeys, InputProps } from '../InputProps'
+import {
+  omitStyledProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
+import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
+import { innerInputStyle } from '../innerInputStyle'
 
 export interface InlineInputTextProps
   extends TypographyProps,
-    Omit<InputProps, 'type'> {
+    Omit<InputProps, 'type'>,
+    InputTextTypeProps {
   underlineOnlyOnHover?: boolean
-  value?: string
   simple?: boolean
 }
 
-export const InlineInputTextInternal = forwardRef(
+const InlineInputTextLayout = forwardRef(
   (
     {
       className,
       onChange,
-      underlineOnlyOnHover,
       value: valueProp,
+      defaultValue,
       placeholder,
-      simple = false,
+      type = 'text',
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValueChange] = useState(valueProp || '')
+    const [value, setValueChange] = useState(valueProp || defaultValue || '')
 
     const displayValue = isFunction(onChange) ? valueProp : value
 
@@ -62,70 +67,64 @@ export const InlineInputTextInternal = forwardRef(
 
     const handleChange = isFunction(onChange) ? onChange : handleValueChange
 
-    /**
-     * &#8203; is a zero-width space – ensures that visibleText gets accurate line-height applied
-     */
-
     return (
-      <div className={className} data-testid="inlineInputText">
-        <Input
+      <span className={className}>
+        <StyledInput
           onChange={handleChange}
-          simple={simple}
-          underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
+          placeholder={placeholder}
+          type={type}
           ref={ref}
-          {...pick(props, inputPropKeys)}
+          {...omitStyledProps(pick(props, inputPropKeys))}
         />
-        <VisibleText displayValue={displayValue}>
-          {displayValue || placeholder || ' '}
-        </VisibleText>
-      </div>
+        <StyledText>{displayValue || placeholder || ' '}</StyledText>
+      </span>
     )
   }
 )
 
-InlineInputTextInternal.displayName = 'InlineInputTextInternal'
+InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
-const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
-  background: transparent;
-  border: none;
-  caret-color: ${({ theme }) => theme.colors.text0};
-  color: inherit;
+const StyledInput = styled.input`
+  ${innerInputStyle}
   font: inherit;
-  height: 100%;
   left: 0;
-  outline: none;
   padding: 0;
   position: absolute;
   text-align: inherit;
   text-transform: inherit;
   top: 0;
-  width: 100%;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+  &[type='number'] {
+    appearance: textfield;
+  }
 `
 
-interface VisibleTextProps {
-  displayValue?: string
-}
-
-const VisibleText = styled.div<VisibleTextProps>`
-  color: ${({ displayValue, theme }) =>
-    displayValue ? 'transparent' : theme.colors.text5};
+const StyledText = styled.span`
+  color: transparent;
+  line-height: inherit;
   text-align: inherit;
   white-space: pre;
 `
 
-export const InlineInputText = styled(InlineInputTextInternal)`
+export const InlineInputTextBase = styled(InlineInputTextLayout)`
+  display: inline-flex;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+`
+
+export const InlineInputText = styled(InlineInputTextBase)`
   ${typography}
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
     underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
   color: inherit;
-  display: inline-flex;
   flex-direction: column;
-  justify-content: center;
-  min-width: 2rem;
-  position: relative;
   text-align: inherit;
 
   :focus,

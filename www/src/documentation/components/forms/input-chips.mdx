@@ -10,11 +10,11 @@ deletable [`Chip`](/components/content/chip) inside a text box.
 The input value is converted to chip values as the user types via the <strong>comma</strong> or <strong>enter</strong> keys, or on blur.
 The `values` and `onChange` props are required – `InputChips` is a controlled component.
 
-`InputChips` also supports `summary` and `hideControls`, similar to [`InputSearch`](input-search).
+`InputChips` also supports `summary` and `hideControls`, similar to [`InputSearch`](../input-search) and `autoResize`, similar to [`InputText`](../input-text).
 
 ```jsx
 ;() => {
-  function ExampleInputChips({ values: initialValues = [], hideControls }) {
+  function ExampleInputChips({ values: initialValues = [], ...props }) {
     const [values, setValues] = React.useState(initialValues)
     function handleChange(newValues) {
       setValues(newValues)
@@ -25,18 +25,17 @@ The `values` and `onChange` props are required – `InputChips` is a controlled 
         summary={values.length > 0 && `You've entered ${values.length} items`}
         values={values}
         onChange={handleChange}
-        hideControls={hideControls}
+        {...props}
       />
     )
   }
   return (
-    <>
+    <SpaceVertical align="start">
       <ExampleInputChips />
-      <Divider my="medium" />
       <ExampleInputChips values={['mango', 'kiwi']} />
-      <Divider my="medium" />
       <ExampleInputChips values={[]} hideControls />
-    </>
+      <ExampleInputChips values={[]} autoResize />
+    </SpaceVertical>
   )
 }
 ```
