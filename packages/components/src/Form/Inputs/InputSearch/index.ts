@@ -25,5 +25,4 @@
  */
 
 export * from './InputSearch'
-export * from './InputSearchBase'
 export * from './InputSearchControls'

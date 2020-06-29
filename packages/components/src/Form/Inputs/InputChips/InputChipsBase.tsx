@@ -24,12 +24,15 @@
 
  */
 import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import { Flex } from '../../../Layout'
-import { InputText } from '../InputText'
-import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
+import {
+  inputHeight,
+  InputTextContent,
+  InputText,
+  InputTextBaseProps,
+} from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -60,8 +63,10 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<InputSearchBaseProps, 'value' | 'defaultValue' | 'onChange'>,
+  extends Omit<InputTextBaseProps, 'defaultValue' | 'onChange'>,
     MaxHeightProps {
+  summary?: string
+  hideControls?: boolean
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
@@ -87,6 +92,7 @@ export const InputChipsBaseInternal = forwardRef(
       onClear,
       isVisibleOptions,
       hasOptions = false,
+      hideControls = false,
       summary,
       removeOnBackspace = true,
       ...props
@@ -117,7 +123,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} ml="xxsmall">
+        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} mr="xxsmall">
           {value}
         </Chip>
       )
@@ -130,45 +136,58 @@ export const InputChipsBaseInternal = forwardRef(
     const renderSearchControls = values.length > 0
 
     return (
-      <InputSearchBase
-        searchIcon={false}
-        searchControls={
-          <AdvancedInputControls
-            isVisibleOptions={isVisibleOptions}
-            onClear={handleClear}
-            renderSearchControls={renderSearchControls}
-            validationType={validationType}
-            disabled={disabled}
-            summary={summary}
-            hasOptions={hasOptions}
-          />
+      <InputText
+        after={
+          !hideControls && (
+            <AdvancedInputControls
+              isVisibleOptions={isVisibleOptions}
+              onClear={handleClear}
+              renderSearchControls={renderSearchControls}
+              validationType={validationType}
+              disabled={disabled}
+              summary={summary}
+              hasOptions={hasOptions}
+            />
+          )
         }
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         validationType={validationType}
+        height="auto"
         {...props}
       >
         {chips}
-      </InputSearchBase>
+      </InputText>
     )
   }
 )
 
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
+const inputHeightStyle = css`
+  height: calc(${inputHeight} - 6px);
+`
+
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
 
-  ${Flex} {
+  .inner {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
   }
 
-  ${InputText} {
+  input {
     min-width: 25%;
-    padding-right: 0;
     width: auto;
+    ${inputHeightStyle}
+  }
+
+  ${InputTextContent} {
+    ${inputHeightStyle}
   }
 `

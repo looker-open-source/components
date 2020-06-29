@@ -26,120 +26,194 @@
 
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
-import { SpaceProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { forwardRef, Ref, useRef } from 'react'
+import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
+import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
-import { InputProps, inputPropKeys } from '../InputProps'
-import { Flex } from '../../../Layout'
+import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
+import { innerInputStyle } from '../innerInputStyle'
 import {
   SimpleLayoutProps,
   simpleLayoutCSS,
 } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
-import { useForkedRef } from '../../../utils'
+import { useForkedRef, useWrapEvent } from '../../../utils'
+import { InlineInputTextBase } from '../InlineInputText'
 
-export interface InputTextProps
+export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
-    Omit<InputProps, 'type'> {
-  iconAfter?: IconNames
-  iconBefore?: IconNames
-  prefix?: string
-  suffix?: string
+    Omit<InputProps, 'type'>,
+    InputTextTypeProps {
   /**
-   *
-   * @default 'text'
+   * Allows the input width to resize with the value or placeholder
+   * Styles will default to `width: auto` and `display: inline-flex`
+   * Do not use with children
    */
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+  autoResize?: boolean
+
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseLeave?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
-const InputComponent = forwardRef(
+export interface InputTextProps extends InputTextBaseProps {
+  /**
+   * Content to place after the input
+   * If a string is used, formatting will be automatically applied
+   * If JSX is used, it will displace the built-in validation icon
+   */
+  after?: ReactNode
+  iconAfter?: IconNames
+
+  /**
+   * Content to place before the input
+   * If a string is used, formatting will be automatically applied
+   */
+  before?: ReactNode
+  iconBefore?: IconNames
+}
+
+const InputTextLayout = forwardRef(
   (
     {
+      autoResize,
+      children,
       className,
-      iconAfter,
+
+      before,
       iconBefore,
-      prefix,
-      suffix,
+
+      after,
+      iconAfter,
+
       type = 'text',
       validationType,
+
+      // mouse handlers need to be applied to the external div rather than the input
+      onClick,
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+
       ...props
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
+    if (before && iconBefore) {
+      // eslint-disable-next-line no-console
+      console.warn('Use before or iconBefore, but not both at the same time.')
+      return null
+    }
+
+    if (after && iconAfter) {
+      // eslint-disable-next-line no-console
+      console.warn('Use after or iconAfter, but not both at the same time.')
+      return null
+    }
+
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const focusInput = () => internalRef.current && internalRef.current.focus()
 
-    if (iconBefore && prefix) {
-      // eslint-disable-next-line no-console
-      console.warn(`Only use IconBefore or prefix not both at the same time. `)
-      return null
+    function handleMouseDown() {
+      // set focus to input on mousedown of container to mimic natural input behavior
+      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      window.requestAnimationFrame(() => {
+        internalRef.current && internalRef.current.focus()
+      })
     }
 
-    if (iconAfter && suffix) {
-      // eslint-disable-next-line no-console
-      console.warn(`Only use IconAfter or suffix not both at the same time. `)
-      return null
+    const mouseHandlers = {
+      onClick,
+      onMouseDown: useWrapEvent(handleMouseDown, onMouseDown),
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
     }
 
-    const before = iconBefore ? (
-      <InputIconStyle paddingRight="xsmall">
-        <Icon name={iconBefore} size={20} />
-      </InputIconStyle>
-    ) : prefix ? (
-      <InputIconStyle paddingRight="xsmall">
-        <Text fontSize="small">{prefix}</Text>
-      </InputIconStyle>
-    ) : null
+    const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
+      <InputTextContent pl="xxsmall">
+        {iconBefore ? (
+          <Icon name={iconBefore} size={20} />
+        ) : (
+          <Text fontSize="small">{before}</Text>
+        )}
+      </InputTextContent>
+    )
 
-    const after = iconAfter ? (
-      <InputIconStyle paddingLeft="xsmall">
-        <Icon name={iconAfter} size={20} />
-      </InputIconStyle>
-    ) : suffix ? (
-      <InputIconStyle paddingLeft="xsmall">
-        <Text fontSize="small">{suffix}</Text>
-      </InputIconStyle>
-    ) : null
+    const beforeToUse = iconBeforeOrPrefix || before || null
 
-    const inputProps = pick(
-      omit(props, 'color', 'height', 'width'),
-      inputPropKeys
+    const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
+      <InputTextContent pl="xsmall" pr="xxsmall">
+        {iconAfter ? (
+          <Icon name={iconAfter} size={20} />
+        ) : (
+          <Text fontSize="small">{after}</Text>
+        )}
+      </InputTextContent>
+    )
+
+    const validationIcon = validationType === 'error' && (
+      <InputTextContent
+        pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
+        pr="xxsmall"
+      >
+        <Icon color="critical" name="CircleInfo" size={20} />
+      </InputTextContent>
+    )
+
+    const afterToUse = iconAfterOrSuffix ? (
+      <>
+        {iconAfterOrSuffix}
+        {validationIcon}
+      </>
+    ) : (
+      after || validationIcon
+    )
+
+    const inputProps = {
+      ...pick(omitStyledProps(props), inputPropKeys),
+      'aria-invalid': validationType === 'error' ? true : undefined,
+      type,
+    }
+    const input = <input {...inputProps} ref={ref} />
+
+    const inner = children ? (
+      // Support for rendering chips in InputChips and SelectMulti
+      <div className="inner">
+        {children}
+        {input}
+      </div>
+    ) : autoResize ? (
+      <InlineInputTextBase {...inputProps} ref={ref} />
+    ) : (
+      input
     )
 
     return (
-      <InputLayout className={className} onClick={focusInput}>
-        {before && before}
-        <input
-          {...inputProps}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          type={type}
-          ref={ref}
-        />
-        {after && after}
-        {validationType && (
-          <InputIconStyle paddingLeft="xsmall">
-            <Icon color="critical" name="CircleInfo" size={20} />
-          </InputIconStyle>
-        )}
-      </InputLayout>
+      <div
+        className={className}
+        {...mouseHandlers}
+        {...omitStyledProps(omit(props, inputPropKeys))}
+      >
+        {beforeToUse && beforeToUse}
+        {inner}
+        {afterToUse && afterToUse}
+      </div>
     )
   }
 )
+
+InputTextLayout.displayName = 'InputComponent'
 
 export const inputTextHover = css`
   border-color: ${(props) => props.theme.colors.ui3};
@@ -159,40 +233,12 @@ export const inputTextDisabled = css`
 
 export const inputHeight = '36px'
 
-export const InputLayout = styled.div`
+export const InputTextContent = styled.div<SpaceProps>`
+  ${space}
   align-items: center;
-  background-color: ${(props) => props.theme.colors.field};
-  display: inline-flex;
-  height: ${inputHeight};
-  justify-content: space-evenly;
-
-  input {
-    background: transparent;
-    border: none;
-    flex: 1;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    height: 100%;
-    max-width: 100%;
-    outline: none;
-    padding: 0;
-    width: 100%;
-  }
-
-  ::placeholder {
-    color: ${(props) => props.theme.colors.text5};
-  }
-
-  &:hover {
-    ${inputTextHover}
-  }
-  &:focus,
-  :focus-within {
-    ${inputTextFocus}
-  }
-`
-
-export const InputIconStyle = styled(Flex)`
   color: ${(props) => props.theme.colors.text5};
+  display: flex;
+  height: 100%;
   pointer-events: none;
 `
 
@@ -221,23 +267,41 @@ export const inputCSS = css`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-export const InputText = styled(InputComponent).attrs(
-  (props: InputTextProps) => {
-    const padding: SpaceProps = {
-      px: props.px || props.p || 'small',
-      py: props.py || props.p || 'none',
-    }
-    if (props.prefix || props.iconBefore) {
-      padding.pl = 'xsmall'
-    }
-    if (props.suffix || props.iconAfter) {
-      padding.pr = 'xsmall'
-    }
-    return padding
-  }
-)<InputTextProps>`
+export const InputText = styled(InputTextLayout)<InputTextProps>`
+  align-items: center;
+  cursor: text;
+  display: inline-flex;
+  justify-content: space-evenly;
+  padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
+
   ${simpleLayoutCSS}
   ${inputCSS}
+
+  ${InlineInputTextBase} {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+    span {
+      padding: 0 ${({ theme: { space } }) => space.xsmall};
+    }
+  }
+
+  input {
+    ${innerInputStyle}
+    flex: 1;
+    font-size: ${(props) => props.theme.fontSizes.small};
+    max-width: 100%;
+    padding: 0 ${({ theme: { space } }) => space.xsmall};
+  }
+
+  &:hover {
+    ${inputTextHover}
+  }
+  &:focus,
+  :focus-within {
+    ${inputTextFocus}
+  }
   ${(props) => (props.disabled ? inputTextDisabled : '')}
   ${inputTextValidation}
 `
@@ -245,7 +309,4 @@ export const InputText = styled(InputComponent).attrs(
 InputText.defaultProps = {
   height: inputHeight,
   type: 'text',
-  width: '100%',
 }
-
-InputComponent.displayName = 'InputComponent'

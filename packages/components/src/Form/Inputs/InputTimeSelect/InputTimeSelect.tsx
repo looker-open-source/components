@@ -298,7 +298,7 @@ const InputTimeSelectLayout = forwardRef(
     }
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' || e.key === 'Tab') {
         if (inputTextValue.length) {
           // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
           const option = createOptionFromLabel(format, inputTextValue)

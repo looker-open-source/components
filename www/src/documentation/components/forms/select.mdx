@@ -305,6 +305,29 @@ like width and height, separately from the input.
 </Space>
 ```
 
+## autoResize
+
+Use the `autoResize` prop to allow the width of the component to adjust to the current value or placeholder, which is useful
+when the `Select` is meant to be rendered inline and horizontal space is at a premium.
+The container will default to `display: inline-flex` and both the container and list will default to `width: auto`.
+
+```jsx
+<Select
+  autoResize
+  placeholder="Width adjusts to current value"
+  options={[
+    {
+      value: 'short',
+      label: 'Short label',
+    },
+    {
+      value: 'long',
+      label: 'Very long label that widens the input considerably',
+    },
+  ]}
+/>
+```
+
 ## Indicator
 
 The default indicator renders a checkmark for the selected option and a spacer for the unselected options.
