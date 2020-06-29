@@ -86,6 +86,8 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
+export const InnerTreeItem = styled(TreeItem)``
+
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
@@ -113,8 +115,8 @@ const TreeLayout: FC<TreeProps> = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const disclosure = (
-    <TreeItem
+  const innerTreeItem = (
+    <InnerTreeItem
       detail={detail}
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
@@ -122,13 +124,13 @@ const TreeLayout: FC<TreeProps> = ({
       icon={icon}
     >
       {label}
-    </TreeItem>
+    </InnerTreeItem>
   )
 
-  const internalAccordion = (
+  const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
       <AccordionDisclosure ref={disclosureRef} fontWeight={fontWeight}>
-        {disclosure}
+        {innerTreeItem}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
@@ -144,7 +146,7 @@ const TreeLayout: FC<TreeProps> = ({
       }}
     >
       <TreeStyle border={hasBorder} depth={depth} hovered={isHovered}>
-        {internalAccordion}
+        {innerAccordion}
       </TreeStyle>
     </TreeContext.Provider>
   )
@@ -196,8 +198,8 @@ interface TreeStyleProps {
   hovered: boolean
 }
 
-const TreeStyle = styled.div<TreeStyleProps>`
-  ${AccordionContent} {
+export const TreeStyle = styled.div<TreeStyleProps>`
+  & > ${Accordion} > ${AccordionContent} {
     ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
   }
 
@@ -210,24 +212,18 @@ const TreeStyle = styled.div<TreeStyleProps>`
     ${({ depth, theme }) => generateIndent(depth, theme)}
   }
 
-  ${AccordionDisclosure} ${TreeItemLabel} {
+  ${InnerTreeItem} > ${TreeItemLabel} {
     background-color: transparent;
     padding: ${({ theme }) => theme.space.none};
   }
 
-  ${AccordionDisclosure} ${TreeItem} {
+  ${InnerTreeItem} {
     border-width: 0;
     height: 100%;
   }
 
-  ${TreeGroupLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
-  }
-
-  ${TreeItemLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
-  }
-
+  ${TreeGroupLabel},
+  ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
