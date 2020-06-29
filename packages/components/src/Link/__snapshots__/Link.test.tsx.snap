@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Link with an id 1`] = `
-.c0 {
+exports[`Link Snapshot 1`] = `
+Array [
+  .c0 {
   color: #0059b2;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -9,63 +10,56 @@ exports[`A Link with an id 1`] = `
 
 .c0:focus,
 .c0:hover {
+  color: #0059b2;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
 <a
-  className="c0"
-  color="link"
-  href="https://looker.com"
-  id="link-id"
-  textDecoration="none"
->
-  🥑
-</a>
-`;
-
-exports[`A default Link 1`] = `
-.c0 {
-  color: #0059b2;
+    className="c0"
+    href="https://looker.com"
+  >
+    Avocado
+  </a>,
+  .c0 {
+  color: #6C43E0;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c0:focus,
 .c0:hover {
+  color: #6C43E0;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
 <a
-  className="c0"
-  color="link"
-  href="https://looker.com"
-  textDecoration="none"
->
-  🥑
-</a>
-`;
-
-exports[`A external Link 1`] = `
-.c0 {
+    className="c0"
+    href="https://looker.com"
+    keyColor={true}
+  >
+    Avocado
+  </a>,
+  .c0 {
   color: #0059b2;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .c0:focus,
 .c0:hover {
+  color: #0059b2;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
 <a
-  className="c0"
-  color="link"
-  href="https://looker.com"
-  textDecoration="none"
->
-  🥑
-</a>
+    className="c0"
+    href="https://looker.com"
+    underline={true}
+  >
+    Avocado
+  </a>,
+]
 `;

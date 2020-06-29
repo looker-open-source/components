@@ -31,6 +31,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,
@@ -49,7 +50,28 @@ export interface LinkProps
   underline?: boolean
 }
 
-export const Link = styled.a<LinkProps>`
+/**
+ * `target="_blank" can be used to reverse tab-nab
+ * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+ */
+const noTabNab = 'noopener noreferrer'
+
+const LinkLayout = forwardRef(
+  ({ ...props }: LinkProps, ref: Ref<HTMLAnchorElement>) => {
+    const rel =
+      props.target === '_blank'
+        ? props.rel
+          ? `${props.rel} ${noTabNab}`
+          : noTabNab
+        : props.rel
+
+    return <a {...props} ref={ref} rel={rel} />
+  }
+)
+
+LinkLayout.displayName = 'LinkLayout'
+
+export const Link = styled(LinkLayout)`
   ${reset}
   ${typography}
 
