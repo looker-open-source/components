@@ -282,11 +282,6 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.10.3.tgz#aac45cccf8bc1873b99a85f34bceef3beb5d3244"
   integrity sha512-j/+j8NAWUTxOtx4LKHybpSClxHoq6I91DQ/mKgAXn5oNUPIUiGppjPIX3TDtJWPrdfP9Kfl7e4fgVMiQR9VE/g==
 
-"@babel/helper-plugin-utils@^7.10.3":
-  version "7.10.3"
-  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.10.3.tgz#aac45cccf8bc1873b99a85f34bceef3beb5d3244"
-  integrity sha512-j/+j8NAWUTxOtx4LKHybpSClxHoq6I91DQ/mKgAXn5oNUPIUiGppjPIX3TDtJWPrdfP9Kfl7e4fgVMiQR9VE/g==
-
 "@babel/helper-regex@^7.10.1":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.10.1.tgz#021cf1a7ba99822f993222a001cc3fec83255b96"
@@ -475,7 +470,7 @@
     "@babel/helper-plugin-utils" "^7.10.1"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.0"
 
-"@babel/plugin-proposal-optional-chaining@^7.10.1", "@babel/plugin-proposal-optional-chaining@^7.10.3", "@babel/plugin-proposal-optional-chaining@^7.9.0":
+"@babel/plugin-proposal-optional-chaining@^7.10.3", "@babel/plugin-proposal-optional-chaining@^7.9.0":
   version "7.10.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.10.3.tgz#9a726f94622b653c0a3a7a59cdce94730f526f7c"
   integrity sha512-yyG3n9dJ1vZ6v5sfmIlMMZ8azQoqx/5/nZTSWX1td6L1H1bsjzA8TInDChpafCZiJkeOFzp/PtrfigAQXxI1Ng==
@@ -9676,10 +9671,10 @@ gatsby-cli@^2.12.26:
     ink "^2.7.1"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.3.0, gatsby-core-utils@^1.3.5, gatsby-core-utils@^1.3.7:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.3.7.tgz#235797092a8566454229fff0959f669089225c91"
-  integrity sha512-AF8cLRlVzH8xAGLGxa9YbY3Pkf1PaqqI/fGGBPsvsh4C4vx6yoOjNOMQ3KaG4pSc/0EYeVafV7De0H7IU+CfUQ==
+gatsby-core-utils@^1.3.0, gatsby-core-utils@^1.3.5, gatsby-core-utils@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.3.8.tgz#e6d15d8cb24fa7e16a0af01a5e262ac9c4f31913"
+  integrity sha512-wVUqF8/DQMhiCyIKxVKjeDp4aN8x4/f+e/gS78sgaU0fleUpMMbQmeV+ASLh0Kk11yFs0fl4+EWWLFCHY2sWmg==
   dependencies:
     ci-info "2.0.0"
     configstore "^5.0.1"
@@ -9894,18 +9889,18 @@ gatsby-recipes@^0.1.22:
     ws "^7.3.0"
     xstate "^4.9.1"
 
-gatsby-source-filesystem@^2.3.13:
-  version "2.3.13"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.3.13.tgz#e90c9e0b39b2889af6aa93440f81ee16da5410ea"
-  integrity sha512-x4YrPX8Y0Q32iO7E2lpOpIzT0C3RCcZtmHHrCdvkgGcOUSerEAEWHnBWYG2FQqnGsJ+YPBGwC2a2ENN4sLfc4Q==
+gatsby-source-filesystem@^2.3.14:
+  version "2.3.14"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.3.14.tgz#bd89e91816589b2dd961dbd03f5e3ed2a286e32f"
+  integrity sha512-AUnSikwa8+bW0DFWOV1Dq8ZUNxCnEGmx7uxxutLTolHSMhFct2cpxwaXX5ITtjqb9KgfcQ+y0EbKhzXLWpmOzg==
   dependencies:
-    "@babel/runtime" "^7.10.2"
+    "@babel/runtime" "^7.10.3"
     better-queue "^3.8.10"
     bluebird "^3.7.2"
     chokidar "3.4.0"
     file-type "^12.4.2"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.3.7"
+    gatsby-core-utils "^1.3.8"
     got "^9.6.0"
     md5-file "^3.2.3"
     mime "^2.4.6"

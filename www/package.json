@@ -20,7 +20,7 @@
     "gatsby-plugin-styled-components": "^3.3.5",
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.4.8",
-    "gatsby-source-filesystem": "^2.3.13",
+    "gatsby-source-filesystem": "^2.3.14",
     "gh-pages": "^3.1.0",
     "lodash": "^4.17.15",
     "polished": "^3.6.5",
