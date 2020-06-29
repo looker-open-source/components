@@ -204,6 +204,7 @@ const TreeStyle = styled.div<TreeStyleProps>`
   & > ${Accordion} > ${AccordionDisclosure} {
     background-clip: padding-box;
     background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
+    border-radius: ${({ theme }) => theme.radii.medium};
     height: 25px;
     padding: ${({ theme }) => theme.space.xxsmall};
     ${({ depth, theme }) => generateIndent(depth, theme)}
