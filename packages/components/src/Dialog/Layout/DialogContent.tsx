@@ -117,7 +117,7 @@ const Outer = styled.div<{ borderBottom?: boolean }>`
   ${layout}
 
   ${({ borderBottom, theme: { colors } }) =>
-    borderBottom && `border-bottom: 1px solid ${colors.ui2}`}
+    borderBottom && `border-bottom: 1px solid ${colors.ui2};`}
 
   flex: 8;
   overflow: auto;

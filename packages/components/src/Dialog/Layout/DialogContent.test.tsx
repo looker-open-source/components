@@ -26,17 +26,42 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { DialogContent } from './DialogContent'
 
-test('DialogContent - no overflow', () => {
-  assertSnapshot(<DialogContent>Stuff</DialogContent>)
-})
+describe('DialogContent', () => {
+  test('Snapshot', () => {
+    assertSnapshot(<DialogContent>Stuff</DialogContent>)
+  })
 
-test('DialogContent - no overflow', () => {
-  assertSnapshot(
-    <DialogContent>
-      <div style={{ height: '4rem' }}>Stuff</div>
-    </DialogContent>
-  )
+  test('Snapshot - No overflow', () => {
+    assertSnapshot(
+      <DialogContent>
+        <div style={{ height: '4rem' }}>Stuff</div>
+      </DialogContent>
+    )
+  })
+
+  test('borderBottom', () => {
+    const { getByText } = renderWithTheme(
+      <>
+        <DialogContent>No border</DialogContent>
+        <DialogContent borderBottom>Has border</DialogContent>
+      </>
+    )
+
+    const noBorder = getByText('No border')
+    expect(noBorder).toBeTruthy()
+    const noBorderOuter = noBorder !== null ? noBorder.parentNode : undefined
+    expect(noBorderOuter).toBeTruthy()
+    const noBorderStyle = window.getComputedStyle(noBorderOuter as Element)
+    expect(noBorderStyle.borderBottom).toBeFalsy()
+
+    const hasBorder = getByText('Has border')
+    expect(hasBorder).toBeTruthy()
+    const hasBorderOuter = hasBorder !== null ? hasBorder.parentNode : undefined
+    expect(hasBorderOuter).toBeTruthy()
+    const hasBorderStyle = window.getComputedStyle(hasBorderOuter as Element)
+    expect(hasBorderStyle.borderBottom).toBe('1px solid #DEE1E5')
+  })
 })
