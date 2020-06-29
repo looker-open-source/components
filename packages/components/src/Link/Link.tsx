@@ -26,11 +26,7 @@
 
 import {
   CompatibleHTMLProps,
-  ColorProps,
-  color,
   reset,
-  textDecoration,
-  TextDecorationProps,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
@@ -38,23 +34,42 @@ import styled from 'styled-components'
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,
-    ColorProps,
-    TextDecorationProps,
-    TypographyProps {}
+    TypographyProps {
+  /**
+   * Use the theme `key` color rather than `link`
+   * @default false
+   */
+  keyColor?: boolean
+
+  /**
+   * Display underline.
+   * NOTE: Underline is displayed when Link has :hover or :focus
+   * @default false
+   */
+  underline?: boolean
+}
 
 export const Link = styled.a<LinkProps>`
   ${reset}
-  ${color}
   ${typography}
-  ${textDecoration}
+
+  color: ${({ keyColor, theme: { colors } }) =>
+    keyColor ? colors.key : colors.link};
+  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
+
+  &:visited {
+    /* @TODO - We should probably support this */
+  }
 
   &:focus,
   &:hover {
+    color: ${({ keyColor, theme: { colors } }) =>
+      keyColor ? colors.key : colors.link};
     text-decoration: underline;
   }
-`
 
-Link.defaultProps = {
-  color: 'link',
-  textDecoration: 'none',
-}
+  &:active,
+  &.active {
+    /* @TODO - We should probably support this */
+  }
+`
