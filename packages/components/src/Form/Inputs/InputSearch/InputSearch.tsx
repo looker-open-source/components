@@ -32,26 +32,19 @@ import React, {
   FormEvent,
   MouseEvent,
 } from 'react'
-import styled from 'styled-components'
-import { Icon } from '../../../Icon'
-import { InputSearchBase, InputSearchBaseProps } from './InputSearchBase'
+import { InputText, InputTextBaseProps } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
-  extends Omit<
-    InputSearchBaseProps,
-    'searchIcon' | 'searchControls' | 'validationType'
-  > {
+  extends Omit<InputTextBaseProps, 'children' | 'value' | 'defaultValue'> {
   summary?: string
   hideControls?: boolean
   hideSearchIcon?: boolean
   onClear?: (e: MouseEvent<HTMLButtonElement>) => void
-}
 
-export const SearchIcon = styled(Icon)`
-  color: ${(props) => props.theme.colors.text5};
-  padding-left: ${(props) => props.theme.space.small};
-`
+  defaultValue?: string
+  value?: string
+}
 
 export const InputSearch = forwardRef(
   (
@@ -68,7 +61,7 @@ export const InputSearch = forwardRef(
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValue] = useState<string | undefined>()
+    const [value, setValue] = useState('')
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
@@ -87,20 +80,18 @@ export const InputSearch = forwardRef(
 
     // only update when valueProp changes, but not defaultValue
     useEffect(() => {
-      setValue(valueProp || defaultValue)
+      setValue(valueProp || defaultValue || '')
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [valueProp])
 
     return (
-      <InputSearchBase
+      <InputText
         {...props}
         value={value}
         ref={ref}
         onChange={handleChange}
-        searchIcon={
-          hideSearchIcon ? undefined : <SearchIcon name="Search" size={30} />
-        }
-        searchControls={
+        iconBefore={hideSearchIcon ? undefined : 'Search'}
+        after={
           !hideControls ? (
             <InputSearchControls
               onClear={handleClear}

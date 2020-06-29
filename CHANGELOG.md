@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
 
+## [0.9.4] - 2020-06-29
+
+### Added
+
+- `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
+
+### Removed
+
+- `InputText` props `prefix` and `suffix` are replaced with `before` and `after`, which accept `ReactNode`
+
+### Fixed
+
+- `InputTimeSelect` tab key behavior
+
 ## [0.9.3] - 2020-06-26
 
 ### Fixed

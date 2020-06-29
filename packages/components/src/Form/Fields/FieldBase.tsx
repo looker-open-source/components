@@ -29,6 +29,10 @@ import { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
 
 export interface FieldBaseProps {
   className?: string
+  /**
+   * Allows Field to adjust to the width of the input (InputText and Select)
+   */
+  autoResize?: boolean
   disabled?: boolean
   /**
    * Defines the label for the field.

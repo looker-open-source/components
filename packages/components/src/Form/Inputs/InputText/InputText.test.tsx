@@ -34,13 +34,18 @@ import {
 
 import { InputText } from './InputText'
 
+const globalConsole = global.console
+const warnMock = jest.fn()
+
 beforeEach(() => {
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.console.warn = jest.fn()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
 })
 
 afterEach(() => {
-  jest.clearAllMocks()
+  jest.resetAllMocks()
+  global.console = globalConsole
 })
 
 test('InputText default', () => {
@@ -75,6 +80,15 @@ test('InputText with aria-describedby', () => {
   assertSnapshot(<InputText aria-describedby="some-id" />)
 })
 
+test('InputText autoResize', () => {
+  const { container, getByPlaceholderText, getByText } = renderWithTheme(
+    <InputText autoResize placeholder="resize me" />
+  )
+  expect(container.firstChild).toHaveStyle('width: auto')
+  expect(getByPlaceholderText('resize me')).toHaveStyle('position: absolute')
+  expect(getByText('resize me')).toBeVisible()
+})
+
 test('InputText with an error validation', () => {
   const { getByTitle, getByPlaceholderText } = renderWithTheme(
     <InputText placeholder="Hello" validationType="error" />
@@ -82,6 +96,46 @@ test('InputText with an error validation', () => {
 
   expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
   expect(getByTitle('Circle Info')).toBeDefined()
+})
+
+test('InputText with a before & after', () => {
+  const { getByText } = renderWithTheme(
+    <InputText before={<span>before</span>} after={<span>after</span>} />
+  )
+
+  expect(getByText('before')).toBeVisible()
+  expect(getByText('after')).toBeVisible()
+})
+
+test('InputText with an iconBefore & iconAfter', () => {
+  const { getByTitle } = renderWithTheme(
+    <InputText iconBefore="Favorite" iconAfter="Account" />
+  )
+
+  expect(getByTitle('Favorite')).toBeInTheDocument()
+  expect(getByTitle('Account')).toBeInTheDocument()
+})
+
+test('InputText with redundant before/after props', () => {
+  const { queryByPlaceholderText } = renderWithTheme(
+    <>
+      <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
+      <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
+    </>
+  )
+
+  expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
+  expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+  expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "Use before or iconBefore, but not both at the same time.",
+      ],
+      Array [
+        "Use after or iconAfter, but not both at the same time.",
+      ],
+    ]
+  `)
 })
 
 test('Should trigger onChange handler', () => {
