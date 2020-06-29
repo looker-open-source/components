@@ -145,12 +145,15 @@ Use the `icon` prop to display an icon left of the `TreeItem`'s content.
 
 Use the `gapSize` prop to control the distance between elements in your `TreeItem`.
 
+Use the `selected` prop to display a light grey background on a given `TreeItem`.
+
 ```jsx
 <Tree label="Cheeses" defaultOpen>
   <TreeItem
     icon="LogoRings"
     detail={<Text variant="text4">is great</Text>}
     onClick={() => alert('Clicked Swiss')}
+    selected
   >
     Swiss
   </TreeItem>
