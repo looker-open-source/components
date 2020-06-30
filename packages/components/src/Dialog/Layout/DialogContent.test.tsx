@@ -51,17 +51,9 @@ describe('DialogContent', () => {
     )
 
     const noBorder = getByText('No border')
-    expect(noBorder).toBeTruthy()
-    const noBorderOuter = noBorder !== null ? noBorder.parentNode : undefined
-    expect(noBorderOuter).toBeTruthy()
-    const noBorderStyle = window.getComputedStyle(noBorderOuter as Element)
-    expect(noBorderStyle.borderBottom).toBeFalsy()
+    expect(noBorder.parentNode).toHaveStyle('border-bottom: none')
 
     const hasBorder = getByText('Has border')
-    expect(hasBorder).toBeTruthy()
-    const hasBorderOuter = hasBorder !== null ? hasBorder.parentNode : undefined
-    expect(hasBorderOuter).toBeTruthy()
-    const hasBorderStyle = window.getComputedStyle(hasBorderOuter as Element)
-    expect(hasBorderStyle.borderBottom).toBe('1px solid #DEE1E5')
+    expect(hasBorder.parentNode).toHaveStyle('border-bottom: 1px solid #DEE1E5')
   })
 })
