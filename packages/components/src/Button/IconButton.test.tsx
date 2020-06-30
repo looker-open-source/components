@@ -153,20 +153,22 @@ test('IconButton renders focus ring on tab input but not on click', () => {
 
 test('IconButton has built-in tooltip', async () => {
   const label = 'Mark as my Favorite'
-  const { getByTitle, container } = renderWithTheme(
+  const { getByTitle, getAllByText } = renderWithTheme(
     <IconButton id="test-iconButton" label={label} icon="Favorite" />
   )
 
-  const notTooltip = container.querySelector('p') // Get Tooltip content
-  expect(notTooltip).toBeNull()
+  const notTooltip = getAllByText(label)
+  expect(notTooltip).toHaveLength(1) // accessibility text
 
   const icon = getByTitle('Favorite')
   fireEvent.mouseOver(icon)
-  const tooltip = container.querySelector('p') // Get Tooltip content
-  expect(tooltip).toHaveTextContent(label)
+
+  const tooltip = getAllByText(label)
+  expect(tooltip).toHaveLength(2)
+  expect(tooltip[1]).toBeVisible()
 
   fireEvent.mouseOut(icon)
-  await waitForElementToBeRemoved(() => container.querySelector('p'))
+  await waitForElementToBeRemoved(() => getAllByText(label)[1])
 })
 
 test('IconButton tooltipDisabled actually disables tooltip', () => {
@@ -189,9 +191,9 @@ test('IconButton tooltipDisabled actually disables tooltip', () => {
 test('IconButton built-in tooltip defers to outer tooltip', async () => {
   const tooltip = 'Add to favorites'
   const label = 'Mark as my Favorite'
-  const { container, getByText, getByTitle } = renderWithTheme(
+  const { getByText, getByTitle } = renderWithTheme(
     <Tooltip content={tooltip}>
-      <IconButton tooltipDisabled label={label} icon="Favorite" />
+      <IconButton label={label} icon="Favorite" />
     </Tooltip>
   )
 
@@ -203,9 +205,9 @@ test('IconButton built-in tooltip defers to outer tooltip', async () => {
   const iconLabel = getByText(label)
   expect(iconLabel).toBeInTheDocument()
 
-  const tooltipContents = container.querySelectorAll('p') // Get all Tooltip contents
-  expect(tooltipContents.length).toEqual(1)
+  const tooltipContents = getByText(tooltip) // Get all Tooltip contents
+  expect(tooltipContents).toBeVisible()
 
   fireEvent.mouseOut(icon)
-  await waitForElementToBeRemoved(() => container.querySelector('p'))
+  await waitForElementToBeRemoved(() => getByText(tooltip))
 })
