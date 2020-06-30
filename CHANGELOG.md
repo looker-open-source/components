@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Changed
+
+- `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
+
 ### Fixed
 
 - `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
