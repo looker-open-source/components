@@ -34,7 +34,12 @@ import React, {
   useState,
 } from 'react'
 import styled from 'styled-components'
-import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
+import {
+  SpacingSizes,
+  uiTransparencyBlend,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
+import Omit from 'lodash/omit'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
@@ -45,7 +50,8 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
 
-export interface TreeItemProps {
+export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
+  className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
    * Note: The detail container will stop propagation of events. Place your element(s) in the label
@@ -79,11 +85,11 @@ export interface TreeItemProps {
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
-
-  className?: string
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
+  children,
+  className,
   onClick,
   gapSize = 'xxsmall',
   selected,
@@ -94,6 +100,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const detailRef = useRef<HTMLDivElement>(null)
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
+
+  const htmlDivProps = Omit(props, [
+    'detail',
+    'detailAccessory',
+    'detailHoverDisclosure',
+    'icon',
+  ])
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
@@ -144,7 +157,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
       <TreeItemSpace
-        className={props.className}
+        className={className}
         focusVisible={isFocusVisible}
         gap="none"
         onBlur={handleBlur}
@@ -152,10 +165,11 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
+        {...htmlDivProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
           {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
-          <FlexItem flex="1">{props.children}</FlexItem>
+          <FlexItem flex="1">{children}</FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
         {detailAccessory && detail}
