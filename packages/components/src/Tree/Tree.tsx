@@ -31,6 +31,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
+  AccordionDisclosureStyle,
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
@@ -188,6 +189,9 @@ const TreeStyle = styled.div<TreeStyleProps>`
 
   ${AccordionDisclosure} {
     height: 25px;
+  }
+
+  ${AccordionDisclosureStyle} {
     padding: ${({ theme }) => theme.space.xxsmall};
     ${({ depth, theme }) => generateIndent(depth, theme)}
   }
