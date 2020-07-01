@@ -16,6 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tree` and `TreeItem`
   - Updated docs and test suite
 
+### Fixed
+
+- `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
+- `SelectMulti` with `freeInput` not saving input value on tab key
+- `SelectMulti` list not closing on blur
+
+
 ## [0.9.5] - 2020-07-01
 
 ### Added
