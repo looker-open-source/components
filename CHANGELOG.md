@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
+- `Dialog` focus not returning to trigger when closed
+- `Select` not opening when rendered in a `Dialog` opened from a `Popover`
 
 ## [0.9.4] - 2020-06-29
 

@@ -30,7 +30,7 @@ import {
   Button,
   ButtonOutline,
   ButtonTransparent,
-  DialogManager,
+  Dialog,
   FieldSelect,
   Heading,
   Menu,
@@ -41,7 +41,7 @@ import {
   Paragraph,
   Popover,
   PopoverContent,
-  Select,
+  SpaceVertical,
   usePopover,
   useToggle,
 } from '@looker/components'
@@ -86,7 +86,7 @@ export const PopoverFocusTrap = () => {
         content={
           <PopoverContent p="large" width="360px">
             <Paragraph>
-              Does tabbing focus only loop through these 3 buttons?
+              Does tabbing focus only loop through these 3 buttons &amp; Select?
             </Paragraph>
             <Paragraph>
               Does clicking (or mousedown) each trigger an alert?
@@ -111,6 +111,9 @@ export const PopoverFocusTrap = () => {
               aria-label="Fruits"
               defaultValue="1"
             />
+            <Paragraph>
+              Does it scroll here when the Select is closed?
+            </Paragraph>
             <Paragraph>Long text</Paragraph>
             <Paragraph>Long text</Paragraph>
             <Paragraph>Long text</Paragraph>
@@ -129,56 +132,84 @@ export const PopoverFocusTrap = () => {
       >
         <Button mt="medium">Open Focus Trap Test Popover</Button>
       </Popover>
+      <Paragraph>Does it scroll here when the Popover is closed?</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
+      <Paragraph>Long text</Paragraph>
     </Box>
   )
 }
 
-export const MenuOpenDialog = () => {
-  const { value, toggle } = useToggle(true)
-  function togglePopovers() {
-    toggle()
+export const OverlayOpenDialog = () => {
+  const { value, setOn, setOff } = useToggle()
+  function openAlert() {
+    alert(`It's working!`)
   }
-  useEffect(() => {
-    const int = window.setInterval(() => toggle(), 2000)
-    return () => {
-      window.clearInterval(int)
-    }
-  }, [toggle])
   return (
-    <Box mt="large">
-      <Heading>Menu Opening Dialog</Heading>
+    <SpaceVertical mt="large" align="start">
+      <Heading>Popover Opening a Dialog</Heading>
+      <Popover
+        content={
+          <Button m="large" onClick={setOn}>
+            Open Dialog
+          </Button>
+        }
+      >
+        <Button>Open Popover</Button>
+      </Popover>
+      <Dialog isOpen={value} onClose={setOff}>
+        <DialogContent>
+          <SpaceVertical align="start">
+            <Paragraph>Try opening the Select and picking an option:</Paragraph>
+            <FieldSelect
+              label="Default Value"
+              width={300}
+              options={options}
+              aria-label="Fruits"
+              defaultValue="1"
+            />
+            <Paragraph>Try clicking the button:</Paragraph>
+            <Button onClick={openAlert}>Open Alert</Button>
+          </SpaceVertical>
+        </DialogContent>
+      </Dialog>
+      <Heading>Menu Opening a Dialog</Heading>
       <Menu>
         <MenuDisclosure tooltip="Select your favorite kind">
           <Button mr="small" mt="medium">
             Open Menu
           </Button>
         </MenuDisclosure>
-        <DialogManager
-          content={
-            <DialogContent>
-              <Paragraph>Some content inside the Dialog</Paragraph>
-              <Button onClick={togglePopovers}>Open Alert</Button>
-              {value && <Placement />}
-            </DialogContent>
-          }
-        >
-          <MenuList>
-            <MenuItem>Open Dialog</MenuItem>
-          </MenuList>
-        </DialogManager>
+        <MenuList>
+          <MenuItem onClick={setOn}>Open Dialog</MenuItem>
+        </MenuList>
       </Menu>
-      <DialogManager
-        content={
-          <DialogContent>
-            <Paragraph>Some content inside the Dialog</Paragraph>
-            <Button onClick={togglePopovers}>Open Alert</Button>
-            {value && <Placement />}
-          </DialogContent>
-        }
-      >
-        {(onClick) => <Button onClick={onClick}>Open Modal</Button>}
-      </DialogManager>
-    </Box>
+    </SpaceVertical>
   )
 }
 
@@ -197,7 +228,7 @@ export const RenderProps = () => (
 
 export const RenderPropsSpread = () => (
   <Popover content={popoverContent}>
-    {(...props) => <button {...props}>Test</button>}
+    {(props) => <button {...props}>Test</button>}
   </Popover>
 )
 
@@ -206,9 +237,6 @@ export const Placement = () => {
     <PopoverContent>
       <Paragraph width={300} p="xxlarge">
         👋 Hello, I am a popover!
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Select options={[{ value: 'Apples' }, { value: 'Oranges' }]} />
       </Paragraph>
     </PopoverContent>
   )
@@ -221,8 +249,8 @@ export const Placement = () => {
           <Button>Default</Button>
         </Popover>
 
-        <Popover placement="top" content={popoverContent}>
-          <Button>Top</Button>
+        <Popover content={popoverContent}>
+          <Button>Default</Button>
         </Popover>
       </Box>
     </Box>
