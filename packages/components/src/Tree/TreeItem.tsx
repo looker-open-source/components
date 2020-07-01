@@ -26,6 +26,7 @@
 
 import React, {
   FC,
+  FocusEvent,
   KeyboardEvent,
   MouseEvent,
   ReactNode,
@@ -78,10 +79,6 @@ export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
    */
   icon?: IconNames
   /**
-   * Callback that is triggered on TreeItem click
-   */
-  onClick?: () => void
-  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
@@ -90,7 +87,6 @@ export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
-  onClick,
   gapSize = 'xxsmall',
   selected,
   ...props
@@ -101,40 +97,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const htmlDivProps = Omit(props, [
+  const { onBlur, onClick, onKeyUp, ...restProps } = Omit(props, [
     'detail',
     'detailAccessory',
     'detailHoverDisclosure',
     'icon',
   ])
-
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      event.stopPropagation()
-      return
-    }
-
-    setFocusVisible(false)
-    onClick && onClick()
-  }
-
-  const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
-      event.stopPropagation()
-      return
-    }
-
-    if (event.keyCode === 9 && event.currentTarget === event.target)
-      setFocusVisible(true)
-
-    if (event.keyCode === 13) onClick && onClick()
-  }
-
-  const handleBlur = () => {
-    setFocusVisible(false)
-  }
-
-  const defaultIconSize = 12
 
   const detailAccessory = undefinedCoalesce([
     props.detailAccessory,
@@ -145,6 +113,47 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     props.detailHoverDisclosure,
     treeContext.detailHoverDisclosure,
   ])
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node) &&
+      detailAccessory
+    ) {
+      event.stopPropagation()
+      return
+    }
+
+    setFocusVisible(false)
+    onClick && onClick(event)
+  }
+
+  const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node) &&
+      detailAccessory
+    ) {
+      event.stopPropagation()
+      return
+    }
+
+    if (event.keyCode === 9 && event.currentTarget === event.target)
+      setFocusVisible(true)
+
+    if (event.keyCode === 13) {
+      event.currentTarget.click()
+    }
+
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    setFocusVisible(false)
+    onBlur && onBlur(event)
+  }
+
+  const defaultIconSize = 12
 
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>
@@ -165,7 +174,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
-        {...htmlDivProps}
+        {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
           {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
@@ -189,7 +198,7 @@ export const TreeItemSpace = styled(Space)<TreeItemSpace>`
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
-  cursor: ${({ onClick }) => onClick && 'pointer'};
+  cursor: pointer;
   height: 25px;
   outline: none;
 `
