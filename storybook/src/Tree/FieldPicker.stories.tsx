@@ -119,6 +119,7 @@ const PickerItem = () => {
             </>
           }
           detailHoverDisclosure={!overlay}
+          onClick={() => alert('Clicked on cost!')}
           selected={!!overlay}
           icon="FieldNumber"
         >
