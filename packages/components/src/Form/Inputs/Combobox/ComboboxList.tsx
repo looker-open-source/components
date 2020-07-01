@@ -133,7 +133,6 @@ const ComboboxListInternal = forwardRef(
     if (persistSelectionPropRef)
       persistSelectionPropRef.current = persistSelection
     if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
-    if (windowedOptionsPropRef) windowedOptionsPropRef.current = windowedOptions
     if (indicatorPropRef) indicatorPropRef.current = indicator
 
     // WEIRD? Reset the options ref every render so that they are always
@@ -141,13 +140,15 @@ const ComboboxListInternal = forwardRef(
     // effect to schedule this effect before the ComboboxOptions push into
     // the array
     useLayoutEffect(() => {
+      if (windowedOptionsPropRef)
+        windowedOptionsPropRef.current = windowedOptions
       if (optionsRef) optionsRef.current = []
       return () => {
         if (optionsRef) optionsRef.current = []
       }
       // Without isVisible in the dependency array,
       // updated options won't go into the optionsRef array
-    }, [optionsRef, isVisible])
+    }, [optionsRef, isVisible, windowedOptions, windowedOptionsPropRef])
 
     const handleKeyDown = useKeyDown()
     const handleBlur = useBlur()
