@@ -121,10 +121,16 @@ describe('text input', () => {
 
     const inputBox = getByPlaceholderText('Select time')
     fireEvent.click(inputBox)
+
+    // Enter key input
     fireEvent.change(inputBox, { target: { value: '2pm' } })
     fireEvent.keyDown(inputBox, { key: 'Enter' })
-
     expect(handleChange).toHaveBeenLastCalledWith('14:00')
+
+    // Tab key input
+    fireEvent.change(inputBox, { target: { value: '3:3' } }) // incomplete time string
+    fireEvent.keyDown(inputBox, { key: 'Tab' })
+    expect(handleChange).toHaveBeenLastCalledWith('03:03')
 
     fireEvent.click(document)
   })

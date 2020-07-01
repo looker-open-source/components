@@ -52,29 +52,46 @@ export function useFocusTrap(
   const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {
+    function removeTrap() {
+      trapRef.current &&
+        trapRef.current.deactivate({ returnFocus: checkFocusLost() })
+      trapRef.current = undefined
+      enableFocusTrap && enableFocusTrap()
+    }
     if (element && value) {
       const autoFocusElement = element.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
-      trapRef.current = createFocusTrap(element, {
-        clickOutsideDeactivates: true,
-        escapeDeactivates: false,
-        fallbackFocus: element,
-        onDeactivate: () => setOff(),
-        ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
-      })
+      if (trapRef.current) {
+        trapRef.current.unpause()
+      } else {
+        trapRef.current = createFocusTrap(element, {
+          clickOutsideDeactivates: true,
+          escapeDeactivates: false,
+          fallbackFocus: element,
+          onDeactivate: () => setOff(),
+          ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
+        })
+      }
       disableFocusTrap && disableFocusTrap()
       // Wait for any other focus trap to complete deactivation
       window.setTimeout(() => trapRef.current && trapRef.current.activate(), 0)
     } else {
-      trapRef.current &&
-        trapRef.current.deactivate({ returnFocus: checkFocusLost() })
-      enableFocusTrap && enableFocusTrap()
+      if (element) {
+        // If element is defined but value is false it's because of either of the following
+        // a) The focus trap is being superseded by another dialog or popover
+        // b) The dialog is closing and the element will be removed shortly
+        // Either way we wait till the element is removed to deactivate the trap and return focus to the trigger
+        trapRef.current && trapRef.current.pause()
+      } else {
+        removeTrap()
+      }
     }
 
     return () => {
-      trapRef.current &&
-        trapRef.current.deactivate({ returnFocus: checkFocusLost() })
+      if (!element || document.body.compareDocumentPosition(element) !== 20) {
+        removeTrap()
+      }
     }
   }, [value, element, disableFocusTrap, enableFocusTrap, setOff])
 

@@ -9,7 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `DialogHeader` now supports `detail` prop as alternative to default `close` icon
+- `DialogHeader`
+  - Supports `detail` prop as alternative to default `close` icon
+  - Supports `fontWeight` & `fontSize` for backwards compatibility
+
+### Changed
+
+- `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
+
+### Fixed
+
+- `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
+- `Dialog` focus not returning to trigger when closed
+- `Select` not opening when rendered in a `Dialog` opened from a `Popover`
+
+## [0.9.4] - 2020-06-29
+
+### Added
+
+- `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
+
+### Removed
+
+- `InputText` props `prefix` and `suffix` are replaced with `before` and `after`, which accept `ReactNode`
+
+### Fixed
+
+- `InputTimeSelect` tab key behavior
 
 ## [0.9.3] - 2020-06-26
 

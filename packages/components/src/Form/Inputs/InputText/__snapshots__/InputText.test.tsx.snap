@@ -6,45 +6,73 @@ exports[`InputText default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -59,23 +87,9 @@ exports[`InputText default 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     type="text"
@@ -89,45 +103,75 @@ exports[`InputText should accept disabled 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -142,29 +186,13 @@ exports[`InputText should accept disabled 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c1:hover {
+.c0:hover {
   border-color: #DEE1E5;
 }
 
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     disabled={true}
@@ -179,45 +207,73 @@ exports[`InputText should accept readOnly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -232,23 +288,9 @@ exports[`InputText should accept readOnly 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     readOnly={true}
@@ -263,45 +305,73 @@ exports[`InputText should accept required 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -316,23 +386,9 @@ exports[`InputText should accept required 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     required={true}
@@ -347,45 +403,73 @@ exports[`InputText with a placeholder 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -400,23 +484,9 @@ exports[`InputText with a placeholder 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     placeholder="I am a placeholder"
@@ -431,45 +501,73 @@ exports[`InputText with a value 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -484,23 +582,9 @@ exports[`InputText with a value 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     type="text"
@@ -515,45 +599,73 @@ exports[`InputText with aria-describedby 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -568,23 +680,9 @@ exports[`InputText with aria-describedby 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     aria-describedby="some-id"
@@ -599,45 +697,73 @@ exports[`InputText with name and id 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
+  cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36px;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c0 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .c1 span {
+  padding: 0 0.5rem;
 }
 
 .c0 input {
   background: transparent;
   border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 0.875rem;
-  height: 100%;
   max-width: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
+  padding: 0 0.5rem;
 }
 
-.c0::-webkit-input-placeholder {
+.c0 input::-webkit-search-decoration,
+.c0 input::-webkit-search-cancel-button,
+.c0 input::-webkit-search-results-button,
+.c0 input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c0::-moz-placeholder {
+.c0 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c0:-ms-input-placeholder {
+.c0 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c0::placeholder {
+.c0 input::placeholder {
   color: #939BA5;
 }
 
@@ -652,23 +778,9 @@ exports[`InputText with name and id 1`] = `
   outline: none;
 }
 
-.c1 {
-  height: 36px;
-  width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
 <div
-  className="c0 c1"
-  onClick={[Function]}
+  className="c0"
+  onMouseDown={[Function]}
 >
   <input
     id="Bobby"

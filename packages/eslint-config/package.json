@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/looker-open-source/eslint-config.git"
   },
-  "version": "0.9.1",
+  "version": "0.9.4",
   "bugs": {
     "url": "https://github.com/looker-open-source/eslint-config/issues"
   },
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/vfile-message": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
