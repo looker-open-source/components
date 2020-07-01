@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `DialogHeader`
+  - Supports `detail` prop as alternative to default `close` icon
+  - Supports `fontWeight` & `fontSize` for backwards compatibility
+
 ### Changed
 
 - `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
@@ -14,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
+- `Dialog` focus not returning to trigger when closed
+- `InputText` interacts poorly with `theme.reset` property in narrow cases
+- `Select` not opening when rendered in a `Dialog` opened from a `Popover`
 
 ## [0.9.4] - 2020-06-29
 
