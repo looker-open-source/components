@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode, useContext, Ref, forwardRef } from 'react'
+import React, { FC, useContext, Ref, forwardRef, useState } from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
 import { Space } from '../Layout'
@@ -32,60 +32,94 @@ import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
 export interface AccordionDisclosureProps extends TypographyProps {
-  children: ReactNode
   className?: string
+  focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
 }
 
 export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
   ({ children, className }, ref) => {
+    const [isFocusVisible, setFocusVisible] = useState(false)
     const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
       AccordionContext
     )
     const handleOpen = () => onOpen && onOpen()
     const handleClose = () => onClose && onClose()
-
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.keyCode === 13) {
-        event.currentTarget.click()
-      }
-    }
-    const handleClick = () => {
+    const handleToggle = () => {
       isOpen ? handleClose() : handleOpen()
       toggleOpen(!isOpen)
     }
 
+    const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 9 && event.currentTarget === event.target)
+        setFocusVisible(true)
+
+      if (event.keyCode === 13) {
+        handleToggle()
+      }
+      const handleClick = () => {
+        isOpen ? handleClose() : handleOpen()
+        toggleOpen(!isOpen)
+      }
+
+      return (
+        <Space
+          className={className}
+          onClick={handleClick}
+          onKeyDown={handleKeyUp}
+          ref={ref}
+          tabIndex={0}
+        >
+          <AccordionDisclosureGrid {...props} isOpen={isOpen}>
+            {children}
+          </AccordionDisclosureGrid>
+        </Space>
+      )
+    }
+
+    const handleClick = () => {
+      setFocusVisible(false)
+      handleToggle()
+    }
+
+    const handleBlur = () => {
+      setFocusVisible(false)
+    }
+
     return (
-      <Space
+      <AccordionDisclosureStyle
         className={className}
+        onBlur={handleBlur}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        ref={ref}
+        onKeyUp={handleKeyUp}
         tabIndex={0}
+        focusVisible={isFocusVisible}
       >
         <AccordionDisclosureGrid {...props} isOpen={isOpen}>
           {children}
         </AccordionDisclosureGrid>
-      </Space>
+      </AccordionDisclosureStyle>
     )
   }
 )
 
 AccordionDisclosureLayout.displayName = 'AccordionDisclosureLayout'
 
-export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
-  ${typography}
-
+export const AccordionDisclosureStyle = styled.div<{ focusVisible: boolean }>`
   align-items: center;
   border: 1px solid transparent;
+  border-color: ${({ focusVisible, theme }) =>
+    focusVisible && theme.colors.keyFocus};
   cursor: pointer;
   display: flex;
+  height: 100%;
   outline: none;
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
+  width: 100%;
+`
 
-  &:focus-within {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-  }
+export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
+  ${typography}
 `
 
 AccordionDisclosure.defaultProps = {

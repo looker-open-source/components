@@ -25,22 +25,12 @@
  */
 
 import React from 'react'
-import {
-  ButtonTransparent,
-  Grid,
-  IconButton,
-  Tree,
-  TreeItem,
-  TreeGroup,
-  Space,
-  HoverDisclosure,
-} from '@looker/components'
+import { Grid, Tree, TreeItem, TreeGroup, Space } from '@looker/components'
 
 export const All = () => (
   <Grid>
     <FileSelector />
     <FileSelectorClosed />
-    <FieldPicker />
     <Border />
   </Grid>
 )
@@ -49,17 +39,6 @@ export default {
   component: All,
   title: 'Tree',
 }
-
-const onClick = () => {
-  alert("I'm a little teapot")
-  return false
-}
-
-const addButton = (
-  <ButtonTransparent onClick={onClick} size="xxsmall" iconBefore="Plus">
-    Add
-  </ButtonTransparent>
-)
 
 export const FileSelector = () => (
   <Tree label="thelook" icon="ExploreOutline" defaultOpen>
@@ -110,136 +89,6 @@ export const FileSelectorClosed = () => (
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
     </Tree>
-  </Tree>
-)
-
-const fieldDetailButtons = (
-  <>
-    <IconButton icon="Filter" label="Filter" onClick={() => alert('Filter')} />
-    <IconButton
-      icon="CircleInfoOutline"
-      label="Info"
-      onClick={() => alert('Info')}
-    />
-    <IconButton
-      icon="DotsVert"
-      label="Options"
-      onClick={() => alert('Options')}
-    />
-  </>
-)
-
-const FieldLabel = ({ label }: { label: string }) => {
-  return (
-    <Space between px="xxsmall">
-      <span>{label}</span>
-      <HoverDisclosure>
-        <IconButton
-          icon="Sync"
-          label="Pivot"
-          color="key"
-          onClick={(event) => {
-            event.stopPropagation()
-            alert('Pivot')
-          }}
-          onKeyDown={(event) => {
-            event.stopPropagation()
-          }}
-          style={{
-            background: '#fff',
-            height: '18px',
-          }}
-        />
-      </HoverDisclosure>
-    </Space>
-  )
-}
-
-export const FieldPicker = () => (
-  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
-    <TreeGroup label="DIMENSIONS">
-      <TreeItem
-        selected
-        detail={fieldDetailButtons}
-        detailHoverDisclosure
-        icon="FieldNumber"
-        onClick={() => {
-          alert('Clicked on Cost!')
-        }}
-      >
-        <FieldLabel label="Cost" />
-      </TreeItem>
-      <Tree defaultOpen label="Created">
-        <TreeItem detail={fieldDetailButtons} icon="Calendar">
-          <FieldLabel label="Created Date" />
-        </TreeItem>
-        <TreeItem
-          detail={fieldDetailButtons}
-          detailHoverDisclosure
-          icon="Calendar"
-        >
-          <FieldLabel label="Created Month" />
-        </TreeItem>
-        <TreeItem
-          detail={fieldDetailButtons}
-          detailHoverDisclosure
-          icon="Calendar"
-        >
-          <FieldLabel label="Created Year" />
-        </TreeItem>
-        <TreeItem
-          detail={fieldDetailButtons}
-          detailHoverDisclosure
-          icon="Calendar"
-        >
-          <FieldLabel label="Created Quarter" />
-        </TreeItem>
-      </Tree>
-      <TreeItem
-        selected
-        detail={fieldDetailButtons}
-        icon="FieldLocation"
-        onClick={() => alert('Clicked on Location!')}
-        detailHoverDisclosure
-      >
-        <FieldLabel label="Location" />
-      </TreeItem>
-      <TreeItem
-        selected
-        detail={fieldDetailButtons}
-        detailHoverDisclosure
-        icon="FieldTier"
-        onClick={() => alert('Clicked on Tier!')}
-      >
-        <FieldLabel label="Tier" />
-      </TreeItem>
-      <TreeItem
-        detail={fieldDetailButtons}
-        detailHoverDisclosure
-        icon="FieldYesNo"
-        onClick={() => alert('Clicked on Yes No!')}
-      >
-        <FieldLabel label="Yes No" />
-      </TreeItem>
-    </TreeGroup>
-    <TreeGroup color="warn" label="MEASURES">
-      <TreeItem
-        detail={fieldDetailButtons}
-        detailHoverDisclosure
-        icon="FieldNumber"
-        onClick={() => alert('Clicked on Count!')}
-      >
-        <FieldLabel label="Count" />
-      </TreeItem>
-      <TreeItem
-        detail={fieldDetailButtons}
-        detailHoverDisclosure
-        icon="FieldNumber"
-        onClick={() => alert('Clicked on Count Distinct!')}
-      >
-        <FieldLabel label="Count Distinct" />
-      </TreeItem>
-    </TreeGroup>
   </Tree>
 )
 

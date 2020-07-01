@@ -16,6 +16,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tree` and `TreeItem`
   - Updated docs and test suite
 
+## [0.9.5] - 2020-07-01
+
+### Added
+
+- `DialogHeader`
+  - Supports `detail` prop as alternative to default `close` icon
+  - Supports `fontWeight` & `fontSize` for backwards compatibility
+
+### Changed
+
+- `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
+- `AccordionDisclosure`, `TreeItem` no longer display purple border on click
+  - This purple border will only display when tabbing onto a `TreeItem` or `AccordionDisclosure` (`Tree`)
+
+### Fixed
+
+- `Dialog` focus not returning to trigger when closed
+- `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
+- `InputText` interacts poorly with `theme.reset` property in narrow cases
+- `Select` not opening when rendered in a `Dialog` opened from a `Popover`
+
 ## [0.9.4] - 2020-06-29
 
 ### Added

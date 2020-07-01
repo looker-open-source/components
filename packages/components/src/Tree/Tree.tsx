@@ -31,6 +31,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
+  AccordionDisclosureStyle,
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
@@ -208,6 +209,9 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
     border-radius: ${({ theme }) => theme.radii.medium};
     height: 25px;
+  }
+
+  ${AccordionDisclosureStyle} {
     padding: ${({ theme }) => theme.space.xxsmall};
     ${({ depth, theme }) => generateIndent(depth, theme)}
   }

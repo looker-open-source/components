@@ -129,6 +129,7 @@ exports[`Fieldset 1`] = `
 }
 
 .c0 .c12 {
+  padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 

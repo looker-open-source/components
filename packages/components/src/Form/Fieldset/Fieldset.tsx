@@ -182,6 +182,13 @@ export const Fieldset = styled(FieldsetLayout)`
   ${simpleLayoutCSS}
 
   ${AccordionContent} {
+    padding-left: ${({ theme }) => {
+      const borderWidth = '1px'
+      const defaultIndicatorSize = theme.space.medium
+      const defaultIndicatorGap = theme.space.xsmall
+
+      return `calc(${borderWidth} + ${defaultIndicatorSize} + ${defaultIndicatorGap})`
+    }};
     padding-top: ${({ theme }) => theme.space.medium};
   }
 

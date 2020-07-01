@@ -429,8 +429,13 @@ export function usePopover({
         // need to manually disable any parent focus trap
         parentFocusTrapRef &&
           parentFocusTrapRef.current &&
-          parentFocusTrapRef.current.deactivate({ returnFocus: false })
+          parentFocusTrapRef.current.pause()
       }
+    } else if (!focusTrap) {
+      // need to manually re-enable any parent focus trap
+      parentFocusTrapRef &&
+        parentFocusTrapRef.current &&
+        parentFocusTrapRef.current.unpause()
     }
   }, [focusTrap, parentFocusTrapRef, isOpen, enableFocusTrap])
 

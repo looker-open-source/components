@@ -27,15 +27,18 @@
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
 import { IconNames } from '@looker/icons'
-import { omitStyledProps, space, SpaceProps } from '@looker/design-tokens'
+import {
+  omitStyledProps,
+  space,
+  SpaceProps,
+  reset,
+  layout,
+} from '@looker/design-tokens'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
-import {
-  SimpleLayoutProps,
-  simpleLayoutCSS,
-} from '../../../Layout/utils/simple'
+import { SimpleLayoutProps } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
@@ -268,6 +271,8 @@ export const inputCSS = css`
 `
 
 export const InputText = styled(InputTextLayout)<InputTextProps>`
+  ${reset}
+
   align-items: center;
   cursor: text;
   display: inline-flex;
@@ -275,7 +280,8 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
 
-  ${simpleLayoutCSS}
+  ${layout}
+  ${space}
   ${inputCSS}
 
   ${InlineInputTextBase} {

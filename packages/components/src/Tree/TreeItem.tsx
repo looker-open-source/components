@@ -31,6 +31,7 @@ import React, {
   ReactNode,
   useContext,
   useRef,
+  useState,
 } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
@@ -92,6 +93,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const itemRef = useRef<HTMLDivElement>(null)
   const detailRef = useRef<HTMLDivElement>(null)
   const [isHovered] = useHovered(itemRef)
+  const [isFocusVisible, setFocusVisible] = useState(false)
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
@@ -99,19 +101,26 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
+    setFocusVisible(false)
     onClick && onClick()
   }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+  const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
     if (detailRef.current && detailRef.current.contains(event.target as Node)) {
       event.stopPropagation()
       return
     }
 
-    if (event.keyCode === 13) {
-      event.currentTarget.click()
-    }
+    if (event.keyCode === 9 && event.currentTarget === event.target)
+      setFocusVisible(true)
+
+    if (event.keyCode === 13) onClick && onClick()
   }
+
+  const handleBlur = () => {
+    setFocusVisible(false)
+  }
+
   const defaultIconSize = 12
 
   const detailAccessory = undefinedCoalesce([
@@ -134,11 +143,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
-      <Space
+      <TreeItemSpace
         className={props.className}
+        focusVisible={isFocusVisible}
         gap="none"
+        onBlur={handleBlur}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
       >
@@ -148,20 +159,25 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           {!detailAccessory && detail}
         </TreeItemLabel>
         {detailAccessory && detail}
-      </Space>
+      </TreeItemSpace>
     </HoverDisclosureContext.Provider>
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)`
+export const TreeItem = styled(TreeItemLayout)``
+
+interface TreeItemSpace {
+  focusVisible: boolean
+}
+
+export const TreeItemSpace = styled(Space)<TreeItemSpace>`
+  align-items: center;
   border: 1px solid transparent;
+  border-color: ${({ focusVisible, theme }) =>
+    focusVisible && theme.colors.keyFocus};
   cursor: ${({ onClick }) => onClick && 'pointer'};
   height: 25px;
   outline: none;
-
-  &:focus-within {
-    border-color: ${({ theme: { colors } }) => colors.keyFocus};
-  }
 `
 
 interface TreeItemLabelProps {
