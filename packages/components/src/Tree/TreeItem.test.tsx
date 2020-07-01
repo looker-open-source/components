@@ -35,10 +35,10 @@ describe('TreeItem', () => {
     getByText('Dimension')
   })
 
-  test('Does not trigger onClick on detail click', () => {
+  test('Does not trigger onClick on detail click when detailAccessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
-      <TreeItem detail="Detail" onClick={onClick}>
+      <TreeItem detail="Detail" detailAccessory onClick={onClick}>
         Dimension
       </TreeItem>
     )
@@ -46,6 +46,19 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
     fireEvent.click(getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  test('Triggers onClick on detail click when detailAccessory === false', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <TreeItem detail="Detail" detailAccessory={false} onClick={onClick}>
+        Dimension
+      </TreeItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(2)
   })
 
   test('Hides and shows detail when detailHoverDisclosure is true', () => {

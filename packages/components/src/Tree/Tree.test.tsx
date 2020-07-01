@@ -125,7 +125,7 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(0)
   })
 
-  test('Clicks on detail do not open the Tree or trigger callbacks when detailAccessory === false', () => {
+  test('Clicks on detail open the Tree and trigger callbacks when detailAccessory === false', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     const { getByText, queryByText } = renderWithTheme(
@@ -144,11 +144,11 @@ describe('Tree', () => {
 
     expect(queryByText('Hello World')).not.toBeInTheDocument()
     fireEvent.click(detail)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onOpen).toHaveBeenCalledTimes(0)
+    getByText('Hello World')
+    expect(onOpen).toHaveBeenCalledTimes(1)
     fireEvent.click(detail)
     expect(queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onClose).toHaveBeenCalledTimes(0)
+    expect(onClose).toHaveBeenCalledTimes(1)
   })
 
   test('Shows and hides detail on Tree hover when detailHoverDisclosure === true', () => {
