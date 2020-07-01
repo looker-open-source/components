@@ -23,8 +23,6 @@ Use the `icon` prop to display an icon left of the `Tree` label.
 
 Use the `detail` prop to display an element right of the `Tree` label.
 
-**Note:** Any elements passed into the `detail` prop will not propagate events (i.e. clicking on a `detail` element will not open or close the `Tree`).
-
 ```jsx
 <Tree
   label="Orders"
@@ -164,7 +162,9 @@ Use the `selected` prop to display a light grey background on a given `TreeItem`
 
 You can customize the look and behavior of `detail` elements using the `detailAccessory` and `detailHoverDisclosure` props.
 
-Use the `detailAccessory` prop if you do not want to apply the hover background onto the `detail` elements.
+When `detailAccessory` is true, events on `detail` elements will not propagate.
+
+In addition, when `detailAccessory` is true, the hover background will not apply to the `detail` elements.
 
 ```jsx
 ;() => {
