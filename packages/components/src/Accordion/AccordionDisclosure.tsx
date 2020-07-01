@@ -89,11 +89,12 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
     return (
       <AccordionDisclosureStyle
         className={className}
+        focusVisible={isFocusVisible}
         onBlur={handleBlur}
         onClick={handleClick}
         onKeyUp={handleKeyUp}
+        ref={ref}
         tabIndex={0}
-        focusVisible={isFocusVisible}
       >
         <AccordionDisclosureGrid {...props} isOpen={isOpen}>
           {children}
