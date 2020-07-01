@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
+- `AccordionDisclosure`, `TreeItem` no longer display purple border on click
+  - This purple border will only display when tabbing onto a `TreeItem` or `AccordionDisclosure` (`Tree`)
 
 ### Fixed
 
