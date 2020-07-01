@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.5] - 2020-07-01
 
 ### Added
 
@@ -19,8 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
 - `Dialog` focus not returning to trigger when closed
+- `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
 - `InputText` interacts poorly with `theme.reset` property in narrow cases
 - `Select` not opening when rendered in a `Dialog` opened from a `Popover`
 
