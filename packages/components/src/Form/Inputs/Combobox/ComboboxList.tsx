@@ -151,7 +151,9 @@ const ComboboxListInternal = forwardRef(
     }, [optionsRef, isVisible, windowedOptions, windowedOptionsPropRef])
 
     const handleKeyDown = useKeyDown()
-    const handleBlur = useBlur()
+    const handleBlur = isMulti
+      ? useBlur(ComboboxMultiContext)
+      : useBlur(ComboboxContext)
     const ref = useForkedRef(listRef, forwardedRef)
 
     // Avoid calling getBoundingClientWidth if width/minWidth are set in props

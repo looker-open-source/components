@@ -92,7 +92,7 @@ export function useInputEvents<
 
   const handleKeyDown = useKeyDown()
 
-  const handleBlur = useBlur()
+  const handleBlur = useBlur(context)
 
   function handleFocus(e: FocusEvent<HTMLInputElement>) {
     if (readOnly) {

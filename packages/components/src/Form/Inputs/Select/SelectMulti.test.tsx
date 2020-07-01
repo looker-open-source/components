@@ -25,7 +25,12 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
+import {
+  cleanup,
+  fireEvent,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -288,7 +293,7 @@ describe('closeOnSelect', () => {
       fireEvent.click(document)
     })
 
-    test('creates value on blur', () => {
+    test('creates value and closes list on blur', async () => {
       const onChangeMock = jest.fn()
       renderWithTheme(
         <SelectMulti
@@ -301,12 +306,13 @@ describe('closeOnSelect', () => {
 
       const input = screen.getByPlaceholderText('Search')
       fireEvent.change(input, { target: { value: 'baz' } })
+      expect(screen.getByRole('listbox')).toBeVisible()
       fireEvent.blur(input)
 
       expect(onChangeMock).toHaveBeenCalledWith(['baz'])
       expect(input).toHaveValue('')
 
-      fireEvent.click(document)
+      await waitForElementToBeRemoved(() => screen.getByRole('listbox'))
     })
   })
 })
