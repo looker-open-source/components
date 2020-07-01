@@ -200,27 +200,30 @@ interface TreeStyleProps {
 }
 
 export const TreeStyle = styled.div<TreeStyleProps>`
-  & > ${Accordion} > ${AccordionContent} {
-    ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
-  }
+  & > ${Accordion} {
+    & > ${AccordionContent} {
+      ${({ border, depth, theme }) =>
+        border && generateTreeBorder(depth, theme)}
+    }
 
-  & > ${Accordion} > ${AccordionDisclosureStyle} {
-    background-clip: padding-box;
-    background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
-    border-radius: ${({ theme }) => theme.radii.medium};
-    height: 25px;
-    padding: ${({ theme }) => theme.space.xxsmall};
-    ${({ depth, theme }) => generateIndent(depth, theme)}
-  }
-
-  ${InnerTreeItem} > ${TreeItemLabel} {
-    background-color: transparent;
-    padding: ${({ theme }) => theme.space.none};
+    & > ${AccordionDisclosureStyle} {
+      background-clip: padding-box;
+      background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
+      border-radius: ${({ theme }) => theme.radii.medium};
+      height: 25px;
+      padding: ${({ theme }) => theme.space.xxsmall};
+      ${({ depth, theme }) => generateIndent(depth, theme)}
+    }
   }
 
   ${InnerTreeItem} {
     border-width: 0;
     height: 100%;
+
+    & > ${TreeItemLabel} {
+      background-color: transparent;
+      padding: ${({ theme }) => theme.space.none};
+    }
   }
 
   ${TreeGroupLabel},
