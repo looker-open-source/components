@@ -287,5 +287,26 @@ describe('closeOnSelect', () => {
 
       fireEvent.click(document)
     })
+
+    test('creates value on blur', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          placeholder="Search"
+          onChange={onChangeMock}
+          freeInput
+        />
+      )
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.change(input, { target: { value: 'baz' } })
+      fireEvent.blur(input)
+
+      expect(onChangeMock).toHaveBeenCalledWith(['baz'])
+      expect(input).toHaveValue('')
+
+      fireEvent.click(document)
+    })
   })
 })

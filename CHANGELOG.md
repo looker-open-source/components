@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
+- `SelectMulti` with `freeInput` not saving input value on tab key
 
 ## [0.9.5] - 2020-07-01
 
