@@ -96,14 +96,18 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
-  const initialOptions = [...options, { value: 'BAZ' }]
+  // Test long list of options to capture the windowed options issue
+  const options100 = Array.from(Array(100), (_, i) => ({
+    value: String(i + 1),
+  }))
+  const initialOptions = [...options100, ...options, { value: 'BAZ' }]
 
   test.each([
     [
       'Select',
-      (onFilter: (term: string) => void) => (
+      (onFilter: (term: string) => void, optionsToUse: SelectOptionProps[]) => (
         <Select
-          options={options}
+          options={optionsToUse}
           placeholder="Search"
           onFilter={onFilter}
           key="select"
@@ -137,12 +141,14 @@ describe('Select / SelectMulti', () => {
     }
 
     renderWithTheme(<Component />)
-    expect(screen.queryByText('FOO')).not.toBeInTheDocument()
-    expect(screen.queryByText('BAR')).not.toBeInTheDocument()
-
     const input = screen.getByPlaceholderText('Search')
-    fireEvent.change(input, { target: { value: 'BA' } })
+    fireEvent.mouseDown(input)
+    // Only 6 options are rendered since jsdom gives the list a height of 0px
+    expect(screen.getAllByRole('option')).toHaveLength(6)
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByText('6')).toBeInTheDocument()
 
+    fireEvent.change(input, { target: { value: 'BA' } })
     expect(mockOnFilter).toHaveBeenCalledWith('BA')
 
     // Verify keyboard nav hasn't been messed up by updating options
