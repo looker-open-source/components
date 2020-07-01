@@ -26,40 +26,40 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
-import { IconButton } from '../../Button'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { DialogHeader } from './DialogHeader'
 
-test('DialogHeader', () => {
-  assertSnapshot(
-    <DialogHeader id="test-DialogHeader">The Heading for a Dialog</DialogHeader>
-  )
-})
+describe('DialogHeader', () => {
+  test('Snapshot', () => {
+    assertSnapshot(
+      <DialogHeader id="test-DialogHeader">
+        The Heading for a Dialog
+      </DialogHeader>
+    )
+  })
 
-test('DialogHeader passes through DOM props', () => {
-  const { findByLabelText } = renderWithTheme(
-    <DialogHeader aria-label="This is the ARIA label">
-      The Heading for a Dialog
-    </DialogHeader>
-  )
+  test('Passes through DOM props', () => {
+    renderWithTheme(
+      <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
+    )
 
-  expect(findByLabelText('This is the ARIA label')).toBeTruthy()
-})
+    expect(screen.findByLabelText('ARIA label')).toBeTruthy()
+  })
 
-test('DialogHeader with hideClose', () => {
-  const withClose = mountWithTheme(
-    <DialogHeader id="test-DialogHeader">The Heading for a Dialog</DialogHeader>
-  )
-  expect(withClose.find(IconButton).exists()).toBeTruthy()
+  test('Close visible by default', () => {
+    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
+    expect(screen.findByText('Close')).toBeTruthy()
+  })
 
-  const withoutClose = mountWithTheme(
-    <DialogHeader id="test-DialogHeader" hideClose>
-      The Heading for a Dialog
-    </DialogHeader>
-  )
-  expect(withoutClose.find(IconButton).exists()).toBeFalsy()
+  test(`detail`, () => {
+    renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
+    expect(screen.findByText('Hello world')).toBeTruthy()
+    expect(screen.queryByLabelText('Close')).toBeNull()
+  })
+
+  test('hideClose', () => {
+    renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
+    expect(screen.queryByLabelText('Close')).toBeNull()
+  })
 })

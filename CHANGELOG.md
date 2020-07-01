@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `DialogHeader`
+  - Supports `detail` prop as alternative to default `close` icon
+  - Supports `fontWeight` & `fontSize` for backwards compatibility
+
 ### Changed
 
 - `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
