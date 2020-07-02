@@ -34,7 +34,7 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 
-import { useControlWarn } from '../../../utils'
+import { useControlWarn, useWrapEvent } from '../../../utils'
 import {
   InputChipsBase,
   InputChipsCommonProps,
@@ -110,12 +110,17 @@ export const InputChipsInternal = forwardRef(
     {
       values,
       onChange,
-      onKeyDown,
       inputValue: controlledInputValue,
       onInputChange,
       validate,
       onValidationFail,
       onDuplicate,
+
+      // event handlers needing to be wrapped
+      onBlur,
+      onKeyDown,
+      onPaste,
+
       ...props
     }: InputChipsProps,
     ref: Ref<HTMLInputElement>
@@ -174,8 +179,7 @@ export const InputChipsInternal = forwardRef(
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-      onKeyDown && onKeyDown(e)
-      if (!e.defaultPrevented && e.key === 'Enter') {
+      if (e.key === 'Enter') {
         // Don't submit a form if there is one
         e.preventDefault()
         // Update values when the user hits return
@@ -203,6 +207,12 @@ export const InputChipsInternal = forwardRef(
       }
     }
 
+    const wrappedEvents = {
+      onBlur: useWrapEvent(handleBlur, onBlur),
+      onKeyDown: useWrapEvent(handleKeyDown, onKeyDown),
+      onPaste: useWrapEvent(handlePaste, onPaste),
+    }
+
     return (
       <InputChipsBase
         ref={ref}
@@ -210,9 +220,7 @@ export const InputChipsInternal = forwardRef(
         onChange={onChange}
         inputValue={inputValue}
         onInputChange={handleInputChange}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-        onPaste={handlePaste}
+        {...wrappedEvents}
         {...props}
       />
     )
