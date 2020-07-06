@@ -61,6 +61,7 @@ export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
   detail?: ReactNode
   /**
    * If true, the detail elements will appear outside of the TreeItem's grey background on hover
+   * In addition, if true, events will not propagate from the detail container
    * @default false
    */
   detailAccessory?: boolean
@@ -78,6 +79,10 @@ export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
    * Icon element that appears left of the TreeItem children
    */
   icon?: IconNames
+  /**
+   * onClick callback
+   */
+  onClick?: () => void
   /**
    * Determines if this TreeItem is in a selected state or not
    */
@@ -97,7 +102,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const { onBlur, onClick, onKeyUp, ...restProps } = Omit(props, [
+  const { onBlur, onClick, onKeyDown, onKeyUp, ...restProps } = Omit(props, [
     'detail',
     'detailAccessory',
     'detailHoverDisclosure',
@@ -125,10 +130,17 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
 
     setFocusVisible(false)
-    onClick && onClick(event)
+    onClick && onClick()
   }
 
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.keyCode === 9 && event.currentTarget === event.target)
+      setFocusVisible(true)
+
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (
       detailRef.current &&
       detailRef.current.contains(event.target as Node) &&
@@ -138,14 +150,11 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
-    if (event.keyCode === 9 && event.currentTarget === event.target)
-      setFocusVisible(true)
-
     if (event.keyCode === 13) {
-      event.currentTarget.click()
+      onClick && onClick()
     }
 
-    onKeyUp && onKeyUp(event)
+    onKeyDown && onKeyDown(event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -171,6 +180,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         gap="none"
         onBlur={handleBlur}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}

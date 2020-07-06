@@ -24,10 +24,16 @@
 
  */
 
-import React, { FC, useContext, Ref, forwardRef, useState } from 'react'
+import React, {
+  FC,
+  KeyboardEvent,
+  useContext,
+  Ref,
+  forwardRef,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
-import { Space } from '../Layout'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
@@ -50,31 +56,15 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
       toggleOpen(!isOpen)
     }
 
-    const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.keyCode === 9 && event.currentTarget === event.target)
-        setFocusVisible(true)
-
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.keyCode === 13) {
         handleToggle()
       }
-      const handleClick = () => {
-        isOpen ? handleClose() : handleOpen()
-        toggleOpen(!isOpen)
-      }
+    }
 
-      return (
-        <Space
-          className={className}
-          onClick={handleClick}
-          onKeyDown={handleKeyUp}
-          ref={ref}
-          tabIndex={0}
-        >
-          <AccordionDisclosureGrid {...props} isOpen={isOpen}>
-            {children}
-          </AccordionDisclosureGrid>
-        </Space>
-      )
+    const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 9 && event.currentTarget === event.target)
+        setFocusVisible(true)
     }
 
     const handleClick = () => {
@@ -92,6 +82,7 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
         focusVisible={isFocusVisible}
         onBlur={handleBlur}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={ref}
         tabIndex={0}
