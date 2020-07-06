@@ -25,7 +25,16 @@
  */
 
 import React from 'react'
-import { Grid, Tree, TreeItem, TreeGroup, Space } from '@looker/components'
+import {
+  Grid,
+  Tree,
+  TreeItem,
+  TreeGroup,
+  Space,
+  AccordionDisclosureStyle,
+  TreeItemLabel,
+} from '@looker/components'
+import styled from 'styled-components'
 
 export const All = () => (
   <Grid>
@@ -125,4 +134,19 @@ export const Flat = () => (
     <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
     <TreeItem icon="FieldNumber">Another Number</TreeItem>
   </TreeGroup>
+)
+
+const BorderRadiusOverrideTree = styled(Tree)`
+  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
+    border-radius: ${({ theme }) => theme.radii.medium};
+  }
+`
+
+export const BorderRadiusOverride = () => (
+  <BorderRadiusOverrideTree label="Created">
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </BorderRadiusOverrideTree>
 )
