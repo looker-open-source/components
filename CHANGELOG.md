@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
 
+### Removed
+
+- Removed `Modal*` aliases to `Dialog*`
+
 ## [0.9.5] - 2020-07-01
 
 ### Added
