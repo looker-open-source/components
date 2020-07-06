@@ -5,6 +5,67 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Added
+
+- `FactCheck` icon
+
+### Changed
+
+- `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
+- `Tooltip` now renders in a `Portal`
+
+### Fixed
+
+- `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
+- `SelectMulti` with `freeInput` not saving input value on tab key
+- `SelectMulti` list not closing on blur
+
+## [0.9.5] - 2020-07-01
+
+### Added
+
+- `DialogHeader`
+  - Supports `detail` prop as alternative to default `close` icon
+  - Supports `fontWeight` & `fontSize` for backwards compatibility
+
+### Changed
+
+- `Fieldset` accordion mode auto-indents elements in the inner `AccordionContent`
+- `AccordionDisclosure`, `TreeItem` no longer display purple border on click
+  - This purple border will only display when tabbing onto a `TreeItem` or `AccordionDisclosure` (`Tree`)
+
+### Fixed
+
+- `Dialog` focus not returning to trigger when closed
+- `DialogContent` with `borderBottom` prop CSS output error (no border, no flex: 8)
+- `InputText` interacts poorly with `theme.reset` property in narrow cases
+- `Select` not opening when rendered in a `Dialog` opened from a `Popover`
+
+## [0.9.4] - 2020-06-29
+
+### Added
+
+- `autoResize` added to `InputText` and `Select`, allowing component width to adjust to the current value
+
+### Removed
+
+- `InputText` props `prefix` and `suffix` are replaced with `before` and `after`, which accept `ReactNode`
+
+### Fixed
+
+- `InputTimeSelect` tab key behavior
+
+## [0.9.3] - 2020-06-26
+
+### Fixed
+
+- `MenuItem`
+  - properly renders when `[aria-current='false']`
+  - is now exported as Styled Component
+  - renders properly in Safari / older Chrome implementations
+
 ## [0.9.2] - 2020-06-25
 
 ### Added

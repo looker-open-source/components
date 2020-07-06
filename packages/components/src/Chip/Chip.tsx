@@ -72,9 +72,6 @@ const ChipStyle = styled.span<ChipProps>`
   color: ${({ theme }) => theme.colors.keyInteractive};
   display: flex;
   justify-items: center;
-  & + & {
-    margin-left: ${({ theme }) => theme.space.xxsmall};
-  }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.keyAccent};

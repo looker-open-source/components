@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import {
@@ -33,6 +33,8 @@ import {
   SpaceProps,
   space,
   reset,
+  FontSizeProps,
+  FontWeightProps,
 } from '@looker/design-tokens'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
@@ -40,8 +42,10 @@ import { DialogContext } from '../DialogContext'
 
 export interface DialogHeaderProps
   extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement> {
-  children: string | string[]
+    CompatibleHTMLProps<HTMLElement>,
+    FontSizeProps,
+    FontWeightProps {
+  children: ReactNode
   /**
    * Don't include the "Close" option
    * @default false
@@ -51,12 +55,20 @@ export interface DialogHeaderProps
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
+
+  /**
+   * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
+   */
+  detail?: ReactNode
 }
 
 const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
   closeIcon = 'Close',
   hideClose,
+  detail,
+  fontSize,
+  fontWeight,
   ...props
 }) => {
   const { closeModal } = useContext(DialogContext)
@@ -67,27 +79,37 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
       <Heading
         as="h3"
         mr="xlarge"
-        fontWeight="semiBold"
+        fontSize={fontSize || undefined}
+        fontWeight={fontWeight || 'semiBold'}
         style={{ gridArea: 'text' }}
         truncate
       >
         {children}
       </Heading>
-      {!hideClose && (
-        <IconButton
-          id={id ? `${id}-iconButton` : undefined}
-          tabIndex={-1}
-          color="neutral"
-          size="small"
-          onClick={closeModal}
-          label="Close"
-          icon={closeIcon}
-          style={{ gridArea: 'close' }}
-        />
+      {detail ? (
+        <Detail>{detail}</Detail>
+      ) : (
+        !hideClose && (
+          <Detail>
+            <IconButton
+              id={id ? `${id}-iconButton` : undefined}
+              tabIndex={-1}
+              color="neutral"
+              size="small"
+              onClick={closeModal}
+              label="Close"
+              icon={closeIcon}
+            />
+          </Detail>
+        )
       )}
     </header>
   )
 }
+
+const Detail = styled.div`
+  grid-area: close;
+`
 
 export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}

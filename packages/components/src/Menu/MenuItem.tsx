@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Icon } from '../Icon'
 import { MenuContext, MenuItemContext } from './MenuContext'
-import { MenuItemLayout } from './MenuItemLayout'
+import { MenuItemLayout, MenuItemLayoutGrid } from './MenuItemLayout'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   compact?: boolean
@@ -51,9 +51,10 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   itemRole?: 'link' | 'button'
 }
 
-export const MenuItem: FC<MenuItemProps> = (props) => {
+const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const {
     children,
+    className,
     compact: propCompact,
     current,
     detail,
@@ -114,7 +115,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
 
   return (
     <MenuItemLayout
-      aria-current={current && 'page'}
+      aria-current={current && 'true'}
       compact={compact}
       disabled={disabled}
       focusVisible={isFocusVisible}
@@ -122,15 +123,20 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
       onBlur={handleOnBlur}
       onClick={handleOnClick}
       onKeyUp={handleOnKeyUp}
+      className={className}
     >
       <Component href={href} role="menuitem" target={target}>
-        {renderedIcon}
-        {children}
+        <MenuItemLayoutGrid>
+          {renderedIcon}
+          {children}
+        </MenuItemLayoutGrid>
       </Component>
       {detail && <Detail>{detail}</Detail>}
     </MenuItemLayout>
   )
 }
+
+export const MenuItem = styled(MenuItemInternal)``
 
 const Detail = styled.div`
   color: ${({ theme: { colors } }) => colors.text6};

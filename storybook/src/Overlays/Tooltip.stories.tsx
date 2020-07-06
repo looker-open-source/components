@@ -25,14 +25,17 @@
  */
 
 import React from 'react'
-import { Space, IconButton, Tooltip } from '@looker/components'
+import { Card, Space, IconButton, Tooltip, Text } from '@looker/components'
 
 export const All = () => (
-  <Space>
-    <Basic />
-    <Placement />
-    <RenderProp />
-  </Space>
+  <>
+    <Space mb="large">
+      <Basic />
+      <Placement />
+      <RenderProp />
+    </Space>
+    <LargeTrigger />
+  </>
 )
 
 export default {
@@ -40,17 +43,29 @@ export default {
   title: 'Overlays/Tooltip',
 }
 
-const Basic = () => <Tooltip content="I'm a little teapot">Some Text</Tooltip>
+const Basic = () => (
+  <Tooltip content="I'm a little teapot">
+    <Text>Some Text</Text>
+  </Tooltip>
+)
 const Placement = () => (
   <Tooltip content="I'm a little teapot" placement="top">
-    Some Text
+    <Text>Some Text</Text>
   </Tooltip>
 )
 
 const RenderProp = () => (
-  <Tooltip content="Start editing" placement="top">
+  <Tooltip content="Start editing" placement="right">
     {(tooltipProps) => (
       <IconButton icon="Edit" label="Edit something" {...tooltipProps} />
     )}
+  </Tooltip>
+)
+
+const LargeTrigger = () => (
+  <Tooltip content="See what happens when you scroll" placement="right">
+    <Card width={500} height={800} raised p="large">
+      Very large trigger
+    </Card>
   </Tooltip>
 )

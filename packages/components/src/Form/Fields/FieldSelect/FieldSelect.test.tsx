@@ -37,8 +37,12 @@ test('A FieldSelect', () => {
   assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
 })
 
-test('FieldSelect supports labelWeight', () => {
-  assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
+test('A FieldSelect with autoResize', () => {
+  const { getAllByLabelText } = renderWithTheme(
+    <FieldSelect label="Auto resize" autoResize />
+  )
+  // Both the div[role="combobox"] and the input share the label
+  expect(getAllByLabelText('Auto resize')[0]).toHaveStyle('width: auto')
 })
 
 test('Should accept a value', () => {
@@ -73,14 +77,6 @@ test('Should trigger onChange handler', () => {
   wrapper.find('input').simulate('mousedown')
   wrapper.find('li').at(0).simulate('click')
   expect(handleChange).toHaveBeenCalledTimes(1)
-})
-
-test('A required FieldSelect', () => {
-  const component = createWithTheme(
-    <FieldSelect label="👍" name="thumbsUp" id="thumbs-up" required />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('A FieldSelect with an error validation aligned to the bottom', () => {
