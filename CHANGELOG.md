@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Changed
+
+- `Tooltip` now renders in a `Portal`
+
 ### Fixed
 
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
