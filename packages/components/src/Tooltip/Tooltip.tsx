@@ -44,6 +44,7 @@ import {
   useForkedRef,
 } from '../utils'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
+import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 
 export interface UseTooltipProps {
@@ -203,28 +204,30 @@ export function useTooltip({
 
   const popper =
     isOpen && content && !disabled ? (
-      <OverlaySurface
-        arrow={arrow}
-        arrowProps={arrowProps}
-        eventHandlers={{ onMouseOut: handleMouseOut }}
-        placement={placement}
-        ref={ref}
-        style={style}
-        backgroundColor="inverse"
-        borderRadius="medium"
-        boxShadow={3}
-        color="inverseOn"
-        {...surfaceStyles}
-      >
-        <TooltipContent
-          role="tooltip"
-          id={guaranteedId}
-          width={width}
-          textAlign={textAlign}
+      <Portal>
+        <OverlaySurface
+          arrow={arrow}
+          arrowProps={arrowProps}
+          eventHandlers={{ onMouseOut: handleMouseOut }}
+          placement={placement}
+          ref={ref}
+          style={style}
+          backgroundColor="inverse"
+          borderRadius="medium"
+          boxShadow={3}
+          color="inverseOn"
+          {...surfaceStyles}
         >
-          {content}
-        </TooltipContent>
-      </OverlaySurface>
+          <TooltipContent
+            role="tooltip"
+            id={guaranteedId}
+            width={width}
+            textAlign={textAlign}
+          >
+            {content}
+          </TooltipContent>
+        </OverlaySurface>
+      </Portal>
     ) : null
 
   return {

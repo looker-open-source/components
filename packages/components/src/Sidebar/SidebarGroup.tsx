@@ -59,7 +59,9 @@ const InternalSidebarGroup: FC<SidebarGroupProps> = ({
           <Icon size={20} name={isOpen ? 'CaretUp' : 'CaretDown'} />
         </button>
       </SidebarGroupHeading>
-      {isOpen && <Box px="medium">{children}</Box>}
+      <Box px="medium" height={isOpen ? 'auto' : '0'} overflow="hidden">
+        {children}
+      </Box>
     </section>
   )
 }

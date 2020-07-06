@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Tree` and `TreeItem`
   - Updated docs and test suite
+- `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
+- `Tooltip` now renders in a `Portal`
 
 ### Fixed
 
