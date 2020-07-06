@@ -46,18 +46,17 @@ export default {
   title: 'Tabs',
 }
 
-
 export const Basic: FC = () => (
   <Tabs>
     <TabList>
-      <Tab>Light Blue</Tab>
-      <Tab>Coral</Tab>
+      <Tab>Alice Blue</Tab>
+      <Tab>Aqua</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'lightblue',
+            backgroundColor: '#F0F8FF',
             height: '350px',
           }}
         />
@@ -65,7 +64,7 @@ export const Basic: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'coral',
+            backgroundColor: '#00FFFF',
             height: '200px',
           }}
         />
@@ -93,7 +92,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'RebeccaPurple',
+            backgroundColor: '#663399',
             height: '350px',
           }}
         />
@@ -101,7 +100,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'coral',
+            backgroundColor: '#FF7F50',
             height: '350px',
           }}
         />
@@ -109,7 +108,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'ForestGreen',
+            backgroundColor: '#228B22',
             height: '350px',
           }}
         />
@@ -117,7 +116,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'CornflowerBlue',
+            backgroundColor: '#6495ED',
             height: '350px',
           }}
         />
@@ -125,7 +124,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'lightblue',
+            backgroundColor: '#ADD8E6',
             height: '350px',
           }}
         />
@@ -133,7 +132,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'DarkOrange',
+            backgroundColor: '#FF8C00',
             height: '350px',
           }}
         />
@@ -141,7 +140,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'DeepPink',
+            backgroundColor: '#FF1493',
             height: '350px',
           }}
         />
@@ -149,7 +148,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'Gold',
+            backgroundColor: '#FFD700',
             height: '350px',
           }}
         />
@@ -157,7 +156,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'Gainsboro',
+            backgroundColor: '#DCDCDC',
             height: '350px',
           }}
         />
@@ -165,7 +164,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'YellowGreen',
+            backgroundColor: '#9ACD32',
             height: '350px',
           }}
         />
@@ -173,7 +172,7 @@ export const DistributeTabs: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'DarkMagenta',
+            backgroundColor: '#8B008B',
             height: '350px',
           }}
         />
