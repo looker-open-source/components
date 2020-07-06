@@ -58,7 +58,9 @@ const distributeTabsCSS = css`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(3rem, auto));
   ${Tab} {
-    padding: 0 1rem; /* Not dumb here */
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    margin-left: 0;
+    padding: 0 1rem 0.5rem;
   }
 `
 export const TabList = styled(TabListLayout)`
