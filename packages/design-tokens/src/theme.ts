@@ -82,7 +82,7 @@ export interface Theme {
   shadows: Shadows
   space: SpaceRamp
   transitions: Transitions
-  zIndexFloor?: number
+  zIndexFloor: number
 }
 
 export const theme: Theme = {
@@ -98,4 +98,5 @@ export const theme: Theme = {
   sizes,
   space,
   transitions,
+  zIndexFloor: 1,
 }
