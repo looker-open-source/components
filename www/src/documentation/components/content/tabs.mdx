@@ -68,6 +68,55 @@ To create a disabled Tab add the disabled prop. You must still create a TabPanel
 </Tabs>
 ```
 
+## Distribute Attribute
+
+Using the distribute porp on `TabList` will equally distributed each `Tab` in the container.
+
+```jsx
+<Tabs>
+  <TabList distribute>
+    <Tab>Rebecca Purple</Tab>
+    <Tab>Coral</Tab>
+    <Tab>Forest Green</Tab>
+    <Tab>Cornflower Blue</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+      <div
+        style={{
+          backgroundColor: 'RebeccaPurple',
+          height: '350px',
+        }}
+      />
+    </TabPanel>
+    <TabPanel>
+      <div
+        style={{
+          backgroundColor: 'coral',
+          height: '350px',
+        }}
+      />
+    </TabPanel>
+    <TabPanel>
+      <div
+        style={{
+          backgroundColor: 'ForestGreen',
+          height: '350px',
+        }}
+      />
+    </TabPanel>
+    <TabPanel>
+      <div
+        style={{
+          backgroundColor: 'CornflowerBlue',
+          height: '350px',
+        }}
+      />
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
 ## Tab using Hooks
 
 ```jsx

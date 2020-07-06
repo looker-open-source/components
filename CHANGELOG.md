@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Tooltip` now renders in a `Portal`
+- `TabList` now supports distribute prop
 
 ### Fixed
 
