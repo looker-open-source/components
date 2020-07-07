@@ -29,7 +29,8 @@ import {
   omitStyledProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import isFunction from 'lodash/isFunction'
+import React, { forwardRef, Ref, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
@@ -45,9 +46,14 @@ export interface MessageBarProps
    * @default: 'inform'
    */
   intent?: MessageBarIntent
+  /**
+   * Render the `X` which allows the MessageBar to be dismissed
+   * @default: true
+   */
   canDismiss?: boolean
   onDismiss?: () => void
   className?: string
+  visible?: boolean
 }
 
 const MessageBarContent = styled.div``
@@ -60,26 +66,49 @@ const MessageBarLayout = forwardRef(
       canDismiss,
       intent = 'inform',
       onDismiss,
+      visible: visibleProp = true,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
-  ) => (
-    <div aria-live="polite" ref={ref} role="status" {...omitStyledProps(props)}>
-      <Status intent={intent} />
-      <MessageBarContent>{children}</MessageBarContent>
-      {canDismiss && (
-        <IconButton
-          id={id ? `${id}-iconButton` : undefined}
-          ml="auto"
-          onClick={onDismiss}
-          icon="Close"
-          size="small"
-          label={`Dismiss ${getIntentLabel(intent)}`}
-          aria-hidden
-        />
-      )}
-    </div>
-  )
+  ) => {
+    const [visible, setVisible] = useState(visibleProp)
+
+    const handleDismiss = () => {
+      setVisible(false)
+      isFunction(onDismiss) && onDismiss()
+    }
+
+    useEffect(() => {
+      setVisible(visibleProp)
+    }, [visibleProp])
+
+    if (visible) {
+      return (
+        <div
+          aria-live="polite"
+          ref={ref}
+          role="status"
+          {...omitStyledProps(props)}
+        >
+          <Status intent={intent} />
+          <MessageBarContent>{children}</MessageBarContent>
+          {canDismiss && (
+            <IconButton
+              id={id ? `${id}-iconButton` : undefined}
+              ml="auto"
+              onClick={handleDismiss}
+              icon="Close"
+              size="small"
+              label={`Dismiss ${getIntentLabel(intent)}`}
+              aria-hidden
+            />
+          )}
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
 )
 
 MessageBarLayout.displayName = 'MessageBarLayout'
@@ -103,6 +132,7 @@ export const MessageBar = styled(MessageBarLayout)`
 `
 
 MessageBar.defaultProps = {
+  canDismiss: true,
   px: 'medium',
   py: 'small',
   width: '100%',

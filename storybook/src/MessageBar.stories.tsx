@@ -49,19 +49,25 @@ export const Basic: FC = () => (
     <MessageBar intent="inform">Inform</MessageBar>
     <MessageBar intent="positive">Positive</MessageBar>
     <MessageBar intent="critical">Critical</MessageBar>
+    <MessageBar intent="critical" canDismiss={false}>
+      Cannot Be Dismissed
+    </MessageBar>
   </SpaceVertical>
 )
 
 export const Controlled: FC = () => {
   const { value, setOff, setOn } = useToggle(true)
-  return value ? (
-    <MessageBar intent="warn" onDismiss={setOff} canDismiss>
-      I can be closed
-    </MessageBar>
-  ) : (
-    <div>
-      <ButtonOutline onClick={setOn}>Show MessageBar</ButtonOutline>
-    </div>
+  return (
+    <>
+      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
+        I can be closed
+      </MessageBar>
+      {!value && (
+        <div>
+          <ButtonOutline onClick={setOn}>Show MessageBar</ButtonOutline>
+        </div>
+      )}
+    </>
   )
 }
 
