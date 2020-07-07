@@ -60,6 +60,12 @@ export interface IntentColors {
    */
   link: string
   /**
+   * Link text color on interaction
+   * Used for: Link :active, :focused and :hover states
+   * @default blue700
+   */
+  linkInteractive: string
+  /**
    * Critical intent color
    * Used for: Delete button, error and validation messages
    * @default red500
