@@ -121,7 +121,7 @@ describe('MessageBar intents', () => {
   })
 
   test('Error MessageBar', () => {
-    const { getByText, getByTitle } = renderWithTheme(
+    const { getByText, getByTitle, getByRole } = renderWithTheme(
       <MessageBar intent="critical" id="test-message-bar">
         Error
       </MessageBar>
@@ -131,6 +131,10 @@ describe('MessageBar intents', () => {
     // icon title and color
     expect(getByTitle('Error').closest('div')).toHaveStyle({
       color: '#CC1F36',
+    })
+    // MesasgeBar background
+    expect(getByRole('status')).toHaveStyle({
+      background: '#FFE5E9',
     })
   })
 
