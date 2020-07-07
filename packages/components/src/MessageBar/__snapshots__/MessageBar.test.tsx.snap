@@ -416,12 +416,12 @@ exports[`MessageBar can be dismissed 1`] = `
 .c6:hover,
 .c6:focus,
 .c6.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c6:active,
 .c6.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c6 svg {

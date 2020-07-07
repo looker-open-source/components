@@ -42,6 +42,7 @@ exports[`InputSearch default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -163,6 +164,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

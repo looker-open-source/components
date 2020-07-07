@@ -6,6 +6,7 @@ exports[`InputText default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -103,6 +104,7 @@ exports[`InputText should accept disabled 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -207,6 +209,7 @@ exports[`InputText should accept readOnly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -305,6 +308,7 @@ exports[`InputText should accept required 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -403,6 +407,7 @@ exports[`InputText with a placeholder 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -501,6 +506,7 @@ exports[`InputText with a value 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -599,6 +605,7 @@ exports[`InputText with aria-describedby 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -697,6 +704,7 @@ exports[`InputText with name and id 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #262D33;
   cursor: text;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
