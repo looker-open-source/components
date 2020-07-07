@@ -200,8 +200,8 @@ export function SelectContent() {
     setSearchTerm(term)
   }
   const newOptions = useMemo(() => {
-    if (searchTerm === '') return optionsWithGroups
-    return optionsWithGroups.reduce(optionReducer(searchTerm), [])
+    if (searchTerm === '') return options1k
+    return options1k.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
   return (
     <Box p="large">

@@ -31,8 +31,7 @@ import omit from 'lodash/omit'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputSearchBase, InputSearchBaseProps } from '../InputSearch'
-import { InputText } from '../InputText'
+import { InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
@@ -67,8 +66,11 @@ export interface ComboboxInputCommonProps {
 }
 
 export interface ComboboxInputProps
-  extends Omit<InputSearchBaseProps, 'autoComplete'>,
-    ComboboxInputCommonProps {}
+  extends Omit<InputTextBaseProps, 'autoComplete' | 'value' | 'defaultValue'>,
+    ComboboxInputCommonProps {
+  value?: string
+  defaultValue?: string
+}
 
 export const ComboboxInputInternal = forwardRef(
   (props: ComboboxInputProps, forwardedRef: Ref<HTMLInputElement>) => {
@@ -167,12 +169,11 @@ export const ComboboxInputInternal = forwardRef(
     const inputEvents = useInputEvents(props, ComboboxContext)
 
     return (
-      <InputSearchBase
+      <InputText
         {...omit(rest, 'selectOnClick')}
         {...inputEvents}
-        searchIcon={false}
         disabled={disabled}
-        searchControls={
+        after={
           <AdvancedInputControls
             validationType={validationType}
             onClear={handleClear}

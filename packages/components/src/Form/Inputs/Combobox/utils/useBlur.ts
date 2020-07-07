@@ -26,14 +26,19 @@
 
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
-import { useContext } from 'react'
-import { ComboboxContext } from '../ComboboxContext'
+import { Context, useContext } from 'react'
+import {
+  ComboboxContextProps,
+  ComboboxMultiContextProps,
+} from '../ComboboxContext'
 import { ComboboxActionType, ComboboxState } from './state'
 
-export function useBlur() {
-  const { state, transition, listRef, inputElement } = useContext(
-    ComboboxContext
-  )
+export function useBlur<
+  TContext extends
+    | ComboboxContextProps
+    | ComboboxMultiContextProps = ComboboxContextProps
+>(context: Context<TContext>) {
+  const { state, transition, listRef, inputElement } = useContext(context)
 
   return function handleBlur() {
     requestAnimationFrame(() => {
