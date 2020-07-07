@@ -1,22 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuGroup - JSX label 1`] = `
-.c3 {
+.c5 {
   list-style-type: none;
 }
 
-.c2 {
+.c4 {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
   padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   color: #262D33;
 }
 
-.c1 {
+.c2 {
   background: #FFFFFF;
   box-shadow: none;
   margin-bottom: 0.25rem;
@@ -25,16 +22,24 @@ exports[`MenuGroup - JSX label 1`] = `
   top: -1px;
 }
 
-.c0 {
-  padding: 0.75rem 0;
+.c2 .c3 {
+  color: #4C535B;
 }
 
-.c4 {
+.c1 {
+  padding: 0.5rem 0;
+}
+
+.c1 + .c0 {
+  border-top: solid 1px #DEE1E5;
+}
+
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #262D33;
+  color: #343C42;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,8 +56,8 @@ exports[`MenuGroup - JSX label 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 button,
-.c4 a {
+.c6 button,
+.c6 a {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -66,73 +71,81 @@ exports[`MenuGroup - JSX label 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  grid-gap: 0.75rem;
+  grid-template-columns: 1fr;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 button:hover,
-.c4 a:hover,
-.c4 button:focus,
-.c4 a:focus {
+.c6 button:hover,
+.c6 a:hover,
+.c6 button:focus,
+.c6 a:focus {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 button .c5,
-.c4 a .c5 {
+.c6 button .c7,
+.c6 a .c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
-.c4 .c6 {
+.c6 .c8 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4:hover,
-.c4[aria-current='true'] {
+.c6:hover,
+.c6[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c4:hover .c6,
-.c4[aria-current='true'] .c6 {
-  color: #262D33;
-}
-
-.c4[aria-current='true'] {
-  font-weight: 600;
-}
-
-.c4[disabled] {
+.c6:hover .c8,
+.c6[aria-current='true'] .c8 {
   color: #939BA5;
 }
 
-.c4[disabled] button,
-.c4[disabled] a {
+.c6[aria-current='true'] {
+  font-weight: 600;
+}
+
+.c6[disabled] {
+  color: #939BA5;
+}
+
+.c6[disabled] button,
+.c6[disabled] a {
   cursor: not-allowed;
 }
 
-.c4[disabled]:hover {
+.c6[disabled]:hover {
   background: #FFFFFF;
   color: #939BA5;
 }
 
-.c4[disabled]:hover .c6 {
+.c6[disabled]:hover .c8 {
   color: #C1C6CC;
 }
 
 <li
-  className="c0"
+  className="c0 c1"
 >
   <div
-    className="c1"
+    className="c2"
   >
     <div
       style={
@@ -142,7 +155,7 @@ exports[`MenuGroup - JSX label 1`] = `
       }
     />
     <h2
-      className="c2"
+      className="c3 c4"
       fontSize="small"
       fontWeight="semiBold"
     >
@@ -154,11 +167,11 @@ exports[`MenuGroup - JSX label 1`] = `
     </h2>
   </div>
   <ul
-    className="c3"
+    className="c5"
     type="none"
   >
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -167,14 +180,14 @@ exports[`MenuGroup - JSX label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           what?
         </div>
       </button>
     </li>
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -183,14 +196,14 @@ exports[`MenuGroup - JSX label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           who?
         </div>
       </button>
     </li>
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -199,7 +212,7 @@ exports[`MenuGroup - JSX label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           where?
         </div>
@@ -210,22 +223,19 @@ exports[`MenuGroup - JSX label 1`] = `
 `;
 
 exports[`MenuGroup - label 1`] = `
-.c3 {
+.c5 {
   list-style-type: none;
 }
 
-.c2 {
+.c4 {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
   padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   color: #262D33;
 }
 
-.c1 {
+.c2 {
   background: #FFFFFF;
   box-shadow: none;
   margin-bottom: 0.25rem;
@@ -234,16 +244,24 @@ exports[`MenuGroup - label 1`] = `
   top: -1px;
 }
 
-.c0 {
-  padding: 0.75rem 0;
+.c2 .c3 {
+  color: #4C535B;
 }
 
-.c4 {
+.c1 {
+  padding: 0.5rem 0;
+}
+
+.c1 + .c0 {
+  border-top: solid 1px #DEE1E5;
+}
+
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #262D33;
+  color: #343C42;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -260,8 +278,8 @@ exports[`MenuGroup - label 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 button,
-.c4 a {
+.c6 button,
+.c6 a {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -275,73 +293,81 @@ exports[`MenuGroup - label 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  grid-gap: 0.75rem;
+  grid-template-columns: 1fr;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 button:hover,
-.c4 a:hover,
-.c4 button:focus,
-.c4 a:focus {
+.c6 button:hover,
+.c6 a:hover,
+.c6 button:focus,
+.c6 a:focus {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 button .c5,
-.c4 a .c5 {
+.c6 button .c7,
+.c6 a .c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
-.c4 .c6 {
+.c6 .c8 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4:hover,
-.c4[aria-current='true'] {
+.c6:hover,
+.c6[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c4:hover .c6,
-.c4[aria-current='true'] .c6 {
-  color: #262D33;
-}
-
-.c4[aria-current='true'] {
-  font-weight: 600;
-}
-
-.c4[disabled] {
+.c6:hover .c8,
+.c6[aria-current='true'] .c8 {
   color: #939BA5;
 }
 
-.c4[disabled] button,
-.c4[disabled] a {
+.c6[aria-current='true'] {
+  font-weight: 600;
+}
+
+.c6[disabled] {
+  color: #939BA5;
+}
+
+.c6[disabled] button,
+.c6[disabled] a {
   cursor: not-allowed;
 }
 
-.c4[disabled]:hover {
+.c6[disabled]:hover {
   background: #FFFFFF;
   color: #939BA5;
 }
 
-.c4[disabled]:hover .c6 {
+.c6[disabled]:hover .c8 {
   color: #C1C6CC;
 }
 
 <li
-  className="c0"
+  className="c0 c1"
 >
   <div
-    className="c1"
+    className="c2"
   >
     <div
       style={
@@ -351,7 +377,7 @@ exports[`MenuGroup - label 1`] = `
       }
     />
     <h2
-      className="c2"
+      className="c3 c4"
       fontSize="small"
       fontWeight="semiBold"
     >
@@ -359,11 +385,11 @@ exports[`MenuGroup - label 1`] = `
     </h2>
   </div>
   <ul
-    className="c3"
+    className="c5"
     type="none"
   >
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -372,14 +398,14 @@ exports[`MenuGroup - label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           what?
         </div>
       </button>
     </li>
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -388,14 +414,14 @@ exports[`MenuGroup - label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           who?
         </div>
       </button>
     </li>
     <li
-      className="c4 "
+      className="c6 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -404,7 +430,7 @@ exports[`MenuGroup - label 1`] = `
         role="menuitem"
       >
         <div
-          className="c5 "
+          className="c7 "
         >
           where?
         </div>
@@ -415,20 +441,24 @@ exports[`MenuGroup - label 1`] = `
 `;
 
 exports[`MenuGroup 1`] = `
-.c1 {
+.c2 {
   list-style-type: none;
 }
 
-.c0 {
-  padding: 0.75rem 0;
+.c1 {
+  padding: 0.5rem 0;
 }
 
-.c2 {
+.c1 + .c0 {
+  border-top: solid 1px #DEE1E5;
+}
+
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #262D33;
+  color: #343C42;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -445,8 +475,8 @@ exports[`MenuGroup 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c2 button,
-.c2 a {
+.c3 button,
+.c3 a {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -460,77 +490,85 @@ exports[`MenuGroup 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  grid-gap: 0.75rem;
+  grid-template-columns: 1fr;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 button:hover,
-.c2 a:hover,
-.c2 button:focus,
-.c2 a:focus {
+.c3 button:hover,
+.c3 a:hover,
+.c3 button:focus,
+.c3 a:focus {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 button .c3,
-.c2 a .c3 {
+.c3 button .c4,
+.c3 a .c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
-.c2 .c4 {
+.c3 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c2:hover,
-.c2[aria-current='true'] {
+.c3:hover,
+.c3[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c2:hover .c4,
-.c2[aria-current='true'] .c4 {
-  color: #262D33;
-}
-
-.c2[aria-current='true'] {
-  font-weight: 600;
-}
-
-.c2[disabled] {
+.c3:hover .c5,
+.c3[aria-current='true'] .c5 {
   color: #939BA5;
 }
 
-.c2[disabled] button,
-.c2[disabled] a {
+.c3[aria-current='true'] {
+  font-weight: 600;
+}
+
+.c3[disabled] {
+  color: #939BA5;
+}
+
+.c3[disabled] button,
+.c3[disabled] a {
   cursor: not-allowed;
 }
 
-.c2[disabled]:hover {
+.c3[disabled]:hover {
   background: #FFFFFF;
   color: #939BA5;
 }
 
-.c2[disabled]:hover .c4 {
+.c3[disabled]:hover .c5 {
   color: #C1C6CC;
 }
 
 <li
-  className="c0"
+  className="c0 c1"
 >
   <ul
-    className="c1"
+    className="c2"
     type="none"
   >
     <li
-      className="c2 "
+      className="c3 "
       onBlur={[Function]}
       onClick={[Function]}
       onKeyUp={[Function]}
@@ -539,7 +577,7 @@ exports[`MenuGroup 1`] = `
         role="menuitem"
       >
         <div
-          className="c3 "
+          className="c4 "
         >
           who!
         </div>
