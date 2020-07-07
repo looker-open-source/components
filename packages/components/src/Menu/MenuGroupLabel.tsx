@@ -28,13 +28,10 @@ import React, { FC, useRef, useContext, RefObject } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text/Heading'
 import { useElementVisibility } from './MenuGroup.hooks'
-import { MenuItemContext } from './MenuContext'
 
 export const MenuGroupLabel: FC = ({ children }) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
-
-  const iconContext = useContext(MenuItemContext)
 
   return (
     <MenuGroupLabelWrapper renderBoxShadow={!isLabelShimVisible}>
@@ -48,11 +45,9 @@ export const MenuGroupLabel: FC = ({ children }) => {
       <Heading
         fontSize="small"
         as="h2"
-        pl={iconContext.renderIconPlaceholder ? 'xxlarge' : 'medium'}
-        ml={iconContext.renderIconPlaceholder ? 'xsmall' : 'none'}
-        pb="xxsmall"
+        pl="medium"
         fontWeight="semiBold"
-        color="text4"
+        color="text3"
       >
         {children}
       </Heading>
@@ -71,4 +66,8 @@ const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
   margin-bottom: ${({ theme }) => theme.space.xxsmall};
   position: sticky;
   top: -1px;
+
+  ${Heading} {
+    color: ${({ theme }) => theme.colors.text3};
+  }
 `

@@ -182,7 +182,42 @@ export const RealisticMenus = () => {
             </MenuItem>
           </MenuGroup>
 
+          <MenuGroup label="Options">
+            <MenuItem icon="EditOutline" detail="⌘⇧E">
+              Edit dashboard
+            </MenuItem>
+            <MenuItem>Get LookMl</MenuItem>
+            <MenuItem icon="Undo" detail="A longer detail">
+              Revert to original dashboard
+            </MenuItem>
+          </MenuGroup>
+
           <MenuGroup>
+            <MenuItem icon="Download" detail="⌥⇧D">
+              Edit dashboard
+            </MenuItem>
+          </MenuGroup>
+
+          <MenuGroup>
+            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
+
+      <Menu>
+        <MenuDisclosure>
+          <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+            Icon Space Preseved
+          </IconButton>
+        </MenuDisclosure>
+        <MenuList compact>
+          <MenuGroup>
+            <MenuItem icon="Refresh" detail="⌘⇧↵">
+              Clear cache & refresh
+            </MenuItem>
+          </MenuGroup>
+
+          <MenuGroup label="Options">
             <MenuItem icon="EditOutline" detail="⌘⇧E">
               Edit dashboard
             </MenuItem>

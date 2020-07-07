@@ -72,7 +72,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   button,
   a {
     ${reset}
-
     align-items: center;
     background: transparent;
     border: none;
@@ -92,6 +91,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
         space: { xxsmall, xsmall, medium },
       },
     }) => (compact ? `${xxsmall} ${medium}` : `${xsmall} ${medium}`)};
+    position: relative;
     text-align: left;
     text-decoration: none;
 
@@ -102,17 +102,28 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     }
 
     ${MenuItemLayoutGrid} {
+      align-items: center;
       display: grid;
-      grid-gap: 0.5rem;
-      grid-template-columns: ${({ hasIcon }) => (hasIcon ? '20px 1fr' : '1fr')};
+      grid-gap: ${({ theme }) => theme.space.small};
+      grid-template-columns: ${({ hasIcon }) =>
+        hasIcon ? '24px 1fr' : ' 1fr'};
     }
   }
 
   ${({ focusVisible, theme: { colors } }) =>
     focusVisible &&
-    `&:focus-within button,
-  &:focus-within a {
-  box-shadow: 0 0 3px 1px ${colors.key};
+    `&:focus-within button:after,
+  &:focus-within a:after {
+    content: '';
+    display:block;
+    border: solid 2px ${colors.keyFocus};
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 1px;
   }
   `}
 
