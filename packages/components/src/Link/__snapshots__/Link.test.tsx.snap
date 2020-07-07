@@ -9,8 +9,11 @@ Array [
 }
 
 .c0:focus,
-.c0:hover {
-  color: #0059b2;
+.c0:hover,
+.c0:active,
+.c0.active,
+.c0:visited {
+  color: #00418c;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
@@ -28,8 +31,11 @@ Array [
 }
 
 .c0:focus,
-.c0:hover {
-  color: #6C43E0;
+.c0:hover,
+.c0:active,
+.c0.active,
+.c0:visited {
+  color: #4F2ABA;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
@@ -48,8 +54,11 @@ Array [
 }
 
 .c0:focus,
-.c0:hover {
-  color: #0059b2;
+.c0:hover,
+.c0:active,
+.c0.active,
+.c0:visited {
+  color: #00418c;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
