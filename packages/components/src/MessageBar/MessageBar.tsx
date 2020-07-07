@@ -30,10 +30,12 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import isFunction from 'lodash/isFunction'
+import isUndefined from 'lodash/isUndefined'
 import React, { forwardRef, Ref, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
+import { useReadOnlyWarn } from '../utils'
 import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
@@ -56,8 +58,6 @@ export interface MessageBarProps
   visible?: boolean
 }
 
-const MessageBarContent = styled.div``
-
 const MessageBarLayout = forwardRef(
   (
     {
@@ -66,20 +66,26 @@ const MessageBarLayout = forwardRef(
       canDismiss,
       intent = 'inform',
       onDismiss,
-      visible: visibleProp = true,
+      visible: visibleProp,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const [visible, setVisible] = useState(visibleProp)
+    useReadOnlyWarn('MessageBar', visibleProp, onDismiss)
+
+    const [visible, setVisible] = useState(
+      isUndefined(visibleProp) ? true : visibleProp
+    )
 
     const handleDismiss = () => {
-      setVisible(false)
+      setVisible(visibleProp || false)
       isFunction(onDismiss) && onDismiss()
     }
 
     useEffect(() => {
-      setVisible(visibleProp)
+      if (!isUndefined(visibleProp)) {
+        setVisible(visibleProp)
+      }
     }, [visibleProp])
 
     if (visible) {
@@ -122,13 +128,13 @@ export const MessageBar = styled(MessageBarLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+`
 
-  ${MessageBarContent} {
-    flex: 1;
-    margin-left: ${({ theme: { space } }) => space.large};
-    margin-right: ${({ canDismiss, theme: { space } }) =>
-      canDismiss ? space.xxxxlarge : space.none};
-  }
+const MessageBarContent = styled.div`
+  flex: 1;
+  margin-left: ${({ theme: { space } }) => space.large};
+  margin-right: ${({ canDismiss, theme: { space } }) =>
+    canDismiss ? space.xxxxlarge : space.none};
 `
 
 MessageBar.defaultProps = {
