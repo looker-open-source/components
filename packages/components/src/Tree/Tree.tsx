@@ -87,7 +87,7 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
-export const InnerTreeItem = styled(TreeItem)``
+export const TreeItemInner = styled(TreeItem)``
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
@@ -116,8 +116,8 @@ const TreeLayout: FC<TreeProps> = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const innerTreeItem = (
-    <InnerTreeItem
+  const treeItem = (
+    <TreeItemInner
       detail={detail}
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
@@ -125,13 +125,13 @@ const TreeLayout: FC<TreeProps> = ({
       icon={icon}
     >
       {label}
-    </InnerTreeItem>
+    </TreeItemInner>
   )
 
   const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
       <AccordionDisclosure ref={disclosureRef} fontWeight={fontWeight}>
-        {innerTreeItem}
+        {treeItem}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
@@ -215,7 +215,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
   }
 
-  ${InnerTreeItem} {
+  ${TreeItemInner} {
     border-width: 0;
     height: 100%;
 
