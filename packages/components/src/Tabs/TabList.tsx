@@ -35,6 +35,7 @@ export interface TabListProps {
   className?: string
   distribute?: boolean
 }
+
 const TabListLayout: FC<TabListProps> = ({
   children,
   selectedIndex,
@@ -53,16 +54,25 @@ const TabListLayout: FC<TabListProps> = ({
   )
   return <div className={className}>{clonedChildren}</div>
 }
+
 const distributeTabsCSS = css`
   column-gap: ${(props) => props.theme.space.medium};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(3rem, auto));
+  grid-gap: ${(props) => props.theme.space.none};
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(${(props) => props.theme.space.xlarge}, auto)
+  );
+
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
-    margin-left: 0;
-    padding: 0 1rem 0.5rem;
+    margin-left: ${(props) => props.theme.space.none};
+    padding: ${(props) => props.theme.space.none}
+      ${(props) => props.theme.space.medium}
+      ${(props) => props.theme.space.xsmall};
   }
 `
+
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
   ${({ distribute }) => distribute && distributeTabsCSS}
