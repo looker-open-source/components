@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useRef, useContext, RefObject } from 'react'
+import React, { FC, useRef, RefObject } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text/Heading'
 import { useElementVisibility } from './MenuGroup.hooks'
