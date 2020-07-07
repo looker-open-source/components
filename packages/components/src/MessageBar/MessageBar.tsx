@@ -97,7 +97,9 @@ const MessageBarLayout = forwardRef(
           {...omitStyledProps(props)}
         >
           <Status intent={intent} />
-          <MessageBarContent>{children}</MessageBarContent>
+          <MessageBarContent canDismiss={canDismiss}>
+            {children}
+          </MessageBarContent>
           {canDismiss && (
             <IconButton
               id={id ? `${id}-iconButton` : undefined}
@@ -130,7 +132,7 @@ export const MessageBar = styled(MessageBarLayout)`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-const MessageBarContent = styled.div`
+const MessageBarContent = styled.div<{ canDismiss: boolean }>`
   flex: 1;
   margin-left: ${({ theme: { space } }) => space.large};
   margin-right: ${({ canDismiss, theme: { space } }) =>
