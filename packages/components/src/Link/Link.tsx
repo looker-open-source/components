@@ -79,19 +79,13 @@ export const Link = styled(LinkLayout)`
     keyColor ? colors.key : colors.link};
   text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
 
-  &:visited {
-    /* @TODO - We should probably support this */
-  }
-
   &:focus,
-  &:hover {
-    color: ${({ keyColor, theme: { colors } }) =>
-      keyColor ? colors.key : colors.link};
-    text-decoration: underline;
-  }
-
+  &:hover,
   &:active,
-  &.active {
-    /* @TODO - We should probably support this */
+  &.active,
+  &:visited {
+    color: ${({ keyColor, theme: { colors } }) =>
+      keyColor ? colors.keyInteractive : colors.linkInteractive};
+    text-decoration: underline;
   }
 `
