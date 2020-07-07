@@ -110,46 +110,56 @@ describe('clear button functionality', () => {
 describe('MessageBar intents', () => {
   test('Warn MessageBar', () => {
     const { getByText, getByTitle } = renderWithTheme(
-      <MessageBar intent="warn" id="test-message-bar">
-        Warn
-      </MessageBar>
+      <MessageBar intent="warn">Warn</MessageBar>
     )
-
+    // dismiss button
     expect(getByText('Dismiss Warning')).toBeInTheDocument()
+    // icon title and color
     expect(getByTitle('Warning').closest('div')).toHaveStyle({
       color: '#FFA800',
     })
   })
 
-  // test('Error MessageBar', () => {
-  //   assertSnapshot(
-  //     <MessageBar intent="critical" id="test-message-bar">
-  //       Error
-  //     </MessageBar>
-  //   )
-  // })
+  test('Error MessageBar', () => {
+    const { getByText, getByTitle } = renderWithTheme(
+      <MessageBar intent="critical" id="test-message-bar">
+        Error
+      </MessageBar>
+    )
+    // dismiss button
+    expect(getByText('Dismiss Error')).toBeInTheDocument()
+    // icon title and color
+    expect(getByTitle('Error').closest('div')).toHaveStyle({
+      color: '#CC1F36',
+    })
+  })
 
-  // test('Info MessageBar', () => {
-  //   assertSnapshot(
-  //     <MessageBar intent="inform" id="test-message-bar">
-  //       Info
-  //     </MessageBar>
-  //   )
-  // })
+  test('Info MessageBar', () => {
+    const { getByText, getByTitle } = renderWithTheme(
+      <MessageBar intent="inform" id="test-message-bar">
+        Inform
+      </MessageBar>
+    )
 
-  // test('Confirmation MessageBar', () => {
-  //   assertSnapshot(
-  //     <MessageBar intent="positive" id="test-message-bar">
-  //       Positive
-  //     </MessageBar>
-  //   )
-  // })
+    // dismiss button
+    expect(getByText('Dismiss Inform')).toBeInTheDocument()
+    // icon title and color
+    expect(getByTitle('Circle Info').closest('div')).toHaveStyle({
+      color: '#0087e1',
+    })
+  })
 
-  // test('MessageBar can be dismissed', () => {
-  //   assertSnapshot(
-  //     <MessageBar intent="inform" id="test-message-bar" canDismiss>
-  //       Info!
-  //     </MessageBar>
-  //   )
-  // })
+  test('Confirmation MessageBar', () => {
+    const { getByText, getByTitle } = renderWithTheme(
+      <MessageBar intent="positive" id="test-message-bar">
+        Confirmation
+      </MessageBar>
+    )
+    // dismiss button
+    expect(getByText('Dismiss Success')).toBeInTheDocument()
+    // icon title and color
+    expect(getByTitle('Circle Check').closest('div')).toHaveStyle({
+      color: '#24b25f',
+    })
+  })
 })
