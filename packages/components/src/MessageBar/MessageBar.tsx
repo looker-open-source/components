@@ -63,7 +63,7 @@ const MessageBarLayout = forwardRef(
     {
       id,
       children,
-      canDismiss,
+      canDismiss = true,
       intent = 'inform',
       onDismiss,
       visible: visibleProp,
@@ -140,7 +140,6 @@ const MessageBarContent = styled.div<{ canDismiss: boolean }>`
 `
 
 MessageBar.defaultProps = {
-  canDismiss: true,
   px: 'medium',
   py: 'small',
   width: '100%',
