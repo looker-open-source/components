@@ -4,38 +4,43 @@ propsOf: MessageBar
 github: MessageBar
 ---
 
-The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `info`, or `positive` messages, settable via the `intent` property.
+The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `info`, or `positive` messages, settable via the `intent` property. If no intent is set, it will fall back to `inform` by default.
 
 ```jsx
 <SpaceVertical gap="xsmall">
+  <MessageBar intent="inform">Inform (default)</MessageBar>
   <MessageBar intent="warn">Warning</MessageBar>
-  <MessageBar intent="inform">Inform</MessageBar>
   <MessageBar intent="positive">Positive</MessageBar>
   <MessageBar intent="critical">Critical</MessageBar>
 </SpaceVertical>
 ```
 
-```jsx
-<MessageBar intent="inform">
-  {`On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty`}
-</MessageBar>
-```
-
 ## canDismiss
 
-MessageBars can also be set to be `canDismiss`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
+If you don't want the MessageBar to be clearable, you can remove the close button by setting `canDismiss` to false.
+
+```jsx
+<MessageBar canDismiss={false}>I can never be closed</MessageBar>
+```
+
+## Controlled Component Pattern
+
+MessageBar will accept an `onDismiss` callback along with the `visible` boolean prop for use in the controlled component pattern. This can be useful if you wish to toggle display externally or provide an Undo option.
 
 ```jsx
 ;() => {
   const { value, setOff, setOn } = useToggle(true)
-  return value ? (
-    <MessageBar intent="warn" onDismiss={setOff} canDismiss>
-      I can be closed
-    </MessageBar>
-  ) : (
-    <ButtonOutline m="medium" onClick={setOn}>
-      Show MessageBar
-    </ButtonOutline>
+  return (
+    <>
+      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
+        I can be closed and reopened
+      </MessageBar>
+      {!value && (
+        <ButtonOutline m="medium" onClick={setOn}>
+          Show MessageBar
+        </ButtonOutline>
+      )}
+    </>
   )
 }
 ```
