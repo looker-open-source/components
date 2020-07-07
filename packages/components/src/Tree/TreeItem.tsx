@@ -150,7 +150,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && event.target === event.currentTarget) {
       onClick && onClick()
     }
 
