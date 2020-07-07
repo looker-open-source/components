@@ -27,11 +27,11 @@
 import React, { Children, cloneElement, FC, useRef, useState } from 'react'
 
 export interface UseTabsProps {
-  controlledIndex?: number
-  defaultIndex?: number
-  index?: number | undefined
+  controlledIndex?: string | number
+  defaultIndex?: string | number
+  index?: string | number | undefined
   isControlled?: boolean
-  onChange?: (index: number) => void
+  onChange?: (index: string | number) => void
 }
 
 export interface TabsProps extends UseTabsProps {

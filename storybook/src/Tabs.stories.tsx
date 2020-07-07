@@ -24,6 +24,7 @@
 
  */
 
+<<<<<<< HEAD
 import React, { FC } from 'react'
 import {
   SpaceVertical,
@@ -45,6 +46,10 @@ export default {
   component: All,
   title: 'Tabs',
 }
+=======
+import React, { FC, useState } from 'react'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
+>>>>>>> 00b4d4016... Tabs broken
 
 export const Basic: FC = () => (
   <Tabs>
@@ -180,3 +185,33 @@ export const DistributeTabs: FC = () => (
     </TabPanels>
   </Tabs>
 )
+export const Controlled: FC = () => {
+  const [currentTabIndex, setTab] = useState<string | number>('a')
+
+  const switchTab = (tab: string | number) => {
+    console.log('new tab', tab)
+    setTab(tab)
+  }
+
+  return (
+    <>
+      <button onClick={() => switchTab('a')}>Go to A</button>
+
+      <Tabs controlledIndex={currentTabIndex} onChange={switchTab}>
+        <TabList>
+          <Tab key="a">A</Tab>
+          <Tab key="b">B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel key="a">A</TabPanel>
+          <TabPanel key="b">B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
+}
+
+export default {
+  component: Basic,
+  title: 'Tabs',
+}
