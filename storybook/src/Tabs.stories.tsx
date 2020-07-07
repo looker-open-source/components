@@ -24,7 +24,6 @@
 
  */
 
-<<<<<<< HEAD
 import React, { FC } from 'react'
 import {
   SpaceVertical,
@@ -46,10 +45,6 @@ export default {
   component: All,
   title: 'Tabs',
 }
-=======
-import React, { FC, useState } from 'react'
-import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
->>>>>>> 00b4d4016... Tabs broken
 
 export const Basic: FC = () => (
   <Tabs>
@@ -61,7 +56,11 @@ export const Basic: FC = () => (
       <TabPanel>
         <div
           style={{
+<<<<<<< HEAD
             backgroundColor: '#F0F8FF',
+=======
+            backgroundColor: '#ADD8E6',
+>>>>>>> ead308fd1... first test still not fixed
             height: '350px',
           }}
         />
@@ -69,7 +68,11 @@ export const Basic: FC = () => (
       <TabPanel>
         <div
           style={{
+<<<<<<< HEAD
             backgroundColor: '#00FFFF',
+=======
+            backgroundColor: '#FF7F50',
+>>>>>>> ead308fd1... first test still not fixed
             height: '200px',
           }}
         />
@@ -186,25 +189,27 @@ export const DistributeTabs: FC = () => (
   </Tabs>
 )
 export const Controlled: FC = () => {
-  const [currentTabIndex, setTab] = useState<string | number>('a')
+  const [currentTabIndex, setTab] = useState<string | number>(0)
 
   const switchTab = (tab: string | number) => {
+    // eslint-disable-next-line no-console
     console.log('new tab', tab)
     setTab(tab)
   }
 
   return (
     <>
-      <button onClick={() => switchTab('a')}>Go to A</button>
+      <button onClick={() => switchTab(0)}>Go to A</button>
+      <button onClick={() => switchTab(1)}>Go to B</button>
 
-      <Tabs controlledIndex={currentTabIndex} onChange={switchTab}>
+      <Tabs index={currentTabIndex} onChange={switchTab}>
         <TabList>
-          <Tab key="a">A</Tab>
-          <Tab key="b">B</Tab>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel key="a">A</TabPanel>
-          <TabPanel key="b">B</TabPanel>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
         </TabPanels>
       </Tabs>
     </>

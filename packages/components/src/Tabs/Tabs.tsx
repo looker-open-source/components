@@ -78,11 +78,15 @@ export const Tabs: FC<TabsProps> = ({
   }
   /* eslint-enable no-console */
 
-  const tabs = useTabs({ defaultIndex, isControlled, onChange })
+  const tabs = useTabs({
+    defaultIndex: controlledIndex || defaultIndex,
+    isControlled,
+    onChange,
+  })
 
   const clonedChildren = Children.map(children, (child: JSX.Element) => {
     return cloneElement(child, tabs)
   })
 
-  return <>{clonedChildren}</>
+  return <React.Fragment key={controlledIndex}>{clonedChildren}</React.Fragment>
 }
