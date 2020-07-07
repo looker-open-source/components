@@ -26,35 +26,66 @@
 
 import {
   CompatibleHTMLProps,
-  ColorProps,
-  color,
   reset,
-  textDecoration,
-  TextDecorationProps,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,
-    ColorProps,
-    TextDecorationProps,
-    TypographyProps {}
+    TypographyProps {
+  /**
+   * Use the theme `key` color rather than `link`
+   * @default false
+   */
+  keyColor?: boolean
 
-export const Link = styled.a<LinkProps>`
+  /**
+   * Display underline.
+   * NOTE: Underline is displayed when Link has :hover or :focus
+   * @default false
+   */
+  underline?: boolean
+}
+
+/**
+ * `target="_blank" can be used to reverse tab-nab
+ * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+ */
+const noTabNab = 'noopener noreferrer'
+
+const LinkLayout = forwardRef(
+  ({ ...props }: LinkProps, ref: Ref<HTMLAnchorElement>) => {
+    const rel =
+      props.target === '_blank'
+        ? props.rel
+          ? `${props.rel} ${noTabNab}`
+          : noTabNab
+        : props.rel
+
+    return <a {...props} ref={ref} rel={rel} />
+  }
+)
+
+LinkLayout.displayName = 'LinkLayout'
+
+export const Link = styled(LinkLayout)`
   ${reset}
-  ${color}
   ${typography}
-  ${textDecoration}
+
+  color: ${({ keyColor, theme: { colors } }) =>
+    keyColor ? colors.key : colors.link};
+  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active,
+  &.active,
+  &:visited {
+    color: ${({ keyColor, theme: { colors } }) =>
+      keyColor ? colors.keyInteractive : colors.linkInteractive};
     text-decoration: underline;
   }
 `
-
-Link.defaultProps = {
-  color: 'link',
-  textDecoration: 'none',
-}

@@ -31,6 +31,7 @@ import { fallbackBlends, fallbackStateful } from './fallbacks'
 import {
   blue500,
   blue600,
+  blue700,
   charcoal400,
   charcoal800,
   green500,
@@ -50,6 +51,7 @@ export const defaultCoreColors: CoreColors = {
 
 export const defaultIntentColors: IntentColors = {
   link: blue600,
+  linkInteractive: blue700,
   critical: red500,
   warn: yellow500,
   neutral: charcoal400,

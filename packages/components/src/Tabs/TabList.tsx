@@ -25,18 +25,22 @@
  */
 
 import React, { Children, cloneElement, FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Tab } from '.'
 
 export interface TabListProps {
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: any) => void
+  className?: string
+  distribute?: boolean
 }
 
-export const TabList: FC<TabListProps> = ({
+const TabListLayout: FC<TabListProps> = ({
   children,
   selectedIndex,
   onSelectTab,
+  className,
 }) => {
   const clonedChildren = Children.map(
     children,
@@ -48,10 +52,28 @@ export const TabList: FC<TabListProps> = ({
       })
     }
   )
-
-  return <TabListContainer>{clonedChildren}</TabListContainer>
+  return <div className={className}>{clonedChildren}</div>
 }
 
-const TabListContainer = styled.div`
+const distributeTabsCSS = css`
+  column-gap: ${(props) => props.theme.space.medium};
+  display: grid;
+  grid-gap: ${(props) => props.theme.space.none};
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(${(props) => props.theme.space.xlarge}, auto)
+  );
+
+  ${Tab} {
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    margin-left: ${(props) => props.theme.space.none};
+    padding: ${(props) => props.theme.space.none}
+      ${(props) => props.theme.space.medium}
+      ${(props) => props.theme.space.xsmall};
+  }
+`
+
+export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  ${({ distribute }) => distribute && distributeTabsCSS}
 `
