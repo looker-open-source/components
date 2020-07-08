@@ -31,9 +31,16 @@ import {
 } from '@looker/design-tokens'
 import isFunction from 'lodash/isFunction'
 import isUndefined from 'lodash/isUndefined'
-import React, { forwardRef, Ref, useState, useEffect } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useState,
+  useEffect,
+  ReactElement,
+} from 'react'
 import styled from 'styled-components'
-import { IconButton } from '../Button'
+import { IconButton, ButtonProps } from '../Button'
+import { Space } from '../Layout/Space'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
 import { useReadOnlyWarn } from '../utils'
 import { getIntentLabel, Status } from '../Status'
@@ -64,6 +71,8 @@ export interface MessageBarProps
    */
   visible?: boolean
   className?: string
+  primaryButton?: ReactElement<ButtonProps>
+  secondaryButton?: ReactElement<ButtonProps>
 }
 
 const MessageBarLayout = forwardRef(
@@ -75,6 +84,8 @@ const MessageBarLayout = forwardRef(
       intent = 'inform',
       onDismiss,
       visible: visibleProp,
+      primaryButton,
+      secondaryButton,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
@@ -96,6 +107,27 @@ const MessageBarLayout = forwardRef(
       }
     }, [visibleProp])
 
+    const dismissButton = canDismiss && (
+      <IconButton
+        id={id ? `${id}-iconButton` : undefined}
+        ml="auto"
+        onClick={handleDismiss}
+        icon="Close"
+        size="small"
+        label={`Dismiss ${getIntentLabel(intent)}`}
+        aria-hidden
+      />
+    )
+
+    const actions = primaryButton ? (
+      <Space>
+        {secondaryButton && secondaryButton}
+        {primaryButton}
+      </Space>
+    ) : (
+      dismissButton
+    )
+
     const messageBarMarkup = (
       <div
         aria-live="polite"
@@ -104,20 +136,8 @@ const MessageBarLayout = forwardRef(
         {...omitStyledProps(props)}
       >
         <Status intent={intent} />
-        <MessageBarContent canDismiss={canDismiss}>
-          {children}
-        </MessageBarContent>
-        {canDismiss && (
-          <IconButton
-            id={id ? `${id}-iconButton` : undefined}
-            ml="auto"
-            onClick={handleDismiss}
-            icon="Close"
-            size="small"
-            label={`Dismiss ${getIntentLabel(intent)}`}
-            aria-hidden
-          />
-        )}
+        <MessageBarContent>{children}</MessageBarContent>
+        {actions}
       </div>
     )
 
@@ -134,15 +154,14 @@ export const MessageBar = styled(MessageBarLayout)`
   background: ${({ intent, theme: { colors } }) =>
     intent === 'critical' ? colors.criticalAccent : colors.neutralAccent};
   border-radius: ${({ theme: { radii } }) => radii.medium};
-  display: flex;
+  display: grid;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+  grid-template-columns: auto 1fr auto;
 `
 
-const MessageBarContent = styled.div<{ canDismiss: boolean }>`
+const MessageBarContent = styled.div`
   flex: 1;
   margin-left: ${({ theme: { space } }) => space.large};
-  margin-right: ${({ canDismiss, theme: { space } }) =>
-    canDismiss ? space.xxxxlarge : space.none};
 `
 
 MessageBar.defaultProps = {

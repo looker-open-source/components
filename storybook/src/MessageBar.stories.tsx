@@ -29,6 +29,7 @@ import {
   MessageBar,
   SpaceVertical,
   ButtonOutline,
+  ButtonTransparent,
   useToggle,
   Divider,
 } from '@looker/components'
@@ -39,6 +40,8 @@ export const All: FC = () => {
       <Basic />
       <Divider />
       <Controlled />
+      <Divider />
+      <CustomActions />
     </SpaceVertical>
   )
 }
@@ -68,6 +71,37 @@ export const Controlled: FC = () => {
         </div>
       )}
     </>
+  )
+}
+
+export const CustomActions: FC = () => {
+  const { value, setOff, setOn } = useToggle(true)
+
+  const handlePrimaryClick = () => {
+    // setOff()
+  }
+
+  const handleSecondaryClick = () => {
+    // setOff()
+  }
+
+  return (
+    <MessageBar
+      intent="positive"
+      visible={value}
+      primaryButton={
+        <ButtonTransparent onClick={handlePrimaryClick}>
+          Primary Action
+        </ButtonTransparent>
+      }
+      secondaryButton={
+        <ButtonTransparent onClick={handleSecondaryClick} color="neutral">
+          Secondary Action
+        </ButtonTransparent>
+      }
+    >
+      Render some custom actions!
+    </MessageBar>
   )
 }
 
