@@ -24,14 +24,17 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   MessageBar,
   SpaceVertical,
   ButtonOutline,
   ButtonTransparent,
+  Button,
   useToggle,
   Divider,
+  Space,
+  Text,
 } from '@looker/components'
 
 export const All: FC = () => {
@@ -75,20 +78,42 @@ export const Controlled: FC = () => {
 }
 
 export const CustomActions: FC = () => {
-  const { value, setOff, setOn } = useToggle(true)
+  const [visible, setVisible] = useState(true)
+  const [secondaryActionTaken, setSecondaryActionTaken] = useState(false)
+  const [primaryActionTaken, setPrimaryActionTaken] = useState(false)
 
   const handlePrimaryClick = () => {
-    // setOff()
+    setVisible(false)
+    setPrimaryActionTaken(true)
   }
 
   const handleSecondaryClick = () => {
-    // setOff()
+    setVisible(false)
+    setSecondaryActionTaken(true)
   }
 
-  return (
+  const handleUndo = () => {
+    setVisible(true)
+    setPrimaryActionTaken(false)
+    setSecondaryActionTaken(false)
+  }
+
+  const primaryActionConfirmation = (
+    <Space>
+      <Text>🎉 Primary Action taken!</Text>{' '}
+      <Button onClick={handleUndo}>Undo</Button>
+    </Space>
+  )
+  const secondaryActionConfirmation = (
+    <Space>
+      <Text>🎈 Secondary Action taken!</Text>{' '}
+      <Button onClick={handleUndo}>Undo</Button>
+    </Space>
+  )
+  const messageBarMarkup = (
     <MessageBar
       intent="positive"
-      visible={value}
+      visible={visible}
       primaryButton={
         <ButtonTransparent onClick={handlePrimaryClick}>
           Primary Action
@@ -103,6 +128,14 @@ export const CustomActions: FC = () => {
       Render some custom actions!
     </MessageBar>
   )
+
+  if (visible) {
+    return messageBarMarkup
+  } else if (primaryActionTaken) {
+    return primaryActionConfirmation
+  } else if (secondaryActionTaken) {
+    return secondaryActionConfirmation
+  }
 }
 
 export default {
