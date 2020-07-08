@@ -24,22 +24,6 @@
 
  */
 
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './undefinedCoalesce'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './i18n'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
+export const undefinedCoalesce = (arr: any[]) => {
+  return arr.find((element) => element !== undefined)
+}

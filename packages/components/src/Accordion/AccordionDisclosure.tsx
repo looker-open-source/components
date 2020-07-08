@@ -24,7 +24,14 @@
 
  */
 
-import React, { FC, useContext, useState } from 'react'
+import React, {
+  FC,
+  KeyboardEvent,
+  useContext,
+  Ref,
+  forwardRef,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { TypographyProps, typography } from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
@@ -33,56 +40,62 @@ import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 export interface AccordionDisclosureProps extends TypographyProps {
   className?: string
   focusVisible?: boolean
+  ref?: Ref<HTMLDivElement>
 }
 
-export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = ({
-  children,
-  className,
-}) => {
-  const [isFocusVisible, setFocusVisible] = useState(false)
-  const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
-    AccordionContext
-  )
-  const handleOpen = () => onOpen && onOpen()
-  const handleClose = () => onClose && onClose()
-  const handleToggle = () => {
-    isOpen ? handleClose() : handleOpen()
-    toggleOpen(!isOpen)
-  }
+export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
+  ({ children, className }, ref) => {
+    const [isFocusVisible, setFocusVisible] = useState(false)
+    const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
+      AccordionContext
+    )
+    const handleOpen = () => onOpen && onOpen()
+    const handleClose = () => onClose && onClose()
+    const handleToggle = () => {
+      isOpen ? handleClose() : handleOpen()
+      toggleOpen(!isOpen)
+    }
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.keyCode === 9 && event.currentTarget === event.target)
-      setFocusVisible(true)
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 13) {
+        handleToggle()
+      }
+    }
 
-    if (event.keyCode === 13) {
+    const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 9 && event.currentTarget === event.target)
+        setFocusVisible(true)
+    }
+
+    const handleClick = () => {
+      setFocusVisible(false)
       handleToggle()
     }
-  }
 
-  const handleClick = () => {
-    setFocusVisible(false)
-    handleToggle()
-  }
+    const handleBlur = () => {
+      setFocusVisible(false)
+    }
 
-  const handleBlur = () => {
-    setFocusVisible(false)
+    return (
+      <AccordionDisclosureStyle
+        className={className}
+        focusVisible={isFocusVisible}
+        onBlur={handleBlur}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
+        ref={ref}
+        tabIndex={0}
+      >
+        <AccordionDisclosureGrid {...props} isOpen={isOpen}>
+          {children}
+        </AccordionDisclosureGrid>
+      </AccordionDisclosureStyle>
+    )
   }
+)
 
-  return (
-    <AccordionDisclosureStyle
-      className={className}
-      onBlur={handleBlur}
-      onClick={handleClick}
-      onKeyUp={handleKeyUp}
-      tabIndex={0}
-      focusVisible={isFocusVisible}
-    >
-      <AccordionDisclosureGrid {...props} isOpen={isOpen}>
-        {children}
-      </AccordionDisclosureGrid>
-    </AccordionDisclosureStyle>
-  )
-}
+AccordionDisclosureLayout.displayName = 'AccordionDisclosureLayout'
 
 export const AccordionDisclosureStyle = styled.div<{ focusVisible: boolean }>`
   align-items: center;

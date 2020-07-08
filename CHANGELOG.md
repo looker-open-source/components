@@ -9,11 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `undefinedCoalesce` util function
 - `Link` now supports explicit `underline` & `keyColor` properties
 - `FactCheck` icon
 
 ### Changed
 
+- `Tree` and `TreeItem`
+  - Updated docs and test suite
 - `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
 - `Tooltip` now renders in a `Portal`
 - `TabList` now supports distribute prop
@@ -23,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
+
 
 ## [0.9.5] - 2020-07-01
 
