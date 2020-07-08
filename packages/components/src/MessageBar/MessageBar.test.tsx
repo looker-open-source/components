@@ -33,137 +33,139 @@ import {
 } from '@looker/components-test-utils'
 import { MessageBar } from './MessageBar'
 
-describe('clear button functionality', () => {
-  test('clearable by default', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <MessageBar>Message text</MessageBar>
-    )
+describe('MessageBar', () => {
+  describe('clear button functionality', () => {
+    test('clearable by default', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar>Message text</MessageBar>
+      )
 
-    // visible message bar
-    expect(getByText('Message text')).toBeInTheDocument()
+      // visible message bar
+      expect(getByText('Message text')).toBeInTheDocument()
 
-    // dismiss button
-    const dismissButton =
-      getByText('Dismiss Inform').closest('button') ||
-      document.createElement('button') // suppress typescript warning about possible null button
+      // dismiss button
+      const dismissButton =
+        getByText('Dismiss Inform').closest('button') ||
+        document.createElement('button') // suppress typescript warning about possible null button
 
-    fireEvent.click(dismissButton)
+      fireEvent.click(dismissButton)
 
-    // message bar dismissed
-    expect(queryByText('Message text')).not.toBeInTheDocument()
-  })
+      // message bar dismissed
+      expect(queryByText('Message text')).not.toBeInTheDocument()
+    })
 
-  test('controlled component', () => {
-    const handleDismiss = jest.fn()
+    test('controlled component', () => {
+      const handleDismiss = jest.fn()
 
-    const { getByText, queryByText, rerender } = renderWithTheme(
-      <MessageBar onDismiss={handleDismiss} visible>
-        Message text
-      </MessageBar>
-    )
-
-    // visible message bar
-    expect(getByText('Message text')).toBeInTheDocument()
-
-    // dismiss callback
-    expect(handleDismiss).not.toHaveBeenCalled()
-
-    const dismissButton =
-      getByText('Dismiss Inform').closest('button') ||
-      document.createElement('button') // suppress typescript warning about possible null button
-
-    fireEvent.click(dismissButton)
-
-    expect(handleDismiss).toHaveBeenCalledTimes(1)
-
-    // message bar remains visible until `visible` prop is toggled
-    expect(getByText('Message text')).toBeInTheDocument()
-
-    // dismiss message bar through `visible` prop change
-    rerender(
-      withThemeProvider(
-        <MessageBar onDismiss={handleDismiss} visible={false}>
+      const { getByText, queryByText, rerender } = renderWithTheme(
+        <MessageBar onDismiss={handleDismiss} visible>
           Message text
         </MessageBar>
       )
-    )
-    expect(queryByText('Message text')).not.toBeInTheDocument()
-  })
 
-  test('`canDismiss` toggles the clear button', () => {
-    const { getByText, queryByText, rerender } = renderWithTheme(
-      <MessageBar>Message text</MessageBar>
-    )
+      // visible message bar
+      expect(getByText('Message text')).toBeInTheDocument()
 
-    expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      // dismiss callback
+      expect(handleDismiss).not.toHaveBeenCalled()
 
-    rerender(
-      withThemeProvider(
-        <MessageBar canDismiss={false}>Message text</MessageBar>
+      const dismissButton =
+        getByText('Dismiss Inform').closest('button') ||
+        document.createElement('button') // suppress typescript warning about possible null button
+
+      fireEvent.click(dismissButton)
+
+      expect(handleDismiss).toHaveBeenCalledTimes(1)
+
+      // message bar remains visible until `visible` prop is toggled
+      expect(getByText('Message text')).toBeInTheDocument()
+
+      // dismiss message bar through `visible` prop change
+      rerender(
+        withThemeProvider(
+          <MessageBar onDismiss={handleDismiss} visible={false}>
+            Message text
+          </MessageBar>
+        )
       )
-    )
+      expect(queryByText('Message text')).not.toBeInTheDocument()
+    })
 
-    expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
-  })
-})
+    test('`canDismiss` toggles the clear button', () => {
+      const { getByText, queryByText, rerender } = renderWithTheme(
+        <MessageBar>Message text</MessageBar>
+      )
 
-describe('MessageBar intents', () => {
-  test('Warn MessageBar', () => {
-    const { getByText, getByTitle } = renderWithTheme(
-      <MessageBar intent="warn">Warn</MessageBar>
-    )
-    // dismiss button
-    expect(getByText('Dismiss Warning')).toBeInTheDocument()
-    // icon title and color
-    expect(getByTitle('Warning').closest('div')).toHaveStyle({
-      color: '#FFA800',
+      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+
+      rerender(
+        withThemeProvider(
+          <MessageBar canDismiss={false}>Message text</MessageBar>
+        )
+      )
+
+      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
   })
 
-  test('Error MessageBar', () => {
-    const { getByText, getByTitle, getByRole } = renderWithTheme(
-      <MessageBar intent="critical" id="test-message-bar">
-        Error
-      </MessageBar>
-    )
-    // dismiss button
-    expect(getByText('Dismiss Error')).toBeInTheDocument()
-    // icon title and color
-    expect(getByTitle('Error').closest('div')).toHaveStyle({
-      color: '#CC1F36',
+  describe('MessageBar intents', () => {
+    test('Warn MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="warn">Warn</MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Warning')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Warning').closest('div')).toHaveStyle({
+        color: '#FFA800',
+      })
     })
-    // MesasgeBar background
-    expect(getByRole('status')).toHaveStyle({
-      background: '#FFE5E9',
+
+    test('Error MessageBar', () => {
+      const { getByText, getByTitle, getByRole } = renderWithTheme(
+        <MessageBar intent="critical" id="test-message-bar">
+          Error
+        </MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Error')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Error').closest('div')).toHaveStyle({
+        color: '#CC1F36',
+      })
+      // MesasgeBar background
+      expect(getByRole('status')).toHaveStyle({
+        background: '#FFE5E9',
+      })
     })
-  })
 
-  test('Info MessageBar', () => {
-    const { getByText, getByTitle } = renderWithTheme(
-      <MessageBar intent="inform" id="test-message-bar">
-        Inform
-      </MessageBar>
-    )
+    test('Info MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="inform" id="test-message-bar">
+          Inform
+        </MessageBar>
+      )
 
-    // dismiss button
-    expect(getByText('Dismiss Inform')).toBeInTheDocument()
-    // icon title and color
-    expect(getByTitle('Circle Info').closest('div')).toHaveStyle({
-      color: '#0087e1',
+      // dismiss button
+      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Circle Info').closest('div')).toHaveStyle({
+        color: '#0087e1',
+      })
     })
-  })
 
-  test('Confirmation MessageBar', () => {
-    const { getByText, getByTitle } = renderWithTheme(
-      <MessageBar intent="positive" id="test-message-bar">
-        Confirmation
-      </MessageBar>
-    )
-    // dismiss button
-    expect(getByText('Dismiss Success')).toBeInTheDocument()
-    // icon title and color
-    expect(getByTitle('Circle Check').closest('div')).toHaveStyle({
-      color: '#24b25f',
+    test('Confirmation MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="positive" id="test-message-bar">
+          Confirmation
+        </MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Success')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Circle Check').closest('div')).toHaveStyle({
+        color: '#24b25f',
+      })
     })
   })
 })
