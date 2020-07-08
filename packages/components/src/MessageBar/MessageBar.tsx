@@ -70,9 +70,15 @@ export interface MessageBarProps
    * @default: true
    */
   visible?: boolean
-  className?: string
+  /**
+   * Replaces the dismiss button with a custom react element
+   */
   primaryButton?: ReactElement<ButtonProps>
+  /**
+   * Optional secondary action to be rendered alongside `primaryButton`
+   */
   secondaryButton?: ReactElement<ButtonProps>
+  className?: string
 }
 
 const MessageBarLayout = forwardRef(
