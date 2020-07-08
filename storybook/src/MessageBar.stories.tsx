@@ -141,7 +141,6 @@ export const CustomActions: FC = () => {
   return null
 }
 
-
 export default {
   title: 'MessageBar',
 }

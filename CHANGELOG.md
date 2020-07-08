@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MessageBar`
   - Sets `canDismiss` to true by default
   - Adds new `visible` prop to toggle display externally
+  - Accepts custom action buttons to render in place of the standard `dismiss` button
 
 ### Fixed
 
