@@ -60,7 +60,7 @@ export const Controlled: FC = () => {
   return (
     <>
       <MessageBar intent="warn" onDismiss={setOff} visible={value}>
-        I can be closed
+        I can be closed and reopened
       </MessageBar>
       {!value && (
         <div>
