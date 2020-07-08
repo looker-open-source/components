@@ -104,16 +104,17 @@ export const CustomActions: FC = () => {
       <Button onClick={handleUndo}>Undo</Button>
     </Space>
   )
+
   const secondaryActionConfirmation = (
     <Space>
       <Text>🎈 Secondary Action taken!</Text>{' '}
       <Button onClick={handleUndo}>Undo</Button>
     </Space>
   )
-  const messageBarMarkup = (
+
+  const visibleMessageBar = (
     <MessageBar
       intent="positive"
-      visible={visible}
       primaryButton={
         <ButtonTransparent onClick={handlePrimaryClick}>
           Primary Action
@@ -130,12 +131,14 @@ export const CustomActions: FC = () => {
   )
 
   if (visible) {
-    return messageBarMarkup
+    return visibleMessageBar
   } else if (primaryActionTaken) {
     return primaryActionConfirmation
   } else if (secondaryActionTaken) {
     return secondaryActionConfirmation
   }
+
+  return null
 }
 
 export default {

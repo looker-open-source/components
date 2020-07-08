@@ -120,10 +120,10 @@ const MessageBarLayout = forwardRef(
     )
 
     const actions = primaryButton ? (
-      <Space>
+      <>
         {secondaryButton && secondaryButton}
         {primaryButton}
-      </Space>
+      </>
     ) : (
       dismissButton
     )
@@ -137,7 +137,7 @@ const MessageBarLayout = forwardRef(
       >
         <Status intent={intent} />
         <MessageBarContent>{children}</MessageBarContent>
-        {actions}
+        <Space>{actions}</Space>
       </div>
     )
 

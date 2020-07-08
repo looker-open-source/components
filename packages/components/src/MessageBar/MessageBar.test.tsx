@@ -108,7 +108,39 @@ describe('MessageBar', () => {
     })
   })
 
-  describe('MessageBar intents', () => {
+  describe('action buttons', () => {
+    test('renders primary and secondary buttons in place of dismiss button', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar
+          intent="inform"
+          primaryButton={<button>primary action</button>}
+          secondaryButton={<button>secondary action</button>}
+        >
+          Message text
+        </MessageBar>
+      )
+
+      expect(getByText('primary action')).toBeInTheDocument()
+      expect(getByText('secondary action')).toBeInTheDocument()
+      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+    })
+
+    test('does not render action buttons if only a secondaryButton is defined', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar
+          intent="inform"
+          secondaryButton={<button>secondary action</button>}
+        >
+          Message text
+        </MessageBar>
+      )
+
+      expect(queryByText('secondary action')).not.toBeInTheDocument()
+      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+    })
+  })
+
+  describe('intent styling', () => {
     test('Warn MessageBar', () => {
       const { getByText, getByTitle } = renderWithTheme(
         <MessageBar intent="warn">Warn</MessageBar>
