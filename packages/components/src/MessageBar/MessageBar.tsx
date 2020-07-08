@@ -128,6 +128,7 @@ const MessageBarLayout = forwardRef(
       dismissButton
     )
 
+
     const messageBarMarkup = (
       <div
         aria-live="polite"
