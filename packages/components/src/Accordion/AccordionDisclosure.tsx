@@ -104,7 +104,6 @@ export const AccordionDisclosureStyle = styled.div<{ focusVisible: boolean }>`
     focusVisible && theme.colors.keyFocus};
   cursor: pointer;
   display: flex;
-  height: 100%;
   outline: none;
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
   width: 100%;
