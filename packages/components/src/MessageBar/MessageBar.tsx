@@ -45,7 +45,7 @@ export interface MessageBarProps
     SimpleLayoutProps,
     TypographyProps {
   /**
-   * Determins the icon choice and background color
+   * Determines the icon choice and background color
    * @default: 'inform'
    */
   intent?: MessageBarIntent
