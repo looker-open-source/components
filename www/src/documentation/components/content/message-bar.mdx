@@ -20,7 +20,32 @@ The `<MessageBar />` component is used to alert the user with `warn`, `critical`
 If you don't want the MessageBar to be clearable, you can remove the close button by setting `canDismiss` to false.
 
 ```jsx
-<MessageBar canDismiss={false}>I can never be closed</MessageBar>
+<MessageBar canDismiss={false}>I can't be closed</MessageBar>
+```
+
+## primaryButton and secondaryButton
+
+`MessageBar` allows you to pass your own custom actions in place of the standard dismiss button. It accepts two different props: `primaryButton` and `secondaryButton` which will both accept a custom JSX element.
+
+```jsx
+<MessageBar
+  intent="positive"
+  primaryButton={
+    <ButtonTransparent onClick={() => alert('Primary Action')}>
+      Primary Action
+    </ButtonTransparent>
+  }
+  secondaryButton={
+    <ButtonTransparent
+      onClick={() => alert('Secondary Action')}
+      color="neutral"
+    >
+      Secondary Action
+    </ButtonTransparent>
+  }
+>
+  Render some custom actions!
+</MessageBar>
 ```
 
 ## Controlled Component Pattern
