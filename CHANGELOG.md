@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Storybook is now deployed to `https://components.looker.com/storybook`
 - `undefinedCoalesce` util function
 - `Link` now supports explicit `underline` & `keyColor` properties
 - `FactCheck` icon

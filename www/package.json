@@ -21,7 +21,6 @@
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.4.8",
     "gatsby-source-filesystem": "^2.3.14",
-    "gh-pages": "^3.1.0",
     "lodash": "^4.17.15",
     "polished": "^3.6.5",
     "prism-react-renderer": "^1.1.1",
@@ -34,8 +33,6 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "postbuild": "echo \"components.looker.com\" > public/CNAME",
-    "deploy": "yarn build && yarn postbuild && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "start": "gatsby develop"
   }
 }
