@@ -187,7 +187,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
-          {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
+          {props.icon && (
+            <PrimaryIcon name={props.icon} size={defaultIconSize} />
+          )}
           <FlexItem flex="1">{children}</FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
@@ -197,7 +199,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)``
+const PrimaryIcon = styled(Icon)`
+  opacity: 0.5;
+`
 
 interface TreeItemSpace {
   focusVisible: boolean
@@ -234,4 +238,8 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   height: 100%;
   padding-right: ${({ detailAccessory, theme }) =>
     detailAccessory && theme.space.xxsmall};
+`
+
+export const TreeItem = styled(TreeItemLayout)`
+  color: ${({ theme }) => theme.colors.text2};
 `
