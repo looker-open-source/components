@@ -70,6 +70,7 @@ export const iconMargins = (props: ButtonProps) => {
 export const iconSizes = (props: ButtonProps) => {
   let iconSize = 18
   switch (props.size) {
+    case 'xxsmall':
     case 'xsmall':
       iconSize = 12
       break
