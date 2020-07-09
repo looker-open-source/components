@@ -127,7 +127,7 @@ const MessageBarLayout = forwardRef(
 
     const actions = primaryButton ? (
       <>
-        {secondaryButton && secondaryButton}
+        {secondaryButton}
         {primaryButton}
       </>
     ) : (
