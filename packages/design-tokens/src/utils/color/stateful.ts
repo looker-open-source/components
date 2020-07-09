@@ -24,27 +24,27 @@
 
  */
 
-import { darken } from 'polished'
+import { lighten } from 'polished'
 import {
   StatefulColors,
   StatefulColorChoices,
   SpecifiableColors,
 } from '../../system/color'
-import { mixColors } from './blend'
+import { mixScaledColors } from './blend'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
-export const generateInteractive = (color: string) => darken(0.1, color)
-export const generatePressed = (color: string) => darken(0.18, color)
+export const generateInteractive = (color: string) => lighten(0.04, color)
+export const generatePressed = (color: string) => lighten(0.07, color)
 
 const generateStatefulColor = (
   background: string,
   color: string
 ): StatefulColorChoices => {
   return {
-    subtle: mixColors(8, color, background),
-    accent: mixColors(12, color, background),
-    focus: mixColors(60, color, background),
+    subtle: mixScaledColors(10, color, background),
+    accent: mixScaledColors(16, color, background),
+    focus: mixScaledColors(60, color, background),
     interactive: generateInteractive(color),
     pressed: generatePressed(color),
     text: background,

@@ -35,7 +35,7 @@ Array [
 .c0:active,
 .c0.active,
 .c0:visited {
-  color: #4F2ABA;
+  color: #7a55e3;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }

@@ -26,17 +26,27 @@
 
 import React from 'react'
 
-import { Space, IconButton } from '@looker/components'
+import { Heading, IconButton, Space } from '@looker/components'
 
 export const Basic = () => {
   return (
-    <Space>
-      <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
-      <IconButton icon="Favorite" size="xsmall" label="Favorite" />
-      <IconButton icon="Favorite" size="small" label="Favorite" />
-      <IconButton icon="Favorite" size="medium" label="Favorite" />
-      <IconButton icon="Favorite" size="large" label="Favorite" />
-    </Space>
+    <>
+      <Heading>Sizes</Heading>
+      <Space>
+        <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
+        <IconButton icon="Favorite" size="xsmall" label="Favorite" />
+        <IconButton icon="Favorite" size="small" label="Favorite" />
+        <IconButton icon="Favorite" size="medium" label="Favorite" />
+        <IconButton icon="Favorite" size="large" label="Favorite" />
+      </Space>
+
+      <Heading>Sizes</Heading>
+      <Space>
+        <IconButton icon="Favorite" label="Favorite" />
+        <IconButton icon="Favorite" label="Favorite" className="hover" />
+        <IconButton icon="Favorite" label="Favorite" className="active" />
+      </Space>
+    </>
   )
 }
 

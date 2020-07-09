@@ -83,12 +83,12 @@ exports[`IconButton accepts color 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -218,12 +218,12 @@ exports[`IconButton accepts events 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -353,12 +353,12 @@ exports[`IconButton accepts events 2`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -488,12 +488,12 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -623,12 +623,12 @@ exports[`IconButton default 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -758,12 +758,12 @@ exports[`IconButton outline 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2:hover,
@@ -774,7 +774,7 @@ exports[`IconButton outline 1`] = `
 
 .c2:active,
 .c2.active {
-  border-color: #707781;
+  border-color: #7a818b;
 }
 
 .c2[disabled]:hover,
@@ -909,12 +909,12 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -1044,12 +1044,12 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -1179,12 +1179,12 @@ exports[`IconButton resized 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
