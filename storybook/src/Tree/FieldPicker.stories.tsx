@@ -69,10 +69,6 @@ const PickerItem = () => {
       onKeyDown={(event) => {
         event.stopPropagation()
       }}
-      style={{
-        background: '#fff',
-        height: '18px',
-      }}
     />
   )
 
@@ -118,7 +114,6 @@ const PickerItem = () => {
               </MenuDisclosure>
             </>
           }
-          detailHoverDisclosure={!overlay}
           onClick={() => alert('Clicked on cost!')}
           selected={!!overlay}
           icon="FieldNumber"
@@ -133,7 +128,6 @@ const PickerItem = () => {
 export const FieldPicker = () => (
   <Tree
     defaultOpen
-    detailAccessory
     detail={
       <ButtonTransparent
         size="xxsmall"
