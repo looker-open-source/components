@@ -129,12 +129,12 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
-.c0 .c12 {
+.c0 .c11 {
   padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   font-size: 0.875rem;
   font-weight: 600;
   height: 24px;

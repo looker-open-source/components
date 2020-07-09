@@ -135,7 +135,17 @@ export const FieldPicker = () => (
     defaultOpen
     detailAccessory
     detail={
-      <ButtonTransparent size="xxsmall" iconBefore="Plus">
+      <ButtonTransparent
+        size="xxsmall"
+        iconBefore="Plus"
+        onClick={() => alert('Hello Mouse')}
+        onKeyDown={(event) => {
+          if (event.keyCode === 13) {
+            event.preventDefault()
+            alert('Hello Keyboard')
+          }
+        }}
+      >
         Add
       </ButtonTransparent>
     }

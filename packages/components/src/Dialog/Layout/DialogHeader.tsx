@@ -124,8 +124,3 @@ DialogHeader.defaultProps = {
   pr: 'medium',
   px: 'xlarge',
 }
-
-/**
- * Legacy fallback until all existing call sites are updated
- */
-export const ModalHeader = DialogHeader

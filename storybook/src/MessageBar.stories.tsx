@@ -24,36 +24,53 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space, SpaceHelperProps } from '../../Layout/Space'
+import React, { FC } from 'react'
+import {
+  MessageBar,
+  SpaceVertical,
+  ButtonOutline,
+  useToggle,
+  Divider,
+} from '@looker/components'
 
-export interface DialogFooterProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    SpaceHelperProps {
-  /**
-   * Secondary content to place in the footer
-   */
-  secondary?: ReactNode
-}
-
-export const DialogFooterLayout: FC<DialogFooterProps> = ({
-  children,
-  secondary,
-  ...props
-}) => {
+export const All: FC = () => {
   return (
-    <Space as="footer" reverse between {...props}>
-      <Space reverse>{children}</Space>
-      {secondary && <Space>{secondary}</Space>}
-    </Space>
+    <SpaceVertical>
+      <Basic />
+      <Divider />
+      <Controlled />
+    </SpaceVertical>
   )
 }
 
-export const DialogFooter = styled(DialogFooterLayout)``
+export const Basic: FC = () => (
+  <SpaceVertical gap="xsmall">
+    <MessageBar intent="warn">Warning</MessageBar>
+    <MessageBar intent="inform">Inform</MessageBar>
+    <MessageBar intent="positive">Positive</MessageBar>
+    <MessageBar intent="critical">Critical</MessageBar>
+    <MessageBar intent="critical" canDismiss={false}>
+      Cannot Be Dismissed
+    </MessageBar>
+  </SpaceVertical>
+)
 
-DialogFooter.defaultProps = {
-  px: 'xlarge',
-  py: 'large',
+export const Controlled: FC = () => {
+  const { value, setOff, setOn } = useToggle(true)
+  return (
+    <>
+      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
+        I can be closed and reopened
+      </MessageBar>
+      {!value && (
+        <div>
+          <ButtonOutline onClick={setOn}>Show MessageBar</ButtonOutline>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default {
+  title: 'MessageBar',
 }

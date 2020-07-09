@@ -25,19 +25,38 @@
  */
 
 import React, { FC } from 'react'
-import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
+import {
+  SpaceVertical,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel,
+  TabPanels,
+} from '@looker/components'
+
+export const All = () => (
+  <SpaceVertical>
+    <Basic />
+    <DistributeTabs />
+  </SpaceVertical>
+)
+
+export default {
+  component: All,
+  title: 'Tabs',
+}
 
 export const Basic: FC = () => (
   <Tabs>
     <TabList>
-      <Tab>Light Blue</Tab>
-      <Tab>Coral</Tab>
+      <Tab>Alice Blue</Tab>
+      <Tab>Aqua</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'lightblue',
+            backgroundColor: '#F0F8FF',
             height: '350px',
           }}
         />
@@ -45,7 +64,7 @@ export const Basic: FC = () => (
       <TabPanel>
         <div
           style={{
-            backgroundColor: 'coral',
+            backgroundColor: '#00FFFF',
             height: '200px',
           }}
         />
@@ -54,7 +73,110 @@ export const Basic: FC = () => (
   </Tabs>
 )
 
-export default {
-  component: Basic,
-  title: 'Tabs',
-}
+export const DistributeTabs: FC = () => (
+  <Tabs>
+    <TabList distribute>
+      <Tab>Rebecca Purple</Tab>
+      <Tab>Coral</Tab>
+      <Tab>Forest Green</Tab>
+      <Tab>Cornflower Blue</Tab>
+      <Tab>Light Blue</Tab>
+      <Tab>Dark Orange</Tab>
+      <Tab>Deep Pink</Tab>
+      <Tab>Gold</Tab>
+      <Tab>Gainsboro</Tab>
+      <Tab>Yellow Green</Tab>
+      <Tab>Dark Magenta</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#663399',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#FF7F50',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#228B22',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#6495ED',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#ADD8E6',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#FF8C00',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#FF1493',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#FFD700',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#DCDCDC',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#9ACD32',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#8B008B',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+)
