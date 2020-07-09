@@ -92,7 +92,7 @@ export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
-  gapSize = 'xxsmall',
+  gapSize = 'xsmall',
   selected,
   ...props
 }) => {

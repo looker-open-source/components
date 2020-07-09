@@ -121,7 +121,6 @@ const TreeLayout: FC<TreeProps> = ({
       detail={detail}
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
-      gapSize="xsmall"
       icon={icon}
     >
       {label}
