@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `FactCheck` icon
 - `TreeItem` and `Tree`
   - Altered style defaults
+- `TreeGroup`
+  - Added additional test case for color override behavior
 - `iconSizes` style function includes `xxsmall` case
 
 ### Changed
@@ -31,12 +33,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MessageBar`
   - Sets `canDismiss` to true by default
   - Adds new `visible` prop to toggle display externally
+- `Tree` increased gap size between indicator and label to align with sibling `TreeItem`s with icons
+- `ButtonBase` removed negative margin from `iconMargins` helper function
 
 ### Fixed
 
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
+- `TreeGroup` properly overrides color of child `TreeItem` labels and `Tree` labels
 
 ### Removed
 
