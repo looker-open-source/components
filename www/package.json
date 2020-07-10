@@ -32,7 +32,7 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "start": "gatsby develop"
   }
 }
