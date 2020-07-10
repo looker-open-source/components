@@ -69,10 +69,6 @@ const PickerItem = () => {
       onKeyDown={(event) => {
         event.stopPropagation()
       }}
-      style={{
-        background: '#fff',
-        height: '18px',
-      }}
     />
   )
 

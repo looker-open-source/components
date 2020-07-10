@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `undefinedCoalesce` util function
 - `Link` now supports explicit `underline` & `keyColor` properties
 - `FactCheck` icon
+- `TreeItem` and `Tree`
+  - Altered style defaults
+- `iconSizes` style function includes `xxsmall` case
 
 ### Changed
 
