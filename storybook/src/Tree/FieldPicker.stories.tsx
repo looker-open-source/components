@@ -153,6 +153,12 @@ export const FieldPicker = () => (
       <PickerItem />
       <PickerItem />
     </TreeGroup>
+    <TreeGroup label="MEASURES" color="keyFocus">
+      <PickerItem />
+      <PickerItem />
+      <PickerItem />
+      <PickerItem />
+    </TreeGroup>
   </Tree>
 )
 

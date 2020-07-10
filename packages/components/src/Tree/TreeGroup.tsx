@@ -47,15 +47,21 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
   </div>
 )
 
-export const TreeGroup = styled(TreeGroupLayout)`
-  ${color}
-`
-
 export const TreeGroupLabel = styled.div`
   /* Border is here to get proper alignment with Tree and TreeItem text */
   border: 1px transparent solid;
-  color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xxsmall}`};
 `
+export const TreeGroup = styled(TreeGroupLayout)`
+  ${color}
+
+  & * {
+    ${color}
+  }
+`
+
+TreeGroup.defaultProps = {
+  color: 'text2',
+}
