@@ -10,7 +10,7 @@
     "storybook",
     "www"
   ],
-  "homepage": "http://components.looker.com",
+  "homepage": "http://github.com/looker-open-source/components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/looker-open-source/components.git"

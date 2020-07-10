@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/looker-open-source/components.svg?branch=master)](https://travis-ci.com/looker-open-source/components)
 
-This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online at [http://components.looker.com](http://components.looker.com)
+This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online on our web site.
 
 ## Bugs & Feature Requests
 
@@ -46,7 +46,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
 - **yarn storybook** starts Storybook, a tool for developing components in isolation
 - **yarn playground** starts a bare-bones React app used for developing components
-- **yarn gatsby** starts the Gatsby server (powers [components.looker.com](https://components.looker.com))
+- **yarn gatsby** starts the Gatsby server (powers our documentation site)
 - **yarn server** starts a local proxy server to facilitate local fetch requests to a Looker instance
 - **yarn build** runs build across all packages. This calls several subtasks
   - **yarn prebuild** run clean, then use lerna to do any pre-build tasks needed for packages
