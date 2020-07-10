@@ -58,7 +58,7 @@ export const MenuItemLayoutGrid = styled.div``
 
 export const MenuItemLayout = styled(MenuItemWrapper)`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text2};
+  color: ${({ theme: { colors } }) => colors.text1};
   display: flex;
   flex-wrap: wrap;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
@@ -80,9 +80,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    grid-gap: ${({ compact, theme }) =>
-      compact ? theme.space.xsmall : theme.space.small};
-    grid-template-columns: ${({ hasIcon }) => (hasIcon ? '24px 1fr' : '1fr')};
     height: ${({ compact }) => (compact ? '32px' : '40px')};
     outline: none;
     padding: ${({
@@ -104,7 +101,8 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     ${MenuItemLayoutGrid} {
       align-items: center;
       display: grid;
-      grid-gap: ${({ theme }) => theme.space.small};
+      grid-gap: ${({ compact, theme: { space } }) =>
+        compact ? space.xsmall : space.small};
       grid-template-columns: ${({ hasIcon }) =>
         hasIcon ? '24px 1fr' : ' 1fr'};
     }
@@ -118,12 +116,12 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     display:block;
     border: solid 2px ${colors.keyFocus};
     border-radius: 2px;
+    margin: 0 1px;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 0 1px;
   }
   `}
 

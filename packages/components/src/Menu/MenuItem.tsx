@@ -128,7 +128,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       <Component href={href} role="menuitem" target={target}>
         <MenuItemLayoutGrid>
           {renderedIcon}
-          {children}
+          <span>{children}</span>
         </MenuItemLayoutGrid>
       </Component>
       {detail && <Detail>{detail}</Detail>}

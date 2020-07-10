@@ -66,8 +66,4 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
 export const MenuGroup = styled(MenuGroupLayout)`
   ${reset}
   padding: ${({ theme: { space } }) => space.xsmall} 0;
-
-  & + & {
-    border-top: solid 1px ${({ theme }) => theme.colors.ui2};
-  }
 `
