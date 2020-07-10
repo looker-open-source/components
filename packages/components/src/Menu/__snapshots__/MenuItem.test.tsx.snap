@@ -186,9 +186,7 @@ exports[`MenuItem - current 1`] = `
           />
         </svg>
       </div>
-      <span>
-        who!
-      </span>
+      who!
     </div>
   </button>
 </li>
@@ -330,9 +328,7 @@ exports[`MenuItem - detail 1`] = `
     <div
       className="c1 "
     >
-      <span>
-        who!
-      </span>
+      who!
     </div>
   </button>
   <div
@@ -528,9 +524,7 @@ exports[`MenuItem - icon 1`] = `
           />
         </svg>
       </div>
-      <span>
-        who!
-      </span>
+      who!
     </div>
   </button>
 </li>
@@ -654,9 +648,7 @@ exports[`MenuItem 1`] = `
     <div
       className="c1 "
     >
-      <span>
-        who!
-      </span>
+      who!
     </div>
   </button>
 </li>

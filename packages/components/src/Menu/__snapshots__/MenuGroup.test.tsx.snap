@@ -176,9 +176,7 @@ exports[`MenuGroup - JSX label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            what?
-          </span>
+          what?
         </div>
       </button>
     </li>
@@ -194,9 +192,7 @@ exports[`MenuGroup - JSX label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            who?
-          </span>
+          who?
         </div>
       </button>
     </li>
@@ -212,9 +208,7 @@ exports[`MenuGroup - JSX label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            where?
-          </span>
+          where?
         </div>
       </button>
     </li>
@@ -394,9 +388,7 @@ exports[`MenuGroup - label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            what?
-          </span>
+          what?
         </div>
       </button>
     </li>
@@ -412,9 +404,7 @@ exports[`MenuGroup - label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            who?
-          </span>
+          who?
         </div>
       </button>
     </li>
@@ -430,9 +420,7 @@ exports[`MenuGroup - label 1`] = `
         <div
           className="c6 "
         >
-          <span>
-            where?
-          </span>
+          where?
         </div>
       </button>
     </li>
@@ -573,9 +561,7 @@ exports[`MenuGroup 1`] = `
         <div
           className="c3 "
         >
-          <span>
-            who!
-          </span>
+          who!
         </div>
       </button>
     </li>
