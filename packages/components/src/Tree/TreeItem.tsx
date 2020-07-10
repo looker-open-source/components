@@ -26,6 +26,7 @@
 
 import React, {
   FC,
+  FocusEvent,
   KeyboardEvent,
   MouseEvent,
   ReactNode,
@@ -34,7 +35,12 @@ import React, {
   useState,
 } from 'react'
 import styled from 'styled-components'
-import { SpacingSizes, uiTransparencyBlend } from '@looker/design-tokens'
+import {
+  SpacingSizes,
+  uiTransparencyBlend,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
+import Omit from 'lodash/omit'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
@@ -42,15 +48,20 @@ import {
   HoverDisclosureContext,
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
+import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
 
-export interface TreeItemProps {
+export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
+  className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
+   * Note: The detail container will stop propagation of events. Place your element(s) in the label
+   *  prop if you'd like events on them to bubble.
    */
   detail?: ReactNode
   /**
    * If true, the detail elements will appear outside of the TreeItem's grey background on hover
+   * In addition, if true, events will not propagate from the detail container
    * @default false
    */
   detailAccessory?: boolean
@@ -69,20 +80,19 @@ export interface TreeItemProps {
    */
   icon?: IconNames
   /**
-   * Callback that is triggered on TreeItem click
+   * onClick callback
    */
   onClick?: () => void
   /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
-
-  className?: string
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
-  onClick,
-  gapSize = 'xxsmall',
+  children,
+  className,
+  gapSize = 'xsmall',
   selected,
   ...props
 }) => {
@@ -92,8 +102,29 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
+  const { onBlur, onClick, onKeyDown, onKeyUp, ...restProps } = Omit(props, [
+    'detail',
+    'detailAccessory',
+    'detailHoverDisclosure',
+    'icon',
+  ])
+
+  const detailAccessory = undefinedCoalesce([
+    props.detailAccessory,
+    treeContext.detailAccessory,
+  ])
+
+  const detailHoverDisclosure = undefinedCoalesce([
+    props.detailHoverDisclosure,
+    treeContext.detailHoverDisclosure,
+  ])
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node) &&
+      detailAccessory
+    ) {
       event.stopPropagation()
       return
     }
@@ -102,55 +133,64 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     onClick && onClick()
   }
 
-  const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-    if (detailRef.current && detailRef.current.contains(event.target as Node)) {
+  const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.keyCode === 9 && event.currentTarget === event.target)
+      setFocusVisible(true)
+
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node) &&
+      detailAccessory
+    ) {
       event.stopPropagation()
       return
     }
 
-    if (event.keyCode === 9 && event.currentTarget === event.target)
-      setFocusVisible(true)
+    if (event.keyCode === 13 && event.target === event.currentTarget) {
+      onClick && onClick()
+    }
 
-    if (event.keyCode === 13) onClick && onClick()
+    onKeyDown && onKeyDown(event)
   }
 
-  const handleBlur = () => {
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
     setFocusVisible(false)
+    onBlur && onBlur(event)
   }
 
   const defaultIconSize = 12
 
-  const detailAccessory =
-    props.detailAccessory !== undefined
-      ? props.detailAccessory
-      : treeContext.detailAccessory
-
-  const detailHoverDisclosure =
-    props.detailHoverDisclosure !== undefined
-      ? props.detailHoverDisclosure
-      : treeContext.detailHoverDisclosure
-
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <TreeItemDetail ref={detailRef}>{props.detail}</TreeItemDetail>
+      <TreeItemDetail detailAccessory={detailAccessory} ref={detailRef}>
+        {props.detail}
+      </TreeItemDetail>
     </HoverDisclosure>
   )
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
       <TreeItemSpace
-        className={props.className}
+        className={className}
         focusVisible={isFocusVisible}
         gap="none"
         onBlur={handleBlur}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
+        {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
-          {props.icon && <Icon name={props.icon} size={defaultIconSize} />}
-          <FlexItem flex="1">{props.children}</FlexItem>
+          {props.icon && (
+            <PrimaryIcon name={props.icon} size={defaultIconSize} />
+          )}
+          <FlexItem flex="1">{children}</FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
         {detailAccessory && detail}
@@ -159,7 +199,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)``
+const PrimaryIcon = styled(Icon)`
+  opacity: 0.5;
+`
 
 interface TreeItemSpace {
   focusVisible: boolean
@@ -170,8 +212,7 @@ export const TreeItemSpace = styled(Space)<TreeItemSpace>`
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
-  cursor: ${({ onClick }) => onClick && 'pointer'};
-  display: flex;
+  cursor: pointer;
   height: 25px;
   outline: none;
 `
@@ -191,8 +232,14 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
-const TreeItemDetail = styled.div`
+const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   align-items: center;
   display: flex;
   height: 100%;
+  padding-right: ${({ detailAccessory, theme }) =>
+    detailAccessory && theme.space.xxsmall};
+`
+
+export const TreeItem = styled(TreeItemLayout)`
+  color: ${({ theme }) => theme.colors.text2};
 `

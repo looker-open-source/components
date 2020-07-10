@@ -25,8 +25,8 @@
  */
 
 import styled, { css } from 'styled-components'
-import { FontWeights, Theme } from '@looker/design-tokens'
-import React, { FC, ReactNode, useContext } from 'react'
+import { Theme, uiTransparencyBlend } from '@looker/design-tokens'
+import React, { FC, ReactNode, useContext, useRef } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -36,6 +36,8 @@ import {
   AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
+import { useHovered } from '../utils/useHovered'
+import { undefinedCoalesce } from '../utils'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
@@ -48,6 +50,8 @@ export interface TreeProps extends AccordionProps {
   border?: boolean
   /**
    * Supplementary element that appears right of the Tree's label
+   * Note: The detail container will stop propagation of events. Place your element(s) in the label
+   *  prop if you'd like clicks on them to bubble.
    */
   detail?: ReactNode
   /**
@@ -61,11 +65,6 @@ export interface TreeProps extends AccordionProps {
    */
   detailAccessory?: boolean
   /**
-   * The font weight of the Tree's text
-   * @default 'semiBold'
-   */
-  fontWeight?: FontWeights
-  /**
    * Icon element that appears between the Tree indicator and the Tree label
    */
   icon?: IconNames
@@ -73,7 +72,12 @@ export interface TreeProps extends AccordionProps {
    * Text label of the Tree
    * Note: This is a required prop
    */
-  label: string
+  label: ReactNode
+  /**
+   * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
+   * @default false
+   */
+  visuallyAsBranch?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -83,39 +87,53 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorSize: 'small',
 }
 
+export const TreeItemInner = styled(TreeItem)``
+
 const TreeLayout: FC<TreeProps> = ({
-  border,
+  border: propsBorder,
   children,
   detail,
-  detailHoverDisclosure,
-  detailAccessory,
-  fontWeight,
+  detailHoverDisclosure: propsDetailHoverDisclosure,
+  detailAccessory: propsDetailAccessory,
   icon,
   label,
+  visuallyAsBranch,
   ...restProps
 }) => {
-  const context = useContext(TreeContext)
-  const hasBorder = context.border || border
-  const hasDetailHoverDisclosure =
-    context.detailHoverDisclosure || detailHoverDisclosure
-  const hasDetailAccessory = context.detailAccessory || detailAccessory
-  const depth = context.depth ? context.depth : 0
+  const disclosureRef = useRef<HTMLDivElement>(null)
+  const [isHovered] = useHovered(disclosureRef)
 
-  const disclosure = (
-    <TreeItem
+  const treeContext = useContext(TreeContext)
+  const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const hasDetailHoverDisclosure = undefinedCoalesce([
+    propsDetailHoverDisclosure,
+    treeContext.detailHoverDisclosure,
+  ])
+  const hasDetailAccessory = undefinedCoalesce([
+    propsDetailAccessory,
+    treeContext.detailAccessory,
+  ])
+  const startingDepth = 0
+  const depth = treeContext.depth ? treeContext.depth : startingDepth
+
+  const treeItem = (
+    <TreeItemInner
       detail={detail}
-      detailAccessory={detailAccessory}
-      gapSize="xsmall"
+      detailAccessory={hasDetailAccessory}
+      detailHoverDisclosure={hasDetailHoverDisclosure}
       icon={icon}
     >
       {label}
-    </TreeItem>
+    </TreeItemInner>
   )
 
-  const internalAccordion = (
+  const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure fontWeight={fontWeight}>
-        {disclosure}
+      <AccordionDisclosure
+        ref={disclosureRef}
+        fontWeight={visuallyAsBranch ? 'normal' : 'semiBold'}
+      >
+        {treeItem}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
@@ -130,8 +148,8 @@ const TreeLayout: FC<TreeProps> = ({
         detailHoverDisclosure: hasDetailHoverDisclosure,
       }}
     >
-      <TreeStyle border={hasBorder} depth={depth}>
-        {internalAccordion}
+      <TreeStyle border={hasBorder} depth={depth} hovered={isHovered}>
+        {innerAccordion}
       </TreeStyle>
     </TreeContext.Provider>
   )
@@ -180,36 +198,38 @@ const generateIndent = (depth: number, theme: Theme) => {
 interface TreeStyleProps {
   border?: boolean
   depth: number
+  hovered: boolean
 }
 
-const TreeStyle = styled.div<TreeStyleProps>`
-  ${AccordionContent} {
-    ${({ border, depth, theme }) => border && generateTreeBorder(depth, theme)}
+export const TreeStyle = styled.div<TreeStyleProps>`
+  & > ${Accordion} {
+    & > ${AccordionContent} {
+      ${({ border, depth, theme }) =>
+        border && generateTreeBorder(depth, theme)}
+    }
+
+    & > ${AccordionDisclosureStyle} {
+      background-clip: padding-box;
+      background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
+      height: 25px;
+      padding: ${({ theme }) => theme.space.xxsmall};
+      ${({ depth, theme }) => generateIndent(depth, theme)}
+    }
   }
 
-  ${AccordionDisclosure} {
-    height: 25px;
+  ${TreeItemInner} {
+    border-width: 0;
+    height: 100%;
+
+    & > ${TreeItemLabel} {
+      background-color: transparent;
+      padding: ${({ theme }) => theme.space.none};
+    }
   }
 
-  ${AccordionDisclosureStyle} {
-    padding: ${({ theme }) => theme.space.xxsmall};
-    ${({ depth, theme }) => generateIndent(depth, theme)}
-  }
-
-  ${AccordionDisclosure} ${TreeItemLabel} {
-    background-color: transparent;
-    padding: ${({ theme }) => theme.space.none};
-  }
-
-  ${AccordionDisclosure} ${TreeItem}:focus-within {
-    border-color: transparent;
-  }
-
-  ${TreeGroupLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
-  }
-
-  ${TreeItemLabel} {
+  ${TreeGroupLabel},
+  ${TreeItemLabel},
+  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 `

@@ -29,10 +29,13 @@ import {
   omitStyledProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import isFunction from 'lodash/isFunction'
+import isUndefined from 'lodash/isUndefined'
+import React, { forwardRef, Ref, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
+import { useReadOnlyWarn } from '../utils'
 import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
@@ -42,44 +45,84 @@ export interface MessageBarProps
     SimpleLayoutProps,
     TypographyProps {
   /**
+   * Determines the icon choice and background color
    * @default: 'inform'
    */
   intent?: MessageBarIntent
+  /**
+   * Render the `X` which allows the MessageBar to be dismissed
+   * @default: true
+   */
   canDismiss?: boolean
+  /**
+   * Called after internal `visible` state is updated
+   */
   onDismiss?: () => void
+  /**
+   * Determines whether the MessageBar is rendered or not. Used in conjunction with the onDismiss prop
+   * @default: true
+   */
+  visible?: boolean
   className?: string
 }
-
-const MessageBarContent = styled.div``
 
 const MessageBarLayout = forwardRef(
   (
     {
       id,
       children,
-      canDismiss,
+      canDismiss = true,
       intent = 'inform',
       onDismiss,
+      visible: visibleProp,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
-  ) => (
-    <div aria-live="polite" ref={ref} role="status" {...omitStyledProps(props)}>
-      <Status intent={intent} />
-      <MessageBarContent>{children}</MessageBarContent>
-      {canDismiss && (
-        <IconButton
-          id={id ? `${id}-iconButton` : undefined}
-          ml="auto"
-          onClick={onDismiss}
-          icon="Close"
-          size="small"
-          label={`Dismiss ${getIntentLabel(intent)}`}
-          aria-hidden
-        />
-      )}
-    </div>
-  )
+  ) => {
+    useReadOnlyWarn('MessageBar', visibleProp, onDismiss)
+
+    const [visible, setVisible] = useState(
+      isUndefined(visibleProp) ? true : visibleProp
+    )
+
+    const handleDismiss = () => {
+      setVisible(visibleProp || false)
+      isFunction(onDismiss) && onDismiss()
+    }
+
+    useEffect(() => {
+      if (!isUndefined(visibleProp)) {
+        setVisible(visibleProp)
+      }
+    }, [visibleProp])
+
+    const messageBarMarkup = (
+      <div
+        aria-live="polite"
+        ref={ref}
+        role="status"
+        {...omitStyledProps(props)}
+      >
+        <Status intent={intent} />
+        <MessageBarContent canDismiss={canDismiss}>
+          {children}
+        </MessageBarContent>
+        {canDismiss && (
+          <IconButton
+            id={id ? `${id}-iconButton` : undefined}
+            ml="auto"
+            onClick={handleDismiss}
+            icon="Close"
+            size="small"
+            label={`Dismiss ${getIntentLabel(intent)}`}
+            aria-hidden
+          />
+        )}
+      </div>
+    )
+
+    return visible ? messageBarMarkup : null
+  }
 )
 
 MessageBarLayout.displayName = 'MessageBarLayout'
@@ -93,13 +136,13 @@ export const MessageBar = styled(MessageBarLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+`
 
-  ${MessageBarContent} {
-    flex: 1;
-    margin-left: ${({ theme: { space } }) => space.large};
-    margin-right: ${({ canDismiss, theme: { space } }) =>
-      canDismiss ? space.xxxxlarge : space.none};
-  }
+const MessageBarContent = styled.div<{ canDismiss: boolean }>`
+  flex: 1;
+  margin-left: ${({ theme: { space } }) => space.large};
+  margin-right: ${({ canDismiss, theme: { space } }) =>
+    canDismiss ? space.xxxxlarge : space.none};
 `
 
 MessageBar.defaultProps = {

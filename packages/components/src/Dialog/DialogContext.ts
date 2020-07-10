@@ -44,5 +44,3 @@ const dialogContext: DialogContextProps = {
 }
 
 export const DialogContext = createContext(dialogContext)
-
-export const ModalContext = DialogContext

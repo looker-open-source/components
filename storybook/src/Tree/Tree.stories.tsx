@@ -25,7 +25,16 @@
  */
 
 import React from 'react'
-import { Grid, Tree, TreeItem, TreeGroup } from '@looker/components'
+import {
+  Grid,
+  Tree,
+  TreeItem,
+  TreeGroup,
+  Space,
+  AccordionDisclosureStyle,
+  TreeItemLabel,
+} from '@looker/components'
+import styled from 'styled-components'
 
 export const All = () => (
   <Grid>
@@ -42,31 +51,31 @@ export default {
 
 export const FileSelector = () => (
   <Tree label="thelook" icon="ExploreOutline" defaultOpen>
-    <Tree label="Orders" icon="VisibilityOutline" defaultOpen>
-      <Tree label="Orders" icon="Table" defaultOpen>
+    <Tree visuallyAsBranch label="Orders" icon="VisibilityOutline" defaultOpen>
+      <Tree visuallyAsBranch label="Orders" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Status</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
-      <Tree label="Products" icon="Table" defaultOpen>
+      <Tree visuallyAsBranch label="Products" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">Brand</TreeItem>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Department</TreeItem>
         <TreeItem icon="IdeDimension">Sku</TreeItem>
       </Tree>
-      <Tree label="Users" icon="Table" defaultOpen>
+      <Tree visuallyAsBranch label="Users" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Name</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
     </Tree>
-    <Tree label="Users" icon="VisibilityOutline" defaultOpen>
-      <Tree label="Orders" icon="Table" defaultOpen>
+    <Tree visuallyAsBranch label="Users" icon="VisibilityOutline" defaultOpen>
+      <Tree visuallyAsBranch label="Orders" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Status</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
-      <Tree label="Users" icon="Table" defaultOpen>
+      <Tree visuallyAsBranch label="Users" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Name</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
@@ -93,7 +102,16 @@ export const FileSelectorClosed = () => (
 )
 
 export const Border = () => (
-  <Tree border label="Orders" defaultOpen>
+  <Tree
+    border
+    label={
+      <Space between>
+        <span>Orders</span>
+        <span>thelook</span>
+      </Space>
+    }
+    defaultOpen
+  >
     <Tree label="Orders" defaultOpen>
       <TreeItem>ID</TreeItem>
       <TreeItem>Status</TreeItem>
@@ -116,4 +134,19 @@ export const Flat = () => (
     <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
     <TreeItem icon="FieldNumber">Another Number</TreeItem>
   </TreeGroup>
+)
+
+const BorderRadiusOverrideTree = styled(Tree)`
+  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
+    border-radius: ${({ theme }) => theme.radii.medium};
+  }
+`
+
+export const BorderRadiusOverride = () => (
+  <BorderRadiusOverrideTree label="Created">
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </BorderRadiusOverrideTree>
 )

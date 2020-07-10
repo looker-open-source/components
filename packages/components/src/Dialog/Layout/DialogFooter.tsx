@@ -57,8 +57,3 @@ DialogFooter.defaultProps = {
   px: 'xlarge',
   py: 'large',
 }
-
-/**
- * Legacy fallback until all existing call sites are updated
- */
-export const ModalFooter = DialogFooter

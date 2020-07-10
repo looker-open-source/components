@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { TreeItem } from '.'
+import { Tree, TreeItem } from '.'
 
 describe('TreeItem', () => {
   test('Renders children', () => {
@@ -35,10 +35,10 @@ describe('TreeItem', () => {
     getByText('Dimension')
   })
 
-  test('Does not trigger onClick on detail click', () => {
+  test('Does not trigger onClick on detail click when detailAccessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
-      <TreeItem detail="Detail" onClick={onClick}>
+      <TreeItem detail="Detail" detailAccessory onClick={onClick}>
         Dimension
       </TreeItem>
     )
@@ -46,5 +46,64 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
     fireEvent.click(getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  test('Triggers onClick on detail click when detailAccessory === false', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <TreeItem detail="Detail" detailAccessory={false} onClick={onClick}>
+        Dimension
+      </TreeItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(2)
+  })
+
+  test('Hides and shows detail when detailHoverDisclosure is true', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <TreeItem detail="Detail" detailHoverDisclosure>
+        Dimension
+      </TreeItem>
+    )
+
+    expect(queryByText('Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(getByText('Dimension'), { bubbles: true })
+    getByText('Detail')
+  })
+
+  test("Child TreeItem adopts Parent Tree's detailHoverDisclosure prop value (when Child TreeItem does not have detailHoverDisclosure prop value)", () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree
+        label="Parent Tree Label"
+        defaultOpen
+        detail="Parent Tree Detail"
+        detailHoverDisclosure
+      >
+        <TreeItem detail="Child TreeItem Detail">Child TreeItem Label</TreeItem>
+      </Tree>
+    )
+
+    expect(queryByText('Child TreeItem Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(getByText('Child TreeItem Label'), { bubbles: true })
+    getByText('Child TreeItem Detail')
+  })
+
+  test("Child TreeItem's detailHoverDisclosure prop value overrides Parent Tree's detailHoverDisclosure prop value", () => {
+    const { getByText } = renderWithTheme(
+      <Tree
+        label="Parent Tree Label"
+        defaultOpen
+        detail="Parent Tree Detail"
+        detailHoverDisclosure
+      >
+        <TreeItem detail="Child TreeItem Detail" detailHoverDisclosure={false}>
+          Child TreeItem Label
+        </TreeItem>
+      </Tree>
+    )
+
+    getByText('Child TreeItem Detail')
   })
 })

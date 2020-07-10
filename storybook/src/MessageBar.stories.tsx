@@ -24,28 +24,53 @@
 
  */
 
-import { getLuminance, shade, tint } from 'polished'
-import { scaleMixAmount } from './scaleMixAmount'
+import React, { FC } from 'react'
+import {
+  MessageBar,
+  SpaceVertical,
+  ButtonOutline,
+  useToggle,
+  Divider,
+} from '@looker/components'
 
-// Tints or shades a color based on the luminosity of the color
-//
-// Used for generating our UI colors based on the background color
-//
-// If the color has a higher luminosity, a light background for example,
-// the color is shaded, returning a color mixed with black
-//
-// For colors with lower luminosity, dark background colors for example,
-// the colors is tinted,returning a color mixed with white
+export const All: FC = () => {
+  return (
+    <SpaceVertical>
+      <Basic />
+      <Divider />
+      <Controlled />
+    </SpaceVertical>
+  )
+}
 
-export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
-  const colorLuminance = getLuminance(color)
+export const Basic: FC = () => (
+  <SpaceVertical gap="xsmall">
+    <MessageBar intent="warn">Warning</MessageBar>
+    <MessageBar intent="inform">Inform</MessageBar>
+    <MessageBar intent="positive">Positive</MessageBar>
+    <MessageBar intent="critical">Critical</MessageBar>
+    <MessageBar intent="critical" canDismiss={false}>
+      Cannot Be Dismissed
+    </MessageBar>
+  </SpaceVertical>
+)
 
-  const mixAdjustment =
-    colorLuminance > 0.5 ? mixAmount : scaleMixAmount(mixAmount, 1.5)
+export const Controlled: FC = () => {
+  const { value, setOff, setOn } = useToggle(true)
+  return (
+    <>
+      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
+        I can be closed and reopened
+      </MessageBar>
+      {!value && (
+        <div>
+          <ButtonOutline onClick={setOn}>Show MessageBar</ButtonOutline>
+        </div>
+      )}
+    </>
+  )
+}
 
-  if (colorLuminance > 0.5) {
-    return shade(mixAdjustment / 100, color)
-  } else {
-    return tint(mixAdjustment / 100, color)
-  }
+export default {
+  title: 'MessageBar',
 }

@@ -94,12 +94,12 @@ exports[`DialogHeader Snapshot 1`] = `
 .c5:hover,
 .c5:focus,
 .c5.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c5:active,
 .c5.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c5 svg {

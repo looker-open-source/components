@@ -26,45 +26,146 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import {
+  renderWithTheme,
+  withThemeProvider,
+} from '@looker/components-test-utils'
 import { MessageBar } from './MessageBar'
 
-test('Warn MessageBar', () => {
-  assertSnapshot(
-    <MessageBar intent="warn" id="test-message-bar">
-      Warn
-    </MessageBar>
-  )
-})
+describe('MessageBar', () => {
+  describe('clear button functionality', () => {
+    test('clearable by default', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar>Message text</MessageBar>
+      )
 
-test('Error MessageBar', () => {
-  assertSnapshot(
-    <MessageBar intent="critical" id="test-message-bar">
-      Error
-    </MessageBar>
-  )
-})
+      // visible message bar
+      expect(getByText('Message text')).toBeInTheDocument()
 
-test('Info MessageBar', () => {
-  assertSnapshot(
-    <MessageBar intent="inform" id="test-message-bar">
-      Info
-    </MessageBar>
-  )
-})
+      // dismiss button
+      const dismissButton =
+        getByText('Dismiss Inform').closest('button') ||
+        document.createElement('button') // suppress typescript warning about possible null button
 
-test('Confirmation MessageBar', () => {
-  assertSnapshot(
-    <MessageBar intent="positive" id="test-message-bar">
-      Positive
-    </MessageBar>
-  )
-})
+      fireEvent.click(dismissButton)
 
-test('MessageBar can be dismissed', () => {
-  assertSnapshot(
-    <MessageBar intent="inform" id="test-message-bar" canDismiss>
-      Info!
-    </MessageBar>
-  )
+      // message bar dismissed
+      expect(queryByText('Message text')).not.toBeInTheDocument()
+    })
+
+    test('controlled component', () => {
+      const handleDismiss = jest.fn()
+
+      const { getByText, queryByText, rerender } = renderWithTheme(
+        <MessageBar onDismiss={handleDismiss} visible>
+          Message text
+        </MessageBar>
+      )
+
+      // visible message bar
+      expect(getByText('Message text')).toBeInTheDocument()
+
+      // dismiss callback
+      expect(handleDismiss).not.toHaveBeenCalled()
+
+      const dismissButton =
+        getByText('Dismiss Inform').closest('button') ||
+        document.createElement('button') // suppress typescript warning about possible null button
+
+      fireEvent.click(dismissButton)
+
+      expect(handleDismiss).toHaveBeenCalledTimes(1)
+
+      // message bar remains visible until `visible` prop is toggled
+      expect(getByText('Message text')).toBeInTheDocument()
+
+      // dismiss message bar through `visible` prop change
+      rerender(
+        withThemeProvider(
+          <MessageBar onDismiss={handleDismiss} visible={false}>
+            Message text
+          </MessageBar>
+        )
+      )
+      expect(queryByText('Message text')).not.toBeInTheDocument()
+    })
+
+    test('`canDismiss` toggles the clear button', () => {
+      const { getByText, queryByText, rerender } = renderWithTheme(
+        <MessageBar>Message text</MessageBar>
+      )
+
+      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+
+      rerender(
+        withThemeProvider(
+          <MessageBar canDismiss={false}>Message text</MessageBar>
+        )
+      )
+
+      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('MessageBar intents', () => {
+    test('Warn MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="warn">Warn</MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Warning')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Warning').closest('div')).toHaveStyle({
+        color: '#FFA800',
+      })
+    })
+
+    test('Error MessageBar', () => {
+      const { getByText, getByTitle, getByRole } = renderWithTheme(
+        <MessageBar intent="critical" id="test-message-bar">
+          Error
+        </MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Error')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Error').closest('div')).toHaveStyle({
+        color: '#CC1F36',
+      })
+      // MesasgeBar background
+      expect(getByRole('status')).toHaveStyle({
+        background: '#FFE5E9',
+      })
+    })
+
+    test('Info MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="inform" id="test-message-bar">
+          Inform
+        </MessageBar>
+      )
+
+      // dismiss button
+      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Circle Info').closest('div')).toHaveStyle({
+        color: '#0087e1',
+      })
+    })
+
+    test('Confirmation MessageBar', () => {
+      const { getByText, getByTitle } = renderWithTheme(
+        <MessageBar intent="positive" id="test-message-bar">
+          Confirmation
+        </MessageBar>
+      )
+      // dismiss button
+      expect(getByText('Dismiss Success')).toBeInTheDocument()
+      // icon title and color
+      expect(getByTitle('Circle Check').closest('div')).toHaveStyle({
+        color: '#24b25f',
+      })
+    })
+  })
 })

@@ -25,6 +25,7 @@
  */
 
 module.exports = {
+  pathPrefix: `/components`,
   siteMetadata: {
     title: 'Looker UI Components',
   },

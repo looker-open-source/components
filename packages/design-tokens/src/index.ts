@@ -37,5 +37,9 @@ export { prismTheme } from './prismTheme'
 export * from './utils/animations'
 export * from './utils/omit'
 export { generateThemeFromCoreColors } from './utils/theme'
-export { intentUIBlend, uiTransparencyBlend } from './utils/color/blend'
+export {
+  intentUIBlend,
+  uiTransparencyBlend,
+  generateIntentShade,
+} from './utils/color/blend'
 export { generatePressed, generateInteractive } from './utils/color/stateful'

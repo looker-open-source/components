@@ -135,8 +135,3 @@ const Inner = styled.div<SpaceProps>`
 `
 
 Inner.defaultProps = { px: 'xlarge', py: 'large' }
-
-/**
- * Legacy fallback until all existing call sites are updated
- */
-export const ModalContent = DialogContent

@@ -8,7 +8,7 @@ exports[`Badge renders all intents 1`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #e4f5eb;
-  color: #156636;
+  color: #146536;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -34,7 +34,7 @@ exports[`Badge renders all intents 2`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #e0f0fb;
-  color: #005085;
+  color: #0061a1;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -60,7 +60,7 @@ exports[`Badge renders all intents 3`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #f2f3f4;
-  color: #646d78;
+  color: #656d79;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -86,7 +86,7 @@ exports[`Badge renders all intents 4`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #fff4e0;
-  color: #a36c00;
+  color: #754d00;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -112,7 +112,7 @@ exports[`Badge renders all intents 5`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #f8e4e6;
-  color: #7c1321;
+  color: #951727;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -138,7 +138,7 @@ exports[`Badge renders all sizes 1`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #ede8fb;
-  color: #411cab;
+  color: #4b20c3;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -164,7 +164,7 @@ exports[`Badge renders all sizes 2`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #ede8fb;
-  color: #411cab;
+  color: #4b20c3;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -190,7 +190,7 @@ exports[`Badge renders all sizes 3`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #ede8fb;
-  color: #411cab;
+  color: #4b20c3;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -216,7 +216,7 @@ exports[`Badge renders all sizes 4`] = `
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   background: #ede8fb;
-  color: #411cab;
+  color: #4b20c3;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
