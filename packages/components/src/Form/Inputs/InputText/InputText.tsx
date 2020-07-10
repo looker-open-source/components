@@ -274,6 +274,7 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
   ${reset}
 
   align-items: center;
+  color: ${({ theme }) => theme.colors.text};
   cursor: text;
   display: inline-flex;
   justify-content: space-evenly;

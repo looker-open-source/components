@@ -24,28 +24,12 @@
 
  */
 
-import { getLuminance, shade, tint } from 'polished'
-import { scaleMixAmount } from './scaleMixAmount'
+// Scales the amount mix percentage of two colors.
 
-// Tints or shades a color based on the luminosity of the color
-//
-// Used for generating our UI colors based on the background color
-//
-// If the color has a higher luminosity, a light background for example,
-// the color is shaded, returning a color mixed with black
-//
-// For colors with lower luminosity, dark background colors for example,
-// the colors is tinted,returning a color mixed with white
+// When mixing two colors, if one color has a low luminosity, dark background
+// colors for example, we need to mix at a higher percentage so the resulting
+// blended color is visually distinguishable.
 
-export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
-  const colorLuminance = getLuminance(color)
-
-  const mixAdjustment =
-    colorLuminance > 0.5 ? mixAmount : scaleMixAmount(mixAmount, 1.5)
-
-  if (colorLuminance > 0.5) {
-    return shade(mixAdjustment / 100, color)
-  } else {
-    return tint(mixAdjustment / 100, color)
-  }
+export const scaleMixAmount = (amount: number, number: number) => {
+  return amount * number
 }

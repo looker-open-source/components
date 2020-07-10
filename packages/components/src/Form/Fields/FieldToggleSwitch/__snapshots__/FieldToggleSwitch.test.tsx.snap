@@ -46,7 +46,7 @@ exports[`A FieldToggleSwitch 1`] = `
 }
 
 .c4 input:focus + div {
-  box-shadow: 0 0 0 0.2rem rgba(79,42,186,0.4);
+  box-shadow: 0 0 0 0.2rem rgba(122,85,227,0.4);
 }
 
 .c2 {
@@ -192,7 +192,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 }
 
 .c4 input:focus + div {
-  box-shadow: 0 0 0 0.2rem rgba(79,42,186,0.4);
+  box-shadow: 0 0 0 0.2rem rgba(122,85,227,0.4);
 }
 
 .c2 {
