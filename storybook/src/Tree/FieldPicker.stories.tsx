@@ -126,27 +126,24 @@ const PickerItem = () => {
   )
 }
 
-export const FieldPicker = () => (
-  <Tree
-    defaultOpen
-    detailAccessory
-    detail={
-      <ButtonTransparent
-        size="xxsmall"
-        iconBefore="Plus"
-        onClick={() => alert('Hello Mouse')}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            event.preventDefault()
-            alert('Hello Keyboard')
-          }
-        }}
-      >
-        Add
-      </ButtonTransparent>
-    }
-    label="Custom Fields"
+const addButton = (
+  <ButtonTransparent
+    size="xxsmall"
+    iconBefore="Plus"
+    onClick={() => alert('Hello Mouse')}
+    onKeyDown={(event) => {
+      if (event.keyCode === 13) {
+        event.preventDefault()
+        alert('Hello Keyboard')
+      }
+    }}
   >
+    Add
+  </ButtonTransparent>
+)
+
+export const FieldPicker = () => (
+  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <PickerItem />
       <PickerItem />
