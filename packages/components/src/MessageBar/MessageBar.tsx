@@ -29,7 +29,7 @@ import {
   omitStyledProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import isFunction from 'lodash/isFunction'
+import noop from 'lodash/noop'
 import isUndefined from 'lodash/isUndefined'
 import React, {
   forwardRef,
@@ -148,8 +148,8 @@ const MessageBarLayout = forwardRef(
       children,
       intent = 'inform',
       visible: visibleProp,
-      onPrimaryClick,
-      onSecondaryClick,
+      onPrimaryClick = noop,
+      onSecondaryClick = noop,
       primaryAction = true,
       secondaryAction,
       ...props
@@ -164,12 +164,12 @@ const MessageBarLayout = forwardRef(
 
     const handlePrimaryClick = () => {
       setVisible(visibleProp || false)
-      isFunction(onPrimaryClick) && onPrimaryClick()
+      onPrimaryClick()
     }
 
     const handleSecondaryClick = () => {
       setVisible(visibleProp || false)
-      isFunction(onSecondaryClick) && onSecondaryClick()
+      onSecondaryClick()
     }
 
     useEffect(() => {
