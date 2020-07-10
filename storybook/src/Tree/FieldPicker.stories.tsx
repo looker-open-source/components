@@ -60,7 +60,6 @@ const PickerItem = () => {
     <IconButton
       icon="Sync"
       label="Pivot"
-      color="key"
       tooltipPlacement="top"
       onClick={(event) => {
         event.stopPropagation()
