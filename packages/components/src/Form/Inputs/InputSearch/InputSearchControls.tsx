@@ -27,7 +27,7 @@
 import omit from 'lodash/omit'
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { Box } from '../../../Layout'
+import { Box, Space } from '../../../Layout'
 import { IconButton } from '../../../Button'
 import { Text } from '../../../Text'
 
@@ -54,11 +54,10 @@ export const InputSearchControlsInternal = forwardRef(
 
     const clear = (
       <IconButton
-        size="xxsmall"
+        size="xsmall"
         icon="Close"
         label="Clear Field"
         onClick={onClear}
-        tabIndex={-1}
         disabled={disabled}
       />
     )
@@ -67,7 +66,7 @@ export const InputSearchControlsInternal = forwardRef(
       <Box
         borderRight="1px solid"
         borderColor="ui2"
-        height="1.5rem"
+        height="1rem"
         style={{
           pointerEvents: 'none',
         }}
@@ -75,28 +74,30 @@ export const InputSearchControlsInternal = forwardRef(
     )
 
     return (
-      <div {...omit(props, 'height')} ref={ref}>
+      <Space
+        {...omit(props, 'height')}
+        ref={ref}
+        gap="xsmall"
+        flex="0"
+        mr="xxsmall"
+      >
         {summary && (
           <Text
-            pr="xsmall"
-            variant="subdued"
+            color="text5"
             fontSize="small"
             style={{ whiteSpace: 'nowrap' }}
+            pr="xsmall"
           >
             {summary}
           </Text>
         )}
         {summary && showClear && separator}
         {showClear && clear}
-      </div>
+      </Space>
     )
   }
 )
 
 InputSearchControlsInternal.displayName = 'InputSearchControlsInternal'
 
-export const InputSearchControls = styled(InputSearchControlsInternal)`
-  align-items: center;
-  display: flex;
-  height: ${(props) => props.height};
-`
+export const InputSearchControls = styled(InputSearchControlsInternal)``
