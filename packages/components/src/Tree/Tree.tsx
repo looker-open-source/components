@@ -81,7 +81,7 @@ export interface TreeProps extends AccordionProps {
 }
 
 const indicatorProps: AccordionIndicatorProps = {
-  indicatorGap: 'xxsmall',
+  indicatorGap: 'xsmall',
   indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
   indicatorPosition: 'left',
   indicatorSize: 'small',
@@ -182,12 +182,12 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
 
 const generateIndent = (depth: number, theme: Theme) => {
   const {
-    space: { xxsmall, small },
+    space: { xxsmall, xsmall, small },
   } = theme
 
   const itemPaddingSize = xxsmall
   const indicatorIconSize = small
-  const indicatorGapSize = xxsmall
+  const indicatorGapSize = xsmall
   const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
 
   return css`

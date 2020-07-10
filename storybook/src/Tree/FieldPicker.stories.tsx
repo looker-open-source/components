@@ -73,7 +73,7 @@ const PickerItem = () => {
   )
 
   const itemLabel = (
-    <Space between px="xxsmall">
+    <Space between>
       <span>Cost</span>
       {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
     </Space>
@@ -154,7 +154,9 @@ export const FieldPicker = () => (
       <PickerItem />
     </TreeGroup>
     <TreeGroup label="MEASURES" color="keyFocus">
-      <PickerItem />
+      <Tree visuallyAsBranch label="Hello">
+        <PickerItem />
+      </Tree>
       <PickerItem />
       <PickerItem />
       <PickerItem />
