@@ -24,17 +24,14 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import {
   MessageBar,
   SpaceVertical,
   ButtonOutline,
-  ButtonTransparent,
   Button,
   useToggle,
   Divider,
-  Space,
-  Text,
 } from '@looker/components'
 
 export const All: FC = () => {
@@ -55,7 +52,7 @@ export const Basic: FC = () => (
     <MessageBar intent="inform">Inform</MessageBar>
     <MessageBar intent="positive">Positive</MessageBar>
     <MessageBar intent="critical">Critical</MessageBar>
-    <MessageBar intent="critical" canDismiss={false}>
+    <MessageBar intent="critical" primaryAction={false}>
       Cannot Be Dismissed
     </MessageBar>
   </SpaceVertical>
@@ -65,8 +62,8 @@ export const Controlled: FC = () => {
   const { value, setOff, setOn } = useToggle(true)
   return (
     <>
-      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
-        I can be closed and reopened
+      <MessageBar intent="warn" onPrimaryClick={setOff} visible={value}>
+        Controlled Component: I can be closed and reopened
       </MessageBar>
       {!value && (
         <div>
@@ -78,67 +75,53 @@ export const Controlled: FC = () => {
 }
 
 export const CustomActions: FC = () => {
-  const [visible, setVisible] = useState(true)
-  const [secondaryActionTaken, setSecondaryActionTaken] = useState(false)
-  const [primaryActionTaken, setPrimaryActionTaken] = useState(false)
-
   const handlePrimaryClick = () => {
-    setVisible(false)
-    setPrimaryActionTaken(true)
+    alert('Primary Action Taken')
   }
 
   const handleSecondaryClick = () => {
-    setVisible(false)
-    setSecondaryActionTaken(true)
+    alert('Secondary Action Taken')
   }
 
-  const handleUndo = () => {
-    setVisible(true)
-    setPrimaryActionTaken(false)
-    setSecondaryActionTaken(false)
-  }
-
-  const primaryActionConfirmation = (
-    <Space>
-      <Text>🎉 Primary Action taken!</Text>{' '}
-      <Button onClick={handleUndo}>Undo</Button>
-    </Space>
+  return (
+    <SpaceVertical>
+      <MessageBar
+        intent="positive"
+        primaryAction="Primary Action"
+        onPrimaryClick={handlePrimaryClick}
+      >
+        Custom Primary Action from a string label
+      </MessageBar>
+      <MessageBar
+        intent="positive"
+        primaryAction="Primary Action"
+        secondaryAction="Secondary Action"
+        onPrimaryClick={handlePrimaryClick}
+        onSecondaryClick={handleSecondaryClick}
+      >
+        Custom Primary and Secondar Actions from string labels
+      </MessageBar>
+      <MessageBar
+        intent="positive"
+        primaryAction={
+          <Button onClick={handlePrimaryClick} iconBefore="Trash">
+            Dismiss
+          </Button>
+        }
+        secondaryAction={
+          <Button
+            onClick={handleSecondaryClick}
+            color="neutral"
+            iconBefore="ViewGrid"
+          >
+            Return To Menu
+          </Button>
+        }
+      >
+        Custom actions from custom components
+      </MessageBar>
+    </SpaceVertical>
   )
-
-  const secondaryActionConfirmation = (
-    <Space>
-      <Text>🎈 Secondary Action taken!</Text>{' '}
-      <Button onClick={handleUndo}>Undo</Button>
-    </Space>
-  )
-
-  const visibleMessageBar = (
-    <MessageBar
-      intent="positive"
-      primaryButton={
-        <ButtonTransparent onClick={handlePrimaryClick}>
-          Primary Action
-        </ButtonTransparent>
-      }
-      secondaryButton={
-        <ButtonTransparent onClick={handleSecondaryClick} color="neutral">
-          Secondary Action
-        </ButtonTransparent>
-      }
-    >
-      Render some custom actions!
-    </MessageBar>
-  )
-
-  if (visible) {
-    return visibleMessageBar
-  } else if (primaryActionTaken) {
-    return primaryActionConfirmation
-  } else if (secondaryActionTaken) {
-    return secondaryActionConfirmation
-  }
-
-  return null
 }
 
 export default {

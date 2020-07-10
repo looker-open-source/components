@@ -39,13 +39,15 @@ import React, {
   ReactElement,
 } from 'react'
 import styled from 'styled-components'
-import { IconButton, ButtonProps } from '../Button'
+import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
 import { Space } from '../Layout/Space'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
 import { useReadOnlyWarn } from '../utils'
 import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
+
+export type SupportedActionTypes = string | ReactElement<ButtonProps> | boolean
 
 export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -57,54 +59,117 @@ export interface MessageBarProps
    */
   intent?: MessageBarIntent
   /**
-   * Render the `X` which allows the MessageBar to be dismissed
-   * @default: true
-   */
-  canDismiss?: boolean
-  /**
-   * Called after internal `visible` state is updated
-   */
-  onDismiss?: () => void
-  /**
    * Determines whether the MessageBar is rendered or not. Used in conjunction with the onDismiss prop
    * @default: true
    */
   visible?: boolean
   /**
-   * Replaces the dismiss button with a custom react element
+   * The primary dismiss button. Can be replaced with a string label or a custom react element.
+   * @default IconButton
    */
-  primaryButton?: ReactElement<ButtonProps>
+  primaryAction?: SupportedActionTypes
   /**
    * Optional secondary action to be rendered alongside `primaryButton`
    */
-  secondaryButton?: ReactElement<ButtonProps>
+  secondaryAction?: SupportedActionTypes
+  /**
+   * Optional callback fires when primaryAction is clicked
+   */
+  onPrimaryClick?: () => void
+  /**
+   * Optional callback fires when secondaryAction is clicked
+   */
+  onSecondaryClick?: () => void
   className?: string
 }
+
+interface DefaultDismissButtonProps {
+  id?: string
+  intent?: MessageBarIntent
+  onClick: () => void
+}
+
+const NoopComponent = () => <></>
+
+/* eslint-disable react/display-name */
+
+function getPrimaryActionButton(
+  primaryAction: SupportedActionTypes
+): (props: DefaultDismissButtonProps) => ReactElement {
+  switch (typeof primaryAction) {
+    case 'string':
+      // string label
+      return ({ onClick }: DefaultDismissButtonProps) => (
+        <ButtonTransparent onClick={onClick}>{primaryAction}</ButtonTransparent>
+      )
+    case 'object':
+      // custom react component
+      return () => primaryAction
+    default:
+      return primaryAction
+        ? ({ intent, onClick, id }: DefaultDismissButtonProps) => (
+            <IconButton
+              id={id ? `${id}-iconButton` : undefined}
+              onClick={onClick}
+              icon="Close"
+              size="small"
+              label={`Dismiss ${getIntentLabel(intent)}`}
+            />
+          )
+        : NoopComponent
+  }
+}
+
+function getSecondaryActionButton(
+  secondaryAction?: SupportedActionTypes
+): (props: DefaultDismissButtonProps) => ReactElement {
+  switch (typeof secondaryAction) {
+    case 'string':
+      // string label
+      return ({ onClick }: DefaultDismissButtonProps) => (
+        <ButtonTransparent onClick={onClick} color="neutral">
+          {secondaryAction}
+        </ButtonTransparent>
+      )
+    case 'object':
+      // custom react component
+      return () => secondaryAction
+    default:
+      return NoopComponent
+  }
+}
+
+/* eslint-enable react/display-name */
 
 const MessageBarLayout = forwardRef(
   (
     {
       id,
       children,
-      canDismiss = true,
       intent = 'inform',
-      onDismiss,
       visible: visibleProp,
-      primaryButton,
-      secondaryButton,
+      onPrimaryClick,
+      onSecondaryClick,
+      primaryAction = true,
+      secondaryAction,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    useReadOnlyWarn('MessageBar', visibleProp, onDismiss)
+    useReadOnlyWarn('MessageBar', visibleProp, onPrimaryClick)
 
     const [visible, setVisible] = useState(
       isUndefined(visibleProp) ? true : visibleProp
     )
 
-    const handleDismiss = () => {
+    const handlePrimaryClick = () => {
       setVisible(visibleProp || false)
-      isFunction(onDismiss) && onDismiss()
+      isFunction(onPrimaryClick) && onPrimaryClick()
+    }
+
+    const handleSecondaryClick = () => {
+      setVisible(visibleProp || false)
+      isFunction(onSecondaryClick) && onSecondaryClick()
     }
 
     useEffect(() => {
@@ -113,26 +178,8 @@ const MessageBarLayout = forwardRef(
       }
     }, [visibleProp])
 
-    const dismissButton = canDismiss && (
-      <IconButton
-        id={id ? `${id}-iconButton` : undefined}
-        ml="auto"
-        onClick={handleDismiss}
-        icon="Close"
-        size="small"
-        label={`Dismiss ${getIntentLabel(intent)}`}
-        aria-hidden
-      />
-    )
-
-    const actions = primaryButton ? (
-      <>
-        {secondaryButton}
-        {primaryButton}
-      </>
-    ) : (
-      dismissButton
-    )
+    const PrimaryButton = getPrimaryActionButton(primaryAction)
+    const SecondaryButton = getSecondaryActionButton(secondaryAction)
 
     const messageBarMarkup = (
       <div
@@ -143,7 +190,10 @@ const MessageBarLayout = forwardRef(
       >
         <Status intent={intent} />
         <MessageBarContent>{children}</MessageBarContent>
-        <Space>{actions}</Space>
+        <Space>
+          <SecondaryButton onClick={handleSecondaryClick} />
+          <PrimaryButton intent={intent} onClick={handlePrimaryClick} id={id} />
+        </Space>
       </div>
     )
 
