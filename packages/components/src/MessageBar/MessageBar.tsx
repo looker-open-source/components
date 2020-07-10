@@ -59,25 +59,27 @@ export interface MessageBarProps
    */
   intent?: MessageBarIntent
   /**
-   * Determines whether the MessageBar is rendered or not. Used in conjunction with the onDismiss prop
+   * Determines whether the MessageBar is rendered or not.
    * @default: true
    */
   visible?: boolean
   /**
-   * The primary dismiss button. Can be replaced with a string label or a custom react element.
-   * @default IconButton
+   * Polymorphic prop defines the primary action button to render.
+   * @default true (which renders IconButton)
    */
   primaryAction?: SupportedActionTypes
   /**
-   * Optional secondary action to be rendered alongside `primaryButton`
+   * Polymorphic prop defines the secondary action button to render.
    */
   secondaryAction?: SupportedActionTypes
   /**
-   * Optional callback fires when primaryAction is clicked
+   * Callback fires when primaryAction is clicked
+   * @default noop
    */
   onPrimaryClick?: () => void
   /**
-   * Optional callback fires when secondaryAction is clicked
+   * Callback fires when secondaryAction is clicked
+   * @default noop
    */
   onSecondaryClick?: () => void
   className?: string
@@ -93,6 +95,16 @@ const NoopComponent = () => <></>
 
 /* eslint-disable react/display-name */
 
+/*
+ * Helper function checks the type of `primaryAction`
+ * type: string
+ *   -- returns a ButtonTransparent with `primaryAction` as the label
+ * type: object
+ *   -- signifies a custom react element, and is directy rendered
+ * type: boolean
+ *  -- true returns the default `X` dismiss button
+ *  -- false returns NoopComponent
+ */
 function getPrimaryActionButton(
   primaryAction: SupportedActionTypes
 ): (props: DefaultDismissButtonProps) => ReactElement {
@@ -120,6 +132,15 @@ function getPrimaryActionButton(
   }
 }
 
+/*
+ * Helper function checks the type of `secondaryAction`
+ * type: string
+ *   -- returns a ButtonTransparent with `secondaryAction` as the label
+ * type: object
+ *   -- signifies a custom react element, and is directy rendered
+ * type: boolean or undefined
+ *  -- returns NoopComponent
+ */
 function getSecondaryActionButton(
   secondaryAction?: SupportedActionTypes
 ): (props: DefaultDismissButtonProps) => ReactElement {

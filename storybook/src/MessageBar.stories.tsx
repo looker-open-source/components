@@ -94,6 +94,13 @@ export const CustomActions: FC = () => {
       </MessageBar>
       <MessageBar
         intent="positive"
+        secondaryAction="Secondary Action"
+        onSecondaryClick={handlePrimaryClick}
+      >
+        Custom Secondary Action from a string label
+      </MessageBar>
+      <MessageBar
+        intent="positive"
         primaryAction="Primary Action"
         secondaryAction="Secondary Action"
         onPrimaryClick={handlePrimaryClick}
