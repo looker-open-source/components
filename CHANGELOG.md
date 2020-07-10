@@ -18,7 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `iconSizes` style function includes `xxsmall` case
 
 ### Changed
-
+- `MenuGroup` labels improvements when using `compact`
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
   - Updated padding props to affect `AccordionDisclosure` and `AccordionContent` containers rather than parent `Accordion` container
 - `AccordionDisclosure`
