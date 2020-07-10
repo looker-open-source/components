@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `FactCheck` icon
 
 ### Changed
-
+- `MenuGroup` labels improvements when using `compact`
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
 - `Tooltip` now renders in a `Portal`
 

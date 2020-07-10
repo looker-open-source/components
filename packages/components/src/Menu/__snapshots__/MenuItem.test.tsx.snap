@@ -55,7 +55,7 @@ exports[`MenuItem - current 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #343C42;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -87,8 +87,6 @@ exports[`MenuItem - current 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  grid-gap: 0.75rem;
-  grid-template-columns: 24px 1fr;
   height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
@@ -188,7 +186,9 @@ exports[`MenuItem - current 1`] = `
           />
         </svg>
       </div>
-      who!
+      <span>
+        who!
+      </span>
     </div>
   </button>
 </li>
@@ -200,7 +200,7 @@ exports[`MenuItem - detail 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #343C42;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -232,8 +232,6 @@ exports[`MenuItem - detail 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  grid-gap: 0.75rem;
-  grid-template-columns: 1fr;
   height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
@@ -332,7 +330,9 @@ exports[`MenuItem - detail 1`] = `
     <div
       className="c1 "
     >
-      who!
+      <span>
+        who!
+      </span>
     </div>
   </button>
   <div
@@ -398,7 +398,7 @@ exports[`MenuItem - icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #343C42;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -430,8 +430,6 @@ exports[`MenuItem - icon 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  grid-gap: 0.75rem;
-  grid-template-columns: 24px 1fr;
   height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
@@ -530,7 +528,9 @@ exports[`MenuItem - icon 1`] = `
           />
         </svg>
       </div>
-      who!
+      <span>
+        who!
+      </span>
     </div>
   </button>
 </li>
@@ -542,7 +542,7 @@ exports[`MenuItem 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #343C42;
+  color: #262D33;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -574,8 +574,6 @@ exports[`MenuItem 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  grid-gap: 0.75rem;
-  grid-template-columns: 1fr;
   height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
@@ -656,7 +654,9 @@ exports[`MenuItem 1`] = `
     <div
       className="c1 "
     >
-      who!
+      <span>
+        who!
+      </span>
     </div>
   </button>
 </li>
