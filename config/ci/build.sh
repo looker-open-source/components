@@ -4,8 +4,10 @@
 rm -rf docs/static
 mkdir docs/static
 
+# Storybook static web site build
 yarn workspace storybook build
 
-# Build Gatsby, then move contents to public folder for publishing
+# Gatsby static web site build
 yarn workspace www build
+# Move Gatsby build assets to docs folder for publishing
 mv www/public/* docs/static

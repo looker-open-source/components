@@ -31,7 +31,7 @@
     "prerelease": "yarn build",
     "release": "yarn lerna publish",
     "clean": "rm -Rf packages/*/lib docs/static www/.cache www/public",
-    "deploy": "./config/deploy.sh",
+    "build-docs": "./config/ci/build.sh",
     "playground": "yarn workspace playground start",
     "server": "yarn workspace server start",
     "gatsby": "yarn workspace www start",
