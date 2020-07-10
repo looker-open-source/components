@@ -240,6 +240,4 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
     detailAccessory && theme.space.xxsmall};
 `
 
-export const TreeItem = styled(TreeItemLayout)`
-  color: ${({ theme }) => theme.colors.text2};
-`
+export const TreeItem = styled(TreeItemLayout)``

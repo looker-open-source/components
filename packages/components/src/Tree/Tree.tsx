@@ -155,8 +155,6 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)``
-
 const generateTreeBorder = (depth: number, theme: Theme) => {
   const {
     colors,
@@ -231,5 +229,11 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
+  }
+`
+
+export const Tree = styled(TreeLayout)`
+  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
+    color: ${({ theme }) => theme.colors.text2};
   }
 `
