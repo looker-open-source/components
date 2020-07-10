@@ -25,6 +25,7 @@
  */
 
 import { Badge, SidebarItem } from '@looker/components'
+import { withPrefix } from 'gatsby'
 import React, { FC, useContext } from 'react'
 import { LocationContext } from './LocationContext'
 import { NavigationPage } from './types'
@@ -34,7 +35,7 @@ interface PageProps {
   path: string[]
 }
 
-export const pathToUri = (path: string[]) => `/${path.join('/')}`
+export const pathToUri = (path: string[]) => withPrefix(`/${path.join('/')}`)
 
 const Page: FC<PageProps> = ({ page, path }) => {
   const currentPath = useContext(LocationContext)
