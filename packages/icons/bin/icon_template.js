@@ -24,17 +24,13 @@
 
  */
 
-const startCase = require('lodash/startCase')
-
 function template(
   { template },
   opts,
   { imports, componentName, props, jsx, exports }
 ) {
   const titleOverride = opts.titleProp
-    ? `const title = props.title || '${startCase(
-        opts.state.componentName.replace('Svg', '')
-      )}'
+    ? `const title = props.title
       const titleId = props.titleId`
     : ''
   const typeScriptTpl = template.smart({ plugins: ['typescript'] })
