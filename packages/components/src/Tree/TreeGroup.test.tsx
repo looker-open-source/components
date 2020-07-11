@@ -47,8 +47,8 @@ test('Applies color prop to child Trees and TreeItems', () => {
     </TreeGroup>
   )
 
-  expect(getByText('My Tree Group')).toHaveStyle('color: red')
-  expect(getByText('My Tree')).toHaveStyle('color: red')
-  expect(getByText('TreeItem 1')).toHaveStyle('color: red')
-  expect(getByText('TreeItem 2')).toHaveStyle('color: red')
+  expect(getByText('My Tree Group')).toHaveStyleRule('color: red')
+  expect(getByText('My Tree')).toHaveStyleRule('color: red')
+  expect(getByText('TreeItem 1')).toHaveStyleRule('color: red')
+  expect(getByText('TreeItem 2')).toHaveStyleRule('color: red')
 })
