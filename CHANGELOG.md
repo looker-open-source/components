@@ -13,9 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `undefinedCoalesce` util function
 - `Link` now supports explicit `underline` & `keyColor` properties
 - `FactCheck` icon
+- `TreeItem` and `Tree`
+  - Altered style defaults
+- `iconSizes` style function includes `xxsmall` case
 
 ### Changed
+
 - `InputSearch` clear button is larger and now focusable, divider and summary text spacing refined
+- `MenuGroup` labels improvements when using `compact`
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
   - Updated padding props to affect `AccordionDisclosure` and `AccordionContent` containers rather than parent `Accordion` container
 - `AccordionDisclosure`

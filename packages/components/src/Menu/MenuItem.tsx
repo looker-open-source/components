@@ -104,7 +104,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     <Icon
       name={icon}
       mr="xsmall"
-      size={20 / (compact ? 1.25 : 1)}
+      size={24 / (compact ? 1.25 : 1)}
       color="text6"
     />
   ) : (
