@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import {
   renderWithTheme,
   withThemeProvider,
@@ -91,7 +91,7 @@ describe('MessageBar', () => {
       expect(queryByText('Message text')).not.toBeInTheDocument()
     })
 
-    test('toggles the dismiss button rendering', () => {
+    test('hides the dismiss button', () => {
       const { getByText, queryByText, rerender } = renderWithTheme(
         <MessageBar>Message text</MessageBar>
       )
@@ -107,32 +107,59 @@ describe('MessageBar', () => {
       expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
 
-    test('accepts text labels to customize primary and secondary actions', () => {
+    test('accepts a text label to customize primaryAction', () => {
       const handlePrimaryClick = jest.fn()
-      const handleSecondaryClick = jest.fn()
       const { getByText, queryByText } = renderWithTheme(
         <MessageBar
           primaryAction="Take the red pill"
-          secondaryAction="Take the blue pill"
           onPrimaryClick={handlePrimaryClick}
-          onSecondaryClick={handleSecondaryClick}
         >
-          Message text
+          Do you want to know what the matrix is?
         </MessageBar>
       )
 
       const primaryButton = getByText('Take the red pill')
-      const secondaryButton = getByText('Take the blue pill')
 
       expect(primaryButton).toBeInTheDocument()
-      expect(secondaryButton).toBeInTheDocument()
+      expect(
+        getByText('Do you want to know what the matrix is?')
+      ).toBeInTheDocument()
       expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
 
       fireEvent.click(primaryButton)
-      expect(handlePrimaryClick).toBeCalledTimes(1)
 
-      // fireEvent.click(secondaryButton)
-      // expect(handleSecondaryClick).toBeCalledTimes(1)
+      expect(handlePrimaryClick).toBeCalledTimes(1)
+      // clears messageBar on primary action click
+      expect(
+        queryByText('Do you want to know what the matrix is?')
+      ).not.toBeInTheDocument()
+    })
+
+    test('accepts a text label to customize secondaryAction', () => {
+      const handleSecondaryClick = jest.fn()
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar
+          secondaryAction="Take the blue pill"
+          onSecondaryClick={handleSecondaryClick}
+        >
+          Do you want to know what the matrix is?
+        </MessageBar>
+      )
+
+      const secondaryButton = getByText('Take the blue pill')
+
+      expect(secondaryButton).toBeInTheDocument()
+      expect(
+        getByText('Do you want to know what the matrix is?')
+      ).toBeInTheDocument()
+
+      fireEvent.click(secondaryButton)
+
+      expect(handleSecondaryClick).toBeCalledTimes(1)
+      // clears messageBar on secondary action click
+      expect(
+        queryByText('Do you want to know what the matrix is?')
+      ).not.toBeInTheDocument()
     })
 
     test('renders custom JSX Button elements for primary and secondary actions', () => {
