@@ -25,7 +25,7 @@
     "date-fns": "^2.14.0",
     "date-fns-tz": "^1.0.10",
     "focus-trap": "^5.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "polished": "^3.6.5",
     "react-day-picker": "^7.4.8",
     "react-hotkeys": "^2.0.0",
