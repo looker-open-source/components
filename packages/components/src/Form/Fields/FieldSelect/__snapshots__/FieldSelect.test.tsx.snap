@@ -242,9 +242,6 @@ exports[`A FieldSelect 1`] = `
               viewBox="0 0 24 24"
               width="100%"
             >
-              <title>
-                Caret Down
-              </title>
               <path
                 d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
                 fill="currentColor"
@@ -583,9 +580,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
               viewBox="0 0 24 24"
               width="100%"
             >
-              <title>
-                Circle Info
-              </title>
               <path
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
                 fill="currentColor"
@@ -604,9 +598,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
               viewBox="0 0 24 24"
               width="100%"
             >
-              <title>
-                Caret Down
-              </title>
               <path
                 d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
                 fill="currentColor"

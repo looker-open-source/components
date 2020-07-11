@@ -87,6 +87,7 @@ export const Status = forwardRef(
         color={intent}
         name={getIntentIcon(intent)}
         size={size}
+        title={getIntentLabel(intent)}
       />
       <VisuallyHidden>{getIntentLabel(intent)}</VisuallyHidden>
     </>

@@ -31,9 +31,6 @@ exports[`Icon default 1`] = `
     viewBox="0 0 24 24"
     width="100%"
   >
-    <title>
-      Plus
-    </title>
     <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
       fill="currentColor"
@@ -73,9 +70,6 @@ exports[`Icon with styled system size 1`] = `
     viewBox="0 0 24 24"
     width="100%"
   >
-    <title>
-      Plus
-    </title>
     <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
       fill="currentColor"
@@ -115,9 +109,6 @@ exports[`Icon with styled system size 2`] = `
     viewBox="0 0 24 24"
     width="100%"
   >
-    <title>
-      Plus
-    </title>
     <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
       fill="currentColor"
@@ -157,9 +148,6 @@ exports[`Icon with styled system size 3`] = `
     viewBox="0 0 24 24"
     width="100%"
   >
-    <title>
-      Plus
-    </title>
     <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
       fill="currentColor"

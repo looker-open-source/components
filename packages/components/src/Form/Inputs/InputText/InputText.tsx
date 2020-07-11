@@ -72,6 +72,7 @@ export interface InputTextProps extends InputTextBaseProps {
    */
   after?: ReactNode
   iconAfter?: IconNames
+  iconAfterTitle?: string
 
   /**
    * Content to place before the input
@@ -79,6 +80,7 @@ export interface InputTextProps extends InputTextBaseProps {
    */
   before?: ReactNode
   iconBefore?: IconNames
+  iconBeforeTitle?: string
 }
 
 const InputTextLayout = forwardRef(
@@ -90,9 +92,11 @@ const InputTextLayout = forwardRef(
 
       before,
       iconBefore,
+      iconBeforeTitle,
 
       after,
       iconAfter,
+      iconAfterTitle,
 
       type = 'text',
       validationType,
@@ -146,7 +150,7 @@ const InputTextLayout = forwardRef(
     const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
       <InputTextContent pl="xxsmall">
         {iconBefore ? (
-          <Icon name={iconBefore} size={20} />
+          <Icon name={iconBefore} title={iconBeforeTitle} size={20} />
         ) : (
           <Text fontSize="small">{before}</Text>
         )}
@@ -158,7 +162,7 @@ const InputTextLayout = forwardRef(
     const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
       <InputTextContent pl="xsmall" pr="xxsmall">
         {iconAfter ? (
-          <Icon name={iconAfter} size={20} />
+          <Icon name={iconAfter} title={iconAfterTitle} size={20} />
         ) : (
           <Text fontSize="small">{after}</Text>
         )}
@@ -170,7 +174,12 @@ const InputTextLayout = forwardRef(
         pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
         pr="xxsmall"
       >
-        <Icon color="critical" name="CircleInfo" size={20} />
+        <Icon
+          color="critical"
+          name="CircleInfo"
+          title="Validation Error"
+          size={20}
+        />
       </InputTextContent>
     )
 

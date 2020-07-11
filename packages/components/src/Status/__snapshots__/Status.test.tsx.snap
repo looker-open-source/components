@@ -26,6 +26,7 @@ Array [
 
 <div
     className="c0"
+    title="Error"
   >
     <svg
       fill="currentColor"
@@ -33,9 +34,6 @@ Array [
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Error
-      </title>
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
         fill="currentColor"
@@ -85,6 +83,7 @@ Array [
 
 <div
     className="c0"
+    title="Inform"
   >
     <svg
       fill="currentColor"
@@ -92,9 +91,6 @@ Array [
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Circle Info
-      </title>
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
         fill="currentColor"
@@ -151,9 +147,6 @@ Array [
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Circle Info
-      </title>
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
         fill="currentColor"
@@ -201,6 +194,7 @@ Array [
 
 <div
     className="c0"
+    title="Success"
   >
     <svg
       fill="currentColor"
@@ -208,9 +202,6 @@ Array [
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Circle Check
-      </title>
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
         fill="currentColor"
@@ -260,6 +251,7 @@ Array [
 
 <div
     className="c0"
+    title="Warning"
   >
     <svg
       fill="currentColor"
@@ -267,9 +259,6 @@ Array [
       viewBox="0 0 22 19"
       width="100%"
     >
-      <title>
-        Warning
-      </title>
       <path
         d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
         fill="currentColor"
