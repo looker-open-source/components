@@ -34,8 +34,45 @@ import {
 import { MessageBar } from './MessageBar'
 
 describe('MessageBar', () => {
-  describe('clear button functionality', () => {
-    test('clearable by default', () => {
+  test('controlled component', () => {
+    const handleDismiss = jest.fn()
+
+    const { getByText, queryByText, rerender } = renderWithTheme(
+      <MessageBar onPrimaryClick={handleDismiss} visible>
+        Message text
+      </MessageBar>
+    )
+
+    // visible message bar
+    expect(getByText('Message text')).toBeInTheDocument()
+
+    // dismiss callback
+    expect(handleDismiss).not.toHaveBeenCalled()
+
+    const dismissButton =
+      getByText('Dismiss Inform').closest('button') ||
+      document.createElement('button') // suppress typescript warning about possible null button
+
+    fireEvent.click(dismissButton)
+
+    expect(handleDismiss).toHaveBeenCalledTimes(1)
+
+    // message bar remains visible until `visible` prop is toggled
+    expect(getByText('Message text')).toBeInTheDocument()
+
+    // dismiss message bar through `visible` prop change
+    rerender(
+      withThemeProvider(
+        <MessageBar onPrimaryClick={handleDismiss} visible={false}>
+          Message text
+        </MessageBar>
+      )
+    )
+    expect(queryByText('Message text')).not.toBeInTheDocument()
+  })
+
+  describe('action buttons', () => {
+    test('renders standard Dismiss button by default', () => {
       const { getByText, queryByText } = renderWithTheme(
         <MessageBar>Message text</MessageBar>
       )
@@ -54,44 +91,7 @@ describe('MessageBar', () => {
       expect(queryByText('Message text')).not.toBeInTheDocument()
     })
 
-    test('controlled component', () => {
-      const handleDismiss = jest.fn()
-
-      const { getByText, queryByText, rerender } = renderWithTheme(
-        <MessageBar onDismiss={handleDismiss} visible>
-          Message text
-        </MessageBar>
-      )
-
-      // visible message bar
-      expect(getByText('Message text')).toBeInTheDocument()
-
-      // dismiss callback
-      expect(handleDismiss).not.toHaveBeenCalled()
-
-      const dismissButton =
-        getByText('Dismiss Inform').closest('button') ||
-        document.createElement('button') // suppress typescript warning about possible null button
-
-      fireEvent.click(dismissButton)
-
-      expect(handleDismiss).toHaveBeenCalledTimes(1)
-
-      // message bar remains visible until `visible` prop is toggled
-      expect(getByText('Message text')).toBeInTheDocument()
-
-      // dismiss message bar through `visible` prop change
-      rerender(
-        withThemeProvider(
-          <MessageBar onDismiss={handleDismiss} visible={false}>
-            Message text
-          </MessageBar>
-        )
-      )
-      expect(queryByText('Message text')).not.toBeInTheDocument()
-    })
-
-    test('`canDismiss` toggles the clear button', () => {
+    test('toggles the dismiss button rendering', () => {
       const { getByText, queryByText, rerender } = renderWithTheme(
         <MessageBar>Message text</MessageBar>
       )
@@ -100,42 +100,68 @@ describe('MessageBar', () => {
 
       rerender(
         withThemeProvider(
-          <MessageBar canDismiss={false}>Message text</MessageBar>
+          <MessageBar primaryAction={false}>Message text</MessageBar>
         )
       )
 
       expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
-  })
 
-  describe('action buttons', () => {
-    test('renders primary and secondary buttons in place of dismiss button', () => {
+    test('accepts text labels to customize primary and secondary actions', () => {
+      const handlePrimaryClick = jest.fn()
+      const handleSecondaryClick = jest.fn()
       const { getByText, queryByText } = renderWithTheme(
         <MessageBar
-          intent="inform"
-          primaryButton={<button>primary action</button>}
-          secondaryButton={<button>secondary action</button>}
+          primaryAction="Take the red pill"
+          secondaryAction="Take the blue pill"
+          onPrimaryClick={handlePrimaryClick}
+          onSecondaryClick={handleSecondaryClick}
         >
           Message text
         </MessageBar>
       )
 
-      expect(getByText('primary action')).toBeInTheDocument()
-      expect(getByText('secondary action')).toBeInTheDocument()
+      const primaryButton = getByText('Take the red pill')
+      const secondaryButton = getByText('Take the blue pill')
+
+      expect(primaryButton).toBeInTheDocument()
+      expect(secondaryButton).toBeInTheDocument()
+      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+
+      fireEvent.click(primaryButton)
+      expect(handlePrimaryClick).toBeCalledTimes(1)
+
+      // fireEvent.click(secondaryButton)
+      // expect(handleSecondaryClick).toBeCalledTimes(1)
+    })
+
+    test('renders custom JSX Button elements for primary and secondary actions', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <MessageBar
+          intent="inform"
+          primaryAction={<button>Take the red pill</button>}
+          secondaryAction={<button>Take the blue pill</button>}
+        >
+          Message text
+        </MessageBar>
+      )
+
+      expect(getByText('Take the red pill')).toBeInTheDocument()
+      expect(getByText('Take the blue pill')).toBeInTheDocument()
       expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
 
-    test('does not render action buttons if only a secondaryButton is defined', () => {
-      const { getByText, queryByText } = renderWithTheme(
+    test('renders secondaryButton next to default Dismiss button', () => {
+      const { getByText } = renderWithTheme(
         <MessageBar
           intent="inform"
-          secondaryButton={<button>secondary action</button>}
+          secondaryAction={<button>secondary action</button>}
         >
           Message text
         </MessageBar>
       )
 
-      expect(queryByText('secondary action')).not.toBeInTheDocument()
+      expect(getByText('secondary action')).toBeInTheDocument()
       expect(getByText('Dismiss Inform')).toBeInTheDocument()
     })
   })
