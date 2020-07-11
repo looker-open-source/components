@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/vfile-message": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
     "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
