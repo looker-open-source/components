@@ -14,8 +14,10 @@ node_modules
 .eslintcache
 
 # code-gen
-/packages/icons/src/generated
-public/
+packages/icons/src/generated
+www/public
+docs/static
+playground/dist
 
 # lerna
 /packages/*/lib

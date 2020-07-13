@@ -2,8 +2,8 @@
 
 exports[`MenuItem - current 1`] = `
 .c3 {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -26,8 +26,12 @@ exports[`MenuItem - current 1`] = `
 
 .c4 button .c1,
 .c4 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
@@ -39,7 +43,7 @@ exports[`MenuItem - current 1`] = `
 
 .c4:hover .c2,
 .c4[aria-current='true'] .c2 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c4[disabled]:hover .c2 {
@@ -83,8 +87,10 @@ exports[`MenuItem - current 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -101,9 +107,13 @@ exports[`MenuItem - current 1`] = `
 
 .c0 button .c1,
 .c0 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 20px 1fr;
+  grid-gap: 0.75rem;
+  grid-template-columns: 24px 1fr;
 }
 
 .c0 .c2 {
@@ -120,7 +130,7 @@ exports[`MenuItem - current 1`] = `
 
 .c0:hover .c2,
 .c0[aria-current='true'] .c2 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c0[aria-current='true'] {
@@ -217,8 +227,10 @@ exports[`MenuItem - detail 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -235,8 +247,12 @@ exports[`MenuItem - detail 1`] = `
 
 .c0 button .c1,
 .c0 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
@@ -254,7 +270,7 @@ exports[`MenuItem - detail 1`] = `
 
 .c0:hover .c4,
 .c0[aria-current='true'] .c4 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c0[aria-current='true'] {
@@ -281,9 +297,13 @@ exports[`MenuItem - detail 1`] = `
 
 .c3 button .c1,
 .c3 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 20px 1fr;
+  grid-gap: 0.75rem;
+  grid-template-columns: 24px 1fr;
 }
 
 .c2 {
@@ -318,8 +338,8 @@ exports[`MenuItem - detail 1`] = `
 
 exports[`MenuItem - icon 1`] = `
 .c3 {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -342,8 +362,12 @@ exports[`MenuItem - icon 1`] = `
 
 .c4 button .c1,
 .c4 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
@@ -355,7 +379,7 @@ exports[`MenuItem - icon 1`] = `
 
 .c4:hover .c2,
 .c4[aria-current='true'] .c2 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c4[disabled]:hover .c2 {
@@ -399,8 +423,10 @@ exports[`MenuItem - icon 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -417,9 +443,13 @@ exports[`MenuItem - icon 1`] = `
 
 .c0 button .c1,
 .c0 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 20px 1fr;
+  grid-gap: 0.75rem;
+  grid-template-columns: 24px 1fr;
 }
 
 .c0 .c2 {
@@ -436,7 +466,7 @@ exports[`MenuItem - icon 1`] = `
 
 .c0:hover .c2,
 .c0[aria-current='true'] .c2 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c0[aria-current='true'] {
@@ -532,8 +562,10 @@ exports[`MenuItem 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
+  height: 40px;
   outline: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -550,8 +582,12 @@ exports[`MenuItem 1`] = `
 
 .c0 button .c1,
 .c0 a .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.75rem;
   grid-template-columns: 1fr;
 }
 
@@ -569,7 +605,7 @@ exports[`MenuItem 1`] = `
 
 .c0:hover .c2,
 .c0[aria-current='true'] .c2 {
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c0[aria-current='true'] {

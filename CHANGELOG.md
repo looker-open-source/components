@@ -13,10 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `undefinedCoalesce` util function
 - `Link` now supports explicit `underline` & `keyColor` properties
 - `FactCheck` icon
+- `TreeItem` and `Tree`
+  - Altered style defaults
+- `iconSizes` style function includes `xxsmall` case
 
 ### Changed
 
 - `Icon` no longer outputs a `<title />` by default and Icon is marked with `aria-hide` unless a title is explicitly specified
+- `MenuGroup` labels improvements when using `compact`
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
   - Updated padding props to affect `AccordionDisclosure` and `AccordionContent` containers rather than parent `Accordion` container
 - `AccordionDisclosure`
@@ -35,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
+- `MenuGroup` now includes icon placeholder spacing if higher `MenuItemContext` has `renderIconPlaceholder === true`
 
 ### Removed
 

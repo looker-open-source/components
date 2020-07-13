@@ -28,6 +28,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuItemLayout, MenuItemLayoutGrid } from './MenuItemLayout'
@@ -100,15 +101,19 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     icon && setRenderIconPlaceholder(true)
   }, [icon, setRenderIconPlaceholder])
 
+  const renderedIconID = useID(props.id)
+
   const renderedIcon = icon ? (
     <Icon
       name={icon}
       mr="xsmall"
-      size={20 / (compact ? 1.25 : 1)}
+      size={24 / (compact ? 1.25 : 1)}
       color="text6"
     />
   ) : (
-    renderIconPlaceholder && <div />
+    renderIconPlaceholder && (
+      <div data-testid={`menu-item-${renderedIconID}-icon-placeholder`} />
+    )
   )
 
   const Component = itemRole === 'link' ? 'a' : 'button'

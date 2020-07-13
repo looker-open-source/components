@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import { FontWeights, Theme, uiTransparencyBlend } from '@looker/design-tokens'
+import { Theme, uiTransparencyBlend } from '@looker/design-tokens'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
 import {
   Accordion,
@@ -65,11 +65,6 @@ export interface TreeProps extends AccordionProps {
    */
   detailAccessory?: boolean
   /**
-   * The font weight of the Tree's text
-   * @default 'semiBold'
-   */
-  fontWeight?: FontWeights
-  /**
    * Icon element that appears between the Tree indicator and the Tree label
    */
   icon?: IconNames
@@ -78,6 +73,11 @@ export interface TreeProps extends AccordionProps {
    * Note: This is a required prop
    */
   label: ReactNode
+  /**
+   * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
+   * @default false
+   */
+  visuallyAsBranch?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -95,9 +95,9 @@ const TreeLayout: FC<TreeProps> = ({
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
   detailAccessory: propsDetailAccessory,
-  fontWeight,
   icon,
   label,
+  visuallyAsBranch,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -121,7 +121,6 @@ const TreeLayout: FC<TreeProps> = ({
       detail={detail}
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
-      gapSize="xsmall"
       icon={icon}
     >
       {label}
@@ -130,7 +129,10 @@ const TreeLayout: FC<TreeProps> = ({
 
   const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure ref={disclosureRef} fontWeight={fontWeight}>
+      <AccordionDisclosure
+        ref={disclosureRef}
+        fontWeight={visuallyAsBranch ? 'normal' : 'semiBold'}
+      >
         {treeItem}
       </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>

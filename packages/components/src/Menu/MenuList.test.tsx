@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import * as React from 'react'
-import { mountWithTheme, shallowWithTheme } from '@looker/components-test-utils'
+import {
+  mountWithTheme,
+  shallowWithTheme,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
@@ -90,4 +94,15 @@ test('Menu - compact', () => {
   )
 
   expect(menu).toMatchSnapshot()
+})
+
+test('Menu - allocates space for MenuItem when a sibling has an icon', () => {
+  const { getByTestId } = renderWithTheme(
+    <MenuList>
+      <MenuItem icon="Calendar">Gouda</MenuItem>
+      <MenuItem id="cheddar">Cheddar</MenuItem>
+    </MenuList>
+  )
+
+  getByTestId('menu-item-cheddar-icon-placeholder')
 })
