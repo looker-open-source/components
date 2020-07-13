@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `MenuGroup` labels improvements when using `compact`
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
   - Updated padding props to affect `AccordionDisclosure` and `AccordionContent` containers rather than parent `Accordion` container
 - `AccordionDisclosure`
@@ -42,6 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
 - `TreeGroup` properly overrides color of child `TreeItem` labels and `Tree` labels
+- `MenuGroup` now includes icon placeholder spacing if higher `MenuItemContext` has `renderIconPlaceholder === true`
+
 
 ### Removed
 

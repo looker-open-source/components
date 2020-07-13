@@ -34,7 +34,7 @@
  *
  **/
 
-import { isEqual } from 'lodash'
+import isEqual from 'lodash/isEqual'
 import React, { FormEvent, useState } from 'react'
 import {
   useConfirm,
