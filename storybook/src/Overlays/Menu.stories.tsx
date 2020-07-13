@@ -39,6 +39,7 @@ import {
   Paragraph,
   IconButton,
   MenuContext,
+  Divider,
 } from '@looker/components'
 
 export const All = () => (
@@ -111,11 +112,23 @@ export const IconSpace = () => (
       </MenuList>
     </Menu>
 
+    <Divider />
+
     <MenuList compact>
-      <MenuGroup label="Cheeses">
+      <MenuGroup label="MenuGroup with 3 Items">
         <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem>Pizza!</MenuItem>
         <MenuItem icon="Validate">Validate</MenuItem>
+        <MenuItem>Pizza!</MenuItem>
+      </MenuGroup>
+    </MenuList>
+
+    <Divider />
+
+    <MenuList compact>
+      <MenuItem icon="LogoRings">Looker</MenuItem>
+      <MenuItem icon="Validate">Validate</MenuItem>
+      <MenuGroup label="MenuGroup with 1 Item">
+        <MenuItem>Pizza!</MenuItem>
       </MenuGroup>
     </MenuList>
   </div>
