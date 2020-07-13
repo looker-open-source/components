@@ -27,7 +27,7 @@
 function template(
   { template },
   opts,
-  { imports, componentName, props, jsx, exports }
+  { imports, componentName, jsx, exports }
 ) {
   const titleOverride = opts.titleProp
     ? `const title = props.title
