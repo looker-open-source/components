@@ -17,6 +17,7 @@ node_modules
 packages/icons/src/generated
 www/public
 docs/static
+playground/dist
 
 # lerna
 /packages/*/lib
