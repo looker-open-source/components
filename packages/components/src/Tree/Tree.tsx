@@ -158,13 +158,13 @@ const TreeLayout: FC<TreeProps> = ({
 const generateTreeBorder = (depth: number, theme: Theme) => {
   const {
     colors,
-    space: { xxsmall, small },
+    space: { xxsmall, xsmall, small },
   } = theme
 
   const itemBorderSize = '1px'
   const itemPaddingSize = xxsmall
   const indicatorIconSize = small
-  const indicatorGapSize = xxsmall
+  const indicatorGapSize = xsmall
   const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
   const borderSpacer = `(${small} / 2) + ${depthSize}`
 
@@ -215,6 +215,10 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
   }
 
+  ${Accordion} {
+    color: ${({ theme }) => theme.colors.text2};
+  }
+
   ${TreeItemInner} {
     border-width: 0;
     height: 100%;
@@ -232,8 +236,4 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   }
 `
 
-export const Tree = styled(TreeLayout)`
-  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
-    color: ${({ theme }) => theme.colors.text2};
-  }
-`
+export const Tree = styled(TreeLayout)``
