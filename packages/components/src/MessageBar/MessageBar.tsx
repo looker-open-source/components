@@ -111,7 +111,7 @@ const NoopComponent = () => <></>
  *  -- false returns NoopComponent
  */
 function getPrimaryActionButton(
-  primaryAction: SupportedActionTypes
+  primaryAction?: SupportedActionTypes
 ): (props: DefaultDismissButtonProps) => ReactElement {
   switch (typeof primaryAction) {
     case 'string':

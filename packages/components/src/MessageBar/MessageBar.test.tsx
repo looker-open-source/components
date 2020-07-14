@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import {
   renderWithTheme,
   withThemeProvider,
