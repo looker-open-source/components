@@ -670,6 +670,7 @@ exports[`Button with icon validates all sizes 1`] = `
   class="c0 c1"
 >
   <div
+    aria-hidden="true"
     class="c2 c3"
   >
     <svg
@@ -828,6 +829,7 @@ exports[`Button with icon validates all sizes 2`] = `
   class="c0 c1"
 >
   <div
+    aria-hidden="true"
     class="c2 c3"
   >
     <svg
@@ -986,6 +988,7 @@ exports[`Button with icon validates all sizes 3`] = `
   class="c0 c1"
 >
   <div
+    aria-hidden="true"
     class="c2 c3"
   >
     <svg
@@ -1144,6 +1147,7 @@ exports[`Button with icon validates all sizes 4`] = `
   class="c0 c1"
 >
   <div
+    aria-hidden="true"
     class="c2 c3"
   >
     <svg

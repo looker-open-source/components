@@ -169,6 +169,7 @@ exports[`MenuItem - current 1`] = `
       className="c1 "
     >
       <div
+        aria-hidden={true}
         className="c2 c3"
       >
         <svg
@@ -504,6 +505,7 @@ exports[`MenuItem - icon 1`] = `
       className="c1 "
     >
       <div
+        aria-hidden={true}
         className="c2 c3"
       >
         <svg

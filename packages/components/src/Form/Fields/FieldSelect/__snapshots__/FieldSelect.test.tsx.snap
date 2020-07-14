@@ -234,6 +234,7 @@ exports[`A FieldSelect 1`] = `
           className="c8"
         >
           <div
+            aria-hidden={true}
             className="c9"
           >
             <svg
@@ -572,6 +573,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           className="c8"
         >
           <div
+            aria-hidden={true}
             className="c9"
           >
             <svg
@@ -590,6 +592,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
             className="c10"
           />
           <div
+            aria-hidden={true}
             className="c11"
           >
             <svg

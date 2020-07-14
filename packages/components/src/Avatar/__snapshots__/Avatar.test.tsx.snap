@@ -118,6 +118,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c6 c7"
     >
       <svg
@@ -254,6 +255,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c6 c7"
     >
       <svg
@@ -365,6 +367,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c1"
   >
     <div
+      aria-hidden={true}
       className="c2 c3"
     >
       <svg
@@ -384,6 +387,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c2 c3"
     >
       <svg
@@ -468,6 +472,7 @@ exports[`AvatarIcon renders  1`] = `
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1 c2"
   >
     <svg
@@ -549,6 +554,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1 c2"
   >
     <svg

@@ -132,6 +132,7 @@ exports[`InputSearch default 1`] = `
     className="c1"
   >
     <div
+      aria-hidden={true}
       className="c2"
     >
       <svg

@@ -27,17 +27,12 @@
 function template(
   { template },
   opts,
-  { imports, componentName, jsx, exports }
+  { imports, componentName, props, jsx, exports }
 ) {
-  const titleOverride = opts.titleProp
-    ? `const title = props.title
-      const titleId = props.titleId`
-    : ''
   const typeScriptTpl = template.smart({ plugins: ['typescript'] })
   return typeScriptTpl.ast`
     ${imports}
-    const ${componentName} = (props: React.SVGProps<SVGSVGElement> & { title?: string, titleId?: string }) => {
-      ${titleOverride}
+    const ${componentName} = ({ title, titleId, ...props }: React.SVGProps<SVGSVGElement>) => {
       return ${jsx}
     }
     ${exports}

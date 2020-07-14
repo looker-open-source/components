@@ -162,6 +162,7 @@ describe('MessageBar', () => {
       )
       // dismiss button
       expect(getByText('Dismiss Success')).toBeInTheDocument()
+
       // icon title and color
       expect(getByTitle('Success').closest('div')).toHaveStyle({
         color: '#24b25f',

@@ -26,7 +26,6 @@
 
 import React, { forwardRef, Ref } from 'react'
 import { Icon, IconProps, IconNames } from '../Icon'
-import { VisuallyHidden } from '../VisuallyHidden'
 
 export type StatusIntent =
   | 'critical'
@@ -79,18 +78,15 @@ export const Status = forwardRef(
     { className, intent, size, ...props }: StatusProps,
     ref: Ref<HTMLInputElement>
   ) => (
-    <>
-      <Icon
-        {...props}
-        className={className}
-        ref={ref}
-        color={intent}
-        name={getIntentIcon(intent)}
-        size={size}
-        title={getIntentLabel(intent)}
-      />
-      <VisuallyHidden>{getIntentLabel(intent)}</VisuallyHidden>
-    </>
+    <Icon
+      {...props}
+      className={className}
+      ref={ref}
+      color={intent}
+      name={getIntentIcon(intent)}
+      size={size}
+      title={getIntentLabel(intent)}
+    />
   )
 )
 

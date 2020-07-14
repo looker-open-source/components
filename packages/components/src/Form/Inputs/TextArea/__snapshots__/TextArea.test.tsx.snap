@@ -387,6 +387,7 @@ exports[`TextArea with an error validation 1`] = `
     id="TextAreaID"
   />
   <div
+    aria-hidden={true}
     className="c1 c2"
   >
     <svg
