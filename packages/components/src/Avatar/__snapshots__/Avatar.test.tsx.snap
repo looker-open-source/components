@@ -118,6 +118,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c6 c7"
     >
       <svg
@@ -126,9 +127,6 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
         viewBox="0 0 24 24"
         width="100%"
       >
-        <title>
-          Code
-        </title>
         <path
           d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
           fill="currentColor"
@@ -257,6 +255,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c6 c7"
     >
       <svg
@@ -265,9 +264,6 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
         viewBox="0 0 24 24"
         width="100%"
       >
-        <title>
-          Code
-        </title>
         <path
           d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
           fill="currentColor"
@@ -371,6 +367,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c1"
   >
     <div
+      aria-hidden={true}
       className="c2 c3"
     >
       <svg
@@ -379,9 +376,6 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
         viewBox="0 0 24 24"
         width="100%"
       >
-        <title>
-          User
-        </title>
         <path
           d="M12 5.9a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2zm0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1zM12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"
           fill="currentColor"
@@ -393,6 +387,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
     className="c4 c5"
   >
     <div
+      aria-hidden={true}
       className="c2 c3"
     >
       <svg
@@ -401,9 +396,6 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
         viewBox="0 0 24 24"
         width="100%"
       >
-        <title>
-          Logo Rings
-        </title>
         <path
           clipRule="evenodd"
           d="M11.266 2.249a1.747 1.747 0 11-.08 2.943l.746-.746a.737.737 0 10-.47-.47l-.746.746a1.746 1.746 0 01.55-2.473zm-.344 3.204a2.715 2.715 0 01.214 2.942c-.219.4-.535.74-.918.987L9.69 8.095a1.389 1.389 0 00.263-1.675l.968-.967zM8.759 8.477h-.027a1.39 1.39 0 11.762-2.551l.96-.959a2.731 2.731 0 10-1.17 4.797l-.525-1.287zm1.652 1.376a6.191 6.191 0 011.789-.262l-.004-.001a6.196 6.196 0 11-2.726.631l.768 1.87a4.181 4.181 0 10.939-.363l-.767-1.875z"
@@ -480,6 +472,7 @@ exports[`AvatarIcon renders  1`] = `
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1 c2"
   >
     <svg
@@ -488,9 +481,6 @@ exports[`AvatarIcon renders  1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        User
-      </title>
       <path
         d="M12 5.9a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2zm0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1zM12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"
         fill="currentColor"
@@ -564,6 +554,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1 c2"
   >
     <svg
@@ -572,9 +563,6 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Code
-      </title>
       <path
         d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
         fill="currentColor"

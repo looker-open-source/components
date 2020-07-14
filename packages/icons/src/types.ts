@@ -24,20 +24,7 @@
 
  */
 
-function template(
-  { template },
-  opts,
-  { imports, componentName, props, jsx, exports }
-) {
-  const typeScriptTpl = template.smart({ plugins: ['typescript'] })
-  return typeScriptTpl.ast`
-    ${imports}
-    import { GlyphProps } from '../../types'
-
-    const ${componentName} = ({ title, titleId, ...props }: GlyphProps) => {
-      return ${jsx}
-    }
-    ${exports}
-  `
+export interface GlyphProps extends React.SVGProps<SVGSVGElement> {
+  title?: string
+  titleId?: string
 }
-module.exports = template
