@@ -99,9 +99,7 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Inform')).toBeInTheDocument()
 
       rerender(
-        withThemeProvider(
-          <MessageBar primaryAction={false}>Message text</MessageBar>
-        )
+        withThemeProvider(<MessageBar noActions>Message text</MessageBar>)
       )
 
       expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
