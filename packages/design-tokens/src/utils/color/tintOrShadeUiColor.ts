@@ -25,12 +25,27 @@
  */
 
 import { getLuminance, shade, tint } from 'polished'
+import { scaleMixAmount } from './scaleMixAmount'
+
+// Tints or shades a color based on the luminosity of the color
+//
+// Used for generating our UI colors based on the background color
+//
+// If the color has a higher luminosity, a light background for example,
+// the color is shaded, returning a color mixed with black
+//
+// For colors with lower luminosity, dark background colors for example,
+// the colors is tinted,returning a color mixed with white
 
 export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
   const colorLuminance = getLuminance(color)
+
+  const mixAdjustment =
+    colorLuminance > 0.5 ? mixAmount : scaleMixAmount(mixAmount, 1.5)
+
   if (colorLuminance > 0.5) {
-    return shade(mixAmount / 100, color)
+    return shade(mixAdjustment / 100, color)
   } else {
-    return tint(mixAmount / 100, color)
+    return tint(mixAdjustment / 100, color)
   }
 }

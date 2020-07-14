@@ -4,7 +4,15 @@ propsOf: DateFormat
 github: DateTimeFormat/DateFormat.tsx
 ---
 
+import { MessageBar } from '@looker/components'
 import { DateFormatTable, LocaleTable } from './demos'
+
+<MessageBar my="large" canDismiss={false}>
+  Note: DateFormat must be imported from its specific location rather than the
+  package root.
+</MessageBar>
+
+Import path: `@looker/components/lib/DateFormat`
 
 As it's name implies, `DateFormat` is used to format a javascript Date object to human readable and localized text.
 

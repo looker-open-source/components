@@ -18,7 +18,7 @@
   "dependencies": {
     "@styled-system/props": "^5.1.5",
     "@types/styled-system": "^5.1.9",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "polished": "^3.6.5",
     "styled-system": "^5.1.5"
   },
@@ -26,7 +26,7 @@
     "@types/lodash": "^4.14.157",
     "@types/styled-components": "^4.4.1",
     "csstype": "^2.6.11",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

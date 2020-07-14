@@ -24,6 +24,8 @@
 
  */
 
+/* eslint-disable sort-keys-fix/sort-keys-fix,@typescript-eslint/camelcase */
+
 module.exports = {
   siteMetadata: {
     title: 'Looker UI Components',

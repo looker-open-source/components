@@ -26,16 +26,16 @@
 import React, { FC, useState } from 'react'
 import {
   Button,
-  DateFormat,
-  FieldDateRange,
   Fieldset,
   FieldSelect,
-  InputDateRange,
-  Locales,
   Paragraph,
   Popover,
   PopoverContent,
 } from '@looker/components'
+import { DateFormat } from '@looker/components/src/DateFormat'
+import { FieldDateRange } from '@looker/components/src/FieldDateRange'
+import { InputDateRange } from '@looker/components/src/InputDateRange'
+import { Locales } from '@looker/components/src/utils/i18n'
 
 interface DateRange {
   from?: Date

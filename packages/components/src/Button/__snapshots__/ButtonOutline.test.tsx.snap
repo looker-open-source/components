@@ -52,7 +52,7 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 .c1.hover {
   background: #FFFFFF;
   border-color: #6C43E0;
-  color: #412399;
+  color: #8462e5;
 }
 
 .c1:active,
@@ -79,7 +79,7 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 
 exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonOutline-ncggc7-0 ejpUkO"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonOutline-ncggc7-0 btHUnS"
 >
   focus
 </button>
@@ -137,7 +137,7 @@ exports[`ButtonOutline has the correct style 1`] = `
 .c1.hover {
   background: #FFFFFF;
   border-color: #6C43E0;
-  color: #412399;
+  color: #8462e5;
 }
 
 .c1:active,

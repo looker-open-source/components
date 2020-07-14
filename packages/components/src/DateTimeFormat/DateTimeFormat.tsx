@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import repeat from 'lodash/repeat'
 import trim from 'lodash/trim'
-import { LocaleCodes, Locales, formatDateString } from '../utils'
+import { LocaleCodes, Locales, formatDateString } from '../utils/i18n'
 
 type DateFormats = 'short' | 'medium' | 'long' | 'full'
 

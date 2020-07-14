@@ -39,21 +39,21 @@ Use `detail` to display an element in the negative space of the `Tree` label.
 </Tree>
 ```
 
-If you'd like a `Tree`'s entire disclosure to trigger opening and closing on click, avoid the `detail` prop and instead pass a composition into the `label` prop, like so:
+Use the `visuallyAsBranch` prop if you'd like your `Tree`'s disclosure text to have a "normal" font weight.
+
+This is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
 
 ```jsx
-<Tree
-  label={
-    <Space between>
-      <Text fontSize="xsmall">Orders</Text>
-      <Text fontSize="xsmall" color="ui4">
-        thelook
-      </Text>
-    </Space>
-  }
-  icon="Table"
->
-  <TreeItem icon="FieldNumber">Cost</TreeItem>
+<Tree label="Orders" icon="Table" defaultOpen>
+  <Tree visuallyAsBranch label="Created" defaultOpen>
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </Tree>
+  <TreeItem>Cost</TreeItem>
+  <TreeItem>Location</TreeItem>
+  <TreeItem>ID</TreeItem>
 </Tree>
 ```
 

@@ -10,7 +10,7 @@
     "storybook",
     "www"
   ],
-  "homepage": "http://components.looker.com",
+  "homepage": "http://github.com/looker-open-source/components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/looker-open-source/components.git"
@@ -30,8 +30,8 @@
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
     "prerelease": "yarn build",
     "release": "yarn lerna publish",
-    "clean": "rm -Rf packages/*/lib",
-    "deploy": "yarn workspace www deploy",
+    "clean": "rm -Rf packages/*/lib docs/static www/.cache www/public",
+    "deploy": "./config/deploy.sh",
     "playground": "yarn workspace playground start",
     "server": "yarn workspace server start",
     "gatsby": "yarn workspace www start",
@@ -45,19 +45,19 @@
     "test": "yarn jest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
+    "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "7.10.1",
-    "@babel/preset-typescript": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.4",
     "@babel/runtime": "^7.10.4",
     "@babel/runtime-corejs3": "^7.10.3",
     "@testing-library/jest-dom": "^5.11.0",
-    "@types/node": "^14.0.13",
+    "@types/node": "^14.0.22",
     "babel-plugin-styled-components": "^1.10.7",
     "core-js": "^3.6.5",
     "enzyme": "^3.11.0",

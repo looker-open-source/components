@@ -84,7 +84,7 @@ test('clicking "previous month" calls context.onNavClick with props.previousMont
 
   expect(mockContext.onPrevClick).toHaveBeenCalledTimes(0)
 
-  const prev = getByText('Caret Left')
+  const prev = getByText('prev month')
   fireEvent.click(prev)
   expect(mockContext.onPrevClick).toHaveBeenCalledWith(mockProps.previousMonth)
 })
@@ -98,7 +98,7 @@ test('clicking "next month" calls context.onNavClick with props.nextMonth', () =
 
   expect(mockContext.onNextClick).toHaveBeenCalledTimes(0)
 
-  const next = getByText('Caret Right')
+  const next = getByText('next month')
   fireEvent.click(next)
   expect(mockContext.onNextClick).toHaveBeenCalledWith(mockProps.nextMonth)
 })

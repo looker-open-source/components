@@ -27,7 +27,7 @@
 import {
   color,
   CompatibleHTMLProps,
-  generatePressed,
+  generateIntentShade,
   reset,
   SizeLarge,
   SizeMedium,
@@ -103,7 +103,7 @@ BadgeLayout.displayName = 'BadgeLayout'
 const badgeIntent = (intent: BadgeIntent) =>
   css`
     background: ${intentUIBlend(intent, 1)};
-    color: ${({ theme: { colors } }) => generatePressed(colors[intent])};
+    color: ${({ theme: { colors } }) => generateIntentShade(colors[intent])};
   `
 
 export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`

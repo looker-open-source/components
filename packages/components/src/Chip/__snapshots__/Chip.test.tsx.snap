@@ -17,7 +17,7 @@ exports[`Chip renders correctly 1`] = `
   align-items: center;
   background-color: #F3F2FF;
   border-radius: 4px;
-  color: #4F2ABA;
+  color: #7a55e3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -84,7 +84,7 @@ exports[`Chip renders disabled 1`] = `
   align-items: center;
   background-color: #F3F2FF;
   border-radius: 4px;
-  color: #4F2ABA;
+  color: #7a55e3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

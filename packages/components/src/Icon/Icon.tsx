@@ -59,13 +59,19 @@ export interface IconProps
   artwork?: ReactNode
   color?: string
   name?: IconNames
+  /**
+   * Explicitly specify a title for the SVG rendered by the icon.
+   * NOTE: If title is not specified `aria-hidden="true"` will be applied to hide the SVG from
+   * screen-readers
+   */
+  title?: string
 }
 
 export type { IconNames }
 
 const IconLayout = forwardRef(
   (
-    { artwork = undefined, name, ...props }: IconProps,
+    { artwork = undefined, title, name, ...props }: IconProps,
     ref: Ref<HTMLDivElement>
   ) => {
     if ((artwork && name) || (!artwork && !name)) {
@@ -74,10 +80,14 @@ const IconLayout = forwardRef(
     }
     const Glyph = name ? Glyphs[name] : 'div'
     const value = artwork || (
-      <Glyph width="100%" height="100%" fill="currentColor" />
+      <Glyph width="100%" height="100%" fill="currentColor" title={title} />
     )
     return (
-      <div ref={ref} {...omitStyledProps(props)}>
+      <div
+        ref={ref}
+        aria-hidden={title === undefined && true}
+        {...omitStyledProps(props)}
+      >
         {value}
       </div>
     )

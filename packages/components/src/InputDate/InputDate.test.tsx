@@ -28,7 +28,7 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
-import { Locales } from '../../../utils'
+import { Locales } from '../utils/i18n'
 import { InputDate } from './InputDate'
 
 const realDateNow = Date.now.bind(global.Date)

@@ -29,25 +29,39 @@ import React from 'react'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from './Icon'
 
-test('Icon default', () => {
-  assertSnapshot(<Icon name="Plus" />)
-})
+describe('Icon', () => {
+  test('Default', () => {
+    assertSnapshot(<Icon name="Plus" />)
+  })
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size="large" />)
-})
+  test('Styled system size', () => {
+    assertSnapshot(<Icon name="Plus" size="large" />)
+  })
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size={12} />)
-})
+  test('Explicit size - integer as pixels', () => {
+    assertSnapshot(<Icon name="Plus" size={12} />)
+  })
 
-test('Icon with styled system size', () => {
-  assertSnapshot(<Icon name="Plus" size="1rem" />)
-})
+  test('Explicit size - string', () => {
+    assertSnapshot(<Icon name="Plus" size="1rem" />)
+  })
 
-test('Icon supports DOM attributes', () => {
-  const { findByLabelText } = renderWithTheme(
-    <Icon name="Plus" aria-label="Add" />
-  )
-  expect(findByLabelText('Add')).toBeTruthy()
+  test('DOM attribute support', () => {
+    const { findByLabelText } = renderWithTheme(
+      <Icon name="Plus" aria-label="Add" />
+    )
+    expect(findByLabelText('Add')).toBeTruthy()
+  })
+
+  test(`No title by default`, () => {
+    const { queryByLabelText } = renderWithTheme(<Icon name="Trash" />)
+    expect(queryByLabelText("Oscar's House")).toBeFalsy()
+  })
+
+  test(`Title is assigned properly to SVG art`, () => {
+    const { findByLabelText } = renderWithTheme(
+      <Icon name="Trash" title="Oscar's House" />
+    )
+    expect(findByLabelText("Oscar's House")).toBeTruthy()
+  })
 })

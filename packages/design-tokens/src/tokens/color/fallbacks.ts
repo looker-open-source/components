@@ -27,6 +27,10 @@
 import { BlendColors } from '../../system/color/blends'
 import { StatefulColors } from '../../system/color/stateful'
 import {
+  generateInteractive,
+  generatePressed,
+} from '../../utils/color/stateful'
+import {
   charcoal000,
   charcoal100,
   charcoal200,
@@ -41,14 +45,11 @@ import {
   purple100,
   purple300,
   purple400,
-  purple500,
-  purple600,
   red000,
   red100,
   red300,
   red400,
-  red700,
-  red600,
+  red500,
   white,
 } from './palette'
 
@@ -73,24 +74,24 @@ export const fallbackStateful: StatefulColors = {
   keySubtle: purple000,
   keyAccent: purple100,
   keyFocus: purple300,
-  keyInteractive: purple500,
-  keyPressed: purple600,
+  keyInteractive: generateInteractive(purple400),
+  keyPressed: generatePressed(purple400),
   keyText: white,
   keyBorder: purple400,
 
   criticalSubtle: red000,
   criticalAccent: red100,
   criticalFocus: red300,
-  criticalInteractive: red600,
-  criticalPressed: red700,
+  criticalInteractive: generateInteractive(red500),
+  criticalPressed: generatePressed(red500),
   criticalText: white,
   criticalBorder: red400,
 
   neutralSubtle: charcoal000,
   neutralAccent: charcoal100,
   neutralFocus: charcoal300,
-  neutralInteractive: charcoal500,
-  neutralPressed: charcoal600,
+  neutralInteractive: generateInteractive(charcoal500),
+  neutralPressed: generatePressed(charcoal500),
   neutralText: white,
   neutralBorder: charcoal400,
 }

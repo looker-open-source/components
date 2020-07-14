@@ -72,7 +72,7 @@ exports[`ButtonGroup controlled 1`] = `
 }
 
 .c1 .c2 {
-  border: 1px solid #E8E5FF;
+  border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
   margin-right: 0.25rem;
 }
@@ -83,6 +83,10 @@ exports[`ButtonGroup controlled 1`] = `
 
 .c1 .c2[aria-pressed='false']:not(:hover) {
   background: #FFFFFF;
+}
+
+.c1 .c2[aria-pressed='true'] {
+  border-color: #E8E5FF;
 }
 
 .c1.wrapping {

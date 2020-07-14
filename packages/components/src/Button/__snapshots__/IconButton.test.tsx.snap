@@ -83,12 +83,12 @@ exports[`IconButton accepts color 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -123,9 +123,6 @@ exports[`IconButton accepts color 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -218,12 +215,12 @@ exports[`IconButton accepts events 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -258,9 +255,6 @@ exports[`IconButton accepts events 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -353,12 +347,12 @@ exports[`IconButton accepts events 2`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -393,9 +387,6 @@ exports[`IconButton accepts events 2`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -488,12 +479,12 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -528,9 +519,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -623,12 +611,12 @@ exports[`IconButton default 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -662,9 +650,6 @@ exports[`IconButton default 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -758,12 +743,12 @@ exports[`IconButton outline 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2:hover,
@@ -774,7 +759,7 @@ exports[`IconButton outline 1`] = `
 
 .c2:active,
 .c2.active {
-  border-color: #707781;
+  border-color: #7a818b;
 }
 
 .c2[disabled]:hover,
@@ -814,9 +799,6 @@ exports[`IconButton outline 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -909,12 +891,12 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -949,9 +931,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -1044,12 +1023,12 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #B2121F;
+  color: #dd223b;
 }
 
 .c2:active,
 .c2.active {
-  color: #990F14;
+  color: #df2f47;
 }
 
 .c2 svg {
@@ -1084,9 +1063,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Trash
-      </title>
       <path
         d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
         fill="currentColor"
@@ -1179,12 +1155,12 @@ exports[`IconButton resized 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  color: #707781;
+  color: #7a818b;
 }
 
 .c2:active,
 .c2.active {
-  color: #4C535B;
+  color: #828993;
 }
 
 .c2 svg {
@@ -1218,9 +1194,6 @@ exports[`IconButton resized 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
-      <title>
-        Favorite
-      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"

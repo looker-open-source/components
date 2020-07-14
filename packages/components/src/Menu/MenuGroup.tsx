@@ -45,11 +45,15 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
   label,
 }) => {
   const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
-  const { compact: contextCompact } = useContext(MenuItemContext)
+  const {
+    compact: contextCompact,
+    renderIconPlaceholder: contextRenderIconPlaceholder,
+  } = useContext(MenuItemContext)
 
   const context = {
     compact: compact === undefined ? contextCompact : compact,
-    renderIconPlaceholder,
+    renderIconPlaceholder:
+      contextRenderIconPlaceholder || renderIconPlaceholder,
     setRenderIconPlaceholder,
   }
 
@@ -65,5 +69,5 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
 
 export const MenuGroup = styled(MenuGroupLayout)`
   ${reset}
-  padding: ${({ theme: { space } }) => space.small} 0;
+  padding: ${({ theme: { space } }) => space.xsmall} 0;
 `

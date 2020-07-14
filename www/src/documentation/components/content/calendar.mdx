@@ -7,10 +7,16 @@ propsOf: Calendar
 import { MessageBar, Code } from '@looker/components'
 import { CalendarPropTable } from './demos'
 
+<MessageBar my="large" noActions>
+  Note: Calendar must be imported from its specific location rather than the
+  package root.
+</MessageBar>
+
+Import path: `@looker/components/lib/Calendar`
+
 <MessageBar noActions>
-  If you need an interactive date picker, please use{' '}
-  <a href="/components/forms/input-date">InputDate</a> or InputDateRange
-  instead.
+  If you need an interactive date picker, use{' '}
+  <a href="../forms/input-date">InputDate</a> or InputDateRange instead.
 </MessageBar>
 
 `Calendar` is a stateless component which renders a standard calendar month. It accepts a limited amount of props, and is the foundation of our more useful [`InputDate`](/components/forms/input-date) and `InputDateRange` components.

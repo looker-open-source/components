@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateFormat renders only date 1`] = `"Jan 25, 1988"`;
-
 exports[`DateTime renders 1`] = `"Jan 25, 1988, 11:58:03 AM"`;
 
 exports[`DateTimeFormat displays timeZone prop if one is passed 1`] = `"Jan 25, 1988, 5:28:03 PM GMT+5:30"`;
@@ -13,5 +11,3 @@ exports[`DateTimeFormat renders format prop long if one is passed 1`] = `"Januar
 exports[`DateTimeFormat renders format prop short if one is passed 1`] = `"01/25/1988, 11:58 AM"`;
 
 exports[`DateTimeFormat renders when passing specific locale 1`] = `"ينا 25, 1988, 11:58:03 ص"`;
-
-exports[`TimeFormat renders only time 1`] = `"11:58:03 AM"`;

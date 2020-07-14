@@ -27,20 +27,19 @@ import React, { FC, useState, SyntheticEvent } from 'react'
 import partial from 'lodash/partial'
 import {
   Button,
-  InputDate,
   Grid,
-  FieldDate,
   Fieldset,
-  LocaleCodes,
-  DateFormat,
   Popover,
-  Locales,
   FieldSelect,
   InputText,
   FieldSlider,
   Paragraph,
   PopoverContent,
 } from '@looker/components'
+import { Locales, LocaleCodes } from '@looker/components/src/utils/i18n'
+import { DateFormat } from '@looker/components/src/DateFormat'
+import { FieldDate } from '@looker/components/src/FieldDate'
+import { InputDate } from '@looker/components/src/InputDate'
 
 export const All = () => (
   <Fieldset>

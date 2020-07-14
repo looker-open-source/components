@@ -44,11 +44,6 @@ export const getPortalRoot = () => {
   }
 }
 
-/**
- * Legacy fallback until all existing call sites are updated
- */
-export const getModalRoot = getPortalRoot
-
 export const Portal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
