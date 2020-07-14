@@ -24,21 +24,42 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { useID } from '../utils'
+import { useFormContext } from '../Form'
+import { InputDate, InputDateProps } from '../InputDate'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+} from '../Form/Fields/Field'
+
+export interface FieldInputDateProps extends FieldProps, InputDateProps {}
+
+const FieldDateComponent = forwardRef(
+  (props: FieldInputDateProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputDate
+          {...omitFieldProps(props)}
+          aria-describedby={`${id}-describedby`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldDateComponent.displayName = 'FieldDateComponent'
+
+export const FieldDate = styled(FieldDateComponent)``

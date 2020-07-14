@@ -23,38 +23,11 @@
  SOFTWARE.
 
  */
+import { assertSnapshot } from '@looker/components-test-utils'
+import React from 'react'
+import { TimeFormat } from '../TimeFormat'
+const date = new Date('January 25, 1988 11:58:03')
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../..'
-import { InputDate, InputDateProps } from '../../Inputs/InputDate'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
-
-export interface FieldInputDateProps extends FieldProps, InputDateProps {}
-
-const FieldDateComponent = forwardRef(
-  (props: FieldInputDateProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const id = useID(props.id)
-    return (
-      <Field
-        {...pickFieldProps(props)}
-        id={id}
-        validationMessage={validationMessage}
-      >
-        <InputDate
-          {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
-          id={id}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
-    )
-  }
-)
-
-FieldDateComponent.displayName = 'FieldDateComponent'
-
-export const FieldDate = styled(FieldDateComponent)``
+test('TimeFormat renders only time', () => {
+  assertSnapshot(<TimeFormat>{date}</TimeFormat>)
+})

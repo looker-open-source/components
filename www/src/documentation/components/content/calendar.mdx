@@ -7,8 +7,15 @@ propsOf: Calendar
 import { MessageBar, Code } from '@looker/components'
 import { CalendarPropTable } from './demos'
 
+<MessageBar my="large" canDismiss={false}>
+  Note: Calendar must be imported from its specific location rather than the
+  package root.
+</MessageBar>
+
+Import path: `@looker/components/lib/Calendar`
+
 <MessageBar>
-  If you need an interactive date picker, please use{' '}
+  If you need an interactive date picker, use{' '}
   <a href="../forms/input-date">InputDate</a> or InputDateRange instead.
 </MessageBar>
 

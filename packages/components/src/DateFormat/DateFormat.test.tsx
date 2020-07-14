@@ -24,21 +24,11 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { assertSnapshot } from '@looker/components-test-utils'
+import React from 'react'
+import { DateFormat } from '../DateFormat'
+const date = new Date('January 25, 1988 11:58:03')
+
+test('DateFormat renders only date', () => {
+  assertSnapshot(<DateFormat>{date}</DateFormat>)
+})
