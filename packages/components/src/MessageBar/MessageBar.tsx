@@ -47,7 +47,7 @@ import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
 
-export type SupportedActionTypes = string | ReactElement<ButtonProps> | boolean
+export type SupportedActionTypes = string | ReactElement<ButtonProps>
 
 export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -82,6 +82,11 @@ export interface MessageBarProps
    * @default noop
    */
   onSecondaryClick?: () => void
+  /**
+   * Hide action buttons altogether
+   * @default false
+   */
+  noActions?: boolean
   className?: string
 }
 
@@ -118,17 +123,15 @@ function getPrimaryActionButton(
       // custom react component
       return () => primaryAction
     default:
-      return primaryAction
-        ? ({ intent, onClick, id }: DefaultDismissButtonProps) => (
-            <IconButton
-              id={id ? `${id}-iconButton` : undefined}
-              onClick={onClick}
-              icon="Close"
-              size="small"
-              label={`Dismiss ${getIntentLabel(intent)}`}
-            />
-          )
-        : NoopComponent
+      return ({ intent, onClick, id }: DefaultDismissButtonProps) => (
+        <IconButton
+          id={id ? `${id}-iconButton` : undefined}
+          onClick={onClick}
+          icon="Close"
+          size="small"
+          label={`Dismiss ${getIntentLabel(intent)}`}
+        />
+      )
   }
 }
 
@@ -171,8 +174,9 @@ const MessageBarLayout = forwardRef(
       visible: visibleProp,
       onPrimaryClick = noop,
       onSecondaryClick = noop,
-      primaryAction = true,
+      primaryAction,
       secondaryAction,
+      noActions = false,
       ...props
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
@@ -211,10 +215,16 @@ const MessageBarLayout = forwardRef(
       >
         <Status intent={intent} />
         <MessageBarContent>{children}</MessageBarContent>
-        <Space>
-          <SecondaryButton onClick={handleSecondaryClick} />
-          <PrimaryButton intent={intent} onClick={handlePrimaryClick} id={id} />
-        </Space>
+        {!noActions && (
+          <Space>
+            <SecondaryButton onClick={handleSecondaryClick} />
+            <PrimaryButton
+              intent={intent}
+              onClick={handlePrimaryClick}
+              id={id}
+            />
+          </Space>
+        )}
       </div>
     )
 

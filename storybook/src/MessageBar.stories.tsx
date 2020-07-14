@@ -52,7 +52,7 @@ export const Basic: FC = () => (
     <MessageBar intent="inform">Inform</MessageBar>
     <MessageBar intent="positive">Positive</MessageBar>
     <MessageBar intent="critical">Critical</MessageBar>
-    <MessageBar intent="critical" primaryAction={false}>
+    <MessageBar intent="critical" noActions>
       Cannot Be Dismissed
     </MessageBar>
   </SpaceVertical>
