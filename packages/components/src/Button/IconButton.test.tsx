@@ -32,182 +32,189 @@ import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
-test('IconButton default', () => {
-  assertSnapshot(
-    <IconButton id="test-iconButton" label="Test" icon="Favorite" />
-  )
-})
+describe('IconButton', () => {
+  test('default', () => {
+    assertSnapshot(
+      <IconButton id="test-iconButton" label="Test" icon="Favorite" />
+    )
+  })
 
-test('IconButton outline', () => {
-  assertSnapshot(
-    <IconButton id="test-iconButton" label="Test" icon="Favorite" outline />
-  )
-})
+  test('outline', () => {
+    assertSnapshot(
+      <IconButton id="test-iconButton" label="Test" icon="Favorite" outline />
+    )
+  })
 
-test('IconButton resized', () => {
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Test"
-      icon="Favorite"
-      size="large"
-    />
-  )
-})
+  test('resized', () => {
+    assertSnapshot(
+      <IconButton
+        id="test-iconButton"
+        label="Test"
+        icon="Favorite"
+        size="large"
+      />
+    )
+  })
 
-test('IconButton accepts color', () => {
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Test"
-      icon="Favorite"
-      color="critical"
-    />
-  )
-})
+  test('accepts color', () => {
+    assertSnapshot(
+      <IconButton
+        id="test-iconButton"
+        label="Test"
+        icon="Favorite"
+        color="critical"
+      />
+    )
+  })
 
-test('IconButton allows for ARIA attributes', () => {
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Test"
-      icon="Favorite"
-      aria-haspopup
-    />
-  )
-})
+  test('allows for ARIA attributes', () => {
+    assertSnapshot(
+      <IconButton
+        id="test-iconButton"
+        label="Test"
+        icon="Favorite"
+        aria-haspopup
+      />
+    )
+  })
 
-test('IconButton accepts events', () => {
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Test"
-      icon="Favorite"
-      onMouseEnter={noop}
-    />
-  )
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Test"
-      icon="Favorite"
-      onClick={noop}
-    />
-  )
-})
+  test('accepts events', () => {
+    assertSnapshot(
+      <IconButton
+        id="test-iconButton"
+        label="Test"
+        icon="Favorite"
+        onMouseEnter={noop}
+      />
+    )
+    assertSnapshot(
+      <IconButton
+        id="test-iconButton"
+        label="Test"
+        icon="Favorite"
+        onClick={noop}
+      />
+    )
+  })
 
-test('IconButton is a square by default', () => {
-  const { getByTitle } = renderWithTheme(
-    <IconButton id="test-iconButton" label="Gear" icon="Gear" size="large" />
-  )
+  xtest('is a square by default', () => {
+    const { getByTestId } = renderWithTheme(
+      <IconButton label="Settings" icon="Gear" size="large" />
+    )
 
-  expect(getByTitle('Gear')).toHaveStyle('width: 44')
-  expect(getByTitle('Gear')).toHaveStyle('height: 44')
-})
+    const image = getByTestId('icon-layout')
+    expect(image).toHaveStyle('width: 44')
+    expect(image).toHaveStyle('height: 44')
+  })
 
-test('IconButton renders focus ring on tab input but not on click', () => {
-  const { getByTitle } = renderWithTheme(
-    <>
+  xtest('renders focus ring on tab input but not on click', () => {
+    const { getByText } = renderWithTheme(
+      <>
+        <IconButton
+          id="test-iconButton"
+          label="My Favorite"
+          color="critical"
+          icon="Favorite"
+        />
+        <IconButton
+          id="test-iconButton"
+          label="Trash"
+          color="critical"
+          icon="Trash"
+        />
+      </>
+    )
+
+    const button = getByText('My Favorite')
+    fireEvent.click(button)
+
+    button &&
+      fireEvent.keyUp(button, {
+        charCode: 9,
+        code: 9,
+        key: 'Tab',
+      })
+
+    /**
+     * This test proves nothing. Doh!
+     */
+
+    assertSnapshot(
       <IconButton
         id="test-iconButton"
         label="Favorite"
         color="critical"
         icon="Favorite"
       />
+    )
+    assertSnapshot(
       <IconButton
         id="test-iconButton"
         label="Trash"
         color="critical"
         icon="Trash"
       />
-    </>
-  )
+    )
+  })
 
-  fireEvent.click(getByTitle('Favorite'))
-  const button = getByTitle('Favorite').closest('button')
+  test('has built-in tooltip', async () => {
+    const label = 'Mark as my Favorite'
+    const { getByText, getAllByText } = renderWithTheme(
+      <IconButton id="test-iconButton" label={label} icon="Favorite" />
+    )
 
-  button &&
-    fireEvent.keyUp(button, {
-      charCode: 9,
-      code: 9,
-      key: 'Tab',
-    })
+    const notTooltip = getAllByText(label)
+    expect(notTooltip).toHaveLength(1) // accessibility text
 
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Favorite"
-      color="critical"
-      icon="Favorite"
-    />
-  )
-  assertSnapshot(
-    <IconButton
-      id="test-iconButton"
-      label="Trash"
-      color="critical"
-      icon="Trash"
-    />
-  )
-})
+    const icon = getByText(label)
+    fireEvent.mouseOver(icon)
 
-test('IconButton has built-in tooltip', async () => {
-  const label = 'Mark as my Favorite'
-  const { getByTitle, getAllByText } = renderWithTheme(
-    <IconButton id="test-iconButton" label={label} icon="Favorite" />
-  )
+    const tooltip = getAllByText(label)
+    expect(tooltip).toHaveLength(2)
+    expect(tooltip[1]).toBeVisible()
 
-  const notTooltip = getAllByText(label)
-  expect(notTooltip).toHaveLength(1) // accessibility text
+    fireEvent.mouseOut(icon)
+    await waitForElementToBeRemoved(() => getAllByText(label)[1])
+  })
 
-  const icon = getByTitle('Favorite')
-  fireEvent.mouseOver(icon)
+  test('tooltipDisabled actually disables tooltip', () => {
+    const label = 'Mark as my Favorite'
+    const { getByText, container } = renderWithTheme(
+      <IconButton
+        id="test-iconButton"
+        tooltipDisabled
+        label={label}
+        icon="Favorite"
+      />
+    )
 
-  const tooltip = getAllByText(label)
-  expect(tooltip).toHaveLength(2)
-  expect(tooltip[1]).toBeVisible()
+    fireEvent.mouseOver(getByText(label))
 
-  fireEvent.mouseOut(icon)
-  await waitForElementToBeRemoved(() => getAllByText(label)[1])
-})
+    const notTooltip = container.querySelector('p') // Get Tooltip content
+    expect(notTooltip).toBeNull()
+  })
 
-test('IconButton tooltipDisabled actually disables tooltip', () => {
-  const label = 'Mark as my Favorite'
-  const { getByTitle, container } = renderWithTheme(
-    <IconButton
-      id="test-iconButton"
-      tooltipDisabled
-      label={label}
-      icon="Favorite"
-    />
-  )
+  test('built-in tooltip defers to outer tooltip', async () => {
+    const tooltip = 'Add to favorites'
+    const label = 'Mark as my Favorite'
+    const { getByText, getByRole } = renderWithTheme(
+      <Tooltip content={tooltip}>
+        <IconButton label={label} icon="Favorite" />
+      </Tooltip>
+    )
 
-  fireEvent.mouseOver(getByTitle('Favorite'))
+    const button = getByRole('button')
+    fireEvent.mouseOver(button)
 
-  const notTooltip = container.querySelector('p') // Get Tooltip content
-  expect(notTooltip).toBeNull()
-})
+    expect(getByText(tooltip)).toBeInTheDocument()
 
-test('IconButton built-in tooltip defers to outer tooltip', async () => {
-  const tooltip = 'Add to favorites'
-  const label = 'Mark as my Favorite'
-  const { getByText, getByTitle } = renderWithTheme(
-    <Tooltip content={tooltip}>
-      <IconButton label={label} icon="Favorite" />
-    </Tooltip>
-  )
+    const iconLabel = getByText(label)
+    expect(iconLabel).toBeInTheDocument()
 
-  const icon = getByTitle('Favorite')
-  fireEvent.mouseOver(icon)
+    const tooltipContents = getByText(tooltip) // Get all Tooltip contents
+    expect(tooltipContents).toBeVisible()
 
-  expect(getByText(tooltip)).toBeInTheDocument()
-
-  const iconLabel = getByText(label)
-  expect(iconLabel).toBeInTheDocument()
-
-  const tooltipContents = getByText(tooltip) // Get all Tooltip contents
-  expect(tooltipContents).toBeVisible()
-
-  fireEvent.mouseOut(icon)
-  await waitForElementToBeRemoved(() => getByText(tooltip))
+    fireEvent.mouseOut(button)
+    await waitForElementToBeRemoved(() => getByText(tooltip))
+  })
 })

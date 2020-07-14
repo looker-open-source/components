@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Icon` no longer outputs a `<title />` by default and Icon is marked with `aria-hide` unless a title is explicitly specified
 - `MenuGroup` labels improvements when using `compact`
 - `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`

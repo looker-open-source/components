@@ -149,7 +149,7 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('Dismiss Inform')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Circle Info').closest('div')).toHaveStyle({
+      expect(getByTitle('Inform').closest('div')).toHaveStyle({
         color: '#0087e1',
       })
     })
@@ -162,8 +162,9 @@ describe('MessageBar', () => {
       )
       // dismiss button
       expect(getByText('Dismiss Success')).toBeInTheDocument()
+
       // icon title and color
-      expect(getByTitle('Circle Check').closest('div')).toHaveStyle({
+      expect(getByTitle('Success').closest('div')).toHaveStyle({
         color: '#24b25f',
       })
     })

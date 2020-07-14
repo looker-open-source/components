@@ -31,6 +31,15 @@ export default {
   title: 'Icons',
 }
 
+export const Accessibility = () => (
+  <>
+    <Space around>
+      <Icon name="Trash" title="It's a trash can" />
+      <Icon name="TrashOutline" />
+    </Space>
+  </>
+)
+
 export const Sizes = () => (
   <SpaceVertical>
     <Space>

@@ -95,7 +95,7 @@ test('InputText with an error validation', () => {
   )
 
   expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-  expect(getByTitle('Circle Info')).toBeDefined()
+  expect(getByTitle('Validation Error')).toBeDefined()
 })
 
 test('InputText with a before & after', () => {
@@ -109,11 +109,16 @@ test('InputText with a before & after', () => {
 
 test('InputText with an iconBefore & iconAfter', () => {
   const { getByTitle } = renderWithTheme(
-    <InputText iconBefore="Favorite" iconAfter="Account" />
+    <InputText
+      iconBefore="Favorite"
+      iconBeforeTitle="Favorite Title"
+      iconAfter="Account"
+      iconAfterTitle="Account Title"
+    />
   )
 
-  expect(getByTitle('Favorite')).toBeInTheDocument()
-  expect(getByTitle('Account')).toBeInTheDocument()
+  expect(getByTitle('Favorite Title')).toBeInTheDocument()
+  expect(getByTitle('Account Title')).toBeInTheDocument()
 })
 
 test('InputText with redundant before/after props', () => {
