@@ -26,21 +26,18 @@
 
 import React from 'react'
 import { render } from 'react-dom'
+
 import { ComponentsProvider } from '@looker/components'
-import { GetMe } from './data/GetMe'
 
-const App = () => {
-  return (
-    <ComponentsProvider>
-      <GetMe />
-    </ComponentsProvider>
-  )
-}
+import { Paragraph } from '@looker/components/src/Text/Paragraph'
+// import { GetMe } from './data/GetMe'
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
+const App = () => (
+  <ComponentsProvider>
+    <Paragraph>Hello world</Paragraph>
+  </ComponentsProvider>
+)
+
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
 })

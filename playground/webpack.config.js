@@ -24,23 +24,23 @@
 
  */
 
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-const PATHS = {
-  app: path.join(__dirname, 'src/index.tsx'),
-}
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
   devServer: {
-    index: 'index.html',
-    proxy: {
-      '/api': 'http://localhost:3001',
-    },
+    port: 3000,
+    // proxy: {
+    //   '/api': 'http://localhost:3001',
+    // },
   },
   entry: {
-    app: PATHS.app,
+    app: './src/index.tsx',
   },
 
   mode: 'development',
@@ -57,10 +57,16 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'index_bundle.js',
-    path: path.join(__dirname, '/dist'),
+    filename: 'index-bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [new HtmlWebpackPlugin({ template: 'src/template.html' })],
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: './analyze.html',
+    }),
+    new HtmlWebPackPlugin({ template: 'src/template.html' }),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [new TsconfigPathsPlugin()],
