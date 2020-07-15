@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `InputSearch` clear button is larger and now focusable, divider and summary text spacing refined
+- `Icon` no longer outputs a `<title />` by default and Icon is marked with `aria-hide` unless a title is explicitly specified
+- `Calendar`, `FieldDate`, `FieldDateRange`, `InputDate` & `InputDateRange` now require "deep" imports
+  - E.g.: `Calendar` imports from `@looker/components/lib/Calendar`)
 - `MenuGroup` labels improvements when using `compact`
 - `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
@@ -33,10 +37,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tooltip` now renders in a `Portal`
 - `TabList` now supports distribute prop
 - `MessageBar`
-  - Sets `canDismiss` to true by default
+  - MessageBar is dismissable by default. Use prop `noActions` in place of `canDismiss={false}` to hide dismiss button.
   - Adds new `visible` prop to toggle display externally
 - `Tree` increased gap size between indicator and label to align with sibling `TreeItem`s with icons
 - `ButtonBase` removed negative margin from `iconMargins` helper function
+  - Accepts primary and secondary action overrides and callbacks
 
 ### Fixed
 

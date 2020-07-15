@@ -24,24 +24,17 @@
 
  */
 
-const startCase = require('lodash/startCase')
-
 function template(
   { template },
   opts,
   { imports, componentName, props, jsx, exports }
 ) {
-  const titleOverride = opts.titleProp
-    ? `const title = props.title || '${startCase(
-        opts.state.componentName.replace('Svg', '')
-      )}'
-      const titleId = props.titleId`
-    : ''
   const typeScriptTpl = template.smart({ plugins: ['typescript'] })
   return typeScriptTpl.ast`
     ${imports}
-    const ${componentName} = (props: React.SVGProps<SVGSVGElement> & { title?: string, titleId?: string }) => {
-      ${titleOverride}
+    import { GlyphProps } from '../../types'
+
+    const ${componentName} = ({ title, titleId, ...props }: GlyphProps) => {
       return ${jsx}
     }
     ${exports}
