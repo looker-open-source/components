@@ -15,24 +15,90 @@ The `<MessageBar />` component is used to alert the user with `warn`, `critical`
 </SpaceVertical>
 ```
 
-## canDismiss
+## Customizing the action buttons
 
-If you don't want the MessageBar to be clearable, you can remove the close button by setting `canDismiss` to false.
+`MessageBar` allows you to pass your own custom actions in place of the standard dismiss button. There are two such props, that are flexible in their use and output. In addition, there are two more props for tying into action clicks:
+
+- `primaryAction`: string or ReactElement
+- `onPrimaryClick`: () => void
+- `secondaryAction`: string or ReactElement
+- `onSecondaryClick`: () => void
+
+### Non-clearable MessageBar
+
+If you don't want the MessageBar to be clearable, you can hide all action buttons with the `noActions` prop.
 
 ```jsx
-<MessageBar canDismiss={false}>I can never be closed</MessageBar>
+<MessageBar noActions>I can't be closed</MessageBar>
+```
+
+### Custom string labels
+
+`MessageBar` allows you to pass your own custom actions in place of the standard dismiss button. It accepts two different props: `primaryButton` and `secondaryButton` which will both accept a custom JSX element.
+
+```jsx
+<MessageBar
+  primaryAction="Primary Action"
+  onPrimaryClick={() => alert('Primary Action')}
+  secondaryAction="Secondary Action"
+  onSecondaryClick={() => alert('Secondary Action')}
+>
+  Render some custom action labels!
+</MessageBar>
+```
+
+### Rendering custom components
+
+This is not the recommended happy path for using MessageBar, but it is available if you run into an edge case that is not supported by customizing the string label and click callbacks. Just keep in mind that if you decide to render custom components you will be responsible for allowing the MessageBar to be cleared.
+
+```jsx
+;() => {
+  const [visible, setVisible] = useState(true)
+  const handlePrimaryClick = () => {
+    alert('Primary Action')
+    setVisible(false)
+  }
+  const handleSecondaryClick = () => {
+    alert('Secondary Action')
+    setVisible(false)
+  }
+  return (
+    <MessageBar
+      primaryAction={
+        <IconButton
+          icon="Favorite"
+          label="Add to Favorites"
+          onClick={handlePrimaryClick}
+          color="key"
+        />
+      }
+      secondaryAction={
+        <IconButton
+          onClick={handleSecondaryClick}
+          color="neutral"
+          icon="Gear"
+          label="Settings"
+          color="neutral"
+        />
+      }
+      visible={visible}
+    >
+      Render some custom action components!
+    </MessageBar>
+  )
+}
 ```
 
 ## Controlled Component Pattern
 
-MessageBar will accept an `onDismiss` callback along with the `visible` boolean prop for use in the controlled component pattern. This can be useful if you wish to toggle display externally or provide an Undo option.
+To control MessageBar renderin externally, use `onPrimaryAction` in conjunction with the `visible` boolean prop. This can be useful if you wish to provide an Undo or other complex workflows.
 
 ```jsx
 ;() => {
   const { value, setOff, setOn } = useToggle(true)
   return (
     <>
-      <MessageBar intent="warn" onDismiss={setOff} visible={value}>
+      <MessageBar intent="warn" onPrimaryClick={setOff} visible={value}>
         I can be closed and reopened
       </MessageBar>
       {!value && (

@@ -34,8 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tooltip` now renders in a `Portal`
 - `TabList` now supports distribute prop
 - `MessageBar`
-  - Sets `canDismiss` to true by default
+  - MessageBar is dismissable by default. Use prop `noActions` in place of `canDismiss={false}` to hide dismiss button.
   - Adds new `visible` prop to toggle display externally
+  - Accepts primary and secondary action overrides and callbacks
 
 ### Fixed
 
