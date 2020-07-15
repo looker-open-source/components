@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { TreeGroup } from '.'
+import { TreeGroup, Tree, TreeItem } from '.'
 
 test('Renders label and children', () => {
   const { getByText } = renderWithTheme(
@@ -35,4 +35,20 @@ test('Renders label and children', () => {
 
   getByText('My Tree Group')
   getByText('My Children')
+})
+
+test('Applies color prop to child Trees and TreeItems', () => {
+  const { getByText } = renderWithTheme(
+    <TreeGroup label="My Tree Group" color="red">
+      <Tree label="My Tree" defaultOpen>
+        <TreeItem>TreeItem 1</TreeItem>
+      </Tree>
+      <TreeItem>TreeItem 2</TreeItem>
+    </TreeGroup>
+  )
+
+  expect(getByText('My Tree Group')).toHaveStyleRule('color: red')
+  expect(getByText('My Tree')).toHaveStyleRule('color: red')
+  expect(getByText('TreeItem 1')).toHaveStyleRule('color: red')
+  expect(getByText('TreeItem 2')).toHaveStyleRule('color: red')
 })

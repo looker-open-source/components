@@ -36,31 +36,32 @@ export interface ButtonIconProps {
 }
 
 export const iconMargins = (props: ButtonProps) => {
-  const spacing = { large: 0, small: 0 }
+  const spacing = { inner: 0, outer: 0 }
   switch (props.size) {
+    case 'xxsmall':
     case 'xsmall':
-      spacing.small = 4
-      spacing.large = 6
+      spacing.outer = 4
+      spacing.inner = 6
       break
     case 'small':
-      spacing.small = 8
-      spacing.large = 8
+      spacing.outer = 8
+      spacing.inner = 8
       break
     case 'large':
     default:
-      spacing.small = 12
-      spacing.large = 8
+      spacing.outer = 12
+      spacing.inner = 8
   }
 
   if (props.iconBefore) {
     return css`
-      margin-left: -${rem(spacing.small)};
-      margin-right: ${rem(spacing.large)};
+      margin-left: -${rem(spacing.outer)};
+      margin-right: ${rem(spacing.inner)};
     `
   } else if (props.iconAfter) {
     return css`
-      margin-left: ${rem(spacing.large)};
-      margin-right: -${rem(spacing.small)};
+      margin-left: ${rem(spacing.inner)};
+      margin-right: -${rem(spacing.outer)};
     `
   } else {
     return false

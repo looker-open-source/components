@@ -60,7 +60,6 @@ const PickerItem = () => {
     <IconButton
       icon="Sync"
       label="Pivot"
-      color="key"
       tooltipPlacement="top"
       onClick={(event) => {
         event.stopPropagation()
@@ -73,7 +72,7 @@ const PickerItem = () => {
   )
 
   const itemLabel = (
-    <Space between px="xxsmall">
+    <Space between>
       <span>Cost</span>
       {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
     </Space>
@@ -126,29 +125,37 @@ const PickerItem = () => {
   )
 }
 
-export const FieldPicker = () => (
-  <Tree
-    defaultOpen
-    detailAccessory
-    detail={
-      <ButtonTransparent
-        size="xxsmall"
-        iconBefore="Plus"
-        onClick={() => alert('Hello Mouse')}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            event.preventDefault()
-            alert('Hello Keyboard')
-          }
-        }}
-      >
-        Add
-      </ButtonTransparent>
-    }
-    label="Custom Fields"
+const addButton = (
+  <ButtonTransparent
+    size="xxsmall"
+    iconBefore="Plus"
+    onClick={() => alert('Hello Mouse')}
+    onKeyDown={(event) => {
+      if (event.keyCode === 13) {
+        event.preventDefault()
+        alert('Hello Keyboard')
+      }
+    }}
   >
+    Add
+  </ButtonTransparent>
+)
+
+export const FieldPicker = () => (
+  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
       <PickerItem />
+      <PickerItem />
+      <PickerItem />
+      <PickerItem />
+    </TreeGroup>
+    <TreeGroup label="MEASURES" color="keyFocus">
+      <Tree visuallyAsBranch label="Hello">
+        <PickerItem />
+      </Tree>
+      <TreeItem color="orange" icon="FieldString">
+        Name
+      </TreeItem>
       <PickerItem />
       <PickerItem />
       <PickerItem />

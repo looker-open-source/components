@@ -81,7 +81,7 @@ export interface TreeProps extends AccordionProps {
 }
 
 const indicatorProps: AccordionIndicatorProps = {
-  indicatorGap: 'xxsmall',
+  indicatorGap: 'xsmall',
   indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
   indicatorPosition: 'left',
   indicatorSize: 'small',
@@ -97,6 +97,7 @@ const TreeLayout: FC<TreeProps> = ({
   detailAccessory: propsDetailAccessory,
   icon,
   label,
+  className,
   visuallyAsBranch,
   ...restProps
 }) => {
@@ -148,25 +149,28 @@ const TreeLayout: FC<TreeProps> = ({
         detailHoverDisclosure: hasDetailHoverDisclosure,
       }}
     >
-      <TreeStyle border={hasBorder} depth={depth} hovered={isHovered}>
+      <TreeStyle
+        className={className}
+        border={hasBorder}
+        depth={depth}
+        hovered={isHovered}
+      >
         {innerAccordion}
       </TreeStyle>
     </TreeContext.Provider>
   )
 }
 
-export const Tree = styled(TreeLayout)``
-
 const generateTreeBorder = (depth: number, theme: Theme) => {
   const {
     colors,
-    space: { xxsmall, small },
+    space: { xxsmall, xsmall, small },
   } = theme
 
   const itemBorderSize = '1px'
   const itemPaddingSize = xxsmall
   const indicatorIconSize = small
-  const indicatorGapSize = xxsmall
+  const indicatorGapSize = xsmall
   const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
   const borderSpacer = `(${small} / 2) + ${depthSize}`
 
@@ -182,12 +186,12 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
 
 const generateIndent = (depth: number, theme: Theme) => {
   const {
-    space: { xxsmall, small },
+    space: { xxsmall, xsmall, small },
   } = theme
 
   const itemPaddingSize = xxsmall
   const indicatorIconSize = small
-  const indicatorGapSize = xxsmall
+  const indicatorGapSize = xsmall
   const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
 
   return css`
@@ -202,6 +206,8 @@ interface TreeStyleProps {
 }
 
 export const TreeStyle = styled.div<TreeStyleProps>`
+  color: ${({ theme }) => theme.colors.text2};
+
   & > ${Accordion} {
     & > ${AccordionContent} {
       ${({ border, depth, theme }) =>
@@ -233,3 +239,5 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 `
+
+export const Tree = styled(TreeLayout)``

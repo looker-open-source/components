@@ -27,6 +27,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
+import { AccordionDisclosure } from '../Accordion'
+import { TreeItemLabel } from './TreeItem'
 
 export interface TreeGroupProps extends TextColorProps {
   /**
@@ -47,15 +49,16 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
   </div>
 )
 
-export const TreeGroup = styled(TreeGroupLayout)`
-  ${color}
-`
-
 export const TreeGroupLabel = styled.div`
   /* Border is here to get proper alignment with Tree and TreeItem text */
   border: 1px transparent solid;
-  color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xxsmall}`};
+`
+
+export const TreeGroup = styled(TreeGroupLayout)`
+  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
+    ${color}
+  }
 `
