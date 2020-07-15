@@ -36,9 +36,11 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import {
-  SpacingSizes,
-  uiTransparencyBlend,
+  color,
   CompatibleHTMLProps,
+  SpacingSizes,
+  TextColorProps,
+  uiTransparencyBlend,
 } from '@looker/design-tokens'
 import Omit from 'lodash/omit'
 import { Space, FlexItem } from '../Layout'
@@ -51,7 +53,9 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
 
-export interface TreeItemProps extends CompatibleHTMLProps<HTMLDivElement> {
+export interface TreeItemProps
+  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
+    TextColorProps {
   className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
@@ -103,6 +107,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isFocusVisible, setFocusVisible] = useState(false)
 
   const { onBlur, onClick, onKeyDown, onKeyUp, ...restProps } = Omit(props, [
+    'color',
     'detail',
     'detailAccessory',
     'detailHoverDisclosure',
@@ -203,11 +208,11 @@ const PrimaryIcon = styled(Icon)`
   opacity: 0.5;
 `
 
-interface TreeItemSpace {
+interface TreeItemSpaceProps {
   focusVisible: boolean
 }
 
-export const TreeItemSpace = styled(Space)<TreeItemSpace>`
+export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
   align-items: center;
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
@@ -240,4 +245,12 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
     detailAccessory && theme.space.xxsmall};
 `
 
-export const TreeItem = styled(TreeItemLayout)``
+export const TreeItem = styled(TreeItemLayout)`
+  /*
+    Note: first-child pseudo-selector is here to give this selector
+    more specificity over TreeGroup.
+  */
+  ${TreeItemLabel}:first-child {
+    ${color}
+  }
+`

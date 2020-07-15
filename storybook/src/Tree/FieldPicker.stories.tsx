@@ -153,6 +153,9 @@ export const FieldPicker = () => (
       <Tree visuallyAsBranch label="Hello">
         <PickerItem />
       </Tree>
+      <TreeItem color="orange" icon="FieldString">
+        Name
+      </TreeItem>
       <PickerItem />
       <PickerItem />
       <PickerItem />
