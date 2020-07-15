@@ -99,7 +99,7 @@ exports[`DialogHeader Snapshot 1`] = `
 
 .c5:active,
 .c5.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c5 svg {

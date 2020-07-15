@@ -88,7 +88,7 @@ exports[`IconButton accepts color 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #df2f47;
+  color: #ad1a2e;
 }
 
 .c2 svg {
@@ -220,7 +220,7 @@ exports[`IconButton accepts events 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2 svg {
@@ -352,7 +352,7 @@ exports[`IconButton accepts events 2`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2 svg {
@@ -484,7 +484,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2 svg {
@@ -616,7 +616,7 @@ exports[`IconButton default 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2 svg {
@@ -748,7 +748,7 @@ exports[`IconButton outline 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2:hover,
@@ -1160,7 +1160,7 @@ exports[`IconButton resized 1`] = `
 
 .c2:active,
 .c2.active {
-  color: #828993;
+  color: #5f656e;
 }
 
 .c2 svg {
