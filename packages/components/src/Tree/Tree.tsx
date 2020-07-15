@@ -97,6 +97,7 @@ const TreeLayout: FC<TreeProps> = ({
   detailAccessory: propsDetailAccessory,
   icon,
   label,
+  className,
   visuallyAsBranch,
   ...restProps
 }) => {
@@ -148,7 +149,12 @@ const TreeLayout: FC<TreeProps> = ({
         detailHoverDisclosure: hasDetailHoverDisclosure,
       }}
     >
-      <TreeStyle border={hasBorder} depth={depth} hovered={isHovered}>
+      <TreeStyle
+        className={className}
+        border={hasBorder}
+        depth={depth}
+        hovered={isHovered}
+      >
         {innerAccordion}
       </TreeStyle>
     </TreeContext.Provider>
@@ -200,6 +206,8 @@ interface TreeStyleProps {
 }
 
 export const TreeStyle = styled.div<TreeStyleProps>`
+  color: ${({ theme }) => theme.colors.text2};
+
   & > ${Accordion} {
     & > ${AccordionContent} {
       ${({ border, depth, theme }) =>
@@ -213,10 +221,6 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       padding: ${({ theme }) => theme.space.xxsmall};
       ${({ depth, theme }) => generateIndent(depth, theme)}
     }
-  }
-
-  ${Accordion} {
-    color: ${({ theme }) => theme.colors.text2};
   }
 
   ${TreeItemInner} {
