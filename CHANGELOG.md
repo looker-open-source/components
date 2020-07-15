@@ -5,52 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.6] - 2020-07-15
+
+- Storybook is now deployed to `https://components.looker.com/storybook`
 
 ### Added
 
-- Storybook is now deployed to `https://components.looker.com/storybook`
-- `undefinedCoalesce` util function
+- `iconSizes` style function includes `xxsmall` case
 - `Link` now supports explicit `underline` & `keyColor` properties
-- `FactCheck` icon
 - `TreeItem` and `Tree`
   - Altered style defaults
 - `TreeGroup`
   - Added additional test case for color override behavior
-- `iconSizes` style function includes `xxsmall` case
+- `undefinedCoalesce` util function
+- Icons: `FactCheck`
 
 ### Changed
 
-- `InputSearch` clear button is larger and now focusable, divider and summary text spacing refined
-- `Icon` no longer outputs a `<title />` by default and Icon is marked with `aria-hide` unless a title is explicitly specified
-- `Calendar`, `FieldDate`, `FieldDateRange`, `InputDate` & `InputDateRange` now require "deep" imports
-  - E.g.: `Calendar` imports from `@looker/components/lib/Calendar`)
-- `MenuGroup` labels improvements when using `compact`
-- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
 - `Accordion`
   - Updated padding props to affect `AccordionDisclosure` and `AccordionContent` containers rather than parent `Accordion` container
-- `AccordionDisclosure`
-  - Removed default `height: 100%`
-- `Tree` and `TreeItem`
-  - Updated docs and test suite
-- `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
-- `Tooltip` now renders in a `Portal`
-- `TabList` now supports distribute prop
+  - `AccordionDisclosure` removed default `height: 100%`
+- `ButtonBase` removed negative margin from `iconMargins` helper function
+- `Calendar`, `FieldDate`, `FieldDateRange`, `InputDate` & `InputDateRange` now require "deep" imports
+  - E.g.: `Calendar` imports from `@looker/components/lib/Calendar`)
+- `Icon` no longer outputs a `<title />` by default and Icon is marked with `aria-hide` unless a title is explicitly specified
+- `InputSearch` clear button is larger and now focusable, divider and summary text spacing refined
+- `Menu` now has a new focus style for `MenuItems` as well as updateing sizing
+- `MenuGroup` labels improvements when using `compact`
 - `MessageBar`
   - MessageBar is dismissable by default. Use prop `noActions` in place of `canDismiss={false}` to hide dismiss button.
   - Adds new `visible` prop to toggle display externally
-- `Tree` increased gap size between indicator and label to align with sibling `TreeItem`s with icons
-- `ButtonBase` removed negative margin from `iconMargins` helper function
   - Accepts primary and secondary action overrides and callbacks
+- `TabList` now supports distribute prop
+- `theme.zIndexFloor` now defaults to `1` instead of `undefined` (this helps with compatibility due to Firefox's stacking order eccentricities)
+- `Tooltip` now renders in a `Portal`
+- `Tree` and `TreeItem` updated docs and test suite
+- `Tree` increased gap size between indicator and label to align with sibling `TreeItem`s with icons
 
 ### Fixed
 
+- `MenuGroup` now includes icon placeholder spacing if higher `MenuItemContext` has `renderIconPlaceholder === true`
 - `Select`/`SelectMulti` keyboard navigation when filtering and going from > 100 to < 100 options
 - `SelectMulti` with `freeInput` not saving input value on tab key
 - `SelectMulti` list not closing on blur
 - `TreeGroup` properly overrides color of child `TreeItem` labels and `Tree` labels
-- `MenuGroup` now includes icon placeholder spacing if higher `MenuItemContext` has `renderIconPlaceholder === true`
-
 
 ### Removed
 
