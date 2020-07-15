@@ -61,21 +61,15 @@ export interface UIColors {
 
 export interface TextColors {
   /**
-   * Extra-dark Text
-   * Used for: Inputs
-   * @default charcoal900
-   */
-  text0: string
-  /**
-   * Primary Text
-   * Used for: Headers, Labels, Dashboard tile titles
-   * @default charcoal800
+   * TODO - Should be defined
+   * Used for: TBD
+   * @default charcoal400
    */
   text1: string
   /**
-   * Secondary Text
-   * Used for: Headers, Labels, Dashboard tile titles
-   * @default charcoal700
+   * Reduced emphasis text
+   * Used for: Help text, meta information
+   * @default charcoal500
    */
   text2: string
   /**
@@ -85,21 +79,15 @@ export interface TextColors {
    */
   text3: string
   /**
-   * Reduced emphasis text
-   * Used for: Help text, meta information
-   * @default charcoal500
+   * Secondary Text
+   * Used for: Headers, Labels, Dashboard tile titles
+   * @default charcoal700
    */
   text4: string
   /**
-   * TODO - Should be defined
-   * Used for: TBD
-   * @default charcoal400
+   * Primary Text
+   * Used for: Headers, Labels, Dashboard tile titles
+   * @default charcoal800
    */
   text5: string
-  /**
-   * DEPRECATE - Should be defined
-   * Used for: TBD
-   * @default charcoal300
-   */
-  text6: string
 }

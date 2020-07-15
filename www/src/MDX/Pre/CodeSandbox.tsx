@@ -209,7 +209,7 @@ export const ToggleCodeButton: FC<ToggleButtonProps> = ({
 
 const ActionButton = styled(IconButton)<ActionProps>`
   color: ${({ theme, editorIsVisible }) =>
-    editorIsVisible ? theme.colors.text6 : theme.colors.text4};
+    editorIsVisible ? theme.colors.text1 : theme.colors.text2};
 `
 
 const ActionLayout = styled.div<ActionProps>`

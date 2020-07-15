@@ -83,7 +83,7 @@ export const InputSearchControlsInternal = forwardRef(
       >
         {summary && (
           <Text
-            color="text5"
+            color="text1"
             fontSize="small"
             style={{ whiteSpace: 'nowrap' }}
             pr="xsmall"

@@ -61,13 +61,11 @@ export const fallbackBlends: BlendColors = {
   ui3: charcoal300,
   ui4: charcoal400,
   ui5: charcoal800,
-  text0: charcoal900,
-  text1: charcoal800,
-  text2: charcoal700,
+  text1: charcoal400,
+  text2: charcoal500,
   text3: charcoal600,
-  text4: charcoal500,
-  text5: charcoal400,
-  text6: charcoal300,
+  text4: charcoal700,
+  text5: charcoal800,
 }
 
 export const fallbackStateful: StatefulColors = {

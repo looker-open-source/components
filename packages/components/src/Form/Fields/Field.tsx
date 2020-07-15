@@ -115,7 +115,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   const { fieldsHideLabel } = useContext(FieldsetContext)
 
   const fieldDescription = description && (
-    <Paragraph mt="xsmall" fontSize="xsmall" color="text4">
+    <Paragraph mt="xsmall" fontSize="xsmall" color="text2">
       {description}
     </Paragraph>
   )

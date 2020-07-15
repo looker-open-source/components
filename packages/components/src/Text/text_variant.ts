@@ -46,7 +46,7 @@ export const textVariant = variant({
       color: 'critical',
     },
     default: {
-      color: 'text1',
+      color: 'text5',
     },
     inverted: {
       color: 'inverseOn',
@@ -55,10 +55,10 @@ export const textVariant = variant({
       color: 'positive',
     },
     secondary: {
-      color: 'text4',
+      color: 'text2',
     },
     subdued: {
-      color: 'text5',
+      color: 'text1',
     },
   },
 })

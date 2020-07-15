@@ -58,7 +58,7 @@ export const MenuItemLayoutGrid = styled.div``
 
 export const MenuItemLayout = styled(MenuItemWrapper)`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text1};
+  color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   flex-wrap: wrap;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
@@ -126,7 +126,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   `}
 
   ${Icon} {
-    color: ${({ theme: { colors } }) => colors.text6};
+    color: ${({ theme: { colors } }) => colors.text1};
     transition: color
       ${({ theme: { easings, transitions } }) =>
         `${transitions.durationQuick} ${easings.ease}`};
@@ -135,10 +135,10 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   :hover,
   &[aria-current='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
-    color: ${({ theme: { colors } }) => colors.text0};
+    color: ${({ theme: { colors } }) => colors.text5};
 
     ${Icon} {
-      color: ${({ theme: { colors } }) => colors.text5};
+      color: ${({ theme: { colors } }) => colors.text1};
     }
   }
 
@@ -147,7 +147,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   }
 
   &[disabled] {
-    color: ${({ theme: { colors } }) => colors.text5};
+    color: ${({ theme: { colors } }) => colors.text1};
 
     button,
     a {
@@ -156,10 +156,10 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
 
     &:hover {
       background: ${({ theme: { colors } }) => colors.background};
-      color: ${({ theme: { colors } }) => colors.text5};
+      color: ${({ theme: { colors } }) => colors.text1};
 
       ${Icon} {
-        color: ${({ theme: { colors } }) => colors.text6};
+        color: ${({ theme: { colors } }) => colors.text1};
       }
     }
   }

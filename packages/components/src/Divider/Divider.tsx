@@ -58,7 +58,7 @@ const appearanceVariant = variant({
       bg: 'ui2',
     },
     onDark: {
-      bg: 'text4',
+      bg: 'text2',
     },
   },
 })

@@ -107,7 +107,7 @@ export const Controlled = () => {
       <AccordionDisclosure>
         <Space between>
           Some Information
-          <Icon color="text4" name="CircleQuestionOutline" size={20} />
+          <Icon color="text2" name="CircleQuestionOutline" size={20} />
         </Space>
       </AccordionDisclosure>
       <AccordionContent>

@@ -140,7 +140,7 @@ export const Checkbox = styled(CheckboxLayout)`
   input:disabled + ${FauxCheckbox} {
     background: ${({ theme }) => theme.colors.ui1};
     border-color: ${({ theme }) => theme.colors.ui2};
-    color: ${({ theme }) => theme.colors.text5};
+    color: ${({ theme }) => theme.colors.text1};
   }
 
   input:disabled:not(:checked) + ${FauxCheckbox} {

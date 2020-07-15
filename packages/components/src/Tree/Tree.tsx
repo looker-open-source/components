@@ -206,7 +206,7 @@ interface TreeStyleProps {
 }
 
 export const TreeStyle = styled.div<TreeStyleProps>`
-  color: ${({ theme }) => theme.colors.text2};
+  color: ${({ theme }) => theme.colors.text4};
 
   & > ${Accordion} {
     & > ${AccordionContent} {

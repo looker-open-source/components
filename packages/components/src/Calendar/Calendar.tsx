@@ -154,7 +154,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     align-items: center;
     border: 1px solid transparent;
     color: ${({ theme: { colors }, disabled }) =>
-      disabled ? colors.text4 : colors.text2};
+      disabled ? colors.text2 : colors.text4};
     cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
     display: grid;
     justify-items: center;
@@ -163,7 +163,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     transition: background-color 110ms linear;
 
     &.DayPicker-Day--outside {
-      color: ${({ theme: { colors } }) => colors.text6};
+      color: ${({ theme: { colors } }) => colors.text1};
     }
 
     &--today {
