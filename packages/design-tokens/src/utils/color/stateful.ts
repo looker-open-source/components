@@ -24,7 +24,7 @@
 
  */
 
-import { lighten } from 'polished'
+import { darken, lighten } from 'polished'
 import {
   StatefulColors,
   StatefulColorChoices,
@@ -35,7 +35,7 @@ import { mixScaledColors } from './blend'
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
 export const generateInteractive = (color: string) => lighten(0.04, color)
-export const generatePressed = (color: string) => lighten(0.07, color)
+export const generatePressed = (color: string) => darken(0.07, color)
 
 const generateStatefulColor = (
   background: string,

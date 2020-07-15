@@ -39,12 +39,41 @@ export const Basic = () => {
         <IconButton icon="Favorite" size="medium" label="Favorite" />
         <IconButton icon="Favorite" size="large" label="Favorite" />
       </Space>
-
-      <Heading>Sizes</Heading>
+      <Heading>States</Heading>
       <Space>
         <IconButton icon="Favorite" label="Favorite" />
         <IconButton icon="Favorite" label="Favorite" className="hover" />
         <IconButton icon="Favorite" label="Favorite" className="active" />
+      </Space>
+      <Space>
+        <IconButton color="key" icon="Favorite" label="Favorite" />
+        <IconButton
+          color="key"
+          icon="Favorite"
+          label="Favorite"
+          className="hover"
+        />
+        <IconButton
+          color="key"
+          icon="Favorite"
+          label="Favorite"
+          className="active"
+        />
+      </Space>{' '}
+      <Space>
+        <IconButton color="critical" icon="Favorite" label="Favorite" />
+        <IconButton
+          color="critical"
+          icon="Favorite"
+          label="Favorite"
+          className="hover"
+        />
+        <IconButton
+          color="critical"
+          icon="Favorite"
+          label="Favorite"
+          className="active"
+        />
       </Space>
     </>
   )
