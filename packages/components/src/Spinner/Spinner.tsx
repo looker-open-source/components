@@ -50,7 +50,7 @@ export interface SpinnerProps
 }
 
 const SpinnerFactory: FC<SpinnerProps> = (props) => {
-  const { color = 'text0', markers = 13, markerRadius, speed = 1000 } = props
+  const { color = 'text5', markers = 13, markerRadius, speed = 1000 } = props
   return (
     <Style {...omit(props, 'color', 'markers', 'markersRadius', 'speed')}>
       {range(markers).map((i) => (

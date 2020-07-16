@@ -51,7 +51,7 @@ const PropsCode = styled(Code).attrs({ fontSize: 'small' })`
 const Layout = styled(Flex).attrs({ mb: 'large', mt: 'small', py: 'small' })`
   border-top: 1px solid ${(props) => props.theme.colors.ui2};
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
-  color: ${(props) => props.theme.colors.text4};
+  color: ${(props) => props.theme.colors.text2};
   font-size: ${(props) => props.theme.fontSizes.small};
 `
 

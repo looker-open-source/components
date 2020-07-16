@@ -416,7 +416,7 @@ InputDateRange.displayName = 'InputDateRange'
 
 const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
   color: ${({ theme, hasInputValues }) =>
-    hasInputValues ? theme.colors.text3 : theme.colors.text6};
+    hasInputValues ? theme.colors.text3 : theme.colors.text1};
 `
 
 const InputDateRangeWrapper = styled.div`

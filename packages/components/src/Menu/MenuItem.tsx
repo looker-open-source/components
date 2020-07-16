@@ -108,7 +108,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       name={icon}
       mr="xsmall"
       size={24 / (compact ? 1.25 : 1)}
-      color="text6"
+      color="text1"
     />
   ) : (
     renderIconPlaceholder && (
@@ -144,7 +144,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
 export const MenuItem = styled(MenuItemInternal)``
 
 const Detail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text6};
+  color: ${({ theme: { colors } }) => colors.text1};
   margin-left: auto;
   margin-right: ${({ theme: { space } }) => space.medium};
   padding-left: ${({ theme: { space } }) => space.large};

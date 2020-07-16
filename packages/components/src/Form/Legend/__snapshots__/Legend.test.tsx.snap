@@ -10,7 +10,7 @@ exports[`A Legend 1`] = `
 
 <legend
   className="c0"
-  color="text2"
+  color="text4"
   fontSize="medium"
   fontWeight="semiBold"
 >

@@ -62,6 +62,6 @@ const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
   top: -1px;
 
   ${Heading} {
-    color: ${({ theme }) => theme.colors.text2};
+    color: ${({ theme }) => theme.colors.text4};
   }
 `

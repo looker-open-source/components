@@ -62,7 +62,7 @@ const TabStyle = styled.button<TabProps>`
     props.selected ? props.theme.colors.key : 'transparent'};
   border-radius: 0;
   color: ${(props) =>
-    props.selected ? props.theme.colors.text1 : props.theme.colors.text4};
+    props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
   cursor: pointer;
 
   & + & {
@@ -71,7 +71,7 @@ const TabStyle = styled.button<TabProps>`
 
   &:active {
     border-bottom-color: ${(props) =>
-      props.selected ? props.theme.colors.key : props.theme.colors.text4};
+      props.selected ? props.theme.colors.key : props.theme.colors.text2};
   }
 
   &:active,
@@ -94,7 +94,7 @@ const TabStyle = styled.button<TabProps>`
 
   &:disabled {
     border-bottom-color: transparent;
-    color: ${({ theme }) => theme.colors.text6};
+    color: ${({ theme }) => theme.colors.text1};
     cursor: default;
   }
 `

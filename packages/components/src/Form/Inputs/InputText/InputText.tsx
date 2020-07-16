@@ -237,7 +237,7 @@ export const inputTextFocus = css`
 `
 export const inputTextDisabled = css`
   background: ${(props) => props.theme.colors.ui1};
-  color: ${(props) => props.theme.colors.text5};
+  color: ${(props) => props.theme.colors.text1};
   &:hover {
     border-color: ${(props) => props.theme.colors.ui2};
   }
@@ -248,7 +248,7 @@ export const inputHeight = '36px'
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
   align-items: center;
-  color: ${(props) => props.theme.colors.text5};
+  color: ${(props) => props.theme.colors.text1};
   display: flex;
   height: 100%;
   pointer-events: none;
@@ -275,7 +275,7 @@ export const inputCSS = css`
   background: ${({ theme: { colors } }) => colors.field};
   border: 1px solid ${({ theme: { colors } }) => colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
-  color: ${({ theme: { colors } }) => colors.text2};
+  color: ${({ theme: { colors } }) => colors.text4};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 

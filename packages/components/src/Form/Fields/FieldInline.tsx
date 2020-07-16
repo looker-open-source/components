@@ -81,7 +81,7 @@ export const FieldInline = styled(FieldInlineLayout)`
 
   ${Label} {
     align-items: center;
-    color: ${({ theme, disabled }) => disabled && theme.colors.text5};
+    color: ${({ theme, disabled }) => disabled && theme.colors.text1};
     display: flex;
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;

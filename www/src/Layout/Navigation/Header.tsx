@@ -41,7 +41,7 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
       <Icon
         name="LookerLogo"
         alt="Looker"
-        color="text1"
+        color="text5"
         style={{ height: '26px', width: '60px' }}
       />
       <DividerVertical ml="medium" mr="small" />
@@ -61,8 +61,8 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
 
 const Header = styled(HeaderJsx)`
   align-items: center;
-  display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
+  display: flex;
   height: ${({ height }) => height};
   padding: 0 ${({ theme: { space } }) => `${space.large} ${space.xxsmall}`};
 `

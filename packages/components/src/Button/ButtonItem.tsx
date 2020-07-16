@@ -113,7 +113,7 @@ export const ButtonItem = styled(ButtonLayout)`
   }
 
   &[disabled] {
-    color: ${(props) => props.theme.colors.text5};
+    color: ${(props) => props.theme.colors.text1};
     cursor: default;
   }
 

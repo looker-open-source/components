@@ -81,7 +81,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           key="list-caret"
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
           size={18}
-          color={disabled ? 'text6' : 'text4'}
+          color={disabled ? 'text1' : 'text2'}
           mr="xsmall"
         />
       ),

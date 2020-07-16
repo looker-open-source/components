@@ -148,7 +148,7 @@ Surface.defaultProps = {
   backgroundColor: 'background',
   borderRadius: 'medium',
   boxShadow: 3,
-  color: 'text1',
+  color: 'text5',
   maxHeight: '90vh',
   maxWidth: ['90vw', '90vw', '600px'],
 }

@@ -218,7 +218,7 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${comboboxOptionStyle}
 `
 export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
-  color: 'text2',
+  color: 'text4',
   display: 'flex',
   fontSize: 'small',
   px: 'xsmall',

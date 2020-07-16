@@ -79,7 +79,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       padding: ${(props) => `${props.theme.space.xxsmall} 0`};
 
       h2 {
-        color: ${(props) => props.theme.colors.text4};
+        color: ${(props) => props.theme.colors.text2};
         font-size: ${(props) => props.theme.fontSizes.xsmall};
         text-transform: uppercase;
       }
