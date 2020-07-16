@@ -29,6 +29,7 @@ import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { IconNames, IconSize } from '../Icon'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import { useID } from '../utils'
 import { AccordionContext, accordionContextDefaults } from './AccordionContext'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
@@ -114,19 +115,24 @@ export interface AccordionProps
     SimpleLayoutProps {
   children: ReactNode
   className?: string
+  /**
+   * A unique ID primarily used to supply aria-controls and aria-labelledby to child AccordionDisclosure and child AccordionContent
+   * Note: This will be auto-generated if left undefined
+   */
+  id?: string
 }
 
 const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
-  defaultOpen,
+  id,
   indicatorGap,
   indicatorSize,
   indicatorIcons,
   indicatorPosition,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(!!defaultOpen)
+  const [isOpen, setIsOpen] = useState(!!props.defaultOpen)
 
   if (
     (props.isOpen && props.toggleOpen === undefined) ||
@@ -137,8 +143,12 @@ const AccordionLayout: FC<AccordionProps> = ({
       'Please provide both an isOpen prop and a toggleOpen prop if you wish to control a Accordion state. If you would like an uncontrolled Accordion, avoid passing in either prop into your Accordion element.'
     )
 
+  const accordionId = useID(id)
+
   const context = {
     ...accordionContextDefaults,
+    accordionContentId: `${accordionId}-content`,
+    accordionDisclosureId: `${accordionId}-disclosure`,
     indicatorGap: indicatorGap || accordionContextDefaults.indicatorGap,
     indicatorIcons: indicatorIcons || accordionContextDefaults.indicatorIcons,
     indicatorPosition:
@@ -152,7 +162,9 @@ const AccordionLayout: FC<AccordionProps> = ({
 
   return (
     <AccordionContext.Provider value={context}>
-      <div className={className}>{children}</div>
+      <div className={className} id={accordionId}>
+        {children}
+      </div>
     </AccordionContext.Provider>
   )
 }

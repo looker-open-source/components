@@ -33,11 +33,17 @@ import React, {
   useState,
 } from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
+import {
+  TypographyProps,
+  typography,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 
-export interface AccordionDisclosureProps extends TypographyProps {
+export interface AccordionDisclosureProps
+  extends TypographyProps,
+    CompatibleHTMLProps<HTMLButtonElement> {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLButtonElement>
@@ -46,9 +52,15 @@ export interface AccordionDisclosureProps extends TypographyProps {
 export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
   ({ children, className }, ref) => {
     const [isFocusVisible, setFocusVisible] = useState(false)
-    const { isOpen, toggleOpen, onClose, onOpen, ...props } = useContext(
-      AccordionContext
-    )
+    const {
+      accordionContentId,
+      isOpen,
+      toggleOpen,
+      onClose,
+      onOpen,
+      ...props
+    } = useContext(AccordionContext)
+
     const handleOpen = () => onOpen && onOpen()
     const handleClose = () => onClose && onClose()
     const handleToggle = () => {
@@ -78,6 +90,8 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
 
     return (
       <AccordionDisclosureStyle
+        aria-controls={accordionContentId}
+        aria-expanded={isOpen}
         className={className}
         focusVisible={isFocusVisible}
         onBlur={handleBlur}

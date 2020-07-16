@@ -37,9 +37,17 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
   children,
   className,
 }) => {
-  const { isOpen } = useContext(AccordionContext)
+  const { accordionDisclosureId, isOpen } = useContext(AccordionContext)
 
-  return isOpen ? <div className={className}>{children}</div> : null
+  return isOpen ? (
+    <div
+      aria-labelledby={accordionDisclosureId}
+      className={className}
+      role="region"
+    >
+      {children}
+    </div>
+  ) : null
 }
 
 export const AccordionContent = styled(AccordionContentLayout)``
