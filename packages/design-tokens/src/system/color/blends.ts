@@ -61,8 +61,7 @@ export interface UIColors {
 
 export interface TextColors {
   /**
-   * TODO - Should be defined
-   * Used for: TBD
+   * Lowest contrast text in UI, disabled states, placeholder text, for non-essential text only
    * @default charcoal400
    */
   text1: string

@@ -40,7 +40,6 @@ import {
   charcoal600,
   charcoal700,
   charcoal800,
-  charcoal900,
   purple000,
   purple100,
   purple300,
