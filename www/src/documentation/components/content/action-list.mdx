@@ -362,7 +362,9 @@ A header checkbox is included next to your `<ActionList/>`'s header when the `ca
 
 Clicking on this header checkbox will trigger the callback passed into the `<ActionList/>`'s `onSelectAll` prop.
 
-**Note:** If you would like to remove the header checkbox, but retain the row checkboxes, pass in `{ all: false }` into your `canSelect` prop.
+If you would like to remove the header checkbox, but retain the row checkboxes, pass in `{ all: false }` into your `canSelect` prop.
+
+For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `ActionList`.
 
 ```jsx
 ;() => {

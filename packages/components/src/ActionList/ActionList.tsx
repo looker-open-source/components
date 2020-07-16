@@ -27,6 +27,7 @@
 import styled from 'styled-components'
 import React, { FC, ReactNode, useState } from 'react'
 import { MixedBoolean } from '../Form'
+import { useID } from '../utils/useID'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -108,6 +109,11 @@ export interface ActionListProps {
    * @default false
    */
   onClickRowSelect?: boolean
+  /**
+   * ID of the header row. Used for the aria-describedby of the select all checkbox.
+   * Note: If undefined, this will be auto-generated
+   */
+  headerRowId?: string
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
@@ -121,6 +127,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   onSelect,
   onSelectAll,
   onSort,
+  headerRowId,
 }) => {
   const [allItems, setAllItems] = useState<string[]>([])
 
@@ -139,10 +146,12 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const handleSelectAll = onSelectAll ? () => onSelectAll() : undefined
 
+  const guaranteedId = useID(headerRowId)
+
   const context = {
     addItemToAllItems,
     allSelected,
-    canSelect: !!canSelect,
+    canSelect,
     columns,
     itemsSelected,
     onClickRowSelect,
@@ -153,11 +162,11 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const actionListHeader =
     header === true ? (
-      <ActionListHeader>
+      <ActionListHeader id={guaranteedId}>
         {generateActionListHeaderColumns(columns)}
       </ActionListHeader>
     ) : header === false ? null : (
-      <ActionListHeader>{header}</ActionListHeader>
+      <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
     )
 
   return (

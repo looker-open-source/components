@@ -110,6 +110,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 
   return (
     <ActionListRow
+      id={id}
       className={className}
       secondary={itemActions}
       ref={actionListItemRef}

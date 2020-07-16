@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-#### Changed
+### Changed
 
 - `theme` "pressed" colors are more discernable from other stateful colors
 - `Accordion` added accessibility improvements
@@ -17,9 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reduced number of steps:
     - `text0` is now `text5` (consolidated the former `text0` & `text1`)
     - `text6` is now `text1` (consolidated the former `text6` & `text5`)
+- `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
+  - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
 
 ### Fixed
+
 - Fix a few typos in the `Field` documentation
+- `ActionList` fixed bug where passing object (with single attribute "all") into `canSelect` results in select all checkbox regardless of "all" setting
 
 ## [0.9.6] - 2020-07-15
 
