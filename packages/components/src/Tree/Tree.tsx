@@ -101,7 +101,7 @@ const TreeLayout: FC<TreeProps> = ({
   visuallyAsBranch,
   ...restProps
 }) => {
-  const disclosureRef = useRef<HTMLDivElement>(null)
+  const disclosureRef = useRef<HTMLButtonElement>(null)
   const [isHovered] = useHovered(disclosureRef)
 
   const treeContext = useContext(TreeContext)

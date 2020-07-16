@@ -40,7 +40,7 @@ import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
 export interface AccordionDisclosureProps extends TypographyProps {
   className?: string
   focusVisible?: boolean
-  ref?: Ref<HTMLDivElement>
+  ref?: Ref<HTMLButtonElement>
 }
 
 export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
@@ -56,13 +56,13 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
       toggleOpen(!isOpen)
     }
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
       if (event.keyCode === 13) {
         handleToggle()
       }
     }
 
-    const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
       if (event.keyCode === 9 && event.currentTarget === event.target)
         setFocusVisible(true)
     }
@@ -97,8 +97,15 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
 
 AccordionDisclosureLayout.displayName = 'AccordionDisclosureLayout'
 
-export const AccordionDisclosureStyle = styled.div<{ focusVisible: boolean }>`
+interface AccordionDisclosureStyleProps {
+  focusVisible: boolean
+}
+
+export const AccordionDisclosureStyle = styled.button<
+  AccordionDisclosureStyleProps
+>`
   align-items: center;
+  background-color: transparent;
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
@@ -106,6 +113,7 @@ export const AccordionDisclosureStyle = styled.div<{ focusVisible: boolean }>`
   display: flex;
   outline: none;
   padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
+  text-align: left;
   width: 100%;
 `
 
