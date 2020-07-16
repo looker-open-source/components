@@ -74,6 +74,7 @@ export const Basic = () => {
       onSelectAll={onSelectAll}
       itemsSelected={selections}
       columns={columns}
+      headerRowId="all-pdts"
     >
       {items}
     </ActionList>

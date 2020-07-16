@@ -33,6 +33,7 @@ import { ActionListContext } from '../ActionListContext'
 const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   children,
   className,
+  id,
 }) => {
   const { allSelected, canSelect, onSelectAll } = useContext(ActionListContext)
 
@@ -40,6 +41,7 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 
   return (
     <ActionListRow
+      id={id}
       className={className}
       hasCheckbox={hasCheckbox}
       onChange={onSelectAll}

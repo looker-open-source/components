@@ -29,17 +29,19 @@ import styled from 'styled-components'
 import { Checkbox, MixedBoolean } from '../Form'
 
 export interface ActionListCheckboxProps {
+  id?: string
   checked?: MixedBoolean
   disabled?: boolean
   onChange?: () => void
   className?: string
 }
 
-export const checkListProps = ['checked', 'disabled', 'onChange']
+export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
 
 export const actionListCheckboxWidth = '2.75rem'
 
 const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
+  id,
   onChange,
   checked,
   disabled,
@@ -56,9 +58,12 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
     }
   }
 
+  console.log(id)
+
   return (
     <div onClick={handleOnChange} className={className}>
       <Checkbox
+        aria-describedby={id}
         disabled={disabled}
         checked={checked}
         onChange={handleOnChange}
