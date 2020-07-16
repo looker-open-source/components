@@ -45,7 +45,7 @@ const ButtonComponents = {
 }
 
 export const All = () => (
-  <SpaceVertical gap="xlarge">
+  <SpaceVertical>
     <Key />
     <Neutral />
     <Critical />

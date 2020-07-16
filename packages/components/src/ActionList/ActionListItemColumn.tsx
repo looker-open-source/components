@@ -62,7 +62,7 @@ const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
 export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
   ActionListItemColumnProps
 >`
-  color: ${({ theme }) => theme.colors.text2};
+  color: ${({ theme }) => theme.colors.text4};
   display: ${({ indicator }) => indicator && 'flex'};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   overflow: hidden;

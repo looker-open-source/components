@@ -36,12 +36,12 @@ import {
   yellow300,
 } from './tokens/color/palette'
 
-const { inverse, text5, text6 } = theme.colors
+const { inverse, text1 } = theme.colors
 
 export const prismTheme: PrismTheme = {
   plain: {
     backgroundColor: inverse,
-    color: text6,
+    color: text1,
     fontFamily: theme.fonts.code,
     fontSize: theme.fontSizes.small,
   },
@@ -54,7 +54,7 @@ export const prismTheme: PrismTheme = {
     },
     {
       style: {
-        color: text5,
+        color: text1,
       },
       types: ['comment'],
     },

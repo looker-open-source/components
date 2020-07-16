@@ -39,7 +39,7 @@ const Style = styled(ListItem).attrs({
   py: 'xsmall',
 })`
   align-items: center;
-  color: ${(props) => props.theme.colors.text4};
+  color: ${(props) => props.theme.colors.text2};
   display: flex;
 
   svg {

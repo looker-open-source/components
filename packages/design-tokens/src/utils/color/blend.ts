@@ -113,12 +113,10 @@ export const generateBlendColors = (colors: SpecifiableColors): BlendColors => {
     ui4: tintOrShadeUiColor(uiBlends[3], background),
     ui5: tintOrShadeUiColor(uiBlends[4], background),
 
-    text0: mixColors(textBlends[5], text, background),
-    text1: mixColors(textBlends[5], text, background),
-    text2: mixColors(textBlends[4], text, background),
-    text3: mixColors(textBlends[3], text, background),
-    text4: mixColors(textBlends[2], text, background),
-    text5: mixColors(textBlends[1], text, background),
-    text6: mixColors(textBlends[0], text, background),
+    text1: mixColors(textBlends[0], text, background),
+    text2: mixColors(textBlends[1], text, background),
+    text3: mixColors(textBlends[2], text, background),
+    text4: mixColors(textBlends[3], text, background),
+    text5: mixColors(textBlends[4], text, background),
   }
 }

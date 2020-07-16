@@ -516,7 +516,7 @@ export function usePopover({
           borderColor="ui2"
           borderRadius="medium"
           boxShadow={3}
-          color="text1"
+          color="text5"
         >
           <Box
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}

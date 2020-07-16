@@ -86,7 +86,7 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.text5};
+    color: ${({ theme }) => theme.colors.text1};
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {

@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Change
 
-- `theme` "pressed" colors are more discernable from other stateful colors
+- `theme.colors.*Pressed` colors are more discernable from other stateful colors
+- `theme.colors.textX` restructured
+  - `text1-5` now go from lightest to darkest to match `ui1-5`
+  - Reduced number of steps:
+    - `text0` is now `text5` (consolidated the former `text0` & `text1`)
+    - `text6` is now `text1` (consolidated the former `text6` & `text5`)
 
 ## [0.9.6] - 2020-07-15
 

@@ -41,7 +41,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 
 .c1:disabled {
   border-bottom-color: transparent;
-  color: #C1C6CC;
+  color: #939BA5;
   cursor: default;
 }
 
@@ -106,7 +106,7 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 
 .c1:disabled {
   border-bottom-color: transparent;
-  color: #C1C6CC;
+  color: #939BA5;
   cursor: default;
 }
 

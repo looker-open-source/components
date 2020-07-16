@@ -90,7 +90,7 @@ InlineTextAreaLayout.displayName = 'InlineTextAreaLayout'
 const Input = styled.textarea<InlineTextAreaProps>`
   background: transparent;
   border: none;
-  caret-color: ${({ theme }) => theme.colors.text0};
+  caret-color: ${({ theme }) => theme.colors.text5};
   color: transparent;
   font: inherit;
   height: 100%;
@@ -111,7 +111,7 @@ interface VisibleTextProps {
 
 const VisibleText = styled.div<VisibleTextProps>`
   color: ${({ displayValue, theme }) =>
-    displayValue ? 'inherit' : theme.colors.text5};
+    displayValue ? 'inherit' : theme.colors.text1};
 `
 
 export const InlineTextArea = styled(InlineTextAreaLayout)`

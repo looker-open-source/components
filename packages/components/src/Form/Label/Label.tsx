@@ -37,7 +37,7 @@ export interface LabelProps
 
 export const Label = styled.label<LabelProps>`
 ${reset}
-  color: ${({ theme: { colors } }) => colors.text2};
+  color: ${({ theme: { colors } }) => colors.text4};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
 `
