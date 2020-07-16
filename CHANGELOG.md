@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-#### Change
+#### Changed
 
 - `theme` "pressed" colors are more discernable from other stateful colors
+- `Accordion` added accessibility improvements
 
 ## [0.9.6] - 2020-07-15
 
