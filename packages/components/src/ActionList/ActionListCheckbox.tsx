@@ -58,8 +58,6 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
     }
   }
 
-  console.log(id)
-
   return (
     <div onClick={handleOnChange} className={className}>
       <Checkbox

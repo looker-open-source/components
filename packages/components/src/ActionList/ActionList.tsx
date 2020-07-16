@@ -151,7 +151,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   const context = {
     addItemToAllItems,
     allSelected,
-    canSelect: !!canSelect,
+    canSelect,
     columns,
     itemsSelected,
     onClickRowSelect,
