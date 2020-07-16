@@ -37,12 +37,15 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
   children,
   className,
 }) => {
-  const { accordionDisclosureId, isOpen } = useContext(AccordionContext)
+  const { accordionContentId, accordionDisclosureId, isOpen } = useContext(
+    AccordionContext
+  )
 
   return isOpen ? (
     <div
       aria-labelledby={accordionDisclosureId}
       className={className}
+      id={accordionContentId}
       role="region"
     >
       {children}

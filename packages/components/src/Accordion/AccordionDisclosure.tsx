@@ -54,6 +54,7 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
     const [isFocusVisible, setFocusVisible] = useState(false)
     const {
       accordionContentId,
+      accordionDisclosureId,
       isOpen,
       toggleOpen,
       onClose,
@@ -94,6 +95,7 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
         aria-expanded={isOpen}
         className={className}
         focusVisible={isFocusVisible}
+        id={accordionDisclosureId}
         onBlur={handleBlur}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
