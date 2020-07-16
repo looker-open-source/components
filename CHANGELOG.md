@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-#### Change
+### Change
 
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
 - `theme.colors.textX` restructured
@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reduced number of steps:
     - `text0` is now `text5` (consolidated the former `text0` & `text1`)
     - `text6` is now `text1` (consolidated the former `text6` & `text5`)
+
+### Fixed
+- Fix a few typos in the `Field` documentation
 
 ## [0.9.6] - 2020-07-15
 
