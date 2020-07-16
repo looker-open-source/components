@@ -10,6 +10,8 @@ import { Props } from '../../../Shared'
 
 The `<Accordion>` component in particular acts as a wrapper and context provider for its companion components, `<AccordionDisclosure>` and `<AccordionContent>`.
 
+Use the `id` prop to set the ID of the parent `Accordion` div. In addition, IDs will be auto-generated for any child `AccordionDisclosure` and `AccordionContent` elements based on `Accordion`'s ID.
+
 Use the `onClose` and `onOpen` props if you would like to trigger callbacks on `<Accordion>` open or close.
 
 If you want your `<Accordion>` open by default, use the `defaultOpen` prop.

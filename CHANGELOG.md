@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `theme` "pressed" colors are more discernable from other stateful colors
+- `Accordion` added accessibility improvements
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
 - `theme.colors.textX` restructured
   - `text1-5` now go from lightest to darkest to match `ui1-5`
