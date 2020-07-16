@@ -98,7 +98,7 @@ There are two "inline" variations:
         options={options}
       />
       <FieldCheckboxGroup
-        description="Validation message and requited"
+        description="Validation message and required"
         label="Cheeses default layout"
         name="group1"
         options={options}
@@ -109,7 +109,7 @@ There are two "inline" variations:
         }}
       />
       <FieldCheckboxGroup
-        description="Validation message and requited"
+        description="Validation message and required"
         inputsInline
         label="Cheeses inline inputs layout"
         name="group1"
@@ -155,7 +155,7 @@ There are two "inline" variations:
 }
 ```
 
-## FielsChips
+## FieldChips
 
 The `<FieldChips />` component is composed of an `<InputChips />` component and a `<Label />` component. Using `<FieldChips />` allows for rendering validation messages, label, details and description. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
 
@@ -345,7 +345,7 @@ There are two "inline" variations:
         options={options}
       />
       <FieldRadioGroup
-        description="Validation message and requited"
+        description="Validation message and required"
         label="Cheeses default layout"
         name="group1"
         options={options}
@@ -356,7 +356,7 @@ There are two "inline" variations:
         }}
       />
       <FieldRadioGroup
-        description="Validation message and requited"
+        description="Validation message and required"
         inputsInline
         label="Cheeses inline inputs layout"
         name="group1"
@@ -494,7 +494,7 @@ The `<FieldSelectMulti />` component is composed of an `<SelectMulti />` compone
 
 ### FieldSelectMulti props
 
-`<FieldSelectMulti />` can be set as `desabled` and also as `required`. Aslo the width of the component will be 100% based of the parent and sibiling components. Using `Grid`can be helpful to position the compoents.
+`<FieldSelectMulti />` can be set as `desabled` and also as `required`. Aslo the width of the component will be 100% based of the parent and sibling components. Using `Grid` can be helpful to position the components.
 
 ```jsx
 <Grid>
@@ -675,12 +675,7 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
     setOn(e.target.checked)
   }
   return (
-    <FieldToggleSwitch
-      label="Development Mode"
-      inline
-      onChange={onChange}
-      on={on}
-    />
+    <FieldToggleSwitch label="Development Mode" onChange={onChange} on={on} />
   )
 }
 ```
