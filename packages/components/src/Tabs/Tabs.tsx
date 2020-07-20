@@ -52,7 +52,7 @@ export function useTabs(props?: UseTabsProps) {
         setSelectedIndex(index)
       }
     },
-    selectedIndex,
+    selectedIndex: isControlled ? props?.controlledIndex : selectedIndex,
   }
 }
 
@@ -79,7 +79,8 @@ export const Tabs: FC<TabsProps> = ({
   /* eslint-enable no-console */
 
   const tabs = useTabs({
-    defaultIndex: controlledIndex || defaultIndex,
+    controlledIndex,
+    defaultIndex,
     isControlled,
     onChange,
   })
@@ -88,5 +89,5 @@ export const Tabs: FC<TabsProps> = ({
     return cloneElement(child, tabs)
   })
 
-  return <React.Fragment key={controlledIndex}>{clonedChildren}</React.Fragment>
+  return <>{clonedChildren}</>
 }

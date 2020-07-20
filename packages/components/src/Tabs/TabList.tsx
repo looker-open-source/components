@@ -31,7 +31,7 @@ import { Tab } from '.'
 export interface TabListProps {
   children: JSX.Element[]
   selectedIndex?: number
-  onSelectTab?: (index: any) => void
+  onSelectTab?: (index: number) => void
   className?: string
   distribute?: boolean
 }
@@ -67,9 +67,9 @@ const distributeTabsCSS = css`
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
     margin-left: ${(props) => props.theme.space.none};
-    padding: ${(props) => props.theme.space.none}
-      ${(props) => props.theme.space.medium}
-      ${(props) => props.theme.space.xsmall};
+    padding: ${(props) => props.theme.space.none};
+    ${(props) => props.theme.space.medium};
+    ${(props) => props.theme.space.xsmall};
   }
 `
 

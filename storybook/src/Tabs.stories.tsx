@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   SpaceVertical,
   Tab,
@@ -49,18 +49,14 @@ export default {
 export const Basic: FC = () => (
   <Tabs>
     <TabList>
-      <Tab>Alice Blue</Tab>
-      <Tab>Aqua</Tab>
+      <Tab>Yellow Green</Tab>
+      <Tab>Dark Magenta</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
         <div
           style={{
-<<<<<<< HEAD
-            backgroundColor: '#F0F8FF',
-=======
-            backgroundColor: '#ADD8E6',
->>>>>>> ead308fd1... first test still not fixed
+            backgroundColor: '#9ACD32',
             height: '350px',
           }}
         />
@@ -68,12 +64,8 @@ export const Basic: FC = () => (
       <TabPanel>
         <div
           style={{
-<<<<<<< HEAD
-            backgroundColor: '#00FFFF',
-=======
-            backgroundColor: '#FF7F50',
->>>>>>> ead308fd1... first test still not fixed
-            height: '200px',
+            backgroundColor: '#8B008B',
+            height: '350px',
           }}
         />
       </TabPanel>
@@ -193,7 +185,7 @@ export const Controlled: FC = () => {
 
   const switchTab = (tab: string | number) => {
     // eslint-disable-next-line no-console
-    console.log('new tab', tab)
+    console.log('tab', tab)
     setTab(tab)
   }
 
@@ -214,9 +206,4 @@ export const Controlled: FC = () => {
       </Tabs>
     </>
   )
-}
-
-export default {
-  component: Basic,
-  title: 'Tabs',
 }
