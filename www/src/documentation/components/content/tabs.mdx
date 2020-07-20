@@ -117,22 +117,32 @@ Using the distribute prop on `TabList` will equally distributed each `Tab` in th
 </Tabs>
 ```
 
-## Tab using Hooks
+## Controlled Tab
 
 ```jsx
 ;() => {
-  const tab = useTabs()
+  const [currentTabIndex, setTab] = useState(0)
+
+  const switchTab = (tab) => {
+    setTab(tab)
+  }
+
   return (
-    <div>
-      <TabList {...tab}>
-        <Tab>Tab Hook 1</Tab>
-        <Tab>Tab Hook 2</Tab>
-      </TabList>
-      <TabPanels {...tab}>
-        <TabPanel>1 this is the panel of tab hook 1</TabPanel>
-        <TabPanel>2 this is the panel of tab hook 2</TabPanel>
-      </TabPanels>
-    </div>
+    <>
+      <button onClick={() => switchTab(0)}>Go to A</button>
+      <button onClick={() => switchTab(1)}>Go to B</button>
+
+      <Tabs index={currentTabIndex} onChange={switchTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
   )
 }
 ```

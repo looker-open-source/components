@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Tab now can be controlled under the Tab components
 - Fix a few typos in the `Field` documentation
 - `ActionList` fixed bug where passing object (with single attribute "all") into `canSelect` results in select all checkbox regardless of "all" setting
 

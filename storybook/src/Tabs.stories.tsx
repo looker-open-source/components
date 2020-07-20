@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   SpaceVertical,
   Tab,
@@ -38,6 +38,7 @@ export const All = () => (
   <SpaceVertical>
     <Basic />
     <DistributeTabs />
+    <ControlledTab />
   </SpaceVertical>
 )
 
@@ -180,3 +181,29 @@ export const DistributeTabs: FC = () => (
     </TabPanels>
   </Tabs>
 )
+
+export const ControlledTab: FC = () => {
+  const [currentTabIndex, setTab] = useState<string | number>(0)
+
+  const switchTab = (tab: string | number) => {
+    setTab(tab)
+  }
+
+  return (
+    <>
+      <button onClick={() => switchTab(0)}>Go to A</button>
+      <button onClick={() => switchTab(1)}>Go to B</button>
+
+      <Tabs index={currentTabIndex} onChange={switchTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
+}
