@@ -22,7 +22,7 @@
     "@popperjs/core": "^2.4.4",
     "d3-color": "^1.4.1",
     "d3-hsv": "^0.1.0",
-    "date-fns": "^2.14.0",
+    "date-fns": "^2.15.0",
     "date-fns-tz": "^1.0.10",
     "focus-trap": "^5.1.0",
     "lodash": "^4.17.19",
