@@ -123,16 +123,12 @@ Using the distribute prop on `TabList` will equally distributed each `Tab` in th
 ;() => {
   const [currentTabIndex, setTab] = useState(0)
 
-  const switchTab = (tab) => {
-    setTab(tab)
-  }
-
   return (
     <>
-      <button onClick={() => switchTab(0)}>Go to A</button>
-      <button onClick={() => switchTab(1)}>Go to B</button>
+      <button onClick={() => setTab(0)}>Go to A</button>
+      <button onClick={() => setTab(1)}>Go to B</button>
 
-      <Tabs index={currentTabIndex} onChange={switchTab}>
+      <Tabs index={currentTabIndex} onChange={setTab}>
         <TabList>
           <Tab>A</Tab>
           <Tab>B</Tab>

@@ -32,6 +32,7 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  Space,
 } from '@looker/components'
 
 export const All = () => (
@@ -183,18 +184,15 @@ export const DistributeTabs: FC = () => (
 )
 
 export const ControlledTab: FC = () => {
-  const [currentTabIndex, setTab] = useState<string | number>(0)
-
-  const switchTab = (tab: string | number) => {
-    setTab(tab)
-  }
+  const [currentTabIndex, setTab] = useState(0)
 
   return (
     <>
-      <button onClick={() => switchTab(0)}>Go to A</button>
-      <button onClick={() => switchTab(1)}>Go to B</button>
-
-      <Tabs index={currentTabIndex} onChange={switchTab}>
+      <Space>
+        <button onClick={() => setTab(0)}>Go to A</button>
+        <button onClick={() => setTab(1)}>Go to B</button>
+      </Space>
+      <Tabs index={currentTabIndex} onChange={setTab}>
         <TabList>
           <Tab>A</Tab>
           <Tab>B</Tab>
