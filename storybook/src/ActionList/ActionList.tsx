@@ -28,10 +28,12 @@ import React, { useState } from 'react'
 import {
   ActionList,
   ActionListManager,
-  useActionListSortManager,
   ActionListItemAction,
-  ActionListDatum,
   ActionListColumns,
+  doDefaultActionListSort,
+  ActionListItem,
+  ActionListItemColumn,
+  ActionListData,
 } from '@looker/components'
 import { columns, data } from './data'
 import { items } from './items'
@@ -117,24 +119,27 @@ export const Manager = () => {
 }
 
 export const Sortable = () => {
-  const data = [
+  const [data, setData] = useState<ActionListData>([
     {
       id: 1,
-      name: 'Lloyd Tabb',
+      name: 'Gorgonzola',
     },
     {
       id: 2,
-      name: 'Ben Porterfield',
+      name: 'Cheddar',
     },
-  ]
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ])
 
-  // Note: column objects must be tracked using state since their sortDirection properties will change
-  // depending on which column is sorted
-  const columns: ActionListColumns = [
+  const [columns, setColumns] = useState<ActionListColumns>([
     {
       canSort: true,
       id: 'id',
       primaryKey: true,
+      sortDirection: 'asc',
       title: 'ID',
       type: 'number',
       widthPercent: 20,
@@ -146,20 +151,42 @@ export const Sortable = () => {
       type: 'string',
       widthPercent: 80,
     },
-  ]
+  ])
 
-  const generateActions = (item: ActionListDatum) => {
-    return (
+  const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
+    const {
+      columns: sortedColumns,
+      data: sortedData,
+    } = doDefaultActionListSort(data, columns, id, sortDirection)
+    setData(sortedData)
+    setColumns(sortedColumns)
+  }
+
+  const items = data.map(({ id, name }) => {
+    const actions = (
       <>
-        <ActionListItemAction onClick={() => alert(item.id)}>
-          Check id
-        </ActionListItemAction>
-        <ActionListItemAction onClick={() => alert(item.name)}>
-          Check name
+        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+          Select Cheese
         </ActionListItemAction>
       </>
     )
-  }
 
-  return useActionListSortManager(data, columns, generateActions)
+    return (
+      <ActionListItem
+        id={String(id)}
+        key={id}
+        onClick={() => alert('Row clicked')}
+        actions={actions}
+      >
+        <ActionListItemColumn>{id}</ActionListItemColumn>
+        <ActionListItemColumn>{name}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  })
+
+  return (
+    <ActionList onSort={onSort} columns={columns}>
+      {items}
+    </ActionList>
+  )
 }
