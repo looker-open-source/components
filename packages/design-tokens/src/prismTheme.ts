@@ -34,7 +34,7 @@ import {
   red300,
   yellow200,
   yellow300,
-} from './tokens/color/palette'
+} from './legacy/palette'
 
 const { inverse, text1 } = theme.colors
 

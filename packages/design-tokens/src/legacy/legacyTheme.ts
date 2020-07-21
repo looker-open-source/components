@@ -24,6 +24,23 @@
 
  */
 
+import { Colors } from '../system'
+import { theme } from '../theme'
+import * as palette from './palette'
+
+export interface LegacyColors extends Colors {
+  palette: Palette
+}
+
+export interface LegacyTheme {
+  colors: LegacyColors
+}
+
+export const legacyTheme: LegacyTheme = {
+  ...theme,
+  colors: { palette, ...theme.colors },
+}
+
 export interface Palette {
   /** White color for theme. */
   white: string
