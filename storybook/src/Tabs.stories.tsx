@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   SpaceVertical,
   Tab,
@@ -32,12 +32,14 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  Space,
 } from '@looker/components'
 
 export const All = () => (
   <SpaceVertical>
     <Basic />
     <DistributeTabs />
+    <ControlledTab />
   </SpaceVertical>
 )
 
@@ -180,3 +182,26 @@ export const DistributeTabs: FC = () => (
     </TabPanels>
   </Tabs>
 )
+
+export const ControlledTab: FC = () => {
+  const [currentTabIndex, setTab] = useState(0)
+
+  return (
+    <>
+      <Space>
+        <button onClick={() => setTab(0)}>Go to A</button>
+        <button onClick={() => setTab(1)}>Go to B</button>
+      </Space>
+      <Tabs index={currentTabIndex} onChange={setTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
+}
