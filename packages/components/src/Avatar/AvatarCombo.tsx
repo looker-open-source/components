@@ -26,6 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { omitStyledProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import { Icon } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
@@ -53,10 +54,10 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   color,
   icon = 'User',
   user,
-  className,
+  ...props
 }) => {
   return (
-    <div className={className}>
+    <div {...omitStyledProps(props)}>
       {user ? (
         <AvatarUser user={user} color={color} />
       ) : (
