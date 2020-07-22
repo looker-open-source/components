@@ -28,7 +28,6 @@
     "lodash": "^4.17.19",
     "polished": "^3.6.5",
     "react-day-picker": "^7.4.8",
-    "react-hotkeys": "^2.0.0",
     "react-hotkeys-hook": "^2.1.4",
     "react-resize-detector": "^5.0.4",
     "react-transition-group": "^4.3.0",
