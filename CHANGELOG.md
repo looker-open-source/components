@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `text6` is now `text1` (consolidated the former `text6` & `text5`)
 - `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
   - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
+- Replaced react-hotkeys with a lighter weight package (`MenuList`, `Surface`, and `OverlaySurface`)
 
 ### Fixed
 
