@@ -55,30 +55,32 @@ const TabListLayout: FC<TabListProps> = ({
   return <div className={className}>{clonedChildren}</div>
 }
 
-const distributeTabsCSS = css`
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(${(props) => props.theme.space.xlarge}, auto)
-  );
+const defaultLayoutCSS = css`
+  ${Tab} {
+    min-width: 3rem;
+  }
+
+  ${Tab} + ${Tab} {
+    margin-left: ${(props) => props.theme.space.xlarge};
+  }
+`
+
+const distributeCSS = css`
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, max-content);
+
+  ${Tab} {
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    padding: ${({ theme: { space } }) =>
+      `${space.none} ${space.medium} ${space.xsmall}`};
+  }
 `
 
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
-  column-gap: ${(props) => props.theme.space.medium};
-  display: grid;
-  grid-gap: ${(props) => props.theme.space.none};
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(${(props) => props.theme.space.xlarge}, auto)
-  );
-  writing-mode: vertical-lr;
+  overflow-x: scroll;
+  white-space: nowrap;
 
-  ${Tab} {
-    font-size: ${(props) => props.theme.fontSizes.xsmall};
-    margin-left: ${(props) => props.theme.space.none};
-    padding: ${(props) => props.theme.space.none}
-      ${(props) => props.theme.space.medium}
-      ${(props) => props.theme.space.xsmall};
-  }
-  ${({ distribute }) => distribute && distributeTabsCSS}
+  ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `
