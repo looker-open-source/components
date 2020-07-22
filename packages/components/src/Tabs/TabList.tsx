@@ -56,13 +56,22 @@ const TabListLayout: FC<TabListProps> = ({
 }
 
 const distributeTabsCSS = css`
-  column-gap: ${(props) => props.theme.space.medium};
-  display: grid;
-  grid-gap: ${(props) => props.theme.space.none};
   grid-template-columns: repeat(
     auto-fit,
     minmax(${(props) => props.theme.space.xlarge}, auto)
   );
+`
+
+export const TabList = styled(TabListLayout)`
+  border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  column-gap: ${(props) => props.theme.space.medium};
+  display: grid;
+  grid-gap: ${(props) => props.theme.space.none};
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(${(props) => props.theme.space.xlarge}, auto)
+  );
+  writing-mode: vertical-lr;
 
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
@@ -71,9 +80,5 @@ const distributeTabsCSS = css`
       ${(props) => props.theme.space.medium}
       ${(props) => props.theme.space.xsmall};
   }
-`
-
-export const TabList = styled(TabListLayout)`
-  border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
   ${({ distribute }) => distribute && distributeTabsCSS}
 `

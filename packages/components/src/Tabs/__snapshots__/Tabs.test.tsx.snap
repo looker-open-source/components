@@ -45,12 +45,18 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   cursor: default;
 }
 
-.c2 + .c0 {
+.c3 + .c0 {
   margin-left: 2rem;
 }
 
+.c4 .c2 {
+  font-size: 0.75rem;
+  margin-left: 0rem;
+  padding: 0rem 1rem 0.5rem;
+}
+
 <button
-  class="c0 c1 "
+  class="c0 c1 c2 "
   font-size="small"
   font-weight="semiBold"
 >
@@ -59,11 +65,11 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 `;
 
 exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`] = `
-.c2 + .c0 {
+.c3 + .c0 {
   margin-left: 2rem;
 }
 
-.c3 + .c0 {
+.c4 + .c0 {
   margin-left: 2rem;
 }
 
@@ -110,8 +116,14 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   cursor: default;
 }
 
+.c5 .c2 {
+  font-size: 0.75rem;
+  margin-left: 0rem;
+  padding: 0rem 1rem 0.5rem;
+}
+
 <button
-  class="c0 c1 "
+  class="c0 c1 c2 "
   font-size="small"
   font-weight="semiBold"
 >

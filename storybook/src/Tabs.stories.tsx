@@ -77,7 +77,7 @@ export const Basic: FC = () => (
 
 export const DistributeTabs: FC = () => (
   <Tabs>
-    <TabList distribute>
+    <TabList>
       <Tab>Rebecca Purple</Tab>
       <Tab>Coral</Tab>
       <Tab>Forest Green</Tab>
@@ -89,6 +89,8 @@ export const DistributeTabs: FC = () => (
       <Tab>Gainsboro</Tab>
       <Tab>Yellow Green</Tab>
       <Tab>Dark Magenta</Tab>
+      <Tab>Alice Blue</Tab>
+      <Tab>Aqua</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
@@ -176,6 +178,22 @@ export const DistributeTabs: FC = () => (
           style={{
             backgroundColor: '#8B008B',
             height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#F0F8FF',
+            height: '350px',
+          }}
+        />
+      </TabPanel>
+      <TabPanel>
+        <div
+          style={{
+            backgroundColor: '#00FFFF',
+            height: '200px',
           }}
         />
       </TabPanel>
