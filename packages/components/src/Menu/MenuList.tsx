@@ -97,8 +97,10 @@ export const MenuListInternal = forwardRef(
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
-    // track inner focus state to prevent components from clobbering each
-    // other's keyboard listeners when there are multiple Menus on the page
+    /*
+     * track inner focus state to prevent components from clobbering each
+     * other's keyboard listeners when there are multiple Menus on the page
+     */
     const [menuHasFocus, setMenuHasFocus] = useState(false)
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
@@ -121,11 +123,19 @@ export const MenuListInternal = forwardRef(
     ])
 
     const handleFocus = () => {
+      /*
+       * delay focus change to prevent state from updating multiple times as
+       * the event bubbles up the dom
+       */
       clearTimeout(focusId.current)
       focusId.current = setTimeout(() => setMenuHasFocus(true), 0)
     }
 
     const handleBlur = () => {
+      /*
+       * delay focus change to prevent state from updating multiple times as
+       * the event bubbles up the dom
+       */
       clearTimeout(focusId.current)
       focusId.current = setTimeout(() => setMenuHasFocus(false), 0)
     }
