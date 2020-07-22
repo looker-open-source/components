@@ -184,9 +184,12 @@ const ComboboxListInternal = forwardRef(
     )
 
     const setOpen = (isOpen: boolean) => {
-      if (!isOpen) {
-        transition && transition(ComboboxActionType.BLUR)
-      }
+      // Delay the BLUR transition so freeInput can have a chance to tokenize the input value
+      requestAnimationFrame(() => {
+        if (!isOpen) {
+          transition && transition(ComboboxActionType.BLUR)
+        }
+      })
     }
 
     const { popover, contentContainer, popperInstanceRef } = usePopover({
