@@ -42,7 +42,7 @@ import React, {
   Ref,
   useContext,
 } from 'react'
-import { HotKeys } from 'react-hotkeys'
+import { useHotkeys } from 'react-hotkeys-hook'
 import styled from 'styled-components'
 import { DialogContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
@@ -77,6 +77,8 @@ export const OverlaySurface = forwardRef(
     } = props
     const { closeModal } = useContext(DialogContext)
 
+    useHotkeys('esc', closeModal)
+
     return (
       <Outer
         ref={ref}
@@ -85,30 +87,16 @@ export const OverlaySurface = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
-        <HotKeys
-          className="hotkeys"
-          keyMap={{
-            CLOSE_MODAL: {
-              action: 'keyup',
-              name: 'Close Modal',
-              sequence: 'esc',
-            },
-          }}
-          handlers={{
-            CLOSE_MODAL: () => closeModal(),
-          }}
-        >
-          <Inner {...innerProps}>
-            {children}
-            {arrow !== false && (
-              <OverlaySurfaceArrow
-                data-placement={placement}
-                {...innerProps}
-                {...arrowProps}
-              />
-            )}
-          </Inner>
-        </HotKeys>
+        <Inner {...innerProps}>
+          {children}
+          {arrow !== false && (
+            <OverlaySurfaceArrow
+              data-placement={placement}
+              {...innerProps}
+              {...arrowProps}
+            />
+          )}
+        </Inner>
       </Outer>
     )
   }
