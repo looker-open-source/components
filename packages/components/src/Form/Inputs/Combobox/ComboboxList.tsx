@@ -86,6 +86,11 @@ export interface ComboboxListProps
    * @default false
    */
   windowedOptions?: boolean
+  /**
+   * Whether to honor the first click outside the popover
+   * @default false
+   */
+  cancelClickOutside?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -106,6 +111,9 @@ const ComboboxListInternal = forwardRef(
       closeOnSelect = true,
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
       windowedOptions = false,
+      // passed to usePopover – when false, allows first outside click to be honored
+      // generally should be false except for when closely mimicking native browser select
+      cancelClickOutside = false,
       indicator,
       isMulti,
       ...props
@@ -183,6 +191,7 @@ const ComboboxListInternal = forwardRef(
 
     const { popover, contentContainer, popperInstanceRef } = usePopover({
       arrow: false,
+      cancelClickOutside,
       content,
       focusTrap: false,
       isOpen: isVisible,

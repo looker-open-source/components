@@ -287,6 +287,16 @@ export function SelectMultiDemo() {
         removeOnBackspace={false}
         mb="xlarge"
       />
+      <SelectMulti
+        options={newOptions}
+        placeholder="with freeInput"
+        isFilterable
+        onFilter={handleFilter}
+        alignSelf="flex-start"
+        freeInput
+        removeOnBackspace={false}
+        mb="xlarge"
+      />
 
       <Heading mb="medium" as="h4">
         Validation Errors

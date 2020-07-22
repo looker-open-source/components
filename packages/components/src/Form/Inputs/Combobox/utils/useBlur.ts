@@ -26,7 +26,7 @@
 
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
-import { Context, useContext } from 'react'
+import { Context, FocusEvent, useContext } from 'react'
 import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
@@ -40,21 +40,22 @@ export function useBlur<
 >(context: Context<TContext>) {
   const { state, transition, listRef, inputElement } = useContext(context)
 
-  return function handleBlur() {
-    requestAnimationFrame(() => {
-      // we on want to close only if focus rests outside the select
-      const popoverCurrent = listRef ? listRef.current : null
-      if (document.activeElement !== inputElement && popoverCurrent) {
-        if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
-          // focus landed inside the select, keep it open
+  return function handleBlur(e: FocusEvent) {
+    // we on want to close only if focus rests outside the select
+    const popoverCurrent = listRef ? listRef.current : null
+    if (e.relatedTarget !== inputElement && popoverCurrent) {
+      if (popoverCurrent && popoverCurrent.contains(e.relatedTarget as Node)) {
+        // focus landed inside the select, keep it open
+        requestAnimationFrame(() => {
           if (state !== ComboboxState.INTERACTING) {
             transition && transition(ComboboxActionType.INTERACT)
           }
-        } else {
-          // focus landed outside the select, close it.
-          transition && transition(ComboboxActionType.BLUR)
-        }
+        })
+        e.preventDefault()
+      } else {
+        // focus landed outside the select, close it.
+        transition && transition(ComboboxActionType.BLUR)
       }
-    })
+    }
   }
 }
