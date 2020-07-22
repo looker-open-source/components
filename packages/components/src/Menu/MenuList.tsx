@@ -27,7 +27,7 @@
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
 import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
-import { HotKeys } from 'react-hotkeys'
+import { useHotkeys } from 'react-hotkeys-hook'
 import styled, { css } from 'styled-components'
 import {
   MaxHeightProps,
@@ -97,9 +97,14 @@ export const MenuListInternal = forwardRef(
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
+    // track inner focus state to prevent components from clobbering each
+    // other's keyboard listeners when there are multiple Menus on the page
+    const [menuHasFocus, setMenuHasFocus] = useState(false)
+
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const innerRef = useRef<null | HTMLElement>(null)
+    const wrapperRef = useRef<null | HTMLDivElement>(null)
+    const focusId = useRef<any>()
 
     const context = {
       compact,
@@ -107,17 +112,27 @@ export const MenuListInternal = forwardRef(
       setRenderIconPlaceholder,
     }
 
+    useHotkeys('down', () => menuHasFocus && moveFocus(1, 0, wrapperRef), [
+      menuHasFocus,
+    ])
+
+    useHotkeys('up', () => menuHasFocus && moveFocus(-1, -1, wrapperRef), [
+      menuHasFocus,
+    ])
+
+    const handleFocus = () => {
+      clearTimeout(focusId.current)
+      focusId.current = setTimeout(() => setMenuHasFocus(true), 0)
+    }
+
+    const handleBlur = () => {
+      clearTimeout(focusId.current)
+      focusId.current = setTimeout(() => setMenuHasFocus(false), 0)
+    }
+
     const menuList = (
       <MenuItemContext.Provider value={context}>
-        <HotKeys
-          innerRef={innerRef}
-          keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-          handlers={{
-            MOVE_DOWN: () => moveFocus(1, 0, innerRef),
-            MOVE_UP: () => moveFocus(-1, -1, innerRef),
-          }}
-          style={{ borderRadius: 'inherit' }}
-        >
+        <div ref={wrapperRef} onFocus={handleFocus} onBlur={handleBlur}>
           <ul
             ref={ref}
             tabIndex={-1}
@@ -128,7 +143,7 @@ export const MenuListInternal = forwardRef(
           >
             {children}
           </ul>
-        </HotKeys>
+        </div>
       </MenuItemContext.Provider>
     )
 
