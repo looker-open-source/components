@@ -31,7 +31,7 @@ import {
   omitStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useContext, useEffect } from 'react'
-import { HotKeys } from 'react-hotkeys'
+import { useHotkeys } from 'react-hotkeys-hook'
 import styled, { CSSObject, css } from 'styled-components'
 import {
   ColorProps,
@@ -76,37 +76,14 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     }
   }, [enableFocusTrap, enableScrollLock])
 
+  useHotkeys('esc', closeModal)
+
   return (
-    <HotKeys
-      keyMap={{
-        CLOSE_MODAL: {
-          action: 'keyup',
-          name: 'Close Modal',
-          sequence: 'esc',
-        },
-      }}
-      handlers={{
-        CLOSE_MODAL: () => closeModal(),
-      }}
-      style={{
-        alignItems: 'center',
-        display: 'flex',
-        height: '100%',
-        justifyContent: anchor === 'right' ? 'flex-end' : 'center',
-        width: '100%',
-      }}
-      // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
-      // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
-      // of this workaround.
-      //
-      // display: contents would be another workaround when it gains broader (corrected) support
-    >
-      <div
-        className={`surface-overflow ${className}`}
-        style={surfaceStyles as CSSObject}
-        {...omitStyledProps(props)}
-      />
-    </HotKeys>
+    <div
+      className={`surface-overflow ${className}`}
+      style={surfaceStyles as CSSObject}
+      {...omitStyledProps(props)}
+    />
   )
 }
 
