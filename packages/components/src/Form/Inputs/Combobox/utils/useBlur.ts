@@ -45,12 +45,12 @@ export function useBlur<
     inputElement,
     ...contextValue
   } = useContext(context)
+  const contextMulti = contextValue as ComboboxMultiContextProps
 
   function closeList() {
     // for ComboboxInputMulti, input value is cleared when the list closes
     // EXCEPT when freeInput is true and the underlying InputChips blur handler
     // needs to tokenize the value
-    const contextMulti = contextValue as ComboboxMultiContextProps
     const isMultiNoFreeInput =
       contextMulti.freeInputPropRef &&
       contextMulti.freeInputPropRef.current === false
@@ -81,7 +81,12 @@ export function useBlur<
           closeList()
         }
       })
-      focusInList && e.preventDefault()
+      // Stop ComboboxMultiInput + freeInput underlying InputChips blur handler from
+      // tokenizing input value when an option is clicked
+      focusInList &&
+        contextMulti.freeInputPropRef &&
+        contextMulti.freeInputPropRef.current &&
+        e.preventDefault()
     }
   }
 }
