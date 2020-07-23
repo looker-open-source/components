@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update `Tab` to scroll left to right when overflow
 - `theme` "pressed" colors are more discernable from other stateful colors
 - `Accordion` added accessibility improvements
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
