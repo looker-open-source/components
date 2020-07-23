@@ -33,6 +33,6 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "start": "gatsby develop"
+    "start": "gatsby develop --host 0.0.0.0"
   }
 }
