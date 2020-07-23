@@ -216,17 +216,17 @@ const ComboboxListInternal = forwardRef(
         }
       }, 50)
 
-      if (contentContainer) {
-        contentContainer.addEventListener('scroll', scrollListener)
-        scrollListener()
-      }
-
       const resizeListener = throttle(() => {
         if (contentContainer && setListClientRect) {
           setListClientRect(contentContainer.getBoundingClientRect())
         }
-      })
-      window.addEventListener('resize', resizeListener)
+      }, 50)
+
+      if (contentContainer) {
+        contentContainer.addEventListener('scroll', scrollListener)
+        scrollListener()
+        window.addEventListener('resize', resizeListener)
+      }
 
       return () => {
         contentContainer &&
