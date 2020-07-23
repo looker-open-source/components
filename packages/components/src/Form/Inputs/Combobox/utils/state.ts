@@ -337,7 +337,10 @@ const reducerMulti: Reducer<
     case ComboboxActionType.ESCAPE:
       return {
         ...nextState,
-        inputValue: '',
+        inputValue:
+          action.inputValue !== undefined
+            ? action.inputValue
+            : nextState.inputValue,
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:

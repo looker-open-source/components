@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
+
 ### Changed
 
+- `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
+- update `Tab` to scroll left to right when overflow
 - `theme` "pressed" colors are more discernable from other stateful colors
 - `Accordion` added accessibility improvements
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
@@ -23,9 +29,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Select` and `SelectMulti` keyboard navigation issues when filtering options
+- `SelectMulti` with `freeInput` tokenizing the input value when an option is clicked
 - `Tabs` now can be controlled
 - Fix a few typos in the `Field` documentation
 - `ActionList` fixed bug where passing object (with single attribute "all") into `canSelect` results in select all checkbox regardless of "all" setting
+- `Link` no longer generates console errors when `keyColor` or `underline` prop are used
 
 ## [0.9.6] - 2020-07-15
 
