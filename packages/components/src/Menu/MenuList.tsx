@@ -48,6 +48,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { useForkedRef } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -93,20 +94,14 @@ export interface MenuListProps
 export const MenuListInternal = forwardRef(
   (
     { children, compact, disabled, pin, placement, ...props }: MenuListProps,
-    ref: Ref<HTMLUListElement>
+    forwardedRef: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
-
-    /*
-     * track inner focus state to prevent components from clobbering each
-     * other's keyboard listeners when there are multiple Menus on the page
-     */
-    const [menuHasFocus, setMenuHasFocus] = useState(false)
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const wrapperRef = useRef<null | HTMLDivElement>(null)
-    const focusId = useRef<any>()
+    const ref = useForkedRef(forwardedRef, wrapperRef)
 
     const context = {
       compact,
@@ -114,7 +109,7 @@ export const MenuListInternal = forwardRef(
       setRenderIconPlaceholder,
     }
 
-    function handleArrow(e: KeyboardEvent, direction: number, initial: number) {
+    function handleArrow(direction: number, initial: number) {
       if (
         wrapperRef.current &&
         wrapperRef.current.contains(document.activeElement)
@@ -123,23 +118,21 @@ export const MenuListInternal = forwardRef(
       }
     }
 
-    useHotkeys('down', () => handleArrow(e, 1, 0))
-    useHotkeys('up', () => handleArrow(e, -1, -1))
+    useHotkeys('down', () => handleArrow(1, 0))
+    useHotkeys('up', () => handleArrow(-1, -1))
 
     const menuList = (
       <MenuItemContext.Provider value={context}>
-        <div ref={wrapperRef} onFocus={handleFocus} onBlur={handleBlur}>
-          <ul
-            ref={ref}
-            tabIndex={-1}
-            role="menu"
-            id={id}
-            aria-labelledby={id && `button-${id}`}
-            {...omitStyledProps(omit(props, 'groupDividers'))}
-          >
-            {children}
-          </ul>
-        </div>
+        <ul
+          ref={ref}
+          tabIndex={-1}
+          role="menu"
+          id={id}
+          aria-labelledby={id && `button-${id}`}
+          {...omitStyledProps(omit(props, 'groupDividers'))}
+        >
+          {children}
+        </ul>
       </MenuItemContext.Provider>
     )
 
