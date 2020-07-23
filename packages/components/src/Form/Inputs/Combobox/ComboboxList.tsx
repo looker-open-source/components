@@ -53,7 +53,6 @@ import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
-import { ComboboxActionType } from './utils/state'
 
 export interface ComboboxListProps
   extends Pick<ComboboxOptionIndicatorProps, 'indicator'>,
@@ -128,7 +127,6 @@ const ComboboxListInternal = forwardRef(
       closeOnSelectPropRef,
       windowedOptionsPropRef,
       indicatorPropRef,
-      transition,
       wrapperElement,
       isVisible,
       optionsRef,
@@ -184,12 +182,10 @@ const ComboboxListInternal = forwardRef(
     )
 
     const setOpen = (isOpen: boolean) => {
-      // Delay the BLUR transition so freeInput can have a chance to tokenize the input value
-      requestAnimationFrame(() => {
-        if (!isOpen) {
-          transition && transition(ComboboxActionType.BLUR)
-        }
-      })
+      if (!isOpen) {
+        // Without passing an event, this just handles state change required when closing the list
+        handleBlur()
+      }
     }
 
     const { popover, contentContainer, popperInstanceRef } = usePopover({

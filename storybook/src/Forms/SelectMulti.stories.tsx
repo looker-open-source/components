@@ -221,7 +221,7 @@ export function SelectMultiDemo() {
         <FieldSelectMulti
           label="Label"
           options={selectOptions}
-          placeholder="Search fruits"
+          placeholder="Select fruits"
           detail="5/50"
         />
         <FieldSelectMulti
@@ -254,7 +254,7 @@ export function SelectMultiDemo() {
       </Heading>
       <SelectMulti
         options={selectGroups}
-        placeholder="Search fruits"
+        placeholder="Select fruits"
         mb="xlarge"
       />
       <Heading mb="medium" as="h4">
@@ -262,7 +262,7 @@ export function SelectMultiDemo() {
       </Heading>
       <SelectMulti
         options={selectOptions}
-        placeholder="Search fruits"
+        placeholder="Select fruits"
         closeOnSelect
         mb="xlarge"
       />
@@ -304,7 +304,7 @@ export function SelectMultiDemo() {
       <SelectMulti
         name="fruitError"
         options={selectOptions}
-        placeholder="Search fruits"
+        placeholder="Select fruits"
         closeOnSelect
         mb="xlarge"
         validationType="error"
@@ -322,7 +322,7 @@ export function SelectMultiDemo() {
             value: 'indicator',
           },
         ]}
-        placeholder="Search fruits"
+        placeholder="Select fruits"
         closeOnSelect
         mb="xlarge"
         indicator={({ isActive, isSelected }) => (
