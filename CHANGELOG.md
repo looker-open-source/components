@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update MenuItem to support Artwork
 - `theme` "pressed" colors are more discernable from other stateful colors
 - `Accordion` added accessibility improvements
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
