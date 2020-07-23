@@ -114,8 +114,10 @@ export function useWindowedOptions(
   // The current value is highlighted when the menu first opens
   // but it may be outside the windowed options
   // so we start the list with just that option
-  const isFirstRender = useRef(true)
-  if (windowedOptions && isFirstRender.current) {
+  // also need to do this when the menu goes from un-windowed to windowed
+  // (e.g. due to deleting characters when filtering)
+  const previouslyWindowedRef = useRef<boolean>()
+  if (windowedOptions && !previouslyWindowedRef.current) {
     if (navigationOption) {
       const selectedIndex = findIndex(options, [
         'value',
@@ -124,8 +126,8 @@ export function useWindowedOptions(
       start = selectedIndex
       end = selectedIndex
     }
-    isFirstRender.current = false
   }
+  previouslyWindowedRef.current = windowedOptions
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option
   // we need to render the top or bottom of the list (which are outside our "window") and scroll there
