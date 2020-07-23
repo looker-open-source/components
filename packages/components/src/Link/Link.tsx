@@ -29,7 +29,9 @@ import {
   reset,
   typography,
   TypographyProps,
+  omitStyledProps,
 } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import styled from 'styled-components'
 import React, { forwardRef, Ref } from 'react'
 
@@ -65,7 +67,13 @@ const LinkLayout = forwardRef(
           : noTabNab
         : props.rel
 
-    return <a {...props} ref={ref} rel={rel} />
+    return (
+      <a
+        {...omit(omitStyledProps(props), 'keyColor', 'underline')}
+        ref={ref}
+        rel={rel}
+      />
+    )
   }
 )
 

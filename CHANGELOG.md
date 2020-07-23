@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix a few typos in the `Field` documentation
 - `ActionList` fixed bug where passing object (with single attribute "all") into `canSelect` results in select all checkbox regardless of "all" setting
+- `Link` no longer generates console errors when `keyColor` or `underline` prop are used
 
 ## [0.9.6] - 2020-07-15
 
