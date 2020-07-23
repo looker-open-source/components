@@ -114,31 +114,17 @@ export const MenuListInternal = forwardRef(
       setRenderIconPlaceholder,
     }
 
-    useHotkeys('down', () => menuHasFocus && moveFocus(1, 0, wrapperRef), [
-      menuHasFocus,
-    ])
-
-    useHotkeys('up', () => menuHasFocus && moveFocus(-1, -1, wrapperRef), [
-      menuHasFocus,
-    ])
-
-    const handleFocus = () => {
-      /*
-       * delay focus change to prevent state from updating multiple times as
-       * the event bubbles up the dom
-       */
-      clearTimeout(focusId.current)
-      focusId.current = setTimeout(() => setMenuHasFocus(true), 0)
+    function handleArrow(e: KeyboardEvent, direction: number, initial: number) {
+      if (
+        wrapperRef.current &&
+        wrapperRef.current.contains(document.activeElement)
+      ) {
+        moveFocus(direction, initial, wrapperRef)
+      }
     }
 
-    const handleBlur = () => {
-      /*
-       * delay focus change to prevent state from updating multiple times as
-       * the event bubbles up the dom
-       */
-      clearTimeout(focusId.current)
-      focusId.current = setTimeout(() => setMenuHasFocus(false), 0)
-    }
+    useHotkeys('down', () => handleArrow(e, 1, 0))
+    useHotkeys('up', () => handleArrow(e, -1, -1))
 
     const menuList = (
       <MenuItemContext.Provider value={context}>
