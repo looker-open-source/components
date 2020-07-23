@@ -26,7 +26,7 @@
 
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
-import { Context, useContext } from 'react'
+import { Context, FocusEvent, useContext } from 'react'
 import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
@@ -38,23 +38,55 @@ export function useBlur<
     | ComboboxContextProps
     | ComboboxMultiContextProps = ComboboxContextProps
 >(context: Context<TContext>) {
-  const { state, transition, listRef, inputElement } = useContext(context)
+  const {
+    state,
+    transition,
+    listRef,
+    inputElement,
+    ...contextValue
+  } = useContext(context)
+  const contextMulti = contextValue as ComboboxMultiContextProps
 
-  return function handleBlur() {
-    requestAnimationFrame(() => {
-      // we on want to close only if focus rests outside the select
-      const popoverCurrent = listRef ? listRef.current : null
-      if (document.activeElement !== inputElement && popoverCurrent) {
-        if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
+  function closeList() {
+    // for ComboboxInputMulti, input value is cleared when the list closes
+    // EXCEPT when freeInput is true and the underlying InputChips blur handler
+    // needs to tokenize the value
+    const isMultiNoFreeInput =
+      contextMulti.freeInputPropRef &&
+      contextMulti.freeInputPropRef.current === false
+    const payload = isMultiNoFreeInput ? { inputValue: '' } : undefined
+
+    transition && transition(ComboboxActionType.BLUR, payload)
+  }
+
+  return function handleBlur(e?: FocusEvent) {
+    if (!e) {
+      // handleBlur was called directly (via popover close)
+      // only need to close the list
+      closeList()
+      return
+    }
+    // we on want to close only if focus rests outside the select
+    const popoverCurrent = listRef ? listRef.current : null
+    if (e.relatedTarget !== inputElement && popoverCurrent) {
+      const focusInList =
+        popoverCurrent && popoverCurrent.contains(e.relatedTarget as Node)
+
+      requestAnimationFrame(() => {
+        if (focusInList && state !== ComboboxState.INTERACTING) {
           // focus landed inside the select, keep it open
-          if (state !== ComboboxState.INTERACTING) {
-            transition && transition(ComboboxActionType.INTERACT)
-          }
-        } else {
-          // focus landed outside the select, close it.
-          transition && transition(ComboboxActionType.BLUR)
+          transition && transition(ComboboxActionType.INTERACT)
+        } else if (!focusInList) {
+          // focus landed outside the select, close it
+          closeList()
         }
-      }
-    })
+      })
+      // Stop ComboboxMultiInput + freeInput underlying InputChips blur handler from
+      // tokenizing input value when an option is clicked
+      focusInList &&
+        contextMulti.freeInputPropRef &&
+        contextMulti.freeInputPropRef.current &&
+        e.preventDefault()
+    }
   }
 }

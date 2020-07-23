@@ -135,6 +135,12 @@ export interface UsePopoverProps {
    * @default true
    */
   focusTrap?: boolean
+
+  /**
+   * Whether to honor the first click outside the popover
+   * @default true
+   */
+  cancelClickOutside?: boolean
 }
 
 type PopoverRenderProp = (popoverProps: {
@@ -253,9 +259,15 @@ function usePopoverToggle(
     canClose,
     groupedPopoversRef,
     triggerToggle,
+    cancelClickOutside = true,
   }: Pick<
     UsePopoverProps,
-    'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef' | 'triggerToggle'
+    | 'isOpen'
+    | 'setOpen'
+    | 'canClose'
+    | 'groupedPopoversRef'
+    | 'triggerToggle'
+    | 'cancelClickOutside'
   >,
   portalElement: HTMLElement | null,
   triggerElement: HTMLElement | null
@@ -312,11 +324,12 @@ function usePopoverToggle(
         return
       }
 
-      // Group-member clicked, allow event to propagate
       if (
-        groupedPopoversRef &&
-        groupedPopoversRef.current &&
-        groupedPopoversRef.current.contains(event.target as Node)
+        !cancelClickOutside ||
+        // Group-member clicked, allow event to propagate
+        (groupedPopoversRef &&
+          groupedPopoversRef.current &&
+          groupedPopoversRef.current.contains(event.target as Node))
       ) {
         return
       }
@@ -355,6 +368,7 @@ function usePopoverToggle(
       document.removeEventListener('mouseup', handleMouseUp, true)
     }
   }, [
+    cancelClickOutside,
     canClose,
     groupedPopoversRef,
     isOpen,
@@ -381,6 +395,7 @@ export function usePopover({
   triggerElement,
   triggerToggle = true,
   focusTrap = true,
+  cancelClickOutside,
 }: UsePopoverProps) {
   const {
     element: scrollElement,
@@ -408,6 +423,7 @@ export function usePopover({
   const [isOpen, setOpen] = usePopoverToggle(
     {
       canClose,
+      cancelClickOutside,
       groupedPopoversRef,
       isOpen: controlledIsOpen,
       setOpen: controlledSetOpen,
