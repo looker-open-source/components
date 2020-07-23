@@ -68,7 +68,6 @@ const defaultLayoutCSS = css`
 const distributeCSS = css`
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fit, max-content);
 
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
@@ -79,7 +78,7 @@ const distributeCSS = css`
 
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
 
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
