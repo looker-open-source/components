@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [UNRELEASED]
 
 ### Changed
+- `MenuDisclosure` - tooltip placement now defaults to `bottom`
+
+### Changed
 
 - update `Tab` to scroll left to right when overflow
 - `theme` "pressed" colors are more discernable from other stateful colors

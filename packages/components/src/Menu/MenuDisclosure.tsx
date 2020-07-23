@@ -88,7 +88,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     content: tooltip,
     disabled: isOpen,
     id: disclosureId ? `${disclosureId}-tooltip` : undefined,
-    placement: tooltipPlacement || 'top',
+    placement: tooltipPlacement || 'bottom',
     triggerElement,
   })
 
