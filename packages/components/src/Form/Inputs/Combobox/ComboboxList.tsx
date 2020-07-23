@@ -221,9 +221,18 @@ const ComboboxListInternal = forwardRef(
         scrollListener()
       }
 
+      const resizeListener = throttle(() => {
+        if (contentContainer && setListClientRect) {
+          setListClientRect(contentContainer.getBoundingClientRect())
+        }
+      })
+      window.addEventListener('resize', resizeListener)
+
       return () => {
         contentContainer &&
           contentContainer.removeEventListener('scroll', scrollListener)
+        window.removeEventListener('resize', resizeListener)
+
         setListScrollPosition && setListScrollPosition(0)
         setListClientRect && setListClientRect(undefined)
       }
