@@ -27,7 +27,6 @@
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
 import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
 import styled, { css } from 'styled-components'
 import {
   MaxHeightProps,
@@ -48,7 +47,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { useForkedRef } from '../utils'
+import { useForkedRef, useHotkeys } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -109,17 +108,12 @@ export const MenuListInternal = forwardRef(
       setRenderIconPlaceholder,
     }
 
-    function handleArrow(direction: number, initial: number) {
-      if (
-        wrapperRef.current &&
-        wrapperRef.current.contains(document.activeElement)
-      ) {
-        moveFocus(direction, initial, wrapperRef)
-      }
+    function handleArrowKey(direction: number, initial: number) {
+      moveFocus(direction, initial, wrapperRef)
     }
 
-    useHotkeys('down', () => handleArrow(1, 0))
-    useHotkeys('up', () => handleArrow(-1, -1))
+    useHotkeys('down', () => handleArrowKey(1, 0), wrapperRef)
+    useHotkeys('up', () => handleArrowKey(-1, -1), wrapperRef)
 
     const menuList = (
       <MenuItemContext.Provider value={context}>

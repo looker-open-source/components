@@ -30,8 +30,7 @@ import {
   theme,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { FC, useContext, useEffect } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
+import React, { FC, useContext, useEffect, useRef } from 'react'
 import styled, { CSSObject, css } from 'styled-components'
 import {
   ColorProps,
@@ -43,6 +42,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
+import { useHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
 interface SurfaceProps
@@ -66,6 +66,8 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     DialogContext
   )
 
+  const wrapperRef = useRef<null | HTMLDivElement>(null)
+
   useEffect(() => {
     enableScrollLock && enableScrollLock()
     const t = window.setTimeout(() => {
@@ -76,12 +78,13 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     }
   }, [enableFocusTrap, enableScrollLock])
 
-  useHotkeys('esc', closeModal)
+  useHotkeys('esc', closeModal, wrapperRef)
 
   return (
     <div
       className={`surface-overflow ${className}`}
       style={surfaceStyles as CSSObject}
+      ref={wrapperRef}
       {...omitStyledProps(props)}
     />
   )
