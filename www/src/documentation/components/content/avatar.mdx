@@ -10,6 +10,14 @@ github: Avatar
 - `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop, and has the `User` icon as default.
 - `AvatarCombo` displayed `AvatarUser` or `AvatarIcon` with secondary `AvatarIcon` connected to it.
 
+### Accessibility
+
+If you're an `Avatar` as a clickable-target use `role="button"`. This will help with usability and accessibility.
+
+```jsx
+<AvatarIcon role="button" />
+```
+
 ## AvatarUser
 
 Takes a `User` object as specified by Looker's SDK and produces an `Avatar`. The minimum keys in object are `avatar_url`, `first_name` and `last_name`. If the user in question has a blank image (Gravatar's default if the user hasn't yet selected a profile picture) the user's initials will be used instead of the image.
