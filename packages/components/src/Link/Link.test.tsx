@@ -27,39 +27,51 @@
 import 'jest-styled-components'
 import React from 'react'
 import { createWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { theme } from '@looker/design-tokens'
+import { screen } from '@testing-library/react'
 import { Link } from './Link'
 
 describe('Link', () => {
   test('Snapshot', () => {
     const component = createWithTheme(
-      <>
-        <Link href="https://looker.com">Avocado</Link>
-        <Link href="https://looker.com" keyColor>
-          Avocado
-        </Link>
-        <Link href="https://looker.com" underline>
-          Avocado
-        </Link>
-      </>
+      <Link href="https://looker.com">Avocado</Link>
     )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
+  test('Underline', () => {
+    renderWithTheme(<Link underline>My link</Link>)
+    const link = screen.getByText('My link')
+    expect(link).toHaveStyle('text-decoration: underline')
+  })
+
+  test('color', () => {
+    renderWithTheme(<Link>My link</Link>)
+    const link = screen.getByText('My link')
+    expect(link).toHaveStyle(`color: ${theme.colors.link}`)
+  })
+
+  test('keyColor', () => {
+    renderWithTheme(<Link keyColor>My link</Link>)
+    const link = screen.getByText('My link')
+    expect(link).toHaveStyle(`color: ${theme.colors.key}`)
+  })
+
   test('ID passes through to DOM', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Link href="https://looker.com" id="link-id">
         🥑
       </Link>
     )
 
-    const link = getByText('🥑')
+    const link = screen.getByText('🥑')
     expect(link.hasAttribute('id')).toBeTruthy()
     expect(link.getAttribute('id')).toEqual('link-id')
   })
 
   test('target="_blank"', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <>
         <Link href="https://looker.com" rel="pizza">
           🍕
@@ -73,9 +85,11 @@ describe('Link', () => {
       </>
     )
 
-    expect(getByText('🍕').getAttribute('rel')).toEqual('pizza')
-    expect(getByText('🥑').getAttribute('rel')).toEqual('noopener noreferrer')
-    expect(getByText('🍕🥑').getAttribute('rel')).toEqual(
+    expect(screen.getByText('🍕').getAttribute('rel')).toEqual('pizza')
+    expect(screen.getByText('🥑').getAttribute('rel')).toEqual(
+      'noopener noreferrer'
+    )
+    expect(screen.getByText('🍕🥑').getAttribute('rel')).toEqual(
       'pizza noopener noreferrer'
     )
   })

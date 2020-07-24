@@ -28,6 +28,7 @@ import { ComboboxInputProps } from '../ComboboxInput'
 import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
 import {
   ComboboxContextProps,
+  ComboboxMultiContext,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
 
@@ -53,4 +54,18 @@ export function useInputPropRefs<
     if (readOnlyPropRef) readOnlyPropRef.current = readOnly
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [readOnly])
+}
+
+export function useInputMultiPropRefs({
+  freeInput = false,
+  ...props
+}: ComboboxMultiInputProps) {
+  useInputPropRefs(props, ComboboxMultiContext)
+
+  const { freeInputPropRef } = useContext(ComboboxMultiContext)
+
+  useLayoutEffect(() => {
+    if (freeInputPropRef) freeInputPropRef.current = freeInput
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [freeInput])
 }
