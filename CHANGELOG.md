@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `IconButton` now supports `tooltipWidth` property
 - `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
-- New `Icon` artwork `Logout`
+- New `Icon` artwork `Logout`, `AddComment`, `Comment`, `Feedback`
 
 ### Changed
 
