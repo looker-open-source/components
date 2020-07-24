@@ -9,14 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `IconButton` now supports `tooltipWidth` property
 - `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
 - New `Icon` artwork `Logout`
 
 ### Changed
+
 - `MenuDisclosure` - tooltip placement now defaults to `bottom`
-
-### Changed
-
 - `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
 - update `Tab` to scroll left to right when overflow
 - `theme` "pressed" colors are more discernable from other stateful colors

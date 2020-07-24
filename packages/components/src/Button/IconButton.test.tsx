@@ -28,7 +28,11 @@ import 'jest-styled-components'
 import React from 'react'
 import noop from 'lodash/noop'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  fireEvent,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
@@ -159,27 +163,25 @@ describe('IconButton', () => {
 
   test('has built-in tooltip', async () => {
     const label = 'Mark as my Favorite'
-    const { getByText, getAllByText } = renderWithTheme(
-      <IconButton id="test-iconButton" label={label} icon="Favorite" />
-    )
+    renderWithTheme(<IconButton label={label} icon="Favorite" />)
 
-    const notTooltip = getAllByText(label)
+    const notTooltip = screen.getAllByText(label)
     expect(notTooltip).toHaveLength(1) // accessibility text
 
-    const icon = getByText(label)
+    const icon = screen.getByText(label)
     fireEvent.mouseOver(icon)
 
-    const tooltip = getAllByText(label)
+    const tooltip = screen.getAllByText(label)
     expect(tooltip).toHaveLength(2)
     expect(tooltip[1]).toBeVisible()
 
     fireEvent.mouseOut(icon)
-    await waitForElementToBeRemoved(() => getAllByText(label)[1])
+    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
   })
 
   test('tooltipDisabled actually disables tooltip', () => {
     const label = 'Mark as my Favorite'
-    const { getByText, container } = renderWithTheme(
+    const { container } = renderWithTheme(
       <IconButton
         id="test-iconButton"
         tooltipDisabled
@@ -188,7 +190,7 @@ describe('IconButton', () => {
       />
     )
 
-    fireEvent.mouseOver(getByText(label))
+    fireEvent.mouseOver(screen.getAllByText(label)[0])
 
     const notTooltip = container.querySelector('p') // Get Tooltip content
     expect(notTooltip).toBeNull()
@@ -216,5 +218,28 @@ describe('IconButton', () => {
 
     fireEvent.mouseOut(button)
     await waitForElementToBeRemoved(() => getByText(tooltip))
+  })
+
+  test('built-in tooltip respects text-align, width props', async () => {
+    const label = 'Mark as my Favorite'
+    renderWithTheme(
+      <IconButton
+        tooltipWidth="4rem"
+        tooltipTextAlign="right"
+        label={label}
+        icon="Favorite"
+      />
+    )
+
+    const trigger = screen.getByText(label)
+    fireEvent.mouseOver(trigger)
+
+    const tooltip = screen.queryAllByText(label)
+    expect(tooltip[0]).toBeVisible()
+    expect(tooltip[0]).toHaveStyleRule('max-width', '4rem')
+    expect(tooltip[0]).toHaveStyleRule('text-align', 'right')
+
+    fireEvent.mouseOut(trigger)
+    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
   })
 })
