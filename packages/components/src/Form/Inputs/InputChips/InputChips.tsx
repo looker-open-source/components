@@ -167,6 +167,7 @@ export const InputChipsInternal = forwardRef(
       if (duplicateValues.length > 0) {
         onDuplicate && onDuplicate(duplicateValues)
       }
+
       setInputValue(updatedInputValue)
     }
 
