@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New `Icon` artwork `Logout`
 
 ### Changed
+- `MenuDisclosure` - tooltip placement now defaults to `bottom`
+
+### Changed
 
 - `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
 - update `Tab` to scroll left to right when overflow
