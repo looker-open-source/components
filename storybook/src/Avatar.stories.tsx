@@ -25,25 +25,79 @@
  */
 
 import React from 'react'
-import { AvatarUser, Space } from '@looker/components'
+import { AvatarCombo, AvatarUser, AvatarIcon } from '@looker/components'
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs'
+import { iconNameList, IconNames } from '@looker/icons'
+import { AvatarSizes } from '@looker/components/src/Avatar/Avatar'
+
+const avatarSizes = ['xxsmall', 'xsmall', 'small', 'medium', 'large']
+
+export const AvatarUserExample = () => {
+  /* eslint-disable @typescript-eslint/camelcase */
+  const user = {
+    avatar_url: text('Avatar URL', 'https://www.fillmurray.com/150/150'),
+    first_name: text('First name', 'Bill'),
+    last_name: text('Last name', 'Murray'),
+  }
+  /* eslint-enable @typescript-eslint/camelcase */
+
+  const color = text('Color', '')
+
+  const onClick = () => window.alert(`Say hi to ${user.first_name}`)
+
+  return (
+    <AvatarUser
+      onClick={onClick}
+      user={user}
+      color={color === '' ? undefined : color}
+      size={select('Size', avatarSizes, undefined)}
+      role={boolean('Button', true) ? 'button' : undefined}
+    />
+  )
+}
+
+export const AvatarIconExample = () => {
+  const color = text('Color', '')
+
+  const onClick = () => window.alert(`It's an icon!`)
+
+  return (
+    <AvatarIcon
+      onClick={onClick}
+      icon={select('Icon', iconNameList, 'User') as IconNames}
+      color={color === '' ? undefined : color}
+      size={select('Size', avatarSizes, undefined)}
+      role={boolean('Button', false) ? 'button' : undefined}
+    />
+  )
+}
+
+export const AvatarComboExample = () => {
+  /* eslint-disable @typescript-eslint/camelcase */
+  const user = {
+    avatar_url: text('Avatar URL', 'https://www.fillmurray.com/150/150'),
+    first_name: text('First name', 'Bill'),
+    last_name: text('Last name', 'Murray'),
+  }
+  /* eslint-enable @typescript-eslint/camelcase */
+
+  const color = text('Color', '')
+
+  const onClick = () => window.alert(`Say hi to ${user.first_name}`)
+
+  return (
+    <AvatarCombo
+      onClick={onClick}
+      user={user}
+      color={color === '' ? undefined : color}
+      size={select('Size', avatarSizes, undefined) as AvatarSizes}
+      icon={select('Icon', iconNameList, 'User') as IconNames}
+      role={boolean('Button', true) ? 'button' : undefined}
+    />
+  )
+}
 
 export default {
+  decorators: [withKnobs],
   title: 'Avatar',
 }
-
-/* eslint-disable @typescript-eslint/camelcase */
-const user = {
-  avatar_url: 'https://www.fillmurray.com/150/150',
-  first_name: 'Bill',
-  last_name: 'Murray',
-}
-
-export const Sizes = () => (
-  <Space around>
-    <AvatarUser user={user} size="xxsmall" />
-    <AvatarUser user={user} size="xsmall" />
-    <AvatarUser user={user} />
-    <AvatarUser user={user} size="medium" />
-    <AvatarUser user={user} size="large" />
-  </Space>
-)

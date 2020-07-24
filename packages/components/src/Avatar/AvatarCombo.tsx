@@ -54,10 +54,13 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   color,
   icon = 'User',
   user,
+  role,
   ...props
 }) => {
+  const BaseElement = role === 'button' ? 'button' : 'div'
+
   return (
-    <div {...omitStyledProps(props)}>
+    <BaseElement {...omitStyledProps(props)}>
       {user ? (
         <AvatarUser user={user} color={color} />
       ) : (
@@ -68,7 +71,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
         color={secondaryColor}
         icon={secondaryIcon}
       />
-    </div>
+    </BaseElement>
   )
 }
 

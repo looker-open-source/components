@@ -76,11 +76,20 @@ const size = variant({
   },
 })
 
-const AvatarLayout: FC<AvatarIconProps> = ({ color, icon = 'User' }) => (
-  <div {...omitStyledProps(props)}>
-    <Icon name={icon} color={color} />
-  </div>
-)
+const AvatarLayout: FC<AvatarIconProps> = ({
+  color,
+  icon = 'User',
+  role,
+  ...props
+}) => {
+  const BaseElement = role === 'button' ? 'button' : 'div'
+
+  return (
+    <BaseElement {...omitStyledProps(props)}>
+      <Icon name={icon} color={color} />
+    </BaseElement>
+  )
+}
 
 export const AvatarIcon = styled(AvatarLayout)`
   ${avatarCSS}
