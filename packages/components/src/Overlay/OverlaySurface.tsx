@@ -41,9 +41,10 @@ import React, {
   ReactNode,
   Ref,
   useContext,
+  useRef,
 } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
 import styled from 'styled-components'
+import { useHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
@@ -65,7 +66,7 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
 }
 
 export const OverlaySurface = forwardRef(
-  (props: OverlaySurfaceProps, ref: Ref<HTMLDivElement>) => {
+  (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
     const {
       arrow,
       arrowProps,
@@ -77,7 +78,10 @@ export const OverlaySurface = forwardRef(
     } = props
     const { closeModal } = useContext(DialogContext)
 
-    useHotkeys('esc', closeModal)
+    const innerRef = useRef<null | HTMLElement>(null)
+    const ref = useForkedRef(forwardedRef, innerRef)
+
+    useHotkeys('esc', closeModal, innerRef)
 
     return (
       <Outer
