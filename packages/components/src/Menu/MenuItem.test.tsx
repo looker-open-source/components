@@ -27,31 +27,38 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
 
-test('MenuItem renders', () => {
-  const { getByText } = renderWithTheme(<MenuItem>who!</MenuItem>)
-  expect(getByText('who!')).toBeVisible()
-})
+describe('MenuItem', () => {
+  test('MenuItem renders', () => {
+    renderWithTheme(<MenuItem>who!</MenuItem>)
+    expect(screen.getByText('who!')).toBeVisible()
+  })
 
-test('MenuItem - detail', () => {
-  const { getByText } = renderWithTheme(
-    <MenuItem detail="Is an excellent question">who!</MenuItem>
-  )
-  expect(getByText('Is an excellent question')).toBeVisible()
-})
+  test('MenuItem - detail', () => {
+    renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
+    expect(screen.getByText('Is an excellent question')).toBeVisible()
+  })
 
-test('MenuItem - icon', () => {
-  const { getByText } = renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
-  expect(getByText('Icon')).toBeVisible()
-})
+  test('MenuItem - icon', () => {
+    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
+    expect(screen.getByText('Icon')).toBeVisible()
+  })
 
-test('MenuItem - artwork', () => {
-  const { getByText } = renderWithTheme(
-    <MenuItem iconArtwork={<svg xmlns="http://www.w3.org/2000/svg"></svg>}>
-      Artwork
-    </MenuItem>
-  )
-  expect(getByText('Artwork')).toBeVisible()
+  test('MenuItem - artwork', () => {
+    renderWithTheme(
+      <MenuItem
+        iconArtwork={
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <title>SVG Title Here</title>
+          </svg>
+        }
+      >
+        Artwork
+      </MenuItem>
+    )
+    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
+  })
 })
