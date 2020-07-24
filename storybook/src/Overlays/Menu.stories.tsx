@@ -137,7 +137,7 @@ export const IconSpace = () => (
       <MenuGroup label="Icon and Artwork">
         <MenuItem icon="ChartPie">Icon</MenuItem>
         <MenuItem
-          artwork={
+          iconArtwork={
             <svg
               viewBox="0 0 24 24"
               fill="none"
