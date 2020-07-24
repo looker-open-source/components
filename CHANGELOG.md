@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Select`/`SelectMulti` toggling the list from the caret
 - `Select` and `SelectMulti` keyboard navigation issues when filtering options
 - `SelectMulti` with `freeInput` tokenizing the input value when an option is clicked
 - `Tabs` now can be controlled
