@@ -26,6 +26,7 @@
 
 import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
@@ -56,14 +57,14 @@ export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
 const renderOption = (
   option: SelectOptionObject,
-  index: number,
+  key: string,
   scrollIntoView?: boolean
 ) => {
   if (option.description) {
     return (
       <ComboboxOption
         {...option}
-        key={index}
+        key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
@@ -71,19 +72,19 @@ const renderOption = (
       </ComboboxOption>
     )
   }
-  return <ComboboxOption {...option} key={index} />
+  return <ComboboxOption {...option} key={key} />
 }
 
 const renderMultiOption = (
   option: SelectOptionObject,
-  index: number,
+  key: string,
   scrollIntoView?: boolean
 ) => {
   if (option.description) {
     return (
       <ComboboxMultiOption
         {...option}
-        key={index}
+        key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
@@ -91,7 +92,7 @@ const renderMultiOption = (
       </ComboboxMultiOption>
     )
   }
-  return <ComboboxMultiOption {...option} key={index} />
+  return <ComboboxMultiOption {...option} key={key} />
 }
 
 export function SelectOptionWithDescription({
@@ -122,23 +123,35 @@ SelectOptionGroupTitle.defaultProps = {
   variant: 'subdued',
 }
 
+function useOptionKeyPrefix(options?: SelectOptionProps[]) {
+  // Create a new unique prefix every time the list of options changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => uuid(), [options])
+}
+
 export const SelectOptionGroup = ({
   options,
   label,
   isMulti,
-}: SelectOptionGroupProps & { isMulti?: boolean }) => (
-  <SelectOptionGroupContainer>
-    {label && (
-      <SelectOptionGroupTitle isMulti={isMulti}>
-        <ComboboxOptionIndicator isMulti={isMulti} />
-        {label}
-      </SelectOptionGroupTitle>
-    )}
-    {options.map((option, index) =>
-      isMulti ? renderMultiOption(option, index) : renderOption(option, index)
-    )}
-  </SelectOptionGroupContainer>
-)
+}: SelectOptionGroupProps & { isMulti?: boolean }) => {
+  const keyPrefix = useOptionKeyPrefix(options)
+  return (
+    <SelectOptionGroupContainer>
+      {label && (
+        <SelectOptionGroupTitle isMulti={isMulti}>
+          <ComboboxOptionIndicator isMulti={isMulti} />
+          {label}
+        </SelectOptionGroupTitle>
+      )}
+      {options.map((option, index) => {
+        const key = `${keyPrefix}-${index}`
+        return isMulti
+          ? renderMultiOption(option, key)
+          : renderOption(option, key)
+      })}
+    </SelectOptionGroupContainer>
+  )
+}
 
 const SelectOptionGroupContainer = styled.div`
   border-bottom: 1px solid;
@@ -229,10 +242,12 @@ export function SelectOptions({
     />
   )
 
+  const keyPrefix = useOptionKeyPrefix(options)
+
   return (
     <>
       {options && scrollToFirst
-        ? renderToUse(options[0] as SelectOptionObject, 0, true)
+        ? renderToUse(options[0] as SelectOptionObject, `${keyPrefix}-0`, true)
         : null}
       {before}
       {optionsToRender && optionsToRender.length > 0
@@ -249,7 +264,10 @@ export function SelectOptions({
                     isMulti={isMulti}
                   />
                 ) : (
-                  renderToUse(option as SelectOptionObject, correctedIndex)
+                  renderToUse(
+                    option as SelectOptionObject,
+                    `${keyPrefix}-${correctedIndex}`
+                  )
                 )
               }
             ),
@@ -260,7 +278,7 @@ export function SelectOptions({
       {options && scrollToLast
         ? renderToUse(
             options[options.length - 1] as SelectOptionObject,
-            0,
+            `${keyPrefix}-${options.length - 1}`,
             true
           )
         : null}

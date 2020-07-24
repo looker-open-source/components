@@ -41,6 +41,7 @@ import {
   Paragraph,
   Popover,
   PopoverContent,
+  Space,
   SpaceVertical,
   usePopover,
   useToggle,
@@ -80,58 +81,68 @@ export const PopoverFocusTrap = () => {
   }
 
   return (
-    <Box mt="large">
+    <SpaceVertical mt="large">
       <Heading>Focus Trap Test</Heading>
-      <Popover
-        content={
-          <PopoverContent p="large" width="360px">
-            <Paragraph>
-              Does tabbing focus only loop through these 3 buttons &amp; Select?
-            </Paragraph>
-            <Paragraph>
-              Does clicking (or mousedown) each trigger an alert?
-            </Paragraph>
-            <Button mr="small" onClick={getButtonAlert('First')}>
-              First
-            </Button>
-            <Button mr="small" onClick={getButtonAlert('Second')}>
-              Second
-            </Button>
-            <Button
-              mt="small"
-              mb="medium"
-              onMouseDown={getButtonAlert('Third')}
-            >
-              Third (mousedown)
-            </Button>
-            <FieldSelect
-              label="Default Value"
-              width={300}
-              options={options}
-              aria-label="Fruits"
-              defaultValue="1"
-            />
-            <Paragraph>
-              Does it scroll here when the Select is closed?
-            </Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-            <Paragraph>Long text</Paragraph>
-          </PopoverContent>
-        }
-      >
-        <Button mt="medium">Open Focus Trap Test Popover</Button>
-      </Popover>
+      <Paragraph>With cancelClickOutside=false</Paragraph>
+      <Space>
+        <Popover
+          cancelClickOutside={false}
+          content={
+            <PopoverContent p="large" width="360px">
+              <Paragraph>
+                Does tabbing focus only loop through these 3 buttons &amp;
+                Select?
+              </Paragraph>
+              <Paragraph>
+                Does clicking (or mousedown) each trigger an alert?
+              </Paragraph>
+              <Button mr="small" onClick={getButtonAlert('First')}>
+                First
+              </Button>
+              <Button mr="small" onClick={getButtonAlert('Second')}>
+                Second
+              </Button>
+              <Button
+                mt="small"
+                mb="medium"
+                onMouseDown={getButtonAlert('Third')}
+              >
+                Third (mousedown)
+              </Button>
+              <FieldSelect
+                label="Default Value"
+                width={300}
+                options={options}
+                aria-label="Fruits"
+                defaultValue="1"
+              />
+              <Paragraph>
+                Does it scroll here when the Select is closed?
+              </Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+              <Paragraph>Long text</Paragraph>
+            </PopoverContent>
+          }
+        >
+          <Button>Open Focus Trap Test Popover</Button>
+        </Popover>
+        <ButtonOutline
+          onClick={() => alert('cancelClickOutside=false is working')}
+        >
+          Click me with the popover open
+        </ButtonOutline>
+      </Space>
       <Paragraph>Does it scroll here when the Popover is closed?</Paragraph>
       <Paragraph>Long text</Paragraph>
       <Paragraph>Long text</Paragraph>
@@ -161,7 +172,7 @@ export const PopoverFocusTrap = () => {
       <Paragraph>Long text</Paragraph>
       <Paragraph>Long text</Paragraph>
       <Paragraph>Long text</Paragraph>
-    </Box>
+    </SpaceVertical>
   )
 }
 

@@ -10,59 +10,74 @@ The order in which elements are placed inside TabList and TabPanels defines the 
 
 To create a disabled Tab add the disabled prop. You must still create a TabPanel for each Tab to keep the index positions in sync.
 
+Tabs supports scrolling when the number of Tabs are greater then the space alocated for it. - Try scrolling left-right.
+
 ```jsx
 <Tabs>
   <TabList>
     <Tab>Dog</Tab>
     <Tab>Cat</Tab>
     <Tab disabled>Human</Tab>
-    <Tab>Bird</Tab>
+    <Tab>Fox</Tab>
+    <Tab>Monkey</Tab>
+    <Tab>Lion</Tab>
+    <Tab>Pig</Tab>
+    <Tab>Frog</Tab>
+    <Tab>Mouse</Tab>
+    <Tab>Bear</Tab>
+    <Tab>Cow</Tab>
   </TabList>
   <TabPanels>
     <TabPanel>
       <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐕 Dog
+        🐶 Dog
       </Heading>
-      <Paragraph>
-        The domestic dog is a member of the genus Canis (canines), which forms
-        part of the wolf-like canids, and is the most widely abundant:
-        terrestrial carnivore. The dog and the extant gray wolf are sister taxa
-        as modern wolves are not closely related to the wolves that were first
-        domesticated, which implies that the direct ancestor of the dog is
-        extinct. The dog was the first species to be domesticated and has been
-        selectively bred over millennia for various behaviors, sensory
-        capabilities, and physical attributes.
-      </Paragraph>
     </TabPanel>
     <TabPanel>
       <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐈 Cat
+        🐱 Cat
       </Heading>
-      <Paragraph>
-        The cat (Felis catus) is a small carnivorous mammal. It is the only
-        domesticated species in the family Felidae and often referred to as the
-        domestic cat to distinguish it from wild members of the family. The cat
-        is either a house cat or a farm cat, which are pets, or a feral cat,
-        which ranges freely and avoids human contact. A house cat is valued by
-        humans for companionship and for its ability to hunt rodents. About 60
-        cat breeds are recognized by various cat registries.
-      </Paragraph>
     </TabPanel>
     <TabPanel>Placeholder for disabled "Human" tab</TabPanel>
     <TabPanel>
       <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🦜 Bird
+        🦊 Fox
       </Heading>
-      <Paragraph>
-        Birds, also known as Aves or avian dinosaurs, are a group of endothermic
-        vertebrates, characterised by feathers, toothless beaked jaws, the
-        laying of hard-shelled eggs, a high metabolic rate, a four-chambered
-        heart, and a strong yet lightweight skeleton. Birds live worldwide and
-        range in size from the 5 cm (2 in) bee hummingbird to the 2.75 m (9 ft)
-        ostrich. They rank as the world's most numerically successful class of
-        tetrapods, with approximately ten thousand living species, more than
-        half of these being passerine, or "perching" birds.
-      </Paragraph>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐵 Monkey
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🦁 Lion
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐷 Pig
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐸 Frog
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐭 Mouse
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐻 Bear
+      </Heading>
+    </TabPanel>
+    <TabPanel>
+      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
+        🐮 Cow
+      </Heading>
     </TabPanel>
   </TabPanels>
 </Tabs>
@@ -117,22 +132,28 @@ Using the distribute prop on `TabList` will equally distributed each `Tab` in th
 </Tabs>
 ```
 
-## Tab using Hooks
+## Controlled Tab
 
 ```jsx
 ;() => {
-  const tab = useTabs()
+  const [currentTabIndex, setTab] = useState(0)
+
   return (
-    <div>
-      <TabList {...tab}>
-        <Tab>Tab Hook 1</Tab>
-        <Tab>Tab Hook 2</Tab>
-      </TabList>
-      <TabPanels {...tab}>
-        <TabPanel>1 this is the panel of tab hook 1</TabPanel>
-        <TabPanel>2 this is the panel of tab hook 2</TabPanel>
-      </TabPanels>
-    </div>
+    <>
+      <button onClick={() => setTab(0)}>Go to A</button>
+      <button onClick={() => setTab(1)}>Go to B</button>
+
+      <Tabs index={currentTabIndex} onChange={setTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
   )
 }
 ```

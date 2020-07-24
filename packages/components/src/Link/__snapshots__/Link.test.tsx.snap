@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Link Snapshot 1`] = `
-Array [
-  .c0 {
+.c0 {
   color: #0059b2;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -19,56 +18,9 @@ Array [
 }
 
 <a
-    className="c0"
-    href="https://looker.com"
-  >
-    Avocado
-  </a>,
-  .c0 {
-  color: #6C43E0;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:focus,
-.c0:hover,
-.c0:active,
-.c0.active,
-.c0:visited {
-  color: #7a55e3;
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-<a
-    className="c0"
-    href="https://looker.com"
-    keyColor={true}
-  >
-    Avocado
-  </a>,
-  .c0 {
-  color: #0059b2;
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c0:focus,
-.c0:hover,
-.c0:active,
-.c0.active,
-.c0:visited {
-  color: #00418c;
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-<a
-    className="c0"
-    href="https://looker.com"
-    underline={true}
-  >
-    Avocado
-  </a>,
-]
+  className="c0"
+  href="https://looker.com"
+>
+  Avocado
+</a>
 `;

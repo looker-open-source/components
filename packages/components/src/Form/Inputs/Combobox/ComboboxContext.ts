@@ -77,11 +77,14 @@ export interface ComboboxContextProps<
   setListClientRect?: Dispatch<SetStateAction<DOMRect | undefined>>
 }
 
-export type ComboboxMultiContextProps = ComboboxContextProps<
-  ComboboxMultiData,
-  ComboboxMultiCallback,
-  ComboboxTransition<ComboboxMultiActionPayload>
->
+export interface ComboboxMultiContextProps
+  extends ComboboxContextProps<
+    ComboboxMultiData,
+    ComboboxMultiCallback,
+    ComboboxTransition<ComboboxMultiActionPayload>
+  > {
+  freeInputPropRef?: MutableRefObject<boolean>
+}
 
 export const defaultData: ComboboxData = {
   // the value the user has typed, we derived this also when the developer is
