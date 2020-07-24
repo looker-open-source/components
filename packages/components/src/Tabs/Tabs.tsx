@@ -29,7 +29,7 @@ import React, { Children, cloneElement, FC, useRef, useState } from 'react'
 export interface UseTabsProps {
   controlledIndex?: number
   defaultIndex?: number
-  index?: number | undefined
+  index?: number
   isControlled?: boolean
   onChange?: (index: number) => void
 }
@@ -52,7 +52,8 @@ export function useTabs(props?: UseTabsProps) {
         setSelectedIndex(index)
       }
     },
-    selectedIndex,
+    selectedIndex:
+      isControlled && props ? props.controlledIndex : selectedIndex,
   }
 }
 
@@ -78,7 +79,12 @@ export const Tabs: FC<TabsProps> = ({
   }
   /* eslint-enable no-console */
 
-  const tabs = useTabs({ defaultIndex, isControlled, onChange })
+  const tabs = useTabs({
+    controlledIndex,
+    defaultIndex,
+    isControlled,
+    onChange,
+  })
 
   const clonedChildren = Children.map(children, (child: JSX.Element) => {
     return cloneElement(child, tabs)
