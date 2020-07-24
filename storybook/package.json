@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "start-storybook -p 3333",
+    "start": "start-storybook -p 3333  --host 0.0.0.0",
     "build": "build-storybook -c .storybook -o ../docs/static/storybook"
   },
   "dependencies": {
