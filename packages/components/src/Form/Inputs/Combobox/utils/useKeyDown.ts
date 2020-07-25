@@ -172,7 +172,7 @@ export function useKeyDown() {
       }
       case 'Escape': {
         if (state !== ComboboxState.IDLE) {
-          transition && transition(ComboboxActionType.ESCAPE)
+          // transition && transition(ComboboxActionType.ESCAPE)
         }
         break
       }
