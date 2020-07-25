@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `AvatarCombo`, `AvatarIcon` & `AvatarUser` now supports `role="button"`
+  - Added support for common DOM properties and event handlers (e.g.: `onClick`)
+  - Improved a11y for all `Avatar*` components
+  - Added Storybook with knobs
 - `IconButton` now supports `tooltipWidth` property
 - `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
 - New `Icon` artwork `Logout`, `AddComment`, `Comment`, `Feedback`
