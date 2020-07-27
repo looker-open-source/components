@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 
+### Changed
+
+- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+
 ## [0.9.7] - 2020-07-27
 
 ### Added
