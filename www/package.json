@@ -13,7 +13,7 @@
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-helmet": "^6.0.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.24.7",
+    "gatsby": "^2.24.11",
     "gatsby-plugin-manifest": "^2.4.11",
     "gatsby-plugin-mdx": "^1.2.27",
     "gatsby-plugin-react-helmet": "^3.3.10",
