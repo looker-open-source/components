@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.7] - 2020-07-27
 
 ### Added
 
@@ -14,25 +14,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved a11y for all `Avatar*` components
   - Added Storybook with knobs
 - `IconButton` now supports `tooltipWidth` property
+- `MenuItem` updated to support `iconArtwork` in addition to `icon`
 - `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
 - New `Icon` artwork `Logout`, `AddComment`, `Comment`, `Feedback`
 
 ### Changed
 
-- update MenuItem to support Artwork
+- `Accordion` added accessibility improvements
+- `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
+  - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
 - `MenuDisclosure` - tooltip placement now defaults to `bottom`
 - `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
 - update `Tab` to scroll left to right when overflow
 - `theme` "pressed" colors are more discernable from other stateful colors
-- `Accordion` added accessibility improvements
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
 - `theme.colors.textX` restructured
   - `text1-5` now go from lightest to darkest to match `ui1-5`
   - Reduced number of steps:
     - `text0` is now `text5` (consolidated the former `text0` & `text1`)
     - `text6` is now `text1` (consolidated the former `text6` & `text5`)
-- `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
-  - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
 
 ### Fixed
 
