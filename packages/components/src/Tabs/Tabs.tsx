@@ -25,10 +25,12 @@
  */
 
 import React, { Children, cloneElement, FC, useRef, useState } from 'react'
+import { useID } from '../utils/useID'
 
 export interface UseTabsProps {
   controlledIndex?: number
   defaultIndex?: number
+  id?: string
   index?: number
   isControlled?: boolean
   onChange?: (index: number) => void
@@ -59,11 +61,14 @@ export function useTabs(props?: UseTabsProps) {
 
 export const Tabs: FC<TabsProps> = ({
   children,
+  id: propsID,
   index: controlledIndex,
   defaultIndex,
   onChange,
 }) => {
   const { current: isControlled } = useRef(controlledIndex !== undefined)
+  const listID = useID(propsID)
+  const panelID = useID(propsID)
 
   /* eslint-disable no-console */
   if (!isControlled && controlledIndex !== undefined) {

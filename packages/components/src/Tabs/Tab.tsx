@@ -116,18 +116,19 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
     }
     setFocusVisible(false)
   }
-
+  // href="#section1" id="tab1" aria-selected="true"
   return (
     <TabStyle
+      disabled={disabled}
       focusVisible={isFocusVisible}
-      onKeyUp={handleOnKeyUp}
       onBlur={handleOnBlur}
       onClick={onClick}
-      disabled={disabled}
-      {...restProps}
+      onKeyUp={handleOnKeyUp}
       ref={ref}
+      role="presentation"
+      {...restProps}
     >
-      {children}
+      <a role="tab">{children}</a>
     </TabStyle>
   )
 })

@@ -82,7 +82,9 @@ const distributeCSS = css`
 
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  display: flex;
   overflow-x: auto;
+  text-align: center;
   white-space: nowrap;
 
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
