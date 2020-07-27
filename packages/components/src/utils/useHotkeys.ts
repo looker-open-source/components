@@ -24,7 +24,7 @@
 
  */
 
-import { useHotkeys as useHotkeysDep } from 'react-hotkeys-hook'
+import { useHotkeys as useHotkeysHook } from 'react-hotkeys-hook'
 import { MutableRefObject } from 'react'
 import get from 'lodash/get'
 import set from 'lodash/set'
@@ -125,5 +125,5 @@ export const useHotkeys = (
     //   // cb()
     // }
   }
-  useHotkeysDep(keyCommand, wrappedCb)
+  useHotkeysHook(keyCommand, wrappedCb)
 }
