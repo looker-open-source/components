@@ -47,7 +47,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { useForkedRef, useHotkeys } from '../utils'
+import { useHotkeys } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -100,7 +100,6 @@ export const MenuListInternal = forwardRef(
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const wrapperRef = useRef<null | HTMLDivElement>(null)
-    const ref = useForkedRef(forwardedRef, wrapperRef)
 
     const context = {
       compact,
@@ -117,16 +116,18 @@ export const MenuListInternal = forwardRef(
 
     const menuList = (
       <MenuItemContext.Provider value={context}>
-        <ul
-          ref={ref}
-          tabIndex={-1}
-          role="menu"
-          id={id}
-          aria-labelledby={id && `button-${id}`}
-          {...omitStyledProps(omit(props, 'groupDividers'))}
-        >
-          {children}
-        </ul>
+        <div ref={wrapperRef}>
+          <ul
+            ref={forwardedRef}
+            tabIndex={-1}
+            role="menu"
+            id={id}
+            aria-labelledby={id && `button-${id}`}
+            {...omitStyledProps(omit(props, 'groupDividers'))}
+          >
+            {children}
+          </ul>
+        </div>
       </MenuItemContext.Provider>
     )
 

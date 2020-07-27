@@ -104,7 +104,7 @@ export const IconSpace = () => (
   <div>
     <Menu>
       <MenuDisclosure>
-        <Button>Icon Space Preseved</Button>
+        <Button>Icon Space Preserved</Button>
       </MenuDisclosure>
       <MenuList>
         <MenuItem icon="User">Hello</MenuItem>
@@ -123,14 +123,14 @@ export const IconSpace = () => (
     </MenuList>
 
     <Divider />
-
+    {/*
     <MenuList compact>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
       <MenuGroup label="MenuGroup with 1 Item">
         <MenuItem>Pizza!</MenuItem>
       </MenuGroup>
-    </MenuList>
+    </MenuList> */}
   </div>
 )
 
@@ -185,7 +185,7 @@ export const RealisticMenus = () => {
       <Menu>
         <MenuDisclosure>
           <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
-            Icon Space Preseved
+            Icon Space Preserved
           </IconButton>
         </MenuDisclosure>
         <MenuList>
@@ -220,7 +220,7 @@ export const RealisticMenus = () => {
       <Menu>
         <MenuDisclosure>
           <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
-            Icon Space Preseved
+            Icon Space Preserved
           </IconButton>
         </MenuDisclosure>
         <MenuList compact>

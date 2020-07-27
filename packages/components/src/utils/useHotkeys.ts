@@ -87,7 +87,7 @@ const organizeEventsList = (shortcut: string) => {
 
 const executeStackedKeyCommand = debounce(
   (e: KeyboardEvent, cbStack: Event[]) => {
-    cbStack[0].cb(e)
+    cbStack[0] && cbStack[0].cb(e)
   },
   50
 )
