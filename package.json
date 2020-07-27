@@ -54,7 +54,7 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "@babel/runtime": "^7.10.4",
+    "@babel/runtime": "^7.10.5",
     "@babel/runtime-corejs3": "^7.10.3",
     "@testing-library/jest-dom": "^5.11.1",
     "@types/node": "^14.0.23",
