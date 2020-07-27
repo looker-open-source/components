@@ -52,7 +52,11 @@ const TabListLayout: FC<TabListProps> = ({
       })
     }
   )
-  return <div className={className}>{clonedChildren}</div>
+  return (
+    <ul role="tabs" className={className}>
+      {clonedChildren}
+    </ul>
+  )
 }
 
 const defaultLayoutCSS = css`

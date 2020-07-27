@@ -62,9 +62,9 @@ const Layout: FC<TabPanelsProps> = ({
   )
 
   return (
-    <div className={className} {...tabPanelsLayoutProps}>
+    <section role="tabpanel" className={className} {...tabPanelsLayoutProps}>
       {clonedChildren}
-    </div>
+    </section>
   )
 }
 

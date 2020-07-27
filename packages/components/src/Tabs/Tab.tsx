@@ -39,7 +39,7 @@ import {
 } from '@looker/design-tokens'
 
 export interface TabProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+  extends Omit<CompatibleHTMLProps<HTMLLIElement>, 'type'>,
     LayoutProps,
     SpaceProps,
     TypographyProps {
@@ -49,7 +49,7 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const TabStyle = styled.button<TabProps>`
+const TabStyle = styled.li<TabProps>`
   ${reset}
   ${layout}
   ${space}
@@ -95,17 +95,17 @@ const TabStyle = styled.button<TabProps>`
   }
 `
 
-const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
+const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
   const { children, disabled, onBlur, onKeyUp, onSelect, ...restProps } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
     setFocusVisible(true)
     onKeyUp && onKeyUp(event)
   }
 
-  const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+  const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
