@@ -28,6 +28,7 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import { useID } from '../utils/useID'
+import { ActionListControlBar } from './ActionListControlBar'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -179,7 +180,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <div className={className}>
         {actionListHeader}
         {bulkActions && itemsSelected.length > 0 && (
-          <ActionListControlBar>
+          <ActionListControlBar actions={bulkActions}>
             <button>Bulk Actions</button>
           </ActionListControlBar>
         )}
@@ -188,18 +189,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     </ActionListContext.Provider>
   )
 }
-
-// TODO: Turn this into own component file
-const ActionListControlBar = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutralSubtle};
-  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
-  padding: ${({ theme }) => {
-    // TODO: Export this width from Checkbox.tsx
-    const checkboxInputWidth = '1rem'
-    const actionListCheckboxWidth = '2.75rem'
-    return `${theme.space.small} calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2)`
-  }};
-`
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListRowColumns} {

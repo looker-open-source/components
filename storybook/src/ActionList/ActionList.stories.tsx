@@ -70,7 +70,6 @@ export const Basic = () => {
 
   return (
     <ActionList
-      bulkActions={<div></div>}
       canSelect
       onClickRowSelect
       onSelect={onSelect}
@@ -187,6 +186,43 @@ export const Sortable = () => {
 
   return (
     <ActionList onSort={onSort} columns={columns}>
+      {items}
+    </ActionList>
+  )
+}
+
+export const BulkActions = () => {
+  const [selections, setSelections] = useState([] as string[])
+  const onSelect = (selection: string) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+
+  const allSelectableItems = data
+    .map(({ disabled, pdtName }) => !disabled && pdtName)
+    .filter((element) => element) as string[]
+
+  const onSelectAll = () =>
+    setSelections(selections.length ? [] : allSelectableItems)
+
+  return (
+    <ActionList
+      bulkActions={
+        <ActionListItemAction onClick={() => alert('Performed a bulk action!')}>
+          Some bulk action
+        </ActionListItemAction>
+      }
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
+      headerRowId="all-pdts"
+    >
       {items}
     </ActionList>
   )
