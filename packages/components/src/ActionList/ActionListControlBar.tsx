@@ -34,6 +34,14 @@ interface ActionListControlBarProps {
   actions?: ReactNode
 }
 
+const ControlBarText = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+const bulkActionsButtonWidth = '10rem'
+
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
@@ -42,21 +50,34 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     <div className={className}>
       <Menu>
         <MenuDisclosure>
-          <Button iconAfter="ArrowDown">Bulk Actions</Button>
+          <Button minWidth={bulkActionsButtonWidth} iconAfter="ArrowDown">
+            Bulk Actions
+          </Button>
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
+      <ControlBarText>
+        If you like it should you put a ring on it.
+      </ControlBarText>
     </div>
   )
 }
 
 export const ActionListControlBar = styled(ActionListControlBarLayout)`
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.neutralSubtle};
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
-  padding: ${({ theme }) => {
+  display: flex;
+  padding: ${({ theme }) => theme.space.small};
+  padding-left: ${() => {
     // TODO: Export this width from Checkbox.tsx
     const checkboxInputWidth = '1rem'
     const actionListCheckboxWidth = '2.75rem'
-    return `${theme.space.small} calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2)`
+    return `calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2)`
+  }};
+  padding-right: ${() => {
+    const checkboxInputWidth = '1rem'
+    const actionListCheckboxWidth = '2.75rem'
+    return `calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2 + ${bulkActionsButtonWidth})`
   }};
 `

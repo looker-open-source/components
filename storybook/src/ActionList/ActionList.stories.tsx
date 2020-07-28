@@ -192,7 +192,10 @@ export const Sortable = () => {
 }
 
 export const BulkActions = () => {
-  const [selections, setSelections] = useState([] as string[])
+  const [selections, setSelections] = useState<string[]>([
+    'my_great_pdt_name',
+    'my_other_great_pdt_name',
+  ])
   const onSelect = (selection: string) => {
     setSelections(
       selections.includes(selection)
