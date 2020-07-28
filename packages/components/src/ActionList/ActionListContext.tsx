@@ -25,6 +25,7 @@
  */
 
 import { createContext } from 'react'
+import noop from 'lodash/noop'
 import { MixedBoolean } from '../Form'
 import { ActionListColumns } from './ActionList'
 
@@ -42,11 +43,7 @@ export interface ActionListContextProps {
 }
 
 export const ActionListContext = createContext<ActionListContextProps>({
-  addItemToAllItems: (id: string) => {
-    // Using noop; addItemToAllItems is passed from ActionList component into context
-    // eslint-disable-next-line no-console
-    console.log(id)
-  },
+  addItemToAllItems: (id: string) => noop(id),
   allItems: [],
   canSelect: false,
   itemsSelected: [],
