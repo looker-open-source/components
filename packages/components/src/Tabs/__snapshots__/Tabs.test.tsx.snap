@@ -11,14 +11,14 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   background: transparent;
   border: none;
   border-bottom: 3px solid;
-  border-bottom-color: #6C43E0;
+  border-bottom-color: transparent;
   border-radius: 0;
-  color: #262D33;
+  color: #707781;
   cursor: pointer;
 }
 
 .c0:active {
-  border-bottom-color: #6C43E0;
+  border-bottom-color: #707781;
 }
 
 .c0:active,
@@ -31,7 +31,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 }
 
 .c0:hover {
-  border-bottom-color: #6C43E0;
+  border-bottom-color: #C1C6CC;
 }
 
 .c0:disabled {
@@ -49,9 +49,15 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 }
 
 <button
+  aria-controls="panel-undefined"
+  aria-orientation="horizontal"
+  aria-selected="true"
   class="c0 c1 "
   font-size="small"
   font-weight="semiBold"
+  id="tab-undefined"
+  role="tab"
+  tabindex="0"
 >
   tab1
 </button>
@@ -105,9 +111,15 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 <button
+  aria-controls="panel-undefined"
+  aria-orientation="horizontal"
+  aria-selected="false"
   class="c0 c1 "
   font-size="small"
   font-weight="semiBold"
+  id="tab-undefined"
+  role="tab"
+  tabindex="-1"
 >
   tab2
 </button>

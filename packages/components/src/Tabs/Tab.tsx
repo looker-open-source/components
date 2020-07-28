@@ -45,6 +45,7 @@ export interface TabProps
     TypographyProps {
   disabled?: boolean
   focusVisible?: boolean
+  index?: number
   selected?: boolean
   onSelect?: () => void
 }
@@ -96,7 +97,16 @@ const TabStyle = styled.button<TabProps>`
 `
 
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
-  const { children, disabled, onBlur, onKeyUp, onSelect, ...restProps } = props
+  const {
+    children,
+    disabled,
+    index,
+    onBlur,
+    onKeyUp,
+    onSelect,
+    selected,
+    ...restProps
+  } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
@@ -116,16 +126,23 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     }
     setFocusVisible(false)
   }
+  const tabindex = selected ? 0 : -1
 
   return (
     <TabStyle
+      aria-controls={`panel-${index}`}
+      aria-orientation="horizontal"
+      aria-selected={selected}
+      disabled={disabled}
       focusVisible={isFocusVisible}
-      onKeyUp={handleOnKeyUp}
+      id={`tab-${index}`}
       onBlur={handleOnBlur}
       onClick={onClick}
-      disabled={disabled}
-      {...restProps}
+      onKeyUp={handleOnKeyUp}
       ref={ref}
+      role="tab"
+      tab-index={tabindex}
+      {...restProps}
     >
       {children}
     </TabStyle>
