@@ -110,20 +110,6 @@ export const useHotkeys = (
   const wrappedCb = (e: KeyboardEvent, handler: any) => {
     organizeEventsList(handler.shortcut)
     executeStackedKeyCommand(e, eventsList[handler.shortcut])
-
-    // TODO: support focus event (multiple menus)
-    // if (
-    //   containerRef.current &&
-    //   containerRef.current.contains(document.activeElement)
-    // ) {
-    //   // console.log('NEW EVENT', e.target)
-    //   // only fire event within active dom context
-    //   // cb(e)
-    // } else {
-    //   // console.log(containerRef.current, document.activeElement)
-    //   // console.log('NEW EVENT NOT NESTED')
-    //   // cb()
-    // }
   }
   useHotkeysHook(keyCommand, wrappedCb)
 }

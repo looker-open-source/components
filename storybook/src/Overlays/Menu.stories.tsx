@@ -123,14 +123,14 @@ export const IconSpace = () => (
     </MenuList>
 
     <Divider />
-    {/*
+
     <MenuList compact>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
       <MenuGroup label="MenuGroup with 1 Item">
         <MenuItem>Pizza!</MenuItem>
       </MenuGroup>
-    </MenuList> */}
+    </MenuList>
   </div>
 )
 

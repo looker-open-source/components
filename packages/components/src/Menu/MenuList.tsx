@@ -26,7 +26,14 @@
 
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
-import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
+import React, {
+  Ref,
+  forwardRef,
+  useRef,
+  useContext,
+  useState,
+  KeyboardEvent,
+} from 'react'
 import styled, { css } from 'styled-components'
 import {
   MaxHeightProps,
@@ -47,7 +54,6 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { useHotkeys } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -99,24 +105,31 @@ export const MenuListInternal = forwardRef(
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const wrapperRef = useRef<null | HTMLDivElement>(null)
-
-    const context = {
-      compact,
-      renderIconPlaceholder,
-      setRenderIconPlaceholder,
-    }
+    const wrapperRef = useRef<HTMLDivElement | null>(null)
 
     function handleArrowKey(direction: number, initial: number) {
       moveFocus(direction, initial, wrapperRef)
     }
 
-    useHotkeys('down', () => handleArrowKey(1, 0), wrapperRef)
-    useHotkeys('up', () => handleArrowKey(-1, -1), wrapperRef)
+    const context = {
+      compact,
+      handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(1, 0)
+        return false
+      },
+      handleArrowUp: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(-1, -1)
+        return false
+      },
+      renderIconPlaceholder,
+      setRenderIconPlaceholder,
+    }
 
     const menuList = (
-      <MenuItemContext.Provider value={context}>
-        <div ref={wrapperRef}>
+      <div ref={wrapperRef}>
+        <MenuItemContext.Provider value={context}>
           <ul
             ref={forwardedRef}
             tabIndex={-1}
@@ -127,8 +140,8 @@ export const MenuListInternal = forwardRef(
           >
             {children}
           </ul>
-        </div>
-      </MenuItemContext.Provider>
+        </MenuItemContext.Provider>
+      </div>
     )
 
     const isMenu = isOpen !== undefined
