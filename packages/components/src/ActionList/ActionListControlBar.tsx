@@ -26,7 +26,7 @@
 
 import React, { ReactNode, FC, useContext } from 'react'
 import styled from 'styled-components'
-import { Button } from '../Button'
+import { Button, ButtonTransparent } from '../Button'
 import { Space } from '../Layout'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { Text } from '../Text'
@@ -35,6 +35,9 @@ import { ActionListContext } from './ActionListContext'
 interface ActionListControlBarProps {
   className?: string
   actions?: ReactNode
+  onControlBarSelectAll?: () => void
+  totalItems?: number
+  totalVisibleItems?: number
 }
 
 const bulkActionsButtonWidth = '7.5rem'
@@ -42,24 +45,39 @@ const bulkActionsButtonWidth = '7.5rem'
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
+  onControlBarSelectAll,
+  totalItems,
+  totalVisibleItems,
 }) => {
-  const { allItems, itemsSelected } = useContext(ActionListContext)
+  const { itemsSelected } = useContext(ActionListContext)
+  const bulkActionsButton = (
+    <Button iconAfter="ArrowDown" minWidth={bulkActionsButtonWidth}>
+      <Text fontSize="xsmall">Bulk Actions</Text>
+    </Button>
+  )
+  const selectedItemsText = totalVisibleItems && (
+    <Text
+      color="text2"
+      fontSize="xsmall"
+    >{`${itemsSelected.length} of ${totalVisibleItems} displayed items selected`}</Text>
+  )
+  const selectAllResultsButton = totalItems && (
+    <ButtonTransparent onClick={onControlBarSelectAll}>
+      <Text fontWeight="semiBold" fontSize="xsmall">
+        {`Select all ${totalItems} results`}
+      </Text>
+    </ButtonTransparent>
+  )
+
   return (
     <div className={className}>
       <Menu>
-        <MenuDisclosure>
-          <Button iconAfter="ArrowDown" minWidth={bulkActionsButtonWidth}>
-            <Text fontSize="xsmall">Bulk Actions</Text>
-          </Button>
-        </MenuDisclosure>
+        <MenuDisclosure>{bulkActionsButton}</MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
-      <Space justifyContent="center">
-        <Text
-          color="text2"
-          fontSize="xsmall"
-        >{`${itemsSelected.length} of ${allItems.length} displayed items selected`}</Text>
-        <Text color="text2" fontSize="xsmall"></Text>
+      <Space gap="small" justifyContent="center">
+        {selectedItemsText}
+        {selectAllResultsButton}
       </Space>
     </div>
   )

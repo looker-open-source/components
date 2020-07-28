@@ -211,6 +211,8 @@ export const BulkActions = () => {
   const onSelectAll = () =>
     setSelections(selections.length ? [] : allSelectableItems)
 
+  const onControlBarSelectAll = () => setSelections(allSelectableItems)
+
   const onBulkActionClick = () => {
     alert(`Performing a bulk action on these items: \n${selections}`)
   }
@@ -223,12 +225,15 @@ export const BulkActions = () => {
         </ActionListItemAction>
       }
       canSelect
+      columns={columns}
+      headerRowId="all-pdts"
       onClickRowSelect
+      onControlBarSelectAll={onControlBarSelectAll}
       onSelect={onSelect}
       onSelectAll={onSelectAll}
       itemsSelected={selections}
-      columns={columns}
-      headerRowId="all-pdts"
+      totalItems={items.length}
+      totalVisibleItems={items.length}
     >
       {items}
     </ActionList>

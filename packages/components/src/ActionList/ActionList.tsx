@@ -119,6 +119,22 @@ export interface ActionListProps {
    * Note: If undefined, this will be auto-generated
    */
   headerRowId?: string
+  /**
+   * The total number of items, both visible and nonvisible, in this Action List
+   * Primary purpose is to set the text of the Control Bar's primary action
+   * Note: This should NOT include disabled items
+   */
+  totalItems?: number
+  /**
+   * The total number of visible items
+   * Primary purpose is to set the text of the Control Bar's "displayed items selected" text
+   * Note: This should NOT include disabled items
+   */
+  totalVisibleItems?: number
+  /**
+   * Triggered when the user presses on the "Select all X results" button in the control bar
+   */
+  onControlBarSelectAll?: () => void
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
@@ -126,14 +142,17 @@ export const ActionListLayout: FC<ActionListProps> = ({
   canSelect = false,
   className,
   header = true,
+  headerRowId,
   children,
   columns,
   itemsSelected = [],
   onClickRowSelect = false,
+  onControlBarSelectAll,
   onSelect,
   onSelectAll,
   onSort,
-  headerRowId,
+  totalItems,
+  totalVisibleItems,
 }) => {
   const [allItems, setAllItems] = useState<string[]>([])
 
@@ -181,7 +200,12 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <div className={className}>
         {actionListHeader}
         {bulkActions && itemsSelected.length > 0 && (
-          <ActionListControlBar actions={bulkActions} />
+          <ActionListControlBar
+            actions={bulkActions}
+            onControlBarSelectAll={onControlBarSelectAll}
+            totalItems={totalItems}
+            totalVisibleItems={totalVisibleItems}
+          />
         )}
         <div>{children}</div>
       </div>
