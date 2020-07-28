@@ -70,6 +70,7 @@ export const Basic = () => {
 
   return (
     <ActionList
+      bulkActions={<div></div>}
       canSelect
       onClickRowSelect
       onSelect={onSelect}

@@ -79,6 +79,10 @@ export interface ActionListProps {
   columns: ActionListColumns
   className?: string
   /**
+   * Bulk actions that are available when one or more items are selected
+   */
+  bulkActions?: ReactNode
+  /**
    * @default: true
    */
   header?: boolean | ReactNode
@@ -117,6 +121,7 @@ export interface ActionListProps {
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
+  bulkActions,
   canSelect = false,
   className,
   header = true,
@@ -173,11 +178,19 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       <div className={className}>
         {actionListHeader}
+        {bulkActions && itemsSelected.length > 0 && (
+          <ActionListControlBar>ZeControlBar</ActionListControlBar>
+        )}
         <div>{children}</div>
       </div>
     </ActionListContext.Provider>
   )
 }
+
+// TODO: Turn this into own component file
+const ActionListControlBar = styled.div`
+  background-color: ${({ theme }) => theme.colors.neutralSubtle};
+`
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListRowColumns} {
