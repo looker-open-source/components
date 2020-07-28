@@ -35,6 +35,7 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { variant } from 'styled-system'
@@ -46,7 +47,9 @@ export type AvatarSizes =
   | SizeMedium
   | SizeLarge
 
-export interface AvatarProps extends SpaceProps {
+export interface AvatarProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLElement> {
   className?: string
   /**
    *  @default `key`
@@ -57,6 +60,12 @@ export interface AvatarProps extends SpaceProps {
    * @default "small"
    */
   size?: AvatarSizes | string
+
+  /**
+   * Render as a button instead of a div
+   * @default false (renders as <div />)
+   */
+  role?: 'button'
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -100,8 +109,15 @@ export const avatarCSS = css`
   ${size}
 
   align-items: center;
+  border: none;
+  /* Need this in case Avatar is rendered as a <button /> */
   border-radius: 100%;
+  ${({ role }: AvatarProps) => role === 'button' && 'cursor: pointer;'}
   display: grid;
   justify-items: center;
   overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
 `

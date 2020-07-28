@@ -198,6 +198,27 @@ describe('Popover', () => {
     expect(doThing).toBeCalledTimes(0)
   })
 
+  test('With cancelClickOutside = false, open popover does not cancel click event', () => {
+    const doThing = jest.fn()
+
+    const { getByText, queryByText } = renderWithTheme(
+      <>
+        <Popover content={SimpleContent} cancelClickOutside={false}>
+          <button>Instant Click</button>
+        </Popover>
+        <a onClick={doThing}>Do thing...</a>
+      </>
+    )
+
+    const trigger = getByText('Instant Click')
+    fireEvent.click(trigger) // open Popover
+
+    const closer = getByText('Do thing...')
+    fireEvent.click(closer)
+    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(doThing).toBeCalledTimes(1)
+  })
+
   test('Popover Group - item outside group does NOT receive first click event', () => {
     const { getByText, queryByText } = renderWithTheme(<PopoverGroup />)
     const trigger = getByText('Instant Click')

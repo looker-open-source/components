@@ -24,7 +24,8 @@
 
  */
 
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'
 import { AvatarIcon } from './AvatarIcon'
@@ -32,66 +33,107 @@ import { AvatarUser } from './AvatarUser'
 
 /*  eslint-disable @typescript-eslint/camelcase */
 
-test('AvatarCombo renders Avatar and its secondary avatar', () => {
-  const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    last_name: 'Smith',
-  }
-  assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
-})
+describe('Avatar', () => {
+  describe('AvatarCombo', () => {
+    test('renders Avatar and its secondary avatar', () => {
+      const data = {
+        avatar_url:
+          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+        first_name: 'John',
+        last_name: 'Smith',
+      }
+      assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
+    })
 
-test('AvatarCombo renders Avatar initials and secondary with Code icon', () => {
-  const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    last_name: 'Smith',
-  }
-  assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
-})
+    test('renders Avatar initials and secondary with Code icon', () => {
+      const data = {
+        avatar_url:
+          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+        first_name: 'John',
+        last_name: 'Smith',
+      }
+      assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
+    })
 
-test('AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed.', () => {
-  assertSnapshot(<AvatarCombo secondaryIcon="LogoRings" />)
-})
+    test('renders AvatarIcon and secondary avatar if user is not available and updates icon if passed.', () => {
+      assertSnapshot(<AvatarCombo secondaryIcon="LogoRings" />)
+    })
 
-test('AvatarIcon renders ', () => {
-  assertSnapshot(<AvatarIcon />)
-})
+    test('supports role as button & onClick event', () => {
+      const fauxOnClick = jest.fn()
+      renderWithTheme(<AvatarCombo onClick={fauxOnClick} role="button" />)
 
-test('AvatarIcon renders different icon if specified', () => {
-  assertSnapshot(<AvatarIcon icon="Code" />)
-})
+      const button = screen.getByRole('button')
 
-test('AvatarUser shows user profile picture if it has good avatar_url ', () => {
-  const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    last_name: 'Smith',
-  }
+      expect(button).toBeInTheDocument()
+      fireEvent.click(button)
+      expect(fauxOnClick.mock.calls.length).toBe(1)
+    })
+  })
 
-  assertSnapshot(<AvatarUser user={data} />)
-})
+  describe('AvatarIcon', () => {
+    test('renders ', () => {
+      assertSnapshot(<AvatarIcon />)
+    })
 
-test('AvatarUser shows initials if has broken url as avatar_url', () => {
-  const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    last_name: 'Smith',
-  }
+    test('supports role as button & onClick event', () => {
+      const fauxOnClick = jest.fn()
+      renderWithTheme(<AvatarIcon onClick={fauxOnClick} role="button" />)
 
-  assertSnapshot(<AvatarUser user={data} />)
-})
+      const button = screen.getByRole('button')
 
-test('AvatarUser shows initials if it has null as avatar_url ', () => {
-  const data = {
-    avatar_url: null,
-    first_name: 'John',
-    last_name: 'Smith',
-  }
+      expect(button).toBeInTheDocument()
+      fireEvent.click(button)
+      expect(fauxOnClick.mock.calls.length).toBe(1)
+    })
 
-  assertSnapshot(<AvatarUser user={data} />)
+    test('renders different icon if specified', () => {
+      assertSnapshot(<AvatarIcon icon="Code" />)
+    })
+  })
+
+  describe('AvatarUser', () => {
+    test('shows user profile picture if it has good avatar_url ', () => {
+      const data = {
+        avatar_url:
+          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+        first_name: 'John',
+        last_name: 'Smith',
+      }
+
+      assertSnapshot(<AvatarUser user={data} />)
+    })
+
+    test('shows initials if has broken url as avatar_url', () => {
+      const data = {
+        avatar_url:
+          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+        first_name: 'John',
+        last_name: 'Smith',
+      }
+
+      assertSnapshot(<AvatarUser user={data} />)
+    })
+
+    test('shows initials if it has null as avatar_url ', () => {
+      const data = {
+        avatar_url: null,
+        first_name: 'John',
+        last_name: 'Smith',
+      }
+
+      assertSnapshot(<AvatarUser user={data} />)
+    })
+  })
+
+  test('supports role as button & onClick event', () => {
+    const fauxOnClick = jest.fn()
+    renderWithTheme(<AvatarUser onClick={fauxOnClick} role="button" />)
+
+    const button = screen.getByRole('button')
+
+    expect(button).toBeInTheDocument()
+    fireEvent.click(button)
+    expect(fauxOnClick.mock.calls.length).toBe(1)
+  })
 })

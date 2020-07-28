@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/looker-open-source/eslint-config.git"
   },
-  "version": "0.9.6",
+  "version": "0.9.7",
   "bugs": {
     "url": "https://github.com/looker-open-source/eslint-config/issues"
   },
@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@types/vfile-message": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^3.6.1",
-    "@typescript-eslint/parser": "^3.6.1",
-    "eslint": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-import-resolver-typescript": "^2.0.0",
@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "eslint-plugin-standard": "^4.0.1",
     "prettier": "^2.0.5",

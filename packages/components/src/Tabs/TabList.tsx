@@ -55,25 +55,31 @@ const TabListLayout: FC<TabListProps> = ({
   return <div className={className}>{clonedChildren}</div>
 }
 
-const distributeTabsCSS = css`
-  column-gap: ${(props) => props.theme.space.medium};
+const defaultLayoutCSS = css`
+  ${Tab} {
+    min-width: 3rem;
+  }
+
+  ${Tab} + ${Tab} {
+    margin-left: ${(props) => props.theme.space.xlarge};
+  }
+`
+
+const distributeCSS = css`
   display: grid;
-  grid-gap: ${(props) => props.theme.space.none};
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(${(props) => props.theme.space.xlarge}, auto)
-  );
+  grid-auto-flow: column;
 
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
-    margin-left: ${(props) => props.theme.space.none};
-    padding: ${(props) => props.theme.space.none}
-      ${(props) => props.theme.space.medium}
-      ${(props) => props.theme.space.xsmall};
+    padding: ${({ theme: { space } }) =>
+      `${space.none} ${space.medium} ${space.xsmall}`};
   }
 `
 
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
-  ${({ distribute }) => distribute && distributeTabsCSS}
+  overflow-x: auto;
+  white-space: nowrap;
+
+  ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `

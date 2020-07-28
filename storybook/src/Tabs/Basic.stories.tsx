@@ -24,41 +24,38 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import React, { FC } from 'react'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
 
-import { MenuItem } from './MenuItem'
+export default {
+  decorators: [withKnobs],
+  title: 'Tabs/Basic',
+}
 
-describe('MenuItem', () => {
-  test('MenuItem renders', () => {
-    renderWithTheme(<MenuItem>who!</MenuItem>)
-    expect(screen.getByText('who!')).toBeVisible()
-  })
+const defaults = {
+  distribute: true,
+  prefixName: 'My Awesome Tab',
+  tabs: 20,
+}
 
-  test('MenuItem - detail', () => {
-    renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
-  })
+export const Basic: FC = () => {
+  const tabs = new Array(number('# of Tabs', defaults.tabs)).fill('tab')
 
-  test('MenuItem - icon', () => {
-    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
-  })
-
-  test('MenuItem - artwork', () => {
-    renderWithTheme(
-      <MenuItem
-        iconArtwork={
-          <svg xmlns="http://www.w3.org/2000/svg">
-            <title>SVG Title Here</title>
-          </svg>
-        }
-      >
-        Artwork
-      </MenuItem>
-    )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
-  })
-})
+  return (
+    <Tabs>
+      <TabList distribute={boolean('Distribute', defaults.distribute)}>
+        {tabs.map((_k, index) => (
+          <Tab key={index}>
+            {text('Prefix Tab Text', defaults.prefixName)} {index}
+          </Tab>
+        ))}
+      </TabList>
+      <TabPanels>
+        {tabs.map((_k, index) => (
+          <TabPanel key={index}>This is {index}</TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
+  )
+}

@@ -141,7 +141,9 @@ export const InputChipsInternal = forwardRef(
       if (!isControlled) {
         setUncontrolledValue(val)
       }
-      onInputChange && onInputChange(val)
+      if (val !== inputValue) {
+        onInputChange && onInputChange(val)
+      }
     }
 
     function updateValues(newInputValue?: string) {
@@ -150,12 +152,7 @@ export const InputChipsInternal = forwardRef(
         invalidValues,
         unusedValues,
         validValues,
-      } = getUpdatedValues(
-        // TypeScript can't tell that inputValue won't be undefined
-        newInputValue || inputValue,
-        values,
-        validate
-      )
+      } = getUpdatedValues(newInputValue || inputValue, values, validate)
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')

@@ -24,41 +24,39 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import React, { FC, useState } from 'react'
+import {
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Space,
+} from '@looker/components'
 
-import { MenuItem } from './MenuItem'
+export default {
+  title: 'Tabs/Controlled',
+}
 
-describe('MenuItem', () => {
-  test('MenuItem renders', () => {
-    renderWithTheme(<MenuItem>who!</MenuItem>)
-    expect(screen.getByText('who!')).toBeVisible()
-  })
+export const Controlled: FC = () => {
+  const [currentTabIndex, setTab] = useState(0)
 
-  test('MenuItem - detail', () => {
-    renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
-  })
-
-  test('MenuItem - icon', () => {
-    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
-  })
-
-  test('MenuItem - artwork', () => {
-    renderWithTheme(
-      <MenuItem
-        iconArtwork={
-          <svg xmlns="http://www.w3.org/2000/svg">
-            <title>SVG Title Here</title>
-          </svg>
-        }
-      >
-        Artwork
-      </MenuItem>
-    )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
-  })
-})
+  return (
+    <>
+      <Space>
+        <button onClick={() => setTab(0)}>Go to A</button>
+        <button onClick={() => setTab(1)}>Go to B</button>
+      </Space>
+      <Tabs index={currentTabIndex} onChange={setTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
+}
