@@ -81,5 +81,5 @@ export const Sortable = () => {
 }
 
 export default {
-  title: 'ActionList/Sortable',
+  title: 'ActionList',
 }

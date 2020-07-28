@@ -24,20 +24,16 @@
 
  */
 
+import { ActionList } from '@looker/components'
 import React, { useState } from 'react'
-import {
-  ActionList,
-  ActionListManager,
-  Icon,
-  Heading,
-  SpaceVertical,
-} from '@looker/components'
-import { withKnobs, boolean } from '@storybook/addon-knobs'
-
 import { columns, data } from './data'
 import { items } from './items'
 
-export const Manager = () => {
+export default {
+  title: 'ActionList',
+}
+
+export const Basic = () => {
   const [selections, setSelections] = useState([] as string[])
   const onSelect = (selection: string) => {
     setSelections(
@@ -54,33 +50,16 @@ export const Manager = () => {
   const onSelectAll = () =>
     setSelections(selections.length ? [] : allSelectableItems)
 
-  const noResultsDisplay = boolean('Custom "noResultsDisplay"', true) && (
-    <SpaceVertical align="center">
-      <Icon size="xlarge" name="Beaker" color="key" />
-      <Heading>The mad scientists have nothing for you...</Heading>
-    </SpaceVertical>
-  )
-
   return (
-    <ActionListManager
-      isLoading={boolean('isLoading', false)}
-      noResults={boolean('noResults', false)}
-      noResultsDisplay={noResultsDisplay}
+    <ActionList
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
     >
-      <ActionList
-        canSelect
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
-        columns={columns}
-      >
-        {items}
-      </ActionList>
-    </ActionListManager>
+      {items}
+    </ActionList>
   )
-}
-
-export default {
-  decorators: [withKnobs],
-  title: 'ActionList/Manager',
 }

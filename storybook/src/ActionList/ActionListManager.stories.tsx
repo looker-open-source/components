@@ -24,16 +24,20 @@
 
  */
 
-import { ActionList } from '@looker/components'
 import React, { useState } from 'react'
+import {
+  ActionList,
+  ActionListManager,
+  Icon,
+  Heading,
+  SpaceVertical,
+} from '@looker/components'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
+
 import { columns, data } from './data'
 import { items } from './items'
 
-export default {
-  title: 'ActionList/Basic',
-}
-
-export const Basic = () => {
+export const Manager = () => {
   const [selections, setSelections] = useState([] as string[])
   const onSelect = (selection: string) => {
     setSelections(
@@ -50,16 +54,33 @@ export const Basic = () => {
   const onSelectAll = () =>
     setSelections(selections.length ? [] : allSelectableItems)
 
-  return (
-    <ActionList
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
+  const noResultsDisplay = boolean('Custom "noResultsDisplay"', true) && (
+    <SpaceVertical align="center">
+      <Icon size="xlarge" name="Beaker" color="key" />
+      <Heading>The mad scientists have nothing for you...</Heading>
+    </SpaceVertical>
   )
+
+  return (
+    <ActionListManager
+      isLoading={boolean('isLoading', false)}
+      noResults={boolean('noResults', false)}
+      noResultsDisplay={noResultsDisplay}
+    >
+      <ActionList
+        canSelect
+        onSelect={onSelect}
+        onSelectAll={onSelectAll}
+        itemsSelected={selections}
+        columns={columns}
+      >
+        {items}
+      </ActionList>
+    </ActionListManager>
+  )
+}
+
+export default {
+  decorators: [withKnobs],
+  title: 'ActionList',
 }
