@@ -45,6 +45,7 @@ export interface TabProps
     TypographyProps {
   disabled?: boolean
   focusVisible?: boolean
+  index?: number
   selected?: boolean
   onSelect?: () => void
 }
@@ -96,7 +97,16 @@ const TabStyle = styled.li<TabProps>`
 `
 
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
-  const { children, disabled, onBlur, onKeyUp, onSelect, ...restProps } = props
+  const {
+    children,
+    disabled,
+    index,
+    onBlur,
+    onKeyUp,
+    onSelect,
+    selected,
+    ...restProps
+  } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
@@ -116,19 +126,27 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
     }
     setFocusVisible(false)
   }
-  // href="#section1" id="tab1" aria-selected="true"
   return (
     <TabStyle
       disabled={disabled}
       focusVisible={isFocusVisible}
+      index={index}
       onBlur={handleOnBlur}
       onClick={onClick}
       onKeyUp={handleOnKeyUp}
       ref={ref}
       role="presentation"
+      selected={selected}
       {...restProps}
     >
-      <a role="tab">{children}</a>
+      <a
+        aria-selected={selected}
+        href={`tab${index}`}
+        id={`tab${index}`}
+        role="tab"
+      >
+        {children}
+      </a>
     </TabStyle>
   )
 })

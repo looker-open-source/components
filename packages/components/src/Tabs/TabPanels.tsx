@@ -62,7 +62,13 @@ const Layout: FC<TabPanelsProps> = ({
   )
 
   return (
-    <section role="tabpanel" className={className} {...tabPanelsLayoutProps}>
+    <section
+      aria-labelledby={`tab${selectedIndex}`}
+      className={className}
+      id={`tab${selectedIndex}`}
+      role="tabpanel"
+      {...tabPanelsLayoutProps}
+    >
       {clonedChildren}
     </section>
   )

@@ -46,6 +46,7 @@ const TabListLayout: FC<TabListProps> = ({
     children,
     (child: JSX.Element, index: number) => {
       return cloneElement(child, {
+        index,
         onSelect: () => onSelectTab && onSelectTab(index),
         selected: index === selectedIndex,
         selectedIndex,
