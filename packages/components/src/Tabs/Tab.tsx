@@ -50,53 +50,54 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const InnerTabStyle = styled.a<TabProps>`
-  color: ${(props) =>
-    props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
+const TabStyle = styled.li<TabProps>`
+    ${reset}
+    ${layout}
+    ${space}
+    ${typography}
+
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid;
+    border-bottom-color: ${(props) =>
+      props.selected ? props.theme.colors.key : 'transparent'};
+    border-radius: 0;
+
+  a {
+
+    color: ${(props) =>
+      props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
   cursor: pointer;
 
-  &:active {
-    border-bottom-color: ${(props) =>
-      props.selected ? props.theme.colors.key : props.theme.colors.text2};
+    &:active {
+      border-bottom-color: ${(props) =>
+        props.selected ? props.theme.colors.key : props.theme.colors.text2};
+    }
+
+    &:active,
+    &:hover {
+      border-bottom-color: transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    ${({ focusVisible, theme }) =>
+      focusVisible &&
+      `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`}
+
+    &:hover {
+      border-bottom-color: ${(props) =>
+        props.selected ? props.theme.colors.key : props.theme.colors.ui3};
+    }
+
+    &:disabled {
+      border-bottom-color: transparent;
+      color: ${({ theme }) => theme.colors.text1};
+      cursor: default;
+    }
   }
-
-  &:active,
-  &:hover {
-    border-bottom-color: transparent;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`}
-
-  &:hover {
-    border-bottom-color: ${(props) =>
-      props.selected ? props.theme.colors.key : props.theme.colors.ui3};
-  }
-
-  &:disabled {
-    border-bottom-color: transparent;
-    color: ${({ theme }) => theme.colors.text1};
-    cursor: default;
-  }
-`
-
-const OuterTabStyle = styled.li<TabProps>`
-  ${reset}
-  ${layout}
-  ${space}
-  ${typography}
-
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid;
-  border-bottom-color: ${(props) =>
-    props.selected ? props.theme.colors.key : 'transparent'};
-  border-radius: 0;
   `
 
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
@@ -131,7 +132,8 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
     setFocusVisible(false)
   }
   return (
-    <OuterTabStyle
+    <TabStyle
+      aria-orientation="horizontal"
       disabled={disabled}
       focusVisible={isFocusVisible}
       index={index}
@@ -139,19 +141,19 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
       onClick={onClick}
       onKeyUp={handleOnKeyUp}
       ref={ref}
-      role="presentation"
+      role="tablist"
       selected={selected}
       {...restProps}
     >
-      <InnerTabStyle
+      <a
         aria-selected={selected}
         href={`tab${index}`}
         id={`tab${index}`}
         role="tab"
       >
         {children}
-      </InnerTabStyle>
-    </OuterTabStyle>
+      </a>
+    </TabStyle>
   )
 })
 
