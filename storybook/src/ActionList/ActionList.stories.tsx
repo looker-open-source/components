@@ -208,10 +208,14 @@ export const BulkActions = () => {
   const onSelectAll = () =>
     setSelections(selections.length ? [] : allSelectableItems)
 
+  const onBulkActionClick = () => {
+    alert(`Performing a bulk action on these items: \n${selections}`)
+  }
+
   return (
     <ActionList
       bulkActions={
-        <ActionListItemAction onClick={() => alert('Performed a bulk action!')}>
+        <ActionListItemAction onClick={onBulkActionClick}>
           Some bulk action
         </ActionListItemAction>
       }
