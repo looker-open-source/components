@@ -24,97 +24,13 @@
 
  */
 
-import React, { useState } from 'react'
 import {
-  ActionList,
-  ActionListManager,
-  useActionListSortManager,
-  ActionListItemAction,
-  ActionListDatum,
   ActionListColumns,
-} from '@looker/components'
-import { columns, data } from './data'
-import { items } from './items'
-
-export const All = () => (
-  <>
-    <Basic />
-    <Manager />
-    <Sortable />
-  </>
-)
-
-export default {
-  component: All,
-  title: 'ActionList',
-}
-
-export const Basic = () => {
-  const [selections, setSelections] = useState([] as string[])
-  const onSelect = (selection: string) => {
-    setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
-  }
-
-  const allSelectableItems = data
-    .map(({ disabled, pdtName }) => !disabled && pdtName)
-    .filter((element) => element) as string[]
-
-  const onSelectAll = () =>
-    setSelections(selections.length ? [] : allSelectableItems)
-
-  return (
-    <ActionList
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
-      columns={columns}
-      headerRowId="all-pdts"
-    >
-      {items}
-    </ActionList>
-  )
-}
-
-export const Manager = () => {
-  const [selections, setSelections] = useState([] as string[])
-  const onSelect = (selection: string) => {
-    setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
-  }
-
-  const allSelectableItems = data
-    .map(({ disabled, pdtName }) => !disabled && pdtName)
-    .filter((element) => element) as string[]
-
-  const onSelectAll = () =>
-    setSelections(selections.length ? [] : allSelectableItems)
-
-  const [isLoading, setIsLoading] = useState(true)
-  setTimeout(() => setIsLoading(false), 750)
-
-  return (
-    <ActionListManager isLoading={isLoading} noResults={false}>
-      <ActionList
-        canSelect
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
-        columns={columns}
-      >
-        {items}
-      </ActionList>
-    </ActionListManager>
-  )
-}
+  ActionListDatum,
+  ActionListItemAction,
+  useActionListSortManager,
+} from '@looker/components/src'
+import React from 'react'
 
 export const Sortable = () => {
   const data = [
@@ -162,4 +78,8 @@ export const Sortable = () => {
   }
 
   return useActionListSortManager(data, columns, generateActions)
+}
+
+export default {
+  title: 'ActionList',
 }
