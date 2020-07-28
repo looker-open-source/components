@@ -26,6 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { omitStyledProps } from '@looker/design-tokens'
 import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarUserProps extends AvatarProps {
@@ -38,24 +39,33 @@ export interface AvatarUserProps extends AvatarProps {
 
 const AvatarLayout: FC<AvatarUserProps> = ({
   color,
-  className,
   user,
+  role,
   size,
+  ...props
 }) => {
   const firstInitial = user && user.first_name && user.first_name[0]
   const lastInitial = user && user.last_name && user.last_name[0]
+  const name = user ? `${user.first_name} ${user.last_name}` : 'Avatar'
+
+  const BaseElement = role === 'button' ? 'button' : 'div'
 
   return (
-    <div className={className}>
-      <AvatarInitials color={color}>
+    <BaseElement {...omitStyledProps(props)} aria-label={name}>
+      <AvatarInitials color={color} aria-hidden>
         {size === 'xxsmall'
           ? `${firstInitial}`
           : `${firstInitial}${lastInitial}`}
       </AvatarInitials>
       {user && user.avatar_url && (
-        <AvatarPhoto color={color} type="image/png" data={user.avatar_url} />
+        <AvatarPhoto
+          aria-hidden
+          color={color}
+          type="image/png"
+          data={user.avatar_url}
+        />
       )}
-    </div>
+    </BaseElement>
   )
 }
 

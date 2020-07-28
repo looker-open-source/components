@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
+exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 .c7 {
   width: 1.5rem;
   height: 1.5rem;
@@ -38,6 +38,9 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c1 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -54,7 +57,14 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   position: relative;
 }
 
+.c1:focus {
+  outline: none;
+}
+
 .c5 {
+  background: transparent;
+  border: none;
+  padding: 0;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -71,12 +81,20 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   border: solid 1px currentColor;
 }
 
+.c5:focus {
+  outline: none;
+}
+
 .c5 .c6 {
   height: 20px;
   width: 20px;
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border: none;
   height: 40px;
   position: relative;
   width: 40px;
@@ -99,15 +117,18 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
   className="c0"
 >
   <div
+    aria-label="John Smith"
     className="c1"
   >
     <div
+      aria-hidden={true}
       className="c2"
       color="key"
     >
       JS
     </div>
     <object
+      aria-hidden={true}
       className="c3"
       color="key"
       data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
@@ -137,7 +158,7 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 </div>
 `;
 
-exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
+exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
 .c7 {
   width: 1.5rem;
   height: 1.5rem;
@@ -175,6 +196,9 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 }
 
 .c1 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -191,7 +215,14 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   position: relative;
 }
 
+.c1:focus {
+  outline: none;
+}
+
 .c5 {
+  background: transparent;
+  border: none;
+  padding: 0;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -208,12 +239,20 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   border: solid 1px currentColor;
 }
 
+.c5:focus {
+  outline: none;
+}
+
 .c5 .c6 {
   height: 20px;
   width: 20px;
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border: none;
   height: 40px;
   position: relative;
   width: 40px;
@@ -236,15 +275,18 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
   className="c0"
 >
   <div
+    aria-label="John Smith"
     className="c1"
   >
     <div
+      aria-hidden={true}
       className="c2"
       color="key"
     >
       JS
     </div>
     <object
+      aria-hidden={true}
       className="c3"
       color="key"
       data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
@@ -274,7 +316,7 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 </div>
 `;
 
-exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
+exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
 .c3 {
   width: 1.5rem;
   height: 1.5rem;
@@ -298,6 +340,9 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 }
 
 .c1 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #9785F2;
   background-color: #FFFFFF;
   font-size: 0.875rem;
@@ -312,6 +357,10 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
+}
+
+.c1:focus {
+  outline: none;
 }
 
 .c1 .c2 {
@@ -320,6 +369,9 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 }
 
 .c5 {
+  background: transparent;
+  border: none;
+  padding: 0;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -336,12 +388,20 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
   border: solid 1px currentColor;
 }
 
+.c5:focus {
+  outline: none;
+}
+
 .c5 .c2 {
   height: 20px;
   width: 20px;
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border: none;
   height: 40px;
   position: relative;
   width: 40px;
@@ -408,7 +468,7 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 </div>
 `;
 
-exports[`AvatarIcon renders  1`] = `
+exports[`Avatar AvatarIcon renders  1`] = `
 .c2 {
   width: 1.5rem;
   height: 1.5rem;
@@ -437,6 +497,9 @@ exports[`AvatarIcon renders  1`] = `
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -451,6 +514,10 @@ exports[`AvatarIcon renders  1`] = `
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
+}
+
+.c0:focus {
+  outline: none;
 }
 
 .c0 .c1 {
@@ -490,7 +557,7 @@ exports[`AvatarIcon renders  1`] = `
 </div>
 `;
 
-exports[`AvatarIcon renders different icon if specified 1`] = `
+exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
 .c2 {
   width: 1.5rem;
   height: 1.5rem;
@@ -519,6 +586,9 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -535,6 +605,10 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   border: solid 1px currentColor;
 }
 
+.c0:focus {
+  outline: none;
+}
+
 .c0 .c1 {
   height: 20px;
   width: 20px;
@@ -545,7 +619,12 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   width: 20px;
 }
 
-.c5 .c6 .c1 {
+.c5 .c1 {
+  height: 20px;
+  width: 20px;
+}
+
+.c6 .c7 .c1 {
   height: 14px;
   width: 14px;
 }
@@ -572,7 +651,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 </div>
 `;
 
-exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
+exports[`Avatar AvatarUser shows initials if has broken url as avatar_url 1`] = `
 .c2 {
   bottom: 0;
   height: 100%;
@@ -588,6 +667,9 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -604,16 +686,23 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   position: relative;
 }
 
+.c0:focus {
+  outline: none;
+}
+
 <div
+  aria-label="John Smith"
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1"
     color="key"
   >
     JS
   </div>
   <object
+    aria-hidden={true}
     className="c2"
     color="key"
     data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
@@ -622,12 +711,15 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 </div>
 `;
 
-exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
+exports[`Avatar AvatarUser shows initials if it has null as avatar_url  1`] = `
 .c1 {
   color: #FFFFFF;
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -644,10 +736,16 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
   position: relative;
 }
 
+.c0:focus {
+  outline: none;
+}
+
 <div
+  aria-label="John Smith"
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1"
     color="key"
   >
@@ -656,7 +754,7 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
 </div>
 `;
 
-exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = `
+exports[`Avatar AvatarUser shows user profile picture if it has good avatar_url  1`] = `
 .c2 {
   bottom: 0;
   height: 100%;
@@ -672,6 +770,9 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
 }
 
 .c0 {
+  background: transparent;
+  border: none;
+  padding: 0;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -688,16 +789,23 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   position: relative;
 }
 
+.c0:focus {
+  outline: none;
+}
+
 <div
+  aria-label="John Smith"
   className="c0"
 >
   <div
+    aria-hidden={true}
     className="c1"
     color="key"
   >
     JS
   </div>
   <object
+    aria-hidden={true}
     className="c2"
     color="key"
     data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
