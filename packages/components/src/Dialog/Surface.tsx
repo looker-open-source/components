@@ -42,7 +42,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { useHotkeys } from '../utils'
+import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
 interface SurfaceProps
@@ -78,7 +78,7 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     }
   }, [enableFocusTrap, enableScrollLock])
 
-  useHotkeys('esc', closeModal, wrapperRef)
+  useGlobalHotkeys('esc', closeModal, wrapperRef)
 
   return (
     <div

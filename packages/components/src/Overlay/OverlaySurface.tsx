@@ -44,7 +44,7 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
-import { useHotkeys, useForkedRef } from '../utils'
+import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
@@ -81,7 +81,7 @@ export const OverlaySurface = forwardRef(
     const innerRef = useRef<null | HTMLElement>(null)
     const ref = useForkedRef(forwardedRef, innerRef)
 
-    useHotkeys('esc', closeModal, innerRef)
+    useGlobalHotkeys('esc', closeModal, innerRef)
 
     return (
       <Outer
