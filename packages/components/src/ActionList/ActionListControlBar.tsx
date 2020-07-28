@@ -24,23 +24,18 @@
 
  */
 
-import React, { ReactNode, FC } from 'react'
+import React, { ReactNode, FC, useContext } from 'react'
 import styled from 'styled-components'
 import { Button } from '../Button'
+import { Space } from '../Layout'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { Text } from '../Text'
+import { ActionListContext } from './ActionListContext'
 
 interface ActionListControlBarProps {
   className?: string
   actions?: ReactNode
 }
-
-const ControlBarText = styled.div`
-  display: flex;
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  justify-content: center;
-  width: 100%;
-`
 
 const bulkActionsButtonWidth = '7.5rem'
 
@@ -48,6 +43,7 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
 }) => {
+  const { allItems, itemsSelected } = useContext(ActionListContext)
   return (
     <div className={className}>
       <Menu>
@@ -58,9 +54,13 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
-      <ControlBarText>
-        If you like it should you put a ring on it.
-      </ControlBarText>
+      <Space justifyContent="center">
+        <Text
+          color="text2"
+          fontSize="xsmall"
+        >{`${itemsSelected.length} of ${allItems.length} displayed items selected`}</Text>
+        <Text color="text2" fontSize="xsmall"></Text>
+      </Space>
     </div>
   )
 }

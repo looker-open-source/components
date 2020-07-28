@@ -30,6 +30,7 @@ import { ActionListColumns } from './ActionList'
 
 export interface ActionListContextProps {
   addItemToAllItems: (id: string) => void
+  allItems: string[]
   allSelected?: MixedBoolean
   canSelect: boolean | { all: boolean }
   columns?: ActionListColumns
@@ -46,6 +47,7 @@ export const ActionListContext = createContext<ActionListContextProps>({
     // eslint-disable-next-line no-console
     console.log(id)
   },
+  allItems: [],
   canSelect: false,
   itemsSelected: [],
   onClickRowSelect: false,
