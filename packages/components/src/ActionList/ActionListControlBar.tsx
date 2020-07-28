@@ -28,6 +28,7 @@ import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
+import { Text } from '../Text'
 
 interface ActionListControlBarProps {
   className?: string
@@ -36,11 +37,12 @@ interface ActionListControlBarProps {
 
 const ControlBarText = styled.div`
   display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
   justify-content: center;
   width: 100%;
 `
 
-const bulkActionsButtonWidth = '10rem'
+const bulkActionsButtonWidth = '7.5rem'
 
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
@@ -50,8 +52,8 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     <div className={className}>
       <Menu>
         <MenuDisclosure>
-          <Button minWidth={bulkActionsButtonWidth} iconAfter="ArrowDown">
-            Bulk Actions
+          <Button iconAfter="ArrowDown" minWidth={bulkActionsButtonWidth}>
+            <Text fontSize="xsmall">Bulk Actions</Text>
           </Button>
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
