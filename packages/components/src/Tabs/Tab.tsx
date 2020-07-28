@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, MouseEvent, Ref, useState } from 'react'
 import { rgba } from 'polished'
 import styled from 'styled-components'
 import {
@@ -50,18 +50,7 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const TabStyle = styled.li<TabProps>`
-  ${reset}
-  ${layout}
-  ${space}
-  ${typography}
-
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid;
-  border-bottom-color: ${(props) =>
-    props.selected ? props.theme.colors.key : 'transparent'};
-  border-radius: 0;
+const InnerTabStyle = styled.a<TabProps>`
   color: ${(props) =>
     props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
   cursor: pointer;
@@ -96,6 +85,20 @@ const TabStyle = styled.li<TabProps>`
   }
 `
 
+const OuterTabStyle = styled.li<TabProps>`
+  ${reset}
+  ${layout}
+  ${space}
+  ${typography}
+
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid;
+  border-bottom-color: ${(props) =>
+    props.selected ? props.theme.colors.key : 'transparent'};
+  border-radius: 0;
+  `
+
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
   const {
     children,
@@ -120,14 +123,15 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
     onBlur && onBlur(event)
   }
 
-  const onClick = () => {
+  const onClick = (e: MouseEvent) => {
+    e.preventDefault()
     if (!disabled && onSelect) {
       onSelect()
     }
     setFocusVisible(false)
   }
   return (
-    <TabStyle
+    <OuterTabStyle
       disabled={disabled}
       focusVisible={isFocusVisible}
       index={index}
@@ -139,15 +143,15 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLLIElement>) => {
       selected={selected}
       {...restProps}
     >
-      <a
+      <InnerTabStyle
         aria-selected={selected}
         href={`tab${index}`}
         id={`tab${index}`}
         role="tab"
       >
         {children}
-      </a>
-    </TabStyle>
+      </InnerTabStyle>
+    </OuterTabStyle>
   )
 })
 

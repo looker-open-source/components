@@ -4,73 +4,8 @@ exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
 
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c0 {
-  padding-bottom: 0.75rem;
-  padding-top: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid;
-  border-bottom-color: #6C43E0;
-  border-radius: 0;
-  color: #262D33;
-  cursor: pointer;
-}
-
-.c0:active {
-  border-bottom-color: #6C43E0;
-}
-
-.c0:active,
-.c0:hover {
-  border-bottom-color: transparent;
-}
-
-.c0:focus {
-  outline: none;
-}
-
-.c0:hover {
-  border-bottom-color: #6C43E0;
-}
-
-.c0:disabled {
-  border-bottom-color: transparent;
-  color: #939BA5;
-  cursor: default;
-}
-
-.c2 .c1 {
-  min-width: 3rem;
-}
-
-.c2 .c1 + .c1 {
-  margin-left: 2rem;
-}
-
-<button
-  class="c0 c1 "
-  font-size="small"
-  font-weight="semiBold"
->
-  tab1
-</button>
-`;
-
-exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`] = `
-.c0 {
-  padding-bottom: 0.75rem;
-  padding-top: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid;
-  border-bottom-color: transparent;
-  border-radius: 0;
   color: #707781;
   cursor: pointer;
-  box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);
 }
 
 .c0:active {
@@ -96,19 +31,53 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   cursor: default;
 }
 
-.c2 .c1 {
-  min-width: 3rem;
+<a
+  aria-selected="true"
+  class="c0"
+  href="tab0"
+  id="tab0"
+  role="tab"
+>
+  tab1
+</a>
+`;
+
+exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`] = `
+.c0 {
+  color: #707781;
+  cursor: pointer;
 }
 
-.c2 .c1 + .c1 {
-  margin-left: 2rem;
+.c0:active {
+  border-bottom-color: #707781;
 }
 
-<button
-  class="c0 c1 "
-  font-size="small"
-  font-weight="semiBold"
+.c0:active,
+.c0:hover {
+  border-bottom-color: transparent;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:hover {
+  border-bottom-color: #C1C6CC;
+}
+
+.c0:disabled {
+  border-bottom-color: transparent;
+  color: #939BA5;
+  cursor: default;
+}
+
+<a
+  aria-selected="false"
+  class="c0"
+  href="tab1"
+  id="tab1"
+  role="tab"
 >
   tab2
-</button>
+</a>
 `;

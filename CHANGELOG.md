@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update Tabs for accessibility
 - update MenuItem to support Artwork
 - `MenuDisclosure` - tooltip placement now defaults to `bottom`
 - `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
