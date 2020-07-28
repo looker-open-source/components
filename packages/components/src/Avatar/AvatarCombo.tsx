@@ -31,6 +31,7 @@ import { IconNames } from '@looker/icons'
 import { Icon } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
+import { avatarButtonOverrides } from './Avatar'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
@@ -76,6 +77,8 @@ const AvatarLayout: FC<AvatarComboProps> = ({
 }
 
 export const AvatarCombo = styled(AvatarLayout)`
+  ${avatarButtonOverrides}
+  border: none;
   height: 40px;
   position: relative;
   width: 40px;
