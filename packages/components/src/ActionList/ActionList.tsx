@@ -180,9 +180,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <div className={className}>
         {actionListHeader}
         {bulkActions && itemsSelected.length > 0 && (
-          <ActionListControlBar actions={bulkActions}>
-            <button>Bulk Actions</button>
-          </ActionListControlBar>
+          <ActionListControlBar actions={bulkActions} />
         )}
         <div>{children}</div>
       </div>

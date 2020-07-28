@@ -28,6 +28,7 @@ import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
+import { Icon } from '../Icon'
 
 interface ActionListControlBarProps {
   className?: string
@@ -42,7 +43,10 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     <div className={className}>
       <Menu>
         <MenuDisclosure>
-          <Button>Bulk Actions</Button>
+          <Button>
+            Bulk Actions
+            <Icon name="ArrowDown" />
+          </Button>
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
