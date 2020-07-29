@@ -133,13 +133,18 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onKeyUp={handleOnKeyUp}
       className={className}
     >
-      <Component href={href} role="menuitem" target={target}>
+      <Component
+        href={href}
+        role="menuitem"
+        style={{ display: 'flex' }}
+        target={target}
+      >
         <MenuItemLayoutGrid>
           {renderedIcon}
           {children}
         </MenuItemLayoutGrid>
+        {detail && <Detail>{detail}</Detail>}
       </Component>
-      {detail && <Detail>{detail}</Detail>}
     </MenuItemLayout>
   )
 }
