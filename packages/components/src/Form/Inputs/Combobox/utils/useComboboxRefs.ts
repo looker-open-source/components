@@ -70,3 +70,9 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
     wrapperElement,
   }
 }
+
+export function useComboboxMultiRefs(forwardedRef: Ref<HTMLDivElement>) {
+  const refs = useComboboxRefs(forwardedRef)
+  const freeInputPropRef = useRef(false)
+  return { ...refs, freeInputPropRef }
+}

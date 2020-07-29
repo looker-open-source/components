@@ -45,7 +45,7 @@ import {
   ComboboxCommonProps,
   ComboboxWrapper,
 } from './Combobox'
-import { useComboboxRefs } from './utils/useComboboxRefs'
+import { useComboboxMultiRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
 import { useScrollState } from './utils/useScrollState'
 
@@ -118,7 +118,7 @@ export const ComboboxMultiInternal = forwardRef(
 
     const isVisible = useComboboxToggle(state, options, onOpen, onClose)
 
-    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+    const { ref, ...commonRefs } = useComboboxMultiRefs(forwardedRef)
 
     const scrollState = useScrollState()
 

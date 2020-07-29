@@ -24,22 +24,38 @@
 
  */
 
-import React from 'react'
-import { ActionListItemAction } from '@looker/components'
+import React, { FC } from 'react'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
 
-export const Actions = () => (
-  <>
-    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
-      Go to LookML
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
-      PDT Details
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
-      Recent Build Events
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
-      Recent Trigger Events
-    </ActionListItemAction>
-  </>
-)
+export default {
+  decorators: [withKnobs],
+  title: 'Tabs/Basic',
+}
+
+const defaults = {
+  distribute: true,
+  prefixName: 'My Awesome Tab',
+  tabs: 20,
+}
+
+export const Basic: FC = () => {
+  const tabs = new Array(number('# of Tabs', defaults.tabs)).fill('tab')
+
+  return (
+    <Tabs>
+      <TabList distribute={boolean('Distribute', defaults.distribute)}>
+        {tabs.map((_k, index) => (
+          <Tab key={index}>
+            {text('Prefix Tab Text', defaults.prefixName)} {index}
+          </Tab>
+        ))}
+      </TabList>
+      <TabPanels>
+        {tabs.map((_k, index) => (
+          <TabPanel key={index}>This is {index}</TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
+  )
+}

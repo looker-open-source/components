@@ -112,11 +112,15 @@ export interface IconButtonProps
    */
   tooltipDisabled?: boolean
   /**
-   * Assign the placement of the built-in Tooltip.
+   * Placement of the built-in Tooltip.
    */
   tooltipPlacement?: Placement
   /**
-   * Assign the placement of the built-in Tooltip.
+   * Width of the built-in Tooltip.
+   */
+  tooltipWidth?: string
+  /**
+   * Text alignment of the built-in Tooltip.
    */
   tooltipTextAlign?: TextAlignProperty
 }
@@ -137,6 +141,7 @@ const IconButtonComponent = forwardRef(
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
+      tooltipWidth,
       onFocus: propsOnFocus,
       onBlur: propsOnBlur,
       onMouseOver: propsOnMouseOver,
@@ -164,6 +169,7 @@ const IconButtonComponent = forwardRef(
       id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
       textAlign: tooltipTextAlign,
+      width: tooltipWidth,
     })
 
     const eventHandlers = {

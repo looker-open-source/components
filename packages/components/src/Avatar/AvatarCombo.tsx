@@ -26,10 +26,12 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { omitStyledProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import { Icon } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
+import { avatarButtonOverrides } from './Avatar'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
@@ -53,10 +55,13 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   color,
   icon = 'User',
   user,
-  className,
+  role,
+  ...props
 }) => {
+  const BaseElement = role === 'button' ? 'button' : 'div'
+
   return (
-    <div className={className}>
+    <BaseElement {...omitStyledProps(props)}>
       {user ? (
         <AvatarUser user={user} color={color} />
       ) : (
@@ -67,11 +72,13 @@ const AvatarLayout: FC<AvatarComboProps> = ({
         color={secondaryColor}
         icon={secondaryIcon}
       />
-    </div>
+    </BaseElement>
   )
 }
 
 export const AvatarCombo = styled(AvatarLayout)`
+  ${avatarButtonOverrides}
+  border: none;
   height: 40px;
   position: relative;
   width: 40px;

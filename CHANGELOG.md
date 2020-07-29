@@ -7,25 +7,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Fixed
+
+- `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
+
 ### Changed
 
-- `theme` "pressed" colors are more discernable from other stateful colors
+- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+
+## [0.9.7] - 2020-07-27
+
+### Added
+
+- `AvatarCombo`, `AvatarIcon` & `AvatarUser` now supports `role="button"`
+  - Added support for common DOM properties and event handlers (e.g.: `onClick`)
+  - Improved a11y for all `Avatar*` components
+  - Added Storybook with knobs
+- `IconButton` now supports `tooltipWidth` property
+- `MenuItem` updated to support `iconArtwork` in addition to `icon`
+- `Popover` now supports `cancelClickOutside` (`true` by default) to determine whether the "dismissal" click event is allowed to propagate
+- New `Icon` artwork `Logout`, `AddComment`, `Comment`, `Feedback`
+
+### Changed
+
 - `Accordion` added accessibility improvements
+- `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
+  - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
+- `MenuDisclosure` - tooltip placement now defaults to `bottom`
+- `Select` and `SelectMulti` with `isFilterable` or `freeInput` no longer cancel the first click outside when the list is open
+- update `Tab` to scroll left to right when overflow
+- `theme` "pressed" colors are more discernable from other stateful colors
 - `theme.colors.*Pressed` colors are more discernable from other stateful colors
 - `theme.colors.textX` restructured
   - `text1-5` now go from lightest to darkest to match `ui1-5`
   - Reduced number of steps:
     - `text0` is now `text5` (consolidated the former `text0` & `text1`)
     - `text6` is now `text1` (consolidated the former `text6` & `text5`)
-- `ActionListCheckbox` now use `aria-describedby` attribute for accessibility purposes
-  - Receives id from parent `ActionListRow`, who receives it from parent `ActionListItem` or `ActionListHeader`
-- Replaced react-hotkeys with a lighter weight package (`MenuList`, `Surface`, and `OverlaySurface`)
+- Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
 
 ### Fixed
 
+- `Select`/`SelectMulti` toggling the list from the caret
+- `Select` and `SelectMulti` keyboard navigation issues when filtering options
+- `SelectMulti` with `freeInput` tokenizing the input value when an option is clicked
 - `Tabs` now can be controlled
 - Fix a few typos in the `Field` documentation
 - `ActionList` fixed bug where passing object (with single attribute "all") into `canSelect` results in select all checkbox regardless of "all" setting
+- `Link` no longer generates console errors when `keyColor` or `underline` prop are used
 
 ## [0.9.6] - 2020-07-15
 

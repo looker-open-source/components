@@ -25,6 +25,7 @@
  */
 
 import React, { FC } from 'react'
+import { omitStyledProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -76,14 +77,19 @@ const size = variant({
 })
 
 const AvatarLayout: FC<AvatarIconProps> = ({
-  className,
   color,
   icon = 'User',
-}) => (
-  <div className={className}>
-    <Icon name={icon} color={color} />
-  </div>
-)
+  role,
+  ...props
+}) => {
+  const BaseElement = role === 'button' ? 'button' : 'div'
+
+  return (
+    <BaseElement {...omitStyledProps(props)}>
+      <Icon name={icon} color={color} />
+    </BaseElement>
+  )
+}
 
 export const AvatarIcon = styled(AvatarLayout)`
   ${avatarCSS}

@@ -59,9 +59,9 @@ describe('ActionListManager', () => {
     expect(queryByText('Pepper Jack')).not.toBeInTheDocument()
   })
 
-  test('Renders custom no results message when noResultsText prop has a value', () => {
+  test('Renders custom no results message when noResultsDisplay prop has a value', () => {
     const { getByText } = renderWithTheme(
-      <ActionListManager noResults={true} noResultsText={'Cheddar'}>
+      <ActionListManager noResults={true} noResultsDisplay={'Cheddar'}>
         {bestCheeseDiv}
       </ActionListManager>
     )

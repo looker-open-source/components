@@ -34,10 +34,8 @@ import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuItemLayout, MenuItemLayoutGrid } from './MenuItemLayout'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
+  iconArtwork?: ReactNode
   compact?: boolean
-
-  detail?: ReactNode
-  icon?: IconNames
   /**
    * Indicates the MenuItem is checked
    */
@@ -49,6 +47,8 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    * @default 'button'
    *
    */
+  detail?: ReactNode
+  icon?: IconNames
   itemRole?: 'link' | 'button'
 }
 
@@ -62,6 +62,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     disabled,
     href,
     icon,
+    iconArtwork,
     itemRole,
     onBlur,
     onClick,
@@ -117,18 +118,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
 
   const renderedIconID = useID(props.id)
 
-  const renderedIcon = icon ? (
-    <Icon
-      name={icon}
-      mr="xsmall"
-      size={24 / (compact ? 1.25 : 1)}
-      color="text1"
-    />
-  ) : (
-    renderIconPlaceholder && (
-      <div data-testid={`menu-item-${renderedIconID}-icon-placeholder`} />
+  const renderedIcon =
+    icon || iconArtwork ? (
+      <Icon
+        artwork={iconArtwork}
+        color="text1"
+        name={icon}
+        size={24 / (compact ? 1.25 : 1)}
+        mr="xsmall"
+      />
+    ) : (
+      renderIconPlaceholder && (
+        <div data-testid={`menu-item-${renderedIconID}-icon-placeholder`} />
+      )
     )
-  )
 
   const Component = itemRole === 'link' ? 'a' : 'button'
 

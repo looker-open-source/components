@@ -24,41 +24,42 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import { ActionList } from '@looker/components'
+import React, { useState } from 'react'
+import { columns, data } from './data'
+import { items } from './items'
 
-import { MenuItem } from './MenuItem'
+export default {
+  title: 'ActionList',
+}
 
-describe('MenuItem', () => {
-  test('MenuItem renders', () => {
-    renderWithTheme(<MenuItem>who!</MenuItem>)
-    expect(screen.getByText('who!')).toBeVisible()
-  })
-
-  test('MenuItem - detail', () => {
-    renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
-  })
-
-  test('MenuItem - icon', () => {
-    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
-  })
-
-  test('MenuItem - artwork', () => {
-    renderWithTheme(
-      <MenuItem
-        iconArtwork={
-          <svg xmlns="http://www.w3.org/2000/svg">
-            <title>SVG Title Here</title>
-          </svg>
-        }
-      >
-        Artwork
-      </MenuItem>
+export const Basic = () => {
+  const [selections, setSelections] = useState([] as string[])
+  const onSelect = (selection: string) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
     )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
-  })
-})
+  }
+
+  const allSelectableItems = data
+    .map(({ disabled, pdtName }) => !disabled && pdtName)
+    .filter((element) => element) as string[]
+
+  const onSelectAll = () =>
+    setSelections(selections.length ? [] : allSelectableItems)
+
+  return (
+    <ActionList
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}

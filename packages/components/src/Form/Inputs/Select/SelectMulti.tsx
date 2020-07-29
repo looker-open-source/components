@@ -137,7 +137,7 @@ const SelectMultiComponent = forwardRef(
           removeOnBackspace={removeOnBackspace}
           validationType={validationType}
           autoComplete={false}
-          readOnly={!isFilterable}
+          readOnly={!isFilterable && !freeInput}
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
           freeInput={freeInput}
@@ -148,6 +148,7 @@ const SelectMultiComponent = forwardRef(
             persistSelection
             closeOnSelect={closeOnSelect}
             windowedOptions={windowedOptions}
+            cancelClickOutside={!isFilterable && !freeInput}
             indicator={indicator}
             {...ariaProps}
             {...listLayout}
