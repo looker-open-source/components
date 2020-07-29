@@ -80,10 +80,6 @@ export interface ActionListProps {
   columns: ActionListColumns
   className?: string
   /**
-   * Bulk actions that are available when one or more items are selected
-   */
-  bulkActions?: ReactNode
-  /**
    * @default: true
    */
   header?: boolean | ReactNode
@@ -120,25 +116,36 @@ export interface ActionListProps {
    */
   headerRowId?: string
   /**
-   * The total number of items, both visible and nonvisible, in this Action List
-   * Primary purpose is to set the text of the Control Bar's primary action
-   * Note: This should NOT include disabled items
+   * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
-  totalItems?: number
+  bulk?: BulkActionsConfig
+}
+
+export interface BulkActionsConfig {
+  /**
+   * Bulk actions that are available when one or more items are selected
+   */
+  actions: ReactNode
+  /**
+   * Triggered when the user presses on the "Select all X results" button in the control bar
+   */
+  onTotalSelectAll?: () => void
   /**
    * The total number of visible items
    * Primary purpose is to set the text of the Control Bar's "displayed items selected" text
    * Note: This should NOT include disabled items
    */
-  totalVisibleItems?: number
+  pageCount?: number
   /**
-   * Triggered when the user presses on the "Select all X results" button in the control bar
+   * The total number of items, both visible and nonvisible, in this Action List
+   * Primary purpose is to set the text of the Control Bar's primary action
+   * Note: This should NOT include disabled items
    */
-  onControlBarSelectAll?: () => void
+  totalCount?: number
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
-  bulkActions,
+  bulk,
   canSelect = false,
   className,
   header = true,
@@ -147,12 +154,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
   columns,
   itemsSelected = [],
   onClickRowSelect = false,
-  onControlBarSelectAll,
   onSelect,
   onSelectAll,
   onSort,
-  totalItems,
-  totalVisibleItems,
 }) => {
   const [allItems, setAllItems] = useState<string[]>([])
 
@@ -199,14 +203,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       <div className={className}>
         {actionListHeader}
-        {bulkActions && itemsSelected.length > 0 && (
-          <ActionListControlBar
-            actions={bulkActions}
-            onControlBarSelectAll={onControlBarSelectAll}
-            totalItems={totalItems}
-            totalVisibleItems={totalVisibleItems}
-          />
-        )}
+        {bulk && itemsSelected.length > 0 && <ActionListControlBar {...bulk} />}
         <div>{children}</div>
       </div>
     </ActionListContext.Provider>
