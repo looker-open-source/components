@@ -96,7 +96,7 @@ exports[`neutral status 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #939BA5;
+  color: #707781;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

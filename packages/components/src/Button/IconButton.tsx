@@ -237,7 +237,8 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
 
   background: none;
   border: none;
-  color: ${({ theme, color = iconButtonDefaultColor }) => theme.colors[color]};
+  color: ${({ theme, color = iconButtonDefaultColor }) =>
+    color === 'neutral' ? theme.colors.ui4 : theme.colors[color]};
   padding: 0;
 
   &:hover,

@@ -29,22 +29,22 @@ import { ButtonBase } from './ButtonBase'
 
 export const ButtonOutline = styled(ButtonBase)`
   background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
-  border: 1px solid ${({ theme }) => theme.colors.ui3};
+  border: 1px solid ${({ theme }) => theme.colors.ui2};
   color: ${({ theme, color = 'key' }) => theme.colors[color]};
 
   &:hover,
   &:focus,
   &.hover {
-    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
-    border-color: ${({ theme, color = 'key' }) => theme.colors[color]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Pressed`]};
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Subtle`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[`${color}`]};
   }
 
   &:active,
   &.active {
-    background: ${({ theme, color = 'key' }) => theme.colors[color]};
-    border-color: ${({ theme, color = 'key' }) => theme.colors[color]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
+    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
+    border-color: ${({ theme, color = 'key' }) =>
+      theme.colors[`${color}Focus`]};
+    color: ${({ theme, color = 'key' }) => theme.colors[color]};
   }
 
   &[disabled] {
