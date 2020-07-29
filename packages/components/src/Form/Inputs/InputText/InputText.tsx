@@ -176,7 +176,7 @@ const InputTextLayout = forwardRef(
       >
         <Icon
           color="critical"
-          name="CircleInfo"
+          name="Error"
           title="Validation Error"
           size={20}
         />

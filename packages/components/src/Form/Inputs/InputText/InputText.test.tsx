@@ -90,12 +90,12 @@ test('InputText autoResize', () => {
 })
 
 test('InputText with an error validation', () => {
-  const { getByTitle, getByPlaceholderText } = renderWithTheme(
+  const { getAllByTitle, getByPlaceholderText } = renderWithTheme(
     <InputText placeholder="Hello" validationType="error" />
   )
 
   expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-  expect(getByTitle('Validation Error')).toBeDefined()
+  expect(getAllByTitle('Validation Error')).toBeDefined()
 })
 
 test('InputText with a before & after', () => {
@@ -111,14 +111,14 @@ test('InputText with an iconBefore & iconAfter', () => {
   const { getByTitle } = renderWithTheme(
     <InputText
       iconBefore="Favorite"
-      iconBeforeTitle="Favorite Title"
+      iconBeforeTitle="Before Title"
       iconAfter="Account"
-      iconAfterTitle="Account Title"
+      iconAfterTitle="After Title"
     />
   )
 
-  expect(getByTitle('Favorite Title')).toBeInTheDocument()
-  expect(getByTitle('Account Title')).toBeInTheDocument()
+  expect(getByTitle('Before Title')).toBeInTheDocument()
+  expect(getByTitle('After Title')).toBeInTheDocument()
 })
 
 test('InputText with redundant before/after props', () => {

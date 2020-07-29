@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 
 ### Changed
