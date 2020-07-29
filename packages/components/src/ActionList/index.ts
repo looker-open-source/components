@@ -25,6 +25,7 @@
  */
 
 export * from './ActionList'
+export * from './ActionListControlBar'
 export * from './ActionListHeader'
 export * from './ActionListItem'
 export * from './ActionListItemAction'

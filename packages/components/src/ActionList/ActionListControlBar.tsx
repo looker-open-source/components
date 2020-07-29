@@ -34,7 +34,7 @@ import { ActionListContext } from './ActionListContext'
 
 interface ActionListControlBarProps {
   className?: string
-  actions?: ReactNode
+  actions: ReactNode
   onTotalSelectAll?: () => void
   pageCount?: number
   totalCount?: number
@@ -69,18 +69,19 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
       'An ActionList received a bulk prop object without a pageCount property. As a result, the "displayed items selected" text within the ActionList control bar is disabled.'
     )
 
-  const selectTotalResultsButton = totalCount !== undefined && (
-    <ButtonTransparent onClick={onTotalSelectAll}>
-      <Text fontWeight="semiBold" fontSize="xsmall">
-        {`Select all ${totalCount} results`}
-      </Text>
-    </ButtonTransparent>
-  )
+  const selectTotalResultsButton = totalCount !== undefined &&
+    onTotalSelectAll !== undefined && (
+      <ButtonTransparent onClick={onTotalSelectAll}>
+        <Text fontWeight="semiBold" fontSize="xsmall">
+          {`Select all ${totalCount} results`}
+        </Text>
+      </ButtonTransparent>
+    )
 
   !selectTotalResultsButton &&
     // eslint-disable-next-line no-console
     console.warn(
-      'An ActionList received a bulk prop object without a totalCount property. As a result, the "select total results" button within the ActionList control bar is disabled.'
+      'An ActionList received a bulk prop object without a totalCount property or a onTotalSelectAll property. As a result, the "select total results" button within the ActionList control bar is disabled.'
     )
 
   return (
