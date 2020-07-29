@@ -141,6 +141,7 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
       onKeyUp={handleOnKeyUp}
       ref={ref}
       role="tab"
+      selected={selected}
       tab-index={tabindex}
       {...restProps}
     >
