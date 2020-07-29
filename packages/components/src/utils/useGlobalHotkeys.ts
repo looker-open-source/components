@@ -111,5 +111,6 @@ export const useGlobalHotkeys = (
     organizeEventsList(handler.shortcut)
     executeStackedKeyCommand(e, eventsList[handler.shortcut])
   }
-  useHotkeys(keyCommand, wrappedCb)
+  // enable on INPUT for use in searchable Select and MultiSelect variants
+  useHotkeys(keyCommand, wrappedCb, { enableOnTags: ['INPUT'] })
 }

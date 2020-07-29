@@ -170,12 +170,6 @@ export function useKeyDown() {
         }
         break
       }
-      case 'Escape': {
-        if (state !== ComboboxState.IDLE) {
-          // transition && transition(ComboboxActionType.ESCAPE)
-        }
-        break
-      }
       case ' ':
       case 'Spacebar': {
         if (

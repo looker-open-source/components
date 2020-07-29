@@ -37,6 +37,9 @@ import {
   SelectOptionProps,
   SpaceVertical,
   Text,
+  Button,
+  Dialog,
+  DialogContent,
 } from '@looker/components'
 import { options1k } from './options1k'
 
@@ -172,6 +175,10 @@ function TestIndicator() {
 }
 
 export function SelectMultiDemo() {
+  const [isOpen, setOpen] = useState(false)
+  const handleClick = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+
   const [searchTerm, setSearchTerm] = useState('')
   function handleFilter(term: string) {
     setSearchTerm(term)
@@ -216,6 +223,23 @@ export function SelectMultiDemo() {
 
   return (
     <Box p="large" width={400}>
+      <Dialog isOpen={isOpen} onClose={handleClose}>
+        <DialogContent>
+          <SelectMulti
+            options={newOptions1k}
+            placeholder="Select Brands"
+            isFilterable
+            onFilter={handleFilter1k}
+            alignSelf="flex-start"
+            showCreate
+            mb="xlarge"
+            defaultValues={['Boulder Creek']}
+          />
+        </DialogContent>
+      </Dialog>
+      <Button onClick={handleClick} m="large">
+        Open
+      </Button>
       <Heading mb="large">FieldSelectMulti</Heading>
       <SpaceVertical>
         <FieldSelectMulti
