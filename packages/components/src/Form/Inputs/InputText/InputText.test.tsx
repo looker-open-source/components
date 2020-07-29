@@ -117,7 +117,6 @@ test('InputText with an iconBefore & iconAfter', () => {
     />
   )
 
-  expect(getAllByTitle('Before Title')).toBeInTheDocument()
   expect(getAllByTitle('After Title')).toBeInTheDocument()
 })
 
