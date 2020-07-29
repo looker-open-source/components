@@ -43,6 +43,11 @@ export interface ActionListItemLayoutProps
    * @default true
    */
   supportsRaised?: boolean
+  /**
+   * If true, this row's background color will be the theme object's keySubtle color
+   * @default false
+   */
+  selected?: boolean
 }
 
 export const ActionListRowColumns = styled.div``
@@ -80,7 +85,12 @@ const ActionListRowLayout = forwardRef(
 ActionListRowLayout.displayName = 'ActionListRowLayout'
 
 export const ActionListRow = styled(ActionListRowLayout)`
-  background: ${({ disabled, theme }) => disabled && theme.colors.ui1};
+  background: ${({ selected, disabled, theme }) =>
+    disabled
+      ? theme.colors.ui1
+      : selected
+      ? theme.colors.keySubtle
+      : undefined};
   display: flex;
 
   &:focus,
