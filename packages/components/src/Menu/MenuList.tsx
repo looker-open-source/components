@@ -54,6 +54,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { useForkedRef } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -106,6 +107,7 @@ export const MenuListInternal = forwardRef(
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const wrapperRef = useRef<HTMLDivElement | null>(null)
+    const ref = useForkedRef(forwardedRef, wrapperRef)
 
     function handleArrowKey(direction: number, initial: number) {
       moveFocus(direction, initial, wrapperRef)
@@ -128,20 +130,18 @@ export const MenuListInternal = forwardRef(
     }
 
     const menuList = (
-      <div ref={wrapperRef}>
-        <MenuItemContext.Provider value={context}>
-          <ul
-            ref={forwardedRef}
-            tabIndex={-1}
-            role="menu"
-            id={id}
-            aria-labelledby={id && `button-${id}`}
-            {...omitStyledProps(omit(props, 'groupDividers'))}
-          >
-            {children}
-          </ul>
-        </MenuItemContext.Provider>
-      </div>
+      <MenuItemContext.Provider value={context}>
+        <ul
+          ref={ref}
+          tabIndex={-1}
+          role="menu"
+          id={id}
+          aria-labelledby={id && `button-${id}`}
+          {...omitStyledProps(omit(props, 'groupDividers'))}
+        >
+          {children}
+        </ul>
+      </MenuItemContext.Provider>
     )
 
     const isMenu = isOpen !== undefined
