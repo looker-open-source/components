@@ -108,7 +108,7 @@ test('InputText with a before & after', () => {
 })
 
 test('InputText with an iconBefore & iconAfter', () => {
-  const { getAllByTitle } = renderWithTheme(
+  const { getByTitle } = renderWithTheme(
     <InputText
       iconBefore="Favorite"
       iconBeforeTitle="Before Title"
@@ -117,7 +117,8 @@ test('InputText with an iconBefore & iconAfter', () => {
     />
   )
 
-  expect(getAllByTitle('After Title')).toBeInTheDocument()
+  expect(getByTitle('Before Title')).toBeInTheDocument()
+  expect(getByTitle('After Title')).toBeInTheDocument()
 })
 
 test('InputText with redundant before/after props', () => {
