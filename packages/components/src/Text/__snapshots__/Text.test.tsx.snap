@@ -19,8 +19,8 @@ exports[`A Text component decorated 1`] = `
 
 exports[`A Text component resized 1`] = `
 .c0 {
-  font-size: 2.875rem;
-  line-height: 4rem;
+  font-size: 2.25rem;
+  line-height: 2.75rem;
 }
 
 <span
