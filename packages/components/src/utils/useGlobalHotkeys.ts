@@ -34,13 +34,24 @@ import debounce from 'lodash/debounce'
 
 type CB = (e?: KeyboardEvent) => void
 
-interface Event {
+interface Command {
   cb: CB
   target: HTMLElement
 }
 
-const eventsList: { [key: string]: Event[] } = {}
+/*
+ * commandList is a collection of all global hotkeys, grouped by key command.
+ * This will mutate as global hotkeys are added or target elements are removed.
+ * Example: {
+ *   esc: [{ cb: () => {}, target: document.createElement('div') }],
+ * }
+ */
+const commandList: { [key: string]: Command[] } = {}
 
+/*
+ * doRectsIntersect calculates whether two elements (often two focus traps)
+ * are layered on top of each other.
+ */
 const doRectsIntersect = (r1: ClientRect, r2: ClientRect) => {
   return !(
     r2.left > r1.right ||
@@ -50,17 +61,25 @@ const doRectsIntersect = (r1: ClientRect, r2: ClientRect) => {
   )
 }
 
+/*
+ * calculateIntersectionPoint returns a pixel coordinate where two elements
+ * are layered on top of each other.
+ */
 const calculateIntersectionPoint = (r1: ClientRect, r2: ClientRect) => {
   const y = Math.max(r2.top, r1.top)
   const x = Math.max(r1.left, r2.left)
   return { x, y }
 }
 
-const organizeEventsList = (shortcut: string) => {
-  const listSlice = [...(get(eventsList, shortcut, []) as Event[])]
+/*
+ * organizeCommandList filters out stale events (dom target has been removed) and
+ * sorts commandList by element stacking order.
+ */
+const organizeCommandList = (shortcut: string) => {
+  const listSlice = [...(get(commandList, shortcut, []) as Command[])]
 
   // filter out elements that are no longer in the document
-  const newListSlice: Event[] = filter(listSlice, (event) =>
+  const newListSlice: Command[] = filter(listSlice, (event) =>
     document.body.contains(event.target)
   )
 
@@ -70,7 +89,7 @@ const organizeEventsList = (shortcut: string) => {
     const rect2 = ev2.target.getBoundingClientRect()
 
     if (!doRectsIntersect(rect1, rect2)) {
-      // no intersection
+      // no intersection. return 0 to specify equal stacking order.
       return 0
     } else {
       // elements intersect! sort by dom stacking order
@@ -82,35 +101,53 @@ const organizeEventsList = (shortcut: string) => {
     }
   })
 
-  eventsList[shortcut] = newListSlice
+  commandList[shortcut] = newListSlice
 }
 
+/*
+ * executeStackedKeyCommand calls a single keyboard event callback taken from the
+ * top of the Command array. Function is Debounced to protect against event bubbling
+ * from firing multiple callbacks.
+ */
 const executeStackedKeyCommand = debounce(
-  (e: KeyboardEvent, cbStack: Event[]) => {
+  (e: KeyboardEvent, cbStack: Command[]) => {
     cbStack[0] && cbStack[0].cb(e)
   },
   50
 )
 
+/*
+ * useGlobalHotkeys takes a keyCommand, callback, and dom ref.
+ * It then adds a unique copy (i.e. only one `esc` lister per element) to commandList,
+ * and passes a wrapped version to the useHotkeys library.
+ */
 export const useGlobalHotkeys = (
   keyCommand: string,
   cb: CB,
   containerRef: MutableRefObject<null | HTMLElement>
 ) => {
   if (containerRef.current) {
-    const newEvent: Event = { cb, target: containerRef.current }
+    const newCommand: Command = { cb, target: containerRef.current }
+
+    // mutate commandList with lodash `set` in case there is no existing collection
+    // associated with provided keyCommand. e.g. when commandList.esc does not exist yet.
     set(
-      eventsList,
+      commandList,
       keyCommand,
-      uniqBy([...get(eventsList, keyCommand, []), newEvent], (el) => {
-        return el.target
+      uniqBy([...get(commandList, keyCommand, []), newCommand], (el) => {
+        return el.target // allow only one unique key command per element
       })
     )
   }
+
+  // wrappedCb organizes the list by dom stacking order and only calls the
+  // callback associated with the focused element
   const wrappedCb = (e: KeyboardEvent, handler: any) => {
-    organizeEventsList(handler.shortcut)
-    executeStackedKeyCommand(e, eventsList[handler.shortcut])
+    organizeCommandList(handler.shortcut)
+    executeStackedKeyCommand(e, commandList[handler.shortcut])
   }
-  // enable on INPUT for use in searchable Select and MultiSelect variants
+
+  // `enableOnTags` enables listener on form inputs
+  // for use in searchable Select and MultiSelect variants
   useHotkeys(keyCommand, wrappedCb, { enableOnTags: ['INPUT'] })
 }
