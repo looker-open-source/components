@@ -4,7 +4,7 @@ exports[`keyboard nav ux highlights closest time to now when an unselected list 
 
 exports[`keyboard nav ux highlights closest time to selected value when list is opened but value does not match provided options 1`] = `"04:45 pm"`;
 
-exports[`keyboard nav ux highlights selected value when list is opened 1`] = `"02:15 pm"`;
+exports[`keyboard nav ux highlights selected value when list is opened 1`] = `"Check02:15 pm"`;
 
 exports[`prop: format formats options in 12 hour time 1`] = `
 Array [

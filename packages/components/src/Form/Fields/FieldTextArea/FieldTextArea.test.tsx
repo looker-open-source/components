@@ -114,7 +114,7 @@ test('A FieldTextArea with validationMessage', () => {
       placeholder="placeholder"
     />
   )
-  expect(wrapper.text()).toMatch(`hellovalidation Message`)
+  expect(wrapper.text()).toMatch(`helloErrorvalidation Message`)
 })
 
 test('FieldTextArea supports onChange handler', () => {
