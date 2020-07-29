@@ -55,19 +55,33 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
       <Text fontSize="xsmall">Bulk Actions</Text>
     </Button>
   )
-  const selectedItemsText = pageCount && (
+
+  const selectedItemsText = pageCount !== undefined && (
     <Text
       color="text2"
       fontSize="xsmall"
     >{`${itemsSelected.length} of ${pageCount} displayed items selected`}</Text>
   )
-  const selectAllResultsButton = totalCount && (
+
+  !selectedItemsText &&
+    // eslint-disable-next-line no-console
+    console.warn(
+      'An ActionList received a bulk prop object without a pageCount property. As a result, the "displayed items selected" text within the ActionList control bar is disabled.'
+    )
+
+  const selectTotalResultsButton = totalCount !== undefined && (
     <ButtonTransparent onClick={onTotalSelectAll}>
       <Text fontWeight="semiBold" fontSize="xsmall">
         {`Select all ${totalCount} results`}
       </Text>
     </ButtonTransparent>
   )
+
+  !selectTotalResultsButton &&
+    // eslint-disable-next-line no-console
+    console.warn(
+      'An ActionList received a bulk prop object without a totalCount property. As a result, the "select total results" button within the ActionList control bar is disabled.'
+    )
 
   return (
     <div className={className}>
@@ -77,7 +91,7 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
       </Menu>
       <Space gap="small" justifyContent="center">
         {selectedItemsText}
-        {selectAllResultsButton}
+        {selectTotalResultsButton}
       </Space>
     </div>
   )
