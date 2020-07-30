@@ -83,7 +83,7 @@ exports[`MenuGroup - JSX label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .Icon-sc-7y0t4i-0 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -95,8 +95,8 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .Icon-sc-7y0t4i-0,
+.c5[aria-current='true'] .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 
@@ -118,7 +118,7 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 
@@ -136,7 +136,7 @@ exports[`MenuGroup - JSX label 1`] = `
       }
     />
     <h2
-      className="c2 c3"
+      className="TextBase-sc-1sjok63-0 c2 c3"
       fontSize="small"
       fontWeight="semiBold"
     >
@@ -283,7 +283,7 @@ exports[`MenuGroup - label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .Icon-sc-7y0t4i-0 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -295,8 +295,8 @@ exports[`MenuGroup - label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .Icon-sc-7y0t4i-0,
+.c5[aria-current='true'] .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 
@@ -318,7 +318,7 @@ exports[`MenuGroup - label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 
@@ -336,7 +336,7 @@ exports[`MenuGroup - label 1`] = `
       }
     />
     <h2
-      className="c2 c3"
+      className="TextBase-sc-1sjok63-0 c2 c3"
       fontSize="small"
       fontWeight="semiBold"
     >
@@ -458,7 +458,7 @@ exports[`MenuGroup 1`] = `
   text-decoration: none;
 }
 
-.c2 .c3 {
+.c2 .Icon-sc-7y0t4i-0 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -470,8 +470,8 @@ exports[`MenuGroup 1`] = `
   color: #262D33;
 }
 
-.c2:hover .c3,
-.c2[aria-current='true'] .c3 {
+.c2:hover .Icon-sc-7y0t4i-0,
+.c2[aria-current='true'] .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 
@@ -493,7 +493,7 @@ exports[`MenuGroup 1`] = `
   color: #939BA5;
 }
 
-.c2[disabled]:hover .c3 {
+.c2[disabled]:hover .Icon-sc-7y0t4i-0 {
   color: #939BA5;
 }
 

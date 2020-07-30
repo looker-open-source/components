@@ -88,18 +88,18 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   word-break: break-word;
 }
 
-.c1 .c3 {
+.c1 .Link-sc-165dqum-0 {
   color: #E8E5FF;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c1 .c3:focus,
-.c1 .c3:hover {
+.c1 .Link-sc-165dqum-0:focus,
+.c1 .Link-sc-165dqum-0:hover {
   color: #F3F2FF;
 }
 
-.c1 .c3:active {
+.c1 .Link-sc-165dqum-0:active {
   color: #FFFFFF;
 }
 
@@ -108,7 +108,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   color="inverseOn"
 >
   <p
-    class="c1"
+    class="TextBase-sc-1sjok63-0 Paragraph-sc-1nv7vl5-0 c1"
     font-size="xsmall"
     id="stable-id"
     role="tooltip"

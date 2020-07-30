@@ -3,8 +3,8 @@
 exports[`Spinner A default spinner 1`] = `
 .c1 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 0ms infinite;
-  animation: gokANi 1000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 0ms infinite;
+  animation: eIzBTy 1000ms linear 0ms infinite;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
   transform: rotate(0deg) translate(0,-160%);
@@ -18,8 +18,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c2 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 76.92307692307692ms infinite;
-  animation: gokANi 1000ms linear 76.92307692307692ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
+  animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
   -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
   -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
   transform: rotate(27.692307692307693deg) translate(0,-160%);
@@ -33,8 +33,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c3 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 153.84615384615384ms infinite;
-  animation: gokANi 1000ms linear 153.84615384615384ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
+  animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
   -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
   -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
   transform: rotate(55.38461538461539deg) translate(0,-160%);
@@ -48,8 +48,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c4 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 230.76923076923077ms infinite;
-  animation: gokANi 1000ms linear 230.76923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
   -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
   -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
   transform: rotate(83.07692307692308deg) translate(0,-160%);
@@ -63,8 +63,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c5 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 307.6923076923077ms infinite;
-  animation: gokANi 1000ms linear 307.6923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
   -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
   -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
   transform: rotate(110.76923076923077deg) translate(0,-160%);
@@ -78,8 +78,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c6 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 384.61538461538464ms infinite;
-  animation: gokANi 1000ms linear 384.61538461538464ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
+  animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
   -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
   -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
   transform: rotate(138.46153846153845deg) translate(0,-160%);
@@ -93,8 +93,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c7 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 461.53846153846155ms infinite;
-  animation: gokANi 1000ms linear 461.53846153846155ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
+  animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
   -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
   -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
   transform: rotate(166.15384615384616deg) translate(0,-160%);
@@ -108,8 +108,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c8 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 538.4615384615385ms infinite;
-  animation: gokANi 1000ms linear 538.4615384615385ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
+  animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
   -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
   -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
   transform: rotate(193.84615384615387deg) translate(0,-160%);
@@ -123,8 +123,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c9 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 615.3846153846154ms infinite;
-  animation: gokANi 1000ms linear 615.3846153846154ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
+  animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
   -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
   -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
   transform: rotate(221.53846153846155deg) translate(0,-160%);
@@ -138,8 +138,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c10 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 692.3076923076923ms infinite;
-  animation: gokANi 1000ms linear 692.3076923076923ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
+  animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
   -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
   -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
   transform: rotate(249.23076923076923deg) translate(0,-160%);
@@ -153,8 +153,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c11 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 769.2307692307693ms infinite;
-  animation: gokANi 1000ms linear 769.2307692307693ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
+  animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
   -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
   -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
   transform: rotate(276.9230769230769deg) translate(0,-160%);
@@ -168,8 +168,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c12 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 846.1538461538462ms infinite;
-  animation: gokANi 1000ms linear 846.1538461538462ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
+  animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
   -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
   -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
   transform: rotate(304.61538461538464deg) translate(0,-160%);
@@ -183,8 +183,8 @@ exports[`Spinner A default spinner 1`] = `
 
 .c13 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 923.0769230769231ms infinite;
-  animation: gokANi 1000ms linear 923.0769230769231ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
+  animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
   -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
   -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
   transform: rotate(332.3076923076923deg) translate(0,-160%);
@@ -264,8 +264,8 @@ exports[`Spinner A default spinner 1`] = `
 exports[`Spinner Spinner can be resized 1`] = `
 .c1 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 0ms infinite;
-  animation: gokANi 1000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 0ms infinite;
+  animation: eIzBTy 1000ms linear 0ms infinite;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
   transform: rotate(0deg) translate(0,-160%);
@@ -279,8 +279,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c2 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 76.92307692307692ms infinite;
-  animation: gokANi 1000ms linear 76.92307692307692ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
+  animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
   -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
   -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
   transform: rotate(27.692307692307693deg) translate(0,-160%);
@@ -294,8 +294,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c3 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 153.84615384615384ms infinite;
-  animation: gokANi 1000ms linear 153.84615384615384ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
+  animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
   -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
   -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
   transform: rotate(55.38461538461539deg) translate(0,-160%);
@@ -309,8 +309,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c4 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 230.76923076923077ms infinite;
-  animation: gokANi 1000ms linear 230.76923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
   -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
   -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
   transform: rotate(83.07692307692308deg) translate(0,-160%);
@@ -324,8 +324,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c5 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 307.6923076923077ms infinite;
-  animation: gokANi 1000ms linear 307.6923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
   -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
   -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
   transform: rotate(110.76923076923077deg) translate(0,-160%);
@@ -339,8 +339,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c6 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 384.61538461538464ms infinite;
-  animation: gokANi 1000ms linear 384.61538461538464ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
+  animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
   -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
   -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
   transform: rotate(138.46153846153845deg) translate(0,-160%);
@@ -354,8 +354,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c7 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 461.53846153846155ms infinite;
-  animation: gokANi 1000ms linear 461.53846153846155ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
+  animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
   -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
   -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
   transform: rotate(166.15384615384616deg) translate(0,-160%);
@@ -369,8 +369,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c8 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 538.4615384615385ms infinite;
-  animation: gokANi 1000ms linear 538.4615384615385ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
+  animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
   -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
   -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
   transform: rotate(193.84615384615387deg) translate(0,-160%);
@@ -384,8 +384,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c9 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 615.3846153846154ms infinite;
-  animation: gokANi 1000ms linear 615.3846153846154ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
+  animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
   -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
   -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
   transform: rotate(221.53846153846155deg) translate(0,-160%);
@@ -399,8 +399,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c10 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 692.3076923076923ms infinite;
-  animation: gokANi 1000ms linear 692.3076923076923ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
+  animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
   -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
   -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
   transform: rotate(249.23076923076923deg) translate(0,-160%);
@@ -414,8 +414,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c11 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 769.2307692307693ms infinite;
-  animation: gokANi 1000ms linear 769.2307692307693ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
+  animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
   -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
   -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
   transform: rotate(276.9230769230769deg) translate(0,-160%);
@@ -429,8 +429,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c12 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 846.1538461538462ms infinite;
-  animation: gokANi 1000ms linear 846.1538461538462ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
+  animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
   -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
   -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
   transform: rotate(304.61538461538464deg) translate(0,-160%);
@@ -444,8 +444,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 .c13 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 923.0769230769231ms infinite;
-  animation: gokANi 1000ms linear 923.0769230769231ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
+  animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
   -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
   -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
   transform: rotate(332.3076923076923deg) translate(0,-160%);
@@ -525,8 +525,8 @@ exports[`Spinner Spinner can be resized 1`] = `
 exports[`Spinner Spinner can change markger color 1`] = `
 .c1 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 0ms infinite;
-  animation: gokANi 1000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 0ms infinite;
+  animation: eIzBTy 1000ms linear 0ms infinite;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
   transform: rotate(0deg) translate(0,-160%);
@@ -540,8 +540,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c2 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 76.92307692307692ms infinite;
-  animation: gokANi 1000ms linear 76.92307692307692ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
+  animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
   -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
   -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
   transform: rotate(27.692307692307693deg) translate(0,-160%);
@@ -555,8 +555,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c3 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 153.84615384615384ms infinite;
-  animation: gokANi 1000ms linear 153.84615384615384ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
+  animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
   -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
   -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
   transform: rotate(55.38461538461539deg) translate(0,-160%);
@@ -570,8 +570,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c4 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 230.76923076923077ms infinite;
-  animation: gokANi 1000ms linear 230.76923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
   -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
   -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
   transform: rotate(83.07692307692308deg) translate(0,-160%);
@@ -585,8 +585,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c5 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 307.6923076923077ms infinite;
-  animation: gokANi 1000ms linear 307.6923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
   -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
   -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
   transform: rotate(110.76923076923077deg) translate(0,-160%);
@@ -600,8 +600,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c6 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 384.61538461538464ms infinite;
-  animation: gokANi 1000ms linear 384.61538461538464ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
+  animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
   -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
   -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
   transform: rotate(138.46153846153845deg) translate(0,-160%);
@@ -615,8 +615,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c7 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 461.53846153846155ms infinite;
-  animation: gokANi 1000ms linear 461.53846153846155ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
+  animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
   -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
   -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
   transform: rotate(166.15384615384616deg) translate(0,-160%);
@@ -630,8 +630,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c8 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 538.4615384615385ms infinite;
-  animation: gokANi 1000ms linear 538.4615384615385ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
+  animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
   -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
   -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
   transform: rotate(193.84615384615387deg) translate(0,-160%);
@@ -645,8 +645,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c9 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 615.3846153846154ms infinite;
-  animation: gokANi 1000ms linear 615.3846153846154ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
+  animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
   -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
   -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
   transform: rotate(221.53846153846155deg) translate(0,-160%);
@@ -660,8 +660,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c10 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 692.3076923076923ms infinite;
-  animation: gokANi 1000ms linear 692.3076923076923ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
+  animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
   -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
   -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
   transform: rotate(249.23076923076923deg) translate(0,-160%);
@@ -675,8 +675,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c11 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 769.2307692307693ms infinite;
-  animation: gokANi 1000ms linear 769.2307692307693ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
+  animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
   -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
   -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
   transform: rotate(276.9230769230769deg) translate(0,-160%);
@@ -690,8 +690,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c12 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 846.1538461538462ms infinite;
-  animation: gokANi 1000ms linear 846.1538461538462ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
+  animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
   -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
   -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
   transform: rotate(304.61538461538464deg) translate(0,-160%);
@@ -705,8 +705,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 .c13 {
   background-color: red;
-  -webkit-animation: gokANi 1000ms linear 923.0769230769231ms infinite;
-  animation: gokANi 1000ms linear 923.0769230769231ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
+  animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
   -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
   -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
   transform: rotate(332.3076923076923deg) translate(0,-160%);
@@ -786,8 +786,8 @@ exports[`Spinner Spinner can change markger color 1`] = `
 exports[`Spinner Spinner can have n number of markers 1`] = `
 .c1 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 0ms infinite;
-  animation: gokANi 1000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 0ms infinite;
+  animation: eIzBTy 1000ms linear 0ms infinite;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
   transform: rotate(0deg) translate(0,-160%);
@@ -801,8 +801,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c2 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 50ms infinite;
-  animation: gokANi 1000ms linear 50ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 50ms infinite;
+  animation: eIzBTy 1000ms linear 50ms infinite;
   -webkit-transform: rotate(18deg) translate(0,-160%);
   -ms-transform: rotate(18deg) translate(0,-160%);
   transform: rotate(18deg) translate(0,-160%);
@@ -816,8 +816,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c3 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 100ms infinite;
-  animation: gokANi 1000ms linear 100ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 100ms infinite;
+  animation: eIzBTy 1000ms linear 100ms infinite;
   -webkit-transform: rotate(36deg) translate(0,-160%);
   -ms-transform: rotate(36deg) translate(0,-160%);
   transform: rotate(36deg) translate(0,-160%);
@@ -831,8 +831,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c4 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 150ms infinite;
-  animation: gokANi 1000ms linear 150ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 150ms infinite;
+  animation: eIzBTy 1000ms linear 150ms infinite;
   -webkit-transform: rotate(54deg) translate(0,-160%);
   -ms-transform: rotate(54deg) translate(0,-160%);
   transform: rotate(54deg) translate(0,-160%);
@@ -846,8 +846,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c5 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 200ms infinite;
-  animation: gokANi 1000ms linear 200ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 200ms infinite;
+  animation: eIzBTy 1000ms linear 200ms infinite;
   -webkit-transform: rotate(72deg) translate(0,-160%);
   -ms-transform: rotate(72deg) translate(0,-160%);
   transform: rotate(72deg) translate(0,-160%);
@@ -861,8 +861,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c6 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 250ms infinite;
-  animation: gokANi 1000ms linear 250ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 250ms infinite;
+  animation: eIzBTy 1000ms linear 250ms infinite;
   -webkit-transform: rotate(90deg) translate(0,-160%);
   -ms-transform: rotate(90deg) translate(0,-160%);
   transform: rotate(90deg) translate(0,-160%);
@@ -876,8 +876,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c7 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 300ms infinite;
-  animation: gokANi 1000ms linear 300ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 300ms infinite;
+  animation: eIzBTy 1000ms linear 300ms infinite;
   -webkit-transform: rotate(108deg) translate(0,-160%);
   -ms-transform: rotate(108deg) translate(0,-160%);
   transform: rotate(108deg) translate(0,-160%);
@@ -891,8 +891,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c8 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 350ms infinite;
-  animation: gokANi 1000ms linear 350ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 350ms infinite;
+  animation: eIzBTy 1000ms linear 350ms infinite;
   -webkit-transform: rotate(126deg) translate(0,-160%);
   -ms-transform: rotate(126deg) translate(0,-160%);
   transform: rotate(126deg) translate(0,-160%);
@@ -906,8 +906,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c9 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 400ms infinite;
-  animation: gokANi 1000ms linear 400ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 400ms infinite;
+  animation: eIzBTy 1000ms linear 400ms infinite;
   -webkit-transform: rotate(144deg) translate(0,-160%);
   -ms-transform: rotate(144deg) translate(0,-160%);
   transform: rotate(144deg) translate(0,-160%);
@@ -921,8 +921,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c10 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 450ms infinite;
-  animation: gokANi 1000ms linear 450ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 450ms infinite;
+  animation: eIzBTy 1000ms linear 450ms infinite;
   -webkit-transform: rotate(162deg) translate(0,-160%);
   -ms-transform: rotate(162deg) translate(0,-160%);
   transform: rotate(162deg) translate(0,-160%);
@@ -936,8 +936,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c11 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 500ms infinite;
-  animation: gokANi 1000ms linear 500ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 500ms infinite;
+  animation: eIzBTy 1000ms linear 500ms infinite;
   -webkit-transform: rotate(180deg) translate(0,-160%);
   -ms-transform: rotate(180deg) translate(0,-160%);
   transform: rotate(180deg) translate(0,-160%);
@@ -951,8 +951,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c12 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 550ms infinite;
-  animation: gokANi 1000ms linear 550ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 550ms infinite;
+  animation: eIzBTy 1000ms linear 550ms infinite;
   -webkit-transform: rotate(198deg) translate(0,-160%);
   -ms-transform: rotate(198deg) translate(0,-160%);
   transform: rotate(198deg) translate(0,-160%);
@@ -966,8 +966,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c13 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 600ms infinite;
-  animation: gokANi 1000ms linear 600ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 600ms infinite;
+  animation: eIzBTy 1000ms linear 600ms infinite;
   -webkit-transform: rotate(216deg) translate(0,-160%);
   -ms-transform: rotate(216deg) translate(0,-160%);
   transform: rotate(216deg) translate(0,-160%);
@@ -981,8 +981,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c14 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 650ms infinite;
-  animation: gokANi 1000ms linear 650ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 650ms infinite;
+  animation: eIzBTy 1000ms linear 650ms infinite;
   -webkit-transform: rotate(234deg) translate(0,-160%);
   -ms-transform: rotate(234deg) translate(0,-160%);
   transform: rotate(234deg) translate(0,-160%);
@@ -996,8 +996,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c15 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 700ms infinite;
-  animation: gokANi 1000ms linear 700ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 700ms infinite;
+  animation: eIzBTy 1000ms linear 700ms infinite;
   -webkit-transform: rotate(252deg) translate(0,-160%);
   -ms-transform: rotate(252deg) translate(0,-160%);
   transform: rotate(252deg) translate(0,-160%);
@@ -1011,8 +1011,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c16 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 750ms infinite;
-  animation: gokANi 1000ms linear 750ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 750ms infinite;
+  animation: eIzBTy 1000ms linear 750ms infinite;
   -webkit-transform: rotate(270deg) translate(0,-160%);
   -ms-transform: rotate(270deg) translate(0,-160%);
   transform: rotate(270deg) translate(0,-160%);
@@ -1026,8 +1026,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c17 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 800ms infinite;
-  animation: gokANi 1000ms linear 800ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 800ms infinite;
+  animation: eIzBTy 1000ms linear 800ms infinite;
   -webkit-transform: rotate(288deg) translate(0,-160%);
   -ms-transform: rotate(288deg) translate(0,-160%);
   transform: rotate(288deg) translate(0,-160%);
@@ -1041,8 +1041,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c18 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 850ms infinite;
-  animation: gokANi 1000ms linear 850ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 850ms infinite;
+  animation: eIzBTy 1000ms linear 850ms infinite;
   -webkit-transform: rotate(306deg) translate(0,-160%);
   -ms-transform: rotate(306deg) translate(0,-160%);
   transform: rotate(306deg) translate(0,-160%);
@@ -1056,8 +1056,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c19 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 900ms infinite;
-  animation: gokANi 1000ms linear 900ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 900ms infinite;
+  animation: eIzBTy 1000ms linear 900ms infinite;
   -webkit-transform: rotate(324deg) translate(0,-160%);
   -ms-transform: rotate(324deg) translate(0,-160%);
   transform: rotate(324deg) translate(0,-160%);
@@ -1071,8 +1071,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 .c20 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 950ms infinite;
-  animation: gokANi 1000ms linear 950ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 950ms infinite;
+  animation: eIzBTy 1000ms linear 950ms infinite;
   -webkit-transform: rotate(342deg) translate(0,-160%);
   -ms-transform: rotate(342deg) translate(0,-160%);
   transform: rotate(342deg) translate(0,-160%);
@@ -1180,8 +1180,8 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 .c1 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 0ms infinite;
-  animation: gokANi 1000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 0ms infinite;
+  animation: eIzBTy 1000ms linear 0ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
@@ -1196,8 +1196,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c2 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 76.92307692307692ms infinite;
-  animation: gokANi 1000ms linear 76.92307692307692ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
+  animation: eIzBTy 1000ms linear 76.92307692307692ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
   -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
@@ -1212,8 +1212,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c3 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 153.84615384615384ms infinite;
-  animation: gokANi 1000ms linear 153.84615384615384ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
+  animation: eIzBTy 1000ms linear 153.84615384615384ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
   -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
@@ -1228,8 +1228,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c4 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 230.76923076923077ms infinite;
-  animation: gokANi 1000ms linear 230.76923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 230.76923076923077ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
   -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
@@ -1244,8 +1244,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c5 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 307.6923076923077ms infinite;
-  animation: gokANi 1000ms linear 307.6923076923077ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
+  animation: eIzBTy 1000ms linear 307.6923076923077ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
   -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
@@ -1260,8 +1260,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c6 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 384.61538461538464ms infinite;
-  animation: gokANi 1000ms linear 384.61538461538464ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
+  animation: eIzBTy 1000ms linear 384.61538461538464ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
   -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
@@ -1276,8 +1276,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c7 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 461.53846153846155ms infinite;
-  animation: gokANi 1000ms linear 461.53846153846155ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
+  animation: eIzBTy 1000ms linear 461.53846153846155ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
   -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
@@ -1292,8 +1292,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c8 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 538.4615384615385ms infinite;
-  animation: gokANi 1000ms linear 538.4615384615385ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
+  animation: eIzBTy 1000ms linear 538.4615384615385ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
   -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
@@ -1308,8 +1308,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c9 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 615.3846153846154ms infinite;
-  animation: gokANi 1000ms linear 615.3846153846154ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
+  animation: eIzBTy 1000ms linear 615.3846153846154ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
   -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
@@ -1324,8 +1324,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c10 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 692.3076923076923ms infinite;
-  animation: gokANi 1000ms linear 692.3076923076923ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
+  animation: eIzBTy 1000ms linear 692.3076923076923ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
   -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
@@ -1340,8 +1340,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c11 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 769.2307692307693ms infinite;
-  animation: gokANi 1000ms linear 769.2307692307693ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
+  animation: eIzBTy 1000ms linear 769.2307692307693ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
   -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
@@ -1356,8 +1356,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c12 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 846.1538461538462ms infinite;
-  animation: gokANi 1000ms linear 846.1538461538462ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
+  animation: eIzBTy 1000ms linear 846.1538461538462ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
   -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
@@ -1372,8 +1372,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 .c13 {
   background-color: #262D33;
-  -webkit-animation: gokANi 1000ms linear 923.0769230769231ms infinite;
-  animation: gokANi 1000ms linear 923.0769230769231ms infinite;
+  -webkit-animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
+  animation: eIzBTy 1000ms linear 923.0769230769231ms infinite;
   border-radius: 30px;
   -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
   -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
@@ -1454,8 +1454,8 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 exports[`Spinner Spinner speed can be set 1`] = `
 .c1 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 0ms infinite;
-  animation: gokANi 2000ms linear 0ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 0ms infinite;
+  animation: eIzBTy 2000ms linear 0ms infinite;
   -webkit-transform: rotate(0deg) translate(0,-160%);
   -ms-transform: rotate(0deg) translate(0,-160%);
   transform: rotate(0deg) translate(0,-160%);
@@ -1469,8 +1469,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c2 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 153.84615384615384ms infinite;
-  animation: gokANi 2000ms linear 153.84615384615384ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 153.84615384615384ms infinite;
+  animation: eIzBTy 2000ms linear 153.84615384615384ms infinite;
   -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
   -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
   transform: rotate(27.692307692307693deg) translate(0,-160%);
@@ -1484,8 +1484,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c3 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 307.6923076923077ms infinite;
-  animation: gokANi 2000ms linear 307.6923076923077ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 307.6923076923077ms infinite;
+  animation: eIzBTy 2000ms linear 307.6923076923077ms infinite;
   -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
   -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
   transform: rotate(55.38461538461539deg) translate(0,-160%);
@@ -1499,8 +1499,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c4 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 461.53846153846155ms infinite;
-  animation: gokANi 2000ms linear 461.53846153846155ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 461.53846153846155ms infinite;
+  animation: eIzBTy 2000ms linear 461.53846153846155ms infinite;
   -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
   -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
   transform: rotate(83.07692307692308deg) translate(0,-160%);
@@ -1514,8 +1514,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c5 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 615.3846153846154ms infinite;
-  animation: gokANi 2000ms linear 615.3846153846154ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 615.3846153846154ms infinite;
+  animation: eIzBTy 2000ms linear 615.3846153846154ms infinite;
   -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
   -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
   transform: rotate(110.76923076923077deg) translate(0,-160%);
@@ -1529,8 +1529,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c6 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 769.2307692307693ms infinite;
-  animation: gokANi 2000ms linear 769.2307692307693ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 769.2307692307693ms infinite;
+  animation: eIzBTy 2000ms linear 769.2307692307693ms infinite;
   -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
   -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
   transform: rotate(138.46153846153845deg) translate(0,-160%);
@@ -1544,8 +1544,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c7 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 923.0769230769231ms infinite;
-  animation: gokANi 2000ms linear 923.0769230769231ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 923.0769230769231ms infinite;
+  animation: eIzBTy 2000ms linear 923.0769230769231ms infinite;
   -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
   -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
   transform: rotate(166.15384615384616deg) translate(0,-160%);
@@ -1559,8 +1559,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c8 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1076.923076923077ms infinite;
-  animation: gokANi 2000ms linear 1076.923076923077ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1076.923076923077ms infinite;
+  animation: eIzBTy 2000ms linear 1076.923076923077ms infinite;
   -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
   -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
   transform: rotate(193.84615384615387deg) translate(0,-160%);
@@ -1574,8 +1574,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c9 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1230.7692307692307ms infinite;
-  animation: gokANi 2000ms linear 1230.7692307692307ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1230.7692307692307ms infinite;
+  animation: eIzBTy 2000ms linear 1230.7692307692307ms infinite;
   -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
   -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
   transform: rotate(221.53846153846155deg) translate(0,-160%);
@@ -1589,8 +1589,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c10 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1384.6153846153845ms infinite;
-  animation: gokANi 2000ms linear 1384.6153846153845ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1384.6153846153845ms infinite;
+  animation: eIzBTy 2000ms linear 1384.6153846153845ms infinite;
   -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
   -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
   transform: rotate(249.23076923076923deg) translate(0,-160%);
@@ -1604,8 +1604,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c11 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1538.4615384615386ms infinite;
-  animation: gokANi 2000ms linear 1538.4615384615386ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1538.4615384615386ms infinite;
+  animation: eIzBTy 2000ms linear 1538.4615384615386ms infinite;
   -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
   -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
   transform: rotate(276.9230769230769deg) translate(0,-160%);
@@ -1619,8 +1619,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c12 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1692.3076923076924ms infinite;
-  animation: gokANi 2000ms linear 1692.3076923076924ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1692.3076923076924ms infinite;
+  animation: eIzBTy 2000ms linear 1692.3076923076924ms infinite;
   -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
   -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
   transform: rotate(304.61538461538464deg) translate(0,-160%);
@@ -1634,8 +1634,8 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 .c13 {
   background-color: #262D33;
-  -webkit-animation: gokANi 2000ms linear 1846.1538461538462ms infinite;
-  animation: gokANi 2000ms linear 1846.1538461538462ms infinite;
+  -webkit-animation: eIzBTy 2000ms linear 1846.1538461538462ms infinite;
+  animation: eIzBTy 2000ms linear 1846.1538461538462ms infinite;
   -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
   -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
   transform: rotate(332.3076923076923deg) translate(0,-160%);

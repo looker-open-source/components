@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.41",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^5.1.1",
     "react": "^16.13.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.1.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "styled-components": "^4"
+    "styled-components": "^5"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

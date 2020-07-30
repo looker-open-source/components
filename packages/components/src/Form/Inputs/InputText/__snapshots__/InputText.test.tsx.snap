@@ -26,13 +26,13 @@ exports[`InputText default 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -126,13 +126,13 @@ exports[`InputText should accept disabled 1`] = `
   color: #939BA5;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -229,13 +229,13 @@ exports[`InputText should accept readOnly 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -328,13 +328,13 @@ exports[`InputText should accept required 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -427,13 +427,13 @@ exports[`InputText with a placeholder 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -526,13 +526,13 @@ exports[`InputText with a value 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -625,13 +625,13 @@ exports[`InputText with aria-describedby 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -724,13 +724,13 @@ exports[`InputText with name and id 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 

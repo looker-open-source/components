@@ -59,7 +59,7 @@ exports[`DialogHeader Snapshot 1`] = `
   opacity: 0.25;
 }
 
-.c4 .c8 {
+.c4 .icon__ButtonIcon-zv4n08-0 {
   height: 16px;
   width: 16px;
 }
@@ -127,7 +127,7 @@ exports[`DialogHeader Snapshot 1`] = `
   id="test-DialogHeader"
 >
   <h3
-    className="c1"
+    className="TextBase-sc-1sjok63-0 c1"
     fontSize="large"
     fontWeight="semiBold"
     style={

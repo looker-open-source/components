@@ -42,7 +42,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -68,7 +68,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   focus
 </button>
@@ -76,7 +76,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 btmkRb"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 cUZFhh ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 jRRJrW"
 >
   focus
 </button>
@@ -125,7 +125,7 @@ exports[`Button can be full width 1`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -151,7 +151,7 @@ exports[`Button can be full width 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   Full Width
 </button>
@@ -199,7 +199,7 @@ exports[`Button disable 1`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -225,7 +225,7 @@ exports[`Button disable 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
   disabled=""
 >
   disabled
@@ -276,7 +276,7 @@ exports[`Button validates all sizes 1`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 12px;
   width: 12px;
 }
@@ -302,7 +302,7 @@ exports[`Button validates all sizes 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   xsmall button
 </button>
@@ -350,7 +350,7 @@ exports[`Button validates all sizes 2`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 16px;
   width: 16px;
 }
@@ -376,7 +376,7 @@ exports[`Button validates all sizes 2`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   small button
 </button>
@@ -424,7 +424,7 @@ exports[`Button validates all sizes 3`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -450,7 +450,7 @@ exports[`Button validates all sizes 3`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   medium button
 </button>
@@ -498,7 +498,7 @@ exports[`Button validates all sizes 4`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 20px;
   width: 20px;
 }
@@ -524,7 +524,7 @@ exports[`Button validates all sizes 4`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   large button
 </button>
@@ -587,31 +587,6 @@ exports[`Button with icon validates all sizes 1`] = `
   opacity: 0.25;
 }
 
-.c4 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c5 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c6 .c2 {
-  height: 12px;
-  width: 12px;
-}
-
-.c7 .c2 {
-  height: 16px;
-  width: 16px;
-}
-
-.c8 .c2 {
-  height: 20px;
-  width: 20px;
-}
-
 .c1 {
   background: #6C43E0;
   border: 1px solid #6C43E0;
@@ -645,21 +620,21 @@ exports[`Button with icon validates all sizes 1`] = `
   border-color: #C1C6CC;
 }
 
-.c9 .c2 {
+.c4 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   height: 16px;
   width: 16px;
 }
 
-.c10 .c2 {
+.c5 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 18px;
   width: 18px;
 }
 
-.c11 .c2 {
+.c6 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 20px;
@@ -667,11 +642,11 @@ exports[`Button with icon validates all sizes 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   <div
     aria-hidden="true"
-    class="c2 c3"
+    class="Icon-sc-7y0t4i-0 c2 c3"
   >
     <svg
       fill="currentColor"
@@ -747,31 +722,6 @@ exports[`Button with icon validates all sizes 2`] = `
 }
 
 .c4 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c5 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c6 .c2 {
-  height: 12px;
-  width: 12px;
-}
-
-.c7 .c2 {
-  height: 16px;
-  width: 16px;
-}
-
-.c8 .c2 {
-  height: 20px;
-  width: 20px;
-}
-
-.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   height: 12px;
@@ -811,14 +761,14 @@ exports[`Button with icon validates all sizes 2`] = `
   border-color: #C1C6CC;
 }
 
-.c10 .c2 {
+.c5 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 18px;
   width: 18px;
 }
 
-.c11 .c2 {
+.c6 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 20px;
@@ -826,11 +776,11 @@ exports[`Button with icon validates all sizes 2`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   <div
     aria-hidden="true"
-    class="c2 c3"
+    class="Icon-sc-7y0t4i-0 c2 c3"
   >
     <svg
       fill="currentColor"
@@ -906,38 +856,13 @@ exports[`Button with icon validates all sizes 3`] = `
 }
 
 .c4 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c5 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c6 .c2 {
-  height: 12px;
-  width: 12px;
-}
-
-.c7 .c2 {
-  height: 16px;
-  width: 16px;
-}
-
-.c8 .c2 {
-  height: 20px;
-  width: 20px;
-}
-
-.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   height: 12px;
   width: 12px;
 }
 
-.c10 .c2 {
+.c5 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   height: 16px;
@@ -977,7 +902,7 @@ exports[`Button with icon validates all sizes 3`] = `
   border-color: #C1C6CC;
 }
 
-.c11 .c2 {
+.c6 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 20px;
@@ -985,11 +910,11 @@ exports[`Button with icon validates all sizes 3`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   <div
     aria-hidden="true"
-    class="c2 c3"
+    class="Icon-sc-7y0t4i-0 c2 c3"
   >
     <svg
       fill="currentColor"
@@ -1065,45 +990,20 @@ exports[`Button with icon validates all sizes 4`] = `
 }
 
 .c4 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c5 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c6 .c2 {
-  height: 12px;
-  width: 12px;
-}
-
-.c7 .c2 {
-  height: 16px;
-  width: 16px;
-}
-
-.c8 .c2 {
-  height: 20px;
-  width: 20px;
-}
-
-.c9 .c2 {
   margin-left: -0.25rem;
   margin-right: 0.375rem;
   height: 12px;
   width: 12px;
 }
 
-.c10 .c2 {
+.c5 .c2 {
   margin-left: -0.5rem;
   margin-right: 0.5rem;
   height: 16px;
   width: 16px;
 }
 
-.c11 .c2 {
+.c6 .c2 {
   margin-left: -0.75rem;
   margin-right: 0.5rem;
   height: 18px;
@@ -1144,11 +1044,11 @@ exports[`Button with icon validates all sizes 4`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   <div
     aria-hidden="true"
-    class="c2 c3"
+    class="Icon-sc-7y0t4i-0 c2 c3"
   >
     <svg
       fill="currentColor"
@@ -1208,7 +1108,7 @@ exports[`Button works with color critical 1`] = `
   color: #FFFFFF;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -1234,7 +1134,7 @@ exports[`Button works with color critical 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
   color="critical"
 >
   critical

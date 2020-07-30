@@ -56,13 +56,13 @@ exports[`Fieldset 1`] = `
   font-size: 0.875rem;
 }
 
-.c8 .c10 {
+.c8 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c8 .c10 span {
+.c8 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -129,12 +129,12 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
-.c0 .c11 {
+.c0 .AccordionContent-qt35cj-0 {
   padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 
-.c0 .c12 {
+.c0 .AccordionDisclosure-sc-8407zi-1 {
   font-size: 0.875rem;
   font-weight: 600;
   height: 24px;
@@ -182,13 +182,13 @@ exports[`Fieldset 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c4 .c14 {
+.c4 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c4 .c13 {
+.c4 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 

@@ -8,7 +8,7 @@ exports[`A Paragraph component aligned 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -24,7 +24,7 @@ exports[`A Paragraph component decorated 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
   textDecoration="line-through"
 >
@@ -39,7 +39,7 @@ exports[`A Paragraph component resized 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="xxxxlarge"
 >
   Hello
@@ -54,7 +54,7 @@ exports[`A Paragraph component text transformed 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -71,7 +71,7 @@ exports[`A Paragraph component truncated 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -86,7 +86,7 @@ exports[`A Paragraph component weight 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
   fontWeight="bold"
 >
@@ -105,7 +105,7 @@ exports[`A Paragraph component with multiline truncate 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -120,7 +120,7 @@ exports[`A Paragraph component with variant 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -135,7 +135,7 @@ exports[`A Paragraph component wrapped 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -149,7 +149,7 @@ exports[`A default Paragraph component 1`] = `
 }
 
 <p
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello

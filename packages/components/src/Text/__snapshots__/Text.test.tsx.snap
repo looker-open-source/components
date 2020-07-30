@@ -9,7 +9,7 @@ exports[`A Text component decorated 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
   textDecoration="line-through"
 >
@@ -24,7 +24,7 @@ exports[`A Text component resized 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="xxxxlarge"
 >
   Hello
@@ -39,7 +39,7 @@ exports[`A Text component text transformed 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -54,7 +54,7 @@ exports[`A Text component weight 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
   fontWeight="bold"
 >
@@ -70,7 +70,7 @@ exports[`A Text component with variant 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -85,7 +85,7 @@ exports[`A Text component wrapped 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello
@@ -99,7 +99,7 @@ exports[`A default Text component 1`] = `
 }
 
 <span
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontSize="medium"
 >
   Hello

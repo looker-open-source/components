@@ -136,7 +136,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
     />
   </div>
   <div
-    className="c4 c5"
+    className="AvatarIcon-sc-18uvd0-0 c4 c5"
   >
     <div
       aria-hidden={true}
@@ -294,7 +294,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
     />
   </div>
   <div
-    className="c4 c5"
+    className="AvatarIcon-sc-18uvd0-0 c4 c5"
   >
     <div
       aria-hidden={true}
@@ -491,11 +491,6 @@ exports[`Avatar AvatarIcon renders  1`] = `
   width: 100%;
 }
 
-.c3 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
 .c0 {
   background: transparent;
   border: none;
@@ -523,16 +518,6 @@ exports[`Avatar AvatarIcon renders  1`] = `
 .c0 .c1 {
   height: 20px;
   width: 20px;
-}
-
-.c4 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c5 .c6 .c1 {
-  height: 14px;
-  width: 14px;
 }
 
 <div
@@ -580,11 +565,6 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
   width: 100%;
 }
 
-.c3 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
 .c0 {
   background: transparent;
   border: none;
@@ -612,21 +592,6 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
 .c0 .c1 {
   height: 20px;
   width: 20px;
-}
-
-.c4 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c5 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c6 .c7 .c1 {
-  height: 14px;
-  width: 14px;
 }
 
 <div

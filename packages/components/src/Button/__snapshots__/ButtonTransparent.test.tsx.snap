@@ -43,7 +43,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   padding: 0 0.5rem;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -70,7 +70,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   focus
 </button>
@@ -78,7 +78,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 hvMZkF"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 cUZFhh ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 bLYpXR"
 >
   focus
 </button>
@@ -127,7 +127,7 @@ exports[`ButtonTransparent has the correct style 1`] = `
   padding: 0 0.5rem;
 }
 
-.c1 .c2 {
+.c1 .icon__ButtonIcon-zv4n08-0 {
   height: 18px;
   width: 18px;
 }
@@ -154,7 +154,7 @@ exports[`ButtonTransparent has the correct style 1`] = `
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase-sc-1bpio6j-1 c1"
 >
   transparent
 </button>

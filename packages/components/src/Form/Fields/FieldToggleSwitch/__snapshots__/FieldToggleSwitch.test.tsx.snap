@@ -85,7 +85,7 @@ exports[`A FieldToggleSwitch 1`] = `
   padding-left: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .FieldInline__FieldDetail-kl4qjf-1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -231,7 +231,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   padding-left: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .FieldInline__FieldDetail-kl4qjf-1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;

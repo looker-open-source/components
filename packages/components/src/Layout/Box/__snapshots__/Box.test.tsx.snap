@@ -142,6 +142,10 @@ exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 }
 
 @media screen and (min-width:30rem) {
+
+}
+
+@media screen and (min-width:30rem) {
   .c0 {
     line-height: 1.5rem;
   }
@@ -198,6 +202,10 @@ exports[`Box Box with SizeNone is valid 1`] = `
 exports[`Box Box with null values are removed from styling 1`] = `
 .c0 {
   margin-top: 1.25rem;
+}
+
+@media screen and (min-width:30rem) {
+
 }
 
 @media screen and (min-width:48rem) {

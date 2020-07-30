@@ -25,7 +25,7 @@ exports[`Chip renders correctly 1`] = `
   justify-items: center;
 }
 
-.c0 .c2 {
+.c0 .IconButton-n9jti8-1 {
   background-color: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -59,7 +59,7 @@ exports[`Chip renders correctly 1`] = `
   tabIndex={0}
 >
   <span
-    className="c1"
+    className="TextBase-sc-1sjok63-0 Text-sc-1wcc5y1-0 c1"
     fontSize="xsmall"
   >
     chip
@@ -94,7 +94,7 @@ exports[`Chip renders disabled 1`] = `
   background-color: #F5F6F7;
 }
 
-.c0 .c2 {
+.c0 .IconButton-n9jti8-1 {
   background-color: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -132,7 +132,7 @@ exports[`Chip renders disabled 1`] = `
   onKeyUp={[Function]}
 >
   <span
-    className="c1"
+    className="TextBase-sc-1sjok63-0 Text-sc-1wcc5y1-0 c1"
     fontSize="xsmall"
   >
     chip

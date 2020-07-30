@@ -96,7 +96,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 }
 
 <span
-  className="c0"
+  className="InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 c0"
 >
   <input
     className="c1"
@@ -209,7 +209,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
 }
 
 <span
-  className="c0"
+  className="InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 c0"
 >
   <input
     className="c1"
@@ -321,7 +321,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 }
 
 <span
-  className="c0"
+  className="InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 c0"
 >
   <input
     className="c1"

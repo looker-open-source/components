@@ -9,7 +9,7 @@ exports[`TextArea default 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -57,7 +57,7 @@ exports[`TextArea resizes with prop resize = false 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -105,7 +105,7 @@ exports[`TextArea resizes with prop resize = none 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -153,7 +153,7 @@ exports[`TextArea resizes with prop resize = true 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -201,7 +201,7 @@ exports[`TextArea resizes with prop resize = vertical 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -249,7 +249,7 @@ exports[`TextArea should accept disabled 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -316,18 +316,6 @@ exports[`TextArea with an error validation 1`] = `
 .c2 svg {
   height: 100%;
   width: 100%;
-}
-
-.c3 .c1 {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-}
-
-.c4 .c1 {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
 }
 
 .c0 {
@@ -414,7 +402,7 @@ exports[`TextArea with placeholder 1`] = `
   width: 100%;
 }
 
-.c0 .c1 {
+.c0 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;

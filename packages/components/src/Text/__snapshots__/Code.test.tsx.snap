@@ -9,7 +9,7 @@ exports[`A Code component aligned 1`] = `
 }
 
 <code
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontFamily="code"
   fontSize="medium"
 >
@@ -25,7 +25,7 @@ exports[`A Code component resized 1`] = `
 }
 
 <code
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontFamily="code"
   fontSize="xxxxlarge"
 >
@@ -42,7 +42,7 @@ exports[`A Code component weight 1`] = `
 }
 
 <code
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontFamily="code"
   fontSize="medium"
   fontWeight="bold"
@@ -59,7 +59,7 @@ exports[`A default Code component 1`] = `
 }
 
 <code
-  className="c0"
+  className="TextBase-sc-1sjok63-0 c0"
   fontFamily="code"
   fontSize="medium"
 >

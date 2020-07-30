@@ -47,18 +47,18 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-resize-detector": "^4.2.0",
     "@types/react-transition-group": "^4.4.0",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^5.1.1",
     "@types/uuid": "^8.0.0",
     "csstype": "^3.0.2",
-    "jest-styled-components": "^6.3.4",
+    "jest-styled-components": "^7.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.1.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "styled-components": "^4"
+    "styled-components": "^5"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

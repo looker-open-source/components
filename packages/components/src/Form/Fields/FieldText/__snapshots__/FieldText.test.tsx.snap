@@ -26,13 +26,13 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 .c6 {
+.c4 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c4 .c6 span {
+.c4 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -129,13 +129,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c7 {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 
@@ -196,13 +196,13 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 .c7 {
+.c4 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c4 .c7 span {
+.c4 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -264,24 +264,6 @@ exports[`A FieldText with label inline 1`] = `
   font-weight: 600;
 }
 
-.c6 .c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c6 .c5 {
-  grid-area: messages;
-}
-
-.c6 > .c1 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.5rem;
-}
-
 .c0 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -321,7 +303,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c9 {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -330,7 +312,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c8 {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 

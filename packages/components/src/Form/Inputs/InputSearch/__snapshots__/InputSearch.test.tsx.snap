@@ -62,13 +62,13 @@ exports[`InputSearch default 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c3 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c3 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -182,13 +182,13 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 .c1 {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c1 span {
+.c0 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
