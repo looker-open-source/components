@@ -132,7 +132,7 @@ export const InputColorComponent = forwardRef(
     }
 
     const handleColorChange = (hs: HueSaturation) => {
-      setColorState({ h: 0, s: 100, ...hs, v: get(color, 'v', 1) })
+      setColorState({ ...hs, v: get(color, 'v', 1) })
     }
 
     const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
