@@ -25,10 +25,11 @@
  */
 
 import { useHotkeys } from 'react-hotkeys-hook'
+import type { HotkeysEvent } from 'hotkeys-js'
 import { MutableRefObject } from 'react'
 import get from 'lodash/get'
-import set from 'lodash/set'
-import uniqBy from 'lodash/uniqBy'
+// import set from 'lodash/set'
+// import uniqBy from 'lodash/uniqBy'
 import filter from 'lodash/filter'
 import debounce from 'lodash/debounce'
 
@@ -40,13 +41,13 @@ interface Command {
 }
 
 /*
- * commandList is a collection of all global hotkeys, grouped by key command.
+ * keyCommandCollection is a collection of all global hotkeys, grouped by key command.
  * This will mutate as global hotkeys are added or target elements are removed.
  * Example: {
  *   esc: [{ cb: () => {}, target: document.createElement('div') }],
  * }
  */
-const commandList: { [key: string]: Command[] } = {}
+const keyCommandCollection: { [key: string]: Set<Command> } = {}
 
 /*
  * doRectsIntersect calculates whether two elements (often two focus traps)
@@ -72,19 +73,17 @@ const calculateIntersectionPoint = (r1: ClientRect, r2: ClientRect) => {
 }
 
 /*
- * organizeCommandList filters out stale events (dom target has been removed) and
- * sorts commandList by element stacking order.
+ * organizeKeyCommands takes a key command Set and converts returns and ordered array.
+ * Array sorted by dom stacking order.
  */
-const organizeCommandList = (shortcut: string) => {
-  const listSlice = [...(get(commandList, shortcut, []) as Command[])]
-
-  // filter out elements that are no longer in the document
-  const newListSlice: Command[] = filter(listSlice, (event) =>
-    document.body.contains(event.target)
-  )
+const organizeKeyCommands = (shortcut: string) => {
+  // convert from Set to array for sorting
+  const commandGroup = [
+    ...(get(keyCommandCollection, shortcut, []) as Command[]),
+  ]
 
   // sort elements by dom nesting order
-  newListSlice.sort((ev1, ev2) => {
+  commandGroup.sort((ev1, ev2) => {
     const rect1 = ev1.target.getBoundingClientRect()
     const rect2 = ev2.target.getBoundingClientRect()
 
@@ -101,15 +100,15 @@ const organizeCommandList = (shortcut: string) => {
     }
   })
 
-  commandList[shortcut] = newListSlice
+  return commandGroup
 }
 
 /*
- * executeStackedKeyCommand calls a single keyboard event callback taken from the
+ * executeFirstKeyCommand calls a single keyboard event callback taken from the
  * top of the Command array. Function is Debounced to protect against event bubbling
  * from firing multiple callbacks.
  */
-const executeStackedKeyCommand = debounce(
+const executeFirstKeyCommand = debounce(
   (e: KeyboardEvent, cbStack: Command[]) => {
     cbStack[0] && cbStack[0].cb(e)
   },
@@ -117,8 +116,23 @@ const executeStackedKeyCommand = debounce(
 )
 
 /*
+ * discardStaleCommands filters out event listeners for elements that are
+ * no longer in the document
+ */
+const discardStaleCommands = (keyCommand: string) => {
+  const commandSet = keyCommandCollection[keyCommand]
+  keyCommandCollection[keyCommand] = new Set(
+    filter(
+      [...commandSet],
+      // filter out elements that are no longer in the document
+      (event) => document.body.contains(event.target)
+    )
+  )
+}
+
+/*
  * useGlobalHotkeys takes a keyCommand, callback, and dom ref.
- * It then adds a unique copy (i.e. only one `esc` lister per element) to commandList,
+ * It then adds a unique copy (i.e. only one `esc` lister per element) to keyCommandCollection,
  * and passes a wrapped version to the useHotkeys library.
  */
 export const useGlobalHotkeys = (
@@ -128,23 +142,19 @@ export const useGlobalHotkeys = (
 ) => {
   if (containerRef.current) {
     const newCommand: Command = { cb, target: containerRef.current }
-
-    // mutate commandList with lodash `set` in case there is no existing collection
-    // associated with provided keyCommand. e.g. when commandList.esc does not exist yet.
-    set(
-      commandList,
-      keyCommand,
-      uniqBy([...get(commandList, keyCommand, []), newCommand], (el) => {
-        return el.target // allow only one unique key command per element
-      })
-    )
+    const commandSet = get(keyCommandCollection, keyCommand, new Set()) as Set<
+      Command
+    >
+    commandSet.add(newCommand)
+    keyCommandCollection[keyCommand] = commandSet
   }
 
   // wrappedCb organizes the list by dom stacking order and only calls the
   // callback associated with the focused element
-  const wrappedCb = (e: KeyboardEvent, handler: any) => {
-    organizeCommandList(handler.shortcut)
-    executeStackedKeyCommand(e, commandList[handler.shortcut])
+  const wrappedCb = (e: KeyboardEvent, handler: HotkeysEvent) => {
+    discardStaleCommands(handler.shortcut)
+    const orderedEventListeners = organizeKeyCommands(handler.shortcut)
+    executeFirstKeyCommand(e, orderedEventListeners)
   }
 
   // `enableOnTags` enables listener on form inputs
