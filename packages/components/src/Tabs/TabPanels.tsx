@@ -67,7 +67,7 @@ const Layout: FC<TabPanelsProps> = ({
       className={className}
       id={`panel-${selectedIndex}`}
       role="tabpanel"
-      tab-index={selectedIndex}
+      tabIndex={selectedIndex}
       {...tabPanelsLayoutProps}
     >
       {clonedChildren}

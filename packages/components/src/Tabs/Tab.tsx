@@ -126,7 +126,6 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     }
     setFocusVisible(false)
   }
-  const tabindex = selected ? 0 : -1
 
   return (
     <TabStyle
@@ -142,7 +141,7 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
       ref={ref}
       role="tab"
       selected={selected}
-      tab-index={tabindex}
+      tabIndex={selected ? 0 : -1}
       {...restProps}
     >
       {children}

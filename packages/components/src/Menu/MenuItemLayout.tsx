@@ -148,6 +148,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
 
   &[disabled] {
     color: ${({ theme: { colors } }) => colors.text1};
+    pointer-events: none;
 
     button,
     a {
