@@ -73,7 +73,7 @@ const calculateIntersectionPoint = (r1: ClientRect, r2: ClientRect) => {
 }
 
 /*
- * organizeKeyCommands takes a key command Set and converts returns and ordered array.
+ * organizeKeyCommands grabs a key command Set and returns an ordered array.
  * Array sorted by dom stacking order.
  */
 const organizeKeyCommands = (shortcut: string) => {
