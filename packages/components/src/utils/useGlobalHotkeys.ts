@@ -28,8 +28,6 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import type { HotkeysEvent } from 'hotkeys-js'
 import { MutableRefObject } from 'react'
 import get from 'lodash/get'
-// import set from 'lodash/set'
-// import uniqBy from 'lodash/uniqBy'
 import filter from 'lodash/filter'
 import debounce from 'lodash/debounce'
 
@@ -41,10 +39,10 @@ interface Command {
 }
 
 /*
- * keyCommandCollection is a collection of all global hotkeys, grouped by key command.
+ * keyCommandCollection is a collection of all global hotkeys callbacks, grouped by key command.
  * This will mutate as global hotkeys are added or target elements are removed.
  * Example: {
- *   esc: [{ cb: () => {}, target: document.createElement('div') }],
+ *   esc: [{ cb: () => {}, target: HTMLDivElement }],
  * }
  */
 const keyCommandCollection: { [key: string]: Set<Command> } = {}
@@ -105,7 +103,7 @@ const organizeKeyCommands = (shortcut: string) => {
 
 /*
  * executeFirstKeyCommand calls a single keyboard event callback taken from the
- * top of the Command array. Function is Debounced to protect against event bubbling
+ * top of the Command array. The function is Debounced to prevent event bubbling
  * from firing multiple callbacks.
  */
 const executeFirstKeyCommand = debounce(
