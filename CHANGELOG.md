@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `ActionListControlBar` component
+- `useActionListSelectManager` hook
+
 ### Fixed
 
 - detail is part of `MenuItem`'s clickable area
@@ -16,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+- `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
 
 ## [0.9.7] - 2020-07-27
 
