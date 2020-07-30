@@ -155,7 +155,12 @@ export const useGlobalHotkeys = (
     executeFirstKeyCommand(e, orderedEventListeners)
   }
 
-  // `enableOnTags` enables listener on form inputs
-  // for use in searchable Select and MultiSelect variants
-  useHotkeys(keyCommand, wrappedCb, { enableOnTags: ['INPUT'] })
+  useHotkeys(keyCommand, wrappedCb, {
+    filter: () => {
+      // By default, useHotkeys filters out events when form inputs are focused.
+      // We can return true here to allow all events regardless of context.
+      // for more information on usage: https://github.com/jaywcjlove/hotkeys/#filter
+      return true
+    },
+  })
 }
