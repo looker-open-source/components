@@ -63,14 +63,8 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
       message = `${itemsSelected.length} of ${pageCount} displayed items selected`
     } else if (itemsSelected.length === pageCount) {
       message = `All ${pageCount} displayed items selected`
-    }
-  }
-
-  if (pageCount && totalCount) {
-    if (itemsSelected.length === totalCount) {
+    } else if (totalCount && itemsSelected.length === totalCount) {
       message = `All ${totalCount} items selected`
-    } else {
-      message = `${itemsSelected.length} of ${totalCount} items selected`
     }
   }
 
