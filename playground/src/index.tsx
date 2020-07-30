@@ -26,14 +26,21 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import { ComponentsProvider } from '@looker/components'
-
-import { Paragraph } from '@looker/components/src/Text/Paragraph'
+import { ComponentsProvider, Button, Confirm } from '@looker/components'
 // import { GetMe } from './data/GetMe'
 
 const App = () => (
   <ComponentsProvider ie11Support>
-    <Paragraph>Hello world</Paragraph>
+    <Confirm
+      title="Confirm Something"
+      message="Is this what you want to do?"
+      onConfirm={(close) => {
+        alert('You did something')
+        close()
+      }}
+    >
+      {(open) => <Button onClick={open}>Do Something</Button>}
+    </Confirm>
   </ComponentsProvider>
 )
 
