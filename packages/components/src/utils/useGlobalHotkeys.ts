@@ -132,8 +132,8 @@ const discardStaleCommands = (keyCommand: string) => {
 
 /*
  * useGlobalHotkeys takes a keyCommand, callback, and dom ref.
- * It then adds a unique copy (i.e. only one `esc` lister per element) to keyCommandCollection,
- * and passes a wrapped version to the useHotkeys library.
+ * It then adds a unique copy to keyCommandCollection, and passes a wrapped
+ * version to the useHotkeys function.
  */
 export const useGlobalHotkeys = (
   keyCommand: string,
