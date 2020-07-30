@@ -94,7 +94,7 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
       >
         <Text fontWeight="semiBold" fontSize="xsmall">
           {itemsSelected.length === totalCount
-            ? `Clear Selection`
+            ? 'Clear Selection'
             : `Select all ${totalCount} results`}
         </Text>
       </ButtonTransparent>

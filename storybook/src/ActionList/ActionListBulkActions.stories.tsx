@@ -24,8 +24,12 @@
 
  */
 
-import { ActionList, ActionListItemAction } from '@looker/components'
-import React, { useState } from 'react'
+import {
+  ActionList,
+  ActionListItemAction,
+  useActionListSelectManager,
+} from '@looker/components'
+import React from 'react'
 import { columns, data } from './data'
 import { items } from './items'
 
@@ -34,22 +38,14 @@ export default {
 }
 
 export const BulkActions = () => {
-  const [selections, setSelections] = useState<string[]>([])
-
   const allPageItems = data.map(({ pdtName }) => pdtName)
 
-  const onSelect = (selection: string) => {
-    // Note: In the event that selections includes the item being selected, we call filter on allPageItems.
-    // This is to avoid the situation where you have non-displayed items selected but only some displayed items.
-    // Doing the above will mean you have selected items that cannot be unselected (i.e. there's no way to interact with non-displayed items).
-    setSelections(
-      selections.includes(selection)
-        ? allPageItems.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
-  }
-
-  const onSelectAll = () => setSelections(selections.length ? [] : allPageItems)
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(allPageItems)
 
   const onTotalSelectAll = () =>
     setSelections([
