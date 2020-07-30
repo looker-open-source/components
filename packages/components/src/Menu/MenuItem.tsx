@@ -119,7 +119,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       )
     )
 
-  const Component = itemRole === 'link' ? 'a' : 'button'
+  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   return (
     <MenuItemLayout
