@@ -33,7 +33,7 @@ import { Paragraph } from '@looker/components/src/Text/Paragraph'
 // import { GetMe } from './data/GetMe'
 
 const App = () => (
-  <ComponentsProvider>
+  <ComponentsProvider ie11Support>
     <Paragraph>Hello world</Paragraph>
   </ComponentsProvider>
 )
