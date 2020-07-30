@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
+    "core-js": "^3.6.5",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
     "style-loader": "^1.1.3",
