@@ -35,6 +35,7 @@ import { ActionListContext } from './ActionListContext'
 interface ActionListControlBarProps {
   className?: string
   actions: ReactNode
+  onTotalClearAll?: () => void
   onTotalSelectAll?: () => void
   pageCount?: number
   totalCount?: number
@@ -45,6 +46,7 @@ const bulkActionsButtonWidth = '7.5rem'
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
+  onTotalClearAll,
   onTotalSelectAll,
   pageCount,
   totalCount,
@@ -81,10 +83,19 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     )
 
   const selectTotalResultsButton = totalCount !== undefined &&
-    onTotalSelectAll !== undefined && (
-      <ButtonTransparent onClick={onTotalSelectAll}>
+    onTotalSelectAll !== undefined &&
+    onTotalClearAll !== undefined && (
+      <ButtonTransparent
+        onClick={
+          itemsSelected.length === totalCount
+            ? onTotalClearAll
+            : onTotalSelectAll
+        }
+      >
         <Text fontWeight="semiBold" fontSize="xsmall">
-          {`Select all ${totalCount} results`}
+          {itemsSelected.length === totalCount
+            ? `Clear Selection`
+            : `Select all ${totalCount} results`}
         </Text>
       </ButtonTransparent>
     )

@@ -51,7 +51,15 @@ export const BulkActions = () => {
     setSelections(selections.length ? [] : allSelectableItems)
 
   const onTotalSelectAll = () =>
-    setSelections([...allSelectableItems, 'a', 'b', 'c', 'd'])
+    setSelections([
+      ...allSelectableItems,
+      'some_other_pdt_1',
+      'some_other_pdt_2',
+      'some_other_pdt_3',
+      'some_other_pdt_3',
+    ])
+
+  const onTotalClearAll = () => setSelections([])
 
   const onBulkActionClick = () => {
     alert(`Performing a bulk action on these items: \n${selections}`)
@@ -63,6 +71,7 @@ export const BulkActions = () => {
         Some bulk action
       </ActionListItemAction>
     ),
+    onTotalClearAll,
     onTotalSelectAll,
     pageCount: items.length,
     totalCount: 8,

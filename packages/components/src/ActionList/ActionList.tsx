@@ -127,6 +127,11 @@ export interface BulkActionsConfig {
    */
   actions: ReactNode
   /**
+   * Triggered when the user presses the "Clear Selection" button
+   * Note: The "Clear Selection" button will only appear right after first hitting the "Select all X results" button in the control bar
+   */
+  onTotalClearAll?: () => void
+  /**
    * Triggered when the user presses on the "Select all X results" button in the control bar
    */
   onTotalSelectAll?: () => void
