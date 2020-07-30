@@ -50,7 +50,8 @@ export const BulkActions = () => {
   const onSelectAll = () =>
     setSelections(selections.length ? [] : allSelectableItems)
 
-  const onTotalSelectAll = () => setSelections(allSelectableItems)
+  const onTotalSelectAll = () =>
+    setSelections([...allSelectableItems, 'a', 'b', 'c', 'd'])
 
   const onBulkActionClick = () => {
     alert(`Performing a bulk action on these items: \n${selections}`)
@@ -64,7 +65,7 @@ export const BulkActions = () => {
     ),
     onTotalSelectAll,
     pageCount: items.length,
-    totalCount: items.length,
+    totalCount: 8,
   }
 
   return (

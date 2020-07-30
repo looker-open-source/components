@@ -56,11 +56,28 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     </Button>
   )
 
+  // TODO: Figure out if there's better logic for the displayed items message
+  let message
+  if (pageCount) {
+    if (itemsSelected.length < pageCount) {
+      message = `${itemsSelected.length} of ${pageCount} displayed items selected`
+    } else if (itemsSelected.length === pageCount) {
+      message = `All ${pageCount} displayed items selected`
+    }
+  }
+
+  if (pageCount && totalCount) {
+    if (itemsSelected.length === totalCount) {
+      message = `All ${totalCount} items selected`
+    } else {
+      message = `${itemsSelected.length} of ${totalCount} items selected`
+    }
+  }
+
   const selectedItemsText = pageCount !== undefined && (
-    <Text
-      color="text2"
-      fontSize="xsmall"
-    >{`${itemsSelected.length} of ${pageCount} displayed items selected`}</Text>
+    <Text color="text2" fontSize="xsmall">
+      {message}
+    </Text>
   )
 
   !selectedItemsText &&
