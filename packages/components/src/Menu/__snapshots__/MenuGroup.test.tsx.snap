@@ -172,6 +172,11 @@ exports[`MenuGroup - JSX label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -188,6 +193,11 @@ exports[`MenuGroup - JSX label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -204,6 +214,11 @@ exports[`MenuGroup - JSX label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -384,6 +399,11 @@ exports[`MenuGroup - label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -400,6 +420,11 @@ exports[`MenuGroup - label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -416,6 +441,11 @@ exports[`MenuGroup - label 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -557,6 +587,11 @@ exports[`MenuGroup 1`] = `
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c3 "

@@ -153,19 +153,19 @@ Passing "false" into an `<ActionListManager>`'s `isLoading` prop will render a `
 
 Additionally, you can render a "No Results" message using the `noResults` prop. When `noResults` is "true", the `<ActionListManager>` will display a "No Results" message in place of its children.
 
-To customize the "No Results" message text, use the `noResultsText` prop.
+To customize the "No Results" message text, use the `noResultsDisplay` prop. Strings will be formatted as shown below, use JSX for custom formattng if you prefer.
 
 ```jsx
 ;() => {
   const [isLoading, setIsLoading] = useState(true)
   setTimeout(() => setIsLoading(false), 5000)
 
-  // Change noResults to "true" to render the noResultsText
+  // Change noResults to "true" to render the noResultsDisplay
   return (
     <ActionListManager
       isLoading={isLoading}
       noResults={false}
-      noResultsText={'No Cheese Here :('}
+      noResultsDisplay={'No Cheese Here :('}
     >
       Swiss
     </ActionListManager>

@@ -23,16 +23,32 @@
  SOFTWARE.
 
  */
-
-import React from 'react'
 import {
   ActionListItem,
   ActionListItemColumn,
-  Icon,
+  ActionListItemAction,
   Link,
+  Icon,
 } from '@looker/components'
+import React from 'react'
 import { data } from './data'
-import { Actions } from './actions'
+
+const Actions = () => (
+  <>
+    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
+      Go to LookML
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
+      PDT Details
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
+      Recent Build Events
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
+      Recent Trigger Events
+    </ActionListItemAction>
+  </>
+)
 
 export const items = data.map(
   ({

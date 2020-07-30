@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
 import { NoResults } from './NoResults'
@@ -38,7 +38,7 @@ export interface ActionListManagerProps {
    *
    * @default 'No Results'
    */
-  noResultsText?: string
+  noResultsDisplay?: ReactNode
 }
 
 const ActionListManagerLayout: FC<ActionListManagerProps> = ({
@@ -46,12 +46,17 @@ const ActionListManagerLayout: FC<ActionListManagerProps> = ({
   className,
   isLoading,
   noResults,
-  noResultsText,
+  noResultsDisplay,
 }) => {
   if (isLoading) {
     children = <Spinner />
   } else if (noResults) {
-    children = <NoResults>{noResultsText || 'No Results'}</NoResults>
+    children =
+      !noResultsDisplay || typeof noResultsDisplay === 'string' ? (
+        <NoResults>{noResultsDisplay || 'No Results'}</NoResults>
+      ) : (
+        noResultsDisplay
+      )
   }
 
   return <div className={className}>{children}</div>

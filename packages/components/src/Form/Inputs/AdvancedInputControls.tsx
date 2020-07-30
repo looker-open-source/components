@@ -61,7 +61,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
       validationType === 'error' && (
         <Icon
           key="warning"
-          name="CircleInfo"
+          name="Error"
           size={20}
           color="critical"
           mr="xxsmall"

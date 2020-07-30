@@ -513,7 +513,7 @@ const InputTimeInternal = forwardRef(
         )}
         {validationType && (
           <WarningIcon
-            name="CircleInfo"
+            name="Error"
             color="critical"
             grid-area="warning"
             size={20}
