@@ -149,7 +149,7 @@ For accessibility reasons, if you want your `MenuItem` to link somewhere then yo
 
 An icon can optionally be assigned to each item via the `icon` property.
 
-**Note:** The `Menu` will close by default when `MenuItem` is clicked, after the `onClick` handler, if there is one. Any component, such as a `Dialog`, that is meant to be conditionally shown on click, should not be nested inside `MenuList` since it will be removed.
+**Note:** `itemRole="link"` and `disabled` cannot be combined (use `itemRole="button" if you need to offer a disabled`MenuItem`)
 
 ```jsx
 <Menu>

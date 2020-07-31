@@ -121,6 +121,13 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
 
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
+  if (disabled && itemRole === 'link') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled MenuItem'
+    )
+  }
+
   return (
     <MenuItemLayout
       aria-current={current && 'true'}
