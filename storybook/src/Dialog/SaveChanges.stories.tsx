@@ -98,15 +98,17 @@ export const PreventLostChanges = () => {
     setFormData(defaultFormData) // reset form state
   }
 
-  const handleConfirmClose = () => {
+  const handleConfirmClose = (close: () => void) => {
     // "Yes I want to discard my changes and close the dialog"
     setIsOpen(false) // close form
     setIsCancellingInput(false) // reset dialog state
     setFormData(defaultFormData) // reset form state
+    close()
   }
 
-  const handleDialogReset = () => {
+  const handleDialogReset = (close: () => void) => {
     setIsCancellingInput(false) // take me back to dialog #1
+    close()
   }
 
   const [confirm, openConfirmation] = useConfirm({

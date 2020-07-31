@@ -26,8 +26,14 @@
 
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
-import React, { Ref, useRef, forwardRef, useContext, useState } from 'react'
-import { HotKeys } from 'react-hotkeys'
+import React, {
+  Ref,
+  forwardRef,
+  useRef,
+  useContext,
+  useState,
+  KeyboardEvent,
+} from 'react'
 import styled, { css } from 'styled-components'
 import {
   MaxHeightProps,
@@ -48,6 +54,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { useForkedRef } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -93,42 +100,47 @@ export interface MenuListProps
 export const MenuListInternal = forwardRef(
   (
     { children, compact, disabled, pin, placement, ...props }: MenuListProps,
-    ref: Ref<HTMLUListElement>
+    forwardedRef: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const innerRef = useRef<null | HTMLElement>(null)
+    const wrapperRef = useRef<HTMLDivElement | null>(null)
+    const ref = useForkedRef(forwardedRef, wrapperRef)
+
+    function handleArrowKey(direction: number, initial: number) {
+      moveFocus(direction, initial, wrapperRef)
+    }
 
     const context = {
       compact,
+      handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(1, 0)
+        return false
+      },
+      handleArrowUp: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(-1, -1)
+        return false
+      },
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }
 
     const menuList = (
       <MenuItemContext.Provider value={context}>
-        <HotKeys
-          innerRef={innerRef}
-          keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-          handlers={{
-            MOVE_DOWN: () => moveFocus(1, 0, innerRef),
-            MOVE_UP: () => moveFocus(-1, -1, innerRef),
-          }}
-          style={{ borderRadius: 'inherit' }}
+        <ul
+          ref={ref}
+          tabIndex={-1}
+          role="menu"
+          id={id}
+          aria-labelledby={id && `button-${id}`}
+          {...omitStyledProps(omit(props, 'groupDividers'))}
         >
-          <ul
-            ref={ref}
-            tabIndex={-1}
-            role="menu"
-            id={id}
-            aria-labelledby={id && `button-${id}`}
-            {...omitStyledProps(omit(props, 'groupDividers'))}
-          >
-            {children}
-          </ul>
-        </HotKeys>
+          {children}
+        </ul>
       </MenuItemContext.Provider>
     )
 

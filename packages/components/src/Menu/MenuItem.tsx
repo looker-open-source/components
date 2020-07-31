@@ -74,17 +74,19 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const { compact: contextCompact } = useContext(MenuItemContext)
   const compact = propCompact === undefined ? contextCompact : propCompact
 
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
-    setFocusVisible(true)
-    onKeyUp && onKeyUp(event)
-  }
-
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
 
   const { setOpen } = useContext(MenuContext)
+  const {
+    renderIconPlaceholder,
+    setRenderIconPlaceholder,
+    handleArrowDown,
+    handleArrowUp,
+  } = useContext(MenuItemContext)
+
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
@@ -94,9 +96,21 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     }
   }
 
-  const { renderIconPlaceholder, setRenderIconPlaceholder } = useContext(
-    MenuItemContext
-  )
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
+    switch (event.key) {
+      case 'ArrowUp':
+        handleArrowUp && handleArrowUp(event)
+        break
+      case 'ArrowDown':
+        handleArrowDown && handleArrowDown(event)
+        break
+    }
+  }
+
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
+    onKeyUp && onKeyUp(event)
+    setFocusVisible(true)
+  }
 
   useEffect(() => {
     icon && setRenderIconPlaceholder(true)
@@ -131,6 +145,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onBlur={handleOnBlur}
       onClick={handleOnClick}
       onKeyUp={handleOnKeyUp}
+      onKeyDown={handleOnKeyDown}
       className={className}
     >
       <Component

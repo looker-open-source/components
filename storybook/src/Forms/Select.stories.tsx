@@ -58,6 +58,7 @@ export const All = () => (
     <Error />
     <Inline />
     <InlineError />
+    <SelectDemo />
   </Fieldset>
 )
 
