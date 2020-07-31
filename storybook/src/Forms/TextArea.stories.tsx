@@ -33,7 +33,7 @@ export const All = () => (
     <Required />
     <Error />
     <Inline />
-    <Resize />>
+    <Resize />
   </Grid>
 )
 
