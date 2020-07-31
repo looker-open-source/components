@@ -130,23 +130,23 @@ export interface BulkActionsConfig {
    * Triggered when the user presses the "Clear Selection" button
    * Note: The "Clear Selection" button will only appear right after first hitting the "Select all X results" button in the control bar
    */
-  onTotalClearAll?: () => void
+  onTotalClearAll: () => void
   /**
    * Triggered when the user presses on the "Select all X results" button in the control bar
    */
-  onTotalSelectAll?: () => void
+  onTotalSelectAll: () => void
   /**
    * The total number of visible items
    * Primary purpose is to set the text of the Control Bar's "displayed items selected" text
    * Note: This should NOT include disabled items
    */
-  pageCount?: number
+  pageCount: number
   /**
    * The total number of items, both visible and nonvisible, in this Action List
    * Primary purpose is to set the text of the Control Bar's primary action
    * Note: This should NOT include disabled items
    */
-  totalCount?: number
+  totalCount: number
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({

@@ -35,10 +35,10 @@ import { ActionListContext } from './ActionListContext'
 interface ActionListControlBarProps {
   className?: string
   actions: ReactNode
-  onTotalClearAll?: () => void
-  onTotalSelectAll?: () => void
-  pageCount?: number
-  totalCount?: number
+  onTotalClearAll: () => void
+  onTotalSelectAll: () => void
+  pageCount: number
+  totalCount: number
 }
 
 const bulkActionsButtonWidth = '7.5rem'
@@ -58,53 +58,34 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     </Button>
   )
 
-  // TODO: Figure out if there's better logic for the displayed items message
   let message
-  if (pageCount) {
-    if (itemsSelected.length < pageCount) {
-      message = `${itemsSelected.length} of ${pageCount} displayed items selected`
-    } else if (itemsSelected.length === pageCount) {
-      message = `All ${pageCount} displayed items selected`
-    } else if (totalCount && itemsSelected.length === totalCount) {
-      message = `All ${totalCount} items selected`
-    }
+  if (itemsSelected.length < pageCount) {
+    message = `${itemsSelected.length} of ${pageCount} displayed items selected`
+  } else if (itemsSelected.length === pageCount) {
+    message = `All ${pageCount} displayed items selected`
+  } else if (totalCount && itemsSelected.length === totalCount) {
+    message = `All ${totalCount} items selected`
   }
 
-  const selectedItemsText = pageCount !== undefined && (
+  const selectedItemsText = (
     <Text variant="secondary" fontSize="xsmall">
       {message}
     </Text>
   )
 
-  pageCount === undefined &&
-    // eslint-disable-next-line no-console
-    console.warn(
-      'An ActionList received a bulk prop object without a pageCount property. As a result, the "displayed items selected" text within the ActionList control bar is disabled.'
-    )
-
-  const selectTotalResultsButton = totalCount !== undefined &&
-    onTotalSelectAll !== undefined &&
-    onTotalClearAll !== undefined && (
-      <ButtonTransparent
-        onClick={
-          itemsSelected.length === totalCount
-            ? onTotalClearAll
-            : onTotalSelectAll
-        }
-      >
-        <Text fontWeight="semiBold" fontSize="xsmall">
-          {itemsSelected.length === totalCount
-            ? 'Clear Selection'
-            : `Select all ${totalCount} results`}
-        </Text>
-      </ButtonTransparent>
-    )
-
-  !selectTotalResultsButton &&
-    // eslint-disable-next-line no-console
-    console.warn(
-      'An ActionList received a bulk prop object without a totalCount property or a onTotalSelectAll property. As a result, the "select total results" button within the ActionList control bar is disabled.'
-    )
+  const selectTotalResultsButton = (
+    <ButtonTransparent
+      onClick={
+        itemsSelected.length === totalCount ? onTotalClearAll : onTotalSelectAll
+      }
+    >
+      <Text fontWeight="semiBold" fontSize="xsmall">
+        {itemsSelected.length === totalCount
+          ? 'Clear Selection'
+          : `Select all ${totalCount} results`}
+      </Text>
+    </ButtonTransparent>
+  )
 
   return (
     <div className={className}>
