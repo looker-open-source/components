@@ -24,7 +24,7 @@
 
  */
 
-import { createContext } from 'react'
+import { createContext, KeyboardEvent } from 'react'
 import noop from 'lodash/noop'
 
 export interface MenuContextProps {
@@ -41,6 +41,8 @@ export interface MenuItemContextProps {
   compact?: boolean
   renderIconPlaceholder: boolean
   setRenderIconPlaceholder: (size: boolean) => void
+  handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
+  handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
 const menuContext: MenuContextProps = {}
