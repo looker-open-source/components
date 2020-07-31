@@ -71,12 +71,12 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   }
 
   const selectedItemsText = pageCount !== undefined && (
-    <Text color="text2" fontSize="xsmall">
+    <Text variant="secondary" fontSize="xsmall">
       {message}
     </Text>
   )
 
-  !selectedItemsText &&
+  pageCount === undefined &&
     // eslint-disable-next-line no-console
     console.warn(
       'An ActionList received a bulk prop object without a pageCount property. As a result, the "displayed items selected" text within the ActionList control bar is disabled.'
@@ -122,7 +122,7 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
 
 export const ActionListControlBar = styled(ActionListControlBarLayout)`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.neutralSubtle};
+  background-color: ${({ theme }) => theme.colors.ui1};
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
   display: flex;
   padding: ${({ theme }) => theme.space.small};
