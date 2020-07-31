@@ -28,6 +28,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import { noop } from 'lodash'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { MenuContext, MenuItemContext } from './MenuContext'
@@ -136,7 +137,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       focusVisible={isFocusVisible}
       hasIcon={Boolean(renderedIcon)}
       onBlur={handleOnBlur}
-      onClick={handleOnClick}
+      onClick={disabled ? noop : handleOnClick}
       onKeyUp={handleOnKeyUp}
       className={className}
     >

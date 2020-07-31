@@ -73,8 +73,8 @@ describe('MenuItem', () => {
         Item
       </MenuItem>
     )
-    // screen.debug()
-    expect(screen.getByText('Item').closest('button')).toBeInTheDocument()
+    const item = screen.getByText('Item')
+    expect(item.closest('button')).toBeInTheDocument()
   })
 
   test('MenuItem - disabled is not clickable', () => {
