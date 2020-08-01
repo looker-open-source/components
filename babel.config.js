@@ -59,7 +59,6 @@ module.exports = (api) => {
         {
           targets: {
             esmodules: true,
-            ie: '11',
           },
           useBuiltIns: false,
         },
