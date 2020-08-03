@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
 
@@ -60,5 +60,38 @@ describe('MenuItem', () => {
       </MenuItem>
     )
     expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
+  })
+
+  test('MenuItem - disabled to be a button', () => {
+    const callbackFn = jest.fn()
+
+    renderWithTheme(
+      <MenuItem
+        disabled={true}
+        href="https://google.com"
+        itemRole="link"
+        onClick={callbackFn}
+        target="_blank"
+      >
+        Item
+      </MenuItem>
+    )
+    const item = screen.getByText('Item')
+    expect(item.closest('button')).toBeInTheDocument()
+  })
+
+  test('MenuItem - disabled is not clickable', () => {
+    const callbackFn = jest.fn()
+
+    renderWithTheme(
+      <MenuItem disabled onClick={callbackFn}>
+        Item
+      </MenuItem>
+    )
+
+    const item = screen.getByText('Item')
+    fireEvent.click(item)
+
+    expect(callbackFn).toHaveBeenCalledTimes(0)
   })
 })

@@ -133,7 +133,14 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       )
     )
 
-  const Component = itemRole === 'link' ? 'a' : 'button'
+  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
+
+  if (disabled && itemRole === 'link') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled MenuItem'
+    )
+  }
 
   return (
     <MenuItemLayout
@@ -143,7 +150,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       focusVisible={isFocusVisible}
       hasIcon={Boolean(renderedIcon)}
       onBlur={handleOnBlur}
-      onClick={handleOnClick}
+      onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
       onKeyDown={handleOnKeyDown}
       className={className}
