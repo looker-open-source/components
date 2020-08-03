@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `xxxxxlarge` to sizes to support updated type ramp.
 
+## [0.9.8] - 2020-08-02
+
+### Fixed
+
+- `DialogContent` patch for IE11 display bug
+- `MenuItem` patch for IE11 display bug
+
 ## [0.9.7] - 2020-07-27
 
 ### Added
