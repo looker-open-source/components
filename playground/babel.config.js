@@ -33,23 +33,24 @@ module.exports = (api) => {
     ['@babel/transform-runtime'],
   ]
 
-  return {
-    extends: '../babel.config.js',
-    plugins,
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          corejs: { version: 3 },
-          // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
-          // modules: false,
-          targets: {
-            browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
-            node: 'current',
-          },
-          useBuiltIns: 'entry',
+  const presets = [
+    ['@babel/preset-typescript'],
+    [
+      '@babel/preset-env',
+      {
+        corejs: { version: 3 },
+        targets: {
+          browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
+          node: 'current',
         },
-      ],
+        useBuiltIns: 'usage',
+      },
     ],
+    ['@babel/preset-react'],
+  ]
+
+  return {
+    plugins,
+    presets,
   }
 }

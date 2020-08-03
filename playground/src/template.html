@@ -7,16 +7,6 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
       rel="stylesheet"
     />
-    <script>
-      const modernBrowser = 'fetch' in window && 'assign' in Object
-
-      if (!modernBrowser) {
-        const scriptElement = document.createElement('script')
-        scriptElement.async = false
-        scriptElement.src = '/polyfills.bundle.js'
-        document.head.appendChild(scriptElement)
-      }
-    </script>
   </head>
   <body>
     <div id="container"></div>

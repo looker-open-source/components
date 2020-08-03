@@ -32,6 +32,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 
+const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+
 module.exports = {
   devServer: {
     port: 3000,
@@ -41,8 +43,7 @@ module.exports = {
   },
   devtool: 'source-map',
   entry: {
-    app: ['./src/index.tsx'],
-    polyfills: './src/polyfills.js',
+    app: ['core-js/stable', './src/index.tsx'],
   },
   mode: 'development',
   module: {
@@ -50,6 +51,17 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.tsx?$/,
+      },
+      {
+        exclude: [
+          excludeNodeModulesExcept([
+            '@looker/*',
+            'merge-anything', // a transitive dependency of @looker/components
+            'react-hotkeys-hook', // ditto
+          ]),
+        ],
+        loader: 'babel-loader',
+        test: /\.js$/,
       },
       {
         test: /\.css$/i,
