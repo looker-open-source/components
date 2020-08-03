@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `MenuItem` disabled prop is not clickable and its not a link.
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
@@ -22,11 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
 - `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
+- Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
 
 ## [0.9.7] - 2020-07-27
 
 ### Added
 
+- `Tabs` updated for accessibility
 - `AvatarCombo`, `AvatarIcon` & `AvatarUser` now supports `role="button"`
   - Added support for common DOM properties and event handlers (e.g.: `onClick`)
   - Improved a11y for all `Avatar*` components

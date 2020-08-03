@@ -49,9 +49,15 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 }
 
 <button
+  aria-controls="panel-0"
+  aria-orientation="horizontal"
+  aria-selected="true"
   class="c0 c1 "
   font-size="small"
   font-weight="semiBold"
+  id="tab-0"
+  role="tab"
+  tabindex="0"
 >
   tab1
 </button>
@@ -105,9 +111,15 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 <button
+  aria-controls="panel-1"
+  aria-orientation="horizontal"
+  aria-selected="false"
   class="c0 c1 "
   font-size="small"
   font-weight="semiBold"
+  id="tab-1"
+  role="tab"
+  tabindex="-1"
 >
   tab2
 </button>
