@@ -35,6 +35,7 @@ export type SizeXLarge = 'xlarge'
 export type SizeXXLarge = 'xxlarge'
 export type SizeXXXLarge = 'xxxlarge'
 export type SizeXXXXLarge = 'xxxxlarge'
+export type SizeXXXXXLarge = 'xxxxxlarge'
 
 export type Sizes =
   | SizeXXSmall
