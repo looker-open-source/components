@@ -39,8 +39,9 @@ module.exports = {
     //   '/api': 'http://localhost:3001',
     // },
   },
+  devtool: 'source-map',
   entry: {
-    app: './src/index.tsx',
+    app: ['./src/index.tsx'],
     polyfills: './src/polyfills.js',
   },
   mode: 'development',

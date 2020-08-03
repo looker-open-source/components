@@ -26,74 +26,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import {
-  ComponentsProvider,
-  MenuList,
-  MenuGroup,
-  MenuItem,
-  MenuDisclosure,
-  Button,
-  Menu,
-  Heading,
-  Confirm,
-} from '@looker/components'
-// import { GetMe } from './data/GetMe'
-
-const App = () => (
-  <ComponentsProvider ie11Support>
-    <>
-      <Heading>Missing Dialog Content</Heading>
-      <Confirm
-        title="Confirm Something"
-        message="Is this what you want to do?"
-        onConfirm={(close) => {
-          alert('You did something')
-          close()
-        }}
-      >
-        {(open) => <Button onClick={open}>Do Something</Button>}
-      </Confirm>
-      <Heading>Menu List</Heading>
-      <Menu>
-        <MenuDisclosure tooltip="Select your favorite kind">
-          <Button m="medium">cheese</Button>
-        </MenuDisclosure>
-        <MenuList>
-          <MenuGroup>
-            <MenuItem icon="LogoRings" detail="test">
-              Clear cache and refresh
-            </MenuItem>
-            <MenuItem icon="Validate">Validate</MenuItem>
-            <MenuItem icon="ChartPie">Pizza!</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Cheeses">
-            <MenuItem icon="FavoriteOutline" detail="test">
-              Revert to original dashboard
-            </MenuItem>
-            <MenuItem icon="FavoriteOutline">
-              Revert to original dashboard
-            </MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Meats">
-            <MenuItem icon="FavoriteOutline" detail="test">
-              Sausage
-            </MenuItem>
-            <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
-            <MenuItem icon="FavoriteOutline">Salami</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Vegetables">
-            <MenuItem icon="FavoriteOutline" detail="test">
-              Onion
-            </MenuItem>
-            <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
-            <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
-          </MenuGroup>
-        </MenuList>
-      </Menu>
-    </>
-  </ComponentsProvider>
-)
+const App = () => <p>Hello world</p>
 
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
