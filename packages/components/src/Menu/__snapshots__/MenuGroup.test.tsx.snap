@@ -168,10 +168,16 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -184,10 +190,16 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -200,10 +212,16 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -380,10 +398,16 @@ exports[`MenuGroup - label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -396,10 +420,16 @@ exports[`MenuGroup - label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -412,10 +442,16 @@ exports[`MenuGroup - label 1`] = `
       className="c5 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c6 "
@@ -553,10 +589,16 @@ exports[`MenuGroup 1`] = `
       className="c2 "
       onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
       onKeyUp={[Function]}
     >
       <button
         role="menuitem"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
       >
         <div
           className="c3 "
