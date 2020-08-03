@@ -29,11 +29,12 @@ import { LineHeightRamp } from '../../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const lineHeights: LineHeightRamp = {
-  xxxxlarge: rem(64),
-  xxxlarge: rem(52),
-  xxlarge: rem(40),
-  xlarge: rem(32),
-  large: rem(28),
+  xxxxxlarge: rem(52),
+  xxxxlarge: rem(44),
+  xxxlarge: rem(36),
+  xxlarge: rem(36),
+  xlarge: rem(28),
+  large: rem(24),
   medium: rem(24),
   small: rem(20),
   xsmall: rem(16),

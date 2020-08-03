@@ -16,9 +16,9 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 To use a different HTML heading element, the `<Heading />` component accepts a `is` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the [type ramp](/#!/Typography)
 
 ```jsx
-<Heading as="h1">I’m a h1 element (25px/40px)</Heading>
-<Heading as="h2">I’m a h2 element (22px/32px)</Heading>
-<Heading as="h3">I’m a h3 element (18px/28px)</Heading>
+<Heading as="h1">I’m a h1 element (24px/36px)</Heading>
+<Heading as="h2">I’m a h2 element (22px/28px)</Heading>
+<Heading as="h3">I’m a h3 element (18px/24px)</Heading>
 <Heading as="h4">I’m a h4 element (16px/24px)</Heading>
 <Heading as="h5">I’m a h5 element (14px/20px)</Heading>
 <Heading as="h6">I’m a h6 element (12px/16px)</Heading>
@@ -31,6 +31,7 @@ To use a different HTML heading element, the `<Heading />` component accepts a `
 When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `is` and the `fontSize` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
 
 ```jsx
+<Heading fontSize="xxxxxlarge">8-bit coloring book authentic squid pok pok</Heading>
 <Heading fontSize="xxxxlarge">Viral meditation live-edge</Heading>
 <Heading fontSize="xxxlarge">Pork belly beard mustache </Heading>
 <Heading fontSize="xxlarge">Iceland trust fund hell of plaid</Heading>
