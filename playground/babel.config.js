@@ -27,14 +27,22 @@
 module.exports = (api) => {
   api.cache(true)
 
+  const plugins = [
+    ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+    ['@babel/plugin-proposal-class-properties'],
+    ['@babel/transform-runtime'],
+  ]
+
   return {
     extends: '../babel.config.js',
+    plugins,
     presets: [
       [
         '@babel/preset-env',
         {
-          corejs: 3,
+          corejs: { version: 3 },
           // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
+          // modules: false,
           targets: {
             browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
             node: 'current',
