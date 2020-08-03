@@ -105,21 +105,22 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
 }
 
 <ol
-  className="c0"
+  class="c0"
+  data-testid="list"
   type="none"
 >
   <li
-    className="c1"
+    class="c1"
   >
     🥑
   </li>
   <li
-    className="c1"
+    class="c1"
   >
     🍕
   </li>
   <li
-    className="c1"
+    class="c1"
   >
     🥨
   </li>

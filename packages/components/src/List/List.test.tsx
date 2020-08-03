@@ -25,7 +25,8 @@
  */
 
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { createWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { List } from './List'
 import { ListItem } from './ListItem'
 
@@ -68,15 +69,15 @@ test('A numerically ordered List', () => {
 })
 
 test('A numerically ordered List marked as nomarker', () => {
-  const component = createWithTheme(
-    <List type="number" nomarker>
+  renderWithTheme(
+    <List type="number" nomarker data-testid="list">
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
     </List>
   )
-  const tree = component.toJSON()
-  expect(tree).toHaveStyleRule('list-style-type', 'none')
+  const list = screen.getByTestId('list')
+  expect(list).toHaveStyle('list-style-type: none')
   // Padding unset due to default reset applied
-  expect(tree).toMatchSnapshot()
+  expect(list).toMatchSnapshot()
 })
