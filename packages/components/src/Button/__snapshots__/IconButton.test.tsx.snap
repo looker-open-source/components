@@ -76,7 +76,7 @@ exports[`IconButton accepts color 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #CC1F36;
+  color: #e44e62;
   padding: 0;
 }
 
@@ -208,7 +208,7 @@ exports[`IconButton accepts events 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 
@@ -340,7 +340,7 @@ exports[`IconButton accepts events 2`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 
@@ -472,7 +472,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 
@@ -604,7 +604,7 @@ exports[`IconButton default 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 
@@ -735,7 +735,7 @@ exports[`IconButton outline 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
   border: 1px solid #C1C6CC;
 }
@@ -1148,7 +1148,7 @@ exports[`IconButton resized 1`] = `
 .c2 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 
