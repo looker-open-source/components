@@ -41,8 +41,6 @@ interface ActionListControlBarProps {
   totalCount: number
 }
 
-const bulkActionsButtonWidth = '7.5rem'
-
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
@@ -89,10 +87,12 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
 
   return (
     <div className={className}>
-      <Menu>
-        <MenuDisclosure>{bulkActionsButton}</MenuDisclosure>
-        <MenuList>{actions}</MenuList>
-      </Menu>
+      <div>
+        <Menu>
+          <MenuDisclosure>{bulkActionsButton}</MenuDisclosure>
+          <MenuList>{actions}</MenuList>
+        </Menu>
+      </div>
       <Space gap="small" justifyContent="center">
         {selectedItemsText}
         {selectTotalResultsButton}
@@ -106,16 +106,12 @@ export const ActionListControlBar = styled(ActionListControlBarLayout)`
   background-color: ${({ theme }) => theme.colors.ui1};
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
   display: flex;
+  justify-content: center;
   padding: ${({ theme }) => theme.space.small};
-  padding-left: ${() => {
-    // TODO: Export this width from Checkbox.tsx
-    const checkboxInputWidth = '1rem'
-    const actionListCheckboxWidth = '2.75rem'
-    return `calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2)`
-  }};
-  padding-right: ${() => {
-    const checkboxInputWidth = '1rem'
-    const actionListCheckboxWidth = '2.75rem'
-    return `calc((${actionListCheckboxWidth} - ${checkboxInputWidth}) / 2 + ${bulkActionsButtonWidth})`
-  }};
+  position: relative;
+
+  & > div:first-child {
+    left: ${({ theme }) => theme.space.small};
+    position: absolute;
+  }
 `
