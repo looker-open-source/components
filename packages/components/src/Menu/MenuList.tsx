@@ -54,11 +54,10 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { useForkedRef } from '../utils'
+import { useForkedRef, moveFocus } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
-import { moveFocus } from './moveFocus'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,

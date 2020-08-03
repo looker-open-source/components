@@ -24,23 +24,31 @@
 
  */
 
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './moveFocus'
-export * from './undefinedCoalesce'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
+import { MutableRefObject } from 'react'
+
+const getTabStops = (ref: HTMLElement): HTMLElement[] =>
+  Array.from(ref.querySelectorAll('a,button:not(:disabled),[tabindex="0"]'))
+
+export const moveFocus = (
+  direction: number,
+  initial: number,
+  containerRef?: MutableRefObject<HTMLElement | null>
+) => {
+  if (!containerRef || !containerRef.current) return
+  const tabStops = getTabStops(containerRef.current)
+
+  if (
+    document.activeElement &&
+    tabStops.includes(document.activeElement as HTMLElement)
+  ) {
+    const next =
+      tabStops.findIndex((f) => f === document.activeElement) + direction
+
+    if (next === tabStops.length) return
+    if (!tabStops[next]) return
+    tabStops[next].focus()
+  } else {
+    tabStops.slice(initial)[0].focus()
+  }
+  return false
+}
