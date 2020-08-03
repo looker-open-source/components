@@ -108,7 +108,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
 
   const onChange = onSelect ? () => onSelect(id) : undefined
 
-  const selected = itemsSelected.includes(id)
+  const checked = itemsSelected.includes(id)
 
   return (
     <ActionListRow
@@ -121,8 +121,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
       tabIndex={0}
       hasCheckbox={!!canSelect}
       onChange={onChange}
-      checked={selected}
-      selected={selected}
+      checked={checked}
       disabled={disabled}
       supportsRaised={!onClickRowSelect}
     >

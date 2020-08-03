@@ -53,8 +53,8 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
 }) => {
   const { itemsSelected } = useContext(ActionListContext)
   const bulkActionsButton = (
-    <Button iconAfter="ArrowDown" minWidth={bulkActionsButtonWidth}>
-      <Text fontSize="xsmall">Bulk Actions</Text>
+    <Button iconAfter="ArrowDown" size="xsmall">
+      Bulk Actions
     </Button>
   )
 
