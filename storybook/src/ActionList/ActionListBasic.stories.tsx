@@ -24,22 +24,42 @@
 
  */
 
-import React from 'react'
-import { ActionListItemAction } from '@looker/components'
+import { ActionList } from '@looker/components'
+import React, { useState } from 'react'
+import { columns, data } from './data'
+import { items } from './items'
 
-export const Actions = () => (
-  <>
-    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
-      Go to LookML
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
-      PDT Details
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
-      Recent Build Events
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
-      Recent Trigger Events
-    </ActionListItemAction>
-  </>
-)
+export default {
+  title: 'ActionList',
+}
+
+export const Basic = () => {
+  const [selections, setSelections] = useState([] as string[])
+  const onSelect = (selection: string) => {
+    setSelections(
+      selections.includes(selection)
+        ? selections.filter((item) => item !== selection)
+        : [...selections, selection]
+    )
+  }
+
+  const allSelectableItems = data
+    .map(({ disabled, pdtName }) => !disabled && pdtName)
+    .filter((element) => element) as string[]
+
+  const onSelectAll = () =>
+    setSelections(selections.length ? [] : allSelectableItems)
+
+  return (
+    <ActionList
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}

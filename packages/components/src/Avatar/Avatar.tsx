@@ -100,8 +100,17 @@ const size = variant({
   },
 })
 
+export const avatarButtonOverrides = css`
+  /* Need this in case Avatar is rendered as a <button /> */
+  background: transparent;
+  border: none;
+  padding: 0;
+`
+
 export const avatarCSS = css`
   ${reset}
+
+  ${avatarButtonOverrides}
 
   ${color}
   ${space}
@@ -109,9 +118,8 @@ export const avatarCSS = css`
   ${size}
 
   align-items: center;
-  border: none;
-  /* Need this in case Avatar is rendered as a <button /> */
   border-radius: 100%;
+
   ${({ role }: AvatarProps) => role === 'button' && 'cursor: pointer;'}
   display: grid;
   justify-items: center;

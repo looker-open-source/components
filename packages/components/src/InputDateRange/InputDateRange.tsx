@@ -371,7 +371,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             <IconWrapper>
               <Icon
                 key="warning"
-                name="CircleInfo"
+                name="Error"
                 size={20}
                 color="critical"
                 mr="xxsmall"
