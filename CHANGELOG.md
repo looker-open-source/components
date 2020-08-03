@@ -7,18 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### Changed
-
-- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
-- Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
-- `IconButton` now uses ui color by default
-- `neutral` intent color is now defaults to `charcoal500`
-
 ### Fixed
 
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
+
+
+### Changed
+
+- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+- Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+- Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
+- `neutral` intent color is now defaults to `charcoal500`
+
 
 ## [0.9.7] - 2020-07-27
 

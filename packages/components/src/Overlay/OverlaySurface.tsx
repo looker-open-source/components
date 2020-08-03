@@ -41,9 +41,10 @@ import React, {
   ReactNode,
   Ref,
   useContext,
+  useRef,
 } from 'react'
-import { HotKeys } from 'react-hotkeys'
 import styled from 'styled-components'
+import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
@@ -65,7 +66,7 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
 }
 
 export const OverlaySurface = forwardRef(
-  (props: OverlaySurfaceProps, ref: Ref<HTMLDivElement>) => {
+  (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
     const {
       arrow,
       arrowProps,
@@ -77,6 +78,11 @@ export const OverlaySurface = forwardRef(
     } = props
     const { closeModal } = useContext(DialogContext)
 
+    const innerRef = useRef<null | HTMLElement>(null)
+    const ref = useForkedRef(forwardedRef, innerRef)
+
+    useGlobalHotkeys('esc', closeModal, innerRef)
+
     return (
       <Outer
         ref={ref}
@@ -85,30 +91,16 @@ export const OverlaySurface = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
-        <HotKeys
-          className="hotkeys"
-          keyMap={{
-            CLOSE_MODAL: {
-              action: 'keyup',
-              name: 'Close Modal',
-              sequence: 'esc',
-            },
-          }}
-          handlers={{
-            CLOSE_MODAL: () => closeModal(),
-          }}
-        >
-          <Inner {...innerProps}>
-            {children}
-            {arrow !== false && (
-              <OverlaySurfaceArrow
-                data-placement={placement}
-                {...innerProps}
-                {...arrowProps}
-              />
-            )}
-          </Inner>
-        </HotKeys>
+        <Inner {...innerProps}>
+          {children}
+          {arrow !== false && (
+            <OverlaySurfaceArrow
+              data-placement={placement}
+              {...innerProps}
+              {...arrowProps}
+            />
+          )}
+        </Inner>
       </Outer>
     )
   }

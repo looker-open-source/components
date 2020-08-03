@@ -30,8 +30,7 @@ import {
   theme,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { FC, useContext, useEffect } from 'react'
-import { HotKeys } from 'react-hotkeys'
+import React, { FC, useContext, useEffect, useRef } from 'react'
 import styled, { CSSObject, css } from 'styled-components'
 import {
   ColorProps,
@@ -43,6 +42,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
+import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
 interface SurfaceProps
@@ -66,6 +66,8 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     DialogContext
   )
 
+  const wrapperRef = useRef<null | HTMLDivElement>(null)
+
   useEffect(() => {
     enableScrollLock && enableScrollLock()
     const t = window.setTimeout(() => {
@@ -76,37 +78,15 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     }
   }, [enableFocusTrap, enableScrollLock])
 
+  useGlobalHotkeys('esc', closeModal, wrapperRef)
+
   return (
-    <HotKeys
-      keyMap={{
-        CLOSE_MODAL: {
-          action: 'keyup',
-          name: 'Close Modal',
-          sequence: 'esc',
-        },
-      }}
-      handlers={{
-        CLOSE_MODAL: () => closeModal(),
-      }}
-      style={{
-        alignItems: 'center',
-        display: 'flex',
-        height: '100%',
-        justifyContent: anchor === 'right' ? 'flex-end' : 'center',
-        width: '100%',
-      }}
-      // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
-      // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
-      // of this workaround.
-      //
-      // display: contents would be another workaround when it gains broader (corrected) support
-    >
-      <div
-        className={`surface-overflow ${className}`}
-        style={surfaceStyles as CSSObject}
-        {...omitStyledProps(props)}
-      />
-    </HotKeys>
+    <div
+      className={`surface-overflow ${className}`}
+      style={surfaceStyles as CSSObject}
+      ref={wrapperRef}
+      {...omitStyledProps(props)}
+    />
   )
 }
 
