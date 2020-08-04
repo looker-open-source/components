@@ -42,6 +42,7 @@ const FieldSelectMultiComponent = forwardRef(
         data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
+        ariaLabelOnly
         validationMessage={validationMessage}
       >
         <SelectMulti

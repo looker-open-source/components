@@ -41,6 +41,7 @@ const FieldSelectComponent = forwardRef(
       <Field
         {...pickFieldProps(props)}
         id={id}
+        ariaLabelOnly
         validationMessage={validationMessage}
       >
         <Select
