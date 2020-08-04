@@ -14,11 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 
+
 ### Changed
 
 - `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
 - `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
 - Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+- Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
+- `neutral` intent color is now defaults to `charcoal500`
+
 
 ### Added
 
