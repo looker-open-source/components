@@ -43,6 +43,7 @@ import { IconNames } from '@looker/icons'
 import { TextAlignProperty } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
+import { lighten } from 'polished'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
@@ -237,7 +238,8 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
 
   background: none;
   border: none;
-  color: ${({ theme, color = iconButtonDefaultColor }) => theme.colors[color]};
+  color: ${({ theme, color = iconButtonDefaultColor }) =>
+    lighten(0.14, theme.colors[color])};
   padding: 0;
 
   &:hover,

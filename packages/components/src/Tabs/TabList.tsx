@@ -46,13 +46,18 @@ const TabListLayout: FC<TabListProps> = ({
     children,
     (child: JSX.Element, index: number) => {
       return cloneElement(child, {
+        index,
         onSelect: () => onSelectTab && onSelectTab(index),
         selected: index === selectedIndex,
         selectedIndex,
       })
     }
   )
-  return <div className={className}>{clonedChildren}</div>
+  return (
+    <div aria-label="Tabs" className={className} role="tablist">
+      {clonedChildren}
+    </div>
+  )
 }
 
 const defaultLayoutCSS = css`

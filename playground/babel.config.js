@@ -27,21 +27,30 @@
 module.exports = (api) => {
   api.cache(true)
 
-  return {
-    extends: '../babel.config.js',
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          corejs: 3,
-          // debug: true, // Enable if you need help to understand build target issues (noisy otherwise)
-          targets: {
-            browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
-            node: 'current',
-          },
-          useBuiltIns: 'entry',
+  const plugins = [
+    ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+    ['@babel/plugin-proposal-class-properties'],
+    ['@babel/transform-runtime'],
+  ]
+
+  const presets = [
+    ['@babel/preset-typescript'],
+    [
+      '@babel/preset-env',
+      {
+        corejs: { version: 3 },
+        targets: {
+          browsers: 'Last 2 Chrome versions, Firefox ESR, IE 11',
+          node: 'current',
         },
-      ],
+        useBuiltIns: 'usage',
+      },
     ],
+    ['@babel/preset-react'],
+  ]
+
+  return {
+    plugins,
+    presets,
   }
 }

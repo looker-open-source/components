@@ -32,6 +32,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 
+const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+
 module.exports = {
   devServer: {
     port: 3000,
@@ -39,10 +41,10 @@ module.exports = {
     //   '/api': 'http://localhost:3001',
     // },
   },
+  devtool: 'source-map',
   entry: {
-    app: './src/index.tsx',
+    app: ['core-js/stable', './src/index.tsx'],
   },
-
   mode: 'development',
   module: {
     rules: [
@@ -51,13 +53,24 @@ module.exports = {
         test: /\.tsx?$/,
       },
       {
+        exclude: [
+          excludeNodeModulesExcept([
+            '@looker/*',
+            'merge-anything', // a transitive dependency of @looker/components
+            'react-hotkeys-hook', // ditto
+          ]),
+        ],
+        loader: 'babel-loader',
+        test: /\.js$/,
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
     ],
   },
   output: {
-    filename: 'index-bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [

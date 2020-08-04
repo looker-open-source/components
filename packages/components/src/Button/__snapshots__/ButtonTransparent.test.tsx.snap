@@ -53,14 +53,12 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 .c1.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
-  color: #6C43E0;
 }
 
 .c1:active,
 .c1.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
-  color: #6C43E0;
 }
 
 .c1[disabled]:hover,
@@ -80,7 +78,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 cXFzKH"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dAphVM ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 hvMZkF"
 >
   focus
 </button>
@@ -139,14 +137,12 @@ exports[`ButtonTransparent has the correct style 1`] = `
 .c1.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
-  color: #6C43E0;
 }
 
 .c1:active,
 .c1.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
-  color: #6C43E0;
 }
 
 .c1[disabled]:hover,
