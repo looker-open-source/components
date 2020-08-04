@@ -41,6 +41,11 @@ interface ActionListControlBarProps {
   totalCount: number
 }
 
+const BulkActionsButton = styled(Button).attrs(() => ({
+  iconAfter: 'ArrowDown',
+  size: 'xsmall',
+}))``
+
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
@@ -50,11 +55,6 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   totalCount,
 }) => {
   const { itemsSelected } = useContext(ActionListContext)
-  const bulkActionsButton = (
-    <Button iconAfter="ArrowDown" size="xsmall">
-      Bulk Actions
-    </Button>
-  )
 
   let message
   if (itemsSelected.length < pageCount) {
@@ -87,12 +87,12 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
 
   return (
     <div className={className}>
-      <div>
-        <Menu>
-          <MenuDisclosure>{bulkActionsButton}</MenuDisclosure>
-          <MenuList>{actions}</MenuList>
-        </Menu>
-      </div>
+      <Menu>
+        <MenuDisclosure>
+          <BulkActionsButton>Bulk Actions</BulkActionsButton>
+        </MenuDisclosure>
+        <MenuList>{actions}</MenuList>
+      </Menu>
       <Space gap="small" justifyContent="center">
         {selectedItemsText}
         {selectTotalResultsButton}
@@ -110,7 +110,7 @@ export const ActionListControlBar = styled(ActionListControlBarLayout)`
   padding: ${({ theme }) => theme.space.small};
   position: relative;
 
-  & > div:first-child {
+  & ${BulkActionsButton} {
     left: ${({ theme }) => theme.space.small};
     position: absolute;
   }
