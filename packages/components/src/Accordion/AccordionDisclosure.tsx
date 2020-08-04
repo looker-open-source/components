@@ -125,6 +125,7 @@ export const AccordionDisclosureStyle = styled.button<
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
+  color: currentColor;
   cursor: pointer;
   display: flex;
   outline: none;

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Tree` default color is text4 (was previously a different color due to browser button defaults)
 - `MenuItem` disabled prop is not clickable and its not a link.
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
