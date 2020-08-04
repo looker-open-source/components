@@ -54,7 +54,7 @@ export interface ActionListItemProps
   disabled?: boolean
 }
 
-const ActionListItemInternal: FC<ActionListItemProps> = ({
+const ActionListItemLayout: FC<ActionListItemProps> = ({
   actions,
   actionsTooltip = 'Options',
   children,
@@ -108,6 +108,8 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
 
   const onChange = onSelect ? () => onSelect(id) : undefined
 
+  const checked = itemsSelected.includes(id)
+
   return (
     <ActionListRow
       id={id}
@@ -119,7 +121,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
       tabIndex={0}
       hasCheckbox={!!canSelect}
       onChange={onChange}
-      checked={itemsSelected.includes(id)}
+      checked={checked}
       disabled={disabled}
       supportsRaised={!onClickRowSelect}
     >
@@ -128,7 +130,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
   )
 }
 
-export const ActionListItem = styled(ActionListItemInternal)`
+export const ActionListItem = styled(ActionListItemLayout)`
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
   display: flex;
 `

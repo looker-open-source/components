@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `ActionListControlBar` component
+- `useActionListSelectManager` hook
+
 ### Fixed
 
 - `MenuItem` disabled prop is not clickable and its not a link.
@@ -18,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+- `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
 - `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
 - Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
