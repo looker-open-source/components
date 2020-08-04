@@ -24,24 +24,30 @@
 
  */
 
-export type SizeNone = 'none'
-export type SizeXXXSmall = 'xxxsmall'
-export type SizeXXSmall = 'xxsmall'
-export type SizeXSmall = 'xsmall'
-export type SizeSmall = 'small'
-export type SizeMedium = 'medium'
-export type SizeLarge = 'large'
-export type SizeXLarge = 'xlarge'
-export type SizeXXLarge = 'xxlarge'
-export type SizeXXXLarge = 'xxxlarge'
-export type SizeXXXXLarge = 'xxxxlarge'
-export type SizeXXXXXLarge = 'xxxxxlarge'
+import { useState } from 'react'
 
-export type Sizes =
-  | SizeXXSmall
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
+export const useActionListSelectManager = (selectableItems: string[]) => {
+  const [selections, setSelections] = useState<string[]>([])
 
-export type SizeRamp = Record<Sizes, string>
+  const onSelect = (selectionId: string) => {
+    /*
+      Note: In the event that selections includes the item being selected, we call filter only on selectableItems.
+      This is to avoid the situation where you have non-displayed items selected but only some displayed items.
+      Doing the above will mean you have selected items that cannot be unselected (i.e. there's no way to interact with non-displayed items).
+     */
+    setSelections(
+      selections.includes(selectionId)
+        ? selections.filter(
+            (itemId) =>
+              itemId !== selectionId && selectableItems.includes(itemId)
+          )
+        : [...selections, selectionId]
+    )
+  }
+
+  const onSelectAll = () => {
+    setSelections(selections.length ? [] : selectableItems)
+  }
+
+  return { onSelect, onSelectAll, selections, setSelections }
+}

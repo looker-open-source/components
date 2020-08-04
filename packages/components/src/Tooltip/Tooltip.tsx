@@ -24,7 +24,7 @@
 
  */
 
-import { TextAlignProperty } from 'csstype'
+import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, {
   cloneElement,
@@ -82,7 +82,7 @@ export interface UseTooltipProps {
    * Specify the text alignment within tooltips.
    * @default center
    */
-  textAlign?: TextAlignProperty
+  textAlign?: Property.TextAlign
 
   /**
    * The id of the span containing the tooltip text (if absent, a random id will be generated)

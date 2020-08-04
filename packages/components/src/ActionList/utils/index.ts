@@ -26,4 +26,5 @@
 
 export { doDefaultActionListSort } from './sort_utils'
 export type { ActionListDatum, ActionListData } from './sort_utils'
+export * from './useActionListSelectManager'
 export * from './useActionListSortManager'

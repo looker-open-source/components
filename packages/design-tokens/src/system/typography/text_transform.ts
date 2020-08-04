@@ -24,11 +24,11 @@
 
  */
 
-import { TextTransformProperty } from 'csstype'
+import { Property } from 'csstype'
 import { css } from 'styled-components'
 
 export interface TextTransformProps {
-  textTransform?: TextTransformProperty
+  textTransform?: Property.TextTransform
 }
 
 export const textTransform = (props: TextTransformProps) => css`

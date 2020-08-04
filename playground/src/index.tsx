@@ -23,14 +23,11 @@
  SOFTWARE.
 
  */
-
 import React from 'react'
 import { render } from 'react-dom'
 
-import { ComponentsProvider } from '@looker/components'
-
-import { Paragraph } from '@looker/components/src/Text/Paragraph'
-// import { GetMe } from './data/GetMe'
+import { ComponentsProvider, Paragraph } from '@looker/components'
+import 'core-js/stable'
 
 const App = () => (
   <ComponentsProvider>

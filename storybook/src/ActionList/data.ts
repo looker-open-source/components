@@ -51,12 +51,10 @@ export const data = [
   },
   {
     ...row,
-    disabled: true,
     pdtName: 'my_other_great_pdt_name2',
   },
   {
     ...row,
-    disabled: true,
     pdtName: 'my_other_great_pdt_name3',
   },
 ]

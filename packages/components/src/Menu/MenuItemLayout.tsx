@@ -33,7 +33,6 @@ import { Icon } from '../Icon'
 export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
   compact?: boolean
   focusVisible?: boolean
-  hasIcon?: boolean
 }
 
 /**
@@ -42,9 +41,7 @@ export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
  */
 const MenuItemWrapper = forwardRef(
   (props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
-    return (
-      <li {...omit(props, 'compact', 'focusVisible', 'hasIcon')} ref={ref} />
-    )
+    return <li {...omit(props, 'compact', 'focusVisible')} ref={ref} />
   }
 )
 
@@ -59,8 +56,6 @@ export const MenuItemLayoutGrid = styled.div``
 export const MenuItemLayout = styled(MenuItemWrapper)`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text5};
-  display: flex;
-  flex-wrap: wrap;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
   outline: none;
@@ -77,6 +72,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     border: none;
     color: inherit;
     cursor: pointer;
+    display: flex;
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
@@ -91,20 +87,12 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     position: relative;
     text-align: left;
     text-decoration: none;
+    width: 100%;
 
     &:hover,
     &:focus {
       color: inherit;
       text-decoration: none;
-    }
-
-    ${MenuItemLayoutGrid} {
-      align-items: center;
-      display: grid;
-      grid-gap: ${({ compact, theme: { space } }) =>
-        compact ? space.xsmall : space.small};
-      grid-template-columns: ${({ hasIcon }) =>
-        hasIcon ? '24px 1fr' : ' 1fr'};
     }
   }
 

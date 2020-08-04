@@ -80,7 +80,8 @@ const ActionListRowLayout = forwardRef(
 ActionListRowLayout.displayName = 'ActionListRowLayout'
 
 export const ActionListRow = styled(ActionListRowLayout)`
-  background: ${({ disabled, theme }) => disabled && theme.colors.ui1};
+  background: ${({ checked, disabled, theme }) =>
+    disabled ? theme.colors.ui1 : checked ? theme.colors.keySubtle : undefined};
   display: flex;
 
   &:focus,

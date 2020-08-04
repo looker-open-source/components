@@ -34,8 +34,8 @@ exports[`A Paragraph component decorated 1`] = `
 
 exports[`A Paragraph component resized 1`] = `
 .c0 {
-  font-size: 2.875rem;
-  line-height: 4rem;
+  font-size: 2.25rem;
+  line-height: 2.75rem;
 }
 
 <p

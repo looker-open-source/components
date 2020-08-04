@@ -62,7 +62,11 @@ describe('Avatar', () => {
     test('supports role as button & onClick event', () => {
       const fauxOnClick = jest.fn()
       renderWithTheme(
-        <AvatarCombo secondaryIcon="User" onClick={fauxOnClick} role="button" />
+        <AvatarCombo
+          secondaryIcon="Account"
+          onClick={fauxOnClick}
+          role="button"
+        />
       )
 
       const button = screen.getByRole('button')

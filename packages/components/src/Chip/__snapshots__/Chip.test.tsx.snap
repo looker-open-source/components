@@ -90,7 +90,7 @@ exports[`Chip renders disabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   justify-items: center;
-  color: #939BA5;
+  color: #707781;
   background-color: #F5F6F7;
 }
 

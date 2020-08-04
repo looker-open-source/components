@@ -383,4 +383,88 @@ describe('ActionList', () => {
       expect(headerCheckbox.checked).toEqual(true)
     })
   })
+
+  describe('Control Bar', () => {
+    const onBulkActionClick = jest.fn()
+    const onTotalClearAll = jest.fn()
+    const onTotalSelectAll = jest.fn()
+
+    afterEach(() => {
+      onBulkActionClick.mockClear()
+      onTotalClearAll.mockClear()
+      onTotalSelectAll.mockClear()
+    })
+
+    const bulk = {
+      actions: (
+        <ActionListItemAction onClick={onBulkActionClick}>
+          My Bulk Action
+        </ActionListItemAction>
+      ),
+      onTotalClearAll,
+      onTotalSelectAll,
+      pageCount: 2,
+      totalCount: 4,
+    }
+
+    test('Control bar is visible when bulk prop is provided and itemsSelected prop has length >0', () => {
+      const { getByText } = renderWithTheme(
+        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+          {items}
+        </ActionList>
+      )
+
+      getByText('Bulk Actions')
+      getByText('1 of 2 displayed items selected')
+      getByText('Select all 4 results')
+    })
+
+    test('Control bar is not visible when bulk prop is not provided', () => {
+      const { queryByText } = renderWithTheme(
+        <ActionList columns={columns} itemsSelected={['1']}>
+          {items}
+        </ActionList>
+      )
+
+      expect(queryByText('Bulk Actions')).not.toBeInTheDocument()
+    })
+
+    test('Control bar is not visible when itemsSelected.length < 0', () => {
+      const { queryByText } = renderWithTheme(
+        <ActionList columns={columns} bulk={bulk} itemsSelected={[]}>
+          {items}
+        </ActionList>
+      )
+
+      expect(queryByText('Bulk Actions')).not.toBeInTheDocument()
+    })
+
+    test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
+      const { getByText } = renderWithTheme(
+        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+          {items}
+        </ActionList>
+      )
+
+      expect(onTotalSelectAll).toHaveBeenCalledTimes(0)
+      fireEvent.click(getByText('Select all 4 results'))
+      expect(onTotalSelectAll).toHaveBeenCalledTimes(1)
+    })
+
+    test('Pressing "Clear Selection" button triggers onTotalClearAll', () => {
+      const { getByText } = renderWithTheme(
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          itemsSelected={['1', '2', '3', '4']}
+        >
+          {items}
+        </ActionList>
+      )
+
+      expect(onTotalClearAll).toHaveBeenCalledTimes(0)
+      fireEvent.click(getByText('Clear Selection'))
+      expect(onTotalClearAll).toHaveBeenCalledTimes(1)
+    })
+  })
 })
