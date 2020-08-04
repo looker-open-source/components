@@ -83,8 +83,14 @@ const distributeCSS = css`
 
 export const TabList = styled(TabListLayout)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
   white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `
