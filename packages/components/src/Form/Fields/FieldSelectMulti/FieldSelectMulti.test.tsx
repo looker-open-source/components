@@ -35,88 +35,90 @@ const fieldSelectMultiOptions = [
   { label: 'Oranges', value: '3' },
 ]
 
-test('FieldSelectMulti should accept detail and description attributes', () => {
-  renderWithTheme(
-    <FieldSelectMulti
-      detail="5/50"
-      description="this is the description"
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      options={fieldSelectMultiOptions}
-    />
-  )
+describe('FieldSelectMulti', () => {
+  test('should accept detail and description attributes', () => {
+    renderWithTheme(
+      <FieldSelectMulti
+        detail="5/50"
+        description="this is the description"
+        label="👍"
+        name="thumbsUp"
+        id="thumbs-up"
+        options={fieldSelectMultiOptions}
+      />
+    )
 
-  const input = screen.getAllByLabelText('👍')[1]
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
-})
+    const input = screen.getByLabelText('👍')
+    expect(input.getAttribute('detail')).toBeDefined()
+    expect(input.getAttribute('description')).toBeDefined()
+  })
 
-test('FieldSelectMulti should accept a disabled prop', () => {
-  renderWithTheme(
-    <FieldSelectMulti
-      disabled
-      id="test"
-      label="Test Label"
-      name="test"
-      options={fieldSelectMultiOptions}
-    />
-  )
+  test('should accept a disabled prop', () => {
+    renderWithTheme(
+      <FieldSelectMulti
+        disabled
+        id="test"
+        label="Test Label"
+        name="test"
+        options={fieldSelectMultiOptions}
+      />
+    )
 
-  const input = screen.getAllByLabelText('Test Label')[1]
-  expect(input.getAttribute('disabled')).toBeDefined()
-})
+    const input = screen.getByLabelText('Test Label')
+    expect(input.getAttribute('disabled')).toBeDefined()
+  })
 
-test('FieldSelectMulti should accept required attributes', () => {
-  renderWithTheme(
-    <FieldSelectMulti
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      options={fieldSelectMultiOptions}
-      required
-    />
-  )
-  expect(screen.getByText('required')).toBeVisible()
-})
+  test('should accept required attributes', () => {
+    renderWithTheme(
+      <FieldSelectMulti
+        label="👍"
+        name="thumbsUp"
+        id="thumbs-up"
+        options={fieldSelectMultiOptions}
+        required
+      />
+    )
+    expect(screen.getByText('required')).toBeVisible()
+  })
 
-test('FieldSelectMulti should display error message', () => {
-  const errorMessage = 'This is an error'
+  test('should display error message', () => {
+    const errorMessage = 'This is an error'
 
-  renderWithTheme(
-    <FieldSelectMulti
-      id="testFieldSelectMulti"
-      label="Label"
-      name="test"
-      options={fieldSelectMultiOptions}
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    renderWithTheme(
+      <FieldSelectMulti
+        id="testFieldSelectMulti"
+        label="Label"
+        name="test"
+        options={fieldSelectMultiOptions}
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  expect(screen.getByText('This is an error')).toBeVisible()
-})
+    expect(screen.getByText('This is an error')).toBeVisible()
+  })
 
-test('FieldSelectMulti Should trigger onChange handler', () => {
-  const handleChange = jest.fn()
+  test('Should trigger onChange handler', () => {
+    const handleChange = jest.fn()
 
-  renderWithTheme(
-    <FieldSelectMulti
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      onChange={handleChange}
-      options={fieldSelectMultiOptions}
-    />
-  )
+    renderWithTheme(
+      <FieldSelectMulti
+        label="👍"
+        name="thumbsUp"
+        id="thumbs-up"
+        onChange={handleChange}
+        options={fieldSelectMultiOptions}
+      />
+    )
 
-  // The combobox container and the input share the label
-  const input = screen.getAllByLabelText('👍')[1]
-  fireEvent.click(input)
+    // The combobox container and the input share the label
+    const input = screen.getByLabelText('👍')
+    fireEvent.click(input)
 
-  const apples = screen.getByText('Apples')
-  fireEvent.click(apples)
+    const apples = screen.getByText('Apples')
+    fireEvent.click(apples)
 
-  expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(document)
+    fireEvent.click(document)
+  })
 })

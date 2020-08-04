@@ -25,8 +25,8 @@
  */
 
 import { mountWithTheme } from '@looker/components-test-utils'
+import { act } from '@testing-library/react'
 import React, { RefObject } from 'react'
-import { act } from 'react-dom/test-utils'
 import { useElementVisibility } from './MenuGroup.hooks'
 
 interface TestProps {
