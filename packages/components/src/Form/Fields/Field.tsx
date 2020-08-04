@@ -66,6 +66,11 @@ export interface FieldProps extends FieldBaseProps {
    * @default '100%'
    */
   width?: ResponsiveSpaceValue
+
+  /**
+   *
+   */
+  ariaLabelOnly?: boolean
 }
 
 export const fieldPropKeys = [
@@ -107,6 +112,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   description,
   detail,
   id,
+  ariaLabelOnly,
   label,
   hideLabel,
   required,
@@ -125,7 +131,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 
   const labelComponent = (
-    <Label htmlFor={id} id={`${id}-labelledby`}>
+    <Label htmlFor={ariaLabelOnly ? undefined : id} id={`${id}-labelledby`}>
       {label}
       {required && <RequiredStar />}
     </Label>

@@ -34,7 +34,7 @@ describe('FieldSelect', () => {
     renderWithTheme(<FieldSelect label="Auto resize" autoResize />)
     // Both the div[role="combobox"] and the input share the label
     const label = screen.getByLabelText('Auto resize')
-    expect(label).toHaveStyle('width: auto')
+    expect(label).toHaveStyleRule('width: auto')
   })
 
   test('Accepts a value', () => {
