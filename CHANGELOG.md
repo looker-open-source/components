@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `xxxxxlarge` to sizes to support updated type ramp.
 
+## [0.9.9] - 2020-08-02
+
+### Fixed
+
+- `MenuItem` correct IE11 patch to apply `aria-hidden={true}` to placeholder
+
 ## [0.9.8] - 2020-08-02
 
 ### Fixed

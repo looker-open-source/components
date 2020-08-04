@@ -138,6 +138,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
         <IconPlaceholder
           size={24 / (compact ? 1.25 : 1)}
           mr="xsmall"
+          aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
         />
       )
