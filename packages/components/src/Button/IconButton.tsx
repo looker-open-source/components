@@ -40,7 +40,7 @@ import {
   StatefulColor,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import { TextAlignProperty } from 'csstype'
+import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
 import { Icon } from '../Icon'
@@ -122,7 +122,7 @@ export interface IconButtonProps
   /**
    * Text alignment of the built-in Tooltip.
    */
-  tooltipTextAlign?: TextAlignProperty
+  tooltipTextAlign?: Property.TextAlign
 }
 
 export const IconButtonStyle = styled.button<IconButtonProps>`

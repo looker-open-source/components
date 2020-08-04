@@ -24,11 +24,11 @@
 
  */
 
-import { CursorProperty } from 'csstype'
+import { Property } from 'csstype'
 import { css } from 'styled-components'
 
 export interface CursorProps {
-  cursor?: CursorProperty
+  cursor?: Property.Cursor
 }
 
 export const cursor = (props: CursorProps) => css`
