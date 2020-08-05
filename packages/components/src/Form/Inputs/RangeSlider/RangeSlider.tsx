@@ -338,7 +338,7 @@ export const InternalRangeSlider = forwardRef(
         id={id}
         ref={setContainerRef}
       >
-        <SliderTrack ref={ref}>
+        <SliderTrack ref={ref} aria-labelledby={ariaLabelledby}>
           <SliderFill
             fillStart={minPos}
             fillWidth={fillWidth}
@@ -372,7 +372,6 @@ export const InternalRangeSlider = forwardRef(
             aria-valuemax={max}
             aria-disabled={disabled}
             aria-valuenow={value[0]}
-            aria-labelledby={ariaLabelledby}
           />
           <Thumb
             position={maxPos}
@@ -388,7 +387,6 @@ export const InternalRangeSlider = forwardRef(
             aria-valuemax={max}
             aria-disabled={disabled}
             aria-valuenow={value[1]}
-            aria-labelledby={ariaLabelledby}
           />
         </SliderTrack>
       </div>

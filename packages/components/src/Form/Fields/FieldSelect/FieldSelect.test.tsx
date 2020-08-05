@@ -25,116 +25,96 @@
  */
 
 import React from 'react'
-import {
-  createWithTheme,
-  mountWithTheme,
-  renderWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
+import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldSelect } from './FieldSelect'
 
-test('A FieldSelect', () => {
-  assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
-})
+describe('FieldSelect', () => {
+  test('autoResize', () => {
+    renderWithTheme(<FieldSelect label="Auto resize" autoResize />)
+    // Both the div[role="combobox"] and the input share the label
+    const label = screen.getByLabelText('Auto resize')
+    expect(label).toHaveStyleRule('width: auto')
+  })
 
-test('A FieldSelect with autoResize', () => {
-  const { getAllByLabelText } = renderWithTheme(
-    <FieldSelect label="Auto resize" autoResize />
-  )
-  // Both the div[role="combobox"] and the input share the label
-  expect(getAllByLabelText('Auto resize')[0]).toHaveStyle('width: auto')
-})
+  test('Accepts a value', () => {
+    const wrapper = mountWithTheme(
+      <FieldSelect
+        label="👍"
+        name="thumbsUp"
+        id="thumbs-up"
+        value="foobar"
+        options={[{ label: 'Foobar', value: 'foobar' }]}
+      />
+    )
 
-test('Should accept a value', () => {
-  const wrapper = mountWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      value="foobar"
-      options={[{ label: 'Foobar', value: 'foobar' }]}
-    />
-  )
+    const input = wrapper.find('input')
+    expect(input.prop('value')).toEqual('Foobar')
+  })
 
-  const input = wrapper.find('input')
-  expect(input.prop('value')).toEqual('Foobar')
-})
+  test('Should trigger onChange handler', () => {
+    const handleChange = jest.fn()
 
-test('Should trigger onChange handler', () => {
-  const handleChange = jest.fn()
+    const wrapper = mountWithTheme(
+      <FieldSelect
+        label="👍"
+        name="thumbsUp"
+        id="thumbs-up"
+        value="foobar"
+        onChange={handleChange}
+        options={[{ label: 'Foobar', value: 'foobar' }]}
+      />
+    )
 
-  const wrapper = mountWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      value="foobar"
-      onChange={handleChange}
-      options={[{ label: 'Foobar', value: 'foobar' }]}
-    />
-  )
+    wrapper.find('input').simulate('mousedown')
+    wrapper.find('li').at(0).simulate('click')
+    expect(handleChange).toHaveBeenCalledTimes(1)
+  })
 
-  wrapper.find('input').simulate('mousedown')
-  wrapper.find('li').at(0).simulate('click')
-  expect(handleChange).toHaveBeenCalledTimes(1)
-})
+  test('With an validation message displayed', () => {
+    const { getAllByLabelText, getByText } = renderWithTheme(
+      <FieldSelect
+        label="thumbs up"
+        name="thumbsUp"
+        id="thumbs-up"
+        validationMessage={{ message: 'This is an error', type: 'error' }}
+      />
+    )
+    expect(getAllByLabelText('thumbs up')[0]).toBeVisible()
+    expect(getByText('This is an error')).toBeVisible()
+  })
 
-test('A FieldSelect with an error validation aligned to the bottom', () => {
-  const { getAllByLabelText, getByText } = renderWithTheme(
-    <FieldSelect
-      label="thumbs up"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-    />
-  )
-  expect(getAllByLabelText('thumbs up')[1]).toBeVisible()
-  expect(getByText('This is an error')).toBeVisible()
-})
+  test('With description has proper aria setup', () => {
+    const description = 'This is a description'
 
-test('A FieldSelect with description has proper aria setup', () => {
-  const description = 'This is a description'
+    const { container, getByDisplayValue } = renderWithTheme(
+      <FieldSelect id="test" defaultValue="example" description={description} />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldSelect id="test" defaultValue="example" description={description} />
-  )
+    const input = getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(description)
+  })
 
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(description)
-})
+  test('With error has proper aria setup', () => {
+    const errorMessage = 'This is an error'
 
-test('A FieldText with error has proper aria setup', () => {
-  const errorMessage = 'This is an error'
+    const { container, getByDisplayValue } = renderWithTheme(
+      <FieldSelect
+        id="test"
+        defaultValue="example"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldSelect
-      id="test"
-      defaultValue="example"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    const input = getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
-
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(errorMessage)
-})
-
-test('A FieldSelect with an error validation aligned to the right', () => {
-  const component = createWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-    />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(errorMessage)
+  })
 })

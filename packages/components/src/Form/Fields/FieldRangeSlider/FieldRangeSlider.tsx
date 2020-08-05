@@ -43,10 +43,12 @@ const FieldRangeSliderComponent = forwardRef(
         data-testid="FieldSliderId"
         {...pickFieldProps(omit(props, 'validationMessage'))}
         id={id}
+        ariaLabelOnly
       >
         <RangeSlider
           {...omitFieldProps(props)}
           aria-describedby={`${id}-describedby`}
+          aria-labelledby={`${id}-labelledby`}
           id={id}
           ref={ref}
         />

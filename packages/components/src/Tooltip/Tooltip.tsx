@@ -24,7 +24,7 @@
 
  */
 
-import { TextAlignProperty } from 'csstype'
+import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, {
   cloneElement,
@@ -48,12 +48,6 @@ import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 
 export interface UseTooltipProps {
-  /**
-   * Display and arrow that points to the trigger element on popovers
-   * @default true
-   */
-  arrow?: boolean
-
   /**
    * Specify a callback to be called before trying to close the Tooltip. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
@@ -82,7 +76,7 @@ export interface UseTooltipProps {
    * Specify the text alignment within tooltips.
    * @default center
    */
-  textAlign?: TextAlignProperty
+  textAlign?: Property.TextAlign
 
   /**
    * The id of the span containing the tooltip text (if absent, a random id will be generated)
@@ -125,7 +119,6 @@ export interface TooltipProps extends UseTooltipProps {
 }
 
 export function useTooltip({
-  arrow = true,
   canClose,
   content,
   isOpen: initializeOpen = false,
@@ -174,7 +167,6 @@ export function useTooltip({
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
       anchor: element,
-      arrow,
       options: {
         modifiers: [
           {
@@ -188,7 +180,7 @@ export function useTooltip({
         placement: propsPlacement,
       },
     }),
-    [arrow, element, propsPlacement]
+    [element, propsPlacement]
   )
   const {
     arrowProps,
@@ -206,7 +198,7 @@ export function useTooltip({
     isOpen && content && !disabled ? (
       <Portal>
         <OverlaySurface
-          arrow={arrow}
+          arrow={false}
           arrowProps={arrowProps}
           eventHandlers={{ onMouseOut: handleMouseOut }}
           placement={placement}

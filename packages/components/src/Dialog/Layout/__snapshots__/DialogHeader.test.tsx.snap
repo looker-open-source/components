@@ -87,7 +87,7 @@ exports[`DialogHeader Snapshot 1`] = `
 .c5 {
   background: none;
   border: none;
-  color: #939BA5;
+  color: #959ba3;
   padding: 0;
 }
 

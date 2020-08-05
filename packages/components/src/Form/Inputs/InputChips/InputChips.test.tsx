@@ -67,8 +67,7 @@ describe('InputChips', () => {
       },
     }
 
-    const pasteEvent = createEvent.paste(element, eventProperties) as any
-    pasteEvent.clipboardData = eventProperties.clipboardData
+    const pasteEvent = createEvent.paste(element, eventProperties)
 
     fireEvent(element, pasteEvent)
   }
