@@ -144,6 +144,7 @@ import {
   Tree,
   TreeGroup,
   TreeItem,
+  useActionListSelectManager,
   useConfirm,
   usePreviousValue,
   useMixedStateCheckbox,
@@ -179,6 +180,7 @@ const otherLibraries = {
 
 const hooks = {
   doDefaultActionListSort,
+  useActionListSelectManager,
   useConfirm,
   useMixedStateCheckbox,
   usePreviousValue,

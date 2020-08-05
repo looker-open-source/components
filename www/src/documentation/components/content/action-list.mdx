@@ -4,6 +4,16 @@ github: ActionList
 propsOf: ActionList
 ---
 
+import {
+  useActionListSelectManager,
+  Code,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableDataCell,
+} from '@looker/components'
 import { Props } from '../../../Shared'
 
 The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
@@ -459,6 +469,162 @@ For accessibility purposes, the header checkbox is described by the ID of the he
         {items}
       </ActionList>
     </>
+  )
+}
+```
+
+### useActionListSelectManager
+
+The `useActionListSelectManager` hook can be used to quickly create the standard building blocks of `ActionList` select behavior.
+
+`useActionListSelectManager` accepts the following parameters:
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>Parameter Name</TableHeaderCell>
+      <TableHeaderCell>Type</TableHeaderCell>
+      <TableHeaderCell>Description</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableDataCell pr="large">selectableItems</TableDataCell>
+      <TableDataCell pr="large">
+        <Code>string[]</Code>
+      </TableDataCell>
+      <TableDataCell>
+        An string[] array containing the id's of all selectable items. On a
+        paginated ActionList, this will usually only include visible item ids'.
+      </TableDataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+`useActionListSelectManager` returns an object with the following properties:
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>Return Property Name</TableHeaderCell>
+      <TableHeaderCell>Type</TableHeaderCell>
+      <TableHeaderCell>Description</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableDataCell pr="large">selections</TableDataCell>
+      <TableDataCell pr="large">
+        <Code>string[]</Code>
+      </TableDataCell>
+      <TableDataCell>
+        A piece of state of type string[] containing the id's of all selected
+        items. Will initially contain 0 elements.
+      </TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell pr="large">setSelections</TableDataCell>
+      <TableDataCell pr="large">
+        <Code>(selections: string[]) => void</Code>
+      </TableDataCell>
+      <TableDataCell>The setter for the selections state.</TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell pr="large">onSelect</TableDataCell>
+      <TableDataCell pr="large">
+        <Code>(id: string) => void</Code>
+      </TableDataCell>
+      <TableDataCell>
+        A callback function that accepts a string id, and will add that string
+        id to the selections state. Will usually be passed to an ActionList's
+        onSelect prop.
+      </TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell pr="large">onSelectAll</TableDataCell>
+      <TableDataCell pr="large">
+        <Code>() => void</Code>
+      </TableDataCell>
+      <TableDataCell>
+        A callback function that accepts no parameters, and will add all
+        selectableItems to the selections state. Will usually be passed to an
+        ActionList's onSelectAll prop.
+      </TableDataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+```jsx
+;() => {
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const allSelectableItems = data.map(({ id }) => String(id))
+
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(allSelectableItems)
+
+  const items = data.map(({ id, name }) => (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      onClick={() => alert(`${name} clicked`)}
+      actions={
+        <>
+          <ActionListItemAction onClick={() => alert(`${name} deleted`)}>
+            Delete
+          </ActionListItemAction>
+        </>
+      }
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  return (
+    <ActionList
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
   )
 }
 ```
