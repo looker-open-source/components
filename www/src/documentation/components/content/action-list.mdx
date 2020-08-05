@@ -550,3 +550,119 @@ The `useActionListSelectManager` hook can be used to quickly create the standard
   )
 }
 ```
+
+## Control Bar
+
+`ActionList` comes with a built-in control bar that allows for bulk actions and additional select control.
+
+An `ActionList` will reveal its control bar when the following conditions are met:
+
+1. The array passed into the `itemsSelected` prop has length > 0.
+2. A valid object is passed into the `bulk` prop.
+
+The `bulk` prop is used to configure an `ActionList`'s control bar. The object passed into `bulk` _must_ have the following properties:
+
+- `actions`: Bulk actions that are available when one or more items are selected
+- `onTotalClearAll`: Callback that is triggered when the user presses the "Clear Selection" button
+- `onTotalSelectAll`: Callback that is triggered when the user presses the "Select all X results" button in the control bar
+- `pageCount`: The total number of visible items (i.e. the total number of items on the current page in paginated `ActionList`s)
+- `pageCount`: The total number of items, both visible and nonvisible, in this `ActionList`
+
+**Note:** The `onSelect` returned from the `useActionListSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
+
+```jsx
+;() => {
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const allSelectableItems = data.map(({ id }) => String(id))
+
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(allSelectableItems)
+
+  const items = data.map(({ id, name }) => (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      onClick={() => alert(`${name} clicked`)}
+      actions={
+        <>
+          <ActionListItemAction onClick={() => alert(`${name} deleted`)}>
+            Delete
+          </ActionListItemAction>
+        </>
+      }
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  const onTotalSelectAll = () =>
+    setSelections([...allSelectableItems, 'Swiss', 'Pepper Jack', 'American'])
+
+  const onTotalClearAll = () => setSelections([])
+
+  const onBulkActionClick = () => {
+    alert(`Performing a bulk action on these items: \n${selections}`)
+  }
+
+  const bulkActionsConfig = {
+    actions: (
+      <ActionListItemAction onClick={onBulkActionClick}>
+        Some bulk action
+      </ActionListItemAction>
+    ),
+    onTotalClearAll,
+    onTotalSelectAll,
+    pageCount: items.length,
+    totalCount: 6,
+  }
+
+  return (
+    <ActionList
+      bulk={bulkActionsConfig}
+      canSelect
+      onClickRowSelect
+      onSelect={onSelect}
+      onSelectAll={onSelectAll}
+      itemsSelected={selections}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
