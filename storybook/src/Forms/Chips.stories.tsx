@@ -25,15 +25,29 @@
  */
 
 import React, { useState } from 'react'
-import { FieldChips, Grid, InputChips, Paragraph } from '@looker/components'
+import {
+  FieldChips,
+  Grid,
+  InputChips,
+  Paragraph,
+  Space,
+  SpaceVertical,
+} from '@looker/components'
 
 export const All = () => (
-  <Grid>
+  <SpaceVertical align="start">
     <FieldChipOptions />
-    <Basic />
-    <Controlled />
-    <ValidationDuplicate />
-  </Grid>
+    <Space align="start">
+      <Basic />
+      <Controlled />
+      <ValidationDuplicate />
+    </Space>
+    <Space align="start">
+      <Truncate />
+      <Overflow />
+      <AutoResize />
+    </Space>
+  </SpaceVertical>
 )
 
 export default {
@@ -118,7 +132,7 @@ export const ValidationDuplicate = () => {
     setDuplicate(`Duplicate email: ${values.join(', ')}`)
 
   return (
-    <>
+    <SpaceVertical>
       <InputChips
         values={values}
         onChange={handleChange}
@@ -130,6 +144,57 @@ export const ValidationDuplicate = () => {
       <Paragraph>
         {invalid} {duplicate}
       </Paragraph>
-    </>
+    </SpaceVertical>
+  )
+}
+
+export function Truncate() {
+  const [values, setValues] = useState<string[]>([
+    'A very long token that will truncate',
+  ])
+
+  return (
+    <FieldChips
+      label="Truncate"
+      width={250}
+      values={values}
+      onChange={setValues}
+    />
+  )
+}
+export function Overflow() {
+  const [values, setValues] = useState<string[]>([
+    'California',
+    'Wyoming',
+    'Nevada',
+    'Wisconsin',
+    'Mississippi',
+    'Missouri',
+    'New York',
+    'New Jersey',
+  ])
+
+  return (
+    <FieldChips
+      label="Overflow"
+      width={200}
+      maxHeight={145}
+      values={values}
+      onChange={setValues}
+    />
+  )
+}
+
+export function AutoResize() {
+  const [values, setValues] = useState<string[]>([])
+
+  return (
+    <InputChips
+      autoResize
+      maxWidth="50vw"
+      placeholder="Auto Resize"
+      values={values}
+      onChange={setValues}
+    />
   )
 }
