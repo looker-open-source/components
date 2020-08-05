@@ -573,18 +573,12 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
 ```jsx
 ;() => {
   const data = [
-    {
-      id: 1,
-      name: 'Gorgonzola',
-    },
-    {
-      id: 2,
-      name: 'Cheddar',
-    },
-    {
-      id: 3,
-      name: `Blue`,
-    },
+    { id: 1, name: 'Gorgonzola' },
+    { id: 2, name: 'Cheddar' },
+    { id: 3, name: `Blue` },
+    { id: 4, name: 'American' },
+    { id: 5, name: 'Cheddar' },
+    { id: 6, name: 'Pepper Jack' },
   ]
 
   const columns = [
@@ -603,16 +597,15 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
     },
   ]
 
-  const allSelectableItems = data.map(({ id }) => String(id))
+  const [page, setPage] = useState(1)
+  const perPageCount = 3
 
-  const {
-    onSelect,
-    onSelectAll,
-    selections,
-    setSelections,
-  } = useActionListSelectManager(allSelectableItems)
-
-  const items = data.map(({ id, name }) => (
+  // The logic for which items are being displayed on which page will vary
+  const pageItemData = data.filter(
+    ({ id }) => id > (page - 1) * perPageCount && id <= page * perPageCount
+  )
+  const pageItemIds = pageItemData.map(({ id }) => String(id))
+  const pageItems = pageItemData.map(({ id, name }) => (
     <ActionListItem
       id={String(id)}
       key={id}
@@ -630,39 +623,55 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
     </ActionListItem>
   ))
 
-  const onTotalSelectAll = () =>
-    setSelections([...allSelectableItems, 'Swiss', 'Pepper Jack', 'American'])
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(pageItemIds)
 
+  const allItems = [...data].map(({ id }) => String(id))
+  const onTotalSelectAll = () => setSelections(allItems)
   const onTotalClearAll = () => setSelections([])
-
-  const onBulkActionClick = () => {
-    alert(`Performing a bulk action on these items: \n${selections}`)
-  }
 
   const bulkActionsConfig = {
     actions: (
-      <ActionListItemAction onClick={onBulkActionClick}>
-        Some bulk action
+      <ActionListItemAction
+        onClick={() => alert(`Selected Items: ${selections}`)}
+      >
+        View Selected Item IDs
       </ActionListItemAction>
     ),
     onTotalClearAll,
     onTotalSelectAll,
-    pageCount: items.length,
-    totalCount: 6,
+    pageCount: pageItems.length,
+    totalCount: allItems.length,
   }
 
   return (
-    <ActionList
-      bulk={bulkActionsConfig}
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
+    <Flex flexDirection="column" alignItems="center">
+      <Box width="100%" mb="10px">
+        <ActionList
+          bulk={bulkActionsConfig}
+          canSelect
+          onClickRowSelect
+          onSelect={onSelect}
+          onSelectAll={onSelectAll}
+          itemsSelected={selections}
+          columns={columns}
+        >
+          {pageItems}
+        </ActionList>
+      </Box>
+      <Pagination
+        current={page}
+        pages={data.length / perPageCount}
+        onChange={(nextPage) => {
+          setSelections([])
+          setPage(nextPage)
+        }}
+      />
+    </Flex>
   )
 }
 ```
