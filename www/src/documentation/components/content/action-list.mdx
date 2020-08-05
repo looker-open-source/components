@@ -4,17 +4,8 @@ github: ActionList
 propsOf: ActionList
 ---
 
-import {
-  useActionListSelectManager,
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
 import { Props } from '../../../Shared'
+import { SelectManagerParameterTable, SelectManagerReturnTable } from './demos'
 
 The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
 
@@ -479,80 +470,11 @@ The `useActionListSelectManager` hook can be used to quickly create the standard
 
 `useActionListSelectManager` accepts the following parameters:
 
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell>Parameter Name</TableHeaderCell>
-      <TableHeaderCell>Type</TableHeaderCell>
-      <TableHeaderCell>Description</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableDataCell pr="large">selectableItems</TableDataCell>
-      <TableDataCell pr="large">
-        <Code>string[]</Code>
-      </TableDataCell>
-      <TableDataCell>
-        An string[] array containing the id's of all selectable items. On a
-        paginated ActionList, this will usually only include visible item ids'.
-      </TableDataCell>
-    </TableRow>
-  </TableBody>
-</Table>
+<SelectManagerParameterTable />
 
 `useActionListSelectManager` returns an object with the following properties:
 
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell>Return Property Name</TableHeaderCell>
-      <TableHeaderCell>Type</TableHeaderCell>
-      <TableHeaderCell>Description</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableDataCell pr="large">selections</TableDataCell>
-      <TableDataCell pr="large">
-        <Code>string[]</Code>
-      </TableDataCell>
-      <TableDataCell>
-        A piece of state of type string[] containing the id's of all selected
-        items. Will initially contain 0 elements.
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell pr="large">setSelections</TableDataCell>
-      <TableDataCell pr="large">
-        <Code>(selections: string[]) => void</Code>
-      </TableDataCell>
-      <TableDataCell>The setter for the selections state.</TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell pr="large">onSelect</TableDataCell>
-      <TableDataCell pr="large">
-        <Code>(id: string) => void</Code>
-      </TableDataCell>
-      <TableDataCell>
-        A callback function that accepts a string id, and will add that string
-        id to the selections state. Will usually be passed to an ActionList's
-        onSelect prop.
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell pr="large">onSelectAll</TableDataCell>
-      <TableDataCell pr="large">
-        <Code>() => void</Code>
-      </TableDataCell>
-      <TableDataCell>
-        A callback function that accepts no parameters, and will add all
-        selectableItems to the selections state. Will usually be passed to an
-        ActionList's onSelectAll prop.
-      </TableDataCell>
-    </TableRow>
-  </TableBody>
-</Table>
+<SelectManagerReturnTable />
 
 ```jsx
 ;() => {
