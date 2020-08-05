@@ -383,7 +383,7 @@ function usePopoverToggle(
 }
 
 export function usePopover({
-  arrow = true,
+  arrow = false,
   canClose,
   content,
   groupedPopoversRef,

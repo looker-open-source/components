@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
 - `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
 - Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+- Remove arrow from `Tooltip`, `Popover` and `Menu` by default
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
 
