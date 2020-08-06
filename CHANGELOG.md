@@ -37,11 +37,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Correlates use of color for `Chip`, `ButtonToggle` & `ButtonSet`
 - Consolidated `inputHeight` location and usage suite-wide
+- `InputChipsBase` updated to use styled() wrapped for Chip margin overrides
+
+### Remove
+
+- `Chip` removed most prop support
 
 ### Fixed
 
-- `Chip` & `ButtonItem` color usage sync'd
 - `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
 
 ## [0.9.9] - 2020-08-02
