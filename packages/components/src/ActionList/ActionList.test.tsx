@@ -456,7 +456,7 @@ describe('ActionList', () => {
 
       expect(queryByText('My Bulk Action')).not.toBeInTheDocument()
     })
-        
+
     test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
       const { getByText } = renderWithTheme(
         <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
