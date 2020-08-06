@@ -16,8 +16,6 @@ exports[`ChipButton renders correctly 1`] = `
   font-size: 0.75rem;
   font-weight: 600;
   height: 28px;
-  justify-items: center;
-  margin-bottom: 0.25rem;
   max-width: 320px;
   min-width: 44px;
   padding: 0.25rem 0.5rem;
@@ -78,7 +76,7 @@ exports[`ChipButton renders correctly 1`] = `
 
 .c1[disabled]:hover {
   background: #F5F6F7;
-  border-color: #DEE1E5;
+  border-color: #E8E5FF;
 }
 
 <span

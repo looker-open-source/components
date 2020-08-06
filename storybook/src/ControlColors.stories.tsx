@@ -41,9 +41,10 @@ export default {
 }
 
 export const ControlColors = () => (
-  <SpaceVertical m="xxxlarge">
+  <SpaceVertical p="xxxlarge">
     <InputChips
-      values={['apples']}
+      values={['apples', 'rice', 'banana']}
+      summary="Boo"
       onChange={() => {
         return null
       }}

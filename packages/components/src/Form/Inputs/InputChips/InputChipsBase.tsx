@@ -119,7 +119,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} mr="xxsmall">
+        <Chip onDelete={onChipDelete} key={value}>
           {value}
         </Chip>
       )
@@ -169,6 +169,11 @@ const inputHeightStyle = css`
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
+
+  ${Chip} {
+    margin: 1px 0;
+    margin-right: ${({ theme: { space } }) => space.xxsmall};
+  }
 
   .inner {
     align-content: flex-start;

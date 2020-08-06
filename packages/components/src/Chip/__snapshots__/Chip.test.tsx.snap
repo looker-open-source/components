@@ -16,8 +16,6 @@ exports[`Chip renders correctly 1`] = `
   font-size: 0.75rem;
   font-weight: 600;
   height: 28px;
-  justify-items: center;
-  margin-bottom: 0.25rem;
   max-width: 320px;
   min-width: 44px;
   padding: 0.25rem 0.5rem;
@@ -88,8 +86,6 @@ exports[`Chip renders disabled 1`] = `
   font-size: 0.75rem;
   font-weight: 600;
   height: 28px;
-  justify-items: center;
-  margin-bottom: 0.25rem;
   max-width: 320px;
   min-width: 44px;
   padding: 0.25rem 0.5rem;

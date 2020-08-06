@@ -51,8 +51,6 @@ const ChipStyle = styled.span<ChipProps>`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   height: 28px;
-  justify-items: center;
-  margin-bottom: ${({ theme: { space } }) => space.xxsmall};
   max-width: 320px;
   min-width: 44px;
   padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};

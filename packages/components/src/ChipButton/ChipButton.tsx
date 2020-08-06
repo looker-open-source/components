@@ -57,7 +57,7 @@ export const ChipButton = styled(Chip).attrs({ role: 'button' })`
 
     &:hover {
       background: ${({ theme }) => theme.colors.neutralAccent};
-      border-color: ${({ theme }) => theme.colors.ui2};
+      border-color: ${({ theme }) => theme.colors.keyAccent};
     }
   }
 `
