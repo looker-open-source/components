@@ -33,6 +33,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `xxxxxlarge` to sizes to support updated type ramp.
+- `ChipButton` introduced for limited use cases
+
+### Changed
+
+- Consolidated `inputHeight` location and usage suite-wide
+
+### Fixed
+
+- `Chip` & `ButtonItem` color usage sync'd
+- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
 
 ## [0.9.9] - 2020-08-02
 

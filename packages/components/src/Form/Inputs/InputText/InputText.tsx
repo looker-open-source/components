@@ -43,6 +43,7 @@ import { Icon } from '../../../Icon'
 import { Text } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
+import { inputHeight } from '../height'
 
 export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
@@ -242,8 +243,6 @@ export const inputTextDisabled = css`
     border-color: ${(props) => props.theme.colors.ui2};
   }
 `
-
-export const inputHeight = '36px'
 
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}

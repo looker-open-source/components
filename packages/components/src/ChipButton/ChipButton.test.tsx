@@ -23,23 +23,10 @@
  SOFTWARE.
 
  */
+import { assertSnapshot } from '@looker/components-test-utils'
+import React from 'react'
+import { ChipButton } from './ChipButton'
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './height'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+test('ChipButton renders correctly', () => {
+  assertSnapshot(<ChipButton>chip</ChipButton>)
+})

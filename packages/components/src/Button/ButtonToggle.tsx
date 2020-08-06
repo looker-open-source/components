@@ -26,7 +26,8 @@
 
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
-import { ButtonItem, buttonItemHeight } from './ButtonItem'
+import { inputHeight } from '../Form/Inputs/height'
+import { ButtonItem } from './ButtonItem'
 import {
   ButtonGroupOrToggleBaseProps,
   ButtonSet,
@@ -73,10 +74,11 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-left-width: 0;
   border-radius: ${({ theme }) => theme.radii.medium};
+  height: ${inputHeight};
 
   ${ButtonItem} {
     border-left: solid 1px ${({ theme }) => theme.colors.ui2};
-    height: ${buttonItemHeight}px;
+    height: calc(${inputHeight} - 2px);
 
     &:last-child {
       border-bottom-right-radius: ${({ theme }) => theme.radii.medium};
@@ -106,9 +108,9 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       repeating-linear-gradient(
         180deg,
         transparent,
-        transparent 35px,
-        ${({ theme }) => theme.colors.ui2} 35px,
-        ${({ theme }) => theme.colors.ui2} ${buttonItemHeight}px
+        transparent calc(${inputHeight} - 1px),
+        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 1px),
+        ${({ theme }) => theme.colors.ui2} ${inputHeight}
       );
 
     /* prevents items in the last row from growing */
@@ -116,7 +118,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       border-left: 1px solid ${({ theme }) => theme.colors.ui2};
       content: '';
       flex-grow: 100;
-      height: ${buttonItemHeight}px;
+      height: ${inputHeight};
     }
 
     ${ButtonItem} {

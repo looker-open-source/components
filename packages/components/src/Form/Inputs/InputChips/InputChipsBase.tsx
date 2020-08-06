@@ -27,12 +27,8 @@ import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import {
-  inputHeight,
-  InputTextContent,
-  InputText,
-  InputTextBaseProps,
-} from '../InputText'
+import { inputHeight } from '../height'
+import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {

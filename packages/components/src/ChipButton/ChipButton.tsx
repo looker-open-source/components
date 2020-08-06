@@ -24,43 +24,40 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import styled from 'styled-components'
+import { inputHeight } from '../Form/Inputs/height'
+import { Chip } from '../Chip/Chip'
 
-export * from './utils'
+/**
+   * Activates specialized styling Chip when used as a trigger for a Menu or Overlay
 
-export { ComponentsProvider } from '@looker/components-providers'
+   * NOTE: Please consult with the @looker/components team when using this property
+   * as it may be remove or extracted into a unique component in the future.
+   *
+=   */
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
+export const ChipButton = styled(Chip).attrs({ role: 'button' })`
+  border: 1px solid ${({ theme }) => theme.colors.ui2};
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
 
-export { SpacingSizes, theme, Theme } from '@looker/design-tokens'
+  height: ${inputHeight};
+  padding: 0 ${({ theme }) => theme.space.medium};
+
+  &.active,
+  &:active,
+  &[aria-pressed='true'] {
+    border-color: ${({ theme }) => theme.colors.key};
+  }
+
+  &[disabled] {
+    background: ${({ theme }) => theme.colors.neutralAccent};
+    color: ${({ theme }) => theme.colors.neutral};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.neutralAccent};
+      border-color: ${({ theme }) => theme.colors.ui2};
+    }
+  }
+`

@@ -30,8 +30,10 @@ exports[`ButtonToggle controlled 1`] = `
   user-select: none;
 }
 
-.c3[aria-pressed='false']:not([disabled]):hover {
-  background: #F3F2FF;
+.c3:active,
+.c3:focus,
+.c3:hover {
+  background: #E8E5FF;
 }
 
 .c3:focus {
@@ -44,14 +46,17 @@ exports[`ButtonToggle controlled 1`] = `
   cursor: default;
 }
 
+.c3[disabled]:hover {
+  background: inherit;
+}
+
 .c3[aria-pressed='true'] {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
+  background: #F3F2FF;
   color: #6C43E0;
-  text-shadow: -0.025ex 0 currentColor,0.025ex 0 currentColor;
 }
 
 .c3[aria-pressed='true'][disabled] {
+  background: #F3F2FF;
   color: #9785F2;
 }
 
@@ -76,11 +81,12 @@ exports[`ButtonToggle controlled 1`] = `
   border: solid 1px #DEE1E5;
   border-left-width: 0;
   border-radius: 0.25rem;
+  height: 36px;
 }
 
 .c1 .c2 {
   border-left: solid 1px #DEE1E5;
-  height: 36px;
+  height: calc(36px - 2px);
 }
 
 .c1 .c2:last-child {
@@ -98,7 +104,7 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1.wrapping {
-  background-image: linear-gradient( 0deg,#FFFFFF 0,#FFFFFF 1px,transparent 1px,transparent 100% ),repeating-linear-gradient( 180deg,transparent,transparent 35px,#DEE1E5 35px,#DEE1E5 36px );
+  background-image: linear-gradient( 0deg,#FFFFFF 0,#FFFFFF 1px,transparent 1px,transparent 100% ),repeating-linear-gradient( 180deg,transparent,transparent calc(36px - 1px),#DEE1E5 calc(36px - 1px),#DEE1E5 36px );
 }
 
 .c1.wrapping::after {

@@ -24,30 +24,16 @@
 
  */
 
-import {
-  color,
-  reset,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
-  typography,
-  CompatibleHTMLProps,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { darken, rgba } from 'polished'
-import { IconButton } from '../Button'
+import { IconButton } from '../Button/IconButton'
 import { Text, TextProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
   extends CompatibleHTMLProps<HTMLSpanElement>,
-    LayoutProps,
-    SpaceProps,
-    TruncateProps,
-    TypographyProps {
+    TruncateProps {
   children: ReactNode
   disabled?: boolean
   focusVisible?: boolean
@@ -57,47 +43,50 @@ export interface ChipProps
 const ChipStyle = styled.span<ChipProps>`
   ${reset}
 
-  ${color}
-  ${layout}
-  ${space}
-  ${typography}
-  ${IconButton}{
-    background-color: transparent;
-    flex-shrink: 0;
-  }
-
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.keySubtle};
+  background: ${({ theme }) => theme.colors.keySubtle};
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.keyInteractive};
   display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  height: 28px;
   justify-items: center;
+  margin-bottom: ${({ theme: { space } }) => space.xxsmall};
+  max-width: 320px;
+  min-width: 44px;
+  padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
 
-  &:hover {
-    background-color: ${(props) => props.theme.colors.keyAccent};
+  &:hover,
+  &:active,
+  &:focus {
+    background: ${(props) => props.theme.colors.keyAccent};
   }
 
+  &.focus,
   &:focus {
-    background-color: ${({ theme }) =>
-      darken(0.1, theme.colors.keyAccent).toUpperCase()};
     outline: none;
   }
 
   ${({ focusVisible, theme: { colors } }) =>
-    focusVisible && `box-shadow: 0 0 0 0.15rem ${rgba(colors.keyFocus, 0.25)};`}
+    focusVisible && `box-shadow: 0 0 0 1px ${colors.key};`}
 
-  ${({ disabled, theme: { colors } }) =>
-    disabled &&
-    `color: ${colors.neutral};
-      background-color: ${colors.neutralAccent};
+  &:active {
+    border-color: ${({ theme }) => theme.colors.key};
+  }
 
-      &:hover {
-        background-color: ${colors.neutralAccent};
-      }
-    `}
+  &[disabled] {
+    background: ${({ theme }) => theme.colors.neutralAccent};
+    color: ${({ theme }) => theme.colors.neutral};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.neutralAccent};
+    }
+  }
 `
 
 const ChipLabel = styled(Text)<TextProps & TruncateProps>`
+  font-size: inherit;
   ${truncate}
 `
 
@@ -105,12 +94,11 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
   const {
     children,
     disabled,
-    fontSize,
     onBlur,
     onDelete,
     onKeyUp,
     onKeyDown,
-    truncate,
+    truncate = true,
     ...restProps
   } = props
 
@@ -153,9 +141,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       tabIndex={disabled ? undefined : 0}
       {...restProps}
     >
-      <ChipLabel fontSize={fontSize} truncate={truncate}>
-        {children}
-      </ChipLabel>
+      <ChipLabel truncate={truncate}>{children}</ChipLabel>
       {onDelete && !disabled && (
         <IconButton
           disabled={disabled}
@@ -173,15 +159,3 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
 ChipJSX.displayName = 'ChipJSX'
 
 export const Chip = styled(ChipJSX)``
-
-Chip.defaultProps = {
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-  height: 28,
-  maxWidth: 320,
-  mb: 'xxsmall',
-  minWidth: 44,
-  px: 'xsmall',
-  py: 'xxsmall',
-  truncate: true,
-}

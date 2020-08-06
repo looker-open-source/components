@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Chip renders correctly 1`] = `
+exports[`ChipButton renders correctly 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -47,7 +47,7 @@ exports[`Chip renders correctly 1`] = `
   background: #F5F6F7;
 }
 
-.c1 {
+.c2 {
   font-size: 1rem;
   line-height: 1.5rem;
   font-size: inherit;
@@ -56,87 +56,41 @@ exports[`Chip renders correctly 1`] = `
   white-space: nowrap;
 }
 
+.c1 {
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  height: 36px;
+  padding: 0 1rem;
+}
+
+.c1.active,
+.c1:active,
+.c1[aria-pressed='true'] {
+  border-color: #6C43E0;
+}
+
+.c1[disabled] {
+  background: #F5F6F7;
+  color: #707781;
+}
+
+.c1[disabled]:hover {
+  background: #F5F6F7;
+  border-color: #DEE1E5;
+}
+
 <span
-  className="c0 "
+  className="c0 c1"
   onBlur={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
+  role="button"
   tabIndex={0}
 >
   <span
-    className="c1"
-    fontSize="medium"
-  >
-    chip
-  </span>
-</span>
-`;
-
-exports[`Chip renders disabled 1`] = `
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #F3F2FF;
-  border-radius: 4px;
-  color: #7a55e3;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 0.75rem;
-  font-weight: 600;
-  height: 28px;
-  justify-items: center;
-  margin-bottom: 0.25rem;
-  max-width: 320px;
-  min-width: 44px;
-  padding: 0.25rem 0.5rem;
-}
-
-.c0:hover,
-.c0:active,
-.c0:focus {
-  background: #E8E5FF;
-}
-
-.c0.focus,
-.c0:focus {
-  outline: none;
-}
-
-.c0:active {
-  border-color: #6C43E0;
-}
-
-.c0[disabled] {
-  background: #F5F6F7;
-  color: #707781;
-}
-
-.c0[disabled]:hover {
-  background: #F5F6F7;
-}
-
-.c1 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-size: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-<span
-  className="c0 "
-  disabled={true}
-  onBlur={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
->
-  <span
-    className="c1"
+    className="c2"
     fontSize="medium"
   >
     chip
