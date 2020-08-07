@@ -439,6 +439,24 @@ describe('ActionList', () => {
       expect(queryByText('Bulk Actions')).not.toBeInTheDocument()
     })
 
+    test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+          {items}
+        </ActionList>
+      )
+
+      expect(queryByText('My Bulk Action')).not.toBeInTheDocument()
+      fireEvent.click(getByText('Bulk Actions'))
+      const bulkAction = getByText('My Bulk Action')
+
+      expect(onBulkActionClick).toHaveBeenCalledTimes(0)
+      fireEvent.click(bulkAction)
+      expect(onBulkActionClick).toHaveBeenCalledTimes(1)
+
+      expect(queryByText('My Bulk Action')).not.toBeInTheDocument()
+    })
+
     test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
       const { getByText } = renderWithTheme(
         <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
