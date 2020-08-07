@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
+- `SelectMulti` list height now adjusts as needed when chips are added
 - `Select` getting text highlighted in a focus trap when not filterable
 - `Tree` default color is text4 (was previously a different color due to browser button defaults)
 - `MenuItem` disabled prop is not clickable and its not a link.
