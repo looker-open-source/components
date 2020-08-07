@@ -24,8 +24,17 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  KeyboardEvent,
+  useRef,
+  Ref,
+} from 'react'
 import styled, { css } from 'styled-components'
+import { moveFocus, useForkedRef } from '../utils'
+import { TabContext } from './TabContext'
 import { Tab } from '.'
 
 export interface TabListProps {
@@ -36,29 +45,59 @@ export interface TabListProps {
   distribute?: boolean
 }
 
-const TabListLayout: FC<TabListProps> = ({
-  children,
-  selectedIndex,
-  onSelectTab,
-  className,
-}) => {
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        index,
-        onSelect: () => onSelectTab && onSelectTab(index),
-        selected: index === selectedIndex,
-        selectedIndex,
-      })
+const TabListLayout = forwardRef(
+  (
+    { children, selectedIndex, onSelectTab, className }: TabListProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const wrapperRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(wrapperRef, ref)
+
+    const clonedChildren = Children.map(
+      children,
+      (child: JSX.Element, index: number) => {
+        return cloneElement(child, {
+          index,
+          onSelect: () => onSelectTab && onSelectTab(index),
+          selected: index === selectedIndex,
+          selectedIndex,
+        })
+      }
+    )
+
+    function handleArrowKey(direction: number, initial: number) {
+      moveFocus(direction, initial, wrapperRef)
     }
-  )
-  return (
-    <div aria-label="Tabs" className={className} role="tablist">
-      {clonedChildren}
-    </div>
-  )
-}
+
+    const context = {
+      handleArrowLeft: (e: KeyboardEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        handleArrowKey(-1, -1)
+        return false
+      },
+      handleArrowRight: (e: KeyboardEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        handleArrowKey(1, 0)
+        return false
+      },
+    }
+
+    return (
+      <TabContext.Provider value={context}>
+        <div
+          aria-label="Tabs"
+          className={className}
+          ref={forkedRef}
+          role="tablist"
+        >
+          {clonedChildren}
+        </div>
+      </TabContext.Provider>
+    )
+  }
+)
+
+TabListLayout.displayName = 'TabListLayout'
 
 const defaultLayoutCSS = css`
   ${Tab} {

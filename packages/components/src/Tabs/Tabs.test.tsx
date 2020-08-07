@@ -33,7 +33,7 @@ import {
   shallowWithTheme,
 } from '@looker/components-test-utils'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { Tab } from './Tab'
 import { TabList } from './TabList'
 import { TabPanel } from './TabPanel'
@@ -212,5 +212,15 @@ describe('focus behavior', () => {
 
     fireEvent.keyUp(getByText('tab2'), { charCode: 9, code: 9, key: 'Tab' })
     expect(getByText('tab2')).toMatchSnapshot()
+  })
+
+  test('Tab keyboard navigation', () => {
+    renderWithTheme(<TabTest />)
+
+    const tab1 = screen.getByText('tab1')
+    tab1.focus()
+    expect(tab1).toHaveFocus()
+    fireEvent.keyDown(tab1, { code: 39, key: 'ArrowRight' })
+    expect(screen.getByText('tab2')).toHaveFocus()
   })
 })
