@@ -74,7 +74,6 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-left-width: 0;
   border-radius: ${({ theme }) => theme.radii.medium};
-  height: ${inputHeight};
 
   ${ButtonItem} {
     border-left: solid 1px ${({ theme }) => theme.colors.ui2};
@@ -108,9 +107,9 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       repeating-linear-gradient(
         180deg,
         transparent,
-        transparent calc(${inputHeight} - 1px),
-        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 1px),
-        ${({ theme }) => theme.colors.ui2} ${inputHeight}
+        transparent calc(${inputHeight} - 3px),
+        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 3px),
+        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 2px)
       );
 
     /* prevents items in the last row from growing */
@@ -118,7 +117,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       border-left: 1px solid ${({ theme }) => theme.colors.ui2};
       content: '';
       flex-grow: 100;
-      height: ${inputHeight};
+      height: calc(${inputHeight} - 2px);
     }
 
     ${ButtonItem} {
