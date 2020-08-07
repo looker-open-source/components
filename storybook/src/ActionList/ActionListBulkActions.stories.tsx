@@ -77,13 +77,15 @@ export const BulkActions = () => {
   return (
     <ActionList
       bulk={bulkActionsConfig}
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
       columns={columns}
       headerRowId="all-pdts"
+      select={{
+        itemsSelected: selections,
+        itemsVisible: allPageItems,
+        onClickRowSelect: true,
+        onSelect,
+        onSelectAll,
+      }}
     >
       {items}
     </ActionList>
