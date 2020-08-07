@@ -5,53 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.10] - 2020-08-07
 
 ### Added
 
-- Added `xxxxxlarge` to sizes to support updated type ramp.
-- `ChipButton` introduced for limited use cases
 - `ActionListControlBar` component
+- `ChipButton` introduced for limited use cases
 - `useActionListSelectManager` hook
+- Added `xxxxxlarge` to sizes to support updated type ramp.
 
 ### Fixed
 
-- `SelectMulti` and `InputChips` issues clicking on icons and chips
-- `Select` display value now properly updates when the option label for the current value changes
+- `Accordion` & `Tree` presentation fixes for IE11
+- `ActionList` updated documentation to include info on control bar behavior
+- `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
+- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
+- `DialogHeader` presentation fix for IE11
 - `InputChips` and `SelectMulti` overflow when a fixed height is used
 - `InputChips` and `SelectMulti` long values breaking out of the input
 - `InputSearch`, `Select`, `InputChips` and `SelectMulti` x button not clickable with `autoResize` and a max-width reached
-- `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
+- `MenuItem` disabled prop is not clickable and its not a link.
+  - detail is part of `MenuItem`'s clickable area
+  - update Error Icon for Fields validation message
+- `Select` display value now properly updates when the option label for the current value changes
+- `SelectMulti` and `InputChips` issues clicking on icons and chips
 - `SelectMulti` list height now adjusts as needed when chips are added
+- `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
+- `Space` presentation fix for IE11 (also affects consumers)
+- `Tabs` no longer show scrollbar when overflowing
 - `Select` getting text highlighted in a focus trap when not filterable
 - `Tree` default color is text4 (was previously a different color due to browser button defaults)
-- `MenuItem` disabled prop is not clickable and its not a link.
-- detail is part of `MenuItem`'s clickable area
-- update Error Icon for Fields validation message
-- `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
-- `Tabs` no longer show scrollbar when overflowing
-- `Accordion` & `Tree` presentation fixes for IE11
-- `DialogHeader` presentation fix for IE11
-- `Space` presentation fix for IE11 (also affects consumers)
 - `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
-- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
-- `ActionList` updated documentation to include info on control bar behavior
 
 ### Changed
 
-- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
-- `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
-- `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
-- Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
-- Remove arrow from `Tooltip`, `Popover` and `Menu` by default
-- Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
-- `neutral` intent color is now defaults to `charcoal500`
 - `ActionList`
   - Updated documentation to include info on control bar behavior
   - Refactored select behavior to flow from a single `select` prop object
-- Correlates use of color for `Chip`, `ButtonToggle` & `ButtonSet`
-- Consolidated `inputHeight` location and usage suite-wide
+  - conditionally renders `ActionListControlBar` based on `bulk` prop
+- `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+- `ButtonOutline` and `ButtonTransparent` improved color application to be more inline with design spec
+- `ButtonSet`, `ButtonToggle` & `Chip` correlated use of color for
 - `InputChipsBase` updated to use styled() wrapped for Chip margin overrides
+- `inputHeight`consolidated in single location and usage suite-wide
+- `Menu`, `Popover`, `Tooltip` no longer feature arrow by default
+- Replace `react-hotkeys` and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+
+#### @looker/design-tokens
+
+- `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
+- `neutral` intent color is now defaults to `charcoal500`
 
 ### Removed
 
