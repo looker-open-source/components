@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText with default label 1`] = `
-.c4 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -26,17 +26,17 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 .c6 {
+.c5 .c7 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c4 .c6 span {
+.c5 .c7 span {
   padding: 0 0.5rem;
 }
 
-.c4 input {
+.c5 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -52,37 +52,37 @@ exports[`A FieldText with default label 1`] = `
   padding: 0 0.5rem;
 }
 
-.c4 input::-webkit-search-decoration,
-.c4 input::-webkit-search-cancel-button,
-.c4 input::-webkit-search-results-button,
-.c4 input::-webkit-search-results-decoration {
+.c5 input::-webkit-search-decoration,
+.c5 input::-webkit-search-cancel-button,
+.c5 input::-webkit-search-results-button,
+.c5 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c4 input::-webkit-input-placeholder {
+.c5 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c4 input::-moz-placeholder {
+.c5 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c4 input:-ms-input-placeholder {
+.c5 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c4 input::placeholder {
+.c5 input::placeholder {
   color: #939BA5;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c4:focus,
-.c4:focus-within {
+.c5:focus,
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -92,6 +92,10 @@ exports[`A FieldText with default label 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.c4 {
+  min-width: 0;
 }
 
 .c0 {
@@ -119,7 +123,7 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c5 {
+.c0 .c6 {
   grid-area: messages;
 }
 
@@ -129,13 +133,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c7 {
+.c0 .c8 {
   margin-top: 0.5rem;
 }
 
@@ -150,10 +154,10 @@ exports[`A FieldText with default label 1`] = `
     👍
   </label>
   <div
-    className="c3 "
+    className="c3 c4"
   >
     <div
-      className="c4 "
+      className="c5 "
       onMouseDown={[Function]}
     >
       <input
@@ -164,14 +168,14 @@ exports[`A FieldText with default label 1`] = `
     </div>
   </div>
   <div
-    className="c5 "
+    className="c6 "
     id="FieldTextID-describedby"
   />
 </div>
 `;
 
 exports[`A FieldText with label inline 1`] = `
-.c4 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -196,17 +200,17 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 .c7 {
+.c5 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c4 .c7 span {
+.c5 .c8 span {
   padding: 0 0.5rem;
 }
 
-.c4 input {
+.c5 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -222,37 +226,37 @@ exports[`A FieldText with label inline 1`] = `
   padding: 0 0.5rem;
 }
 
-.c4 input::-webkit-search-decoration,
-.c4 input::-webkit-search-cancel-button,
-.c4 input::-webkit-search-results-button,
-.c4 input::-webkit-search-results-decoration {
+.c5 input::-webkit-search-decoration,
+.c5 input::-webkit-search-cancel-button,
+.c5 input::-webkit-search-results-button,
+.c5 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c4 input::-webkit-input-placeholder {
+.c5 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c4 input::-moz-placeholder {
+.c5 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c4 input:-ms-input-placeholder {
+.c5 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c4 input::placeholder {
+.c5 input::placeholder {
   color: #939BA5;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c4:focus,
-.c4:focus-within {
+.c5:focus,
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -264,7 +268,11 @@ exports[`A FieldText with label inline 1`] = `
   font-weight: 600;
 }
 
-.c6 .c3 {
+.c4 {
+  min-width: 0;
+}
+
+.c7 .c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -272,11 +280,11 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c6 .c5 {
+.c7 .c6 {
   grid-area: messages;
 }
 
-.c6 > .c1 {
+.c7 > .c1 {
   grid-area: label;
   line-height: 1rem;
   padding-bottom: 0.5rem;
@@ -308,7 +316,7 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c5 {
+.c0 .c6 {
   grid-area: messages;
 }
 
@@ -321,7 +329,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -330,7 +338,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-top: 0.5rem;
 }
 
@@ -345,10 +353,10 @@ exports[`A FieldText with label inline 1`] = `
     👍
   </label>
   <div
-    className="c3 "
+    className="c3 c4"
   >
     <div
-      className="c4 "
+      className="c5 "
       onMouseDown={[Function]}
     >
       <input
@@ -359,7 +367,7 @@ exports[`A FieldText with label inline 1`] = `
     </div>
   </div>
   <div
-    className="c5 "
+    className="c6 "
     id="FieldTextID-describedby"
   />
 </div>

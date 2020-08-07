@@ -16,7 +16,7 @@ exports[`Form with one child 1`] = `
   flex-direction: column;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -41,17 +41,17 @@ exports[`Form with one child 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c7 {
+.c6 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c7 span {
+.c6 .c8 span {
   padding: 0 0.5rem;
 }
 
-.c5 input {
+.c6 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -67,37 +67,37 @@ exports[`Form with one child 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
+.c6 input::-webkit-search-decoration,
+.c6 input::-webkit-search-cancel-button,
+.c6 input::-webkit-search-results-button,
+.c6 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 input::-webkit-input-placeholder {
+.c6 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::-moz-placeholder {
+.c6 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c5 input:-ms-input-placeholder {
+.c6 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c5 input::placeholder {
+.c6 input::placeholder {
   color: #939BA5;
 }
 
-.c5:hover {
+.c6:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c6:focus,
+.c6:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -107,6 +107,10 @@ exports[`Form with one child 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.c5 {
+  min-width: 0;
 }
 
 .c1 {
@@ -134,7 +138,7 @@ exports[`Form with one child 1`] = `
   grid-area: input;
 }
 
-.c1 .c6 {
+.c1 .c7 {
   grid-area: messages;
 }
 
@@ -144,13 +148,13 @@ exports[`Form with one child 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c1 .c8 {
+.c1 .c9 {
   margin-top: 0.5rem;
 }
 
@@ -185,10 +189,10 @@ exports[`Form with one child 1`] = `
       label
     </label>
     <div
-      className="c4 "
+      className="c4 c5"
     >
       <div
-        className="c5 "
+        className="c6 "
         onMouseDown={[Function]}
       >
         <input
@@ -200,7 +204,7 @@ exports[`Form with one child 1`] = `
       </div>
     </div>
     <div
-      className="c6 "
+      className="c7 "
       id="text-field-describedby"
     />
   </div>
