@@ -27,12 +27,8 @@ import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import {
-  inputHeight,
-  InputTextContent,
-  InputText,
-  InputTextBaseProps,
-} from '../InputText'
+import { inputHeight } from '../height'
+import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputChipsInputControlProps {
@@ -123,7 +119,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} mr="xxsmall">
+        <Chip onDelete={onChipDelete} key={value}>
           {value}
         </Chip>
       )
@@ -173,6 +169,11 @@ const inputHeightStyle = css`
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
+
+  ${Chip} {
+    margin: 1px 0;
+    margin-right: ${({ theme: { space } }) => space.xxsmall};
+  }
 
   .inner {
     align-content: flex-start;

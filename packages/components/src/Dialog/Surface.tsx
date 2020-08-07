@@ -57,7 +57,6 @@ interface SurfaceProps
 }
 
 const SurfaceLayout: FC<SurfaceProps> = ({
-  anchor,
   surfaceStyles,
   className,
   ...props

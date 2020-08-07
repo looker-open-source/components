@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChipButton renders correctly 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #F3F2FF;
+  border-radius: 4px;
+  color: #7a55e3;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 28px;
+  max-width: 320px;
+  min-width: 44px;
+  padding: 0.25rem 0.5rem;
+}
+
+.c0:hover,
+.c0:active,
+.c0:focus {
+  background: #E8E5FF;
+}
+
+.c0.focus,
+.c0:focus {
+  outline: none;
+}
+
+.c0:active {
+  border-color: #6C43E0;
+}
+
+.c0[disabled] {
+  background: #F5F6F7;
+  color: #707781;
+}
+
+.c0[disabled]:hover {
+  background: #F5F6F7;
+}
+
+.c2 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-size: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c1 {
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  height: 36px;
+  padding: 0 1rem;
+}
+
+.c1:active,
+.c1[aria-pressed='true'] {
+  border-color: #6C43E0;
+}
+
+.c1[disabled] {
+  background: #F5F6F7;
+  color: #707781;
+  cursor: default;
+}
+
+.c1[disabled]:hover {
+  background: #F5F6F7;
+  border-color: #E8E5FF;
+}
+
+.c1[aria-selected='false'] {
+  background: #FFFFFF;
+  color: #4C535B;
+}
+
+.c1[aria-selected='false']:hover {
+  background: #F5F6F7;
+}
+
+.c1[aria-selected='false']:active {
+  border-color: #939BA5;
+}
+
+.c1[aria-selected='false'][disabled] {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #707781;
+}
+
+<span
+  className="c0 c1"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <span
+    className="c2"
+    fontSize="medium"
+  >
+    chip
+  </span>
+</span>
+`;

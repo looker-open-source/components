@@ -9,9 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `xxxxxlarge` to sizes to support updated type ramp.
+- `ChipButton` introduced for limited use cases
 - `ActionListControlBar` component
 - `useActionListSelectManager` hook
-- Added `xxxxxlarge` to sizes to support updated type ramp.
 
 ### Fixed
 
@@ -28,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DialogHeader` presentation fix for IE11
 - `Space` presentation fix for IE11 (also affects consumers)
 - `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
+- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
+- `ActionList` updated documentation to include info on control bar behavior
 
 ### Changed
 
@@ -38,7 +41,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove arrow from `Tooltip`, `Popover` and `Menu` by default
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
-- `ActionList` updated documentation to include info on control bar behavior
+- Correlates use of color for `Chip`, `ButtonToggle` & `ButtonSet`
+- Consolidated `inputHeight` location and usage suite-wide
+- `InputChipsBase` updated to use styled() wrapped for Chip margin overrides
+
+### Removed
+
+- `Chip` removed most prop support
 
 ## [0.9.9] - 2020-08-02
 

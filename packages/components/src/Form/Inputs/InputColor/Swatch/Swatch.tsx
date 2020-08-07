@@ -29,10 +29,10 @@ import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
 import {
   inputCSS,
-  inputHeight,
   inputTextDisabled,
   inputTextHover,
 } from '../../../Inputs/InputText'
+import { inputHeight } from '../../height'
 
 export interface SwatchProps
   extends WidthProps,
