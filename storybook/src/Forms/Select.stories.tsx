@@ -43,9 +43,11 @@ import {
   ComboboxOptionObject,
   SelectOptionProps,
   SelectOptionGroupProps,
+  Space,
   SpaceVertical,
   Text,
   Flex,
+  useToggle,
 } from '@looker/components'
 import { options1k } from './options1k'
 
@@ -59,6 +61,7 @@ export const All = () => (
     <Inline />
     <InlineError />
     <SelectDemo />
+    <UpdateOptions />
   </Fieldset>
 )
 
@@ -361,5 +364,24 @@ export const SelectDemo = () => {
         </CardContent>
       </Card>
     </>
+  )
+}
+
+export const UpdateOptions = () => {
+  const [value, setValue] = useState('second')
+  const { value: isPlural, toggle } = useToggle()
+  const s = isPlural ? 's' : ''
+  const options = useMemo(
+    () => [
+      { label: `Second${s}`, value: 'second' },
+      { label: `Hour${s}`, value: 'hour' },
+    ],
+    [s]
+  )
+  return (
+    <Space>
+      <Button onClick={toggle}>Use {isPlural ? 'singular' : 'plural'}</Button>
+      <Select autoResize options={options} value={value} onChange={setValue} />
+    </Space>
   )
 }
