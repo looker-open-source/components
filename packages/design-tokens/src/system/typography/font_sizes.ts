@@ -35,6 +35,7 @@ import {
   SizeXXSmall,
   SizeXXXLarge,
   SizeXXXXLarge,
+  SizeXXXXXLarge,
 } from '../size'
 
 export type FontSizes =
@@ -47,6 +48,7 @@ export type FontSizes =
   | SizeXXLarge
   | SizeXXXLarge
   | SizeXXXXLarge
+  | SizeXXXXXLarge
 
 export type FontSizeRamp = Record<FontSizes, string>
 

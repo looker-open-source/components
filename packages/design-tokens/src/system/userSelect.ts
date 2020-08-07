@@ -24,7 +24,7 @@
 
  */
 
-import { UserSelectProperty } from 'csstype'
+import { Property } from 'csstype'
 import { css } from 'styled-components'
 
 export interface UserSelectProps {
@@ -34,7 +34,7 @@ export interface UserSelectProps {
    * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/user-select)
    * @example <Box userSelect="none"/>
    */
-  userSelect?: UserSelectProperty
+  userSelect?: Property.UserSelect
 }
 
 export const userSelect = (props: UserSelectProps) =>

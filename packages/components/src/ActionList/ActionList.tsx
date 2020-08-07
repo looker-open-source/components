@@ -25,16 +25,16 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { useID } from '../utils/useID'
+import { ActionListControlBar } from './ActionListControlBar'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
-import { actionListCheckboxWidth } from './ActionListCheckbox'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 import {
@@ -87,77 +87,98 @@ export interface ActionListProps {
    */
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   /**
-   * Allow the user to select ActionListItems.
-   * Note: Implemented as a checkbox next to each item row.
-   * @default false
+   * Options for select and select all behavior. Having a non-null select prop will auto-enable Action List select behavior
    */
-  canSelect?: boolean | { all: boolean }
+  select?: SelectConfig
   /**
-   * Callback performed when user makes a selection
+   * ID of the header row. Used for the aria-describedby of the select all checkbox.
+   * Note: If undefined, this will be auto-generated
    */
-  onSelect?: (id: string) => void
+  headerRowId?: string
   /**
-   * Callback performed when user makes selects the header checkbox
+   * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
-  onSelectAll?: () => void
+  bulk?: BulkActionsConfig
+}
+
+export interface SelectConfig {
   /**
    * The ids of all ActionListItems which should be displayed as "selected"
    */
-  itemsSelected?: string[]
+  selectedItems: string[]
+  /**
+   * An array containing the id's of all visible items (i.e. all items on the current page)
+   * This is primarily used when determining the checked state of the select all checkbox
+   */
+  pageItems: string[]
   /**
    * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
    * @default false
    */
   onClickRowSelect?: boolean
   /**
-   * ID of the header row. Used for the aria-describedby of the select all checkbox.
-   * Note: If undefined, this will be auto-generated
+   * Callback performed when user makes a selection
    */
-  headerRowId?: string
+  onSelect: (id: string) => void
+  /**
+   * Callback performed when user makes selects the header checkbox
+   */
+  onSelectAll: () => void
+}
+
+export interface BulkActionsConfig {
+  /**
+   * Bulk actions that are available when one or more items are selected
+   */
+  actions: ReactNode
+  /**
+   * Triggered when the user presses the "Clear Selection" button
+   * Note: The "Clear Selection" button will only appear right after first hitting the "Select all X results" button in the control bar
+   */
+  onTotalClearAll: () => void
+  /**
+   * Triggered when the user presses on the "Select all X results" button in the control bar
+   */
+  onTotalSelectAll: () => void
+  /**
+   * The total number of visible items
+   * Primary purpose is to set the text of the Control Bar's "displayed items selected" text
+   * Note: This should NOT include disabled items
+   */
+  pageCount: number
+  /**
+   * The total number of items, both visible and nonvisible, in this Action List
+   * Primary purpose is to set the text of the Control Bar's primary action
+   * Note: This should NOT include disabled items
+   */
+  totalCount: number
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
-  canSelect = false,
+  bulk,
   className,
   header = true,
+  headerRowId,
   children,
   columns,
-  itemsSelected = [],
-  onClickRowSelect = false,
-  onSelect,
-  onSelectAll,
   onSort,
-  headerRowId,
+  select,
 }) => {
-  const [allItems, setAllItems] = useState<string[]>([])
-
-  // Includes a check for allItems length to prevent the in-between state where ActionList first loads
-  // and allItems is an empty array (which leads to header checkbox being checked for a split-second)
   const allSelected: MixedBoolean =
-    !!allItems.length && allItems.every((item) => itemsSelected.includes(item))
+    select && select.pageItems.every((id) => select.selectedItems.includes(id))
       ? true
-      : allItems.some((item) => itemsSelected.includes(item))
+      : select &&
+        select.pageItems.some((id) => select.selectedItems.includes(id))
       ? 'mixed'
       : false
-
-  const addItemToAllItems = (id: string) => {
-    !allItems.includes(id) && setAllItems([...allItems, id])
-  }
-
-  const handleSelectAll = onSelectAll ? () => onSelectAll() : undefined
 
   const guaranteedId = useID(headerRowId)
 
   const context = {
-    addItemToAllItems,
     allSelected,
-    canSelect,
     columns,
-    itemsSelected,
-    onClickRowSelect,
-    onSelect,
-    onSelectAll: handleSelectAll,
     onSort,
+    select,
   }
 
   const actionListHeader =
@@ -173,6 +194,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       <div className={className}>
         {actionListHeader}
+        {bulk && select && select.selectedItems.length > 0 && (
+          <ActionListControlBar {...bulk} />
+        )}
         <div>{children}</div>
       </div>
     </ActionListContext.Provider>
@@ -188,26 +212,19 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
   }
 
   ${/* sc-selector */ ActionListItemColumn}:first-child {
-    padding-left: ${({ canSelect, theme }) =>
-      canSelect ? theme.space.none : undefined};
+    padding-left: ${({ select, theme }) =>
+      select ? theme.space.none : undefined};
   }
 
   ${/* sc-selector */ ActionListHeaderColumn}:first-child {
-    padding-left: ${({ canSelect, theme }) =>
-      canSelect ? theme.space.none : undefined};
+    padding-left: ${({ select, theme }) =>
+      select ? theme.space.none : undefined};
   }
 
   ${/* sc-selector */ ActionListItemColumn},
   ${/* sc-selector */ ActionListHeaderColumn} {
     display: flex;
     padding: ${(props) => props.theme.space.small};
-  }
-
-  ${ActionListHeader} {
-    padding-left: ${({ canSelect }) =>
-      typeof canSelect === 'object' &&
-      canSelect.all === false &&
-      actionListCheckboxWidth};
   }
 
   ${({ columns }) => numericColumnCSS(getNumericColumnIndices(columns))}

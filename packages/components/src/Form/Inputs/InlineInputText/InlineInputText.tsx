@@ -106,6 +106,10 @@ const StyledInput = styled.input`
 const StyledText = styled.span`
   color: transparent;
   line-height: inherit;
+  /* max-width & overflow keep this span from blocking the x button
+  in InputSearch, etc, with autoResize and maxWidth */
+  max-width: 100%;
+  overflow: hidden;
   text-align: inherit;
   white-space: pre;
 `

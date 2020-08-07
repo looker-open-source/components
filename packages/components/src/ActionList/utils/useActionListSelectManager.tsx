@@ -24,42 +24,30 @@
 
  */
 
-import { ActionList } from '@looker/components'
-import React, { useState } from 'react'
-import { columns, data } from './data'
-import { items } from './items'
+import { useState } from 'react'
 
-export default {
-  title: 'ActionList',
-}
+export const useActionListSelectManager = (selectableItems: string[]) => {
+  const [selections, setSelections] = useState<string[]>([])
 
-export const Basic = () => {
-  const [selections, setSelections] = useState([] as string[])
-  const onSelect = (selection: string) => {
+  const onSelect = (selectionId: string) => {
+    /*
+      Note: In the event that selections includes the item being selected, we call filter only on selectableItems.
+      This is to avoid the situation where you have non-displayed items selected but only some displayed items.
+      Doing the above will mean you have selected items that cannot be unselected (i.e. there's no way to interact with non-displayed items).
+     */
     setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
+      selections.includes(selectionId)
+        ? selections.filter(
+            (itemId) =>
+              itemId !== selectionId && selectableItems.includes(itemId)
+          )
+        : [...selections, selectionId]
     )
   }
 
-  const allSelectableItems = data
-    .map(({ disabled, pdtName }) => !disabled && pdtName)
-    .filter((element) => element) as string[]
+  const onSelectAll = () => {
+    setSelections(selections.length ? [] : selectableItems)
+  }
 
-  const onSelectAll = () =>
-    setSelections(selections.length ? [] : allSelectableItems)
-
-  return (
-    <ActionList
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
-  )
+  return { onSelect, onSelectAll, selections, setSelections }
 }

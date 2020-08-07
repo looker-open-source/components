@@ -30,8 +30,10 @@ exports[`ButtonGroup controlled 1`] = `
   user-select: none;
 }
 
-.c3[aria-pressed='false']:not([disabled]):hover {
-  background: #F3F2FF;
+.c3:active,
+.c3:focus,
+.c3:hover {
+  background: #E8E5FF;
 }
 
 .c3:focus {
@@ -44,14 +46,17 @@ exports[`ButtonGroup controlled 1`] = `
   cursor: default;
 }
 
+.c3[disabled]:hover {
+  background: inherit;
+}
+
 .c3[aria-pressed='true'] {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
+  background: #F3F2FF;
   color: #6C43E0;
-  text-shadow: -0.025ex 0 currentColor,0.025ex 0 currentColor;
 }
 
 .c3[aria-pressed='true'][disabled] {
+  background: #F3F2FF;
   color: #9785F2;
 }
 
@@ -83,10 +88,6 @@ exports[`ButtonGroup controlled 1`] = `
 
 .c1 .c2[aria-pressed='false']:not(:hover) {
   background: #FFFFFF;
-}
-
-.c1 .c2[aria-pressed='true'] {
-  border-color: #E8E5FF;
 }
 
 .c1.wrapping {

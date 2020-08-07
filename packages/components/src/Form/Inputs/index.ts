@@ -26,6 +26,7 @@
 
 export * from './Checkbox'
 export * from './Combobox'
+export * from './height'
 export * from './InlineInputText'
 export * from './InlineTextArea'
 export * from './InputChips'

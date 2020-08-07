@@ -67,8 +67,7 @@ describe('InputChips', () => {
       },
     }
 
-    const pasteEvent = createEvent.paste(element, eventProperties) as any
-    pasteEvent.clipboardData = eventProperties.clipboardData
+    const pasteEvent = createEvent.paste(element, eventProperties)
 
     fireEvent(element, pasteEvent)
   }
@@ -145,6 +144,18 @@ tag2`
 
     fireEvent.change(input, { target: { value: '' } })
     fireEvent.keyDown(input, { key: 'Backspace' })
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    expect(onChangeMock).toHaveBeenCalledWith([])
+  })
+
+  test('all values are removed by clicking clear field', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={['tag1', 'tag2']} />
+    )
+    const clear = screen.getByText('Clear Field')
+
+    fireEvent.click(clear)
     expect(onChangeMock).toHaveBeenCalledTimes(1)
     expect(onChangeMock).toHaveBeenCalledWith([])
   })
@@ -262,5 +273,58 @@ tag2`
 
       expect(onChangeMock).not.toHaveBeenCalled()
     })
+  })
+
+  test('mousedown on a chip does not focus the inner input', () => {
+    const rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+
+    renderWithTheme(
+      <InputChips
+        onChange={() => null}
+        values={['foo', 'bar']}
+        placeholder="type here"
+      />
+    )
+
+    const chip = screen.getByText('bar')
+    const deleteButton = screen.getAllByText('Delete')[0]
+    const input = screen.getByPlaceholderText('type here')
+
+    fireEvent.mouseDown(chip)
+    expect(document.activeElement).not.toEqual(input)
+
+    // Focus should move _after_ delete button is clicked
+    fireEvent.click(deleteButton)
+    expect(document.activeElement).toEqual(input)
+
+    rafSpy.mockRestore()
+  })
+
+  test('mousedown on clear button does not focus the inner input', () => {
+    const rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+
+    renderWithTheme(
+      <InputChips
+        onChange={() => null}
+        values={['foo', 'bar']}
+        placeholder="type here"
+      />
+    )
+
+    const clear = screen.getByText('Clear Field')
+    const input = screen.getByPlaceholderText('type here')
+
+    fireEvent.mouseDown(clear)
+    expect(document.activeElement).not.toEqual(input)
+
+    // Focus should move _after_ clear button is clicked
+    fireEvent.click(clear)
+    expect(document.activeElement).toEqual(input)
+
+    rafSpy.mockRestore()
   })
 })

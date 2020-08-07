@@ -24,10 +24,14 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
+import {
+  getAllComboboxOptionText,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React, { useState } from 'react'
 
+import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
@@ -627,5 +631,49 @@ describe('Select', () => {
     const input = screen.getByTestId('wrapper').querySelector('input')
     // should default to first option
     expect(input).toHaveValue('Foo')
+  })
+
+  test('displayed value changes when option label changes', () => {
+    const Component = () => {
+      const [label, setLabel] = useState('Original Label')
+      const options = [
+        { label, value: 'value_stays_the_same' },
+        { label: 'Another Option', value: 'other' },
+      ]
+      return (
+        <>
+          <Button onClick={() => setLabel('Updated label')}>
+            Update label
+          </Button>
+          <Select value="value_stays_the_same" options={options} />
+        </>
+      )
+    }
+    renderWithTheme(<Component />)
+
+    const input = screen.getByDisplayValue('Original Label')
+    fireEvent.click(input)
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "Original Label",
+        "Another Option",
+      ]
+    `)
+    // Close list
+    fireEvent.click(document)
+
+    fireEvent.click(screen.getByText('Update label'))
+    expect(input).toHaveDisplayValue('Updated label')
+
+    fireEvent.click(input)
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "Updated label",
+        "Another Option",
+      ]
+    `)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })

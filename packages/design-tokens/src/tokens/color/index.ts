@@ -32,7 +32,7 @@ import {
   blue500,
   blue600,
   blue700,
-  charcoal400,
+  charcoal500,
   charcoal800,
   green500,
   purple400,
@@ -54,7 +54,7 @@ export const defaultIntentColors: IntentColors = {
   linkInteractive: blue700,
   critical: red500,
   warn: yellow500,
-  neutral: charcoal400,
+  neutral: charcoal500,
   positive: green500,
   inform: blue500,
 }

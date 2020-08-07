@@ -23,17 +23,21 @@
  SOFTWARE.
 
  */
-import React, { FormEvent, forwardRef, KeyboardEvent, Ref } from 'react'
+import React, {
+  FormEvent,
+  forwardRef,
+  KeyboardEvent,
+  MouseEvent,
+  Ref,
+  useRef,
+} from 'react'
 import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 import { Chip } from '../../../Chip'
-import {
-  inputHeight,
-  InputTextContent,
-  InputText,
-  InputTextBaseProps,
-} from '../InputText'
+import { inputHeight } from '../height'
+import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
+import { useForkedRef } from '../../../utils'
 
 export interface InputChipsInputControlProps {
   /**
@@ -97,11 +101,25 @@ export const InputChipsBaseInternal = forwardRef(
       removeOnBackspace = true,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
-    ref: Ref<HTMLInputElement>
+    forwardedRef: Ref<HTMLInputElement>
   ) => {
+    const internalRef = useRef<HTMLInputElement>(null)
+    const ref = useForkedRef(forwardedRef, internalRef)
+
+    // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
+    // on Chip and clear button and instead focus after onChipDelete / onClear
+    // If mousedown/click is elsewhere on Chip, don't move focus b/c user is trying to select the Chip itself
+    function stopPropagation(e: MouseEvent) {
+      e.stopPropagation()
+    }
+    function focusInput() {
+      internalRef.current && internalRef.current.focus()
+    }
+
     function handleDeleteChip(value: string) {
       const newValues = values.filter((v) => value !== v)
       onChange(newValues)
+      focusInput()
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
@@ -116,6 +134,7 @@ export const InputChipsBaseInternal = forwardRef(
       onChange([])
       onInputChange('')
       onClear && onClear()
+      focusInput()
     }
 
     const chips = values.map((value) => {
@@ -123,7 +142,12 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} mr="xxsmall">
+        <Chip
+          onDelete={onChipDelete}
+          onMouseDown={stopPropagation}
+          onClick={stopPropagation}
+          key={value}
+        >
           {value}
         </Chip>
       )
@@ -147,6 +171,7 @@ export const InputChipsBaseInternal = forwardRef(
               disabled={disabled}
               summary={summary}
               hasOptions={hasOptions}
+              onMouseDown={stopPropagation}
             />
           )
         }
@@ -174,10 +199,18 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
   position: relative;
 
+  ${Chip} {
+    margin: 1px 0;
+    margin-right: ${({ theme: { space } }) => space.xxsmall};
+  }
+
   .inner {
     align-content: flex-start;
     display: flex;
     flex-wrap: wrap;
+    /* Workaround for Chip's truncate styling breaking flexbox layout */
+    min-width: 0;
+    overflow-y: auto;
     width: 100%;
   }
 

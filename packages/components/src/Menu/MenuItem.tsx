@@ -24,14 +24,20 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  size,
+  space,
+  SizeProps,
+  SpaceProps,
+} from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { MenuContext, MenuItemContext } from './MenuContext'
-import { MenuItemLayout, MenuItemLayoutGrid } from './MenuItemLayout'
+import { MenuItemLayout } from './MenuItemLayout'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   iconArtwork?: ReactNode
@@ -129,7 +135,12 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       />
     ) : (
       renderIconPlaceholder && (
-        <div data-testid={`menu-item-${renderedIconID}-icon-placeholder`} />
+        <IconPlaceholder
+          size={24 / (compact ? 1.25 : 1)}
+          mr="xsmall"
+          aria-hidden
+          data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+        />
       )
     )
 
@@ -148,23 +159,15 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       compact={compact}
       disabled={disabled}
       focusVisible={isFocusVisible}
-      hasIcon={Boolean(renderedIcon)}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
       onKeyDown={handleOnKeyDown}
       className={className}
     >
-      <Component
-        href={href}
-        role="menuitem"
-        style={{ display: 'flex' }}
-        target={target}
-      >
-        <MenuItemLayoutGrid>
-          {renderedIcon}
-          {children}
-        </MenuItemLayoutGrid>
+      <Component href={href} role="menuitem" target={target}>
+        {renderedIcon}
+        <span>{children}</span>
         {detail && <Detail>{detail}</Detail>}
       </Component>
     </MenuItemLayout>
@@ -178,4 +181,11 @@ const Detail = styled.div`
   margin-left: auto;
   margin-right: ${({ theme: { space } }) => space.medium};
   padding-left: ${({ theme: { space } }) => space.large};
+`
+
+interface IconPlaceholderProps extends SizeProps, SpaceProps {}
+
+const IconPlaceholder = styled.div<IconPlaceholderProps>`
+  ${size}
+  ${space}
 `

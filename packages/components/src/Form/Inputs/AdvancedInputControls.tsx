@@ -29,16 +29,17 @@ import flatMap from 'lodash/flatMap'
 import tail from 'lodash/tail'
 import compact from 'lodash/compact'
 import { Icon } from '../../Icon'
-import { InputSearchControls } from './InputSearch/InputSearchControls'
+import {
+  InputSearchControls,
+  InputSearchControlsProps,
+} from './InputSearch/InputSearchControls'
 
-interface AdvancedInputControlsProps {
+export interface AdvancedInputControlsProps
+  extends Omit<InputSearchControlsProps, 'height' | 'showClear'> {
   validationType?: 'error'
   renderSearchControls?: boolean
   isVisibleOptions?: boolean
   hasOptions?: boolean
-  disabled?: boolean
-  onClear: () => void
-  summary?: string
 }
 
 // inserts a divider line between each control element (item1 | item2 | item3)
@@ -50,11 +51,10 @@ const intersperseDivider = (children: ReactElement[]) =>
 export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   validationType,
   renderSearchControls,
-  onClear,
   disabled,
   isVisibleOptions,
-  summary,
   hasOptions = true,
+  ...rest
 }) => {
   const children = intersperseDivider(
     compact([
@@ -70,10 +70,9 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
       renderSearchControls && (
         <InputSearchControls
           key="search-controls"
-          onClear={onClear}
           showClear={true}
           disabled={disabled}
-          summary={summary}
+          {...rest}
         />
       ),
       hasOptions && (

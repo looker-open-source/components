@@ -25,13 +25,14 @@
  */
 
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import { width } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Paragraph, Text } from '../../Text'
 import { FieldsetContext } from '../Fieldset'
-import { inputHeight } from '../Inputs/InputText/InputText'
+import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
@@ -66,6 +67,11 @@ export interface FieldProps extends FieldBaseProps {
    * @default '100%'
    */
   width?: ResponsiveSpaceValue
+
+  /**
+   *
+   */
+  ariaLabelOnly?: boolean
 }
 
 export const fieldPropKeys = [
@@ -107,6 +113,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   description,
   detail,
   id,
+  ariaLabelOnly,
   label,
   hideLabel,
   required,
@@ -125,7 +132,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 
   const labelComponent = (
-    <Label htmlFor={id} id={`${id}-labelledby`}>
+    <Label htmlFor={ariaLabelOnly ? undefined : id} id={`${id}-labelledby`}>
       {label}
       {required && <RequiredStar />}
     </Label>
@@ -154,7 +161,10 @@ FieldDetail.defaultProps = {
   fontSize: 'xsmall',
 }
 
-const InputArea = styled.div``
+const InputArea = styled.div`
+  /* Workaround for Chip's truncate styling breaking flexbox layout in FieldChips */
+  min-width: 0;
+`
 const MessageArea = styled.div``
 
 const fieldLabelCSS = (inline?: boolean) =>
@@ -182,8 +192,8 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
   height: fit-content;
   justify-content: space-between;
-  width: ${({ autoResize, width }) =>
-    width || autoResize ? 'fit-content' : '100%'};
+  width: ${({ autoResize }) => (autoResize ? 'fit-content' : '100%')};
+  ${width}
 
   ${InputArea} {
     align-items: center;

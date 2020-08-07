@@ -1,64 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
-.c2 {
-  position: absolute;
-}
-
-.c2::before {
-  background-color: #262D33;
-  color: #FFFFFF;
-  border-radius: 0.25rem;
-  border-left: none;
-  border-radius: 0;
-  border-top: none;
-  content: '';
-  display: block;
-  height: 0.5rem;
-  margin: auto;
-  width: 0.5rem;
-}
-
-.c2[data-placement*='top'] {
-  bottom: 0.25rem;
-}
-
-.c2[data-placement*='top']::before {
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.c2[data-placement*='right'] {
-  left: 0.25rem;
-}
-
-.c2[data-placement*='right']::before {
-  -webkit-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
-
-.c2[data-placement*='bottom'] {
-  top: 0.25rem;
-}
-
-.c2[data-placement*='bottom']::before {
-  -webkit-transform: rotate(225deg);
-  -ms-transform: rotate(225deg);
-  transform: rotate(225deg);
-}
-
-.c2[data-placement*='left'] {
-  right: 0.25rem;
-}
-
-.c2[data-placement*='left']::before {
-  -webkit-transform: rotate(315deg);
-  -ms-transform: rotate(315deg);
-  transform: rotate(315deg);
-}
-
 .c0 {
   border-radius: 0.25rem;
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
@@ -88,18 +30,18 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   word-break: break-word;
 }
 
-.c1 .c3 {
+.c1 .c2 {
   color: #E8E5FF;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c1 .c3:focus,
-.c1 .c3:hover {
+.c1 .c2:focus,
+.c1 .c2:hover {
   color: #F3F2FF;
 }
 
-.c1 .c3:active {
+.c1 .c2:active {
   color: #FFFFFF;
 }
 
@@ -116,11 +58,5 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   >
     Hello world
   </p>
-  <div
-    class="c2"
-    color="inverseOn"
-    data-placement="bottom"
-    style="position: absolute;"
-  />
 </div>
 `;

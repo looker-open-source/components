@@ -79,11 +79,12 @@ export function FontWeightDemo() {
 
 const specimen2 = 'Looker Components are great'
 const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
-  { lh: '64px', px: '46px', size: 'xxxxlarge' },
-  { lh: '52px', px: '36px', size: 'xxxlarge' },
-  { lh: '40px', px: '25px', size: 'xxlarge' },
-  { lh: '32px', px: '22px', size: 'xlarge' },
-  { lh: '28px', px: '18px', size: 'large' },
+  { lh: '52px', px: '44px', size: 'xxxxxlarge' },
+  { lh: '44px', px: '36px', size: 'xxxxlarge' },
+  { lh: '36px', px: '28px', size: 'xxxlarge' },
+  { lh: '36px', px: '24px', size: 'xxlarge' },
+  { lh: '28px', px: '22px', size: 'xlarge' },
+  { lh: '24px', px: '18px', size: 'large' },
   { lh: '24px', px: '16px', size: 'medium' },
   { lh: '20px', px: '14px', size: 'small' },
   { lh: '16px', px: '12px', size: 'xsmall' },

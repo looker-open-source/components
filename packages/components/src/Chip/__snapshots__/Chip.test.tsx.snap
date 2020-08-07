@@ -2,48 +2,53 @@
 
 exports[`Chip renders correctly 1`] = `
 .c0 {
-  height: 28px;
-  max-width: 320px;
-  min-width: 44px;
-  margin-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  font-weight: 600;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #F3F2FF;
+  background: #F3F2FF;
   border-radius: 4px;
   color: #7a55e3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 28px;
+  max-width: 320px;
+  min-width: 44px;
+  padding: 0.25rem 0.5rem;
 }
 
-.c0 .c2 {
-  background-color: transparent;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c0:hover {
-  background-color: #E8E5FF;
-}
-
+.c0:hover,
+.c0:active,
 .c0:focus {
-  background-color: #BBB2FF;
+  background: #E8E5FF;
+}
+
+.c0.focus,
+.c0:focus {
   outline: none;
 }
 
+.c0:active {
+  border-color: #6C43E0;
+}
+
+.c0[disabled] {
+  background: #F5F6F7;
+  color: #707781;
+}
+
+.c0[disabled]:hover {
+  background: #F5F6F7;
+}
+
 .c1 {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-size: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -51,8 +56,6 @@ exports[`Chip renders correctly 1`] = `
 
 <span
   className="c0 "
-  fontWeight="semiBold"
-  height={28}
   onBlur={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -60,7 +63,7 @@ exports[`Chip renders correctly 1`] = `
 >
   <span
     className="c1"
-    fontSize="xsmall"
+    fontSize="medium"
   >
     chip
   </span>
@@ -69,54 +72,53 @@ exports[`Chip renders correctly 1`] = `
 
 exports[`Chip renders disabled 1`] = `
 .c0 {
-  height: 28px;
-  max-width: 320px;
-  min-width: 44px;
-  margin-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  font-weight: 600;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #F3F2FF;
+  background: #F3F2FF;
   border-radius: 4px;
   color: #7a55e3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-items: center;
-  color: #939BA5;
-  background-color: #F5F6F7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 28px;
+  max-width: 320px;
+  min-width: 44px;
+  padding: 0.25rem 0.5rem;
 }
 
-.c0 .c2 {
-  background-color: transparent;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c0:hover {
-  background-color: #E8E5FF;
-}
-
+.c0:hover,
+.c0:active,
 .c0:focus {
-  background-color: #BBB2FF;
+  background: #E8E5FF;
+}
+
+.c0.focus,
+.c0:focus {
   outline: none;
 }
 
-.c0:hover {
-  background-color: #F5F6F7;
+.c0:active {
+  border-color: #6C43E0;
+}
+
+.c0[disabled] {
+  background: #F5F6F7;
+  color: #707781;
+}
+
+.c0[disabled]:hover {
+  background: #F5F6F7;
 }
 
 .c1 {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-size: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -125,15 +127,13 @@ exports[`Chip renders disabled 1`] = `
 <span
   className="c0 "
   disabled={true}
-  fontWeight="semiBold"
-  height={28}
   onBlur={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
 >
   <span
     className="c1"
-    fontSize="xsmall"
+    fontSize="medium"
   >
     chip
   </span>

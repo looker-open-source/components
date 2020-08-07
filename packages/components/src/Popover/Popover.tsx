@@ -37,6 +37,7 @@ import React, {
   isValidElement,
   cloneElement,
 } from 'react'
+import { CSSProperties } from 'styled-components'
 import { Box } from '../Layout'
 import { Portal } from '../Portal'
 import { DialogContext } from '../Dialog'
@@ -178,7 +179,9 @@ function useVerticalSpace(
   element: HTMLElement | null,
   pin: boolean,
   placement: Placement,
-  isOpen: boolean
+  isOpen: boolean,
+  // Included to trigger an update if Popper's positioning moves
+  popperStyle: CSSProperties
 ) {
   const [spaceTop, setSpaceTop] = useState(0)
   const [spaceBottom, setSpaceBottom] = useState(0)
@@ -217,7 +220,14 @@ function useVerticalSpace(
     return () => {
       window.removeEventListener('resize', getVerticalSpace)
     }
-  }, [element, pin, placementIsBottom, placementIsTop, isOpen])
+  }, [
+    element,
+    pin,
+    placementIsBottom,
+    placementIsTop,
+    isOpen,
+    popperStyle.transform,
+  ])
 
   // Set height to the larger, popper will take care of flipping as needed
   const max = Math.max(spaceTop, spaceBottom)
@@ -383,7 +393,7 @@ function usePopoverToggle(
 }
 
 export function usePopover({
-  arrow = true,
+  arrow = false,
   canClose,
   content,
   groupedPopoversRef,
@@ -433,7 +443,6 @@ export function usePopover({
     element
   )
 
-  const verticalSpace = useVerticalSpace(element, pin, propsPlacement, isOpen)
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
   useEffect(() => {
@@ -502,6 +511,14 @@ export function usePopover({
     style,
     targetRef,
   } = usePopper(usePopperProps)
+
+  const verticalSpace = useVerticalSpace(
+    element,
+    pin,
+    propsPlacement,
+    isOpen,
+    style
+  )
 
   const ref = useForkedRef(targetRef, focusRef)
 

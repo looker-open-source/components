@@ -7,18 +7,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Added `xxxxxlarge` to sizes to support updated type ramp.
+- `ChipButton` introduced for limited use cases
+- `ActionListControlBar` component
+- `useActionListSelectManager` hook
+
 ### Fixed
 
 - `Tabs` updated for keyboard shortcut for accessibility
+- `SelectMulti` and `InputChips` issues clicking on icons and chips
+- `Select` display value now properly updates when the option label for the current value changes
+- `InputChips` and `SelectMulti` overflow when a fixed height is used
+- `InputChips` and `SelectMulti` long values breaking out of the input
+- `InputSearch`, `Select`, `InputChips` and `SelectMulti` x button not clickable with `autoResize` and a max-width reached
+- `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
+- `SelectMulti` list height now adjusts as needed when chips are added
+- `Select` getting text highlighted in a focus trap when not filterable
+- `Tree` default color is text4 (was previously a different color due to browser button defaults)
 - `MenuItem` disabled prop is not clickable and its not a link.
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
+- `Tabs` no longer show scrollbar when overflowing
+- `Accordion` & `Tree` presentation fixes for IE11
+- `DialogHeader` presentation fix for IE11
+- `Space` presentation fix for IE11 (also affects consumers)
+- `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
+- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
+- `ActionList` updated documentation to include info on control bar behavior
 
 ### Changed
 
 - `ActionListManager` - renamed `noResultsText` to `noResultsDisplay` and now supports a `ReactNode` (supply a JSX for custom formatting)
+- `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
+- `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
 - Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+- Remove arrow from `Tooltip`, `Popover` and `Menu` by default
+- Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
+- `neutral` intent color is now defaults to `charcoal500`
+- `ActionList`
+  - Updated documentation to include info on control bar behavior
+  - Refactored select behavior to flow from a single `select` prop object
+- Correlates use of color for `Chip`, `ButtonToggle` & `ButtonSet`
+- Consolidated `inputHeight` location and usage suite-wide
+- `InputChipsBase` updated to use styled() wrapped for Chip margin overrides
+
+### Removed
+
+- `Chip` removed most prop support
+
+## [0.9.9] - 2020-08-02
+
+### Fixed
+
+- `MenuItem` correct IE11 patch to apply `aria-hidden={true}` to placeholder
+
+## [0.9.8] - 2020-08-02
+
+### Fixed
+
+- `DialogContent` patch for IE11 display bug
+- `MenuItem` patch for IE11 display bug
 
 ## [0.9.7] - 2020-07-27
 

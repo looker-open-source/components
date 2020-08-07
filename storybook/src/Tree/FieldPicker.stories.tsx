@@ -165,5 +165,5 @@ export const FieldPicker = () => (
 
 export default {
   component: FieldPicker,
-  title: 'Tree/FieldPicker',
+  title: 'Tree',
 }

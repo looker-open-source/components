@@ -5,6 +5,7 @@ propsOf: ActionList
 ---
 
 import { Props } from '../../../Shared'
+import { SelectManagerParameterTable, SelectManagerReturnTable } from './demos'
 
 The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
 
@@ -265,106 +266,23 @@ If you want default sorting behavior, you can use the `doDefaultActionListSort` 
 
 ## Selecting rows
 
-You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
+You can add row select behavior on an `<ActionList/>` by passing a valid into the `select` prop.
 
-An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>`s on each of its rows.
+The following properties are **required** in the object passed into the `select` prop.
 
-Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
+- `onSelect`: Clicking on a checkbox (or the row when `onClickRowSelect` is true) will trigger the `onSelect` callback, with the id of the checkbox's `ActionListItem` passed in as an argument.
 
-The `itemsSelected` prop should be given the id's of all selected `<ActionListItem>`s.
+- `onSelectAll`: Callback that is triggered when the header's checkbox is clicked
 
-**Note:** The id of an `<ActionListItem>`s must be a string, the `itemSelected` prop should be an array of strings.
+- `selectedItems`: An array containing the `id`s of all selected items. Will usually be a piece of state.
 
-If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
+- `pageItems`: An array containing the `id`s of all currently visible items. This is mainly used to help calculate the checked state of the header checkbox.
 
-```jsx
-;() => {
-  const [selections, setSelections] = useState([])
-  const onSelect = (selection) => {
-    setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
-  }
+The following properties are **optional** in the object passed into the `select` prop:
 
-  const data = [
-    {
-      id: 1,
-      name: 'Gorgonzola',
-    },
-    {
-      id: 2,
-      name: 'Cheddar',
-    },
-    {
-      id: 3,
-      name: `Blue`,
-      disabled: true,
-    },
-  ]
+- `onClickRowSelect`: If true, clicking on a row will trigger the `onSelect` function.
 
-  const columns = [
-    {
-      id: 'id',
-      primaryKey: true,
-      title: 'ID',
-      type: 'number',
-      widthPercent: 20,
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-      widthPercent: 80,
-    },
-  ]
-
-  const items = data.map(({ id, name, disabled }) => {
-    actions = (
-      <>
-        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
-          Select Cheese
-        </ActionListItemAction>
-      </>
-    )
-
-    return (
-      <ActionListItem
-        key={id}
-        id={String(id)}
-        onClick={() => alert('Row clicked')}
-        actions={actions}
-        disabled={disabled}
-      >
-        <ActionListItemColumn>{id}</ActionListItemColumn>
-        <ActionListItemColumn>{name}</ActionListItemColumn>
-      </ActionListItem>
-    )
-  })
-
-  return (
-    <ActionList
-      canSelect
-      onSelect={onSelect}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
-  )
-}
-```
-
-### Selecting all rows
-
-A header checkbox is included next to your `<ActionList/>`'s header when the `canSelect` prop is `true`.
-
-Clicking on this header checkbox will trigger the callback passed into the `<ActionList/>`'s `onSelectAll` prop.
-
-If you would like to remove the header checkbox, but retain the row checkboxes, pass in `{ all: false }` into your `canSelect` prop.
-
-For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `ActionList`.
+**Note:** For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `ActionList`.
 
 ```jsx
 ;() => {
@@ -438,27 +356,234 @@ For accessibility purposes, the header checkbox is described by the ID of the he
   return (
     <>
       <ActionList
-        canSelect
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
         columns={columns}
-      >
-        {items}
-      </ActionList>
-
-      <Divider my="large" />
-
-      <ActionList
-        canSelect={{ all: false }}
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
-        columns={columns}
+        select={{
+          selectedItems: selections,
+          pageItems: allSelectableItems,
+          onClickRowSelect: true,
+          onSelect,
+          onSelectAll,
+        }}
       >
         {items}
       </ActionList>
     </>
+  )
+}
+```
+
+### useActionListSelectManager
+
+The `useActionListSelectManager` hook can be used to quickly create the standard building blocks of `ActionList` select behavior.
+
+`useActionListSelectManager` accepts the following parameters:
+
+<SelectManagerParameterTable />
+
+`useActionListSelectManager` returns an object with the following properties:
+
+<SelectManagerReturnTable />
+
+```jsx
+;() => {
+  const data = [
+    {
+      id: 1,
+      name: 'Gorgonzola',
+    },
+    {
+      id: 2,
+      name: 'Cheddar',
+    },
+    {
+      id: 3,
+      name: `Blue`,
+    },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const allSelectableItems = data.map(({ id }) => String(id))
+
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(allSelectableItems)
+
+  const items = data.map(({ id, name }) => (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      onClick={() => alert(`${name} clicked`)}
+      actions={
+        <>
+          <ActionListItemAction onClick={() => alert(`${name} deleted`)}>
+            Delete
+          </ActionListItemAction>
+        </>
+      }
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  return (
+    <ActionList
+      select={{
+        onClickRowSelect: true,
+        onSelect,
+        onSelectAll,
+        selectedItems: selections,
+        pageItems: allSelectableItems,
+      }}
+      columns={columns}
+    >
+      {items}
+    </ActionList>
+  )
+}
+```
+
+## Control Bar
+
+`ActionList` comes with a built-in control bar that allows for bulk actions and additional select control.
+
+An `ActionList` will reveal its control bar when the following conditions are met:
+
+1. The array passed into the `select.selectedItems` prop has length > 0.
+2. A valid object is passed into the `bulk` prop.
+
+The `bulk` prop is used to configure an `ActionList`'s control bar. The object passed into `bulk` _must_ have the following properties:
+
+- `actions`: Bulk actions that are available when one or more items are selected
+- `onTotalClearAll`: Callback that is triggered when the user presses the "Clear Selection" button
+- `onTotalSelectAll`: Callback that is triggered when the user presses the "Select all X results" button in the control bar
+- `pageCount`: The total number of visible items (i.e. the total number of items on the current page in paginated `ActionList`s)
+- `totalCount`: The total number of items, both visible and nonvisible, in this `ActionList`
+
+**Note:** The `onSelect` returned from the `useActionListSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
+
+```jsx
+;() => {
+  const data = [
+    { id: 1, name: 'Gorgonzola' },
+    { id: 2, name: 'Cheddar' },
+    { id: 3, name: `Blue` },
+    { id: 4, name: 'American' },
+    { id: 5, name: 'Cheddar' },
+    { id: 6, name: 'Pepper Jack' },
+  ]
+
+  const columns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  const [page, setPage] = useState(1)
+  const perPageCount = 3
+
+  // The logic for which items are being displayed on which page will vary
+  const pageItemData = data.filter(
+    ({ id }) => id > (page - 1) * perPageCount && id <= page * perPageCount
+  )
+  const pageItemIds = pageItemData.map(({ id }) => String(id))
+  const pageItems = pageItemData.map(({ id, name }) => (
+    <ActionListItem
+      id={String(id)}
+      key={id}
+      onClick={() => alert(`${name} clicked`)}
+      actions={
+        <>
+          <ActionListItemAction onClick={() => alert(`${name} deleted`)}>
+            Delete
+          </ActionListItemAction>
+        </>
+      }
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(pageItemIds)
+
+  const allItems = [...data].map(({ id }) => String(id))
+  const onTotalSelectAll = () => setSelections(allItems)
+  const onTotalClearAll = () => setSelections([])
+
+  const bulkActionsConfig = {
+    actions: (
+      <ActionListItemAction
+        onClick={() => alert(`Selected Items: ${selections}`)}
+      >
+        View Selected Item IDs
+      </ActionListItemAction>
+    ),
+    onTotalClearAll,
+    onTotalSelectAll,
+    pageCount: pageItems.length,
+    totalCount: allItems.length,
+  }
+
+  return (
+    <Flex flexDirection="column" alignItems="center">
+      <Box width="100%" mb="10px">
+        <ActionList
+          bulk={bulkActionsConfig}
+          select={{
+            onClickRowSelect: true,
+            onSelect,
+            onSelectAll,
+            selectedItems: selections,
+            pageItems: pageItemIds,
+          }}
+          columns={columns}
+        >
+          {pageItems}
+        </ActionList>
+      </Box>
+      <Pagination
+        current={page}
+        pages={data.length / perPageCount}
+        onChange={(nextPage) => {
+          setSelections([])
+          setPage(nextPage)
+        }}
+      />
+    </Flex>
   )
 }
 ```

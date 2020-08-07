@@ -35,10 +35,11 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { inputHeightNumber } from '../Form/Inputs/height'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useForkedRef } from '../utils'
 import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
-import { ButtonItem, buttonItemHeight } from './ButtonItem'
+import { ButtonItem } from './ButtonItem'
 
 export interface ButtonSetOption {
   value: string
@@ -108,7 +109,7 @@ export const ButtonSetLayout = forwardRef(
           const firstItem = node.childNodes[0] as HTMLElement
           const rowHeight = firstItem
             ? firstItem.getBoundingClientRect().height
-            : buttonItemHeight
+            : inputHeightNumber
           if (height >= rowHeight * 2) {
             setIsWrapping(true)
           } else {

@@ -40,9 +40,10 @@ import {
   StatefulColor,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import { TextAlignProperty } from 'csstype'
+import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
+import { lighten } from 'polished'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
@@ -122,7 +123,7 @@ export interface IconButtonProps
   /**
    * Text alignment of the built-in Tooltip.
    */
-  tooltipTextAlign?: TextAlignProperty
+  tooltipTextAlign?: Property.TextAlign
 }
 
 export const IconButtonStyle = styled.button<IconButtonProps>`
@@ -237,7 +238,8 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
 
   background: none;
   border: none;
-  color: ${({ theme, color = iconButtonDefaultColor }) => theme.colors[color]};
+  color: ${({ theme, color = iconButtonDefaultColor }) =>
+    lighten(0.14, theme.colors[color])};
   padding: 0;
 
   &:hover,

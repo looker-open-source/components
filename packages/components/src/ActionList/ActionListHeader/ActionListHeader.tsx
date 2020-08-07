@@ -35,16 +35,17 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   className,
   id,
 }) => {
-  const { allSelected, canSelect, onSelectAll } = useContext(ActionListContext)
+  const { allSelected, select } = useContext(ActionListContext)
 
-  const hasCheckbox = typeof canSelect === 'boolean' ? canSelect : canSelect.all
+  const hasCheckbox = !!select
+  const onChange = () => (select ? select.onSelectAll() : undefined)
 
   return (
     <ActionListRow
       id={id}
       className={className}
       hasCheckbox={hasCheckbox}
-      onChange={onSelectAll}
+      onChange={onChange}
       checked={allSelected}
     >
       {children}
@@ -53,6 +54,7 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 }
 
 export const ActionListHeader = styled(ActionListHeaderInternal)`
+  background: transparent;
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   color: ${(props) => props.theme.colors.text5};
   display: flex;
