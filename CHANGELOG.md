@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Accordion` & `Tree` presentation fixes for IE11
 - `DialogHeader` presentation fix for IE11
 - `Space` presentation fix for IE11 (also affects consumers)
+- `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
 
 ### Changed
 
