@@ -278,27 +278,43 @@ describe('ActionList', () => {
 
   describe('Selecting', () => {
     const onSelect = jest.fn()
+    const onSelectAll = jest.fn()
     const actionListWithSelect = (
-      <ActionList columns={columns} canSelect onSelect={onSelect}>
+      <ActionList
+        columns={columns}
+        select={{
+          itemsSelected: [],
+          itemsVisible: ['1', '2'],
+          onSelect,
+          onSelectAll,
+        }}
+      >
+        {items}
+      </ActionList>
+    )
+    const actionListWithOnClickRowSelect = (
+      <ActionList
+        columns={columns}
+        select={{
+          itemsSelected: [],
+          itemsVisible: ['1', '2'],
+          onClickRowSelect: true,
+          onSelect,
+          onSelectAll,
+        }}
+      >
         {items}
       </ActionList>
     )
     const actionListWithItemsSelected = (
       <ActionList
         columns={columns}
-        canSelect
-        itemsSelected={['1']}
-        onSelect={onSelect}
-      >
-        {items}
-      </ActionList>
-    )
-    const onClickRowSelect = (
-      <ActionList
-        columns={columns}
-        canSelect
-        onSelect={onSelect}
-        onClickRowSelect
+        select={{
+          itemsSelected: ['1'],
+          itemsVisible: ['1', '2'],
+          onSelect,
+          onSelectAll,
+        }}
       >
         {items}
       </ActionList>
@@ -314,7 +330,7 @@ describe('ActionList', () => {
     })
 
     test('Row click calls onSelect when onClickRowSelect is true', () => {
-      const { getByText } = renderWithTheme(onClickRowSelect)
+      const { getByText } = renderWithTheme(actionListWithOnClickRowSelect)
       const nameCell = getByText('Richard Garfield')
       fireEvent.click(nameCell)
       expect(onSelect).toHaveBeenCalledTimes(1)
@@ -327,6 +343,7 @@ describe('ActionList', () => {
     })
   })
 
+  // TODO
   describe('Selecting All', () => {
     const onSelect = jest.fn()
     const onSelectAll = jest.fn()
