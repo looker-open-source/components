@@ -63,6 +63,13 @@ export const ControlColors = () => (
       <ChipButton className="hover">Hover</ChipButton>
       <ChipButton className="focus">Focus</ChipButton>
       <ChipButton className="active">Active</ChipButton>
+      <ChipButton className="focus" aria-selected={false}>
+        Not Selected
+      </ChipButton>
+
+      <ChipButton disabled className="focus" aria-selected={false}>
+        Not Selected
+      </ChipButton>
     </Space>
     <Space>
       <ButtonItem value="boo">Hello</ButtonItem>

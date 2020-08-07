@@ -41,11 +41,9 @@ export const ChipButton = styled(Chip).attrs({ role: 'button' })`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
-
   height: ${inputHeight};
   padding: 0 ${({ theme }) => theme.space.medium};
 
-  &.active,
   &:active,
   &[aria-pressed='true'] {
     border-color: ${({ theme }) => theme.colors.key};
@@ -54,10 +52,30 @@ export const ChipButton = styled(Chip).attrs({ role: 'button' })`
   &[disabled] {
     background: ${({ theme }) => theme.colors.neutralAccent};
     color: ${({ theme }) => theme.colors.neutral};
+    cursor: default;
 
     &:hover {
       background: ${({ theme }) => theme.colors.neutralAccent};
       border-color: ${({ theme }) => theme.colors.keyAccent};
+    }
+  }
+
+  &[aria-selected='false'] {
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text3};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.ui1};
+    }
+
+    &:active {
+      border-color: ${({ theme }) => theme.colors.ui4};
+    }
+
+    &[disabled] {
+      background: ${({ theme }) => theme.colors.background};
+      border-color: ${({ theme }) => theme.colors.ui2};
+      color: ${({ theme }) => theme.colors.neutral};
     }
   }
 `
