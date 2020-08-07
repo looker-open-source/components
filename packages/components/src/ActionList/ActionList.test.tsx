@@ -370,7 +370,7 @@ describe('ActionList', () => {
       onSelectAll.mockClear()
     })
 
-    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
+    test('Renders header checkbox that triggers onSelectAll on click when select prop receives a valid object', () => {
       const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0]
       fireEvent.click(headerCheckbox)
