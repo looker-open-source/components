@@ -41,11 +41,6 @@ interface ActionListControlBarProps {
   totalCount: number
 }
 
-const BulkActionsButton = styled(Button).attrs(() => ({
-  iconAfter: 'ArrowDown',
-  size: 'xsmall',
-}))``
-
 const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   actions,
   className,
@@ -89,7 +84,9 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
     <div className={className}>
       <Menu>
         <MenuDisclosure>
-          <BulkActionsButton>Bulk Actions</BulkActionsButton>
+          <Button iconAfter="ArrowDown" size="xsmall">
+            Bulk Actions
+          </Button>
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
@@ -110,8 +107,8 @@ export const ActionListControlBar = styled(ActionListControlBarLayout)`
   padding: ${({ theme }) => theme.space.small};
   position: relative;
 
-  & ${BulkActionsButton} {
-    left: ${({ theme }) => theme.space.small};
+  ${Button} {
+    left: ${({ theme }) => theme.space.medium};
     position: absolute;
   }
 `

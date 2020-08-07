@@ -47,7 +47,6 @@ import React, {
 import styled, { css } from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
-import { useForkedRef } from '../../../utils'
 import { usePopover } from '../../../Popover'
 import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
@@ -117,7 +116,7 @@ const ComboboxListInternal = forwardRef(
       isMulti,
       ...props
     }: ComboboxListInternalProps,
-    forwardedRef: Ref<HTMLUListElement>
+    ref: Ref<HTMLUListElement>
   ) => {
     const context = useContext(ComboboxContext)
     const contextMulti = useContext(ComboboxMultiContext)
@@ -160,7 +159,6 @@ const ComboboxListInternal = forwardRef(
     const handleBlur = isMulti
       ? useBlur(ComboboxMultiContext)
       : useBlur(ComboboxContext)
-    const ref = useForkedRef(listRef, forwardedRef)
 
     // Avoid calling getBoundingClientWidth if width/minWidth are set in props
     const width = props.width || getElementWidth(wrapperElement) || 'auto'
@@ -199,6 +197,11 @@ const ComboboxListInternal = forwardRef(
       triggerElement: wrapperElement,
       triggerToggle: false,
     })
+    if (popperInstanceRef.current && listRef) {
+      // Using the outermost popover element ensures the check in useBlur
+      // will not fail to detect a scroll-bar click-drag
+      listRef.current = popperInstanceRef.current.state.elements.popper
+    }
 
     // For isMulti, we update the popover position when values are added/removed
     // since it may affect the height of the field

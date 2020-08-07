@@ -9,17 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `xxxxxlarge` to sizes to support updated type ramp.
+- `ChipButton` introduced for limited use cases
 - `ActionListControlBar` component
 - `useActionListSelectManager` hook
 
 ### Fixed
 
+- `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
+- `SelectMulti` list height now adjusts as needed when chips are added
+- `Select` getting text highlighted in a focus trap when not filterable
 - `Tree` default color is text4 (was previously a different color due to browser button defaults)
 - `MenuItem` disabled prop is not clickable and its not a link.
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 - `Tabs` no longer show scrollbar when overflowing
+- `Accordion` & `Tree` presentation fixes for IE11
+- `DialogHeader` presentation fix for IE11
+- `Space` presentation fix for IE11 (also affects consumers)
+- `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
+- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
+- `ActionList` updated documentation to include info on control bar behavior
 
 ### Changed
 
@@ -27,27 +38,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActionList` conditionally renders `ActionListControlBar` based on `bulk` prop
 - `FontSizes` and `LineHeights` design tokens updated to match new type ramp spec.
 - Refactor out react-hotkeys and improve keyboard ux for multiple stacked focus traps (effects `MenuList`, `Surface`, and `OverlaySurface`)
+- Remove arrow from `Tooltip`, `Popover` and `Menu` by default
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
-
-### Added
-
-- Added `xxxxxlarge` to sizes to support updated type ramp.
-- `ChipButton` introduced for limited use cases
-
-### Changed
-
 - Correlates use of color for `Chip`, `ButtonToggle` & `ButtonSet`
 - Consolidated `inputHeight` location and usage suite-wide
 - `InputChipsBase` updated to use styled() wrapped for Chip margin overrides
 
-### Remove
+### Removed
 
 - `Chip` removed most prop support
-
-### Fixed
-
-- `ButtonSet` & `ButtonGroup` heights corrected to stay at `36px`
 
 ## [0.9.9] - 2020-08-02
 

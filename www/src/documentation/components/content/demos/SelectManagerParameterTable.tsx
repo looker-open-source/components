@@ -24,10 +24,38 @@
 
  */
 
-export * from './CalendarPropTable'
-export * from './DateFormatTable'
-export * from './IconList'
-export * from './LocaleTable'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './TimeFormatTable'
+import React from 'react'
+import {
+  Code,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableDataCell,
+} from '@looker/components'
+
+export const SelectManagerParameterTable = () => (
+  <Table>
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Parameter Name</TableHeaderCell>
+        <TableHeaderCell>Type</TableHeaderCell>
+        <TableHeaderCell>Description</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableDataCell pr="large">selectableItems</TableDataCell>
+        <TableDataCell pr="large">
+          <Code>string[]</Code>
+        </TableDataCell>
+        <TableDataCell>
+          An string[] array containing the id's of all selectable items. On a
+          paginated ActionList, this will usually only include visible item
+          ids'.
+        </TableDataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+)

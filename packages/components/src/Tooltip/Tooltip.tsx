@@ -49,12 +49,6 @@ import { TooltipContent } from './TooltipContent'
 
 export interface UseTooltipProps {
   /**
-   * Display and arrow that points to the trigger element on popovers
-   * @default true
-   */
-  arrow?: boolean
-
-  /**
    * Specify a callback to be called before trying to close the Tooltip. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Tooltip is closed
@@ -125,7 +119,6 @@ export interface TooltipProps extends UseTooltipProps {
 }
 
 export function useTooltip({
-  arrow = true,
   canClose,
   content,
   isOpen: initializeOpen = false,
@@ -174,7 +167,6 @@ export function useTooltip({
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
       anchor: element,
-      arrow,
       options: {
         modifiers: [
           {
@@ -188,7 +180,7 @@ export function useTooltip({
         placement: propsPlacement,
       },
     }),
-    [arrow, element, propsPlacement]
+    [element, propsPlacement]
   )
   const {
     arrowProps,
@@ -206,7 +198,7 @@ export function useTooltip({
     isOpen && content && !disabled ? (
       <Portal>
         <OverlaySurface
-          arrow={arrow}
+          arrow={false}
           arrowProps={arrowProps}
           eventHandlers={{ onMouseOut: handleMouseOut }}
           placement={placement}
