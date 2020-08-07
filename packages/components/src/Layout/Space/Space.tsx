@@ -97,20 +97,29 @@ export const spaceCSS = css`
  *
  */
 
+const fauxGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
+  && > * {
+    margin-right: ${({ theme: { space } }) => space[gap]};
+  }
+
+  ${({ theme: { space } }) =>
+    reverse
+      ? `&& > *:first-child { margin-right: ${space.none}; }`
+      : `&& > *:last-child { margin-right: ${space.none}; }`}
+`
+
 const flexGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
   @supports (-moz-appearance: none) {
     gap: ${({ theme: { space } }) => space[gap]};
   }
 
   @supports not (-moz-appearance: none) {
-    && > * {
-      margin-right: ${({ theme: { space } }) => space[gap]};
-    }
+    ${fauxGap({ gap, reverse })}
+  }
 
-    ${({ theme: { space } }) =>
-      reverse
-        ? `&& > *:first-child { margin-right: ${space.none}; }`
-        : `&& > *:last-child { margin-right: ${space.none}; }`}
+  /* Target IE11 */
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    ${fauxGap({ gap, reverse })}
   }
 `
 

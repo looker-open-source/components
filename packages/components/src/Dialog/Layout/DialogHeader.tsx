@@ -108,15 +108,14 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
 }
 
 const Detail = styled.div`
-  grid-area: close;
+  margin-left: auto;
 `
 
 export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}
   ${space}
   align-items: center;
-  display: grid;
-  grid-template-columns: [text] 1fr [close] auto;
+  display: flex;
 `
 
 DialogHeader.defaultProps = {

@@ -50,30 +50,40 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
   className,
   isOpen,
   indicatorIcons,
+  indicatorPosition,
   indicatorSize,
-}) => (
-  <div className={className}>
+}) => {
+  const indicator = (
     <Indicator>
       <Icon
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />
     </Indicator>
-    <Label>{children}</Label>
-  </div>
-)
+  )
 
+  return (
+    <div className={className}>
+      {indicatorPosition === 'left' && indicator}
+      <Label>{children}</Label>
+      {indicatorPosition !== 'left' && indicator}
+    </div>
+  )
+}
 export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
   align-items: center;
-  display: grid;
-  grid-gap: ${({ indicatorGap, theme }) => theme.space[indicatorGap]};
-  grid-template-areas: ${({ indicatorPosition }) =>
-    indicatorPosition === 'left'
-      ? '"indicator children"'
-      : '"children indicator"'};
-  grid-template-columns: ${({ indicatorPosition, indicatorSize, theme }) =>
-    indicatorPosition === 'left'
-      ? theme.space[indicatorSize] + ' 1fr'
-      : '1fr ' + theme.space[indicatorSize]};
+  display: flex;
   width: 100%;
+
+  & > ${Label} {
+    flex: 1;
+  }
+
+  & > ${Indicator} {
+    ${({ indicatorGap, indicatorPosition, theme: { space } }) =>
+      indicatorPosition === 'left'
+        ? `margin-right: ${space[indicatorGap]};`
+        : `margin-left: ${space[indicatorGap]};`}
+    width: ${({ indicatorSize, theme: { space } }) => space[indicatorSize]};
+  }
 `
