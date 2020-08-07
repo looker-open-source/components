@@ -463,7 +463,11 @@ describe('ActionList', () => {
 
     test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {
       const { getByText, queryByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+        >
           {items}
         </ActionList>
       )
