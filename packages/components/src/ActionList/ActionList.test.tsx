@@ -114,6 +114,8 @@ const actionListWithNoHeader = (
 
 const handleActionClick = jest.fn()
 const handleListItemClick = jest.fn()
+const onSelect = jest.fn()
+const onSelectAll = jest.fn()
 const clickableItems = data.map(({ id, name, type }) => {
   const availableActions = (
     <>
@@ -154,6 +156,8 @@ describe('ActionList', () => {
     rafSpy.mockRestore()
     handleActionClick.mockClear()
     handleListItemClick.mockClear()
+    onSelect.mockClear()
+    onSelectAll.mockClear()
   })
 
   describe('General Layout', () => {
@@ -277,31 +281,22 @@ describe('ActionList', () => {
   })
 
   describe('Selecting', () => {
-    const onSelect = jest.fn()
-    const onSelectAll = jest.fn()
+    const defaultSelectConfig = {
+      itemsSelected: [],
+      itemsVisible: ['1', '2'],
+      onSelect,
+      onSelectAll,
+    }
+
     const actionListWithSelect = (
-      <ActionList
-        columns={columns}
-        select={{
-          itemsSelected: [],
-          itemsVisible: ['1', '2'],
-          onSelect,
-          onSelectAll,
-        }}
-      >
+      <ActionList columns={columns} select={defaultSelectConfig}>
         {items}
       </ActionList>
     )
     const actionListWithOnClickRowSelect = (
       <ActionList
         columns={columns}
-        select={{
-          itemsSelected: [],
-          itemsVisible: ['1', '2'],
-          onClickRowSelect: true,
-          onSelect,
-          onSelectAll,
-        }}
+        select={{ ...defaultSelectConfig, onClickRowSelect: true }}
       >
         {items}
       </ActionList>
@@ -310,18 +305,13 @@ describe('ActionList', () => {
       <ActionList
         columns={columns}
         select={{
+          ...defaultSelectConfig,
           itemsSelected: ['1'],
-          itemsVisible: ['1', '2'],
-          onSelect,
-          onSelectAll,
         }}
       >
         {items}
       </ActionList>
     )
-    afterEach(() => {
-      onSelect.mockClear()
-    })
 
     test('Checkbox click calls onSelect', () => {
       const { getAllByRole } = renderWithTheme(actionListWithSelect)
@@ -345,39 +335,55 @@ describe('ActionList', () => {
 
   // TODO
   describe('Selecting All', () => {
-    const onSelect = jest.fn()
-    const onSelectAll = jest.fn()
-    const props = {
-      canSelect: true,
-      canSelectAll: true,
-      columns,
-      onSelect,
-      onSelectAll,
-    }
-
-    const actionListWithSelectAll = <ActionList {...props}>{items}</ActionList>
-
     const actionListWithNoItemsSelected = (
-      <ActionList {...props} itemsSelected={[]}>
+      <ActionList
+        columns={columns}
+        select={{
+          itemsSelected: [],
+          itemsVisible: ['1', '2'],
+          onSelect,
+          onSelectAll,
+        }}
+      >
         {items}
       </ActionList>
     )
 
     const actionListWithSomeItemsSelected = (
-      <ActionList {...props} itemsSelected={['1']}>
+      <ActionList
+        columns={columns}
+        select={{
+          itemsSelected: ['2'],
+          itemsVisible: ['1', '2'],
+          onSelect,
+          onSelectAll,
+        }}
+      >
         {items}
       </ActionList>
     )
 
     const actionListWithAllItemsSelected = (
-      <ActionList {...props} itemsSelected={['1', '2']}>
+      <ActionList
+        columns={columns}
+        select={{
+          itemsSelected: ['1', '2'],
+          itemsVisible: ['1', '2'],
+          onSelect,
+          onSelectAll,
+        }}
+      >
         {items}
       </ActionList>
     )
 
-    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
-      const { getAllByRole } = renderWithTheme(actionListWithSelectAll)
+    afterEach(() => {
+      onSelect.mockClear()
+      onSelectAll.mockClear()
+    })
 
+    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0]
       fireEvent.click(headerCheckbox)
       expect(onSelectAll).toHaveBeenCalledTimes(1)
