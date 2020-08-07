@@ -25,7 +25,6 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-
 import { ComponentsProvider, Paragraph } from '@looker/components'
 import 'core-js/stable'
 

@@ -25,25 +25,14 @@
  */
 
 import { createContext } from 'react'
-import noop from 'lodash/noop'
 import { MixedBoolean } from '../Form'
-import { ActionListColumns } from './ActionList'
+import { ActionListColumns, SelectConfig } from './ActionList'
 
 export interface ActionListContextProps {
-  addItemToAllItems: (id: string) => void
   allSelected?: MixedBoolean
-  canSelect: boolean | { all: boolean }
   columns?: ActionListColumns
-  itemsSelected: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
-  onSelect?: (id: string) => void
-  onSelectAll?: () => void
-  onClickRowSelect: boolean
+  select?: SelectConfig
 }
 
-export const ActionListContext = createContext<ActionListContextProps>({
-  addItemToAllItems: (id: string) => noop(id),
-  canSelect: false,
-  itemsSelected: [],
-  onClickRowSelect: false,
-})
+export const ActionListContext = createContext<ActionListContextProps>({})

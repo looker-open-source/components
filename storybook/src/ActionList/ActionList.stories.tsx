@@ -24,35 +24,49 @@
 
  */
 
-import React, { useState } from 'react'
 import {
   ActionList,
+  ActionListItemAction,
   ActionListManager,
   Icon,
   Heading,
   SpaceVertical,
+  useActionListSelectManager,
 } from '@looker/components'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
-
+import React from 'react'
 import { columns, data } from './data'
 import { items } from './items'
 
-export const Manager = () => {
-  const [selections, setSelections] = useState([] as string[])
-  const onSelect = (selection: string) => {
-    setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
+export default {
+  decorators: [withKnobs],
+  title: 'ActionList',
+}
+
+export const ActionListExample = () => {
+  const allPageItems = data.map(({ pdtName }) => pdtName)
+
+  const {
+    onSelect,
+    onSelectAll,
+    selections,
+    setSelections,
+  } = useActionListSelectManager(allPageItems)
+
+  const onTotalSelectAll = () =>
+    setSelections([
+      ...allPageItems,
+      'some_other_pdt_1',
+      'some_other_pdt_2',
+      'some_other_pdt_3',
+      'some_other_pdt_3',
+    ])
+
+  const onTotalClearAll = () => setSelections([])
+
+  const onBulkActionClick = () => {
+    alert(`Performing a bulk action on these items: \n${selections.join(', ')}`)
   }
-
-  const allSelectableItems = data
-    .map(({ disabled, pdtName }) => !disabled && pdtName)
-    .filter((element) => element) as string[]
-
-  const onSelectAll = () =>
-    setSelections(selections.length ? [] : allSelectableItems)
 
   const noResultsDisplay = boolean('Custom "noResultsDisplay"', true) && (
     <SpaceVertical align="center">
@@ -61,6 +75,26 @@ export const Manager = () => {
     </SpaceVertical>
   )
 
+  const selectConfig = {
+    onClickRowSelect: true,
+    onSelect,
+    onSelectAll,
+    pageItems: allPageItems,
+    selectedItems: selections,
+  }
+
+  const bulkActionsConfig = {
+    actions: (
+      <ActionListItemAction onClick={onBulkActionClick}>
+        Some bulk action
+      </ActionListItemAction>
+    ),
+    onTotalClearAll,
+    onTotalSelectAll,
+    pageCount: items.length,
+    totalCount: 8,
+  }
+
   return (
     <ActionListManager
       isLoading={boolean('isLoading', false)}
@@ -68,19 +102,13 @@ export const Manager = () => {
       noResultsDisplay={noResultsDisplay}
     >
       <ActionList
-        canSelect
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
+        select={boolean('Select Items', true) ? selectConfig : undefined}
+        bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
         columns={columns}
+        headerRowId="all-pdts"
       >
         {items}
       </ActionList>
     </ActionListManager>
   )
-}
-
-export default {
-  decorators: [withKnobs],
-  title: 'ActionList',
 }

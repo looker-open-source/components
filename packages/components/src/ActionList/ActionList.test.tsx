@@ -137,9 +137,19 @@ const clickableItems = data.map(({ id, name, type }) => {
     </ActionListItem>
   )
 })
+
 const actionListWithClickableRows = (
   <ActionList columns={columns}>{clickableItems}</ActionList>
 )
+
+const onSelect = jest.fn()
+const onSelectAll = jest.fn()
+const defaultSelectConfig = {
+  onSelect,
+  onSelectAll,
+  pageItems: ['1', '2'],
+  selectedItems: [],
+}
 
 describe('ActionList', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
@@ -154,6 +164,8 @@ describe('ActionList', () => {
     rafSpy.mockRestore()
     handleActionClick.mockClear()
     handleListItemClick.mockClear()
+    onSelect.mockClear()
+    onSelectAll.mockClear()
   })
 
   describe('General Layout', () => {
@@ -277,35 +289,30 @@ describe('ActionList', () => {
   })
 
   describe('Selecting', () => {
-    const onSelect = jest.fn()
     const actionListWithSelect = (
-      <ActionList columns={columns} canSelect onSelect={onSelect}>
+      <ActionList columns={columns} select={defaultSelectConfig}>
         {items}
       </ActionList>
     )
-    const actionListWithItemsSelected = (
+    const actionListWithOnClickRowSelect = (
       <ActionList
         columns={columns}
-        canSelect
-        itemsSelected={['1']}
-        onSelect={onSelect}
+        select={{ ...defaultSelectConfig, onClickRowSelect: true }}
       >
         {items}
       </ActionList>
     )
-    const onClickRowSelect = (
+    const actionListWithSelectedItems = (
       <ActionList
         columns={columns}
-        canSelect
-        onSelect={onSelect}
-        onClickRowSelect
+        select={{
+          ...defaultSelectConfig,
+          selectedItems: ['1'],
+        }}
       >
         {items}
       </ActionList>
     )
-    afterEach(() => {
-      onSelect.mockClear()
-    })
 
     test('Checkbox click calls onSelect', () => {
       const { getAllByRole } = renderWithTheme(actionListWithSelect)
@@ -314,70 +321,74 @@ describe('ActionList', () => {
     })
 
     test('Row click calls onSelect when onClickRowSelect is true', () => {
-      const { getByText } = renderWithTheme(onClickRowSelect)
+      const { getByText } = renderWithTheme(actionListWithOnClickRowSelect)
       const nameCell = getByText('Richard Garfield')
       fireEvent.click(nameCell)
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 
-    test('itemsSelected determines if a checkbox is checked', () => {
-      const { getAllByRole } = renderWithTheme(actionListWithItemsSelected)
+    test('selectedItems determines if a checkbox is checked', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithSelectedItems)
       const checkbox = getAllByRole('checkbox')[1]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
   })
 
   describe('Selecting All', () => {
-    const onSelect = jest.fn()
-    const onSelectAll = jest.fn()
-    const props = {
-      canSelect: true,
-      canSelectAll: true,
-      columns,
-      onSelect,
-      onSelectAll,
-    }
-
-    const actionListWithSelectAll = <ActionList {...props}>{items}</ActionList>
-
     const actionListWithNoItemsSelected = (
-      <ActionList {...props} itemsSelected={[]}>
+      <ActionList columns={columns} select={defaultSelectConfig}>
         {items}
       </ActionList>
     )
 
     const actionListWithSomeItemsSelected = (
-      <ActionList {...props} itemsSelected={['1']}>
+      <ActionList
+        columns={columns}
+        select={{
+          ...defaultSelectConfig,
+          selectedItems: ['2'],
+        }}
+      >
         {items}
       </ActionList>
     )
 
     const actionListWithAllItemsSelected = (
-      <ActionList {...props} itemsSelected={['1', '2']}>
+      <ActionList
+        columns={columns}
+        select={{
+          ...defaultSelectConfig,
+          selectedItems: ['1', '2'],
+        }}
+      >
         {items}
       </ActionList>
     )
 
-    test('Renders header checkbox that triggers onSelectAll on click when canSelect and canSelectAll are true', () => {
-      const { getAllByRole } = renderWithTheme(actionListWithSelectAll)
+    afterEach(() => {
+      onSelect.mockClear()
+      onSelectAll.mockClear()
+    })
 
+    test('Renders header checkbox that triggers onSelectAll on click when select prop receives a valid object', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0]
       fireEvent.click(headerCheckbox)
       expect(onSelectAll).toHaveBeenCalledTimes(1)
     })
 
-    test('Header checkbox is unchecked when itemsSelected includes no row ids', () => {
+    test('Header checkbox is unchecked when selectedItems includes no row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(false)
     })
 
-    test('Header checkbox is mixed when itemsSelected includes some row ids', () => {
+    test('Header checkbox is mixed when selectedItems includes some row ids', () => {
       const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
       getByTitle('Check Mark Mixed')
     })
 
-    test('Header checkbox is mixed when itemsSelected includes all row ids', () => {
+    test('Header checkbox is mixed when selectedItems includes all row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithAllItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(true)
@@ -407,9 +418,13 @@ describe('ActionList', () => {
       totalCount: 4,
     }
 
-    test('Control bar is visible when bulk prop is provided and itemsSelected prop has length >0', () => {
+    test('Control bar is visible when bulk prop is provided and selectedItems prop has length > 0', () => {
       const { getByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -421,7 +436,10 @@ describe('ActionList', () => {
 
     test('Control bar is not visible when bulk prop is not provided', () => {
       const { queryByText } = renderWithTheme(
-        <ActionList columns={columns} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -429,9 +447,13 @@ describe('ActionList', () => {
       expect(queryByText('Bulk Actions')).not.toBeInTheDocument()
     })
 
-    test('Control bar is not visible when itemsSelected.length < 0', () => {
+    test('Control bar is not visible when selectedItems.length < 0', () => {
       const { queryByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={[]}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: [] }}
+        >
           {items}
         </ActionList>
       )
@@ -441,7 +463,11 @@ describe('ActionList', () => {
 
     test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {
       const { getByText, queryByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -459,7 +485,11 @@ describe('ActionList', () => {
 
     test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
       const { getByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -474,7 +504,10 @@ describe('ActionList', () => {
         <ActionList
           columns={columns}
           bulk={bulk}
-          itemsSelected={['1', '2', '3', '4']}
+          select={{
+            ...defaultSelectConfig,
+            selectedItems: ['1', '2', '3', '4'],
+          }}
         >
           {items}
         </ActionList>

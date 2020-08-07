@@ -49,14 +49,15 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   pageCount,
   totalCount,
 }) => {
-  const { itemsSelected } = useContext(ActionListContext)
+  const { select } = useContext(ActionListContext)
+  const selectedItemCount = select ? select.selectedItems.length : 0
 
   let message
-  if (itemsSelected.length < pageCount) {
-    message = `${itemsSelected.length} of ${pageCount} displayed items selected`
-  } else if (itemsSelected.length === pageCount) {
+  if (selectedItemCount < pageCount) {
+    message = `${selectedItemCount} of ${pageCount} displayed items selected`
+  } else if (selectedItemCount === pageCount) {
     message = `All ${pageCount} displayed items selected`
-  } else if (totalCount && itemsSelected.length === totalCount) {
+  } else if (totalCount && selectedItemCount === totalCount) {
     message = `All ${totalCount} items selected`
   }
 
@@ -69,11 +70,11 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   const selectTotalResultsButton = (
     <ButtonTransparent
       onClick={
-        itemsSelected.length === totalCount ? onTotalClearAll : onTotalSelectAll
+        selectedItemCount === totalCount ? onTotalClearAll : onTotalSelectAll
       }
     >
       <Text fontWeight="semiBold" fontSize="xsmall">
-        {itemsSelected.length === totalCount
+        {selectedItemCount === totalCount
           ? 'Clear Selection'
           : `Select all ${totalCount} results`}
       </Text>

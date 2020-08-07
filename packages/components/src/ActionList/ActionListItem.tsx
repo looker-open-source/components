@@ -26,7 +26,7 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useRef, useEffect } from 'react'
+import React, { FC, ReactNode, useContext, useRef } from 'react'
 import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
@@ -64,23 +64,13 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   onClick,
 }) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
-  const {
-    addItemToAllItems,
-    canSelect,
-    itemsSelected,
-    onSelect,
-    onClickRowSelect,
-  } = useContext(ActionListContext)
+  const { select } = useContext(ActionListContext)
 
-  useEffect(() => {
-    addItemToAllItems(id)
-  }, [addItemToAllItems, id])
-
-  const handleOnSelect = () => onClickRowSelect && onSelect && onSelect(id)
+  const handleOnSelect = () => select && select.onSelect(id)
 
   const handleClick = disabled
     ? undefined
-    : onClickRowSelect
+    : select && select.onClickRowSelect
     ? handleOnSelect
     : onClick || undefined
 
@@ -106,9 +96,9 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
     </div>
   )
 
-  const onChange = onSelect ? () => onSelect(id) : undefined
+  const onChange = select ? () => select.onSelect(id) : undefined
 
-  const checked = itemsSelected.includes(id)
+  const checked = select && select.selectedItems.includes(id)
 
   return (
     <ActionListRow
@@ -119,11 +109,11 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      hasCheckbox={!!canSelect}
+      hasCheckbox={!!select}
       onChange={onChange}
       checked={checked}
       disabled={disabled}
-      supportsRaised={!onClickRowSelect}
+      supportsRaised={!(select && select.onClickRowSelect)}
     >
       {children}
     </ActionListRow>
