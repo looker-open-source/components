@@ -30,15 +30,13 @@ import {
   CompatibleHTMLProps,
   space,
   SpaceProps,
-  typography,
-  TypographyProps,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 
 export interface ButtonItemProps
   extends SpaceProps,
-    TypographyProps,
     Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
   value?: string
 }
@@ -86,8 +84,6 @@ const ButtonLayout = forwardRef(
 
 ButtonLayout.displayName = 'ButtonLayout'
 
-export const buttonItemHeight = 36
-
 export const ButtonItem = styled(ButtonLayout)`
   align-items: center;
   background: transparent;
@@ -96,15 +92,19 @@ export const ButtonItem = styled(ButtonLayout)`
   cursor: pointer;
   display: inline-flex;
   font-size: ${({ theme }) => theme.fontSizes.small};
-  height: ${buttonItemHeight}px;
+  height: ${inputHeight};
   justify-content: center;
   margin: 0;
   padding: 0 ${({ theme }) => theme.space.small};
   transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
   user-select: none;
 
-  &[aria-pressed='false']:not([disabled]):hover {
-    background: ${({ theme }) => theme.colors.keySubtle};
+  ${space}
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: ${({ theme }) => theme.colors.keyAccent};
   }
 
   &:focus {
@@ -114,20 +114,20 @@ export const ButtonItem = styled(ButtonLayout)`
 
   &[disabled] {
     color: ${(props) => props.theme.colors.text1};
+
+    &:hover {
+      background: inherit;
+    }
     cursor: default;
   }
 
   &[aria-pressed='true'] {
-    background: ${({ theme }) => theme.colors.keyAccent};
-    border-color: ${({ theme }) => theme.colors.keyAccent};
+    background: ${({ theme }) => theme.colors.keySubtle};
     color: ${({ theme }) => theme.colors.key};
-    text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;
 
     &[disabled] {
+      background: ${({ theme }) => theme.colors.keySubtle};
       color: ${({ theme }) => theme.colors.keyFocus};
     }
   }
-
-  ${space}
-  ${typography}
 `

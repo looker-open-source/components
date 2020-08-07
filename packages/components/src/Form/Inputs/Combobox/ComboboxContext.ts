@@ -27,7 +27,6 @@
 import omit from 'lodash/omit'
 import {
   createContext,
-  RefObject,
   Ref,
   MutableRefObject,
   Dispatch,
@@ -56,7 +55,7 @@ export interface ComboboxContextProps<
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
   wrapperElement?: HTMLDivElement | null
-  listRef?: RefObject<HTMLUListElement>
+  listRef?: MutableRefObject<HTMLElement | null>
   onChange?: TChange
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState

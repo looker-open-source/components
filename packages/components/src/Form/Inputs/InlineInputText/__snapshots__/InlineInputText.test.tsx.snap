@@ -59,6 +59,8 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 .c2 {
   color: transparent;
   line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
   text-align: inherit;
   white-space: pre;
 }
@@ -172,6 +174,8 @@ exports[`InlineInputText renders an input with no value 1`] = `
 .c2 {
   color: transparent;
   line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
   text-align: inherit;
   white-space: pre;
 }
@@ -284,6 +288,8 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
 .c2 {
   color: transparent;
   line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
   text-align: inherit;
   white-space: pre;
 }

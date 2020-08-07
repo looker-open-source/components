@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields/FieldCheckbox'
-import { inputHeight } from '../InputText/InputText'
+import { inputHeight } from '../height'
 import { OptionsGroupProps } from './OptionsGroup'
 
 export type CheckboxGroupProps = OptionsGroupProps<string[]>
