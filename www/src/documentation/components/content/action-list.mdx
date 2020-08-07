@@ -266,106 +266,23 @@ If you want default sorting behavior, you can use the `doDefaultActionListSort` 
 
 ## Selecting rows
 
-You can add row select behavior on an `<ActionList/>` by passing in the `canSelect`, `onSelect` and `itemsSelected` props.
+You can add row select behavior on an `<ActionList/>` by passing a valid into the `select` prop.
 
-An `<ActionList/>` with the `canSelect` prop passed in will display `<Checkbox/>`s on each of its rows.
+The following properties are **required** in the object passed into the `select` prop.
 
-Clicking on a `<Checkbox/>` will trigger the `onSelect` callback prop, with the id of the clicked `<ActionListItem/>` passed in as an argument.
+- `onSelect`: Clicking on a checkbox (or the row when `onClickRowSelect` is true) will trigger the `onSelect` callback, with the id of the checkbox's `ActionListItem` passed in as an argument.
 
-The `itemsSelected` prop should be given the id's of all selected `<ActionListItem>`s.
+- `onSelectAll`: Callback that is triggered when the header's checkbox is clicked
 
-**Note:** The id of an `<ActionListItem>`s must be a string, the `itemSelected` prop should be an array of strings.
+- `itemsSelected`: An array containing the `id`s of all selected items. Will usually be a piece of state.
 
-If you would like a row's `onClick` to toggle a row's selected state, rather than have a custom-defined `onClick`, you can do so by passing in the `onClickRowSelect` prop into the `<ActionList/>`.
+- `itemsVisible`: An array containing the `id`s of all currently visible items. This is mainly used to help calculate the checked state of the header checkbox.
 
-```jsx
-;() => {
-  const [selections, setSelections] = useState([])
-  const onSelect = (selection) => {
-    setSelections(
-      selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
-        : [...selections, selection]
-    )
-  }
+The following properties are **optional** in the object passed into the `select` prop:
 
-  const data = [
-    {
-      id: 1,
-      name: 'Gorgonzola',
-    },
-    {
-      id: 2,
-      name: 'Cheddar',
-    },
-    {
-      id: 3,
-      name: `Blue`,
-      disabled: true,
-    },
-  ]
+- `onClickRowSelect`: If true, clicking on a row will trigger the `onSelect` function.
 
-  const columns = [
-    {
-      id: 'id',
-      primaryKey: true,
-      title: 'ID',
-      type: 'number',
-      widthPercent: 20,
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-      widthPercent: 80,
-    },
-  ]
-
-  const items = data.map(({ id, name, disabled }) => {
-    actions = (
-      <>
-        <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
-          Select Cheese
-        </ActionListItemAction>
-      </>
-    )
-
-    return (
-      <ActionListItem
-        key={id}
-        id={String(id)}
-        onClick={() => alert('Row clicked')}
-        actions={actions}
-        disabled={disabled}
-      >
-        <ActionListItemColumn>{id}</ActionListItemColumn>
-        <ActionListItemColumn>{name}</ActionListItemColumn>
-      </ActionListItem>
-    )
-  })
-
-  return (
-    <ActionList
-      canSelect
-      onSelect={onSelect}
-      itemsSelected={selections}
-      columns={columns}
-    >
-      {items}
-    </ActionList>
-  )
-}
-```
-
-### Selecting all rows
-
-A header checkbox is included next to your `<ActionList/>`'s header when the `canSelect` prop is `true`.
-
-Clicking on this header checkbox will trigger the callback passed into the `<ActionList/>`'s `onSelectAll` prop.
-
-If you would like to remove the header checkbox, but retain the row checkboxes, pass in `{ all: false }` into your `canSelect` prop.
-
-For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `ActionList`.
+**Note:** For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `ActionList`.
 
 ```jsx
 ;() => {
@@ -439,23 +356,15 @@ For accessibility purposes, the header checkbox is described by the ID of the he
   return (
     <>
       <ActionList
-        canSelect
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
         columns={columns}
-      >
-        {items}
-      </ActionList>
-
-      <Divider my="large" />
-
-      <ActionList
-        canSelect={{ all: false }}
-        onSelect={onSelect}
-        onSelectAll={onSelectAll}
-        itemsSelected={selections}
-        columns={columns}
+        select={{
+          itemsSelected: selections,
+          itemsVisible: allSelectableItems,
+          onClickRowSelect: true,
+          onSelect,
+          onSelectAll,
+          allSelectableItems,
+        }}
       >
         {items}
       </ActionList>
@@ -538,11 +447,13 @@ The `useActionListSelectManager` hook can be used to quickly create the standard
 
   return (
     <ActionList
-      canSelect
-      onClickRowSelect
-      onSelect={onSelect}
-      onSelectAll={onSelectAll}
-      itemsSelected={selections}
+      select={{
+        onClickRowSelect: true,
+        onSelect,
+        onSelectAll,
+        itemsSelected: selections,
+        itemsVisible: allSelectableItems,
+      }}
       columns={columns}
     >
       {items}
@@ -557,7 +468,7 @@ The `useActionListSelectManager` hook can be used to quickly create the standard
 
 An `ActionList` will reveal its control bar when the following conditions are met:
 
-1. The array passed into the `itemsSelected` prop has length > 0.
+1. The array passed into the `select.itemsSelected` prop has length > 0.
 2. A valid object is passed into the `bulk` prop.
 
 The `bulk` prop is used to configure an `ActionList`'s control bar. The object passed into `bulk` _must_ have the following properties:
@@ -566,7 +477,7 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
 - `onTotalClearAll`: Callback that is triggered when the user presses the "Clear Selection" button
 - `onTotalSelectAll`: Callback that is triggered when the user presses the "Select all X results" button in the control bar
 - `pageCount`: The total number of visible items (i.e. the total number of items on the current page in paginated `ActionList`s)
-- `pageCount`: The total number of items, both visible and nonvisible, in this `ActionList`
+- `totalCount`: The total number of items, both visible and nonvisible, in this `ActionList`
 
 **Note:** The `onSelect` returned from the `useActionListSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
 
@@ -653,11 +564,13 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
       <Box width="100%" mb="10px">
         <ActionList
           bulk={bulkActionsConfig}
-          canSelect
-          onClickRowSelect
-          onSelect={onSelect}
-          onSelectAll={onSelectAll}
-          itemsSelected={selections}
+          select={{
+            onClickRowSelect: true,
+            onSelect,
+            onSelectAll,
+            itemsSelected: selections,
+            itemsVisible: pageItemIds,
+          }}
           columns={columns}
         >
           {pageItems}
