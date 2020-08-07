@@ -36,7 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove arrow from `Tooltip`, `Popover` and `Menu` by default
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
-- `ActionList` updated documentation to include info on control bar behavior
+- `ActionList`
+  - Updated documentation to include info on control bar behavior
+  - Refactored select behavior to flow from a single `select` prop object
 
 ## [0.9.9] - 2020-08-02
 
