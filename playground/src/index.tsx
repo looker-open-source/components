@@ -25,58 +25,12 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  ActionList,
-  ActionListItem,
-  ActionListItemColumn,
-  ActionListColumns,
-} from '@looker/components'
+import { ComponentsProvider, Paragraph } from '@looker/components'
 import 'core-js/stable'
-
-const people: any[] = []
-
-for (let i = 0; i < 100; i++) {
-  people.push({ name: 'Person_' + i })
-}
-
-const columns: ActionListColumns = [
-  {
-    id: 'name',
-    primaryKey: true,
-    title: 'Name',
-    type: 'string',
-    widthPercent: 100,
-  },
-]
-
-/*
-class AppClassComponent extends Component {
-  render = () => {
-    return (
-      <ComponentsProvider>
-        <ActionList columns={columns}>
-          {people.map((person) => (
-            <ActionListItem id={person.name} key={person.name}>
-              <ActionListItemColumn>{person.name}</ActionListItemColumn>
-            </ActionListItem>
-          ))}
-        </ActionList>
-      </ComponentsProvider>
-    )
-  }
-}
-*/
 
 const App = () => (
   <ComponentsProvider>
-    <ActionList columns={columns}>
-      {people.map((person) => (
-        <ActionListItem id={person.name} key={person.name}>
-          <ActionListItemColumn>{person.name}</ActionListItemColumn>
-        </ActionListItem>
-      ))}
-    </ActionList>
+    <Paragraph>Hello world</Paragraph>
   </ComponentsProvider>
 )
 
