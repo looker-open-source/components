@@ -114,8 +114,6 @@ const actionListWithNoHeader = (
 
 const handleActionClick = jest.fn()
 const handleListItemClick = jest.fn()
-const onSelect = jest.fn()
-const onSelectAll = jest.fn()
 const clickableItems = data.map(({ id, name, type }) => {
   const availableActions = (
     <>
@@ -139,9 +137,19 @@ const clickableItems = data.map(({ id, name, type }) => {
     </ActionListItem>
   )
 })
+
 const actionListWithClickableRows = (
   <ActionList columns={columns}>{clickableItems}</ActionList>
 )
+
+const onSelect = jest.fn()
+const onSelectAll = jest.fn()
+const defaultSelectConfig = {
+  itemsSelected: [],
+  itemsVisible: ['1', '2'],
+  onSelect,
+  onSelectAll,
+}
 
 describe('ActionList', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
@@ -281,13 +289,6 @@ describe('ActionList', () => {
   })
 
   describe('Selecting', () => {
-    const defaultSelectConfig = {
-      itemsSelected: [],
-      itemsVisible: ['1', '2'],
-      onSelect,
-      onSelectAll,
-    }
-
     const actionListWithSelect = (
       <ActionList columns={columns} select={defaultSelectConfig}>
         {items}
