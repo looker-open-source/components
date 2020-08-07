@@ -25,6 +25,7 @@
  */
 
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import { width } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
@@ -160,7 +161,10 @@ FieldDetail.defaultProps = {
   fontSize: 'xsmall',
 }
 
-const InputArea = styled.div``
+const InputArea = styled.div`
+  /* Workaround for Chip's truncate styling breaking flexbox layout in FieldChips */
+  min-width: 0;
+`
 const MessageArea = styled.div``
 
 const fieldLabelCSS = (inline?: boolean) =>
@@ -188,8 +192,8 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
   height: fit-content;
   justify-content: space-between;
-  width: ${({ autoResize, width }) =>
-    width || autoResize ? 'fit-content' : '100%'};
+  width: ${({ autoResize }) => (autoResize ? 'fit-content' : '100%')};
+  ${width}
 
   ${InputArea} {
     align-items: center;

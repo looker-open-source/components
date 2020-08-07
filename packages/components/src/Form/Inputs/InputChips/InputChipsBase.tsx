@@ -179,6 +179,9 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
     align-content: flex-start;
     display: flex;
     flex-wrap: wrap;
+    /* Workaround for Chip's truncate styling breaking flexbox layout */
+    min-width: 0;
+    overflow-y: auto;
     width: 100%;
   }
 
