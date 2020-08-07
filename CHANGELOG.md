@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionListControlBar` component
 - `useActionListSelectManager` hook
+- Added `xxxxxlarge` to sizes to support updated type ramp.
 
 ### Fixed
 
@@ -21,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 - `Tabs` no longer show scrollbar when overflowing
+- `Accordion` & `Tree` presentation fixes for IE11
+- `DialogHeader` presentation fix for IE11
+- `Space` presentation fix for IE11 (also affects consumers)
+- `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
 
 ### Changed
 
@@ -32,10 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
 - `ActionList` updated documentation to include info on control bar behavior
-
-### Added
-
-- Added `xxxxxlarge` to sizes to support updated type ramp.
 
 ## [0.9.9] - 2020-08-02
 

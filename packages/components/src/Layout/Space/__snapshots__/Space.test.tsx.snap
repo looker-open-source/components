@@ -149,6 +149,16 @@ exports[`Space default 1`] = `
   }
 }
 
+@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none) {
+  .c0.c0 > * {
+    margin-right: 1rem;
+  }
+
+  .c0.c0 > *:last-child {
+    margin-right: 0rem;
+  }
+}
+
 <div
   className="c0"
   width="100%"
@@ -239,6 +249,16 @@ exports[`Space reversed 1`] = `
   }
 }
 
+@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none) {
+  .c0.c0 > * {
+    margin-right: 1rem;
+  }
+
+  .c0.c0 > *:first-child {
+    margin-right: 0rem;
+  }
+}
+
 <div
   className="c0"
   width="100%"
@@ -281,6 +301,16 @@ exports[`Space with specified gap 1`] = `
 }
 
 @supports not (-moz-appearance:none) {
+  .c0.c0 > * {
+    margin-right: 2rem;
+  }
+
+  .c0.c0 > *:last-child {
+    margin-right: 0rem;
+  }
+}
+
+@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none) {
   .c0.c0 > * {
     margin-right: 2rem;
   }
