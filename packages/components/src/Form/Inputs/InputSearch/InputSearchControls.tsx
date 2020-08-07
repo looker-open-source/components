@@ -24,6 +24,7 @@
 
  */
 
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
@@ -31,7 +32,8 @@ import { Box, Space } from '../../../Layout'
 import { IconButton } from '../../../Button'
 import { Text } from '../../../Text'
 
-export interface InputSearchControlsProps {
+export interface InputSearchControlsProps
+  extends CompatibleHTMLProps<HTMLDivElement> {
   summary?: string
   showClear: boolean
   onClear: (e: MouseEvent<HTMLButtonElement>) => void
