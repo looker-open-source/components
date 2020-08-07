@@ -80,11 +80,11 @@ export const BulkActions = () => {
       columns={columns}
       headerRowId="all-pdts"
       select={{
-        itemsSelected: selections,
-        itemsVisible: allPageItems,
         onClickRowSelect: true,
         onSelect,
         onSelectAll,
+        pageItems: allPageItems,
+        selectedItems: selections,
       }}
     >
       {items}

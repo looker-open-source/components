@@ -105,12 +105,12 @@ export interface SelectConfig {
   /**
    * The ids of all ActionListItems which should be displayed as "selected"
    */
-  itemsSelected: string[]
+  selectedItems: string[]
   /**
-   * An array containing the id's of all visible items
+   * An array containing the id's of all visible items (i.e. all items on the current page)
    * This is primarily used when determining the checked state of the select all checkbox
    */
-  itemsVisible: string[]
+  pageItems: string[]
   /**
    * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
    * @default false
@@ -165,11 +165,10 @@ export const ActionListLayout: FC<ActionListProps> = ({
   select,
 }) => {
   const allSelected: MixedBoolean =
-    select &&
-    select.itemsVisible.every((id) => select.itemsSelected.includes(id))
+    select && select.pageItems.every((id) => select.selectedItems.includes(id))
       ? true
       : select &&
-        select.itemsVisible.some((id) => select.itemsSelected.includes(id))
+        select.pageItems.some((id) => select.selectedItems.includes(id))
       ? 'mixed'
       : false
 
@@ -195,7 +194,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       <div className={className}>
         {actionListHeader}
-        {bulk && select && select.itemsSelected.length > 0 && (
+        {bulk && select && select.selectedItems.length > 0 && (
           <ActionListControlBar {...bulk} />
         )}
         <div>{children}</div>

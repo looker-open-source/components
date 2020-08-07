@@ -145,10 +145,10 @@ const actionListWithClickableRows = (
 const onSelect = jest.fn()
 const onSelectAll = jest.fn()
 const defaultSelectConfig = {
-  itemsSelected: [],
-  itemsVisible: ['1', '2'],
   onSelect,
   onSelectAll,
+  pageItems: ['1', '2'],
+  selectedItems: [],
 }
 
 describe('ActionList', () => {
@@ -302,12 +302,12 @@ describe('ActionList', () => {
         {items}
       </ActionList>
     )
-    const actionListWithItemsSelected = (
+    const actionListWithSelectedItems = (
       <ActionList
         columns={columns}
         select={{
           ...defaultSelectConfig,
-          itemsSelected: ['1'],
+          selectedItems: ['1'],
         }}
       >
         {items}
@@ -327,8 +327,8 @@ describe('ActionList', () => {
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 
-    test('itemsSelected determines if a checkbox is checked', () => {
-      const { getAllByRole } = renderWithTheme(actionListWithItemsSelected)
+    test('selectedItems determines if a checkbox is checked', () => {
+      const { getAllByRole } = renderWithTheme(actionListWithSelectedItems)
       const checkbox = getAllByRole('checkbox')[1]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
     })
@@ -346,7 +346,7 @@ describe('ActionList', () => {
         columns={columns}
         select={{
           ...defaultSelectConfig,
-          itemsSelected: ['2'],
+          selectedItems: ['2'],
         }}
       >
         {items}
@@ -358,7 +358,7 @@ describe('ActionList', () => {
         columns={columns}
         select={{
           ...defaultSelectConfig,
-          itemsSelected: ['1', '2'],
+          selectedItems: ['1', '2'],
         }}
       >
         {items}
@@ -377,18 +377,18 @@ describe('ActionList', () => {
       expect(onSelectAll).toHaveBeenCalledTimes(1)
     })
 
-    test('Header checkbox is unchecked when itemsSelected includes no row ids', () => {
+    test('Header checkbox is unchecked when selectedItems includes no row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(false)
     })
 
-    test('Header checkbox is mixed when itemsSelected includes some row ids', () => {
+    test('Header checkbox is mixed when selectedItems includes some row ids', () => {
       const { getByTitle } = renderWithTheme(actionListWithSomeItemsSelected)
       getByTitle('Check Mark Mixed')
     })
 
-    test('Header checkbox is mixed when itemsSelected includes all row ids', () => {
+    test('Header checkbox is mixed when selectedItems includes all row ids', () => {
       const { getAllByRole } = renderWithTheme(actionListWithAllItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
       expect(headerCheckbox.checked).toEqual(true)
@@ -418,12 +418,12 @@ describe('ActionList', () => {
       totalCount: 4,
     }
 
-    test('Control bar is visible when bulk prop is provided and itemsSelected prop has length > 0', () => {
+    test('Control bar is visible when bulk prop is provided and selectedItems prop has length > 0', () => {
       const { getByText } = renderWithTheme(
         <ActionList
           columns={columns}
           bulk={bulk}
-          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
         >
           {items}
         </ActionList>
@@ -438,7 +438,7 @@ describe('ActionList', () => {
       const { queryByText } = renderWithTheme(
         <ActionList
           columns={columns}
-          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
         >
           {items}
         </ActionList>
@@ -447,12 +447,12 @@ describe('ActionList', () => {
       expect(queryByText('Bulk Actions')).not.toBeInTheDocument()
     })
 
-    test('Control bar is not visible when itemsSelected.length < 0', () => {
+    test('Control bar is not visible when selectedItems.length < 0', () => {
       const { queryByText } = renderWithTheme(
         <ActionList
           columns={columns}
           bulk={bulk}
-          select={{ ...defaultSelectConfig, itemsSelected: [] }}
+          select={{ ...defaultSelectConfig, selectedItems: [] }}
         >
           {items}
         </ActionList>
@@ -466,7 +466,7 @@ describe('ActionList', () => {
         <ActionList
           columns={columns}
           bulk={bulk}
-          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
         >
           {items}
         </ActionList>
@@ -488,7 +488,7 @@ describe('ActionList', () => {
         <ActionList
           columns={columns}
           bulk={bulk}
-          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+          select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
         >
           {items}
         </ActionList>
@@ -506,7 +506,7 @@ describe('ActionList', () => {
           bulk={bulk}
           select={{
             ...defaultSelectConfig,
-            itemsSelected: ['1', '2', '3', '4'],
+            selectedItems: ['1', '2', '3', '4'],
           }}
         >
           {items}

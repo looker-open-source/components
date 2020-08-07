@@ -98,7 +98,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
 
   const onChange = select ? () => select.onSelect(id) : undefined
 
-  const checked = select && select.itemsSelected.includes(id)
+  const checked = select && select.selectedItems.includes(id)
 
   return (
     <ActionListRow
