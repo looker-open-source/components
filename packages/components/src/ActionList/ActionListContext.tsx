@@ -31,11 +31,8 @@ import { ActionListColumns, SelectConfig } from './ActionList'
 export interface ActionListContextProps {
   allSelected?: MixedBoolean
   columns?: ActionListColumns
-  itemsSelected: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   select?: SelectConfig
 }
 
-export const ActionListContext = createContext<ActionListContextProps>({
-  itemsSelected: [],
-})
+export const ActionListContext = createContext<ActionListContextProps>({})

@@ -43,22 +43,21 @@ export const Basic = () => {
     )
   }
 
-  const selectableItems = data
+  const itemsVisible = data
     .map(({ disabled, pdtName }) => !disabled && pdtName)
     .filter((element) => element) as string[]
 
-  const onSelectAll = () =>
-    setSelections(selections.length ? [] : selectableItems)
+  const onSelectAll = () => setSelections(selections.length ? [] : itemsVisible)
 
   return (
     <ActionList
       select={{
+        itemsSelected: selections,
+        itemsVisible,
         onClickRowSelect: true,
         onSelect,
         onSelectAll,
-        selectableItems,
       }}
-      itemsSelected={selections}
       columns={columns}
     >
       {items}

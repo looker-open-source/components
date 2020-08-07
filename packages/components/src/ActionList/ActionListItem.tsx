@@ -64,7 +64,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   onClick,
 }) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
-  const { itemsSelected, select } = useContext(ActionListContext)
+  const { select } = useContext(ActionListContext)
 
   const handleOnSelect = () => select && select.onSelect(id)
 
@@ -98,7 +98,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
 
   const onChange = select ? () => select.onSelect(id) : undefined
 
-  const checked = itemsSelected.includes(id)
+  const checked = select && select.itemsSelected.includes(id)
 
   return (
     <ActionListRow

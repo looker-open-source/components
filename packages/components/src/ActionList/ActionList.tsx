@@ -91,10 +91,6 @@ export interface ActionListProps {
    */
   select?: SelectConfig
   /**
-   * The ids of all ActionListItems which should be displayed as "selected"
-   */
-  itemsSelected?: string[]
-  /**
    * ID of the header row. Used for the aria-describedby of the select all checkbox.
    * Note: If undefined, this will be auto-generated
    */
@@ -106,6 +102,15 @@ export interface ActionListProps {
 }
 
 export interface SelectConfig {
+  /**
+   * The ids of all ActionListItems which should be displayed as "selected"
+   */
+  itemsSelected: string[]
+  /**
+   * An array containing the id's of all visible items
+   * This is primarily used when determining the checked state of the select all checkbox
+   */
+  itemsVisible: string[]
   /**
    * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
    * @default false
@@ -119,11 +124,6 @@ export interface SelectConfig {
    * Callback performed when user makes selects the header checkbox
    */
   onSelectAll: () => void
-  /**
-   * An array containing the id's of all visible items
-   * This is primarily used when determining the checked state of the select all checkbox
-   */
-  selectableItems: string[]
 }
 
 export interface BulkActionsConfig {
@@ -161,15 +161,15 @@ export const ActionListLayout: FC<ActionListProps> = ({
   headerRowId,
   children,
   columns,
-  itemsSelected = [],
   onSort,
   select,
 }) => {
   const allSelected: MixedBoolean =
-    select && select.selectableItems.every((id) => itemsSelected.includes(id))
+    select &&
+    select.itemsVisible.every((id) => select.itemsSelected.includes(id))
       ? true
       : select &&
-        select.selectableItems.some((id) => itemsSelected.includes(id))
+        select.itemsVisible.some((id) => select.itemsSelected.includes(id))
       ? 'mixed'
       : false
 
@@ -178,7 +178,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
   const context = {
     allSelected,
     columns,
-    itemsSelected,
     onSort,
     select,
   }
@@ -196,7 +195,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       <div className={className}>
         {actionListHeader}
-        {bulk && itemsSelected.length > 0 && <ActionListControlBar {...bulk} />}
+        {bulk && select && select.itemsSelected.length > 0 && (
+          <ActionListControlBar {...bulk} />
+        )}
         <div>{children}</div>
       </div>
     </ActionListContext.Provider>
