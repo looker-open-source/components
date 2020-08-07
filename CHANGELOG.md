@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `InputChips` and `SelectMulti` overflow when a fixed height is used
 - `InputChips` and `SelectMulti` long values breaking out of the input
+- `InputSearch`, `Select`, `InputChips` and `SelectMulti` x button not clickable with `autoResize` and a max-width reached
 - `Select`/`SelectMulti` list closing when trying to scroll by dragging the scrollbar
 - `SelectMulti` list height now adjusts as needed when chips are added
 - `Select` getting text highlighted in a focus trap when not filterable
