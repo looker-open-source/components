@@ -11,15 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ActionListControlBar` component
 - `useActionListSelectManager` hook
+- Added `xxxxxlarge` to sizes to support updated type ramp.
 
 ### Fixed
 
+- `Select` getting text highlighted in a focus trap when not filterable
 - `Tree` default color is text4 (was previously a different color due to browser button defaults)
 - `MenuItem` disabled prop is not clickable and its not a link.
 - detail is part of `MenuItem`'s clickable area
 - update Error Icon for Fields validation message
 - `Avatar*` corrected styling conflicts when underlying component is switched to button (via `role="button"`)
 - `Tabs` no longer show scrollbar when overflowing
+- `Accordion` & `Tree` presentation fixes for IE11
+- `DialogHeader` presentation fix for IE11
+- `Space` presentation fix for IE11 (also affects consumers)
+- `Tree` correct React warning about nested buttons by changing `TreeItem` back to `div` with `role="button`
 
 ### Changed
 
@@ -30,10 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove arrow from `Tooltip`, `Popover` and `Menu` by default
 - Updates to how we apply colors to `ButtonOutline` and `ButtonTransparent` to be more inline with design spec
 - `neutral` intent color is now defaults to `charcoal500`
-
-### Added
-
-- Added `xxxxxlarge` to sizes to support updated type ramp.
+- `ActionList` updated documentation to include info on control bar behavior
 
 ## [0.9.9] - 2020-08-02
 
