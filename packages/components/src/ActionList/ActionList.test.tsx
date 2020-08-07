@@ -334,18 +334,9 @@ describe('ActionList', () => {
     })
   })
 
-  // TODO
   describe('Selecting All', () => {
     const actionListWithNoItemsSelected = (
-      <ActionList
-        columns={columns}
-        select={{
-          itemsSelected: [],
-          itemsVisible: ['1', '2'],
-          onSelect,
-          onSelectAll,
-        }}
-      >
+      <ActionList columns={columns} select={defaultSelectConfig}>
         {items}
       </ActionList>
     )
@@ -354,10 +345,8 @@ describe('ActionList', () => {
       <ActionList
         columns={columns}
         select={{
+          ...defaultSelectConfig,
           itemsSelected: ['2'],
-          itemsVisible: ['1', '2'],
-          onSelect,
-          onSelectAll,
         }}
       >
         {items}
@@ -368,10 +357,8 @@ describe('ActionList', () => {
       <ActionList
         columns={columns}
         select={{
+          ...defaultSelectConfig,
           itemsSelected: ['1', '2'],
-          itemsVisible: ['1', '2'],
-          onSelect,
-          onSelectAll,
         }}
       >
         {items}
