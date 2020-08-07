@@ -81,7 +81,6 @@ exports[`ButtonToggle controlled 1`] = `
   border: solid 1px #DEE1E5;
   border-left-width: 0;
   border-radius: 0.25rem;
-  height: 36px;
 }
 
 .c1 .c2 {
@@ -104,7 +103,7 @@ exports[`ButtonToggle controlled 1`] = `
 }
 
 .c1.wrapping {
-  background-image: linear-gradient( 0deg,#FFFFFF 0,#FFFFFF 1px,transparent 1px,transparent 100% ),repeating-linear-gradient( 180deg,transparent,transparent calc(36px - 1px),#DEE1E5 calc(36px - 1px),#DEE1E5 36px );
+  background-image: linear-gradient( 0deg,#FFFFFF 0,#FFFFFF 1px,transparent 1px,transparent 100% ),repeating-linear-gradient( 180deg,transparent,transparent calc(36px - 3px),#DEE1E5 calc(36px - 3px),#DEE1E5 calc(36px - 2px) );
 }
 
 .c1.wrapping::after {
@@ -114,7 +113,7 @@ exports[`ButtonToggle controlled 1`] = `
   -webkit-flex-grow: 100;
   -ms-flex-positive: 100;
   flex-grow: 100;
-  height: 36px;
+  height: calc(36px - 2px);
 }
 
 .c1.wrapping .c2 {
