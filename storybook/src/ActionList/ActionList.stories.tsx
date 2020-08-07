@@ -27,17 +27,23 @@
 import {
   ActionList,
   ActionListItemAction,
+  ActionListManager,
+  Icon,
+  Heading,
+  SpaceVertical,
   useActionListSelectManager,
 } from '@looker/components'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 import React from 'react'
 import { columns, data } from './data'
 import { items } from './items'
 
 export default {
+  decorators: [withKnobs],
   title: 'ActionList',
 }
 
-export const BulkActions = () => {
+export const ActionListExample = () => {
   const allPageItems = data.map(({ pdtName }) => pdtName)
 
   const {
@@ -59,7 +65,22 @@ export const BulkActions = () => {
   const onTotalClearAll = () => setSelections([])
 
   const onBulkActionClick = () => {
-    alert(`Performing a bulk action on these items: \n${selections}`)
+    alert(`Performing a bulk action on these items: \n${selections.join(', ')}`)
+  }
+
+  const noResultsDisplay = boolean('Custom "noResultsDisplay"', true) && (
+    <SpaceVertical align="center">
+      <Icon size="xlarge" name="Beaker" color="key" />
+      <Heading>The mad scientists have nothing for you...</Heading>
+    </SpaceVertical>
+  )
+
+  const selectConfig = {
+    onClickRowSelect: true,
+    onSelect,
+    onSelectAll,
+    pageItems: allPageItems,
+    selectedItems: selections,
   }
 
   const bulkActionsConfig = {
@@ -75,19 +96,19 @@ export const BulkActions = () => {
   }
 
   return (
-    <ActionList
-      bulk={bulkActionsConfig}
-      columns={columns}
-      headerRowId="all-pdts"
-      select={{
-        onClickRowSelect: true,
-        onSelect,
-        onSelectAll,
-        pageItems: allPageItems,
-        selectedItems: selections,
-      }}
+    <ActionListManager
+      isLoading={boolean('isLoading', false)}
+      noResults={boolean('noResults', false)}
+      noResultsDisplay={noResultsDisplay}
     >
-      {items}
-    </ActionList>
+      <ActionList
+        select={boolean('Select Items', true) ? selectConfig : undefined}
+        bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
+        columns={columns}
+        headerRowId="all-pdts"
+      >
+        {items}
+      </ActionList>
+    </ActionListManager>
   )
 }
