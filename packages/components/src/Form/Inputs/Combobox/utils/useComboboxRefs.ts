@@ -39,7 +39,7 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   // I'm pretty excited about it.
   const optionsRef = useRef<ComboboxOptionObject[]>([])
 
-  const listRef = useRef<HTMLUListElement>(null)
+  const listRef = useRef<HTMLElement | null>(null)
 
   // When <ComboboxInput autoComplete={false} /> we don't want cycle back to
   // the user's value while navigating (because it's always the user's value),

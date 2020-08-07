@@ -24,17 +24,18 @@
 
  */
 import React from 'react'
-import { Form, InputSearch } from '@looker/components'
+import { InputSearch, SpaceVertical } from '@looker/components'
 
 export const All = () => (
-  <Form>
+  <SpaceVertical align="start">
     <Basic />
     <Placeholder />
     <Value />
     <Summary />
     <DefaultValue />
     <NoIcon />
-  </Form>
+    <AutoResize />
+  </SpaceVertical>
 )
 
 export default {
@@ -59,4 +60,7 @@ export const DefaultValue = () => (
 )
 export const NoIcon = () => (
   <InputSearch hideSearchIcon placeholder="Type your search" />
+)
+export const AutoResize = () => (
+  <InputSearch autoResize placeholder="Resizes to fit value" maxWidth={250} />
 )

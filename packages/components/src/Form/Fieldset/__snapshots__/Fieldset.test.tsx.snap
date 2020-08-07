@@ -31,7 +31,7 @@ exports[`Fieldset 1`] = `
   flex-direction: column;
 }
 
-.c8 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -56,17 +56,17 @@ exports[`Fieldset 1`] = `
   font-size: 0.875rem;
 }
 
-.c8 .c10 {
+.c9 .c11 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c8 .c10 span {
+.c9 .c11 span {
   padding: 0 0.5rem;
 }
 
-.c8 input {
+.c9 input {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -82,37 +82,37 @@ exports[`Fieldset 1`] = `
   padding: 0 0.5rem;
 }
 
-.c8 input::-webkit-search-decoration,
-.c8 input::-webkit-search-cancel-button,
-.c8 input::-webkit-search-results-button,
-.c8 input::-webkit-search-results-decoration {
+.c9 input::-webkit-search-decoration,
+.c9 input::-webkit-search-cancel-button,
+.c9 input::-webkit-search-results-button,
+.c9 input::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c8 input::-webkit-input-placeholder {
+.c9 input::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c8 input::-moz-placeholder {
+.c9 input::-moz-placeholder {
   color: #939BA5;
 }
 
-.c8 input:-ms-input-placeholder {
+.c9 input:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c8 input::placeholder {
+.c9 input::placeholder {
   color: #939BA5;
 }
 
-.c8:hover {
+.c9:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus,
-.c8:focus-within {
+.c9:focus,
+.c9:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
@@ -129,12 +129,12 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 
-.c0 .c12 {
+.c0 .c13 {
   font-size: 0.875rem;
   font-weight: 600;
   height: 24px;
@@ -145,6 +145,10 @@ exports[`Fieldset 1`] = `
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.c8 {
+  min-width: 0;
 }
 
 .c4 {
@@ -172,7 +176,7 @@ exports[`Fieldset 1`] = `
   grid-area: input;
 }
 
-.c4 .c9 {
+.c4 .c10 {
   grid-area: messages;
 }
 
@@ -182,13 +186,13 @@ exports[`Fieldset 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c4 .c14 {
+.c4 .c15 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c4 .c13 {
+.c4 .c14 {
   margin-top: 0.5rem;
 }
 
@@ -255,10 +259,10 @@ exports[`Fieldset 1`] = `
           one
         </label>
         <div
-          className="c7 "
+          className="c7 c8"
         >
           <div
-            className="c8 "
+            className="c9 "
             onMouseDown={[Function]}
           >
             <input
@@ -270,7 +274,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c9 "
+          className="c10 "
           id="text-1-describedby"
         />
       </div>
@@ -285,10 +289,10 @@ exports[`Fieldset 1`] = `
           two
         </label>
         <div
-          className="c7 "
+          className="c7 c8"
         >
           <div
-            className="c8 "
+            className="c9 "
             onMouseDown={[Function]}
           >
             <input
@@ -300,7 +304,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c9 "
+          className="c10 "
           id="text-2-describedby"
         />
       </div>
@@ -315,10 +319,10 @@ exports[`Fieldset 1`] = `
           three
         </label>
         <div
-          className="c7 "
+          className="c7 c8"
         >
           <div
-            className="c8 "
+            className="c9 "
             onMouseDown={[Function]}
           >
             <input
@@ -330,7 +334,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c9 "
+          className="c10 "
           id="text-3-describedby"
         />
       </div>
