@@ -418,9 +418,13 @@ describe('ActionList', () => {
       totalCount: 4,
     }
 
-    test('Control bar is visible when bulk prop is provided and itemsSelected prop has length >0', () => {
+    test('Control bar is visible when bulk prop is provided and itemsSelected prop has length > 0', () => {
       const { getByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -432,7 +436,10 @@ describe('ActionList', () => {
 
     test('Control bar is not visible when bulk prop is not provided', () => {
       const { queryByText } = renderWithTheme(
-        <ActionList columns={columns} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -442,7 +449,11 @@ describe('ActionList', () => {
 
     test('Control bar is not visible when itemsSelected.length < 0', () => {
       const { queryByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={[]}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, itemsSelected: [] }}
+        >
           {items}
         </ActionList>
       )
@@ -452,7 +463,11 @@ describe('ActionList', () => {
 
     test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
       const { getByText } = renderWithTheme(
-        <ActionList columns={columns} bulk={bulk} itemsSelected={['1']}>
+        <ActionList
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, itemsSelected: ['1'] }}
+        >
           {items}
         </ActionList>
       )
@@ -467,7 +482,10 @@ describe('ActionList', () => {
         <ActionList
           columns={columns}
           bulk={bulk}
-          itemsSelected={['1', '2', '3', '4']}
+          select={{
+            ...defaultSelectConfig,
+            itemsSelected: ['1', '2', '3', '4'],
+          }}
         >
           {items}
         </ActionList>
