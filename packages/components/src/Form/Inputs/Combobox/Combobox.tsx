@@ -34,6 +34,7 @@ import {
   TypographyProps,
   SpaceProps,
 } from '@looker/design-tokens'
+import isMatch from 'lodash/isMatch'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
@@ -122,7 +123,7 @@ export const ComboboxInternal = forwardRef(
     })
     const { lastActionType, option } = data
 
-    if (value !== undefined && (!option || option.value !== value.value)) {
+    if (value !== undefined && (!option || !isMatch(option, value))) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
           option: value,

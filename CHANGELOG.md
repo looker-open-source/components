@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `SelectMulti` and `InputChips` issues clicking on icons and chips
+- `Select` display value now properly updates when the option label for the current value changes
 - `InputChips` and `SelectMulti` overflow when a fixed height is used
 - `InputChips` and `SelectMulti` long values breaking out of the input
 - `InputSearch`, `Select`, `InputChips` and `SelectMulti` x button not clickable with `autoResize` and a max-width reached
