@@ -34,6 +34,7 @@ import {
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { MenuContext, MenuItemContext } from './MenuContext'
@@ -46,6 +47,12 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    * Indicates the MenuItem is checked
    */
   current?: boolean
+  /*
+   * optional extra description
+   */
+  description?: ReactNode
+  detail?: ReactNode
+  icon?: IconNames
   /**
    * Sets the correct accessible role for the MenuItem:
    * - Use **'link'** for items that navigation to another page
@@ -53,8 +60,6 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    * @default 'button'
    *
    */
-  detail?: ReactNode
-  icon?: IconNames
   itemRole?: 'link' | 'button'
 }
 
@@ -64,6 +69,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     className,
     compact: propCompact,
     current,
+    description,
     detail,
     disabled,
     href,
@@ -136,10 +142,10 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
-          size={24 / (compact ? 1.25 : 1)}
-          mr="xsmall"
           aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+          mr="xsmall"
+          size={24 / (compact ? 1.25 : 1)}
         />
       )
     )
@@ -167,20 +173,38 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     >
       <Component href={href} role="menuitem" target={target}>
         {renderedIcon}
-        <span>{children}</span>
+        <Title>
+          {children}
+          {description && (
+            <Paragraph fontSize="xsmall" color="text2">
+              {description}
+            </Paragraph>
+          )}
+        </Title>
         {detail && <Detail>{detail}</Detail>}
       </Component>
     </MenuItemLayout>
   )
 }
 
-export const MenuItem = styled(MenuItemInternal)``
+const Title = styled.span`
+  margin-top: auto;
+`
 
 const Detail = styled.div`
   color: ${({ theme: { colors } }) => colors.text1};
   margin-left: auto;
   margin-right: ${({ theme: { space } }) => space.medium};
   padding-left: ${({ theme: { space } }) => space.large};
+`
+
+export const MenuItem = styled(MenuItemInternal)`
+  display: flex;
+  ${({ description, theme: { space } }) =>
+    description &&
+    `
+      padding-bottom: ${space.small};
+    `}
 `
 
 interface IconPlaceholderProps extends SizeProps, SpaceProps {}
