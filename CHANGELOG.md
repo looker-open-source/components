@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
+
 ## [0.9.11] - 2020-08-07
 
 ### Added
