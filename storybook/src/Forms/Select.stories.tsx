@@ -234,11 +234,11 @@ export function SelectContent() {
           200 x 200
         </Flex>
         <Select
-          autoResize
+          width={300}
           mb="medium"
           options={newOptions}
           aria-label="Fruits"
-          placeholder="Foo"
+          placeholder="Controlled, searchable, clearable"
           isClearable
           value={value}
           onChange={handleChange}

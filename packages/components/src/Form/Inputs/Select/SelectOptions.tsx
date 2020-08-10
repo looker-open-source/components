@@ -154,8 +154,9 @@ export const SelectOptionGroup = ({
 }
 
 const SelectOptionGroupContainer = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-bottom: 1px solid;
+  border-color: ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid;
   padding: ${({ theme }) => theme.space.xsmall} 0;
   &:first-child,
   & + div {
