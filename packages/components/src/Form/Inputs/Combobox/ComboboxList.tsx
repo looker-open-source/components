@@ -52,6 +52,7 @@ import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
+import { useListWidths } from './utils/useListWidths'
 
 export interface ComboboxListProps
   extends Pick<ComboboxOptionIndicatorProps, 'indicator'>,
@@ -95,10 +96,6 @@ interface ComboboxListInternalProps extends ComboboxListProps {
   isMulti: boolean
 }
 
-function getElementWidth(element?: HTMLElement | null) {
-  return element && element.getBoundingClientRect().width
-}
-
 const ComboboxListInternal = forwardRef(
   (
     {
@@ -114,6 +111,10 @@ const ComboboxListInternal = forwardRef(
       cancelClickOutside = false,
       indicator,
       isMulti,
+
+      minWidth,
+      width,
+
       ...props
     }: ComboboxListInternalProps,
     ref: Ref<HTMLUListElement>
@@ -160,17 +161,18 @@ const ComboboxListInternal = forwardRef(
       ? useBlur(ComboboxMultiContext)
       : useBlur(ComboboxContext)
 
-    // Avoid calling getBoundingClientWidth if width/minWidth are set in props
-    const width = props.width || getElementWidth(wrapperElement) || 'auto'
-    const minWidth =
-      props.minWidth ||
-      (props.width === 'auto' ? getElementWidth(wrapperElement) : undefined)
+    // This hook minimizes the use of getBoundingClientRect for performance reasons
+    const widthProps = useListWidths({
+      isVisible,
+      minWidth,
+      width,
+      wrapperElement,
+    })
 
     const content = (
       <ComboboxUl
         {...props}
-        width={width}
-        minWidth={minWidth}
+        {...widthProps}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         ref={ref}

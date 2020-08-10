@@ -264,6 +264,7 @@ export function SelectMultiDemo() {
         1k (windowed) options
       </Heading>
       <SelectMulti
+        listLayout={{ width: 'auto' }}
         options={newOptions1k}
         placeholder="Select Brands"
         isFilterable
