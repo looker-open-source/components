@@ -83,7 +83,7 @@ exports[`MenuGroup - JSX label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .c8 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -95,8 +95,8 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .c8,
+.c5[aria-current='true'] .c8 {
   color: #939BA5;
 }
 
@@ -118,8 +118,19 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .c8 {
   color: #939BA5;
+}
+
+.c7 {
+  margin-top: auto;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <li
@@ -152,7 +163,7 @@ exports[`MenuGroup - JSX label 1`] = `
     type="none"
   >
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -161,13 +172,15 @@ exports[`MenuGroup - JSX label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           what?
         </span>
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -176,13 +189,15 @@ exports[`MenuGroup - JSX label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           who?
         </span>
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -191,7 +206,9 @@ exports[`MenuGroup - JSX label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           where?
         </span>
       </button>
@@ -283,7 +300,7 @@ exports[`MenuGroup - label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .c8 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -295,8 +312,8 @@ exports[`MenuGroup - label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .c8,
+.c5[aria-current='true'] .c8 {
   color: #939BA5;
 }
 
@@ -318,8 +335,19 @@ exports[`MenuGroup - label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .c8 {
   color: #939BA5;
+}
+
+.c7 {
+  margin-top: auto;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <li
@@ -348,7 +376,7 @@ exports[`MenuGroup - label 1`] = `
     type="none"
   >
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -357,13 +385,15 @@ exports[`MenuGroup - label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           what?
         </span>
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -372,13 +402,15 @@ exports[`MenuGroup - label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           who?
         </span>
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -387,7 +419,9 @@ exports[`MenuGroup - label 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c7"
+        >
           where?
         </span>
       </button>
@@ -458,7 +492,7 @@ exports[`MenuGroup 1`] = `
   text-decoration: none;
 }
 
-.c2 .c3 {
+.c2 .c5 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -470,8 +504,8 @@ exports[`MenuGroup 1`] = `
   color: #262D33;
 }
 
-.c2:hover .c3,
-.c2[aria-current='true'] .c3 {
+.c2:hover .c5,
+.c2[aria-current='true'] .c5 {
   color: #939BA5;
 }
 
@@ -493,8 +527,19 @@ exports[`MenuGroup 1`] = `
   color: #939BA5;
 }
 
-.c2[disabled]:hover .c3 {
+.c2[disabled]:hover .c5 {
   color: #939BA5;
+}
+
+.c4 {
+  margin-top: auto;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <li
@@ -505,7 +550,7 @@ exports[`MenuGroup 1`] = `
     type="none"
   >
     <li
-      className="c2 "
+      className="c2 c3"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -514,7 +559,9 @@ exports[`MenuGroup 1`] = `
       <button
         role="menuitem"
       >
-        <span>
+        <span
+          className="c4"
+        >
           who!
         </span>
       </button>
