@@ -34,9 +34,11 @@ import {
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import { Placement } from '@popperjs/core'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
+import { Tooltip } from '../Tooltip'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
@@ -61,6 +63,8 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    *
    */
   itemRole?: 'link' | 'button'
+  tooltip?: string
+  tooltipPlacement?: Placement
 }
 
 const MenuItemInternal: FC<MenuItemProps> = (props) => {
@@ -80,6 +84,8 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
+    tooltip,
+    tooltipPlacement,
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
@@ -150,14 +156,13 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       )
     )
 
-  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
-
   if (disabled && itemRole === 'link') {
     // eslint-disable-next-line no-console
     console.warn(
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled MenuItem'
     )
   }
+  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   return (
     <MenuItemLayout
@@ -171,18 +176,35 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onKeyDown={handleOnKeyDown}
       className={className}
     >
-      <Component href={href} role="menuitem" target={target}>
-        {renderedIcon}
-        <span>
-          {children}
-          {description && (
-            <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
-              {description}
-            </Paragraph>
-          )}
-        </span>
-        {detail && <Detail>{detail}</Detail>}
-      </Component>
+      {tooltip ? (
+        <Tooltip placement={tooltipPlacement || 'bottom'} content={tooltip}>
+          <Component href={href} role="menuitem" target={target}>
+            {renderedIcon}
+            <span>
+              {children}
+              {description && (
+                <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+                  {description}
+                </Paragraph>
+              )}
+            </span>
+            {detail && <Detail>{detail}</Detail>}
+          </Component>
+        </Tooltip>
+      ) : (
+        <Component href={href} role="menuitem" target={target}>
+          {renderedIcon}
+          <span>
+            {children}
+            {description && (
+              <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+                {description}
+              </Paragraph>
+            )}
+          </span>
+          {detail && <Detail>{detail}</Detail>}
+        </Component>
+      )}
     </MenuItemLayout>
   )
 }

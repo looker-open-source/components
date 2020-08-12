@@ -170,9 +170,9 @@ An icon can optionally be assigned to each item via the `icon` property.
 </Menu>
 ```
 
-### MenuItem attibutes
+### Detail & Description Support
 
-MenuItem suports `detail` and `description`.
+Use the `detail` and/or `description` prop to provide extra explanatory information on a given item.
 
 ```jsx
 <MenuList>
@@ -202,6 +202,24 @@ MenuItem suports `detail` and `description`.
     >
       Away
     </MenuItem>
+  </MenuList>
+</Menu>
+```
+
+### Tooltip support
+
+To implement Tooltip on MenuItem the tooltip prop represent the content and tooltipPlacement the placement of Tooltip. If tooltipPlacement is not pass Tooltip will be displayed on the bottom of MenuItem by default.
+
+```jsx
+<Menu>
+  <MenuDisclosure tooltip="Select your favorite kind">
+    <Button>Cheese</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem tooltip="It is gouda!" tooltipPlacement="left">
+      Gouda
+    </MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
   </MenuList>
 </Menu>
 ```
@@ -241,17 +259,6 @@ MenuItem suports `detail` and `description`.
   <MenuItem>Gouda</MenuItem>
   <MenuItem icon="ChartPie">Swiss</MenuItem>
 </MenuList>
-```
-
-### Detail Text
-
-Use the `detail` prop to provide explanatory detail to a given item.
-
-```jsx
-<MenuItem detail="Get regular updates">Schedule</MenuItem>
-<MenuItem icon="Beaker" detail="Try the newest toys!">
-  Labs
-</MenuItem>
 ```
 
 ### Disabled
