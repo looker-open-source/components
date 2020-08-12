@@ -173,23 +173,19 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     >
       <Component href={href} role="menuitem" target={target}>
         {renderedIcon}
-        <Title>
+        <span>
           {children}
           {description && (
             <Paragraph fontSize="xsmall" color="text2">
               {description}
             </Paragraph>
           )}
-        </Title>
+        </span>
         {detail && <Detail>{detail}</Detail>}
       </Component>
     </MenuItemLayout>
   )
 }
-
-const Title = styled.span`
-  margin-top: auto;
-`
 
 const Detail = styled.div`
   color: ${({ theme: { colors } }) => colors.text1};
@@ -199,12 +195,10 @@ const Detail = styled.div`
 `
 
 export const MenuItem = styled(MenuItemInternal)`
-  display: flex;
-  ${({ description, theme: { space } }) =>
-    description &&
-    `
-      padding-bottom: ${space.small};
-    `}
+  ${Paragraph} {
+    ${({ description, theme }) =>
+      description && `margin-top: ${theme.space.xxsmall}`}
+  }
 `
 
 interface IconPlaceholderProps extends SizeProps, SpaceProps {}

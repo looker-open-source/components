@@ -76,7 +76,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    height: ${({ compact }) => (compact ? '32px' : '40px')};
+    min-height: ${({ compact }) => (compact ? '32px' : '40px')};
     outline: none;
     padding: ${({
       compact,
