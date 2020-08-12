@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent, useMemo, useState } from 'react'
+import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -39,6 +39,7 @@ import {
   Select,
   Fieldset,
   FieldSelect,
+  FieldToggleSwitch,
   DialogContent,
   ComboboxOptionObject,
   SelectOptionProps,
@@ -62,6 +63,7 @@ export const All = () => (
     <InlineError />
     <SelectDemo />
     <UpdateOptions />
+    <ClearValue />
   </Fieldset>
 )
 
@@ -382,6 +384,30 @@ export const UpdateOptions = () => {
     <Space>
       <Button onClick={toggle}>Use {isPlural ? 'singular' : 'plural'}</Button>
       <Select autoResize options={options} value={value} onChange={setValue} />
+    </Space>
+  )
+}
+
+export const ClearValue = () => {
+  const [value, setValue] = useState(false)
+  function handleToggle(e: FormEvent<HTMLInputElement>) {
+    setValue(e.currentTarget.checked)
+  }
+
+  const [selectValue, setSelectValue] = useState('Option A')
+
+  return (
+    <Space p="large">
+      <FieldToggleSwitch
+        label="Enable dropdown"
+        on={value}
+        onChange={handleToggle}
+      />
+      <Select
+        value={value ? selectValue : ''}
+        onChange={setSelectValue}
+        options={[{ value: 'Option A' }, { value: 'Option B' }]}
+      />
     </Space>
   )
 }

@@ -29,7 +29,7 @@ import {
   renderWithTheme,
 } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
@@ -540,11 +540,12 @@ describe('Select / SelectMulti', () => {
 })
 
 describe('Select', () => {
+  const options = [
+    { label: 'Foo', value: 'FOO' },
+    { label: 'Bar', value: 'BAR' },
+  ]
+
   test('value', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select
         options={options}
@@ -561,11 +562,26 @@ describe('Select', () => {
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
+  test('clearing the value externally', () => {
+    const Component = () => {
+      const [value, setValue] = useState('FOO')
+      return (
+        <>
+          <Button onClick={() => setValue('')}>Clear</Button>
+          <Select value={value} onChange={setValue} options={options} />
+        </>
+      )
+    }
+    renderWithTheme(<Component />)
+
+    const input = screen.getByDisplayValue('Foo')
+    const button = screen.getByText('Clear')
+
+    fireEvent.click(button)
+    expect(input).toHaveValue('')
+  })
+
   test('defaultValue', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select options={options} placeholder="Search" defaultValue="BAR" />
     )
@@ -577,10 +593,6 @@ describe('Select', () => {
 
   test('isClearable', () => {
     const handleChange = jest.fn()
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select
         options={options}
@@ -611,7 +623,6 @@ describe('Select', () => {
   })
 
   test('isClearable, no defaultValue', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
     renderWithTheme(
       <Select options={options} isClearable data-testid="wrapper" />
     )
@@ -622,10 +633,6 @@ describe('Select', () => {
   })
 
   test('default to first option', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(<Select options={options} data-testid="wrapper" />)
 
     const input = screen.getByTestId('wrapper').querySelector('input')
@@ -633,47 +640,78 @@ describe('Select', () => {
     expect(input).toHaveValue('Foo')
   })
 
-  test('displayed value changes when option label changes', () => {
-    const Component = () => {
-      const [label, setLabel] = useState('Original Label')
-      const options = [
-        { label, value: 'value_stays_the_same' },
-        { label: 'Another Option', value: 'other' },
-      ]
-      return (
-        <>
-          <Button onClick={() => setLabel('Updated label')}>
-            Update label
-          </Button>
-          <Select value="value_stays_the_same" options={options} />
-        </>
-      )
-    }
-    renderWithTheme(<Component />)
+  describe('updating options', () => {
+    test('displayed value changes when option label changes', () => {
+      const Component = () => {
+        const [label, setLabel] = useState('Original Label')
+        const options = [
+          { label, value: 'value_stays_the_same' },
+          { label: 'Another Option', value: 'other' },
+        ]
+        return (
+          <>
+            <Button onClick={() => setLabel('Updated label')}>
+              Update label
+            </Button>
+            <Select value="value_stays_the_same" options={options} />
+          </>
+        )
+      }
+      renderWithTheme(<Component />)
 
-    const input = screen.getByDisplayValue('Original Label')
-    fireEvent.click(input)
-    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
-      Array [
-        "Original Label",
-        "Another Option",
-      ]
-    `)
-    // Close list
-    fireEvent.click(document)
+      const input = screen.getByDisplayValue('Original Label')
+      fireEvent.click(input)
+      expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+        Array [
+          "Original Label",
+          "Another Option",
+        ]
+      `)
+      // Close list
+      fireEvent.click(document)
 
-    fireEvent.click(screen.getByText('Update label'))
-    expect(input).toHaveDisplayValue('Updated label')
+      fireEvent.click(screen.getByText('Update label'))
+      expect(input).toHaveValue('Updated label')
 
-    fireEvent.click(input)
-    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
-      Array [
-        "Updated label",
-        "Another Option",
-      ]
-    `)
+      fireEvent.click(input)
+      expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+        Array [
+          "Updated label",
+          "Another Option",
+        ]
+      `)
 
-    // Close popover to silence act() warning
-    fireEvent.click(document)
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test('filtering out the selected option does not trigger a change', () => {
+      // Tests a bug where as soon as the selected option gets filtered out,
+      // the input value reverts to the current value
+      const Component = () => {
+        const [filterTerm, setFilterTerm] = useState('')
+        const filteredOptions = useMemo(
+          () =>
+            options.filter((option) => option.label.indexOf(filterTerm) > -1),
+          [filterTerm]
+        )
+        return (
+          <Select
+            value="FOO"
+            options={filteredOptions}
+            isFilterable
+            onFilter={setFilterTerm}
+          />
+        )
+      }
+      renderWithTheme(<Component />)
+
+      const input = screen.getByDisplayValue('Foo')
+      fireEvent.change(input, { target: { value: 'Ba' } })
+      expect(input).toHaveValue('Ba')
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
   })
 })
