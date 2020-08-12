@@ -672,78 +672,75 @@ describe('Select', () => {
     expect(input).toHaveValue('Foo')
   })
 
-  describe('updating options', () => {
-    test('displayed value changes when option label changes', () => {
-      const Component = () => {
-        const [label, setLabel] = useState('Original Label')
-        const options = [
-          { label, value: 'value_stays_the_same' },
-          { label: 'Another Option', value: 'other' },
-        ]
-        return (
-          <>
-            <Button onClick={() => setLabel('Updated label')}>
-              Update label
-            </Button>
-            <Select value="value_stays_the_same" options={options} />
-          </>
-        )
-      }
-      renderWithTheme(<Component />)
+  test('displayed value changes when option label changes', () => {
+    const Component = () => {
+      const [label, setLabel] = useState('Original Label')
+      const options = [
+        { label, value: 'value_stays_the_same' },
+        { label: 'Another Option', value: 'other' },
+      ]
+      return (
+        <>
+          <Button onClick={() => setLabel('Updated label')}>
+            Update label
+          </Button>
+          <Select value="value_stays_the_same" options={options} />
+        </>
+      )
+    }
+    renderWithTheme(<Component />)
 
-      const input = screen.getByDisplayValue('Original Label')
-      fireEvent.click(input)
-      expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
-        Array [
-          "Original Label",
-          "Another Option",
-        ]
-      `)
-      // Close list
-      fireEvent.click(document)
+    const input = screen.getByDisplayValue('Original Label')
+    fireEvent.click(input)
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "Original Label",
+        "Another Option",
+      ]
+    `)
+    // Close list
+    fireEvent.click(document)
 
-      fireEvent.click(screen.getByText('Update label'))
-      expect(input).toHaveValue('Updated label')
+    fireEvent.click(screen.getByText('Update label'))
+    expect(input).toHaveValue('Updated label')
 
-      fireEvent.click(input)
-      expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
-        Array [
-          "Updated label",
-          "Another Option",
-        ]
-      `)
+    fireEvent.click(input)
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "Updated label",
+        "Another Option",
+      ]
+    `)
 
-      // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
 
-    test('filtering out the selected option does not trigger a change', () => {
-      // Tests a bug where as soon as the selected option gets filtered out,
-      // the input value reverts to the current value
-      const Component = () => {
-        const [filterTerm, setFilterTerm] = useState('')
-        const filteredOptions = useMemo(
-          () =>
-            options.filter((option) => option.label.indexOf(filterTerm) > -1),
-          [filterTerm]
-        )
-        return (
-          <Select
-            value="FOO"
-            options={filteredOptions}
-            isFilterable
-            onFilter={setFilterTerm}
-          />
-        )
-      }
-      renderWithTheme(<Component />)
+  test('filtering out the selected option does not trigger a change', () => {
+    // Tests a bug where as soon as the selected option gets filtered out,
+    // the input value reverts to the current value
+    const Component = () => {
+      const [filterTerm, setFilterTerm] = useState('')
+      const filteredOptions = useMemo(
+        () => options.filter((option) => option.label.indexOf(filterTerm) > -1),
+        [filterTerm]
+      )
+      return (
+        <Select
+          value="FOO"
+          options={filteredOptions}
+          isFilterable
+          onFilter={setFilterTerm}
+        />
+      )
+    }
+    renderWithTheme(<Component />)
 
-      const input = screen.getByDisplayValue('Foo')
-      fireEvent.change(input, { target: { value: 'Ba' } })
-      expect(input).toHaveValue('Ba')
+    const input = screen.getByDisplayValue('Foo')
+    fireEvent.change(input, { target: { value: 'Ba' } })
+    expect(input).toHaveValue('Ba')
 
-      // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })
