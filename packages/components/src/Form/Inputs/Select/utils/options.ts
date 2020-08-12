@@ -24,8 +24,6 @@
 
  */
 
-import { IconNames } from '@looker/icons'
-import { ReactNode } from 'react'
 import { ComboboxOptionObject, getComboboxText } from '../../Combobox'
 import {
   SelectOptionGroupProps,

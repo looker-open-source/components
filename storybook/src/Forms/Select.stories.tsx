@@ -422,3 +422,43 @@ export const EmptyValue = () => {
     </Space>
   )
 }
+
+const iconOptions = [
+  { icon: 'ChartArea', label: 'Area', value: 'area' },
+  { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+  { icon: 'ChartBoxPlot', label: 'Box Plot', value: 'boxplot' },
+  { icon: 'ChartColumn', label: 'Column', value: 'column' },
+  { icon: 'ChartCustom', label: 'Custom', value: 'custom' },
+  { icon: 'ChartDonutMultiples', label: 'Donut', value: 'donut' },
+  { icon: 'ChartFunnel', label: 'Funnel', value: 'funnel' },
+  { icon: 'ChartLine', label: 'Line', value: 'line' },
+  { icon: 'ChartMap', label: 'Map', value: 'map' },
+  { icon: 'ChartPie', label: 'Pie', value: 'pie' },
+  { icon: 'ChartScatterplot', label: 'Scatter Plot', value: 'scatterplot' },
+  { icon: 'ChartSingleRecord', label: 'Single Record', value: 'singlerecord' },
+  { icon: 'ChartSingleValue', label: 'Single Value', value: 'singlevalue' },
+  { icon: 'ChartTable', label: 'Table', value: 'table' },
+  { icon: 'ChartTimeline', label: 'Timeline', value: 'timeline' },
+  { icon: 'ChartWaterfall', label: 'Waterfall', value: 'waterfall' },
+  { icon: 'ChartWordCloud', label: 'Word Cloud', value: 'wordcloud' },
+]
+
+export const SelectIcon = () => {
+  const [filterTerm, setFilterTerm] = useState('')
+  const newOptions = useMemo(() => {
+    return iconOptions.filter(
+      (iconOption) =>
+        iconOption.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
+    )
+  }, [filterTerm])
+  return (
+    <Space>
+      <Select
+        options={newOptions}
+        placeholder="Search visualizations"
+        isFilterable
+        onFilter={setFilterTerm}
+      />
+    </Space>
+  )
+}
