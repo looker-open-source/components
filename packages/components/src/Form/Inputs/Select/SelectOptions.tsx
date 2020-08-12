@@ -24,9 +24,11 @@
 
  */
 
+import { IconNames, iconNameList } from '@looker/icons'
 import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
+import { Icon } from '../../../Icon'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
@@ -42,10 +44,20 @@ import {
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
+export function isIconName(icon?: IconNames | ReactNode): icon is IconNames {
+  return typeof icon === 'string' && iconNameList.includes(icon)
+}
+
 export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
+  /**
+   * Customize the area to the left of the label and to the right of the indicator / check mark
+   * Use an IconName, ReactNode, function component or render-prop-style function
+   * When an option with an icon is selected, the icon will render in the input as well
+   */
+  icon?: IconNames | ReactNode
 }
 
 export interface SelectOptionGroupProps {
@@ -60,19 +72,34 @@ const renderOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  if (option.description) {
+  const { icon, ...rest } = option
+  const iconToUse = isIconName(icon) ? (
+    <Icon size="small" name={icon} mr="xsmall" />
+  ) : (
+    icon
+  )
+  if (icon || option.description) {
     return (
       <ComboboxOption
-        {...option}
+        {...rest}
         key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        <SelectOptionWithDescription {...option} />
+        {option.description ? (
+          <SelectOptionWithDescription {...rest}>
+            {iconToUse}
+          </SelectOptionWithDescription>
+        ) : (
+          <>
+            {iconToUse}
+            <ComboboxOptionText />
+          </>
+        )}
       </ComboboxOption>
     )
   }
-  return <ComboboxOption {...option} key={key} />
+  return <ComboboxOption {...rest} key={key} />
 }
 
 const renderMultiOption = (

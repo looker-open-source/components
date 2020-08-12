@@ -24,6 +24,8 @@
 
  */
 
+import { IconNames } from '@looker/icons'
+import { ReactNode } from 'react'
 import { ComboboxOptionObject, getComboboxText } from '../../Combobox'
 import {
   SelectOptionGroupProps,
@@ -51,6 +53,18 @@ export function getOption(value?: string, options?: SelectOptionProps[]) {
   // leave label out, so that the matching against the option saved in ComboboxContext won't fail
   const labelProps = label ? { label } : {}
   return value !== undefined ? { ...labelProps, value } : undefined
+}
+
+export function getOptionIcon(
+  value?: string,
+  options?: SelectOptionProps[]
+): IconNames | ReactNode {
+  const flattenedOptions = options && flattenOptions(options)
+  if (value && flattenedOptions) {
+    const option = flattenedOptions.find((opt) => opt.value === value)
+    return option && option.icon
+  }
+  return undefined
 }
 
 export function getOptions(

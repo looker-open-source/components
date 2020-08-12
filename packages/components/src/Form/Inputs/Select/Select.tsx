@@ -25,22 +25,25 @@
  */
 
 import { LayoutProps } from '@looker/design-tokens'
-import React, { forwardRef, Ref, FormEvent } from 'react'
+import React, { forwardRef, Ref, FormEvent, useContext } from 'react'
 import styled from 'styled-components'
+import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
+  ComboboxContext,
   ComboboxInput,
   ComboboxList,
   ComboboxOptionIndicatorProps,
   ComboboxProps,
 } from '../Combobox'
 import {
+  isIconName,
   SelectOptionObject,
   SelectOptions,
   SelectOptionsBaseProps,
 } from './SelectOptions'
-import { getOption, getFirstOption } from './utils/options'
+import { getOption, getOptionIcon, getFirstOption } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectBaseProps
@@ -91,6 +94,18 @@ export interface SelectProps
    * Handle an option being selected
    */
   onChange?: (value: string) => void
+}
+
+function SelectInputIcon({ options }: SelectOptionsBaseProps) {
+  const {
+    data: { option },
+  } = useContext(ComboboxContext)
+  const icon = option && getOptionIcon(option.value, options)
+  return isIconName(icon) ? (
+    <Icon name={icon} size="small" ml="xxsmall" />
+  ) : (
+    <>{icon}</>
+  )
 }
 
 const SelectComponent = forwardRef(
@@ -161,6 +176,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
+          before={<SelectInputIcon options={options} />}
           disabled={disabled}
           placeholder={placeholder}
           name={name}
