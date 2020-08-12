@@ -164,6 +164,21 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
+  const menuItemContent = (
+    <Component href={href} role="menuitem" target={target}>
+      {renderedIcon}
+      <span>
+        {children}
+        {description && (
+          <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+            {description}
+          </Paragraph>
+        )}
+      </span>
+      {detail && <Detail>{detail}</Detail>}
+    </Component>
+  )
+
   return (
     <MenuItemLayout
       aria-current={current && 'true'}
@@ -177,33 +192,11 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       className={className}
     >
       {tooltip ? (
-        <Tooltip placement={tooltipPlacement || 'bottom'} content={tooltip}>
-          <Component href={href} role="menuitem" target={target}>
-            {renderedIcon}
-            <span>
-              {children}
-              {description && (
-                <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
-                  {description}
-                </Paragraph>
-              )}
-            </span>
-            {detail && <Detail>{detail}</Detail>}
-          </Component>
+        <Tooltip placement={tooltipPlacement || 'left'} content={tooltip}>
+          {menuItemContent}
         </Tooltip>
       ) : (
-        <Component href={href} role="menuitem" target={target}>
-          {renderedIcon}
-          <span>
-            {children}
-            {description && (
-              <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
-                {description}
-              </Paragraph>
-            )}
-          </span>
-          {detail && <Detail>{detail}</Detail>}
-        </Component>
+        menuItemContent
       )}
     </MenuItemLayout>
   )

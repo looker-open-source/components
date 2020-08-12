@@ -170,7 +170,7 @@ An icon can optionally be assigned to each item via the `icon` property.
 </Menu>
 ```
 
-### Detail & Description Support
+### Detail & Description
 
 Use the `detail` and/or `description` prop to provide extra explanatory information on a given item.
 
@@ -206,27 +206,24 @@ Use the `detail` and/or `description` prop to provide extra explanatory informat
 </Menu>
 ```
 
-### Tooltip support
+### Tooltip
 
-To implement Tooltip on MenuItem the tooltip prop represent the content and tooltipPlacement the placement of Tooltip. If tooltipPlacement is not pass Tooltip will be displayed on the bottom of MenuItem by default.
+To implement Tooltip on MenuItem, pass a string value to the `tooltip` prop.
+You can change the tooltip position by setting `tooltipPlacement` to one of `bottom`, `left`, `right or`top`. Tooltips will render to the`left` by default.
 
 ```jsx
-<Menu>
-  <MenuDisclosure tooltip="Select your favorite kind">
-    <Button>Cheese</Button>
-  </MenuDisclosure>
-  <MenuList>
-    <MenuItem tooltip="It is gouda!" tooltipPlacement="left">
-      Gouda
-    </MenuItem>
-    <MenuItem icon="FavoriteOutline" tooltip="It is swiss!">
-      Swiss
-    </MenuItem>
-  </MenuList>
-</Menu>
+<MenuList>
+  <MenuItem tooltip="It is gouda!">Gouda</MenuItem>
+  <MenuItem
+    tooltip="I have a Swiss Cheese joke, but it's full of holes."
+    tooltipPlacement="right"
+  >
+    Swiss
+  </MenuItem>
+</MenuList>
 ```
 
-### Icon Support
+### Icon
 
 ```jsx
 <MenuList>
@@ -236,7 +233,7 @@ To implement Tooltip on MenuItem the tooltip prop represent the content and tool
 </MenuList>
 ```
 
-### Artwork Support
+### Artwork
 
 ```jsx
 <MenuItem
