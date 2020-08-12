@@ -61,6 +61,21 @@ export default {
 const menuItems = (
   <>
     <MenuGroup>
+      <MenuItem
+        detail="detail"
+        description="this is the description"
+        icon="LogoRings"
+      >
+        Looker
+      </MenuItem>
+      <MenuItem description="this is the description" icon="Validate">
+        Validate
+      </MenuItem>
+      <MenuItem detail="detail" icon="ChartPie">
+        Pizza
+      </MenuItem>
+    </MenuGroup>
+    <MenuGroup>
       <MenuItem>Gouda</MenuItem>
       <MenuItem current> Swiss</MenuItem>
       <MenuItem>Cheddar</MenuItem>
@@ -116,7 +131,9 @@ export const IconSpace = () => (
 
     <MenuList compact>
       <MenuGroup label="MenuGroup with 3 Items">
-        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem description="this is a description" icon="LogoRings">
+          Looker
+        </MenuItem>
         <MenuItem icon="Validate">Validate</MenuItem>
         <MenuItem>Pizza!</MenuItem>
       </MenuGroup>
@@ -213,7 +230,11 @@ export const RealisticMenus = () => {
         </MenuDisclosure>
         <MenuList>
           <MenuGroup>
-            <MenuItem icon="Refresh" detail="⌘⇧↵">
+            <MenuItem
+              description="some description"
+              icon="Refresh"
+              detail="⌘⇧↵"
+            >
               Clear cache & refresh
             </MenuItem>
           </MenuGroup>
@@ -222,7 +243,7 @@ export const RealisticMenus = () => {
             <MenuItem icon="EditOutline" detail="⌘⇧E">
               Edit dashboard
             </MenuItem>
-            <MenuItem>Get LookMl</MenuItem>
+            <MenuItem description="some description">Get LookMl</MenuItem>
             <MenuItem icon="Undo" detail="A longer detail">
               Revert to original dashboard
             </MenuItem>
@@ -262,7 +283,11 @@ export const RealisticMenus = () => {
           </MenuGroup>
 
           <MenuGroup>
-            <MenuItem icon="Download" detail="⌥⇧D">
+            <MenuItem
+              description="some description"
+              icon="Download"
+              detail="⌥⇧D"
+            >
               Edit dashboard
             </MenuItem>
           </MenuGroup>
@@ -280,7 +305,9 @@ export const RealisticMenus = () => {
         <MenuList compact>
           <MenuGroup>
             <MenuItem icon="EditOutline">Rename</MenuItem>
-            <MenuItem icon="TrashOutline">Delete</MenuItem>
+            <MenuItem description="some description" icon="TrashOutline">
+              Delete
+            </MenuItem>
           </MenuGroup>
           <MenuGroup label="Create">
             <MenuItem icon="FolderNew">Folder</MenuItem>

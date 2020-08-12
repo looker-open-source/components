@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `MenuItem` now supports `description`
 - `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
 
 ## [0.9.11] - 2020-08-07
