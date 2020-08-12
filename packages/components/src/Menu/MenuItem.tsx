@@ -176,7 +176,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
         <span>
           {children}
           {description && (
-            <Paragraph fontSize="xsmall" color="text2">
+            <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
               {description}
             </Paragraph>
           )}
@@ -194,12 +194,7 @@ const Detail = styled.div`
   padding-left: ${({ theme: { space } }) => space.large};
 `
 
-export const MenuItem = styled(MenuItemInternal)`
-  ${Paragraph} {
-    ${({ description, theme }) =>
-      description && `margin-top: ${theme.space.xxsmall}`}
-  }
-`
+export const MenuItem = styled(MenuItemInternal)``
 
 interface IconPlaceholderProps extends SizeProps, SpaceProps {}
 
