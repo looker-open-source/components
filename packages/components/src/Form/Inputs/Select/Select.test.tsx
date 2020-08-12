@@ -578,7 +578,7 @@ describe('Select', () => {
     const button = screen.getByText('Clear')
 
     fireEvent.click(button)
-    expect(input).toHaveValue('')
+    expect(input).not.toHaveValue()
   })
 
   test('defaultValue', () => {
@@ -609,7 +609,7 @@ describe('Select', () => {
     const clearButton = screen.getByRole('button')
     fireEvent.click(clearButton)
 
-    expect(input).toHaveValue('')
+    expect(input).not.toHaveValue()
     expect(handleChange).toHaveBeenCalledWith('')
   })
 
@@ -619,7 +619,7 @@ describe('Select', () => {
 
     const input = screen.getByPlaceholderText('Search')
     // should not default to first option
-    expect(input).toHaveValue('')
+    expect(input).not.toHaveValue()
   })
 
   test('isClearable, no defaultValue', () => {
@@ -630,6 +630,38 @@ describe('Select', () => {
     const input = screen.getByTestId('wrapper').querySelector('input')
     // should not default to first option
     expect(input).not.toHaveValue()
+  })
+
+  test('empty string defaultValue', () => {
+    renderWithTheme(
+      <Select options={options} defaultValue="" data-testid="wrapper" />
+    )
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).not.toHaveValue()
+  })
+
+  test('empty string value', () => {
+    renderWithTheme(<Select options={options} value="" data-testid="wrapper" />)
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).not.toHaveValue()
+  })
+
+  test('empty string value, empty string option', () => {
+    renderWithTheme(
+      <Select
+        options={[{ label: 'An empty string', value: '' }, ...options]}
+        value=""
+        data-testid="wrapper"
+      />
+    )
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).toHaveValue('An empty string')
   })
 
   test('default to first option', () => {
