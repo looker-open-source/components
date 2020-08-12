@@ -30,7 +30,7 @@ export function getComboboxText(
   value?: string | ComboboxOptionObject,
   options?: ComboboxOptionObject[]
 ): string {
-  if (!value) return ''
+  if (value === undefined) return ''
   if (typeof value === 'string') {
     if (options && options.length > 0) {
       const currentOption = options.find((option) => option.value === value)

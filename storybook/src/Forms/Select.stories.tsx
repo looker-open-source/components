@@ -396,17 +396,28 @@ export const ClearValue = () => {
 
   const [selectValue, setSelectValue] = useState('Option A')
 
+  const options = [{ value: 'Option A' }, { value: 'Option B' }]
+
   return (
     <Space p="large">
       <FieldToggleSwitch
-        label="Enable dropdown"
+        label="Use empty value"
         on={value}
         onChange={handleToggle}
       />
       <Select
-        value={value ? selectValue : ''}
+        value={value ? '' : selectValue}
+        placeholder="Can't change me when toggle is on"
         onChange={setSelectValue}
-        options={[{ value: 'Option A' }, { value: 'Option B' }]}
+        options={options}
+      />
+      <Select
+        value={value ? '' : selectValue}
+        onChange={setSelectValue}
+        options={[
+          { label: 'Option with empty string value', value: '' },
+          ...options,
+        ]}
       />
     </Space>
   )
