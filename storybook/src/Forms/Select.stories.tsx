@@ -63,7 +63,7 @@ export const All = () => (
     <InlineError />
     <SelectDemo />
     <UpdateOptions />
-    <ClearValue />
+    <EmptyValue />
   </Fieldset>
 )
 
@@ -388,7 +388,7 @@ export const UpdateOptions = () => {
   )
 }
 
-export const ClearValue = () => {
+export const EmptyValue = () => {
   const [value, setValue] = useState(false)
   function handleToggle(e: FormEvent<HTMLInputElement>) {
     setValue(e.currentTarget.checked)
