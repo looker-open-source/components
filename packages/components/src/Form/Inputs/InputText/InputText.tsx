@@ -198,18 +198,15 @@ const InputTextLayout = forwardRef(
       'aria-invalid': validationType === 'error' ? true : undefined,
       type,
     }
-    const input = <input {...inputProps} ref={ref} />
 
     const inner = children ? (
       // Support for rendering chips in InputChips and SelectMulti
       <div className="inner">
         {children}
-        {input}
+        {<InlineInputTextBase {...inputProps} ref={ref} />}
       </div>
-    ) : autoResize ? (
-      <InlineInputTextBase {...inputProps} ref={ref} />
     ) : (
-      input
+      <InlineInputTextBase {...inputProps} ref={ref} autoResize={autoResize} />
     )
 
     return (

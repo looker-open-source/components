@@ -42,6 +42,7 @@ export interface InlineInputTextProps
     InputTextTypeProps {
   underlineOnlyOnHover?: boolean
   simple?: boolean
+  autoResize?: boolean
 }
 
 const InlineInputTextLayout = forwardRef(
@@ -53,6 +54,7 @@ const InlineInputTextLayout = forwardRef(
       defaultValue,
       placeholder,
       type = 'text',
+      autoResize = false,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -75,6 +77,7 @@ const InlineInputTextLayout = forwardRef(
           placeholder={placeholder}
           type={type}
           ref={ref}
+          autoResize={autoResize}
           {...omitStyledProps(pick(props, inputPropKeys))}
         />
         <StyledText>{displayValue || placeholder || ' '}</StyledText>
@@ -85,7 +88,7 @@ const InlineInputTextLayout = forwardRef(
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<{ autoResize: boolean }>`
   ${innerInputStyle}
   font: inherit;
   left: 0;
@@ -94,6 +97,7 @@ const StyledInput = styled.input`
   text-align: inherit;
   text-transform: inherit;
   top: 0;
+  width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;
