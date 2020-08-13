@@ -53,18 +53,6 @@ export function getOption(value?: string, options?: SelectOptionProps[]) {
   return value !== undefined ? { ...labelProps, value } : undefined
 }
 
-export function getOptionIcon(
-  value?: string,
-  options?: SelectOptionProps[]
-): IconNames | ReactNode {
-  const flattenedOptions = options && flattenOptions(options)
-  if (value && flattenedOptions) {
-    const option = flattenedOptions.find((opt) => opt.value === value)
-    return option && option.icon
-  }
-  return undefined
-}
-
 export function getOptions(
   values?: string[],
   options?: SelectOptionProps[]
