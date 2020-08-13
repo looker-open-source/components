@@ -101,6 +101,7 @@ const SelectComponent = forwardRef(
       isFilterable,
       isClearable,
       placeholder,
+      name,
       onFilter,
       onChange,
       value,
@@ -162,6 +163,7 @@ const SelectComponent = forwardRef(
           {...ariaProps}
           disabled={disabled}
           placeholder={placeholder}
+          name={name}
           validationType={validationType}
           isClearable={isClearable}
           autoComplete={false}
