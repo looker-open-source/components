@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `Lqa` icon artwrok
+- `Select` option icons
+- Added `Lqa` icon artwork
 
 ### Fixed
+
 - `Tabs` fix for distributed so each tab takes up an equal amount of space.
 - `Select` value can now be cleared via external state change
 - `Select` name attribute is passed to the input
