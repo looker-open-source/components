@@ -80,7 +80,7 @@ const renderOption = (
   const { description, icon, ...rest } = option
 
   if (icon || description) {
-    const iconWithMargin = icon && (
+    const iconToUse = icon && (
       <Icon
         size="small"
         mr="xsmall"
@@ -96,7 +96,7 @@ const renderOption = (
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        {iconWithMargin}
+        {iconToUse}
         {description ? (
           <SelectOptionWithDescription description={description} {...rest} />
         ) : (

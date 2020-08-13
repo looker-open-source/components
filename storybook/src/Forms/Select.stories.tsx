@@ -65,7 +65,7 @@ export const All = () => (
     <SelectDemo />
     <UpdateOptions />
     <EmptyValue />
-    <OptionIcon />
+    <OptionIcons />
   </Fieldset>
 )
 
@@ -443,7 +443,7 @@ const iconOptions = [
   { icon: 'ChartWordCloud', label: 'Word Cloud', value: 'wordcloud' },
 ]
 
-export const OptionIcon = () => {
+export const OptionIcons = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
     return iconOptions.filter(
