@@ -72,13 +72,15 @@ const renderOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  const { icon, ...rest } = option
-  const iconToUse = isIconName(icon) ? (
-    <Icon size="small" name={icon} mr="xsmall" />
-  ) : (
-    icon
-  )
-  if (icon || option.description) {
+  const { description, icon, ...rest } = option
+
+  if (icon || description) {
+    const iconWithMargin = icon && (
+      <Box mr="xsmall">
+        {isIconName(icon) ? <Icon size="small" name={icon} /> : icon}
+      </Box>
+    )
+
     return (
       <ComboboxOption
         {...rest}
@@ -86,15 +88,11 @@ const renderOption = (
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        {option.description ? (
-          <SelectOptionWithDescription {...rest}>
-            {iconToUse}
-          </SelectOptionWithDescription>
+        {iconWithMargin}
+        {description ? (
+          <SelectOptionWithDescription description={description} {...rest} />
         ) : (
-          <>
-            {iconToUse}
-            <ComboboxOptionText />
-          </>
+          <ComboboxOptionText />
         )}
       </ComboboxOption>
     )

@@ -26,6 +26,7 @@
 
 import { IconNames } from '@looker/icons'
 import React, { ReactNode, useContext } from 'react'
+import { Flex } from '../../../Layout'
 import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
 import { isIconName, SelectOptionProps } from './SelectOptions'
@@ -59,9 +60,13 @@ export function SelectInputIcon({ options }: SelectInputIconProps) {
   }
 
   const icon = option && getOptionIcon(option.value, options)
-  return isIconName(icon) ? (
-    <Icon name={icon} size="small" ml="xxsmall" />
-  ) : (
-    <>{icon}</>
+  return (
+    <>
+      {icon && (
+        <Flex ml="xxsmall">
+          {isIconName(icon) ? <Icon name={icon} size="small" /> : icon}
+        </Flex>
+      )}
+    </>
   )
 }

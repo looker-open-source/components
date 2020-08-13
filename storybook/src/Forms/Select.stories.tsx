@@ -24,6 +24,7 @@
 
  */
 
+import chunk from 'lodash/chunk'
 import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
 import {
   Card,
@@ -64,6 +65,7 @@ export const All = () => (
     <SelectDemo />
     <UpdateOptions />
     <EmptyValue />
+    <OptionIcon />
   </Fieldset>
 )
 
@@ -210,7 +212,7 @@ export function SelectContent() {
     return options1k.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
   return (
-    <Box p="large">
+    <>
       <Heading mb="large">Select</Heading>
       <FieldSelect
         label="1k (windowed) options"
@@ -319,7 +321,7 @@ export function SelectContent() {
           indicator={<Icon name="Favorite" />}
         />
       </SpaceVertical>
-    </Box>
+    </>
   )
 }
 
@@ -328,16 +330,14 @@ export const SelectDemo = () => {
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
   return (
-    <>
+    <SpaceVertical align="start">
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <DialogContent>
           <SelectContent />
         </DialogContent>
       </Dialog>
-      <Button onClick={handleClick} m="large">
-        Open
-      </Button>
-      <Card maxWidth="500px" maxHeight="300px" m="large">
+      <Button onClick={handleClick}>Open</Button>
+      <Card maxWidth="500px" maxHeight="300px">
         <CardContent>
           <Form
             validationMessages={{
@@ -365,7 +365,7 @@ export const SelectDemo = () => {
           </Form>
         </CardContent>
       </Card>
-    </>
+    </SpaceVertical>
   )
 }
 
@@ -443,7 +443,7 @@ const iconOptions = [
   { icon: 'ChartWordCloud', label: 'Word Cloud', value: 'wordcloud' },
 ]
 
-export const SelectIcon = () => {
+export const OptionIcon = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
     return iconOptions.filter(
@@ -453,11 +453,34 @@ export const SelectIcon = () => {
   }, [filterTerm])
   return (
     <Space>
-      <Select
+      <FieldSelect
+        label="With Filtering"
         options={newOptions}
         placeholder="Search visualizations"
         isFilterable
         onFilter={setFilterTerm}
+        isClearable
+      />
+      <FieldSelect
+        label="No Filtering"
+        options={iconOptions}
+        placeholder="Select a visualization"
+      />
+      <FieldSelect
+        label="Descriptions"
+        options={iconOptions.map((option) => ({
+          ...option,
+          description: 'This is a description',
+        }))}
+        placeholder="Select a visualization"
+      />
+      <FieldSelect
+        label="Groups"
+        options={chunk(iconOptions, 5).map((arr, index) => ({
+          label: `Group ${index + 1}`,
+          options: arr,
+        }))}
+        placeholder="Select a visualization"
       />
     </Space>
   )
