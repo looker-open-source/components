@@ -28,7 +28,7 @@ import { IconNames, iconNameList } from '@looker/icons'
 import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
-import { Icon } from '../../../Icon'
+import { Icon, IconProps } from '../../../Icon'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
@@ -44,20 +44,17 @@ import {
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
-export function isIconName(icon?: IconNames | ReactNode): icon is IconNames {
-  return typeof icon === 'string' && iconNameList.includes(icon)
-}
+export type SelectOptionIcon = IconNames | IconProps['artwork']
 
 export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
   /**
-   * Customize the area to the left of the label and to the right of the indicator / check mark
-   * Use an IconName, ReactNode, function component or render-prop-style function
-   * When an option with an icon is selected, the icon will render in the input as well
+   * Icon shown to the left of the option label in the list and input when selected
+   * Use an IconName, or inline svg for a custom icon
    */
-  icon?: IconNames | ReactNode
+  icon?: SelectOptionIcon
 }
 
 export interface SelectOptionGroupProps {
@@ -66,6 +63,14 @@ export interface SelectOptionGroupProps {
 }
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
+
+function isIconName(icon?: SelectOptionIcon): icon is IconNames {
+  return typeof icon === 'string' && iconNameList.includes(icon)
+}
+
+export function getSelectOptionIconProps(icon: SelectOptionIcon) {
+  return isIconName(icon) ? { name: icon } : { artwork: icon }
+}
 
 const renderOption = (
   option: SelectOptionObject,
@@ -76,9 +81,12 @@ const renderOption = (
 
   if (icon || description) {
     const iconWithMargin = icon && (
-      <Box mr="xsmall">
-        {isIconName(icon) ? <Icon size="small" name={icon} /> : icon}
-      </Box>
+      <Icon
+        size="small"
+        mr="xsmall"
+        {...getSelectOptionIconProps(icon)}
+        data-testid="option-icon"
+      />
     )
 
     return (
