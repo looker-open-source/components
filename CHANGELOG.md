@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuItem` now supports `description`
 - `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
 
+### Changed
+
+- Spacing and density adjusted on `TreeGroup` label to better match density of `TreeItem`s
+
 ## [0.9.11] - 2020-08-07
 
 ### Added
