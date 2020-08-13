@@ -111,6 +111,7 @@ const defaultLayoutCSS = css`
 
 const distributeCSS = css`
   display: grid;
+  grid-auto-columns: 1fr;
   grid-auto-flow: column;
 
   ${Tab} {
