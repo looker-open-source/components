@@ -203,9 +203,15 @@ export const ComboboxInputInternal = forwardRef(
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  ${InputText} {
-    cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
-  }
+  ${({ readOnly }) =>
+    readOnly
+      ? css`
+          cursor: default;
+          input {
+            cursor: default;
+          }
+        `
+      : ''}
 `
 
 export const ComboboxInput = styled(ComboboxInputInternal)`

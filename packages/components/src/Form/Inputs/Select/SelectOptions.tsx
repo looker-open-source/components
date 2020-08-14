@@ -72,6 +72,11 @@ export function getSelectOptionIconProps(icon: SelectOptionIcon) {
   return isIconName(icon) ? { name: icon } : { artwork: icon }
 }
 
+const StyledIcon = styled(Icon)`
+  /* For proper alignment with option text and check icon */
+  height: ${({ theme }) => theme.lineHeights.small};
+`
+
 const renderOption = (
   option: SelectOptionObject,
   key: string,
@@ -81,9 +86,10 @@ const renderOption = (
 
   if (icon || description) {
     const iconToUse = icon && (
-      <Icon
+      <StyledIcon
         size="small"
         mr="xsmall"
+        color="text1"
         {...getSelectOptionIconProps(icon)}
         data-testid="option-icon"
       />

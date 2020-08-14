@@ -40,8 +40,8 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  omitStyledProps,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
 import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
@@ -120,7 +120,7 @@ export const ComboboxOptionWrapper = forwardRef(
   ) => (
     <OptionContext.Provider value={{ label, value }}>
       <li
-        {...omit(rest, 'color')}
+        {...omitStyledProps(rest)}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
@@ -221,6 +221,7 @@ export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
   color: 'text4',
   display: 'flex',
   fontSize: 'small',
+  lineHeight: 'small',
   px: 'xsmall',
   py: 'xxsmall',
 }

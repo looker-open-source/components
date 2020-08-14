@@ -66,6 +66,7 @@ export function SelectInputIcon({ options }: SelectInputIconProps) {
           {...getSelectOptionIconProps(icon)}
           size="small"
           ml="xxsmall"
+          color="text1"
           data-testid="input-icon"
         />
       )}
