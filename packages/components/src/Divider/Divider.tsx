@@ -70,6 +70,14 @@ const appearanceVariant = variant({
   },
 })
 
+export const Divider: FC<DividerProps> = ({ orientation }) => {
+  return orientation === 'vertical' ? (
+    <VerticalDivider />
+  ) : (
+    <HorizontalDivider />
+  )
+}
+
 const HorizontalDivider = styled.hr.attrs((props: DividerProps) => ({
   bg: props.customColor,
 }))<DividerProps>`
@@ -83,21 +91,12 @@ const HorizontalDivider = styled.hr.attrs((props: DividerProps) => ({
   ${(props) => (props.customColor ? color : appearanceVariant)}
 `
 
-const VerticalDivider = styled.div.attrs((props: DividerProps) => ({
-  bg: props.customColor,
-}))<DividerProps>`
+const VerticalDivider = styled.div<DividerProps>`
   border-left: 1px solid
     ${(props) => (props.customColor ? color : appearanceVariant)};
-  height: 500px;
+  height: 100%;
   width: ${(props) => props.size};
 `
-
-export const Divider: FC<DividerProps> = (props) => {
-  const { orientation } = props
-  return orientation === 'vertical'
-    ? { VerticalDivider }
-    : { HorizontalDivider }
-}
 
 Divider.defaultProps = {
   appearance: 'default',
