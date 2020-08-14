@@ -51,7 +51,7 @@
 
 import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
-import { Card } from '../Card'
+import { Grid } from '../Layout/Grid'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
 
@@ -68,16 +68,46 @@ export const ActionListFilterLayout: FC<ActionListFilterProps> = ({
   className,
   filterSearch,
 }) => {
-  // after typing and press enter:
-  // create a chip with content
-  // <Chip>first chip</Chip>
-
   filterSearch = filterSearch || 'Filter list'
   return (
-    <Card className={className}>
-      <Icon name="Filter" />
-      <Text>{filterSearch}</Text>
-      <Icon name="ViewColumn" />
-    </Card>
+    <Grid className={className}>
+      <IconFilter name="Filter" />
+      <Text grid-area="text">{filterSearch}</Text>
+      <IconViewColumn name="ViewColumn" />
+    </Grid>
   )
 }
+
+export const IconFilter = styled(Icon)`
+  color: ${({ theme }) => theme.colors.ui4};
+  grid-area: 'filterIcon';
+  justify-self: start;
+  padding-right: ${({ theme }) => theme.space.xsmall};
+  size: ${({ theme }) => theme.space.large};
+`
+
+export const IconViewColumn = styled(Icon)`
+  color: ${({ theme }) => theme.colors.ui4};
+  grid-area: 'IconViewColumn';
+  justify-self: end;
+  size: ${({ theme }) => theme.space.xsmall};
+`
+
+export const ActionListFilter = styled(ActionListFilterLayout)`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  display: grid;
+  gap: 0;
+  grid-template-areas: 'filterIcon text columnIcon';
+  grid-template-columns: 24px auto auto;
+  grid-template-rows: auto;
+  padding: ${({ theme }) => theme.space.xsmall};
+
+  ${Text} {
+    color: ${({ theme }) => theme.colors.text1};
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    justify-self: start stretch;
+  }
+`
