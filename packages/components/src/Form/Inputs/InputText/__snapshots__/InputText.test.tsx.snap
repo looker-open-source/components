@@ -1,6 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputText default 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -92,13 +170,113 @@ exports[`InputText default 1`] = `
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText should accept disabled 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -196,14 +374,104 @@ exports[`InputText should accept disabled 1`] = `
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    disabled={true}
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      disabled={true}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText should accept readOnly 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -291,18 +559,118 @@ exports[`InputText should accept readOnly 1`] = `
   outline: none;
 }
 
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 <div
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    readOnly={true}
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      readOnly={true}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText should accept required 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -390,18 +758,118 @@ exports[`InputText should accept required 1`] = `
   outline: none;
 }
 
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 <div
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    required={true}
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText with a placeholder 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -489,18 +957,118 @@ exports[`InputText with a placeholder 1`] = `
   outline: none;
 }
 
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 <div
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    placeholder="I am a placeholder"
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      placeholder="I am a placeholder"
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+      I am a placeholder
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText with a value 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -588,18 +1156,117 @@ exports[`InputText with a value 1`] = `
   outline: none;
 }
 
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 <div
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    type="text"
-    value="Some value"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      type="text"
+      value="Some value"
+    />
+    <span
+      className="c4"
+    >
+      Some value
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText with aria-describedby 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -687,18 +1354,118 @@ exports[`InputText with aria-describedby 1`] = `
   outline: none;
 }
 
+.c5 .c1 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c1 span {
+  padding: 0 0.5rem;
+}
+
 <div
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    aria-describedby="some-id"
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      aria-describedby="some-id"
+      className="c3"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputText with name and id 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -790,10 +1557,22 @@ exports[`InputText with name and id 1`] = `
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    id="Bobby"
-    name="Bob"
-    type="text"
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      id="Bobby"
+      name="Bob"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;

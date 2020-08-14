@@ -31,6 +31,84 @@ exports[`Fieldset 1`] = `
   flex-direction: column;
 }
 
+.c12 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c12::-webkit-search-decoration,
+.c12::-webkit-search-cancel-button,
+.c12::-webkit-search-results-button,
+.c12::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c12::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c12::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c12:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c12::placeholder {
+  color: #939BA5;
+}
+
+.c12::-webkit-outer-spin-button,
+.c12::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c12[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c13 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -56,13 +134,13 @@ exports[`Fieldset 1`] = `
   font-size: 0.875rem;
 }
 
-.c9 .c11 {
+.c9 .c10 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c9 .c11 span {
+.c9 .c10 span {
   padding: 0 0.5rem;
 }
 
@@ -129,12 +207,12 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
-.c0 .c12 {
+.c0 .c15 {
   padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 
-.c0 .c13 {
+.c0 .c16 {
   font-size: 0.875rem;
   font-weight: 600;
   height: 24px;
@@ -176,7 +254,7 @@ exports[`Fieldset 1`] = `
   grid-area: input;
 }
 
-.c4 .c10 {
+.c4 .c14 {
   grid-area: messages;
 }
 
@@ -186,13 +264,13 @@ exports[`Fieldset 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c4 .c15 {
+.c4 .c18 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c4 .c14 {
+.c4 .c17 {
   margin-top: 0.5rem;
 }
 
@@ -265,16 +343,28 @@ exports[`Fieldset 1`] = `
             className="c9 "
             onMouseDown={[Function]}
           >
-            <input
-              aria-describedby="text-1-describedby"
-              id="text-1"
-              name="name1"
-              type="text"
-            />
+            <span
+              className="c10 c11"
+            >
+              <input
+                aria-describedby="text-1-describedby"
+                className="c12"
+                id="text-1"
+                name="name1"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+              <span
+                className="c13"
+              >
+                 
+              </span>
+            </span>
           </div>
         </div>
         <div
-          className="c10 "
+          className="c14 "
           id="text-1-describedby"
         />
       </div>
@@ -295,16 +385,28 @@ exports[`Fieldset 1`] = `
             className="c9 "
             onMouseDown={[Function]}
           >
-            <input
-              aria-describedby="text-2-describedby"
-              id="text-2"
-              name="name2"
-              type="text"
-            />
+            <span
+              className="c10 c11"
+            >
+              <input
+                aria-describedby="text-2-describedby"
+                className="c12"
+                id="text-2"
+                name="name2"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+              <span
+                className="c13"
+              >
+                 
+              </span>
+            </span>
           </div>
         </div>
         <div
-          className="c10 "
+          className="c14 "
           id="text-2-describedby"
         />
       </div>
@@ -325,16 +427,28 @@ exports[`Fieldset 1`] = `
             className="c9 "
             onMouseDown={[Function]}
           >
-            <input
-              aria-describedby="text-3-describedby"
-              id="text-3"
-              name="nam3"
-              type="text"
-            />
+            <span
+              className="c10 c11"
+            >
+              <input
+                aria-describedby="text-3-describedby"
+                className="c12"
+                id="text-3"
+                name="nam3"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+              <span
+                className="c13"
+              >
+                 
+              </span>
+            </span>
           </div>
         </div>
         <div
-          className="c10 "
+          className="c14 "
           id="text-3-describedby"
         />
       </div>

@@ -22,6 +22,84 @@ exports[`InputSearch default 1`] = `
   width: 100%;
 }
 
+.c5 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c5::-webkit-search-decoration,
+.c5::-webkit-search-cancel-button,
+.c5::-webkit-search-results-button,
+.c5::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c5:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c5::placeholder {
+  color: #939BA5;
+}
+
+.c5::-webkit-outer-spin-button,
+.c5::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c6 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c1 {
   padding-left: 0.25rem;
   -webkit-align-items: center;
@@ -148,15 +226,103 @@ exports[`InputSearch default 1`] = `
       </svg>
     </div>
   </div>
-  <input
-    onChange={[Function]}
-    type="text"
-    value=""
-  />
+  <span
+    className="c3 c4"
+  >
+    <input
+      className="c5"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c6"
+    >
+       
+    </span>
+  </span>
 </div>
 `;
 
 exports[`InputSearch hideSearchIcon removes the icon 1`] = `
+.c3 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  text-transform: inherit;
+  top: 0;
+  width: 100%;
+}
+
+.c3::-webkit-search-decoration,
+.c3::-webkit-search-cancel-button,
+.c3::-webkit-search-results-button,
+.c3::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c3:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c3::placeholder {
+  color: #939BA5;
+}
+
+.c3::-webkit-outer-spin-button,
+.c3::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.c4 {
+  color: transparent;
+  line-height: inherit;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: inherit;
+  white-space: pre;
+}
+
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 2rem;
+  position: relative;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -248,10 +414,20 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   className="c0"
   onMouseDown={[Function]}
 >
-  <input
-    onChange={[Function]}
-    type="text"
-    value=""
-  />
+  <span
+    className="c1 c2"
+  >
+    <input
+      className="c3"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span
+      className="c4"
+    >
+       
+    </span>
+  </span>
 </div>
 `;

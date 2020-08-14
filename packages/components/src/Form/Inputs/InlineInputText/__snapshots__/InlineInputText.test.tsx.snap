@@ -16,6 +16,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   text-align: inherit;
   text-transform: inherit;
   top: 0;
+  width: 100%;
 }
 
 .c1::-webkit-search-decoration,
@@ -131,6 +132,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
   text-align: inherit;
   text-transform: inherit;
   top: 0;
+  width: 100%;
 }
 
 .c1::-webkit-search-decoration,
@@ -245,6 +247,7 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   text-align: inherit;
   text-transform: inherit;
   top: 0;
+  width: 100%;
 }
 
 .c1::-webkit-search-decoration,
