@@ -8,11 +8,6 @@ propsOf: Divider
 Dividers accept all the spacing props from `<Box />`, which gives you the ability to easily put spacing around your dividers. By default a divider's background color will be `charcoal300`
 
 ```jsx
-  <Divider />
-  <Divider orientation="vertical" />
-```
-
-```jsx
 <Space around>
   <Box bg="white" p="xlarge">
     On White
@@ -48,6 +43,15 @@ There are three divider appearances `light`, `dark` and `onDark`.
     <Divider mt="medium" appearance="onDark" />
   </Box>
 </Space>
+```
+
+## Divider Attributes
+
+Divider supports orientation. By default orientation will be set to `horizontal`
+
+```jsx
+<Divider />
+<Divider orientation="vertical" />
 ```
 
 ## Custom Divider

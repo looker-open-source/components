@@ -37,18 +37,13 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-export interface DividerVerticalProps
-  extends CompatibleHTMLProps<HTMLHRElement> {
-  orientation?: 'vertical' | 'horizontal'
-}
-
 export interface DividerProps
   extends CompatibleHTMLProps<HTMLHRElement>,
-    DividerVerticalProps,
     PositionProps,
     SpaceProps {
   appearance?: 'default' | 'light' | 'dark' | 'onDark'
   customColor?: string
+  orientation?: 'vertical' | 'horizontal'
   size?: string | number
 }
 
@@ -70,11 +65,11 @@ const appearanceVariant = variant({
   },
 })
 
-export const Divider: FC<DividerProps> = ({ orientation }) => {
+export const Divider: FC<DividerProps> = ({ orientation, ...props }) => {
   return orientation === 'vertical' ? (
-    <VerticalDivider />
+    <VerticalDivider {...props} />
   ) : (
-    <HorizontalDivider />
+    <HorizontalDivider {...props} />
   )
 }
 
@@ -91,11 +86,17 @@ const HorizontalDivider = styled.hr.attrs((props: DividerProps) => ({
   ${(props) => (props.customColor ? color : appearanceVariant)}
 `
 
-const VerticalDivider = styled.div<DividerProps>`
-  border-left: 1px solid
-    ${(props) => (props.customColor ? color : appearanceVariant)};
-  height: 100%;
+const VerticalDivider = styled.hr.attrs((props: DividerProps) => ({
+  bg: props.customColor,
+}))<DividerProps>`
+  ${reset}
+  ${position}
+  ${space}
+
+  border: none;
+  min-height: 1.5rem;
   width: ${(props) => props.size};
+  ${(props) => (props.customColor ? color : appearanceVariant)}
 `
 
 Divider.defaultProps = {
