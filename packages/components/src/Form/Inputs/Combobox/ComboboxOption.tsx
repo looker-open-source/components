@@ -186,7 +186,7 @@ const ComboboxOptionInternal = forwardRef(
           isActive={isActive}
           isSelected={isSelected}
         >
-          {isSelected && <Icon name="Check" size="xsmall" mr={0} />}
+          {isSelected && <Icon name="Check" size="small" mr={0} />}
         </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
@@ -210,7 +210,6 @@ export const comboboxOptionStyle = css`
 
   &[aria-selected='true'] {
     background-color: ${(props) => props.theme.colors.keySubtle};
-    color:  ${(props) => props.theme.colors.keyPressed};
   }
 `
 
