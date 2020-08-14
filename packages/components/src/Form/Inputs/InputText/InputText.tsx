@@ -203,10 +203,12 @@ const InputTextLayout = forwardRef(
       // Support for rendering chips in InputChips and SelectMulti
       <div className="inner">
         {children}
-        {<InlineInputTextBase {...inputProps} ref={ref} />}
+        {<StyledInput {...inputProps} ref={ref} />}
       </div>
+    ) : autoResize ? (
+      <InlineInputTextBase {...inputProps} ref={ref} />
     ) : (
-      <InlineInputTextBase {...inputProps} ref={ref} autoResize={autoResize} />
+      <StyledInput {...inputProps} ref={ref} />
     )
 
     return (
@@ -224,6 +226,15 @@ const InputTextLayout = forwardRef(
 )
 
 InputTextLayout.displayName = 'InputComponent'
+
+const StyledInput = styled.input`
+  ${innerInputStyle}
+  flex: 1;
+  font-size: ${(props) => props.theme.fontSizes.small};
+  max-width: 100%;
+  min-width: 2rem;
+  padding: 0 ${({ theme: { space } }) => space.xsmall};
+`
 
 export const inputTextHover = css`
   border-color: ${(props) => props.theme.colors.ui3};
@@ -297,14 +308,6 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
     span {
       padding: 0 ${({ theme: { space } }) => space.xsmall};
     }
-  }
-
-  input {
-    ${innerInputStyle}
-    flex: 1;
-    font-size: ${(props) => props.theme.fontSizes.small};
-    max-width: 100%;
-    padding: 0 ${({ theme: { space } }) => space.xsmall};
   }
 
   &:hover {

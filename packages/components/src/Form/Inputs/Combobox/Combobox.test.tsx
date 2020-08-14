@@ -285,7 +285,7 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(document)
   })
 
-  test('Does not highlight current selected value', () => {
+  fit('Does not highlight current selected value', () => {
     const { getByText, getByPlaceholderText } = renderWithTheme(
       <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
         <ComboboxInput placeholder="Type here" />
