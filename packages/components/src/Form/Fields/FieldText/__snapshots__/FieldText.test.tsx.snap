@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText with default label 1`] = `
-.c8 {
+.c6 {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -9,74 +9,38 @@ exports[`A FieldText with default label 1`] = `
   height: 100%;
   outline: none;
   width: 100%;
-  font: inherit;
-  left: 0;
-  padding: 0;
-  position: absolute;
-  text-align: inherit;
-  text-transform: inherit;
-  top: 0;
-  width: 100%;
-}
-
-.c8::-webkit-search-decoration,
-.c8::-webkit-search-cancel-button,
-.c8::-webkit-search-results-button,
-.c8::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c8::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c8:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::placeholder {
-  color: #939BA5;
-}
-
-.c8::-webkit-outer-spin-button,
-.c8::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c8[type='number'] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-.c9 {
-  color: transparent;
-  line-height: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
   max-width: 100%;
-  overflow: hidden;
-  text-align: inherit;
-  white-space: pre;
+  min-width: 2rem;
+  padding: 0 0.5rem;
 }
 
-.c7 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 2rem;
-  position: relative;
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
 }
 
 .c5 {
@@ -104,55 +68,14 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c6 {
+.c5 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c6 span {
+.c5 .c8 span {
   padding: 0 0.5rem;
-}
-
-.c5 input {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c5 input::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c5 input:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::placeholder {
-  color: #939BA5;
 }
 
 .c5:hover {
@@ -201,7 +124,7 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c10 {
+.c0 .c7 {
   grid-area: messages;
 }
 
@@ -211,13 +134,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c12 {
+.c0 .c10 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c11 {
+.c0 .c9 {
   margin-top: 0.5rem;
 }
 
@@ -238,34 +161,23 @@ exports[`A FieldText with default label 1`] = `
       className="c5 "
       onMouseDown={[Function]}
     >
-      <span
-        className="c6 c7"
-      >
-        <input
-          aria-describedby="FieldTextID-describedby"
-          className="c8"
-          id="FieldTextID"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-        <span
-          className="c9"
-        >
-           
-        </span>
-      </span>
+      <input
+        aria-describedby="FieldTextID-describedby"
+        className="c6"
+        id="FieldTextID"
+        type="text"
+      />
     </div>
   </div>
   <div
-    className="c10 "
+    className="c7 "
     id="FieldTextID-describedby"
   />
 </div>
 `;
 
 exports[`A FieldText with label inline 1`] = `
-.c8 {
+.c6 {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -273,74 +185,38 @@ exports[`A FieldText with label inline 1`] = `
   height: 100%;
   outline: none;
   width: 100%;
-  font: inherit;
-  left: 0;
-  padding: 0;
-  position: absolute;
-  text-align: inherit;
-  text-transform: inherit;
-  top: 0;
-  width: 100%;
-}
-
-.c8::-webkit-search-decoration,
-.c8::-webkit-search-cancel-button,
-.c8::-webkit-search-results-button,
-.c8::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c8::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c8:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c8::placeholder {
-  color: #939BA5;
-}
-
-.c8::-webkit-outer-spin-button,
-.c8::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c8[type='number'] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-.c9 {
-  color: transparent;
-  line-height: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
   max-width: 100%;
-  overflow: hidden;
-  text-align: inherit;
-  white-space: pre;
+  min-width: 2rem;
+  padding: 0 0.5rem;
 }
 
-.c7 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 2rem;
-  position: relative;
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
 }
 
 .c5 {
@@ -368,55 +244,14 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c6 {
+.c5 .c9 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c6 span {
+.c5 .c9 span {
   padding: 0 0.5rem;
-}
-
-.c5 input {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c5 input::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c5 input:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::placeholder {
-  color: #939BA5;
 }
 
 .c5:hover {
@@ -440,7 +275,7 @@ exports[`A FieldText with label inline 1`] = `
   min-width: 0;
 }
 
-.c11 .c3 {
+.c8 .c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -448,11 +283,11 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c11 .c10 {
+.c8 .c7 {
   grid-area: messages;
 }
 
-.c11 > .c1 {
+.c8 > .c1 {
   grid-area: label;
   line-height: 1rem;
   padding-bottom: 0.5rem;
@@ -484,7 +319,7 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c10 {
+.c0 .c7 {
   grid-area: messages;
 }
 
@@ -497,7 +332,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c13 {
+.c0 .c11 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -506,7 +341,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c12 {
+.c0 .c10 {
   margin-top: 0.5rem;
 }
 
@@ -527,27 +362,16 @@ exports[`A FieldText with label inline 1`] = `
       className="c5 "
       onMouseDown={[Function]}
     >
-      <span
-        className="c6 c7"
-      >
-        <input
-          aria-describedby="FieldTextID-describedby"
-          className="c8"
-          id="FieldTextID"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-        <span
-          className="c9"
-        >
-           
-        </span>
-      </span>
+      <input
+        aria-describedby="FieldTextID-describedby"
+        className="c6"
+        id="FieldTextID"
+        type="text"
+      />
     </div>
   </div>
   <div
-    className="c10 "
+    className="c7 "
     id="FieldTextID-describedby"
   />
 </div>

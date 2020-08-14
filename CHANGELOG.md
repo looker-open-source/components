@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
 - Firefox layout fixes
   - Update Space gap for consistent rendering across browsers
-  - Use InlineInputTextBase for both standard and autoresized text inputs
+  - Set min-width on `InputText` to fix `Select` layout bug at small sizes
   - Resolve Slider style inconsistencies by rendering a div rather than the vanilla slider input
 
 ### Changed
