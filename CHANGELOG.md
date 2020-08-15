@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Spacing and density adjusted on `TreeGroup` label to better match density of `TreeItem`s
 
+### Added
+
+- Support for `nix`-based configuration, and `direnv` automatic configuration processing. If you have `nix` installed, this "just works." `nodenv` is not required if `nix` is used.
+
 ## [0.9.11] - 2020-08-07
 
 ### Added
