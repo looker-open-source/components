@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@styled-system/props": "^5.1.5",
-    "@types/styled-system": "^5.1.9",
+    "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
     "polished": "^3.6.5",
     "styled-system": "^5.1.5"
