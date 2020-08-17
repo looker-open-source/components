@@ -41,7 +41,7 @@ exports[`DialogFooter with Button 1`] = `
 
 @supports (-moz-appearance:none) {
   .c1 {
-    gap: 1rem;
+    gap: 0 1rem;
   }
 }
 
@@ -121,7 +121,7 @@ exports[`DialogFooter with DialogContext 1`] = `
 
 @supports (-moz-appearance:none) {
   .c1 {
-    gap: 1rem;
+    gap: 0 1rem;
   }
 }
 

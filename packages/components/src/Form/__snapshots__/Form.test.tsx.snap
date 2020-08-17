@@ -16,6 +16,48 @@ exports[`Form with one child 1`] = `
   flex-direction: column;
 }
 
+.c7 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  min-width: 2rem;
+  padding: 0 0.5rem;
+}
+
+.c7::-webkit-search-decoration,
+.c7::-webkit-search-cancel-button,
+.c7::-webkit-search-results-button,
+.c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c7::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c7:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c7::placeholder {
+  color: #939BA5;
+}
+
 .c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -41,55 +83,14 @@ exports[`Form with one child 1`] = `
   font-size: 0.875rem;
 }
 
-.c6 .c8 {
+.c6 .c9 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c6 .c8 span {
+.c6 .c9 span {
   padding: 0 0.5rem;
-}
-
-.c6 input {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.c6 input::-webkit-search-decoration,
-.c6 input::-webkit-search-cancel-button,
-.c6 input::-webkit-search-results-button,
-.c6 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c6 input::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c6 input::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c6 input:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c6 input::placeholder {
-  color: #939BA5;
 }
 
 .c6:hover {
@@ -138,7 +139,7 @@ exports[`Form with one child 1`] = `
   grid-area: input;
 }
 
-.c1 .c7 {
+.c1 .c8 {
   grid-area: messages;
 }
 
@@ -148,13 +149,13 @@ exports[`Form with one child 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c1 .c10 {
+.c1 .c11 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   margin-top: 0.5rem;
 }
 
@@ -197,6 +198,7 @@ exports[`Form with one child 1`] = `
       >
         <input
           aria-describedby="text-field-describedby"
+          className="c7"
           id="text-field"
           name="name"
           type="text"
@@ -204,7 +206,7 @@ exports[`Form with one child 1`] = `
       </div>
     </div>
     <div
-      className="c7 "
+      className="c8 "
       id="text-field-describedby"
     />
   </div>

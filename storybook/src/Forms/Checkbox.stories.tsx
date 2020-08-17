@@ -32,6 +32,7 @@ import {
   FieldCheckbox,
   MixedBoolean,
   useMixedStateCheckbox,
+  CheckboxGroup,
 } from '@looker/components'
 
 export const All = () => (
@@ -42,6 +43,7 @@ export const All = () => (
     <Required />
     <Error />
     <MixedState />
+    <LargeGroups />
   </Fieldset>
 )
 
@@ -62,6 +64,41 @@ export const Error = () => (
 )
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+export const LargeGroups = () => {
+  const options = [
+    { value: 'blue', label: 'Blue' },
+    { value: 'brie', label: 'Brie' },
+    { value: 'camembert', label: 'Camembert' },
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'epoisses', label: 'Epoisses' },
+    { value: 'feta', label: 'Feta' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'gorgonzola', label: 'Gorgonzola' },
+    { value: 'gruyere', label: 'Gruyere' },
+    { value: 'havarti', label: 'Havarti' },
+    { value: 'manchego', label: 'Manchego' },
+    { value: 'monterey-jack', label: 'Monterey Jack' },
+    { value: 'mascarpone', label: 'Mascarpone' },
+    { value: 'mozzarella', label: 'Mozzarella' },
+    { value: 'muenster', label: 'Muenster' },
+    { value: 'parmesan', label: 'Parmigiano Reggiano' },
+    { value: 'provolone', label: 'Provolone' },
+    { value: 'ricotta', label: 'Ricotta' },
+    { value: 'roquefort', label: 'Roquefort' },
+    { value: 'string', label: 'String' },
+    { value: 'swiss', label: 'Swiss' },
+  ]
+
+  return (
+    <CheckboxGroup
+      defaultValue={['cheddar']}
+      inline
+      name="group1"
+      options={options}
+    />
+  )
+}
+
 export const MixedState = () => {
   // Set up local state and child change handlers
   const [parentState, setParentState] = useState<MixedBoolean>('mixed')
