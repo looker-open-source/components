@@ -743,4 +743,38 @@ describe('Select', () => {
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
+
+  test('option icons', () => {
+    renderWithTheme(
+      <Select
+        placeholder="Select a visualization"
+        options={[
+          { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+          { icon: 'ChartColumn', label: 'Column', value: 'column' },
+          {
+            icon: <>cool icon</>,
+            label: 'Custom Icon',
+            value: 'custom',
+          },
+        ]}
+      />
+    )
+
+    expect(screen.queryByTestId('input-icon')).not.toBeInTheDocument()
+
+    const input = screen.getByPlaceholderText('Select a visualization')
+    fireEvent.click(input)
+    expect(screen.getAllByTestId('option-icon')).toHaveLength(3)
+
+    fireEvent.click(screen.getByText('Column'))
+    const inputIcon = screen.getByTestId('input-icon')
+    expect((inputIcon.firstChild as SVGElement).tagName).toBe('svg')
+
+    fireEvent.click(input)
+    fireEvent.click(screen.getByText('Custom Icon'))
+    expect(screen.getByTestId('input-icon')).toHaveTextContent('cool icon')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
 })

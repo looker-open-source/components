@@ -24,9 +24,11 @@
 
  */
 
+import { IconNames, iconNameList } from '@looker/icons'
 import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
+import { Icon, IconProps } from '../../../Icon'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
@@ -42,10 +44,17 @@ import {
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
+export type SelectOptionIcon = IconNames | IconProps['artwork']
+
 export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
+  /**
+   * Icon shown to the left of the option label in the list and input when selected
+   * Use an IconName, or inline svg for a custom icon
+   */
+  icon?: SelectOptionIcon
 }
 
 export interface SelectOptionGroupProps {
@@ -55,24 +64,54 @@ export interface SelectOptionGroupProps {
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
+function isIconName(icon?: SelectOptionIcon): icon is IconNames {
+  return typeof icon === 'string' && iconNameList.includes(icon)
+}
+
+export function getSelectOptionIconProps(icon: SelectOptionIcon) {
+  return isIconName(icon) ? { name: icon } : { artwork: icon }
+}
+
+const StyledIcon = styled(Icon)`
+  /* For proper alignment with option text and check icon */
+  height: ${({ theme }) => theme.lineHeights.small};
+`
+
 const renderOption = (
   option: SelectOptionObject,
   key: string,
   scrollIntoView?: boolean
 ) => {
-  if (option.description) {
+  const { description, icon, ...rest } = option
+
+  if (icon || description) {
+    const iconToUse = icon && (
+      <StyledIcon
+        size="small"
+        mr="xsmall"
+        color="text1"
+        {...getSelectOptionIconProps(icon)}
+        data-testid="option-icon"
+      />
+    )
+
     return (
       <ComboboxOption
-        {...option}
+        {...rest}
         key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        <SelectOptionWithDescription {...option} />
+        {iconToUse}
+        {description ? (
+          <SelectOptionWithDescription description={description} {...rest} />
+        ) : (
+          <ComboboxOptionText />
+        )}
       </ComboboxOption>
     )
   }
-  return <ComboboxOption {...option} key={key} />
+  return <ComboboxOption {...rest} key={key} />
 }
 
 const renderMultiOption = (
