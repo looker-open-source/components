@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Added `Lqa` icon artwrok
+
 ### Fixed
 - `Tabs` fix for distributed so each tab takes up an equal amount of space.
 - `Select` value can now be cleared via external state change
