@@ -52,6 +52,7 @@ export type {
   PositionProps,
   SizeProps,
   VerticalAlignProps,
+  WidthProps,
 } from 'styled-system'
 
 export type CompatibleHTMLProps<T> = Omit<
