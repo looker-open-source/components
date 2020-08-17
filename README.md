@@ -22,6 +22,8 @@ If you don't have [`yarn`](https://yarnpkg.com/en/) installed, have a look at ht
 
 We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#installation-and-update) to manage multiple versions of Node. Once installed you can simply type `nvm use` in side the repository to get the appropriate version of Node installed. Then you'll need to install Yarn globally via NPM - `npm install --global yarn`
 
+Alternatively, for those who use [Nix](https://nixos.org/) as a configuration service, [shell.nix](shell.nix) and [.envrc](.envrc) configure the node requirements for this repository. If Nix is enabled on a system, making this repository the active folder will configure the environment. 
+
 ### Clone this Repository & Setup
 
 1. `git clone git@github.com:looker-open-source/components.git`
