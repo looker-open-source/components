@@ -30,7 +30,7 @@ import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 import { scaleMixAmount } from './scaleMixAmount'
 
-const textBlends = [30, 40, 60, 70, 80, 100]
+const textBlends = [45, 65, 78, 88, 95, 99]
 export const uiBlends = [4, 12, 23, 34, 85]
 type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
 
