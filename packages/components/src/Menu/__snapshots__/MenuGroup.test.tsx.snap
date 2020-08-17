@@ -64,7 +64,7 @@ exports[`MenuGroup - JSX label 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  height: 40px;
+  min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
   position: relative;
@@ -264,7 +264,7 @@ exports[`MenuGroup - label 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  height: 40px;
+  min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
   position: relative;
@@ -439,7 +439,7 @@ exports[`MenuGroup 1`] = `
   flex: 1;
   font-size: inherit;
   font-weight: inherit;
-  height: 40px;
+  min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
   position: relative;

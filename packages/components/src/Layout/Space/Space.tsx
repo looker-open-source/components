@@ -110,7 +110,7 @@ const fauxGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
 
 const flexGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
   @supports (-moz-appearance: none) {
-    gap: ${({ theme: { space } }) => space[gap]};
+    gap: 0 ${({ theme: { space } }) => space[gap]};
   }
 
   @supports not (-moz-appearance: none) {

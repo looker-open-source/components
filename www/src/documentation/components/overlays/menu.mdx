@@ -170,7 +170,60 @@ An icon can optionally be assigned to each item via the `icon` property.
 </Menu>
 ```
 
-### Icon Support
+### Detail & Description
+
+Use the `detail` and/or `description` prop to provide extra explanatory information on a given item.
+
+```jsx
+<MenuList>
+  <MenuItem detail="⌘⇧↵" description="this is the description" icon="LogoRings">
+    Looker
+  </MenuItem>
+  <MenuItem description="this is the description" icon="Validate">
+    Validate
+  </MenuItem>
+  <MenuItem detail="⌘⇧↵" icon="ChartPie">
+    Pizza
+  </MenuItem>
+</MenuList>
+ <Divider />
+<Menu>
+  <MenuDisclosure>
+    <Button>Places</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem description="this is the description"icon="Home">Home</MenuItem>
+    <MenuItem
+      detail="⌘⇧↵"
+      href="https://google.com"
+      itemRole="link"
+      icon="Public"
+      target="_blank"
+    >
+      Away
+    </MenuItem>
+  </MenuList>
+</Menu>
+```
+
+### Tooltip
+
+To implement Tooltip on MenuItem, pass a string value to the `tooltip` prop.
+You can change the tooltip position by setting `tooltipPlacement` to one of `bottom`, `left`, `right` or`top`. Tooltips will render to the`left` by default.
+
+```jsx
+<MenuList>
+  <MenuItem tooltip="It is gouda!">Gouda</MenuItem>
+  <MenuItem
+    tooltip="I have a Swiss Cheese joke, but it's full of holes."
+    tooltipPlacement="right"
+  >
+    Swiss
+  </MenuItem>
+</MenuList>
+```
+
+### Icon
 
 ```jsx
 <MenuList>
@@ -180,7 +233,7 @@ An icon can optionally be assigned to each item via the `icon` property.
 </MenuList>
 ```
 
-### Artwork Support
+### Artwork
 
 ```jsx
 <MenuItem
@@ -205,17 +258,6 @@ An icon can optionally be assigned to each item via the `icon` property.
   <MenuItem>Gouda</MenuItem>
   <MenuItem icon="ChartPie">Swiss</MenuItem>
 </MenuList>
-```
-
-### Detail Text
-
-Use the `detail` prop to provide explanatory detail to a given item.
-
-```jsx
-<MenuItem detail="Get regular updates">Schedule</MenuItem>
-<MenuItem icon="Beaker" detail="Try the newest toys!">
-  Labs
-</MenuItem>
 ```
 
 ### Disabled

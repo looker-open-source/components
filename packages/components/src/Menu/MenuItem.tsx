@@ -34,8 +34,11 @@ import {
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import { Placement } from '@popperjs/core'
+import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
+import { Tooltip } from '../Tooltip'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
@@ -46,6 +49,12 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    * Indicates the MenuItem is checked
    */
   current?: boolean
+  /*
+   * optional extra description
+   */
+  description?: ReactNode
+  detail?: ReactNode
+  icon?: IconNames
   /**
    * Sets the correct accessible role for the MenuItem:
    * - Use **'link'** for items that navigation to another page
@@ -53,9 +62,9 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    * @default 'button'
    *
    */
-  detail?: ReactNode
-  icon?: IconNames
   itemRole?: 'link' | 'button'
+  tooltip?: string
+  tooltipPlacement?: Placement
 }
 
 const MenuItemInternal: FC<MenuItemProps> = (props) => {
@@ -64,6 +73,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     className,
     compact: propCompact,
     current,
+    description,
     detail,
     disabled,
     href,
@@ -74,6 +84,8 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
+    tooltip,
+    tooltipPlacement,
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
@@ -136,15 +148,13 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
-          size={24 / (compact ? 1.25 : 1)}
-          mr="xsmall"
           aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+          mr="xsmall"
+          size={24 / (compact ? 1.25 : 1)}
         />
       )
     )
-
-  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   if (disabled && itemRole === 'link') {
     // eslint-disable-next-line no-console
@@ -152,6 +162,22 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled MenuItem'
     )
   }
+  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
+
+  const menuItemContent = (
+    <Component href={href} role="menuitem" target={target}>
+      {renderedIcon}
+      <span>
+        {children}
+        {description && (
+          <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+            {description}
+          </Paragraph>
+        )}
+      </span>
+      {detail && <Detail>{detail}</Detail>}
+    </Component>
+  )
 
   return (
     <MenuItemLayout
@@ -165,16 +191,16 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onKeyDown={handleOnKeyDown}
       className={className}
     >
-      <Component href={href} role="menuitem" target={target}>
-        {renderedIcon}
-        <span>{children}</span>
-        {detail && <Detail>{detail}</Detail>}
-      </Component>
+      {tooltip ? (
+        <Tooltip placement={tooltipPlacement || 'left'} content={tooltip}>
+          {menuItemContent}
+        </Tooltip>
+      ) : (
+        menuItemContent
+      )}
     </MenuItemLayout>
   )
 }
-
-export const MenuItem = styled(MenuItemInternal)``
 
 const Detail = styled.div`
   color: ${({ theme: { colors } }) => colors.text1};
@@ -182,6 +208,8 @@ const Detail = styled.div`
   margin-right: ${({ theme: { space } }) => space.medium};
   padding-left: ${({ theme: { space } }) => space.large};
 `
+
+export const MenuItem = styled(MenuItemInternal)``
 
 interface IconPlaceholderProps extends SizeProps, SpaceProps {}
 

@@ -29,7 +29,7 @@ import {
   renderWithTheme,
 } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
@@ -540,11 +540,12 @@ describe('Select / SelectMulti', () => {
 })
 
 describe('Select', () => {
+  const options = [
+    { label: 'Foo', value: 'FOO' },
+    { label: 'Bar', value: 'BAR' },
+  ]
+
   test('value', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select
         options={options}
@@ -561,11 +562,26 @@ describe('Select', () => {
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
+  test('clearing the value externally', () => {
+    const Component = () => {
+      const [value, setValue] = useState('FOO')
+      return (
+        <>
+          <Button onClick={() => setValue('')}>Clear</Button>
+          <Select value={value} onChange={setValue} options={options} />
+        </>
+      )
+    }
+    renderWithTheme(<Component />)
+
+    const input = screen.getByDisplayValue('Foo')
+    const button = screen.getByText('Clear')
+
+    fireEvent.click(button)
+    expect(input).not.toHaveValue()
+  })
+
   test('defaultValue', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select options={options} placeholder="Search" defaultValue="BAR" />
     )
@@ -577,10 +593,6 @@ describe('Select', () => {
 
   test('isClearable', () => {
     const handleChange = jest.fn()
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(
       <Select
         options={options}
@@ -597,7 +609,7 @@ describe('Select', () => {
     const clearButton = screen.getByRole('button')
     fireEvent.click(clearButton)
 
-    expect(input).toHaveValue('')
+    expect(input).not.toHaveValue()
     expect(handleChange).toHaveBeenCalledWith('')
   })
 
@@ -607,11 +619,10 @@ describe('Select', () => {
 
     const input = screen.getByPlaceholderText('Search')
     // should not default to first option
-    expect(input).toHaveValue('')
+    expect(input).not.toHaveValue()
   })
 
   test('isClearable, no defaultValue', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
     renderWithTheme(
       <Select options={options} isClearable data-testid="wrapper" />
     )
@@ -621,11 +632,39 @@ describe('Select', () => {
     expect(input).not.toHaveValue()
   })
 
+  test('empty string defaultValue', () => {
+    renderWithTheme(
+      <Select options={options} defaultValue="" data-testid="wrapper" />
+    )
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).not.toHaveValue()
+  })
+
+  test('empty string value', () => {
+    renderWithTheme(<Select options={options} value="" data-testid="wrapper" />)
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).not.toHaveValue()
+  })
+
+  test('empty string value, empty string option', () => {
+    renderWithTheme(
+      <Select
+        options={[{ label: 'An empty string', value: '' }, ...options]}
+        value=""
+        data-testid="wrapper"
+      />
+    )
+
+    const input = screen.getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).toHaveValue('An empty string')
+  })
+
   test('default to first option', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-    ]
     renderWithTheme(<Select options={options} data-testid="wrapper" />)
 
     const input = screen.getByTestId('wrapper').querySelector('input')
@@ -663,7 +702,7 @@ describe('Select', () => {
     fireEvent.click(document)
 
     fireEvent.click(screen.getByText('Update label'))
-    expect(input).toHaveDisplayValue('Updated label')
+    expect(input).toHaveValue('Updated label')
 
     fireEvent.click(input)
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
@@ -672,6 +711,34 @@ describe('Select', () => {
         "Another Option",
       ]
     `)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('filtering out the selected option does not trigger a change', () => {
+    // Tests a bug where as soon as the selected option gets filtered out,
+    // the input value reverts to the current value
+    const Component = () => {
+      const [filterTerm, setFilterTerm] = useState('')
+      const filteredOptions = useMemo(
+        () => options.filter((option) => option.label.indexOf(filterTerm) > -1),
+        [filterTerm]
+      )
+      return (
+        <Select
+          value="FOO"
+          options={filteredOptions}
+          isFilterable
+          onFilter={setFilterTerm}
+        />
+      )
+    }
+    renderWithTheme(<Component />)
+
+    const input = screen.getByDisplayValue('Foo')
+    fireEvent.change(input, { target: { value: 'Ba' } })
+    expect(input).toHaveValue('Ba')
 
     // Close popover to silence act() warning
     fireEvent.click(document)

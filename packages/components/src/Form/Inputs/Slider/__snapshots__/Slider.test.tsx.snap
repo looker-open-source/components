@@ -15,56 +15,20 @@ exports[`renders focus styles on keypress 1`] = `
 
 .c0::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border-radius: 100%;
-  cursor: pointer;
-  left: 0%;
-  position: absolute;
-  top: 3px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  background: #FFFFFF;
-  border: 3px solid #6C43E0;
   height: 16px;
+  visibility: hidden;
   width: 16px;
 }
 
 .c0::-moz-range-thumb {
-  border-radius: 100%;
-  cursor: pointer;
-  left: 0%;
-  position: absolute;
-  top: 3px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  background: #FFFFFF;
-  border: 3px solid #6C43E0;
   height: 16px;
+  visibility: hidden;
   width: 16px;
 }
 
 .c0::-ms-thumb {
-  border-radius: 100%;
-  cursor: pointer;
-  left: 0%;
-  position: absolute;
-  top: 3px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
-  -webkit-transition: transform 0.25s,box-shadow 0.25s;
-  transition: transform 0.25s,box-shadow 0.25s;
-  background: #FFFFFF;
-  border: 3px solid #6C43E0;
   height: 16px;
+  visibility: hidden;
   width: 16px;
 }
 
@@ -82,33 +46,6 @@ exports[`renders focus styles on keypress 1`] = `
 
 .c0:focus {
   outline: none;
-}
-
-.c0:focus::-webkit-slider-thumb {
-  border-width: 5px;
-}
-
-.c0:focus::-moz-range-thumb {
-  border-width: 5px;
-}
-
-.c0:focus::-ms-thumb {
-  border-width: 5px;
-}
-
-.c0:disabled::-webkit-slider-thumb {
-  border-color: #707781;
-  cursor: default;
-}
-
-.c0:disabled::-moz-range-thumb {
-  border-color: #707781;
-  cursor: default;
-}
-
-.c0:disabled::-ms-thumb {
-  border-color: #707781;
-  cursor: default;
 }
 
 <input

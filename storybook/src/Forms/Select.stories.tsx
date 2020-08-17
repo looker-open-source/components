@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent, useMemo, useState } from 'react'
+import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -39,6 +39,7 @@ import {
   Select,
   Fieldset,
   FieldSelect,
+  FieldToggleSwitch,
   DialogContent,
   ComboboxOptionObject,
   SelectOptionProps,
@@ -62,6 +63,7 @@ export const All = () => (
     <InlineError />
     <SelectDemo />
     <UpdateOptions />
+    <EmptyValue />
   </Fieldset>
 )
 
@@ -382,6 +384,41 @@ export const UpdateOptions = () => {
     <Space>
       <Button onClick={toggle}>Use {isPlural ? 'singular' : 'plural'}</Button>
       <Select autoResize options={options} value={value} onChange={setValue} />
+    </Space>
+  )
+}
+
+export const EmptyValue = () => {
+  const [value, setValue] = useState(false)
+  function handleToggle(e: FormEvent<HTMLInputElement>) {
+    setValue(e.currentTarget.checked)
+  }
+
+  const [selectValue, setSelectValue] = useState('Option A')
+
+  const options = [{ value: 'Option A' }, { value: 'Option B' }]
+
+  return (
+    <Space p="large">
+      <FieldToggleSwitch
+        label="Use empty value"
+        on={value}
+        onChange={handleToggle}
+      />
+      <Select
+        value={value ? '' : selectValue}
+        placeholder="Can't change me when toggle is on"
+        onChange={setSelectValue}
+        options={options}
+      />
+      <Select
+        value={value ? '' : selectValue}
+        onChange={setSelectValue}
+        options={[
+          { label: 'Option with empty string value', value: '' },
+          ...options,
+        ]}
+      />
     </Space>
   )
 }

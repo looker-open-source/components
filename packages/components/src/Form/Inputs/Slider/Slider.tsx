@@ -114,6 +114,11 @@ const SliderInternal = forwardRef(
         </SliderValueWrapper>
         <SliderTrack>
           <SliderFill offsetPercent={fillPercent} disabled={disabled} />
+          <SliderThumb
+            isFocused={isFocused}
+            offsetPercent={fillPercent}
+            disabled={disabled}
+          />
         </SliderTrack>
         <SliderInput
           disabled={disabled}
@@ -139,28 +144,31 @@ const SliderInternal = forwardRef(
 
 interface SliderInputProps {
   isFocused?: boolean
+  disabled?: boolean
   offsetPercent: number
 }
 
-const sliderThumbFocusCss = css<SliderInputProps>`
-  border-width: 5px;
+const sliderThumbCss = css`
+  height: 16px;
+  visibility: hidden;
+  width: 16px;
 `
 
-const sliderThumbCss = css<SliderInputProps>`
+const SliderThumb = styled.div<SliderInputProps>`
   border-radius: 100%;
-  cursor: pointer;
   left: ${({ offsetPercent = 0 }) => `${offsetPercent}%`};
   position: absolute;
-  top: 3px;
+  top: -6px;
   transform: translateX(-50%);
   transition: transform 0.25s, box-shadow 0.25s;
 
-  ${({ theme: { colors }, isFocused }) => css`
+  ${({ theme: { colors }, isFocused, disabled }) => css`
     background: ${colors.field};
     border: 3px solid ${colors.key};
     height: 16px;
     width: 16px;
-    ${isFocused && sliderThumbFocusCss}
+    ${isFocused && 'border-width: 5px;'}
+    ${disabled && `border-color: ${colors.neutral};`}
   `}
 `
 
@@ -202,32 +210,6 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 
   &:focus {
     outline: none;
-    &::-webkit-slider-thumb {
-      ${sliderThumbFocusCss}
-    }
-
-    &::-moz-range-thumb {
-      ${sliderThumbFocusCss}
-    }
-
-    &::-ms-thumb {
-      ${sliderThumbFocusCss}
-    }
-  }
-
-  &:disabled {
-    &::-webkit-slider-thumb {
-      border-color: ${({ theme }) => theme.colors.neutral};
-      cursor: default;
-    }
-    &::-moz-range-thumb {
-      border-color: ${({ theme }) => theme.colors.neutral};
-      cursor: default;
-    }
-    &::-ms-thumb {
-      border-color: ${({ theme }) => theme.colors.neutral};
-      cursor: default;
-    }
   }
 `
 
@@ -235,11 +217,11 @@ const SliderTrack = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.small};
   height: 4px;
-  left: 8px;
+  left: 16px;
   margin-top: -2px;
   position: absolute;
   top: 50%;
-  width: calc(100% - 16px);
+  width: calc(100% - 32px);
 `
 
 interface ControlProps {
@@ -278,7 +260,7 @@ const SliderValue = styled.div<SliderValueProps>`
 const SliderValueWrapper = styled.div`
   margin: 0 auto;
   position: relative;
-  width: calc(100% - 14px);
+  width: calc(100% - 30px);
 `
 
 export const Slider = styled(SliderInternal)<SliderProps>`
