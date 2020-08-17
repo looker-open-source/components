@@ -25,21 +25,12 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  RangeSlider,
-  Card,
-  CardContent,
-} from '@looker/components'
+import { ComponentsProvider, Paragraph } from '@looker/components'
 import 'core-js/stable'
 
 const App = () => (
   <ComponentsProvider>
-    <Card raised m="large">
-      <CardContent>
-        <RangeSlider />
-      </CardContent>
-    </Card>
+    <Paragraph>Hello world</Paragraph>
   </ComponentsProvider>
 )
 
