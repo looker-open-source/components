@@ -32,7 +32,6 @@ import {
   reset,
   space,
   SpaceProps,
-  theme,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
