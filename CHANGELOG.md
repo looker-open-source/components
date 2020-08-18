@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Update Space gap for consistent rendering across browsers
   - Set min-width on `InputText` to fix `Select` layout bug at small sizes
   - Resolve Slider style inconsistencies by rendering a div rather than the vanilla slider input
+- IE11 layout fixes
+  - RangeSlider value labels now move with the thumb controls
 
 ### Changed
 
