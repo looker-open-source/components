@@ -32,6 +32,7 @@ import {
   reset,
   space,
   SpaceProps,
+  theme,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
@@ -73,12 +74,14 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
 
   border: none;
   height: ${({ size }) => size};
-  margin: none;
   width: 100%;
   ${({ customColor }) => (customColor ? color : appearanceVariant)}
   ${({ orientation, size }) =>
     orientation === 'vertical' &&
     css`
+      display: inline-block;
+      margin-left: ${({ theme }) => theme.space.xsmall};
+      margin-right: ${({ theme }) => theme.space.xsmall};
       min-height: 1.5rem;
       width: ${size};
     `}
