@@ -24,10 +24,9 @@
 
  */
 
+import { width, WidthProps } from '@looker/design-tokens'
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
-import { width } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Paragraph, Text } from '../../Text'
@@ -39,9 +38,7 @@ import { ValidationMessage } from '../ValidationMessage'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
 
-type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
-
-export interface FieldProps extends FieldBaseProps {
+export interface FieldProps extends FieldBaseProps, WidthProps {
   /*
    * optional extra description
    */
@@ -61,12 +58,6 @@ export interface FieldProps extends FieldBaseProps {
    * @default false
    */
   hideLabel?: boolean
-  /**
-   *
-   * Specify the width of the FieldText if different then 100%
-   * @default '100%'
-   */
-  width?: ResponsiveSpaceValue
 
   /**
    *
