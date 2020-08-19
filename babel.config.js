@@ -57,6 +57,7 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
+          modules: process.env.BABEL_ENV === 'build' ? false : 'cjs',
           targets: {
             esmodules: true,
           },
