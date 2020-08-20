@@ -385,8 +385,6 @@ export const options1k = [
   { label: 'Bonfire', value: 'Bonfire' },
   { label: 'Bonus', value: 'Bonus' },
   { label: 'BonWorth', value: 'BonWorth' },
-  { label: 'Boob', value: 'Boob' },
-  { label: 'BOOB-EEZ', value: 'BOOB-EEZ' },
   { label: 'BOOTIGHTS', value: 'BOOTIGHTS' },
   { label: 'Bordeaux', value: 'Bordeaux' },
   { label: 'Borrelli', value: 'Borrelli' },
