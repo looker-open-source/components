@@ -45,16 +45,27 @@ There are three divider appearances `light`, `dark` and `onDark`.
 </Space>
 ```
 
-## Divider Attributes
+## DividerVertical
 
-Divider supports orientation. By default orientation will be set to `horizontal`
+`<DividerVertical />` has difault height of 1rem. That can be changed using the props `height` and `stretch`. Do not use both props.
 
 ```jsx
 <Flex alignItems="center">
   <Icon name="Clock" />
-  <Divider orientation="vertical" />
+  <DividerVertical/>
   <Text>2:45PM</Text>
 </Flex>
+<Flex alignItems="center">
+  <Icon name="Clock" />
+  <DividerVertical height="3rem"/>
+  <Text>2:45PM</Text>
+</Flex>
+<Flex alignItems="center">
+  <Icon name="Clock" size="xxlarge"/>
+  <DividerVertical stretch/>
+  <Text pl="large" fontSize="xxxxlarge">2:45PM</Text>
+</Flex>
+
 ```
 
 ## Custom Divider

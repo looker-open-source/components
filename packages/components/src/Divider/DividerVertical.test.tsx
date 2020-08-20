@@ -24,60 +24,12 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  color,
-  position,
-  PositionProps,
-  reset,
-  space,
-  SpaceProps,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
-import { variant } from 'styled-system'
+import 'jest-styled-components'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { DividerVertical } from './DividerVertical'
 
-export interface DividerProps
-  extends CompatibleHTMLProps<HTMLHRElement>,
-    PositionProps,
-    SpaceProps {
-  appearance?: 'default' | 'light' | 'dark' | 'onDark'
-  customColor?: string
-  size?: string | number
-}
-
-const appearanceVariant = variant({
-  prop: 'appearance',
-  variants: {
-    dark: {
-      bg: 'ui4',
-    },
-    default: {
-      bg: 'ui3',
-    },
-    light: {
-      bg: 'ui2',
-    },
-    onDark: {
-      bg: 'text2',
-    },
-  },
+test('render Default DividerVertical', () => {
+  const { getByTestId } = renderWithTheme(<DividerVertical />)
+  expect(getByTestId('DividerVertical')).toBeInTheDocument()
 })
-
-export const DividerBase = styled.hr.attrs((props: DividerProps) => ({
-  appearance: props.appearance || 'default',
-  bg: props.customColor,
-  size: props.size || '1px',
-}))<DividerProps>`
-  ${reset}
-  ${position}
-  ${space}
-
-  border: none;
-
-  ${({ customColor }) => (customColor ? color : appearanceVariant)}
-`
-
-export const Divider = styled(DividerBase)`
-  height: ${({ size }) => size};
-  width: 100%;
-`
