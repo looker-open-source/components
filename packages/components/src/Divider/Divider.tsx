@@ -64,29 +64,29 @@ const appearanceVariant = variant({
   },
 })
 
-export const Divider = styled.hr.attrs((props: DividerProps) => ({
+export const DividerBase = styled.hr.attrs((props: DividerProps) => ({
+  appearance: props.appearance || 'default',
   bg: props.customColor,
+  size: props.size || '1px',
 }))<DividerProps>`
   ${reset}
   ${position}
   ${space}
 
   border: none;
-  height: ${({ size }) => size};
-  width: 100%;
+
   ${({ customColor }) => (customColor ? color : appearanceVariant)}
-  ${({ orientation, size }) =>
-    orientation === 'vertical' &&
-    css`
-      display: inline-block;
-      margin-left: ${({ theme }) => theme.space.xsmall};
-      margin-right: ${({ theme }) => theme.space.xsmall};
-      min-height: 1.5rem;
-      width: ${size};
-    `}
 `
 
-Divider.defaultProps = {
-  appearance: 'default',
-  size: '1px',
-}
+export const Divider = styled(DividerBase)`
+  height: ${({ size }) => size};
+  width: 100%;
+`
+
+export const DividerVertical = styled(DividerBase)`
+  display: inline-block;
+  height: ${({ height }) => height};
+  margin-left: ${({ theme }) => theme.space.xsmall};
+  margin-right: ${({ theme }) => theme.space.xsmall};
+  width: ${({ size }) => size};
+`
