@@ -428,7 +428,8 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
   position: absolute;
   text-align: center;
   top: -24px;
-  transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
+  transform: translateX(${({ position = 0 }) => `${position}px`})
+    translateX(-50%);
   user-select: none;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
 `

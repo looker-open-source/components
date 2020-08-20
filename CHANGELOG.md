@@ -10,13 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -`DividerVertical` component
+- `Select` option icons
 
 ### Fixed
 
+- `Tabs` fix for distributed so each tab takes up an equal amount of space.
 - `Select` value can now be cleared via external state change
 - `Select` name attribute is passed to the input
 - `MenuItem` now supports `description`
 - `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
+- Firefox layout fixes
+  - Update Space gap for consistent rendering across browsers
+  - Set min-width on `InputText` to fix `Select` layout bug at small sizes
+  - Resolve Slider style inconsistencies by rendering a div rather than the vanilla slider input
+- IE11 layout fixes
+  - RangeSlider value labels now move with the thumb controls
 
 ### Changed
 

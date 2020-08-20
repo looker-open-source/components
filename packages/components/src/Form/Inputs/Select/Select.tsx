@@ -40,6 +40,7 @@ import {
   SelectOptions,
   SelectOptionsBaseProps,
 } from './SelectOptions'
+import { SelectInputIcon } from './SelectInputIcon'
 import { getOption, getFirstOption } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
@@ -161,6 +162,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
+          before={<SelectInputIcon options={options} />}
           disabled={disabled}
           placeholder={placeholder}
           name={name}

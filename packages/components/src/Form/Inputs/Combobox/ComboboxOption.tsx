@@ -40,8 +40,8 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  omitStyledProps,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
 import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
@@ -120,7 +120,7 @@ export const ComboboxOptionWrapper = forwardRef(
   ) => (
     <OptionContext.Provider value={{ label, value }}>
       <li
-        {...omit(rest, 'color')}
+        {...omitStyledProps(rest)}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
@@ -186,7 +186,7 @@ const ComboboxOptionInternal = forwardRef(
           isActive={isActive}
           isSelected={isSelected}
         >
-          {isSelected && <Icon name="Check" size="xsmall" mr={0} />}
+          {isSelected && <Icon name="Check" size="small" mr={0} />}
         </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
@@ -210,7 +210,6 @@ export const comboboxOptionStyle = css`
 
   &[aria-selected='true'] {
     background-color: ${(props) => props.theme.colors.keySubtle};
-    color:  ${(props) => props.theme.colors.keyPressed};
   }
 `
 
@@ -221,6 +220,7 @@ export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
   color: 'text4',
   display: 'flex',
   fontSize: 'small',
+  lineHeight: 'small',
   px: 'xsmall',
   py: 'xxsmall',
 }

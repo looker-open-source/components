@@ -1,6 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText with default label 1`] = `
+.c6 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  min-width: 2rem;
+  padding: 0 0.5rem;
+}
+
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
+}
+
 .c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -26,55 +68,14 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c7 {
+.c5 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c7 span {
+.c5 .c8 span {
   padding: 0 0.5rem;
-}
-
-.c5 input {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c5 input::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c5 input:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::placeholder {
-  color: #939BA5;
 }
 
 .c5:hover {
@@ -123,7 +124,7 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .c7 {
   grid-area: messages;
 }
 
@@ -133,13 +134,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-top: 0.5rem;
 }
 
@@ -162,19 +163,62 @@ exports[`A FieldText with default label 1`] = `
     >
       <input
         aria-describedby="FieldTextID-describedby"
+        className="c6"
         id="FieldTextID"
         type="text"
       />
     </div>
   </div>
   <div
-    className="c6 "
+    className="c7 "
     id="FieldTextID-describedby"
   />
 </div>
 `;
 
 exports[`A FieldText with label inline 1`] = `
+.c6 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  min-width: 2rem;
+  padding: 0 0.5rem;
+}
+
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
+}
+
 .c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -200,55 +244,14 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 .c8 {
+.c5 .c9 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c8 span {
+.c5 .c9 span {
   padding: 0 0.5rem;
-}
-
-.c5 input {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.c5 input::-webkit-search-decoration,
-.c5 input::-webkit-search-cancel-button,
-.c5 input::-webkit-search-results-button,
-.c5 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c5 input::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c5 input:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c5 input::placeholder {
-  color: #939BA5;
 }
 
 .c5:hover {
@@ -272,7 +275,7 @@ exports[`A FieldText with label inline 1`] = `
   min-width: 0;
 }
 
-.c7 .c3 {
+.c8 .c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -280,11 +283,11 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c7 .c6 {
+.c8 .c7 {
   grid-area: messages;
 }
 
-.c7 > .c1 {
+.c8 > .c1 {
   grid-area: label;
   line-height: 1rem;
   padding-bottom: 0.5rem;
@@ -316,7 +319,7 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .c7 {
   grid-area: messages;
 }
 
@@ -329,7 +332,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -338,7 +341,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-top: 0.5rem;
 }
 
@@ -361,13 +364,14 @@ exports[`A FieldText with label inline 1`] = `
     >
       <input
         aria-describedby="FieldTextID-describedby"
+        className="c6"
         id="FieldTextID"
         type="text"
       />
     </div>
   </div>
   <div
-    className="c6 "
+    className="c7 "
     id="FieldTextID-describedby"
   />
 </div>
