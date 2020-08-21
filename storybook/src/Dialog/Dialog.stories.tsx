@@ -24,45 +24,43 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import React from 'react'
+import {
+  Button,
+  DialogContent,
+  DialogManager,
+  DialogHeader,
+  DialogFooter,
+  ButtonTransparent,
+  DialogManagerProps,
+} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
+export default {
+  component: DialogManager,
+  title: 'Dialog',
 }
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
+const Template: Story<DialogManagerProps> = (args) => (
+  <DialogManager
+    {...args}
+    content={
+      <>
+        <DialogHeader>My Awesome Dialog</DialogHeader>
+        <DialogContent>...</DialogContent>
+        <DialogFooter>
+          <Button>Button!</Button>
+          <ButtonTransparent>Other Button</ButtonTransparent>
+        </DialogFooter>
+      </>
+    }
+  >
+    <Button>Open Dialog</Button>
+  </DialogManager>
+)
 
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-  }
-`
-
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
+export const Basic = Template.bind({})
+Basic.args = {
+  drawer: true,
+  // maxWidth: ['90vw', '50vw', '500px'],
 }

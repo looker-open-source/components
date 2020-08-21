@@ -25,8 +25,8 @@
  */
 
 import React, { CSSProperties, FC } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { CSSObject } from 'styled-components'
+// import { CSSTransition } from 'react-transition-group'
+// import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { Portal } from '../Portal'
 import { useFocusTrap, useScrollLock } from '../utils'
@@ -47,13 +47,6 @@ export interface DialogProps {
   onClose?: () => void
 
   /**
-   * Optional backdrop styles to merge with the Backdrop implementation. These
-   * must be a CSSProperty compatible key / value paired object. For example
-   * {backgroundColor: 'pink'}.
-   */
-  backdrop?: CSSProperties
-
-  /**
    * Optional surface styles to merge with the Surface implementation. These
    * must be a CSSProperty compatible key / value paired object.
    */
@@ -65,11 +58,29 @@ export interface DialogProps {
    * @default auto
    */
   width?: ResponsiveValue<string>
+
   maxWidth?: ResponsiveValue<string>
+
+  height?: ResponsiveValue<string>
+
+  /**
+   * Specify where the Dialog should be placed vertically
+   * NOTE: Ignored when `drawer=true`
+   * @default 'center'
+   */
+  vertical?: 'center' | 'top' | 'bottom'
+
+  drawer?: boolean
+
+  /**
+   *
+   */
 }
 
 export const Dialog: FC<DialogProps> = ({
   backdrop,
+  drawer,
+  vertical,
   children,
   isOpen,
   onClose,
@@ -87,9 +98,7 @@ export const Dialog: FC<DialogProps> = ({
 
   const [, portalRef] = useScrollLock(focusRef)
 
-  const handleClose = () => {
-    onClose && onClose()
-  }
+  const handleClose = () => onClose && onClose()
 
   return (
     <DialogContext.Provider
@@ -101,28 +110,13 @@ export const Dialog: FC<DialogProps> = ({
         focusTrapRef,
       }}
     >
-      <CSSTransition
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-        in={isOpen}
-        timeout={{ enter: 0, exit: 250 }}
-      >
-        {(state: string) => (
           <Portal ref={portalRef}>
             <Backdrop
-              className={state}
               onClick={onClose}
               visible={backdrop === undefined ? true : !!backdrop}
-              style={
-                !!backdrop && backdrop !== true
-                  ? (backdrop as CSSObject)
-                  : undefined
-              }
             />
             <Surface
               style={surfaceStyles}
-              className={state}
               width={width}
               maxWidth={maxWidth}
             >
@@ -130,7 +124,6 @@ export const Dialog: FC<DialogProps> = ({
             </Surface>
           </Portal>
         )}
-      </CSSTransition>
     </DialogContext.Provider>
   )
 }

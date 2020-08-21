@@ -32,24 +32,12 @@ import {
 } from '@looker/design-tokens'
 import React, { FC, useContext, useEffect, useRef } from 'react'
 import styled, { CSSObject, css } from 'styled-components'
-import {
-  ColorProps,
-  BorderProps,
-  BoxShadowProps,
-  boxShadow,
-  border,
-  color,
-  LayoutProps,
-  layout,
-} from 'styled-system'
+import { LayoutProps, layout } from 'styled-system'
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
 export interface SurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
-    BorderProps,
-    BoxShadowProps,
-    ColorProps,
     LayoutProps {
   surfaceStyles?: CSSObject
   animationState?: string
@@ -92,12 +80,9 @@ export const surfaceTransition = () => css`
 
 export const SurfaceBase = styled(SurfaceLayout)`
   ${reset}
-  ${boxShadow}
-  ${border}
   ${layout}
 
-  ${color}
-
+  background: ${({ theme }) => theme.colors.background};
   display: flex;
   flex-direction: column;
 
@@ -128,10 +113,5 @@ export const Surface = styled(SurfaceBase)`
 `
 
 Surface.defaultProps = {
-  backgroundColor: 'background',
-  borderRadius: 'medium',
-  boxShadow: 3,
-  color: 'text5',
-  maxHeight: '90vh',
   maxWidth: ['90vw', '90vw', '600px'],
 }
