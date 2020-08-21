@@ -57,6 +57,7 @@ const ChipStyle = styled.span<ChipProps>`
 
   &:hover,
   &:active,
+  &.focus,
   &:focus {
     background: ${(props) => props.theme.colors.keyAccent};
   }
