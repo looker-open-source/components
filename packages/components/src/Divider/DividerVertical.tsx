@@ -48,5 +48,5 @@ export const DividerVertical = styled(DividerBase).attrs(
   margin-right: ${({ theme }) => theme.space.xsmall};
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
-    stretch ? `height: ${height}` : `align-self: stretch`}
+    stretch ? `align-self: stretch` : `height: ${height}`}
 `
