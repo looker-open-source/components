@@ -40,10 +40,7 @@ export const DividerVertical = styled(DividerBase).attrs(
         'DividerVertical will not be displayed if both height and stretch props are passed'
       )
     }
-    return {
-      'data-testid': 'DividerVertical',
-      height: props.height || '1rem',
-    }
+    return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
   }
 )<DividerVerticalProps>`
   display: inline-block;
@@ -51,5 +48,5 @@ export const DividerVertical = styled(DividerBase).attrs(
   margin-right: ${({ theme }) => theme.space.xsmall};
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
-    stretch ? 'align-self: stretch' : `height: ${height}`};
+    stretch ? `height: ${height}` : `align-self: stretch`}
 `
