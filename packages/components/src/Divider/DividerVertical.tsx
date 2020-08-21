@@ -37,7 +37,7 @@ export const DividerVertical = styled(DividerBase).attrs(
     if (props.height && props.stretch) {
       // eslint-disable-next-line no-console
       console.warn(
-        'DividerVertical will not be displayed if both height and stretch props are passed'
+        'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
       )
     }
     return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
