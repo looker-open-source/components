@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import difference from 'lodash/difference'
 import React, {
   FormEvent,
   forwardRef,
@@ -30,6 +32,7 @@ import React, {
   MouseEvent,
   Ref,
   useRef,
+  useState,
 } from 'react'
 import styled, { css } from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
@@ -38,6 +41,7 @@ import { inputHeight } from '../height'
 import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { useForkedRef } from '../../../utils'
+import { visuallyHiddenStyle } from '../../../VisuallyHidden'
 
 export interface InputChipsInputControlProps {
   /**
@@ -83,6 +87,10 @@ export interface InputChipsBaseProps
     InputChipsControlProps,
     InputChipsInputControlProps {}
 
+function isCtrlCmdPressed(event: KeyboardEvent) {
+  return event.ctrlKey || event.metaKey
+}
+
 export const InputChipsBaseInternal = forwardRef(
   (
     {
@@ -104,16 +112,57 @@ export const InputChipsBaseInternal = forwardRef(
     forwardedRef: Ref<HTMLInputElement>
   ) => {
     const internalRef = useRef<HTMLInputElement>(null)
+    const hiddenInputRef = useRef<HTMLInputElement>(null)
     const ref = useForkedRef(forwardedRef, internalRef)
+
+    function focusInput() {
+      internalRef.current && internalRef.current.focus()
+    }
+    function focusHiddenInput() {
+      hiddenInputRef.current && hiddenInputRef.current.focus()
+    }
+
+    const [selectedValues, setSelectedValues] = useState<string[]>([])
+    function selectAll() {
+      setSelectedValues([...values])
+    }
+    function deselectAll() {
+      setSelectedValues([])
+    }
+
+    function selectPrevious() {
+      if (selectedValues.length === 0) {
+        setSelectedValues([values[values.length - 1]])
+      } else {
+        const curIndex = values.indexOf(selectedValues[0])
+        if (curIndex > 0) {
+          setSelectedValues([values[curIndex - 1]])
+        }
+      }
+    }
+
+    function selectNext() {
+      if (selectedValues.length > 0) {
+        const curIndex = values.indexOf(selectedValues[0])
+        if (curIndex === values.length - 1) {
+          focusInput()
+        } else {
+          setSelectedValues([values[curIndex + 1]])
+        }
+      }
+    }
+
+    function deleteSelected() {
+      const newValues = difference(values, selectedValues)
+      onChange(newValues)
+      focusInput()
+    }
 
     // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
     // on Chip and clear button and instead focus after onChipDelete / onClear
     // If mousedown/click is elsewhere on Chip, don't move focus b/c user is trying to select the Chip itself
     function stopPropagation(e: MouseEvent) {
       e.stopPropagation()
-    }
-    function focusInput() {
-      internalRef.current && internalRef.current.focus()
     }
 
     function handleDeleteChip(value: string) {
@@ -124,9 +173,44 @@ export const InputChipsBaseInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Backspace' && removeOnBackspace && !e.defaultPrevented) {
-        // If we hit backspace and there is no text left to delete, remove the last entry instead
-        inputValue === '' && handleDeleteChip(values[values.length - 1])
+      if (inputValue === '') {
+        if (e.key === 'Backspace' && removeOnBackspace && !e.defaultPrevented) {
+          // If we hit backspace and there is no text left to delete, remove the last entry instead
+          inputValue === '' && handleDeleteChip(values[values.length - 1])
+        } else if (isCtrlCmdPressed(e) && e.key === 'a') {
+          focusHiddenInput()
+          selectAll()
+        } else if (e.key === 'ArrowLeft') {
+          focusHiddenInput()
+          selectPrevious()
+        }
+      }
+    }
+
+    function handleHiddenInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+      if (isCtrlCmdPressed(e)) {
+        switch (e.key) {
+          case 'a':
+            selectAll()
+            break
+          case 'c':
+            console.log('you copied')
+            break
+          case 'x':
+            console.log('you cut')
+        }
+      } else {
+        switch (e.key) {
+          case 'Backspace':
+            deleteSelected()
+            break
+          case 'ArrowLeft':
+            selectPrevious()
+            break
+          case 'ArrowRight':
+            selectNext()
+            break
+        }
       }
     }
 
@@ -141,12 +225,14 @@ export const InputChipsBaseInternal = forwardRef(
       function onChipDelete() {
         handleDeleteChip(value)
       }
+      const isSelected = selectedValues.includes(value)
       return (
         <Chip
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
           onClick={stopPropagation}
           key={value}
+          className={isSelected ? 'focus' : ''}
         >
           {value}
         </Chip>
@@ -178,16 +264,25 @@ export const InputChipsBaseInternal = forwardRef(
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}
+        onFocus={deselectAll}
         onKeyDown={handleKeyDown}
         validationType={validationType}
         height="auto"
         {...props}
       >
+        <HiddenInput
+          ref={hiddenInputRef}
+          onKeyDown={handleHiddenInputKeyDown}
+        />
         {chips}
       </InputText>
     )
   }
 )
+
+const HiddenInput = styled.input`
+  ${visuallyHiddenStyle}
+`
 
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
