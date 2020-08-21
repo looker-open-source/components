@@ -24,7 +24,7 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { DividerBase, DividerProps } from './Divider'
 
 export interface DividerVerticalProps extends DividerProps {
@@ -51,18 +51,5 @@ export const DividerVertical = styled(DividerBase).attrs(
   margin-right: ${({ theme }) => theme.space.xsmall};
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
-    stretch ? 'align-self: stretch' : `height: ${height || '1rem'}`};
+    stretch ? 'align-self: stretch' : `height: ${height}`};
 `
-
-// ${({ height, stretch }) =>
-//   !stretch &&
-//   css`
-//     height: ${height || '1rem'};
-//   `}
-
-// ${({ height, stretch }) =>
-//   stretch &&
-//   !height &&
-//   css`
-//     align-self: stretch;
-//   `}
