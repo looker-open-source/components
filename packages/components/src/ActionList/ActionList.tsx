@@ -191,15 +191,17 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   return (
-    <ActionListContext.Provider value={context}>
-      <div className={className}>
-        {actionListHeader}
-        {bulk && select && select.selectedItems.length > 0 && (
-          <ActionListControlBar {...bulk} />
-        )}
-        <div>{children}</div>
-      </div>
-    </ActionListContext.Provider>
+    <>
+      <ActionListContext.Provider value={context}>
+        <div className={className}>
+          {actionListHeader}
+          {bulk && select && select.selectedItems.length > 0 && (
+            <ActionListControlBar {...bulk} />
+          )}
+          <div>{children}</div>
+        </div>
+      </ActionListContext.Provider>
+    </>
   )
 }
 
