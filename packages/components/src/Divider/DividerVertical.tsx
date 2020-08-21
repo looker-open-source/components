@@ -24,60 +24,29 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  color,
-  position,
-  PositionProps,
-  reset,
-  space,
-  SpaceProps,
-} from '@looker/design-tokens'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
+import { DividerBase, DividerProps } from './Divider'
 
-export interface DividerProps
-  extends CompatibleHTMLProps<HTMLHRElement>,
-    PositionProps,
-    SpaceProps {
-  appearance?: 'default' | 'light' | 'dark' | 'onDark'
-  customColor?: string
-  size?: string | number
+export interface DividerVerticalProps extends DividerProps {
+  height?: number | string
+  stretch?: boolean
 }
 
-const appearanceVariant = variant({
-  prop: 'appearance',
-  variants: {
-    dark: {
-      bg: 'ui4',
-    },
-    default: {
-      bg: 'ui3',
-    },
-    light: {
-      bg: 'ui2',
-    },
-    onDark: {
-      bg: 'text2',
-    },
-  },
-})
-
-export const DividerBase = styled.hr.attrs((props: DividerProps) => ({
-  appearance: props.appearance || 'default',
-  bg: props.customColor,
-  size: props.size || '1px',
-}))<DividerProps>`
-  ${reset}
-  ${position}
-  ${space}
-
-  border: none;
-
-  ${({ customColor }) => (customColor ? color : appearanceVariant)}
-`
-
-export const Divider = styled(DividerBase)`
-  height: ${({ size }) => size};
-  width: 100%;
+export const DividerVertical = styled(DividerBase).attrs(
+  (props: DividerVerticalProps) => {
+    if (props.height && props.stretch) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
+      )
+    }
+    return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
+  }
+)<DividerVerticalProps>`
+  display: inline-block;
+  margin-left: ${({ theme }) => theme.space.xsmall};
+  margin-right: ${({ theme }) => theme.space.xsmall};
+  width: ${({ size }) => size};
+  ${({ height, stretch }) =>
+    stretch ? `align-self: stretch;` : `height: ${height};`}
 `

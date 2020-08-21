@@ -45,6 +45,29 @@ There are three divider appearances `light`, `dark` and `onDark`.
 </Space>
 ```
 
+## DividerVertical
+
+`<DividerVertical />` has a default height of 1rem. That can be changed by using the prop `height` or `stretch`. Do not use both props.
+
+```jsx
+<Flex alignItems="center">
+  <Icon name="Clock" />
+  <DividerVertical/>
+  <Text>2:45PM</Text>
+</Flex>
+<Flex alignItems="center">
+  <Icon name="Clock" />
+  <DividerVertical height="3rem"/>
+  <Text>2:45PM</Text>
+</Flex>
+<Flex alignItems="center">
+  <Icon name="Clock" size="xxlarge"/>
+  <DividerVertical stretch/>
+  <Text pl="large" fontSize="xxxxlarge">2:45PM</Text>
+</Flex>
+
+```
+
 ## Custom Divider
 
 You can adjust the dividers height and supply a custom color if needed
