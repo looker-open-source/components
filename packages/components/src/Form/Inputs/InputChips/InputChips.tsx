@@ -47,10 +47,7 @@ import {
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-export interface InputChipsProps
-  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
-    InputChipsControlProps,
-    Partial<InputChipsInputControlProps> {
+export interface InputChipsValidationProps {
   /**
    * for checking each value before converting to a chip
    */
@@ -64,6 +61,12 @@ export interface InputChipsProps
    */
   onDuplicate?: (values: string[]) => void
 }
+
+export interface InputChipsProps
+  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
+    InputChipsControlProps,
+    Partial<InputChipsInputControlProps>,
+    InputChipsValidationProps {}
 
 function getUpdatedValues(
   inputValue: string,

@@ -36,18 +36,22 @@ import {
 import { InputChipsCommonProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
 import { SelectOptionObject, SelectOptions } from './SelectOptions'
-import { getOptions } from './utils/options'
+import { getOptions, flattenOptions } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
     Pick<InputChipsCommonProps, 'removeOnBackspace'>,
-    Pick<ComboboxMultiInputProps, 'freeInput'> {
+    Pick<ComboboxMultiInputProps, 'validate'> {
   /**
    * Values of the current selected option (controlled)
    */
   values?: string[]
+  /**
+   * Optionally control the input value (use with onFilter)
+   */
+  filterTerm?: string
   /**
    * Value of the initial option
    */
@@ -61,6 +65,12 @@ export interface SelectMultiProps
    * @default false
    */
   closeOnSelect?: boolean
+  /**
+   * Allows inputting of values outside of options via typing or pasting
+   * Not recommended for use when options have labels that are different from their values
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 const SelectMultiComponent = forwardRef(
@@ -71,6 +81,7 @@ const SelectMultiComponent = forwardRef(
       isFilterable = false,
       placeholder,
       onFilter,
+      filterTerm,
       onChange,
       values,
       defaultValues,
@@ -87,6 +98,7 @@ const SelectMultiComponent = forwardRef(
       formatCreateLabel,
       removeOnBackspace = true,
       freeInput = false,
+      validate,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -94,11 +106,39 @@ const SelectMultiComponent = forwardRef(
     const optionValues = getOptions(values, options)
     const defaultOptionValues = getOptions(defaultValues, options)
 
-    function handleChange(options?: SelectOptionObject[]) {
-      const newValues = options && options.map((option) => option.value)
+    function handleChange(newOptions: SelectOptionObject[] = []) {
+      const newValues = newOptions && newOptions.map((option) => option.value)
       onChange && onChange(newValues)
       onFilter && onFilter('')
     }
+
+    function validateOptions(value: string) {
+      if (freeInput) {
+        return validate ? validate(value) : true
+      } else if (options) {
+        const matchingOption = flattenOptions(options).find(
+          (option) => option.value === value
+        )
+        return matchingOption !== undefined
+      }
+      return false
+    }
+
+    // function handleChange(newOptions: SelectOptionObject[] = []) {
+    //   // Validate new values against options (may be from copy/paste)
+    //   // or allow all if freeInput is true
+    //   const validOptions: SelectOptionObject[] = freeInput
+    //     ? newOptions
+    //     : newOptions.filter(
+    //         ({ value }) =>
+    //           options &&
+    //           flattenOptions(options).find((option) => value === option.value)
+    //       )
+    //   console.log(validOptions)
+    //   const newValues = validOptions.map((option) => option.value)
+    //   onChange && onChange(newValues)
+    //   onFilter && onFilter('')
+    // }
 
     function handleInputChange(value: string) {
       onFilter && onFilter(value)
@@ -133,9 +173,10 @@ const SelectMultiComponent = forwardRef(
           validationType={validationType}
           autoComplete={false}
           readOnly={!isFilterable && !freeInput}
+          inputValue={filterTerm}
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
-          freeInput={freeInput}
+          validate={validateOptions}
           ref={ref}
         />
         {!disabled && (

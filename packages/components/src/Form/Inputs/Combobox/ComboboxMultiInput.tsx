@@ -33,10 +33,10 @@ import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
   InputChips,
-  InputChipsBase,
   InputChipsBaseProps,
   InputChipsCommonProps,
   InputChipsInputControlProps,
+  InputChipsValidationProps,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
@@ -53,14 +53,9 @@ import { useInputMultiPropRefs } from './utils/useInputPropRefs'
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
     ComboboxInputCommonProps,
+    InputChipsValidationProps,
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
-  /**
-   * Allows inputting of values outside of options via typing or pasting
-   * Not recommended for use when options have labels that are different from their values
-   * @default false
-   */
-  freeInput?: boolean
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -76,9 +71,6 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // might be controlled
       inputValue: controlledInputValue,
-
-      // free form input
-      freeInput = false,
       ...rest
     } = props
 
@@ -202,11 +194,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-    return freeInput ? (
-      <InputChips {...commonProps} ref={ref} />
-    ) : (
-      <InputChipsBase {...commonProps} ref={ref} />
-    )
+    return <InputChips {...commonProps} ref={ref} />
   }
 )
 
