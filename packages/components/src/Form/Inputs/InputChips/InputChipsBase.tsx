@@ -25,12 +25,14 @@
  */
 
 import difference from 'lodash/difference'
+import xor from 'lodash/xor'
 import React, {
   FormEvent,
   forwardRef,
   KeyboardEvent,
   MouseEvent,
   Ref,
+  RefObject,
   useRef,
   useState,
 } from 'react'
@@ -40,7 +42,7 @@ import { Chip } from '../../../Chip'
 import { inputHeight } from '../height'
 import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
-import { useForkedRef } from '../../../utils'
+import { useForkedRef, useWrapEvent } from '../../../utils'
 import { visuallyHiddenStyle } from '../../../VisuallyHidden'
 
 export interface InputChipsInputControlProps {
@@ -87,8 +89,12 @@ export interface InputChipsBaseProps
     InputChipsControlProps,
     InputChipsInputControlProps {}
 
-function isCtrlCmdPressed(event: KeyboardEvent) {
+function isCtrlCmdPressed(event: KeyboardEvent | MouseEvent) {
   return event.ctrlKey || event.metaKey
+}
+
+function focusInput(inputRef: RefObject<HTMLInputElement>) {
+  inputRef.current && inputRef.current.focus()
 }
 
 export const InputChipsBaseInternal = forwardRef(
@@ -97,6 +103,7 @@ export const InputChipsBaseInternal = forwardRef(
       values,
       onChange,
       onKeyDown,
+      onFocus,
       inputValue,
       onInputChange,
       disabled,
@@ -115,13 +122,6 @@ export const InputChipsBaseInternal = forwardRef(
     const hiddenInputRef = useRef<HTMLInputElement>(null)
     const ref = useForkedRef(forwardedRef, internalRef)
 
-    function focusInput() {
-      internalRef.current && internalRef.current.focus()
-    }
-    function focusHiddenInput() {
-      hiddenInputRef.current && hiddenInputRef.current.focus()
-    }
-
     const [selectedValues, setSelectedValues] = useState<string[]>([])
     function selectAll() {
       setSelectedValues([...values])
@@ -130,32 +130,43 @@ export const InputChipsBaseInternal = forwardRef(
       setSelectedValues([])
     }
 
-    function selectPrevious() {
+    function selectPrevious(e: KeyboardEvent<HTMLInputElement>) {
       if (selectedValues.length === 0) {
         setSelectedValues([values[values.length - 1]])
       } else {
         const curIndex = values.indexOf(selectedValues[0])
         if (curIndex > 0) {
-          setSelectedValues([values[curIndex - 1]])
+          const newSelectedValue = values[curIndex - 1]
+          if (e.shiftKey) {
+            setSelectedValues([newSelectedValue, ...selectedValues])
+          } else {
+            setSelectedValues([newSelectedValue])
+          }
         }
       }
     }
 
-    function selectNext() {
+    function selectNext(e: KeyboardEvent<HTMLInputElement>) {
       if (selectedValues.length > 0) {
-        const curIndex = values.indexOf(selectedValues[0])
+        const curIndex = values.indexOf(
+          selectedValues[selectedValues.length - 1]
+        )
         if (curIndex === values.length - 1) {
-          focusInput()
+          focusInput(internalRef)
         } else {
-          setSelectedValues([values[curIndex + 1]])
+          const newSelectedValue = values[curIndex + 1]
+          if (e.shiftKey) {
+            setSelectedValues([...selectedValues, newSelectedValue])
+          } else {
+            setSelectedValues([newSelectedValue])
+          }
         }
       }
     }
-
     function deleteSelected() {
       const newValues = difference(values, selectedValues)
       onChange(newValues)
-      focusInput()
+      focusInput(internalRef)
     }
 
     // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
@@ -168,7 +179,38 @@ export const InputChipsBaseInternal = forwardRef(
     function handleDeleteChip(value: string) {
       const newValues = values.filter((v) => value !== v)
       onChange(newValues)
-      focusInput()
+      focusInput(internalRef)
+    }
+
+    function handleChipClick(value: string) {
+      return (e: MouseEvent) => {
+        // Focus hidden input for copy/paste & keyboard behaviors
+        focusInput(hiddenInputRef)
+        // Stop any onClick handlers (e.g. opening a SelectMulti list)
+        e.stopPropagation()
+        if (selectedValues.length > 0) {
+          if (isCtrlCmdPressed(e)) {
+            // Toggle the clicked chip
+            setSelectedValues(xor(selectedValues, [value]))
+            return
+          } else if (e.shiftKey) {
+            // Select the values between the clicked chip and selected ones, inclusive
+            const newIndex = values.indexOf(value)
+            const previousLow = values.indexOf(selectedValues[0])
+            const previousHigh = values.indexOf(
+              selectedValues[selectedValues.length - 1]
+            )
+            if (newIndex > previousHigh) {
+              setSelectedValues(values.slice(previousLow, newIndex + 1))
+            } else if (newIndex < previousLow) {
+              setSelectedValues(values.slice(newIndex, previousHigh + 1))
+            }
+            return
+          }
+        }
+        // A simple click, select only this chip
+        setSelectedValues([value])
+      }
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
@@ -178,37 +220,42 @@ export const InputChipsBaseInternal = forwardRef(
           // If we hit backspace and there is no text left to delete, remove the last entry instead
           inputValue === '' && handleDeleteChip(values[values.length - 1])
         } else if (isCtrlCmdPressed(e) && e.key === 'a') {
-          focusHiddenInput()
+          focusInput(hiddenInputRef)
           selectAll()
         } else if (e.key === 'ArrowLeft') {
-          focusHiddenInput()
-          selectPrevious()
+          focusInput(hiddenInputRef)
+          selectPrevious(e)
         }
       }
     }
 
     function handleHiddenInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       if (isCtrlCmdPressed(e)) {
+        // Select all, copy, cut
         switch (e.key) {
           case 'a':
             selectAll()
             break
-          case 'c':
-            console.log('you copied')
-            break
           case 'x':
-            console.log('you cut')
+          case 'c':
+            hiddenInputRef.current && hiddenInputRef.current.select()
+            document.execCommand('copy')
+            break
+        }
+        if (e.key === 'x') {
+          deleteSelected()
         }
       } else {
         switch (e.key) {
+          case 'Delete':
           case 'Backspace':
             deleteSelected()
             break
           case 'ArrowLeft':
-            selectPrevious()
+            selectPrevious(e)
             break
           case 'ArrowRight':
-            selectNext()
+            selectNext(e)
             break
         }
       }
@@ -218,7 +265,7 @@ export const InputChipsBaseInternal = forwardRef(
       onChange([])
       onInputChange('')
       onClear && onClear()
-      focusInput()
+      focusInput(internalRef)
     }
 
     const chips = values.map((value) => {
@@ -230,9 +277,11 @@ export const InputChipsBaseInternal = forwardRef(
         <Chip
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
-          onClick={stopPropagation}
+          onClick={handleChipClick(value)}
           key={value}
           className={isSelected ? 'focus' : ''}
+          // Prevent the chip from receiving focus for better keyboard behavior
+          tabIndex={-1}
         >
           {value}
         </Chip>
@@ -242,6 +291,8 @@ export const InputChipsBaseInternal = forwardRef(
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
       onInputChange(e.currentTarget.value)
     }
+
+    const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
 
     const renderSearchControls = values.length > 0
 
@@ -264,17 +315,19 @@ export const InputChipsBaseInternal = forwardRef(
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}
-        onFocus={deselectAll}
+        onFocus={wrappedOnFocus}
         onKeyDown={handleKeyDown}
         validationType={validationType}
         height="auto"
         {...props}
       >
+        {chips}
         <HiddenInput
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
+          value={selectedValues.join(', ')}
+          readOnly
         />
-        {chips}
       </InputText>
     )
   }

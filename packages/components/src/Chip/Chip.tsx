@@ -149,6 +149,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
           ml="xsmall"
           onClick={handleDelete}
           size="xxsmall"
+          tabIndex={restProps.tabIndex}
         />
       )}
     </ChipStyle>

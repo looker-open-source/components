@@ -44,21 +44,21 @@ import {
 import { options1k } from './options1k'
 
 const selectOptions = [
-  { label: 'Apples', value: '1' },
-  { label: 'Bananas', value: '2' },
-  { label: 'Oranges', value: '3' },
-  { label: 'Pineapples', value: '4' },
-  { label: 'Kiwis', value: '5' },
-  { label: 'Apples2', value: '12' },
-  { label: 'Bananas2', value: '22' },
-  { label: 'Oranges2', value: '32' },
-  { label: 'Pineapples2', value: '42' },
-  { label: 'Kiwis2', value: '52' },
-  { label: 'Apples3', value: '13' },
-  { label: 'Bananas3', value: '23' },
-  { label: 'Oranges3', value: '33' },
-  { label: 'Pineapples3', value: '43' },
-  { label: 'Kiwis3', value: '53' },
+  { value: 'Apples' },
+  { value: 'Bananas' },
+  { value: 'Oranges' },
+  { value: 'Pineapples' },
+  { value: 'Kiwis' },
+  { value: 'Apples2' },
+  { value: 'Bananas2' },
+  { value: 'Oranges2' },
+  { value: 'Pineapples2' },
+  { value: 'Kiwis2' },
+  { value: 'Apples3' },
+  { value: 'Bananas3' },
+  { value: 'Oranges3' },
+  { value: 'Pineapples3' },
+  { value: 'Kiwis3' },
 ]
 
 export const All = () => (
@@ -83,7 +83,6 @@ export const Basic = () => (
     options={selectOptions}
     placeholder="Search fruits"
     isFilterable
-    freeInput
   />
 )
 
@@ -191,7 +190,7 @@ export function SelectMultiDemo() {
         description: 'Lorem ipsum',
       }))
     return selectOptions.reduce((acc, option) => {
-      if (option.label.toLowerCase().includes(searchTerm.toLowerCase())) {
+      if (option.value.toLowerCase().includes(searchTerm.toLowerCase())) {
         acc.push({ ...option, description: 'Lorem ipsum' })
       }
       return acc
