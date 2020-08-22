@@ -201,7 +201,7 @@ const InputTextLayout = forwardRef(
 
     const inner = children ? (
       // Support for rendering chips in InputChips and SelectMulti
-      <div className="inner" tabIndex={-1}>
+      <div className="inner" tabIndex={props.disabled ? undefined : -1}>
         {children}
         {<StyledInput {...inputProps} ref={ref} />}
       </div>

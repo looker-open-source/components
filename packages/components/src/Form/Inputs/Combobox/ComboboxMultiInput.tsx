@@ -33,6 +33,7 @@ import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
   InputChips,
+  InputChipsBase,
   InputChipsBaseProps,
   InputChipsCommonProps,
   InputChipsInputControlProps,
@@ -52,10 +53,17 @@ import { useInputMultiPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
-    ComboboxInputCommonProps,
     InputChipsValidationProps,
+    ComboboxInputCommonProps,
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
+  /**
+   * Allows inputting of values outside of options via typing or pasting
+   * Not recommended for use when options have labels that are different from their values
+   * Use validate, onValidationFail, and onDuplicate to control behavior around free inputting
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -71,6 +79,13 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // might be controlled
       inputValue: controlledInputValue,
+
+      // free form input
+      freeInput = false,
+      validate,
+      onValidationFail,
+      onDuplicate,
+
       ...rest
     } = props
 
@@ -194,7 +209,17 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-    return <InputChips {...commonProps} ref={ref} />
+    return freeInput ? (
+      <InputChips
+        {...commonProps}
+        validate={validate}
+        onValidationFail={onValidationFail}
+        onDuplicate={onDuplicate}
+        ref={ref}
+      />
+    ) : (
+      <InputChipsBase {...commonProps} ref={ref} />
+    )
   }
 )
 

@@ -275,13 +275,14 @@ export const InputChipsBaseInternal = forwardRef(
       const isSelected = selectedValues.includes(value)
       return (
         <Chip
+          disabled={disabled}
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
           onClick={handleChipClick(value)}
           key={value}
           className={isSelected ? 'focus' : ''}
           // Prevent the chip from receiving focus for better keyboard behavior
-          tabIndex={-1}
+          tabIndex={disabled ? undefined : -1}
         >
           {value}
         </Chip>
@@ -298,6 +299,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     return (
       <InputText
+        disabled={disabled}
         after={
           !hideControls && (
             <AdvancedInputControls
@@ -327,6 +329,7 @@ export const InputChipsBaseInternal = forwardRef(
           onKeyDown={handleHiddenInputKeyDown}
           value={selectedValues.join(', ')}
           readOnly
+          disabled={disabled}
         />
       </InputText>
     )
