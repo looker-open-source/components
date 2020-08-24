@@ -1,7 +1,7 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "0.9.7",
+  "version": "0.9.12",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
