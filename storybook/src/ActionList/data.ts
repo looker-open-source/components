@@ -26,6 +26,14 @@
 
 import { ActionListColumns } from '@looker/components'
 
+export const filterableColumns = [
+  'PDT Name',
+  'Status',
+  'Model',
+  'Persistance Type',
+  'Last Successful Build',
+]
+
 export const row = {
   disabled: false,
   error: undefined,

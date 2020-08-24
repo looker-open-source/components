@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useRef } from 'react'
 import { IconButton } from '../Button/IconButton'
 import { DividerVertical } from '../Divider/DividerVertical'
 import { InputChips } from '../Form/Inputs/InputChips'
@@ -40,56 +40,80 @@ interface ActionListFilterProps {
   filterableColumns: FilterByProps[]
 }
 
-const ActionListFilterLayout: FC<ActionListFilterProps> = () => {
+/*
+  how to access filterableColumns props? - seems to be passed as an object
+  how to open options when InputChips is active?
+  MenuItem Filter by should be a label of a different color
+  how to handle filter of MenuItem and chips at the same time?
+  focus on showing menu and input at the same time
+*/
+
+const ActionListFilterLayout: FC<ActionListFilterProps> = ({
+  filterableColumns,
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const [values, setValues] = useState([])
+
   const handleChange = (newValues: any) => {
     setValues(newValues)
   }
 
-  // const itemList = (
-  //   filterableColumns.map((item: string, index: number) => (
-  //     <MenuItem key={index}>{item}</MenuItem>
-  //   ))
-  // )
+  const focusInput = () => {
+    inputRef.current && inputRef.current.focus()
+  }
 
-  // {filterableColumns[0]} doesn't work
+  //   filterableColumns.filter((filter) =>
+  //     filter.toLowerCase().includes(keywordSearch.toLowerCase())
+  //   )
 
-  const MenuFilterOptions = (
+  const options = (
+    <MenuList>
+      <MenuItem>Filter by</MenuItem>
+      {filterableColumns.map((item, index) => (
+        <MenuItem key={index}>{item}</MenuItem>
+      ))}
+    </MenuList>
+  )
+
+  const menuFilterOptions = (
+    <IconFilter icon="Filter" label="Filter" onClick={focusInput} />
+  )
+
+  const InputFilter = (
     <Menu>
       <MenuDisclosure>
-        <IconFilter icon="Filter" label="Filter" />
+        <InternalInput
+          placeholder="Filter List"
+          values={values}
+          onChange={handleChange}
+          ref={inputRef}
+        />
       </MenuDisclosure>
-      <MenuList>
-        <MenuItem>Filter by</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Status</MenuItem>
-        <MenuItem>Source</MenuItem>
-        <MenuItem>Trigger</MenuItem>
-      </MenuList>
+      {options}
     </Menu>
   )
 
   return (
     <OuterScope>
-      {MenuFilterOptions}
-      <InternalInput
-        onChange={handleChange}
-        placeholder="Filter List"
-        values={values}
-      />
-      <DividerVertical />
+      {menuFilterOptions}
+      {InputFilter}
+      <DividerVertical mx="xxsmall" />
       <IconViewColumn icon="ViewColumn" label="ViewColumn" />
     </OuterScope>
   )
 }
 
 const IconFilter = styled(IconButton)`
+  align-items: flex-end;
   color: ${({ theme }) => theme.colors.ui4};
+  cursor: text;
   padding-right: ${({ theme }) => theme.space.xsmall};
   size: ${({ theme }) => theme.space.large};
 `
 
 const IconViewColumn = styled(IconButton)`
+  align-items: flex-end;
   color: ${({ theme }) => theme.colors.ui4};
   size: ${({ theme }) => theme.space.xsmall};
 `
@@ -101,6 +125,9 @@ const InternalInput = styled(InputChips)`
   padding: 0;
   &:focus-within {
     box-shadow: none;
+  }
+  input {
+    padding: 0;
   }
 `
 
