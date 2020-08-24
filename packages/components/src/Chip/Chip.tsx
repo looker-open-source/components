@@ -25,7 +25,14 @@
  */
 
 import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { ReactNode, forwardRef, Ref, useState } from 'react'
+import React, {
+  forwardRef,
+  KeyboardEvent,
+  ReactNode,
+  Ref,
+  SyntheticEvent,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button/IconButton'
 import { Text, TextProps } from '../Text'
@@ -37,7 +44,7 @@ export interface ChipProps
   children: ReactNode
   disabled?: boolean
   focusVisible?: boolean
-  onDelete?: () => void
+  onDelete?: (e?: SyntheticEvent) => void
 }
 
 const ChipStyle = styled.span<ChipProps>`
@@ -113,18 +120,18 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
     onBlur && onBlur(event)
   }
 
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
     setFocusVisible(false)
     if (event.key === 'Backspace') {
-      onDelete && onDelete()
+      onDelete && onDelete(event)
     }
     onKeyDown && onKeyDown(event)
     setFocusVisible(false)
   }
 
-  const handleDelete = () => {
+  const handleDelete = (e: SyntheticEvent) => {
     if (!disabled) {
-      onDelete && onDelete()
+      onDelete && onDelete(e)
     }
     setFocusVisible(false)
   }

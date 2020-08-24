@@ -33,6 +33,7 @@ import React, {
   MouseEvent,
   Ref,
   RefObject,
+  SyntheticEvent,
   useRef,
   useState,
 } from 'react'
@@ -176,10 +177,12 @@ export const InputChipsBaseInternal = forwardRef(
       e.stopPropagation()
     }
 
-    function handleDeleteChip(value: string) {
+    function handleDeleteChip(value: string, e?: SyntheticEvent) {
       const newValues = values.filter((v) => value !== v)
       onChange(newValues)
       focusInput(internalRef)
+      // Prevent the focus moving to the hidden input (unnecessary)
+      e && e.stopPropagation()
     }
 
     function handleChipClick(value: string) {
@@ -269,8 +272,8 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     const chips = values.map((value) => {
-      function onChipDelete() {
-        handleDeleteChip(value)
+      function onChipDelete(e?: SyntheticEvent) {
+        handleDeleteChip(value, e)
       }
       const isSelected = selectedValues.includes(value)
       return (
@@ -327,7 +330,7 @@ export const InputChipsBaseInternal = forwardRef(
         <HiddenInput
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
-          value={selectedValues.join(', ')}
+          value={selectedValues.join(',')}
           readOnly
           disabled={disabled}
         />
