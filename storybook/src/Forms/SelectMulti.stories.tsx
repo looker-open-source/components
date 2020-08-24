@@ -118,13 +118,20 @@ export const KitchenSink = () => (
 )
 
 export const CopyPaste = () => {
+  const [errorMsg, setErrorMsg] = useState('')
+  function validate(value: string) {
+    return value.indexOf('2') === -1
+  }
+  function handleValidationFail(values: string[]) {
+    setErrorMsg(`No thank you to values with "2": ${values.join(', ')}`)
+  }
   return (
     <Space>
       <FieldSelectMulti
         label="Copy from here..."
         description="But not the reverse..."
         options={selectOptions}
-        defaultValues={['Apples', 'Oranges']}
+        defaultValues={['Apples', 'Oranges', 'Apples2']}
         placeholder="Search fruits"
         isFilterable
       />
@@ -135,6 +142,11 @@ export const CopyPaste = () => {
         placeholder="Search fruits"
         isFilterable
         freeInput
+        validate={validate}
+        onValidationFail={handleValidationFail}
+        validationMessage={
+          errorMsg !== '' ? { message: errorMsg, type: 'error' } : undefined
+        }
       />
     </Space>
   )
