@@ -68,6 +68,7 @@ export const All = () => (
     <Disabled />
     <ValidationError />
     <KitchenSink />
+    <CopyPaste />
   </Fieldset>
 )
 
