@@ -104,6 +104,7 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
+.c9 .c12 input,
 .c9 .c12 span {
   padding: 0 0.5rem;
 }

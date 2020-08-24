@@ -110,6 +110,7 @@ exports[`InputSearch default 1`] = `
   width: 100%;
 }
 
+.c0 .c4 input,
 .c0 .c4 span {
   padding: 0 0.5rem;
 }
@@ -232,6 +233,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
