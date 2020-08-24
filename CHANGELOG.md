@@ -5,32 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.12] - 2020-08-24
 
 ### Added
 
--`DividerVertical` component
-
-- Added `Lqa` icon artwork
+- `DividerVertical` component
 - `Select` option icons
-
-### Fixed
-
-- `Tabs` fix for distributed so each tab takes up an equal amount of space.
-- `Select` value can now be cleared via external state change
-- `Select` name attribute is passed to the input
-- `MenuItem` now supports `description`
-- `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
-- Firefox layout fixes
-  - Update Space gap for consistent rendering across browsers
-  - Set min-width on `InputText` to fix `Select` layout bug at small sizes
-  - Resolve Slider style inconsistencies by rendering a div rather than the vanilla slider input
-- IE11 layout fixes
-  - RangeSlider value labels now move with the thumb controls
+- Icon:
+  - Added `LQA` icon artwork
 
 ### Changed
 
 - Spacing and density adjusted on `TreeGroup` label to better match density of `TreeItem`s
+
+### Fixed
+
+- `MenuItem` now supports `description`
+- `RangeSlider` value labels now move with the thumb controls in IE11
+- `Slider` style inconsistencies resolved by rendering a div rather than the vanilla slider input
+- `Select` name attribute is passed to the input
+- `Select` value can now be cleared via external state change
+- `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
+- `Select` layout bug corrected at small sizes (min-width on `InputText` to fix)
+- `Space` gap is now consistently rendered across browsers
+- `Tabs` fix for distributed so each tab takes up an equal amount of space.
 
 ## [0.9.11] - 2020-08-07
 
