@@ -89,6 +89,7 @@ exports[`Form with one child 1`] = `
   width: 100%;
 }
 
+.c6 .c9 input,
 .c6 .c9 span {
   padding: 0 0.5rem;
 }

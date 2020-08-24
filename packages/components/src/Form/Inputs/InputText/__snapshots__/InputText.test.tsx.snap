@@ -74,6 +74,7 @@ exports[`InputText default 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -176,6 +177,7 @@ exports[`InputText should accept disabled 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -281,6 +283,7 @@ exports[`InputText should accept readOnly 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -382,6 +385,7 @@ exports[`InputText should accept required 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -483,6 +487,7 @@ exports[`InputText with a placeholder 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -584,6 +589,7 @@ exports[`InputText with a value 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -685,6 +691,7 @@ exports[`InputText with aria-describedby 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -786,6 +793,7 @@ exports[`InputText with name and id 1`] = `
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }

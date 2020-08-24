@@ -74,6 +74,7 @@ exports[`A FieldText with default label 1`] = `
   width: 100%;
 }
 
+.c5 .c8 input,
 .c5 .c8 span {
   padding: 0 0.5rem;
 }
@@ -250,6 +251,7 @@ exports[`A FieldText with label inline 1`] = `
   width: 100%;
 }
 
+.c5 .c9 input,
 .c5 .c9 span {
   padding: 0 0.5rem;
 }
