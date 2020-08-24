@@ -25,8 +25,8 @@
  */
 
 import difference from 'lodash/difference'
-import xor from 'lodash/xor'
 import React, {
+  FocusEvent,
   FormEvent,
   forwardRef,
   KeyboardEvent,
@@ -194,7 +194,20 @@ export const InputChipsBaseInternal = forwardRef(
         if (selectedValues.length > 0) {
           if (isCtrlCmdPressed(e)) {
             // Toggle the clicked chip
-            setSelectedValues(xor(selectedValues, [value]))
+            const newSelectedValues = values.reduce(
+              (acc: string[], currentValue) => {
+                const isSelected = selectedValues.includes(currentValue)
+                if (
+                  (isSelected && currentValue !== value) ||
+                  (!isSelected && currentValue === value)
+                ) {
+                  return [...acc, currentValue]
+                }
+                return acc
+              },
+              []
+            )
+            setSelectedValues(newSelectedValues)
             return
           } else if (e.shiftKey) {
             // Select the values between the clicked chip and selected ones, inclusive
@@ -264,6 +277,17 @@ export const InputChipsBaseInternal = forwardRef(
       }
     }
 
+    function handleHiddenInputBlur(e: FocusEvent<HTMLInputElement>) {
+      // Unless blur event is caused by clicking on a chip, deselect all chips
+      if (
+        e.relatedTarget &&
+        (e.relatedTarget as HTMLElement).parentNode !==
+          e.currentTarget.parentNode
+      ) {
+        deselectAll()
+      }
+    }
+
     function handleClear() {
       onChange([])
       onInputChange('')
@@ -283,7 +307,8 @@ export const InputChipsBaseInternal = forwardRef(
           onMouseDown={stopPropagation}
           onClick={handleChipClick(value)}
           key={value}
-          className={isSelected ? 'focus' : ''}
+          role="option"
+          aria-selected={isSelected}
           // Prevent the chip from receiving focus for better keyboard behavior
           tabIndex={disabled ? undefined : -1}
         >
@@ -330,9 +355,11 @@ export const InputChipsBaseInternal = forwardRef(
         <HiddenInput
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
+          onBlur={handleHiddenInputBlur}
           value={selectedValues.join(',')}
           readOnly
           disabled={disabled}
+          data-testid="hidden-input"
         />
       </InputText>
     )
