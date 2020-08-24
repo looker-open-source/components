@@ -55,10 +55,6 @@ export interface SelectMultiProps
    */
   values?: string[]
   /**
-   * Optionally control the input value (use with onFilter)
-   */
-  filterTerm?: string
-  /**
    * Value of the initial option
    */
   defaultValues?: string[]
@@ -81,7 +77,6 @@ const SelectMultiComponent = forwardRef(
       isFilterable = false,
       placeholder,
       onFilter,
-      filterTerm,
       onChange,
       values,
       defaultValues,
@@ -110,8 +105,8 @@ const SelectMultiComponent = forwardRef(
     const optionValues = getOptions(values, options)
     const defaultOptionValues = getOptions(defaultValues, options)
 
-    function handleChange(newOptions: SelectOptionObject[] = []) {
-      const newValues = newOptions && newOptions.map((option) => option.value)
+    function handleChange(options: SelectOptionObject[] = []) {
+      const newValues = options && options.map((option) => option.value)
       onChange && onChange(newValues)
       onFilter && onFilter('')
     }
@@ -149,7 +144,6 @@ const SelectMultiComponent = forwardRef(
           validationType={validationType}
           autoComplete={false}
           readOnly={!isFilterable && !freeInput}
-          inputValue={filterTerm}
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
           freeInput={freeInput}

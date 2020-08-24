@@ -181,7 +181,7 @@ export const InputChipsBaseInternal = forwardRef(
       const newValues = values.filter((v) => value !== v)
       onChange(newValues)
       focusInput(internalRef)
-      // Prevent the focus moving to the hidden input (unnecessary)
+      // Prevent the focus moving to the hidden input (from handleChipClick)
       e && e.stopPropagation()
     }
 

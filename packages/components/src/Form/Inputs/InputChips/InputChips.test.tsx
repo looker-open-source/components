@@ -358,7 +358,6 @@ tag2`
       fireEvent.keyDown(input, {
         key: 'ArrowLeft',
       })
-
       // Focus has moved to the hidden input
       expect(document.activeElement).toBe(hiddenInput)
       hasSelectedValues(['bar'])
@@ -396,7 +395,6 @@ tag2`
         key: 'ArrowLeft',
         shiftKey: true,
       })
-
       hasSelectedValues(['bar'])
 
       fireEvent.keyDown(hiddenInput, {
@@ -471,7 +469,6 @@ tag2`
         />
       )
       const foo = screen.getByText('foo')
-      // const bar = screen.getByText('bar')
       const baz = screen.getByText('baz')
 
       fireEvent.click(foo)

@@ -35,6 +35,7 @@ import {
   ListItem,
   SelectMulti,
   SelectOptionProps,
+  Space,
   SpaceVertical,
   Text,
   Button,
@@ -115,6 +116,29 @@ export const KitchenSink = () => (
     validationMessage={{ message: 'validation Message', type: 'error' }}
   />
 )
+
+export const CopyPaste = () => {
+  return (
+    <Space>
+      <FieldSelectMulti
+        label="Copy from here..."
+        description="But not the reverse..."
+        options={selectOptions}
+        defaultValues={['Apples', 'Oranges']}
+        placeholder="Search fruits"
+        isFilterable
+      />
+      <FieldSelectMulti
+        label="...over to here"
+        description="...because that one is not freeInput"
+        options={selectOptions}
+        placeholder="Search fruits"
+        isFilterable
+        freeInput
+      />
+    </Space>
+  )
+}
 
 const selectGroups = [
   {

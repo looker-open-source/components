@@ -64,7 +64,6 @@ const ChipStyle = styled.span<ChipProps>`
 
   &:hover,
   &:active,
-  &.focus,
   &:focus,
   &[aria-selected='true'] {
     background: ${(props) => props.theme.colors.keyAccent};
