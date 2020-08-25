@@ -214,11 +214,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
-      font-weight: ${({ visuallyAsBranch, theme }) => {
-        return visuallyAsBranch
-          ? theme.fontWeights.normal
-          : theme.fontWeights.semiBold
-      }};
+      font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
+        visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
       height: 25px;
       padding: ${({ theme }) => theme.space.xxsmall};
       ${({ depth, theme }) => generateIndent(depth, theme)}
