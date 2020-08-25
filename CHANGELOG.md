@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `InputChips` and `SelectMulti` chip selection and copy-pasting
+
 ### Changed
 
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
