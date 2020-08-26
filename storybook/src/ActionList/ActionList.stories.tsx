@@ -27,7 +27,7 @@
 import {
   ActionList,
   ActionListItemAction,
-  ActionListFilter,
+  ActionListFilters,
   ActionListManager,
   Icon,
   Heading,
@@ -36,7 +36,7 @@ import {
 } from '@looker/components'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import React from 'react'
-import { columns, data, filterableColumns } from './data'
+import { columns, data, filterableItems } from './data'
 import { items } from './items'
 
 export { Sortable } from './ActionListSortable.stories'
@@ -116,9 +116,9 @@ export const ActionListExample = () => {
   )
 }
 
-export const ActionListFilterExample = () => (
+export const ActionListFiltersExample = () => (
   <>
-    <ActionListFilter filterableColumns={filterableColumns} />
+    <ActionListFilters filterableItems={filterableItems} />
     <ActionList columns={columns}>{items}</ActionList>
   </>
 )

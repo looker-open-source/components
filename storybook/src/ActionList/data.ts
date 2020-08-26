@@ -26,12 +26,12 @@
 
 import { ActionListColumns } from '@looker/components'
 
-export const filterableColumns = [
-  'PDT Name',
-  'Status',
-  'Model',
-  'Persistance Type',
-  'Last Successful Build',
+export const filterableItems = [
+  { value: 'PDT value' },
+  { value: 'Status' },
+  { value: 'Model' },
+  { value: 'Persistance Type' },
+  { value: 'Last Successful Build' },
 ]
 
 export const row = {
