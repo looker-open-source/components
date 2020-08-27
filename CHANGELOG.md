@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### CHANGED
+
+- `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
+
 ### Added
 
 -`DividerVertical` component

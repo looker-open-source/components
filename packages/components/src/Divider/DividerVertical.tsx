@@ -44,8 +44,7 @@ export const DividerVertical = styled(DividerBase).attrs(
   }
 )<DividerVerticalProps>`
   display: inline-block;
-  margin-left: ${({ theme }) => theme.space.xsmall};
-  margin-right: ${({ theme }) => theme.space.xsmall};
+  margin: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
     stretch ? `align-self: stretch;` : `height: ${height};`}

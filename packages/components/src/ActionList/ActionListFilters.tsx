@@ -25,88 +25,123 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useMemo, useState, useRef, Ref } from 'react'
+import React, { FC, useState, useRef, Ref, MouseEvent } from 'react'
 import { Select } from '../Form/Inputs/Select'
 import { InputText } from '../Form/Inputs'
-import { Icon } from '..//Icon'
+import { Icon } from '../Icon'
+import { IconButton } from '../Button'
+import { Chip } from '../Chip'
+import { Space } from '../Layout'
+import { DividerVertical } from '../Divider'
 
-interface FilterByProps {
+interface AvailableFilter {
   value: string
 }
 
 interface ActionListFilterProps {
-  className: string
-  filterableItems: FilterByProps[]
+  className?: string
+  availableFilters: AvailableFilter[]
+  fieldFilters?: string[]
 }
 
 const ActionListFilterLayout: FC<ActionListFilterProps> = ({
+  availableFilters,
   className,
-  filterableItems,
+  fieldFilters,
 }) => {
-  const [values, setValues] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [values, setValues] = useState(fieldFilters || [])
+  const [filterLookupName, setFilterLookupName] = useState('')
 
   const inputRef = useRef<null | HTMLInputElement>(null)
+  const isClearable = values.length > 0
+
+  const clearFilters = (event: MouseEvent<HTMLSpanElement>) => {
+    event.stopPropagation()
+    setValues([])
+  }
 
   function focusInput() {
     inputRef.current && inputRef.current.focus()
   }
-  function handleChange(newValues: any) {
-    setValues(newValues)
-  }
-  function handleFilter(term: string) {
-    setSearchTerm(term)
+
+  function handleFilterLookupChange(newValues: any) {
+    setFilterLookupName(newValues)
   }
 
-  const newOptions = useMemo(() => {
-    if (searchTerm === '') return filterableItems
-    return filterableItems.filter((option) => {
-      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
-  }, [searchTerm, filterableItems])
+  const editFilter = (event: MouseEvent<HTMLSpanElement>) => {
+    alert("You can't do that. Yet!")
+    event.stopPropagation()
+  }
 
   return (
     <div className={className}>
       <InnerLayout onClick={focusInput}>
-        <IconFilter name="Filter" size={20} />
-        <Select
-          options={newOptions}
-          placeholder="Filter List"
-          isFilterable
-          value={values}
-          ref={inputRef}
-          onChange={handleChange}
-          onFilter={handleFilter}
-        />
+        <Icon mx="xsmall" name="Filter" size={20} color="ui4" />
+        <Space gap="xsmall">
+          {values.map((value, i) => (
+            <Chip key={i} onClick={editFilter}>
+              {value}
+            </Chip>
+          ))}
+
+          <Select
+            options={availableFilters}
+            placeholder="Filter List"
+            indicator={false}
+            isFilterable
+            value={filterLookupName}
+            ref={inputRef}
+            autoResize
+            onChange={handleFilterLookupChange}
+          />
+        </Space>
+        {isClearable && (
+          <IconButton
+            icon="Close"
+            label="Clear filters"
+            onClick={clearFilters}
+          />
+        )}
       </InnerLayout>
-      <IconColumn name="ViewColumn" size="xsmall" />
+      <ColumnSelector>
+        <DividerVertical stretch />
+        <IconButton label="Select columns to display" icon="ViewColumn" />
+      </ColumnSelector>
     </div>
   )
 }
 
-const IconFilter = styled(Icon)`
-  align-self: center;
-  color: ${({ theme }) => theme.colors.ui4};
-`
-
-const IconColumn = styled(Icon)`
-  align-self: center;
-  color: ${({ theme }) => theme.colors.ui4};
-`
-
 const InnerLayout = styled.div``
+const ColumnSelector = styled.div`
+  align-items: center;
+  display: flex;
+`
 
 export const ActionListFilters = styled(ActionListFilterLayout)`
-  display: flex;
-  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
+  display: flex;
+  padding: ${({ theme }) => theme.space.xxsmall};
 
   ${InnerLayout} {
+    align-items: center;
     display: flex;
-    flex: 1;
+    flex: 2;
+
+    ${Icon} {
+      margin: 0 ${({ theme }) => theme.space.xsmall};
+    }
+
+    ${Select} {
+      width: auto;
+
+      ${Icon} {
+        display: none;
+      }
+    }
   }
 
-  ${Select} {
+  ${InputText} {
     border: none;
     &:focus-within {
       box-shadow: none;
