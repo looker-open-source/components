@@ -203,140 +203,142 @@ describe('closeOnSelect', () => {
 
     fireEvent.click(document)
   })
+})
+describe('removeOnBackspace', () => {
+  test('true by default', () => {
+    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        defaultValues={['FOO', 'BAR']}
+        placeholder="Search"
+      />
+    )
 
-  describe('removeOnBackspace', () => {
-    test('true by default', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          defaultValues={['FOO', 'BAR']}
-          placeholder="Search"
-        />
-      )
+    const input = getByPlaceholderText('Search')
 
-      const input = getByPlaceholderText('Search')
+    expect(getByText('Foo')).toBeVisible()
+    expect(getByText('Bar')).toBeVisible()
 
-      expect(getByText('Foo')).toBeVisible()
-      expect(getByText('Bar')).toBeVisible()
-
-      fireEvent.keyDown(input, {
-        key: 'Backspace',
-      })
-
-      expect(getByText('Foo')).toBeVisible()
-      expect(queryByText('Bar')).not.toBeInTheDocument()
+    fireEvent.keyDown(input, {
+      key: 'Backspace',
     })
 
-    test('false', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          defaultValues={['FOO', 'BAR']}
-          placeholder="Search"
-          removeOnBackspace={false}
-        />
-      )
-
-      const input = getByPlaceholderText('Search')
-
-      expect(getByText('Foo')).toBeVisible()
-      expect(getByText('Bar')).toBeVisible()
-
-      fireEvent.keyDown(input, {
-        key: 'Backspace',
-      })
-
-      expect(getByText('Foo')).toBeVisible()
-      expect(queryByText('Bar')).toBeVisible()
-    })
+    expect(getByText('Foo')).toBeVisible()
+    expect(queryByText('Bar')).not.toBeInTheDocument()
   })
 
-  describe('freeInput', () => {
-    test('false by default', () => {
-      const onChangeMock = jest.fn()
-      renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          defaultValues={['FOO', 'BAR']}
-          placeholder="Search"
-          onChange={onChangeMock}
-        />
-      )
+  test('false', () => {
+    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        defaultValues={['FOO', 'BAR']}
+        placeholder="Search"
+        removeOnBackspace={false}
+      />
+    )
 
-      const input = screen.getByPlaceholderText('Search')
-      fireEvent.change(input, { target: { value: 'baz,qux,' } })
+    const input = getByPlaceholderText('Search')
 
-      expect(onChangeMock).not.toHaveBeenCalled()
-      expect(input).toHaveValue('baz,qux,')
+    expect(getByText('Foo')).toBeVisible()
+    expect(getByText('Bar')).toBeVisible()
 
-      fireEvent.click(document)
+    fireEvent.keyDown(input, {
+      key: 'Backspace',
     })
 
-    test('true', () => {
-      const onChangeMock = jest.fn()
-      renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          defaultValues={['FOO', 'BAR']}
-          placeholder="Search"
-          onChange={onChangeMock}
-          freeInput
-        />
-      )
+    expect(getByText('Foo')).toBeVisible()
+    expect(queryByText('Bar')).toBeVisible()
+  })
+})
 
-      const input = screen.getByPlaceholderText('Search')
-      fireEvent.change(input, { target: { value: 'baz,qux,' } })
+describe('freeInput', () => {
+  test('false by default', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        defaultValues={['FOO', 'BAR']}
+        placeholder="Search"
+        onChange={onChangeMock}
+      />
+    )
 
-      expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'baz', 'qux'])
-      expect(input).toHaveValue('')
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.change(input, { target: { value: 'baz,qux,' } })
 
-      fireEvent.click(document)
-    })
+    expect(onChangeMock).not.toHaveBeenCalled()
+    expect(input).toHaveValue('baz,qux,')
 
-    test('creates value and closes list on blur', async () => {
-      const onChangeMock = jest.fn()
-      renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          placeholder="Search"
-          onChange={onChangeMock}
-          freeInput
-        />
-      )
+    fireEvent.click(document)
+  })
 
-      const input = screen.getByPlaceholderText('Search')
-      fireEvent.change(input, { target: { value: 'baz' } })
-      expect(screen.getByRole('listbox')).toBeVisible()
-      fireEvent.blur(input)
+  test('true', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        defaultValues={['FOO', 'BAR']}
+        placeholder="Search"
+        onChange={onChangeMock}
+        freeInput
+      />
+    )
 
-      expect(onChangeMock).toHaveBeenCalledWith(['baz'])
-      expect(input).toHaveValue('')
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.change(input, { target: { value: 'baz|qux|' } })
 
-      await waitForElementToBeRemoved(() => screen.getByRole('listbox'))
-    })
+    expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'baz', 'qux'])
+    expect(input).toHaveValue('')
 
-    test('copy/paste', async () => {
-      const onChangeMock = jest.fn()
-      renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          values={['FOO', 'BAR']}
-          onChange={onChangeMock}
-          placeholder="Search"
-          freeInput
-        />
-      )
+    fireEvent.click(document)
+  })
 
-      const input = screen.getByPlaceholderText('Search')
-      const hiddenInput = screen.getByTestId('hidden-input')
+  test('creates value and closes list on blur', async () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        placeholder="Search"
+        onChange={onChangeMock}
+        freeInput
+      />
+    )
 
-      fireEvent.keyDown(input, { key: 'a', metaKey: true })
-      // testing the hidden input value b/c jsdom do clipboard
-      expect(hiddenInput).toHaveDisplayValue('Foo<FOO>,Bar<BAR>')
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.change(input, { target: { value: 'baz' } })
+    expect(screen.getByRole('listbox')).toBeVisible()
+    fireEvent.blur(input)
 
-      firePasteEvent(input, 'Baz<BAZ>,Qux<QUX>')
-      fireEvent.change(input, { target: { value: 'Baz<BAZ>,Qux<QUX>' } })
-      expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'BAZ', 'QUX'])
-    })
+    expect(onChangeMock).toHaveBeenCalledWith(['baz'])
+    expect(input).toHaveValue('')
+
+    await waitForElementToBeRemoved(() => screen.getByRole('listbox'))
+  })
+
+  test('copy/paste', async () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <SelectMulti
+        options={basicOptions}
+        values={['FOO', 'BAR']}
+        onChange={onChangeMock}
+        placeholder="Search"
+        freeInput
+      />
+    )
+
+    const input = screen.getByPlaceholderText('Search')
+    const hiddenInput = screen.getByTestId('hidden-input')
+
+    fireEvent.keyDown(input, { key: 'a', metaKey: true })
+    // testing the hidden input value b/c jsdom do clipboard
+    expect(hiddenInput).toHaveDisplayValue(
+      `{"label":"Foo","value":"FOO"}|{"label":"Bar","value":"BAR"}`
+    )
+
+    const pastedText = `{"label":"Baz","value":"BAZ"}|{"label":"Quz","value":"QUX"}`
+    firePasteEvent(input, pastedText)
+    fireEvent.change(input, { target: { value: pastedText } })
+    expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'BAZ', 'QUX'])
   })
 })

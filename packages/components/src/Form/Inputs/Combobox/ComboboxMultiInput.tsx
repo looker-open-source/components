@@ -41,7 +41,7 @@ import {
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
-import { getComboboxText, formatOptionAsString, parseOption } from './utils'
+import { getComboboxText, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
   ComboboxActionType,
@@ -164,7 +164,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues = options.map(formatOptionAsString)
+    const inputValues = options.map((option) => JSON.stringify(option))
 
     let inputValue = contextInputValue || ''
     if (
@@ -187,7 +187,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
-    function formatChip(value: string) {
+    function formatChipLabel(value: string) {
       const option = parseOption(value)
       return option.label || option.value
     }
@@ -200,7 +200,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         : undefined,
       'aria-autocomplete': 'both',
       autoComplete: 'off',
-      formatChip,
+      formatChipLabel,
       hasOptions: true,
       id: `listbox-${id}`,
       inputValue,
@@ -209,6 +209,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear: handleClear,
       onInputChange: wrappedOnInputChange,
       readOnly,
+      separator: '|',
       values: inputValues,
     }
 
