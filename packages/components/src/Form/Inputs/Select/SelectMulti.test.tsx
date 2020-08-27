@@ -24,7 +24,7 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
+import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
 import {
   cleanup,
   fireEvent,
@@ -255,6 +255,30 @@ describe('closeOnSelect', () => {
       expect(input).toHaveValue('')
 
       await waitForElementToBeRemoved(() => screen.getByRole('listbox'))
+    })
+
+    test('copy/paste', async () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          values={['FOO', 'BAR']}
+          onChange={onChangeMock}
+          placeholder="Search"
+          freeInput
+        />
+      )
+
+      const input = screen.getByPlaceholderText('Search')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.keyDown(input, { key: 'a', metaKey: true })
+      // testing the hidden input value b/c jsdom do clipboard
+      expect(hiddenInput).toHaveDisplayValue('Foo<FOO>,Bar<BAR>')
+
+      firePasteEvent(input, 'Baz<BAZ>,Qux<QUX>')
+      fireEvent.change(input, { target: { value: 'Baz<BAZ>,Qux<QUX>' } })
+      expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'BAZ', 'QUX'])
     })
   })
 })

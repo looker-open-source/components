@@ -33,6 +33,7 @@ import {
   Icon,
   List,
   ListItem,
+  parseOption,
   SelectMulti,
   SelectOptionProps,
   Space,
@@ -118,6 +119,15 @@ export const KitchenSink = () => (
   />
 )
 
+const emailValidator = new RegExp(
+  /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+)
+const emails = [
+  { label: 'Good Looker', value: 'good.looker@google.com' },
+  { label: 'Components Team', value: 'lookercomponents@google.com' },
+  { label: 'Example Email', value: 'example.email@google.com' },
+]
+
 export const CopyPaste = () => {
   const [errorMsg, setErrorMsg] = useState('')
   function validate(value: string) {
@@ -126,30 +136,61 @@ export const CopyPaste = () => {
   function handleValidationFail(values: string[]) {
     setErrorMsg(`No thank you to values with "2": ${values.join(', ')}`)
   }
+  function validateEmail(val: string) {
+    const { value } = parseOption(val)
+    return emailValidator.test(value)
+  }
   return (
-    <Space>
-      <FieldSelectMulti
-        label="Copy from here..."
-        description="But not the reverse..."
-        options={selectOptions}
-        defaultValues={['Apples', 'Oranges', 'Apples2']}
-        placeholder="Search fruits"
-        isFilterable
-      />
-      <FieldSelectMulti
-        label="...over to here"
-        description="...because that one is not freeInput"
-        options={selectOptions}
-        placeholder="Search fruits"
-        isFilterable
-        freeInput
-        validate={validate}
-        onValidationFail={handleValidationFail}
-        validationMessage={
-          errorMsg !== '' ? { message: errorMsg, type: 'error' } : undefined
-        }
-      />
-    </Space>
+    <SpaceVertical>
+      <Heading>Copy/Paste</Heading>
+      <Heading as="h4">When label = value (or no label)</Heading>
+      <Space>
+        <FieldSelectMulti
+          label="Copy from here..."
+          description="But not the reverse..."
+          options={selectOptions}
+          defaultValues={['Apples', 'Oranges', 'Apples2']}
+          placeholder="Search fruits"
+          isFilterable
+        />
+        <FieldSelectMulti
+          label="...over to here"
+          description="...because that one is not freeInput"
+          options={selectOptions}
+          placeholder="Search fruits"
+          isFilterable
+          freeInput
+          validate={validate}
+          onValidationFail={handleValidationFail}
+          validationMessage={
+            errorMsg !== '' ? { message: errorMsg, type: 'error' } : undefined
+          }
+        />
+      </Space>
+      <Heading as="h4">When label != value</Heading>
+      <Space>
+        <FieldSelectMulti
+          label="To:"
+          options={emails}
+          validate={validateEmail}
+          defaultValues={[
+            'good.looker@google.com',
+            'lookercomponents@google.com',
+          ]}
+          placeholder="Enter recipients"
+          isFilterable
+          freeInput
+        />
+        <FieldSelectMulti
+          label="CC:"
+          options={emails}
+          validate={validateEmail}
+          placeholder="Enter recipients"
+          isFilterable
+          freeInput
+        />
+      </Space>
+    </SpaceVertical>
   )
 }
 
@@ -270,6 +311,7 @@ export function SelectMultiDemo() {
             showCreate
             mb="xlarge"
             defaultValues={['Boulder Creek']}
+            freeInput
           />
         </DialogContent>
       </Dialog>

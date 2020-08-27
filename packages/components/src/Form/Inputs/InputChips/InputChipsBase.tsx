@@ -83,6 +83,10 @@ export interface InputChipsCommonProps
    * @default true
    */
   removeOnBackspace?: boolean
+  /**
+   * Format the value for display in the chip
+   */
+  formatChip?: (value: string) => string
 }
 
 export interface InputChipsBaseProps
@@ -115,6 +119,7 @@ export const InputChipsBaseInternal = forwardRef(
       hideControls = false,
       summary,
       removeOnBackspace = true,
+      formatChip,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -193,7 +198,7 @@ export const InputChipsBaseInternal = forwardRef(
         e.stopPropagation()
         if (selectedValues.length > 0) {
           if (isCtrlCmdPressed(e)) {
-            // Toggle the clicked chip
+            // Toggle the clicked chip, keeping values in order
             const newSelectedValues = values.reduce(
               (acc: string[], currentValue) => {
                 const isSelected = selectedValues.includes(currentValue)
@@ -230,9 +235,8 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-      onKeyDown && onKeyDown(e)
       if (inputValue === '') {
-        if (e.key === 'Backspace' && removeOnBackspace && !e.defaultPrevented) {
+        if (e.key === 'Backspace' && removeOnBackspace) {
           // If we hit backspace and there is no text left to delete, remove the last entry instead
           inputValue === '' && handleDeleteChip(values[values.length - 1])
         } else if (isCtrlCmdPressed(e) && e.key === 'a') {
@@ -245,6 +249,11 @@ export const InputChipsBaseInternal = forwardRef(
       }
     }
 
+    function copyToClipboard() {
+      hiddenInputRef.current && hiddenInputRef.current.select()
+      document.execCommand('copy')
+    }
+
     function handleHiddenInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       if (isCtrlCmdPressed(e)) {
         // Select all, copy, cut
@@ -253,13 +262,12 @@ export const InputChipsBaseInternal = forwardRef(
             selectAll()
             break
           case 'x':
-          case 'c':
-            hiddenInputRef.current && hiddenInputRef.current.select()
-            document.execCommand('copy')
+            copyToClipboard()
+            deleteSelected()
             break
-        }
-        if (e.key === 'x') {
-          deleteSelected()
+          case 'c':
+            copyToClipboard()
+            break
         }
       } else {
         switch (e.key) {
@@ -300,6 +308,8 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value, e)
       }
       const isSelected = selectedValues.includes(value)
+      const chipLabel = formatChip ? formatChip(value) : value
+
       return (
         <Chip
           disabled={disabled}
@@ -312,7 +322,7 @@ export const InputChipsBaseInternal = forwardRef(
           // Prevent the chip from receiving focus for better keyboard behavior
           tabIndex={disabled ? undefined : -1}
         >
-          {value}
+          {chipLabel}
         </Chip>
       )
     })
@@ -322,6 +332,7 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
+    const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
 
     const renderSearchControls = values.length > 0
 
@@ -346,7 +357,7 @@ export const InputChipsBaseInternal = forwardRef(
         value={inputValue}
         onChange={handleInputChange}
         onFocus={wrappedOnFocus}
-        onKeyDown={handleKeyDown}
+        onKeyDown={wrappedOnKeyDown}
         validationType={validationType}
         height="auto"
         {...props}
