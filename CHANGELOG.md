@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.9.14] - 2020-09-18
 
+### CHANGED
+
+- `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
+
 ### Added
 
 - `Chip` supports `prefix`

@@ -107,7 +107,17 @@ export const ActionListExample = () => {
       <ActionList
         select={boolean('Select Items', true) ? selectConfig : undefined}
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
+        filter={{
+          available: filterableItems,
+          fields: [
+            {
+              expression: 'admin,manager',
+              field: 'role',
+            },
+          ],
+        }}
         columns={columns}
+        columnsCustomizable={boolean} // default to false
         headerRowId="all-pdts"
       >
         {items}
@@ -118,7 +128,10 @@ export const ActionListExample = () => {
 
 export const ActionListFiltersExample = () => (
   <>
-    <ActionListFilters filterableItems={filterableItems} />
+    <ActionListFilters
+      fieldFilters={['role:admin', 'group:pizza-lovers']}
+      availableFilters={filterableItems}
+    />
     <ActionList columns={columns}>{items}</ActionList>
   </>
 )
