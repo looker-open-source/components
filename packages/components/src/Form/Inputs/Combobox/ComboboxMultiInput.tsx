@@ -41,7 +41,7 @@ import {
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
-import { getComboboxText } from './utils/getComboboxText'
+import { getComboboxText, formatOptionAsString, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
   ComboboxActionType,
@@ -58,9 +58,8 @@ export interface ComboboxMultiInputProps
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
   /**
-   * Allows inputting of values outside of options via typing or pasting
-   * Not recommended for use when options have labels that are different from their values
-   * Use validate, onValidationFail, and onDuplicate to control behavior around free inputting
+   * Allows inputting of values (whether found in options or not) via typing or pasting
+   * Use validate, onValidationFail, and onDuplicate for validation on typed or pasted values
    * @default false
    */
   freeInput?: boolean
@@ -165,7 +164,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues = options.map((option) => getComboboxText(option))
+    const inputValues = options.map(formatOptionAsString)
 
     let inputValue = contextInputValue || ''
     if (
@@ -188,6 +187,11 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
+    function formatChip(value: string) {
+      const option = parseOption(value)
+      return option.label || option.value
+    }
+
     const commonProps: InputChipsBaseProps = {
       ...omit(rest, 'selectOnClick'),
       ...inputEvents,
@@ -196,6 +200,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         : undefined,
       'aria-autocomplete': 'both',
       autoComplete: 'off',
+      formatChip,
       hasOptions: true,
       id: `listbox-${id}`,
       inputValue,

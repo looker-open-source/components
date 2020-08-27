@@ -24,6 +24,17 @@
 
  */
 
-export * from './getComboboxText'
-export * from './formatOptionAsString'
-export * from './parseOption'
+export function parseOption(text: string) {
+  const ltIndex = text.indexOf('<')
+  if (ltIndex > -1) {
+    const gtIndex = text.indexOf('>')
+    if (gtIndex > ltIndex) {
+      const value = text.substring(ltIndex + 1, gtIndex)
+      return {
+        label: text.split('<')[0],
+        value: value,
+      }
+    }
+  }
+  return { value: text }
+}

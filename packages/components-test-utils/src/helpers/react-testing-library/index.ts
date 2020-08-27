@@ -31,3 +31,4 @@ export {
   getComboboxOptionText,
   openCombobox,
 } from './comboboxHelpers'
+export * from './firePasteEvent'

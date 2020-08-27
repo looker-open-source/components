@@ -31,6 +31,8 @@ import xorWith from 'lodash/xorWith'
 import { Reducer, useReducer, useState } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
 import { getComboboxText } from './getComboboxText'
+import { formatOptionAsString } from './formatOptionAsString'
+import { parseOption } from './parseOption'
 
 export enum ComboboxState {
   // Nothing going on, waiting for the user to type or use the arrow keys
@@ -284,7 +286,7 @@ export function getOptionsFromValues(
   const freeInputValues = [...newValues]
 
   const newOptions = currentOptions.filter((option) => {
-    const text = getComboboxText(option)
+    const text = formatOptionAsString(option)
     const foundInOptions = newValues.includes(text)
     if (foundInOptions) {
       const index = freeInputValues.indexOf(text)
@@ -298,7 +300,7 @@ export function getOptionsFromValues(
   // ****NOTE****
   // freeInput options may be near-duplicates of existing options (different case, value / label mismatch, etc)
   // this option should be used only when exact matching to existing values is not important or can be handled externally
-  const freeInputOptions = freeInputValues.map((value) => ({ value }))
+  const freeInputOptions = freeInputValues.map(parseOption)
 
   return [...newOptions, ...freeInputOptions]
 }

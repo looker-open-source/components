@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { createEvent, fireEvent, screen } from '@testing-library/react'
+import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 
+import { parseOption } from '../Combobox/utils'
 import { InputChips } from './InputChips'
 
 describe('InputChips', () => {
@@ -59,18 +60,6 @@ describe('InputChips', () => {
     expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
     expect(input).toHaveValue('')
   })
-
-  function firePasteEvent(element: HTMLElement, value: string) {
-    const eventProperties = {
-      clipboardData: {
-        getData: () => value,
-      },
-    }
-
-    const pasteEvent = createEvent.paste(element, eventProperties)
-
-    fireEvent(element, pasteEvent)
-  }
 
   test('values are added when pasting', () => {
     const onChangeMock = jest.fn()
@@ -570,5 +559,27 @@ tag2`
       expect(document.execCommand).toHaveBeenCalledWith('copy')
       expect(onChangeMock).toHaveBeenCalledWith(['bar'])
     })
+  })
+
+  test('formatChip', () => {
+    renderWithTheme(
+      <InputChips
+        onChange={() => null}
+        values={[
+          'Foo Bar<foo.bar@example.com>',
+          'Baz Qux<baz.qux@example.com>',
+          'example@example.com',
+        ]}
+        formatChip={(value: string) => {
+          const option = parseOption(value)
+          return option.label || option.value
+        }}
+      />
+    )
+
+    const chips = screen.getAllByRole('option')
+    expect(chips[0]).toHaveTextContent('Foo Bar')
+    expect(chips[1]).toHaveTextContent('Baz Qux')
+    expect(chips[2]).toHaveTextContent('example@example.com')
   })
 })
