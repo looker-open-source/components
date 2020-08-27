@@ -31,7 +31,6 @@ import xorWith from 'lodash/xorWith'
 import { Reducer, useReducer, useState } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
 import { getComboboxText } from './getComboboxText'
-import { formatOptionAsString } from './formatOptionAsString'
 import { parseOption } from './parseOption'
 
 export enum ComboboxState {
@@ -282,27 +281,28 @@ export function getOptionsFromValues(
   newValues?: string[]
 ) {
   if (!newValues) return []
-  // Save any values not found in current options
-  const freeInputValues = [...newValues]
-
-  const newOptions = currentOptions.filter((option) => {
-    const text = formatOptionAsString(option)
-    const foundInOptions = newValues.includes(text)
-    if (foundInOptions) {
-      const index = freeInputValues.indexOf(text)
-      if (index > -1) {
-        freeInputValues.splice(index, 1)
-      }
-    }
-    return foundInOptions
-  })
   // Convert new values into options
   // ****NOTE****
   // freeInput options may be near-duplicates of existing options (different case, value / label mismatch, etc)
   // this option should be used only when exact matching to existing values is not important or can be handled externally
-  const freeInputOptions = freeInputValues.map(parseOption)
 
-  return [...newOptions, ...freeInputOptions]
+  return newValues.reduce((acc: ComboboxOptionObject[], value: string) => {
+    const valueAsOption = parseOption(value)
+    const matchingOption = currentOptions.find(
+      (option) => option.value === valueAsOption.value
+    )
+    const duplicateOption = acc.find(
+      (option) => option.value === valueAsOption.value
+    )
+    if (!duplicateOption) {
+      if (matchingOption) {
+        return [...acc, matchingOption]
+      } else {
+        return [...acc, valueAsOption]
+      }
+    }
+    return acc
+  }, [])
 }
 
 const reducerMulti: Reducer<

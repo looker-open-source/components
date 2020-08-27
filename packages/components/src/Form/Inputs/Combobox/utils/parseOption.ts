@@ -24,17 +24,17 @@
 
  */
 
+import { ComboboxOptionObject } from '../types'
+
 export function parseOption(text: string) {
-  const ltIndex = text.indexOf('<')
-  if (ltIndex > -1) {
-    const gtIndex = text.indexOf('>')
-    if (gtIndex > ltIndex) {
-      const value = text.substring(ltIndex + 1, gtIndex)
-      return {
-        label: text.split('<')[0],
-        value: value,
-      }
+  try {
+    const parsed = JSON.parse(text)
+    if (parsed.value) {
+      return parsed as ComboboxOptionObject
+    } else {
+      return { value: text }
     }
+  } catch (e) {
+    return { value: text }
   }
-  return { value: text }
 }

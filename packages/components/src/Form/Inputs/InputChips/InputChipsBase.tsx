@@ -86,7 +86,12 @@ export interface InputChipsCommonProps
   /**
    * Format the value for display in the chip
    */
-  formatChip?: (value: string) => string
+  formatChipLabel?: (value: string) => string
+  /**
+   * The main delimiting character, in addition to tab and newline
+   * @default ','
+   */
+  separator?: ',' | '|'
 }
 
 export interface InputChipsBaseProps
@@ -119,7 +124,8 @@ export const InputChipsBaseInternal = forwardRef(
       hideControls = false,
       summary,
       removeOnBackspace = true,
-      formatChip,
+      formatChipLabel,
+      separator = ',',
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -308,7 +314,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value, e)
       }
       const isSelected = selectedValues.includes(value)
-      const chipLabel = formatChip ? formatChip(value) : value
+      const chipLabel = formatChipLabel ? formatChipLabel(value) : value
 
       return (
         <Chip
@@ -367,7 +373,7 @@ export const InputChipsBaseInternal = forwardRef(
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
           onBlur={handleHiddenInputBlur}
-          value={selectedValues.join(',')}
+          value={selectedValues.join(separator)}
           readOnly
           disabled={disabled}
           data-testid="hidden-input"
