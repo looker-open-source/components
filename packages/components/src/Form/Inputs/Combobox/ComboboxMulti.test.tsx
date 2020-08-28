@@ -137,7 +137,7 @@ describe('<ComboboxMulti/> with values', () => {
       </ComboboxMulti>
     )
     const input = screen.getByPlaceholderText('Type here')
-    fireEvent.change(input, { target: { value: 'apples|bananas|' } })
+    fireEvent.change(input, { target: { value: 'apples,bananas,' } })
 
     expect(onChangeMock).toHaveBeenCalledWith([
       { value: 'Bar' },

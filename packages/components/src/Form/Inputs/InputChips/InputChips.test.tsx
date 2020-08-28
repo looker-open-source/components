@@ -211,38 +211,16 @@ tag2`
     expect(input).toHaveValue('tag1')
   })
 
-  describe('escaped separators and tabs are preserved', () => {
-    test('default: comma', () => {
-      const onChangeMock = jest.fn()
+  test('escaped commas and tabs are preserved', () => {
+    const onChangeMock = jest.fn()
 
-      renderWithTheme(
-        <InputChips
-          onChange={onChangeMock}
-          values={[]}
-          placeholder="type here"
-        />
-      )
-      const input = screen.getByPlaceholderText('type here')
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
 
-      fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,tag\\,3,' } })
-      expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2', 'tag,3'])
-    })
-    test('pipe', () => {
-      const onChangeMock = jest.fn()
-
-      renderWithTheme(
-        <InputChips
-          onChange={onChangeMock}
-          values={[]}
-          placeholder="type here"
-          separator="|"
-        />
-      )
-      const input = screen.getByPlaceholderText('type here')
-
-      fireEvent.change(input, { target: { value: 'tag\\|1|tag\\	2|tag\\|3|' } })
-      expect(onChangeMock).toHaveBeenCalledWith(['tag|1', 'tag	2', 'tag|3'])
-    })
+    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,tag\\,3,' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2', 'tag,3'])
   })
 
   describe('removeOnBackspace', () => {
@@ -583,7 +561,7 @@ tag2`
     })
   })
 
-  test('formatChipLabel', () => {
+  test('formatChip', () => {
     renderWithTheme(
       <InputChips
         onChange={() => null}
@@ -592,7 +570,7 @@ tag2`
           'Baz Qux<baz.qux@example.com>',
           'example@example.com',
         ]}
-        formatChipLabel={(value: string) => {
+        formatChip={(value: string) => {
           const option = parseOption(value)
           return option.label || option.value
         }}

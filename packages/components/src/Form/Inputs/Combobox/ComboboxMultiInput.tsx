@@ -42,7 +42,7 @@ import {
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
-import { formatOptionAsString, getComboboxText, parseOption } from './utils'
+import { getComboboxText, formatOptionAsString, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
   ComboboxActionType,
@@ -51,7 +51,6 @@ import {
 } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputMultiPropRefs } from './utils/useInputPropRefs'
-import { ComboboxOptionObject } from './ComboboxOption'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
@@ -81,13 +80,19 @@ function parseInputValue(value: string) {
   }
 }
 
-function getValueToCopy(options: ComboboxOptionObject[]) {
-  if (
-    options.every((option) => !option.label || option.label === option.value)
-  ) {
-    return options.map(formatOptionAsString).join(',')
+function formatTextToCopy(values: string[]) {
+  const notJson = values.every((value) => {
+    try {
+      JSON.parse(value)
+      return false
+    } catch (e) {
+      return true
+    }
+  })
+  if (notJson) {
+    return values.join(',')
   }
-  return JSON.stringify(options)
+  return `[${values.join(',')}]`
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -213,7 +218,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
-    function formatChipLabel(value: string) {
+    function formatChip(value: string) {
       const option = parseOption(value)
       return option.label || option.value
     }
@@ -226,7 +231,8 @@ export const ComboboxMultiInputInternal = forwardRef(
         : undefined,
       'aria-autocomplete': 'both',
       autoComplete: 'off',
-      formatChipLabel,
+      formatChip,
+      formatTextToCopy,
       hasOptions: true,
       id: `listbox-${id}`,
       inputValue,
@@ -235,7 +241,6 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear: handleClear,
       onInputChange: wrappedOnInputChange,
       readOnly,
-      valueToCopy: getValueToCopy(options),
       values: inputValues,
     }
 
