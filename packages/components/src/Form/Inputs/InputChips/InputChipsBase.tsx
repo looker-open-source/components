@@ -70,7 +70,7 @@ export interface InputChipsControlProps {
    * you can't easily access the current value via dom API
    */
   onChange: (values: string[]) => void
-  valueToCopy?: string
+  formatTextToCopy?: (values: string[]) => string
   onClear?: () => void
 }
 
@@ -87,7 +87,7 @@ export interface InputChipsCommonProps
   /**
    * Format the value for display in the chip
    */
-  formatChipLabel?: (value: string) => string
+  formatChip?: (value: string) => string
 }
 
 export interface InputChipsBaseProps
@@ -103,6 +103,8 @@ function focusInput(inputRef: RefObject<HTMLInputElement>) {
   inputRef.current && inputRef.current.focus()
 }
 
+export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
+
 export const InputChipsBaseInternal = forwardRef(
   (
     {
@@ -112,7 +114,7 @@ export const InputChipsBaseInternal = forwardRef(
       onFocus,
       inputValue,
       onInputChange,
-      valueToCopy,
+      formatTextToCopy = joinValues,
       disabled,
       validationType,
       onClear,
@@ -121,7 +123,7 @@ export const InputChipsBaseInternal = forwardRef(
       hideControls = false,
       summary,
       removeOnBackspace = true,
-      formatChipLabel,
+      formatChip,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -310,7 +312,7 @@ export const InputChipsBaseInternal = forwardRef(
         handleDeleteChip(value, e)
       }
       const isSelected = selectedValues.includes(value)
-      const chipLabel = formatChipLabel ? formatChipLabel(value) : value
+      const chipLabel = formatChip ? formatChip(value) : value
 
       return (
         <Chip
@@ -369,8 +371,9 @@ export const InputChipsBaseInternal = forwardRef(
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
           onBlur={handleHiddenInputBlur}
-          value={valueToCopy || values.join(',')}
+          value={formatTextToCopy(selectedValues)}
           readOnly
+          tabIndex={-1}
           disabled={disabled}
           data-testid="hidden-input"
         />
