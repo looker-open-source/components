@@ -27,8 +27,8 @@
 import { ComboboxOptionObject } from '../ComboboxOption'
 
 export function formatOptionAsString(option: ComboboxOptionObject) {
-  if (!option.label || option.label === option.value) {
-    return option.value
+  if (option.label && option.label !== option.value) {
+    return JSON.stringify(option)
   }
-  return JSON.stringify(option)
+  return option.value
 }

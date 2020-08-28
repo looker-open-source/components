@@ -59,6 +59,8 @@ export interface InputChipsInputControlProps {
   hasOptions?: boolean
 }
 
+export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
+
 export interface InputChipsControlProps {
   /**
    * InputChips is a controlled component since unlike native inputs,
@@ -70,6 +72,10 @@ export interface InputChipsControlProps {
    * you can't easily access the current value via dom API
    */
   onChange: (values: string[]) => void
+  /**
+   * When the user selects and copies chips, what should the text be
+   * @default joinValues
+   */
   formatTextToCopy?: (values: string[]) => string
   onClear?: () => void
 }
@@ -102,8 +108,6 @@ function isCtrlCmdPressed(event: KeyboardEvent | MouseEvent) {
 function focusInput(inputRef: RefObject<HTMLInputElement>) {
   inputRef.current && inputRef.current.focus()
 }
-
-export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
 
 export const InputChipsBaseInternal = forwardRef(
   (
