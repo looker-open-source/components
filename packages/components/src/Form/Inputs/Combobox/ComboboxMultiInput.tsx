@@ -38,10 +38,11 @@ import {
   InputChipsCommonProps,
   InputChipsInputControlProps,
   InputChipsValidationProps,
+  splitInputValue,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
-import { getComboboxText, parseOption } from './utils'
+import { formatOptionAsString, getComboboxText, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
   ComboboxActionType,
@@ -50,6 +51,7 @@ import {
 } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputMultiPropRefs } from './utils/useInputPropRefs'
+import { ComboboxOptionObject } from './ComboboxOption'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
@@ -63,6 +65,29 @@ export interface ComboboxMultiInputProps
    * @default false
    */
   freeInput?: boolean
+}
+
+function parseInputValue(value: string) {
+  try {
+    const parsed = JSON.parse(value)
+    if (Array.isArray(parsed)) {
+      return parsed.map((option) =>
+        typeof option === 'string' ? option : JSON.stringify(option)
+      )
+    }
+    return splitInputValue(value)
+  } catch (e) {
+    return splitInputValue(value)
+  }
+}
+
+function getValueToCopy(options: ComboboxOptionObject[]) {
+  if (
+    options.every((option) => !option.label || option.label === option.value)
+  ) {
+    return options.map(formatOptionAsString).join(',')
+  }
+  return JSON.stringify(options)
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -108,6 +133,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     // if freeInput = false, only called when user removes chips from the input
     // if freeInput = true, this is called when user inputs values via separators (enter key, comma, tab char, newline)
+    // or, if pasting chips from another ComboboxMultiInput with options where label != value, via JSON
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
@@ -164,7 +190,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues = options.map((option) => JSON.stringify(option))
+    const inputValues = options.map(formatOptionAsString)
 
     let inputValue = contextInputValue || ''
     if (
@@ -209,7 +235,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear: handleClear,
       onInputChange: wrappedOnInputChange,
       readOnly,
-      separator: '|',
+      valueToCopy: getValueToCopy(options),
       values: inputValues,
     }
 
@@ -221,6 +247,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         validate={validate}
         onValidationFail={onValidationFail}
         onDuplicate={onDuplicate}
+        parseInputValue={parseInputValue}
         ref={ref}
       />
     ) : (

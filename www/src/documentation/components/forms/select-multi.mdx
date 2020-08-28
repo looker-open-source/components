@@ -69,10 +69,9 @@ With the `closeOnSelect` prop, the option list closes after an option is selecte
 
 ## freeInput
 
-Use the `freeInput` prop when the user needs to be able to easily enter values not found in the list of options.
+Use the `freeInput` prop when the user needs to be able to easily enter values without needing to click on options in the list.
 This enables the inputting behavior of [`InputChips`](/components/forms/input-chips/) where values are separated
-by the enter key, comma, or tab or newline character when pasting. This works best when the option label is the
-same as the value. This prop also supports accepting values copy-pasted in from another `SelectMulti`.
+by the enter key, comma, or tab or newline character when pasting. This prop also supports accepting values copy-pasted in from another `SelectMulti`.
 
 Use the `validate` callback to ensure that values entered via `freeInput` are valid, and the `onValidationFail` and `onDuplicate`
 callbacks to handle invalid values.
