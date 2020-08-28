@@ -62,24 +62,9 @@ export interface InputChipsValidationProps {
   onDuplicate?: (values: string[]) => void
 }
 
-export interface InputChipsProps
-  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
-    InputChipsControlProps,
-    Partial<InputChipsInputControlProps>,
-    InputChipsValidationProps {}
-
-function getUpdatedValues(
-  inputValue: string,
-  currentValues: string[],
-  separator: ',' | '|',
-  validate?: (value: string) => boolean
-) {
-  const duplicateValues: string[] = []
-  const invalidValues: string[] = []
-  const unusedValues: string[] = []
-  const validValues: string[] = []
-
+export function splitInputValue(inputValue: string) {
   // Preserve escaped commas & tabs
+  const separator = ','
   const separatorKey = Math.random() + ''
   const tabKey = Math.random() + ''
   const separatorRegexp = separator === ',' ? /\\,/g : /\\\|/g
@@ -89,15 +74,34 @@ function getUpdatedValues(
 
   // Values may be separated by ',' '\t', '\n' and ' '
   const splitRegexp = `[${separator}\\t\\n\\r]+`
-  const inputValues: string[] = removedEscapes
+  return removedEscapes
     .split(new RegExp(splitRegexp))
     .map((value) =>
       value
         .replace(new RegExp(separatorKey, 'g'), separator)
         .replace(new RegExp(tabKey, 'g'), '\t')
     )
+}
 
-  inputValues.forEach((val: string) => {
+export interface InputChipsProps
+  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
+    InputChipsControlProps,
+    Partial<InputChipsInputControlProps>,
+    InputChipsValidationProps {
+  parseInputValue?: (value: string) => string[]
+}
+
+export function validateValues(
+  newValues: string[],
+  currentValues: string[],
+  validate?: (value: string) => boolean
+) {
+  const duplicateValues: string[] = []
+  const invalidValues: string[] = []
+  const unusedValues: string[] = []
+  const validValues: string[] = []
+
+  newValues.forEach((val: string) => {
     const trimmedValue = val.trim()
     if (trimmedValue === '') return
     // Make sure each value is valid and doesn't already exist
@@ -122,7 +126,7 @@ export const InputChipsInternal = forwardRef(
       onChange,
       inputValue: controlledInputValue,
       onInputChange,
-      separator = ',',
+      parseInputValue = splitInputValue,
       validate,
       onValidationFail,
       onDuplicate,
@@ -158,17 +162,13 @@ export const InputChipsInternal = forwardRef(
     }
 
     function updateValues(newInputValue?: string) {
+      const inputValues = parseInputValue(newInputValue || inputValue)
       const {
         duplicateValues,
         invalidValues,
         unusedValues,
         validValues,
-      } = getUpdatedValues(
-        newInputValue || inputValue,
-        values,
-        separator,
-        validate
-      )
+      } = validateValues(inputValues, values, validate)
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')
@@ -210,7 +210,7 @@ export const InputChipsInternal = forwardRef(
       // If the last character is a comma, update the values
       // Or, if the user pastes content, we assume that the final value is complete
       // even if there's no comma at the end
-      if (pastedValue.current || value.endsWith(separator)) {
+      if (pastedValue.current || value.endsWith(',')) {
         // Use the pasted value if there is one
         // (before newlines are stripped by the browser)
         updateValues(pastedValue.current || value)
@@ -233,7 +233,6 @@ export const InputChipsInternal = forwardRef(
         onChange={onChange}
         inputValue={inputValue}
         onInputChange={handleInputChange}
-        separator={separator}
         {...wrappedEvents}
         {...props}
       />

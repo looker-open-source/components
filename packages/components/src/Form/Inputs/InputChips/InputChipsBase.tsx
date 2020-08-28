@@ -70,6 +70,7 @@ export interface InputChipsControlProps {
    * you can't easily access the current value via dom API
    */
   onChange: (values: string[]) => void
+  valueToCopy?: string
   onClear?: () => void
 }
 
@@ -87,11 +88,6 @@ export interface InputChipsCommonProps
    * Format the value for display in the chip
    */
   formatChipLabel?: (value: string) => string
-  /**
-   * The main delimiting character, in addition to tab and newline
-   * @default ','
-   */
-  separator?: ',' | '|'
 }
 
 export interface InputChipsBaseProps
@@ -116,6 +112,7 @@ export const InputChipsBaseInternal = forwardRef(
       onFocus,
       inputValue,
       onInputChange,
+      valueToCopy,
       disabled,
       validationType,
       onClear,
@@ -125,7 +122,6 @@ export const InputChipsBaseInternal = forwardRef(
       summary,
       removeOnBackspace = true,
       formatChipLabel,
-      separator = ',',
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -373,7 +369,7 @@ export const InputChipsBaseInternal = forwardRef(
           ref={hiddenInputRef}
           onKeyDown={handleHiddenInputKeyDown}
           onBlur={handleHiddenInputBlur}
-          value={selectedValues.join(separator)}
+          value={valueToCopy || values.join(',')}
           readOnly
           disabled={disabled}
           data-testid="hidden-input"
