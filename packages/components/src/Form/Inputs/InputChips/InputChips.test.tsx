@@ -219,8 +219,8 @@ tag2`
     )
     const input = screen.getByPlaceholderText('type here')
 
-    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,tag\\,3,' } })
-    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2', 'tag,3'])
+    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2'])
   })
 
   describe('removeOnBackspace', () => {

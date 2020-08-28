@@ -38,6 +38,7 @@ import {
   InputChipsCommonProps,
   InputChipsInputControlProps,
   InputChipsValidationProps,
+  joinValues,
   splitInputValue,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
@@ -80,8 +81,8 @@ function parseInputValue(value: string) {
   }
 }
 
-function formatTextToCopy(values: string[]) {
-  const notJson = values.every((value) => {
+function formatTextToCopy(selectedValues: string[]) {
+  const notJson = selectedValues.every((value) => {
     try {
       JSON.parse(value)
       return false
@@ -90,9 +91,10 @@ function formatTextToCopy(values: string[]) {
     }
   })
   if (notJson) {
-    return values.join(',')
+    return joinValues(selectedValues)
   }
-  return `[${values.join(',')}]`
+  // Make it a JSON array string, so it can be parsed via JSON.parse and not need to escape commas
+  return `[${selectedValues.join(',')}]`
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
