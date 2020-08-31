@@ -24,34 +24,26 @@
 
  */
 
-import styled from 'styled-components'
-import React, { FC } from 'react'
-import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
-import { DividerVertical } from '../Divider/DividerVertical'
-import { IconButton } from '../Button/IconButton'
+import React from 'react'
+import { InputFilters } from '@looker/components'
 
-const ActionListFilterLayout: FC<InputFiltersProps> = ({
-  availableFilters,
-  className,
-  fieldFilters,
-}) => {
-  return (
-    <div className={className}>
-      <InputFilters
-        fieldFilters={fieldFilters}
-        availableFilters={availableFilters}
-      />
-      <ColumnSelector>
-        <DividerVertical stretch />
-        <IconButton label="Select columns to display" icon="ViewColumn" />
-      </ColumnSelector>
-    </div>
-  )
+export default {
+  title: 'Forms/InputFilters',
 }
 
-const ColumnSelector = styled.div`
-  align-items: center;
-  display: flex;
-`
+const filterableItems = [
+  { value: 'PDT value' },
+  { value: 'Status' },
+  { value: 'Model' },
+  { value: 'Persistance Type' },
+  { value: 'Last Successful Build' },
+]
 
-export const ActionListFilters = styled(ActionListFilterLayout)``
+const fieldFilters = ['role: admin', 'group: pizza-lovers']
+
+export const All = () => (
+  <InputFilters
+    fieldFilters={fieldFilters}
+    availableFilters={filterableItems}
+  />
+)

@@ -24,34 +24,26 @@
 
  */
 
-import styled from 'styled-components'
-import React, { FC } from 'react'
-import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
-import { DividerVertical } from '../Divider/DividerVertical'
-import { IconButton } from '../Button/IconButton'
+// import React from 'react'
+// import { renderWithTheme } from '@looker/components-test-utils'
+// import { screen } from '@testing-library/react'
 
-const ActionListFilterLayout: FC<InputFiltersProps> = ({
-  availableFilters,
-  className,
-  fieldFilters,
-}) => {
-  return (
-    <div className={className}>
-      <InputFilters
-        fieldFilters={fieldFilters}
-        availableFilters={availableFilters}
-      />
-      <ColumnSelector>
-        <DividerVertical stretch />
-        <IconButton label="Select columns to display" icon="ViewColumn" />
-      </ColumnSelector>
-    </div>
-  )
-}
+// import { InputFilters } from './InputFilters'
 
-const ColumnSelector = styled.div`
-  align-items: center;
-  display: flex;
-`
+// describe('InputFilters', () => {
+//   test('renders InputFilters', () => {
 
-export const ActionListFilters = styled(ActionListFilterLayout)``
+//     const filterableItems = [
+//       { value: 'PDT value' },
+//       { value: 'Status' },
+//       { value: 'Model' },
+//       { value: 'Persistance Type' },
+//       { value: 'Last Successful Build' },
+//     ]
+
+//     const fieldFilters = ['role: admin', 'group: pizza-lovers']
+//     renderWithTheme(
+//       <InputFilters filterableItems={filterableItems} fieldFilters={fieldFilters} />
+//     )
+//   })
+// }
