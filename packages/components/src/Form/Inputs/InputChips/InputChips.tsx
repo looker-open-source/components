@@ -63,22 +63,20 @@ export interface InputChipsValidationProps {
 }
 
 export function splitInputValue(inputValue: string) {
-  // Preserve escaped commas & tabs
-  const separator = ','
-  const separatorKey = Math.random() + ''
-  const tabKey = Math.random() + ''
-  const separatorRegexp = separator === ',' ? /\\,/g : /\\\|/g
+  // Preserve escaped commas & tabs using these strings produced by a random string generator
+  const commaKey = '0UX1bJKsFBFQonIIXq9oyeV40ITHwtew'
+  const tabKey = 'heF6X4qMBtIti8c8U9nMhskYOQUQiXqx'
   const removedEscapes = inputValue
-    .replace(separatorRegexp, separatorKey)
+    .replace(/\\,/g, commaKey)
     .replace(/\\\t/g, tabKey)
 
   // Values may be separated by ',' '\t', '\n' and ' '
-  const splitRegexp = `[${separator}\\t\\n\\r]+`
+  const splitRegexp = `[,\\t\\n\\r]+`
   return removedEscapes
     .split(new RegExp(splitRegexp))
     .map((value) =>
       value
-        .replace(new RegExp(separatorKey, 'g'), separator)
+        .replace(new RegExp(commaKey, 'g'), ',')
         .replace(new RegExp(tabKey, 'g'), '\t')
     )
 }

@@ -274,10 +274,20 @@ describe('closeOnSelect', () => {
 
       fireEvent.keyDown(input, { key: 'a', metaKey: true })
       // testing the hidden input value b/c jsdom do clipboard
-      expect(hiddenInput).toHaveDisplayValue('Foo<FOO>,Bar<BAR>')
+      expect(hiddenInput).toHaveDisplayValue(
+        '[{"label":"Foo","value":"FOO"},{"label":"Bar","value":"BAR"}]'
+      )
 
-      firePasteEvent(input, 'Baz<BAZ>,Qux<QUX>')
-      fireEvent.change(input, { target: { value: 'Baz<BAZ>,Qux<QUX>' } })
+      firePasteEvent(
+        input,
+        '[{"label":"Baz","value":"BAZ"},{"label":"Qux","value":"QUX"}]'
+      )
+      fireEvent.change(input, {
+        target: {
+          value:
+            '[{"label":"Baz","value":"BAZ"},{"label":"Qux","value":"QUX"}]',
+        },
+      })
       expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'BAZ', 'QUX'])
     })
   })
