@@ -81,6 +81,10 @@ export interface IconButtonProps
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
   /*
+   * If the button has a 'toggled' appearance
+   */
+  activated?: boolean
+  /*
    * @default 'neutral'
    */
   color?: StatefulColor
@@ -134,6 +138,7 @@ export const IconButtonStyle = styled.button<IconButtonProps>`
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
     const {
+      activated,
       icon,
       id,
       size = 'xsmall',
@@ -204,7 +209,10 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { shape, color = iconButtonDefaultColor } = props
+  const {
+    shape,
+    color = props.activated ? 'key' : iconButtonDefaultColor,
+  } = props
 
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
@@ -236,23 +244,38 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${space}
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
 
-  background: none;
+  background: ${({ theme, activated }) =>
+    activated ? theme.colors.keySubtle : 'none'};
   border: none;
-  color: ${({ theme, color = iconButtonDefaultColor }) =>
-    lighten(0.14, theme.colors[color])};
+  color: ${({
+    theme,
+    activated,
+    color = activated ? 'key' : iconButtonDefaultColor,
+  }) => theme.colors[color]};
   padding: 0;
 
   &:hover,
   &:focus,
   &.hover {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Interactive`]};
+    background: ${({
+      theme,
+      activated,
+      color = activated ? 'key' : iconButtonDefaultColor,
+    }) => theme.colors[`${color}Subtle`]};
+    /* color: ${({
+      theme,
+      activated,
+      color = activated ? 'key' : iconButtonDefaultColor,
+    }) => theme.colors[`${color}Interactive`]}; */
   }
 
   &:active,
   &.active {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Pressed`]};
+    background: ${({
+      theme,
+      activated,
+      color = activated ? 'key' : iconButtonDefaultColor,
+    }) => theme.colors[`${color}Accent`]};
   }
 
   ${(props) => props.outline && outlineCSS}

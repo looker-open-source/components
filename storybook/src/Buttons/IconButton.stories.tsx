@@ -78,8 +78,22 @@ export const Basic = () => {
     </>
   )
 }
+export const Activated = () => {
+  const [activated, updateActivated] = React.useState(true)
+  return (
+    <>
+      <Space>
+        <IconButton
+          activated={activated}
+          icon="Favorite"
+          label="Click to toggle"
+          onClick={() => updateActivated(!activated)}
+        />
+      </Space>
+    </>
+  )
+}
 
 export default {
-  component: Basic,
   title: 'Buttons/IconButtons',
 }
