@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
+
 ### Changed
 
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
+
+### Fixed
+
+- `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
+- `Select` overwriting search value with the current option value if the option's value and label are different
 
 ## [0.9.13] - 2020-08-24
 
