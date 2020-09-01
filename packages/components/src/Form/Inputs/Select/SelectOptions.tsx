@@ -357,11 +357,7 @@ function SelectCreateOption({
   const OptionComponent = isMulti ? ComboboxMultiOption : ComboboxOption
 
   return (
-    <OptionComponent
-      value={inputValue}
-      highlightText={false}
-      indicator={isMulti ? false : undefined}
-    >
+    <OptionComponent value={inputValue} highlightText={false} indicator={false}>
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
     </OptionComponent>
   )
