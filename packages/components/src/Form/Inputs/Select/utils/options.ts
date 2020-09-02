@@ -85,7 +85,7 @@ export function notInOptions(
   currentOptions: ComboboxOptionObject[],
   options?: SelectOptionProps[],
   inputValue?: string
-): inputValue is string {
+) {
   if (!inputValue) return false
   if (currentOptions.find((option) => compareOption(option, inputValue))) {
     return false

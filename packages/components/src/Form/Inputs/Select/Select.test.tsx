@@ -864,4 +864,41 @@ describe('Select', () => {
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
+
+  test('filtering after selecting an option where value != label', () => {
+    const customLabelOptions = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    function TestComponent() {
+      const [filterTerm, setFilterTerm] = useState('')
+      const [value, setValue] = useState('')
+      // Just need to simulate the current option being filtered out
+      const filteredOptions = filterTerm === '' ? customLabelOptions : []
+      return (
+        <Select
+          options={filteredOptions}
+          value={value}
+          onChange={setValue}
+          isFilterable
+          onFilter={setFilterTerm}
+          placeholder="Search"
+        />
+      )
+    }
+
+    renderWithTheme(<TestComponent />)
+
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.click(input)
+    fireEvent.click(screen.getByText('Foo'))
+    expect(input).toHaveDisplayValue('Foo')
+
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'Testing' } })
+    expect(input).toHaveDisplayValue('Testing')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
 })
