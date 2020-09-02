@@ -83,7 +83,7 @@ exports[`MenuGroup - JSX label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .c7 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -95,8 +95,8 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .c7,
+.c5[aria-current='true'] .c7 {
   color: #939BA5;
 }
 
@@ -118,8 +118,14 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .c7 {
   color: #939BA5;
+}
+
+.c6 .c7 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 <li
@@ -152,7 +158,7 @@ exports[`MenuGroup - JSX label 1`] = `
     type="none"
   >
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -167,7 +173,7 @@ exports[`MenuGroup - JSX label 1`] = `
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -182,7 +188,7 @@ exports[`MenuGroup - JSX label 1`] = `
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -283,7 +289,7 @@ exports[`MenuGroup - label 1`] = `
   text-decoration: none;
 }
 
-.c5 .c6 {
+.c5 .c7 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -295,8 +301,8 @@ exports[`MenuGroup - label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c6,
-.c5[aria-current='true'] .c6 {
+.c5:hover .c7,
+.c5[aria-current='true'] .c7 {
   color: #939BA5;
 }
 
@@ -318,8 +324,14 @@ exports[`MenuGroup - label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c6 {
+.c5[disabled]:hover .c7 {
   color: #939BA5;
+}
+
+.c6 .c7 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 <li
@@ -348,7 +360,7 @@ exports[`MenuGroup - label 1`] = `
     type="none"
   >
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -363,7 +375,7 @@ exports[`MenuGroup - label 1`] = `
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -378,7 +390,7 @@ exports[`MenuGroup - label 1`] = `
       </button>
     </li>
     <li
-      className="c5 "
+      className="c5 c6"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -458,7 +470,7 @@ exports[`MenuGroup 1`] = `
   text-decoration: none;
 }
 
-.c2 .c3 {
+.c2 .c4 {
   color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -470,8 +482,8 @@ exports[`MenuGroup 1`] = `
   color: #262D33;
 }
 
-.c2:hover .c3,
-.c2[aria-current='true'] .c3 {
+.c2:hover .c4,
+.c2[aria-current='true'] .c4 {
   color: #939BA5;
 }
 
@@ -493,8 +505,14 @@ exports[`MenuGroup 1`] = `
   color: #939BA5;
 }
 
-.c2[disabled]:hover .c3 {
+.c2[disabled]:hover .c4 {
   color: #939BA5;
+}
+
+.c3 .c4 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 <li
@@ -505,7 +523,7 @@ exports[`MenuGroup 1`] = `
     type="none"
   >
     <li
-      className="c2 "
+      className="c2 c3"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
