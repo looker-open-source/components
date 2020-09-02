@@ -88,7 +88,7 @@ export function useClickable<E extends HTMLElement>({
       },
       // if onClick is used, role should be 'button' unless otherwise specified
       // otherwise undefined b/c depending on usage, 'button' could be misleading
-      role: role || onClick ? 'button' : undefined,
+      role: role || (onClick ? 'button' : undefined),
       tabIndex: disabled ? undefined : 0,
     }),
     [disabled, focusVisible, onBlur, onClick, onKeyUp, role]
