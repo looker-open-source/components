@@ -31,7 +31,6 @@ import React, {
   MouseEvent,
   ReactNode,
   Ref,
-  SyntheticEvent,
 } from 'react'
 import styled from 'styled-components'
 import {
@@ -48,7 +47,9 @@ export interface ChipProps
   extends GenericClickProps<HTMLSpanElement>,
     TruncateProps {
   children: ReactNode
-  onDelete?: (e?: SyntheticEvent) => void
+  onDelete?: (
+    e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
+  ) => void
 }
 
 const ChipStyle = styled.span<FocusVisibleProps>`
