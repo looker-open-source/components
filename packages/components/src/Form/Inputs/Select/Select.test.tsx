@@ -537,6 +537,93 @@ describe('Select / SelectMulti', () => {
       fireEvent.click(document)
     })
   })
+
+  describe('showCreate', () => {
+    const commonProps = {
+      isFilterable: true,
+      placeholder: 'Search',
+      showCreate: true,
+    }
+    test.each([
+      [
+        'Select',
+        <Select defaultValue="test value" {...commonProps} key="select" />,
+      ],
+      [
+        'SelectMulti',
+        <SelectMulti
+          defaultValues={['test value']}
+          {...commonProps}
+          key="select-multi"
+        />,
+      ],
+    ])('create option replaces "No options" (%s)', (_, jsx) => {
+      renderWithTheme(jsx)
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'some text' } })
+
+      expect(screen.getByText('Create "some text"')).toBeVisible()
+      expect(screen.queryByText('No options')).not.toBeInTheDocument()
+
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'test value' } })
+
+      // create option doesn't show if inputValue is already in current values
+      expect(screen.getByText('No options')).toBeVisible()
+      expect(screen.queryByText('Create "test value"')).not.toBeInTheDocument()
+
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: '' } })
+
+      // No options should show if there are no options AND no input value
+      expect(screen.getByText('No options')).toBeVisible()
+      expect(screen.queryByText('Create ""')).not.toBeInTheDocument()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    const formatCreateLabel = (inputValue: string) =>
+      `${inputValue} CREATE LABEL`
+    test.each([
+      [
+        'Select',
+        <Select
+          options={options}
+          {...commonProps}
+          formatCreateLabel={formatCreateLabel}
+          key="select"
+        />,
+      ],
+      [
+        'SelectMulti',
+        <SelectMulti
+          options={options}
+          {...commonProps}
+          formatCreateLabel={formatCreateLabel}
+          key="select-multi"
+        />,
+      ],
+    ])('custom label, checks options (%s)', (_, jsx) => {
+      renderWithTheme(jsx)
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'some text' } })
+
+      expect(screen.getByText('some text CREATE LABEL')).toBeVisible()
+
+      fireEvent.focus(input)
+      fireEvent.change(input, { target: { value: 'foo' } })
+
+      // create option doesn't show if inputValue is in options
+      expect(screen.queryByText('foo CREATE LABEL')).not.toBeInTheDocument()
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+  })
 })
 
 describe('Select', () => {
@@ -773,6 +860,43 @@ describe('Select', () => {
     fireEvent.click(input)
     fireEvent.click(screen.getByText('Custom Icon'))
     expect(screen.getByTestId('input-icon')).toHaveTextContent('cool icon')
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('filtering after selecting an option where value != label', () => {
+    const customLabelOptions = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    function TestComponent() {
+      const [filterTerm, setFilterTerm] = useState('')
+      const [value, setValue] = useState('')
+      // Just need to simulate the current option being filtered out
+      const filteredOptions = filterTerm === '' ? customLabelOptions : []
+      return (
+        <Select
+          options={filteredOptions}
+          value={value}
+          onChange={setValue}
+          isFilterable
+          onFilter={setFilterTerm}
+          placeholder="Search"
+        />
+      )
+    }
+
+    renderWithTheme(<TestComponent />)
+
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.click(input)
+    fireEvent.click(screen.getByText('Foo'))
+    expect(input).toHaveDisplayValue('Foo')
+
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'Testing' } })
+    expect(input).toHaveDisplayValue('Testing')
 
     // Close popover to silence act() warning
     fireEvent.click(document)

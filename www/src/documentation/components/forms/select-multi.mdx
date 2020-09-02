@@ -45,61 +45,6 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
 </Space>
 ```
 
-## showCreate
-
-As with `Select`, the `isFilterable` prop allows the user to type in the input, triggering the `onFilter` callback,
-which should be used to narrow the options passed to the `SelectMulti`.
-
-When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel`(defaults to 'Create "[input value]"')
-to allow the user to free-form values.
-
-```jsx
-;() => {
-  const [values, setValues] = React.useState([])
-  const [searchTerm, setSearchTerm] = React.useState('')
-
-  function handleChange(newValues) {
-    setValues(newValues)
-  }
-  function handleFilter(term) {
-    setSearchTerm(term)
-  }
-
-  const newOptions = React.useMemo(() => {
-    const options = [
-      { value: 'Apples' },
-      { value: 'Bananas' },
-      { value: 'Oranges' },
-      { value: 'Pineapples' },
-      { value: 'Kiwis' },
-    ]
-    if (searchTerm === '') return options
-    return options.filter((option) => {
-      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
-  }, [searchTerm])
-
-  function formatCreateLabel(inputValue) {
-    return `Add new fruit: ${inputValue}`
-  }
-
-  return (
-    <SelectMulti
-      options={newOptions}
-      aria-label="Fruits"
-      placeholder="Controlled, searchable, creatable"
-      isFilterable
-      values={values}
-      onChange={handleChange}
-      onFilter={handleFilter}
-      showCreate
-      formatCreateLabel={formatCreateLabel}
-      createOptionPosition="first"
-    />
-  )
-}
-```
-
 ## closeOnSelect
 
 With the `closeOnSelect` prop, the option list closes after an option is selected.

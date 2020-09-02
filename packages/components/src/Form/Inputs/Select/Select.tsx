@@ -116,6 +116,8 @@ const SelectComponent = forwardRef(
       autoResize,
       validationType,
       windowedOptions: windowedOptionsProp,
+      showCreate = false,
+      formatCreateLabel,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -188,7 +190,10 @@ const SelectComponent = forwardRef(
             <SelectOptions
               options={options}
               windowedOptions={windowedOptions}
+              isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
+              showCreate={showCreate}
+              formatCreateLabel={formatCreateLabel}
             />
           </ComboboxList>
         )}

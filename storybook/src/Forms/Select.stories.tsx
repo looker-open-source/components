@@ -66,6 +66,8 @@ export const All = () => (
     <UpdateOptions />
     <EmptyValue />
     <OptionIcons />
+    <OptionIcons />
+    <CreateOption />
   </Fieldset>
 )
 
@@ -531,5 +533,29 @@ export const OptionIcons = () => {
         placeholder="Select a mobile platform"
       />
     </Space>
+  )
+}
+
+export const CreateOption = () => {
+  const [filterTerm, setFilterTerm] = useState('')
+  const newOptions = useMemo(() => {
+    return options.filter(
+      (option) =>
+        option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
+    )
+  }, [filterTerm])
+  function formatCreateLabel(inputValue: string) {
+    return `Create a fruit: ${inputValue}`
+  }
+  return (
+    <FieldSelect
+      label="showCreate &amp; formatCreateLabel"
+      options={newOptions}
+      isFilterable
+      onFilter={setFilterTerm}
+      showCreate
+      formatCreateLabel={formatCreateLabel}
+      width={300}
+    />
   )
 }

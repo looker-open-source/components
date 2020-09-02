@@ -100,64 +100,6 @@ describe('SelectMulti', () => {
     // 1 chip remove button and 1 clear all button
     expect(getAllByRole('button')).toHaveLength(2)
   })
-
-  describe('showCreate', () => {
-    test('create option replaces "No options"', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-        <SelectMulti
-          defaultValues={['test value']}
-          placeholder="Search"
-          isFilterable
-          showCreate
-        />
-      )
-
-      const input = getByPlaceholderText('Search')
-      fireEvent.focus(input)
-      fireEvent.change(input, { target: { value: 'some text' } })
-
-      expect(getByText('Create "some text"')).toBeVisible()
-      expect(queryByText('No options')).not.toBeInTheDocument()
-
-      fireEvent.focus(input)
-      fireEvent.change(input, { target: { value: 'test value' } })
-
-      // create option doesn't show if inputValue is already in current values
-      expect(getByText('No options')).toBeVisible()
-      expect(queryByText('Create "test value"')).not.toBeInTheDocument()
-
-      // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
-
-    test('custom label, checks options', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          placeholder="Search"
-          isFilterable
-          showCreate
-          formatCreateLabel={(inputValue: string) =>
-            `${inputValue} CREATE LABEL`
-          }
-        />
-      )
-
-      const input = getByPlaceholderText('Search')
-      fireEvent.focus(input)
-      fireEvent.change(input, { target: { value: 'some text' } })
-
-      expect(getByText('some text CREATE LABEL')).toBeVisible()
-
-      fireEvent.focus(input)
-      fireEvent.change(input, { target: { value: 'foo' } })
-
-      // create option doesn't show if inputValue is in options
-      expect(queryByText('foo CREATE LABEL')).not.toBeInTheDocument()
-      // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
-  })
 })
 
 describe('closeOnSelect', () => {

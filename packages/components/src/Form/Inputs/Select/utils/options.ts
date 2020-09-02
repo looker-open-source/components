@@ -46,7 +46,10 @@ export function flattenOptions(options: SelectOptionProps[]) {
 
 export function getOption(value?: string, options?: SelectOptionProps[]) {
   const flattenedOptions = options && flattenOptions(options)
-  const label = getComboboxText(value, flattenedOptions)
+  const matchingOption = flattenedOptions?.find(
+    (option) => option.value === value
+  )
+  const label = matchingOption?.label
   // If this is a filterable Select and the current option has been filtered out
   // leave label out, so that the matching against the option saved in ComboboxContext won't fail
   const labelProps = label ? { label } : {}

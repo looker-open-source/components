@@ -83,6 +83,50 @@ the user to delete the current value.
 }
 ```
 
+## showCreate
+
+When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel` (defaults to `'Create "${input value}"'`)
+to allow the user to enter a value not found in the options.
+
+```jsx
+;() => {
+  const [value, setValue] = React.useState('')
+  const [searchTerm, setSearchTerm] = React.useState('')
+
+  const newOptions = React.useMemo(() => {
+    const options = [
+      { value: 'Apples' },
+      { value: 'Bananas' },
+      { value: 'Oranges' },
+      { value: 'Pineapples' },
+      { value: 'Kiwis' },
+    ]
+    if (searchTerm === '') return options
+    return options.filter((option) => {
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
+
+  function formatCreateLabel(inputValue) {
+    return `Add new fruit: ${inputValue}`
+  }
+
+  return (
+    <Select
+      options={newOptions}
+      aria-label="Fruits"
+      placeholder="Controlled, searchable, creatable"
+      isFilterable
+      value={value}
+      onChange={setValue}
+      onFilter={setSearchTerm}
+      showCreate
+      formatCreateLabel={formatCreateLabel}
+    />
+  )
+}
+```
+
 ## Name and ID
 
 A name and ID can be specified in the `<Select />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
