@@ -25,7 +25,7 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { KeyboardEvent, MouseEvent, useState, useMemo } from 'react'
+import { FocusEvent, KeyboardEvent, MouseEvent, useState, useMemo } from 'react'
 
 // These 2 are helper interfaces for components using this hook
 export interface FocusVisibleProps {
@@ -51,6 +51,7 @@ export interface UseClickableResult<E extends HTMLElement>
  */
 export function useClickable<E extends HTMLElement>({
   disabled,
+  onBlur,
   onClick,
   onKeyUp,
   role,
@@ -61,6 +62,10 @@ export function useClickable<E extends HTMLElement>({
     () => ({
       disabled,
       focusVisible,
+      onBlur: (e: FocusEvent<E>) => {
+        onBlur?.(e)
+        setFocusVisible(false)
+      },
       onClick: (e: MouseEvent<E>) => {
         if (!disabled) {
           onClick?.(e)
@@ -86,6 +91,6 @@ export function useClickable<E extends HTMLElement>({
       role: role || onClick ? 'button' : undefined,
       tabIndex: disabled ? undefined : 0,
     }),
-    [disabled, focusVisible, onClick, onKeyUp, role]
+    [disabled, focusVisible, onBlur, onClick, onKeyUp, role]
   )
 }
