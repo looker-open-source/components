@@ -31,12 +31,13 @@ import {
   Space,
   SpaceVertical,
 } from '@looker/components'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const All = () => (
   <SpaceVertical align="start">
     <ClickAndDelete />
     <ChipButtons />
+    <Removable />
   </SpaceVertical>
 )
 
@@ -84,6 +85,28 @@ export const ChipButtons = () => {
         <ChipButton disabled onClick={handleClick} onDelete={handleDelete}>
           Delete Me (nothing happens)
         </ChipButton>
+      </Space>
+    </>
+  )
+}
+
+export const Removable = () => {
+  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
+  function getDeleteHandler(item: string) {
+    return () => {
+      const newValues = values.filter((value) => value !== item)
+      setValues(newValues)
+    }
+  }
+  return (
+    <>
+      <Heading>Remove chips</Heading>
+      <Space>
+        {values.map((item) => (
+          <Chip onDelete={getDeleteHandler(item)} role="option" key={item}>
+            {item}
+          </Chip>
+        ))}
       </Space>
     </>
   )
