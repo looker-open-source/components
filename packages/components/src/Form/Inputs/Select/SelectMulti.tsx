@@ -35,11 +35,7 @@ import {
 } from '../Combobox'
 import { InputChipsCommonProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
-import {
-  SelectMultiOptionsBaseProps,
-  SelectOptionObject,
-  SelectOptions,
-} from './SelectOptions'
+import { SelectOptionObject, SelectOptions } from './SelectOptions'
 import { getOptions } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
@@ -47,8 +43,7 @@ export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
     Pick<InputChipsCommonProps, 'removeOnBackspace'>,
-    Pick<ComboboxMultiInputProps, 'freeInput'>,
-    SelectMultiOptionsBaseProps {
+    Pick<ComboboxMultiInputProps, 'freeInput'> {
   /**
    * Values of the current selected option (controlled)
    */
