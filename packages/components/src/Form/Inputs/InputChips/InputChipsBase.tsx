@@ -199,7 +199,7 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleChipClick(value: string) {
-      return (e: MouseEvent) => {
+      return (e: MouseEvent | KeyboardEvent) => {
         // Focus hidden input for copy/paste & keyboard behaviors
         focusInput(hiddenInputRef)
         // Stop any onClick handlers (e.g. opening a SelectMulti list)

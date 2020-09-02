@@ -24,44 +24,24 @@
 
  */
 
-import {
-  useState,
-  FocusEvent,
-  KeyboardEvent,
-  MouseEvent,
-  SyntheticEvent,
-} from 'react'
+import { ChipButton, Space, SpaceVertical } from '@looker/components'
+import React from 'react'
 
-export interface UseButtonProps<E extends HTMLElement> {
-  onBlur: (e: FocusEvent<E>) => void
-  onClick: (e: SyntheticEvent<E>) => void
-  onKeyDown: (e: KeyboardEvent<E>) => void
-  onKeyUp: (e: KeyboardEvent<E>) => void
+export const All = () => <SpaceVertical align="start"></SpaceVertical>
+
+export default {
+  component: All,
+  title: 'Chip Button',
 }
 
-export function useButton<E extends HTMLElement>({
-  onBlur,
-  onClick,
-  onKeyUp,
-}: UseButtonProps<E>) {
-  const [focusVisible, setFocusVisible] = useState(false)
-
-  return {
-    focusVisible,
-    onBlur: (e: FocusEvent<E>) => {
-      setFocusVisible(false)
-      onBlur(e)
-    },
-    onClick: (e: MouseEvent<E>) => {
-      setFocusVisible(false)
-      onClick(e)
-    },
-    onKeyUp: (e: KeyboardEvent<E>) => {
-      const isCorrectTarget = e.currentTarget === e.target
-      if (e.key === 'Tab' && isCorrectTarget) {
-        setFocusVisible(true)
-      }
-      onKeyUp(e)
-    },
-  }
+export const ClickEvent = () => {
+  const handleClick = () => alert('Clicked!')
+  return (
+    <Space>
+      <ChipButton onClick={handleClick}>Click Me</ChipButton>
+      <ChipButton disabled onClick={handleClick}>
+        Click Me (nothing happens)
+      </ChipButton>
+    </Space>
+  )
 }

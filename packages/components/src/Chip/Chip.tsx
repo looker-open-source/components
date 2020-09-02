@@ -24,37 +24,41 @@
 
  */
 
-import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
+import { reset } from '@looker/design-tokens'
 import React, {
   forwardRef,
   KeyboardEvent,
+  MouseEvent,
   ReactNode,
   Ref,
   SyntheticEvent,
-  useState,
 } from 'react'
 import styled from 'styled-components'
+import {
+  useClickable,
+  GenericClickProps,
+  FocusVisibleProps,
+  useWrapEvent,
+} from '../utils'
 import { IconButton } from '../Button/IconButton'
 import { Text, TextProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
-  extends CompatibleHTMLProps<HTMLSpanElement>,
+  extends GenericClickProps<HTMLSpanElement>,
     TruncateProps {
   children: ReactNode
-  disabled?: boolean
-  focusVisible?: boolean
   onDelete?: (e?: SyntheticEvent) => void
 }
 
-const ChipStyle = styled.span<ChipProps>`
+const ChipStyle = styled.span<FocusVisibleProps>`
   ${reset}
 
   align-items: center;
   background: ${({ theme }) => theme.colors.keySubtle};
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.keyInteractive};
-  display: flex;
+  display: inline-flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   height: 28px;
@@ -96,72 +100,58 @@ const ChipLabel = styled(Text)<TextProps & TruncateProps>`
   ${truncate}
 `
 
-const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
-  const {
-    children,
-    disabled,
-    onBlur,
-    onDelete,
-    onKeyUp,
-    onKeyDown,
-    truncate = true,
-    ...restProps
-  } = props
+const ChipJSX = forwardRef(
+  (
+    {
+      children,
+      disabled,
+      onBlur,
+      onClick,
+      onDelete,
+      onKeyUp,
+      onKeyDown,
+      truncate = true,
+      ...props
+    }: ChipProps,
+    ref: Ref<HTMLSpanElement>
+  ) => {
+    const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
 
-  const [isFocusVisible, setFocusVisible] = useState(false)
-
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
-    setFocusVisible(true)
-    onKeyUp && onKeyUp(event)
-  }
-
-  const handleOnBlur = (event: React.FocusEvent<HTMLSpanElement>) => {
-    setFocusVisible(false)
-    onBlur && onBlur(event)
-  }
-
-  const handleOnKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
-    setFocusVisible(false)
-    if (event.key === 'Backspace') {
-      onDelete && onDelete(event)
+    const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
+      if (event.key === 'Backspace') {
+        onDelete && onDelete(event)
+      }
     }
-    onKeyDown && onKeyDown(event)
-    setFocusVisible(false)
-  }
 
-  const handleDelete = (e: SyntheticEvent) => {
-    if (!disabled) {
-      onDelete && onDelete(e)
+    const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
+      if (!disabled) {
+        onDelete && onDelete(e)
+      }
+      e.stopPropagation()
     }
-    setFocusVisible(false)
-  }
 
-  return (
-    <ChipStyle
-      disabled={disabled}
-      focusVisible={isFocusVisible}
-      onBlur={handleOnBlur}
-      onKeyDown={handleOnKeyDown}
-      onKeyUp={handleOnKeyUp}
-      ref={ref}
-      tabIndex={disabled ? undefined : 0}
-      {...restProps}
-    >
-      <ChipLabel truncate={truncate}>{children}</ChipLabel>
-      {onDelete && !disabled && (
-        <IconButton
-          disabled={disabled}
-          icon="Close"
-          label="Delete"
-          ml="xsmall"
-          onClick={handleDelete}
-          size="xxsmall"
-          tabIndex={restProps.tabIndex}
-        />
-      )}
-    </ChipStyle>
-  )
-})
+    return (
+      <ChipStyle
+        {...clickableProps}
+        onKeyDown={useWrapEvent(handleKeyDown, onKeyDown)}
+        ref={ref}
+        {...props}
+      >
+        <ChipLabel truncate={truncate}>{children}</ChipLabel>
+        {onDelete && !disabled && (
+          <IconButton
+            disabled={disabled}
+            icon="Close"
+            label="Delete"
+            ml="xsmall"
+            onClick={handleDelete}
+            size="xxsmall"
+          />
+        )}
+      </ChipStyle>
+    )
+  }
+)
 
 ChipJSX.displayName = 'ChipJSX'
 
