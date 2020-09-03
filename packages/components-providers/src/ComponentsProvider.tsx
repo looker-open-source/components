@@ -25,15 +25,14 @@
  */
 
 import {
-  GlobalStyle,
-  IEGlobalStyle,
   constructFontStack,
   CoreColors,
-  theme,
-  generateThemeFromCoreColors,
   FontFamilyChoices,
-  defaultFonts,
+  generateThemeFromCoreColors,
+  IEGlobalStyle,
+  GlobalStyle,
   GoogleFontsLoader,
+  theme,
 } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
@@ -53,24 +52,25 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
   globalStyle?: boolean
 
   /**
-   * Load Google Fonts
+   * Load fonts from the Google Fonts CDN if not already available
    * @default false
    */
   loadGoogleFonts?: boolean
 
   /**
-   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * Enable style support for IE11
    * @default false
    */
   ie11Support?: boolean
 
   /**
-   *
-   *
+   * Override default color specifications
    */
   coreColors?: Partial<CoreColors>
   /**
-   *
+   * Override default font-family specifications. Specified fonts will have out built-in
+   * font-stack appended. Built-in font stacks are designed to provide i18n character
+   * support and fallbacks for browsers that can't load webfonts.
    */
   fontFamilies?: Partial<FontFamilyChoices>
 }
@@ -79,9 +79,9 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
   ie11Support = false,
+  loadGoogleFonts = false,
   coreColors,
   fontFamilies,
-  loadGoogleFonts = false,
   ...props
 }) => {
   const baseTheme = props.theme || theme
@@ -91,17 +91,7 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
     : baseTheme
 
   if (fontFamilies) {
-    Object.keys(fontFamilies).forEach((key) =>
-      fontFamilies[key] === undefined ? delete fontFamilies[key] : {}
-    )
-
-    const mergedFonts = {
-      ...defaultFonts,
-      ...fontFamilies,
-    }
-    const fonts = constructFontStack(mergedFonts)
-
-    generatedTheme.fonts = fonts
+    generatedTheme.fonts = constructFontStack(fontFamilies)
   }
 
   return (

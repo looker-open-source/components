@@ -64,6 +64,4 @@ export const sizeSimpleLayoutCSS = css`
   ${overflow}
   ${verticalAlign}
   ${display}
-
-  font-family: ${({ theme }) => theme.fonts.body};
 `

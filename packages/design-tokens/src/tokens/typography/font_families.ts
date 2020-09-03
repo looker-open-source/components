@@ -71,10 +71,17 @@ export const defaultFonts: FontFamilyChoices = {
   code: 'Roboto Mono',
 }
 
-export const constructFontStack = (fontStack: FontFamilyChoices) => {
-  const fontFamilies: FontFamilyChoices = { ...fontStack }
+export const constructFontStack = (fontStack: Partial<FontFamilyChoices>) => {
+  Object.keys(fontStack).forEach((key) =>
+    !fontStack[key] ? delete fontStack[key] : {}
+  )
 
-  Object.entries(fontStack).map(([key, fontFace]) => {
+  const fontFamilies: FontFamilyChoices = {
+    ...defaultFonts,
+    ...fontStack,
+  }
+
+  Object.entries(fontFamilies).map(([key, fontFace]) => {
     fontFamilies[key] = fontFacesToFamily(fontFace, defaultFallbacks[key])
   })
 

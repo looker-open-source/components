@@ -43,20 +43,18 @@ import {
   TabPanel,
   FieldSelect,
   ComponentsProvider,
-  FieldColor,
+  Fieldset,
 } from '@looker/components'
 import { defaultFonts } from '@looker/design-tokens'
 
 const fontOptions = [
-  'Papyrus',
-  'Impact',
-  'Comic Sans MS',
-  'Covered By Your Grace',
-  'Lakki Reddy',
-  'Redressed',
   'Red Hat Display',
   'Roboto',
   'Roboto Mono',
+  'Google Sans',
+  'Papyrus',
+  'Impact',
+  'Comic Sans MS',
 ]
 
 const options = fontOptions.map((font) => {
@@ -64,44 +62,40 @@ const options = fontOptions.map((font) => {
 })
 
 export const FontDemo = () => {
-  const [key, setKey] = useState<string | undefined>()
-  const handleKeyChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setKey(event.currentTarget.value)
-  }
-
-  const [body, setBody] = useState<string | undefined>('Papyrus')
-  const [brand, setBrand] = useState<string | undefined>('Impact')
+  const [body, setBody] = useState<string | undefined>()
+  const [brand, setBrand] = useState<string | undefined>()
   const [code, setCode] = useState<string | undefined>()
 
   const fontFamilies = body || brand || code ? { body, brand, code } : undefined
 
   const form = (
     <>
-      <FieldColor label="Key Color" value={key} onChange={handleKeyChange} />
-      <FieldSelect
-        label="Body"
-        options={options}
-        value={body}
-        isClearable
-        onChange={setBody}
-        placeholder={`Defaults to ${defaultFonts.body}`}
-      />
-      <FieldSelect
-        label="Brand"
-        options={options}
-        value={brand}
-        isClearable
-        onChange={setBrand}
-        placeholder={`Defaults to ${defaultFonts.brand}`}
-      />
-      <FieldSelect
-        label="Code"
-        options={options}
-        value={code}
-        isClearable
-        onChange={setCode}
-        placeholder={`Defaults to ${defaultFonts.code}`}
-      />
+      <Fieldset inline mb="large">
+        <FieldSelect
+          label="Body"
+          options={options}
+          value={body}
+          isClearable
+          onChange={setBody}
+          placeholder={`Defaults to ${defaultFonts.body}`}
+        />
+        <FieldSelect
+          label="Brand"
+          options={options}
+          value={brand}
+          isClearable
+          onChange={setBrand}
+          placeholder={`Defaults to ${defaultFonts.brand}`}
+        />
+        <FieldSelect
+          label="Code"
+          options={options}
+          value={code}
+          isClearable
+          onChange={setCode}
+          placeholder={`Defaults to ${defaultFonts.code}`}
+        />
+      </Fieldset>
     </>
   )
 
@@ -109,7 +103,7 @@ export const FontDemo = () => {
     <>
       <aside>{form}</aside>
 
-      <ComponentsProvider coreColors={{ key }} fontFamilies={fontFamilies}>
+      <ComponentsProvider fontFamilies={fontFamilies}>
         <SpaceVertical>
           <Heading fontSize="xxxxlarge">XXXXLarge Heading</Heading>
           <Heading fontSize="xxxlarge">XXXLarge Heading</Heading>
@@ -121,11 +115,11 @@ export const FontDemo = () => {
           <Heading as="h6">h6 Heading</Heading>
 
           <Paragraph>
-            A paragraph is a self-contained unit of discourse in writing dealing
-            with a particular point or idea. A paragraph consists of one or more
-            sentences. Though not required by the syntax of any language,
-            paragraphs are usually an expected part of formal writing, used to
-            organize longer prose. Wikipedia
+            "A paragraph is a self-contained unit of discourse in writing
+            dealing with a particular point or idea. A paragraph consists of one
+            or more sentences. Though not required by the syntax of any
+            language, paragraphs are usually an expected part of formal writing,
+            used to organize longer prose." - Wikipedia
           </Paragraph>
 
           <Space>

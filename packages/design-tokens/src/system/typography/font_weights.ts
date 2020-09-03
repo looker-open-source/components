@@ -26,12 +26,12 @@
 
 import { ResponsiveValue } from 'styled-system'
 
-export type Bold = 'bold'
 export type Normal = 'normal'
 export type Medium = 'medium'
 export type SemiBold = 'semiBold'
+export type Bold = 'bold'
 
-export type FontWeights = Bold | Normal | Medium | SemiBold
+export type FontWeights = Normal | Medium | SemiBold | Bold
 export type FontWeightRamp = Record<FontWeights, number>
 
 export interface FontWeightProps {
