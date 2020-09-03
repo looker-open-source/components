@@ -34,7 +34,12 @@ export interface ActionListItemActionProps
   children?: ReactNode
   detail?: ReactNode
   icon?: IconNames
-  role?: 'button' | 'link'
+  /**
+   * Determines if the ActionListItemAction is an <a/> or <button/> element
+   * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
+   * @default 'button'
+   */
+  itemRole?: 'link' | 'button'
 }
 
 /**
