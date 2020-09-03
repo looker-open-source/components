@@ -82,19 +82,21 @@ function parseInputValue(value: string) {
 }
 
 function formatTextToCopy(selectedValues: string[]) {
-  const notJson = selectedValues.every((value) => {
+  let noJson = true
+  const jsonReadyValues = selectedValues.map((value) => {
     try {
       JSON.parse(value)
-      return false
+      noJson = false
+      return value
     } catch (e) {
-      return true
+      return `"${value}"`
     }
   })
-  if (notJson) {
+  if (noJson) {
     return joinValues(selectedValues)
   }
   // Make it a JSON array string, so it can be parsed via JSON.parse and not need to escape commas
-  return `[${selectedValues.join(',')}]`
+  return `[${jsonReadyValues.join(',')}]`
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
