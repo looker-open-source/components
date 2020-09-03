@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Popover` cancel first click outside behavior not working with an `onMouseUp` used anywhere on the page
 - `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
 - `Select` overwriting search value with the current option value if the option's value and label are different
 

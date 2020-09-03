@@ -369,13 +369,13 @@ function usePopoverToggle(
       // popover was closed via mousedown, but still need to cancel next click
       document.addEventListener('click', handleClickOutside, true)
       // and then cleanup mouseDownTarget
-      document.addEventListener('mouseup', handleMouseUp, true)
+      document.addEventListener('mouseup', handleMouseUp)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleMouseDown, true)
       document.removeEventListener('click', handleClickOutside, true)
-      document.removeEventListener('mouseup', handleMouseUp, true)
+      document.removeEventListener('mouseup', handleMouseUp)
     }
   }, [
     cancelClickOutside,
