@@ -103,6 +103,7 @@ exports[`ChipButton renders correctly 1`] = `
 
 <span
   className="c0 c1"
+  onBlur={[Function]}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
