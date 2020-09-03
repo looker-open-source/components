@@ -23,7 +23,8 @@ exports[`ChipButton renders correctly 1`] = `
 
 .c0:hover,
 .c0:active,
-.c0:focus {
+.c0:focus,
+.c0[aria-selected='true'] {
   background: #E8E5FF;
 }
 

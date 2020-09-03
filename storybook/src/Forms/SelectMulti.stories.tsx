@@ -33,8 +33,10 @@ import {
   Icon,
   List,
   ListItem,
+  parseOption,
   SelectMulti,
   SelectOptionProps,
+  Space,
   SpaceVertical,
   Text,
   Button,
@@ -44,21 +46,21 @@ import {
 import { options1k } from './options1k'
 
 const selectOptions = [
-  { label: 'Apples', value: '1' },
-  { label: 'Bananas', value: '2' },
-  { label: 'Oranges', value: '3' },
-  { label: 'Pineapples', value: '4' },
-  { label: 'Kiwis', value: '5' },
-  { label: 'Apples2', value: '12' },
-  { label: 'Bananas2', value: '22' },
-  { label: 'Oranges2', value: '32' },
-  { label: 'Pineapples2', value: '42' },
-  { label: 'Kiwis2', value: '52' },
-  { label: 'Apples3', value: '13' },
-  { label: 'Bananas3', value: '23' },
-  { label: 'Oranges3', value: '33' },
-  { label: 'Pineapples3', value: '43' },
-  { label: 'Kiwis3', value: '53' },
+  { value: 'Apples' },
+  { value: 'Bananas' },
+  { value: 'Oranges' },
+  { value: 'Pineapples' },
+  { value: 'Kiwis' },
+  { value: 'Apples2' },
+  { value: 'Bananas2' },
+  { value: 'Oranges2' },
+  { value: 'Pineapples2' },
+  { value: 'Kiwis2' },
+  { value: 'Apples3' },
+  { value: 'Bananas3' },
+  { value: 'Oranges3' },
+  { value: 'Pineapples3' },
+  { value: 'Kiwis3' },
 ]
 
 export const All = () => (
@@ -67,6 +69,7 @@ export const All = () => (
     <Disabled />
     <ValidationError />
     <KitchenSink />
+    <CopyPaste />
   </Fieldset>
 )
 
@@ -83,7 +86,6 @@ export const Basic = () => (
     options={selectOptions}
     placeholder="Search fruits"
     isFilterable
-    freeInput
   />
 )
 
@@ -116,6 +118,81 @@ export const KitchenSink = () => (
     validationMessage={{ message: 'validation Message', type: 'error' }}
   />
 )
+
+const emailValidator = new RegExp(
+  /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+)
+const emails = [
+  { label: 'Good Looker', value: 'good.looker@google.com' },
+  { label: 'Components Team', value: 'lookercomponents@google.com' },
+  { label: 'Example Email', value: 'example.email@google.com' },
+]
+
+export const CopyPaste = () => {
+  const [errorMsg, setErrorMsg] = useState('')
+  function validate(value: string) {
+    return value.indexOf('2') === -1
+  }
+  function handleValidationFail(values: string[]) {
+    setErrorMsg(`No thank you to values with "2": ${values.join(', ')}`)
+  }
+  function validateEmail(val: string) {
+    const { value } = parseOption(val)
+    return emailValidator.test(value)
+  }
+  return (
+    <SpaceVertical>
+      <Heading>Copy/Paste</Heading>
+      <Heading as="h4">When label = value (or no label)</Heading>
+      <Space>
+        <FieldSelectMulti
+          label="Copy from here..."
+          description="But not the reverse..."
+          options={selectOptions}
+          defaultValues={['Apples', 'Oranges', 'Apples2']}
+          placeholder="Search fruits"
+          isFilterable
+        />
+        <FieldSelectMulti
+          label="...over to here"
+          description="...because that one is not freeInput"
+          options={selectOptions}
+          placeholder="Search fruits"
+          isFilterable
+          freeInput
+          validate={validate}
+          onValidationFail={handleValidationFail}
+          validationMessage={
+            errorMsg !== '' ? { message: errorMsg, type: 'error' } : undefined
+          }
+        />
+      </Space>
+      <Heading as="h4">When label != value</Heading>
+      <Space>
+        <FieldSelectMulti
+          label="To:"
+          options={emails}
+          validate={validateEmail}
+          defaultValues={[
+            'good.looker@google.com',
+            'lookercomponents@google.com',
+          ]}
+          placeholder="Enter recipients"
+          isFilterable
+          freeInput
+        />
+        <FieldSelectMulti
+          label="CC:"
+          options={emails}
+          validate={validateEmail}
+          placeholder="Enter recipients"
+          isFilterable
+          freeInput
+        />
+      </Space>
+    </SpaceVertical>
+  )
+}
 
 const selectGroups = [
   {
@@ -191,7 +268,7 @@ export function SelectMultiDemo() {
         description: 'Lorem ipsum',
       }))
     return selectOptions.reduce((acc, option) => {
-      if (option.label.toLowerCase().includes(searchTerm.toLowerCase())) {
+      if (option.value.toLowerCase().includes(searchTerm.toLowerCase())) {
         acc.push({ ...option, description: 'Lorem ipsum' })
       }
       return acc
@@ -234,6 +311,7 @@ export function SelectMultiDemo() {
             showCreate
             mb="xlarge"
             defaultValues={['Boulder Creek']}
+            freeInput
           />
         </DialogContent>
       </Dialog>

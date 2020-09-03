@@ -24,6 +24,16 @@
 
  */
 
-export * from './getComboboxText'
-export * from './formatOptionAsString'
-export * from './parseOption'
+import { createEvent, fireEvent } from '@testing-library/react'
+
+export function firePasteEvent(element: HTMLElement, value: string) {
+  const eventProperties = {
+    clipboardData: {
+      getData: () => value,
+    },
+  }
+
+  const pasteEvent = createEvent.paste(element, eventProperties)
+
+  fireEvent(element, pasteEvent)
+}

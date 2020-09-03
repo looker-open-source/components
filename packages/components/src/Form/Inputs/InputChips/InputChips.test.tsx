@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { createEvent, fireEvent, screen } from '@testing-library/react'
+import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 
+import { parseOption } from '../Combobox/utils'
 import { InputChips } from './InputChips'
 
 describe('InputChips', () => {
@@ -59,18 +60,6 @@ describe('InputChips', () => {
     expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
     expect(input).toHaveValue('')
   })
-
-  function firePasteEvent(element: HTMLElement, value: string) {
-    const eventProperties = {
-      clipboardData: {
-        getData: () => value,
-      },
-    }
-
-    const pasteEvent = createEvent.paste(element, eventProperties)
-
-    fireEvent(element, pasteEvent)
-  }
 
   test('values are added when pasting', () => {
     const onChangeMock = jest.fn()
@@ -326,5 +315,271 @@ tag2`
     expect(document.activeElement).toEqual(input)
 
     rafSpy.mockRestore()
+  })
+
+  describe('Selecting chips', () => {
+    // Utils to check for selected values
+    function hasSelectedValues(values: string[]) {
+      const selectedChips = screen.getAllByRole('option', { selected: true })
+      expect(selectedChips).toHaveLength(values.length)
+      values.forEach((value, index) => {
+        expect(selectedChips[index]).toHaveTextContent(value)
+      })
+      expect(screen.getByTestId('hidden-input')).toHaveValue(values.join(','))
+    }
+    function hasNoSelectedValues() {
+      expect(
+        screen.queryByRole('option', { selected: true })
+      ).not.toBeInTheDocument()
+    }
+
+    test('arrow keys', () => {
+      renderWithTheme(
+        <InputChips
+          onChange={() => null}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.keyDown(input, {
+        key: 'ArrowLeft',
+      })
+      // Focus has moved to the hidden input
+      expect(document.activeElement).toBe(hiddenInput)
+      hasSelectedValues(['bar'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowLeft',
+      })
+      hasSelectedValues(['foo'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowRight',
+      })
+      hasSelectedValues(['bar'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowRight',
+      })
+      // Focus moves back to the main input
+      expect(document.activeElement).toBe(input)
+      hasNoSelectedValues()
+    })
+
+    test('arrow + shift keys', () => {
+      renderWithTheme(
+        <InputChips
+          onChange={() => null}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.keyDown(input, {
+        key: 'ArrowLeft',
+        shiftKey: true,
+      })
+      hasSelectedValues(['bar'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowLeft',
+        shiftKey: true,
+      })
+      hasSelectedValues(['foo', 'bar'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowRight',
+        shiftKey: true,
+      })
+      // Focus moves back to the main input
+      expect(document.activeElement).toBe(input)
+      hasNoSelectedValues()
+
+      // Move to the first value
+      fireEvent.keyDown(input, {
+        key: 'ArrowLeft',
+      })
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowLeft',
+      })
+      // Then select both values with ArrowRight + shift
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowRight',
+        shiftKey: true,
+      })
+      hasSelectedValues(['foo', 'bar'])
+    })
+
+    test('cmd/ctrl + a', () => {
+      renderWithTheme(
+        <InputChips
+          onChange={() => null}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.keyDown(input, {
+        key: 'a',
+      })
+      hasNoSelectedValues()
+
+      fireEvent.keyDown(hiddenInput, {
+        ctrlKey: true,
+        key: 'a',
+      })
+      hasSelectedValues(['foo', 'bar'])
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'ArrowRight',
+      })
+      hasNoSelectedValues()
+
+      fireEvent.keyDown(hiddenInput, {
+        key: 'a',
+        metaKey: true,
+      })
+      hasSelectedValues(['foo', 'bar'])
+    })
+
+    test('clicking', () => {
+      renderWithTheme(
+        <InputChips
+          onChange={() => null}
+          values={['foo', 'bar', 'baz']}
+          placeholder="type here"
+        />
+      )
+      const foo = screen.getByText('foo')
+      const baz = screen.getByText('baz')
+
+      fireEvent.click(foo)
+      hasSelectedValues(['foo'])
+      fireEvent.click(baz)
+      hasSelectedValues(['baz'])
+      // command key toggles values
+      fireEvent.click(foo, { metaKey: true })
+      hasSelectedValues(['foo', 'baz'])
+      fireEvent.click(baz, { metaKey: true })
+      hasSelectedValues(['foo'])
+
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.focus(input)
+      hasNoSelectedValues()
+
+      fireEvent.click(baz)
+      hasSelectedValues(['baz'])
+      // control key toggles values
+      fireEvent.click(foo, { ctrlKey: true })
+      hasSelectedValues(['foo', 'baz'])
+      fireEvent.click(baz, { ctrlKey: true })
+      hasSelectedValues(['foo'])
+
+      fireEvent.focus(input)
+      hasNoSelectedValues()
+
+      fireEvent.click(baz)
+      // shift key selects everything between
+      fireEvent.click(foo, { shiftKey: true })
+      hasSelectedValues(['foo', 'bar', 'baz'])
+    })
+  })
+
+  describe('copying / removing selected chips', () => {
+    test('delete & backspace keys', () => {
+      const onChangeMock = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+
+      const foo = screen.getByText('foo')
+      const bar = screen.getByText('bar')
+      const input = screen.getByPlaceholderText('type here')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.click(foo)
+      expect(document.activeElement).toEqual(hiddenInput)
+      fireEvent.keyDown(hiddenInput, { key: 'Delete' })
+      expect(onChangeMock).toHaveBeenCalledWith(['bar'])
+      expect(document.activeElement).toEqual(input)
+
+      fireEvent.click(bar)
+      fireEvent.keyDown(hiddenInput, { key: 'Backspace' })
+      expect(onChangeMock).toHaveBeenCalledWith(['foo'])
+    })
+
+    test('copy', () => {
+      document.execCommand = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={() => null}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+
+      const foo = screen.getByText('foo')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.click(foo)
+      fireEvent.keyDown(hiddenInput, { key: 'c', metaKey: true })
+      expect(document.execCommand).toHaveBeenCalledWith('copy')
+    })
+
+    test('cut', () => {
+      document.execCommand = jest.fn()
+      const onChangeMock = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={['foo', 'bar']}
+          placeholder="type here"
+        />
+      )
+
+      const foo = screen.getByText('foo')
+      const hiddenInput = screen.getByTestId('hidden-input')
+
+      fireEvent.click(foo)
+      fireEvent.keyDown(hiddenInput, { ctrlKey: true, key: 'x' })
+      expect(document.execCommand).toHaveBeenCalledWith('copy')
+      expect(onChangeMock).toHaveBeenCalledWith(['bar'])
+    })
+  })
+
+  test('formatChip', () => {
+    renderWithTheme(
+      <InputChips
+        onChange={() => null}
+        values={[
+          'Foo Bar<foo.bar@example.com>',
+          'Baz Qux<baz.qux@example.com>',
+          'example@example.com',
+        ]}
+        formatChip={(value: string) => {
+          const option = parseOption(value)
+          return option.label || option.value
+        }}
+      />
+    )
+
+    const chips = screen.getAllByRole('option')
+    expect(chips[0]).toHaveTextContent('Foo Bar')
+    expect(chips[1]).toHaveTextContent('Baz Qux')
+    expect(chips[2]).toHaveTextContent('example@example.com')
   })
 })

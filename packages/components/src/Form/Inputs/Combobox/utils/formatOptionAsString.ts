@@ -24,6 +24,11 @@
 
  */
 
-export * from './getComboboxText'
-export * from './formatOptionAsString'
-export * from './parseOption'
+import { ComboboxOptionObject } from '../ComboboxOption'
+
+export function formatOptionAsString(option: ComboboxOptionObject) {
+  if (option.label && option.label !== option.value) {
+    return JSON.stringify(option)
+  }
+  return option.value
+}

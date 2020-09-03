@@ -33,7 +33,7 @@ import {
   ComboboxMultiList,
   ComboboxMultiProps,
 } from '../Combobox'
-import { InputChipsCommonProps } from '../InputChips'
+import { InputChipsValidationProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
 import { SelectOptionObject, SelectOptions } from './SelectOptions'
 import { getOptions } from './utils/options'
@@ -42,8 +42,9 @@ import { useShouldWindowOptions } from './utils/useWindowedOptions'
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
-    Pick<InputChipsCommonProps, 'removeOnBackspace'>,
-    Pick<ComboboxMultiInputProps, 'freeInput'> {
+    Pick<ComboboxMultiInputProps, 'freeInput' | 'removeOnBackspace'>,
+    // validation callbacks for use with freeInput
+    InputChipsValidationProps {
   /**
    * Values of the current selected option (controlled)
    */
@@ -86,7 +87,12 @@ const SelectMultiComponent = forwardRef(
       showCreate = false,
       formatCreateLabel,
       removeOnBackspace = true,
+
       freeInput = false,
+      validate,
+      onValidationFail,
+      onDuplicate,
+
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -94,7 +100,7 @@ const SelectMultiComponent = forwardRef(
     const optionValues = getOptions(values, options)
     const defaultOptionValues = getOptions(defaultValues, options)
 
-    function handleChange(options?: SelectOptionObject[]) {
+    function handleChange(options: SelectOptionObject[] = []) {
       const newValues = options && options.map((option) => option.value)
       onChange && onChange(newValues)
       onFilter && onFilter('')
@@ -136,6 +142,9 @@ const SelectMultiComponent = forwardRef(
           onInputChange={handleInputChange}
           selectOnClick={isFilterable}
           freeInput={freeInput}
+          validate={validate}
+          onValidationFail={onValidationFail}
+          onDuplicate={onDuplicate}
           ref={ref}
         />
         {!disabled && (

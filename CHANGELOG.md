@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
 
 ### Changed

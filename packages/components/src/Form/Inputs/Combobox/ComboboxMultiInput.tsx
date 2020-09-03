@@ -37,10 +37,13 @@ import {
   InputChipsBaseProps,
   InputChipsCommonProps,
   InputChipsInputControlProps,
+  InputChipsValidationProps,
+  joinValues,
+  splitInputValue,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
-import { getComboboxText } from './utils/getComboboxText'
+import { getComboboxText, formatOptionAsString, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
   ComboboxActionType,
@@ -52,15 +55,48 @@ import { useInputMultiPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
+    InputChipsValidationProps,
     ComboboxInputCommonProps,
     Partial<InputChipsInputControlProps> {
   onClear?: () => void
   /**
-   * Allows inputting of values outside of options via typing or pasting
-   * Not recommended for use when options have labels that are different from their values
+   * Allows inputting of values (whether found in options or not) via typing or pasting
+   * Use validate, onValidationFail, and onDuplicate for validation on typed or pasted values
    * @default false
    */
   freeInput?: boolean
+}
+
+function parseInputValue(value: string) {
+  try {
+    const parsed = JSON.parse(value)
+    if (Array.isArray(parsed)) {
+      return parsed.map((option) =>
+        typeof option === 'string' ? option : JSON.stringify(option)
+      )
+    }
+    return splitInputValue(value)
+  } catch (e) {
+    return splitInputValue(value)
+  }
+}
+
+function formatTextToCopy(selectedValues: string[]) {
+  let noJson = true
+  const jsonReadyValues = selectedValues.map((value) => {
+    try {
+      JSON.parse(value)
+      noJson = false
+      return value
+    } catch (e) {
+      return `"${value}"`
+    }
+  })
+  if (noJson) {
+    return joinValues(selectedValues)
+  }
+  // Make it a JSON array string, so it can be parsed via JSON.parse and not need to escape commas
+  return `[${jsonReadyValues.join(',')}]`
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -79,6 +115,10 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // free form input
       freeInput = false,
+      validate,
+      onValidationFail,
+      onDuplicate,
+
       ...rest
     } = props
 
@@ -102,6 +142,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     // if freeInput = false, only called when user removes chips from the input
     // if freeInput = true, this is called when user inputs values via separators (enter key, comma, tab char, newline)
+    // or, if pasting chips from another ComboboxMultiInput with options where label != value, via JSON
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
@@ -158,7 +199,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues = options.map((option) => getComboboxText(option))
+    const inputValues = options.map(formatOptionAsString)
 
     let inputValue = contextInputValue || ''
     if (
@@ -181,6 +222,11 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
+    function formatChip(value: string) {
+      const option = parseOption(value)
+      return option.label || option.value
+    }
+
     const commonProps: InputChipsBaseProps = {
       ...omit(rest, 'selectOnClick'),
       ...inputEvents,
@@ -189,6 +235,8 @@ export const ComboboxMultiInputInternal = forwardRef(
         : undefined,
       'aria-autocomplete': 'both',
       autoComplete: 'off',
+      formatChip,
+      formatTextToCopy,
       hasOptions: true,
       id: `listbox-${id}`,
       inputValue,
@@ -203,7 +251,14 @@ export const ComboboxMultiInputInternal = forwardRef(
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
     return freeInput ? (
-      <InputChips {...commonProps} ref={ref} />
+      <InputChips
+        {...commonProps}
+        validate={validate}
+        onValidationFail={onValidationFail}
+        onDuplicate={onDuplicate}
+        parseInputValue={parseInputValue}
+        ref={ref}
+      />
     ) : (
       <InputChipsBase {...commonProps} ref={ref} />
     )

@@ -47,10 +47,7 @@ import {
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-export interface InputChipsProps
-  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
-    InputChipsControlProps,
-    Partial<InputChipsInputControlProps> {
+export interface InputChipsValidationProps {
   /**
    * for checking each value before converting to a chip
    */
@@ -65,8 +62,39 @@ export interface InputChipsProps
   onDuplicate?: (values: string[]) => void
 }
 
-function getUpdatedValues(
-  inputValue: string,
+export function splitInputValue(inputValue: string) {
+  // Preserve escaped commas & tabs using these strings produced by a random string generator
+  const commaKey = '0UX1bJKsFBFQonIIXq9oyeV40ITHwtew'
+  const tabKey = 'heF6X4qMBtIti8c8U9nMhskYOQUQiXqx'
+  const removedEscapes = inputValue
+    .replace(/\\,/g, commaKey)
+    .replace(/\\\t/g, tabKey)
+
+  // Values may be separated by ',' '\t', '\n' and ' '
+  const splitRegexp = `[,\\t\\n\\r]+`
+  return removedEscapes
+    .split(new RegExp(splitRegexp))
+    .map((value) =>
+      value
+        .replace(new RegExp(commaKey, 'g'), ',')
+        .replace(new RegExp(tabKey, 'g'), '\t')
+    )
+}
+
+export interface InputChipsProps
+  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
+    InputChipsControlProps,
+    Partial<InputChipsInputControlProps>,
+    InputChipsValidationProps {
+  /**
+   * How to convert a typed or pasted string into an array of values
+   * @default splitInputValue
+   */
+  parseInputValue?: (value: string) => string[]
+}
+
+export function validateValues(
+  newValues: string[],
   currentValues: string[],
   validate?: (value: string) => boolean
 ) {
@@ -75,19 +103,7 @@ function getUpdatedValues(
   const unusedValues: string[] = []
   const validValues: string[] = []
 
-  // Preserve escaped commas & tabs
-  const commaKey = Math.random() + ''
-  const tabKey = Math.random() + ''
-  const removedEscapes = inputValue
-    .replace(/\\,/, commaKey)
-    .replace(/\\\t/, tabKey)
-
-  // Values may be separated by ',' '\t', '\n' and ' '
-  const inputValues: string[] = removedEscapes
-    .split(/[,\t\n\r]+/)
-    .map((value) => value.replace(commaKey, ',').replace(tabKey, '\t'))
-
-  inputValues.forEach((val: string) => {
+  newValues.forEach((val: string) => {
     const trimmedValue = val.trim()
     if (trimmedValue === '') return
     // Make sure each value is valid and doesn't already exist
@@ -112,6 +128,7 @@ export const InputChipsInternal = forwardRef(
       onChange,
       inputValue: controlledInputValue,
       onInputChange,
+      parseInputValue = splitInputValue,
       validate,
       onValidationFail,
       onDuplicate,
@@ -147,12 +164,13 @@ export const InputChipsInternal = forwardRef(
     }
 
     function updateValues(newInputValue?: string) {
+      const inputValues = parseInputValue(newInputValue || inputValue)
       const {
         duplicateValues,
         invalidValues,
         unusedValues,
         validValues,
-      } = getUpdatedValues(newInputValue || inputValue, values, validate)
+      } = validateValues(inputValues, values, validate)
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')
