@@ -24,46 +24,38 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React from 'react'
-import { Placeholder } from './Placeholder'
+import styled from 'styled-components'
+import React, { forwardRef, Ref, useContext } from 'react'
+import { CompatibleHTMLProps } from '@looker/design-tokens/src'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { LayoutContext } from './LayoutContext'
 
-export default {
-  title: 'Layout/Grid',
+export interface AsideProps
+  extends Omit<SimpleLayoutProps, 'maxWidth' | 'minWidth'>,
+    CompatibleHTMLProps<HTMLElement> {
+  /**
+   * Width
+   * @default '16rem'
+   */
+  width?: string
 }
 
-export const Basic = () => (
-  <Grid>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
+const AsideLayout = forwardRef((props: AsideProps, ref: Ref<HTMLElement>) => {
+  const { registerAside } = useContext(LayoutContext)
+  registerAside && registerAside()
 
-export const Columns = () => (
-  <Grid columns={4}>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
+  return <aside {...props} ref={ref} />
+})
 
-export const GapSize = () => (
-  <Grid gap="xxlarge">
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
+AsideLayout.displayName = 'AsideLayout'
 
-export const VerticalGrid = () => (
-  <Grid columns={4}>
-    <Grid columns={1} gap="xxlarge">
-      <Placeholder minHeight="5rem">A</Placeholder>
-      <Placeholder>B</Placeholder>
-      <Placeholder>C</Placeholder>
-      <Placeholder>D</Placeholder>
-    </Grid>
-  </Grid>
-)
+export const Aside = styled(AsideLayout)`
+  ${simpleLayoutCSS}
+
+  flex: 0 0 ${({ width }) => width};
+  max-width: ${({ width }) => width};
+  min-width: ${({ width }) => width};
+  width: ${({ width }) => width};
+`
+
+Aside.defaultProps = { width: '12rem' }

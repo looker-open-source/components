@@ -35,17 +35,7 @@ import {
 } from '@looker/components'
 import React from 'react'
 
-export const All = () => (
-  <SpaceVertical>
-    <Basic />
-    <Reverse />
-    <BasicSpaceVertical />
-    <ReverseSpaceVertical />
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Layout/Space',
 }
 
