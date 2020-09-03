@@ -24,46 +24,16 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React from 'react'
-import { Placeholder } from './Placeholder'
+import styled, { css } from 'styled-components'
 
-export default {
-  title: 'Layout/Grid',
-}
+export const headerFooterCSS = css`
+  align-items: center;
+  background: green;
+  display: flex;
+  flex: 0 0 auto;
+  height: 2rem;
+`
 
-export const Basic = () => (
-  <Grid>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const Columns = () => (
-  <Grid columns={4}>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const GapSize = () => (
-  <Grid gap="xxlarge">
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const VerticalGrid = () => (
-  <Grid columns={4}>
-    <Grid columns={1} gap="xxlarge">
-      <Placeholder minHeight="5rem">A</Placeholder>
-      <Placeholder>B</Placeholder>
-      <Placeholder>C</Placeholder>
-      <Placeholder>D</Placeholder>
-    </Grid>
-  </Grid>
-)
+export const Header = styled.header`
+  ${headerFooterCSS}
+`

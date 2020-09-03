@@ -24,46 +24,8 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React from 'react'
-import { Placeholder } from './Placeholder'
-
-export default {
-  title: 'Layout/Grid',
-}
-
-export const Basic = () => (
-  <Grid>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const Columns = () => (
-  <Grid columns={4}>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const GapSize = () => (
-  <Grid gap="xxlarge">
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
-
-export const VerticalGrid = () => (
-  <Grid columns={4}>
-    <Grid columns={1} gap="xxlarge">
-      <Placeholder minHeight="5rem">A</Placeholder>
-      <Placeholder>B</Placeholder>
-      <Placeholder>C</Placeholder>
-      <Placeholder>D</Placeholder>
-    </Grid>
-  </Grid>
-)
+export * from './Aside'
+export * from './Footer'
+export * from './Header'
+export * from './Layout'
+export * from './Main'

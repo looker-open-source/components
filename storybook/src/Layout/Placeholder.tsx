@@ -40,7 +40,3 @@ export const Placeholder: FC<BoxProps> = (props) => (
     {...props}
   />
 )
-
-export default {
-  title: 'Layout',
-}
