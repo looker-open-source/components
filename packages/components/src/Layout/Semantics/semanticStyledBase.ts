@@ -24,61 +24,19 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
-import styled from 'styled-components'
 import {
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
+  PaddingProps,
+  padding,
+  CompatibleHTMLProps,
   reset,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { css } from 'styled-components'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
-}
+export interface SemanticLayoutBase
+  extends PaddingProps,
+    CompatibleHTMLProps<HTMLElement> {}
 
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
-
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-export const TabPanels = styled(Layout)`
+export const semanticLayoutCSS = css`
   ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
+  ${padding}
 `
-
-TabPanels.defaultProps = { pt: 'large' }

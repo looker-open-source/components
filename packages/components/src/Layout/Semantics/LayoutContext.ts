@@ -24,45 +24,19 @@
 
  */
 
-import { css } from 'styled-components'
-import {
-  display,
-  DisplayProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  size,
-  SizeProps,
-  overflow,
-  OverflowProps,
-  verticalAlign,
-  VerticalAlignProps,
-} from '@looker/design-tokens'
+import noop from 'lodash/noop'
+import { createContext } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface LayoutContextProps {
+  hasAside: boolean
+  isFixed: boolean
+  registerAside: () => void
+  registerFixed: () => void
+}
 
-export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
-
-export const simpleLayoutCSS = css`
-  ${reset}
-  ${layout}
-  ${space}
-`
-
-export interface SizeSimpleLayoutProps
-  extends SpaceProps,
-    DisplayProps,
-    OverflowProps,
-    SizeProps,
-    VerticalAlignProps {}
-
-export const sizeSimpleLayoutCSS = css`
-  ${reset}
-  ${size}
-  ${space}
-  ${overflow}
-  ${verticalAlign}
-  ${display}
-`
+export const LayoutContext = createContext<LayoutContextProps>({
+  hasAside: false,
+  isFixed: false,
+  registerAside: () => noop,
+  registerFixed: () => noop,
+})

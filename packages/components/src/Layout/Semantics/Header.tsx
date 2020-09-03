@@ -24,45 +24,40 @@
 
  */
 
-import { css } from 'styled-components'
-import {
-  display,
-  DisplayProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  size,
-  SizeProps,
-  overflow,
-  OverflowProps,
-  verticalAlign,
-  VerticalAlignProps,
-} from '@looker/design-tokens'
+// import React, { forwardRef, Ref, useContext } from 'react'
+import styled, { css } from 'styled-components'
+import { height, HeightProps } from 'styled-system'
+import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+// import { LayoutContext } from './LayoutContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface HeaderProps extends SemanticLayoutBase, HeightProps {
+  /**
+   * Fix position of header (don't scroll with page content)
+   */
+  isFixed?: boolean
+}
 
-export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
+export const headerFooterCSS = css`
+  ${semanticLayoutCSS}
+  ${height}
 
-export const simpleLayoutCSS = css`
-  ${reset}
-  ${layout}
-  ${space}
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
 `
 
-export interface SizeSimpleLayoutProps
-  extends SpaceProps,
-    DisplayProps,
-    OverflowProps,
-    SizeProps,
-    VerticalAlignProps {}
+// const HeaderLayout = forwardRef(
+//   ({ isFixed, ...props }: HeaderProps, ref: Ref<HTMLElement>) => {
+//     // const { registerFixed } = useContext(LayoutContext)
+//     // isFixed && registerFixed()
 
-export const sizeSimpleLayoutCSS = css`
-  ${reset}
-  ${size}
-  ${space}
-  ${overflow}
-  ${verticalAlign}
-  ${display}
+//     return <header {...props} ref={ref} />
+//   }
+// )
+
+// HeaderLayout.displayName = 'HeaderLayout'
+
+export const Header = styled.header<HeaderProps>`
+  ${headerFooterCSS}
 `

@@ -24,61 +24,10 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
-import {
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
-} from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { Layout } from './Layout'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
-}
-
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
-
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-export const TabPanels = styled(Layout)`
-  ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
+export const Page = styled(Layout)`
+  height: 100vh;
+  width: 100vw;
 `
-
-TabPanels.defaultProps = { pt: 'large' }

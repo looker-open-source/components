@@ -24,45 +24,18 @@
 
  */
 
-import { css } from 'styled-components'
-import {
-  display,
-  DisplayProps,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  size,
-  SizeProps,
-  overflow,
-  OverflowProps,
-  verticalAlign,
-  VerticalAlignProps,
-} from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
+import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SectionProps extends SemanticLayoutBase {}
 
-export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
-
-export const simpleLayoutCSS = css`
-  ${reset}
-  ${layout}
-  ${space}
+export const sectionCSS = css`
+  ${semanticLayoutCSS}
+  flex: 1 0 auto;
+  width: 0;
 `
 
-export interface SizeSimpleLayoutProps
-  extends SpaceProps,
-    DisplayProps,
-    OverflowProps,
-    SizeProps,
-    VerticalAlignProps {}
-
-export const sizeSimpleLayoutCSS = css`
-  ${reset}
-  ${size}
-  ${space}
-  ${overflow}
-  ${verticalAlign}
-  ${display}
+export const Section = styled.section<SectionProps>`
+  ${sectionCSS}
 `

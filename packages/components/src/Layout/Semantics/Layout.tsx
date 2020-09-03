@@ -24,61 +24,34 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import {
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
-} from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
+export interface LayoutProps
+  extends SimpleLayoutProps,
+    CompatibleHTMLProps<HTMLElement> {
+  /**
+   * Supports scroll
+   * @default true
+   */
+  supportsScroll?: boolean
+  hasAside?: boolean
+  isFixed?: boolean
 }
 
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
+export const Layout = styled.div<LayoutProps>`
+  ${simpleLayoutCSS}
 
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-export const TabPanels = styled(Layout)`
-  ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
+  display: flex;
+  flex-direction: ${({ hasAside }) => (hasAside ? 'row' : 'column')};
+  height: 100%;
+  /* width: ${({ hasAside }) => hasAside && '100%'}; */
+  width: 100%;
 `
 
-TabPanels.defaultProps = { pt: 'large' }
+/* @TODO:
+  Layout is child of <layout isFixed>
+  flex: 1 0 auto;
+  height: 0;
+  overflow: auto; */

@@ -31,5 +31,6 @@ export type { FlexProps } from './Flex'
 export { FlexItem } from './FlexItem'
 export type { FlexItemProps } from './FlexItem'
 
-export * from './Space'
 export * from './Grid'
+export * from './Semantics'
+export * from './Space'
