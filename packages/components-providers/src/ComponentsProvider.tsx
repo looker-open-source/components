@@ -27,9 +27,13 @@
 import {
   GlobalStyle,
   IEGlobalStyle,
+  constructFontStack,
   CoreColors,
   theme,
   generateThemeFromCoreColors,
+  FontFamilyChoices,
+  defaultFonts,
+  GoogleFontsLoader,
 } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
@@ -49,6 +53,12 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
   globalStyle?: boolean
 
   /**
+   * Load Google Fonts
+   * @default false
+   */
+  loadGoogleFonts?: boolean
+
+  /**
    * Prevent automatic injection of a basic CSS-reset into the DOM
    * @default false
    */
@@ -56,8 +66,13 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
 
   /**
    *
+   *
    */
   coreColors?: Partial<CoreColors>
+  /**
+   *
+   */
+  fontFamilies?: Partial<FontFamilyChoices>
 }
 
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
@@ -65,6 +80,8 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   globalStyle = true,
   ie11Support = false,
   coreColors,
+  fontFamilies,
+  loadGoogleFonts = false,
   ...props
 }) => {
   const baseTheme = props.theme || theme
@@ -73,9 +90,24 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
     ? generateThemeFromCoreColors(baseTheme, coreColors)
     : baseTheme
 
+  if (fontFamilies) {
+    Object.keys(fontFamilies).forEach((key) =>
+      fontFamilies[key] === undefined ? delete fontFamilies[key] : {}
+    )
+
+    const mergedFonts = {
+      ...defaultFonts,
+      ...fontFamilies,
+    }
+    const fonts = constructFontStack(mergedFonts)
+
+    generatedTheme.fonts = fonts
+  }
+
   return (
     <ThemeProvider {...props} theme={generatedTheme}>
       {globalStyle && <GlobalStyle />}
+      {loadGoogleFonts && <GoogleFontsLoader />}
       {ie11Support && <IEGlobalStyle />}
       {children}
     </ThemeProvider>

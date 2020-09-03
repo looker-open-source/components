@@ -31,5 +31,6 @@ export const reset = css`
     * Global reset applied to prevent styling on top level tags outside of Looker
     * UI Components from interfering with styles.
     **/
-  ${(props) => props.theme.reset && props.theme.reset()}
+  ${({ theme: { reset } }) => reset && reset()}
+  font-family: ${({ theme: { fonts } }) => fonts.body};
 `

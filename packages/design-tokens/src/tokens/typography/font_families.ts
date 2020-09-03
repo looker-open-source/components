@@ -26,7 +26,59 @@
 
 import { FontFamilyChoices } from '../../system'
 
-export const fontFamilies: FontFamilyChoices = {
-  brand: `'Open Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif, 'Noto Sans'`,
-  code: `'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace`,
+const basicFallbacks = [
+  'Noto Sans JP',
+  'Noto Sans CJK KR',
+  'Noto Sans Arabic UI',
+  'Noto Sans Devanagari UI',
+  'Noto Sans Hebrew',
+  'Noto Sans Thai UI',
+  'Helvetica',
+  'Arial',
+  'sans-serif',
+  'Noto Sans',
+]
+
+const defaultFallbacks = {
+  body: basicFallbacks,
+  brand: basicFallbacks,
+  code: [
+    'Monaco',
+    'Menlo',
+    'Ubuntu Mono',
+    'Consolas',
+    'source-code-pro',
+    'monospace',
+  ],
 }
+
+export const fontFacesToFamily = (
+  faces: string[] | string,
+  fallbacks: string[]
+) => {
+  if (typeof faces === 'string') {
+    faces = [faces]
+  }
+
+  faces = [...faces, ...fallbacks]
+
+  return faces.map((face) => `'${face}'`).join(', ')
+}
+
+export const defaultFonts: FontFamilyChoices = {
+  body: 'Roboto',
+  brand: 'Red Hat Display',
+  code: 'Roboto Mono',
+}
+
+export const constructFontStack = (fontStack: FontFamilyChoices) => {
+  const fontFamilies: FontFamilyChoices = { ...fontStack }
+
+  Object.entries(fontStack).map(([key, fontFace]) => {
+    fontFamilies[key] = fontFacesToFamily(fontFace, defaultFallbacks[key])
+  })
+
+  return fontFamilies
+}
+
+export const fontFamilies = constructFontStack(defaultFonts)

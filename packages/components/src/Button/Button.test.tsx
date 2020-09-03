@@ -36,6 +36,13 @@ test('Button is rendered ', () => {
   assertSnapshotShallow(<Button>click here</Button>)
 })
 
+const renderTest = (component: JSX.Element) => {
+  const { container } = renderWithTheme(component)
+  expect(container).toBeVisible()
+}
+
+test('Render', () => renderTest(<Button />))
+
 test('Button works with color critical', () => {
   const { getByText } = renderWithTheme(
     <Button color="critical">critical</Button>
@@ -54,7 +61,6 @@ test('Button accepts a className prop', () => {
   const { container } = renderWithTheme(
     <Button className="foo">button with class</Button>
   )
-
   expect(container.firstChild).toHaveClass('foo')
 })
 

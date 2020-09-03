@@ -36,11 +36,7 @@ const all = { ...MDXComponents, Props }
 
 const Page: FC = ({ children }) => {
   return (
-    <ComponentsProvider theme={newTheme}>
-      <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
-        rel="stylesheet"
-      />
+    <ComponentsProvider theme={newTheme} loadGoogleFonts>
       <MDXProvider components={all}>{children}</MDXProvider>
     </ComponentsProvider>
   )

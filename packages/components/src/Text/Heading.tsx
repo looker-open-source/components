@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import { ResponsiveValue } from 'styled-system'
+import { ResponsiveValue, typography } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontSizes,
@@ -72,12 +72,15 @@ const headingLineHeight = (props: HeadingProps): ResponsiveValue<FontSizes> =>
   props.fontSize ? props.fontSize : headingLevelFontSize(props)
 
 export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
+  as: props.as || 'h2',
   fontSize: props.fontSize || headingLevelFontSize(props),
+  fontWeight: props.fontWeight || 'normal',
   lineHeight: props.lineHeight || headingLineHeight(props),
+  variant: props.variant || 'default',
 }))<HeadingProps>`
   ${textTransform}
   ${textVariant}
   ${truncate}
 `
 
-Heading.defaultProps = { as: 'h2', fontWeight: 'normal', variant: 'default' }
+Heading.defaultProps = { fontFamily: 'brand' }

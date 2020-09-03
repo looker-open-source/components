@@ -29,7 +29,7 @@ import { ComponentsProvider, Paragraph } from '@looker/components'
 import 'core-js/stable'
 
 const App = () => (
-  <ComponentsProvider>
+  <ComponentsProvider loadGoogleFonts>
     <Paragraph>Hello world</Paragraph>
   </ComponentsProvider>
 )

@@ -44,6 +44,7 @@ module.exports = {
     'declaration-block-semicolon-newline-after': 'always',
     'declaration-block-trailing-semicolon': 'always',
     'declaration-no-important': true,
+    'font-family-no-missing-generic-family-keyword': null,
     'font-weight-notation': 'named-where-possible',
     'function-calc-no-unspaced-operator': true,
     'length-zero-no-unit': true,

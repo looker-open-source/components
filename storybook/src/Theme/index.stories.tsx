@@ -24,48 +24,12 @@
 
  */
 
-import { css, createGlobalStyle } from 'styled-components'
+export * from './Compare.stories'
+export * from './Editor.stories'
+export * from './Fonts.stories'
+export * from './Suite.stories'
+export * from './Swatches.stories'
 
-export const reset = css`
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ol,
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  ol,
-  ul {
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  body {
-    background-color: ${({ theme: { colors } }) => colors.background};
-  }
-`
-
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
-`
+export default {
+  title: 'Theme',
+}
