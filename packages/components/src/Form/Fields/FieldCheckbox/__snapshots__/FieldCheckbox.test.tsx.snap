@@ -24,6 +24,7 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -63,6 +64,7 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
@@ -195,6 +197,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -234,6 +237,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;

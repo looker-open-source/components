@@ -2,6 +2,7 @@
 
 exports[`InputSearch default 1`] = `
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 20px;
   height: 20px;
   display: -webkit-inline-box;
@@ -80,6 +81,7 @@ exports[`InputSearch default 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -203,6 +205,7 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

@@ -2,7 +2,8 @@
 
 exports[`A default CodeBlock component 1`] = `
 .c0 {
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: 'Roboto Mono','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 1rem;

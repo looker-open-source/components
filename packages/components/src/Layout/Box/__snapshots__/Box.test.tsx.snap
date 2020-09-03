@@ -2,6 +2,7 @@
 
 exports[`Box Box default 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   margin-top: 1.25rem;
 }
 
@@ -14,6 +15,7 @@ exports[`Box Box default 1`] = `
 
 exports[`Box Box supports background-color 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background-color: #6C43E0;
 }
 
@@ -24,6 +26,7 @@ exports[`Box Box supports background-color 1`] = `
 
 exports[`Box Box supports display 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
 }
 
@@ -35,6 +38,7 @@ exports[`Box Box supports display 1`] = `
 
 exports[`Box Box supports height properties 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 1vh;
 }
 
@@ -46,6 +50,7 @@ exports[`Box Box supports height properties 1`] = `
 
 exports[`Box Box supports height properties 2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   max-height: 1vh;
 }
 
@@ -56,6 +61,7 @@ exports[`Box Box supports height properties 2`] = `
 
 exports[`Box Box supports height properties 3`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   min-height: 1vh;
 }
 
@@ -66,6 +72,7 @@ exports[`Box Box supports height properties 3`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   position: absolute;
 }
 
@@ -76,6 +83,7 @@ exports[`Box Box supports position, top, left, bottom, right 1`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   top: 1rem;
 }
 
@@ -86,6 +94,7 @@ exports[`Box Box supports position, top, left, bottom, right 2`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 3`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   left: 1rem;
 }
 
@@ -96,6 +105,7 @@ exports[`Box Box supports position, top, left, bottom, right 3`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 4`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   right: 1rem;
 }
 
@@ -106,6 +116,7 @@ exports[`Box Box supports position, top, left, bottom, right 4`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 5`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   bottom: 1rem;
 }
 
@@ -116,6 +127,7 @@ exports[`Box Box supports position, top, left, bottom, right 5`] = `
 
 exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   font-size: 0.875rem;
 }
 
@@ -138,6 +150,7 @@ exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
 
 exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   line-height: 1.25rem;
 }
 
@@ -154,6 +167,7 @@ exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 
 exports[`Box Box supports width 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 1vw;
 }
 
@@ -165,6 +179,7 @@ exports[`Box Box supports width 1`] = `
 
 exports[`Box Box supports width 2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   max-width: 1vw;
 }
 
@@ -175,6 +190,7 @@ exports[`Box Box supports width 2`] = `
 
 exports[`Box Box supports width 3`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   min-width: 1vw;
 }
 
@@ -185,6 +201,7 @@ exports[`Box Box supports width 3`] = `
 
 exports[`Box Box with SizeNone is valid 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   margin-top: 0rem;
 }
 
@@ -197,6 +214,7 @@ exports[`Box Box with SizeNone is valid 1`] = `
 
 exports[`Box Box with null values are removed from styling 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   margin-top: 1.25rem;
 }
 
@@ -215,6 +233,7 @@ exports[`Box Box with null values are removed from styling 1`] = `
 
 exports[`Box Responsive margin top Box 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   margin-top: 1.25rem;
 }
 
@@ -239,6 +258,7 @@ exports[`Box Responsive margin top Box 1`] = `
 
 exports[`Box borders Box supports borders 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   border: 1px solid black;
 }
 
@@ -249,6 +269,7 @@ exports[`Box borders Box supports borders 1`] = `
 
 exports[`Box borders supports borderColor 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   border-color: #DEE1E5;
 }
 
@@ -259,6 +280,7 @@ exports[`Box borders supports borderColor 1`] = `
 
 exports[`Box borders supports borderRadius 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   border-radius: 0.25rem;
 }
 
@@ -268,26 +290,38 @@ exports[`Box borders supports borderRadius 1`] = `
 `;
 
 exports[`Box core HTML attributes Box allows autoFocus 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+}
+
 <div
   autoFocus={true}
-  className=""
+  className="c0"
 >
   Autofocus?
 </div>
 `;
 
 exports[`Box core HTML attributes Box allows for ARIA attributes 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+}
+
 <div
   aria-disabled={true}
-  className=""
+  className="c0"
 >
   aria-disabled
 </div>
 `;
 
 exports[`Box core HTML attributes Box allows for HTML events 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+}
+
 <div
-  className=""
+  className="c0"
   onMouseEnter={[Function]}
 >
   Autofocus?
@@ -296,6 +330,7 @@ exports[`Box core HTML attributes Box allows for HTML events 1`] = `
 
 exports[`Box flex supports flex item properties 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -318,6 +353,7 @@ exports[`Box flex supports flex item properties 1`] = `
 
 exports[`Box flex supports flex properties 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -349,7 +385,8 @@ exports[`Box flex supports flex properties 1`] = `
 
 exports[`Box fonts font helpers 1`] = `
 .c0 {
-  font-family: 'Open Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif,'Noto Sans';
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
 }
 
 <div
@@ -360,6 +397,7 @@ exports[`Box fonts font helpers 1`] = `
 
 exports[`Box fonts font helpers 2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   font-size: 0.875rem;
 }
 
@@ -371,6 +409,7 @@ exports[`Box fonts font helpers 2`] = `
 
 exports[`Box fonts font helpers 3`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   font-weight: 700;
 }
 
@@ -382,6 +421,7 @@ exports[`Box fonts font helpers 3`] = `
 
 exports[`Box fonts font helpers 4`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-letter-spacing: 10;
   -moz-letter-spacing: 10;
   -ms-letter-spacing: 10;
@@ -396,6 +436,7 @@ exports[`Box fonts font helpers 4`] = `
 
 exports[`Box fonts font helpers 5`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   line-height: 1.5rem;
 }
 
@@ -406,6 +447,7 @@ exports[`Box fonts font helpers 5`] = `
 
 exports[`Box fonts font helpers 6`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   text-align: right;
 }
 
@@ -416,6 +458,7 @@ exports[`Box fonts font helpers 6`] = `
 
 exports[`Box fonts font helpers 7`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   color: #939BA5;
 }
 

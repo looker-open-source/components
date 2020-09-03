@@ -1,15 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FlexItem can be hidden  1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+}
+
 <div
-  className=""
+  className="c0"
   hidden={true}
 />
 `;
 
 exports[`FlexItem default  1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+}
+
 <div
-  className=""
+  className="c0"
 >
   💪
 </div>
@@ -17,6 +25,7 @@ exports[`FlexItem default  1`] = `
 
 exports[`FlexItem supports alignSelf  1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -29,6 +38,7 @@ exports[`FlexItem supports alignSelf  1`] = `
 
 exports[`FlexItem supports basis  1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-flex-basis: 100px;
   -ms-flex-preferred-size: 100px;
   flex-basis: 100px;
@@ -41,6 +51,7 @@ exports[`FlexItem supports basis  1`] = `
 
 exports[`FlexItem supports flex  1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -53,6 +64,7 @@ exports[`FlexItem supports flex  1`] = `
 
 exports[`FlexItem supports flex  2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-flex: 1 1;
   -ms-flex: 1 1;
   flex: 1 1;
@@ -65,6 +77,7 @@ exports[`FlexItem supports flex  2`] = `
 
 exports[`FlexItem supports flex  3`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-flex: 1 2 100px;
   -ms-flex: 1 2 100px;
   flex: 1 2 100px;
@@ -77,6 +90,7 @@ exports[`FlexItem supports flex  3`] = `
 
 exports[`FlexItem supports flex  4`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-flex: 1 50px;
   -ms-flex: 1 50px;
   flex: 1 50px;
@@ -89,6 +103,7 @@ exports[`FlexItem supports flex  4`] = `
 
 exports[`FlexItem supports order  1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
@@ -102,6 +117,7 @@ exports[`FlexItem supports order  1`] = `
 
 exports[`FlexItem supports order  2`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;

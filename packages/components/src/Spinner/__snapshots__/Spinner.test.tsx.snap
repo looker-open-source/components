@@ -197,6 +197,7 @@ exports[`Spinner A default spinner 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 30px;
   position: relative;
   width: 30px;
@@ -458,6 +459,7 @@ exports[`Spinner Spinner can be resized 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 200px;
   position: relative;
   width: 200px;
@@ -719,6 +721,7 @@ exports[`Spinner Spinner can change markger color 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 30px;
   position: relative;
   width: 30px;
@@ -1085,6 +1088,7 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 30px;
   position: relative;
   width: 30px;
@@ -1387,6 +1391,7 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 30px;
   position: relative;
   width: 30px;
@@ -1648,6 +1653,7 @@ exports[`Spinner Spinner speed can be set 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   height: 30px;
   position: relative;
   width: 30px;

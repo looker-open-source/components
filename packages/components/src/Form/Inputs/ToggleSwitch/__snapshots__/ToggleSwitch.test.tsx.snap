@@ -14,6 +14,7 @@ exports[`Big ToggleSwitch 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #C1C6CC;
   border-radius: 3.75rem;
   bottom: 0;
@@ -26,6 +27,7 @@ exports[`Big ToggleSwitch 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
   height: 3.75rem;
   position: relative;
@@ -80,6 +82,7 @@ exports[`ToggleSwitch default 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #C1C6CC;
   border-radius: 1.25rem;
   bottom: 0;
@@ -92,6 +95,7 @@ exports[`ToggleSwitch default 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
   height: 1.25rem;
   position: relative;
@@ -146,6 +150,7 @@ exports[`ToggleSwitch on set to false 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #C1C6CC;
   border-radius: 1.25rem;
   bottom: 0;
@@ -158,6 +163,7 @@ exports[`ToggleSwitch on set to false 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
   height: 1.25rem;
   position: relative;
@@ -217,6 +223,7 @@ exports[`ToggleSwitch on set to true 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #6C43E0;
   border-radius: 1.25rem;
   bottom: 0;
@@ -229,6 +236,7 @@ exports[`ToggleSwitch on set to true 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
   height: 1.25rem;
   position: relative;
@@ -288,6 +296,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #6C43E0;
   border-radius: 1.25rem;
   bottom: 0;
@@ -304,6 +313,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c3 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: #C1C6CC;
   border-radius: 1.25rem;
   bottom: 0;
@@ -315,6 +325,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: inline-block;
   height: 1.25rem;
   position: relative;

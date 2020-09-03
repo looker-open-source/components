@@ -2,6 +2,7 @@
 
 exports[`IconButton accepts color 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -23,6 +24,7 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -34,7 +36,8 @@ exports[`IconButton accepts color 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -74,6 +77,7 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #e44e62;
@@ -134,6 +138,7 @@ exports[`IconButton accepts color 1`] = `
 
 exports[`IconButton accepts events 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -155,6 +160,7 @@ exports[`IconButton accepts events 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -166,7 +172,8 @@ exports[`IconButton accepts events 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -206,6 +213,7 @@ exports[`IconButton accepts events 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -266,6 +274,7 @@ exports[`IconButton accepts events 1`] = `
 
 exports[`IconButton accepts events 2`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -287,6 +296,7 @@ exports[`IconButton accepts events 2`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -298,7 +308,8 @@ exports[`IconButton accepts events 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -338,6 +349,7 @@ exports[`IconButton accepts events 2`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -398,6 +410,7 @@ exports[`IconButton accepts events 2`] = `
 
 exports[`IconButton allows for ARIA attributes 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -419,6 +432,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -430,7 +444,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -470,6 +485,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -530,6 +546,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 
 exports[`IconButton default 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -551,6 +568,7 @@ exports[`IconButton default 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -562,7 +580,8 @@ exports[`IconButton default 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -602,6 +621,7 @@ exports[`IconButton default 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -661,6 +681,7 @@ exports[`IconButton default 1`] = `
 
 exports[`IconButton outline 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 18px;
   height: 18px;
   display: -webkit-inline-box;
@@ -682,6 +703,7 @@ exports[`IconButton outline 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -693,7 +715,8 @@ exports[`IconButton outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -733,6 +756,7 @@ exports[`IconButton outline 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -1074,6 +1098,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 
 exports[`IconButton resized 1`] = `
 .c4 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 38px;
   height: 38px;
   display: -webkit-inline-box;
@@ -1095,6 +1120,7 @@ exports[`IconButton resized 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 44px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1106,7 +1132,8 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1146,6 +1173,7 @@ exports[`IconButton resized 1`] = `
 }
 
 .c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;

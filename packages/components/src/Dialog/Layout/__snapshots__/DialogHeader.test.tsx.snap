@@ -2,6 +2,7 @@
 
 exports[`DialogHeader Snapshot 1`] = `
 .c7 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 22px;
   height: 22px;
   display: -webkit-inline-box;
@@ -23,6 +24,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c3 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -34,7 +36,8 @@ exports[`DialogHeader Snapshot 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -65,8 +68,10 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   font-size: 1.125rem;
   font-weight: 600;
+  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   line-height: 1.5rem;
   margin-right: 2rem;
   color: #262D33;
@@ -85,6 +90,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c5 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   background: none;
   border: none;
   color: #959ba3;
@@ -111,6 +117,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   padding: 1.25rem;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -130,6 +137,7 @@ exports[`DialogHeader Snapshot 1`] = `
 >
   <h3
     className="c1"
+    fontFamily="brand"
     fontSize="large"
     fontWeight="semiBold"
     style={

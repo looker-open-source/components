@@ -2,6 +2,7 @@
 
 exports[`Grid default 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(2,minmax(0,1fr));
@@ -27,6 +28,7 @@ exports[`Grid default 1`] = `
 
 exports[`Grid with specified columns 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(4,minmax(0,1fr));
@@ -52,6 +54,7 @@ exports[`Grid with specified columns 1`] = `
 
 exports[`Grid with specified gap 1`] = `
 .c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(2,minmax(0,1fr));
