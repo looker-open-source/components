@@ -10,15 +10,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
+- `GoogleFontsLoader`
+- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
 
 ### Changed
 
+- `theme.fonts.*` updates
+  - `body` added (now default for most components)
+  - `brand` is now used just for `Button*`, `Heading` & `Tabs`
+  - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
+- `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
 
 ### Fixed
 
 - `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
 - `Select` overwriting search value with the current option value if the option's value and label are different
+- Miscellaneous Storybook fixes to silence console warnings
 
 ## [0.9.13] - 2020-08-24
 
