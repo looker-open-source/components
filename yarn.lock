@@ -4254,15 +4254,15 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/styled-components@^4.4.1":
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-4.4.3.tgz#74dd00ad760845a98890a8539361d8afc32059de"
-  integrity sha512-U0udeNOZBfUkJycmGJwmzun0FBt11rZy08weVQmE2xfUNAbX8AGOEWxWna2d+qAUKxKgMlcG+TZT0+K2FfDcnQ==
+"@types/styled-components@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.3.tgz#6fab3d9c8f7d9a15cbb89d379d850c985002f363"
+  integrity sha512-HGpirof3WOhiX17lb61Q/tpgqn48jxO8EfZkdJ8ueYqwLbK2AHQe/G08DasdA2IdKnmwOIP1s9X2bopxKXgjRw==
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     "@types/react-native" "*"
-    csstype "^2.2.0"
+    csstype "^3.0.2"
 
 "@types/styled-system@^5.1.10":
   version "5.1.10"
@@ -7874,7 +7874,7 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.7:
+csstype@^2.5.7, csstype@^2.6.7:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.11.tgz#452f4d024149ecf260a852b025e36562a253ffc5"
   integrity sha512-l8YyEC9NBkSm783PFTvh0FmJy7s5pFKrDp49ZL7zBGX3fWkO+N4EEyan1qqp8cwPLDcD0OSdyY6hAMoxp34JFw==
