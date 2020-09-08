@@ -189,7 +189,6 @@ const ComboboxListInternal = forwardRef(
     }
 
     const { popover, contentContainer, popperInstanceRef } = usePopover({
-      arrow: false,
       cancelClickOutside,
       content,
       focusTrap: false,

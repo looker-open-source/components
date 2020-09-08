@@ -38,20 +38,11 @@ import { useCallbackRef } from './useCallbackRef'
 export interface UsePopperProps {
   anchor: ElementOrRef
   target?: ElementOrRef
-  arrow?: boolean
   options: Partial<Options> & { placement: Options['placement'] }
 }
 
-export function usePopper({
-  anchor,
-  target,
-  arrow = true,
-  options,
-}: UsePopperProps) {
+export function usePopper({ anchor, target, options }: UsePopperProps) {
   const [styles, setStyles] = useState<State['styles']>({
-    arrow: {
-      position: 'absolute',
-    },
     popper: {
       left: '0',
       margin: '0',
@@ -62,21 +53,11 @@ export function usePopper({
   const [truePlacement, setTruePlacement] = useState(options.placement)
   const popperInstanceRef = useRef<Instance>()
   const [targetElement, targetRef] = useCallbackRef<HTMLElement>()
-  const [arrowElement, arrowRef] = useCallbackRef<HTMLElement>()
 
-  // Add arrow modifier to Popper options (unless arrow is false)
   const mergedOptions = useMemo(
     () =>
       merge(options, {
         modifiers: concat(options && options.modifiers, [
-          ...(arrow
-            ? [
-                {
-                  name: 'arrow',
-                  options: { element: arrowElement, padding: 5 },
-                },
-              ]
-            : []),
           {
             // Don't use popperjs' built-in applyStyles – we'll add to state and apply them the react way
             enabled: false,
@@ -110,7 +91,7 @@ export function usePopper({
         ]),
         strategy: 'fixed',
       }),
-    [arrow, arrowElement, options]
+    [options]
   )
 
   useEffect(() => {
@@ -126,10 +107,9 @@ export function usePopper({
     return () => {
       popperInstanceRef.current && popperInstanceRef.current.destroy()
     }
-  }, [anchor, target, targetElement, arrow, arrowElement, mergedOptions])
+  }, [anchor, target, targetElement, mergedOptions])
 
   return {
-    arrowProps: { ref: arrowRef, style: styles.arrow as CSSProperties },
     placement: truePlacement,
     popperInstanceRef,
     style: styles.popper as CSSProperties,

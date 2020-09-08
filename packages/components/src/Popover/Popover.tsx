@@ -55,12 +55,6 @@ import {
 
 export interface UsePopoverProps {
   /**
-   * Display and arrow that points to the trigger element on popovers
-   * @default true
-   */
-  arrow?: boolean
-
-  /**
    * When true, display Surface and it's contained content
    * @default false
    */
@@ -393,7 +387,6 @@ function usePopoverToggle(
 }
 
 export function usePopover({
-  arrow = false,
   canClose,
   content,
   groupedPopoversRef,
@@ -479,7 +472,6 @@ export function usePopover({
   const usePopperProps = useMemo<UsePopperProps>(
     () => ({
       anchor: element,
-      arrow,
       options: {
         modifiers: [
           {
@@ -502,15 +494,11 @@ export function usePopover({
         placement: propsPlacement,
       },
     }),
-    [arrow, element, pin, propsPlacement]
+    [element, pin, propsPlacement]
   )
-  const {
-    arrowProps,
-    placement,
-    popperInstanceRef,
-    style,
-    targetRef,
-  } = usePopper(usePopperProps)
+  const { placement, popperInstanceRef, style, targetRef } = usePopper(
+    usePopperProps
+  )
 
   const verticalSpace = useVerticalSpace(
     element,
@@ -539,8 +527,6 @@ export function usePopover({
     >
       <Portal ref={scrollRef}>
         <OverlaySurface
-          arrow={arrow}
-          arrowProps={arrowProps}
           placement={placement}
           ref={ref}
           style={style}

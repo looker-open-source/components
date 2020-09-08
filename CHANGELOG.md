@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
 - `Select` overwriting search value with the current option value if the option's value and label are different
 
+###
+
+- `Tooltip` & `Popover` no longer support (optional) arrow indicator
+
 ## [0.9.13] - 2020-08-24
 
 ### Fixed
