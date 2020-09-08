@@ -35,6 +35,7 @@ import {
   TextDecorationProps,
 } from '@looker/design-tokens'
 import {
+  fontSize,
   fontWeight,
   lineHeight,
   letterSpacing,
@@ -58,10 +59,11 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
 }))<TextBaseProps>`
   ${reset}
   /* fontFamily is handled by reset */
-  ${fontWeight}
-  ${lineHeight}
-  ${letterSpacing}
+  ${fontSize}
   ${fontStyle}
+  ${fontWeight}
+  ${letterSpacing}
+  ${lineHeight}
   ${textAlign}
   ${space}
   ${color}

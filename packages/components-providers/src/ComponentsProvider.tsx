@@ -34,7 +34,7 @@ import {
   GoogleFontsLoader,
   theme,
 } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
 /**
@@ -84,15 +84,18 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   fontFamilies,
   ...props
 }) => {
-  const baseTheme = props.theme || theme
+  const generatedTheme = useMemo(() => {
+    const baseTheme = props.theme || theme
 
-  const generatedTheme = coreColors
-    ? generateThemeFromCoreColors(baseTheme, coreColors)
-    : baseTheme
+    const updatedTheme = coreColors
+      ? generateThemeFromCoreColors(baseTheme, coreColors)
+      : baseTheme
 
-  if (fontFamilies) {
-    generatedTheme.fonts = constructFontStack(fontFamilies)
-  }
+    if (fontFamilies) {
+      return { ...updatedTheme, fonts: constructFontStack(fontFamilies) }
+    }
+    return updatedTheme
+  }, [props.theme, coreColors, fontFamilies])
 
   return (
     <ThemeProvider {...props} theme={generatedTheme}>

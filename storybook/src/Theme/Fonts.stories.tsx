@@ -111,7 +111,7 @@ export const FontDemo = () => {
           <Heading fontSize="xxxlarge">XXXLarge Heading</Heading>
           <Heading as="h1">XXLarge / h1 Heading</Heading>
           <Heading as="h2">XLarge / h2 Heading</Heading>
-          <Heading as="h4">Large / h3 Heading</Heading>
+          <Heading as="h3">Large / h3 Heading</Heading>
           <Heading as="h4">Medium / h4 Heading</Heading>
           <Heading as="h5">h5 Heading</Heading>
           <Heading as="h6">h6 Heading</Heading>

@@ -11,7 +11,8 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c3 {
-  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
   padding-left: 1rem;
@@ -150,7 +151,7 @@ exports[`MenuGroup - JSX label 1`] = `
     />
     <h2
       className="c2 c3"
-      fontFamily="brand"
+      fontFamily="body"
       fontSize="small"
       fontWeight="semiBold"
     >
@@ -221,7 +222,8 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c3 {
-  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
   padding-left: 1rem;
@@ -360,7 +362,7 @@ exports[`MenuGroup - label 1`] = `
     />
     <h2
       className="c2 c3"
-      fontFamily="brand"
+      fontFamily="body"
       fontSize="small"
       fontWeight="semiBold"
     >

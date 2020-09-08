@@ -3,6 +3,7 @@
 exports[`A Paragraph component aligned 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   text-align: right;
 }
@@ -18,6 +19,7 @@ exports[`A Paragraph component aligned 1`] = `
 exports[`A Paragraph component decorated 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
@@ -35,6 +37,7 @@ exports[`A Paragraph component decorated 1`] = `
 exports[`A Paragraph component resized 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 2.25rem;
   line-height: 2.75rem;
 }
 
@@ -49,6 +52,7 @@ exports[`A Paragraph component resized 1`] = `
 exports[`A Paragraph component text transformed 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   text-transform: uppercase;
 }
@@ -64,6 +68,7 @@ exports[`A Paragraph component text transformed 1`] = `
 exports[`A Paragraph component truncated 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -81,6 +86,7 @@ exports[`A Paragraph component truncated 1`] = `
 exports[`A Paragraph component weight 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
 }
@@ -97,6 +103,7 @@ exports[`A Paragraph component weight 1`] = `
 exports[`A Paragraph component with multiline truncate 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -115,6 +122,7 @@ exports[`A Paragraph component with multiline truncate 1`] = `
 exports[`A Paragraph component with variant 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   color: #CC1F36;
 }
@@ -130,6 +138,7 @@ exports[`A Paragraph component with variant 1`] = `
 exports[`A Paragraph component wrapped 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   overflow-wrap: break-word;
 }
@@ -145,6 +154,7 @@ exports[`A Paragraph component wrapped 1`] = `
 exports[`A default Paragraph component 1`] = `
 .c0 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
 }
 

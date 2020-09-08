@@ -69,6 +69,7 @@ exports[`DialogHeader Snapshot 1`] = `
 
 .c1 {
   font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
   margin-right: 2rem;

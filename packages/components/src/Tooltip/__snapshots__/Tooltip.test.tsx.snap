@@ -15,6 +15,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
 
 .c1 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 0.75rem;
   line-height: 1rem;
   text-align: center;
   margin: 0rem;

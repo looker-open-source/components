@@ -48,6 +48,7 @@ exports[`Chip renders correctly 1`] = `
 
 .c1 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   font-size: inherit;
   overflow: hidden;
@@ -119,6 +120,7 @@ exports[`Chip renders disabled 1`] = `
 
 .c1 {
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-size: 1rem;
   line-height: 1.5rem;
   font-size: inherit;
   overflow: hidden;

@@ -34,14 +34,12 @@ interface ResetFauxInterface {
   theme: Theme
 }
 
-export const reset = css`
+export const reset = css<ResetFauxInterface>`
   /**
     * Global reset applied to prevent styling on top level tags outside of Looker
     * UI Components from interfering with styles.
     **/
   ${({ theme: { reset } }) => reset && reset()}
-  font-family: ${({
-    fontFamily = 'body',
-    theme: { fonts },
-  }: ResetFauxInterface) => fonts[fontFamily]};
+  font-family: ${({ fontFamily = 'body', theme: { fonts } }) =>
+    fonts[fontFamily]};
 `

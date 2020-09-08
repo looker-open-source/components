@@ -36,13 +36,6 @@ test('Button is rendered ', () => {
   assertSnapshotShallow(<Button>click here</Button>)
 })
 
-const renderTest = (component: JSX.Element) => {
-  const { container } = renderWithTheme(component)
-  expect(container).toBeVisible()
-}
-
-test('Render', () => renderTest(<Button />))
-
 test('Button works with color critical', () => {
   const { getByText } = renderWithTheme(
     <Button color="critical">critical</Button>
