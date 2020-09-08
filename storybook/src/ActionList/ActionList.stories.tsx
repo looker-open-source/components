@@ -135,3 +135,14 @@ export const ActionListFiltersExample = () => (
     <ActionList columns={columns}>{items}</ActionList>
   </>
 )
+
+export const ActionListFiltersColumn = () => (
+  <>
+    <ActionListFilters
+      customizeColumn
+      fieldFilters={['role:admin', 'group:pizza-lovers']}
+      availableFilters={filterableItems}
+    />
+    <ActionList columns={columns}>{items}</ActionList>
+  </>
+)

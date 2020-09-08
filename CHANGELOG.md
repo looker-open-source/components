@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### CHANGED
 
 - `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
+- updated StoryBook to show InputFilter and ActionListFilter
 
 ### Added
 
@@ -33,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
 - `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
+- InputFilter component and test
+- ActionListFilter component -`DividerVertical` component
+- Added `Lqa` icon artwork
+- `Select` option icons
 
 ### Fixed
 
