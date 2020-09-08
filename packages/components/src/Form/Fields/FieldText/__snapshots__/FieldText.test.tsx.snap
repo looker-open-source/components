@@ -69,6 +69,10 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
+.c5 input {
+  font-family: inherit;
+}
+
 .c5 .c8 {
   height: 100%;
   max-width: 100%;
@@ -246,6 +250,10 @@ exports[`A FieldText with label inline 1`] = `
   border-radius: 0.25rem;
   color: #343C42;
   font-size: 0.875rem;
+}
+
+.c5 input {
+  font-family: inherit;
 }
 
 .c5 .c9 {

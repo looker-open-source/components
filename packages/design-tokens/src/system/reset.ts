@@ -26,20 +26,18 @@
 
 import { css } from 'styled-components'
 
-import { Theme } from '../theme'
-import { FontFamilies } from './typography'
+import { FontFamilyProps, fontFamily } from 'styled-system'
 
-interface ResetFauxInterface {
-  fontFamily?: FontFamilies
-  theme: Theme
-}
-
-export const reset = css<ResetFauxInterface>`
+export const reset = css<FontFamilyProps>`
   /**
     * Global reset applied to prevent styling on top level tags outside of Looker
     * UI Components from interfering with styles.
     **/
   ${({ theme: { reset } }) => reset && reset()}
-  font-family: ${({ fontFamily = 'body', theme: { fonts } }) =>
-    fonts[fontFamily]};
+  /**
+   * Use fontFamily helper from styled-system if props.fontFamily value is specified.
+   * Otherwise fall back to theme.fonts.border-style
+   **/
+  ${({ theme, ...props }) =>
+    props.fontFamily ? fontFamily : `font-family: ${theme.fonts.body};`}
 `

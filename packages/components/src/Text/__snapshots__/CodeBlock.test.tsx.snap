@@ -14,6 +14,10 @@ exports[`A default CodeBlock component 1`] = `
   overflow-y: scroll;
 }
 
+.c1 code {
+  font-family: inherit;
+}
+
 <pre
   className="c0 c1"
   fontFamily="code"

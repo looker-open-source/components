@@ -46,7 +46,7 @@ const googleFontParam = ({
 }: GoogleFontSpecification) => {
   italic = italic === undefined ? true : italic
 
-  let uri = `${family.replace(/ /g, '+')}:`
+  let uri = `${family.replace(/"/g, '').replace(/ /g, '+')}:`
 
   let weights = font.weights.map((weight) => `0,${weight}`)
   if (italic) {

@@ -38,7 +38,7 @@ const CodeBlockLayout: FC<CodeBlockProps> = ({
   className,
   ...props
 }) => (
-  <TextBase className={className} as="pre" {...props}>
+  <TextBase className={className} as="pre" fontFamily="code" {...props}>
     <code>{children}</code>
   </TextBase>
 )
@@ -46,12 +46,15 @@ const CodeBlockLayout: FC<CodeBlockProps> = ({
 export const CodeBlock = styled(CodeBlockLayout)`
   ${border}
   overflow-y: scroll;
+
+  code {
+    font-family: inherit;
+  }
 `
 
 CodeBlock.defaultProps = {
   border: '1px solid',
   borderColor: 'ui2',
-  fontFamily: 'code',
   fontSize: 'small',
   p: 'medium',
 }

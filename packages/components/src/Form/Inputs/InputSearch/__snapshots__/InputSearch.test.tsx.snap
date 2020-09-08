@@ -106,6 +106,10 @@ exports[`InputSearch default 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c4 {
   height: 100%;
   max-width: 100%;
@@ -228,6 +232,10 @@ exports[`InputSearch hideSearchIcon removes the icon 1`] = `
   border-radius: 0.25rem;
   color: #343C42;
   font-size: 0.875rem;
+}
+
+.c0 input {
+  font-family: inherit;
 }
 
 .c0 .c2 {

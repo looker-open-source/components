@@ -101,6 +101,10 @@ exports[`Fieldset 1`] = `
   font-size: 0.875rem;
 }
 
+.c9 input {
+  font-family: inherit;
+}
+
 .c9 .c12 {
   height: 100%;
   max-width: 100%;

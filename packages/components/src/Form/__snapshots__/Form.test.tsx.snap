@@ -85,6 +85,10 @@ exports[`Form with one child 1`] = `
   font-size: 0.875rem;
 }
 
+.c6 input {
+  font-family: inherit;
+}
+
 .c6 .c9 {
   height: 100%;
   max-width: 100%;
