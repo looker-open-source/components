@@ -202,7 +202,7 @@ export const ComboboxInputInternal = forwardRef(
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
-export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
+export const comboboxStyles = css<{ readOnly?: boolean }>`
   ${({ readOnly }) =>
     readOnly
       ? css`

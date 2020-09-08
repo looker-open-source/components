@@ -2,7 +2,7 @@
 
 exports[`A <TableHeaderCell> should render 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   padding: 0.5rem 0;
   color: #939BA5;
   font-size: 0.75rem;

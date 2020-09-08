@@ -2,11 +2,9 @@
 
 exports[`A <h1> Heading 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 2.25rem;
-  font-size: 1.5rem;
   color: #262D33;
 }
 
@@ -22,9 +20,7 @@ exports[`A <h1> Heading 1`] = `
 
 exports[`A <h1> Heading sized to <h2> 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-size: 1.375rem;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
   color: #262D33;
@@ -42,10 +38,8 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 
 exports[`A Heading to bold 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-size: 1.125rem;
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 700;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
   line-height: 1.5rem;
   color: #262D33;
 }
@@ -62,11 +56,9 @@ exports[`A Heading to bold 1`] = `
 
 exports[`A Heading transformed 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
-  font-size: 1.375rem;
   text-transform: capitalize;
   color: #262D33;
 }
@@ -83,11 +75,9 @@ exports[`A Heading transformed 1`] = `
 
 exports[`A Heading truncated 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
-  font-size: 1.375rem;
   color: #262D33;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -106,11 +96,9 @@ exports[`A Heading truncated 1`] = `
 
 exports[`A Heading with multiline truncate 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
-  font-size: 1.375rem;
   color: #262D33;
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -130,11 +118,9 @@ exports[`A Heading with multiline truncate 1`] = `
 
 exports[`A Heading with variant 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
-  font-size: 1.375rem;
   color: #939BA5;
 }
 
@@ -150,11 +136,9 @@ exports[`A Heading with variant 1`] = `
 
 exports[`A default Heading 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-weight: 400;
   line-height: 1.75rem;
-  font-size: 1.375rem;
   color: #262D33;
 }
 

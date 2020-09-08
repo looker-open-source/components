@@ -27,27 +27,26 @@
 import { FontFamilyChoices } from '../../system'
 
 const basicFallbacks = [
-  'Noto Sans JP',
-  'Noto Sans CJK KR',
-  'Noto Sans Arabic UI',
-  'Noto Sans Devanagari UI',
-  'Noto Sans Hebrew',
-  'Noto Sans Thai UI',
-  'Helvetica',
-  'Arial',
+  '"Noto Sans JP"',
+  '"Noto Sans CJK KR"',
+  '"Noto Sans Arabic UI"',
+  '"Noto Sans Devanagari UI"',
+  '"Noto Sans Hebrew"',
+  '"Noto Sans Thai UI"',
+  '"Helvetica"',
+  '"Arial"',
   'sans-serif',
-  'Noto Sans',
 ]
 
 const defaultFallbacks = {
   body: basicFallbacks,
   brand: basicFallbacks,
   code: [
-    'Monaco',
-    'Menlo',
-    'Ubuntu Mono',
-    'Consolas',
-    'source-code-pro',
+    '"Monaco"',
+    '"Menlo"',
+    '"Ubuntu Mono"',
+    '"Consolas"',
+    '"source-code-pro"',
     'monospace',
   ],
 }
@@ -62,13 +61,13 @@ export const fontFacesToFamily = (
 
   faces = [...faces, ...fallbacks]
 
-  return faces.map((face) => `'${face}'`).join(', ')
+  return faces.map((face) => `${face}`).join(', ')
 }
 
 export const defaultFonts: FontFamilyChoices = {
-  body: 'Roboto',
-  brand: 'Red Hat Display',
-  code: 'Roboto Mono',
+  body: '"Roboto"',
+  brand: '"Red Hat Display"',
+  code: '"Roboto Mono"',
 }
 
 export const constructFontStack = (fontStack: Partial<FontFamilyChoices>) => {

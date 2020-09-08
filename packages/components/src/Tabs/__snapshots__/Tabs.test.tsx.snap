@@ -4,7 +4,7 @@ exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
 
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
   font-size: 0.875rem;
@@ -16,7 +16,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   border-radius: 0;
   color: #262D33;
   cursor: pointer;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
 }
 
 .c0:active {
@@ -67,7 +67,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
 
 exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
   font-size: 0.875rem;
@@ -79,7 +79,7 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   border-radius: 0;
   color: #707781;
   cursor: pointer;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial','sans-serif','Noto Sans';
+  font-family: "Red Hat Display","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);
 }
 
