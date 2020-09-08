@@ -10,11 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### CHANGED
 
 - `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
+- updated StoryBook to show InputFilter and ActionListFilter
 
 ### Added
 
--`DividerVertical` component
-
+- InputFilter component and test
+- ActionListFilter component -`DividerVertical` component
 - Added `Lqa` icon artwork
 - `Select` option icons
 

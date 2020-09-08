@@ -30,9 +30,14 @@ import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
 import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 
-const ActionListFilterLayout: FC<InputFiltersProps> = ({
+interface ActionListFilterProps extends InputFiltersProps {
+  customizeColumn?: boolean
+}
+
+const ActionListFilterLayout: FC<ActionListFilterProps> = ({
   availableFilters,
   className,
+  customizeColumn = false,
   fieldFilters,
 }) => {
   return (
@@ -41,10 +46,12 @@ const ActionListFilterLayout: FC<InputFiltersProps> = ({
         fieldFilters={fieldFilters}
         availableFilters={availableFilters}
       />
-      <ColumnSelector>
-        <DividerVertical height="1.5rem" />
-        <IconButton label="Select columns to display" icon="ViewColumn" />
-      </ColumnSelector>
+      {customizeColumn && (
+        <ColumnSelector>
+          <DividerVertical height="1.5rem" />
+          <IconButton label="Select columns to display" icon="ViewColumn" />
+        </ColumnSelector>
+      )}
     </div>
   )
 }
