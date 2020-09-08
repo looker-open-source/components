@@ -50,12 +50,11 @@ const googleFontParam = ({
 
   let weights = font.weights.map((weight) => `0,${weight}`)
   if (italic) {
-    uri += 'ital,'
     const italicizedWeights = font.weights.map((weight) => `1,${weight}`)
     weights = [...weights, ...italicizedWeights]
   }
 
-  uri += `wght@${weights.join(';')}`
+  uri += `ital,wght@${weights.join(';')}`
 
   return uri
 }
