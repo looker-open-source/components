@@ -24,26 +24,49 @@
 
  */
 
-// import React from 'react'
-// import { renderWithTheme } from '@looker/components-test-utils'
-// import { screen } from '@testing-library/react'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { InputFilters } from './InputFilters'
 
-// import { InputFilters } from './InputFilters'
+describe('InputFilters', () => {
+  const filterableItems = [
+    { value: 'PDT value' },
+    { value: 'Status' },
+    { value: 'Model' },
+    { value: 'Persistance Type' },
+    { value: 'Last Successful Build' },
+  ]
 
-// describe('InputFilters', () => {
-//   test('renders InputFilters', () => {
+  const fieldFilters = ['role: admin', 'group: pizza-lovers']
 
-//     const filterableItems = [
-//       { value: 'PDT value' },
-//       { value: 'Status' },
-//       { value: 'Model' },
-//       { value: 'Persistance Type' },
-//       { value: 'Last Successful Build' },
-//     ]
+  test('render InputFilter', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <InputFilters
+        availableFilters={filterableItems}
+        fieldFilters={fieldFilters}
+      />
+    )
 
-//     const fieldFilters = ['role: admin', 'group: pizza-lovers']
-//     renderWithTheme(
-//       <InputFilters filterableItems={filterableItems} fieldFilters={fieldFilters} />
-//     )
-//   })
-// }
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('InputFilter displays chips for each FieldFilter passed', () => {
+    const { getByText } = renderWithTheme(
+      <InputFilters
+        availableFilters={filterableItems}
+        fieldFilters={fieldFilters}
+      />
+    )
+    expect(getByText('role: admin')).toBeInTheDocument()
+  })
+
+  test('InputFilter displays chips for each FieldFilter passed', () => {
+    const { getByText } = renderWithTheme(
+      <InputFilters
+        availableFilters={filterableItems}
+        fieldFilters={fieldFilters}
+      />
+    )
+    expect(getByText('role: admin')).toBeInTheDocument()
+  })
+})

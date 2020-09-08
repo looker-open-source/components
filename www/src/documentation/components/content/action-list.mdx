@@ -48,14 +48,6 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
     },
   ]
 
-  const filterableItems = [
-    { value: 'PDT value' },
-    { value: 'Status' },
-    { value: 'Model' },
-    { value: 'Persistance Type' },
-    { value: 'Last Successful Build' },
-  ]
-
   const items = data.map(({ id, name }) => {
     actions = (
       <>
@@ -80,7 +72,6 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
 
   return (
     <>
-      <ActionListFilter filterableItems={filterableItems} />
       <ActionList columns={columns}>{items}</ActionList>
     </>
   )
