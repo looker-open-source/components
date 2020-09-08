@@ -107,7 +107,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
   flex: 2;
-  padding: ${({ theme }) => theme.space.xxsmall};
 
   ${Icon} {
     margin: 0 ${({ theme }) => theme.space.xsmall};
@@ -123,6 +122,7 @@ export const InputFilters = styled(InputFiltersLayout)`
 
   ${InputText} {
     border: none;
+    padding: none;
     &:focus-within {
       box-shadow: none;
     }

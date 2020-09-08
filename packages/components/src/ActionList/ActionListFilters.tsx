@@ -42,7 +42,7 @@ const ActionListFilterLayout: FC<InputFiltersProps> = ({
         availableFilters={availableFilters}
       />
       <ColumnSelector>
-        <DividerVertical stretch />
+        <DividerVertical height="1.5rem" />
         <IconButton label="Select columns to display" icon="ViewColumn" />
       </ColumnSelector>
     </div>
@@ -51,7 +51,12 @@ const ActionListFilterLayout: FC<InputFiltersProps> = ({
 
 const ColumnSelector = styled.div`
   align-items: center;
+  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
 `
 
-export const ActionListFilters = styled(ActionListFilterLayout)``
+export const ActionListFilters = styled(ActionListFilterLayout)`
+  display: flex;
+  padding: auto;
+`
