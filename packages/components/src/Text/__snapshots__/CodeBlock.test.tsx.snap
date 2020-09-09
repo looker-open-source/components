@@ -2,7 +2,7 @@
 
 exports[`A default CodeBlock component 1`] = `
 .c0 {
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: "Roboto Mono","Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 1rem;
@@ -12,6 +12,10 @@ exports[`A default CodeBlock component 1`] = `
   border: 1px solid;
   border-color: #DEE1E5;
   overflow-y: scroll;
+}
+
+.c1 code {
+  font-family: inherit;
 }
 
 <pre

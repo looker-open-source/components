@@ -93,6 +93,8 @@ const AvatarLayout: FC<AvatarIconProps> = ({
 
 export const AvatarIcon = styled(AvatarLayout)`
   ${avatarCSS}
+  ${({ role }) =>
+    role === 'button' && 'cursor: pointer;'}
   border: solid 1px currentColor;
 
   ${Icon} {

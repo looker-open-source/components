@@ -2,6 +2,7 @@
 
 exports[`A Legend 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   padding: 0rem;
   font-size: 1rem;

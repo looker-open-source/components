@@ -24,7 +24,7 @@
 
  */
 
-import { InterpolationValue } from 'styled-components'
+import { DefaultTheme, InterpolationValue } from 'styled-components'
 import {
   Colors,
   Easings,
@@ -69,8 +69,8 @@ export interface Theme {
   colors: ThemeColors
   easings: Easings
   fontSizes: FontSizeRamp
-  fontWeights: FontWeightRamp
   fonts: FontFamilyChoices
+  fontWeights: FontWeightRamp
   lineHeights: LineHeightRamp
   radii: Radii
   /**
@@ -85,7 +85,7 @@ export interface Theme {
   zIndexFloor: number
 }
 
-export const theme: Theme = {
+export const theme: DefaultTheme = {
   breakpoints,
   colors: { palette, ...colors },
   easings,
@@ -99,4 +99,9 @@ export const theme: Theme = {
   space,
   transitions,
   zIndexFloor: 1,
+}
+
+declare module 'styled-components' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }

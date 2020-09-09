@@ -62,5 +62,4 @@ export { ComponentsProvider } from '@looker/components-providers'
 /** Provided here for backwards compatibility.
  * @TODO - Remove before 1.0
  **/
-
-export { SpacingSizes, theme, Theme } from '@looker/design-tokens'
+export { theme, Theme } from '@looker/design-tokens'

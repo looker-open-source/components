@@ -2,6 +2,7 @@
 
 exports[`ListItem A default ListItem, should be an li 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 
@@ -14,6 +15,7 @@ exports[`ListItem A default ListItem, should be an li 1`] = `
 
 exports[`ListItem handles mouseenter 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 

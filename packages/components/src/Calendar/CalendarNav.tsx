@@ -92,7 +92,11 @@ export const CalendarNav: FC<NavbarElementProps> = ({
 
       <Tooltip content="View Current Month">
         <ButtonTransparent onClick={handleLabelClick} color="neutral">
-          <Heading as={headingSizeMap(size)} fontWeight="semiBold">
+          <Heading
+            as={headingSizeMap(size)}
+            fontWeight="semiBold"
+            fontFamily="body"
+          >
             {localeUtils.formatMonthTitle(month)}
           </Heading>
         </ButtonTransparent>

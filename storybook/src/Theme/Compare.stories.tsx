@@ -83,8 +83,3 @@ export const Compare: FC = () => (
     </Editor>
   </Grid>
 )
-
-export default {
-  component: Compare,
-  title: 'Theme',
-}

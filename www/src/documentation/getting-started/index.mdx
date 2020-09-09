@@ -41,15 +41,12 @@ NOTE: The `ComponentsProvider` will automatically load the `GlobalStyle` compone
 
 ### Web Font Loading
 
-Users may not have the `@looker/components` default font, Open Sans, installed on their computers so we recommend importing the font to ensure that content is rendered with the proper font-face.
+Users may not have the `@looker/components` default font, Roboto, installed on their computers so we recommend importing the font to ensure that content is rendered with the proper font-face.
 
-The simplest way to accomplish this is via Google's hosted CDN:
+The `<GoogleFontsLoader />` component will automatically load any fonts specified in the theme from Google Fonts if they're not already available on the device. This can also be done by adding the `loadGoogleFonts` prop on `ComponentsProvider`
 
-```html static
-<link
-  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
-  rel="stylesheet"
-/>
+```jsx static
+<ComponentsProvider loadGoogleFonts>...</ComponentsProvider>
 ```
 
 ## Using a Component

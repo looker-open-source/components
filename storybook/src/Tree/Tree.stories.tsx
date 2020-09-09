@@ -26,7 +26,6 @@
 
 import React from 'react'
 import {
-  Grid,
   Tree,
   TreeItem,
   TreeGroup,
@@ -35,17 +34,9 @@ import {
   TreeItemLabel,
 } from '@looker/components'
 import styled from 'styled-components'
-
-export const All = () => (
-  <Grid>
-    <FileSelector />
-    <FileSelectorClosed />
-    <Border />
-  </Grid>
-)
+export { FieldPicker } from './FieldPicker.stories'
 
 export default {
-  component: All,
   title: 'Tree',
 }
 

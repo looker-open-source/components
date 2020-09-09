@@ -31,6 +31,5 @@ export const NoResults = styled(Text)``
 
 NoResults.defaultProps = {
   fontSize: 'xlarge',
-  fontWeight: 'light',
   variant: 'subdued',
 }

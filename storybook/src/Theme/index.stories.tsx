@@ -24,37 +24,12 @@
 
  */
 
-import { border, BorderProps } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { TextBase, TextBaseProps } from './TextBase'
+export * from './Compare.stories'
+export * from './Editor.stories'
+export * from './Fonts.stories'
+export * from './Suite.stories'
+export * from './Swatches.stories'
 
-export interface CodeBlockProps extends TextBaseProps, BorderProps {
-  className?: string
-}
-
-const CodeBlockLayout: FC<CodeBlockProps> = ({
-  children,
-  className,
-  ...props
-}) => (
-  <TextBase className={className} as="pre" fontFamily="code" {...props}>
-    <code>{children}</code>
-  </TextBase>
-)
-
-export const CodeBlock = styled(CodeBlockLayout)`
-  ${border}
-  overflow-y: scroll;
-
-  code {
-    font-family: inherit;
-  }
-`
-
-CodeBlock.defaultProps = {
-  border: '1px solid',
-  borderColor: 'ui2',
-  fontSize: 'small',
-  p: 'medium',
+export default {
+  title: 'Theme',
 }

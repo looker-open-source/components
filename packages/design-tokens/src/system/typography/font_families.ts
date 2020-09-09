@@ -24,12 +24,14 @@
 
  */
 
+// import { css } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 
+type Body = 'body'
 type Brand = 'brand'
 type Code = 'code'
 
-export type FontFamilies = Brand | Code
+export type FontFamilies = Body | Brand | Code
 
 export type FontFamilyChoices = Record<FontFamilies, string>
 
