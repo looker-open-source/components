@@ -140,10 +140,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     &:hover {
       background: ${({ theme: { colors } }) => colors.background};
       color: ${({ theme: { colors } }) => colors.text1};
-
-      ${Icon} {
-        color: ${({ theme: { colors } }) => colors.text1};
-      }
     }
   }
 `
