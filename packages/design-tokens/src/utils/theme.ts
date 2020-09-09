@@ -26,7 +26,6 @@
 
 import { Theme } from '../theme'
 import { CoreColors } from '../system/color'
-import * as palette from '../tokens/color/palette'
 import { generateColors } from './color'
 
 export const generateThemeFromCoreColors = (
@@ -37,9 +36,6 @@ export const generateThemeFromCoreColors = (
 
   return {
     ...theme,
-    colors: {
-      ...colors,
-      palette,
-    },
+    colors,
   }
 }

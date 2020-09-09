@@ -34,6 +34,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Tooltip` & `Popover` no longer support (optional) arrow indicator
 
+### Removed
+
+- `theme.colors.palette` is no longer available (`palette` _can_ be import from `@looker/design-tokens` but this is a legacy behavior and is not encouraged)
+- `prismTheme` is no longer published
+
 ## [0.9.13] - 2020-08-24
 
 ### Fixed

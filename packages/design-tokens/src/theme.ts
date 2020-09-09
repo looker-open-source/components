@@ -38,7 +38,6 @@ import {
   SpaceRamp,
   Transitions,
 } from './system'
-import { Palette } from './system/color/palette'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
@@ -58,15 +57,10 @@ import {
   space,
   transitions,
 } from './tokens'
-import * as palette from './tokens/color/palette'
-
-export interface ThemeColors extends Colors {
-  palette: Palette
-}
 
 export interface Theme {
   breakpoints: string[]
-  colors: ThemeColors
+  colors: Colors
   easings: Easings
   fontSizes: FontSizeRamp
   fonts: FontFamilyChoices
@@ -87,7 +81,7 @@ export interface Theme {
 
 export const theme: DefaultTheme = {
   breakpoints,
-  colors: { palette, ...colors },
+  colors,
   easings,
   fontSizes,
   fontWeights,

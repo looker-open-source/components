@@ -24,49 +24,5 @@
 
  */
 
-import {
-  blue500,
-  blue600,
-  blue700,
-  charcoal500,
-  charcoal800,
-  green500,
-  purple400,
-  red500,
-  yellow500,
-  white,
-} from '../../legacy/palette'
-import { IntentColors } from '../../system/color/specifiable'
-import { CoreColors, Colors, SpecifiableColors } from '../../system'
-import { generateSurfaceColors } from '../../utils/color/surface'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-
-export const defaultCoreColors: CoreColors = {
-  background: white,
-  text: charcoal800,
-  key: purple400,
-}
-
-export const defaultIntentColors: IntentColors = {
-  link: blue600,
-  linkInteractive: blue700,
-  critical: red500,
-  warn: yellow500,
-  neutral: charcoal500,
-  positive: green500,
-  inform: blue500,
-}
-
-const specifiableColors: SpecifiableColors = {
-  ...defaultCoreColors,
-  ...generateSurfaceColors(defaultCoreColors),
-  ...defaultIntentColors,
-}
-
-export const colors: Colors = {
-  ...specifiableColors,
-  ...fallbackBlends,
-  ...fallbackStateful,
-}
+import * as palette from './palette'
+export { palette }
