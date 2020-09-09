@@ -31,13 +31,13 @@ import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 
 interface ActionListFilterProps extends InputFiltersProps {
-  customizeColumn?: boolean
+  columnsCustomizable?: boolean
 }
 
 const ActionListFilterLayout: FC<ActionListFilterProps> = ({
   availableFilters,
   className,
-  customizeColumn = false,
+  columnsCustomizable = false,
   fieldFilters,
 }) => {
   return (
@@ -46,7 +46,7 @@ const ActionListFilterLayout: FC<ActionListFilterProps> = ({
         fieldFilters={fieldFilters}
         availableFilters={availableFilters}
       />
-      {customizeColumn && (
+      {columnsCustomizable && (
         <ColumnSelector>
           <DividerVertical height="1.5rem" />
           <IconButton label="Select columns to display" icon="ViewColumn" />
@@ -58,12 +58,16 @@ const ActionListFilterLayout: FC<ActionListFilterProps> = ({
 
 const ColumnSelector = styled.div`
   align-items: center;
-  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
-  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
 `
 
 export const ActionListFilters = styled(ActionListFilterLayout)`
+  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
   padding: auto;
+
+  ${InputFilters} {
+    border: none;
+  }
 `

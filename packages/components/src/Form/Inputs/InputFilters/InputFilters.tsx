@@ -33,7 +33,7 @@ import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
 import { Space } from '../../../Layout'
 
-interface AvailableFilter {
+export interface AvailableFilter {
   value: string
 }
 
@@ -41,12 +41,14 @@ export interface InputFiltersProps {
   className?: string
   availableFilters: AvailableFilter[]
   fieldFilters?: string[]
+  hideFilterIcon?: boolean
 }
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   availableFilters,
   className,
   fieldFilters,
+  hideFilterIcon = false,
 }) => {
   const [values, setValues] = useState(fieldFilters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
@@ -75,7 +77,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
   return (
     <div className={className} onClick={focusInput}>
-      <Icon mx="xsmall" name="Filter" size={20} color="ui4" />
+      {!hideFilterIcon && (
+        <Icon mx="xsmall" name="Filter" size={20} color="ui4" />
+      )}
       <Space gap="xsmall">
         {values.map((value, i) => (
           <Chip key={i} onClick={editFilter}>
@@ -84,14 +88,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         ))}
 
         <Select
-          options={availableFilters}
-          placeholder="Filter List"
+          autoResize
           indicator={false}
           isFilterable
-          value={filterLookupName}
-          ref={inputRef}
-          autoResize
           onChange={handleFilterLookupChange}
+          options={availableFilters}
+          placeholder="Filter List"
+          ref={inputRef}
+          value={filterLookupName}
         />
       </Space>
       {isClearable && (
@@ -100,13 +104,18 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     </div>
   )
 }
-
+// padding-left: ${props.theme.space.xsmall}
 export const InputFilters = styled(InputFiltersLayout)`
   align-items: center;
-  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
-  border-top: solid 1px ${({ theme }) => theme.colors.ui2};
+  border: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   flex: 2;
+
+  ${Space} {
+    ${(props) =>
+      props.hideFilterIcon && `padding-left: ${props.theme.space.xxsmall}`}
+  }
 
   ${Icon} {
     margin: 0 ${({ theme }) => theme.space.xsmall};

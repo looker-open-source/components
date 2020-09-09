@@ -26,13 +26,15 @@
 
 import { ActionListColumns } from '@looker/components'
 
-export const filterableItems = [
-  { value: 'PDT value' },
+export const availableFilters = [
+  { value: 'Name' },
   { value: 'Status' },
-  { value: 'Model' },
-  { value: 'Persistance Type' },
-  { value: 'Last Successful Build' },
+  { value: 'Source' },
+  { value: 'Trigger' },
+  { value: 'Last Build Time' },
 ]
+
+export const fieldFilters = ['role: admin', 'group: pizza-lovers']
 
 export const row = {
   disabled: false,

@@ -27,7 +27,6 @@
 import {
   ActionList,
   ActionListItemAction,
-  ActionListFilters,
   ActionListManager,
   Icon,
   Heading,
@@ -36,7 +35,7 @@ import {
 } from '@looker/components'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import React from 'react'
-import { columns, data, filterableItems } from './data'
+import { columns, data, availableFilters, fieldFilters } from './data'
 import { items } from './items'
 
 export default {
@@ -105,17 +104,7 @@ export const ActionListExample = () => {
       <ActionList
         select={boolean('Select Items', true) ? selectConfig : undefined}
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
-        filter={{
-          available: filterableItems,
-          fields: [
-            {
-              expression: 'admin,manager',
-              field: 'role',
-            },
-          ],
-        }}
         columns={columns}
-        columnsCustomizable={boolean} // default to false
         headerRowId="all-pdts"
       >
         {items}
@@ -125,22 +114,26 @@ export const ActionListExample = () => {
 }
 
 export const ActionListFiltersExample = () => (
-  <>
-    <ActionListFilters
-      fieldFilters={['role:admin', 'group:pizza-lovers']}
-      availableFilters={filterableItems}
-    />
-    <ActionList columns={columns}>{items}</ActionList>
-  </>
+  <ActionList
+    filters={{
+      availableFilters: availableFilters,
+      fieldFilters: fieldFilters,
+    }}
+    columns={columns}
+  >
+    {items}
+  </ActionList>
 )
 
 export const ActionListFiltersColumn = () => (
-  <>
-    <ActionListFilters
-      customizeColumn
-      fieldFilters={['role:admin', 'group:pizza-lovers']}
-      availableFilters={filterableItems}
-    />
-    <ActionList columns={columns}>{items}</ActionList>
-  </>
+  <ActionList
+    filters={{
+      availableFilters: availableFilters,
+      columnsCustomizable: true,
+      fieldFilters: fieldFilters,
+    }}
+    columns={columns}
+  >
+    {items}
+  </ActionList>
 )
