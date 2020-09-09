@@ -40,7 +40,7 @@ const App = () => (
     <MenuWrapper>
       <MenuList>
         <MenuItem
-          icon="LogoRings"
+          icon="ChartPie"
           detail={
             <>
               <Text fontSize="small" mr="xsmall" variant="secondary">
@@ -58,18 +58,13 @@ const App = () => (
           Chat
         </MenuItem>
         <MenuItem
-          icon="LogoRings"
+          icon="ChartPie"
           detail={
             <>
               <Text fontSize="small" mr="xsmall" variant="secondary">
                 Offline
               </Text>
-              <Icon
-                name="Chat"
-                verticalAlign="middle"
-                size={16}
-                color="text1"
-              />
+              <Icon name="Chat" verticalAlign="middle" size={16} />
             </>
           }
         >
