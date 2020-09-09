@@ -161,6 +161,7 @@ const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
 `
 
 SelectOptionGroupTitle.defaultProps = {
+  fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
   px: 'xsmall',
