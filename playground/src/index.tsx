@@ -25,60 +25,14 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import styled from 'styled-components'
-import {
-  ComponentsProvider,
-  MenuItem,
-  Icon,
-  MenuList,
-  Text,
-} from '@looker/components'
+import { ComponentsProvider, Paragraph } from '@looker/components'
 import 'core-js/stable'
 
 const App = () => (
   <ComponentsProvider>
-    <MenuWrapper>
-      <MenuList>
-        <MenuItem
-          icon="ChartPie"
-          detail={
-            <>
-              <Text fontSize="small" mr="xsmall" variant="secondary">
-                Online
-              </Text>
-              <Icon
-                name="Chat"
-                verticalAlign="middle"
-                color="positive"
-                size={16}
-              />
-            </>
-          }
-        >
-          Chat
-        </MenuItem>
-        <MenuItem
-          icon="ChartPie"
-          detail={
-            <>
-              <Text fontSize="small" mr="xsmall" variant="secondary">
-                Offline
-              </Text>
-              <Icon name="Chat" verticalAlign="middle" size={16} />
-            </>
-          }
-        >
-          Chat
-        </MenuItem>
-      </MenuList>
-    </MenuWrapper>
+    <Paragraph>Hello world</Paragraph>
   </ComponentsProvider>
 )
-
-const MenuWrapper = styled.div`
-  margin: 20px auto;
-  max-width: 500px;
-`
 
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
