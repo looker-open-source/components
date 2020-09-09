@@ -25,13 +25,16 @@
  */
 
 import {
-  GlobalStyle,
-  IEGlobalStyle,
+  constructFontStack,
   CoreColors,
-  theme,
+  FontFamilyChoices,
   generateThemeFromCoreColors,
+  IEGlobalStyle,
+  GlobalStyle,
+  GoogleFontsLoader,
+  theme,
 } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
 /**
@@ -49,33 +52,55 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
   globalStyle?: boolean
 
   /**
-   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * Load fonts from the Google Fonts CDN if not already available
+   * @default false
+   */
+  loadGoogleFonts?: boolean
+
+  /**
+   * Enable style support for IE11
    * @default false
    */
   ie11Support?: boolean
 
   /**
-   *
+   * Override default color specifications
    */
   coreColors?: Partial<CoreColors>
+  /**
+   * Override default font-family specifications. Specified fonts will have out built-in
+   * font-stack appended. Built-in font stacks are designed to provide i18n character
+   * support and fallbacks for browsers that can't load webfonts.
+   */
+  fontFamilies?: Partial<FontFamilyChoices>
 }
 
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
   ie11Support = false,
+  loadGoogleFonts = false,
   coreColors,
+  fontFamilies,
   ...props
 }) => {
-  const baseTheme = props.theme || theme
+  const generatedTheme = useMemo(() => {
+    const baseTheme = props.theme || theme
 
-  const generatedTheme = coreColors
-    ? generateThemeFromCoreColors(baseTheme, coreColors)
-    : baseTheme
+    const updatedTheme = coreColors
+      ? generateThemeFromCoreColors(baseTheme, coreColors)
+      : baseTheme
+
+    if (fontFamilies) {
+      return { ...updatedTheme, fonts: constructFontStack(fontFamilies) }
+    }
+    return updatedTheme
+  }, [props.theme, coreColors, fontFamilies])
 
   return (
     <ThemeProvider {...props} theme={generatedTheme}>
       {globalStyle && <GlobalStyle />}
+      {loadGoogleFonts && <GoogleFontsLoader />}
       {ie11Support && <IEGlobalStyle />}
       {children}
     </ThemeProvider>

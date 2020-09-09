@@ -162,8 +162,3 @@ export const FieldPicker = () => (
     </TreeGroup>
   </Tree>
 )
-
-export default {
-  component: FieldPicker,
-  title: 'Tree',
-}

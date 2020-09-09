@@ -59,9 +59,9 @@ describe('Icon', () => {
   })
 
   test(`Title is assigned properly to SVG art`, () => {
-    const { findByLabelText } = renderWithTheme(
+    const { getByTitle } = renderWithTheme(
       <Icon name="Trash" title="Oscar's House" />
     )
-    expect(findByLabelText("Oscar's House")).toBeTruthy()
+    expect(getByTitle("Oscar's House")).toBeTruthy()
   })
 })

@@ -66,6 +66,7 @@ const TabStyle = styled.button<TabProps>`
   color: ${(props) =>
     props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
   cursor: pointer;
+  font-family: ${({ theme }) => theme.fonts.brand};
 
   &:active {
     border-bottom-color: ${(props) =>
@@ -172,7 +173,7 @@ export const Tab = styled(TabJSX)``
 
 Tab.defaultProps = {
   fontSize: 'small',
-  fontWeight: 'semiBold',
+  fontWeight: 'medium',
   pb: 'small',
   pt: 'xsmall',
 }

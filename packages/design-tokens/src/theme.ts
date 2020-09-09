@@ -24,7 +24,7 @@
 
  */
 
-import { InterpolationValue } from 'styled-components'
+import { DefaultTheme, InterpolationValue } from 'styled-components'
 import {
   Colors,
   Easings,
@@ -38,7 +38,6 @@ import {
   SpaceRamp,
   Transitions,
 } from './system'
-import { Palette } from './system/color/palette'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
@@ -58,19 +57,14 @@ import {
   space,
   transitions,
 } from './tokens'
-import * as palette from './tokens/color/palette'
-
-export interface ThemeColors extends Colors {
-  palette: Palette
-}
 
 export interface Theme {
   breakpoints: string[]
-  colors: ThemeColors
+  colors: Colors
   easings: Easings
   fontSizes: FontSizeRamp
-  fontWeights: FontWeightRamp
   fonts: FontFamilyChoices
+  fontWeights: FontWeightRamp
   lineHeights: LineHeightRamp
   radii: Radii
   /**
@@ -85,9 +79,9 @@ export interface Theme {
   zIndexFloor: number
 }
 
-export const theme: Theme = {
+export const theme: DefaultTheme = {
   breakpoints,
-  colors: { palette, ...colors },
+  colors,
   easings,
   fontSizes,
   fontWeights,
@@ -99,4 +93,9 @@ export const theme: Theme = {
   space,
   transitions,
   zIndexFloor: 1,
+}
+
+declare module 'styled-components' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }

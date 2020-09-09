@@ -149,7 +149,3 @@ export const ListLayoutDemo = () => {
     </Box>
   )
 }
-
-export default {
-  title: 'Forms/Combobox',
-}

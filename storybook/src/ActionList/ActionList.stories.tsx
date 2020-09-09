@@ -38,6 +38,8 @@ import React from 'react'
 import { columns, data } from './data'
 import { items } from './items'
 
+export { Sortable } from './ActionListSortable.stories'
+
 export default {
   decorators: [withKnobs],
   title: 'ActionList',

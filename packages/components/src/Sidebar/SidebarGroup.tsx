@@ -68,6 +68,7 @@ const InternalSidebarGroup: FC<SidebarGroupProps> = ({
 
 const SidebarGroupHeading = styled(Heading).attrs({
   as: 'h3',
+  fontFamily: 'body',
   fontSize: 'small',
   fontWeight: 'semiBold',
 })`

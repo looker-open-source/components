@@ -42,7 +42,13 @@ export const MenuGroupLabel: FC = ({ children }) => {
         render the shadow.
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
-      <Heading fontSize="small" as="h2" pl="medium" fontWeight="semiBold">
+      <Heading
+        as="h2"
+        fontFamily="body"
+        fontSize="small"
+        fontWeight="semiBold"
+        pl="medium"
+      >
         {children}
       </Heading>
     </MenuGroupLabelWrapper>

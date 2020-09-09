@@ -50,7 +50,7 @@ import {
   red400,
   red500,
   white,
-} from './palette'
+} from '../../legacy/palette'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

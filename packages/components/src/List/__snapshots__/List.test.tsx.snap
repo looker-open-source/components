@@ -2,11 +2,13 @@
 
 exports[`A bulleted List 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   list-style-type: disc;
   padding-left: 1rem;
 }
 
 .c1 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 
@@ -34,10 +36,12 @@ exports[`A bulleted List 1`] = `
 
 exports[`A default List, should be a ul 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   list-style-type: none;
 }
 
 .c1 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 
@@ -65,11 +69,13 @@ exports[`A default List, should be a ul 1`] = `
 
 exports[`A numerically ordered List 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   list-style-type: decimal;
   padding-left: 1rem;
 }
 
 .c1 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 
@@ -97,10 +103,12 @@ exports[`A numerically ordered List 1`] = `
 
 exports[`A numerically ordered List marked as nomarker 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   list-style-type: none;
 }
 
 .c1 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   margin-bottom: 0.25rem;
 }
 

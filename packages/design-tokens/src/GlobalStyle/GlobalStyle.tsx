@@ -26,17 +26,7 @@
 
 import { css, createGlobalStyle } from 'styled-components'
 
-export const fonts = (brand: string) => `
-  body,
-  button,
-  input,
-  textarea,
-  select {
-    font-family: ${brand};
-  }
-`
-
-export const reset = (background: string) => `
+export const reset = css`
   html {
     box-sizing: border-box;
     font-size: 16px;
@@ -72,13 +62,10 @@ export const reset = (background: string) => `
   }
 
   body {
-    background-color: ${background};
+    background-color: ${({ theme: { colors } }) => colors.background};
   }
 `
 
 export const GlobalStyle = createGlobalStyle`
-  ${css`
-    ${({ theme }) => fonts(theme.fonts.brand)}
-    ${({ theme }) => reset(theme.colors.background)}
-  `}
+  ${reset}
 `

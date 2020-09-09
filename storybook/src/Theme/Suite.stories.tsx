@@ -73,8 +73,3 @@ export const Suite = () => {
     </SpaceVertical>
   )
 }
-
-export default {
-  component: Suite,
-  title: 'Theme',
-}

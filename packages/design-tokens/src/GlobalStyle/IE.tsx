@@ -24,9 +24,9 @@
 
  */
 
-import React, { FC, useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import { fonts, reset } from './GlobalStyle'
+import React, { FC } from 'react'
+import { css } from 'styled-components'
+import { reset } from './GlobalStyle'
 
 const isIE11 =
   typeof window === `undefined` ||
@@ -36,19 +36,12 @@ const isIE11 =
     // @ts-ignore
     !!document.documentMode)
 
-const ieGlobalCSS = (font: string, background: string) => `
+const ieGlobalCSS = css`
   @media screen and (-ms-high-contrast: active),
     screen and (-ms-high-contrast: none) {
-    ${fonts(font)}
-    ${reset(background)}
+    ${reset}
   }
 `
 
-export const IEGlobalStyle: FC = () => {
-  const theme = useContext(ThemeContext)
-  if (!isIE11) return null
-
-  return (
-    <style>{ieGlobalCSS(theme.fonts.brand, theme.colors.background)}</style>
-  )
-}
+export const IEGlobalStyle: FC = () =>
+  isIE11 ? <style>{ieGlobalCSS}</style> : null

@@ -140,7 +140,12 @@ export function SelectOptionWithDescription({
 }: SelectOptionObject) {
   return (
     <Box>
-      <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
+      <Heading
+        fontFamily="body"
+        fontSize="small"
+        fontWeight="semiBold"
+        pb="xxsmall"
+      >
         <ComboboxOptionText />
       </Heading>
       <Paragraph variant="subdued" fontSize="small">
@@ -156,6 +161,7 @@ const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
 `
 
 SelectOptionGroupTitle.defaultProps = {
+  fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
   px: 'xsmall',
