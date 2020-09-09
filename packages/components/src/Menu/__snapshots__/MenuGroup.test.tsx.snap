@@ -120,10 +120,6 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #939BA5;
 }
 
-.c6[disabled]:hover .c8 {
-  color: #939BA5;
-}
-
 .c7 .c8 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
@@ -325,10 +321,6 @@ exports[`MenuGroup - label 1`] = `
   color: #939BA5;
 }
 
-.c5[disabled]:hover .c7 {
-  color: #939BA5;
-}
-
 .c6 .c7 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
@@ -501,10 +493,6 @@ exports[`MenuGroup 1`] = `
 
 .c2[disabled]:hover {
   background: #FFFFFF;
-  color: #939BA5;
-}
-
-.c2[disabled]:hover .c4 {
   color: #939BA5;
 }
 
