@@ -33,7 +33,7 @@ export {
   defaultFonts,
 } from './tokens/typography/font_families'
 
-export * from './legacy'
+export { palette } from './legacy'
 
 // Useful external utilities
 export * from './utils/animations'

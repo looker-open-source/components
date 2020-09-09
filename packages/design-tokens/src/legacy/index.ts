@@ -25,6 +25,4 @@
  */
 
 import * as palette from './palette'
-
 export { palette }
-export * from './legacyTheme'
