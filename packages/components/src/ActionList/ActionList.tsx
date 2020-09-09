@@ -28,12 +28,14 @@ import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { useID } from '../utils/useID'
+import { AvailableFilter } from '../Form/Inputs/InputFilters'
 import { ActionListControlBar } from './ActionListControlBar'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
+import { ActionListFilters } from './ActionListFilters'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
@@ -75,6 +77,12 @@ export interface ActionListColumn {
   sortDirection?: 'asc' | 'desc'
 }
 
+export interface FiltersConfig {
+  availableFilters: AvailableFilter[]
+  columnsCustomizable?: boolean
+  fieldFilters?: string[]
+}
+
 export interface ActionListProps {
   columns: ActionListColumns
   className?: string
@@ -99,6 +107,7 @@ export interface ActionListProps {
    * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
   bulk?: BulkActionsConfig
+  filters?: FiltersConfig
 }
 
 export interface SelectConfig {
@@ -157,10 +166,11 @@ export interface BulkActionsConfig {
 export const ActionListLayout: FC<ActionListProps> = ({
   bulk,
   className,
-  header = true,
-  headerRowId,
   children,
   columns,
+  header = true,
+  headerRowId,
+  filters,
   onSort,
   select,
 }) => {
@@ -191,17 +201,22 @@ export const ActionListLayout: FC<ActionListProps> = ({
     )
 
   return (
-    <>
-      <ActionListContext.Provider value={context}>
-        <div className={className}>
-          {actionListHeader}
-          {bulk && select && select.selectedItems.length > 0 && (
-            <ActionListControlBar {...bulk} />
-          )}
-          <div>{children}</div>
-        </div>
-      </ActionListContext.Provider>
-    </>
+    <ActionListContext.Provider value={context}>
+      {filters && (
+        <ActionListFilters
+          fieldFilters={filters.fieldFilters}
+          columnsCustomizable={filters.columnsCustomizable || false}
+          availableFilters={filters.availableFilters}
+        />
+      )}
+      <div className={className}>
+        {actionListHeader}
+        {bulk && select && select.selectedItems.length > 0 && (
+          <ActionListControlBar {...bulk} />
+        )}
+        <div>{children}</div>
+      </div>
+    </ActionListContext.Provider>
   )
 }
 

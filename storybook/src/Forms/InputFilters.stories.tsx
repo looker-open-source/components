@@ -31,19 +31,20 @@ export default {
   title: 'Forms/InputFilters',
 }
 
-const filterableItems = [
-  { value: 'PDT value' },
+const availableFilters = [
+  { value: 'Name' },
   { value: 'Status' },
-  { value: 'Model' },
-  { value: 'Persistance Type' },
-  { value: 'Last Successful Build' },
+  { value: 'Source' },
+  { value: 'Trigger' },
+  { value: 'Last Build Time' },
 ]
 
 const fieldFilters = ['role: admin', 'group: pizza-lovers']
 
 export const All = () => (
   <InputFilters
+    hideFilterIcon
     fieldFilters={fieldFilters}
-    availableFilters={filterableItems}
+    availableFilters={availableFilters}
   />
 )
