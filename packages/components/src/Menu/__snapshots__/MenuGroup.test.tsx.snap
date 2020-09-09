@@ -84,7 +84,6 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c5 .c7 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -93,11 +92,6 @@ exports[`MenuGroup - JSX label 1`] = `
 .c5[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c5:hover .c7,
-.c5[aria-current='true'] .c7 {
-  color: #939BA5;
 }
 
 .c5[aria-current='true'] {
@@ -290,7 +284,6 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c5 .c7 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -299,11 +292,6 @@ exports[`MenuGroup - label 1`] = `
 .c5[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c5:hover .c7,
-.c5[aria-current='true'] .c7 {
-  color: #939BA5;
 }
 
 .c5[aria-current='true'] {
@@ -471,7 +459,6 @@ exports[`MenuGroup 1`] = `
 }
 
 .c2 .c4 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -480,11 +467,6 @@ exports[`MenuGroup 1`] = `
 .c2[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c2:hover .c4,
-.c2[aria-current='true'] .c4 {
-  color: #939BA5;
 }
 
 .c2[aria-current='true'] {

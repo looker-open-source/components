@@ -114,7 +114,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   `}
 
   ${Icon} {
-    color: ${({ theme: { colors } }) => colors.text1};
     transition: color
       ${({ theme: { easings, transitions } }) =>
         `${transitions.durationQuick} ${easings.ease}`};
@@ -124,10 +123,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   &[aria-current='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
     color: ${({ theme: { colors } }) => colors.text5};
-
-    ${Icon} {
-      color: ${({ theme: { colors } }) => colors.text1};
-    }
   }
 
   &[aria-current='true'] {
