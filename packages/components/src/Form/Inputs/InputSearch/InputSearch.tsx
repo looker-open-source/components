@@ -33,7 +33,7 @@ import React, {
   MouseEvent,
 } from 'react'
 import { InputText, InputTextBaseProps } from '../InputText'
-import { InputSearchControls } from './InputSearchControls'
+import { AdvancedInputControls } from '../AdvancedInputControls'
 
 export interface InputSearchProps
   extends Omit<InputTextBaseProps, 'children' | 'value' | 'defaultValue'> {
@@ -93,7 +93,7 @@ export const InputSearch = forwardRef(
         iconBefore={hideSearchIcon ? undefined : 'Search'}
         after={
           !hideControls ? (
-            <InputSearchControls
+            <AdvancedInputControls
               onClear={handleClear}
               disabled={disabled}
               summary={summary}

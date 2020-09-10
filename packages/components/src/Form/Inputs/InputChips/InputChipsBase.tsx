@@ -342,8 +342,6 @@ export const InputChipsBaseInternal = forwardRef(
     const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
     const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
 
-    const renderSearchControls = values.length > 0
-
     return (
       <InputText
         disabled={disabled}
@@ -352,7 +350,7 @@ export const InputChipsBaseInternal = forwardRef(
             <AdvancedInputControls
               isVisibleOptions={isVisibleOptions}
               onClear={handleClear}
-              renderSearchControls={renderSearchControls}
+              showClear={values.length > 0}
               validationType={validationType}
               disabled={disabled}
               summary={summary}
