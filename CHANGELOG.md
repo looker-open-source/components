@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
 - `GoogleFontsLoader`
 - `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
+- New `FeedbackOutline` icon artwork
 
 ### Changed
 
