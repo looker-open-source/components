@@ -25,17 +25,32 @@
  */
 
 import { Theme } from '../theme'
-import { CoreColors } from '../system/color'
+import { CoreColors, FontFamilyChoices, IntentColors } from '../system'
+import { generateFontFamilies } from '../utils/typography'
 import { generateColors } from './color'
 
-export const generateThemeFromCoreColors = (
+export const generateTheme = (
   theme: Theme,
-  coreColors: Partial<CoreColors>
+  overrides?: {
+    colors?: Partial<CoreColors & IntentColors>
+    fontFamilies?: Partial<FontFamilyChoices>
+  }
 ): Theme => {
-  const colors = generateColors(theme.colors, coreColors)
+  if (!overrides) {
+    return theme
+  }
+
+  const fonts = overrides.fontFamilies
+    ? generateFontFamilies(theme.fonts, overrides.fontFamilies)
+    : theme.fonts
+
+  const colors = overrides.colors
+    ? generateColors(theme.colors, overrides.colors)
+    : theme.colors
 
   return {
     ...theme,
     colors,
+    fonts,
   }
 }

@@ -76,8 +76,8 @@ export const Compare: FC = () => (
     <Editor
       name="THUNDER Salmon"
       keyColor="#ff3ca0"
-      backgroundColor="#000000"
-      textColor="#FFFFFF"
+      background="#000000"
+      text="#FFFFFF"
     >
       {demoSuite}
     </Editor>

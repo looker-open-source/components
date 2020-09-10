@@ -61,16 +61,19 @@ export interface InputColorProps extends Omit<InputTextProps, 'height'> {
 }
 
 const createEventWithHSVValue = (
-  color: SimpleHSV | string
+  color: SimpleHSV | string,
+  name?: string
 ): ChangeEvent<HTMLInputElement> => {
   return {
     currentTarget: {
+      name,
       value:
         typeof color === 'string'
           ? color
           : simpleHSVtoFormattedColorString(color),
     },
     target: {
+      name,
       value:
         typeof color === 'string'
           ? color
@@ -122,7 +125,7 @@ export const InputColorComponent = forwardRef(
 
     const callOnChange = (newColor?: SimpleHSV | string) => {
       if (!onChange || !newColor) return
-      onChange(createEventWithHSVValue(newColor))
+      onChange(createEventWithHSVValue(newColor, props.name))
     }
 
     const setColorState = (newColor: SimpleHSV) => {

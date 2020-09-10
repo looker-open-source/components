@@ -26,35 +26,34 @@
 
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
-import {
-  Colors,
-  CoreColors,
-  IntentColors,
-  SpecifiableColors,
-} from '../../system'
-import { generateSurfaceColors } from './surface'
-import { generateBlendColors } from './blend'
-import { generateStatefulColors } from './stateful'
-import { generateIntentDerivatives } from './intent'
+import { FontFamilyChoices } from '../system'
+import { defaultFontFallbacks } from '../tokens/typography/font_families'
 
-export const generateColors = (
-  themeColors: CoreColors & IntentColors,
-  customColors?: Partial<CoreColors & IntentColors>
-): Colors => {
-  const colors = { ...themeColors, ...pickBy(customColors, identity) }
-
-  const specifiableColors: SpecifiableColors = {
-    ...colors,
-    ...generateSurfaceColors(colors),
-    ...generateIntentDerivatives(colors),
+export const fontFacesToFamily = (
+  faces: string[] | string,
+  fallbacks: string[]
+) => {
+  if (typeof faces === 'string') {
+    faces = [faces]
   }
 
-  const blends = generateBlendColors(specifiableColors)
-  const statefulColors = generateStatefulColors(specifiableColors)
+  faces = [...faces, ...fallbacks]
 
-  return {
-    ...specifiableColors,
-    ...blends,
-    ...statefulColors,
+  return faces.map((face) => `${face}`).join(', ')
+}
+
+export const generateFontFamilies = (
+  defaultFonts: FontFamilyChoices,
+  customFonts?: Partial<FontFamilyChoices>
+) => {
+  const fontFamilies: FontFamilyChoices = {
+    ...defaultFonts,
+    ...pickBy(customFonts, identity),
   }
+
+  Object.entries(fontFamilies).map(([key, fontFace]) => {
+    fontFamilies[key] = fontFacesToFamily(fontFace, defaultFontFallbacks[key])
+  })
+
+  return fontFamilies
 }
