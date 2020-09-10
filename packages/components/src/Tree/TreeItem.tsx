@@ -205,7 +205,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
             <Text
               truncate={truncate}
               fontSize="xsmall"
-              pr={truncate ? 'medium' : 'none'}
+              pr={truncate ? 'large' : 'none'}
               pt="xxsmall"
               pb="xxsmall"
             >
