@@ -45,6 +45,8 @@ import {
 import { notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
+export type SelectValue = string | SelectOptionObject
+
 export type SelectOptionIcon = IconNames | IconProps['artwork']
 
 export interface SelectOptionObject
