@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `Chip`/`ChipButton` now call `onClick` on enter or space key
+- `Chip` / `ChipButton` now call `onClick` on enter or space key
 - `theme.fonts.*` updates
   - `body` added (now default for most components)
   - `brand` is now used just for `Button*`, `Heading` & `Tabs`
