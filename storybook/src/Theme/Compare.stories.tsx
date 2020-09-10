@@ -24,62 +24,24 @@
 
  */
 
-import {
-  Card,
-  CardContent,
-  Grid,
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from '@looker/components'
+import { Grid } from '@looker/components'
 import React, { FC } from 'react'
-import { Swatches } from './Swatches.stories'
-import { Suite } from './Suite.stories'
 import { Editor } from './Editor.stories'
-
-const demoSuite = (
-  <Card width="100%">
-    <CardContent>
-      <Tabs>
-        <TabList>
-          <Tab>Colors</Tab>
-          <Tab>Components</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <Swatches />
-          </TabPanel>
-          <TabPanel>
-            <Card raised>
-              <CardContent>
-                <Suite />
-              </CardContent>
-            </Card>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    </CardContent>
-  </Card>
-)
 
 export const Compare: FC = () => (
   <Grid m="xlarge" gap="large" columns={4}>
-    <Editor name="Default">{demoSuite}</Editor>
-    <Editor name="Generated" keyColor="#6C43E0">
-      {demoSuite}
-    </Editor>
-    <Editor name="Customer Blue" keyColor="#116DFF">
-      {demoSuite}
-    </Editor>
+    <Editor name="Default" />
+    <Editor name="Generated" keyColor="#6C43E0" />
+    <Editor name="Customer Blue" keyColor="#116DFF" />
     <Editor
       name="THUNDER Salmon"
       keyColor="#ff3ca0"
       background="#000000"
       text="#FFFFFF"
-    >
-      {demoSuite}
-    </Editor>
+    />
   </Grid>
 )
+
+export default {
+  title: 'Theme',
+}

@@ -96,7 +96,6 @@ export interface IntentDerivativeColors {
   /**
    * Link text color on interaction
    * Used for: Link :active, :focused and :hover states
-   * @default blue700
    */
   linkInteractive: string
 }

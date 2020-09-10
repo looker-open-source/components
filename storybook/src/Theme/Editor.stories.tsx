@@ -30,15 +30,24 @@ import {
   Fieldset,
   SpaceVertical,
   FieldSelect,
+  theme,
+  Card,
+  CardContent,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from '@looker/components'
 import { CoreColors, IntentColors } from '@looker/design-tokens'
-import React, { FC, FormEvent, useState, useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React, { FC, FormEvent, useState } from 'react'
+import { Swatches } from './Swatches'
+import { Suite } from './Suite'
 
 interface ThemeEditorProps
   extends Partial<IntentColors>,
     Omit<Partial<CoreColors>, 'key'> {
-  name: string
+  name?: string
   keyColor?: string
 }
 
@@ -56,14 +65,11 @@ const fontOptionsFormatted = fontOptions.map((font) => {
 })
 
 export const Editor: FC<ThemeEditorProps> = ({
-  children,
   name,
   keyColor,
   background,
   text,
 }) => {
-  const theme = useContext(ThemeContext)
-
   const [colors, setColors] = useState({
     background,
     key: keyColor,
@@ -132,8 +138,33 @@ export const Editor: FC<ThemeEditorProps> = ({
         fontFamilies={fontFamilies}
         colors={colors}
       >
-        {children}
+        <Card width="100%">
+          <CardContent>
+            <Tabs>
+              <TabList>
+                <Tab>Colors</Tab>
+                <Tab>Components</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <Swatches />
+                </TabPanel>
+                <TabPanel>
+                  <Card raised>
+                    <CardContent>
+                      <Suite />
+                    </CardContent>
+                  </Card>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </CardContent>
+        </Card>
       </ComponentsProvider>
     </SpaceVertical>
   )
+}
+
+export default {
+  title: 'Theme',
 }
