@@ -49,7 +49,7 @@ export const Text = styled(TextBase)<TextProps>`
   ${textTransform}
   width: 100%;
   ${({ truncate }) => `
-    display: inline-block;
+    display: block;
     white-space: ${truncate ? 'nowrap' : 'normal'};
     overflow: ${truncate ? 'hidden' : 'visible'};
     text-overflow: ellipsis;

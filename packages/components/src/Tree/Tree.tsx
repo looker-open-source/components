@@ -222,7 +222,6 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
       font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
         visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
-      padding: ${({ theme }) => theme.space.xxsmall};
       ${({ depth, theme }) => generateIndent(depth, theme)}
     }
   }
@@ -233,12 +232,10 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${TreeItemLabel} {
       background-color: transparent;
-      padding: ${({ theme }) => theme.space.none};
     }
   }
 
   ${TreeGroupLabel},
-  ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }

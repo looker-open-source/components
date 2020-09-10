@@ -206,6 +206,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
               truncate={truncate}
               fontSize="xsmall"
               pr={truncate ? 'medium' : 'none'}
+              pt="xxsmall"
+              pb="xxsmall"
             >
               {children}
             </Text>
@@ -247,7 +249,6 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   height: 100%;
   max-width: 100%;
   outline: none;
-  padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`

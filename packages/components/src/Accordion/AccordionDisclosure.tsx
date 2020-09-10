@@ -130,7 +130,6 @@ export const AccordionDisclosureStyle = styled.div<
   cursor: pointer;
   display: flex;
   outline: none;
-  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
   text-align: left;
   width: 100%;
 `
