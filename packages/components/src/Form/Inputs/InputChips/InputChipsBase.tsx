@@ -186,7 +186,7 @@ export const InputChipsBaseInternal = forwardRef(
     // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
     // on Chip and clear button and instead focus after onChipDelete / onClear
     // If mousedown/click is elsewhere on Chip, don't move focus b/c user is trying to select the Chip itself
-    function stopPropagation(e: MouseEvent) {
+    function stopPropagation(e: SyntheticEvent) {
       e.stopPropagation()
     }
 
@@ -199,7 +199,7 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleChipClick(value: string) {
-      return (e: MouseEvent) => {
+      return (e: MouseEvent | KeyboardEvent) => {
         // Focus hidden input for copy/paste & keyboard behaviors
         focusInput(hiddenInputRef)
         // Stop any onClick handlers (e.g. opening a SelectMulti list)
