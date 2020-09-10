@@ -131,6 +131,12 @@ const ChipJSX = forwardRef(
       e.stopPropagation()
     }
 
+    const handleLabelPrefix = (label: ReactNode) => {
+      console.log('chip value: ', label.split(':'))
+      // label.indexOf(':')
+      return label
+    }
+
     return (
       <ChipStyle
         {...clickableProps}
@@ -138,7 +144,7 @@ const ChipJSX = forwardRef(
         ref={ref}
         {...props}
       >
-        <ChipLabel truncate={truncate}>{children}</ChipLabel>
+        <ChipLabel truncate={truncate}>{handleLabelPrefix(children)}</ChipLabel>
         {onDelete && !disabled && (
           <IconButton
             disabled={disabled}

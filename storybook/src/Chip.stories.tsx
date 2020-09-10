@@ -53,20 +53,25 @@ export const ClickAndDelete = () => {
     <>
       <Heading>Chip</Heading>
       <Space>
-        <Chip onClick={handleClick}>Click Me</Chip>
-        <Chip disabled onClick={handleClick}>
-          Click Me (nothing happens)
-        </Chip>
+        <Chip>role: admin</Chip>
         <Chip onClick={handleClick} onDelete={handleDelete}>
           Delete Me
-        </Chip>
-        <Chip disabled onClick={handleClick} onDelete={handleDelete}>
-          Delete Me (nothing happens)
         </Chip>
       </Space>
     </>
   )
 }
+
+/* <Chip onClick={handleClick}>Click Me</Chip>
+      <Chip disabled onClick={handleClick}>
+        Click Me (nothing happens)
+      </Chip>
+      <Chip onClick={handleClick} onDelete={handleDelete}>
+        Delete Me
+      </Chip>
+      <Chip disabled onClick={handleClick} onDelete={handleDelete}>
+        Delete Me (nothing happens)
+      </Chip> */
 
 export const ChipButtons = () => {
   const handleClick = () => alert('Clicked!')
