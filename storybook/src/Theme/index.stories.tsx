@@ -26,7 +26,6 @@
 
 export * from './Compare.stories'
 export * from './Editor.stories'
-export * from './Fonts.stories'
 export * from './Suite.stories'
 export * from './Swatches.stories'
 

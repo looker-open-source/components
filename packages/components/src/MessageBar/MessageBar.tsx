@@ -105,7 +105,7 @@ const NoopComponent = () => <></>
  * type: string
  *   -- returns a ButtonTransparent with `primaryAction` as the label
  * type: object
- *   -- signifies a custom react element, and is directy rendered
+ *   -- signifies a custom react element, and is directly rendered
  * type: boolean
  *  -- true returns the default `X` dismiss button
  *  -- false returns NoopComponent
@@ -140,7 +140,7 @@ function getPrimaryActionButton(
  * type: string
  *   -- returns a ButtonTransparent with `secondaryAction` as the label
  * type: object
- *   -- signifies a custom react element, and is directy rendered
+ *   -- signifies a custom react element, and is directly rendered
  * type: boolean or undefined
  *  -- returns NoopComponent
  */

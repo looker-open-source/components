@@ -26,6 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import { theme } from '@looker/design-tokens'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { DialogContent } from './DialogContent'
 
@@ -54,6 +55,8 @@ describe('DialogContent', () => {
     expect(noBorder.parentNode).toHaveStyle('border-bottom: none')
 
     const hasBorder = getByText('Has border')
-    expect(hasBorder.parentNode).toHaveStyle('border-bottom: 1px solid #DEE1E5')
+    expect(hasBorder.parentNode).toHaveStyle(
+      `border-bottom: 1px solid ${theme.colors.ui2};`
+    )
   })
 })

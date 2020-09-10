@@ -36,8 +36,10 @@ import {
   white,
 } from '../../legacy/palette'
 import { IntentColors } from '../../system/color/specifiable'
-import { CoreColors } from '../../system'
-import { generateColors } from '../../utils/color'
+import { CoreColors, SpecifiableColors, Colors } from '../../system'
+import { generateSurfaceColors } from '../../utils/color/surface'
+import { generateIntentDerivatives } from '../../utils/color/intent'
+import { fallbackBlends, fallbackStateful } from './fallbacks'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -56,7 +58,26 @@ export const defaultIntentColors: IntentColors = {
   inform: blue500,
 }
 
-export const colors = generateColors({
+/**
+ * @TODO - Deprecate code below and replace with `generatorColors` function
+ * to create a single source-of-truth.
+ *
+ * export const colors = generateColors({
+ *   ...defaultCoreColors,
+ *   ...defaultIntentColors,
+ * })
+ *
+ */
+
+const specifiableColors: SpecifiableColors = {
   ...defaultCoreColors,
+  ...generateSurfaceColors(defaultCoreColors),
   ...defaultIntentColors,
-})
+  ...generateIntentDerivatives(defaultIntentColors),
+}
+
+export const colors: Colors = {
+  ...specifiableColors,
+  ...fallbackBlends,
+  ...fallbackStateful,
+}
