@@ -35,7 +35,7 @@ import {
 } from '../Combobox'
 import { InputChipsValidationProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
-import { SelectOptionObject, SelectOptions } from './SelectOptions'
+import { SelectOptionObject, SelectOptions, SelectValue } from './SelectOptions'
 import { getOptions } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
@@ -48,11 +48,11 @@ export interface SelectMultiProps
   /**
    * Values of the current selected option (controlled)
    */
-  values?: string[]
+  values?: SelectValue[]
   /**
    * Value of the initial option
    */
-  defaultValues?: string[]
+  defaultValues?: SelectValue[]
   /**
    * Handle an option being selected
    */

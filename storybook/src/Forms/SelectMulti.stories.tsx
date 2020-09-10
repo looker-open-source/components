@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useMemo, useState, useEffect } from 'react'
 import {
   Box,
   FieldSelectMulti,
@@ -41,6 +41,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  SelectOptionObject,
 } from '@looker/components'
 import { options1k } from './options1k'
 
@@ -159,7 +160,10 @@ export const CopyPaste = () => {
       <Space>
         <FieldSelectMulti
           label="To:"
-          options={emails}
+          options={[
+            ...emails,
+            { label: 'Meredith Dodge', value: 'mdodge@google.com' },
+          ]}
           validate={validateEmail}
           defaultValues={[
             'good.looker@google.com',
@@ -240,6 +244,19 @@ function TestIndicator() {
 }
 
 export function SelectMultiDemo() {
+  const [cheeseOptions, setCheeseOptions] = useState([] as SelectOptionObject[])
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      setCheeseOptions([
+        { label: 'Cheddar', value: 'cheddar' },
+        { label: 'Gouda', value: 'gouda' },
+        { label: 'Swiss', value: 'swiss' },
+      ])
+    })
+    return () => {
+      window.clearTimeout(t)
+    }
+  }, [])
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -318,11 +335,8 @@ export function SelectMultiDemo() {
           label="Label"
           placeholder="placeholder"
           description="this is the description"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
+          values={[{ label: 'Cheddar', value: 'cheddar' }]}
+          options={cheeseOptions}
         />
       </SpaceVertical>
       <Heading my="large">SelectMulti</Heading>
