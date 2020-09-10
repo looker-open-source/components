@@ -95,6 +95,12 @@ export const ActionListExample = () => {
     totalCount: 8,
   }
 
+  const filterActionsConfig = {
+    availableFilters: availableFilters,
+    columnsCustomizable: true,
+    fieldFilters: fieldFilters,
+  }
+
   return (
     <ActionListManager
       isLoading={boolean('isLoading', false)}
@@ -104,6 +110,9 @@ export const ActionListExample = () => {
       <ActionList
         select={boolean('Select Items', true) ? selectConfig : undefined}
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
+        filters={
+          boolean('Filter Actions', true) ? filterActionsConfig : undefined
+        }
         columns={columns}
         headerRowId="all-pdts"
       >
@@ -112,28 +121,3 @@ export const ActionListExample = () => {
     </ActionListManager>
   )
 }
-
-export const ActionListFiltersExample = () => (
-  <ActionList
-    filters={{
-      availableFilters: availableFilters,
-      fieldFilters: fieldFilters,
-    }}
-    columns={columns}
-  >
-    {items}
-  </ActionList>
-)
-
-export const ActionListFiltersColumn = () => (
-  <ActionList
-    filters={{
-      availableFilters: availableFilters,
-      columnsCustomizable: true,
-      fieldFilters: fieldFilters,
-    }}
-    columns={columns}
-  >
-    {items}
-  </ActionList>
-)
