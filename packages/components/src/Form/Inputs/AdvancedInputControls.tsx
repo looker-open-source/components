@@ -55,7 +55,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   showClear,
   disabled,
   isVisibleOptions,
-  hasOptions = true,
+  hasOptions,
   onClear,
   summary,
 }) => {
@@ -95,7 +95,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
         <Icon
           key="list-caret"
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
-          size={18}
+          size="small"
           color={disabled ? 'text1' : 'text2'}
           mr="xsmall"
         />
