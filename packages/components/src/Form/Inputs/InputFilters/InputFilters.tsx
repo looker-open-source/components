@@ -70,10 +70,8 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setValues([...values, newValues])
   }
 
-  const editFilter = (event: MouseEvent<HTMLSpanElement>) => {
-    // alert("You can't do that. Yet!")
-    console.log('event: ', event)
-    event.stopPropagation()
+  const editFilter = () => {
+    alert("You can't do that. Yet!")
   }
 
   return (
