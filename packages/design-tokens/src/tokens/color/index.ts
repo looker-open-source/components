@@ -36,7 +36,7 @@ import {
   white,
 } from '../../legacy/palette'
 import { IntentColors } from '../../system/color/specifiable'
-import { CoreColors, SpecifiableColors, Colors } from '../../system'
+import { Colors, CoreColors, SpecifiableColors } from '../../system'
 import { generateSurfaceColors } from '../../utils/color/surface'
 import { generateIntentDerivatives } from '../../utils/color/intent'
 import { fallbackBlends, fallbackStateful } from './fallbacks'
