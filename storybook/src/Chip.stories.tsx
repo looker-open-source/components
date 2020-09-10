@@ -38,6 +38,7 @@ export const All = () => (
     <ClickAndDelete />
     <ChipButtons />
     <Removable />
+    <ChipPrefix />
   </SpaceVertical>
 )
 
@@ -53,25 +54,32 @@ export const ClickAndDelete = () => {
     <>
       <Heading>Chip</Heading>
       <Space>
-        <Chip>role: admin</Chip>
+        <Chip onClick={handleClick}>Click Me</Chip>
+        <Chip disabled onClick={handleClick}>
+          Click Me (nothing happens)
+        </Chip>
         <Chip onClick={handleClick} onDelete={handleDelete}>
           Delete Me
+        </Chip>
+        <Chip disabled onClick={handleClick} onDelete={handleDelete}>
+          Delete Me (nothing happens)
         </Chip>
       </Space>
     </>
   )
 }
 
-/* <Chip onClick={handleClick}>Click Me</Chip>
-      <Chip disabled onClick={handleClick}>
-        Click Me (nothing happens)
-      </Chip>
-      <Chip onClick={handleClick} onDelete={handleDelete}>
-        Delete Me
-      </Chip>
-      <Chip disabled onClick={handleClick} onDelete={handleDelete}>
-        Delete Me (nothing happens)
-      </Chip> */
+export const ChipPrefix = () => {
+  return (
+    <>
+      <Heading>Prefix</Heading>
+      <Space>
+        <Chip prefix="role">admin</Chip>
+        <Chip prefix="color">purple,purple:neat</Chip>
+      </Space>
+    </>
+  )
+}
 
 export const ChipButtons = () => {
   const handleClick = () => alert('Clicked!')
