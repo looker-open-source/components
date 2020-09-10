@@ -30,6 +30,7 @@ import styled from 'styled-components'
 import flatMap from 'lodash/flatMap'
 import tail from 'lodash/tail'
 import compact from 'lodash/compact'
+import { lighten } from 'polished'
 import { IconButton } from '../../Button'
 import { Icon } from '../../Icon'
 import { Span } from '../../Text'
@@ -88,16 +89,15 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           icon="Close"
           label="Clear Field"
           onClick={onClear}
+          tooltipDisabled={disabled}
           disabled={disabled}
         />
       ),
       hasOptions && (
-        <Icon
-          key="list-caret"
+        <CaretIcon
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
-          size="small"
-          color={disabled ? 'text1' : 'text2'}
-          mr="xsmall"
+          key="list-caret"
+          disabled={disabled}
         />
       ),
     ])
@@ -119,4 +119,12 @@ const SearchControlDivider = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
   height: 70%;
   width: 1px;
+`
+
+const CaretIcon = styled(Icon).attrs({
+  mr: 'xxsmall',
+  size: 20,
+})`
+  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+  opacity: ${({ disabled }) => (disabled ? '0.75' : '1')};
 `
