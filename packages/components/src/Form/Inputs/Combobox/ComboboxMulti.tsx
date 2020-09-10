@@ -27,8 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import some from 'lodash/some'
 import every from 'lodash/every'
+import isMatch from 'lodash/isMatch'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
@@ -51,11 +51,10 @@ import { useScrollState } from './utils/useScrollState'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
-  optionsB: ComboboxOptionObject[],
-  compare: typeof some | typeof every
+  optionsB: ComboboxOptionObject[]
 ) {
-  return compare(optionsA, (optionA) =>
-    optionsB.find((optionB) => optionA.value === optionB.value)
+  return every(optionsA, (optionA) =>
+    optionsB.find((optionB) => isMatch(optionA, optionB))
   )
 }
 
@@ -103,8 +102,7 @@ export const ComboboxMultiInternal = forwardRef(
 
     if (
       values !== undefined &&
-      (options.length !== values.length ||
-        !compareOptions(options, values, every))
+      (options.length !== values.length || !compareOptions(options, values))
     ) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {

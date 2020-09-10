@@ -29,7 +29,6 @@ import {
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
-  SelectValue,
 } from '../SelectOptions'
 
 export function flattenOptions(options: SelectOptionProps[]) {
@@ -45,37 +44,28 @@ export function flattenOptions(options: SelectOptionProps[]) {
   )
 }
 
-function getOptionFlattenedOptions(
-  value: SelectValue,
-  flattenedOptions?: SelectOptionObject[]
-) {
-  const text = typeof value === 'object' ? value.value : value
+export function getOption(value?: string, options?: SelectOptionProps[]) {
+  const flattenedOptions = options && flattenOptions(options)
   const matchingOption = flattenedOptions?.find(
-    (option) => option.value === text
+    (option) => option.value === value
   )
-  if (typeof value === 'object' && !matchingOption) return value
   const label = matchingOption?.label
   // If this is a filterable Select and the current option has been filtered out
   // leave label out, so that the matching against the option saved in ComboboxContext won't fail
   const labelProps = label ? { label } : {}
-  return { ...labelProps, value: text }
-}
-
-export function getOption(value?: SelectValue, options?: SelectOptionProps[]) {
-  if (!value) return undefined
-  const flattenedOptions = options && flattenOptions(options)
-  return getOptionFlattenedOptions(value, flattenedOptions)
+  return value !== undefined ? { ...labelProps, value } : undefined
 }
 
 export function getOptions(
-  values?: SelectValue[],
+  values?: string[],
   options?: SelectOptionProps[]
-) {
+): SelectOptionObject[] | undefined {
   if (!values) return undefined
   const flattenedOptions = options && flattenOptions(options)
-  return values.map((value) =>
-    getOptionFlattenedOptions(value, flattenedOptions)
-  )
+  return values.map((value) => ({
+    label: getComboboxText(value, flattenedOptions),
+    value,
+  }))
 }
 
 export function compareOption(option: { value: string }, value: string) {
