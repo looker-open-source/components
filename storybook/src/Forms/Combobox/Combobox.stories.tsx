@@ -63,7 +63,7 @@ export function ComboboxDemo() {
       <SpaceVertical>
         <Heading>Controlled</Heading>
         <Combobox width={300} value={option} onChange={handleChange}>
-          <ComboboxInput />
+          <ComboboxInput isClearable freeInput />
           <ComboboxList>
             <ComboboxOption value="Apples" />
             <ComboboxOption value="Oranges" />

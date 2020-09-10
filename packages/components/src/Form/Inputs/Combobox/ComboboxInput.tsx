@@ -63,6 +63,11 @@ export interface ComboboxInputCommonProps {
    */
   autoComplete?: boolean
   isClearable?: boolean
+  /**
+   * Makes the inputted value the source of truth, whether it matches an option or not
+   * @default false
+   */
+  freeInput?: boolean
 }
 
 export interface ComboboxInputProps
@@ -85,6 +90,7 @@ export const ComboboxInputInternal = forwardRef(
       validationType,
       disabled,
       isClearable,
+      freeInput,
       ...rest
     } = props
 
@@ -176,10 +182,11 @@ export const ComboboxInputInternal = forwardRef(
         after={
           <AdvancedInputControls
             validationType={validationType}
+            showClear={!!(isClearable && inputValue)}
             onClear={handleClear}
             isVisibleOptions={isVisible}
             disabled={disabled}
-            renderSearchControls={!!(isClearable && inputValue)}
+            hasOptions={!freeInput}
           />
         }
         ref={ref}
