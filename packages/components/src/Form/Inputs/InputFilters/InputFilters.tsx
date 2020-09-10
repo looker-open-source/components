@@ -66,12 +66,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   }
 
   function handleFilterLookupChange(newValues: any) {
-    setFilterLookupName(newValues)
+    setFilterLookupName('')
     setValues([...values, newValues])
   }
 
   const editFilter = (event: MouseEvent<HTMLSpanElement>) => {
-    alert("You can't do that. Yet!")
+    // alert("You can't do that. Yet!")
+    console.log('event: ', event)
     event.stopPropagation()
   }
 
