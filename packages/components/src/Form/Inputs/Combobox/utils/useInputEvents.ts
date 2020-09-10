@@ -66,6 +66,7 @@ export function useInputEvents<
     | ComboboxMultiContextProps = ComboboxContextProps
 >(
   {
+    disabled,
     // highlights all the text in the box on click when true
     selectOnClick = false,
     readOnly = false,
@@ -129,6 +130,7 @@ export function useInputEvents<
 
   const handleMouseDownClick = useCallback(
     (e: ReactMouseEvent<HTMLElement>) => {
+      if (disabled) return
       // Without this, when clicking on a "clear" or "remove value" icon button
       // the list will flash open & closed (if closed)
       // or unnecessarily close (if open)
@@ -150,7 +152,7 @@ export function useInputEvents<
         selectText()
       }
     },
-    [persistSelectionPropRef, state, selectText, transition]
+    [disabled, persistSelectionPropRef, state, selectText, transition]
   )
 
   const handleMouseUp = useCallback(

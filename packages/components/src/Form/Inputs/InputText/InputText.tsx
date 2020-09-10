@@ -247,6 +247,7 @@ export const inputTextFocus = css`
 export const inputTextDisabled = css`
   background: ${(props) => props.theme.colors.ui1};
   color: ${(props) => props.theme.colors.text1};
+  cursor: default;
   &:hover {
     border-color: ${(props) => props.theme.colors.ui2};
   }
