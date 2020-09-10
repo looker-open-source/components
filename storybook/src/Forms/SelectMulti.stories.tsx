@@ -347,7 +347,7 @@ export function SelectMultiDemo() {
           label="Label"
           placeholder="placeholder"
           description="this is the description"
-          values={[{ label: 'Cheddar', value: 'cheddar' }]}
+          values={['cheddar']}
           options={cheeseOptions}
         />
       </SpaceVertical>

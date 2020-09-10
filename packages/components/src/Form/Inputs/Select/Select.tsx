@@ -39,7 +39,6 @@ import {
   SelectOptionObject,
   SelectOptions,
   SelectOptionsBaseProps,
-  SelectValue,
 } from './SelectOptions'
 import { SelectInputIcon } from './SelectInputIcon'
 import { getOption, getFirstOption } from './utils/options'
@@ -84,11 +83,11 @@ export interface SelectProps
   /**
    * Value of the current selected option (controlled)
    */
-  value?: SelectValue
+  value?: string
   /**
    * Value of the initial option
    */
-  defaultValue?: SelectValue
+  defaultValue?: string
   /**
    * Handle an option being selected
    */
