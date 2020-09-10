@@ -79,7 +79,3 @@ export const Sortable = () => {
 
   return useActionListSortManager(data, columns, generateActions)
 }
-
-export default {
-  title: 'ActionList',
-}

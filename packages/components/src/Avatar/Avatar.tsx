@@ -120,7 +120,6 @@ export const avatarCSS = css`
   align-items: center;
   border-radius: 100%;
 
-  ${({ role }: AvatarProps) => role === 'button' && 'cursor: pointer;'}
   display: grid;
   justify-items: center;
   overflow: hidden;

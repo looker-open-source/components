@@ -26,19 +26,18 @@
 
 import { ResponsiveValue } from 'styled-system'
 
-export type Bold = 'bold'
-export type ExtraBold = 'extraBold'
-export type Light = 'light'
 export type Normal = 'normal'
+export type Medium = 'medium'
 export type SemiBold = 'semiBold'
+export type Bold = 'bold'
 
-export type FontWeights = Bold | ExtraBold | Light | Normal | SemiBold
+export type FontWeights = Normal | Medium | SemiBold | Bold
 export type FontWeightRamp = Record<FontWeights, number>
 
 export interface FontWeightProps {
   /**
    * Use a @looker/components FontWeights to set weight
-   *  light, normal, semiBold, bold, extrabold,
+   *   normal, medium, semiBold, bold
    */
   fontWeight?: ResponsiveValue<FontWeights>
 }

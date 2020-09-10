@@ -209,7 +209,11 @@ const Detail = styled.div`
   padding-left: ${({ theme: { space } }) => space.large};
 `
 
-export const MenuItem = styled(MenuItemInternal)``
+export const MenuItem = styled(MenuItemInternal)`
+  ${Icon} {
+    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
+  }
+`
 
 interface IconPlaceholderProps extends SizeProps, SpaceProps {}
 

@@ -29,9 +29,8 @@ import { FontWeightRamp } from '../../system'
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
 export const fontWeights: FontWeightRamp = {
-  light: 300,
   normal: 400,
+  medium: 500,
   semiBold: 600,
   bold: 700,
-  extraBold: 800,
 }

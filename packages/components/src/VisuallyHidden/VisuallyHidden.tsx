@@ -24,12 +24,16 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const VisuallyHidden = styled.div`
+export const visuallyHiddenStyle = css`
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   overflow: hidden;
   position: absolute;
   width: 1px;
+`
+
+export const VisuallyHidden = styled.div`
+  ${visuallyHiddenStyle}
 `

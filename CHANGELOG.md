@@ -18,24 +18,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DividerVertical` component
 - Added `Lqa` icon artwork
 - `Select` option icons
+- `InputChips` and `SelectMulti` chip selection and copy-pasting
+- `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
+- `GoogleFontsLoader`
+- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
+
+### Changed
+
+- `theme.fonts.*` updates
+  - `body` added (now default for most components)
+  - `brand` is now used just for `Button*`, `Heading` & `Tabs`
+  - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
+- `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
+- `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
+- `Prompt` / `usePrompt` now _optionally_ support `clearOnCancel` behavior
 
 ### Fixed
 
-- `Tabs` fix for distributed so each tab takes up an equal amount of space.
-- `Select` value can now be cleared via external state change
-- `Select` name attribute is passed to the input
-- `MenuItem` now supports `description`
-- `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
-- Firefox layout fixes
-  - Update Space gap for consistent rendering across browsers
-  - Set min-width on `InputText` to fix `Select` layout bug at small sizes
-  - Resolve Slider style inconsistencies by rendering a div rather than the vanilla slider input
-- IE11 layout fixes
-  - RangeSlider value labels now move with the thumb controls
+- `Popover` cancel first click outside behavior not working with an `onMouseUp` used anywhere on the page
+- `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
+- `Select` overwriting search value with the current option value if the option's value and label are different
+- Miscellaneous Storybook fixes to silence console warnings
+
+###
+
+- `Tooltip` & `Popover` no longer support (optional) arrow indicator
+
+### Removed
+
+- `theme.colors.palette` is no longer available (`palette` _can_ be import from `@looker/design-tokens` but this is a legacy behavior and is not encouraged)
+- `prismTheme` is no longer published
+
+## [0.9.13] - 2020-08-24
+
+### Fixed
+
+- Horizontal padding for inputs using `autoResize` prop
+
+## [0.9.12] - 2020-08-24
+
+### Added
+
+- `DividerVertical` component
+- `Select` option icons
+- Icon:
+  - Added `LQA` icon artwork
 
 ### Changed
 
 - Spacing and density adjusted on `TreeGroup` label to better match density of `TreeItem`s
+
+### Fixed
+
+- `MenuItem` now supports `description`
+- `RangeSlider` value labels now move with the thumb controls in IE11
+- `Slider` style inconsistencies resolved by rendering a div rather than the vanilla slider input
+- `Select` name attribute is passed to the input
+- `Select` value can now be cleared via external state change
+- `Select` and `SelectMulti` performance issue causing poor rendering when inside a `Dialog`
+- `Select` layout bug corrected at small sizes (min-width on `InputText` to fix)
+- `Space` gap is now consistently rendered across browsers
+- `Tabs` fix for distributed so each tab takes up an equal amount of space.
 
 ## [0.9.11] - 2020-08-07
 

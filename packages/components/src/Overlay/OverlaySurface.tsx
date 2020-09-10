@@ -46,7 +46,6 @@ import React, {
 import styled from 'styled-components'
 import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
-import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
 export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
   color?: string
@@ -56,8 +55,6 @@ export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 }
 
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
-  arrow?: boolean
-  arrowProps: { ref: Ref<HTMLDivElement>; style: CSSProperties }
   children: ReactNode
   eventHandlers?: DOMAttributes<{}>
   placement: Placement
@@ -67,15 +64,7 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
 
 export const OverlaySurface = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
-    const {
-      arrow,
-      arrowProps,
-      children,
-      eventHandlers,
-      placement,
-      style,
-      ...innerProps
-    } = props
+    const { children, eventHandlers, placement, style, ...innerProps } = props
     const { closeModal } = useContext(DialogContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
@@ -91,16 +80,7 @@ export const OverlaySurface = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
-        <Inner {...innerProps}>
-          {children}
-          {arrow !== false && (
-            <OverlaySurfaceArrow
-              data-placement={placement}
-              {...innerProps}
-              {...arrowProps}
-            />
-          )}
-        </Inner>
+        <Inner {...innerProps}>{children}</Inner>
       </Outer>
     )
   }

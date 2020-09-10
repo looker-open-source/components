@@ -44,6 +44,7 @@ exports[`A FieldText with default label 1`] = `
 }
 
 .c5 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -68,12 +69,17 @@ exports[`A FieldText with default label 1`] = `
   font-size: 0.875rem;
 }
 
+.c5 input {
+  font-family: inherit;
+}
+
 .c5 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c5 .c8 input,
 .c5 .c8 span {
   padding: 0 0.5rem;
 }
@@ -90,6 +96,7 @@ exports[`A FieldText with default label 1`] = `
 }
 
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;
@@ -220,6 +227,7 @@ exports[`A FieldText with label inline 1`] = `
 }
 
 .c5 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -244,12 +252,17 @@ exports[`A FieldText with label inline 1`] = `
   font-size: 0.875rem;
 }
 
+.c5 input {
+  font-family: inherit;
+}
+
 .c5 .c9 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c5 .c9 input,
 .c5 .c9 span {
   padding: 0 0.5rem;
 }
@@ -266,6 +279,7 @@ exports[`A FieldText with label inline 1`] = `
 }
 
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 600;

@@ -69,7 +69,6 @@ describe('MenuItem', () => {
       <MenuItem
         disabled={true}
         href="https://google.com"
-        itemRole="link"
         onClick={callbackFn}
         target="_blank"
       >
@@ -84,7 +83,7 @@ describe('MenuItem', () => {
     const callbackFn = jest.fn()
 
     renderWithTheme(
-      <MenuItem disabled onClick={callbackFn}>
+      <MenuItem itemRole="button" disabled onClick={callbackFn}>
         Item
       </MenuItem>
     )

@@ -110,9 +110,32 @@ test('<Prompt/> with custom props', () => {
   expect(onSaveCallback).toHaveBeenCalledTimes(0)
 })
 
-test('<Prompt /> clears value after closing', () => {
+test('<Prompt /> does not clear value after closing', () => {
   const { getByText, getByPlaceholderText } = renderWithTheme(
     <Prompt {...requiredProps}>
+      {(open) => <Button onClick={open}>Open Prompt</Button>}
+    </Prompt>
+  )
+
+  const opener = getByText('Open Prompt')
+  fireEvent.click(opener)
+
+  const cancelButton = getByText('Cancel')
+  let input = getByPlaceholderText(requiredProps.inputLabel)
+
+  fireEvent.change(input, { target: { value: 'Hello World' } })
+  expect(input).toHaveValue('Hello World')
+  fireEvent.click(cancelButton)
+
+  fireEvent.click(opener)
+  // Note: Need to re-query for the input; not doing so results in stale value on the input element
+  input = getByPlaceholderText(requiredProps.inputLabel)
+  expect(input).toHaveValue('Hello World')
+})
+
+test('<Prompt /> clears value after closing with clearOnCancel', () => {
+  const { getByText, getByPlaceholderText } = renderWithTheme(
+    <Prompt clearOnCancel {...requiredProps}>
       {(open) => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )

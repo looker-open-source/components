@@ -2,6 +2,7 @@
 
 exports[`A Text component decorated 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   -webkit-text-decoration: line-through;
@@ -19,6 +20,7 @@ exports[`A Text component decorated 1`] = `
 
 exports[`A Text component resized 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 2.25rem;
   line-height: 2.75rem;
 }
@@ -33,6 +35,7 @@ exports[`A Text component resized 1`] = `
 
 exports[`A Text component text transformed 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   text-transform: uppercase;
@@ -48,8 +51,9 @@ exports[`A Text component text transformed 1`] = `
 
 exports[`A Text component weight 1`] = `
 .c0 {
-  font-weight: 700;
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
+  font-weight: 700;
   line-height: 1.5rem;
 }
 
@@ -64,6 +68,7 @@ exports[`A Text component weight 1`] = `
 
 exports[`A Text component with variant 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   color: #CC1F36;
@@ -79,6 +84,7 @@ exports[`A Text component with variant 1`] = `
 
 exports[`A Text component wrapped 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   overflow-wrap: break-word;
@@ -94,6 +100,7 @@ exports[`A Text component wrapped 1`] = `
 
 exports[`A default Text component 1`] = `
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
 }

@@ -182,13 +182,9 @@ export function useTooltip({
     }),
     [element, propsPlacement]
   )
-  const {
-    arrowProps,
-    placement,
-    popperInstanceRef,
-    style,
-    targetRef,
-  } = usePopper(usePopperProps)
+  const { placement, popperInstanceRef, style, targetRef } = usePopper(
+    usePopperProps
+  )
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
@@ -198,8 +194,6 @@ export function useTooltip({
     isOpen && content && !disabled ? (
       <Portal>
         <OverlaySurface
-          arrow={false}
-          arrowProps={arrowProps}
           eventHandlers={{ onMouseOut: handleMouseOut }}
           placement={placement}
           ref={ref}

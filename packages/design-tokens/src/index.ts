@@ -24,14 +24,16 @@
 
  */
 
-import * as palette from './tokens/color/palette'
-
 export * from './system'
 export * from './theme'
 export * from './GlobalStyle'
+export * from './GoogleFontsLoader'
+export {
+  constructFontStack,
+  defaultFonts,
+} from './tokens/typography/font_families'
 
-export { palette }
-export { prismTheme } from './prismTheme'
+export { palette } from './legacy'
 
 // Useful external utilities
 export * from './utils/animations'

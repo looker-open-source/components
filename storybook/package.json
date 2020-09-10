@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "0.9.11",
+  "version": "0.9.13",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -9,20 +9,20 @@
     "build": "build-storybook -c .storybook -o ../docs/static/storybook"
   },
   "dependencies": {
-    "@looker/components": "^0.9.11",
-    "@looker/design-tokens": "^0.9.10",
-    "@looker/icons": "^0.9.7",
-    "@storybook/react": "^6.0.16",
+    "@looker/components": "^0.9.13",
+    "@looker/design-tokens": "^0.9.12",
+    "@looker/icons": "^0.9.12",
+    "@storybook/react": "^6.0.20",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-storybook-addon-props-combinations": "^1.1.0",
     "styled-components": "4"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.0.16",
+    "@storybook/addon-a11y": "^6.0.20",
     "@storybook/addon-backgrounds": "^6.0.16",
     "@storybook/addon-knobs": "^6.0.16",
-    "@storybook/addon-storysource": "^6.0.16",
+    "@storybook/addon-storysource": "^6.0.21",
     "babel-loader": "^8.1.0"
   }
 }

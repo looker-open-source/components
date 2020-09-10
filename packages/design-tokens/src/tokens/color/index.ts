@@ -24,10 +24,6 @@
 
  */
 
-import { IntentColors } from '../../system/color/specifiable'
-import { CoreColors, Colors, SpecifiableColors } from '../../system'
-import { generateSurfaceColors } from '../../utils/color/surface'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
 import {
   blue500,
   blue600,
@@ -39,7 +35,11 @@ import {
   red500,
   yellow500,
   white,
-} from './palette'
+} from '../../legacy/palette'
+import { IntentColors } from '../../system/color/specifiable'
+import { CoreColors, Colors, SpecifiableColors } from '../../system'
+import { generateSurfaceColors } from '../../utils/color/surface'
+import { fallbackBlends, fallbackStateful } from './fallbacks'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

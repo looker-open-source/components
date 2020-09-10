@@ -130,12 +130,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure
-        ref={disclosureRef}
-        fontWeight={visuallyAsBranch ? 'normal' : 'semiBold'}
-      >
-        {treeItem}
-      </AccordionDisclosure>
+      <AccordionDisclosure ref={disclosureRef}>{treeItem}</AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
   )
@@ -154,6 +149,7 @@ const TreeLayout: FC<TreeProps> = ({
         border={hasBorder}
         depth={depth}
         hovered={isHovered}
+        visuallyAsBranch={visuallyAsBranch}
       >
         {innerAccordion}
       </TreeStyle>
@@ -203,6 +199,7 @@ interface TreeStyleProps {
   border?: boolean
   depth: number
   hovered: boolean
+  visuallyAsBranch?: boolean
 }
 
 export const TreeStyle = styled.div<TreeStyleProps>`
@@ -217,6 +214,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
+      font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
+        visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
       height: 25px;
       padding: ${({ theme }) => theme.space.xxsmall};
       ${({ depth, theme }) => generateIndent(depth, theme)}

@@ -24,55 +24,5 @@
 
  */
 
-import {
-  ComponentsProvider,
-  FieldText,
-  Fieldset,
-  SpaceVertical,
-  Heading,
-  Paragraph,
-  theme,
-} from '@looker/components'
-import React, { FC, FormEvent, useState } from 'react'
-
-export const Font: FC = () => {
-  const [brand, setBrand] = useState('Comic Sans MS')
-
-  const handleBrandChange = (event: FormEvent<HTMLInputElement>) => {
-    setBrand(event.currentTarget.value)
-  }
-
-  const actualTheme = {
-    ...theme,
-    fonts: {
-      ...theme.fonts,
-      brand,
-    },
-  }
-
-  // const coreColors = useState<CoreColors>(theme)
-
-  return (
-    <SpaceVertical>
-      <Fieldset legend={name}>
-        <FieldText
-          label="Brand Font Face"
-          value={brand}
-          onChange={handleBrandChange}
-        />
-      </Fieldset>
-
-      <pre>{JSON.stringify(theme, null, 1)}</pre>
-
-      <ComponentsProvider theme={actualTheme}>
-        <Heading>A Header</Heading>
-        <Paragraph>Paragraph text.</Paragraph>
-      </ComponentsProvider>
-    </SpaceVertical>
-  )
-}
-
-export default {
-  component: Font,
-  title: 'Theme',
-}
+import * as palette from './palette'
+export { palette }

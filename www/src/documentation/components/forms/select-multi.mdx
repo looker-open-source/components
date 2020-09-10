@@ -45,61 +45,6 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
 </Space>
 ```
 
-## showCreate
-
-As with `Select`, the `isFilterable` prop allows the user to type in the input, triggering the `onFilter` callback,
-which should be used to narrow the options passed to the `SelectMulti`.
-
-When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel`(defaults to 'Create "[input value]"')
-to allow the user to free-form values.
-
-```jsx
-;() => {
-  const [values, setValues] = React.useState([])
-  const [searchTerm, setSearchTerm] = React.useState('')
-
-  function handleChange(newValues) {
-    setValues(newValues)
-  }
-  function handleFilter(term) {
-    setSearchTerm(term)
-  }
-
-  const newOptions = React.useMemo(() => {
-    const options = [
-      { value: 'Apples' },
-      { value: 'Bananas' },
-      { value: 'Oranges' },
-      { value: 'Pineapples' },
-      { value: 'Kiwis' },
-    ]
-    if (searchTerm === '') return options
-    return options.filter((option) => {
-      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
-  }, [searchTerm])
-
-  function formatCreateLabel(inputValue) {
-    return `Add new fruit: ${inputValue}`
-  }
-
-  return (
-    <SelectMulti
-      options={newOptions}
-      aria-label="Fruits"
-      placeholder="Controlled, searchable, creatable"
-      isFilterable
-      values={values}
-      onChange={handleChange}
-      onFilter={handleFilter}
-      showCreate
-      formatCreateLabel={formatCreateLabel}
-      createOptionPosition="first"
-    />
-  )
-}
-```
-
 ## closeOnSelect
 
 With the `closeOnSelect` prop, the option list closes after an option is selected.
@@ -126,25 +71,48 @@ With the `closeOnSelect` prop, the option list closes after an option is selecte
 
 Use the `freeInput` prop when the user needs to be able to easily enter values not found in the list of options.
 This enables the inputting behavior of [`InputChips`](/components/forms/input-chips/) where values are separated
-by the enter key, comma, or tab or newline character when pasting.
+by the enter key, comma, or tab or newline character when pasting. This prop also supports accepting values copy-pasted in from another `SelectMulti`.
+
+Use the `validate` callback to ensure that values entered via `freeInput` are valid, and the `onValidationFail` and `onDuplicate`
+callbacks to handle invalid values.
 
 ```jsx
-<SelectMulti
-  options={[
-    { value: 'Cheddar' },
-    { value: 'Gouda' },
-    { value: 'Swiss' },
-    { value: 'Feta' },
-    { value: 'Mascarpone' },
-    { value: 'Brie' },
-    { value: 'Mozzarella' },
-    { value: 'Cotija' },
-    { value: 'Pepperjack' },
-  ]}
-  isFilterable
-  placeholder="Type values or select from the list"
-  freeInput
-/>
+;() => {
+  function validate(value) {
+    return value.charAt(0).toUpperCase() === value.charAt(0)
+  }
+  const [message, setMessage] = React.useState('')
+  function handleValidationFail(values) {
+    setMessage(`Please capitalize: ${values.join(', ')}`)
+  }
+  function resetMessage() {
+    setMessage('')
+  }
+  return (
+    <SpaceVertical>
+      <SelectMulti
+        options={[
+          { value: 'Cheddar' },
+          { value: 'Gouda' },
+          { value: 'Swiss' },
+          { value: 'Feta' },
+          { value: 'Mascarpone' },
+          { value: 'Brie' },
+          { value: 'Mozzarella' },
+          { value: 'Cotija' },
+          { value: 'Pepperjack' },
+        ]}
+        isFilterable
+        onFilter={resetMessage}
+        placeholder="Type values or select from the list"
+        freeInput
+        validate={validate}
+        onValidationFail={handleValidationFail}
+      />
+      <Paragraph>{message}</Paragraph>
+    </SpaceVertical>
+  )
+}
 ```
 
 ## removeOnBackspace

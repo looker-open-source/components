@@ -54,7 +54,6 @@ test('Button accepts a className prop', () => {
   const { container } = renderWithTheme(
     <Button className="foo">button with class</Button>
   )
-
   expect(container.firstChild).toHaveClass('foo')
 })
 

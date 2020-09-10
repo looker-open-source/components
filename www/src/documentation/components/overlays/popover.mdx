@@ -35,11 +35,9 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs]
 </Popover>
 ```
 
-## Placement and Arrow
+## Placement
 
 Placement can be adjusted with the `placement` prop. Valid positions are `top`, `left`, `right` and `bottom`, each can be augmented with -`start` or `-end` which places the edge of the popover at the start or end of the target.
-
-If you want to show the popover arrow you can set the prop `arrow` prop to true.
 
 ```jsx
 ;() => {
@@ -71,7 +69,7 @@ If you want to show the popover arrow you can set the prop `arrow` prop to true.
         <Popover content={popoverContent} placement="right-end">
           <Button>Right End</Button>
         </Popover>
-        <Popover content={popoverContent} placement="top-start" arrow={true}>
+        <Popover content={popoverContent} placement="top-start">
           <Button>Top Start</Button>
         </Popover>
       </Space>

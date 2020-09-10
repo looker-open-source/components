@@ -301,10 +301,15 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
   ${space}
   ${inputCSS}
 
+  input {
+    font-family: inherit;
+  }
+
   ${InlineInputTextBase} {
     height: 100%;
     max-width: 100%;
     width: 100%;
+    input,
     span {
       padding: 0 ${({ theme: { space } }) => space.xsmall};
     }

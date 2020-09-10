@@ -29,7 +29,7 @@ module.exports = {
     'import/external-module-folders': ['node_modules', 'packages'],
     'import/resolver': {
       typescript: {
-        directory: './tsconfig.json',
+        project: './tsconfig.json',
       },
     },
   },

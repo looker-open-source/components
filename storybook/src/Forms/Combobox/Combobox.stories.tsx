@@ -39,6 +39,7 @@ import {
   Space,
   SpaceVertical,
 } from '@looker/components'
+export { ListLayoutDemo } from './ListLayout.stories'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
   isActive,

@@ -40,7 +40,7 @@ export const All = () => (
 
 export default {
   component: All,
-  title: 'Buttons/ButtonGroup',
+  title: 'Buttons/ButtonToggle',
 }
 
 export const Basic = () => {

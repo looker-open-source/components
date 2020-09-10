@@ -88,7 +88,8 @@ export const buttonCSS = css<ButtonBaseProps>`
   border-radius: ${({ theme }) => theme.radii.medium};
   cursor: pointer;
   display: inline-flex;
-  font-weight: 600;
+  font-family: ${({ theme }) => theme.fonts.brand};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
   justify-content: center;
   line-height: 1;
   outline: none;

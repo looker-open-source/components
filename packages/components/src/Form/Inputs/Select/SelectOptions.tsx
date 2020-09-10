@@ -33,6 +33,7 @@ import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
 import {
+  ComboboxContext,
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
@@ -139,7 +140,12 @@ export function SelectOptionWithDescription({
 }: SelectOptionObject) {
   return (
     <Box>
-      <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
+      <Heading
+        fontFamily="body"
+        fontSize="small"
+        fontWeight="semiBold"
+        pb="xxsmall"
+      >
         <ComboboxOptionText />
       </Heading>
       <Paragraph variant="subdued" fontSize="small">
@@ -155,6 +161,7 @@ const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
 `
 
 SelectOptionGroupTitle.defaultProps = {
+  fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
   px: 'xsmall',
@@ -224,9 +231,6 @@ export interface SelectOptionsBaseProps {
    * Render only the options visible in the scroll window
    */
   windowedOptions?: boolean
-}
-
-export interface SelectMultiOptionsBaseProps {
   /**
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
    * When `true`, notInOptions is used to show/hide and can be included in a custom function
@@ -239,9 +243,7 @@ export interface SelectMultiOptionsBaseProps {
   formatCreateLabel?: (inputText: string) => ReactNode
 }
 
-export interface SelectOptionsProps
-  extends SelectOptionsBaseProps,
-    SelectMultiOptionsBaseProps {
+export interface SelectOptionsProps extends SelectOptionsBaseProps {
   isMulti?: boolean
 }
 
@@ -273,10 +275,11 @@ export function SelectOptions({
   )
 
   const createOption = isFilterable && showCreate && (
-    <SelectMultiCreateOption
+    <SelectCreateOption
       options={options}
       formatLabel={formatCreateLabel}
       noOptions={noOptions}
+      isMulti={isMulti}
       key="create"
     />
   )
@@ -325,39 +328,43 @@ export function SelectOptions({
   )
 }
 
-interface SelectMultiCreateOptionProps {
+interface SelectCreateOptionProps {
   options?: SelectOptionProps[]
   noOptions: ReactNode
   formatLabel?: (inputText: string) => ReactNode
+  isMulti?: boolean
 }
 
-function SelectMultiCreateOption({
+function SelectCreateOption({
   options,
   noOptions,
   formatLabel,
-}: SelectMultiCreateOptionProps) {
-  const {
-    data: { inputValue, options: currentOptions },
-  } = useContext(ComboboxMultiContext)
+  isMulti,
+}: SelectCreateOptionProps) {
+  const { data } = useContext(ComboboxContext)
+  const { data: dataMulti } = useContext(ComboboxMultiContext)
+
+  const inputValue = isMulti ? dataMulti.inputValue : data.inputValue
+  const currentOptions = isMulti
+    ? dataMulti.options
+    : data.option
+    ? [data.option]
+    : []
 
   const shouldShow = useMemo(() => {
     return notInOptions(currentOptions, options, inputValue)
   }, [currentOptions, options, inputValue])
 
-  if (!inputValue) return null
-
-  if (!shouldShow) {
+  if (!shouldShow || !inputValue) {
     if (!options || options.length === 0) return <>{noOptions}</>
     return null
   }
 
+  const OptionComponent = isMulti ? ComboboxMultiOption : ComboboxOption
+
   return (
-    <ComboboxMultiOption
-      value={inputValue}
-      highlightText={false}
-      indicator={false}
-    >
+    <OptionComponent value={inputValue} highlightText={false} indicator={false}>
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
-    </ComboboxMultiOption>
+    </OptionComponent>
   )
 }

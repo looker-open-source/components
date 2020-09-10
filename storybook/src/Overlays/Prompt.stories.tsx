@@ -23,18 +23,10 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { Button, Prompt, Space, usePrompt } from '@looker/components'
-
-export const All = () => (
-  <Space>
-    <Basic />
-    <Hook />
-  </Space>
-)
+import React, { FC, useState } from 'react'
+import { Button, Prompt, usePrompt } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Overlays/Prompt',
 }
 
@@ -66,15 +58,23 @@ export const Basic: FC = () => {
 }
 
 export const Hook = () => {
+  const [tracking, setTracking] = useState('pizza')
+
   const [prompt, open] = usePrompt({
+    clearOnCancel: true,
+    defaultValue: tracking,
     inputLabel: 'Name of Cheese',
-    onSave: (value: string) => alert(`You chose ${value}`),
+    onSave: (value: string, close: () => void) => {
+      close()
+      setTracking(`${value} saved`)
+    },
     saveLabel: 'Save',
     title: 'Choose a cheese!',
   })
 
   return (
     <>
+      <p>Value: {tracking}</p>
       {prompt}
       <Button onClick={open}>usePrompt</Button>
     </>

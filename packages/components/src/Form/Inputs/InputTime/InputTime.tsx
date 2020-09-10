@@ -532,6 +532,7 @@ const StyledInput = styled.input.attrs({
   type: 'text',
 })`
   ${innerInputStyle}
+  font-family: inherit;
   font-size: ${(props) => props.theme.fontSizes.small};
   height: 34px;
   line-height: ${({ theme }) => theme.lineHeights.medium};

@@ -44,6 +44,7 @@ exports[`InputText default 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -68,12 +69,17 @@ exports[`InputText default 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -144,6 +150,7 @@ exports[`InputText should accept disabled 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -170,12 +177,17 @@ exports[`InputText should accept disabled 1`] = `
   color: #939BA5;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -251,6 +263,7 @@ exports[`InputText should accept readOnly 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -275,12 +288,17 @@ exports[`InputText should accept readOnly 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -352,6 +370,7 @@ exports[`InputText should accept required 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -376,12 +395,17 @@ exports[`InputText should accept required 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -453,6 +477,7 @@ exports[`InputText with a placeholder 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -477,12 +502,17 @@ exports[`InputText with a placeholder 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -554,6 +584,7 @@ exports[`InputText with a value 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -578,12 +609,17 @@ exports[`InputText with a value 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -655,6 +691,7 @@ exports[`InputText with aria-describedby 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -679,12 +716,17 @@ exports[`InputText with aria-describedby 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }
@@ -756,6 +798,7 @@ exports[`InputText with name and id 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -780,12 +823,17 @@ exports[`InputText with name and id 1`] = `
   font-size: 0.875rem;
 }
 
+.c0 input {
+  font-family: inherit;
+}
+
 .c0 .c2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
+.c0 .c2 input,
 .c0 .c2 span {
   padding: 0 0.5rem;
 }

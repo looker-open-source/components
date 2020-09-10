@@ -45,8 +45,3 @@ export const Swatches = () => {
 
   return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
 }
-
-export default {
-  component: Swatches,
-  title: 'Theme',
-}

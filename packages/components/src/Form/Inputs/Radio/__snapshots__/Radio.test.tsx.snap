@@ -2,6 +2,7 @@
 
 exports[`Radio checked set to false 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -26,6 +27,7 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -83,6 +85,7 @@ exports[`Radio checked set to false 1`] = `
 
 exports[`Radio checked set to true 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -107,6 +110,7 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -164,6 +168,7 @@ exports[`Radio checked set to true 1`] = `
 
 exports[`Radio default 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -188,6 +193,7 @@ exports[`Radio default 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -244,6 +250,7 @@ exports[`Radio default 1`] = `
 
 exports[`Radio should accept disabled 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -295,6 +302,7 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -353,6 +361,7 @@ exports[`Radio should accept disabled 1`] = `
 
 exports[`Radio with aria-describedby 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -377,6 +386,7 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
@@ -461,6 +471,7 @@ exports[`Radio with aria-describedby 1`] = `
 
 exports[`Radio with name and id 1`] = `
 .c2 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   background-color: currentColor;
   border: solid 1px #DEE1E5;
   border-color: currentColor;
@@ -485,6 +496,7 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 {
+  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
