@@ -135,7 +135,7 @@ const ChipJSX = forwardRef(
 
     const PrefixLabel = (
       <>
-        <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>
+        <ChipLabel fontWeight="normal">{prefix} </ChipLabel>
         <ChipLabel truncate={truncate}> {children}</ChipLabel>
       </>
     )
