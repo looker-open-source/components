@@ -45,6 +45,7 @@ import {
 import Omit from 'lodash/omit'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
+import { Text } from '../Text'
 import { useHovered } from '../utils/useHovered'
 import {
   HoverDisclosureContext,
@@ -91,6 +92,10 @@ export interface TreeItemProps
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
+  /**
+   * Prevent text wrapping on long labels and instead render truncated text
+   **/
+  truncate?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -98,6 +103,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   className,
   gapSize = 'xsmall',
   selected,
+  truncate,
   ...props
 }) => {
   const treeContext = useContext(TreeContext)
@@ -195,7 +201,15 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
-          <FlexItem flex="1">{children}</FlexItem>
+          <FlexItem flex="1" width="100%">
+            <Text
+              truncate={truncate}
+              fontSize="xsmall"
+              pr={truncate ? 'medium' : 'none'}
+            >
+              {children}
+            </Text>
+          </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
         {detailAccessory && detail}
@@ -218,7 +232,6 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
   cursor: pointer;
-  height: 25px;
   outline: none;
 `
 
@@ -231,8 +244,8 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
   height: 100%;
+  max-width: 100%;
   outline: none;
   padding: ${({ theme: { space } }) => space.xxsmall};
 `

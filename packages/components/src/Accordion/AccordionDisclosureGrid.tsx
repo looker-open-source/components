@@ -43,6 +43,7 @@ const Indicator = styled.div`
 `
 const Label = styled.div`
   grid-area: children;
+  width: 100%;
 `
 
 const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({

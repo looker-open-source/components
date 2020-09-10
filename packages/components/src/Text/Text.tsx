@@ -37,11 +37,23 @@ export interface TextProps
   extends TextBaseProps,
     TextTransformProps,
     TextVariantProps,
-    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {
+  /**
+   * Prevent text wrapping on long labels and instead render truncated text
+   **/
+  truncate?: boolean
+}
 
 export const Text = styled(TextBase)<TextProps>`
   ${textVariant}
   ${textTransform}
+  width: 100%;
+  ${({ truncate }) => `
+    display: inline-block;
+    white-space: ${truncate ? 'nowrap' : 'normal'};
+    overflow: ${truncate ? 'hidden' : 'visible'};
+    text-overflow: ellipsis;
+  `}
 `
 
 Text.defaultProps = { fontSize: 'medium' }
