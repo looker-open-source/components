@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DividerVertical` component
 - Added `Lqa` icon artwork
 - `Select` option icons
+- `useClickable` hook
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
 - `GoogleFontsLoader`
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Chip` / `ChipButton` now call `onClick` on enter or space key
 - `theme.fonts.*` updates
   - `body` added (now default for most components)
   - `brand` is now used just for `Button*`, `Heading` & `Tabs`
@@ -38,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Popover` cancel first click outside behavior not working with an `onMouseUp` used anywhere on the page
 - `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
 - `Select` overwriting search value with the current option value if the option's value and label are different
+- Allow `Icon` colors to be modified when used inside a `MenuItem` detail prop.
 - Miscellaneous Storybook fixes to silence console warnings
 
 ###

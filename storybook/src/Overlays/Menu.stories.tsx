@@ -40,6 +40,8 @@ import {
   IconButton,
   MenuContext,
   Divider,
+  Text,
+  Icon,
 } from '@looker/components'
 
 export const All = () => (
@@ -151,7 +153,7 @@ export const IconSpace = () => (
 
     <Divider />
     <MenuList compact>
-      <MenuGroup label="Icon and Artwork">
+      <MenuGroup label="Icon, Artwork, and Detail">
         <MenuItem icon="ChartPie">Icon</MenuItem>
         <MenuItem
           iconArtwork={
@@ -168,6 +170,37 @@ export const IconSpace = () => (
           }
         >
           Artwork
+        </MenuItem>
+        <MenuItem
+          icon="Account"
+          detail={
+            <>
+              <Text fontSize="small" mr="xsmall" variant="secondary">
+                Online
+              </Text>
+              <Icon
+                name="Chat"
+                verticalAlign="middle"
+                color="positive"
+                size={16}
+              />
+            </>
+          }
+        >
+          Chat
+        </MenuItem>
+        <MenuItem
+          icon="Account"
+          detail={
+            <>
+              <Text fontSize="small" mr="xsmall" variant="secondary">
+                Offline
+              </Text>
+              <Icon name="Chat" verticalAlign="middle" size={16} />
+            </>
+          }
+        >
+          Chat
         </MenuItem>
       </MenuGroup>
     </MenuList>
