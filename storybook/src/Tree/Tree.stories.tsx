@@ -156,8 +156,8 @@ export const BorderRadiusOverride = () => (
 )
 
 export const LongLabels = () => (
-  <Tree label="long-labels" icon="ExploreOutline" defaultOpen>
-    <Tree label="Users" icon="VisibilityOutline" defaultOpen>
+  <Tree label="Tree with long labels " icon="ExploreOutline" defaultOpen>
+    <Tree label="Wrapping next" icon="VisibilityOutline" defaultOpen>
       <Tree
         label="Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit. Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
         icon="Table"
@@ -179,12 +179,15 @@ export const LongLabels = () => (
           2000 years old.
         </TreeItem>
       </Tree>
+    </Tree>
+    <Tree label="Truncated text" icon="VisibilityOutline" defaultOpen>
       <Tree
         label="Users Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
         icon="Table"
+        truncateLabel
         defaultOpen
       >
-        <TreeItem icon="IdeDimension">
+        <TreeItem icon="IdeDimension" truncate>
           Vivamus vitae mauris et erat sagittis tempus. Mauris euismod aliquet
           arcu ut viverra. It has roots in a piece of classical Latin literature
           from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
@@ -193,13 +196,13 @@ export const LongLabels = () => (
           going through the cites of the word in classical literature,
           discovered the undoubtable source.
         </TreeItem>
-        <TreeItem icon="IdeDimension">
+        <TreeItem icon="IdeDimension" truncate>
           Quisque euismod risus quis sapien luctus rutrum. Cras a dui luctus,
           dictum elit vel, pellentesque nisl. Contrary to popular belief, Lorem
           Ipsum is not simply random text. It has roots in a piece of classical
           Latin literature from 45 BC, making it over 2000 years old.
         </TreeItem>
-        <TreeItem icon="IdeDimensionGroup">
+        <TreeItem icon="IdeDimensionGroup" truncate>
           Curabitur et nulla tempor, vestibulum mauris nec, suscipit turpis.
         </TreeItem>
       </Tree>
