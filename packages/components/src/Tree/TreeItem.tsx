@@ -201,14 +201,14 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
-          <FlexItem flex="1" width="100%">
-            <Text
-              truncate={truncate}
-              fontSize="xsmall"
-              pr={truncate ? 'large' : 'none'}
-              pt="xxsmall"
-              pb="xxsmall"
-            >
+          <FlexItem
+            flex="1"
+            width="100%"
+            pr={truncate ? 'large' : 'none'}
+            pt="xxsmall"
+            pb="xxsmall"
+          >
+            <Text truncate={truncate} fontSize="xsmall">
               {children}
             </Text>
           </FlexItem>

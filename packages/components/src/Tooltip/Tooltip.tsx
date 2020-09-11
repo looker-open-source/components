@@ -73,6 +73,11 @@ export interface UseTooltipProps {
    */
   width?: string
   /**
+   * Specify a fixed max-width.
+   * @default none
+   */
+  maxWidth?: string
+  /**
    * Specify the text alignment within tooltips.
    * @default center
    */
@@ -123,6 +128,7 @@ export function useTooltip({
   content,
   isOpen: initializeOpen = false,
   width,
+  maxWidth,
   textAlign,
   disabled,
   surfaceStyles,
@@ -208,6 +214,7 @@ export function useTooltip({
             role="tooltip"
             id={guaranteedId}
             width={width}
+            maxWidth={maxWidth}
             textAlign={textAlign}
           >
             {content}

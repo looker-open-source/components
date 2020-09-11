@@ -23,13 +23,14 @@
  SOFTWARE.
 
  */
-
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
+import { Tooltip } from '../Tooltip'
 import { textVariant, TextVariantProps } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'
 
@@ -44,16 +45,50 @@ export interface TextProps
   truncate?: boolean
 }
 
-export const Text = styled(TextBase)<TextProps>`
+// const isTextTruncated = (e: any) => e.offsetWidth < e.scrollWidth
+
+export const Text: FC<TextProps> = ({ children, truncate, ...restProps }) => {
+  if (!truncate) {
+    /*
+     * standard static span element
+     */
+    return <StaticText {...restProps}>{children}</StaticText>
+  }
+
+  /*
+   * truncated text layout
+   */
+  return (
+    <Tooltip
+      content={children}
+      placement="top-start"
+      width="auto"
+      maxWidth="80%"
+      surfaceStyles={{
+        backgroundColor: 'background',
+        border: '1px solid',
+        borderColor: 'ui3',
+        color: 'text3',
+      }}
+    >
+      <TruncatedText {...restProps}>{children}</TruncatedText>
+    </Tooltip>
+  )
+}
+
+const StaticText = styled(TextBase)`
   ${textVariant}
   ${textTransform}
+`
+
+const TruncatedText = styled(TextBase)`
+  ${textVariant}
+  ${textTransform}
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   width: 100%;
-  ${({ truncate }) => `
-    display: block;
-    white-space: ${truncate ? 'nowrap' : 'normal'};
-    overflow: ${truncate ? 'hidden' : 'visible'};
-    text-overflow: ellipsis;
-  `}
 `
 
 Text.defaultProps = { fontSize: 'medium' }
