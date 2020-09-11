@@ -70,6 +70,7 @@ export interface ComboboxContextProps<
   indicatorPropRef?: MutableRefObject<ComboboxOptionIndicatorProps['indicator']>
   isVisible?: boolean
   openOnFocus?: boolean
+  openOnClick?: boolean
   listScrollPosition?: number
   setListScrollPosition?: Dispatch<SetStateAction<number>>
   listClientRect?: DOMRect

@@ -24,86 +24,129 @@
 
  */
 
-import React, {
-  forwardRef,
-  Ref,
-  useEffect,
-  useState,
-  FormEvent,
-  MouseEvent,
-} from 'react'
-import { InputText, InputTextBaseProps } from '../InputText'
-import { AdvancedInputControls } from '../AdvancedInputControls'
+import React, { forwardRef, Ref, FormEvent } from 'react'
+import styled from 'styled-components'
+import { SelectProps } from '../Select'
+
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
+import { SelectOptionObject, SelectOptions } from '../Select/SelectOptions'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from '../Select/utils/ariaProps'
+import { getMatchingOption } from '../Select/utils/options'
+import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions'
 
 export interface InputSearchProps
-  extends Omit<InputTextBaseProps, 'children' | 'value' | 'defaultValue'> {
+  extends Omit<
+    SelectProps,
+    'isFilterable' | 'onFilter' | 'showCreate' | 'formatCreateLabel'
+  > {
   summary?: string
-  hideControls?: boolean
   hideSearchIcon?: boolean
-  onClear?: (e: MouseEvent<HTMLButtonElement>) => void
-
-  defaultValue?: string
-  value?: string
+  onSelectOption?: (option?: SelectOptionObject) => void
+  /**
+   * Selecting an option updates the input's value
+   * @default true
+   */
+  changeOnSelect?: boolean
 }
 
-export const InputSearch = forwardRef(
+const InputSearchLayout = forwardRef(
   (
     {
-      summary,
-      value: valueProp,
+      options,
       disabled,
-      hideControls = false,
-      hideSearchIcon = false,
+      isClearable = true,
+      placeholder,
+      name,
       onChange,
-      onClear,
+      onSelectOption,
+      value,
       defaultValue,
+      noOptionsLabel,
+      indicator,
+      listLayout,
+      autoResize,
+      windowedOptions: windowedOptionsProp,
+      hideSearchIcon,
+      changeOnSelect = true,
       ...props
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValue] = useState('')
+    const matchingOption = getMatchingOption(value, options)
+    const optionValue = matchingOption || { value: '' }
 
-    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
-      setValue('')
-      onClear && onClear(e)
-      onChange &&
-        onChange({
-          currentTarget: { value: '' },
-        } as FormEvent<HTMLInputElement>)
+    function handleChange(option?: SelectOptionObject) {
+      onSelectOption && onSelectOption(option)
+      if (changeOnSelect && onChange) {
+        onChange(option?.value || '')
+      }
     }
 
-    const handleChange = (e: FormEvent<HTMLInputElement>) => {
-      const newValue = (e.target as HTMLInputElement).value
-      setValue(newValue)
-      onChange && onChange(e)
+    function handleInputChange(e: FormEvent<HTMLInputElement>) {
+      onChange && onChange(e.currentTarget.value)
     }
 
-    // only update when valueProp changes, but not defaultValue
-    useEffect(() => {
-      setValue(valueProp || defaultValue || '')
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [valueProp])
+    function handleClose() {
+      // when the list closes, the input's value reverts to the current option
+      // onFilter && onFilter('')
+    }
+
+    const ariaProps = pickAriaAndValidationProps(props)
+
+    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
-      <InputText
-        {...props}
-        value={value}
-        ref={ref}
+      <Combobox
+        value={optionValue}
         onChange={handleChange}
-        iconBefore={hideSearchIcon ? undefined : 'Search'}
-        after={
-          !hideControls ? (
-            <AdvancedInputControls
-              onClear={handleClear}
-              disabled={disabled}
-              summary={summary}
-              showClear={!!(value && value.length >= 0)}
+        onClose={handleClose}
+        openOnClick={false}
+        width={autoResize ? 'auto' : '100%'}
+        display={autoResize ? 'inline-flex' : undefined}
+        {...omitAriaAndValidationProps(props)}
+      >
+        <ComboboxInput
+          {...ariaProps}
+          value={value}
+          defaultValue={defaultValue}
+          iconBefore={hideSearchIcon ? undefined : 'Search'}
+          disabled={disabled}
+          placeholder={placeholder}
+          name={name}
+          validationType={props.validationType}
+          isClearable={isClearable}
+          autoComplete={false}
+          autoResize={autoResize}
+          onChange={handleInputChange}
+          freeInput
+          ref={ref}
+        />
+        {!disabled && (options?.length || noOptionsLabel) && (
+          <ComboboxList
+            persistSelection
+            windowedOptions={windowedOptions}
+            cancelClickOutside={false}
+            indicator={indicator}
+            width={autoResize ? 'auto' : undefined}
+            {...ariaProps}
+            {...listLayout}
+          >
+            <SelectOptions
+              options={options}
+              windowedOptions={windowedOptions}
+              isFilterable
+              noOptionsLabel={noOptionsLabel}
             />
-          ) : undefined
-        }
-      />
+          </ComboboxList>
+        )}
+      </Combobox>
     )
   }
 )
 
-InputSearch.displayName = 'InputSearch'
+InputSearchLayout.displayName = 'InputSearch'
+
+export const InputSearch = styled(InputSearchLayout)``

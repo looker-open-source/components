@@ -77,6 +77,7 @@ export const ComboboxMultiInternal = forwardRef(
       // opens the list when the input receives focused (but only if there are
       // items in the list)
       openOnFocus = false,
+      openOnClick = true,
 
       onChange,
       values,
@@ -128,6 +129,7 @@ export const ComboboxMultiInternal = forwardRef(
       id,
       isVisible,
       onChange,
+      openOnClick,
       openOnFocus,
       state,
       transition,
