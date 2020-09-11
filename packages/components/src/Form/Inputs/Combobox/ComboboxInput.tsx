@@ -28,7 +28,15 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import omit from 'lodash/omit'
-import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
+import React, {
+  FormEvent,
+  forwardRef,
+  useRef,
+  useCallback,
+  useContext,
+  Ref,
+  useLayoutEffect,
+} from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
@@ -115,9 +123,13 @@ export const ComboboxInputInternal = forwardRef(
       transition && transition(ComboboxActionType.CLEAR)
     }
 
-    function handleValueChange(value: string) {
-      transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
-    }
+    const handleValueChange = useCallback(
+      (value: string) => {
+        transition &&
+          transition(ComboboxActionType.CHANGE, { inputValue: value })
+      },
+      [transition]
+    )
 
     // Need to determine whether the updated value come from change event on the input
     // or from a new value prop (controlled)
@@ -125,22 +137,21 @@ export const ComboboxInputInternal = forwardRef(
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
-    if (
-      controlledValue !== undefined &&
-      contextInputValue &&
-      controlledValue !== contextInputValue
-    ) {
-      if (isInputting.current) {
-        handleValueChange(controlledValue)
-      } else {
-        // this is most likely the initial value so we want to
-        // update the value without transitioning to suggesting
-        transition &&
-          transition(ComboboxActionType.CHANGE_SILENT, {
-            inputValue: controlledValue,
-          })
+    useLayoutEffect(() => {
+      if (controlledValue !== undefined) {
+        if (isInputting.current) {
+          handleValueChange(controlledValue)
+        } else {
+          // this is most likely the initial value so we want to
+          // update the value without transitioning to suggesting
+          transition &&
+            transition(ComboboxActionType.CHANGE_SILENT, {
+              inputValue: controlledValue,
+            })
+        }
       }
-    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [controlledValue])
 
     // [*]... and when controlled, we don't trigger handleValueChange as the user
     // types, instead the developer controls it with the normal input onChange

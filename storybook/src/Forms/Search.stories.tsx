@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { InputSearch, SpaceVertical } from '@looker/components'
 
 export const All = () => (
@@ -35,6 +35,7 @@ export const All = () => (
     <DefaultValue />
     <NoIcon />
     <AutoResize />
+    <Advanced />
   </SpaceVertical>
 )
 
@@ -64,3 +65,13 @@ export const NoIcon = () => (
 export const AutoResize = () => (
   <InputSearch autoResize placeholder="Resizes to fit value" maxWidth={250} />
 )
+export const Advanced = () => {
+  const [value, setValue] = useState('')
+  return (
+    <InputSearch
+      value={value}
+      onChange={setValue}
+      options={[{ value: 'Foo' }, { value: 'Bar' }]}
+    />
+  )
+}

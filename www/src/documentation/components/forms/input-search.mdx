@@ -49,7 +49,7 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
       <InputSearch
         placeholder="Type your search"
         summary={
-          keywords.length > 0 && `You typed ${keywords.length} characters`
+          keywords.length > 0 ? `You typed ${keywords.length} characters` : ''
         }
         value={keywords}
         onChange={onChange}

@@ -83,6 +83,7 @@ export function useInputEvents<
     data: { lastActionType },
     inputElement,
     openOnFocus,
+    openOnClick,
     persistSelectionPropRef,
     state,
     transition,
@@ -137,7 +138,7 @@ export function useInputEvents<
       if (checkForButton(e.target as Element, e.currentTarget as Element)) {
         return
       }
-      if (state === ComboboxState.IDLE) {
+      if (state === ComboboxState.IDLE && openOnClick) {
         // Opening a closed list
         transition &&
           transition(ComboboxActionType.FOCUS, {
