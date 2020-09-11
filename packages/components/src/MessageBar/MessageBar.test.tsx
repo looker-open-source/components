@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
+import { theme } from '@looker/design-tokens'
 import {
   renderWithTheme,
   withThemeProvider,
@@ -200,7 +201,7 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Warning')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Warning').closest('div')).toHaveStyle({
-        color: '#FFA800',
+        color: theme.colors.warn,
       })
     })
 
@@ -214,11 +215,11 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Error')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Error').closest('div')).toHaveStyle({
-        color: '#CC1F36',
+        color: theme.colors.critical,
       })
       // MesasgeBar background
       expect(getByRole('status')).toHaveStyle({
-        background: '#FFE5E9',
+        background: theme.colors.criticalAccent,
       })
     })
 
@@ -233,7 +234,7 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Inform')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Inform').closest('div')).toHaveStyle({
-        color: '#0087e1',
+        color: theme.colors.inform,
       })
     })
 
@@ -248,7 +249,7 @@ describe('MessageBar', () => {
 
       // icon title and color
       expect(getByTitle('Success').closest('div')).toHaveStyle({
-        color: '#24b25f',
+        color: theme.colors.positive,
       })
     })
   })

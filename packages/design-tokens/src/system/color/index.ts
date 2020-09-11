@@ -26,7 +26,11 @@
 
 import { BlendColors } from './blends'
 import { StatefulColors } from './stateful'
-import { IntentColors, SurfaceColors } from './specifiable'
+import {
+  IntentColors,
+  SurfaceColors,
+  IntentDerivativeColors,
+} from './specifiable'
 
 export interface CoreColors {
   /**
@@ -52,14 +56,15 @@ export interface CoreColors {
 export interface SpecifiableColors
   extends CoreColors,
     SurfaceColors,
-    IntentColors {}
+    IntentColors,
+    IntentDerivativeColors {}
 
 export interface Colors
   extends SpecifiableColors,
     BlendColors,
     StatefulColors {}
 
-export type { IntentNames } from './specifiable'
+export type { IntentColors, IntentNames } from './specifiable'
 export type { BlendColors } from './blends'
 export type {
   StatefulColor,

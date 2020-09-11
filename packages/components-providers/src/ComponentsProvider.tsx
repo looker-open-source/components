@@ -25,14 +25,14 @@
  */
 
 import {
-  constructFontStack,
   CoreColors,
   FontFamilyChoices,
-  generateThemeFromCoreColors,
-  IEGlobalStyle,
+  generateTheme,
   GlobalStyle,
   GoogleFontsLoader,
-  theme,
+  IEGlobalStyle,
+  IntentColors,
+  theme as defaultTheme,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
@@ -66,7 +66,7 @@ export interface ComponentsProviderProps extends ThemeProviderProps {
   /**
    * Override default color specifications
    */
-  coreColors?: Partial<CoreColors>
+  colors?: Partial<CoreColors & IntentColors>
   /**
    * Override default font-family specifications. Specified fonts will have out built-in
    * font-stack appended. Built-in font stacks are designed to provide i18n character
@@ -80,25 +80,16 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   globalStyle = true,
   ie11Support = false,
   loadGoogleFonts = false,
-  coreColors,
+  colors,
   fontFamilies,
   ...props
 }) => {
-  const generatedTheme = useMemo(() => {
-    const baseTheme = props.theme || theme
-
-    const updatedTheme = coreColors
-      ? generateThemeFromCoreColors(baseTheme, coreColors)
-      : baseTheme
-
-    if (fontFamilies) {
-      return { ...updatedTheme, fonts: constructFontStack(fontFamilies) }
-    }
-    return updatedTheme
-  }, [props.theme, coreColors, fontFamilies])
+  const theme = useMemo(() => {
+    return generateTheme(props.theme || defaultTheme, { colors, fontFamilies })
+  }, [props.theme, colors, fontFamilies])
 
   return (
-    <ThemeProvider {...props} theme={generatedTheme}>
+    <ThemeProvider {...props} theme={theme}>
       {globalStyle && <GlobalStyle />}
       {loadGoogleFonts && <GoogleFontsLoader />}
       {ie11Support && <IEGlobalStyle />}

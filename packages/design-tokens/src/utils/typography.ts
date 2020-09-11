@@ -24,12 +24,36 @@
 
  */
 
-export * from './Compare.stories'
-export * from './Editor.stories'
-export * from './Fonts.stories'
-export * from './Suite.stories'
-export * from './Swatches.stories'
+import pickBy from 'lodash/pickBy'
+import identity from 'lodash/identity'
+import { FontFamilyChoices } from '../system'
+import { defaultFontFallbacks } from '../tokens/typography/font_families'
 
-export default {
-  title: 'Theme',
+export const fontFacesToFamily = (
+  faces: string[] | string,
+  fallbacks: string[]
+) => {
+  if (typeof faces === 'string') {
+    faces = [faces]
+  }
+
+  faces = [...faces, ...fallbacks]
+
+  return faces.map((face) => `${face}`).join(', ')
+}
+
+export const generateFontFamilies = (
+  defaultFonts: FontFamilyChoices,
+  customFonts?: Partial<FontFamilyChoices>
+) => {
+  const fontFamilies: FontFamilyChoices = {
+    ...defaultFonts,
+    ...pickBy(customFonts, identity),
+  }
+
+  Object.entries(fontFamilies).map(([key, fontFace]) => {
+    fontFamilies[key] = fontFacesToFamily(fontFace, defaultFontFallbacks[key])
+  })
+
+  return fontFamilies
 }

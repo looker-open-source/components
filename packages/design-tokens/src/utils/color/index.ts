@@ -24,34 +24,29 @@
 
  */
 
-import { Colors, CoreColors, SpecifiableColors } from '../../system'
-import { defaultIntentColors } from '../../tokens'
+import pickBy from 'lodash/pickBy'
+import identity from 'lodash/identity'
+import {
+  Colors,
+  CoreColors,
+  IntentColors,
+  SpecifiableColors,
+} from '../../system'
 import { generateSurfaceColors } from './surface'
 import { generateBlendColors } from './blend'
 import { generateStatefulColors } from './stateful'
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+import { generateIntentDerivatives } from './intent'
 
 export const generateColors = (
-  themeColors: Colors,
-  colors: Partial<CoreColors>
-) => {
-  const { background, text, key } = colors
-
-  if (!background && !text && !key) {
-    return themeColors
-  }
-
-  const coreColors = {
-    background: colors.background || themeColors.background,
-    text: colors.text || themeColors.text,
-    key: colors.key || themeColors.key,
-  }
+  themeColors: CoreColors & IntentColors,
+  customColors?: Partial<CoreColors & IntentColors>
+): Colors => {
+  const colors = { ...themeColors, ...pickBy(customColors, identity) }
 
   const specifiableColors: SpecifiableColors = {
-    ...coreColors,
-    ...generateSurfaceColors(coreColors),
-    ...defaultIntentColors,
+    ...colors,
+    ...generateSurfaceColors(colors),
+    ...generateIntentDerivatives(colors),
   }
 
   const blends = generateBlendColors(specifiableColors)
