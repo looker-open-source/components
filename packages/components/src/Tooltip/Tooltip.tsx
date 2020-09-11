@@ -54,7 +54,6 @@ export interface UseTooltipProps {
    * Specify a callback to be called each time this Tooltip is closed
    */
   canClose?: () => boolean
-
   isOpen?: boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
@@ -208,13 +207,13 @@ export function useTooltip({
           borderRadius="medium"
           boxShadow={3}
           color="inverseOn"
+          maxWidth={maxWidth}
           {...surfaceStyles}
         >
           <TooltipContent
             role="tooltip"
             id={guaranteedId}
             width={width}
-            maxWidth={maxWidth}
             textAlign={textAlign}
           >
             {content}

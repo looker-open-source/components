@@ -32,7 +32,7 @@ export const TooltipContent = styled(Paragraph).attrs(
     fontSize: 'xsmall',
     lineHeight: 'xsmall',
     m: 'none',
-    maxWidth: props.maxWidth || props.width,
+    maxWidth: props.width,
     p: 'xsmall',
     width: 'auto',
   })
