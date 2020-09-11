@@ -25,26 +25,37 @@
  */
 
 import React from 'react'
-import { InputFilters } from '@looker/components'
+import { InputFilters, SpaceVertical } from '@looker/components'
+
+const available = [
+  { label: 'Name' },
+  { label: 'Status' },
+  { label: 'Source' },
+  { label: 'Trigger' },
+  { label: 'Last Build Time' },
+]
+
+const filters = [
+  { expression: 'role: admin' },
+  { expression: 'group: pizza-lovers' },
+]
+
+export const All = () => (
+  <SpaceVertical align="start">
+    <Basic />
+    <HideFilter />
+  </SpaceVertical>
+)
 
 export default {
+  component: All,
   title: 'Forms/InputFilters',
 }
 
-const availableFilters = [
-  { value: 'Name' },
-  { value: 'Status' },
-  { value: 'Source' },
-  { value: 'Trigger' },
-  { value: 'Last Build Time' },
-]
+export const Basic = () => (
+  <InputFilters filters={filters} available={available} />
+)
 
-const fieldFilters = ['role: admin', 'group: pizza-lovers']
-
-export const All = () => (
-  <InputFilters
-    hideFilterIcon
-    fieldFilters={fieldFilters}
-    availableFilters={availableFilters}
-  />
+export const HideFilter = () => (
+  <InputFilters hideFilterIcon filters={filters} available={available} />
 )

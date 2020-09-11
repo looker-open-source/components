@@ -28,14 +28,13 @@ import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { useID } from '../utils/useID'
-import { AvailableFilter } from '../Form/Inputs/InputFilters'
 import { ActionListControlBar } from './ActionListControlBar'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListFilters } from './ActionListFilters'
+import { ActionListFilters, ActionListFilterProps } from './ActionListFilters'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
@@ -77,11 +76,7 @@ export interface ActionListColumn {
   sortDirection?: 'asc' | 'desc'
 }
 
-export interface FiltersConfig {
-  availableFilters: AvailableFilter[]
-  columnsCustomizable?: boolean
-  fieldFilters?: string[]
-}
+export type FiltersConfig = ActionListFilterProps
 
 export interface ActionListProps {
   columns: ActionListColumns
@@ -107,7 +102,14 @@ export interface ActionListProps {
    * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
   bulk?: BulkActionsConfig
+  /**
+   * List of filters the user can select from
+   **/
   filters?: FiltersConfig
+  /**
+   * specify specific columns to be displayed
+   **/
+  canSelectDisplayedColumns?: boolean
 }
 
 export interface SelectConfig {
@@ -204,9 +206,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
     <ActionListContext.Provider value={context}>
       {filters && (
         <ActionListFilters
-          fieldFilters={filters.fieldFilters}
-          columnsCustomizable={filters.columnsCustomizable || false}
-          availableFilters={filters.availableFilters}
+          filters={filters.filters}
+          canSelectDisplayedColumns={filters.canSelectDisplayedColumns || false}
+          available={filters.available}
         />
       )}
       <div className={className}>

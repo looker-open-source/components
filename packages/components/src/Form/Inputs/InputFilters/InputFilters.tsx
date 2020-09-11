@@ -31,33 +31,40 @@ import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
-import { Space } from '../../../Layout'
 
 export interface AvailableFilter {
   value: string
 }
 
+export interface FieldFilter {
+  /* specify field to filter against */
+  // field: string
+  /* text displayed in drop-down, optional, `field` is used if not specified */
+  label?: string
+}
+export interface FieldFilterExpressions extends FieldFilter {
+  expression?: string
+}
 export interface InputFiltersProps {
-  className?: string
-  availableFilters: AvailableFilter[]
-  fieldFilters?: string[]
+  available: FieldFilter[]
+  filters?: FieldFilterExpressions[]
   hideFilterIcon?: boolean
+  className?: string
 }
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
-  availableFilters,
+  available,
   className,
-  fieldFilters,
+  filters,
   hideFilterIcon = false,
 }) => {
-  const [values, setValues] = useState(fieldFilters || [])
+  const [values, setValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = values.length > 0
 
-  const clearFilters = (event: MouseEvent<HTMLSpanElement>) => {
-    event.stopPropagation()
+  const clearFilters = () => {
     setValues([])
   }
 
@@ -74,50 +81,61 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     alert("You can't do that. Yet!")
   }
 
+  const deleteFilter = (event: MouseEvent<HTMLSpanElement>) => {
+    const clickedValue = event.currentTarget.parentNode.querySelector('span')
+      .textContent
+    console.log(clickedValue)
+    const newValues = values.filter(
+      (value) =>
+        value.expression === clickedValue.querySelector('span').textContent
+    )
+    console.log(newValues)
+    setValues(newValues)
+  }
+
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
-        <Icon mx="xsmall" name="Filter" size={20} color="ui4" />
+        <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
       )}
-      <Space gap="xsmall">
-        {values.map((value, i) => (
-          <Chip key={i} onClick={editFilter}>
-            {value}
+      {filters &&
+        filters.map((filter, i) => (
+          <Chip key={i} onClick={editFilter} onDelete={deleteFilter}>
+            {filter.expression}
           </Chip>
         ))}
-
-        <Select
-          autoResize
-          indicator={false}
-          isFilterable
-          onChange={handleFilterLookupChange}
-          options={availableFilters}
-          placeholder="Filter List"
-          ref={inputRef}
-          value={filterLookupName}
-        />
-      </Space>
+      <Select
+        autoResize
+        indicator={false}
+        isFilterable
+        onChange={handleFilterLookupChange}
+        options={available}
+        placeholder="Filter List"
+        ref={inputRef}
+        value={filterLookupName}
+      />
       {isClearable && (
-        <IconButton icon="Close" label="Clear filters" onClick={clearFilters} />
+        <IconButton
+          icon="Close"
+          label="Clear Filters"
+          onClick={clearFilters}
+          size="xsmall"
+        />
       )}
     </div>
   )
 }
-// padding-left: ${props.theme.space.xsmall}
+
 export const InputFilters = styled(InputFiltersLayout)`
   align-items: center;
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
-  flex: 2;
+  height: 36px;
+  padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
 
-  ${Space} {
-    ${(props) =>
-      props.hideFilterIcon && `padding-left: ${props.theme.space.xxsmall}`}
-  }
-
-  ${Icon} {
-    margin: 0 ${({ theme }) => theme.space.xsmall};
+  ${Chip} + ${Chip} {
+    margin: ${({ theme: { space } }) => `0 ${space.xsmall}`};
   }
 
   ${Select} {
@@ -130,9 +148,15 @@ export const InputFilters = styled(InputFiltersLayout)`
 
   ${InputText} {
     border: none;
-    padding: none;
+    height: 28px;
+    padding: 0;
     &:focus-within {
       box-shadow: none;
     }
+    input {
+      padding: 0;
+    }
   }
+
+
 `
