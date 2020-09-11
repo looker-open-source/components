@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -45,9 +45,18 @@ export interface TextProps
   truncate?: boolean
 }
 
-// const isTextTruncated = (e: any) => e.offsetWidth < e.scrollWidth
+const isTextTruncated = (node: HTMLElement) =>
+  node.offsetWidth < node.scrollWidth
 
 export const Text: FC<TextProps> = ({ children, truncate, ...restProps }) => {
+  const [isTruncated, setIsTruncated] = useState(false)
+
+  const textRef = useCallback((node) => {
+    if (node !== null) {
+      setIsTruncated(isTextTruncated(node))
+    }
+  }, [])
+
   if (!truncate) {
     /*
      * standard static span element
@@ -59,20 +68,31 @@ export const Text: FC<TextProps> = ({ children, truncate, ...restProps }) => {
    * truncated text layout
    */
   return (
-    <Tooltip
-      content={children}
-      placement="top-start"
-      width="auto"
-      maxWidth="80%"
-      surfaceStyles={{
-        backgroundColor: 'background',
-        border: '1px solid',
-        borderColor: 'ui3',
-        color: 'text3',
-      }}
-    >
-      <TruncatedText {...restProps}>{children}</TruncatedText>
-    </Tooltip>
+    <>
+      {isTruncated ? (
+        <Tooltip
+          content={children}
+          placement="top-start"
+          width="auto"
+          maxWidth="80%"
+          surfaceStyles={{
+            backgroundColor: 'background',
+            border: '1px solid',
+            borderColor: 'ui3',
+            color: 'text3',
+          }}
+        >
+          <TruncatedText {...restProps} ref={textRef}>
+            {children}
+          </TruncatedText>
+        </Tooltip>
+      ) : (
+        <TruncatedText {...restProps} ref={textRef}>
+          {' '}
+          {children}
+        </TruncatedText>
+      )}
+    </>
   )
 }
 

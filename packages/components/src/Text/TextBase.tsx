@@ -24,6 +24,7 @@
 
  */
 
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -34,6 +35,7 @@ import {
   textDecoration,
   TextDecorationProps,
 } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import {
   fontSize,
   fontWeight,
@@ -52,11 +54,23 @@ export interface TextBaseProps
    * @default: false
    */
   breakword?: boolean
+  ref: Ref<HTMLElement>
+  children: React.ReactNode
 }
 
-export const TextBase = styled.span.attrs((props: TypographyProps) => ({
-  lineHeight: props.lineHeight || props.fontSize,
-}))<TextBaseProps>`
+const InternalTextBase = forwardRef(
+  (props: TextBaseProps, ref: Ref<HTMLElement>) => {
+    return <span ref={ref} {...omit(props, 'lineHeight')} />
+  }
+)
+
+InternalTextBase.displayName = 'InternalTextBase'
+
+export const TextBase = styled(InternalTextBase).attrs(
+  (props: TypographyProps) => ({
+    lineHeight: props.lineHeight || props.fontSize,
+  })
+)<TextBaseProps>`
   ${reset}
   /* fontFamily is handled by reset */
   ${fontSize}
