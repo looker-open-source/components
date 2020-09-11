@@ -30,23 +30,22 @@ import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
 import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 
-interface ActionListFilterProps extends InputFiltersProps {
-  columnsCustomizable?: boolean
+export interface ActionListFilterProps
+  extends Omit<InputFiltersProps, 'hideFilterIcon' | 'className'> {
+  canSelectDisplayedColumns?: boolean
+  className?: string
 }
 
 const ActionListFilterLayout: FC<ActionListFilterProps> = ({
-  availableFilters,
+  available,
   className,
-  columnsCustomizable = false,
-  fieldFilters,
+  canSelectDisplayedColumns = false,
+  filters,
 }) => {
   return (
     <div className={className}>
-      <InputFilters
-        fieldFilters={fieldFilters}
-        availableFilters={availableFilters}
-      />
-      {columnsCustomizable && (
+      <InputFilters filters={filters} available={available} />
+      {canSelectDisplayedColumns && (
         <ColumnSelector>
           <DividerVertical height="1.5rem" />
           <IconButton label="Select columns to display" icon="ViewColumn" />

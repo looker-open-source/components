@@ -35,7 +35,7 @@ import {
 } from '@looker/components'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import React from 'react'
-import { columns, data, availableFilters, fieldFilters } from './data'
+import { columns, data, available, filters } from './data'
 import { items } from './items'
 
 export { Sortable } from './ActionListSortable.stories'
@@ -98,9 +98,9 @@ export const ActionListExample = () => {
   }
 
   const filterActionsConfig = {
-    availableFilters: availableFilters,
-    columnsCustomizable: true,
-    fieldFilters: fieldFilters,
+    available: available,
+    canSelectDisplayedColumns: true,
+    filters: filters,
   }
 
   return (

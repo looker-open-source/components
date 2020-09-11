@@ -26,15 +26,18 @@
 
 import { ActionListColumns } from '@looker/components'
 
-export const availableFilters = [
-  { value: 'Name' },
-  { value: 'Status' },
-  { value: 'Source' },
-  { value: 'Trigger' },
-  { value: 'Last Build Time' },
+export const available = [
+  { label: 'Name' },
+  { label: 'Status' },
+  { label: 'Source' },
+  { label: 'Trigger' },
+  { label: 'Last Build Time' },
 ]
 
-export const fieldFilters = ['role: admin', 'group: pizza-lovers']
+export const filters = [
+  { expression: 'role: admin' },
+  { expression: 'group: pizza-lovers' },
+]
 
 export const row = {
   disabled: false,
