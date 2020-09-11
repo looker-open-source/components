@@ -29,10 +29,14 @@ import { createContext } from 'react'
 
 export interface LayoutContextProps {
   hasAside: boolean
-  registerAside?: () => void
+  isFixed: boolean
+  registerAside: () => void
+  registerFixed: () => void
 }
 
 export const LayoutContext = createContext<LayoutContextProps>({
   hasAside: false,
+  isFixed: false,
   registerAside: () => noop,
+  registerFixed: () => noop,
 })

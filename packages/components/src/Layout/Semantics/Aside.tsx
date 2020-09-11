@@ -26,23 +26,15 @@
 
 import styled from 'styled-components'
 import React, { forwardRef, Ref, useContext } from 'react'
-import { CompatibleHTMLProps } from '@looker/design-tokens/src'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { width, WidthProps } from 'styled-system'
 import { LayoutContext } from './LayoutContext'
+import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
-export interface AsideProps
-  extends Omit<SimpleLayoutProps, 'maxWidth' | 'minWidth'>,
-    CompatibleHTMLProps<HTMLElement> {
-  /**
-   * Width
-   * @default '16rem'
-   */
-  width?: string
-}
+export interface AsideProps extends SemanticLayoutBase, WidthProps {}
 
 const AsideLayout = forwardRef((props: AsideProps, ref: Ref<HTMLElement>) => {
   const { registerAside } = useContext(LayoutContext)
-  registerAside && registerAside()
+  registerAside()
 
   return <aside {...props} ref={ref} />
 })
@@ -50,12 +42,8 @@ const AsideLayout = forwardRef((props: AsideProps, ref: Ref<HTMLElement>) => {
 AsideLayout.displayName = 'AsideLayout'
 
 export const Aside = styled(AsideLayout)`
-  ${simpleLayoutCSS}
-
-  flex: 0 0 ${({ width }) => width};
-  max-width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
-  width: ${({ width }) => width};
+  ${semanticLayoutCSS}
+  ${width}
 `
 
 Aside.defaultProps = { width: '12rem' }

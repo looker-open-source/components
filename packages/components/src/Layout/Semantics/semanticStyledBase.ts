@@ -23,3 +23,20 @@
  SOFTWARE.
 
  */
+
+import {
+  PaddingProps,
+  padding,
+  CompatibleHTMLProps,
+  reset,
+} from '@looker/design-tokens'
+import { css } from 'styled-components'
+
+export interface SemanticLayoutBase
+  extends PaddingProps,
+    CompatibleHTMLProps<HTMLElement> {}
+
+export const semanticLayoutCSS = css`
+  ${reset}
+  ${padding}
+`

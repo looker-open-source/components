@@ -25,8 +25,11 @@
  */
 
 import styled from 'styled-components'
+import { sectionCSS, SectionProps } from './Section'
 
-export const Main = styled.main`
-  height: 100%;
-  width: 100%;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MainProps extends SectionProps {}
+
+export const Main = styled.main<MainProps>`
+  ${sectionCSS}
 `

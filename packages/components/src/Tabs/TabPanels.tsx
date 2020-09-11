@@ -38,7 +38,7 @@ import {
 import omit from 'lodash/omit'
 
 export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element[]
+  children: JSX.Element | JSX.Element[]
   className?: string
   selectedIndex?: number
   onSelectTab?: (index: number) => void

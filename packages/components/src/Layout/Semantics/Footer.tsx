@@ -26,7 +26,11 @@
 
 import styled from 'styled-components'
 import { headerFooterCSS } from './Header'
+import { SemanticLayoutBase } from './semanticStyledBase'
 
-export const Footer = styled.footer`
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FooterProps extends SemanticLayoutBase {}
+
+export const Footer = styled.footer<FooterProps>`
   ${headerFooterCSS}
 `

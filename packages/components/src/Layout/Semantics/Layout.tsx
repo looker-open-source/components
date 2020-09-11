@@ -32,34 +32,62 @@ import { LayoutContext } from './LayoutContext'
 
 export interface LayoutProps
   extends SimpleLayoutProps,
-    CompatibleHTMLProps<HTMLElement> {}
-
-const LayoutLayout = forwardRef((props: LayoutProps, ref: Ref<HTMLElement>) => {
-  const [hasAside, setHasAside] = useState(false)
+    CompatibleHTMLProps<HTMLElement> {
   /**
-   * registerAside doesn't need to update state value if an aside has already been registered.
-   *
-   * May eventually need to explore named-asides so that asides can be "unregistered" by
-   * identifier but initial implementation doesn't need to support that.
+   * Supports scroll
+   * @default true
    */
-  const registerAside = () => !hasAside && setHasAside(true)
+  supportsScroll?: boolean
+}
 
-  return (
-    <LayoutContext.Provider value={{ hasAside, registerAside }}>
-      <LayoutStyle {...props} hasAside={hasAside} ref={ref} />
-    </LayoutContext.Provider>
-  )
-})
+const LayoutLayout = forwardRef(
+  (props: LayoutProps, ref: Ref<HTMLDivElement>) => {
+    const [hasAside, setHasAside] = useState(false)
+    /**
+     * registerAside doesn't need to update state value if an aside has already been registered.
+     *
+     * May eventually need to explore named-asides so that asides can be "unregistered" by
+     * identifier but initial implementation doesn't need to support that.
+     */
+    const registerAside = () => setHasAside(true)
+
+    const [isFixed, setIsFixed] = useState(false)
+    const registerFixed = () => setIsFixed(true)
+
+    return (
+      <LayoutContext.Provider
+        value={{ hasAside, isFixed, registerAside, registerFixed }}
+      >
+        <LayoutStyle
+          {...props}
+          isFixed={isFixed}
+          hasAside={hasAside}
+          ref={ref}
+        />
+      </LayoutContext.Provider>
+    )
+  }
+)
 
 LayoutLayout.displayName = 'LayoutLayout'
 
-const LayoutStyle = styled.aside<{ hasAside: boolean }>`
+interface LayoutStyleProps extends LayoutProps {
+  hasAside: boolean
+  isFixed: boolean
+}
+
+const LayoutStyle = styled.div<LayoutStyleProps>`
   ${simpleLayoutCSS}
 
   display: flex;
   flex-direction: ${({ hasAside }) => (hasAside ? 'row' : 'column')};
-  height: 100%;
-  width: 100%;
+  width: ${({ hasAside }) => hasAside && '100%'};
 `
 
 export const Layout = styled(LayoutLayout)``
+
+/* @TODO:
+  Layout is child of <layout isFixed>
+  flex: 1 0 auto;
+  height: 0;
+  overflow: auto; */
