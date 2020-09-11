@@ -45,13 +45,13 @@ import {
 import Omit from 'lodash/omit'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
-import { Text } from '../Text'
 import { useHovered } from '../utils/useHovered'
 import {
   HoverDisclosureContext,
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
+import { TruncatedText, Text } from '../Text'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
@@ -183,6 +183,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
+  const TextWrapper = truncate ? TruncatedText : Text
+
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
       <TreeItemSpace
@@ -208,9 +210,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
             pt="xxsmall"
             pb="xxsmall"
           >
-            <Text truncate={truncate} fontSize="xsmall">
-              {children}
-            </Text>
+            <TextWrapper fontSize="xsmall">{children}</TextWrapper>
           </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>

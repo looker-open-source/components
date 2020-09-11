@@ -54,8 +54,8 @@ export interface TextBaseProps
    * @default: false
    */
   breakword?: boolean
-  ref: Ref<HTMLElement>
-  children: React.ReactNode
+  children: string
+  ref?: Ref<HTMLElement>
 }
 
 const InternalTextBase = forwardRef(

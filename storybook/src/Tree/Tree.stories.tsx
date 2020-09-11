@@ -188,9 +188,10 @@ export const LongLabels = () => (
         defaultOpen
       >
         <TreeItem icon="IdeDimension" truncate>
-          Vivamus vitae mauris et erat sagittis tempus. Mauris euismod aliquet
-          arcu ut viverra. It has roots in a piece of classical Latin literature
-          from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+          <strong>Very long text renders a tooltip.</strong> Vivamus vitae
+          mauris et erat sagittis tempus. Mauris euismod aliquet arcu ut
+          viverra. It has roots in a piece of classical Latin literature from 45
+          BC, making it over 2000 years old. Richard McClintock, a Latin
           professor at Hampden-Sydney College in Virginia, looked up one of the
           more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
           going through the cites of the word in classical literature,
@@ -203,7 +204,7 @@ export const LongLabels = () => (
           Latin literature from 45 BC, making it over 2000 years old.
         </TreeItem>
         <TreeItem icon="IdeDimensionGroup" truncate>
-          Curabitur et nulla tempor, vestibulum mauris nec, suscipit turpis.
+          This short text should not render a tooltip
         </TreeItem>
       </Tree>
     </Tree>

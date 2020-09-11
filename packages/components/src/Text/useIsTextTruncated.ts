@@ -24,10 +24,42 @@
 
  */
 
-export * from './Code'
-export * from './CodeBlock'
-export * from './Heading'
-export * from './Paragraph'
-export * from './ReplaceText'
-export * from './Text'
-export * from './TruncatedText'
+import { useState, useCallback, useLayoutEffect } from 'react'
+import ResizeObserver from 'resize-observer-polyfill'
+
+const isTextTruncated = (node: HTMLElement) =>
+  node.offsetWidth < node.scrollWidth
+
+export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
+  const [isTruncated, setIsTruncated] = useState(false)
+
+  const handleResize = useCallback(() => {
+    // Update client rect
+    element && setIsTruncated(isTextTruncated(element))
+  }, [element])
+
+  useLayoutEffect(() => {
+    if (!element) {
+      return
+    }
+
+    handleResize()
+    const resizeObserver = new ResizeObserver(() => handleResize())
+    if (element) {
+      resizeObserver.observe((element as unknown) as HTMLElement)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      if (!resizeObserver) {
+        return
+      }
+
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [handleResize, element])
+
+  return isTruncated
+}

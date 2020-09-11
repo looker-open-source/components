@@ -23,14 +23,13 @@
  SOFTWARE.
 
  */
-import React, { FC, useState, useCallback } from 'react'
+
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { Tooltip } from '../Tooltip'
 import { textVariant, TextVariantProps } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'
 
@@ -38,77 +37,11 @@ export interface TextProps
   extends TextBaseProps,
     TextTransformProps,
     TextVariantProps,
-    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {
-  /**
-   * Prevent text wrapping on long labels and instead render truncated text
-   **/
-  truncate?: boolean
-}
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
 
-const isTextTruncated = (node: HTMLElement) =>
-  node.offsetWidth < node.scrollWidth
-
-export const Text: FC<TextProps> = ({ children, truncate, ...restProps }) => {
-  const [isTruncated, setIsTruncated] = useState(false)
-
-  const textRef = useCallback((node) => {
-    if (node !== null) {
-      setIsTruncated(isTextTruncated(node))
-    }
-  }, [])
-
-  if (!truncate) {
-    /*
-     * standard static span element
-     */
-    return <StaticText {...restProps}>{children}</StaticText>
-  }
-
-  /*
-   * truncated text layout
-   */
-  return (
-    <>
-      {isTruncated ? (
-        <Tooltip
-          content={children}
-          placement="top-start"
-          width="auto"
-          maxWidth="80%"
-          surfaceStyles={{
-            backgroundColor: 'background',
-            border: '1px solid',
-            borderColor: 'ui3',
-            color: 'text3',
-          }}
-        >
-          <TruncatedText {...restProps} ref={textRef}>
-            {children}
-          </TruncatedText>
-        </Tooltip>
-      ) : (
-        <TruncatedText {...restProps} ref={textRef}>
-          {' '}
-          {children}
-        </TruncatedText>
-      )}
-    </>
-  )
-}
-
-const StaticText = styled(TextBase)`
+export const Text = styled(TextBase)<TextProps>`
   ${textVariant}
   ${textTransform}
-`
-
-const TruncatedText = styled(TextBase)`
-  ${textVariant}
-  ${textTransform}
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
 `
 
 Text.defaultProps = { fontSize: 'medium' }
