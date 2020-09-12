@@ -23,7 +23,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.159",
+    "@types/lodash": "^4.14.161",
     "@types/styled-components": "^4.4.1",
     "csstype": "^3.0.2",
     "lodash": "^4.17.20",
