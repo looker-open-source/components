@@ -27,7 +27,7 @@
     "focus-trap": "^5.1.0",
     "hotkeys-js": "^3.8.1",
     "lodash": "^4.17.20",
-    "polished": "^3.6.5",
+    "polished": "^3.6.6",
     "react-day-picker": "^7.4.8",
     "react-hotkeys-hook": "^2.2.2",
     "react-resize-detector": "^5.0.7",
