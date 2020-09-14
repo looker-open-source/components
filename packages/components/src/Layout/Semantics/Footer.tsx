@@ -24,61 +24,13 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
-import {
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
-} from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { headerFooterCSS } from './Header'
+import { SemanticLayoutBase } from './semanticStyledBase'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FooterProps extends SemanticLayoutBase {}
 
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
-
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-export const TabPanels = styled(Layout)`
-  ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
+export const Footer = styled.footer<FooterProps>`
+  ${headerFooterCSS}
 `
-
-TabPanels.defaultProps = { pt: 'large' }

@@ -24,61 +24,24 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
-import {
-  FlexboxProps,
-  LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
-} from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
+export interface AsideProps extends SemanticLayoutBase {
+  /**
+   * Specify width of aside
+   * @default '12rem'
+   */
+  width?: string
 }
 
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
+export const Aside = styled.aside<AsideProps>`
+  ${semanticLayoutCSS}
 
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-export const TabPanels = styled(Layout)`
-  ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
+  flex: 0 0 ${({ width }) => width};
+  max-width: ${({ width }) => width};
+  min-width: ${({ width }) => width};
+  width: 0;
 `
 
-TabPanels.defaultProps = { pt: 'large' }
+Aside.defaultProps = { width: '12rem' }
