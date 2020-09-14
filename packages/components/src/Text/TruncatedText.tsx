@@ -75,6 +75,7 @@ export const TruncatedText: FC<TruncatedTextProps> = ({
         placement="top-start"
         width="auto"
         maxWidth="80%"
+        textAlign="left"
         surfaceStyles={{
           backgroundColor: 'background',
           border: '1px solid',
