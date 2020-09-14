@@ -197,19 +197,14 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
+        py="xxsmall"
         {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
-          <FlexItem
-            flex="1"
-            width="100%"
-            pr={truncate ? 'large' : 'none'}
-            pt="xxsmall"
-            pb="xxsmall"
-          >
+          <FlexItem flex="1" width="100%" pr={truncate ? 'large' : 'none'}>
             <TextWrapper fontSize="xsmall">{children}</TextWrapper>
           </FlexItem>
           {!detailAccessory && detail}
@@ -221,6 +216,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 const PrimaryIcon = styled(Icon)`
+  height: ${({ theme }) => theme.lineHeights.xsmall};
   opacity: 0.5;
 `
 
@@ -229,7 +225,7 @@ interface TreeItemSpaceProps {
 }
 
 export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
-  align-items: center;
+  align-items: flex-start;
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
@@ -243,6 +239,7 @@ interface TreeItemLabelProps {
 }
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
+  align-items: flex-start;
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
@@ -252,7 +249,7 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   height: 100%;
   padding-right: ${({ detailAccessory, theme }) =>

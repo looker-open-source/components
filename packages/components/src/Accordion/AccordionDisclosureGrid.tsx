@@ -36,15 +36,20 @@ interface AccordionDisclosureGridProps
 }
 
 const Indicator = styled.div`
-  align-items: center;
+  align-items: align-items;
   display: flex;
   grid-area: indicator;
   justify-content: center;
+  padding-top: ${({ theme }) => theme.space.xxsmall};
 `
 const Label = styled.div`
   grid-area: children;
   overflow: hidden;
   width: 100%;
+`
+
+const StyledIcon = styled(Icon)`
+  height: ${({ theme }) => theme.lineHeights.xsmall};
 `
 
 const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
@@ -57,7 +62,7 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
 }) => {
   const indicator = (
     <Indicator>
-      <Icon
+      <StyledIcon
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />
@@ -73,7 +78,7 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
   )
 }
 export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   width: 100%;
 
