@@ -24,54 +24,43 @@
 
  */
 
-import { Flex, Heading, Icon } from '@looker/components'
+import { Space, IconButton, Heading, Icon } from '@looker/components'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { space, SpaceProps } from '@looker/design-tokens'
-import ComponentsLogo from './ComponentsLogo'
 
 interface HeaderProps {
   className?: string
-  height: string
+  toggleNavigation: () => void
 }
 
-export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
-  <a href="/" className={className}>
-    <Flex alignItems="center">
-      <Icon
-        name="LookerLogo"
-        alt="Looker"
-        color="text5"
-        style={{ height: '26px', width: '60px' }}
-      />
-      <DividerVertical ml="medium" mr="small" />
-      <ComponentsLogo />
-      <Heading
-        variant="default"
-        lineHeight="small"
-        fontSize="large"
-        as="h1"
-        ml="xsmall"
-      >
+export const HeaderContentLayout: FC<HeaderProps> = ({
+  className,
+  toggleNavigation,
+}) => (
+  <Space className={className} px="medium">
+    <IconButton
+      icon="Hamburger"
+      onClick={toggleNavigation}
+      label="Toggle navigation"
+    />
+
+    <a href="/">
+      <LookerLogo name="LookerLogo" alt="Looker" />
+      <Heading fontSize="large" as="h1">
         Components
       </Heading>
-    </Flex>
-  </a>
+    </a>
+  </Space>
 )
 
-const Header = styled(HeaderJsx)`
-  align-items: center;
+const LookerLogo = styled(Icon)``
+
+export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
-  display: flex;
-  height: ${({ height }) => height};
-  padding: 0 ${({ theme: { space } }) => `${space.large} ${space.xxsmall}`};
-`
+  height: 100%;
 
-const DividerVertical = styled.div<SpaceProps>`
-  ${space}
-  background: ${({ theme }) => theme.colors.keyFocus};
-  height: 20px;
-  width: 1px;
+  ${LookerLogo} {
+    height: 26px;
+    width: 60px;
+  }
 `
-
-export default Header

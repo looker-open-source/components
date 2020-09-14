@@ -28,17 +28,18 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
 import {
+  Main,
+  Layout,
+  Aside,
   Heading,
   Divider,
-  Flex,
   ListItem,
   Link,
   List,
 } from '@looker/components'
 import { ComponentResources, ComponentStatus, Props } from '../Shared'
-import Layout, { LayoutMain } from './Layout'
+import { AppLayout } from './AppLayout'
 
 interface TableOfContents {
   items?: [
@@ -94,45 +95,34 @@ const DocumentationLayout = (props: DocQuery) => {
   const { figma, github, propsOf, status, title } = mdx.frontmatter
 
   return (
-    <Layout>
-      <Flex>
-        <LayoutMain>
-          <Helmet title={`${title} - ${site.siteMetadata.title}`} />
-          <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
-            {title}
-          </Heading>
-          {propsOf && <Props of={propsOf} />}
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </LayoutMain>
-        <Meta>
-          <ComponentStatus status={status || 'stable'} />
-          <ComponentResources
-            figma={figma}
-            feedbackTitle={title}
-            github={github}
-          />
-          <TableOfContents toc={mdx.tableOfContents} />
-        </Meta>
-      </Flex>
-    </Layout>
+    <>
+      <Helmet title={`${title} - ${site.siteMetadata.title}`} />
+      <AppLayout>
+        <Layout hasAside>
+          <Main>
+            <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
+              {title}
+            </Heading>
+            {propsOf && <Props of={propsOf} />}
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </Main>
+          <Aside background="neutralSubtle" width="17rem">
+            <ComponentStatus status={status || 'stable'} />
+            <ComponentResources
+              figma={figma}
+              feedbackTitle={title}
+              github={github}
+            />
+            <TableOfContents toc={mdx.tableOfContents} />
+          </Aside>
+        </Layout>
+      </AppLayout>
+    </>
   )
 }
 
 export default DocumentationLayout
 
-const Meta = styled.div`
-  background: ${({ theme }) => theme.colors.neutralSubtle};
-  height: 100vh;
-  overflow-y: auto;
-  padding: ${(props) => props.theme.space.large};
-  position: sticky;
-  top: 0;
-  width: 17rem;
-
-  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
-    display: none;
-  }
-`
 export const pageQuery = graphql`
   query Doc($id: String) {
     site {

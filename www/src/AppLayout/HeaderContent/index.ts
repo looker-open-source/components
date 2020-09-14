@@ -24,6 +24,4 @@
 
  */
 
-import SidebarToggle from './SidebarToggle'
-
-export default SidebarToggle
+export * from './HeaderContent'

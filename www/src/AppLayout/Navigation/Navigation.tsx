@@ -24,44 +24,34 @@
 
  */
 
-import { lighten } from 'polished'
 import { Location } from '@reach/router'
-import { Box, Sidebar, SidebarProps, SidebarGroup } from '@looker/components'
+import { SidebarGroup } from '@looker/components'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Section from './Section'
 import { LocationContext } from './LocationContext'
 import { NavigationSection } from './types'
-import Header from './Header'
 
 interface NavigationProps {
+  className?: string
   sitemap: NavigationSection[]
-  headerHeight: string
 }
 
-const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
-  <StyledSidebar>
-    <Header height={headerHeight} />
-    <SidebarNavWrapper height={`calc(100% - ${headerHeight})`}>
-      <Location>
-        {({ location }) => (
-          <LocationContext.Provider value={location.pathname}>
-            {sitemap.map((chapter) => (
-              <Section key={chapter.path} section={chapter} />
-            ))}
-          </LocationContext.Provider>
-        )}
-      </Location>
-    </SidebarNavWrapper>
-  </StyledSidebar>
+const NavigationLayout: FC<NavigationProps> = ({ className, sitemap }) => (
+  <nav className={className}>
+    <Location>
+      {({ location }) => (
+        <LocationContext.Provider value={location.pathname}>
+          {sitemap.map((chapter) => (
+            <Section key={chapter.path} section={chapter} />
+          ))}
+        </LocationContext.Provider>
+      )}
+    </Location>
+  </nav>
 )
 
-const SidebarNavWrapper = styled(Box)`
-  overflow-y: auto;
-`
-
-const StyledSidebar = styled(Sidebar)<SidebarProps>`
-  background: ${(props) => lighten(0.6, props.theme.colors.keySubtle)};
+export const Navigation = styled(NavigationLayout)`
   height: 100%;
 
   /* stylelint-disable max-nesting-depth */
@@ -76,7 +66,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
     ${SidebarGroup} {
       border: none;
-      padding: ${(props) => `${props.theme.space.xxsmall} 0`};
+      padding: ${({ theme }) => theme.space.xxsmall} 0;
 
       h2 {
         color: ${(props) => props.theme.colors.text2};
@@ -102,5 +92,3 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
     /* stylelint-enable max-nesting-depth */
   }
 `
-
-export default Navigation

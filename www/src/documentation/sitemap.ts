@@ -24,7 +24,7 @@
 
  */
 
-import { NavigationSection } from '../Layout'
+import { NavigationSection } from '../AppLayout'
 
 import gettingStarted from './getting-started/navigation'
 import principles from './principles/navigation'

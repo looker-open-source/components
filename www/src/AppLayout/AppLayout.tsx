@@ -24,22 +24,43 @@
 
  */
 
-import { ComponentsProvider, theme } from '@looker/components'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import {
+  Aside,
+  ComponentsProvider,
+  Page,
+  Section,
+  Header,
+  Layout,
+} from '@looker/components'
 import { MDXProvider } from '@mdx-js/react'
+import sitemap from '../documentation/sitemap'
 import { Props } from '../Shared'
 import MDXComponents from '../MDX'
+import { HeaderContent } from './HeaderContent'
+import { Navigation } from './Navigation'
 
-const newTheme = { ...theme, zIndexFloor: 1 }
+export const AppLayout: FC = ({ children }) => {
+  const [showNavigation, setNavigation] = useState(true)
+  const toggleNavigation = () => setNavigation(!showNavigation)
 
-const all = { ...MDXComponents, Props }
-
-const Page: FC = ({ children }) => {
   return (
-    <ComponentsProvider theme={newTheme} loadGoogleFonts>
-      <MDXProvider components={all}>{children}</MDXProvider>
+    <ComponentsProvider loadGoogleFonts>
+      <MDXProvider components={{ ...MDXComponents, Props }}>
+        <Page>
+          <Header>
+            <HeaderContent toggleNavigation={toggleNavigation} />
+          </Header>
+          <Layout hasAside>
+            {showNavigation && (
+              <Aside width="18rem">
+                <Navigation sitemap={sitemap} />
+              </Aside>
+            )}
+            <Section>{children}</Section>
+          </Layout>
+        </Page>
+      </MDXProvider>
     </ComponentsProvider>
   )
 }
-
-export default Page

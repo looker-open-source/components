@@ -24,7 +24,7 @@
 
  */
 
-import { NavigationSection } from '../../Layout'
+import { NavigationSection } from '../../AppLayout'
 const navigation: NavigationSection = {
   children: [
     {
