@@ -24,7 +24,16 @@
 
  */
 
-import { Space, IconButton, Heading, Icon } from '@looker/components'
+import {
+  Heading,
+  Icon,
+  IconButton,
+  InputSearch,
+  Link,
+  List,
+  ListItem,
+  Space,
+} from '@looker/components'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
@@ -37,30 +46,64 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   className,
   toggleNavigation,
 }) => (
-  <Space className={className} px="medium">
+  <Space alignItems="center" className={className}>
     <IconButton
       icon="Hamburger"
-      onClick={toggleNavigation}
       label="Toggle navigation"
+      onClick={toggleNavigation}
     />
-
-    <a href="/">
-      <LookerLogo name="LookerLogo" alt="Looker" />
-      <Heading fontSize="large" as="h1">
+    <Link href="/">
+      <Icon name="LookerLogo" alt="Looker" />
+      <Heading pl="xxsmall" pt="xxxsmall" fontSize="medium" as="h1">
         Components
       </Heading>
-    </a>
+    </Link>
+    <InputSearch mx="large" placeholder="Search Looker Components" />
+    <nav>
+      <List>
+        <ListItem>
+          <Link>Starting</Link>
+        </ListItem>
+        <ListItem>
+          <Link>Components</Link>
+        </ListItem>
+        <ListItem>
+          <Link>Patterns</Link>
+        </ListItem>
+        <ListItem>
+          <Link>Foundation</Link>
+        </ListItem>
+      </List>
+    </nav>
   </Space>
 )
 
-const LookerLogo = styled(Icon)``
-
 export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
-  height: 100%;
+  height: 4rem;
+  width: 100%;
 
-  ${LookerLogo} {
+  ${Icon} {
     height: 26px;
     width: 60px;
+  }
+
+  ${IconButton} {
+    padding: 0 ${({ theme }) => theme.space.medium};
+  }
+
+  ${List} {
+    display: flex;
+  }
+
+  ${ListItem} {
+    padding-right: ${({ theme }) => theme.space.medium};
+  }
+
+  ${Link} {
+    color: ${({ theme }) => theme.colors.text5};
+    display: inline-flex;
+    font-size: ${({ theme }) => theme.fontSizes.xsmall};
+    text-decoration: none;
   }
 `
