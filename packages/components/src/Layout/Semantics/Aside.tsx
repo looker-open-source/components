@@ -25,10 +25,15 @@
  */
 
 import styled from 'styled-components'
-import { WidthProps } from 'styled-system'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
-export interface AsideProps extends SemanticLayoutBase, WidthProps {}
+export interface AsideProps extends SemanticLayoutBase {
+  /**
+   * Specify width of aside
+   * @default '12rem'
+   */
+  width?: string
+}
 
 export const Aside = styled.aside<AsideProps>`
   ${semanticLayoutCSS}

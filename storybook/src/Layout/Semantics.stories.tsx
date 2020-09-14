@@ -111,7 +111,7 @@ export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
           <Header>Header</Header>
           <Layout>
             <Layout hasAside>
-              <Main>Section</Main>
+              <Main>Main</Main>
               <Aside width="40%">Aside</Aside>
             </Layout>
           </Layout>

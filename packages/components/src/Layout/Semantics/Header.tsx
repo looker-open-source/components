@@ -31,12 +31,7 @@ import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 // import { LayoutContext } from './LayoutContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface HeaderProps extends SemanticLayoutBase, HeightProps {
-  /**
-   * Fix position of header (don't scroll with page content)
-   */
-  isFixed?: boolean
-}
+export interface HeaderProps extends SemanticLayoutBase, HeightProps {}
 
 export const headerFooterCSS = css`
   ${semanticLayoutCSS}
@@ -46,17 +41,6 @@ export const headerFooterCSS = css`
   display: flex;
   flex: 0 0 auto;
 `
-
-// const HeaderLayout = forwardRef(
-//   ({ isFixed, ...props }: HeaderProps, ref: Ref<HTMLElement>) => {
-//     // const { registerFixed } = useContext(LayoutContext)
-//     // isFixed && registerFixed()
-
-//     return <header {...props} ref={ref} />
-//   }
-// )
-
-// HeaderLayout.displayName = 'HeaderLayout'
 
 export const Header = styled.header<HeaderProps>`
   ${headerFooterCSS}

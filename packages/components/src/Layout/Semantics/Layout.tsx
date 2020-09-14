@@ -35,9 +35,7 @@ export interface LayoutProps
    * Supports scroll
    * @default true
    */
-  supportsScroll?: boolean
   hasAside?: boolean
-  isFixed?: boolean
 }
 
 export const Layout = styled.div<LayoutProps>`
@@ -46,12 +44,5 @@ export const Layout = styled.div<LayoutProps>`
   display: flex;
   flex-direction: ${({ hasAside }) => (hasAside ? 'row' : 'column')};
   height: 100%;
-  /* width: ${({ hasAside }) => hasAside && '100%'}; */
   width: 100%;
 `
-
-/* @TODO:
-  Layout is child of <layout isFixed>
-  flex: 1 0 auto;
-  height: 0;
-  overflow: auto; */
