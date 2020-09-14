@@ -197,7 +197,6 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyUp={handleKeyUp}
         ref={itemRef}
         tabIndex={onClick ? 0 : -1}
-        py="xxsmall"
         {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
@@ -246,6 +245,8 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   height: 100%;
   max-width: 100%;
   outline: none;
+  padding-bottom: ${({ theme }) => theme.space.xxsmall};
+  padding-top: ${({ theme }) => theme.space.xxsmall};
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
