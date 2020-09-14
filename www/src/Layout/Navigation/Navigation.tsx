@@ -26,41 +26,33 @@
 
 import { lighten } from 'polished'
 import { Location } from '@reach/router'
-import { Box, Sidebar, SidebarProps, SidebarGroup } from '@looker/components'
+import { SidebarGroup } from '@looker/components'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Section from './Section'
 import { LocationContext } from './LocationContext'
 import { NavigationSection } from './types'
-import Header from './Header'
 
 interface NavigationProps {
   sitemap: NavigationSection[]
-  headerHeight: string
+  className?: string
 }
 
-const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
-  <StyledSidebar>
-    <Header height={headerHeight} />
-    <SidebarNavWrapper height={`calc(100% - ${headerHeight})`}>
-      <Location>
-        {({ location }) => (
-          <LocationContext.Provider value={location.pathname}>
-            {sitemap.map((chapter) => (
-              <Section key={chapter.path} section={chapter} />
-            ))}
-          </LocationContext.Provider>
-        )}
-      </Location>
-    </SidebarNavWrapper>
-  </StyledSidebar>
+const NavigationLayout: FC<NavigationProps> = ({ className, sitemap }) => (
+  <nav className={className}>
+    <Location>
+      {({ location }) => (
+        <LocationContext.Provider value={location.pathname}>
+          {sitemap.map((chapter) => (
+            <Section key={chapter.path} section={chapter} />
+          ))}
+        </LocationContext.Provider>
+      )}
+    </Location>
+  </nav>
 )
 
-const SidebarNavWrapper = styled(Box)`
-  overflow-y: auto;
-`
-
-const StyledSidebar = styled(Sidebar)<SidebarProps>`
+export const Navigation = styled(NavigationLayout)`
   background: ${(props) => lighten(0.6, props.theme.colors.keySubtle)};
   height: 100%;
 
@@ -76,7 +68,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
     ${SidebarGroup} {
       border: none;
-      padding: ${(props) => `${props.theme.space.xxsmall} 0`};
+      padding: ${(props) => `${props.theme.space.xxsmall}`} 0;
 
       h2 {
         color: ${(props) => props.theme.colors.text2};

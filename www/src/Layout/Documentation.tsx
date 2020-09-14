@@ -29,16 +29,9 @@ import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import {
-  Heading,
-  Divider,
-  Flex,
-  ListItem,
-  Link,
-  List,
-} from '@looker/components'
+import { Heading, Divider, ListItem, Link, List } from '@looker/components'
 import { ComponentResources, ComponentStatus, Props } from '../Shared'
-import Layout, { LayoutMain } from './Layout'
+import { Layout } from './Layout'
 
 interface TableOfContents {
   items?: [
@@ -75,9 +68,7 @@ const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
 
   const sections = toc.items.map(({ url, title }) => (
     <ListItem fontSize="small" key={url} my="medium">
-      <Link color="neutralInteractive" href={url}>
-        {title}
-      </Link>
+      <Link href={url}>{title}</Link>
     </ListItem>
   ))
 
@@ -95,25 +86,21 @@ const DocumentationLayout = (props: DocQuery) => {
 
   return (
     <Layout>
-      <Flex>
-        <LayoutMain>
-          <Helmet title={`${title} - ${site.siteMetadata.title}`} />
-          <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
-            {title}
-          </Heading>
-          {propsOf && <Props of={propsOf} />}
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </LayoutMain>
-        <Meta>
-          <ComponentStatus status={status || 'stable'} />
-          <ComponentResources
-            figma={figma}
-            feedbackTitle={title}
-            github={github}
-          />
-          <TableOfContents toc={mdx.tableOfContents} />
-        </Meta>
-      </Flex>
+      <Helmet title={`${title} - ${site.siteMetadata.title}`} />
+      <Heading as="h1" fontSize="xxxxlarge">
+        {title}
+      </Heading>
+      {propsOf && <Props of={propsOf} />}
+      <MDXRenderer>{mdx.body}</MDXRenderer>
+      <Meta>
+        <ComponentStatus status={status || 'stable'} />
+        <ComponentResources
+          figma={figma}
+          feedbackTitle={title}
+          github={github}
+        />
+        <TableOfContents toc={mdx.tableOfContents} />
+      </Meta>
     </Layout>
   )
 }
@@ -128,10 +115,6 @@ const Meta = styled.div`
   position: sticky;
   top: 0;
   width: 17rem;
-
-  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
-    display: none;
-  }
 `
 export const pageQuery = graphql`
   query Doc($id: String) {
