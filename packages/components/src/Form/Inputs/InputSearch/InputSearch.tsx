@@ -24,8 +24,9 @@
 
  */
 
-import React, { forwardRef, Ref, FormEvent } from 'react'
+import React, { forwardRef, Ref, FormEvent, useState } from 'react'
 import styled from 'styled-components'
+import { useControlWarn } from '../../../utils'
 import { SelectProps } from '../Select'
 
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
@@ -42,14 +43,23 @@ export interface InputSearchProps
     SelectProps,
     'isFilterable' | 'onFilter' | 'showCreate' | 'formatCreateLabel'
   > {
-  summary?: string
   hideSearchIcon?: boolean
+  /**
+   * Called when the user selects one of the options
+   * onChange will also be called with the option's value unless changeOnSelect is set to false
+   */
   onSelectOption?: (option?: SelectOptionObject) => void
   /**
    * Selecting an option updates the input's value
    * @default true
    */
   changeOnSelect?: boolean
+  /**
+   * Clear the input value when the option list closes
+   * Defaults to the inverse of changeOnSelect
+   * @default false
+   */
+  clearOnClose?: boolean
 }
 
 const InputSearchLayout = forwardRef(
@@ -62,36 +72,58 @@ const InputSearchLayout = forwardRef(
       name,
       onChange,
       onSelectOption,
-      value,
+      value: controlledValue,
       defaultValue,
       noOptionsLabel,
       indicator,
       listLayout,
       autoResize,
       windowedOptions: windowedOptionsProp,
+      isLoading,
       hideSearchIcon,
+      summary,
       changeOnSelect = true,
+      clearOnClose = !changeOnSelect,
       ...props
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const matchingOption = getMatchingOption(value, options)
+    const isControlled = useControlWarn({
+      controllingProps: ['value'],
+      isControlledCheck: () => controlledValue !== undefined,
+      name: 'InputSearch',
+    })
+    const [value, setValue] = useState(defaultValue || '')
+    const valueToUse = isControlled ? controlledValue : value
+
+    const matchingOption = getMatchingOption(valueToUse, options)
     const optionValue = matchingOption || { value: '' }
+
+    function updateValue(newValue: string) {
+      if (onChange) {
+        onChange(newValue)
+      }
+      if (!isControlled) {
+        setValue(newValue)
+      }
+    }
 
     function handleChange(option?: SelectOptionObject) {
       onSelectOption && onSelectOption(option)
-      if (changeOnSelect && onChange) {
-        onChange(option?.value || '')
+      if (changeOnSelect) {
+        updateValue(option?.value || '')
       }
     }
 
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      onChange && onChange(e.currentTarget.value)
+      updateValue(e.currentTarget.value)
     }
 
     function handleClose() {
-      // when the list closes, the input's value reverts to the current option
-      // onFilter && onFilter('')
+      if (clearOnClose) {
+        // when the list closes, the input's value reverts to the current option
+        updateValue('')
+      }
     }
 
     const ariaProps = pickAriaAndValidationProps(props)
@@ -110,8 +142,7 @@ const InputSearchLayout = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          value={value}
-          defaultValue={defaultValue}
+          value={valueToUse}
           iconBefore={hideSearchIcon ? undefined : 'Search'}
           disabled={disabled}
           placeholder={placeholder}
@@ -122,6 +153,7 @@ const InputSearchLayout = forwardRef(
           autoResize={autoResize}
           onChange={handleInputChange}
           freeInput
+          summary={summary}
           ref={ref}
         />
         {!disabled && (options?.length || noOptionsLabel) && (
@@ -139,6 +171,7 @@ const InputSearchLayout = forwardRef(
               windowedOptions={windowedOptions}
               isFilterable
               noOptionsLabel={noOptionsLabel}
+              isLoading={isLoading}
             />
           </ComboboxList>
         )}

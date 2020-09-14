@@ -77,7 +77,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           color="text1"
           fontSize="small"
           style={{ whiteSpace: 'nowrap' }}
-          pr="xsmall"
+          pr="xxsmall"
         >
           {summary}
         </Text>

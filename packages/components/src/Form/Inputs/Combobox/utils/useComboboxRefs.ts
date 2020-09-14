@@ -55,10 +55,12 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   const windowedOptionsPropRef = useRef(false)
   const isAutoScrollingRef = useRef(false)
   const indicatorPropRef = useRef(false)
+  const freeInputPropRef = useRef(false)
 
   return {
     autoCompletePropRef,
     closeOnSelectPropRef,
+    freeInputPropRef,
     indicatorPropRef,
     isAutoScrollingRef,
     listRef,
@@ -69,10 +71,4 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
     windowedOptionsPropRef,
     wrapperElement,
   }
-}
-
-export function useComboboxMultiRefs(forwardedRef: Ref<HTMLDivElement>) {
-  const refs = useComboboxRefs(forwardedRef)
-  const freeInputPropRef = useRef(false)
-  return { ...refs, freeInputPropRef }
 }
