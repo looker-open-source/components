@@ -66,6 +66,7 @@ export interface ComboboxContextProps<
   closeOnSelectPropRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   windowedOptionsPropRef?: MutableRefObject<boolean>
+  freeInputPropRef?: MutableRefObject<boolean>
   isAutoScrollingRef?: MutableRefObject<boolean>
   indicatorPropRef?: MutableRefObject<ComboboxOptionIndicatorProps['indicator']>
   isVisible?: boolean
@@ -77,14 +78,11 @@ export interface ComboboxContextProps<
   setListClientRect?: Dispatch<SetStateAction<DOMRect | undefined>>
 }
 
-export interface ComboboxMultiContextProps
-  extends ComboboxContextProps<
-    ComboboxMultiData,
-    ComboboxMultiCallback,
-    ComboboxTransition<ComboboxMultiActionPayload>
-  > {
-  freeInputPropRef?: MutableRefObject<boolean>
-}
+export type ComboboxMultiContextProps = ComboboxContextProps<
+  ComboboxMultiData,
+  ComboboxMultiCallback,
+  ComboboxTransition<ComboboxMultiActionPayload>
+>
 
 export const defaultData: ComboboxData = {
   // the value the user has typed, we derived this also when the developer is

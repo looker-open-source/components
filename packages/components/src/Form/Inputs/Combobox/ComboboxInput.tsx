@@ -83,6 +83,7 @@ export interface ComboboxInputProps
     ComboboxInputCommonProps {
   value?: string
   defaultValue?: string
+  summary?: string
 }
 
 export const ComboboxInputInternal = forwardRef(
@@ -99,6 +100,7 @@ export const ComboboxInputInternal = forwardRef(
       disabled,
       isClearable,
       freeInput,
+      summary,
       ...rest
     } = props
 
@@ -198,6 +200,7 @@ export const ComboboxInputInternal = forwardRef(
             isVisibleOptions={isVisible}
             disabled={disabled}
             hasOptions={!freeInput}
+            summary={summary}
           />
         }
         ref={ref}

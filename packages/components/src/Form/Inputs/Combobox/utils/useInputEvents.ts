@@ -153,7 +153,14 @@ export function useInputEvents<
         selectText()
       }
     },
-    [disabled, persistSelectionPropRef, state, selectText, transition]
+    [
+      disabled,
+      openOnClick,
+      persistSelectionPropRef,
+      state,
+      selectText,
+      transition,
+    ]
   )
 
   const handleMouseUp = useCallback(

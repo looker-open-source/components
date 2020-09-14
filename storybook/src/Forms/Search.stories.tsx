@@ -71,6 +71,8 @@ export const Advanced = () => {
       value={value}
       onChange={setValue}
       options={[{ value: 'Foo' }, { value: 'Bar' }]}
+      noOptionsLabel="Nothing matched your search"
+      isLoading
     />
   )
 }
