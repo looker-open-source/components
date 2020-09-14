@@ -274,6 +274,7 @@ exports[`TextArea should accept disabled 1`] = `
   width: 100%;
   background: #F5F6F7;
   color: #939BA5;
+  cursor: default;
 }
 
 .c0 textarea:hover {
