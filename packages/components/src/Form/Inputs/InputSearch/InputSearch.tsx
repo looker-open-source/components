@@ -43,6 +43,10 @@ export interface InputSearchProps
     SelectProps,
     'isFilterable' | 'onFilter' | 'showCreate' | 'formatCreateLabel'
   > {
+  /**
+   * @default false
+   */
+  isClearable?: boolean
   hideSearchIcon?: boolean
   /**
    * Called when the user selects one of the options
@@ -144,6 +148,7 @@ const InputSearchLayout = forwardRef(
           {...ariaProps}
           value={valueToUse}
           iconBefore={hideSearchIcon ? undefined : 'Search'}
+          iconBeforeTitle={hideSearchIcon ? undefined : 'Search'}
           disabled={disabled}
           placeholder={placeholder}
           name={name}
