@@ -24,11 +24,11 @@
 
  */
 
-import React, { forwardRef, Ref, useContext } from 'react'
+// import React, { forwardRef, Ref, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { height, HeightProps } from 'styled-system'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { LayoutContext } from './LayoutContext'
+// import { LayoutContext } from './LayoutContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface HeaderProps extends SemanticLayoutBase, HeightProps {
@@ -47,17 +47,17 @@ export const headerFooterCSS = css`
   flex: 0 0 auto;
 `
 
-const HeaderLayout = forwardRef(
-  ({ isFixed, ...props }: HeaderProps, ref: Ref<HTMLElement>) => {
-    // const { registerFixed } = useContext(LayoutContext)
-    // isFixed && registerFixed()
+// const HeaderLayout = forwardRef(
+//   ({ isFixed, ...props }: HeaderProps, ref: Ref<HTMLElement>) => {
+//     // const { registerFixed } = useContext(LayoutContext)
+//     // isFixed && registerFixed()
 
-    return <header {...props} ref={ref} />
-  }
-)
+//     return <header {...props} ref={ref} />
+//   }
+// )
 
-HeaderLayout.displayName = 'HeaderLayout'
+// HeaderLayout.displayName = 'HeaderLayout'
 
-export const Header = styled(HeaderLayout)`
+export const Header = styled.header<HeaderProps>`
   ${headerFooterCSS}
 `

@@ -25,25 +25,20 @@
  */
 
 import styled from 'styled-components'
-import React, { forwardRef, Ref, useContext } from 'react'
-import { width, WidthProps } from 'styled-system'
-import { LayoutContext } from './LayoutContext'
+// import React, { forwardRef, Ref, useContext } from 'react'
+import { WidthProps } from 'styled-system'
+// import { LayoutContext } from './LayoutContext'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 export interface AsideProps extends SemanticLayoutBase, WidthProps {}
 
-const AsideLayout = forwardRef((props: AsideProps, ref: Ref<HTMLElement>) => {
-  const { registerAside } = useContext(LayoutContext)
-  registerAside()
-
-  return <aside {...props} ref={ref} />
-})
-
-AsideLayout.displayName = 'AsideLayout'
-
-export const Aside = styled(AsideLayout)`
+export const Aside = styled.aside<AsideProps>`
   ${semanticLayoutCSS}
-  ${width}
+
+  flex: 0 0 ${({ width }) => width};
+  max-width: ${({ width }) => width};
+  min-width: ${({ width }) => width};
+  width: 0;
 `
 
 Aside.defaultProps = { width: '12rem' }

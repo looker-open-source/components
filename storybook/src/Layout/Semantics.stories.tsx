@@ -25,7 +25,15 @@
  */
 
 import React from 'react'
-import { Layout, Header, Aside, Main, Footer, Grid } from '@looker/components'
+import {
+  Layout,
+  Header,
+  Aside,
+  Main,
+  Footer,
+  Grid,
+  Section,
+} from '@looker/components'
 import styled from 'styled-components'
 
 export default {
@@ -33,86 +41,93 @@ export default {
 }
 
 export const All = () => (
-  <Highlighter columns={3}>
+  <CustomGrid columns={3}>
     <HeaderLayoutAsideMain />
     <AsideMainFooter />
     <HeaderLayoutAsideMainFooter />
     <AsideLayoutHeaderMainFooter />
     <AsideLayoutHeaderLayoutLayoutMainAsideFooter />
-  </Highlighter>
+  </CustomGrid>
 )
 
 export const HeaderLayoutAsideMain = () => (
-  <Layout>
-    <Header>Header</Header>
+  <Highlighter>
     <Layout>
-      <Aside width="20%">Aside</Aside>
-      <Main>Main</Main>
+      <Header>Header</Header>
+      <Layout hasAside>
+        <Aside width="20%">Aside</Aside>
+        <Main>Main</Main>
+      </Layout>
     </Layout>
-  </Layout>
+  </Highlighter>
 )
 
 export const HeaderLayoutAsideMainFooter = () => (
-  <Layout>
-    <Header>Header</Header>
+  <Highlighter>
     <Layout>
-      <Aside width="20%">Aside</Aside>
-      <Main>Main</Main>
+      <Header>Header</Header>
+      <Layout hasAside>
+        <Aside width="20%">Aside</Aside>
+        <Main>Main</Main>
+      </Layout>
+      <Footer>Footer</Footer>
     </Layout>
-    <Footer>Footer</Footer>
-  </Layout>
+  </Highlighter>
 )
 
 export const AsideMainFooter = () => (
-  <Layout>
+  <Highlighter>
     <Layout>
-      <Aside width="20%">Aside</Aside>
-      <Main>Main</Main>
+      <Layout hasAside>
+        <Aside width="20%">Aside</Aside>
+        <Main>Main</Main>
+      </Layout>
+      <Footer>Footer</Footer>
     </Layout>
-    <Footer>Footer</Footer>
-  </Layout>
+  </Highlighter>
 )
 
 export const AsideLayoutHeaderMainFooter = () => (
-  <Layout>
+  <Highlighter>
     <Layout>
-      <Aside width="20%">Aside</Aside>
-      <Layout>
-        <Header>Header</Header>
-        <Main>Main</Main>
-        <Footer>Footer</Footer>
+      <Layout hasAside>
+        <Aside width="20%">Aside</Aside>
+        <Layout>
+          <Header>Header</Header>
+          <Main>Main</Main>
+          <Footer>Footer</Footer>
+        </Layout>
       </Layout>
     </Layout>
-  </Layout>
+  </Highlighter>
 )
 
 export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
-  <Layout>
+  <Highlighter>
     <Layout>
-      <Aside width="20%">Aside</Aside>
-      <Layout>
-        <Header>Header</Header>
+      <Layout hasAside>
+        <Aside width="20%">Aside</Aside>
         <Layout>
+          <Header>Header</Header>
           <Layout>
-            <Main>Section</Main>
-            <Aside width="40%">Aside</Aside>
+            <Layout hasAside>
+              <Main>Section</Main>
+              <Aside width="40%">Aside</Aside>
+            </Layout>
           </Layout>
+          <Footer>Footer</Footer>
         </Layout>
-        <Footer>Footer</Footer>
       </Layout>
     </Layout>
-  </Layout>
+  </Highlighter>
 )
 
-const Highlighter = styled(Grid)`
+const CustomGrid = styled(Grid)`
   grid-auto-rows: 12rem;
+`
 
+const Highlighter = styled.div`
   /* stylelint-disable color-named */
-
-  ${Aside}, ${Footer}, ${Header}, ${Main} {
-    color: white;
-  }
-
   ${Header}, ${Footer} {
     background-color: lightskyblue;
   }
@@ -121,7 +136,7 @@ const Highlighter = styled(Grid)`
     background-color: lightsalmon;
   }
 
-  ${Main} {
+  ${Main}, ${Section} {
     background-color: lightseagreen;
   }
 `

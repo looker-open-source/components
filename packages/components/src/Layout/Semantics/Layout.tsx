@@ -26,9 +26,7 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { forwardRef, Ref, useState } from 'react'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { LayoutContext } from './LayoutContext'
 
 export interface LayoutProps
   extends SimpleLayoutProps,
@@ -38,53 +36,19 @@ export interface LayoutProps
    * @default true
    */
   supportsScroll?: boolean
+  hasAside?: boolean
+  isFixed?: boolean
 }
 
-const LayoutLayout = forwardRef(
-  (props: LayoutProps, ref: Ref<HTMLDivElement>) => {
-    const [hasAside, setHasAside] = useState(false)
-    /**
-     * registerAside doesn't need to update state value if an aside has already been registered.
-     *
-     * May eventually need to explore named-asides so that asides can be "unregistered" by
-     * identifier but initial implementation doesn't need to support that.
-     */
-    const registerAside = () => setHasAside(true)
-
-    const [isFixed, setIsFixed] = useState(false)
-    const registerFixed = () => setIsFixed(true)
-
-    return (
-      <LayoutContext.Provider
-        value={{ hasAside, isFixed, registerAside, registerFixed }}
-      >
-        <LayoutStyle
-          {...props}
-          isFixed={isFixed}
-          hasAside={hasAside}
-          ref={ref}
-        />
-      </LayoutContext.Provider>
-    )
-  }
-)
-
-LayoutLayout.displayName = 'LayoutLayout'
-
-interface LayoutStyleProps extends LayoutProps {
-  hasAside: boolean
-  isFixed: boolean
-}
-
-const LayoutStyle = styled.div<LayoutStyleProps>`
+export const Layout = styled.div<LayoutProps>`
   ${simpleLayoutCSS}
 
   display: flex;
   flex-direction: ${({ hasAside }) => (hasAside ? 'row' : 'column')};
-  width: ${({ hasAside }) => hasAside && '100%'};
+  height: 100%;
+  /* width: ${({ hasAside }) => hasAside && '100%'}; */
+  width: 100%;
 `
-
-export const Layout = styled(LayoutLayout)``
 
 /* @TODO:
   Layout is child of <layout isFixed>
