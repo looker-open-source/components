@@ -31,47 +31,61 @@ import {
   AccordionContent,
   AccordionDisclosure,
   List,
+  Heading,
 } from '@looker/components'
+import styled from 'styled-components'
 import { NavigationSection } from './types'
-import Page, { pathToUri } from './Page'
+import { Page, pathToUri } from './Page'
 
 interface SectionProps {
   section: NavigationSection
   path?: string[]
 }
 
-const Section: FC<SectionProps> = ({ path = [], section }) => {
+export const Section: FC<SectionProps> = ({ path = [], section }) => {
   const location = useLocation()
   const currentPath = location.pathname
-
   const sectionPath = [...path, section.path]
 
-  const navigationChildren = section.children.map((child) => {
-    const uri = pathToUri([...path, child.path])
+  const navigationItems = section.children.map((child) => {
+    const uri = pathToUri([...sectionPath, child.path])
 
-    return (child as NavigationSection).children ? (
-      <Section
-        key={uri}
-        section={child as NavigationSection}
-        path={sectionPath}
-      />
-    ) : (
-      <Page key={uri} path={sectionPath} page={child} />
-    )
+    if ((child as NavigationSection).children) {
+      return (
+        <Accordion
+          key={uri}
+          indicatorColor="text1"
+          indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
+          isOpen={currentPath.startsWith(uri)}
+        >
+          <AccordionDisclosure>
+            <Heading variant="secondary" as="h4" fontFamily="body">
+              {child.title}
+            </Heading>
+          </AccordionDisclosure>
+          <AccordionContent>
+            <PageList pl="xxsmall">
+              <Section
+                path={sectionPath}
+                section={child as NavigationSection}
+              />
+            </PageList>
+          </AccordionContent>
+        </Accordion>
+      )
+    } else {
+      return <Page key={uri} path={sectionPath} page={child} />
+    }
   })
 
-  return (
-    <Accordion indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}>
-      <AccordionDisclosure
-        showChildren={currentPath.startsWith(pathToUri(sectionPath))}
-      >
-        {section.title}
-      </AccordionDisclosure>
-      <AccordionContent>
-        <List>{navigationChildren}</List>
-      </AccordionContent>
-    </Accordion>
-  )
+  return <PageList>{navigationItems}</PageList>
 }
 
-export default Section
+const PageList = styled(List)`
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  margin-bottom: ${({ theme }) => theme.space.small};
+
+  li {
+    line-height: 1.75;
+  }
+`

@@ -49,6 +49,7 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
   children,
   className,
   isOpen,
+  indicatorColor,
   indicatorIcons,
   indicatorPosition,
   indicatorSize,
@@ -56,6 +57,7 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
   const indicator = (
     <Indicator>
       <Icon
+        color={indicatorColor}
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />

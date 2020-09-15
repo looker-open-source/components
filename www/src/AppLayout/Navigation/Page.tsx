@@ -24,26 +24,26 @@
 
  */
 
-import { Badge, Link, ListItem } from '@looker/components'
-import { useLocation } from '@reach/router'
-import { withPrefix } from 'gatsby'
+import { Badge, ListItem } from '@looker/components'
+import styled from 'styled-components'
+import { Link, withPrefix } from 'gatsby'
 import React, { FC } from 'react'
 import { NavigationPage } from './types'
 
 interface PageProps {
+  className?: string
   page: NavigationPage
   path: string[]
 }
 
 export const pathToUri = (path: string[]) => withPrefix(`/${path.join('/')}`)
 
-const Page: FC<PageProps> = ({ page, path }) => {
-  const location = useLocation()
+const PageLayout: FC<PageProps> = ({ className, page, path }) => {
   const uri = pathToUri([...path, page.path])
 
   return (
-    <ListItem>
-      <Link href={uri} current={location.pathname === `${uri}/`}>
+    <ListItem className={className}>
+      <Link to={uri} partiallyActive activeClassName="active">
         {page.title}
         {page.detail && <Badge>{page.detail}</Badge>}
       </Link>
@@ -51,4 +51,12 @@ const Page: FC<PageProps> = ({ page, path }) => {
   )
 }
 
-export default Page
+export const Page = styled(PageLayout)`
+  a {
+    color: ${({ theme }) => theme.colors.link};
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.linkInteractive};
+    }
+  }
+`

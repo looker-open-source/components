@@ -27,16 +27,9 @@
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import {
-  Accordion,
-  AccordionDisclosure,
-  Aside,
-  AsideProps,
-  Link,
-  ListItem,
-} from '@looker/components'
+import { Aside, AsideProps, Heading } from '@looker/components'
 import sitemap from '../../documentation/sitemap'
-import Section from './Section'
+import { Section } from './Section'
 
 interface NavigationProps extends AsideProps {
   className?: string
@@ -45,11 +38,14 @@ interface NavigationProps extends AsideProps {
 const NavigationLayout: FC<NavigationProps> = (props) => {
   const location = useLocation()
   const sectionPath = location.pathname.split('/')[1]
-  const chapter = sitemap.find((section) => section.path === sectionPath)
+  const section = sitemap.find((section) => section.path === sectionPath)
 
-  return chapter ? (
-    <Aside as="nav" {...props}>
-      <Section key={chapter.path} section={chapter} />
+  return section ? (
+    <Aside as="nav" {...props} py="xlarge" px="xlarge">
+      <Heading as="h3" mb="medium" fontFamily="body">
+        {section.title}
+      </Heading>
+      <Section section={section} />
     </Aside>
   ) : null
 }
@@ -57,37 +53,4 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
 export const Navigation = styled(NavigationLayout)`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
   height: 100%;
-
-  ${Accordion} {
-    border-bottom: solid 1px ${({ theme }) => theme.colors.keyAccent};
-    cursor: pointer;
-    font-size: ${({ theme }) => theme.fontSizes.small};
-    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.large}`};
-
-    ${AccordionDisclosure} {
-      color: ${({ theme }) => theme.colors.keyPressed};
-    }
-
-    ${Link} {
-      border-radius: 4px;
-      color: ${({ theme }) => theme.colors.text2};
-      font-size: ${({ theme }) => theme.fontSizes.xsmall};
-      text-decoration: none;
-    }
-
-    ${ListItem} {
-      border: none;
-      padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
-
-      &:hover {
-        background-color: ${({ theme }) => theme.colors.keySubtle};
-      }
-      &:active {
-        ${Link} {
-          color: ${({ theme }) => theme.colors.keyPressed};
-          font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-        }
-      }
-    }
-  }
 `

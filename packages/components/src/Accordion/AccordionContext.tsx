@@ -33,6 +33,7 @@ import { IndicatorIcons } from './Accordion'
 export interface AccordionContextProps {
   accordionContentId: string
   accordionDisclosureId: string
+  indicatorColor: string
   indicatorGap: SpacingSizes
   indicatorIcons: IndicatorIcons
   indicatorSize: IconSize
@@ -46,6 +47,7 @@ export interface AccordionContextProps {
 export const accordionContextDefaults: AccordionContextProps = {
   accordionContentId: '',
   accordionDisclosureId: '',
+  indicatorColor: 'text5',
   indicatorGap: 'xsmall',
   indicatorIcons: {
     close: 'CaretDown',

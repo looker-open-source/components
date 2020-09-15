@@ -93,14 +93,21 @@ export const HeaderContent = styled(HeaderContentLayout)`
     }
     a {
       align-items: center;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid transparent;
       color: ${({ theme }) => theme.colors.text4};
       display: flex;
       height: 100%;
       text-decoration: none;
 
-      &.active,
+      &.active {
+        border-bottom-color: currentColor;
+        color: ${({ theme }) => theme.colors.link};
+      }
+
       &:hover {
-        color: ${({ theme }) => theme.colors.key};
+        border-bottom-color: currentColor;
+        color: ${({ theme }) => theme.colors.linkInteractive};
       }
     }
   }

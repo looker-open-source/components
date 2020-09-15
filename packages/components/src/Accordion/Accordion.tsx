@@ -26,7 +26,7 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
+import { SpacingSizes, Colors } from '@looker/design-tokens'
 import { IconNames, IconSize } from '../Icon'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
@@ -63,6 +63,12 @@ export interface AccordionIndicatorProps {
    * @default 'xsmall'
    */
   indicatorIcons?: IndicatorIcons
+
+  /**
+   * Space between label and indicator within disclosure
+   * @default 'text5'
+   */
+  indicatorColor?: Colors
 }
 
 export interface AccordionControlProps {
@@ -126,6 +132,7 @@ const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
   id,
+  indicatorColor,
   indicatorGap,
   indicatorSize,
   indicatorIcons,
@@ -149,6 +156,7 @@ const AccordionLayout: FC<AccordionProps> = ({
     ...accordionContextDefaults,
     accordionContentId: `${accordionId}-content`,
     accordionDisclosureId: `${accordionId}-disclosure`,
+    indicatorColor: indicatorColor || accordionContextDefaults.indicatorColor,
     indicatorGap: indicatorGap || accordionContextDefaults.indicatorGap,
     indicatorIcons: indicatorIcons || accordionContextDefaults.indicatorIcons,
     indicatorPosition:
@@ -176,6 +184,7 @@ export const Accordion = styled(AccordionLayout)`
 `
 
 Accordion.defaultProps = {
+  indicatorColor: accordionContextDefaults.indicatorColor,
   indicatorGap: accordionContextDefaults.indicatorGap,
   indicatorPosition: accordionContextDefaults.indicatorPosition,
   indicatorSize: accordionContextDefaults.indicatorSize,

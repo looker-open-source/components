@@ -36,7 +36,9 @@ test('A default Paragraph component', () => {
 
 test('A Paragraph component resized', () => {
   const component = createWithTheme(
-    <Paragraph fontSize="xxxxlarge">Hello</Paragraph>
+    <Paragraph fontSize="xxxxlarge" color="red">
+      Hello
+    </Paragraph>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
