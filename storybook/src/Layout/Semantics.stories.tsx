@@ -29,7 +29,6 @@ import {
   Layout,
   Header,
   Aside,
-  Main,
   Footer,
   Grid,
   Section,
@@ -56,7 +55,7 @@ export const HeaderLayoutAsideMain = () => (
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
     </Layout>
   </Highlighter>
@@ -68,7 +67,7 @@ export const HeaderLayoutAsideMainFooter = () => (
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
@@ -80,7 +79,7 @@ export const AsideMainFooter = () => (
     <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
@@ -94,7 +93,7 @@ export const AsideLayoutHeaderMainFooter = () => (
         <Aside width="20%">Aside</Aside>
         <Layout>
           <Header>Header</Header>
-          <Main>Main</Main>
+          <Section>Section</Section>
           <Footer>Footer</Footer>
         </Layout>
       </Layout>
@@ -111,7 +110,7 @@ export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
           <Header>Header</Header>
           <Layout>
             <Layout hasAside>
-              <Main>Main</Main>
+              <Section>Section</Section>
               <Aside width="40%">Aside</Aside>
             </Layout>
           </Layout>
