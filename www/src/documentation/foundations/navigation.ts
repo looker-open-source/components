@@ -24,7 +24,37 @@
 
  */
 
-import { createContext } from 'react'
+import { NavigationSection } from '../../AppLayout'
 
-// Deprecate this when Gatsby is using React Router 5 (hooks-edition)
-export const LocationContext = createContext('')
+const navigation: NavigationSection = {
+  children: [
+    {
+      path: 'accessibility',
+      title: 'Accessibility',
+    },
+    {
+      path: 'borders',
+      title: 'Borders & Dividers',
+    },
+    {
+      path: 'breakpoints',
+      title: 'Breakpoints',
+    },
+    {
+      path: 'color',
+      title: 'Color',
+    },
+    {
+      path: 'spacing',
+      title: 'Spacing',
+    },
+    {
+      path: 'typography',
+      title: 'Typography',
+    },
+  ],
+  path: 'foundations',
+  title: 'Foundations',
+}
+
+export default navigation

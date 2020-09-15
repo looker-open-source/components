@@ -28,6 +28,7 @@ import { Flex, IconButton, Space, Grid } from '@looker/components'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import sitemap from '../../documentation/sitemap'
 import { Search } from '../Search'
 import { AppLogo } from './AppLogo'
 
@@ -60,19 +61,18 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
     </Space>
     <Search />
     <Flex as="nav" alignItems="center" ml="auto">
-      <Space as="ul" gap="xlarge" fontSize="medium" fontWeight="semiBold">
-        <li>
-          <Link to="/starting">Develop</Link>
-        </li>
-        <li>
-          <Link to="/foundation">Foundations</Link>
-        </li>
-        <li>
-          <Link to="/components">Components</Link>
-        </li>
-        <li>
-          <Link to="/patterns">Patterns</Link>
-        </li>
+      <Space as="ul" gap="xlarge">
+        {sitemap.map((section) => (
+          <li key={section.path}>
+            <Link
+              partiallyActive
+              activeClassName="active"
+              to={`/${section.path}`}
+            >
+              {section.title}
+            </Link>
+          </li>
+        ))}
       </Space>
     </Flex>
   </Grid>
@@ -82,9 +82,26 @@ export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
 
   nav {
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-weight: ${({ theme }) => theme.fontWeights.normal};
+
+    ul {
+      height: 100%;
+    }
+    li {
+      height: 100%;
+    }
     a {
-      color: ${({ theme }) => theme.colors.text5};
+      align-items: center;
+      color: ${({ theme }) => theme.colors.text4};
+      display: flex;
+      height: 100%;
       text-decoration: none;
+
+      &.active,
+      &:hover {
+        color: ${({ theme }) => theme.colors.key};
+      }
     }
   }
 `

@@ -26,7 +26,6 @@
 
 import React, { FC, useState } from 'react'
 import {
-  Aside,
   ComponentsProvider,
   Page,
   Section,
@@ -34,7 +33,6 @@ import {
   Layout,
 } from '@looker/components'
 import { MDXProvider } from '@mdx-js/react'
-import sitemap from '../documentation/sitemap'
 import { Props } from '../Shared'
 import MDXComponents from '../MDX'
 import { HeaderContent } from './HeaderContent'
@@ -52,11 +50,7 @@ export const AppLayout: FC = ({ children }) => {
             <HeaderContent toggleNavigation={toggleNavigation} />
           </Header>
           <Layout hasAside>
-            {showNavigation && (
-              <Aside width="18rem">
-                <Navigation sitemap={sitemap} />
-              </Aside>
-            )}
+            {showNavigation && <Navigation width="18rem" />}
             <Section>{children}</Section>
           </Layout>
         </Page>
