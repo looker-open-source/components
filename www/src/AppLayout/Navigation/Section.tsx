@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC } from 'react'
+import { useLocation } from '@reach/router'
 import {
   Accordion,
   AccordionContent,
@@ -33,7 +34,6 @@ import {
 } from '@looker/components'
 import { NavigationSection } from './types'
 import Page, { pathToUri } from './Page'
-import { LocationContext } from './LocationContext'
 
 interface SectionProps {
   section: NavigationSection
@@ -41,7 +41,9 @@ interface SectionProps {
 }
 
 const Section: FC<SectionProps> = ({ path = [], section }) => {
-  const currentPath = useContext(LocationContext)
+  const location = useLocation()
+  const currentPath = location.pathname
+
   const sectionPath = [...path, section.path]
 
   const navigationChildren = section.children.map((child) => {

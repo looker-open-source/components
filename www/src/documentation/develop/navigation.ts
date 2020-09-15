@@ -32,6 +32,10 @@ const navigation: NavigationSection = {
       title: 'Installation',
     },
     {
+      path: 'support-levels',
+      title: 'Support Levels',
+    },
+    {
       path: 'extending',
       title: 'Extending',
     },
@@ -48,8 +52,8 @@ const navigation: NavigationSection = {
       title: 'Writing Components',
     },
   ],
-  path: 'getting-started',
-  title: 'Getting Started',
+  path: 'develop',
+  title: 'Develop',
 }
 
 export default navigation
