@@ -244,7 +244,7 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
     case ComboboxActionType.ESCAPE:
       return {
         ...nextState,
-        inputValue: getComboboxText(data.option),
+        inputValue: action.inputValue || getComboboxText(data.option),
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:
@@ -339,10 +339,7 @@ const reducerMulti: Reducer<
     case ComboboxActionType.ESCAPE:
       return {
         ...nextState,
-        inputValue:
-          action.inputValue !== undefined
-            ? action.inputValue
-            : nextState.inputValue,
+        inputValue: action.inputValue || '',
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:

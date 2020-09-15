@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { InputSearch, SpaceVertical } from '@looker/components'
 
 export const All = () => (
@@ -35,6 +35,7 @@ export const All = () => (
     <DefaultValue />
     <NoIcon />
     <AutoResize />
+    <Advanced />
   </SpaceVertical>
 )
 
@@ -64,3 +65,30 @@ export const NoIcon = () => (
 export const AutoResize = () => (
   <InputSearch autoResize placeholder="Resizes to fit value" maxWidth={250} />
 )
+export const Advanced = () => {
+  const [value, setValue] = useState('')
+
+  const options = useMemo(() => {
+    const startingOptions = [
+      {
+        description: 'Really great description',
+        detail: 'so cool',
+        value: 'Foo',
+      },
+      { detail: 'got details?', value: 'Bar' },
+    ]
+    return startingOptions.filter(
+      (option) => option.value.toUpperCase().indexOf(value.toUpperCase()) > -1
+    )
+  }, [value])
+
+  return (
+    <InputSearch
+      value={value}
+      onChange={setValue}
+      options={options}
+      noOptionsLabel="Nothing matched your search"
+      isClearable={false}
+    />
+  )
+}
