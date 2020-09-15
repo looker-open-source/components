@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { InputSearch, SpaceVertical } from '@looker/components'
 
 export const All = () => (
@@ -67,13 +67,28 @@ export const AutoResize = () => (
 )
 export const Advanced = () => {
   const [value, setValue] = useState('')
+
+  const options = useMemo(() => {
+    const startingOptions = [
+      {
+        description: 'Really great description',
+        detail: 'so cool',
+        value: 'Foo',
+      },
+      { detail: 'got details?', value: 'Bar' },
+    ]
+    return startingOptions.filter(
+      (option) => option.value.toUpperCase().indexOf(value.toUpperCase()) > -1
+    )
+  }, [value])
+
   return (
     <InputSearch
       value={value}
       onChange={setValue}
-      options={[{ value: 'Foo' }, { value: 'Bar' }]}
+      options={options}
       noOptionsLabel="Nothing matched your search"
-      isLoading
+      isClearable={false}
     />
   )
 }
