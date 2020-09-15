@@ -26,16 +26,14 @@
 
 import { NavigationSection } from '../AppLayout'
 
-import gettingStarted from './getting-started/navigation'
-import principles from './principles/navigation'
+import develop from './develop/navigation'
 import components from './components/navigation'
-import system from './system/navigation'
+import foundations from './foundations/navigation'
 import utilities from './utilities/navigation'
 
 const sitemap: NavigationSection[] = [
-  gettingStarted,
-  principles,
-  system,
+  develop,
+  foundations,
   components,
   utilities,
 ]

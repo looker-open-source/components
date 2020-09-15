@@ -25,9 +25,9 @@
  */
 
 import { Badge, SidebarItem } from '@looker/components'
+import { useLocation } from '@reach/router'
 import { withPrefix } from 'gatsby'
-import React, { FC, useContext } from 'react'
-import { LocationContext } from './LocationContext'
+import React, { FC } from 'react'
 import { NavigationPage } from './types'
 
 interface PageProps {
@@ -38,11 +38,11 @@ interface PageProps {
 export const pathToUri = (path: string[]) => withPrefix(`/${path.join('/')}`)
 
 const Page: FC<PageProps> = ({ page, path }) => {
-  const currentPath = useContext(LocationContext)
+  const location = useLocation()
   const uri = pathToUri([...path, page.path])
 
   return (
-    <SidebarItem href={uri} current={currentPath === `${uri}/`}>
+    <SidebarItem href={uri} current={location.pathname === `${uri}/`}>
       {page.title}
       {page.detail && <Badge>{page.detail}</Badge>}
     </SidebarItem>

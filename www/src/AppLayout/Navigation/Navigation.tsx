@@ -24,32 +24,28 @@
 
  */
 
-import { Location } from '@reach/router'
-import { SidebarGroup } from '@looker/components'
-import styled from 'styled-components'
+import { Aside, AsideProps, SidebarGroup } from '@looker/components'
+import { useLocation } from '@reach/router'
 import React, { FC } from 'react'
+import styled from 'styled-components'
+import sitemap from '../../documentation/sitemap'
 import Section from './Section'
-import { LocationContext } from './LocationContext'
-import { NavigationSection } from './types'
 
-interface NavigationProps {
+interface NavigationProps extends AsideProps {
   className?: string
-  sitemap: NavigationSection[]
 }
 
-const NavigationLayout: FC<NavigationProps> = ({ className, sitemap }) => (
-  <nav className={className}>
-    <Location>
-      {({ location }) => (
-        <LocationContext.Provider value={location.pathname}>
-          {sitemap.map((chapter) => (
-            <Section key={chapter.path} section={chapter} />
-          ))}
-        </LocationContext.Provider>
-      )}
-    </Location>
-  </nav>
-)
+const NavigationLayout: FC<NavigationProps> = (props) => {
+  const location = useLocation()
+  const sectionPath = location.pathname.split('/')[1]
+  const chapter = sitemap.find((section) => section.path === sectionPath)
+
+  return chapter ? (
+    <Aside as="nav" {...props}>
+      <Section key={chapter.path} section={chapter} />
+    </Aside>
+  ) : null
+}
 
 export const Navigation = styled(NavigationLayout)`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
