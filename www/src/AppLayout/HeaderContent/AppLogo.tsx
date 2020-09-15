@@ -24,12 +24,30 @@
 
  */
 
+import { DividerVertical, Heading, Space } from '@looker/components'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { sectionCSS, SectionProps } from './Section'
+import logo from './logo.png'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MainProps extends SectionProps {}
+const AppLogoLayout: FC<{ className?: string }> = (props) => (
+  <a href="/" {...props}>
+    <Space gap="small">
+      <img src={logo} alt="Looker" />
+      <DividerVertical stretch my="none" mx="none" />
+      <Heading fontSize="large" fontWeight="medium" color="text3" as="h1">
+        Components
+      </Heading>
+    </Space>
+  </a>
+)
 
-export const Main = styled.main<MainProps>`
-  ${sectionCSS}
+export const AppLogo = styled(AppLogoLayout)`
+  align-items: center;
+  display: flex;
+  height: 1.5rem;
+
+  img {
+    height: 24px;
+    width: 90;
+  }
 `

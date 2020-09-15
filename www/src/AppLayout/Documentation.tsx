@@ -29,7 +29,7 @@ import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import {
-  Main,
+  Section,
   Layout,
   Aside,
   Heading,
@@ -99,14 +99,19 @@ const DocumentationLayout = (props: DocQuery) => {
       <Helmet title={`${title} - ${site.siteMetadata.title}`} />
       <AppLayout>
         <Layout hasAside>
-          <Main>
+          <Section p="xxlarge">
             <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
               {title}
             </Heading>
             {propsOf && <Props of={propsOf} />}
             <MDXRenderer>{mdx.body}</MDXRenderer>
-          </Main>
-          <Aside background="neutralSubtle" width="17rem">
+          </Section>
+          <Aside
+            px="large"
+            py="xxlarge"
+            background="neutralAccent"
+            width="17rem"
+          >
             <ComponentStatus status={status || 'stable'} />
             <ComponentResources
               figma={figma}

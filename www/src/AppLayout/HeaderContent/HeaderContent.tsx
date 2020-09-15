@@ -24,18 +24,12 @@
 
  */
 
-import {
-  Heading,
-  Icon,
-  IconButton,
-  InputSearch,
-  Link,
-  List,
-  ListItem,
-  Space,
-} from '@looker/components'
+import { Flex, IconButton, Space, Grid } from '@looker/components'
+import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { Search } from '../Search'
+import { AppLogo } from './AppLogo'
 
 interface HeaderProps {
   className?: string
@@ -46,64 +40,51 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   className,
   toggleNavigation,
 }) => (
-  <Space alignItems="center" className={className}>
-    <IconButton
-      icon="Hamburger"
-      label="Toggle navigation"
-      onClick={toggleNavigation}
-    />
-    <Link href="/">
-      <Icon name="LookerLogo" alt="Looker" />
-      <Heading pl="xxsmall" pt="xxxsmall" fontSize="medium" as="h1">
-        Components
-      </Heading>
-    </Link>
-    <InputSearch mx="large" placeholder="Search Looker Components" />
-    <nav>
-      <List>
-        <ListItem>
-          <Link>Starting</Link>
-        </ListItem>
-        <ListItem>
-          <Link>Components</Link>
-        </ListItem>
-        <ListItem>
-          <Link>Patterns</Link>
-        </ListItem>
-        <ListItem>
-          <Link>Foundation</Link>
-        </ListItem>
-      </List>
-    </nav>
-  </Space>
+  <Grid
+    alignItems="center"
+    columns={3}
+    className={className}
+    pl="small"
+    width="100%"
+    height="100%"
+    pr="xlarge"
+  >
+    <Space>
+      <IconButton
+        icon="Hamburger"
+        size="small"
+        label="Toggle navigation"
+        onClick={toggleNavigation}
+      />
+      <AppLogo />
+    </Space>
+    <Search />
+    <Flex as="nav" alignItems="center" ml="auto">
+      <Space as="ul" gap="xlarge" fontSize="medium" fontWeight="semiBold">
+        <li>
+          <Link to="/starting">Develop</Link>
+        </li>
+        <li>
+          <Link to="/foundation">Foundations</Link>
+        </li>
+        <li>
+          <Link to="/components">Components</Link>
+        </li>
+        <li>
+          <Link to="/patterns">Patterns</Link>
+        </li>
+      </Space>
+    </Flex>
+  </Grid>
 )
 
 export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
-  height: 4rem;
-  width: 100%;
 
-  ${Icon} {
-    height: 26px;
-    width: 60px;
-  }
-
-  ${IconButton} {
-    padding: 0 ${({ theme }) => theme.space.medium};
-  }
-
-  ${List} {
-    display: flex;
-  }
-
-  ${ListItem} {
-    padding-right: ${({ theme }) => theme.space.medium};
-  }
-
-  ${Link} {
-    color: ${({ theme }) => theme.colors.text5};
-    display: inline-flex;
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
-    text-decoration: none;
+  nav {
+    a {
+      color: ${({ theme }) => theme.colors.text5};
+      text-decoration: none;
+    }
   }
 `

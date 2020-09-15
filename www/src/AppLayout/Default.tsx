@@ -27,7 +27,7 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import React from 'react'
-import { Heading } from '@looker/components'
+import { Heading, Section } from '@looker/components'
 import { AppLayout } from './AppLayout'
 
 interface PageQuery {
@@ -47,10 +47,12 @@ const DefaultLayout = (props: PageQuery) => {
 
   return (
     <AppLayout>
-      <Heading as="h1" fontSize="xxxxlarge">
-        {title}
-      </Heading>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
+      <Section p="xxlarge">
+        <Heading as="h1" fontSize="xxxxlarge">
+          {title}
+        </Heading>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </Section>
     </AppLayout>
   )
 }

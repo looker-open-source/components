@@ -52,6 +52,7 @@ const NavigationLayout: FC<NavigationProps> = ({ className, sitemap }) => (
 )
 
 export const Navigation = styled(NavigationLayout)`
+  border-right: 1px solid ${({ theme }) => theme.colors.ui2};
   height: 100%;
 
   /* stylelint-disable max-nesting-depth */

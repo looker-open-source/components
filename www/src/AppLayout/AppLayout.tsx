@@ -48,7 +48,7 @@ export const AppLayout: FC = ({ children }) => {
     <ComponentsProvider loadGoogleFonts>
       <MDXProvider components={{ ...MDXComponents, Props }}>
         <Page>
-          <Header>
+          <Header height="4rem">
             <HeaderContent toggleNavigation={toggleNavigation} />
           </Header>
           <Layout hasAside>

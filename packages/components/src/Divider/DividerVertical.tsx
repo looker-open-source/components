@@ -25,6 +25,7 @@
  */
 
 import styled from 'styled-components'
+import { space } from '@looker/design-tokens'
 import { DividerBase, DividerProps } from './Divider'
 
 export interface DividerVerticalProps extends DividerProps {
@@ -43,10 +44,14 @@ export const DividerVertical = styled(DividerBase).attrs(
     return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
   }
 )<DividerVerticalProps>`
+  ${space}
   display: inline-block;
-  margin-left: ${({ theme }) => theme.space.xsmall};
-  margin-right: ${({ theme }) => theme.space.xsmall};
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
     stretch ? `align-self: stretch;` : `height: ${height};`}
 `
+
+DividerVertical.defaultProps = {
+  mx: 'xxsmall',
+  my: 'xsmall',
+}

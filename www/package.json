@@ -14,6 +14,7 @@
     "@types/react-helmet": "^6.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.47",
+    "gatsby-plugin-local-search": "^2.0.0",
     "gatsby-plugin-manifest": "^2.4.28",
     "gatsby-plugin-mdx": "^1.2.37",
     "gatsby-plugin-react-helmet": "^3.3.10",
@@ -29,6 +30,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-live": "^2.2.2",
+    "react-use-flexsearch": "^0.1.1",
     "styled-components": "^4.4.1"
   },
   "scripts": {
