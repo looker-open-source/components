@@ -25,7 +25,12 @@
  */
 
 import React, { FC, useContext } from 'react'
-import { SidebarGroup } from '@looker/components'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
+  List,
+} from '@looker/components'
 import { NavigationSection } from './types'
 import Page, { pathToUri } from './Page'
 import { LocationContext } from './LocationContext'
@@ -54,12 +59,16 @@ const Section: FC<SectionProps> = ({ path = [], section }) => {
   })
 
   return (
-    <SidebarGroup
-      label={section.title}
-      showChildren={currentPath.startsWith(pathToUri(sectionPath))}
-    >
-      {navigationChildren}
-    </SidebarGroup>
+    <Accordion indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}>
+      <AccordionDisclosure
+        showChildren={currentPath.startsWith(pathToUri(sectionPath))}
+      >
+        {section.title}
+      </AccordionDisclosure>
+      <AccordionContent>
+        <List>{navigationChildren}</List>
+      </AccordionContent>
+    </Accordion>
   )
 }
 

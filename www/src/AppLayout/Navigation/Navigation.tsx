@@ -25,9 +25,14 @@
  */
 
 import { Location } from '@reach/router'
-import { SidebarGroup } from '@looker/components'
 import styled from 'styled-components'
 import React, { FC } from 'react'
+import {
+  Accordion,
+  AccordionDisclosure,
+  Link,
+  ListItem,
+} from '@looker/components'
 import Section from './Section'
 import { LocationContext } from './LocationContext'
 import { NavigationSection } from './types'
@@ -55,41 +60,36 @@ export const Navigation = styled(NavigationLayout)`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
   height: 100%;
 
-  /* stylelint-disable max-nesting-depth */
-  h2 {
-    color: ${(props) => props.theme.colors.keyPressed};
-  }
-
-  ${SidebarGroup} {
-    border-bottom: solid 1px ${(props) => props.theme.colors.keyAccent};
+  ${Accordion} {
+    border-bottom: solid 1px ${({ theme }) => theme.colors.keyAccent};
     cursor: pointer;
-    padding: ${(props) =>
-      `${props.theme.space.xsmall} ${props.theme.space.large}`};
-    ${SidebarGroup} {
-      border: none;
-      padding: ${({ theme }) => theme.space.xxsmall} 0;
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.large}`};
 
-      h2 {
-        color: ${(props) => props.theme.colors.text2};
-        font-size: ${(props) => props.theme.fontSizes.xsmall};
-        text-transform: uppercase;
-      }
-
-      svg {
-        display: none;
-      }
+    ${AccordionDisclosure} {
+      color: ${({ theme }) => theme.colors.keyPressed};
     }
 
-    a {
+    ${Link} {
       border-radius: 4px;
-      font-size: ${(props) => props.theme.fontSizes.small};
-      padding: ${(props) =>
-        `${props.theme.space.xsmall} ${props.theme.space.small}`};
+      color: ${({ theme }) => theme.colors.text2};
+      font-size: ${({ theme }) => theme.fontSizes.xsmall};
+      text-decoration: none;
+    }
+
+    ${ListItem} {
+      border: none;
+      padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
 
       &:hover {
-        background-color: ${(props) => props.theme.colors.keySubtle};
+        background-color: ${({ theme }) => theme.colors.keySubtle};
+      }
+      &:active {
+        ${Link} {
+          color: ${({ theme }) => theme.colors.keyPressed};
+          font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+        }
       }
     }
-    /* stylelint-enable max-nesting-depth */
   }
 `
