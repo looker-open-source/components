@@ -114,7 +114,7 @@ describe('InputSearch', () => {
       expect(screen.getByText('summary value')).toBeVisible()
     })
 
-    test('hides when isClearable is false', () => {
+    test('hidden when isClearable is false', () => {
       renderWithTheme(
         <InputSearch
           value="start value"
@@ -125,7 +125,7 @@ describe('InputSearch', () => {
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
-    test('hides when value is empty', () => {
+    test('hidden when value is empty', () => {
       renderWithTheme(<InputSearch />)
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })

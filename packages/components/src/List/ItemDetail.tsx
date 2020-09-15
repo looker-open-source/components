@@ -24,6 +24,11 @@
 
  */
 
-export * from './ItemDetail'
-export * from './List'
-export * from './ListItem'
+import styled from 'styled-components'
+
+export const ItemDetail = styled.div`
+  color: ${({ theme: { colors } }) => colors.text1};
+  margin-left: auto;
+  margin-right: ${({ theme: { space } }) => space.medium};
+  padding-left: ${({ theme: { space } }) => space.large};
+`

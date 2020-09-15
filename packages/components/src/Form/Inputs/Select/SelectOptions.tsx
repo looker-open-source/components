@@ -31,7 +31,7 @@ import { v4 as uuid } from 'uuid'
 import { Icon, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ListItem } from '../../../List'
+import { ItemDetail, ListItem } from '../../../List'
 import { Heading, Paragraph, Text } from '../../../Text'
 import {
   ComboboxContext,
@@ -52,6 +52,10 @@ export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
+  /**
+   * Supplementary element that appears right of the option's label
+   */
+  detail?: ReactNode
   /**
    * Icon shown to the left of the option label in the list and input when selected
    * Use an IconName, or inline svg for a custom icon
@@ -84,9 +88,9 @@ const renderOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  const { description, icon, ...rest } = option
+  const { description, detail, icon, ...rest } = option
 
-  if (icon || description) {
+  if (detail || icon || description) {
     const iconToUse = icon && (
       <StyledIcon
         size="small"
@@ -110,6 +114,7 @@ const renderOption = (
         ) : (
           <ComboboxOptionText />
         )}
+        {detail && <ItemDetail>{detail}</ItemDetail>}
       </ComboboxOption>
     )
   }
