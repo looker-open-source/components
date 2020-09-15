@@ -24,7 +24,7 @@
 
  */
 
-import { Badge, SidebarItem } from '@looker/components'
+import { Badge, Link, ListItem } from '@looker/components'
 import { useLocation } from '@reach/router'
 import { withPrefix } from 'gatsby'
 import React, { FC } from 'react'
@@ -42,10 +42,12 @@ const Page: FC<PageProps> = ({ page, path }) => {
   const uri = pathToUri([...path, page.path])
 
   return (
-    <SidebarItem href={uri} current={location.pathname === `${uri}/`}>
-      {page.title}
-      {page.detail && <Badge>{page.detail}</Badge>}
-    </SidebarItem>
+    <ListItem>
+      <Link href={uri} current={location.pathname === `${uri}/`}>
+        {page.title}
+        {page.detail && <Badge>{page.detail}</Badge>}
+      </Link>
+    </ListItem>
   )
 }
 
