@@ -24,7 +24,7 @@
 
  */
 
-import createFocusTrap, { FocusTrap } from 'focus-trap'
+import { createFocusTrap, FocusTrap } from 'focus-trap'
 import { useContext, useEffect, useRef } from 'react'
 import { DialogContext } from '../Dialog/DialogContext'
 import { useToggle } from './useToggle'
