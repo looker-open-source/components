@@ -66,6 +66,7 @@ export function useInputEvents<
     | ComboboxMultiContextProps = ComboboxContextProps
 >(
   {
+    disabled,
     // highlights all the text in the box on click when true
     selectOnClick = false,
     readOnly = false,
@@ -82,6 +83,7 @@ export function useInputEvents<
     data: { lastActionType },
     inputElement,
     openOnFocus,
+    openOnClick,
     persistSelectionPropRef,
     state,
     transition,
@@ -129,13 +131,14 @@ export function useInputEvents<
 
   const handleMouseDownClick = useCallback(
     (e: ReactMouseEvent<HTMLElement>) => {
+      if (disabled) return
       // Without this, when clicking on a "clear" or "remove value" icon button
       // the list will flash open & closed (if closed)
       // or unnecessarily close (if open)
       if (checkForButton(e.target as Element, e.currentTarget as Element)) {
         return
       }
-      if (state === ComboboxState.IDLE) {
+      if (state === ComboboxState.IDLE && openOnClick) {
         // Opening a closed list
         transition &&
           transition(ComboboxActionType.FOCUS, {
@@ -150,7 +153,14 @@ export function useInputEvents<
         selectText()
       }
     },
-    [persistSelectionPropRef, state, selectText, transition]
+    [
+      disabled,
+      openOnClick,
+      persistSelectionPropRef,
+      state,
+      selectText,
+      transition,
+    ]
   )
 
   const handleMouseUp = useCallback(

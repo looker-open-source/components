@@ -28,7 +28,6 @@ import { ComboboxInputProps } from '../ComboboxInput'
 import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
 import {
   ComboboxContextProps,
-  ComboboxMultiContext,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
 
@@ -40,10 +39,12 @@ export function useInputPropRefs<
     | ComboboxContextProps
     | ComboboxMultiContextProps = ComboboxContextProps
 >(
-  { autoComplete = true, readOnly = false }: TProps,
+  { autoComplete = true, freeInput = false, readOnly = false }: TProps,
   context: Context<TContext>
 ) {
-  const { autoCompletePropRef, readOnlyPropRef } = useContext(context)
+  const { autoCompletePropRef, freeInputPropRef, readOnlyPropRef } = useContext(
+    context
+  )
 
   useLayoutEffect(() => {
     if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
@@ -51,21 +52,12 @@ export function useInputPropRefs<
   }, [autoComplete])
 
   useLayoutEffect(() => {
-    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [readOnly])
-}
-
-export function useInputMultiPropRefs({
-  freeInput = false,
-  ...props
-}: ComboboxMultiInputProps) {
-  useInputPropRefs(props, ComboboxMultiContext)
-
-  const { freeInputPropRef } = useContext(ComboboxMultiContext)
-
-  useLayoutEffect(() => {
     if (freeInputPropRef) freeInputPropRef.current = freeInput
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freeInput])
+
+  useLayoutEffect(() => {
+    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readOnly])
 }

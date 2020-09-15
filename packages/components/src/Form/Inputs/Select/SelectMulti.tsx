@@ -36,6 +36,10 @@ import {
 import { InputChipsValidationProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
 import { SelectOptionObject, SelectOptions } from './SelectOptions'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from './utils/ariaProps'
 import { getOptions } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
@@ -76,12 +80,8 @@ const SelectMultiComponent = forwardRef(
       values,
       defaultValues,
       noOptionsLabel,
-      'aria-describedby': ariaDescribedby,
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledby,
       indicator,
       listLayout,
-      validationType,
       windowedOptions: windowedOptionsProp,
       closeOnSelect = false,
       showCreate = false,
@@ -114,18 +114,13 @@ const SelectMultiComponent = forwardRef(
       onFilter && onFilter('')
     }
 
-    const ariaProps = {
-      'aria-describedby': ariaDescribedby,
-      'aria-invalid': validationType === 'error',
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledby,
-    }
+    const ariaProps = pickAriaAndValidationProps(props)
 
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
     return (
       <ComboboxMulti
-        {...props}
+        {...omitAriaAndValidationProps(props)}
         values={optionValues}
         defaultValues={defaultOptionValues}
         onChange={handleChange}
@@ -136,7 +131,7 @@ const SelectMultiComponent = forwardRef(
           disabled={disabled}
           placeholder={placeholder}
           removeOnBackspace={removeOnBackspace}
-          validationType={validationType}
+          validationType={props.validationType}
           autoComplete={false}
           readOnly={!isFilterable && !freeInput}
           onInputChange={handleInputChange}

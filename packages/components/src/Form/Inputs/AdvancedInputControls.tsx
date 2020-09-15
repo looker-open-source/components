@@ -23,23 +23,26 @@
  SOFTWARE.
 
  */
-import React, { FC, ReactElement } from 'react'
+
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import React, { FC, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
 import flatMap from 'lodash/flatMap'
 import tail from 'lodash/tail'
 import compact from 'lodash/compact'
+import { lighten } from 'polished'
+import { IconButton } from '../../Button'
 import { Icon } from '../../Icon'
-import {
-  InputSearchControls,
-  InputSearchControlsProps,
-} from './InputSearch/InputSearchControls'
+import { Text } from '../../Text'
 
 export interface AdvancedInputControlsProps
-  extends Omit<InputSearchControlsProps, 'height' | 'showClear'> {
-  validationType?: 'error'
-  renderSearchControls?: boolean
-  isVisibleOptions?: boolean
+  extends CompatibleHTMLProps<HTMLDivElement> {
   hasOptions?: boolean
+  isVisibleOptions?: boolean
+  onClear: (e: MouseEvent<HTMLButtonElement>) => void
+  summary?: string
+  showClear: boolean
+  validationType?: 'error'
 }
 
 // inserts a divider line between each control element (item1 | item2 | item3)
@@ -50,11 +53,12 @@ const intersperseDivider = (children: ReactElement[]) =>
 
 export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   validationType,
-  renderSearchControls,
+  showClear,
   disabled,
   isVisibleOptions,
-  hasOptions = true,
-  ...rest
+  hasOptions,
+  onClear,
+  summary,
 }) => {
   const children = intersperseDivider(
     compact([
@@ -67,21 +71,33 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           mr="xxsmall"
         />
       ),
-      renderSearchControls && (
-        <InputSearchControls
-          key="search-controls"
-          showClear={true}
+      summary && (
+        <Text
+          key="summary"
+          color="text1"
+          fontSize="small"
+          style={{ whiteSpace: 'nowrap' }}
+          pr="xxsmall"
+        >
+          {summary}
+        </Text>
+      ),
+      showClear && (
+        <IconButton
+          key="clear"
+          size="xsmall"
+          icon="Close"
+          label="Clear Field"
+          onClick={onClear}
+          tooltipDisabled={disabled}
           disabled={disabled}
-          {...rest}
         />
       ),
       hasOptions && (
-        <Icon
-          key="list-caret"
+        <CaretIcon
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
-          size={18}
-          color={disabled ? 'text1' : 'text2'}
-          mr="xsmall"
+          key="list-caret"
+          disabled={disabled}
         />
       ),
     ])
@@ -103,4 +119,12 @@ const SearchControlDivider = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
   height: 70%;
   width: 1px;
+`
+
+const CaretIcon = styled(Icon).attrs({
+  mr: 'xxsmall',
+  size: 20,
+})`
+  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+  opacity: ${({ disabled }) => (disabled ? '0.75' : '1')};
 `

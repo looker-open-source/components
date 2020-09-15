@@ -24,5 +24,6 @@
 
  */
 
+export * from './ItemDetail'
 export * from './List'
 export * from './ListItem'
