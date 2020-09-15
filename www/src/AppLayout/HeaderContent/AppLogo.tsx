@@ -24,34 +24,30 @@
 
  */
 
+import { DividerVertical, Heading, Space } from '@looker/components'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { space } from '@looker/design-tokens'
-import { DividerBase, DividerProps } from './Divider'
+import logo from './logo.png'
 
-export interface DividerVerticalProps extends DividerProps {
-  height?: number | string
-  stretch?: boolean
-}
+const AppLogoLayout: FC<{ className?: string }> = (props) => (
+  <a href="/" {...props}>
+    <Space gap="small">
+      <img src={logo} alt="Looker" />
+      <DividerVertical stretch my="none" mx="none" />
+      <Heading fontSize="large" fontWeight="medium" color="text3" as="h1">
+        Components
+      </Heading>
+    </Space>
+  </a>
+)
 
-export const DividerVertical = styled(DividerBase).attrs(
-  (props: DividerVerticalProps) => {
-    if (props.height && props.stretch) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
-      )
-    }
-    return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
+export const AppLogo = styled(AppLogoLayout)`
+  align-items: center;
+  display: flex;
+  height: 1.5rem;
+
+  img {
+    height: 24px;
+    width: 90;
   }
-)<DividerVerticalProps>`
-  ${space}
-  display: inline-block;
-  width: ${({ size }) => size};
-  ${({ height, stretch }) =>
-    stretch ? `align-self: stretch;` : `height: ${height};`}
 `
-
-DividerVertical.defaultProps = {
-  mx: 'xxsmall',
-  my: 'xsmall',
-}

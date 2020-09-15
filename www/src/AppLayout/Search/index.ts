@@ -24,34 +24,4 @@
 
  */
 
-import styled from 'styled-components'
-import { space } from '@looker/design-tokens'
-import { DividerBase, DividerProps } from './Divider'
-
-export interface DividerVerticalProps extends DividerProps {
-  height?: number | string
-  stretch?: boolean
-}
-
-export const DividerVertical = styled(DividerBase).attrs(
-  (props: DividerVerticalProps) => {
-    if (props.height && props.stretch) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
-      )
-    }
-    return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
-  }
-)<DividerVerticalProps>`
-  ${space}
-  display: inline-block;
-  width: ${({ size }) => size};
-  ${({ height, stretch }) =>
-    stretch ? `align-self: stretch;` : `height: ${height};`}
-`
-
-DividerVertical.defaultProps = {
-  mx: 'xxsmall',
-  my: 'xsmall',
-}
+export * from './Search'
