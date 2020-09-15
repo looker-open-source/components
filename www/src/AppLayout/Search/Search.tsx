@@ -24,11 +24,11 @@
 
  */
 
-import React, { ChangeEvent, useState } from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import startCase from 'lodash/startCase'
+import React, { useState } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
-import { List, InputSearch } from '@looker/components'
-import styled from 'styled-components'
+import { IconNames, InputSearch, SelectOptionObject } from '@looker/components'
 
 export const Search = () => {
   const data = useStaticQuery(
@@ -55,44 +55,51 @@ interface FauxSearchProps {
   store: any
 }
 
+const iconMap: { [key: string]: IconNames } = {
+  Components: 'Code',
+  'Getting Started': 'CircleInfoOutline',
+  Utilities: 'Code',
+}
+
+interface Result {
+  id: string
+  slug: string
+  title: string
+}
+
 const SearchField = ({ index, store }: FauxSearchProps) => {
   const [query, setQuery] = useState('')
-  const results = useFlexSearch(query, index, store)
+  const results: Result[] = useFlexSearch(query, index, store)
 
-  const search = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.currentTarget.value
+  const search = (inputValue: string) => {
     setQuery(inputValue)
   }
 
-  const resultList = (
-    <List>
-      {results.map((page) => (
-        <li key={page.id}>
-          <Link to={'/' + page.slug}>{page.title}</Link>
-        </li>
-      ))}
-    </List>
-  )
+  const navigate = (option?: SelectOptionObject) => {
+    if (option) {
+      window.location = option.value
+    }
+  }
+
+  const options = results.map(({ slug, title }) => {
+    const pageType = startCase(slug.split('/')[0])
+    return {
+      detail: pageType,
+      icon: iconMap[pageType] || 'FileBlank',
+      label: title,
+      value: `/${slug}`,
+    }
+  })
 
   return (
-    <RelativeDiv>
-      <InputSearch type="text" value={query} onChange={search} />
-      {results.length ? <BadOverlay>{resultList}</BadOverlay> : null}
-    </RelativeDiv>
+    <InputSearch
+      alignSelf="center"
+      value={query}
+      onChange={search}
+      options={options}
+      changeOnSelect={false}
+      onSelectOption={navigate}
+      indicator={false}
+    />
   )
 }
-
-/**
- * @TODO - Good-god delete these please!
- */
-const RelativeDiv = styled.div`
-  align-items: center;
-  display: flex;
-  position: relative;
-`
-
-const BadOverlay = styled.div`
-  background: ${({ theme }) => theme.colors.background};
-  position: absolute;
-  top: 2.5rem;
-`
