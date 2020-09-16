@@ -53,9 +53,17 @@ const PageLayout: FC<PageProps> = ({ className, page, path }) => {
 
 export const Page = styled(PageLayout)`
   a {
+    border-radius: ${({ theme }) => theme.radii.medium};
     color: ${({ theme }) => theme.colors.link};
+    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.small}`};
 
     &:hover {
+      background-color: ${({ theme }) => theme.colors.ui1};
+      color: ${({ theme }) => theme.colors.linkInteractive};
+    }
+
+    &:active {
+      background-color: ${({ theme }) => theme.colors.ui1};
       color: ${({ theme }) => theme.colors.linkInteractive};
     }
   }
