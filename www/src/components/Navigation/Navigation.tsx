@@ -41,8 +41,8 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
   const section = sitemap.find((section) => section.path === sectionPath)
 
   return section ? (
-    <Aside as="nav" {...props} py="xlarge" px="xlarge">
-      <Heading as="h3" mb="medium" fontFamily="body">
+    <Aside as="nav" {...props} py="xlarge">
+      <Heading as="h3" px="xlarge" mb="medium" fontFamily="body">
         {section.title}
       </Heading>
       <Section section={section} />

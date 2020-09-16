@@ -42,21 +42,30 @@ const PageLayout: FC<PageProps> = ({ className, page, path }) => {
   const uri = pathToUri([...path, page.path])
 
   return (
-    <ListItem className={className}>
+    <li className={className}>
       <Link to={uri} partiallyActive activeClassName="active">
         {page.title}
         {page.detail && <Badge>{page.detail}</Badge>}
       </Link>
-    </ListItem>
+    </li>
   )
 }
 
 export const Page = styled(PageLayout)`
   a {
+    border-radius: ${({ theme }) => theme.radii.medium};
     color: ${({ theme }) => theme.colors.link};
+    display: block;
+    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xlarge}`};
 
     &:hover {
+      background: ${({ theme }) => theme.colors.ui1};
       color: ${({ theme }) => theme.colors.linkInteractive};
+    }
+
+    &[aria-current='page'] {
+      color: ${({ theme }) => theme.colors.text4};
+      font-weight: ${({ theme }) => theme.fontWeights.semiBold};
     }
   }
 `
