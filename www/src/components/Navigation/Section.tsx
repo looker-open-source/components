@@ -58,7 +58,7 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
           indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
           defaultOpen={currentPath.startsWith(uri)}
         >
-          <AccordionDisclosure>
+          <AccordionDisclosure px="xlarge">
             <Heading variant="secondary" as="h4" fontFamily="body">
               {child.title}
             </Heading>
@@ -78,7 +78,7 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
     }
   })
 
-  return <PageList>{navigationItems}</PageList>
+  return <>{navigationItems}</>
 }
 
 const PageList = styled.ul`
