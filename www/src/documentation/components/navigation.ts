@@ -65,6 +65,7 @@ const components: NavigationSection = {
     },
     {
       children: [
+        { path: 'field', title: 'Field' },
         { path: 'field-checkbox', title: 'FieldCheckbox' },
         { path: 'field-checkbox-group', title: 'FieldCheckboxGroup' },
         { path: 'field-chips', title: 'FieldChips' },
