@@ -49,24 +49,23 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <NestedSection key={uri}>
-          <Accordion
-            indicatorColor="text1"
-            indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
-            defaultOpen={currentPath.indexOf(uri) === 1}
-          >
-            <AccordionDisclosure px="xlarge">
-              <Heading variant="secondary" as="h4" fontFamily="body">
-                {child.title}
-              </Heading>
-            </AccordionDisclosure>
-            <AccordionContent>
-              <PageList>
-                <Section section={child as NavigationSection} />
-              </PageList>
-            </AccordionContent>
-          </Accordion>
-        </NestedSection>
+        <Accordion
+          key={child.path}
+          indicatorColor="text1"
+          indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
+          defaultOpen={currentPath.startsWith(`/components/${uri}`)}
+        >
+          <AccordionDisclosure px="xlarge">
+            <Heading variant="secondary" as="h4" fontFamily="body">
+              {child.title}
+            </Heading>
+          </AccordionDisclosure>
+          <AccordionContent>
+            <PageList>
+              <Section section={child as NavigationSection} />
+            </PageList>
+          </AccordionContent>
+        </Accordion>
       )
     } else {
       return <Page key={uri} page={child} />
@@ -76,19 +75,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
   return <PageList>{navigationItems}</PageList>
 }
 
-const NestedSection = styled.li`
-  border: ${({ theme }) => `1px solid ${theme.colors.ui2}`};
-  border-left: none;
-  border-right: none;
-  & + & {
-    border-top: none;
-  }
-`
-
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
   list-style-type: none;
-  & > & {
-    margin-bottom: ${({ theme }) => theme.space.xsmall};
-  }
 `

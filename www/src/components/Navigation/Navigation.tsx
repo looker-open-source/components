@@ -49,7 +49,11 @@ interface NavigationProps extends AsideProps {
 }
 
 function groupComponents(pages: NavigationPage[]) {
-  const groups = groupBy(pages, ({ path }) => path.split('-')[0])
+  const groups = groupBy(
+    pages,
+    ({ path }) => path.replace('components/', '').split('/')[0]
+  )
+
   return map(groups, (group, groupKey) => {
     if (group.length === 1) {
       return group[0]
@@ -57,7 +61,7 @@ function groupComponents(pages: NavigationPage[]) {
     const groupKeyArr = groupKey.split('/')
     const groupName = groupKeyArr[groupKeyArr.length - 1]
     return { children: group, path: groupKey, title: startCase(groupName) }
-  })
+  }).sort((a, b) => (a.title > b.title ? 1 : b.title > a.title ? -1 : 0))
 }
 
 const NavigationLayout: FC<NavigationProps> = (props) => {
@@ -81,9 +85,9 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
   const content =
     sectionPath === 'components' ? (
       <Tabs>
-        <TabList distribute>
+        <TabList px="xlarge" distribute>
           <Tab>Grouped</Tab>
-          <Tab>Alphabetical</Tab>
+          <Tab>A-Z</Tab>
         </TabList>
         <TabPanels pt="small">
           <TabPanel>
@@ -99,12 +103,12 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
         </TabPanels>
       </Tabs>
     ) : (
-      section
+      <>{section}</>
     )
 
   return (
-    <Aside as="nav" {...props} py="xlarge">
-      <Heading as="h3" px="xlarge" mb="medium" fontFamily="body">
+    <Aside as="nav" {...props}>
+      <Heading as="h3" mb="medium" py="large" px="xlarge" fontFamily="body">
         {title}
       </Heading>
       {content}
@@ -115,4 +119,8 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
 export const Navigation = styled(NavigationLayout)`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
   height: 100%;
+
+  & > ${Heading} {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  }
 `
