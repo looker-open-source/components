@@ -51,7 +51,6 @@ export const Layout = styled.div<LayoutProps>`
   ${simpleLayoutCSS}
 
   display: flex;
-  height: 100%;
   width: 100%;
 
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
