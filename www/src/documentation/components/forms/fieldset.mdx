@@ -6,7 +6,7 @@ propsOf: Fieldset
 github: Form/Fieldset
 ---
 
-### Fieldset
+## Fieldset
 
 The `<Fieldset />` component is used to wrap Field components into groups.
 
@@ -40,7 +40,31 @@ The `<Fieldset />` component is used to wrap Field components into groups.
 </Fieldset>
 ```
 
-### Legend
+### hideLabel and fieldsHideLabel
+
+`fieldsHideLabel` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
+
+Additionally, each individual `Field` accepts a `hideLabel` prop to hide that single label, or override the containing `Fieldset` label settings.
+
+```jsx
+<>
+  <Fieldset fieldsHideLabel legend="This is the Legend 1">
+    <FieldText label="First Label" />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" hideLabel={false} />
+  </Fieldset>
+  <Fieldset legend="This is the Legend 1">
+    <FieldText label="First Label" hideLabel />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" />
+  </Fieldset>
+  <FieldText label="FieldText First Label" hideLabel={false} />
+  <FieldText label="FieldText Second Label" />
+  <FieldText label="FieldText Third Label" hideLabel />
+</>
+```
+
+## Legend
 
 The `legend` property allows for a heading which is by default aligned above and to the left.
 
@@ -48,7 +72,7 @@ The `legend` property allows for a heading which is by default aligned above and
 <Fieldset legend="This is the Legend" />
 ```
 
-### Label
+## Label
 
 Using `label` as a prop in `Field` gives a larger clickable area since the area where the label is placed also is associated to the component that has the label.
 

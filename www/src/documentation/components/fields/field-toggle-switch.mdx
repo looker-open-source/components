@@ -1,0 +1,18 @@
+---
+title: FieldToggleSwitch
+github: Form/Fields/FieldToggleSwitch
+---
+
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the inline property.
+
+```jsx
+;() => {
+  const [on, setOn] = React.useState(false)
+  const onChange = (e) => {
+    setOn(e.target.checked)
+  }
+  return (
+    <FieldToggleSwitch label="Development Mode" onChange={onChange} on={on} />
+  )
+}
+```

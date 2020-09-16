@@ -1,0 +1,68 @@
+---
+title: FieldSelectMulti
+github: Form/Fields/FieldSelectMulti
+---
+
+The `<FieldSelectMulti />` component is composed of an `<SelectMulti />` component and a `<Label />` component.
+
+```jsx
+<FieldSelectMulti
+  label="Label"
+  options={[
+    { value: 'grape', label: 'Grape' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'apple', label: 'Apple' },
+  ]}
+  placeholder="Search fruits"
+/>
+```
+
+### FieldSelectMulti attributes
+
+`<FieldSelectMulti />` have attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+```jsx
+<FieldSelectMulti
+  description="this is the description"
+  detail="detail..."
+  label="Label"
+  options={[
+    { value: 'grape', label: 'Grape' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'apple', label: 'Apple' },
+  ]}
+  placeholder="Search fruits"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+/>
+```
+
+### FieldSelectMulti props
+
+`<FieldSelectMulti />` can be set as `desabled` and also as `required`. Aslo the width of the component will be 100% based of the parent and sibling components. Using `Grid` can be helpful to position the components.
+
+```jsx
+<Grid>
+  <FieldSelectMulti
+    description="this is required"
+    label="Label"
+    options={[
+      { value: 'grape', label: 'Grape' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'apple', label: 'Apple' },
+    ]}
+    placeholder="Search fruits"
+    required
+  />
+  <FieldSelectMulti
+    description="this is disabled"
+    disabled
+    label="Label"
+    options={[
+      { value: 'grape', label: 'Grape' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'apple', label: 'Apple' },
+    ]}
+    placeholder="Search fruits"
+  />
+</Grid>
+```

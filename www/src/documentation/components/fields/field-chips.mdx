@@ -1,0 +1,63 @@
+---
+title: FieldChip
+github: Form/Fields/FieldChip
+---
+
+The `<FieldChips />` component is composed of an `<InputChips />` component and a `<Label />` component. Using `<FieldChips />` allows for rendering validation messages, label, details and description. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      label="FieldChip's Label"
+      onChange={handleChange}
+      values={values}
+    />
+  )
+}
+```
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      detail="5/50"
+      description="this is a description"
+      label="FieldChip's Label"
+      onChange={handleChange}
+      values={values}
+    />
+  )
+}
+```
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+
+  return (
+    <FieldChips
+      label="FieldChip's Label"
+      onChange={handleChange}
+      validationMessage={{
+        message: 'This is an error',
+        type: 'error',
+      }}
+      values={values}
+    />
+  )
+}
+```

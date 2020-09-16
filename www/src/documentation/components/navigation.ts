@@ -51,10 +51,10 @@ const components: NavigationSection = {
     {
       children: [
         { path: 'button', title: 'Button' },
-        {
-          path: 'button-group',
-          title: 'ButtonGroup & ButtonToggle',
-        },
+        { path: 'button-group', title: 'ButtonGroup' },
+        { path: 'button-outline', title: 'ButtonOutline' },
+        { path: 'button-toggle', title: 'ButtonToggle' },
+        { path: 'button-transparent', title: 'ButtonTransparent' },
         { path: 'icon-button', title: 'IconButton' },
         { path: 'link', title: 'Link' },
         { path: 'page-size', title: 'PageSize' },
@@ -62,6 +62,29 @@ const components: NavigationSection = {
       ],
       path: 'actions',
       title: 'Actions',
+    },
+    {
+      children: [
+        { path: 'field', title: 'Field' },
+        { path: 'field-checkbox', title: 'FieldCheckbox' },
+        { path: 'field-checkbox-group', title: 'FieldCheckboxGroup' },
+        { path: 'field-chips', title: 'FieldChips' },
+        { path: 'field-color', title: 'FieldColor' },
+        { path: 'field-date', title: 'FieldDate' },
+        { path: 'field-date-range', title: 'FieldDateRange' },
+        { path: 'field-radio', title: 'FieldRadio' },
+        { path: 'field-radio-group', title: 'FieldRadioGroup' },
+        { path: 'field-select', title: 'FieldSelect' },
+        { path: 'field-select-multi', title: 'FieldSelectMulti' },
+        { path: 'field-slider', title: 'FieldSlider' },
+        { path: 'field-range-slider', title: 'FieldRangeSlider' },
+        { path: 'field-text', title: 'FieldText' },
+        { path: 'field-text-area', title: 'FieldTextArea' },
+        { path: 'field-time', title: 'FieldTime' },
+        { path: 'field-toggle-switch', title: 'FieldToggleSwitch' },
+      ],
+      path: 'fields',
+      title: 'Fields',
     },
     {
       children: [
@@ -74,10 +97,6 @@ const components: NavigationSection = {
         {
           path: 'fieldset',
           title: 'Fieldset, Legend, Label',
-        },
-        {
-          path: 'fields',
-          title: 'Fields',
         },
         {
           path: 'inline-input-text',

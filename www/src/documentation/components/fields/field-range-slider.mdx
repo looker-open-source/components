@@ -1,0 +1,29 @@
+---
+title: FieldRangeSlider
+github: Form/Fields/FieldRangeSlider
+---
+
+The `<FieldRangeSlider />` component is composed of an `<RangeSlider />` component and a `<Label />` component. The component also allows for the attributes `details` and `description`. This component does not support `ValidationMessage`
+
+```jsx
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label"
+/>
+<FieldRangeSlider
+  disabled
+  detail="detail"
+  description="description"
+  label="Label disabled"
+  min={10}
+  max={20}
+  value={15}
+/>
+<FieldRangeSlider
+  detail="detail"
+  description="description"
+  label="Label required"
+  required
+/>
+```
