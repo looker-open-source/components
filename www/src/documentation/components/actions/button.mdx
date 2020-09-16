@@ -8,8 +8,6 @@ figma: file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1
 
 import { RoundBtn } from './demos'
 
-## Button Styles
-
 ### Button
 
 Use a default button for the most frequently used action or most important action on a page. Default buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
@@ -18,29 +16,11 @@ Use a default button for the most frequently used action or most important actio
 <Button>Default Button</Button>
 ```
 
-### ButtonOutline
+## Button Styles
 
-Use an outline button alongside a default button to provide alternative actions on a page. Outline buttons should only appear alongside default buttons for secondary actions. Use no more than two secondary buttons on a page.
+### Color
 
-```jsx
-<ButtonOutline>Outline</ButtonOutline>
-```
-
-### ButtonTransparent
-
-Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a default button
-
-```jsx
-<ButtonTransparent>Transparent</ButtonTransparent>
-```
-
-## Colors
-
-Buttons come in three color variants: `key`, `critical`, and `neutral`.
-
-### Key
-
-Key is the primary brand color, which is the default setting.
+`Key` is the primary brand color, which is the default setting.
 
 ```jsx
 <Space>
@@ -50,9 +30,7 @@ Key is the primary brand color, which is the default setting.
 </Space>
 ```
 
-### Critical
-
-Critical Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+`Critical` Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
 ```jsx
 <Space>
@@ -62,9 +40,7 @@ Critical Buttons are to be used in situations where you need to convey some very
 </Space>
 ```
 
-### Neutral
-
-Neutral buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
+`Neutral` buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
 
 ```jsx
 <Space>
@@ -74,7 +50,7 @@ Neutral buttons are meant to fade into the background. These are usually used fo
 </Space>
 ```
 
-## Size
+### Size
 
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
@@ -103,7 +79,7 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 </SpaceVertical>
 ```
 
-## Full Width
+### Full Width
 
 Use the `fullWidth` property on a `<Button />` and it will set its width to 100%.
 
@@ -115,7 +91,7 @@ Use the `fullWidth` property on a `<Button />` and it will set its width to 100%
 </SpaceVertical>
 ```
 
-## Disabled
+### Disabled
 
 Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
 
@@ -123,7 +99,7 @@ Use a disabled button to indicate to the user what action will be possible on a 
 <Button disabled>I am disabled</Button>
 ```
 
-## Button with an Icon
+### Button with an Icon
 
 Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
 
@@ -136,7 +112,7 @@ Buttons can have an icon before or after their content, using the `iconBefore` a
 </Space>
 ```
 
-## Additional Action Considerations
+### Additional Action Considerations
 
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
 
@@ -147,7 +123,7 @@ When a call to action requires additional steps, include an ellipsis at the end 
 </Space>
 ```
 
-## Extending Button
+### Extending Button
 
 Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
 
