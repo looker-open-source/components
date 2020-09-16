@@ -24,7 +24,35 @@
 
  */
 
-export { default as ComponentResources } from './ComponentResources'
-export { default as ComponentStatus } from './ComponentStatus'
-export { default as DocTable } from './DocTable'
-export { default as Props } from './Props/Props'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
+  <div className={className} />
+)
+
+export const FauxPieChart = styled(FauxChartLayout)`
+  background: ${({
+    theme: {
+      colors: { background, inform, positive, warn, critical, key, neutral },
+    },
+  }) => `radial-gradient(circle closest-side, transparent 66%, ${background} 0),
+    conic-gradient(
+      ${inform} 0,
+      ${inform} 38%,
+      ${positive} 0,
+      ${positive} 61%,
+      ${warn} 0,
+      ${warn} 77%,
+      ${critical} 0,
+      ${critical} 87%,
+      ${key} 0,
+      ${key} 93%,
+      ${neutral} 0,
+      ${neutral} 100%
+    )`};
+  height: 100%;
+  outline: 1px solid #ccc;
+  position: relative;
+  width: 100%;
+`

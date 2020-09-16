@@ -26,7 +26,7 @@
 
 import startCase from 'lodash/startCase'
 import React, { useState } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
 import { IconNames, InputSearch, SelectOptionObject } from '@looker/components'
 
@@ -56,8 +56,9 @@ interface FauxSearchProps {
 }
 
 const iconMap: { [key: string]: IconNames } = {
-  Components: 'Code',
-  'Getting Started': 'CircleInfoOutline',
+  Components: 'Dashboard',
+  Develop: 'CircleInfoOutline',
+  Foundations: 'Validate',
   Utilities: 'Code',
 }
 
@@ -71,15 +72,10 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   const [query, setQuery] = useState('')
   const results: Result[] = useFlexSearch(query, index, store)
 
-  const search = (inputValue: string) => {
-    setQuery(inputValue)
-  }
+  const search = (inputValue: string) => setQuery(inputValue)
 
-  const navigate = (option?: SelectOptionObject) => {
-    if (option) {
-      window.location = option.value
-    }
-  }
+  const selectOption = (option?: SelectOptionObject) =>
+    option && navigate(option.value)
 
   const options = results.map(({ slug, title }) => {
     const pageType = startCase(slug.split('/')[0])
@@ -94,11 +90,12 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   return (
     <InputSearch
       alignSelf="center"
+      placeholder="Search @looker/components"
       value={query}
       onChange={search}
       options={options}
       changeOnSelect={false}
-      onSelectOption={navigate}
+      onSelectOption={selectOption}
       indicator={false}
     />
   )

@@ -5,7 +5,6 @@ github: Button/ButtonGroup.tsx
 ---
 
 import { Code, MessageBar } from '@looker/components'
-import { Props } from '../../../Shared'
 
 <MessageBar noActions intent="inform">
   <Code>ButtonGroup</Code> and <Code>ButtonToggle</Code> do not support
@@ -13,8 +12,6 @@ import { Props } from '../../../Shared'
 </MessageBar>
 
 ## ButtonGroup
-
-<Props of="ButtonGroup" />
 
 `ButtonGroup` behaves like a checkbox group. Use this when the user may select zero or more of a small set of options.
 Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
@@ -46,8 +43,6 @@ Control externally via `value` and `onChange` props. On individual `ButtonItem`,
 ```
 
 ## ButtonToggle
-
-<Props of="ButtonGroup" />
 
 `ButtonToggle` behaves as radio button group. Use this when the user may select only one of a small set of options.
 Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.

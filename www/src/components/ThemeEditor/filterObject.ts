@@ -24,5 +24,12 @@
 
  */
 
-import ComponentResources from './ComponentResources'
-export default ComponentResources
+export const filterObject = (full: { [key: string]: any }, allowed: string[]) =>
+  Object.keys(full)
+    .filter((key) => allowed.includes(key))
+    .reduce((obj, key) => {
+      return {
+        ...obj,
+        [key]: full[key],
+      }
+    }, {})

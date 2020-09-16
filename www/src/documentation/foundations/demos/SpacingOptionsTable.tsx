@@ -34,7 +34,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { DocTable } from '../../../Shared'
+import { DocTable } from '../../../components'
 
 const spacingExamples = [
   { label: 'xxsmall', px: '4', rem: '0.25rem' },

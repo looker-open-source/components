@@ -5,8 +5,6 @@ github: Table
 propsOf: Table
 ---
 
-import { Props } from '../../../Shared'
-
 The `<Table>` component defines a structure for the display of tabular data. A `<TableHeader>` is used to display the table header and the `<TableBody>` is used to show the data rows.
 
 ```jsx
@@ -27,8 +25,6 @@ The `<Table>` component defines a structure for the display of tabular data. A `
 ```
 
 ## TableHead
-
-<Props of="TableHead" />
 
 This component is used to define the heading of the table and describes the rows of data below. The `<TableHeader>` should have one `<TableRow>` tag and then use the `<TableHeaderCell>` tags to be semantically correct.
 
@@ -63,18 +59,10 @@ This component is used to define the heading of the table and describes the rows
 
 ## TableHeaderCell
 
-<Props of="TableHeaderCell" />
-
 ## TableBody
-
-<Props of="TableBody" />
 
 This component is used to define TableHeaderCell body of the table and holds the data for the table. The `<TableBody>` can have multiple `<TableRow>` tags for each row of data, and a `<TableDataCell>` tag for each cell of data to be semantically correct.
 
 ## TableRow
 
-<Props of="TableRow" />
-
 ## TableDataCell
-
-<Props of="TableDataCell" />

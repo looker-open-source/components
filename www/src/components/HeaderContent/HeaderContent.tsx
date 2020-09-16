@@ -24,15 +24,16 @@
 
  */
 
-import { Flex, IconButton, Space, Grid } from '@looker/components'
+import { IconButton, Space, Grid } from '@looker/components'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import sitemap from '../../documentation/sitemap'
 import { Search } from '../Search'
+import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
 
-interface HeaderProps {
+interface HeaderProps extends ThemeEditorProps {
   className?: string
   toggleNavigation: () => void
 }
@@ -40,15 +41,17 @@ interface HeaderProps {
 export const HeaderContentLayout: FC<HeaderProps> = ({
   className,
   toggleNavigation,
+  updateTheme,
+  hasCustomTheme,
 }) => (
   <Grid
     alignItems="center"
     columns={3}
     className={className}
     pl="small"
+    pr="large"
     width="100%"
     height="100%"
-    pr="xlarge"
   >
     <Space>
       <IconButton
@@ -60,9 +63,9 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
       <AppLogo />
     </Space>
     <Search />
-    <Flex as="nav" alignItems="center" ml="auto">
-      <Space as="ul" gap="xlarge">
-        {sitemap.map((section) => (
+    <NavigationList>
+      <Space as="ul" gap="xlarge" pr="large">
+        {sitemap.slice(0, 3).map((section) => (
           <li key={section.path}>
             <Link
               partiallyActive
@@ -74,41 +77,43 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
           </li>
         ))}
       </Space>
-    </Flex>
+      <ThemeEditor updateTheme={updateTheme} hasCustomTheme={hasCustomTheme} />
+    </NavigationList>
   </Grid>
 )
 
 export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
+`
 
-  nav {
-    font-size: ${({ theme }) => theme.fontSizes.small};
-    font-weight: ${({ theme }) => theme.fontWeights.normal};
+export const NavigationList = styled.nav`
+  align-items: center;
+  display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  margin-left: auto;
 
-    ul {
-      height: 100%;
+  ul,
+  li {
+    height: 100%;
+  }
+
+  a {
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    color: ${({ theme }) => theme.colors.text4};
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+
+    &.active {
+      border-bottom-color: currentColor;
+      color: ${({ theme }) => theme.colors.link};
     }
-    li {
-      height: 100%;
-    }
-    a {
-      align-items: center;
-      border-bottom: 4px solid transparent;
-      border-top: 4px solid transparent;
-      color: ${({ theme }) => theme.colors.text4};
-      display: flex;
-      height: 100%;
-      text-decoration: none;
 
-      &.active {
-        border-bottom-color: currentColor;
-        color: ${({ theme }) => theme.colors.link};
-      }
-
-      &:hover {
-        border-bottom-color: currentColor;
-        color: ${({ theme }) => theme.colors.linkInteractive};
-      }
+    &:hover {
+      border-bottom-color: currentColor;
+      color: ${({ theme }) => theme.colors.linkInteractive};
     }
   }
 `

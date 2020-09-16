@@ -24,5 +24,9 @@
 
  */
 
-import ComponentStatus from './ComponentStatus'
-export default ComponentStatus
+export * from './DocTable'
+export * from './Props'
+export * from './Search'
+export * from './Status'
+export * from './TableOfContents'
+export * from './ThemeEditor'

@@ -56,7 +56,7 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
           key={uri}
           indicatorColor="text1"
           indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
-          isOpen={currentPath.startsWith(uri)}
+          defaultOpen={currentPath.startsWith(uri)}
         >
           <AccordionDisclosure>
             <Heading variant="secondary" as="h4" fontFamily="body">

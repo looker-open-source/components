@@ -24,6 +24,29 @@
 
  */
 
-export * from './Sidebar'
-export * from './SidebarGroup'
-export * from './SidebarItem'
+import React, { FC } from 'react'
+import { List, ListItem } from '@looker/components'
+import { Link } from 'gatsby'
+
+export interface TableOfContentsProps {
+  items?: [
+    {
+      url: string
+      title: string
+    }
+  ]
+}
+
+export const TableOfContents: FC<{ toc?: TableOfContentsProps }> = ({
+  toc,
+}) => {
+  if (!toc || !toc.items) return null
+
+  const sections = toc.items.map(({ url, title }) => (
+    <ListItem fontSize="small" key={url} my="medium">
+      <Link to={url}>{title}</Link>
+    </ListItem>
+  ))
+
+  return <List>{sections}</List>
+}

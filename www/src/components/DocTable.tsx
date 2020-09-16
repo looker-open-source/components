@@ -24,47 +24,14 @@
 
  */
 
-import React, { FC } from 'react'
-import { List } from '@looker/components'
-import { FeedbackSvg, FigmaSvg, GithubSvg } from './ResourceIcons'
-import Resource from './Resource'
+import styled from 'styled-components'
+import { Code, Table } from '@looker/components'
 
-interface ComponentResourcesProps {
-  figma?: string
-  github?: string
-  feedbackTitle?: string
-}
+export const DocTable = styled(Table)`
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  margin-bottom: ${({ theme }) => theme.space.xlarge};
 
-const figmaBase = 'https://www.figma.com/'
-const githubBase =
-  'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
-
-const ComponentResources: FC<ComponentResourcesProps> = ({
-  figma,
-  github,
-  feedbackTitle,
-}) => {
-  return (
-    <List>
-      {github && (
-        <Resource url={`${githubBase}${github}`}>
-          <GithubSvg /> Source
-        </Resource>
-      )}
-      {figma && (
-        <Resource url={`${figmaBase}${figma}`}>
-          <FigmaSvg /> Assets
-        </Resource>
-      )}
-      {feedbackTitle && (
-        <Resource
-          url={`https://github.com/looker-open-source/components/issues/new?title=${feedbackTitle}+Component+Feedback`}
-        >
-          <FeedbackSvg /> Feedback
-        </Resource>
-      )}
-    </List>
-  )
-}
-
-export default ComponentResources
+  ${Code} {
+    color: ${(props) => props.theme.colors.key};
+  }
+`

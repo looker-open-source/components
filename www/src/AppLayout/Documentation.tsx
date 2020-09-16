@@ -26,29 +26,28 @@
 
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
-import React, { FC } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
+import styled from 'styled-components'
 import {
-  Section,
-  Layout,
-  Aside,
   Heading,
-  Divider,
-  ListItem,
+  Icon,
+  Layout,
   Link,
-  List,
+  Space,
+  Section,
+  Text,
 } from '@looker/components'
-import { ComponentResources, ComponentStatus, Props } from '../Shared'
+import {
+  Status,
+  // Props,
+  // TableOfContents,
+  TableOfContentsProps,
+} from '../components'
 import { AppLayout } from './AppLayout'
 
-interface TableOfContents {
-  items?: [
-    {
-      url: string
-      title: string
-    }
-  ]
-}
+const githubBase =
+  'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
 
 interface DocQuery {
   data: {
@@ -66,65 +65,51 @@ interface DocQuery {
         figma?: string
         propsOf?: string
       }
-      tableOfContents?: TableOfContents
+      tableOfContents?: TableOfContentsProps
     }
   }
 }
 
-const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
-  if (!toc || !toc.items) return null
-
-  const sections = toc.items.map(({ url, title }) => (
-    <ListItem fontSize="small" key={url} my="medium">
-      <Link color="neutralInteractive" href={url}>
-        {title}
-      </Link>
-    </ListItem>
-  ))
-
-  return (
-    <>
-      <Divider color="ui2" my="large" />
-      <List>{sections}</List>
-    </>
-  )
-}
-
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { figma, github, propsOf, status, title } = mdx.frontmatter
+  const { github, status, title } = mdx.frontmatter
 
   return (
     <>
       <Helmet title={`${title} - ${site.siteMetadata.title}`} />
       <AppLayout>
-        <Layout hasAside>
-          <Section p="xxlarge">
-            <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
-              {title}
-            </Heading>
-            {propsOf && <Props of={propsOf} />}
-            <MDXRenderer>{mdx.body}</MDXRenderer>
-          </Section>
-          <Aside
-            px="large"
-            py="xxlarge"
-            background="neutralAccent"
-            width="17rem"
+        <Heading as="h1" fontSize="xxxxxlarge">
+          {title}
+        </Heading>
+        <ComponentDetail my="medium" py="medium">
+          <Status status={status || 'stable'} />
+
+          <Link
+            fontSize="small"
+            href={`${githubBase}${github}`}
+            target="_blank"
           >
-            <ComponentStatus status={status || 'stable'} />
-            <ComponentResources
-              figma={figma}
-              feedbackTitle={title}
-              github={github}
-            />
-            <TableOfContents toc={mdx.tableOfContents} />
-          </Aside>
-        </Layout>
+            View source{' '}
+            <Text fontSize="xsmall" variant="secondary">
+              <Icon name="External" size=".75rem" /> Github
+            </Text>
+          </Link>
+
+          {/* <Props of={propsOf} /> */}
+        </ComponentDetail>
+
+        {/* <TableOfContents toc={mdx.tableOfContents} /> */}
+
+        <MDXRenderer>{mdx.body}</MDXRenderer>
       </AppLayout>
     </>
   )
 }
+
+const ComponentDetail = styled(Space)`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+`
 
 export default DocumentationLayout
 

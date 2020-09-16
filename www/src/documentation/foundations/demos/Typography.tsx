@@ -35,7 +35,7 @@ import {
   Text,
 } from '@looker/components'
 import { FontWeights, FontSizes } from '@looker/design-tokens'
-import { DocTable } from '../../../Shared'
+import { DocTable } from '../../../components'
 
 const specimen =
   "Roboto is the typographic base for the tone and content of Looker's design system"

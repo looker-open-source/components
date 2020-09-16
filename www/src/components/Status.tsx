@@ -25,8 +25,8 @@
  */
 
 import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { Box, Link, Paragraph } from '@looker/components'
+import { Link } from 'gatsby'
+import { Badge } from '@looker/components'
 
 export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 
@@ -34,66 +34,21 @@ export interface StatusProps {
   status: StatusLabels
 }
 
-const statusEmoji = (status: StatusLabels) => {
+const mapStatusToIntent = (status: StatusLabels) => {
   switch (status) {
     case 'experimental':
-      return '⚠️'
+      return 'inform'
     case 'deprecated':
-      return '🚫'
+      return 'warn'
     case 'stable':
-      return '✅'
+      return 'positive'
   }
 }
 
-const Status: FC<StatusProps> = (props) => {
-  const { status } = props
+export const Status: FC<StatusProps> = ({ status }) => {
   return (
-    <Link href="/principles/support-levels">
-      <StatusFlag fontSize="small" {...props}>
-        <Box
-          as="span"
-          textAlign="center"
-          display="inline-block"
-          width="1.5rem"
-          mr="xsmall"
-        >
-          {statusEmoji(status)}
-        </Box>
-        {status}
-      </StatusFlag>
+    <Link to="/develop/support-levels">
+      <Badge intent={mapStatusToIntent(status)}>{status.toUpperCase()}</Badge>
     </Link>
   )
 }
-
-const statusBackground = (props: StatusProps) => {
-  switch (props.status) {
-    case 'experimental':
-      return css``
-    case 'deprecated':
-      return css`
-        background-color: ${(props) => props.theme.colors.criticalAccent};
-      `
-    case 'stable':
-    default:
-      return css``
-  }
-}
-
-const StyledBox = styled(Box)``
-
-const StatusFlag = styled(Paragraph).attrs({ py: 'xsmall' })<StatusProps>`
-  ${statusBackground}
-  text-transform: capitalize;
-  color: ${(props) => props.theme.colors.text};
-
-  &:hover {
-    color: ${(props) => props.theme.colors.text3};
-    text-decoration: none;
-
-    ${StyledBox} {
-      transform: scale(1.2);
-    }
-  }
-`
-
-export default Status

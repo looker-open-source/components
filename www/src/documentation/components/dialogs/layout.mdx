@@ -2,11 +2,7 @@
 title: Dialog Layout
 ---
 
-import { Props } from '../../../Shared'
-
 ## DialogContent
-
-<Props of="DialogContent" />
 
 Using the `DialogContent` component quickly gives your content consistent spacing inside a dialog component as well as managing overflow of content of the dialog is taller than the viewport.
 
@@ -31,8 +27,6 @@ If content overflows the component's height an visual indicator of content that 
 
 ## DialogHeader
 
-<Props of="DialogHeader" />
-
 `DialogHeader` is attached to the top of dialog and provides a button to close the containing Dialog. Uses the `DialogContext` to get access to the `close` callback.
 
 DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
@@ -45,8 +39,6 @@ DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
 ```
 
 ## DialogFooter
-
-<Props of="DialogFooter" />
 
 `DialogFooter` is attached to the bottom of dialog. Generally, the terminal action for a dialog as well as an option to abandon the process done via the dialog are available within this component. This component is generally used in combination with the `DialogContext.Provider` to get access to the `DialogContext.close()` method.
 

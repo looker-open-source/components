@@ -4,8 +4,6 @@ github: Tree
 propsOf: Tree
 ---
 
-import { Props } from '../../../Shared'
-
 `Tree`, like `Accordion`, is a collapsible section component designed for hiding and showing content. However, unlike `Accordion`, `Tree` has a more structured interface and is best used when building tree views like a file structure or a sidebar.
 
 Use the required `label` prop to set the text of the `Tree` disclosure. `label` alternatively accepts a `ReactNode` for more advanced layouts.
@@ -130,8 +128,6 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 ```
 
 ## TreeItem
-
-<Props of="TreeItem" />
 
 `TreeItem` is used to create branches in a tree view; it is best used as the direct child of a `<Tree>`.
 
@@ -345,8 +341,6 @@ However, you can override a parent `Tree`'s `detailHoverDisclosure` prop at the 
 ```
 
 ## TreeGroup
-
-<Props of="TreeGroup" />
 
 `TreeGroup` can be used to label a grouping of `TreeItem`s. `TreeGroup` should be the child of a `Tree`and the parent of one or many `TreeItem`s.
 

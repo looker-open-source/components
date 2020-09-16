@@ -4,7 +4,6 @@ github: ActionList
 propsOf: ActionList
 ---
 
-import { Props } from '../../../Shared'
 import { SelectManagerParameterTable, SelectManagerReturnTable } from './demos'
 
 The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
@@ -76,8 +75,6 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
 
 ## ActionListItem
 
-<Props of="ActionListItem" />
-
 The `<ActionListItem>` component represents a row of data in your Action List.
 
 To define actions on a row, pass in `<ActionListItemAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
@@ -87,8 +84,6 @@ You can also pass a callback to the `onClick` prop, but note that this callback 
 The `actionsTooltip` prop can be used to set the tooltip text of a row's actions button. This prop will also be used in a visually hidden label on the actions button, which is especially useful for getting the actions button DOM element when testing.
 
 ## ActionListItemColumn
-
-<Props of="ActionListItemColumn" />
 
 The `<ActionListItemColumn>` component is equivalent to a data cell in your Action List. `<ActionListItemColumn>` elements should always be children of an `<ActionListItem>` element (i.e. each row should contain some number of column elements).
 
@@ -140,13 +135,9 @@ Passing in a React element into the `indicator` prop will display said element l
 
 ## ActionListItemAction
 
-<Props of="ActionListItemAction" />
-
 The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
 
 ## ActionListManager
-
-<Props of="ActionListManager" />
 
 In the event that your page and `<ActionList>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListManager>` component to conditionally render a loading icon until your data is ready.
 
