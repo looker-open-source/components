@@ -24,9 +24,6 @@
 
  */
 
-import groupBy from 'lodash/groupBy'
-import map from 'lodash/map'
-import startCase from 'lodash/startCase'
 import React, { FC } from 'react'
 import { useLocation } from '@reach/router'
 import {
@@ -44,28 +41,11 @@ interface SectionProps {
   section: NavigationSection
 }
 
-function groupComponents(pages: NavigationPage[]) {
-  const groups = groupBy(pages, ({ path }) => path.split('-')[0])
-  return map(groups, (group, groupKey) => {
-    if (group.length === 1) {
-      return group[0]
-    }
-    const groupKeyArr = groupKey.split('/')
-    const groupName = groupKeyArr[groupKeyArr.length - 1]
-    return { children: group, path: groupKey, title: startCase(groupName) }
-  })
-}
-
 export const Section: FC<SectionProps> = ({ section }) => {
   const location = useLocation()
   const currentPath = location.pathname
 
-  const children =
-    section.path === 'components'
-      ? groupComponents(section.children)
-      : section.children
-
-  const navigationItems = children.map((child) => {
+  const navigationItems = section.children.map((child) => {
     const uri = child.path
 
     if ((child as NavigationSection).children) {
@@ -74,7 +54,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
           key={uri}
           indicatorColor="text1"
           indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
-          defaultOpen={currentPath.startsWith(uri)}
+          defaultOpen={currentPath.indexOf(uri) === 1}
         >
           <AccordionDisclosure px="xlarge">
             <Heading variant="secondary" as="h4" fontFamily="body">
