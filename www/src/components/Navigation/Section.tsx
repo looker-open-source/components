@@ -64,7 +64,7 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
             </Heading>
           </AccordionDisclosure>
           <AccordionContent>
-            <PageList pl="xxsmall">
+            <PageList>
               <Section
                 path={sectionPath}
                 section={child as NavigationSection}
@@ -81,11 +81,7 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
   return <PageList>{navigationItems}</PageList>
 }
 
-const PageList = styled(List)`
+const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
   margin-bottom: ${({ theme }) => theme.space.small};
-
-  li {
-    line-height: 1.75;
-  }
 `
