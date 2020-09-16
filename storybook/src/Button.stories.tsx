@@ -25,10 +25,10 @@
  */
 
 import React from 'react'
-import { Button as ButtonNoConflict, ButtonProps } from '@looker/components'
+import { Button, ButtonProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<ButtonProps> = (args) => <ButtonNoConflict {...args} />
+const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
@@ -48,6 +48,6 @@ Critical.args = {
 }
 
 export default {
-  component: ButtonNoConflict,
+  component: Button,
   title: 'Button',
 }
