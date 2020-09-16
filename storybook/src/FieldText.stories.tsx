@@ -25,17 +25,17 @@
  */
 
 import React from 'react'
-import { Button, ButtonProps } from '@looker/components'
+import { FieldText, FieldTextProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<FieldTextProps> = (args) => <FieldText {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  children: 'Button Text',
+  children: 'Filed Text',
 }
 
 export default {
-  component: Button,
-  title: 'Button',
+  component: FieldText,
+  title: 'FieldText',
 }
