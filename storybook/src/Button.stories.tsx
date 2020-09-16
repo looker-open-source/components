@@ -24,38 +24,19 @@
 
  */
 
-import { FontFamilyChoices } from '../../system'
-import { generateFontFamilies } from '../../utils/typography'
+import React from 'react'
+import { Button, ButtonProps } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 
-const sansSerifFontFallbacks = [
-  '"Noto Sans JP"',
-  '"Noto Sans CJK KR"',
-  '"Noto Sans Arabic UI"',
-  '"Noto Sans Devanagari UI"',
-  '"Noto Sans Hebrew"',
-  '"Noto Sans Thai UI"',
-  '"Helvetica"',
-  '"Arial"',
-  'sans-serif',
-]
+const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
-export const defaultFontFallbacks = {
-  body: sansSerifFontFallbacks,
-  brand: sansSerifFontFallbacks,
-  code: [
-    '"Monaco"',
-    '"Menlo"',
-    '"Ubuntu Mono"',
-    '"Consolas"',
-    '"source-code-pro"',
-    'monospace',
-  ],
+export const Basic = Template.bind({})
+
+Basic.args = {
+  children: 'Button Text',
 }
 
-export const defaultFonts: FontFamilyChoices = {
-  body: '"Roboto"',
-  brand: '"Roboto"',
-  code: '"Roboto Mono"',
+export default {
+  component: Button,
+  title: 'Buttons/Button',
 }
-
-export const fontFamilies = generateFontFamilies(defaultFonts)
