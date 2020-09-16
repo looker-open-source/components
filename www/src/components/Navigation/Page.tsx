@@ -33,17 +33,15 @@ import { NavigationPage } from './types'
 interface PageProps {
   className?: string
   page: NavigationPage
-  path: string[]
 }
 
-export const pathToUri = (path: string[]) => withPrefix(`/${path.join('/')}`)
+export const pathToUri = (path: string[]) =>
+  withPrefix(`/${path.join('/').replace('//', '/')}`)
 
-const PageLayout: FC<PageProps> = ({ className, page, path }) => {
-  const uri = pathToUri([...path, page.path])
-
+const PageLayout: FC<PageProps> = ({ className, page }) => {
   return (
     <li className={className}>
-      <Link to={uri} partiallyActive activeClassName="active">
+      <Link to={`/${page.path}`} partiallyActive activeClassName="active">
         {page.title}
         {page.detail && <Badge>{page.detail}</Badge>}
       </Link>

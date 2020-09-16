@@ -30,58 +30,65 @@ import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
-  List,
   Heading,
 } from '@looker/components'
 import styled from 'styled-components'
 import { NavigationSection } from './types'
-import { Page, pathToUri } from './Page'
+import { Page } from './Page'
 
 interface SectionProps {
   section: NavigationSection
-  path?: string[]
 }
 
-export const Section: FC<SectionProps> = ({ path = [], section }) => {
+export const Section: FC<SectionProps> = ({ section }) => {
   const location = useLocation()
   const currentPath = location.pathname
-  const sectionPath = [...path, section.path]
 
   const navigationItems = section.children.map((child) => {
-    const uri = pathToUri([...sectionPath, child.path])
+    const uri = child.path
 
     if ((child as NavigationSection).children) {
       return (
-        <Accordion
-          key={uri}
-          indicatorColor="text1"
-          indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
-          defaultOpen={currentPath.startsWith(uri)}
-        >
-          <AccordionDisclosure px="xlarge">
-            <Heading variant="secondary" as="h4" fontFamily="body">
-              {child.title}
-            </Heading>
-          </AccordionDisclosure>
-          <AccordionContent>
-            <PageList>
-              <Section
-                path={sectionPath}
-                section={child as NavigationSection}
-              />
-            </PageList>
-          </AccordionContent>
-        </Accordion>
+        <NestedSection key={uri}>
+          <Accordion
+            indicatorColor="text1"
+            indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
+            defaultOpen={currentPath.indexOf(uri) === 1}
+          >
+            <AccordionDisclosure px="xlarge">
+              <Heading variant="secondary" as="h4" fontFamily="body">
+                {child.title}
+              </Heading>
+            </AccordionDisclosure>
+            <AccordionContent>
+              <PageList>
+                <Section section={child as NavigationSection} />
+              </PageList>
+            </AccordionContent>
+          </Accordion>
+        </NestedSection>
       )
     } else {
-      return <Page key={uri} path={sectionPath} page={child} />
+      return <Page key={uri} page={child} />
     }
   })
 
-  return <>{navigationItems}</>
+  return <PageList>{navigationItems}</PageList>
 }
+
+const NestedSection = styled.li`
+  border: ${({ theme }) => `1px solid ${theme.colors.ui2}`};
+  border-left: none;
+  border-right: none;
+  & + & {
+    border-top: none;
+  }
+`
 
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  margin-bottom: ${({ theme }) => theme.space.small};
+  list-style-type: none;
+  & > & {
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
+  }
 `

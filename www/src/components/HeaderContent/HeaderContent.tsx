@@ -24,11 +24,12 @@
 
  */
 
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
-import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import sitemap from '../../documentation/sitemap'
 import { Search } from '../Search'
 import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
@@ -43,44 +44,68 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   toggleNavigation,
   updateTheme,
   hasCustomTheme,
-}) => (
-  <Grid
-    alignItems="center"
-    columns={3}
-    className={className}
-    pl="small"
-    pr="large"
-    width="100%"
-    height="100%"
-  >
-    <Space>
-      <IconButton
-        icon="Hamburger"
-        size="small"
-        label="Toggle navigation"
-        onClick={toggleNavigation}
-      />
-      <AppLogo />
-    </Space>
-    <Search />
-    <NavigationList>
-      <Space as="ul" gap="xlarge" pr="large">
-        {sitemap.slice(0, 3).map((section) => (
-          <li key={section.path}>
-            <Link
-              partiallyActive
-              activeClassName="active"
-              to={`/${section.path}`}
-            >
-              {section.title}
-            </Link>
-          </li>
-        ))}
+}) => {
+  const location = useLocation()
+  const currentPath = location.pathname
+
+  const data = useStaticQuery(graphql`
+    query HeaderNav {
+      allMdx(
+        filter: { slug: { glob: "*", ne: "utilities/" } }
+        sort: { fields: slug }
+      ) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <Grid
+      alignItems="center"
+      columns={3}
+      className={className}
+      pl="small"
+      pr="large"
+      width="100%"
+      height="100%"
+    >
+      <Space>
+        {currentPath === '/' ? (
+          <span />
+        ) : (
+          <IconButton
+            icon="Hamburger"
+            size="small"
+            label="Toggle navigation"
+            onClick={toggleNavigation}
+          />
+        )}
+        <AppLogo />
       </Space>
-      <ThemeEditor updateTheme={updateTheme} hasCustomTheme={hasCustomTheme} />
-    </NavigationList>
-  </Grid>
-)
+      <Search />
+      <NavigationList>
+        <Space as="ul" gap="xlarge" pr="large">
+          {data.allMdx.edges.map(({ node: { slug } }) => {
+            return (
+              <li key={slug}>
+                <Link partiallyActive activeClassName="active" to={`/${slug}`}>
+                  {startCase(slug)}
+                </Link>
+              </li>
+            )
+          })}
+        </Space>
+        <ThemeEditor
+          updateTheme={updateTheme}
+          hasCustomTheme={hasCustomTheme}
+        />
+      </NavigationList>
+    </Grid>
+  )
+}
 
 export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};

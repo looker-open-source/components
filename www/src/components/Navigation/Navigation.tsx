@@ -24,30 +24,92 @@
 
  */
 
+import groupBy from 'lodash/groupBy'
+import map from 'lodash/map'
+import startCase from 'lodash/startCase'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import { Aside, AsideProps, Heading } from '@looker/components'
-import sitemap from '../../documentation/sitemap'
+import {
+  Aside,
+  AsideProps,
+  Heading,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from '@looker/components'
 import { Section } from './Section'
+import { useSitemap } from './useSitemap'
+import { NavigationPage } from './types'
 
 interface NavigationProps extends AsideProps {
   className?: string
 }
 
+function groupComponents(pages: NavigationPage[]) {
+  const groups = groupBy(pages, ({ path }) => path.split('-')[0])
+  return map(groups, (group, groupKey) => {
+    if (group.length === 1) {
+      return group[0]
+    }
+    const groupKeyArr = groupKey.split('/')
+    const groupName = groupKeyArr[groupKeyArr.length - 1]
+    return { children: group, path: groupKey, title: startCase(groupName) }
+  })
+}
+
 const NavigationLayout: FC<NavigationProps> = (props) => {
   const location = useLocation()
   const sectionPath = location.pathname.split('/')[1]
-  const section = sitemap.find((section) => section.path === sectionPath)
+  const title = startCase(sectionPath)
+  const pages = useSitemap()[sectionPath]
 
-  return section ? (
+  if (!pages) return null
+
+  const section = (
+    <Section
+      section={{
+        children: pages,
+        path: sectionPath,
+        title,
+      }}
+    />
+  )
+
+  const content =
+    sectionPath === 'components' ? (
+      <Tabs>
+        <TabList distribute>
+          <Tab>Grouped</Tab>
+          <Tab>Alphabetical</Tab>
+        </TabList>
+        <TabPanels pt="small">
+          <TabPanel>
+            <Section
+              section={{
+                children: groupComponents(pages),
+                path: sectionPath,
+                title,
+              }}
+            />
+          </TabPanel>
+          <TabPanel>{section}</TabPanel>
+        </TabPanels>
+      </Tabs>
+    ) : (
+      section
+    )
+
+  return (
     <Aside as="nav" {...props} py="xlarge">
       <Heading as="h3" px="xlarge" mb="medium" fontFamily="body">
-        {section.title}
+        {title}
       </Heading>
-      <Section section={section} />
+      {content}
     </Aside>
-  ) : null
+  )
 }
 
 export const Navigation = styled(NavigationLayout)`
