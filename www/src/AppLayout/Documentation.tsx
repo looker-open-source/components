@@ -47,8 +47,12 @@ import { AppLayout } from './AppLayout'
 const githubBase =
   'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
 
+const isDev = false
+
 const storybookLink = (component: string) =>
-  `http://lukebowerman.c.googlers.com:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
+  isDev
+    ? `http://lukebowerman.c.googlers.com:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
+    : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
 
 interface DocQuery {
   data: {
@@ -61,9 +65,10 @@ interface DocQuery {
       body: string
       frontmatter: {
         title: string
+        description?: string
         github?: string
         status?: 'experimental' | 'stable' | 'deprecated'
-        storybook?: string
+        storybook?: boolean
       }
     }
   }
@@ -71,9 +76,11 @@ interface DocQuery {
 
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { github, status, title } = mdx.frontmatter
+  const { github, status, /* storybook, */ title } = mdx.frontmatter
 
+  const storybook = true
   const tab = useTabs()
+  const body = <MDXRenderer>{mdx.body}</MDXRenderer>
 
   return (
     <>
@@ -87,15 +94,17 @@ const DocumentationLayout = (props: DocQuery) => {
         </Space>
 
         <CustomTabs>
-          <TabList {...tab}>
-            <Tab>Overview</Tab>
-            <Tab>
-              Storybook{' '}
-              <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
-                Props &amp; Examples
-              </Text>
-            </Tab>
-          </TabList>
+          {storybook && (
+            <TabList {...tab}>
+              <Tab>Overview</Tab>
+              <Tab>
+                Storybook{' '}
+                <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
+                  Props &amp; Examples
+                </Text>
+              </Tab>
+            </TabList>
+          )}
           <Space width="auto" ml="auto" gap="xsmall">
             <Link
               fontSize="small"
@@ -109,17 +118,18 @@ const DocumentationLayout = (props: DocQuery) => {
             </Text>
           </Space>
         </CustomTabs>
-        <TabPanels {...tab}>
-          <TabPanel>
-            <MDXRenderer>{mdx.body}</MDXRenderer>
-          </TabPanel>
-          <TabPanel>
-            <Iframe src={storybookLink(title)} />
-          </TabPanel>
-        </TabPanels>
-        {/*  */}
-
-        {/* <TableOfContents toc={mdx.tableOfContents} /> */}
+        {storybook ? (
+          <TabPanels {...tab}>
+            <TabPanel>{body}</TabPanel>
+            {storybook && (
+              <TabPanel>
+                <Iframe src={storybookLink(title)} />
+              </TabPanel>
+            )}
+          </TabPanels>
+        ) : (
+          body
+        )}
       </AppLayout>
     </>
   )
@@ -135,11 +145,12 @@ const CustomTabs = styled(Space)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   display: flex;
-  margin-top: 1rem;
+  margin-top: ${({ theme }) => theme.space.small};
+  min-height: ${({ theme }) => theme.space.large};
 
   ${TabList} {
     margin-bottom: -1px;
-    margin-top: ${({ theme }) => theme.space.small};
+    margin-top: ${({ theme }) => theme.space.xsmall};
   }
 `
 

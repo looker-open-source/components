@@ -108,7 +108,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
 }
 
 export const HeaderContent = styled(HeaderContentLayout)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
 `
 
 export const NavigationList = styled.nav`
@@ -133,12 +133,12 @@ export const NavigationList = styled.nav`
 
     &.active {
       border-bottom-color: currentColor;
-      color: ${({ theme }) => theme.colors.link};
+      color: ${({ theme }) => theme.colors.key};
     }
 
     &:hover {
       border-bottom-color: currentColor;
-      color: ${({ theme }) => theme.colors.linkInteractive};
+      color: ${({ theme }) => theme.colors.keyInteractive};
     }
   }
 `

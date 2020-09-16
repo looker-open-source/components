@@ -26,7 +26,7 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
-import { SpacingSizes, Colors } from '@looker/design-tokens'
+import { SpacingSizes } from '@looker/design-tokens'
 import { IconNames, IconSize } from '../Icon'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
@@ -68,7 +68,7 @@ export interface AccordionIndicatorProps {
    * Space between label and indicator within disclosure
    * @default 'text5'
    */
-  indicatorColor?: Colors
+  indicatorColor?: string
 }
 
 export interface AccordionControlProps {

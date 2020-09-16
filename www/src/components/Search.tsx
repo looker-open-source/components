@@ -56,7 +56,7 @@ interface FauxSearchProps {
 }
 
 const iconMap: { [key: string]: IconNames } = {
-  Components: 'Dashboard',
+  Components: 'Code',
   Develop: 'CircleInfoOutline',
   Foundations: 'Validate',
   Utilities: 'Code',
