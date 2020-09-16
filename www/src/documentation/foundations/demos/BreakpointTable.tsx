@@ -34,7 +34,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { DocTable } from '../../../Shared'
+import { DocTable } from '../../../components'
 
 const breakpointLabels = [
   'Breakpoint',

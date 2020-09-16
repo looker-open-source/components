@@ -25,4 +25,4 @@
  */
 
 export * from './AppLayout'
-export { NavigationSection } from './Navigation'
+export { NavigationSection } from '../components/Navigation'

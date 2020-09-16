@@ -33,25 +33,33 @@ import {
   Layout,
 } from '@looker/components'
 import { MDXProvider } from '@mdx-js/react'
-import { Props } from '../Shared'
+import { Props, ThemeEditableProps } from '../components'
 import MDXComponents from '../MDX'
-import { HeaderContent } from './HeaderContent'
-import { Navigation } from './Navigation'
+import { HeaderContent } from '../components/HeaderContent'
+import { Navigation } from '../components/Navigation'
 
 export const AppLayout: FC = ({ children }) => {
   const [showNavigation, setNavigation] = useState(true)
   const toggleNavigation = () => setNavigation(!showNavigation)
 
+  const [customTheme, updateTheme] = useState<undefined | ThemeEditableProps>()
+
   return (
-    <ComponentsProvider loadGoogleFonts>
+    <ComponentsProvider loadGoogleFonts {...customTheme}>
       <MDXProvider components={{ ...MDXComponents, Props }}>
         <Page>
           <Header height="4rem">
-            <HeaderContent toggleNavigation={toggleNavigation} />
+            <HeaderContent
+              updateTheme={updateTheme}
+              hasCustomTheme={Boolean(customTheme)}
+              toggleNavigation={toggleNavigation}
+            />
           </Header>
           <Layout hasAside>
             {showNavigation && <Navigation width="18rem" />}
-            <Section>{children}</Section>
+            <Section py="xlarge" px="xxxlarge" as="main">
+              {children}
+            </Section>
           </Layout>
         </Page>
       </MDXProvider>

@@ -47,12 +47,10 @@ const DefaultLayout = (props: PageQuery) => {
 
   return (
     <AppLayout>
-      <Section p="xxlarge">
-        <Heading as="h1" fontSize="xxxxlarge">
-          {title}
-        </Heading>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </Section>
+      <Heading as="h1" fontSize="xxxxlarge">
+        {title}
+      </Heading>
+      <MDXRenderer>{mdx.body}</MDXRenderer>
     </AppLayout>
   )
 }
