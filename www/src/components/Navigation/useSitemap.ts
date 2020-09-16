@@ -33,7 +33,7 @@ export interface Sitemap {
 
 export function useSitemap(): Sitemap {
   const data = useStaticQuery(graphql`
-    query SectionNav2 {
+    query SectionNav {
       allMdx(
         sort: { fields: frontmatter___title }
         filter: { frontmatter: { title: { ne: "" } } }

@@ -49,7 +49,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <BorderedAccordion
+        <SectionAccordion
           key={uri}
           indicatorColor="text1"
           indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
@@ -65,7 +65,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
               <Section section={child as NavigationSection} />
             </PageList>
           </AccordionContent>
-        </BorderedAccordion>
+        </SectionAccordion>
       )
     } else {
       return <Page key={uri} page={child} />
@@ -75,16 +75,17 @@ export const Section: FC<SectionProps> = ({ section }) => {
   return <>{navigationItems}</>
 }
 
-const BorderedAccordion = styled(Accordion)`
+const SectionAccordion = styled(Accordion)`
   border: ${({ theme }) => `1px solid ${theme.colors.ui2}`};
   border-left: none;
   border-right: none;
   & + & {
     border-top: none;
   }
+  padding: ${({ theme }) => `${theme.space.xsmall} 0 `};
 `
 
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  margin-bottom: ${({ theme }) => theme.space.small};
+  margin-top: ${({ theme }) => theme.space.xsmall};
 `

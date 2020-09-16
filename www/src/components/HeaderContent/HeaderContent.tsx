@@ -24,13 +24,11 @@
 
  */
 
-import map from 'lodash/map'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
-import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { useSitemap } from '../Navigation/useSitemap'
 import { Search } from '../Search'
 import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
@@ -46,7 +44,20 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   updateTheme,
   hasCustomTheme,
 }) => {
-  const sitemap = useSitemap()
+  const data = useStaticQuery(graphql`
+    query HeaderNav {
+      allMdx(
+        filter: { slug: { glob: "*", ne: "utilities/" } }
+        sort: { fields: slug }
+      ) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
   return (
     <Grid
       alignItems="center"
@@ -69,12 +80,11 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
       <Search />
       <NavigationList>
         <Space as="ul" gap="xlarge" pr="large">
-          {map(sitemap, (_, path) => {
-            if (path === 'utilities') return null
+          {data.allMdx.edges.map(({ node: { slug } }) => {
             return (
-              <li key={path}>
-                <Link partiallyActive activeClassName="active" to={`/${path}`}>
-                  {startCase(path)}
+              <li key={slug}>
+                <Link partiallyActive activeClassName="active" to={`/${slug}`}>
+                  {startCase(slug)}
                 </Link>
               </li>
             )
