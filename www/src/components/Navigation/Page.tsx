@@ -24,7 +24,7 @@
 
  */
 
-import { Badge, ListItem } from '@looker/components'
+import { Badge } from '@looker/components'
 import styled from 'styled-components'
 import { Link, withPrefix } from 'gatsby'
 import React, { FC } from 'react'

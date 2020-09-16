@@ -24,38 +24,30 @@
 
  */
 
-import { FontFamilyChoices } from '../../system'
-import { generateFontFamilies } from '../../utils/typography'
+import React from 'react'
+import { Button as ButtonNoConflict, ButtonProps } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 
-const sansSerifFontFallbacks = [
-  '"Noto Sans JP"',
-  '"Noto Sans CJK KR"',
-  '"Noto Sans Arabic UI"',
-  '"Noto Sans Devanagari UI"',
-  '"Noto Sans Hebrew"',
-  '"Noto Sans Thai UI"',
-  '"Helvetica"',
-  '"Arial"',
-  'sans-serif',
-]
+const Template: Story<ButtonProps> = (args) => <ButtonNoConflict {...args} />
 
-export const defaultFontFallbacks = {
-  body: sansSerifFontFallbacks,
-  brand: sansSerifFontFallbacks,
-  code: [
-    '"Monaco"',
-    '"Menlo"',
-    '"Ubuntu Mono"',
-    '"Consolas"',
-    '"source-code-pro"',
-    'monospace',
-  ],
+export const Primary = Template.bind({})
+Primary.args = {
+  children: 'Button Text',
 }
 
-export const defaultFonts: FontFamilyChoices = {
-  body: '"Roboto"',
-  brand: '"Roboto"',
-  code: '"Roboto Mono"',
+export const Neutral = Template.bind({})
+Neutral.args = {
+  ...Primary.args,
+  color: 'neutral',
 }
 
-export const fontFamilies = generateFontFamilies(defaultFonts)
+export const Critical = Template.bind({})
+Critical.args = {
+  ...Primary.args,
+  color: 'critical',
+}
+
+export default {
+  component: ButtonNoConflict,
+  title: 'Button',
+}
