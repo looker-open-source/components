@@ -85,7 +85,7 @@ const NavigationLayout: FC<NavigationProps> = (props) => {
           <Tab>Grouped</Tab>
           <Tab>Alphabetical</Tab>
         </TabList>
-        <TabPanels pt="none">
+        <TabPanels pt="small">
           <TabPanel>
             <Section
               section={{

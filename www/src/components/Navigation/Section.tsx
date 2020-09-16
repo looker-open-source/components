@@ -49,43 +49,47 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <SectionAccordion
-          key={uri}
-          indicatorColor="text1"
-          indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
-          defaultOpen={currentPath.indexOf(uri) === 1}
-        >
-          <AccordionDisclosure px="xlarge">
-            <Heading variant="secondary" as="h4" fontFamily="body">
-              {child.title}
-            </Heading>
-          </AccordionDisclosure>
-          <AccordionContent>
-            <PageList>
-              <Section section={child as NavigationSection} />
-            </PageList>
-          </AccordionContent>
-        </SectionAccordion>
+        <NestedSection>
+          <Accordion
+            key={uri}
+            indicatorColor="text1"
+            indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
+            defaultOpen={currentPath.indexOf(uri) === 1}
+          >
+            <AccordionDisclosure px="xlarge">
+              <Heading variant="secondary" as="h4" fontFamily="body">
+                {child.title}
+              </Heading>
+            </AccordionDisclosure>
+            <AccordionContent>
+              <PageList>
+                <Section section={child as NavigationSection} />
+              </PageList>
+            </AccordionContent>
+          </Accordion>
+        </NestedSection>
       )
     } else {
       return <Page key={uri} page={child} />
     }
   })
 
-  return <>{navigationItems}</>
+  return <PageList>{navigationItems}</PageList>
 }
 
-const SectionAccordion = styled(Accordion)`
+const NestedSection = styled.li`
   border: ${({ theme }) => `1px solid ${theme.colors.ui2}`};
   border-left: none;
   border-right: none;
   & + & {
     border-top: none;
   }
-  padding: ${({ theme }) => `${theme.space.xsmall} 0 `};
 `
 
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  margin-top: ${({ theme }) => theme.space.xsmall};
+  list-style-type: none;
+  & > & {
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
+  }
 `
