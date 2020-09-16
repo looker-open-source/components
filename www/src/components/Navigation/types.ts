@@ -24,41 +24,14 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+export interface NavigationPage {
+  title: string
+  path: string
+  detail?: string
+}
 
-export * from './utils'
-
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+export interface NavigationSection {
+  title: string
+  path: string
+  children: (NavigationPage | NavigationSection)[]
+}

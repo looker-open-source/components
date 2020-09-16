@@ -1,0 +1,73 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2020 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+import { IconButton, DialogManager } from '@looker/components'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import {
+  CoreColors,
+  FontFamilyChoices,
+  IntentColors,
+} from '@looker/design-tokens'
+import {
+  ThemeEditorContent,
+  ThemeEditorContentProps,
+} from './ThemeEditorContent'
+
+interface ThemeEditableProps {
+  colors?: Partial<CoreColors & IntentColors>
+  fontFamilies?: Partial<FontFamilyChoices>
+}
+
+export interface ThemeEditorProps extends ThemeEditorContentProps {
+  hasCustomTheme: boolean
+  updateTheme: (customTheme?: ThemeEditableProps) => void
+}
+
+export const ThemeEditor: FC<ThemeEditorProps> = ({
+  hasCustomTheme,
+  updateTheme,
+}) => (
+  <DialogManager
+    content={<ThemeEditorContent updateTheme={updateTheme} />}
+    width="90%"
+    maxWidth="90%"
+  >
+    <IconButtonActivated
+      icon="Beaker"
+      label="Customize Theme"
+      tooltipDisabled
+      activated={hasCustomTheme && 'active'}
+      color={hasCustomTheme ? 'key' : 'neutral'}
+      size="small"
+      round
+    />
+  </DialogManager>
+)
+
+const IconButtonActivated = styled(IconButton)<{ activated?: boolean }>`
+  background: ${({ activated, theme }) => activated && theme.colors.keyAccent};
+`

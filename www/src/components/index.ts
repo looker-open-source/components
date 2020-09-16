@@ -24,20 +24,9 @@
 
  */
 
-import styled from 'styled-components'
-import { color, reset, typography } from '@looker/design-tokens'
-
-interface SidebarItemProps {
-  current?: boolean
-}
-
-export const SidebarItem = styled.a.attrs(({ current }: SidebarItemProps) => ({
-  backgroundColor: current && 'keyAccent',
-  color: current ? 'keyPressed' : 'neutralPressed',
-  fontWeight: current ? 'semiBold' : undefined,
-}))<SidebarItemProps>`
-  ${reset}
-  ${typography}
-  ${color}
-  display: block;
-`
+export * from './DocTable'
+export * from './Props'
+export * from './Search'
+export * from './Status'
+export * from './TableOfContents'
+export * from './ThemeEditor'

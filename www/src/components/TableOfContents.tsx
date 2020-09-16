@@ -24,41 +24,29 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import React, { FC } from 'react'
+import { List, ListItem } from '@looker/components'
+import { Link } from 'gatsby'
 
-export * from './utils'
+export interface TableOfContentsProps {
+  items?: [
+    {
+      url: string
+      title: string
+    }
+  ]
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
+export const TableOfContents: FC<{ toc?: TableOfContentsProps }> = ({
+  toc,
+}) => {
+  if (!toc || !toc.items) return null
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+  const sections = toc.items.map(({ url, title }) => (
+    <ListItem fontSize="small" key={url} my="medium">
+      <Link to={url}>{title}</Link>
+    </ListItem>
+  ))
+
+  return <List>{sections}</List>
+}

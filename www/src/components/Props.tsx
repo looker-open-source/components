@@ -24,6 +24,26 @@
 
  */
 
-export * from './Sidebar'
-export * from './SidebarGroup'
-export * from './SidebarItem'
+import React from 'react'
+import { Code, Paragraph, Space } from '@looker/components'
+
+interface PropsProps {
+  of?: string
+  interfaceName?: string
+  className?: string
+}
+
+export const Props = ({ of, interfaceName = `${of}`, className }: PropsProps) =>
+  of ? (
+    <Space between className={className}>
+      <Paragraph variant="secondary" fontSize="small">
+        Interface of{' '}
+        <Code color="key" fontSize="small">
+          {interfaceName}
+        </Code>
+      </Paragraph>
+      <Paragraph variant="secondary" fontSize="small">
+        🏗 Coming Soon
+      </Paragraph>
+    </Space>
+  ) : null

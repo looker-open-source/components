@@ -24,41 +24,30 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import { DividerVertical, Heading, Space } from '@looker/components'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import logo from './logo.png'
 
-export * from './utils'
+const AppLogoLayout: FC<{ className?: string }> = (props) => (
+  <a href="/" {...props}>
+    <Space gap="small">
+      <img src={logo} alt="Looker" />
+      <DividerVertical stretch my="none" mx="none" />
+      <Heading fontSize="large" fontWeight="medium" color="text3" as="h1">
+        Components
+      </Heading>
+    </Space>
+  </a>
+)
 
-export { ComponentsProvider } from '@looker/components-providers'
+export const AppLogo = styled(AppLogoLayout)`
+  align-items: center;
+  display: flex;
+  height: 1.5rem;
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+  img {
+    height: 24px;
+    width: 90;
+  }
+`

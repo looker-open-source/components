@@ -24,41 +24,33 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import { useLocation } from '@reach/router'
+import styled from 'styled-components'
+import React, { FC } from 'react'
+import { Aside, AsideProps, Heading } from '@looker/components'
+import sitemap from '../../documentation/sitemap'
+import { Section } from './Section'
 
-export * from './utils'
+interface NavigationProps extends AsideProps {
+  className?: string
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
+const NavigationLayout: FC<NavigationProps> = (props) => {
+  const location = useLocation()
+  const sectionPath = location.pathname.split('/')[1]
+  const section = sitemap.find((section) => section.path === sectionPath)
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+  return section ? (
+    <Aside as="nav" {...props} py="xlarge" px="xlarge">
+      <Heading as="h3" mb="medium" fontFamily="body">
+        {section.title}
+      </Heading>
+      <Section section={section} />
+    </Aside>
+  ) : null
+}
+
+export const Navigation = styled(NavigationLayout)`
+  border-right: 1px solid ${({ theme }) => theme.colors.ui2};
+  height: 100%;
+`

@@ -24,41 +24,39 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import { Badge, ListItem } from '@looker/components'
+import styled from 'styled-components'
+import { Link, withPrefix } from 'gatsby'
+import React, { FC } from 'react'
+import { NavigationPage } from './types'
 
-export * from './utils'
+interface PageProps {
+  className?: string
+  page: NavigationPage
+  path: string[]
+}
 
-export { ComponentsProvider } from '@looker/components-providers'
+export const pathToUri = (path: string[]) => withPrefix(`/${path.join('/')}`)
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+const PageLayout: FC<PageProps> = ({ className, page, path }) => {
+  const uri = pathToUri([...path, page.path])
+
+  return (
+    <ListItem className={className}>
+      <Link to={uri} partiallyActive activeClassName="active">
+        {page.title}
+        {page.detail && <Badge>{page.detail}</Badge>}
+      </Link>
+    </ListItem>
+  )
+}
+
+export const Page = styled(PageLayout)`
+  a {
+    color: ${({ theme }) => theme.colors.link};
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.linkInteractive};
+    }
+  }
+`

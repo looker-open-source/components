@@ -24,41 +24,50 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import { Box } from '@looker/components'
+import React, { FC } from 'react'
+import styled from 'styled-components'
 
-export * from './utils'
+const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
+  <ul className={className}>
+    <li>
+      <Box mx="large" height="20%" title="Gouda" bg="inform"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="60%" title="Cheddar" bg="positive"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="90%" title="Swiss" bg="warn"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="40%" title="Blue" bg="critical"></Box>
+    </li>
+  </ul>
+)
 
-export { ComponentsProvider } from '@looker/components-providers'
+export const FauxBarChart = styled(FauxChartLayout)`
+  display: table;
+  height: calc(100% - 1.5rem);
+  table-layout: fixed;
+  width: 100%;
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+  li {
+    display: table-cell;
+    height: 90%;
+    position: relative;
+    vertical-align: bottom;
+  }
+
+  div::before {
+    content: attr(title);
+    display: block;
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    left: 0;
+    padding: 5px 1rem 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 100%;
+    word-wrap: break-word;
+  }
+`

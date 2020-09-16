@@ -24,41 +24,35 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import React, { FC } from 'react'
+import styled from 'styled-components'
 
-export * from './utils'
+const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
+  <div className={className} />
+)
 
-export { ComponentsProvider } from '@looker/components-providers'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+export const FauxPieChart = styled(FauxChartLayout)`
+  background: ${({
+    theme: {
+      colors: { background, inform, positive, warn, critical, key, neutral },
+    },
+  }) => `radial-gradient(circle closest-side, transparent 66%, ${background} 0),
+    conic-gradient(
+      ${inform} 0,
+      ${inform} 38%,
+      ${positive} 0,
+      ${positive} 61%,
+      ${warn} 0,
+      ${warn} 77%,
+      ${critical} 0,
+      ${critical} 87%,
+      ${key} 0,
+      ${key} 93%,
+      ${neutral} 0,
+      ${neutral} 100%
+    )`};
+  height: 100%;
+  outline: 1px solid #ccc;
+  position: relative;
+  width: 100%;
+`
