@@ -49,9 +49,8 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <NestedSection>
+        <NestedSection key={uri}>
           <Accordion
-            key={uri}
             indicatorColor="text1"
             indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
             defaultOpen={currentPath.indexOf(uri) === 1}
