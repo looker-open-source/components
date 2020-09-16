@@ -27,6 +27,7 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
+import { useLocation } from '@reach/router'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Search } from '../Search'
@@ -44,6 +45,9 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   updateTheme,
   hasCustomTheme,
 }) => {
+  const location = useLocation()
+  const currentPath = location.pathname
+
   const data = useStaticQuery(graphql`
     query HeaderNav {
       allMdx(
@@ -69,12 +73,16 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
       height="100%"
     >
       <Space>
-        <IconButton
-          icon="Hamburger"
-          size="small"
-          label="Toggle navigation"
-          onClick={toggleNavigation}
-        />
+        {currentPath === '/' ? (
+          <span />
+        ) : (
+          <IconButton
+            icon="Hamburger"
+            size="small"
+            label="Toggle navigation"
+            onClick={toggleNavigation}
+          />
+        )}
         <AppLogo />
       </Space>
       <Search />
