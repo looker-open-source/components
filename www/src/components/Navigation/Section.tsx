@@ -30,11 +30,10 @@ import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
-  List,
   Heading,
 } from '@looker/components'
 import styled from 'styled-components'
-import { NavigationSection, NavigationPage } from './types'
+import { NavigationSection } from './types'
 import { Page } from './Page'
 
 interface SectionProps {
@@ -50,7 +49,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <Accordion
+        <BorderedAccordion
           key={uri}
           indicatorColor="text1"
           indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
@@ -66,7 +65,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
               <Section section={child as NavigationSection} />
             </PageList>
           </AccordionContent>
-        </Accordion>
+        </BorderedAccordion>
       )
     } else {
       return <Page key={uri} page={child} />
@@ -75,6 +74,15 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
   return <>{navigationItems}</>
 }
+
+const BorderedAccordion = styled(Accordion)`
+  border: ${({ theme }) => `1px solid ${theme.colors.ui2}`};
+  border-left: none;
+  border-right: none;
+  & + & {
+    border-top: none;
+  }
+`
 
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
