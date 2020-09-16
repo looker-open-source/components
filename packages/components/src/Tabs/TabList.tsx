@@ -32,12 +32,13 @@ import React, {
   useRef,
   Ref,
 } from 'react'
+import { SpaceProps, space } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { moveFocus, useForkedRef } from '../utils'
 import { TabContext } from './TabContext'
 import { Tab } from '.'
 
-export interface TabListProps {
+export interface TabListProps extends SpaceProps {
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: any) => void
@@ -115,7 +116,6 @@ const distributeCSS = css`
   grid-auto-flow: column;
 
   ${Tab} {
-    font-size: ${(props) => props.theme.fontSizes.xsmall};
     padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
   }
 `
@@ -126,6 +126,7 @@ export const TabList = styled(TabListLayout)`
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
   white-space: nowrap;
+  ${space}
 
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
