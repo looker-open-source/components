@@ -24,11 +24,13 @@
 
  */
 
+import map from 'lodash/map'
+import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import sitemap from '../../documentation/sitemap'
+import { useSitemap } from '../Navigation/useSitemap'
 import { Search } from '../Search'
 import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
@@ -43,44 +45,49 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   toggleNavigation,
   updateTheme,
   hasCustomTheme,
-}) => (
-  <Grid
-    alignItems="center"
-    columns={3}
-    className={className}
-    pl="small"
-    pr="large"
-    width="100%"
-    height="100%"
-  >
-    <Space>
-      <IconButton
-        icon="Hamburger"
-        size="small"
-        label="Toggle navigation"
-        onClick={toggleNavigation}
-      />
-      <AppLogo />
-    </Space>
-    <Search />
-    <NavigationList>
-      <Space as="ul" gap="xlarge" pr="large">
-        {sitemap.slice(0, 3).map((section) => (
-          <li key={section.path}>
-            <Link
-              partiallyActive
-              activeClassName="active"
-              to={`/${section.path}`}
-            >
-              {section.title}
-            </Link>
-          </li>
-        ))}
+}) => {
+  const sitemap = useSitemap()
+  return (
+    <Grid
+      alignItems="center"
+      columns={3}
+      className={className}
+      pl="small"
+      pr="large"
+      width="100%"
+      height="100%"
+    >
+      <Space>
+        <IconButton
+          icon="Hamburger"
+          size="small"
+          label="Toggle navigation"
+          onClick={toggleNavigation}
+        />
+        <AppLogo />
       </Space>
-      <ThemeEditor updateTheme={updateTheme} hasCustomTheme={hasCustomTheme} />
-    </NavigationList>
-  </Grid>
-)
+      <Search />
+      <NavigationList>
+        <Space as="ul" gap="xlarge" pr="large">
+          {map(sitemap, (_, path) => {
+            if (path === 'utilities') return null
+            return (
+              <li key={path}>
+                <Link partiallyActive activeClassName="active" to={`/${path}`}>
+                  {startCase(path)}
+                </Link>
+              </li>
+            )
+          })}
+        </Space>
+        <ThemeEditor
+          updateTheme={updateTheme}
+          hasCustomTheme={hasCustomTheme}
+        />
+      </NavigationList>
+    </Grid>
+  )
+}
 
 export const HeaderContent = styled(HeaderContentLayout)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};

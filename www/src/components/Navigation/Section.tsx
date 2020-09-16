@@ -24,6 +24,9 @@
 
  */
 
+import groupBy from 'lodash/groupBy'
+import map from 'lodash/map'
+import startCase from 'lodash/startCase'
 import React, { FC } from 'react'
 import { useLocation } from '@reach/router'
 import {
@@ -34,21 +37,36 @@ import {
   Heading,
 } from '@looker/components'
 import styled from 'styled-components'
-import { NavigationSection } from './types'
-import { Page, pathToUri } from './Page'
+import { NavigationSection, NavigationPage } from './types'
+import { Page } from './Page'
 
 interface SectionProps {
   section: NavigationSection
-  path?: string[]
 }
 
-export const Section: FC<SectionProps> = ({ path = [], section }) => {
+function groupComponents(pages: NavigationPage[]) {
+  const groups = groupBy(pages, ({ path }) => path.split('-')[0])
+  return map(groups, (group, groupKey) => {
+    if (group.length === 1) {
+      return group[0]
+    }
+    const groupKeyArr = groupKey.split('/')
+    const groupName = groupKeyArr[groupKeyArr.length - 1]
+    return { children: group, path: groupKey, title: startCase(groupName) }
+  })
+}
+
+export const Section: FC<SectionProps> = ({ section }) => {
   const location = useLocation()
   const currentPath = location.pathname
-  const sectionPath = [...path, section.path]
 
-  const navigationItems = section.children.map((child) => {
-    const uri = pathToUri([...sectionPath, child.path])
+  const children =
+    section.path === 'components'
+      ? groupComponents(section.children)
+      : section.children
+
+  const navigationItems = children.map((child) => {
+    const uri = child.path
 
     if ((child as NavigationSection).children) {
       return (
@@ -65,16 +83,13 @@ export const Section: FC<SectionProps> = ({ path = [], section }) => {
           </AccordionDisclosure>
           <AccordionContent>
             <PageList>
-              <Section
-                path={sectionPath}
-                section={child as NavigationSection}
-              />
+              <Section section={child as NavigationSection} />
             </PageList>
           </AccordionContent>
         </Accordion>
       )
     } else {
-      return <Page key={uri} path={sectionPath} page={child} />
+      return <Page key={uri} page={child} />
     }
   })
 

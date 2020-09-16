@@ -24,12 +24,13 @@
 
  */
 
+import startCase from 'lodash/startCase'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import { Aside, AsideProps, Heading } from '@looker/components'
-import sitemap from '../../documentation/sitemap'
 import { Section } from './Section'
+import { useSitemap } from './useSitemap'
 
 interface NavigationProps extends AsideProps {
   className?: string
@@ -38,14 +39,21 @@ interface NavigationProps extends AsideProps {
 const NavigationLayout: FC<NavigationProps> = (props) => {
   const location = useLocation()
   const sectionPath = location.pathname.split('/')[1]
-  const section = sitemap.find((section) => section.path === sectionPath)
+  const title = startCase(sectionPath)
+  const pages = useSitemap()[sectionPath]
 
-  return section ? (
+  return pages ? (
     <Aside as="nav" {...props} py="xlarge">
       <Heading as="h3" px="xlarge" mb="medium" fontFamily="body">
-        {section.title}
+        {title}
       </Heading>
-      <Section section={section} />
+      <Section
+        section={{
+          children: pages,
+          path: sectionPath,
+          title,
+        }}
+      />
     </Aside>
   ) : null
 }

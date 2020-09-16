@@ -24,17 +24,46 @@
 
  */
 
-import { NavigationSection } from '../../AppLayout'
+import { useStaticQuery, graphql } from 'gatsby'
+import { NavigationPage } from './types'
 
-const navigation: NavigationSection = {
-  children: [
-    {
-      path: 'globalstyle',
-      title: 'GlobalStyle',
-    },
-  ],
-  path: 'utilities',
-  title: 'Utilities',
+export interface Sitemap {
+  [key: string]: NavigationPage[]
 }
 
-export default navigation
+export function useSitemap(): Sitemap {
+  const data = useStaticQuery(graphql`
+    query SectionNav2 {
+      allMdx(
+        sort: { fields: frontmatter___title }
+        filter: { frontmatter: { title: { ne: "" } } }
+      ) {
+        edges {
+          node {
+            slug
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+  return data.allMdx.edges.reduce(
+    (
+      acc: Sitemap,
+      {
+        node: {
+          slug,
+          frontmatter: { title },
+        },
+      }
+    ) => {
+      const sectionPath = slug.split('/')[0]
+      const existingPages = acc[sectionPath] || []
+      acc[sectionPath] = [...existingPages, { path: slug, title }]
+      return acc
+    },
+    {}
+  )
+}
