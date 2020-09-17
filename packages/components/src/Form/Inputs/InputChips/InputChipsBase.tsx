@@ -84,7 +84,7 @@ export interface InputChipsCommonProps
   extends Omit<InputTextBaseProps, 'defaultValue' | 'onChange'>,
     MaxHeightProps {
   summary?: string
-  hideControls?: boolean
+  isClearable?: boolean
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
@@ -124,7 +124,7 @@ export const InputChipsBaseInternal = forwardRef(
       onClear,
       isVisibleOptions,
       hasOptions = false,
-      hideControls = false,
+      isClearable = true,
       summary,
       removeOnBackspace = true,
       formatChip,
@@ -346,18 +346,16 @@ export const InputChipsBaseInternal = forwardRef(
       <InputText
         disabled={disabled}
         after={
-          !hideControls && (
-            <AdvancedInputControls
-              isVisibleOptions={isVisibleOptions}
-              onClear={handleClear}
-              showClear={values.length > 0}
-              validationType={validationType}
-              disabled={disabled}
-              summary={summary}
-              hasOptions={hasOptions}
-              onMouseDown={stopPropagation}
-            />
-          )
+          <AdvancedInputControls
+            isVisibleOptions={isVisibleOptions}
+            onClear={handleClear}
+            showClear={isClearable && values.length > 0}
+            validationType={validationType}
+            disabled={disabled}
+            summary={summary}
+            hasOptions={hasOptions}
+            onMouseDown={stopPropagation}
+          />
         }
         ref={ref}
         value={inputValue}

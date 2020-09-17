@@ -10,7 +10,7 @@ The input value is converted to chip values as the user types via the <strong>co
 Chips can be selected, via keyboard commands or clicking, and copy-pasted.
 The `values` and `onChange` props are required – `InputChips` is a controlled component.
 
-`InputChips` also supports `summary` and `hideControls`, similar to [`InputSearch`](../input-search) and `autoResize`, similar to [`InputText`](../input-text).
+`InputChips` also supports `summary` and `isClearable`, similar to [`InputSearch`](../input-search) and `autoResize`, similar to [`InputText`](../input-text).
 
 ```jsx
 ;() => {
@@ -33,7 +33,7 @@ The `values` and `onChange` props are required – `InputChips` is a controlled 
     <SpaceVertical align="start">
       <ExampleInputChips />
       <ExampleInputChips values={['mango', 'kiwi']} />
-      <ExampleInputChips values={[]} hideControls />
+      <ExampleInputChips values={[]} isClearable={false} />
       <ExampleInputChips values={[]} autoResize />
     </SpaceVertical>
   )

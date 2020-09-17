@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `InputSearch` `onClear` – use `onChange` with a check for empty value instead
-- `InputSearch` `hideControls` – use `isClearable={false}` instead
+- `InputSearch` and `InputChips` `hideControls` – use `isClearable={false}` instead
 
 ### Preview / Experimental
 
