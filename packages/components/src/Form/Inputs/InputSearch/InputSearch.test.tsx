@@ -130,4 +130,88 @@ describe('InputSearch', () => {
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
   })
+
+  describe('options', () => {
+    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+
+    test('list opens on change, not click', () => {
+      renderWithTheme(<InputSearch options={options} placeholder="type here" />)
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.click(input)
+      expect(screen.queryAllByRole('option')).toHaveLength(0)
+
+      fireEvent.change(input, { target: { value: 'F' } })
+      expect(input).toHaveDisplayValue('F')
+      expect(screen.queryAllByRole('option')).toHaveLength(2)
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+      // Value is cleared on list close by default
+      expect(input).toHaveDisplayValue('')
+    })
+
+    test('calls onSelectOption', () => {
+      const onSelectOptionMock = jest.fn()
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          onSelectOption={onSelectOptionMock}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+      fireEvent.click(screen.getByText('BAR'))
+
+      expect(onSelectOptionMock).toHaveBeenCalledWith({ value: 'BAR' })
+      expect(onChangeMock).toHaveBeenNthCalledWith(1, 'F')
+      expect(onChangeMock).toHaveBeenNthCalledWith(2, 'BAR')
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test('changeOnSelect={false}', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          changeOnSelect={false}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+      fireEvent.click(screen.getByText('BAR'))
+
+      expect(onChangeMock).toHaveBeenNthCalledWith(1, 'F')
+      expect(onChangeMock).toHaveBeenNthCalledWith(2, '')
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test('clearOnClose', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          clearOnClose={false}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+
+      expect(onChangeMock).toHaveBeenCalledWith('F')
+      expect(onChangeMock).toHaveBeenCalledTimes(1)
+    })
+  })
 })

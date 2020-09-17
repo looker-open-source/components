@@ -138,13 +138,15 @@ export function useInputEvents<
       if (checkForButton(e.target as Element, e.currentTarget as Element)) {
         return
       }
-      if (state === ComboboxState.IDLE && openOnClick) {
-        // Opening a closed list
-        transition &&
-          transition(ComboboxActionType.FOCUS, {
-            persistSelection:
-              persistSelectionPropRef && persistSelectionPropRef.current,
-          })
+      if (state === ComboboxState.IDLE) {
+        if (openOnClick) {
+          // Opening a closed list
+          transition &&
+            transition(ComboboxActionType.FOCUS, {
+              persistSelection:
+                persistSelectionPropRef && persistSelectionPropRef.current,
+            })
+        }
       } else {
         // Closing an opened list
         transition && transition(ComboboxActionType.ESCAPE)
