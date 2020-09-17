@@ -177,11 +177,12 @@ export const ComboboxInputInternal = forwardRef(
         state === ComboboxState.INTERACTING)
     ) {
       // When idle, we don't have a navigationOption on ArrowUp/Down
-      inputOption =
-        navigationOption ||
-        (controlledValue !== undefined ? controlledValue : option)
+      inputOption = navigationOption || option
     }
-    const inputValue = getComboboxText(inputOption)
+    const inputValue =
+      controlledValue !== undefined
+        ? controlledValue
+        : getComboboxText(inputOption)
 
     const wrappedOnChange = useWrapEvent(handleChange, onChange)
 

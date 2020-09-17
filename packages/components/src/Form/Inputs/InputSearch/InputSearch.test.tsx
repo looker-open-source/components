@@ -85,7 +85,7 @@ describe('InputSearch', () => {
   describe('Clear button', () => {
     test('clears value', () => {
       renderWithTheme(
-        <InputSearch placeholder="type here" value="start value" />
+        <InputSearch placeholder="type here" defaultValue="start value" />
       )
 
       const button = screen.getByRole('button')

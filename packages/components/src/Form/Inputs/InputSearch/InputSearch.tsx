@@ -46,7 +46,7 @@ export interface InputSearchProps
   /**
    * @default true
    */
-  isClearable: SelectProps['isClearable']
+  isClearable?: SelectProps['isClearable']
   hideSearchIcon?: boolean
   /**
    * @experimental

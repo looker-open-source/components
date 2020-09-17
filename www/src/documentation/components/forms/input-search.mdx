@@ -19,12 +19,12 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
   <InputSearch
     width="50%"
     placeholder="Type your search"
-    value="test search 0"
+    defaultValue="test search 0"
     summary={'some text'}
   />
   <InputSearch
     placeholder="Type your search"
-    value="test search 1"
+    defaultValue="test search 1"
     isClearable={false}
   />
   <InputSearch hideSearchIcon placeholder="No search icon here" />
@@ -37,11 +37,12 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
 ```js
 ;() => {
   const ExampleInputSearch = ({
-    value = '',
+    defaultValue = '',
     isClearable,
     searchResults = [],
   }) => {
-    const [keyword, setKeyword] = React.useState(value)
+    const [keyword, setKeyword] = React.useState(defaultValue)
+    console.log(keyword)
     return (
       <InputSearch
         placeholder="Type your search"
@@ -58,9 +59,9 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
     <>
       <ExampleInputSearch />
       <Divider my="medium" />
-      <ExampleInputSearch value="test search 2" />
+      <ExampleInputSearch defaultValue="test search 2" />
       <Divider my="medium" />
-      <ExampleInputSearch value="test search 3" isClearable />
+      <ExampleInputSearch defaultValue="test search 3" isClearable={false} />
     </>
   )
 }
