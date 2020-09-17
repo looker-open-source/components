@@ -133,13 +133,6 @@ const ChipJSX = forwardRef(
       e.stopPropagation()
     }
 
-    const PrefixLabel = (
-      <>
-        <ChipLabel fontWeight="normal">{prefix} </ChipLabel>
-        <ChipLabel truncate={truncate}> {children}</ChipLabel>
-      </>
-    )
-
     return (
       <ChipStyle
         {...clickableProps}
@@ -147,11 +140,10 @@ const ChipJSX = forwardRef(
         ref={ref}
         {...props}
       >
-        {prefix ? (
-          PrefixLabel
-        ) : (
-          <ChipLabel truncate={truncate}>{children}</ChipLabel>
-        )}
+        <ChipLabel truncate={truncate}>
+          {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
+          {children}
+        </ChipLabel>
         {onDelete && !disabled && (
           <IconButton
             disabled={disabled}

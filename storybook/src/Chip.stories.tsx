@@ -74,6 +74,7 @@ export const ChipPrefix = () => {
     <>
       <Heading>Prefix</Heading>
       <Space>
+        <Chip>no prefix</Chip>
         <Chip prefix="role">admin</Chip>
         <Chip prefix="color">purple,purple:neat</Chip>
       </Space>
