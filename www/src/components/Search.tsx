@@ -24,8 +24,9 @@
 
  */
 
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 import startCase from 'lodash/startCase'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
 import { IconNames, InputSearch, SelectOptionObject } from '@looker/components'
@@ -72,10 +73,37 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   const [query, setQuery] = useState('')
   const results: Result[] = useFlexSearch(query, index, store)
 
-  const search = (inputValue: string) => setQuery(inputValue)
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (query) {
+        const noResults = results.length === 0 ? '-no-results' : ''
+        trackCustomEvent({
+          action: `input${noResults}`,
+          category: 'Search',
+          label: query,
+        })
+      }
+    }, 500)
+    return () => {
+      window.clearTimeout(t)
+    }
+  }, [query, results])
 
-  const selectOption = (option?: SelectOptionObject) =>
-    option && navigate(option.value)
+  const selectOption = (option?: SelectOptionObject) => {
+    const gotoPage = () => option && navigate(option.value)
+
+    if (window.ga) {
+      trackCustomEvent({
+        action: 'select',
+        category: 'Search',
+        // Need to wait for the event tracking to complete or timeout before navigating away
+        hitCallback: gotoPage,
+        label: option.label,
+      })
+    } else {
+      gotoPage()
+    }
+  }
 
   const options = results.map(({ slug, title }) => {
     const pageType = startCase(slug.split('/')[0])
@@ -92,7 +120,7 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
       alignSelf="center"
       placeholder="Search @looker/components"
       value={query}
-      onChange={search}
+      onChange={setQuery}
       options={options}
       changeOnSelect={false}
       onSelectOption={selectOption}
