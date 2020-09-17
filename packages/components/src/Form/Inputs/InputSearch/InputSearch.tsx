@@ -44,21 +44,24 @@ export interface InputSearchProps
     'isFilterable' | 'onFilter' | 'showCreate' | 'formatCreateLabel'
   > {
   /**
-   * @default false
+   * @default true
    */
-  isClearable?: boolean
+  isClearable: SelectProps['isClearable']
   hideSearchIcon?: boolean
   /**
+   * @experimental
    * Called when the user selects one of the options
    * onChange will also be called with the option's value unless changeOnSelect is set to false
    */
   onSelectOption?: (option?: SelectOptionObject) => void
   /**
+   * @experimental
    * Selecting an option updates the input's value
    * @default true
    */
   changeOnSelect?: boolean
   /**
+   * @experimental
    * Clear the input value when the option list closes
    * Defaults to the inverse of changeOnSelect
    * @default false

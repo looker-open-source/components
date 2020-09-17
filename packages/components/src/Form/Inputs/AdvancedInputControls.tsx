@@ -59,6 +59,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   hasOptions,
   onClear,
   summary,
+  ...props
 }) => {
   const children = intersperseDivider(
     compact([
@@ -103,7 +104,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
     ])
   )
 
-  return <SearchControlGrid>{children}</SearchControlGrid>
+  return <SearchControlGrid {...props}>{children}</SearchControlGrid>
 }
 
 const SearchControlGrid = styled.div`
