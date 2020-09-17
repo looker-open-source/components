@@ -24,24 +24,40 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import omit from 'lodash/omit'
+import { Grid } from '@looker/components'
+import React, { FC } from 'react'
+import { Editor, EditorProps } from './Editor'
 
-export const Swatches = () => {
-  const theme = useContext<Theme>(ThemeContext)
+export const ThemeEditor: FC<EditorProps> = (props) => (
+  <>
+    <Editor {...props} />
+  </>
+)
 
-  const colors = omit(theme.colors, 'palette')
+export const CompareThemes: FC = () => (
+  <Grid m="xlarge" gap="large" columns={4}>
+    <Editor name="Default" />
+    <Editor
+      name="Generated"
+      themeCustomizations={{
+        colors: { key: '#6C43E0' },
+      }}
+    />
+    <Editor
+      name="Customer Blue"
+      themeCustomizations={{
+        colors: { key: '#116DFF' },
+      }}
+    />
+    <Editor
+      name="THUNDER Salmon"
+      themeCustomizations={{
+        colors: { background: '#000000', key: '#ff3ca0', text: '#FFFFFF' },
+      }}
+    />
+  </Grid>
+)
 
-  const swatches = Object.entries(colors).map(([name, color]) => (
-    <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
-      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
-        {name}
-      </Heading>
-    </Card>
-  ))
-
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+export default {
+  title: 'Theme',
 }

@@ -27,11 +27,11 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
+import { ThemeEditor, ThemeEditorProps } from '@looker/components-theme-editor'
 import { useLocation } from '@reach/router'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Search } from '../Search'
-import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
 
 interface HeaderProps extends ThemeEditorProps {
@@ -108,7 +108,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
 }
 
 export const HeaderContent = styled(HeaderContentLayout)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.keyAccent};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
 `
 
 export const NavigationList = styled.nav`
@@ -133,12 +133,12 @@ export const NavigationList = styled.nav`
 
     &.active {
       border-bottom-color: currentColor;
-      color: ${({ theme }) => theme.colors.link};
+      color: ${({ theme }) => theme.colors.key};
     }
 
     &:hover {
       border-bottom-color: currentColor;
-      color: ${({ theme }) => theme.colors.linkInteractive};
+      color: ${({ theme }) => theme.colors.keyInteractive};
     }
   }
 `

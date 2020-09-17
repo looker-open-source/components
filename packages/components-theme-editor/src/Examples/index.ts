@@ -24,4 +24,6 @@
 
  */
 
-export * from './ThemeEditor'
+export * from './Dashboard'
+export * from './ColorSwatches'
+export * from './ComponentSuite'

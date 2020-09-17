@@ -30,24 +30,29 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {
+  useTabs,
+  TabList,
+  TabPanel,
+  Tab,
+  TabPanels,
   Heading,
   Icon,
-  Layout,
   Link,
   Space,
-  Section,
   Text,
 } from '@looker/components'
-import {
-  Status,
-  // Props,
-  // TableOfContents,
-  TableOfContentsProps,
-} from '../components'
+import { Status } from '../components'
 import { AppLayout } from './AppLayout'
 
 const githubBase =
   'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
+
+const isDev = false
+
+const storybookLink = (component: string) =>
+  isDev
+    ? `http://lukebowerman.c.googlers.com:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
+    : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
 
 interface DocQuery {
   data: {
@@ -60,55 +65,93 @@ interface DocQuery {
       body: string
       frontmatter: {
         title: string
+        description?: string
         github?: string
         status?: 'experimental' | 'stable' | 'deprecated'
-        figma?: string
-        propsOf?: string
+        storybook?: boolean
       }
-      tableOfContents?: TableOfContentsProps
     }
   }
 }
 
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { github, status, title } = mdx.frontmatter
+  const { github, status, /* storybook, */ title } = mdx.frontmatter
+
+  const storybook = true
+  const tab = useTabs()
+  const body = <MDXRenderer>{mdx.body}</MDXRenderer>
 
   return (
     <>
       <Helmet title={`${title} - ${site.siteMetadata.title}`} />
       <AppLayout>
-        <Heading as="h1" fontSize="xxxxxlarge">
-          {title}
-        </Heading>
-        <ComponentDetail my="medium" py="medium">
+        <Space>
+          <Heading as="h1" fontSize="xxxxxlarge">
+            {title}
+          </Heading>
           <Status status={status || 'stable'} />
+        </Space>
 
-          <Link
-            fontSize="small"
-            href={`${githubBase}${github}`}
-            target="_blank"
-          >
-            View source{' '}
-            <Text fontSize="xsmall" variant="secondary">
+        <CustomTabs>
+          {storybook && (
+            <TabList {...tab}>
+              <Tab>Overview</Tab>
+              <Tab>
+                Storybook{' '}
+                <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
+                  Props &amp; Examples
+                </Text>
+              </Tab>
+            </TabList>
+          )}
+          <Space width="auto" ml="auto" gap="xsmall">
+            <Link
+              fontSize="small"
+              href={`${githubBase}${github}`}
+              target="_blank"
+            >
+              View source
+            </Link>
+            <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
               <Icon name="External" size=".75rem" /> Github
             </Text>
-          </Link>
-
-          {/* <Props of={propsOf} /> */}
-        </ComponentDetail>
-
-        {/* <TableOfContents toc={mdx.tableOfContents} /> */}
-
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+          </Space>
+        </CustomTabs>
+        {storybook ? (
+          <TabPanels {...tab}>
+            <TabPanel>{body}</TabPanel>
+            {storybook && (
+              <TabPanel>
+                <Iframe src={storybookLink(title)} />
+              </TabPanel>
+            )}
+          </TabPanels>
+        ) : (
+          body
+        )}
       </AppLayout>
     </>
   )
 }
 
-const ComponentDetail = styled(Space)`
+const Iframe = styled.iframe`
+  border: none;
+  height: 120rem;
+  width: 100%;
+`
+
+const CustomTabs = styled(Space)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  display: flex;
+  margin-top: ${({ theme }) => theme.space.small};
+  min-height: ${({ theme }) => theme.space.large};
+
+  ${TabList} {
+    margin-bottom: -1px;
+    margin-top: ${({ theme }) => theme.space.xsmall};
+  }
 `
 
 export default DocumentationLayout

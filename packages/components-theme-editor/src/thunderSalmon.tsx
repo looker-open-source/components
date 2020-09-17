@@ -24,25 +24,24 @@
 
  */
 
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
-export * from './GoogleFontsLoader'
+import React, { FC } from 'react'
+import { ButtonProps, ButtonTransparent } from '@looker/components'
+import { ThemeEditableProps } from './types'
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
+export const thunderSalmon: ThemeEditableProps = {
+  colors: {
+    background: 'lightsalmon',
+    critical: '#f23900',
+    inform: '#ff6991',
+    key: 'salmon',
+    link: '#420f00',
+    positive: '#ffc8b7',
+    text: 'white',
+    warn: '#ffd769',
+  },
+  fontFamilies: { body: 'Papyrus', brand: 'Impact', code: 'Papyrus' },
+}
 
-// Useful external utilities
-export * from './utils/animations'
-export * from './utils/omit'
-export * from './utils/pick'
-export { generateTheme } from './utils/theme'
-export type { ThemeCustomizations } from './utils/theme'
-
-export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './utils/color/blend'
-export { generatePressed, generateInteractive } from './utils/color/stateful'
+export const ThunderSalmon: FC<ButtonProps> = (props) => (
+  <ButtonTransparent {...props}>⚡️ 🍣</ButtonTransparent>
+)

@@ -34,6 +34,12 @@ export type FontFamilies = Body | Brand | Code
 
 export type FontFamilyChoices = Record<FontFamilies, string>
 
+export const fontFamilies: Array<keyof FontFamilyChoices> = [
+  'body',
+  'brand',
+  'code',
+]
+
 export interface FontFamilyProps {
   fontFamily?: ResponsiveValue<FontFamilies>
 }

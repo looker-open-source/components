@@ -24,25 +24,43 @@
 
  */
 
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
-export * from './GoogleFontsLoader'
+import {
+  Card,
+  CardContent,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+} from '@looker/components'
+import {
+  ComponentSuite,
+  ColorSwatches,
+  FauxDashboard,
+} from '@looker/components-theme-editor'
+import React from 'react'
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
-
-// Useful external utilities
-export * from './utils/animations'
-export * from './utils/omit'
-export * from './utils/pick'
-export { generateTheme } from './utils/theme'
-export type { ThemeCustomizations } from './utils/theme'
-
-export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './utils/color/blend'
-export { generatePressed, generateInteractive } from './utils/color/stateful'
+export const Examples = () => (
+  <Card width="100%">
+    <CardContent>
+      <Tabs>
+        <TabList>
+          <Tab>Colors</Tab>
+          <Tab>Components</Tab>
+          <Tab>Faux Dashboard</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ColorSwatches />
+          </TabPanel>
+          <TabPanel>
+            <ComponentSuite />
+          </TabPanel>
+          <TabPanel>
+            <FauxDashboard />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </CardContent>
+  </Card>
+)
