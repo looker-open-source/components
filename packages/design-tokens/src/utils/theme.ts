@@ -25,27 +25,37 @@
  */
 
 import { Theme } from '../theme'
-import { CoreColors, FontFamilyChoices, IntentColors } from '../system'
+import { FontFamilyChoices, SpecifiableColors } from '../system'
 import { generateFontFamilies } from '../utils/typography'
 import { generateColors } from './color'
 
+export interface ThemeCustomizations {
+  /**
+   * Override default color specifications
+   */
+  colors?: Partial<SpecifiableColors>
+  /**
+   * Override default font-family specifications. Specified fonts will have out built-in
+   * font-stack appended. Built-in font stacks are designed to provide i18n character
+   * support and fallbacks for browsers that can't load web fonts.
+   */
+  fontFamilies?: Partial<FontFamilyChoices>
+}
+
 export const generateTheme = (
   theme: Theme,
-  overrides?: {
-    colors?: Partial<CoreColors & IntentColors>
-    fontFamilies?: Partial<FontFamilyChoices>
-  }
+  customizations?: ThemeCustomizations
 ): Theme => {
-  if (!overrides) {
+  if (!customizations) {
     return theme
   }
 
-  const fonts = overrides.fontFamilies
-    ? generateFontFamilies(theme.fonts, overrides.fontFamilies)
+  const fonts = customizations.fontFamilies
+    ? generateFontFamilies(theme.fonts, customizations.fontFamilies)
     : theme.fonts
 
-  const colors = overrides.colors
-    ? generateColors(theme.colors, overrides.colors)
+  const colors = customizations.colors
+    ? generateColors(theme.colors, customizations.colors)
     : theme.colors
 
   return {

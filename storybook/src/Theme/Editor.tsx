@@ -24,50 +24,38 @@
 
  */
 
-import styled from 'styled-components'
+import { ComponentsProvider, SpaceVertical, Heading } from '@looker/components'
 import {
-  color,
-  reset,
-  space,
-  SpaceProps,
-  TypographyProps,
-  textDecoration,
-  TextDecorationProps,
+  ThemeCustomizations,
+  pickSpecifiableColors,
 } from '@looker/design-tokens'
-import {
-  fontSize,
-  fontWeight,
-  lineHeight,
-  letterSpacing,
-  fontStyle,
-  textAlign,
-} from 'styled-system'
+import { ThemeEditorForm } from '@looker/components-theme-editor'
+import React, { FC, useState, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import { Examples } from './Examples'
 
-export interface TextBaseProps
-  extends SpaceProps,
-    TextDecorationProps,
-    TypographyProps {
-  /**
-   * Should browser insert line breaks within words to prevent text from overflowing its content box
-   * @default: false
-   */
-  breakword?: boolean
+export interface EditorProps {
+  name?: string
+  themeCustomizations?: ThemeCustomizations
 }
 
-export const TextBase = styled.span.attrs((props: TypographyProps) => ({
-  lineHeight: props.lineHeight || props.fontSize,
-}))<TextBaseProps>`
-  ${reset}
-  /* fontFamily is handled by reset */
-  color: ${({ theme }) => theme.colors.text};
-  ${fontSize}
-  ${fontStyle}
-  ${fontWeight}
-  ${letterSpacing}
-  ${lineHeight}
-  ${textAlign}
-  ${space}
-  ${color}
-  ${textDecoration}
-  ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
-`
+export const Editor: FC<EditorProps> = ({ name, themeCustomizations }) => {
+  const theme = useContext(ThemeContext)
+  const colors = { ...theme.colors, ...themeCustomizations?.colors }
+  const fonts = { ...theme.fonts, ...themeCustomizations?.fontFamilies }
+
+  const [custom, setCustom] = useState<ThemeCustomizations>({
+    colors: pickSpecifiableColors(colors),
+    fontFamilies: { ...fonts },
+  })
+
+  return (
+    <SpaceVertical>
+      <Heading>{name}</Heading>
+      <ThemeEditorForm onChange={setCustom} theme={custom} />
+      <ComponentsProvider globalStyle={false} themeCustomizations={custom}>
+        <Examples />
+      </ComponentsProvider>
+    </SpaceVertical>
+  )
+}

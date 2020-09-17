@@ -29,6 +29,7 @@ import {
   StatefulColors,
   StatefulColorChoices,
   SpecifiableColors,
+  DerivativeColors,
 } from '../../system/color'
 import { mixScaledColors } from './blend'
 
@@ -53,9 +54,11 @@ const generateStatefulColor = (
 }
 
 export const generateStatefulColors = (
-  colors: SpecifiableColors
+  specifiable: SpecifiableColors,
+  derivatives: DerivativeColors
 ): StatefulColors => {
-  const { background, key, critical, neutral } = colors
+  const { background, key, critical } = specifiable
+  const { neutral } = derivatives
 
   const keyColors = generateStatefulColor(background, key)
   const criticalColors = generateStatefulColor(background, critical)

@@ -27,11 +27,11 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
+import { ThemeEditor, ThemeEditorProps } from '@looker/components-theme-editor'
 import { useLocation } from '@reach/router'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Search } from '../Search'
-import { ThemeEditor, ThemeEditorProps } from '../ThemeEditor'
 import { AppLogo } from './AppLogo'
 
 interface HeaderProps extends ThemeEditorProps {

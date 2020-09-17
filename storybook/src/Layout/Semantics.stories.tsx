@@ -135,7 +135,7 @@ const Highlighter = styled.div`
     background-color: lightsalmon;
   }
 
-  ${Main}, ${Section} {
+  ${Section} {
     background-color: lightseagreen;
   }
 `

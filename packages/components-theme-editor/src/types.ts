@@ -24,50 +24,15 @@
 
  */
 
-import { IconButton, DialogManager } from '@looker/components'
-import React, { FC } from 'react'
-import styled from 'styled-components'
 import {
   CoreColors,
   FontFamilyChoices,
   IntentColors,
 } from '@looker/design-tokens'
-import {
-  ThemeEditorContent,
-  ThemeEditorContentProps,
-} from './ThemeEditorContent'
 
-interface ThemeEditableProps {
-  colors?: Partial<CoreColors & IntentColors>
+export type SpecifiableColors = CoreColors & IntentColors
+
+export interface ThemeEditableProps {
+  colors?: Partial<SpecifiableColors>
   fontFamilies?: Partial<FontFamilyChoices>
 }
-
-export interface ThemeEditorProps extends ThemeEditorContentProps {
-  hasCustomTheme: boolean
-  updateTheme: (customTheme?: ThemeEditableProps) => void
-}
-
-export const ThemeEditor: FC<ThemeEditorProps> = ({
-  hasCustomTheme,
-  updateTheme,
-}) => (
-  <DialogManager
-    content={<ThemeEditorContent updateTheme={updateTheme} />}
-    width="90%"
-    maxWidth="90%"
-  >
-    <IconButtonActivated
-      icon="Beaker"
-      label="Customize Theme"
-      tooltipDisabled
-      activated={hasCustomTheme && 'active'}
-      color={hasCustomTheme ? 'key' : 'neutral'}
-      size="small"
-      round
-    />
-  </DialogManager>
-)
-
-const IconButtonActivated = styled(IconButton)<{ activated?: boolean }>`
-  background: ${({ activated, theme }) => activated && theme.colors.keyAccent};
-`

@@ -24,15 +24,34 @@
 
  */
 
-import { CoreColors } from '../../system'
-import { SurfaceColors } from '../../system/color/specifiable'
+import { IconButton, DialogManager } from '@looker/components'
+import React, { FC } from 'react'
+import {
+  ThemeEditorContent,
+  ThemeEditorContentProps,
+} from './ThemeEditorContent'
+import { ThemeEditableProps } from './types'
 
-export const generateSurfaceColors = (
-  coreColors: CoreColors
-): SurfaceColors => {
-  return {
-    field: coreColors.background,
-    inverse: coreColors.text,
-    inverseOn: coreColors.background,
-  }
+export interface ThemeEditorProps extends ThemeEditorContentProps {
+  hasCustomTheme: boolean
+  updateTheme: (customTheme?: ThemeEditableProps) => void
 }
+
+export const ThemeEditor: FC<ThemeEditorProps> = ({
+  hasCustomTheme,
+  updateTheme,
+}) => (
+  <DialogManager
+    content={<ThemeEditorContent updateTheme={updateTheme} />}
+    width="90%"
+    maxWidth="90%"
+  >
+    <IconButton
+      icon="Beaker"
+      label="Customize Theme"
+      tooltipDisabled
+      color={hasCustomTheme ? 'key' : 'neutral'}
+      size="small"
+    />
+  </DialogManager>
+)

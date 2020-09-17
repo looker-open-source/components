@@ -24,25 +24,24 @@
 
  */
 
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
-export * from './GoogleFontsLoader'
+import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import omit from 'lodash/omit'
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
+export const ColorSwatches = () => {
+  const theme = useContext<Theme>(ThemeContext)
 
-// Useful external utilities
-export * from './utils/animations'
-export * from './utils/omit'
-export * from './utils/pick'
-export { generateTheme } from './utils/theme'
-export type { ThemeCustomizations } from './utils/theme'
+  const colors = omit(theme.colors, 'palette')
 
-export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './utils/color/blend'
-export { generatePressed, generateInteractive } from './utils/color/stateful'
+  const swatches = Object.entries(colors).map(([name, color]) => (
+    <Card key={name} width="100%">
+      <Swatch color={color} width="100%" />
+      <Heading fontSize="xsmall" py="xxsmall" px="small" as="h5">
+        {name}
+      </Heading>
+    </Card>
+  ))
+
+  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+}

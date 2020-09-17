@@ -42,10 +42,9 @@ import {
   Grid,
   CardContent,
 } from '@looker/components'
-import { FauxBarChart } from './FauxBarChart'
-import { FauxPieChart } from './FauxPieChart'
+import { FauxPieChart, FauxBarChart } from './Charts'
 
-export const Demo = () => (
+export const FauxDashboard = () => (
   <Box bg="background">
     <SpaceVertical p="xlarge" gap="xlarge">
       <Space between>
@@ -56,20 +55,20 @@ export const Demo = () => (
         </Space>
       </Space>
       <Space>
-        <Field label="Date Range">
+        <Field id="daterange" label="Date Range">
           <ChipButton>Today - Next Friday</ChipButton>
         </Field>
         <FieldRangeSlider label="Range Slider" />
-        <Field label="Checkbox">
+        <Field id="checkbox" label="Checkbox">
           <FieldCheckbox label="Item" checked />
         </Field>
-        <Field label="Button Group">
-          <ButtonGroup value="Item 1">
+        <Field id="buttongroup" label="Button Group">
+          <ButtonGroup value={['Item 1']}>
             <ButtonItem checked>Item 1</ButtonItem>
             <ButtonItem>Item 2</ButtonItem>
           </ButtonGroup>
         </Field>
-        <Field label="button">
+        <Field id="button" label="button">
           <Button>Button</Button>
         </Field>
       </Space>

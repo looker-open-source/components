@@ -23,3 +23,9 @@
  SOFTWARE.
 
  */
+
+import pick from 'lodash/pick'
+import { Colors, specifiableColors } from '../../system/color'
+
+export const pickSpecifiableColors = (colors: Colors) =>
+  pick(colors, specifiableColors)
