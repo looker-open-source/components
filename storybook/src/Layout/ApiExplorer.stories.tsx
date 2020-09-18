@@ -29,7 +29,6 @@ import {
   Layout,
   Header,
   Aside,
-  Main,
   Footer,
   Page,
   Heading,
@@ -58,7 +57,7 @@ export const ApiExplorer = () => (
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Main p="xxlarge">
+        <Section p="xxlarge" as="main">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -123,7 +122,7 @@ export const ApiExplorer = () => (
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </Main>
+        </Section>
         <AsideAlt p="xxlarge" width="25rem">
           Alternate Aside
         </AsideAlt>
