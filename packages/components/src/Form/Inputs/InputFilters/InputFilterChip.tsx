@@ -30,7 +30,7 @@ import { FieldFilterValue } from './InputFilters'
 interface InputFilterChipProps
   extends Omit<ChipProps, 'children' | 'onDelete'> {
   filter: FieldFilterValue
-  onDelete: (field: string) => void
+  onDelete: (field: FieldFilterValue) => void
 }
 export const InputFilterChip: FC<InputFilterChipProps> = ({
   filter,
@@ -38,10 +38,9 @@ export const InputFilterChip: FC<InputFilterChipProps> = ({
   ...props
 }) => {
   const handleDelete = () => onDelete(filter)
-  /* add prefix prop {filter.field} */
   return (
-    <Chip {...props} onDelete={handleDelete}>
-      {filter.field}: {filter.value}
+    <Chip {...props} prefix={filter.field} onDelete={handleDelete}>
+      {filter.value}
     </Chip>
   )
 }
