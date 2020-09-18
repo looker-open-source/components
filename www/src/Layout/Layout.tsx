@@ -25,83 +25,45 @@
  */
 
 import React, { FC, useState } from 'react'
-import styled from 'styled-components'
-import sitemap from '../documentation/sitemap'
-import Page from './Page'
-import SidebarToggle from './SidebarToggle'
-import Navigation from './Navigation'
+import {
+  ComponentsProvider,
+  Page,
+  Section,
+  Header,
+  Layout as ComponentsLayout,
+} from '@looker/components'
+import { ThemeCustomizations } from '@looker/customizations'
+import { MDXProvider } from '@mdx-js/react'
+import { Props } from '../components'
+import MDXComponents from '../MDX'
+import { HeaderContent } from '../components/HeaderContent'
+import { Navigation } from '../components/Navigation'
 
-const Layout: FC = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
-  const toggleFn = () => setSidebarOpen(!sidebarOpen)
+export const Layout: FC = ({ children }) => {
+  const [showNavigation, setNavigation] = useState(true)
+  const toggleNavigation = () => setNavigation(!showNavigation)
 
-  const sidebarHeaderHeight = '5rem'
+  const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>()
 
   return (
-    <Page>
-      <PageLayout open={sidebarOpen}>
-        <LayoutSidebar>
-          {sidebarOpen && (
-            <Navigation sitemap={sitemap} headerHeight={sidebarHeaderHeight} />
-          )}
-        </LayoutSidebar>
-        <SidebarDivider open={sidebarOpen}>
-          <SidebarToggle
-            isOpen={sidebarOpen}
-            onClick={toggleFn}
-            headerHeight={sidebarHeaderHeight}
-          />
-        </SidebarDivider>
-        <ContentArea>{children}</ContentArea>
-      </PageLayout>
-    </Page>
+    <ComponentsProvider loadGoogleFonts {...customTheme}>
+      <MDXProvider components={{ ...MDXComponents, Props }}>
+        <Page>
+          <Header height="4rem">
+            <HeaderContent
+              updateTheme={updateTheme}
+              hasCustomTheme={Boolean(customTheme)}
+              toggleNavigation={toggleNavigation}
+            />
+          </Header>
+          <ComponentsLayout hasAside>
+            {showNavigation && <Navigation width="18rem" />}
+            <Section py="xlarge" px="xxxlarge" as="main">
+              {children}
+            </Section>
+          </ComponentsLayout>
+        </Page>
+      </MDXProvider>
+    </ComponentsProvider>
   )
 }
-
-interface SidebarStyleProps {
-  open: boolean
-}
-
-export const PageLayout = styled.div<SidebarStyleProps>`
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: ${({ open }) =>
-    open ? '17.5rem 0 1fr' : '1.5rem 0 1fr'};
-  grid-template-areas: 'sidebar divider main';
-`
-
-const LayoutSidebar = styled.aside`
-  grid-area: sidebar;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 17.5rem;
-`
-
-const ContentArea = styled.div`
-  grid-area: main;
-`
-
-export const LayoutMain = styled.main`
-  max-width: 50rem;
-  overflow: auto;
-  margin: 0 auto;
-  padding: ${({ theme: { space } }) =>
-    `${space.xxlarge} ${space.xxxlarge} ${space.xxxxlarge}`};
-`
-
-const SidebarDivider = styled.div<SidebarStyleProps>`
-  transition: border 0.3s;
-  border-left: 1px solid
-    ${({ theme, open }) => (open ? theme.colors.ui2 : 'transparent')};
-  grid-area: divider;
-  overflow: visible;
-  position: relative;
-  &:hover {
-    border-left: 1px solid
-      ${({ theme, open }) => (open ? theme.colors.ui3 : theme.colors.ui2)};
-  }
-`
-
-export default Layout

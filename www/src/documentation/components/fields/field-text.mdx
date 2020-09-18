@@ -1,0 +1,33 @@
+---
+title: FieldText
+github: Form/Fields/FieldText
+---
+
+The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
+
+```jsx
+<SpaceVertical>
+  <FieldText name="firstName" label="First Name" />
+  <FieldText name="lastName" label=" Last Name" inline />
+  <FieldText name="requiredField" label="A required field" required />
+</SpaceVertical>
+```
+
+### FieldText Validation
+
+The `<FieldText />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](/#!/ValidationMessage)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldText />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldText />` is outside a `<Form />`._**
+
+```jsx
+<FieldText
+  name="someField"
+  label="Some Field"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+  alignValidationMessage="right"
+/>
+```

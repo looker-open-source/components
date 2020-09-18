@@ -1,0 +1,74 @@
+---
+title: ButtonToggle
+github: Button/ButtonGroup.tsx
+---
+
+import { Code, MessageBar } from '@looker/components'
+
+## ButtonToggle
+
+<MessageBar noActions intent="inform">
+  <Code>ButtonToggle</Code> do not support uncontrolled versions.
+</MessageBar>
+
+`ButtonToggle` behaves as radio button group. Use this when the user may select only one of a small set of options.
+Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
+
+```jsx
+;() => {
+  const [value, setValue] = useState('TypeScript')
+  return (
+    <>
+      <ButtonToggle value={value} onChange={setValue}>
+        <ButtonItem>Ruby</ButtonItem>
+        <ButtonItem>TypeScript</ButtonItem>
+        <ButtonItem>Python</ButtonItem>
+      </ButtonToggle>
+      <Text pl="small">Current selection: {value}</Text>
+    </>
+  )
+}
+```
+
+### Disabled
+
+```jsx
+<ButtonToggle value="TypeScript" disabled>
+  <ButtonItem>Ruby</ButtonItem>
+  <ButtonItem>TypeScript</ButtonItem>
+  <ButtonItem>Python</ButtonItem>
+</ButtonToggle>
+```
+
+### Nullable
+
+Use the `nullable` prop if the user should be able to click the selected item to de-select it.
+
+```jsx
+;() => {
+  const [value, setValue] = useState('')
+  return (
+    <ButtonToggle value={value} onChange={setValue} nullable>
+      <ButtonItem>Apples</ButtonItem>
+      <ButtonItem>Oranges</ButtonItem>
+      <ButtonItem>Bananas</ButtonItem>
+    </ButtonToggle>
+  )
+}
+```
+
+## Options
+
+An alternative to composing a `ButtonGroup` or `ButtonToggle` with `ButtonItem` children is to pass it an array of `options`.
+
+```jsx
+;() => {
+  const options = [
+    { value: 'Gouda', label: 'Smoked Gouda' },
+    { value: 'Cheddar' },
+    { value: 'Swiss', disabled: true },
+  ]
+  const [value, setValue] = useState([options[0].value])
+  return <ButtonGroup options={options} value={value} onChange={setValue} />
+}
+```

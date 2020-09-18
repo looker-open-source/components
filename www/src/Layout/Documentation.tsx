@@ -26,28 +26,33 @@
 
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
-import React, { FC } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {
+  useTabs,
+  TabList,
+  TabPanel,
+  Tab,
+  TabPanels,
   Heading,
-  Divider,
-  Flex,
-  ListItem,
+  Icon,
   Link,
-  List,
+  Space,
+  Text,
 } from '@looker/components'
-import { ComponentResources, ComponentStatus, Props } from '../Shared'
-import Layout, { LayoutMain } from './Layout'
+import { Status } from '../components'
+import { Layout } from './Layout'
 
-interface TableOfContents {
-  items?: [
-    {
-      url: string
-      title: string
-    }
-  ]
-}
+const githubBase =
+  'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
+
+const isDev = false
+
+const storybookLink = (component: string) =>
+  isDev
+    ? `http://lukebowerman.c.googlers.com:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
+    : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
 
 interface DocQuery {
   data: {
@@ -60,79 +65,97 @@ interface DocQuery {
       body: string
       frontmatter: {
         title: string
+        description?: string
         github?: string
         status?: 'experimental' | 'stable' | 'deprecated'
-        figma?: string
-        propsOf?: string
+        storybook?: boolean
       }
-      tableOfContents?: TableOfContents
     }
   }
 }
 
-const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
-  if (!toc || !toc.items) return null
+const DocumentationLayout = (props: DocQuery) => {
+  const { mdx, site } = props.data
+  const { github, status, /* storybook, */ title } = mdx.frontmatter
 
-  const sections = toc.items.map(({ url, title }) => (
-    <ListItem fontSize="small" key={url} my="medium">
-      <Link color="neutralInteractive" href={url}>
-        {title}
-      </Link>
-    </ListItem>
-  ))
+  const storybook = true
+  const tab = useTabs()
+  const body = <MDXRenderer>{mdx.body}</MDXRenderer>
 
   return (
     <>
-      <Divider color="ui2" my="large" />
-      <List>{sections}</List>
+      <Helmet title={`${title} - ${site.siteMetadata.title}`} />
+      <Layout>
+        <Space>
+          <Heading as="h1" fontSize="xxxxxlarge">
+            {title}
+          </Heading>
+          <Status status={status || 'stable'} />
+        </Space>
+
+        <CustomTabs>
+          {storybook && (
+            <TabList {...tab}>
+              <Tab>Overview</Tab>
+              <Tab>
+                Storybook{' '}
+                <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
+                  Props &amp; Examples
+                </Text>
+              </Tab>
+            </TabList>
+          )}
+          <Space width="auto" ml="auto" gap="xsmall">
+            <Link
+              fontSize="small"
+              href={`${githubBase}${github}`}
+              target="_blank"
+            >
+              View source
+            </Link>
+            <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
+              <Icon name="External" size=".75rem" /> Github
+            </Text>
+          </Space>
+        </CustomTabs>
+        {storybook ? (
+          <TabPanels {...tab}>
+            <TabPanel>{body}</TabPanel>
+            {storybook && (
+              <TabPanel>
+                <Iframe src={storybookLink(title)} />
+              </TabPanel>
+            )}
+          </TabPanels>
+        ) : (
+          body
+        )}
+      </Layout>
     </>
   )
 }
 
-const DocumentationLayout = (props: DocQuery) => {
-  const { mdx, site } = props.data
-  const { figma, github, propsOf, status, title } = mdx.frontmatter
+const Iframe = styled.iframe`
+  border: none;
+  height: 120rem;
+  width: 100%;
+`
 
-  return (
-    <Layout>
-      <Flex>
-        <LayoutMain>
-          <Helmet title={`${title} - ${site.siteMetadata.title}`} />
-          <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
-            {title}
-          </Heading>
-          {propsOf && <Props of={propsOf} />}
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </LayoutMain>
-        <Meta>
-          <ComponentStatus status={status || 'stable'} />
-          <ComponentResources
-            figma={figma}
-            feedbackTitle={title}
-            github={github}
-          />
-          <TableOfContents toc={mdx.tableOfContents} />
-        </Meta>
-      </Flex>
-    </Layout>
-  )
-}
+const CustomTabs = styled(Space)`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  display: flex;
+  margin-top: ${({ theme }) => theme.space.small};
+  min-height: ${({ theme }) => theme.space.large};
+
+  ${TabList} {
+    margin-bottom: -1px;
+    margin-top: ${({ theme }) => theme.space.xsmall};
+  }
+`
 
 export default DocumentationLayout
 
-const Meta = styled.div`
-  background: ${({ theme }) => theme.colors.neutralSubtle};
-  height: 100vh;
-  overflow-y: auto;
-  padding: ${(props) => props.theme.space.large};
-  position: sticky;
-  top: 0;
-  width: 17rem;
-
-  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
-    display: none;
-  }
-`
 export const pageQuery = graphql`
   query Doc($id: String) {
     site {

@@ -4,7 +4,6 @@ github: DataTable
 propsOf: DataTable
 ---
 
-import { Props } from '../../../Shared'
 import { SelectManagerParameterTable, SelectManagerReturnTable } from './demos'
 
 The `<DataTable>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, a `<DataTable>` allows you to bake in a set of actions on each row. Common use cases include:
@@ -73,8 +72,6 @@ The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-rela
 
 ## DataTableItem
 
-<Props of="DataTableItem" />
-
 The `<DataTableItem>` component represents a row of data in your DataTable.
 
 To define actions on a row, pass in `<DataTableAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
@@ -84,8 +81,6 @@ You can also pass a callback to the `onClick` prop, but note that this callback 
 The `actionsTooltip` prop can be used to set the tooltip text of a row's actions button. This prop will also be used in a visually hidden label on the actions button, which is especially useful for getting the actions button DOM element when testing.
 
 ## DataTableCell
-
-<Props of="DataTableCell" />
 
 The `<DataTableCell>` component is equivalent to a data cell in your DataTable. `<DataTableCell>` elements should always be children of a `<DataTableItem>` element (i.e. each row should contain some number of column elements).
 
@@ -135,8 +130,6 @@ Passing in a React element into the `indicator` prop will display said element l
 **Note:** By default, clicking on any element within a `<DataTableCell>` will trigger the `onClick` of the parent `<DataTableItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<DataTableCell>`'s `onClick`.
 
 ## DataTableAction
-
-<Props of="DataTableAction" />
 
 The `<DataTableAction>` component represents an actionable item on the rows of your `DataTable`. As noted above, you can supply each of your rows with actions by passing `<DataTableAction>` elements into the `actions` prop of the parent `<DataTableItem>` element.
 

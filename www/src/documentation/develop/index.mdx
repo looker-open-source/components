@@ -1,0 +1,79 @@
+---
+title: 1. Installation
+---
+
+## Add NPM Package
+
+To add Looker UI Components to your project, add the [NPM package](https://www.npmjs.com/package/@looker/components) to your project:
+
+```bash static
+# Looker projects generally utilize Yarn (https://yarnpkg.com/)
+yarn add @looker/components styled-components react react-dom
+
+# If you prefer you can of course also use NPM directly:
+npm install @looker/components styled-components
+```
+
+### Using Typescript?
+
+If you're using Typescript you'll also need to add the type definitions for Styled Components.
+
+```bash static
+yarn add --dev @types/styled-components @types/react @types/react-dom
+```
+
+Unfortunately, due to [this issue with the type definitions for Styled Components](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311) you'll need to apply a minor workaround if you're using ESLint along with Styled Component's Typescript definitions.
+
+```bash static
+rm -R node_modules/@types/react-native
+echo '@types/react-native' > .yarnclean
+```
+
+## Setup
+
+`@looker/components` expects two prerequisites to exist for the complete styling to be applied:
+
+### GlobalStyle
+
+At the top-most level of the usage of `@looker/components` you need to load the `<GlobalStyle />` component. This will inject a simple CSS reset as well as basic font assignment. [GlobalStyle documentation &rarr;](/utilities/globalstyle)
+
+NOTE: The `ComponentsProvider` will automatically load the `GlobalStyle` component for you.
+
+### Web Font Loading
+
+Users may not have the `@looker/components` default font, Roboto, installed on their computers so we recommend importing the font to ensure that content is rendered with the proper font-face.
+
+The `<GoogleFontsLoader />` component will automatically load any fonts specified in the theme from Google Fonts if they're not already available on the device. This can also be done by adding the `loadGoogleFonts` prop on `ComponentsProvider`
+
+```jsx static
+<ComponentsProvider loadGoogleFonts>...</ComponentsProvider>
+```
+
+## Using a Component
+
+Now that we have `@looker/components` installed we can start using them in our application. To get things started import some components:
+
+```jsx static
+import { Card, ComponentsProvider, theme } from '@looker/components'
+
+<ComponentsProvider>
+  <Card>{Source here...}</Card>
+</ComponentsProvider>
+```
+
+Which could be used to render the following:
+
+```jsx
+<Card raised>
+  <CardContent>
+    <Heading fontWeight="semiBold" textTransform="capitalize">
+      Welcome to Looker Components
+    </Heading>
+    <Text>Looker's component library</Text>
+  </CardContent>
+</Card>
+```
+
+Try editing the code above, you should see the changes appear live.
+
+These live editing blocks are found throughout our style guide documentation, providing a space for rapid experimentation with components.

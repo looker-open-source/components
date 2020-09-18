@@ -1,0 +1,26 @@
+---
+title: FieldDate
+github: FieldDate
+---
+
+Import path: `@looker/components/lib/FieldDate`
+
+This component is composed of an `InputDate` and a `Label`.
+
+```jsx
+<Grid columns={2}>
+  <FieldDate label="Pick a date" />
+  <FieldDate
+    label="Validation Error"
+    validationMessage={{
+      message: 'Select a valid calendar date',
+      type: 'error',
+    }}
+  />
+  <FieldDate
+    label="Disabled Field"
+    defaultValue={new Date('May 18, 2020')}
+    disabled
+  />
+</Grid>
+```

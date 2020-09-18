@@ -1,0 +1,117 @@
+---
+title: 3. Theme
+---
+
+To help stay within Looker's design principles, [we publish a theme object](https://github.com/looker-open-source/components/blob/master/packages/design-tokens/src/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using the `styled` function, the theme object becomes part of a component's props:
+
+## ComponentsProvider
+
+Looker Components require that a Styled Components `ThemeProvider` be available and that theme specified have the same structure that is provided by Looker Component's stock `theme` object.
+
+The `ComponentsProvider` is provided out-of-the-box to handle all of this.
+
+See below for information on extending the stock theme for your own use case.
+
+NOTE: For the sake of brevity examples within the documentation generally don't show the `ComponentsProvider`. It's injected as part of the site's code sandbox setup.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, ComponentsProvider } from '@looker/components'
+   **/
+
+  return (
+    <ComponentsProvider>
+      <Button>Just a regular button</Button>
+    </ComponentsProvider>
+  )
+}
+```
+
+You can use the theme's properties within your custom components:
+
+```jsx
+;() => {
+  /**
+   *  import { Button, ComponentsProvider, theme } from '@looker/components'
+   *  import styled from 'styled-components'
+   **/
+
+  const PositiveButton = styled(Button)`
+    border-color: ${(props) => props.theme.colors.positive};
+    background-color: ${(props) => props.theme.colors.positive};
+  `
+
+  return (
+    <ComponentsProvider>
+      <PositiveButton>Engage!</PositiveButton>
+    </ComponentsProvider>
+  )
+}
+```
+
+## Extending the Theme
+
+You can extend the theme provided by Looker Components by creating a copy and then providing that version of theme to the ThemeProvider.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, ComponentsProvider, theme } from '@looker/components'
+   *  import styled from 'styled-components'
+   **/
+
+  const myTheme = {
+    ...theme,
+    myCustomAttribute: 'hotpink',
+  }
+
+  const PrettyButton = styled(Button)`
+    border-color: ${(props) => props.theme.myCustomAttribute};
+    background-color: ${(props) => props.theme.myCustomAttribute};
+  `
+
+  return (
+    <ComponentsProvider theme={myTheme}>
+      <PrettyButton>Pink is so Pretty!</PrettyButton>
+    </ComponentsProvider>
+  )
+}
+```
+
+## Nesting ComponentsProvider (ThemeProviders)
+
+`ComponentsProvider` as a Styled Components' ThemeProvider acts as a React Context and in so doing is able to support the standard behavior of nested contexts - the theme defined nearest to the component will be the version used.
+
+NOTE: You'll also see that `PrettyButton` in the example simply falls back to `Button`'s default style when `myCustomAttribute` isn't assigned.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, ComponentsProvider } from '@looker/components'
+   *  import styled from 'styled-components'
+   **/
+
+  const myTheme = {
+    ...theme,
+    myCustomAttribute: 'hotpink',
+  }
+
+  const PrettyButton = styled(Button)`
+    border-color: ${(props) => props.theme.myCustomAttribute};
+    background-color: ${(props) => props.theme.myCustomAttribute};
+  `
+
+  return (
+    <ComponentsProvider>
+      <Space>
+        <PrettyButton>Stock Theme</PrettyButton>
+
+        <ComponentsProvider theme={myTheme}>
+          <PrettyButton>Pretty Button with Custom Theme</PrettyButton>
+        </ComponentsProvider>
+      </Space>
+    </ComponentsProvider>
+  )
+}
+```

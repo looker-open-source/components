@@ -2,15 +2,9 @@
 title: Button
 status: stable
 github: Button/Button.tsx
-propsOf: Button
-figma: file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1
+storybook: true
+description: Use a default button for the most frequently used action or most important action on a page. Default buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 ---
-
-import { RoundBtn } from './demos'
-
-## Button Styles
-
-### Button
 
 Use a default button for the most frequently used action or most important action on a page. Default buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
@@ -18,59 +12,29 @@ Use a default button for the most frequently used action or most important actio
 <Button>Default Button</Button>
 ```
 
-### ButtonOutline
+## Color
 
-Use an outline button alongside a default button to provide alternative actions on a page. Outline buttons should only appear alongside default buttons for secondary actions. Use no more than two secondary buttons on a page.
-
-```jsx
-<ButtonOutline>Outline</ButtonOutline>
-```
-
-### ButtonTransparent
-
-Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a default button
-
-```jsx
-<ButtonTransparent>Transparent</ButtonTransparent>
-```
-
-## Colors
-
-Buttons come in three color variants: `key`, `critical`, and `neutral`.
-
-### Key
-
-Key is the primary brand color, which is the default setting.
+`Key` is the primary brand color, which is the default setting.
 
 ```jsx
 <Space>
   <Button color="key">Key</Button>
-  <ButtonOutline color="key">Key Outline</ButtonOutline>
-  <ButtonTransparent color="key">Key Transparent</ButtonTransparent>
 </Space>
 ```
 
-### Critical
-
-Critical Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+`Critical` Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
 ```jsx
 <Space>
   <Button color="critical">Critical</Button>
-  <ButtonOutline color="critical">Critical Outline</ButtonOutline>
-  <ButtonTransparent color="critical">Critical Transparent</ButtonTransparent>
 </Space>
 ```
 
-### Neutral
-
-Neutral buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
+`Neutral` buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
 
 ```jsx
 <Space>
   <Button color="neutral">Neutral</Button>
-  <ButtonOutline color="neutral">Neutral Outline</ButtonOutline>
-  <ButtonTransparent color="neutral">Neutral Transparent</ButtonTransparent>
 </Space>
 ```
 
@@ -79,28 +43,12 @@ Neutral buttons are meant to fade into the background. These are usually used fo
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
 ```jsx
-<SpaceVertical>
-  <Space>
-    <Button size="xsmall">Xsmall Button</Button>
-    <Button size="small">Small Button</Button>
-    <Button>Medium (default) Button</Button>
-    <Button size="large">Large Button</Button>
-  </Space>
-  <Divider />
-  <Space>
-    <ButtonOutline size="xsmall">Xsmall Button</ButtonOutline>
-    <ButtonOutline size="small">Small Button</ButtonOutline>
-    <ButtonOutline>Medium (default) Button</ButtonOutline>
-    <ButtonOutline size="large">Large Button</ButtonOutline>
-  </Space>
-  <Divider />
-  <Space>
-    <ButtonTransparent size="xsmall">Xsmall Button</ButtonTransparent>
-    <ButtonTransparent size="small">Small Button</ButtonTransparent>
-    <ButtonTransparent>Medium (default) Button</ButtonTransparent>
-    <ButtonTransparent size="large">Large Button</ButtonTransparent>
-  </Space>
-</SpaceVertical>
+<Space>
+  <Button size="xsmall">Xsmall Button</Button>
+  <Button size="small">Small Button</Button>
+  <Button>Medium (default) Button</Button>
+  <Button size="large">Large Button</Button>
+</Space>
 ```
 
 ## Full Width
@@ -110,8 +58,6 @@ Use the `fullWidth` property on a `<Button />` and it will set its width to 100%
 ```jsx
 <SpaceVertical>
   <Button fullWidth>Full Width</Button>
-  <ButtonOutline fullWidth>Full Width</ButtonOutline>
-  <ButtonTransparent fullWidth>Full Width</ButtonTransparent>
 </SpaceVertical>
 ```
 
@@ -123,7 +69,7 @@ Use a disabled button to indicate to the user what action will be possible on a 
 <Button disabled>I am disabled</Button>
 ```
 
-## Button with an Icon
+## Icons
 
 Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
 
@@ -136,7 +82,9 @@ Buttons can have an icon before or after their content, using the `iconBefore` a
 </Space>
 ```
 
-## Additional Action Considerations
+## Style Guide
+
+### Additional Action
 
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
 
@@ -145,16 +93,4 @@ When a call to action requires additional steps, include an ellipsis at the end 
   <Button color="critical">Move to Trash...</Button>
   <Button>Print...</Button>
 </Space>
-```
-
-## Extending Button
-
-Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
-
-<RoundBtn />
-
-```jsx static
-const RoundButton = styled(Button)`
-  border-radius: 2rem;
-`
 ```

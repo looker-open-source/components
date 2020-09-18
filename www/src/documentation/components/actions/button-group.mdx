@@ -1,20 +1,15 @@
 ---
-title: ButtonGroup & ButtonToggle
-figma: file/Ut0DDG4hiuRG1HiZrC5Zyf/Dashboards-Next-Components?node-id=529%3A776
+title: ButtonGroup
 github: Button/ButtonGroup.tsx
 ---
 
 import { Code, MessageBar } from '@looker/components'
-import { Props } from '../../../Shared'
-
-<MessageBar noActions intent="inform">
-  <Code>ButtonGroup</Code> and <Code>ButtonToggle</Code> do not support
-  uncontrolled versions.
-</MessageBar>
 
 ## ButtonGroup
 
-<Props of="ButtonGroup" />
+<MessageBar noActions intent="inform">
+  <Code>ButtonGroup</Code> do not support uncontrolled versions.
+</MessageBar>
 
 `ButtonGroup` behaves like a checkbox group. Use this when the user may select zero or more of a small set of options.
 Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
@@ -43,56 +38,6 @@ Control externally via `value` and `onChange` props. On individual `ButtonItem`,
   <ButtonItem value="AK">Alaska</ButtonItem>
   <ButtonItem value="UT">Utah</ButtonItem>
 </ButtonGroup>
-```
-
-## ButtonToggle
-
-<Props of="ButtonGroup" />
-
-`ButtonToggle` behaves as radio button group. Use this when the user may select only one of a small set of options.
-Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
-
-```jsx
-;() => {
-  const [value, setValue] = useState('TypeScript')
-  return (
-    <>
-      <ButtonToggle value={value} onChange={setValue}>
-        <ButtonItem>Ruby</ButtonItem>
-        <ButtonItem>TypeScript</ButtonItem>
-        <ButtonItem>Python</ButtonItem>
-      </ButtonToggle>
-      <Text pl="small">Current selection: {value}</Text>
-    </>
-  )
-}
-```
-
-### Disabled
-
-```jsx
-<ButtonToggle value="TypeScript" disabled>
-  <ButtonItem>Ruby</ButtonItem>
-  <ButtonItem>TypeScript</ButtonItem>
-  <ButtonItem>Python</ButtonItem>
-</ButtonToggle>
-```
-
-### Nullable
-
-Use the `nullable` prop if the user should be able to click the selected item to de-select it.
-
-```jsx
-;() => {
-  const [value, setValue] = useState('')
-  return (
-    <ButtonToggle value={value} onChange={setValue} nullable>
-      <ButtonItem>Apples</ButtonItem>
-      <ButtonItem>Oranges</ButtonItem>
-      <ButtonItem>Bananas</ButtonItem>
-    </ButtonToggle>
-  )
-}
 ```
 
 ## Options

@@ -1,0 +1,26 @@
+---
+title: ButtonOutline
+status: stable
+github: Button/ButtonOutline.tsx
+propsOf: Button
+storybook: true
+---
+
+Use an outline button alongside a default button to provide alternative actions on a page. Outline buttons should only appear alongside default buttons for secondary actions. Use no more than two secondary buttons on a page.
+
+```jsx
+<ButtonOutline>Outline</ButtonOutline>
+```
+
+### Size
+
+Use the size property on a `<ButtonOutline />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
+
+```jsx
+<Space>
+  <ButtonOutline size="xsmall">Xsmall Button</ButtonOutline>
+  <ButtonOutline size="small">Small Button</ButtonOutline>
+  <ButtonOutline>Medium (default) Button</ButtonOutline>
+  <ButtonOutline size="large">Large Button</ButtonOutline>
+</Space>
+```

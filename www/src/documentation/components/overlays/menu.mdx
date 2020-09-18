@@ -6,8 +6,6 @@ figma: file/VyHO1Hv1XaW1v3lE9I4PVT/Menu
 propsOf: Menu
 ---
 
-import { Props } from '../../../Shared'
-
 `Menu` is a wrapper component that wraps a `MenuDisclosure` element and a `MenuList` element. When using a `Menu`, the child of your `MenuDisclosure` will be rendered and, when clicked, will generate a `Popover` with your `MenuList` and its children.
 The entire menu can be disabled via the `disabled` prop.
 
@@ -110,8 +108,6 @@ Control the state of the menu with the React `useState` hook.
 
 ## MenuList
 
-<Props of="MenuList" />
-
 `MenuList` displays a list of choices.
 
 ### Focus & Keyboard Controls
@@ -139,8 +135,6 @@ A `MenuList` accepts a `compact` prop that will make the spacing between the `Me
 ```
 
 ## MenuItem
-
-<Props of="MenuItem" />
 
 `MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `MenuList`. For example, opening a dialog.
 
@@ -270,8 +264,6 @@ Use the `disabled` to indicate an option that is not currently available.
 ```
 
 ## MenuGroup
-
-<Props of="MenuItem" />
 
 `MenuGroup` is a way to group together similar collections of `MenuItem`s.
 
