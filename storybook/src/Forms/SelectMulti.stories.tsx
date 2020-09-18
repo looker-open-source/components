@@ -160,10 +160,7 @@ export const CopyPaste = () => {
       <Space>
         <FieldSelectMulti
           label="To:"
-          options={[
-            ...emails,
-            { label: 'Meredith Dodge', value: 'mdodge@google.com' },
-          ]}
+          options={emails}
           validate={validateEmail}
           defaultValues={[
             'good.looker@google.com',
@@ -252,7 +249,7 @@ export function SelectMultiDemo() {
         { label: 'Gouda', value: 'gouda' },
         { label: 'Swiss', value: 'swiss' },
       ])
-    })
+    }, 2000)
     return () => {
       window.clearTimeout(t)
     }

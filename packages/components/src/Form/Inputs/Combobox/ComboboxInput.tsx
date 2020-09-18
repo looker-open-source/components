@@ -32,7 +32,6 @@ import React, {
   FormEvent,
   forwardRef,
   useRef,
-  useCallback,
   useContext,
   Ref,
   useLayoutEffect,
@@ -125,13 +124,9 @@ export const ComboboxInputInternal = forwardRef(
       transition && transition(ComboboxActionType.CLEAR)
     }
 
-    const handleValueChange = useCallback(
-      (value: string) => {
-        transition &&
-          transition(ComboboxActionType.CHANGE, { inputValue: value })
-      },
-      [transition]
-    )
+    function handleValueChange(value: string) {
+      transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
+    }
 
     // Need to determine whether the updated value come from change event on the input
     // or from a new value prop (controlled)
