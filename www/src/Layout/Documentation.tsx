@@ -173,7 +173,6 @@ export const pageQuery = graphql`
         status
         title
       }
-      tableOfContents(maxDepth: 2)
     }
   }
 `

@@ -25,7 +25,5 @@
  */
 
 export * from './DocTable'
-export * from './Props'
 export * from './Search'
 export * from './Status'
-export * from './TableOfContents'

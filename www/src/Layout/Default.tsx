@@ -65,7 +65,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
-      tableOfContents
     }
   }
 `
