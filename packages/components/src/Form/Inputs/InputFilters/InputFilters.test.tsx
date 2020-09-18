@@ -29,22 +29,22 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { InputFilters } from './InputFilters'
 
 describe('InputFilters', () => {
-  const filterableItems = [
-    { value: 'PDT value' },
-    { value: 'Status' },
-    { value: 'Model' },
-    { value: 'Persistance Type' },
-    { value: 'Last Successful Build' },
+  const available = [
+    { field: 'Name' },
+    { field: 'Status' },
+    { field: 'Source' },
+    { field: 'Trigger' },
+    { field: 'buildAt', label: 'Last Build Time' },
   ]
 
-  const fieldFilters = ['role: admin', 'group: pizza-lovers']
+  const filters = [
+    { field: 'role', value: 'admin' },
+    { field: 'group', value: 'pizza-lovers' },
+  ]
 
   test('render InputFilter', () => {
     const { getByPlaceholderText } = renderWithTheme(
-      <InputFilters
-        availableFilters={filterableItems}
-        fieldFilters={fieldFilters}
-      />
+      <InputFilters filters={filters} available={available} />
     )
 
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
@@ -52,21 +52,15 @@ describe('InputFilters', () => {
 
   test('InputFilter displays chips for each FieldFilter passed', () => {
     const { getByText } = renderWithTheme(
-      <InputFilters
-        availableFilters={filterableItems}
-        fieldFilters={fieldFilters}
-      />
+      <InputFilters filters={filters} available={available} />
     )
-    expect(getByText('role: admin')).toBeInTheDocument()
+    expect(getByText('admin')).toBeInTheDocument()
   })
 
   test('InputFilter displays chips for each FieldFilter passed', () => {
     const { getByText } = renderWithTheme(
-      <InputFilters
-        availableFilters={filterableItems}
-        fieldFilters={fieldFilters}
-      />
+      <InputFilters filters={filters} available={available} />
     )
-    expect(getByText('role: admin')).toBeInTheDocument()
+    expect(getByText('admin')).toBeInTheDocument()
   })
 })
