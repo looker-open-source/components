@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
 - Preview: `ActionListControls` component (this component is not yet ready for general-use)
+- Experimental: `@looker/components-thmee-editor` package
 
 ### Changed
 
