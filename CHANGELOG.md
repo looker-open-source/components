@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `Accordion` now supports `indicatorColor` property
+- `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
 
 ## [0.9.15] - 2020-09-21
 
