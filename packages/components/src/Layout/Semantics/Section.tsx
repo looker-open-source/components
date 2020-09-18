@@ -33,7 +33,6 @@ export interface SectionProps extends SemanticLayoutBase {}
 export const sectionCSS = css`
   ${semanticLayoutCSS}
   flex: 1 0 auto;
-  width: 0;
 `
 
 export const Section = styled.section<SectionProps>`

@@ -25,8 +25,9 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { Section } from './Section'
 
 export interface LayoutProps
   extends SimpleLayoutProps,
@@ -38,11 +39,20 @@ export interface LayoutProps
   hasAside?: boolean
 }
 
+const hasAsideCSS = css`
+  flex-direction: row;
+
+  & > ${Section} {
+    width: 0;
+  }
+`
+
 export const Layout = styled.div<LayoutProps>`
   ${simpleLayoutCSS}
 
   display: flex;
-  flex-direction: ${({ hasAside }) => (hasAside ? 'row' : 'column')};
-  height: 100%;
+  flex: 1 0 auto;
   width: 100%;
+
+  ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
 `
