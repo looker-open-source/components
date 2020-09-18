@@ -86,6 +86,7 @@ const SelectMultiComponent = forwardRef(
       closeOnSelect = false,
       showCreate = false,
       formatCreateLabel,
+      isLoading,
       removeOnBackspace = true,
 
       freeInput = false,
@@ -149,6 +150,7 @@ const SelectMultiComponent = forwardRef(
             windowedOptions={windowedOptions}
             cancelClickOutside={!isFilterable && !freeInput}
             indicator={indicator}
+            aria-busy={isLoading}
             {...ariaProps}
             {...listLayout}
           >
@@ -160,6 +162,7 @@ const SelectMultiComponent = forwardRef(
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}
               formatCreateLabel={formatCreateLabel}
+              isLoading={isLoading}
             />
           </ComboboxMultiList>
         )}

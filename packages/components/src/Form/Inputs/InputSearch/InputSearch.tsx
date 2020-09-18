@@ -171,6 +171,7 @@ const InputSearchLayout = forwardRef(
             cancelClickOutside={false}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
+            aria-busy={isLoading}
             {...ariaProps}
             {...listLayout}
           >

@@ -180,6 +180,7 @@ const SelectComponent = forwardRef(
             cancelClickOutside={!isFilterable}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
+            aria-busy={isLoading}
             {...ariaProps}
             {...listLayout}
           >

@@ -126,19 +126,25 @@ const renderMultiOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  if (option.description) {
+  const { description, detail, ...rest } = option
+  if (description || detail) {
     return (
       <ComboboxMultiOption
-        {...option}
+        {...rest}
         key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        <SelectOptionWithDescription {...option} />
+        {description ? (
+          <SelectOptionWithDescription description={description} {...rest} />
+        ) : (
+          <ComboboxOptionText />
+        )}
+        {detail && <ItemDetail>{detail}</ItemDetail>}
       </ComboboxMultiOption>
     )
   }
-  return <ComboboxMultiOption {...option} key={key} />
+  return <ComboboxMultiOption {...rest} key={key} />
 }
 
 export function SelectOptionWithDescription({
@@ -281,7 +287,7 @@ export function SelectOptions({
   if (isLoading) {
     return (
       <EmptyListItem mb={0} px="medium" py="xlarge">
-        <Spinner size={30} />
+        <Spinner size={30} aria-label="Loading" />
       </EmptyListItem>
     )
   }
