@@ -5,38 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.14] - 2020-09-18
 
 ### Added
 
-- update Chip to receive prop prefix
-- `useClickable` hook
+- `Chip` supports `prefix`
+- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
+- `GoogleFontsLoader`
 - `InputColor` now includes `name` in `onChange` response event
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
-- `GoogleFontsLoader`
-- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
-- New `FeedbackOutline` icon artwork
+- `useClickable` hook
+- Icons: `FeedbackOutline` added
 
 ### Changed
 
 - `Chip` / `ChipButton` now call `onClick` on enter or space key
 - `ComponentsProvider` now takes `colors` prop instead of `coreColors` and accepts `CoreColors & IntentColors`
+- `Prompt` / `usePrompt` now _optionally_ support `clearOnCancel` behavior
 - `theme.fonts.*` updates
   - `body` added (now default for most components)
   - `brand` is now used just for `Button*`, `Heading` & `Tabs`
   - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
 - `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
-- `Prompt` / `usePrompt` now _optionally_ support `clearOnCancel` behavior
 
 ### Fixed
 
+- `Icon` colors can be modified when used inside a `MenuItem` detail prop.
 - `Popover` cancel first click outside behavior not working with an `onMouseUp` used anywhere on the page
 - `SelectMulti` failing to appropriately show "No options" when `showCreate` is used
 - `Select` overwriting search value with the current option value if the option's value and label are different
-- Allow `Icon` colors to be modified when used inside a `MenuItem` detail prop.
-- Miscellaneous Storybook fixes to silence console warnings
+- Storybook fixes to silence console warnings
 
 ###
 
@@ -44,8 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- `theme.colors.palette` is no longer available (`palette` _can_ be import from `@looker/design-tokens` but this is a legacy behavior and is not encouraged)
 - `prismTheme` is no longer published
+- `theme.colors.palette` is no longer available (`palette` _can_ be import from `@looker/design-tokens` but this is a legacy behavior and is not encouraged)
 
 ## [0.9.13] - 2020-08-24
 
