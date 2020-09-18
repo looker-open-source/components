@@ -9,9 +9,9 @@
     "build": "build-storybook -c .storybook -o ../docs/static/storybook"
   },
   "dependencies": {
-    "@looker/components": "^0.9.15",
-    "@looker/design-tokens": "^0.9.15",
-    "@looker/icons": "^0.9.14",
+    "@looker/components": "*",
+    "@looker/design-tokens": "*",
+    "@looker/icons": "*",
     "@storybook/react": "^6.0.21",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
@@ -19,10 +19,7 @@
     "styled-components": "4"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.0.20",
-    "@storybook/addon-backgrounds": "^6.0.21",
-    "@storybook/addon-knobs": "^6.0.21",
-    "@storybook/addon-storysource": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
     "babel-loader": "^8.1.0"
   }
 }
