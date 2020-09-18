@@ -34,14 +34,23 @@ import { FontSizeProps } from './font_sizes'
 import { FontWeightProps } from './font_weights'
 import { LineHeightProps } from './line_heights'
 
-export {
+export type {
   FontFamilies,
   FontFamilyChoices,
   FontFamilyProps,
 } from './font_families'
-export { FontSizes, FontSizeProps, FontSizeRamp } from './font_sizes'
-export { FontWeights, FontWeightProps, FontWeightRamp } from './font_weights'
-export { LineHeights, LineHeightProps, LineHeightRamp } from './line_heights'
+export { fontFamilies } from './font_families'
+export type { FontSizes, FontSizeProps, FontSizeRamp } from './font_sizes'
+export type {
+  FontWeights,
+  FontWeightProps,
+  FontWeightRamp,
+} from './font_weights'
+export type {
+  LineHeights,
+  LineHeightProps,
+  LineHeightRamp,
+} from './line_heights'
 export { textDecoration } from './text_decoration'
 export type { TextDecorationProps } from './text_decoration'
 export { textTransform } from './text_transform'
