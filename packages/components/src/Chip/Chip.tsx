@@ -47,6 +47,7 @@ export interface ChipProps
   extends GenericClickProps<HTMLSpanElement>,
     TruncateProps {
   children: ReactNode
+  prefix?: string
   onDelete?: (
     e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
   ) => void
@@ -111,6 +112,7 @@ const ChipJSX = forwardRef(
       onDelete,
       onKeyUp,
       onKeyDown,
+      prefix,
       truncate = true,
       ...props
     }: ChipProps,
@@ -138,7 +140,10 @@ const ChipJSX = forwardRef(
         ref={ref}
         {...props}
       >
-        <ChipLabel truncate={truncate}>{children}</ChipLabel>
+        <ChipLabel truncate={truncate}>
+          {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
+          {children}
+        </ChipLabel>
         {onDelete && !disabled && (
           <IconButton
             disabled={disabled}

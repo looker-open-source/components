@@ -38,6 +38,7 @@ export const All = () => (
     <ClickAndDelete />
     <ChipButtons />
     <Removable />
+    <ChipPrefix />
   </SpaceVertical>
 )
 
@@ -63,6 +64,19 @@ export const ClickAndDelete = () => {
         <Chip disabled onClick={handleClick} onDelete={handleDelete}>
           Delete Me (nothing happens)
         </Chip>
+      </Space>
+    </>
+  )
+}
+
+export const ChipPrefix = () => {
+  return (
+    <>
+      <Heading>Prefix</Heading>
+      <Space>
+        <Chip>no prefix</Chip>
+        <Chip prefix="role">admin</Chip>
+        <Chip prefix="color">purple,purple:neat</Chip>
       </Space>
     </>
   )
