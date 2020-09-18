@@ -99,7 +99,6 @@ export const ActionListExample = () => {
 
   const filterActionsConfig = {
     available: available,
-    canSelectDisplayedColumns: true,
     filters: filters,
   }
 
@@ -110,13 +109,14 @@ export const ActionListExample = () => {
       noResultsDisplay={noResultsDisplay}
     >
       <ActionList
-        select={boolean('Select Items', true) ? selectConfig : undefined}
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
+        // canSelectDisplayedColumns={boolean('Display Columns', true)}
+        columns={columns}
         filters={
           boolean('Filter Actions', true) ? filterActionsConfig : undefined
         }
-        columns={columns}
         headerRowId="all-pdts"
+        select={boolean('Select Items', true) ? selectConfig : undefined}
       >
         {items}
       </ActionList>

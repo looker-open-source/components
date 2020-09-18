@@ -25,29 +25,26 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useState, useRef, MouseEvent } from 'react'
+import React, { FC, useState, useRef, ReactNode } from 'react'
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
-
-export interface AvailableFilter {
-  value: string
-}
+import { InputFilterChip } from './InputFilterChip'
 
 export interface FieldFilter {
-  /* specify field to filter against */
-  // field: string
-  /* text displayed in drop-down, optional, `field` is used if not specified */
+  /* specify the field value */
+  field: string
+  /* text to be displayed in drop-down, optional, `field` is used if not specified */
   label?: string
 }
-export interface FieldFilterExpressions extends FieldFilter {
-  expression?: string
+export interface FieldFilterValue extends FieldFilter {
+  value?: string
 }
 export interface InputFiltersProps {
   available: FieldFilter[]
-  filters?: FieldFilterExpressions[]
+  filters?: FieldFilterValue[]
   hideFilterIcon?: boolean
   className?: string
 }
@@ -58,14 +55,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   filters,
   hideFilterIcon = false,
 }) => {
-  const [values, setValues] = useState(filters || [])
+  const [chipValues, setChipValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
   const inputRef = useRef<null | HTMLInputElement>(null)
-  const isClearable = values.length > 0
+  const isClearable = chipValues.length > 0
 
   const clearFilters = () => {
-    setValues([])
+    setChipValues([])
   }
 
   function focusInput() {
@@ -74,42 +71,44 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
   function handleFilterLookupChange(newValues: any) {
     setFilterLookupName('')
-    setValues([...values, newValues])
+    setChipValues([{ field: newValues, value: 'gouda' }, ...chipValues])
   }
 
   const editFilter = () => {
     alert("You can't do that. Yet!")
   }
 
-  const deleteFilter = (event: MouseEvent<HTMLSpanElement>) => {
-    const clickedValue = event.currentTarget.parentNode.querySelector('span')
-      .textContent
-    console.log(clickedValue)
-    const newValues = values.filter(
-      (value) =>
-        value.expression === clickedValue.querySelector('span').textContent
-    )
-    console.log(newValues)
-    setValues(newValues)
+  const handleDelete = (field: ReactNode) => {
+    setChipValues([...chipValues].filter((value) => value !== field))
   }
+
+  const options = available.map((filter) => {
+    return {
+      label: filter.label || filter.field,
+      value: filter.field,
+    }
+  })
 
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
         <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
       )}
-      {filters &&
-        filters.map((filter, i) => (
-          <Chip key={i} onClick={editFilter} onDelete={deleteFilter}>
-            {filter.expression}
-          </Chip>
+      {chipValues &&
+        chipValues.map((filter, i) => (
+          <InputFilterChip
+            filter={filter}
+            key={i}
+            onClick={editFilter}
+            onDelete={handleDelete}
+          />
         ))}
       <Select
         autoResize
         indicator={false}
         isFilterable
         onChange={handleFilterLookupChange}
-        options={available}
+        options={options}
         placeholder="Filter List"
         ref={inputRef}
         value={filterLookupName}
@@ -118,6 +117,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         <IconButton
           icon="Close"
           label="Clear Filters"
+          mr="xxsmall"
           onClick={clearFilters}
           size="xsmall"
         />
@@ -157,6 +157,4 @@ export const InputFilters = styled(InputFiltersLayout)`
       padding: 0;
     }
   }
-
-
 `

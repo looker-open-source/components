@@ -23,39 +23,25 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { Chip, ChipProps } from '../../../Chip'
+import { FieldFilterValue } from './InputFilters'
 
-import React from 'react'
-import { InputFilters, SpaceVertical } from '@looker/components'
-
-export const available = [
-  { field: 'Name' },
-  { field: 'Status' },
-  { field: 'Source' },
-  { field: 'Trigger' },
-  { field: 'buildAt', label: 'Last Build Time' },
-]
-
-export const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', value: 'pizza-lovers' },
-]
-
-export const All = () => (
-  <SpaceVertical align="start">
-    <Basic />
-    <HideFilter />
-  </SpaceVertical>
-)
-
-export default {
-  component: All,
-  title: 'Forms/InputFilters',
+interface InputFilterChipProps
+  extends Omit<ChipProps, 'children' | 'onDelete'> {
+  filter: FieldFilterValue
+  onDelete: (field: string) => void
 }
-
-export const Basic = () => (
-  <InputFilters filters={filters} available={available} />
-)
-
-export const HideFilter = () => (
-  <InputFilters hideFilterIcon filters={filters} available={available} />
-)
+export const InputFilterChip: FC<InputFilterChipProps> = ({
+  filter,
+  onDelete,
+  ...props
+}) => {
+  const handleDelete = () => onDelete(filter)
+  /* add prefix prop {filter.field} */
+  return (
+    <Chip {...props} onDelete={handleDelete}>
+      {filter.field}: {filter.value}
+    </Chip>
+  )
+}
