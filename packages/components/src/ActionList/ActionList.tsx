@@ -34,7 +34,10 @@ import {
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListFilters, ActionListFilterProps } from './ActionListFilters'
+import {
+  ActionListControls,
+  ActionListControlsProps,
+} from './ActionListControls'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
@@ -76,7 +79,7 @@ export interface ActionListColumn {
   sortDirection?: 'asc' | 'desc'
 }
 
-export type FiltersConfig = ActionListFilterProps
+export type FiltersConfig = ActionListControlsProps
 
 export interface ActionListProps {
   columns: ActionListColumns
@@ -205,7 +208,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   return (
     <ActionListContext.Provider value={context}>
       {filters && (
-        <ActionListFilters
+        <ActionListControls
           filters={filters.filters}
           canSelectDisplayedColumns={filters.canSelectDisplayedColumns || false}
           available={filters.available}

@@ -55,6 +55,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   filters,
   hideFilterIcon = false,
 }) => {
+  const options = available.map((filter) => {
+    return {
+      label: filter.label || filter.field,
+      value: filter.field,
+    }
+  })
+
   const [chipValues, setChipValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
@@ -81,13 +88,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const handleDelete = (field: ReactNode) => {
     setChipValues([...chipValues].filter((value) => value !== field))
   }
-
-  const options = available.map((filter) => {
-    return {
-      label: filter.label || filter.field,
-      value: filter.field,
-    }
-  })
 
   return (
     <div className={className} onClick={focusInput}>

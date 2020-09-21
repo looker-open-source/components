@@ -30,13 +30,13 @@ import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
 import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 
-export interface ActionListFilterProps
+export interface ActionListControlsProps
   extends Omit<InputFiltersProps, 'hideFilterIcon' | 'className'> {
   canSelectDisplayedColumns?: boolean
   className?: string
 }
 
-const ActionListFilterLayout: FC<ActionListFilterProps> = ({
+const ActionListControlsLayout: FC<ActionListControlsProps> = ({
   available,
   className,
   canSelectDisplayedColumns = false,
@@ -60,7 +60,7 @@ const ColumnSelector = styled.div`
   display: flex;
 `
 
-export const ActionListFilters = styled(ActionListFilterLayout)`
+export const ActionListControls = styled(ActionListControlsLayout)`
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
