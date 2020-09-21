@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "0.9.14",
+  "version": "0.9.15",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -9,8 +9,8 @@
     "build": "build-storybook -c .storybook -o ../docs/static/storybook"
   },
   "dependencies": {
-    "@looker/components": "^0.9.14",
-    "@looker/design-tokens": "^0.9.14",
+    "@looker/components": "^0.9.15",
+    "@looker/design-tokens": "^0.9.15",
     "@looker/icons": "^0.9.14",
     "@storybook/react": "^6.0.21",
     "lodash": "^4.17.20",
