@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useState, useRef, ReactNode } from 'react'
+import React, { FC, useState, useRef } from 'react'
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
@@ -91,7 +91,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     alert("You can't do that. Yet!")
   }
 
-  const handleDelete = (field: ReactNode) => {
+  const handleDelete = (field: FieldFilterValue) => {
     const addOption = options.filter(
       (value) =>
         (field && field.field === value.label) ||
