@@ -322,7 +322,7 @@ exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
 >
   <input
     aria-checked="mixed"
-    checked={true}
+    checked={false}
     disabled={true}
     id="checkboxID"
     onChange={[Function]}
@@ -697,7 +697,7 @@ exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
 >
   <input
     aria-checked="mixed"
-    checked={true}
+    checked={false}
     id="checkboxID"
     onChange={[Function]}
     type="checkbox"

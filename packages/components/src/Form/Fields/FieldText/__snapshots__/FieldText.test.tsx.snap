@@ -99,7 +99,7 @@ exports[`A FieldText with default label 1`] = `
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .c4 {
@@ -138,7 +138,7 @@ exports[`A FieldText with default label 1`] = `
 .c0 > .c1 {
   grid-area: label;
   line-height: 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .c0 .c10 {
@@ -282,7 +282,7 @@ exports[`A FieldText with label inline 1`] = `
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .c4 {
@@ -304,7 +304,7 @@ exports[`A FieldText with label inline 1`] = `
 .c8 > .c1 {
   grid-area: label;
   line-height: 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .c0 {

@@ -38,9 +38,16 @@ import {
   Divider,
 } from '@looker/components'
 
+import styled from 'styled-components'
+
 export default {
   title: 'Forms/Fieldset',
 }
+
+const FieldWrapper = styled.div`
+  margin: 30px auto;
+  width: 600px;
+`
 
 const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
   <>
@@ -49,6 +56,7 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
       placeholder="First name"
       required
       label="First name"
+      description="This is a description"
     />
     <FieldText inline={inline} label="Middle" placeholder="Middle" />
     <FieldText
@@ -61,9 +69,11 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
 )
 
 export const Basic = () => (
-  <Fieldset>
-    <Fields />
-  </Fieldset>
+  <FieldWrapper>
+    <Fieldset>
+      <Fields />
+    </Fieldset>
+  </FieldWrapper>
 )
 
 export const Inline = () => (

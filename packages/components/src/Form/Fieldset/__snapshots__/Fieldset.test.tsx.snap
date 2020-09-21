@@ -156,7 +156,7 @@ exports[`Fieldset 1`] = `
   font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
   color: #343C42;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .c8 {
@@ -195,7 +195,7 @@ exports[`Fieldset 1`] = `
 .c4 > .c5 {
   grid-area: label;
   line-height: 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .c4 .c16 {
@@ -226,13 +226,13 @@ exports[`Fieldset 1`] = `
 
 @supports (-moz-appearance:none) {
   .c3 {
-    gap: 0.75rem;
+    gap: 1rem;
   }
 }
 
 @supports not (-moz-appearance:none) {
   .c3.c3 > * {
-    margin-top: 0.75rem;
+    margin-top: 1rem;
   }
 
   .c3.c3 > *:first-child {
