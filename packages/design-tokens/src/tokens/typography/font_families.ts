@@ -28,14 +28,14 @@ import { FontFamilyChoices } from '../../system'
 import { generateFontFamilies } from '../../utils/typography'
 
 const sansSerifFontFallbacks = [
-  '"Noto Sans JP"',
-  '"Noto Sans CJK KR"',
-  '"Noto Sans Arabic UI"',
-  '"Noto Sans Devanagari UI"',
-  '"Noto Sans Hebrew"',
-  '"Noto Sans Thai UI"',
-  '"Helvetica"',
-  '"Arial"',
+  "'Noto Sans JP'",
+  "'Noto Sans CJK KR'",
+  "'Noto Sans Arabic UI'",
+  "'Noto Sans Devanagari UI'",
+  "'Noto Sans Hebrew'",
+  "'Noto Sans Thai UI'",
+  "'Helvetica'",
+  "'Arial'",
   'sans-serif',
 ]
 
@@ -43,19 +43,19 @@ export const defaultFontFallbacks = {
   body: sansSerifFontFallbacks,
   brand: sansSerifFontFallbacks,
   code: [
-    '"Monaco"',
-    '"Menlo"',
-    '"Ubuntu Mono"',
-    '"Consolas"',
-    '"source-code-pro"',
+    "'Monaco'",
+    "'Menlo'",
+    "'Ubuntu Mono'",
+    "'Consolas'",
+    "'source-code-pro'",
     'monospace',
   ],
 }
 
 export const defaultFonts: FontFamilyChoices = {
-  body: '"Roboto"',
-  brand: '"Red Hat Display"',
-  code: '"Roboto Mono"',
+  body: "'Roboto'",
+  brand: "'Red Hat Display'",
+  code: "'Roboto Mono'",
 }
 
 export const fontFamilies = generateFontFamilies(defaultFonts)
