@@ -32,7 +32,7 @@ import React, { ReactElement } from 'react'
 import { create } from 'react-test-renderer'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (
-  <ComponentsProvider>{Component}</ComponentsProvider>
+  <ComponentsProvider globalStyle={false}>{Component}</ComponentsProvider>
 )
 
 export const createWithTheme = (Component: ReactElement<any>) =>
