@@ -62,6 +62,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     }
   })
 
+  const [availableOptions, setAvailableOptions] = useState(options)
   const [chipValues, setChipValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
@@ -76,9 +77,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     inputRef.current && inputRef.current.focus()
   }
 
-  function handleFilterLookupChange(newValues: any) {
+  function handleFilterLookupChange(newValue: any) {
     setFilterLookupName('')
-    setChipValues([{ field: newValues, value: 'gouda' }, ...chipValues])
+    setAvailableOptions(
+      availableOptions.filter(
+        (option) => option.label !== newValue || option.value !== newValue
+      )
+    )
+    setChipValues([{ field: newValue, value: 'gouda' }, ...chipValues])
   }
 
   const editFilter = () => {
@@ -86,6 +92,12 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   }
 
   const handleDelete = (field: ReactNode) => {
+    const addOption = options.filter(
+      (value) =>
+        (field && field.field === value.label) ||
+        (field && field.field === value.value)
+    )
+    setAvailableOptions([addOption[0], ...availableOptions])
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
@@ -108,7 +120,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         indicator={false}
         isFilterable
         onChange={handleFilterLookupChange}
-        options={options}
+        options={availableOptions}
         placeholder="Filter List"
         ref={inputRef}
         value={filterLookupName}
@@ -134,8 +146,8 @@ export const InputFilters = styled(InputFiltersLayout)`
   height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
 
-  ${Chip} + ${Chip} {
-    margin: ${({ theme: { space } }) => `0 ${space.xsmall}`};
+  ${Chip} {
+    margin-right: ${({ theme: { space } }) => space.xsmall};
   }
 
   ${Select} {
