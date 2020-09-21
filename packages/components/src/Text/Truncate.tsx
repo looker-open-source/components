@@ -35,7 +35,7 @@ import { useIsTextTruncated } from './useIsTextTruncated'
 import { textVariant, TextVariantProps } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'
 
-export interface TruncatedTextProps
+export interface TruncateProps
   extends TextBaseProps,
     TextTransformProps,
     TextVariantProps,
@@ -51,10 +51,7 @@ const IdentityComponent: FC<any> = ({ children }) => <>{children}</>
  * Renders a tooltip to view the entire text content on hover.
  **/
 
-export const TruncatedText: FC<TruncatedTextProps> = ({
-  children,
-  ...restProps
-}) => {
+export const Truncate: FC<TruncateProps> = ({ children, ...restProps }) => {
   const [domNode, setDomNode] = useState<HTMLElement | null>(null)
 
   const isTruncated = useIsTextTruncated(domNode)
@@ -120,4 +117,4 @@ const TextWrapper = styled.div`
   position: relative;
 `
 
-TruncatedText.defaultProps = { fontSize: 'medium' }
+Truncate.defaultProps = { fontSize: 'medium' }

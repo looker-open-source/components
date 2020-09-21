@@ -51,7 +51,7 @@ import {
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
-import { TruncatedText, Text } from '../Text'
+import { Truncate, Paragraph } from '../Text'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
@@ -183,7 +183,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
-  const TextWrapper = truncate ? TruncatedText : Text
+  const TextWrapper = truncate ? Truncate : Paragraph
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>

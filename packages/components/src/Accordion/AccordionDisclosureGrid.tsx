@@ -36,7 +36,7 @@ interface AccordionDisclosureGridProps
 }
 
 const Indicator = styled.div`
-  align-items: align-items;
+  align-items: flex-start;
   display: flex;
   grid-area: indicator;
   justify-content: center;
