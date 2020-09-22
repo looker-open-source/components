@@ -25,21 +25,12 @@
  */
 import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  textTransform,
-  TextTransformProps,
-} from '@looker/design-tokens'
 import { Tooltip } from '../Tooltip'
 import { useIsTextTruncated } from './useIsTextTruncated'
-import { textVariant, TextVariantProps } from './text_variant'
-import { TextBase, TextBaseProps } from './TextBase'
 
-export interface TruncateProps
-  extends TextBaseProps,
-    TextTransformProps,
-    TextVariantProps,
-    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
+export interface TruncateProps {
+  children: string
+}
 
 /*
  * Identity Component: transparently pass through children
@@ -94,10 +85,9 @@ export const Truncate: FC<TruncateProps> = ({ children, ...restProps }) => {
   )
 }
 
-const TextStyle = styled(TextBase)`
-  ${textVariant}
-  ${textTransform}
+const TextStyle = styled.div`
   display: block;
+  font: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

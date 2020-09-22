@@ -57,6 +57,7 @@ import { TreeContext } from './TreeContext'
 export interface TreeItemProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
+  children?: string
   className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
@@ -97,6 +98,8 @@ export interface TreeItemProps
    **/
   truncate?: boolean
 }
+
+const NoopText: FC<{ children: string }> = ({ children }) => <>{children}</>
 
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
@@ -183,7 +186,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
-  const TextWrapper = truncate ? Truncate : Paragraph
+  const TextWrapper = truncate ? Truncate : NoopText
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
@@ -204,7 +207,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
           <FlexItem flex="1" width="100%" pr={truncate ? 'large' : 'none'}>
-            <TextWrapper fontSize="xsmall">{children}</TextWrapper>
+            <Paragraph fontSize="xsmall">
+              <TextWrapper>{children as string}</TextWrapper>
+            </Paragraph>
           </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>

@@ -81,7 +81,7 @@ export interface TreeProps extends AccordionProps {
   /**
    * Prevent text wrapping on long labels and instead render truncated text
    **/
-  truncateLabel?: boolean
+  truncate?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -103,7 +103,7 @@ const TreeLayout: FC<TreeProps> = ({
   label,
   className,
   visuallyAsBranch,
-  truncateLabel,
+  truncate,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -128,7 +128,7 @@ const TreeLayout: FC<TreeProps> = ({
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
       icon={icon}
-      truncate={truncateLabel}
+      truncate={truncate}
     >
       {label}
     </TreeItemInner>
