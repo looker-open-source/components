@@ -99,7 +99,10 @@ export interface TreeItemProps
   truncate?: boolean
 }
 
-const NoopText: FC<{ children: string }> = ({ children }) => <>{children}</>
+/*
+ * Identity component: transparently pass through children
+ */
+const Identity: FC<any> = ({ children }) => <>{children}</>
 
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
@@ -186,7 +189,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
-  const TextWrapper = truncate ? Truncate : NoopText
+  const TextWrapper = truncate ? Truncate : Identity
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
