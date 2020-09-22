@@ -17,6 +17,62 @@ exports[`Form with one child 1`] = `
   flex-direction: column;
 }
 
+.c3 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.c5 {
+  min-width: 0;
+}
+
+.c1 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c1 .c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-area: input;
+}
+
+.c1 .c8 {
+  grid-area: messages;
+}
+
+.c1 > .c2 {
+  grid-area: label;
+  line-height: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.c1 .c10 {
+  grid-area: detail;
+  justify-self: end;
+  padding-left: 0.75rem;
+}
+
+.c1 .c9 {
+  margin-top: 0.5rem;
+}
+
 .c7 {
   background: transparent;
   border: none;
@@ -89,14 +145,14 @@ exports[`Form with one child 1`] = `
   font-family: inherit;
 }
 
-.c6 .c9 {
+.c6 .c11 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c6 .c9 input,
-.c6 .c9 span {
+.c6 .c11 input,
+.c6 .c11 span {
   padding: 0 0.5rem;
 }
 
@@ -109,62 +165,6 @@ exports[`Form with one child 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
-}
-
-.c3 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.c5 {
-  min-width: 0;
-}
-
-.c1 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c1 .c4 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c1 .c8 {
-  grid-area: messages;
-}
-
-.c1 > .c2 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.5rem;
-}
-
-.c1 .c11 {
-  grid-area: detail;
-  justify-self: end;
-  padding-left: 0.75rem;
-}
-
-.c1 .c10 {
-  margin-top: 0.5rem;
 }
 
 @supports (-moz-appearance:none) {

@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldCheckbox 1`] = `
+.c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label detail' '. messages messages';
+  grid-template-columns: repeat(2,max-content) 1fr;
+  line-height: 1.25rem;
+}
+
+.c0 .c3 {
+  grid-area: input;
+}
+
+.c0 .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
+}
+
+.c0 .c8 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: detail;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-left: 0.25rem;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
 .c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -61,64 +119,6 @@ exports[`A FieldCheckbox 1`] = `
 
 .c4 input:disabled:not(:checked) + .c5 {
   color: transparent;
-}
-
-.c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-template-areas: 'input label detail' '. messages messages';
-  grid-template-columns: repeat(2,max-content) 1fr;
-  line-height: 1.25rem;
-}
-
-.c0 .c3 {
-  grid-area: input;
-}
-
-.c0 .c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 0.875rem;
-  font-weight: normal;
-  grid-area: label;
-  padding-left: 0.5rem;
-}
-
-.c0 .c8 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  grid-area: detail;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin-left: 0.25rem;
-}
-
-.c0 .c7 {
-  grid-area: messages;
-  padding-left: 0.75rem;
 }
 
 <label
@@ -174,6 +174,64 @@ exports[`A FieldCheckbox 1`] = `
 `;
 
 exports[`A FieldCheckbox with checked value 1`] = `
+.c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'input label detail' '. messages messages';
+  grid-template-columns: repeat(2,max-content) 1fr;
+  line-height: 1.25rem;
+}
+
+.c0 .c3 {
+  grid-area: input;
+}
+
+.c0 .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: normal;
+  grid-area: label;
+  padding-left: 0.5rem;
+}
+
+.c0 .c8 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: detail;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-left: 0.25rem;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+  padding-left: 0.75rem;
+}
+
 .c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -234,64 +292,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 
 .c4 input:disabled:not(:checked) + .c5 {
   color: transparent;
-}
-
-.c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-template-areas: 'input label detail' '. messages messages';
-  grid-template-columns: repeat(2,max-content) 1fr;
-  line-height: 1.25rem;
-}
-
-.c0 .c3 {
-  grid-area: input;
-}
-
-.c0 .c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 0.875rem;
-  font-weight: normal;
-  grid-area: label;
-  padding-left: 0.5rem;
-}
-
-.c0 .c8 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  grid-area: detail;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin-left: 0.25rem;
-}
-
-.c0 .c7 {
-  grid-area: messages;
-  padding-left: 0.75rem;
 }
 
 <label
