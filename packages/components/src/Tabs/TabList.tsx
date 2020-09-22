@@ -116,8 +116,7 @@ const distributeCSS = css`
 
   ${Tab} {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
-    padding: ${({ theme: { space } }) =>
-      `${space.none} ${space.medium} ${space.xsmall}`};
+    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
   }
 `
 

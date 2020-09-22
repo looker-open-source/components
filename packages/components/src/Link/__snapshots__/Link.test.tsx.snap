@@ -2,7 +2,7 @@
 
 exports[`Link Snapshot 1`] = `
 .c0 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #0059b2;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -13,7 +13,7 @@ exports[`Link Snapshot 1`] = `
 .c0:active,
 .c0.active,
 .c0:visited {
-  color: #00418c;
+  color: #0063c6;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }

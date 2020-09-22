@@ -29,71 +29,142 @@ import {
   FieldColor,
   Fieldset,
   SpaceVertical,
+  FieldSelect,
+  theme,
+  Card,
+  CardContent,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from '@looker/components'
+import { CoreColors, IntentColors } from '@looker/design-tokens'
 import React, { FC, FormEvent, useState } from 'react'
+import { Swatches } from './Swatches'
+import { Suite } from './Suite'
 
-interface ThemeEditorProps {
-  name: string
+interface ThemeEditorProps
+  extends Partial<IntentColors>,
+    Omit<Partial<CoreColors>, 'key'> {
+  name?: string
   keyColor?: string
-  backgroundColor?: string
-  textColor?: string
 }
 
+const fontOptions = [
+  'Red Hat Display',
+  'Roboto',
+  'Roboto Mono',
+  'Google Sans',
+  'Papyrus',
+  'Impact',
+  'Comic Sans MS',
+]
+const fontOptionsFormatted = fontOptions.map((font) => {
+  return { option: font, value: font }
+})
+
 export const Editor: FC<ThemeEditorProps> = ({
-  children,
   name,
   keyColor,
-  backgroundColor,
-  textColor,
+  background,
+  text,
 }) => {
-  const [background, setBackground] = useState<string | undefined>(
-    backgroundColor
-  )
-  const [key, setKey] = useState<string | undefined>(keyColor)
-  const [text, setText] = useState<string | undefined>(textColor)
-
-  const handleKeyChange = (event: FormEvent<HTMLInputElement>) => {
-    setKey(event.currentTarget.value)
+  const [colors, setColors] = useState({
+    background,
+    key: keyColor,
+    text,
+  })
+  const handleColorChange = (event: FormEvent<HTMLInputElement>) => {
+    const newColors = { ...colors }
+    newColors[event.currentTarget.name] = event.currentTarget.value
+    setColors(newColors)
   }
 
-  const handleBackgroundChange = (event: FormEvent<HTMLInputElement>) => {
-    setBackground(event.currentTarget.value)
+  const [fontFamilies, setFontFamilies] = useState({ body: undefined })
+  const handleFontChange = (slot: string, font: string) => {
+    const newFontFamilies = { ...fontFamilies }
+    newFontFamilies[slot] = font
+    setFontFamilies(newFontFamilies)
   }
-
-  const handleTextChange = (event: FormEvent<HTMLInputElement>) => {
-    setText(event.currentTarget.value)
-  }
-
-  // const coreColors = useState<CoreColors>(theme)
 
   return (
     <SpaceVertical>
       <Fieldset legend={name}>
-        <FieldColor
-          label="Key"
-          placeholder="Key Color (default #6C43E0)"
-          value={key}
-          onChange={handleKeyChange}
-        />
-        <FieldColor
-          label="Background"
-          placeholder="Background Color (default: #FFFFF)"
-          value={background}
-          onChange={handleBackgroundChange}
-        />
-        <FieldColor
-          label="Text"
-          placeholder="Text Color (default #262D33)"
-          value={text}
-          onChange={handleTextChange}
-        />
+        {['key', 'background', 'text'].map((color) => (
+          <FieldColor
+            label={color}
+            key={color}
+            name={color}
+            placeholder={`Default: ${theme.colors[color]}`}
+            value={colors[color]}
+            onChange={handleColorChange}
+          />
+        ))}
+
+        <Fieldset accordion legend="Intent Colors">
+          {['link', 'critical', 'warn', 'neutral', 'positive', 'inform'].map(
+            (color) => (
+              <FieldColor
+                label={color}
+                key={color}
+                name={color}
+                placeholder={`Default: ${theme.colors[color]}`}
+                value={colors[color]}
+                onChange={handleColorChange}
+              />
+            )
+          )}
+        </Fieldset>
+
+        <Fieldset legend="Fonts" accordion>
+          {['body', 'brand', 'code'].map((font) => (
+            <FieldSelect
+              label={font}
+              name={font}
+              key={font}
+              options={fontOptionsFormatted}
+              value={fontFamilies[font]}
+              isClearable
+              onChange={(newFont) => handleFontChange(font, newFont)}
+              placeholder={`Default: ${theme.fonts[font]}`}
+            />
+          ))}
+        </Fieldset>
       </Fieldset>
+
       <ComponentsProvider
         globalStyle={false}
-        coreColors={{ background, key, text }}
+        fontFamilies={fontFamilies}
+        colors={colors}
       >
-        {children}
+        <Card width="100%">
+          <CardContent>
+            <Tabs>
+              <TabList>
+                <Tab>Colors</Tab>
+                <Tab>Components</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <Swatches />
+                </TabPanel>
+                <TabPanel>
+                  <Card raised>
+                    <CardContent>
+                      <Suite />
+                    </CardContent>
+                  </Card>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </CardContent>
+        </Card>
       </ComponentsProvider>
     </SpaceVertical>
   )
+}
+
+export default {
+  title: 'Theme',
 }

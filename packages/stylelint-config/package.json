@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.9.4",
+  "version": "0.9.15",
   "files": [
     "index.js"
   ],
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "prettier": "^2.0.5",
-    "stylelint": "^13.6.1",
+    "stylelint": "^13.7.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",

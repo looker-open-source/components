@@ -24,7 +24,6 @@
 
  */
 
-// import { css } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 
 type Body = 'body'

@@ -16,7 +16,10 @@ However, unlike the `<Confirm/>`, the `<Prompt/>` component comes with a built i
     alert('Prompt closed')
     close()
   }}
-  onSave={(value) => alert(`You chose ${value}`)}
+  onSave={(value, close) => {
+    alert(`You chose ${value}`)
+    close()
+  }}
 >
   {(open) => <Button onClick={open}>Prompt</Button>}
 </Prompt>

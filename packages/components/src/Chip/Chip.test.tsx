@@ -36,6 +36,11 @@ test('Chip renders disabled', () => {
   assertSnapshot(<Chip disabled>chip</Chip>)
 })
 
+test('Chip accepts a prefix and renders it with correct style', () => {
+  const { getByText } = renderWithTheme(<Chip prefix="role">admin</Chip>)
+  expect(getByText(/\brole\b/)).toHaveStyle('font-weight: 400')
+})
+
 test('Chip onDelete renders correctly', () => {
   const onDeleteTrigger = jest.fn()
 

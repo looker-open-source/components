@@ -2,16 +2,16 @@
 
 exports[`MenuGroup - JSX label 1`] = `
 .c4 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
 }
 
 .c5 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   list-style-type: none;
 }
 
 .c3 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
@@ -33,7 +33,7 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c0 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   padding: 0.5rem 0;
 }
 
@@ -54,7 +54,7 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c6 button,
 .c6 a {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -92,7 +92,6 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c6 .c8 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -101,11 +100,6 @@ exports[`MenuGroup - JSX label 1`] = `
 .c6[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c6:hover .c8,
-.c6[aria-current='true'] .c8 {
-  color: #939BA5;
 }
 
 .c6[aria-current='true'] {
@@ -123,10 +117,6 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c6[disabled]:hover {
   background: #FFFFFF;
-  color: #939BA5;
-}
-
-.c6[disabled]:hover .c8 {
   color: #939BA5;
 }
 
@@ -217,12 +207,12 @@ exports[`MenuGroup - JSX label 1`] = `
 
 exports[`MenuGroup - label 1`] = `
 .c4 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   list-style-type: none;
 }
 
 .c3 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
@@ -244,7 +234,7 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c0 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   padding: 0.5rem 0;
 }
 
@@ -265,7 +255,7 @@ exports[`MenuGroup - label 1`] = `
 
 .c5 button,
 .c5 a {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -303,7 +293,6 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c5 .c7 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -312,11 +301,6 @@ exports[`MenuGroup - label 1`] = `
 .c5[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c5:hover .c7,
-.c5[aria-current='true'] .c7 {
-  color: #939BA5;
 }
 
 .c5[aria-current='true'] {
@@ -334,10 +318,6 @@ exports[`MenuGroup - label 1`] = `
 
 .c5[disabled]:hover {
   background: #FFFFFF;
-  color: #939BA5;
-}
-
-.c5[disabled]:hover .c7 {
   color: #939BA5;
 }
 
@@ -424,12 +404,12 @@ exports[`MenuGroup - label 1`] = `
 
 exports[`MenuGroup 1`] = `
 .c1 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   list-style-type: none;
 }
 
 .c0 {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   padding: 0.5rem 0;
 }
 
@@ -450,7 +430,7 @@ exports[`MenuGroup 1`] = `
 
 .c2 button,
 .c2 a {
-  font-family: "Roboto","Noto Sans JP","Noto Sans CJK KR","Noto Sans Arabic UI","Noto Sans Devanagari UI","Noto Sans Hebrew","Noto Sans Thai UI","Helvetica","Arial",sans-serif;
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -488,7 +468,6 @@ exports[`MenuGroup 1`] = `
 }
 
 .c2 .c4 {
-  color: #939BA5;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -497,11 +476,6 @@ exports[`MenuGroup 1`] = `
 .c2[aria-current='true'] {
   background: #F5F6F7;
   color: #262D33;
-}
-
-.c2:hover .c4,
-.c2[aria-current='true'] .c4 {
-  color: #939BA5;
 }
 
 .c2[aria-current='true'] {
@@ -519,10 +493,6 @@ exports[`MenuGroup 1`] = `
 
 .c2[disabled]:hover {
   background: #FFFFFF;
-  color: #939BA5;
-}
-
-.c2[disabled]:hover .c4 {
   color: #939BA5;
 }
 

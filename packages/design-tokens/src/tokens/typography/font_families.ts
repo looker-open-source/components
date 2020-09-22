@@ -25,66 +25,37 @@
  */
 
 import { FontFamilyChoices } from '../../system'
+import { generateFontFamilies } from '../../utils/typography'
 
-const basicFallbacks = [
-  '"Noto Sans JP"',
-  '"Noto Sans CJK KR"',
-  '"Noto Sans Arabic UI"',
-  '"Noto Sans Devanagari UI"',
-  '"Noto Sans Hebrew"',
-  '"Noto Sans Thai UI"',
-  '"Helvetica"',
-  '"Arial"',
+const sansSerifFontFallbacks = [
+  "'Noto Sans JP'",
+  "'Noto Sans CJK KR'",
+  "'Noto Sans Arabic UI'",
+  "'Noto Sans Devanagari UI'",
+  "'Noto Sans Hebrew'",
+  "'Noto Sans Thai UI'",
+  "'Helvetica'",
+  "'Arial'",
   'sans-serif',
 ]
 
-const defaultFallbacks = {
-  body: basicFallbacks,
-  brand: basicFallbacks,
+export const defaultFontFallbacks = {
+  body: sansSerifFontFallbacks,
+  brand: sansSerifFontFallbacks,
   code: [
-    '"Monaco"',
-    '"Menlo"',
-    '"Ubuntu Mono"',
-    '"Consolas"',
-    '"source-code-pro"',
+    "'Monaco'",
+    "'Menlo'",
+    "'Ubuntu Mono'",
+    "'Consolas'",
+    "'source-code-pro'",
     'monospace',
   ],
 }
 
-export const fontFacesToFamily = (
-  faces: string[] | string,
-  fallbacks: string[]
-) => {
-  if (typeof faces === 'string') {
-    faces = [faces]
-  }
-
-  faces = [...faces, ...fallbacks]
-
-  return faces.map((face) => `${face}`).join(', ')
-}
-
 export const defaultFonts: FontFamilyChoices = {
-  body: '"Roboto"',
-  brand: '"Red Hat Display"',
-  code: '"Roboto Mono"',
+  body: "'Roboto'",
+  brand: "'Red Hat Display'",
+  code: "'Roboto Mono'",
 }
 
-export const constructFontStack = (fontStack: Partial<FontFamilyChoices>) => {
-  Object.keys(fontStack).forEach((key) =>
-    !fontStack[key] ? delete fontStack[key] : {}
-  )
-
-  const fontFamilies: FontFamilyChoices = {
-    ...defaultFonts,
-    ...fontStack,
-  }
-
-  Object.entries(fontFamilies).map(([key, fontFace]) => {
-    fontFamilies[key] = fontFacesToFamily(fontFace, defaultFallbacks[key])
-  })
-
-  return fontFamilies
-}
-
-export const fontFamilies = constructFontStack(defaultFonts)
+export const fontFamilies = generateFontFamilies(defaultFonts)

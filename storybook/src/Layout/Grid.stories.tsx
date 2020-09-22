@@ -24,21 +24,11 @@
 
  */
 
-import { Grid, SpaceVertical } from '@looker/components'
+import { Grid } from '@looker/components'
 import React from 'react'
 import { Placeholder } from './Placeholder'
 
-export const All = () => (
-  <SpaceVertical>
-    <Basic />
-    <Columns />
-    <GapSize />
-    <VerticalGrid />
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Layout/Grid',
 }
 

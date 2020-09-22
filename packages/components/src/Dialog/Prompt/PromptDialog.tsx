@@ -81,6 +81,11 @@ export interface PromptBaseProps {
    * A React Element that is placed at the bottom left of the dialog
    */
   secondary?: ReactNode
+  /**
+   * clearOnCancel
+   * @default false
+   */
+  clearOnCancel?: boolean
 }
 
 export interface PromptDialogProps extends PromptBaseProps {
@@ -107,6 +112,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   defaultValue = '',
   close,
   isOpen,
+  clearOnCancel,
 }) => {
   const [value, setValue] = useState(defaultValue)
   const hasValue = !!value.trim()
@@ -116,7 +122,6 @@ export const PromptDialog: FC<PromptDialogProps> = ({
   }, [defaultValue])
 
   const handleClose = useCallback(() => {
-    setValue('')
     close()
   }, [close])
 
@@ -134,7 +139,9 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     } else {
       handleClose()
     }
-  }, [handleClose, onCancel])
+
+    clearOnCancel && setValue('')
+  }, [clearOnCancel, handleClose, onCancel])
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && hasValue) {

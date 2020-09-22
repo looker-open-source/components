@@ -28,17 +28,14 @@ export * from './system'
 export * from './theme'
 export * from './GlobalStyle'
 export * from './GoogleFontsLoader'
-export {
-  constructFontStack,
-  defaultFonts,
-} from './tokens/typography/font_families'
 
+// Provided for legacy color implementations
 export { palette } from './legacy'
 
 // Useful external utilities
 export * from './utils/animations'
 export * from './utils/omit'
-export { generateThemeFromCoreColors } from './utils/theme'
+export { generateTheme } from './utils/theme'
 export {
   intentUIBlend,
   uiTransparencyBlend,

@@ -36,6 +36,17 @@ import {
   ButtonGroup,
   ButtonItem,
   Badge,
+  Heading,
+  Paragraph,
+  Code,
+  CodeBlock,
+  Space,
+  ButtonToggle,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from '@looker/components'
 import React, { useState } from 'react'
 
@@ -66,10 +77,69 @@ export const Suite = () => {
         <Badge intent="key">Key</Badge>
         <Badge intent="positive">Positive</Badge>
         <Badge intent="inform">Inform</Badge>
-        <Badge intent="critical">Crtical</Badge>
+        <Badge intent="critical">Critical</Badge>
         <Badge intent="warn">Warn</Badge>
         <Badge intent="neutral">Neutral</Badge>
       </Grid>
+
+      <Heading fontSize="xxxxlarge">XXXXLarge Heading</Heading>
+      <Heading fontSize="xxxlarge">XXXLarge Heading</Heading>
+      <Heading as="h1">XXLarge / h1 Heading</Heading>
+      <Heading as="h2">XLarge / h2 Heading</Heading>
+      <Heading as="h3">Large / h3 Heading</Heading>
+      <Heading as="h4">Medium / h4 Heading</Heading>
+      <Heading as="h5">h5 Heading</Heading>
+      <Heading as="h6">h6 Heading</Heading>
+      <Paragraph>
+        "A paragraph is a self-contained unit of discourse in writing dealing
+        with a particular point or idea. A paragraph consists of one or more
+        sentences. Though not required by the syntax of any language, paragraphs
+        are usually an expected part of formal writing, used to organize longer
+        prose." - Wikipedia
+      </Paragraph>
+      <Code>Some code like stuff</Code>
+      <CodeBlock>
+        {`this: 'is not really code'
+            Nor is this
+            Or that.`}
+      </CodeBlock>
+      <Space>
+        <Button>Resting</Button>
+        <ButtonOutline>Resting</ButtonOutline>
+        <ButtonTransparent>Resting</ButtonTransparent>
+      </Space>
+      <Space>
+        <ButtonGroup>
+          <ButtonItem>Item 1</ButtonItem>
+          <ButtonItem aria-pressed="true">Item 2</ButtonItem>
+        </ButtonGroup>
+
+        <ButtonToggle>
+          <ButtonItem>Item 1</ButtonItem>
+          <ButtonItem aria-pressed="true">Item 2</ButtonItem>
+        </ButtonToggle>
+      </Space>
+      <Tabs>
+        <TabList>
+          <Tab>Item 1</Tab>
+          <Tab>Item 1</Tab>
+          <Tab>Item 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>Here's the content</TabPanel>
+          <TabPanel>Here's the content</TabPanel>
+        </TabPanels>
+      </Tabs>
+      <Tabs>
+        <TabList distribute>
+          <Tab aria-pressed="true">Item 1</Tab>
+          <Tab>Item 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>Here's the content</TabPanel>
+          <TabPanel>Here's the content</TabPanel>
+        </TabPanels>
+      </Tabs>
     </SpaceVertical>
   )
 }

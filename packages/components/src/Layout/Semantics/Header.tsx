@@ -24,12 +24,24 @@
 
  */
 
-export * from './Compare.stories'
-export * from './Editor.stories'
-export * from './Fonts.stories'
-export * from './Suite.stories'
-export * from './Swatches.stories'
+// import React, { forwardRef, Ref, useContext } from 'react'
+import styled, { css } from 'styled-components'
+import { height, HeightProps } from 'styled-system'
+import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+// import { LayoutContext } from './LayoutContext'
 
-export default {
-  title: 'Theme',
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface HeaderProps extends SemanticLayoutBase, HeightProps {}
+
+export const headerFooterCSS = css`
+  ${semanticLayoutCSS}
+  ${height}
+
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+`
+
+export const Header = styled.header<HeaderProps>`
+  ${headerFooterCSS}
+`

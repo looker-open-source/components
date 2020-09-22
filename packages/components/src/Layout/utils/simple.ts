@@ -42,6 +42,7 @@ import {
 } from '@looker/design-tokens'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
 
 export const simpleLayoutCSS = css`
