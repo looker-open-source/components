@@ -102,5 +102,3 @@ const HiddenText = styled(TextStyle)`
 const TextWrapper = styled.div`
   position: relative;
 `
-
-Truncate.defaultProps = { fontSize: 'medium' }
