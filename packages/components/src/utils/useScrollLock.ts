@@ -31,6 +31,13 @@ import { DialogContext } from '../Dialog/DialogContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
+// useScrollLock takes a two-pronged approach to disabling scrolling:
+// 1. Add a listener on the scroll event that scrolls back up to to the existing scroll position
+// 2. Add overflow: hidden to the body tag which solves the stutter effect from the above
+//    A padding-right offset fixes a jump due to a body-level scrollbar toggling on/off
+// Note: #2 alone is not enough because (especially for popovers) there may be other
+// scrolling elements that should be locked
+
 function getScrollbarSize() {
   const scrollDiv = document.createElement('div')
   scrollDiv.style.width = '99px'
@@ -46,7 +53,7 @@ function getScrollbarSize() {
   return scrollbarSize
 }
 
-function setBodyStyles() {
+function setBodyStyle() {
   if (document !== undefined) {
     // Is there a vertical scrollbar?
     if (window.innerWidth > document.documentElement.clientWidth) {
@@ -62,14 +69,18 @@ function setBodyStyles() {
   }
 }
 
-function getBodyCurrentStyle() {
-  return document !== undefined
-    ? pick(document.body.style, ['overflow', 'paddingRight'])
-    : null
+type BodyStyle = Pick<CSSStyleDeclaration, 'overflow' | 'paddingRight'> | null
+
+function getCurrentBodyStyle(existingScrollLock?: boolean): BodyStyle {
+  if (document === undefined || existingScrollLock) {
+    // If there is an existing scroll lock (e.g. popover within a dialog)
+    // no need to store styles,
+    return null
+  }
+  return pick(document.body.style, ['overflow', 'paddingRight'])
 }
 
-type BodyStyle = Pick<CSSStyleDeclaration, 'overflow' | 'paddingRight'> | null
-function resetBodyStyles(style: BodyStyle) {
+function resetBodyStyle(style: BodyStyle) {
   if (style) {
     document.body.style.paddingRight = style.paddingRight
     document.body.style.overflow = style.overflow
@@ -82,14 +93,13 @@ export function useScrollLock(
   allowScrollWithin?: HTMLElement | null
 ) {
   const [newElement, callbackRef] = useCallbackRef()
-  // If the keepFocusWithin is passed in arguments, use that instead of the new element
+  // If the allowScrollWithin is passed in arguments, use that instead of the new element
   const element =
     allowScrollWithin === undefined ? newElement : allowScrollWithin
-  const { disableScrollLock, enableScrollLock } = useContext(DialogContext)
+  const { disableScrollLock, enableScrollLock, scrollLockEnabled } = useContext(
+    DialogContext
+  )
   const { value, setOn, setOff } = useToggle(enabled)
-
-  // save the existing body overflow value
-  const bodyStylesRef = useRef(getBodyCurrentStyle())
 
   useEffect(() => {
     if (document === undefined || window === undefined) return
@@ -97,12 +107,12 @@ export function useScrollLock(
     let scrollTop = window.scrollY
     let scrollTarget: EventTarget | HTMLElement | null = document
 
-    const bodyStylesCurrent = bodyStylesRef.current
-    const setBodyStylesOnce = once(setBodyStyles)
+    const setBodyStyleOnce = once(setBodyStyle)
 
     function stopScroll(e: Event) {
-      // setting overflow: hidden again here avoids conflicting enable / disable with nested scroll locks
-      setBodyStylesOnce()
+      // setting overflow: hidden / padding-right again here avoids conflicting
+      // enable / disable with nested scroll locks
+      setBodyStyleOnce()
 
       if (e.target !== null && e.target !== scrollTarget) {
         scrollTarget = e.target
@@ -124,22 +134,33 @@ export function useScrollLock(
     if (element && value) {
       window.addEventListener('scroll', stopScroll, true)
       disableScrollLock && disableScrollLock()
-      setBodyStyles()
     } else {
       window.removeEventListener('scroll', stopScroll, true)
       enableScrollLock && enableScrollLock()
-      resetBodyStyles(bodyStylesCurrent)
     }
 
     return () => {
       window.removeEventListener('scroll', stopScroll, true)
-      if (value) {
-        resetBodyStyles(bodyStylesCurrent)
-      } else {
-        bodyStylesRef.current = getBodyCurrentStyle()
-      }
     }
   }, [value, element, useCapture, disableScrollLock, enableScrollLock])
+
+  // Save the existing body overflow and padding-right values
+  const bodyStylesRef = useRef(getCurrentBodyStyle(scrollLockEnabled))
+
+  useEffect(() => {
+    const bodyStylesCurrent = bodyStylesRef.current
+    if (value) {
+      setBodyStyle()
+    } else {
+      resetBodyStyle(bodyStylesCurrent)
+      bodyStylesRef.current = getCurrentBodyStyle(scrollLockEnabled)
+    }
+    return () => {
+      if (value) {
+        resetBodyStyle(bodyStylesCurrent)
+      }
+    }
+  }, [scrollLockEnabled, value])
 
   return {
     callbackRef,

@@ -38,6 +38,7 @@ import {
   MenuList,
   MenuItem,
   DialogContent,
+  DialogContext,
   Paragraph,
   Popover,
   PopoverContent,
@@ -203,9 +204,19 @@ export const OverlayOpenDialog = () => {
       <Heading>Popover Opening a Dialog</Heading>
       <Popover
         content={
-          <Button m="large" onClick={setOn}>
-            Open Dialog
-          </Button>
+          <DialogContext.Consumer>
+            {({ closeModal }) => (
+              <Button
+                m="large"
+                onClick={() => {
+                  setOn()
+                  closeModal()
+                }}
+              >
+                Open Dialog
+              </Button>
+            )}
+          </DialogContext.Consumer>
         }
       >
         <Button>Open Popover</Button>

@@ -26,6 +26,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
+import { DialogContext } from '../Dialog'
 import { useScrollLock } from './useScrollLock'
 
 const ScrollLockComponent = ({ enabled }: { enabled: boolean }) => {
@@ -65,6 +66,23 @@ describe('useScrollLock', () => {
       const disable = screen.getByText('disable')
       fireEvent.click(disable)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
+    })
+
+    test('with existing scroll lock (DialogContext)', () => {
+      document.body.style.overflow = 'hidden'
+      render(
+        <DialogContext.Provider
+          value={{ closeModal: () => null, scrollLockEnabled: true }}
+        >
+          <ScrollLockComponent enabled={false} />
+        </DialogContext.Provider>
+      )
+      // After enable/disable, overflow: hidden should still be on the body, due to the existing scroll
+      const enable = screen.getByText('enable')
+      fireEvent.click(enable)
+      const disable = screen.getByText('disable')
+      fireEvent.click(disable)
+      expect(document.body).toHaveStyle({ overflow: 'hidden' })
     })
   })
 })
