@@ -42,12 +42,12 @@ const IdentityComponent: FC<any> = ({ children }) => <>{children}</>
  * Renders a tooltip to view the entire text content on hover.
  **/
 
-export const Truncate: FC<TruncateProps> = ({ children, ...restProps }) => {
-  const [domNode, setDomNode] = useState<HTMLElement | null>(null)
+export const Truncate: FC<TruncateProps> = ({ children }) => {
+  const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
 
   const isTruncated = useIsTextTruncated(domNode)
 
-  const textRef = useCallback((node: HTMLElement) => {
+  const textRef = useCallback((node: HTMLDivElement) => {
     setDomNode(node)
   }, [])
 
@@ -62,7 +62,7 @@ export const Truncate: FC<TruncateProps> = ({ children, ...restProps }) => {
         content={children}
         placement="top-start"
         width="auto"
-        maxWidth="80%"
+        maxWidth="700px"
         textAlign="left"
         surfaceStyles={{
           backgroundColor: 'background',
@@ -71,23 +71,19 @@ export const Truncate: FC<TruncateProps> = ({ children, ...restProps }) => {
           color: 'text3',
         }}
       >
-        <TextStyle {...restProps}>{children}</TextStyle>
+        <TextStyle>{children}</TextStyle>
       </TooltipComponent>
       {/*
        * Tooltip clobbers refs on any children.
        * We must use a hidden text element to reliably detect whether content
        * is truncated.
        */}
-      <HiddenText {...restProps} ref={textRef}>
-        {children}
-      </HiddenText>
+      <HiddenText ref={textRef}>{children}</HiddenText>
     </TextWrapper>
   )
 }
 
 const TextStyle = styled.div`
-  display: block;
-  font: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

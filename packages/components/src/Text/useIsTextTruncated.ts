@@ -27,14 +27,22 @@
 import { useState, useCallback, useLayoutEffect } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 
+/*
+ * Helper to be used in context where `text-overflow: ellipsis;` is set,
+ * and you want to detect whether  text was actually cut off by browser styling.
+ */
+
 const isTextTruncated = (node: HTMLElement) =>
+  // hack for detecting whether text content is larger than what is rendered
   node.offsetWidth < node.scrollWidth
 
 export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
   const [isTruncated, setIsTruncated] = useState(false)
 
+  // Re-run truncation dectection when element is resized.
+  // Could run on window resize or just dom element change
+  // thanks to Resize Observer.
   const handleResize = useCallback(() => {
-    // Update client rect
     element && setIsTruncated(isTextTruncated(element))
   }, [element])
 
@@ -43,13 +51,10 @@ export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
       return
     }
 
-    handleResize()
     const resizeObserver = new ResizeObserver(() => handleResize())
     if (element) {
       resizeObserver.observe((element as unknown) as HTMLElement)
     }
-
-    window.addEventListener('resize', handleResize)
 
     return () => {
       if (!resizeObserver) {
@@ -57,7 +62,6 @@ export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
       }
 
       resizeObserver.disconnect()
-      window.removeEventListener('resize', handleResize)
     }
   }, [handleResize, element])
 
