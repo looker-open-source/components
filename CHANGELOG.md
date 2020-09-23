@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
 - Preview: `ActionListControls` component (this component is not yet ready for general-use)
 
+### Changed
+
+- Storybook configuration improvements
+  - `addons-essentials` now used
+  - Replace `withKnobs` with `Controls` & `Args`
+
 ## [0.9.15] - 2020-09-21
 
 ### Changed
