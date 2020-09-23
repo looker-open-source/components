@@ -27,10 +27,10 @@
 import { ActionListColumns } from '@looker/components'
 
 export const available = [
-  { field: 'Name' },
-  { field: 'Status' },
-  { field: 'Source' },
-  { field: 'Trigger' },
+  { field: 'name', label: 'Name' },
+  { field: 'status' },
+  { field: 'source' },
+  { field: 'trigger' },
   { field: 'buildAt', label: 'Last Build Time' },
 ]
 

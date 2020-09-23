@@ -40,7 +40,7 @@ export interface FieldFilter {
   label?: string
 }
 export interface FieldFilterValue extends FieldFilter {
-  value?: string
+  value: string
 }
 export interface InputFiltersProps {
   available: FieldFilter[]
@@ -66,25 +66,23 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const [chipValues, setChipValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
+  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
+
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = chipValues.length > 0
 
-  const clearFilters = () => {
-    setChipValues([])
-  }
+  const clearFilters = () => setChipValues([])
+  const focusInput = () => inputRef.current && inputRef.current.focus()
+  const handleFilterLookupChange = (field: string) => {
+    const filter = availableOptions.find((option) => option.value === field)
 
-  function focusInput() {
-    inputRef.current && inputRef.current.focus()
-  }
-
-  function handleFilterLookupChange(newValue: any) {
-    setFilterLookupName('')
-    setAvailableOptions(
-      availableOptions.filter(
-        (option) => option.label !== newValue || option.value !== newValue
+    if (filter) {
+      setFilterLookupName('')
+      setAvailableOptions(
+        availableOptions.filter((option) => option === filter)
       )
-    )
-    setChipValues([{ field: newValue, value: 'gouda' }, ...chipValues])
+      setDraftFilter({ field: filter.value, label: filter?.label })
+    }
   }
 
   const editFilter = () => {
@@ -115,16 +113,19 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onDelete={handleDelete}
           />
         ))}
-      <Select
-        autoResize
-        indicator={false}
-        isFilterable
-        onChange={handleFilterLookupChange}
-        options={availableOptions}
-        placeholder="Filter List"
-        ref={inputRef}
-        value={filterLookupName}
-      />
+      {draftFilter && <Chip>{draftFilter.label || draftFilter.field}</Chip>}
+      {!draftFilter && (
+        <Select
+          autoResize
+          indicator={false}
+          isFilterable
+          onChange={handleFilterLookupChange}
+          options={availableOptions}
+          placeholder="Filter List"
+          ref={inputRef}
+          value={filterLookupName}
+        />
+      )}
       {isClearable && (
         <IconButton
           icon="Close"
