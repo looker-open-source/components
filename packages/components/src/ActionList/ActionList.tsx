@@ -170,13 +170,13 @@ export interface BulkActionsConfig {
 
 export const ActionListLayout: FC<ActionListProps> = ({
   bulk,
-  className,
   canSelectDisplayedColumns,
+  className,
   children,
   columns,
+  filters,
   header = true,
   headerRowId,
-  filters,
   onSort,
   select,
 }) => {
