@@ -24,62 +24,18 @@
 
  */
 
-import {
-  ActionListColumns,
-  ActionListDatum,
-  ActionListItemAction,
-  useActionListSortManager,
-} from '@looker/components/src'
 import React from 'react'
+import { AvatarIcon, AvatarIconProps } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 
-export const Sortable = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'Lloyd Tabb',
-    },
-    {
-      id: 2,
-      name: 'Ben Porterfield',
-    },
-  ]
+const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 
-  // Note: column objects must be tracked using state since their sortDirection properties will change
-  // depending on which column is sorted
-  const columns: ActionListColumns = [
-    {
-      canSort: true,
-      id: 'id',
-      primaryKey: true,
-      title: 'ID',
-      type: 'number',
-      widthPercent: 20,
-    },
-    {
-      canSort: true,
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-      widthPercent: 80,
-    },
-  ]
-
-  const generateActions = (item: ActionListDatum) => {
-    return (
-      <>
-        <ActionListItemAction onClick={() => alert(item.id)}>
-          Check id
-        </ActionListItemAction>
-        <ActionListItemAction onClick={() => alert(item.name)}>
-          Check name
-        </ActionListItemAction>
-      </>
-    )
-  }
-
-  return useActionListSortManager(data, columns, generateActions)
+export const Primary = Template.bind({})
+Primary.args = {
+  icon: 'User',
 }
 
 export default {
-  title: 'ActionList',
+  component: AvatarIcon,
+  title: 'Avatar/AvatarIcon',
 }
