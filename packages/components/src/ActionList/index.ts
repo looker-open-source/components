@@ -26,8 +26,8 @@
 
 export * from './ActionList'
 export * from './ActionListContext'
-export * from './ActionListControlBar'
-export * from './ActionListControls'
+export * from './ActionListBulkControls'
+export * from './ActionListFilters'
 export * from './ActionListHeader'
 export * from './ActionListItem'
 export * from './ActionListItemAction'

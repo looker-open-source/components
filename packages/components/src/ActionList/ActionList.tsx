@@ -29,13 +29,13 @@ import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
-import { ActionListControlBar } from './ActionListControlBar'
+import { ActionListBulkControls } from './ActionListBulkControls'
+import { ActionListFilters } from './ActionListFilters'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListControls } from './ActionListControls'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
@@ -209,7 +209,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   return (
     <ActionListContext.Provider value={context}>
       {(filters || canSelectDisplayedColumns) && (
-        <ActionListControls
+        <ActionListFilters
           {...filters}
           canSelectDisplayedColumns={canSelectDisplayedColumns}
         />
@@ -217,7 +217,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <div className={className}>
         {actionListHeader}
         {bulk && select && select.selectedItems.length > 0 && (
-          <ActionListControlBar {...bulk} />
+          <ActionListBulkControls {...bulk} />
         )}
         <div>{children}</div>
       </div>

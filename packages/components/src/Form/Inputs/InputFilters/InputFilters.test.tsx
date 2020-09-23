@@ -26,41 +26,89 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
 import { InputFilters } from './InputFilters'
 
 describe('InputFilters', () => {
-  const available = [
-    { field: 'Name' },
-    { field: 'Status' },
-    { field: 'Source' },
-    { field: 'Trigger' },
+  const filters = [
+    { field: 'role', value: 'admin' },
+    { field: 'group', label: 'Group', value: 'pizza-lovers' },
+    { field: 'name', label: 'Name' },
+    { field: 'status' },
+    { field: 'model' },
+    { field: 'trigger' },
     { field: 'buildAt', label: 'Last Build Time' },
   ]
 
-  const filters = [
+  const noUnassignedFilters = [
     { field: 'role', value: 'admin' },
-    { field: 'group', value: 'pizza-lovers' },
+    { field: 'group', label: 'Group', value: 'pizza-lovers' },
+    { field: 'name', label: 'Name', value: 'suggestion 1' },
+    { field: 'status', value: 'Success' },
+    { field: 'model', value: 'model_uno' },
+    { field: 'trigger', value: 'data_group_trigger' },
+    { field: 'buildAt', label: 'Last Build Time', value: '1-22-20 33:33:33' },
   ]
 
+  const noAssignedFilters = [
+    { field: 'role' },
+    { field: 'group', label: 'Group' },
+    { field: 'name', label: 'Name' },
+    { field: 'status' },
+    { field: 'model' },
+    { field: 'trigger' },
+    { field: 'buildAt', label: 'Last Build Time' },
+  ]
   test('render InputFilter', () => {
     const { getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={filters} available={available} />
+      <InputFilters filters={filters} />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render InputFilter with no filters', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <InputFilters filters={[]} />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render InputFilter with no unassignedFilters', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <InputFilters filters={noUnassignedFilters} />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render InputFilter with only assignedFilters', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <InputFilters filters={noAssignedFilters} />
     )
 
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
   test('InputFilter displays chips for each FieldFilter passed', () => {
-    const { getByText } = renderWithTheme(
-      <InputFilters filters={filters} available={available} />
-    )
+    const { getByText } = renderWithTheme(<InputFilters filters={filters} />)
     expect(getByText('admin')).toBeInTheDocument()
+    expect(getByText('pizza-lovers')).toBeInTheDocument()
   })
 
-  test('InputFilter displays chips for each FieldFilter passed', () => {
-    const { getByText } = renderWithTheme(
-      <InputFilters filters={filters} available={available} />
+  test('InputFilter displays the right list of filters', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={filters} />
     )
-    expect(getByText('admin')).toBeInTheDocument()
+    const activeFilter = getByPlaceholderText('Filter List')
+    fireEvent.click(activeFilter)
+    expect(document.activeElement === activeFilter).toBeTruthy()
+    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('model')).toBeInTheDocument()
+    expect(getByText('trigger')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })

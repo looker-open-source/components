@@ -109,7 +109,7 @@ export const ActionListExample = () => {
     >
       <ActionList
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
-        // canSelectDisplayedColumns={boolean('Display Columns', true)}
+        canSelectDisplayedColumns={boolean('Display Columns', true)}
         columns={columns}
         filters={
           boolean('Filter Actions', true) ? filterActionsConfig : undefined

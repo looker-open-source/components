@@ -151,14 +151,14 @@ export const InputFilters = styled(InputFiltersLayout)`
   display: flex;
   height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  width: 100%;
 
   ${Chip} {
     margin-right: ${({ theme: { space } }) => space.xsmall};
   }
 
   ${Select} {
-    width: auto;
-
+    flex: 1;
     ${Icon} {
       display: none;
     }

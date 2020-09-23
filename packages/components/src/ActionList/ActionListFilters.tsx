@@ -31,12 +31,12 @@ import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 import { FilterConfig } from './ActionList'
 
-export interface ActionListControlsProps extends Partial<FilterConfig> {
+export interface ActionListFiltersProps extends Partial<FilterConfig> {
   canSelectDisplayedColumns?: boolean
   className?: string
 }
 
-const ActionListControlsLayout: FC<ActionListControlsProps> = ({
+const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   className,
   canSelectDisplayedColumns = false,
   filters,
@@ -46,7 +46,7 @@ const ActionListControlsLayout: FC<ActionListControlsProps> = ({
       {filters && <InputFilters filters={filters} />}
       {canSelectDisplayedColumns && (
         <ColumnSelector>
-          <DividerVertical height="1.5rem" />
+          <DividerVertical height="1.2rem" />
           <IconButton label="Select columns to display" icon="ViewColumn" />
         </ColumnSelector>
       )}
@@ -59,7 +59,7 @@ const ColumnSelector = styled.div`
   display: flex;
 `
 
-export const ActionListControls = styled(ActionListControlsLayout)`
+export const ActionListFilters = styled(ActionListFiltersLayout)`
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
