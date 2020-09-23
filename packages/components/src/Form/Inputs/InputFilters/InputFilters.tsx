@@ -38,16 +38,12 @@ export interface FieldFilter {
   field: string
   /* text to be displayed in drop-down, optional, `field` is used if not specified */
   label?: string
-}
-export interface FieldFilterValue extends FieldFilter {
+  /* filter value/expression */
   value?: string
 }
 
-export interface FilterConfig {
-  filters: FieldFilterValue[]
-}
-
-export interface InputFiltersProps extends FilterConfig {
+export interface InputFiltersProps {
+  filters: FieldFilter[]
   hideFilterIcon?: boolean
   className?: string
 }
@@ -57,17 +53,22 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   filters,
   hideFilterIcon = false,
 }) => {
-  const options = filters
-    .filter((filter) => !filter.value)
-    .map((filter) => {
-      return {
-        label: filter.label || filter.field,
-        value: filter.field,
-      }
-    })
+  const unassigned: FieldFilter[] = []
+  const assigned: FieldFilter[] = []
+
+  filters.map((filter) => {
+    filter.value ? assigned.push(filter) : unassigned.push(filter)
+  })
+
+  const options = unassigned.map((filter) => {
+    return {
+      label: filter.label || filter.field,
+      value: filter.field,
+    }
+  })
 
   const [unassignedFilters, setUnassignedFilters] = useState(options)
-  const [chipValues, setChipValues] = useState(filters || [])
+  const [chipValues, setChipValues] = useState(assigned)
   const [filterLookupName, setFilterLookupName] = useState('')
 
   const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
@@ -93,7 +94,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     alert("You can't do that. Yet!")
   }
 
-  const handleDelete = (field: FieldFilterValue) => {
+  const handleDelete = (field: FieldFilter) => {
     const addOption = options.filter(
       (value) =>
         (field && field.field === value.label) ||

@@ -27,7 +27,7 @@
 import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
-import { FilterConfig } from '../Form/Inputs/InputFilters'
+import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
 import { ActionListControlBar } from './ActionListControlBar'
 import {
@@ -134,6 +134,10 @@ export interface SelectConfig {
    * Callback performed when user makes selects the header checkbox
    */
   onSelectAll: () => void
+}
+
+export interface FilterConfig {
+  filters: FieldFilter[]
 }
 
 export interface BulkActionsConfig {
