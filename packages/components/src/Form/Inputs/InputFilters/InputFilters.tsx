@@ -40,29 +40,33 @@ export interface FieldFilter {
   label?: string
 }
 export interface FieldFilterValue extends FieldFilter {
-  value: string
+  value?: string
 }
-export interface InputFiltersProps {
-  available: FieldFilter[]
-  filters?: FieldFilterValue[]
+
+export interface FilterConfig {
+  filters: FieldFilterValue[]
+}
+
+export interface InputFiltersProps extends FilterConfig {
   hideFilterIcon?: boolean
   className?: string
 }
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
-  available,
   className,
   filters,
   hideFilterIcon = false,
 }) => {
-  const options = available.map((filter) => {
-    return {
-      label: filter.label || filter.field,
-      value: filter.field,
-    }
-  })
+  const options = filters
+    .filter((filter) => !filter.value)
+    .map((filter) => {
+      return {
+        label: filter.label || filter.field,
+        value: filter.field,
+      }
+    })
 
-  const [availableOptions, setAvailableOptions] = useState(options)
+  const [unassignedFilters, setUnassignedFilters] = useState(options)
   const [chipValues, setChipValues] = useState(filters || [])
   const [filterLookupName, setFilterLookupName] = useState('')
 
@@ -74,12 +78,12 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const clearFilters = () => setChipValues([])
   const focusInput = () => inputRef.current && inputRef.current.focus()
   const handleFilterLookupChange = (field: string) => {
-    const filter = availableOptions.find((option) => option.value === field)
+    const filter = unassignedFilters.find((option) => option.value === field)
 
     if (filter) {
       setFilterLookupName('')
-      setAvailableOptions(
-        availableOptions.filter((option) => option === filter)
+      setUnassignedFilters(
+        unassignedFilters.filter((option) => option === filter)
       )
       setDraftFilter({ field: filter.value, label: filter?.label })
     }
@@ -95,7 +99,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         (field && field.field === value.label) ||
         (field && field.field === value.value)
     )
-    setAvailableOptions([addOption[0], ...availableOptions])
+    setUnassignedFilters([addOption[0], ...unassignedFilters])
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
@@ -120,7 +124,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           indicator={false}
           isFilterable
           onChange={handleFilterLookupChange}
-          options={availableOptions}
+          options={unassignedFilters}
           placeholder="Filter List"
           ref={inputRef}
           value={filterLookupName}

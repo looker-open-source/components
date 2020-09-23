@@ -26,25 +26,23 @@
 
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import { InputFilters, InputFiltersProps } from '../Form/Inputs/InputFilters'
+import { InputFilters, FilterConfig } from '../Form/Inputs/InputFilters'
 import { DividerVertical } from '../Divider/DividerVertical'
 import { IconButton } from '../Button/IconButton'
 
-export interface ActionListControlsProps
-  extends Omit<InputFiltersProps, 'hideFilterIcon' | 'className'> {
+export interface ActionListControlsProps extends Partial<FilterConfig> {
   canSelectDisplayedColumns?: boolean
   className?: string
 }
 
 const ActionListControlsLayout: FC<ActionListControlsProps> = ({
-  available,
   className,
   canSelectDisplayedColumns = false,
   filters,
 }) => {
   return (
     <div className={className}>
-      <InputFilters filters={filters} available={available} />
+      {filters && <InputFilters filters={filters} />}
       {canSelectDisplayedColumns && (
         <ColumnSelector>
           <DividerVertical height="1.5rem" />

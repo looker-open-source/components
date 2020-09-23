@@ -27,6 +27,7 @@
 import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
+import { FilterConfig } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
 import { ActionListControlBar } from './ActionListControlBar'
 import {
@@ -34,10 +35,7 @@ import {
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
-import {
-  ActionListControls,
-  ActionListControlsProps,
-} from './ActionListControls'
+import { ActionListControls } from './ActionListControls'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
@@ -79,8 +77,6 @@ export interface ActionListColumn {
   sortDirection?: 'asc' | 'desc'
 }
 
-export type FiltersConfig = ActionListControlsProps
-
 export interface ActionListProps {
   columns: ActionListColumns
   className?: string
@@ -108,7 +104,7 @@ export interface ActionListProps {
   /**
    * List of filters the user can select from
    **/
-  filters?: FiltersConfig
+  filters?: FilterConfig
   /**
    * specify specific columns to be displayed
    **/
@@ -171,6 +167,7 @@ export interface BulkActionsConfig {
 export const ActionListLayout: FC<ActionListProps> = ({
   bulk,
   className,
+  canSelectDisplayedColumns,
   children,
   columns,
   header = true,
@@ -207,11 +204,10 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   return (
     <ActionListContext.Provider value={context}>
-      {filters && (
+      {(filters || canSelectDisplayedColumns) && (
         <ActionListControls
-          filters={filters.filters}
-          canSelectDisplayedColumns={filters.canSelectDisplayedColumns || false}
-          available={filters.available}
+          {...filters}
+          canSelectDisplayedColumns={canSelectDisplayedColumns}
         />
       )}
       <div className={className}>

@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+- Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
+- Preview: `ActionListControls` component (this component is not yet ready for general-use)
+
 ## [0.9.15] - 2020-09-21
 
 ### Changed
@@ -14,26 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.9.14] - 2020-09-18
 
-### CHANGED
-
-- `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
-
-### CHANGED
-
-- `DividerVertical` default margin adjusted to explicit set vertical margin to `xxsmall`
-
 ### Added
 
 - `Chip` supports `prefix`
 - `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
 - `GoogleFontsLoader`
 - `InputColor` now includes `name` in `onChange` response event
-- Preview: `InputFilter` component and tests (this component is not yet ready for general-use)
-- Preview: `ActionListFilter` component (this component is not yet ready for general-use)
-- `DividerVertical` component
-- Added `Lqa` icon artwork
-- `Select` option icons
-- `useClickable` hook
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
 - `useClickable` hook
@@ -50,13 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
 - `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
-- InputFilter component and test
-- ActionListFilter component -`DividerVertical` component
-- Preview: `InputFilter` component and tests (this component is not yet ready for general-use)
-- Preview: `ActionListFilter` component (this component is not yet ready for general-use)
-- `DividerVertical` component
-- Added `Lqa` icon artwork
-- `Select` option icons
 
 ### Fixed
 
