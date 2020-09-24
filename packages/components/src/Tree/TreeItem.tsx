@@ -237,7 +237,7 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
-const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
+export const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   align-items: center;
   display: flex;
   height: 100%;
