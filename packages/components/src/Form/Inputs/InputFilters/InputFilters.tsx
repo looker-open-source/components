@@ -134,6 +134,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           mr="xxsmall"
           onClick={clearFilters}
           size="xsmall"
+          ml="auto"
         />
       )}
     </div>
@@ -154,7 +155,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   }
 
   ${Select} {
-    flex: 1;
     ${Icon} {
       display: none;
     }
