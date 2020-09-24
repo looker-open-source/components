@@ -25,17 +25,12 @@
  */
 import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Tooltip } from '../Tooltip'
+import { useTooltip } from '../Tooltip'
 import { useIsTextTruncated } from './useIsTextTruncated'
 
 export interface TruncateProps {
   children: string
 }
-
-/*
- * Identity Component: transparently pass through children
- */
-const IdentityComponent: FC<any> = ({ children }) => <>{children}</>
 
 /**
  * Prevent text wrapping on long labels and instead render truncated text.
