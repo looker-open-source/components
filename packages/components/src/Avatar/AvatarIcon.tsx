@@ -34,17 +34,20 @@ import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
   /**
-   * @default User
+   * Icon to display
+   * @default 'User'
    */
   icon?: IconNames
 
   /**
-   * @default 'keyFocus'
+   * Icon fill & border color
+   * @default 'key'
    */
   color?: string
 
   /**
-   * @default 'keyText'
+   * Background color
+   * @default 'background'
    */
   bg?: string
 }
@@ -104,6 +107,5 @@ export const AvatarIcon = styled(AvatarLayout)`
 
 AvatarIcon.defaultProps = {
   bg: 'background',
-  color: 'keyFocus',
   size: 'small',
 }

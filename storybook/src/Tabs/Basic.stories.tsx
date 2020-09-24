@@ -40,11 +40,7 @@ interface DemoProps extends TabListProps {
   tabPrefix: string
 }
 
-export const Template: Story<DemoProps> = ({
-  tabCount,
-  tabPrefix,
-  ...args
-}) => {
+const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
   const tabs = new Array(tabCount).fill('tab')
 
   return (
