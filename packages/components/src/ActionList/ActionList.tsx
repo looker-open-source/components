@@ -24,7 +24,8 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { reset } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
@@ -35,13 +36,8 @@ import {
   ActionListHeader,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
-import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
-import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 import {
-  getPrimaryKeyColumnIndices,
-  primaryKeyColumnCSS,
   getNumericColumnIndices,
   numericColumnCSS,
 } from './utils/actionListFormatting'
@@ -54,11 +50,6 @@ export interface ActionListColumn {
    * Note: A column object's id should match a key in your data object template
    */
   id: string
-  /**
-   * Determines whether a given column is a primary key or not
-   * @default false
-   */
-  primaryKey?: boolean
   /**
    * In some locales, we may change horizontal alignment of 'number'
    * @default 'string'
@@ -208,49 +199,84 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
     )
 
+  const filters = (filterConfig || canSelectDisplayedColumns) && (
+    <ActionListFilters
+      {...filterConfig}
+      canSelectDisplayedColumns={canSelectDisplayedColumns}
+    />
+  )
+
   return (
     <ActionListContext.Provider value={context}>
-      {(filterConfig || canSelectDisplayedColumns) && (
-        <ActionListFilters
-          {...filterConfig}
-          canSelectDisplayedColumns={canSelectDisplayedColumns}
-        />
-      )}
-      <div className={className}>
-        {actionListHeader}
-        {bulk && select && select.selectedItems.length > 0 && (
-          <ActionListBulkControls {...bulk} />
-        )}
-        <div>{children}</div>
-      </div>
+      {filters}
+      <table className={className}>
+        <thead>
+          {actionListHeader}
+          {bulk && select && select.selectedItems.length > 0 && (
+            <ActionListBulkControls {...bulk} />
+          )}
+        </thead>
+        <tbody>{children}</tbody>
+      </table>
     </ActionListContext.Provider>
   )
 }
 
+// interface ColumnProps {
+//   /**
+//    * @default 'medium'
+//    */
+//   size?: 'small' | 'medium' | 'large'
+
+//   /**
+//    * @default 'visible'
+//    */
+//   visibility?: 'visible' | 'collapse' | 'hidden'
+// }
+
+// const Column = styled.col<ColumnProps>`
+//   visibility: ${({ visibility }) => visibility};
+//   width: ${({ size }) =>
+//     size === 'small' ? '3rem' : size === 'large' ? '20rem' : '12rem'};
+// `
+
+const firstCellNoPadding = css`
+  tr {
+    td,
+    th {
+      &:first-child {
+        padding: 0;
+      }
+    }
+  }
+`
+
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
-  ${ActionListRowColumns} {
-    align-items: center;
-    display: grid;
-    grid-template-columns: ${(props) =>
-      props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
+  ${reset}
+
+  border-spacing: 0;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  width: 100%;
+
+  td,
+  th {
+    padding: ${({ theme: { space } }) => `${space.small}  ${space.medium}`};
   }
 
-  ${/* sc-selector */ ActionListItemColumn}:first-child {
-    padding-left: ${({ select, theme }) =>
-      select ? theme.space.none : undefined};
+  tbody td {
+    color: ${({ theme }) => theme.colors.text4};
   }
 
-  ${/* sc-selector */ ActionListHeaderColumn}:first-child {
-    padding-left: ${({ select, theme }) =>
-      select ? theme.space.none : undefined};
+  tr {
+    td,
+    th {
+      &:last-child {
+        padding: 0;
+      }
+    }
   }
 
-  ${/* sc-selector */ ActionListItemColumn},
-  ${/* sc-selector */ ActionListHeaderColumn} {
-    display: flex;
-    padding: ${(props) => props.theme.space.small};
-  }
-
+  /* If select is active first cell is checkbox and needs no padding */
+  ${({ select }) => select && firstCellNoPadding}
   ${({ columns }) => numericColumnCSS(getNumericColumnIndices(columns))}
-  ${({ columns }) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(columns))}
 `

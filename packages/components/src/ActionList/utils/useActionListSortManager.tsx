@@ -48,8 +48,8 @@ export const useActionListSortManager = (
   }
 
   const items = data.map((dataObj) => {
-    const assumedPrimaryKey = columns[0].id
-    const id = dataObj[assumedPrimaryKey]
+    const defaultOrderColumn = columns[0].id
+    const id = dataObj[defaultOrderColumn]
 
     return (
       <ActionListItem

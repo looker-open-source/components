@@ -40,7 +40,6 @@ const columns: ActionListColumns = [
   {
     canSort: true,
     id: 'id',
-    primaryKey: true,
     title: 'ID',
     type: 'number',
     widthPercent: 10,

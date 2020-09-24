@@ -82,20 +82,24 @@ const ActionListBulkControlsLayout: FC<ActionListBulkControlsProps> = ({
   )
 
   return (
-    <div className={className}>
-      <Menu>
-        <MenuDisclosure>
-          <Button iconAfter="ArrowDown" size="xsmall">
-            Bulk Actions
-          </Button>
-        </MenuDisclosure>
-        <MenuList>{actions}</MenuList>
-      </Menu>
-      <Space gap="small" justifyContent="center">
-        {selectedItemsText}
-        {selectTotalResultsButton}
-      </Space>
-    </div>
+    <tr>
+      <td colSpan={1000}>
+        <div className={className}>
+          <Menu>
+            <MenuDisclosure>
+              <Button iconAfter="ArrowDown" size="xsmall">
+                Bulk Actions
+              </Button>
+            </MenuDisclosure>
+            <MenuList>{actions}</MenuList>
+          </Menu>
+          <Space gap="small" justifyContent="center">
+            {selectedItemsText}
+            {selectTotalResultsButton}
+          </Space>
+        </div>
+      </td>
+    </tr>
   )
 }
 
@@ -104,8 +108,9 @@ export const ActionListBulkControls = styled(ActionListBulkControlsLayout)`
   background-color: ${({ theme }) => theme.colors.ui1};
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
   display: flex;
+  height: 3.25rem;
   justify-content: center;
-  padding: ${({ theme }) => theme.space.small};
+  padding: 0 ${({ theme }) => theme.space.small};
   position: relative;
 
   ${Button} {

@@ -28,6 +28,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import pick from 'lodash/pick'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
+import { Flex } from '../Layout/Flex'
 import {
   ActionListCheckbox,
   ActionListCheckboxProps,
@@ -43,36 +44,48 @@ export interface ActionListItemLayoutProps
    * @default true
    */
   supportsRaised?: boolean
+  /**
+   * Display checkbox as `th` instead of `td`
+   * @default false
+   */
+  isHeaderRow?: boolean
 }
 
-export const ActionListRowColumns = styled.div``
-const ActionListRowSupplementary = styled.div``
+export const ActionListRowColumns = styled.td``
 
 const ActionListRowLayout = forwardRef(
-  (props: ActionListItemLayoutProps, ref: Ref<HTMLDivElement>) => {
+  (props: ActionListItemLayoutProps, ref: Ref<HTMLTableRowElement>) => {
     const {
       className,
       hasCheckbox,
       children,
+      isHeaderRow,
       onClick,
       onKeyDown,
       secondary,
       tabIndex,
     } = props
 
+    const ColumnType = isHeaderRow ? 'th' : 'td'
+
     return (
-      <div
+      <tr
         ref={ref}
         className={className}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
+        onClick={onClick}
       >
-        {hasCheckbox && <ActionListCheckbox {...pick(props, checkListProps)} />}
-        <ActionListRowColumns onClick={onClick}>
-          {children}
-        </ActionListRowColumns>
-        <ActionListRowSupplementary>{secondary}</ActionListRowSupplementary>
-      </div>
+        {hasCheckbox && (
+          <ColumnType>
+            <ActionListCheckbox {...pick(props, checkListProps)} />
+          </ColumnType>
+        )}
+        {children}
+        <ColumnType>
+          <Flex justifyContent="flex-end">{secondary}</Flex>
+        </ColumnType>
+      </tr>
     )
   }
 )
@@ -82,7 +95,6 @@ ActionListRowLayout.displayName = 'ActionListRowLayout'
 export const ActionListRow = styled(ActionListRowLayout)`
   background: ${({ checked, disabled, theme }) =>
     disabled ? theme.colors.ui1 : checked ? theme.colors.keySubtle : undefined};
-  display: flex;
 
   &:focus,
   &:hover {
@@ -96,17 +108,6 @@ export const ActionListRow = styled(ActionListRowLayout)`
       Using position relative to paint it above static siblings.
      */
     position: relative;
-  }
-
-  ${ActionListRowColumns} {
-    flex-grow: 1;
-  }
-
-  ${ActionListRowSupplementary} {
-    align-items: center;
-    display: flex;
-    flex-basis: 2.5rem;
-    flex-shrink: 0;
   }
 `
 

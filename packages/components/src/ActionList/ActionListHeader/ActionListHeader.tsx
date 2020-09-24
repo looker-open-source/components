@@ -30,7 +30,7 @@ import React, { FC, useContext } from 'react'
 import { ActionListRow } from '../ActionListRow'
 import { ActionListContext } from '../ActionListContext'
 
-const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
+const ActionListHeaderLayout: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   children,
   className,
   id,
@@ -43,6 +43,7 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   return (
     <ActionListRow
       id={id}
+      isHeaderRow
       className={className}
       hasCheckbox={hasCheckbox}
       onChange={onChange}
@@ -53,11 +54,14 @@ const ActionListHeaderInternal: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
   )
 }
 
-export const ActionListHeader = styled(ActionListHeaderInternal)`
+export const ActionListHeader = styled(ActionListHeaderLayout)`
   background: transparent;
-  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   color: ${(props) => props.theme.colors.text5};
-  display: flex;
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
+
+  td,
+  th {
+    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+    text-align: left;
+  }
 `
