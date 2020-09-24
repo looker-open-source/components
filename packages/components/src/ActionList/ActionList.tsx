@@ -27,8 +27,10 @@
 import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
+import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
-import { ActionListControlBar } from './ActionListControlBar'
+import { ActionListBulkControls } from './ActionListBulkControls'
+import { ActionListFilters } from './ActionListFilters'
 import {
   ActionListHeader,
   generateActionListHeaderColumns,
@@ -99,6 +101,14 @@ export interface ActionListProps {
    * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
   bulk?: BulkActionsConfig
+  /**
+   * List of filters the user can select from
+   **/
+  filters?: FilterConfig
+  /**
+   * specify specific columns to be displayed
+   **/
+  canSelectDisplayedColumns?: boolean
 }
 
 export interface SelectConfig {
@@ -124,6 +134,10 @@ export interface SelectConfig {
    * Callback performed when user makes selects the header checkbox
    */
   onSelectAll: () => void
+}
+
+export interface FilterConfig {
+  filters: FieldFilter[]
 }
 
 export interface BulkActionsConfig {
@@ -156,11 +170,13 @@ export interface BulkActionsConfig {
 
 export const ActionListLayout: FC<ActionListProps> = ({
   bulk,
+  canSelectDisplayedColumns,
   className,
-  header = true,
-  headerRowId,
   children,
   columns,
+  filters,
+  header = true,
+  headerRowId,
   onSort,
   select,
 }) => {
@@ -192,10 +208,16 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   return (
     <ActionListContext.Provider value={context}>
+      {(filters || canSelectDisplayedColumns) && (
+        <ActionListFilters
+          {...filters}
+          canSelectDisplayedColumns={canSelectDisplayedColumns}
+        />
+      )}
       <div className={className}>
         {actionListHeader}
         {bulk && select && select.selectedItems.length > 0 && (
-          <ActionListControlBar {...bulk} />
+          <ActionListBulkControls {...bulk} />
         )}
         <div>{children}</div>
       </div>

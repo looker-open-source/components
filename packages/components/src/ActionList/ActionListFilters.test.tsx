@@ -24,13 +24,33 @@
 
  */
 
-export * from './ActionList'
-export * from './ActionListContext'
-export * from './ActionListBulkControls'
-export * from './ActionListFilters'
-export * from './ActionListHeader'
-export * from './ActionListItem'
-export * from './ActionListItemAction'
-export * from './ActionListItemColumn'
-export * from './ActionListManager'
-export * from './utils'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { ActionListFilters } from './ActionListFilters'
+
+describe('InputFilters', () => {
+  const filters = [
+    { field: 'role', value: 'admin' },
+    { field: 'group', label: 'Group', value: 'pizza-lovers' },
+    { field: 'name', label: 'Name' },
+    { field: 'status' },
+    { field: 'model' },
+    { field: 'trigger' },
+    { field: 'buildAt', label: 'Last Build Time' },
+  ]
+
+  test('render ActionListFilters display InputFilter', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <ActionListFilters filters={filters} />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render ActionListFilters display columns icon', () => {
+    const { getByText } = renderWithTheme(
+      <ActionListFilters canSelectDisplayedColumns filters={filters} />
+    )
+    expect(getByText('Select columns to display')).toBeInTheDocument()
+  })
+})

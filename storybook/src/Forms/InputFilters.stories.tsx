@@ -24,13 +24,38 @@
 
  */
 
-export * from './ActionList'
-export * from './ActionListContext'
-export * from './ActionListBulkControls'
-export * from './ActionListFilters'
-export * from './ActionListHeader'
-export * from './ActionListItem'
-export * from './ActionListItemAction'
-export * from './ActionListItemColumn'
-export * from './ActionListManager'
-export * from './utils'
+import React from 'react'
+import { InputFilters, SpaceVertical } from '@looker/components'
+
+export const available = [
+  { field: 'Name' },
+  { field: 'Status' },
+  { field: 'Source' },
+  { field: 'Trigger' },
+  { field: 'buildAt', label: 'Last Build Time' },
+]
+
+export const filters = [
+  { field: 'role', value: 'admin' },
+  { field: 'group', value: 'pizza-lovers' },
+]
+
+export const All = () => (
+  <SpaceVertical align="start">
+    <Basic />
+    <HideFilter />
+  </SpaceVertical>
+)
+
+export default {
+  component: All,
+  title: 'Forms/InputFilters',
+}
+
+export const Basic = () => (
+  <InputFilters filters={filters} available={available} />
+)
+
+export const HideFilter = () => (
+  <InputFilters hideFilterIcon filters={filters} available={available} />
+)
