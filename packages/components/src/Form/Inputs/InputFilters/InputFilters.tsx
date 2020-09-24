@@ -25,13 +25,8 @@
  */
 
 import styled from 'styled-components'
-<<<<<<< HEAD
 import React, { FC, useState, useRef } from 'react'
 import partition from 'lodash/partition'
-=======
-import React, { FC, useState, useRef, ReactNode } from 'react'
-import { partition } from 'lodash'
->>>>>>> 75dd0ed796 (first run)
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
