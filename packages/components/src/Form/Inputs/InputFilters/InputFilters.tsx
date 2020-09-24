@@ -25,15 +25,18 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useState, useRef, ReactNode } from 'react'
+import React, { FC, useState, useRef } from 'react'
 import { partition } from 'lodash'
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
-import { IconButton, Button } from '../../../Button'
+import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
+import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
+import { Space } from '../../../Layout/Space'
 import { InputFilterChip } from './InputFilterChip'
+import { InputDraftChip } from './InputDraftChip'
 
 export interface FieldFilter {
   /* specify the field value */
@@ -67,13 +70,17 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const [unassignedFilters, setUnassignedFilters] = useState(options)
   const [chipValues, setChipValues] = useState(assigned)
   const [filterLookupName, setFilterLookupName] = useState('')
+  const [controlPopover, setControlPopover] = useState(true)
 
   const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
 
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = chipValues.length > 0
 
-  const clearFilters = () => setChipValues([])
+  const clearFilters = () => {
+    setFilterLookupName('')
+    setChipValues([])
+  }
   const focusInput = () => inputRef.current && inputRef.current.focus()
   const handleFilterLookupChange = (field: string) => {
     const filter = unassignedFilters.find((option) => option.value === field)
@@ -101,9 +108,10 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
-  const handleSecondFilterList = (event: MouseEvent) => {
-    console.log('event: ', event.currentTarget)
-    // setChipValues([...chipValues, newValue])
+  const handleSecondFilterList = (draft: FieldFilter) => {
+    setFilterLookupName('')
+    setChipValues([...chipValues, draft])
+    setControlPopover(false)
   }
 
   return (
@@ -122,13 +130,30 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         ))}
       {draftFilter && (
         <Popover
+          isOpen={controlPopover}
           content={
             <PopoverContent p="large" width="360px">
-              <Chip onClick={handleSecondFilterList}>suggestion 1</Chip>
+              <Space>
+                <InputDraftChip
+                  draft={draftFilter}
+                  onClick={handleSecondFilterList}
+                  option={'suggestion 1'}
+                />
+                <InputDraftChip
+                  draft={draftFilter}
+                  onClick={handleSecondFilterList}
+                  option={'suggestion 2'}
+                />
+                <InputDraftChip
+                  draft={draftFilter}
+                  onClick={handleSecondFilterList}
+                  option={'suggestion 3'}
+                />
+              </Space>
             </PopoverContent>
           }
         >
-          <Chip>{draftFilter.label || draftFilter.field}</Chip>
+          <Text>{draftFilter.label || draftFilter.field}</Text>
         </Popover>
       )}
       {!draftFilter && (
