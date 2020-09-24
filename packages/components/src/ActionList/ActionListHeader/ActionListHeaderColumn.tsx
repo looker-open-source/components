@@ -27,6 +27,7 @@ import React, { useContext, forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
 import { Icon } from '../../Icon'
+import { Space } from '../../Layout/Space'
 
 export interface ActionListHeaderColumnProps {
   children?: ReactNode
@@ -37,7 +38,7 @@ export interface ActionListHeaderColumnProps {
 const ActionListHeaderColumnLayout = forwardRef(
   (
     { className, children, id }: ActionListHeaderColumnProps,
-    ref: Ref<HTMLDivElement>
+    ref: Ref<HTMLTableHeaderCellElement>
   ) => {
     const { columns, onSort } = useContext(ActionListContext)
     const columnInfo = columns && columns.find((column) => column.id === id)
@@ -50,21 +51,23 @@ const ActionListHeaderColumnLayout = forwardRef(
     }
 
     return (
-      <div
+      <th
         className={className}
         onClick={handleClick}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
       >
-        {children}
-        {columnInfo && columnInfo.sortDirection ? (
-          <Icon
-            ml={columnInfo.type === 'string' ? 'xxsmall' : undefined}
-            mr={columnInfo.type === 'number' ? 'xxsmall' : undefined}
-            name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
-          ></Icon>
-        ) : null}
-      </div>
+        <Space gap="xxsmall" reverse={columnInfo?.type === 'number'}>
+          {children}
+          {columnInfo?.sortDirection && (
+            <Icon
+              name={
+                columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'
+              }
+            ></Icon>
+          )}
+        </Space>
+      </th>
     )
   }
 )
@@ -72,7 +75,5 @@ const ActionListHeaderColumnLayout = forwardRef(
 ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
-  align-items: center;
-  display: flex;
   word-break: break-all;
 `

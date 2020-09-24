@@ -50,7 +50,6 @@ export const Sortable = () => {
     {
       canSort: true,
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       widthPercent: 20,
