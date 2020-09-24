@@ -54,8 +54,7 @@ export const TreeGroupLabel = styled.div`
   border: 1px transparent solid;
   font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-  padding: ${({ theme: { space } }) =>
-    `${space.xxsmall} ${space.xxsmall} ${space.xxxsmall}`};
+  padding: ${({ theme: { space } }) => `${space.xxsmall} 0 ${space.xxxsmall}`};
 `
 
 export const TreeGroup = styled(TreeGroupLayout)`

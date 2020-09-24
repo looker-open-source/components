@@ -190,10 +190,10 @@ const generateTreeBorder = (depth: number, theme: Theme) => {
 
 const generateIndent = (depth: number, theme: Theme) => {
   const {
-    space: { xxsmall, xsmall, small },
+    space: { none, xsmall, small },
   } = theme
 
-  const itemPaddingSize = xxsmall
+  const itemPaddingSize = none
   const indicatorIconSize = small
   const indicatorGapSize = xsmall
   const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
