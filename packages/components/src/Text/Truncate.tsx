@@ -83,15 +83,6 @@ const TextStyle = styled.span`
   width: 100%;
 `
 
-const HiddenText = styled(TextStyle)`
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  visibility: hidden;
-  width: 100%;
-`
-
 const TextWrapper = styled.span`
   display: block;
   position: relative;
