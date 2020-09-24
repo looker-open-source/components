@@ -26,7 +26,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Flex, Paragraph } from '../'
+import { Space, SpaceVertical, Paragraph } from '../'
 
 interface ActionListItemColumnProps {
   detail?: ReactNode
@@ -34,45 +34,30 @@ interface ActionListItemColumnProps {
   className?: string
 }
 
-const ActionListItemColumnInnerLayout = styled.div`
-  width: 100%;
-`
-
 const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
   children,
   detail,
   className,
   indicator,
 }) => (
-  <div className={className}>
-    {indicator && (
-      <Flex justifyContent="center" alignItems="center" mr="xsmall">
-        {indicator}
-      </Flex>
-    )}
-    <ActionListItemColumnInnerLayout>
-      {children}
-      {detail && (
-        <Paragraph fontSize="xsmall" variant="subdued" truncate>
-          {detail}
-        </Paragraph>
-      )}
-    </ActionListItemColumnInnerLayout>
-  </div>
+  <td className={className}>
+    <Space gap="xsmall">
+      {indicator}
+      <SpaceVertical gap="xxxsmall">
+        <span>{children}</span>
+        {detail && (
+          <Paragraph fontSize="xsmall" variant="subdued" truncate>
+            {detail}
+          </Paragraph>
+        )}
+      </SpaceVertical>
+    </Space>
+  </td>
 )
 
 export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
   ActionListItemColumnProps
 >`
-  color: ${({ theme }) => theme.colors.text4};
-  display: ${({ indicator }) => indicator && 'flex'};
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
   overflow: hidden;
   word-break: break-all;
-
-  ${ActionListItemColumnInnerLayout} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 `

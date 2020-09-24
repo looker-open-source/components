@@ -63,7 +63,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   id,
   onClick,
 }) => {
-  const actionListItemRef = useRef<HTMLDivElement>(null)
+  const actionListItemRef = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(ActionListContext)
 
   const handleOnSelect = () => select && select.onSelect(id)
@@ -87,9 +87,9 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
 
   const itemActions = actions && (
     <div onClick={handleMenuClick}>
-      <Menu hoverDisclosureRef={actionListItemRef}>
+      <Menu>
         <MenuDisclosure tooltip={actionsTooltip}>
-          <IconButton icon="DotsVert" label={actionsTooltip} size="medium" />
+          <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
@@ -121,6 +121,8 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
 }
 
 export const ActionListItem = styled(ActionListItemLayout)`
-  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
-  display: flex;
+  td,
+  th {
+    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+  }
 `

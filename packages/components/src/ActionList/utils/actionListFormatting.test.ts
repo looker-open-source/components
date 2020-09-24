@@ -25,16 +25,12 @@
  */
 
 import { ActionListColumns } from '../ActionList'
-import {
-  getPrimaryKeyColumnIndices,
-  getNumericColumnIndices,
-} from './actionListFormatting'
+import { getNumericColumnIndices } from './actionListFormatting'
 
 describe('Action List CSS Utils', () => {
   const columns: ActionListColumns = [
     {
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       widthPercent: 20,
@@ -52,10 +48,6 @@ describe('Action List CSS Utils', () => {
       widthPercent: 30,
     },
   ]
-
-  test('getPrimaryKeyColumnIndices', () => {
-    expect(getPrimaryKeyColumnIndices(columns)).toEqual([0])
-  })
 
   test('getNumericColumnIndices', () => {
     expect(getNumericColumnIndices(columns)).toEqual([0, 2])

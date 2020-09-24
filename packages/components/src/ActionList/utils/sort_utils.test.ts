@@ -55,7 +55,6 @@ describe('Action List Sort Utils', () => {
       {
         canSort: true,
         id: 'id',
-        primaryKey: true,
         title: 'ID',
         type: 'number',
         widthPercent: 20,

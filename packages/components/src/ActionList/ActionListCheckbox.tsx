@@ -38,8 +38,6 @@ export interface ActionListCheckboxProps {
 
 export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
 
-export const actionListCheckboxWidth = '2.75rem'
-
 const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   id,
   onChange,
@@ -47,6 +45,13 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   disabled,
   className,
 }) => {
+  const handleCellOnClick = (
+    event: React.MouseEvent<HTMLTableDataCellElement>
+  ) => {
+    const isNotFromChild = event.currentTarget === event.target
+    isNotFromChild && !disabled && onChange && onChange()
+  }
+
   const handleOnChange = (event: React.MouseEvent<HTMLInputElement>) => {
     const isNotFromChild = event.currentTarget === event.target
     isNotFromChild && !disabled && onChange && onChange()
@@ -59,7 +64,7 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   }
 
   return (
-    <div onClick={handleOnChange} className={className}>
+    <div onClick={handleCellOnClick} className={className}>
       <Checkbox
         aria-describedby={id}
         disabled={disabled}
@@ -73,10 +78,9 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
 
 export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
   align-items: center;
-
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
   display: flex;
-  flex-basis: ${actionListCheckboxWidth};
-  flex-shrink: 0;
+  height: 1.5rem;
   justify-content: center;
+  width: 1.5rem;
 `
