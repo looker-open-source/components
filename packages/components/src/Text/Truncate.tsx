@@ -54,31 +54,28 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   /*
    * only render tooltip if text actually overflows
    */
-  const TooltipComponent = isTruncated ? Tooltip : IdentityComponent
+  const { tooltip, ...triggerProps } = useTooltip({
+    content: children,
+    disabled: !isTruncated,
+    maxWidth: '700px',
+    placement: 'top-start',
+    surfaceStyles: {
+      backgroundColor: 'background',
+      border: '1px solid',
+      borderColor: 'ui3',
+      color: 'text3',
+    },
+    textAlign: 'left',
+    triggerElement: domNode,
+    width: 'auto',
+  })
 
   return (
     <TextWrapper>
-      <TooltipComponent
-        content={children}
-        placement="top-start"
-        width="auto"
-        maxWidth="700px"
-        textAlign="left"
-        surfaceStyles={{
-          backgroundColor: 'background',
-          border: '1px solid',
-          borderColor: 'ui3',
-          color: 'text3',
-        }}
-      >
-        <TextStyle>{children}</TextStyle>
-      </TooltipComponent>
-      {/*
-       * Tooltip clobbers refs on any children.
-       * We must use a hidden text element to reliably detect whether content
-       * is truncated.
-       */}
-      <HiddenText ref={textRef}>{children}</HiddenText>
+      {tooltip}
+      <TextStyle {...triggerProps} ref={textRef}>
+        {children}
+      </TextStyle>
     </TextWrapper>
   )
 }
