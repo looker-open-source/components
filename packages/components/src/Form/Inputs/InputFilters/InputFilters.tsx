@@ -26,6 +26,7 @@
 
 import styled from 'styled-components'
 import React, { FC, useState, useRef } from 'react'
+import { partition } from 'lodash'
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
@@ -53,12 +54,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   filters,
   hideFilterIcon = false,
 }) => {
-  const unassigned: FieldFilter[] = []
-  const assigned: FieldFilter[] = []
-
-  filters.map((filter) => {
-    filter.value ? assigned.push(filter) : unassigned.push(filter)
-  })
+  const [assigned, unassigned] = partition(filters, (filter) => filter.value)
 
   const options = unassigned.map((filter) => {
     return {
