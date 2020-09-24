@@ -80,7 +80,8 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   )
 }
 
-const TextStyle = styled.div`
+const TextStyle = styled.span`
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -96,6 +97,7 @@ const HiddenText = styled(TextStyle)`
   width: 100%;
 `
 
-const TextWrapper = styled.div`
+const TextWrapper = styled.span`
+  display: block;
   position: relative;
 `
