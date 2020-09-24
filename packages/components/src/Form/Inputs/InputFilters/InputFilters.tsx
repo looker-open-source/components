@@ -25,13 +25,19 @@
  */
 
 import styled from 'styled-components'
+<<<<<<< HEAD
 import React, { FC, useState, useRef } from 'react'
 import partition from 'lodash/partition'
+=======
+import React, { FC, useState, useRef, ReactNode } from 'react'
+import { partition } from 'lodash'
+>>>>>>> 75dd0ed796 (first run)
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
-import { IconButton } from '../../../Button'
+import { IconButton, Button } from '../../../Button'
 import { Chip } from '../../../Chip'
+import { Popover, PopoverContent } from '../../../Popover'
 import { InputFilterChip } from './InputFilterChip'
 
 export interface FieldFilter {
@@ -100,6 +106,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
+  const handleSecondFilterList = (event: MouseEvent) => {
+    console.log('event: ', event.currentTarget)
+    // setChipValues([...chipValues, newValue])
+  }
+
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
@@ -114,7 +125,17 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onDelete={handleDelete}
           />
         ))}
-      {draftFilter && <Chip>{draftFilter.label || draftFilter.field}</Chip>}
+      {draftFilter && (
+        <Popover
+          content={
+            <PopoverContent p="large" width="360px">
+              <Chip onClick={handleSecondFilterList}>suggestion 1</Chip>
+            </PopoverContent>
+          }
+        >
+          <Chip>{draftFilter.label || draftFilter.field}</Chip>
+        </Popover>
+      )}
       {!draftFilter && (
         <Select
           autoResize
