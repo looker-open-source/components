@@ -23,14 +23,24 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { Chip, ChipProps } from '../../../Chip'
+import { FieldFilter } from './InputFilters'
 
-export * from './ActionList'
-export * from './ActionListContext'
-export * from './ActionListBulkControls'
-export * from './ActionListFilters'
-export * from './ActionListHeader'
-export * from './ActionListItem'
-export * from './ActionListItemAction'
-export * from './ActionListItemColumn'
-export * from './ActionListManager'
-export * from './utils'
+interface InputFilterChipProps
+  extends Omit<ChipProps, 'children' | 'onDelete'> {
+  filter: FieldFilter
+  onDelete: (field: FieldFilter) => void
+}
+export const InputFilterChip: FC<InputFilterChipProps> = ({
+  filter,
+  onDelete,
+  ...props
+}) => {
+  const handleDelete = () => onDelete(filter)
+  return (
+    <Chip {...props} prefix={filter.field} onDelete={handleDelete}>
+      {filter.value}
+    </Chip>
+  )
+}

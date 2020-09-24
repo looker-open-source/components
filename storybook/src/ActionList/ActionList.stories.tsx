@@ -35,7 +35,7 @@ import {
 } from '@looker/components'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import React from 'react'
-import { columns, data } from './data'
+import { columns, data, filters } from './data'
 import { items } from './items'
 
 export { Sortable } from './ActionListSortable.stories'
@@ -97,6 +97,10 @@ export const ActionListExample = () => {
     totalCount: 8,
   }
 
+  const filterActionsConfig = {
+    filters: filters,
+  }
+
   return (
     <ActionListManager
       isLoading={boolean('isLoading', false)}
@@ -104,10 +108,14 @@ export const ActionListExample = () => {
       noResultsDisplay={noResultsDisplay}
     >
       <ActionList
-        select={boolean('Select Items', true) ? selectConfig : undefined}
         bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
+        canSelectDisplayedColumns={boolean('Display Columns', true)}
         columns={columns}
+        filters={
+          boolean('Filter Actions', true) ? filterActionsConfig : undefined
+        }
         headerRowId="all-pdts"
+        select={boolean('Select Items', true) ? selectConfig : undefined}
       >
         {items}
       </ActionList>

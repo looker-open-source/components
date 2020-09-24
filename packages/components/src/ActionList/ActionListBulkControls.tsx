@@ -32,7 +32,7 @@ import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { Text } from '../Text'
 import { ActionListContext } from './ActionListContext'
 
-interface ActionListControlBarProps {
+interface ActionListBulkControlsProps {
   className?: string
   actions: ReactNode
   onTotalClearAll: () => void
@@ -41,7 +41,7 @@ interface ActionListControlBarProps {
   totalCount: number
 }
 
-const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
+const ActionListBulkControlsLayout: FC<ActionListBulkControlsProps> = ({
   actions,
   className,
   onTotalClearAll,
@@ -99,7 +99,7 @@ const ActionListControlBarLayout: FC<ActionListControlBarProps> = ({
   )
 }
 
-export const ActionListControlBar = styled(ActionListControlBarLayout)`
+export const ActionListBulkControls = styled(ActionListBulkControlsLayout)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.ui1};
   border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
