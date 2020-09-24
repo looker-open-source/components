@@ -208,7 +208,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
-          <FlexItem flex="1" width="100%">
+          <FlexItem flex="1">
             <Paragraph fontSize="xsmall">
               <TextWrapper>{children as string}</TextWrapper>
             </Paragraph>
@@ -257,9 +257,11 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   height: 100%;
+  max-height: ${({ theme }) => theme.lineHeights.xsmall};
+  overflow: visible;
   padding-right: ${({ detailAccessory, theme }) =>
     detailAccessory && theme.space.xxsmall};
 `

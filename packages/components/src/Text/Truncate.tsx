@@ -66,12 +66,12 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   })
 
   return (
-    <TextWrapper>
+    <>
       {tooltip}
       <TextStyle {...triggerProps} ref={textRef}>
         {children}
       </TextStyle>
-    </TextWrapper>
+    </>
   )
 }
 
@@ -81,9 +81,4 @@ const TextStyle = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-`
-
-const TextWrapper = styled.span`
-  display: block;
-  position: relative;
 `

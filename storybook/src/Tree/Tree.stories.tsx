@@ -33,6 +33,7 @@ import {
   AccordionDisclosureStyle,
   TreeItemLabel,
   SpaceVertical,
+  IconButton,
 } from '@looker/components'
 import styled from 'styled-components'
 export { FieldPicker } from './FieldPicker.stories'
@@ -172,7 +173,16 @@ export const LongLabels = () => (
           default model text, and a search for 'lorem ipsum' will uncover many
           web sites still in their infancy.
         </TreeItem>
-        <TreeItem icon="IdeDimensionGroup">
+        <TreeItem
+          icon="IdeDimensionGroup"
+          detail={
+            <IconButton
+              icon="CircleInfo"
+              label="Get Info"
+              onClick={() => alert("You've got info!")}
+            />
+          }
+        >
           Nunc convallis justo sed turpis interdum rutrum ac a neque. Contrary
           to popular belief, Lorem Ipsum is not simply random text. It has roots
           in a piece of classical Latin literature from 45 BC, making it over
@@ -197,7 +207,17 @@ export const LongLabels = () => (
           going through the cites of the word in classical literature,
           discovered the undoubtable source.
         </TreeItem>
-        <TreeItem icon="IdeDimension" truncate>
+        <TreeItem
+          icon="IdeDimension"
+          truncate
+          detail={
+            <IconButton
+              icon="CircleInfo"
+              label="Get Info"
+              onClick={() => alert("You've got info!")}
+            />
+          }
+        >
           Quisque euismod risus quis sapien luctus rutrum. Cras a dui luctus,
           dictum elit vel, pellentesque nisl. Contrary to popular belief, Lorem
           Ipsum is not simply random text. It has roots in a piece of classical
