@@ -41,7 +41,7 @@ export interface AvatarIconProps extends AvatarProps {
 
   /**
    * Icon fill & border color
-   * @default 'key'
+   * @default 'keyFocus'
    */
   color?: string
 
@@ -107,5 +107,6 @@ export const AvatarIcon = styled(AvatarLayout)`
 
 AvatarIcon.defaultProps = {
   bg: 'background',
+  color: 'keyFocus',
   size: 'small',
 }
