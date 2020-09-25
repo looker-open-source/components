@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
@@ -30,9 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Chip` supports `prefix`
-- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
-- `GoogleFontsLoader`
 - `InputColor` now includes `name` in `onChange` response event
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
@@ -59,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` overwriting search value with the current option value if the option's value and label are different
 - Storybook fixes to silence console warnings
 
-###
+### Remove
 
 - `Tooltip` & `Popover` no longer support (optional) arrow indicator
 
