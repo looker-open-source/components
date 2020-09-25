@@ -40,6 +40,7 @@ import {
   Badge,
   SpaceVertical,
 } from '@looker/components'
+import styled from 'styled-components'
 
 export const All = () => (
   <SpaceVertical>
@@ -84,7 +85,7 @@ export const DefaultOpen = () => (
 
 export const CustomizedIndicator = () => (
   <Accordion
-    indicatorSize="xxlarge"
+    // indicatorSize="xxlarge"
     indicatorPosition="left"
     indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
   >
@@ -170,32 +171,48 @@ export const Nested = () => (
   </Accordion>
 )
 
-export const ApiExplorer = () => (
-  <Accordion
-    defaultOpen
-    indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
-  >
-    <AccordionDisclosure>Hello World</AccordionDisclosure>
-    <AccordionContent>
-      <Box borderLeft="1px dotted" borderColor="ui2" ml="xsmall" pl="small">
-        <List fontSize="small">
-          <ListItem>
-            <Badge intent="inform">GET</Badge> Search Favorites
-          </ListItem>
-          <ListItem>
-            <Badge intent="inform">GET</Badge> Get Favorites
-          </ListItem>
-          <ListItem>
-            <Badge intent="critical">GET</Badge> Delete Favorite
-          </ListItem>
-          <ListItem>
-            <Badge intent="positive">GET</Badge> Create Favorite
-          </ListItem>
-          <ListItem>
-            <Badge intent="warn">POST</Badge> Update Content
-          </ListItem>
-        </List>
-      </Box>
-    </AccordionContent>
-  </Accordion>
-)
+export const ApiExplorer = () => {
+  const content = (
+    <Box borderLeft="1px dotted" borderColor="ui2" ml="xsmall" pl="small">
+      <List fontSize="small">
+        <ListItem>
+          <Badge intent="inform">GET</Badge> Search Favorites
+        </ListItem>
+        <ListItem>
+          <Badge intent="inform">GET</Badge> Get Favorites
+        </ListItem>
+        <ListItem>
+          <Badge intent="critical">GET</Badge> Delete Favorite
+        </ListItem>
+        <ListItem>
+          <Badge intent="positive">GET</Badge> Create Favorite
+        </ListItem>
+        <ListItem>
+          <Badge intent="warn">POST</Badge> Update Content
+        </ListItem>
+      </List>
+    </Box>
+  )
+
+  return (
+    <Customized>
+      <Accordion indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}>
+        <AccordionDisclosure>First Group</AccordionDisclosure>
+        <AccordionContent>{content}</AccordionContent>
+      </Accordion>
+      <Accordion
+        defaultOpen
+        indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
+      >
+        <AccordionDisclosure color="red">Second Group</AccordionDisclosure>
+        <AccordionContent>{content}</AccordionContent>
+      </Accordion>
+    </Customized>
+  )
+}
+
+const Customized = styled.div`
+  ${AccordionDisclosure}[aria-expanded='true'] {
+    color: ${({ theme }) => theme.colors.key};
+  }
+`

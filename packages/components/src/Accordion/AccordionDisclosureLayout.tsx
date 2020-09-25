@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AccordionIndicatorProps } from './Accordion'
 
-interface AccordionDisclosureGridProps
+interface AccordionDisclosureLayoutProps
   extends Required<AccordionIndicatorProps> {
   isOpen: boolean
   className?: string
@@ -38,14 +38,11 @@ interface AccordionDisclosureGridProps
 const Indicator = styled.div`
   align-items: center;
   display: flex;
-  grid-area: indicator;
   justify-content: center;
 `
-const Label = styled.div`
-  grid-area: children;
-`
+const Label = styled.div``
 
-const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
+const Layout: FC<AccordionDisclosureLayoutProps> = ({
   children,
   className,
   isOpen,
@@ -56,6 +53,7 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
   const indicator = (
     <Indicator>
       <Icon
+        color="currentColor"
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />
@@ -70,7 +68,8 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
     </div>
   )
 }
-export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
+
+export const AccordionDisclosureLayout = styled(Layout)`
   align-items: center;
   display: flex;
   width: 100%;
