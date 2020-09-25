@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-- `TabList` now supports `SpaceProps` and `fontSize`
+- `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
 
 - Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
@@ -44,7 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Default values changed (now `body='Roboto'`, `brand='Red Hat Display'`, `code='Roboto Mono'`)
 - `theme.fontWeights.extraBold` & `theme.fontWeights.light` removed
 - `Tree` child `AccordionDisclosure` now receives font-weight value from styled-components selector
-- `Prompt` / `usePrompt` now _optionally_ support `clearOnCancel` behavior
 
 ### Fixed
 
