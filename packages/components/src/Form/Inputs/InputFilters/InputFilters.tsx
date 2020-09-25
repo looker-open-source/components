@@ -32,11 +32,8 @@ import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
-import { Text } from '../../../Text'
-import { Popover, PopoverContent } from '../../../Popover'
-import { Space } from '../../../Layout/Space'
 import { InputFilterChip } from './InputFilterChip'
-import { InputDraftChip } from './InputDraftChip'
+import { DraftFilter } from './DraftFilter'
 
 export interface FieldFilter {
   /* specify the field value */
@@ -67,12 +64,10 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     }
   })
 
+  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
   const [unassignedFilters, setUnassignedFilters] = useState(options)
   const [chipValues, setChipValues] = useState(assigned)
   const [filterLookupName, setFilterLookupName] = useState('')
-  const [controlPopover, setControlPopover] = useState(true)
-
-  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
 
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = chipValues.length > 0
@@ -108,11 +103,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
-  const handleSecondFilterList = (draft: FieldFilter) => {
-    setFilterLookupName('')
+  const handleDraft = (draft: FieldFilter, option: string) => {
+    draft.value = option
     setChipValues([...chipValues, draft])
-    setControlPopover(false)
+    setDraftFilter(undefined)
+    setUnassignedFilters(options)
   }
+  const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
 
   return (
     <div className={className} onClick={focusInput}>
@@ -129,32 +126,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           />
         ))}
       {draftFilter && (
-        <Popover
-          isOpen={controlPopover}
-          content={
-            <PopoverContent p="large" width="360px">
-              <Space>
-                <InputDraftChip
-                  draft={draftFilter}
-                  onClick={handleSecondFilterList}
-                  option={'suggestion 1'}
-                />
-                <InputDraftChip
-                  draft={draftFilter}
-                  onClick={handleSecondFilterList}
-                  option={'suggestion 2'}
-                />
-                <InputDraftChip
-                  draft={draftFilter}
-                  onClick={handleSecondFilterList}
-                  option={'suggestion 3'}
-                />
-              </Space>
-            </PopoverContent>
-          }
-        >
-          <Text>{draftFilter.label || draftFilter.field}</Text>
-        </Popover>
+        <DraftFilter
+          draft={draftFilter}
+          options={draftOptions}
+          onClick={handleDraft}
+        />
       )}
       {!draftFilter && (
         <Select
