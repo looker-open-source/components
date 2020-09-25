@@ -188,7 +188,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
-  const TextWrapper = truncate ? Truncate : Identity
+  const TextWrapper = truncate ? Truncate : Fragment
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
