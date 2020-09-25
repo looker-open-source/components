@@ -57,7 +57,7 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
     surfaceStyles: {
       backgroundColor: 'background',
       border: '1px solid',
-      borderColor: 'ui3',
+      borderColor: 'ui2',
       color: 'text5',
     },
     textAlign: 'left',
