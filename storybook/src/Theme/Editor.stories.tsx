@@ -164,7 +164,3 @@ export const Editor: FC<ThemeEditorProps> = ({
     </SpaceVertical>
   )
 }
-
-export default {
-  title: 'Theme',
-}

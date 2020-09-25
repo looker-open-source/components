@@ -1,4 +1,4 @@
-# Storybok
+# Storybook
 
 Storybook is the place to construct and test new components. You can easily import components from the `@looker/components` package.
 

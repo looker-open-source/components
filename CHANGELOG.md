@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
+- Storybook configuration improvements
+  - `addons-essentials` now used
+  - Replace `withKnobs` with `Controls` & `Args`
 
 ## [0.9.15] - 2020-09-21
 
