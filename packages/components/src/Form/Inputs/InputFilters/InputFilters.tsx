@@ -64,6 +64,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     }
   })
 
+  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
   const [unassignedFilters, setUnassignedFilters] = useState(options)
   const [chipValues, setChipValues] = useState(assigned)
   const [filterLookupName, setFilterLookupName] = useState('')
@@ -105,6 +106,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     console.log('event: ', event.currentTarget)
     // setChipValues([...chipValues, newValue])
   }
+  const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
 
   return (
     <div className={className} onClick={focusInput}>

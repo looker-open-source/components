@@ -24,27 +24,52 @@
 
  */
 import React, { FC } from 'react'
-import { Chip, ChipProps } from '../../../Chip'
+import { ButtonGroup, ButtonItem } from '../../../Button'
+import { Popover, PopoverContent } from '../../../Popover'
+import { SpaceVertical } from '../../../Layout/Space'
+import { Text } from '../../../Text'
 import { FieldFilter } from './InputFilters'
 
-interface InputFilterChipProps extends Omit<ChipProps, 'children' | 'onClick'> {
+interface DraftFilterProps {
   draft: FieldFilter
-  option: string
-  onClick: (field: FieldFilter) => void
+  options: string[]
+  onClick: (field: FieldFilter, value: string) => void
 }
-export const InputDraftChip: FC<InputFilterChipProps> = ({
+export const DraftFilter: FC<DraftFilterProps> = ({
   draft,
   onClick,
-  option,
-  ...props
+  options,
 }) => {
-  draft.value = option
-  const handleDraft = () => {
-    onClick(draft)
-  }
   return (
-    <Chip {...props} onClick={handleDraft}>
-      {option}
-    </Chip>
+    <Popover
+      isOpen={true}
+      content={
+        <PopoverContent p="large" width="360px">
+          <SpaceVertical>
+            <ButtonGroup>
+              {options.map((option, index) => {
+                const handleDraft = () => {
+                  onClick(draft, option)
+                }
+                return (
+                  <ButtonItem key={index} onClick={handleDraft}>
+                    {option}
+                  </ButtonItem>
+                )
+              })}
+            </ButtonGroup>
+          </SpaceVertical>
+        </PopoverContent>
+      }
+    >
+      <Text>{draft.label || draft.field}</Text>
+    </Popover>
   )
 }
+
+/**
+ *
+ *             draft={draftFilter}
+            onClick={handleSecondFilterList}
+            option={'suggestion 1'}
+ */
