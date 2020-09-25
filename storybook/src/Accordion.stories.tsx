@@ -85,7 +85,7 @@ export const DefaultOpen = () => (
 
 export const CustomizedIndicator = () => (
   <Accordion
-    // indicatorSize="xxlarge"
+    indicatorSize="xxlarge"
     indicatorPosition="left"
     indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
   >
