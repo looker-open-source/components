@@ -32,14 +32,19 @@ import React, {
   useRef,
   Ref,
 } from 'react'
-import { SpaceProps, space } from '@looker/design-tokens'
+import {
+  fontSize,
+  FontSizeProps,
+  PaddingProps,
+  padding,
+  reset,
+} from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { fontSize, FontSizeProps } from 'styled-system'
 import { moveFocus, useForkedRef } from '../utils'
 import { TabContext } from './TabContext'
 import { Tab } from '.'
 
-export interface TabListProps extends SpaceProps, FontSizeProps {
+export interface TabListProps extends PaddingProps, FontSizeProps {
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: any) => void
@@ -122,7 +127,8 @@ const distributeCSS = css`
 `
 
 export const TabList = styled(TabListLayout)`
-  ${space}
+  ${reset}
+  ${padding}
   ${fontSize}
 
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
