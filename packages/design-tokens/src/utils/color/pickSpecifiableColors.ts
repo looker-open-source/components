@@ -24,15 +24,8 @@
 
  */
 
-import { CoreColors } from '../../system'
-import { SurfaceColors } from '../../system/color/specifiable'
+import pick from 'lodash/pick'
+import { Colors, specifiableColors } from '../../system/color'
 
-export const generateSurfaceColors = (
-  coreColors: CoreColors
-): SurfaceColors => {
-  return {
-    field: coreColors.background,
-    inverse: coreColors.text,
-    inverseOn: coreColors.background,
-  }
-}
+export const pickSpecifiableColors = (colors: Colors) =>
+  pick(colors, specifiableColors)

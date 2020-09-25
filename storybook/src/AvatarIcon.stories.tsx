@@ -25,50 +25,18 @@
  */
 
 import React from 'react'
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabListProps,
-  TabPanel,
-  TabPanels,
-} from '@looker/components'
+import { AvatarIcon, AvatarIconProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 
-interface DemoProps extends TabListProps {
-  tabCount: number
-  tabPrefix: string
-}
-
-const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
-  const tabs = new Array(tabCount).fill('tab')
-
-  return (
-    <Tabs>
-      <TabList {...args}>
-        {tabs.map((_k, index) => (
-          <Tab key={index}>
-            {tabPrefix} {index}
-          </Tab>
-        ))}
-      </TabList>
-      <TabPanels>
-        {tabs.map((_k, index) => (
-          <TabPanel key={index}>This is {index}</TabPanel>
-        ))}
-      </TabPanels>
-    </Tabs>
-  )
-}
+const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  distribute: true,
-  tabCount: 20,
-  tabPrefix: 'My Awesome Tab',
+  color: 'key',
+  icon: 'User',
 }
 
 export default {
-  component: Tabs,
-  title: 'Tabs',
+  component: AvatarIcon,
+  title: 'Avatar/AvatarIcon',
 }

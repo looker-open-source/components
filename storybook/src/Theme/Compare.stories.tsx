@@ -45,3 +45,5 @@ export const Compare: FC = () => (
 export default {
   title: 'Theme',
 }
+
+export * from './Editor.stories'

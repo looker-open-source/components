@@ -23,13 +23,13 @@
  SOFTWARE.
 
  */
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC, useState, useCallback, ReactNode } from 'react'
 import styled from 'styled-components'
 import { useTooltip } from '../Tooltip'
 import { useIsTextTruncated } from './useIsTextTruncated'
 
 export interface TruncateProps {
-  children: string
+  children: ReactNode
 }
 
 /**

@@ -29,30 +29,13 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AccordionIndicatorProps } from './Accordion'
 
-interface AccordionDisclosureGridProps
+interface AccordionDisclosureLayoutProps
   extends Required<AccordionIndicatorProps> {
   isOpen: boolean
   className?: string
 }
 
-const Indicator = styled.div`
-  align-items: flex-start;
-  display: flex;
-  grid-area: indicator;
-  justify-content: center;
-  padding-top: ${({ theme }) => theme.space.xxsmall};
-`
-const Label = styled.div`
-  grid-area: children;
-  overflow: hidden;
-  width: 100%;
-`
-
-const StyledIcon = styled(Icon)`
-  height: ${({ theme }) => theme.lineHeights.xsmall};
-`
-
-const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
+const Layout: FC<AccordionDisclosureLayoutProps> = ({
   children,
   className,
   isOpen,
@@ -77,8 +60,24 @@ const AccordionDisclosureGridLayout: FC<AccordionDisclosureGridProps> = ({
     </div>
   )
 }
-export const AccordionDisclosureGrid = styled(AccordionDisclosureGridLayout)`
+
+const Indicator = styled.div`
   align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  padding-top: ${({ theme }) => theme.space.xxsmall};
+`
+const Label = styled.div`
+  overflow: hidden;
+  width: 100%;
+`
+
+const StyledIcon = styled(Icon)`
+  height: ${({ theme }) => theme.lineHeights.xsmall};
+`
+
+export const AccordionDisclosureLayout = styled(Layout)`
+align-items: flex-start;
   display: flex;
   width: 100%;
 

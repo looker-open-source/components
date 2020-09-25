@@ -24,51 +24,35 @@
 
  */
 
-import React from 'react'
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabListProps,
-  TabPanel,
-  TabPanels,
-} from '@looker/components'
-import { Story } from '@storybook/react/types-6-0'
-
-interface DemoProps extends TabListProps {
-  tabCount: number
-  tabPrefix: string
-}
-
-const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
-  const tabs = new Array(tabCount).fill('tab')
-
-  return (
-    <Tabs>
-      <TabList {...args}>
-        {tabs.map((_k, index) => (
-          <Tab key={index}>
-            {tabPrefix} {index}
-          </Tab>
-        ))}
-      </TabList>
-      <TabPanels>
-        {tabs.map((_k, index) => (
-          <TabPanel key={index}>This is {index}</TabPanel>
-        ))}
-      </TabPanels>
-    </Tabs>
-  )
-}
-
-export const Primary = Template.bind({})
-Primary.args = {
-  distribute: true,
-  tabCount: 20,
-  tabPrefix: 'My Awesome Tab',
-}
-
-export default {
-  component: Tabs,
-  title: 'Tabs',
+export interface DerivativeColors {
+  /**
+   * Default input background
+   * Text input, select input
+   * @default white
+   */
+  field: string
+  /**
+   * High contrast surface
+   * Used for: Tooltip background
+   * @default charcoal800
+   */
+  inverse: string
+  /**
+   * Inverse color on high contrast elements
+   * Used for: Icons in main nav, Text on primary buttons
+   * @default white
+   */
+  inverseOn: string
+  /**
+   * Neutral intent color
+   * Used for: Non-destructive cancel actions
+   * @note This is can be automatically derived using the background & text colors
+   * @default charcoal400
+   */
+  neutral: string
+  /**
+   * Link text color on interaction
+   * Used for: Link :active, :focused and :hover states
+   */
+  linkInteractive: string
 }

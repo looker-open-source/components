@@ -24,11 +24,20 @@
 
  */
 
-import { IntentColors } from '../../system'
+import { DerivativeColors, SpecifiableColors } from '../../system'
 import { generateInteractive } from './stateful'
+import { mixColors, textBlends } from './blend'
 
-export const generateIntentDerivatives = (intentColors: IntentColors) => {
+export const generateDerivativeColors = ({
+  link,
+  text,
+  background,
+}: SpecifiableColors): DerivativeColors => {
   return {
-    linkInteractive: generateInteractive(intentColors.link),
+    field: background,
+    inverse: text,
+    inverseOn: background,
+    linkInteractive: generateInteractive(link),
+    neutral: mixColors(textBlends[1], text, background),
   }
 }
