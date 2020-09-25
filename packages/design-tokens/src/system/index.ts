@@ -31,6 +31,7 @@ export {
   color,
   display,
   flexbox,
+  fontSize,
   height,
   layout,
   overflow,
