@@ -58,7 +58,7 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
       backgroundColor: 'background',
       border: '1px solid',
       borderColor: 'ui3',
-      color: 'text3',
+      color: 'text5',
     },
     textAlign: 'left',
     triggerElement: domNode,
