@@ -89,7 +89,7 @@ export const Dialog: FC<DialogProps> = ({
     disable: disableScrollLock,
     enable: enableScrollLock,
     isEnabled: scrollLockEnabled,
-  } = useScrollLock(isOpen, false)
+  } = useScrollLock(isOpen)
 
   const handleClose = () => {
     onClose && onClose()
@@ -116,12 +116,7 @@ export const Dialog: FC<DialogProps> = ({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <Portal
-            ref={(node) => {
-              focusRef(node)
-              scrollRef(node)
-            }}
-          >
+          <Portal ref={focusRef}>
             <Backdrop
               className={state}
               onClick={onClose}
@@ -137,6 +132,7 @@ export const Dialog: FC<DialogProps> = ({
               className={state}
               width={width}
               maxWidth={maxWidth}
+              ref={scrollRef}
             >
               {children}
             </Surface>

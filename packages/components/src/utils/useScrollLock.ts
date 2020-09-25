@@ -24,102 +24,111 @@
 
  */
 
-import once from 'lodash/once'
-import pick from 'lodash/pick'
 import { useContext, useEffect, useRef } from 'react'
 import { DialogContext } from '../Dialog/DialogContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
-// useScrollLock takes a two-pronged approach to disabling scrolling:
-// 1. Add a listener on the scroll event that scrolls back up to to the existing scroll position
-// 2. Add overflow: hidden to the body tag which solves the stutter effect from the above
-//    A padding-right offset fixes a jump due to a body-level scrollbar toggling on/off
-// Note: #2 alone is not enough because (especially for popovers) there may be other
-// scrolling elements that should be locked
-
-function getScrollbarSize() {
-  const scrollDiv = document.createElement('div')
-  scrollDiv.style.width = '99px'
-  scrollDiv.style.height = '99px'
-  scrollDiv.style.position = 'absolute'
-  scrollDiv.style.top = '-9999px'
-  scrollDiv.style.overflow = 'scroll'
-
-  document.body.appendChild(scrollDiv)
-  const scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth
-  document.body.removeChild(scrollDiv)
-
-  return scrollbarSize
+function isAtScrollBottom(
+  targetElement: EventTarget | HTMLElement | null
+): boolean {
+  return targetElement instanceof Element
+    ? targetElement.scrollHeight - targetElement.scrollTop <=
+        targetElement.clientHeight
+    : false
+}
+function isAtScrollTop(
+  targetElement: EventTarget | HTMLElement | null
+): boolean {
+  return targetElement instanceof Element
+    ? targetElement.scrollTop === 0
+    : false
 }
 
-function setBodyStyle() {
-  if (document !== undefined) {
-    // Is there a vertical scrollbar?
-    if (window.innerWidth > document.documentElement.clientWidth) {
-      const scrollbarSize = getScrollbarSize()
-      const curPaddingRight = window
-        .getComputedStyle(document.body)
-        .getPropertyValue('padding-right')
-      if (curPaddingRight.indexOf('calc') === -1) {
-        document.body.style.paddingRight = `calc(${curPaddingRight} + ${scrollbarSize}px)`
-      }
-    }
-    document.body.style.overflow = 'hidden'
+const scrollKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
+
+// modern Chrome requires { passive: false } when adding event
+function getWheelOpt() {
+  let supportsPassive = false
+  try {
+    window.addEventListener(
+      'canplay',
+      () => null,
+      Object.defineProperty({}, 'passive', {
+        get: function () {
+          supportsPassive = true
+        },
+      })
+    )
+  } catch (e) {
+    //
   }
+  return supportsPassive ? { passive: false } : false
 }
 
-type BodyStyle = Pick<CSSStyleDeclaration, 'overflow' | 'paddingRight'> | null
+const wheelEvent =
+  'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel'
 
-function getCurrentBodyStyle(existingScrollLock?: boolean): BodyStyle {
-  if (document === undefined || existingScrollLock) {
-    // If there is an existing scroll lock (e.g. popover within a dialog)
-    // no need to store styles,
-    return null
-  }
-  return pick(document.body.style, ['overflow', 'paddingRight'])
-}
-
-function resetBodyStyle(style: BodyStyle) {
-  if (style) {
-    document.body.style.paddingRight = style.paddingRight
-    document.body.style.overflow = style.overflow
-  }
-}
-
+/**
+ * Adds listeners to preventDefault on various events that are pre-cursors to the scroll event
+ * If a parent DialogContext is found (used in Popover and Dialog) the scroll lock for that context will be
+ * disabled when the current scroll lock is enabled and vice versa
+ * @param enabled toggles the scroll lock on & off
+ * @param allowScrollWithin an element where scrolling should be allowed
+ */
 export function useScrollLock(
   enabled = false,
-  useCapture = false,
   allowScrollWithin?: HTMLElement | null
 ) {
   const [newElement, callbackRef] = useCallbackRef()
   // If the allowScrollWithin is passed in arguments, use that instead of the new element
   const element =
     allowScrollWithin === undefined ? newElement : allowScrollWithin
-  const { disableScrollLock, enableScrollLock, scrollLockEnabled } = useContext(
-    DialogContext
-  )
+  const { disableScrollLock, enableScrollLock } = useContext(DialogContext)
   const { value, setOn, setOff } = useToggle(enabled)
+  const letScrollInElement = useRef(true)
 
   useEffect(() => {
     if (document === undefined || window === undefined) return
 
+    function preventDefault(e: Event) {
+      console.log('prev')
+      e.preventDefault()
+    }
+
+    function stopPropagation(e: Event) {
+      if (letScrollInElement.current) {
+        e.stopPropagation()
+      }
+    }
+
+    function preventDefaultForScrollKeys(e: KeyboardEvent) {
+      if (scrollKeys.includes(e.key)) {
+        preventDefault(e)
+      }
+    }
+
     let scrollTop = window.scrollY
     let scrollTarget: EventTarget | HTMLElement | null = document
-
-    const setBodyStyleOnce = once(setBodyStyle)
+    let lastScrollPos = window.scrollY
+    let scrollingDirection = 0
 
     function stopScroll(e: Event) {
-      // setting overflow: hidden / padding-right again here avoids conflicting
-      // enable / disable with nested scroll locks
-      setBodyStyleOnce()
-
       if (e.target !== null && e.target !== scrollTarget) {
         scrollTarget = e.target
         scrollTop =
           scrollTarget instanceof Element
             ? scrollTarget.scrollTop
             : window.scrollY
+
+        lastScrollPos = scrollTop
+      } else {
+        const newScrollPos =
+          scrollTarget instanceof Element
+            ? scrollTarget.scrollTop
+            : window.scrollY
+        scrollingDirection = newScrollPos - lastScrollPos
+        lastScrollPos = newScrollPos
       }
       if (
         scrollTarget instanceof Element &&
@@ -128,39 +137,53 @@ export function useScrollLock(
         scrollTarget.scrollTop = scrollTop
       } else if (scrollTarget === document) {
         window.scrollTo({ top: scrollTop })
+      } else {
+        if (scrollingDirection > 0) {
+          const atScrollBottom = isAtScrollBottom(scrollTarget)
+          letScrollInElement.current = !atScrollBottom
+          if (atScrollBottom) {
+            scrollingDirection = 0
+          }
+        } else if (scrollingDirection < 0) {
+          const atScrollTop = isAtScrollTop(scrollTarget)
+          letScrollInElement.current = !atScrollTop
+          if (atScrollTop) {
+            scrollingDirection = 0
+          }
+        }
       }
+    }
+
+    function disableScroll(element: HTMLElement) {
+      const wheelOpt = getWheelOpt()
+      window.addEventListener('DOMMouseScroll', preventDefault, false) // older FF
+      element.addEventListener(wheelEvent, stopPropagation, wheelOpt) // modern desktop
+      window.addEventListener(wheelEvent, preventDefault, wheelOpt) // modern desktop
+      window.addEventListener('touchmove', preventDefault, wheelOpt) // mobile
+      window.addEventListener('keydown', preventDefaultForScrollKeys, false)
+      window.addEventListener('scroll', stopScroll, true)
+    }
+
+    function enableScroll() {
+      window.removeEventListener('DOMMouseScroll', preventDefault, false)
+      window.removeEventListener(wheelEvent, preventDefault)
+      window.removeEventListener('touchmove', preventDefault)
+      window.removeEventListener('keydown', preventDefaultForScrollKeys, false)
+      window.removeEventListener('scroll', stopScroll, true)
     }
 
     if (element && value) {
-      window.addEventListener('scroll', stopScroll, true)
       disableScrollLock && disableScrollLock()
+      disableScroll(element)
     } else {
-      window.removeEventListener('scroll', stopScroll, true)
       enableScrollLock && enableScrollLock()
+      enableScroll()
     }
 
     return () => {
-      window.removeEventListener('scroll', stopScroll, true)
+      enableScroll()
     }
-  }, [value, element, useCapture, disableScrollLock, enableScrollLock])
-
-  // Save the existing body overflow and padding-right values
-  const bodyStylesRef = useRef(getCurrentBodyStyle(scrollLockEnabled))
-
-  useEffect(() => {
-    const bodyStylesCurrent = bodyStylesRef.current
-    if (value) {
-      setBodyStyle()
-    } else {
-      resetBodyStyle(bodyStylesCurrent)
-      bodyStylesRef.current = getCurrentBodyStyle(scrollLockEnabled)
-    }
-    return () => {
-      if (value) {
-        resetBodyStyle(bodyStylesCurrent)
-      }
-    }
-  }, [scrollLockEnabled, value])
+  }, [value, element, disableScrollLock, enableScrollLock])
 
   return {
     callbackRef,

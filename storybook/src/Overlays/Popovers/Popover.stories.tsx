@@ -204,39 +204,58 @@ export const OverlayOpenDialog = () => {
       <Heading>Popover Opening a Dialog</Heading>
       <Popover
         content={
-          <DialogContext.Consumer>
-            {({ closeModal }) => (
-              <Button
-                m="large"
-                onClick={() => {
-                  setOn()
-                  closeModal()
-                }}
-              >
-                Open Dialog
-              </Button>
-            )}
-          </DialogContext.Consumer>
+          <>
+            <Dialog isOpen={value} onClose={setOff}>
+              <DialogContent>
+                <SpaceVertical align="start">
+                  <Paragraph>
+                    Try opening the Select and picking an option:
+                  </Paragraph>
+                  <Button>I'm the first focusable element</Button>
+                  <FieldSelect
+                    label="Default Value"
+                    width={300}
+                    options={options}
+                    aria-label="Fruits"
+                    defaultValue="1"
+                  />
+                  <FieldSelect
+                    label="Default Value"
+                    width={300}
+                    options={options}
+                    aria-label="Fruits"
+                    defaultValue="1"
+                  />
+                  <FieldSelect
+                    label="Default Value"
+                    width={300}
+                    options={options}
+                    aria-label="Fruits"
+                    defaultValue="1"
+                  />
+                  <Paragraph>Try clicking the button:</Paragraph>
+                  <Button onClick={openAlert}>Open Alert</Button>
+                </SpaceVertical>
+              </DialogContent>
+            </Dialog>
+            <DialogContext.Consumer>
+              {({ closeModal }) => (
+                <Button
+                  m="large"
+                  onClick={() => {
+                    setOn()
+                    // closeModal()
+                  }}
+                >
+                  Open Dialog
+                </Button>
+              )}
+            </DialogContext.Consumer>
+          </>
         }
       >
         <Button>Open Popover</Button>
       </Popover>
-      <Dialog isOpen={value} onClose={setOff}>
-        <DialogContent>
-          <SpaceVertical align="start">
-            <Paragraph>Try opening the Select and picking an option:</Paragraph>
-            <FieldSelect
-              label="Default Value"
-              width={300}
-              options={options}
-              aria-label="Fruits"
-              defaultValue="1"
-            />
-            <Paragraph>Try clicking the button:</Paragraph>
-            <Button onClick={openAlert}>Open Alert</Button>
-          </SpaceVertical>
-        </DialogContent>
-      </Dialog>
       <Heading>Menu Opening a Dialog</Heading>
       <Menu>
         <MenuDisclosure tooltip="Select your favorite kind">
@@ -248,6 +267,46 @@ export const OverlayOpenDialog = () => {
           <MenuItem onClick={setOn}>Open Dialog</MenuItem>
         </MenuList>
       </Menu>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
     </SpaceVertical>
   )
 }

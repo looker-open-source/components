@@ -30,7 +30,7 @@ import {
   theme,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { FC, useContext, useEffect, useRef } from 'react'
+import React, { forwardRef, Ref, useContext, useEffect, useRef } from 'react'
 import styled, { CSSObject, css } from 'styled-components'
 import {
   ColorProps,
@@ -42,7 +42,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { useGlobalHotkeys } from '../utils'
+import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from './DialogContext'
 
 interface SurfaceProps
@@ -56,38 +56,42 @@ interface SurfaceProps
   animationState?: string
 }
 
-const SurfaceLayout: FC<SurfaceProps> = ({
-  surfaceStyles,
-  className,
-  ...props
-}) => {
-  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    DialogContext
-  )
+const SurfaceLayout = forwardRef(
+  (
+    { surfaceStyles, className, ...props }: SurfaceProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
+      DialogContext
+    )
 
-  const wrapperRef = useRef<null | HTMLDivElement>(null)
+    const wrapperRef = useRef<null | HTMLDivElement>(null)
+    const ref = useForkedRef(wrapperRef, forwardedRef)
 
-  useEffect(() => {
-    enableScrollLock && enableScrollLock()
-    const t = window.setTimeout(() => {
-      enableFocusTrap && enableFocusTrap()
-    }, theme.transitions.durationModerate)
-    return () => {
-      window.clearTimeout(t)
-    }
-  }, [enableFocusTrap, enableScrollLock])
+    useEffect(() => {
+      enableScrollLock && enableScrollLock()
+      const t = window.setTimeout(() => {
+        enableFocusTrap && enableFocusTrap()
+      }, theme.transitions.durationModerate)
+      return () => {
+        window.clearTimeout(t)
+      }
+    }, [enableFocusTrap, enableScrollLock])
 
-  useGlobalHotkeys('esc', closeModal, wrapperRef)
+    useGlobalHotkeys('esc', closeModal, wrapperRef)
 
-  return (
-    <div
-      className={`surface-overflow ${className}`}
-      style={surfaceStyles as CSSObject}
-      ref={wrapperRef}
-      {...omitStyledProps(props)}
-    />
-  )
-}
+    return (
+      <div
+        className={`surface-overflow ${className}`}
+        style={surfaceStyles as CSSObject}
+        ref={ref}
+        {...omitStyledProps(props)}
+      />
+    )
+  }
+)
+
+SurfaceLayout.displayName = 'SurfaceLayout'
 
 const surfaceTransition = () => css`
   ${(props) =>
