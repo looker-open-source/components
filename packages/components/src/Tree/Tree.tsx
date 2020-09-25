@@ -136,7 +136,9 @@ const TreeLayout: FC<TreeProps> = ({
 
   const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure ref={disclosureRef}>{treeItem}</AccordionDisclosure>
+      <AccordionDisclosure ref={disclosureRef} py="none">
+        {treeItem}
+      </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
   )
