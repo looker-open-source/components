@@ -34,17 +34,20 @@ import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
   /**
-   * @default User
+   * Icon to display
+   * @default 'User'
    */
   icon?: IconNames
 
   /**
+   * Icon fill & border color
    * @default 'keyFocus'
    */
   color?: string
 
   /**
-   * @default 'keyText'
+   * Background color
+   * @default 'background'
    */
   bg?: string
 }

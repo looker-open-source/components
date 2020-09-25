@@ -32,20 +32,31 @@ import {
   Heading,
   SpaceVertical,
   useActionListSelectManager,
+  ActionListManagerProps,
 } from '@looker/components'
-import { withKnobs, boolean } from '@storybook/addon-knobs'
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { columns, data, filters } from './data'
 import { items } from './items'
 
-export { Sortable } from './ActionListSortable.stories'
-
-export default {
-  decorators: [withKnobs],
-  title: 'ActionList',
+interface DemoProps extends ActionListManagerProps {
+  isLoading?: boolean
+  noResults?: boolean
+  noResultsDisplay: boolean
+  canBulk: boolean
+  canCustomizeColumns: boolean
+  canFilter: boolean
+  canSelect: boolean
 }
 
-export const ActionListExample = () => {
+const Template: Story<DemoProps> = ({
+  canBulk,
+  canCustomizeColumns,
+  canFilter,
+  canSelect,
+  noResultsDisplay,
+  ...args
+}) => {
   const allPageItems = data.map(({ pdtName }) => pdtName)
 
   const {
@@ -70,7 +81,7 @@ export const ActionListExample = () => {
     alert(`Performing a bulk action on these items: \n${selections.join(', ')}`)
   }
 
-  const noResultsDisplay = boolean('Custom "noResultsDisplay"', true) && (
+  const customResultsDisplay = noResultsDisplay && (
     <SpaceVertical align="center">
       <Icon size="xlarge" name="Beaker" color="key" />
       <Heading>The mad scientists have nothing for you...</Heading>
@@ -102,23 +113,32 @@ export const ActionListExample = () => {
   }
 
   return (
-    <ActionListManager
-      isLoading={boolean('isLoading', false)}
-      noResults={boolean('noResults', false)}
-      noResultsDisplay={noResultsDisplay}
-    >
+    <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
       <ActionList
-        bulk={boolean('Bulk Actions', true) ? bulkActionsConfig : undefined}
-        canSelectDisplayedColumns={boolean('Display Columns', true)}
+        canSelectDisplayedColumns={canCustomizeColumns}
         columns={columns}
-        filters={
-          boolean('Filter Actions', true) ? filterActionsConfig : undefined
-        }
+        filters={canFilter ? filterActionsConfig : undefined}
         headerRowId="all-pdts"
-        select={boolean('Select Items', true) ? selectConfig : undefined}
+        select={canSelect ? selectConfig : undefined}
+        bulk={canBulk ? bulkActionsConfig : undefined}
       >
         {items}
       </ActionList>
     </ActionListManager>
   )
+}
+
+export const Primary = Template.bind({})
+Primary.args = {
+  canBulk: true,
+  canCustomizeColumns: false,
+  canFilter: false,
+  canSelect: true,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: true,
+}
+
+export default {
+  title: 'ActionList',
 }
