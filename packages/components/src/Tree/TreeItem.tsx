@@ -98,11 +98,6 @@ export interface TreeItemProps
   truncate?: boolean
 }
 
-/*
- * Identity component: transparently pass through children
- */
-const Identity: FC<any> = ({ children }) => <>{children}</>
-
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
