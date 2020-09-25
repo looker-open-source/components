@@ -53,7 +53,6 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
   const indicator = (
     <Indicator>
       <Icon
-        color="currentColor"
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />
