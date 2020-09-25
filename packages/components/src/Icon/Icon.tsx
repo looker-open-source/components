@@ -33,6 +33,7 @@ import {
   SizeMedium,
   SizeLarge,
   omitStyledProps,
+  TextColorProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, ReactNode } from 'react'
 import styled from 'styled-components'
@@ -52,12 +53,16 @@ export type IconSize =
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
+    TextColorProps,
     SizeSimpleLayoutProps {
   /**
-   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
+   * Display an icon/logo that is not available on our components list.
+   * Use artwork prop with an svg instead of Icon name.
    */
   artwork?: ReactNode
-  color?: string
+  /**
+   * Display an icon from the suite provided in the @looker/icons package
+   */
   name?: IconNames
   /**
    * Explicitly specify a title for the SVG rendered by the icon.
