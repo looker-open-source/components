@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
 - `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
+- `Tree`, `TreeItem` removed padding
+- `TreeGroup`, removed horizontal padding
 
 ## [0.9.16] - 2020-10-02
 
@@ -43,17 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
-
-### Fixed
-
-- Page "jumps" when opening a `Popover` due to the scrollbar disappearing
-
-### Preview / Experimental
-
-- Experimental: `@looker/components-theme-editor` package
-- Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
-- Preview: `ActionListControls` component (this component is not yet ready for general-use)
-- Preview: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
 
 ## [0.9.15] - 2020-09-21
 
