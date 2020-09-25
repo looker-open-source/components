@@ -66,10 +66,3 @@ export const DraftFilter: FC<DraftFilterProps> = ({
     </Popover>
   )
 }
-
-/**
- *
- *             draft={draftFilter}
-            onClick={handleSecondFilterList}
-            option={'suggestion 1'}
- */
