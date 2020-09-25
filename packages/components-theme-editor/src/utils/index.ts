@@ -25,4 +25,3 @@
  */
 
 export * from './arrayToSelectOptions'
-export * from './filterObject'
