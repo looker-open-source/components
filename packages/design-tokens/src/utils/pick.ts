@@ -24,25 +24,6 @@
 
  */
 
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
-export * from './GoogleFontsLoader'
+import { pick } from '@styled-system/props'
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
-
-// Useful external utilities
-export * from './utils/animations'
-export * from './utils/omit'
-export * from './utils/pick'
-export { generateTheme } from './utils/theme'
-export type { ThemeCustomizations } from './utils/theme'
-
-export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './utils/color/blend'
-export { generatePressed, generateInteractive } from './utils/color/stateful'
+export const pickStyledProps = pick

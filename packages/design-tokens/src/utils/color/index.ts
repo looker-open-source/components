@@ -26,34 +26,24 @@
 
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
-import {
-  Colors,
-  CoreColors,
-  IntentColors,
-  SpecifiableColors,
-} from '../../system'
-import { generateSurfaceColors } from './surface'
+import { Colors, SpecifiableColors } from '../../system'
 import { generateBlendColors } from './blend'
 import { generateStatefulColors } from './stateful'
-import { generateIntentDerivatives } from './intent'
+import { generateDerivativeColors } from './derivatives'
 
 export const generateColors = (
-  themeColors: CoreColors & IntentColors,
-  customColors?: Partial<CoreColors & IntentColors>
+  themeColors: SpecifiableColors,
+  customColors?: Partial<SpecifiableColors>
 ): Colors => {
-  const colors = { ...themeColors, ...pickBy(customColors, identity) }
+  const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
 
-  const specifiableColors: SpecifiableColors = {
-    ...colors,
-    ...generateSurfaceColors(colors),
-    ...generateIntentDerivatives(colors),
-  }
-
-  const blends = generateBlendColors(specifiableColors)
-  const statefulColors = generateStatefulColors(specifiableColors)
+  const derivatives = generateDerivativeColors(specifiable)
+  const blends = generateBlendColors(specifiable)
+  const statefulColors = generateStatefulColors(specifiable, derivatives)
 
   return {
-    ...specifiableColors,
+    ...specifiable,
+    ...derivatives,
     ...blends,
     ...statefulColors,
   }

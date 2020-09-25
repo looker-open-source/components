@@ -40,7 +40,7 @@ exports[`ChipButton renders correctly 1`] = `
 
 .c0[disabled] {
   background: #F5F6F7;
-  color: #707781;
+  color: #71767a;
 }
 
 .c0[disabled]:hover {
@@ -73,7 +73,7 @@ exports[`ChipButton renders correctly 1`] = `
 
 .c1[disabled] {
   background: #F5F6F7;
-  color: #707781;
+  color: #71767a;
   cursor: default;
 }
 
@@ -98,7 +98,7 @@ exports[`ChipButton renders correctly 1`] = `
 .c1[aria-selected='false'][disabled] {
   background: #FFFFFF;
   border-color: #DEE1E5;
-  color: #707781;
+  color: #71767a;
 }
 
 <span

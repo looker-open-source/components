@@ -63,7 +63,7 @@ exports[`Badge renders all intents 3`] = `
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   background: #edeeef;
-  color: #52585f;
+  color: #525659;
   border-radius: 50px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

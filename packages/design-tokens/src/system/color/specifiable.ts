@@ -24,33 +24,36 @@
 
  */
 
-export interface SurfaceColors {
+export const coreColors: Array<keyof CoreColors> = ['key', 'background', 'text']
+
+export interface CoreColors {
   /**
-   * Default input background
-   * Text input, select input
+   * Default page background
+   * Used for: application background
    * @default white
    */
-  field: string
+  background: string
   /**
-   * High contrast surface
-   * Used for: Tooltip background
+   * TODO
+   * Used for: Text
    * @default charcoal800
    */
-  inverse: string
+  text: string
   /**
-   * Inverse color on high contrast elements
-   * Used for: Icons in main nav, Text on primary buttons
-   * @default white
+   * Key color is applied strategically across the UI
+   * Used for: default action buttons, toggle switches, interactive component accents
+   * @default purple400
    */
-  inverseOn: string
+  key: string
 }
 
-export type IntentNames =
-  | 'critical'
-  | 'warn'
-  | 'neutral'
-  | 'positive'
-  | 'inform'
+export const intentColors: Array<keyof IntentColors> = [
+  'link',
+  'critical',
+  'warn',
+  'positive',
+  'inform',
+]
 
 export interface IntentColors {
   /**
@@ -72,13 +75,6 @@ export interface IntentColors {
    */
   warn: string
   /**
-   * Neutral intent color
-   * Used for: Non-destructive cancel actions
-   * @note This is can be automatically derived using the background & text colors
-   * @default charcoal400
-   */
-  neutral: string
-  /**
    * Positive intent color
    * Used for: Positive banner
    * @default green500
@@ -92,10 +88,8 @@ export interface IntentColors {
   inform: string
 }
 
-export interface IntentDerivativeColors {
-  /**
-   * Link text color on interaction
-   * Used for: Link :active, :focused and :hover states
-   */
-  linkInteractive: string
-}
+export type SpecifiableColors = CoreColors & IntentColors
+export const specifiableColors: Array<keyof SpecifiableColors> = [
+  ...coreColors,
+  ...intentColors,
+]

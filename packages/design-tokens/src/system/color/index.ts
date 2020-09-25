@@ -26,45 +26,18 @@
 
 import { BlendColors } from './blends'
 import { StatefulColors } from './stateful'
-import {
-  IntentColors,
-  SurfaceColors,
-  IntentDerivativeColors,
-} from './specifiable'
+import { SpecifiableColors } from './specifiable'
+import { DerivativeColors } from './derivative'
 
-export interface CoreColors {
-  /**
-   * Default page background
-   * Used for: application background
-   * @default white
-   */
-  background: string
-  /**
-   * TODO
-   * Used for: Text
-   * @default charcoal800
-   */
-  text: string
-  /**
-   * Key color is applied strategically across the UI
-   * Used for: default action buttons, toggle switches, interactive component accents
-   * @default purple400
-   */
-  key: string
-}
+export type Colors = SpecifiableColors &
+  DerivativeColors &
+  BlendColors &
+  StatefulColors
 
-export interface SpecifiableColors
-  extends CoreColors,
-    SurfaceColors,
-    IntentColors,
-    IntentDerivativeColors {}
+export { coreColors, intentColors, specifiableColors } from './specifiable'
 
-export interface Colors
-  extends SpecifiableColors,
-    BlendColors,
-    StatefulColors {}
-
-export type { IntentColors, IntentNames } from './specifiable'
+export type { DerivativeColors } from './derivative'
+export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
 export type { BlendColors } from './blends'
 export type {
   StatefulColor,
