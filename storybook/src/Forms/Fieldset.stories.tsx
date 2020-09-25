@@ -36,18 +36,12 @@ import {
   Status,
   Tooltip,
   Divider,
+  Form,
 } from '@looker/components'
-
-import styled from 'styled-components'
 
 export default {
   title: 'Forms/Fieldset',
 }
-
-const FieldWrapper = styled.div`
-  margin: 30px auto;
-  width: 600px;
-`
 
 const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
   <>
@@ -69,11 +63,11 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
 )
 
 export const Basic = () => (
-  <FieldWrapper>
+  <Form m="xxlarge" maxWidth="600px">
     <Fieldset>
       <Fields />
     </Fieldset>
-  </FieldWrapper>
+  </Form>
 )
 
 export const Inline = () => (
