@@ -205,7 +205,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           )}
           <FlexItem flex="1">
             <Paragraph fontSize="xsmall">
-              <TextWrapper>{children as string}</TextWrapper>
+              <TextWrapper>{children}</TextWrapper>
             </Paragraph>
           </FlexItem>
           {!detailAccessory && detail}
