@@ -70,7 +70,7 @@ export interface MenuListProps
   compact?: boolean
 
   /**
-   * Display a horizonal rule between each MenuGroup item
+   * Display a horizontal rule between each MenuGroup item
    * @default true
    */
   groupDividers?: boolean
@@ -164,10 +164,10 @@ export const MenuListInternal = forwardRef(
 const dividersStyle = ({ groupDividers = true }: MenuListProps) =>
   groupDividers &&
   css`
-  ${MenuGroup} ~ ${MenuGroup} {
-    border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
-  }
-`
+    ${MenuGroup} ~ ${MenuGroup} {
+      border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
+    }
+  `
 
 export const MenuList = styled(MenuListInternal)`
   ${reset}
