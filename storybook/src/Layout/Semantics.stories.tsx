@@ -126,7 +126,14 @@ const CustomGrid = styled(Grid)`
 `
 
 const Highlighter = styled.div`
+  /* Emulate Page behavior for demos */
+  height: 100%;
+  & > ${Layout} {
+    height: 100%;
+  }
+
   /* stylelint-disable color-named */
+
   ${Header}, ${Footer} {
     background-color: lightskyblue;
   }

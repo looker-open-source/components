@@ -47,7 +47,7 @@ export default {
   title: 'Layout/Semantics/ExamplePage',
 }
 
-export const ApiExplorer = () => (
+export const ExamplePage = () => (
   <Highlighter>
     <Page>
       <Header height="4rem" px="large">
@@ -127,7 +127,9 @@ export const ApiExplorer = () => (
           Alternate Aside
         </AsideAlt>
       </Layout>
-      <Footer>Hi to me too!</Footer>
+      <Footer height="3rem" px="large">
+        I'm a footer
+      </Footer>
     </Page>
   </Highlighter>
 )
