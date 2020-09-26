@@ -61,5 +61,3 @@ export const CompareThemes: FC = () => (
 export default {
   title: 'Theme',
 }
-
-export * from './Editor'
