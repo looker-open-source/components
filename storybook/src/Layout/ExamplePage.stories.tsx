@@ -44,16 +44,16 @@ import {
 import styled from 'styled-components'
 
 export default {
-  title: 'Layout',
+  title: 'Layout/Semantics/ExamplePage',
 }
 
 export const ApiExplorer = () => (
   <Highlighter>
-    <Page supportsScroll={false}>
-      <Header isFixed height="4rem" px="large">
+    <Page>
+      <Header height="4rem" px="large">
         Header
       </Header>
-      <Layout>
+      <Layout hasAside>
         <Aside p="large" width="200px">
           Aside
         </Aside>
@@ -149,7 +149,7 @@ const Highlighter = styled.div`
     background-color: lightskyblue;
   }
 
-  ${Main}, ${Section} {
+  ${Section} {
     background-color: lightgoldenrodyellow;
   }
 `
