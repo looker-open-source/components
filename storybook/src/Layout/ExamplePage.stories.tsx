@@ -29,7 +29,6 @@ import {
   Layout,
   Header,
   Aside,
-  Main,
   Footer,
   Page,
   Heading,
@@ -45,20 +44,20 @@ import {
 import styled from 'styled-components'
 
 export default {
-  title: 'Layout',
+  title: 'Layout/Semantics/ExamplePage',
 }
 
-export const ApiExplorer = () => (
+export const ExamplePage = () => (
   <Highlighter>
-    <Page supportsScroll={false}>
-      <Header isFixed height="4rem" px="large">
+    <Page>
+      <Header height="4rem" px="large">
         Header
       </Header>
-      <Layout>
+      <Layout hasAside>
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Main p="xxlarge">
+        <Section p="xxlarge" as="main">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -123,12 +122,14 @@ export const ApiExplorer = () => (
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </Main>
+        </Section>
         <AsideAlt p="xxlarge" width="25rem">
           Alternate Aside
         </AsideAlt>
       </Layout>
-      <Footer>Hi to me too!</Footer>
+      <Footer height="3rem" px="large">
+        I'm a footer
+      </Footer>
     </Page>
   </Highlighter>
 )
@@ -150,7 +151,7 @@ const Highlighter = styled.div`
     background-color: lightskyblue;
   }
 
-  ${Main}, ${Section} {
+  ${Section} {
     background-color: lightgoldenrodyellow;
   }
 `
