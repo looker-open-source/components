@@ -25,21 +25,9 @@
  */
 
 import React, { useState } from 'react'
-import { Fieldset, FieldRangeSlider, Space, Button } from '@looker/components'
-
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <ReadOnly />
-    <Steps />
-    <Floating />
-    <Controlled />
-  </Fieldset>
-)
+import { FieldRangeSlider, Space, Button } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/RangeSlider',
 }
 
@@ -54,7 +42,7 @@ export const ReadOnly = () => (
 )
 
 export const Controlled = () => {
-  const [controlledValue, setControlledValue] = useState([0, 40])
+  const [controlledValue, setControlledValue] = useState([30, 40])
   const handleChange: (value: number[]) => void = (value: number[]) =>
     setControlledValue(value)
 

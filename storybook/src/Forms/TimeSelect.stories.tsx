@@ -26,18 +26,7 @@
 import React, { useState } from 'react'
 import { ButtonToggle, FieldTimeSelect, Fieldset } from '@looker/components'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Required />
-    <Error />
-    <Controlled />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/TimeSelect',
 }
 

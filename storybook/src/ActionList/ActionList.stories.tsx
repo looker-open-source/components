@@ -39,6 +39,12 @@ import React from 'react'
 import { columns, data, filters } from './data'
 import { items } from './items'
 
+export * from './ActionListSortable'
+
+export default {
+  title: 'ActionList',
+}
+
 interface DemoProps extends ActionListManagerProps {
   isLoading?: boolean
   noResults?: boolean
@@ -137,8 +143,4 @@ Primary.args = {
   isLoading: false,
   noResults: false,
   noResultsDisplay: true,
-}
-
-export default {
-  title: 'ActionList',
 }

@@ -1,5 +1,4 @@
 import { addDecorator } from '@storybook/react'
-import componentsDecorator from './componentsDecorator'
 import React from 'react'
 import {
   ArgsTable,
@@ -7,6 +6,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs/blocks'
+import { componentsDecorator } from '../config/componentsDecorator'
 
 export const parameters = {
   layout: 'fullscreen',

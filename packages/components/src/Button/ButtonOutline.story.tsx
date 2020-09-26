@@ -25,17 +25,30 @@
  */
 
 import React from 'react'
-import { Button, ButtonProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { ButtonProps } from './ButtonBase'
+import { ButtonOutline } from './ButtonOutline'
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<ButtonProps> = (args) => <ButtonOutline {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Text',
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Button Outline Text',
+}
+
+export const Critical = Template.bind({})
+Critical.args = {
+  ...Basic.args,
+  color: 'critical',
+}
+
+export const Neutral = Template.bind({})
+Neutral.args = {
+  ...Basic.args,
+  color: 'neutral',
 }
 
 export default {
-  component: Button,
-  title: 'Button',
+  component: ButtonOutline,
+  title: 'ButtonOutline',
 }

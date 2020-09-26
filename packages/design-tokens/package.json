@@ -12,6 +12,10 @@
     "url": "https://github.com/looker-open-source/components",
     "directory": "packages/design-tokens"
   },
+  "scripts": {
+    "storybook": "start-storybook  -c .storybook -p 3302  --host 0.0.0.0",
+    "storybook-build": "build-storybook -c .storybook"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -23,6 +27,11 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "@looker/components-providers": "*",
+    "@looker/components": "*",
+    "@storybook/addon-storyshots": "^6.0.22",
+    "@storybook/addon-storyshots-puppeteer": "^6.0.22",
+    "@storybook/react": "^6.0.22",
     "@types/lodash": "^4.14.161",
     "@types/styled-components": "^4.4.1",
     "csstype": "^3.0.2",

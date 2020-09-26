@@ -25,17 +25,48 @@
  */
 
 import React from 'react'
-import { ButtonOutline, ButtonProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { ButtonProps } from './ButtonBase'
+import { ButtonTransparent } from './ButtonTransparent'
 
-const Template: Story<ButtonProps> = (args) => <ButtonOutline {...args} />
+const Template: Story<ButtonProps> = (args) => <ButtonTransparent {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Outline Text',
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Button Transparent Text',
+}
+
+export const Critical = Template.bind({})
+Critical.args = {
+  ...Basic.args,
+  color: 'critical',
+}
+
+export const Neutral = Template.bind({})
+Neutral.args = {
+  ...Basic.args,
+  color: 'neutral',
+}
+
+export const XSmall = Template.bind({})
+XSmall.args = {
+  ...Basic.args,
+  size: 'xsmall',
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  ...Basic.args,
+  size: 'small',
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  ...Basic.args,
+  size: 'large',
 }
 
 export default {
-  component: ButtonOutline,
-  title: 'ButtonOutline',
+  component: ButtonTransparent,
+  title: 'ButtonTransparent',
 }

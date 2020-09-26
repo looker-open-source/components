@@ -28,7 +28,6 @@ import React, { FC, useMemo, useState } from 'react'
 import {
   Box,
   FieldSelectMulti,
-  Fieldset,
   Heading,
   Icon,
   List,
@@ -63,18 +62,7 @@ const selectOptions = [
   { value: 'Kiwis3' },
 ]
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <ValidationError />
-    <KitchenSink />
-    <CopyPaste />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/SelectMulti',
 }
 

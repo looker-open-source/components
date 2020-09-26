@@ -24,19 +24,9 @@
 
  */
 import React from 'react'
-import { Fieldset, FieldRadio } from '@looker/components'
-
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Checked />
-    <Disabled />
-    <Required />
-  </Fieldset>
-)
+import { FieldRadio } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/Radio',
 }
 

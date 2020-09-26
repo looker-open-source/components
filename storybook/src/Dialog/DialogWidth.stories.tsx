@@ -31,20 +31,9 @@ import {
   Dialog,
   DialogManager,
   Confirm,
-  Space,
 } from '@looker/components'
 
-export const All = () => (
-  <Space>
-    <DialogFixedWidth />
-    <DialogResponsiveWidth />
-    <DialogManagerWidth />
-    <ConfirmWidth />
-  </Space>
-)
-
 export default {
-  component: All,
   title: 'Dialog/MaxWidth',
 }
 

@@ -25,17 +25,8 @@
  */
 
 import React from 'react'
-import { ButtonTransparent, ButtonProps } from '@looker/components'
-import { Story } from '@storybook/react/types-6-0'
+import { ComponentsProvider } from '@looker/components-providers'
 
-const Template: Story<ButtonProps> = (args) => <ButtonTransparent {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Transparent Text',
-}
-
-export default {
-  component: ButtonTransparent,
-  title: 'ButtonTransparent',
-}
+export const componentsDecorator = (storyFn) => (
+  <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
+)

@@ -29,25 +29,14 @@ import {
   ButtonItem,
   Space,
   Box,
-  Grid,
   FieldToggleSwitch,
   Divider,
   ButtonToggle,
 } from '@looker/components'
 import React, { useEffect, useState, FormEvent } from 'react'
 
-export const All = () => (
-  <Grid columns={1}>
-    <Basic />
-    <InitialValues />
-    <Options />
-    <Wrapping />
-  </Grid>
-)
-
 export default {
-  component: All,
-  title: 'Buttons/ButtonGroup',
+  title: 'ButtonGroup',
 }
 
 export const Basic = () => {
