@@ -256,8 +256,6 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   align-items: center;
   display: flex;
   height: 100%;
-  max-height: ${({ theme }) => theme.lineHeights.xsmall};
-  overflow: visible;
   padding-right: ${({ detailAccessory, theme }) =>
     detailAccessory && theme.space.xxsmall};
 `

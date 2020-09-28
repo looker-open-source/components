@@ -35,6 +35,7 @@ import {
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
+import { IconButton } from '../Button'
 import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
@@ -242,6 +243,13 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
+  }
+
+  ${TreeItemLabel} {
+    ${IconButton} {
+      max-height: ${({ theme }) => theme.lineHeights.xsmall};
+      overflow: visible;
+    }
   }
 `
 
