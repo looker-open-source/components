@@ -128,6 +128,7 @@ const PickerItem = () => {
 const addButton = (
   <ButtonTransparent
     size="xxsmall"
+    mt="xxxsmall"
     iconBefore="Plus"
     onClick={() => alert('Hello Mouse')}
     onKeyDown={(event) => {
