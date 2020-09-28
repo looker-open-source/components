@@ -52,7 +52,6 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   const { tooltip, ...triggerProps } = useTooltip({
     content: children,
     disabled: !isTruncated,
-    maxWidth: '700px',
     placement: 'top-start',
     surfaceStyles: {
       backgroundColor: 'background',

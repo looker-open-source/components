@@ -127,7 +127,7 @@ export function useTooltip({
   content,
   isOpen: initializeOpen = false,
   width,
-  maxWidth,
+  maxWidth = '30rem',
   textAlign,
   disabled,
   surfaceStyles,
