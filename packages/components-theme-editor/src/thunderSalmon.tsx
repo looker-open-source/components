@@ -24,9 +24,24 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import React, { FC } from 'react'
+import { ButtonProps, ButtonTransparent } from '@looker/components'
+import { ThemeEditableProps } from './types'
+
+export const thunderSalmon: ThemeEditableProps = {
+  colors: {
+    background: 'lightsalmon',
+    critical: '#f23900',
+    inform: '#ff6991',
+    key: 'salmon',
+    link: '#420f00',
+    positive: '#ffc8b7',
+    text: 'white',
+    warn: '#ffd769',
+  },
+  fontFamilies: { body: 'Papyrus', brand: 'Impact', code: 'Papyrus' },
+}
+
+export const ThunderSalmon: FC<ButtonProps> = (props) => (
+  <ButtonTransparent {...props}>⚡️ 🍣</ButtonTransparent>
+)

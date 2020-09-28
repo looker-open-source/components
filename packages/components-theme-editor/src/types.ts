@@ -24,9 +24,15 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import {
+  CoreColors,
+  FontFamilyChoices,
+  IntentColors,
+} from '@looker/design-tokens'
+
+export type SpecifiableColors = CoreColors & IntentColors
+
+export interface ThemeEditableProps {
+  colors?: Partial<SpecifiableColors>
+  fontFamilies?: Partial<FontFamilyChoices>
+}

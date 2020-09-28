@@ -24,9 +24,26 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import { FieldColor } from '@looker/components'
+import capitalize from 'lodash/capitalize'
+import React, { FC, FormEvent } from 'react'
+import { SpecifiableColors } from '@looker/design-tokens/src'
+
+export interface ThemeFieldColorProps {
+  color: string
+  colors?: Partial<SpecifiableColors>
+  onChange: (event: FormEvent<HTMLInputElement>) => void
+}
+
+export const ThemeFieldColor: FC<ThemeFieldColorProps> = ({
+  color,
+  colors,
+  onChange,
+}) => (
+  <FieldColor
+    label={capitalize(color)}
+    name={color}
+    value={colors && colors[color]}
+    onChange={onChange}
+  />
+)

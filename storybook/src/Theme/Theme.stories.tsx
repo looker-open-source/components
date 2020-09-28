@@ -24,9 +24,40 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import { Grid } from '@looker/components'
+import React, { FC } from 'react'
+import { Editor, EditorProps } from './Editor'
+
+export const ThemeEditor: FC<EditorProps> = (props) => (
+  <>
+    <Editor {...props} />
+  </>
+)
+
+export const CompareThemes: FC = () => (
+  <Grid m="xlarge" gap="large" columns={4}>
+    <Editor name="Default" />
+    <Editor
+      name="Generated"
+      themeCustomizations={{
+        colors: { key: '#6C43E0' },
+      }}
+    />
+    <Editor
+      name="Customer Blue"
+      themeCustomizations={{
+        colors: { key: '#116DFF' },
+      }}
+    />
+    <Editor
+      name="THUNDER Salmon"
+      themeCustomizations={{
+        colors: { background: '#000000', key: '#ff3ca0', text: '#FFFFFF' },
+      }}
+    />
+  </Grid>
+)
+
+export default {
+  title: 'Theme',
+}

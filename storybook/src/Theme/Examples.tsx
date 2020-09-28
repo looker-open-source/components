@@ -24,9 +24,43 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import {
+  Card,
+  CardContent,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+} from '@looker/components'
+import {
+  ComponentSuite,
+  ColorSwatches,
+  FauxDashboard,
+} from '@looker/components-theme-editor'
+import React from 'react'
+
+export const Examples = () => (
+  <Card width="100%">
+    <CardContent>
+      <Tabs>
+        <TabList>
+          <Tab>Colors</Tab>
+          <Tab>Components</Tab>
+          <Tab>Faux Dashboard</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ColorSwatches />
+          </TabPanel>
+          <TabPanel>
+            <ComponentSuite />
+          </TabPanel>
+          <TabPanel>
+            <FauxDashboard />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </CardContent>
+  </Card>
+)

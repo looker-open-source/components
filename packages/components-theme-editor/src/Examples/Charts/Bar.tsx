@@ -24,9 +24,50 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import { Box } from '@looker/components'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
+  <ul className={className}>
+    <li>
+      <Box mx="large" height="20%" title="Gouda" bg="inform"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="60%" title="Cheddar" bg="positive"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="90%" title="Swiss" bg="warn"></Box>
+    </li>
+    <li>
+      <Box mx="large" height="40%" title="Blue" bg="critical"></Box>
+    </li>
+  </ul>
+)
+
+export const FauxBarChart = styled(FauxChartLayout)`
+  display: table;
+  height: calc(100% - 1.5rem);
+  table-layout: fixed;
+  width: 100%;
+
+  li {
+    display: table-cell;
+    height: 90%;
+    position: relative;
+    vertical-align: bottom;
+  }
+
+  div::before {
+    content: attr(title);
+    display: block;
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    left: 0;
+    padding: 5px 1rem 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 100%;
+    word-wrap: break-word;
+  }
+`

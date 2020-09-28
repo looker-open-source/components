@@ -58,14 +58,14 @@ export const SelectManagerReturnTable = () => (
       <TableRow>
         <TableDataCell pr="large">setSelections</TableDataCell>
         <TableDataCell pr="large">
-          <Code>(selections: string[]) => void</Code>
+          <Code>(selections: string[]) ={'>'} void</Code>
         </TableDataCell>
         <TableDataCell>The setter for the selections state.</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell pr="large">onSelect</TableDataCell>
         <TableDataCell pr="large">
-          <Code>(id: string) => void</Code>
+          <Code>(id: string) ={'>'} void</Code>
         </TableDataCell>
         <TableDataCell>
           A callback function that accepts a string id, and will add that string
@@ -76,7 +76,7 @@ export const SelectManagerReturnTable = () => (
       <TableRow>
         <TableDataCell pr="large">onSelectAll</TableDataCell>
         <TableDataCell pr="large">
-          <Code>() => void</Code>
+          <Code>() ={'>'} void</Code>
         </TableDataCell>
         <TableDataCell>
           A callback function that accepts no parameters, and will add all

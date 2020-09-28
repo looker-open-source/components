@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "@looker/components": "*",
+    "@looker/components-theme-editor": "*",
     "@looker/design-tokens": "*",
     "@looker/icons": "*",
-    "@storybook/react": "^6.0.21",
+    "@storybook/react": "^6.0.22",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-storybook-addon-props-combinations": "^1.1.0",

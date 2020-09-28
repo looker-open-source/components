@@ -24,26 +24,4 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React, { FC } from 'react'
-import { Editor } from './Editor.stories'
-
-export const Compare: FC = () => (
-  <Grid m="xlarge" gap="large" columns={4}>
-    <Editor name="Default" />
-    <Editor name="Generated" keyColor="#6C43E0" />
-    <Editor name="Customer Blue" keyColor="#116DFF" />
-    <Editor
-      name="THUNDER Salmon"
-      keyColor="#ff3ca0"
-      background="#000000"
-      text="#FFFFFF"
-    />
-  </Grid>
-)
-
-export default {
-  title: 'Theme',
-}
-
-export * from './Editor.stories'
+export * from './arrayToSelectOptions'

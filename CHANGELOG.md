@@ -7,28 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-<<<<<<< HEAD
+
 ### Added
 
 - `Truncate` component
-=======
+
 - `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
-
->>>>>>> master
 - Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
 - Preview: `ActionListControls` component (this component is not yet ready for general-use)
+- Experimental: `@looker/components-theme-editor` package
+- Experimental: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
+
 
 ### Changed
 
-<<<<<<< HEAD
 - `TreeItem` now supports text truncation behavior
-=======
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
->>>>>>> master
 
 ## [0.9.15] - 2020-09-21
 
