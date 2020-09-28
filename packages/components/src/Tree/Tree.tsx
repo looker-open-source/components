@@ -234,10 +234,12 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${TreeItemLabel} {
       background-color: transparent;
+      padding-left: ${({ theme }) => theme.space.none};
     }
   }
 
   ${TreeGroupLabel},
+  ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
