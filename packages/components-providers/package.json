@@ -22,10 +22,12 @@
     "@types/react": "^16.9.49",
     "@types/styled-components": "^4.4.1",
     "react": "^16.13.1",
+    "react-is": "^16.13.1",
     "styled-components": "^4.4.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
+    "react": "^16.11",
+    "react-is": "^16.11",
     "styled-components": "^4"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
