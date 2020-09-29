@@ -251,6 +251,7 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   min-height: ${({ theme }) => theme.sizes.medium};
   min-width: 0;
   outline: none;
+  /* TODO: Make sure to remove this (or just remove px) after Truncation PR is merged in */
   padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
