@@ -77,7 +77,7 @@ const StyledIcon = styled(Icon)`
 `
 
 export const AccordionDisclosureLayout = styled(Layout)`
-align-items: flex-start;
+  align-items: flex-start;
   display: flex;
   width: 100%;
 
