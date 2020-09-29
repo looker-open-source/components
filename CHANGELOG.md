@@ -13,11 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Truncate` component
 - `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
-- Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
-- Preview: `ActionListControls` component (this component is not yet ready for general-use)
-- Experimental: `@looker/components-theme-editor` package
-- Experimental: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
 
+* Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
+* Preview: `ActionListControls` component (this component is not yet ready for general-use)
+* Experimental: `@looker/components-theme-editor` package
+* Experimental: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
 
 ### Changed
 
