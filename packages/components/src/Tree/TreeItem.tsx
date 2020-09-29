@@ -251,6 +251,7 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   min-height: ${({ theme }) => theme.sizes.medium};
   min-width: 0;
   outline: none;
+  padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
