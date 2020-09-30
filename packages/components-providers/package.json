@@ -16,7 +16,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.9.15"
+    "@looker/design-tokens": "^0.9.15",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "@types/react": "^16.9.49",

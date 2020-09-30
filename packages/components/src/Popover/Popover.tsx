@@ -24,6 +24,7 @@
 
  */
 
+import { useScrollLock } from '@looker/components-providers'
 import { Placement } from '@popperjs/core'
 import React, {
   useContext,
@@ -49,7 +50,6 @@ import {
   useHovered,
   usePopper,
   UsePopperProps,
-  useScrollLock,
   useForkedRef,
 } from '../utils'
 
@@ -406,7 +406,7 @@ export function usePopover({
     enable: enableScrollLock,
     isEnabled: scrollLockEnabled,
     disable: disableScrollLock,
-  } = useScrollLock(controlledIsOpen, true)
+  } = useScrollLock(controlledIsOpen)
 
   const {
     callbackRef: focusRef,

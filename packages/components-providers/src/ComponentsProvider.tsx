@@ -35,6 +35,7 @@ import {
   theme as defaultTheme,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
+import { ScrollLockProvider } from './ScrollLock'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
 /**
@@ -89,11 +90,13 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   }, [props.theme, colors, fontFamilies])
 
   return (
-    <ThemeProvider {...props} theme={theme}>
-      {globalStyle && <GlobalStyle />}
-      {loadGoogleFonts && <GoogleFontsLoader />}
-      {ie11Support && <IEGlobalStyle />}
-      {children}
-    </ThemeProvider>
+    <ScrollLockProvider>
+      <ThemeProvider {...props} theme={theme}>
+        {globalStyle && <GlobalStyle />}
+        {loadGoogleFonts && <GoogleFontsLoader />}
+        {ie11Support && <IEGlobalStyle />}
+        {children}
+      </ThemeProvider>
+    </ScrollLockProvider>
   )
 }

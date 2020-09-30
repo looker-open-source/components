@@ -23,5 +23,43 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import { useContext, useEffect, useRef, useState } from 'react'
+import { ScrollLockContext } from './ScrollLockProvider'
+
+export function useScrollLock(
+  enabled = false,
+  allowScrollWithin?: HTMLElement | null
+) {
+  const { addLock, removeLock } = useContext(ScrollLockContext)
+  const idRef = useRef(Date.now().toString())
+
+  const [internalEnabled, setEnabled] = useState(enabled)
+  useEffect(() => {
+    setEnabled(enabled)
+  }, [enabled])
+
+  const [element, setElement] = useState<HTMLElement | null>(null)
+  const elementToUse =
+    allowScrollWithin !== undefined ? allowScrollWithin : element
+
+  useEffect(() => {
+    const id = idRef.current
+    if (elementToUse && internalEnabled) {
+      addLock(id, elementToUse)
+    } else {
+      removeLock(id)
+    }
+    return () => {
+      removeLock(id)
+    }
+  }, [addLock, removeLock, internalEnabled, elementToUse])
+
+  return {
+    callbackRef: setElement,
+    disable: () => setEnabled(false),
+    element: element || null,
+    enable: () => setEnabled(true),
+    isEnabled: internalEnabled,
+  }
+}
