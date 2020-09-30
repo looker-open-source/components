@@ -26,7 +26,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { DialogContext } from '../Dialog'
+import { ScrollLockProvider } from './ScrollLockProvider'
 import { useScrollLock } from './useScrollLock'
 
 const ScrollLockComponent = ({ enabled }: { enabled: boolean }) => {
@@ -43,7 +43,11 @@ const ScrollLockComponent = ({ enabled }: { enabled: boolean }) => {
 describe('useScrollLock', () => {
   describe('toggle body styles', () => {
     test('with no existing style', () => {
-      render(<ScrollLockComponent enabled={false} />)
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent enabled={false} />
+        </ScrollLockProvider>
+      )
       expect(document.body).not.toHaveStyle({ overflow: 'hidden' })
       const enable = screen.getByText('enable')
       fireEvent.click(enable)
@@ -57,7 +61,11 @@ describe('useScrollLock', () => {
     test('with existing style', () => {
       // create an existing style
       document.body.style.overflow = 'scroll'
-      render(<ScrollLockComponent enabled={false} />)
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent enabled={false} />
+        </ScrollLockProvider>
+      )
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
       const enable = screen.getByText('enable')
       fireEvent.click(enable)
@@ -66,23 +74,6 @@ describe('useScrollLock', () => {
       const disable = screen.getByText('disable')
       fireEvent.click(disable)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
-    })
-
-    test('with existing scroll lock (DialogContext)', () => {
-      document.body.style.overflow = 'hidden'
-      render(
-        <DialogContext.Provider
-          value={{ closeModal: () => null, scrollLockEnabled: true }}
-        >
-          <ScrollLockComponent enabled={false} />
-        </DialogContext.Provider>
-      )
-      // After enable/disable, overflow: hidden should still be on the body, due to the existing scroll
-      const enable = screen.getByText('enable')
-      fireEvent.click(enable)
-      const disable = screen.getByText('disable')
-      fireEvent.click(disable)
-      expect(document.body).toHaveStyle({ overflow: 'hidden' })
     })
   })
 })
