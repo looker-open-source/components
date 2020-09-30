@@ -24,19 +24,33 @@
 
  */
 
+import { ScrollLockProvider } from '@looker/components-providers'
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { ScrollLockProvider } from './ScrollLockProvider'
-import { useScrollLock } from './useScrollLock'
+import { useScrollLock, useToggle } from './'
 
-const ScrollLockComponent = ({ enabled }: { enabled: boolean }) => {
-  const { callbackRef, isEnabled, enable, disable } = useScrollLock(enabled)
+const globalConsole = global.console
+const warnMock = jest.fn()
+
+beforeEach(() => {
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  jest.resetAllMocks()
+  global.console = globalConsole
+})
+
+const ScrollLockComponent = () => {
+  const [, ref] = useScrollLock()
+  const { value, toggle } = useToggle()
   return (
-    <div ref={callbackRef}>
-      <button onClick={() => enable()}>enable</button>
-      <button onClick={() => disable()}>disable</button>
-      <div>{isEnabled}</div>
-    </div>
+    <>
+      {value && <div ref={ref} />}
+      <button onClick={toggle}>toggle</button>
+    </>
   )
 }
 
@@ -45,16 +59,15 @@ describe('useScrollLock', () => {
     test('with no existing style', () => {
       render(
         <ScrollLockProvider>
-          <ScrollLockComponent enabled={false} />
+          <ScrollLockComponent />
         </ScrollLockProvider>
       )
       expect(document.body).not.toHaveStyle({ overflow: 'hidden' })
-      const enable = screen.getByText('enable')
-      fireEvent.click(enable)
-      // haven't found a way to test scrollbar offset style yet
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+      // haven't found a way to test scrollbar offset style
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
-      const disable = screen.getByText('disable')
-      fireEvent.click(disable)
+      fireEvent.click(toggle)
       expect(document.body).not.toHaveStyle({ overflow: 'hidden' })
     })
 
@@ -63,17 +76,28 @@ describe('useScrollLock', () => {
       document.body.style.overflow = 'scroll'
       render(
         <ScrollLockProvider>
-          <ScrollLockComponent enabled={false} />
+          <ScrollLockComponent />
         </ScrollLockProvider>
       )
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
-      const enable = screen.getByText('enable')
-      fireEvent.click(enable)
-      // haven't found a way to test scrollbar offset style yet
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+      // haven't found a way to test scrollbar offset style
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
-      const disable = screen.getByText('disable')
-      fireEvent.click(disable)
+      fireEvent.click(toggle)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
+      document.body.style.overflow = ''
     })
+  })
+
+  test('warning when used without ScrollLockProvider', () => {
+    render(<ScrollLockComponent />)
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "ScrollLockContext is missing. Please wrap all @looker/components in a ComponentsProvider.",
+        ],
+      ]
+    `)
   })
 })

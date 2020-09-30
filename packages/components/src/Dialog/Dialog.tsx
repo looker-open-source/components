@@ -24,13 +24,12 @@
 
  */
 
-import { useScrollLock } from '@looker/components-providers'
 import React, { CSSProperties, FC } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { Portal } from '../Portal'
-import { useFocusTrap } from '../utils'
+import { useFocusTrap, useScrollLock } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
 import { Surface } from './Surface'
@@ -85,12 +84,8 @@ export const Dialog: FC<DialogProps> = ({
     isEnabled: focusTrapEnabled,
     trapRef: focusTrapRef,
   } = useFocusTrap(isOpen)
-  const {
-    callbackRef: scrollRef,
-    disable: disableScrollLock,
-    enable: enableScrollLock,
-    isEnabled: scrollLockEnabled,
-  } = useScrollLock(isOpen || false)
+
+  const [, scrollRef] = useScrollLock()
 
   const handleClose = () => {
     onClose && onClose()
@@ -101,12 +96,9 @@ export const Dialog: FC<DialogProps> = ({
       value={{
         closeModal: handleClose,
         disableFocusTrap,
-        disableScrollLock,
         enableFocusTrap,
-        enableScrollLock,
         focusTrapEnabled,
         focusTrapRef,
-        scrollLockEnabled,
       }}
     >
       <CSSTransition

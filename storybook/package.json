@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@looker/components": "^0.9.15",
+    "@looker/components-providers": "^0.9.15",
     "@looker/design-tokens": "^0.9.15",
     "@looker/icons": "^0.9.14",
     "@storybook/react": "^6.0.21",

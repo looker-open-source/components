@@ -35,7 +35,7 @@ import {
   theme as defaultTheme,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
-import { ScrollLockProvider } from './ScrollLock'
+import { ScrollLockProvider } from './ScrollLockProvider'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
 /**

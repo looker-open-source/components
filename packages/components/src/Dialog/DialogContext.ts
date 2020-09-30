@@ -30,13 +30,10 @@ import noop from 'lodash/noop'
 
 export interface DialogContextProps {
   closeModal: () => void
-  enableScrollLock?: () => void
-  disableScrollLock?: () => void
   enableFocusTrap?: () => void
   disableFocusTrap?: () => void
   focusTrapEnabled?: boolean
   focusTrapRef?: MutableRefObject<FocusTrap | undefined>
-  scrollLockEnabled?: boolean
 }
 
 const dialogContext: DialogContextProps = {

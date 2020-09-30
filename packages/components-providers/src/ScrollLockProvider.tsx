@@ -26,7 +26,12 @@
 
 import noop from 'lodash/noop'
 import pick from 'lodash/pick'
-import React, { createContext, ReactNode, useCallback, useRef } from 'react'
+import React, {
+  createContext,
+  ReactNode,
+  useRef,
+  MutableRefObject,
+} from 'react'
 
 function getNodesOrder(nodeA: Node, nodeB: Node) {
   const relationship = nodeA.compareDocumentPosition(nodeB)
@@ -34,28 +39,15 @@ function getNodesOrder(nodeA: Node, nodeB: Node) {
 }
 
 export interface ScrollLockContextProps {
-  addLock: (id: string, element: HTMLElement) => void
-  getLock: (id: string) => HTMLElement | undefined
-  removeLock: (id: string) => void
-  // disableScrollLock: () => void
-  // enableScrollLock: () => void
-  // scrollLockEnabled: boolean
+  activeLockRef?: MutableRefObject<HTMLElement | null>
+  addLock?: (id: string, element: HTMLElement) => void
+  disableCurrentLock?: () => void
+  enableCurrentLock?: () => void
+  getLock?: (id: string) => HTMLElement | undefined
+  removeLock?: (id: string) => void
 }
 
-const scrollLockContext: ScrollLockContextProps = {
-  addLock: () => {
-    //
-  },
-  getLock: () => undefined,
-  removeLock: () => {
-    //
-  },
-  // disableScrollLock: noop,
-  // enableScrollLock: noop,
-  // scrollLockEnabled: false,
-}
-
-export const ScrollLockContext = createContext(scrollLockContext)
+export const ScrollLockContext = createContext<ScrollLockContextProps>({})
 
 export interface ScrollLockMap {
   [key: string]: HTMLElement
@@ -136,8 +128,10 @@ function activateScrollLock(element: HTMLElement) {
   }
 
   const currentStyles = getBodyCurrentStyle()
+
   setBodyStyles()
   window.addEventListener('scroll', stopScroll, true)
+
   return () => {
     window.removeEventListener('scroll', stopScroll, true)
     resetBodyStyles(currentStyles)
@@ -146,46 +140,60 @@ function activateScrollLock(element: HTMLElement) {
 
 export function ScrollLockProvider({ children }: { children: ReactNode }) {
   const registeredLocksRef = useRef<ScrollLockMap>({})
-  const activeLockElementRef = useRef<HTMLElement | null>(null)
+  // tracks the current element where scrolling is allowed
+  // null if no scroll lock is active
+  const activeLockRef = useRef<HTMLElement | null>(null)
+  // stores the callback to remove the event listener and restore body styles
   const deactivateRef = useRef<() => void>(noop)
 
-  const updateScrollLock = useCallback(() => {
-    const newElement = getActiveScrollLock(registeredLocksRef.current)
-    if (newElement !== activeLockElementRef.current) {
-      activeLockElementRef.current = newElement
+  function getLock(id?: string) {
+    const registeredLocks = registeredLocksRef.current
+    return id ? registeredLocks[id] : getActiveScrollLock(registeredLocks)
+  }
+
+  function enableCurrentLock() {
+    const newElement = getLock()
+    if (newElement !== activeLockRef.current) {
+      // Disable the existing scroll lock and update the element
+      activeLockRef.current = newElement
       deactivateRef.current()
+      // If there's a new element, activate a new scroll lock
       if (newElement) {
         deactivateRef.current = activateScrollLock(newElement)
       }
     }
-  }, [])
+  }
 
-  const addLock = useCallback(
-    (id: string, element: HTMLElement) => {
-      registeredLocksRef.current[id] = element
-      updateScrollLock()
-    },
-    [updateScrollLock]
-  )
+  function disableCurrentLock() {
+    deactivateRef.current()
+    activeLockRef.current = null
+  }
 
-  const getLock = useCallback((id: string) => {
-    return registeredLocksRef.current[id]
-  }, [])
+  function addLock(id: string, element: HTMLElement) {
+    registeredLocksRef.current[id] = element
+    enableCurrentLock()
+  }
 
-  const removeLock = useCallback(
-    (id: string) => {
-      const existingLock = getLock(id)
-      if (existingLock) {
-        const registeredLocks = registeredLocksRef.current
-        delete registeredLocks[id]
-        updateScrollLock()
-      }
-    },
-    [getLock, updateScrollLock]
-  )
+  function removeLock(id: string) {
+    const existingLock = getLock(id)
+    if (existingLock) {
+      const registeredLocks = registeredLocksRef.current
+      delete registeredLocks[id]
+      enableCurrentLock()
+    }
+  }
 
   return (
-    <ScrollLockContext.Provider value={{ addLock, getLock, removeLock }}>
+    <ScrollLockContext.Provider
+      value={{
+        activeLockRef,
+        addLock,
+        disableCurrentLock,
+        enableCurrentLock,
+        getLock,
+        removeLock,
+      }}
+    >
       {children}
     </ScrollLockContext.Provider>
   )

@@ -61,22 +61,19 @@ const SurfaceLayout = forwardRef(
     { surfaceStyles, className, ...props }: SurfaceProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-      DialogContext
-    )
+    const { closeModal, enableFocusTrap } = useContext(DialogContext)
 
     const wrapperRef = useRef<null | HTMLDivElement>(null)
     const ref = useForkedRef(wrapperRef, forwardedRef)
 
     useEffect(() => {
-      enableScrollLock && enableScrollLock()
       const t = window.setTimeout(() => {
         enableFocusTrap && enableFocusTrap()
       }, theme.transitions.durationModerate)
       return () => {
         window.clearTimeout(t)
       }
-    }, [enableFocusTrap, enableScrollLock])
+    }, [enableFocusTrap])
 
     useGlobalHotkeys('esc', closeModal, wrapperRef)
 

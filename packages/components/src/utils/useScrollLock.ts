@@ -24,42 +24,37 @@
 
  */
 
-import { useContext, useEffect, useRef, useState } from 'react'
-import { ScrollLockContext } from './ScrollLockProvider'
+import { ScrollLockContext } from '@looker/components-providers'
+import { useContext, useEffect } from 'react'
+import { useCallbackRef, useID } from './'
 
-export function useScrollLock(
-  enabled = false,
-  allowScrollWithin?: HTMLElement | null
-) {
+/**
+ * Disable scrolling on the page except within a given element
+ * returns an array containing the element and callback ref
+ * @param forwardedRef optional ref to forward
+ */
+export const useScrollLock: typeof useCallbackRef = (forwardedRef) => {
+  const id = useID()
+  const [element, callbackRef] = useCallbackRef(forwardedRef)
   const { addLock, removeLock } = useContext(ScrollLockContext)
-  const idRef = useRef(Date.now().toString())
-
-  const [internalEnabled, setEnabled] = useState(enabled)
-  useEffect(() => {
-    setEnabled(enabled)
-  }, [enabled])
-
-  const [element, setElement] = useState<HTMLElement | null>(null)
-  const elementToUse =
-    allowScrollWithin !== undefined ? allowScrollWithin : element
 
   useEffect(() => {
-    const id = idRef.current
-    if (elementToUse && internalEnabled) {
-      addLock(id, elementToUse)
-    } else {
-      removeLock(id)
+    if (!addLock) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'ScrollLockContext is missing. Please wrap all @looker/components in a ComponentsProvider.'
+      )
+    }
+  }, [addLock])
+
+  useEffect(() => {
+    if (element) {
+      addLock?.(id, element)
     }
     return () => {
-      removeLock(id)
+      removeLock?.(id)
     }
-  }, [addLock, removeLock, internalEnabled, elementToUse])
+  }, [id, addLock, removeLock, element])
 
-  return {
-    callbackRef: setElement,
-    disable: () => setEnabled(false),
-    element: element || null,
-    enable: () => setEnabled(true),
-    isEnabled: internalEnabled,
-  }
+  return [element, callbackRef]
 }

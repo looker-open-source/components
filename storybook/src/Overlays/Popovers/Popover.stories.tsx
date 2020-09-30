@@ -24,7 +24,8 @@
 
  */
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
+import { ScrollLockContext } from '@looker/components-providers'
 import {
   Box,
   Button,
@@ -195,9 +196,6 @@ export const PopoverFocusTrap = () => {
 
 export const OverlayOpenDialog = () => {
   const { value, setOn, setOff } = useToggle()
-  function openAlert() {
-    alert(`It's working!`)
-  }
   return (
     <SpaceVertical mt="large" align="start">
       <Heading>Popover Opening a Dialog</Heading>
@@ -212,21 +210,7 @@ export const OverlayOpenDialog = () => {
         <Button>Open Popover</Button>
       </Popover>
       <Dialog isOpen={value} onClose={setOff}>
-        <DialogContent>
-          <SpaceVertical align="start">
-            <Paragraph>Try opening the Select and picking an option:</Paragraph>
-            <FieldSelect
-              label="Default Value"
-              width={300}
-              options={options}
-              aria-label="Fruits"
-              defaultValue="1"
-            />
-            <Paragraph>Try clicking the button:</Paragraph>
-            <Button onClick={openAlert}>Open Alert</Button>
-            <Box height={500} />
-          </SpaceVertical>
-        </DialogContent>
+        <DialogInner />
       </Dialog>
       <Heading>Menu Opening a Dialog</Heading>
       <Menu>
@@ -241,6 +225,40 @@ export const OverlayOpenDialog = () => {
       </Menu>
       <Box height={1000} />
     </SpaceVertical>
+  )
+}
+
+const DialogInner = () => {
+  const { activeLockRef, disableCurrentLock, enableCurrentLock } = useContext(
+    ScrollLockContext
+  )
+  function handleClick() {
+    if (activeLockRef && activeLockRef.current) {
+      disableCurrentLock?.()
+    } else {
+      enableCurrentLock?.()
+    }
+  }
+  function openAlert() {
+    alert(`It's working!`)
+  }
+  return (
+    <DialogContent>
+      <SpaceVertical align="start">
+        <Paragraph>Try opening the Select and picking an option:</Paragraph>
+        <Button onClick={handleClick}>Toggle Scroll Lock</Button>
+        <FieldSelect
+          label="Default Value"
+          width={300}
+          options={options}
+          aria-label="Fruits"
+          defaultValue="1"
+        />
+        <Paragraph>Try clicking the button:</Paragraph>
+        <Button onClick={openAlert}>Open Alert</Button>
+        <Box height={500} />
+      </SpaceVertical>
+    </DialogContent>
   )
 }
 
