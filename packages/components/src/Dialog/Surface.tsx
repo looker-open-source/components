@@ -52,7 +52,6 @@ interface SurfaceProps
     ColorProps,
     LayoutProps {
   surfaceStyles?: CSSObject
-  anchor?: 'right'
   animationState?: string
 }
 

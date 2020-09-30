@@ -1,0 +1,35 @@
+{
+  "name": "@looker/components-theme-editor",
+  "license": "MIT",
+  "version": "0.9.13",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/components",
+    "directory": "packages/theme-editor"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@looker/components": "^0.9.12",
+    "@looker/design-tokens": "^0.9.12",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.49",
+    "@types/styled-components": "^4.4.1",
+    "react": "^16.13.1",
+    "react-is": "^16.13.1",
+    "styled-components": "^4.4.1"
+  },
+  "peerDependencies": {
+    "react": "^16.11",
+    "react-is": "^16.11",
+    "styled-components": "^4"
+  }
+}

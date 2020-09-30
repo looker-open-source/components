@@ -216,7 +216,7 @@ exports[`IconButton accepts events 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
 }
 
@@ -352,7 +352,7 @@ exports[`IconButton accepts events 2`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
 }
 
@@ -488,7 +488,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
 }
 
@@ -624,7 +624,7 @@ exports[`IconButton default 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
 }
 
@@ -759,7 +759,7 @@ exports[`IconButton outline 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
   border: 1px solid #C1C6CC;
 }
@@ -778,7 +778,7 @@ exports[`IconButton outline 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  border-color: #707781;
+  border-color: #71767a;
 }
 
 .c2:active,
@@ -1176,7 +1176,7 @@ exports[`IconButton resized 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
-  color: #959ba3;
+  color: #959a9d;
   padding: 0;
 }
 

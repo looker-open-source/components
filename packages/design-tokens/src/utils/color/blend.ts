@@ -30,7 +30,7 @@ import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 import { scaleMixAmount } from './scaleMixAmount'
 
-const textBlends = [45, 65, 78, 88, 95, 99]
+export const textBlends = [45, 65, 78, 88, 95, 99]
 export const uiBlends = [4, 12, 23, 34, 85]
 type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -58,9 +58,9 @@ export const mixScaledColors = (
   // Get the background colors luminance, if low, we need to scale the mix amount
   const colorLuminance = getLuminance(background)
 
-  // We use this adjustment scale to to modify our blends based on the backgrounds lumosity
+  // We use this adjustment scale to to modify our blends based on the backgrounds luminosity
   // The lower luminosity, the more intense we need to scale the blend
-  const lumnisanceAdjustmentScale = {
+  const luminanceAdjustmentScale = {
     lower: 1.3,
     lowest: 1.7,
   }
@@ -68,9 +68,9 @@ export const mixScaledColors = (
   // Adjust the mixAmount based on the background colors luminosity
   let adjustment = mixAmount
   if (colorLuminance < 0.16 && colorLuminance > 0.08) {
-    adjustment = lumnisanceAdjustmentScale.lower
+    adjustment = luminanceAdjustmentScale.lower
   } else if (colorLuminance < 0.08) {
-    adjustment = lumnisanceAdjustmentScale.lowest
+    adjustment = luminanceAdjustmentScale.lowest
   }
 
   // If the background's colors luminosity is greater than 0.3 use the default mix amount

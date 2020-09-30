@@ -50,8 +50,9 @@ import {
 } from '@looker/components'
 import React, { useState } from 'react'
 
-export const Suite = () => {
+export const ComponentSuite = () => {
   const [value, setValue] = useState(['One'])
+
   return (
     <SpaceVertical gap="xsmall">
       <Button>My neat button</Button>

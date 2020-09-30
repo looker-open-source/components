@@ -55,7 +55,7 @@ export const CalendarPropTable = () => {
           <TableRow>
             <TableDataCell pr="large">onDayClick</TableDataCell>
             <TableDataCell pr="large">
-              <Code>(date: Date) => void</Code>
+              <Code>(date: Date) ={'>'} void</Code>
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -98,25 +98,25 @@ export const CalendarPropTable = () => {
           <TableRow>
             <TableDataCell pr="large">onNextClick</TableDataCell>
             <TableDataCell pr="large">
-              <Code>(date: Date) => void</Code>
+              <Code>(date: Date) ={'>'} void</Code>
             </TableDataCell>
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">onNowClick</TableDataCell>
             <TableDataCell pr="large">
-              <Code>(date: Date) => void</Code>
+              <Code>(date: Date) ={'>'} void</Code>
             </TableDataCell>
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">onPrevClick</TableDataCell>
             <TableDataCell pr="large">
-              <Code>(date: Date) => void</Code>
+              <Code>(date: Date) ={'>'} void</Code>
             </TableDataCell>
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">onMonthChange</TableDataCell>
             <TableDataCell pr="large">
-              <Code>(date: Date) => void</Code>
+              <Code>(date: Date) ={'>'} void</Code>
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -133,10 +133,10 @@ export const CalendarPropTable = () => {
 }
 
 const TableKey = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   background: ${({ theme }) => theme.colors.ui1};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   color: ${({ theme }) => theme.colors.text3};
   font-weight: bold;
-  padding: 0.5rem;
   margin-bottom: 2rem;
+  padding: 0.5rem;
 `

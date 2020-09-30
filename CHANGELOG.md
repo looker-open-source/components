@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+- `TabList` now supports `PaddingProps` and `fontSize`
+- `TabList` w/ `distribute` now uses default "small" `fontSize`
+
+* Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
+* Preview: `ActionListControls` component (this component is not yet ready for general-use)
+* Experimental: `@looker/components-theme-editor` package
+* Experimental: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
+
+### Changed
+
+- `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
+- Storybook configuration improvements
+  - `addons-essentials` now used
+  - Replace `withKnobs` with `Controls` & `Args`
+
 ## [0.9.15] - 2020-09-21
 
 ### Changed
@@ -16,9 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Chip` supports `prefix`
-- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
-- `GoogleFontsLoader`
 - `InputColor` now includes `name` in `onChange` response event
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
@@ -45,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` overwriting search value with the current option value if the option's value and label are different
 - Storybook fixes to silence console warnings
 
-###
+### Remove
 
 - `Tooltip` & `Popover` no longer support (optional) arrow indicator
 

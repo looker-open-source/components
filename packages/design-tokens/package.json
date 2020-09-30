@@ -19,7 +19,7 @@
     "@styled-system/props": "^5.1.5",
     "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
-    "polished": "^3.6.6",
+    "polished": "^3.6.7",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
@@ -30,11 +30,13 @@
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "styled-components": "^4.4.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.11",
+    "react-dom": "^16.11",
+    "react-is": "^16.11",
     "styled-components": "^4"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"

@@ -89,8 +89,7 @@ export const AvatarUser = styled(AvatarLayout).attrs((props) => ({
   size: props.size || 'small',
 }))`
   ${avatarCSS}
-  ${({ role }) =>
-    role === 'button' && 'cursor: pointer;'}
+  ${({ role }) => role === 'button' && 'cursor: pointer;'}
 
   background: currentColor;
   position: relative;

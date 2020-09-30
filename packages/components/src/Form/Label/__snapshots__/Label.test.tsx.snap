@@ -5,7 +5,7 @@ exports[`A Label 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #343C42;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 <label

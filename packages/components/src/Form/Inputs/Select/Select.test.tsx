@@ -294,7 +294,8 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
-  const getIndicatorJSX = (listLevel: boolean) => (
+  /* eslint-disable-next-line react/display-name */
+  const GetIndicatorJSX = (listLevel: boolean) => (
     indicator: ComboboxOptionIndicatorFunction
   ) => (
     <Select
@@ -309,7 +310,8 @@ describe('Select / SelectMulti', () => {
     />
   )
 
-  const getIndicatorJSXMulti = (listLevel: boolean) => (
+  /* eslint-disable-next-line react/display-name */
+  const GetIndicatorJSXMulti = (listLevel: boolean) => (
     indicator: ComboboxOptionIndicatorFunction
   ) => (
     <SelectMulti
@@ -325,10 +327,10 @@ describe('Select / SelectMulti', () => {
   )
 
   test.each([
-    ['list level (Select)', getIndicatorJSX(true)],
-    ['list level (SelectMulti)', getIndicatorJSXMulti(true)],
-    ['option level (Select)', getIndicatorJSX(false)],
-    ['option level (SelectMulti)', getIndicatorJSXMulti(false)],
+    ['list level (Select)', GetIndicatorJSX(true)],
+    ['list level (SelectMulti)', GetIndicatorJSXMulti(true)],
+    ['option level (Select)', GetIndicatorJSX(false)],
+    ['option level (SelectMulti)', GetIndicatorJSXMulti(false)],
   ])('Customize the indicator at the %s', (_, getJSX) => {
     const indicator = jest.fn()
     renderWithTheme(getJSX(indicator))

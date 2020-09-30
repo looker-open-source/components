@@ -24,11 +24,33 @@
 
  */
 
-import { IntentColors } from '../../system'
-import { generateInteractive } from './stateful'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { ActionListFilters } from './ActionListFilters'
 
-export const generateIntentDerivatives = (intentColors: IntentColors) => {
-  return {
-    linkInteractive: generateInteractive(intentColors.link),
-  }
-}
+describe('InputFilters', () => {
+  const filters = [
+    { field: 'role', value: 'admin' },
+    { field: 'group', label: 'Group', value: 'pizza-lovers' },
+    { field: 'name', label: 'Name' },
+    { field: 'status' },
+    { field: 'model' },
+    { field: 'trigger' },
+    { field: 'buildAt', label: 'Last Build Time' },
+  ]
+
+  test('render ActionListFilters display InputFilter', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <ActionListFilters filters={filters} />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render ActionListFilters display columns icon', () => {
+    const { getByText } = renderWithTheme(
+      <ActionListFilters canSelectDisplayedColumns filters={filters} />
+    )
+    expect(getByText('Select columns to display')).toBeInTheDocument()
+  })
+})
