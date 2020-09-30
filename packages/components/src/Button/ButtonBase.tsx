@@ -42,8 +42,13 @@ import {
   WidthProps,
   width,
 } from 'styled-system'
-import { buttonSize, ButtonSizes, ButtonSizeProps } from './size'
-import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
+import {
+  buttonSize,
+  ButtonSizes,
+  ButtonSizeProps,
+  iconInButtonSizeMap,
+} from './size'
+import { ButtonIcon, buttonIcon, ButtonIconProps, iconSizes } from './icon'
 
 export interface ButtonBaseProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
@@ -135,6 +140,8 @@ const ButtonJSX = forwardRef(
       onBlur && onBlur(event)
     }
 
+    const iconSize = iconInButtonSizeMap[props.size || 'small']
+
     return (
       <ButtonOuter
         {...restProps}
@@ -143,9 +150,9 @@ const ButtonJSX = forwardRef(
         onBlur={handleOnBlur}
         ref={ref}
       >
-        {iconBefore && <ButtonIcon name={iconBefore} />}
+        {iconBefore && <ButtonIcon name={iconBefore} size={iconSize} />}
         {children}
-        {iconAfter && <ButtonIcon name={iconAfter} />}
+        {iconAfter && <ButtonIcon name={iconAfter} size={iconSize} />}
       </ButtonOuter>
     )
   }

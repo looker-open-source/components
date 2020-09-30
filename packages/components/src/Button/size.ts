@@ -63,6 +63,14 @@ export const buttonSizeMap = {
   medium: 36,
   large: 44,
 }
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const iconInButtonSizeMap = {
+  xxsmall: 'xxsmall',
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'small',
+  large: 'medium',
+}
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonSize = variant({

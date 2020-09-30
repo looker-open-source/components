@@ -151,7 +151,7 @@ const InputTextLayout = forwardRef(
     const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
       <InputTextContent pl="xxsmall">
         {iconBefore ? (
-          <Icon name={iconBefore} title={iconBeforeTitle} size={20} />
+          <Icon name={iconBefore} title={iconBeforeTitle} size="small" />
         ) : (
           <Text fontSize="small">{before}</Text>
         )}
@@ -163,7 +163,7 @@ const InputTextLayout = forwardRef(
     const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
       <InputTextContent pl="xsmall" pr="xxsmall">
         {iconAfter ? (
-          <Icon name={iconAfter} title={iconAfterTitle} size={20} />
+          <Icon name={iconAfter} title={iconAfterTitle} size="small" />
         ) : (
           <Text fontSize="small">{after}</Text>
         )}

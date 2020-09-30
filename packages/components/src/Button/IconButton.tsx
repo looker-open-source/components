@@ -49,7 +49,7 @@ import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
-import { buttonSizeMap } from './size'
+import { iconInButtonSizeMap, buttonSizeMap } from './size'
 
 const iconButtonDefaultColor = 'neutral'
 
@@ -194,7 +194,7 @@ const IconButtonComponent = forwardRef(
         {...rest}
       >
         <VisuallyHidden>{label}</VisuallyHidden>
-        <Icon name={icon} size={buttonSizeMap[size] - 6} aria-hidden={true} />
+        <Icon name={icon} size={iconInButtonSizeMap[size]} aria-hidden={true} />
         {tooltip}
       </ButtonBase>
     )

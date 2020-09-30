@@ -72,18 +72,18 @@ export const iconSizes = (props: ButtonProps) => {
   let iconSize = 18
   switch (props.size) {
     case 'xxsmall':
-    case 'xsmall':
       iconSize = 12
       break
+    case 'xsmall':
     case 'small':
       iconSize = 16
       break
     case 'large':
-      iconSize = 20
+      iconSize = 18
       break
     case 'medium':
     default:
-      iconSize = 18
+      iconSize = 20
   }
 
   return css`
@@ -97,6 +97,5 @@ export const ButtonIcon = styled(Icon)``
 export const buttonIcon = (props: ButtonProps) => css`
   ${ButtonIcon} {
     ${iconMargins(props)}
-    ${iconSizes(props)}
   }
 `

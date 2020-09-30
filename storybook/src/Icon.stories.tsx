@@ -48,7 +48,6 @@ export const Sizes = () => (
       <Icon name="Trash" size="small" />
       <Icon name="Trash" size="medium" />
       <Icon name="Trash" size="large" />
-      <Icon name="Trash" />
     </Space>
   </SpaceVertical>
 )
