@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@looker/components": "*",
+    "@looker/components-providers": "*",
     "@looker/components-theme-editor": "*",
     "@looker/design-tokens": "*",
     "@looker/icons": "*",
