@@ -27,11 +27,29 @@
 import { createContext, MutableRefObject } from 'react'
 
 export interface ScrollLockContextProps {
+  /**
+   * Stores the element for the active scroll lock (null if none are active)
+   */
   activeLockRef?: MutableRefObject<HTMLElement | null>
+  /**
+   * @private
+   */
   addLock?: (id: string, element: HTMLElement) => void
+  /**
+   * Disables the current scroll lock (no scroll lock will be enabled as a result)
+   */
   disableCurrentLock?: () => void
+  /**
+   * Enables the scroll lock stacked on top
+   */
   enableCurrentLock?: () => void
+  /**
+   * @private
+   */
   getLock?: (id: string) => HTMLElement | null
+  /**
+   * @private
+   */
   removeLock?: (id: string) => void
 }
 
