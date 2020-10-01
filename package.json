@@ -44,7 +44,7 @@
     "test": "yarn jest",
     "storybook": "yarn workspace storybook start",
     "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
-    "preimage-snapshots": "yarn storybooks-build",
+    "2preimage-snapshots": "yarn storybooks-build",
     "image-snapshots": "yarn jest --config jest-image-snapshots.config.js"
   },
   "devDependencies": {

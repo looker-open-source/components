@@ -27,7 +27,6 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import sortBy from 'lodash/sortBy'
-import { getLuminance } from 'polished'
 /**
  * IMPORTANT: It is only acceptable to reach across package boundaries like this
  * because this is a Story and will never be run in a "production" environment.
@@ -68,10 +67,7 @@ const CircleSwatch = styled.div<SwatchProps>`
   background: ${({ color }) => color};
   border-radius: 50%;
   box-shadow: ${({ theme }) => theme.shadows[3]};
-  color: ${({ color, theme }) =>
-    getLuminance(color) > 0.5 ? theme.colors.text : theme.colors.inverseOn};
   display: flex;
-  font-family: ${({ theme }) => theme.fonts.body};
   height: 3rem;
   justify-content: space-between;
   padding: ${({ theme }) => theme.space.xxsmall};
@@ -90,7 +86,6 @@ const ColorSlots = () => {
         width={CELL_SIZE}
       >
         <CircleSwatch color={color}></CircleSwatch>
-
         <Heading
           truncate
           fontSize="small"
