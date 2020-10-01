@@ -6,18 +6,19 @@ cache:
     - node_modules
 jobs:
   include:
-    - script: "yarn run-p -c lint:css lint:es"
+    - script: 'yarn run-p -c lint:css lint:es'
       name: ESLint & Stylelint
-    - script: "yarn build"
-      name: "Build: Babel, Typescript (lib/*.d.ts)"
-    - script: "yarn test"
-      name: "Jest Test Suite"
+    - script: 'yarn build'
+      name: 'Build: Babel, Typescript (lib/*.d.ts)'
+    - script: 'yarn test'
+      name: 'Jest Test Suite'
+    # Disabled for now due to rendering inconsistency between developer and CI
     #    - script: "yarn image-snapshots"
     #      name: "Image Snapshot Tests"
-    - script: "yarn workspace www build"
-      name: "Gatsby"
-    - script: "yarn workspace storybook build"
-      name: "Storybook"
+    - script: 'yarn workspace www build'
+      name: 'Gatsby'
+    - script: 'yarn workspace storybook build'
+      name: 'Storybook'
 branches:
   only:
     - master
