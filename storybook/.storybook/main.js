@@ -24,8 +24,7 @@
 
  */
 
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const main = require('../config/main')
+const main = require('@looker/storybook-config/src/main')
 
 /**
  *

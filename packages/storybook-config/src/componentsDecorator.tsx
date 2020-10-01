@@ -24,5 +24,9 @@
 
  */
 
-const main = require('../../storybook-config/src/main')
-module.exports = main
+import React from 'react'
+import { ComponentsProvider } from '@looker/components-providers'
+
+export const componentsDecorator = (storyFn: any) => (
+  <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
+)

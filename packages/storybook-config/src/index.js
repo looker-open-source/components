@@ -23,19 +23,7 @@
  SOFTWARE.
 
  */
-module.exports = {
-  addons: ['@storybook/addon-essentials'],
-  stories: ['../src/**/*.story.tsx'],
-  webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.tsx?$/,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-        },
-      ],
-    })
-    config.resolve.extensions.push('.ts', '.tsx')
-    return config
-  },
-}
+
+export * from './componentsDecorator'
+export * from './main'
+export * from './storyshotsConfig'

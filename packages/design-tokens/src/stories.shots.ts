@@ -26,6 +26,6 @@
 
 import path from 'path'
 import initStoryshots from '@storybook/addon-storyshots'
-import { storyshotsConfig } from '../../../storybook/config/storyshotsConfig'
+import { storyshotsConfig } from '@looker/storybook-config'
 
 initStoryshots(storyshotsConfig(path.resolve(__dirname, '../')))

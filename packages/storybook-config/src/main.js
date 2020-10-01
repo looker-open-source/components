@@ -24,9 +24,23 @@
 
  */
 
-import React from 'react'
-import { ComponentsProvider } from '@looker/components-providers'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
-export const componentsDecorator = (storyFn) => (
-  <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
-)
+module.exports = {
+  addons: ['@storybook/addon-essentials'],
+  stories: ['../**/*.story.tsx'],
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+        },
+      ],
+    })
+    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.plugins = [new TsconfigPathsPlugin()]
+    return config
+  },
+}

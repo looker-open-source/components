@@ -25,8 +25,8 @@
  */
 
 import path from 'path'
-import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
 import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
+import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
 
 export const storyshotsConfig = (pkg: string) => {
   const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`

@@ -24,5 +24,10 @@
 
  */
 
-const main = require('../../storybook-config/src/main')
-module.exports = main
+module.exports = (api) => {
+  api.cache(true)
+
+  return {
+    extends: '../../babel.config.js',
+  }
+}

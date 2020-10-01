@@ -6,7 +6,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs/blocks'
-import { componentsDecorator } from '../config/componentsDecorator'
+import { componentsDecorator } from '../../packages/storybook-config/src/componentsDecorator'
 
 export const parameters = {
   layout: 'fullscreen',

@@ -30,6 +30,7 @@ module.exports = {
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
+    '@looker/(.+)$': '<rootDir>/packages/$1/src',
     '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
       '<rootDir>/config/jest/fileMock.js',

@@ -28,8 +28,8 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "@looker/storybook-config": "^0.9.15",
     "@storybook/addon-storyshots": "^6.0.22",
-    "@storybook/addon-storyshots-puppeteer": "^6.0.22",
     "@storybook/react": "^6.0.22",
     "@types/lodash": "^4.14.161",
     "@types/styled-components": "^4.4.1",
