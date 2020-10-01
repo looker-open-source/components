@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.9.15",
-    "@testing-library/react": "^11.0.4",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

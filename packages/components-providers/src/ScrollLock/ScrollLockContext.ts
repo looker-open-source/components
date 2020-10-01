@@ -23,5 +23,16 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import { createContext, MutableRefObject } from 'react'
+
+export interface ScrollLockContextProps {
+  activeLockRef?: MutableRefObject<HTMLElement | null>
+  addLock?: (id: string, element: HTMLElement) => void
+  disableCurrentLock?: () => void
+  enableCurrentLock?: () => void
+  getLock?: (id: string) => HTMLElement | undefined
+  removeLock?: (id: string) => void
+}
+
+export const ScrollLockContext = createContext<ScrollLockContextProps>({})

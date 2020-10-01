@@ -33,7 +33,7 @@ import {
   ThemeCustomizations,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
-import { ScrollLockProvider } from './ScrollLockProvider'
+import { ScrollLockProvider } from './ScrollLock'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 
 /**
