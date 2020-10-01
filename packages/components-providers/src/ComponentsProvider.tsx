@@ -78,13 +78,11 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   }, [props.theme, themeCustomizations])
 
   return (
-    <ScrollLockProvider>
-      <ThemeProvider {...props} theme={theme}>
-        {globalStyle && <GlobalStyle />}
-        {loadGoogleFonts && <GoogleFontsLoader />}
-        {ie11Support && <IEGlobalStyle />}
-        {children}
-      </ThemeProvider>
-    </ScrollLockProvider>
+    <ThemeProvider {...props} theme={theme}>
+      {globalStyle && <GlobalStyle />}
+      {loadGoogleFonts && <GoogleFontsLoader />}
+      {ie11Support && <IEGlobalStyle />}
+      <ScrollLockProvider>{children}</ScrollLockProvider>
+    </ThemeProvider>
   )
 }
