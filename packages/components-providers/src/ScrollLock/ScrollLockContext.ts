@@ -31,7 +31,7 @@ export interface ScrollLockContextProps {
   addLock?: (id: string, element: HTMLElement) => void
   disableCurrentLock?: () => void
   enableCurrentLock?: () => void
-  getLock?: (id: string) => HTMLElement | undefined
+  getLock?: (id: string) => HTMLElement | null
   removeLock?: (id: string) => void
 }
 

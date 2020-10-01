@@ -90,7 +90,7 @@ export function getActiveScrollLock(lockMap: ScrollLockMap) {
     const relationship = elementA.compareDocumentPosition(elementB)
     return relationship > 3 ? 1 : -1
   })
-  return sortedElements[0]
+  return sortedElements[0] || null
 }
 
 export function activateScrollLock(element: HTMLElement) {

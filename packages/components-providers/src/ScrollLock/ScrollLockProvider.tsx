@@ -43,9 +43,11 @@ export const ScrollLockProvider: FC = ({ children }) => {
   // let's not cause unnecessary diffs from useScrollLock in Dialogs and Popovers
   // since those components can be finicky if re-rendered at the wrong moment
   const value = useMemo(() => {
-    function getLock(id?: string) {
+    function getLock(id?: string): HTMLElement | null {
       const registeredLocks = registeredLocksRef.current
-      return id ? registeredLocks[id] : getActiveScrollLock(registeredLocks)
+      return id
+        ? registeredLocks[id] || null
+        : getActiveScrollLock(registeredLocks)
     }
 
     function enableCurrentLock() {
