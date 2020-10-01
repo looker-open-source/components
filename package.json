@@ -43,7 +43,7 @@
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest",
     "storybook": "yarn workspace storybook start",
-    "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*'  --stream --parallel",
+    "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*'  --stream",
     "preimage-snapshots": "yarn storybooks-build",
     "image-snapshots": "yarn jest --config jest-image-snapshots.config.js"
   },

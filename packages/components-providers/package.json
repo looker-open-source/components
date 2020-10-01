@@ -12,10 +12,6 @@
     "url": "https://github.com/looker-open-source/components",
     "directory": "packages/components-providers"
   },
-  "scripts": {
-    "storybook": "start-storybook  -c .storybook -p 3303  --host 0.0.0.0",
-    "storybook-build": "build-storybook -c .storybook"
-  },
   "publishConfig": {
     "access": "public"
   },
