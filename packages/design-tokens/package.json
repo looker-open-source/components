@@ -27,8 +27,6 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@looker/components-providers": "*",
-    "@looker/components": "*",
     "@storybook/addon-storyshots": "^6.0.22",
     "@storybook/addon-storyshots-puppeteer": "^6.0.22",
     "@storybook/react": "^6.0.22",

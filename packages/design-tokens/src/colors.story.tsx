@@ -26,10 +26,16 @@
 
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Code, Flex, Heading } from '@looker/components'
-
 import sortBy from 'lodash/sortBy'
 import { getLuminance } from 'polished'
+/**
+ * IMPORTANT: It is only acceptable to reach across package boundaries like this
+ * because this is a Story and will never be run in a "production" environment.
+ *
+ * In this case we don't want to create a dependency loop between @looker/design-tokens
+ * and @looker/components
+ */
+import { Code, Flex, Heading } from '../../components/src'
 
 const CELL_SIZE = '6rem'
 
