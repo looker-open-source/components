@@ -85,7 +85,7 @@ export const Dialog: FC<DialogProps> = ({
     trapRef: focusTrapRef,
   } = useFocusTrap(isOpen)
 
-  const [, scrollRef] = useScrollLock()
+  const [, portalRef] = useScrollLock(focusRef)
 
   const handleClose = () => {
     onClose && onClose()
@@ -109,7 +109,7 @@ export const Dialog: FC<DialogProps> = ({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <Portal ref={focusRef}>
+          <Portal ref={portalRef}>
             <Backdrop
               className={state}
               onClick={onClose}
@@ -125,7 +125,6 @@ export const Dialog: FC<DialogProps> = ({
               className={state}
               width={width}
               maxWidth={maxWidth}
-              ref={scrollRef}
             >
               {children}
             </Surface>

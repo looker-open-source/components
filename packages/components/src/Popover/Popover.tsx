@@ -46,10 +46,10 @@ import {
   useCallbackRef,
   useControlWarn,
   useFocusTrap,
-  useScrollLock,
   useHovered,
   usePopper,
   UsePopperProps,
+  useScrollLock,
   useForkedRef,
 } from '../utils'
 
