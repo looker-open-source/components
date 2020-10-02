@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Preview: `ActionListControls` component (this component is not yet ready for general-use)
 * Experimental: `@looker/components-theme-editor` package
 * Experimental: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
-- Implemented image snapshot support and added coverage for `Button*`, `IconButton` components
+
+- Implemented image snapshot support and added coverage for `Button*`, `IconButton` & `Tree` components
 - Preliminary infrastructure for Storybook composition
 - Added support for Storybook extract behavior to improve published-Storybook performance
 

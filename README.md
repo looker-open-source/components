@@ -62,7 +62,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 
 #### Storybook
 
-Storybook is a tool used develop, demonstrate and document components in isolation.
+Storybook is a tool used to develop, demonstrate and document components in isolation.
 
 - **yarn storybook** starts master Storybook (includes all stories)
 - **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
