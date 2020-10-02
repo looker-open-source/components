@@ -39,7 +39,7 @@ export default {
   title: 'Layout/Semantics',
 }
 
-export const All = () => (
+export const CommonLayouts = () => (
   <CustomGrid columns={3}>
     <HeaderLayoutAsideMain />
     <AsideMainFooter />
@@ -49,7 +49,7 @@ export const All = () => (
   </CustomGrid>
 )
 
-export const HeaderLayoutAsideMain = () => (
+const HeaderLayoutAsideMain = () => (
   <Highlighter>
     <Layout>
       <Header>Header</Header>
@@ -61,7 +61,7 @@ export const HeaderLayoutAsideMain = () => (
   </Highlighter>
 )
 
-export const HeaderLayoutAsideMainFooter = () => (
+const HeaderLayoutAsideMainFooter = () => (
   <Highlighter>
     <Layout>
       <Header>Header</Header>
@@ -74,7 +74,7 @@ export const HeaderLayoutAsideMainFooter = () => (
   </Highlighter>
 )
 
-export const AsideMainFooter = () => (
+const AsideMainFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>
@@ -86,7 +86,7 @@ export const AsideMainFooter = () => (
   </Highlighter>
 )
 
-export const AsideLayoutHeaderMainFooter = () => (
+const AsideLayoutHeaderMainFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>
@@ -101,7 +101,7 @@ export const AsideLayoutHeaderMainFooter = () => (
   </Highlighter>
 )
 
-export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
+const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>

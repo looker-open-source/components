@@ -30,19 +30,9 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react'
-import { Form, FieldSlider, Slider } from '@looker/components'
-
-export const All = () => (
-  <Form>
-    <Basic />
-    <Disabled />
-    <Steps />
-    <Controlled />
-  </Form>
-)
+import { FieldSlider, Slider } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/Slider',
 }
 

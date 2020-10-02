@@ -5,8 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "start-storybook -p 3333  --host 0.0.0.0",
-    "build": "build-storybook -c .storybook -o ../docs/static/storybook"
+    "start": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
+    "build": "build-storybook -c .storybook",
+    "postbuild": "npx sb extract"
   },
   "dependencies": {
     "@looker/components": "*",
@@ -16,11 +17,15 @@
     "@storybook/react": "^6.0.22",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
-    "react-storybook-addon-props-combinations": "^1.1.0",
+    "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "styled-components": "4"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@looker/components-providers": "*",
     "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-storyshots": "^6.0.22",
     "babel-loader": "^8.1.0"
   }
 }

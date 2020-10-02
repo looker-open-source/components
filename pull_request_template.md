@@ -12,6 +12,7 @@
 - [ ] Updated CHANGELOG
 - [ ] Checked for i18n impacts
 - [ ] Checked for a11y impacts
+- [ ] Check for image-snapshot changes (run `yarn image-snapshots` locally)
 - [ ] PR is ideally < ~400LOC
 
 ### :camera: Screenshots

@@ -38,7 +38,6 @@ import {
   Heading,
   Icon,
   Select,
-  Fieldset,
   FieldSelect,
   FieldToggleSwitch,
   DialogContent,
@@ -53,26 +52,7 @@ import {
 } from '@looker/components'
 import { options1k } from './options1k'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Detail />
-    <Description />
-    <Error />
-    <Inline />
-    <InlineError />
-    <SelectDemo />
-    <UpdateOptions />
-    <EmptyValue />
-    <OptionIcons />
-    <OptionIcons />
-    <CreateOption />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/Select',
 }
 

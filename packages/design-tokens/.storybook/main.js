@@ -24,18 +24,5 @@
 
  */
 
-import React from 'react'
-import { ButtonOutline, ButtonProps } from '@looker/components'
-import { Story } from '@storybook/react/types-6-0'
-
-const Template: Story<ButtonProps> = (args) => <ButtonOutline {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Outline Text',
-}
-
-export default {
-  component: ButtonOutline,
-  title: 'ButtonOutline',
-}
+const main = require('../../storybook-config/src/main')
+module.exports = main

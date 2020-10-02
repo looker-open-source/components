@@ -41,19 +41,7 @@ import { DateFormat } from '@looker/components/src/DateFormat'
 import { FieldDate } from '@looker/components/src/FieldDate'
 import { InputDate } from '@looker/components/src/InputDate'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Required />
-    <Error />
-    <Controlled />
-    <Localized />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/Date',
 }
 

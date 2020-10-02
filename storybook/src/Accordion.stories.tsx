@@ -38,22 +38,10 @@ import {
   FieldText,
   Space,
   Badge,
-  SpaceVertical,
 } from '@looker/components'
 import styled from 'styled-components'
 
-export const All = () => (
-  <SpaceVertical>
-    <Basic />
-    <Controlled />
-    <DefaultOpen />
-    <Nested />
-    <ApiExplorer />
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Accordion',
 }
 

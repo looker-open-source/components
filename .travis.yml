@@ -12,6 +12,9 @@ jobs:
       name: 'Build: Babel, Typescript (lib/*.d.ts)'
     - script: 'yarn test'
       name: 'Jest Test Suite'
+    # Disabled for now due to rendering inconsistency between developer and CI
+    #    - script: "yarn image-snapshots"
+    #      name: "Image Snapshot Tests"
     - script: 'yarn workspace www build'
       name: 'Gatsby'
     - script: 'yarn workspace storybook build'

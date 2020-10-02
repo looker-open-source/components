@@ -24,18 +24,5 @@
 
  */
 
-import React from 'react'
-import { Button, ButtonProps } from '@looker/components'
-import { Story } from '@storybook/react/types-6-0'
-
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Text',
-}
-
-export default {
-  component: Button,
-  title: 'Button',
-}
+const main = require('../../storybook-config/src/main')
+module.exports = main

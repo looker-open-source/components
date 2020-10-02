@@ -26,7 +26,6 @@
 import React, { FC, useState } from 'react'
 import {
   Button,
-  Fieldset,
   FieldSelect,
   Paragraph,
   Popover,
@@ -42,17 +41,7 @@ interface DateRange {
   to?: Date
 }
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Controlled />
-    <Localized />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/DateRange',
 }
 

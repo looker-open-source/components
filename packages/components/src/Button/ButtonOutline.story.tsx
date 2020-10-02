@@ -24,62 +24,31 @@
 
  */
 
-import {
-  ActionListColumns,
-  ActionListDatum,
-  ActionListItemAction,
-  useActionListSortManager,
-} from '@looker/components/src'
 import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { ButtonProps } from './ButtonBase'
+import { ButtonOutline } from './ButtonOutline'
 
-export const Sortable = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'Lloyd Tabb',
-    },
-    {
-      id: 2,
-      name: 'Ben Porterfield',
-    },
-  ]
+const Template: Story<ButtonProps> = (args) => <ButtonOutline {...args} />
 
-  // Note: column objects must be tracked using state since their sortDirection properties will change
-  // depending on which column is sorted
-  const columns: ActionListColumns = [
-    {
-      canSort: true,
-      id: 'id',
-      primaryKey: true,
-      title: 'ID',
-      type: 'number',
-      widthPercent: 20,
-    },
-    {
-      canSort: true,
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-      widthPercent: 80,
-    },
-  ]
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Button Outline Text',
+}
 
-  const generateActions = (item: ActionListDatum) => {
-    return (
-      <>
-        <ActionListItemAction onClick={() => alert(item.id)}>
-          Check id
-        </ActionListItemAction>
-        <ActionListItemAction onClick={() => alert(item.name)}>
-          Check name
-        </ActionListItemAction>
-      </>
-    )
-  }
+export const Critical = Template.bind({})
+Critical.args = {
+  ...Basic.args,
+  color: 'critical',
+}
 
-  return useActionListSortManager(data, columns, generateActions)
+export const Neutral = Template.bind({})
+Neutral.args = {
+  ...Basic.args,
+  color: 'neutral',
 }
 
 export default {
-  title: 'ActionList',
+  component: ButtonOutline,
+  title: 'ButtonOutline',
 }
