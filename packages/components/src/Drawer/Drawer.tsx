@@ -33,10 +33,10 @@ import React, {
 } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { ResponsiveValue } from 'styled-system'
-import { Portal } from '../../Portal'
-import { useFocusTrap, useScrollLock, useControlWarn } from '../../utils'
-import { Backdrop } from '../Backdrop'
-import { DialogContext } from '../DialogContext'
+import { Portal } from '../Portal'
+import { useFocusTrap, useScrollLock, useControlWarn } from '../utils'
+import { Backdrop } from '../Dialog/Backdrop'
+import { DialogContext } from '../Dialog/DialogContext'
 import { DrawerSurface } from './DrawerSurface'
 
 export interface UseDrawerProps {

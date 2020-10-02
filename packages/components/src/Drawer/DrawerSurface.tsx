@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import { SurfaceBase, surfaceTransition } from '../Surface'
+import { SurfaceBase, surfaceTransition } from '../Dialog/Surface'
 
 export const DrawerSurface = styled(SurfaceBase)`
   box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);

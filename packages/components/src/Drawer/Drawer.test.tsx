@@ -32,7 +32,7 @@ import {
   fireEvent,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
-import { DialogContext } from '../DialogContext'
+import { DialogContext } from '../Dialog/DialogContext'
 import { Drawer } from './Drawer'
 import { UseDrawerHook, RenderProps } from './stories/Drawer.story'
 
