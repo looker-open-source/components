@@ -25,6 +25,7 @@
  */
 
 import React, { FC, useContext } from 'react'
+import styled from 'styled-components'
 import { HoverDisclosureContext } from './HoverDisclosureContext'
 
 export interface HoverDisclosureProps {
@@ -36,5 +37,11 @@ export const HoverDisclosure: FC<HoverDisclosureProps> = ({
   visible,
 }) => {
   const context = useContext(HoverDisclosureContext)
-  return visible || context.visible ? <>{children}</> : null
+  return (
+    <Disclosure visible={visible || context.visible}>{children}</Disclosure>
+  )
 }
+
+const Disclosure = styled.span<HoverDisclosureProps>`
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+`
