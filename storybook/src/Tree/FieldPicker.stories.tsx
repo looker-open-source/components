@@ -41,7 +41,7 @@ import {
   ButtonTransparent,
 } from '@looker/components'
 
-const PickerItem = () => {
+const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -72,8 +72,8 @@ const PickerItem = () => {
   )
 
   const itemLabel = (
-    <Space between>
-      <span>Cost</span>
+    <Space between alignItems="flex-start">
+      <span>{children}</span>
       {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
     </Space>
   )
@@ -88,6 +88,7 @@ const PickerItem = () => {
           <MenuItem>Gouda</MenuItem>
         </MenuList>
         <TreeItem
+          truncate={truncate}
           detail={
             <>
               <IconButton
@@ -128,7 +129,6 @@ const PickerItem = () => {
 const addButton = (
   <ButtonTransparent
     size="xxsmall"
-    mt="xxxsmall"
     iconBefore="Plus"
     onClick={() => alert('Hello Mouse')}
     onKeyDown={(event) => {
@@ -148,7 +148,19 @@ export const FieldPicker = () => (
       <PickerItem />
       <PickerItem />
       <PickerItem />
-      <PickerItem />
+      <PickerItem>
+        Over a thousand types of cheese exist and are currently produced in
+        various countries. Their styles, textures and flavors depend on the
+        origin of the milk (including the animal's diet), whether they have been
+        pasteurized, the butterfat content, the bacteria and mold, the
+        processing, and how long they have been aged for.
+      </PickerItem>
+      <PickerItem truncate>
+        Herbs, spices, or wood smoke may be used as flavoring agents. The yellow
+        to red color of many cheeses is produced by adding annatto. Other
+        ingredients may be added to some cheeses, such as black pepper, garlic,
+        chives or cranberries.
+      </PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="keyFocus">
       <Tree visuallyAsBranch label="Hello">

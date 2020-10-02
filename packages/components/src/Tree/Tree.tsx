@@ -39,7 +39,7 @@ import { IconButton } from '../Button'
 import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
-import { TreeItem, TreeItemLabel } from './TreeItem'
+import { TreeItem, TreeItemLabel, TreeItemSpace } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
@@ -245,10 +245,13 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
 
-  ${TreeItemLabel} {
+  ${TreeItemSpace} {
     ${IconButton} {
-      max-height: ${({ theme }) => theme.lineHeights.xsmall};
-      overflow: visible;
+      /*
+       * Caution: Magic Numbers! Subtract 2px to account for borders
+       * on TreeItemSpace
+       */
+      max-height: calc(${({ theme }) => theme.lineHeights.xsmall} - 2px);
     }
   }
 `

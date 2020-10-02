@@ -52,7 +52,7 @@ import {
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
-import { Truncate, Paragraph } from '../Text'
+import { Truncate } from '../Text'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
@@ -209,7 +209,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
-        {detailAccessory && detail}
+        {detailAccessory && <Accessory>{detail}</Accessory>}
       </TreeItemSpace>
     </HoverDisclosureContext.Provider>
   )
@@ -260,6 +260,10 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   height: 100%;
   padding-right: ${({ detailAccessory, theme }) =>
     detailAccessory && theme.space.xxsmall};
+`
+
+const Accessory = styled.div`
+  transform: translateY(${({ theme }) => theme.space.xxxsmall});
 `
 
 export const TreeItem = styled(TreeItemLayout)`
