@@ -26,6 +26,8 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Icon } from '../Icon'
+import { Text } from '../Text'
 import { TreeGroup, Tree, TreeItem } from '.'
 
 test('Renders label and children', () => {
@@ -34,6 +36,21 @@ test('Renders label and children', () => {
   )
 
   getByText('My Tree Group')
+  getByText('My Children')
+})
+
+test('renders components as label', () => {
+  const label = (
+    <span>
+      <Icon name="ChartPie" />
+      <Text>&nbsp;Visualizations</Text>
+    </span>
+  )
+  const { getByText } = renderWithTheme(
+    <TreeGroup label={label}>My Children</TreeGroup>
+  )
+
+  getByText('Visualizations')
   getByText('My Children')
 })
 

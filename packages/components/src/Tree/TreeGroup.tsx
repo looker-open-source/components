@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 import { AccordionDisclosure } from '../Accordion'
@@ -34,7 +34,7 @@ export interface TreeGroupProps extends TextColorProps {
   /**
    * Visible label of the TreeGroup
    */
-  label: string
+  label: ReactNode
   className?: string
 }
 
