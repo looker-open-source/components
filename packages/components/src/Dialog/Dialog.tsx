@@ -84,12 +84,8 @@ export const Dialog: FC<DialogProps> = ({
     isEnabled: focusTrapEnabled,
     trapRef: focusTrapRef,
   } = useFocusTrap(isOpen)
-  const {
-    callbackRef: scrollRef,
-    disable: disableScrollLock,
-    enable: enableScrollLock,
-    isEnabled: scrollLockEnabled,
-  } = useScrollLock(isOpen, false)
+
+  const [, portalRef] = useScrollLock(focusRef)
 
   const handleClose = () => {
     onClose && onClose()
@@ -100,12 +96,9 @@ export const Dialog: FC<DialogProps> = ({
       value={{
         closeModal: handleClose,
         disableFocusTrap,
-        disableScrollLock,
         enableFocusTrap,
-        enableScrollLock,
         focusTrapEnabled,
         focusTrapRef,
-        scrollLockEnabled,
       }}
     >
       <CSSTransition
@@ -116,12 +109,7 @@ export const Dialog: FC<DialogProps> = ({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <Portal
-            ref={(node) => {
-              focusRef(node)
-              scrollRef(node)
-            }}
-          >
+          <Portal ref={portalRef}>
             <Backdrop
               className={state}
               onClick={onClose}

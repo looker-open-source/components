@@ -20,12 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
+  - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
 
+### Fixed
 
+- Page "jumps" when opening a `Popover` due to the scrollbar disappearing
 
 ## [0.9.15] - 2020-09-21
 

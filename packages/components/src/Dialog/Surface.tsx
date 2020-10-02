@@ -60,21 +60,18 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    DialogContext
-  )
+  const { closeModal, enableFocusTrap } = useContext(DialogContext)
 
   const wrapperRef = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
-    enableScrollLock && enableScrollLock()
     const t = window.setTimeout(() => {
       enableFocusTrap && enableFocusTrap()
     }, theme.transitions.durationModerate)
     return () => {
       window.clearTimeout(t)
     }
-  }, [enableFocusTrap, enableScrollLock])
+  }, [enableFocusTrap])
 
   useGlobalHotkeys('esc', closeModal, wrapperRef)
 

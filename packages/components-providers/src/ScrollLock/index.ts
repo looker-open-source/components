@@ -23,5 +23,6 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+export * from './ScrollLockContext'
+export * from './ScrollLockProvider'
