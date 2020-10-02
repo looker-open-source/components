@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
+- `TreeItemLabel` keep the hover behavior for selected `TreeItem`
 
 ## [0.9.15] - 2020-09-21
 
