@@ -164,6 +164,7 @@ const components: NavigationSection = {
       children: [
         { path: '', title: 'Dialog' },
         { path: 'confirm', title: 'Confirm' },
+        { path: 'drawer', title: 'Drawer' },
         { path: 'layout', title: 'Layout' },
         { path: 'prompt', title: 'Prompt' },
       ],

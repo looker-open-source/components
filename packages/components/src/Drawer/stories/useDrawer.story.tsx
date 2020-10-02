@@ -23,5 +23,32 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import React, { useState } from 'react'
+import { useDrawer } from '../Drawer'
+import { SampleContent } from './SampleContent'
+
+export const UseDrawerHook = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const open = () => setIsOpen(true)
+  const onClose = () => setIsOpen(false)
+
+  const content = <SampleContent />
+
+  const { drawer } = useDrawer({
+    content,
+    isOpen,
+    onClose,
+  })
+
+  return (
+    <>
+      {drawer}
+      <button onClick={open}>Open Drawer</button>
+    </>
+  )
+}
+
+UseDrawerHook.parameters = {
+  storyshots: { disable: true },
+}

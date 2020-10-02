@@ -28,21 +28,19 @@ import React, { useState } from 'react'
 import {
   Card,
   CardContent,
+  ButtonTransparent,
+  HoverDisclosure,
   IconButton,
-  Tooltip,
-  Tree,
-  TreeItem,
-  TreeGroup,
   Menu,
   MenuDisclosure,
-  MenuItem,
   MenuList,
+  MenuItem,
   Space,
-  HoverDisclosure,
-  usePopover,
-  ButtonTransparent,
+  Tooltip,
   Truncate,
-} from '@looker/components'
+  usePopover,
+} from '../..'
+import { TreeItem, Tree, TreeGroup } from '..'
 
 const Span = ({ children }) => <span>{children}</span>
 

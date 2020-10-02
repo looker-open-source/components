@@ -23,5 +23,26 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import styled from 'styled-components'
+import { SurfaceBase, surfaceTransition } from '../Dialog/Surface'
+
+export const DrawerSurface = styled(SurfaceBase)`
+  box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
+  /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
+  height: 100%;
+  max-height: 100vh;
+  position: absolute;
+  right: 0;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
+
+  &.entering,
+  &.exiting {
+    opacity: 0.01;
+    transform: translateX(100%);
+  }
+  &.exited {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+`
