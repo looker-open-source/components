@@ -35,7 +35,7 @@ import {
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
-import { IconButton } from '../Button'
+import { IconButton, ButtonTransparent } from '../Button'
 import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
@@ -213,6 +213,8 @@ interface TreeStyleProps {
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text4};
+  flex-shrink: 2;
+  min-width: 0;
 
   & > ${Accordion} {
     & > ${AccordionContent} {
@@ -251,7 +253,15 @@ export const TreeStyle = styled.div<TreeStyleProps>`
        * Caution: Magic Numbers! Subtract 2px to account for borders
        * on TreeItemSpace
        */
+      display: block;
       max-height: calc(${({ theme }) => theme.lineHeights.xsmall} - 2px);
+      transform: translateY(-1px);
+    }
+    ${ButtonTransparent} {
+      /*
+       * Caution: Magic Numbers! Necessary FieldPicker adjustment
+       */
+      transform: translateY(-1px);
     }
   }
 `

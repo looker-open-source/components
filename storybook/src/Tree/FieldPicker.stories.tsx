@@ -26,6 +26,8 @@
 
 import React, { useState } from 'react'
 import {
+  Card,
+  CardContent,
   IconButton,
   Tooltip,
   Tree,
@@ -39,7 +41,10 @@ import {
   HoverDisclosure,
   usePopover,
   ButtonTransparent,
+  Truncate,
 } from '@looker/components'
+
+const Span = ({ children }) => <span>{children}</span>
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -71,12 +76,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
     />
   )
 
-  const itemLabel = (
-    <Space between alignItems="flex-start">
-      <span>{children}</span>
-      {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
-    </Space>
-  )
+  const TextWrapper = truncate ? Truncate : Span
 
   return (
     <>
@@ -88,7 +88,6 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           <MenuItem>Gouda</MenuItem>
         </MenuList>
         <TreeItem
-          truncate={truncate}
           detail={
             <>
               <IconButton
@@ -119,7 +118,10 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           selected={!!overlay}
           icon="FieldNumber"
         >
-          {itemLabel}
+          <Space between alignItems="flex-start">
+            <TextWrapper>{children}</TextWrapper>
+            {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
+          </Space>
         </TreeItem>
       </Menu>
     </>
@@ -143,35 +145,44 @@ const addButton = (
 )
 
 export const FieldPicker = () => (
-  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
-    <TreeGroup label="DIMENSIONS">
-      <PickerItem />
-      <PickerItem />
-      <PickerItem />
-      <PickerItem>
-        Over a thousand types of cheese exist and are currently produced in
-        various countries. Their styles, textures and flavors depend on the
-        origin of the milk (including the animal's diet), whether they have been
-        pasteurized, the butterfat content, the bacteria and mold, the
-        processing, and how long they have been aged for.
-      </PickerItem>
-      <PickerItem truncate>
-        Herbs, spices, or wood smoke may be used as flavoring agents. The yellow
-        to red color of many cheeses is produced by adding annatto. Other
-        ingredients may be added to some cheeses, such as black pepper, garlic,
-        chives or cranberries.
-      </PickerItem>
-    </TreeGroup>
-    <TreeGroup label="MEASURES" color="keyFocus">
-      <Tree visuallyAsBranch label="Hello">
-        <PickerItem />
+  <Card raised m="large" maxWidth="600px">
+    <CardContent>
+      <Tree
+        defaultOpen
+        detailAccessory
+        detail={addButton}
+        label="Custom Fields"
+      >
+        <TreeGroup label="DIMENSIONS">
+          <PickerItem />
+          <PickerItem />
+          <PickerItem />
+          <PickerItem>
+            Over a thousand types of cheese exist and are currently produced in
+            various countries. Their styles, textures and flavors depend on the
+            origin of the milk (including the animal's diet), whether they have
+            been pasteurized, the butterfat content, the bacteria and mold, the
+            processing, and how long they have been aged for.
+          </PickerItem>
+          <PickerItem truncate>
+            Herbs, spices, or wood smoke may be used as flavoring agents. The
+            yellow to red color of many cheeses is produced by adding annatto.
+            Other ingredients may be added to some cheeses, such as black
+            pepper, garlic, chives or cranberries.
+          </PickerItem>
+        </TreeGroup>
+        <TreeGroup label="MEASURES" color="keyFocus">
+          <Tree visuallyAsBranch label="Hello">
+            <PickerItem />
+          </Tree>
+          <TreeItem color="orange" icon="FieldString">
+            Name
+          </TreeItem>
+          <PickerItem />
+          <PickerItem />
+          <PickerItem />
+        </TreeGroup>
       </Tree>
-      <TreeItem color="orange" icon="FieldString">
-        Name
-      </TreeItem>
-      <PickerItem />
-      <PickerItem />
-      <PickerItem />
-    </TreeGroup>
-  </Tree>
+    </CardContent>
+  </Card>
 )

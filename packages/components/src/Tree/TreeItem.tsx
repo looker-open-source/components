@@ -230,6 +230,8 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
   cursor: pointer;
+  flex-shrink: 2;
+  min-width: 0;
   outline: none;
 `
 
@@ -243,8 +245,10 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
+  flex-shrink: 2;
   height: 100%;
   max-width: 100%;
+  min-width: 0;
   outline: none;
   /*
    * Subtract 1px from each padding value to compensate for
@@ -263,7 +267,12 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
 `
 
 const Accessory = styled.div`
-  transform: translateY(${({ theme }) => theme.space.xxxsmall});
+  /* transform: translateY(${({ theme }) => theme.space.xxxsmall}); */
+  /*
+   * Subtract 1px from padding value to compensate for
+   * a transparent border on TreeItemSpace
+   */
+  padding-top: calc(${({ theme }) => theme.space.xxsmall} - 1px);
 `
 
 export const TreeItem = styled(TreeItemLayout)`
