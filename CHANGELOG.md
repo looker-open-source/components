@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Span` replaced all library-internal usage of `Text` with `Span`
 - `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
 
+### Changed
+
+- `InputSearch` `onChange` callback argument is now a string rather than an event
+
 ### Fixed
 
 - `ComboboxMulti` issue with chips not updating reflecting updated option labels
@@ -96,7 +100,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `InputSearch` `onChange` callback argument is now a string rather than an event
 - `Chip` / `ChipButton` now call `onClick` on enter or space key
 - `ComponentsProvider` now takes `colors` prop instead of `coreColors` and accepts `CoreColors & IntentColors`
 - `Prompt` / `usePrompt` now _optionally_ support `clearOnCancel` behavior
