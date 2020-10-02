@@ -127,22 +127,15 @@ export const useDrawer = ({
     isEnabled: focusTrapEnabled,
     trapRef: focusTrapRef,
   } = useFocusTrap(isOpen)
-  const {
-    callbackRef: scrollRef,
-    disable: disableScrollLock,
-    enable: enableScrollLock,
-    isEnabled: scrollLockEnabled,
-  } = useScrollLock(isOpen, false)
+  const [, portalRef] = useScrollLock(focusRef)
 
   const handleOpen = () => {
     !isControlled && setControlledIsOpen(true)
-    enableScrollLock()
   }
 
   const handleClose = () => {
     if (canClose && !canClose()) return
     !isControlled && setControlledIsOpen(false)
-    disableScrollLock()
     onClose && onClose()
   }
 
@@ -151,12 +144,9 @@ export const useDrawer = ({
       value={{
         closeModal: handleClose,
         disableFocusTrap,
-        disableScrollLock,
         enableFocusTrap,
-        enableScrollLock,
         focusTrapEnabled,
         focusTrapRef,
-        scrollLockEnabled,
       }}
     >
       <CSSTransition
@@ -167,12 +157,7 @@ export const useDrawer = ({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <Portal
-            ref={(node) => {
-              focusRef(node)
-              scrollRef(node)
-            }}
-          >
+          <Portal ref={portalRef}>
             <Backdrop className={state} onClick={handleClose} visible />
             <DrawerSurface className={state} width={width}>
               {content}
