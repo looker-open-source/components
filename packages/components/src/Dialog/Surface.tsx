@@ -45,7 +45,7 @@ import {
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
-interface SurfaceProps
+export interface SurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     BorderProps,
     BoxShadowProps,
