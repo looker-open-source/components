@@ -1,6 +1,6 @@
 {
   "name": "@looker/storybook-config",
-  "version": "0.9.15",
+  "version": "0.9.16",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -8,11 +8,11 @@
   ],
   "private": true,
   "devDependencies": {
-    "@types/react": "^16.9.49",
-    "@looker/components-providers": "*",
+    "@looker/components-providers": "^0.9.16",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-storyshots": "^6.0.22",
     "@storybook/addon-storyshots-puppeteer": "^6.0.22",
+    "@types/react": "^16.9.49",
     "react": "^16.13.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0"
   },
