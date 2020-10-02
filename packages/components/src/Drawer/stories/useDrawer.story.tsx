@@ -24,43 +24,31 @@
 
  */
 
-export * from './Accordion'
-export * from './ActionList'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './Drawer'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './VisuallyHidden'
+import React, { useState } from 'react'
+import { useDrawer } from '../Drawer'
+import { SampleContent } from './SampleContent'
 
-export * from './utils'
+export const UseDrawerHook = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const open = () => setIsOpen(true)
+  const onClose = () => setIsOpen(false)
 
-export { ComponentsProvider } from '@looker/components-providers'
+  const content = <SampleContent />
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-export { theme, Theme } from '@looker/design-tokens'
+  const { drawer } = useDrawer({
+    content,
+    isOpen,
+    onClose,
+  })
+
+  return (
+    <>
+      {drawer}
+      <button onClick={open}>Open Drawer</button>
+    </>
+  )
+}
+
+UseDrawerHook.parameters = {
+  storyshots: { disable: true },
+}
