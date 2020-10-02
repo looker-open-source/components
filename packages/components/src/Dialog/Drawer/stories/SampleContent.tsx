@@ -43,9 +43,9 @@ export const SampleContent = () => {
         <Constitution />
       </DialogContent>
       <DialogFooter>
-        <Button onClick={closeModal}>Save &amp; Close</Button>
+        <Button onClick={closeModal}>Done Reading</Button>
         <ButtonTransparent color="neutral" onClick={closeModal}>
-          Cancel &amp; Discard
+          Finish Later
         </ButtonTransparent>
       </DialogFooter>
     </>

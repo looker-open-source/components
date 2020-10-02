@@ -25,39 +25,15 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Drawer, DrawerProps } from '../Drawer'
+import { Drawer } from '../Drawer'
 import { SampleContent } from './SampleContent'
 
-export * from './useDrawer.story'
-export * from './renderProps.story'
-
-const Template: Story<DrawerProps> = (args) => (
-  <Drawer {...args} content={<SampleContent />}>
-    <button>Open Drawer</button>
+export const RenderProps = () => (
+  <Drawer content={<SampleContent />}>
+    {(drawerProps) => <button {...drawerProps}>Open Drawer</button>}
   </Drawer>
 )
 
-export const Basic = Template.bind({})
-Basic.args = {}
-Basic.parameters = {
+RenderProps.parameters = {
   storyshots: { disable: true },
-}
-
-export const Open = Template.bind({})
-Open.args = {
-  defaultOpen: true,
-}
-
-export const Width = Template.bind({})
-Width.args = {
-  ...Open.args,
-  width: '10rem',
-}
-
-/** TODO: Add Placement when supported */
-
-export default {
-  component: Drawer,
-  title: 'Drawer',
 }

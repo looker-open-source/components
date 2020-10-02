@@ -34,7 +34,7 @@ import React, {
 import { CSSTransition } from 'react-transition-group'
 import { ResponsiveValue } from 'styled-system'
 import { Portal } from '../../Portal'
-import { useFocusTrap, useScrollLock } from '../../utils'
+import { useFocusTrap, useScrollLock, useControlWarn } from '../../utils'
 import { Backdrop } from '../Backdrop'
 import { DialogContext } from '../DialogContext'
 import { DrawerSurface } from './DrawerSurface'
@@ -66,6 +66,12 @@ export interface UseDrawerProps {
    * @default false
    */
   defaultOpen?: boolean
+
+  /**
+   * Drawer will be displayed immediately when rendered.
+   * @default undefined
+   */
+  isOpen?: boolean
 
   /**
    * Specify a callback to be called each time this Dialog is closed
@@ -103,8 +109,16 @@ export const useDrawer = ({
   width = '30rem',
   canClose,
   onClose,
+  ...props
 }: UseDrawerProps) => {
-  const [isOpen, setOpen] = useState(defaultOpen)
+  const [uncontrolledIsOpen, setControlledIsOpen] = useState(defaultOpen)
+  const isControlled = useControlWarn({
+    controllingProps: ['isOpen'],
+    isControlledCheck: () => props.isOpen !== undefined,
+    name: 'useDrawer',
+  })
+
+  const isOpen = isControlled ? props.isOpen : uncontrolledIsOpen
 
   const {
     callbackRef: focusRef,
@@ -121,13 +135,13 @@ export const useDrawer = ({
   } = useScrollLock(isOpen, false)
 
   const handleOpen = () => {
-    setOpen(true)
+    !isControlled && setControlledIsOpen(true)
     enableScrollLock()
   }
 
   const handleClose = () => {
     if (canClose && !canClose()) return
-    setOpen(false)
+    !isControlled && setControlledIsOpen(false)
     disableScrollLock()
     onClose && onClose()
   }

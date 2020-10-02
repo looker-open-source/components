@@ -24,40 +24,31 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Drawer, DrawerProps } from '../Drawer'
+import React, { useState } from 'react'
+import { useDrawer } from '../Drawer'
 import { SampleContent } from './SampleContent'
 
-export * from './useDrawer.story'
-export * from './renderProps.story'
+export const UseDrawerHook = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const open = () => setIsOpen(true)
+  const onClose = () => setIsOpen(false)
 
-const Template: Story<DrawerProps> = (args) => (
-  <Drawer {...args} content={<SampleContent />}>
-    <button>Open Drawer</button>
-  </Drawer>
-)
+  const content = <SampleContent />
 
-export const Basic = Template.bind({})
-Basic.args = {}
-Basic.parameters = {
+  const { drawer } = useDrawer({
+    content,
+    isOpen,
+    onClose,
+  })
+
+  return (
+    <>
+      {drawer}
+      <button onClick={open}>Open Drawer</button>
+    </>
+  )
+}
+
+UseDrawerHook.parameters = {
   storyshots: { disable: true },
-}
-
-export const Open = Template.bind({})
-Open.args = {
-  defaultOpen: true,
-}
-
-export const Width = Template.bind({})
-Width.args = {
-  ...Open.args,
-  width: '10rem',
-}
-
-/** TODO: Add Placement when supported */
-
-export default {
-  component: Drawer,
-  title: 'Drawer',
 }
