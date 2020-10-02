@@ -24,22 +24,10 @@
 
  */
 
-import { ButtonItem, Grid, ButtonToggle } from '@looker/components'
+import { ButtonItem, ButtonToggle } from '@looker/components'
 import React, { useState } from 'react'
 
-export const All = () => (
-  <Grid columns={1}>
-    <Basic />
-    <InitialValue />
-    <Disabled />
-    <Options />
-    <Nullable />
-    <NullableInitialValue />
-  </Grid>
-)
-
 export default {
-  component: All,
   title: 'Buttons/ButtonToggle',
 }
 

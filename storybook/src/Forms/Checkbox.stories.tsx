@@ -28,27 +28,13 @@ import {
   CheckboxTree,
   List,
   ListItem,
-  Fieldset,
   FieldCheckbox,
   MixedBoolean,
   useMixedStateCheckbox,
   CheckboxGroup,
 } from '@looker/components'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Checked />
-    <Disabled />
-    <Required />
-    <Error />
-    <MixedState />
-    <LargeGroups />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/Checkbox',
 }
 

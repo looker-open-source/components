@@ -24,18 +24,21 @@
 
  */
 
-import React from 'react'
-import { ButtonTransparent, ButtonProps } from '@looker/components'
-import { Story } from '@storybook/react/types-6-0'
+process.env.TZ = 'UTC'
 
-const Template: Story<ButtonProps> = (args) => <ButtonTransparent {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Button Transparent Text',
-}
-
-export default {
-  component: ButtonTransparent,
-  title: 'ButtonTransparent',
+module.exports = {
+  moduleDirectories: ['./node_modules', './packages'],
+  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
+  moduleNameMapper: {
+    '@looker/(.+)$': '<rootDir>/packages/$1/src',
+    '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
+      '<rootDir>/config/jest/fileMock.js',
+  },
+  roots: ['<rootDir>'],
+  testEnvironment: 'jsdom',
+  testMatch: ['**/*.shots.ts'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
 }

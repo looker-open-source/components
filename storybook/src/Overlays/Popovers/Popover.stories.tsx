@@ -75,21 +75,8 @@ const options = [
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
 ]
-export const All = () => (
-  <SpaceVertical align="start">
-    <OverlayOpenDialog />
-    <RenderProps />
-    <RenderPropsSpread />
-    <Placement />
-    <PopoverFocusTrap />
-    <Grouped />
-    <MovingTarget />
-    <MouseUp />
-  </SpaceVertical>
-)
 
 export default {
-  component: All,
   title: 'Overlays/Popover',
 }
 
