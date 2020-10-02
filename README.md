@@ -62,13 +62,13 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 
 #### Storybook
 
-Storybook is a tool we use develop, demonstrate and document components in isolation.
+Storybook is a tool used develop, demonstrate and document components in isolation.
 
 - **yarn storybook** starts master Storybook (includes all stories)
 - **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
 - **yarn image-snapshots** takes image-snapshots of all stories within packages/\*\*
   - `preimage-snapshots` is a yarn task that runs `storybooks-build` task before capturing image snapshots.
-- **storybooks-build** builds all packages/\* storybooks for publishing and/or image-snapshot testing.
+- **yarn storybooks-build** builds all packages/\* storybooks for publishing and/or image-snapshot testing.
 
 ### Workspace Commands
 
