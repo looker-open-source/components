@@ -24,83 +24,16 @@
 
  */
 
-import {
-  assertSnapshotShallow,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { Button } from './Button'
-
-test('Button is rendered ', () => {
-  assertSnapshotShallow(<Button>click here</Button>)
-})
-
-test('Button works with color critical', () => {
-  const { getByText } = renderWithTheme(
-    <Button color="critical">critical</Button>
-  )
-
-  expect(getByText('critical')).toMatchSnapshot()
-})
-
-test('Button disable', () => {
-  const { getByText } = renderWithTheme(<Button disabled>disabled</Button>)
-
-  expect(getByText('disabled')).toMatchSnapshot()
-})
 
 test('Button accepts a className prop', () => {
   const { container } = renderWithTheme(
     <Button className="foo">button with class</Button>
   )
   expect(container.firstChild).toHaveClass('foo')
-})
-
-test('Button validates all sizes', () => {
-  const { getByText } = renderWithTheme(
-    <>
-      <Button size={'xsmall'}>xsmall button</Button>
-      <Button size={'small'}>small button</Button>
-      <Button size={'medium'}>medium button</Button>
-      <Button size={'large'}>large button</Button>
-    </>
-  )
-
-  expect(getByText('xsmall button')).toMatchSnapshot()
-  expect(getByText('small button')).toMatchSnapshot()
-  expect(getByText('medium button')).toMatchSnapshot()
-  expect(getByText('large button')).toMatchSnapshot()
-})
-
-test('Button with icon validates all sizes', () => {
-  const { getByText } = renderWithTheme(
-    <>
-      <Button size={'xsmall'} iconBefore={'Account'}>
-        xsmall button
-      </Button>
-      <Button size={'small'} iconBefore={'Account'}>
-        small button
-      </Button>
-      <Button size={'medium'} iconBefore={'Account'}>
-        medium button
-      </Button>
-      <Button size={'large'} iconBefore={'Account'}>
-        large button
-      </Button>
-    </>
-  )
-
-  expect(getByText('xsmall button')).toMatchSnapshot()
-  expect(getByText('small button')).toMatchSnapshot()
-  expect(getByText('medium button')).toMatchSnapshot()
-  expect(getByText('large button')).toMatchSnapshot()
-})
-
-test('Button can be full width', () => {
-  const { getByText } = renderWithTheme(<Button fullWidth>Full Width</Button>)
-
-  expect(getByText('Full Width')).toMatchSnapshot()
 })
 
 test('Button Focus: renders outline when tabbing into focus, but not when clicking', () => {

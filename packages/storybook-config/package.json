@@ -1,0 +1,22 @@
+{
+  "name": "@looker/storybook-config",
+  "version": "0.9.15",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "private": true,
+  "devDependencies": {
+    "@types/react": "^16.9.49",
+    "@looker/components-providers": "*",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-storyshots": "^6.0.22",
+    "@storybook/addon-storyshots-puppeteer": "^6.0.22",
+    "react": "^16.13.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0"
+  },
+  "peerDependencies": {
+    "react": "^16.11"
+  }
+}

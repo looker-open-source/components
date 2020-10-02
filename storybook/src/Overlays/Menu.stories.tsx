@@ -44,19 +44,7 @@ import {
   Icon,
 } from '@looker/components'
 
-export const All = () => (
-  <>
-    <Space mb="large">
-      <Basic />
-      <Controlled />
-    </Space>
-    <IconSpace />
-    <Hover />
-  </>
-)
-
 export default {
-  component: All,
   title: 'Overlays/Menu',
 }
 

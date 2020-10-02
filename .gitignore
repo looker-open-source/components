@@ -14,10 +14,11 @@ node_modules
 .eslintcache
 
 # code-gen
-packages/icons/src/generated
-www/public
 docs/static
+packages/icons/src/generated
 playground/dist
+storybook-static
+www/public
 
 # lerna
 /packages/*/lib

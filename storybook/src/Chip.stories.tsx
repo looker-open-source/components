@@ -24,26 +24,10 @@
 
  */
 
-import {
-  Chip,
-  ChipButton,
-  Heading,
-  Space,
-  SpaceVertical,
-} from '@looker/components'
+import { Chip, ChipButton, Heading, Space } from '@looker/components'
 import React, { useState } from 'react'
 
-export const All = () => (
-  <SpaceVertical align="start">
-    <ClickAndDelete />
-    <ChipButtons />
-    <Removable />
-    <ChipPrefix />
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Chips',
 }
 

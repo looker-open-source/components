@@ -28,7 +28,6 @@ import {
   Button,
   FieldText,
   FieldCheckbox,
-  Fieldset,
   FieldRadio,
   FieldToggleSwitch,
   Icon,
@@ -40,29 +39,7 @@ import {
   SpaceVertical,
 } from '@looker/components'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Detail />
-    <Description />
-    <Inline />
-    <Disabled />
-    <Required />
-    <Placeholder />
-    <Value />
-    <ValidationError />
-    <Before />
-    <After />
-    <IconBefore />
-    <IconAfter />
-    <Toggles />
-    <AutoResize />
-    <BeforeAfterValidation />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/Text',
 }
 

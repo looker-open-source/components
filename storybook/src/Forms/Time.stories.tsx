@@ -28,24 +28,13 @@ import partial from 'lodash/partial'
 import {
   Button,
   FieldTime,
-  Fieldset,
   InputTime,
   Paragraph,
   Space,
   SpaceVertical,
 } from '@looker/components'
 
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Required />
-    <ValidationError />
-  </Fieldset>
-)
-
 export default {
-  component: All,
   title: 'Forms/Time',
 }
 

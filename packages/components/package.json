@@ -12,6 +12,11 @@
     "url": "https://github.com/looker-open-source/components",
     "directory": "packages/components"
   },
+  "scripts": {
+    "storybook": "start-storybook  -c .storybook -p 3301  --host 0.0.0.0",
+    "storybook-build": "build-storybook -c .storybook",
+    "poststorybook-build": "npx sb extract"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -38,6 +43,8 @@
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.9.15",
+    "@storybook/addon-storyshots": "^6.0.22",
+    "@storybook/react": "^6.0.22",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
     "@types/d3-color": "^1.2.2",
@@ -54,6 +61,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
+    "storybook": "^6.0.22",
     "styled-components": "^4.4.1"
   },
   "peerDependencies": {
