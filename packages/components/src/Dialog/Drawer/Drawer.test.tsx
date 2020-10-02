@@ -34,7 +34,6 @@ import {
 } from '@testing-library/react'
 import { DialogContext } from '../DialogContext'
 import { Drawer } from './Drawer'
-import { SampleContent } from './stories/SampleContent'
 import { UseDrawerHook, RenderProps } from './stories/Drawer.story'
 
 const SimpleContent = () => {
