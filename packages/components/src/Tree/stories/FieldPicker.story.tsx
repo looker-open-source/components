@@ -24,10 +24,8 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import {
-  Card,
-  CardContent,
   ButtonTransparent,
   HoverDisclosure,
   IconButton,
@@ -42,7 +40,7 @@ import {
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 
-const Span = ({ children }) => <span>{children}</span>
+const Span: FC<any> = ({ children }) => <span>{children}</span>
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -143,44 +141,35 @@ const addButton = (
 )
 
 export const FieldPicker = () => (
-  <Card raised m="large" maxWidth="600px">
-    <CardContent>
-      <Tree
-        defaultOpen
-        detailAccessory
-        detail={addButton}
-        label="Custom Fields"
-      >
-        <TreeGroup label="DIMENSIONS">
-          <PickerItem />
-          <PickerItem />
-          <PickerItem />
-          <PickerItem>
-            Over a thousand types of cheese exist and are currently produced in
-            various countries. Their styles, textures and flavors depend on the
-            origin of the milk (including the animal's diet), whether they have
-            been pasteurized, the butterfat content, the bacteria and mold, the
-            processing, and how long they have been aged for.
-          </PickerItem>
-          <PickerItem truncate>
-            Herbs, spices, or wood smoke may be used as flavoring agents. The
-            yellow to red color of many cheeses is produced by adding annatto.
-            Other ingredients may be added to some cheeses, such as black
-            pepper, garlic, chives or cranberries.
-          </PickerItem>
-        </TreeGroup>
-        <TreeGroup label="MEASURES" color="keyFocus">
-          <Tree visuallyAsBranch label="Hello">
-            <PickerItem />
-          </Tree>
-          <TreeItem color="orange" icon="FieldString">
-            Name
-          </TreeItem>
-          <PickerItem />
-          <PickerItem />
-          <PickerItem />
-        </TreeGroup>
+  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
+    <TreeGroup label="DIMENSIONS">
+      <PickerItem />
+      <PickerItem />
+      <PickerItem />
+      <PickerItem>
+        Over a thousand types of cheese exist and are currently produced in
+        various countries. Their styles, textures and flavors depend on the
+        origin of the milk (including the animal's diet), whether they have been
+        pasteurized, the butterfat content, the bacteria and mold, the
+        processing, and how long they have been aged for.
+      </PickerItem>
+      <PickerItem truncate>
+        Herbs, spices, or wood smoke may be used as flavoring agents. The yellow
+        to red color of many cheeses is produced by adding annatto. Other
+        ingredients may be added to some cheeses, such as black pepper, garlic,
+        chives or cranberries.
+      </PickerItem>
+    </TreeGroup>
+    <TreeGroup label="MEASURES" color="keyFocus">
+      <Tree visuallyAsBranch label="Hello">
+        <PickerItem />
       </Tree>
-    </CardContent>
-  </Card>
+      <TreeItem color="orange" icon="FieldString">
+        Name
+      </TreeItem>
+      <PickerItem />
+      <PickerItem />
+      <PickerItem />
+    </TreeGroup>
+  </Tree>
 )
