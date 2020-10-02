@@ -23,5 +23,17 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import React from 'react'
+import { Drawer } from '../Drawer'
+import { SampleContent } from './SampleContent'
+
+export const RenderProps = () => (
+  <Drawer content={<SampleContent />}>
+    {(drawerProps) => <button {...drawerProps}>Open Drawer</button>}
+  </Drawer>
+)
+
+RenderProps.parameters = {
+  storyshots: { disable: true },
+}

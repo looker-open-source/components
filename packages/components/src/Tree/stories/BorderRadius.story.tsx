@@ -23,5 +23,24 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import React from 'react'
+import styled from 'styled-components'
+import { AccordionDisclosureStyle } from '../..'
+import { TreeItem, Tree, TreeItemLabel } from '..'
+
+export const BorderRadiusOverride = () => (
+  <BorderRadiusOverrideTree label="Created" defaultOpen>
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </BorderRadiusOverrideTree>
+)
+
+const BorderRadiusOverrideTree = styled(Tree)`
+  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
+    background: ${({ theme }) => theme.colors.ui2};
+    border-radius: ${({ theme }) => theme.radii.medium};
+  }
+`

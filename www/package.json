@@ -1,10 +1,10 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.9.15",
+  "version": "0.9.16",
   "devDependencies": {
-    "@looker/components": "^0.9.15",
-    "@looker/design-tokens": "^0.9.15",
+    "@looker/components": "^0.9.16",
+    "@looker/design-tokens": "^0.9.16",
     "@looker/icons": "^0.9.14",
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.18",
@@ -27,8 +27,8 @@
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
-    "react-is": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-is": "^16.13.1",
     "react-live": "^2.2.2",
     "styled-components": "^4.4.1"
   },

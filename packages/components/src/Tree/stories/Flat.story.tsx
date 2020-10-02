@@ -23,5 +23,18 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import React from 'react'
+import { TreeGroup } from '../TreeGroup'
+import { TreeItem } from '../TreeItem'
+
+export const Flat = () => (
+  <TreeGroup label="Inventory Items">
+    <TreeItem icon="Calendar">Date</TreeItem>
+    <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
+      Cost
+    </TreeItem>
+    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
+    <TreeItem icon="FieldNumber">Another Number</TreeItem>
+  </TreeGroup>
+)

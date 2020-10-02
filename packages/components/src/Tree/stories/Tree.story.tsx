@@ -23,5 +23,42 @@
  SOFTWARE.
 
  */
-export * from './ComponentsProvider'
-export * from './ScrollLock'
+
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Tree, TreeProps, TreeItem } from '..'
+
+export * from './BorderRadius.story'
+export * from './FieldPicker.story'
+export * from './FileTree.story'
+export * from './Flat.story'
+
+export default {
+  title: 'Tree',
+}
+
+const Template: Story<TreeProps> = (args) => (
+  <Tree label="Orders" {...args}>
+    <Tree label="Orders" defaultOpen>
+      <TreeItem>ID</TreeItem>
+      <TreeItem>Status</TreeItem>
+      <Tree label="Created" defaultOpen>
+        <TreeItem>Created Date</TreeItem>
+        <TreeItem>Created Month</TreeItem>
+        <TreeItem>Created Year</TreeItem>
+        <TreeItem>Created Quarter</TreeItem>
+      </Tree>
+    </Tree>
+  </Tree>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  defaultOpen: true,
+}
+
+export const Border = Template.bind({})
+Border.args = {
+  ...Basic.args,
+  border: true,
+}

@@ -400,13 +400,7 @@ export function usePopover({
   focusTrap = true,
   cancelClickOutside,
 }: UsePopoverProps) {
-  const {
-    element: scrollElement,
-    callbackRef: scrollRef,
-    enable: enableScrollLock,
-    isEnabled: scrollLockEnabled,
-    disable: disableScrollLock,
-  } = useScrollLock(controlledIsOpen, true)
+  const [scrollElement, scrollRef] = useScrollLock()
 
   const {
     callbackRef: focusRef,
@@ -459,7 +453,6 @@ export function usePopover({
 
   function handleOpen(event: SyntheticEvent) {
     setOpen(true)
-    enableScrollLock()
     event.stopPropagation()
     event.preventDefault()
   }
@@ -517,12 +510,9 @@ export function usePopover({
       value={{
         closeModal: handleClose,
         disableFocusTrap,
-        disableScrollLock,
         enableFocusTrap,
-        enableScrollLock,
         focusTrapEnabled,
         focusTrapRef,
-        scrollLockEnabled,
       }}
     >
       <Portal ref={scrollRef}>

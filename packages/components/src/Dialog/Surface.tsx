@@ -45,7 +45,7 @@ import {
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
-interface SurfaceProps
+export interface SurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     BorderProps,
     BoxShadowProps,
@@ -60,21 +60,18 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    DialogContext
-  )
+  const { closeModal, enableFocusTrap } = useContext(DialogContext)
 
   const wrapperRef = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
-    enableScrollLock && enableScrollLock()
     const t = window.setTimeout(() => {
       enableFocusTrap && enableFocusTrap()
     }, theme.transitions.durationModerate)
     return () => {
       window.clearTimeout(t)
     }
-  }, [enableFocusTrap, enableScrollLock])
+  }, [enableFocusTrap])
 
   useGlobalHotkeys('esc', closeModal, wrapperRef)
 
@@ -88,12 +85,12 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   )
 }
 
-const surfaceTransition = () => css`
-  ${(props) =>
-    `${props.theme.transitions.durationModerate} ${props.theme.easings.ease}`}
+export const surfaceTransition = () => css`
+  ${({ theme }) =>
+    `${theme.transitions.durationModerate} ${theme.easings.ease}`}
 `
 
-export const Surface = styled(SurfaceLayout)`
+export const SurfaceBase = styled(SurfaceLayout)`
   ${reset}
   ${boxShadow}
   ${border}
@@ -103,12 +100,20 @@ export const Surface = styled(SurfaceLayout)`
 
   display: flex;
   flex-direction: column;
-  position: relative;
-  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   &:focus {
     outline: none;
   }
+`
+
+SurfaceBase.defaultProps = {
+  backgroundColor: 'background',
+  color: 'text5',
+}
+
+export const Surface = styled(SurfaceBase)`
+  position: relative;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   &.entering,
   &.exiting {
