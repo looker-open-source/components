@@ -26,20 +26,18 @@
 
 import React, { useState } from 'react'
 import {
+  ButtonTransparent,
+  HoverDisclosure,
   IconButton,
-  Tooltip,
-  Tree,
-  TreeItem,
-  TreeGroup,
   Menu,
   MenuDisclosure,
-  MenuItem,
   MenuList,
+  MenuItem,
   Space,
-  HoverDisclosure,
+  Tooltip,
   usePopover,
-  ButtonTransparent,
-} from '@looker/components'
+} from '../..'
+import { TreeItem, Tree, TreeGroup } from '..'
 
 const PickerItem = () => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)

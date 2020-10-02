@@ -25,23 +25,12 @@
  */
 
 import React from 'react'
-import {
-  Tree,
-  TreeItem,
-  TreeGroup,
-  Space,
-  AccordionDisclosureStyle,
-  TreeItemLabel,
-} from '@looker/components'
-import styled from 'styled-components'
-export { FieldPicker } from './FieldPicker.stories'
+import { Story } from '@storybook/react/types-6-0'
+import { Tree, TreeProps } from '../Tree'
+import { TreeItem } from '../TreeItem'
 
-export default {
-  title: 'Tree',
-}
-
-export const FileSelector = () => (
-  <Tree label="thelook" icon="ExploreOutline" defaultOpen>
+const Template: Story<TreeProps> = (args) => (
+  <Tree label="thelook" icon="ExploreOutline" {...args}>
     <Tree visuallyAsBranch label="Orders" icon="VisibilityOutline" defaultOpen>
       <Tree visuallyAsBranch label="Orders" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
@@ -75,69 +64,10 @@ export const FileSelector = () => (
   </Tree>
 )
 
-export const FileSelectorClosed = () => (
-  <Tree label="thelook2" icon="ExploreOutline">
-    <Tree label="Users" icon="VisibilityOutline">
-      <Tree label="Orders" icon="Table">
-        <TreeItem icon="IdeDimension">ID</TreeItem>
-        <TreeItem icon="IdeDimension">Status</TreeItem>
-        <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
-      </Tree>
-      <Tree label="Users" icon="Table">
-        <TreeItem icon="IdeDimension">ID</TreeItem>
-        <TreeItem icon="IdeDimension">Name</TreeItem>
-        <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
-      </Tree>
-    </Tree>
-  </Tree>
-)
+export const FileTree = Template.bind({})
+FileTree.args = {
+  defaultOpen: true,
+}
 
-export const Border = () => (
-  <Tree
-    border
-    label={
-      <Space between>
-        <span>Orders</span>
-        <span>thelook</span>
-      </Space>
-    }
-    defaultOpen
-  >
-    <Tree label="Orders" defaultOpen>
-      <TreeItem>ID</TreeItem>
-      <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
-      </Tree>
-    </Tree>
-  </Tree>
-)
-
-export const Flat = () => (
-  <TreeGroup label="Inventory Items">
-    <TreeItem icon="Calendar">Date</TreeItem>
-    <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
-      Cost
-    </TreeItem>
-    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
-    <TreeItem icon="FieldNumber">Another Number</TreeItem>
-  </TreeGroup>
-)
-
-const BorderRadiusOverrideTree = styled(Tree)`
-  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
-    border-radius: ${({ theme }) => theme.radii.medium};
-  }
-`
-
-export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree label="Created">
-    <TreeItem>Created Date</TreeItem>
-    <TreeItem>Created Month</TreeItem>
-    <TreeItem>Created Year</TreeItem>
-    <TreeItem>Created Quarter</TreeItem>
-  </BorderRadiusOverrideTree>
-)
+export const FileTreeClosed = Template.bind({})
+FileTreeClosed.args = {}
