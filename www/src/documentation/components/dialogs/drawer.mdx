@@ -11,13 +11,7 @@ NOTE: Currently `Drawer` only supports attachement to the right side of the view
 # Standard Use
 
 ```jsx
-<Drawer
-  content="Something in the drawer"
-  onConfirm={(close) => {
-    alert('You did something')
-    close()
-  }}
->
+<Drawer content="Something in the drawer">
   <Button>Open Drawer</Button>
 </Drawer>
 ```
@@ -35,7 +29,7 @@ We provide a custom hook that returns the opener function and rendered confirmat
   return (
     <>
       {drawer}
-      <ButtonOutline onClick={openDialog}>useConfirm</ButtonOutline>
+      <ButtonOutline onClick={open}>useConfirm</ButtonOutline>
     </>
   )
 }

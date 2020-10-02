@@ -61,11 +61,6 @@ describe('Drawer', () => {
     await waitForElementToBeRemoved(() => screen.getByText('Drawer content'))
   })
 
-  test('DialogContext working', () => {
-    renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />)
-    expect(screen.queryByText('Drawer content')).toBeInTheDocument()
-  })
-
   test('Drawer can be opened & closed', async () => {
     renderWithTheme(
       <Drawer content={<SimpleContent />}>

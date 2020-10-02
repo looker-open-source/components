@@ -111,7 +111,7 @@ export const useDrawer = ({
   onClose,
   ...props
 }: UseDrawerProps) => {
-  const [uncontrolledIsOpen, setControlledIsOpen] = useState(defaultOpen)
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['isOpen'],
     isControlledCheck: () => props.isOpen !== undefined,
@@ -130,12 +130,12 @@ export const useDrawer = ({
   const [, portalRef] = useScrollLock(focusRef)
 
   const handleOpen = () => {
-    !isControlled && setControlledIsOpen(true)
+    !isControlled && setUncontrolledIsOpen(true)
   }
 
   const handleClose = () => {
     if (canClose && !canClose()) return
-    !isControlled && setControlledIsOpen(false)
+    !isControlled && setUncontrolledIsOpen(false)
     onClose && onClose()
   }
 
