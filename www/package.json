@@ -16,7 +16,7 @@
     "gatsby": "^2.24.65",
     "gatsby-plugin-manifest": "^2.4.33",
     "gatsby-plugin-mdx": "^1.2.40",
-    "gatsby-plugin-react-helmet": "^3.3.11",
+    "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.4.20",
