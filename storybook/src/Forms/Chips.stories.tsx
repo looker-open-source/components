@@ -30,28 +30,10 @@ import {
   Grid,
   InputChips,
   Paragraph,
-  Space,
   SpaceVertical,
 } from '@looker/components'
 
-export const All = () => (
-  <SpaceVertical align="start">
-    <FieldChipOptions />
-    <Space align="start">
-      <Basic />
-      <Controlled />
-      <ValidationDuplicate />
-    </Space>
-    <Space align="start">
-      <Truncate />
-      <Overflow />
-      <AutoResize />
-    </Space>
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Forms/Chips',
 }
 

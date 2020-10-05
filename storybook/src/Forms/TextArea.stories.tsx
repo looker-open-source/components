@@ -24,21 +24,10 @@
 
  */
 import React from 'react'
-import { FieldTextArea, Fieldset, Grid, TextArea } from '@looker/components'
 
-export const All = () => (
-  <Grid>
-    <Basic />
-    <Disabled />
-    <Required />
-    <Error />
-    <Inline />
-    <Resize />>
-  </Grid>
-)
+import { FieldTextArea, Fieldset, TextArea } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/TextArea',
 }
 

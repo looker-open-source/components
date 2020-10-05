@@ -24,30 +24,31 @@
 
  */
 
-import React, { FC } from 'react'
-import { Tab, Tabs, TabList, TabPanel, TabPanels } from '@looker/components'
-import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
+import React from 'react'
+import {
+  Tab,
+  Tabs,
+  TabList,
+  TabListProps,
+  TabPanel,
+  TabPanels,
+} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 
-export default {
-  decorators: [withKnobs],
-  title: 'Tabs/Basic',
+interface DemoProps extends TabListProps {
+  tabCount: number
+  tabPrefix: string
 }
 
-const defaults = {
-  distribute: true,
-  prefixName: 'My Awesome Tab',
-  tabs: 20,
-}
-
-export const Basic: FC = () => {
-  const tabs = new Array(number('# of Tabs', defaults.tabs)).fill('tab')
+const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
+  const tabs = new Array(tabCount).fill('tab')
 
   return (
     <Tabs>
-      <TabList distribute={boolean('Distribute', defaults.distribute)}>
+      <TabList {...args}>
         {tabs.map((_k, index) => (
           <Tab key={index}>
-            {text('Prefix Tab Text', defaults.prefixName)} {index}
+            {tabPrefix} {index}
           </Tab>
         ))}
       </TabList>
@@ -58,4 +59,16 @@ export const Basic: FC = () => {
       </TabPanels>
     </Tabs>
   )
+}
+
+export const Primary = Template.bind({})
+Primary.args = {
+  distribute: true,
+  tabCount: 20,
+  tabPrefix: 'My Awesome Tab',
+}
+
+export default {
+  component: Tabs,
+  title: 'Tabs',
 }

@@ -1,0 +1,36 @@
+---
+title: Drawer
+propsOf: Drawer
+github: Drawer/
+---
+
+Drawer is a specialized form of `Dialog` that is attached to the edge of the viewport.
+
+NOTE: Currently `Drawer` only supports attachement to the right side of the viewport. Support for additional `placement` options is planned in the future.
+
+# Standard Use
+
+```jsx
+<Drawer content="Something in the drawer">
+  <Button>Open Drawer</Button>
+</Drawer>
+```
+
+# useDrawer
+
+We provide a custom hook that returns the opener function and rendered confirmation drawer.
+
+```jsx
+;() => {
+  const { drawer, open } = useDrawer({
+    content: 'Drawer Content',
+  })
+
+  return (
+    <>
+      {drawer}
+      <ButtonOutline onClick={open}>Open Drawer</ButtonOutline>
+    </>
+  )
+}
+```

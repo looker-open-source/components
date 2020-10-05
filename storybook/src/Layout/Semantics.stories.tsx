@@ -29,7 +29,6 @@ import {
   Layout,
   Header,
   Aside,
-  Main,
   Footer,
   Grid,
   Section,
@@ -40,7 +39,7 @@ export default {
   title: 'Layout/Semantics',
 }
 
-export const All = () => (
+export const CommonLayouts = () => (
   <CustomGrid columns={3}>
     <HeaderLayoutAsideMain />
     <AsideMainFooter />
@@ -50,51 +49,51 @@ export const All = () => (
   </CustomGrid>
 )
 
-export const HeaderLayoutAsideMain = () => (
+const HeaderLayoutAsideMain = () => (
   <Highlighter>
     <Layout>
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
     </Layout>
   </Highlighter>
 )
 
-export const HeaderLayoutAsideMainFooter = () => (
+const HeaderLayoutAsideMainFooter = () => (
   <Highlighter>
     <Layout>
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
   </Highlighter>
 )
 
-export const AsideMainFooter = () => (
+const AsideMainFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
-        <Main>Main</Main>
+        <Section>Section</Section>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>
   </Highlighter>
 )
 
-export const AsideLayoutHeaderMainFooter = () => (
+const AsideLayoutHeaderMainFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
         <Layout>
           <Header>Header</Header>
-          <Main>Main</Main>
+          <Section>Section</Section>
           <Footer>Footer</Footer>
         </Layout>
       </Layout>
@@ -102,7 +101,7 @@ export const AsideLayoutHeaderMainFooter = () => (
   </Highlighter>
 )
 
-export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
+const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
   <Highlighter>
     <Layout>
       <Layout hasAside>
@@ -111,7 +110,7 @@ export const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
           <Header>Header</Header>
           <Layout>
             <Layout hasAside>
-              <Main>Main</Main>
+              <Section>Section</Section>
               <Aside width="40%">Aside</Aside>
             </Layout>
           </Layout>
@@ -127,7 +126,14 @@ const CustomGrid = styled(Grid)`
 `
 
 const Highlighter = styled.div`
+  /* Emulate Page behavior for demos */
+  height: 100%;
+  & > ${Layout} {
+    height: 100%;
+  }
+
   /* stylelint-disable color-named */
+
   ${Header}, ${Footer} {
     background-color: lightskyblue;
   }
@@ -136,7 +142,7 @@ const Highlighter = styled.div`
     background-color: lightsalmon;
   }
 
-  ${Main}, ${Section} {
+  ${Section} {
     background-color: lightseagreen;
   }
 `

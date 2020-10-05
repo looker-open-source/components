@@ -27,7 +27,6 @@
 import {
   blue500,
   blue600,
-  charcoal500,
   charcoal800,
   green500,
   purple400,
@@ -37,8 +36,7 @@ import {
 } from '../../legacy/palette'
 import { IntentColors } from '../../system/color/specifiable'
 import { Colors, CoreColors, SpecifiableColors } from '../../system'
-import { generateSurfaceColors } from '../../utils/color/surface'
-import { generateIntentDerivatives } from '../../utils/color/intent'
+import { generateDerivativeColors } from '../../utils/color/derivatives'
 import { fallbackBlends, fallbackStateful } from './fallbacks'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -53,7 +51,6 @@ export const defaultIntentColors: IntentColors = {
   link: blue600,
   critical: red500,
   warn: yellow500,
-  neutral: charcoal500,
   positive: green500,
   inform: blue500,
 }
@@ -71,13 +68,14 @@ export const defaultIntentColors: IntentColors = {
 
 const specifiableColors: SpecifiableColors = {
   ...defaultCoreColors,
-  ...generateSurfaceColors(defaultCoreColors),
   ...defaultIntentColors,
-  ...generateIntentDerivatives(defaultIntentColors),
 }
+
+const derivedColors = generateDerivativeColors(specifiableColors)
 
 export const colors: Colors = {
   ...specifiableColors,
+  ...derivedColors,
   ...fallbackBlends,
   ...fallbackStateful,
 }

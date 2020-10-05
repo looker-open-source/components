@@ -194,7 +194,8 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(document)
   })
 
-  const getIndicatorJSX = (listLevel: boolean) => (
+  /* eslint-disable-next-line react/display-name */
+  const GetIndicatorJSX = (listLevel: boolean) => (
     indicator: ComboboxOptionIndicatorFunction
   ) => (
     <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
@@ -214,7 +215,8 @@ describe('<Combobox/> with children', () => {
     </Combobox>
   )
 
-  const getIndicatorJSXMulti = (listLevel: boolean) => (
+  /* eslint-disable-next-line react/display-name */
+  const GetIndicatorJSXMulti = (listLevel: boolean) => (
     indicator: ComboboxOptionIndicatorFunction
   ) => (
     <ComboboxMulti
@@ -238,10 +240,10 @@ describe('<Combobox/> with children', () => {
   )
 
   test.each([
-    ['list level (Combobox)', getIndicatorJSX(true)],
-    ['list level (ComboboxMulti)', getIndicatorJSXMulti(true)],
-    ['option level (Combobox)', getIndicatorJSX(false)],
-    ['option level (ComboboxMulti)', getIndicatorJSXMulti(false)],
+    ['list level (Combobox)', GetIndicatorJSX(true)],
+    ['list level (ComboboxMulti)', GetIndicatorJSXMulti(true)],
+    ['option level (Combobox)', GetIndicatorJSX(false)],
+    ['option level (ComboboxMulti)', GetIndicatorJSXMulti(false)],
   ])('Customize the indicator at the %s', (_, getJSX) => {
     const indicator = jest.fn()
     const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(

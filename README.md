@@ -44,7 +44,6 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 ### Common Project Commands
 
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
-- **yarn storybook** starts Storybook, a tool for developing components in isolation
 - **yarn playground** starts a bare-bones React app used for developing components
 - **yarn gatsby** starts the Gatsby server (powers our documentation site)
 - **yarn server** starts a local proxy server to facilitate local fetch requests to a Looker instance
@@ -60,6 +59,16 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn fix** fix any ESLint errors and warnings than can be automatically fixed
 - **yarn clean** remove all build artifacts
 - **yarn test** runs Jest across all packages
+
+#### Storybook
+
+Storybook is a tool used to develop, demonstrate and document components in isolation.
+
+- **yarn storybook** starts master Storybook (includes all stories)
+- **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
+- **yarn image-snapshots** takes image-snapshots of all stories within packages/\*\*
+  - `preimage-snapshots` is a yarn task that runs `storybooks-build` task before capturing image snapshots.
+- **yarn storybooks-build** builds all packages/\* storybooks for publishing and/or image-snapshot testing.
 
 ### Workspace Commands
 

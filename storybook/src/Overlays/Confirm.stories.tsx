@@ -36,16 +36,7 @@ import {
   SpaceVertical,
 } from '@looker/components'
 
-export const All = () => (
-  <Space>
-    <Basic />
-    <Critical />
-    <Rich />
-  </Space>
-)
-
 export default {
-  component: All,
   title: 'Overlays/Confirm',
 }
 

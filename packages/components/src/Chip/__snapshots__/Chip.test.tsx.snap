@@ -40,7 +40,7 @@ exports[`Chip renders correctly 1`] = `
 
 .c0[disabled] {
   background: #F5F6F7;
-  color: #707781;
+  color: #71767a;
 }
 
 .c0[disabled]:hover {
@@ -114,7 +114,7 @@ exports[`Chip renders disabled 1`] = `
 
 .c0[disabled] {
   background: #F5F6F7;
-  color: #707781;
+  color: #71767a;
 }
 
 .c0[disabled]:hover {

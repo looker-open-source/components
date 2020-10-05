@@ -24,20 +24,9 @@
 
  */
 import React from 'react'
-import { Fieldset, FieldToggleSwitch } from '@looker/components'
-
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Checked />
-    <Disabled />
-    <Required />
-    <Error />
-  </Fieldset>
-)
+import { FieldToggleSwitch } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/ToggleSwitch',
 }
 

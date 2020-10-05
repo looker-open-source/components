@@ -5,10 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.16] - 2020-10-02
 
+### Added
+
+- `Drawer` component
+  - Note: This is a new implementation of the previously deprecated `Drawer` and features a more modern API. `DrawerManager` behaviors are now baked in to `Drawer`
+  - Includes `useDrawer` hook
+- `TabList` now supports `PaddingProps` and `fontSize`
+- `TabList` w/ `distribute` now uses default "small" `fontSize`
+
+- Image snapshots tests
+  - Infrastructure to run image snapshot tests leveraging Storybook `storyshots` + `jest-image-snapshots`
+  - Image snapshot coverage for `Button*`, `IconButton` & `Tree` components
+- Storybook: Preliminary infrastructure for composition
+- Storybook: Added support for extract behavior to improve published-Storybook performance
+
+### Changed
+
+- `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
+  - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
+- `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
+- Storybook configuration improvements
+  - `addons-essentials` now used
+  - Replace `withKnobs` with `Controls` & `Args`
+
+### Fixed
+
+- Page "jumps" when opening a `Popover` due to the scrollbar disappearing
+
+### Preview / Experimental
+
+- Experimental: `@looker/components-theme-editor` package
 - Preview: `InputFilters` component and tests (this component is not yet ready for general-use)
 - Preview: `ActionListControls` component (this component is not yet ready for general-use)
+- Preview: "Semantic" Layout components - `Layout`, `Header`, `Footer`, `Aside`
 
 ## [0.9.15] - 2020-09-21
 
@@ -21,9 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Chip` supports `prefix`
-- `ComponentsProvider` now supports `loadGoogleFonts` which leverages `GoogleFontsLoader`
-- `GoogleFontsLoader`
 - `InputColor` now includes `name` in `onChange` response event
 - `InputChips` and `SelectMulti` chip selection and copy-pasting
 - `Select` now supports `showCreate` and `formatCreateLabel` that were previously only supported in `SelectMulti`
@@ -50,7 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` overwriting search value with the current option value if the option's value and label are different
 - Storybook fixes to silence console warnings
 
-###
+### Remove
 
 - `Tooltip` & `Popover` no longer support (optional) arrow indicator
 

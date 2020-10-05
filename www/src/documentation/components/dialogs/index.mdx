@@ -32,7 +32,6 @@ Dialogs break out of the standard application flow and UI to present new informa
             </Paragraph>
             <Paragraph>
               {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
-              `
             </Paragraph>
             <Paragraph>
               {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
@@ -155,17 +154,37 @@ export function DailogUseContextDemo() {
 }
 ```
 
-`DialogContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Dialog's state. The context provides access to the following methods:
+`DialogContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Dialog's state. The context provides access to the following:
 
-- `close`
-- `enableFocusTrap` and `disableFocusTrap`
-- `enableScrollLock` and `disableScrollLock`
-
-As well as the following values:
-
-- `scrollLockEnabled`
+- `closeModal`
+- `enableFocusTrap`
+- `disableFocusTrap`
 - `focusTrapEnabled`
 
-The `close` method simply allows you to close the Dialog or Popover.
+The `closeModal` method simply allows you to close the Dialog or Popover.
 
-The other methods and values above are for rare use when the dialog behaviors of focus trap and scroll lock are interfering with the desired behavior. For example a popover from another library nested inside of a `@looker/components` Popover or Dialog.
+The other methods and values above are for rare use when the focus trap behavior is interfering with the desired behavior, for example, a popover from another library nested inside of a `@looker/components` Popover or Dialog.
+
+## Scroll Lock
+
+A key part of dialog usability is the scroll lock, which disables scrolling on any part of the page except within the dialog.
+When the `Dialog` component renders, it registers a scroll lock to the `ScrollLockContext` in `ComponentsProvider`, which manages competing scroll locks from other components.
+
+In rare cases, such as nesting a popover from another library inside a `Dialog`, you may need to temporarily disable the scroll lock:
+
+```js static
+import { ScrollLockContext } from '@looker/components-providers'
+import { useContext } from 'react'
+
+const { activeLockRef, disableCurrentLock, enableCurrentLock } = useContext(
+  ScrollLockContext
+)
+
+function toggleScrollLock() {
+  if (activeLockRef && activeLockRef.current) {
+    disableCurrentLock()
+  } else {
+    enableCurrentLock()
+  }
+}
+```
