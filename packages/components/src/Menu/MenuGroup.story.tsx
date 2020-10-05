@@ -63,13 +63,13 @@ const MenuListExample = (
   </>
 )
 
-export const MenuGroupExample = ListTemplate.bind({})
-MenuGroupExample.args = {
+export const Basic = ListTemplate.bind({})
+Basic.args = {
   children: MenuListExample,
 }
 
-export const CompactMenuGroupExample = ListTemplate.bind({})
-CompactMenuGroupExample.args = {
+export const Compact = ListTemplate.bind({})
+Compact.args = {
   children: MenuListExample,
   compact: true,
 }

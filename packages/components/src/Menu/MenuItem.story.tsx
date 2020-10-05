@@ -27,85 +27,69 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
-import { MenuItem } from './MenuItem'
+import { MenuItem, MenuItemProps } from './MenuItem'
 import { MenuList, MenuListProps } from './MenuList'
 
 const ListTemplate: Story<MenuListProps> = (args) => <MenuList {...args} />
-
-const MenuItemWithIcon = <MenuItem icon="User">Menu Item</MenuItem>
-const MenuItemWithDetail = <MenuItem detail="A detail">Menu Item</MenuItem>
-const MenuItemWithDetailAndIcon = (
-  <MenuItem icon="User" detail="A detail">
-    Menu Item
-  </MenuItem>
+const MenuItemTemplate: Story<MenuItemProps> = (args) => (
+  <MenuList>
+    <MenuItem {...args}>Menu Item</MenuItem>
+  </MenuList>
 )
 
-const MenuItemWithDescription = (
-  <MenuItem description="A description">Menu Item</MenuItem>
-)
-const MenuItemWithDescriptionAndIcon = (
-  <MenuItem description="A description" icon="User">
-    Menu Item
-  </MenuItem>
-)
-const MenuItemWithDescriptionAndDetail = (
-  <MenuItem description="A description" detail="A detail">
-    Menu Item
-  </MenuItem>
-)
-const MenuItemWithDescriptionAndDetailAndIcon = (
-  <MenuItem description="A description" detail="A detail" icon="User">
-    Menu Item
-  </MenuItem>
-)
+export const Basic = MenuItemTemplate.bind({})
 
-const CurrentMenuItem = <MenuItem current>Menu Item</MenuItem>
-
-export const SingleMenuItem = ListTemplate.bind({})
-SingleMenuItem.args = {
-  children: <MenuItem>Menu Item</MenuItem>,
+export const Icon = MenuItemTemplate.bind({})
+Icon.args = {
+  ...Basic,
+  icon: 'User',
 }
 
-export const SingleMenuItemWithIcon = ListTemplate.bind({})
-SingleMenuItemWithIcon.args = {
-  children: MenuItemWithIcon,
+export const Detail = MenuItemTemplate.bind({})
+Detail.args = {
+  ...Basic,
+  detail: 'A Detail',
 }
 
-export const SingleMenuItemWithDetail = ListTemplate.bind({})
-SingleMenuItemWithDetail.args = {
-  children: MenuItemWithDetail,
+export const IconAndDetail = MenuItemTemplate.bind({})
+IconAndDetail.args = {
+  ...Basic,
+  detail: 'A Detail',
+  icon: 'User',
 }
 
-export const SingleMenuItemWithDetailAndIcon = ListTemplate.bind({})
-SingleMenuItemWithDetailAndIcon.args = {
-  children: MenuItemWithDetailAndIcon,
+export const Description = MenuItemTemplate.bind({})
+Description.args = {
+  ...Basic,
+  description: 'A description',
 }
 
-export const SingleMenuItemWithDescription = ListTemplate.bind({})
-SingleMenuItemWithDescription.args = {
-  children: MenuItemWithDescription,
+export const IconAndDescription = MenuItemTemplate.bind({})
+IconAndDescription.args = {
+  ...Basic,
+  description: 'A description',
+  icon: 'User',
 }
 
-export const SingleMenuItemWithDescriptionAndIcon = ListTemplate.bind({})
-SingleMenuItemWithDescriptionAndIcon.args = {
-  children: MenuItemWithDescriptionAndIcon,
+export const DetailAndDescription = MenuItemTemplate.bind({})
+DetailAndDescription.args = {
+  ...Basic,
+  description: 'A description',
+  detail: 'A detail',
 }
 
-export const SingleMenuItemWithDescriptionAndDetail = ListTemplate.bind({})
-SingleMenuItemWithDescriptionAndDetail.args = {
-  children: MenuItemWithDescriptionAndDetail,
+export const IconAndDetailAndDescription = MenuItemTemplate.bind({})
+IconAndDetailAndDescription.args = {
+  ...Basic,
+  description: 'A description',
+  detail: 'A detail',
+  icon: 'User',
 }
 
-export const SingleMenuItemWithDescriptionAndDetailAndIcon = ListTemplate.bind(
-  {}
-)
-SingleMenuItemWithDescriptionAndDetailAndIcon.args = {
-  children: MenuItemWithDescriptionAndDetailAndIcon,
-}
-
-export const SingleMenuItemCurrent = ListTemplate.bind({})
-SingleMenuItemCurrent.args = {
-  children: CurrentMenuItem,
+export const Current = MenuItemTemplate.bind({})
+Current.args = {
+  ...Basic,
+  current: true,
 }
 
 export default {
