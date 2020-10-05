@@ -36,36 +36,36 @@ const Template: Story<InputTextProps> = (args) => <InputText {...args} />
 
 export const Basic = Template.bind({})
 
-export const WithPlaceholder = Template.bind({})
-WithPlaceholder.args = {
+export const Placeholder = Template.bind({})
+Placeholder.args = {
   placeholder: 'Placeholder',
 }
 
-export const WithValue = Template.bind({})
-WithValue.args = {
+export const Value = Template.bind({})
+Value.args = {
   value: 'A value',
 }
 
-export const WithIconBefore = Template.bind({})
-WithIconBefore.args = {
+export const IconBefore = Template.bind({})
+IconBefore.args = {
   iconBefore: 'CircleInfo',
   value: 'With an icon before',
 }
 
-export const WithIconAfter = Template.bind({})
-WithIconAfter.args = {
+export const IconAfter = Template.bind({})
+IconAfter.args = {
   iconAfter: 'Close',
   value: 'With an icon after',
 }
 
-export const WithBeforeText = Template.bind({})
-WithBeforeText.args = {
+export const BeforeText = Template.bind({})
+BeforeText.args = {
   before: '$',
   placeholder: 'Currency',
 }
 
-export const WithAfterText = Template.bind({})
-WithAfterText.args = {
+export const AfterText = Template.bind({})
+AfterText.args = {
   after: 'lbs',
   placeholder: 'Weight',
 }
