@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.9.15",
+  "version": "0.9.16",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -34,7 +34,6 @@
     "@types/styled-components": "^4.4.1",
     "csstype": "^3.0.2",
     "lodash": "^4.17.20",
-    "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
