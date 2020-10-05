@@ -34,7 +34,6 @@
     "@types/styled-components": "^4.4.1",
     "csstype": "^3.0.2",
     "lodash": "^4.17.20",
-    "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
