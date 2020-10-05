@@ -37,6 +37,7 @@ import {
   Tooltip,
   Truncate,
   usePopover,
+  Flex,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 
@@ -58,18 +59,20 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
   })
 
   const pivot = (
-    <IconButton
-      icon="Sync"
-      label="Pivot"
-      tooltipPlacement="top"
-      onClick={(event) => {
-        event.stopPropagation()
-        alert('Pivot')
-      }}
-      onKeyDown={(event) => {
-        event.stopPropagation()
-      }}
-    />
+    <Flex alignItems="center">
+      <IconButton
+        icon="Sync"
+        label="Pivot"
+        tooltipPlacement="top"
+        onClick={(event) => {
+          event.stopPropagation()
+          alert('Pivot')
+        }}
+        onKeyDown={(event) => {
+          event.stopPropagation()
+        }}
+      />
+    </Flex>
   )
 
   const TextWrapper = truncate ? Truncate : Span
@@ -114,7 +117,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           selected={!!overlay}
           icon="FieldNumber"
         >
-          <Space between alignItems="flex-start">
+          <Space between>
             <TextWrapper>{children}</TextWrapper>
             {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
           </Space>

@@ -209,7 +209,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
-        {detailAccessory && <Accessory>{detail}</Accessory>}
+        {detailAccessory && detail}
       </TreeItemSpace>
     </HoverDisclosureContext.Provider>
   )
@@ -225,14 +225,14 @@ interface TreeItemSpaceProps {
 }
 
 export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
-  align-items: flex-start;
-  border: 1px solid transparent;
-  border-color: ${({ focusVisible, theme }) =>
-    focusVisible && theme.colors.keyFocus};
+  align-items: center;
   cursor: pointer;
   flex-shrink: 2;
+  min-height: ${({ theme }) => theme.sizes.medium};
   min-width: 0;
-  outline: none;
+  outline: 1px solid transparent;
+  outline-color: ${({ focusVisible, theme }) =>
+    focusVisible && theme.colors.keyFocus};
 `
 
 interface TreeItemLabelProps {
@@ -241,21 +241,16 @@ interface TreeItemLabelProps {
 }
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
-  align-items: flex-start;
+  align-items: center;
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
   flex-shrink: 2;
   height: 100%;
   max-width: 100%;
+  min-height: ${({ theme }) => theme.sizes.medium};
   min-width: 0;
   outline: none;
-  /*
-   * Subtract 1px from each padding value to compensate for
-   * a transparent border on TreeItemSpace
-   */
-  padding-bottom: calc(${({ theme }) => theme.space.xxsmall} - 1px);
-  padding-top: calc(${({ theme }) => theme.space.xxsmall} - 1px);
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
@@ -264,15 +259,6 @@ const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
   height: 100%;
   padding-right: ${({ detailAccessory, theme }) =>
     detailAccessory && theme.space.xxsmall};
-`
-
-const Accessory = styled.div`
-  /* transform: translateY(${({ theme }) => theme.space.xxxsmall}); */
-  /*
-   * Subtract 1px from padding value to compensate for
-   * a transparent border on TreeItemSpace
-   */
-  padding-top: calc(${({ theme }) => theme.space.xxsmall} - 1px);
 `
 
 export const TreeItem = styled(TreeItemLayout)`

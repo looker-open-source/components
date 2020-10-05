@@ -246,24 +246,6 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 1, theme)}
   }
-
-  ${TreeItemSpace} {
-    ${IconButton} {
-      /*
-       * Caution: Magic Numbers! Subtract 2px to account for borders
-       * on TreeItemSpace
-       */
-      display: block;
-      max-height: calc(${({ theme }) => theme.lineHeights.xsmall} - 2px);
-      transform: translateY(-1px);
-    }
-    ${ButtonTransparent} {
-      /*
-       * Caution: Magic Numbers! Necessary FieldPicker adjustment
-       */
-      transform: translateY(-1px);
-    }
-  }
 `
 
 export const Tree = styled(TreeLayout)``

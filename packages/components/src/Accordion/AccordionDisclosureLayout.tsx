@@ -45,7 +45,7 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
 }) => {
   const indicator = (
     <Indicator>
-      <StyledIcon
+      <Icon
         name={isOpen ? indicatorIcons.open : indicatorIcons.close}
         size={indicatorSize}
       />
@@ -62,22 +62,18 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
 }
 
 const Indicator = styled.div`
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   justify-content: center;
-  padding-top: ${({ theme }) => theme.space.xxsmall};
 `
+
 const Label = styled.div`
   overflow: hidden;
   width: 100%;
 `
 
-const StyledIcon = styled(Icon)`
-  height: ${({ theme }) => theme.lineHeights.xsmall};
-`
-
 export const AccordionDisclosureLayout = styled(Layout)`
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   width: 100%;
 
