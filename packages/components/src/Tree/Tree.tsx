@@ -35,11 +35,10 @@ import {
   AccordionProps,
   AccordionIndicatorProps,
 } from '../Accordion'
-import { IconButton, ButtonTransparent } from '../Button'
 import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
-import { TreeItem, TreeItemLabel, TreeItemSpace } from './TreeItem'
+import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
 
