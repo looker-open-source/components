@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 
-export const ItemDetail = styled.div`
+export const ListItemDetail = styled.div`
   color: ${({ theme: { colors } }) => colors.text1};
   margin-left: auto;
   margin-right: ${({ theme: { space } }) => space.medium};

@@ -41,7 +41,12 @@ import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions'
 export interface InputSearchProps
   extends Omit<
     SelectProps,
-    'isFilterable' | 'onFilter' | 'showCreate' | 'formatCreateLabel'
+    | 'isFilterable'
+    | 'noOptionsLabel'
+    | 'onFilter'
+    | 'openOnClick'
+    | 'showCreate'
+    | 'formatCreateLabel'
   > {
   /**
    * @default true
@@ -49,24 +54,35 @@ export interface InputSearchProps
   isClearable?: SelectProps['isClearable']
   hideSearchIcon?: boolean
   /**
-   * @experimental
    * Called when the user selects one of the options
    * onChange will also be called with the option's value unless changeOnSelect is set to false
+   * @experimental
    */
   onSelectOption?: (option?: SelectOptionObject) => void
   /**
-   * @experimental
    * Selecting an option updates the input's value
    * @default true
+   * @experimental
    */
   changeOnSelect?: boolean
   /**
-   * @experimental
    * Clear the input value when the option list closes
    * Defaults to the inverse of changeOnSelect
    * @default false
+   * @experimental
    */
   clearOnClose?: boolean
+  /**
+   * If defined, the popup will render with this text when there are no options.
+   * @experimental
+   */
+  noOptionsLabel?: string
+  /**
+   * If true, the popover opens when the text box is clicked.
+   * @default false
+   * @experimental
+   */
+  openOnClick?: boolean
 }
 
 const InputSearchLayout = forwardRef(

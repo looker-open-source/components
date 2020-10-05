@@ -31,7 +31,7 @@ import { v4 as uuid } from 'uuid'
 import { Icon, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ItemDetail, ListItem } from '../../../List'
+import { ListItemDetail, ListItem } from '../../../List'
 import { Heading, Paragraph, Text } from '../../../Text'
 import {
   ComboboxContext,
@@ -114,7 +114,7 @@ const renderOption = (
         ) : (
           <ComboboxOptionText />
         )}
-        {detail && <ItemDetail>{detail}</ItemDetail>}
+        {detail && <ListItemDetail>{detail}</ListItemDetail>}
       </ComboboxOption>
     )
   }
@@ -140,7 +140,7 @@ const renderMultiOption = (
         ) : (
           <ComboboxOptionText />
         )}
-        {detail && <ItemDetail>{detail}</ItemDetail>}
+        {detail && <ListItemDetail>{detail}</ListItemDetail>}
       </ComboboxMultiOption>
     )
   }

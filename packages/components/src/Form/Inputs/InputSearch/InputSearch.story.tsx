@@ -23,47 +23,51 @@
  SOFTWARE.
 
  */
-import React, { useMemo, useState } from 'react'
-import { InputSearch, SpaceVertical } from '@looker/components'
 
-export const All = () => (
-  <SpaceVertical align="start">
-    <Basic />
-    <Placeholder />
-    <Value />
-    <Summary />
-    <DefaultValue />
-    <NoIcon />
-    <AutoResize />
-    <Advanced />
-  </SpaceVertical>
-)
+import React, { useState, useMemo } from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { InputSearch, InputSearchProps } from './InputSearch'
 
-export default {
-  title: 'Forms/Search',
+const Template: Story<InputSearchProps> = (args) => <InputSearch {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {}
+
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Type your search',
+}
+export const Value = Template.bind({})
+Value.args = {
+  ...Placeholder.args,
+  value: 'Search term',
 }
 
-export const Basic = () => <InputSearch />
-export const Placeholder = () => <InputSearch placeholder="Type your search" />
-export const Value = () => (
-  <InputSearch placeholder="Type your search" value="Search term" />
-)
-export const Summary = () => (
-  <InputSearch
-    placeholder="Type your search"
-    value="Search term"
-    summary="5/10 results"
-  />
-)
-export const DefaultValue = () => (
-  <InputSearch placeholder="Type your search" defaultValue="Search term" />
-)
-export const NoIcon = () => (
-  <InputSearch hideSearchIcon placeholder="Type your search" />
-)
-export const AutoResize = () => (
-  <InputSearch autoResize placeholder="Resizes to fit value" maxWidth={250} />
-)
+export const Summary = Template.bind({})
+Summary.args = {
+  ...Placeholder.args,
+  summary: '5/10 results',
+}
+
+export const DefaultValue = Template.bind({})
+DefaultValue.args = {
+  ...Placeholder.args,
+  defaultValue: 'Default search term',
+}
+
+export const NoIcon = Template.bind({})
+NoIcon.args = {
+  ...Placeholder.args,
+  hideSearchIcon: true,
+}
+
+export const AutoResize = Template.bind({})
+AutoResize.args = {
+  autoResize: true,
+  maxWidth: 250,
+  placeholder: 'Resizes to fit value',
+}
+
 export const Advanced = () => {
   const [value, setValue] = useState('')
 
@@ -90,4 +94,9 @@ export const Advanced = () => {
       isClearable={false}
     />
   )
+}
+
+export default {
+  component: InputSearch,
+  title: 'InputSearch',
 }

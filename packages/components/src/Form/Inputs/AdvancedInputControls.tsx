@@ -27,17 +27,14 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { FC, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
-import flatMap from 'lodash/flatMap'
-import tail from 'lodash/tail'
 import compact from 'lodash/compact'
-import { lighten } from 'polished'
-import { IconButton } from '../../Button'
+import { IconButton, iconButtonColor } from '../../Button'
 import { Icon } from '../../Icon'
 import { Span } from '../../Text'
 
 export interface AdvancedInputControlsProps
   extends CompatibleHTMLProps<HTMLDivElement> {
-  hasOptions?: boolean
+  showCaret?: boolean
   isVisibleOptions?: boolean
   onClear: (e: MouseEvent<HTMLButtonElement>) => void
   summary?: string
@@ -47,34 +44,27 @@ export interface AdvancedInputControlsProps
 
 // inserts a divider line between each control element (item1 | item2 | item3)
 const intersperseDivider = (children: ReactElement[]) =>
-  tail(
-    flatMap(children, (child, i) => [<SearchControlDivider key={i} />, child])
-  )
+  children.map((child, i) => (
+    <React.Fragment key={i}>
+      {i > 0 && <SearchControlDivider key={i} />}
+      {child}
+    </React.Fragment>
+  ))
 
 export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   validationType,
   showClear,
   disabled,
   isVisibleOptions,
-  hasOptions,
+  showCaret,
   onClear,
   summary,
   ...props
 }) => {
   const children = intersperseDivider(
     compact([
-      validationType === 'error' && (
-        <Icon
-          key="warning"
-          name="Error"
-          size={20}
-          color="critical"
-          mr="xxsmall"
-        />
-      ),
       summary && (
         <Span
-          key="summary"
           color="text1"
           fontSize="small"
           style={{ whiteSpace: 'nowrap' }}
@@ -83,9 +73,11 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           {summary}
         </Span>
       ),
+      validationType === 'error' && (
+        <Icon name="Error" size={20} color="critical" mx="xxsmall" />
+      ),
       showClear && (
         <IconButton
-          key="clear"
           size="xsmall"
           icon="Close"
           label="Clear Field"
@@ -94,10 +86,9 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
           disabled={disabled}
         />
       ),
-      hasOptions && (
+      showCaret && (
         <CaretIcon
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
-          key="list-caret"
           disabled={disabled}
         />
       ),
@@ -126,6 +117,6 @@ const CaretIcon = styled(Icon).attrs({
   mr: 'xxsmall',
   size: 20,
 })`
-  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+  ${iconButtonColor}
   opacity: ${({ disabled }) => (disabled ? '0.75' : '1')};
 `

@@ -35,7 +35,7 @@ import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
-import { ItemDetail } from '../List'
+import { ListItemDetail } from '../List'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
@@ -176,7 +176,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
           </Paragraph>
         )}
       </span>
-      {detail && <ItemDetail>{detail}</ItemDetail>}
+      {detail && <ListItemDetail>{detail}</ListItemDetail>}
     </Component>
   )
 

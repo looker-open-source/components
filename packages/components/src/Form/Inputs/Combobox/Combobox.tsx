@@ -70,7 +70,7 @@ export interface ComboboxCommonProps<
    */
   openOnFocus?: boolean
   /**
-   * If true, the popover opens when focus is on the text box.
+   * If true, the popover opens when the text box is clicked.
    * @default true
    */
   openOnClick?: boolean

@@ -195,7 +195,7 @@ export const ComboboxInputInternal = forwardRef(
             onClear={handleClear}
             isVisibleOptions={isVisible}
             disabled={disabled}
-            hasOptions={!freeInput}
+            showCaret={!freeInput}
             summary={summary}
           />
         }

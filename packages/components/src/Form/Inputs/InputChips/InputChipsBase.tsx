@@ -56,7 +56,7 @@ export interface InputChipsInputControlProps {
    */
   onInputChange: (value: string) => void
   isVisibleOptions?: boolean
-  hasOptions?: boolean
+  showCaret?: boolean
 }
 
 export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
@@ -123,7 +123,7 @@ export const InputChipsBaseInternal = forwardRef(
       validationType,
       onClear,
       isVisibleOptions,
-      hasOptions = false,
+      showCaret = false,
       isClearable = true,
       summary,
       removeOnBackspace = true,
@@ -353,7 +353,7 @@ export const InputChipsBaseInternal = forwardRef(
             validationType={validationType}
             disabled={disabled}
             summary={summary}
-            hasOptions={hasOptions}
+            showCaret={showCaret}
             onMouseDown={stopPropagation}
           />
         }
