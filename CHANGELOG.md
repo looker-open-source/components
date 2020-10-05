@@ -7,13 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-<<<<<<< HEAD
-- Image snapshot test for `MenuItem` and `MenuGroup`
-=======
 ### Added
 
 - Visual Snapshot test for `MenuItem` and `MenuGroup`
->>>>>>> 3cb0c0511fb34f328fb1556e3d216995cefc6088
 
 ## [0.9.16] - 2020-10-02
 
