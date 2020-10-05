@@ -28,9 +28,8 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
 import { MenuItem, MenuItemProps } from './MenuItem'
-import { MenuList, MenuListProps } from './MenuList'
+import { MenuList } from './MenuList'
 
-const ListTemplate: Story<MenuListProps> = (args) => <MenuList {...args} />
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (
   <MenuList>
     <MenuItem {...args}>Menu Item</MenuItem>
