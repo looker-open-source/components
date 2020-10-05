@@ -24,7 +24,8 @@
 
  */
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
+import { ScrollLockContext } from '@looker/components-providers'
 import {
   Box,
   Button,
@@ -74,21 +75,8 @@ const options = [
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
 ]
-export const All = () => (
-  <SpaceVertical align="start">
-    <OverlayOpenDialog />
-    <RenderProps />
-    <RenderPropsSpread />
-    <Placement />
-    <PopoverFocusTrap />
-    <Grouped />
-    <MovingTarget />
-    <MouseUp />
-  </SpaceVertical>
-)
 
 export default {
-  component: All,
   title: 'Overlays/Popover',
 }
 
@@ -195,49 +183,77 @@ export const PopoverFocusTrap = () => {
 
 export const OverlayOpenDialog = () => {
   const { value, setOn, setOff } = useToggle()
-  function openAlert() {
-    alert(`It's working!`)
-  }
   return (
-    <SpaceVertical mt="large" align="start">
+    <SpaceVertical mt="large" align="start" width={1000} mx="auto">
+      <Paragraph>
+        Centered layout would be affected by the scrollbar "jump" bug on scroll
+        lock.
+      </Paragraph>
       <Heading>Popover Opening a Dialog</Heading>
       <Popover
         content={
-          <Button m="large" onClick={setOn}>
-            Open Dialog
-          </Button>
+          <SpaceVertical p="large">
+            <Button onClick={setOn}>Open Dialog</Button>
+            <Box height={500} />
+          </SpaceVertical>
         }
       >
         <Button>Open Popover</Button>
       </Popover>
       <Dialog isOpen={value} onClose={setOff}>
-        <DialogContent>
-          <SpaceVertical align="start">
-            <Paragraph>Try opening the Select and picking an option:</Paragraph>
-            <FieldSelect
-              label="Default Value"
-              width={300}
-              options={options}
-              aria-label="Fruits"
-              defaultValue="1"
-            />
-            <Paragraph>Try clicking the button:</Paragraph>
-            <Button onClick={openAlert}>Open Alert</Button>
-          </SpaceVertical>
-        </DialogContent>
+        <DialogInner />
       </Dialog>
       <Heading>Menu Opening a Dialog</Heading>
       <Menu>
         <MenuDisclosure tooltip="Select your favorite kind">
-          <Button mr="small" mt="medium">
-            Open Menu
-          </Button>
+          <Button mt="medium">Open Menu</Button>
         </MenuDisclosure>
         <MenuList>
           <MenuItem onClick={setOn}>Open Dialog</MenuItem>
         </MenuList>
       </Menu>
+      <Heading>Opening a Dialog Directly</Heading>
+      <Button onClick={setOn}>Open Dialog</Button>
+      <Box height={1000} />
     </SpaceVertical>
+  )
+}
+
+const DialogInner = () => {
+  const { activeLockRef, disableCurrentLock, enableCurrentLock } = useContext(
+    ScrollLockContext
+  )
+  function handleClick() {
+    if (activeLockRef && activeLockRef.current) {
+      disableCurrentLock?.()
+    } else {
+      enableCurrentLock?.()
+    }
+  }
+  function openAlert() {
+    alert(`It's working!`)
+  }
+  return (
+    <DialogContent>
+      <SpaceVertical align="start">
+        <Paragraph>
+          Scroll lock can be disabled via ScrollLockContext but due to fixed
+          positioning in Dialog, there will be a scrollbar jump.
+        </Paragraph>
+        <Button onClick={handleClick}>Toggle Scroll Lock</Button>
+        <Paragraph>Try opening the Select and picking an option:</Paragraph>
+        <FieldSelect
+          label="Default Value"
+          width={300}
+          options={options}
+          aria-label="Fruits"
+          defaultValue="1"
+        />
+        <Paragraph>Try clicking the button:</Paragraph>
+        <Button onClick={openAlert}>Open Alert</Button>
+        <Box height={500} />
+      </SpaceVertical>
+    </DialogContent>
   )
 }
 

@@ -25,21 +25,9 @@
  */
 
 import React from 'react'
-import { Fieldset, FieldCheckboxGroup } from '@looker/components'
-
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Disabled />
-    <Required />
-    <Error />
-    <ErrorInline />
-    {/* <Controlled /> */}
-  </Fieldset>
-)
+import { FieldCheckboxGroup } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/CheckboxGroup',
 }
 

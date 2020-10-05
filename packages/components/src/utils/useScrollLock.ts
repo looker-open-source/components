@@ -24,86 +24,37 @@
 
  */
 
-import once from 'lodash/once'
-import { useContext, useEffect, useRef } from 'react'
-import { DialogContext } from '../Dialog/DialogContext'
-import { useToggle } from './useToggle'
-import { useCallbackRef } from './useCallbackRef'
+import { ScrollLockContext } from '@looker/components-providers'
+import { useContext, useEffect } from 'react'
+import { useCallbackRef, useID } from './'
 
-function setBodyOverflowHidden() {
-  if (typeof document !== 'undefined') {
-    document.body.style.overflow = 'hidden'
-  }
-}
-
-export function useScrollLock(
-  enabled = false,
-  useCapture = false,
-  allowScrollWithin?: HTMLElement | null
-) {
-  const [newElement, callbackRef] = useCallbackRef()
-  // If the keepFocusWithin is passed in arguments, use that instead of the new element
-  const element =
-    typeof allowScrollWithin === 'undefined' ? newElement : allowScrollWithin
-  const { disableScrollLock, enableScrollLock } = useContext(DialogContext)
-  const { value, setOn, setOff } = useToggle(enabled)
-
-  // save the existing body overflow value
-  const bodyOverflowRef = useRef(
-    typeof document !== 'undefined' ? document.body.style.overflow : ''
-  )
+/**
+ * Disable scrolling on the page except within a given element
+ * returns an array containing the element and callback ref
+ * @param forwardedRef optional ref to forward
+ */
+export const useScrollLock: typeof useCallbackRef = (forwardedRef) => {
+  const id = useID()
+  const [element, callbackRef] = useCallbackRef(forwardedRef)
+  const { addLock, removeLock } = useContext(ScrollLockContext)
 
   useEffect(() => {
-    if (typeof document === 'undefined' || typeof window === 'undefined') return
-
-    let scrollTop = window.scrollY
-    let scrollTarget: EventTarget | HTMLElement | null = document
-
-    const bodyOverflowCurrent = bodyOverflowRef.current
-    const setBodyOverflowOnce = once(setBodyOverflowHidden)
-
-    function stopScroll(e: Event) {
-      // setting overflow: hidden again here avoids conflicting enable / disable with nested scroll locks
-      setBodyOverflowOnce()
-
-      if (e.target !== null && e.target !== scrollTarget) {
-        scrollTarget = e.target
-        scrollTop =
-          scrollTarget instanceof Element
-            ? scrollTarget.scrollTop
-            : window.scrollY
-      }
-      if (
-        scrollTarget instanceof Element &&
-        !(element && element.contains(scrollTarget))
-      ) {
-        scrollTarget.scrollTop = scrollTop
-      } else if (scrollTarget === document) {
-        window.scrollTo({ top: scrollTop })
-      }
+    if (!addLock) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'ScrollLockContext is missing. Please wrap all @looker/components in a ComponentsProvider.'
+      )
     }
+  }, [addLock])
 
-    if (element && value) {
-      window.addEventListener('scroll', stopScroll, true)
-      disableScrollLock && disableScrollLock()
-      setBodyOverflowHidden()
-    } else {
-      window.removeEventListener('scroll', stopScroll, true)
-      enableScrollLock && enableScrollLock()
-      document.body.style.overflow = bodyOverflowCurrent
+  useEffect(() => {
+    if (element) {
+      addLock?.(id, element)
     }
-
     return () => {
-      window.removeEventListener('scroll', stopScroll, true)
-      document.body.style.overflow = bodyOverflowCurrent
+      removeLock?.(id)
     }
-  }, [value, element, useCapture, disableScrollLock, enableScrollLock])
+  }, [id, addLock, removeLock, element])
 
-  return {
-    callbackRef,
-    disable: setOff,
-    element: element || null,
-    enable: setOn,
-    isEnabled: value,
-  }
+  return [element, callbackRef]
 }

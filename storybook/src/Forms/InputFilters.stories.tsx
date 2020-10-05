@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { InputFilters, SpaceVertical } from '@looker/components'
+import { InputFilters } from '@looker/components'
 
 const filters = [
   { field: 'role', value: 'admin' },
@@ -37,15 +37,7 @@ const filters = [
   { field: 'buildAt', label: 'Last Build Time' },
 ]
 
-export const All = () => (
-  <SpaceVertical align="start">
-    <Basic />
-    <HideFilter />
-  </SpaceVertical>
-)
-
 export default {
-  component: All,
   title: 'Forms/InputFilters',
 }
 

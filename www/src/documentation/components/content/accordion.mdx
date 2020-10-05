@@ -78,6 +78,15 @@ Use the `indicatorSize` prop to set the size of your indicator.
 </Accordion>
 ```
 
+Use the `color` prop on `AccordionDisclosure` to customize the color of the label and the indicator icon.
+
+```jsx
+<Accordion>
+  <AccordionDisclosure color="key">Show me the cheese!</AccordionDisclosure>
+  <AccordionContent>Cheddar</AccordionContent>
+</Accordion>
+```
+
 Use the `indicatorIcons` prop to customize which icons represent an open or closed `<Accordion>`.
 
 By default, the `CaretDown` and `CaretUp` `<Icon>`s are used.

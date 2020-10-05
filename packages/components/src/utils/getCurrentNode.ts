@@ -36,6 +36,7 @@ export function getCurrentNode<E extends HTMLElement = HTMLElement>(
   elementOrRefObject: ElementOrRef<E>
 ): E | null {
   if (!elementOrRefObject) return null
+  // @ts-expect-error: Need to find a better way to do union below
   return (elementOrRefObject as E).addEventListener
     ? (elementOrRefObject as E)
     : (elementOrRefObject as RefObject<E>).current

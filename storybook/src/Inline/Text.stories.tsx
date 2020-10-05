@@ -25,19 +25,9 @@
  */
 
 import React from 'react'
-import { Fieldset, InlineInputText } from '@looker/components'
-
-export const All = () => (
-  <Fieldset>
-    <Basic />
-    <Value />
-    <Placeholder />
-    <Simple />
-  </Fieldset>
-)
+import { InlineInputText } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Inline/Text',
 }
 

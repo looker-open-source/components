@@ -43,7 +43,7 @@ describe('Link', () => {
   test('Underline', () => {
     renderWithTheme(<Link underline>My link</Link>)
     const link = screen.getByText('My link')
-    expect(link).toHaveStyle('text-decoration: underline')
+    expect(link).toHaveStyleRule('text-decoration: underline')
   })
 
   test('color', () => {

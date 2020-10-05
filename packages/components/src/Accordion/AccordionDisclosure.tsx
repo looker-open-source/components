@@ -37,20 +37,26 @@ import {
   TypographyProps,
   typography,
   CompatibleHTMLProps,
+  padding,
+  PaddingProps,
+  pickStyledProps,
+  TextColorProps,
+  color as colorStyleFn,
 } from '@looker/design-tokens'
 import { AccordionContext } from './AccordionContext'
-import { AccordionDisclosureGrid } from './AccordionDisclosureGrid'
+import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
+    Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
     CompatibleHTMLProps<HTMLElement> {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
 }
 
-export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRef(
-  ({ children, className }, ref) => {
+const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
+  ({ children, className, ...props }, ref) => {
     const [isFocusVisible, setFocusVisible] = useState(false)
     const {
       accordionContentId,
@@ -59,7 +65,7 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
       toggleOpen,
       onClose,
       onOpen,
-      ...props
+      ...accordionProps
     } = useContext(AccordionContext)
 
     const handleOpen = () => onOpen && onOpen()
@@ -91,10 +97,10 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
 
     return (
       <AccordionDisclosureStyle
+        className={className}
         role="button"
         aria-controls={accordionContentId}
         aria-expanded={isOpen}
-        className={className}
         focusVisible={isFocusVisible}
         id={accordionDisclosureId}
         onBlur={handleBlur}
@@ -103,18 +109,19 @@ export const AccordionDisclosureLayout: FC<AccordionDisclosureProps> = forwardRe
         onKeyUp={handleKeyUp}
         ref={ref}
         tabIndex={0}
+        {...pickStyledProps(props)}
       >
-        <AccordionDisclosureGrid {...props} isOpen={isOpen}>
+        <AccordionDisclosureLayout {...accordionProps} isOpen={isOpen}>
           {children}
-        </AccordionDisclosureGrid>
+        </AccordionDisclosureLayout>
       </AccordionDisclosureStyle>
     )
   }
 )
 
-AccordionDisclosureLayout.displayName = 'AccordionDisclosureLayout'
+AccordionDisclosureInternal.displayName = 'AccordionDisclosureInternal'
 
-interface AccordionDisclosureStyleProps {
+interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
   focusVisible: boolean
 }
 
@@ -126,16 +133,21 @@ export const AccordionDisclosureStyle = styled.div<
   border: 1px solid transparent;
   border-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
-  color: currentColor;
+  ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
   cursor: pointer;
   display: flex;
   outline: none;
-  padding: ${({ theme: { space } }) => `${space.xsmall} ${space.none}`};
+  ${padding}
   text-align: left;
   width: 100%;
 `
 
-export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
+AccordionDisclosureStyle.defaultProps = {
+  px: 'none',
+  py: 'xsmall',
+}
+
+export const AccordionDisclosure = styled(AccordionDisclosureInternal)`
   ${typography}
 `
 

@@ -24,22 +24,9 @@
 
  */
 import React from 'react'
-import { InputSearch, SpaceVertical } from '@looker/components'
-
-export const All = () => (
-  <SpaceVertical align="start">
-    <Basic />
-    <Placeholder />
-    <Value />
-    <Summary />
-    <DefaultValue />
-    <NoIcon />
-    <AutoResize />
-  </SpaceVertical>
-)
+import { InputSearch } from '@looker/components'
 
 export default {
-  component: All,
   title: 'Forms/Search',
 }
 

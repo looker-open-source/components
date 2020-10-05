@@ -1,0 +1,1 @@
+../components/babel.config.js

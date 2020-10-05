@@ -36,6 +36,7 @@ import {
   Status,
   Tooltip,
   Divider,
+  Form,
 } from '@looker/components'
 
 export default {
@@ -49,6 +50,7 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
       placeholder="First name"
       required
       label="First name"
+      description="This is a description"
     />
     <FieldText inline={inline} label="Middle" placeholder="Middle" />
     <FieldText
@@ -61,9 +63,11 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
 )
 
 export const Basic = () => (
-  <Fieldset>
-    <Fields />
-  </Fieldset>
+  <Form m="xxlarge" maxWidth="600px">
+    <Fieldset>
+      <Fields />
+    </Fieldset>
+  </Form>
 )
 
 export const Inline = () => (

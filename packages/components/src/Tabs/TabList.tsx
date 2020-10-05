@@ -32,12 +32,19 @@ import React, {
   useRef,
   Ref,
 } from 'react'
+import {
+  fontSize,
+  FontSizeProps,
+  PaddingProps,
+  padding,
+  reset,
+} from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { moveFocus, useForkedRef } from '../utils'
 import { TabContext } from './TabContext'
 import { Tab } from '.'
 
-export interface TabListProps {
+export interface TabListProps extends PaddingProps, FontSizeProps {
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: any) => void
@@ -115,12 +122,15 @@ const distributeCSS = css`
   grid-auto-flow: column;
 
   ${Tab} {
-    font-size: ${(props) => props.theme.fontSizes.xsmall};
     padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
   }
 `
 
 export const TabList = styled(TabListLayout)`
+  ${reset}
+  ${padding}
+  ${fontSize}
+
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
@@ -133,3 +143,7 @@ export const TabList = styled(TabListLayout)`
 
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `
+
+TabList.defaultProps = {
+  fontSize: 'small',
+}

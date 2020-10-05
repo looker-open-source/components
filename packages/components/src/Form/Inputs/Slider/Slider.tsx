@@ -160,7 +160,7 @@ const SliderThumb = styled.div<SliderInputProps>`
   position: absolute;
   top: -6px;
   transform: translateX(-50%);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 250ms, box-shadow 250ms;
 
   ${({ theme: { colors }, isFocused, disabled }) => css`
     background: ${colors.field};

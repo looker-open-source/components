@@ -4,5 +4,13 @@
     "declaration": true,
     "emitDeclarationOnly": true
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts",  "**/*.test.tsx"]
+  "exclude": [
+    "**/*.shots.ts",
+    "**/*.shots.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.story.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }

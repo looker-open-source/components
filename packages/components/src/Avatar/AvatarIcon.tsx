@@ -34,17 +34,20 @@ import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
   /**
-   * @default User
+   * Icon to display
+   * @default 'User'
    */
   icon?: IconNames
 
   /**
+   * Icon fill & border color
    * @default 'keyFocus'
    */
   color?: string
 
   /**
-   * @default 'keyText'
+   * Background color
+   * @default 'background'
    */
   bg?: string
 }
@@ -93,8 +96,7 @@ const AvatarLayout: FC<AvatarIconProps> = ({
 
 export const AvatarIcon = styled(AvatarLayout)`
   ${avatarCSS}
-  ${({ role }) =>
-    role === 'button' && 'cursor: pointer;'}
+  ${({ role }) => role === 'button' && 'cursor: pointer;'}
   border: solid 1px currentColor;
 
   ${Icon} {

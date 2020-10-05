@@ -169,7 +169,7 @@ const fieldLabelCSS = (inline?: boolean) =>
       `
     : css`
         line-height: ${({ theme }) => theme.lineHeights.xsmall};
-        padding-bottom: ${({ theme }) => theme.space.xsmall};
+        padding-bottom: ${({ theme }) => theme.space.xxsmall};
       `
 
 export const Field = styled(FieldLayout)<FieldPropsInternal>`

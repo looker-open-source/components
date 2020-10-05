@@ -37,11 +37,13 @@ export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
   secondaryIcon: IconNames
   /**
-   *  @default `keyFocus`
+   * Icon & border color for secondary AvatarIcon
+   * @default 'keyFocus'
    **/
   secondaryColor?: string
   /**
-   *  @default `keyFocus`
+   * Background for secondary AvatarIcon
+   * @default 'background'
    **/
   secondaryBg?: string
 }
