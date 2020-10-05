@@ -32,6 +32,8 @@ import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
+import { Text } from '../../../Text'
+import { Popover } from '../../../Popover'
 import { InputFilterChip } from './InputFilterChip'
 import { DraftFilter } from './DraftFilter'
 
@@ -111,6 +113,12 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setDraftFilter(undefined)
     setUnassignedFilters(options)
   }
+
+  const togglePopover = () => {
+    setDraftFilter(undefined)
+    setUnassignedFilters(options)
+  }
+
   const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
 
   return (
@@ -127,13 +135,20 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onDelete={handleDelete}
           />
         ))}
-      {draftFilter && (
-        <DraftFilter
-          draft={draftFilter}
-          options={draftOptions}
-          onClick={handleDraft}
-        />
-      )}
+      <Popover
+        isOpen={draftFilter !== undefined}
+        setOpen={togglePopover}
+        content={
+          <DraftFilter
+            draft={draftFilter}
+            options={draftOptions}
+            onClick={handleDraft}
+          />
+        }
+      >
+        <Text fontSize="small">{draftFilter?.label || draftFilter?.field}</Text>
+      </Popover>
+
       {!draftFilter && (
         <Select
           autoResize
