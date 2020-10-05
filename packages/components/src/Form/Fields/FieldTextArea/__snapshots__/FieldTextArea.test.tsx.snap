@@ -1,45 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldTextArea with default label 1`] = `
-.c5 {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  position: relative;
-  width: 100%;
-}
-
-.c5 .c7 {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-}
-
-.c5 textarea {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  min-height: 6.25rem;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-  padding: 0.5rem 0.75rem;
-  padding-right: 2rem;
-  resize: vertical;
-  width: 100%;
-}
-
-.c5 textarea:hover {
-  border-color: #C1C6CC;
-}
-
-.c5 textarea:focus,
-.c5 textarea:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
 .c2 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #343C42;
@@ -96,36 +57,6 @@ exports[`A FieldTextArea with default label 1`] = `
   margin-top: 0.5rem;
 }
 
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labelledby"
-  >
-    👍
-  </label>
-  <div
-    className="c3 c4"
-  >
-    <div
-      className="c5 "
-    >
-      <textarea
-        aria-describedby="FieldTextAreaID-describedby"
-        id="FieldTextAreaID"
-      />
-    </div>
-  </div>
-  <div
-    className="c6 "
-    id="FieldTextAreaID-describedby"
-  />
-</div>
-`;
-
-exports[`A FieldTextArea with label inline 1`] = `
 .c5 {
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -134,7 +65,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   width: 100%;
 }
 
-.c5 .c8 {
+.c5 .c7 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -165,6 +96,36 @@ exports[`A FieldTextArea with label inline 1`] = `
   outline: none;
 }
 
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    htmlFor="FieldTextAreaID"
+    id="FieldTextAreaID-labelledby"
+  >
+    👍
+  </label>
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 "
+    >
+      <textarea
+        aria-describedby="FieldTextAreaID-describedby"
+        id="FieldTextAreaID"
+      />
+    </div>
+  </div>
+  <div
+    className="c6 "
+    id="FieldTextAreaID-describedby"
+  />
+</div>
+`;
+
+exports[`A FieldTextArea with label inline 1`] = `
 .c2 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #343C42;
@@ -244,6 +205,45 @@ exports[`A FieldTextArea with label inline 1`] = `
 
 .c0 .c9 {
   margin-top: 0.5rem;
+}
+
+.c5 {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  width: 100%;
+}
+
+.c5 .c8 {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.c5 textarea {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  min-height: 6.25rem;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.c5 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c5 textarea:focus,
+.c5 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 <div

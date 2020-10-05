@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import {
   ButtonTransparent,
   HoverDisclosure,
@@ -35,11 +35,15 @@ import {
   MenuItem,
   Space,
   Tooltip,
+  Truncate,
   usePopover,
+  Flex,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 
-const PickerItem = () => {
+const Span: FC<any> = ({ children }) => <span>{children}</span>
+
+const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -55,26 +59,23 @@ const PickerItem = () => {
   })
 
   const pivot = (
-    <IconButton
-      icon="Sync"
-      label="Pivot"
-      tooltipPlacement="top"
-      onClick={(event) => {
-        event.stopPropagation()
-        alert('Pivot')
-      }}
-      onKeyDown={(event) => {
-        event.stopPropagation()
-      }}
-    />
+    <Flex alignItems="center">
+      <IconButton
+        icon="Sync"
+        label="Pivot"
+        tooltipPlacement="top"
+        onClick={(event) => {
+          event.stopPropagation()
+          alert('Pivot')
+        }}
+        onKeyDown={(event) => {
+          event.stopPropagation()
+        }}
+      />
+    </Flex>
   )
 
-  const itemLabel = (
-    <Space between>
-      <span>Cost</span>
-      {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
-    </Space>
-  )
+  const TextWrapper = truncate ? Truncate : Span
 
   return (
     <>
@@ -116,7 +117,10 @@ const PickerItem = () => {
           selected={!!overlay}
           icon="FieldNumber"
         >
-          {itemLabel}
+          <Space between>
+            <TextWrapper>{children}</TextWrapper>
+            {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
+          </Space>
         </TreeItem>
       </Menu>
     </>
@@ -145,7 +149,19 @@ export const FieldPicker = () => (
       <PickerItem />
       <PickerItem />
       <PickerItem />
-      <PickerItem />
+      <PickerItem>
+        Over a thousand types of cheese exist and are currently produced in
+        various countries. Their styles, textures and flavors depend on the
+        origin of the milk (including the animal's diet), whether they have been
+        pasteurized, the butterfat content, the bacteria and mold, the
+        processing, and how long they have been aged for.
+      </PickerItem>
+      <PickerItem truncate>
+        Herbs, spices, or wood smoke may be used as flavoring agents. The yellow
+        to red color of many cheeses is produced by adding annatto. Other
+        ingredients may be added to some cheeses, such as black pepper, garlic,
+        chives or cranberries.
+      </PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="keyFocus">
       <Tree visuallyAsBranch label="Hello">

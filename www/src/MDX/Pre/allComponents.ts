@@ -142,6 +142,7 @@ import {
   Tabs,
   Text,
   TextArea,
+  Truncate,
   theme,
   ToggleSwitch,
   Tooltip,
@@ -327,5 +328,6 @@ export const allComponents = {
   Tree,
   TreeGroup,
   TreeItem,
+  Truncate,
   VisuallyHidden,
 }

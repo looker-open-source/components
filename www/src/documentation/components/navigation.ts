@@ -44,6 +44,7 @@ const components: NavigationSection = {
         { path: 'paragraph', title: 'Paragraph' },
         { path: 'text', title: 'Text' },
         { path: 'code', title: 'Code' },
+        { path: 'truncate', title: 'Truncate' },
       ],
       path: 'text',
       title: 'Text',

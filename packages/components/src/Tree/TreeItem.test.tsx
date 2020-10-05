@@ -68,7 +68,7 @@ describe('TreeItem', () => {
       </TreeItem>
     )
 
-    expect(queryByText('Detail')).not.toBeInTheDocument()
+    expect(queryByText('Detail')).not.toBeVisible()
     fireEvent.mouseEnter(getByText('Dimension'), { bubbles: true })
     getByText('Detail')
   })
@@ -85,7 +85,7 @@ describe('TreeItem', () => {
       </Tree>
     )
 
-    expect(queryByText('Child TreeItem Detail')).not.toBeInTheDocument()
+    expect(queryByText('Child TreeItem Detail')).not.toBeVisible()
     fireEvent.mouseEnter(getByText('Child TreeItem Label'), { bubbles: true })
     getByText('Child TreeItem Detail')
   })

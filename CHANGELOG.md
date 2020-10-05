@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+## Added
+
+- `Truncate` component
+
+## Changed
+
+- `TreeItem` now supports text truncation behavior
+- `TreeItem` now wraps long text pleasantly
+- `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
+- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
+- `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
+
 ## [0.9.16] - 2020-10-02
 
 ### Added

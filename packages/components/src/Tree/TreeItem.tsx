@@ -33,6 +33,7 @@ import React, {
   useContext,
   useRef,
   useState,
+  Fragment,
 } from 'react'
 import styled from 'styled-components'
 import {
@@ -51,6 +52,7 @@ import {
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
+import { Truncate } from '../Text'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
@@ -91,6 +93,10 @@ export interface TreeItemProps
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
+  /**
+   * Prevent text wrapping on long labels and instead render truncated text
+   **/
+  truncate?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -98,6 +104,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   className,
   gapSize = 'xsmall',
   selected,
+  truncate,
   ...props
 }) => {
   const treeContext = useContext(TreeContext)
@@ -177,6 +184,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     </HoverDisclosure>
   )
 
+  const TextWrapper = truncate ? Truncate : Fragment
+
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
       <TreeItemSpace
@@ -195,7 +204,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
-          <FlexItem flex="1">{children}</FlexItem>
+          <FlexItem flex="1" fontSize="xsmall" lineHeight="xsmall">
+            <TextWrapper>{children}</TextWrapper>
+          </FlexItem>
           {!detailAccessory && detail}
         </TreeItemLabel>
         {detailAccessory && detail}
@@ -205,6 +216,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 }
 
 const PrimaryIcon = styled(Icon)`
+  height: ${({ theme }) => theme.lineHeights.xsmall};
   opacity: 0.5;
 `
 
@@ -214,12 +226,13 @@ interface TreeItemSpaceProps {
 
 export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
   align-items: center;
-  border: 1px solid transparent;
-  border-color: ${({ focusVisible, theme }) =>
-    focusVisible && theme.colors.keyFocus};
   cursor: pointer;
-  height: 25px;
-  outline: none;
+  flex-shrink: 2;
+  min-height: ${({ theme }) => theme.sizes.medium};
+  min-width: 0;
+  outline: 1px solid transparent;
+  outline-color: ${({ focusVisible, theme }) =>
+    focusVisible && theme.colors.keyFocus};
 `
 
 interface TreeItemLabelProps {
@@ -228,13 +241,16 @@ interface TreeItemLabelProps {
 }
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
+  align-items: center;
   background-color: ${({ hovered, selected }) =>
     selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
   flex: 1;
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
+  flex-shrink: 2;
   height: 100%;
+  max-width: 100%;
+  min-height: ${({ theme }) => theme.sizes.medium};
+  min-width: 0;
   outline: none;
-  padding: ${({ theme: { space } }) => space.xxsmall};
 `
 
 const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`

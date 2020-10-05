@@ -70,6 +70,42 @@ Use the `border` prop if you would like to have vertical lines expand from your 
 </Tree>
 ```
 
+## Truncating Tree Items & Labels
+
+Occasionally tree item labels will wrap to a second line when the text content is very long, or the available space is very narrow. The text content will wrap by default, but if that is undesirable you can use the `truncate` prop to limit text content to a single line.
+
+When text content overflows, it will render a tooltip to view the entire content, which is consistent with the [Truncate](/components/text/truncate) component.
+
+```jsx
+<Heading>Default Text Wrapping Layout</Heading>
+<Tree
+  border
+  label="A very long label that wraps to a second line. Both the label and the tree item will wrap to two or more lines because there is just too much text."
+  icon="Table"
+  defaultOpen
+>
+  <TreeItem icon="IdeDimension">
+    <strong>Very long text wraps content.</strong> Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
+  </TreeItem>
+
+</Tree>
+```
+
+```jsx
+<Heading>Truncated Text</Heading>
+<Tree
+  border
+  label="A very label that wraps to a second line. Sometimes you don't want to take up extra vertical space, and instead it will cut off the text."
+  truncate
+  icon="Table"
+  defaultOpen
+>
+  <TreeItem icon="IdeDimension" truncate>
+    <strong>Very long text renders a tooltip.</strong> Hover over me for a tooltip of the full content. Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
+  </TreeItem>
+</Tree>
+```
+
 ## Nesting Trees
 
 You can nest trees within each other by passing a `Tree` in as a child of another `Tree`.
