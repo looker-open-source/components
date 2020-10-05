@@ -127,8 +127,12 @@ export const ComponentSuite = () => {
           <Tab>Item 2</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>Here's the content</TabPanel>
-          <TabPanel>Here's the content</TabPanel>
+          <TabPanel>
+            <Paragraph>Here's the content</Paragraph>
+          </TabPanel>
+          <TabPanel>
+            <Paragraph>Here's the content</Paragraph>
+          </TabPanel>
         </TabPanels>
       </Tabs>
       <Tabs>
@@ -137,8 +141,12 @@ export const ComponentSuite = () => {
           <Tab>Item 2</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>Here's the content</TabPanel>
-          <TabPanel>Here's the content</TabPanel>
+          <TabPanel>
+            <Paragraph>Here's the content</Paragraph>
+          </TabPanel>
+          <TabPanel>
+            <Paragraph>Here's the content</Paragraph>
+          </TabPanel>
         </TabPanels>
       </Tabs>
     </SpaceVertical>

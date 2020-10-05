@@ -17,6 +17,7 @@ exports[`MenuGroup - JSX label 1`] = `
   line-height: 1.25rem;
   padding-left: 1rem;
   color: #262D33;
+  color: #262D33;
 }
 
 .c1 {
@@ -141,6 +142,7 @@ exports[`MenuGroup - JSX label 1`] = `
     />
     <h2
       className="c2 c3"
+      color="text"
       fontFamily="body"
       fontSize="small"
       fontWeight="semiBold"
@@ -217,6 +219,7 @@ exports[`MenuGroup - label 1`] = `
   font-weight: 600;
   line-height: 1.25rem;
   padding-left: 1rem;
+  color: #262D33;
   color: #262D33;
 }
 
@@ -342,6 +345,7 @@ exports[`MenuGroup - label 1`] = `
     />
     <h2
       className="c2 c3"
+      color="text"
       fontFamily="body"
       fontSize="small"
       fontWeight="semiBold"
