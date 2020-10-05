@@ -59,6 +59,7 @@ describe('InputFilters', () => {
     { field: 'trigger' },
     { field: 'buildAt', label: 'Last Build Time' },
   ]
+
   test('render InputFilter', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <InputFilters filters={filters} />

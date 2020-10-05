@@ -76,7 +76,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     setFilterLookupName('')
     setChipValues([])
   }
+
   const focusInput = () => inputRef.current && inputRef.current.focus()
+
   const handleFilterLookupChange = (field: string) => {
     const filter = unassignedFilters.find((option) => option.value === field)
 

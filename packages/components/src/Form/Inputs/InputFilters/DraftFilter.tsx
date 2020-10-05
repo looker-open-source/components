@@ -62,7 +62,7 @@ export const DraftFilter: FC<DraftFilterProps> = ({
         </PopoverContent>
       }
     >
-      <Text>{draft.label || draft.field}</Text>
+      <Text fontSize="small">{draft.label || draft.field}</Text>
     </Popover>
   )
 }
