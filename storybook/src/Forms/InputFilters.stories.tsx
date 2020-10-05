@@ -27,19 +27,19 @@
 import React from 'react'
 import { InputFilters } from '@looker/components'
 
+export default {
+  title: 'Forms/InputFilters',
+}
+
 const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', label: 'Group', value: 'pizza-lovers' },
+  { field: 'role' },
+  { field: 'group', label: 'Group' },
   { field: 'name', label: 'Name' },
   { field: 'status' },
   { field: 'source' },
   { field: 'trigger' },
   { field: 'buildAt', label: 'Last Build Time' },
 ]
-
-export default {
-  title: 'Forms/InputFilters',
-}
 
 export const Basic = () => <InputFilters filters={filters} />
 

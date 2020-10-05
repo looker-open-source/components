@@ -25,13 +25,12 @@
  */
 import React, { FC } from 'react'
 import { ButtonGroup, ButtonItem } from '../../../Button'
-import { Popover, PopoverContent } from '../../../Popover'
+import { PopoverContent } from '../../../Popover'
 import { SpaceVertical } from '../../../Layout/Space'
-import { Text } from '../../../Text'
 import { FieldFilter } from './InputFilters'
 
 interface DraftFilterProps {
-  draft: FieldFilter
+  draft?: FieldFilter
   options: string[]
   onClick: (field: FieldFilter, value: string) => void
 }
@@ -40,29 +39,24 @@ export const DraftFilter: FC<DraftFilterProps> = ({
   onClick,
   options,
 }) => {
+  if (!draft) return null
+
   return (
-    <Popover
-      isOpen={true}
-      content={
-        <PopoverContent p="large" width="360px">
-          <SpaceVertical>
-            <ButtonGroup>
-              {options.map((option, index) => {
-                const handleDraft = () => {
-                  onClick(draft, option)
-                }
-                return (
-                  <ButtonItem key={index} onClick={handleDraft}>
-                    {option}
-                  </ButtonItem>
-                )
-              })}
-            </ButtonGroup>
-          </SpaceVertical>
-        </PopoverContent>
-      }
-    >
-      <Text fontSize="small">{draft.label || draft.field}</Text>
-    </Popover>
+    <PopoverContent p="large" width="360px">
+      <SpaceVertical>
+        <ButtonGroup>
+          {options.map((option, index) => {
+            const handleDraft = () => {
+              onClick(draft, option)
+            }
+            return (
+              <ButtonItem key={index} onClick={handleDraft}>
+                {option}
+              </ButtonItem>
+            )
+          })}
+        </ButtonGroup>
+      </SpaceVertical>
+    </PopoverContent>
   )
 }

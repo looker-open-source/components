@@ -32,7 +32,8 @@ import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton, Button } from '../../../Button'
 import { Chip } from '../../../Chip'
-import { Popover, PopoverContent } from '../../../Popover'
+import { Text } from '../../../Text'
+import { Popover } from '../../../Popover'
 import { InputFilterChip } from './InputFilterChip'
 
 export interface FieldFilter {
@@ -111,6 +112,12 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     console.log('event: ', event.currentTarget)
     // setChipValues([...chipValues, newValue])
   }
+
+  const togglePopover = () => {
+    setDraftFilter(undefined)
+    setUnassignedFilters(options)
+  }
+
   const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
 
   return (
@@ -127,17 +134,20 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onDelete={handleDelete}
           />
         ))}
-      {draftFilter && (
-        <Popover
-          content={
-            <PopoverContent p="large" width="360px">
-              <Chip onClick={handleSecondFilterList}>suggestion 1</Chip>
-            </PopoverContent>
-          }
-        >
-          <Chip>{draftFilter.label || draftFilter.field}</Chip>
-        </Popover>
-      )}
+      <Popover
+        isOpen={draftFilter !== undefined}
+        setOpen={togglePopover}
+        content={
+          <DraftFilter
+            draft={draftFilter}
+            options={draftOptions}
+            onClick={handleDraft}
+          />
+        }
+      >
+        <Text fontSize="small">{draftFilter?.label || draftFilter?.field}</Text>
+      </Popover>
+
       {!draftFilter && (
         <Select
           autoResize
