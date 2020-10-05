@@ -27,8 +27,8 @@
 import { ActionListColumns } from '@looker/components'
 
 export const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', label: 'Group', value: 'pizza-lovers' },
+  { field: 'role' },
+  { field: 'group', label: 'Group' },
   { field: 'name', label: 'Name' },
   { field: 'status' },
   { field: 'source' },

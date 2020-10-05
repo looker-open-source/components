@@ -74,8 +74,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = chipValues.length > 0
 
-  const clearFilters = () => setChipValues([])
+  const clearFilters = () => {
+    setFilterLookupName('')
+    setChipValues([])
+  }
+
   const focusInput = () => inputRef.current && inputRef.current.focus()
+
   const handleFilterLookupChange = (field: string) => {
     const filter = unassignedFilters.find((option) => option.value === field)
 
