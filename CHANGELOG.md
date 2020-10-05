@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `TreeItem` now supports text truncation behavior
 - `TreeItem` now wraps long text pleasantly
+- `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
 - `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
 
