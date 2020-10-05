@@ -23,6 +23,7 @@
     "gatsby-source-filesystem": "^2.3.32",
     "lodash": "^4.17.20",
     "polished": "^3.6.7",
+    "prismjs": "^1.21.0",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
@@ -35,5 +36,8 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop --host 0.0.0.0"
+  },
+  "resolutions": {
+    "prismjs": "^1.21.0"
   }
 }
