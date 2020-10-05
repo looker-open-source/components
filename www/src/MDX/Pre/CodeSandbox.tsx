@@ -25,7 +25,6 @@
  */
 
 import { Icon, IconButton, IconNames, Tooltip } from '@looker/components'
-import { prismTheme } from '@looker/design-tokens'
 import { PrismTheme, Language } from 'prism-react-renderer'
 import React, { FC, ReactNode, useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -38,6 +37,7 @@ import {
 } from 'react-live'
 import styled from 'styled-components'
 import { allComponents } from './allComponents'
+import { prismTheme } from './prismTheme'
 
 interface CodeSandboxProps {
   code: string
@@ -213,14 +213,14 @@ const ActionButton = styled(IconButton)<ActionProps>`
 `
 
 const ActionLayout = styled.div<ActionProps>`
-  transition: background 0.35s;
-  width: auto;
+  background: ${({ theme, editorIsVisible }) =>
+    editorIsVisible ? theme.colors.ui5 : theme.colors.ui2};
   display: grid;
   grid-template-rows: auto auto 1fr;
   justify-content: right;
   padding: ${({ theme }) => `${theme.space.xsmall}`};
-  background: ${({ theme, editorIsVisible }) =>
-    editorIsVisible ? theme.colors.ui5 : theme.colors.ui2};
+  transition: background 350ms;
+  width: auto;
 `
 
 const SandboxWrapper = styled.div`
@@ -229,7 +229,7 @@ const SandboxWrapper = styled.div`
     margin-bottom: ${lineHeights.medium};
     border: 1px solid ${colors.ui2};
     border-radius: ${radii.medium};
-    color: ${colors.white};
+    color: ${colors.background};
   `}
 `
 
@@ -241,9 +241,9 @@ const PreviewWrapper = styled.div`
 
 const EditorWrapper = styled.div`
   background: ${({ theme }) => theme.colors.ui5};
-  line-height: ${({ theme }) => theme.lineHeights.medium};
   display: grid;
   grid-template-columns: 1fr auto;
+  line-height: ${({ theme }) => theme.lineHeights.medium};
   textarea,
   pre {
     ${({ theme: { space } }) => `
@@ -267,16 +267,15 @@ const ErrorWrapper = styled.div`
 `
 
 const IconWrapper = styled.div`
-  width: 45px;
-  height: 45px;
-  border-radius: 100%;
-  display: grid;
-  justify-content: center;
   align-content: center;
-  ${({ theme: { colors } }) => `
-    background: ${colors.critical};
-    color: ${colors.inverseOn};
-  `}
+  background: ${({ theme }) => theme.colors.critical};
+  border-radius: 100%;
+  color: ${({ theme }) => theme.colors.inverseOn};
+  display: grid;
+  height: 45px;
+  justify-content: center;
+  width: 45px;
+
   svg {
     transform: translateY(-2px);
   }
