@@ -35,13 +35,6 @@ interface AccordionDisclosureLayoutProps
   className?: string
 }
 
-const Indicator = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-`
-const Label = styled.div``
-
 const Layout: FC<AccordionDisclosureLayoutProps> = ({
   children,
   className,
@@ -67,6 +60,17 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
     </div>
   )
 }
+
+const Indicator = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`
+
+const Label = styled.div`
+  overflow: hidden;
+  width: 100%;
+`
 
 export const AccordionDisclosureLayout = styled(Layout)`
   align-items: center;

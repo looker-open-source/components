@@ -587,3 +587,58 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
   )
 }
 ```
+
+## Truncation
+
+ActionList plays nicely with [Truncate](/components/text/truncate), when you wish to condense the table and keep all values to a single line.
+
+```jsx
+;() => {
+  const columns = [
+    {
+      id: 'title',
+      primaryKey: true,
+      title: 'Title',
+      type: 'string',
+      widthPercent: 20,
+    },
+    {
+      id: 'description',
+      title: 'Description',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  return (
+    <ActionList columns={columns}>
+      <ActionListItem key="cheddar" id="cheddar">
+        <ActionListItemColumn>Cheddar</ActionListItemColumn>
+        <ActionListItemColumn>
+          <Truncate>
+            Cheddar cheese is a relatively hard, off-white (or orange if
+            colourings such as annatto are added), sometimes sharp-tasting,
+            natural cheese. Originating in the English village of Cheddar in
+            Somerset, cheeses of this style are now produced beyond the region
+            and in several countries around the world.
+          </Truncate>
+        </ActionListItemColumn>
+      </ActionListItem>
+      <ActionListItem key="parm" id="parm">
+        <ActionListItemColumn>Parmesan</ActionListItemColumn>
+        <ActionListItemColumn>
+          <Truncate>
+            Parmigiano-Reggiano or Parmesan is an Italian hard, granular cheese
+            that is produced from cow's milk and has aged 12–36 months. It is
+            named after the producing areas, the provinces of Parma, Reggio
+            Emilia, the part of Bologna west of the Reno, and Modena (all in
+            Emilia-Romagna); and the part of Mantua (Lombardy) south of the Po.
+            Parmigiano is the Italian adjective for Parma and Reggiano that for
+            Reggio Emilia.
+          </Truncate>
+        </ActionListItemColumn>
+      </ActionListItem>
+    </ActionList>
+  )
+}
+```

@@ -130,13 +130,12 @@ export const AccordionDisclosureStyle = styled.div<
 >`
   align-items: center;
   background-color: transparent;
-  border: 1px solid transparent;
-  border-color: ${({ focusVisible, theme }) =>
-    focusVisible && theme.colors.keyFocus};
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
   cursor: pointer;
   display: flex;
-  outline: none;
+  outline: 1px solid transparent;
+  outline-color: ${({ focusVisible, theme }) =>
+    focusVisible && theme.colors.keyFocus};
   ${padding}
   text-align: left;
   width: 100%;

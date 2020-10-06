@@ -60,11 +60,19 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
   placement: Placement
   style?: CSSProperties
   zIndex?: number
+  maxWidth?: string
 }
 
 export const OverlaySurface = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
-    const { children, eventHandlers, placement, style, ...innerProps } = props
+    const {
+      children,
+      eventHandlers,
+      placement,
+      style,
+      maxWidth,
+      ...innerProps
+    } = props
     const { closeModal } = useContext(DialogContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
@@ -79,6 +87,7 @@ export const OverlaySurface = forwardRef(
         {...eventHandlers}
         tabIndex={-1}
         data-placement={placement}
+        maxWidth={maxWidth}
       >
         <Inner {...innerProps}>{children}</Inner>
       </Outer>
@@ -88,9 +97,10 @@ export const OverlaySurface = forwardRef(
 
 OverlaySurface.displayName = 'OverlaySurface'
 
-const Outer = styled.div<{ zIndex?: number }>`
+const Outer = styled.div<{ zIndex?: number; maxWidth?: string }>`
   ${reset}
   animation: ${fadeIn} 150ms ease-in;
+  max-width: ${({ maxWidth }) => maxWidth};
   overflow: visible;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 

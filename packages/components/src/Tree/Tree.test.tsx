@@ -158,7 +158,7 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(queryByText('Tree Detail')).not.toBeInTheDocument()
+    expect(queryByText('Tree Detail')).not.toBeVisible()
     fireEvent.mouseEnter(getByText('Tree Label'), { bubbles: true })
     getByText('Tree Detail')
   })
@@ -177,7 +177,7 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(queryByText('Child Tree Detail')).not.toBeInTheDocument()
+    expect(queryByText('Child Tree Detail')).not.toBeVisible()
     fireEvent.mouseEnter(getByText('Child Tree Label'), { bubbles: true })
     getByText('Child Tree Detail')
   })
