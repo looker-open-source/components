@@ -58,6 +58,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   color: ${({ theme: { colors } }) => colors.text5};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
+  list-style-type: none;
   outline: none;
   text-decoration: none;
   transition: ${({ theme: { easings, transitions } }) =>

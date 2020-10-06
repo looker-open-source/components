@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 
 - `Truncate` component
+- Visual Snapshot test for `MenuItem` and `MenuGroup`
+- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
 
 ## Changed
 
@@ -28,7 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Includes `useDrawer` hook
 - `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
-
 - Image snapshots tests
   - Infrastructure to run image snapshot tests leveraging Storybook `storyshots` + `jest-image-snapshots`
   - Image snapshot coverage for `Button*`, `IconButton` & `Tree` components
