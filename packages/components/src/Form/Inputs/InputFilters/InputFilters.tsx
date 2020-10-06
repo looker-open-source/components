@@ -26,7 +26,6 @@
 
 import styled from 'styled-components'
 import React, { FC, useState, useRef } from 'react'
-import partition from 'lodash/partition'
 import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
@@ -58,14 +57,16 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 }) => {
   const assigned = filters.filter((filter) => filter.value)
 
-  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
-  // const [unassignedFilters, setUnassignedFilters] = useState(options)
-  const [chipValues, setChipValues] = useState(assigned)
+  // const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
+  const [fieldEditing, setFieldEditing] = useState<undefined | string>(
+    undefined
+  )
+  const [assignedFilters, setAssignedFilters] = useState(assigned)
   const [filterLookupName, setFilterLookupName] = useState('')
 
   const unassignedFilters = filters.filter(
     (filter) =>
-      !chipValues.map((assigned) => assigned.field).includes(filter.field)
+      !assignedFilters.map((assigned) => assigned.field).includes(filter.field)
   )
 
   const options = unassignedFilters.map((filter) => {
@@ -76,11 +77,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   })
 
   const inputRef = useRef<null | HTMLInputElement>(null)
-  const isClearable = chipValues.length > 0
+  const isClearable = assignedFilters.length > 0
 
   const clearFilters = () => {
     setFilterLookupName('')
-    setChipValues([])
+    setAssignedFilters([])
   }
 
   const focusInput = () => inputRef.current && inputRef.current.focus()
@@ -90,36 +91,22 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
     if (filter) {
       setFilterLookupName('')
-      // setUnassignedFilters(
-      //   unassignedFilters.filter((option) => option === filter)
-      // )
-      setDraftFilter({ field: filter.field, label: filter?.label })
+      setAssignedFilters([...assignedFilters, filter])
+      setFieldEditing(filter.field)
     }
   }
 
-  const editFilter = () => {
-    alert("You can't do that. Yet!")
+  const closeFilterEditor = () => {
+    // TODO
+
+    // Check if assignedFilters that matches `fieldEditing` actually has a value
+    // If not remove it from the list.
+
+    setFieldEditing(undefined)
   }
 
-  const handleDelete = (field: FieldFilter) => {
-    // const addOption = options.filter(
-    //   (value) =>
-    //     (field && field.field === value.label) ||
-    //     (field && field.field === value.value)
-    // )
-    // setUnassignedFilters([addOption[0], ...unassignedFilters])
-    setChipValues([...chipValues].filter((value) => value !== field))
-  }
-
-  const handleDraft = (draft: FieldFilter, option: string) => {
-    draft.value = option
-    setChipValues([...chipValues, draft])
-    // setUnassignedFilters(options)
-  }
-
-  const togglePopover = () => {
-    setDraftFilter(undefined)
-    // setUnassignedFilters(options)
+  const setFieldEditingValue = (value: string) => {
+    // Modify the value of the filter identified by `fieldEditing` whenever this is called
   }
 
   const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
@@ -129,30 +116,45 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       {!hideFilterIcon && (
         <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
       )}
-      {chipValues &&
-        chipValues.map((filter, i) => (
+      {assignedFilters.map((filter, i) => {
+        const editFilter = () => setFieldEditing(filter.field)
+        const handleDelete = () =>
+          setAssignedFilters(
+            [...assignedFilters].filter(
+              (assignedFilter) => assignedFilter.field !== filter.field
+            )
+          )
+
+        const filterToken = filter.value ? (
           <InputFilterChip
             filter={filter}
             key={i}
             onClick={editFilter}
             onDelete={handleDelete}
           />
-        ))}
-      <Popover
-        isOpen={draftFilter !== undefined}
-        setOpen={togglePopover}
-        content={
-          <DraftFilter
-            draft={draftFilter}
-            options={draftOptions}
-            onClick={handleDraft}
-          />
-        }
-      >
-        <Text fontSize="small">{draftFilter?.label || draftFilter?.field}</Text>
-      </Popover>
+        ) : (
+          <Text fontSize="small">{filter?.label || filter.field}</Text>
+        )
 
-      {!draftFilter && (
+        return filter.field === fieldEditing ? (
+          <Popover
+            onClose={closeFilterEditor}
+            content={
+              <FilterEditor
+                defaultValue={filter.value}
+                onChange={setFieldEditingValue}
+                options={draftOptions}
+              />
+            }
+          >
+            {filterToken}
+          </Popover>
+        ) : (
+          filterToken
+        )
+      })}
+
+      {!fieldEditing && (
         <Select
           autoResize
           indicator={false}
