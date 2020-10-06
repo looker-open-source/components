@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-<<<<<<< HEAD
 ## Added
 
 - `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
