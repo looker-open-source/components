@@ -143,7 +143,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
         artwork={iconArtwork}
         color="text1"
         name={icon}
-        size={24 / (compact ? 1.25 : 1)}
+        size={compact ? 'small' : 'medium'}
         mr="xsmall"
       />
     ) : (
@@ -152,7 +152,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
           aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
           mr="xsmall"
-          size={24 / (compact ? 1.25 : 1)}
+          size={compact ? 'small' : 'medium'}
         />
       )
     )

@@ -516,7 +516,7 @@ const InputTimeInternal = forwardRef(
             name="Error"
             color="critical"
             grid-area="warning"
-            size={20}
+            size="small"
           />
         )}
       </div>

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconButton accepts color 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -18,7 +18,7 @@ exports[`IconButton accepts color 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -62,12 +62,7 @@ exports[`IconButton accepts color 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -76,7 +71,7 @@ exports[`IconButton accepts color 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -84,25 +79,25 @@ exports[`IconButton accepts color 1`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #dd223b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #ad1a2e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   color="critical"
   onBlur={[Function]}
   onFocus={[Function]}
@@ -114,13 +109,13 @@ exports[`IconButton accepts color 1`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -138,10 +133,10 @@ exports[`IconButton accepts color 1`] = `
 `;
 
 exports[`IconButton accepts events 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -155,7 +150,7 @@ exports[`IconButton accepts events 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -199,12 +194,7 @@ exports[`IconButton accepts events 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -213,7 +203,7 @@ exports[`IconButton accepts events 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -221,25 +211,25 @@ exports[`IconButton accepts events 1`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -251,13 +241,13 @@ exports[`IconButton accepts events 1`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -275,10 +265,10 @@ exports[`IconButton accepts events 1`] = `
 `;
 
 exports[`IconButton accepts events 2`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -292,7 +282,7 @@ exports[`IconButton accepts events 2`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -336,12 +326,7 @@ exports[`IconButton accepts events 2`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -350,7 +335,7 @@ exports[`IconButton accepts events 2`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -358,25 +343,25 @@ exports[`IconButton accepts events 2`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -388,13 +373,13 @@ exports[`IconButton accepts events 2`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -412,10 +397,10 @@ exports[`IconButton accepts events 2`] = `
 `;
 
 exports[`IconButton allows for ARIA attributes 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -429,7 +414,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -473,12 +458,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -487,7 +467,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -495,26 +475,26 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
   aria-haspopup={true}
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -525,13 +505,13 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -549,10 +529,10 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 `;
 
 exports[`IconButton default 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -566,7 +546,7 @@ exports[`IconButton default 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -610,12 +590,7 @@ exports[`IconButton default 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -624,7 +599,7 @@ exports[`IconButton default 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -632,25 +607,25 @@ exports[`IconButton default 1`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -661,13 +636,13 @@ exports[`IconButton default 1`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -685,10 +660,10 @@ exports[`IconButton default 1`] = `
 `;
 
 exports[`IconButton outline 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -702,7 +677,7 @@ exports[`IconButton outline 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -746,12 +721,7 @@ exports[`IconButton outline 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 12px;
-  width: 12px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -760,7 +730,7 @@ exports[`IconButton outline 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -769,43 +739,43 @@ exports[`IconButton outline 1`] = `
   border: 1px solid #C1C6CC;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   border-color: #71767a;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   border-color: #7a818b;
 }
 
-.c2[disabled]:hover,
-.c2[disabled]:active,
-.c2[disabled]:focus {
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   border-color: #C1C6CC;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -816,13 +786,13 @@ exports[`IconButton outline 1`] = `
   width={24}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"
@@ -1104,10 +1074,10 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 `;
 
 exports[`IconButton resized 1`] = `
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 38px;
-  height: 38px;
+  width: 1.5rem;
+  height: 1.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1121,7 +1091,7 @@ exports[`IconButton resized 1`] = `
   flex-shrink: 0;
 }
 
-.c4 svg {
+.c3 svg {
   height: 100%;
   width: 100%;
 }
@@ -1165,12 +1135,7 @@ exports[`IconButton resized 1`] = `
   opacity: 0.25;
 }
 
-.c1 .c5 {
-  height: 20px;
-  width: 20px;
-}
-
-.c3 {
+.c2 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -1179,7 +1144,7 @@ exports[`IconButton resized 1`] = `
   width: 1px;
 }
 
-.c2 {
+.c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -1187,25 +1152,25 @@ exports[`IconButton resized 1`] = `
   padding: 0;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   color: #7a818b;
 }
 
-.c2[aria-expanded='true'],
-.c2:active,
-.c2.active {
+.c1[aria-expanded='true'],
+.c1:active,
+.c1.active {
   color: #5f656e;
 }
 
-.c2 svg {
+.c1 svg {
   pointer-events: none;
 }
 
 <button
   aria-describedby="test-iconButton-tooltip"
-  className="c0 c1 c2"
+  className="c0 c1"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyUp={[Function]}
@@ -1216,13 +1181,13 @@ exports[`IconButton resized 1`] = `
   width={44}
 >
   <div
-    className="c3"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c4"
+    className="c3"
   >
     <svg
       fill="currentColor"

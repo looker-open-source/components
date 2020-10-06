@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogHeader Snapshot 1`] = `
-.c7 {
+.c6 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 22px;
-  height: 22px;
+  width: 1.25rem;
+  height: 1.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -18,14 +18,14 @@ exports[`DialogHeader Snapshot 1`] = `
   flex-shrink: 0;
 }
 
-.c7 svg {
+.c6 svg {
   height: 100%;
   width: 100%;
 }
 
 .c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 28px;
+  width: 36px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -48,10 +48,10 @@ exports[`DialogHeader Snapshot 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 0.75rem;
-  height: 28px;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  font-size: 0.875rem;
+  height: 36px;
+  padding-left: 24px;
+  padding-right: 24px;
   padding: 0rem;
 }
 
@@ -60,11 +60,6 @@ exports[`DialogHeader Snapshot 1`] = `
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c4 .c8 {
-  height: 16px;
-  width: 16px;
 }
 
 .c1 {
@@ -79,7 +74,7 @@ exports[`DialogHeader Snapshot 1`] = `
   white-space: nowrap;
 }
 
-.c6 {
+.c5 {
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
   height: 1px;
@@ -88,7 +83,7 @@ exports[`DialogHeader Snapshot 1`] = `
   width: 1px;
 }
 
-.c5 {
+.c4 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: none;
   border: none;
@@ -96,19 +91,19 @@ exports[`DialogHeader Snapshot 1`] = `
   padding: 0;
 }
 
-.c5:hover,
-.c5:focus,
-.c5.hover {
+.c4:hover,
+.c4:focus,
+.c4.hover {
   color: #7a818b;
 }
 
-.c5[aria-expanded='true'],
-.c5:active,
-.c5.active {
+.c4[aria-expanded='true'],
+.c4:active,
+.c4.active {
   color: #5f656e;
 }
 
-.c5 svg {
+.c4 svg {
   pointer-events: none;
 }
 
@@ -153,7 +148,7 @@ exports[`DialogHeader Snapshot 1`] = `
   >
     <button
       aria-describedby="test-DialogHeader-iconButton-tooltip"
-      className="c3 c4 c5"
+      className="c3 c4"
       color="neutral"
       onBlur={[Function]}
       onClick={[Function]}
@@ -161,19 +156,19 @@ exports[`DialogHeader Snapshot 1`] = `
       onKeyUp={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      size="small"
+      size="medium"
       tabIndex={-1}
       type="button"
-      width={28}
+      width={36}
     >
       <div
-        className="c6"
+        className="c5"
       >
         Close
       </div>
       <div
         aria-hidden={true}
-        className="c7"
+        className="c6"
       >
         <svg
           fill="currentColor"
