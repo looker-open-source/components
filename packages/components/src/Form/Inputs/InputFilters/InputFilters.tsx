@@ -57,19 +57,24 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   filters,
   hideFilterIcon = false,
 }) => {
-  const [assigned, unassigned] = partition(filters, (filter) => filter.value)
+  const assigned = filters.filter((filter) => filter.value)
 
-  const options = unassigned.map((filter) => {
+  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
+  // const [unassignedFilters, setUnassignedFilters] = useState(options)
+  const [chipValues, setChipValues] = useState(assigned)
+  const [filterLookupName, setFilterLookupName] = useState('')
+
+  const unassignedFilters = filters.filter(
+    (filter) =>
+      !chipValues.map((assigned) => assigned.field).includes(filter.field)
+  )
+
+  const options = unassignedFilters.map((filter) => {
     return {
       label: filter.label || filter.field,
       value: filter.field,
     }
   })
-
-  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
-  const [unassignedFilters, setUnassignedFilters] = useState(options)
-  const [chipValues, setChipValues] = useState(assigned)
-  const [filterLookupName, setFilterLookupName] = useState('')
 
   const inputRef = useRef<null | HTMLInputElement>(null)
   const isClearable = chipValues.length > 0
@@ -82,14 +87,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const focusInput = () => inputRef.current && inputRef.current.focus()
 
   const handleFilterLookupChange = (field: string) => {
-    const filter = unassignedFilters.find((option) => option.value === field)
+    const filter = filters.find((option) => option.field === field)
 
     if (filter) {
       setFilterLookupName('')
-      setUnassignedFilters(
-        unassignedFilters.filter((option) => option === filter)
-      )
-      setDraftFilter({ field: filter.value, label: filter?.label })
+      // setUnassignedFilters(
+      //   unassignedFilters.filter((option) => option === filter)
+      // )
+      setDraftFilter({ field: filter.field, label: filter?.label })
     }
   }
 
@@ -98,25 +103,24 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   }
 
   const handleDelete = (field: FieldFilter) => {
-    const addOption = options.filter(
-      (value) =>
-        (field && field.field === value.label) ||
-        (field && field.field === value.value)
-    )
-    setUnassignedFilters([addOption[0], ...unassignedFilters])
+    // const addOption = options.filter(
+    //   (value) =>
+    //     (field && field.field === value.label) ||
+    //     (field && field.field === value.value)
+    // )
+    // setUnassignedFilters([addOption[0], ...unassignedFilters])
     setChipValues([...chipValues].filter((value) => value !== field))
   }
 
   const handleDraft = (draft: FieldFilter, option: string) => {
     draft.value = option
     setChipValues([...chipValues, draft])
-    setDraftFilter(undefined)
-    setUnassignedFilters(options)
+    // setUnassignedFilters(options)
   }
 
   const togglePopover = () => {
     setDraftFilter(undefined)
-    setUnassignedFilters(options)
+    // setUnassignedFilters(options)
   }
 
   const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
@@ -155,7 +159,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           indicator={false}
           isFilterable
           onChange={handleFilterLookupChange}
-          options={unassignedFilters}
+          options={options}
           placeholder="Filter List"
           ref={inputRef}
           value={filterLookupName}
