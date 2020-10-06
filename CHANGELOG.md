@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Visual Snapshot test for `MenuItem` and `MenuGroup`
+- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
 
 ## [0.9.16] - 2020-10-02
 

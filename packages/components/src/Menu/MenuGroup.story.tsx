@@ -26,52 +26,74 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-
-import { MenuGroup } from './MenuGroup'
+import { IconNames } from '@looker/icons'
+import { MenuGroup, MenuGroupProps } from './MenuGroup'
 import { MenuItem } from './MenuItem'
-import { MenuList, MenuListProps } from './MenuList'
 
-const ListTemplate: Story<MenuListProps> = (args) => <MenuList {...args} />
+const itemList = [
+  {
+    children: 'Edit Dashboard',
+    detail: '⌘⇧E',
+    icon: 'EditOutline' as IconNames,
+  },
+  {
+    children: 'Get LookML',
+    description: 'some description',
+  },
+  {
+    children: 'Revert to original dashboard',
+    detail: 'A longer detail',
+    icon: 'Undo' as IconNames,
+  },
+]
 
-const MenuListExample = (
-  <>
-    <MenuGroup>
-      <MenuItem description="some description" icon="Refresh" detail="⌘⇧↵">
-        Clear cache & refresh
-      </MenuItem>
-    </MenuGroup>
-
-    <MenuGroup label="Options">
-      <MenuItem icon="EditOutline" detail="⌘⇧E">
-        Edit dashboard
-      </MenuItem>
-      <MenuItem description="some description">Get LookMl</MenuItem>
-      <MenuItem icon="Undo" detail="A longer detail">
-        Revert to original dashboard
-      </MenuItem>
-    </MenuGroup>
-
-    <MenuGroup>
-      <MenuItem icon="Download" detail="⌥⇧D">
-        Edit dashboard
-      </MenuItem>
-    </MenuGroup>
-
-    <MenuGroup>
-      <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
-    </MenuGroup>
-  </>
-)
-
-export const Basic = ListTemplate.bind({})
-Basic.args = {
-  children: MenuListExample,
+interface CustomStoryProps extends MenuGroupProps {
+  icons?: boolean
+  detail?: boolean
+  description?: boolean
 }
 
-export const Compact = ListTemplate.bind({})
+const Template: Story<CustomStoryProps> = (args) => {
+  const items = itemList.map((item, i) => {
+    return (
+      <MenuItem
+        key={i}
+        icon={args.icons ? item.icon : undefined}
+        detail={args.detail ? item.detail : undefined}
+        description={args.description ? item.description : undefined}
+      >
+        {item.children}
+      </MenuItem>
+    )
+  })
+  return <MenuGroup {...args}>{items}</MenuGroup>
+}
+
+export const Basic = Template.bind({})
+Basic.args = {
+  compact: false,
+  description: true,
+  detail: true,
+  icons: true,
+  label: 'Options',
+}
+
+export const Compact = Template.bind({})
 Compact.args = {
-  children: MenuListExample,
+  ...Basic.args,
   compact: true,
+}
+
+export const NoDescriptions = Template.bind({})
+NoDescriptions.args = {
+  ...Basic.args,
+  description: false,
+}
+
+export const NoIcons = Template.bind({})
+NoIcons.args = {
+  ...Basic.args,
+  icons: false,
 }
 
 export default {

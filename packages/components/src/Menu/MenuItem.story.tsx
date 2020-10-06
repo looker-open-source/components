@@ -28,12 +28,9 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
 import { MenuItem, MenuItemProps } from './MenuItem'
-import { MenuList } from './MenuList'
 
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (
-  <MenuList>
-    <MenuItem {...args}>Menu Item</MenuItem>
-  </MenuList>
+  <MenuItem {...args}>Menu Item</MenuItem>
 )
 
 export const Basic = MenuItemTemplate.bind({})
