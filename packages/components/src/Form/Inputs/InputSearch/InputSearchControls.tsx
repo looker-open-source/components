@@ -30,7 +30,7 @@ import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { Box, Space } from '../../../Layout'
 import { IconButton } from '../../../Button'
-import { Text } from '../../../Text'
+import { Span } from '../../../Text'
 
 export interface InputSearchControlsProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -84,14 +84,14 @@ export const InputSearchControlsInternal = forwardRef(
         mr="xxsmall"
       >
         {summary && (
-          <Text
+          <Span
             color="text1"
             fontSize="small"
             style={{ whiteSpace: 'nowrap' }}
             pr="xsmall"
           >
             {summary}
-          </Text>
+          </Span>
         )}
         {summary && showClear && separator}
         {showClear && clear}

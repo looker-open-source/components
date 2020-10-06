@@ -49,10 +49,6 @@ exports[`Chip renders correctly 1`] = `
 
 .c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-  font-size: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -68,8 +64,6 @@ exports[`Chip renders correctly 1`] = `
 >
   <span
     className="c1"
-    color="text"
-    fontSize="medium"
   >
     chip
   </span>
@@ -125,10 +119,6 @@ exports[`Chip renders disabled 1`] = `
 
 .c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-  font-size: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -144,8 +134,6 @@ exports[`Chip renders disabled 1`] = `
 >
   <span
     className="c1"
-    color="text"
-    fontSize="medium"
   >
     chip
   </span>

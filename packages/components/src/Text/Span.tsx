@@ -24,12 +24,22 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Text } from './Text'
+import styled from 'styled-components'
+import {
+  CompatibleHTMLProps,
+  textTransform,
+  TextTransformProps,
+} from '@looker/design-tokens'
+import { textVariant, TextVariantProps } from './text_variant'
+import { TextBase, TextBaseProps } from './TextBase'
 
-test('Text has default fontSize', () => {
-  renderWithTheme(<Text>Hello</Text>)
-  expect(screen.getByText('Hello')).toHaveStyleRule('font-size: 16px')
-})
+export interface SpanProps
+  extends TextBaseProps,
+    TextTransformProps,
+    TextVariantProps,
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
+
+export const Span = styled(TextBase)<SpanProps>`
+  ${textVariant}
+  ${textTransform}
+`

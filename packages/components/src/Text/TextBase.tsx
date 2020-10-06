@@ -70,5 +70,3 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${textDecoration}
   ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
 `
-
-TextBase.defaultProps = { color: 'text' }

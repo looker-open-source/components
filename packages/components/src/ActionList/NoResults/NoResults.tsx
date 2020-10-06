@@ -25,9 +25,9 @@
  */
 
 import styled from 'styled-components'
-import { Text } from '../../Text'
+import { Span } from '../../Text'
 
-export const NoResults = styled(Text)``
+export const NoResults = styled(Span)``
 
 NoResults.defaultProps = {
   fontSize: 'xlarge',

@@ -206,11 +206,11 @@ export function useTooltip({
           backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
-          color="inverseOn"
           maxWidth={maxWidth}
           {...surfaceStyles}
         >
           <TooltipContent
+            color="inverseOn"
             role="tooltip"
             id={guaranteedId}
             width={width}

@@ -25,20 +25,18 @@
  */
 
 import React from 'react'
-import { Card, IconButton, Tooltip, Text } from '@looker/components'
+import { Card, IconButton, Tooltip } from '@looker/components'
 
 export default {
   title: 'Overlays/Tooltip',
 }
 
 export const Basic = () => (
-  <Tooltip content="I'm a little teapot">
-    <Text>Some Text</Text>
-  </Tooltip>
+  <Tooltip content="I'm a little teapot">Some Text</Tooltip>
 )
 export const Placement = () => (
   <Tooltip content="I'm a little teapot" placement="top">
-    <Text>Some Text</Text>
+    Some Text
   </Tooltip>
 )
 

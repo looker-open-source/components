@@ -40,7 +40,7 @@ import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
-import { Text } from '../../../Text'
+import { Span } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
 import { inputHeight } from '../height'
@@ -153,7 +153,7 @@ const InputTextLayout = forwardRef(
         {iconBefore ? (
           <Icon name={iconBefore} title={iconBeforeTitle} size={20} />
         ) : (
-          <Text fontSize="small">{before}</Text>
+          <Span fontSize="small">{before}</Span>
         )}
       </InputTextContent>
     )
@@ -165,7 +165,7 @@ const InputTextLayout = forwardRef(
         {iconAfter ? (
           <Icon name={iconAfter} title={iconAfterTitle} size={20} />
         ) : (
-          <Text fontSize="small">{after}</Text>
+          <Span fontSize="small">{after}</Span>
         )}
       </InputTextContent>
     )

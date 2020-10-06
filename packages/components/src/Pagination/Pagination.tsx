@@ -28,7 +28,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Flex } from '../Layout'
 import { IconButton, IconButtonProps } from '../Button'
-import { Text } from '../Text'
+import { Span } from '../Text'
 
 export interface PaginationProps {
   className?: string
@@ -68,9 +68,9 @@ const PaginationLayout: FC<PaginationProps> = ({
         onClick={previous}
         disabled={current === 1}
       />
-      <Text fontSize="small" mx="xxsmall">
+      <Span fontSize="small" mx="xxsmall">
         <b>{current}</b> of {pages}
-      </Text>
+      </Span>
       <PaginationButton
         label="Next page of results"
         icon="CaretRight"
