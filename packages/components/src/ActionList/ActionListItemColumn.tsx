@@ -34,7 +34,9 @@ interface ActionListItemColumnProps {
   className?: string
 }
 
-const ActionListItemColumnInnerLayout = styled.div``
+const ActionListItemColumnInnerLayout = styled.div`
+  width: 100%;
+`
 
 const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
   children,

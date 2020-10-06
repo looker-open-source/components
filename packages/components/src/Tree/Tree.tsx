@@ -78,6 +78,10 @@ export interface TreeProps extends AccordionProps {
    * @default false
    */
   visuallyAsBranch?: boolean
+  /**
+   * Prevent text wrapping on long labels and instead render truncated text
+   **/
+  truncate?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -99,6 +103,7 @@ const TreeLayout: FC<TreeProps> = ({
   label,
   className,
   visuallyAsBranch,
+  truncate,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -123,6 +128,7 @@ const TreeLayout: FC<TreeProps> = ({
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
       icon={icon}
+      truncate={truncate}
     >
       {label}
     </TreeItemInner>
@@ -130,7 +136,9 @@ const TreeLayout: FC<TreeProps> = ({
 
   const innerAccordion = (
     <Accordion {...indicatorProps} {...restProps}>
-      <AccordionDisclosure ref={disclosureRef}>{treeItem}</AccordionDisclosure>
+      <AccordionDisclosure ref={disclosureRef} py="none">
+        {treeItem}
+      </AccordionDisclosure>
       <AccordionContent>{children}</AccordionContent>
     </Accordion>
   )
@@ -204,6 +212,8 @@ interface TreeStyleProps {
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text4};
+  flex-shrink: 2;
+  min-width: 0;
 
   & > ${Accordion} {
     & > ${AccordionContent} {
@@ -216,8 +226,6 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
       font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
         visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
-      height: 25px;
-      padding: ${({ theme }) => theme.space.xxsmall};
       ${({ depth, theme }) => generateIndent(depth, theme)}
     }
   }
@@ -228,7 +236,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${TreeItemLabel} {
       background-color: transparent;
-      padding: ${({ theme }) => theme.space.none};
+      padding-left: ${({ theme }) => theme.space.none};
     }
   }
 

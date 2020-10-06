@@ -14,7 +14,7 @@ yarn workspace www build
 mv www/public docs/static
 
 # Move everything into place...
-mv storybook/build_static docs/static/storybook
+mv storybook/storybook-static docs/static/storybook
 
 # sub-storybook (TODO)
 # sub-storybook (TODO)
