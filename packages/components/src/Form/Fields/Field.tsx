@@ -29,7 +29,7 @@ import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Paragraph, Text } from '../../Text'
+import { Paragraph, Span } from '../../Text'
 import { FieldsetContext } from '../Fieldset'
 import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
@@ -146,7 +146,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 }
 
-const FieldDetail = styled(Text)``
+const FieldDetail = styled(Span)``
 
 FieldDetail.defaultProps = {
   fontSize: 'xsmall',

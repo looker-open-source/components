@@ -45,7 +45,7 @@ import {
 import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
-import { ReplaceText, Text } from '../../../Text'
+import { ReplaceText, Span } from '../../../Text'
 import { useForkedRef } from '../../../utils'
 import { makeHash } from './utils/makeHash'
 import {
@@ -257,14 +257,14 @@ export function ComboboxOptionTextInternal({
       <ReplaceText
         match={inputValue}
         replace={(str, index) => (
-          <Text
+          <Span
             fontWeight="semiBold"
             fontSize="small"
             textDecoration="underline"
             key={index}
           >
             {str}
-          </Text>
+          </Span>
         )}
       >
         {text}

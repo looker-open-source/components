@@ -10,9 +10,9 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 
 ```jsx
 <Card raised>
-  <Text variant="subdued" fontSize="xlarge">
+  <Paragraph variant="subdued" fontSize="xlarge">
     Hello World!
-  </Text>
+  </Paragraph>
 </Card>
 ```
 
@@ -29,9 +29,9 @@ Using the `CardContent` component quickly gives your content consistent spacing 
     <Heading as="h4" fontSize="small">
       Read all about our latest features
     </Heading>
-    <Text fontSize="xsmall" variant="subdued">
+    <Paragraph fontSize="xsmall" variant="subdued">
       Last updated 3 days ago
-    </Text>
+    </Paragraph>
   </CardContent>
 </Card>
 ```
@@ -67,14 +67,14 @@ A few common patterns for `Cards` are displaying them in groups and using images
       title="Summer Nature"
     />
     <CardContent>
-      <Text
+      <Span
         fontSize="xsmall"
         textTransform="uppercase"
         fontWeight="semiBold"
         variant="subdued"
       >
         Summer
-      </Text>
+      </Span>
       <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
         Life in The Great Outdoors
       </Heading>
@@ -89,14 +89,14 @@ A few common patterns for `Cards` are displaying them in groups and using images
       title="A Scenic Valley"
     />
     <CardContent>
-      <Text
+      <Span
         fontSize="xsmall"
         textTransform="uppercase"
         fontWeight="semiBold"
         variant="subdued"
       >
         Explore
-      </Text>
+      </Span>
       <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
         Best Scenic Hikes
       </Heading>
@@ -111,14 +111,14 @@ A few common patterns for `Cards` are displaying them in groups and using images
       title="Relaxing Views"
     />
     <CardContent>
-      <Text
+      <Span
         fontSize="xsmall"
         textTransform="uppercase"
         fontWeight="semiBold"
         variant="subdued"
       >
         Relax
-      </Text>
+      </Span>
       <Heading as="h4" fontSize="large" fontWeight="semiBold" truncate>
         Mindfull Wilderness
       </Heading>

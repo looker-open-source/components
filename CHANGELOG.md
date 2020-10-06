@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+<<<<<<< HEAD
 ## Added
 
+- `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
 - `Truncate` component
 
 ## Changed
@@ -18,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
 - `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
+- `Span` replaced all library-internal usage of `Text` with `Span`
+- `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
 
 ## [0.9.16] - 2020-10-02
 
@@ -28,7 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Includes `useDrawer` hook
 - `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
-
 - Image snapshots tests
   - Infrastructure to run image snapshot tests leveraging Storybook `storyshots` + `jest-image-snapshots`
   - Image snapshot coverage for `Button*`, `IconButton` & `Tree` components
@@ -37,6 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
+  - Required minor adjustments to `Chip`
 - `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
