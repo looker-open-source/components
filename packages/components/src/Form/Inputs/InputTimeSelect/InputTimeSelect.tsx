@@ -62,7 +62,15 @@ import {
   TimeFormats,
 } from '../utils'
 
-type intervals = 5 | 10 | 15 | 30
+/*
+ * We've limited allowed intervals to a few approved options rather than
+ * accepting any number. This is to protect against uninteded use where an
+ * engineer might specify 1-minute intervals and generate an unusable
+ * select box with 1400 options. We also wouldn't want to support bizarre
+ * instances of a random numbers like 37 or 152 minute intervals.
+ */
+
+type intervals = 5 | 10 | 15 | 20 | 30 | 60
 
 export interface InputTimeSelectProps
   extends SpaceProps,
@@ -251,6 +259,7 @@ const InputTimeSelectLayout = forwardRef(
       value = '',
       defaultValue,
       validationType,
+      disabled,
     }: InputTimeSelectProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -334,6 +343,7 @@ const InputTimeSelectLayout = forwardRef(
           onKeyDown={handleKeyDown}
           autoComplete={false}
           validationType={validationType}
+          disabled={disabled}
         />
         <ComboboxList persistSelection>
           {timeOptionsFocused.map((option, index) => (
