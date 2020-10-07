@@ -9,26 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added
 
-- `Select`, `SelectMulti` and `InputSearch` now support `isLoading` and `detail` prop on options
 - `Combobox` and `ComboboxMulti` `openOnClick` prop
 - `ComboboxInput` now supports `freeInput` prop
+- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
+- `Select`, `SelectMulti` and `InputSearch` now support `isLoading` and `detail` prop on options
 - `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
 - `Truncate` component
+- `useDialog` - all of the power of `Dialog` in a hook!
 - Visual Snapshot test for `MenuItem`, `MenuGroup`, `Status`
-- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
 
 ## Changed
 
+- `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
+- `Dialog`
+  - `Backdrop` is now dark (Material-esque)
+  - now supports all previous `DialogManager` composition capabilities
+  - can be used in either an "uncontrolled" or "controlled" manner
+  - _temporarily_ supports optional `content` prop until existing call sites can be updated. `content` will become **required** in next significant release.
+- `DialogManager` is deprecated and all existing use cases should be replaced with `Dialog`
+  - All internal use of `DialogManager` replaced with `Dialog`
+- `Drawer` is nearly a direct pass-through to `Dialog` via `useDrawer` and `DialogRender`
+  - `useDrawer` is nearly a direct pass-through to `useDrawer` with the key exception being `Surface` override
+- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
+- `InputSearch` `onChange` callback argument is now a string rather than an event
+- `InputTimeSelect` supports 20- and 60-minute intervals
+- `Span` replaced all library-internal usage of `Text` with `Span`
 - `TreeItem` now supports text truncation behavior
 - `TreeItem` now wraps long text pleasantly
 - `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
-- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
-- `Span` replaced all library-internal usage of `Text` with `Span`
-- `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
 - `TreeItem`'s detail no longer has padding on the right side
-- `InputSearch` `onChange` callback argument is now a string rather than an event
-- `InputTimeSelect` supports 20- and 60-minute intervals
 - Brand font defaults to Roboto
 
 ### Fixed

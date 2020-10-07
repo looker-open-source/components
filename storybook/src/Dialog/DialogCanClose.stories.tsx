@@ -36,7 +36,7 @@ import {
   ConfirmLayout,
   ButtonTransparent,
   Button,
-  DialogManager,
+  Dialog,
   FieldCheckbox,
   FieldText,
   Icon,
@@ -57,7 +57,7 @@ interface UserFormProps {
   formData: FormData
 }
 
-export const CanCloseDialogManagerDemo: React.FC = () => {
+export const CanCloseDialogDemo: React.FC = () => {
   const defaultFormData: FormData = {
     'chocolate-chip': false,
     name: '',
@@ -106,15 +106,15 @@ export const CanCloseDialogManagerDemo: React.FC = () => {
 
   return (
     <>
-      {/* Dialog state is more nuanced than usual, so we manage isOpen external to DialogManager */}
+      {/* Dialog state is more nuanced than usual, so we manage isOpen external to Dialog */}
       <Button onClick={handleDialogOpen} m="large">
         Open Confirm form
       </Button>
       {/*
-        Default user form dialog. I don't think DialogManager actually buys us anything here --
+        Default user form dialog. I don't think Dialog actually buys us anything here --
         this example is essentially equivalent to rendering Dialog directly.
       */}
-      <DialogManager
+      <Dialog
         content={
           <UserForm
             onSave={handleSave}
@@ -128,7 +128,7 @@ export const CanCloseDialogManagerDemo: React.FC = () => {
         onClose={handleCancel}
       />
       {/* Fallback "discard changes" dialog */}
-      <DialogManager
+      <Dialog
         content={
           <ConfirmLayout
             title="Discard Changes?"
@@ -211,6 +211,6 @@ const UserForm: FC<UserFormProps> = ({
 }
 
 export default {
-  component: CanCloseDialogManagerDemo,
+  component: CanCloseDialogDemo,
   title: 'Dialog/ManagerCanClose',
 }

@@ -24,7 +24,7 @@
 
  */
 
-import { IconButton, DialogManager } from '@looker/components'
+import { IconButton, Dialog } from '@looker/components'
 import React, { FC } from 'react'
 import {
   ThemeEditorContent,
@@ -41,7 +41,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
   hasCustomTheme,
   updateTheme,
 }) => (
-  <DialogManager
+  <Dialog
     content={<ThemeEditorContent updateTheme={updateTheme} />}
     width="90%"
     maxWidth="90%"
@@ -53,5 +53,5 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
       color={hasCustomTheme ? 'key' : 'neutral'}
       size="small"
     />
-  </DialogManager>
+  </Dialog>
 )

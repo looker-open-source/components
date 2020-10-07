@@ -28,21 +28,21 @@ import React from 'react'
 import {
   Button,
   DialogContent,
-  DialogManager,
+  Dialog,
   DialogHeader,
   DialogFooter,
   ButtonTransparent,
-  DialogManagerProps,
+  DialogProps,
 } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 
 export default {
-  component: DialogManager,
+  component: Dialog,
   title: 'Dialog',
 }
 
-const Template: Story<DialogManagerProps> = (args) => (
-  <DialogManager
+const Template: Story<DialogProps> = (args) => (
+  <Dialog
     {...args}
     content={
       <>
@@ -56,11 +56,8 @@ const Template: Story<DialogManagerProps> = (args) => (
     }
   >
     <Button>Open Dialog</Button>
-  </DialogManager>
+  </Dialog>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  drawer: true,
-  // maxWidth: ['90vw', '50vw', '500px'],
-}
+Basic.args = {}

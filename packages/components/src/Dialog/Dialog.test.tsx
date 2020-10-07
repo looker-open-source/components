@@ -25,97 +25,102 @@
  */
 
 import 'jest-styled-components'
-import React from 'react'
+import React, { useContext } from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import {
-  assertSnapshotShallow,
-  mountWithTheme,
-} from '@looker/components-test-utils'
-import { Portal } from '../Portal'
-import { Backdrop } from './Backdrop'
+  screen,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import { Dialog } from './Dialog'
-import { DialogManager } from './DialogManager'
+import { DialogContext } from './DialogContext'
 
-const simpleContent = (
-  <div>
-    simple content
-    <button>Done</button>
-  </div>
-)
+const SimpleContent = () => {
+  const { closeModal } = useContext(DialogContext)
+
+  return (
+    <>
+      Dialog content
+      <button onClick={closeModal}>Done</button>
+    </>
+  )
+}
 
 describe('Dialog', () => {
-  test('Active', () => {
-    assertSnapshotShallow(<Dialog isOpen>{simpleContent}</Dialog>)
-  })
-
   test('Verify initial state', () => {
-    const dialog = mountWithTheme(<Dialog>{simpleContent}</Dialog>)
-
-    expect(dialog.find(Portal).exists()).toEqual(false)
-    expect(dialog.contains(simpleContent)).toBeFalsy()
+    renderWithTheme(<Dialog content={<SimpleContent />} />)
+    expect(screen.queryByText('Dialog content')).not.toBeInTheDocument()
   })
 
-  test('Verify "open" prop', () => {
-    const dialog = mountWithTheme(<Dialog isOpen>{simpleContent}</Dialog>)
-
-    expect(dialog.find(Portal).exists()).toEqual(true)
-    expect(dialog.contains(simpleContent)).toBeTruthy()
+  test('defaultOpen', async () => {
+    renderWithTheme(<Dialog defaultOpen content={<SimpleContent />} />)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
 
-  describe('Dialog styled', () => {
-    const dialog = mountWithTheme(
+  test('Dialog can be opened & closed', async () => {
+    renderWithTheme(
+      <Dialog content={<SimpleContent />}>
+        <a>Open Dialog</a>
+      </Dialog>
+    )
+
+    // Dialog closed
+    expect(screen.queryByText('Dialog content')).not.toBeInTheDocument()
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    expect(link).toBeInTheDocument()
+    fireEvent.click(link)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+  })
+
+  test('Render props style', async () => {
+    renderWithTheme(
+      <Dialog content={<SimpleContent />}>
+        {(dialogProps) => <a {...dialogProps}>Open Dialog</a>}
+      </Dialog>
+    )
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+  })
+
+  xtest('Dialog & backdrop styled', () => {
+    renderWithTheme(
       <Dialog
         isOpen
         backdrop={{ backgroundColor: 'pink' }}
         surfaceStyles={{ backgroundColor: 'purple' }}
-      >
-        {simpleContent}
-      </Dialog>
+        content={<SimpleContent />}
+      />
     )
 
-    test('Dialog applies the backdrop styles', () => {
-      const backdrop = dialog.find(Backdrop)
+    // const backdrop = dialog.find(Backdrop)
+    // expect(backdrop.exists()).toBeTruthy()
+    // expect(backdrop.props().style).toEqual({ backgroundColor: 'pink' })
 
-      expect(backdrop.exists()).toBeTruthy()
-
-      expect(backdrop.props().style).toEqual({ backgroundColor: 'pink' })
-    })
+    // const surface = dialog.find(Surface)
+    // expect(surface.exists()).toBeTruthy()
+    // expect(surface.props().style).toEqual({ backgroundColor: 'purple' })
   })
-})
 
-describe('DialogManager - click events', () => {
-  test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
-    const dialog = mountWithTheme(
-      <DialogManager content={simpleContent}>
-        {({ onClick }) => <a onClick={onClick}>Open Dialog</a>}
-      </DialogManager>
-    )
-
-    // Dialog closed
-    expect(dialog.find(Portal).exists()).toBeFalsy()
-
-    const button = dialog.find('a')
-    expect(button.exists()).toBeTruthy()
-    button.simulate('click') // Click to open
-
-    // Dialog open
-    expect(dialog.find(Portal).exists()).toBeTruthy()
-
-    const backdrop = dialog.find(Backdrop)
-    expect(backdrop.exists()).toBeTruthy()
-    window.document.body.click()
-  })
-})
-
-test('contains the content passed to it', () => {
-  const dialog = mountWithTheme(
-    <DialogManager content={simpleContent}>
-      <a>Open Dialog</a>
-    </DialogManager>
-  )
-
-  const button = dialog.find('a')
-  expect(button.exists()).toBeTruthy()
-  button.simulate('click') // Click to open
-  expect(dialog.contains(simpleContent)).toBeTruthy()
-  window.document.body.click()
+  xtest('Backdrop can be clicked to close', () => true)
+  xtest('Composition form: controlled', () => true)
+  xtest('canClose callback', () => true)
+  xtest('onClose callback', () => true)
 })

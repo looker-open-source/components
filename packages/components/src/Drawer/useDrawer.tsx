@@ -24,31 +24,34 @@
 
  */
 
-import React, { useState } from 'react'
-import { useDrawer } from '../useDrawer'
-import { SampleContent } from './SampleContent'
+import { ResponsiveValue } from 'styled-system'
+import { UseDialogProps, useDialog } from '../Dialog/useDialog'
+import { DrawerSurface } from './DrawerSurface'
 
-export const UseDrawerHook = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const open = () => setIsOpen(true)
-  const onClose = () => setIsOpen(false)
+export type DrawerPlacements = 'right'
 
-  const content = <SampleContent />
+export interface UseDrawerProps
+  extends Omit<
+    UseDialogProps,
+    'maxWidth' | 'height' | 'placement' | 'surfaceStyles' | 'backdrop'
+  > {
+  /**
+   * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
+   * @default '30rem'
+   */
+  width?: ResponsiveValue<string>
 
-  const { dialog } = useDrawer({
-    content,
-    isOpen,
-    onClose,
-  })
-
-  return (
-    <>
-      {dialog}
-      <button onClick={open}>Open Drawer</button>
-    </>
-  )
+  /**
+   * Specify the edge to attach the Drawer surface to.
+   * COMING SOON: 'left' | 'top' | 'bottom'
+   * @default 'right'
+   */
+  placement?: DrawerPlacements
 }
 
-UseDrawerHook.parameters = {
-  storyshots: { disable: true },
-}
+export const useDrawer = ({
+  width = '30rem',
+  placement = 'right',
+  ...props
+}: UseDrawerProps) =>
+  useDialog({ Surface: DrawerSurface, placement, width, ...props })
