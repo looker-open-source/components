@@ -25,39 +25,37 @@
  */
 
 import React from 'react'
-import { InputFilters } from '@looker/components'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { InputFilterChip } from './InputFilterChip'
 
-export default {
-  title: 'Forms/InputFilters',
-}
+describe('InputFilters', () => {
+  const filter = {
+    field: 'role',
+    options: ['user', 'group-admin', 'admin', 'pizza'],
+    value: 'user',
+  }
+  const onClick = jest.fn()
+  const onDelete = jest.fn()
 
-const filters = [
-  { field: 'role', options: ['user', 'groupadmin', 'admin', 'pizza'] },
-  {
-    field: 'group',
-    label: 'Group',
-    options: ['Gouda', 'Cheddar', 'Swiss', 'Pizza'],
-  },
-  {
-    field: 'name',
-    label: 'Name',
-    options: ['Name 1', 'Name 2', 'Name 3', 'pizza'],
-  },
-  { field: 'status', options: ['Success', 'Failed', 'in-progress', 'pizza'] },
-  {
-    field: 'buildAt',
-    label: 'Last Build Time',
-    options: [
-      '01-22-20 33:33:33',
-      '02-13-20 12:30:55',
-      '05-28-20 01:45:57',
-      'pizza',
-    ],
-  },
-]
+  test('renders InputFilterChip', () => {
+    const { getByText } = renderWithTheme(
+      <InputFilterChip filter={filter} onClick={onClick} onDelete={onDelete} />
+    )
+    expect(getByText('user')).toBeInTheDocument()
+  })
 
-export const Basic = () => <InputFilters filters={filters} />
+  test('InputFilterChip onchange', () => {
+    const { queryByText } = renderWithTheme(
+      <InputFilterChip filter={filter} onClick={onClick} onDelete={onDelete} />
+    )
+    const filterBy = queryByText('user')
+    filterBy && fireEvent.click(filterBy)
 
-export const HideFilter = () => (
-  <InputFilters hideFilterIcon filters={filters} />
-)
+    expect(filterBy).toBeInTheDocument()
+    expect(onClick).toBeCalled()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+})

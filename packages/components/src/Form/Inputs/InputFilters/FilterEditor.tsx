@@ -23,37 +23,44 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { ButtonGroup, ButtonItem } from '../../../Button'
 import { PopoverContent } from '../../../Popover'
 import { SpaceVertical } from '../../../Layout/Space'
 
 interface FilterEditorProps {
-  // defaultValue: string | undefined
-  onClick: (value: string) => void
-  options: string[]
+  defaultValue?: string
+  onChange: (value: string) => void
+  options?: string[]
 }
 export const FilterEditor: FC<FilterEditorProps> = ({
-  // defaultValue,
-  onClick,
+  defaultValue,
+  onChange,
   options,
 }) => {
-  // if (!defaultValue) return null
+  const [values, setValues] = useState<Array<string>>(
+    defaultValue ? defaultValue.split(', ') : []
+  )
+
+  const toggleValue = (value: string) => {
+    const newValues = values.includes(value)
+      ? values.filter((v) => v !== value)
+      : [...values, value]
+
+    setValues(newValues)
+    onChange(newValues.sort().join(', '))
+  }
 
   return (
     <PopoverContent p="large" width="360px">
       <SpaceVertical>
-        <ButtonGroup>
-          {options.map((option, index) => {
-            const handleEdit = () => {
-              onClick(option)
-            }
-            return (
-              <ButtonItem key={index} onClick={handleEdit}>
+        <ButtonGroup value={values}>
+          {options &&
+            options.map((option) => (
+              <ButtonItem key={option} onClick={() => toggleValue(option)}>
                 {option}
               </ButtonItem>
-            )
-          })}
+            ))}
         </ButtonGroup>
       </SpaceVertical>
     </PopoverContent>
