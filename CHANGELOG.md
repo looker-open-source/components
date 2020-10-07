@@ -82,6 +82,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- InputFilter component
+- FilterEditor component
+- InputFilterChip component
+- ActionListFilter component
+
 - `Drawer` component
   - Note: This is a new implementation of the previously deprecated `Drawer` and features a more modern API. `DrawerManager` behaviors are now baked in to `Drawer`
   - Includes `useDrawer` hook
@@ -97,6 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
   - Required minor adjustments to `Chip`
+- ActionList supports filtering
 - `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
