@@ -160,8 +160,6 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    //  const parentTag = (queryByText('role').parentNode as HTMLElement).tagName
-
     expect(queryByText('role')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning

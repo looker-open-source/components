@@ -27,13 +27,28 @@
 import { ActionListColumns } from '@looker/components'
 
 export const filters = [
-  { field: 'role' },
-  { field: 'group', label: 'Group' },
-  { field: 'name', label: 'Name' },
-  { field: 'status' },
-  { field: 'source' },
-  { field: 'trigger' },
-  { field: 'buildAt', label: 'Last Build Time' },
+  { field: 'role', options: ['user', 'group-admin', 'admin', 'pizza'] },
+  {
+    field: 'group',
+    label: 'Group',
+    options: ['Gouda', 'Cheddar', 'Swiss', 'Pizza'],
+  },
+  {
+    field: 'name',
+    label: 'Name',
+    options: ['Name 1', 'Name 2', 'Name 3', 'pizza'],
+  },
+  { field: 'status', options: ['Success', 'Failed', 'in-progress', 'pizza'] },
+  {
+    field: 'buildAt',
+    label: 'Last Build Time',
+    options: [
+      '01-22-20 33:33:33',
+      '02-13-20 12:30:55',
+      '05-28-20 01:45:57',
+      'pizza',
+    ],
+  },
 ]
 
 export const row = {
