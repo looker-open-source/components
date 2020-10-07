@@ -37,6 +37,7 @@ export const TooltipContent = styled(Paragraph).attrs(
     width: 'auto',
   })
 )`
+  color: inherit;
   hyphens: auto;
   overflow-wrap: anywhere;
   text-transform: none;

@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
 - `Span` replaced all library-internal usage of `Text` with `Span`
 - `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
+- `TreeItem`'s detail no longer has padding on the left side
 
 ## [0.9.16] - 2020-10-02
 
