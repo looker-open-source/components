@@ -24,31 +24,25 @@
 
  */
 
-import React, { useState } from 'react'
-import { DialogLongContent } from '../../__mocks__/DialogLongContent'
-import { useDrawer } from '../useDrawer'
+import React from 'react'
+import { Heading, Paragraph } from '..'
+import { DialogLayout } from './DialogLayout'
 
-export const UseDrawerHook = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const open = () => setIsOpen(true)
-  const onClose = () => setIsOpen(false)
+export const DialogMediumContent = () => (
+  <DialogLayout title=" The Constitution of the United States">
+    <Constitution />
+  </DialogLayout>
+)
 
-  const content = <DialogLongContent />
-
-  const { dialog } = useDrawer({
-    content,
-    isOpen,
-    onClose,
-  })
-
-  return (
-    <>
-      {dialog}
-      <button onClick={open}>Open Drawer</button>
-    </>
-  )
-}
-
-UseDrawerHook.parameters = {
-  storyshots: { disable: true },
-}
+const Constitution = () => (
+  <>
+    <Heading as="h2">Preamble</Heading>
+    <Paragraph fontSize="medium">
+      We the People of the United States, in Order to form a more perfect Union,
+      establish Justice, insure domestic Tranquility, provide for the common
+      defense, promote the general Welfare, and secure the Blessings of Liberty
+      to ourselves and our Posterity, do ordain and establish this Constitution
+      for the United States of America.
+    </Paragraph>
+  </>
+)

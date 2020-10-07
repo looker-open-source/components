@@ -24,31 +24,29 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Dialog, DialogProps } from '../Dialog'
-import { SampleContent } from '../__mocks__/SampleContent'
+import React, { FC, useContext } from 'react'
+import {
+  DialogContext,
+  DialogHeader,
+  DialogContent,
+  DialogFooter,
+  Button,
+  ButtonTransparent,
+} from '..'
 
-const Template: Story<DialogProps> = (args) => (
-  <Dialog {...args} content={<SampleContent />}>
-    <button>Open Dialog</button>
-  </Dialog>
-)
+export const DialogLayout: FC<{ title: string }> = ({ title, children }) => {
+  const { closeModal } = useContext(DialogContext)
 
-export const Basic = Template.bind({})
-Basic.args = {}
-Basic.parameters = {
-  storyshots: { disable: true },
-}
-
-export const Open = Template.bind({})
-Open.args = {
-  defaultOpen: true,
-}
-
-/** TODO: Add Placement when supported */
-
-export default {
-  component: Dialog,
-  title: 'Dialog',
+  return (
+    <>
+      <DialogHeader hideClose>{title}</DialogHeader>
+      <DialogContent>{children}</DialogContent>
+      <DialogFooter>
+        <Button onClick={closeModal}>Done Reading</Button>
+        <ButtonTransparent color="neutral" onClick={closeModal}>
+          Finish Later
+        </ButtonTransparent>
+      </DialogFooter>
+    </>
+  )
 }

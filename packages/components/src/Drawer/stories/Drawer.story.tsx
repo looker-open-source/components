@@ -26,14 +26,14 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { SampleContent } from '../../__mocks__/SampleContent'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { Drawer, DrawerProps } from '../Drawer'
 
 export * from './useDrawer.story'
 export * from './renderProps.story'
 
 const Template: Story<DrawerProps> = (args) => (
-  <Drawer {...args} content={<SampleContent />}>
+  <Drawer {...args} content={<DialogLongContent />}>
     <button>Open Drawer</button>
   </Drawer>
 )
@@ -52,7 +52,7 @@ Open.args = {
 export const Width = Template.bind({})
 Width.args = {
   ...Open.args,
-  width: '10rem',
+  width: '50rem',
 }
 
 /** TODO: Add Placement when supported */

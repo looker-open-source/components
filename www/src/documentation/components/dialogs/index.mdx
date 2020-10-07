@@ -16,11 +16,10 @@ Dialogs break out of the standard application flow and UI to present new informa
 
 ## Standard Use
 
-`Dialog` requires that the developer manages state by assigning `true` or `false` to the `isOpen` prop.
+`Dialog` operates in a "uncontrolled" manner.
 
 ```jsx
 <Dialog
-  isOpen={value}
   content={
     <>
       <DialogHeader>A Dialog Example</DialogHeader>
@@ -50,7 +49,61 @@ Dialogs break out of the standard application flow and UI to present new informa
 </Dialog>
 ```
 
-`Dialog` is a container for content that sits above the application's content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
+### Controlled
+
+`Dialog` can be used in a "controlled" manner by specifying the `isOpen` property. An `onClose` callback should also be specified so that clicking the dialog's backdrop or calling the `DialogContext.closeModal` method will work as expected.
+
+```jsx
+;() => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Dialog
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        content="My neat dialog"
+      />
+      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
+    </>
+  )
+}
+```
+
+### Hook
+
+`Dialog` is also offered as a React Hook via `useDialog`
+
+```jsx
+;() => {
+  const { open, dialog } = useDialog({ content: 'My Neat Dialog' })
+
+  return (
+    <>
+      {dialog}
+      <Button onClick={open}>Open Dialog</Button>
+    </>
+  )
+}
+```
+
+### Render Props
+
+`Dialog` supports render-props style use in cases where the simple compositional syntax is unable to automatically spread the dialog props down on the the child element properly.
+
+```jsx
+<Dialog
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  content="My neat dialog"
+>
+  {(dialogProps) => (
+    <div>
+      <Button {...dialogProps}>Open Dialog</Button>
+    </div>
+  )}
+</Dialog>
+```
 
 ## Terminology
 

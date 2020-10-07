@@ -25,39 +25,51 @@
  */
 
 import React from 'react'
-import {
-  Button,
-  DialogContent,
-  Dialog,
-  DialogHeader,
-  DialogFooter,
-  ButtonTransparent,
-  DialogProps,
-} from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { Dialog, DialogProps } from '..'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+
+export * from './SaveChanges'
+
+const Template: Story<DialogProps> = (args) => (
+  <Dialog {...args}>
+    <button>Open Dialog</button>
+  </Dialog>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  content: 'Simple Content',
+}
+
+export const Open = Template.bind({})
+Open.args = {
+  ...Basic.args,
+  defaultOpen: true,
+}
+
+export const MediumContent = Template.bind({})
+MediumContent.args = {
+  content: <DialogMediumContent />,
+  defaultOpen: true,
+}
+MediumContent.parameters = {
+  storyshots: { disable: true },
+}
+
+export const LongContent = Template.bind({})
+LongContent.args = {
+  content: <DialogLongContent />,
+  defaultOpen: true,
+}
+LongContent.parameters = {
+  storyshots: { disable: true },
+}
+
+/** TODO: Add Placement when supported */
 
 export default {
   component: Dialog,
   title: 'Dialog',
 }
-
-const Template: Story<DialogProps> = (args) => (
-  <Dialog
-    {...args}
-    content={
-      <>
-        <DialogHeader>My Awesome Dialog</DialogHeader>
-        <DialogContent>...</DialogContent>
-        <DialogFooter>
-          <Button>Button!</Button>
-          <ButtonTransparent>Other Button</ButtonTransparent>
-        </DialogFooter>
-      </>
-    }
-  >
-    <Button>Open Dialog</Button>
-  </Dialog>
-)
-
-export const Basic = Template.bind({})
-Basic.args = {}
