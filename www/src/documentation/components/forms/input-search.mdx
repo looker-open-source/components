@@ -7,7 +7,7 @@ figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
 
 The `<InputSearch />` component renders a single search input element.
 You can add a placeholder, and a starter value, also a summary text and a closing button associated with it.
-To remove the button and summary use the hideControls option.
+To remove the button use `isClearable={false}`.
 If you don't want to see the search `Icon` use the prop `hideSearchIcon`.
 
 Use the `autoResize` prop to allow the input's width to adjust to its current value or placeholder.
@@ -19,13 +19,13 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
   <InputSearch
     width="50%"
     placeholder="Type your search"
-    value="test search 0"
+    defaultValue="test search 0"
     summary={'some text'}
   />
   <InputSearch
     placeholder="Type your search"
-    value="test search 1"
-    hideControls
+    defaultValue="test search 1"
+    isClearable={false}
   />
   <InputSearch hideSearchIcon placeholder="No search icon here" />
   <InputSearch autoResize placeholder="Start typing to resize" />
@@ -37,23 +37,21 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
 ```js
 ;() => {
   const ExampleInputSearch = ({
-    value = '',
-    hideControls,
+    defaultValue = '',
+    isClearable,
     searchResults = [],
   }) => {
-    const [keywords, setKeywords] = React.useState(value)
-    const onChange = (e) => {
-      setKeywords(e.currentTarget.value)
-    }
+    const [keyword, setKeyword] = React.useState(defaultValue)
+    console.log(keyword)
     return (
       <InputSearch
         placeholder="Type your search"
         summary={
-          keywords.length > 0 && `You typed ${keywords.length} characters`
+          keyword.length > 0 ? `You typed ${keyword.length} characters` : ''
         }
-        value={keywords}
-        onChange={onChange}
-        hideControls={hideControls}
+        value={keyword}
+        onChange={setKeyword}
+        isClearable={isClearable}
       />
     )
   }
@@ -61,10 +59,53 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
     <>
       <ExampleInputSearch />
       <Divider my="medium" />
-      <ExampleInputSearch value="test search 2" />
+      <ExampleInputSearch defaultValue="test search 2" />
       <Divider my="medium" />
-      <ExampleInputSearch value="test search 3" hideControls />
+      <ExampleInputSearch defaultValue="test search 3" isClearable={false} />
     </>
+  )
+}
+```
+
+## Options (experimental)
+
+The `options` prop offers users suggestions or results as they type, similar to a filterable
+[`Select`](/components/forms/select/), but without the intent to restrict the field's value.
+
+Additional props `onSelectOption`, `changeOnSelect` (defaults to true), which determines whether the input
+will be updated with the selected option's value, and `clearOnClose` (defaults to the opposite of
+`changeOnSelect`), which determines whether the input value will persist after the option list is closed,
+(via blur, escape, etc).
+
+```jsx
+;() => {
+  const cheeses = [
+    {
+      description: 'Delicious cheese',
+      detail: 'Netherlands ',
+      value: 'Gouda',
+    },
+    { value: 'Cheddar' },
+  ]
+
+  const cheeses2 = [{ value: 'Jack' }, { value: 'Swiss' }]
+
+  const handleSelectOption = (option) =>
+    option && alert(`You picked ${option.value}`)
+
+  return (
+    <Space>
+      <InputSearch
+        options={cheeses}
+        onSelectOption={handleSelectOption}
+        changeOnSelect={false}
+        placeholder="Options act like results"
+      />
+      <InputSearch
+        options={cheeses2}
+        placeholder="Options act like suggestions"
+      />
+    </Space>
   )
 }
 ```

@@ -29,9 +29,10 @@ import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { Icon, IconProps } from '../../../Icon'
+import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ListItem } from '../../../List'
-import { Heading, Paragraph } from '../../../Text'
+import { ListItemDetail, ListItem } from '../../../List'
+import { Heading, Paragraph, Text } from '../../../Text'
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -51,6 +52,10 @@ export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   description?: string | ReactNode
+  /**
+   * Supplementary element that appears right of the option's label
+   */
+  detail?: ReactNode
   /**
    * Icon shown to the left of the option label in the list and input when selected
    * Use an IconName, or inline svg for a custom icon
@@ -83,9 +88,9 @@ const renderOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  const { description, icon, ...rest } = option
+  const { description, detail, icon, ...rest } = option
 
-  if (icon || description) {
+  if (detail || icon || description) {
     const iconToUse = icon && (
       <StyledIcon
         size="small"
@@ -109,6 +114,7 @@ const renderOption = (
         ) : (
           <ComboboxOptionText />
         )}
+        {detail && <ListItemDetail>{detail}</ListItemDetail>}
       </ComboboxOption>
     )
   }
@@ -120,19 +126,25 @@ const renderMultiOption = (
   key: string,
   scrollIntoView?: boolean
 ) => {
-  if (option.description) {
+  const { description, detail, ...rest } = option
+  if (description || detail) {
     return (
       <ComboboxMultiOption
-        {...option}
+        {...rest}
         key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
-        <SelectOptionWithDescription {...option} />
+        {description ? (
+          <SelectOptionWithDescription description={description} {...rest} />
+        ) : (
+          <ComboboxOptionText />
+        )}
+        {detail && <ListItemDetail>{detail}</ListItemDetail>}
       </ComboboxMultiOption>
     )
   }
-  return <ComboboxMultiOption {...option} key={key} />
+  return <ComboboxMultiOption {...rest} key={key} />
 }
 
 export function SelectOptionWithDescription({
@@ -241,6 +253,11 @@ export interface SelectOptionsBaseProps {
    * @default `Create ${inputText}`
    */
   formatCreateLabel?: (inputText: string) => ReactNode
+  /**
+   * Render a spinner in the list instead of any options
+   * @default false
+   */
+  isLoading?: boolean
 }
 
 export interface SelectOptionsProps extends SelectOptionsBaseProps {
@@ -255,6 +272,7 @@ export function SelectOptions({
   isMulti,
   noOptionsLabel = 'No options',
   windowedOptions,
+  isLoading,
 }: SelectOptionsProps) {
   const {
     start,
@@ -264,14 +282,23 @@ export function SelectOptions({
     scrollToFirst,
     scrollToLast,
   } = useWindowedOptions(windowedOptions, options, isMulti)
+  const keyPrefix = useOptionKeyPrefix(options)
+
+  if (isLoading) {
+    return (
+      <EmptyListItem mb={0} px="medium" py="xlarge">
+        <Spinner size={30} aria-label="Loading" />
+      </EmptyListItem>
+    )
+  }
 
   const optionsToRender = options && options.slice(start, end + 1)
   const renderToUse = isMulti ? renderMultiOption : renderOption
 
   const noOptions = (
-    <ListItem fontSize="small" px="medium" py="xxsmall">
-      {noOptionsLabel}
-    </ListItem>
+    <EmptyListItem mb={0} px="medium" py="xlarge">
+      <Text variant="subdued">{noOptionsLabel}</Text>
+    </EmptyListItem>
   )
 
   const createOption = isFilterable && showCreate && (
@@ -283,8 +310,6 @@ export function SelectOptions({
       key="create"
     />
   )
-
-  const keyPrefix = useOptionKeyPrefix(options)
 
   return (
     <>
@@ -368,3 +393,8 @@ function SelectCreateOption({
     </OptionComponent>
   )
 }
+
+const EmptyListItem = styled(ListItem)`
+  display: flex;
+  justify-content: center;
+`

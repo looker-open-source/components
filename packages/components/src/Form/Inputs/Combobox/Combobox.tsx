@@ -70,6 +70,11 @@ export interface ComboboxCommonProps<
    */
   openOnFocus?: boolean
   /**
+   * If true, the popover opens when the text box is clicked.
+   * @default true
+   */
+  openOnClick?: boolean
+  /**
    * Called when an option is selected (not when user types – use ComboboxInput.onChange for that)
    */
   onChange?: TCallback
@@ -100,6 +105,8 @@ export const ComboboxInternal = forwardRef(
       // opens the list when the input receives focused (but only if there are
       // items in the list)
       openOnFocus = false,
+      // opens the list on mousedown/click
+      openOnClick = true,
 
       onChange,
       value,
@@ -148,6 +155,7 @@ export const ComboboxInternal = forwardRef(
       id,
       isVisible,
       onChange,
+      openOnClick,
       openOnFocus,
       state,
       transition,

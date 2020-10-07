@@ -243,6 +243,14 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
 </Space>
 ```
 
+## isLoading
+
+Indicates that options are currently being loaded.
+
+```jsx
+<Select placeholder="Loading options" isLoading />
+```
+
 ## scrollIntoView for improved UX on a long list of options
 
 If you're rendering a long list which scrolls beyond the max-height of the list, you can leverage the `scrollIntoView` option property to focus the list to a helpful scroll position. Using `scrollIntoView` will also highlight the option, so that keyboard navigation will start from there as well.
@@ -449,4 +457,18 @@ input when the option is selected. Use icons from our [list](/components/content
     ]}
   />
 </Space>
+```
+
+## Detail
+
+Right aligned content in the option.
+
+```jsx
+<Select
+  placeholder="Select food"
+  options={[
+    { detail: 'Cheese', value: 'Gouda' },
+    { detail: 'Fruit', value: 'Apple' },
+  ]}
+/>
 ```

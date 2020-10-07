@@ -39,22 +39,19 @@ export function useBlur<
     | ComboboxMultiContextProps = ComboboxContextProps
 >(context: Context<TContext>) {
   const {
+    data: { inputValue },
     state,
     transition,
     listRef,
     inputElement,
-    ...contextValue
+    freeInputPropRef,
   } = useContext(context)
-  const contextMulti = contextValue as ComboboxMultiContextProps
 
   function closeList() {
-    // for ComboboxInputMulti, input value is cleared when the list closes
-    // EXCEPT when freeInput is true and the underlying InputChips blur handler
-    // needs to tokenize the value
-    const isMultiNoFreeInput =
-      contextMulti.freeInputPropRef &&
-      contextMulti.freeInputPropRef.current === false
-    const payload = isMultiNoFreeInput ? { inputValue: '' } : undefined
+    // When freeInput is true, the current inputValue should not be changed on blur
+    // (for Multi, InputChips will tokenize the inputValue on blur)
+    const payload =
+      freeInputPropRef && freeInputPropRef.current ? { inputValue } : undefined
 
     transition && transition(ComboboxActionType.BLUR, payload)
   }
@@ -84,8 +81,8 @@ export function useBlur<
       // Stop ComboboxMultiInput + freeInput underlying InputChips blur handler from
       // tokenizing input value when an option is clicked
       focusInList &&
-        contextMulti.freeInputPropRef &&
-        contextMulti.freeInputPropRef.current &&
+        freeInputPropRef &&
+        freeInputPropRef.current &&
         e.preventDefault()
     }
   }
