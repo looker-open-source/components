@@ -36,12 +36,16 @@ Dialogs break out of the standard application flow and UI to present new informa
           </Paragraph>
         </SpaceVertical>
       </DialogContent>
-      <DialogFooter>
-        <Button onClick={setOff}>Close Example Dialog</Button>
-        <ButtonTransparent color="neutral" onClick={setOff}>
-          Cancel
-        </ButtonTransparent>
-      </DialogFooter>
+      <DialogContext.Consumer>
+        {({ closeModal }) => (
+          <DialogFooter>
+            <Button onClick={closeModal}>Close Example Dialog</Button>
+            <ButtonTransparent onClick={closeModal} color="neutral">
+              Cancel
+            </ButtonTransparent>
+          </DialogFooter>
+        )}
+      </DialogContext.Consumer>
     </>
   }
 >
@@ -49,7 +53,7 @@ Dialogs break out of the standard application flow and UI to present new informa
 </Dialog>
 ```
 
-### Controlled
+## Controlled
 
 `Dialog` can be used in a "controlled" manner by specifying the `isOpen` property. An `onClose` callback should also be specified so that clicking the dialog's backdrop or calling the `DialogContext.closeModal` method will work as expected.
 
@@ -70,9 +74,9 @@ Dialogs break out of the standard application flow and UI to present new informa
 }
 ```
 
-### Hook
+## Hook: useDialog
 
-`Dialog` is also offered as a React Hook via `useDialog`
+`Dialog` is also offered as a React Hook via `useDialog`. It returns the `open` callback and rendered dialog.
 
 ```jsx
 ;() => {
@@ -81,22 +85,18 @@ Dialogs break out of the standard application flow and UI to present new informa
   return (
     <>
       {dialog}
-      <Button onClick={open}>Open Dialog</Button>
+      <ButtonOutline onClick={open}>Open Dialog</ButtonOutline>
     </>
   )
 }
 ```
 
-### Render Props
+## Render Props
 
 `Dialog` supports render-props style use in cases where the simple compositional syntax is unable to automatically spread the dialog props down on the the child element properly.
 
 ```jsx
-<Dialog
-  isOpen={isOpen}
-  onClose={() => setIsOpen(false)}
-  content="My neat dialog"
->
+<Dialog content="My neat dialog">
   {(dialogProps) => (
     <div>
       <Button {...dialogProps}>Open Dialog</Button>
@@ -134,25 +134,6 @@ This provides the backdrop behind dialogs. It can be customized via the `backdro
 >
   Stuff and text
 </Surface>
-```
-
-# useDialog
-
-We provide a custom hook that returns the opener function and rendered dialog.
-
-```jsx
-;() => {
-  const { dialog, open } = useDialog({
-    content: 'Dialog Content',
-  })
-
-  return (
-    <>
-      {dialog}
-      <ButtonOutline onClick={open}>Open Dialog</ButtonOutline>
-    </>
-  )
-}
 ```
 
 ## Props: width and maxWidth

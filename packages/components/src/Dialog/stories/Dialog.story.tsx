@@ -42,6 +42,9 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Simple Content',
 }
+Basic.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Open = Template.bind({})
 Open.args = {
@@ -54,17 +57,11 @@ MediumContent.args = {
   content: <DialogMediumContent />,
   defaultOpen: true,
 }
-MediumContent.parameters = {
-  storyshots: { disable: true },
-}
 
 export const LongContent = Template.bind({})
 LongContent.args = {
   content: <DialogLongContent />,
   defaultOpen: true,
-}
-LongContent.parameters = {
-  storyshots: { disable: true },
 }
 
 /** TODO: Add Placement when supported */

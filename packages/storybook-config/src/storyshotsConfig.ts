@@ -37,12 +37,14 @@ export const storyshotsConfig = (pkg: string) => {
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
         ;(context as any).clip = await page.evaluate(() => {
-          const {
-            height,
-            width,
-            left: x,
-            top: y,
-          } = document.body.getBoundingClientRect()
+          const backdrop = document.querySelector(
+            '#modal-root [data-testid="backdrop"]'
+          )
+
+          const { height, width, left: x, top: y } = (
+            backdrop || document.body
+          ).getBoundingClientRect()
+
           return { height, width, x, y }
         })
       },
