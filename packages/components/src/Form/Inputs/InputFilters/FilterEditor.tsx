@@ -23,28 +23,39 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { ButtonGroup, ButtonItem } from '../../../Button'
+import { PopoverContent } from '../../../Popover'
+import { SpaceVertical } from '../../../Layout/Space'
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
-import { DraftFilter } from './DraftFilter'
+interface FilterEditorProps {
+  // defaultValue: string | undefined
+  onClick: (value: string) => void
+  options: string[]
+}
+export const FilterEditor: FC<FilterEditorProps> = ({
+  // defaultValue,
+  onClick,
+  options,
+}) => {
+  // if (!defaultValue) return null
 
-describe('InputFilters', () => {
-  const draft = { field: 'Name', label: 'name' }
-  const options = ['suggestion 1', 'suggestion 2', 'suggestion 3']
-  const handleDraft = jest.fn()
-
-  test('renders DraftFilter', () => {
-    const { queryByText } = renderWithTheme(
-      <DraftFilter draft={draft} options={options} onClick={handleDraft} />
-    )
-    const draftOption = queryByText('suggestion 1')
-    draftOption && fireEvent.click(draftOption)
-
-    expect(draftOption).toBeInTheDocument()
-    expect(handleDraft).toBeCalled()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+  return (
+    <PopoverContent p="large" width="360px">
+      <SpaceVertical>
+        <ButtonGroup>
+          {options.map((option, index) => {
+            const handleEdit = () => {
+              onClick(option)
+            }
+            return (
+              <ButtonItem key={index} onClick={handleEdit}>
+                {option}
+              </ButtonItem>
+            )
+          })}
+        </ButtonGroup>
+      </SpaceVertical>
+    </PopoverContent>
+  )
+}
