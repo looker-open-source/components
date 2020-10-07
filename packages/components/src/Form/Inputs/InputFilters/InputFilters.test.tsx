@@ -31,104 +31,138 @@ import { InputFilters } from './InputFilters'
 
 describe('InputFilters', () => {
   const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
+    { field: 'role', options: ['user', 'group-admin', 'admin', 'pizza'] },
+    {
+      field: 'group',
+      label: 'Group',
+      options: ['Gouda', 'Cheddar', 'Swiss', 'Pizza'],
+    },
+    {
+      field: 'name',
+      label: 'Name',
+      options: ['Name 1', 'Name 2', 'Name 3', 'pizza'],
+    },
+    { field: 'status', options: ['Success', 'Failed', 'in-progress', 'pizza'] },
+    {
+      field: 'buildAt',
+      label: 'Last Build Time',
+      options: [
+        '01-22-20 33:33:33',
+        '02-13-20 12:30:55',
+        '05-28-20 01:45:57',
+        'pizza',
+      ],
+    },
   ]
 
-  const noUnassignedFilters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name', value: 'suggestion 1' },
-    { field: 'status', value: 'Success' },
-    { field: 'model', value: 'model_uno' },
-    { field: 'trigger', value: 'data_group_trigger' },
-    { field: 'buildAt', label: 'Last Build Time', value: '1-22-20 33:33:33' },
-  ]
-
-  const noAssignedFilters = [
-    { field: 'role' },
-    { field: 'group', label: 'Group' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-
-  test('render InputFilter', () => {
+  test('renders InputFilters', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
-
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
-  test('render InputFilter with no filters', () => {
-    const { queryByText, getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={[]} />
-    )
-
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('No options')).toBeInTheDocument()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('admin')).not.toBeInTheDocument()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-
-  test('render InputFilter with no unassignedFilters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
-      <InputFilters filters={noUnassignedFilters} />
-    )
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('No options')).toBeInTheDocument()
-    expect(queryByText('admin')).toBeInTheDocument()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-
-  test('render InputFilter with only assignedFilters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
-      <InputFilters filters={noAssignedFilters} />
-    )
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('Name')).toBeInTheDocument()
-    expect(queryByText('admin')).not.toBeInTheDocument()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-
-  test('InputFilter displays chips for each FieldFilter passed', () => {
-    const { queryByText } = renderWithTheme(<InputFilters filters={filters} />)
-    expect(queryByText('admin')).toBeInTheDocument()
-    expect(queryByText('pizza-lovers')).toBeInTheDocument()
-  })
-
-  test('InputFilter displays the right list of filters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
+  test('InputFilter displays list of filters', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
-    const activeFilter = getByPlaceholderText('Filter List')
-    fireEvent.click(activeFilter)
-    expect(document.activeElement === activeFilter).toBeTruthy()
-    expect(queryByText('Name')).toBeInTheDocument()
-    expect(queryByText('model')).toBeInTheDocument()
-    expect(queryByText('trigger')).toBeInTheDocument()
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Group')).toBeInTheDocument()
+    expect(getByText('Last Build Time')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('InputFilter filter clicked gets displayed ', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    const group = getByText('Group')
+
+    expect(getByText('role')).toBeInTheDocument()
+    expect(group).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    expect(getByText('role')).toBeInTheDocument()
+    expect(group).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('InputFilter shows editing options ', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    // const editor = getByText('user')
+    // fireEvent.click(getByText('user'))
+
+    expect(getByText('user')).toBeInTheDocument()
+    expect(getByText('admin')).toBeInTheDocument()
+    expect(getByText('pizza')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('InputFilter shows chip with full filter selected ', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+    expect(getByText('role:')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('InputFilter doest show filter displayed as chip', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    //  const parentTag = (queryByText('role').parentNode as HTMLElement).tagName
+
+    expect(queryByText('role')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

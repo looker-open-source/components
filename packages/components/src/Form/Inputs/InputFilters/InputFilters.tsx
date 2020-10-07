@@ -43,6 +43,8 @@ export interface FieldFilter {
   label?: string
   /* filter value/expression */
   value?: string
+
+  options?: string[]
 }
 
 export interface InputFiltersProps {
@@ -95,8 +97,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     }
   }
 
-  const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
-
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
@@ -113,9 +113,15 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           )
 
         const setFieldEditingValue = (value: string) => {
-          // Modify the value of the filter identified by `fieldEditing` whenever this is called
-          if (filter.field === fieldEditing) filter.value = value
-          setFilterLookupName('')
+          const filterIndex = assignedFilters.findIndex(
+            (filter) => filter.field === fieldEditing
+          )
+
+          const newAssignedFilters = [...assignedFilters]
+          const updateFilter = { ...newAssignedFilters[filterIndex], value }
+          newAssignedFilters[filterIndex] = updateFilter
+
+          setAssignedFilters(newAssignedFilters)
         }
 
         const closeFilterEditor = () => {
@@ -134,7 +140,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         ) : (
           <Text fontSize="small">{filter?.label || filter.field}</Text>
         )
-
         return filter.field === fieldEditing ? (
           <Popover
             key={i}
@@ -142,8 +147,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             setOpen={closeFilterEditor}
             content={
               <FilterEditor
-                onClick={setFieldEditingValue}
-                options={draftOptions}
+                defaultValue={filter.value}
+                onChange={setFieldEditingValue}
+                options={filter.options}
               />
             }
           >

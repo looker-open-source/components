@@ -29,20 +29,36 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import { FilterEditor } from './FilterEditor'
 
-describe('InputFilters', () => {
-  const draft = { field: 'Name', label: 'name' }
-  const options = ['suggestion 1', 'suggestion 2', 'suggestion 3']
-  const handleDraft = jest.fn()
+describe('FilterEditor', () => {
+  const defaultValue = 'user'
+  const onChange = jest.fn()
+  const options = ['user', 'group-admin', 'admin', 'pizza']
 
-  test('renders DraftFilter', () => {
+  test('renders FilterEditor', () => {
     const { queryByText } = renderWithTheme(
-      <FilterEditor draft={draft} options={options} onClick={handleDraft} />
+      <FilterEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
     )
-    const draftOption = queryByText('suggestion 1')
-    draftOption && fireEvent.click(draftOption)
 
-    expect(draftOption).toBeInTheDocument()
-    expect(handleDraft).toBeCalled()
+    expect(queryByText('user')).toBeInTheDocument()
+  })
+
+  test('FilterEditor onchange', () => {
+    const { queryByText } = renderWithTheme(
+      <FilterEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
+    )
+    const selectingFilter = queryByText('user')
+    selectingFilter && fireEvent.click(selectingFilter)
+
+    expect(selectingFilter).toBeInTheDocument()
+    expect(onChange).toBeCalled()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
