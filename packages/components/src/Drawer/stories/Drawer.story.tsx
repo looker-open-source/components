@@ -26,8 +26,8 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { SampleContent } from '../../__mocks__/SampleContent'
 import { Drawer, DrawerProps } from '../Drawer'
-import { SampleContent } from './SampleContent'
 
 export * from './useDrawer.story'
 export * from './renderProps.story'

@@ -26,10 +26,16 @@
 
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { DialogHeader, DialogContent, DialogFooter } from '../../Dialog/Layout'
-import { DialogContext } from '../../Dialog/DialogContext'
-import { Button, ButtonTransparent } from '../../Button'
-import { Heading, Paragraph } from '../../Text'
+import {
+  DialogContext,
+  DialogHeader,
+  DialogContent,
+  DialogFooter,
+  Button,
+  ButtonTransparent,
+  Heading,
+  Paragraph,
+} from '..'
 
 export const SampleContent = () => {
   const { closeModal } = useContext(DialogContext)

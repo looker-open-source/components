@@ -25,8 +25,8 @@
  */
 
 import React from 'react'
+import { SampleContent } from '../../__mocks__/SampleContent'
 import { Drawer } from '../Drawer'
-import { SampleContent } from './SampleContent'
 
 export const RenderProps = () => (
   <Drawer content={<SampleContent />}>

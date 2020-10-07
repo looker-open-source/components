@@ -78,7 +78,10 @@ export const surfaceTransition = () => css`
     `${theme.transitions.durationModerate} ${theme.easings.ease}`}
 `
 
-export const SurfaceBase = styled(SurfaceLayout)`
+export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
+  'aria-modal': true,
+  role: 'dialog',
+}))`
   ${reset}
   ${layout}
 
@@ -90,11 +93,6 @@ export const SurfaceBase = styled(SurfaceLayout)`
     outline: none;
   }
 `
-
-SurfaceBase.defaultProps = {
-  backgroundColor: 'background',
-  color: 'text5',
-}
 
 export const Surface = styled(SurfaceBase)`
   position: relative;
@@ -113,5 +111,6 @@ export const Surface = styled(SurfaceBase)`
 `
 
 Surface.defaultProps = {
-  maxWidth: ['90vw', '90vw', '600px'],
+  maxHeight: ['100%', '100%', '90%'],
+  maxWidth: ['100%', '90%', '600px'],
 }

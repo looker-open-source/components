@@ -25,8 +25,8 @@
  */
 
 import React, { useState } from 'react'
+import { SampleContent } from '../../__mocks__/SampleContent'
 import { useDrawer } from '../useDrawer'
-import { SampleContent } from './SampleContent'
 
 export const UseDrawerHook = () => {
   const [isOpen, setIsOpen] = useState(false)
