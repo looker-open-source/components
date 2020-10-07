@@ -27,22 +27,25 @@
 import styled from 'styled-components'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 
-export const DrawerSurface = styled(SurfaceBase)`
-  box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
-  /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
-  height: 100%;
-  max-height: 100vh;
-  position: absolute;
-  right: 0;
+export const DialogSurface = styled(SurfaceBase)`
+  border-radius: ${({ theme }) => theme.radii.medium};
+  box-shadow: ${({ theme }) => theme.shadows[5]};
+  position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   &.entering,
   &.exiting {
     opacity: 0.01;
-    transform: translateX(100%);
+    transform: translateY(100%);
   }
+
   &.exited {
     opacity: 1;
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 `
+
+DialogSurface.defaultProps = {
+  maxHeight: ['100%', '100%', '90%'],
+  maxWidth: ['100%', '90%', '600px'],
+}

@@ -33,7 +33,7 @@ import { Portal } from '../Portal'
 import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
-import { Surface } from './Surface'
+import { DialogSurface } from './DialogSurface'
 
 export type DialogPlacements = 'center'
 
@@ -160,7 +160,7 @@ export const useDialog = ({
     onClose && onClose()
   }
 
-  const RenderSurface = CustomSurface || Surface
+  const RenderSurface = CustomSurface || DialogSurface
 
   const dialog = (
     <DialogContext.Provider

@@ -86,6 +86,7 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   ${layout}
 
   background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
   display: flex;
   flex-direction: column;
 
@@ -93,24 +94,3 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
     outline: none;
   }
 `
-
-export const Surface = styled(SurfaceBase)`
-  position: relative;
-  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-    transform: translateY(100%);
-  }
-
-  &.exited {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-`
-
-Surface.defaultProps = {
-  maxHeight: ['100%', '100%', '90%'],
-  maxWidth: ['100%', '90%', '600px'],
-}
