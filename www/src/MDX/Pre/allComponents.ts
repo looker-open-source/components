@@ -171,7 +171,7 @@ import { DateFormat } from '@looker/components/src/DateFormat'
 import { DateTimeFormat } from '@looker/components/src/DateTimeFormat'
 import { TimeFormat } from '@looker/components/src/TimeFormat'
 
-import { Surface } from '@looker/components/src/Dialog/Surface'
+import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
@@ -240,6 +240,7 @@ export const allComponents = {
   DialogContext,
   DialogFooter,
   DialogHeader,
+  DialogSurface,
   Divider,
   DividerVertical,
   Drawer,
@@ -309,7 +310,6 @@ export const allComponents = {
   Span,
   Spinner,
   Status,
-  Surface,
   Swatch,
   Tab,
   TabList,
