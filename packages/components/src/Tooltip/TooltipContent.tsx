@@ -29,6 +29,7 @@ import { Paragraph } from '../Text'
 import { TooltipProps } from './Tooltip'
 export const TooltipContent = styled(Paragraph).attrs(
   (props: TooltipProps) => ({
+    color: 'inherit',
     fontSize: 'xsmall',
     lineHeight: 'xsmall',
     m: 'none',

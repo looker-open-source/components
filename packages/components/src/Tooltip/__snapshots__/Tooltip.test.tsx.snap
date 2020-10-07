@@ -6,6 +6,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   border-radius: 0.25rem;
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   background-color: #262D33;
+  color: #FFFFFF;
 }
 
 .c0:focus {
@@ -19,7 +20,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   text-align: center;
   margin: 0rem;
   padding: 0.5rem;
-  color: #FFFFFF;
+  color: inherit;
   width: auto;
   max-width: 16rem;
   -webkit-hyphens: auto;
@@ -49,10 +50,11 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
 
 <div
   class="c0"
+  color="inverseOn"
 >
   <p
     class="c1"
-    color="inverseOn"
+    color="inherit"
     font-size="xsmall"
     id="stable-id"
     role="tooltip"

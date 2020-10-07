@@ -32,11 +32,13 @@ export default {
 }
 
 export const Basic = () => (
-  <Tooltip content="I'm a little teapot">Some Text</Tooltip>
+  <Tooltip content="I'm a little teapot">
+    <button>Some Button</button>
+  </Tooltip>
 )
 export const Placement = () => (
   <Tooltip content="I'm a little teapot" placement="top">
-    Some Text
+    <button>Some Button</button>
   </Tooltip>
 )
 

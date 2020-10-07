@@ -44,8 +44,9 @@
     "test": "yarn jest",
     "storybook": "yarn workspace storybook start",
     "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
-    "-preimage-snapshots": "yarn storybooks-build",
-    "image-snapshots": "yarn jest --config jest-image-snapshots.config.js"
+    "preimage-snapshots": "yarn storybooks-build",
+    "image-snapshots-only": "yarn jest --config jest-image-snapshots.config.js",
+    "image-snapshots": "yarn image-snapshots"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
