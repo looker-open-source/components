@@ -34,6 +34,7 @@ import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
 import { Popover } from '../../../Popover'
 import { InputFilterChip } from './InputFilterChip'
+import { FilterEditor } from './FilterEditor'
 
 export interface FieldFilter {
   /* specify the field value */
@@ -57,7 +58,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 }) => {
   const assigned = filters.filter((filter) => filter.value)
 
-  // const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
@@ -88,25 +88,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
   const handleFilterLookupChange = (field: string) => {
     const filter = filters.find((option) => option.field === field)
-
     if (filter) {
       setFilterLookupName('')
       setAssignedFilters([...assignedFilters, filter])
       setFieldEditing(filter.field)
     }
-  }
-
-  const closeFilterEditor = () => {
-    // TODO
-
-    // Check if assignedFilters that matches `fieldEditing` actually has a value
-    // If not remove it from the list.
-
-    setFieldEditing(undefined)
-  }
-
-  const setFieldEditingValue = (value: string) => {
-    // Modify the value of the filter identified by `fieldEditing` whenever this is called
   }
 
   const draftOptions = ['suggestion 1', 'suggestion 2', 'suggestion 3']
@@ -118,12 +104,25 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       {assignedFilters.map((filter, i) => {
         const editFilter = () => setFieldEditing(filter.field)
+
         const handleDelete = () =>
           setAssignedFilters(
             [...assignedFilters].filter(
               (assignedFilter) => assignedFilter.field !== filter.field
             )
           )
+
+        const setFieldEditingValue = (value: string) => {
+          // Modify the value of the filter identified by `fieldEditing` whenever this is called
+          if (filter.field === fieldEditing) filter.value = value
+          setFilterLookupName('')
+        }
+
+        const closeFilterEditor = () => {
+          setAssignedFilters(assignedFilters.filter((filter) => filter.value))
+          setFilterLookupName('')
+          setFieldEditing(undefined)
+        }
 
         const filterToken = filter.value ? (
           <InputFilterChip
@@ -138,11 +137,12 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
         return filter.field === fieldEditing ? (
           <Popover
-            onClose={closeFilterEditor}
+            key={i}
+            isOpen={fieldEditing !== undefined}
+            setOpen={closeFilterEditor}
             content={
               <FilterEditor
-                defaultValue={filter.value}
-                onChange={setFieldEditingValue}
+                onClick={setFieldEditingValue}
                 options={draftOptions}
               />
             }

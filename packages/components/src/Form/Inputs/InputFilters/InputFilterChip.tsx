@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import React, { FC, forwardRef, Ref } from 'react'
 import { Chip, ChipProps } from '../../../Chip'
 import { FieldFilter } from './InputFilters'
 
@@ -32,15 +32,15 @@ interface InputFilterChipProps
   filter: FieldFilter
   onDelete: (field: FieldFilter) => void
 }
-export const InputFilterChip: FC<InputFilterChipProps> = ({
-  filter,
-  onDelete,
-  ...props
-}) => {
-  const handleDelete = () => onDelete(filter)
-  return (
-    <Chip {...props} prefix={filter.field} onDelete={handleDelete}>
-      {filter.value}
-    </Chip>
-  )
-}
+export const InputFilterChip: FC<InputFilterChipProps> = forwardRef(
+  ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
+    const handleDelete = () => onDelete(filter)
+    return (
+      <Chip ref={ref} {...props} prefix={filter.field} onDelete={handleDelete}>
+        {filter.value}
+      </Chip>
+    )
+  }
+)
+
+InputFilterChip.displayName = 'InputFilterChip'
