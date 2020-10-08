@@ -231,16 +231,9 @@ const outlineCSS = (props: IconButtonProps) => {
   `
 }
 
-export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
-  ${reset}
-  ${space}
-  /* remove padding applied to transparent buttons, so icon size is preserved correctly */
-
-  background: none;
-  border: none;
+export const iconButtonColor = css<Pick<IconButtonProps, 'color'>>`
   color: ${({ theme, color = iconButtonDefaultColor }) =>
     lighten(0.14, theme.colors[color])};
-  padding: 0;
 
   &:hover,
   &:focus,
@@ -254,6 +247,17 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
     color: ${({ theme, color = iconButtonDefaultColor }) =>
       theme.colors[`${color}Pressed`]};
   }
+`
+
+export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
+  ${reset}
+  ${space}
+  /* remove padding applied to transparent buttons, so icon size is preserved correctly */
+
+  background: none;
+  border: none;
+  ${iconButtonColor}
+  padding: 0;
 
   ${(props) => props.outline && outlineCSS}
 

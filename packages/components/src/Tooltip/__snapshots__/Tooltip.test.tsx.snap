@@ -20,6 +20,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
   text-align: center;
   margin: 0rem;
   padding: 0.5rem;
+  color: inherit;
   width: auto;
   max-width: 16rem;
   -webkit-hyphens: auto;
@@ -53,6 +54,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
 >
   <p
     class="c1"
+    color="inherit"
     font-size="xsmall"
     id="stable-id"
     role="tooltip"

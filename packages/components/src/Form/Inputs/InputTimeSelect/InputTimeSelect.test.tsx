@@ -103,8 +103,18 @@ describe('prop: interval', () => {
     expect(extractTextFromDomList(domList)).toMatchSnapshot()
     fireEvent.click(document)
   })
+  test('renders 20-minute intervals', () => {
+    const domList = renderListContent({ interval: 20 })
+    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    fireEvent.click(document)
+  })
   test('renders 30-minute intervals', () => {
     const domList = renderListContent({ interval: 30 })
+    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    fireEvent.click(document)
+  })
+  test('renders 60-minute intervals', () => {
+    const domList = renderListContent({ interval: 60 })
     expect(extractTextFromDomList(domList)).toMatchSnapshot()
     fireEvent.click(document)
   })

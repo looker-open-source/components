@@ -51,4 +51,4 @@ export const Paragraph = styled(TextBase).attrs({ as: 'p' })<ParagraphProps>`
   ${truncate}
 `
 
-Paragraph.defaultProps = { fontSize: 'medium' }
+Paragraph.defaultProps = { color: 'text', fontSize: 'medium' }

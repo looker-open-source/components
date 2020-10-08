@@ -41,6 +41,10 @@ import {
   SelectOptionsBaseProps,
 } from './SelectOptions'
 import { SelectInputIcon } from './SelectInputIcon'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from './utils/ariaProps'
 import { getOption, getFirstOption } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
@@ -108,16 +112,13 @@ const SelectComponent = forwardRef(
       value,
       defaultValue,
       noOptionsLabel,
-      'aria-describedby': ariaDescribedby,
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledby,
       indicator,
       listLayout,
       autoResize,
-      validationType,
       windowedOptions: windowedOptionsProp,
       showCreate = false,
       formatCreateLabel,
+      isLoading,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -143,12 +144,7 @@ const SelectComponent = forwardRef(
       onFilter && onFilter('')
     }
 
-    const ariaProps = {
-      'aria-describedby': ariaDescribedby,
-      'aria-invalid': validationType === 'error',
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledby,
-    }
+    const ariaProps = pickAriaAndValidationProps(props)
 
     const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
 
@@ -160,7 +156,7 @@ const SelectComponent = forwardRef(
         onClose={handleClose}
         width={autoResize ? 'auto' : '100%'}
         display={autoResize ? 'inline-flex' : undefined}
-        {...props}
+        {...omitAriaAndValidationProps(props)}
       >
         <ComboboxInput
           {...ariaProps}
@@ -168,7 +164,7 @@ const SelectComponent = forwardRef(
           disabled={disabled}
           placeholder={placeholder}
           name={name}
-          validationType={validationType}
+          validationType={props.validationType}
           isClearable={isClearable}
           autoComplete={false}
           autoResize={autoResize}
@@ -184,6 +180,7 @@ const SelectComponent = forwardRef(
             cancelClickOutside={!isFilterable}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
+            aria-busy={isLoading}
             {...ariaProps}
             {...listLayout}
           >
@@ -194,6 +191,7 @@ const SelectComponent = forwardRef(
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}
               formatCreateLabel={formatCreateLabel}
+              isLoading={isLoading}
             />
           </ComboboxList>
         )}

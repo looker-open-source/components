@@ -56,7 +56,7 @@ export interface InputChipsInputControlProps {
    */
   onInputChange: (value: string) => void
   isVisibleOptions?: boolean
-  hasOptions?: boolean
+  showCaret?: boolean
 }
 
 export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
@@ -84,7 +84,7 @@ export interface InputChipsCommonProps
   extends Omit<InputTextBaseProps, 'defaultValue' | 'onChange'>,
     MaxHeightProps {
   summary?: string
-  hideControls?: boolean
+  isClearable?: boolean
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
@@ -123,8 +123,8 @@ export const InputChipsBaseInternal = forwardRef(
       validationType,
       onClear,
       isVisibleOptions,
-      hasOptions = false,
-      hideControls = false,
+      showCaret = false,
+      isClearable = true,
       summary,
       removeOnBackspace = true,
       formatChip,
@@ -342,24 +342,20 @@ export const InputChipsBaseInternal = forwardRef(
     const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
     const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
 
-    const renderSearchControls = values.length > 0
-
     return (
       <InputText
         disabled={disabled}
         after={
-          !hideControls && (
-            <AdvancedInputControls
-              isVisibleOptions={isVisibleOptions}
-              onClear={handleClear}
-              renderSearchControls={renderSearchControls}
-              validationType={validationType}
-              disabled={disabled}
-              summary={summary}
-              hasOptions={hasOptions}
-              onMouseDown={stopPropagation}
-            />
-          )
+          <AdvancedInputControls
+            isVisibleOptions={isVisibleOptions}
+            onClear={handleClear}
+            showClear={isClearable && values.length > 0}
+            validationType={validationType}
+            disabled={disabled}
+            summary={summary}
+            showCaret={showCaret}
+            onMouseDown={stopPropagation}
+          />
         }
         ref={ref}
         value={inputValue}

@@ -84,6 +84,8 @@ export function useKeyDown() {
   return throttle(function handleKeyDown(
     event: KeyboardEvent<HTMLUListElement | HTMLInputElement>
   ) {
+    // Necessary b/c of throttle, to avoid https://reactjs.org/docs/events.html#event-pooling warning
+    event.persist()
     const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
       case 'ArrowDown': {

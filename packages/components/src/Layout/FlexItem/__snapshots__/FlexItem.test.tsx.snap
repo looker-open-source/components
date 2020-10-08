@@ -3,6 +3,7 @@
 exports[`FlexItem can be hidden  1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  min-width: 0;
 }
 
 <div
@@ -14,6 +15,7 @@ exports[`FlexItem can be hidden  1`] = `
 exports[`FlexItem default  1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  min-width: 0;
 }
 
 <div
@@ -29,6 +31,7 @@ exports[`FlexItem supports alignSelf  1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  min-width: 0;
 }
 
 <div
@@ -42,6 +45,7 @@ exports[`FlexItem supports basis  1`] = `
   -webkit-flex-basis: 100px;
   -ms-flex-preferred-size: 100px;
   flex-basis: 100px;
+  min-width: 0;
 }
 
 <div
@@ -55,6 +59,7 @@ exports[`FlexItem supports flex  1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  min-width: 0;
 }
 
 <div
@@ -68,6 +73,7 @@ exports[`FlexItem supports flex  2`] = `
   -webkit-flex: 1 1;
   -ms-flex: 1 1;
   flex: 1 1;
+  min-width: 0;
 }
 
 <div
@@ -81,6 +87,7 @@ exports[`FlexItem supports flex  3`] = `
   -webkit-flex: 1 2 100px;
   -ms-flex: 1 2 100px;
   flex: 1 2 100px;
+  min-width: 0;
 }
 
 <div
@@ -94,6 +101,7 @@ exports[`FlexItem supports flex  4`] = `
   -webkit-flex: 1 50px;
   -ms-flex: 1 50px;
   flex: 1 50px;
+  min-width: 0;
 }
 
 <div
@@ -107,6 +115,7 @@ exports[`FlexItem supports order  1`] = `
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
+  min-width: 0;
 }
 
 <div
@@ -121,6 +130,7 @@ exports[`FlexItem supports order  2`] = `
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
+  min-width: 0;
 }
 
 <div

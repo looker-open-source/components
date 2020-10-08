@@ -27,8 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import some from 'lodash/some'
 import every from 'lodash/every'
+import isMatch from 'lodash/isMatch'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
@@ -45,17 +45,16 @@ import {
   ComboboxCommonProps,
   ComboboxWrapper,
 } from './Combobox'
-import { useComboboxMultiRefs } from './utils/useComboboxRefs'
+import { useComboboxRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
 import { useScrollState } from './utils/useScrollState'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
-  optionsB: ComboboxOptionObject[],
-  compare: typeof some | typeof every
+  optionsB: ComboboxOptionObject[]
 ) {
-  return compare(optionsA, (optionA) =>
-    optionsB.find((optionB) => optionA.value === optionB.value)
+  return every(optionsA, (optionA) =>
+    optionsB.find((optionB) => isMatch(optionA, optionB))
   )
 }
 
@@ -78,6 +77,7 @@ export const ComboboxMultiInternal = forwardRef(
       // opens the list when the input receives focused (but only if there are
       // items in the list)
       openOnFocus = false,
+      openOnClick = true,
 
       onChange,
       values,
@@ -103,8 +103,7 @@ export const ComboboxMultiInternal = forwardRef(
 
     if (
       values !== undefined &&
-      (options.length !== values.length ||
-        !compareOptions(options, values, every))
+      (options.length !== values.length || !compareOptions(options, values))
     ) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
@@ -118,7 +117,7 @@ export const ComboboxMultiInternal = forwardRef(
 
     const isVisible = useComboboxToggle(state, options, onOpen, onClose)
 
-    const { ref, ...commonRefs } = useComboboxMultiRefs(forwardedRef)
+    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
 
     const scrollState = useScrollState()
 
@@ -130,6 +129,7 @@ export const ComboboxMultiInternal = forwardRef(
       id,
       isVisible,
       onChange,
+      openOnClick,
       openOnFocus,
       state,
       transition,

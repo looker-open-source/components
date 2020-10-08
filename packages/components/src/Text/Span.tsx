@@ -23,31 +23,23 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { InputSearch } from '@looker/components'
 
-export default {
-  title: 'Forms/Search',
-}
+import styled from 'styled-components'
+import {
+  CompatibleHTMLProps,
+  textTransform,
+  TextTransformProps,
+} from '@looker/design-tokens'
+import { textVariant, TextVariantProps } from './text_variant'
+import { TextBase, TextBaseProps } from './TextBase'
 
-export const Basic = () => <InputSearch />
-export const Placeholder = () => <InputSearch placeholder="Type your search" />
-export const Value = () => (
-  <InputSearch placeholder="Type your search" value="Search term" />
-)
-export const Summary = () => (
-  <InputSearch
-    placeholder="Type your search"
-    value="Search term"
-    summary="5/10 results"
-  />
-)
-export const DefaultValue = () => (
-  <InputSearch placeholder="Type your search" defaultValue="Search term" />
-)
-export const NoIcon = () => (
-  <InputSearch hideSearchIcon placeholder="Type your search" />
-)
-export const AutoResize = () => (
-  <InputSearch autoResize placeholder="Resizes to fit value" maxWidth={250} />
-)
+export interface SpanProps
+  extends TextBaseProps,
+    TextTransformProps,
+    TextVariantProps,
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
+
+export const Span = styled(TextBase)<SpanProps>`
+  ${textVariant}
+  ${textTransform}
+`

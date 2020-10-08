@@ -32,6 +32,7 @@ export * from './BorderRadius.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
 export * from './Flat.story'
+export * from './LongLabels.story'
 
 export default {
   title: 'Tree',

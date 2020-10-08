@@ -25,23 +25,11 @@
  */
 
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  textTransform,
-  TextTransformProps,
-} from '@looker/design-tokens'
-import { textVariant, TextVariantProps } from './text_variant'
-import { TextBase, TextBaseProps } from './TextBase'
+import { Span, SpanProps } from './Span'
 
-export interface TextProps
-  extends TextBaseProps,
-    TextTransformProps,
-    TextVariantProps,
-    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface TextProps extends SpanProps {}
 
-export const Text = styled(TextBase)<TextProps>`
-  ${textVariant}
-  ${textTransform}
-`
+export const Text = styled(Span)<TextProps>``
 
 Text.defaultProps = { fontSize: 'medium' }

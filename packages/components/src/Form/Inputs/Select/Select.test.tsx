@@ -382,6 +382,30 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
+  const detailOptions = [{ detail: 'Info about option', value: 'someValue' }]
+  test.each([
+    [
+      'Select',
+      <Select placeholder="Search" options={detailOptions} key="select" />,
+    ],
+    [
+      'SelectMulti',
+      <SelectMulti
+        placeholder="Search"
+        options={detailOptions}
+        key="select-multi"
+      />,
+    ],
+  ])('option detail (%s)', (_, jsx) => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(jsx)
+    const input = getByPlaceholderText('Search')
+    fireEvent.mouseDown(input)
+    expect(getByText('Info about option')).toBeVisible()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
   describe('no options', () => {
     test.each([
       [
@@ -442,6 +466,25 @@ describe('Select / SelectMulti', () => {
 
       const noOptions = queryByText(label)
       expect(noOptions).toBeVisible()
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+    test.each([
+      ['Select', <Select placeholder="Search" isLoading key="select" />],
+      [
+        'SelectMulti',
+        <SelectMulti placeholder="Search" isLoading key="select-multi" />,
+      ],
+    ])('isLoading (%s)', (_, jsx) => {
+      renderWithTheme(jsx)
+
+      const input = screen.getByPlaceholderText('Search')
+
+      fireEvent.mouseDown(input)
+
+      const spinner = screen.queryByLabelText('Loading')
+      expect(spinner).toBeVisible()
 
       // Close popover to silence act() warning
       fireEvent.click(document)

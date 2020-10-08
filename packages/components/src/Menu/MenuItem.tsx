@@ -35,6 +35,7 @@ import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
+import { ListItemDetail } from '../List'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
@@ -175,7 +176,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
           </Paragraph>
         )}
       </span>
-      {detail && <Detail>{detail}</Detail>}
+      {detail && <ListItemDetail>{detail}</ListItemDetail>}
     </Component>
   )
 
@@ -201,13 +202,6 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     </MenuItemLayout>
   )
 }
-
-const Detail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  margin-left: auto;
-  margin-right: ${({ theme: { space } }) => space.medium};
-  padding-left: ${({ theme: { space } }) => space.large};
-`
 
 export const MenuItem = styled(MenuItemInternal)`
   ${Icon} {

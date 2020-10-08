@@ -6,10 +6,12 @@ exports[`A Code component aligned 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   text-align: right;
+  color: #262D33;
 }
 
 <code
   className="c0"
+  color="text"
   fontFamily="code"
   fontSize="medium"
 >
@@ -22,10 +24,12 @@ exports[`A Code component resized 1`] = `
   font-family: 'Roboto Mono','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
   font-size: 2.25rem;
   line-height: 2.75rem;
+  color: #262D33;
 }
 
 <code
   className="c0"
+  color="text"
   fontFamily="code"
   fontSize="xxxxlarge"
 >
@@ -39,10 +43,12 @@ exports[`A Code component weight 1`] = `
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
+  color: #262D33;
 }
 
 <code
   className="c0"
+  color="text"
   fontFamily="code"
   fontSize="medium"
   fontWeight="bold"
@@ -56,10 +62,12 @@ exports[`A default Code component 1`] = `
   font-family: 'Roboto Mono','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
   font-size: 1rem;
   line-height: 1.5rem;
+  color: #262D33;
 }
 
 <code
   className="c0"
+  color="text"
   fontFamily="code"
   fontSize="medium"
 >

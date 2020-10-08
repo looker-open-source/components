@@ -26,85 +26,192 @@
 
 import 'jest-styled-components'
 import React, { createRef } from 'react'
-import {
-  mountWithTheme,
-  assertSnapshot,
-  renderWithTheme,
-} from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { InputSearch } from './InputSearch'
 
-test('InputSearch default', () => {
-  assertSnapshot(<InputSearch />)
-})
+describe('InputSearch', () => {
+  describe('Search icon', () => {
+    test('shows by default', () => {
+      renderWithTheme(<InputSearch />)
+      expect(screen.getByTitle('Search')).toBeInTheDocument()
+    })
+    test('hidden with hideSearchIcon', () => {
+      renderWithTheme(<InputSearch hideSearchIcon />)
+      expect(screen.queryByTitle('Search')).not.toBeInTheDocument()
+    })
+  })
 
-test('InputSearch hideSearchIcon removes the icon', () => {
-  assertSnapshot(<InputSearch hideSearchIcon />)
-})
+  test('displays placeholder', () => {
+    renderWithTheme(<InputSearch placeholder="Type your search" />)
+    expect(screen.getByPlaceholderText('Type your search')).toBeVisible()
+  })
 
-test('InputSearch displays placeholder', () => {
-  const wrapper = mountWithTheme(<InputSearch placeholder="Type your search" />)
-  expect(wrapper.props().children.props.placeholder).toEqual('Type your search')
-})
+  test('supports ref assignment', () => {
+    const inputRef = createRef<HTMLInputElement>()
 
-test('InputSearch supports ref assignment', () => {
-  const inputRef = createRef<HTMLInputElement>()
+    renderWithTheme(<InputSearch ref={inputRef} placeholder="type here" />)
+    expect(screen.getByPlaceholderText('type here')).toBe(inputRef.current)
+  })
 
-  const wrapper = mountWithTheme(<InputSearch ref={inputRef} />)
-  expect(wrapper.find('input')).toBeDefined()
-})
+  test('accepts a value', () => {
+    renderWithTheme(<InputSearch value="start value" />)
+    expect(screen.getByDisplayValue('start value')).toBeVisible()
+  })
 
-test('InputSearch displays value', () => {
-  const wrapper = mountWithTheme(<InputSearch value="start value" />)
-  expect(wrapper.props().children.props.value).toEqual('start value')
-})
+  test('accepts a defaultValue', () => {
+    renderWithTheme(
+      <InputSearch defaultValue="replace me" placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    expect(input).toHaveValue('replace me')
+  })
 
-test('InputSearch displays summary', () => {
-  const wrapper = mountWithTheme(
-    <InputSearch value="start value" summary="summary value" />
-  )
-  expect(wrapper.props().children.props.summary).toEqual('summary value')
-})
+  test('calls onChange', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputSearch onChange={onChangeMock} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: 'New value' } })
+    expect(onChangeMock).toHaveBeenCalledWith('New value')
+  })
 
-test('InputSearch clears bottom when input value is empty', () => {
-  const wrapper = mountWithTheme(<InputSearch value="start value" />)
+  test('displays summary', () => {
+    renderWithTheme(<InputSearch value="start value" summary="summary value" />)
+    expect(screen.getByText('summary value')).toBeVisible()
+  })
 
-  expect(wrapper.find('input').props().value).toEqual('start value')
-  wrapper.find('button').simulate('click')
-  expect(wrapper.find('input').props().value).toEqual('')
-})
+  describe('Clear button', () => {
+    test('clears value', () => {
+      renderWithTheme(
+        <InputSearch placeholder="type here" defaultValue="start value" />
+      )
 
-test('InputSearch shows clear button and summary', () => {
-  const wrapper = mountWithTheme(
-    <InputSearch value="start value" summary="summary value" />
-  )
-  expect(wrapper.find('button').exists()).toEqual(true)
-  expect(wrapper.props().children.props.summary).toEqual('summary value')
-})
+      const button = screen.getByRole('button')
+      fireEvent.click(button)
+      expect(screen.getByPlaceholderText('type here')).toHaveDisplayValue('')
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
+    })
 
-test('InputSearch hides controls when using hideControls option', () => {
-  const wrapper = mountWithTheme(
-    <InputSearch value="start value" summary="summary value" hideControls />
-  )
-  expect(wrapper.find('button').exists()).toEqual(false)
-})
+    test('calls onChange', () => {
+      const onChange = jest.fn()
 
-test('InputSearch onClear can be updated by user', () => {
-  const onClear = jest.fn()
+      const { getByRole } = renderWithTheme(
+        <InputSearch value="Search" onChange={onChange} />
+      )
 
-  const { getByRole } = renderWithTheme(
-    <InputSearch value="Search" onClear={onClear} />
-  )
+      const inputButton = getByRole('button')
+      inputButton && fireEvent.click(inputButton)
+      expect(onChange).toHaveBeenCalledWith('')
+    })
 
-  const inputButton = getByRole('button')
-  inputButton && fireEvent.click(inputButton)
-  expect(onClear).toHaveBeenCalled()
-})
+    test('clear button and summary together', () => {
+      renderWithTheme(
+        <InputSearch value="start value" summary="summary value" />
+      )
+      expect(screen.getByRole('button')).toBeVisible()
+      expect(screen.getByText('summary value')).toBeVisible()
+    })
 
-test('InputSearch accepts a defaultValue', () => {
-  const { getByPlaceholderText } = renderWithTheme(
-    <InputSearch defaultValue="replace me" placeholder="type here" />
-  )
-  const input = getByPlaceholderText('type here')
-  expect(input).toHaveValue('replace me')
+    test('hidden when isClearable is false', () => {
+      renderWithTheme(
+        <InputSearch
+          value="start value"
+          summary="summary value"
+          isClearable={false}
+        />
+      )
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
+    })
+
+    test('hidden when value is empty', () => {
+      renderWithTheme(<InputSearch />)
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('options', () => {
+    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+
+    test('list opens on change, not click', () => {
+      renderWithTheme(<InputSearch options={options} placeholder="type here" />)
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.click(input)
+      expect(screen.queryAllByRole('option')).toHaveLength(0)
+
+      fireEvent.change(input, { target: { value: 'F' } })
+      expect(input).toHaveDisplayValue('F')
+      expect(screen.queryAllByRole('option')).toHaveLength(2)
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+      // Value is cleared on list close by default
+      expect(input).toHaveDisplayValue('')
+    })
+
+    test('calls onSelectOption', () => {
+      const onSelectOptionMock = jest.fn()
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          onSelectOption={onSelectOptionMock}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+      fireEvent.click(screen.getByText('BAR'))
+
+      expect(onSelectOptionMock).toHaveBeenCalledWith({ value: 'BAR' })
+      expect(onChangeMock).toHaveBeenNthCalledWith(1, 'F')
+      expect(onChangeMock).toHaveBeenNthCalledWith(2, 'BAR')
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test('changeOnSelect={false}', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          changeOnSelect={false}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+      fireEvent.click(screen.getByText('BAR'))
+
+      expect(onChangeMock).toHaveBeenNthCalledWith(1, 'F')
+      expect(onChangeMock).toHaveBeenNthCalledWith(2, '')
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+    })
+
+    test('clearOnClose', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <InputSearch
+          options={options}
+          placeholder="type here"
+          clearOnClose={false}
+          onChange={onChangeMock}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: 'F' } })
+
+      // Close popover to silence act() warning
+      fireEvent.click(document)
+
+      expect(onChangeMock).toHaveBeenCalledWith('F')
+      expect(onChangeMock).toHaveBeenCalledTimes(1)
+    })
+  })
 })

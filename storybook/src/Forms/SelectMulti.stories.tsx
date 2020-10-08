@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useMemo, useState, useEffect } from 'react'
 import {
   Box,
   FieldSelectMulti,
@@ -41,6 +41,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  SelectOptionObject,
 } from '@looker/components'
 import { options1k } from './options1k'
 
@@ -240,6 +241,19 @@ function TestIndicator() {
 }
 
 export function SelectMultiDemo() {
+  const [cheeseOptions, setCheeseOptions] = useState([] as SelectOptionObject[])
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      setCheeseOptions([
+        { label: 'Cheddar', value: 'cheddar' },
+        { label: 'Gouda', value: 'gouda' },
+        { label: 'Swiss', value: 'swiss' },
+      ])
+    }, 2000)
+    return () => {
+      window.clearTimeout(t)
+    }
+  }, [])
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -318,11 +332,8 @@ export function SelectMultiDemo() {
           label="Label"
           placeholder="placeholder"
           description="this is the description"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
+          values={['cheddar']}
+          options={cheeseOptions}
         />
       </SpaceVertical>
       <Heading my="large">SelectMulti</Heading>

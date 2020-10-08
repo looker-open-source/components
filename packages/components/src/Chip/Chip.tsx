@@ -40,7 +40,7 @@ import {
   useWrapEvent,
 } from '../utils'
 import { IconButton } from '../Button/IconButton'
-import { Text, TextProps } from '../Text'
+import { Span, SpanProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
@@ -97,8 +97,7 @@ const ChipStyle = styled.span<FocusVisibleProps>`
   }
 `
 
-const ChipLabel = styled(Text)<TextProps & TruncateProps>`
-  font-size: inherit;
+const ChipLabel = styled(Span)<SpanProps & TruncateProps>`
   ${truncate}
 `
 

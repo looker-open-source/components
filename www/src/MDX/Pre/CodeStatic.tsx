@@ -25,9 +25,9 @@
  */
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import { prismTheme } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC } from 'react'
+import { prismTheme } from './prismTheme'
 
 interface CodeStaticProps {
   code: string
@@ -68,5 +68,5 @@ const PreWrapper = styled.pre`
     padding: ${space.medium};
     line-height: ${lineHeights.medium};
     margin: ${lineHeights.medium} 0;
-  `};
+  `}
 `

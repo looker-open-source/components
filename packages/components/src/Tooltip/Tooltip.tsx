@@ -54,7 +54,6 @@ export interface UseTooltipProps {
    * Specify a callback to be called each time this Tooltip is closed
    */
   canClose?: () => boolean
-
   isOpen?: boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
@@ -72,6 +71,11 @@ export interface UseTooltipProps {
    * @default auto
    */
   width?: string
+  /**
+   * Specify a fixed max-width.
+   * @default none
+   */
+  maxWidth?: string
   /**
    * Specify the text alignment within tooltips.
    * @default center
@@ -123,6 +127,7 @@ export function useTooltip({
   content,
   isOpen: initializeOpen = false,
   width,
+  maxWidth = '30rem',
   textAlign,
   disabled,
   surfaceStyles,
@@ -201,6 +206,7 @@ export function useTooltip({
           backgroundColor="inverse"
           borderRadius="medium"
           boxShadow={3}
+          maxWidth={maxWidth}
           color="inverseOn"
           {...surfaceStyles}
         >

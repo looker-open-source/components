@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { Button, ButtonTransparent } from '../Button'
 import { Space } from '../Layout'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
-import { Text } from '../Text'
+import { Span } from '../Text'
 import { ActionListContext } from './ActionListContext'
 
 interface ActionListBulkControlsProps {
@@ -62,9 +62,9 @@ const ActionListBulkControlsLayout: FC<ActionListBulkControlsProps> = ({
   }
 
   const selectedItemsText = (
-    <Text variant="secondary" fontSize="xsmall">
+    <Span variant="secondary" fontSize="xsmall">
       {message}
-    </Text>
+    </Span>
   )
 
   const selectTotalResultsButton = (
@@ -73,11 +73,11 @@ const ActionListBulkControlsLayout: FC<ActionListBulkControlsProps> = ({
         selectedItemCount === totalCount ? onTotalClearAll : onTotalSelectAll
       }
     >
-      <Text fontWeight="semiBold" fontSize="xsmall">
+      <Span fontWeight="semiBold" fontSize="xsmall">
         {selectedItemCount === totalCount
           ? 'Clear Selection'
           : `Select all ${totalCount} results`}
-      </Text>
+      </Span>
     </ButtonTransparent>
   )
 

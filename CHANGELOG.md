@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+## Added
+
+- `Select`, `SelectMulti` and `InputSearch` now support `isLoading` and `detail` prop on options
+- `Combobox` and `ComboboxMulti` `openOnClick` prop
+- `ComboboxInput` now supports `freeInput` prop
+- `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
+- `Truncate` component
+- Visual Snapshot test for `MenuItem`, `MenuGroup`, `Status`
+- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
+
+## Changed
+
+- `TreeItem` now supports text truncation behavior
+- `TreeItem` now wraps long text pleasantly
+- `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
+- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
+- `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
+- `Span` replaced all library-internal usage of `Text` with `Span`
+- `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
+- `TreeItem`'s detail no longer has padding on the right side
+- `InputSearch` `onChange` callback argument is now a string rather than an event
+- `InputTimeSelect` supports 20- and 60-minute intervals
+
+### Fixed
+
+- `ComboboxMulti` issue with chips not updating reflecting updated option labels
+- `InputTimeSelect` disabled state
+
+### Removed
+
+- `InputSearch` `onClear` – use `onChange` with a check for empty value instead
+- `InputSearch` and `InputChips` `hideControls` – use `isClearable={false}` instead
+
+### Preview / Experimental
+
+- Experimental: `InputSearch` supports `onSelectOption`, `changeOnSelect`, `clearOnClose` and all `Select` props except `isFilterable`, `onFilter`, `showCreate` and `formatCreateLabel`
+
 ## [0.9.16] - 2020-10-02
 
 ### Added
@@ -19,7 +58,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Includes `useDrawer` hook
 - `TabList` now supports `PaddingProps` and `fontSize`
 - `TabList` w/ `distribute` now uses default "small" `fontSize`
-
 - Image snapshots tests
   - Infrastructure to run image snapshot tests leveraging Storybook `storyshots` + `jest-image-snapshots`
   - Image snapshot coverage for `Button*`, `IconButton` & `Tree` components
@@ -29,6 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ActionList supports filtering
+- `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
+  - Required minor adjustments to `Chip`
 - `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
@@ -84,12 +124,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` overwriting search value with the current option value if the option's value and label are different
 - Storybook fixes to silence console warnings
 
-### Remove
-
-- `Tooltip` & `Popover` no longer support (optional) arrow indicator
-
 ### Removed
 
+- `Tooltip` & `Popover` no longer support (optional) arrow indicator
 - `prismTheme` is no longer published
 - `theme.colors.palette` is no longer available (`palette` _can_ be import from `@looker/design-tokens` but this is a legacy behavior and is not encouraged)
 

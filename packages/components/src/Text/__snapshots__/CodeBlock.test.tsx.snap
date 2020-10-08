@@ -11,6 +11,7 @@ exports[`A default CodeBlock component 1`] = `
 .c1 {
   border: 1px solid;
   border-color: #DEE1E5;
+  color: #262D33;
   overflow-y: scroll;
 }
 

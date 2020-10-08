@@ -42,8 +42,9 @@ const components: NavigationSection = {
       children: [
         { path: 'headings', title: 'Headings' },
         { path: 'paragraph', title: 'Paragraph' },
-        { path: 'text', title: 'Text' },
+        { path: 'span', title: 'Span' },
         { path: 'code', title: 'Code' },
+        { path: 'truncate', title: 'Truncate' },
       ],
       path: 'text',
       title: 'Text',

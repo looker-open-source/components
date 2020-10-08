@@ -50,4 +50,9 @@ export const FlexItem = styled.div<FlexItemProps>`
   ${flexBasis}
   ${flex}
   ${order}
+  /*
+   * A min-width must be set here to resolve a firefox bug where any children
+   * with style of text-overflow: ellipsis; will otherwise not truncate the
+   * text appropriately. */
+  min-width: 0; /* IMPORANT!! Do not delete! */
 `

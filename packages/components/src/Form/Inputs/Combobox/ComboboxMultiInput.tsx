@@ -51,7 +51,7 @@ import {
   getOptionsFromValues,
 } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
-import { useInputMultiPropRefs } from './utils/useInputPropRefs'
+import { useInputPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
@@ -132,7 +132,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       isVisible,
     } = useContext(ComboboxMultiContext)
 
-    useInputMultiPropRefs(props)
+    useInputPropRefs(props, ComboboxMultiContext)
 
     function handleClear() {
       transition && transition(ComboboxActionType.CLEAR)
@@ -237,7 +237,6 @@ export const ComboboxMultiInputInternal = forwardRef(
       autoComplete: 'off',
       formatChip,
       formatTextToCopy,
-      hasOptions: true,
       id: `listbox-${id}`,
       inputValue,
       isVisibleOptions: isVisible,
@@ -245,6 +244,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       onClear: handleClear,
       onInputChange: wrappedOnInputChange,
       readOnly,
+      showCaret: true,
       values: inputValues,
     }
 
