@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ComboboxInput` now supports `freeInput` prop
 - `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
 - `Truncate` component
-- Visual Snapshot test for `MenuItem` and `MenuGroup`
+- Visual Snapshot test for `MenuItem`, `MenuGroup`, `Status`
 - `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
 
 ## Changed
