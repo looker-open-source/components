@@ -32,9 +32,8 @@ import {
   Header,
   Layout as ComponentsLayout,
 } from '@looker/components'
-import { ThemeCustomizations } from '@looker/customizations'
+import { ThemeCustomizations } from '@looker/design-tokens'
 import { MDXProvider } from '@mdx-js/react'
-import { Props } from '../components'
 import MDXComponents from '../MDX'
 import { HeaderContent } from '../components/HeaderContent'
 import { Navigation } from '../components/Navigation'
@@ -47,7 +46,7 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <ComponentsProvider loadGoogleFonts {...customTheme}>
-      <MDXProvider components={{ ...MDXComponents, Props }}>
+      <MDXProvider components={MDXComponents}>
         <Page>
           <Header height="4rem">
             <HeaderContent
