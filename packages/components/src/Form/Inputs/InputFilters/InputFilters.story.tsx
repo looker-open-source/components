@@ -25,39 +25,43 @@
  */
 
 import React from 'react'
-import { InputFilters } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import { InputFilters, InputFiltersProps } from './InputFilters'
 
-export default {
-  title: 'Forms/InputFilters',
-}
+const Template: Story<InputFiltersProps> = (args) => <InputFilters {...args} />
 
 const filters = [
-  { field: 'role', options: ['user', 'groupadmin', 'admin', 'pizza'] },
+  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
   {
     field: 'group',
     label: 'Group',
-    options: ['Gouda', 'Cheddar', 'Swiss', 'Pizza'],
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
   },
   {
     field: 'name',
     label: 'Name',
-    options: ['Name 1', 'Name 2', 'Name 3', 'pizza'],
+    options: ['Name 1', 'Name 2', 'Name 3'],
   },
-  { field: 'status', options: ['Success', 'Failed', 'in-progress', 'pizza'] },
+  { field: 'status', options: ['Failed', 'In-Progress', 'Success'] },
   {
     field: 'buildAt',
     label: 'Last Build Time',
-    options: [
-      '01-22-20 33:33:33',
-      '02-13-20 12:30:55',
-      '05-28-20 01:45:57',
-      'pizza',
-    ],
+    options: ['01-22-20', '02-13-20', '05-28-20'],
   },
 ]
 
-export const Basic = () => <InputFilters filters={filters} />
+export const Basic = Template.bind({})
+Basic.args = {
+  filters: filters,
+}
 
-export const HideFilter = () => (
-  <InputFilters hideFilterIcon filters={filters} />
-)
+export const HideFilter = Template.bind({})
+HideFilter.args = {
+  filters: filters,
+  hideFilterIcon: true,
+}
+
+export default {
+  component: InputFilters,
+  title: 'InputFilters',
+}
