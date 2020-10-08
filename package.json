@@ -89,7 +89,8 @@
   },
   "resolutions": {
     "node-fetch": "2.6.1",
-    "node-forge": "0.10.0"
+    "node-forge": "0.10.0",
+    "prismjs": "1.21.0"
   },
   "lint-staged": {
     "**/*.ts?(x)": [
