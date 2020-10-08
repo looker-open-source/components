@@ -27,14 +27,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Span` replaced all library-internal usage of `Text` with `Span`
 - `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
 - `TreeItem`'s detail no longer has padding on the right side
-
-### Changed
-
 - `InputSearch` `onChange` callback argument is now a string rather than an event
+- `InputTimeSelect` supports 20- and 60-minute intervals
 
 ### Fixed
 
 - `ComboboxMulti` issue with chips not updating reflecting updated option labels
+- `InputTimeSelect` disabled state
 
 ### Removed
 
