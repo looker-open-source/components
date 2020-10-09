@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem`'s detail no longer has padding on the right side
 - `InputSearch` `onChange` callback argument is now a string rather than an event
 - `InputTimeSelect` supports 20- and 60-minute intervals
+- Brand font defaults to Roboto
 
 ### Fixed
 
