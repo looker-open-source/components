@@ -45,6 +45,39 @@ export interface UseDialogProps {
   content: ReactNode
 
   /**
+   * Dialog will be displayed immediately when rendered.
+   * @default undefined
+   */
+  isOpen?: boolean
+
+  /**
+   * Dialog will be displayed immediately when rendered.
+   * NOTE: Once rendered, changes to this value will be ignored. This property cannot
+   * be used treat this component as "controlled"
+   * @default false
+   */
+  defaultOpen?: boolean
+
+  /**
+   * Specify a callback to be called each time this Dialog is closed
+   */
+  onClose?: () => void
+
+  /**
+   * Specify a callback to be called before trying to close the Popover. This allows for
+   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
+   * Specify a callback to be called each time this Popover is closed
+   */
+  canClose?: () => boolean
+
+  /**
+   * Specify where the Dialog should be placed vertically
+   * COMING SOON: 'center' | 'top' | 'bottom'
+   * @default 'center'
+   */
+  placement?: DialogPlacements
+
+  /**
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width. Default / `auto` will cause
    * the Surface to auto-size to its content.
@@ -60,39 +93,6 @@ export interface UseDialogProps {
    * @default auto
    */
   height?: ResponsiveValue<string>
-
-  /**
-   * Specify where the Dialog should be placed vertically
-   * COMING SOON: 'center' | 'top' | 'bottom'
-   * @default 'center'
-   */
-  placement?: DialogPlacements
-
-  /**
-   * Dialog will be displayed immediately when rendered.
-   * NOTE: Once rendered, changes to this value will be ignored. This property cannot
-   * be used treat this component as "controlled"
-   * @default false
-   */
-  defaultOpen?: boolean
-
-  /**
-   * Dialog will be displayed immediately when rendered.
-   * @default undefined
-   */
-  isOpen?: boolean
-
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
-
-  /**
-   * Specify a callback to be called before trying to close the Popover. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Popover is closed
-   */
-  canClose?: () => boolean
 
   /**
    * Optional surface styles to merge with the Surface implementation. These
@@ -120,6 +120,19 @@ export interface UseDialogPropsInternal
   placement?: DialogPlacements | DrawerPlacements
 }
 
+export interface UseDialogResponseDom {
+  onClick: () => void
+  role: string
+  'aria-expanded': boolean
+}
+
+export interface UseDialogResponse {
+  isOpen: boolean
+  setOpen: (open?: boolean) => void
+  dialog: ReactNode
+  domProps: UseDialogResponseDom
+}
+
 export const useDialog = ({
   content,
   defaultOpen = false,
@@ -131,7 +144,7 @@ export const useDialog = ({
   surfaceStyles,
   Surface: CustomSurface,
   ...props
-}: UseDialogPropsInternal) => {
+}: UseDialogPropsInternal): UseDialogResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['isOpen'],
@@ -139,7 +152,7 @@ export const useDialog = ({
     name: 'useDialog',
   })
 
-  const isOpen = isControlled ? props.isOpen : uncontrolledIsOpen
+  const isOpen = isControlled ? props.isOpen || false : uncontrolledIsOpen
 
   const {
     callbackRef: focusRef,
@@ -150,9 +163,10 @@ export const useDialog = ({
   } = useFocusTrap(isOpen)
   const [, portalRef] = useScrollLock(focusRef)
 
-  const handleOpen = () => {
-    !isControlled && setUncontrolledIsOpen(true)
-  }
+  const handleSetOpen = (open?: boolean) =>
+    !isControlled && setUncontrolledIsOpen(open || false)
+
+  const handleOpen = () => handleSetOpen(true)
 
   const handleClose = () => {
     if (canClose && !canClose()) return
@@ -207,7 +221,12 @@ export const useDialog = ({
 
   return {
     dialog,
+    domProps: {
+      'aria-expanded': isOpen,
+      onClick: handleOpen,
+      role: 'button',
+    },
     isOpen,
-    open: handleOpen,
+    setOpen: handleSetOpen,
   }
 }

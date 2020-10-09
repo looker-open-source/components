@@ -8,6 +8,7 @@ exports[`Link Snapshot 1`] = `
   text-decoration: none;
 }
 
+.c0[aria-expanded='true'],
 .c0:focus,
 .c0:hover,
 .c0:active,

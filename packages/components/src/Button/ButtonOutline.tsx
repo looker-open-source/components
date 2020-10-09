@@ -39,6 +39,7 @@ export const ButtonOutline = styled(ButtonBase)`
     color: ${({ theme, color = 'key' }) => theme.colors[`${color}`]};
   }
 
+  &[aria-expanded='true'],
   &:active,
   &.active {
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};

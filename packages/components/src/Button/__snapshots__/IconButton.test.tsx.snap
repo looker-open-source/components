@@ -90,6 +90,7 @@ exports[`IconButton accepts color 1`] = `
   color: #dd223b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #ad1a2e;
@@ -226,6 +227,7 @@ exports[`IconButton accepts events 1`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;
@@ -362,6 +364,7 @@ exports[`IconButton accepts events 2`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;
@@ -498,6 +501,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;
@@ -634,6 +638,7 @@ exports[`IconButton default 1`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;
@@ -770,6 +775,7 @@ exports[`IconButton outline 1`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;
@@ -781,6 +787,7 @@ exports[`IconButton outline 1`] = `
   border-color: #71767a;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   border-color: #7a818b;
@@ -1186,6 +1193,7 @@ exports[`IconButton resized 1`] = `
   color: #7a818b;
 }
 
+.c2[aria-expanded='true'],
 .c2:active,
 .c2.active {
   color: #5f656e;

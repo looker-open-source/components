@@ -25,50 +25,27 @@
  */
 
 import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
+import { UseDialogResponse, UseDialogResponseDom } from './useDialog'
 
-export type DialogRenderProp = (dialogProps: {
-  onClick: () => void
-  className?: string
-  role?: string
-  'aria-expanded'?: boolean
-}) => ReactNode
+export type DialogRenderProp = (props: UseDialogResponseDom) => ReactNode
 
-function isRenderProp(
+const isRenderProp = (
   children: ReactNode | DialogRenderProp
-): children is DialogRenderProp {
-  return typeof children === 'function'
-}
+): children is DialogRenderProp => typeof children === 'function'
 
-export interface DialogRenderProps {
-  isOpen?: boolean
-  open: () => void
-  dialog: ReactNode
-}
-
-export const DialogRender: FC<DialogRenderProps> = ({
+export const DialogRender: FC<UseDialogResponse> = ({
   children,
-  isOpen,
-  open,
   dialog,
+  domProps,
 }) => {
-  const domReadyProps = {
-    'aria-expanded': isOpen,
-    className: isOpen ? 'active' : '',
-    onClick: open,
-    role: 'button',
-  }
-
   if (children === undefined) {
     return <>{dialog}</>
   } else if (isValidElement(children)) {
     children = cloneElement(children, {
-      ...domReadyProps,
-      className: isOpen
-        ? `${children.props.className} active`
-        : children.props.className,
+      ...domProps,
     })
   } else if (isRenderProp(children)) {
-    children = children(domReadyProps)
+    children = children(domProps)
   } else {
     // eslint-disable-next-line no-console
     console.warn(

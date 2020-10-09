@@ -57,6 +57,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   border-color: #F3F2FF;
 }
 
+.c1[aria-expanded='true'],
 .c1:active,
 .c1.active {
   background: #E8E5FF;
@@ -80,7 +81,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 edZfQD ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 hvMZkF"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 edZfQD ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 jMIOpt"
 >
   focus
 </button>
