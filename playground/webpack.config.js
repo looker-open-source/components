@@ -58,6 +58,8 @@ module.exports = {
             '@looker/*',
             'merge-anything', // a transitive dependency of @looker/components
             'react-hotkeys-hook', // ditto
+            'focus-trap', // ditto
+            'tabbable', // ditto
           ]),
         ],
         loader: 'babel-loader',
