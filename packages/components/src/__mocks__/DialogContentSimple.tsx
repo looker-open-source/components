@@ -24,55 +24,16 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Dialog, DialogProps } from '..'
-import { DialogLongContent } from '../../__mocks__/DialogLongContent'
-import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import React, { useContext } from 'react'
+import { DialogContext } from '../Dialog/DialogContext'
 
-export * from './Controlled'
-export * from './SaveChanges'
+export const SimpleContent = () => {
+  const { closeModal } = useContext(DialogContext)
 
-const Template: Story<DialogProps> = (args) => (
-  <Dialog
-    {...args}
-    onClose={() => {
-      console.log('Hello world')
-    }}
-  >
-    <button>Open Dialog</button>
-  </Dialog>
-)
-
-export const Basic = Template.bind({})
-Basic.args = {
-  content: 'Simple Content',
-}
-Basic.parameters = {
-  storyshots: { disable: true },
-}
-
-export const Open = Template.bind({})
-Open.args = {
-  ...Basic.args,
-  defaultOpen: true,
-}
-
-export const MediumContent = Template.bind({})
-MediumContent.args = {
-  content: <DialogMediumContent />,
-  defaultOpen: true,
-}
-
-export const LongContent = Template.bind({})
-LongContent.args = {
-  content: <DialogLongContent />,
-  defaultOpen: true,
-}
-
-/** TODO: Add Placement when supported */
-
-export default {
-  component: Dialog,
-  title: 'Dialog',
+  return (
+    <>
+      Dialog content
+      <button onClick={closeModal}>Done</button>
+    </>
+  )
 }

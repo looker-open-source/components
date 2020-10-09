@@ -25,27 +25,21 @@
  */
 
 import 'jest-styled-components'
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
   screen,
   fireEvent,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
+import { SimpleContent } from '../__mocks__/DialogContentSimple'
 import { Dialog } from './Dialog'
-import { DialogContext } from './DialogContext'
 import { DialogManager } from './DialogManager'
-
-const SimpleContent = () => {
-  const { closeModal } = useContext(DialogContext)
-
-  return (
-    <>
-      Dialog content
-      <button onClick={closeModal}>Done</button>
-    </>
-  )
-}
+import {
+  Controlled,
+  ControlledLegacy,
+  ControlledNoChildren,
+} from './stories/Controlled'
 
 describe('Dialog', () => {
   test('Verify initial state', () => {
@@ -168,33 +162,46 @@ describe('Dialog', () => {
   /**
    * NOTE: All other tests assume a "uncontrolled" version of Dialog.
    */
-  test('Controlled dialog', async () => {
-    const ControlledDialog = () => {
-      const [isOpen, setOpen] = useState(false)
-
-      return (
-        <>
-          <Dialog
-            content={<SimpleContent />}
-            isOpen={isOpen}
-            onClose={() => setOpen(false)}
-          />
-          <a onClick={() => setOpen(true)}>Open Dialog</a>
-        </>
-      )
-    }
-
-    renderWithTheme(<ControlledDialog />)
+  test('Controlled', async () => {
+    renderWithTheme(<Controlled />)
 
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
-    const doneButton = screen.getByText('Done')
+    const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('Controlled - no children', async () => {
+    renderWithTheme(<ControlledNoChildren />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done Reading')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('Controlled - legacy', async () => {
+    renderWithTheme(<ControlledLegacy />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done Reading')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
   })
 
   test('onClose callback', () => {

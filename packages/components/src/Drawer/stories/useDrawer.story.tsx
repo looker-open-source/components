@@ -29,16 +29,15 @@ import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { useDrawer } from '../useDrawer'
 
 export const UseDrawerHook = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const open = () => setIsOpen(true)
-  const onClose = () => setIsOpen(false)
+  const [isOpen, setOpen] = useState(false)
+  const open = () => setOpen(true)
 
   const content = <DialogLongContent />
 
   const { dialog } = useDrawer({
     content,
     isOpen,
-    onClose,
+    setOpen,
   })
 
   return (

@@ -24,7 +24,7 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, useState } from 'react'
+import React, { CSSProperties, FC, ReactNode, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
@@ -59,6 +59,11 @@ export interface UseDialogProps {
   defaultOpen?: boolean
 
   /**
+   * Optional, for a controlled version of the component
+   */
+  setOpen?: (open: boolean) => void
+
+  /**
    * Specify a callback to be called each time this Dialog is closed
    */
   onClose?: () => void
@@ -84,6 +89,7 @@ export interface UseDialogProps {
    * @default auto
    */
   width?: ResponsiveValue<string>
+
   maxWidth?: ResponsiveValue<string>
 
   /**
@@ -94,9 +100,12 @@ export interface UseDialogProps {
    */
   height?: ResponsiveValue<string>
 
+  // maxHeight?: ResponsiveValue<string>
+
   /**
    * Optional surface styles to merge with the Surface implementation. These
    * must be a CSSProperty compatible key / value paired object.
+   * @deprecated - this is slated for removal
    */
   surfaceStyles?: CSSProperties
 
@@ -104,6 +113,7 @@ export interface UseDialogProps {
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
+   * @deprecated - this is slated for removal
    */
   backdrop?: CSSProperties
 
@@ -128,7 +138,7 @@ export interface UseDialogResponseDom {
 
 export interface UseDialogResponse {
   isOpen: boolean
-  setOpen: (open?: boolean) => void
+  setOpen: (open: boolean) => void
   dialog: ReactNode
   domProps: UseDialogResponseDom
 }
@@ -136,23 +146,47 @@ export interface UseDialogResponse {
 export const useDialog = ({
   content,
   defaultOpen = false,
+  isOpen: controlledIsOpen,
   canClose,
   onClose,
+  setOpen: controlledSetOpen,
   backdrop,
   maxWidth,
   width,
   surfaceStyles,
   Surface: CustomSurface,
-  ...props
 }: UseDialogPropsInternal): UseDialogResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
-    controllingProps: ['isOpen'],
-    isControlledCheck: () => props.isOpen !== undefined,
+    controllingProps: ['setOpen'],
+    isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'useDialog',
   })
 
-  const isOpen = isControlled ? props.isOpen || false : uncontrolledIsOpen
+  if (Boolean(onClose) && Boolean(controlledSetOpen)) {
+    // eslint-disable-next-line no-console
+    throw new Error(
+      'useDialog does not support setting both `setOpen` and `onClose`. Use just `setOpen`'
+    )
+  }
+
+  /**
+   * LEGACY SUPPORT
+   * Eventually we need to deprecate support for `isOpen` without specifying a `setOpen`
+   * being explicitly so we can unwind this semi-controlled state.
+   */
+  const isPartiallyControlled = !!onClose && controlledIsOpen !== undefined
+
+  const isOpen = isPartiallyControlled
+    ? controlledIsOpen
+    : isControlled
+    ? controlledIsOpen || false
+    : uncontrolledIsOpen
+
+  const setOpen =
+    isControlled && controlledSetOpen
+      ? controlledSetOpen
+      : setUncontrolledIsOpen
 
   const {
     callbackRef: focusRef,
@@ -163,14 +197,11 @@ export const useDialog = ({
   } = useFocusTrap(isOpen)
   const [, portalRef] = useScrollLock(focusRef)
 
-  const handleSetOpen = (open?: boolean) =>
-    !isControlled && setUncontrolledIsOpen(open || false)
-
-  const handleOpen = () => handleSetOpen(true)
+  const handleOpen = () => setOpen(true)
 
   const handleClose = () => {
     if (canClose && !canClose()) return
-    !isControlled && setUncontrolledIsOpen(false)
+    setOpen(false)
     onClose && onClose()
   }
 
@@ -227,6 +258,6 @@ export const useDialog = ({
       role: 'button',
     },
     isOpen,
-    setOpen: handleSetOpen,
+    setOpen,
   }
 }
