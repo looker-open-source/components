@@ -25,7 +25,6 @@
  */
 
 export const fontOptions = [
-  'Red Hat Display',
   'Roboto',
   'Roboto Mono',
   'Google Sans',
