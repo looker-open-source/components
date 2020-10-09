@@ -71,15 +71,13 @@ export function useBlur<
       const focusInList =
         popoverCurrent && popoverCurrent.contains(nextFocusTraget as Node)
 
-      requestAnimationFrame(() => {
-        if (focusInList && state !== ComboboxState.INTERACTING) {
-          // focus landed inside the select, keep it open
-          transition && transition(ComboboxActionType.INTERACT)
-        } else if (!focusInList && document.activeElement !== inputElement) {
-          // focus landed outside the select, close it
-          closeList()
-        }
-      })
+      if (focusInList && state !== ComboboxState.INTERACTING) {
+        // focus landed inside the select, keep it open
+        transition && transition(ComboboxActionType.INTERACT)
+      } else if (!focusInList && e.relatedTarget !== inputElement) {
+        // focus landed outside the select, close it
+        closeList()
+      }
       // Stop ComboboxMultiInput + freeInput underlying InputChips blur handler from
       // tokenizing input value when an option is clicked
       focusInList &&
