@@ -73,14 +73,14 @@ exports[`A FieldText with default label 1`] = `
   font-family: inherit;
 }
 
-.c5 .c8 {
+.c5 .sc-dIvqjp {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c8 input,
-.c5 .c8 span {
+.c5 .sc-dIvqjp input,
+.c5 .sc-dIvqjp span {
   padding: 0 0.5rem;
 }
 
@@ -131,7 +131,7 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c0 .{
   grid-area: messages;
 }
 
@@ -141,13 +141,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c0 .c10 {
+.c0 .sc-cBoprd {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c9 {
+.c0 .sc-hiKfjK {
   margin-top: 0.5rem;
 }
 
@@ -177,7 +177,7 @@ exports[`A FieldText with default label 1`] = `
     </div>
   </div>
   <div
-    className="c7 "
+    className=""
     id="FieldTextID-describedby"
   />
 </div>
@@ -256,14 +256,14 @@ exports[`A FieldText with label inline 1`] = `
   font-family: inherit;
 }
 
-.c5 .c9 {
+.c5 .sc-dIvqjp {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c9 input,
-.c5 .c9 span {
+.c5 .sc-dIvqjp input,
+.c5 .sc-dIvqjp span {
   padding: 0 0.5rem;
 }
 
@@ -287,24 +287,6 @@ exports[`A FieldText with label inline 1`] = `
 
 .c4 {
   min-width: 0;
-}
-
-.c8 .c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c8 .c7 {
-  grid-area: messages;
-}
-
-.c8 > .c1 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.25rem;
 }
 
 .c0 {
@@ -333,7 +315,7 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c0 .{
   grid-area: messages;
 }
 
@@ -346,7 +328,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c11 {
+.c0 .sc-cBoprd {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -355,7 +337,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c10 {
+.c0 .sc-hiKfjK {
   margin-top: 0.5rem;
 }
 
@@ -385,7 +367,7 @@ exports[`A FieldText with label inline 1`] = `
     </div>
   </div>
   <div
-    className="c7 "
+    className=""
     id="FieldTextID-describedby"
   />
 </div>

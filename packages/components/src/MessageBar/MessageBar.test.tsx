@@ -252,16 +252,10 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Success')).toBeInTheDocument()
 
       // icon title and color
-<<<<<<< HEAD
       expect(getByTitle('Success').closest('div')).toHaveStyleRule(
         'color',
         theme.colors.positive
       )
-=======
-      expect(getByTitle('Success').closest('div')).toHaveStyleRule({
-        color: theme.colors.positive,
-      })
->>>>>>> bd281898 (Styled Components 5 prep Test fix-ups)
     })
   })
 })

@@ -9,7 +9,7 @@ exports[`A FieldTextArea with default label 1`] = `
   width: 100%;
 }
 
-.c5 .c7 {
+.c5 .sc-iqAbSa {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -76,7 +76,7 @@ exports[`A FieldTextArea with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .{
   grid-area: messages;
 }
 
@@ -86,13 +86,13 @@ exports[`A FieldTextArea with default label 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c0 .c9 {
+.c0 .sc-ciSmjq {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .c8 {
+.c0 .sc-gXfWUo {
   margin-top: 0.5rem;
 }
 
@@ -119,7 +119,7 @@ exports[`A FieldTextArea with default label 1`] = `
     </div>
   </div>
   <div
-    className="c6 "
+    className=""
     id="FieldTextAreaID-describedby"
   />
 </div>
@@ -134,7 +134,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   width: 100%;
 }
 
-.c5 .c8 {
+.c5 .sc-iqAbSa {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -176,24 +176,6 @@ exports[`A FieldTextArea with label inline 1`] = `
   min-width: 0;
 }
 
-.c7 .c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c7 .c6 {
-  grid-area: messages;
-}
-
-.c7 > .c1 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.25rem;
-}
-
 .c0 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -220,7 +202,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .c6 {
+.c0 .{
   grid-area: messages;
 }
 
@@ -233,7 +215,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c10 {
+.c0 .sc-ciSmjq {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -242,7 +224,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c9 {
+.c0 .sc-gXfWUo {
   margin-top: 0.5rem;
 }
 
@@ -269,7 +251,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     </div>
   </div>
   <div
-    className="c6 "
+    className=""
     id="FieldTextAreaID-describedby"
   />
 </div>

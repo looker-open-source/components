@@ -22,14 +22,14 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.53",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^5.1.4",
     "react": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.2.0"
   },
   "peerDependencies": {
     "react": "^16.11",
     "react-is": "^16.11",
-    "styled-components": "^4"
+    "styled-components": "^5"
   }
 }

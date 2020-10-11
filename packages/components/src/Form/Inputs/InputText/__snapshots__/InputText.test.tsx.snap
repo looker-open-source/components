@@ -73,14 +73,14 @@ exports[`InputText default 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -182,14 +182,14 @@ exports[`InputText should accept disabled 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -293,14 +293,14 @@ exports[`InputText should accept readOnly 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -400,14 +400,14 @@ exports[`InputText should accept required 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -507,14 +507,14 @@ exports[`InputText with a placeholder 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -614,14 +614,14 @@ exports[`InputText with a value 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -721,14 +721,14 @@ exports[`InputText with aria-describedby 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
@@ -828,14 +828,14 @@ exports[`InputText with name and id 1`] = `
   font-family: inherit;
 }
 
-.c0 .c2 {
+.c0 .sc-jrsJCI {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c0 .c2 input,
-.c0 .c2 span {
+.c0 .sc-jrsJCI input,
+.c0 .sc-jrsJCI span {
   padding: 0 0.5rem;
 }
 
