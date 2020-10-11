@@ -45,5 +45,5 @@ test('InlineInputTextBase renders a subset of styles', () => {
   renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
   expect(
     screen.getByPlaceholderText('type here...').parentElement
-  ).not.toHaveStyle('border-bottom: 1px dashed')
+  ).not.toHaveStyleRule('border-bottom: 1px dashed')
 })

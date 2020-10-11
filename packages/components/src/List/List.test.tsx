@@ -32,53 +32,56 @@ import { ListItem } from './ListItem'
 
 import 'jest-styled-components'
 
-test('A default List, should be a ul', () => {
-  const component = createWithTheme(
-    <List>
-      <ListItem>🥑</ListItem>
-      <ListItem>🍕</ListItem>
-      <ListItem>🥨</ListItem>
-    </List>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+describe('List', () => {
+  test('Default, should be a ul', () => {
+    const component = createWithTheme(
+      <List>
+        <ListItem>🥑</ListItem>
+        <ListItem>🍕</ListItem>
+        <ListItem>🥨</ListItem>
+      </List>
+    )
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
-test('A bulleted List', () => {
-  const component = createWithTheme(
-    <List type="bullet">
-      <ListItem>🥑</ListItem>
-      <ListItem>🍕</ListItem>
-      <ListItem>🥨</ListItem>
-    </List>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('bulleted', () => {
+    const component = createWithTheme(
+      <List type="bullet">
+        <ListItem>🥑</ListItem>
+        <ListItem>🍕</ListItem>
+        <ListItem>🥨</ListItem>
+      </List>
+    )
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
-test('A numerically ordered List', () => {
-  const component = createWithTheme(
-    <List type="number">
-      <ListItem>🥑</ListItem>
-      <ListItem>🍕</ListItem>
-      <ListItem>🥨</ListItem>
-    </List>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('numerically ordered', () => {
+    const component = createWithTheme(
+      <List type="number">
+        <ListItem>🥑</ListItem>
+        <ListItem>🍕</ListItem>
+        <ListItem>🥨</ListItem>
+      </List>
+    )
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
-test('A numerically ordered List marked as nomarker', () => {
-  renderWithTheme(
-    <List type="number" nomarker data-testid="list">
-      <ListItem>🥑</ListItem>
-      <ListItem>🍕</ListItem>
-      <ListItem>🥨</ListItem>
-    </List>
-  )
+  test('numerically ordered marked as nomarker', () => {
+    renderWithTheme(
+      <List type="number" nomarker data-testid="list">
+        <ListItem>🥑</ListItem>
+        <ListItem>🍕</ListItem>
+        <ListItem>🥨</ListItem>
+      </List>
+    )
 
-  const list = screen.getByTestId('list')
-  expect(list).toHaveStyle('list-style-type: none')
-  // Padding unset due to default reset applied
-  expect(list).toMatchSnapshot()
+    const list = screen.getByTestId('list')
+    expect(list).toBeInTheDocument()
+    expect(list).toHaveStyleRule('list-style-type', 'none')
+    // Padding unset due to default reset applied
+    expect(list).toMatchSnapshot()
+  })
 })
