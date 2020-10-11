@@ -85,7 +85,7 @@
     "react-test-renderer": "^16.13.1",
     "styled-components": "^4.4.1",
     "typescript": "^3.8.3",
-    "webpack": "^4.44.2"
+    "webpack": "^5.0.0"
   },
   "resolutions": {
     "node-fetch": "2.6.1",
