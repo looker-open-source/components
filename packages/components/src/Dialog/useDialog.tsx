@@ -24,7 +24,7 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, useState, useEffect } from 'react'
+import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
@@ -178,7 +178,7 @@ export const useDialog = ({
   const isPartiallyControlled = !!onClose && controlledIsOpen !== undefined
 
   const isOpen = isPartiallyControlled
-    ? controlledIsOpen
+    ? controlledIsOpen || false
     : isControlled
     ? controlledIsOpen || false
     : uncontrolledIsOpen
