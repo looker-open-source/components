@@ -42,19 +42,11 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   cursor: default;
 }
 
-.c2 .c1 {
-  min-width: 3rem;
-}
-
-.c2 .c1 + .c1 {
-  margin-left: 2rem;
-}
-
 <button
   aria-controls="panel-0"
   aria-orientation="horizontal"
   aria-selected="true"
-  class="c0 c1 "
+  class="c0 "
   font-size="small"
   font-weight="medium"
   id="tab-0"
@@ -106,19 +98,11 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   cursor: default;
 }
 
-.c2 .c1 {
-  min-width: 3rem;
-}
-
-.c2 .c1 + .c1 {
-  margin-left: 2rem;
-}
-
 <button
   aria-controls="panel-1"
   aria-orientation="horizontal"
   aria-selected="false"
-  class="c0 c1 "
+  class="c0 "
   font-size="small"
   font-weight="medium"
   id="tab-1"

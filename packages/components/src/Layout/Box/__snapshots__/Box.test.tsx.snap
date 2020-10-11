@@ -155,6 +155,10 @@ exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 }
 
 @media screen and (min-width:30rem) {
+
+}
+
+@media screen and (min-width:30rem) {
   .c0 {
     line-height: 1.5rem;
   }
@@ -216,6 +220,10 @@ exports[`Box Box with null values are removed from styling 1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   margin-top: 1.25rem;
+}
+
+@media screen and (min-width:30rem) {
+
 }
 
 @media screen and (min-width:48rem) {

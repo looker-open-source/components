@@ -38,41 +38,41 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
   opacity: 0.25;
 }
 
-.c1 {
+.c1 .sc-gtssRu {
+  height: 18px;
+  width: 18px;
+}
+
+.c2 {
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
   color: #6C43E0;
 }
 
-.c1 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c2:hover,
+.c2:focus,
+.c2.hover {
   background: #F3F2FF;
   color: #6C43E0;
 }
 
-.c1:active,
-.c1.active {
+.c2:active,
+.c2.active {
   background: #E8E5FF;
   border-color: #9785F2;
   color: #6C43E0;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c2[disabled]:hover,
+.c2[disabled]:active,
+.c2[disabled]:focus {
   background-color: #FFFFFF;
   border-color: #C1C6CC;
   color: #6C43E0;
 }
 
 <button
-  class="c0 c1"
+  class="c0 c1 c2"
 >
   focus
 </button>
@@ -80,7 +80,7 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 
 exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 gMeceu ButtonBase-sc-1bpio6j-1 ButtonOutline-ncggc7-0 fXWsVt"
+  class="sc-dlnjPT gmyYwl sc-hKFyIo sc-eCApGN jBmIPj fFauMn"
 >
   focus
 </button>

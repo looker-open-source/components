@@ -46,12 +46,12 @@ exports[`Fieldset 1`] = `
   width: 100%;
 }
 
-.c0 .c12 {
+.c0 .sc-efHXLn {
   padding-left: calc(1px + 1rem + 0.5rem);
   padding-top: 1rem;
 }
 
-.c0 .c13 {
+.c0 .sc-cOigif {
   font-size: 0.875rem;
   font-weight: 600;
   height: 24px;
@@ -94,7 +94,7 @@ exports[`Fieldset 1`] = `
   grid-area: input;
 }
 
-.c4 .c11 {
+.c4 .{
   grid-area: messages;
 }
 
@@ -104,13 +104,13 @@ exports[`Fieldset 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c4 .c15 {
+.c4 .sc-laZMyp {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c4 .c14 {
+.c4 .sc-jgPznn {
   margin-top: 0.5rem;
 }
 
@@ -186,14 +186,14 @@ exports[`Fieldset 1`] = `
   font-family: inherit;
 }
 
-.c9 .c16 {
+.c9 .sc-eGJXgd {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c9 .c16 input,
-.c9 .c16 span {
+.c9 .sc-eGJXgd input,
+.c9 .sc-eGJXgd span {
   padding: 0 0.5rem;
 }
 
@@ -287,7 +287,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c11 "
+          className=""
           id="text-1-describedby"
         />
       </div>
@@ -318,7 +318,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c11 "
+          className=""
           id="text-2-describedby"
         />
       </div>
@@ -349,7 +349,7 @@ exports[`Fieldset 1`] = `
           </div>
         </div>
         <div
-          className="c11 "
+          className=""
           id="text-3-describedby"
         />
       </div>

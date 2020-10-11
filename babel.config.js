@@ -48,7 +48,10 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
-      'babel-plugin-styled-components',
+      [
+        'babel-plugin-styled-components',
+        { displayName: !isTest, ssr: !isTest },
+      ],
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
     ],

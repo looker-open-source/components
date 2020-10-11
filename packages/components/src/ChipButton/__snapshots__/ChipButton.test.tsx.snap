@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChipButton renders correctly 1`] = `
+.c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+}
+
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
@@ -47,8 +51,7 @@ exports[`ChipButton renders correctly 1`] = `
   background: #F5F6F7;
 }
 
-.c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+.c3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -99,7 +102,7 @@ exports[`ChipButton renders correctly 1`] = `
 }
 
 <span
-  className="c0 c1"
+  className="c0  c1"
   onBlur={[Function]}
   onClick={[Function]}
   onKeyDown={[Function]}
@@ -108,7 +111,7 @@ exports[`ChipButton renders correctly 1`] = `
   tabIndex={0}
 >
   <span
-    className="c2"
+    className="c2 c3"
   >
     chip
   </span>

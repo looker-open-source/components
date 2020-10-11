@@ -19,7 +19,7 @@ exports[`A FieldCheckbox 1`] = `
   line-height: 1.25rem;
 }
 
-.c0 .c3 {
+.c0 .{
   grid-area: input;
 }
 
@@ -38,7 +38,7 @@ exports[`A FieldCheckbox 1`] = `
   padding-left: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .sc-jlZIZy {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -54,12 +54,12 @@ exports[`A FieldCheckbox 1`] = `
   margin-left: 0.25rem;
 }
 
-.c0 .c7 {
+.c0 .{
   grid-area: messages;
   padding-left: 0.75rem;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -81,14 +81,14 @@ exports[`A FieldCheckbox 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
 }
 
-.c4 input {
+.c3 input {
   height: 100%;
   opacity: 0;
   position: absolute;
@@ -96,28 +96,28 @@ exports[`A FieldCheckbox 1`] = `
   z-index: 1;
 }
 
-.c4 input:checked + .c5 {
+.c3 input:checked + .c4 {
   background-color: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c4 input:not(:checked) + .c5 {
+.c3 input:not(:checked) + .c4 {
   color: #FFFFFF;
 }
 
-.c4 input:focus + .c5 {
+.c3 input:focus + .c4 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input:disabled + .c5 {
+.c3 input:disabled + .c4 {
   background: #F5F6F7;
   border-color: #DEE1E5;
   color: #939BA5;
 }
 
-.c4 input:disabled:not(:checked) + .c5 {
+.c3 input:disabled:not(:checked) + .c4 {
   color: transparent;
 }
 
@@ -131,10 +131,10 @@ exports[`A FieldCheckbox 1`] = `
     👍
   </span>
   <div
-    className="c3 "
+    className=""
   >
     <div
-      className="c4 "
+      className="c3 "
     >
       <input
         aria-describedby="FieldCheckboxID-describedby"
@@ -146,7 +146,7 @@ exports[`A FieldCheckbox 1`] = `
         type="checkbox"
       />
       <div
-        className="c5 c6"
+        className="c4 c5"
       >
         <svg
           fill="none"
@@ -167,7 +167,7 @@ exports[`A FieldCheckbox 1`] = `
     </div>
   </div>
   <div
-    className="c7 "
+    className=""
     id="FieldCheckboxID-describedby"
   />
 </label>
@@ -192,7 +192,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   line-height: 1.25rem;
 }
 
-.c0 .c3 {
+.c0 .{
   grid-area: input;
 }
 
@@ -211,7 +211,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   padding-left: 0.5rem;
 }
 
-.c0 .c8 {
+.c0 .sc-jlZIZy {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -227,12 +227,12 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin-left: 0.25rem;
 }
 
-.c0 .c7 {
+.c0 .{
   grid-area: messages;
   padding-left: 0.75rem;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -254,14 +254,14 @@ exports[`A FieldCheckbox with checked value 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   height: 1rem;
   position: relative;
   width: 1rem;
 }
 
-.c4 input {
+.c3 input {
   height: 100%;
   opacity: 0;
   position: absolute;
@@ -269,28 +269,28 @@ exports[`A FieldCheckbox with checked value 1`] = `
   z-index: 1;
 }
 
-.c4 input:checked + .c5 {
+.c3 input:checked + .c4 {
   background-color: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c4 input:not(:checked) + .c5 {
+.c3 input:not(:checked) + .c4 {
   color: #FFFFFF;
 }
 
-.c4 input:focus + .c5 {
+.c3 input:focus + .c4 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 input:disabled + .c5 {
+.c3 input:disabled + .c4 {
   background: #F5F6F7;
   border-color: #DEE1E5;
   color: #939BA5;
 }
 
-.c4 input:disabled:not(:checked) + .c5 {
+.c3 input:disabled:not(:checked) + .c4 {
   color: transparent;
 }
 
@@ -304,10 +304,10 @@ exports[`A FieldCheckbox with checked value 1`] = `
     👍
   </span>
   <div
-    className="c3 "
+    className=""
   >
     <div
-      className="c4 "
+      className="c3 "
     >
       <input
         aria-describedby="FieldCheckboxID-describedby"
@@ -319,7 +319,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
         type="checkbox"
       />
       <div
-        className="c5 c6"
+        className="c4 c5"
       >
         <svg
           fill="none"
@@ -340,7 +340,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
     </div>
   </div>
   <div
-    className="c7 "
+    className=""
     id="FieldCheckboxID-describedby"
   />
 </label>

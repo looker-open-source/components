@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
-.c7 {
+.c6 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   width: 1.5rem;
   height: 1.5rem;
@@ -19,7 +19,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   flex-shrink: 0;
 }
 
-.c7 svg {
+.c6 svg {
   height: 100%;
   width: 100%;
 }
@@ -63,7 +63,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   outline: none;
 }
 
-.c5 {
+.c4 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: transparent;
   border: none;
@@ -84,11 +84,11 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   border: solid 1px currentColor;
 }
 
-.c5:focus {
+.c4:focus {
   outline: none;
 }
 
-.c5 .c6 {
+.c4 .c5 {
   height: 20px;
   width: 20px;
 }
@@ -103,7 +103,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   width: 40px;
 }
 
-.c0 .c4 {
+.c0 .{
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -111,7 +111,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   width: 20px;
 }
 
-.c0 .c4 .c6 {
+.c0 ..c5 {
   height: 14px;
   width: 14px;
 }
@@ -139,11 +139,11 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
     />
   </div>
   <div
-    className="c4 c5"
+    className="c4"
   >
     <div
       aria-hidden={true}
-      className="c6 c7"
+      className="c5 c6"
     >
       <svg
         fill="currentColor"
@@ -162,7 +162,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 `;
 
 exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
-.c7 {
+.c6 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   width: 1.5rem;
   height: 1.5rem;
@@ -180,7 +180,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   flex-shrink: 0;
 }
 
-.c7 svg {
+.c6 svg {
   height: 100%;
   width: 100%;
 }
@@ -224,7 +224,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   outline: none;
 }
 
-.c5 {
+.c4 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: transparent;
   border: none;
@@ -245,11 +245,11 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   border: solid 1px currentColor;
 }
 
-.c5:focus {
+.c4:focus {
   outline: none;
 }
 
-.c5 .c6 {
+.c4 .c5 {
   height: 20px;
   width: 20px;
 }
@@ -264,7 +264,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   width: 40px;
 }
 
-.c0 .c4 {
+.c0 .{
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -272,7 +272,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   width: 20px;
 }
 
-.c0 .c4 .c6 {
+.c0 ..c5 {
   height: 14px;
   width: 14px;
 }
@@ -300,11 +300,11 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
     />
   </div>
   <div
-    className="c4 c5"
+    className="c4"
   >
     <div
       aria-hidden={true}
-      className="c6 c7"
+      className="c5 c6"
     >
       <svg
         fill="currentColor"
@@ -376,7 +376,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   width: 20px;
 }
 
-.c5 {
+.c4 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: transparent;
   border: none;
@@ -397,11 +397,11 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   border: solid 1px currentColor;
 }
 
-.c5:focus {
+.c4:focus {
   outline: none;
 }
 
-.c5 .c2 {
+.c4 .c2 {
   height: 20px;
   width: 20px;
 }
@@ -416,7 +416,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   width: 40px;
 }
 
-.c0 .c4 {
+.c0 .{
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -424,7 +424,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   width: 20px;
 }
 
-.c0 .c4 .c2 {
+.c0 ..c2 {
   height: 14px;
   width: 14px;
 }
@@ -453,7 +453,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
     </div>
   </div>
   <div
-    className="c4 c5"
+    className="c4"
   >
     <div
       aria-hidden={true}
@@ -501,11 +501,6 @@ exports[`Avatar AvatarIcon renders  1`] = `
   width: 100%;
 }
 
-.c3 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: transparent;
@@ -534,16 +529,6 @@ exports[`Avatar AvatarIcon renders  1`] = `
 .c0 .c1 {
   height: 20px;
   width: 20px;
-}
-
-.c4 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c5 .c6 .c1 {
-  height: 14px;
-  width: 14px;
 }
 
 <div
@@ -592,11 +577,6 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
   width: 100%;
 }
 
-.c3 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   background: transparent;
@@ -625,21 +605,6 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
 .c0 .c1 {
   height: 20px;
   width: 20px;
-}
-
-.c4 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c5 .c1 {
-  height: 20px;
-  width: 20px;
-}
-
-.c6 .c7 .c1 {
-  height: 14px;
-  width: 14px;
 }
 
 <div

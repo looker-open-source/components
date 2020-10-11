@@ -53,7 +53,7 @@ exports[`Form with one child 1`] = `
   grid-area: input;
 }
 
-.c1 .c8 {
+.c1 .{
   grid-area: messages;
 }
 
@@ -63,13 +63,13 @@ exports[`Form with one child 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c1 .c10 {
+.c1 .sc-laZMyp {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c1 .c9 {
+.c1 .sc-jgPznn {
   margin-top: 0.5rem;
 }
 
@@ -145,14 +145,14 @@ exports[`Form with one child 1`] = `
   font-family: inherit;
 }
 
-.c6 .c11 {
+.c6 .sc-eGJXgd {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c6 .c11 input,
-.c6 .c11 span {
+.c6 .sc-eGJXgd input,
+.c6 .sc-eGJXgd span {
   padding: 0 0.5rem;
 }
 
@@ -214,7 +214,7 @@ exports[`Form with one child 1`] = `
       </div>
     </div>
     <div
-      className="c8 "
+      className=""
       id="text-field-describedby"
     />
   </div>

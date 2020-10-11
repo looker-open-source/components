@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Chip renders correctly 1`] = `
+.c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+}
+
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
@@ -47,8 +51,7 @@ exports[`Chip renders correctly 1`] = `
   background: #F5F6F7;
 }
 
-.c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+.c2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -63,7 +66,7 @@ exports[`Chip renders correctly 1`] = `
   tabIndex={0}
 >
   <span
-    className="c1"
+    className="c1 c2"
   >
     chip
   </span>
@@ -71,6 +74,10 @@ exports[`Chip renders correctly 1`] = `
 `;
 
 exports[`Chip renders disabled 1`] = `
+.c1 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+}
+
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
@@ -117,8 +124,7 @@ exports[`Chip renders disabled 1`] = `
   background: #F5F6F7;
 }
 
-.c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+.c2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -133,7 +139,7 @@ exports[`Chip renders disabled 1`] = `
   onKeyUp={[Function]}
 >
   <span
-    className="c1"
+    className="c1 c2"
   >
     chip
   </span>

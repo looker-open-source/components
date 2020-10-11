@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InlineInputText renders an input with a placeholder 1`] = `
-.c1 {
+.c2 {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -18,45 +18,45 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   top: 0;
 }
 
-.c1::-webkit-search-decoration,
-.c1::-webkit-search-cancel-button,
-.c1::-webkit-search-results-button,
-.c1::-webkit-search-results-decoration {
+.c2::-webkit-search-decoration,
+.c2::-webkit-search-cancel-button,
+.c2::-webkit-search-results-button,
+.c2::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: #939BA5;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: #939BA5;
 }
 
-.c1::-webkit-outer-spin-button,
-.c1::-webkit-inner-spin-button {
+.c2::-webkit-outer-spin-button,
+.c2::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1[type='number'] {
+.c2[type='number'] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-.c2 {
+.c3 {
   color: transparent;
   line-height: inherit;
   max-width: 100%;
@@ -76,6 +76,9 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   justify-content: center;
   min-width: 2rem;
   position: relative;
+}
+
+.c1 {
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -86,29 +89,29 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
   text-align: inherit;
 }
 
-.c0:focus,
-.c0:hover {
+.c1:focus,
+.c1:hover {
   background-color: #F5F6F7;
   border-bottom-color: #6C43E0;
   outline: none;
 }
 
-.c0:focus {
+.c1:focus {
   border-bottom-style: solid;
 }
 
 <span
-  className="c0"
+  className="c0 c1"
 >
   <input
-    className="c1"
+    className="c2"
     onChange={[Function]}
     placeholder="this is the placeholder"
     type="text"
     value=""
   />
   <span
-    className="c2"
+    className="c3"
   >
     this is the placeholder
   </span>
@@ -116,7 +119,7 @@ exports[`InlineInputText renders an input with a placeholder 1`] = `
 `;
 
 exports[`InlineInputText renders an input with no value 1`] = `
-.c1 {
+.c2 {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -133,45 +136,45 @@ exports[`InlineInputText renders an input with no value 1`] = `
   top: 0;
 }
 
-.c1::-webkit-search-decoration,
-.c1::-webkit-search-cancel-button,
-.c1::-webkit-search-results-button,
-.c1::-webkit-search-results-decoration {
+.c2::-webkit-search-decoration,
+.c2::-webkit-search-cancel-button,
+.c2::-webkit-search-results-button,
+.c2::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: #939BA5;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: #939BA5;
 }
 
-.c1::-webkit-outer-spin-button,
-.c1::-webkit-inner-spin-button {
+.c2::-webkit-outer-spin-button,
+.c2::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1[type='number'] {
+.c2[type='number'] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-.c2 {
+.c3 {
   color: transparent;
   line-height: inherit;
   max-width: 100%;
@@ -191,6 +194,9 @@ exports[`InlineInputText renders an input with no value 1`] = `
   justify-content: center;
   min-width: 2rem;
   position: relative;
+}
+
+.c1 {
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -201,28 +207,28 @@ exports[`InlineInputText renders an input with no value 1`] = `
   text-align: inherit;
 }
 
-.c0:focus,
-.c0:hover {
+.c1:focus,
+.c1:hover {
   background-color: #F5F6F7;
   border-bottom-color: #6C43E0;
   outline: none;
 }
 
-.c0:focus {
+.c1:focus {
   border-bottom-style: solid;
 }
 
 <span
-  className="c0"
+  className="c0 c1"
 >
   <input
-    className="c1"
+    className="c2"
     onChange={[Function]}
     type="text"
     value=""
   />
   <span
-    className="c2"
+    className="c3"
   >
      
   </span>
@@ -230,7 +236,7 @@ exports[`InlineInputText renders an input with no value 1`] = `
 `;
 
 exports[`InlineInputText renders an input with specific predefined value 1`] = `
-.c1 {
+.c2 {
   background: transparent;
   border: none;
   caret-color: #262D33;
@@ -247,45 +253,45 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   top: 0;
 }
 
-.c1::-webkit-search-decoration,
-.c1::-webkit-search-cancel-button,
-.c1::-webkit-search-results-button,
-.c1::-webkit-search-results-decoration {
+.c2::-webkit-search-decoration,
+.c2::-webkit-search-cancel-button,
+.c2::-webkit-search-results-button,
+.c2::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: #939BA5;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: #939BA5;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: #939BA5;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: #939BA5;
 }
 
-.c1::-webkit-outer-spin-button,
-.c1::-webkit-inner-spin-button {
+.c2::-webkit-outer-spin-button,
+.c2::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c1[type='number'] {
+.c2[type='number'] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-.c2 {
+.c3 {
   color: transparent;
   line-height: inherit;
   max-width: 100%;
@@ -305,6 +311,9 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   justify-content: center;
   min-width: 2rem;
   position: relative;
+}
+
+.c1 {
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
@@ -315,28 +324,28 @@ exports[`InlineInputText renders an input with specific predefined value 1`] = `
   text-align: inherit;
 }
 
-.c0:focus,
-.c0:hover {
+.c1:focus,
+.c1:hover {
   background-color: #F5F6F7;
   border-bottom-color: #6C43E0;
   outline: none;
 }
 
-.c0:focus {
+.c1:focus {
   border-bottom-style: solid;
 }
 
 <span
-  className="c0"
+  className="c0 c1"
 >
   <input
-    className="c1"
+    className="c2"
     onChange={[Function]}
     type="text"
     value="type here..."
   />
   <span
-    className="c2"
+    className="c3"
   >
     type here...
   </span>
