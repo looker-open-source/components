@@ -25,7 +25,7 @@
     "@types/rimraf": "^3.0.0",
     "glob": "^7.1.6",
     "lodash": "^4.17.20",
-    "ora": "^5.0.0",
+    "ora": "^5.1.0",
     "rimraf": "^3.0.2"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
