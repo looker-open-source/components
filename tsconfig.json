@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.common.json",
   "compilerOptions": {
+    "incremental": true,
     "noEmit": true,
     "pretty": true,
     "baseUrl": ".",

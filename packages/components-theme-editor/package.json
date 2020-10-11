@@ -21,7 +21,7 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "@types/react": "^16.9.50",
+    "@types/react": "^16.9.52",
     "@types/styled-components": "^5.1.3",
     "react": "^16.13.1",
     "react-is": "^16.13.1",
