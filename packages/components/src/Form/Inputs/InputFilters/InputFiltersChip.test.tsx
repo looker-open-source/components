@@ -25,24 +25,38 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { InputFilters, InputFiltersProps } from './InputFilters'
-import { filters } from './sampleInputFilters'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { InputFiltersChip } from './InputFiltersChip'
 
-const Template: Story<InputFiltersProps> = (args) => <InputFilters {...args} />
+describe('InputFiltersChip', () => {
+  const filter = {
+    field: 'role',
+    options: ['user', 'group-admin', 'admin', 'pizza'],
+    value: 'user',
+  }
+  const onDelete = jest.fn()
 
-export const Basic = Template.bind({})
-Basic.args = {
-  filters: filters,
-}
+  test('renders', () => {
+    const { getByText } = renderWithTheme(
+      <InputFiltersChip filter={filter} onDelete={onDelete} />
+    )
+    expect(getByText('user')).toBeInTheDocument()
+  })
 
-export const HideFilter = Template.bind({})
-HideFilter.args = {
-  ...Basic.args,
-  hideFilterIcon: true,
-}
+  test('onClick', () => {
+    const onClick = jest.fn()
 
-export default {
-  component: InputFilters,
-  title: 'InputFilters',
-}
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChip filter={filter} onClick={onClick} onDelete={onDelete} />
+    )
+    const filterBy = queryByText('user')
+    filterBy && fireEvent.click(filterBy)
+
+    expect(filterBy).toBeInTheDocument()
+    expect(onClick).toBeCalled()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+})

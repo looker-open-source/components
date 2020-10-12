@@ -23,44 +23,24 @@
  SOFTWARE.
 
  */
+import React, { FC, forwardRef, Ref } from 'react'
+import { Chip, ChipProps } from '../../../Chip'
+import { FieldFilter } from './InputFilters'
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
-import { FilterEditor } from './FilterEditor'
-
-describe('FilterEditor', () => {
-  const defaultValue = 'user'
-  const onChange = jest.fn()
-  const options = ['user', 'group-admin', 'admin', 'pizza']
-
-  test('renders FilterEditor', () => {
-    const { queryByText } = renderWithTheme(
-      <FilterEditor
-        defaultValue={defaultValue}
-        onChange={onChange}
-        options={options}
-      />
+interface InputFiltersChipProps
+  extends Omit<ChipProps, 'children' | 'onDelete'> {
+  filter: FieldFilter
+  onDelete: (field: FieldFilter) => void
+}
+export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
+  ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
+    const handleDelete = () => onDelete(filter)
+    return (
+      <Chip ref={ref} {...props} prefix={filter.field} onDelete={handleDelete}>
+        {filter.value}
+      </Chip>
     )
+  }
+)
 
-    expect(queryByText('user')).toBeInTheDocument()
-  })
-
-  test('FilterEditor onchange', () => {
-    const { queryByText } = renderWithTheme(
-      <FilterEditor
-        defaultValue={defaultValue}
-        onChange={onChange}
-        options={options}
-      />
-    )
-    const selectingFilter = queryByText('user')
-    selectingFilter && fireEvent.click(selectingFilter)
-
-    expect(selectingFilter).toBeInTheDocument()
-    expect(onChange).toBeCalled()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+InputFiltersChip.displayName = 'InputFiltersChip'

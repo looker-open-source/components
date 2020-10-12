@@ -27,33 +27,38 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { InputFilterChip } from './InputFilterChip'
+import { InputFiltersChipEditor } from './InputFiltersChipEditor'
 
-describe('InputFilters', () => {
-  const filter = {
-    field: 'role',
-    options: ['user', 'group-admin', 'admin', 'pizza'],
-    value: 'user',
-  }
-  const onClick = jest.fn()
-  const onDelete = jest.fn()
+describe('InputFiltersChipEditor', () => {
+  const defaultValue = 'user'
+  const onChange = jest.fn()
+  const options = ['user', 'group-admin', 'admin', 'pizza']
 
-  test('renders InputFilterChip', () => {
-    const { getByText } = renderWithTheme(
-      <InputFilterChip filter={filter} onClick={onClick} onDelete={onDelete} />
+  test('renders InputFiltersChipEditor', () => {
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChipEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
     )
-    expect(getByText('user')).toBeInTheDocument()
+
+    expect(queryByText('user')).toBeInTheDocument()
   })
 
-  test('InputFilterChip onchange', () => {
+  test('InputFiltersChipEditor onchange', () => {
     const { queryByText } = renderWithTheme(
-      <InputFilterChip filter={filter} onClick={onClick} onDelete={onDelete} />
+      <InputFiltersChipEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
     )
-    const filterBy = queryByText('user')
-    filterBy && fireEvent.click(filterBy)
+    const selectingFilter = queryByText('user')
+    selectingFilter && fireEvent.click(selectingFilter)
 
-    expect(filterBy).toBeInTheDocument()
-    expect(onClick).toBeCalled()
+    expect(selectingFilter).toBeInTheDocument()
+    expect(onChange).toBeCalled()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

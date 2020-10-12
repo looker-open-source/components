@@ -33,8 +33,8 @@ import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
 import { Popover } from '../../../Popover'
-import { InputFilterChip } from './InputFilterChip'
-import { FilterEditor } from './FilterEditor'
+import { InputFiltersChip } from './InputFiltersChip'
+import { InputFiltersChipEditor } from './InputFiltersChipEditor'
 
 export interface FieldFilter {
   /* specify the field value */
@@ -124,14 +124,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           setAssignedFilters(newAssignedFilters)
         }
 
-        const closeFilterEditor = () => {
+        const closeInputFiltersChipEditor = () => {
           setAssignedFilters(assignedFilters.filter((filter) => filter.value))
           setFilterLookupName('')
           setFieldEditing(undefined)
         }
 
         const filterToken = filter.value ? (
-          <InputFilterChip
+          <InputFiltersChip
             filter={filter}
             key={i}
             onClick={editFilter}
@@ -144,9 +144,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           <Popover
             key={i}
             isOpen={fieldEditing !== undefined}
-            setOpen={closeFilterEditor}
+            setOpen={closeInputFiltersChipEditor}
             content={
-              <FilterEditor
+              <InputFiltersChipEditor
                 defaultValue={filter.value}
                 onChange={setFieldEditingValue}
                 options={filter.options}

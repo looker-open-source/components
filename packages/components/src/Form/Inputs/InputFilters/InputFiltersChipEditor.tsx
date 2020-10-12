@@ -28,12 +28,12 @@ import { ButtonGroup, ButtonItem } from '../../../Button'
 import { PopoverContent } from '../../../Popover'
 import { SpaceVertical } from '../../../Layout/Space'
 
-interface FilterEditorProps {
+interface InputFiltersChipEditorProps {
   defaultValue?: string
   onChange: (value: string) => void
   options?: string[]
 }
-export const FilterEditor: FC<FilterEditorProps> = ({
+export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
   defaultValue,
   onChange,
   options,

@@ -23,24 +23,23 @@
  SOFTWARE.
 
  */
-import React, { FC, forwardRef, Ref } from 'react'
-import { Chip, ChipProps } from '../../../Chip'
-import { FieldFilter } from './InputFilters'
 
-interface InputFilterChipProps
-  extends Omit<ChipProps, 'children' | 'onDelete'> {
-  filter: FieldFilter
-  onDelete: (field: FieldFilter) => void
-}
-export const InputFilterChip: FC<InputFilterChipProps> = forwardRef(
-  ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
-    const handleDelete = () => onDelete(filter)
-    return (
-      <Chip ref={ref} {...props} prefix={filter.field} onDelete={handleDelete}>
-        {filter.value}
-      </Chip>
-    )
-  }
-)
-
-InputFilterChip.displayName = 'InputFilterChip'
+export const filters = [
+  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
+  {
+    field: 'group',
+    label: 'Group',
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+  },
+  {
+    field: 'name',
+    label: 'Name',
+    options: ['Name 1', 'Name 2', 'Name 3'],
+  },
+  { field: 'status', options: ['Failed', 'In-Progress', 'Success'] },
+  {
+    field: 'buildAt',
+    label: 'Last Build Time',
+    options: ['01-22-20', '02-13-20', '05-28-20'],
+  },
+]
