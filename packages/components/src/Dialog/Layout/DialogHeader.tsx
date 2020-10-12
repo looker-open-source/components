@@ -116,6 +116,7 @@ export const DialogHeader = styled(DialogHeaderLayout)`
   ${space}
   align-items: center;
   display: flex;
+  flex-shrink: 0;
 `
 
 DialogHeader.defaultProps = {
