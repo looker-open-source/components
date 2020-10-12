@@ -24,39 +24,33 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import chunk from 'lodash/chunk'
 import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
+import { Card, CardContent } from '../../../Card'
+import { Button } from '../../../Button'
+import { Dialog, DialogContent } from '../../../Dialog'
+import { Divider } from '../../../Divider'
+import { Icon } from '../../../Icon'
+import { Flex, Space, SpaceVertical } from '../../../Layout'
+import { Heading, Text } from '../../../Text'
+import { Form } from '../../'
+import { Label } from '../../Label'
+import { ComboboxOptionObject } from '../../Inputs/Combobox'
 import {
-  Card,
-  CardContent,
-  Form,
-  Button,
-  Dialog,
-  Divider,
-  Label,
-  Box,
-  Heading,
-  Icon,
   Select,
-  FieldSelect,
-  FieldToggleSwitch,
-  DialogContent,
-  ComboboxOptionObject,
   SelectOptionProps,
   SelectOptionGroupProps,
-  Space,
-  SpaceVertical,
-  Text,
-  Flex,
-  useToggle,
-} from '@looker/components'
-import { options1k } from './options1k'
+} from '../../Inputs/Select'
+import { useToggle } from '../../../utils'
+import { options1k } from '../../Inputs/Select/options1k'
+import { FieldToggleSwitch } from '../FieldToggleSwitch'
+import { FieldSelect, FieldSelectProps } from './FieldSelect'
 
-export default {
-  title: 'Forms/Select',
-}
+const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
 
-const commonProps = {
+export const Basic = Template.bind({})
+Basic.args = {
   label: 'Label',
   options: [
     { label: 'Cheddar', value: 'cheddar' },
@@ -66,29 +60,47 @@ const commonProps = {
   placeholder: 'Placeholder',
 }
 
-export const Basic = () => <FieldSelect {...commonProps} />
-export const Disabled = () => <FieldSelect {...commonProps} disabled />
-export const Detail = () => (
-  <FieldSelect {...commonProps} detail="0/50" required />
-)
-export const Description = () => (
-  <FieldSelect {...commonProps} description="I'm a little teapot" />
-)
-export const Required = () => <FieldSelect {...commonProps} required />
-export const Error = () => (
-  <FieldSelect
-    {...commonProps}
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
-)
-export const Inline = () => <FieldSelect {...commonProps} inline />
-export const InlineError = () => (
-  <FieldSelect
-    {...commonProps}
-    inline
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
+}
+
+export const Detail = Template.bind({})
+Detail.args = {
+  ...Basic.args,
+  detail: '0/50',
+}
+
+export const Description = Template.bind({})
+Description.args = {
+  ...Basic.args,
+  description: "I'm a little teapot",
+}
+
+export const Required = Template.bind({})
+Required.args = {
+  ...Basic.args,
+  required: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  ...Basic.args,
+  inline: true,
+}
+
+export const ErrorInline = Template.bind({})
+ErrorInline.args = {
+  ...Error.args,
+  inline: true,
+}
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -233,14 +245,14 @@ export function SelectContent() {
           alignSelf="flex-start"
         />
       </Flex>
-      <Box>
+      <SpaceVertical align="start">
         <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
           Kiwis
         </Button>
         <Button mt="medium" data-fruit="3" onClick={handleClick}>
           Oranges
         </Button>
-      </Box>
+      </SpaceVertical>
       <Divider my="xlarge" />
       <SpaceVertical>
         <FieldSelect
