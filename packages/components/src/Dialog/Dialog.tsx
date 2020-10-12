@@ -46,7 +46,7 @@ export interface DialogProps extends Omit<UseDialogProps, 'content'> {
 export const Dialog: FC<DialogProps> = ({ children, content, ...props }) => {
   /**
    * This is a short-term workaround for existing interface
-   * Remove when `children` is no longer marked as optional (very soon!)
+   * Remove when `content` is no longer marked as optional (very soon!)
    */
   if (!content && children) {
     content = children
@@ -60,7 +60,7 @@ export const Dialog: FC<DialogProps> = ({ children, content, ...props }) => {
    */
   if (!content && !children) {
     // eslint-disable-next-line no-console
-    console.error('Dialog cannot be used without specify content')
+    console.error('Dialog cannot be used without specifying content')
     return null
   }
 

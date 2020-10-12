@@ -219,7 +219,7 @@ describe('Dialog', () => {
     expect(onClose).toBeCalledTimes(1)
   })
 
-  test('canClose callback not called when canClose=false', () => {
+  test('onClose callback called when canClose=true', () => {
     const onClose = jest.fn()
 
     renderWithTheme(
@@ -235,7 +235,7 @@ describe('Dialog', () => {
     expect(onClose).toBeCalledTimes(1)
   })
 
-  test('canClose callback not called when canClose=false', () => {
+  test('onClose callback not called when canClose=false', () => {
     const onClose = jest.fn()
 
     renderWithTheme(

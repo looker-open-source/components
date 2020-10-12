@@ -177,9 +177,7 @@ export const useDialog = ({
    */
   const isPartiallyControlled = !!onClose && controlledIsOpen !== undefined
 
-  const isOpen = isPartiallyControlled
-    ? controlledIsOpen || false
-    : isControlled
+  const isOpen = isPartiallyControlled || isControlled
     ? controlledIsOpen || false
     : uncontrolledIsOpen
 
