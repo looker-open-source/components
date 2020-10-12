@@ -25,25 +25,24 @@
  */
 
 import React, { useState } from 'react'
-import { useDrawer } from '../Drawer'
-import { SampleContent } from './SampleContent'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { useDrawer } from '../useDrawer'
 
 export const UseDrawerHook = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const open = () => setIsOpen(true)
-  const onClose = () => setIsOpen(false)
+  const [isOpen, setOpen] = useState(false)
+  const open = () => setOpen(true)
 
-  const content = <SampleContent />
+  const content = <DialogLongContent />
 
-  const { drawer } = useDrawer({
+  const { dialog } = useDrawer({
     content,
     isOpen,
-    onClose,
+    setOpen,
   })
 
   return (
     <>
-      {drawer}
+      {dialog}
       <button onClick={open}>Open Drawer</button>
     </>
   )

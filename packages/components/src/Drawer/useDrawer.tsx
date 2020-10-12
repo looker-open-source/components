@@ -24,46 +24,34 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import { ResponsiveValue } from 'styled-system'
+import { UseDialogProps, useDialog } from '../Dialog/useDialog'
+import { DrawerSurface } from './DrawerSurface'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
+export type DrawerPlacements = 'right'
+
+export interface UseDrawerProps
+  extends Omit<
+    UseDialogProps,
+    'maxWidth' | 'height' | 'placement' | 'surfaceStyles' | 'backdrop'
+  > {
+  /**
+   * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
+   * @default '30rem'
+   */
+  width?: ResponsiveValue<string>
+
+  /**
+   * Specify the edge to attach the Drawer surface to.
+   * COMING SOON: 'left' | 'top' | 'bottom'
+   * @default 'right'
+   */
+  placement?: DrawerPlacements
 }
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
-
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-  }
-`
-
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
-}
+export const useDrawer = ({
+  width = '30rem',
+  placement = 'right',
+  ...props
+}: UseDrawerProps) =>
+  useDialog({ Surface: DrawerSurface, placement, width, ...props })

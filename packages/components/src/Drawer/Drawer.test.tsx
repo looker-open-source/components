@@ -48,36 +48,14 @@ const SimpleContent = () => {
 }
 
 describe('Drawer', () => {
-  test('Verify initial state', () => {
+  test('Basic render', () => {
     renderWithTheme(<Drawer content={<SimpleContent />} />)
     expect(screen.queryByText('Drawer content')).not.toBeInTheDocument()
   })
 
-  test('defaultOpen prop', async () => {
+  test('defaultOpen', async () => {
     renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />)
     expect(screen.queryByText('Drawer content')).toBeInTheDocument()
-    const doneButton = screen.getByText('Done')
-    fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Drawer content'))
-  })
-
-  test('Drawer can be opened & closed', async () => {
-    renderWithTheme(
-      <Drawer content={<SimpleContent />}>
-        <a>Open Drawer</a>
-      </Drawer>
-    )
-
-    // Dialog closed
-    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument()
-
-    // Open Drawer
-    const link = screen.getByText('Open Drawer')
-    expect(link).toBeInTheDocument()
-    fireEvent.click(link)
-    expect(screen.queryByText('Drawer content')).toBeInTheDocument()
-
-    // Close the Drawer
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() => screen.getByText('Drawer content'))
@@ -128,9 +106,4 @@ describe('Drawer', () => {
       screen.getByText('The Constitution of the United States')
     )
   })
-
-  xtest('Backdrop can be clicked to close', () => true)
-  xtest('Composition form: controlled', () => true)
-  xtest('canClose callback', () => true)
-  xtest('onClose callback', () => true)
 })

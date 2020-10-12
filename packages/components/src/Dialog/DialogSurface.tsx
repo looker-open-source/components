@@ -24,46 +24,28 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import styled from 'styled-components'
+import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
-}
-
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
-
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
+export const DialogSurface = styled(SurfaceBase)`
+  border-radius: ${({ theme }) => theme.radii.medium};
+  box-shadow: ${({ theme }) => theme.shadows[5]};
+  position: relative;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   &.entering,
   &.exiting {
     opacity: 0.01;
+    transform: translateY(100%);
+  }
+
+  &.exited {
+    opacity: 1;
+    transform: translateY(0%);
   }
 `
 
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
+DialogSurface.defaultProps = {
+  maxHeight: ['100%', '100%', '90%'],
+  maxWidth: ['100%', '90%', '600px'],
 }

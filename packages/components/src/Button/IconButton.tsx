@@ -216,6 +216,7 @@ const outlineCSS = (props: IconButtonProps) => {
       border-color: ${({ theme: { colors } }) => colors[color]};
     }
 
+    &[aria-expanded='true'],
     &:active,
     &.active {
       border-color: ${({ theme: { colors } }) => colors[`${color}Interactive`]};
@@ -242,6 +243,7 @@ export const iconButtonColor = css<Pick<IconButtonProps, 'color'>>`
       theme.colors[`${color}Interactive`]};
   }
 
+  &[aria-expanded='true'],
   &:active,
   &.active {
     color: ${({ theme, color = iconButtonDefaultColor }) =>

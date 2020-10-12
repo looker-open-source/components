@@ -24,33 +24,16 @@
 
  */
 
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { DialogHeader, DialogContent, DialogFooter } from '../../Dialog/Layout'
-import { DialogContext } from '../../Dialog/DialogContext'
-import { Button, ButtonTransparent } from '../../Button'
-import { Heading, Paragraph } from '../../Text'
+import { Heading, Paragraph } from '..'
+import { DialogLayout } from './DialogLayout'
 
-export const SampleContent = () => {
-  const { closeModal } = useContext(DialogContext)
-
-  return (
-    <>
-      <DialogHeader hideClose>
-        The Constitution of the United States
-      </DialogHeader>
-      <DialogContent>
-        <Constitution />
-      </DialogContent>
-      <DialogFooter>
-        <Button onClick={closeModal}>Done Reading</Button>
-        <ButtonTransparent color="neutral" onClick={closeModal}>
-          Finish Later
-        </ButtonTransparent>
-      </DialogFooter>
-    </>
-  )
-}
+export const DialogLongContent = () => (
+  <DialogLayout title=" The Constitution of the United States">
+    <Constitution />
+  </DialogLayout>
+)
 
 const Constitution = () => (
   <Format>

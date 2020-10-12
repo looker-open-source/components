@@ -41,6 +41,7 @@ export const Button = styled(ButtonBase)`
       theme.colors[`${color}Interactive`]};
   }
 
+  &[aria-expanded='true'],
   &:active,
   &.active {
     background: ${({ theme, color = 'key' }) =>

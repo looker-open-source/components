@@ -24,113 +24,45 @@
 
  */
 
-import React, { CSSProperties, FC } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { CSSObject } from 'styled-components'
-import { ResponsiveValue } from 'styled-system'
-import { Portal } from '../Portal'
-import { useFocusTrap, useScrollLock } from '../utils'
-import { Backdrop } from './Backdrop'
-import { DialogContext } from './DialogContext'
-import { Surface } from './Surface'
+import React, { FC, ReactNode } from 'react'
+import { useDialog, UseDialogProps } from './useDialog'
+import { DialogRender, DialogRenderProp } from './DialogRender'
 
-export interface DialogProps {
+export interface DialogProps extends Omit<UseDialogProps, 'content'> {
+  children?: DialogRenderProp | ReactNode
   /**
-   * When true, renders the Backdrop, Surface and it's contained content.
-   * @default false
+   * Content to rendered within the Dialog surface.
+   * SOON TO BE @required
+   *
+   * NOTE: _VERY SOON_ this will become a required property.
+   * DO NOT create new instances of `Dialog` without a content.
+   * Prop is only marked optional to support legacy implementations.
+   *
+   * If `content` is not supplied `children` will used as the Dialog content instead
    */
-  isOpen?: boolean
-
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
-
-  /**
-   * Optional backdrop styles to merge with the Backdrop implementation. These
-   * must be a CSSProperty compatible key / value paired object. For example
-   * {backgroundColor: 'pink'}.
-   */
-  backdrop?: CSSProperties
-
-  /**
-   * Optional surface styles to merge with the Surface implementation. These
-   * must be a CSSProperty compatible key / value paired object.
-   */
-  surfaceStyles?: CSSProperties
-
-  /**
-   * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
-   * You can also specify `auto` if you want the Surface to auto-size to its content.
-   * @default auto
-   */
-  width?: ResponsiveValue<string>
-  maxWidth?: ResponsiveValue<string>
+  content?: ReactNode
 }
 
-export const Dialog: FC<DialogProps> = ({
-  backdrop,
-  children,
-  isOpen,
-  onClose,
-  maxWidth,
-  surfaceStyles,
-  width,
-}) => {
-  const {
-    callbackRef: focusRef,
-    disable: disableFocusTrap,
-    enable: enableFocusTrap,
-    isEnabled: focusTrapEnabled,
-    trapRef: focusTrapRef,
-  } = useFocusTrap(isOpen)
-
-  const [, portalRef] = useScrollLock(focusRef)
-
-  const handleClose = () => {
-    onClose && onClose()
+export const Dialog: FC<DialogProps> = ({ children, content, ...props }) => {
+  /**
+   * This is a short-term workaround for existing interface
+   * Remove when `content` is no longer marked as optional (very soon!)
+   */
+  if (!content && children) {
+    content = children
+    children = undefined
   }
 
-  return (
-    <DialogContext.Provider
-      value={{
-        closeModal: handleClose,
-        disableFocusTrap,
-        enableFocusTrap,
-        focusTrapEnabled,
-        focusTrapRef,
-      }}
-    >
-      <CSSTransition
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-        in={isOpen}
-        timeout={{ enter: 0, exit: 250 }}
-      >
-        {(state: string) => (
-          <Portal ref={portalRef}>
-            <Backdrop
-              className={state}
-              onClick={onClose}
-              visible={backdrop === undefined ? true : !!backdrop}
-              style={
-                !!backdrop && backdrop !== true
-                  ? (backdrop as CSSObject)
-                  : undefined
-              }
-            />
-            <Surface
-              style={surfaceStyles}
-              className={state}
-              width={width}
-              maxWidth={maxWidth}
-            >
-              {children}
-            </Surface>
-          </Portal>
-        )}
-      </CSSTransition>
-    </DialogContext.Provider>
-  )
+  const dialogProps = useDialog({ content, ...props })
+
+  /**
+   * Second part of short-term workaround. Remove when `content` is no longer optional
+   */
+  if (!content && !children) {
+    // eslint-disable-next-line no-console
+    console.error('Dialog cannot be used without specifying content')
+    return null
+  }
+
+  return <DialogRender {...dialogProps}>{children}</DialogRender>
 }

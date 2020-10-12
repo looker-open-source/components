@@ -24,46 +24,22 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import React from 'react'
+import { Paragraph } from '..'
+import { DialogLayout } from './DialogLayout'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
-}
+export const DialogMediumContent = () => (
+  <DialogLayout title="The Constitution of the United States">
+    <Constitution />
+  </DialogLayout>
+)
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
-
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-  }
-`
-
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
-}
+const Constitution = () => (
+  <Paragraph fontSize="medium">
+    We the People of the United States, in Order to form a more perfect Union,
+    establish Justice, insure domestic Tranquility, provide for the common
+    defense, promote the general Welfare, and secure the Blessings of Liberty to
+    ourselves and our Posterity, do ordain and establish this Constitution for
+    the United States of America.
+  </Paragraph>
+)

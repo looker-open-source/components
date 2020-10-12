@@ -24,46 +24,55 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Dialog, DialogProps } from '..'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
+export * from './Controlled'
+export * from './SaveChanges'
+
+const Template: Story<DialogProps> = (args) => (
+  <Dialog
+    {...args}
+    onClose={() => {
+      console.log('Hello world')
+    }}
+  >
+    <button>Open Dialog</button>
+  </Dialog>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  content: 'Simple Content',
+}
+Basic.parameters = {
+  storyshots: { disable: true },
 }
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
+export const Open = Template.bind({})
+Open.args = {
+  ...Basic.args,
+  defaultOpen: true,
+}
 
-  ${(props) => props.inlineStyle}
+export const MediumContent = Template.bind({})
+MediumContent.args = {
+  content: <DialogMediumContent />,
+  defaultOpen: true,
+}
 
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
+export const LongContent = Template.bind({})
+LongContent.args = {
+  content: <DialogLongContent />,
+  defaultOpen: true,
+}
 
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-  }
-`
+/** TODO: Add Placement when supported */
 
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
+export default {
+  component: Dialog,
+  title: 'Dialog',
 }

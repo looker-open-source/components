@@ -24,94 +24,14 @@
 
  */
 
-import omit from 'lodash/omit'
-import React, {
-  cloneElement,
-  FC,
-  isValidElement,
-  ReactNode,
-  useState,
-} from 'react'
 import { Dialog, DialogProps } from './Dialog'
 
-type DialogRenderProp = (dialogProps: {
-  onClick: () => void
-  className?: string
-  role?: string
-  'aria-expanded'?: boolean
-}) => ReactNode
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface DialogManagerProps extends DialogProps {}
 
-function isRenderProp(
-  children: ReactNode | DialogRenderProp
-): children is DialogRenderProp {
-  return typeof children === 'function'
-}
-
-export interface DialogManagerProps extends DialogProps {
-  children?: DialogRenderProp | ReactNode
-  /**
-   * Content that will be placed inside the Dialog
-   * @required
-   */
-  content: ReactNode
-  /**
-   * Specify a callback to be called before trying to close the Dialog. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  canClose?: () => boolean
-}
-
-export const DialogManager: FC<DialogManagerProps> = ({
-  canClose,
-  content,
-  children,
-  onClose,
-  ...props
-}) => {
-  const [isOpen, setOpen] = useState(props.isOpen || false)
-  const open = () => setOpen(true)
-  const close = () => {
-    if (canClose && !canClose()) return
-    onClose && onClose()
-    setOpen(false)
-  }
-
-  const dialogPropsLabeled = {
-    'aria-expanded': isOpen,
-    className: isOpen ? 'active' : '',
-    onClick: open,
-    role: 'button',
-  }
-
-  const dialog = (
-    <Dialog isOpen={isOpen} onClose={close} {...omit(props, 'isOpen')}>
-      {content}
-    </Dialog>
-  )
-
-  let target = children
-
-  if (isValidElement(children)) {
-    target = cloneElement(children, {
-      ...dialogPropsLabeled,
-      className: isOpen
-        ? `${children.props.className} active`
-        : children.props.className,
-    })
-  } else if (isRenderProp(children)) {
-    target = children(dialogPropsLabeled)
-  } else {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Element "${typeof target}" can't be used as target for DialogManager`
-    )
-  }
-
-  return (
-    <>
-      {dialog}
-      {target}
-    </>
-  )
-}
+/**
+ * DialogManager is a legacy-proxy to Dialog.
+ * This fallback mechanism will be removed very soon.
+ * Use `Dialog` instead
+ */
+export const DialogManager = Dialog

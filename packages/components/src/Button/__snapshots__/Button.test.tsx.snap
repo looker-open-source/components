@@ -56,6 +56,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   border-color: #7a55e3;
 }
 
+.c1[aria-expanded='true'],
 .c1:active,
 .c1.active {
   background: #5424db;
@@ -78,7 +79,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 edZfQD ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 btmkRb"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 edZfQD ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 fsKPSa"
 >
   focus
 </button>

@@ -24,46 +24,29 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import React, { FC, useContext } from 'react'
+import {
+  DialogContext,
+  DialogHeader,
+  DialogContent,
+  DialogFooter,
+  Button,
+  ButtonTransparent,
+} from '..'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
-}
+export const DialogLayout: FC<{ title: string }> = ({ title, children }) => {
+  const { closeModal } = useContext(DialogContext)
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
-
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-  }
-`
-
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
+  return (
+    <>
+      <DialogHeader hideClose>{title}</DialogHeader>
+      <DialogContent>{children}</DialogContent>
+      <DialogFooter>
+        <Button onClick={closeModal}>Done Reading</Button>
+        <ButtonTransparent color="neutral" onClick={closeModal}>
+          Finish Later
+        </ButtonTransparent>
+      </DialogFooter>
+    </>
+  )
 }

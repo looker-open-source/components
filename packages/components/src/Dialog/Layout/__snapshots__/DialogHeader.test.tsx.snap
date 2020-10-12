@@ -102,6 +102,7 @@ exports[`DialogHeader Snapshot 1`] = `
   color: #7a818b;
 }
 
+.c5[aria-expanded='true'],
 .c5:active,
 .c5.active {
   color: #5f656e;

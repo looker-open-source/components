@@ -24,46 +24,39 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
-import styled, { CSSObject } from 'styled-components'
+import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
+import { UseDialogResponse, UseDialogResponseDom } from './useDialog'
 
-export interface BackdropProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    BackgroundColorProps,
-    OpacityProps {
-  visible?: boolean
-  inlineStyle?: CSSObject
-}
+export type DialogRenderProp = (props: UseDialogResponseDom) => ReactNode
 
-// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
-// transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
-  'data-testid': 'backdrop',
-}))<BackdropProps>`
-  ${reset}
-  ${color}
+const isRenderProp = (
+  children: ReactNode | DialogRenderProp
+): children is DialogRenderProp => typeof children === 'function'
 
-  ${(props) => props.inlineStyle}
-
-  bottom: 0;
-  cursor: default;
-  left: 0;
-  opacity: ${(props) => props.opacity};
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
-
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
+export const DialogRender: FC<UseDialogResponse> = ({
+  children,
+  dialog,
+  domProps,
+}) => {
+  if (children === undefined) {
+    return <>{dialog}</>
+  } else if (isValidElement(children)) {
+    children = cloneElement(children, {
+      ...domProps,
+    })
+  } else if (isRenderProp(children)) {
+    children = children(domProps)
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Element "${typeof children}" can't be used as target for Drawer`
+    )
   }
-`
 
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
+  return (
+    <>
+      {dialog}
+      {children}
+    </>
+  )
 }

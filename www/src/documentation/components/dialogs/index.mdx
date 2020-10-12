@@ -16,42 +16,94 @@ Dialogs break out of the standard application flow and UI to present new informa
 
 ## Standard Use
 
-`Dialog` requires that the developer manages state by assigning `true` or `false` to the `isOpen` prop.
+`Dialog` operates in a "uncontrolled" manner.
+
+```jsx
+<Dialog
+  content={
+    <>
+      <DialogHeader>A Dialog Example</DialogHeader>
+      <DialogContent>
+        <SpaceVertical>
+          <Paragraph>
+            {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque dui sodales efficitur vehicula. Praesent at aliquet nisi. Fusce risus quam, scelerisque non lacus mollis, feugiat molestie sem. Praesent augue erat, molestie id sem quis, fermentum venenatis lacus. Morbi vehicula lacus id fringilla scelerisque. Nulla dignissim nisi nisl, ac porttitor orci accumsan nec. Vestibulum pulvinar risus felis, vel bibendum odio luctus a. Morbi pharetra, ipsum sit amet vehicula malesuada, lacus quam viverra sapien, eget malesuada sem risus quis ligula. Vestibulum non laoreet est. Nullam blandit sollicitudin cursus. Nam cursus nisl id ipsum ullamcorper consequat.`}
+          </Paragraph>
+          <Paragraph>
+            {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
+          </Paragraph>
+          <Paragraph>
+            {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
+          </Paragraph>
+        </SpaceVertical>
+      </DialogContent>
+      <DialogContext.Consumer>
+        {({ closeModal }) => (
+          <DialogFooter>
+            <Button onClick={closeModal}>Close Example Dialog</Button>
+            <ButtonTransparent onClick={closeModal} color="neutral">
+              Cancel
+            </ButtonTransparent>
+          </DialogFooter>
+        )}
+      </DialogContext.Consumer>
+    </>
+  }
+>
+  <Button>Open Dialog</Button>
+</Dialog>
+```
+
+## Controlled
+
+`Dialog` can be used in a "controlled" manner by specifying the `isOpen` property. An `onClose` callback should also be specified so that clicking the dialog's backdrop or calling the `DialogContext.closeModal` method will work as expected.
 
 ```jsx
 ;() => {
-  const { value, setOn, setOff } = useToggle()
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <div>
-      <Dialog isOpen={value} onClose={() => setOff()}>
-        <DialogHeader>A Dialog Example</DialogHeader>
-        <DialogContent>
-          <SpaceVertical>
-            <Paragraph>
-              {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque dui sodales efficitur vehicula. Praesent at aliquet nisi. Fusce risus quam, scelerisque non lacus mollis, feugiat molestie sem. Praesent augue erat, molestie id sem quis, fermentum venenatis lacus. Morbi vehicula lacus id fringilla scelerisque. Nulla dignissim nisi nisl, ac porttitor orci accumsan nec. Vestibulum pulvinar risus felis, vel bibendum odio luctus a. Morbi pharetra, ipsum sit amet vehicula malesuada, lacus quam viverra sapien, eget malesuada sem risus quis ligula. Vestibulum non laoreet est. Nullam blandit sollicitudin cursus. Nam cursus nisl id ipsum ullamcorper consequat.`}
-            </Paragraph>
-            <Paragraph>
-              {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
-            </Paragraph>
-            <Paragraph>
-              {`Aenean consectetur volutpat dolor id varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam mollis, sapien sit amet suscipit consectetur, odio metus malesuada arcu, et eleifend nisi lorem eu diam. Praesent malesuada finibus finibus. Suspendisse eu lobortis ante, sed gravida odio. Nam auctor eros nulla. Praesent maximus ligula quam, et pretium lacus vulputate non. Donec condimentum turpis vitae mi volutpat malesuada. Nam sagittis non metus in efficitur. Vestibulum commodo nibh velit, sed luctus felis condimentum non.`}
-            </Paragraph>
-          </SpaceVertical>
-        </DialogContent>
-        <DialogFooter>
-          <Button onClick={setOff}>Close Example Dialog</Button>
-          <ButtonTransparent color="neutral" onClick={setOff}>
-            Cancel
-          </ButtonTransparent>
-        </DialogFooter>
-      </Dialog>
-      <Button onClick={() => setOn()}>Open Dialog</Button>
-    </div>
+    <>
+      <Dialog
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        content="My neat dialog"
+      />
+      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
+    </>
   )
 }
 ```
 
-`Dialog` is a container for content that sits above the application's content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
+## Hook: useDialog
+
+`Dialog` is also offered as a React Hook via `useDialog`. It returns the `open` callback and rendered dialog.
+
+```jsx
+;() => {
+  const { open, dialog } = useDialog({ content: 'My Neat Dialog' })
+
+  return (
+    <>
+      {dialog}
+      <ButtonOutline onClick={open}>Open Dialog</ButtonOutline>
+    </>
+  )
+}
+```
+
+## Render Props
+
+`Dialog` supports render-props style use in cases where the simple compositional syntax is unable to automatically spread the dialog props down on the the child element properly.
+
+```jsx
+<Dialog content="My neat dialog">
+  {(dialogProps) => (
+    <div>
+      <Button {...dialogProps}>Open Dialog</Button>
+    </div>
+  )}
+</Dialog>
+```
 
 ## Terminology
 
@@ -64,12 +116,12 @@ The most common pattern for a `Dialog` is the [`Confirm`](/components/dialogs/co
 This provides the backdrop behind dialogs. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
 
 ```jsx
-<DialogManager
+<Dialog
   backdrop={{ background: 'purple', opacity: 1 }}
   content={<>Stuff and text</>}
 >
   <Button>Purple Backdrop</Button>
-</DialogManager>
+</Dialog>
 ```
 
 ### Surface
@@ -84,23 +136,6 @@ This provides the backdrop behind dialogs. It can be customized via the `backdro
 </Surface>
 ```
 
-## DialogManager
-
-DialogManager gives an easy way to compose a Dialog without the need to manage open/close state.
-
-```jsx
-<DialogManager
-  content={
-    <DialogContent>
-      <Paragraph>Some content inside the Dialog</Paragraph>
-      <Button>A button too!</Button>
-    </DialogContent>
-  }
->
-  <Button>Open Dialog </Button>
-</DialogManager>
-```
-
 ## Props: width and maxWidth
 
 All variants of Dialog allow you to override `width` and `max-width` styles to suit your content. By default, `width` is unassigned so that Dialog Surface will conform to the width of its content. At the same time, `maxWidth` constrains the Dialog surface's width to be no larger than the specified value.
@@ -112,7 +147,7 @@ With those constraints in mind, if you want a variable-width Dialog that renders
 The props accept responsive width arrays an well as static strings.
 
 ```jsx
-<DialogManager
+<Dialog
   content={
     <DialogContent>
       <Heading>
@@ -131,7 +166,7 @@ The props accept responsive width arrays an well as static strings.
   maxWidth={['90vw', '60vw', '500px', '800px']}
 >
   <Button>Open responsive width dialog</Button>
-</DialogManager>
+</Dialog>
 ```
 
 ## DialogContext
