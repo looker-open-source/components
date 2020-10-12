@@ -28,8 +28,8 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.0.22",
-    "@storybook/react": "^6.0.22",
+    "@storybook/addon-storyshots": "^6.0.26",
+    "@storybook/react": "^6.0.26",
     "@types/lodash": "^4.14.162",
     "@types/styled-components": "^4.4.1",
     "csstype": "^3.0.2",
