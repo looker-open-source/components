@@ -26,27 +26,14 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
-
-test('A FieldToggleSwitch', () => {
-  assertSnapshot(<FieldToggleSwitch id="FieldToggleSwitchID" label="👍" />)
-})
-
-test('A FieldToggleSwitch turned on', () => {
-  assertSnapshot(
-    <FieldToggleSwitch id="FieldToggleSwitchID" label="👍" on={true} />
-  )
-})
 
 test('A FieldToggleSwitch with error has proper aria setup', () => {
   const errorMessage = 'This is an error'
 
-  const { container, getByDisplayValue } = renderWithTheme(
+  const { container } = renderWithTheme(
     <FieldToggleSwitch
       id="test"
       defaultValue="example"
@@ -54,7 +41,7 @@ test('A FieldToggleSwitch with error has proper aria setup', () => {
     />
   )
 
-  const input = getByDisplayValue('example')
+  const input = screen.getByDisplayValue('example')
   const id = input.getAttribute('aria-describedby')
   expect(id).toBeDefined()
 
@@ -63,23 +50,25 @@ test('A FieldToggleSwitch with error has proper aria setup', () => {
 })
 
 test('A FieldToggleSwitch disabled', () => {
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldToggleSwitch
       disabled
       id="FieldToggleSwitchID"
       label="Toggle Switch"
     />
   )
-  wrapper.find('input').html().includes('disabled=""')
+
+  expect(screen.getByLabelText('Toggle Switch')).toBeDisabled()
 })
 
 test('A FieldToggleSwitch required', () => {
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldToggleSwitch
       id="FieldToggleSwitchID"
       label="Toggle Switch"
       required
     />
   )
-  expect(wrapper.text()).toMatch(`Toggle Switch required`)
+
+  expect(screen.getByTestId('requiredStar')).toBeVisible()
 })
