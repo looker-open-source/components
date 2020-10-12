@@ -16,7 +16,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   border-radius: 0;
   color: #262D33;
   cursor: pointer;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
 }
 
 .c0:active {
@@ -79,7 +79,7 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   border-radius: 0;
   color: #707781;
   cursor: pointer;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);
 }
 

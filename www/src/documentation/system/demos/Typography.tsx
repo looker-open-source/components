@@ -41,7 +41,7 @@ const specimen =
   "Roboto is the typographic base for the tone and content of Looker's design system"
 const typeFamily: Array<{ weight: FontWeights; value: string }> = [
   { value: '400', weight: 'normal' },
-  { value: '500', weight: 'regular' },
+  { value: '500', weight: 'medium' },
   { value: '600', weight: 'semiBold' },
   { value: '700', weight: 'bold' },
 ]
