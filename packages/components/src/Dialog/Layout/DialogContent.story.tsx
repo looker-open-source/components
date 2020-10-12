@@ -25,17 +25,29 @@
  */
 
 import React from 'react'
-import { FieldText, FieldTextProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { Box, Paragraph } from '../..'
+import { DialogContent, DialogContentProps } from './DialogContent'
 
-const Template: Story<FieldTextProps> = (args) => <FieldText {...args} />
+const Template: Story<DialogContentProps> = (args) => (
+  <DialogContent {...args} />
+)
 
-export const Primary = Template.bind({})
-Primary.args = {
-  children: 'Filed Text',
+export const Basic = Template.bind({})
+Basic.args = {
+  children: <Box height="2rem" bg="rebeccapurple" />,
 }
 
+export const Overflow = () => (
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <DialogContent>
+      <Paragraph>Scroll down here...</Paragraph>
+      <Box height="6rem" bg="rebeccapurple" />
+    </DialogContent>
+  </Box>
+)
+
 export default {
-  component: FieldText,
-  title: 'FieldText',
+  component: DialogContent,
+  title: 'DialogContent',
 }

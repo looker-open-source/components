@@ -107,8 +107,8 @@ describe('IconButton', () => {
     )
 
     const image = getByTestId('icon-layout')
-    expect(image).toHaveStyle('width: 44')
-    expect(image).toHaveStyle('height: 44')
+    expect(image).toHaveStyleRule('width: 44')
+    expect(image).toHaveStyleRule('height: 44')
   })
 
   xtest('renders focus ring on tab input but not on click', () => {

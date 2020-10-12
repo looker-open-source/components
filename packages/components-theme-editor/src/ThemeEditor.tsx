@@ -26,13 +26,10 @@
 
 import { IconButton, Dialog } from '@looker/components'
 import React, { FC } from 'react'
-import {
-  ThemeEditorContent,
-  ThemeEditorContentProps,
-} from './ThemeEditorContent'
+import { ThemeEditorContent } from './ThemeEditorContent'
 import { ThemeEditableProps } from './types'
 
-export interface ThemeEditorProps extends ThemeEditorContentProps {
+export interface ThemeEditorProps {
   hasCustomTheme: boolean
   updateTheme: (customTheme?: ThemeEditableProps) => void
 }

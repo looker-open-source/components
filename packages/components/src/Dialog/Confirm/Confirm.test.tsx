@@ -65,7 +65,7 @@ test('<Confirm/> with defaults', async () => {
 
   expect(getByText(requiredProps.title)).toBeVisible()
   expect(getByText(requiredProps.message)).toBeVisible()
-  expect(button).toHaveStyle(`background: ${theme.colors.key}`)
+  expect(button).toHaveStyleRule(`background: ${theme.colors.key}`)
 
   fireEvent.click(button)
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
@@ -86,7 +86,7 @@ test('<Confirm/> with custom props', () => {
   fireEvent.click(opener)
 
   const button = getByText(optionalProps.confirmLabel || '')
-  expect(button).toHaveStyle(`background: ${theme.colors.critical}`)
+  expect(button).toHaveStyleRule(`background: ${theme.colors.critical}`)
 
   fireEvent.click(getByText(optionalProps.cancelLabel || ''))
   fireEvent.click(button)

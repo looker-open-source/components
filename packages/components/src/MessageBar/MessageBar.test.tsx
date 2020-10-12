@@ -200,9 +200,10 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('Dismiss Warning')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Warning').closest('div')).toHaveStyle({
-        color: theme.colors.warn,
-      })
+      expect(getByTitle('Warning').closest('div')).toHaveStyleRule(
+        'color',
+        theme.colors.warn
+      )
     })
 
     test('Error MessageBar', () => {
@@ -214,13 +215,15 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('Dismiss Error')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Error').closest('div')).toHaveStyle({
-        color: theme.colors.critical,
-      })
+      expect(getByTitle('Error').closest('div')).toHaveStyleRule(
+        'color',
+        theme.colors.critical
+      )
       // MesasgeBar background
-      expect(getByRole('status')).toHaveStyle({
-        background: theme.colors.criticalAccent,
-      })
+      expect(getByRole('status')).toHaveStyleRule(
+        'background',
+        theme.colors.criticalAccent
+      )
     })
 
     test('Info MessageBar', () => {
@@ -233,9 +236,10 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('Dismiss Inform')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Inform').closest('div')).toHaveStyle({
-        color: theme.colors.inform,
-      })
+      expect(getByTitle('Inform').closest('div')).toHaveStyleRule(
+        'color',
+        theme.colors.inform
+      )
     })
 
     test('Confirmation MessageBar', () => {
@@ -248,9 +252,10 @@ describe('MessageBar', () => {
       expect(getByText('Dismiss Success')).toBeInTheDocument()
 
       // icon title and color
-      expect(getByTitle('Success').closest('div')).toHaveStyle({
-        color: theme.colors.positive,
-      })
+      expect(getByTitle('Success').closest('div')).toHaveStyleRule(
+        'color',
+        theme.colors.positive
+      )
     })
   })
 })

@@ -71,7 +71,7 @@ test('<Prompt/> with defaults', async () => {
 
   expect(input).toBeVisible()
   expect(getByText(requiredProps.title)).toBeVisible()
-  expect(saveButton).toHaveStyle(`background: ${theme.colors.key}`)
+  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`)
 
   fireEvent.click(saveButton)
   expect(onSaveCallback).toHaveBeenCalledTimes(0)
@@ -99,9 +99,9 @@ test('<Prompt/> with custom props', () => {
   const cancelButton = getByText(optionalProps.cancelLabel)
 
   expect(cancelButton).toBeInTheDocument()
-  expect(cancelButton).toHaveStyle(`color: ${theme.colors.critical}`)
+  expect(cancelButton).toHaveStyleRule(`color: ${theme.colors.critical}`)
   expect(saveButton).toBeInTheDocument()
-  expect(saveButton).toHaveStyle(`background: ${theme.colors.key}`)
+  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`)
   expect(getByDisplayValue(optionalProps.defaultValue)).toBeInTheDocument()
   expect(getByText('Secondary Cheese')).toBeInTheDocument()
 

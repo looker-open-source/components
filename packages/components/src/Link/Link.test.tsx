@@ -49,13 +49,13 @@ describe('Link', () => {
   test('color', () => {
     renderWithTheme(<Link>My link</Link>)
     const link = screen.getByText('My link')
-    expect(link).toHaveStyle(`color: ${theme.colors.link}`)
+    expect(link).toHaveStyleRule(`color: ${theme.colors.link}`)
   })
 
   test('keyColor', () => {
     renderWithTheme(<Link keyColor>My link</Link>)
     const link = screen.getByText('My link')
-    expect(link).toHaveStyle(`color: ${theme.colors.key}`)
+    expect(link).toHaveStyleRule(`color: ${theme.colors.key}`)
   })
 
   test('ID passes through to DOM', () => {
