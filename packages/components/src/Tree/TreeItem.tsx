@@ -90,6 +90,11 @@ export interface TreeItemProps
    */
   onClick?: () => void
   /**
+   * Callback that is triggered on CMD + Enter on Mac
+   * or Windows key + Enter on PC
+   */
+  onMetaEnter?: () => void
+  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
@@ -103,6 +108,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   gapSize = 'xsmall',
+  onMetaEnter,
   selected,
   truncate,
   ...props
@@ -162,8 +168,16 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
-    if (event.keyCode === 13 && event.target === event.currentTarget) {
+    if (
+      event.keyCode === 13 &&
+      !event.metaKey &&
+      event.target === event.currentTarget
+    ) {
       onClick && onClick()
+    }
+
+    if (event.keyCode === 13 && event.metaKey) {
+      onMetaEnter && onMetaEnter()
     }
 
     onKeyDown && onKeyDown(event)
