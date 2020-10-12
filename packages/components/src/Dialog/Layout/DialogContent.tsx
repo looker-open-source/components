@@ -48,11 +48,11 @@ export interface DialogContentProps
   innerProps?: SpaceProps
 }
 
-interface DialogContentLayout extends DialogContentProps {
+interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
 }
 
-const DialogContentLayout: FC<DialogContentLayout> = ({
+const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   innerProps,
