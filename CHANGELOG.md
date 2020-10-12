@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `ComboboxMulti` issue with chips not updating reflecting updated option labels
+- `DialogFooter` & `DialogHeader` will no longer shrink in Safari when vertical space is limited
 - `InputTimeSelect` disabled state
 
 ### Removed
