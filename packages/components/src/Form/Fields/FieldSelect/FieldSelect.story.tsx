@@ -37,11 +37,7 @@ import { Heading, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
 import { ComboboxOptionObject } from '../../Inputs/Combobox'
-import {
-  Select,
-  SelectOptionProps,
-  SelectOptionGroupProps,
-} from '../../Inputs/Select'
+import { SelectOptionProps, SelectOptionGroupProps } from '../../Inputs/Select'
 import { useToggle } from '../../../utils'
 import { options1k } from '../../Inputs/Select/options1k'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
@@ -158,14 +154,14 @@ const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
   description: `${option.label} are the best ever!`,
 }))
 
-function checkOption(option: ComboboxOptionObject, searchTerm: string) {
+const checkOption = (option: ComboboxOptionObject, searchTerm: string) => {
   return (
     option.label &&
     option.label.toLowerCase().includes(searchTerm.toLowerCase())
   )
 }
 
-function optionReducer(searchTerm: string) {
+const optionReducer = (searchTerm: string) => {
   return (acc: SelectOptionProps[], option: SelectOptionProps) => {
     const optionAsGroup = option as SelectOptionGroupProps
     if (optionAsGroup.options) {
@@ -184,21 +180,21 @@ function optionReducer(searchTerm: string) {
   }
 }
 
-function TestIndicator() {
+const TestIndicator = () => {
   return <Text color="pink">***</Text>
 }
 
-export function SelectContent() {
+export const SelectContent = () => {
   const [value, setValue] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
     setValue(fruit)
   }
-  function handleChange(value: string) {
+  const handleChange = (value: string) => {
     setValue(value)
   }
-  function handleFilter(term: string) {
+  const handleFilter = (term: string) => {
     setSearchTerm(term)
   }
   const newOptions = useMemo(() => {
@@ -231,7 +227,7 @@ export function SelectContent() {
         >
           200 x 200
         </Flex>
-        <Select
+        <FieldSelect
           width={300}
           mb="medium"
           options={newOptions}
@@ -319,6 +315,10 @@ export function SelectContent() {
   )
 }
 
+SelectContent.parameters = {
+  storyshots: { disable: true },
+}
+
 export const SelectDemo = () => {
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
@@ -363,6 +363,10 @@ export const SelectDemo = () => {
   )
 }
 
+SelectDemo.parameters = {
+  storyshots: { disable: true },
+}
+
 export const UpdateOptions = () => {
   const [value, setValue] = useState('second')
   const { value: isPlural, toggle } = useToggle()
@@ -377,14 +381,19 @@ export const UpdateOptions = () => {
   return (
     <Space>
       <Button onClick={toggle}>Use {isPlural ? 'singular' : 'plural'}</Button>
-      <Select autoResize options={options} value={value} onChange={setValue} />
+      <FieldSelect
+        autoResize
+        options={options}
+        value={value}
+        onChange={setValue}
+      />
     </Space>
   )
 }
 
 export const EmptyValue = () => {
   const [value, setValue] = useState(false)
-  function handleToggle(e: FormEvent<HTMLInputElement>) {
+  const handleToggle = (e: FormEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.checked)
   }
 
@@ -399,13 +408,13 @@ export const EmptyValue = () => {
         on={value}
         onChange={handleToggle}
       />
-      <Select
+      <FieldSelect
         value={value ? '' : selectValue}
         placeholder="Can't change me when toggle is on"
         onChange={setSelectValue}
         options={options}
       />
-      <Select
+      <FieldSelect
         value={value ? '' : selectValue}
         onChange={setSelectValue}
         options={[
@@ -536,7 +545,7 @@ export const CreateOption = () => {
         option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
     )
   }, [filterTerm])
-  function formatCreateLabel(inputValue: string) {
+  const formatCreateLabel = (inputValue: string) => {
     return `Create a fruit: ${inputValue}`
   }
   return (
@@ -550,4 +559,9 @@ export const CreateOption = () => {
       width={300}
     />
   )
+}
+
+export default {
+  component: FieldSelect,
+  title: 'FieldSelect',
 }
