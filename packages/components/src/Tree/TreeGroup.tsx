@@ -28,23 +28,36 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 import { AccordionDisclosure } from '../Accordion'
+import { Truncate } from '../Text'
 import { TreeItemLabel } from './TreeItem'
 
 export interface TreeGroupProps extends TextColorProps {
+  className?: string
   /**
    * Visible label of the TreeGroup
    */
   label: string
-  className?: string
+  /**
+   * Sets the TreeGroup's label color
+   * Note: Will override the color prop (if provided)
+   */
+  labelColor?: string
+  /**
+   * Prevent text wrapping on group label's and instead render truncated text
+   **/
+  truncate?: boolean
 }
 
 const TreeGroupLayout: FC<TreeGroupProps> = ({
   children,
   className,
   label,
+  truncate,
 }) => (
   <div className={className}>
-    <TreeGroupLabel>{label}</TreeGroupLabel>
+    <TreeGroupLabel>
+      {truncate ? <Truncate>{label}</Truncate> : label}
+    </TreeGroupLabel>
     {children}
   </div>
 )
@@ -59,7 +72,13 @@ export const TreeGroupLabel = styled.div`
 `
 
 export const TreeGroup = styled(TreeGroupLayout)`
-  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
+  ${TreeItemLabel}, ${AccordionDisclosure} {
     ${color}
+  }
+
+  ${TreeGroupLabel} {
+    ${color}
+    ${({ theme, labelColor }) =>
+      labelColor && `color: ${theme.colors[labelColor] || labelColor}`}
   }
 `
