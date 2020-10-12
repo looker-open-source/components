@@ -93,4 +93,6 @@ const StatusLayout = forwardRef(
 
 StatusLayout.displayName = 'StatusLayout'
 
-export const Status = styled(StatusLayout)``
+export const Status = styled(StatusLayout)`
+  flex-shrink: 0;
+`

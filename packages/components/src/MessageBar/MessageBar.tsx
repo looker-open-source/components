@@ -234,7 +234,10 @@ const MessageBarLayout = forwardRef(
 
 MessageBarLayout.displayName = 'MessageBarLayout'
 
-const MessageBarContent = styled.div``
+const MessageBarContent = styled.div`
+  flex-grow: 1;
+  padding: 0 ${({ theme: { space } }) => space.large};
+`
 
 export const MessageBar = styled(MessageBarLayout)`
   ${simpleLayoutCSS}
@@ -245,16 +248,6 @@ export const MessageBar = styled(MessageBarLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-
-  ${Space},
-  ${Status} {
-    flex-shrink: 0;
-  }
-
-  ${MessageBarContent} {
-    flex-grow: 1;
-    padding: 0 ${({ theme: { space } }) => space.large};
-  }
 `
 
 MessageBar.defaultProps = {

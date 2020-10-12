@@ -24,9 +24,15 @@ exports[`critical Status 1`] = `
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 <div
   aria-hidden={false}
-  className="c0 "
+  className="c0 c1"
 >
   <svg
     fill="currentColor"
@@ -69,9 +75,15 @@ exports[`inform Status 1`] = `
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 <div
   aria-hidden={false}
-  className="c0 "
+  className="c0 c1"
 >
   <svg
     fill="currentColor"
@@ -114,9 +126,15 @@ exports[`neutral status 1`] = `
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 <div
   aria-hidden={true}
-  className="c0 "
+  className="c0 c1"
 >
   <svg
     fill="currentColor"
@@ -156,9 +174,15 @@ exports[`positive Status 1`] = `
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 <div
   aria-hidden={false}
-  className="c0 "
+  className="c0 c1"
 >
   <svg
     fill="currentColor"
@@ -201,9 +225,15 @@ exports[`warn Status 1`] = `
   width: 100%;
 }
 
+.c1 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 <div
   aria-hidden={false}
-  className="c0 "
+  className="c0 c1"
 >
   <svg
     fill="currentColor"
