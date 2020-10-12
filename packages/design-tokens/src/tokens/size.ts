@@ -29,9 +29,10 @@ import { SizeRamp } from '../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const sizes: SizeRamp = {
-  xxsmall: rem(12),
-  xsmall: rem(16),
-  small: rem(18),
+  xxxsmall: rem(12),
+  xxsmall: rem(16),
+  xsmall: rem(18),
+  small: rem(20),
   medium: rem(24),
   large: rem(32),
 }

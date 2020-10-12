@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
 - `TreeItem`'s detail no longer has padding on the right side
 - Brand font defaults to Roboto
+- Adjusted icons sizes in `IconButtons`, `Button`, `MenuItems`, `TextField` to ensure consistent sizing across components
 
 ### Fixed
 

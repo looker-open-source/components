@@ -25,7 +25,14 @@
  */
 
 import React from 'react'
-import { Icon, Space, SpaceVertical } from '@looker/components'
+import {
+  Button,
+  Heading,
+  IconButton,
+  Icon,
+  Space,
+  SpaceVertical,
+} from '@looker/components'
 
 export default {
   title: 'Icons',
@@ -89,4 +96,115 @@ export const Artwork = () => (
       />
     </Space>
   </>
+)
+
+export const IconsInsideComponents = () => (
+  <SpaceVertical>
+    <Space gap="xsmall">
+      <Button size="large" iconAfter="Refresh">
+        Add
+      </Button>
+      <IconButton size="large" icon="Filter" label="Filter" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Button iconAfter="Refresh">Add</Button>
+      <IconButton size="medium" icon="Filter" label="Filter" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Button size="small" iconAfter="Refresh">
+        Add
+      </Button>
+      <IconButton size="small" icon="Filter" label="Filter" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Button size="xsmall" iconAfter="Refresh">
+        Add
+      </Button>
+      <IconButton size="xsmall" icon="Filter" label="Filter" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Button size="xxsmall" iconAfter="Refresh">
+        Add
+      </Button>
+      <IconButton size="xxsmall" icon="Filter" label="Filter" />
+    </Space>
+  </SpaceVertical>
+)
+
+export const IconsPairedWithText = () => (
+  <SpaceVertical>
+    <Space gap="xsmall">
+      <Heading fontSize="xxsmall">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="xxxsmall" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xsmall">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="xxxsmall" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="small">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="xxsmall" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="medium">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="xxsmall" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="large">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="xsmall" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xlarge">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="small" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xxlarge">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="small" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xxxlarge">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="medium" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xxxxlarge">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="medium" name="Edit" />
+    </Space>
+
+    <Space gap="xsmall">
+      <Heading fontSize="xxxxxlarge">
+        This is to compare icons size with a Heading
+      </Heading>
+      <Icon size="large" name="Edit" />
+    </Space>
+  </SpaceVertical>
 )
