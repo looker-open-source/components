@@ -49,6 +49,7 @@ export const Legend = styled.legend<LegendProps>`
 
 Legend.defaultProps = {
   color: 'text4',
+  fontFamily: 'brand',
   fontSize: 'medium',
   fontWeight: 'semiBold',
   padding: 'none',

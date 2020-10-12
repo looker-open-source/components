@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `InputSearch` `onChange` callback argument is now a string rather than an event
 - `InputTimeSelect` supports 20- and 60-minute intervals
+- `Legend` now applies font-family `brand`
+- `MenuGroupLabel` now applies font-family `brand`
 - `Span` replaced all library-internal usage of `Text` with `Span`
 - `TreeItem` now supports text truncation behavior
 - `TreeItem` now wraps long text pleasantly
