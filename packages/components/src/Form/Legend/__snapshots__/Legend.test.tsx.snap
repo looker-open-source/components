@@ -2,9 +2,10 @@
 
 exports[`A Legend 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #343C42;
   padding: 0rem;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -12,6 +13,7 @@ exports[`A Legend 1`] = `
 <legend
   className="c0"
   color="text4"
+  fontFamily="brand"
   fontSize="medium"
   fontWeight="semiBold"
 >
