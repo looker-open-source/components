@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ComboboxMulti` issue with chips not updating reflecting updated option labels
 - `InputTimeSelect` disabled state
+- `MessageBar` now displays properly in IE11 (switched from grid to flex layout)
 
 ### Removed
 

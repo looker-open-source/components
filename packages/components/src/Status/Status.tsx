@@ -25,6 +25,7 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import { Icon, IconProps, IconNames } from '../Icon'
 
 export type StatusIntent =
@@ -73,9 +74,9 @@ export const getIntentLabel = (intent?: StatusIntent) => {
   }
 }
 
-export const Status = forwardRef(
+const StatusLayout = forwardRef(
   (
-    { className, intent, size, ...props }: StatusProps,
+    { className, intent, size = 'medium', ...props }: StatusProps,
     ref: Ref<HTMLInputElement>
   ) => (
     <Icon
@@ -90,6 +91,6 @@ export const Status = forwardRef(
   )
 )
 
-Status.displayName = 'Status'
+StatusLayout.displayName = 'StatusLayout'
 
-Status.defaultProps = { size: 'medium' }
+export const Status = styled(StatusLayout)``

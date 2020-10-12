@@ -26,7 +26,7 @@ exports[`critical Status 1`] = `
 
 <div
   aria-hidden={false}
-  className="c0"
+  className="c0 "
 >
   <svg
     fill="currentColor"
@@ -71,7 +71,7 @@ exports[`inform Status 1`] = `
 
 <div
   aria-hidden={false}
-  className="c0"
+  className="c0 "
 >
   <svg
     fill="currentColor"
@@ -116,7 +116,7 @@ exports[`neutral status 1`] = `
 
 <div
   aria-hidden={true}
-  className="c0"
+  className="c0 "
 >
   <svg
     fill="currentColor"
@@ -158,7 +158,7 @@ exports[`positive Status 1`] = `
 
 <div
   aria-hidden={false}
-  className="c0"
+  className="c0 "
 >
   <svg
     fill="currentColor"
@@ -203,7 +203,7 @@ exports[`warn Status 1`] = `
 
 <div
   aria-hidden={false}
-  className="c0"
+  className="c0 "
 >
   <svg
     fill="currentColor"

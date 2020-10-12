@@ -216,7 +216,7 @@ const MessageBarLayout = forwardRef(
         <Status intent={intent} />
         <MessageBarContent>{children}</MessageBarContent>
         {!noActions && (
-          <Space>
+          <Space width="auto">
             <SecondaryButton onClick={handleSecondaryClick} />
             <PrimaryButton
               intent={intent}
@@ -234,6 +234,8 @@ const MessageBarLayout = forwardRef(
 
 MessageBarLayout.displayName = 'MessageBarLayout'
 
+const MessageBarContent = styled.div``
+
 export const MessageBar = styled(MessageBarLayout)`
   ${simpleLayoutCSS}
 
@@ -241,14 +243,18 @@ export const MessageBar = styled(MessageBarLayout)`
   background: ${({ intent, theme: { colors } }) =>
     intent === 'critical' ? colors.criticalAccent : colors.neutralAccent};
   border-radius: ${({ theme: { radii } }) => radii.medium};
-  display: grid;
+  display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-  grid-template-columns: auto 1fr auto;
-`
 
-const MessageBarContent = styled.div`
-  flex: 1;
-  margin-left: ${({ theme: { space } }) => space.large};
+  ${Space},
+  ${Status} {
+    flex-shrink: 0;
+  }
+
+  ${MessageBarContent} {
+    flex-grow: 1;
+    padding: 0 ${({ theme: { space } }) => space.large};
+  }
 `
 
 MessageBar.defaultProps = {

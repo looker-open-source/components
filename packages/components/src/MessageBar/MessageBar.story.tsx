@@ -34,6 +34,7 @@ const Template: Story<MessageBarProps> = (args) => <MessageBar {...args} />
 export const Basic = Template.bind({})
 Basic.args = {
   children: 'Hey! This is a message to you.',
+  primaryAction: undefined,
 }
 
 export const Warn = Template.bind({})
@@ -69,8 +70,8 @@ NoActions.args = {
 export const CustomActions = Template.bind({})
 CustomActions.args = {
   ...Positive.args,
-  onSecondaryClick: () => alert('Secondary Action Taken'),
-  secondaryAction: 'Secondary Action',
+  primaryAction: 'Do Thing',
+  secondaryAction: 'Dismiss',
 }
 
 export const CustomActionsDeux = Template.bind({})
