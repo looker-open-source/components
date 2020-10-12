@@ -114,7 +114,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           }
           detailHoverDisclosure={!overlay}
           onClick={() => alert('Clicked on cost!')}
-          onMetaEnterKeyDown={() => alert("Cmd + Enter'ed on cost!")}
+          onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
           selected={!!overlay}
           icon="FieldNumber"
         >
