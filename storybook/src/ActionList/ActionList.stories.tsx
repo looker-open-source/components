@@ -36,7 +36,8 @@ import {
 } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { columns, data, filters } from './data'
+import { filters } from '../../../packages/components/src/Form/Inputs/InputFilters/sampleInputFilters'
+import { columns, data } from './data'
 import { items } from './items'
 
 export * from './ActionListSortable'

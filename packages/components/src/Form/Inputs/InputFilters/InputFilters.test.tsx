@@ -28,41 +28,17 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import { InputFilters } from './InputFilters'
+import { filters } from './sampleInputFilters'
 
 describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', options: ['user', 'group-admin', 'admin', 'pizza'] },
-    {
-      field: 'group',
-      label: 'Group',
-      options: ['Gouda', 'Cheddar', 'Swiss', 'Pizza'],
-    },
-    {
-      field: 'name',
-      label: 'Name',
-      options: ['Name 1', 'Name 2', 'Name 3', 'pizza'],
-    },
-    { field: 'status', options: ['Success', 'Failed', 'in-progress', 'pizza'] },
-    {
-      field: 'buildAt',
-      label: 'Last Build Time',
-      options: [
-        '01-22-20 33:33:33',
-        '02-13-20 12:30:55',
-        '05-28-20 01:45:57',
-        'pizza',
-      ],
-    },
-  ]
-
-  test('renders InputFilters', () => {
+  test('renders', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
-  test('InputFilter displays list of filters', () => {
+  test('Displays list of filters', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
@@ -77,7 +53,7 @@ describe('InputFilters', () => {
     fireEvent.click(document)
   })
 
-  test('InputFilter filter clicked gets displayed ', () => {
+  test('Clicking on a filter item will displays list of second layer filters ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
@@ -99,7 +75,7 @@ describe('InputFilters', () => {
     fireEvent.click(document)
   })
 
-  test('InputFilter shows editing options ', () => {
+  test('Shows editing options ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
@@ -122,7 +98,7 @@ describe('InputFilters', () => {
     fireEvent.click(document)
   })
 
-  test('InputFilter shows chip with full filter selected ', () => {
+  test('Display full filter selected', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
@@ -141,7 +117,7 @@ describe('InputFilters', () => {
     fireEvent.click(document)
   })
 
-  test('InputFilter doest show filter displayed as chip', () => {
+  test("Doesn't show filter displayed as chip", () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
       <InputFilters filters={filters} />
     )
@@ -161,6 +137,121 @@ describe('InputFilters', () => {
     fireEvent.click(getByPlaceholderText('Filter List'))
 
     expect(queryByText('role')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Display a second filter as chip', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    fireEvent.click(getByText('Group'))
+    fireEvent.click(getByText('Cheddar'))
+
+    expect(getByText('group:')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Change filter values', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+    fireEvent.click(document)
+
+    expect(queryByText('role:')).toBeInTheDocument()
+    expect(queryByText(/user/)).toBeInTheDocument()
+
+    fireEvent.click(getByText('role:'))
+    fireEvent.click(getByText('pizza'))
+
+    expect(queryByText(/pizza, user/)).toBeInTheDocument()
+
+    fireEvent.click(getByText('user'))
+    fireEvent.click(document)
+
+    expect(queryByText(/pizza/)).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Delete filter', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByText('Delete'))
+
+    expect(queryByText('role:')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Delete multiple filter', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <InputFilters filters={filters} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    fireEvent.click(getByText('Group'))
+    fireEvent.click(getByText('Cheddar'))
+
+    fireEvent.click(getByText('Clear Filters'))
+
+    expect(queryByText('role:')).not.toBeInTheDocument()
+    expect(queryByText('group:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
