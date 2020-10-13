@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.9.18] - 2020-10-12
+
+- `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
+
+## [0.9.17] - 2020-10-12
 
 ## Added
 
@@ -33,12 +37,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `InputSearch` `onChange` callback argument is now a string rather than an event
 - `InputTimeSelect` supports 20- and 60-minute intervals
+- `Legend` now applies font-family `brand`
+- `MenuGroupLabel` now applies font-family `brand`
 - `Span` replaced all library-internal usage of `Text` with `Span`
-- `TreeItem` now supports text truncation behavior
-- `TreeItem` now wraps long text pleasantly
-- `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
+- `TreeItem`
+  - now supports text truncation behavior
+  - now wraps long text pleasantly
+  - now defaults to `24px` minimum height (was previously `25px`)
+  - detail no longer has padding on the right side
 - `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
-- `TreeItem`'s detail no longer has padding on the right side
 - Brand font defaults to Roboto
 - Adjusted icons sizes in `IconButtons`, `Button`, `MenuItems`, `TextField` to ensure consistent sizing across components
 

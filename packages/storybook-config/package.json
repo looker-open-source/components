@@ -1,6 +1,6 @@
 {
   "name": "@looker/storybook-config",
-  "version": "0.9.16",
+  "version": "0.9.17",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "private": true,
   "devDependencies": {
-    "@looker/components-providers": "^0.9.16",
+    "@looker/components-providers": "^0.9.17",
     "@storybook/addon-essentials": "^6.0.26",
     "@storybook/addon-storyshots": "^6.0.26",
     "@storybook/addon-storyshots-puppeteer": "^6.0.26",

@@ -25,7 +25,7 @@
  */
 
 import 'jest-styled-components'
-import React from 'react'
+import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
   screen,
@@ -33,6 +33,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import { SimpleContent } from '../__mocks__/DialogContentSimple'
+import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
 import { Dialog } from './Dialog'
 import { DialogManager } from './DialogManager'
 import {
@@ -159,9 +160,6 @@ describe('Dialog', () => {
     await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
 
-  /**
-   * NOTE: All other tests assume a "uncontrolled" version of Dialog.
-   */
   test('Controlled', async () => {
     renderWithTheme(<Controlled />)
 
@@ -174,6 +172,26 @@ describe('Dialog', () => {
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('Controlled no callbacks', async () => {
+    const SimpleControlled = () => {
+      const [isOpen, setOpen] = useState(false)
+
+      return (
+        <>
+          <Dialog content={<DialogMediumContent />} isOpen={isOpen} />
+          <button onClick={() => setOpen(true)}>Open Dialog</button>
+        </>
+      )
+    }
+
+    renderWithTheme(<SimpleControlled />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
   })
 
   test('Controlled - no children', async () => {
