@@ -158,15 +158,9 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(screen.queryByText('Tree Detail')?.parentElement).toHaveStyleRule(
-      'visibility',
-      'hidden'
-    )
+    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
-    expect(screen.queryByText('Tree Detail')?.parentElement).toHaveStyleRule(
-      'visibility',
-      'visible'
-    )
+    expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
   })
 
   test("Child Tree adopts Parent Tree's detailHoverDisclosure prop value (when Child Tree does not have prop value)", () => {
@@ -183,17 +177,11 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(screen.queryByText('Child Detail')?.parentElement).toHaveStyleRule(
-      'visibility',
-      'hidden'
-    )
+    expect(screen.queryByText('Child Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Child Label'), {
       bubbles: true,
     })
-    expect(screen.queryByText('Child Detail')?.parentElement).toHaveStyleRule(
-      'visibility',
-      'visible'
-    )
+    expect(screen.queryByText('Child Detail')).toBeInTheDocument()
   })
 
   test("Child Tree detailHoverDisclosure prop value overrides Parent Tree's detailHoverDisclosure prop value", () => {
