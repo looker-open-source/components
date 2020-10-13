@@ -100,94 +100,101 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
-        <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
+        <Icon color="ui4" mr="xsmall" mt="xxsmall" name="Filter" size={20} />
       )}
-      {assignedFilters.map((filter, i) => {
-        const editFilter = () => setFieldEditing(filter.field)
+      <ChipWrapper>
+        {assignedFilters.map((filter, i) => {
+          const editFilter = () => setFieldEditing(filter.field)
 
-        const handleDelete = () =>
-          setAssignedFilters(
-            [...assignedFilters].filter(
-              (assignedFilter) => assignedFilter.field !== filter.field
+          const handleDelete = () =>
+            setAssignedFilters(
+              [...assignedFilters].filter(
+                (assignedFilter) => assignedFilter.field !== filter.field
+              )
             )
+
+          const setFieldEditingValue = (value: string) => {
+            const filterIndex = assignedFilters.findIndex(
+              (filter) => filter.field === fieldEditing
+            )
+
+            const newAssignedFilters = [...assignedFilters]
+            const updateFilter = { ...newAssignedFilters[filterIndex], value }
+            newAssignedFilters[filterIndex] = updateFilter
+
+            setAssignedFilters(newAssignedFilters)
+          }
+
+          const closeInputFiltersChipEditor = () => {
+            setAssignedFilters(assignedFilters.filter((filter) => filter.value))
+            setFilterLookupName('')
+            setFieldEditing(undefined)
+          }
+
+          const filterToken = filter.value ? (
+            <InputFiltersChip
+              filter={filter}
+              key={i}
+              onClick={editFilter}
+              onDelete={handleDelete}
+            />
+          ) : (
+            <Text fontSize="small">{filter?.label || filter.field}</Text>
           )
-
-        const setFieldEditingValue = (value: string) => {
-          const filterIndex = assignedFilters.findIndex(
-            (filter) => filter.field === fieldEditing
+          return filter.field === fieldEditing ? (
+            <Popover
+              key={i}
+              isOpen={fieldEditing !== undefined}
+              setOpen={closeInputFiltersChipEditor}
+              content={
+                <InputFiltersChipEditor
+                  defaultValue={filter.value}
+                  onChange={setFieldEditingValue}
+                  options={filter.options}
+                />
+              }
+            >
+              {filterToken}
+            </Popover>
+          ) : (
+            filterToken
           )
-
-          const newAssignedFilters = [...assignedFilters]
-          const updateFilter = { ...newAssignedFilters[filterIndex], value }
-          newAssignedFilters[filterIndex] = updateFilter
-
-          setAssignedFilters(newAssignedFilters)
-        }
-
-        const closeInputFiltersChipEditor = () => {
-          setAssignedFilters(assignedFilters.filter((filter) => filter.value))
-          setFilterLookupName('')
-          setFieldEditing(undefined)
-        }
-
-        const filterToken = filter.value ? (
-          <InputFiltersChip
-            filter={filter}
-            key={i}
-            onClick={editFilter}
-            onDelete={handleDelete}
+        })}
+        {!fieldEditing && (
+          <Select
+            autoResize
+            indicator={false}
+            isFilterable
+            onChange={handleFilterLookupChange}
+            options={options}
+            placeholder="Filter List"
+            ref={inputRef}
+            value={filterLookupName}
           />
-        ) : (
-          <Text fontSize="small">{filter?.label || filter.field}</Text>
-        )
-        return filter.field === fieldEditing ? (
-          <Popover
-            key={i}
-            isOpen={fieldEditing !== undefined}
-            setOpen={closeInputFiltersChipEditor}
-            content={
-              <InputFiltersChipEditor
-                defaultValue={filter.value}
-                onChange={setFieldEditingValue}
-                options={filter.options}
-              />
-            }
-          >
-            {filterToken}
-          </Popover>
-        ) : (
-          filterToken
-        )
-      })}
+        )}
+      </ChipWrapper>
 
-      {!fieldEditing && (
-        <Select
-          autoResize
-          indicator={false}
-          isFilterable
-          onChange={handleFilterLookupChange}
-          options={options}
-          placeholder="Filter List"
-          ref={inputRef}
-          value={filterLookupName}
-        />
-      )}
       {isClearable && (
         <IconButton
           icon="Close"
           label="Clear Filters"
+          ml="auto"
           mr="xxsmall"
+          mt="xxsmall"
           onClick={clearFilters}
           size="xsmall"
-          ml="auto"
         />
       )}
     </div>
   )
 }
 
+const ChipWrapper = styled.div`
+  flex: 1;
+`
+
 export const InputFilters = styled(InputFiltersLayout)`
-  align-items: center;
+  align-items: start;
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
@@ -198,6 +205,7 @@ export const InputFilters = styled(InputFiltersLayout)`
 
   ${Chip} {
     margin-right: ${({ theme: { space } }) => space.xsmall};
+    margin-top: 1px;
   }
 
   ${Select} {
