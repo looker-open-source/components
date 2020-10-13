@@ -35,11 +35,9 @@ import {
   OptionIndicatorProps,
   ComboboxList,
   ComboboxInput,
-  Heading,
-  Space,
-  SpaceVertical,
-} from '@looker/components'
-export { ListLayoutDemo } from './ListLayout.stories'
+} from '..'
+import { Heading, Space, SpaceVertical } from '../../../..'
+export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
   isActive,
@@ -48,13 +46,13 @@ const CustomIndicator: FC<OptionIndicatorProps> = ({
   return <>{isSelected ? '>>' : isActive ? '>' : ''}</>
 }
 
-export function ComboboxDemo() {
+export const ComboboxDemo = () => {
   const [option, setOption] = useState({ value: 'Bananas' })
-  function handleChange(newOption: any) {
+  const handleChange = (newOption: any) => {
     setOption(newOption)
   }
   const [options, setOptions] = useState([{ value: 'Bananas' }])
-  function handleMultiChange(newOptions: any) {
+  const handleMultiChange = (newOptions: any) => {
     setOptions(newOptions)
   }
 
@@ -148,6 +146,11 @@ export function ComboboxDemo() {
   )
 }
 
+ComboboxDemo.parameters = {
+  storyshots: { disable: true },
+}
+
 export default {
-  title: 'Forms/Combobox',
+  component: Combobox,
+  title: 'Combobox',
 }
