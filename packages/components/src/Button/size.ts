@@ -69,7 +69,7 @@ export const buttonSizeMap = {
 export const iconButtonIconSizeMap = {
   xxsmall: 'xxsmall',
   xsmall: 'xsmall',
-  small: 'xsmall',
+  small: 'small',
   medium: 'small',
   large: 'medium',
 }
