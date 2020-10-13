@@ -191,7 +191,8 @@ export const InputFilters = styled(InputFiltersLayout)`
   border: solid 1px ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
-  height: 36px;
+  flex-wrap: wrap;
+  min-height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
 
