@@ -30,7 +30,7 @@ import { StatefulColor } from '@looker/design-tokens'
 
 export const iconButtonDefaultColor = 'neutral'
 
-export const iconButtonColor = css<{ color?: StatefulColor }>`
+export const iconButtonColor = css<{ color?: StatefulColor, toggle?: boolean }>`
   color: ${({ theme, color = iconButtonDefaultColor }) =>
     lighten(0.14, theme.colors[color])};
 
@@ -44,7 +44,14 @@ export const iconButtonColor = css<{ color?: StatefulColor }>`
   &[aria-expanded='true'],
   &:active,
   &.active {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Pressed`]};
+    background: ${({ theme, toggle }) =>
+      toggle !== undefined ? theme.colors.keyAccent : theme.colors.ui2};
+    color: ${({ theme, toggle }) =>
+      toggle !== undefined ? theme.colors.key : theme.colors.text3};
+  }
+
+  &[aria-pressed='true'] {
+    background: ${({ theme }) => theme.colors.keySubtle};
+    color: ${({ theme }) => theme.colors.key};
   }
 `

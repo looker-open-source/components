@@ -75,6 +75,21 @@ export const Basic = () => {
           className="active"
         />
       </Space>
+      <Space>
+        <IconButton
+          size="medium"
+          icon="Favorite"
+          label="Favorite"
+          toggle={false}
+        />
+
+        <IconButton
+          size="medium"
+          icon="Favorite"
+          label="Favorite"
+          toggle={true}
+        />
+      </Space>
     </>
   )
 }

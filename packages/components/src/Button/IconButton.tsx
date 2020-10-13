@@ -106,6 +106,10 @@ export interface IconButtonProps
    */
   shape?: 'round' | 'square'
   /**
+   * If the IconButton is in the optional toggled on or toggled off state
+   */
+  toggle?: boolean
+  /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false
    */
@@ -137,6 +141,7 @@ const IconButtonComponent = forwardRef(
       size = 'xsmall',
       label,
       color,
+      toggle,
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -183,6 +188,7 @@ const IconButtonComponent = forwardRef(
     return (
       <ButtonBase
         aria-describedby={ariaDescribedBy}
+        aria-pressed={toggle ? 'true' : 'false'}
         ref={actualRef}
         color={color}
         p="none"
