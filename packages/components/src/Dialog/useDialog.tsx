@@ -173,9 +173,9 @@ export const useDialog = ({
   /**
    * LEGACY SUPPORT
    * Eventually we need to deprecate support for `isOpen` without specifying a `setOpen`
-   * being explicitly so we can unwind this semi-controlled state.
+   *  explicitly so we can unwind this semi-controlled state.
    */
-  const isPartiallyControlled = !!onClose && controlledIsOpen !== undefined
+  const isPartiallyControlled = controlledIsOpen !== undefined
 
   const isOpen =
     isPartiallyControlled || isControlled
