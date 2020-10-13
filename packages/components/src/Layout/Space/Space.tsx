@@ -142,7 +142,6 @@ export const Space = styled.div<SpaceHelperProps>`
   ${spaceCSS}
   ${({ stretch }) => !stretch && verticalAlign}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-  flex-shrink: 0;
 
   ${({ around }) => around && 'justify-content: space-around;'}
   ${({ between }) => between && 'justify-content: space-between;'}
