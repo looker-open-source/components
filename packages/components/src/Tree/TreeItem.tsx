@@ -152,7 +152,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   }
 
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.keyCode === 9 && event.currentTarget === event.target)
+    if (event.key === 'Tab' && event.currentTarget === event.target)
       setFocusVisible(true)
 
     onKeyUp && onKeyUp(event)
@@ -169,15 +169,15 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
 
     if (
-      event.keyCode === 13 &&
+      event.key === 'Enter' &&
       !event.metaKey &&
       event.target === event.currentTarget
     ) {
       onClick && onClick()
     }
 
-    if (event.keyCode === 13 && event.metaKey) {
-      onMetaEnter ? onMetaEnter() : onClick && onClick()
+    if (event.key === 'Enter' && event.metaKey) {
+      onMetaEnter && onMetaEnter()
     }
 
     onKeyDown && onKeyDown(event)
