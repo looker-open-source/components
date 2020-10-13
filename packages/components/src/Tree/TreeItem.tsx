@@ -121,10 +121,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isFocusVisible, setFocusVisible] = useState(false)
 
   const {
-    onBlur,
+    onBlur = noop,
     onClick = noop,
-    onKeyDown,
-    onKeyUp,
+    onKeyDown = noop,
+    onKeyUp = noop,
     ...restProps
   } = Omit(props, [
     'color',
@@ -155,14 +155,14 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
 
     setFocusVisible(false)
-    onClick && onClick()
+    onClick()
   }
 
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Tab' && event.currentTarget === event.target)
       setFocusVisible(true)
 
-    onKeyUp && onKeyUp(event)
+    onKeyUp(event)
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -179,12 +179,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       event.metaKey ? onMetaEnter() : onClick()
     }
 
-    onKeyDown && onKeyDown(event)
+    onKeyDown(event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
     setFocusVisible(false)
-    onBlur && onBlur(event)
+    onBlur(event)
   }
 
   const defaultIconSize = 12
@@ -198,6 +198,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 
   const TextWrapper = truncate ? Truncate : Fragment
+  const isTreeItemTabbable = onClick || onMetaEnter ? 0 : -1
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
@@ -210,7 +211,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={itemRef}
-        tabIndex={onClick ? 0 : -1}
+        tabIndex={isTreeItemTabbable}
         {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
