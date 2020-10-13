@@ -177,7 +177,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
 
     if (event.keyCode === 13 && event.metaKey) {
-      onMetaEnter && onMetaEnter()
+      onMetaEnter ? onMetaEnter() : onClick && onClick()
     }
 
     onKeyDown && onKeyDown(event)
