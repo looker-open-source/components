@@ -91,7 +91,6 @@ Large.args = {
 }
 
 export default {
-  argTypes: { onClick: { action: 'clicked' } },
   component: Button,
   title: 'Button',
 }
