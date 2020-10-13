@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Space` revert mistakenly applied `flex-shrink: 0`
 - `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
 - Reverts: `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
+- Fix `image-snapshots` issue
 
 ## [0.9.17] - 2020-10-12
 
