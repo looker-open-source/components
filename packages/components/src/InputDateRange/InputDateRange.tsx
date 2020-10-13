@@ -68,7 +68,7 @@ export interface InputDateRangeProps {
   disabled?: boolean
 }
 
-type Endpoint = 'to' | 'from'
+type Endpoint = 'to' | 'from' | 'both'
 
 // Add or subtract given number of months to provided date
 const transformMonth = (
@@ -81,9 +81,9 @@ const transformMonth = (
   return newDate
 }
 
-// decide which date (from or to) gets updated based on active state and current value
-// example, if newDate is later than dateRange.to, update dateRange.to regardless
-// of the activeDateInput value
+// Dcide which date (from, to, or both) gets updated based on active state and current value
+// Example: if newDate is later than dateRange.to, update dateRange.to regardless of the
+// activeDateInput value.
 const chooseDateToSet = (
   activeDateInput: Endpoint,
   newDate?: Date,
@@ -91,7 +91,13 @@ const chooseDateToSet = (
 ): Endpoint => {
   const { from, to } = dateRange
   if (newDate) {
-    if (from && newDate < from) {
+    if (
+      isEmpty(dateRange) ||
+      Number(newDate) === Number(from) ||
+      Number(newDate) === Number(to)
+    ) {
+      return 'both'
+    } else if (from && newDate < from) {
       return 'from'
     } else if (to && newDate > to) {
       return 'to'
@@ -228,7 +234,9 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       /* eslint-disable sort-keys-fix/sort-keys-fix */
       const newDateRange: Partial<RangeModifier> = {
         ...dateRange,
-        [dateToSet]: date,
+        ...(dateToSet === 'both'
+          ? { from: date, to: date }
+          : { [dateToSet]: date }),
       }
 
       // prevent reversed date ranges like Feb 23 - Jan 1
@@ -265,11 +273,16 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
     const handleCalendarClick = (date: Date) => {
       const dateToSet = chooseDateToSet(activeDateInput, date, dateRange)
-      inputs[dateToSet].setValue(formatDateString(date, dateStringLocale))
-      handleDateChange(dateToSet, date)
-      if (dateToSet === activeDateInput) {
-        toggleActiveDateInput()
+      if (dateToSet === 'both') {
+        inputs.from.setValue(formatDateString(date, dateStringLocale))
+        inputs.to.setValue(formatDateString(date, dateStringLocale))
+      } else {
+        inputs[dateToSet].setValue(formatDateString(date, dateStringLocale))
+        if (dateToSet === activeDateInput) {
+          toggleActiveDateInput()
+        }
       }
+      handleDateChange(dateToSet, date)
     }
 
     const handleTextInputChange = (e: SyntheticEvent<HTMLInputElement>) => {
