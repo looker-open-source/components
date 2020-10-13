@@ -24,17 +24,12 @@
 
  */
 import React, { FC, useState } from 'react'
-import {
-  Button,
-  FieldSelect,
-  Paragraph,
-  Popover,
-  PopoverContent,
-} from '@looker/components'
-import { DateFormat } from '@looker/components/src/DateFormat'
-import { FieldDateRange } from '@looker/components/src/FieldDateRange'
-import { InputDateRange } from '@looker/components/src/InputDateRange'
-import { Locales } from '@looker/components/src/utils/i18n'
+import { Story } from '@storybook/react/types-6-0'
+import { Locales } from '../utils/i18n'
+import { FieldSelect } from '../Form/Fields/FieldSelect'
+import { Paragraph } from '../Text/Paragraph'
+import { DateFormat } from '../DateFormat'
+import { FieldDateRange, FieldInputDateRangeProps } from '.'
 
 interface DateRange {
   from?: Date
@@ -42,51 +37,18 @@ interface DateRange {
 }
 
 export default {
-  title: 'Forms/DateRange',
+  title: 'Forms/FieldDateRange',
 }
 
-export const Basic = () => <FieldDateRange />
-export const Disabled = () => <FieldDateRange disabled />
+const Template: Story<FieldInputDateRangeProps> = (args) => (
+  <FieldDateRange {...args} />
+)
 
-export const Controlled: FC = () => {
-  const startDate = new Date()
-  startDate.setDate(9)
-  const endDate = new Date()
-  endDate.setDate(15)
+export const Basic = Template.bind({})
 
-  const [controlledDateRange, setControlledDateRange] = useState<any>()
-
-  const handleNextWeekClick = () => {
-    setControlledDateRange({
-      from: new Date('03/02/2020'),
-      to: new Date('03/09/2020'),
-    })
-  }
-
-  return (
-    <Popover
-      content={
-        <PopoverContent>
-          <Button onClick={handleNextWeekClick}>Next Week</Button>
-          <InputDateRange
-            value={controlledDateRange}
-            onChange={setControlledDateRange}
-          />
-        </PopoverContent>
-      }
-    >
-      <Button>
-        {controlledDateRange ? (
-          <>
-            <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
-            <DateFormat>{controlledDateRange.to}</DateFormat>
-          </>
-        ) : (
-          'Select Dates'
-        )}
-      </Button>
-    </Popover>
-  )
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
 }
 
 export const Localized: FC = () => {
