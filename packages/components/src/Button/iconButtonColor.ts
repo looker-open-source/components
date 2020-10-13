@@ -44,14 +44,13 @@ export const iconButtonColor = css<{ color?: StatefulColor, toggle?: boolean }>`
   &[aria-expanded='true'],
   &:active,
   &.active {
-    background: ${({ theme, toggle }) =>
-      toggle !== undefined ? theme.colors.keyAccent : theme.colors.ui2};
-    color: ${({ theme, toggle }) =>
-      toggle !== undefined ? theme.colors.key : theme.colors.text3};
+    color: ${({ theme, toggle, color = iconButtonDefaultColor }) =>
+      toggle !== undefined
+        ? theme.colors.key
+        : theme.colors[`${color}Pressed`]};
   }
 
   &[aria-pressed='true'] {
-    background: ${({ theme }) => theme.colors.keySubtle};
     color: ${({ theme }) => theme.colors.key};
   }
 `

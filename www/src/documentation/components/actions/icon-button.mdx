@@ -67,6 +67,24 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 </Space>
 ```
 
+### Toggle
+
+Icon buttons have the `toggle` prop which can be used to show a toggleable state. The `toggle` prop has to be explictly set to either `true` or `false`.
+
+```jsx
+;() => {
+  const [isToggled, setIsToggled] = useState(false)
+
+  return (
+    <IconButton
+      icon={isToggled ? 'Favorite' : 'FavoriteOutline'}
+      toggle={isToggled}
+      onClick={() => setIsToggled(!isToggled)}
+    />
+  )
+}
+```
+
 ## Color
 
 - `critical` | `neutral` (default) | `key`
