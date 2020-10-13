@@ -44,6 +44,7 @@ import {
   uiTransparencyBlend,
 } from '@looker/design-tokens'
 import Omit from 'lodash/omit'
+import noop from 'lodash/noop'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
@@ -108,7 +109,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   gapSize = 'xsmall',
-  onMetaEnter,
+  onMetaEnter = noop,
   selected,
   truncate,
   ...props
@@ -119,7 +120,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const { onBlur, onClick, onKeyDown, onKeyUp, ...restProps } = Omit(props, [
+  const {
+    onBlur,
+    onClick = noop,
+    onKeyDown,
+    onKeyUp,
+    ...restProps
+  } = Omit(props, [
     'color',
     'detail',
     'detailAccessory',
@@ -168,16 +175,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
-    if (
-      event.key === 'Enter' &&
-      !event.metaKey &&
-      event.target === event.currentTarget
-    ) {
-      onClick && onClick()
-    }
-
-    if (event.key === 'Enter' && event.metaKey) {
-      onMetaEnter && onMetaEnter()
+    if (event.key === 'Enter') {
+      event.metaKey ? onMetaEnter() : onClick()
     }
 
     onKeyDown && onKeyDown(event)
