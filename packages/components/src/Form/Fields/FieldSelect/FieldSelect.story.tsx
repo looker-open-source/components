@@ -391,6 +391,10 @@ export const UpdateOptions = () => {
   )
 }
 
+UpdateOptions.parameters = {
+  storyshots: { disable: true },
+}
+
 export const EmptyValue = () => {
   const [value, setValue] = useState(false)
   const handleToggle = (e: FormEvent<HTMLInputElement>) => {
@@ -424,6 +428,10 @@ export const EmptyValue = () => {
       />
     </Space>
   )
+}
+
+EmptyValue.parameters = {
+  storyshots: { disable: true },
 }
 
 const iconOptions = [
@@ -537,6 +545,10 @@ export const OptionIcons = () => {
   )
 }
 
+OptionIcons.parameters = {
+  storyshots: { disable: true },
+}
+
 export const CreateOption = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
@@ -559,6 +571,10 @@ export const CreateOption = () => {
       width={300}
     />
   )
+}
+
+CreateOption.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {
