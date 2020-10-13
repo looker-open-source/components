@@ -5,13 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+### Changed
+
+- InputDateRange allows you to specify a single day range by clicking on one of the date range endpoints
+
 ## [0.9.18] - 2020-10-12
 
 - `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
 
 ## [0.9.17] - 2020-10-12
 
-## Added
+### Added
 
 - `Combobox` and `ComboboxMulti` `openOnClick` prop
 - `ComboboxInput` now supports `freeInput` prop
@@ -22,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useDialog` - all of the power of `Dialog` in a hook!
 - Visual Snapshot test for `MenuItem`, `MenuGroup`, `Status`
 
-## Changed
+### Changed
 
 - `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
 - `Dialog`
