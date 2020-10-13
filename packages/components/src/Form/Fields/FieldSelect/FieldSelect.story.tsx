@@ -39,9 +39,9 @@ import { Label } from '../../Label'
 import { ComboboxOptionObject } from '../../Inputs/Combobox'
 import { SelectOptionProps, SelectOptionGroupProps } from '../../Inputs/Select'
 import { useToggle } from '../../../utils'
-import { options1k } from '../../Inputs/Select/options1k'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
+import { options1k } from './options1k'
 
 const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
 

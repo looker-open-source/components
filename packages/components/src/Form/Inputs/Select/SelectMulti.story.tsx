@@ -24,28 +24,25 @@
 
  */
 
-import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Button } from './Button'
-import { ButtonProps } from './ButtonBase'
+import React from 'react'
+import { SelectMulti, SelectMultiProps } from '../../Inputs/Select'
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<SelectMultiProps> = (args) => <SelectMulti {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  children: 'Button Text',
+  options: [
+    { label: 'Cheddar', value: 'cheddar' },
+    { label: 'Gouda', value: 'gouda' },
+    { label: 'Swiss', value: 'swiss' },
+  ],
 }
 
-export const Critical = Template.bind({})
-Critical.args = {
+export const Placeholder = Template.bind({})
+Placeholder.args = {
   ...Basic.args,
-  color: 'critical',
-}
-
-export const Neutral = Template.bind({})
-Neutral.args = {
-  ...Basic.args,
-  color: 'neutral',
+  placeholder: 'Placeholder',
 }
 
 export const Disabled = Template.bind({})
@@ -54,44 +51,57 @@ Disabled.args = {
   disabled: true,
 }
 
-export const IconBefore = Template.bind({})
-IconBefore.args = {
-  ...Basic.args,
-  iconBefore: 'CircleAdd',
+export const DisabledPlaceholder = Template.bind({})
+DisabledPlaceholder.args = {
+  ...Placeholder.args,
+  disabled: true,
 }
 
-export const IconAfter = Template.bind({})
-IconAfter.args = {
+export const Error = Template.bind({})
+Error.args = {
   ...Basic.args,
-  iconAfter: 'Trash',
+  validationType: 'error',
 }
 
-export const FullWidth = Template.bind({})
-FullWidth.args = {
-  ...Basic.args,
-  fullWidth: true,
+export const ErrorPlaceholder = Template.bind({})
+ErrorPlaceholder.args = {
+  ...Placeholder.args,
+  validationType: 'error',
 }
 
-export const XSmall = Template.bind({})
-XSmall.args = {
+export const Values = Template.bind({})
+Values.args = {
   ...Basic.args,
-  size: 'xsmall',
+  values: ['cheddar', 'gouda'],
 }
 
-export const Small = Template.bind({})
-Small.args = {
+export const DefaultValues = Template.bind({})
+DefaultValues.args = {
   ...Basic.args,
-  size: 'small',
+  defaultValues: ['gouda', 'swiss'],
 }
 
-export const Large = Template.bind({})
-Large.args = {
+export const WrappingValues = Template.bind({})
+WrappingValues.args = {
   ...Basic.args,
-  size: 'large',
+  defaultValues: ['cheddar', 'gouda', 'swiss'],
+  width: 250,
+}
+
+export const ErrorValues = Template.bind({})
+ErrorValues.args = {
+  ...Error.args,
+  values: ['cheddar', 'gouda'],
+}
+
+export const ErrorWrappingValues = Template.bind({})
+ErrorWrappingValues.args = {
+  ...WrappingValues.args,
+  defaultValues: ['cheddar', 'gouda', 'swiss'],
+  validationType: 'error',
 }
 
 export default {
-  argTypes: { onClick: { action: 'clicked' } },
-  component: Button,
-  title: 'Button',
+  component: SelectMulti,
+  title: 'SelectMulti',
 }
