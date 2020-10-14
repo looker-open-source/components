@@ -24,9 +24,15 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { CSSObject } from 'styled-components'
+import React, {
+  CSSProperties,
+  FC,
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+} from 'react'
+import { CSSObject, ThemeContext } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { DrawerPlacements } from '../Drawer/useDrawer'
 import { Portal } from '../Portal'
@@ -156,6 +162,9 @@ export const useDialog = ({
   surfaceStyles,
   Surface: CustomSurface,
 }: UseDialogPropsInternal): UseDialogResponse => {
+  const {
+    transitions: { durationModerate },
+  } = useContext(ThemeContext)
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
@@ -182,6 +191,24 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
+  const [render, setRender] = useState(isOpen)
+  useEffect(() => {
+    if (isOpen) {
+      setRender(true)
+    } else {
+      /**
+       * Would be ideal to use onAnimationEnd here instead but browser
+       * support is inconsistent.
+       **/
+      console.log('closing...')
+
+      setTimeout(() => {
+        setRender(false)
+        console.log('closed!')
+      }, 1000)
+    }
+  }, [durationModerate, isOpen])
+
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen
@@ -206,7 +233,7 @@ export const useDialog = ({
 
   const RenderSurface = CustomSurface || DialogSurface
 
-  const dialog = (
+  const dialog = render && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -216,36 +243,25 @@ export const useDialog = ({
         focusTrapRef,
       }}
     >
-      <CSSTransition
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-        in={isOpen}
-        timeout={{ enter: 0, exit: 250 }}
-      >
-        {(state: string) => (
-          <Portal ref={portalRef}>
-            <Backdrop
-              className={state}
-              onClick={handleClose}
-              visible={backdrop === undefined ? true : !!backdrop}
-              style={
-                !!backdrop && backdrop !== true
-                  ? (backdrop as CSSObject)
-                  : undefined
-              }
-            />
-            <RenderSurface
-              className={state}
-              style={surfaceStyles}
-              width={width}
-              maxWidth={maxWidth}
-            >
-              {content}
-            </RenderSurface>
-          </Portal>
-        )}
-      </CSSTransition>
+      <Portal ref={portalRef}>
+        <Backdrop
+          onClick={handleClose}
+          visible={backdrop === undefined ? true : !!backdrop}
+          style={
+            !!backdrop && backdrop !== true
+              ? (backdrop as CSSObject)
+              : undefined
+          }
+        />
+        <RenderSurface
+          className={isOpen ? undefined : 'transitioning'}
+          style={surfaceStyles}
+          width={width}
+          maxWidth={maxWidth}
+        >
+          {content}
+        </RenderSurface>
+      </Portal>
     </DialogContext.Provider>
   )
 
@@ -260,3 +276,17 @@ export const useDialog = ({
     setOpen,
   }
 }
+
+// const AnimationHandler = ({ show, children }) => {
+//   const [render, setRender] = useState(show)
+
+//   useEffect(() => {
+//     if (show) setRender(true)
+//   }, [show])
+
+//   const onAnimationEnd = () => {
+//     if (!show) setRender(false)
+//   }
+
+//   return render && <div onAnimationEnd={onAnimationEnd}>{children}</div>
+// }
