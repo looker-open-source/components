@@ -55,6 +55,7 @@ import {
 import { ComboboxCallback, MaybeComboboxOptionObject } from '../Combobox/types'
 import { ValidationType } from '../../ValidationMessage'
 import { useReadOnlyWarn } from '../../../utils'
+import { pickAriaAndValidationProps } from '../Select/utils/ariaProps'
 import {
   formatTimeString,
   parseBase10Int,
@@ -260,6 +261,8 @@ const InputTimeSelectLayout = forwardRef(
       defaultValue,
       validationType,
       disabled,
+      id,
+      ...props
     }: InputTimeSelectProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -329,6 +332,8 @@ const InputTimeSelectLayout = forwardRef(
       optionToFocus
     )
 
+    const ariaProps = pickAriaAndValidationProps(props)
+
     return (
       <Combobox
         className={className}
@@ -344,6 +349,8 @@ const InputTimeSelectLayout = forwardRef(
           autoComplete={false}
           validationType={validationType}
           disabled={disabled}
+          id={id}
+          {...ariaProps}
         />
         <ComboboxList persistSelection>
           {timeOptionsFocused.map((option, index) => (
