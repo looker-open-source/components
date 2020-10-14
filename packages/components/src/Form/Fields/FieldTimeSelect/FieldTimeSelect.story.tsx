@@ -40,6 +40,7 @@ const Template: Story<FieldTimeSelectProps> = (args) => (
 
 export const Basic = Template.bind({})
 Basic.args = {
+  defaultValue: '14:30',
   interval: 10,
   label: 'Select Time',
 }
