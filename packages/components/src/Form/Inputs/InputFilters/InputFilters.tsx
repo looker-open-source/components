@@ -165,7 +165,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             setOpen={closeInputFiltersChipEditor}
             content={
               <InputFiltersChipEditor
-                defaultValue={filter.value}
+                value={filter.value}
                 onChange={setFieldEditingValue}
                 options={filter.options}
               />
