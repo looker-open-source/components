@@ -62,20 +62,18 @@ export const Popover = ({
   hoverDisclosureRef,
   ...props
 }: PopoverProps) => {
-  const { domReadyProps, isOpen, popover } = usePopover(props)
-
-  let target = children
+  const { domProps, isOpen, popover } = usePopover(props)
 
   if (isValidElement(children)) {
-    target = cloneElement(children, {
-      ...domReadyProps,
+    children = cloneElement(children, {
+      ...domProps,
     })
   } else if (isRenderProp(children)) {
-    children = children(domReadyProps)
+    children = children(domProps)
   } else {
     // eslint-disable-next-line no-console
     console.warn(
-      `Element "${typeof target}" can't be used as target for Popover`
+      `Element "${typeof children}" can't be used as target for Popover`
     )
   }
 
@@ -85,7 +83,7 @@ export const Popover = ({
   return (
     <>
       {popover}
-      {triggerShown && target}
+      {triggerShown && children}
     </>
   )
 }

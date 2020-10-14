@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns
+
+## [UNRELEASED]
+
 - `IconButton` w/ `size="small"` icon size adjusted to `small` (was `xsmall`)
 - `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
 

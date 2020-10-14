@@ -37,6 +37,7 @@ const Template: Story<DialogProps> = (args) => (
   <Dialog
     {...args}
     onClose={() => {
+      // eslint-disable-next-line no-console
       console.log('Hello world')
     }}
   >

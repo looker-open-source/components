@@ -318,7 +318,7 @@ export const usePopover = ({
   )
   return {
     contentContainer: containerElement,
-    domReadyProps: {
+    domProps: {
       'aria-expanded': isOpen,
       'aria-haspopup': true,
       onClick: handleOpen,
