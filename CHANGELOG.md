@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- Aria accessibily fixes for `FieldTimeSelect` label
+
 ## [0.9.18]
 
 ### Added
@@ -21,7 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Space` revert mistakenly applied `flex-shrink: 0`
 - Reverts: `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - Fix `image-snapshots` issue
-- Aria accessibily fixes for `FieldTimeSelect` label
 
 ## [0.9.17] - 2020-10-12
 
