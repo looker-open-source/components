@@ -100,6 +100,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- ActionList supports filtering
 - `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
   - Required minor adjustments to `Chip`
 - ActionList supports filtering
