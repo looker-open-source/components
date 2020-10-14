@@ -25,42 +25,35 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Tree, TreeProps, TreeItem } from '..'
+import { Tree, TreeGroup, TreeItem } from '../..'
 
-export * from './BorderRadius.story'
-export * from './ColorfulTree.story'
-export * from './FieldPicker.story'
-export * from './FileTree.story'
-export * from './Flat.story'
-export * from './LongLabels.story'
-
-export default {
-  title: 'Tree',
-}
-
-const Template: Story<TreeProps> = (args) => (
-  <Tree label="Orders" {...args}>
-    <Tree label="Orders" defaultOpen>
-      <TreeItem>ID</TreeItem>
-      <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
-      </Tree>
-    </Tree>
+export const ColorfulTree = () => (
+  <Tree defaultOpen label="Colorful Tree">
+    <TreeGroup color="red" label="Red TreeGroup">
+      <TreeItem icon="Calendar">
+        Red TreeItem colored by parent TreeGroup's color prop
+      </TreeItem>
+      <TreeItem icon="Calendar">
+        Red TreeItem colored by parent TreeGroup's color prop
+      </TreeItem>
+      <TreeItem color="green" icon="Calendar">
+        Green TreeItem overriding parent color
+      </TreeItem>
+    </TreeGroup>
+    <TreeGroup
+      color="orange"
+      labelColor="blue"
+      label="Orange TreeGroup with 'blue' on labelColor prop"
+    >
+      <TreeItem icon="Calendar">
+        Orange TreeItem colored by parent TreeGroup's color prop
+      </TreeItem>
+      <TreeItem icon="Calendar">
+        Orange TreeItem colored by parent TreeGroup's color prop
+      </TreeItem>
+      <TreeItem color="purple" icon="Calendar">
+        Purple TreeItem overriding parent color
+      </TreeItem>
+    </TreeGroup>
   </Tree>
 )
-
-export const Basic = Template.bind({})
-Basic.args = {
-  defaultOpen: true,
-}
-
-export const Border = Template.bind({})
-Border.args = {
-  ...Basic.args,
-  border: true,
-}
