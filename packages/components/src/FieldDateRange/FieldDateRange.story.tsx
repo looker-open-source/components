@@ -45,10 +45,24 @@ const Template: Story<FieldInputDateRangeProps> = (args) => (
 )
 
 export const Basic = Template.bind({})
+Basic.args = {
+  defaultValue: {
+    from: new Date('May 18, 2020'),
+    to: new Date('May 21, 2020'),
+  },
+  label: 'Pick A Date',
+}
 
 export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
+  label: 'Pick A Date',
+}
+
+export const Error = Template.bind({})
+Disabled.args = {
+  label: 'Pick A Date',
+  validationMessage: { message: 'Field Disabled', type: 'error' },
 }
 
 export const Localized: FC = () => {

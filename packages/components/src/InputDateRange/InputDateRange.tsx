@@ -84,7 +84,7 @@ const transformMonth = (
 // Decide which dates (from, to, or both) get updated based on active state and current value
 // Example: if newDate is later than dateRange.to, update dateRange.to regardless of the
 // activeDateInput value.
-const chooseDateToSet = (
+const chooseDatesToSet = (
   activeDateInput: Endpoint,
   newDate?: Date,
   dateRange: Partial<RangeModifier> = {}
@@ -276,7 +276,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     }
 
     const handleCalendarClick = (date: Date) => {
-      const datesToSet = chooseDateToSet(activeDateInput, date, dateRange)
+      const datesToSet = chooseDatesToSet(activeDateInput, date, dateRange)
       for (const d of datesToSet) {
         inputs[d].setValue(formatDateString(date, dateStringLocale))
       }
