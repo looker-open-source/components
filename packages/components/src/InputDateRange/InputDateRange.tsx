@@ -81,23 +81,29 @@ const transformMonth = (
   return newDate
 }
 
-// decide which date (from or to) gets updated based on active state and current value
-// example, if newDate is later than dateRange.to, update dateRange.to regardless
-// of the activeDateInput value
-const chooseDateToSet = (
+// Decide which dates (from, to, or both) get updated based on active state and current value
+// Example: if newDate is later than dateRange.to, update dateRange.to regardless of the
+// activeDateInput value.
+const chooseDatesToSet = (
   activeDateInput: Endpoint,
   newDate?: Date,
   dateRange: Partial<RangeModifier> = {}
-): Endpoint => {
+): Endpoint[] => {
   const { from, to } = dateRange
   if (newDate) {
-    if (from && newDate < from) {
-      return 'from'
+    if (
+      isEmpty(dateRange) ||
+      Number(newDate) === Number(from) ||
+      Number(newDate) === Number(to)
+    ) {
+      return ['to', 'from'] // update both
+    } else if (from && newDate < from) {
+      return ['from']
     } else if (to && newDate > to) {
-      return 'to'
+      return ['to']
     }
   }
-  return activeDateInput
+  return [activeDateInput]
 }
 
 const isDateRangeInView = (
@@ -224,11 +230,17 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       }
     }
 
-    const handleDateChange = (dateToSet: Endpoint, date?: Date) => {
+    const handleDateChange = (datesToSet: Endpoint[], date?: Date) => {
       /* eslint-disable sort-keys-fix/sort-keys-fix */
       const newDateRange: Partial<RangeModifier> = {
         ...dateRange,
-        [dateToSet]: date,
+        ...datesToSet.reduce(
+          (r: Partial<RangeModifier>, endpoint) => ({
+            ...r,
+            [endpoint]: date,
+          }),
+          {}
+        ),
       }
 
       // prevent reversed date ranges like Feb 23 - Jan 1
@@ -245,7 +257,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
       // update input boxes to match selected dates
       // only update inactive input so as not to block manual keyboard input
-      const nonActiveInput = dateToSet === 'from' ? 'to' : 'from'
+      const nonActiveInput = datesToSet[0] === 'from' ? 'to' : 'from'
       inputs[nonActiveInput].setValue(
         formatDateString(newDateRange[nonActiveInput], dateStringLocale)
       )
@@ -264,12 +276,14 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     }
 
     const handleCalendarClick = (date: Date) => {
-      const dateToSet = chooseDateToSet(activeDateInput, date, dateRange)
-      inputs[dateToSet].setValue(formatDateString(date, dateStringLocale))
-      handleDateChange(dateToSet, date)
-      if (dateToSet === activeDateInput) {
+      const datesToSet = chooseDatesToSet(activeDateInput, date, dateRange)
+      for (const d of datesToSet) {
+        inputs[d].setValue(formatDateString(date, dateStringLocale))
+      }
+      if (datesToSet[0] === activeDateInput && datesToSet.length === 1) {
         toggleActiveDateInput()
       }
+      handleDateChange(datesToSet, date)
     }
 
     const handleTextInputChange = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -277,7 +291,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       inputs[activeDateInput].setValue(value)
 
       if (value.length === 0) {
-        handleDateChange(activeDateInput)
+        handleDateChange([activeDateInput])
       } else {
         const parsedValue = parseDateFromString(value, dateStringLocale)
         if (parsedValue) {
@@ -286,7 +300,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               ? transformMonth(parsedValue, -1)
               : parsedValue
           setViewMonth(newMonthFocus)
-          handleDateChange(activeDateInput, parsedValue)
+          handleDateChange([activeDateInput], parsedValue)
         }
       }
     }

@@ -62,6 +62,26 @@ test('calls onChange prop when a day is clicked', () => {
   })
 })
 
+test('selects a single day when clicking on one of the date endpoints', () => {
+  const mockProps = {
+    defaultValue: {
+      from: new Date('June 3, 2019 12:00'),
+      to: new Date('June 9, 2019 12:00'),
+    },
+    onChange: jest.fn(),
+  }
+  const { getAllByText } = renderWithTheme(<InputDateRange {...mockProps} />)
+  expect(mockProps.onChange).not.toHaveBeenCalled()
+
+  const date = getAllByText('3')[0] // the 3rd day of the month (beggining of range)
+  fireEvent.click(date)
+  // both from and to were set to June 3rd
+  expect(mockProps.onChange).toHaveBeenCalledWith({
+    from: new Date('June 3, 2019 12:00'),
+    to: new Date('June 3, 2019 12:00'),
+  })
+})
+
 test('calls onChange prop when a TextInput is modified', () => {
   const mockProps = {
     defaultValue: {
