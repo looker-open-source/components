@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
@@ -40,9 +40,15 @@ const Template: Story<InputDateRangeProps> = (args) => (
 )
 
 export const Basic = Template.bind({})
+Basic.args = {
+  defaultValue: {
+    from: new Date('July 25, 2020'),
+    to: new Date('August 5, 2020'),
+  },
+}
 export const Disabled = () => <InputDateRange disabled />
 
-export const Controlled: FC = () => {
+export const Controlled = () => {
   const startDate = new Date()
   startDate.setDate(9)
   const endDate = new Date()
