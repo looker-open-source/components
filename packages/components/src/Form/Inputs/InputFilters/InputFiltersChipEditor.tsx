@@ -52,7 +52,7 @@ export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
   }
 
   return (
-    <PopoverContent p="large" width="360px">
+    <PopoverContent p="large" maxWidth="360px">
       <SpaceVertical>
         <ButtonGroup value={values}>
           {options &&

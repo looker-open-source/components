@@ -40,10 +40,13 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   className,
   canSelectDisplayedColumns = false,
   filters,
+  onFilter,
 }) => {
   return (
     <div className={className}>
-      {filters && <InputFilters filters={filters} />}
+      {filters && onFilter ? (
+        <InputFilters filters={filters} onChange={onFilter} />
+      ) : null}
       {canSelectDisplayedColumns && (
         <ColumnSelector>
           <DividerVertical height="1.2rem" />

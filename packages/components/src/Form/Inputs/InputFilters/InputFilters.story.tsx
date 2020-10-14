@@ -24,12 +24,21 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/sampleInputFilters'
 import { InputFilters, InputFiltersProps } from './InputFilters'
 
-const Template: Story<InputFiltersProps> = (args) => <InputFilters {...args} />
+const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
+  const [controlledFilters, setControlledFilters] = useState(filters)
+  return (
+    <InputFilters
+      {...args}
+      filters={controlledFilters}
+      onChange={setControlledFilters}
+    />
+  )
+}
 
 export const Basic = Template.bind({})
 Basic.args = {
