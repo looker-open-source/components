@@ -60,7 +60,7 @@ Disabled.args = {
 }
 
 export const Error = Template.bind({})
-Disabled.args = {
+Error.args = {
   label: 'Pick A Date',
   validationMessage: { message: 'Field Disabled', type: 'error' },
 }
