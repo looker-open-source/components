@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [UNRELEASED]
 
 ### Changed
 
 - InputDateRange allows you to specify a single day range by clicking on one of the date range endpoints
-
-## [0.9.18] - 2020-10-12
-
+- `IconButton` w/ `size="small"` icon size adjusted to `small` (was `xsmall`)
+- `Space` revert mistakenly applied `flex-shrink: 0`
 - `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
+- Reverts: `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 
 ## [0.9.17] - 2020-10-12
 

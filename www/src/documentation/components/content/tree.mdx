@@ -181,12 +181,17 @@ Use the `gapSize` prop to control the distance between elements in your `TreeIte
 
 Use the `selected` prop to display a light grey background on a given `TreeItem`.
 
+Use the `onClick` prop to trigger a callback on click or when pressing the "Enter" key on a focused `TreeItem`.
+
+Use the `onMetaEnter` prop to trigger a callback when pressing the "Enter" key in combination with the meta key (i.e. "Command" or "Windows" key) on a focused `TreeItem`.
+
 ```jsx
 <Tree label="Cheeses" defaultOpen>
   <TreeItem
     icon="LogoRings"
     detail={<Text variant="text2">is great</Text>}
     onClick={() => alert('Clicked Swiss')}
+    onMetaEnter={() => alert('Clicked Swiss while holding meta key')}
     selected
   >
     Swiss

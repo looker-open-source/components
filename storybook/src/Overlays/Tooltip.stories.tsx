@@ -50,7 +50,7 @@ export const RenderProp = () => (
   </Tooltip>
 )
 
-RenderProp.story = {
+RenderProp.parameters = {
   storyshots: { disable: true },
 }
 
@@ -62,6 +62,6 @@ export const LargeTrigger = () => (
   </Tooltip>
 )
 
-LargeTrigger.story = {
+LargeTrigger.parameters = {
   storyshots: { disable: true },
 }
