@@ -24,26 +24,22 @@
 
  */
 
-import React, { FC, useMemo, useState, useEffect } from 'react'
-import {
-  Box,
-  FieldSelectMulti,
-  Heading,
-  Icon,
-  List,
-  ListItem,
-  parseOption,
-  SelectMulti,
-  SelectOptionProps,
-  Space,
-  SpaceVertical,
-  Text,
-  Button,
-  Dialog,
-  DialogContent,
-  SelectOptionObject,
-} from '@looker/components'
-import { options1k } from './options1k'
+import { Story } from '@storybook/react/types-6-0'
+import React, { useMemo, useState, useEffect } from 'react'
+import { Button } from '../../../Button'
+import { Dialog, DialogContent } from '../../../Dialog'
+import { Icon } from '../../../Icon'
+import { Space, SpaceVertical } from '../../../Layout'
+import { List, ListItem } from '../../../List'
+import { Heading, Text } from '../../../Text'
+import { parseOption } from '../../Inputs/Combobox'
+import { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
+import { options1k } from '../FieldSelect/options1k'
+import { FieldSelectMulti, FieldSelectMultiProps } from './FieldSelectMulti'
+
+const Template: Story<FieldSelectMultiProps> = (args) => (
+  <FieldSelectMulti {...args} />
+)
 
 const selectOptions = [
   { value: 'Apples' },
@@ -63,50 +59,27 @@ const selectOptions = [
   { value: 'Kiwis3' },
 ]
 
-export default {
-  title: 'Forms/SelectMulti',
+export const Basic = Template.bind({})
+Basic.args = {
+  description: 'this is the description',
+  detail: '5/50',
+  isFilterable: true,
+  label: 'Label',
+  options: selectOptions,
+  placeholder: 'Search fruits',
 }
 
-export const Basic = () => (
-  <FieldSelectMulti
-    description="this is the description"
-    detail="5/50"
-    label="Label"
-    options={selectOptions}
-    placeholder="Search fruits"
-    isFilterable
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
+}
 
-export const Disabled: FC = () => (
-  <FieldSelectMulti
-    disabled
-    label="Label"
-    options={selectOptions}
-    placeholder="placeholder"
-  />
-)
-
-export const ValidationError = () => (
-  <FieldSelectMulti
-    label="Label"
-    required
-    options={selectOptions}
-    placeholder="placeholder"
-    validationMessage={{ message: 'validation Message', type: 'error' }}
-  />
-)
-
-export const KitchenSink = () => (
-  <FieldSelectMulti
-    description="this is the description"
-    detail="5/50"
-    label="Label"
-    options={selectOptions}
-    placeholder="placeholder"
-    validationMessage={{ message: 'validation Message', type: 'error' }}
-  />
-)
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'validation Message', type: 'error' },
+}
 
 const emailValidator = new RegExp(
   /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -119,13 +92,13 @@ const emails = [
 
 export const CopyPaste = () => {
   const [errorMsg, setErrorMsg] = useState('')
-  function validate(value: string) {
+  const validate = (value: string) => {
     return value.indexOf('2') === -1
   }
-  function handleValidationFail(values: string[]) {
+  const handleValidationFail = (values: string[]) => {
     setErrorMsg(`No thank you to values with "2": ${values.join(', ')}`)
   }
-  function validateEmail(val: string) {
+  const validateEmail = (val: string) => {
     const { value } = parseOption(val)
     return emailValidator.test(value)
   }
@@ -183,6 +156,10 @@ export const CopyPaste = () => {
   )
 }
 
+CopyPaste.parameters = {
+  storyshots: { disable: true },
+}
+
 const selectGroups = [
   {
     label: 'Fruits',
@@ -236,11 +213,11 @@ const selectGroups = [
   },
 ]
 
-function TestIndicator() {
+const TestIndicator = () => {
   return <Text color="pink">***</Text>
 }
 
-export function SelectMultiDemo() {
+export const SelectMultiDemo = () => {
   const [cheeseOptions, setCheeseOptions] = useState([] as SelectOptionObject[])
   useEffect(() => {
     const t = window.setTimeout(() => {
@@ -259,7 +236,7 @@ export function SelectMultiDemo() {
   const handleClose = () => setOpen(false)
 
   const [searchTerm, setSearchTerm] = useState('')
-  function handleFilter(term: string) {
+  const handleFilter = (term: string) => {
     setSearchTerm(term)
   }
 
@@ -278,7 +255,7 @@ export function SelectMultiDemo() {
   }, [searchTerm])
 
   const [searchTerm1k, setSearchTerm1k] = useState('')
-  function handleFilter1k(term: string) {
+  const handleFilter1k = (term: string) => {
     setSearchTerm1k(term)
   }
 
@@ -292,7 +269,7 @@ export function SelectMultiDemo() {
     }, [] as SelectOptionProps[])
   }, [searchTerm1k])
 
-  function formatCreate(inputValue: string) {
+  const formatCreate = (inputValue: string) => {
     return (
       <span>
         Add fruit: <em>{inputValue}</em>
@@ -301,26 +278,23 @@ export function SelectMultiDemo() {
   }
 
   return (
-    <Box p="large" width={400}>
+    <SpaceVertical p="large" width={400}>
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <DialogContent>
-          <SelectMulti
+          <FieldSelectMulti
             options={newOptions1k}
             placeholder="Select Brands"
             isFilterable
             onFilter={handleFilter1k}
             alignSelf="flex-start"
             showCreate
-            mb="xlarge"
             defaultValues={['Boulder Creek']}
             freeInput
           />
         </DialogContent>
       </Dialog>
-      <Button onClick={handleClick} m="large">
-        Open
-      </Button>
-      <Heading mb="large">FieldSelectMulti</Heading>
+      <Button onClick={handleClick}>Open</Button>
+      <Heading>FieldSelectMulti</Heading>
       <SpaceVertical>
         <FieldSelectMulti
           label="Label"
@@ -336,48 +310,38 @@ export function SelectMultiDemo() {
           options={cheeseOptions}
         />
       </SpaceVertical>
-      <Heading my="large">SelectMulti</Heading>
-      <Heading mb="medium" as="h4">
-        1k (windowed) options
-      </Heading>
-      <SelectMulti
+      <Heading>SelectMulti</Heading>
+      <Heading as="h4">1k (windowed) options</Heading>
+      <FieldSelectMulti
         options={newOptions1k}
         placeholder="Select Brands"
         isFilterable
         onFilter={handleFilter1k}
         alignSelf="flex-start"
         showCreate
-        mb="xlarge"
         defaultValues={['Boulder Creek']}
       />
-      <Heading mb="medium" as="h4">
-        Option Groups
-      </Heading>
-      <SelectMulti
+      <Heading as="h4">Option Groups</Heading>
+      <FieldSelectMulti
         options={selectGroups}
         placeholder="Select fruits"
         mb="xlarge"
       />
-      <Heading mb="medium" as="h4">
-        Close on Select
-      </Heading>
-      <SelectMulti
+      <Heading as="h4">Close on Select</Heading>
+      <FieldSelectMulti
         options={selectOptions}
         placeholder="Select fruits"
         closeOnSelect
-        mb="xlarge"
       />
-      <Heading mb="medium" as="h4">
-        Kitchen Sink
-      </Heading>
-      <List mb="small">
+      <Heading as="h4">Kitchen Sink</Heading>
+      <List>
         <ListItem>Option descriptions</ListItem>
         <ListItem>isFilterable</ListItem>
         <ListItem>showCreate</ListItem>
         <ListItem>formatCreateLabel</ListItem>
         <ListItem>removeOnBackspace</ListItem>
       </List>
-      <SelectMulti
+      <FieldSelectMulti
         options={newOptions}
         placeholder="Search fruits"
         isFilterable
@@ -386,9 +350,8 @@ export function SelectMultiDemo() {
         showCreate
         formatCreateLabel={formatCreate}
         removeOnBackspace={false}
-        mb="xlarge"
       />
-      <SelectMulti
+      <FieldSelectMulti
         options={newOptions}
         placeholder="with freeInput"
         isFilterable
@@ -396,24 +359,18 @@ export function SelectMultiDemo() {
         alignSelf="flex-start"
         freeInput
         removeOnBackspace={false}
-        mb="xlarge"
       />
 
-      <Heading mb="medium" as="h4">
-        Validation Errors
-      </Heading>
-      <SelectMulti
+      <Heading as="h4">Validation Errors</Heading>
+      <FieldSelectMulti
         name="fruitError"
         options={selectOptions}
         placeholder="Select fruits"
         closeOnSelect
-        mb="xlarge"
         validationType="error"
       />
-      <Heading mb="medium" as="h4">
-        Custom Indicator
-      </Heading>
-      <SelectMulti
+      <Heading as="h4">Custom Indicator</Heading>
+      <FieldSelectMulti
         name="fruitIndicator"
         options={[
           ...selectOptions,
@@ -434,6 +391,15 @@ export function SelectMultiDemo() {
           />
         )}
       />
-    </Box>
+    </SpaceVertical>
   )
+}
+
+SelectMultiDemo.parameters = {
+  storyshots: { disable: true },
+}
+
+export default {
+  component: FieldSelectMulti,
+  title: 'FieldSelectMulti',
 }
