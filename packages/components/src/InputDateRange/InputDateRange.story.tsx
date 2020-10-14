@@ -81,3 +81,7 @@ export const Controlled: FC = () => {
     </Popover>
   )
 }
+
+Controlled.parameters = {
+  storyshots: { disable: true },
+}
