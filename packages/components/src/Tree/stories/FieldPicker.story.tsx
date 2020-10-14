@@ -164,13 +164,11 @@ export const FieldPicker = () => (
         chives or cranberries.
       </PickerItem>
     </TreeGroup>
-    <TreeGroup label="MEASURES" color="keyFocus">
+    <TreeGroup label="MEASURES" color="orange">
       <Tree visuallyAsBranch label="Hello">
         <PickerItem />
       </Tree>
-      <TreeItem color="orange" icon="FieldString">
-        Name
-      </TreeItem>
+      <TreeItem icon="FieldString">Name</TreeItem>
       <PickerItem />
       <PickerItem />
       <PickerItem />

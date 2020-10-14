@@ -34,7 +34,6 @@ const Template: Story<MessageBarProps> = (args) => <MessageBar {...args} />
 export const Basic = Template.bind({})
 Basic.args = {
   children: 'Hey! This is a message to you.',
-  primaryAction: undefined,
 }
 
 export const Warn = Template.bind({})

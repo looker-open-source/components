@@ -45,7 +45,7 @@
     "storybook": "yarn workspace storybook start",
     "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
     "preimage-snapshots": "yarn storybooks-build",
-    "image-snapshots-only": "yarn jest --config jest-image-snapshots.config.js",
+    "image-snapshots-only": "export JEST_IMAGE_SNAPSHOT_TRACK_OBSOLETE=1 && yarn jest --config jest-image-snapshots.config.js",
     "image-snapshots": "yarn image-snapshots-only"
   },
   "devDependencies": {

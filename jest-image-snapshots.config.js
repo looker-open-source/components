@@ -35,6 +35,10 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
       '<rootDir>/config/jest/fileMock.js',
   },
+  reporters: [
+    'default',
+    'jest-image-snapshot/src/outdated-snapshot-reporter.js',
+  ],
   roots: ['<rootDir>'],
   testEnvironment: 'jsdom',
   testMatch: ['**/*.shots.ts'],

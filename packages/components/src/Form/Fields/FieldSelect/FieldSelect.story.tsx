@@ -24,39 +24,29 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import chunk from 'lodash/chunk'
 import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
-import {
-  Card,
-  CardContent,
-  Form,
-  Button,
-  Dialog,
-  Divider,
-  Label,
-  Box,
-  Heading,
-  Icon,
-  Select,
-  FieldSelect,
-  FieldToggleSwitch,
-  DialogContent,
-  ComboboxOptionObject,
-  SelectOptionProps,
-  SelectOptionGroupProps,
-  Space,
-  SpaceVertical,
-  Text,
-  Flex,
-  useToggle,
-} from '@looker/components'
+import { Card, CardContent } from '../../../Card'
+import { Button } from '../../../Button'
+import { Dialog, DialogContent } from '../../../Dialog'
+import { Divider } from '../../../Divider'
+import { Icon } from '../../../Icon'
+import { Flex, Space, SpaceVertical } from '../../../Layout'
+import { Heading, Text } from '../../../Text'
+import { Form } from '../../'
+import { Label } from '../../Label'
+import { ComboboxOptionObject } from '../../Inputs/Combobox'
+import { SelectOptionProps, SelectOptionGroupProps } from '../../Inputs/Select'
+import { useToggle } from '../../../utils'
+import { FieldToggleSwitch } from '../FieldToggleSwitch'
+import { FieldSelect, FieldSelectProps } from './FieldSelect'
 import { options1k } from './options1k'
 
-export default {
-  title: 'Forms/Select',
-}
+const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
 
-const commonProps = {
+export const Basic = Template.bind({})
+Basic.args = {
   label: 'Label',
   options: [
     { label: 'Cheddar', value: 'cheddar' },
@@ -66,29 +56,47 @@ const commonProps = {
   placeholder: 'Placeholder',
 }
 
-export const Basic = () => <FieldSelect {...commonProps} />
-export const Disabled = () => <FieldSelect {...commonProps} disabled />
-export const Detail = () => (
-  <FieldSelect {...commonProps} detail="0/50" required />
-)
-export const Description = () => (
-  <FieldSelect {...commonProps} description="I'm a little teapot" />
-)
-export const Required = () => <FieldSelect {...commonProps} required />
-export const Error = () => (
-  <FieldSelect
-    {...commonProps}
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
-)
-export const Inline = () => <FieldSelect {...commonProps} inline />
-export const InlineError = () => (
-  <FieldSelect
-    {...commonProps}
-    inline
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
+}
+
+export const Detail = Template.bind({})
+Detail.args = {
+  ...Basic.args,
+  detail: '0/50',
+}
+
+export const Description = Template.bind({})
+Description.args = {
+  ...Basic.args,
+  description: "I'm a little teapot",
+}
+
+export const Required = Template.bind({})
+Required.args = {
+  ...Basic.args,
+  required: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  ...Basic.args,
+  inline: true,
+}
+
+export const ErrorInline = Template.bind({})
+ErrorInline.args = {
+  ...Error.args,
+  inline: true,
+}
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -146,14 +154,14 @@ const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
   description: `${option.label} are the best ever!`,
 }))
 
-function checkOption(option: ComboboxOptionObject, searchTerm: string) {
+const checkOption = (option: ComboboxOptionObject, searchTerm: string) => {
   return (
     option.label &&
     option.label.toLowerCase().includes(searchTerm.toLowerCase())
   )
 }
 
-function optionReducer(searchTerm: string) {
+const optionReducer = (searchTerm: string) => {
   return (acc: SelectOptionProps[], option: SelectOptionProps) => {
     const optionAsGroup = option as SelectOptionGroupProps
     if (optionAsGroup.options) {
@@ -172,21 +180,21 @@ function optionReducer(searchTerm: string) {
   }
 }
 
-function TestIndicator() {
+const TestIndicator = () => {
   return <Text color="pink">***</Text>
 }
 
-export function SelectContent() {
+export const SelectContent = () => {
   const [value, setValue] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
     setValue(fruit)
   }
-  function handleChange(value: string) {
+  const handleChange = (value: string) => {
     setValue(value)
   }
-  function handleFilter(term: string) {
+  const handleFilter = (term: string) => {
     setSearchTerm(term)
   }
   const newOptions = useMemo(() => {
@@ -219,7 +227,7 @@ export function SelectContent() {
         >
           200 x 200
         </Flex>
-        <Select
+        <FieldSelect
           width={300}
           mb="medium"
           options={newOptions}
@@ -233,14 +241,14 @@ export function SelectContent() {
           alignSelf="flex-start"
         />
       </Flex>
-      <Box>
+      <SpaceVertical align="start">
         <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
           Kiwis
         </Button>
         <Button mt="medium" data-fruit="3" onClick={handleClick}>
           Oranges
         </Button>
-      </Box>
+      </SpaceVertical>
       <Divider my="xlarge" />
       <SpaceVertical>
         <FieldSelect
@@ -307,6 +315,10 @@ export function SelectContent() {
   )
 }
 
+SelectContent.parameters = {
+  storyshots: { disable: true },
+}
+
 export const SelectDemo = () => {
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
@@ -351,6 +363,10 @@ export const SelectDemo = () => {
   )
 }
 
+SelectDemo.parameters = {
+  storyshots: { disable: true },
+}
+
 export const UpdateOptions = () => {
   const [value, setValue] = useState('second')
   const { value: isPlural, toggle } = useToggle()
@@ -365,14 +381,23 @@ export const UpdateOptions = () => {
   return (
     <Space>
       <Button onClick={toggle}>Use {isPlural ? 'singular' : 'plural'}</Button>
-      <Select autoResize options={options} value={value} onChange={setValue} />
+      <FieldSelect
+        autoResize
+        options={options}
+        value={value}
+        onChange={setValue}
+      />
     </Space>
   )
 }
 
+UpdateOptions.parameters = {
+  storyshots: { disable: true },
+}
+
 export const EmptyValue = () => {
   const [value, setValue] = useState(false)
-  function handleToggle(e: FormEvent<HTMLInputElement>) {
+  const handleToggle = (e: FormEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.checked)
   }
 
@@ -387,13 +412,13 @@ export const EmptyValue = () => {
         on={value}
         onChange={handleToggle}
       />
-      <Select
+      <FieldSelect
         value={value ? '' : selectValue}
         placeholder="Can't change me when toggle is on"
         onChange={setSelectValue}
         options={options}
       />
-      <Select
+      <FieldSelect
         value={value ? '' : selectValue}
         onChange={setSelectValue}
         options={[
@@ -403,6 +428,10 @@ export const EmptyValue = () => {
       />
     </Space>
   )
+}
+
+EmptyValue.parameters = {
+  storyshots: { disable: true },
 }
 
 const iconOptions = [
@@ -516,6 +545,10 @@ export const OptionIcons = () => {
   )
 }
 
+OptionIcons.parameters = {
+  storyshots: { disable: true },
+}
+
 export const CreateOption = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
@@ -524,7 +557,7 @@ export const CreateOption = () => {
         option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
     )
   }, [filterTerm])
-  function formatCreateLabel(inputValue: string) {
+  const formatCreateLabel = (inputValue: string) => {
     return `Create a fruit: ${inputValue}`
   }
   return (
@@ -538,4 +571,13 @@ export const CreateOption = () => {
       width={300}
     />
   )
+}
+
+CreateOption.parameters = {
+  storyshots: { disable: true },
+}
+
+export default {
+  component: FieldSelect,
+  title: 'FieldSelect',
 }
