@@ -100,6 +100,12 @@ CriticalColorIconButton.args = {
   color: 'critical',
 }
 
+export const Toggle = Template.bind({})
+Toggle.args = {
+  ...Basic.args,
+  toggle: true,
+}
+
 export default {
   component: IconButton,
   title: 'IconButton',
