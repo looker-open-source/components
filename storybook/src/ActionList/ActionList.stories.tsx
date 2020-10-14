@@ -157,7 +157,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   canBulk: true,
   canCustomizeColumns: false,
-  canFilter: true,
+  canFilter: false,
   canSelect: true,
   isLoading: false,
   noResults: false,
