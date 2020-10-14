@@ -24,23 +24,28 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import { filters } from '../../../__mocks__/sampleInputFilters'
-import { InputFilters } from './InputFilters'
+import { FieldFilter, InputFilters } from './InputFilters'
+
+const ControlledComponent = () => {
+  const [controlledFilters, onChange] = useState<FieldFilter[]>(filters)
+  return <InputFilters filters={controlledFilters} onChange={onChange} />
+}
 
 describe('InputFilters', () => {
   test('renders', () => {
     const { getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <InputFilters filters={filters} onChange={jest.fn()} />
     )
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
   test('Displays list of filters', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <InputFilters filters={filters} onChange={jest.fn()} />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -55,7 +60,7 @@ describe('InputFilters', () => {
 
   test('Clicking on a filter item will displays list of second layer filters ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <InputFilters filters={filters} onChange={jest.fn()} />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -77,7 +82,7 @@ describe('InputFilters', () => {
 
   test('Shows editing options ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <InputFilters filters={filters} onChange={jest.fn()} />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -100,7 +105,7 @@ describe('InputFilters', () => {
 
   test('Display full filter selected', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -119,7 +124,7 @@ describe('InputFilters', () => {
 
   test("Doesn't show filter displayed as chip", () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))
@@ -144,7 +149,7 @@ describe('InputFilters', () => {
 
   test('Display a second filter as chip', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))
@@ -172,7 +177,7 @@ describe('InputFilters', () => {
 
   test('Change filter values', () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))
@@ -203,7 +208,7 @@ describe('InputFilters', () => {
 
   test('Delete filter', () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))
@@ -228,7 +233,7 @@ describe('InputFilters', () => {
 
   test('Delete multiple filter', () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+      <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))

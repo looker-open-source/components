@@ -102,9 +102,10 @@ export interface ActionListProps {
    */
   bulk?: BulkActionsConfig
   /**
-   * List of filters the user can select from
+   * Object containing list of filters the user can select from
+   * and an onFilter callback to update the filters
    **/
-  filters?: FilterConfig
+  filterConfig?: FilterConfig
   /**
    * specify specific columns to be displayed
    **/
@@ -138,6 +139,7 @@ export interface SelectConfig {
 
 export interface FilterConfig {
   filters: FieldFilter[]
+  onFilter: (filters: FieldFilter[]) => void
 }
 
 export interface BulkActionsConfig {
@@ -174,7 +176,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   className,
   children,
   columns,
-  filters,
+  filterConfig,
   header = true,
   headerRowId,
   onSort,
@@ -208,9 +210,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   return (
     <ActionListContext.Provider value={context}>
-      {(filters || canSelectDisplayedColumns) && (
+      {(filterConfig || canSelectDisplayedColumns) && (
         <ActionListFilters
-          {...filters}
+          {...filterConfig}
           canSelectDisplayedColumns={canSelectDisplayedColumns}
         />
       )}

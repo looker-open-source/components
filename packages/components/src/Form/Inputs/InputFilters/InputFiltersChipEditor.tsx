@@ -23,45 +23,35 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
-import { ButtonGroup, ButtonItem } from '../../../Button'
+import React, { FC } from 'react'
+import { ButtonGroup } from '../../../Button'
 import { PopoverContent } from '../../../Popover'
 import { SpaceVertical } from '../../../Layout/Space'
 
 interface InputFiltersChipEditorProps {
-  defaultValue?: string
+  value?: string
   onChange: (value: string) => void
   options?: string[]
 }
 export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
-  defaultValue,
+  value,
   onChange,
   options,
 }) => {
-  const [values, setValues] = useState<Array<string>>(
-    defaultValue ? defaultValue.split(', ') : []
-  )
-
-  const toggleValue = (value: string) => {
-    const newValues = values.includes(value)
-      ? values.filter((v) => v !== value)
-      : [...values, value]
-
-    setValues(newValues)
+  const handleChange = (newValues: string[]) => {
     onChange(newValues.sort().join(', '))
   }
 
   return (
-    <PopoverContent p="large" width="360px">
+    <PopoverContent p="large" maxWidth="360px">
       <SpaceVertical>
-        <ButtonGroup value={values}>
-          {options &&
-            options.map((option) => (
-              <ButtonItem key={option} onClick={() => toggleValue(option)}>
-                {option}
-              </ButtonItem>
-            ))}
-        </ButtonGroup>
+        {options && (
+          <ButtonGroup
+            value={value ? value.split(', ') : []}
+            options={options.map((value) => ({ label: value, value }))}
+            onChange={handleChange}
+          />
+        )}
       </SpaceVertical>
     </PopoverContent>
   )
