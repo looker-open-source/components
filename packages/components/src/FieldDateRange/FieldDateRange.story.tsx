@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Locales } from '../utils/i18n'
 import { FieldSelect } from '../Form/Fields/FieldSelect'
@@ -66,7 +66,7 @@ Error.args = {
   validationMessage: { message: 'Field Disabled', type: 'error' },
 }
 
-export const Localized: FC = () => {
+export const Localized = () => {
   const startDate = new Date()
   startDate.setDate(9)
   const endDate = new Date()
@@ -117,4 +117,8 @@ export const Localized: FC = () => {
       <FieldDateRange onChange={setLocalizedDate} />
     </>
   )
+}
+
+Localized.parameters = {
+  storyshots: { disable: true },
 }

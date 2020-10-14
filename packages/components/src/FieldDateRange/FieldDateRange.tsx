@@ -38,7 +38,9 @@ import {
 
 export interface FieldInputDateRangeProps
   extends FieldProps,
-    InputDateRangeProps {}
+    InputDateRangeProps {
+  ref: Ref<HTMLInputElement>
+}
 
 const FieldDateRangeComponent = forwardRef(
   (props: FieldInputDateRangeProps, ref: Ref<HTMLInputElement>) => {
