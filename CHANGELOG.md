@@ -5,14 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.18]
+
+### Added
+
+- `TreeGroup` supports `truncate` and `labelColor` props
+
+### Changed
 
 - `IconButton` w/ `size="small"` icon size adjusted to `small` (was `xsmall`)
-- `Space` revert mistakenly applied `flex-shrink: 0`
 - `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
+
+### Fixed
+
+- `Space` revert mistakenly applied `flex-shrink: 0`
 - Reverts: `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - Fix `image-snapshots` issue
-- `TreeGroup` supports `truncate` and `labelColor` props
 
 ## [0.9.17] - 2020-10-12
 
