@@ -26,8 +26,8 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { filters } from '../../../__mocks__/sampleInputFilters'
 import { InputFilters, InputFiltersProps } from './InputFilters'
-import { filters } from './sampleInputFilters'
 
 const Template: Story<InputFiltersProps> = (args) => <InputFilters {...args} />
 

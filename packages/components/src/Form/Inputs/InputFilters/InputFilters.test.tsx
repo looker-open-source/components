@@ -27,8 +27,8 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
+import { filters } from '../../../__mocks__/sampleInputFilters'
 import { InputFilters } from './InputFilters'
-import { filters } from './sampleInputFilters'
 
 describe('InputFilters', () => {
   test('renders', () => {
