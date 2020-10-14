@@ -37,7 +37,8 @@ interface DateRange {
 }
 
 export default {
-  title: 'Forms/FieldDateRange',
+  component: FieldDateRange,
+  title: 'FieldDateRange',
 }
 
 const Template: Story<FieldInputDateRangeProps> = (args) => (
