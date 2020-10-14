@@ -12,6 +12,7 @@ node_modules
 /coverage
 .cache
 .eslintcache
+.jest-image-snapshot-touched-files
 
 # code-gen
 docs/static

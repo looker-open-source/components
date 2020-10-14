@@ -24,31 +24,49 @@
 
  */
 import React, { useState } from 'react'
-import { ButtonToggle, FieldTimeSelect, Fieldset } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import { ButtonToggle } from '../../../Button'
+import { Fieldset } from '../../Fieldset'
+import { FieldTimeSelect, FieldTimeSelectProps } from './'
 
 export default {
-  title: 'Forms/TimeSelect',
+  component: FieldTimeSelect,
+  title: 'FieldTimeSelect',
 }
 
-export const Basic = () => <FieldTimeSelect interval={10} label="Label" />
-
-export const Disabled = () => (
-  <FieldTimeSelect disabled label="Label" interval={10} />
+const Template: Story<FieldTimeSelectProps> = (args) => (
+  <FieldTimeSelect {...args} />
 )
 
-export const Required = () => (
-  <FieldTimeSelect interval={10} required label="Label" />
-)
+export const Basic = Template.bind({})
+Basic.args = {
+  interval: 10,
+  label: 'Select Time',
+}
 
-export const Error = () => (
-  <FieldTimeSelect
-    interval={10}
-    description="this is the description is a very long one"
-    detail="detail"
-    label="Label"
-    validationMessage={{ message: 'validation Message', type: 'error' }}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  interval: 10,
+  label: 'Select Time',
+}
+
+export const Required = Template.bind({})
+Required.args = {
+  interval: 10,
+  label: 'Select Time',
+  required: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  description: 'this is the description is a very long one',
+  detail: 'detail',
+  interval: 10,
+  label: 'Select Time',
+  required: true,
+  validationMessage: { message: 'validation Message', type: 'error' },
+}
 
 export const Controlled = () => {
   const [controlledTime, setControlledTime] = useState<any>('09:00')
@@ -84,4 +102,8 @@ export const Controlled = () => {
       </Fieldset>
     </>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }
