@@ -41,7 +41,7 @@ describe('InputFilters', () => {
 
   test('render ActionListFilters display InputFilter', () => {
     const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} />
+      <ActionListFilters filters={filters} onFilter={jest.fn()} />
     )
 
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
@@ -49,7 +49,7 @@ describe('InputFilters', () => {
 
   test('render ActionListFilters display columns icon', () => {
     const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns filters={filters} />
+      <ActionListFilters canSelectDisplayedColumns />
     )
     expect(getByText('Select columns to display')).toBeInTheDocument()
   })
