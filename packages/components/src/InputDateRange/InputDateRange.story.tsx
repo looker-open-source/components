@@ -31,7 +31,8 @@ import { DateFormat } from '../DateFormat'
 import { InputDateRange, InputDateRangeProps } from './'
 
 export default {
-  title: 'Forms/InputDateRange',
+  component: InputDateRange,
+  title: 'InputDateRange',
 }
 
 const Template: Story<InputDateRangeProps> = (args) => (
