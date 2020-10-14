@@ -25,7 +25,7 @@
  */
 
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 import { AccordionDisclosure } from '../Accordion'
 import { Truncate } from '../Text'
@@ -71,14 +71,18 @@ export const TreeGroupLabel = styled.div`
     `${space.xxsmall} ${space.xxsmall} ${space.xxxsmall}`};
 `
 
+const treeGroupLabel = (labelColor?: string) =>
+  labelColor &&
+  css<TreeGroupProps>`
+    ${TreeGroupLabel} {
+      color: ${({ theme }) => theme.colors[labelColor] || labelColor};
+    }
+  `
+
 export const TreeGroup = styled(TreeGroupLayout)`
-  ${TreeItemLabel}, ${AccordionDisclosure} {
+  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
     ${color}
   }
 
-  ${TreeGroupLabel} {
-    ${color}
-    ${({ theme, labelColor }) =>
-      labelColor && `color: ${theme.colors[labelColor] || labelColor}`}
-  }
+  ${({ labelColor }) => treeGroupLabel(labelColor)}
 `
