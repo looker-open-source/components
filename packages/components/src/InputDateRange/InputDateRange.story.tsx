@@ -46,7 +46,14 @@ Basic.args = {
     to: new Date('August 5, 2020'),
   },
 }
-export const Disabled = () => <InputDateRange disabled />
+export const Disabled = Template.bind({})
+Disabled.args = {
+  defaultValue: {
+    from: new Date('Oct 11, 2020'),
+    to: new Date('Oct 12, 2020'),
+  },
+  disabled: true,
+}
 
 export const Controlled = () => {
   const startDate = new Date()
