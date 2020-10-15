@@ -24,14 +24,27 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
-export * from './iconButtonColor'
+import { css } from 'styled-components'
+import { lighten } from 'polished'
+import { StatefulColor } from '@looker/design-tokens'
 
-export type { ButtonSizes } from './size'
+export const iconButtonDefaultColor = 'neutral'
+
+export const iconButtonColor = css<{ color?: StatefulColor }>`
+  color: ${({ theme, color = iconButtonDefaultColor }) =>
+    lighten(0.14, theme.colors[color])};
+
+  &:hover,
+  &:focus,
+  &.hover {
+    color: ${({ theme, color = iconButtonDefaultColor }) =>
+      theme.colors[`${color}Interactive`]};
+  }
+
+  &[aria-expanded='true'],
+  &:active,
+  &.active {
+    color: ${({ theme, color = iconButtonDefaultColor }) =>
+      theme.colors[`${color}Pressed`]};
+  }
+`
