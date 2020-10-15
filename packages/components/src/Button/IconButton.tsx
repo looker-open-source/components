@@ -43,15 +43,13 @@ import { IconNames } from '@looker/icons'
 import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
-import { lighten } from 'polished'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
+import { iconButtonColor, iconButtonDefaultColor } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
-
-const iconButtonDefaultColor = 'neutral'
 
 interface IconButtonVariantProps {
   /**
@@ -235,25 +233,6 @@ const outlineCSS = (props: IconButtonProps) => {
     }
   `
 }
-
-export const iconButtonColor = css<Pick<IconButtonProps, 'color'>>`
-  color: ${({ theme, color = iconButtonDefaultColor }) =>
-    lighten(0.14, theme.colors[color])};
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Interactive`]};
-  }
-
-  &[aria-expanded='true'],
-  &:active,
-  &.active {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Pressed`]};
-  }
-`
 
 export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
