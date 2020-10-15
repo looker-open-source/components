@@ -56,12 +56,20 @@ Basic.args = {
 
 export const Disabled = Template.bind({})
 Disabled.args = {
+  defaultValue: {
+    from: new Date('Oct 11, 2020'),
+    to: new Date('Oct 12, 2020'),
+  },
   disabled: true,
   label: 'Pick A Date',
 }
 
 export const Error = Template.bind({})
 Error.args = {
+  defaultValue: {
+    from: new Date('Oct 11, 2020'),
+    to: new Date('Oct 12, 2020'),
+  },
   label: 'Pick A Date',
   validationMessage: { message: 'Field Disabled', type: 'error' },
 }

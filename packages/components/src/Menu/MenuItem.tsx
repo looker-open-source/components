@@ -84,6 +84,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onBlur,
     onClick,
     onKeyUp,
+    rel,
     target,
     tooltip,
     tooltipPlacement,
@@ -166,7 +167,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   const menuItemContent = (
-    <Component href={href} role="menuitem" target={target}>
+    <Component href={href} rel={rel} role="menuitem" target={target}>
       {renderedIcon}
       <span>
         {children}
