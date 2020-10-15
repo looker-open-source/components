@@ -53,7 +53,7 @@ import {
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
-import { Truncate } from '../Text'
+import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
