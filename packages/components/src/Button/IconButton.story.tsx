@@ -26,7 +26,14 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Heading } from '../Text'
+import { Space } from '../Layout/Space'
 import { IconButton, IconButtonProps } from './IconButton'
+
+export default {
+  component: IconButton,
+  title: 'IconButton',
+}
 
 const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />
 
@@ -106,7 +113,70 @@ Toggle.args = {
   toggle: true,
 }
 
-export default {
-  component: IconButton,
-  title: 'IconButton',
+export const Suite = () => (
+  <>
+    <Heading>Sizes</Heading>
+    <Space>
+      <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="xsmall" label="Favorite" />
+      <IconButton icon="Favorite" size="small" label="Favorite" />
+      <IconButton icon="Favorite" size="medium" label="Favorite" />
+      <IconButton icon="Favorite" size="large" label="Favorite" />
+    </Space>
+    <Heading>States</Heading>
+    <Space>
+      <IconButton icon="Favorite" label="Favorite" />
+      <IconButton icon="Favorite" label="Favorite" className="hover" />
+      <IconButton icon="Favorite" label="Favorite" className="active" />
+    </Space>
+    <Space>
+      <IconButton color="key" icon="Favorite" label="Favorite" />
+      <IconButton
+        color="key"
+        icon="Favorite"
+        label="Favorite"
+        className="hover"
+      />
+      <IconButton
+        color="key"
+        icon="Favorite"
+        label="Favorite"
+        className="active"
+      />
+    </Space>
+    <Space>
+      <IconButton color="critical" icon="Favorite" label="Favorite" />
+      <IconButton
+        color="critical"
+        icon="Favorite"
+        label="Favorite"
+        className="hover"
+      />
+      <IconButton
+        color="critical"
+        icon="Favorite"
+        label="Favorite"
+        className="active"
+      />
+    </Space>
+    <Space>
+      <IconButton
+        size="medium"
+        icon="Favorite"
+        label="Favorite"
+        toggle={false}
+      />
+
+      <IconButton
+        size="medium"
+        icon="Favorite"
+        label="Favorite"
+        toggle={true}
+      />
+    </Space>
+  </>
+)
+
+Suite.parameters = {
+  storyshots: { disable: true },
 }

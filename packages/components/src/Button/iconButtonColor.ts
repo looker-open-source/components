@@ -30,7 +30,7 @@ import { StatefulColor } from '@looker/design-tokens'
 
 export const iconButtonDefaultColor = 'neutral'
 
-export const iconButtonColor = css<{ color?: StatefulColor, toggle?: boolean }>`
+export const iconButtonColor = css<{ color?: StatefulColor; toggle?: boolean }>`
   color: ${({ theme, color = iconButtonDefaultColor }) =>
     lighten(0.14, theme.colors[color])};
 
