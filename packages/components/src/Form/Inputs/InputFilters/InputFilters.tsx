@@ -64,11 +64,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
-  const [filterLookupName, setFilterLookupName] = useState('')
 
-  const assignedFilters = filters.filter(
-    (filter) => filter.value || filter.field === fieldEditing
-  )
+  const assignedFilters = filters
+    .filter((filter) => filter.value || filter.field === fieldEditing)
+    .sort((a, b) =>
+      a.value === undefined ? 1 : b.value === undefined ? -1 : 0
+    )
+
   const unassignedFilters = filters.filter(
     (filter) =>
       !assignedFilters.map((assigned) => assigned.field).includes(filter.field)
@@ -100,7 +102,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const isClearable = assignedFilters.length > 0
 
   const clearFilters = () => {
-    setFilterLookupName('')
     onChange(filters.map((filter) => omit(filter, 'value')))
   }
 
@@ -109,7 +110,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const handleFilterLookupChange = (field: string) => {
     const filter = filters.find((option) => option.field === field)
     if (filter) {
-      setFilterLookupName('')
       setFieldEditing(filter.field)
     }
   }
@@ -132,11 +132,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           )
 
         const setFieldEditingValue = (value: string) => {
-          const filterIndex = filters.findIndex(
+          const filterIndex = assignedFilters.findIndex(
             (filter) => filter.field === fieldEditing
           )
 
-          const newFilters = [...filters]
+          const newFilters = [...assignedFilters, ...unassignedFilters]
           const updateFilter = { ...newFilters[filterIndex], value }
           newFilters[filterIndex] = updateFilter
 
@@ -144,7 +144,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
         }
 
         const closeInputFiltersChipEditor = () => {
-          setFilterLookupName('')
           setFieldEditing(undefined)
         }
 
@@ -181,6 +180,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       {!fieldEditing && (
         <Select
           autoResize
+          openOnFocus
           indicator={false}
           onFilter={setFilterTerm}
           isFilterable
@@ -188,7 +188,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           options={options}
           placeholder="Filter List"
           ref={inputRef}
-          value={filterLookupName}
         />
       )}
       {isClearable && (

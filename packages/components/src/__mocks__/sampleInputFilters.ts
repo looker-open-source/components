@@ -25,21 +25,39 @@
  */
 
 export const filters = [
-  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
   {
-    field: 'group',
-    label: 'Group',
-    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+    field: 'last-successful-build',
+    label: 'Last Successful Build',
+    options: [
+      '1-22-20 33:33:33',
+      '2-11-20 44:44:44',
+      '3-33-20 55:55:55',
+      '4-05-20 11:11:11',
+    ],
   },
   {
-    field: 'name',
-    label: 'Name',
-    options: ['Name 1', 'Name 2', 'Name 3'],
+    field: 'model',
+    label: 'Model',
+    options: ['model_uno', 'model_dos', 'model_tres', 'model_cuatro'],
   },
-  { field: 'status', options: ['Failed', 'In-Progress', 'Success'] },
   {
-    field: 'buildAt',
-    label: 'Last Build Time',
-    options: ['01-22-20', '02-13-20', '05-28-20'],
+    field: 'persistance-type',
+    label: 'Persistance Type',
+    options: [
+      'datagroup_trigger',
+      'datagroup_trigger1',
+      'datagroup_trigger2',
+      'datagroup_trigger4',
+    ],
   },
+  {
+    field: 'PDT Name',
+    options: [
+      'my_great_pdt_name',
+      'my_other_great_pdt_name',
+      'my_other_great_pdt_name2',
+      'my_other_great_pdt_name3',
+    ],
+  },
+  { field: 'status', options: ['Failed', 'Success'] },
 ]
