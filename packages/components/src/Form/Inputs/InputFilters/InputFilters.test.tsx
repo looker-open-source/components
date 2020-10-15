@@ -37,30 +37,27 @@ const ControlledComponent = () => {
 
 describe('InputFilters', () => {
   test('renders', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={filters} onChange={jest.fn()} />
-    )
+    const { getByPlaceholderText } = renderWithTheme(<ControlledComponent />)
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
   test('Displays list of filters', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} onChange={jest.fn()} />
+      <ControlledComponent />
     )
 
     const input = getByPlaceholderText('Filter List')
     fireEvent.click(input)
     expect(getByText('role')).toBeInTheDocument()
     expect(getByText('Group')).toBeInTheDocument()
-    expect(getByText('Last Build Time')).toBeInTheDocument()
+    expect(getByText('Last Successful Build')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
-
   test('Clicking on a filter item will displays list of second layer filters ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} onChange={jest.fn()} />
+      <ControlledComponent />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -82,7 +79,7 @@ describe('InputFilters', () => {
 
   test('Shows editing options ', () => {
     const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={filters} onChange={jest.fn()} />
+      <ControlledComponent />
     )
 
     const input = getByPlaceholderText('Filter List')
@@ -252,6 +249,8 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByText('Group'))
     fireEvent.click(getByText('Cheddar'))
+
+    fireEvent.click(document)
 
     fireEvent.click(getByText('Clear Filters'))
 

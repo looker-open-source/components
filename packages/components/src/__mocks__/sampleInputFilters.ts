@@ -26,6 +26,11 @@
 
 export const filters = [
   {
+    field: 'group',
+    label: 'Group',
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+  },
+  {
     field: 'last-successful-build',
     label: 'Last Successful Build',
     options: [
@@ -59,5 +64,6 @@ export const filters = [
       'my_other_great_pdt_name3',
     ],
   },
+  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
   { field: 'status', options: ['Failed', 'Success'] },
 ]
