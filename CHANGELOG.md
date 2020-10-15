@@ -5,17 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.19] - 2020-10-15
 
 ### Changed
 
-- InputDateRange allows you to specify a single day range by clicking on one of the date range endpoints
+- `InputDateRange` allows you to specify a single day range by clicking on one of the date range endpoints
 
 ### Fixed
 
-- Aria accessibily fixes for `FieldTimeSelect` label
+- `Truncate` no longer conflicts with `Text/truncate` helper (moved to separate directory)
+- `FieldTimeSelect` label ARIA accessibility fixes
+- `ComboBox` and constituents caret color corrected, indicator size corrected
 
-## [0.9.18]
+## [0.9.18] - 2020-10-14
 
 ### Added
 
