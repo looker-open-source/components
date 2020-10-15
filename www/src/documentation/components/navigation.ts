@@ -137,7 +137,7 @@ const components: NavigationSection = {
           title: 'RangeSlider',
         },
         {
-          path: 'select',
+          path: 'input-select',
           title: 'Select',
         },
         {
