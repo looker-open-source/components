@@ -30,14 +30,14 @@ import { fireEvent } from '@testing-library/react'
 import { InputFiltersChipEditor } from './InputFiltersChipEditor'
 
 describe('InputFiltersChipEditor', () => {
-  const defaultValue = 'user'
+  const value = 'user'
   const onChange = jest.fn()
   const options = ['user', 'group-admin', 'admin', 'pizza']
 
   test('renders InputFiltersChipEditor', () => {
     const { queryByText } = renderWithTheme(
       <InputFiltersChipEditor
-        defaultValue={defaultValue}
+        value={value}
         onChange={onChange}
         options={options}
       />
@@ -49,7 +49,7 @@ describe('InputFiltersChipEditor', () => {
   test('InputFiltersChipEditor onchange', () => {
     const { queryByText } = renderWithTheme(
       <InputFiltersChipEditor
-        defaultValue={defaultValue}
+        value={value}
         onChange={onChange}
         options={options}
       />
