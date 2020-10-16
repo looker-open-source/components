@@ -95,22 +95,16 @@ OutlineLarge.args = {
   size: 'large',
 }
 
-export const KeyColorIconButton = Template.bind({})
-KeyColorIconButton.args = {
-  ...Basic.args,
-  color: 'key',
-}
-
-export const CriticalColorIconButton = Template.bind({})
-CriticalColorIconButton.args = {
-  ...Basic.args,
-  color: 'critical',
-}
-
-export const Toggle = Template.bind({})
-Toggle.args = {
+export const ToggleOn = Template.bind({})
+ToggleOn.args = {
   ...Basic.args,
   toggle: true,
+}
+
+export const ToggleOff = Template.bind({})
+ToggleOff.args = {
+  ...Basic.args,
+  toggle: false,
 }
 
 export const Suite = () => (
@@ -123,42 +117,15 @@ export const Suite = () => (
       <IconButton icon="Favorite" size="medium" label="Favorite" />
       <IconButton icon="Favorite" size="large" label="Favorite" />
     </Space>
+
     <Heading>States</Heading>
     <Space>
       <IconButton icon="Favorite" label="Favorite" />
       <IconButton icon="Favorite" label="Favorite" className="hover" />
       <IconButton icon="Favorite" label="Favorite" className="active" />
     </Space>
-    <Space>
-      <IconButton color="key" icon="Favorite" label="Favorite" />
-      <IconButton
-        color="key"
-        icon="Favorite"
-        label="Favorite"
-        className="hover"
-      />
-      <IconButton
-        color="key"
-        icon="Favorite"
-        label="Favorite"
-        className="active"
-      />
-    </Space>
-    <Space>
-      <IconButton color="critical" icon="Favorite" label="Favorite" />
-      <IconButton
-        color="critical"
-        icon="Favorite"
-        label="Favorite"
-        className="hover"
-      />
-      <IconButton
-        color="critical"
-        icon="Favorite"
-        label="Favorite"
-        className="active"
-      />
-    </Space>
+
+    <Heading>Toggle</Heading>
     <Space>
       <IconButton
         size="medium"

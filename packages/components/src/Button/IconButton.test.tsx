@@ -26,8 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import noop from 'lodash/noop'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import {
   fireEvent,
   screen,
@@ -37,128 +36,47 @@ import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
 describe('IconButton', () => {
-  test('default', () => {
-    assertSnapshot(
-      <IconButton id="test-iconButton" label="Test" icon="Favorite" />
-    )
+  test('toggle applies aria-pressed', () => {
+    renderWithTheme(<IconButton label="Test" icon="Favorite" toggle />)
+    const button = screen.getByRole('button')
+    expect(button).toHaveAttribute('aria-pressed')
   })
 
-  test('outline', () => {
-    assertSnapshot(
-      <IconButton id="test-iconButton" label="Test" icon="Favorite" outline />
-    )
-  })
-
-  test('resized', () => {
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Test"
-        icon="Favorite"
-        size="large"
-      />
-    )
-  })
-
-  test('accepts color', () => {
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Test"
-        icon="Favorite"
-        color="critical"
-      />
-    )
+  test('aria-pressed not present without toggle', () => {
+    renderWithTheme(<IconButton label="Test" icon="Favorite" />)
+    const button = screen.getByRole('button')
+    expect(button).not.toHaveAttribute('aria-pressed')
   })
 
   test('allows for ARIA attributes', () => {
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Test"
-        icon="Favorite"
-        aria-haspopup
-      />
-    )
+    renderWithTheme(<IconButton label="Test" icon="Favorite" />)
+    const button = screen.getByRole('button')
+    expect(button).not.toHaveAttribute('aria-haspopup')
   })
 
-  test('accepts events', () => {
-    assertSnapshot(
+  test('accepts events', async () => {
+    const fauxMouseEnter = jest.fn()
+    const fauxClick = jest.fn()
+    const label = 'Test'
+
+    renderWithTheme(
       <IconButton
-        id="test-iconButton"
         label="Test"
         icon="Favorite"
-        onMouseEnter={noop}
+        onMouseEnter={fauxMouseEnter}
+        onClick={fauxClick}
       />
     )
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Test"
-        icon="Favorite"
-        onClick={noop}
-      />
-    )
-  })
 
-  xtest('is a square by default', () => {
-    const { getByTestId } = renderWithTheme(
-      <IconButton label="Settings" icon="Gear" size="large" />
-    )
+    const button = screen.getByRole('button')
 
-    const image = getByTestId('icon-layout')
-    expect(image).toHaveStyleRule('width: 44')
-    expect(image).toHaveStyleRule('height: 44')
-  })
+    fireEvent.mouseOver(button)
+    expect(fauxMouseEnter).toHaveBeenCalledTimes(1)
+    fireEvent.mouseOut(button)
+    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
 
-  xtest('renders focus ring on tab input but not on click', () => {
-    const { getByText } = renderWithTheme(
-      <>
-        <IconButton
-          id="test-iconButton"
-          label="My Favorite"
-          color="critical"
-          icon="Favorite"
-        />
-        <IconButton
-          id="test-iconButton"
-          label="Trash"
-          color="critical"
-          icon="Trash"
-        />
-      </>
-    )
-
-    const button = getByText('My Favorite')
     fireEvent.click(button)
-
-    button &&
-      fireEvent.keyUp(button, {
-        charCode: 9,
-        code: 9,
-        key: 'Tab',
-      })
-
-    /**
-     * This test proves nothing. Doh!
-     */
-
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Favorite"
-        color="critical"
-        icon="Favorite"
-      />
-    )
-    assertSnapshot(
-      <IconButton
-        id="test-iconButton"
-        label="Trash"
-        color="critical"
-        icon="Trash"
-      />
-    )
+    expect(fauxClick).toHaveBeenCalledTimes(1)
   })
 
   test('has built-in tooltip', async () => {
