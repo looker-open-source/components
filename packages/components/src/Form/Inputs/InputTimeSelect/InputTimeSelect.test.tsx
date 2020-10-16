@@ -30,11 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { InputTimeSelect, InputTimeSelectProps } from './InputTimeSelect'
 
-jest.useFakeTimers()
-
-// jest.mock('lodash/throttle', () => {
-//   return jest.fn().mockImplementation((f) => f)
-// })
+jest.mock('lodash/throttle', () => (fn: any) => fn)
 
 const realDateNow = Date.now.bind(global.Date)
 // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -146,6 +142,25 @@ fdescribe('text input', () => {
     fireEvent.change(inputBox, { target: { value: '3:3' } }) // incomplete time string
     fireEvent.keyDown(inputBox, { key: 'Tab' })
     expect(handleChange).toHaveBeenLastCalledWith('03:03')
+
+    fireEvent.click(document)
+  })
+
+  test('accept free text input of a time not listed in options', () => {
+    const handleChange = jest.fn()
+    const { getByPlaceholderText } = renderWithTheme(
+      <InputTimeSelect value="12:00" interval={60} onChange={handleChange} />
+    )
+
+    expect(handleChange).not.toHaveBeenCalled()
+
+    const inputBox = getByPlaceholderText('Select time')
+    fireEvent.click(inputBox)
+
+    // Enter key input
+    fireEvent.change(inputBox, { target: { value: '03:17 pm' } })
+    fireEvent.keyDown(inputBox, { key: 'Enter' })
+    expect(handleChange).toHaveBeenLastCalledWith('15:17')
 
     fireEvent.click(document)
   })
