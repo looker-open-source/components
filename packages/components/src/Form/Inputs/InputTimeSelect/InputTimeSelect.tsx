@@ -263,30 +263,6 @@ const setScrollIntoView = (
   )
 }
 
-const arrowKeys = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft']
-const timeInputKeys = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '0',
-  'Space',
-  ' ',
-  ':',
-  'Backspace',
-  'a',
-  'p',
-  'A',
-  'P',
-  'm',
-  'M',
-]
-
 const InputTimeSelectLayout = forwardRef(
   (
     {
@@ -360,14 +336,7 @@ const InputTimeSelectLayout = forwardRef(
     const [userIsTyping, setUserIsTyping] = useState<boolean>(false)
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      const { key, metaKey } = e
-      if (arrowKeys.includes(key)) {
-        console.log('is typing')
-        setUserIsTyping(false)
-      } else if (timeInputKeys.includes(key)) {
-        console.log('is not typing')
-        setUserIsTyping(true)
-      } else if (key === 'Enter' || key === 'Tab') {
+      if (e.key === 'Enter' || e.key === 'Tab') {
         if (inputTextValue.length) {
           if (userIsTyping) {
             // override default combobox behavior when user typed
@@ -379,8 +348,6 @@ const InputTimeSelectLayout = forwardRef(
           const option = createOptionFromLabel(format, inputTextValue)
           throttledHandleChange(option)
         }
-      } else if (!metaKey) {
-        e.preventDefault()
       }
     }
 
