@@ -57,7 +57,6 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
       {label}
       {required && <RequiredStar />}
     </Label>
-    <div />
     <MessageArea id={`${id}-describedby`}>
       {detail && (
         <Paragraph fontSize="xsmall" variant="secondary">
@@ -69,23 +68,34 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   </label>
 )
 
-const InputArea = styled.div``
-const MessageArea = styled.div``
+const InputArea = styled.div`
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: ${({ theme }) => theme.space.xsmall};
+  /* stylelint-disable  */
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  /* stylelint-enable */
+`
+const MessageArea = styled.div`
+  grid-column: 2;
+  grid-row: 2;
+  /* stylelint-disable  */
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  /* stylelint-enable */
+`
 
 export const FieldInline = styled(FieldInlineLayout)`
   align-items: center;
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  display: -ms-grid;
-  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
   display: grid;
-  /* stylelint-disable-next-line property-no-vendor-prefix*/
-  -ms-grid-columns: auto 1fr;
   grid-template-columns: auto 1fr;
   line-height: ${({ theme }) => theme.lineHeights.small};
 
-  ${InputArea} {
-    padding-right: ${({ theme }) => theme.space.xsmall};
-  }
+  /* stylelint-disable  */
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  /* stylelint-enable */
 
   ${Label} {
     align-items: center;
@@ -93,5 +103,13 @@ export const FieldInline = styled(FieldInlineLayout)`
     display: flex;
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
+    grid-column: 2;
+    grid-row: 1;
+    padding-right: ${({ theme }) => theme.space.xsmall};
+
+    /* stylelint-disable  */
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    /* stylelint-enable */
   }
 `
