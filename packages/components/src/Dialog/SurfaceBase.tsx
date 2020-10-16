@@ -64,8 +64,10 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   return (
     <div
       className={`surface-overflow ${className}`}
+      data-overlay-surface={true}
       style={surfaceStyles as CSSObject}
       ref={wrapperRef}
+      tabIndex={-1}
       {...omitStyledProps(props)}
     />
   )

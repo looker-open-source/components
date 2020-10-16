@@ -62,6 +62,11 @@ export function useFocusTrap(
       const autoFocusElement = element.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
+
+      const surfaceElement = element.querySelector(
+        '[data-overlay-surface="true"]'
+      ) as HTMLElement
+
       if (trapRef.current) {
         trapRef.current.unpause()
       } else {
@@ -70,7 +75,9 @@ export function useFocusTrap(
           escapeDeactivates: false,
           fallbackFocus: element,
           onDeactivate: () => setOff(),
-          ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
+          ...(autoFocusElement || surfaceElement
+            ? { initialFocus: autoFocusElement || surfaceElement }
+            : {}),
         })
       }
       disableFocusTrap && disableFocusTrap()

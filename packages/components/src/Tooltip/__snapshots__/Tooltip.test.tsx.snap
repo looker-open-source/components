@@ -51,6 +51,7 @@ exports[`Tooltip trigger: open on mouseover, close on mouseout 1`] = `
 <div
   class="c0"
   color="inverseOn"
+  data-overlay-surface="true"
 >
   <p
     class="c1"
