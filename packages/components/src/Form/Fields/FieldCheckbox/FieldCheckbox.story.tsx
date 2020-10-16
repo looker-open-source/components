@@ -78,7 +78,6 @@ ReadOnly.args = {
 export const Error = Template.bind({})
 Error.args = {
   ...Basic.args,
-  readOnly: true,
   validationMessage: { message: 'This is an error', type: 'error' },
 }
 
