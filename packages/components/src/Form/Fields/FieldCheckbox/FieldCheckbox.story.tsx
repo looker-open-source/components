@@ -84,7 +84,6 @@ Error.args = {
 export const DetailError = Template.bind({})
 DetailError.args = {
   ...Detail.args,
-  readOnly: true,
   validationMessage: { message: 'This is an error', type: 'error' },
 }
 
