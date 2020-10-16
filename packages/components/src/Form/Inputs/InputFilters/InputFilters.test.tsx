@@ -24,110 +24,238 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { InputFilters } from './InputFilters'
+import { filters } from '../../../__mocks__/sampleInputFilters'
+import { FieldFilter, InputFilters } from './InputFilters'
+
+const ControlledComponent = () => {
+  const [controlledFilters, onChange] = useState<FieldFilter[]>(filters)
+  return <InputFilters filters={controlledFilters} onChange={onChange} />
+}
 
 describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-
-  const noUnassignedFilters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name', value: 'suggestion 1' },
-    { field: 'status', value: 'Success' },
-    { field: 'model', value: 'model_uno' },
-    { field: 'trigger', value: 'data_group_trigger' },
-    { field: 'buildAt', label: 'Last Build Time', value: '1-22-20 33:33:33' },
-  ]
-
-  const noAssignedFilters = [
-    { field: 'role' },
-    { field: 'group', label: 'Group' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-  test('render InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={filters} />
-    )
-
+  test('renders', () => {
+    const { getByPlaceholderText } = renderWithTheme(<ControlledComponent />)
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
-  test('render InputFilter with no filters', () => {
-    const { queryByText, getByPlaceholderText } = renderWithTheme(
-      <InputFilters filters={[]} />
+  test('Displays list of filters', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <ControlledComponent />
     )
 
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('No options')).toBeInTheDocument()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('admin')).not.toBeInTheDocument()
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Group')).toBeInTheDocument()
+    expect(getByText('Last Successful Build')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+  test('Clicking on a filter item will displays list of second layer filters ', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    const group = getByText('Group')
+
+    expect(getByText('role')).toBeInTheDocument()
+    expect(group).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    expect(getByText('role')).toBeInTheDocument()
+    expect(group).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
-  test('render InputFilter with no unassignedFilters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
-      <InputFilters filters={noUnassignedFilters} />
+  test('Shows editing options ', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <ControlledComponent />
     )
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('No options')).toBeInTheDocument()
-    expect(queryByText('admin')).toBeInTheDocument()
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    // const editor = getByText('user')
+    // fireEvent.click(getByText('user'))
+
+    expect(getByText('user')).toBeInTheDocument()
+    expect(getByText('admin')).toBeInTheDocument()
+    expect(getByText('pizza')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
-  test('render InputFilter with only assignedFilters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
-      <InputFilters filters={noAssignedFilters} />
+  test('Display full filter selected', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <ControlledComponent />
     )
-    const noneAvailableFilters = getByPlaceholderText('Filter List')
-    fireEvent.click(noneAvailableFilters)
-    expect(document.activeElement === noneAvailableFilters).toBeTruthy()
-    expect(queryByText('Name')).toBeInTheDocument()
-    expect(queryByText('admin')).not.toBeInTheDocument()
+
+    const input = getByPlaceholderText('Filter List')
+    fireEvent.click(input)
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+    expect(getByText('role:')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
-  test('InputFilter displays chips for each FieldFilter passed', () => {
-    const { queryByText } = renderWithTheme(<InputFilters filters={filters} />)
-    expect(queryByText('admin')).toBeInTheDocument()
-    expect(queryByText('pizza-lovers')).toBeInTheDocument()
+  test("Doesn't show filter displayed as chip", () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(queryByText('role')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 
-  test('InputFilter displays the right list of filters', () => {
-    const { getByPlaceholderText, queryByText } = renderWithTheme(
-      <InputFilters filters={filters} />
+  test('Display a second filter as chip', () => {
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <ControlledComponent />
     )
-    const activeFilter = getByPlaceholderText('Filter List')
-    fireEvent.click(activeFilter)
-    expect(document.activeElement === activeFilter).toBeTruthy()
-    expect(queryByText('Name')).toBeInTheDocument()
-    expect(queryByText('model')).toBeInTheDocument()
-    expect(queryByText('trigger')).toBeInTheDocument()
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    fireEvent.click(getByText('Group'))
+    fireEvent.click(getByText('Cheddar'))
+
+    expect(getByText('group:')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Change filter values', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+    fireEvent.click(document)
+
+    expect(queryByText('role:')).toBeInTheDocument()
+    expect(queryByText(/user/)).toBeInTheDocument()
+
+    fireEvent.click(getByText('role:'))
+    fireEvent.click(getByText('pizza'))
+
+    expect(queryByText(/pizza, user/)).toBeInTheDocument()
+
+    fireEvent.click(getByText('user'))
+    fireEvent.click(document)
+
+    expect(queryByText(/pizza/)).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Delete filter', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByText('Delete'))
+
+    expect(queryByText('role:')).not.toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Delete multiple filter', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('role')).toBeInTheDocument()
+
+    fireEvent.click(getByText('role'))
+
+    fireEvent.click(getByText('user'))
+
+    expect(getByText('role:')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    fireEvent.click(getByText('Group'))
+    fireEvent.click(getByText('Cheddar'))
+
+    fireEvent.click(document)
+
+    fireEvent.click(getByText('Clear Filters'))
+
+    expect(queryByText('role:')).not.toBeInTheDocument()
+    expect(queryByText('group:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

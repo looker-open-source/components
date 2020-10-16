@@ -24,33 +24,46 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListFilters } from './ActionListFilters'
-
-describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-
-  test('render ActionListFilters display InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} onFilter={jest.fn()} />
-    )
-
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
-  })
-
-  test('render ActionListFilters display columns icon', () => {
-    const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns />
-    )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
-  })
-})
+export const filters = [
+  {
+    field: 'group',
+    label: 'Group',
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+  },
+  {
+    field: 'last-successful-build',
+    label: 'Last Successful Build',
+    options: [
+      '1-22-20 33:33:33',
+      '2-11-20 44:44:44',
+      '3-33-20 55:55:55',
+      '4-05-20 11:11:11',
+    ],
+  },
+  {
+    field: 'model',
+    label: 'Model',
+    options: ['model_uno', 'model_dos', 'model_tres', 'model_cuatro'],
+  },
+  {
+    field: 'persistance-type',
+    label: 'Persistance Type',
+    options: [
+      'datagroup_trigger',
+      'datagroup_trigger1',
+      'datagroup_trigger2',
+      'datagroup_trigger4',
+    ],
+  },
+  {
+    field: 'PDT Name',
+    options: [
+      'my_great_pdt_name',
+      'my_other_great_pdt_name',
+      'my_other_great_pdt_name2',
+      'my_other_great_pdt_name3',
+    ],
+  },
+  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
+  { field: 'status', options: ['Failed', 'Success'] },
+]

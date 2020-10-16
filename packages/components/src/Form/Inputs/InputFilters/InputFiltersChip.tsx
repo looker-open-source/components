@@ -23,34 +23,24 @@
  SOFTWARE.
 
  */
+import React, { FC, forwardRef, Ref } from 'react'
+import { Chip, ChipProps } from '../../../Chip'
+import { FieldFilter } from './InputFilters'
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListFilters } from './ActionListFilters'
-
-describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-
-  test('render ActionListFilters display InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} onFilter={jest.fn()} />
+interface InputFiltersChipProps
+  extends Omit<ChipProps, 'children' | 'onDelete'> {
+  filter: FieldFilter
+  onDelete: (field: FieldFilter) => void
+}
+export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
+  ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
+    const handleDelete = () => onDelete(filter)
+    return (
+      <Chip ref={ref} {...props} prefix={filter.field} onDelete={handleDelete}>
+        {filter.value}
+      </Chip>
     )
+  }
+)
 
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
-  })
-
-  test('render ActionListFilters display columns icon', () => {
-    const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns />
-    )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
-  })
-})
+InputFiltersChip.displayName = 'InputFiltersChip'

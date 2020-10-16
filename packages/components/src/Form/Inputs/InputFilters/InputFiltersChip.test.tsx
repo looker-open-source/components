@@ -26,31 +26,37 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListFilters } from './ActionListFilters'
+import { fireEvent } from '@testing-library/react'
+import { InputFiltersChip } from './InputFiltersChip'
 
-describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
+describe('InputFiltersChip', () => {
+  const filter = {
+    field: 'role',
+    options: ['user', 'group-admin', 'admin', 'pizza'],
+    value: 'user',
+  }
+  const onDelete = jest.fn()
 
-  test('render ActionListFilters display InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} onFilter={jest.fn()} />
+  test('renders', () => {
+    const { getByText } = renderWithTheme(
+      <InputFiltersChip filter={filter} onDelete={onDelete} />
     )
-
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+    expect(getByText('user')).toBeInTheDocument()
   })
 
-  test('render ActionListFilters display columns icon', () => {
-    const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns />
+  test('onClick', () => {
+    const onClick = jest.fn()
+
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChip filter={filter} onClick={onClick} onDelete={onDelete} />
     )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
+    const filterBy = queryByText('user')
+    filterBy && fireEvent.click(filterBy)
+
+    expect(filterBy).toBeInTheDocument()
+    expect(onClick).toBeCalled()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })

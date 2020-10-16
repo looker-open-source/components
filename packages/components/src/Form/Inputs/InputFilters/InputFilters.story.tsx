@@ -24,33 +24,34 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListFilters } from './ActionListFilters'
+import React, { useState } from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { filters } from '../../../__mocks__/sampleInputFilters'
+import { InputFilters, InputFiltersProps } from './InputFilters'
 
-describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
+const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
+  const [controlledFilters, setControlledFilters] = useState(filters)
+  return (
+    <InputFilters
+      {...args}
+      filters={controlledFilters}
+      onChange={setControlledFilters}
+    />
+  )
+}
 
-  test('render ActionListFilters display InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} onFilter={jest.fn()} />
-    )
+export const Basic = Template.bind({})
+Basic.args = {
+  filters: filters,
+}
 
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
-  })
+export const HideFilter = Template.bind({})
+HideFilter.args = {
+  ...Basic.args,
+  hideFilterIcon: true,
+}
 
-  test('render ActionListFilters display columns icon', () => {
-    const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns />
-    )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
-  })
-})
+export default {
+  component: InputFilters,
+  title: 'InputFilters',
+}

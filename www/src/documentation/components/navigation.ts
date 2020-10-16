@@ -109,6 +109,10 @@ const components: NavigationSection = {
           title: 'InputHidden',
         },
         {
+          path: 'input-filters',
+          title: 'InputFilters',
+        },
+        {
           path: 'input-search',
           title: 'InputSearch',
         },

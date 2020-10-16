@@ -23,34 +23,36 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { ButtonGroup } from '../../../Button'
+import { PopoverContent } from '../../../Popover'
+import { SpaceVertical } from '../../../Layout/Space'
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListFilters } from './ActionListFilters'
+interface InputFiltersChipEditorProps {
+  value?: string
+  onChange: (value: string) => void
+  options?: string[]
+}
+export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
+  value,
+  onChange,
+  options,
+}) => {
+  const handleChange = (newValues: string[]) => {
+    onChange(newValues.sort().join(', '))
+  }
 
-describe('InputFilters', () => {
-  const filters = [
-    { field: 'role', value: 'admin' },
-    { field: 'group', label: 'Group', value: 'pizza-lovers' },
-    { field: 'name', label: 'Name' },
-    { field: 'status' },
-    { field: 'model' },
-    { field: 'trigger' },
-    { field: 'buildAt', label: 'Last Build Time' },
-  ]
-
-  test('render ActionListFilters display InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters filters={filters} onFilter={jest.fn()} />
-    )
-
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
-  })
-
-  test('render ActionListFilters display columns icon', () => {
-    const { getByText } = renderWithTheme(
-      <ActionListFilters canSelectDisplayedColumns />
-    )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
-  })
-})
+  return (
+    <PopoverContent p="large" maxWidth="360px">
+      <SpaceVertical>
+        {options && (
+          <ButtonGroup
+            value={value ? value.split(', ') : []}
+            options={options.map((value) => ({ label: value, value }))}
+            onChange={handleChange}
+          />
+        )}
+      </SpaceVertical>
+    </PopoverContent>
+  )
+}
