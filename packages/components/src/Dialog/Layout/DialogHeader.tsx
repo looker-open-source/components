@@ -94,7 +94,6 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
             <IconButton
               id={id ? `${id}-iconButton` : undefined}
               tabIndex={-1}
-              color="neutral"
               size="medium"
               onClick={closeModal}
               label="Close"

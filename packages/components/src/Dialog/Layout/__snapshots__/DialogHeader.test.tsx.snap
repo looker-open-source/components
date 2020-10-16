@@ -103,6 +103,10 @@ exports[`DialogHeader Snapshot 1`] = `
   color: #5f656e;
 }
 
+.c4[aria-pressed='true'] {
+  color: #6C43E0;
+}
+
 .c4 svg {
   pointer-events: none;
 }
@@ -152,7 +156,6 @@ exports[`DialogHeader Snapshot 1`] = `
     <button
       aria-describedby="test-DialogHeader-iconButton-tooltip"
       className="c3 c4"
-      color="neutral"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
