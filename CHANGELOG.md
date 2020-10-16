@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Aria accessibily fixes for `FieldTimeSelect` label
+- Updates `InputTimeSelect` to accept a time that is not included in the select dropdown options
 
 ## [0.9.18]
 

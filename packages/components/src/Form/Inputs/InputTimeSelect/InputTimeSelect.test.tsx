@@ -28,8 +28,13 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
-
 import { InputTimeSelect, InputTimeSelectProps } from './InputTimeSelect'
+
+jest.useFakeTimers()
+
+// jest.mock('lodash/throttle', () => {
+//   return jest.fn().mockImplementation((f) => f)
+// })
 
 const realDateNow = Date.now.bind(global.Date)
 // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -120,7 +125,7 @@ describe('prop: interval', () => {
   })
 })
 
-describe('text input', () => {
+fdescribe('text input', () => {
   test('converts shorthand input to 24h formatted string on change', () => {
     const handleChange = jest.fn()
     const { getByPlaceholderText } = renderWithTheme(
