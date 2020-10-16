@@ -26,48 +26,40 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldCheckbox } from './FieldCheckbox'
 
-test('A FieldCheckbox', () => {
-  assertSnapshot(
-    <FieldCheckbox id="FieldCheckboxID" label="👍" name="thumbsUp" />
-  )
-})
-
-test('A FieldCheckbox with checked value', () => {
-  assertSnapshot(
+test('A required FieldCheckbox', () => {
+  renderWithTheme(
     <FieldCheckbox
-      defaultChecked
       id="FieldCheckboxID"
-      label="👍"
+      label="I agree"
       name="thumbsUp"
+      required
     />
   )
-})
 
-test('A required FieldCheckbox', () => {
-  const wrapper = mountWithTheme(
-    <FieldCheckbox id="FieldCheckboxID" label="👍" name="thumbsUp" required />
-  )
-  expect(wrapper.text()).toMatch(`👍 required`)
+  expect(screen.getByTestId('requiredStar')).toBeVisible()
 })
 
 test('A disabled FieldCheckbox', () => {
-  const wrapper = mountWithTheme(
-    <FieldCheckbox disabled id="FieldCheckboxID" label="👍" name="thumbsUp" />
+  renderWithTheme(
+    <FieldCheckbox
+      disabled
+      id="FieldCheckboxID"
+      label="I agree"
+      name="thumbsUp"
+    />
   )
-  wrapper.find('input').html().includes('disabled=""')
+
+  expect(screen.getByLabelText('I agree')).toBeDisabled()
 })
 
 test('A FieldCheckbox with error has proper aria setup', () => {
   const errorMessage = 'This is an error'
 
-  const { container, getByDisplayValue } = renderWithTheme(
+  const { container } = renderWithTheme(
     <FieldCheckbox
       id="test"
       defaultValue="example"
@@ -75,7 +67,7 @@ test('A FieldCheckbox with error has proper aria setup', () => {
     />
   )
 
-  const input = getByDisplayValue('example')
+  const input = screen.getByDisplayValue('example')
   const id = input.getAttribute('aria-describedby')
   expect(id).toBeDefined()
 

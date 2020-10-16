@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
+  - `FieldCheckbox`
+  - `FieldRadio`
+  - `FieldToggleSwitch`
 - `MenuItem` now receives and uses passed-in rel prop
   - Also auto appends "noopener noreferrer" to rel if target="\_blank"
 - `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns

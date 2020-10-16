@@ -24,19 +24,50 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { VisuallyHidden } from '../../VisuallyHidden'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { FieldRadio, FieldRadioProps } from './FieldRadio'
 
-const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => (
-  <span aria-hidden="true" className={className} data-testid="requiredStar">
-    <VisuallyHidden> required</VisuallyHidden>
-  </span>
-)
+const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
 
-export const RequiredStar = styled(RequiredStarLayout)`
-  &::before {
-    color: ${({ theme }) => theme.colors.critical};
-    content: ' *';
-  }
-`
+export const Basic = Template.bind({})
+Basic.args = {
+  id: 'fieldRadioId',
+  label: 'Field Radio Example',
+  name: 'thumbsUp',
+}
+
+export const Detail = Template.bind({})
+Detail.args = {
+  ...Basic.args,
+  detail: 'Some exciting details that describe the use of this.',
+}
+
+export const Checked = Template.bind({})
+Checked.args = {
+  ...Basic.args,
+  checked: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Checked.args,
+  disabled: true,
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  ...Basic.args,
+  readOnly: true,
+}
+
+export default {
+  component: FieldRadio,
+  title: 'FieldRadio',
+}
