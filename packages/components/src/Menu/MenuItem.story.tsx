@@ -90,12 +90,7 @@ Current.args = {
 
 export const Link = () => {
   return (
-    <MenuItem
-      itemRole="link"
-      href="https://google.com"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <MenuItem itemRole="link" href="https://google.com" target="_blank">
       MenuItem that links to Google
     </MenuItem>
   )
