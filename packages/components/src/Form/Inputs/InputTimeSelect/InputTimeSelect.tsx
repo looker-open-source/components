@@ -333,17 +333,9 @@ const InputTimeSelectLayout = forwardRef(
       setInputTextValue('')
     }
 
-    const [userIsTyping, setUserIsTyping] = useState<boolean>(false)
-
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter' || e.key === 'Tab') {
         if (inputTextValue.length) {
-          if (userIsTyping) {
-            // override default combobox behavior when user typed
-            // a value that is not included in combobox list
-            e.stopPropagation()
-          }
-
           // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
           const option = createOptionFromLabel(format, inputTextValue)
           throttledHandleChange(option)
