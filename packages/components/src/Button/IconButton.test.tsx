@@ -49,9 +49,9 @@ describe('IconButton', () => {
   })
 
   test('allows for ARIA attributes', () => {
-    renderWithTheme(<IconButton label="Test" icon="Favorite" />)
+    renderWithTheme(<IconButton label="Test" icon="Favorite" aria-haspopup />)
     const button = screen.getByRole('button')
-    expect(button).not.toHaveAttribute('aria-haspopup')
+    expect(button).toHaveAttribute('aria-haspopup')
   })
 
   test('accepts events', async () => {
