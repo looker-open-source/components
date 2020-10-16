@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added support for `aria-busy`
   - Simplified implementation of `DialogRender` component
 - `theme.transitions` durations are now integers (in milliseconds) rather than strings
+- InputFilter to support multiline filter tokens
 
 ### Fixed
 
