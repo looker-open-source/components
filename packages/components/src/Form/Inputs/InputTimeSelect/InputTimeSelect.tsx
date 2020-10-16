@@ -263,6 +263,8 @@ const setScrollIntoView = (
   )
 }
 
+const arrowKeys = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft']
+
 const InputTimeSelectLayout = forwardRef(
   (
     {
@@ -333,13 +335,21 @@ const InputTimeSelectLayout = forwardRef(
       setInputTextValue('')
     }
 
+    const [isNavigating, setIsNavigating] = useState(false)
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter' || e.key === 'Tab') {
+      const { key } = e
+      if (arrowKeys.includes(key)) {
+        setIsNavigating(true)
+      } else if (key === 'Enter' || key === 'Tab') {
         if (inputTextValue.length) {
           // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
           const option = createOptionFromLabel(format, inputTextValue)
-          throttledHandleChange(option)
+          // don't fire change event here if user is selecting an option from the dropdown list
+          !isNavigating && throttledHandleChange(option)
         }
+      } else {
+        setIsNavigating(false)
       }
     }
 
