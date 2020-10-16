@@ -83,7 +83,6 @@ export const CalendarNav: FC<NavbarElementProps> = ({
           <IconButton
             icon="CaretLeft"
             label={labels.previousMonth}
-            color="neutral"
             size={size}
             onClick={handlePreviousClick}
           />
@@ -107,7 +106,6 @@ export const CalendarNav: FC<NavbarElementProps> = ({
           <IconButton
             icon="CaretRight"
             label={labels.nextMonth}
-            color="neutral"
             size={size}
             onClick={handleNextClick}
             style={{ justifySelf: 'right' }}
