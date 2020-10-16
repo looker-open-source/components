@@ -89,7 +89,7 @@ export const OverlaySurface = forwardRef(
         data-placement={placement}
         maxWidth={maxWidth}
       >
-        <Inner data-overlay-surface={true} {...innerProps}>
+        <Inner tabIndex={-1} data-overlay-surface={true} {...innerProps}>
           {children}
         </Inner>
       </Outer>
