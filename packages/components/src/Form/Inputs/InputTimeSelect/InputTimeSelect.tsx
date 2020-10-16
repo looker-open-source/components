@@ -24,6 +24,7 @@
 
  */
 import React, {
+  useCallback,
   forwardRef,
   KeyboardEvent,
   useState,
@@ -40,6 +41,7 @@ import trim from 'lodash/trim'
 import last from 'lodash/last'
 import head from 'lodash/head'
 import sortedIndex from 'lodash/sortedIndex'
+import throttle from 'lodash/throttle'
 import {
   BorderProps,
   SpaceProps,
@@ -182,13 +184,24 @@ const createOptionFromStringValue = (format: TimeFormats, value: string) => {
   }
 }
 
+// convert times like "2:00 pm" or "12:15 am" to 24 hour equivalents
+const convert12to24hr = (hour: number, period: 'am' | 'pm') => {
+  if (hour + period === '12am') {
+    return 0
+  } else if (period === 'pm' && hour < 12) {
+    return hour + 12
+  } else {
+    return hour
+  }
+}
+
 // take in a shorthand string label ('2pm') and return a formatted object
 // e.g. {label: '02:00 pm', value: '14:00'}
 const createOptionFromLabel = (format: TimeFormats, label: string) => {
   const period = label.toLowerCase().includes('p') ? 'pm' : 'am'
   const numericTime = label.replace(/[apm]/gi, '')
   const [hour = 0, minute = 0] = numericTime.split(':').map(parseBase10Int)
-  const hr24 = hour + (period === 'pm' ? 12 : 0)
+  const hr24 = convert12to24hr(hour, period)
   const value = `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 
   if (isValidTime(value)) {
@@ -250,6 +263,30 @@ const setScrollIntoView = (
   )
 }
 
+const arrowKeys = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft']
+const timeInputKeys = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+  'Space',
+  ' ',
+  ':',
+  'Backspace',
+  'a',
+  'p',
+  'A',
+  'P',
+  'm',
+  'M',
+]
+
 const InputTimeSelectLayout = forwardRef(
   (
     {
@@ -301,6 +338,17 @@ const InputTimeSelectLayout = forwardRef(
       }
     }
 
+    const throttledHandleChange = useCallback(
+      throttle(
+        (v: MaybeComboboxOptionObject) => {
+          handleChange(v)
+        },
+        50,
+        { trailing: false }
+      ),
+      []
+    )
+
     const handleTextInputChange = (e: SyntheticEvent) => {
       setInputTextValue((e.target as HTMLInputElement).value)
     }
@@ -309,13 +357,30 @@ const InputTimeSelectLayout = forwardRef(
       setInputTextValue('')
     }
 
+    const [userIsTyping, setUserIsTyping] = useState<boolean>(false)
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter' || e.key === 'Tab') {
+      const { key, metaKey } = e
+      if (arrowKeys.includes(key)) {
+        console.log('is typing')
+        setUserIsTyping(false)
+      } else if (timeInputKeys.includes(key)) {
+        console.log('is not typing')
+        setUserIsTyping(true)
+      } else if (key === 'Enter' || key === 'Tab') {
         if (inputTextValue.length) {
+          if (userIsTyping) {
+            // override default combobox behavior when user typed
+            // a value that is not included in combobox list
+            e.stopPropagation()
+          }
+
           // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
           const option = createOptionFromLabel(format, inputTextValue)
-          handleChange(option)
+          throttledHandleChange(option)
         }
+      } else if (!metaKey) {
+        e.preventDefault()
       }
     }
 
@@ -338,7 +403,7 @@ const InputTimeSelectLayout = forwardRef(
       <Combobox
         className={className}
         ref={ref}
-        onChange={handleChange}
+        onChange={throttledHandleChange}
         value={selectedOption}
       >
         <ComboboxInput
