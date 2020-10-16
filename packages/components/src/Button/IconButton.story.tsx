@@ -26,8 +26,6 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Heading } from '../Text'
-import { Space } from '../Layout/Space'
 import { IconButton, IconButtonProps } from './IconButton'
 
 export default {
@@ -105,45 +103,4 @@ export const ToggleOff = Template.bind({})
 ToggleOff.args = {
   ...Basic.args,
   toggle: false,
-}
-
-export const Suite = () => (
-  <>
-    <Heading>Sizes</Heading>
-    <Space>
-      <IconButton icon="Favorite" size="xxsmall" label="Favorite" />
-      <IconButton icon="Favorite" size="xsmall" label="Favorite" />
-      <IconButton icon="Favorite" size="small" label="Favorite" />
-      <IconButton icon="Favorite" size="medium" label="Favorite" />
-      <IconButton icon="Favorite" size="large" label="Favorite" />
-    </Space>
-
-    <Heading>States</Heading>
-    <Space>
-      <IconButton icon="Favorite" label="Favorite" />
-      <IconButton icon="Favorite" label="Favorite" className="hover" />
-      <IconButton icon="Favorite" label="Favorite" className="active" />
-    </Space>
-
-    <Heading>Toggle</Heading>
-    <Space>
-      <IconButton
-        size="medium"
-        icon="Favorite"
-        label="Favorite"
-        toggle={false}
-      />
-
-      <IconButton
-        size="medium"
-        icon="Favorite"
-        label="Favorite"
-        toggle={true}
-      />
-    </Space>
-  </>
-)
-
-Suite.parameters = {
-  storyshots: { disable: true },
 }
