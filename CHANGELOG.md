@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Changed
+
+### Changed
+
+- InputFilter to support multiline filter tokens
+
 ### Fixed
 
 - `MenuItem` now receives and uses passed-in rel prop
