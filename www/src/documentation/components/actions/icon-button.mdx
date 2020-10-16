@@ -85,34 +85,6 @@ Icon buttons have the `toggle` prop which can be used to show a toggleable state
 }
 ```
 
-## Color
-
-- `critical` | `neutral` (default) | `key`
-
-```jsx
-<Space evenly>
-  <IconButton color="critical" icon="Gear" label="Settings" size="large" />
-  <IconButton color="neutral" icon="Gear" label="Settings" size="large" />
-  <IconButton color="key" icon="Gear" label="Settings" size="large" />
-</Space>
-```
-
-## Animation
-
-Create the styled rules desired and wrap the `IconButton` component on it.
-
-```jsx
-;() => {
-  const HoverVariantButton = styled(IconButton)`
-    transition: transform 0.5s;
-    &:hover {
-      transform: rotate(45deg);
-    }
-  `
-  return <HoverVariantButton label="Close" icon="Close" size="large" outline />
-}
-```
-
 ## IconButton & Tooltip
 
 You can also use your own `Tooltip` around `IconButton` (this will effectively remove the "built-in" `Tooltip`)
