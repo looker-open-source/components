@@ -93,4 +93,17 @@ describe('MenuItem', () => {
 
     expect(callbackFn).toHaveBeenCalledTimes(0)
   })
+
+  test('MenuItem - link with "noopener noreferrer"', () => {
+    const { getByRole } = renderWithTheme(
+      <MenuItem itemRole="link" rel="noopener noreferrer">
+        Link
+      </MenuItem>
+    )
+
+    const item = getByRole('menuitem')
+
+    expect(item.nodeName).toBe('A')
+    expect(item.getAttribute('rel')).toBe('noopener noreferrer')
+  })
 })
