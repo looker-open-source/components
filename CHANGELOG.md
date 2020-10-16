@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- Removed support for `color` (`neutral` for all now)
+- IconButton support for `color` (`neutral` for all now)
 
 ## [0.9.19] - 2020-10-15
 
