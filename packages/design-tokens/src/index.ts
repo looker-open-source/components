@@ -39,6 +39,8 @@ export * from './utils/pick'
 export { generateTheme } from './utils/theme'
 export type { ThemeCustomizations } from './utils/theme'
 
+export { transitions } from './tokens/transitions'
+
 export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
 export {
   intentUIBlend,

@@ -26,13 +26,27 @@
 
 import { Transitions } from '../system'
 
+const rapid = 100
+const quick = 150
+const simple = 200
+const moderate = 300
+const complex = 400
+const intricate = 500
+
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const transitions: Transitions = {
-  durationRapid: '100ms',
-  durationQuick: '150ms',
-  durationSimple: '200ms',
-  durationModerate: '300ms',
-  durationComplex: '300ms',
-  durationIntricate: '500ms',
+  durationRapid: `${rapid}ms`,
+  durationQuick: `${quick}ms`,
+  durationSimple: `${simple}ms`,
+  durationModerate: `${moderate}ms`,
+  durationComplex: `${complex}ms`,
+  durationIntricate: `${intricate}ms`,
+
+  rapid,
+  quick,
+  simple,
+  moderate,
+  complex,
+  intricate,
 }
 /* eslint-enable sort-keys */

@@ -31,4 +31,11 @@ export interface Transitions {
   durationModerate: string
   durationComplex: string
   durationIntricate: string
+
+  rapid: number
+  quick: number
+  simple: number
+  moderate: number
+  complex: number
+  intricate: number
 }

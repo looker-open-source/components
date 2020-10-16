@@ -35,7 +35,8 @@ export const DialogSurface = styled(SurfaceBase)`
   /* opacity: 1;
   transform: none; */
 
-  &.transitioning {
+  &.entering,
+  &.exiting {
     opacity: 0.01;
     transform: translateY(100%);
   }

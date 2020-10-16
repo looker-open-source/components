@@ -24,15 +24,8 @@
 
  */
 
-import React, {
-  CSSProperties,
-  FC,
-  ReactNode,
-  useEffect,
-  useState,
-  useContext,
-} from 'react'
-import { CSSObject, ThemeContext } from 'styled-components'
+import React, { CSSProperties, FC, ReactNode, useState } from 'react'
+import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { DrawerPlacements } from '../Drawer/useDrawer'
 import { Portal } from '../Portal'
@@ -40,6 +33,7 @@ import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
 import { DialogSurface } from './DialogSurface'
+import { useAnimationState } from './useAnimation'
 
 export type DialogPlacements = 'center'
 
@@ -162,9 +156,6 @@ export const useDialog = ({
   surfaceStyles,
   Surface: CustomSurface,
 }: UseDialogPropsInternal): UseDialogResponse => {
-  const {
-    transitions: { durationModerate },
-  } = useContext(ThemeContext)
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
@@ -191,23 +182,7 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
-  const [render, setRender] = useState(isOpen)
-  useEffect(() => {
-    if (isOpen) {
-      setRender(true)
-    } else {
-      /**
-       * Would be ideal to use onAnimationEnd here instead but browser
-       * support is inconsistent.
-       **/
-      console.log('closing...')
-
-      setTimeout(() => {
-        setRender(false)
-        console.log('closed!')
-      }, 1000)
-    }
-  }, [durationModerate, isOpen])
+  const { busy, className, renderDOM } = useAnimationState(isOpen)
 
   const setOpen =
     isControlled && controlledSetOpen
@@ -233,7 +208,7 @@ export const useDialog = ({
 
   const RenderSurface = CustomSurface || DialogSurface
 
-  const dialog = render && (
+  const dialog = renderDOM && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -245,6 +220,7 @@ export const useDialog = ({
     >
       <Portal ref={portalRef}>
         <Backdrop
+          className={className}
           onClick={handleClose}
           visible={backdrop === undefined ? true : !!backdrop}
           style={
@@ -254,7 +230,8 @@ export const useDialog = ({
           }
         />
         <RenderSurface
-          className={isOpen ? undefined : 'transitioning'}
+          aria-busy={busy ? true : undefined}
+          className={className}
           style={surfaceStyles}
           width={width}
           maxWidth={maxWidth}
