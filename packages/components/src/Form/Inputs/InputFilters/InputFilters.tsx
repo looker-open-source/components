@@ -207,7 +207,20 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 }
 
 const ChipWrapper = styled.div`
+  display: inline-flex;
   flex: 1;
+  flex-wrap: wrap;
+
+  ${Chip} {
+    margin-right: ${({ theme: { space } }) => space.xsmall};
+  }
+
+  @supports (gap: 4px) {
+    gap: ${({ theme }) => theme.space.xsmall};
+    ${Chip} {
+      margin: 0;
+    }
+  }
 `
 
 export const InputFilters = styled(InputFiltersLayout)`
@@ -218,11 +231,11 @@ export const InputFilters = styled(InputFiltersLayout)`
   flex-wrap: wrap;
   min-height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  padding-top: ${({ theme: { space } }) => `${space.xsmall}`};
   width: 100%;
 
   ${Chip} {
     display: inline;
-    margin-right: ${({ theme: { space } }) => space.xsmall};
   }
 
   ${Select} {
@@ -234,6 +247,7 @@ export const InputFilters = styled(InputFiltersLayout)`
   ${InputText} {
     border: none;
     height: 28px;
+    margin-top: ${({ theme: { space } }) => `-${space.xxsmall}`};
     padding: 0;
     &:focus-within {
       box-shadow: none;
