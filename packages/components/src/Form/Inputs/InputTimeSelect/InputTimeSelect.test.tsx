@@ -145,30 +145,6 @@ describe('text input', () => {
 
     fireEvent.click(document)
   })
-
-  test('accept free text input of a time not listed in options', () => {
-    const handleChange = jest.fn()
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputTimeSelect interval={60} onChange={handleChange} />
-    )
-
-    expect(handleChange).not.toHaveBeenCalled()
-
-    const inputBox = getByPlaceholderText('Select time')
-    fireEvent.click(inputBox)
-
-    // Click on an option from the list
-    const option = getByText('01:00 pm')
-    fireEvent.click(option)
-    expect(handleChange).toHaveBeenLastCalledWith('13:00')
-
-    // Enter a custom time not on the list
-    fireEvent.change(inputBox, { target: { value: '03:17 pm' } })
-    fireEvent.keyDown(inputBox, { key: 'Enter' })
-    expect(handleChange).toHaveBeenLastCalledWith('15:17')
-
-    fireEvent.click(document)
-  })
 })
 
 describe('keyboard nav ux', () => {
