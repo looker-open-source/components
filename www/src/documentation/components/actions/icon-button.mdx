@@ -67,31 +67,21 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 </Space>
 ```
 
-## Color
+### Toggle
 
-- `critical` | `neutral` (default) | `key`
-
-```jsx
-<Space evenly>
-  <IconButton color="critical" icon="Gear" label="Settings" size="large" />
-  <IconButton color="neutral" icon="Gear" label="Settings" size="large" />
-  <IconButton color="key" icon="Gear" label="Settings" size="large" />
-</Space>
-```
-
-## Animation
-
-Create the styled rules desired and wrap the `IconButton` component on it.
+Icon buttons have the `toggle` prop which can be used to show a toggleable state. The `toggle` prop has to be explictly set to either `true` or `false`.
 
 ```jsx
 ;() => {
-  const HoverVariantButton = styled(IconButton)`
-    transition: transform 0.5s;
-    &:hover {
-      transform: rotate(45deg);
-    }
-  `
-  return <HoverVariantButton label="Close" icon="Close" size="large" outline />
+  const [isToggled, setIsToggled] = useState(false)
+
+  return (
+    <IconButton
+      icon={isToggled ? 'Favorite' : 'FavoriteOutline'}
+      toggle={isToggled}
+      onClick={() => setIsToggled(!isToggled)}
+    />
+  )
 }
 ```
 

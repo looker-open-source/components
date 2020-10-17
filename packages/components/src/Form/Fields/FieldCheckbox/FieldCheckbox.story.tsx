@@ -26,81 +26,68 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { IconButton, IconButtonProps } from './IconButton'
+import { FieldCheckbox, FieldCheckboxProps } from './FieldCheckbox'
 
-export default {
-  component: IconButton,
-  title: 'IconButton',
-}
-
-const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />
+const Template: Story<FieldCheckboxProps> = (args) => (
+  <FieldCheckbox {...args} />
+)
 
 export const Basic = Template.bind({})
 Basic.args = {
-  icon: 'Plus',
-  label: 'Add',
+  id: 'id',
+  label: 'Example Field',
+  name: 'thumbsUp',
 }
 
-export const XXSmall = Template.bind({})
-XXSmall.args = {
+export const Detail = Template.bind({})
+Detail.args = {
   ...Basic.args,
-  size: 'xxsmall',
+  detail: 'Some exciting details that describe the use of this.',
 }
 
-export const XSmall = Template.bind({})
-XSmall.args = {
+export const Checked = Template.bind({})
+Checked.args = {
   ...Basic.args,
-  size: 'xsmall',
+  checked: true,
 }
 
-export const Small = Template.bind({})
-Small.args = {
+export const DefaultChecked = Template.bind({})
+DefaultChecked.args = {
   ...Basic.args,
-  size: 'small',
+  defaultChecked: true,
 }
 
-export const Large = Template.bind({})
-Large.args = {
+export const Disabled = Template.bind({})
+Disabled.args = {
   ...Basic.args,
-  size: 'large',
+  disabled: true,
 }
 
-export const OutlineXXSmall = Template.bind({})
-OutlineXXSmall.args = {
-  ...Basic.args,
-  outline: true,
-  size: 'xxsmall',
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Checked.args,
+  disabled: true,
 }
 
-export const OutlineXSmall = Template.bind({})
-OutlineXSmall.args = {
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
   ...Basic.args,
-  outline: true,
-  size: 'xsmall',
+  readOnly: true,
 }
 
-export const OutlineSmall = Template.bind({})
-OutlineSmall.args = {
+export const Error = Template.bind({})
+Error.args = {
   ...Basic.args,
-  outline: true,
-  size: 'small',
+  validationMessage: { message: 'This is an error', type: 'error' },
 }
 
-export const OutlineLarge = Template.bind({})
-OutlineLarge.args = {
-  ...Basic.args,
-  outline: true,
-  size: 'large',
+export const DetailError = Template.bind({})
+DetailError.args = {
+  ...Detail.args,
+  validationMessage: { message: 'This is an error', type: 'error' },
 }
 
-export const ToggleOn = Template.bind({})
-ToggleOn.args = {
-  ...Basic.args,
-  toggle: true,
-}
-
-export const ToggleOff = Template.bind({})
-ToggleOff.args = {
-  ...Basic.args,
-  toggle: false,
+export default {
+  component: FieldCheckbox,
+  title: 'FieldCheckbox',
 }

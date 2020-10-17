@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
 const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => (
-  <span aria-hidden="true" className={className}>
+  <span aria-hidden="true" className={className} data-testid="requiredStar">
     <VisuallyHidden> required</VisuallyHidden>
   </span>
 )

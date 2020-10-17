@@ -7,17 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### Changed
+### Added
+
+- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 
 ### Changed
 
+- Improved test coverage / added image-snapshots
 - InputFilter to support multiline filter tokens
 
 ### Fixed
 
+- `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
+  - `FieldCheckbox`
+  - `FieldRadio`
+  - `FieldToggleSwitch`
 - `MenuItem` now receives and uses passed-in rel prop
+  - Also auto appends "noopener noreferrer" to rel if target="\_blank"
 - `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns
   - IMPORTANT NOTE: Popover will no longer apply `active` className to target. Instead it now applies `[aria-expanded='true']` instead. `Button*` has been updated to match this change but implementations that depend on the previous behavior will need to be updated.
+
+### Removed
+
+- IconButton support for `color` (`neutral` for all now)
 
 ## [0.9.19] - 2020-10-15
 

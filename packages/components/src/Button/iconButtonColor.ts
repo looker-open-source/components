@@ -26,25 +26,24 @@
 
 import { css } from 'styled-components'
 import { lighten } from 'polished'
-import { StatefulColor } from '@looker/design-tokens'
 
-export const iconButtonDefaultColor = 'neutral'
-
-export const iconButtonColor = css<{ color?: StatefulColor }>`
-  color: ${({ theme, color = iconButtonDefaultColor }) =>
-    lighten(0.14, theme.colors[color])};
+export const iconButtonColor = css<{ toggle?: boolean }>`
+  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
 
   &:hover,
   &:focus,
   &.hover {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Interactive`]};
+    color: ${({ theme }) => theme.colors.neutralInteractive};
   }
 
   &[aria-expanded='true'],
   &:active,
   &.active {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Pressed`]};
+    color: ${({ theme, toggle }) =>
+      toggle !== undefined ? theme.colors.key : theme.colors.neutralPressed};
+  }
+
+  &[aria-pressed='true'] {
+    color: ${({ theme }) => theme.colors.key};
   }
 `
