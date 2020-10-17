@@ -25,7 +25,6 @@
  */
 
 import React, { CSSProperties, FC, ReactNode, useState } from 'react'
-import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { DrawerPlacements } from '../Drawer/useDrawer'
 import { Portal } from '../Portal'
@@ -110,14 +109,6 @@ export interface UseDialogProps {
   surfaceStyles?: CSSProperties
 
   /**
-   * Optional backdrop styles to merge with the Backdrop implementation. These
-   * must be a CSSProperty compatible key / value paired object. For example
-   * {backgroundColor: 'pink'}.
-   * @deprecated - this is slated for removal
-   */
-  backdrop?: CSSProperties
-
-  /**
    * Specify a custom surface to use for Dialog surface.
    * This is intended for internal components use only (specifically `Drawer`)
    * @private
@@ -150,7 +141,6 @@ export const useDialog = ({
   canClose,
   onClose,
   setOpen: controlledSetOpen,
-  backdrop,
   maxWidth,
   width,
   surfaceStyles,
@@ -219,16 +209,7 @@ export const useDialog = ({
       }}
     >
       <Portal ref={portalRef}>
-        <Backdrop
-          className={className}
-          onClick={handleClose}
-          visible={backdrop === undefined ? true : !!backdrop}
-          style={
-            !!backdrop && backdrop !== true
-              ? (backdrop as CSSObject)
-              : undefined
-          }
-        />
+        <Backdrop className={className} onClick={handleClose} />
         <RenderSurface
           aria-busy={busy ? true : undefined}
           className={className}
@@ -253,17 +234,3 @@ export const useDialog = ({
     setOpen,
   }
 }
-
-// const AnimationHandler = ({ show, children }) => {
-//   const [render, setRender] = useState(show)
-
-//   useEffect(() => {
-//     if (show) setRender(true)
-//   }, [show])
-
-//   const onAnimationEnd = () => {
-//     if (!show) setRender(false)
-//   }
-
-//   return render && <div onAnimationEnd={onAnimationEnd}>{children}</div>
-// }

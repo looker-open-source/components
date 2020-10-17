@@ -62,8 +62,8 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
   outline: none;
   text-decoration: none;
   transition: ${({ theme: { easings, transitions } }) =>
-    `background ${transitions.durationQuick} ${easings.ease},
-    color ${transitions.durationQuick} ${easings.ease}`};
+    `background ${transitions.quick}ms ${easings.ease},
+    color ${transitions.quick}ms ${easings.ease}`};
 
   button,
   a {
@@ -116,8 +116,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
 
   ${Icon} {
     transition: color
-      ${({ theme: { easings, transitions } }) =>
-        `${transitions.durationQuick} ${easings.ease}`};
+      ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
 
   :hover,

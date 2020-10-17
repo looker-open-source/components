@@ -33,7 +33,7 @@ export type DrawerPlacements = 'right'
 export interface UseDrawerProps
   extends Omit<
     UseDialogProps,
-    'maxWidth' | 'height' | 'placement' | 'surfaceStyles' | 'backdrop'
+    'maxWidth' | 'height' | 'placement' | 'surfaceStyles'
   > {
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.

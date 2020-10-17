@@ -44,9 +44,10 @@ const Style = styled(ListItem).attrs({
 
   svg {
     margin-right: ${(props) => props.theme.space.xsmall};
+    transition: transform
+      ${({ theme }) =>
+        `${theme.transitions.moderate}ms ${theme.easings.easeOut}`};
     width: 1.5rem;
-    transition: ${(props) =>
-      `transform ${props.theme.transitions.durationModerate} ${props.theme.easings.easeOut}`};
   }
 
   &:hover {

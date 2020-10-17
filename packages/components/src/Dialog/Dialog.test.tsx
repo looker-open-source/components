@@ -113,21 +113,6 @@ describe('Dialog', () => {
     await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
 
-  test('Backdrop custom styles', () => {
-    renderWithTheme(
-      <Dialog
-        defaultOpen
-        backdrop={{ backgroundColor: 'pink' }}
-        content={<SimpleContent />}
-      />
-    )
-
-    const backdrop = screen.getByTestId('backdrop')
-
-    expect(backdrop).toBeInTheDocument()
-    expect(backdrop).toHaveStyle({ backgroundColor: 'pink' })
-  })
-
   test('Surface custom styles', () => {
     renderWithTheme(
       <Dialog

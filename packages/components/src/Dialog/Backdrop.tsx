@@ -38,32 +38,24 @@ export interface BackdropProps
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs((props: BackdropProps) => ({
-  backgroundColor: props.visible ? props.backgroundColor : 'transparent',
+export const Backdrop = styled.div.attrs(() => ({
   'data-testid': 'backdrop',
-}))<BackdropProps>`
+}))`
   ${reset}
   ${color}
 
-  ${(props) => props.inlineStyle}
-
+  background: ${({ theme }) => theme.colors.ui5};
   bottom: 0;
   cursor: default;
   left: 0;
-  opacity: ${(props) => props.opacity};
+  opacity: 0.6;
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity ${(props) => props.theme.transitions.durationSimple};
+  transition: opacity ${({ theme }) => theme.transitions.simple}ms;
 
   &.entering,
   &.exiting {
     opacity: 0.01;
   }
 `
-
-Backdrop.defaultProps = {
-  backgroundColor: 'ui5',
-  opacity: 0.6,
-  visible: true,
-}

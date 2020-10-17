@@ -44,8 +44,7 @@ export interface CardProps
 }
 
 const cardTransition = () => css`
-  ${(props) =>
-    `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`}
+  ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`}
 `
 
 const raised = (props: CardProps) =>

@@ -35,13 +35,6 @@ const intricate = 500
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const transitions: Transitions = {
-  durationRapid: `${rapid}ms`,
-  durationQuick: `${quick}ms`,
-  durationSimple: `${simple}ms`,
-  durationModerate: `${moderate}ms`,
-  durationComplex: `${complex}ms`,
-  durationIntricate: `${intricate}ms`,
-
   rapid,
   quick,
   simple,
