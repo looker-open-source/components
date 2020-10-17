@@ -121,7 +121,7 @@ describe('prop: interval', () => {
   })
 })
 
-fdescribe('text input', () => {
+describe('text input', () => {
   test('converts shorthand input to 24h formatted string on change', () => {
     const handleChange = jest.fn()
     const { getByPlaceholderText } = renderWithTheme(
@@ -148,8 +148,8 @@ fdescribe('text input', () => {
 
   test('accept free text input of a time not listed in options', () => {
     const handleChange = jest.fn()
-    const { getByPlaceholderText } = renderWithTheme(
-      <InputTimeSelect value="12:00" interval={60} onChange={handleChange} />
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputTimeSelect interval={60} onChange={handleChange} />
     )
 
     expect(handleChange).not.toHaveBeenCalled()
@@ -157,7 +157,12 @@ fdescribe('text input', () => {
     const inputBox = getByPlaceholderText('Select time')
     fireEvent.click(inputBox)
 
-    // Enter key input
+    // Click on an option from the list
+    const option = getByText('01:00 pm')
+    fireEvent.click(option)
+    expect(handleChange).toHaveBeenLastCalledWith('13:00')
+
+    // Enter a custom time not on the list
     fireEvent.change(inputBox, { target: { value: '03:17 pm' } })
     fireEvent.keyDown(inputBox, { key: 'Enter' })
     expect(handleChange).toHaveBeenLastCalledWith('15:17')
