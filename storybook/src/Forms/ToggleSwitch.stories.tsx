@@ -32,7 +32,7 @@ export default {
 
 export const Basic = () => <FieldToggleSwitch label="Example Label" />
 export const Checked = () => (
-  <FieldToggleSwitch defaultChecked label="Example Label" />
+  <FieldToggleSwitch on={true} label="Example Label" />
 )
 export const Disabled = () => (
   <FieldToggleSwitch label="Example Label" disabled />

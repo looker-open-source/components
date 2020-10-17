@@ -24,7 +24,7 @@
     "@styled-system/props": "^5.1.5",
     "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
-    "polished": "^4.0.2",
+    "polished": "^4.0.3",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
