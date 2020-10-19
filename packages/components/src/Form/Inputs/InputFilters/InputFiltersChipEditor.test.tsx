@@ -25,29 +25,42 @@
  */
 
 import React from 'react'
-import { InputFilters } from '@looker/components'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
+import { InputFiltersChipEditor } from './InputFiltersChipEditor'
 
-export const available = [
-  { field: 'Name' },
-  { field: 'Status' },
-  { field: 'Source' },
-  { field: 'Trigger' },
-  { field: 'buildAt', label: 'Last Build Time' },
-]
+describe('InputFiltersChipEditor', () => {
+  const defaultValue = 'user'
+  const onChange = jest.fn()
+  const options = ['user', 'group-admin', 'admin', 'pizza']
 
-export const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', value: 'pizza-lovers' },
-]
+  test('renders InputFiltersChipEditor', () => {
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChipEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
+    )
 
-export default {
-  title: 'Forms/InputFilters',
-}
+    expect(queryByText('user')).toBeInTheDocument()
+  })
 
-export const Basic = () => (
-  <InputFilters filters={filters} available={available} />
-)
+  test('InputFiltersChipEditor onchange', () => {
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChipEditor
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={options}
+      />
+    )
+    const selectingFilter = queryByText('user')
+    selectingFilter && fireEvent.click(selectingFilter)
 
-export const HideFilter = () => (
-  <InputFilters hideFilterIcon filters={filters} available={available} />
-)
+    expect(selectingFilter).toBeInTheDocument()
+    expect(onChange).toBeCalled()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+})

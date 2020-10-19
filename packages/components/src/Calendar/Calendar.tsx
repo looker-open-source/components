@@ -25,7 +25,6 @@
  */
 import React, { FC } from 'react'
 import DayPicker, { RangeModifier, LocaleUtils } from 'react-day-picker'
-import 'react-day-picker/lib/style.css'
 import styled from 'styled-components'
 import has from 'lodash/has'
 import { mix } from 'polished'
@@ -35,6 +34,7 @@ import { inputTextFocus } from '../Form/Inputs/InputText'
 import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
+import { dayPickerCss } from './dayPickerCss'
 
 export interface CalendarLocalization {
   months: string[]
@@ -122,6 +122,7 @@ const InternalCalendar: FC<CalendarProps> = ({
 /* stylelint-disable max-nesting-depth, no-descending-specificity */
 export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   ${reset}
+  ${dayPickerCss}
   ${calendarSpacing}
 
   .DayPicker-wrapper {

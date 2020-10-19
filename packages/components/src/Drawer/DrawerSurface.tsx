@@ -41,8 +41,4 @@ export const DrawerSurface = styled(SurfaceBase)`
     opacity: 0.01;
     transform: translateX(100%);
   }
-  &.exited {
-    opacity: 1;
-    transform: translateX(0%);
-  }
 `

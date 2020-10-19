@@ -23,24 +23,51 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { Chip, ChipProps } from '../../../Chip'
-import { FieldFilter } from './InputFilters'
 
-interface InputFilterChipProps
-  extends Omit<ChipProps, 'children' | 'onDelete'> {
-  filter: FieldFilter
-  onDelete: (field: FieldFilter) => void
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { FieldRadio, FieldRadioProps } from './FieldRadio'
+
+const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  id: 'fieldRadioId',
+  label: 'Field Radio Example',
+  name: 'thumbsUp',
 }
-export const InputFilterChip: FC<InputFilterChipProps> = ({
-  filter,
-  onDelete,
-  ...props
-}) => {
-  const handleDelete = () => onDelete(filter)
-  return (
-    <Chip {...props} prefix={filter.field} onDelete={handleDelete}>
-      {filter.value}
-    </Chip>
-  )
+
+export const Detail = Template.bind({})
+Detail.args = {
+  ...Basic.args,
+  detail: 'Some exciting details that describe the use of this.',
+}
+
+export const Checked = Template.bind({})
+Checked.args = {
+  ...Basic.args,
+  checked: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Checked.args,
+  disabled: true,
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  ...Basic.args,
+  readOnly: true,
+}
+
+export default {
+  component: FieldRadio,
+  title: 'FieldRadio',
 }

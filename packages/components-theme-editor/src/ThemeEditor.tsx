@@ -47,7 +47,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
       icon="Beaker"
       label="Customize Theme"
       tooltipDisabled
-      color={hasCustomTheme ? 'key' : 'neutral'}
+      toggle={hasCustomTheme}
       size="small"
     />
   </Dialog>

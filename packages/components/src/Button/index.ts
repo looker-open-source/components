@@ -32,5 +32,6 @@ export * from './ButtonOutline'
 export * from './ButtonToggle'
 export * from './ButtonTransparent'
 export * from './IconButton'
+export * from './iconButtonColor'
 
 export type { ButtonSizes } from './size'

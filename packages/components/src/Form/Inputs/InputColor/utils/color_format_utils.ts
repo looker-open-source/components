@@ -24,8 +24,18 @@
 
  */
 
-import * as d3color from 'd3-color'
-import * as d3hsv from 'd3-hsv'
+import {
+  color,
+  cubehelix,
+  Color,
+  hcl,
+  hsl,
+  rgb,
+  lab,
+  RGBColor,
+  HSLColor,
+} from 'd3-color'
+import { hsv, HSVColor } from 'd3-hsv'
 import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
 import { toPercent } from './math_utils'
 import { namedColors } from './named_colors'
@@ -90,20 +100,20 @@ const recognize = (format: string) => {
 
 export const getFormat = (value: string) => ColorFormat[recognize(value)]
 
-export const getOpacity = (color: d3color.Color): number => {
+export const getOpacity = (color: Color): number => {
   if (
-    color instanceof d3color.cubehelix ||
-    color instanceof d3color.hcl ||
-    color instanceof d3color.hsl ||
-    color instanceof d3color.rgb ||
-    color instanceof d3color.lab
+    color instanceof cubehelix ||
+    color instanceof hcl ||
+    color instanceof hsl ||
+    color instanceof rgb ||
+    color instanceof lab
   ) {
     return color.opacity
   }
   return 1
 }
 
-const namedColorLookup = (color: d3color.Color) => {
+const namedColorLookup = (color: Color) => {
   const hex = color.hex().replace(/^#/, '')
   const lookup = parseInt(hex, 16)
   const namedColorsFlipped = new Map(
@@ -113,18 +123,18 @@ const namedColorLookup = (color: d3color.Color) => {
 }
 
 export const toColorName = (
-  color: d3color.RGBColor | d3color.HSLColor,
+  color: RGBColor | HSLColor,
   opacity: number | null = null
 ) => {
   const opacityUse = opacity || getOpacity(color)
   const name = namedColorLookup(color)
   if (name) return name
-  if (opacityUse !== 1) return d3color.rgb(color).toString()
+  if (opacityUse !== 1) return rgb(color).toString()
   return color.hex()
 }
 
 export const toRGBIString = (
-  color: d3color.RGBColor | d3color.HSLColor,
+  color: RGBColor | HSLColor,
   opacity: number | null = null,
   useAlpha = false
 ) => {
@@ -140,7 +150,7 @@ export const toRGBIString = (
 }
 
 export const toRGBPString = (
-  color: d3color.RGBColor | d3color.HSLColor,
+  color: RGBColor | HSLColor,
   opacity: number | null = null,
   useAlpha = false
 ) => {
@@ -156,15 +166,15 @@ export const toRGBPString = (
 }
 
 export const toHSLString = (
-  color: d3color.RGBColor | d3color.HSLColor,
+  color: RGBColor | HSLColor,
   opacity: number | null = null,
   useAlpha = false
 ) => {
   const opacityUse = opacity || getOpacity(color)
-  const hsl = d3color.hsl(color)
-  const h = isNaN(hsl.h) ? 0 : hsl.h
-  const s = isNaN(hsl.s) ? 0 : Math.round(hsl.s * 100)
-  const l = isNaN(hsl.l) ? 100 : Math.round(hsl.l * 100)
+  const hslColor = hsl(color)
+  const h = isNaN(hslColor.h) ? 0 : hslColor.h
+  const s = isNaN(hslColor.s) ? 0 : Math.round(hslColor.s * 100)
+  const l = isNaN(hslColor.l) ? 100 : Math.round(hslColor.l * 100)
   if (useAlpha || opacityUse !== 1) {
     return `hsla(${h}, ${s}%, ${l}%, ${opacityUse})`
   }
@@ -175,60 +185,60 @@ export const toFormattedColorString = (
   value: string,
   format: ColorFormat | null = null
 ): string => {
-  const color = d3color.color(value)
-  if (!color) return ''
+  const colorCalc = color(value)
+  if (!colorCalc) return ''
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  if (!color.displayable) return ''
+  if (!colorCalc.displayable) return ''
 
   if (format === null) format = recognize(value)
-  const opacity = getOpacity(color)
+  const opacity = getOpacity(colorCalc)
 
   switch (format) {
     case ColorFormat.NAME:
     case ColorFormat.TRANSPARENT:
-      return toColorName(color)
+      return toColorName(colorCalc)
     case ColorFormat.HEX3:
     case ColorFormat.HEX6:
-      if (opacity === 1) return color.hex()
-      return color.rgb().toString()
+      if (opacity === 1) return colorCalc.hex()
+      return colorCalc.rgb().toString()
     case ColorFormat.RGBI:
-      return color.rgb().toString()
+      return colorCalc.rgb().toString()
     case ColorFormat.RGBIA:
-      return toRGBIString(color, opacity, true)
+      return toRGBIString(colorCalc, opacity, true)
     case ColorFormat.RGBP:
-      return toRGBPString(color, opacity)
+      return toRGBPString(colorCalc, opacity)
     case ColorFormat.RGBPA:
-      return toRGBPString(color, opacity, true)
+      return toRGBPString(colorCalc, opacity, true)
     case ColorFormat.HSL:
-      return toHSLString(color, opacity)
+      return toHSLString(colorCalc, opacity)
     case ColorFormat.HSLA:
-      return toHSLString(color, opacity, true)
+      return toHSLString(colorCalc, opacity, true)
     default:
-      return color.toString()
+      return colorCalc.toString()
   }
 }
 export const toHSV = (value: string) => {
-  const color = d3color.color(value)
-  if (!color) return null
-  return d3hsv.hsv(color)
+  const colorCalc = color(value)
+  if (!colorCalc) return null
+  return hsv(colorCalc)
 }
 
 export const hsvToColorString = (
-  hsvColor: d3hsv.HSVColor,
+  hsvColor: HSVColor,
   format: ColorFormat | null = null
 ) => toFormattedColorString(hsvColor.rgb().toString(), format)
 
 export const hsv2hex = (color: SimpleHSV) =>
-  d3hsv.hsv(color.h, color.s, color.v).hex()
+  hsv(color.h, color.s, color.v).hex()
 
 export const str2simpleHsv = (color: string) => {
-  const hsvColor = d3hsv.hsv(color)
+  const hsvColor = hsv(color)
   const simpleHSV: SimpleHSV = { h: hsvColor.h, s: hsvColor.s, v: hsvColor.v }
   return simpleHSV
 }
 
-export const simpleHSVtoRGB = (color: SimpleHSV) =>
-  d3hsv.hsv(color.h, color.s, color.v).rgb()
+export const simpleHSVtoRGB = (color: SimpleHSV): RGBColor =>
+  hsv(color.h, color.s, color.v).rgb()
 
 export const simpleHSVtoFormattedColorString = (
   color: SimpleHSV,

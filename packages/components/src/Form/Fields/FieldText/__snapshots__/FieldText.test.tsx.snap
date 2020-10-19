@@ -1,62 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText with default label 1`] = `
-.c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.c4 {
-  min-width: 0;
-}
-
-.c0 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c0 .c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c0 .c7 {
-  grid-area: messages;
-}
-
-.c0 > .c1 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.25rem;
-}
-
-.c0 .c9 {
-  grid-area: detail;
-  justify-self: end;
-  padding-left: 0.75rem;
-}
-
-.c0 .c8 {
-  margin-top: 0.5rem;
-}
-
 .c6 {
   background: transparent;
   border: none;
@@ -129,14 +73,14 @@ exports[`A FieldText with default label 1`] = `
   font-family: inherit;
 }
 
-.c5 .c10 {
+.c5 .c8 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .c10 input,
-.c5 .c10 span {
+.c5 .c8 input,
+.c5 .c8 span {
   padding: 0 0.5rem;
 }
 
@@ -149,6 +93,62 @@ exports[`A FieldText with default label 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
+}
+
+.c2 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.c4 {
+  min-width: 0;
+}
+
+.c0 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c0 .c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 > .c1 {
+  grid-area: label;
+  line-height: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.c0 .c10 {
+  grid-area: detail;
+  justify-self: end;
+  padding-left: 0.75rem;
+}
+
+.c0 .c9 {
+  margin-top: 0.5rem;
 }
 
 <div
@@ -184,6 +184,100 @@ exports[`A FieldText with default label 1`] = `
 `;
 
 exports[`A FieldText with label inline 1`] = `
+.c6 {
+  background: transparent;
+  border: none;
+  caret-color: #262D33;
+  color: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.875rem;
+  max-width: 100%;
+  min-width: 2rem;
+  padding: 0 0.5rem;
+}
+
+.c6::-webkit-search-decoration,
+.c6::-webkit-search-cancel-button,
+.c6::-webkit-search-results-button,
+.c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::-moz-placeholder {
+  color: #939BA5;
+}
+
+.c6:-ms-input-placeholder {
+  color: #939BA5;
+}
+
+.c6::placeholder {
+  color: #939BA5;
+}
+
+.c5 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #262D33;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  padding: 0.125rem 0.25rem;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+}
+
+.c5 input {
+  font-family: inherit;
+}
+
+.c5 .c9 {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.c5 .c9 input,
+.c5 .c9 span {
+  padding: 0 0.5rem;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
+}
+
+.c5:focus,
+.c5:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
 .c2 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   color: #343C42;
@@ -252,7 +346,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -261,102 +355,8 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-top: 0.5rem;
-}
-
-.c6 {
-  background: transparent;
-  border: none;
-  caret-color: #262D33;
-  color: inherit;
-  height: 100%;
-  outline: none;
-  width: 100%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 0.875rem;
-  max-width: 100%;
-  min-width: 2rem;
-  padding: 0 0.5rem;
-}
-
-.c6::-webkit-search-decoration,
-.c6::-webkit-search-cancel-button,
-.c6::-webkit-search-results-button,
-.c6::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c6::-webkit-input-placeholder {
-  color: #939BA5;
-}
-
-.c6::-moz-placeholder {
-  color: #939BA5;
-}
-
-.c6:-ms-input-placeholder {
-  color: #939BA5;
-}
-
-.c6::placeholder {
-  color: #939BA5;
-}
-
-.c5 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #262D33;
-  cursor: text;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  padding: 0.125rem 0.25rem;
-  width: 100%;
-  height: 36px;
-  background: #FFFFFF;
-  border: 1px solid #DEE1E5;
-  border-radius: 0.25rem;
-  color: #343C42;
-  font-size: 0.875rem;
-}
-
-.c5 input {
-  font-family: inherit;
-}
-
-.c5 .c11 {
-  height: 100%;
-  max-width: 100%;
-  width: 100%;
-}
-
-.c5 .c11 input,
-.c5 .c11 span {
-  padding: 0 0.5rem;
-}
-
-.c5:hover {
-  border-color: #C1C6CC;
-}
-
-.c5:focus,
-.c5:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
 }
 
 <div

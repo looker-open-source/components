@@ -7,16 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
+- Improved test coverage / added image-snapshots
+
 ### Changed
 
-- InputDateRange allows you to specify a single day range by clicking on one of the date range endpoints
+- `useDialog` (`Dialog` & `Drawer`) refactored
+  - Removed use of `react-transition-group` dependency
+  - Added support for `aria-busy`
+  - Simplified implementation of `DialogRender` component
+- `theme.transitions` durations are now integers (in milliseconds) rather than strings
 
 ### Fixed
 
-- Aria accessibily fixes for `FieldTimeSelect` label
-- Updates `InputTimeSelect` to accept a time that is not included in the select dropdown options
+- `InputTimeSelect` can accept a time that is not included in the select dropdown options
+- `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
+  - `FieldCheckbox`
+  - `FieldRadio`
+  - `FieldToggleSwitch`
+- `MenuItem` now receives and uses passed-in rel prop
+  - Also auto appends "noopener noreferrer" to rel if target="\_blank"
+- `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns
+  - IMPORTANT NOTE: Popover will no longer apply `active` className to target. Instead it now applies `[aria-expanded='true']` instead. `Button*` has been updated to match this change but implementations that depend on the previous behavior will need to be updated.
 
-## [0.9.18]
+### Removed
+
+- IconButton support for `color` (`neutral` for all now)
+- `Drawer` no longer supports `backdrop` prop for customizing backdrop presentation
+
+## [0.9.19] - 2020-10-15
+
+### Changed
+
+- `InputDateRange` allows you to specify a single day range by clicking on one of the date range endpoints
+
+### Fixed
+
+- `Truncate` no longer conflicts with `Text/truncate` helper (moved to separate directory)
+- `FieldTimeSelect` label ARIA accessibility fixes
+- `ComboBox` and constituents caret color corrected, indicator size corrected
+
+## [0.9.18] - 2020-10-14
 
 ### Added
 
@@ -93,6 +126,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- InputFilter component
+- InputFiltersChipEditor component
+- InputFiltersChip component
+- ActionListFilter component
+
 - `Drawer` component
   - Note: This is a new implementation of the previously deprecated `Drawer` and features a more modern API. `DrawerManager` behaviors are now baked in to `Drawer`
   - Includes `useDrawer` hook
@@ -106,8 +144,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- ActionList supports filtering
 - `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
   - Required minor adjustments to `Chip`
+- ActionList supports filtering
 - `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color

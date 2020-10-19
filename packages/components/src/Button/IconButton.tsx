@@ -37,29 +37,20 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  StatefulColor,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
-import { lighten } from 'polished'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBase, ButtonBaseProps, buttonCSS } from './ButtonBase'
+import { iconButtonColor } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 
-const iconButtonDefaultColor = 'neutral'
-
 interface IconButtonVariantProps {
-  /**
-   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "neutral"
-   */
-  color?: StatefulColor
-
   /**
    * Defines the variant or mapping of colors to style properties, like border of the button.
    * @default false
@@ -76,14 +67,10 @@ export type IconButtonSizes =
 
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
-    ButtonBaseProps,
+    Omit<ButtonBaseProps, 'color'>,
     IconButtonVariantProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
-  /*
-   * @default 'neutral'
-   */
-  color?: StatefulColor
   /*
    * this props refer to the keyboard expected focus behavior
    */
@@ -107,6 +94,10 @@ export interface IconButtonProps
    * @default 'square'
    */
   shape?: 'round' | 'square'
+  /**
+   * If the IconButton is in the optional toggled on or toggled off state
+   */
+  toggle?: boolean
   /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false
@@ -138,7 +129,7 @@ const IconButtonComponent = forwardRef(
       id,
       size = 'xsmall',
       label,
-      color,
+      toggle,
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -185,8 +176,8 @@ const IconButtonComponent = forwardRef(
     return (
       <ButtonBase
         aria-describedby={ariaDescribedBy}
+        aria-pressed={toggle ? true : undefined}
         ref={actualRef}
-        color={color}
         p="none"
         size={size}
         width={buttonSizeMap[size]}
@@ -208,7 +199,7 @@ const IconButtonComponent = forwardRef(
 IconButtonComponent.displayName = 'IconButtonComponent'
 
 const outlineCSS = (props: IconButtonProps) => {
-  const { shape, color = iconButtonDefaultColor } = props
+  const { shape } = props
 
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
@@ -217,13 +208,13 @@ const outlineCSS = (props: IconButtonProps) => {
     &:hover,
     &:focus,
     &.hover {
-      border-color: ${({ theme: { colors } }) => colors[color]};
+      border-color: ${({ theme: { colors } }) => colors.neutral};
     }
 
     &[aria-expanded='true'],
     &:active,
     &.active {
-      border-color: ${({ theme: { colors } }) => colors[`${color}Interactive`]};
+      border-color: ${({ theme: { colors } }) => colors.neutralInteractive};
     }
 
     &[disabled] {
@@ -235,25 +226,6 @@ const outlineCSS = (props: IconButtonProps) => {
     }
   `
 }
-
-export const iconButtonColor = css<Pick<IconButtonProps, 'color'>>`
-  color: ${({ theme, color = iconButtonDefaultColor }) =>
-    lighten(0.14, theme.colors[color])};
-
-  &:hover,
-  &:focus,
-  &.hover {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Interactive`]};
-  }
-
-  &[aria-expanded='true'],
-  &:active,
-  &.active {
-    color: ${({ theme, color = iconButtonDefaultColor }) =>
-      theme.colors[`${color}Pressed`]};
-  }
-`
 
 export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}

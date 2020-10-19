@@ -165,8 +165,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
+  /**
+   * `target="_blank" can be used to reverse tab-nab
+   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+   */
+  const noTabNab = 'noopener noreferrer'
+  const rel =
+    target === '_blank'
+      ? props.rel
+        ? `${props.rel} ${noTabNab}`
+        : noTabNab
+      : props.rel
+
   const menuItemContent = (
-    <Component href={href} role="menuitem" target={target}>
+    <Component href={href} rel={rel} role="menuitem" target={target}>
       {renderedIcon}
       <span>
         {children}

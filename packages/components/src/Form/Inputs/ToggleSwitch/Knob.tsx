@@ -43,7 +43,7 @@ const Knob = styled(({ className }) => <div className={className} />)`
   left: ${({ size }) => rem(size * 0.1)};
   position: absolute;
   transform: ${({ on, size }) => (on ? `translateX(${rem(size * 0.75)})` : '')};
-  transition: ${({ theme }) => theme.transitions.durationModerate};
+  transition: ${({ theme }) => theme.transitions.moderate}ms;
   width: ${({ size }) => rem(size * 0.8)};
 `
 
@@ -70,7 +70,7 @@ export const KnobContainer = styled(KnobContainerLayout)`
   position: absolute;
   right: 0;
   top: 0;
-  transition: ${({ theme }) => theme.transitions.durationModerate};
+  transition: ${({ theme }) => theme.transitions.moderate}ms;
 
   &:hover {
     box-shadow: ${({ disabled, theme: { colors } }) =>

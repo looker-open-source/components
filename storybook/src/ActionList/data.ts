@@ -26,16 +26,6 @@
 
 import { ActionListColumns } from '@looker/components'
 
-export const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', label: 'Group', value: 'pizza-lovers' },
-  { field: 'name', label: 'Name' },
-  { field: 'status' },
-  { field: 'source' },
-  { field: 'trigger' },
-  { field: 'buildAt', label: 'Last Build Time' },
-]
-
 export const row = {
   disabled: false,
   error: undefined,
@@ -55,17 +45,26 @@ export const data = [
       link: 'https://google.com',
       message: 'Build Error',
     },
+    lastSuccessfulBuild: '2-11-20 44:44:44',
     longPdtName: 'LR$A4YAL15807AQ2_something_something_evil',
+    model: 'model_dos',
     pdtName: 'my_other_great_pdt_name',
+    persistanceType: 'datagroup_trigger1',
     status: 'Failed',
   },
   {
     ...row,
+    lastSuccessfulBuild: '3-33-20 55:55:55',
+    model: 'model_tres',
     pdtName: 'my_other_great_pdt_name2',
+    persistanceType: 'datagroup_trigger2',
   },
   {
     ...row,
+    lastSuccessfulBuild: '4-05-20 11:11:11',
+    model: 'model_cuatro',
     pdtName: 'my_other_great_pdt_name3',
+    persistanceType: 'datagroup_trigger3',
   },
 ]
 
