@@ -229,6 +229,7 @@ export const InputFilters = styled(InputFiltersLayout)`
   flex-wrap: wrap;
   min-height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  padding-top: ${({ theme: { space } }) => `${space.xsmall}`};
   width: 100%;
 
   ${Chip} {
@@ -244,6 +245,7 @@ export const InputFilters = styled(InputFiltersLayout)`
   ${InputText} {
     border: none;
     height: 28px;
+    margin-top: ${({ theme: { space } }) => `-${space.xxsmall}`};
     padding: 0;
     &:focus-within {
       box-shadow: none;
