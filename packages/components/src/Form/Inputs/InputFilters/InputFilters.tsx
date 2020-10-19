@@ -117,7 +117,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
-        <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
+        <Icon color="ui4" mr="xsmall" mt="xxxsmall" name="Filter" size={20} />
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
@@ -156,7 +156,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               onDelete={handleDelete}
             />
           ) : (
-            <Text fontSize="small">{filter?.label || filter.field}</Text>
+            <Text fontSize="small" lineHeight="xlarge">
+              {filter?.label || filter.field}
+            </Text>
           )
           return filter.field === fieldEditing ? (
             <Popover
@@ -197,7 +199,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           label="Clear Filters"
           ml="auto"
           mr="xxsmall"
-          mt="xxsmall"
+          mt="xxxsmall"
           onClick={clearFilters}
           size="xsmall"
         />
@@ -210,10 +212,6 @@ const ChipWrapper = styled.div`
   display: inline-flex;
   flex: 1;
   flex-wrap: wrap;
-
-  ${Chip} {
-    margin-right: ${({ theme: { space } }) => space.xsmall};
-  }
 
   @supports (gap: 4px) {
     gap: ${({ theme }) => theme.space.xsmall};
@@ -231,7 +229,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   flex-wrap: wrap;
   min-height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
-  padding-top: ${({ theme: { space } }) => `${space.xsmall}`};
   width: 100%;
 
   ${Chip} {
@@ -247,7 +244,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   ${InputText} {
     border: none;
     height: 28px;
-    margin-top: ${({ theme: { space } }) => `-${space.xxsmall}`};
     padding: 0;
     &:focus-within {
       box-shadow: none;

@@ -64,7 +64,6 @@ const ChipStyle = styled.span<FocusVisibleProps>`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   height: 28px;
-  max-width: 320px;
   min-width: 44px;
   padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
 

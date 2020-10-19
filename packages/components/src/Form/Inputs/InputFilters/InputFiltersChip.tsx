@@ -37,16 +37,9 @@ export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
   ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
     const handleDelete = () => onDelete(filter)
     return (
-      <div>
-        <Chip
-          onDelete={handleDelete}
-          prefix={filter.field}
-          ref={ref}
-          {...props}
-        >
-          {filter.value}
-        </Chip>
-      </div>
+      <Chip onDelete={handleDelete} prefix={filter.field} ref={ref} {...props}>
+        {filter.value}
+      </Chip>
     )
   }
 )
