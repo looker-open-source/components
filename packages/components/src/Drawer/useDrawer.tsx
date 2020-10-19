@@ -24,34 +24,15 @@
 
  */
 
-import { ResponsiveValue } from 'styled-system'
 import { UseDialogProps, useDialog } from '../Dialog/useDialog'
-import { DrawerSurface } from './DrawerSurface'
-
-export type DrawerPlacements = 'right'
+import { DrawerSurface, DrawerSurfaceProps } from './DrawerSurface'
 
 export interface UseDrawerProps
   extends Omit<
-    UseDialogProps,
-    'maxWidth' | 'height' | 'placement' | 'surfaceStyles'
-  > {
-  /**
-   * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
-   * @default '30rem'
-   */
-  width?: ResponsiveValue<string>
+      UseDialogProps,
+      'content' | 'width' | 'maxWidth' | 'height' | 'placement'
+    >,
+    DrawerSurfaceProps {}
 
-  /**
-   * Specify the edge to attach the Drawer surface to.
-   * COMING SOON: 'left' | 'top' | 'bottom'
-   * @default 'right'
-   */
-  placement?: DrawerPlacements
-}
-
-export const useDrawer = ({
-  width = '30rem',
-  placement = 'right',
-  ...props
-}: UseDrawerProps) =>
-  useDialog({ Surface: DrawerSurface, placement, width, ...props })
+export const useDrawer = ({ ...props }: UseDrawerProps) =>
+  useDialog({ Surface: DrawerSurface, ...props })

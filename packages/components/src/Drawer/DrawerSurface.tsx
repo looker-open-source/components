@@ -25,20 +25,65 @@
  */
 
 import styled from 'styled-components'
+import { variant, ResponsiveValue, width } from 'styled-system'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
+import { DialogSizeRamp } from '../Dialog/DialogSurface'
 
-export const DrawerSurface = styled(SurfaceBase)`
-  box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
+export type DrawerPlacements = 'left' | 'right'
+
+export interface DrawerSurfaceProps {
+  /**
+   * Specify the edge to attach the Drawer surface to.
+   * COMING SOON: 'left' | 'top' | 'bottom'
+   * @default 'right'
+   */
+  placement: DrawerPlacements
+
+  /**
+   * Explicitly specifying a width will set the Surface to be the lesser of
+   * the specified width or the viewport width. Default / `auto` will cause
+   * the Surface to auto-size to its content.
+   * @default 'medium'
+   */
+  width?: ResponsiveValue<DialogSizeRamp | string>
+}
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+const placement = variant({
+  prop: 'placement',
+  variants: {
+    left: {
+      boxShadow: '-18px 0 18px -18px rgba(0, 0, 0, 0.12)',
+      left: 0,
+    },
+    right: {
+      boxShadow: '-18px 0 18px -18px rgba(0, 0, 0, 0.12)',
+      right: 0,
+    },
+  },
+})
+/* eslint-enable sort-keys-fix/sort-keys-fix */
+
+export const DrawerSurface = styled(SurfaceBase)<DrawerSurfaceProps>`
   /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
   height: 100%;
-  max-height: 100vh;
   position: absolute;
-  right: 0;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
+
+  ${placement}
+  /* TODO - implement ResponsiveValue<DialogSizeRamp | string> */
+  ${width}
 
   &.entering,
   &.exiting {
     opacity: 0.01;
-    transform: translateX(100%);
+    transform: translateX(
+      ${({ placement }) => (placement === 'left' ? '-100%' : '100%')}
+    );
   }
 `
+
+DrawerSurface.defaultProps = {
+  placement: 'right',
+  width: '30rem',
+}

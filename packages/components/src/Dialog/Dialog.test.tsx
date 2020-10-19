@@ -113,20 +113,6 @@ describe('Dialog', () => {
     await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
 
-  test('Surface custom styles', () => {
-    renderWithTheme(
-      <Dialog
-        defaultOpen
-        surfaceStyles={{ backgroundColor: 'purple' }}
-        content={<SimpleContent />}
-      />
-    )
-
-    const surface = screen.getByRole('dialog')
-    expect(surface).toBeInTheDocument()
-    expect(surface).toHaveStyle({ backgroundColor: 'purple' })
-  })
-
   test('DialogManager fallback functional', async () => {
     renderWithTheme(
       <DialogManager content={<SimpleContent />}>

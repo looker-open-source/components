@@ -24,9 +24,8 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, useState } from 'react'
-import { ResponsiveValue } from 'styled-system'
-import { DrawerPlacements } from '../Drawer/useDrawer'
+import React, { ReactNode, FC, useState } from 'react'
+import { DrawerPlacements } from '../Drawer/DrawerSurface'
 import { Portal } from '../Portal'
 import {
   useAnimationState,
@@ -36,11 +35,13 @@ import {
 } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
-import { DialogSurface } from './DialogSurface'
+import {
+  DialogSurfaceProps,
+  DialogPlacements,
+  DialogSurface,
+} from './DialogSurface'
 
-export type DialogPlacements = 'center'
-
-export interface UseDialogProps {
+export interface UseDialogProps extends DialogSurfaceProps {
   /**
    * Content to rendered within the Dialog surface.
    * @required
@@ -79,40 +80,6 @@ export interface UseDialogProps {
   canClose?: () => boolean
 
   /**
-   * Specify where the Dialog should be placed vertically
-   * COMING SOON: 'center' | 'top' | 'bottom'
-   * @default 'center'
-   */
-  placement?: DialogPlacements
-
-  /**
-   * Explicitly specifying a width will set the Surface to be the lesser of
-   * the specified width or the viewport width. Default / `auto` will cause
-   * the Surface to auto-size to its content.
-   * @default auto
-   */
-  width?: ResponsiveValue<string>
-
-  maxWidth?: ResponsiveValue<string>
-
-  /**
-   * Explicitly specifying a height will set the Surface to be the lesser of
-   * the specified height or the viewport height. Default / `auto` will cause
-   * the Surface to auto-size to its content.
-   * @default auto
-   */
-  height?: ResponsiveValue<string>
-
-  // maxHeight?: ResponsiveValue<string>
-
-  /**
-   * Optional surface styles to merge with the Surface implementation. These
-   * must be a CSSProperty compatible key / value paired object.
-   * @deprecated - this is slated for removal
-   */
-  surfaceStyles?: CSSProperties
-
-  /**
    * Specify a custom surface to use for Dialog surface.
    * This is intended for internal components use only (specifically `Drawer`)
    * @private
@@ -145,10 +112,9 @@ export const useDialog = ({
   canClose,
   onClose,
   setOpen: controlledSetOpen,
-  maxWidth,
-  width,
-  surfaceStyles,
   Surface: CustomSurface,
+  placement,
+  ...surfaceProps
 }: UseDialogPropsInternal): UseDialogResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
@@ -220,9 +186,8 @@ export const useDialog = ({
         <RenderSurface
           aria-busy={busy ? true : undefined}
           className={className}
-          style={surfaceStyles}
-          width={width}
-          maxWidth={maxWidth}
+          placement={placement as any}
+          {...surfaceProps}
         >
           {content}
         </RenderSurface>

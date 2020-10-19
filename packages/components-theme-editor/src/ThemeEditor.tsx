@@ -40,8 +40,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
 }) => (
   <Dialog
     content={<ThemeEditorContent updateTheme={updateTheme} />}
-    width="90%"
-    maxWidth="90%"
+    placement="cover"
   >
     <IconButton
       icon="Beaker"

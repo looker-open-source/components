@@ -24,33 +24,16 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  reset,
-  theme,
-  omitStyledProps,
-} from '@looker/design-tokens'
+import { reset, theme, omitStyledProps } from '@looker/design-tokens'
 import React, { FC, useContext, useEffect, useRef } from 'react'
-import styled, { CSSObject, css } from 'styled-components'
-import { LayoutProps, layout } from 'styled-system'
+import styled, { css } from 'styled-components'
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
-export interface SurfaceProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    LayoutProps {
-  surfaceStyles?: CSSObject
-  animationState?: string
-}
-
-const SurfaceLayout: FC<SurfaceProps> = ({
-  surfaceStyles,
-  className,
-  ...props
-}) => {
+const SurfaceLayout: FC<{ className?: string }> = (props) => {
   const { closeModal, enableFocusTrap } = useContext(DialogContext)
 
-  const wrapperRef = useRef<null | HTMLDivElement>(null)
+  const ref = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -59,14 +42,12 @@ const SurfaceLayout: FC<SurfaceProps> = ({
     return () => clearTimeout(t)
   }, [enableFocusTrap])
 
-  useGlobalHotkeys('esc', closeModal, wrapperRef)
+  useGlobalHotkeys('esc', closeModal, ref)
 
   return (
     <div
-      className={`surface-overflow ${className}`}
       data-overlay-surface={true}
-      style={surfaceStyles as CSSObject}
-      ref={wrapperRef}
+      ref={ref}
       tabIndex={-1}
       {...omitStyledProps(props)}
     />
@@ -82,7 +63,6 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   role: 'dialog',
 }))`
   ${reset}
-  ${layout}
 
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};

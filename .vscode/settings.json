@@ -43,7 +43,8 @@
     "xxsmall",
     "xxxlarge",
     "xxxsmall",
-    "xxxxlarge"
+    "xxxxlarge",
+    "xxxxxlarge"
   ],
   "prettier.arrowParens": "always",
   "files.autoSave": "off",
