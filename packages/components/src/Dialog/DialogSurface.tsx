@@ -32,8 +32,6 @@ export const DialogSurface = styled(SurfaceBase)`
   box-shadow: ${({ theme }) => theme.shadows[5]};
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
-  /* opacity: 1;
-  transform: none; */
 
   &.entering,
   &.exiting {
