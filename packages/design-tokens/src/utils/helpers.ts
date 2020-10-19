@@ -24,31 +24,34 @@
 
  */
 
-import getLuminance from 'polished/lib/color/getLuminance'
-import shade from 'polished/lib/color/shade'
-import tint from 'polished/lib/color/tint'
+import rgba from 'polished/lib/color/rgba'
+import lighten from 'polished/lib/color/lighten'
+import mix from 'polished/lib/color/mix'
+import { css } from 'styled-components'
+import { StatefulColor } from '../system/color/stateful'
 
-import { scaleMixAmount } from './scaleMixAmount'
+export const buttonShadow = (color: StatefulColor = 'key') =>
+  css`
+    ${({ theme }) => rgba(theme.colors[color], 0.25)}
+  `
 
-// Tints or shades a color based on the luminosity of the color
-//
-// Used for generating our UI colors based on the background color
-//
-// If the color has a higher luminosity, a light background for example,
-// the color is shaded, returning a color mixed with black
-//
-// For colors with lower luminosity, dark background colors for example,
-// the colors is tinted,returning a color mixed with white
+export const iconButtonColorDerivation = () => css`
+  ${({ theme }) => lighten(0.14, theme.colors.neutral)}
+`
 
-export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
-  const colorLuminance = getLuminance(color)
+export const tabShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)}
+`
 
-  const mixAdjustment =
-    colorLuminance > 0.5 ? mixAmount : scaleMixAmount(mixAmount, 1.5)
+export const calendarMixColor = () => css`
+  ${({ theme: { colors } }) =>
+    mix(0.65, colors.keyAccent, colors.neutralInteractive)}
+`
 
-  if (colorLuminance > 0.5) {
-    return shade(mixAdjustment / 100, color)
-  } else {
-    return tint(mixAdjustment / 100, color)
-  }
-}
+export const knobShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)}
+`
+
+export const toggleSwitchShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)}
+`
