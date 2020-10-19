@@ -6,7 +6,6 @@
   "workspaces": [
     "packages/*",
     "playground",
-    "server",
     "storybook",
     "www"
   ],
@@ -33,12 +32,11 @@
     "clean": "rm -Rf docs/static packages/*/lib packages/*/storybook-static www/.cache www/public",
     "deploy": "./config/deploy.sh",
     "playground": "yarn workspace playground start",
-    "server": "yarn workspace server start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}' 'playground/**/*.ts{,x}'  'server/**/*.ts{,x}'  'storybook/**/*.ts{,x}' 'www/**/*.ts{,x}' 'www/**/*.mdx' --cache",
+    "lint:es": "eslint 'packages/**/*.ts{,x}' 'playground/**/*.ts{,x}'   'storybook/**/*.ts{,x}' 'www/**/*.ts{,x}' 'www/**/*.mdx' --cache",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest",
