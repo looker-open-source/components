@@ -38,11 +38,6 @@ export const DialogSurface = styled(SurfaceBase)`
     opacity: 0.01;
     transform: translateY(100%);
   }
-
-  &.exited {
-    opacity: 1;
-    transform: translateY(0%);
-  }
 `
 
 DialogSurface.defaultProps = {

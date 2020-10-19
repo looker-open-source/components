@@ -97,7 +97,7 @@ export const ButtonItem = styled(ButtonLayout)`
   justify-content: center;
   margin: 0;
   padding: 0 ${({ theme }) => theme.space.small};
-  transition: background ${({ theme }) => theme.transitions.durationQuick} ease;
+  transition: background ${({ theme }) => theme.transitions.quick}ms ease;
   user-select: none;
 
   ${space}

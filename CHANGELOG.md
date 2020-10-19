@@ -10,10 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
+- Improved test coverage / added image-snapshots
 
 ### Changed
 
-- Improved test coverage / added image-snapshots
+- `useDialog` (`Dialog` & `Drawer`) refactored
+  - Removed use of `react-transition-group` dependency
+  - Added support for `aria-busy`
+  - Simplified implementation of `DialogRender` component
+- `theme.transitions` durations are now integers (in milliseconds) rather than strings
 
 ### Fixed
 
@@ -29,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - IconButton support for `color` (`neutral` for all now)
+- `Drawer` no longer supports `backdrop` prop for customizing backdrop presentation
 
 ## [0.9.19] - 2020-10-15
 

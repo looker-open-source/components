@@ -53,12 +53,10 @@ const SurfaceLayout: FC<SurfaceProps> = ({
   const wrapperRef = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
-    const t = window.setTimeout(() => {
+    const t = setTimeout(() => {
       enableFocusTrap && enableFocusTrap()
-    }, theme.transitions.durationModerate)
-    return () => {
-      window.clearTimeout(t)
-    }
+    }, theme.transitions.moderate)
+    return () => clearTimeout(t)
   }, [enableFocusTrap])
 
   useGlobalHotkeys('esc', closeModal, wrapperRef)
@@ -74,8 +72,7 @@ const SurfaceLayout: FC<SurfaceProps> = ({
 }
 
 export const surfaceTransition = () => css`
-  ${({ theme }) =>
-    `${theme.transitions.durationModerate} ${theme.easings.ease}`}
+  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
 `
 
 export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({

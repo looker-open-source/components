@@ -25,8 +25,6 @@
  */
 
 import React, { CSSProperties, FC, ReactNode, useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { CSSObject } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { DrawerPlacements } from '../Drawer/useDrawer'
 import { Portal } from '../Portal'
@@ -34,6 +32,7 @@ import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
 import { DialogSurface } from './DialogSurface'
+import { useAnimationState } from './useAnimation'
 
 export type DialogPlacements = 'center'
 
@@ -110,14 +109,6 @@ export interface UseDialogProps {
   surfaceStyles?: CSSProperties
 
   /**
-   * Optional backdrop styles to merge with the Backdrop implementation. These
-   * must be a CSSProperty compatible key / value paired object. For example
-   * {backgroundColor: 'pink'}.
-   * @deprecated - this is slated for removal
-   */
-  backdrop?: CSSProperties
-
-  /**
    * Specify a custom surface to use for Dialog surface.
    * This is intended for internal components use only (specifically `Drawer`)
    * @private
@@ -150,7 +141,6 @@ export const useDialog = ({
   canClose,
   onClose,
   setOpen: controlledSetOpen,
-  backdrop,
   maxWidth,
   width,
   surfaceStyles,
@@ -182,6 +172,8 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
+  const { busy, className, renderDOM } = useAnimationState(isOpen)
+
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen
@@ -206,7 +198,7 @@ export const useDialog = ({
 
   const RenderSurface = CustomSurface || DialogSurface
 
-  const dialog = (
+  const dialog = renderDOM && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -216,36 +208,18 @@ export const useDialog = ({
         focusTrapRef,
       }}
     >
-      <CSSTransition
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-        in={isOpen}
-        timeout={{ enter: 0, exit: 250 }}
-      >
-        {(state: string) => (
-          <Portal ref={portalRef}>
-            <Backdrop
-              className={state}
-              onClick={handleClose}
-              visible={backdrop === undefined ? true : !!backdrop}
-              style={
-                !!backdrop && backdrop !== true
-                  ? (backdrop as CSSObject)
-                  : undefined
-              }
-            />
-            <RenderSurface
-              className={state}
-              style={surfaceStyles}
-              width={width}
-              maxWidth={maxWidth}
-            >
-              {content}
-            </RenderSurface>
-          </Portal>
-        )}
-      </CSSTransition>
+      <Portal ref={portalRef}>
+        <Backdrop className={className} onClick={handleClose} />
+        <RenderSurface
+          aria-busy={busy ? true : undefined}
+          className={className}
+          style={surfaceStyles}
+          width={width}
+          maxWidth={maxWidth}
+        >
+          {content}
+        </RenderSurface>
+      </Portal>
     </DialogContext.Provider>
   )
 
