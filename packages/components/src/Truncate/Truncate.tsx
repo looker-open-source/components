@@ -49,7 +49,7 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   /*
    * only render tooltip if text actually overflows
    */
-  const { tooltip, ...triggerProps } = useTooltip({
+  const { tooltip, domProps } = useTooltip({
     content: children,
     disabled: !isTruncated,
     placement: 'top-start',
@@ -67,7 +67,7 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   return (
     <>
       {tooltip}
-      <TextStyle {...triggerProps} ref={textRef}>
+      <TextStyle {...domProps} ref={textRef}>
         {children}
       </TextStyle>
     </>

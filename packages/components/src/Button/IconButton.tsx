@@ -148,13 +148,15 @@ const IconButtonComponent = forwardRef(
     )
 
     const {
-      'aria-describedby': ariaDescribedBy,
-      ref,
+      domProps: {
+        'aria-describedby': ariaDescribedBy,
+        ref,
+        onFocus,
+        onBlur,
+        onMouseOver,
+        onMouseOut,
+      },
       tooltip,
-      onFocus,
-      onBlur,
-      onMouseOver,
-      onMouseOut,
     } = useTooltip({
       content: label,
       disabled: tooltipDisabled || hasOuterTooltip,

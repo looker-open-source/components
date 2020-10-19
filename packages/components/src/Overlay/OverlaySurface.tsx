@@ -56,7 +56,7 @@ export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
   children: ReactNode
-  eventHandlers?: DOMAttributes<{}>
+  eventHandlers?: DOMAttributes<HTMLElement>
   placement: Placement
   style?: CSSProperties
   zIndex?: number
