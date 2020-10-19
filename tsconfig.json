@@ -11,7 +11,6 @@
   "include": [
     "packages/*/src",
     "playground/*/src",
-    "server/*/src",
     "storybook/*/src"
   ]
 }

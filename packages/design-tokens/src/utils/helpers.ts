@@ -24,25 +24,34 @@
 
  */
 
-import express, { Request, Response } from 'express'
-import { urlencoded } from 'body-parser'
-import pino from 'express-pino-logger'
-import { config } from 'dotenv'
-import forwardRequest from './forwardRequest'
+import rgba from 'polished/lib/color/rgba'
+import lighten from 'polished/lib/color/lighten'
+import mix from 'polished/lib/color/mix'
+import { css } from 'styled-components'
+import { StatefulColor } from '../system/color/stateful'
 
-config()
+export const buttonShadow = (color: StatefulColor = 'key') =>
+  css`
+    ${({ theme }) => rgba(theme.colors[color], 0.25)}
+  `
 
-const app = express()
-app.use(urlencoded({ extended: false }))
-app.use(pino())
+export const iconButtonColorDerivation = () => css`
+  ${({ theme }) => lighten(0.14, theme.colors.neutral)}
+`
 
-app.get('/api/*', async (req: Request, res: Response) => {
-  const response = await forwardRequest(req)
-  res.setHeader('Content-Type', 'application/json')
-  res.send(JSON.stringify(response))
-})
+export const tabShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)}
+`
 
-app.listen(
-  3001,
-  () => console.log('Express server is running on localhost:3001') // eslint-disable-line no-console
-)
+export const calendarMixColor = () => css`
+  ${({ theme: { colors } }) =>
+    mix(0.65, colors.keyAccent, colors.neutralInteractive)}
+`
+
+export const knobShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)}
+`
+
+export const toggleSwitchShadowColor = () => css`
+  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)}
+`

@@ -25,7 +25,6 @@
  */
 
 import React, { forwardRef, Ref, useContext, useState } from 'react'
-import { rgba } from 'polished'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -36,6 +35,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  tabShadowColor,
 } from '@looker/design-tokens'
 import { TabContext } from './TabContext'
 
@@ -60,17 +60,19 @@ const TabStyle = styled.button<TabProps>`
   background: transparent;
   border: none;
   border-bottom: 3px solid;
-  border-bottom-color: ${(props) =>
-    props.selected ? props.theme.colors.key : 'transparent'};
+  border-bottom-color: ${({ selected, theme }) =>
+    selected ? theme.colors.key : 'transparent'};
   border-radius: 0;
-  color: ${(props) =>
-    props.selected ? props.theme.colors.text5 : props.theme.colors.text2};
+  ${({ focusVisible }) =>
+    focusVisible && `box-shadow: 0 0 0 0.15rem ${tabShadowColor};`}
+  color: ${({ selected, theme }) =>
+    selected ? theme.colors.text5 : theme.colors.text2};
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.brand};
 
   &:active {
-    border-bottom-color: ${(props) =>
-      props.selected ? props.theme.colors.key : props.theme.colors.text2};
+    border-bottom-color: ${({ selected, theme }) =>
+      selected ? theme.colors.key : theme.colors.text2};
   }
 
   &:active,
@@ -82,13 +84,9 @@ const TabStyle = styled.button<TabProps>`
     outline: none;
   }
 
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(theme.colors.keyFocus, 0.25)};`}
-
   &:hover {
-    border-bottom-color: ${(props) =>
-      props.selected ? props.theme.colors.key : props.theme.colors.ui3};
+    border-bottom-color: ${({ selected, theme }) =>
+      selected ? theme.colors.key : theme.colors.ui3};
   }
 
   &:disabled {

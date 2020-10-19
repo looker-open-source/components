@@ -26,7 +26,6 @@
 
 import { IconNames } from '@looker/icons'
 import styled, { css } from 'styled-components'
-import { rem } from 'polished'
 import { Icon } from '../Icon'
 import { ButtonProps } from './ButtonBase'
 
@@ -36,32 +35,32 @@ export interface ButtonIconProps {
 }
 
 export const iconMargins = (props: ButtonProps) => {
-  const spacing = { inner: 0, outer: 0 }
+  const spacing = { inner: '0', outer: '0' }
   switch (props.size) {
     case 'xxsmall':
     case 'xsmall':
-      spacing.outer = 4
-      spacing.inner = 6
+      spacing.outer = '0.25rem'
+      spacing.inner = '0.375rem'
       break
     case 'small':
-      spacing.outer = 8
-      spacing.inner = 8
+      spacing.outer = '0.5rem'
+      spacing.inner = '0.5rem'
       break
     case 'large':
     default:
-      spacing.outer = 12
-      spacing.inner = 8
+      spacing.outer = '0.75rem'
+      spacing.inner = '0.5rem'
   }
 
   if (props.iconBefore) {
     return css`
-      margin-left: -${rem(spacing.outer)};
-      margin-right: ${rem(spacing.inner)};
+      margin-left: -${spacing.outer};
+      margin-right: ${spacing.inner};
     `
   } else if (props.iconAfter) {
     return css`
-      margin-left: ${rem(spacing.inner)};
-      margin-right: -${rem(spacing.outer)};
+      margin-left: ${spacing.inner};
+      margin-right: -${spacing.outer};
     `
   } else {
     return false

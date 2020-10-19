@@ -24,7 +24,8 @@
 
  */
 
-import { darken, lighten } from 'polished'
+import darken from 'polished/lib/color/darken'
+import lighten from 'polished/lib/color/lighten'
 import {
   StatefulColors,
   StatefulColorChoices,

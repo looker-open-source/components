@@ -25,10 +25,10 @@
  */
 
 import { css } from 'styled-components'
-import { lighten } from 'polished'
+import { iconButtonColorDerivation } from '@looker/design-tokens'
 
 export const iconButtonColor = css<{ toggle?: boolean }>`
-  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+  color: ${iconButtonColorDerivation};
 
   &:hover,
   &:focus,
