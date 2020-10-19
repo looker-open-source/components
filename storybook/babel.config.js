@@ -29,6 +29,5 @@ module.exports = (api) => {
 
   return {
     extends: '../babel.config.js',
-    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
   }
 }
