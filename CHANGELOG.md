@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 - Improved test coverage / added image-snapshots
-- `SendOutline` Icon artwork
+- `ScheduleOutline` Icon artwork
 
 ### Changed
 
