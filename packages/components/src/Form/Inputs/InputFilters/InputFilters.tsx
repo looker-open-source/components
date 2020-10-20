@@ -214,7 +214,7 @@ const ChipWrapper = styled.div`
   flex-wrap: wrap;
 
   @supports (gap: 4px) {
-    gap: ${({ theme }) => theme.space.xsmall};
+    gap: ${({ theme }) => theme.space.xxsmall};
     ${Chip} {
       margin: 0;
     }
@@ -227,7 +227,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   flex-wrap: wrap;
-  min-height: 36px;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
 
