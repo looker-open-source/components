@@ -67,6 +67,7 @@ export const ButtonTransparent = styled(ButtonBase)`
       theme.colors[`${color}Subtle`]};
   }
 
+  &[aria-expanded='true'],
   &:active,
   &.active {
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};

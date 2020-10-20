@@ -5,6 +5,7 @@
     "emitDeclarationOnly": true
   },
   "exclude": [
+    "**/__mocks__/**",
     "**/*.shots.ts",
     "**/*.shots.tsx",
     "**/*.spec.ts",

@@ -24,7 +24,7 @@
 
  */
 
-import { mix } from 'polished'
+import mix from 'polished/lib/color/mix'
 
 export const mixColors = (
   mixAmount: number,

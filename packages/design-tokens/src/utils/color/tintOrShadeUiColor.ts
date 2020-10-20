@@ -24,7 +24,10 @@
 
  */
 
-import { getLuminance, shade, tint } from 'polished'
+import getLuminance from 'polished/lib/color/getLuminance'
+import shade from 'polished/lib/color/shade'
+import tint from 'polished/lib/color/tint'
+
 import { scaleMixAmount } from './scaleMixAmount'
 
 // Tints or shades a color based on the luminosity of the color

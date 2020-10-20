@@ -87,6 +87,7 @@ export const Link = styled(LinkLayout)`
     keyColor ? colors.key : colors.link};
   text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
 
+  &[aria-expanded='true'],
   &:focus,
   &:hover,
   &:active,

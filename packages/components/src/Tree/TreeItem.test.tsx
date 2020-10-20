@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { Tree, TreeItem } from '.'
 
 describe('TreeItem', () => {
@@ -62,32 +62,32 @@ describe('TreeItem', () => {
   })
 
   test('Hides and shows detail when detailHoverDisclosure is true', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <TreeItem detail="Detail" detailHoverDisclosure>
-        Dimension
+        Label
       </TreeItem>
     )
 
-    expect(queryByText('Detail')).not.toBeVisible()
-    fireEvent.mouseEnter(getByText('Dimension'), { bubbles: true })
-    getByText('Detail')
+    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
+    expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
   test("Child TreeItem adopts Parent Tree's detailHoverDisclosure prop value (when Child TreeItem does not have detailHoverDisclosure prop value)", () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree
         label="Parent Tree Label"
         defaultOpen
         detail="Parent Tree Detail"
         detailHoverDisclosure
       >
-        <TreeItem detail="Child TreeItem Detail">Child TreeItem Label</TreeItem>
+        <TreeItem detail="Child Detail">Child Label</TreeItem>
       </Tree>
     )
 
-    expect(queryByText('Child TreeItem Detail')).not.toBeVisible()
-    fireEvent.mouseEnter(getByText('Child TreeItem Label'), { bubbles: true })
-    getByText('Child TreeItem Detail')
+    expect(screen.queryByText('Child Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByText('Child Label'), { bubbles: true })
+    expect(screen.queryByText('Child Detail')).toBeInTheDocument()
   })
 
   test("Child TreeItem's detailHoverDisclosure prop value overrides Parent Tree's detailHoverDisclosure prop value", () => {

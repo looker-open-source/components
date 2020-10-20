@@ -37,7 +37,6 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 ## Applications
 
 - [playground](./playground/README.md) — A convenient React environment used for developing Looker UI Components
-- [server](./server/README.md) — A local proxy server used for querying data from production endpoints while in development.
 - [storybook](./storybook/README.md) — Storybook is a tool for developing UI components in isolation
 - [www](./www/README.md) — The Gatsby site which powers our living style guide
 
@@ -46,7 +45,6 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
 - **yarn playground** starts a bare-bones React app used for developing components
 - **yarn gatsby** starts the Gatsby server (powers our documentation site)
-- **yarn server** starts a local proxy server to facilitate local fetch requests to a Looker instance
 - **yarn build** runs build across all packages. This calls several subtasks
   - **yarn prebuild** run clean, then use lerna to do any pre-build tasks needed for packages
   - **yarn build** runs build:\* in parallel (see below)

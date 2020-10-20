@@ -44,8 +44,26 @@ export const getPortalRoot = () => {
   }
 }
 
+interface PortalPlacementProps {
+  /**
+   * How should content be positioned on screen horizontally
+   * @default 'center
+   */
+  horizontal?: 'center' | 'left' | 'right'
+
+  /**
+   * How should content be positioned on screen horizontally
+   * @default 'center
+   */
+  vertical?: 'center' | 'top' | 'bottom'
+}
+
+export interface PortalProps extends PortalPlacementProps {
+  children: ReactNode
+}
+
 export const Portal = forwardRef(
-  ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
+  (props: PortalProps, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
 
     useEffect(() => {
@@ -60,11 +78,7 @@ export const Portal = forwardRef(
       }
     }, [el])
 
-    const content = (
-      <InvisiBox ref={ref} tabIndex={-1}>
-        {children}
-      </InvisiBox>
-    )
+    const content = <InvisiBox ref={ref} tabIndex={-1} {...props} />
 
     return createPortal(content, el.current)
   }
@@ -72,11 +86,21 @@ export const Portal = forwardRef(
 
 Portal.displayName = 'Portal'
 
-const InvisiBox = styled.div<{ zIndex?: number }>`
-  align-items: center;
+const InvisiBox = styled.div<PortalPlacementProps>`
+  align-items: ${({ vertical }) =>
+    vertical === 'top'
+      ? 'flex-start'
+      : vertical === 'bottom'
+      ? 'flex-end'
+      : 'center'};
   bottom: 0;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ horizontal }) =>
+    horizontal === 'left'
+      ? 'flex-start'
+      : horizontal === 'right'
+      ? 'flex-end'
+      : 'center'};
   left: 0;
   pointer-events: none;
   position: fixed;

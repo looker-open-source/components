@@ -26,8 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { theme } from '@looker/design-tokens'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { DialogContent } from './DialogContent'
 
 describe('DialogContent', () => {
@@ -40,23 +39,6 @@ describe('DialogContent', () => {
       <DialogContent>
         <div style={{ height: '4rem' }}>Stuff</div>
       </DialogContent>
-    )
-  })
-
-  test('borderBottom', () => {
-    const { getByText } = renderWithTheme(
-      <>
-        <DialogContent>No border</DialogContent>
-        <DialogContent borderBottom>Has border</DialogContent>
-      </>
-    )
-
-    const noBorder = getByText('No border')
-    expect(noBorder.parentNode).toHaveStyle('border-bottom: none')
-
-    const hasBorder = getByText('Has border')
-    expect(hasBorder.parentNode).toHaveStyle(
-      `border-bottom: 1px solid ${theme.colors.ui2};`
     )
   })
 })

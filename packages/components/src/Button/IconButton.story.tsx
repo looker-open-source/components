@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconButton, IconButtonProps } from './IconButton'
 
+export default {
+  component: IconButton,
+  title: 'IconButton',
+}
+
 const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />
 
 export const Basic = Template.bind({})
@@ -88,19 +93,14 @@ OutlineLarge.args = {
   size: 'large',
 }
 
-export const KeyColorIconButton = Template.bind({})
-KeyColorIconButton.args = {
+export const ToggleOn = Template.bind({})
+ToggleOn.args = {
   ...Basic.args,
-  color: 'key',
+  toggle: true,
 }
 
-export const CriticalColorIconButton = Template.bind({})
-CriticalColorIconButton.args = {
+export const ToggleOff = Template.bind({})
+ToggleOff.args = {
   ...Basic.args,
-  color: 'critical',
-}
-
-export default {
-  component: IconButton,
-  title: 'IconButton',
+  toggle: false,
 }

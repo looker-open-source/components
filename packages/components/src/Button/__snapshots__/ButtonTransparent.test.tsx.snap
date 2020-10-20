@@ -13,7 +13,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: 'Red Hat Display','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -45,11 +45,6 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   padding: 0 0.5rem;
 }
 
-.c1 .c2 {
-  height: 18px;
-  width: 18px;
-}
-
 .c1:hover,
 .c1:focus,
 .c1.hover {
@@ -57,6 +52,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   border-color: #F3F2FF;
 }
 
+.c1[aria-expanded='true'],
 .c1:active,
 .c1.active {
   background: #E8E5FF;
@@ -80,7 +76,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 gMeceu ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 hvMZkF"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 kFFdak ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 dHitBk"
 >
   focus
 </button>

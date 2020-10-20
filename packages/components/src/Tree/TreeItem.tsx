@@ -44,6 +44,7 @@ import {
   uiTransparencyBlend,
 } from '@looker/design-tokens'
 import Omit from 'lodash/omit'
+import noop from 'lodash/noop'
 import { Space, FlexItem } from '../Layout'
 import { Icon, IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
@@ -52,7 +53,7 @@ import {
   HoverDisclosure,
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
-import { Truncate } from '../Text'
+import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
@@ -90,6 +91,11 @@ export interface TreeItemProps
    */
   onClick?: () => void
   /**
+   * Callback that is triggered on CMD + Enter on Mac
+   * or Windows key + Enter on PC
+   */
+  onMetaEnter?: () => void
+  /**
    * Determines if this TreeItem is in a selected state or not
    */
   selected?: boolean
@@ -103,6 +109,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
   gapSize = 'xsmall',
+  onMetaEnter = noop,
   selected,
   truncate,
   ...props
@@ -113,7 +120,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const [isHovered] = useHovered(itemRef)
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const { onBlur, onClick, onKeyDown, onKeyUp, ...restProps } = Omit(props, [
+  const {
+    onBlur = noop,
+    onClick = noop,
+    onKeyDown = noop,
+    onKeyUp = noop,
+    ...restProps
+  } = Omit(props, [
     'color',
     'detail',
     'detailAccessory',
@@ -142,14 +155,14 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     }
 
     setFocusVisible(false)
-    onClick && onClick()
+    onClick()
   }
 
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.keyCode === 9 && event.currentTarget === event.target)
+    if (event.key === 'Tab' && event.currentTarget === event.target)
       setFocusVisible(true)
 
-    onKeyUp && onKeyUp(event)
+    onKeyUp(event)
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -162,16 +175,16 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       return
     }
 
-    if (event.keyCode === 13 && event.target === event.currentTarget) {
-      onClick && onClick()
+    if (event.key === 'Enter') {
+      event.metaKey ? onMetaEnter() : onClick()
     }
 
-    onKeyDown && onKeyDown(event)
+    onKeyDown(event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
     setFocusVisible(false)
-    onBlur && onBlur(event)
+    onBlur(event)
   }
 
   const defaultIconSize = 12
@@ -185,6 +198,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 
   const TextWrapper = truncate ? Truncate : Fragment
+  const isTreeItemTabbable = onClick || onMetaEnter ? 0 : -1
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
@@ -197,7 +211,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={itemRef}
-        tabIndex={onClick ? 0 : -1}
+        tabIndex={isTreeItemTabbable}
         {...restProps}
       >
         <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
@@ -243,7 +257,7 @@ interface TreeItemLabelProps {
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
   background-color: ${({ hovered, selected }) =>
-    selected ? uiTransparencyBlend(1) : hovered && uiTransparencyBlend(2)};
+    hovered ? uiTransparencyBlend(2) : selected && uiTransparencyBlend(1)};
   flex: 1;
   flex-shrink: 2;
   height: 100%;

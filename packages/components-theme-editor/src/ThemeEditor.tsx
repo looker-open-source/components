@@ -24,15 +24,12 @@
 
  */
 
-import { IconButton, DialogManager } from '@looker/components'
+import { IconButton, Dialog } from '@looker/components'
 import React, { FC } from 'react'
-import {
-  ThemeEditorContent,
-  ThemeEditorContentProps,
-} from './ThemeEditorContent'
+import { ThemeEditorContent } from './ThemeEditorContent'
 import { ThemeEditableProps } from './types'
 
-export interface ThemeEditorProps extends ThemeEditorContentProps {
+export interface ThemeEditorProps {
   hasCustomTheme: boolean
   updateTheme: (customTheme?: ThemeEditableProps) => void
 }
@@ -41,7 +38,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
   hasCustomTheme,
   updateTheme,
 }) => (
-  <DialogManager
+  <Dialog
     content={<ThemeEditorContent updateTheme={updateTheme} />}
     width="90%"
     maxWidth="90%"
@@ -50,8 +47,8 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
       icon="Beaker"
       label="Customize Theme"
       tooltipDisabled
-      color={hasCustomTheme ? 'key' : 'neutral'}
+      toggle={hasCustomTheme}
       size="small"
     />
-  </DialogManager>
+  </Dialog>
 )

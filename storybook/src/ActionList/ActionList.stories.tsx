@@ -28,15 +28,18 @@ import {
   ActionList,
   ActionListItemAction,
   ActionListManager,
+  FieldFilter,
   Icon,
   Heading,
   SpaceVertical,
   useActionListSelectManager,
   ActionListManagerProps,
+  Paragraph,
 } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
-import React from 'react'
-import { columns, data, filters } from './data'
+import React, { useMemo, useState } from 'react'
+import { filters as defaultFilters } from '../../../packages/components/src/__mocks__/sampleInputFilters'
+import { columns, data } from './data'
 import { items } from './items'
 
 export * from './ActionListSortable'
@@ -114,23 +117,39 @@ const Template: Story<DemoProps> = ({
     totalCount: 8,
   }
 
+  const [filters, setFilters] = useState<FieldFilter[]>(defaultFilters)
   const filterActionsConfig = {
-    filters: filters,
+    filters,
+    onFilter: setFilters,
   }
 
+  const filteredItems = useMemo(() => {
+    if (canFilter && filters.some((filter) => filter.value)) {
+      return [items[0]]
+    }
+    return items
+  }, [canFilter, filters])
+
   return (
-    <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
-      <ActionList
-        canSelectDisplayedColumns={canCustomizeColumns}
-        columns={columns}
-        filters={canFilter ? filterActionsConfig : undefined}
-        headerRowId="all-pdts"
-        select={canSelect ? selectConfig : undefined}
-        bulk={canBulk ? bulkActionsConfig : undefined}
-      >
-        {items}
-      </ActionList>
-    </ActionListManager>
+    <SpaceVertical>
+      <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
+        <ActionList
+          canSelectDisplayedColumns={canCustomizeColumns}
+          columns={columns}
+          filterConfig={canFilter ? filterActionsConfig : undefined}
+          headerRowId="all-pdts"
+          select={canSelect ? selectConfig : undefined}
+          bulk={canBulk ? bulkActionsConfig : undefined}
+        >
+          {filteredItems}
+        </ActionList>
+      </ActionListManager>
+      {canFilter && (
+        <Paragraph fontSize="small">
+          Note: Demo filtering simply always returns the first row
+        </Paragraph>
+      )}
+    </SpaceVertical>
   )
 }
 

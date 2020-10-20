@@ -24,14 +24,14 @@
 
  */
 
-import { rem } from 'polished'
 import { SizeRamp } from '../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const sizes: SizeRamp = {
-  xxsmall: rem(12),
-  xsmall: rem(16),
-  small: rem(18),
-  medium: rem(24),
-  large: rem(32),
+  xxxsmall: '0.75rem',
+  xxsmall: '1rem',
+  xsmall: '1.125rem',
+  small: '1.25rem',
+  medium: '1.5rem',
+  large: '2rem',
 }

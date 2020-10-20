@@ -24,7 +24,6 @@
 
  */
 
-import { lighten } from 'polished'
 import { Location } from '@reach/router'
 import { Box, Sidebar, SidebarProps, SidebarGroup } from '@looker/components'
 import styled from 'styled-components'
@@ -61,7 +60,7 @@ const SidebarNavWrapper = styled(Box)`
 `
 
 const StyledSidebar = styled(Sidebar)<SidebarProps>`
-  background: ${(props) => lighten(0.6, props.theme.colors.keySubtle)};
+  background: ${({ theme }) => theme.colors.keySubtle};
   height: 100%;
 
   /* stylelint-disable max-nesting-depth */
@@ -76,7 +75,7 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
     ${SidebarGroup} {
       border: none;
-      padding: ${(props) => `${props.theme.space.xxsmall} 0`};
+      padding: ${({ theme }) => theme.space.xxsmall} 0;
 
       h2 {
         color: ${(props) => props.theme.colors.text2};

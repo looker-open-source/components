@@ -88,6 +88,14 @@ Current.args = {
   current: true,
 }
 
+export const Link = () => {
+  return (
+    <MenuItem itemRole="link" href="https://google.com" target="_blank">
+      MenuItem that links to Google
+    </MenuItem>
+  )
+}
+
 export default {
   component: MenuItem,
   title: 'MenuItem',

@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.9.16",
+  "version": "0.9.17",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -24,18 +24,18 @@
     "@styled-system/props": "^5.1.5",
     "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
-    "polished": "^3.6.7",
+    "polished": "^4.0.3",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.0.22",
-    "@storybook/react": "^6.0.22",
-    "@types/lodash": "^4.14.161",
+    "@storybook/addon-storyshots": "^6.0.26",
+    "@storybook/react": "^6.0.26",
+    "@types/lodash": "^4.14.162",
     "@types/styled-components": "^4.4.1",
-    "csstype": "^3.0.2",
+    "csstype": "^3.0.3",
     "lodash": "^4.17.20",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": "^4.4.1"
   },

@@ -24,9 +24,13 @@
 
  */
 
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  reset,
+  space,
+  SpaceProps,
+  toggleSwitchShadowColor,
+} from '@looker/design-tokens'
 import pick from 'lodash/pick'
-import { rem, rgba } from 'polished'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
@@ -39,11 +43,11 @@ export interface ToggleSwitchProps
   size?: number
 }
 
-const DisabledKnob = styled.div<{ size: number }>`
+const DisabledKnob = styled.div`
   ${reset}
 
   background: ${({ theme }) => theme.colors.ui3};
-  border-radius: ${({ size }) => rem(size)};
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   opacity: 0.4;
@@ -54,14 +58,7 @@ const DisabledKnob = styled.div<{ size: number }>`
 
 export const ToggleSwitchLayout = forwardRef(
   (
-    {
-      className,
-      disabled,
-      on,
-      size = 20,
-      validationType,
-      ...props
-    }: ToggleSwitchProps,
+    { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
@@ -76,8 +73,8 @@ export const ToggleSwitchLayout = forwardRef(
           ref={ref}
           {...pick(props, inputPropKeys)}
         />
-        <KnobContainer size={size} on={on} disabled={disabled} />
-        {disabled && <DisabledKnob size={size} />}
+        <KnobContainer on={on} disabled={disabled} />
+        {disabled && <DisabledKnob />}
       </div>
     )
   }
@@ -90,10 +87,10 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   ${space}
 
   display: inline-block;
-  height: ${(props) => rem(props.size || 20)};
+  height: 1.25rem;
   position: relative;
   vertical-align: middle;
-  width: ${(props) => rem((props.size || 20) * 1.75)};
+  width: 2.1875rem;
 
   input {
     cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
@@ -107,8 +104,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     z-index: 1;
 
     &:focus + div {
-      box-shadow: 0 0 0 0.2rem
-        ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
+      box-shadow: 0 0 0 0.2rem ${toggleSwitchShadowColor};
     }
   }
 `

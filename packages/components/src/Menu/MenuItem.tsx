@@ -143,7 +143,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
         artwork={iconArtwork}
         color="text1"
         name={icon}
-        size={24 / (compact ? 1.25 : 1)}
+        size={compact ? 'small' : 'medium'}
         mr="xsmall"
       />
     ) : (
@@ -152,7 +152,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
           aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
           mr="xsmall"
-          size={24 / (compact ? 1.25 : 1)}
+          size={compact ? 'small' : 'medium'}
         />
       )
     )
@@ -165,8 +165,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
+  /**
+   * `target="_blank" can be used to reverse tab-nab
+   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+   */
+  const noTabNab = 'noopener noreferrer'
+  const rel =
+    target === '_blank'
+      ? props.rel
+        ? `${props.rel} ${noTabNab}`
+        : noTabNab
+      : props.rel
+
   const menuItemContent = (
-    <Component href={href} role="menuitem" target={target}>
+    <Component href={href} rel={rel} role="menuitem" target={target}>
       {renderedIcon}
       <span>
         {children}

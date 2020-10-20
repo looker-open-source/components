@@ -109,6 +109,10 @@ const components: NavigationSection = {
           title: 'InputHidden',
         },
         {
+          path: 'input-filters',
+          title: 'InputFilters',
+        },
+        {
           path: 'input-search',
           title: 'InputSearch',
         },
@@ -137,7 +141,7 @@ const components: NavigationSection = {
           title: 'RangeSlider',
         },
         {
-          path: 'select',
+          path: 'input-select',
           title: 'Select',
         },
         {

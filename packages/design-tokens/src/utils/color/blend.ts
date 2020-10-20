@@ -24,7 +24,12 @@
 
  */
 
-import { darken, mix, rgba, getLuminance, lighten } from 'polished'
+import darken from 'polished/lib/color/darken'
+import getLuminance from 'polished/lib/color/getLuminance'
+import rgba from 'polished/lib/color/rgba'
+import lighten from 'polished/lib/color/lighten'
+import mix from 'polished/lib/color/mix'
+
 import { css } from 'styled-components'
 import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'

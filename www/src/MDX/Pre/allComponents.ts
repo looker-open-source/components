@@ -63,7 +63,6 @@ import {
   DialogContext,
   DialogFooter,
   DialogHeader,
-  DialogManager,
   Divider,
   DividerVertical,
   Drawer,
@@ -152,6 +151,7 @@ import {
   TreeItem,
   useActionListSelectManager,
   useConfirm,
+  useDialog,
   useDrawer,
   usePreviousValue,
   useMixedStateCheckbox,
@@ -171,7 +171,7 @@ import { DateFormat } from '@looker/components/src/DateFormat'
 import { DateTimeFormat } from '@looker/components/src/DateTimeFormat'
 import { TimeFormat } from '@looker/components/src/TimeFormat'
 
-import { Surface } from '@looker/components/src/Dialog/Surface'
+import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
@@ -189,6 +189,7 @@ const hooks = {
   doDefaultActionListSort,
   useActionListSelectManager,
   useConfirm,
+  useDialog,
   useDrawer,
   useMixedStateCheckbox,
   usePreviousValue,
@@ -239,7 +240,7 @@ export const allComponents = {
   DialogContext,
   DialogFooter,
   DialogHeader,
-  DialogManager,
+  DialogSurface,
   Divider,
   DividerVertical,
   Drawer,
@@ -309,7 +310,6 @@ export const allComponents = {
   Span,
   Spinner,
   Status,
-  Surface,
   Swatch,
   Tab,
   TabList,

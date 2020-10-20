@@ -151,7 +151,7 @@ const InputTextLayout = forwardRef(
     const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
       <InputTextContent pl="xxsmall">
         {iconBefore ? (
-          <Icon name={iconBefore} title={iconBeforeTitle} size={20} />
+          <Icon name={iconBefore} title={iconBeforeTitle} size="small" />
         ) : (
           <Span fontSize="small">{before}</Span>
         )}
@@ -163,7 +163,7 @@ const InputTextLayout = forwardRef(
     const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
       <InputTextContent pl="xsmall" pr="xxsmall">
         {iconAfter ? (
-          <Icon name={iconAfter} title={iconAfterTitle} size={20} />
+          <Icon name={iconAfter} title={iconAfterTitle} size="small" />
         ) : (
           <Span fontSize="small">{after}</Span>
         )}
@@ -179,7 +179,7 @@ const InputTextLayout = forwardRef(
           color="critical"
           name="Error"
           title="Validation Error"
-          size={20}
+          size="small"
         />
       </InputTextContent>
     )

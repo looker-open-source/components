@@ -94,8 +94,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
             <IconButton
               id={id ? `${id}-iconButton` : undefined}
               tabIndex={-1}
-              color="neutral"
-              size="small"
+              size="medium"
               onClick={closeModal}
               label="Close"
               icon={closeIcon}
@@ -116,6 +115,7 @@ export const DialogHeader = styled(DialogHeaderLayout)`
   ${space}
   align-items: center;
   display: flex;
+  flex-shrink: 0;
 `
 
 DialogHeader.defaultProps = {

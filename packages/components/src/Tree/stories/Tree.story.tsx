@@ -29,6 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeItem } from '..'
 
 export * from './BorderRadius.story'
+export * from './ColorfulTree.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
 export * from './Flat.story'

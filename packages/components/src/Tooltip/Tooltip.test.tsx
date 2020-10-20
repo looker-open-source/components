@@ -109,8 +109,8 @@ describe('Tooltip', () => {
     const tooltip = screen.queryByText('Hello world')
     expect(tooltip).toBeVisible()
 
-    expect(tooltip).toHaveStyle('max-width: 20rem')
-    expect(tooltip).toHaveStyle('text-align: right')
+    expect(tooltip).toHaveStyleRule('max-width: 20rem')
+    expect(tooltip).toHaveStyleRule('text-align: right')
     fireEvent.mouseOut(trigger)
   })
 

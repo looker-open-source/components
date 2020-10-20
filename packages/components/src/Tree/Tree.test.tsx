@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 import { Tree } from '.'
 
 describe('Tree', () => {
@@ -152,34 +152,36 @@ describe('Tree', () => {
   })
 
   test('Shows and hides detail on Tree hover when detailHoverDisclosure === true', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree label="Tree Label" detail="Tree Detail" detailHoverDisclosure>
         Hello World
       </Tree>
     )
 
-    expect(queryByText('Tree Detail')).not.toBeVisible()
-    fireEvent.mouseEnter(getByText('Tree Label'), { bubbles: true })
-    getByText('Tree Detail')
+    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
+    expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
   })
 
   test("Child Tree adopts Parent Tree's detailHoverDisclosure prop value (when Child Tree does not have prop value)", () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree
-        label="Parent Tree Label"
-        detail="Parent Tree Detail"
+        label="Parent Label"
+        detail="Parent Detail"
         detailHoverDisclosure
         defaultOpen
       >
-        <Tree label="Child Tree Label" detail="Child Tree Detail">
+        <Tree label="Child Label" detail="Child Detail">
           Hello World
         </Tree>
       </Tree>
     )
 
-    expect(queryByText('Child Tree Detail')).not.toBeVisible()
-    fireEvent.mouseEnter(getByText('Child Tree Label'), { bubbles: true })
-    getByText('Child Tree Detail')
+    expect(screen.queryByText('Child Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByText('Child Label'), {
+      bubbles: true,
+    })
+    expect(screen.queryByText('Child Detail')).toBeInTheDocument()
   })
 
   test("Child Tree detailHoverDisclosure prop value overrides Parent Tree's detailHoverDisclosure prop value", () => {

@@ -25,97 +25,232 @@
  */
 
 import 'jest-styled-components'
-import React from 'react'
+import React, { useState } from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import {
-  assertSnapshotShallow,
-  mountWithTheme,
-} from '@looker/components-test-utils'
-import { Portal } from '../Portal'
-import { Backdrop } from './Backdrop'
+  screen,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
+import { SimpleContent } from '../__mocks__/DialogContentSimple'
+import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
 import { Dialog } from './Dialog'
 import { DialogManager } from './DialogManager'
-
-const simpleContent = (
-  <div>
-    simple content
-    <button>Done</button>
-  </div>
-)
+import {
+  Controlled,
+  ControlledLegacy,
+  ControlledNoChildren,
+} from './stories/Controlled'
 
 describe('Dialog', () => {
-  test('Active', () => {
-    assertSnapshotShallow(<Dialog isOpen>{simpleContent}</Dialog>)
-  })
-
   test('Verify initial state', () => {
-    const dialog = mountWithTheme(<Dialog>{simpleContent}</Dialog>)
-
-    expect(dialog.find(Portal).exists()).toEqual(false)
-    expect(dialog.contains(simpleContent)).toBeFalsy()
+    renderWithTheme(<Dialog content={<SimpleContent />} />)
+    expect(screen.queryByText('Dialog content')).not.toBeInTheDocument()
   })
 
-  test('Verify "open" prop', () => {
-    const dialog = mountWithTheme(<Dialog isOpen>{simpleContent}</Dialog>)
-
-    expect(dialog.find(Portal).exists()).toEqual(true)
-    expect(dialog.contains(simpleContent)).toBeTruthy()
+  test('defaultOpen', async () => {
+    renderWithTheme(<Dialog defaultOpen content={<SimpleContent />} />)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
 
-  describe('Dialog styled', () => {
-    const dialog = mountWithTheme(
-      <Dialog
-        isOpen
-        backdrop={{ backgroundColor: 'pink' }}
-        surfaceStyles={{ backgroundColor: 'purple' }}
-      >
-        {simpleContent}
+  test('Dialog can be opened & closed', async () => {
+    renderWithTheme(
+      <Dialog content={<SimpleContent />}>
+        <a>Open Dialog</a>
       </Dialog>
     )
 
-    test('Dialog applies the backdrop styles', () => {
-      const backdrop = dialog.find(Backdrop)
+    // Dialog closed
+    expect(screen.queryByText('Dialog content')).not.toBeInTheDocument()
 
-      expect(backdrop.exists()).toBeTruthy()
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    expect(link).toBeInTheDocument()
+    fireEvent.click(link)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
 
-      expect(backdrop.props().style).toEqual({ backgroundColor: 'pink' })
-    })
+    // Close the Dialog
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
-})
 
-describe('DialogManager - click events', () => {
-  test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
-    const dialog = mountWithTheme(
-      <DialogManager content={simpleContent}>
-        {({ onClick }) => <a onClick={onClick}>Open Dialog</a>}
+  test('Backdrop can be clicked to close', async () => {
+    renderWithTheme(
+      <Dialog defaultOpen content={<SimpleContent />}>
+        <a>Open Dialog</a>
+      </Dialog>
+    )
+
+    // Confirm Dialog is open
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+
+    // Find & click the backdrop
+    fireEvent.click(screen.getByTestId('backdrop'))
+
+    // Confirm Dialog closes
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+  })
+
+  test('Render props style', async () => {
+    renderWithTheme(
+      <Dialog content={<SimpleContent />}>
+        {(dialogProps) => <a {...dialogProps}>Open Dialog</a>}
+      </Dialog>
+    )
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+  })
+
+  test('Surface custom styles', () => {
+    renderWithTheme(
+      <Dialog
+        defaultOpen
+        surfaceStyles={{ backgroundColor: 'purple' }}
+        content={<SimpleContent />}
+      />
+    )
+
+    const surface = screen.getByRole('dialog')
+    expect(surface).toBeInTheDocument()
+    expect(surface).toHaveStyle({ backgroundColor: 'purple' })
+  })
+
+  test('DialogManager fallback functional', async () => {
+    renderWithTheme(
+      <DialogManager content={<SimpleContent />}>
+        <a>Open Dialog</a>
       </DialogManager>
     )
 
-    // Dialog closed
-    expect(dialog.find(Portal).exists()).toBeFalsy()
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
 
-    const button = dialog.find('a')
-    expect(button.exists()).toBeTruthy()
-    button.simulate('click') // Click to open
-
-    // Dialog open
-    expect(dialog.find(Portal).exists()).toBeTruthy()
-
-    const backdrop = dialog.find(Backdrop)
-    expect(backdrop.exists()).toBeTruthy()
-    window.document.body.click()
+    // Close the Dialog
+    const doneButton = screen.getByText('Done')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
   })
-})
 
-test('contains the content passed to it', () => {
-  const dialog = mountWithTheme(
-    <DialogManager content={simpleContent}>
-      <a>Open Dialog</a>
-    </DialogManager>
-  )
+  test('Controlled', async () => {
+    renderWithTheme(<Controlled />)
 
-  const button = dialog.find('a')
-  expect(button.exists()).toBeTruthy()
-  button.simulate('click') // Click to open
-  expect(dialog.contains(simpleContent)).toBeTruthy()
-  window.document.body.click()
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done Reading')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('Controlled no callbacks', async () => {
+    const SimpleControlled = () => {
+      const [isOpen, setOpen] = useState(false)
+
+      return (
+        <>
+          <Dialog content={<DialogMediumContent />} isOpen={isOpen} />
+          <button onClick={() => setOpen(true)}>Open Dialog</button>
+        </>
+      )
+    }
+
+    renderWithTheme(<SimpleControlled />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+  })
+
+  test('Controlled - no children', async () => {
+    renderWithTheme(<ControlledNoChildren />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done Reading')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('Controlled - legacy', async () => {
+    renderWithTheme(<ControlledLegacy />)
+
+    // Open Dialog
+    const link = screen.getByText('Open Dialog')
+    fireEvent.click(link)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+
+    // Close the Dialog
+    const doneButton = screen.getByText('Done Reading')
+    fireEvent.click(doneButton)
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('onClose callback', () => {
+    const onClose = jest.fn()
+
+    renderWithTheme(
+      <Dialog
+        content={<SimpleContent />}
+        defaultOpen={true}
+        onClose={onClose}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Done'))
+    expect(onClose).toBeCalledTimes(1)
+  })
+
+  test('onClose callback called when canClose=true', () => {
+    const onClose = jest.fn()
+
+    renderWithTheme(
+      <Dialog
+        content={<SimpleContent />}
+        defaultOpen={true}
+        canClose={() => true}
+        onClose={onClose}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Done'))
+    expect(onClose).toBeCalledTimes(1)
+  })
+
+  test('onClose callback not called when canClose=false', () => {
+    const onClose = jest.fn()
+
+    renderWithTheme(
+      <Dialog
+        content={<SimpleContent />}
+        defaultOpen={true}
+        canClose={() => false}
+        onClose={onClose}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Done'))
+    expect(onClose).toBeCalledTimes(0)
+  })
 })

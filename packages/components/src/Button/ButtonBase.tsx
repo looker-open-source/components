@@ -25,13 +25,13 @@
  */
 
 import {
+  buttonShadow,
   CompatibleHTMLProps,
   reset,
   space,
   SpaceProps,
   StatefulColor,
 } from '@looker/design-tokens'
-import { rgba } from 'polished'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -42,7 +42,12 @@ import {
   WidthProps,
   width,
 } from 'styled-system'
-import { buttonSize, ButtonSizes, ButtonSizeProps } from './size'
+import {
+  buttonSize,
+  ButtonSizes,
+  ButtonSizeProps,
+  buttonIconSizeMap,
+} from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
 export interface ButtonBaseProps
@@ -77,12 +82,8 @@ export const buttonCSS = css<ButtonBaseProps>`
   ${minWidth}
   ${width}
 
-  ${(props) =>
-    props.focusVisible &&
-    `
-    box-shadow: 0 0 0 0.15rem
-      ${rgba(props.theme.colors[props.color || 'key'], 0.25)};
-  `}
+  ${({ focusVisible, color }) =>
+    focusVisible && `box-shadow: 0 0 0 0.15rem ${buttonShadow(color)};`}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
@@ -120,6 +121,7 @@ const ButtonJSX = forwardRef(
       iconAfter,
       onBlur,
       onKeyUp,
+      size = 'medium',
       ...restProps
     } = props
 
@@ -135,17 +137,20 @@ const ButtonJSX = forwardRef(
       onBlur && onBlur(event)
     }
 
+    const iconSize = buttonIconSizeMap[size]
+
     return (
       <ButtonOuter
         {...restProps}
+        size={size}
         focusVisible={isFocusVisible}
         onKeyUp={handleOnKeyUp}
         onBlur={handleOnBlur}
         ref={ref}
       >
-        {iconBefore && <ButtonIcon name={iconBefore} />}
+        {iconBefore && <ButtonIcon name={iconBefore} size={iconSize} />}
         {children}
-        {iconAfter && <ButtonIcon name={iconAfter} />}
+        {iconAfter && <ButtonIcon name={iconAfter} size={iconSize} />}
       </ButtonOuter>
     )
   }
@@ -156,5 +161,3 @@ ButtonJSX.displayName = 'ButtonJSX'
 export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
   ${buttonIcon}
 `
-
-ButtonBase.defaultProps = { size: 'medium' }

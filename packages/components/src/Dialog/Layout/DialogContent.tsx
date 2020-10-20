@@ -32,7 +32,7 @@ import {
   LayoutProps,
   layout,
 } from '@looker/design-tokens'
-import React, { Component, createRef, RefObject } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
@@ -46,78 +46,48 @@ export interface DialogContentProps
    * touch the container edges.
    */
   innerProps?: SpaceProps
-
-  borderBottom?: boolean
 }
 
-interface ContentState {
-  overflow: boolean
-}
-
-interface InternalContentProps extends DialogContentProps {
+interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
 }
 
-class Internal extends Component<InternalContentProps, ContentState> {
-  private ref: RefObject<HTMLDivElement>
+const DialogContentLayout: FC<DialogContentLayoutProps> = ({
+  children,
+  className,
+  innerProps,
+  renderedHeight,
+  ...props
+}) => {
+  const internalRef = useRef<HTMLDivElement>(null)
+  const [overflow, setOverflow] = useState(false)
 
-  constructor(props: InternalContentProps) {
-    super(props)
-    this.state = { overflow: false }
-    this.ref = createRef()
-  }
+  useEffect(() => {
+    const container = internalRef.current
 
-  public hasOverflow(e: HTMLDivElement) {
-    return e.offsetHeight < e.scrollHeight
-  }
-
-  public componentDidUpdate(prevProps: InternalContentProps) {
-    if (prevProps.renderedHeight !== this.props.renderedHeight) {
-      this.ref.current &&
-        this.setState({ overflow: this.hasOverflow(this.ref.current) })
+    if (container) {
+      setOverflow(container.offsetHeight < container.scrollHeight)
     }
+  }, [renderedHeight])
+
+  if (innerProps && innerProps.p && !innerProps.px) {
+    innerProps.px = innerProps.p
   }
 
-  public render() {
-    const {
-      borderBottom,
-      children,
-      className,
-      innerProps,
-      ...props
-    } = this.props
-
-    if (innerProps && innerProps.p && !innerProps.px) {
-      innerProps.px = innerProps.p
-    }
-
-    return (
-      <Outer
-        borderBottom={borderBottom}
-        className={`${className} ${this.state.overflow && 'overflow'}`}
-        ref={this.ref}
-        {...omit(props, ['renderedHeight'])}
-      >
-        <Inner {...innerProps}>{children}</Inner>
-      </Outer>
-    )
-  }
-}
-
-export const DialogContent = (props: DialogContentProps) => {
   return (
-    <ReactResizeDetector handleHeight>
-      {(height: string) => <Internal renderedHeight={height} {...props} />}
-    </ReactResizeDetector>
+    <div
+      className={`${className} ${overflow ? 'overflow' : ''}`}
+      ref={internalRef}
+      {...omit(props, ['renderedHeight'])}
+    >
+      <Inner {...innerProps}>{children}</Inner>
+    </div>
   )
 }
 
-const Outer = styled.div<{ borderBottom?: boolean }>`
+const DialogContentStyled = styled(DialogContentLayout)`
   ${reset}
   ${layout}
-
-  ${({ borderBottom, theme: { colors } }) =>
-    borderBottom && `border-bottom: 1px solid ${colors.ui2};`}
 
   flex: 1 1 auto;
   overflow: auto;
@@ -128,6 +98,16 @@ const Outer = styled.div<{ borderBottom?: boolean }>`
     box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
   }
 `
+
+export const DialogContent = (props: DialogContentProps) => {
+  return (
+    <ReactResizeDetector handleHeight>
+      {(height: string) => (
+        <DialogContentStyled renderedHeight={height} {...props} />
+      )}
+    </ReactResizeDetector>
+  )
+}
 
 const Inner = styled.div<SpaceProps>`
   ${reset}

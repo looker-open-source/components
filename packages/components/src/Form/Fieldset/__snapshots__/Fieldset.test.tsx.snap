@@ -33,87 +33,6 @@ exports[`Fieldset 1`] = `
   flex-direction: column;
 }
 
-.c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  padding: 0rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  width: 100%;
-}
-
-.c0 .c12 {
-  padding-left: calc(1px + 1rem + 0.5rem);
-  padding-top: 1rem;
-}
-
-.c0 .c13 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  height: 24px;
-  padding: 0.25rem 0;
-}
-
-.c6 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  color: #343C42;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.c8 {
-  min-width: 0;
-}
-
-.c4 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c4 .c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  grid-area: input;
-}
-
-.c4 .c11 {
-  grid-area: messages;
-}
-
-.c4 > .c5 {
-  grid-area: label;
-  line-height: 1rem;
-  padding-bottom: 0.25rem;
-}
-
-.c4 .c15 {
-  grid-area: detail;
-  justify-self: end;
-  padding-left: 0.75rem;
-}
-
-.c4 .c14 {
-  margin-top: 0.5rem;
-}
-
 .c10 {
   background: transparent;
   border: none;
@@ -186,14 +105,14 @@ exports[`Fieldset 1`] = `
   font-family: inherit;
 }
 
-.c9 .c16 {
+.c9 .c12 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c9 .c16 input,
-.c9 .c16 span {
+.c9 .c12 input,
+.c9 .c12 span {
   padding: 0 0.5rem;
 }
 
@@ -206,6 +125,88 @@ exports[`Fieldset 1`] = `
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
+}
+
+.c2 {
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  padding: 0rem;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  width: 100%;
+}
+
+.c0 .c13 {
+  padding-left: calc(1px + 1rem + 0.5rem);
+  padding-top: 1rem;
+}
+
+.c0 .c14 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 24px;
+  padding: 0.25rem 0;
+}
+
+.c6 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  color: #343C42;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.c8 {
+  min-width: 0;
+}
+
+.c4 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c4 .c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-area: input;
+}
+
+.c4 .c11 {
+  grid-area: messages;
+}
+
+.c4 > .c5 {
+  grid-area: label;
+  line-height: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.c4 .c16 {
+  grid-area: detail;
+  justify-self: end;
+  padding-left: 0.75rem;
+}
+
+.c4 .c15 {
+  margin-top: 0.5rem;
 }
 
 @supports (-moz-appearance:none) {
@@ -250,6 +251,7 @@ exports[`Fieldset 1`] = `
     <legend
       className="c2"
       color="text4"
+      fontFamily="brand"
       fontSize="medium"
       fontWeight="semiBold"
     >

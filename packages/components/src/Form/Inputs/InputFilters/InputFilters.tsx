@@ -24,15 +24,18 @@
 
  */
 
+import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, { FC, useState, useRef } from 'react'
-import partition from 'lodash/partition'
-import { Select } from '../Select'
+import React, { FC, useMemo, useState, useRef } from 'react'
+import { Select, SelectOptionObject } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
-import { InputFilterChip } from './InputFilterChip'
+import { Text } from '../../../Text'
+import { Popover } from '../../../Popover'
+import { InputFiltersChip } from './InputFiltersChip'
+import { InputFiltersChipEditor } from './InputFiltersChipEditor'
 
 export interface FieldFilter {
   /* specify the field value */
@@ -41,10 +44,13 @@ export interface FieldFilter {
   label?: string
   /* filter value/expression */
   value?: string
+
+  options?: string[]
 }
 
 export interface InputFiltersProps {
   filters: FieldFilter[]
+  onChange: (filters: FieldFilter[]) => void
   hideFilterIcon?: boolean
   className?: string
 }
@@ -52,52 +58,60 @@ export interface InputFiltersProps {
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,
   filters,
+  onChange,
   hideFilterIcon = false,
 }) => {
-  const [assigned, unassigned] = partition(filters, (filter) => filter.value)
+  const [fieldEditing, setFieldEditing] = useState<undefined | string>(
+    undefined
+  )
 
-  const options = unassigned.map((filter) => {
-    return {
-      label: filter.label || filter.field,
-      value: filter.field,
-    }
-  })
+  const assignedFilters = filters
+    .filter((filter) => filter.value || filter.field === fieldEditing)
+    .sort((a, b) =>
+      a.value === undefined ? 1 : b.value === undefined ? -1 : 0
+    )
 
-  const [unassignedFilters, setUnassignedFilters] = useState(options)
-  const [chipValues, setChipValues] = useState(assigned)
-  const [filterLookupName, setFilterLookupName] = useState('')
+  const unassignedFilters = filters.filter(
+    (filter) =>
+      !assignedFilters.map((assigned) => assigned.field).includes(filter.field)
+  )
 
-  const [draftFilter, setDraftFilter] = useState<undefined | FieldFilter>()
+  const [filterTerm, setFilterTerm] = useState('')
+
+  const options = useMemo(
+    () =>
+      unassignedFilters.reduce((acc: SelectOptionObject[], filter) => {
+        const option = {
+          label: filter.label || filter.field,
+          value: filter.field,
+        }
+        const optionMatchesFilter = Object.values(option).some(
+          (value: string) =>
+            value.toLocaleLowerCase().indexOf(filterTerm.toLocaleLowerCase()) >
+            -1
+        )
+        if (optionMatchesFilter) {
+          acc = [...acc, option]
+        }
+        return acc
+      }, []),
+    [filterTerm, unassignedFilters]
+  )
 
   const inputRef = useRef<null | HTMLInputElement>(null)
-  const isClearable = chipValues.length > 0
+  const isClearable = assignedFilters.length > 0
 
-  const clearFilters = () => setChipValues([])
+  const clearFilters = () => {
+    onChange(filters.map((filter) => omit(filter, 'value')))
+  }
+
   const focusInput = () => inputRef.current && inputRef.current.focus()
+
   const handleFilterLookupChange = (field: string) => {
-    const filter = unassignedFilters.find((option) => option.value === field)
-
+    const filter = filters.find((option) => option.field === field)
     if (filter) {
-      setFilterLookupName('')
-      setUnassignedFilters(
-        unassignedFilters.filter((option) => option === filter)
-      )
-      setDraftFilter({ field: filter.value, label: filter?.label })
+      setFieldEditing(filter.field)
     }
-  }
-
-  const editFilter = () => {
-    alert("You can't do that. Yet!")
-  }
-
-  const handleDelete = (field: FieldFilter) => {
-    const addOption = options.filter(
-      (value) =>
-        (field && field.field === value.label) ||
-        (field && field.field === value.value)
-    )
-    setUnassignedFilters([addOption[0], ...unassignedFilters])
-    setChipValues([...chipValues].filter((value) => value !== field))
   }
 
   return (
@@ -105,26 +119,75 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       {!hideFilterIcon && (
         <Icon color="ui4" mr="xsmall" name="Filter" size={20} />
       )}
-      {chipValues &&
-        chipValues.map((filter, i) => (
-          <InputFilterChip
+      {assignedFilters.map((filter, i) => {
+        const editFilter = () => setFieldEditing(filter.field)
+
+        const handleDelete = () =>
+          onChange(
+            filters.map((currentFilter) =>
+              currentFilter.field !== filter.field
+                ? currentFilter
+                : omit(currentFilter, 'value')
+            )
+          )
+
+        const setFieldEditingValue = (value: string) => {
+          const filterIndex = assignedFilters.findIndex(
+            (filter) => filter.field === fieldEditing
+          )
+
+          const newFilters = [...assignedFilters, ...unassignedFilters]
+          const updateFilter = { ...newFilters[filterIndex], value }
+          newFilters[filterIndex] = updateFilter
+
+          onChange(newFilters)
+        }
+
+        const closeInputFiltersChipEditor = () => {
+          setFieldEditing(undefined)
+        }
+
+        const filterToken = filter.value ? (
+          <InputFiltersChip
             filter={filter}
             key={i}
             onClick={editFilter}
             onDelete={handleDelete}
           />
-        ))}
-      {draftFilter && <Chip>{draftFilter.label || draftFilter.field}</Chip>}
-      {!draftFilter && (
+        ) : (
+          <Text fontSize="small">{filter?.label || filter.field}</Text>
+        )
+        return filter.field === fieldEditing ? (
+          <Popover
+            key={i}
+            isOpen={fieldEditing !== undefined}
+            setOpen={closeInputFiltersChipEditor}
+            content={
+              <InputFiltersChipEditor
+                value={filter.value}
+                onChange={setFieldEditingValue}
+                options={filter.options}
+              />
+            }
+          >
+            {filterToken}
+          </Popover>
+        ) : (
+          filterToken
+        )
+      })}
+
+      {!fieldEditing && (
         <Select
           autoResize
+          openOnFocus
           indicator={false}
+          onFilter={setFilterTerm}
           isFilterable
           onChange={handleFilterLookupChange}
-          options={unassignedFilters}
+          options={options}
           placeholder="Filter List"
           ref={inputRef}
-          value={filterLookupName}
         />
       )}
       {isClearable && (
@@ -134,6 +197,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           mr="xxsmall"
           onClick={clearFilters}
           size="xsmall"
+          ml="auto"
         />
       )}
     </div>
@@ -154,7 +218,6 @@ export const InputFilters = styled(InputFiltersLayout)`
   }
 
   ${Select} {
-    flex: 1;
     ${Icon} {
       display: none;
     }

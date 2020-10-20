@@ -27,6 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Label } from '../Label/Label'
+import { Paragraph } from '../../Text'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
@@ -51,33 +52,50 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   validationMessage,
 }) => (
   <label className={className} htmlFor={id}>
+    <InputArea>{children}</InputArea>
     <Label as="span">
       {label}
       {required && <RequiredStar />}
     </Label>
-    {detail && <FieldDetail>{detail}</FieldDetail>}
-    <InputArea>{children}</InputArea>
     <MessageArea id={`${id}-describedby`}>
+      {detail && (
+        <Paragraph fontSize="xsmall" variant="secondary">
+          {detail}
+        </Paragraph>
+      )}
       {validationMessage ? <ValidationMessage {...validationMessage} /> : null}
     </MessageArea>
   </label>
 )
 
-const InputArea = styled.div``
-const FieldDetail = styled.div``
-
-const MessageArea = styled.div``
+const InputArea = styled.div`
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: ${({ theme }) => theme.space.xsmall};
+  /* stylelint-disable  */
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  /* stylelint-enable */
+`
+const MessageArea = styled.div`
+  grid-column: 2;
+  grid-row: 2;
+  /* stylelint-disable  */
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  /* stylelint-enable */
+`
 
 export const FieldInline = styled(FieldInlineLayout)`
   align-items: center;
   display: grid;
-  grid-template-areas: 'input label detail' '. messages messages';
-  grid-template-columns: repeat(2, max-content) 1fr;
+  grid-template-columns: auto 1fr;
   line-height: ${({ theme }) => theme.lineHeights.small};
 
-  ${InputArea} {
-    grid-area: input;
-  }
+  /* stylelint-disable  */
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  /* stylelint-enable */
 
   ${Label} {
     align-items: center;
@@ -85,20 +103,13 @@ export const FieldInline = styled(FieldInlineLayout)`
     display: flex;
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
-    grid-area: label;
-    padding-left: ${({ theme }) => theme.space.xsmall};
-  }
+    grid-column: 2;
+    grid-row: 1;
+    padding-right: ${({ theme }) => theme.space.xsmall};
 
-  ${FieldDetail} {
-    align-content: center;
-    display: flex;
-    grid-area: detail;
-    justify-content: flex-end;
-    margin-left: ${({ theme: { space } }) => space.xxsmall};
-  }
-
-  ${MessageArea} {
-    grid-area: messages;
-    padding-left: ${({ theme }) => theme.space.small};
+    /* stylelint-disable  */
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    /* stylelint-enable */
   }
 `

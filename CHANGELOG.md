@@ -5,35 +5,115 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [UNRELEASED]
 
-## Added
+### Added
 
-- `Select`, `SelectMulti` and `InputSearch` now support `isLoading` and `detail` prop on options
+- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
+- Improved test coverage / added image-snapshots
+
+### Changed
+
+- `useDialog` (`Dialog` & `Drawer`) refactored
+  - Removed use of `react-transition-group` dependency
+  - Added support for `aria-busy`
+  - Simplified implementation of `DialogRender` component
+- `theme.transitions` durations are now integers (in milliseconds) rather than strings
+- Improved test coverage / added image-snapshots
+- Reduced & consolidated dependencies on `polished` library
+
+### Fixed
+
+- `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
+  - `FieldCheckbox`
+  - `FieldRadio`
+  - `FieldToggleSwitch`
+- `MenuItem` now receives and uses passed-in rel prop
+  - Also auto appends "noopener noreferrer" to rel if target="\_blank"
+- `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns
+  - IMPORTANT NOTE: Popover will no longer apply `active` className to target. Instead it now applies `[aria-expanded='true']` instead. `Button*` has been updated to match this change but implementations that depend on the previous behavior will need to be updated.
+
+### Removed
+
+- `Drawer` no longer supports `backdrop` prop for customizing backdrop presentation
+- `IconButton` support for `color` (`neutral` for all now)
+- `ToggleSwitch` no longer supports `size` (now always consistent with `Checkbox` & `Radio`)
+
+## [0.9.19] - 2020-10-15
+
+### Changed
+
+- `InputDateRange` allows you to specify a single day range by clicking on one of the date range endpoints
+
+### Fixed
+
+- `Truncate` no longer conflicts with `Text/truncate` helper (moved to separate directory)
+- `FieldTimeSelect` label ARIA accessibility fixes
+- `ComboBox` and constituents caret color corrected, indicator size corrected
+
+## [0.9.18] - 2020-10-14
+
+### Added
+
+- `TreeGroup` supports `truncate` and `labelColor` props
+
+### Changed
+
+- `IconButton` w/ `size="small"` icon size adjusted to `small` (was `xsmall`)
+- `useDialog` needs to support scenario it is controlled but `onClose` isn't specified
+
+### Fixed
+
+- `Space` revert mistakenly applied `flex-shrink: 0`
+- Reverts: `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
+- Fix `image-snapshots` issue
+
+## [0.9.17] - 2020-10-12
+
+### Added
+
 - `Combobox` and `ComboboxMulti` `openOnClick` prop
 - `ComboboxInput` now supports `freeInput` prop
+- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
+- `Select`, `SelectMulti` and `InputSearch` now support `isLoading` and `detail` prop on options
 - `Span` - same as `Text` without the annoying `fontSize="medium"` (inherits by default instead)
 - `Truncate` component
+- `useDialog` - all of the power of `Dialog` in a hook!
 - Visual Snapshot test for `MenuItem`, `MenuGroup`, `Status`
-- `MenuItem` & `MenuGroup` now use `list-item-style` to suppress bullet for list item when rendered outside of `MenuList` context.
 
-## Changed
+### Changed
 
-- `TreeItem` now supports text truncation behavior
-- `TreeItem` now wraps long text pleasantly
-- `TreeItem` now defaults to `24px` minimum height (was previously `25px`)
-- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
-- `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
-- `Span` replaced all library-internal usage of `Text` with `Span`
 - `Code`, `CodeBlock` & `Paragraph` now explicitly use `theme.colors.text` as default color
-- `TreeItem`'s detail no longer has padding on the right side
+- `Dialog`
+  - `Backdrop` is now dark (Material-esque)
+  - now supports all previous `DialogManager` composition capabilities
+  - can be used in either an "uncontrolled" or "controlled" manner
+  - _temporarily_ supports optional `content` prop until existing call sites can be updated. `content` will become **required** in next significant release.
+- `DialogManager` is deprecated and all existing use cases should be replaced with `Dialog`
+  - All internal use of `DialogManager` replaced with `Dialog`
+- `Drawer` is nearly a direct pass-through to `Dialog` via `useDrawer` and `DialogRender`
+  - `useDrawer` is nearly a direct pass-through to `useDrawer` with the key exception being `Surface` override
+- `HoverDisclosure` toggles visibility with css rather than inserting elements into the DOM
 - `InputSearch` `onChange` callback argument is now a string rather than an event
 - `InputTimeSelect` supports 20- and 60-minute intervals
+- `Legend` now applies font-family `brand`
+- `MenuGroupLabel` now applies font-family `brand`
+- `Span` replaced all library-internal usage of `Text` with `Span`
+- `TreeItem`
+  - now supports text truncation behavior
+  - now wraps long text pleasantly
+  - now defaults to `24px` minimum height (was previously `25px`)
+  - detail no longer has padding on the right side
+- `Tooltip` now has a default `maxWidth` of `30rem` (this can be overridden)
+- Brand font defaults to Roboto
+- Adjusted icons sizes in `IconButtons`, `Button`, `MenuItems`, `TextField` to ensure consistent sizing across components
 
 ### Fixed
 
 - `ComboboxMulti` issue with chips not updating reflecting updated option labels
+- `DialogFooter` & `DialogHeader` will no longer shrink in Safari when vertical space is limited
 - `InputTimeSelect` disabled state
+- `MessageBar` now displays properly in IE11 (switched from grid to flex layout)
 
 ### Removed
 
@@ -48,6 +128,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- InputFilter component
+- InputFiltersChipEditor component
+- InputFiltersChip component
+- ActionListFilter component
+
 - `Drawer` component
   - Note: This is a new implementation of the previously deprecated `Drawer` and features a more modern API. `DrawerManager` behaviors are now baked in to `Drawer`
   - Includes `useDrawer` hook
@@ -61,14 +146,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- ActionList supports filtering
 - `Paragraph`, `Code`, & `CodeBlock` now explicitly sets `theme.colors.text` as default text color
   - Required minor adjustments to `Chip`
+- ActionList supports filtering
 - `ComponentsProvider` now includes `ScrollLockContext` to manage all scroll locks for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableScrollLock`, `disableScrollLock`, and `scrollLockEnabled` could previously be used to take control of a scroll lock, now use `ScrollLockContext` properties `enableCurrentLock`, `disableCurrentLock`, and `activeLockRef` to do so.
 - `AccordionDisclosure` "indicator" now matches color of container rather than preserving it's initial color
 - Storybook configuration improvements
   - `addons-essentials` now used
   - Replace `withKnobs` with `Controls` & `Args`
+- `TreeItemLabel` keep the hover behavior for selected `TreeItem`
 
 ### Fixed
 

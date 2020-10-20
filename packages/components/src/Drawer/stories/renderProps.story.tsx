@@ -25,11 +25,11 @@
  */
 
 import React from 'react'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { Drawer } from '../Drawer'
-import { SampleContent } from './SampleContent'
 
 export const RenderProps = () => (
-  <Drawer content={<SampleContent />}>
+  <Drawer content={<DialogLongContent />}>
     {(drawerProps) => <button {...drawerProps}>Open Drawer</button>}
   </Drawer>
 )

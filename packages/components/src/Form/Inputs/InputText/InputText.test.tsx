@@ -84,8 +84,10 @@ test('InputText autoResize', () => {
   const { container, getByPlaceholderText, getByText } = renderWithTheme(
     <InputText autoResize placeholder="resize me" />
   )
-  expect(container.firstChild).toHaveStyle('width: auto')
-  expect(getByPlaceholderText('resize me')).toHaveStyle('position: absolute')
+  expect(container.firstChild).toHaveStyleRule('width: auto')
+  expect(getByPlaceholderText('resize me')).toHaveStyleRule(
+    'position: absolute'
+  )
   expect(getByText('resize me')).toBeVisible()
 })
 

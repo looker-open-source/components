@@ -28,6 +28,17 @@ import React from 'react'
 import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
 import { FieldTimeSelect } from './FieldTimeSelect'
 
+test('FieldTimeSelect should associate label and input field', () => {
+  const { getByLabelText } = renderWithTheme(
+    <FieldTimeSelect
+      label="Field Time Label"
+      id="field-time-select"
+      interval={10}
+    />
+  )
+  expect(getByLabelText('Field Time Label').tagName).toEqual('INPUT')
+})
+
 test('FieldTimeSelect should accept required attributes', () => {
   const { getByText } = renderWithTheme(
     <FieldTimeSelect

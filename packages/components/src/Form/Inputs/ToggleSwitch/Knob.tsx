@@ -24,13 +24,11 @@
 
  */
 
-import { rem, rgba } from 'polished'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { reset } from '@looker/design-tokens'
+import { reset, knobShadowColor } from '@looker/design-tokens'
 
 export interface KnobProps {
-  size: number
   disabled?: boolean
   on?: boolean
 }
@@ -38,13 +36,13 @@ export interface KnobProps {
 const Knob = styled(({ className }) => <div className={className} />)`
   background: ${({ theme }) => theme.colors.field};
   border-radius: 50%;
-  bottom: ${({ size }) => rem(size * 0.1)};
-  height: ${({ size }) => rem(size * 0.8)};
-  left: ${({ size }) => rem(size * 0.1)};
+  bottom: 0.125rem;
+  height: 1rem;
+  left: 0.125rem;
   position: absolute;
-  transform: ${({ on, size }) => (on ? `translateX(${rem(size * 0.75)})` : '')};
-  transition: ${({ theme }) => theme.transitions.durationModerate};
-  width: ${({ size }) => rem(size * 0.8)};
+  transform: ${({ on }) => (on ? `translateX(0.9375rem)` : undefined)};
+  transition: ${({ theme }) => theme.transitions.moderate}ms;
+  width: 1rem;
 `
 
 interface KnobContainerProps extends KnobProps {
@@ -64,18 +62,16 @@ export const KnobContainer = styled(KnobContainerLayout)`
   ${reset}
 
   background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
-  border-radius: ${({ size }) => rem(size)};
+  border-radius: 1.25rem;
   bottom: 0;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
-  transition: ${({ theme }) => theme.transitions.durationModerate};
+  transition: ${({ theme }) => theme.transitions.moderate}ms;
 
   &:hover {
-    box-shadow: ${({ disabled, theme: { colors } }) =>
-      disabled
-        ? `0 0 0.01rem 0.01rem ${rgba(colors.keyInteractive, 0.5)}`
-        : undefined};
+    ${({ disabled }) =>
+      disabled && `box-shadow: 0 0 0.01rem 0.01rem ${knobShadowColor};`}
   }
 `

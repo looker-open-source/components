@@ -1,0 +1,39 @@
+---
+title: InputFilters
+propsOf: InputFilters
+figma: file/X33a4KC2ZpVuhtuXGrY91m/Action-List?node-id=48%3A2
+github: Form/Inputs/InputFilters/InputFilters.tsx
+---
+
+`<InputFilters />` component, displays a lits of filterable items that then have a second layer of filtering. Once the filter statement is set it can still be aditable by clicking on the element itself.
+
+```jsx
+;() => {
+  const filters = [
+    { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
+    {
+      field: 'group',
+      label: 'Group',
+      options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+    },
+    {
+      field: 'name',
+      label: 'Name',
+      options: ['Name 1', 'Name 2', 'Name 3'],
+    },
+    { field: 'status', options: ['Failed', 'In-Progress', 'Success'] },
+    {
+      field: 'buildAt',
+      label: 'Last Build Time',
+      options: ['01-22-20', '02-13-20', '05-28-20'],
+    },
+  ]
+
+  return (
+    <SpaceVertical>
+      <InputFilters filters={filters} />
+      <InputFilters filters={filters} hideFilterIcon />
+    </SpaceVertical>
+  )
+}
+```

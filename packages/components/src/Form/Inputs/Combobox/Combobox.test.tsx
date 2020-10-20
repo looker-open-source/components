@@ -139,10 +139,10 @@ describe('<Combobox/> with children', () => {
     const input = getByPlaceholderText('Type here')
     fireEvent.focus(input)
     fireEvent.change(input, { target: { value: 'oo' } })
-    expect(getByText('oo')).toHaveStyle(
+    expect(getByText('oo')).toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
-    expect(getByText('Bar')).not.toHaveStyle(
+    expect(getByText('Bar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
 
@@ -300,10 +300,10 @@ describe('<Combobox/> with children', () => {
 
     const input = getByPlaceholderText('Type here')
     fireEvent.click(input)
-    expect(getByText('Foo')).not.toHaveStyle(
+    expect(getByText('Foo')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
-    expect(getByText('FooBar')).not.toHaveStyle(
+    expect(getByText('FooBar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
 
