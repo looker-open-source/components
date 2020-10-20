@@ -46,10 +46,6 @@ test('ToggleSwitch that is disabled', () => {
   assertSnapshot(<ToggleSwitch on={true} disabled />)
 })
 
-test('Big ToggleSwitch', () => {
-  assertSnapshot(<ToggleSwitch size={60} />)
-})
-
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++

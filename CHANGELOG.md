@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `theme.transitions` durations are now integers (in milliseconds) rather than strings
 - Improved test coverage / added image-snapshots
 - InputFilter to support multiline filter tokens
+- Reduced & consolidated dependencies on `polished` library
 
 ### Fixed
 
@@ -35,8 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- IconButton support for `color` (`neutral` for all now)
 - `Drawer` no longer supports `backdrop` prop for customizing backdrop presentation
+- `IconButton` support for `color` (`neutral` for all now)
+- `ToggleSwitch` no longer supports `size` (now always consistent with `Checkbox` & `Radio`)
 
 ## [0.9.19] - 2020-10-15
 

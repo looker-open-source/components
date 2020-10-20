@@ -24,20 +24,19 @@
 
  */
 
-import { rem } from 'polished'
 import { SpaceRamp } from '../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const space: SpaceRamp = {
-  none: rem(0),
-  xxxsmall: rem(2),
-  xxsmall: rem(4),
-  xsmall: rem(8),
-  small: rem(12),
-  medium: rem(16),
-  large: rem(20),
-  xlarge: rem(32),
-  xxlarge: rem(40),
-  xxxlarge: rem(60),
-  xxxxlarge: rem(80),
+  none: '0rem',
+  xxxsmall: '0.125rem',
+  xxsmall: '0.25rem',
+  xsmall: '0.5rem',
+  small: '0.75rem',
+  medium: '1rem',
+  large: '1.25rem',
+  xlarge: '2rem',
+  xxlarge: '2.5rem',
+  xxxlarge: '3.75rem',
+  xxxxlarge: '5rem',
 }

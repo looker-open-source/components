@@ -25,13 +25,13 @@
  */
 
 import {
+  buttonShadow,
   CompatibleHTMLProps,
   reset,
   space,
   SpaceProps,
   StatefulColor,
 } from '@looker/design-tokens'
-import { rgba } from 'polished'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -82,12 +82,8 @@ export const buttonCSS = css<ButtonBaseProps>`
   ${minWidth}
   ${width}
 
-  ${(props) =>
-    props.focusVisible &&
-    `
-    box-shadow: 0 0 0 0.15rem
-      ${rgba(props.theme.colors[props.color || 'key'], 0.25)};
-  `}
+  ${({ focusVisible, color }) =>
+    focusVisible && `box-shadow: 0 0 0 0.15rem ${buttonShadow(color)};`}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
