@@ -126,7 +126,7 @@ export const ButtonItem = styled(ButtonLayout)`
   &:active,
   &:focus,
   &:hover {
-    background: ${({ theme }) => theme.colors.neutralAccent};
+    background: ${({ theme }) => theme.colors.neutralSubtle};
     color: ${({ theme }) => theme.colors.text5};
   }
 
