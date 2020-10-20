@@ -17,7 +17,6 @@ exports[`ChipButton renders correctly 1`] = `
   font-size: 0.75rem;
   font-weight: 600;
   height: 28px;
-  max-width: 320px;
   min-width: 44px;
   padding: 0.25rem 0.5rem;
 }

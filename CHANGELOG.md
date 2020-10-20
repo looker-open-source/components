@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Simplified implementation of `DialogRender` component
 - `theme.transitions` durations are now integers (in milliseconds) rather than strings
 - Improved test coverage / added image-snapshots
+- InputFilter to support multiline filter tokens
 - Reduced & consolidated dependencies on `polished` library
 
 ### Fixed

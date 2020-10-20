@@ -32,11 +32,12 @@ interface InputFiltersChipProps
   filter: FieldFilter
   onDelete: (field: FieldFilter) => void
 }
+
 export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
   ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
     const handleDelete = () => onDelete(filter)
     return (
-      <Chip ref={ref} {...props} prefix={filter.field} onDelete={handleDelete}>
+      <Chip onDelete={handleDelete} prefix={filter.field} ref={ref} {...props}>
         {filter.value}
       </Chip>
     )

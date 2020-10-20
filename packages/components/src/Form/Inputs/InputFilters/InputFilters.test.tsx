@@ -89,9 +89,6 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByText('role'))
 
-    // const editor = getByText('user')
-    // fireEvent.click(getByText('user'))
-
     expect(getByText('user')).toBeInTheDocument()
     expect(getByText('admin')).toBeInTheDocument()
     expect(getByText('pizza')).toBeInTheDocument()
