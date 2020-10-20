@@ -72,14 +72,21 @@ export const useAnimationState = (
     if (!isOpen && state === 'exited') return
     if (isOpen && state === 'entered') return
 
+    let t = 0
+
     if (isOpen) {
       setState('entering')
-      const open = setTimeout(() => setState('entered'), timing)
-      return () => clearTimeout(open)
+      t = setTimeout(() => setState('entered'), timing)
     } else {
-      setState('exiting')
-      const closed = setTimeout(() => setState('exited'), timing)
-      return () => clearTimeout(closed)
+      if (state === 'entering') {
+        setState('exited')
+      } else {
+        setState('exiting')
+        t = setTimeout(() => setState('exited'), timing)
+      }
+    }
+    return () => {
+      t && clearTimeout(t)
     }
   }, [isOpen, state, timing])
 

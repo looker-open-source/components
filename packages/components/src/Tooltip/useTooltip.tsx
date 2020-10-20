@@ -28,15 +28,17 @@ import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
 import React, { MouseEvent, ReactNode, useMemo, useState } from 'react'
 import {
+  useAnimationState,
   useCallbackRef,
   useID,
   usePopper,
   UsePopperProps,
   useForkedRef,
 } from '../utils'
-import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
+import { SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
+import { TooltipSurface } from './TooltipSurface'
 
 export interface UseTooltipProps {
   /**
@@ -92,6 +94,11 @@ export interface UseTooltipProps {
    * Customizes the style of the tooltip
    */
   surfaceStyles?: SurfaceStyleProps
+
+  /**
+   * Disable the delay on the show/hide of the tooltip
+   */
+  disableDelay?: boolean
 }
 
 export interface UseTooltipResponseDom {
@@ -119,8 +126,14 @@ export function useTooltip({
   id,
   triggerElement,
   placement: propsPlacement = 'bottom',
+  disableDelay,
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
+  const { busy, className, renderDOM } = useAnimationState(
+    disableDelay ? false : isOpen
+  )
+  const shouldRender = disableDelay ? isOpen : renderDOM
+
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element
@@ -181,9 +194,11 @@ export function useTooltip({
   const guaranteedId = useID(id)
 
   const popper =
-    isOpen && content && !disabled ? (
+    shouldRender && content && !disabled ? (
       <Portal>
-        <OverlaySurface
+        <TooltipSurface
+          aria-busy={busy ? true : undefined}
+          className={disableDelay ? '' : className}
           eventHandlers={{ onMouseOut: handleMouseOut }}
           placement={placement}
           ref={ref}
@@ -203,21 +218,20 @@ export function useTooltip({
           >
             {content}
           </TooltipContent>
-        </OverlaySurface>
+        </TooltipSurface>
       </Portal>
     ) : null
 
   return {
     domProps: {
       'aria-describedby': guaranteedId,
-      className: isOpen ? 'hover' : '',
+      className: shouldRender ? 'hover' : '',
       onBlur: handleClose,
       onFocus: handleOpen,
       onMouseOut: handleMouseOut,
       onMouseOver: handleOpen,
       ref: callbackRef,
     },
-    isOpen,
     popperInstanceRef,
     tooltip: popper,
   }

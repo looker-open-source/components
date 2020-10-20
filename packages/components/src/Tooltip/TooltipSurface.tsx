@@ -24,25 +24,16 @@
 
  */
 
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './moveFocus'
-export * from './undefinedCoalesce'
-export * from './useAnimation'
-export * from './useClickable'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
+import styled from 'styled-components'
+import { OverlaySurface } from '../Overlay/OverlaySurface'
+
+export const TooltipSurface = styled(OverlaySurface)`
+  &.exited,
+  &.entering {
+    animation: none;
+    opacity: 0;
+    /* Prevents showing the tooltip if the the mouse happens to move over it
+    when still opacity: 0 (during the delay) */
+    pointer-events: none;
+  }
+`

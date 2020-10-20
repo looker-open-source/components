@@ -28,11 +28,15 @@ import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import { ResponsiveValue } from 'styled-system'
 import { DrawerPlacements } from '../Drawer/useDrawer'
 import { Portal } from '../Portal'
-import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
+import {
+  useAnimationState,
+  useControlWarn,
+  useFocusTrap,
+  useScrollLock,
+} from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
 import { DialogSurface } from './DialogSurface'
-import { useAnimationState } from './useAnimation'
 
 export type DialogPlacements = 'center'
 

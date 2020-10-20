@@ -28,6 +28,7 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
+  act,
   screen,
   fireEvent,
   waitForElementToBeRemoved,
@@ -42,6 +43,18 @@ import {
   ControlledNoChildren,
 } from './stories/Controlled'
 
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 describe('Dialog', () => {
   test('Verify initial state', () => {
     renderWithTheme(<Dialog content={<SimpleContent />} />)
@@ -50,6 +63,7 @@ describe('Dialog', () => {
 
   test('defaultOpen', async () => {
     renderWithTheme(<Dialog defaultOpen content={<SimpleContent />} />)
+    runTimers()
     expect(screen.queryByText('Dialog content')).toBeInTheDocument()
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
@@ -70,6 +84,7 @@ describe('Dialog', () => {
     const link = screen.getByText('Open Dialog')
     expect(link).toBeInTheDocument()
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText('Dialog content')).toBeInTheDocument()
 
     // Close the Dialog
@@ -84,6 +99,7 @@ describe('Dialog', () => {
         <a>Open Dialog</a>
       </Dialog>
     )
+    runTimers()
 
     // Confirm Dialog is open
     expect(screen.queryByText('Dialog content')).toBeInTheDocument()
@@ -105,6 +121,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText('Dialog content')).toBeInTheDocument()
 
     // Close the Dialog
@@ -121,6 +138,7 @@ describe('Dialog', () => {
         content={<SimpleContent />}
       />
     )
+    runTimers()
 
     const surface = screen.getByRole('dialog')
     expect(surface).toBeInTheDocument()
@@ -137,6 +155,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText('Dialog content')).toBeInTheDocument()
 
     // Close the Dialog
@@ -151,6 +170,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
@@ -176,6 +196,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
   })
 
@@ -185,6 +206,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
@@ -199,6 +221,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
+    runTimers()
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
@@ -249,6 +272,7 @@ describe('Dialog', () => {
         onClose={onClose}
       />
     )
+    runTimers()
 
     fireEvent.click(screen.getByText('Done'))
     expect(onClose).toBeCalledTimes(0)

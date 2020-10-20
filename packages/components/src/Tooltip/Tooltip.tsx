@@ -49,16 +49,14 @@ function isRenderProp(
 }
 
 export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { domProps, isOpen, tooltip } = useTooltip(props)
+  const { domProps, tooltip } = useTooltip(props)
 
   let target = children
 
   if (isValidElement(children)) {
     target = cloneElement(children, {
       ...domProps,
-      className: isOpen
-        ? `${children.props.className} ${domProps.className}`
-        : children.props.className,
+      className: `${children.props.className || ''} ${domProps.className}`,
     })
   } else if (isRenderProp(children)) {
     target = children(domProps)

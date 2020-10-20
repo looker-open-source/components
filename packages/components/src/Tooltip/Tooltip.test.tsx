@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
 import { Tooltip } from './Tooltip'
 
@@ -62,7 +62,7 @@ describe('Tooltip', () => {
     expect(tooltip).not.toBeInTheDocument()
   })
 
-  test('close on surface mouseout', () => {
+  test('unmounts immediately if mouseout happens before enter is complete', () => {
     renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
@@ -74,10 +74,62 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.getByText('Hello world')
-    expect(tooltip).toBeVisible()
+    expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
+  })
+
+  test('delayed unmount if mouseout happens after enter is complete', () => {
+    jest.useFakeTimers()
+
+    renderWithTheme(
+      <Tooltip content="Hello world" isOpen>
+        <Button>Test</Button>
+      </Tooltip>
+    )
+
+    const trigger = screen.getByText('Test')
+
+    fireEvent.mouseOver(trigger)
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+
+    const tooltip = screen.getByText('Hello world')
+    fireEvent.mouseOut(tooltip)
+    expect(tooltip).toBeInTheDocument()
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(tooltip).not.toBeInTheDocument()
+
+    jest.useRealTimers()
+  })
+
+  test('disableDelay', () => {
+    jest.useFakeTimers()
+
+    renderWithTheme(
+      <Tooltip content="Hello world" isOpen disableDelay>
+        <Button>Test</Button>
+      </Tooltip>
+    )
+
+    const trigger = screen.getByText('Test')
+
+    fireEvent.mouseOver(trigger)
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+
+    const tooltip = screen.getByText('Hello world')
+    expect(tooltip).toBeInTheDocument()
+
+    fireEvent.mouseOut(tooltip)
+    expect(tooltip).not.toBeInTheDocument()
+
+    jest.useRealTimers()
   })
 
   test('open initially, collapse on mouseout', () => {
