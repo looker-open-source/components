@@ -28,8 +28,9 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
-
 import { InputTimeSelect, InputTimeSelectProps } from './InputTimeSelect'
+
+jest.mock('lodash/throttle', () => (fn: any) => fn)
 
 const realDateNow = Date.now.bind(global.Date)
 // eslint-disable-next-line @typescript-eslint/unbound-method

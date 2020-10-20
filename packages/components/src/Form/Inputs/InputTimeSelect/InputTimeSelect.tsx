@@ -24,6 +24,7 @@
 
  */
 import React, {
+  useCallback,
   forwardRef,
   KeyboardEvent,
   useState,
@@ -40,6 +41,7 @@ import trim from 'lodash/trim'
 import last from 'lodash/last'
 import head from 'lodash/head'
 import sortedIndex from 'lodash/sortedIndex'
+import throttle from 'lodash/throttle'
 import {
   BorderProps,
   SpaceProps,
@@ -182,13 +184,24 @@ const createOptionFromStringValue = (format: TimeFormats, value: string) => {
   }
 }
 
+// convert times like "2:00 pm" or "12:15 am" to 24 hour equivalents
+const convert12to24hr = (hour: number, period: 'am' | 'pm') => {
+  if (hour + period === '12am') {
+    return 0
+  } else if (period === 'pm' && hour < 12) {
+    return hour + 12
+  } else {
+    return hour
+  }
+}
+
 // take in a shorthand string label ('2pm') and return a formatted object
 // e.g. {label: '02:00 pm', value: '14:00'}
 const createOptionFromLabel = (format: TimeFormats, label: string) => {
   const period = label.toLowerCase().includes('p') ? 'pm' : 'am'
   const numericTime = label.replace(/[apm]/gi, '')
   const [hour = 0, minute = 0] = numericTime.split(':').map(parseBase10Int)
-  const hr24 = hour + (period === 'pm' ? 12 : 0)
+  const hr24 = convert12to24hr(hour, period)
   const value = `${formatTimeString(hr24)}:${formatTimeString(minute)}`
 
   if (isValidTime(value)) {
@@ -250,6 +263,8 @@ const setScrollIntoView = (
   )
 }
 
+const arrowKeys = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft']
+
 const InputTimeSelectLayout = forwardRef(
   (
     {
@@ -301,6 +316,17 @@ const InputTimeSelectLayout = forwardRef(
       }
     }
 
+    const throttledHandleChange = useCallback(
+      throttle(
+        (v: MaybeComboboxOptionObject) => {
+          handleChange(v)
+        },
+        50,
+        { trailing: false }
+      ),
+      []
+    )
+
     const handleTextInputChange = (e: SyntheticEvent) => {
       setInputTextValue((e.target as HTMLInputElement).value)
     }
@@ -309,13 +335,21 @@ const InputTimeSelectLayout = forwardRef(
       setInputTextValue('')
     }
 
+    const [isNavigating, setIsNavigating] = useState(false)
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter' || e.key === 'Tab') {
+      const { key } = e
+      if (arrowKeys.includes(key)) {
+        setIsNavigating(true)
+      } else if (key === 'Enter' || key === 'Tab') {
         if (inputTextValue.length) {
           // allow entering shortcuts like `2pm` to select `02:00 pm` on enter
           const option = createOptionFromLabel(format, inputTextValue)
-          handleChange(option)
+          // don't fire change event here if user is selecting an option from the dropdown list
+          !isNavigating && throttledHandleChange(option)
         }
+      } else {
+        setIsNavigating(false)
       }
     }
 
@@ -338,7 +372,7 @@ const InputTimeSelectLayout = forwardRef(
       <Combobox
         className={className}
         ref={ref}
-        onChange={handleChange}
+        onChange={throttledHandleChange}
         value={selectedOption}
       >
         <ComboboxInput

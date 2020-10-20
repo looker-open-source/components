@@ -23,14 +23,37 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, Paragraph } from '@looker/components'
+import {
+  ComponentsProvider,
+  InputTimeSelect,
+  Card,
+  CardContent,
+  Heading,
+} from '@looker/components'
 import 'core-js/stable'
+
+const TimePlayground = () => {
+  const [value, setValue] = useState<string | undefined>('07:39')
+  const handleChange = (newVal?: string) => {
+    setValue(newVal)
+  }
+  return (
+    <>
+      <Heading>Selected: {value}</Heading>
+      <InputTimeSelect value={value} onChange={handleChange} />
+    </>
+  )
+}
 
 const App = () => (
   <ComponentsProvider loadGoogleFonts>
-    <Paragraph>Hello world</Paragraph>
+    <Card m="large" maxWidth="500px">
+      <CardContent>
+        <TimePlayground />
+      </CardContent>
+    </Card>
   </ComponentsProvider>
 )
 
