@@ -33,38 +33,50 @@ import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
-import { Popover } from '../../../Popover'
+import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
-import { InputFiltersChipEditor } from './InputFiltersChipEditor'
+import {
+  InputFiltersChipEditor,
+  CustomFilterEditorProps,
+} from './InputFiltersChipEditor'
 
-export interface FieldFilter {
+export interface FieldFilterOptions {
   /* specify the field value */
   field: string
   /* text to be displayed in drop-down, optional, `field` is used if not specified */
   label?: string
-  /* filter value/expression */
-  value?: string
-
+  /**
+   * ability to select multiple filter options
+   * @default false
+   */
+  multiple?: boolean
+  /* list of options to filter by */
   options?: string[]
 }
 
+export interface FieldFilter extends FieldFilterOptions {
+  editor?: CustomFilterEditorProps
+  formatValue?: (value?: string) => string
+  /* filter value/expression */
+  value?: string
+}
+
 export interface InputFiltersProps {
-  filters: FieldFilter[]
-  onChange: (filters: FieldFilter[]) => void
-  hideFilterIcon?: boolean
   className?: string
+  filters: FieldFilter[]
+  hideFilterIcon?: boolean
+  onChange: (filters: FieldFilter[]) => void
 }
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,
   filters,
-  onChange,
   hideFilterIcon = false,
+  onChange,
 }) => {
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
-
   const assignedFilters = filters
     .filter((filter) => filter.value || filter.field === fieldEditing)
     .sort((a, b) =>
@@ -121,6 +133,8 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
+          const { editor } = filter
+
           const editFilter = () => setFieldEditing(filter.field)
 
           const handleDelete = () =>
@@ -160,17 +174,26 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               {filter?.label || filter.field}
             </Text>
           )
+          console.log('filter :', filter, filter.field === fieldEditing)
+
           return filter.field === fieldEditing ? (
             <Popover
               key={i}
               isOpen={fieldEditing !== undefined}
               setOpen={closeInputFiltersChipEditor}
               content={
-                <InputFiltersChipEditor
-                  value={filter.value}
-                  onChange={setFieldEditingValue}
-                  options={filter.options}
-                />
+                <PopoverContent>
+                  {/* {editor ? (
+                    { editor(closeEditor, filter, setFieldEditingValue, filter.value ) }
+                  ) : ( */}
+                  <InputFiltersChipEditor
+                    closeEditor={closeInputFiltersChipEditor}
+                    onChange={setFieldEditingValue}
+                    filterOptions={filter}
+                    value={filter.value}
+                  />
+                  {/* )} */}
+                </PopoverContent>
               }
             >
               {filterToken}
@@ -212,7 +235,6 @@ const ChipWrapper = styled.div`
   display: inline-flex;
   flex: 1;
   flex-wrap: wrap;
-
   @supports (gap: 4px) {
     gap: ${({ theme }) => theme.space.xxsmall};
     ${Chip} {
@@ -229,17 +251,14 @@ export const InputFilters = styled(InputFiltersLayout)`
   flex-wrap: wrap;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
-
   ${Chip} {
     display: inline;
   }
-
   ${Select} {
     ${Icon} {
       display: none;
     }
   }
-
   ${InputText} {
     border: none;
     height: 28px;

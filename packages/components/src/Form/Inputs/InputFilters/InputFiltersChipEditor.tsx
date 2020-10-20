@@ -23,36 +23,71 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { ButtonGroup } from '../../../Button'
-import { PopoverContent } from '../../../Popover'
-import { SpaceVertical } from '../../../Layout/Space'
+import React, { ReactNode } from 'react'
+import { CheckboxGroup, RadioGroup } from '../../../Form/Inputs/OptionsGroup'
+import { FieldFilterOptions } from './InputFilters'
 
-interface InputFiltersChipEditorProps {
+export type CustomFilterEditorProps = (
+  closeEditor: () => void,
+  filterOptions: FieldFilterOptions,
+  onChange: (value?: string) => void,
   value?: string
-  onChange: (value: string) => void
-  options?: string[]
-}
-export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
-  value,
+) => ReactNode
+
+export const InputFiltersChipEditor: CustomFilterEditorProps = (
+  closeEditor,
+  filterOptions,
   onChange,
-  options,
-}) => {
-  const handleChange = (newValues: string[]) => {
+  value
+) => {
+  console.log('filterOptions: ', filterOptions)
+  console.log('value: ', value)
+  const { multiple = false } = filterOptions
+
+  const options = filterOptions.options
+    ? filterOptions.options.map((value) => ({ label: value, value }))
+    : []
+
+  const handleChangeCheckbox = (newValues: string[]) => {
     onChange(newValues.sort().join(', '))
   }
 
-  return (
-    <PopoverContent p="large" maxWidth="360px">
-      <SpaceVertical>
-        {options && (
-          <ButtonGroup
-            value={value ? value.split(', ') : []}
-            options={options.map((value) => ({ label: value, value }))}
-            onChange={handleChange}
-          />
-        )}
-      </SpaceVertical>
-    </PopoverContent>
+  const handleChangeRadio = (newValue: string) => {
+    onChange(newValue)
+    closeEditor()
+  }
+
+  return multiple ? (
+    <CheckboxGroup
+      // value={value ? value.split(', ') : []}
+      options={options}
+      onChange={handleChangeCheckbox}
+    />
+  ) : (
+    <RadioGroup value={value} options={options} onChange={handleChangeRadio} />
   )
 }
+
+// export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
+//   value,
+//   onChange,
+//   options,
+// }) => {
+//   const handleChange = (newValues: string[]) => {
+//     onChange(newValues.sort().join(', '))
+//   }
+
+//   return (
+//     <PopoverContent p="large" maxWidth="360px">
+//       <SpaceVertical>
+//         {options && (
+//           <ButtonGroup
+//             value={value ? value.split(', ') : []}
+//             options={options.map((value) => ({ label: value, value }))}
+//             onChange={handleChange}
+//           />
+//         )}
+//       </SpaceVertical>
+//     </PopoverContent>
+//   )
+// }

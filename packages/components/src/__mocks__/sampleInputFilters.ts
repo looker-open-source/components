@@ -57,6 +57,7 @@ export const filters = [
   },
   {
     field: 'PDT Name',
+    multiple: true,
     options: [
       'my_great_pdt_name',
       'my_other_great_pdt_name',
@@ -65,5 +66,5 @@ export const filters = [
     ],
   },
   { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
-  { field: 'status', options: ['Failed', 'Success'] },
+  { field: 'status', multiple: true, options: ['Failed', 'Success'] },
 ]
