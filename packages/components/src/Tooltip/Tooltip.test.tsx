@@ -35,14 +35,21 @@ describe('Tooltip', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
 
   beforeEach(() => {
+    jest.useFakeTimers()
     rafSpy = jest
       .spyOn(window, 'requestAnimationFrame')
       .mockImplementation((cb: any) => cb())
   })
 
   afterEach(() => {
+    jest.useRealTimers()
     rafSpy.mockRestore()
   })
+
+  const runTimers = () =>
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
 
   test('trigger: open on mouseover, close on mouseout', () => {
     renderWithTheme(
@@ -75,6 +82,7 @@ describe('Tooltip', () => {
 
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
 
     fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
@@ -92,19 +100,13 @@ describe('Tooltip', () => {
     const trigger = screen.getByText('Test')
 
     fireEvent.mouseOver(trigger)
-    act(() => {
-      jest.runOnlyPendingTimers()
-    })
+    runTimers()
 
     const tooltip = screen.getByText('Hello world')
     fireEvent.mouseOut(tooltip)
     expect(tooltip).toBeInTheDocument()
-    act(() => {
-      jest.runOnlyPendingTimers()
-    })
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
-
-    jest.useRealTimers()
   })
 
   test('disableDelay', () => {
@@ -119,17 +121,13 @@ describe('Tooltip', () => {
     const trigger = screen.getByText('Test')
 
     fireEvent.mouseOver(trigger)
-    act(() => {
-      jest.runOnlyPendingTimers()
-    })
+    runTimers()
 
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
-
-    jest.useRealTimers()
   })
 
   test('open initially, collapse on mouseout', () => {
@@ -141,9 +139,11 @@ describe('Tooltip', () => {
 
     const trigger = screen.getByText('Test')
     const tooltip = screen.queryByText('Hello world')
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -159,11 +159,13 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    runTimers()
     expect(tooltip).toBeVisible()
 
     expect(tooltip).toHaveStyleRule('max-width: 20rem')
     expect(tooltip).toHaveStyleRule('text-align: right')
     fireEvent.mouseOut(trigger)
+    runTimers()
   })
 
   test('Render props version works', () => {
@@ -178,9 +180,14 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
+
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 })

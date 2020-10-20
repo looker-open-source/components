@@ -78,12 +78,12 @@ export const useAnimationState = (
       setState('entering')
       t = setTimeout(() => setState('entered'), timing)
     } else {
-      // if (state === 'entering') {
-      //   setState('exited')
-      // } else {
-      setState('exiting')
-      t = setTimeout(() => setState('exited'), timing)
-      // }
+      if (state === 'entering') {
+        setState('exited')
+      } else {
+        setState('exiting')
+        t = setTimeout(() => setState('exited'), timing)
+      }
     }
     return () => {
       t && clearTimeout(t)
