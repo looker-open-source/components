@@ -29,6 +29,7 @@ import { OverlaySurface } from '../Overlay/OverlaySurface'
 
 export const TooltipSurface = styled(OverlaySurface)`
   &.exited,
+  &.exiting,
   &.entering {
     animation: none;
     opacity: 0;

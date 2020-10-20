@@ -24,11 +24,7 @@
 
  */
 
-import {
-  act,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React, { useState } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -56,18 +52,9 @@ const optionalProps = {
   secondary: <div>Secondary Cheese</div>,
 }
 
-beforeEach(() => {
-  jest.useFakeTimers()
-})
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
   onSaveCallback.mockClear()
 })
-const runTimers = () =>
-  act(() => {
-    jest.runOnlyPendingTimers()
-  })
 
 test('<Prompt/> with defaults', async () => {
   const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
@@ -78,7 +65,6 @@ test('<Prompt/> with defaults', async () => {
 
   const opener = getByText('Open Prompt')
   fireEvent.click(opener)
-  runTimers()
 
   const saveButton = getByText('Save')
   const input = getByPlaceholderText(requiredProps.inputLabel)
@@ -108,7 +94,6 @@ test('<Prompt/> with custom props', () => {
 
   const opener = getByText('Open Prompt')
   fireEvent.click(opener)
-  runTimers()
 
   const saveButton = getByText(optionalProps.saveLabel)
   const cancelButton = getByText(optionalProps.cancelLabel)
@@ -134,7 +119,6 @@ test('<Prompt /> does not clear value after closing', () => {
 
   const opener = getByText('Open Prompt')
   fireEvent.click(opener)
-  runTimers()
 
   const cancelButton = getByText('Cancel')
   let input = getByPlaceholderText(requiredProps.inputLabel)
@@ -144,7 +128,6 @@ test('<Prompt /> does not clear value after closing', () => {
   fireEvent.click(cancelButton)
 
   fireEvent.click(opener)
-  runTimers()
   // Note: Need to re-query for the input; not doing so results in stale value on the input element
   input = getByPlaceholderText(requiredProps.inputLabel)
   expect(input).toHaveValue('Hello World')
@@ -159,7 +142,6 @@ test('<Prompt /> clears value after closing with clearOnCancel', () => {
 
   const opener = getByText('Open Prompt')
   fireEvent.click(opener)
-  runTimers()
 
   const cancelButton = getByText('Cancel')
   let input = getByPlaceholderText(requiredProps.inputLabel)
@@ -169,7 +151,6 @@ test('<Prompt /> clears value after closing with clearOnCancel', () => {
   fireEvent.click(cancelButton)
 
   fireEvent.click(opener)
-  runTimers()
   // Note: Need to re-query for the input; not doing so results in stale value on the input element
   input = getByPlaceholderText(requiredProps.inputLabel)
   expect(input).toHaveValue('')
@@ -194,12 +175,10 @@ test('<Prompt /> updates when defaultValue changes', () => {
   const { getByText, getByDisplayValue } = renderWithTheme(<PromptTest />)
 
   fireEvent.click(getByText('Open Prompt'))
-  runTimers()
   getByDisplayValue('Gouda')
   fireEvent.click(getByText('Cancel'))
 
   fireEvent.click(getByText('Set Default Value to Swiss'))
   fireEvent.click(getByText('Open Prompt'))
-  runTimers()
   getByDisplayValue('Swiss')
 })

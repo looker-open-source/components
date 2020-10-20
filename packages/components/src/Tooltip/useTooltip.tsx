@@ -130,9 +130,10 @@ export function useTooltip({
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState(
-    disableDelay ? false : isOpen
+    isOpen,
+    !disableDelay,
+    false
   )
-  const shouldRender = disableDelay ? isOpen : renderDOM
 
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
   const [newTriggerElement, callbackRef] = useCallbackRef()
@@ -194,7 +195,7 @@ export function useTooltip({
   const guaranteedId = useID(id)
 
   const popper =
-    shouldRender && content && !disabled ? (
+    renderDOM && content && !disabled ? (
       <Portal>
         <TooltipSurface
           aria-busy={busy ? true : undefined}
@@ -225,7 +226,7 @@ export function useTooltip({
   return {
     domProps: {
       'aria-describedby': guaranteedId,
-      className: shouldRender ? 'hover' : '',
+      className: renderDOM ? 'hover' : '',
       onBlur: handleClose,
       onFocus: handleOpen,
       onMouseOut: handleMouseOut,

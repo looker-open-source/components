@@ -24,11 +24,7 @@
 
  */
 
-import {
-  act,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -50,19 +46,10 @@ const optionalProps = {
   title: 'Delete the thing?',
 }
 
-beforeEach(() => {
-  jest.useFakeTimers()
-})
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
   requiredProps.onConfirm.mockClear()
   optionalProps.onCancel.mockClear()
 })
-const runTimers = () =>
-  act(() => {
-    jest.runOnlyPendingTimers()
-  })
 
 test('<Confirm/> with defaults', async () => {
   const { getByText, queryByText } = renderWithTheme(
@@ -73,7 +60,6 @@ test('<Confirm/> with defaults', async () => {
 
   const opener = getByText('Do Something')
   fireEvent.click(opener)
-  runTimers()
 
   const button = getByText('Confirm')
 
@@ -98,7 +84,6 @@ test('<Confirm/> with custom props', () => {
 
   const opener = getByText('Do Something')
   fireEvent.click(opener)
-  runTimers()
 
   const button = getByText(optionalProps.confirmLabel || '')
   expect(button).toHaveStyleRule(`background: ${theme.colors.critical}`)

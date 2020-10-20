@@ -51,61 +51,41 @@ describe('Tooltip', () => {
       jest.runOnlyPendingTimers()
     })
 
-  test('trigger: open on mouseover, close on mouseout', () => {
+  test('trigger: delay on mouseover, exits immediately on mouseout', () => {
     renderWithTheme(
-      <Tooltip content="Hello world" id="stable-id">
+      <Tooltip content="Hello world">
         <Button>Test</Button>
       </Tooltip>
     )
 
     const trigger = screen.getByText('Test')
-
-    fireEvent.mouseOver(trigger)
-
-    const tooltip = screen.getByText('Hello world')
-    expect(tooltip.parentNode).toMatchSnapshot()
-
-    fireEvent.mouseOut(trigger)
-    expect(tooltip).not.toBeInTheDocument()
-  })
-
-  test('unmounts immediately if mouseout happens before enter is complete', () => {
-    renderWithTheme(
-      <Tooltip content="Hello world" isOpen>
-        <Button>Test</Button>
-      </Tooltip>
-    )
-
-    const trigger = screen.getByText('Test')
-
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
     expect(tooltip).not.toBeVisible()
 
+    runTimers()
+    expect(tooltip).toBeVisible()
+
     fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
   })
 
-  test('delayed unmount if mouseout happens after enter is complete', () => {
-    jest.useFakeTimers()
-
+  test('isOpen', () => {
     renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
       </Tooltip>
     )
-
-    const trigger = screen.getByText('Test')
-
-    fireEvent.mouseOver(trigger)
-    runTimers()
-
     const tooltip = screen.getByText('Hello world')
-    fireEvent.mouseOut(tooltip)
     expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
+
     runTimers()
+    expect(tooltip).toBeVisible()
+
+    fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -143,7 +123,6 @@ describe('Tooltip', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
-    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 

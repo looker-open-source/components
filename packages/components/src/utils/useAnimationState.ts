@@ -52,6 +52,11 @@ interface UseAnimationStateReturn {
   busy: boolean
 }
 
+export interface AnimationStateConfig {
+  exit: boolean
+  enter: boolean
+}
+
 /**
  *
  * Hook that encapsulates timing behavior to allow for CSS transitions to complete before DOM elements are
@@ -59,13 +64,19 @@ interface UseAnimationStateReturn {
  *
  *
  * @param isOpen - Toggle visibility
+ * @param enter - whether to transition the enter @default true
+ * @param exit - whether to transition the exit @default true
  * @param timing - How long does the transition take to complete. Elements will be removed from the DOM once this time is elapsed
  */
 export const useAnimationState = (
   isOpen: boolean,
+  enter = true,
+  exit = true,
   timing = transitions.moderate
 ): UseAnimationStateReturn => {
-  const [state, setState] = useState<AnimationStates>('exited')
+  const [state, setState] = useState<AnimationStates>(
+    enter ? 'exited' : 'entered'
+  )
 
   useEffect(() => {
     /* Short-circuit state changes that don't matter */
@@ -75,10 +86,14 @@ export const useAnimationState = (
     let t = 0
 
     if (isOpen) {
-      setState('entering')
-      t = setTimeout(() => setState('entered'), timing)
+      if (!enter) {
+        setState('entered')
+      } else {
+        setState('entering')
+        t = setTimeout(() => setState('entered'), timing)
+      }
     } else {
-      if (state === 'entering') {
+      if (!exit) {
         setState('exited')
       } else {
         setState('exiting')
@@ -88,7 +103,7 @@ export const useAnimationState = (
     return () => {
       t && clearTimeout(t)
     }
-  }, [isOpen, state, timing])
+  }, [isOpen, enter, exit, state, timing])
 
   return {
     busy: busyStates.includes(state),
