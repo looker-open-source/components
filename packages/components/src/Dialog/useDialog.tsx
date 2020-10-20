@@ -176,7 +176,10 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
-  const { busy, className, renderDOM } = useAnimationState(isOpen)
+  const { busy, className, renderDOM } = useAnimationState(
+    isOpen,
+    defaultOpen ? 'none' : undefined
+  )
 
   const setOpen =
     isControlled && controlledSetOpen

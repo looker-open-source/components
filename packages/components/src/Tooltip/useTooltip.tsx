@@ -26,6 +26,7 @@
 
 import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
+import { Transitions } from '@looker/design-tokens'
 import React, { MouseEvent, ReactNode, useMemo, useState } from 'react'
 import {
   useAnimationState,
@@ -96,9 +97,9 @@ export interface UseTooltipProps {
   surfaceStyles?: SurfaceStyleProps
 
   /**
-   * Disable the delay on the show/hide of the tooltip
+   * Delay
    */
-  disableDelay?: boolean
+  delay?: keyof Transitions
 }
 
 export interface UseTooltipResponseDom {
@@ -126,13 +127,13 @@ export function useTooltip({
   id,
   triggerElement,
   placement: propsPlacement = 'bottom',
-  disableDelay,
+  delay = 'moderate',
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
-    !disableDelay,
-    false
+    delay,
+    'none'
   )
 
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
@@ -199,7 +200,7 @@ export function useTooltip({
       <Portal>
         <TooltipSurface
           aria-busy={busy ? true : undefined}
-          className={disableDelay ? '' : className}
+          className={className}
           eventHandlers={{ onMouseOut: handleMouseOut }}
           placement={placement}
           ref={ref}

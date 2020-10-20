@@ -24,7 +24,7 @@
 
  */
 
-import { transitions } from '@looker/design-tokens'
+import { transitions, Transitions } from '@looker/design-tokens'
 import { useEffect, useState } from 'react'
 
 type Entering = 'entering'
@@ -70,13 +70,12 @@ export interface AnimationStateConfig {
  */
 export const useAnimationState = (
   isOpen: boolean,
-  enter = true,
-  exit = true,
-  timing = transitions.moderate
+  enter: keyof Transitions = 'moderate',
+  exit: keyof Transitions = 'moderate'
 ): UseAnimationStateReturn => {
-  const [state, setState] = useState<AnimationStates>(
-    enter ? 'exited' : 'entered'
-  )
+  const [state, setState] = useState<AnimationStates>('exited')
+  const timingEnter = transitions[enter]
+  const timingExit = transitions[exit]
 
   useEffect(() => {
     /* Short-circuit state changes that don't matter */
@@ -86,24 +85,24 @@ export const useAnimationState = (
     let t = 0
 
     if (isOpen) {
-      if (!enter) {
+      if (!timingEnter) {
         setState('entered')
       } else {
         setState('entering')
-        t = setTimeout(() => setState('entered'), timing)
+        t = setTimeout(() => setState('entered'), timingEnter)
       }
     } else {
-      if (!exit) {
+      if (!timingExit) {
         setState('exited')
       } else {
         setState('exiting')
-        t = setTimeout(() => setState('exited'), timing)
+        t = setTimeout(() => setState('exited'), timingExit)
       }
     }
     return () => {
       t && clearTimeout(t)
     }
-  }, [isOpen, enter, exit, state, timing])
+  }, [isOpen, timingEnter, timingExit, state])
 
   return {
     busy: busyStates.includes(state),
