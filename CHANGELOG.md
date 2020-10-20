@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Tooltip` and `useTooltip` now include a brief delay before show/hide
+  - `disableDelay` prop turns off this feature
 - `useDialog` (`Dialog` & `Drawer`) refactored
   - Removed use of `react-transition-group` dependency
   - Added support for `aria-busy`
