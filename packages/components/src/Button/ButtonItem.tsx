@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
+import React, { forwardRef, MouseEvent, Ref, useContext, useState } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -39,16 +39,29 @@ export interface ButtonItemProps
   extends SpaceProps,
     Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
   value?: string
+  focusVisible?: boolean
 }
 
 const ButtonLayout = forwardRef(
   (
-    { children, onClick, value, ...props }: ButtonItemProps,
+    { children, onClick, value, onBlur, onKeyUp, ...props }: ButtonItemProps,
     ref: Ref<HTMLButtonElement>
   ) => {
     const { disabled, value: contextValue, onItemClick } = useContext(
       ButtonSetContext
     )
+
+    const [isFocusVisible, setFocusVisible] = useState(false)
+
+    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      setFocusVisible(true)
+      onKeyUp && onKeyUp(event)
+    }
+
+    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+      setFocusVisible(false)
+      onBlur && onBlur(event)
+    }
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -67,22 +80,30 @@ const ButtonLayout = forwardRef(
       : false
 
     return (
-      <button
-        type="button"
+      <ButtonOuter
         aria-pressed={selected}
         ref={ref}
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
+        focusVisible={isFocusVisible}
+        onKeyUp={handleOnKeyUp}
+        onBlur={handleOnBlur}
         {...omitStyledProps(props)}
       >
         {children}
-      </button>
+      </ButtonOuter>
     )
   }
 )
 
 ButtonLayout.displayName = 'ButtonLayout'
+
+const ButtonOuter = styled.button<ButtonItemProps>`
+  ${(props) =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0.5px 1px ${props.theme.colors.keyFocus}`}
+`
 
 export const ButtonItem = styled(ButtonLayout)`
   align-items: center;
@@ -105,11 +126,11 @@ export const ButtonItem = styled(ButtonLayout)`
   &:active,
   &:focus,
   &:hover {
-    background: ${({ theme }) => theme.colors.ui1};
+    background: ${({ theme }) => theme.colors.neutralAccent};
+    color: ${({ theme }) => theme.colors.text5};
   }
 
   &:focus {
-    box-shadow: 0 0 0.5px 1px ${({ theme }) => theme.colors.keyFocus};
     outline: none;
   }
 
