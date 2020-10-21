@@ -146,7 +146,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               )
             )
 
-          const setFieldEditingValue = (value: string) => {
+          const setFieldEditingValue = (value?: string) => {
             const filterIndex = assignedFilters.findIndex(
               (filter) => filter.field === fieldEditing
             )
@@ -185,13 +185,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
                     ? editor(
                         closeInputFiltersChipEditor,
                         filter,
-                        () => setFieldEditingValue,
+                        setFieldEditingValue,
                         filter.value
                       )
                     : InputFilterCustomEditor(
                         closeInputFiltersChipEditor,
                         filter,
-                        () => setFieldEditingValue,
+                        setFieldEditingValue,
                         filter.value
                       )}
                 </PopoverContent>
