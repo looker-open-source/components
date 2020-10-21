@@ -56,21 +56,22 @@ export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
   children: ReactNode
-  eventHandlers?: DOMAttributes<{}>
+  className?: string
+  eventHandlers?: DOMAttributes<HTMLElement>
   placement: Placement
   style?: CSSProperties
   zIndex?: number
   maxWidth?: string
 }
 
-export const OverlaySurface = forwardRef(
+const OverlaySurfaceLayout = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
     const {
       children,
+      className,
       eventHandlers,
       placement,
       style,
-      maxWidth,
       ...innerProps
     } = props
     const { closeModal } = useContext(DialogContext)
@@ -81,27 +82,28 @@ export const OverlaySurface = forwardRef(
     useGlobalHotkeys('esc', closeModal, innerRef)
 
     return (
-      <Outer
+      <div
         ref={ref}
         style={style}
+        className={className}
         {...eventHandlers}
         tabIndex={-1}
         data-placement={placement}
-        maxWidth={maxWidth}
       >
         <Inner tabIndex={-1} data-overlay-surface={true} {...innerProps}>
           {children}
         </Inner>
-      </Outer>
+      </div>
     )
   }
 )
 
-OverlaySurface.displayName = 'OverlaySurface'
+OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout'
 
-const Outer = styled.div<{ zIndex?: number; maxWidth?: string }>`
+export const OverlaySurface = styled(OverlaySurfaceLayout)`
   ${reset}
-  animation: ${fadeIn} 150ms ease-in;
+  animation: ${fadeIn} ease-in;
+  animation-duration: ${({ theme }) => `${theme.transitions.quick}ms`};
   max-width: ${({ maxWidth }) => maxWidth};
   overflow: visible;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
@@ -123,11 +125,6 @@ const Outer = styled.div<{ zIndex?: number; maxWidth?: string }>`
   }
 
   &:focus {
-    outline: none;
-  }
-
-  /* react-hotkeys focus suppression */
-  & > div.hotkeys:focus {
     outline: none;
   }
 `

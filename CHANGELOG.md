@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Tooltip` and `useTooltip` now include a brief delay before showing
+  - `delay` prop controls the length
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 - Improved test coverage / added image-snapshots
 - `ScheduleOutline` Icon artwork

@@ -28,12 +28,25 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
+  act,
   fireEvent,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('IconButton', () => {
   test('toggle applies aria-pressed', () => {
@@ -73,6 +86,7 @@ describe('IconButton', () => {
     fireEvent.mouseOver(button)
     expect(fauxMouseEnter).toHaveBeenCalledTimes(1)
     fireEvent.mouseOut(button)
+    runTimers()
     await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
 
     fireEvent.click(button)
@@ -88,6 +102,7 @@ describe('IconButton', () => {
 
     const icon = screen.getByText(label)
     fireEvent.mouseOver(icon)
+    runTimers()
 
     const tooltip = screen.getAllByText(label)
     expect(tooltip).toHaveLength(2)
@@ -109,6 +124,7 @@ describe('IconButton', () => {
     )
 
     fireEvent.mouseOver(screen.getAllByText(label)[0])
+    runTimers()
 
     const notTooltip = container.querySelector('p') // Get Tooltip content
     expect(notTooltip).toBeNull()
@@ -125,6 +141,7 @@ describe('IconButton', () => {
 
     const button = getByRole('button')
     fireEvent.mouseOver(button)
+    runTimers()
 
     expect(getByText(tooltip)).toBeInTheDocument()
 
@@ -151,6 +168,7 @@ describe('IconButton', () => {
 
     const trigger = screen.getByText(label)
     fireEvent.mouseOver(trigger)
+    runTimers()
 
     const tooltip = screen.queryAllByText(label)
     expect(tooltip[0]).toBeVisible()

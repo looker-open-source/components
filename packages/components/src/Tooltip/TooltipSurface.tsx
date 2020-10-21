@@ -24,24 +24,17 @@
 
  */
 
-import { Transitions } from '../system'
+import styled from 'styled-components'
+import { OverlaySurface } from '../Overlay/OverlaySurface'
 
-const none = 0
-const rapid = 100
-const quick = 150
-const simple = 200
-const moderate = 300
-const complex = 400
-const intricate = 500
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-export const transitions: Transitions = {
-  none,
-  rapid,
-  quick,
-  simple,
-  moderate,
-  complex,
-  intricate,
-}
-/* eslint-enable sort-keys */
+export const TooltipSurface = styled(OverlaySurface)`
+  &.exited,
+  &.exiting,
+  &.entering {
+    animation: none;
+    opacity: 0;
+    /* Prevents showing the tooltip if the the mouse happens to move over it
+    when still opacity: 0 (during the delay) */
+    pointer-events: none;
+  }
+`

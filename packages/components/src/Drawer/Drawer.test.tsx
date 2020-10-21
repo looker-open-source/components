@@ -28,6 +28,7 @@ import 'jest-styled-components'
 import React, { useContext } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
+  act,
   screen,
   fireEvent,
   waitForElementToBeRemoved,
@@ -47,6 +48,18 @@ const SimpleContent = () => {
   )
 }
 
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 describe('Drawer', () => {
   test('Basic render', () => {
     renderWithTheme(<Drawer content={<SimpleContent />} />)
@@ -55,6 +68,7 @@ describe('Drawer', () => {
 
   test('defaultOpen', async () => {
     renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />)
+    runTimers()
     expect(screen.queryByText('Drawer content')).toBeInTheDocument()
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
@@ -72,6 +86,7 @@ describe('Drawer', () => {
     // Open Drawer
     const link = screen.getByText('Open Drawer')
     fireEvent.click(link)
+    runTimers()
     expect(
       screen.queryByText('The Constitution of the United States')
     ).toBeInTheDocument()
@@ -95,6 +110,7 @@ describe('Drawer', () => {
     // Open Drawer
     const link = screen.getByText('Open Drawer')
     fireEvent.click(link)
+    runTimers()
     expect(
       screen.queryByText('The Constitution of the United States')
     ).toBeInTheDocument()
