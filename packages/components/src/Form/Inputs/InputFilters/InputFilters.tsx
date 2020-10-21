@@ -36,9 +36,9 @@ import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
 import {
-  InputFiltersChipEditor,
-  CustomFilterEditorProps,
-} from './InputFiltersChipEditor'
+  InputFilterCustomEditor,
+  InputFilterCustomEditorProps,
+} from './InputFilterCustomEditor'
 
 export interface FieldFilterOptions {
   /* specify the field value */
@@ -55,7 +55,7 @@ export interface FieldFilterOptions {
 }
 
 export interface FieldFilter extends FieldFilterOptions {
-  editor?: CustomFilterEditorProps
+  editor?: InputFilterCustomEditorProps
   formatValue?: (value?: string) => string
   /* filter value/expression */
   value?: string
@@ -174,8 +174,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               {filter?.label || filter.field}
             </Text>
           )
-          console.log('filter :', filter, filter.field === fieldEditing)
-
           return filter.field === fieldEditing ? (
             <Popover
               key={i}
@@ -183,16 +181,19 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               setOpen={closeInputFiltersChipEditor}
               content={
                 <PopoverContent>
-                  {/* {editor ? (
-                    { editor(closeEditor, filter, setFieldEditingValue, filter.value ) }
-                  ) : ( */}
-                  <InputFiltersChipEditor
-                    closeEditor={closeInputFiltersChipEditor}
-                    onChange={setFieldEditingValue}
-                    filterOptions={filter}
-                    value={filter.value}
-                  />
-                  {/* )} */}
+                  {editor
+                    ? editor(
+                        closeInputFiltersChipEditor,
+                        filter,
+                        () => setFieldEditingValue,
+                        filter.value
+                      )
+                    : InputFilterCustomEditor(
+                        closeInputFiltersChipEditor,
+                        filter,
+                        () => setFieldEditingValue,
+                        filter.value
+                      )}
                 </PopoverContent>
               }
             >

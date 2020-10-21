@@ -23,25 +23,24 @@
  SOFTWARE.
 
  */
+
 import React, { ReactNode } from 'react'
-import { CheckboxGroup, RadioGroup } from '../../../Form/Inputs/OptionsGroup'
+import { CheckboxGroup, RadioGroup } from '../OptionsGroup'
 import { FieldFilterOptions } from './InputFilters'
 
-export type CustomFilterEditorProps = (
+export type InputFilterCustomEditorProps = (
   closeEditor: () => void,
   filterOptions: FieldFilterOptions,
   onChange: (value?: string) => void,
   value?: string
 ) => ReactNode
 
-export const InputFiltersChipEditor: CustomFilterEditorProps = (
+export const InputFilterCustomEditor: InputFilterCustomEditorProps = (
   closeEditor,
   filterOptions,
   onChange,
   value
 ) => {
-  console.log('filterOptions: ', filterOptions)
-  console.log('value: ', value)
   const { multiple = false } = filterOptions
 
   const options = filterOptions.options
@@ -59,7 +58,7 @@ export const InputFiltersChipEditor: CustomFilterEditorProps = (
 
   return multiple ? (
     <CheckboxGroup
-      // value={value ? value.split(', ') : []}
+      value={value ? value.split(', ') : []}
       options={options}
       onChange={handleChangeCheckbox}
     />
@@ -67,27 +66,3 @@ export const InputFiltersChipEditor: CustomFilterEditorProps = (
     <RadioGroup value={value} options={options} onChange={handleChangeRadio} />
   )
 }
-
-// export const InputFiltersChipEditor: FC<InputFiltersChipEditorProps> = ({
-//   value,
-//   onChange,
-//   options,
-// }) => {
-//   const handleChange = (newValues: string[]) => {
-//     onChange(newValues.sort().join(', '))
-//   }
-
-//   return (
-//     <PopoverContent p="large" maxWidth="360px">
-//       <SpaceVertical>
-//         {options && (
-//           <ButtonGroup
-//             value={value ? value.split(', ') : []}
-//             options={options.map((value) => ({ label: value, value }))}
-//             onChange={handleChange}
-//           />
-//         )}
-//       </SpaceVertical>
-//     </PopoverContent>
-//   )
-// }

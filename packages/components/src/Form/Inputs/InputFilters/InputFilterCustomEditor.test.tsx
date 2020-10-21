@@ -27,16 +27,16 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { InputFiltersChipEditor } from './InputFiltersChipEditor'
+import { InputFilterCustomEditor } from './InputFilterCustomEditor'
 
-describe('InputFiltersChipEditor', () => {
+describe('InputFilterCustomEditor', () => {
   const value = 'user'
   const onChange = jest.fn()
   const options = ['user', 'group-admin', 'admin', 'pizza']
 
-  test('renders InputFiltersChipEditor', () => {
+  test('renders InputFilterCustomEditor', () => {
     const { queryByText } = renderWithTheme(
-      <InputFiltersChipEditor
+      <InputFilterCustomEditor
         value={value}
         onChange={onChange}
         options={options}
@@ -46,9 +46,9 @@ describe('InputFiltersChipEditor', () => {
     expect(queryByText('user')).toBeInTheDocument()
   })
 
-  test('InputFiltersChipEditor onchange', () => {
+  test('InputFilterCustomEditor onchange', () => {
     const { queryByText } = renderWithTheme(
-      <InputFiltersChipEditor
+      <InputFilterCustomEditor
         value={value}
         onChange={onChange}
         options={options}
