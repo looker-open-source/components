@@ -80,21 +80,21 @@ PlacementLeft.parameters = {
   storyshots: { disable: true },
 }
 
-export const DisableDelay = Template.bind({})
-DisableDelay.args = {
+export const DelayNone = Template.bind({})
+DelayNone.args = {
   ...Basic.args,
-  disableDelay: true,
+  delay: 'none',
 }
-DisableDelay.parameters = {
+DelayNone.parameters = {
   storyshots: { disable: true },
 }
 
-export const OpenDisableDelay = Template.bind({})
-OpenDisableDelay.args = {
-  ...DisableDelay.args,
+export const OpenDelayNone = Template.bind({})
+OpenDelayNone.args = {
+  ...DelayNone.args,
   isOpen: true,
 }
-OpenDisableDelay.parameters = {
+OpenDelayNone.parameters = {
   storyshots: { disable: true },
 }
 

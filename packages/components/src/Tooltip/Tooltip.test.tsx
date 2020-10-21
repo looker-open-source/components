@@ -89,11 +89,11 @@ describe('Tooltip', () => {
     expect(tooltip).not.toBeInTheDocument()
   })
 
-  test('disableDelay', () => {
+  test('delayNone', () => {
     jest.useFakeTimers()
 
     renderWithTheme(
-      <Tooltip content="Hello world" isOpen disableDelay>
+      <Tooltip content="Hello world" isOpen delay="none">
         <Button>Test</Button>
       </Tooltip>
     )

@@ -127,7 +127,7 @@ export function useTooltip({
   id,
   triggerElement,
   placement: propsPlacement = 'bottom',
-  delay = 'moderate',
+  delay = 'intricate',
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState(
