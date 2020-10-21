@@ -90,7 +90,9 @@ const OverlaySurfaceLayout = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
-        <Inner {...innerProps}>{children}</Inner>
+        <Inner tabIndex={-1} data-overlay-surface={true} {...innerProps}>
+          {children}
+        </Inner>
       </div>
     )
   }

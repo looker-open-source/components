@@ -34,13 +34,7 @@ export * from './Controlled'
 export * from './SaveChanges'
 
 const Template: Story<DialogProps> = (args) => (
-  <Dialog
-    {...args}
-    onClose={() => {
-      // eslint-disable-next-line no-console
-      console.log('Hello world')
-    }}
-  >
+  <Dialog {...args}>
     <button>Open Dialog</button>
   </Dialog>
 )
