@@ -35,7 +35,7 @@ export type InputFilterCustomEditorProps = (
   value?: string
 ) => ReactNode
 
-export const InputFilterCustomEditor: InputFilterCustomEditorProps = (
+export const inputFilterCustomEditor: InputFilterCustomEditorProps = (
   closeEditor,
   filterOptions,
   onChange,
