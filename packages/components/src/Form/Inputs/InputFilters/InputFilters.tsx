@@ -176,9 +176,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           )
           return filter.field === fieldEditing ? (
             <Popover
-              key={i}
-              isOpen={fieldEditing !== undefined}
-              setOpen={closeInputFiltersChipEditor}
               content={
                 <PopoverContent>
                   {editor
@@ -196,6 +193,10 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
                       )}
                 </PopoverContent>
               }
+              isOpen={fieldEditing !== undefined}
+              key={i}
+              placement="bottom-start"
+              setOpen={closeInputFiltersChipEditor}
             >
               {filterToken}
             </Popover>
@@ -253,7 +254,10 @@ export const InputFilters = styled(InputFiltersLayout)`
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
   ${Chip} {
-    display: inline;
+    display: inline-table;
+    span {
+      white-space: normal;
+    }
   }
   ${Select} {
     ${Icon} {
