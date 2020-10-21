@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { InputFilterCustomEditor } from './InputFilterCustomEditor'
+import { inputFilterCustomEditor } from './inputFilterCustomEditor'
 
 describe('InputFilterCustomEditor', () => {
   const value = 'user'

@@ -36,9 +36,9 @@ import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
 import {
-  InputFilterCustomEditor,
+  inputFilterCustomEditor,
   InputFilterCustomEditorProps,
-} from './InputFilterCustomEditor'
+} from './inputFilterCustomEditor'
 
 export interface FieldFilterOptions {
   /* specify the field value */
@@ -188,7 +188,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
                         setFieldEditingValue,
                         filter.value
                       )
-                    : InputFilterCustomEditor(
+                    : inputFilterCustomEditor(
                         closeInputFiltersChipEditor,
                         filter,
                         setFieldEditingValue,
