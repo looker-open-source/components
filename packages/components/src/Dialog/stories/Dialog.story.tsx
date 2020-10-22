@@ -80,8 +80,6 @@ LongContent.args = {
   defaultOpen: true,
 }
 
-/** TODO: Add Placement when supported */
-
 export default {
   argTypes: {
     width: {

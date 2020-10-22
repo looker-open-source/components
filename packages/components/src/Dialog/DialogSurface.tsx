@@ -125,5 +125,5 @@ export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
 `
 
 DialogSurface.defaultProps = {
-  width: 'large',
+  width: 'medium',
 }

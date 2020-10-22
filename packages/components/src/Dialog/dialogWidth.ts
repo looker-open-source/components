@@ -31,7 +31,6 @@ import {
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  SizeXLarge,
 } from '@looker/design-tokens/src/system'
 
 export type DialogSizes =
@@ -40,7 +39,6 @@ export type DialogSizes =
   | SizeSmall
   | SizeMedium
   | SizeLarge
-  | SizeXLarge
 
 export type DialogSizeRamp = Record<DialogSizes, string>
 export type DialogWidth = ResponsiveValue<DialogSizeRamp | string>
@@ -50,9 +48,8 @@ export const dialogSizes: DialogSizeRamp = {
   xxsmall: '16rem',
   xsmall: '21rem',
   small: '28rem',
-  medium: '30rem',
-  large: '40rem',
-  xlarge: '50rem',
+  medium: '40rem',
+  large: '50rem',
 }
 
 export const dialogWidth = system({

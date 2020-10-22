@@ -84,5 +84,5 @@ export const DrawerSurface = styled(SurfaceBase)<DrawerSurfaceProps>`
 
 DrawerSurface.defaultProps = {
   placement: 'right',
-  width: '30rem',
+  width: 'small',
 }

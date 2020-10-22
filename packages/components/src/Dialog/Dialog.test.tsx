@@ -239,4 +239,40 @@ describe('Dialog', () => {
     fireEvent.click(screen.getByText('Done'))
     expect(onClose).toBeCalledTimes(0)
   })
+
+  describe('width', () => {
+    test('xsmall', () => {
+      renderWithTheme(
+        <Dialog
+          content={<SimpleContent />}
+          defaultOpen={true}
+          width="xxsmall"
+        />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '16rem'
+      )
+    })
+
+    test('small', () => {
+      renderWithTheme(
+        <Dialog content={<SimpleContent />} defaultOpen={true} width="small" />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '28rem'
+      )
+    })
+
+    test('xlarge', () => {
+      renderWithTheme(
+        <Dialog content={<SimpleContent />} defaultOpen={true} width="large" />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '50rem'
+      )
+    })
+  })
 })

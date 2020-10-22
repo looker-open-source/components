@@ -62,8 +62,6 @@ Width.args = {
   width: '50rem',
 }
 
-/** TODO: Add Placement when supported */
-
 export default {
   argTypes: {
     width: {
