@@ -164,7 +164,7 @@ export const FieldPicker = () => (
       </PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
-      <Tree noIndent visuallyAsBranch label="Hello">
+      <Tree branchAlign branchFontWeight label="Hello">
         <PickerItem />
       </Tree>
       <TreeItem>Name</TreeItem>
