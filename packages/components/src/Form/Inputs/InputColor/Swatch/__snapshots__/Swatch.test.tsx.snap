@@ -54,12 +54,11 @@ exports[`Swatch has a disabled state 1`] = `
   font-size: 0.875rem;
   width: 50px;
   height: 25px;
-  background-color: blue;
+  background-color: rgba(0,0,255,0.85);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-top: auto;
-  opacity: 0.85;
 }
 
 .c0:hover {

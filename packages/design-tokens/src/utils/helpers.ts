@@ -55,3 +55,5 @@ export const knobShadowColor = () => css`
 export const toggleSwitchShadowColor = () => css`
   ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)}
 `
+
+export const disabledSwatchColor = (color: string) => rgba(color, 0.85)

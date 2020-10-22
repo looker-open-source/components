@@ -25,7 +25,11 @@
  */
 
 import styled from 'styled-components'
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  disabledSwatchColor,
+  reset,
+} from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
 import { inputCSS, inputTextHover } from '../../../Inputs/InputText'
 import { inputHeight } from '../../height'
@@ -60,7 +64,8 @@ export const Swatch = styled.div<SwatchProps>`
   ${inputCSS}
   ${width}
   ${height}
-  background-color: ${(props) => props.color};
+  background-color: ${({ color, disabled }) =>
+    disabled && color ? disabledSwatchColor(color) : color};
   flex-shrink: 0;
   margin-top: auto;
 
@@ -69,7 +74,6 @@ export const Swatch = styled.div<SwatchProps>`
   }
 
   ${(props) => props.color === 'transparent' && emptySwatch}
-  ${(props) => (props.disabled ? 'opacity: 0.85;' : '')}
 `
 
 Swatch.defaultProps = {
