@@ -30,6 +30,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 module.exports = {
   addons: ['@storybook/addon-essentials'],
   stories: ['../**/*.story.tsx'],
+  typescript: {
+    reactDocgen: false,
+  },
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.tsx?$/,
