@@ -30,37 +30,58 @@ import { fireEvent } from '@testing-library/react'
 import { inputFilterCustomEditor } from './inputFilterCustomEditor'
 
 describe('InputFilterCustomEditor', () => {
+  const closeEditor = jest.fn()
+  const filterOptions1 = {
+    field: 'persistance-type',
+    label: 'Persistance Type',
+    multiple: true,
+    options: ['datagroup_trigger', 'datagroup_trigger1', 'datagroup_trigger2'],
+  }
+  const filterOptions2 = {
+    field: 'group',
+    label: 'Group',
+    options: ['Cheddar', 'Gouda'],
+  }
   const value = 'user'
   const onChange = jest.fn()
-  const options = ['user', 'group-admin', 'admin', 'pizza']
 
   test('renders InputFilterCustomEditor', () => {
     const { queryByText } = renderWithTheme(
-      <InputFilterCustomEditor
-        value={value}
-        onChange={onChange}
-        options={options}
-      />
+      <>
+        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+      </>
     )
-
-    expect(queryByText('user')).toBeInTheDocument()
+    expect(queryByText('datagroup_trigger')).toBeInTheDocument()
   })
 
-  test('InputFilterCustomEditor onchange', () => {
+  test('InputFilterCustomEditor onChange is called', () => {
     const { queryByText } = renderWithTheme(
-      <InputFilterCustomEditor
-        value={value}
-        onChange={onChange}
-        options={options}
-      />
+      <>
+        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+      </>
     )
-    const selectingFilter = queryByText('user')
+
+    const selectingFilter = queryByText('datagroup_trigger')
     selectingFilter && fireEvent.click(selectingFilter)
 
-    expect(selectingFilter).toBeInTheDocument()
     expect(onChange).toBeCalled()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
+  })
+
+  test('InputFilterCustomEditor closeEditor is called', () => {
+    const { queryByText } = renderWithTheme(
+      <>
+        {inputFilterCustomEditor(closeEditor, filterOptions2, onChange, value)}
+      </>
+    )
+    const selectingFilter = queryByText('Cheddar')
+    selectingFilter && fireEvent.click(selectingFilter)
+
+    expect(closeEditor).toBeCalled()
+
+    // Close popover to silence act() warning
+    // fireEvent.click(document)
   })
 })
