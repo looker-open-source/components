@@ -265,13 +265,27 @@ describe('Dialog', () => {
       )
     })
 
-    test('xlarge', () => {
+    test('large', () => {
       renderWithTheme(
         <Dialog content={<SimpleContent />} defaultOpen={true} width="large" />
       )
       expect(screen.getByText('Dialog content')).toHaveStyleRule(
         'width',
         '50rem'
+      )
+    })
+
+    test('arbitrary', () => {
+      renderWithTheme(
+        <Dialog
+          content={<SimpleContent />}
+          defaultOpen={true}
+          width="24.5rem"
+        />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '24.5rem'
       )
     })
   })
