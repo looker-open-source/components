@@ -275,4 +275,33 @@ describe('InputFilters', () => {
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
+
+  test('Editor component is displayed if passed', () => {
+    const EditorComponent = () => <>hello world</>
+
+    const onChange = jest.fn()
+
+    const editorFilter: FieldFilter[] = [
+      {
+        editor: EditorComponent,
+        field: 'editor',
+        label: 'Important',
+        options: ['a', 'b', 'c'],
+      },
+    ]
+
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={editorFilter} onChange={onChange} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('Important')).toBeInTheDocument()
+
+    fireEvent.click(getByText('Important'))
+
+    expect(getByText('hello world')).toBeInTheDocument()
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
 })

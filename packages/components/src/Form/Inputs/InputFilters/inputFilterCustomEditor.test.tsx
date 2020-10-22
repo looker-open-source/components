@@ -60,14 +60,9 @@ describe('InputFilterCustomEditor', () => {
         {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
       </>
     )
-
     const selectingFilter = queryByText('datagroup_trigger')
     selectingFilter && fireEvent.click(selectingFilter)
-
     expect(onChange).toBeCalled()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
   })
 
   test('InputFilterCustomEditor closeEditor is called', () => {
@@ -78,10 +73,26 @@ describe('InputFilterCustomEditor', () => {
     )
     const selectingFilter = queryByText('Cheddar')
     selectingFilter && fireEvent.click(selectingFilter)
-
     expect(closeEditor).toBeCalled()
+  })
 
-    // Close popover to silence act() warning
-    // fireEvent.click(document)
+  test('InputFilterCustomEditor displays CheckboxGroup when multiple = true', () => {
+    const { getByTestId } = renderWithTheme(
+      <>
+        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+      </>
+    )
+    const checkbox = getByTestId('checkbox')
+    expect(checkbox).toBeInTheDocument()
+  })
+
+  test('InputFilterCustomEditor displays RadioGroup when multiple = false', () => {
+    const { getByTestId } = renderWithTheme(
+      <>
+        {inputFilterCustomEditor(closeEditor, filterOptions2, onChange, value)}
+      </>
+    )
+    const checkbox = getByTestId('radio')
+    expect(checkbox).toBeInTheDocument()
   })
 })

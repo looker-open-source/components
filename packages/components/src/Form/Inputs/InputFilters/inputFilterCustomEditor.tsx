@@ -58,11 +58,17 @@ export const inputFilterCustomEditor: InputFilterCustomEditorProps = (
 
   return multiple ? (
     <CheckboxGroup
+      data-testid="checkbox"
       value={value ? value.split(', ') : []}
       options={options}
       onChange={handleChangeCheckbox}
     />
   ) : (
-    <RadioGroup value={value} options={options} onChange={handleChangeRadio} />
+    <RadioGroup
+      data-testid="radio"
+      value={value}
+      options={options}
+      onChange={handleChangeRadio}
+    />
   )
 }
