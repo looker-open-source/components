@@ -9,13 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Tooltip` and `useTooltip` now include a brief delay before showing
+  - `delay` prop controls the length
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 - Improved test coverage / added image-snapshots
+- `ScheduleOutline` Icon artwork
 
 ### Changed
 
 - InputFiltersChipEditor can use CheckboxGroup or RadioGroup.
 - InputFiltersChipEditor can be replaced by users editor.
+- `Dialog`, `Drawer` and `Popover` no longer focus the first "tab-able" child. Instead they now focus the surface of the overlay itself.
 - `useDialog` (`Dialog` & `Drawer`) refactored
   - Removed use of `react-transition-group` dependency
   - Added support for `aria-busy`
@@ -24,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved test coverage / added image-snapshots
 - InputFilter to support multiline filter tokens
 - Reduced & consolidated dependencies on `polished` library
+- `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `body`
 
 ### Fixed
 

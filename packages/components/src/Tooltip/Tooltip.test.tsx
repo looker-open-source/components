@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
 import { Tooltip } from './Tooltip'
 
@@ -35,46 +35,76 @@ describe('Tooltip', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
 
   beforeEach(() => {
+    jest.useFakeTimers()
     rafSpy = jest
       .spyOn(window, 'requestAnimationFrame')
       .mockImplementation((cb: any) => cb())
   })
 
   afterEach(() => {
+    jest.useRealTimers()
     rafSpy.mockRestore()
   })
 
-  test('trigger: open on mouseover, close on mouseout', () => {
+  const runTimers = () =>
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+
+  test('trigger: delay on mouseover, exits immediately on mouseout', () => {
     renderWithTheme(
-      <Tooltip content="Hello world" id="stable-id">
+      <Tooltip content="Hello world">
         <Button>Test</Button>
       </Tooltip>
     )
 
     const trigger = screen.getByText('Test')
-
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.getByText('Hello world')
-    expect(tooltip.parentNode).toMatchSnapshot()
+    expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
 
-    fireEvent.mouseOut(trigger)
+    runTimers()
+    expect(tooltip).toBeVisible()
+
+    fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
   })
 
-  test('close on surface mouseout', () => {
+  test('isOpen', () => {
     renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
       </Tooltip>
     )
+    const tooltip = screen.getByText('Hello world')
+    expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
+    expect(tooltip).toBeVisible()
+
+    fireEvent.mouseOut(tooltip)
+    expect(tooltip).not.toBeInTheDocument()
+  })
+
+  test('delayNone', () => {
+    jest.useFakeTimers()
+
+    renderWithTheme(
+      <Tooltip content="Hello world" isOpen delay="none">
+        <Button>Test</Button>
+      </Tooltip>
+    )
 
     const trigger = screen.getByText('Test')
 
     fireEvent.mouseOver(trigger)
+    runTimers()
 
     const tooltip = screen.getByText('Hello world')
-    expect(tooltip).toBeVisible()
+    expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
     expect(tooltip).not.toBeInTheDocument()
@@ -89,6 +119,7 @@ describe('Tooltip', () => {
 
     const trigger = screen.getByText('Test')
     const tooltip = screen.queryByText('Hello world')
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
@@ -107,11 +138,13 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    runTimers()
     expect(tooltip).toBeVisible()
 
     expect(tooltip).toHaveStyleRule('max-width: 20rem')
     expect(tooltip).toHaveStyleRule('text-align: right')
     fireEvent.mouseOut(trigger)
+    runTimers()
   })
 
   test('Render props version works', () => {
@@ -126,9 +159,14 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
+
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 })

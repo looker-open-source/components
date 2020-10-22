@@ -24,50 +24,17 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Dialog, DialogProps } from '..'
-import { DialogLongContent } from '../../__mocks__/DialogLongContent'
-import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import styled from 'styled-components'
+import { OverlaySurface } from '../Overlay/OverlaySurface'
 
-export * from './Controlled'
-export * from './SaveChanges'
-
-const Template: Story<DialogProps> = (args) => (
-  <Dialog {...args}>
-    <button>Open Dialog</button>
-  </Dialog>
-)
-
-export const Basic = Template.bind({})
-Basic.args = {
-  content: 'Simple Content',
-}
-Basic.parameters = {
-  storyshots: { disable: true },
-}
-
-export const Open = Template.bind({})
-Open.args = {
-  ...Basic.args,
-  defaultOpen: true,
-}
-
-export const MediumContent = Template.bind({})
-MediumContent.args = {
-  content: <DialogMediumContent />,
-  defaultOpen: true,
-}
-
-export const LongContent = Template.bind({})
-LongContent.args = {
-  content: <DialogLongContent />,
-  defaultOpen: true,
-}
-
-/** TODO: Add Placement when supported */
-
-export default {
-  component: Dialog,
-  title: 'Dialog',
-}
+export const TooltipSurface = styled(OverlaySurface)`
+  &.exited,
+  &.exiting,
+  &.entering {
+    animation: none;
+    opacity: 0;
+    /* Prevents showing the tooltip if the the mouse happens to move over it
+    when still opacity: 0 (during the delay) */
+    pointer-events: none;
+  }
+`
