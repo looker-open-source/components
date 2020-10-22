@@ -26,6 +26,7 @@
 
 import { Transitions } from '../system'
 
+const none = 0
 const rapid = 100
 const quick = 150
 const simple = 200
@@ -35,6 +36,7 @@ const intricate = 500
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const transitions: Transitions = {
+  none,
   rapid,
   quick,
   simple,

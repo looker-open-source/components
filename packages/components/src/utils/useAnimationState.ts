@@ -24,7 +24,7 @@
 
  */
 
-import { transitions } from '@looker/design-tokens'
+import { transitions, Transitions } from '@looker/design-tokens'
 import { useEffect, useState } from 'react'
 
 type Entering = 'entering'
@@ -52,6 +52,11 @@ interface UseAnimationStateReturn {
   busy: boolean
 }
 
+export interface AnimationStateConfig {
+  exit: boolean
+  enter: boolean
+}
+
 /**
  *
  * Hook that encapsulates timing behavior to allow for CSS transitions to complete before DOM elements are
@@ -59,29 +64,45 @@ interface UseAnimationStateReturn {
  *
  *
  * @param isOpen - Toggle visibility
+ * @param enter - whether to transition the enter @default true
+ * @param exit - whether to transition the exit @default true
  * @param timing - How long does the transition take to complete. Elements will be removed from the DOM once this time is elapsed
  */
 export const useAnimationState = (
   isOpen: boolean,
-  timing = transitions.moderate
+  enter: keyof Transitions = 'moderate',
+  exit: keyof Transitions = 'moderate'
 ): UseAnimationStateReturn => {
   const [state, setState] = useState<AnimationStates>('exited')
+  const timingEnter = transitions[enter]
+  const timingExit = transitions[exit]
 
   useEffect(() => {
     /* Short-circuit state changes that don't matter */
     if (!isOpen && state === 'exited') return
     if (isOpen && state === 'entered') return
 
+    let t = 0
+
     if (isOpen) {
-      setState('entering')
-      const open = setTimeout(() => setState('entered'), timing)
-      return () => clearTimeout(open)
+      if (!timingEnter) {
+        setState('entered')
+      } else {
+        setState('entering')
+        t = setTimeout(() => setState('entered'), timingEnter)
+      }
     } else {
-      setState('exiting')
-      const closed = setTimeout(() => setState('exited'), timing)
-      return () => clearTimeout(closed)
+      if (!timingExit) {
+        setState('exited')
+      } else {
+        setState('exiting')
+        t = setTimeout(() => setState('exited'), timingExit)
+      }
     }
-  }, [isOpen, state, timing])
+    return () => {
+      t && clearTimeout(t)
+    }
+  }, [isOpen, timingEnter, timingExit, state])
 
   return {
     busy: busyStates.includes(state),

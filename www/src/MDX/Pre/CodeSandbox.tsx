@@ -234,9 +234,8 @@ const SandboxWrapper = styled.div`
 `
 
 const PreviewWrapper = styled.div`
-  ${({ theme: { space } }) => `
-    padding: ${space.small};
-  `}
+  color: ${({ theme }) => theme.colors.text};
+  padding: ${({ theme }) => theme.space.small};
 `
 
 const EditorWrapper = styled.div`

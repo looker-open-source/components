@@ -78,11 +78,14 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   } = useContext(MenuContext)
 
   const {
-    'aria-describedby': ariaDescribedBy,
-    onFocus,
-    onBlur,
-    onMouseOut,
-    onMouseOver,
+    domProps: {
+      'aria-describedby': ariaDescribedBy,
+      className: tooltipClassName,
+      onFocus,
+      onBlur,
+      onMouseOut,
+      onMouseOver,
+    },
     tooltip: renderedTooltip,
   } = useTooltip({
     content: tooltip,
@@ -130,7 +133,9 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
       'aria-describedby': ariaDescribedBy,
       'aria-expanded': isOpen,
       'aria-haspopup': true,
-      className: `${childProps.className || ''}${isOpen ? ' active' : ''}`,
+      className: `${childProps.className || ''}${
+        isOpen ? ' active' : ''
+      } ${tooltipClassName}`,
       disabled,
       id: `button-${id}`,
       ref: triggerCallbackRef,

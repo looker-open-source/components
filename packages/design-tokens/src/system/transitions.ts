@@ -25,6 +25,7 @@
  */
 
 export interface Transitions {
+  none: number
   rapid: number
   quick: number
   simple: number

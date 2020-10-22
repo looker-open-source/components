@@ -65,6 +65,16 @@ Tooltip allows you to specify where it should appear in relation to the target e
 </Space>
 ```
 
+## Delay
+
+By default, the tooltip will show a brief delay. To customize this, use the `delay` prop.
+
+```jsx
+<Tooltip content="This tooltip shows immediately" delay="none">
+  <Button>No Delay</Button>
+</Tooltip>
+```
+
 ## "Render Prop" style
 
 Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
@@ -82,6 +92,7 @@ If you need to be very specific
   {(props) => (
     <Button
       aria-describedby={props['aria-describedby']}
+      className={props.className}
       onBlur={props.onBlur}
       onFocus={props.onFocus}
       onMouseOut={props.onMouseOut}

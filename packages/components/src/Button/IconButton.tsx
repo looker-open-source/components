@@ -125,6 +125,7 @@ export const IconButtonStyle = styled.button<IconButtonProps>`
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
     const {
+      className,
       icon,
       id,
       size = 'xsmall',
@@ -148,13 +149,16 @@ const IconButtonComponent = forwardRef(
     )
 
     const {
-      'aria-describedby': ariaDescribedBy,
-      ref,
+      domProps: {
+        'aria-describedby': ariaDescribedBy,
+        className: tooltipClassName,
+        ref,
+        onFocus,
+        onBlur,
+        onMouseOver,
+        onMouseOut,
+      },
       tooltip,
-      onFocus,
-      onBlur,
-      onMouseOver,
-      onMouseOut,
     } = useTooltip({
       content: label,
       disabled: tooltipDisabled || hasOuterTooltip,
@@ -181,6 +185,7 @@ const IconButtonComponent = forwardRef(
         p="none"
         size={size}
         width={buttonSizeMap[size]}
+        className={`${className} ${tooltipClassName}`.trim()}
         {...eventHandlers}
         {...rest}
       >
