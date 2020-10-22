@@ -28,7 +28,13 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import omit from 'lodash/omit'
-import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
+import React, {
+  forwardRef,
+  useContext,
+  Ref,
+  useCallback,
+  FormEvent,
+} from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
@@ -151,17 +157,18 @@ export const ComboboxMultiInputInternal = forwardRef(
       contextOnChange && contextOnChange(newOptions)
     }
 
+    // Need to determine whether the updated value come from change event on the input
+    // or from a new value prop (controlled)
     const handleInputValueChange = useCallback(
-      (value: string) => {
-        transition &&
-          transition(ComboboxActionType.CHANGE, { inputValue: value })
+      (value: string, event?: FormEvent<HTMLInputElement>) => {
+        const action = event
+          ? ComboboxActionType.CHANGE
+          : ComboboxActionType.CHANGE_SILENT
+        transition?.(action, { inputValue: value })
       },
       [transition]
     )
 
-    // Need to determine whether the updated value come from change event on the input
-    // or from a new value prop (controlled)
-    const isInputting = useRef(false)
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
@@ -170,16 +177,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       contextInputValue &&
       controlledInputValue !== contextInputValue
     ) {
-      if (isInputting.current) {
-        handleInputValueChange(controlledInputValue)
-      } else {
-        // this is most likely the initial value so we want to
-        // update the value without transitioning to suggesting
-        transition &&
-          transition(ComboboxActionType.CHANGE_SILENT, {
-            inputValue: controlledInputValue,
-          })
-      }
+      handleInputValueChange(controlledInputValue)
     }
 
     const isControlled = controlledInputValue !== undefined
@@ -187,14 +185,10 @@ export const ComboboxMultiInputInternal = forwardRef(
     // types, instead the developer controls it with the normal input onChange
     // prop
     const handleInputChange = useCallback(
-      (value: string) => {
-        isInputting.current = true
+      (value: string, event?: FormEvent<HTMLInputElement>) => {
         if (!isControlled) {
-          handleInputValueChange(value)
+          handleInputValueChange(value, event)
         }
-        requestAnimationFrame(() => {
-          isInputting.current = false
-        })
       },
       [handleInputValueChange, isControlled]
     )
@@ -213,9 +207,9 @@ export const ComboboxMultiInputInternal = forwardRef(
     }
 
     const wrappedOnInputChange = useCallback(
-      (value: string) => {
-        handleInputChange(value)
-        onInputChange && onInputChange(value)
+      (value: string, event?: FormEvent<HTMLInputElement>) => {
+        handleInputChange(value, event)
+        onInputChange && onInputChange(value, event)
       },
       [handleInputChange, onInputChange]
     )

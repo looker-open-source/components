@@ -48,20 +48,20 @@ export function useBlur<
     freeInputPropRef,
   } = useContext(context)
 
-  function closeList() {
+  function closeList(action: ComboboxActionType) {
     // When freeInput is true, the current inputValue should not be changed on blur
     // (for Multi, InputChips will tokenize the inputValue on blur)
     const payload =
       freeInputPropRef && freeInputPropRef.current ? { inputValue } : undefined
 
-    transition && transition(ComboboxActionType.BLUR, payload)
+    transition && transition(action, payload)
   }
 
   return function handleBlur(e?: FocusEvent) {
     if (!e) {
       // handleBlur was called directly (via popover close)
       // only need to close the list
-      closeList()
+      closeList(ComboboxActionType.ESCAPE)
       return
     }
     // we on want to close only if focus rests outside the select
@@ -76,7 +76,7 @@ export function useBlur<
         transition && transition(ComboboxActionType.INTERACT)
       } else if (!focusInList && nextFocusTarget !== inputElement) {
         // focus landed outside the select, close it
-        closeList()
+        closeList(ComboboxActionType.BLUR)
       }
       // Stop ComboboxMultiInput + freeInput underlying InputChips blur handler from
       // tokenizing input value when an option is clicked

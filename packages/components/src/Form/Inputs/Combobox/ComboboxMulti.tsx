@@ -35,7 +35,8 @@ import { useID } from '../../../utils'
 import { useFocusManagement } from './utils/useFocusManagement'
 import { ComboboxMultiCallback, ComboboxOptionObject } from './types'
 import {
-  useReducerMultiMachine,
+  reducerMulti,
+  useReducerMachine,
   ComboboxActionType,
   ComboboxMultiData,
 } from './utils/state'
@@ -95,10 +96,14 @@ export const ComboboxMultiInternal = forwardRef(
       options: initialValues || [],
     }
 
-    const [state, data, transition] = useReducerMultiMachine({
-      ...defaultMultiData,
-      ...initialData,
-    })
+    const [state, data, transition] = useReducerMachine(
+      reducerMulti,
+      {
+        ...defaultMultiData,
+        ...initialData,
+      },
+      { inputValues: [], options: [] }
+    )
     const { lastActionType, options } = data
 
     if (
