@@ -41,7 +41,7 @@ import {
   DialogSurface,
 } from './DialogSurface'
 
-export interface UseDialogProps extends DialogSurfaceProps {
+export interface UseDialogBaseProps {
   /**
    * Content to rendered within the Dialog surface.
    * @required
@@ -78,7 +78,9 @@ export interface UseDialogProps extends DialogSurfaceProps {
    * Specify a callback to be called each time this Popover is closed
    */
   canClose?: () => boolean
+}
 
+export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
   /**
    * Specify a custom surface to use for Dialog surface.
    * This is intended for internal components use only (specifically `Drawer`)

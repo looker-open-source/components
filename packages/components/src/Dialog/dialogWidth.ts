@@ -24,11 +24,41 @@
 
  */
 
-import { addDecorator } from '@storybook/react'
-import { componentsDecorator } from '../../storybook-config/src/componentsDecorator'
+import { system, ResponsiveValue } from 'styled-system'
+import {
+  SizeXSmall,
+  SizeXXSmall,
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
+  SizeXLarge,
+} from '@looker/design-tokens/src/system'
 
-export const parameters = {
-  controls: { expanded: true },
+export type DialogSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
+
+export type DialogSizeRamp = Record<DialogSizes, string>
+export type DialogWidth = ResponsiveValue<DialogSizeRamp | string>
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const dialogSizes: DialogSizeRamp = {
+  xxsmall: '16rem',
+  xsmall: '21rem',
+  small: '28rem',
+  medium: '30rem',
+  large: '40rem',
+  xlarge: '50rem',
 }
 
-addDecorator(componentsDecorator)
+export const dialogWidth = system({
+  width: {
+    property: 'width',
+    scale: 'dialogSizes',
+    defaultScale: dialogSizes,
+  },
+})

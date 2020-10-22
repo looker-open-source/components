@@ -24,14 +24,11 @@
 
  */
 
-import { UseDialogProps, useDialog } from '../Dialog/useDialog'
+import { UseDialogBaseProps, useDialog } from '../Dialog/useDialog'
 import { DrawerSurface, DrawerSurfaceProps } from './DrawerSurface'
 
 export interface UseDrawerProps
-  extends Omit<
-      UseDialogProps,
-      'content' | 'width' | 'maxWidth' | 'height' | 'placement'
-    >,
+  extends UseDialogBaseProps,
     DrawerSurfaceProps {}
 
 export const useDrawer = ({ ...props }: UseDrawerProps) =>

@@ -24,40 +24,13 @@
 
  */
 
-import styled from 'styled-components'
-import { ResponsiveValue, variant, height, width } from 'styled-system'
+import styled, { css } from 'styled-components'
+import { minHeight, ResponsiveValue } from 'styled-system'
 import { theme } from '@looker/design-tokens'
-import {
-  SizeXSmall,
-  SizeXXSmall,
-  SizeSmall,
-  SizeMedium,
-  SizeLarge,
-} from '@looker/design-tokens/src/system'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-
-// 480, 768, 1024, 1200, 1440
-// 37.5rem = 600px
+import { dialogWidth, DialogWidth } from './dialogWidth'
 
 export type DialogPlacements = 'center' | 'cover' | 'top'
-
-export type DialogSizes =
-  | SizeXXSmall
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
-export type DialogSizeRamp = Record<DialogSizes, string>
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-export const dialogSizes: DialogSizeRamp = {
-  xxsmall: '16rem',
-  xsmall: '21rem',
-  small: '28rem',
-  medium: '30rem',
-  large: '40rem',
-}
-/* eslint-enable sort-keys-fix/sort-keys-fix */
 
 export interface DialogSurfaceProps {
   /**
@@ -81,54 +54,68 @@ export interface DialogSurfaceProps {
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width. Default / `auto` will cause
    * the Surface to auto-size to its content.
-   * @default auto
    */
-  width?: ResponsiveValue<DialogSizeRamp | string>
+  width?: DialogWidth
 
   /**
    * Explicitly specifying a minHeight will set the Surface to be the lesser of
    * the specified height or the viewport height. Default / `auto` will cause
    * the Surface to auto-size to its content.
-   * @default auto
    */
   minHeight?: ResponsiveValue<string>
 }
 
-const { space } = theme
+const { space, breakpoints } = theme
 const gapSpace = 'xxlarge'
 const coverDimension = `calc(100% - ${space[gapSpace]} * 2)`
 
-const placement = variant({
-  prop: 'placement',
-  variants: {
-    center: {
-      alignSelf: ['flex-start', 'center'],
-      maxHeight: ['100%', coverDimension],
-      width: ['100%', dialogSizes.large],
-    },
-    cover: {
-      height: ['100%', '100%', coverDimension],
-      width: ['100%', '100%', coverDimension],
-    },
-    top: {
-      alignSelf: 'flex-start',
-      maxHeight: ['100%', `calc(100% - ${space[gapSpace]})`],
-      mt: ['none', gapSpace],
-      width: ['100%', dialogSizes.large],
-    },
-  },
-})
+const placements = {
+  center: css<DialogSurfaceProps>`
+    align-self: flex-start;
+    max-height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      align-self: center;
+      max-height: ${coverDimension};
+    }
+  `,
+  cover: css<DialogSurfaceProps>`
+    height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      height: ${coverDimension};
+      width: ${coverDimension};
+    }
+
+    @media screen and (min-width: ${breakpoints[1]}) {
+      height: ${coverDimension};
+      width: ${coverDimension};
+    }
+  `,
+  top: css<DialogSurfaceProps>`
+    align-self: flex-start;
+    margin-top: 0;
+    max-height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      margin-top: ${({ theme }) => theme.space[gapSpace]};
+      max-height: ${coverDimension};
+    }
+  `,
+}
 
 export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
-  border-radius: ${({ theme }) => theme.radii.medium};
   box-shadow: ${({ theme }) => theme.shadows[5]};
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
-  ${placement}
-  ${height}
-  /* TODO - implement ResponsiveValue<DialogSizeRamp | string> */
-  ${width}
+  ${dialogWidth}
+  ${({ placement }) => placements[placement || 'center']}
+  ${minHeight}
+
+  @media screen and (min-width: ${breakpoints[0]}) {
+    border-radius: ${({ theme }) => theme.radii.medium};
+  }
 
   &.entering,
   &.exiting {
@@ -138,5 +125,5 @@ export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
 `
 
 DialogSurface.defaultProps = {
-  placement: 'center',
+  width: 'large',
 }

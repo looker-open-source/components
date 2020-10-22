@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { dialogSizes } from '../../Dialog/dialogWidth'
 import { Drawer, DrawerProps } from '../Drawer'
 
 export * from './useDrawer.story'
@@ -49,6 +50,12 @@ Open.args = {
   defaultOpen: true,
 }
 
+export const PlacementLeft = Template.bind({})
+PlacementLeft.args = {
+  defaultOpen: true,
+  placement: 'left',
+}
+
 export const Width = Template.bind({})
 Width.args = {
   ...Open.args,
@@ -58,6 +65,14 @@ Width.args = {
 /** TODO: Add Placement when supported */
 
 export default {
+  argTypes: {
+    width: {
+      control: {
+        options: Object.keys(dialogSizes),
+        type: 'radio',
+      },
+    },
+  },
   component: Drawer,
   title: 'Drawer',
 }

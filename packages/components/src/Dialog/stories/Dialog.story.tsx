@@ -26,9 +26,10 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Dialog, DialogProps } from '..'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { Dialog, DialogProps } from '../Dialog'
+import { dialogSizes } from '../dialogWidth'
 
 export * from './Controlled'
 export * from './SaveChanges'
@@ -59,6 +60,20 @@ MediumContent.args = {
   defaultOpen: true,
 }
 
+export const PlacementTop = Template.bind({})
+PlacementTop.args = {
+  ...MediumContent.args,
+  defaultOpen: true,
+  placement: 'top',
+}
+
+export const PlacementCover = Template.bind({})
+PlacementCover.args = {
+  ...MediumContent.args,
+  defaultOpen: true,
+  placement: 'cover',
+}
+
 export const LongContent = Template.bind({})
 LongContent.args = {
   content: <DialogLongContent />,
@@ -68,6 +83,14 @@ LongContent.args = {
 /** TODO: Add Placement when supported */
 
 export default {
+  argTypes: {
+    width: {
+      control: {
+        options: Object.keys(dialogSizes),
+        type: 'radio',
+      },
+    },
+  },
   component: Dialog,
   title: 'Dialog',
 }

@@ -25,9 +25,9 @@
  */
 
 import styled from 'styled-components'
-import { variant, ResponsiveValue, width } from 'styled-system'
+import { variant, ResponsiveValue } from 'styled-system'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import { DialogSizeRamp } from '../Dialog/DialogSurface'
+import { DialogSizeRamp, dialogWidth } from '../Dialog/dialogWidth'
 
 export type DrawerPlacements = 'left' | 'right'
 
@@ -37,7 +37,7 @@ export interface DrawerSurfaceProps {
    * COMING SOON: 'left' | 'top' | 'bottom'
    * @default 'right'
    */
-  placement: DrawerPlacements
+  placement?: DrawerPlacements
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
@@ -71,8 +71,7 @@ export const DrawerSurface = styled(SurfaceBase)<DrawerSurfaceProps>`
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${placement}
-  /* TODO - implement ResponsiveValue<DialogSizeRamp | string> */
-  ${width}
+  ${dialogWidth}
 
   &.entering,
   &.exiting {
