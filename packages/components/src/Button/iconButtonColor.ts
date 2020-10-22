@@ -28,7 +28,7 @@ import { css } from 'styled-components'
 import { iconButtonColorDerivation } from '@looker/design-tokens'
 
 export const iconButtonColor = css<{ toggle?: boolean }>`
-  color: ${iconButtonColorDerivation};
+  ${iconButtonColorDerivation}
 
   &:hover,
   &:focus,

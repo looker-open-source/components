@@ -104,7 +104,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     z-index: 1;
 
     &:focus + div {
-      box-shadow: 0 0 0 0.2rem ${toggleSwitchShadowColor};
+      ${toggleSwitchShadowColor}
     }
   }
 `
