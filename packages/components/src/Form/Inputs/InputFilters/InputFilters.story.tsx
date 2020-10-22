@@ -27,7 +27,9 @@
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/sampleInputFilters'
-import { InputFilters, InputFiltersProps } from './InputFilters'
+import { InputText } from '../InputText'
+import { InputFilters, InputFiltersProps, FieldFilter } from './InputFilters'
+import { InputFilterCustomEditorProps } from './inputFilterCustomEditor'
 
 const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   const [controlledFilters, setControlledFilters] = useState(filters)
@@ -50,6 +52,48 @@ HideFilter.args = {
   ...Basic.args,
   hideFilterIcon: true,
 }
+
+const EditorComponent: InputFilterCustomEditorProps = (
+  closeEditor,
+  filterOptions,
+  onChange,
+  value
+) => {
+  const handleChange = (newValues: string[]) => {
+    onChange(newValues.sort().join(', '))
+  }
+  return (
+    <>
+      <InputText onChange={handleChange} />
+    </>
+  )
+}
+
+const customFilters: FieldFilter[] = [
+  {
+    editor: EditorComponent,
+    field: 'important',
+    formatValue: (value) =>
+      value && value.charAt(0).toUpperCase() + value.slice(1),
+    label: 'Important',
+    options: ['a', 'b', 'c'],
+    value: 'string',
+  },
+]
+
+const CustomTemplate: Story<InputFiltersProps> = ({ ...args }) => {
+  const [controlledFilters, setControlledFilters] = useState(customFilters)
+  return (
+    <InputFilters
+      {...args}
+      filters={controlledFilters}
+      onChange={setControlledFilters}
+    />
+  )
+}
+
+export const CustomEditor = CustomTemplate.bind({})
+CustomEditor.args = {}
 
 export default {
   component: InputFilters,

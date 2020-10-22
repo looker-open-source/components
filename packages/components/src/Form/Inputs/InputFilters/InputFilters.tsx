@@ -56,7 +56,7 @@ export interface FieldFilterOptions {
 
 export interface FieldFilter extends FieldFilterOptions {
   editor?: InputFilterCustomEditorProps
-  formatValue?: (value?: string) => string
+  formatValue?: (value: string) => string
   /* filter value/expression */
   value?: string
 }
@@ -133,7 +133,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
-          const { editor } = filter
+          const { editor, formatValue } = filter
 
           const editFilter = () => setFieldEditing(filter.field)
 
@@ -161,8 +161,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           const closeInputFiltersChipEditor = () => {
             setFieldEditing(undefined)
           }
-
-          const filterToken = filter.value ? (
+          const formattedValue =
+            formatValue && filter.value && formatValue(filter.value)
+          const filterToken = formattedValue ? (
             <InputFiltersChip
               filter={filter}
               key={i}
