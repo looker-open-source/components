@@ -16,6 +16,17 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
+## [UNRELEASED]
+
+### Added
+
+- Refine Storybook config to support build-modes
+  - enables faster image-snapshot generation and better development performance.
+  - specify mode via shell export: `export storybookBuildMode=develop `
+    - `fast` - disables Typescript extraction and all addons
+    - `develop` - disables "Docs" addon
+    - `publish` - enables Typescript extraction and full `addon-essentials` support
+
 ## [0.9.19]
 
 ### Fixed

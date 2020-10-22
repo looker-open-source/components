@@ -25,9 +25,12 @@
  */
 
 const main = require('@looker/storybook-config/src/main')
+module.exports = {
+  ...main,
+  stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+}
 
 /**
- *
  *  @TODO - Implement Storybook "Composition" support
  *
  *  This will be a useful way to aid in publishing documentation per-package as
@@ -37,21 +40,7 @@ const main = require('@looker/storybook-config/src/main')
  * const hostPrefix = 'http://components.looker.com/storybook/...'
  *
  * const packages = [
- *   {
- *     key: 'components',
- *     title: '@looker/components',
- *     port: 3301,
- *   },
- *   {
- *     key: 'components-providers',
- *     title: '@looker/components-providers',
- *     port: 3303,
- *   },
- *   {
- *     key: 'design-tokens',
- *     title: '@looker/design-tokens',
- *     port: 3302,
- *   },
+ *  ...
  * ]
  *
  * const refs = {}
@@ -61,10 +50,4 @@ const main = require('@looker/storybook-config/src/main')
  *     url: `${hostPrefix}/${key}`,
  *   }
  * })
- *
  */
-
-module.exports = {
-  ...main,
-  stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
-}
