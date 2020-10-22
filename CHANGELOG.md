@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - InputFilter to support multiline filter tokens
 - Reduced & consolidated dependencies on `polished` library
 - `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `body`
+- `Swatch` no longer turns gray when disabled, but has a reduced opacity instead
 
 ### Fixed
 

@@ -40,3 +40,7 @@ test('Swatch with hex value passed', () => {
 test('Swatch with width and height set', () => {
   assertSnapshot(<Swatch color="blue" width="50px" height="25px" />)
 })
+
+test('Swatch has a disabled state', () => {
+  assertSnapshot(<Swatch color="blue" width="50px" height="25px" disabled />)
+})

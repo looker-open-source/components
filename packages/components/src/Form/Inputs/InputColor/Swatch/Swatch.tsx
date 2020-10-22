@@ -73,7 +73,7 @@ export const Swatch = styled.div<SwatchProps>`
   }
 
   ${(props) => props.color === 'transparent' && emptySwatch}
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
+  ${(props) => (props.disabled ? 'opacity: 0.85;' : '')}
 `
 
 Swatch.defaultProps = {
