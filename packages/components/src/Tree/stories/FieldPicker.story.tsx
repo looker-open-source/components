@@ -116,7 +116,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           onClick={() => alert('Clicked on cost!')}
           onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
           selected={!!overlay}
-          icon="FieldNumber"
+          // icon="FieldNumber"
         >
           <Space between>
             <TextWrapper>{children}</TextWrapper>
@@ -165,10 +165,10 @@ export const FieldPicker = () => (
       </PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
-      <Tree visuallyAsBranch label="Hello">
+      <Tree noIndent visuallyAsBranch label="Hello">
         <PickerItem />
       </Tree>
-      <TreeItem icon="FieldString">Name</TreeItem>
+      <TreeItem>Name</TreeItem>
       <PickerItem />
       <PickerItem />
       <PickerItem />

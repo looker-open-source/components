@@ -41,11 +41,13 @@ Use `detail` to display an element in the negative space of the `Tree` label.
 
 Use the `visuallyAsBranch` prop if you'd like your `Tree`'s disclosure text to have a "normal" font weight.
 
-This is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
+Use the `noIndent` prop to prevent your nested `Tree` from being indented so it's label is vertically aligned with adjacent `TreeItem`s.
+
+These is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
 
 ```jsx
 <Tree label="Orders" icon="Table" defaultOpen>
-  <Tree visuallyAsBranch label="Created" defaultOpen>
+  <Tree visuallyAsBranch noIndent label="Created" defaultOpen>
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
     <TreeItem>Created Year</TreeItem>

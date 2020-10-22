@@ -79,6 +79,11 @@ export interface TreeProps extends AccordionProps {
    */
   visuallyAsBranch?: boolean
   /**
+   * Tree will be indented at the same depth as adjacent `TreeItem`(s)
+   * @default false
+   */
+  noIndent?: boolean
+  /**
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
@@ -109,6 +114,7 @@ const TreeLayout: FC<TreeProps> = ({
   label,
   className,
   visuallyAsBranch,
+  noIndent,
   truncate,
   dividers,
   ...restProps
@@ -166,6 +172,7 @@ const TreeLayout: FC<TreeProps> = ({
         hovered={isHovered}
         visuallyAsBranch={visuallyAsBranch}
         dividers={dividers}
+        noIndent={noIndent}
       >
         {innerAccordion}
       </TreeStyle>
@@ -216,6 +223,7 @@ interface TreeStyleProps {
   depth: number
   hovered: boolean
   visuallyAsBranch?: boolean
+  noIndent?: boolean
   dividers?: boolean
 }
 
@@ -241,7 +249,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
       font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
         visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
-      ${({ depth, theme }) => generateIndent(depth, theme)}
+      ${({ depth, noIndent, theme }) =>
+        generateIndent(noIndent ? depth - 1 : depth, theme)}
     }
   }
 
