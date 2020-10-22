@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- InputFiltersChipEditor can use CheckboxGroup or RadioGroup.
+- InputFiltersChipEditor can be replaced by users editor.
 - `useDialog` (`Dialog` & `Drawer`) refactored
   - Removed use of `react-transition-group` dependency
   - Added support for `aria-busy`
@@ -25,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- fix style bugs for InputFilters when displays multi-line filters
+- fix bug of InputFilters popover moving when `Chip` is first displayed
 - `InputTimeSelect` can accept a time that is not included in the select dropdown options
 - `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
   - `FieldCheckbox`
