@@ -30,7 +30,7 @@ import { AccordionDisclosureStyle } from '../..'
 import { TreeItem, Tree, TreeItemLabel } from '..'
 
 export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree label="Created" defaultOpen>
+  <BorderRadiusOverrideTree label="Created" defaultOpen dividers>
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
     <TreeItem>Created Year</TreeItem>
