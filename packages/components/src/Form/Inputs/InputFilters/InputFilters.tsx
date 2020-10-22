@@ -151,6 +151,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               (filter) => filter.field === fieldEditing
             )
 
+            // const formattedValue =
+            //   formatValue && value ? formatValue(value) : value
+
             const newFilters = [...assignedFilters, ...unassignedFilters]
             const updateFilter = { ...newFilters[filterIndex], value }
             newFilters[filterIndex] = updateFilter
@@ -161,9 +164,8 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           const closeInputFiltersChipEditor = () => {
             setFieldEditing(undefined)
           }
-          const formattedValue =
-            formatValue && filter.value && formatValue(filter.value)
-          const filterToken = formattedValue ? (
+
+          const filterToken = filter.value ? (
             <InputFiltersChip
               filter={filter}
               key={i}
