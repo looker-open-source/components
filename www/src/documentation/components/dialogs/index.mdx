@@ -117,48 +117,30 @@ This provides the backdrop behind dialogs.
 
 ### Surface
 
-`Surface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
+`Surface` provides the container that contains the content.
 
-```jsx
-<Surface
-  surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
->
-  Stuff and text
-</Surface>
-```
+## Width & minHeight
 
-## Props: width and maxWidth
+All variants of Dialog allow you to specify `width` - it can be specified as `small`, `medium`, & `large`.
 
-All variants of Dialog allow you to override `width` and `max-width` styles to suit your content. By default, `width` is unassigned so that Dialog Surface will conform to the width of its content. At the same time, `maxWidth` constrains the Dialog surface's width to be no larger than the specified value.
+By default, `width` defaults to `medium` so that Dialog Surface will conform to the width of its content. At the same time, `maxWidth` constrains the Dialog surface's width to be no larger than the specified value.
 
-`maxWidth` defaults to one of three sizes depending on the responsive breakpoint of the page (`['90vw', '90vw', '600px']`).
+Specify a `minHeight` to prevent a `Dialog` from getting any shorter than the specified value.
 
-With those constraints in mind, if you want a variable-width Dialog that renders complex content you should use `maxWidth`. If your Dialog content must be a specific predefined width, assign values to both props (or else `maxWidth` [will take priority](https://css-tricks.com/tale-width-max-width/)).
+## Placement
 
-The props accept responsive width arrays an well as static strings.
+Determines how surface is positioned in the the viewport.
 
-```jsx
-<Dialog
-  content={
-    <DialogContent>
-      <Heading>
-        Resize your browser to watch maxWidth adjust accordingly
-      </Heading>
-      <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et eros
-        sed nisi pellentesque vulputate ac eu augue. Sed commodo sagittis neque,
-        vel vulputate massa.
-      </Paragraph>
-    </DialogContent>
-  }
-  /**
-   * Responsive array values are passed from smallest to largest breakpoints:
-   */
-  maxWidth={['90vw', '60vw', '500px', '800px']}
->
-  <Button>Open responsive width dialog</Button>
-</Dialog>
-```
+- `center` (default) - surface is centered horizontally and vertically above mobile breakpoint.
+  - _mobile_: positioned at top of window and covers entire width.
+  - _width_: defaults to 100% in mobile breakpoint and 37.5rem above that unless otherwise specified
+  - _height_: fits content unless it's explicitly specified with `minHeight` prop
+- `cover` - positioned to cover nearly the entire window.
+  - _mobile & tablet_: cover the entire window.
+- `top` - vertically positioned near the top of edge of the window, horizontally centered.
+  - _mobile_: identical to `default` placement
+  - _height_: grows to fit content. Total height will keep surface a small amount from top and bottom of viewport
+  - _width_: default `medium` above mobile breakpoint
 
 ## DialogContext
 

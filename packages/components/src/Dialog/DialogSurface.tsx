@@ -36,31 +36,30 @@ export interface DialogSurfaceProps {
   /**
    * Determines how Surface is positioned in the the viewport.
    * `center` - surface is centered horizontally and vertically above mobile breakpoint.
-   *    Mobile: positioned at top of window and covers entire width.
-   *    Width: defaults to 100% in mobile breakpoint and 37.5rem above that unless otherwise specified
-   *    Height: fits content unless it's explicitly specified with `height` prop
+   *    mobile: positioned at top of window and covers entire width.
+   *    width: defaults to 100% in mobile breakpoint and 37.5rem above that unless otherwise specified
+   *    height: fits content unless it's explicitly specified with `height` prop
    * `cover` - positioned to cover nearly the entire window.
-   *    Mobile & tablet: cover the entire window.
+   *    mobile & tablet: cover the entire window.
    * `top` - vertically positioned near the top of edge of the window, horizontally centered.
-   *    Mobile: identical to `default` placement
-   *    Height: grows to fit content. Total height will keep surface a small amount from top and bottom
+   *    mobile: identical to `default` placement
+   *    height: grows to fit content. Total height will keep surface a small amount from top and bottom
    *      of viewport
-   *    Width: default 37.5rem above mobile breakpoint
+   *    width: default `medium` above mobile breakpoint
    * @default 'center'
    */
   placement?: DialogPlacements
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
-   * the specified width or the viewport width. Default / `auto` will cause
-   * the Surface to auto-size to its content.
+   * the specified width or the viewport width.
    */
   width?: DialogWidth
 
   /**
    * Explicitly specifying a minHeight will set the Surface to be the lesser of
-   * the specified height or the viewport height. Default / `auto` will cause
-   * the Surface to auto-size to its content.
+   * the specified height, the content height or the viewport height. Default will
+   * cause the Surface to auto-size to its content.
    */
   minHeight?: ResponsiveValue<string>
 }

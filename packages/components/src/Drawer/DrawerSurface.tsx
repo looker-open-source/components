@@ -33,16 +33,14 @@ export type DrawerPlacements = 'left' | 'right'
 
 export interface DrawerSurfaceProps {
   /**
-   * Specify the edge to attach the Drawer surface to.
-   * COMING SOON: 'left' | 'top' | 'bottom'
+   * Specify the edge to attach the Drawer surface to - `left` or `right`
    * @default 'right'
    */
   placement?: DrawerPlacements
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
-   * the specified width or the viewport width. Default / `auto` will cause
-   * the Surface to auto-size to its content.
+   * the specified width or the viewport width.
    * @default 'medium'
    */
   width?: ResponsiveValue<DialogSizeRamp | string>
