@@ -82,6 +82,12 @@ export interface TreeProps extends AccordionProps {
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
+  /**
+   * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
+   * items that are in a "selected" or active state have visual separation.
+   * @default false
+   */
+  dividers?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -104,6 +110,7 @@ const TreeLayout: FC<TreeProps> = ({
   className,
   visuallyAsBranch,
   truncate,
+  dividers,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -158,6 +165,7 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         hovered={isHovered}
         visuallyAsBranch={visuallyAsBranch}
+        dividers={dividers}
       >
         {innerAccordion}
       </TreeStyle>
@@ -208,7 +216,14 @@ interface TreeStyleProps {
   depth: number
   hovered: boolean
   visuallyAsBranch?: boolean
+  dividers?: boolean
 }
+
+export const dividersCSS = css`
+  ${TreeItem} {
+    margin-top: 1px;
+  }
+`
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text4};
@@ -229,6 +244,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       ${({ depth, theme }) => generateIndent(depth, theme)}
     }
   }
+
+  ${({ dividers }) => dividers && dividersCSS}
 
   ${TreeItemInner} {
     border-width: 0;

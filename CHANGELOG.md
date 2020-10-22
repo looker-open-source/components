@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Tree` now supports `dividers` to produce a small visual space between each `TreeItem` displayed in the list so that adjacent items in a "selected" or active state have visual separation.
 - `Tooltip` and `useTooltip` now include a brief delay before showing
   - `delay` prop controls the length
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
