@@ -116,7 +116,6 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           onClick={() => alert('Clicked on cost!')}
           onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
           selected={!!overlay}
-          // icon="FieldNumber"
         >
           <Space between>
             <TextWrapper>{children}</TextWrapper>
