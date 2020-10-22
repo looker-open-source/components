@@ -71,7 +71,6 @@ export const KnobContainer = styled(KnobContainerLayout)`
   transition: ${({ theme }) => theme.transitions.moderate}ms;
 
   &:hover {
-    ${({ disabled }) =>
-      disabled && `box-shadow: 0 0 0.01rem 0.01rem ${knobShadowColor};`}
+    ${({ disabled }) => disabled && knobShadowColor}
   }
 `

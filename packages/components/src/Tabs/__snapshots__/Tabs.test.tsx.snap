@@ -77,19 +77,13 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   border-bottom: 3px solid;
   border-bottom-color: transparent;
   border-radius: 0;
-  box-shadow: 0 0 0 0.15rem () => (0,_styledComponents.css)(["",""],(_ref3) => { var { theme;
+  box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);
+  color: #707781;
+  cursor: pointer;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
 }
 
-= _ref3; return (0,_rgba.default)(theme.colors.keyFocus,0.25);});color:#707781;cursor:pointer;font-family:Roboto,
-'Noto Sans JP',
-'Noto Sans CJK KR',
-'Noto Sans Arabic UI',
-'Noto Sans Devanagari UI',
-'Noto Sans Hebrew',
-'Noto Sans Thai UI',
-'Helvetica',
-'Arial',
-sans-serif;} .c0:active {
+.c0:active {
   border-bottom-color: #707781;
 }
 

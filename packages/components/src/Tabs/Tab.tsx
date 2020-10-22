@@ -63,8 +63,7 @@ const TabStyle = styled.button<TabProps>`
   border-bottom-color: ${({ selected, theme }) =>
     selected ? theme.colors.key : 'transparent'};
   border-radius: 0;
-  ${({ focusVisible }) =>
-    focusVisible && `box-shadow: 0 0 0 0.15rem ${tabShadowColor};`}
+  ${({ focusVisible }) => focusVisible && tabShadowColor}
   color: ${({ selected, theme }) =>
     selected ? theme.colors.text5 : theme.colors.text2};
   cursor: pointer;
