@@ -27,11 +27,7 @@
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
-import {
-  inputCSS,
-  inputTextDisabled,
-  inputTextHover,
-} from '../../../Inputs/InputText'
+import { inputCSS, inputTextHover } from '../../../Inputs/InputText'
 import { inputHeight } from '../../height'
 
 export interface SwatchProps
