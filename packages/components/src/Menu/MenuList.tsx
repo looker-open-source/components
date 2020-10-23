@@ -101,7 +101,9 @@ export const MenuListInternal = forwardRef(
     { children, compact, disabled, pin, placement, ...props }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
+    const { groupedMenusRef, id, isOpen, setOpen, triggerElement } = useContext(
+      MenuContext
+    )
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
@@ -146,6 +148,7 @@ export const MenuListInternal = forwardRef(
     const isMenu = isOpen !== undefined
     const { popover } = usePopover({
       content: menuList,
+      groupedPopoversRef: groupedMenusRef,
       isOpen,
       pin,
       placement,

@@ -24,7 +24,7 @@
 
  */
 
-import { createContext, KeyboardEvent } from 'react'
+import { createContext, KeyboardEvent, RefObject } from 'react'
 import noop from 'lodash/noop'
 
 export interface MenuContextProps {
@@ -35,6 +35,7 @@ export interface MenuContextProps {
   setOpen?: (isOpen: boolean) => void
   triggerElement?: HTMLElement | null
   triggerCallbackRef?: (node: HTMLElement | null) => void
+  groupedMenusRef?: RefObject<HTMLElement>
 }
 
 export interface MenuItemContextProps {
