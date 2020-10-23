@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "0.9.20",
+  "version": "0.9.19",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -21,9 +21,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components-providers": "^0.9.20",
-    "@looker/design-tokens": "^0.9.20",
-    "@looker/icons": "^0.9.20",
+    "@looker/components-providers": "^0.9.17",
+    "@looker/design-tokens": "^0.9.17",
+    "@looker/icons": "^0.9.17",
     "@popperjs/core": "^2.5.3",
     "d3-color": "^2.0.0",
     "d3-hsv": "^0.1.0",
@@ -40,7 +40,7 @@
     "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^0.9.20",
+    "@looker/components-test-utils": "^0.9.17",
     "@storybook/addon-storyshots": "^6.0.26",
     "@storybook/react": "^6.0.26",
     "@testing-library/jest-dom": "^5.11.4",
