@@ -31,7 +31,11 @@ import {
   reset,
 } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
-import { inputCSS, inputTextHover } from '../../../Inputs/InputText'
+import {
+  inputCSS,
+  inputTextHover,
+  inputTextDisabled,
+} from '../../../Inputs/InputText'
 import { inputHeight } from '../../height'
 
 export interface SwatchProps
@@ -65,11 +69,15 @@ export const Swatch = styled.div<SwatchProps>`
   ${width}
   ${height}
   background-color: ${({ color, disabled }) =>
-    disabled && color ? disabledSwatchColor(color) : color};
+    disabled ? disabledSwatchColor(color) : color};
   flex-shrink: 0;
   margin-top: auto;
 
-  &:hover {
+  &:disabled {
+    ${inputTextDisabled}
+  }
+
+  &:hover:not([disabled]) {
     ${inputTextHover}
   }
 
