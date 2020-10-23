@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 import { Context, FocusEvent, useContext } from 'react'
+import { getNextFocusTarget } from '../../../../utils'
 import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
@@ -64,10 +65,11 @@ export function useBlur<
       return
     }
     // we on want to close only if focus rests outside the select
+    const nextFocusTraget = getNextFocusTarget(e)
     const popoverCurrent = listRef ? listRef.current : null
     if (popoverCurrent) {
       const focusInList =
-        popoverCurrent && popoverCurrent.contains(e.relatedTarget as Node)
+        popoverCurrent && popoverCurrent.contains(nextFocusTraget as Node)
 
       requestAnimationFrame(() => {
         if (focusInList && state !== ComboboxState.INTERACTING) {

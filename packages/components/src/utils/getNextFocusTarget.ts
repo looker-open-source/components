@@ -23,39 +23,13 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
-import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  FieldSelect,
-  FieldChips,
-  SpaceVertical,
-} from '@looker/components'
-import 'core-js/stable'
+import { FocusEvent } from 'react'
 
-const App = () => {
-  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
-  return (
-    <ComponentsProvider loadGoogleFonts>
-      <SpaceVertical width={500} p="large">
-        <FieldSelect
-          label="Select value via click"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-        />
-        <FieldChips
-          label="Select current values"
-          description="Then focus out of the field. Confirm values are deselected."
-          values={values}
-          onChange={setValues}
-        />
-      </SpaceVertical>
-    </ComponentsProvider>
-  )
-}
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+/**
+ * ONLY use for blur events, returns the “next focused element” – event.relatedTarget if available
+ * (modern browsers, where document.activeElement is not updated until after the blur event)
+ * and document.activeElement as a fallback (IE11, where it’s updated before the blur event).
+ * @param event the blur event
+ */
+export const getNextFocusTarget = (event?: FocusEvent) =>
+  event?.relatedTarget || document.activeElement
