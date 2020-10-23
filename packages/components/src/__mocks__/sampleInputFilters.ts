@@ -71,9 +71,4 @@ export const filters = [
     ],
   },
   { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
-  {
-    field: 'status',
-    formatValue: (value: string) => value.toUpperCase(),
-    options: ['Failed', 'Success'],
-  },
 ]

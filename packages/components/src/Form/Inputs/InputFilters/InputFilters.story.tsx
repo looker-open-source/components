@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState, FormEvent } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/sampleInputFilters'
 import { InputText } from '../InputText'
@@ -42,30 +42,24 @@ const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
-  filters: filters,
-}
-
-export const HideFilter = Template.bind({})
-HideFilter.args = {
-  ...Basic.args,
-  hideFilterIcon: true,
+const withValue = {
+  field: 'status',
+  formatValue: (value: string) => value.toUpperCase(),
+  options: ['Failed', 'Success'],
+  value: 'Success',
 }
 
 const EditorComponent: InputFilterCustomEditorProps = (
   closeEditor,
-  filterOptions,
+  _,
   onChange,
-  value
+  value = ''
 ) => {
-  const handleChange = (newValues: string[]) => {
-    onChange(newValues.sort().join(', '))
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    onChange(event.currentTarget.value)
   }
   return (
-    <>
-      <InputText onChange={handleChange} />
-    </>
+    <InputText value={value} onChange={handleChange} onBlur={closeEditor} />
   )
 }
 
@@ -73,11 +67,7 @@ const customFilters: FieldFilter[] = [
   {
     editor: EditorComponent,
     field: 'important',
-    formatValue: (value) =>
-      value && value.charAt(0).toUpperCase() + value.slice(1),
     label: 'Important',
-    options: ['a', 'b', 'c'],
-    value: 'string',
   },
 ]
 
@@ -92,8 +82,29 @@ const CustomTemplate: Story<InputFiltersProps> = ({ ...args }) => {
   )
 }
 
+export const Basic = Template.bind({})
+Basic.args = {
+  filters: filters,
+}
+
+export const FilterSelected = Template.bind({})
+FilterSelected.args = {
+  filters: [withValue, ...filters],
+}
+
+export const HideFilter = Template.bind({})
+HideFilter.args = {
+  ...Basic.args,
+  hideFilterIcon: true,
+}
+
 export const CustomEditor = CustomTemplate.bind({})
-CustomEditor.args = {}
+CustomEditor.args = {
+  filters: customFilters,
+}
+CustomEditor.parameters = {
+  storyshots: { disable: true },
+}
 
 export default {
   component: InputFilters,

@@ -32,6 +32,7 @@ import { InputFiltersChip } from './InputFiltersChip'
 describe('InputFiltersChip', () => {
   const filter = {
     field: 'role',
+    formatValue: (value: string) => value.toUpperCase(),
     options: ['user', 'group-admin', 'admin', 'pizza'],
     value: 'user',
   }
@@ -41,7 +42,7 @@ describe('InputFiltersChip', () => {
     const { getByText } = renderWithTheme(
       <InputFiltersChip filter={filter} onDelete={onDelete} />
     )
-    expect(getByText('user')).toBeInTheDocument()
+    expect(getByText('role:')).toBeInTheDocument()
   })
 
   test('onClick', () => {
@@ -50,11 +51,23 @@ describe('InputFiltersChip', () => {
     const { queryByText } = renderWithTheme(
       <InputFiltersChip filter={filter} onClick={onClick} onDelete={onDelete} />
     )
-    const filterBy = queryByText('user')
+    const filterBy = queryByText('role:')
     filterBy && fireEvent.click(filterBy)
 
     expect(filterBy).toBeInTheDocument()
     expect(onClick).toBeCalled()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('formats value if formatValue is passed', () => {
+    const { queryByText } = renderWithTheme(
+      <InputFiltersChip filter={filter} onDelete={onDelete} />
+    )
+    const filterBy = queryByText('USER')
+
+    expect(filterBy).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

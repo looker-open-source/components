@@ -133,7 +133,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
-          const { editor, formatValue } = filter
+          const { editor } = filter
 
           const editFilter = () => setFieldEditing(filter.field)
 
@@ -150,9 +150,6 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             const filterIndex = assignedFilters.findIndex(
               (filter) => filter.field === fieldEditing
             )
-
-            // const formattedValue =
-            //   formatValue && value ? formatValue(value) : value
 
             const newFilters = [...assignedFilters, ...unassignedFilters]
             const updateFilter = { ...newFilters[filterIndex], value }
