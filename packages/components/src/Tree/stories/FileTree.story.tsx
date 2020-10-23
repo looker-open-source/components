@@ -31,31 +31,31 @@ import { TreeItem } from '../TreeItem'
 
 const Template: Story<TreeProps> = (args) => (
   <Tree label="thelook" icon="ExploreOutline" {...args}>
-    <Tree visuallyAsBranch label="Orders" icon="VisibilityOutline" defaultOpen>
-      <Tree visuallyAsBranch label="Orders" icon="Table" defaultOpen>
+    <Tree label="Orders" icon="VisibilityOutline" defaultOpen>
+      <Tree label="Orders" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Status</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
-      <Tree visuallyAsBranch label="Products" icon="Table" defaultOpen>
+      <Tree label="Products" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">Brand</TreeItem>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Department</TreeItem>
         <TreeItem icon="IdeDimension">Sku</TreeItem>
       </Tree>
-      <Tree visuallyAsBranch label="Users" icon="Table" defaultOpen>
+      <Tree label="Users" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Name</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
     </Tree>
-    <Tree visuallyAsBranch label="Users" icon="VisibilityOutline" defaultOpen>
-      <Tree visuallyAsBranch label="Orders" icon="Table" defaultOpen>
+    <Tree label="Users" icon="VisibilityOutline" defaultOpen>
+      <Tree label="Orders" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Status</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
       </Tree>
-      <Tree visuallyAsBranch label="Users" icon="Table" defaultOpen>
+      <Tree label="Users" icon="Table" defaultOpen>
         <TreeItem icon="IdeDimension">ID</TreeItem>
         <TreeItem icon="IdeDimension">Name</TreeItem>
         <TreeItem icon="IdeDimensionGroup">Created</TreeItem>

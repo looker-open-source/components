@@ -23,33 +23,13 @@
  SOFTWARE.
 
  */
+import { FocusEvent } from 'react'
 
-import React, { useState } from 'react'
-import { FieldColor, FieldSelect, InputColor } from '@looker/components'
-
-export default { title: 'Forms/Color' }
-
-export const ControlledColor = () => {
-  const [color, setColor] = useState('red')
-
-  function handleChange(value: string) {
-    setColor(value)
-  }
-
-  function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
-    setColor(e.currentTarget.value)
-  }
-
-  return (
-    <>
-      <FieldSelect
-        options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
-        value={color}
-        onChange={handleChange}
-      />
-      <FieldColor value={color} onChange={handleColorChange} />
-    </>
-  )
-}
-
-export const InputColorExample = () => <InputColor value="purple" disabled />
+/**
+ * ONLY use for blur events, returns the “next focused element” – event.relatedTarget if available
+ * (modern browsers, where document.activeElement is not updated until after the blur event)
+ * and document.activeElement as a fallback (IE11, where it’s updated before the blur event).
+ * @param event the blur event
+ */
+export const getNextFocusTarget = (event?: FocusEvent) =>
+  event?.relatedTarget || document.activeElement

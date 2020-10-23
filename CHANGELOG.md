@@ -9,16 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Tree` now supports `dividers` to produce a small visual space between each `TreeItem` displayed in the list so that adjacent items in a "selected" or active state have visual separation.
 - `Tooltip` and `useTooltip` now include a brief delay before showing
   - `delay` prop controls the length
 - `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 - Improved test coverage / added image-snapshots
 - `ScheduleOutline` Icon artwork
+- `Tree` `noIndent` prop allows `Tree` to be indented at the same depth as adjacent `TreeItem`(s)
 
 ### Changed
 
-- InputFiltersChipEditor can use CheckboxGroup or RadioGroup.
-- InputFiltersChipEditor can be replaced by users editor.
+- `InputFiltersChipEditor` can use CheckboxGroup or RadioGroup.
+- `InputFiltersChipEditor` can be replaced by users editor.
 - `Dialog`, `Drawer` and `Popover` no longer focus the first "tab-able" child. Instead they now focus the surface of the overlay itself.
 - `useDialog` (`Dialog` & `Drawer`) refactored
   - Removed use of `react-transition-group` dependency
@@ -29,11 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - InputFilter to support multiline filter tokens
 - Reduced & consolidated dependencies on `polished` library
 - `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `body`
+- `Swatch` no longer turns gray when disabled, but has a reduced opacity instead
 
 ### Fixed
 
-- fix style bugs for InputFilters when displays multi-line filters
-- fix bug of InputFilters popover moving when `Chip` is first displayed
+- `InputFilters` improved styling when `Chips` wrap to additional lines
+- `InputFilters` Popover no longer moves when `Chip` is initially displayed
+- `Select` / `SelectMulti` / `InputTimeSelect` click to select option in IE11
 - `InputTimeSelect` can accept a time that is not included in the select dropdown options
 - `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
   - `FieldCheckbox`

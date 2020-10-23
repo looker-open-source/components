@@ -32,26 +32,31 @@ import { StatefulColor } from '../system/color/stateful'
 
 export const buttonShadow = (color: StatefulColor = 'key') =>
   css`
-    ${({ theme }) => rgba(theme.colors[color], 0.25)}
+    box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors[color], 0.25)};
   `
 
 export const iconButtonColorDerivation = () => css`
-  ${({ theme }) => lighten(0.14, theme.colors.neutral)}
+  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
 `
 
 export const tabShadowColor = () => css`
-  ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)}
+  box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)};
 `
 
 export const calendarMixColor = () => css`
-  ${({ theme: { colors } }) =>
-    mix(0.65, colors.keyAccent, colors.neutralInteractive)}
+  color: ${({ theme: { colors } }) =>
+    mix(0.65, colors.keyAccent, colors.neutralInteractive)};
 `
 
 export const knobShadowColor = () => css`
-  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)}
+  box-shadow: 0 0 0.01rem 0.01rem
+    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)};
 `
 
 export const toggleSwitchShadowColor = () => css`
-  ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)}
+  box-shadow: 0 0 0 0.2rem
+    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
 `
+
+export const disabledSwatchColor = (color?: string) =>
+  color && color !== 'transparent' ? rgba(color, 0.85) : undefined

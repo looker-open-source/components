@@ -241,10 +241,8 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c1:hover {
-  box-shadow: 0 0 0.01rem 0.01rem () => (0,_styledComponents.css)(["",""],(_ref5) => { var { theme;
+  box-shadow: 0 0 0.01rem 0.01rem rgba(122,85,227,0.5);
 }
-
-= _ref5; return (0,_rgba.default)(theme.colors.keyInteractive,0.5);});}
 
 .c3 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;

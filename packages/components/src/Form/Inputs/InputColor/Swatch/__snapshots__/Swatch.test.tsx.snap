@@ -18,7 +18,17 @@ exports[`Default Swatch 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+  cursor: default;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c0:hover:not([disabled]) {
   border-color: #C1C6CC;
 }
 
@@ -44,6 +54,46 @@ exports[`Default Swatch 1`] = `
 />
 `;
 
+exports[`Swatch has a disabled state 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  border-radius: 0.25rem;
+  color: #343C42;
+  font-size: 0.875rem;
+  width: 50px;
+  height: 25px;
+  background-color: rgba(0,0,255,0.85);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+  cursor: default;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c0:hover:not([disabled]) {
+  border-color: #C1C6CC;
+}
+
+<div
+  className="c0"
+  color="blue"
+  disabled={true}
+  height="25px"
+  width="50px"
+/>
+`;
+
 exports[`Swatch with hex value passed 1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
@@ -61,7 +111,17 @@ exports[`Swatch with hex value passed 1`] = `
   margin-top: auto;
 }
 
-.c0:hover {
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+  cursor: default;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c0:hover:not([disabled]) {
   border-color: #C1C6CC;
 }
 
@@ -90,7 +150,17 @@ exports[`Swatch with width and height set 1`] = `
   margin-top: auto;
 }
 
-.c0:hover {
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+  cursor: default;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c0:hover:not([disabled]) {
   border-color: #C1C6CC;
 }
 

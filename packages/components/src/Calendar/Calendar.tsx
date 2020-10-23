@@ -212,7 +212,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
         background-color: ${({ theme: { colors }, disabled }) =>
           disabled ? colors.neutralAccent : colors.keyAccent};
-        color: ${calendarMixColor};
+        ${calendarMixColor}
       }
 
       &:not(.DayPicker-Day--to):not(.DayPicker-Day--from):not(.DayPicker-Day--outside) {

@@ -27,36 +27,35 @@ import React, { useState } from 'react'
 import { render } from 'react-dom'
 import {
   ComponentsProvider,
-  InputTimeSelect,
-  Card,
-  CardContent,
-  Heading,
+  FieldSelect,
+  FieldChips,
+  SpaceVertical,
 } from '@looker/components'
 import 'core-js/stable'
 
-const TimePlayground = () => {
-  const [value, setValue] = useState<string | undefined>('07:39')
-  const handleChange = (newVal?: string) => {
-    setValue(newVal)
-  }
+const App = () => {
+  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   return (
-    <>
-      <Heading>Selected: {value}</Heading>
-      <InputTimeSelect value={value} onChange={handleChange} />
-    </>
+    <ComponentsProvider loadGoogleFonts>
+      <SpaceVertical width={500} p="large">
+        <FieldSelect
+          label="Select value via click"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldChips
+          label="Select current values"
+          description="Then focus out of the field. Confirm values are deselected."
+          values={values}
+          onChange={setValues}
+        />
+      </SpaceVertical>
+    </ComponentsProvider>
   )
 }
-
-const App = () => (
-  <ComponentsProvider loadGoogleFonts>
-    <Card m="large" maxWidth="500px">
-      <CardContent>
-        <TimePlayground />
-      </CardContent>
-    </Card>
-  </ComponentsProvider>
-)
-
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
 })

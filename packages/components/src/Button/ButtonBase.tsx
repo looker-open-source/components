@@ -82,8 +82,7 @@ export const buttonCSS = css<ButtonBaseProps>`
   ${minWidth}
   ${width}
 
-  ${({ focusVisible, color }) =>
-    focusVisible && `box-shadow: 0 0 0 0.15rem ${buttonShadow(color)};`}
+  ${({ focusVisible, color }) => focusVisible && buttonShadow(color)}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};

@@ -77,11 +77,22 @@ export interface TreeProps extends AccordionProps {
    * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
    * @default false
    */
-  visuallyAsBranch?: boolean
+  branchFontWeight?: boolean
+  /**
+   * Tree will be indented at the same depth as adjacent `TreeItem`(s)
+   * @default false
+   */
+  branchAlign?: boolean
   /**
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
+  /**
+   * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
+   * items that are in a "selected" or active state have visual separation.
+   * @default false
+   */
+  dividers?: boolean
 }
 
 const indicatorProps: AccordionIndicatorProps = {
@@ -102,8 +113,10 @@ const TreeLayout: FC<TreeProps> = ({
   icon,
   label,
   className,
-  visuallyAsBranch,
+  branchAlign,
+  branchFontWeight,
   truncate,
+  dividers,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -157,7 +170,9 @@ const TreeLayout: FC<TreeProps> = ({
         border={hasBorder}
         depth={depth}
         hovered={isHovered}
-        visuallyAsBranch={visuallyAsBranch}
+        dividers={dividers}
+        branchAlign={branchAlign}
+        branchFontWeight={branchFontWeight}
       >
         {innerAccordion}
       </TreeStyle>
@@ -207,8 +222,16 @@ interface TreeStyleProps {
   border?: boolean
   depth: number
   hovered: boolean
-  visuallyAsBranch?: boolean
+  branchAlign?: boolean
+  branchFontWeight?: boolean
+  dividers?: boolean
 }
+
+export const dividersCSS = css`
+  ${TreeItem} {
+    margin-top: 1px;
+  }
+`
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text4};
@@ -224,11 +247,14 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
       background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
-      font-weight: ${({ visuallyAsBranch, theme: { fontWeights } }) =>
-        visuallyAsBranch ? fontWeights.normal : fontWeights.semiBold};
-      ${({ depth, theme }) => generateIndent(depth, theme)}
+      font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
+        branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
+      ${({ depth, branchAlign, theme }) =>
+        generateIndent(branchAlign ? depth - 1 : depth, theme)}
     }
   }
+
+  ${({ dividers }) => dividers && dividersCSS}
 
   ${TreeItemInner} {
     border-width: 0;
