@@ -24,7 +24,12 @@
 
  */
 
-export * from './IconPlaceholder'
-export * from './ListItemDetail'
-export * from './List'
-export * from './ListItem'
+import { size, SizeProps } from '@looker/design-tokens'
+import styled from 'styled-components'
+
+export const IconPlaceholder = styled.div.attrs({ 'aria-hidden': true })<
+  SizeProps
+>`
+  ${size}
+  margin-right: ${({ theme }) => theme.space.xsmall};
+`

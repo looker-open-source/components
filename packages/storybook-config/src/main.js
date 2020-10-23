@@ -38,6 +38,9 @@ const addonEssentials = {
 const config = {
   addons: [addonEssentials],
   stories: ['../**/*.story.tsx'],
+  typescript: {
+    reactDocgen: false,
+  },
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.tsx?$/,
