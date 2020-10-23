@@ -92,6 +92,17 @@ We follow a [semantic versioning scheme](https://semver.org/). That means:
 1.  Pull latest master
 1.  `yarn release`
 
+#### Undoing a failed release
+
+Sometimes the release process will fail mid-way (generally due to NPM authentication issues).
+
+Follow these instructions if you run into a case where you have a "failed" release and need to unwind it to try again. Usually the complexity lies in the case where Lerna has updated package hashes and pushed tags but authentication to NPM failed.
+
+1. Get the release commit hash `git log` to see if there's a commit and if so get the commit hash
+1. Revert the release commit `git revert YOURHASHHERE`
+1. Delete the local tag `git tag -d v0.0.0` (insert appropriate version number)
+1. Delete the remote tag `git push --delete origin v0.0.0`
+
 ### 4. Tooling
 
 ### Automate code formatting and correctness whenever possible
