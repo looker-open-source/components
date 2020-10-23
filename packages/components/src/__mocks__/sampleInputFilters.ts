@@ -48,15 +48,21 @@ export const filters = [
   {
     field: 'persistance-type',
     label: 'Persistance Type',
+    multiple: true,
     options: [
       'datagroup_trigger',
       'datagroup_trigger1',
       'datagroup_trigger2',
       'datagroup_trigger4',
+      'datagroup_trigger5',
+      'datagroup_trigger6',
+      'datagroup_trigger7',
+      'datagroup_trigger8',
     ],
   },
   {
     field: 'PDT Name',
+    multiple: true,
     options: [
       'my_great_pdt_name',
       'my_other_great_pdt_name',
@@ -65,5 +71,4 @@ export const filters = [
     ],
   },
   { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
-  { field: 'status', options: ['Failed', 'Success'] },
 ]

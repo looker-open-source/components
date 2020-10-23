@@ -38,7 +38,9 @@ export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
     const handleDelete = () => onDelete(filter)
     return (
       <Chip onDelete={handleDelete} prefix={filter.field} ref={ref} {...props}>
-        {filter.value}
+        {filter.formatValue && filter.value
+          ? filter.formatValue(filter.value)
+          : filter.value}
       </Chip>
     )
   }

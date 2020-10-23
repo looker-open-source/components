@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `InputFiltersChipEditor` can use CheckboxGroup or RadioGroup.
+- `InputFiltersChipEditor` can be replaced by users editor.
 - `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `fonts.body`
 - `Dialog`, `Drawer` and `Popover` no longer focus the first "tab-able" child. Instead they now focus the surface of the overlay itself.
 - `InputFilter` to support multiline filter tokens
@@ -32,6 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `InputFilters` improved styling when `Chips` wrap to additional lines
+- `InputFilters` Popover no longer moves when `Chip` is initially displayed
+- `Select` / `SelectMulti` / `InputTimeSelect` click to select option in IE11
 - `InputTimeSelect` can accept a time that is not included in the select dropdown options
 - `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
   - `FieldCheckbox`

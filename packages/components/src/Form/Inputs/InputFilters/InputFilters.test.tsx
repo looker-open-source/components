@@ -169,7 +169,7 @@ describe('InputFilters', () => {
     fireEvent.click(document)
   })
 
-  test('Change filter values', () => {
+  test('Change filter values when multiple = false', () => {
     const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
       <ControlledComponent />
     )
@@ -181,7 +181,6 @@ describe('InputFilters', () => {
     fireEvent.click(getByText('role'))
 
     fireEvent.click(getByText('user'))
-    fireEvent.click(document)
 
     expect(queryByText('role:')).toBeInTheDocument()
     expect(queryByText(/user/)).toBeInTheDocument()
@@ -189,12 +188,31 @@ describe('InputFilters', () => {
     fireEvent.click(getByText('role:'))
     fireEvent.click(getByText('pizza'))
 
-    expect(queryByText(/pizza, user/)).toBeInTheDocument()
+    expect(queryByText(/pizza/)).toBeInTheDocument()
 
-    fireEvent.click(getByText('user'))
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Change filter values when multiple = true', () => {
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
+      <ControlledComponent />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('Persistance Type')).toBeInTheDocument()
+
+    fireEvent.click(getByText('Persistance Type'))
+
+    fireEvent.click(getByText('datagroup_trigger'))
+    fireEvent.click(getByText('datagroup_trigger1'))
+
     fireEvent.click(document)
 
-    expect(queryByText(/pizza/)).toBeInTheDocument()
+    expect(queryByText('persistance-type:')).toBeInTheDocument()
+    expect(queryByText(/datagroup_trigger/)).toBeInTheDocument()
+    expect(queryByText(/datagroup_trigger1/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -254,6 +272,35 @@ describe('InputFilters', () => {
     expect(queryByText('role:')).not.toBeInTheDocument()
     expect(queryByText('group:')).not.toBeInTheDocument()
 
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Editor component is displayed if passed', () => {
+    const EditorComponent = () => <>hello world</>
+
+    const onChange = jest.fn()
+
+    const editorFilter: FieldFilter[] = [
+      {
+        editor: EditorComponent,
+        field: 'editor',
+        label: 'Important',
+        options: ['a', 'b', 'c'],
+      },
+    ]
+
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <InputFilters filters={editorFilter} onChange={onChange} />
+    )
+
+    fireEvent.click(getByPlaceholderText('Filter List'))
+
+    expect(getByText('Important')).toBeInTheDocument()
+
+    fireEvent.click(getByText('Important'))
+
+    expect(getByText('hello world')).toBeInTheDocument()
     // Close popover to silence act() warning
     fireEvent.click(document)
   })

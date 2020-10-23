@@ -33,38 +33,50 @@ import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
-import { Popover } from '../../../Popover'
+import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
-import { InputFiltersChipEditor } from './InputFiltersChipEditor'
+import {
+  inputFilterEditor,
+  InputFilterEditorRenderProp,
+} from './inputFilterEditor'
 
-export interface FieldFilter {
+export interface FieldFilterOptions {
   /* specify the field value */
   field: string
   /* text to be displayed in drop-down, optional, `field` is used if not specified */
   label?: string
-  /* filter value/expression */
-  value?: string
-
+  /**
+   * ability to select multiple filter options
+   * @default false
+   */
+  multiple?: boolean
+  /* list of options to filter by */
   options?: string[]
 }
 
+export interface FieldFilter extends FieldFilterOptions {
+  editor?: InputFilterEditorRenderProp
+  formatValue?: (value: string) => string
+  /* filter value/expression */
+  value?: string
+}
+
 export interface InputFiltersProps {
-  filters: FieldFilter[]
-  onChange: (filters: FieldFilter[]) => void
-  hideFilterIcon?: boolean
   className?: string
+  filters: FieldFilter[]
+  hideFilterIcon?: boolean
+  onChange: (filters: FieldFilter[]) => void
 }
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,
   filters,
-  onChange,
   hideFilterIcon = false,
+  onChange,
 }) => {
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
-
   const assignedFilters = filters
     .filter((filter) => filter.value || filter.field === fieldEditing)
     .sort((a, b) =>
@@ -121,20 +133,22 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
-          const editFilter = () => setFieldEditing(filter.field)
+          const { editor, field, value } = filter
+
+          const editFilter = () => setFieldEditing(field)
 
           const handleDelete = () =>
             onChange(
               filters.map((currentFilter) =>
-                currentFilter.field !== filter.field
+                currentFilter.field !== field
                   ? currentFilter
                   : omit(currentFilter, 'value')
               )
             )
 
-          const setFieldEditingValue = (value: string) => {
+          const setFieldEditingValue = (value?: string) => {
             const filterIndex = assignedFilters.findIndex(
-              (filter) => filter.field === fieldEditing
+              (f) => f.field === fieldEditing
             )
 
             const newFilters = [...assignedFilters, ...unassignedFilters]
@@ -144,11 +158,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onChange(newFilters)
           }
 
-          const closeInputFiltersChipEditor = () => {
-            setFieldEditing(undefined)
-          }
+          const closeEditor = () => setFieldEditing(undefined)
 
-          const filterToken = filter.value ? (
+          const filterToken = value ? (
             <InputFiltersChip
               filter={filter}
               key={i}
@@ -162,16 +174,27 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           )
           return filter.field === fieldEditing ? (
             <Popover
-              key={i}
-              isOpen={fieldEditing !== undefined}
-              setOpen={closeInputFiltersChipEditor}
               content={
-                <InputFiltersChipEditor
-                  value={filter.value}
-                  onChange={setFieldEditingValue}
-                  options={filter.options}
-                />
+                <PopoverContent>
+                  {editor
+                    ? editor({
+                        closeEditor,
+                        filterOptions: filter,
+                        onChange: setFieldEditingValue,
+                        value,
+                      })
+                    : inputFilterEditor({
+                        closeEditor,
+                        filterOptions: filter,
+                        onChange: setFieldEditingValue,
+                        value,
+                      })}
+                </PopoverContent>
               }
+              isOpen={fieldEditing !== undefined}
+              key={i}
+              placement="bottom-start"
+              setOpen={closeEditor}
             >
               {filterToken}
             </Popover>
@@ -212,7 +235,6 @@ const ChipWrapper = styled.div`
   display: inline-flex;
   flex: 1;
   flex-wrap: wrap;
-
   @supports (gap: 4px) {
     gap: ${({ theme }) => theme.space.xxsmall};
     ${Chip} {
@@ -230,23 +252,19 @@ export const InputFilters = styled(InputFiltersLayout)`
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
 
-  ${Chip} {
-    display: inline;
-  }
-
-  ${Select} {
-    ${Icon} {
-      display: none;
-    }
+  ${Select} ${Icon} {
+    display: none;
   }
 
   ${InputText} {
     border: none;
     height: 28px;
     padding: 0;
+
     &:focus-within {
       box-shadow: none;
     }
+
     input {
       padding: 0;
     }

@@ -24,13 +24,59 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState, FormEvent } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/sampleInputFilters'
-import { InputFilters, InputFiltersProps } from './InputFilters'
+import { InputText } from '../InputText'
+import { InputFilters, InputFiltersProps, FieldFilter } from './InputFilters'
+import { InputFilterEditorRenderProp } from './inputFilterEditor'
 
 const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   const [controlledFilters, setControlledFilters] = useState(filters)
+  return (
+    <InputFilters
+      {...args}
+      filters={controlledFilters}
+      onChange={setControlledFilters}
+    />
+  )
+}
+
+const withValue = {
+  field: 'status',
+  formatValue: (value: string) => value.toUpperCase(),
+  options: ['Failed', 'Success'],
+  value: 'Success',
+}
+
+const EditorComponent: InputFilterEditorRenderProp = ({
+  closeEditor,
+  onChange,
+  value = '',
+}) => {
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    onChange(event.currentTarget.value)
+  }
+  return (
+    <InputText
+      data-autofocus="true"
+      value={value}
+      onChange={handleChange}
+      onBlur={closeEditor}
+    />
+  )
+}
+
+const customFilters: FieldFilter[] = [
+  {
+    editor: EditorComponent,
+    field: 'important',
+    label: 'Important',
+  },
+]
+
+const CustomTemplate: Story<InputFiltersProps> = ({ ...args }) => {
+  const [controlledFilters, setControlledFilters] = useState(customFilters)
   return (
     <InputFilters
       {...args}
@@ -45,10 +91,23 @@ Basic.args = {
   filters: filters,
 }
 
+export const FilterSelected = Template.bind({})
+FilterSelected.args = {
+  filters: [withValue, ...filters],
+}
+
 export const HideFilter = Template.bind({})
 HideFilter.args = {
   ...Basic.args,
   hideFilterIcon: true,
+}
+
+export const CustomEditor = CustomTemplate.bind({})
+CustomEditor.args = {
+  filters: customFilters,
+}
+CustomEditor.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {
