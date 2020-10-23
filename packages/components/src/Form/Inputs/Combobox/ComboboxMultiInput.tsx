@@ -33,6 +33,8 @@ import React, {
   useContext,
   Ref,
   useCallback,
+  useRef,
+  useLayoutEffect,
   FormEvent,
 } from 'react'
 import styled from 'styled-components'
@@ -159,9 +161,10 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     // Need to determine whether the updated value come from change event on the input
     // or from a new value prop (controlled)
+    const isInputting = useRef(false)
     const handleInputValueChange = useCallback(
-      (value: string, event?: FormEvent<HTMLInputElement>) => {
-        const action = event
+      (value: string) => {
+        const action = isInputting.current
           ? ComboboxActionType.CHANGE
           : ComboboxActionType.CHANGE_SILENT
         transition?.(action, { inputValue: value })
@@ -169,16 +172,13 @@ export const ComboboxMultiInputInternal = forwardRef(
       [transition]
     )
 
-    // If they are controlling the value we still need to do our transitions, so
-    // we have this derived state to emulate onChange of the input as we receive
-    // new `value`s ...[*]
-    if (
-      controlledInputValue !== undefined &&
-      contextInputValue &&
-      controlledInputValue !== contextInputValue
-    ) {
-      handleInputValueChange(controlledInputValue)
-    }
+    // If they are controlling the input value we still need to do our transitions
+    useLayoutEffect(() => {
+      if (controlledInputValue !== undefined) {
+        handleInputValueChange(controlledInputValue)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [controlledInputValue])
 
     const isControlled = controlledInputValue !== undefined
     // [*]... and when controlled, we don't trigger handleValueChange as the user
@@ -186,9 +186,13 @@ export const ComboboxMultiInputInternal = forwardRef(
     // prop
     const handleInputChange = useCallback(
       (value: string, event?: FormEvent<HTMLInputElement>) => {
+        isInputting.current = event !== undefined
         if (!isControlled) {
-          handleInputValueChange(value, event)
+          handleInputValueChange(value)
         }
+        requestAnimationFrame(() => {
+          isInputting.current = false
+        })
       },
       [handleInputValueChange, isControlled]
     )
