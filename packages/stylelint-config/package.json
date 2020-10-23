@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.9.16",
+  "version": "0.9.20",
   "files": [
     "index.js"
   ],
