@@ -159,9 +159,12 @@ export const ComboboxMultiInputInternal = forwardRef(
       contextOnChange && contextOnChange(newOptions)
     }
 
-    // Need to determine whether the updated value come from change event on the input
-    // or from a new value prop (controlled)
+    // Whether controlled or uncontrolled, we need to determine if the inputValue changed
+    // from the user typing in the input - which should open the list, CHANGE - or otherwise
+    // (input being cleared via clear button or value tokenization, external initial state, etc) -
+    // which should not open the list, CHANGE_SILENT
     const isInputting = useRef(false)
+
     const handleInputValueChange = useCallback(
       (value: string) => {
         const action = isInputting.current
@@ -172,7 +175,8 @@ export const ComboboxMultiInputInternal = forwardRef(
       [transition]
     )
 
-    // If they are controlling the input value we still need to do our transitions
+    // If they are controlling the input value we still need to do transitions
+    // and update the internal inputValue state
     useLayoutEffect(() => {
       if (controlledInputValue !== undefined) {
         handleInputValueChange(controlledInputValue)
@@ -182,8 +186,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const isControlled = controlledInputValue !== undefined
     // [*]... and when controlled, we don't trigger handleValueChange as the user
-    // types, instead the developer controls it with the normal input onChange
-    // prop
+    // types, instead the developer controls it with the onInputChange prop
     const handleInputChange = useCallback(
       (value: string, event?: FormEvent<HTMLInputElement>) => {
         isInputting.current = event !== undefined
