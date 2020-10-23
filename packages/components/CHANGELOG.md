@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `Select` inside a `Dialog` losing focus after clicking an option
+- `Tooltip` adding extra space to its child's `className`
 
 ### Changed
 

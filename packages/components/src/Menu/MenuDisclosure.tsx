@@ -135,7 +135,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
       'aria-haspopup': true,
       className: `${childProps.className || ''}${
         isOpen ? ' active' : ''
-      } ${tooltipClassName}`,
+      } ${tooltipClassName}`.trim(),
       disabled,
       id: `button-${id}`,
       ref: triggerCallbackRef,

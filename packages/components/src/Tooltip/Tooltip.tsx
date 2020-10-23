@@ -56,7 +56,9 @@ export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   if (isValidElement(children)) {
     target = cloneElement(children, {
       ...domProps,
-      className: `${children.props.className || ''} ${domProps.className}`,
+      className:
+        `${children.props.className || ''} ${domProps.className}`.trim() ||
+        undefined,
     })
   } else if (isRenderProp(children)) {
     target = children(domProps)
