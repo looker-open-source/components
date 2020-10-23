@@ -18,6 +18,7 @@ The entire menu can be disabled via the `disabled` prop.
 - `onFocus` - and `onMouseOver` - show the tooltip
 - `onBlur` - and `onMouseOut` - hides the tooltip
 - `ref` - tooltip and popover placement
+- `groupedMenusRef` - reference to the container of a group of menu
 
 ```jsx
 <Space>
@@ -104,6 +105,37 @@ Control the state of the menu with the React `useState` hook.
         </Menu>
       </Flex>
     </Card>
+  )
+}
+```
+
+## Grouped Menus
+
+```jsx
+;() => {
+  const containerRef = React.useRef()
+  return (
+    <Space ref={containerRef}>
+      <Menu groupedMenusRef={containerRef}>
+        <MenuDisclosure tooltip="Select your favorite kind">
+          <Button>Cheese</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+          <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        </MenuList>
+      </Menu>
+
+      <Menu groupedMenusRef={containerRef}>
+        <MenuDisclosure tooltip="Select your favorite pet">
+          <Button>Pet</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="FavoriteOutline">Dog</MenuItem>
+          <MenuItem icon="FavoriteOutline">Cat</MenuItem>
+        </MenuList>
+      </Menu>
+    </Space>
   )
 }
 ```
