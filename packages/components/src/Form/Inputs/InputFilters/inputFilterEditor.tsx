@@ -28,19 +28,23 @@ import React, { ReactNode } from 'react'
 import { CheckboxGroup, RadioGroup } from '../OptionsGroup'
 import { FieldFilterOptions } from './InputFilters'
 
-export type InputFilterCustomEditorProps = (
-  closeEditor: () => void,
-  filterOptions: FieldFilterOptions,
-  onChange: (value?: string) => void,
+export interface InputFilterEditorProps {
+  closeEditor: () => void
+  filterOptions: FieldFilterOptions
+  onChange: (value?: string) => void
   value?: string
+}
+
+export type InputFilterEditorRenderProp = (
+  props: InputFilterEditorProps
 ) => ReactNode
 
-export const inputFilterCustomEditor: InputFilterCustomEditorProps = (
+export const inputFilterEditor: InputFilterEditorRenderProp = ({
   closeEditor,
   filterOptions,
   onChange,
-  value
-) => {
+  value,
+}) => {
   const { multiple = false } = filterOptions
 
   const options = filterOptions.options
@@ -58,17 +62,11 @@ export const inputFilterCustomEditor: InputFilterCustomEditorProps = (
 
   return multiple ? (
     <CheckboxGroup
-      data-testid="checkbox"
-      value={value ? value.split(', ') : []}
+      value={(value || '').split(', ')}
       options={options}
       onChange={handleChangeCheckbox}
     />
   ) : (
-    <RadioGroup
-      data-testid="radio"
-      value={value}
-      options={options}
-      onChange={handleChangeRadio}
-    />
+    <RadioGroup value={value} options={options} onChange={handleChangeRadio} />
   )
 }

@@ -27,9 +27,9 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { inputFilterCustomEditor } from './inputFilterCustomEditor'
+import { inputFilterEditor } from './inputFilterEditor'
 
-describe('InputFilterCustomEditor', () => {
+describe('inputFilterEditor', () => {
   const closeEditor = jest.fn()
   const filterOptions1 = {
     field: 'persistance-type',
@@ -45,19 +45,29 @@ describe('InputFilterCustomEditor', () => {
   const value = 'user'
   const onChange = jest.fn()
 
-  test('renders InputFilterCustomEditor', () => {
+  test('renders', () => {
     const { queryByText } = renderWithTheme(
       <>
-        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+        {inputFilterEditor({
+          closeEditor,
+          filterOptions: filterOptions1,
+          onChange,
+          value,
+        })}
       </>
     )
     expect(queryByText('datagroup_trigger')).toBeInTheDocument()
   })
 
-  test('InputFilterCustomEditor onChange is called', () => {
+  test('onChange is called', () => {
     const { queryByText } = renderWithTheme(
       <>
-        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+        {inputFilterEditor({
+          closeEditor,
+          filterOptions: filterOptions1,
+          onChange,
+          value,
+        })}
       </>
     )
     const selectingFilter = queryByText('datagroup_trigger')
@@ -65,10 +75,15 @@ describe('InputFilterCustomEditor', () => {
     expect(onChange).toBeCalled()
   })
 
-  test('InputFilterCustomEditor closeEditor is called', () => {
+  test('closeEditor is called', () => {
     const { queryByText } = renderWithTheme(
       <>
-        {inputFilterCustomEditor(closeEditor, filterOptions2, onChange, value)}
+        {inputFilterEditor({
+          closeEditor,
+          filterOptions: filterOptions2,
+          onChange,
+          value,
+        })}
       </>
     )
     const selectingFilter = queryByText('Cheddar')
@@ -76,23 +91,33 @@ describe('InputFilterCustomEditor', () => {
     expect(closeEditor).toBeCalled()
   })
 
-  test('InputFilterCustomEditor displays CheckboxGroup when multiple = true', () => {
-    const { getByTestId } = renderWithTheme(
+  test('displays CheckboxGroup when multiple = true', () => {
+    const { getByLabelText } = renderWithTheme(
       <>
-        {inputFilterCustomEditor(closeEditor, filterOptions1, onChange, value)}
+        {inputFilterEditor({
+          closeEditor,
+          filterOptions: { ...filterOptions2, multiple: true },
+          onChange,
+          value,
+        })}
       </>
     )
-    const checkbox = getByTestId('checkbox')
-    expect(checkbox).toBeInTheDocument()
+    const checkbox = getByLabelText('Gouda')
+    expect(checkbox.getAttribute('type')).toEqual('checkbox')
   })
 
-  test('InputFilterCustomEditor displays RadioGroup when multiple = false', () => {
-    const { getByTestId } = renderWithTheme(
+  test('displays RadioGroup when multiple = false', () => {
+    const { getByLabelText } = renderWithTheme(
       <>
-        {inputFilterCustomEditor(closeEditor, filterOptions2, onChange, value)}
+        {inputFilterEditor({
+          closeEditor,
+          filterOptions: filterOptions2,
+          onChange,
+          value,
+        })}
       </>
     )
-    const checkbox = getByTestId('radio')
-    expect(checkbox).toBeInTheDocument()
+    const radio = getByLabelText('Gouda')
+    expect(radio.getAttribute('type')).toEqual('radio')
   })
 })

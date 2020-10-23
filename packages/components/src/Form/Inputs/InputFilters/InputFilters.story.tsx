@@ -29,7 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/sampleInputFilters'
 import { InputText } from '../InputText'
 import { InputFilters, InputFiltersProps, FieldFilter } from './InputFilters'
-import { InputFilterCustomEditorProps } from './inputFilterCustomEditor'
+import { InputFilterEditorRenderProp } from './inputFilterEditor'
 
 const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   const [controlledFilters, setControlledFilters] = useState(filters)
@@ -49,17 +49,21 @@ const withValue = {
   value: 'Success',
 }
 
-const EditorComponent: InputFilterCustomEditorProps = (
+const EditorComponent: InputFilterEditorRenderProp = ({
   closeEditor,
-  _,
   onChange,
-  value = ''
-) => {
+  value = '',
+}) => {
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     onChange(event.currentTarget.value)
   }
   return (
-    <InputText value={value} onChange={handleChange} onBlur={closeEditor} />
+    <InputText
+      data-autofocus="true"
+      value={value}
+      onChange={handleChange}
+      onBlur={closeEditor}
+    />
   )
 }
 

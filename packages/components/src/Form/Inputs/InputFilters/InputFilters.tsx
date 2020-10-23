@@ -36,9 +36,9 @@ import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
 import {
-  inputFilterCustomEditor,
-  InputFilterCustomEditorProps,
-} from './inputFilterCustomEditor'
+  inputFilterEditor,
+  InputFilterEditorRenderProp,
+} from './inputFilterEditor'
 
 export interface FieldFilterOptions {
   /* specify the field value */
@@ -55,7 +55,7 @@ export interface FieldFilterOptions {
 }
 
 export interface FieldFilter extends FieldFilterOptions {
-  editor?: InputFilterCustomEditorProps
+  editor?: InputFilterEditorRenderProp
   formatValue?: (value: string) => string
   /* filter value/expression */
   value?: string
@@ -133,14 +133,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
-          const { editor } = filter
+          const { editor, field, value } = filter
 
-          const editFilter = () => setFieldEditing(filter.field)
+          const editFilter = () => setFieldEditing(field)
 
           const handleDelete = () =>
             onChange(
               filters.map((currentFilter) =>
-                currentFilter.field !== filter.field
+                currentFilter.field !== field
                   ? currentFilter
                   : omit(currentFilter, 'value')
               )
@@ -148,7 +148,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
           const setFieldEditingValue = (value?: string) => {
             const filterIndex = assignedFilters.findIndex(
-              (filter) => filter.field === fieldEditing
+              (f) => f.field === fieldEditing
             )
 
             const newFilters = [...assignedFilters, ...unassignedFilters]
@@ -158,11 +158,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             onChange(newFilters)
           }
 
-          const closeInputFiltersChipEditor = () => {
-            setFieldEditing(undefined)
-          }
+          const closeEditor = () => setFieldEditing(undefined)
 
-          const filterToken = filter.value ? (
+          const filterToken = value ? (
             <InputFiltersChip
               filter={filter}
               key={i}
@@ -179,24 +177,24 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               content={
                 <PopoverContent>
                   {editor
-                    ? editor(
-                        closeInputFiltersChipEditor,
-                        filter,
-                        setFieldEditingValue,
-                        filter.value
-                      )
-                    : inputFilterCustomEditor(
-                        closeInputFiltersChipEditor,
-                        filter,
-                        setFieldEditingValue,
-                        filter.value
-                      )}
+                    ? editor({
+                        closeEditor,
+                        filterOptions: filter,
+                        onChange: setFieldEditingValue,
+                        value,
+                      })
+                    : inputFilterEditor({
+                        closeEditor,
+                        filterOptions: filter,
+                        onChange: setFieldEditingValue,
+                        value,
+                      })}
                 </PopoverContent>
               }
               isOpen={fieldEditing !== undefined}
               key={i}
               placement="bottom-start"
-              setOpen={closeInputFiltersChipEditor}
+              setOpen={closeEditor}
             >
               {filterToken}
             </Popover>
@@ -253,24 +251,20 @@ export const InputFilters = styled(InputFiltersLayout)`
   flex-wrap: wrap;
   padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
   width: 100%;
-  ${Chip} {
-    display: inline-table;
-    span {
-      white-space: normal;
-    }
+
+  ${Select} ${Icon} {
+    display: none;
   }
-  ${Select} {
-    ${Icon} {
-      display: none;
-    }
-  }
+
   ${InputText} {
     border: none;
     height: 28px;
     padding: 0;
+
     &:focus-within {
       box-shadow: none;
     }
+
     input {
       padding: 0;
     }
