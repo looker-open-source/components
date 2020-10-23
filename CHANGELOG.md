@@ -5,35 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.20] - 2020-10-23
 
 ### Added
 
-- `Tree` now supports `dividers` to produce a small visual space between each `TreeItem` displayed in the list so that adjacent items in a "selected" or active state have visual separation.
+- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
 - `Tooltip` and `useTooltip` now include a brief delay before showing
   - `delay` prop controls the length
-- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
-- Improved test coverage / added image-snapshots
-- `ScheduleOutline` Icon artwork
-- `Tree` `noIndent` prop allows `Tree` to be indented at the same depth as adjacent `TreeItem`(s)
+  - Improved test coverage / added image-snapshots
+- `Tree` `branchAlign` prop allows item be indented at the same depth as adjacent `TreeItem`(s)
+- `Tree` now supports `dividers` to produce a small visual space between each `TreeItem` displayed in the list so that adjacent items in a "selected" or active state have visual separation.
+- Icon: Added `ScheduleOutline` artwork
 
 ### Changed
 
+- `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `fonts.body`
 - `Dialog`, `Drawer` and `Popover` no longer focus the first "tab-able" child. Instead they now focus the surface of the overlay itself.
+- `InputFilter` to support multiline filter tokens
 - `useDialog` (`Dialog` & `Drawer`) refactored
   - Removed use of `react-transition-group` dependency
   - Added support for `aria-busy`
   - Simplified implementation of `DialogRender` component
 - `theme.transitions` durations are now integers (in milliseconds) rather than strings
-- Improved test coverage / added image-snapshots
-- InputFilter to support multiline filter tokens
-- Reduced & consolidated dependencies on `polished` library
-- `ButtonItem` used inside `ButtonToggle` and `ButtonGroup` now uses `body`
 - `Swatch` no longer turns gray when disabled, but has a reduced opacity instead
+- Reduced & consolidated dependencies on `polished` library
 
 ### Fixed
 
-- `Select` / `SelectMulti` / `InputTimeSelect` click to select option in IE11
 - `InputTimeSelect` can accept a time that is not included in the select dropdown options
 - `FieldInline` refactored to use MS-compatible grid (IE11 compatibility)
   - `FieldCheckbox`
@@ -43,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Also auto appends "noopener noreferrer" to rel if target="\_blank"
 - `Popover` & `usePopover` refactored internally to be consistent with `Dialog` refactor patterns
   - IMPORTANT NOTE: Popover will no longer apply `active` className to target. Instead it now applies `[aria-expanded='true']` instead. `Button*` has been updated to match this change but implementations that depend on the previous behavior will need to be updated.
+- `Select` / `SelectMulti` / `InputTimeSelect` click to select option in IE11
 
 ### Removed
 
