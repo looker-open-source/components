@@ -57,3 +57,6 @@ export const toggleSwitchShadowColor = () => css`
   box-shadow: 0 0 0 0.2rem
     ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
 `
+
+export const disabledSwatchColor = (color?: string) =>
+  color && color !== 'transparent' ? rgba(color, 0.85) : undefined

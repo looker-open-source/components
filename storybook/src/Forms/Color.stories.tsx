@@ -25,7 +25,7 @@
  */
 
 import React, { useState } from 'react'
-import { FieldColor, FieldSelect } from '@looker/components'
+import { FieldColor, FieldSelect, InputColor } from '@looker/components'
 
 export default { title: 'Forms/Color' }
 
@@ -51,3 +51,5 @@ export const ControlledColor = () => {
     </>
   )
 }
+
+export const InputColorExample = () => <InputColor value="purple" disabled />
