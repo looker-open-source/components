@@ -27,12 +27,12 @@
 import { IconNames, iconNameList } from '@looker/icons'
 import React, { ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
 import { Icon, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
 import { ListItemDetail, ListItem } from '../../../List'
 import { Heading, Paragraph, Text } from '../../../Text'
+import { useID } from '../../../utils'
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -181,18 +181,12 @@ SelectOptionGroupTitle.defaultProps = {
   variant: 'subdued',
 }
 
-function useOptionKeyPrefix(options?: SelectOptionProps[]) {
-  // Create a new unique prefix every time the list of options changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => uuid(), [options])
-}
-
 export const SelectOptionGroup = ({
   options,
   label,
   isMulti,
 }: SelectOptionGroupProps & { isMulti?: boolean }) => {
-  const keyPrefix = useOptionKeyPrefix(options)
+  const keyPrefix = useID(options.length.toString())
   return (
     <SelectOptionGroupContainer>
       {label && (
@@ -282,7 +276,7 @@ export function SelectOptions({
     scrollToFirst,
     scrollToLast,
   } = useWindowedOptions(windowedOptions, options, isMulti)
-  const keyPrefix = useOptionKeyPrefix(options)
+  const keyPrefix = useID(options?.length.toString())
 
   if (isLoading) {
     return (
