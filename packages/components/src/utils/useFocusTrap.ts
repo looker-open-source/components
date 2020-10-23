@@ -74,10 +74,20 @@ export function useFocusTrap(
           clickOutsideDeactivates: true,
           escapeDeactivates: false,
           fallbackFocus: element,
+          initialFocus:
+            autoFocusElement || surfaceElement
+              ? () => {
+                  // Check first if focus is already within the element
+                  // otherwise if focus trap is disabled then re-enabled
+                  // (e.g. when a Select closes inside a Dialog)
+                  // focus will move unnecessarily back to the surface / autoFocus element
+                  if (element.contains(document.activeElement)) {
+                    return document.activeElement as HTMLElement
+                  }
+                  return autoFocusElement || surfaceElement
+                }
+              : undefined,
           onDeactivate: () => setOff(),
-          ...(autoFocusElement || surfaceElement
-            ? { initialFocus: autoFocusElement || surfaceElement }
-            : {}),
         })
       }
       disableFocusTrap && disableFocusTrap()
