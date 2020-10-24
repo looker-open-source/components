@@ -32,7 +32,8 @@ const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
 
 /* eslint-disable @typescript-eslint/camelcase */
 const user = {
-  avatar_url: 'https://www.fillmurray.com/150/150',
+  avatar_url:
+    'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
   first_name: 'Cheddar',
   last_name: 'Cheese',
 }
@@ -43,11 +44,11 @@ Primary.args = {
 }
 
 export const Initials = Template.bind({})
-Primary.args = {
+Initials.args = {
   user: { ...user, avatar_url: null },
 }
 
 export default {
   component: AvatarUser,
-  title: 'Avatar/AvatarUser',
+  title: 'AvatarUser',
 }

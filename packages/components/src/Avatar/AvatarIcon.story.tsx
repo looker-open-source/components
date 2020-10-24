@@ -38,5 +38,5 @@ Primary.args = {
 
 export default {
   component: AvatarIcon,
-  title: 'Avatar/AvatarIcon',
+  title: 'AvatarIcon',
 }

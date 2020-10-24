@@ -32,7 +32,8 @@ const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
 
 /* eslint-disable @typescript-eslint/camelcase */
 const user = {
-  avatar_url: 'https://www.fillmurray.com/150/150',
+  avatar_url:
+    'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
   first_name: 'Cheddar',
   last_name: 'Cheese',
 }
@@ -47,5 +48,5 @@ Primary.args = {
 
 export default {
   component: AvatarCombo,
-  title: 'Avatar/AvatarCombo',
+  title: 'AvatarCombo',
 }
