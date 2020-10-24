@@ -25,27 +25,18 @@
  */
 
 import React from 'react'
-import { AvatarCombo, AvatarComboProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarIconProps, AvatarIcon } from './AvatarIcon'
 
-const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
-
-/* eslint-disable @typescript-eslint/camelcase */
-const user = {
-  avatar_url: 'https://www.fillmurray.com/150/150',
-  first_name: 'Bill',
-  last_name: 'Murray',
-}
-/* eslint-enable @typescript-eslint/camelcase */
+const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'key',
-  secondaryIcon: 'User',
-  user,
+  icon: 'User',
 }
 
 export default {
-  component: AvatarCombo,
-  title: 'Avatar/AvatarCombo',
+  component: AvatarIcon,
+  title: 'AvatarIcon',
 }

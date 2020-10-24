@@ -119,7 +119,7 @@ export const avatarCSS = css`
 
   align-items: center;
   border-radius: 100%;
-  display: flex;
+  display: grid;
   justify-items: center;
   overflow: hidden;
 

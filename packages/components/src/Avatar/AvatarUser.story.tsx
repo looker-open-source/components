@@ -25,18 +25,30 @@
  */
 
 import React from 'react'
-import { AvatarIcon, AvatarIconProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarUserProps, AvatarUser } from './AvatarUser'
 
-const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
+const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
+
+/* eslint-disable @typescript-eslint/camelcase */
+const user = {
+  avatar_url:
+    'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
+  first_name: 'Cheddar',
+  last_name: 'Cheese',
+}
 
 export const Primary = Template.bind({})
 Primary.args = {
-  color: 'key',
-  icon: 'User',
+  user,
+}
+
+export const Initials = Template.bind({})
+Initials.args = {
+  user: { ...user, avatar_url: null },
 }
 
 export default {
-  component: AvatarIcon,
-  title: 'Avatar/AvatarIcon',
+  component: AvatarUser,
+  title: 'AvatarUser',
 }

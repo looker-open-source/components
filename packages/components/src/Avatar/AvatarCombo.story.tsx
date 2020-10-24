@@ -25,25 +25,28 @@
  */
 
 import React from 'react'
-import { AvatarUser, AvatarUserProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
 
-const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
+const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
 
 /* eslint-disable @typescript-eslint/camelcase */
 const user = {
-  avatar_url: 'https://www.fillmurray.com/150/150',
-  first_name: 'Bill',
-  last_name: 'Murray',
+  avatar_url:
+    'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
+  first_name: 'Cheddar',
+  last_name: 'Cheese',
 }
 /* eslint-enable @typescript-eslint/camelcase */
 
 export const Primary = Template.bind({})
 Primary.args = {
+  color: 'key',
+  secondaryIcon: 'User',
   user,
 }
 
 export default {
-  component: AvatarUser,
-  title: 'Avatar/AvatarUser',
+  component: AvatarCombo,
+  title: 'AvatarCombo',
 }
