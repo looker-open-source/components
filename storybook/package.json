@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "0.9.21",
+  "version": "0.9.22",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -10,9 +10,9 @@
     "postbuild": "npx sb extract"
   },
   "dependencies": {
-    "@looker/components": "^0.9.21",
+    "@looker/components": "^0.9.22",
     "@looker/components-providers": "^0.9.21",
-    "@looker/components-theme-editor": "^0.9.21",
+    "@looker/components-theme-editor": "^0.9.22",
     "@looker/design-tokens": "^0.9.21",
     "@looker/icons": "^0.9.21",
     "@storybook/react": "^6.0.26",

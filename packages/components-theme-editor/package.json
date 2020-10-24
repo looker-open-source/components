@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-theme-editor",
   "license": "MIT",
-  "version": "0.9.21",
+  "version": "0.9.22",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^0.9.21",
+    "@looker/components": "^0.9.22",
     "@looker/design-tokens": "^0.9.21",
     "lodash": "^4.17.20"
   },
