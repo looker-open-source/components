@@ -5,22 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
-
-### Fixed
-
-- `Select` inside a `Dialog` losing focus after clicking an option
-- `Tooltip` adding extra space to its child's `className`
+## [0.9.21]
 
 ### Changed
 
-- `InputFiltersChipEditor` can use CheckboxGroup or RadioGroup.
-- `InputFiltersChipEditor` can be replaced by users editor.
+- `InputFilters`
+  - Default editor uses `RadioGroup` (single choice) and `CheckboxGroup` (multiple choice)
+  - Developers can specify a custom editor that via `fieldFilter.editor` property (must match interface for `InputFilterEditorRenderProp`)
 
 ### Fixed
 
-- `InputFilters` improved styling when `Chips` wrap to additional lines
-- `InputFilters` Popover no longer moves when `Chip` is initially displayed
+- `InputFilters`
+  - improved styling when `Chips` wrap to additional lines
+  - `Popover` no longer moves when `Chip` is initially displayed
+- `Select` inside a `Dialog` losing focus after clicking an option
+- `Tooltip` adding extra space to its child's `className`
 
 ## [0.9.20]
 

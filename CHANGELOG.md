@@ -11,7 +11,8 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 - [Components](./packages/components/CHANGELOG.md)
 - [Components Providers](./packages/components-providers/CHANGELOG.md)
-- [Components Test Utilities](./packages/components-test-utils/CHANGELOG.md)
+- [Components Test Utilities](./packages/components-providers/CHANGELOG.md)
+- [Components Theme Editor](./packages/theme-editor/CHANGELOG.md)
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
