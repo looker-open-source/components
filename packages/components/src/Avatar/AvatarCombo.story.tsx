@@ -25,16 +25,16 @@
  */
 
 import React from 'react'
-import { AvatarCombo, AvatarComboProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
 
 const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
 
 /* eslint-disable @typescript-eslint/camelcase */
 const user = {
   avatar_url: 'https://www.fillmurray.com/150/150',
-  first_name: 'Bill',
-  last_name: 'Murray',
+  first_name: 'Cheddar',
+  last_name: 'Cheese',
 }
 /* eslint-enable @typescript-eslint/camelcase */
 

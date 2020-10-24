@@ -25,8 +25,8 @@
  */
 
 import React from 'react'
-import { AvatarIcon, AvatarIconProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarIconProps, AvatarIcon } from './AvatarIcon'
 
 const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 

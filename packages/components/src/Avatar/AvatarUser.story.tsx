@@ -25,22 +25,26 @@
  */
 
 import React from 'react'
-import { AvatarUser, AvatarUserProps } from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
+import { AvatarUserProps, AvatarUser } from './AvatarUser'
 
 const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
 
 /* eslint-disable @typescript-eslint/camelcase */
 const user = {
   avatar_url: 'https://www.fillmurray.com/150/150',
-  first_name: 'Bill',
-  last_name: 'Murray',
+  first_name: 'Cheddar',
+  last_name: 'Cheese',
 }
-/* eslint-enable @typescript-eslint/camelcase */
 
 export const Primary = Template.bind({})
 Primary.args = {
   user,
+}
+
+export const Initials = Template.bind({})
+Primary.args = {
+  user: { ...user, avatar_url: null },
 }
 
 export default {
