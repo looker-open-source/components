@@ -26,8 +26,8 @@
 
 import React, { useState, ReactNode } from 'react'
 import { ActionList, ActionListColumns } from '../ActionList'
-import { ActionListItem } from '../ActionListItem'
-import { ActionListItemColumn } from '../ActionListItemColumn'
+import { ActionListItem } from '../Item'
+import { ActionListItemColumn } from '../Item/ActionListItemColumn'
 import { ActionListDatum, ActionListData, doDefaultActionListSort } from '.'
 
 export const useActionListSortManager = (

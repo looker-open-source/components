@@ -27,10 +27,10 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
-import { IconButton } from '../Button'
-import { Menu, MenuDisclosure, MenuList } from '../Menu'
+import { IconButton } from '../../Button'
+import { Menu, MenuDisclosure, MenuList } from '../../Menu'
+import { ActionListContext } from '../ActionListContext'
 import { ActionListRow } from './ActionListRow'
-import { ActionListContext } from './ActionListContext'
 
 export interface ActionListItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {

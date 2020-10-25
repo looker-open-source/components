@@ -23,29 +23,27 @@
  SOFTWARE.
 
  */
+
+import React from 'react'
+import { Link } from '../../Link'
+import { Status } from '../../Status'
 import {
   ActionListItem,
-  ActionListItemColumn,
   ActionListItemAction,
-  Link,
-  Icon,
-} from '@looker/components'
-import React from 'react'
+  ActionListItemColumn,
+} from '../Item'
 import { data } from './data'
 
 const Actions = () => (
   <>
-    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
-      Go to LookML
+    <ActionListItemAction onClick={() => alert(`Ordered!!`)}>
+      Order
     </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
-      PDT Details
+    <ActionListItemAction onClick={() => alert('Mmmm...')}>
+      Make Grilled Cheese
     </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
-      Recent Build Events
-    </ActionListItemAction>
-    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
-      Recent Trigger Events
+    <ActionListItemAction onClick={() => alert('Delete')}>
+      Delete
     </ActionListItemAction>
   </>
 )
@@ -53,24 +51,25 @@ const Actions = () => (
 export const items = data.map(
   ({
     error,
-    lastSuccessfulBuild,
-    longPdtName,
-    model,
-    pdtName,
-    persistanceType,
+    name,
+    color,
+    inventory,
+    origin,
+    type,
+    fat,
+    description,
+    calcium,
     status,
     disabled,
   }) => (
     <ActionListItem
-      id={pdtName}
+      id={name}
       disabled={disabled}
-      key={pdtName}
-      onClick={() => alert(`Row clicked`)}
+      key={name}
       actions={<Actions />}
     >
-      <ActionListItemColumn detail={longPdtName}>
-        {pdtName}
-      </ActionListItemColumn>
+      <ActionListItemColumn detail={type}>{name}</ActionListItemColumn>
+      <ActionListItemColumn>{inventory}</ActionListItemColumn>
       <ActionListItemColumn
         detail={
           error ? (
@@ -85,18 +84,24 @@ export const items = data.map(
           ) : null
         }
         indicator={
-          <Icon
-            name={status === 'Success' ? 'CircleCheck' : 'CircleCancel'}
-            color={status === 'Success' ? 'positive' : 'critical'}
-            size={24}
+          <Status
+            intent={
+              status === 'Out of Stock'
+                ? 'critical'
+                : status === 'Low Stock'
+                ? 'warn'
+                : 'positive'
+            }
           />
         }
       >
         {status}
       </ActionListItemColumn>
-      <ActionListItemColumn>{model}</ActionListItemColumn>
-      <ActionListItemColumn>{persistanceType}</ActionListItemColumn>
-      <ActionListItemColumn>{lastSuccessfulBuild}</ActionListItemColumn>
+      <ActionListItemColumn>{color}</ActionListItemColumn>
+      <ActionListItemColumn>{description}</ActionListItemColumn>
+      <ActionListItemColumn>{origin}</ActionListItemColumn>
+      <ActionListItemColumn>{fat}</ActionListItemColumn>
+      <ActionListItemColumn>{calcium}</ActionListItemColumn>
     </ActionListItem>
   )
 )

@@ -26,10 +26,10 @@
 
 import styled from 'styled-components'
 import React, { FC } from 'react'
-import { InputFilters } from '../Form/Inputs/InputFilters'
-import { DividerVertical } from '../Divider/DividerVertical'
-import { IconButton } from '../Button/IconButton'
-import { FilterConfig } from './ActionList'
+import { InputFilters } from '../../Form/Inputs/InputFilters'
+import { DividerVertical } from '../../Divider/DividerVertical'
+import { IconButton } from '../../Button/IconButton'
+import { FilterConfig } from '../ActionList'
 
 export interface ActionListFiltersProps extends Partial<FilterConfig> {
   canSelectDisplayedColumns?: boolean

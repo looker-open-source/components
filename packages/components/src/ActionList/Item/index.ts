@@ -24,40 +24,6 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import styled from 'styled-components'
-import { Space, SpaceVertical, Paragraph } from '../'
-
-interface ActionListItemColumnProps {
-  detail?: ReactNode
-  indicator?: ReactNode
-  className?: string
-}
-
-const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
-  children,
-  detail,
-  className,
-  indicator,
-}) => (
-  <td className={className}>
-    <Space gap="xsmall">
-      {indicator}
-      <SpaceVertical gap="xxxsmall">
-        <span>{children}</span>
-        {detail && (
-          <Paragraph fontSize="xsmall" variant="subdued" truncate>
-            {detail}
-          </Paragraph>
-        )}
-      </SpaceVertical>
-    </Space>
-  </td>
-)
-
-export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
-  ActionListItemColumnProps
->`
-  overflow: hidden;
-  word-break: break-all;
-`
+export * from './ActionListItem'
+export * from './ActionListItemAction'
+export * from './ActionListItemColumn'

@@ -26,7 +26,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { Spinner } from '../Spinner'
+import { Spinner } from '../../Spinner'
 import { NoResults } from './NoResults'
 
 export interface ActionListManagerProps {
