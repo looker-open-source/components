@@ -26,11 +26,11 @@
 
 import React, { ReactNode, FC, useContext } from 'react'
 import styled from 'styled-components'
-import { Button, ButtonTransparent } from '../Button'
-import { Space } from '../Layout'
-import { Menu, MenuDisclosure, MenuList } from '../Menu'
-import { Span } from '../Text'
-import { ActionListContext } from './ActionListContext'
+import { Button, ButtonTransparent } from '../../Button'
+import { Space } from '../../Layout'
+import { Menu, MenuDisclosure, MenuList } from '../../Menu'
+import { Span } from '../../Text'
+import { ActionListContext } from '../ActionListContext'
 
 interface ActionListBulkControlsProps {
   className?: string
@@ -82,24 +82,20 @@ const ActionListBulkControlsLayout: FC<ActionListBulkControlsProps> = ({
   )
 
   return (
-    <tr>
-      <td colSpan={1000}>
-        <div className={className}>
-          <Menu>
-            <MenuDisclosure>
-              <Button iconAfter="ArrowDown" size="xsmall">
-                Bulk Actions
-              </Button>
-            </MenuDisclosure>
-            <MenuList>{actions}</MenuList>
-          </Menu>
-          <Space gap="small" justifyContent="center">
-            {selectedItemsText}
-            {selectTotalResultsButton}
-          </Space>
-        </div>
-      </td>
-    </tr>
+    <div className={className}>
+      <Menu>
+        <MenuDisclosure>
+          <Button iconAfter="ArrowDown" size="xsmall">
+            Bulk Actions
+          </Button>
+        </MenuDisclosure>
+        <MenuList>{actions}</MenuList>
+      </Menu>
+      <Space gap="small" justifyContent="center">
+        {selectedItemsText}
+        {selectTotalResultsButton}
+      </Space>
+    </div>
   )
 }
 

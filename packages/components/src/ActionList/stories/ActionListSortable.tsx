@@ -24,13 +24,13 @@
 
  */
 
+import React from 'react'
 import {
   ActionListColumns,
   ActionListDatum,
   ActionListItemAction,
   useActionListSortManager,
-} from '@looker/components/src'
-import React from 'react'
+} from '../'
 
 export const Sortable = () => {
   const data = [

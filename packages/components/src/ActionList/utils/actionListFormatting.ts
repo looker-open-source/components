@@ -32,9 +32,14 @@ function filterUndefined<T>(t: T | undefined): t is T {
   return t !== undefined
 }
 
-export const getNumericColumnIndices = (columns: ActionListColumn[]) =>
+export const getNumericColumnIndices = (
+  columns: ActionListColumn[],
+  select?: boolean
+) =>
   columns
-    .map((column, index) => (column.type === 'number' ? index : undefined))
+    .map((column, index) =>
+      column.type === 'number' ? (select ? index + 1 : index) : undefined
+    )
     .filter(filterUndefined)
 
 export const numericColumnCSS = (columnIndices: number[]) =>

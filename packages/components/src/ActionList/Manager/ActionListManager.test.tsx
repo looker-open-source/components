@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { ActionListManager } from '.'
+import { ActionListManager } from './ActionListManager'
 
 const bestCheeseDiv = <div>Pepper Jack</div>
 

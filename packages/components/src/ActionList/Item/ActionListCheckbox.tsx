@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Checkbox, MixedBoolean } from '../Form'
+import { Checkbox, MixedBoolean } from '../../Form'
 
 export interface ActionListCheckboxProps {
   id?: string

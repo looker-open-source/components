@@ -24,21 +24,17 @@
 
  */
 
-import {
-  ActionList,
-  ActionListItemAction,
-  ActionListManager,
-  FieldFilter,
-  Icon,
-  Heading,
-  SpaceVertical,
-  useActionListSelectManager,
-  ActionListManagerProps,
-  Paragraph,
-} from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState } from 'react'
-import { filters as defaultFilters } from '../../../packages/components/src/__mocks__/sampleInputFilters'
+import { filters as defaultFilters } from '../../__mocks__/sampleInputFilters'
+import { useActionListSelectManager } from '../utils/useActionListSelectManager'
+import { FieldFilter } from '../../Form/Inputs/InputFilters'
+import { Icon } from '../../Icon'
+import { SpaceVertical } from '../../Layout/Space'
+import { Heading, Paragraph } from '../../Text'
+import { ActionListItemAction } from '../Item'
+import { ActionList } from '../ActionList'
+import { ActionListManagerProps, ActionListManager } from '../Manager'
 import { columns, data } from './data'
 import { items } from './items'
 
@@ -66,7 +62,7 @@ const Template: Story<DemoProps> = ({
   noResultsDisplay,
   ...args
 }) => {
-  const allPageItems = data.map(({ pdtName }) => pdtName)
+  const allPageItems = data.map(({ name }) => name)
 
   const {
     onSelect,
