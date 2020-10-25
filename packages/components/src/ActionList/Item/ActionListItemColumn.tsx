@@ -24,35 +24,59 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
-import React, { ReactNode, useContext } from 'react'
-import { MenuItem, MenuContext } from '../Menu'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { Space, SpaceVertical } from '../../Layout'
+import { Paragraph } from '../../Text'
 
-export interface ActionListItemActionProps
-  extends CompatibleHTMLProps<HTMLElement> {
-  children?: ReactNode
+interface ActionListItemColumnProps {
   detail?: ReactNode
-  icon?: IconNames
-  /**
-   * Determines if the ActionListItemAction is an <a/> or <button/> element
-   * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
-   * @default 'button'
-   */
-  itemRole?: 'link' | 'button'
+  indicator?: ReactNode
+  className?: string
 }
 
-/**
- * MenuItem may undergo a refactor soon. Creating a proxy in the form of ActionListItemAction
- * allows us to adapt to any changes to MenuItem or its interface.
- * */
-export const ActionListItemAction = (props: ActionListItemActionProps) => {
-  const { setOpen } = useContext(MenuContext)
-  const handleActionClick = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
-    setOpen && setOpen(false)
-    props.onClick && props.onClick(event)
+const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
+  children,
+  detail,
+  className,
+  indicator,
+}) => {
+  let content = children
+
+  if (detail) {
+    content = (
+      <SpaceVertical gap="xxxsmall">
+        <span>{content}</span>
+        {detail && (
+          <Paragraph fontSize="xsmall" variant="subdued" truncate>
+            {detail}
+          </Paragraph>
+        )}
+      </SpaceVertical>
+    )
+
+    if (indicator) {
+      content = (
+        <Space gap="xsmall">
+          {indicator}
+          {content}
+        </Space>
+      )
+    }
+  } else if (indicator) {
+    content = (
+      <Space gap="xsmall">
+        {indicator}
+        <span>{content}</span>
+      </Space>
+    )
   }
-  return <MenuItem {...props} onClick={handleActionClick} />
+
+  return <td className={className}>{content}</td>
 }
+
+export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
+  ActionListItemColumnProps
+>`
+  overflow: hidden;
+`

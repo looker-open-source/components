@@ -24,11 +24,44 @@
 
  */
 
-export * from './ActionList'
-export * from './ActionListContext'
-export * from './Bulk'
-export * from './Filters'
-export * from './Header'
-export * from './Item'
-export * from './Manager'
-export * from './utils'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import styled from 'styled-components'
+import React, { FC, useContext } from 'react'
+import { ActionListRow } from '../Item/ActionListRow'
+import { ActionListContext } from '../ActionListContext'
+
+const ActionListHeaderLayout: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
+  children,
+  className,
+  id,
+}) => {
+  const { allSelected, select } = useContext(ActionListContext)
+
+  const hasCheckbox = !!select
+  const onChange = () => (select ? select.onSelectAll() : undefined)
+
+  return (
+    <ActionListRow
+      id={id}
+      isHeaderRow
+      className={className}
+      hasCheckbox={hasCheckbox}
+      onChange={onChange}
+      checked={allSelected}
+    >
+      {children}
+    </ActionListRow>
+  )
+}
+
+export const ActionListHeader = styled(ActionListHeaderLayout)`
+  background: transparent;
+  color: ${(props) => props.theme.colors.text5};
+  font-weight: ${(props) => props.theme.fontWeights.semiBold};
+
+  td,
+  th {
+    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+    text-align: left;
+  }
+`

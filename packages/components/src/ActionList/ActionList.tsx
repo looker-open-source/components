@@ -30,12 +30,9 @@ import React, { FC, ReactNode } from 'react'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
-import { ActionListBulkControls } from './ActionListBulkControls'
-import { ActionListFilters } from './ActionListFilters'
-import {
-  ActionListHeader,
-  generateActionListHeaderColumns,
-} from './ActionListHeader'
+import { ActionListBulkControls } from './Bulk/ActionListBulkControls'
+import { ActionListFilters } from './Filters/ActionListFilters'
+import { ActionListHeader, generateActionListHeaderColumns } from './Header'
 import { ActionListContext } from './ActionListContext'
 import {
   getNumericColumnIndices,
@@ -209,13 +206,11 @@ export const ActionListLayout: FC<ActionListProps> = ({
   return (
     <ActionListContext.Provider value={context}>
       {filters}
+      {bulk && select && select.selectedItems.length > 0 && (
+        <ActionListBulkControls {...bulk} />
+      )}
       <table className={className}>
-        <thead>
-          {actionListHeader}
-          {bulk && select && select.selectedItems.length > 0 && (
-            <ActionListBulkControls {...bulk} />
-          )}
-        </thead>
+        <thead>{actionListHeader}</thead>
         <tbody>{children}</tbody>
       </table>
     </ActionListContext.Provider>
@@ -278,5 +273,6 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
 
   /* If select is active first cell is checkbox and needs no padding */
   ${({ select }) => select && firstCellNoPadding}
-  ${({ columns }) => numericColumnCSS(getNumericColumnIndices(columns))}
+  ${({ columns, select }) =>
+    numericColumnCSS(getNumericColumnIndices(columns, Boolean(select)))}
 `

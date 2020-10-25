@@ -74,6 +74,4 @@ const ActionListHeaderColumnLayout = forwardRef(
 
 ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
-export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
-  word-break: break-all;
-`
+export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)``

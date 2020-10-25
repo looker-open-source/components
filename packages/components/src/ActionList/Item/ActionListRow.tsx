@@ -28,7 +28,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import pick from 'lodash/pick'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { Flex } from '../Layout/Flex'
+import { Flex } from '../../Layout/Flex'
 import {
   ActionListCheckbox,
   ActionListCheckboxProps,
