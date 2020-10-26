@@ -27,40 +27,42 @@
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
-import { DividerVertical } from '../../Divider/DividerVertical'
-import { IconButton } from '../../Button/IconButton'
 import { FilterConfig } from '../ActionList'
+import { DividerVertical } from '../../Divider/DividerVertical'
+import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
-export interface ActionListFiltersProps extends Partial<FilterConfig> {
-  canSelectDisplayedColumns?: boolean
+export interface ActionListFiltersProps
+  extends ColumnSelectorProps,
+    Partial<FilterConfig> {
+  canCustomizeColumns?: boolean
   className?: string
 }
 
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
+  canCustomizeColumns = false,
   className,
-  canSelectDisplayedColumns = false,
+  columns,
   filters,
+  onChange,
   onFilter,
-}) => {
-  return (
-    <div className={className}>
-      {filters && onFilter ? (
-        <InputFilters filters={filters} onChange={onFilter} />
-      ) : null}
-      {canSelectDisplayedColumns && (
-        <ColumnSelector>
-          <DividerVertical height="1.2rem" />
-          <IconButton label="Select columns to display" icon="ViewColumn" />
-        </ColumnSelector>
-      )}
-    </div>
-  )
-}
-
-const ColumnSelector = styled.div`
-  align-items: center;
-  display: flex;
-`
+  columnsList,
+}) => (
+  <div className={className}>
+    {filters && onFilter ? (
+      <InputFilters filters={filters} onChange={onFilter} />
+    ) : null}
+    {canCustomizeColumns && (
+      <>
+        <DividerVertical height="1.2rem" />
+        <ColumnSelector
+          columns={columns}
+          onChange={onChange}
+          columnsList={columnsList}
+        />
+      </>
+    )}
+  </div>
+)
 
 export const ActionListFilters = styled(ActionListFiltersLayout)`
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};

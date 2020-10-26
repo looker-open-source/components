@@ -26,35 +26,56 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { columns, columnsList, filters } from '../stories/data'
-import { ActionListFilters } from './ActionListFilters'
+import { fireEvent } from '@testing-library/react'
+import { columns, columnsList } from '../stories/data'
+import { ColumnSelector } from './ColumnSelector'
 
-describe('ActionListFilters', () => {
-  test('render and displays InputFilter', () => {
-    const { getByPlaceholderText } = renderWithTheme(
-      <ActionListFilters
+describe('ColumnSelector', () => {
+  test('render', () => {
+    const { getByText } = renderWithTheme(
+      <ColumnSelector
         columns={columns}
         columnsList={columnsList}
-        filters={filters}
         onChange={jest.fn()}
-        onFilter={jest.fn()}
       />
     )
 
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+    expect(getByText('Select columns to display')).toBeInTheDocument()
   })
 
-  test('render ActionListFilters display columns icon', () => {
+  test('onClick displays popover of column options', () => {
     const { getByText } = renderWithTheme(
-      <ActionListFilters
-        canCustomizeColumns
+      <ColumnSelector
         columns={columns}
         columnsList={columnsList}
-        filters={filters}
         onChange={jest.fn()}
-        onFilter={jest.fn()}
       />
     )
-    expect(getByText('Select columns to display')).toBeInTheDocument()
+    const columnButton = getByText('Select columns to display')
+
+    fireEvent.click(columnButton)
+
+    expect(getByText('Name')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('onClick displays popover of column options', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <ColumnSelector
+        columns={columns}
+        columnsList={columnsList}
+        onChange={jest.fn()}
+      />
+    )
+    const columnButton = getByText('Select columns to display')
+
+    expect(queryByText('Name')).not.toBeInTheDocument()
+    fireEvent.click(columnButton)
+    expect(queryByText('Name')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
   })
 })

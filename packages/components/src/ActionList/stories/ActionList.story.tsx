@@ -30,7 +30,7 @@ import { filters as defaultFilters } from '../../__mocks__/sampleInputFilters'
 import { useActionListSelectManager } from '../utils/useActionListSelectManager'
 import { FieldFilter } from '../../Form/Inputs/InputFilters'
 import { Icon } from '../../Icon'
-import { Box, SpaceVertical } from '../../Layout'
+import { SpaceVertical } from '../../Layout'
 import { Heading, Paragraph } from '../../Text'
 import { ActionListItemAction } from '../Item'
 import { ActionList } from '../ActionList'
@@ -130,20 +130,18 @@ const Template: Story<DemoProps> = ({
 
   return (
     <SpaceVertical p="large">
-      <Box borderLeft="1px solid" borderRight="1px solid" borderColor="ui2">
-        <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
-          <ActionList
-            firstColumnStuck={firstColumnStuck}
-            canSelectDisplayedColumns={canCustomizeColumns}
-            columns={columns}
-            filterConfig={canFilter ? filterActionsConfig : undefined}
-            select={canSelect ? selectConfig : undefined}
-            bulk={canBulk ? bulkActionsConfig : undefined}
-          >
-            {filteredItems}
-          </ActionList>
-        </ActionListManager>
-      </Box>
+      <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
+        <ActionList
+          bulk={canBulk ? bulkActionsConfig : undefined}
+          canCustomizeColumns={canCustomizeColumns}
+          columns={columns}
+          filterConfig={canFilter ? filterActionsConfig : undefined}
+          headerRowId="all-pdts"
+          select={canSelect ? selectConfig : undefined}
+        >
+          {filteredItems}
+        </ActionList>
+      </ActionListManager>
       {canFilter && (
         <Paragraph fontSize="small">
           Note: Demo filtering simply always returns the first row

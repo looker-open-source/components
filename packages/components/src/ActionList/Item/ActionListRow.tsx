@@ -35,7 +35,7 @@ import React, {
   Ref,
   useContext,
 } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
 import {
   ActionListCheckbox,
