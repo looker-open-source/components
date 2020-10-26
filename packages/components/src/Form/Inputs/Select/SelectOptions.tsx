@@ -84,16 +84,17 @@ const StyledIcon = styled(Icon)`
   /* For proper alignment with option text and check icon */
   height: ${({ theme }) => theme.lineHeights.small};
 `
-interface SelectOption {
+
+interface OptionLayoutProps {
   option: SelectOptionObject
   scrollIntoView?: boolean
 }
 
-const SelectOption = ({ option, scrollIntoView }: SelectOption) => {
+const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
   const { description, detail, icon, ...rest } = option
   const { hasIcons } = useContext(SelectOptionsContext)
 
-  if (detail || icon || description) {
+  if (detail || hasIcons || description) {
     const iconToUse = icon ? (
       <StyledIcon
         size="small"
@@ -103,7 +104,7 @@ const SelectOption = ({ option, scrollIntoView }: SelectOption) => {
         data-testid="option-icon"
       />
     ) : hasIcons ? (
-      <IconPlaceholder size="small" />
+      <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
     ) : null
 
     return (
@@ -121,17 +122,12 @@ const SelectOption = ({ option, scrollIntoView }: SelectOption) => {
   return <ComboboxOption {...rest} />
 }
 
-const renderMultiOption = (
-  option: SelectOptionObject,
-  key: string,
-  scrollIntoView?: boolean
-) => {
+const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
   const { description, detail, ...rest } = option
   if (description || detail) {
     return (
       <ComboboxMultiOption
         {...rest}
-        key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
@@ -144,7 +140,7 @@ const renderMultiOption = (
       </ComboboxMultiOption>
     )
   }
-  return <ComboboxMultiOption {...rest} key={key} />
+  return <ComboboxMultiOption {...rest} />
 }
 
 export function SelectOptionWithDescription({
@@ -198,9 +194,9 @@ export const SelectOptionGroup = ({
       {options.map((option, index) => {
         const key = `${keyPrefix}-${index}`
         return isMulti ? (
-          renderMultiOption(option, key)
+          <MultiOptionLayout option={option} key={key} />
         ) : (
-          <SelectOption option={option} key={key} />
+          <OptionLayout option={option} key={key} />
         )
       })}
     </SelectOptionGroupContainer>
@@ -291,7 +287,7 @@ export function SelectOptions({
   }
 
   const optionsToRender = options && options.slice(start, end + 1)
-  const RenderToUse = isMulti ? renderMultiOption : SelectOption
+  const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
     <EmptyListItem mb={0} px="medium" py="xlarge">
@@ -311,9 +307,13 @@ export function SelectOptions({
 
   return (
     <SelectOptionsContext.Provider value={{ hasIcons }}>
-      {options && scrollToFirst
-        ? RenderToUse(options[0] as SelectOptionObject, `${keyPrefix}-0`, true)
-        : null}
+      {options && scrollToFirst ? (
+        <OptionLayoutToUse
+          option={options[0] as SelectOptionObject}
+          key={`${keyPrefix}-0`}
+          scrollIntoView={true}
+        />
+      ) : null}
       {before}
       {optionsToRender && optionsToRender.length > 0
         ? [
@@ -329,10 +329,10 @@ export function SelectOptions({
                     isMulti={isMulti}
                   />
                 ) : (
-                  RenderToUse(
-                    option as SelectOptionObject,
-                    `${keyPrefix}-${correctedIndex}`
-                  )
+                  <OptionLayoutToUse
+                    option={option as SelectOptionObject}
+                    key={`${keyPrefix}-${correctedIndex}`}
+                  />
                 )
               }
             ),
@@ -340,13 +340,13 @@ export function SelectOptions({
           ]
         : createOption || noOptions}
       {after}
-      {options && scrollToLast
-        ? RenderToUse(
-            options[options.length - 1] as SelectOptionObject,
-            `${keyPrefix}-${options.length - 1}`,
-            true
-          )
-        : null}
+      {options && scrollToLast ? (
+        <OptionLayoutToUse
+          option={options[options.length - 1] as SelectOptionObject}
+          key={`${keyPrefix}-${options.length - 1}`}
+          scrollIntoView
+        />
+      ) : null}
     </SelectOptionsContext.Provider>
   )
 }

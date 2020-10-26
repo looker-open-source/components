@@ -447,6 +447,7 @@ EmptyValue.parameters = {
 
 const iconOptions = [
   { icon: 'ChartArea', label: 'Area', value: 'area' },
+  { label: 'ChartNoIcon', value: 'noicon' },
   { icon: 'ChartBar', label: 'Bar', value: 'bar' },
   { icon: 'ChartBoxPlot', label: 'Box Plot', value: 'boxplot' },
   { icon: 'ChartColumn', label: 'Column', value: 'column' },
@@ -456,7 +457,6 @@ const iconOptions = [
   { icon: 'ChartLine', label: 'Line', value: 'line' },
   { icon: 'ChartMap', label: 'Map', value: 'map' },
   { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-  { label: 'ChartNoIcon', value: 'noicon' },
   { icon: 'ChartScatterplot', label: 'Scatter Plot', value: 'scatterplot' },
   { icon: 'ChartSingleRecord', label: 'Single Record', value: 'singlerecord' },
   { icon: 'ChartSingleValue', label: 'Single Value', value: 'singlevalue' },

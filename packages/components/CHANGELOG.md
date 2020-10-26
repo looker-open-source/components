@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dialog` no longer supports `surfaceStyles` (use built-in props instead)
 - `DialogManager` is no longer available (`Dialog` is completely compatible with previous interface)
 
+### Fixed
+
+- `Select` alignment of options when some have icons and others do not
+- `Select` remounts its options when the options prop changes, using a shallow comparison. This causes select via click to fail if the options prop "changes" (same values, new array instance) after a mousedown, e.g. if a parent component contains `usePopover`.
+
 ## [0.9.22]
 
 ### Fixed
@@ -44,20 +49,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `InputFilters`
-  - improved styling when `Chips` wrap to additional lines
-  - `Popover` no longer moves when `Chip` is initially displayed
+- improved styling when `Chips` wrap to additional lines
+- `Popover` no longer moves when `Chip` is initially displayed
 - `Select` inside a `Dialog` losing focus after clicking an option
 - `Tooltip` adding extra space to its child's `className`
 
-## [0.9.20]
-
-### Added
-
-- `IconButton` supports `toggle` prop (uses `key` color when toggled and `aria-pressed`)
-- `Tooltip` and `useTooltip` now include a brief delay before showing
-  - `delay` prop controls the length
   - Improved test coverage / added image-snapshots
+
 - `Tree` `branchAlign` prop allows item be indented at the same depth as adjacent `TreeItem`(s)
 - `Tree` now supports `dividers` to produce a small visual space between each `TreeItem` displayed in the list so that adjacent items in a "selected" or active state have visual separation.
 

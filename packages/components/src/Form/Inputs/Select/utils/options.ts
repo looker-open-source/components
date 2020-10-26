@@ -109,7 +109,7 @@ export const optionsHaveIcons = (options?: SelectOptionProps[]) => {
   if (!options || options.length === 0) return false
   return options.some((option) => {
     const optionAsGroup = option as SelectOptionGroupProps
-    if (optionAsGroup) {
+    if (optionAsGroup.options) {
       return optionAsGroup.options.some(checkForIcon)
     } else {
       return checkForIcon(option as SelectOptionObject)

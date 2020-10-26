@@ -882,6 +882,7 @@ describe('Select', () => {
         placeholder="Select a visualization"
         options={[
           { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+          { label: 'No Icon', value: 'noicon' },
           { icon: 'ChartColumn', label: 'Column', value: 'column' },
           {
             icon: <>cool icon</>,
@@ -897,6 +898,7 @@ describe('Select', () => {
     const input = screen.getByPlaceholderText('Select a visualization')
     fireEvent.click(input)
     expect(screen.getAllByTestId('option-icon')).toHaveLength(3)
+    expect(screen.getAllByTestId('option-icon-placeholder')).toHaveLength(1)
 
     fireEvent.click(screen.getByText('Column'))
     const inputIcon = screen.getByTestId('input-icon')
