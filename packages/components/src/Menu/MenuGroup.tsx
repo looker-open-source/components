@@ -45,9 +45,11 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
   label,
 }) => {
   const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
+
   const {
     compact: contextCompact,
     renderIconPlaceholder: contextRenderIconPlaceholder,
+    setRenderIconPlaceholder: contextSetRenderIconPlaceholder,
     ...restContext
   } = useContext(MenuItemContext)
 
@@ -56,7 +58,8 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
     compact: compact === undefined ? contextCompact : compact,
     renderIconPlaceholder:
       contextRenderIconPlaceholder || renderIconPlaceholder,
-    setRenderIconPlaceholder,
+    setRenderIconPlaceholder:
+      contextSetRenderIconPlaceholder || setRenderIconPlaceholder,
   }
 
   return (

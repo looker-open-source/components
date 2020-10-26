@@ -43,12 +43,12 @@ export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
 
   useEffect(() => {
     const refCurrent = ref.current
-    if (refCurrent) {
-      observer && observer.observe(refCurrent)
+    if (refCurrent && observer) {
+      observer.observe && observer.observe(refCurrent)
     }
     return () => {
-      if (refCurrent) {
-        observer && observer.unobserve(refCurrent)
+      if (refCurrent && observer) {
+        observer.unobserve && observer.unobserve(refCurrent)
       }
     }
   }, [observer, ref])
