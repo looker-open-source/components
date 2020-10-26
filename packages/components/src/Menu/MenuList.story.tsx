@@ -27,7 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import { MenuGroup, MenuGroupProps, MenuList, MenuItem, MenuItemProps } from '.'
+import { MenuGroup, MenuList, MenuItem, MenuItemProps } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
   {
@@ -59,8 +59,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
   },
 ]
 
-
-const Template: Story<MenuListProps> = (args) => <MenuList {...args} />
+const Template: Story = (args) => <MenuList {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
