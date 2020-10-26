@@ -53,11 +53,6 @@ const itemList2: MenuItemProps[] = [
   },
 ]
 
-interface CustomStoryProps extends MenuGroupProps {
-  icons?: boolean
-  detail?: boolean
-  description?: boolean
-}
 
 const Template: Story<CustomStoryProps> = () => {
   return (
