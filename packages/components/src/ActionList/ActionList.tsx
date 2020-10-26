@@ -26,7 +26,7 @@
 
 import styled, { css } from 'styled-components'
 import { reset } from '@looker/design-tokens'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { useID } from '../utils/useID'
@@ -98,6 +98,8 @@ export interface ActionListProps {
    * specify specific columns to be displayed
    **/
   canSelectDisplayedColumns?: boolean
+
+  onChange: (columns: ActionListColumns) => void
 }
 
 export interface SelectConfig {
@@ -167,9 +169,19 @@ export const ActionListLayout: FC<ActionListProps> = ({
   filterConfig,
   header = true,
   headerRowId,
+  onChange,
   onSort,
   select,
 }) => {
+  const [visibleColumns, setVisibleColumns] = useState(columns)
+
+  const handleVisibleColumns = (value?: string[]) => {
+    console.log('value on ActionList: ', value)
+    //
+    setVisibleColumns(columns)
+    onChange(columns)
+  }
+
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
       ? true
@@ -190,7 +202,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   const actionListHeader =
     header === true ? (
       <ActionListHeader id={guaranteedId}>
-        {generateActionListHeaderColumns(columns)}
+        {generateActionListHeaderColumns(visibleColumns)}
       </ActionListHeader>
     ) : header === false ? null : (
       <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
@@ -201,6 +213,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
       columns={columns}
       {...filterConfig}
       canSelectDisplayedColumns={canSelectDisplayedColumns}
+      onChange={handleVisibleColumns}
     />
   )
 

@@ -28,6 +28,7 @@ import styled from 'styled-components'
 import React, { FC } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { FilterConfig } from '../ActionList'
+import { DividerVertical } from '../../Divider/DividerVertical'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
 export interface ActionListFiltersProps
@@ -42,20 +43,19 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   className,
   columns,
   filters,
+  onChange,
   onFilter,
 }) => {
-  const handleChange = () => {
-    // eslint-disable-next-line no-console
-    console.log('foo')
-  }
-
   return (
     <div className={className}>
       {filters && onFilter ? (
         <InputFilters filters={filters} onChange={onFilter} />
       ) : null}
       {canSelectDisplayedColumns && (
-        <ColumnSelector columns={columns} onChange={handleChange} />
+        <>
+          <DividerVertical height="1.2rem" />
+          <ColumnSelector columns={columns} onChange={onChange} />
+        </>
       )}
     </div>
   )

@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import { Popover, PopoverContent } from '../../Popover'
-import { DividerVertical } from '../../Divider/DividerVertical'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
 export interface ColumnSelectorProps {
@@ -44,18 +43,18 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = (columns, onChange) => {
       value: column.id,
     }))
 
-  const handleChange = (value: string[]) => {
-    onChange(value.join(', '))
+  const setVisibleColumns = (value: string[]) => {
+    console.log('value on ColumnSelector: ', value)
+    onChange(value)
   }
   return (
     <>
-      <DividerVertical height="1.2rem" />
       <Popover
         content={
           <PopoverContent>
             <CheckboxGroup
               // defaultValue={['cheddar']}
-              onChange={handleChange}
+              onChange={setVisibleColumns}
               options={columnsLabel}
             />
           </PopoverContent>
