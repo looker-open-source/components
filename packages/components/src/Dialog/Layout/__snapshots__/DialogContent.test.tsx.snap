@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogContent Snapshot - No overflow 1`] = `
+.c2 {
+  padding: 0 2rem;
+}
+
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-flex: 1 1 auto;
@@ -15,19 +19,16 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
   box-shadow: inset 0 -4px 4px -4px #DEE1E5;
 }
 
-.c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1.25rem;
+.c0.overflow .c1 {
   padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
 }
 
 <div
   className="c0 "
 >
   <div
-    className="c1"
+    className="c1 c2"
   >
     <div
       style={
@@ -43,6 +44,10 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
 `;
 
 exports[`DialogContent Snapshot 1`] = `
+.c2 {
+  padding: 0 2rem;
+}
+
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-flex: 1 1 auto;
@@ -57,19 +62,16 @@ exports[`DialogContent Snapshot 1`] = `
   box-shadow: inset 0 -4px 4px -4px #DEE1E5;
 }
 
-.c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1.25rem;
+.c0.overflow .c1 {
   padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
 }
 
 <div
   className="c0 "
 >
   <div
-    className="c1"
+    className="c1 c2"
   >
     Stuff
   </div>
