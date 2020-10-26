@@ -27,9 +27,8 @@
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
-import { DividerVertical } from '../../Divider/DividerVertical'
-import { IconButton } from '../../Button/IconButton'
 import { FilterConfig } from '../ActionList'
+import { ColumnSelector } from './ColumnSelector'
 
 export interface ActionListFiltersProps extends Partial<FilterConfig> {
   canSelectDisplayedColumns?: boolean
@@ -37,8 +36,8 @@ export interface ActionListFiltersProps extends Partial<FilterConfig> {
 }
 
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
-  className,
   canSelectDisplayedColumns = false,
+  className,
   filters,
   onFilter,
 }) => {
@@ -47,20 +46,10 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
       {filters && onFilter ? (
         <InputFilters filters={filters} onChange={onFilter} />
       ) : null}
-      {canSelectDisplayedColumns && (
-        <ColumnSelector>
-          <DividerVertical height="1.2rem" />
-          <IconButton label="Select columns to display" icon="ViewColumn" />
-        </ColumnSelector>
-      )}
+      {canSelectDisplayedColumns && <ColumnSelector />}
     </div>
   )
 }
-
-const ColumnSelector = styled.div`
-  align-items: center;
-  display: flex;
-`
 
 export const ActionListFilters = styled(ActionListFiltersLayout)`
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};

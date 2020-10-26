@@ -152,8 +152,8 @@ const Template: Story<DemoProps> = ({
 export const Primary = Template.bind({})
 Primary.args = {
   canBulk: true,
-  canCustomizeColumns: false,
-  canFilter: false,
+  canCustomizeColumns: true,
+  canFilter: true,
   canSelect: true,
   isLoading: false,
   noResults: false,
