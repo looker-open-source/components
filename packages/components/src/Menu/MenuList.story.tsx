@@ -54,39 +54,25 @@ const itemList2: MenuItemProps[] = [
 ]
 
 
-const Template: Story<CustomStoryProps> = () => {
-  return (
-    <MenuList>
-      <MenuGroup label="Options">
-        {itemList1.map((item, i) => (
-          <MenuItem
-            key={i}
-            icon={item.icon}
-            detail={item.detail}
-            description={item.description}
-          >
-            {item.children}
-          </MenuItem>
-        ))}
-      </MenuGroup>
-      <MenuGroup>
-        {itemList2.map((item, i) => (
-          <MenuItem
-            key={i}
-            icon={item.icon}
-            detail={item.detail}
-            description={item.description}
-          >
-            {item.children}
-          </MenuItem>
-        ))}
-      </MenuGroup>
-    </MenuList>
-  )
-}
+const Template: Story<MenuListProps> = (args) => <MenuList {...args} />
 
 export const Basic = Template.bind({})
-Basic.args = {}
+Basic.args = {
+  children: groups.map(({ label, items }, key) => (
+    <MenuGroup label={label} key={key}>
+      {items.map((item, i) => (
+        <MenuItem
+          key={i}
+          icon={item.icon}
+          detail={item.detail}
+          description={item.description}
+        >
+          {item.children}
+        </MenuItem>
+      ))}
+    </MenuGroup>
+  )),
+}
 
 export default {
   component: MenuList,
