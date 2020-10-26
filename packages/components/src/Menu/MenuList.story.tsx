@@ -29,27 +29,33 @@ import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
 import { MenuGroup, MenuGroupProps, MenuList, MenuItem, MenuItemProps } from '.'
 
-const itemList1: MenuItemProps[] = [
+const groups: { label?: string; items: MenuItemProps[] }[] = [
   {
-    children: 'Edit Dashboard',
-    detail: '⌘⇧E',
-    icon: 'EditOutline' as IconNames,
+    items: [
+      {
+        children: 'Edit Dashboard',
+        detail: '⌘⇧E',
+        icon: 'EditOutline' as IconNames,
+      },
+      {
+        children: 'Get LookML',
+        description: 'some description',
+      },
+      {
+        children: 'Revert to original dashboard',
+        detail: 'A longer detail',
+        icon: 'Undo' as IconNames,
+      },
+    ],
+    label: 'Options',
   },
   {
-    children: 'Get LookML',
-    description: 'some description',
-  },
-  {
-    children: 'Revert to original dashboard',
-    detail: 'A longer detail',
-    icon: 'Undo' as IconNames,
-  },
-]
-
-const itemList2: MenuItemProps[] = [
-  {
-    children: 'Log Out',
-    detail: 'esc',
+    items: [
+      {
+        children: 'Log Out',
+        detail: 'esc',
+      },
+    ],
   },
 ]
 
