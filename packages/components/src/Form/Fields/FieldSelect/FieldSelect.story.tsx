@@ -33,7 +33,7 @@ import { Dialog, DialogContent } from '../../../Dialog'
 import { Divider } from '../../../Divider'
 import { Icon } from '../../../Icon'
 import { Flex, Space, SpaceVertical } from '../../../Layout'
-import { usePopover } from '../../../Popover'
+import { PopoverContent, usePopover } from '../../../Popover'
 import { Heading, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
@@ -206,15 +206,16 @@ export const SelectContent = () => {
   // For testing a bug where the options are overly-sensitive to "changes"
   // This component re-renders on mousedown due to an upstream usePopover*
   // thus these options will be newly instantiated on mousedown
-  // but the options should NOT un/re-mount – if they do, the click to select will not register
-  // b/c it will cause the list to clause prematurely b/c the clicked option has been unmounted
-  // and the "is the focused element inside the list" check to keep the list open fails
+  // but the options should NOT un/re-mount – if they do, the click to
+  // select an option will not register. Instead it will close the Popover,
+  // b/c the clicked option has been unmounted and Popover's check for the
+  // target being "above" it will fail and its "close on click outside" behavior
+  // will be triggered
 
-  // * State changes in usePopover, like the one on mousedown,
-  // belong to SelectDemo, this component's parent,
-  // and parent state change causes child to re-render.
-  // If Popover were used instead, it would be a sibling to this component thus
-  // "protecting" it from the state change.
+  // * State changes in usePopover, like the one triggered by mousedown,
+  // belong to SelectDemo, this component's parent, and parent state changes
+  // cause child re-renders. If Popover were used instead, it would be a sibling
+  // to this component thus "protecting" it from the state change.
   const unMemoizedOptions = [{ value: 'Cheddar' }, { value: 'Gouda' }]
 
   return (
@@ -328,9 +329,9 @@ export const SelectDemo = () => {
   const handleClose = () => setOpen(false)
   const { popover, domProps } = usePopover({
     content: (
-      <Button m="large" onClick={handleClick}>
-        Open Dialog
-      </Button>
+      <PopoverContent>
+        <SelectContent />
+      </PopoverContent>
     ),
   })
   return (
@@ -341,7 +342,10 @@ export const SelectDemo = () => {
           <SelectContent />
         </DialogContent>
       </Dialog>
-      <Button {...domProps}>Open Popover</Button>
+      <Space>
+        <Button {...domProps}>Open Popover</Button>
+        <Button onClick={handleClick}>Open Dialog</Button>
+      </Space>
       <Card maxWidth="500px" maxHeight="300px">
         <CardContent>
           <Form
