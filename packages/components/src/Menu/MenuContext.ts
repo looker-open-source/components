@@ -25,7 +25,6 @@
  */
 
 import { createContext, KeyboardEvent, RefObject } from 'react'
-import noop from 'lodash/noop'
 
 export interface MenuContextProps {
   disabled?: boolean
