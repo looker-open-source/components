@@ -32,6 +32,7 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
+import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
@@ -132,7 +133,9 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
 
   useEffect(() => {
-    icon && setRenderIconPlaceholder(true)
+    if (isFunction(setRenderIconPlaceholder)) {
+      icon && setRenderIconPlaceholder(true)
+    }
   }, [icon, setRenderIconPlaceholder])
 
   const renderedIconID = useID(props.id)

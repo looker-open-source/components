@@ -40,19 +40,14 @@ export interface MenuContextProps {
 
 export interface MenuItemContextProps {
   compact?: boolean
-  renderIconPlaceholder: boolean
-  setRenderIconPlaceholder: (size: boolean) => void
+  renderIconPlaceholder?: boolean
+  setRenderIconPlaceholder?: (state: boolean) => void
   handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
   handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
 const menuContext: MenuContextProps = {}
-const menuItemContext: MenuItemContextProps = {
-  renderIconPlaceholder: false,
-  // Note: Using noop for default setRenderIconPlaceholder since this callback will always
-  // be received via providers in MenuList or MenuGroup
-  setRenderIconPlaceholder: (renderIcon: boolean) => noop(renderIcon),
-}
+const menuItemContext: MenuItemContextProps = {}
 
 export const MenuContext = createContext(menuContext)
 export const MenuItemContext = createContext(menuItemContext)
