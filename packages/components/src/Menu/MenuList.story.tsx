@@ -27,13 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import {
-  MenuGroup,
-  MenuGroupProps,
-  MenuList,
-  MenuItem,
-  MenuItemProps,
-} from './'
+import { MenuGroup, MenuGroupProps, MenuList, MenuItem, MenuItemProps } from '.'
 
 const itemList1: MenuItemProps[] = [
   {
@@ -65,28 +59,28 @@ interface CustomStoryProps extends MenuGroupProps {
   description?: boolean
 }
 
-const Template: Story<CustomStoryProps> = (args) => {
+const Template: Story<CustomStoryProps> = () => {
   return (
     <MenuList>
-      <MenuGroup {...args}>
+      <MenuGroup label="Options">
         {itemList1.map((item, i) => (
           <MenuItem
             key={i}
-            icon={args.icons ? item.icon : undefined}
-            detail={args.detail ? item.detail : undefined}
-            description={args.description ? item.description : undefined}
+            icon={item.icon}
+            detail={item.detail}
+            description={item.description}
           >
             {item.children}
           </MenuItem>
         ))}
       </MenuGroup>
-      <MenuGroup {...args}>
+      <MenuGroup>
         {itemList2.map((item, i) => (
           <MenuItem
             key={i}
-            icon={args.icons ? item.icon : undefined}
-            detail={args.detail ? item.detail : undefined}
-            description={args.description ? item.description : undefined}
+            icon={item.icon}
+            detail={item.detail}
+            description={item.description}
           >
             {item.children}
           </MenuItem>
@@ -97,13 +91,7 @@ const Template: Story<CustomStoryProps> = (args) => {
 }
 
 export const Basic = Template.bind({})
-Basic.args = {
-  compact: false,
-  description: true,
-  detail: true,
-  icons: true,
-  label: 'Options',
-}
+Basic.args = {}
 
 export default {
   component: MenuList,
