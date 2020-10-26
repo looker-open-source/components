@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
@@ -80,7 +80,7 @@ export interface ActionListProps {
   /**
    * specify specific columns to be displayed
    **/
-  canSelectDisplayedColumns?: boolean
+  canCustomizeColumns?: boolean
 }
 
 export interface SelectConfig {
@@ -144,7 +144,7 @@ export interface BulkActionsConfig {
 export const ActionListLayout: FC<ActionListProps> = (props) => {
   const {
     bulk,
-    canSelectDisplayedColumns,
+    canCustomizeColumns,
     className,
     columns,
     filterConfig,
@@ -152,6 +152,20 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     select,
     firstColumnStuck = Boolean(select),
   } = props
+
+  const [visibleColumns, setVisibleColumns] = useState(columns)
+  const [columnsList, setColumnsList] = useState<string[]>([])
+
+  const handleVisibleColumns = (selectedColumns: string[]) => {
+    setColumnsList(selectedColumns)
+
+    const displayColumns = columns.filter((column) =>
+      selectedColumns.includes(column.id)
+    )
+    selectedColumns.length === 0
+      ? setVisibleColumns(columns)
+      : setVisibleColumns(displayColumns)
+  }
 
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
@@ -168,15 +182,15 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     select,
   }
 
-  // const hasActions = c
-
-  const filters = (filterConfig || canSelectDisplayedColumns) && (
+  const filters = (filterConfig || canCustomizeColumns) && (
     <ActionListFilters
+      columnsList={columnsList}
+      columns={columns}
       {...filterConfig}
-      canSelectDisplayedColumns={canSelectDisplayedColumns}
+      canCustomizeColumns={canCustomizeColumns}
+      onChange={handleVisibleColumns}
     />
   )
-
   return (
     <ActionListContext.Provider value={context}>
       <div className={className}>
