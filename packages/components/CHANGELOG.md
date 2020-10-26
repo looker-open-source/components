@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dialog` now supports `placement` - `center` (default), `top` & `cover`
 - `Drawer` now supports `placement` - `left` & `right` (default)
 
+### Fixed
+
+- `Select` on a mobile device or with "tap to click" on a touch pad reopens immediately after clicking on an option
+
 ### Removed
 
 - `Dialog` no longer supports `maxWidth` (it's now always `100%` - use `width`)
