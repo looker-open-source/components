@@ -198,6 +198,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const filters = (filterConfig || canSelectDisplayedColumns) && (
     <ActionListFilters
+      columns={columns}
       {...filterConfig}
       canSelectDisplayedColumns={canSelectDisplayedColumns}
     />

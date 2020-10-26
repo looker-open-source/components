@@ -28,9 +28,11 @@ import styled from 'styled-components'
 import React, { FC } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { FilterConfig } from '../ActionList'
-import { ColumnSelector } from './ColumnSelector'
+import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
-export interface ActionListFiltersProps extends Partial<FilterConfig> {
+export interface ActionListFiltersProps
+  extends ColumnSelectorProps,
+    Partial<FilterConfig> {
   canSelectDisplayedColumns?: boolean
   className?: string
 }
@@ -38,15 +40,23 @@ export interface ActionListFiltersProps extends Partial<FilterConfig> {
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   canSelectDisplayedColumns = false,
   className,
+  columns,
   filters,
   onFilter,
 }) => {
+  const handleChange = () => {
+    // eslint-disable-next-line no-console
+    console.log('foo')
+  }
+
   return (
     <div className={className}>
       {filters && onFilter ? (
         <InputFilters filters={filters} onChange={onFilter} />
       ) : null}
-      {canSelectDisplayedColumns && <ColumnSelector />}
+      {canSelectDisplayedColumns && (
+        <ColumnSelector columns={columns} onChange={handleChange} />
+      )}
     </div>
   )
 }

@@ -30,46 +30,23 @@ import { Popover, PopoverContent } from '../../Popover'
 import { DividerVertical } from '../../Divider/DividerVertical'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
-
 export interface ColumnSelectorProps {
-  data?: ReactNode
+  columns: ReactNode[]
+  onChange: (value?: string) => void
+  // defaultSelector: string[]
 }
 
-const ColumnSelectorLayout: FC<ColumnSelectorProps> = () => {
-  const mockChildren = [
-    {
-      label: 'Name',
-      value: 'name',
-    },
-    {
-      label: 'Inventory',
-      value: 'inventory',
-    },
-    {
-      label: 'Status',
-      value: 'status',
-    },
-    {
-      label: 'Color',
-      value: 'color',
-    },
-    {
-      label: 'Description',
-      value: 'description',
-    },
-    {
-      label: 'Origin',
-      value: 'origin',
-    },
-    {
-      label: 'Fat Content',
-      value: 'fat-content',
-    },
-    {
-      label: 'Calcium',
-      value: 'calcium',
-    },
-  ]
+const ColumnSelectorLayout: FC<ColumnSelectorProps> = (columns, onChange) => {
+  const columnsLabel =
+    columns.columns &&
+    columns.columns.map((column: any) => ({
+      label: column.title,
+      value: column.id,
+    }))
+
+  const handleChange = (value: string[]) => {
+    onChange(value.join(', '))
+  }
   return (
     <>
       <DividerVertical height="1.2rem" />
@@ -78,7 +55,8 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = () => {
           <PopoverContent>
             <CheckboxGroup
               // defaultValue={['cheddar']}
-              options={mockChildren}
+              onChange={handleChange}
+              options={columnsLabel}
             />
           </PopoverContent>
         }
