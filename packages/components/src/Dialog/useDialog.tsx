@@ -188,7 +188,7 @@ export const useDialog = ({
         <RenderSurface
           aria-busy={busy ? true : undefined}
           className={className}
-          placement={placement as any}
+          placement={placement as DialogPlacements}
           {...surfaceProps}
         >
           {content}
