@@ -76,13 +76,13 @@ export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
   fullWidth?: boolean
 }
 
-export const buttonCSS = css<ButtonBaseProps>`
+export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${reset}
   ${maxWidth}
   ${minWidth}
   ${width}
 
-  ${({ focusVisible, color }) => focusVisible && buttonShadow(color)}
+  ${focusVisible && buttonShadow(color)}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
@@ -108,8 +108,8 @@ export const buttonCSS = css<ButtonBaseProps>`
 `
 
 const ButtonOuter = styled.button<ButtonProps>`
-  ${buttonCSS}
-  ${(props) => props.fullWidth && `width: 100%;`}
+  ${({ color, focusVisible }) => buttonCSS(color || 'key', focusVisible)}
+  ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
 
 const ButtonJSX = forwardRef(

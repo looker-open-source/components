@@ -118,7 +118,7 @@ export interface IconButtonProps
 }
 
 export const IconButtonStyle = styled.button<IconButtonProps>`
-  ${buttonCSS}
+  ${({ focusVisible }) => buttonCSS('neutral', focusVisible)}
   height: auto;
 `
 
