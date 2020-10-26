@@ -24,14 +24,97 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { minHeight, ResponsiveValue } from 'styled-system'
+import { theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
+import { dialogWidth, DialogWidth } from './dialogWidth'
 
-export const DialogSurface = styled(SurfaceBase)`
-  border-radius: ${({ theme }) => theme.radii.medium};
+export type DialogPlacements = 'center' | 'cover' | 'top'
+
+export interface DialogSurfaceProps {
+  /**
+   * Determines how Surface is positioned in the the viewport.
+   * `center` - surface is centered horizontally and vertically above mobile breakpoint.
+   *    mobile: positioned at top of window and covers entire width.
+   *    width: defaults to 100% in mobile breakpoint and 37.5rem above that unless otherwise specified
+   *    height: fits content unless it's explicitly specified with `height` prop
+   * `cover` - positioned to cover nearly the entire window.
+   *    mobile & tablet: cover the entire window.
+   * `top` - vertically positioned near the top of edge of the window, horizontally centered.
+   *    mobile: identical to `default` placement
+   *    height: grows to fit content. Total height will keep surface a small amount from top and bottom
+   *      of viewport
+   *    width: default `medium` above mobile breakpoint
+   * @default 'center'
+   */
+  placement?: DialogPlacements
+
+  /**
+   * Explicitly specifying a width will set the Surface to be the lesser of
+   * the specified width or the viewport width.
+   */
+  width?: DialogWidth
+
+  /**
+   * Explicitly specifying a minHeight will set the Surface to be the lesser of
+   * the specified height, the content height or the viewport height. Default will
+   * cause the Surface to auto-size to its content.
+   */
+  minHeight?: ResponsiveValue<string>
+}
+
+const { space, breakpoints } = theme
+const gapSpace = 'xxlarge'
+const coverDimension = `calc(100% - ${space[gapSpace]} * 2)`
+
+const placements = {
+  center: css<DialogSurfaceProps>`
+    align-self: flex-start;
+    max-height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      align-self: center;
+      max-height: ${coverDimension};
+    }
+  `,
+  cover: css<DialogSurfaceProps>`
+    height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      height: ${coverDimension};
+      width: ${coverDimension};
+    }
+
+    @media screen and (min-width: ${breakpoints[1]}) {
+      height: ${coverDimension};
+      width: ${coverDimension};
+    }
+  `,
+  top: css<DialogSurfaceProps>`
+    align-self: flex-start;
+    margin-top: 0;
+    max-height: 100%;
+
+    @media screen and (min-width: ${breakpoints[0]}) {
+      margin-top: ${({ theme }) => theme.space[gapSpace]};
+      max-height: ${coverDimension};
+    }
+  `,
+}
+
+export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
   box-shadow: ${({ theme }) => theme.shadows[5]};
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
+
+  ${dialogWidth}
+  ${({ placement }) => placements[placement || 'center']}
+  ${minHeight}
+
+  @media screen and (min-width: ${breakpoints[0]}) {
+    border-radius: ${({ theme }) => theme.radii.medium};
+  }
 
   &.entering,
   &.exiting {
@@ -41,6 +124,5 @@ export const DialogSurface = styled(SurfaceBase)`
 `
 
 DialogSurface.defaultProps = {
-  maxHeight: ['100%', '100%', '90%'],
-  maxWidth: ['100%', '90%', '600px'],
+  width: 'medium',
 }

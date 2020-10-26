@@ -35,7 +35,6 @@ import {
 import { SimpleContent } from '../__mocks__/DialogContentSimple'
 import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
 import { Dialog } from './Dialog'
-import { DialogManager } from './DialogManager'
 import {
   Controlled,
   ControlledLegacy,
@@ -100,38 +99,6 @@ describe('Dialog', () => {
       <Dialog content={<SimpleContent />}>
         {(dialogProps) => <a {...dialogProps}>Open Dialog</a>}
       </Dialog>
-    )
-
-    // Open Dialog
-    const link = screen.getByText('Open Dialog')
-    fireEvent.click(link)
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
-
-    // Close the Dialog
-    const doneButton = screen.getByText('Done')
-    fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
-  })
-
-  test('Surface custom styles', () => {
-    renderWithTheme(
-      <Dialog
-        defaultOpen
-        surfaceStyles={{ backgroundColor: 'purple' }}
-        content={<SimpleContent />}
-      />
-    )
-
-    const surface = screen.getByRole('dialog')
-    expect(surface).toBeInTheDocument()
-    expect(surface).toHaveStyle({ backgroundColor: 'purple' })
-  })
-
-  test('DialogManager fallback functional', async () => {
-    renderWithTheme(
-      <DialogManager content={<SimpleContent />}>
-        <a>Open Dialog</a>
-      </DialogManager>
     )
 
     // Open Dialog
@@ -252,5 +219,55 @@ describe('Dialog', () => {
 
     fireEvent.click(screen.getByText('Done'))
     expect(onClose).toBeCalledTimes(0)
+  })
+
+  describe('width', () => {
+    test('xsmall', () => {
+      renderWithTheme(
+        <Dialog
+          content={<SimpleContent />}
+          defaultOpen={true}
+          width="xxsmall"
+        />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '16rem'
+      )
+    })
+
+    test('small', () => {
+      renderWithTheme(
+        <Dialog content={<SimpleContent />} defaultOpen={true} width="small" />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '28rem'
+      )
+    })
+
+    test('large', () => {
+      renderWithTheme(
+        <Dialog content={<SimpleContent />} defaultOpen={true} width="large" />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '50rem'
+      )
+    })
+
+    test('arbitrary', () => {
+      renderWithTheme(
+        <Dialog
+          content={<SimpleContent />}
+          defaultOpen={true}
+          width="24.5rem"
+        />
+      )
+      expect(screen.getByText('Dialog content')).toHaveStyleRule(
+        'width',
+        '24.5rem'
+      )
+    })
   })
 })

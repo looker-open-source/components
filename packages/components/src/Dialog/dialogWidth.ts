@@ -24,14 +24,38 @@
 
  */
 
-import { Dialog, DialogProps } from './Dialog'
+import { system, ResponsiveValue } from 'styled-system'
+import {
+  SizeXSmall,
+  SizeXXSmall,
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
+} from '@looker/design-tokens/src/system'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DialogManagerProps extends DialogProps {}
+export type DialogSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
-/**
- * DialogManager is a legacy-proxy to Dialog.
- * This fallback mechanism will be removed very soon.
- * Use `Dialog` instead
- */
-export const DialogManager = Dialog
+export type DialogSizeRamp = Record<DialogSizes, string>
+export type DialogWidth = ResponsiveValue<DialogSizeRamp | string>
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const dialogSizes: DialogSizeRamp = {
+  xxsmall: '16rem',
+  xsmall: '21rem',
+  small: '28rem',
+  medium: '40rem',
+  large: '50rem',
+}
+
+export const dialogWidth = system({
+  width: {
+    property: 'width',
+    scale: 'dialogSizes',
+    defaultScale: dialogSizes,
+  },
+})

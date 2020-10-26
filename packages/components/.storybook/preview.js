@@ -27,4 +27,8 @@
 import { addDecorator } from '@storybook/react'
 import { componentsDecorator } from '../../storybook-config/src/componentsDecorator'
 
+export const parameters = {
+  controls: { expanded: true },
+}
+
 addDecorator(componentsDecorator)

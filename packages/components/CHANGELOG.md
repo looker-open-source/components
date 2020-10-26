@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
 
+### Added
+
+- `Dialog` & `Drawer` now support semantic sizes (`xxsmall - xlarge`)
+- `Dialog` now supports `placement` - `center` (default), `top` & `cover`
+- `Drawer` now supports `placement` - `left` & `right` (default)
+
+### Removed
+
+- `Dialog` no longer supports `maxWidth` (it's now always `100%` - use `width`)
+- `Drawer` no longer supports `height` (use `minHeight`)
+- `Dialog` no longer supports `surfaceStyles` (use built-in props instead)
+- `DialogManager` is no longer available (`Dialog` is completely compatible with previous interface)
+
 ## [0.9.22]
 
 ### Fixed

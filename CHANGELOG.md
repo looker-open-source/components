@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package has a package-specific CHANGELOG as well. Review the Github release notes for a roll-up of all CHANGELOG changes across the monorepo.
 
-### Package CHANGELOGs
-
 - [Components](./packages/components/CHANGELOG.md)
 - [Components Providers](./packages/components-providers/CHANGELOG.md)
 - [Components Test Utilities](./packages/components-providers/CHANGELOG.md)
