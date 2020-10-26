@@ -115,7 +115,6 @@ describe('Select / SelectMulti', () => {
           options={optionsToUse}
           placeholder="Search"
           onFilter={onFilter}
-          value=""
           key="select"
         />
       ),
@@ -127,7 +126,6 @@ describe('Select / SelectMulti', () => {
           options={optionsToUse}
           placeholder="Search"
           onFilter={onFilter}
-          values={[]}
           key="select-multi"
         />
       ),
