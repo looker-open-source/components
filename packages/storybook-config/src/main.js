@@ -24,11 +24,19 @@
 
  */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
-module.exports = {
-  addons: ['@storybook/addon-essentials'],
+const addonEssentials = {
+  name: '@storybook/addon-essentials',
+  options: {
+    backgrounds: false,
+  },
+}
+
+const config = {
+  addons: [addonEssentials],
   stories: ['../**/*.story.tsx'],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -39,8 +47,54 @@ module.exports = {
         },
       ],
     })
+    config.module.rules.push({
+      exclude: [
+        excludeNodeModulesExcept([
+          'merge-anything', // a transitive dependency
+          'react-hotkeys-hook', // ditto
+        ]),
+      ],
+      loader: 'babel-loader',
+      test: /\.js$/,
+    })
     config.resolve.extensions.push('.ts', '.tsx')
     config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config
   },
 }
+
+const mode = process.env.storybookBuildMode
+
+/**
+ * `react-docgen-typescript` is slow because it has to parse _everything_.
+ *
+ * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
+ * neither will be needed for snapshots and it significantly improves Storybook performance.
+ */
+
+if (mode === 'fast') {
+  config.typescript = { reactDocgen: false }
+  config.addons = []
+} else if (mode === 'develop') {
+  /**
+   *
+   * TODO: Explore `webpack-react-docgen-typescript` + to load types from a pre-compiled build
+   * of interface types. There may be complications due to our TS monorepo and the complexities
+   * of properly loading types.
+   *
+   * It appears Storybook 6.2 may incorporate this kind of functionality so it may make
+   * sense to wait for that.
+   *
+   * Background: https://github.com/storybookjs/storybook/issues/7942
+   *
+   */
+  addonEssentials.options = {
+    ...addonEssentials.options,
+    docs: false,
+  }
+}
+
+/* eslint-disable-next-line no-console */
+mode && console.log('Storybook build bode:', mode, '\n', config)
+
+module.exports = config

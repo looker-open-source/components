@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "start": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
+    "develop": "export storybookBuildMode=develop && yarn start",
     "build": "build-storybook -c .storybook",
     "postbuild": "npx sb extract"
   },
@@ -15,7 +16,7 @@
     "@looker/components-theme-editor": "^0.9.22",
     "@looker/design-tokens": "^0.9.21",
     "@looker/icons": "^0.9.21",
-    "@storybook/react": "^6.0.26",
+    "@storybook/react": "^6.0.27",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -25,8 +26,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@looker/components-providers": "*",
-    "@storybook/addon-essentials": "^6.0.26",
-    "@storybook/addon-storyshots": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.27",
+    "@storybook/addon-storyshots": "^6.0.27",
     "babel-loader": "^8.1.0"
   }
 }
