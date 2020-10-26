@@ -17,17 +17,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dialog` now supports `placement` - `center` (default), `top` & `cover`
 - `Drawer` now supports `placement` - `left` & `right` (default)
 
+### Fixed
+
+- `Select` alignment of options when some have icons and others do not
+- `Select` inappropriately shows "No options" when the current value is empty, after filtering a long list down to a single option then deleting the filter text
+- `Select` remounts its options when the options prop changes, using a shallow comparison. This causes select via click to fail if the options prop "changes" (same values, new array instance) after a mousedown, e.g. if a parent component contains `usePopover`.
+
 ### Removed
 
 - `Dialog` no longer supports `maxWidth` (it's now always `100%` - use `width`)
 - `Drawer` no longer supports `height` (use `minHeight`)
 - `Dialog` no longer supports `surfaceStyles` (use built-in props instead)
 - `DialogManager` is no longer available (`Dialog` is completely compatible with previous interface)
-
-### Fixed
-
-- `Select` alignment of options when some have icons and others do not
-- `Select` remounts its options when the options prop changes, using a shallow comparison. This causes select via click to fail if the options prop "changes" (same values, new array instance) after a mousedown, e.g. if a parent component contains `usePopover`.
 
 ## [0.9.22]
 
