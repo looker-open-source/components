@@ -39,6 +39,10 @@ import { SelectOptionObject, SelectOptionProps } from './SelectOptions'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
+const options100 = Array.from(Array(100), (_, i) => ({
+  value: String(i + 1),
+}))
+
 afterEach(cleanup)
 
 describe('Select / SelectMulti', () => {
@@ -101,9 +105,6 @@ describe('Select / SelectMulti', () => {
   })
 
   // Test long list of options to capture the windowed options issue
-  const options100 = Array.from(Array(100), (_, i) => ({
-    value: String(i + 1),
-  }))
   const initialOptions = [...options100, ...options, { value: 'BAZ' }]
 
   test.each([
@@ -114,6 +115,7 @@ describe('Select / SelectMulti', () => {
           options={optionsToUse}
           placeholder="Search"
           onFilter={onFilter}
+          value=""
           key="select"
         />
       ),
@@ -125,6 +127,7 @@ describe('Select / SelectMulti', () => {
           options={optionsToUse}
           placeholder="Search"
           onFilter={onFilter}
+          values={[]}
           key="select-multi"
         />
       ),
@@ -947,5 +950,34 @@ describe('Select', () => {
 
     // Close popover to silence act() warning
     fireEvent.click(document)
+  })
+
+  // Test for the "No options" bug
+  test('filtering a windowed list then deleting the filter', () => {
+    function Component() {
+      const [optionsToUse, setOptions] = useState(options100)
+      function handleFilter(term: string) {
+        setOptions(
+          options100.filter((option) => option.value.indexOf(term) > -1)
+        )
+      }
+      return (
+        <Select
+          options={optionsToUse}
+          placeholder="Search"
+          onFilter={handleFilter}
+          value=""
+        />
+      )
+    }
+
+    renderWithTheme(<Component />)
+
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.mouseDown(input)
+    fireEvent.change(input, { target: { value: '90' } })
+    // Must delete filter before navigating for bug to show up
+    fireEvent.change(input, { target: { value: '' } })
+    expect(screen.queryByText('No options')).toBe(null)
   })
 })
