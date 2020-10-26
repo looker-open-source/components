@@ -57,7 +57,7 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
   return (
     <>
       <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent innerProps={{ py: 'none' }}>
+      <DialogContent>
         {typeof message === 'string' ? (
           <Paragraph breakword>{message}</Paragraph>
         ) : (

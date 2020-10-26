@@ -28,7 +28,6 @@ import {
   CompatibleHTMLProps,
   SpaceProps,
   reset,
-  space,
   LayoutProps,
   layout,
 } from '@looker/design-tokens'
@@ -39,14 +38,7 @@ import omit from 'lodash/omit'
 
 export interface DialogContentProps
   extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {
-  /**
-   * Style the scroll-able space within the DialogContent.
-   * Often p="none" is applied if components within the the DialogContent need to the
-   * touch the container edges.
-   */
-  innerProps?: SpaceProps
-}
+    CompatibleHTMLProps<HTMLDivElement> {}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
@@ -55,7 +47,6 @@ interface DialogContentLayoutProps extends DialogContentProps {
 const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
-  innerProps,
   renderedHeight,
   ...props
 }) => {
@@ -70,20 +61,20 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
     }
   }, [renderedHeight])
 
-  if (innerProps && innerProps.p && !innerProps.px) {
-    innerProps.px = innerProps.p
-  }
-
   return (
     <div
       className={`${className} ${overflow ? 'overflow' : ''}`}
       ref={internalRef}
       {...omit(props, ['renderedHeight'])}
     >
-      <Inner {...innerProps}>{children}</Inner>
+      <Inner>{children}</Inner>
     </div>
   )
 }
+
+const Inner = styled.div<SpaceProps>`
+  padding: 0 ${({ theme }) => theme.space.xlarge};
+`
 
 const DialogContentStyled = styled(DialogContentLayout)`
   ${reset}
@@ -96,6 +87,11 @@ const DialogContentStyled = styled(DialogContentLayout)`
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
     border-top: 1px solid ${({ theme }) => theme.colors.ui2};
     box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+
+    ${Inner} {
+      padding-bottom: ${({ theme }) => theme.space.large};
+      padding-top: ${({ theme }) => theme.space.large};
+    }
   }
 `
 
@@ -108,10 +104,3 @@ export const DialogContent = (props: DialogContentProps) => {
     </ReactResizeDetector>
   )
 }
-
-const Inner = styled.div<SpaceProps>`
-  ${reset}
-  ${space}
-`
-
-Inner.defaultProps = { px: 'xlarge', py: 'large' }

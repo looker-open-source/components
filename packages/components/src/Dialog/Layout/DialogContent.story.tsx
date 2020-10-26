@@ -42,7 +42,7 @@ export const Overflow = () => (
   <Box height="10rem" display="flex" bg="white" p="large">
     <DialogContent>
       <Paragraph>Scroll down here...</Paragraph>
-      <Box height="6rem" bg="rebeccapurple" />
+      <Box height="12rem" bg="rebeccapurple" />
     </DialogContent>
   </Box>
 )
