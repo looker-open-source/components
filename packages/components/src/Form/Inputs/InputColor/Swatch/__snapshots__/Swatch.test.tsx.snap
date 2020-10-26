@@ -49,6 +49,7 @@ exports[`Default Swatch 1`] = `
 <div
   className="c0"
   color="transparent"
+  data-testid="swatch"
   height="36px"
   width="36px"
 />
@@ -88,6 +89,7 @@ exports[`Swatch has a disabled state 1`] = `
 <div
   className="c0"
   color="blue"
+  data-testid="swatch"
   disabled={true}
   height="25px"
   width="50px"
@@ -128,6 +130,7 @@ exports[`Swatch with hex value passed 1`] = `
 <div
   className="c0"
   color="#4c6670"
+  data-testid="swatch"
   height="36px"
   width="36px"
 />
@@ -167,6 +170,7 @@ exports[`Swatch with width and height set 1`] = `
 <div
   className="c0"
   color="blue"
+  data-testid="swatch"
   height="25px"
   width="50px"
 />

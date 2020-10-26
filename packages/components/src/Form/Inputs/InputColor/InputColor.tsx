@@ -97,6 +97,8 @@ export const InputColorComponent = forwardRef(
       onBlur,
       value,
       defaultValue,
+      disabled,
+      readOnly,
       ...props
     }: InputColorProps,
     ref: Ref<HTMLInputElement>
@@ -180,16 +182,19 @@ export const InputColorComponent = forwardRef(
         <Swatch
           ref={triggerRef}
           color={color ? hsv2hex(color) : undefined}
-          disabled={props.disabled}
+          disabled={disabled}
+          readOnly={readOnly}
           onClick={open}
         />
-        {!props.disabled && popover}
+        {!disabled && !readOnly && popover}
         {!hideInput && (
           <InputText
             {...props}
             aria-describedby={`${id}-describedby`}
             id={inputID}
             ref={ref}
+            disabled={disabled}
+            readOnly={readOnly}
             validationType={validationMessage && validationMessage.type}
             onChange={handleInputTextChange}
             value={inputTextValue}

@@ -7,15 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### Changed
-
-- `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
-
 ### Added
 
 - `Dialog` & `Drawer` now support semantic sizes (`xxsmall - xlarge`)
 - `Dialog` now supports `placement` - `center` (default), `top` & `cover`
 - `Drawer` now supports `placement` - `left` & `right` (default)
+
+### Changed
+
+- `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
+
+### Fixed
+
+- `InputColor` no longer allows user to click swatch when `readOnly` is assigned
 
 ### Removed
 

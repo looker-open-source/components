@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent, useState } from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Button } from '../../../Button'
@@ -83,5 +83,34 @@ describe('InputColor', () => {
     expect(input).toHaveValue('yellow')
     fireEvent.change(input, { target: { value: 'purple' } })
     expect(input).toHaveValue('purple')
+  })
+
+  test('opens on swatch click', () => {
+    renderWithTheme(<InputColor value="green" />)
+    fireEvent.click(screen.getByTestId('swatch'))
+    expect(screen.getByTestId('color-wheel')).toBeInTheDocument()
+    fireEvent.click(document)
+  })
+
+  test('disabled', () => {
+    renderWithTheme(<InputColor disabled value="green" />)
+
+    // Find input, verify it's disabled
+    expect(screen.getByRole('textbox')).toHaveAttribute('disabled')
+
+    // Find swatch, verify clicking doesn't open Popover
+    fireEvent.click(screen.getByTestId('swatch'))
+    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
+  })
+
+  test('readOnly', () => {
+    renderWithTheme(<InputColor readOnly value="green" />)
+
+    // Find input, verify it's readOnly
+    expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
+
+    // Find swatch, verify clicking doesn't open Popover
+    fireEvent.click(screen.getByTestId('swatch'))
+    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
   })
 })
