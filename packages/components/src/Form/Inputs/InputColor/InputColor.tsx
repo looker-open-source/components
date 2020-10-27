@@ -175,16 +175,15 @@ export const InputColorComponent = forwardRef(
       </PopoverContent>
     )
 
-    const { open, popover, ref: triggerRef } = usePopover({ content })
+    const { popover, domProps } = usePopover({ content })
 
     return (
       <div className={className}>
         <Swatch
-          ref={triggerRef}
           color={color ? hsv2hex(color) : undefined}
           disabled={disabled}
           readOnly={readOnly}
-          onClick={open}
+          {...domProps}
         />
         {!disabled && !readOnly && popover}
         {!hideInput && (
