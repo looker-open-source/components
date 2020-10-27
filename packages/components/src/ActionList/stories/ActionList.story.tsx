@@ -52,7 +52,6 @@ interface DemoProps extends ActionListManagerProps {
   canCustomizeColumns: boolean
   canFilter: boolean
   canSelect: boolean
-  // onChange: (value?: ActionListColumns) => void
 }
 
 const Template: Story<DemoProps> = ({
@@ -61,7 +60,6 @@ const Template: Story<DemoProps> = ({
   canFilter,
   canSelect,
   noResultsDisplay,
-  // onChange,
   ...args
 }) => {
   const allPageItems = data.map(({ name }) => name)
@@ -128,11 +126,6 @@ const Template: Story<DemoProps> = ({
     return items
   }, [canFilter, filters])
 
-  // const handleColumnsChange = (columns: ActionListColumns) => {
-  //   console.log('columns from story: ', columns)
-  //   onChange(columns)
-  // }
-
   return (
     <SpaceVertical>
       <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
@@ -142,7 +135,6 @@ const Template: Story<DemoProps> = ({
           columns={columns}
           filterConfig={canFilter ? filterActionsConfig : undefined}
           headerRowId="all-pdts"
-          // onChange={handleColumnsChange}
           select={canSelect ? selectConfig : undefined}
         >
           {filteredItems}

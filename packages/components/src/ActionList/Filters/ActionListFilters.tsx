@@ -45,6 +45,7 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   filters,
   onChange,
   onFilter,
+  columnsList,
 }) => {
   return (
     <div className={className}>
@@ -54,7 +55,11 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
       {canSelectDisplayedColumns && (
         <>
           <DividerVertical height="1.2rem" />
-          <ColumnSelector columns={columns} onChange={onChange} />
+          <ColumnSelector
+            columns={columns}
+            onChange={onChange}
+            columnsList={columnsList}
+          />
         </>
       )}
     </div>

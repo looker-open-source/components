@@ -98,8 +98,6 @@ export interface ActionListProps {
    * specify specific columns to be displayed
    **/
   canSelectDisplayedColumns?: boolean
-
-  // onChange: (columns: ActionListColumns) => void
 }
 
 export interface SelectConfig {
@@ -169,25 +167,22 @@ export const ActionListLayout: FC<ActionListProps> = ({
   filterConfig,
   header = true,
   headerRowId,
-  // onChange,
   onSort,
   select,
 }) => {
   const [visibleColumns, setVisibleColumns] = useState(columns)
-  const [tableData, setTableData] = useState(children)
+  const [columnsList, setColumnsList] = useState<string[]>([])
 
   const handleVisibleColumns = (selectedColumns: string[]) => {
+    setColumnsList(selectedColumns)
+
     const displayColumns = columns.filter((column) =>
       selectedColumns.includes(column.id)
     )
     console.log('selectedColumns: ', selectedColumns)
-    console.log('select: ', select)
-
-    //   const displayTable = children.filter((data) =>
-    //   selectedColumns.includes(column.id)
-    // )
-    setVisibleColumns(displayColumns)
-    // onChange(columns)
+    selectedColumns.length === 0
+      ? setVisibleColumns(columns)
+      : setVisibleColumns(displayColumns)
   }
 
   const allSelected: MixedBoolean =
@@ -218,6 +213,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const filters = (filterConfig || canSelectDisplayedColumns) && (
     <ActionListFilters
+      columnsList={columnsList}
       columns={columns}
       {...filterConfig}
       canSelectDisplayedColumns={canSelectDisplayedColumns}
