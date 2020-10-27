@@ -400,13 +400,8 @@ export function useReducerMachine<
   initialData: TData,
   defaultPayload: TPayload
 ): [ComboboxState, TData, ComboboxTransition<TPayload>] {
-  const [state, setState] = useState(stateChart.initial)
+  const stateRef = useRef(stateChart.initial)
   const [data, dispatch] = useReducer(reducerFn, initialData)
-  const stateRef = useRef(state)
-
-  useEffect(() => {
-    stateRef.current = state
-  }, [state])
 
   function transition(
     action: ComboboxActionType,
@@ -416,14 +411,13 @@ export function useReducerMachine<
     const nextState = currentState.on[action]
     if (!nextState) {
       // eslint-disable-next-line no-console
-      console.warn(`Unknown action "${action}" for state "${state}"`)
+      console.warn(`Unknown action "${action}" for state "${stateRef.current}"`)
       return
+    } else {
+      stateRef.current = nextState
     }
-    dispatch({ state, type: action, ...payload })
-    setState(nextState)
-
-    stateRef.current = nextState
+    dispatch({ state: stateRef.current, type: action, ...payload })
   }
 
-  return [state, data, transition]
+  return [stateRef.current, data, transition]
 }

@@ -40,7 +40,7 @@ import { Divider } from '../../../Divider'
 import { Icon } from '../../../Icon'
 import { Flex, Space, SpaceVertical } from '../../../Layout'
 import { PopoverContent, usePopover } from '../../../Popover'
-import { Heading, Text } from '../../../Text'
+import { Heading, Paragraph, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
 import { ComboboxOptionObject } from '../../Inputs/Combobox'
@@ -611,14 +611,18 @@ export const DelayUpdate = () => {
     }
   }, [tempValue])
   return (
-    <SpaceVertical align="start" width={300}>
+    <SpaceVertical align="start" width={450}>
       <FieldSelect
         label="Controlled with Delayed Update"
+        description="Select should not lose focus when picking from the list"
         options={options}
         value={value}
         onChange={setTempValue}
       />
       <Button onClick={() => setTempValue('3')}>Oranges</Button>
+      <Paragraph>
+        Select should not gain focus after clicking this button
+      </Paragraph>
     </SpaceVertical>
   )
 }

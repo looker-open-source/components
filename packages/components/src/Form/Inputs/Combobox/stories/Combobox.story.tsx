@@ -155,9 +155,9 @@ export const ControlledInputValue = () => {
   const [values, setValues] = useState([{ value: 'Apples' }])
   const handleClick = () => setInputValue('bananas')
   return (
-    <>
+    <SpaceVertical width={300} align="start">
       <Button onClick={handleClick}>Change Input Value</Button>
-      <ComboboxMulti width={300} values={values} onChange={setValues}>
+      <ComboboxMulti values={values} onChange={setValues}>
         <ComboboxMultiInput
           autoComplete={false}
           onClear={() => alert('CLEAR')}
@@ -173,7 +173,7 @@ export const ControlledInputValue = () => {
           <ComboboxMultiOption value="Pineapples" />
         </ComboboxMultiList>
       </ComboboxMulti>
-    </>
+    </SpaceVertical>
   )
 }
 
