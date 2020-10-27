@@ -123,8 +123,10 @@ export function useWindowedOptions(
         'value',
         navigationOption.value,
       ])
-      start = selectedIndex
-      end = selectedIndex
+      if (selectedIndex > -1) {
+        start = selectedIndex
+        end = selectedIndex
+      }
     }
   }
   previouslyWindowedRef.current = windowedOptions

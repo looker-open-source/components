@@ -33,6 +33,7 @@ import { Dialog, DialogContent } from '../../../Dialog'
 import { Divider } from '../../../Divider'
 import { Icon } from '../../../Icon'
 import { Flex, Space, SpaceVertical } from '../../../Layout'
+import { PopoverContent, usePopover } from '../../../Popover'
 import { Heading, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
@@ -201,13 +202,28 @@ export const SelectContent = () => {
     if (searchTerm === '') return options1k
     return options1k.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
+
+  // For testing a bug where the options are overly-sensitive to "changes"
+  // This component re-renders on mousedown due to an upstream usePopover*
+  // thus these options will be newly instantiated on mousedown
+  // but the options should NOT un/re-mount – if they do, the click to
+  // select an option will not register. Instead it will close the Popover,
+  // b/c the clicked option has been unmounted and Popover's check for the
+  // target being "above" it will fail and its "close on click outside" behavior
+  // will be triggered
+
+  // * State changes in usePopover, like the one triggered by mousedown,
+  // belong to SelectDemo, this component's parent, and parent state changes
+  // cause child re-renders. If Popover were used instead, it would be a sibling
+  // to this component thus "protecting" it from the state change.
+  const unMemoizedOptions = [{ value: 'Cheddar' }, { value: 'Gouda' }]
+
   return (
-    <>
-      <Heading mb="large">Select</Heading>
+    <SpaceVertical align="start" maxWidth={600}>
+      <Heading>Select</Heading>
       <FieldSelect
         label="1k (windowed) options"
         width={300}
-        mb="medium"
         options={options1k}
         aria-label="Fruits"
         placeholder="Select Brand"
@@ -229,7 +245,6 @@ export const SelectContent = () => {
         </Flex>
         <FieldSelect
           width={300}
-          mb="medium"
           options={newOptions}
           aria-label="Fruits"
           placeholder="Controlled, searchable, clearable"
@@ -241,77 +256,66 @@ export const SelectContent = () => {
           alignSelf="flex-start"
         />
       </Flex>
-      <SpaceVertical align="start">
-        <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
-          Kiwis
-        </Button>
-        <Button mt="medium" data-fruit="3" onClick={handleClick}>
-          Oranges
-        </Button>
-      </SpaceVertical>
+      <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
+        Kiwis
+      </Button>
+      <Button mt="medium" data-fruit="3" onClick={handleClick}>
+        Oranges
+      </Button>
       <Divider my="xlarge" />
-      <SpaceVertical>
-        <FieldSelect
-          label="Default Value"
-          width={300}
-          mb="medium"
-          options={options}
-          aria-label="Fruits"
-          defaultValue="1"
-        />
-        <FieldSelect
-          label="Groups"
-          width={300}
-          mb="medium"
-          options={optionsWithGroups}
-          aria-label="Fruits"
-          defaultValue="1"
-        />
-        <FieldSelect
-          label="Descriptions"
-          width={300}
-          mb="medium"
-          options={optionsWithDescriptions}
-          aria-label="Fruits"
-          defaultValue="1"
-        />
-        <FieldSelect
-          label="Error"
-          width={300}
-          options={options}
-          aria-label="Fruits"
-          placeholder="Select One"
-          defaultValue="1"
-          validationMessage={{ message: 'An error message', type: 'error' }}
-        />
-        <FieldSelect
-          label="Disabled"
-          width={300}
-          mb="medium"
-          options={options}
-          aria-label="Fruits"
-          placeholder="Select One"
-          disabled
-          defaultValue="1"
-        />
-        <FieldSelect
-          label="Indicator"
-          width={300}
-          mb="medium"
-          options={[
-            ...options,
-            {
-              indicator: TestIndicator,
-              label: 'I have my own indicator',
-              value: 'indicator',
-            },
-          ]}
-          aria-label="Fruits"
-          defaultValue="1"
-          indicator={<Icon name="Favorite" />}
-        />
-      </SpaceVertical>
-    </>
+      <FieldSelect
+        label="Default Value"
+        options={options}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Groups"
+        options={optionsWithGroups}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Descriptions"
+        options={optionsWithDescriptions}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Error"
+        options={options}
+        aria-label="Fruits"
+        placeholder="Select One"
+        defaultValue="1"
+        validationMessage={{ message: 'An error message', type: 'error' }}
+      />
+      <FieldSelect
+        label="Disabled"
+        options={options}
+        aria-label="Fruits"
+        placeholder="Select One"
+        disabled
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Indicator"
+        options={[
+          ...options,
+          {
+            indicator: TestIndicator,
+            label: 'I have my own indicator',
+            value: 'indicator',
+          },
+        ]}
+        aria-label="Fruits"
+        defaultValue="1"
+        indicator={<Icon name="Favorite" />}
+      />
+      <FieldSelect
+        label="Test option re-render bug"
+        options={unMemoizedOptions}
+      />
+    </SpaceVertical>
   )
 }
 
@@ -323,14 +327,25 @@ export const SelectDemo = () => {
   const [isOpen, setOpen] = useState(false)
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const { popover, domProps } = usePopover({
+    content: (
+      <PopoverContent>
+        <SelectContent />
+      </PopoverContent>
+    ),
+  })
   return (
     <SpaceVertical align="start">
+      {popover}
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <DialogContent>
           <SelectContent />
         </DialogContent>
       </Dialog>
-      <Button onClick={handleClick}>Open</Button>
+      <Space>
+        <Button {...domProps}>Open Popover</Button>
+        <Button onClick={handleClick}>Open Dialog</Button>
+      </Space>
       <Card maxWidth="500px" maxHeight="300px">
         <CardContent>
           <Form
@@ -436,6 +451,7 @@ EmptyValue.parameters = {
 
 const iconOptions = [
   { icon: 'ChartArea', label: 'Area', value: 'area' },
+  { label: 'ChartNoIcon', value: 'noicon' },
   { icon: 'ChartBar', label: 'Bar', value: 'bar' },
   { icon: 'ChartBoxPlot', label: 'Box Plot', value: 'boxplot' },
   { icon: 'ChartColumn', label: 'Column', value: 'column' },

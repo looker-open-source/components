@@ -24,34 +24,16 @@
 
  */
 
-import { RefObject, useEffect, useState } from 'react'
+import { CompatibleHTMLProps, size, SizeProps } from '@looker/design-tokens'
+import React from 'react'
+import styled from 'styled-components'
 
-export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
-  const [isVisible, setIsVisible] = useState(true)
+export type IconPlaceholderProps = CompatibleHTMLProps<HTMLDivElement> &
+  SizeProps
 
-  const observer =
-    typeof IntersectionObserver === 'undefined'
-      ? null
-      : new IntersectionObserver(
-          ([entry]) => {
-            setIsVisible(entry.intersectionRatio > 0)
-          },
-          {
-            threshold: [0, 1],
-          }
-        )
-
-  useEffect(() => {
-    const refCurrent = ref.current
-    if (refCurrent && observer) {
-      observer.observe && observer.observe(refCurrent)
-    }
-    return () => {
-      if (refCurrent && observer) {
-        observer.unobserve && observer.unobserve(refCurrent)
-      }
-    }
-  }, [observer, ref])
-
-  return isVisible
-}
+export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
+  <div aria-hidden {...props} />
+))`
+  ${size}
+  margin-right: ${({ theme }) => theme.space.xsmall};
+`
