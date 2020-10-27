@@ -26,7 +26,13 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import chunk from 'lodash/chunk'
-import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
+import React, {
+  FormEvent,
+  MouseEvent,
+  useMemo,
+  useState,
+  useEffect,
+} from 'react'
 import { Card, CardContent } from '../../../Card'
 import { Button } from '../../../Button'
 import { Dialog, DialogContent } from '../../../Dialog'
@@ -590,6 +596,34 @@ export const CreateOption = () => {
 }
 
 CreateOption.parameters = {
+  storyshots: { disable: true },
+}
+
+export const DelayUpdate = () => {
+  const [value, setValue] = useState('1')
+  const [tempValue, setTempValue] = useState(value)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setValue(tempValue)
+    }, 0)
+    return () => {
+      clearTimeout(t)
+    }
+  }, [tempValue])
+  return (
+    <SpaceVertical align="start" width={300}>
+      <FieldSelect
+        label="Controlled with Delayed Update"
+        options={options}
+        value={value}
+        onChange={setTempValue}
+      />
+      <Button onClick={() => setTempValue('3')}>Oranges</Button>
+    </SpaceVertical>
+  )
+}
+
+DelayUpdate.parameters = {
   storyshots: { disable: true },
 }
 

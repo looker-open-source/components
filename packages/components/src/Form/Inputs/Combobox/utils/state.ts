@@ -220,7 +220,10 @@ export const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
   data,
   action
 ) => {
-  const nextState = { ...data, lastActionType: action.type }
+  const nextState = { ...data }
+  if (action.type.indexOf('_SILENT') === -1) {
+    nextState.lastActionType = action.type
+  }
   switch (action.type) {
     case ComboboxActionType.CHANGE:
     case ComboboxActionType.CHANGE_SILENT:
@@ -309,7 +312,10 @@ export const reducerMulti: Reducer<
   ComboboxMultiData,
   ComboboxMultiActionWithPayload
 > = (data, action) => {
-  const nextState = { ...data, lastActionType: action.type }
+  const nextState = { ...data }
+  if (action.type.indexOf('_SILENT') === -1) {
+    nextState.lastActionType = action.type
+  }
   switch (action.type) {
     case ComboboxActionType.CHANGE:
     case ComboboxActionType.CHANGE_SILENT:
