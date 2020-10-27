@@ -25,14 +25,14 @@
  */
 
 import { IconNames, iconNameList } from '@looker/icons'
-import React, { ReactNode, useContext, useMemo } from 'react'
+import React, { createContext, ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
 import { Icon, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ListItemDetail, ListItem } from '../../../List'
+import { IconPlaceholder, ListItemDetail, ListItem } from '../../../List'
 import { Heading, Paragraph, Text } from '../../../Text'
+import { useID } from '../../../utils'
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -43,8 +43,10 @@ import {
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
-import { notInOptions } from './utils/options'
+import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
+
+export const SelectOptionsContext = createContext({ hasIcons: false })
 
 export type SelectOptionIcon = IconNames | IconProps['artwork']
 
@@ -83,15 +85,17 @@ const StyledIcon = styled(Icon)`
   height: ${({ theme }) => theme.lineHeights.small};
 `
 
-const renderOption = (
-  option: SelectOptionObject,
-  key: string,
+interface OptionLayoutProps {
+  option: SelectOptionObject
   scrollIntoView?: boolean
-) => {
-  const { description, detail, icon, ...rest } = option
+}
 
-  if (detail || icon || description) {
-    const iconToUse = icon && (
+const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
+  const { description, detail, icon, ...rest } = option
+  const { hasIcons } = useContext(SelectOptionsContext)
+
+  if (detail || hasIcons || description) {
+    const iconToUse = icon ? (
       <StyledIcon
         size="small"
         mr="xsmall"
@@ -99,15 +103,12 @@ const renderOption = (
         {...getSelectOptionIconProps(icon)}
         data-testid="option-icon"
       />
-    )
+    ) : hasIcons ? (
+      <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
+    ) : null
 
     return (
-      <ComboboxOption
-        {...rest}
-        key={key}
-        py="xxsmall"
-        scrollIntoView={scrollIntoView}
-      >
+      <ComboboxOption {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
         {iconToUse}
         {description ? (
           <SelectOptionWithDescription description={description} {...rest} />
@@ -118,20 +119,15 @@ const renderOption = (
       </ComboboxOption>
     )
   }
-  return <ComboboxOption {...rest} key={key} />
+  return <ComboboxOption {...rest} />
 }
 
-const renderMultiOption = (
-  option: SelectOptionObject,
-  key: string,
-  scrollIntoView?: boolean
-) => {
+const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
   const { description, detail, ...rest } = option
   if (description || detail) {
     return (
       <ComboboxMultiOption
         {...rest}
-        key={key}
         py="xxsmall"
         scrollIntoView={scrollIntoView}
       >
@@ -144,7 +140,7 @@ const renderMultiOption = (
       </ComboboxMultiOption>
     )
   }
-  return <ComboboxMultiOption {...rest} key={key} />
+  return <ComboboxMultiOption {...rest} />
 }
 
 export function SelectOptionWithDescription({
@@ -181,18 +177,12 @@ SelectOptionGroupTitle.defaultProps = {
   variant: 'subdued',
 }
 
-function useOptionKeyPrefix(options?: SelectOptionProps[]) {
-  // Create a new unique prefix every time the list of options changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => uuid(), [options])
-}
-
 export const SelectOptionGroup = ({
   options,
   label,
   isMulti,
 }: SelectOptionGroupProps & { isMulti?: boolean }) => {
-  const keyPrefix = useOptionKeyPrefix(options)
+  const keyPrefix = useID(options.length.toString())
   return (
     <SelectOptionGroupContainer>
       {label && (
@@ -203,9 +193,11 @@ export const SelectOptionGroup = ({
       )}
       {options.map((option, index) => {
         const key = `${keyPrefix}-${index}`
-        return isMulti
-          ? renderMultiOption(option, key)
-          : renderOption(option, key)
+        return isMulti ? (
+          <MultiOptionLayout option={option} key={key} />
+        ) : (
+          <OptionLayout option={option} key={key} />
+        )
       })}
     </SelectOptionGroupContainer>
   )
@@ -282,7 +274,9 @@ export function SelectOptions({
     scrollToFirst,
     scrollToLast,
   } = useWindowedOptions(windowedOptions, options, isMulti)
-  const keyPrefix = useOptionKeyPrefix(options)
+  const keyPrefix = useID(options?.length.toString())
+
+  const hasIcons = useMemo(() => optionsHaveIcons(options), [options])
 
   if (isLoading) {
     return (
@@ -293,7 +287,7 @@ export function SelectOptions({
   }
 
   const optionsToRender = options && options.slice(start, end + 1)
-  const renderToUse = isMulti ? renderMultiOption : renderOption
+  const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
     <EmptyListItem mb={0} px="medium" py="xlarge">
@@ -312,10 +306,14 @@ export function SelectOptions({
   )
 
   return (
-    <>
-      {options && scrollToFirst
-        ? renderToUse(options[0] as SelectOptionObject, `${keyPrefix}-0`, true)
-        : null}
+    <SelectOptionsContext.Provider value={{ hasIcons }}>
+      {options && scrollToFirst ? (
+        <OptionLayoutToUse
+          option={options[0] as SelectOptionObject}
+          key={`${keyPrefix}-0`}
+          scrollIntoView={true}
+        />
+      ) : null}
       {before}
       {optionsToRender && optionsToRender.length > 0
         ? [
@@ -331,10 +329,10 @@ export function SelectOptions({
                     isMulti={isMulti}
                   />
                 ) : (
-                  renderToUse(
-                    option as SelectOptionObject,
-                    `${keyPrefix}-${correctedIndex}`
-                  )
+                  <OptionLayoutToUse
+                    option={option as SelectOptionObject}
+                    key={`${keyPrefix}-${correctedIndex}`}
+                  />
                 )
               }
             ),
@@ -342,14 +340,14 @@ export function SelectOptions({
           ]
         : createOption || noOptions}
       {after}
-      {options && scrollToLast
-        ? renderToUse(
-            options[options.length - 1] as SelectOptionObject,
-            `${keyPrefix}-${options.length - 1}`,
-            true
-          )
-        : null}
-    </>
+      {options && scrollToLast ? (
+        <OptionLayoutToUse
+          option={options[options.length - 1] as SelectOptionObject}
+          key={`${keyPrefix}-${options.length - 1}`}
+          scrollIntoView
+        />
+      ) : null}
+    </SelectOptionsContext.Provider>
   )
 }
 

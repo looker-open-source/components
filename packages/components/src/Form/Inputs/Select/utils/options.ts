@@ -102,3 +102,17 @@ export function notInOptions(
     ) === undefined
   )
 }
+
+const checkForIcon = (option: SelectOptionObject) => option.icon !== undefined
+
+export const optionsHaveIcons = (options?: SelectOptionProps[]) => {
+  if (!options || options.length === 0) return false
+  return options.some((option) => {
+    const optionAsGroup = option as SelectOptionGroupProps
+    if (optionAsGroup.options) {
+      return optionAsGroup.options.some(checkForIcon)
+    } else {
+      return checkForIcon(option as SelectOptionObject)
+    }
+  })
+}
