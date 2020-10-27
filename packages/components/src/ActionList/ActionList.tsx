@@ -177,7 +177,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   const handleVisibleColumns = (value?: string[]) => {
     console.log('value on ActionList: ', value)
-    //
     setVisibleColumns(columns)
     onChange(columns)
   }

@@ -31,7 +31,7 @@ import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
 export interface ColumnSelectorProps {
   columns: ReactNode[]
-  onChange: (value?: string) => void
+  onChange: (value?: string[]) => void
   // defaultSelector: string[]
 }
 
