@@ -166,15 +166,18 @@ describe('Select / SelectMulti', () => {
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'true')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    expect(input).toHaveAttribute('aria-activedescendant', items[0].id)
 
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'false')
     expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    expect(input).toHaveAttribute('aria-activedescendant', items[1].id)
 
     // Back to the top
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'true')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    expect(input).toHaveAttribute('aria-activedescendant', items[0].id)
 
     // Close popover to silence act() warning
     fireEvent.click(document)
