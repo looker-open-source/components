@@ -7,18 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### Changed
-
-- `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
-
 ### Added
 
 - `Dialog` & `Drawer` now support semantic sizes (`xxsmall - xlarge`)
 - `Dialog` now supports `placement` - `center` (default), `top` & `cover`
 - `Drawer` now supports `placement` - `left` & `right` (default)
 
+### Changed
+
+- `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
+
 ### Fixed
 
+- `InputColor` no longer allows user to click swatch when `readOnly` is assigned
 - `Select` alignment of options when some have icons and others do not
 - `Select` inappropriately shows "No options" when the current value is empty, after filtering a long list down to a single option then deleting the filter text
 - `Select` remounts its options when the options prop changes, using a shallow comparison. This causes select via click to fail if the options prop "changes" (same values, new array instance) after a mousedown, e.g. if a parent component contains `usePopover`.

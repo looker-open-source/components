@@ -121,7 +121,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
 
   public render() {
     return (
-      <ColorWheelWrapper size={this.props.size}>
+      <ColorWheelWrapper size={this.props.size} data-testid="color-wheel">
         {/* LAYER 1: Hue/Saturation color wheel background */}
         <Canvas
           ref={this.setColorWheelCanvasRef}
