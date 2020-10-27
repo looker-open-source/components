@@ -31,20 +31,22 @@ import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
 export interface ColumnSelectorProps {
   columns: ReactNode[]
-  onChange: (value?: string[]) => void
+  onChange: (value: string[]) => void
   // defaultSelector: string[]
 }
 
-const ColumnSelectorLayout: FC<ColumnSelectorProps> = (columns, onChange) => {
+const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
+  columns,
+  onChange,
+}) => {
   const columnsLabel =
-    columns.columns &&
-    columns.columns.map((column: any) => ({
+    columns &&
+    columns.map((column: any) => ({
       label: column.title,
       value: column.id,
     }))
 
   const setVisibleColumns = (value: string[]) => {
-    console.log('value on ColumnSelector: ', value)
     onChange(value)
   }
   return (

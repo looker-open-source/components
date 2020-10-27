@@ -99,7 +99,7 @@ export interface ActionListProps {
    **/
   canSelectDisplayedColumns?: boolean
 
-  onChange: (columns: ActionListColumns) => void
+  // onChange: (columns: ActionListColumns) => void
 }
 
 export interface SelectConfig {
@@ -169,16 +169,25 @@ export const ActionListLayout: FC<ActionListProps> = ({
   filterConfig,
   header = true,
   headerRowId,
-  onChange,
+  // onChange,
   onSort,
   select,
 }) => {
   const [visibleColumns, setVisibleColumns] = useState(columns)
+  const [tableData, setTableData] = useState(children)
 
-  const handleVisibleColumns = (value?: string[]) => {
-    console.log('value on ActionList: ', value)
-    setVisibleColumns(columns)
-    onChange(columns)
+  const handleVisibleColumns = (selectedColumns: string[]) => {
+    const displayColumns = columns.filter((column) =>
+      selectedColumns.includes(column.id)
+    )
+    console.log('selectedColumns: ', selectedColumns)
+    console.log('select: ', select)
+
+    //   const displayTable = children.filter((data) =>
+    //   selectedColumns.includes(column.id)
+    // )
+    setVisibleColumns(displayColumns)
+    // onChange(columns)
   }
 
   const allSelected: MixedBoolean =
@@ -215,7 +224,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
       onChange={handleVisibleColumns}
     />
   )
-
   return (
     <ActionListContext.Provider value={context}>
       {filters}
@@ -225,6 +233,9 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <table className={className}>
         <thead>{actionListHeader}</thead>
         <tbody>{children}</tbody>
+        {/* {visibleColumns.map((column) => (
+          <tbody key={column.id}>{column}</tbody>
+        ))} */}
       </table>
     </ActionListContext.Provider>
   )

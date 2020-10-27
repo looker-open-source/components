@@ -25,7 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import React, { FormEvent, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { filters as defaultFilters } from '../../__mocks__/sampleInputFilters'
 import { useActionListSelectManager } from '../utils/useActionListSelectManager'
 import { FieldFilter } from '../../Form/Inputs/InputFilters'
@@ -33,7 +33,7 @@ import { Icon } from '../../Icon'
 import { SpaceVertical } from '../../Layout/Space'
 import { Heading, Paragraph } from '../../Text'
 import { ActionListItemAction } from '../Item'
-import { ActionList, ActionListColumns } from '../ActionList'
+import { ActionList } from '../ActionList'
 import { ActionListManagerProps, ActionListManager } from '../Manager'
 import { columns, data } from './data'
 import { items } from './items'
@@ -52,7 +52,7 @@ interface DemoProps extends ActionListManagerProps {
   canCustomizeColumns: boolean
   canFilter: boolean
   canSelect: boolean
-  onChange: (value?: ActionListColumns) => void
+  // onChange: (value?: ActionListColumns) => void
 }
 
 const Template: Story<DemoProps> = ({
@@ -61,7 +61,7 @@ const Template: Story<DemoProps> = ({
   canFilter,
   canSelect,
   noResultsDisplay,
-  onChange,
+  // onChange,
   ...args
 }) => {
   const allPageItems = data.map(({ name }) => name)
@@ -128,9 +128,10 @@ const Template: Story<DemoProps> = ({
     return items
   }, [canFilter, filters])
 
-  const handleColumnsChange = (event: any) => {
-    onChange(event.currentTarget.value)
-  }
+  // const handleColumnsChange = (columns: ActionListColumns) => {
+  //   console.log('columns from story: ', columns)
+  //   onChange(columns)
+  // }
 
   return (
     <SpaceVertical>
@@ -141,7 +142,7 @@ const Template: Story<DemoProps> = ({
           columns={columns}
           filterConfig={canFilter ? filterActionsConfig : undefined}
           headerRowId="all-pdts"
-          onChange={handleColumnsChange}
+          // onChange={handleColumnsChange}
           select={canSelect ? selectConfig : undefined}
         >
           {filteredItems}
