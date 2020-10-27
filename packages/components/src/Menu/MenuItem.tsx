@@ -24,19 +24,13 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  size,
-  space,
-  SizeProps,
-  SpaceProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
-import { ListItemDetail } from '../List'
+import { IconPlaceholder, ListItemDetail } from '../List'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
@@ -152,9 +146,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
-          aria-hidden
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
-          mr="xsmall"
           size={compact ? 'small' : 'medium'}
         />
       )
@@ -222,11 +214,4 @@ export const MenuItem = styled(MenuItemInternal)`
   ${Icon} {
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
   }
-`
-
-interface IconPlaceholderProps extends SizeProps, SpaceProps {}
-
-const IconPlaceholder = styled.div<IconPlaceholderProps>`
-  ${size}
-  ${space}
 `

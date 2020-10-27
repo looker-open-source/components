@@ -24,7 +24,16 @@
 
  */
 
-export * from './IconPlaceholder'
-export * from './ListItemDetail'
-export * from './List'
-export * from './ListItem'
+import { CompatibleHTMLProps, size, SizeProps } from '@looker/design-tokens'
+import React from 'react'
+import styled from 'styled-components'
+
+export type IconPlaceholderProps = CompatibleHTMLProps<HTMLDivElement> &
+  SizeProps
+
+export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
+  <div aria-hidden {...props} />
+))`
+  ${size}
+  margin-right: ${({ theme }) => theme.space.xsmall};
+`
