@@ -150,6 +150,29 @@ ComboboxDemo.parameters = {
   storyshots: { disable: true },
 }
 
+export const ControlledComboboxMulti = () => {
+  const [inputValue, setInputValue] = useState('starting value')
+  const [values, setValues] = useState([{ value: 'Apples' }])
+  return (
+    <ComboboxMulti width={300} values={values} onChange={setValues}>
+      <ComboboxMultiInput
+        autoComplete={false}
+        onClear={() => alert('CLEAR')}
+        placeholder="Custom indicator"
+        inputValue={inputValue}
+        onInputChange={setInputValue}
+      />
+      <ComboboxMultiList persistSelection>
+        <ComboboxMultiOption value="Apples" />
+        <ComboboxMultiOption value="Oranges" />
+        <ComboboxMultiOption value="Grapes" />
+        <ComboboxMultiOption value="Bananas" />
+        <ComboboxMultiOption value="Pineapples" />
+      </ComboboxMultiList>
+    </ComboboxMulti>
+  )
+}
+
 export default {
   component: Combobox,
   title: 'Combobox',
