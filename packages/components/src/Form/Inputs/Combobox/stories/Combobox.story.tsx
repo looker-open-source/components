@@ -36,7 +36,7 @@ import {
   ComboboxList,
   ComboboxInput,
 } from '..'
-import { Heading, Space, SpaceVertical } from '../../../..'
+import { Button, Heading, Space, SpaceVertical } from '../../../..'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
@@ -150,27 +150,35 @@ ComboboxDemo.parameters = {
   storyshots: { disable: true },
 }
 
-export const ControlledComboboxMulti = () => {
+export const ControlledInputValue = () => {
   const [inputValue, setInputValue] = useState('starting value')
   const [values, setValues] = useState([{ value: 'Apples' }])
+  const handleClick = () => setInputValue('bananas')
   return (
-    <ComboboxMulti width={300} values={values} onChange={setValues}>
-      <ComboboxMultiInput
-        autoComplete={false}
-        onClear={() => alert('CLEAR')}
-        placeholder="Custom indicator"
-        inputValue={inputValue}
-        onInputChange={setInputValue}
-      />
-      <ComboboxMultiList persistSelection>
-        <ComboboxMultiOption value="Apples" />
-        <ComboboxMultiOption value="Oranges" />
-        <ComboboxMultiOption value="Grapes" />
-        <ComboboxMultiOption value="Bananas" />
-        <ComboboxMultiOption value="Pineapples" />
-      </ComboboxMultiList>
-    </ComboboxMulti>
+    <>
+      <Button onClick={handleClick}>Change Input Value</Button>
+      <ComboboxMulti width={300} values={values} onChange={setValues}>
+        <ComboboxMultiInput
+          autoComplete={false}
+          onClear={() => alert('CLEAR')}
+          placeholder="Custom indicator"
+          inputValue={inputValue}
+          onInputChange={setInputValue}
+        />
+        <ComboboxMultiList persistSelection>
+          <ComboboxMultiOption value="Apples" />
+          <ComboboxMultiOption value="Oranges" />
+          <ComboboxMultiOption value="Grapes" />
+          <ComboboxMultiOption value="Bananas" />
+          <ComboboxMultiOption value="Pineapples" />
+        </ComboboxMultiList>
+      </ComboboxMulti>
+    </>
   )
+}
+
+ControlledInputValue.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {
