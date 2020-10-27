@@ -62,7 +62,9 @@ const emptySwatch = `position: relative;
     transform: rotate(-45deg);
   }`
 
-export const Swatch = styled.div<SwatchProps>`
+export const Swatch = styled.div.attrs(() => {
+  return { 'data-testid': 'swatch' }
+})<SwatchProps>`
   ${reset}
 
   ${inputCSS}
