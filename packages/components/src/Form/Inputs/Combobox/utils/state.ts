@@ -28,7 +28,7 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import xorWith from 'lodash/xorWith'
-import { Reducer, useEffect, useReducer, useState, useRef } from 'react'
+import { Reducer, useReducer, useRef } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
 import { getComboboxText } from './getComboboxText'
 import { parseOption } from './parseOption'
