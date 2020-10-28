@@ -47,10 +47,18 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
 
   const columnsLabel =
     columns &&
-    columns.map((column: any) => ({
-      label: column.title,
-      value: column.id,
-    }))
+    columns.map((column: any) =>
+      column.canHide !== false
+        ? {
+            label: column.title,
+            value: column.id,
+          }
+        : {
+            disabled: true,
+            label: column.title,
+            value: column.id,
+          }
+    )
 
   const setVisibleColumns = (value: string[]) => {
     setColumnDisplay(value)
@@ -60,7 +68,7 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
     onChange(columnDisplay)
   }
   const handleCancel = () => {
-    const resetColumn = columns.map((column) => column && column.id)
+    const resetColumn = columns.map((column: any) => column && column.id)
 
     setColumnDisplay(resetColumn)
     onChange(resetColumn)
