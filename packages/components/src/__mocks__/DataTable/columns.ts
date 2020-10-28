@@ -69,7 +69,7 @@ export const columns: ColumnsProps = [
     type: 'number',
   },
   {
-    hide: true,
+    defaultHide: true,
     id: 'fat',
     title: 'Fat',
     type: 'number',

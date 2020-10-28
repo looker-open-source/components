@@ -75,7 +75,7 @@ export interface ColumnProps {
    * Determines if the column is visible when the DataTable is initially displayed
    * @default false
    */
-  hide?: boolean
+  defaultHide?: boolean
 
   /**
    * Determines whether the user can hide/show the column
