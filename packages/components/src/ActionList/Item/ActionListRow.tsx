@@ -114,6 +114,10 @@ export const ActionListRow = styled(ActionListRowLayout)`
     background: ${({ checked, isHeaderRow, theme: { colors } }) =>
       checked && !isHeaderRow ? colors.keySubtle : colors.background};
     border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+
+    &:first-of-type {
+      border-left: 1px solid transparent;
+    }
   }
 
   &:hover {
@@ -128,10 +132,6 @@ export const ActionListRow = styled(ActionListRowLayout)`
           : isHeaderRow
           ? undefined
           : colors.ui1};
-
-      &:first-of-type {
-        border-left: 1px solid transparent;
-      }
     }
   }
 

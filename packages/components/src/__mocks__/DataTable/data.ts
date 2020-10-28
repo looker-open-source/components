@@ -24,8 +24,6 @@
 
  */
 
-import { ColumnsProps } from '../Column'
-
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const row = {
   disabled: false,
@@ -102,75 +100,3 @@ export const data = [
     description: `Provolone is an Italian cheese. It is an aged pasta filata cheese originating in Casilli near Vesuvius, where it is still produced in pear, sausage, or cone shapes 10 to 15 cm long. Provolone-type cheeses are also produced in other countries.`,
   },
 ]
-
-export const columns: ColumnsProps = [
-  {
-    id: 'name',
-    title: 'Name',
-    size: 'medium',
-    type: 'string',
-  },
-  {
-    id: 'status',
-    title: 'Label',
-    titleIcon: 'CircleInfo',
-    type: 'string',
-  },
-  {
-    id: 'inventory',
-    title: 'Inventory',
-    type: 'number',
-    canHide: false,
-  },
-  {
-    id: 'color',
-    size: 'nowrap',
-    title: 'Color',
-    type: 'string',
-  },
-  {
-    id: 'description',
-    size: 'large',
-    title: 'Description',
-    type: 'string',
-  },
-  {
-    id: 'origin',
-    size: 'medium',
-    title: 'Origin / Region / Proof of truncated headers',
-    type: 'string',
-  },
-  {
-    id: 'calories',
-    title: 'Calories',
-    type: 'number',
-  },
-  {
-    id: 'fat',
-    title: 'Fat',
-    hide: true,
-    type: 'number',
-  },
-  {
-    id: 'protein',
-    title: 'Protein',
-    type: 'number',
-  },
-  {
-    id: 'calcium',
-    title: 'Calcium',
-    type: 'number',
-  },
-]
-
-export const filters = [
-  { field: 'role', value: 'admin' },
-  { field: 'group', label: 'Group', value: 'pizza-lovers' },
-  { field: 'name', label: 'Name' },
-  { field: 'status' },
-  { field: 'model' },
-  { field: 'trigger' },
-  { field: 'buildAt', label: 'Last Build Time' },
-]
-
-export const columnsList = ['Name', 'Inventory', 'Origins', 'Calcium']

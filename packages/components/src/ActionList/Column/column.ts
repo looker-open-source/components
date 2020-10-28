@@ -28,11 +28,13 @@ import { IconNames } from '@looker/icons'
 import { ReactNode } from 'react'
 import { ColumnSize } from './columnSize'
 
+export type ColumnType = 'string' | 'number'
+export type ColumnSortDirection = 'asc' | 'desc'
 export interface ColumnProps {
   /**
    * Title for the column
    */
-  title: ReactNode
+  title: string
   /**
    * Display an `Icon` instead of the title text in the header row.
    * NOTE: `title` will still be used in columnSelector and will be added as
@@ -48,7 +50,7 @@ export interface ColumnProps {
    * In some locales, we may change horizontal alignment of 'number'
    * @default 'string'
    */
-  type?: 'string' | 'number'
+  type?: ColumnType
   /**
    * Specify a size to have the column consume a fixed width.
    *
@@ -84,15 +86,15 @@ export interface ColumnProps {
   /**
    * @private
    */
-  sortDirection?: 'asc' | 'desc'
+  sortDirection?: ColumnSortDirection
 }
 
 export type ColumnsProps = ColumnProps[]
 
 export interface ColumnComponentProps {
+  className?: string
+  children: ReactNode
   detail?: ReactNode
   indicator?: ReactNode
-  className?: string
   size?: ColumnSize
-  children: ReactNode
 }

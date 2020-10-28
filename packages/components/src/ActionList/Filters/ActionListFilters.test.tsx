@@ -26,7 +26,8 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { columns, columnsList, filters } from '../stories/data'
+import { columns } from '../../__mocks__/DataTable/columns'
+import { filters } from '../../__mocks__/filters'
 import { ActionListFilters } from './ActionListFilters'
 
 describe('ActionListFilters', () => {
@@ -34,7 +35,6 @@ describe('ActionListFilters', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <ActionListFilters
         columns={columns}
-        columnsList={columnsList}
         filters={filters}
         onChange={jest.fn()}
         onFilter={jest.fn()}
@@ -49,7 +49,6 @@ describe('ActionListFilters', () => {
       <ActionListFilters
         canCustomizeColumns
         columns={columns}
-        columnsList={columnsList}
         filters={filters}
         onChange={jest.fn()}
         onFilter={jest.fn()}

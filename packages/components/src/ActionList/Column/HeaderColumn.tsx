@@ -28,28 +28,46 @@ import styled from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
 import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'
+import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
-import { ColumnComponentProps } from './column'
-import { columnSize } from './columnSize'
+import { columnSize, sizeInfersTruncate } from './columnSize'
+import { ColumnProps, ColumnSortDirection, ColumnType } from './column'
 
-export interface HeaderColumnComponentProps extends ColumnComponentProps {
-  id: string
+export interface HeaderColumnComponentProps extends ColumnProps {
+  className?: string
 }
 
 const ActionListHeaderColumnLayout = forwardRef(
   (
-    { className, children, id }: HeaderColumnComponentProps,
+    {
+      canSort,
+      className,
+      title,
+      titleIcon,
+      id,
+      size,
+      sortDirection,
+      type,
+    }: HeaderColumnComponentProps,
     ref: Ref<HTMLTableHeaderCellElement>
   ) => {
-    const { columns, onSort } = useContext(ActionListContext)
-    const columnInfo = columns && columns.find((column) => column.id === id)
-    const canSort = columnInfo && columnInfo.canSort
+    const { onSort } = useContext(ActionListContext)
 
     const handleClick = () => {
-      if (onSort && columnInfo && columnInfo.canSort) {
-        onSort(id, columnInfo.sortDirection === 'asc' ? 'desc' : 'asc')
+      if (onSort && canSort) {
+        onSort(id, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
+
+    const label = titleIcon ? (
+      <Tooltip content={title}>
+        <Icon name={titleIcon} size="small" color="ui3" />
+      </Tooltip>
+    ) : size && sizeInfersTruncate(size) ? (
+      <Truncate>{title}</Truncate>
+    ) : (
+      title
+    )
 
     return (
       <th
@@ -58,13 +76,11 @@ const ActionListHeaderColumnLayout = forwardRef(
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
       >
-        <Space gap="xxsmall" reverse={columnInfo?.type === 'number'}>
-          <Truncate>{children}</Truncate>
-          {columnInfo?.sortDirection && (
+        <Space gap="xxsmall" reverse={type === 'number'}>
+          {label}
+          {sortDirection && (
             <Icon
-              name={
-                columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'
-              }
+              name={sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
             ></Icon>
           )}
         </Space>

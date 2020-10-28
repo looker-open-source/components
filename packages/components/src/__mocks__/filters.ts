@@ -24,36 +24,24 @@
 
  */
 
-import {
-  SizeSmall,
-  SizeMedium,
-  SizeLarge,
-} from '@looker/design-tokens/src/system'
-import { variant } from 'styled-system'
+import { FieldFilter } from '../Form/Inputs/InputFilters'
 
-export type ColumnSize = SizeSmall | SizeMedium | SizeLarge | 'auto' | 'nowrap'
-
-export const sizeInfersTruncate = (size: ColumnSize) =>
-  size && !['auto', 'nowrap'].includes(size)
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-export const columnSize = variant({
-  prop: 'size',
-  variants: {
-    small: {
-      minWidth: '3rem',
-      maxWidth: '3rem',
-    },
-    medium: {
-      minWidth: '12rem',
-      maxWidth: '12rem',
-    },
-    large: {
-      minWidth: '20rem',
-      maxWidth: '20rem',
-    },
-    nowrap: {
-      whiteSpace: 'nowrap',
-    },
+export const filters: FieldFilter[] = [
+  {
+    field: 'name',
+    label: 'Name',
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
   },
-})
+  {
+    field: 'color',
+    label: 'Color',
+    multiple: true,
+    options: ['blue', 'orange', 'yellow', 'white'],
+  },
+  {
+    field: 'origin',
+    label: 'Origin',
+    multiple: true,
+    options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
+  },
+]
