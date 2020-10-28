@@ -25,5 +25,5 @@
  */
 
 export { ActionListHeader } from './ActionListHeader'
-export { ActionListHeaderColumn } from './ActionListHeaderColumn'
+export { ActionListHeaderColumn } from '../Column/HeaderColumn'
 export * from './generate'

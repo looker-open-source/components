@@ -26,7 +26,7 @@
 
 import React from 'react'
 import {
-  ActionListColumns,
+  ColumnsProps,
   ActionListDatum,
   ActionListItemAction,
   useActionListSortManager,
@@ -46,20 +46,18 @@ export const Sortable = () => {
 
   // Note: column objects must be tracked using state since their sortDirection properties will change
   // depending on which column is sorted
-  const columns: ActionListColumns = [
+  const columns: ColumnsProps = [
     {
       canSort: true,
       id: 'id',
       title: 'ID',
       type: 'number',
-      widthPercent: 20,
     },
     {
       canSort: true,
       id: 'name',
       title: 'Name',
       type: 'string',
-      widthPercent: 80,
     },
   ]
 

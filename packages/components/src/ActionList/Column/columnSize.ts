@@ -24,29 +24,33 @@
 
  */
 
-import { ColumnsProps } from '../Column'
-import { getNumericColumnIndices } from './actionListFormatting'
+import {
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
+} from '@looker/design-tokens/src/system'
+import { variant } from 'styled-system'
 
-describe('Action List CSS Utils', () => {
-  const columns: ColumnsProps = [
-    {
-      id: 'id',
-      title: 'ID',
-      type: 'number',
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-    },
-    {
-      id: 'age',
-      title: 'Age',
-      type: 'number',
-    },
-  ]
+export type ColumnSize = SizeSmall | SizeMedium | SizeLarge | 'auto' | 'nowrap'
 
-  test('getNumericColumnIndices', () => {
-    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
-  })
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const columnSize = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      minWidth: '3rem',
+      maxWidth: '3rem',
+    },
+    medium: {
+      minWidth: '12rem',
+      maxWidth: '12rem',
+    },
+    large: {
+      minWidth: '20rem',
+      maxWidth: '20rem',
+    },
+    nowrap: {
+      whiteSpace: 'nowrap',
+    },
+  },
 })

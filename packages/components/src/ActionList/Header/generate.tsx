@@ -25,18 +25,17 @@
  */
 
 import React from 'react'
-import { ActionListColumns } from '../ActionList'
-import { ActionListHeaderColumn } from './ActionListHeaderColumn'
+import { ActionListHeaderColumn, ColumnsProps } from '../Column'
 import { ActionListHeader } from './ActionListHeader'
 
-export const generateActionListHeaderColumns = (columns: ActionListColumns) =>
-  columns.map(({ id, title }) => (
-    <ActionListHeaderColumn key={id} id={id}>
+export const generateActionListHeaderColumns = (columns: ColumnsProps) =>
+  columns.map(({ id, size, title }) => (
+    <ActionListHeaderColumn key={id} id={id} size={size}>
       {title}
     </ActionListHeaderColumn>
   ))
 
-export const generateActionListHeader = (columns: ActionListColumns) => (
+export const generateActionListHeader = (columns: ColumnsProps) => (
   <ActionListHeader>
     {generateActionListHeaderColumns(columns)}
   </ActionListHeader>

@@ -26,4 +26,4 @@
 
 export * from './ActionListItem'
 export * from './ActionListItemAction'
-export * from './ActionListItemColumn'
+export { ActionListItemColumn, ColumnProps, ColumnsProps } from '../Column'

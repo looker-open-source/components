@@ -24,49 +24,21 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
+import ReactResizeDetector from 'react-resize-detector'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
-import { useID } from '../utils/useID'
 import { ActionListBulkControls } from './Bulk/ActionListBulkControls'
 import { ActionListFilters } from './Filters/ActionListFilters'
-import { ActionListHeader, generateActionListHeaderColumns } from './Header'
 import { ActionListContext } from './ActionListContext'
-import {
-  getNumericColumnIndices,
-  numericColumnCSS,
-} from './utils/actionListFormatting'
 
-export type ActionListColumns = ActionListColumn[]
-export interface ActionListColumn {
-  title: ReactNode
-  /**
-   * A unique identifier for a given column
-   * Note: A column object's id should match a key in your data object template
-   */
-  id: string
-  /**
-   * In some locales, we may change horizontal alignment of 'number'
-   * @default 'string'
-   */
-  type?: 'string' | 'number'
-  /**
-   * Determines how much of a row's width this column should take up
-   */
-  widthPercent?: number
-  /**
-   * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
-   * Note: You must provide a onSort callback to the parent <ActionList/> component
-   * @default false
-   */
-  canSort?: boolean
-  sortDirection?: 'asc' | 'desc'
-}
+import { ColumnsProps } from './Column/column'
+import { ActionListTable } from './ActionListTable'
 
 export interface ActionListProps {
-  columns: ActionListColumns
+  columns: ColumnsProps
   className?: string
   /**
    * @default: true
@@ -80,6 +52,17 @@ export interface ActionListProps {
    * Options for select and select all behavior. Having a non-null select prop will auto-enable Action List select behavior
    */
   select?: SelectConfig
+
+  /**
+   * Which columns should be "stuck" the edge of their frame when DataTable content overflows
+   *
+   * Default here a bit convoluted:
+   *  `select` is specified `firstColumnStuck` will default to `true`
+   *  `select` is not specified `firstColumnStuck` will default to `false`
+   *   Explicit specification of `firstColumnStuck` will always determine outcome
+   */
+  firstColumnStuck?: boolean
+
   /**
    * ID of the header row. Used for the aria-describedby of the select all checkbox.
    * Note: If undefined, this will be auto-generated
@@ -158,18 +141,18 @@ export interface BulkActionsConfig {
   totalCount: number
 }
 
-export const ActionListLayout: FC<ActionListProps> = ({
-  bulk,
-  canSelectDisplayedColumns,
-  className,
-  children,
-  columns,
-  filterConfig,
-  header = true,
-  headerRowId,
-  onSort,
-  select,
-}) => {
+export const ActionListLayout: FC<ActionListProps> = (props) => {
+  const {
+    bulk,
+    canSelectDisplayedColumns,
+    className,
+    columns,
+    filterConfig,
+    onSort,
+    select,
+    firstColumnStuck = Boolean(select),
+  } = props
+
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
       ? true
@@ -178,8 +161,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
       ? 'mixed'
       : false
 
-  const guaranteedId = useID(headerRowId)
-
   const context = {
     allSelected,
     columns,
@@ -187,14 +168,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
     select,
   }
 
-  const actionListHeader =
-    header === true ? (
-      <ActionListHeader id={guaranteedId}>
-        {generateActionListHeaderColumns(columns)}
-      </ActionListHeader>
-    ) : header === false ? null : (
-      <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
-    )
+  // const hasActions = c
 
   const filters = (filterConfig || canSelectDisplayedColumns) && (
     <ActionListFilters
@@ -205,74 +179,26 @@ export const ActionListLayout: FC<ActionListProps> = ({
 
   return (
     <ActionListContext.Provider value={context}>
-      {filters}
-      {bulk && select && select.selectedItems.length > 0 && (
-        <ActionListBulkControls {...bulk} />
-      )}
-      <table className={className}>
-        <thead>{actionListHeader}</thead>
-        <tbody>{children}</tbody>
-      </table>
+      <div className={className}>
+        {filters}
+        {bulk && select && select.selectedItems.length > 0 && (
+          <ActionListBulkControls {...bulk} />
+        )}
+
+        <ReactResizeDetector handleHeight>
+          {(width: string) => (
+            <ActionListTable
+              {...props}
+              renderedWidth={width}
+              firstColumnStuck={firstColumnStuck}
+            />
+          )}
+        </ReactResizeDetector>
+      </div>
     </ActionListContext.Provider>
   )
 }
 
-// interface ColumnProps {
-//   /**
-//    * @default 'medium'
-//    */
-//   size?: 'small' | 'medium' | 'large'
-
-//   /**
-//    * @default 'visible'
-//    */
-//   visibility?: 'visible' | 'collapse' | 'hidden'
-// }
-
-// const Column = styled.col<ColumnProps>`
-//   visibility: ${({ visibility }) => visibility};
-//   width: ${({ size }) =>
-//     size === 'small' ? '3rem' : size === 'large' ? '20rem' : '12rem'};
-// `
-
-const firstCellNoPadding = css`
-  tr {
-    td,
-    th {
-      &:first-child {
-        padding: 0;
-      }
-    }
-  }
-`
-
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${reset}
-
-  border-spacing: 0;
-  font-size: ${({ theme }) => theme.fontSizes.small};
-  width: 100%;
-
-  td,
-  th {
-    padding: ${({ theme: { space } }) => `${space.small}  ${space.medium}`};
-  }
-
-  tbody td {
-    color: ${({ theme }) => theme.colors.text4};
-  }
-
-  tr {
-    td,
-    th {
-      &:last-child {
-        padding: 0;
-      }
-    }
-  }
-
-  /* If select is active first cell is checkbox and needs no padding */
-  ${({ select }) => select && firstCellNoPadding}
-  ${({ columns, select }) =>
-    numericColumnCSS(getNumericColumnIndices(columns, Boolean(select)))}
 `

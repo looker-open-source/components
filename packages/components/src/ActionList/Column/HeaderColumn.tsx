@@ -23,21 +23,22 @@
  SOFTWARE.
 
  */
-import React, { useContext, forwardRef, Ref, ReactNode } from 'react'
+import React, { useContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
 import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'
+import { Truncate } from '../../Truncate'
+import { ColumnComponentProps } from './column'
+import { columnSize } from './columnSize'
 
-export interface ActionListHeaderColumnProps {
-  children?: ReactNode
-  className?: string
+export interface HeaderColumnComponentProps extends ColumnComponentProps {
   id: string
 }
 
 const ActionListHeaderColumnLayout = forwardRef(
   (
-    { className, children, id }: ActionListHeaderColumnProps,
+    { className, children, id }: HeaderColumnComponentProps,
     ref: Ref<HTMLTableHeaderCellElement>
   ) => {
     const { columns, onSort } = useContext(ActionListContext)
@@ -58,7 +59,7 @@ const ActionListHeaderColumnLayout = forwardRef(
         style={{ cursor: canSort ? 'pointer' : undefined }}
       >
         <Space gap="xxsmall" reverse={columnInfo?.type === 'number'}>
-          {children}
+          <Truncate>{children}</Truncate>
           {columnInfo?.sortDirection && (
             <Icon
               name={
@@ -74,4 +75,6 @@ const ActionListHeaderColumnLayout = forwardRef(
 
 ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
-export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)``
+export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
+  ${columnSize}
+`

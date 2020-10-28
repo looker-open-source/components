@@ -26,11 +26,11 @@
 
 import { createContext } from 'react'
 import { MixedBoolean } from '../Form'
-import { ActionListColumns, SelectConfig } from './ActionList'
-
+import { SelectConfig } from './ActionList'
+import { ColumnsProps } from './Column'
 export interface ActionListContextProps {
   allSelected?: MixedBoolean
-  columns?: ActionListColumns
+  columns?: ColumnsProps
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   select?: SelectConfig
 }

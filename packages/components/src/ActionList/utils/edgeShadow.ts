@@ -24,29 +24,30 @@
 
  */
 
-import { ColumnsProps } from '../Column'
-import { getNumericColumnIndices } from './actionListFormatting'
+import { css } from 'styled-components'
 
-describe('Action List CSS Utils', () => {
-  const columns: ColumnsProps = [
-    {
-      id: 'id',
-      title: 'ID',
-      type: 'number',
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-    },
-    {
-      id: 'age',
-      title: 'Age',
-      type: 'number',
-    },
-  ]
+export const edgeShadow = (placement: 'left' | 'right' = 'left', depth = 4) => {
+  let pseudo = ':after'
+  let relativeTo = 'right'
+  let shadowReverse = ''
 
-  test('getNumericColumnIndices', () => {
-    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
-  })
-})
+  if (placement === 'right') {
+    pseudo = ':before'
+    relativeTo = 'left'
+    shadowReverse = '-'
+  }
+
+  const shadow = `${`${shadowReverse}${depth}px`} 0 ${depth}px -${depth}px rgba( 0, 0, 0, 0.25) inset`
+
+  return css`
+    &${pseudo} {
+      box-shadow: ${shadow};
+      content: ' ';
+      height: 100%;
+      position: absolute;
+      ${`${relativeTo}: -${depth}px;`}
+      top: 0;
+      width: ${depth}px;
+    }
+  `
+}

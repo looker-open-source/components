@@ -27,6 +27,7 @@
 import React from 'react'
 import { Link } from '../../Link'
 import { Status } from '../../Status'
+import { Tooltip } from '../../Tooltip'
 import {
   ActionListItem,
   ActionListItemAction,
@@ -57,6 +58,8 @@ export const items = data.map(
     origin,
     type,
     fat,
+    calories,
+    protein,
     description,
     calcium,
     status,
@@ -69,22 +72,26 @@ export const items = data.map(
       actions={<Actions />}
     >
       <ActionListItemColumn detail={type}>{name}</ActionListItemColumn>
-      <ActionListItemColumn>{inventory}</ActionListItemColumn>
-      <ActionListItemColumn
-        detail={
-          error ? (
-            <Link
-              onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                event.stopPropagation()
-              }
-              href={error.link}
-            >
-              {error.message}
-            </Link>
-          ) : null
-        }
-        indicator={
+      <ActionListItemColumn>
+        <Tooltip
+          content={
+            <>
+              {status}{' '}
+              {error && (
+                <Link
+                  onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                    event.stopPropagation()
+                  }
+                  href={error.link}
+                >
+                  {error.message}
+                </Link>
+              )}
+            </>
+          }
+        >
           <Status
+            size="xsmall"
             intent={
               status === 'Out of Stock'
                 ? 'critical'
@@ -93,14 +100,15 @@ export const items = data.map(
                 : 'positive'
             }
           />
-        }
-      >
-        {status}
+        </Tooltip>
       </ActionListItemColumn>
+      <ActionListItemColumn>{inventory}</ActionListItemColumn>
       <ActionListItemColumn>{color}</ActionListItemColumn>
       <ActionListItemColumn>{description}</ActionListItemColumn>
       <ActionListItemColumn>{origin}</ActionListItemColumn>
+      <ActionListItemColumn>{calories}</ActionListItemColumn>
       <ActionListItemColumn>{fat}</ActionListItemColumn>
+      <ActionListItemColumn>{protein}</ActionListItemColumn>
       <ActionListItemColumn>{calcium}</ActionListItemColumn>
     </ActionListItem>
   )

@@ -26,14 +26,14 @@
 
 import { css } from 'styled-components'
 import { SpaceVertical } from '../../Layout/Space'
-import { ActionListColumn, ActionListItemColumn } from '..'
+import { ColumnProps, ActionListItemColumn } from '..'
 
 function filterUndefined<T>(t: T | undefined): t is T {
   return t !== undefined
 }
 
 export const getNumericColumnIndices = (
-  columns: ActionListColumn[],
+  columns: ColumnProps[],
   select?: boolean
 ) =>
   columns
@@ -47,9 +47,11 @@ export const numericColumnCSS = (columnIndices: number[]) =>
     ${columnIndices.map(
       (columnIndex) =>
         css`
-          ${ActionListItemColumn}:nth-child(${columnIndex +
-          1}) ${SpaceVertical} {
-            flex-direction: row-reverse;
+          ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
+            text-align: right;
+            ${SpaceVertical} {
+              flex-direction: row-reverse;
+            }
           }
         `
     )}
