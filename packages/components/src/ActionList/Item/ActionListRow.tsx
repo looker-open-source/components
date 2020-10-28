@@ -144,15 +144,18 @@ export const ActionListRow = styled(ActionListRowLayout)`
           : isHeaderRow
           ? undefined
           : colors.ui1};
+
+      &:first-of-type {
+        border-left: 1px solid transparent;
+      }
     }
   }
 
   &:focus {
-    border-left: 1px solid transparent;
     outline: none;
 
     td:first-of-type {
-      border-color: ${({ theme }) => theme.colors.key};
+      border-left-color: ${({ theme }) => theme.colors.key};
     }
   }
 `
