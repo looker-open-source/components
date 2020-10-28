@@ -153,7 +153,6 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     firstColumnStuck = Boolean(select),
   } = props
 
-  // const [visibleColumns, setVisibleColumns] = useState(columns)
   const [columnsList, setColumnsList] = useState<string[]>(
     columns.map((c) => c.id)
   )
