@@ -25,10 +25,13 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { Popover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
+import { Divider } from '../../Divider'
+import { ButtonTransparent } from '../../Button/ButtonTransparent'
+import { Flex } from '../../Layout/Flex'
 export interface ColumnSelectorProps {
   columns: ReactNode[]
   onChange: (value: string[]) => void
@@ -40,6 +43,8 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
   onChange,
   columnsList,
 }) => {
+  const [columnDisplay, setColumnDisplay] = useState(columnsList)
+
   const columnsLabel =
     columns &&
     columns.map((column: any) => ({
@@ -48,7 +53,17 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
     }))
 
   const setVisibleColumns = (value: string[]) => {
-    onChange(value)
+    setColumnDisplay(value)
+  }
+
+  const handleApply = () => {
+    onChange(columnDisplay)
+  }
+  const handleCancel = () => {
+    const resetColumn = columns.map((column) => column && column.id)
+
+    setColumnDisplay(resetColumn)
+    onChange(resetColumn)
   }
 
   return (
@@ -57,10 +72,17 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
         content={
           <PopoverContent>
             <CheckboxGroup
-              value={columnsList}
+              value={columnDisplay}
               onChange={setVisibleColumns}
               options={columnsLabel}
             />
+            <Divider />
+            <Flex justifyContent="flex-end">
+              <ButtonTransparent onClick={handleApply}>Apply</ButtonTransparent>
+              <ButtonTransparent onClick={handleCancel}>
+                Cancel
+              </ButtonTransparent>
+            </Flex>
           </PopoverContent>
         }
       >
