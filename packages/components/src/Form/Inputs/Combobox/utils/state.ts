@@ -413,9 +413,8 @@ export function useReducerMachine<
       // eslint-disable-next-line no-console
       console.warn(`Unknown action "${action}" for state "${stateRef.current}"`)
       return
-    } else {
-      stateRef.current = nextState
     }
+    stateRef.current = nextState
     dispatch({ state: stateRef.current, type: action, ...payload })
   }
 
