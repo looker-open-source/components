@@ -30,7 +30,7 @@ import { filters as defaultFilters } from '../../__mocks__/sampleInputFilters'
 import { useActionListSelectManager } from '../utils/useActionListSelectManager'
 import { FieldFilter } from '../../Form/Inputs/InputFilters'
 import { Icon } from '../../Icon'
-import { SpaceVertical } from '../../Layout/Space'
+import { Box, SpaceVertical } from '../../Layout'
 import { Heading, Paragraph } from '../../Text'
 import { ActionListItemAction } from '../Item'
 import { ActionList } from '../ActionList'
@@ -52,6 +52,7 @@ interface DemoProps extends ActionListManagerProps {
   canCustomizeColumns: boolean
   canFilter: boolean
   canSelect: boolean
+  firstColumnStuck: boolean
 }
 
 const Template: Story<DemoProps> = ({
@@ -60,6 +61,7 @@ const Template: Story<DemoProps> = ({
   canFilter,
   canSelect,
   noResultsDisplay,
+  firstColumnStuck,
   ...args
 }) => {
   const allPageItems = data.map(({ name }) => name)
@@ -74,10 +76,10 @@ const Template: Story<DemoProps> = ({
   const onTotalSelectAll = () =>
     setSelections([
       ...allPageItems,
-      'some_other_pdt_1',
-      'some_other_pdt_2',
-      'some_other_pdt_3',
-      'some_other_pdt_3',
+      'roquefort',
+      'mozzarella',
+      'ricotta',
+      'feta',
     ])
 
   const onTotalClearAll = () => setSelections([])
@@ -127,19 +129,21 @@ const Template: Story<DemoProps> = ({
   }, [canFilter, filters])
 
   return (
-    <SpaceVertical>
-      <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
-        <ActionList
-          canSelectDisplayedColumns={canCustomizeColumns}
-          columns={columns}
-          filterConfig={canFilter ? filterActionsConfig : undefined}
-          headerRowId="all-pdts"
-          select={canSelect ? selectConfig : undefined}
-          bulk={canBulk ? bulkActionsConfig : undefined}
-        >
-          {filteredItems}
-        </ActionList>
-      </ActionListManager>
+    <SpaceVertical p="large">
+      <Box borderLeft="1px solid" borderRight="1px solid" borderColor="ui2">
+        <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
+          <ActionList
+            firstColumnStuck={firstColumnStuck}
+            canSelectDisplayedColumns={canCustomizeColumns}
+            columns={columns}
+            filterConfig={canFilter ? filterActionsConfig : undefined}
+            select={canSelect ? selectConfig : undefined}
+            bulk={canBulk ? bulkActionsConfig : undefined}
+          >
+            {filteredItems}
+          </ActionList>
+        </ActionListManager>
+      </Box>
       {canFilter && (
         <Paragraph fontSize="small">
           Note: Demo filtering simply always returns the first row
@@ -152,9 +156,10 @@ const Template: Story<DemoProps> = ({
 export const Primary = Template.bind({})
 Primary.args = {
   canBulk: true,
-  canCustomizeColumns: false,
-  canFilter: false,
+  canCustomizeColumns: true,
+  canFilter: true,
   canSelect: true,
+  firstColumnStuck: true,
   isLoading: false,
   noResults: false,
   noResultsDisplay: true,

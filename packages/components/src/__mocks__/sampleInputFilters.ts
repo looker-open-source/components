@@ -26,49 +26,20 @@
 
 export const filters = [
   {
-    field: 'group',
-    label: 'Group',
+    field: 'name',
+    label: 'Name',
     options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
   },
   {
-    field: 'last-successful-build',
-    label: 'Last Successful Build',
-    options: [
-      '1-22-20 33:33:33',
-      '2-11-20 44:44:44',
-      '3-33-20 55:55:55',
-      '4-05-20 11:11:11',
-    ],
-  },
-  {
-    field: 'model',
-    label: 'Model',
-    options: ['model_uno', 'model_dos', 'model_tres', 'model_cuatro'],
-  },
-  {
-    field: 'persistance-type',
-    label: 'Persistance Type',
+    field: 'color',
+    label: 'Color',
     multiple: true,
-    options: [
-      'datagroup_trigger',
-      'datagroup_trigger1',
-      'datagroup_trigger2',
-      'datagroup_trigger4',
-      'datagroup_trigger5',
-      'datagroup_trigger6',
-      'datagroup_trigger7',
-      'datagroup_trigger8',
-    ],
+    options: ['blue', 'orange', 'yellow', 'white'],
   },
   {
-    field: 'PDT Name',
+    field: 'origin',
+    label: 'Origin',
     multiple: true,
-    options: [
-      'my_great_pdt_name',
-      'my_other_great_pdt_name',
-      'my_other_great_pdt_name2',
-      'my_other_great_pdt_name3',
-    ],
+    options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
   },
-  { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
 ]

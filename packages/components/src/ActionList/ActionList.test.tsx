@@ -29,32 +29,29 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import {
   ActionList,
-  ActionListColumns,
+  ColumnsProps,
   ActionListItem,
   ActionListItemAction,
   ActionListItemColumn,
   ActionListHeaderColumn,
 } from '.'
 
-const columns: ActionListColumns = [
+const columns: ColumnsProps = [
   {
     canSort: true,
     id: 'id',
     title: 'ID',
     type: 'number',
-    widthPercent: 10,
   },
   {
     id: 'name',
     title: 'Name',
     type: 'string',
-    widthPercent: 45,
   },
   {
     id: 'role',
     title: 'Role',
     type: 'string',
-    widthPercent: 45,
   },
 ]
 

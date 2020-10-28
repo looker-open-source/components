@@ -24,24 +24,23 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Space, SpaceVertical } from '../../Layout'
 import { Paragraph } from '../../Text'
+import { Truncate } from '../../Truncate'
+import { ColumnComponentProps } from './column'
+import { columnSize } from './columnSize'
 
-interface ActionListItemColumnProps {
-  detail?: ReactNode
-  indicator?: ReactNode
-  className?: string
-}
-
-const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
+const ActionListItemColumnLayout: FC<ColumnComponentProps> = ({
   children,
   detail,
   className,
   indicator,
+  size,
 }) => {
-  let content = children
+  let content =
+    size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
 
   if (detail) {
     content = (
@@ -75,8 +74,6 @@ const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
   return <td className={className}>{content}</td>
 }
 
-export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
-  ActionListItemColumnProps
->`
-  overflow: hidden;
+export const ActionListItemColumn = styled(ActionListItemColumnLayout)`
+  ${columnSize}
 `

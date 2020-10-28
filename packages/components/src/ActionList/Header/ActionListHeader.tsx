@@ -30,11 +30,9 @@ import React, { FC, useContext } from 'react'
 import { ActionListRow } from '../Item/ActionListRow'
 import { ActionListContext } from '../ActionListContext'
 
-const ActionListHeaderLayout: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
-  children,
-  className,
-  id,
-}) => {
+const ActionListHeaderLayout: FC<CompatibleHTMLProps<HTMLDivElement>> = (
+  props
+) => {
   const { allSelected, select } = useContext(ActionListContext)
 
   const hasCheckbox = !!select
@@ -42,15 +40,12 @@ const ActionListHeaderLayout: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 
   return (
     <ActionListRow
-      id={id}
+      {...props}
       isHeaderRow
-      className={className}
       hasCheckbox={hasCheckbox}
       onChange={onChange}
       checked={allSelected}
-    >
-      {children}
-    </ActionListRow>
+    />
   )
 }
 

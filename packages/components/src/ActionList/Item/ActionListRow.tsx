@@ -26,9 +26,17 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import pick from 'lodash/pick'
-import React, { forwardRef, ReactNode, Ref } from 'react'
-import styled from 'styled-components'
-import { Flex } from '../../Layout/Flex'
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  ReactNode,
+  Ref,
+  useContext,
+} from 'react'
+import styled, { css } from 'styled-components'
+import { ActionListContext } from '../ActionListContext'
 import {
   ActionListCheckbox,
   ActionListCheckboxProps,
@@ -51,7 +59,23 @@ export interface ActionListItemLayoutProps
   isHeaderRow?: boolean
 }
 
-export const ActionListRowColumns = styled.td``
+// const Th = styled.th<{ alignEnd?: boolean }>`
+//   ${({ alignEnd }) =>
+//     alignEnd &&
+//     css`
+//       display: flex;
+//       flex-direction: column-reverse;
+//     `}
+// `
+
+// const Td = styled.td<{ alignEnd?: boolean }>`
+//   ${({ alignEnd }) =>
+//     alignEnd &&
+//     css`
+//       display: flex;
+//       flex-direction: column-reverse;
+//     `}
+// `
 
 const ActionListRowLayout = forwardRef(
   (props: ActionListItemLayoutProps, ref: Ref<HTMLTableRowElement>) => {
@@ -67,6 +91,16 @@ const ActionListRowLayout = forwardRef(
     } = props
 
     const ColumnType = isHeaderRow ? 'th' : 'td'
+    const { columns } = useContext(ActionListContext)
+    const getColumnSize = (index: number) => columns && columns[index].size
+
+    const sizedChildren = Children.map(children, (child, index) => {
+      if (isValidElement(child)) {
+        return cloneElement(child, { size: getColumnSize(index) })
+      } else {
+        return child
+      }
+    })
 
     return (
       <tr
@@ -81,10 +115,8 @@ const ActionListRowLayout = forwardRef(
             <ActionListCheckbox {...pick(props, checkListProps)} />
           </ColumnType>
         )}
-        {children}
-        <ColumnType>
-          <Flex justifyContent="flex-end">{secondary}</Flex>
-        </ColumnType>
+        {sizedChildren}
+        <ColumnType>{secondary}</ColumnType>
       </tr>
     )
   }
@@ -93,21 +125,35 @@ const ActionListRowLayout = forwardRef(
 ActionListRowLayout.displayName = 'ActionListRowLayout'
 
 export const ActionListRow = styled(ActionListRowLayout)`
-  background: ${({ checked, disabled, theme }) =>
-    disabled ? theme.colors.ui1 : checked ? theme.colors.keySubtle : undefined};
+  td,
+  th {
+    background: ${({ checked, isHeaderRow, theme: { colors } }) =>
+      checked && !isHeaderRow ? colors.keySubtle : colors.background};
+    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+  }
 
-  &:focus,
   &:hover {
-    box-shadow: ${({ theme, supportsRaised, onClick }) =>
-      supportsRaised && onClick && theme.shadows[2]};
     cursor: ${({ onClick }) => onClick && 'pointer'};
     outline: none;
 
-    /**
-      The hovered ActionListItem needs to sit above its siblings (otherwise the bottom box-shadow is covered up).
-      Using position relative to paint it above static siblings.
-     */
-    position: relative;
+    td,
+    th {
+      background: ${({ checked, isHeaderRow, theme: { colors } }) =>
+        checked && !isHeaderRow
+          ? colors.keyAccent
+          : isHeaderRow
+          ? undefined
+          : colors.ui1};
+    }
+  }
+
+  &:focus {
+    border-left: 1px solid transparent;
+    outline: none;
+
+    td:first-of-type {
+      border-color: ${({ theme }) => theme.colors.key};
+    }
   }
 `
 

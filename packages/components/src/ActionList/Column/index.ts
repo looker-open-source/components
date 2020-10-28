@@ -24,29 +24,6 @@
 
  */
 
-import { ColumnsProps } from '../Column'
-import { getNumericColumnIndices } from './actionListFormatting'
-
-describe('Action List CSS Utils', () => {
-  const columns: ColumnsProps = [
-    {
-      id: 'id',
-      title: 'ID',
-      type: 'number',
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-    },
-    {
-      id: 'age',
-      title: 'Age',
-      type: 'number',
-    },
-  ]
-
-  test('getNumericColumnIndices', () => {
-    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
-  })
-})
+export * from './column'
+export * from './HeaderColumn'
+export * from './ItemColumn'

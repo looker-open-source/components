@@ -24,21 +24,23 @@
 
  */
 
-import { ActionListColumns } from '../ActionList'
+import { ColumnsProps } from '../Column'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const row = {
   disabled: false,
   error: undefined,
   name: 'Gouda',
-  color: 'yellow',
+  status: 'Available',
   inventory: 569,
+  color: 'yellow',
   origin: 'Netherlands',
   type: 'semi-hard, artisan, brined, processed',
-  fat: 31,
+  calories: 101,
+  fat: 8,
+  protein: 7,
   calcium: 0.958,
-  status: 'Available',
-  description: `Gouda, or "How-da" as the locals say, is a Dutch cheese named after the city of Gouda in the Netherlands. If truth be told, it is one of the most popular cheeses in the world, accounting for 50 to 60% of the world's cheese consumption. It is a semi-hard cheese celebrated for its rich, unique flavour and smooth texture. The original cheese markets in Gouda is one of the last standing commercial cheese markets in the Netherlands. Since the name is not protected, it has become a generic classification for all cheeses produced and sold under the name Gouda.`,
+  description: `Gouda is a mild-flavored, yellow cow's milk cheese originating from the Netherlands. It is one of the most popular cheeses worldwide. The name is used today as a general term for numerous similar cheeses produced in the traditional Dutch manner. `,
 }
 
 export const data = [
@@ -46,17 +48,32 @@ export const data = [
   {
     ...row,
     error: {
-      link: 'https://google.com',
-      message: 'Out of Stock',
+      link: 'https://en.wikipedia.org/wiki/American_cheese',
+      message: 'Check Availability',
     },
     name: 'American',
     inventory: 0,
     origin: 'United States',
     type: 'semi-soft, processed',
+    calories: undefined,
     fat: undefined,
+    protein: undefined,
     calcium: undefined,
     status: 'Out of Stock',
-    description: `American cheese is processed cheese made from a blend of milk, milk fats and solids, with other fats and whey protein concentrate. At first, it was made from a mixture of cheeses, more often than not Colby and Cheddar. Since blended cheeses are no longer used, it cannot be legally called “cheese” and has to be labelled as “processed cheese”, “cheese product“, etc. Sometimes, instead of the word cheese, it is called "American slices" or "American singles". Under the U.S. Code of Federal Regulations, American cheese is a type of pasteurized processed cheese.`,
+    description: `Modern American cheese is a type of processed cheese made from cheddar, colby, or similar cheeses. It is mild with a creamy and salty flavor, has a medium-firm consistency, and has a low melting point. It can be yellow or white in color; yellow American cheese is seasoned and colored with annatto`,
+  },
+  {
+    ...row,
+    name: 'Brie',
+    inventory: 240,
+    origin: 'France',
+    type: undefined,
+    calories: undefined,
+    fat: 40,
+    protein: undefined,
+    calcium: undefined,
+    status: 'Out of Stock',
+    description: `Brie is a soft cow's-milk cheese named after Brie, the French region from which it originated. It is pale in color with a slight grayish tinge under a rind of white mould. The rind is typically eaten, with its flavor depending largely upon the ingredients used and its manufacturing environment.`,
   },
   {
     ...row,
@@ -64,10 +81,12 @@ export const data = [
     inventory: 84,
     origin: 'England',
     type: 'hard, artisan, processed',
+    calories: undefined,
     fat: 9,
+    protein: undefined,
     calcium: undefined,
     status: 'Low Stock',
-    description: `Cheddar cheese, the most widely purchased and eaten cheese in the world is always made from cow's milk. It is a hard and natural cheese that has a slightly crumbly texture if properly cured and if it is too young, the texture is smooth. It gets a sharper taste as it matures, over a period of time between 9 to 24 months. Shaped like a drum, 15 inches in diameter, Cheddar cheese is natural rind bound in cloth while its colour generally ranges from white to pale yellow. However, some Cheddars may have a manually added yellow-orange color.`,
+    description: `Cheddar cheese is a relatively hard, off-white, sometimes sharp-tasting, natural cheese. Originating in the English village of Cheddar in Somerset, cheeses of this style are now produced all over the world.`,
   },
   {
     ...row,
@@ -76,16 +95,24 @@ export const data = [
     inventory: 781,
     origin: 'Italy',
     type: 'semi-hard, artisan',
+    calories: undefined,
     fat: undefined,
+    protein: undefined,
     calcium: undefined,
-    description: `Provolone is an Italian cheese made from cow’s milk whose origins lie in Southern Italy. Today, the major production of Provolone takes place in Po valley region, particularly Lombardy and Veneto. Both Provolone Valpadana and Provolone del Monaco are granted DOP designation by the European Union to ensure that cheese is produced under strict supervision using specific methods to guarantee supreme quality.`,
+    description: `Provolone is an Italian cheese. It is an aged pasta filata cheese originating in Casilli near Vesuvius, where it is still produced in pear, sausage, or cone shapes 10 to 15 cm long. Provolone-type cheeses are also produced in other countries.`,
   },
 ]
 
-export const columns: ActionListColumns = [
+export const columns: ColumnsProps = [
   {
     id: 'name',
     title: 'Name',
+    size: 'medium',
+    type: 'string',
+  },
+  {
+    id: 'status',
+    title: '',
     type: 'string',
   },
   {
@@ -94,28 +121,36 @@ export const columns: ActionListColumns = [
     type: 'number',
   },
   {
-    id: 'status',
-    title: 'Status',
-    type: 'string',
-  },
-  {
     id: 'color',
+    size: 'nowrap',
     title: 'Color',
     type: 'string',
   },
   {
     id: 'description',
+    size: 'large',
     title: 'Description',
     type: 'string',
   },
   {
     id: 'origin',
-    title: 'Origin',
+    size: 'medium',
+    title: 'Origin / Region / Proof of truncated headers',
     type: 'string',
   },
   {
+    id: 'calories',
+    title: 'Calories',
+    type: 'number',
+  },
+  {
     id: 'fat',
-    title: 'Fat content',
+    title: 'Fat',
+    type: 'number',
+  },
+  {
+    id: 'protein',
+    title: 'Protein',
     type: 'number',
   },
   {

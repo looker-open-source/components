@@ -25,14 +25,14 @@
  */
 
 import React, { useState, ReactNode } from 'react'
-import { ActionList, ActionListColumns } from '../ActionList'
+import { ActionList } from '../ActionList'
 import { ActionListItem } from '../Item'
-import { ActionListItemColumn } from '../Item/ActionListItemColumn'
+import { ActionListItemColumn, ColumnsProps } from '../Column'
 import { ActionListDatum, ActionListData, doDefaultActionListSort } from '.'
 
 export const useActionListSortManager = (
   actionListData: ActionListData,
-  actionListColumns: ActionListColumns,
+  actionListColumns: ColumnsProps,
   generateActions: (item: ActionListDatum) => ReactNode
 ) => {
   const [data, setData] = useState(actionListData)

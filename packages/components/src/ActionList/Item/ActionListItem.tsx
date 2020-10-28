@@ -52,6 +52,8 @@ export interface ActionListItemProps
    * A boolean indicating whether this item is selectable or not (the item will appear greyed out if true)
    */
   disabled?: boolean
+
+  children: JSX.Element[]
 }
 
 const ActionListItemLayout: FC<ActionListItemProps> = ({
@@ -120,9 +122,4 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   )
 }
 
-export const ActionListItem = styled(ActionListItemLayout)`
-  td,
-  th {
-    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
-  }
-`
+export const ActionListItem = styled(ActionListItemLayout)``

@@ -24,7 +24,7 @@
 
  */
 
-import { ActionListColumns } from '../ActionList'
+import { ColumnsProps } from '../Column'
 
 export const stringComparator = (stringA: string, stringB: string) => {
   const upperCasedStringA = stringA.toUpperCase()
@@ -40,7 +40,7 @@ export type ActionListData = ActionListDatum[]
 
 export const doDefaultActionListSort = (
   data: ActionListData,
-  columns: ActionListColumns,
+  columns: ColumnsProps,
   id: string,
   sortDirection: 'asc' | 'desc'
 ) => {
