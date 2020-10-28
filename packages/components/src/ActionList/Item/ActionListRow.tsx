@@ -59,24 +59,6 @@ export interface ActionListItemLayoutProps
   isHeaderRow?: boolean
 }
 
-// const Th = styled.th<{ alignEnd?: boolean }>`
-//   ${({ alignEnd }) =>
-//     alignEnd &&
-//     css`
-//       display: flex;
-//       flex-direction: column-reverse;
-//     `}
-// `
-
-// const Td = styled.td<{ alignEnd?: boolean }>`
-//   ${({ alignEnd }) =>
-//     alignEnd &&
-//     css`
-//       display: flex;
-//       flex-direction: column-reverse;
-//     `}
-// `
-
 const ActionListRowLayout = forwardRef(
   (props: ActionListItemLayoutProps, ref: Ref<HTMLTableRowElement>) => {
     const {
@@ -91,11 +73,13 @@ const ActionListRowLayout = forwardRef(
     } = props
 
     const ColumnType = isHeaderRow ? 'th' : 'td'
-    const { columns } = useContext(ActionListContext)
+    const { columns, columnsToDisplay } = useContext(ActionListContext)
     const getColumnSize = (index: number) => columns && columns[index].size
 
     const sizedChildren = Children.map(children, (child, index) => {
-      if (isValidElement(child)) {
+      if (columnsToDisplay && !columnsToDisplay[index]) {
+        return null
+      } else if (isValidElement(child)) {
         return cloneElement(child, { size: getColumnSize(index) })
       } else {
         return child

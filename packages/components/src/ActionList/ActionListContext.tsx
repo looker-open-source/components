@@ -31,6 +31,7 @@ import { ColumnsProps } from './Column'
 export interface ActionListContextProps {
   allSelected?: MixedBoolean
   columns?: ColumnsProps
+  columnsToDisplay?: string[]
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   select?: SelectConfig
 }
