@@ -24,11 +24,21 @@
 
  */
 
+import { IconNames } from '@looker/icons'
 import { ReactNode } from 'react'
 import { ColumnSize } from './columnSize'
 
 export interface ColumnProps {
+  /**
+   * Title for the column
+   */
   title: ReactNode
+  /**
+   * Display an `Icon` instead of the title text in the header row.
+   * NOTE: `title` will still be used in columnSelector and will be added as
+   * a tooltip to the icon displayed in the header row.
+   */
+  titleIcon?: IconNames
   /**
    * A unique identifier for a given column
    * Note: A column object's id should match a key in your data object template
@@ -58,6 +68,22 @@ export interface ColumnProps {
    * @default false
    */
   canSort?: boolean
+
+  /**
+   * Determines if the column is visible when the DataTable is initially displayed
+   * @default false
+   */
+  hide?: boolean
+
+  /**
+   * Determines whether the user can hide/show the column
+   * @default true
+   */
+  canHide?: boolean
+
+  /**
+   * @private
+   */
   sortDirection?: 'asc' | 'desc'
 }
 

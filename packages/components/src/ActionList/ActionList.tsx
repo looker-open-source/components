@@ -153,19 +153,21 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     firstColumnStuck = Boolean(select),
   } = props
 
-  const [visibleColumns, setVisibleColumns] = useState(columns)
-  const [columnsList, setColumnsList] = useState<string[]>([])
+  // const [visibleColumns, setVisibleColumns] = useState(columns)
+  const [columnsList, setColumnsList] = useState<string[]>(
+    columns.map((c) => c.id)
+  )
 
-  const handleVisibleColumns = (selectedColumns: string[]) => {
+  const handleVisibleColumns = (selectedColumns: string[]) =>
     setColumnsList(selectedColumns)
 
-    const displayColumns = columns.filter((column) =>
-      selectedColumns.includes(column.id)
-    )
-    selectedColumns.length === 0
-      ? setVisibleColumns(columns)
-      : setVisibleColumns(displayColumns)
-  }
+  const columnsToDisplay = columns.map((column) =>
+    columnsList.includes(column.id)
+  )
+
+  const visibleColumns = columns.filter((column) =>
+    columnsList.includes(column.id)
+  )
 
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
@@ -178,6 +180,7 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
   const context = {
     allSelected,
     columns,
+    columnsToDisplay,
     onSort,
     select,
   }
@@ -203,6 +206,7 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
           {(width: string) => (
             <ActionListTable
               {...props}
+              columns={visibleColumns}
               renderedWidth={width}
               firstColumnStuck={firstColumnStuck}
             />

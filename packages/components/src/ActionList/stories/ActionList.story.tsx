@@ -137,6 +137,7 @@ const Template: Story<DemoProps> = ({
           columns={columns}
           filterConfig={canFilter ? filterActionsConfig : undefined}
           headerRowId="all-pdts"
+          firstColumnStuck={firstColumnStuck}
           select={canSelect ? selectConfig : undefined}
         >
           {filteredItems}

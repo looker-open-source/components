@@ -112,13 +112,15 @@ export const columns: ColumnsProps = [
   },
   {
     id: 'status',
-    title: '',
+    title: 'Label',
+    titleIcon: 'CircleInfo',
     type: 'string',
   },
   {
     id: 'inventory',
     title: 'Inventory',
     type: 'number',
+    canHide: false,
   },
   {
     id: 'color',
@@ -146,6 +148,7 @@ export const columns: ColumnsProps = [
   {
     id: 'fat',
     title: 'Fat',
+    hide: true,
     type: 'number',
   },
   {
