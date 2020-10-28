@@ -97,7 +97,7 @@ export interface ActionListProps {
   /**
    * specify specific columns to be displayed
    **/
-  canSelectDisplayedColumns?: boolean
+  canCustomizeColumns?: boolean
 }
 
 export interface SelectConfig {
@@ -160,7 +160,7 @@ export interface BulkActionsConfig {
 
 export const ActionListLayout: FC<ActionListProps> = ({
   bulk,
-  canSelectDisplayedColumns,
+  canCustomizeColumns,
   className,
   children,
   columns,
@@ -179,7 +179,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     const displayColumns = columns.filter((column) =>
       selectedColumns.includes(column.id)
     )
-    console.log('selectedColumns: ', selectedColumns)
     selectedColumns.length === 0
       ? setVisibleColumns(columns)
       : setVisibleColumns(displayColumns)
@@ -211,12 +210,12 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
     )
 
-  const filters = (filterConfig || canSelectDisplayedColumns) && (
+  const filters = (filterConfig || canCustomizeColumns) && (
     <ActionListFilters
       columnsList={columnsList}
       columns={columns}
       {...filterConfig}
-      canSelectDisplayedColumns={canSelectDisplayedColumns}
+      canCustomizeColumns={canCustomizeColumns}
       onChange={handleVisibleColumns}
     />
   )
@@ -229,9 +228,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <table className={className}>
         <thead>{actionListHeader}</thead>
         <tbody>{children}</tbody>
-        {/* {visibleColumns.map((column) => (
-          <tbody key={column.id}>{column}</tbody>
-        ))} */}
       </table>
     </ActionListContext.Provider>
   )

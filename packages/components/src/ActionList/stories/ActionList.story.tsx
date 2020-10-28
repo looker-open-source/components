@@ -131,7 +131,7 @@ const Template: Story<DemoProps> = ({
       <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
         <ActionList
           bulk={canBulk ? bulkActionsConfig : undefined}
-          canSelectDisplayedColumns={canCustomizeColumns}
+          canCustomizeColumns={canCustomizeColumns}
           columns={columns}
           filterConfig={canFilter ? filterActionsConfig : undefined}
           headerRowId="all-pdts"

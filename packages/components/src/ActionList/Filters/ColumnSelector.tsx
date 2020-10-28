@@ -33,7 +33,6 @@ export interface ColumnSelectorProps {
   columns: ReactNode[]
   onChange: (value: string[]) => void
   columnsList: string[]
-  // defaultSelector: string[]
 }
 
 const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
@@ -41,7 +40,6 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
   onChange,
   columnsList,
 }) => {
-  // const [checkboxValues, setCheckboxValues] = useState([])
   const columnsLabel =
     columns &&
     columns.map((column: any) => ({
@@ -59,7 +57,6 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
         content={
           <PopoverContent>
             <CheckboxGroup
-              // defaultValue={['cheddar']}
               value={columnsList}
               onChange={setVisibleColumns}
               options={columnsLabel}

@@ -34,37 +34,35 @@ import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 export interface ActionListFiltersProps
   extends ColumnSelectorProps,
     Partial<FilterConfig> {
-  canSelectDisplayedColumns?: boolean
+  canCustomizeColumns?: boolean
   className?: string
 }
 
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
-  canSelectDisplayedColumns = false,
+  canCustomizeColumns = false,
   className,
   columns,
   filters,
   onChange,
   onFilter,
   columnsList,
-}) => {
-  return (
-    <div className={className}>
-      {filters && onFilter ? (
-        <InputFilters filters={filters} onChange={onFilter} />
-      ) : null}
-      {canSelectDisplayedColumns && (
-        <>
-          <DividerVertical height="1.2rem" />
-          <ColumnSelector
-            columns={columns}
-            onChange={onChange}
-            columnsList={columnsList}
-          />
-        </>
-      )}
-    </div>
-  )
-}
+}) => (
+  <div className={className}>
+    {filters && onFilter ? (
+      <InputFilters filters={filters} onChange={onFilter} />
+    ) : null}
+    {canCustomizeColumns && (
+      <>
+        <DividerVertical height="1.2rem" />
+        <ColumnSelector
+          columns={columns}
+          onChange={onChange}
+          columnsList={columnsList}
+        />
+      </>
+    )}
+  </div>
+)
 
 export const ActionListFilters = styled(ActionListFiltersLayout)`
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
