@@ -27,17 +27,13 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { columns, columnsList } from '../stories/data'
+import { columns } from '../../__mocks__/DataTable/columns'
 import { ColumnSelector } from './ColumnSelector'
 
 describe('ColumnSelector', () => {
   test('render', () => {
     const { getByText } = renderWithTheme(
-      <ColumnSelector
-        columns={columns}
-        columnsList={columnsList}
-        onChange={jest.fn()}
-      />
+      <ColumnSelector columns={columns} columnsList={[]} onChange={jest.fn()} />
     )
 
     expect(getByText('Select columns to display')).toBeInTheDocument()
@@ -45,11 +41,7 @@ describe('ColumnSelector', () => {
 
   test('onClick displays popover of column options', () => {
     const { getByText } = renderWithTheme(
-      <ColumnSelector
-        columns={columns}
-        columnsList={columnsList}
-        onChange={jest.fn()}
-      />
+      <ColumnSelector columns={columns} columnsList={[]} onChange={jest.fn()} />
     )
     const columnButton = getByText('Select columns to display')
 
@@ -63,11 +55,7 @@ describe('ColumnSelector', () => {
 
   test('onClick displays popover of column options', () => {
     const { getByText, queryByText } = renderWithTheme(
-      <ColumnSelector
-        columns={columns}
-        columnsList={columnsList}
-        onChange={jest.fn()}
-      />
+      <ColumnSelector columns={columns} columnsList={[]} onChange={jest.fn()} />
     )
     const columnButton = getByText('Select columns to display')
 

@@ -29,10 +29,8 @@ import { ActionListHeaderColumn, ColumnsProps } from '../Column'
 import { ActionListHeader } from './ActionListHeader'
 
 export const generateActionListHeaderColumns = (columns: ColumnsProps) =>
-  columns.map(({ id, size, title }) => (
-    <ActionListHeaderColumn key={id} id={id} size={size}>
-      {title}
-    </ActionListHeaderColumn>
+  columns.map((column) => (
+    <ActionListHeaderColumn {...column} key={column.id} />
   ))
 
 export const generateActionListHeader = (columns: ColumnsProps) => (

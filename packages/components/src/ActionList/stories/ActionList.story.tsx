@@ -26,7 +26,6 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState } from 'react'
-import { filters as defaultFilters } from '../../__mocks__/sampleInputFilters'
 import { useActionListSelectManager } from '../utils/useActionListSelectManager'
 import { FieldFilter } from '../../Form/Inputs/InputFilters'
 import { Icon } from '../../Icon'
@@ -35,7 +34,9 @@ import { Heading, Paragraph } from '../../Text'
 import { ActionListItemAction } from '../Item'
 import { ActionList } from '../ActionList'
 import { ActionListManagerProps, ActionListManager } from '../Manager'
-import { columns, data } from './data'
+import { filters as defaultFilters } from '../../__mocks__/filters'
+import { columns } from '../../__mocks__/DataTable/columns'
+import { data } from '../../__mocks__/DataTable/data'
 import { items } from './items'
 
 export * from './ActionListSortable'

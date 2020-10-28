@@ -33,7 +33,7 @@ import {
   ActionListItemAction,
   ActionListItemColumn,
 } from '../Item'
-import { data } from './data'
+import { data } from '../../__mocks__/DataTable/data'
 
 const Actions = () => (
   <>

@@ -24,22 +24,64 @@
 
  */
 
-export const filters = [
+import { ColumnsProps } from '../../ActionList/Column'
+
+export const columns: ColumnsProps = [
   {
-    field: 'name',
-    label: 'Name',
-    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+    id: 'name',
+    size: 'medium',
+    title: 'Name',
+    type: 'string',
   },
   {
-    field: 'color',
-    label: 'Color',
-    multiple: true,
-    options: ['blue', 'orange', 'yellow', 'white'],
+    id: 'status',
+    title: 'Status',
+    titleIcon: 'CircleInfo',
+    type: 'string',
   },
   {
-    field: 'origin',
-    label: 'Origin',
-    multiple: true,
-    options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
+    canHide: false,
+    id: 'inventory',
+    title: 'Inventory',
+    type: 'number',
+  },
+  {
+    id: 'color',
+    size: 'nowrap',
+    title: 'Color',
+    type: 'string',
+  },
+  {
+    id: 'description',
+    size: 'large',
+    title: 'Description',
+    type: 'string',
+  },
+  {
+    id: 'origin',
+    size: 'medium',
+    title: 'Origin / Region / Proof of truncated headers',
+    type: 'string',
+  },
+  {
+    id: 'calories',
+    title: 'Calories',
+    type: 'number',
+  },
+  {
+    hide: true,
+    id: 'fat',
+    title: 'Fat',
+    type: 'number',
+  },
+  {
+    id: 'protein',
+    title: 'Protein',
+    type: 'number',
+  },
+  {
+    id: 'calcium',
+    title: 'Calcium',
+    type: 'number',
   },
 ]
