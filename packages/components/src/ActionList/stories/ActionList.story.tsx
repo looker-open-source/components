@@ -153,14 +153,118 @@ const Template: Story<DemoProps> = ({
   )
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-  canBulk: true,
+export const Basic = Template.bind({})
+Basic.args = {
+  canBulk: false,
+  canCustomizeColumns: false,
+  canFilter: false,
+  canSelect: false,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const CustomizeColumns = Template.bind({})
+CustomizeColumns.args = {
+  ...Basic.args,
+  canBulk: false,
+  canCustomizeColumns: true,
+  canFilter: false,
+  canSelect: false,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const Filter = Template.bind({})
+Filter.args = {
+  ...Basic.args,
+  canBulk: false,
+  canCustomizeColumns: false,
+  canFilter: true,
+  canSelect: false,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const FilterCustomizeColumns = Template.bind({})
+FilterCustomizeColumns.args = {
+  ...Basic.args,
+  canBulk: false,
+  canCustomizeColumns: true,
+  canFilter: true,
+  canSelect: false,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const FirstColumnStuck = Template.bind({})
+FirstColumnStuck.args = {
+  ...Basic.args,
+  canBulk: false,
   canCustomizeColumns: true,
   canFilter: true,
   canSelect: true,
   firstColumnStuck: true,
   isLoading: false,
   noResults: false,
-  noResultsDisplay: true,
+  noResultsDisplay: false,
+}
+
+export const Select = Template.bind({})
+Select.args = {
+  ...Basic.args,
+  canBulk: false,
+  canCustomizeColumns: false,
+  canFilter: false,
+  canSelect: true,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const SelectAction = Template.bind({})
+SelectAction.args = {
+  ...Basic.args,
+  canBulk: true,
+  canCustomizeColumns: false,
+  canFilter: false,
+  canSelect: true,
+  firstColumnStuck: false,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const SelectActionFirstColumnStuck = Template.bind({})
+SelectActionFirstColumnStuck.args = {
+  ...Basic.args,
+  canBulk: true,
+  canCustomizeColumns: false,
+  canFilter: false,
+  canSelect: true,
+  firstColumnStuck: true,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
+}
+
+export const SelectFiltersFirstColumnStuck = Template.bind({})
+SelectFiltersFirstColumnStuck.args = {
+  ...Basic.args,
+  canBulk: false,
+  canCustomizeColumns: true,
+  canFilter: true,
+  canSelect: true,
+  firstColumnStuck: true,
+  isLoading: false,
+  noResults: false,
+  noResultsDisplay: false,
 }
