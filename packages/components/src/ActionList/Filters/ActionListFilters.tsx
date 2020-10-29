@@ -41,11 +41,9 @@ export interface ActionListFiltersProps
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   canCustomizeColumns = false,
   className,
-  columns,
   filters,
-  onChange,
   onFilter,
-  columnsList,
+  ...columnSelectorProps
 }) => (
   <div className={className}>
     {filters && onFilter ? (
@@ -54,11 +52,7 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
     {canCustomizeColumns && (
       <>
         <DividerVertical height="1.2rem" />
-        <ColumnSelector
-          columns={columns}
-          onChange={onChange}
-          columnsList={columnsList}
-        />
+        <ColumnSelector {...columnSelectorProps} />
       </>
     )}
   </div>

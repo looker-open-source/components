@@ -31,7 +31,7 @@ import { Space } from '../../Layout/Space'
 import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
 import { columnSize, sizeInfersTruncate } from './columnSize'
-import { ColumnProps, ColumnSortDirection, ColumnType } from './column'
+import { ColumnProps } from './column'
 
 export interface HeaderColumnComponentProps extends ColumnProps {
   className?: string
@@ -93,4 +93,8 @@ ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   ${columnSize}
+  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+  color: ${(props) => props.theme.colors.text5};
+  font-weight: ${(props) => props.theme.fontWeights.semiBold};
+  text-align: left;
 `

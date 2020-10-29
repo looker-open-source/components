@@ -26,13 +26,12 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
-import { useID } from '../utils/useID'
 import {
   getNumericColumnIndices,
   numericColumnCSS,
 } from './utils/actionListFormatting'
 import { ActionListProps } from './ActionList'
-import { ActionListHeader, generateActionListHeaderColumns } from './Header'
+import { generateActionListHeader } from './Header'
 import { edgeShadow } from './utils/edgeShadow'
 
 export interface ActionListTableProps extends ActionListProps {
@@ -43,7 +42,6 @@ export const ActionListTableLayout: FC<ActionListTableProps> = ({
   children,
   className,
   columns,
-  header = true,
   headerRowId,
   renderedWidth,
 }) => {
@@ -58,21 +56,10 @@ export const ActionListTableLayout: FC<ActionListTableProps> = ({
     }
   }, [renderedWidth])
 
-  const guaranteedId = useID(headerRowId)
-
-  const actionListHeader =
-    header === true ? (
-      <ActionListHeader id={guaranteedId}>
-        {generateActionListHeaderColumns(columns)}
-      </ActionListHeader>
-    ) : header === false ? null : (
-      <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
-    )
-
   return (
     <TableScroll ref={internalRef}>
-      <table className={`${className}${overflow ? ' overflow' : ''}`}>
-        <thead>{actionListHeader}</thead>
+      <table className={overflow ? `${className} overflow` : className}>
+        <thead>{generateActionListHeader(columns, headerRowId)}</thead>
         <tbody>{children}</tbody>
       </table>
     </TableScroll>
