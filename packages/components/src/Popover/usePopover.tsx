@@ -30,7 +30,6 @@ import React, {
   useEffect,
   useMemo,
   ReactNode,
-  RefObject,
   SyntheticEvent,
   useState,
   Ref,
@@ -92,17 +91,6 @@ export interface UsePopoverProps {
   portalElement?: HTMLDivElement | null
 
   /**
-   * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
-   * This was deemed a best practice as it prevents inadvertent destructive actions and mirrors behavior
-   * seen in many commonly used applications (e.g. Chrome).
-   *
-   * However, where several related Popover components are grouped together, cancelling event bubbling for
-   * the "dismissal click" can make for an awkward UX. In these cases the developer can specify a ref for a
-   * component that contains the related Popovers and the event-bubble cancellation will not take place.
-   */
-  groupedPopoversRef?: RefObject<HTMLElement>
-
-  /**
    * By default Popover will reposition itself if they overflow the widow.
    * You can use the pin property to override this behavior.
    */
@@ -132,7 +120,7 @@ export interface UsePopoverProps {
 
   /**
    * Whether to honor the first click outside the popover
-   * @default true
+   * @default false
    */
   cancelClickOutside?: boolean
 }
@@ -165,7 +153,6 @@ export interface UsePopoverResponseDom {
 export const usePopover = ({
   canClose,
   content,
-  groupedPopoversRef,
   pin = false,
   isOpen: controlledIsOpen = false,
   onClose,
@@ -197,7 +184,6 @@ export const usePopover = ({
     {
       canClose,
       cancelClickOutside,
-      groupedPopoversRef,
       isOpen: controlledIsOpen,
       setOpen: controlledSetOpen,
       triggerToggle,

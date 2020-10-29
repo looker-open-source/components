@@ -24,15 +24,15 @@
 
  */
 
-import React, { useEffect, useRef, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { ScrollLockContext } from '@looker/components-providers'
 import {
   Box,
   Button,
   ButtonOutline,
-  ButtonTransparent,
   Dialog,
   FieldSelect,
+  FieldToggleSwitch,
   Heading,
   Menu,
   MenuDisclosure,
@@ -81,6 +81,7 @@ export default {
 }
 
 export const PopoverFocusTrap = () => {
+  const { value, toggle } = useToggle(false)
   function getButtonAlert(text: string) {
     return () => alert(text)
   }
@@ -88,10 +89,14 @@ export const PopoverFocusTrap = () => {
   return (
     <SpaceVertical mt="large">
       <Heading>Focus Trap Test</Heading>
-      <Paragraph>With cancelClickOutside=false</Paragraph>
+      <FieldToggleSwitch
+        on={value}
+        onChange={() => toggle()}
+        label="Cancel Click Outside"
+      />
       <Space>
         <Popover
-          cancelClickOutside={false}
+          cancelClickOutside={value}
           content={
             <PopoverContent p="large" width="360px">
               <Paragraph>
@@ -142,9 +147,7 @@ export const PopoverFocusTrap = () => {
         >
           <Button>Open Focus Trap Test Popover</Button>
         </Popover>
-        <ButtonOutline
-          onClick={() => alert('cancelClickOutside=false is working')}
-        >
+        <ButtonOutline onClick={() => alert(`You clicked the button!`)}>
           Click me with the popover open
         </ButtonOutline>
       </Space>
@@ -295,44 +298,6 @@ export const Placement = () => {
 
         <Popover content={popoverContent}>
           <Button>Default</Button>
-        </Popover>
-      </Box>
-    </Box>
-  )
-}
-
-export const Grouped = () => {
-  const groupRef = useRef<HTMLDivElement>(null)
-  const content = (
-    <PopoverContent p="large" width="360px">
-      Example Popover text.
-    </PopoverContent>
-  )
-  return (
-    <Box mt="large">
-      <Heading>Grouped Popovers</Heading>
-      <Box display="flex">
-        <Box
-          display="flex"
-          justifyContent="space-around"
-          ref={groupRef}
-          p="large"
-          border="3px solid green"
-        >
-          <Popover content={content} groupedPopoversRef={groupRef}>
-            <Button>Instant Click</Button>
-          </Popover>
-          <Popover content={content} groupedPopoversRef={groupRef}>
-            <Button mx="large">Instant Click</Button>
-          </Popover>
-          <Popover content={content}>
-            <ButtonOutline>Defer Click</ButtonOutline>
-          </Popover>
-        </Box>
-        <Popover content={content}>
-          <ButtonTransparent mx="xlarge" my="large">
-            Outside Group
-          </ButtonTransparent>
         </Popover>
       </Box>
     </Box>

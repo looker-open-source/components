@@ -34,31 +34,6 @@ import { Popover } from './Popover'
 
 const SimpleContent = <div>simple content</div>
 
-const instantClick = jest.fn()
-const requiresDismissal = jest.fn()
-
-const PopoverGroup = () => {
-  const groupRef = useRef<null | HTMLDivElement>(null)
-
-  return (
-    <>
-      <div ref={groupRef}>
-        <Popover content={SimpleContent} groupedPopoversRef={groupRef}>
-          <a>Instant Click</a>
-        </Popover>
-
-        <a onClick={instantClick} id="instant">
-          Should activate instantly
-        </a>
-      </div>
-
-      <button onClick={requiresDismissal} id="dismissed">
-        Should require dismissal click
-      </button>
-    </>
-  )
-}
-
 describe('Popover', () => {
   afterEach(() => {
     const root = document.getElementById('modal-root')
@@ -147,7 +122,7 @@ describe('Popover', () => {
     fireEvent.click(document)
   })
 
-  test('Open popover cancels event on "dismissal click"', () => {
+  test('Open popover does not cancel event on "dismissal click"', () => {
     const doThing = jest.fn()
 
     const { getByText, queryByText } = renderWithTheme(
@@ -165,15 +140,15 @@ describe('Popover', () => {
     const closer = getByText('Do thing...')
     fireEvent.click(closer)
     expect(queryByText('simple content')).not.toBeInTheDocument()
-    expect(doThing).toBeCalledTimes(0)
+    expect(doThing).toBeCalledTimes(1)
   })
 
-  test('With cancelClickOutside = false, open popover does not cancel click event', () => {
+  test('With cancelClickOutside = true, open popover cancels 1st click event', () => {
     const doThing = jest.fn()
 
     const { getByText, queryByText } = renderWithTheme(
       <>
-        <Popover content={SimpleContent} cancelClickOutside={false}>
+        <Popover content={SimpleContent} cancelClickOutside>
           <button>Instant Click</button>
         </Popover>
         <a onClick={doThing}>Do thing...</a>
@@ -186,36 +161,7 @@ describe('Popover', () => {
     const closer = getByText('Do thing...')
     fireEvent.click(closer)
     expect(queryByText('simple content')).not.toBeInTheDocument()
-    expect(doThing).toBeCalledTimes(1)
-  })
-
-  test('Popover Group - item outside group does NOT receive first click event', () => {
-    const { getByText, queryByText } = renderWithTheme(<PopoverGroup />)
-    const trigger = getByText('Instant Click')
-    fireEvent.click(trigger) // open Popover
-
-    const dismissed = getByText('Should require dismissal click')
-    fireEvent.click(dismissed)
-    // @FAIL - Doesn't work because Popover is looking for an event sent via document.addEventListener
-    expect(queryByText('simple content')).not.toBeInTheDocument()
-    expect(requiresDismissal).toBeCalledTimes(0)
-  })
-
-  test('Popover Group  - item within group immediately receives onClick', () => {
-    const { getByText, queryByText } = renderWithTheme(<PopoverGroup />)
-    const trigger = getByText('Instant Click')
-    fireEvent.click(trigger) // open Popover
-
-    const instant = getByText('Should activate instantly')
-    fireEvent.click(instant)
-
-    /*
-     * Testing this with Jest is frustrating because the component expects to operating with a real DOM
-     * environment. Popover is looking for an event sent via document.addEventListener which isn't
-     * produced within Jest's environment. Attempts at mocking haven't been successful.
-     */
-    expect(queryByText('simple content')).not.toBeInTheDocument()
-    expect(instantClick).toBeCalledTimes(1)
+    expect(doThing).toBeCalledTimes(0)
   })
 
   test('Popover trigger is shown/hidden on hover of hoverDisclosureRef', () => {
