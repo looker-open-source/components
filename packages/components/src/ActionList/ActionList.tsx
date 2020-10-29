@@ -153,18 +153,22 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     firstColumnStuck = Boolean(select),
   } = props
 
+  const defaultDisplayColumns = columns.filter(
+    (column: any) => !column.defaultHide && column
+  )
+
   const [columnsList, setColumnsList] = useState<string[]>(
-    columns.map((c) => c.id)
+    defaultDisplayColumns.map((c) => c.id)
   )
 
   const handleVisibleColumns = (selectedColumns: string[]) =>
     setColumnsList(selectedColumns)
 
-  const columnsToDisplay = columns.map((column) =>
+  const columnsToDisplay = defaultDisplayColumns.map((column) =>
     columnsList.includes(column.id)
   )
 
-  const visibleColumns = columns.filter((column) =>
+  const visibleColumns = defaultDisplayColumns.filter((column) =>
     columnsList.includes(column.id)
   )
 
@@ -178,16 +182,15 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
 
   const context = {
     allSelected,
-    columns,
     columnsToDisplay,
+    defaultDisplayColumns,
     onSort,
     select,
   }
-
   const filters = (filterConfig || canCustomizeColumns) && (
     <ActionListFilters
       columnsList={columnsList}
-      columns={columns}
+      columns={defaultDisplayColumns}
       {...filterConfig}
       canCustomizeColumns={canCustomizeColumns}
       onChange={handleVisibleColumns}

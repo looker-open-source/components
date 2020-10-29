@@ -78,7 +78,7 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
     <>
       <Popover
         content={
-          <PopoverContent>
+          <PopoverContent max-width="12rem">
             <CheckboxGroup
               value={columnDisplay}
               onChange={setVisibleColumns}
