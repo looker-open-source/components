@@ -27,8 +27,27 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { filters } from '../../../__mocks__/filters'
 import { FieldFilter, InputFilters } from './InputFilters'
+
+const filters: FieldFilter[] = [
+  {
+    field: 'name',
+    label: 'Name',
+    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
+  },
+  {
+    field: 'color',
+    label: 'Color',
+    multiple: true,
+    options: ['blue', 'orange', 'yellow', 'white'],
+  },
+  {
+    field: 'origin',
+    label: 'Origin',
+    multiple: true,
+    options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
+  },
+]
 
 const ControlledComponent = () => {
   const [controlledFilters, onChange] = useState<FieldFilter[]>(filters)
@@ -48,30 +67,28 @@ describe('InputFilters', () => {
 
     const input = getByPlaceholderText('Filter List')
     fireEvent.click(input)
-    expect(getByText('role')).toBeInTheDocument()
-    expect(getByText('Group')).toBeInTheDocument()
-    expect(getByText('Last Successful Build')).toBeInTheDocument()
+    expect(getByText('Color')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('Origin')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
   test('Clicking on a filter item will displays list of second layer filters ', () => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
       <ControlledComponent />
     )
 
     const input = getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    const group = getByText('Group')
+    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('Color')).toBeInTheDocument()
 
-    expect(getByText('role')).toBeInTheDocument()
-    expect(group).toBeInTheDocument()
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('role'))
-
-    expect(getByText('role')).toBeInTheDocument()
-    expect(group).not.toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
+    expect(queryByText('Color')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -85,13 +102,14 @@ describe('InputFilters', () => {
     const input = getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    expect(getByText('user')).toBeInTheDocument()
-    expect(getByText('admin')).toBeInTheDocument()
-    expect(getByText('pizza')).toBeInTheDocument()
+    expect(getByText('Cheddar')).toBeInTheDocument()
+    expect(getByText('Gouda')).toBeInTheDocument()
+    expect(getByText('Swiss')).toBeInTheDocument()
+    expect(getByText('Mozzarella')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -105,12 +123,12 @@ describe('InputFilters', () => {
     const input = getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
-    expect(getByText('role:')).toBeInTheDocument()
+    fireEvent.click(getByText('Swiss'))
+    expect(getByText('name:')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -123,47 +141,49 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
+    fireEvent.click(getByText('Swiss'))
 
-    expect(getByText('role:')).toBeInTheDocument()
+    expect(getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(queryByText('role')).not.toBeInTheDocument()
+    expect(queryByText('Name')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Display a second filter as chip', () => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(
+    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
       <ControlledComponent />
     )
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
+    fireEvent.click(getByText('Swiss'))
 
-    expect(getByText('role:')).toBeInTheDocument()
+    expect(getByText('name:')).toBeInTheDocument()
+    expect(queryByText(/Swiss/)).toBeInTheDocument()
 
     fireEvent.click(document)
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    fireEvent.click(getByText('Group'))
-    fireEvent.click(getByText('Cheddar'))
+    fireEvent.click(getByText('Color'))
+    fireEvent.click(getByText('blue'))
 
-    expect(getByText('group:')).toBeInTheDocument()
+    expect(getByText('color:')).toBeInTheDocument()
+    expect(queryByText(/, blue/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -176,19 +196,19 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
+    fireEvent.click(getByText('Cheddar'))
 
-    expect(queryByText('role:')).toBeInTheDocument()
-    expect(queryByText(/user/)).toBeInTheDocument()
+    expect(queryByText('name:')).toBeInTheDocument()
+    expect(queryByText(/Cheddar/)).toBeInTheDocument()
 
-    fireEvent.click(getByText('role:'))
-    fireEvent.click(getByText('pizza'))
+    fireEvent.click(getByText('name:'))
+    fireEvent.click(getByText('Swiss'))
 
-    expect(queryByText(/pizza/)).toBeInTheDocument()
+    expect(queryByText(/Swiss/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -201,18 +221,18 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('Persistance Type')).toBeInTheDocument()
+    expect(getByText('Color')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Persistance Type'))
+    fireEvent.click(getByText('Color'))
 
-    fireEvent.click(getByText('datagroup_trigger'))
-    fireEvent.click(getByText('datagroup_trigger1'))
+    fireEvent.click(getByText('blue'))
+    fireEvent.click(getByText('white'))
 
     fireEvent.click(document)
 
-    expect(queryByText('persistance-type:')).toBeInTheDocument()
-    expect(queryByText(/datagroup_trigger/)).toBeInTheDocument()
-    expect(queryByText(/datagroup_trigger1/)).toBeInTheDocument()
+    expect(queryByText('color:')).toBeInTheDocument()
+    expect(queryByText(/blue/)).toBeInTheDocument()
+    expect(queryByText(/white/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -225,19 +245,19 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
+    fireEvent.click(getByText('Gouda'))
 
-    expect(getByText('role:')).toBeInTheDocument()
+    expect(getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
     fireEvent.click(getByText('Delete'))
 
-    expect(queryByText('role:')).not.toBeInTheDocument()
+    expect(queryByText('name:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -250,27 +270,34 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    expect(getByText('role')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('role'))
+    fireEvent.click(getByText('Name'))
 
-    fireEvent.click(getByText('user'))
+    fireEvent.click(getByText('Gouda'))
 
-    expect(getByText('role:')).toBeInTheDocument()
+    expect(getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
-    fireEvent.click(getByText('Group'))
-    fireEvent.click(getByText('Cheddar'))
+    fireEvent.click(getByText('Color'))
+    fireEvent.click(getByText('yellow'))
+    fireEvent.click(getByText('orange'))
 
     fireEvent.click(document)
 
+    expect(queryByText('color:')).toBeInTheDocument()
+    expect(queryByText(/yellow/)).toBeInTheDocument()
+    expect(queryByText(/orange/)).toBeInTheDocument()
+    expect(getByText('name:')).toBeInTheDocument()
+    expect(queryByText(/Gouda/)).toBeInTheDocument()
+
     fireEvent.click(getByText('Clear Filters'))
 
-    expect(queryByText('role:')).not.toBeInTheDocument()
-    expect(queryByText('group:')).not.toBeInTheDocument()
+    expect(queryByText('color:')).not.toBeInTheDocument()
+    expect(queryByText('name:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

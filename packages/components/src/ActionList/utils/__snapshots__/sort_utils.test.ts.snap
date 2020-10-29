@@ -9,14 +9,12 @@ Object {
       "sortDirection": "asc",
       "title": "ID",
       "type": "number",
-      "widthPercent": 20,
     },
     Object {
       "canSort": true,
       "id": "name",
       "title": "Name",
       "type": "string",
-      "widthPercent": 80,
     },
   ],
   "data": Array [
@@ -41,14 +39,12 @@ Object {
       "sortDirection": "desc",
       "title": "ID",
       "type": "number",
-      "widthPercent": 20,
     },
     Object {
       "canSort": true,
       "id": "name",
       "title": "Name",
       "type": "string",
-      "widthPercent": 80,
     },
   ],
   "data": Array [
@@ -72,7 +68,6 @@ Object {
       "id": "id",
       "title": "ID",
       "type": "number",
-      "widthPercent": 20,
     },
     Object {
       "canSort": true,
@@ -80,7 +75,6 @@ Object {
       "sortDirection": "asc",
       "title": "Name",
       "type": "string",
-      "widthPercent": 80,
     },
   ],
   "data": Array [
@@ -104,7 +98,6 @@ Object {
       "id": "id",
       "title": "ID",
       "type": "number",
-      "widthPercent": 20,
     },
     Object {
       "canSort": true,
@@ -112,7 +105,6 @@ Object {
       "sortDirection": "desc",
       "title": "Name",
       "type": "string",
-      "widthPercent": 80,
     },
   ],
   "data": Array [
