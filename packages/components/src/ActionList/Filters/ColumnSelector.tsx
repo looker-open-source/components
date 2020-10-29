@@ -88,7 +88,11 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
         </>
       }
     >
-      <IconButton icon="ViewColumn" label="Select columns to display" />
+      <IconButton
+        icon="ViewColumn"
+        label="Select columns to display"
+        mt="xxsmall"
+      />
     </Popover>
   )
 }
