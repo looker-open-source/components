@@ -47,7 +47,8 @@ export function usePopper({ anchor, target, options }: UsePopperProps) {
       left: '0',
       margin: '0',
       position: 'fixed',
-      top: '0',
+      // Initially render off the screen while PopperJS calculates position
+      top: '-9999px',
     },
   })
   const [truePlacement, setTruePlacement] = useState(options.placement)

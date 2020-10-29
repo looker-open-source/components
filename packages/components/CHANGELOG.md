@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` on a mobile device or with "tap to click" on a touch pad reopens immediately after clicking on an option
 - `Select` options not being announced in a screen reader on keyboard navigation
 - Controlled `Select` losing focus if there's delay between `onChange` and `value` update
+- `Popover` flashing in the upper left corner of the screen on slow pages
 - `InputColor` no longer allows user to click swatch when `readOnly` is assigned
 - `Select` alignment of options when some have icons and others do not
 - `Select` inappropriately shows "No options" when the current value is empty, after filtering a long list down to a single option then deleting the filter text
