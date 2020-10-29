@@ -33,8 +33,11 @@ export const generateActionListHeaderColumns = (columns: ColumnsProps) =>
     <ActionListHeaderColumn {...column} key={column.id} />
   ))
 
-export const generateActionListHeader = (columns: ColumnsProps) => (
-  <ActionListHeader>
+export const generateActionListHeader = (
+  columns: ColumnsProps,
+  id?: string
+) => (
+  <ActionListHeader id={id}>
     {generateActionListHeaderColumns(columns)}
   </ActionListHeader>
 )

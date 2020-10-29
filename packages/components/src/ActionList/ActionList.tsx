@@ -40,10 +40,7 @@ import { ActionListTable } from './ActionListTable'
 export interface ActionListProps {
   columns: ColumnsProps
   className?: string
-  /**
-   * @default: true
-   */
-  header?: boolean | ReactNode
+
   /**
    * Sort function provided by the developer
    */
@@ -62,12 +59,6 @@ export interface ActionListProps {
    *   Explicit specification of `firstColumnStuck` will always determine outcome
    */
   firstColumnStuck?: boolean
-
-  /**
-   * ID of the header row. Used for the aria-describedby of the select all checkbox.
-   * Note: If undefined, this will be auto-generated
-   */
-  headerRowId?: string
   /**
    * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
@@ -81,6 +72,13 @@ export interface ActionListProps {
    * specify specific columns to be displayed
    **/
   canCustomizeColumns?: boolean
+
+  /**
+   * ID of the header row. Used for the aria-describedby of the select all checkbox.
+   * Note: If undefined, this will be auto-generated. Generally only explicitly specified
+   * in some limited test scenarios.
+   */
+  headerRowId?: string
 }
 
 export interface SelectConfig {
@@ -148,29 +146,37 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     className,
     columns,
     filterConfig,
+    firstColumnStuck: explicitFirstColumnStuck,
     onSort,
     select,
-    firstColumnStuck = Boolean(select),
   } = props
 
-  const defaultDisplayColumns = columns.filter(
-    (column: any) => !column.defaultHide && column
+  const [visibleColumns, setVisibleColumns] = useState(
+    columns.filter((c) => !c.defaultHide).map((c) => c.id)
   )
 
-  const [columnsList, setColumnsList] = useState<string[]>(
-    defaultDisplayColumns.map((c) => c.id)
+  /**
+   * Generate an array in which each entry represents the visibility status of
+   * each of the columns specified.
+   */
+  const columnsToDisplay = columns.map((column) =>
+    visibleColumns.includes(column.id)
   )
 
-  const handleVisibleColumns = (selectedColumns: string[]) =>
-    setColumnsList(selectedColumns)
-
-  const columnsToDisplay = defaultDisplayColumns.map((column) =>
-    columnsList.includes(column.id)
-  )
-
-  const visibleColumns = defaultDisplayColumns.filter((column) =>
-    columnsList.includes(column.id)
-  )
+  /**
+   * Deciding if the first column of the table should be stuck is slightly complex.
+   *
+   * 1. If the first column is hidden, FALSE (stops evaluating)
+   * 2. If the developer has explicitly specified firstColumnStuck use that value (stops evaluating)
+   * 3. Use whether `select` feature is active (TRUE|FALSE)
+   *
+   */
+  const firstColumnStuck =
+    columnsToDisplay[0] === false
+      ? false
+      : explicitFirstColumnStuck !== undefined
+      ? explicitFirstColumnStuck
+      : Boolean(select)
 
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
@@ -182,18 +188,18 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
 
   const context = {
     allSelected,
+    columns,
     columnsToDisplay,
-    defaultDisplayColumns,
     onSort,
     select,
   }
   const filters = (filterConfig || canCustomizeColumns) && (
     <ActionListFilters
-      columnsList={columnsList}
-      columns={defaultDisplayColumns}
+      visibleColumns={visibleColumns}
+      onColumnVisibilityChange={setVisibleColumns}
+      columns={columns}
       {...filterConfig}
       canCustomizeColumns={canCustomizeColumns}
-      onChange={handleVisibleColumns}
     />
   )
   return (
@@ -208,9 +214,9 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
           {(width: string) => (
             <ActionListTable
               {...props}
-              columns={visibleColumns}
-              renderedWidth={width}
+              columns={columns}
               firstColumnStuck={firstColumnStuck}
+              renderedWidth={width}
             />
           )}
         </ReactResizeDetector>

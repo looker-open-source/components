@@ -35,8 +35,9 @@ describe('ActionListFilters', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <ActionListFilters
         columns={columns}
+        visibleColumns={[]}
+        onColumnVisibilityChange={jest.fn()}
         filters={filters}
-        onChange={jest.fn()}
         onFilter={jest.fn()}
       />
     )
@@ -49,8 +50,9 @@ describe('ActionListFilters', () => {
       <ActionListFilters
         canCustomizeColumns
         columns={columns}
+        visibleColumns={[]}
         filters={filters}
-        onChange={jest.fn()}
+        onColumnVisibilityChange={jest.fn()}
         onFilter={jest.fn()}
       />
     )

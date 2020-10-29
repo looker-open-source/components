@@ -24,97 +24,71 @@
 
  */
 
-import styled from 'styled-components'
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, useState, useContext } from 'react'
 import { Popover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
-import { Divider } from '../../Divider'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
-import { Flex } from '../../Layout/Flex'
+import { DialogContext, DialogFooter, DialogHeader } from '../../Dialog'
+import { ColumnsProps } from '../Column'
+
 export interface ColumnSelectorProps {
-  columns: ReactNode[]
-  onChange: (value: string[]) => void
-  columnsList: string[]
+  columns: ColumnsProps
+  visibleColumns: string[]
+  onColumnVisibilityChange: (value: string[]) => void
 }
 
-const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
-  columns,
-  onChange,
-  columnsList,
+export const ColumnSelector: FC<ColumnSelectorProps> = ({
+  columns: allColumns,
+  visibleColumns: defaultColumns,
+  onColumnVisibilityChange,
 }) => {
-  const [columnDisplay, setColumnDisplay] = useState(columnsList)
+  const { closeModal } = useContext(DialogContext)
+  const [visibleColumns, setVisibleColumns] = useState(defaultColumns)
+  const columns = allColumns.filter((c) => c.canHide !== false)
 
-  const columnsLabel =
-    columns &&
-    columns.map((column: any) =>
-      column.canHide !== false
-        ? {
-            label: column.title,
-            value: column.id,
-          }
-        : {
-            disabled: true,
-            label: column.title,
-            value: column.id,
-          }
-    )
+  const options = columns.map((column) => ({
+    label: column.title,
+    value: column.id,
+  }))
 
-  const setVisibleColumns = (value: string[]) => {
-    setColumnDisplay(value)
+  const apply = () => {
+    onColumnVisibilityChange(visibleColumns)
+    closeModal()
   }
 
-  const handleApply = () => {
-    onChange(columnDisplay)
+  const cancel = () => closeModal()
+
+  const all = () => {
+    const resetColumn = columns.map((column) => column.id)
+    setVisibleColumns(resetColumn)
   }
 
-  const handleAll = () => {
-    const resetColumn = columns.map((column: any) => column.id)
-    setColumnDisplay(resetColumn)
-  }
-
-  const handleNone = () => {
-    const resetColumn = columns
-      .filter((column: any) => column.canHide === false)
-      .map((column) => column && column.id)
-
-    setColumnDisplay(resetColumn)
-  }
+  const none = () => setVisibleColumns([])
 
   return (
-    <>
-      <Popover
-        content={
+    <Popover
+      content={
+        <>
+          <DialogHeader>
+            <ButtonTransparent onClick={all}>Select All</ButtonTransparent>
+            <ButtonTransparent onClick={none}>Select None</ButtonTransparent>
+          </DialogHeader>
           <PopoverContent max-width="12rem">
             <CheckboxGroup
-              value={columnDisplay}
+              value={visibleColumns}
               onChange={setVisibleColumns}
-              options={columnsLabel}
+              options={options}
             />
-            <Divider />
-            <Flex justifyContent="flex-end">
-              <ButtonTransparent onClick={handleAll}>
-                Select All
-              </ButtonTransparent>
-              <ButtonTransparent onClick={handleNone}>
-                Select None
-              </ButtonTransparent>
-              <ButtonTransparent onClick={handleApply}>Apply</ButtonTransparent>
-            </Flex>
           </PopoverContent>
-        }
-      >
-        <IconButton
-          icon="ViewColumn"
-          label="Select columns to display"
-          mt="xxsmall"
-          mr="xxsmall"
-        />
-      </Popover>
-    </>
+          <DialogFooter>
+            <ButtonTransparent onClick={apply}>Apply</ButtonTransparent>
+            <ButtonTransparent onClick={cancel}>Cancel</ButtonTransparent>
+          </DialogFooter>
+        </>
+      }
+    >
+      <IconButton icon="ViewColumn" label="Select columns to display" />
+    </Popover>
   )
 }
-
-export const ColumnSelector = styled(ColumnSelectorLayout)`
-  align-items: center;
-`
