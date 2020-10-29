@@ -35,6 +35,7 @@ import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
+import { FauxCheckbox } from '../Inputs/Checkbox/FauxCheckbox'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
 
@@ -221,5 +222,23 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
 
   ${ValidationMessage} {
     margin-top: ${({ theme }) => theme.space.xsmall};
+  }
+
+  ${FauxCheckbox} {
+    ${({ theme, validationMessage }) =>
+      validationMessage && validationMessage.type === 'error'
+        ? `
+      border-color: ${theme.colors.criticalBorder};
+      &:hover {
+        border-color: ${theme.colors.critical};
+      }
+      &:focus,
+      :focus-within {
+        border-color: ${theme.colors.critical};
+        box-shadow: 0 0 0 2px ${theme.colors.criticalAccent};
+      }
+      }
+      `
+        : ''}
   }
 `
