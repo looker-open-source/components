@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldCheckboxGroup` now sets `border-color` of child checkboxes to "critical" when validationMessage.type is equal to 'error'
 - `Popover` flashing in the upper left corner of the screen on slow pages
 - `InputColor` no longer allows user to click swatch when `readOnly` is assigned
 - `Select` alignment of options when some have icons and others do not
