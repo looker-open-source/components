@@ -186,10 +186,6 @@ describe('ActionList', () => {
       expect(queryByText('Name')).not.toBeInTheDocument()
       expect(queryByText('Role')).not.toBeInTheDocument()
 
-      expect(getByText('Foo')).toBeInTheDocument()
-      expect(getByText('Bar')).toBeInTheDocument()
-      expect(getByText('FooBar')).toBeInTheDocument()
-
       expect(getByText('1')).toBeInTheDocument()
       expect(getByText('Richard Garfield')).toBeInTheDocument()
       expect(getByText('Game Designer')).toBeInTheDocument()
@@ -208,7 +204,7 @@ describe('ActionList', () => {
     })
 
     test('Renders action menu on button click and handles action click', () => {
-      const { getByText, queryByText } = renderWithTheme(
+      const { getAllByText, getByText, queryByText } = renderWithTheme(
         actionListWithClickableRows
       )
 
@@ -222,10 +218,10 @@ describe('ActionList', () => {
         })
       )
 
-      const listItemButton = getByText('My Actions Button')
+      const listItemButton = getAllByText('My Actions Button')
       expect(queryByText('View Profile')).not.toBeInTheDocument()
 
-      fireEvent.click(listItemButton)
+      fireEvent.click(listItemButton[0])
       const viewProfileAction = getByText('View Profile')
       expect(viewProfileAction).toBeInTheDocument()
 
