@@ -263,8 +263,8 @@ export const InputTextContent = styled.div<SpaceProps>`
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
-  ${(props) => {
-    return props.validationType === 'error'
+  ${(props) =>
+    props.validationType === 'error'
       ? `
       border-color: ${props.theme.colors.criticalBorder};
       &:hover {
@@ -276,8 +276,7 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
         box-shadow: 0 0 0 2px ${props.theme.colors.criticalAccent};
       }
       `
-      : ''
-  }}
+      : ''}
 `
 
 export const inputCSS = css`
