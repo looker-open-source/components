@@ -67,11 +67,18 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
   const handleApply = () => {
     onChange(columnDisplay)
   }
-  const handleCancel = () => {
-    const resetColumn = columns.map((column: any) => column && column.id)
+
+  const handleAll = () => {
+    const resetColumn = columns.map((column: any) => column.id)
+    setColumnDisplay(resetColumn)
+  }
+
+  const handleNone = () => {
+    const resetColumn = columns
+      .filter((column: any) => column.canHide === false)
+      .map((column) => column && column.id)
 
     setColumnDisplay(resetColumn)
-    onChange(resetColumn)
   }
 
   return (
@@ -86,10 +93,13 @@ const ColumnSelectorLayout: FC<ColumnSelectorProps> = ({
             />
             <Divider />
             <Flex justifyContent="flex-end">
-              <ButtonTransparent onClick={handleApply}>Apply</ButtonTransparent>
-              <ButtonTransparent onClick={handleCancel}>
-                Cancel
+              <ButtonTransparent onClick={handleAll}>
+                Select All
               </ButtonTransparent>
+              <ButtonTransparent onClick={handleNone}>
+                Select None
+              </ButtonTransparent>
+              <ButtonTransparent onClick={handleApply}>Apply</ButtonTransparent>
             </Flex>
           </PopoverContent>
         }
