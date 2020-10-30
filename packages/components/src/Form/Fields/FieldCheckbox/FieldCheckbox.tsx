@@ -49,7 +49,10 @@ const FieldCheckboxLayout = forwardRef(
           {...omitFieldProps(props)}
           aria-describedby={`${id}-describedby`}
           id={id}
-          validationType={validationMessage && validationMessage.type}
+          validationType={
+            (validationMessage && validationMessage.type) ||
+            props.validationType
+          }
           ref={ref}
         />
       </FieldInline>

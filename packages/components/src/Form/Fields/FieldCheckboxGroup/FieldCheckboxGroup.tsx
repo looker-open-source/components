@@ -49,11 +49,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
   const id = useID(propsID)
 
   return (
-    <Field
-      {...pickFieldProps(props)}
-      validationMessage={validationMessage}
-      id={id}
-    >
+    <Field {...pickFieldProps(props)} id={id}>
       <CheckboxGroup
         {...omitFieldProps(props)}
         aria-describedby={`${id}-describedby`}
@@ -62,6 +58,7 @@ const FieldCheckboxGroupLayout: FC<FieldCheckboxGroupProps> = ({
         inline={props.inline || inputsInline}
         name={name || id}
         options={options}
+        validationType={validationMessage && validationMessage.type}
         value={value}
       />
     </Field>

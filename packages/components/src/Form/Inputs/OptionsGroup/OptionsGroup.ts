@@ -26,7 +26,6 @@
 
 import { ReactNode } from 'react'
 import { FieldsetProps } from '../../Fieldset'
-import { ValidationMessageProps } from '../../ValidationMessage'
 
 export interface OptionsGroupOptionProps {
   label: string
@@ -46,7 +45,7 @@ export interface OptionsGroupProps<ValueType extends string | string[]>
   disabled?: boolean
   required?: boolean
   options: OptionsGroupOptionProps[]
-  validationMessage?: ValidationMessageProps
+  validationType?: 'error'
   defaultValue?: ValueType
   value?: ValueType
   onChange?: (value: ValueType) => void
