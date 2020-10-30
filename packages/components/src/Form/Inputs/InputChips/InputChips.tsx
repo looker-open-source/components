@@ -31,6 +31,7 @@ import React, {
   Ref,
   useRef,
   useState,
+  FormEvent,
 } from 'react'
 import styled from 'styled-components'
 
@@ -154,12 +155,15 @@ export const InputChipsInternal = forwardRef(
       ? controlledInputValue || ''
       : uncontrolledValue
 
-    const setInputValue = (val: string) => {
+    const setInputValue = (
+      val: string,
+      event?: FormEvent<HTMLInputElement>
+    ) => {
       if (!isControlled) {
         setUncontrolledValue(val)
       }
       if (val !== inputValue) {
-        onInputChange && onInputChange(val)
+        onInputChange && onInputChange(val, event)
       }
     }
 
@@ -208,7 +212,10 @@ export const InputChipsInternal = forwardRef(
       pastedValue.current = e.clipboardData.getData('Text')
     }
 
-    function handleInputChange(value: string) {
+    function handleInputChange(
+      value: string,
+      event?: FormEvent<HTMLInputElement>
+    ) {
       // If the last character is a comma, update the values
       // Or, if the user pastes content, we assume that the final value is complete
       // even if there's no comma at the end
@@ -218,7 +225,7 @@ export const InputChipsInternal = forwardRef(
         updateValues(pastedValue.current || value)
         pastedValue.current = null
       } else {
-        setInputValue(value)
+        setInputValue(value, event)
       }
     }
 

@@ -45,7 +45,7 @@ import {
   ComboboxMultiCallback,
   ComboboxOptionObject,
 } from './types'
-import { useReducerMachine, ComboboxActionType } from './utils/state'
+import { reducer, useReducerMachine, ComboboxActionType } from './utils/state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { useComboboxRefs } from './utils/useComboboxRefs'
@@ -124,10 +124,14 @@ export const ComboboxInternal = forwardRef(
       ? { inputValue: getComboboxText(initialValue), option: initialValue }
       : {}
 
-    const [state, data, transition] = useReducerMachine({
-      ...defaultData,
-      ...initialData,
-    })
+    const [state, data, transition] = useReducerMachine(
+      reducer,
+      {
+        ...defaultData,
+        ...initialData,
+      },
+      {}
+    )
     const { lastActionType, option } = data
 
     if (value !== undefined && (!option || !isMatch(option, value))) {

@@ -28,7 +28,7 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import xorWith from 'lodash/xorWith'
-import { Reducer, useReducer, useState } from 'react'
+import { Reducer, useReducer, useRef } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
 import { getComboboxText } from './getComboboxText'
 import { parseOption } from './parseOption'
@@ -216,11 +216,14 @@ const findNavigationValue = (
   }
 }
 
-const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
+export const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
   data,
   action
 ) => {
-  const nextState = { ...data, lastActionType: action.type }
+  const nextState = { ...data }
+  if (action.type.indexOf('_SILENT') === -1) {
+    nextState.lastActionType = action.type
+  }
   switch (action.type) {
     case ComboboxActionType.CHANGE:
     case ComboboxActionType.CHANGE_SILENT:
@@ -305,11 +308,14 @@ export function getOptionsFromValues(
   }, [])
 }
 
-const reducerMulti: Reducer<
+export const reducerMulti: Reducer<
   ComboboxMultiData,
   ComboboxMultiActionWithPayload
 > = (data, action) => {
-  const nextState = { ...data, lastActionType: action.type }
+  const nextState = { ...data }
+  if (action.type.indexOf('_SILENT') === -1) {
+    nextState.lastActionType = action.type
+  }
   switch (action.type) {
     case ComboboxActionType.CHANGE:
     case ComboboxActionType.CHANGE_SILENT:
@@ -386,53 +392,31 @@ const reducerMulti: Reducer<
 
 // This manages transitions between states with a built in reducer to manage
 // the data that goes with those transitions.
-export function useReducerMachine(
-  initialData: ComboboxData
-): [ComboboxState, ComboboxData, ComboboxTransition] {
-  const [state, setState] = useState(stateChart.initial)
-  const [data, dispatch] = useReducer(reducer, initialData)
+export function useReducerMachine<
+  TData = ComboboxData,
+  TPayload = ComboboxActionPayload
+>(
+  reducerFn: Reducer<TData, ComboboxAction & TPayload>,
+  initialData: TData,
+  defaultPayload: TPayload
+): [ComboboxState, TData, ComboboxTransition<TPayload>] {
+  const stateRef = useRef(stateChart.initial)
+  const [data, dispatch] = useReducer(reducerFn, initialData)
 
   function transition(
     action: ComboboxActionType,
-    payload: ComboboxActionPayload = {}
+    payload: TPayload = defaultPayload
   ) {
-    const currentState = stateChart.states[state]
+    const currentState = stateChart.states[stateRef.current]
     const nextState = currentState.on[action]
     if (!nextState) {
       // eslint-disable-next-line no-console
-      console.warn(`Unknown action "${action}" for state "${state}"`)
+      console.warn(`Unknown action "${action}" for state "${stateRef.current}"`)
       return
     }
-    dispatch({ state, type: action, ...payload })
-    setState(nextState)
+    stateRef.current = nextState
+    dispatch({ state: stateRef.current, type: action, ...payload })
   }
 
-  return [state, data, transition]
-}
-export function useReducerMultiMachine(
-  initialData: ComboboxMultiData
-): [
-  ComboboxState,
-  ComboboxMultiData,
-  ComboboxTransition<ComboboxMultiActionPayload>
-] {
-  const [state, setState] = useState(stateChart.initial)
-  const [data, dispatch] = useReducer(reducerMulti, initialData)
-
-  function transition(
-    action: ComboboxActionType,
-    payload: ComboboxMultiActionPayload = { inputValues: [], options: [] }
-  ) {
-    const currentState = stateChart.states[state]
-    const nextState = currentState.on[action]
-    if (!nextState) {
-      // eslint-disable-next-line no-console
-      console.warn(`Unknown action "${action}" for state "${state}"`)
-      return
-    }
-    dispatch({ state, type: action, ...payload })
-    setState(nextState)
-  }
-
-  return [state, data, transition]
+  return [stateRef.current, data, transition]
 }

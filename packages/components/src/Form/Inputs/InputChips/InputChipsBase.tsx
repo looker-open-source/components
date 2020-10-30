@@ -52,9 +52,10 @@ export interface InputChipsInputControlProps {
    */
   inputValue: string
   /**
-   * callback when the input text changes (use with inputValue to control the input text)
+   * Called when the input text changes (use with inputValue to control the input text).
+   * Passes the event if triggered by typing but not when triggered by value tokenization or clearing the field.
    */
-  onInputChange: (value: string) => void
+  onInputChange: (value: string, event?: FormEvent<HTMLInputElement>) => void
   isVisibleOptions?: boolean
   showCaret?: boolean
 }
@@ -337,7 +338,7 @@ export const InputChipsBaseInternal = forwardRef(
     })
 
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      onInputChange(e.currentTarget.value)
+      onInputChange(e.currentTarget.value, e)
     }
 
     const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
