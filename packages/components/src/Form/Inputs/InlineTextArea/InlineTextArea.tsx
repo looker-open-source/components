@@ -105,10 +105,6 @@ const Input = styled.textarea<InlineTextAreaProps>`
   text-transform: inherit;
   top: 0;
   width: 100%;
-
-  /* :disabled {
-    color: ${(props) => props.theme.colors.text1};
-  } */
 `
 
 interface VisibleTextProps {
@@ -118,10 +114,6 @@ interface VisibleTextProps {
 const VisibleText = styled.div<VisibleTextProps>`
   color: ${({ displayValue, theme }) =>
     displayValue ? 'inherit' : theme.colors.text1};
-
-  :disabled {
-    color: ${(props) => props.theme.colors.text1};
-  }
 `
 
 export const InlineTextArea = styled(InlineTextAreaLayout)`
@@ -131,7 +123,8 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   border-bottom: 1px dashed;
   border-bottom-color: ${({ theme, underlineOnlyOnHover, readOnly }) =>
     underlineOnlyOnHover || readOnly ? 'transparent' : theme.colors.ui3};
-  color: inherit;
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.colors.text1 : 'inherit'};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;

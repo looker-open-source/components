@@ -27,7 +27,7 @@
 import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import {
   omitStyledProps,
   typography,
@@ -84,10 +84,6 @@ const InlineInputTextLayout = forwardRef(
 )
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
-
-// export const inputTextDisabled = css`
-//   color: ${(props) => props.theme.colors.text5};
-// `
 
 const StyledInput = styled.input`
   ${innerInputStyle}
