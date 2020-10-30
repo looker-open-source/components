@@ -29,7 +29,7 @@ import {
   renderWithTheme,
 } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 
 import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
@@ -166,15 +166,18 @@ describe('Select / SelectMulti', () => {
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'true')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    expect(input).toHaveAttribute('aria-activedescendant', items[0].id)
 
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'false')
     expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    expect(input).toHaveAttribute('aria-activedescendant', items[1].id)
 
     // Back to the top
     fireArrowDown()
     expect(items[0]).toHaveAttribute('aria-selected', 'true')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    expect(input).toHaveAttribute('aria-activedescendant', items[0].id)
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -670,6 +673,60 @@ describe('Select / SelectMulti', () => {
       fireEvent.click(document)
     })
   })
+
+  test.each([
+    [
+      'Select',
+      (value: string, onChange: (value: string) => void) => (
+        <Select
+          options={options}
+          placeholder="Search"
+          value={value}
+          onChange={onChange}
+          key="select"
+        />
+      ),
+    ],
+    [
+      'SelectMulti',
+      (value: string, onChange: (value: string) => void) => (
+        <SelectMulti
+          options={options}
+          placeholder="Search"
+          values={[value]}
+          onChange={(values?: string[]) =>
+            onChange(values && values.length ? values[0] : '')
+          }
+          key="select-multi"
+        />
+      ),
+    ],
+  ])('with controlled delayed update (%s)', (_, getJSX) => {
+    function Component() {
+      const [value, setValue] = useState('BAR')
+      const [tempValue, setTempValue] = useState(value)
+      useEffect(() => {
+        const t = setTimeout(() => {
+          setValue(tempValue)
+        }, 0)
+        return () => {
+          clearTimeout(t)
+        }
+      }, [tempValue])
+
+      return getJSX(value, setTempValue)
+    }
+
+    renderWithTheme(<Component />)
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.mouseDown(input)
+    fireEvent.click(screen.getByText('FOO'))
+
+    expect(document.activeElement).toBe(input)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
 })
 
 describe('Select', () => {
@@ -977,5 +1034,7 @@ describe('Select', () => {
     // Must delete filter before navigating for bug to show up
     fireEvent.change(input, { target: { value: '' } })
     expect(screen.queryByText('No options')).toBe(null)
+
+    fireEvent.click(document)
   })
 })

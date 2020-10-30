@@ -36,7 +36,7 @@ import {
   ComboboxList,
   ComboboxInput,
 } from '..'
-import { Heading, Space, SpaceVertical } from '../../../..'
+import { Button, Heading, Paragraph, Space, SpaceVertical } from '../../../..'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
@@ -147,6 +147,37 @@ export const ComboboxDemo = () => {
 }
 
 ComboboxDemo.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ControlledInputValue = () => {
+  const [inputValue, setInputValue] = useState('starting value')
+  const [values, setValues] = useState([{ value: 'Apples' }])
+  const handleClick = () => setInputValue('bananas')
+  return (
+    <SpaceVertical width={300} align="start">
+      <Paragraph>Current inputValue: {inputValue}</Paragraph>
+      <Button onClick={handleClick}>Change Input Value</Button>
+      <ComboboxMulti values={values} onChange={setValues}>
+        <ComboboxMultiInput
+          autoComplete={false}
+          inputValue={inputValue}
+          onInputChange={setInputValue}
+          freeInput
+        />
+        <ComboboxMultiList persistSelection>
+          <ComboboxMultiOption value="Apples" />
+          <ComboboxMultiOption value="Oranges" />
+          <ComboboxMultiOption value="Grapes" />
+          <ComboboxMultiOption value="Bananas" />
+          <ComboboxMultiOption value="Pineapples" />
+        </ComboboxMultiList>
+      </ComboboxMulti>
+    </SpaceVertical>
+  )
+}
+
+ControlledInputValue.parameters = {
   storyshots: { disable: true },
 }
 
