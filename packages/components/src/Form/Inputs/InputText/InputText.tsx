@@ -44,7 +44,6 @@ import { Span } from '../../../Text'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
 import { inputHeight } from '../height'
-import { ValidationMessageProps } from '../../ValidationMessage'
 
 export interface InputTextBaseProps
   extends Omit<SimpleLayoutProps, 'size'>,
@@ -263,13 +262,9 @@ export const InputTextContent = styled.div<SpaceProps>`
   pointer-events: none;
 `
 
-export const inputTextValidation = css<{
-  validationType?: 'error'
-  validationMessage?: ValidationMessageProps
-}>`
+export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
-    props.validationType === 'error' ||
-    (props.validationMessage && props.validationMessage.type === 'error')
+    props.validationType === 'error'
       ? `
       border-color: ${props.theme.colors.criticalBorder};
       &:hover {
