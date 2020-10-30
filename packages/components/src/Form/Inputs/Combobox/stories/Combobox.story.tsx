@@ -36,7 +36,7 @@ import {
   ComboboxList,
   ComboboxInput,
 } from '..'
-import { Button, Heading, Space, SpaceVertical } from '../../../..'
+import { Button, Heading, Paragraph, Space, SpaceVertical } from '../../../..'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
@@ -156,14 +156,14 @@ export const ControlledInputValue = () => {
   const handleClick = () => setInputValue('bananas')
   return (
     <SpaceVertical width={300} align="start">
+      <Paragraph>Current inputValue: {inputValue}</Paragraph>
       <Button onClick={handleClick}>Change Input Value</Button>
       <ComboboxMulti values={values} onChange={setValues}>
         <ComboboxMultiInput
           autoComplete={false}
-          onClear={() => alert('CLEAR')}
-          placeholder="Custom indicator"
           inputValue={inputValue}
           onInputChange={setInputValue}
+          freeInput
         />
         <ComboboxMultiList persistSelection>
           <ComboboxMultiOption value="Apples" />

@@ -33,8 +33,8 @@ import React, {
   useContext,
   Ref,
   useCallback,
+  useEffect,
   useRef,
-  useLayoutEffect,
   FormEvent,
 } from 'react'
 import styled from 'styled-components'
@@ -175,11 +175,27 @@ export const ComboboxMultiInputInternal = forwardRef(
       [transition]
     )
 
+    // Use latestInputValueRef to track whether the contextInputValue change
+    // originated in this component. If it didn't (e.g. an option was selected
+    // or the list was closed) call onInputChange b/c it has not been called yet
+    const latestInputValueRef = useRef<string>()
+    useEffect(() => {
+      if (
+        contextInputValue !== undefined &&
+        contextInputValue !== latestInputValueRef.current
+      ) {
+        onInputChange?.(contextInputValue)
+        latestInputValueRef.current = contextInputValue
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contextInputValue])
+
     // If they are controlling the input value we still need to do transitions
-    // and update the internal inputValue state
-    useLayoutEffect(() => {
+    // and update the context inputValue state
+    useEffect(() => {
       if (controlledInputValue !== undefined) {
         handleInputValueChange(controlledInputValue)
+        latestInputValueRef.current = controlledInputValue
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [controlledInputValue])
@@ -216,7 +232,8 @@ export const ComboboxMultiInputInternal = forwardRef(
     const wrappedOnInputChange = useCallback(
       (value: string, event?: FormEvent<HTMLInputElement>) => {
         handleInputChange(value, event)
-        onInputChange && onInputChange(value, event)
+        onInputChange?.(value, event)
+        latestInputValueRef.current = value
       },
       [handleInputChange, onInputChange]
     )
