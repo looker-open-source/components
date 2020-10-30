@@ -35,8 +35,6 @@ import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
-import { FauxCheckbox } from '../Inputs/Checkbox/FauxCheckbox'
-import { inputTextValidation } from '../Inputs/InputText'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
 
@@ -223,9 +221,5 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
 
   ${ValidationMessage} {
     margin-top: ${({ theme }) => theme.space.xsmall};
-  }
-
-  ${FauxCheckbox} {
-    ${inputTextValidation}
   }
 `
