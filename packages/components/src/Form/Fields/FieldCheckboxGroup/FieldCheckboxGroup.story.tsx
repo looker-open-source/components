@@ -26,7 +26,10 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { FieldCheckboxGroup, FieldCheckboxGroupProps } from '@looker/components'
+import {
+  FieldCheckboxGroup,
+  FieldCheckboxGroupProps,
+} from './FieldCheckboxGroup'
 
 export default {
   title: 'Forms/CheckboxGroup',
