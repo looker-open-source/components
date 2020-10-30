@@ -23,35 +23,36 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider, FieldCheckboxGroup } from '@looker/components'
+import {
+  ComponentsProvider,
+  FieldSelect,
+  FieldChips,
+  SpaceVertical,
+} from '@looker/components'
 import 'core-js/stable'
 
 const App = () => {
-  const options = [
-    {
-      label: 'Cheddar',
-      value: 'cheddar',
-    },
-    {
-      label: 'Gouda',
-      value: 'gouda',
-    },
-  ]
-
+  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   return (
     <ComponentsProvider loadGoogleFonts>
-      <FieldCheckboxGroup
-        description="Validation message and required"
-        label="Cheeses default layout"
-        name="group1"
-        options={options}
-        validationMessage={{
-          message: 'Select at least 1 cheese',
-          type: 'error',
-        }}
-      />
+      <SpaceVertical width={500} p="large">
+        <FieldSelect
+          label="Select value via click"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldChips
+          label="Select current values"
+          description="Then focus out of the field. Confirm values are deselected."
+          values={values}
+          onChange={setValues}
+        />
+      </SpaceVertical>
     </ComponentsProvider>
   )
 }
