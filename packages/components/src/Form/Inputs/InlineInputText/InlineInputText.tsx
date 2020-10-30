@@ -27,7 +27,7 @@
 import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   omitStyledProps,
   typography,
@@ -48,11 +48,11 @@ const InlineInputTextLayout = forwardRef(
   (
     {
       className,
-      onChange,
-      value: valueProp,
       defaultValue,
+      onChange,
       placeholder,
       type = 'text',
+      value: valueProp,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -85,8 +85,14 @@ const InlineInputTextLayout = forwardRef(
 
 InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
+// export const inputTextDisabled = css`
+//   color: ${(props) => props.theme.colors.text5};
+// `
+
 const StyledInput = styled.input`
   ${innerInputStyle}
+  cursor: ${({ readOnly, disabled }) =>
+    readOnly || disabled ? 'not-allowed' : undefined};
   font: inherit;
   left: 0;
   padding: 0;
@@ -100,6 +106,10 @@ const StyledInput = styled.input`
   }
   &[type='number'] {
     appearance: textfield;
+  }
+
+  :disabled {
+    color: ${(props) => props.theme.colors.text1};
   }
 `
 
@@ -125,8 +135,10 @@ export const InlineInputText = styled(InlineInputTextBase)`
   ${typography}
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
-    underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
+  border-bottom-color: ${({ theme, underlineOnlyOnHover, simple, readOnly }) =>
+    underlineOnlyOnHover || simple || readOnly
+      ? 'transparent'
+      : theme.colors.ui3};
   color: inherit;
   flex-direction: column;
   text-align: inherit;
@@ -140,5 +152,14 @@ export const InlineInputText = styled(InlineInputTextBase)`
 
   :focus {
     border-bottom-style: solid;
+  }
+
+  :disabled,
+  :hover {
+    border-bottom-color: ${({ theme }) => theme.colors.text1};
+  }
+
+  :hover {
+    border-bottom-color: ${({ readOnly }) => readOnly && 'transparent'};
   }
 `

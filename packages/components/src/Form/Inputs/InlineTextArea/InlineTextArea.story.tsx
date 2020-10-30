@@ -25,19 +25,46 @@
  */
 
 import React from 'react'
-import { InlineTextArea } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import { InlineTextArea, InlineTextAreaProps } from './InlineTextArea'
 
 export default {
-  title: 'Inline/TextArea',
+  title: 'InlineTextArea',
 }
 
-const exampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`
+const Template: Story<InlineTextAreaProps> = (args) => (
+  <InlineTextArea {...args} />
+)
 
-export const Basic = () => <InlineTextArea />
-export const Value = () => <InlineTextArea value={exampleText} />
-export const Placeholder = () => (
-  <InlineTextArea placeholder="This is the placeholder" />
-)
-export const Simple = () => (
-  <InlineTextArea value="Some text here" underlineOnlyOnHover />
-)
+export const Basic = Template.bind({})
+
+export const Value = Template.bind({})
+Value.args = {
+  value: 'Some text here',
+}
+
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Placeholder',
+}
+
+export const UnderlineOnlyOnHover = Template.bind({})
+UnderlineOnlyOnHover.args = {
+  underlineOnlyOnHover: true,
+  value: 'Some text here',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  value: "You can't change me.",
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  value: "You can't change me.",
+}
+ReadOnly.parameters = {
+  storyshots: { disable: true },
+}
