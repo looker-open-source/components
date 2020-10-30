@@ -48,11 +48,11 @@ const InlineInputTextLayout = forwardRef(
   (
     {
       className,
-      onChange,
-      value: valueProp,
       defaultValue,
+      onChange,
       placeholder,
       type = 'text',
+      value: valueProp,
       ...props
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
@@ -87,6 +87,8 @@ InlineInputTextLayout.displayName = 'InlineInputTextLayout'
 
 const StyledInput = styled.input`
   ${innerInputStyle}
+  cursor: ${({ readOnly, disabled }) =>
+    readOnly || disabled ? 'not-allowed' : undefined};
   font: inherit;
   left: 0;
   padding: 0;
@@ -100,6 +102,10 @@ const StyledInput = styled.input`
   }
   &[type='number'] {
     appearance: textfield;
+  }
+
+  :disabled {
+    color: ${(props) => props.theme.colors.text1};
   }
 `
 
@@ -125,8 +131,10 @@ export const InlineInputText = styled(InlineInputTextBase)`
   ${typography}
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${({ theme, underlineOnlyOnHover, simple }) =>
-    underlineOnlyOnHover || simple ? 'transparent' : theme.colors.ui3};
+  border-bottom-color: ${({ theme, underlineOnlyOnHover, simple, readOnly }) =>
+    underlineOnlyOnHover || simple || readOnly
+      ? 'transparent'
+      : theme.colors.ui3};
   color: inherit;
   flex-direction: column;
   text-align: inherit;
@@ -140,5 +148,14 @@ export const InlineInputText = styled(InlineInputTextBase)`
 
   :focus {
     border-bottom-style: solid;
+  }
+
+  :disabled,
+  :hover {
+    border-bottom-color: ${({ theme }) => theme.colors.text1};
+  }
+
+  :hover {
+    border-bottom-color: ${({ readOnly }) => readOnly && 'transparent'};
   }
 `
