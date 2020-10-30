@@ -25,7 +25,8 @@
  */
 
 import React from 'react'
-import { FieldCheckboxGroup } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import { FieldCheckboxGroup, FieldCheckboxGroupProps } from '@looker/components'
 
 export default {
   title: 'Forms/CheckboxGroup',
@@ -87,8 +88,9 @@ const options = [
 
 const defaultValueCheckbox = ['swiss', 'cheddar']
 
-export const Basic = () => (
+const Template: Story<FieldCheckboxGroupProps> = (args) => (
   <FieldCheckboxGroup
+    {...args}
     defaultValue={defaultValueCheckbox}
     label="Cheeses"
     description="Pick all your cheeses"
@@ -96,63 +98,41 @@ export const Basic = () => (
   />
 )
 
-export const Disabled = () => (
-  <FieldCheckboxGroup
-    defaultValue={defaultValueCheckbox}
-    label="Cheeses"
-    description="Pick all your cheeses"
-    options={options}
-    disabled
-  />
-)
+export const Basic = Template.bind({})
+Basic.args = {}
 
-export const Required = () => (
-  <FieldCheckboxGroup
-    defaultValue={defaultValueCheckbox}
-    label="Cheeses"
-    inline
-    description="Pick all your cheeses"
-    options={options}
-  />
-)
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
 
-export const Inline = () => (
-  <FieldCheckboxGroup
-    defaultValue={defaultValueCheckbox}
-    label="Cheeses"
-    inline
-    description="Pick all your cheeses"
-    options={options}
-  />
-)
+export const Required = Template.bind({})
+Required.args = {
+  required: true,
+}
 
-export const Error = () => (
-  <FieldCheckboxGroup
-    defaultValue={defaultValueCheckbox}
-    label="Cheeses"
-    validationMessage={{
-      message: 'Select at least 1 cheese',
-      type: 'error',
-    }}
-    description="Pick all your cheeses"
-    options={options}
-  />
-)
+export const Inline = Template.bind({})
+Inline.args = {
+  inline: true,
+}
 
-export const ErrorInline = () => (
-  <FieldCheckboxGroup
-    defaultValue={defaultValueCheckbox}
-    label="Cheeses"
-    inline
-    required
-    validationMessage={{
-      message: 'Select at least 1 cheese',
-      type: 'error',
-    }}
-    description="Pick all your cheeses"
-    options={options}
-  />
-)
+export const Error = Template.bind({})
+Error.args = {
+  validationMessage: {
+    message: 'Select at least 1 cheese',
+    type: 'error',
+  },
+}
+
+export const ErrorInline = Template.bind({})
+ErrorInline.args = {
+  inline: true,
+  required: true,
+  validationMessage: {
+    message: 'Select at least 1 cheese',
+    type: 'error',
+  },
+}
 
 // export const Controlled = () => 'TODO'
 
