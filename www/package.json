@@ -15,7 +15,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.80",
     "gatsby-plugin-manifest": "^2.4.35",
-    "gatsby-plugin-mdx": "^1.2.47",
+    "gatsby-plugin-mdx": "^1.2.52",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
