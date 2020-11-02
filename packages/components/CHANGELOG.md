@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Popover`, `Menu`, and `Select` no longer cancel the first click outside by default (use `cancelClickOutside` to override this)
 - `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
 
 ### Fixed
@@ -31,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `groupedPopoversRef` and `groupedMenusRef` (`Popover` and `Menu` no longer cancel the first click outside)
 - `Dialog` no longer supports `maxWidth` (it's now always `100%` - use `width`)
 - `Drawer` no longer supports `height` (use `minHeight`)
 - `Dialog` no longer supports `surfaceStyles` (use built-in props instead)

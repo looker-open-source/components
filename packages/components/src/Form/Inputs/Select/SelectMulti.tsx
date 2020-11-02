@@ -142,7 +142,6 @@ const SelectMultiComponent = forwardRef(
             persistSelection
             closeOnSelect={closeOnSelect}
             windowedOptions={windowedOptions}
-            cancelClickOutside={!isFilterable && !freeInput}
             indicator={indicator}
             aria-busy={isLoading}
             {...ariaProps}

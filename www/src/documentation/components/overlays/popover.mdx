@@ -78,50 +78,6 @@ Placement can be adjusted with the `placement` prop. Valid positions are `top`, 
 }
 ```
 
-## Grouped Popovers
-
-By default Popover cancels event bubbling when a click event triggers the closure of the Popover. \* This was deemed a best practice as it prevents inadveted destructive actions and mirrors behavior seen in many commonly used applications (e.g. Chrome).
-
-However, where several related Popover components are grouped together, cancelling event bubbling for the "dismissal click" can make for an awkward UX. This functionality is used for items grouped to create a larger navigation component or associated controls such as a collection of filters.
-
-To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propagation on the clicks outside of the `Portal` associated with the `Popover`. The first click outside of the `Portal` will still close the `Popover` but click event propagation or otherwise suppressed and instead will be allowed to produce its usual behavior.
-
-```jsx
-;() => {
-  const groupRef = React.useRef()
-  const content = (
-    <PopoverContent p="large" width="360px">
-      Example Popover text.
-    </PopoverContent>
-  )
-  return (
-    <Space>
-      <Space
-        around
-        ref={groupRef}
-        p="large"
-        style={{ border: '3px solid green' }}
-      >
-        <Popover content={content} groupedPopoversRef={groupRef}>
-          <Button>Instant Click</Button>
-        </Popover>
-        <Popover content={content} groupedPopoversRef={groupRef}>
-          <Button mx="large">Instant Click</Button>
-        </Popover>
-        <Popover content={content}>
-          <ButtonOutline>Defer Click</ButtonOutline>
-        </Popover>
-      </Space>
-      <Popover content={content}>
-        <ButtonTransparent mx="xlarge" my="large">
-          Outside Group
-        </ButtonTransparent>
-      </Popover>
-    </Space>
-  )
-}
-```
-
 ## Disclosing the Trigger on Hover
 
 ```jsx

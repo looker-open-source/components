@@ -42,17 +42,11 @@ export const usePopoverToggle = (
     isOpen: controlledIsOpen = false,
     setOpen: controlledSetOpen,
     canClose,
-    groupedPopoversRef,
     triggerToggle,
-    cancelClickOutside = true,
+    cancelClickOutside = false,
   }: Pick<
     UsePopoverProps,
-    | 'isOpen'
-    | 'setOpen'
-    | 'canClose'
-    | 'groupedPopoversRef'
-    | 'triggerToggle'
-    | 'cancelClickOutside'
+    'isOpen' | 'setOpen' | 'canClose' | 'triggerToggle' | 'cancelClickOutside'
   >,
   portalElement: HTMLElement | null,
   triggerElement: HTMLElement | null
@@ -109,13 +103,7 @@ export const usePopoverToggle = (
         return
       }
 
-      if (
-        !cancelClickOutside ||
-        // Group-member clicked, allow event to propagate
-        (groupedPopoversRef &&
-          groupedPopoversRef.current &&
-          groupedPopoversRef.current.contains(event.target as Node))
-      ) {
+      if (!cancelClickOutside) {
         return
       }
 
@@ -155,7 +143,6 @@ export const usePopoverToggle = (
   }, [
     cancelClickOutside,
     canClose,
-    groupedPopoversRef,
     isOpen,
     setOpen,
     triggerElement,
