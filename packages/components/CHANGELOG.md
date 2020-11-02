@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `Popover` and `Menu` no longer cancel the first click outside by default (use `cancelClickOutside` to override this)
+- `Popover`, `Menu`, and `Select` no longer cancel the first click outside by default (use `cancelClickOutside` to override this)
 - `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
 
 ### Fixed
