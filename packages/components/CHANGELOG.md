@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Select`, `SelectMulti`, `InputTimeSelect`, and `InputSearch` now support `autoFocus` as well as `data-autofocus` (for use in `Dialog` and `Popover`)
 - `Dialog` & `Drawer` now support semantic sizes (`xxsmall - xlarge`)
 - `Dialog` now supports `placement` - `center` (default), `top` & `cover`
 - `Drawer` now supports `placement` - `left` & `right` (default)
