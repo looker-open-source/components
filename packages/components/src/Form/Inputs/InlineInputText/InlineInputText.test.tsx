@@ -29,21 +29,27 @@ import { screen } from '@testing-library/react'
 import React from 'react'
 import { InlineInputText, InlineInputTextBase } from './InlineInputText'
 
-test('InlineInputText renders an input with a placeholder', () => {
-  assertSnapshot(<InlineInputText placeholder="this is the placeholder" />)
-})
+describe('InlineInputText', () => {
+  test('renders and displays placeholder', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <InlineInputText placeholder="this is the placeholder" />
+    )
+    const placeholder = getByPlaceholderText('this is the placeholder')
+    expect(placeholder).toBeInTheDocument()
+  })
 
-test('InlineInputText renders an input with no value', () => {
-  assertSnapshot(<InlineInputText />)
-})
+  test('renders and displays value', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InlineInputText value="this is the value" />
+    )
+    const value = getByDisplayValue('this is the value')
+    expect(value).toBeInTheDocument()
+  })
 
-test('InlineInputText renders an input with specific predefined value', () => {
-  assertSnapshot(<InlineInputText value="type here..." />)
-})
-
-test('InlineInputTextBase renders a subset of styles', () => {
-  renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
-  expect(
-    screen.getByPlaceholderText('type here...').parentElement
-  ).not.toHaveStyleRule('border-bottom: 1px dashed')
+  test('applies style when prop disabled is passed', () => {
+    renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
+    expect(
+      screen.getByPlaceholderText('type here...').parentElement
+    ).toHaveStyleRule('border-bottom-color: #939BA5')
+  })
 })

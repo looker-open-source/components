@@ -27,8 +27,9 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ### Fixed
 
+- InlineInputText now supports disabled and readOnly props
+- InlineTextArea now supports disabled and readOnly props
 - `MenuItems` within the same `MenuList` align consistently when icons are used
-
 ## [0.9.19]
 
 ### Fixed

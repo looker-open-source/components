@@ -104,15 +104,10 @@ const SelectMultiComponent = forwardRef(
     function handleChange(options: SelectOptionObject[] = []) {
       const newValues = options && options.map((option) => option.value)
       onChange && onChange(newValues)
-      onFilter && onFilter('')
     }
 
     function handleInputChange(value: string) {
-      onFilter && onFilter(value)
-    }
-
-    function handleClose() {
-      onFilter && onFilter('')
+      onFilter?.(value)
     }
 
     const ariaProps = pickAriaAndValidationProps(props)
@@ -125,7 +120,6 @@ const SelectMultiComponent = forwardRef(
         values={optionValues}
         defaultValues={defaultOptionValues}
         onChange={handleChange}
-        onClose={handleClose}
       >
         <ComboboxMultiInput
           {...ariaProps}

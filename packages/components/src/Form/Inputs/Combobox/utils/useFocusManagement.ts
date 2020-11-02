@@ -40,7 +40,8 @@ export function useFocusManagement(lastActionType?: ComboboxActionType) {
     if (
       lastActionType === ComboboxActionType.NAVIGATE ||
       lastActionType === ComboboxActionType.ESCAPE ||
-      lastActionType === ComboboxActionType.SELECT_WITH_CLICK
+      lastActionType === ComboboxActionType.SELECT_WITH_CLICK ||
+      lastActionType === ComboboxActionType.INTERACT
     ) {
       if (inputElement) {
         inputElement.focus()

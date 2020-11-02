@@ -26,7 +26,13 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import chunk from 'lodash/chunk'
-import React, { FormEvent, MouseEvent, useMemo, useState } from 'react'
+import React, {
+  FormEvent,
+  MouseEvent,
+  useMemo,
+  useState,
+  useEffect,
+} from 'react'
 import { Card, CardContent } from '../../../Card'
 import { Button } from '../../../Button'
 import { Dialog, DialogContent } from '../../../Dialog'
@@ -34,7 +40,7 @@ import { Divider } from '../../../Divider'
 import { Icon } from '../../../Icon'
 import { Flex, Space, SpaceVertical } from '../../../Layout'
 import { PopoverContent, usePopover } from '../../../Popover'
-import { Heading, Text } from '../../../Text'
+import { Heading, Paragraph, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
 import { ComboboxOptionObject } from '../../Inputs/Combobox'
@@ -590,6 +596,38 @@ export const CreateOption = () => {
 }
 
 CreateOption.parameters = {
+  storyshots: { disable: true },
+}
+
+export const DelayUpdate = () => {
+  const [value, setValue] = useState('1')
+  const [tempValue, setTempValue] = useState(value)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setValue(tempValue)
+    }, 0)
+    return () => {
+      clearTimeout(t)
+    }
+  }, [tempValue])
+  return (
+    <SpaceVertical align="start" width={450}>
+      <FieldSelect
+        label="Controlled with Delayed Update"
+        description="Select should not lose focus when picking from the list"
+        options={options}
+        value={value}
+        onChange={setTempValue}
+      />
+      <Button onClick={() => setTempValue('3')}>Oranges</Button>
+      <Paragraph>
+        Select should not gain focus after clicking this button
+      </Paragraph>
+    </SpaceVertical>
+  )
+}
+
+DelayUpdate.parameters = {
   storyshots: { disable: true },
 }
 
