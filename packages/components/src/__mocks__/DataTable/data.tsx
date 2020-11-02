@@ -24,11 +24,18 @@
 
  */
 
+import React from 'react'
+import { Link } from '../../Link'
+
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const row = {
   disabled: false,
   error: undefined,
-  name: 'Gouda',
+  name: (
+    <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
+      Gouda
+    </a>
+  ),
   status: 'Available',
   inventory: 569,
   color: 'yellow',
@@ -49,7 +56,15 @@ export const data = [
       link: 'https://en.wikipedia.org/wiki/American_cheese',
       message: 'Check Availability',
     },
-    name: 'American',
+    name: (
+      <Link
+        href="https://components.looker.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        American
+      </Link>
+    ),
     inventory: 0,
     origin: 'United States',
     type: 'semi-soft, processed',

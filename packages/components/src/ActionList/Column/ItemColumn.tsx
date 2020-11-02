@@ -29,6 +29,7 @@ import styled from 'styled-components'
 import { Space, SpaceVertical } from '../../Layout'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
+import { Link } from '../../Link'
 import { ColumnComponentProps } from './column'
 import { columnSize } from './columnSize'
 
@@ -76,4 +77,14 @@ const ActionListItemColumnLayout: FC<ColumnComponentProps> = ({
 
 export const ActionListItemColumn = styled(ActionListItemColumnLayout)`
   ${columnSize}
+
+  a,
+  ${Link} {
+    color: inherit;
+    :hover,
+    :focus {
+      color: ${({ theme }) => theme.colors.link};
+      text-decoration: underline;
+    }
+  }
 `
