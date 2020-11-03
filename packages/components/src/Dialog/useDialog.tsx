@@ -154,13 +154,7 @@ export const useDialog = ({
       ? controlledSetOpen
       : setUncontrolledIsOpen
 
-  const {
-    callbackRef: focusRef,
-    disable: disableFocusTrap,
-    enable: enableFocusTrap,
-    isEnabled: focusTrapEnabled,
-    trapRef: focusTrapRef,
-  } = useFocusTrap(isOpen)
+  const [, focusRef] = useFocusTrap(isOpen)
   const [, portalRef] = useScrollLock(focusRef)
 
   const handleOpen = () => setOpen(true)
@@ -177,10 +171,6 @@ export const useDialog = ({
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
-        disableFocusTrap,
-        enableFocusTrap,
-        focusTrapEnabled,
-        focusTrapRef,
       }}
     >
       <Portal ref={portalRef}>

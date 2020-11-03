@@ -26,14 +26,14 @@
 
 import React, { createContext, FC } from 'react'
 import { ManagerContextProps, ManagerProvider } from '../Manager'
-import { activateScrollLock } from './utils'
+import { activateFocusTrap } from './utils'
 
-export const ScrollLockContext = createContext<ManagerContextProps>({})
+export const FocusTrapContext = createContext<ManagerContextProps>({})
 
-export const ScrollLockProvider: FC = (props) => (
+export const FocusTrapProvider: FC = (props) => (
   <ManagerProvider
-    activate={activateScrollLock}
-    TargetContext={ScrollLockContext}
+    activate={activateFocusTrap}
+    TargetContext={FocusTrapContext}
     {...props}
   />
 )

@@ -36,25 +36,25 @@ import { useCallbackRef, useID } from './'
 export const useScrollLock: typeof useCallbackRef = (forwardedRef) => {
   const id = useID()
   const [element, callbackRef] = useCallbackRef(forwardedRef)
-  const { addLock, removeLock } = useContext(ScrollLockContext)
+  const { addElement, removeElement } = useContext(ScrollLockContext)
 
   useEffect(() => {
-    if (!addLock) {
+    if (!addElement) {
       // eslint-disable-next-line no-console
       console.warn(
         'ScrollLockContext is missing. Please wrap all @looker/components in a ComponentsProvider.'
       )
     }
-  }, [addLock])
+  }, [addElement])
 
   useEffect(() => {
     if (element) {
-      addLock?.(id, element)
+      addElement?.(id, element)
     }
     return () => {
-      removeLock?.(id)
+      removeElement?.(id)
     }
-  }, [id, addLock, removeLock, element])
+  }, [id, addElement, removeElement, element])
 
   return [element, callbackRef]
 }

@@ -24,16 +24,5 @@
 
  */
 
-import React, { createContext, FC } from 'react'
-import { ManagerContextProps, ManagerProvider } from '../Manager'
-import { activateScrollLock } from './utils'
-
-export const ScrollLockContext = createContext<ManagerContextProps>({})
-
-export const ScrollLockProvider: FC = (props) => (
-  <ManagerProvider
-    activate={activateScrollLock}
-    TargetContext={ScrollLockContext}
-    {...props}
-  />
-)
+export * from './ManagerProvider'
+export * from './utils'

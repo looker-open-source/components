@@ -24,33 +24,49 @@
 
  */
 
-import { createContext, MutableRefObject } from 'react'
+import { MutableRefObject } from 'react'
 
-export interface ScrollLockContextProps {
+export interface ManagerContextProps {
   /**
    * Stores the element for the active scroll lock (null if none are active)
    */
-  activeLockRef?: MutableRefObject<HTMLElement | null>
+  activeElementRef?: MutableRefObject<HTMLElement | null>
   /**
    * @private
    */
-  addLock?: (id: string, element: HTMLElement) => void
+  addElement?: (id: string, element: HTMLElement) => void
   /**
    * Disables the current scroll lock (no scroll lock will be enabled as a result)
    */
-  disableCurrentLock?: () => void
+  disableCurrentElement?: () => void
   /**
    * Enables the scroll lock stacked on top
    */
-  enableCurrentLock?: () => void
+  enableCurrentElement?: () => void
   /**
    * @private
    */
-  getLock?: (id: string) => HTMLElement | null
+  getElement?: (id: string) => HTMLElement | null
   /**
    * @private
    */
-  removeLock?: (id: string) => void
+  removeElement?: (id: string) => void
 }
 
-export const ScrollLockContext = createContext<ScrollLockContextProps>({})
+export interface ElementMap {
+  [key: string]: HTMLElement
+}
+
+export const getActiveElement = (elementMap: ElementMap) => {
+  // Sort the elements according to dom position and return the last
+  // which we assume to be stacked on top since all components using Portal
+  // share a single zIndexFloor and use dom order to determine stacking
+  const elements = Object.values(elementMap)
+  if (elements.length === 0) return null
+
+  const sortedElements = elements.sort((elementA, elementB) => {
+    const relationship = elementA.compareDocumentPosition(elementB)
+    return relationship > 3 ? 1 : -1
+  })
+  return sortedElements[0] || null
+}

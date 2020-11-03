@@ -159,6 +159,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           <Label htmlFor="promptInput">{inputLabel}</Label>
         </VisuallyHidden>
         <InputText
+          data-autofocus="true"
           onKeyDown={onKeyDown}
           id="promptInput"
           placeholder={inputLabel}

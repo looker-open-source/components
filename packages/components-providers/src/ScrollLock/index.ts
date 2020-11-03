@@ -24,5 +24,4 @@
 
  */
 
-export * from './ScrollLockContext'
 export * from './ScrollLockProvider'
