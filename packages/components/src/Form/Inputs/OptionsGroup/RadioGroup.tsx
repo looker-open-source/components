@@ -49,6 +49,7 @@ function getCheckedProps(
 const RadioGroupLayout = forwardRef(
   (
     {
+      autoFocus,
       disabled,
       inline,
       name: propsName,
@@ -70,13 +71,14 @@ const RadioGroupLayout = forwardRef(
       [onChange]
     )
 
-    const radios = options.map((option) => {
+    const radios = options.map((option, index) => {
       const checkedProps = getCheckedProps(
         option.value,
         isControlled,
         value,
         defaultValue
       )
+      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {}
 
       return (
         <FieldRadio
@@ -87,6 +89,7 @@ const RadioGroupLayout = forwardRef(
           name={name}
           onChange={getChangeHandler(option.value)}
           {...checkedProps}
+          {...autoFocusProps}
         />
       )
     })
