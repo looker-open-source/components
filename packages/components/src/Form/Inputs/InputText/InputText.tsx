@@ -24,7 +24,6 @@
 
  */
 
-import pick from 'lodash/pick'
 import omit from 'lodash/omit'
 import { IconNames } from '@looker/icons'
 import {
@@ -36,7 +35,12 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
-import { InputProps, inputPropKeys, InputTextTypeProps } from '../InputProps'
+import {
+  InputProps,
+  inputPropKeys,
+  InputTextTypeProps,
+  pickInputProps,
+} from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
@@ -194,7 +198,7 @@ const InputTextLayout = forwardRef(
     )
 
     const inputProps = {
-      ...pick(omitStyledProps(props), inputPropKeys),
+      ...pickInputProps(omitStyledProps(props)),
       'aria-invalid': validationType === 'error' ? true : undefined,
       type,
     }

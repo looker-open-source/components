@@ -74,10 +74,6 @@ export interface SelectBaseProps
    * defaults to false for <100 options, true for >=100 options
    */
   windowedOptions?: boolean
-  /**
-   * Sets initial focus when inside a Dialog or Popover
-   */
-  'data-autofocus'?: string
 }
 
 export interface SelectProps
@@ -108,7 +104,6 @@ const SelectComponent = forwardRef(
       options,
       disabled,
       autoFocus,
-      'data-autofocus': dataAutofocus,
       isFilterable,
       isClearable,
       placeholder,
@@ -169,7 +164,6 @@ const SelectComponent = forwardRef(
           before={<SelectInputIcon options={options} />}
           disabled={disabled}
           autoFocus={autoFocus}
-          data-autofocus={dataAutofocus}
           placeholder={placeholder}
           name={name}
           validationType={props.validationType}

@@ -52,6 +52,7 @@ export const Required = () => (
 
 export const ValidationError = () => (
   <FieldTime
+    autoFocus
     defaultValue="14:34"
     description="this is the description is a very long one"
     detail="detail"

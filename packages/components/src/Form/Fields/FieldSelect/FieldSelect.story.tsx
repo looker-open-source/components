@@ -234,7 +234,7 @@ export const SelectContent = () => {
         aria-label="Fruits"
         placeholder="Select Brand"
         defaultValue="Boulder Creek"
-        data-autofocus="true"
+        autoFocus
       />
       <Label>
         Use alignSelf="flex-start" to avoid filling height as a flex child

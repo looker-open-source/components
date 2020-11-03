@@ -86,10 +86,6 @@ export interface InputTimeSelectProps
   onChange?: (val?: string) => void
   validationType?: ValidationType
   onValidationFail?: (value: string) => void
-  /**
-   * Sets initial focus when inside a Dialog or Popover
-   */
-  'data-autofocus'?: string
 }
 
 // if format is `12h`, repeat hours 1-12 twice
@@ -281,7 +277,6 @@ const InputTimeSelectLayout = forwardRef(
       validationType,
       disabled,
       autoFocus,
-      'data-autofocus': dataAutofocus,
       id,
       ...props
     }: InputTimeSelectProps,
@@ -390,7 +385,6 @@ const InputTimeSelectLayout = forwardRef(
           validationType={validationType}
           disabled={disabled}
           autoFocus={autoFocus}
-          data-autofocus={dataAutofocus}
           id={id}
           {...ariaProps}
         />

@@ -42,6 +42,7 @@ export interface OptionsGroupProps<ValueType extends string | string[]>
   extends OptionsGroupLayout {
   name?: string
   id?: string
+  autoFocus?: boolean
   disabled?: boolean
   required?: boolean
   options: OptionsGroupOptionProps[]

@@ -296,7 +296,7 @@ export const SelectMultiDemo = () => {
             showCreate
             defaultValues={['Boulder Creek']}
             freeInput
-            data-autofocus="true"
+            autoFocus
           />
         </DialogContent>
         <DialogFooter />

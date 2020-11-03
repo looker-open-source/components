@@ -91,7 +91,6 @@ const InputSearchLayout = forwardRef(
       options,
       disabled,
       autoFocus,
-      'data-autofocus': dataAutofocus,
       isClearable = true,
       placeholder,
       name,
@@ -172,7 +171,6 @@ const InputSearchLayout = forwardRef(
           iconBeforeTitle={hideSearchIcon ? undefined : 'Search'}
           disabled={disabled}
           autoFocus={autoFocus}
-          data-autofocus={dataAutofocus}
           placeholder={placeholder}
           name={name}
           validationType={props.validationType}

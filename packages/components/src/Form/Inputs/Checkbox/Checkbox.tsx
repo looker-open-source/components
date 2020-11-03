@@ -25,12 +25,11 @@
  */
 
 import noop from 'lodash/noop'
-import pick from 'lodash/pick'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import isUndefined from 'lodash/isUndefined'
-import { InputProps, inputPropKeys } from '../InputProps'
+import { InputProps, pickInputProps } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
 import { inputTextValidation } from '../InputText'
 
@@ -82,7 +81,7 @@ const CheckboxLayout = forwardRef(
       <div className={className}>
         <input
           type="checkbox"
-          {...pick(restProps, inputPropKeys)}
+          {...pickInputProps(restProps)}
           checked={!!isChecked}
           aria-checked={checked}
           aria-invalid={validationType === 'error' ? 'true' : undefined}
