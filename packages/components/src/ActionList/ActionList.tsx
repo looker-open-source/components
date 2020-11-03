@@ -217,6 +217,7 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
               columns={columns}
               firstColumnStuck={firstColumnStuck}
               renderedWidth={width}
+              visibleColumns={visibleColumns}
             />
           )}
         </ReactResizeDetector>

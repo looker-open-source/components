@@ -29,6 +29,7 @@ import {
   SizeMedium,
   SizeLarge,
 } from '@looker/design-tokens/src/system'
+import { css } from 'styled-components'
 import { variant } from 'styled-system'
 
 export type ColumnSize = SizeSmall | SizeMedium | SizeLarge | 'auto' | 'nowrap'
@@ -41,19 +42,24 @@ export const columnSize = variant({
   prop: 'size',
   variants: {
     small: {
-      minWidth: '3rem',
       maxWidth: '3rem',
+      minWidth: '3rem',
     },
     medium: {
-      minWidth: '12rem',
       maxWidth: '12rem',
+      minWidth: '12rem',
     },
     large: {
-      minWidth: '20rem',
       maxWidth: '20rem',
+      minWidth: '20rem',
     },
     nowrap: {
       whiteSpace: 'nowrap',
     },
   },
 })
+
+export const noColumnSize = css`
+  max-width: 0;
+  min-width: 0;
+`

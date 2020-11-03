@@ -115,7 +115,7 @@ export const ActionListRow = styled(ActionListRowLayout)`
       checked && !isHeaderRow ? colors.keySubtle : colors.background};
     border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
 
-    &:first-of-type {
+    &:first-of-type > div {
       border-left: 1px solid transparent;
     }
   }
@@ -138,7 +138,7 @@ export const ActionListRow = styled(ActionListRowLayout)`
   &:focus {
     outline: none;
 
-    td:first-of-type {
+    td:first-of-type > div {
       border-left-color: ${({ theme }) => theme.colors.key};
     }
   }

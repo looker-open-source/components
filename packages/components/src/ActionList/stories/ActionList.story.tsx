@@ -130,7 +130,7 @@ const Template: Story<DemoProps> = ({
   }, [canFilter, filters])
 
   return (
-    <SpaceVertical p="large">
+    <SpaceVertical>
       <ActionListManager {...args} noResultsDisplay={customResultsDisplay}>
         <ActionList
           bulk={canBulk ? bulkActionsConfig : undefined}

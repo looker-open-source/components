@@ -24,12 +24,13 @@
 
  */
 
-import React, { FC, useState, useContext } from 'react'
-import { Popover, PopoverContent } from '../../Popover'
+import React, { FC, useState } from 'react'
+
+import { usePopover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
-import { DialogContext, DialogFooter, DialogHeader } from '../../Dialog'
+import { Space, SpaceVertical } from '../../Layout'
 import { ColumnsProps } from '../Column'
 
 export interface ColumnSelectorProps {
@@ -43,56 +44,69 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   visibleColumns: defaultColumns,
   onColumnVisibilityChange,
 }) => {
-  const { closeModal } = useContext(DialogContext)
+  const [isOpen, setOpen] = useState(false)
   const [visibleColumns, setVisibleColumns] = useState(defaultColumns)
-  const columns = allColumns.filter((c) => c.canHide !== false)
 
-  const options = columns.map((column) => ({
+  const selectableColumns = allColumns.filter((c) => c.canHide !== false)
+  const alwaysColumns = allColumns
+    .filter((c) => c.canHide === false)
+    .map((c) => c.id)
+
+  const options = selectableColumns.map((column) => ({
     label: column.title,
     value: column.id,
   }))
 
   const apply = () => {
-    onColumnVisibilityChange(visibleColumns)
-    closeModal()
+    onColumnVisibilityChange([...visibleColumns, ...alwaysColumns])
+    setOpen(false)
   }
 
-  const cancel = () => closeModal()
+  const cancel = () => setOpen(false)
 
   const all = () => {
-    const resetColumn = columns.map((column) => column.id)
+    const resetColumn = allColumns.map((column) => column.id)
     setVisibleColumns(resetColumn)
   }
 
-  const none = () => setVisibleColumns([])
+  const none = () => setVisibleColumns(alwaysColumns)
+
+  const content = (
+    <PopoverContent width="16rem" overflow="hidden">
+      <SpaceVertical>
+        <Space gap="xxsmall">
+          <ButtonTransparent size="xsmall" onClick={all}>
+            Select All
+          </ButtonTransparent>
+          <ButtonTransparent size="xsmall" onClick={none}>
+            Select None
+          </ButtonTransparent>
+        </Space>
+        <CheckboxGroup
+          value={visibleColumns}
+          onChange={setVisibleColumns}
+          options={options}
+        />
+        <Space reverse>
+          <ButtonTransparent onClick={apply}>Apply</ButtonTransparent>
+          <ButtonTransparent onClick={cancel} color="neutral">
+            Cancel
+          </ButtonTransparent>
+        </Space>
+      </SpaceVertical>
+    </PopoverContent>
+  )
+
+  const { popover, domProps } = usePopover({ content, isOpen, setOpen })
 
   return (
-    <Popover
-      content={
-        <>
-          <DialogHeader>
-            <ButtonTransparent onClick={all}>Select All</ButtonTransparent>
-            <ButtonTransparent onClick={none}>Select None</ButtonTransparent>
-          </DialogHeader>
-          <PopoverContent max-width="12rem">
-            <CheckboxGroup
-              value={visibleColumns}
-              onChange={setVisibleColumns}
-              options={options}
-            />
-          </PopoverContent>
-          <DialogFooter>
-            <ButtonTransparent onClick={apply}>Apply</ButtonTransparent>
-            <ButtonTransparent onClick={cancel}>Cancel</ButtonTransparent>
-          </DialogFooter>
-        </>
-      }
-    >
+    <>
+      {popover}
       <IconButton
         icon="ViewColumn"
         label="Select columns to display"
-        mt="xxsmall"
+        {...domProps}
       />
-    </Popover>
+    </>
   )
 }

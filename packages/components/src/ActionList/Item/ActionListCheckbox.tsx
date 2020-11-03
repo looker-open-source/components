@@ -25,25 +25,23 @@
  */
 
 import React, { FC } from 'react'
-import styled from 'styled-components'
 import { Checkbox, MixedBoolean } from '../../Form'
+import { ItemTarget } from './ItemTarget'
 
 export interface ActionListCheckboxProps {
   id?: string
   checked?: MixedBoolean
   disabled?: boolean
   onChange?: () => void
-  className?: string
 }
 
 export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
 
-const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
+export const ActionListCheckbox: FC<ActionListCheckboxProps> = ({
   id,
   onChange,
   checked,
   disabled,
-  className,
 }) => {
   const handleCellOnClick = (
     event: React.MouseEvent<HTMLTableDataCellElement>
@@ -64,7 +62,7 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
   }
 
   return (
-    <div onClick={handleCellOnClick} className={className}>
+    <ItemTarget onClick={handleCellOnClick}>
       <Checkbox
         aria-describedby={id}
         disabled={disabled}
@@ -72,15 +70,6 @@ const ActionListCheckboxLayout: FC<ActionListCheckboxProps> = ({
         onChange={handleOnChange}
         onKeyDown={handleOnKeyDown}
       />
-    </div>
+    </ItemTarget>
   )
 }
-
-export const ActionListCheckbox = styled(ActionListCheckboxLayout)`
-  align-items: center;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
-  display: flex;
-  height: 1.5rem;
-  justify-content: center;
-  width: 1.5rem;
-`

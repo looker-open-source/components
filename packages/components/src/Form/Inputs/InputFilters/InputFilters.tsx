@@ -129,7 +129,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
-        <Icon color="ui4" mr="xsmall" mt="xxxsmall" name="Filter" size={20} />
+        <Icon color="ui4" mx="xsmall" mt="xxsmall" name="Filter" size={20} />
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
@@ -221,8 +221,8 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
           icon="Close"
           label="Clear Filters"
           ml="auto"
-          mr="xxsmall"
-          mt="xxxsmall"
+          mt="xxsmall"
+          mr="xsmall"
           onClick={clearFilters}
           size="xsmall"
         />
@@ -249,7 +249,7 @@ export const InputFilters = styled(InputFiltersLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   flex-wrap: wrap;
-  padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  padding: ${({ theme: { space } }) => space.xxxsmall} 0;
   width: 100%;
 
   ${Select} ${Icon} {
@@ -258,7 +258,7 @@ export const InputFilters = styled(InputFiltersLayout)`
 
   ${InputText} {
     border: none;
-    height: 28px;
+    height: 32px;
     padding: 0;
 
     &:focus-within {

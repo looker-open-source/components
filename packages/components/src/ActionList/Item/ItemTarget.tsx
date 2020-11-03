@@ -24,37 +24,15 @@
 
  */
 
-import { css } from 'styled-components'
-import { SpaceVertical } from '../../Layout/Space'
-import { ColumnProps, ActionListItemColumn } from '..'
+import styled from 'styled-components'
+import { densityTarget } from '../ActionListTable'
 
-function filterUndefined<T>(t: T | undefined): t is T {
-  return t !== undefined
-}
-
-export const getNumericColumnIndices = (
-  columns: ColumnProps[],
-  visibleColumns: string[],
-  select?: boolean
-) =>
-  columns
-    .filter((c) => visibleColumns.includes(c.id) && c.type === 'number')
-    .map((c, index) =>
-      c.type === 'number' ? (select ? index + 1 : index) : undefined
-    )
-    .filter(filterUndefined)
-
-export const numericColumnCSS = (columnIndices: number[]) =>
-  css`
-    ${columnIndices.map(
-      (columnIndex) =>
-        css`
-          ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
-            text-align: right;
-            ${SpaceVertical} {
-              flex-direction: row-reverse;
-            }
-          }
-        `
-    )}
-  `
+export const ItemTarget = styled.div<{ disabled?: boolean }>`
+  align-items: center;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  min-height: ${densityTarget};
+  width: ${densityTarget};
+`

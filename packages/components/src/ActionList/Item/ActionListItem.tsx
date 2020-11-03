@@ -31,6 +31,7 @@ import { IconButton } from '../../Button'
 import { Menu, MenuDisclosure, MenuList } from '../../Menu'
 import { ActionListContext } from '../ActionListContext'
 import { ActionListRow } from './ActionListRow'
+import { ItemTarget } from './ItemTarget'
 
 export interface ActionListItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -88,14 +89,14 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   }
 
   const itemActions = actions && (
-    <div onClick={handleMenuClick}>
+    <ItemTarget style={{ marginLeft: 'auto' }} onClick={handleMenuClick}>
       <Menu>
         <MenuDisclosure tooltip={actionsTooltip}>
           <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
-    </div>
+    </ItemTarget>
   )
 
   const onChange = select ? () => select.onSelect(id) : undefined

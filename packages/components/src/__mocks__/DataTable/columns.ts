@@ -64,6 +64,7 @@ export const columns: ColumnsProps = [
     type: 'string',
   },
   {
+    defaultHide: true,
     id: 'calories',
     title: 'Calories',
     type: 'number',
@@ -75,11 +76,13 @@ export const columns: ColumnsProps = [
     type: 'number',
   },
   {
+    defaultHide: true,
     id: 'protein',
     title: 'Protein',
     type: 'number',
   },
   {
+    defaultHide: true,
     id: 'calcium',
     title: 'Calcium',
     type: 'number',

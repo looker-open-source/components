@@ -122,9 +122,6 @@ const CheckboxGroupLayout = forwardRef(
 CheckboxGroupLayout.displayName = 'CheckboxGroupLayout'
 
 export const CheckboxGroup = styled(CheckboxGroupLayout)`
-  label {
-    width: 100%;
-  }
   ${FieldCheckbox} {
     ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
   }

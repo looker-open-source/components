@@ -26,9 +26,10 @@
 
 import styled from 'styled-components'
 import React, { FC } from 'react'
+import { DividerVertical } from '../../Divider'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { FilterConfig } from '../ActionList'
-import { DividerVertical } from '../../Divider/DividerVertical'
+import { ItemTarget } from '../Item/ItemTarget'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
 export interface ActionListFiltersProps
@@ -51,18 +52,20 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
     ) : null}
     {canCustomizeColumns && (
       <>
-        <DividerVertical height="1.2rem" />
-        <ColumnSelector {...columnSelectorProps} />
+        <DividerVertical mx="none" stretch />
+        <ItemTarget>
+          <ColumnSelector {...columnSelectorProps} />
+        </ItemTarget>
       </>
     )}
   </div>
 )
 
 export const ActionListFilters = styled(ActionListFiltersLayout)`
+  align-items: flex-start;
   border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   border-top: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
-  padding: auto;
 
   ${InputFilters} {
     border: none;

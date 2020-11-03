@@ -36,6 +36,7 @@ import { edgeShadow } from './utils/edgeShadow'
 
 export interface ActionListTableProps extends ActionListProps {
   renderedWidth: string
+  visibleColumns: string[]
 }
 
 export const ActionListTableLayout: FC<ActionListTableProps> = ({
@@ -66,6 +67,15 @@ export const ActionListTableLayout: FC<ActionListTableProps> = ({
   )
 }
 
+export const densityTarget = '2.25rem' // 36px
+
+const edgeCell = css`
+  max-width: ${densityTarget};
+  min-width: ${densityTarget};
+  padding: 0;
+  width: ${densityTarget};
+`
+
 /**
  * Apply specialized styling to the first column if `select` mode is active
  * (and therefore the first column is the Checkbox for selection)
@@ -75,7 +85,10 @@ const selectColumn = css<ActionListTableProps>`
     select &&
     css`
       &:first-child {
-        padding: 0 ${({ theme }) => theme.space.small};
+        ${edgeCell}
+      }
+      &:nth-child(2) {
+        padding-left: ${({ theme }) => theme.space.xsmall};
       }
     `}
 `
@@ -85,8 +98,9 @@ const selectColumn = css<ActionListTableProps>`
  */
 const actionsColumn = css`
   &:last-child {
-    padding: 0;
+    ${edgeCell}
     text-align: right;
+    width: 100%;
   }
 `
 
@@ -100,13 +114,13 @@ const actionsColumn = css`
  * @TODO - Don't stick last column if DataTable doesn't have actions
  */
 const stickyColumns = css<ActionListTableProps>`
-  ${({ select, firstColumnStuck, theme }) =>
+  ${({ select, firstColumnStuck }) =>
     select &&
     css`
       &:first-child {
         left: 0;
         position: sticky;
-        ${firstColumnStuck ? `padding: 0 ${theme.space.small};` : edgeShadow()}
+        ${!firstColumnStuck && edgeShadow()}
       }
     `}
 
@@ -115,8 +129,7 @@ const stickyColumns = css<ActionListTableProps>`
     firstColumnStuck &&
     css`
       &:nth-child(2) {
-        left: 3rem;
-        padding-left: 0;
+        left: ${densityTarget};
         position: sticky;
         ${edgeShadow()}
       }
@@ -133,11 +146,13 @@ export const ActionListTable = styled(ActionListTableLayout)`
   border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => theme.fontSizes.small};
+  line-height: 1;
   width: 100%;
 
   td,
   th {
-    padding: ${({ theme: { space } }) => `${space.small}  ${space.medium}`};
+    height: ${densityTarget}; /* acts like min-height */
+    padding: ${({ theme: { space } }) => `${space.xsmall}  ${space.medium}`};
   }
 
   tbody td {
@@ -161,8 +176,10 @@ export const ActionListTable = styled(ActionListTableLayout)`
     }
   }
 
-  ${({ columns, select }) =>
-    numericColumnCSS(getNumericColumnIndices(columns, Boolean(select)))}
+  ${({ columns, select, visibleColumns }) =>
+    numericColumnCSS(
+      getNumericColumnIndices(columns, visibleColumns, Boolean(select))
+    )}
 `
 
 export const TableScroll = styled.div`
