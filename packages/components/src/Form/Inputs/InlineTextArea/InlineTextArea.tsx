@@ -37,7 +37,7 @@ import {
 } from '@looker/design-tokens'
 import { inputPropKeys } from '../InputProps'
 
-interface InlineTextAreaProps
+export interface InlineTextAreaProps
   extends Omit<LayoutProps, 'size'>,
     SpaceProps,
     TypographyProps,
@@ -92,6 +92,8 @@ const Input = styled.textarea<InlineTextAreaProps>`
   border: none;
   caret-color: ${({ theme }) => theme.colors.text5};
   color: transparent;
+  cursor: ${({ readOnly, disabled }) =>
+    readOnly || disabled ? 'not-allowed' : undefined};
   font: inherit;
   height: 100%;
   left: 0;
@@ -119,9 +121,10 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
 
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${(props) =>
-    props.underlineOnlyOnHover ? 'transparent' : props.theme.colors.ui3};
-  color: inherit;
+  border-bottom-color: ${({ theme, underlineOnlyOnHover, readOnly }) =>
+    underlineOnlyOnHover || readOnly ? 'transparent' : theme.colors.ui3};
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.colors.text1 : 'inherit'};
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -140,5 +143,14 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
 
   :focus {
     border-bottom-style: solid;
+  }
+
+  :disabled,
+  :hover {
+    border-bottom-color: ${({ theme }) => theme.colors.text1};
+  }
+
+  :hover {
+    border-bottom-color: ${({ readOnly }) => readOnly && 'transparent'};
   }
 `

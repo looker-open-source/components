@@ -184,7 +184,6 @@ const InputSearchLayout = forwardRef(
           <ComboboxList
             persistSelection
             windowedOptions={windowedOptions}
-            cancelClickOutside={false}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
             aria-busy={isLoading}

@@ -15,19 +15,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Popover`, `Menu`, and `Select` no longer cancel the first click outside by default (use `cancelClickOutside` to override this)
 - `DialogContent` no longer has `py` unless it overflows the available space (acting as `overflow: scroll`)
 
 ### Fixed
 
 - `FieldCheckboxGroup` now sets `border-color` of child checkboxes to "critical" when validationMessage.type is equal to 'error'
+- `Select` on a mobile device or with "tap to click" on a touch pad reopens immediately after clicking on an option
+- `Select` options not being announced in a screen reader on keyboard navigation
+- Controlled `Select` losing focus if there's delay between `onChange` and `value` update
 - `Popover` flashing in the upper left corner of the screen on slow pages
 - `InputColor` no longer allows user to click swatch when `readOnly` is assigned
 - `Select` alignment of options when some have icons and others do not
 - `Select` inappropriately shows "No options" when the current value is empty, after filtering a long list down to a single option then deleting the filter text
 - `Select` remounts its options when the options prop changes, using a shallow comparison. This causes select via click to fail if the options prop "changes" (same values, new array instance) after a mousedown, e.g. if a parent component contains `usePopover`.
+- `MenuItems` within the same `MenuList` align consistently when icons are used
 
 ### Removed
 
+- `groupedPopoversRef` and `groupedMenusRef` (`Popover` and `Menu` no longer cancel the first click outside)
 - `Dialog` no longer supports `maxWidth` (it's now always `100%` - use `width`)
 - `Drawer` no longer supports `height` (use `minHeight`)
 - `Dialog` no longer supports `surfaceStyles` (use built-in props instead)

@@ -25,12 +25,7 @@
  */
 
 import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
-import {
-  cleanup,
-  fireEvent,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -238,26 +233,30 @@ describe('closeOnSelect', () => {
     test('creates value and closes list on blur', async () => {
       const onChangeMock = jest.fn()
       renderWithTheme(
-        <SelectMulti
-          options={basicOptions}
-          placeholder="Search"
-          onChange={onChangeMock}
-          freeInput
-        />
+        <>
+          <button>A random button</button>
+          <SelectMulti
+            options={basicOptions}
+            placeholder="Search"
+            onChange={onChangeMock}
+            freeInput
+          />
+        </>
       )
 
       const input = screen.getByPlaceholderText('Search')
+      input.focus()
       fireEvent.change(input, { target: { value: 'baz' } })
       expect(screen.getByRole('listbox')).toBeVisible()
-      fireEvent.blur(input)
+      screen.getByText('A random button').focus()
 
       expect(onChangeMock).toHaveBeenCalledWith(['baz'])
       expect(input).toHaveValue('')
 
-      await waitForElementToBeRemoved(() => screen.getByRole('listbox'))
+      expect(screen.queryByRole('listbox')).toBe(null)
     })
 
-    test('copy/paste', async () => {
+    test('copy/paste', () => {
       const onChangeMock = jest.fn()
       renderWithTheme(
         <SelectMulti

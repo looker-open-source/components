@@ -177,7 +177,6 @@ const SelectComponent = forwardRef(
           <ComboboxList
             persistSelection
             windowedOptions={windowedOptions}
-            cancelClickOutside={!isFilterable}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
             aria-busy={isLoading}

@@ -50,19 +50,11 @@ export interface MenuProps {
    * Use for controlled menu
    */
   setOpen?: (isOpen: boolean) => void
-
-  /**
-   * This prop exposes the groupedPopoversRef prop of the wrapped Popover component rendered by MenuList.
-   * This allows transitions between menus in a group without clicking twice
-   * (first to dismiss the current menu, and again to open the target menu)
-   */
-  groupedMenusRef?: RefObject<HTMLElement>
 }
 
 export const Menu: FC<MenuProps> = ({
   children,
   disabled,
-  groupedMenusRef,
   hoverDisclosureRef,
   id: propsID,
   isOpen: controlledIsOpen = false,
@@ -76,7 +68,6 @@ export const Menu: FC<MenuProps> = ({
 
   const context = {
     disabled,
-    groupedMenusRef,
     id,
     isOpen: isControlled.current ? controlledIsOpen : isOpen,
     setOpen: isControlled.current ? controlledSetOpen : setOpen,

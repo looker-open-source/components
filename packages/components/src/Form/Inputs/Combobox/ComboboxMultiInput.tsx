@@ -28,7 +28,15 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import omit from 'lodash/omit'
-import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
+import React, {
+  forwardRef,
+  useContext,
+  Ref,
+  useCallback,
+  useEffect,
+  useRef,
+  FormEvent,
+} from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import {
@@ -151,44 +159,53 @@ export const ComboboxMultiInputInternal = forwardRef(
       contextOnChange && contextOnChange(newOptions)
     }
 
+    // Whether controlled or uncontrolled, we need to determine if the inputValue changed
+    // from the user typing in the input - which should open the list, CHANGE - or otherwise
+    // (input being cleared via clear button or value tokenization, external initial state, etc) -
+    // which should not open the list, CHANGE_SILENT
+    const isInputting = useRef(false)
+
     const handleInputValueChange = useCallback(
       (value: string) => {
-        transition &&
-          transition(ComboboxActionType.CHANGE, { inputValue: value })
+        const action = isInputting.current
+          ? ComboboxActionType.CHANGE
+          : ComboboxActionType.CHANGE_SILENT
+        transition?.(action, { inputValue: value })
       },
       [transition]
     )
 
-    // Need to determine whether the updated value come from change event on the input
-    // or from a new value prop (controlled)
-    const isInputting = useRef(false)
-    // If they are controlling the value we still need to do our transitions, so
-    // we have this derived state to emulate onChange of the input as we receive
-    // new `value`s ...[*]
-    if (
-      controlledInputValue !== undefined &&
-      contextInputValue &&
-      controlledInputValue !== contextInputValue
-    ) {
-      if (isInputting.current) {
-        handleInputValueChange(controlledInputValue)
-      } else {
-        // this is most likely the initial value so we want to
-        // update the value without transitioning to suggesting
-        transition &&
-          transition(ComboboxActionType.CHANGE_SILENT, {
-            inputValue: controlledInputValue,
-          })
+    // Use latestInputValueRef to track whether the contextInputValue change
+    // originated in this component. If it didn't (e.g. an option was selected
+    // or the list was closed) call onInputChange b/c it has not been called yet
+    const latestInputValueRef = useRef<string>()
+    useEffect(() => {
+      if (
+        contextInputValue !== undefined &&
+        contextInputValue !== latestInputValueRef.current
+      ) {
+        onInputChange?.(contextInputValue)
+        latestInputValueRef.current = contextInputValue
       }
-    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contextInputValue])
+
+    // If they are controlling the input value we still need to do transitions
+    // and update the context inputValue state
+    useEffect(() => {
+      if (controlledInputValue !== undefined) {
+        handleInputValueChange(controlledInputValue)
+        latestInputValueRef.current = controlledInputValue
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [controlledInputValue])
 
     const isControlled = controlledInputValue !== undefined
     // [*]... and when controlled, we don't trigger handleValueChange as the user
-    // types, instead the developer controls it with the normal input onChange
-    // prop
+    // types, instead the developer controls it with the onInputChange prop
     const handleInputChange = useCallback(
-      (value: string) => {
-        isInputting.current = true
+      (value: string, event?: FormEvent<HTMLInputElement>) => {
+        isInputting.current = event !== undefined
         if (!isControlled) {
           handleInputValueChange(value)
         }
@@ -213,9 +230,10 @@ export const ComboboxMultiInputInternal = forwardRef(
     }
 
     const wrappedOnInputChange = useCallback(
-      (value: string) => {
-        handleInputChange(value)
-        onInputChange && onInputChange(value)
+      (value: string, event?: FormEvent<HTMLInputElement>) => {
+        handleInputChange(value, event)
+        onInputChange?.(value, event)
+        latestInputValueRef.current = value
       },
       [handleInputChange, onInputChange]
     )
