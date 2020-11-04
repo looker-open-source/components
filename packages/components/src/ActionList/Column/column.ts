@@ -72,16 +72,11 @@ export interface ColumnProps {
   canSort?: boolean
 
   /**
-   * Determines if the column is visible when the DataTable is initially displayed
-   * @default false
+   * Determines if the column is visible when the DataTable is initially displayed.
+   * If `undefined` the column will not be selectable (always visible)
+   * @default undefined
    */
-  defaultHide?: boolean
-
-  /**
-   * Determines whether the user can hide/show the column
-   * @default true
-   */
-  canHide?: boolean
+  hide?: boolean
 
   /**
    * @private

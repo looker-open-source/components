@@ -95,12 +95,12 @@ const ActionListRowLayout = forwardRef(
         onClick={onClick}
       >
         {hasCheckbox && (
-          <ColumnType>
+          <ColumnType key="checkbox">
             <ActionListCheckbox {...pick(props, checkListProps)} />
           </ColumnType>
         )}
         {sizedChildren}
-        <ColumnType>{secondary}</ColumnType>
+        <ColumnType key="actions">{secondary}</ColumnType>
       </tr>
     )
   }

@@ -24,16 +24,20 @@
 
  */
 
-import styled from 'styled-components'
-import { densityTarget } from '../ActionListTable'
+import { data } from '../../__mocks__/DataTable/data'
+import { useActionListSelectManager } from '../utils/useActionListSelectManager'
+import { SelectConfig } from '../ActionList'
 
-export const ItemTarget = styled.div<{ disabled?: boolean }>`
-  align-items: center;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  min-height: ${densityTarget};
-  min-width: ${densityTarget};
-  width: ${densityTarget};
-`
+const allPageItems = data.map(({ id }) => id)
+
+const { onSelect, onSelectAll, selections } = useActionListSelectManager(
+  allPageItems
+)
+
+export const select: SelectConfig = {
+  onClickRowSelect: true,
+  onSelect,
+  onSelectAll,
+  pageItems: allPageItems,
+  selectedItems: selections,
+}

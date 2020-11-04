@@ -38,7 +38,7 @@ export const getNumericColumnIndices = (
   select?: boolean
 ) =>
   columns
-    .filter((c) => visibleColumns.includes(c.id) && c.type === 'number')
+    .filter((c) => visibleColumns.includes(c.id) || c.hide === undefined)
     .map((c, index) =>
       c.type === 'number' ? (select ? index + 1 : index) : undefined
     )

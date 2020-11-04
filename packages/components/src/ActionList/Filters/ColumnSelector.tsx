@@ -40,17 +40,14 @@ export interface ColumnSelectorProps {
 }
 
 export const ColumnSelector: FC<ColumnSelectorProps> = ({
-  columns: allColumns,
-  visibleColumns: defaultColumns,
+  columns,
+  visibleColumns: defaultVisibleColumns,
   onColumnVisibilityChange,
 }) => {
   const [isOpen, setOpen] = useState(false)
-  const [visibleColumns, setVisibleColumns] = useState(defaultColumns)
 
-  const selectableColumns = allColumns.filter((c) => c.canHide !== false)
-  const alwaysColumns = allColumns
-    .filter((c) => c.canHide === false)
-    .map((c) => c.id)
+  const selectableColumns = columns.filter((c) => c.hide !== undefined)
+  const [visibleColumns, setVisibleColumns] = useState(defaultVisibleColumns)
 
   const options = selectableColumns.map((column) => ({
     label: column.title,
@@ -58,21 +55,21 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   }))
 
   const apply = () => {
-    onColumnVisibilityChange([...visibleColumns, ...alwaysColumns])
+    onColumnVisibilityChange(visibleColumns)
     setOpen(false)
   }
 
   const cancel = () => setOpen(false)
 
   const all = () => {
-    const resetColumn = allColumns.map((column) => column.id)
+    const resetColumn = columns.map((column) => column.id)
     setVisibleColumns(resetColumn)
   }
 
-  const none = () => setVisibleColumns(alwaysColumns)
+  const none = () => setVisibleColumns([])
 
   const content = (
-    <PopoverContent width="16rem" overflow="hidden">
+    <PopoverContent width="12rem" overflow="hidden">
       <SpaceVertical>
         <Space gap="xxsmall">
           <ButtonTransparent size="xsmall" onClick={all}>

@@ -106,11 +106,10 @@ export const ActionListBulkControls = styled(ActionListBulkControlsLayout)`
   display: flex;
   height: 3.25rem;
   justify-content: center;
-  padding: 0 ${({ theme }) => theme.space.small};
   position: relative;
 
   ${Button} {
-    left: ${({ theme }) => theme.space.medium};
+    left: ${({ theme }) => theme.space.small};
     position: absolute;
   }
 `

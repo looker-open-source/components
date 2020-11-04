@@ -43,23 +43,9 @@ export const ActionListCheckbox: FC<ActionListCheckboxProps> = ({
   checked,
   disabled,
 }) => {
-  const handleCellOnClick = (
-    event: React.MouseEvent<HTMLTableDataCellElement>
-  ) => {
-    const isNotFromChild = event.currentTarget === event.target
-    isNotFromChild && !disabled && onChange && onChange()
-  }
-
-  const handleOnChange = (event: React.MouseEvent<HTMLInputElement>) => {
-    const isNotFromChild = event.currentTarget === event.target
-    isNotFromChild && !disabled && onChange && onChange()
-  }
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.keyCode === 13) {
-      event.currentTarget.click()
-    }
-  }
+  const handleCellOnClick = () => !disabled && onChange && onChange()
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
+    event.keyCode === 13 && event.currentTarget.click()
 
   return (
     <ItemTarget onClick={handleCellOnClick}>
@@ -67,7 +53,6 @@ export const ActionListCheckbox: FC<ActionListCheckboxProps> = ({
         aria-describedby={id}
         disabled={disabled}
         checked={checked}
-        onChange={handleOnChange}
         onKeyDown={handleOnKeyDown}
       />
     </ItemTarget>

@@ -69,13 +69,6 @@ export const ActionListTableLayout: FC<ActionListTableProps> = ({
 
 export const densityTarget = '2.25rem' // 36px
 
-const edgeCell = css`
-  max-width: ${densityTarget};
-  min-width: ${densityTarget};
-  padding: 0;
-  width: ${densityTarget};
-`
-
 /**
  * Apply specialized styling to the first column if `select` mode is active
  * (and therefore the first column is the Checkbox for selection)
@@ -85,7 +78,10 @@ const selectColumn = css<ActionListTableProps>`
     select &&
     css`
       &:first-child {
-        ${edgeCell}
+        max-width: ${densityTarget};
+        min-width: ${densityTarget};
+        padding: 0;
+        width: ${densityTarget};
       }
       &:nth-child(2) {
         padding-left: ${({ theme }) => theme.space.xsmall};
@@ -98,7 +94,7 @@ const selectColumn = css<ActionListTableProps>`
  */
 const actionsColumn = css`
   &:last-child {
-    ${edgeCell}
+    padding: 0;
     text-align: right;
     width: 100%;
   }
@@ -115,12 +111,12 @@ const actionsColumn = css`
  */
 const stickyColumns = css<ActionListTableProps>`
   ${({ select, firstColumnStuck }) =>
-    select &&
+    (select || firstColumnStuck) &&
     css`
       &:first-child {
         left: 0;
         position: sticky;
-        ${!firstColumnStuck && edgeShadow()}
+        ${(!select || firstColumnStuck === false) && edgeShadow()}
       }
     `}
 

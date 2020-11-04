@@ -40,7 +40,7 @@ export const columns: ColumnsProps = [
     type: 'string',
   },
   {
-    canHide: false,
+    hide: false,
     id: 'inventory',
     title: 'Inventory',
     type: 'number',
@@ -64,25 +64,25 @@ export const columns: ColumnsProps = [
     type: 'string',
   },
   {
-    defaultHide: true,
+    hide: true,
     id: 'calories',
     title: 'Calories',
     type: 'number',
   },
   {
-    defaultHide: true,
+    hide: true,
     id: 'fat',
     title: 'Fat',
     type: 'number',
   },
   {
-    defaultHide: true,
+    hide: true,
     id: 'protein',
     title: 'Protein',
     type: 'number',
   },
   {
-    defaultHide: true,
+    hide: true,
     id: 'calcium',
     title: 'Calcium',
     type: 'number',

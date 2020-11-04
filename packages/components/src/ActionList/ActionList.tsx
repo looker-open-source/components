@@ -38,6 +38,7 @@ import { ColumnsProps } from './Column/column'
 import { ActionListTable } from './ActionListTable'
 
 export interface ActionListProps {
+  children: ReactNode
   columns: ColumnsProps
   className?: string
 
@@ -68,10 +69,6 @@ export interface ActionListProps {
    * and an onFilter callback to update the filters
    **/
   filterConfig?: FilterConfig
-  /**
-   * specify specific columns to be displayed
-   **/
-  canCustomizeColumns?: boolean
 
   /**
    * ID of the header row. Used for the aria-describedby of the select all checkbox.
@@ -142,7 +139,6 @@ export interface BulkActionsConfig {
 export const ActionListLayout: FC<ActionListProps> = (props) => {
   const {
     bulk,
-    canCustomizeColumns,
     className,
     columns,
     filterConfig,
@@ -152,15 +148,16 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
   } = props
 
   const [visibleColumns, setVisibleColumns] = useState(
-    columns.filter((c) => !c.defaultHide).map((c) => c.id)
+    columns.filter((c) => c.hide === false).map((c) => c.id)
   )
+  const canSelectColumns = Boolean(columns.find((c) => c.hide !== undefined))
 
   /**
    * Generate an array in which each entry represents the visibility status of
-   * each of the columns specified.
+   * each of the columns specified. Columns with `hide===undefined` are always visible
    */
-  const columnsToDisplay = columns.map((column) =>
-    visibleColumns.includes(column.id)
+  const columnsToDisplay = columns.map(
+    (c) => c.hide === undefined || visibleColumns.includes(c.id)
   )
 
   /**
@@ -193,13 +190,14 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     onSort,
     select,
   }
-  const filters = (filterConfig || canCustomizeColumns) && (
+
+  const filters = filterConfig && (
     <ActionListFilters
+      canSelectColumns={canSelectColumns}
       visibleColumns={visibleColumns}
       onColumnVisibilityChange={setVisibleColumns}
       columns={columns}
       {...filterConfig}
-      canCustomizeColumns={canCustomizeColumns}
     />
   )
   return (

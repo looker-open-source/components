@@ -48,11 +48,11 @@ describe('ActionListFilters', () => {
   test('render ActionListFilters display columns icon', () => {
     const { getByText } = renderWithTheme(
       <ActionListFilters
-        canCustomizeColumns
         columns={columns}
         visibleColumns={[]}
         filters={filters}
         onColumnVisibilityChange={jest.fn()}
+        canSelectColumns={true}
         onFilter={jest.fn()}
       />
     )

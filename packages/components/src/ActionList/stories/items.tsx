@@ -24,8 +24,7 @@
 
  */
 
-import React from 'react'
-import { Link } from '../../Link'
+import React, { ReactNode } from 'react'
 import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import {
@@ -35,7 +34,7 @@ import {
 } from '../Item'
 import { data } from '../../__mocks__/DataTable/data'
 
-const Actions = () => (
+const actions = (
   <>
     <ActionListItemAction onClick={() => alert(`Ordered!!`)}>
       Order
@@ -49,67 +48,51 @@ const Actions = () => (
   </>
 )
 
-export const items = data.map(
-  ({
-    error,
-    name,
-    color,
-    inventory,
-    origin,
-    type,
-    fat,
-    calories,
-    protein,
-    description,
-    calcium,
-    status,
-    disabled,
-  }) => (
-    <ActionListItem
-      id={name}
-      disabled={disabled}
-      key={name}
-      actions={<Actions />}
-    >
-      <ActionListItemColumn detail={type}>{name}</ActionListItemColumn>
-      <ActionListItemColumn>
-        <Tooltip
-          content={
-            <>
-              {status}{' '}
-              {error && (
-                <Link
-                  onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                    event.stopPropagation()
-                  }
-                  href={error.link}
-                >
-                  {error.message}
-                </Link>
-              )}
-            </>
-          }
-        >
-          <Status
-            size="xsmall"
-            intent={
-              status === 'Out of Stock'
-                ? 'critical'
-                : status === 'Low Stock'
-                ? 'warn'
-                : 'positive'
-            }
-          />
-        </Tooltip>
-      </ActionListItemColumn>
-      <ActionListItemColumn>{inventory}</ActionListItemColumn>
-      <ActionListItemColumn>{color}</ActionListItemColumn>
-      <ActionListItemColumn>{description}</ActionListItemColumn>
-      <ActionListItemColumn>{origin}</ActionListItemColumn>
-      <ActionListItemColumn>{calories}</ActionListItemColumn>
-      <ActionListItemColumn>{fat}</ActionListItemColumn>
-      <ActionListItemColumn>{protein}</ActionListItemColumn>
-      <ActionListItemColumn>{calcium}</ActionListItemColumn>
-    </ActionListItem>
+const itemBuilder = (actions?: ReactNode) => {
+  return data.map(
+    ({
+      id,
+      name,
+      color,
+      inventory,
+      origin,
+      type,
+      fat,
+      calories,
+      protein,
+      description,
+      calcium,
+      status,
+      disabled,
+    }) => (
+      <ActionListItem actions={actions} disabled={disabled} id={id} key={id}>
+        <ActionListItemColumn detail={type}>{name}</ActionListItemColumn>
+        <ActionListItemColumn>
+          <Tooltip content={status}>
+            <Status
+              size="xsmall"
+              intent={
+                status === 'Out of Stock'
+                  ? 'critical'
+                  : status === 'Low Stock'
+                  ? 'warn'
+                  : 'positive'
+              }
+            />
+          </Tooltip>
+        </ActionListItemColumn>
+        <ActionListItemColumn>{inventory}</ActionListItemColumn>
+        <ActionListItemColumn>{color}</ActionListItemColumn>
+        <ActionListItemColumn>{description}</ActionListItemColumn>
+        <ActionListItemColumn>{origin}</ActionListItemColumn>
+        <ActionListItemColumn>{calories}</ActionListItemColumn>
+        <ActionListItemColumn>{fat}</ActionListItemColumn>
+        <ActionListItemColumn>{protein}</ActionListItemColumn>
+        <ActionListItemColumn>{calcium}</ActionListItemColumn>
+      </ActionListItem>
+    )
   )
-)
+}
+
+export const items = itemBuilder(actions)
+export const itemsNoActions = itemBuilder()

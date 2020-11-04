@@ -35,12 +35,12 @@ import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 export interface ActionListFiltersProps
   extends ColumnSelectorProps,
     Partial<FilterConfig> {
-  canCustomizeColumns?: boolean
+  canSelectColumns?: boolean
   className?: string
 }
 
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
-  canCustomizeColumns = false,
+  canSelectColumns,
   className,
   filters,
   onFilter,
@@ -50,7 +50,7 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
     {filters && onFilter ? (
       <InputFilters filters={filters} onChange={onFilter} />
     ) : null}
-    {canCustomizeColumns && (
+    {canSelectColumns && (
       <>
         <DividerVertical mx="none" stretch />
         <ItemTarget>

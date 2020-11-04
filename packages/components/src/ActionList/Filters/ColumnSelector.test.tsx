@@ -55,7 +55,7 @@ describe('ColumnSelector', () => {
 
     fireEvent.click(columnButton)
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('Inventory')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -71,9 +71,9 @@ describe('ColumnSelector', () => {
     )
     const columnButton = getByText('Select columns to display')
 
-    expect(queryByText('Name')).not.toBeInTheDocument()
+    expect(queryByText('Inventory')).not.toBeInTheDocument()
     fireEvent.click(columnButton)
-    expect(queryByText('Name')).toBeInTheDocument()
+    expect(queryByText('Inventory')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

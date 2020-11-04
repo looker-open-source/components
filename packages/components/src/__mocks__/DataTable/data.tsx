@@ -29,8 +29,8 @@ import { Link } from '../../Link'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const row = {
+  id: 'gouda',
   disabled: false,
-  error: undefined,
   name: (
     <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
       Gouda
@@ -52,10 +52,7 @@ export const data = [
   row,
   {
     ...row,
-    error: {
-      link: 'https://en.wikipedia.org/wiki/American_cheese',
-      message: 'Check Availability',
-    },
+    id: 'american',
     name: (
       <Link
         href="https://components.looker.com/"
@@ -77,6 +74,7 @@ export const data = [
   },
   {
     ...row,
+    id: 'brie',
     name: 'Brie',
     inventory: 240,
     origin: 'France',
@@ -90,6 +88,7 @@ export const data = [
   },
   {
     ...row,
+    id: 'cheddar',
     name: 'Cheddar',
     inventory: 84,
     origin: 'England',
@@ -103,6 +102,7 @@ export const data = [
   },
   {
     ...row,
+    id: 'provolone',
     name: 'Provolone',
     color: 'pale yellow',
     inventory: 781,

@@ -47,6 +47,9 @@ describe('Action List CSS Utils', () => {
   ]
 
   test('getNumericColumnIndices', () => {
-    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
+    expect(getNumericColumnIndices(columns, ['id', 'name', 'age'])).toEqual([
+      0,
+      2,
+    ])
   })
 })

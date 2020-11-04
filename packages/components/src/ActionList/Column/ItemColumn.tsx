@@ -27,6 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Space, SpaceVertical } from '../../Layout'
+import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
 import { ColumnComponentProps } from './column'
@@ -77,7 +78,8 @@ const ActionListItemColumnLayout: FC<ColumnComponentProps> = ({
 export const ActionListItemColumn = styled(ActionListItemColumnLayout)`
   ${({ size }) => (size ? columnSize : noColumnSize)}
 
-  a {
+  a,
+  ${Link} {
     color: inherit;
     :hover,
     :focus {

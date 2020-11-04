@@ -26,8 +26,11 @@
 
 import { useState } from 'react'
 
-export const useActionListSelectManager = (selectableItems: string[]) => {
-  const [selections, setSelections] = useState<string[]>([])
+export const useActionListSelectManager = (
+  selectableItems: string[],
+  selectedItems: string[] = []
+) => {
+  const [selections, setSelections] = useState<string[]>(selectedItems)
 
   const onSelect = (selectionId: string) => {
     /*
