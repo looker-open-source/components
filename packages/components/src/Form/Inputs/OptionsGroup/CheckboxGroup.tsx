@@ -57,6 +57,7 @@ const CheckboxGroupLayout = forwardRef(
       defaultValue = [],
       value,
       onChange,
+      validationType,
       ...rest
     }: CheckboxGroupProps,
     ref: Ref<HTMLDivElement>
@@ -92,6 +93,7 @@ const CheckboxGroupLayout = forwardRef(
           label={option.label}
           detail={option.detail}
           name={name}
+          validationType={validationType}
           value={option.value}
           {...checkedProps}
         />

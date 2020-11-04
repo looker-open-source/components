@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `FieldCheckboxGroup` now sets `border-color` of child checkboxes to "critical" when validationMessage.type is equal to 'error'
 - `Select` on a mobile device or with "tap to click" on a touch pad reopens immediately after clicking on an option
 - `Select` options not being announced in a screen reader on keyboard navigation
 - Controlled `Select` losing focus if there's delay between `onChange` and `value` update
