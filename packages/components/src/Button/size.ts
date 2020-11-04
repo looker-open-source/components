@@ -109,27 +109,22 @@ export const buttonSize = variant({
     xxsmall: {
       fontSize: 'xxsmall',
       height: `${buttonSizeMap.xxsmall}px`,
-      // px: 'xsmall',
     },
     xsmall: {
       fontSize: 'xxsmall',
       height: `${buttonSizeMap.xsmall}px`,
-      // px: 'small',
     },
     small: {
       fontSize: 'xsmall',
       height: `${buttonSizeMap.small}px`,
-      // px: 'large',
     },
     medium: {
       fontSize: 'small',
       height: `${buttonSizeMap.medium}px`,
-      // px: '24px',
     },
     large: {
       fontSize: 'large',
       height: `${buttonSizeMap.large}px`,
-      // px: 'xlarge',
     },
   },
 })
