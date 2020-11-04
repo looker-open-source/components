@@ -25,7 +25,6 @@
  */
 
 import styled from 'styled-components'
-import { variant } from 'styled-system'
 import { ButtonBase } from './ButtonBase'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
