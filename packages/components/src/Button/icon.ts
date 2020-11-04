@@ -39,16 +39,13 @@ export const iconMargins = (props: ButtonProps) => {
   switch (props.size) {
     case 'xxsmall':
     case 'xsmall':
-      spacing.outer = '0.25rem'
-      spacing.inner = '0.375rem'
-      break
     case 'small':
-      spacing.outer = '0.5rem'
-      spacing.inner = '0.5rem'
+      spacing.outer = '0.25rem'
+      spacing.inner = '0.25rem'
       break
     case 'large':
     default:
-      spacing.outer = '0.75rem'
+      spacing.outer = '0.25rem'
       spacing.inner = '0.5rem'
   }
 
