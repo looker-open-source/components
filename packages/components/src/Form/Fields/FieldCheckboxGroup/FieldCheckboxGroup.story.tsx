@@ -32,7 +32,7 @@ import {
 } from './FieldCheckboxGroup'
 
 export default {
-  title: 'Forms/CheckboxGroup',
+  title: 'CheckboxGroup',
 }
 
 const options = [
