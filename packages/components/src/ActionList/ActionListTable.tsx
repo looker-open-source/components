@@ -46,16 +46,8 @@ export const ActionListTableLayout: FC<ActionListTableProps> = ({
   headerRowId,
   renderedWidth,
 }) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const [overflow, setOverflow] = useState(false)
-
-  useEffect(() => {
-    const container = internalRef.current
-
-    if (container) {
-      setOverflow(container.offsetWidth < container.scrollWidth)
-    }
-  }, [renderedWidth])
+  const [element, ref] = useCallbackRef()
+  const overflow = useIsTextTruncated(element)
 
   return (
     <TableScroll ref={internalRef}>
