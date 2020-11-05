@@ -59,6 +59,9 @@ export const columnSize = variant({
   },
 })
 
+/**
+ * Used on columns where no size is explicitly specified to keep content to `min-content` width
+ */
 export const noColumnSize = css`
   max-width: 0;
   min-width: 0;

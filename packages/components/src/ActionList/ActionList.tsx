@@ -50,16 +50,12 @@ export interface ActionListProps {
    * Options for select and select all behavior. Having a non-null select prop will auto-enable Action List select behavior
    */
   select?: SelectConfig
-
   /**
-   * Which columns should be "stuck" the edge of their frame when DataTable content overflows
-   *
-   * Default here a bit convoluted:
-   *  `select` is specified `firstColumnStuck` will default to `true`
-   *  `select` is not specified `firstColumnStuck` will default to `false`
-   *   Explicit specification of `firstColumnStuck` will always determine outcome
+   * ID of the header row. Used for the aria-describedby of the select all checkbox.
+   * Note: If undefined, this will be auto-generated. Generally only explicitly specified
+   * in some limited test scenarios.
    */
-  firstColumnStuck?: boolean
+  headerRowId?: string
   /**
    * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
    */
@@ -69,13 +65,15 @@ export interface ActionListProps {
    * and an onFilter callback to update the filters
    **/
   filterConfig?: FilterConfig
-
   /**
-   * ID of the header row. Used for the aria-describedby of the select all checkbox.
-   * Note: If undefined, this will be auto-generated. Generally only explicitly specified
-   * in some limited test scenarios.
+   * Which columns should be "stuck" the edge of their frame when DataTable content overflows
+   *
+   * Default here a bit convoluted:
+   *  `select` is specified `firstColumnStuck` will default to `true`
+   *  `select` is not specified `firstColumnStuck` will default to `false`
+   *   Explicit specification of `firstColumnStuck` will always determine outcome
    */
-  headerRowId?: string
+  firstColumnStuck?: boolean
 }
 
 export interface SelectConfig {

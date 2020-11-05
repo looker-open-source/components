@@ -47,9 +47,9 @@ const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
   ...columnSelectorProps
 }) => (
   <div className={className}>
-    {filters && onFilter ? (
+    {filters && onFilter && (
       <InputFilters filters={filters} onChange={onFilter} />
-    ) : null}
+    )}
     {canSelectColumns && (
       <>
         <DividerVertical mx="none" stretch />

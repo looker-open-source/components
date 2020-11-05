@@ -27,13 +27,21 @@
 import styled from 'styled-components'
 import { densityTarget } from '../ActionListTable'
 
-export const ItemTarget = styled.div<{ disabled?: boolean }>`
+export interface ItemTargetProps {
+  disabled?: boolean
+  size?: string
+}
+
+/**
+ * ItemTarget provides an explicitly sized target for click targets.
+ */
+export const ItemTarget = styled.div<ItemTargetProps>`
   align-items: center;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
   display: flex;
   height: 100%;
   justify-content: center;
-  min-height: ${densityTarget};
-  min-width: ${densityTarget};
-  width: ${densityTarget};
+  min-height: ${({ size }) => size || densityTarget};
+  min-width: ${({ size }) => size || densityTarget};
+  width: ${({ size }) => size || densityTarget};
 `

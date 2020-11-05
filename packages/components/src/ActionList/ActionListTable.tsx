@@ -90,7 +90,11 @@ const selectColumn = css<ActionListTableProps>`
 `
 
 /**
- * @TODO - This should only bother loading if it's needed
+ * Apply specialized styling to the last column where actions are presented.
+ * NOTE: If the row does not include actions the column is still rendered.
+ *
+ * `width: 100%` is specified on this column ensures that the other columns
+ * only consume the space needed to meet their specified size or min-content.
  */
 const actionsColumn = css`
   &:last-child {

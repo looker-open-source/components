@@ -56,6 +56,7 @@ export const Sortable = () => {
     {
       canSort: true,
       id: 'name',
+      size: 'nowrap',
       title: 'Name',
       type: 'string',
     },

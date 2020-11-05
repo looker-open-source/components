@@ -26,6 +26,11 @@
 
 import { css } from 'styled-components'
 
+/**
+ * This utility function produces a shadow on the outside edge of the DOM element to which it is assigned
+ * @param placement which side to place the shadow on
+ * @param depth size of the shadow in pixels
+ */
 export const edgeShadow = (placement: 'left' | 'right' = 'left', depth = 4) => {
   let pseudo = ':after'
   let relativeTo = 'right'

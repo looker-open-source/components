@@ -96,8 +96,8 @@ FilterSelected.args = {
   filters: [withValue, ...filters],
 }
 
-export const HideFilter = Template.bind({})
-HideFilter.args = {
+export const HideFilterIcon = Template.bind({})
+HideFilterIcon.args = {
   ...Basic.args,
   hideFilterIcon: true,
 }

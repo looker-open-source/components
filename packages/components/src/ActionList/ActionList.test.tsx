@@ -67,14 +67,6 @@ const data = [
   },
 ]
 
-// const header = (
-//   <>
-//     <ActionListHeaderColumn id="id">Foo</ActionListHeaderColumn>
-//     <ActionListHeaderColumn id="name">Bar</ActionListHeaderColumn>
-//     <ActionListHeaderColumn id="type">FooBar</ActionListHeaderColumn>
-//   </>
-// )
-
 const items = data.map(({ id, name, type }) => {
   const availableActions = (
     <>
@@ -94,18 +86,6 @@ const items = data.map(({ id, name, type }) => {
 const actionListWithGeneratedHeader = (
   <ActionList columns={columns}>{items}</ActionList>
 )
-
-// const actionListWithProvidedHeader = (
-//   <ActionList columns={columns} header={header}>
-//     {items}
-//   </ActionList>
-// )
-
-// const actionListWithNoHeader = (
-//   <ActionList columns={columns} header={false}>
-//     {items}
-//   </ActionList>
-// )
 
 const handleActionClick = jest.fn()
 const handleListItemClick = jest.fn()
@@ -175,32 +155,6 @@ describe('ActionList', () => {
       expect(getByText('Richard Garfield')).toBeInTheDocument()
       expect(getByText('Game Designer')).toBeInTheDocument()
     })
-
-    // test('Renders a provided header and list item', () => {
-    //   const { getByText, queryByText } = renderWithTheme(
-    //     actionListWithProvidedHeader
-    //   )
-
-    //   expect(queryByText('ID')).not.toBeInTheDocument()
-    //   expect(queryByText('Name')).not.toBeInTheDocument()
-    //   expect(queryByText('Role')).not.toBeInTheDocument()
-
-    //   expect(getByText('1')).toBeInTheDocument()
-    //   expect(getByText('Richard Garfield')).toBeInTheDocument()
-    //   expect(getByText('Game Designer')).toBeInTheDocument()
-    // })
-
-    // test('Renders no header if header prop value is false', () => {
-    //   const { getByText, queryByText } = renderWithTheme(actionListWithNoHeader)
-
-    //   expect(queryByText('ID')).not.toBeInTheDocument()
-    //   expect(queryByText('Name')).not.toBeInTheDocument()
-    //   expect(queryByText('Role')).not.toBeInTheDocument()
-
-    //   expect(getByText('1')).toBeInTheDocument()
-    //   expect(getByText('Richard Garfield')).toBeInTheDocument()
-    //   expect(getByText('Game Designer')).toBeInTheDocument()
-    // })
 
     test('Renders action menu on button click and handles action click', () => {
       const { getAllByText, getByText, queryByText } = renderWithTheme(

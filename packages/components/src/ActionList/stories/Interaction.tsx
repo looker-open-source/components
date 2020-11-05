@@ -48,24 +48,10 @@ interface DemoProps extends Omit<ActionListProps, 'bulk' | 'select'> {
   selectedItems?: string[]
 }
 
-// const [fieldFilters, setFieldFilters] = useState<FieldFilter[]>(
-//   defaultFilters
-// )
-const filterConfig: FilterConfig = {
-  filters: defaultFilters,
-  onFilter: () => noop,
-}
-
 const Template: Story<DemoProps> = ({
   bulk,
-  // filters,
   select,
   selectedItems,
-  // canCustomizeColumns,
-  // canFilter,
-  // canSelect,
-  // noResultsDisplay,
-  // firstColumnStuck,
   ...args
 }) => {
   const allPageItems = data.map(({ id }) => id)
@@ -112,13 +98,6 @@ const Template: Story<DemoProps> = ({
     totalCount: 8,
   }
 
-  // const filteredItems = useMemo(() => {
-  //   if (filters && fieldFilters.some((filter) => filter.value)) {
-  //     return [items[0]]
-  //   }
-  //   return items
-  // }, [filters, fieldFilters])
-
   return (
     <ActionList
       bulk={bulk ? bulkActionsConfig : undefined}
@@ -136,32 +115,34 @@ Basic.args = {
   headerRowId: 'headerId',
 }
 
-const noHiddenColumns = mockColumns.map((c) => {
-  return { ...c, hide: undefined }
-})
+const filterConfig: FilterConfig = {
+  filters: defaultFilters,
+  onFilter: () => noop,
+}
 export const Filters = Template.bind({})
 Filters.args = {
   ...Basic.args,
-  columns: noHiddenColumns,
   filterConfig,
 }
 
-export const FiltersAndColumnSelector = Template.bind({})
-FiltersAndColumnSelector.args = {
+const noHiddenColumns = mockColumns.map((c) => {
+  return { ...c, hide: undefined }
+})
+export const FilterNoColumnSelector = Template.bind({})
+FilterNoColumnSelector.args = {
   ...Filters.args,
-  columns: mockColumns,
+  columns: noHiddenColumns,
 }
 
 export const Select = Template.bind({})
 Select.args = {
-  columns: mockColumns,
+  ...Basic.args,
   select: true,
 }
 
 export const SelectAndFilters = Template.bind({})
 SelectAndFilters.args = {
   ...Filters.args,
-  columns: mockColumns,
   select: true,
 }
 
