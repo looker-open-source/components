@@ -206,17 +206,12 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
           <ActionListBulkControls {...bulk} />
         )}
 
-        <ReactResizeDetector handleHeight>
-          {(width: string) => (
             <ActionListTable
               {...props}
               columns={columns}
               firstColumnStuck={firstColumnStuck}
-              renderedWidth={width}
               visibleColumns={visibleColumns}
             />
-          )}
-        </ReactResizeDetector>
       </div>
     </ActionListContext.Provider>
   )
