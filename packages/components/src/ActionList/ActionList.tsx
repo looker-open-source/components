@@ -66,7 +66,7 @@ export interface ActionListProps {
    **/
   filterConfig?: FilterConfig
   /**
-   * Which columns should be "stuck" the edge of their frame when DataTable content overflows
+   * Which columns should be "stuck" to the edge of their frame when DataTable content overflows
    *
    * Default here a bit convoluted:
    *  `select` is specified `firstColumnStuck` will default to `true`
