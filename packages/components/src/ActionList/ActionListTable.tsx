@@ -80,7 +80,6 @@ const selectColumn = css<ActionListTableProps>`
       &:first-child {
         max-width: ${densityTarget};
         min-width: ${densityTarget};
-        padding: 0;
         width: ${densityTarget};
       }
       &:nth-child(2) {
@@ -120,16 +119,15 @@ const stickyColumns = css<ActionListTableProps>`
       &:first-child {
         left: 0;
         position: sticky;
-        ${(!select || firstColumnStuck === false) && edgeShadow()}
+        ${firstColumnStuck === false && edgeShadow()}
       }
     `}
 
   ${({ select, firstColumnStuck }) =>
-    select &&
     firstColumnStuck &&
     css`
       &:nth-child(2) {
-        left: ${densityTarget};
+        left: ${select ? densityTarget : 0};
         position: sticky;
         ${edgeShadow()}
       }
@@ -162,6 +160,10 @@ export const ActionListTable = styled(ActionListTableLayout)`
   tr {
     td,
     th {
+      &:first-child {
+        padding: 0;
+      }
+
       ${selectColumn}
       ${actionsColumn}
     }

@@ -86,6 +86,12 @@ const ActionListRowLayout = forwardRef(
       }
     })
 
+    const checkbox = hasCheckbox ? (
+      <ActionListCheckbox {...pick(props, checkListProps)} />
+    ) : (
+      <div />
+    )
+
     return (
       <tr
         ref={ref}
@@ -94,11 +100,7 @@ const ActionListRowLayout = forwardRef(
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        {hasCheckbox && (
-          <ColumnType key="checkbox">
-            <ActionListCheckbox {...pick(props, checkListProps)} />
-          </ColumnType>
-        )}
+        <ColumnType key="checkbox">{checkbox}</ColumnType>
         {sizedChildren}
         <ColumnType key="actions">{secondary}</ColumnType>
       </tr>
@@ -117,6 +119,8 @@ export const ActionListRow = styled(ActionListRowLayout)`
 
     &:first-of-type > div {
       border-left: 1px solid transparent;
+      border-right: 1px solid transparent; /* Keeps checkbox centered */
+      height: 100%;
     }
   }
 

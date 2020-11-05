@@ -29,6 +29,7 @@ import React, { FC } from 'react'
 import { DividerVertical } from '../../Divider'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { FilterConfig } from '../ActionList'
+import { densityTarget } from '../ActionListTable'
 import { ItemTarget } from '../Item/ItemTarget'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
@@ -69,5 +70,10 @@ export const ActionListFilters = styled(ActionListFiltersLayout)`
 
   ${InputFilters} {
     border: none;
+  }
+
+  ${ItemTarget} {
+    /* Reduce to compensate for outer borders */
+    min-height: calc(${densityTarget} - 2px);
   }
 `

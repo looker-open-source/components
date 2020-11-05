@@ -87,7 +87,7 @@ describe('InputFilters', () => {
 
     fireEvent.click(getByText('Name'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('Name:')).toBeInTheDocument()
     expect(queryByText('Color')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
@@ -160,9 +160,12 @@ describe('InputFilters', () => {
   })
 
   test('Display a second filter as chip', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    const {
+      getByPlaceholderText,
+      getAllByText,
+      getByText,
+      queryByText,
+    } = renderWithTheme(<ControlledComponent />)
 
     fireEvent.click(getByPlaceholderText('Filter List'))
 
@@ -183,7 +186,7 @@ describe('InputFilters', () => {
     fireEvent.click(getByText('blue'))
 
     expect(getByText('color:')).toBeInTheDocument()
-    expect(queryByText(/, blue/)).toBeInTheDocument()
+    expect(getAllByText('blue').length).toEqual(2)
 
     // Close popover to silence act() warning
     fireEvent.click(document)

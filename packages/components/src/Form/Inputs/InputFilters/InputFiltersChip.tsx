@@ -33,6 +33,10 @@ interface InputFiltersChipProps
   onDelete: (field: FieldFilter) => void
 }
 
+/* Replace comma not followed by white space with comma followed by space */
+const defaultFormatValue = (value?: string) =>
+  value ? value.replace(/(,(?=\S)|:)/, ', ') : undefined
+
 export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
   ({ filter, onDelete, ...props }, ref: Ref<HTMLSpanElement>) => {
     const handleDelete = () => onDelete(filter)
@@ -40,7 +44,7 @@ export const InputFiltersChip: FC<InputFiltersChipProps> = forwardRef(
       <Chip onDelete={handleDelete} prefix={filter.field} ref={ref} {...props}>
         {filter.formatValue && filter.value
           ? filter.formatValue(filter.value)
-          : filter.value}
+          : defaultFormatValue(filter.value)}
       </Chip>
     )
   }

@@ -169,7 +169,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             />
           ) : (
             <Text fontSize="small" lineHeight="xlarge">
-              {filter?.label || filter.field}
+              {filter?.label || filter.field}:
             </Text>
           )
           return filter.field === fieldEditing ? (

@@ -51,9 +51,8 @@ export const inputFilterEditor: InputFilterEditorRenderProp = ({
     ? filterOptions.options.map((value) => ({ label: value, value }))
     : []
 
-  const handleChangeCheckbox = (newValues: string[]) => {
-    onChange(newValues.sort().join(', '))
-  }
+  const handleChangeCheckbox = (newValues: string[]) =>
+    onChange(newValues.sort().join(','))
 
   const handleChangeRadio = (newValue: string) => {
     onChange(newValue)
@@ -62,7 +61,7 @@ export const inputFilterEditor: InputFilterEditorRenderProp = ({
 
   return multiple ? (
     <CheckboxGroup
-      value={(value || '').split(', ')}
+      value={value ? value.split(',') : []}
       options={options}
       onChange={handleChangeCheckbox}
     />

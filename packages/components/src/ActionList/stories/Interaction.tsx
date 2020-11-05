@@ -25,8 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import React from 'react'
-import noop from 'lodash/noop'
+import React, { useState } from 'react'
 import {
   ActionList,
   ActionListProps,
@@ -50,6 +49,7 @@ interface DemoProps extends Omit<ActionListProps, 'bulk' | 'select'> {
 
 const Template: Story<DemoProps> = ({
   bulk,
+  filters,
   select,
   selectedItems,
   ...args
@@ -62,6 +62,13 @@ const Template: Story<DemoProps> = ({
     selections,
     setSelections,
   } = useActionListSelectManager(allPageItems, selectedItems)
+
+  const [listFilters, setListFilters] = useState(defaultFilters)
+
+  const filterConfig: FilterConfig = {
+    filters: listFilters,
+    onFilter: (filters) => setListFilters(filters),
+  }
 
   const onTotalSelectAll = () =>
     setSelections([
@@ -101,6 +108,7 @@ const Template: Story<DemoProps> = ({
   return (
     <ActionList
       bulk={bulk ? bulkActionsConfig : undefined}
+      filterConfig={filters ? filterConfig : undefined}
       select={select ? selectConfig : undefined}
       {...args}
     >
@@ -115,14 +123,10 @@ Basic.args = {
   headerRowId: 'headerId',
 }
 
-const filterConfig: FilterConfig = {
-  filters: defaultFilters,
-  onFilter: () => noop,
-}
 export const Filters = Template.bind({})
 Filters.args = {
   ...Basic.args,
-  filterConfig,
+  filters: true,
 }
 
 const noHiddenColumns = mockColumns.map((c) => {
