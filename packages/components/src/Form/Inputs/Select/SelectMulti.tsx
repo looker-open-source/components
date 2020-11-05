@@ -73,6 +73,7 @@ const SelectMultiComponent = forwardRef(
     {
       options,
       disabled,
+      autoFocus,
       isFilterable = false,
       placeholder,
       onFilter,
@@ -124,6 +125,7 @@ const SelectMultiComponent = forwardRef(
         <ComboboxMultiInput
           {...ariaProps}
           disabled={disabled}
+          autoFocus={autoFocus}
           placeholder={placeholder}
           removeOnBackspace={removeOnBackspace}
           validationType={props.validationType}

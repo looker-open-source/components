@@ -50,6 +50,7 @@ function getCheckedProps(
 const CheckboxGroupLayout = forwardRef(
   (
     {
+      autoFocus,
       disabled,
       inline,
       name: propsName,
@@ -81,8 +82,9 @@ const CheckboxGroupLayout = forwardRef(
       [onChange, value]
     )
 
-    const checkboxes = options.map((option) => {
+    const checkboxes = options.map((option, index) => {
       const checkedProps = getCheckedProps(option.value, value, defaultValue)
+      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {}
       const handleChange = getChangeHandler(option.value)
 
       return (
@@ -96,6 +98,7 @@ const CheckboxGroupLayout = forwardRef(
           validationType={validationType}
           value={option.value}
           {...checkedProps}
+          {...autoFocusProps}
         />
       )
     })

@@ -103,6 +103,7 @@ const SelectComponent = forwardRef(
     {
       options,
       disabled,
+      autoFocus,
       isFilterable,
       isClearable,
       placeholder,
@@ -162,6 +163,7 @@ const SelectComponent = forwardRef(
           {...ariaProps}
           before={<SelectInputIcon options={options} />}
           disabled={disabled}
+          autoFocus={autoFocus}
           placeholder={placeholder}
           name={name}
           validationType={props.validationType}

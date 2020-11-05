@@ -234,6 +234,7 @@ export const SelectContent = () => {
         aria-label="Fruits"
         placeholder="Select Brand"
         defaultValue="Boulder Creek"
+        autoFocus
       />
       <Label>
         Use alignSelf="flex-start" to avoid filling height as a flex child
@@ -376,6 +377,7 @@ export const SelectDemo = () => {
               aria-label="Fruits"
               defaultValue="1"
               isClearable
+              autoFocus
             />
           </Form>
         </CardContent>

@@ -27,7 +27,12 @@
 import { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Button } from '../../../Button'
-import { Dialog, DialogContent } from '../../../Dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+} from '../../../Dialog'
 import { Icon } from '../../../Icon'
 import { Space, SpaceVertical } from '../../../Layout'
 import { List, ListItem } from '../../../List'
@@ -280,6 +285,7 @@ export const SelectMultiDemo = () => {
   return (
     <SpaceVertical p="large" width={400}>
       <Dialog isOpen={isOpen} onClose={handleClose}>
+        <DialogHeader>SelectMulti in a Dialog</DialogHeader>
         <DialogContent>
           <FieldSelectMulti
             options={newOptions1k}
@@ -290,8 +296,10 @@ export const SelectMultiDemo = () => {
             showCreate
             defaultValues={['Boulder Creek']}
             freeInput
+            autoFocus
           />
         </DialogContent>
+        <DialogFooter />
       </Dialog>
       <Button onClick={handleClick}>Open</Button>
       <Heading>FieldSelectMulti</Heading>
@@ -308,6 +316,7 @@ export const SelectMultiDemo = () => {
           description="this is the description"
           values={['cheddar']}
           options={cheeseOptions}
+          autoFocus
         />
       </SpaceVertical>
       <Heading>SelectMulti</Heading>

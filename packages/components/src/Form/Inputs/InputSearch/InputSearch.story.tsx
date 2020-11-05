@@ -92,6 +92,7 @@ export const Advanced = () => {
       options={options}
       noOptionsLabel="Nothing matched your search"
       isClearable={false}
+      autoFocus
     />
   )
 }

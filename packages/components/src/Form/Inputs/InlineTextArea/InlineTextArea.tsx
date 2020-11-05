@@ -24,7 +24,6 @@
 
  */
 
-import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
@@ -35,7 +34,7 @@ import {
   CompatibleHTMLProps,
   LayoutProps,
 } from '@looker/design-tokens'
-import { inputPropKeys } from '../InputProps'
+import { pickInputProps } from '../InputProps'
 
 export interface InlineTextAreaProps
   extends Omit<LayoutProps, 'size'>,
@@ -75,7 +74,7 @@ export const InlineTextAreaLayout = forwardRef(
           ref={ref}
           underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
-          {...pick(props, inputPropKeys)}
+          {...pickInputProps(props)}
         />
         <VisibleText displayValue={displayValue}>
           {displayValue || placeholder}

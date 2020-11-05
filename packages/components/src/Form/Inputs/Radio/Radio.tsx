@@ -24,11 +24,10 @@
 
  */
 
-import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
-import { InputProps, inputPropKeys } from '../InputProps'
+import { InputProps, pickInputProps } from '../InputProps'
 import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
@@ -43,7 +42,7 @@ const RadioLayout = forwardRef(
 
     return (
       <div className={className}>
-        <input type="radio" {...pick(restProps, inputPropKeys)} ref={ref} />
+        <input type="radio" {...pickInputProps(restProps)} ref={ref} />
         <FauxRadio />
       </div>
     )

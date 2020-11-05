@@ -24,7 +24,6 @@
 
  */
 
-import pick from 'lodash/pick'
 import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
@@ -33,7 +32,7 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import { inputPropKeys, InputProps, InputTextTypeProps } from '../InputProps'
+import { pickInputProps, InputProps, InputTextTypeProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 
 export interface InlineInputTextProps
@@ -75,7 +74,7 @@ const InlineInputTextLayout = forwardRef(
           placeholder={placeholder}
           type={type}
           ref={ref}
-          {...omitStyledProps(pick(props, inputPropKeys))}
+          {...omitStyledProps(pickInputProps(props))}
         />
         <StyledText>{displayValue || placeholder || ' '}</StyledText>
       </span>

@@ -24,7 +24,6 @@
 
  */
 
-import pick from 'lodash/pick'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
@@ -41,7 +40,7 @@ import {
   simpleLayoutCSS,
   SimpleLayoutProps,
 } from '../../../Layout/utils/simple'
-import { inputPropKeys } from '../InputProps'
+import { pickInputProps } from '../InputProps'
 
 type TextAreaResize = 'vertical' | 'none' | boolean
 
@@ -60,7 +59,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   validationType,
   ...props
 }) => {
-  const textareaProps = pick(props, inputPropKeys)
+  const textareaProps = pickInputProps(props)
 
   return (
     <div className={className}>

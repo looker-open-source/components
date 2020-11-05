@@ -94,6 +94,7 @@ const defaultValueCheckbox = ['swiss', 'cheddar']
 const Template: Story<FieldCheckboxGroupProps> = (args) => (
   <FieldCheckboxGroup
     {...args}
+    autoFocus
     defaultValue={defaultValueCheckbox}
     label="Cheeses"
     description="Pick all your cheeses"

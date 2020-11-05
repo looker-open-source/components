@@ -30,10 +30,9 @@ import {
   SpaceProps,
   toggleSwitchShadowColor,
 } from '@looker/design-tokens'
-import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { InputProps, inputPropKeys } from '../InputProps'
+import { InputProps, pickInputProps } from '../InputProps'
 import { KnobContainer, KnobProps } from './Knob'
 
 export interface ToggleSwitchProps
@@ -71,7 +70,7 @@ export const ToggleSwitchLayout = forwardRef(
           aria-checked={on}
           aria-invalid={validationType === 'error' ? 'true' : undefined}
           ref={ref}
-          {...pick(props, inputPropKeys)}
+          {...pickInputProps(props)}
         />
         <KnobContainer on={on} disabled={disabled} />
         {disabled && <DisabledKnob />}

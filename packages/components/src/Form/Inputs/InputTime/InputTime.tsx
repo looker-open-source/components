@@ -53,6 +53,7 @@ import {
   simpleLayoutCSS,
   SimpleLayoutProps,
 } from '../../../Layout/utils/simple'
+import { getAutoFocusProps } from '../InputProps'
 import {
   formatTimeString,
   TimeFormats,
@@ -62,6 +63,7 @@ import {
 import { ValidationType } from '../../ValidationMessage'
 
 export interface InputTimeProps extends Omit<SimpleLayoutProps, 'size'> {
+  autoFocus?: boolean
   format?: TimeFormats
   defaultValue?: string
   value?: string
@@ -265,6 +267,7 @@ const InputTimeInternal = forwardRef(
     {
       className,
       defaultValue,
+      autoFocus,
       disabled,
       format = '12h',
       id,
@@ -481,6 +484,7 @@ const InputTimeInternal = forwardRef(
           disabled={disabled}
           readOnly={readOnly}
           required={required}
+          {...getAutoFocusProps(autoFocus)}
         />
         <div>:</div>
         <StyledInput

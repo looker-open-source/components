@@ -276,6 +276,7 @@ const InputTimeSelectLayout = forwardRef(
       defaultValue,
       validationType,
       disabled,
+      autoFocus,
       id,
       ...props
     }: InputTimeSelectProps,
@@ -383,6 +384,7 @@ const InputTimeSelectLayout = forwardRef(
           autoComplete={false}
           validationType={validationType}
           disabled={disabled}
+          autoFocus={autoFocus}
           id={id}
           {...ariaProps}
         />
