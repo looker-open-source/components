@@ -84,6 +84,24 @@ export const buttonIconSizeMap = {
   large: 'small',
 }
 
+export const buttonPadding = (
+  hasIcon: boolean,
+  size: ButtonBaseSizes | undefined
+) => {
+  switch (size) {
+    case 'xxsmall':
+      return 'xsmall'
+    case 'xsmall':
+      return 'small'
+    case 'small':
+      return hasIcon ? 'small' : 'large'
+    case 'medium':
+    case 'large':
+    default:
+      return hasIcon ? 'medium' : '1.5rem'
+  }
+}
+
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonSize = variant({
   prop: 'size',
@@ -91,27 +109,22 @@ export const buttonSize = variant({
     xxsmall: {
       fontSize: 'xxsmall',
       height: `${buttonSizeMap.xxsmall}px`,
-      px: 'xsmall',
     },
     xsmall: {
       fontSize: 'xxsmall',
       height: `${buttonSizeMap.xsmall}px`,
-      px: 'small',
     },
     small: {
       fontSize: 'xsmall',
       height: `${buttonSizeMap.small}px`,
-      px: 'large',
     },
     medium: {
       fontSize: 'small',
       height: `${buttonSizeMap.medium}px`,
-      px: '24px',
     },
     large: {
       fontSize: 'large',
       height: `${buttonSizeMap.large}px`,
-      px: 'xlarge',
     },
   },
 })

@@ -47,6 +47,7 @@ import {
   ButtonSizes,
   ButtonSizeProps,
   buttonIconSizeMap,
+  buttonPadding,
 } from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
@@ -146,6 +147,7 @@ const ButtonJSX = forwardRef(
         onKeyUp={handleOnKeyUp}
         onBlur={handleOnBlur}
         ref={ref}
+        px={buttonPadding(!!(iconBefore || iconAfter), size)}
       >
         {iconBefore && <ButtonIcon name={iconBefore} size={iconSize} />}
         {children}
