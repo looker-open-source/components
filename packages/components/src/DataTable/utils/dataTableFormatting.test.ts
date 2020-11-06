@@ -24,37 +24,32 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { DataTableColumns } from '../Column'
+import { getNumericColumnIndices } from './dataTableFormatting'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+describe('DataTable CSS Utils', () => {
+  const columns: DataTableColumns = [
+    {
+      id: 'id',
+      title: 'ID',
+      type: 'number',
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+    {
+      id: 'age',
+      title: 'Age',
+      type: 'number',
+    },
+  ]
+
+  test('getNumericColumnIndices', () => {
+    expect(getNumericColumnIndices(columns, ['id', 'name', 'age'])).toEqual([
+      0,
+      2,
+    ])
+  })
+})

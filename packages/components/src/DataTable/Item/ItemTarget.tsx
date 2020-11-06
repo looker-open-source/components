@@ -24,37 +24,24 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import styled from 'styled-components'
+import { densityTarget } from '../Table'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export interface ItemTargetProps {
+  disabled?: boolean
+  size?: string
+}
+
+/**
+ * ItemTarget provides an explicitly sized target for click targets.
+ */
+export const ItemTarget = styled.div<ItemTargetProps>`
+  align-items: center;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'inherit')};
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  min-height: ${({ size }) => size || densityTarget};
+  min-width: ${({ size }) => size || densityTarget};
+  width: ${({ size }) => size || densityTarget};
+`

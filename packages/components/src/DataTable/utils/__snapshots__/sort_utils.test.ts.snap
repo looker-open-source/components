@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Sort Utils Default sort 1`] = `
+Object {
+  "columns": Array [
+    Object {
+      "canSort": true,
+      "id": "id",
+      "sortDirection": "asc",
+      "title": "ID",
+      "type": "number",
+    },
+    Object {
+      "canSort": true,
+      "id": "name",
+      "title": "Name",
+      "type": "string",
+    },
+  ],
+  "data": Array [
+    Object {
+      "id": 1,
+      "name": "Shaq",
+    },
+    Object {
+      "id": 2,
+      "name": "Kobe",
+    },
+  ],
+}
+`;
+
+exports[`DataTable Sort Utils Default sort 2`] = `
+Object {
+  "columns": Array [
+    Object {
+      "canSort": true,
+      "id": "id",
+      "sortDirection": "desc",
+      "title": "ID",
+      "type": "number",
+    },
+    Object {
+      "canSort": true,
+      "id": "name",
+      "title": "Name",
+      "type": "string",
+    },
+  ],
+  "data": Array [
+    Object {
+      "id": 2,
+      "name": "Kobe",
+    },
+    Object {
+      "id": 1,
+      "name": "Shaq",
+    },
+  ],
+}
+`;
+
+exports[`DataTable Sort Utils Default sort 3`] = `
+Object {
+  "columns": Array [
+    Object {
+      "canSort": true,
+      "id": "id",
+      "title": "ID",
+      "type": "number",
+    },
+    Object {
+      "canSort": true,
+      "id": "name",
+      "sortDirection": "asc",
+      "title": "Name",
+      "type": "string",
+    },
+  ],
+  "data": Array [
+    Object {
+      "id": 2,
+      "name": "Kobe",
+    },
+    Object {
+      "id": 1,
+      "name": "Shaq",
+    },
+  ],
+}
+`;
+
+exports[`DataTable Sort Utils Default sort 4`] = `
+Object {
+  "columns": Array [
+    Object {
+      "canSort": true,
+      "id": "id",
+      "title": "ID",
+      "type": "number",
+    },
+    Object {
+      "canSort": true,
+      "id": "name",
+      "sortDirection": "desc",
+      "title": "Name",
+      "type": "string",
+    },
+  ],
+  "data": Array [
+    Object {
+      "id": 1,
+      "name": "Shaq",
+    },
+    Object {
+      "id": 2,
+      "name": "Kobe",
+    },
+  ],
+}
+`;
+
+exports[`DataTable Sort Utils Default string comparison 1`] = `-1`;
+
+exports[`DataTable Sort Utils Default string comparison 2`] = `0`;
+
+exports[`DataTable Sort Utils Default string comparison 3`] = `1`;
+
+exports[`DataTable Sort Utils Default string comparison 4`] = `-1`;
+
+exports[`DataTable Sort Utils Default string comparison 5`] = `1`;

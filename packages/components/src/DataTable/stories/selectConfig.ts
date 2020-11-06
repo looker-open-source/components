@@ -24,37 +24,18 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { data } from '../../__mocks__/DataTable/data'
+import { useSelectManager } from '../utils/useSelectManager'
+import { SelectConfig } from '../DataTable'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+const pageItems = data.map(({ id }) => id)
+
+const { onSelect, onSelectAll, selections } = useSelectManager(pageItems)
+
+export const select: SelectConfig = {
+  onClickRowSelect: true,
+  onSelect,
+  onSelectAll,
+  pageItems,
+  selectedItems: selections,
+}

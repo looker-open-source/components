@@ -24,9 +24,9 @@
 
  */
 
-import { ColumnsProps } from '../../ActionList/Column'
+import { DataTableColumns } from '../../DataTable/Column'
 
-export const columns: ColumnsProps = [
+export const columns: DataTableColumns = [
   {
     id: 'name',
     size: 'medium',

@@ -69,7 +69,7 @@ export const SelectManagerReturnTable = () => (
         </TableDataCell>
         <TableDataCell>
           A callback function that accepts a string id, and will add that string
-          id to the selections state. Will usually be passed to an ActionList's
+          id to the selections state. Will usually be passed to a DataTable's
           onSelect prop.
         </TableDataCell>
       </TableRow>
@@ -81,7 +81,7 @@ export const SelectManagerReturnTable = () => (
         <TableDataCell>
           A callback function that accepts no parameters, and will add all
           selectableItems to the selections state. Will usually be passed to an
-          ActionList's onSelectAll prop.
+          DataTable's onSelectAll prop.
         </TableDataCell>
       </TableRow>
     </TableBody>

@@ -25,36 +25,36 @@
  */
 
 import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { columns } from '../../__mocks__/DataTable/columns'
+import { filters } from '../../__mocks__/filters'
+import { DataTableFilters } from './DataTableFilters'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+describe('DataTableFilters', () => {
+  test('render and displays InputFilter', () => {
+    const { getByPlaceholderText } = renderWithTheme(
+      <DataTableFilters
+        columns={columns}
+        columnsVisible={[]}
+        filters={filters}
+        onFilter={jest.fn()}
+        onColumnVisibilityChange={jest.fn()}
+      />
+    )
+
+    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+  })
+
+  test('render display columns icon', () => {
+    const { getByText } = renderWithTheme(
+      <DataTableFilters
+        columns={columns}
+        columnsVisible={[]}
+        filters={filters}
+        onFilter={jest.fn()}
+        onColumnVisibilityChange={jest.fn()}
+      />
+    )
+    expect(getByText('Select columns to display')).toBeInTheDocument()
+  })
+})

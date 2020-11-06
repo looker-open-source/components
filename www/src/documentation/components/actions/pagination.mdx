@@ -32,9 +32,9 @@ The callback passed into the `onChange` prop will be called whenever an `<IconBu
 }
 ```
 
-## Compose with an ActionList
+## Compose with a DataTable
 
-One application of the `<Pagination/>` component is to paginate a data table, like an `<ActionList>`.
+One application of the `<Pagination/>` component is to paginate a data table, like a `<DataTable>`.
 
 ```jsx
 ;() => {
@@ -78,18 +78,18 @@ One application of the `<Pagination/>` component is to paginate a data table, li
   const items = data.map(({ id, name }, index) => {
     return (
       index + 1 === currentPage && (
-        <ActionListItem
+        <DataTableItem
           key={id}
           onClick={() => alert(`Row clicked`)}
           actions={
-            <ActionListItemAction onClick={() => alert(`${name} selected!`)}>
+            <DataTableAction onClick={() => alert(`${name} selected!`)}>
               Select Cheese
-            </ActionListItemAction>
+            </DataTableAction>
           }
         >
-          <ActionListItemColumn>{id}</ActionListItemColumn>
-          <ActionListItemColumn>{name}</ActionListItemColumn>
-        </ActionListItem>
+          <DataTableCell>{id}</DataTableCell>
+          <DataTableCell>{name}</DataTableCell>
+        </DataTableItem>
       )
     )
   })
@@ -97,7 +97,7 @@ One application of the `<Pagination/>` component is to paginate a data table, li
   return (
     <Flex flexDirection="column" alignItems="center">
       <Box width="100%" mb="10px">
-        <ActionList columns={columns}>{items}</ActionList>
+        <DataTable columns={columns}>{items}</DataTable>
       </Box>
       <Pagination
         current={currentPage}

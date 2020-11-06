@@ -24,37 +24,37 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import React, { FC } from 'react'
+import { Checkbox, MixedBoolean } from '../../Form'
+import { ItemTarget } from './ItemTarget'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export interface DataTableCheckboxProps {
+  id?: string
+  checked?: MixedBoolean
+  disabled?: boolean
+  onChange?: () => void
+}
+
+export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
+
+export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
+  id,
+  onChange,
+  checked,
+  disabled,
+}) => {
+  const handleCellOnClick = () => !disabled && onChange && onChange()
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
+    event.key === 'Enter' && event.currentTarget.click()
+
+  return (
+    <ItemTarget onClick={handleCellOnClick}>
+      <Checkbox
+        aria-describedby={id}
+        disabled={disabled}
+        checked={checked}
+        onKeyDown={handleOnKeyDown}
+      />
+    </ItemTarget>
+  )
+}

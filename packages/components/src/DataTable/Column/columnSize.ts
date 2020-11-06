@@ -24,37 +24,50 @@
 
  */
 
-import React from 'react'
 import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+  SizeSmall,
+  SizeMedium,
+  SizeLarge,
+} from '@looker/design-tokens/src/system'
+import { css } from 'styled-components'
+import { variant } from 'styled-system'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export type DataTableColumnSize =
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | 'auto'
+  | 'nowrap'
+
+export const sizeInfersTruncate = (size: DataTableColumnSize) =>
+  size && !['auto', 'nowrap'].includes(size)
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const columnSize = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      maxWidth: '3rem',
+      minWidth: '3rem',
+    },
+    medium: {
+      maxWidth: '12rem',
+      minWidth: '12rem',
+    },
+    large: {
+      maxWidth: '20rem',
+      minWidth: '20rem',
+    },
+    nowrap: {
+      whiteSpace: 'nowrap',
+    },
+  },
+})
+
+/**
+ * Used on columns where no size is explicitly specified to keep content to `min-content` width
+ */
+export const noColumnSize = css`
+  max-width: 0;
+  min-width: 0;
+`

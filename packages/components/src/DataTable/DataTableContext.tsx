@@ -24,37 +24,17 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { createContext } from 'react'
+import { MixedBoolean } from '../Form'
+import { SelectConfig } from './DataTable'
+import { DataTableColumns } from './Column'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export interface DataTableContextProps {
+  allSelected?: MixedBoolean
+  columns?: DataTableColumns
+  columnsDisplayState?: boolean[]
+  onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
+  select?: SelectConfig
+}
+
+export const DataTableContext = createContext<DataTableContextProps>({})
