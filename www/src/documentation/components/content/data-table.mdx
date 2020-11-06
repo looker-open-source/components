@@ -155,10 +155,20 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
   const [isLoading, setIsLoading] = useState(true)
   setTimeout(() => setIsLoading(false), 5000)
 
+  const columns = [
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+  ]
+
   // Change state to "noResults" to render the noResultsDisplay
   return (
-    <DataTable state="loading" noResultsDisplay={'No Cheese Here :('}>
-      Swiss
+    <DataTable columns={columns}>
+      <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
+        <DataTableCell>Cheddar</DataTableCell>
+      </DataTableItem>
     </DataTable>
   )
 }
