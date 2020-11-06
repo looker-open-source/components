@@ -28,6 +28,6 @@ import styled from 'styled-components'
 import { Layout } from './Layout'
 
 export const Page = styled(Layout)`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 `
