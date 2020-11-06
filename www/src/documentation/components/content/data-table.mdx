@@ -7,7 +7,7 @@ propsOf: DataTable
 import { Props } from '../../../Shared'
 import { SelectManagerParameterTable, SelectManagerReturnTable } from './demos'
 
-The `<DataTable>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<DataTable>` allows you to bake in a set of actions on each row. Common use cases include:
+The `<DataTable>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, a `<DataTable>` allows you to bake in a set of actions on each row. Common use cases include:
 
 - A list of users with user details and a "Delete This User" action
 - A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
@@ -172,7 +172,7 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
 
 ## Sorting
 
-You can implement sorting on an `<DataTable>` by passing a function into the optional `onSort` prop.
+You can implement sorting on a `<DataTable>` by passing a function into the optional `onSort` prop.
 
 Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
 
@@ -457,12 +457,12 @@ The `useSelectManager` hook can be used to quickly create the standard building 
 
 `DataTable` comes with a built-in control bar that allows for bulk actions and additional select control.
 
-An `DataTable` will reveal its control bar when the following conditions are met:
+A `DataTable` will reveal its control bar when the following conditions are met:
 
 1. The array passed into the `select.selectedItems` prop has length > 0.
 2. A valid object is passed into the `bulk` prop.
 
-The `bulk` prop is used to configure an `DataTable`'s control bar. The object passed into `bulk` _must_ have the following properties:
+The `bulk` prop is used to configure a `DataTable`'s control bar. The object passed into `bulk` _must_ have the following properties:
 
 - `actions`: Bulk actions that are available when one or more items are selected
 - `onTotalClearAll`: Callback that is triggered when the user presses the "Clear Selection" button
