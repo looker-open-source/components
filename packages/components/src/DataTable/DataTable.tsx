@@ -72,6 +72,18 @@ export interface DataTableProps {
    *   Explicit specification of `firstColumnStuck` will always determine outcome
    */
   firstColumnStuck?: boolean
+
+  /**
+   * Specify "state" of DataTable to control display of data within the table
+   *  - `loading` will replace content with loading behavior (currently `Spinner`)
+   *  - 'noResults` will display "No Results" rather than DataTable content (customize via `noResultsDisplay`)
+   * Display loading behavior rather than DataTable content
+   */
+  state?: 'loading' | 'noResults'
+  /**
+   * Text to be displayed when no results state displayed
+   */
+  noResultsDisplay?: ReactNode
 }
 
 export interface SelectConfig {
@@ -201,6 +213,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
       {...filterConfig}
     />
   )
+
   return (
     <DataTableContext.Provider value={context}>
       <div className={className}>

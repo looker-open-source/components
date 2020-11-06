@@ -26,6 +26,8 @@
 
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
+import { Spinner } from '../Spinner'
+import { Heading } from '../Text'
 import { useCallbackRef, useIsTruncated } from '../utils'
 import {
   getNumericColumnIndices,
@@ -44,19 +46,37 @@ export const TableLayout: FC<TableProps> = ({
   className,
   columnsVisible,
   headerRowId,
+  noResultsDisplay = 'No Results',
+  state,
 }) => {
   const [element, ref] = useCallbackRef()
   const overflow = useIsTruncated(element, columnsVisible.length)
 
+  const noResultsContent =
+    typeof noResultsDisplay === 'string' ? (
+      <Heading variant="subdued">{noResultsDisplay}</Heading>
+    ) : (
+      noResultsDisplay
+    )
+
+  const interimState = state && (
+    <InterimState>
+      {state === 'loading' ? <Spinner /> : noResultsContent}
+    </InterimState>
+  )
+
   return (
-    <TableScroll ref={ref}>
-      <table className={overflow ? `${className} overflow` : className}>
-        <thead>
-          <DataTableHeader id={headerRowId} />
-        </thead>
-        <tbody>{children}</tbody>
-      </table>
-    </TableScroll>
+    <>
+      <TableScroll ref={ref}>
+        <table className={overflow ? `${className} overflow` : className}>
+          <thead>
+            <DataTableHeader id={headerRowId} />
+          </thead>
+          {!interimState && <tbody>{children}</tbody>}
+        </table>
+      </TableScroll>
+      {interimState}
+    </>
   )
 }
 
@@ -178,6 +198,13 @@ export const Table = styled(TableLayout)`
     numericColumnCSS(
       getNumericColumnIndices(columns, columnsVisible, Boolean(select))
     )}
+`
+
+const InterimState = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: ${({ theme }) => theme.space.xlarge};
 `
 
 export const TableScroll = styled.div`
