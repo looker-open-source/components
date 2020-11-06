@@ -25,14 +25,12 @@
  */
 
 import { data } from '../../__mocks__/DataTable/data'
-import { useDataTableSelectManager } from '../utils/useDataTableSelectManager'
+import { useSelectManager } from '../utils/useSelectManager'
 import { SelectConfig } from '../DataTable'
 
 const pageItems = data.map(({ id }) => id)
 
-const { onSelect, onSelectAll, selections } = useDataTableSelectManager(
-  pageItems
-)
+const { onSelect, onSelectAll, selections } = useSelectManager(pageItems)
 
 export const select: SelectConfig = {
   onClickRowSelect: true,

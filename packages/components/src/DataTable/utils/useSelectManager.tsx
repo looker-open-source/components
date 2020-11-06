@@ -26,11 +26,11 @@
 
 import { useState } from 'react'
 
-export const useDataTableSelectManager = (
-  selectableItems: string[],
-  selectedItems: string[] = []
+export const useSelectManager = (
+  possibilities: string[],
+  defaultSelections: string[] = []
 ) => {
-  const [selections, setSelections] = useState<string[]>(selectedItems)
+  const [selections, setSelections] = useState<string[]>(defaultSelections)
 
   const onSelect = (selectionId: string) => {
     /*
@@ -41,15 +41,14 @@ export const useDataTableSelectManager = (
     setSelections(
       selections.includes(selectionId)
         ? selections.filter(
-            (itemId) =>
-              itemId !== selectionId && selectableItems.includes(itemId)
+            (itemId) => itemId !== selectionId && possibilities.includes(itemId)
           )
         : [...selections, selectionId]
     )
   }
 
   const onSelectAll = () => {
-    setSelections(selections.length ? [] : selectableItems)
+    setSelections(selections.length ? [] : possibilities)
   }
 
   return { onSelect, onSelectAll, selections, setSelections }

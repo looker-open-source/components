@@ -34,7 +34,7 @@ import {
   SelectConfig,
 } from '../DataTable'
 import { DataTableAction } from '../Item'
-import { useDataTableSelectManager } from '../utils/useDataTableSelectManager'
+import { useSelectManager } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
@@ -56,12 +56,10 @@ const Template: Story<DemoProps> = ({
 }) => {
   const allPageItems = data.map(({ id }) => id)
 
-  const {
-    onSelect,
-    onSelectAll,
-    selections,
-    setSelections,
-  } = useDataTableSelectManager(allPageItems, selectedItems)
+  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
+    allPageItems,
+    selectedItems
+  )
 
   const [listFilters, setListFilters] = useState(defaultFilters)
 

@@ -25,5 +25,4 @@
  */
 
 export * from './column'
-export * from '../Header/DataTableHeaderCell'
 export * from './DataTableCell'

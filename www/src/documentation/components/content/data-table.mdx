@@ -368,15 +368,15 @@ The following properties are **optional** in the object passed into the `select`
 }
 ```
 
-### useDataTableSelectManager
+### useSelectManager
 
-The `useDataTableSelectManager` hook can be used to quickly create the standard building blocks of `DataTable` select behavior.
+The `useSelectManager` hook can be used to quickly create the standard building blocks of `DataTable` select behavior.
 
-`useDataTableSelectManager` accepts the following parameters:
+`useSelectManager` accepts the following parameters:
 
 <SelectManagerParameterTable />
 
-`useDataTableSelectManager` returns an object with the following properties:
+`useSelectManager` returns an object with the following properties:
 
 <SelectManagerReturnTable />
 
@@ -414,12 +414,9 @@ The `useDataTableSelectManager` hook can be used to quickly create the standard 
 
   const allSelectableItems = data.map(({ id }) => String(id))
 
-  const {
-    onSelect,
-    onSelectAll,
-    selections,
-    setSelections,
-  } = useDataTableSelectManager(allSelectableItems)
+  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
+    allSelectableItems
+  )
 
   const items = data.map(({ id, name }) => (
     <DataTableItem
@@ -473,7 +470,7 @@ The `bulk` prop is used to configure an `DataTable`'s control bar. The object pa
 - `pageCount`: The total number of visible items (i.e. the total number of items on the current page in paginated `DataTable`s)
 - `totalCount`: The total number of items, both visible and nonvisible, in this `DataTable`
 
-**Note:** The `onSelect` returned from the `useDataTableSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
+**Note:** The `onSelect` returned from the `useSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
 
 ```jsx
 ;() => {
@@ -527,12 +524,9 @@ The `bulk` prop is used to configure an `DataTable`'s control bar. The object pa
     </DataTableItem>
   ))
 
-  const {
-    onSelect,
-    onSelectAll,
-    selections,
-    setSelections,
-  } = useDataTableSelectManager(pageItemIds)
+  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
+    pageItemIds
+  )
 
   const allItems = [...data].map(({ id }) => String(id))
   const onTotalSelectAll = () => setSelections(allItems)

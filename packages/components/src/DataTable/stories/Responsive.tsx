@@ -27,7 +27,7 @@
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { DataTable, DataTableProps } from '../DataTable'
-import { useDataTableSelectManager } from '../utils/useDataTableSelectManager'
+import { useSelectManager } from '../utils/useSelectManager'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
 import { items, itemsNoActions } from './items'
@@ -39,9 +39,7 @@ interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
 const Template: Story<DemoProps> = ({ select: selectActive, ...args }) => {
   const allPageItems = data.map(({ id }) => id)
 
-  const { onSelect, onSelectAll, selections } = useDataTableSelectManager(
-    allPageItems
-  )
+  const { onSelect, onSelectAll, selections } = useSelectManager(allPageItems)
 
   const select = selectActive
     ? {
