@@ -32,18 +32,21 @@ import ResizeObserver from 'resize-observer-polyfill'
  * and you want to detect whether  text was actually cut off by browser styling.
  */
 
-const isTextTruncated = (node: HTMLElement) =>
+const isOverflowing = (node: HTMLElement) =>
   // hack for detecting whether text content is larger than what is rendered
   node.offsetWidth < node.scrollWidth
 
-export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
+export const useIsTruncated = (
+  element: HTMLElement | null,
+  identity?: any
+): boolean => {
   const [isTruncated, setIsTruncated] = useState(false)
 
-  // Re-run truncation dectection when element is resized.
+  // Re-run truncation detection when element is resized.
   // Could run on window resize or just dom element change
   // thanks to Resize Observer.
   const handleResize = useCallback(() => {
-    element && setIsTruncated(isTextTruncated(element))
+    element && setIsTruncated(isOverflowing(element))
   }, [element])
 
   useLayoutEffect(() => {
@@ -63,7 +66,7 @@ export const useIsTextTruncated = (element: HTMLElement | null): boolean => {
 
       resizeObserver.disconnect()
     }
-  }, [handleResize, element])
+  }, [handleResize, element, identity])
 
   return isTruncated
 }

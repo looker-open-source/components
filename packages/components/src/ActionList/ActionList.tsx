@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import React, { FC, ReactNode, useState } from 'react'
-import ReactResizeDetector from 'react-resize-detector'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
 import { ActionListBulkControls } from './Bulk/ActionListBulkControls'
@@ -144,18 +143,24 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
     onSort,
     select,
   } = props
-
-  const [visibleColumns, setVisibleColumns] = useState(
-    columns.filter((c) => c.hide === false).map((c) => c.id)
-  )
-  const canSelectColumns = Boolean(columns.find((c) => c.hide !== undefined))
+  /**
+   * Extract columns that the user can specify visibility on
+   */
+  const columnsVisibleDefault = columns
+    .filter((c) => c.hide === false)
+    .map((c) => c.id)
 
   /**
-   * Generate an array in which each entry represents the visibility status of
-   * each of the columns specified. Columns with `hide===undefined` are always visible
+   * An array of column IDs that should be displayed to the user
    */
-  const columnsToDisplay = columns.map(
-    (c) => c.hide === undefined || visibleColumns.includes(c.id)
+  const [columnsVisible, setColumnsVisible] = useState(columnsVisibleDefault)
+
+  /**
+   * Array in which each entry represents the visibility status of every available column
+   * NOTE: Columns with `hide===undefined` are always visible
+   */
+  const columnsDisplayState = columns.map(
+    (c) => c.hide === undefined || columnsVisible.includes(c.id)
   )
 
   /**
@@ -167,7 +172,7 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
    *
    */
   const firstColumnStuck =
-    columnsToDisplay[0] === false
+    columnsDisplayState[0] === false
       ? false
       : explicitFirstColumnStuck !== undefined
       ? explicitFirstColumnStuck
@@ -184,17 +189,16 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
   const context = {
     allSelected,
     columns,
-    columnsToDisplay,
+    columnsDisplayState,
     onSort,
     select,
   }
 
   const filters = filterConfig && (
     <ActionListFilters
-      canSelectColumns={canSelectColumns}
-      visibleColumns={visibleColumns}
-      onColumnVisibilityChange={setVisibleColumns}
       columns={columns}
+      columnsVisible={columnsVisible}
+      onColumnVisibilityChange={setColumnsVisible}
       {...filterConfig}
     />
   )
@@ -205,13 +209,12 @@ export const ActionListLayout: FC<ActionListProps> = (props) => {
         {bulk && select && select.selectedItems.length > 0 && (
           <ActionListBulkControls {...bulk} />
         )}
-
-            <ActionListTable
-              {...props}
-              columns={columns}
-              firstColumnStuck={firstColumnStuck}
-              visibleColumns={visibleColumns}
-            />
+        <ActionListTable
+          {...props}
+          columns={columns}
+          columnsVisible={columnsVisible}
+          firstColumnStuck={firstColumnStuck}
+        />
       </div>
     </ActionListContext.Provider>
   )

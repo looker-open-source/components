@@ -27,27 +27,8 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
+import { filters } from '../../../__mocks__/filters'
 import { FieldFilter, InputFilters } from './InputFilters'
-
-const filters: FieldFilter[] = [
-  {
-    field: 'name',
-    label: 'Name',
-    options: ['Cheddar', 'Gouda', 'Swiss', 'Mozzarella'],
-  },
-  {
-    field: 'color',
-    label: 'Color',
-    multiple: true,
-    options: ['blue', 'orange', 'yellow', 'white'],
-  },
-  {
-    field: 'origin',
-    label: 'Origin',
-    multiple: true,
-    options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
-  },
-]
 
 const ControlledComponent = () => {
   const [controlledFilters, onChange] = useState<FieldFilter[]>(filters)

@@ -35,10 +35,10 @@ describe('ActionListFilters', () => {
     const { getByPlaceholderText } = renderWithTheme(
       <ActionListFilters
         columns={columns}
-        visibleColumns={[]}
-        onColumnVisibilityChange={jest.fn()}
+        columnsVisible={[]}
         filters={filters}
         onFilter={jest.fn()}
+        onColumnVisibilityChange={jest.fn()}
       />
     )
 
@@ -49,11 +49,10 @@ describe('ActionListFilters', () => {
     const { getByText } = renderWithTheme(
       <ActionListFilters
         columns={columns}
-        visibleColumns={[]}
+        columnsVisible={[]}
         filters={filters}
-        onColumnVisibilityChange={jest.fn()}
-        canSelectColumns={true}
         onFilter={jest.fn()}
+        onColumnVisibilityChange={jest.fn()}
       />
     )
     expect(getByText('Select columns to display')).toBeInTheDocument()

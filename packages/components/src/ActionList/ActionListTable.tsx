@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
+import { useCallbackRef, useIsTruncated } from '../utils'
 import {
   getNumericColumnIndices,
   numericColumnCSS,
@@ -35,22 +36,21 @@ import { generateActionListHeader } from './Header'
 import { edgeShadow } from './utils/edgeShadow'
 
 export interface ActionListTableProps extends ActionListProps {
-  renderedWidth: string
-  visibleColumns: string[]
+  columnsVisible: string[]
 }
 
 export const ActionListTableLayout: FC<ActionListTableProps> = ({
   children,
   className,
   columns,
+  columnsVisible,
   headerRowId,
-  renderedWidth,
 }) => {
   const [element, ref] = useCallbackRef()
-  const overflow = useIsTextTruncated(element)
+  const overflow = useIsTruncated(element, columnsVisible.length)
 
   return (
-    <TableScroll ref={internalRef}>
+    <TableScroll ref={ref}>
       <table className={overflow ? `${className} overflow` : className}>
         <thead>{generateActionListHeader(columns, headerRowId)}</thead>
         <tbody>{children}</tbody>
@@ -90,8 +90,11 @@ const selectColumn = css<ActionListTableProps>`
 const actionsColumn = css`
   &:last-child {
     padding: 0;
-    text-align: right;
     width: 100%;
+
+    > div {
+      margin-left: auto;
+    }
   }
 `
 
@@ -170,9 +173,9 @@ export const ActionListTable = styled(ActionListTableLayout)`
     }
   }
 
-  ${({ columns, select, visibleColumns }) =>
+  ${({ columns, select, columnsVisible }) =>
     numericColumnCSS(
-      getNumericColumnIndices(columns, visibleColumns, Boolean(select))
+      getNumericColumnIndices(columns, columnsVisible, Boolean(select))
     )}
 `
 

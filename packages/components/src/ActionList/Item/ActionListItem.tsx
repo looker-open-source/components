@@ -89,7 +89,7 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
   }
 
   const itemActions = actions && (
-    <ItemTarget style={{ marginLeft: 'auto' }} onClick={handleMenuClick}>
+    <ItemTarget onClick={handleMenuClick}>
       <Menu>
         <MenuDisclosure tooltip={actionsTooltip}>
           <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
@@ -116,7 +116,6 @@ const ActionListItemLayout: FC<ActionListItemProps> = ({
       onChange={onChange}
       checked={checked}
       disabled={disabled}
-      supportsRaised={!(select && select.onClickRowSelect)}
     >
       {children}
     </ActionListRow>

@@ -30,37 +30,41 @@ import { DividerVertical } from '../../Divider'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { FilterConfig } from '../ActionList'
 import { densityTarget } from '../ActionListTable'
+import { ColumnsProps } from '../Column'
 import { ItemTarget } from '../Item/ItemTarget'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
 export interface ActionListFiltersProps
   extends ColumnSelectorProps,
-    Partial<FilterConfig> {
-  canSelectColumns?: boolean
+    FilterConfig {
   className?: string
 }
 
+const hasSelectableColumns = (columns: ColumnsProps) =>
+  Boolean(columns.find((c) => c.hide !== undefined))
+
 const ActionListFiltersLayout: FC<ActionListFiltersProps> = ({
-  canSelectColumns,
   className,
   filters,
   onFilter,
-  ...columnSelectorProps
-}) => (
-  <div className={className}>
-    {filters && onFilter && (
+  ...props
+}) => {
+  const columnsSelector = (
+    <>
+      <DividerVertical mx="none" stretch />
+      <ItemTarget>
+        <ColumnSelector {...props} />
+      </ItemTarget>
+    </>
+  )
+
+  return (
+    <div className={className}>
       <InputFilters filters={filters} onChange={onFilter} />
-    )}
-    {canSelectColumns && (
-      <>
-        <DividerVertical mx="none" stretch />
-        <ItemTarget>
-          <ColumnSelector {...columnSelectorProps} />
-        </ItemTarget>
-      </>
-    )}
-  </div>
-)
+      {hasSelectableColumns(props.columns) && columnsSelector}
+    </div>
+  )
+}
 
 export const ActionListFilters = styled(ActionListFiltersLayout)`
   align-items: flex-start;

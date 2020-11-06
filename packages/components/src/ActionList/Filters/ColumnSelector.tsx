@@ -35,19 +35,19 @@ import { ColumnsProps } from '../Column'
 
 export interface ColumnSelectorProps {
   columns: ColumnsProps
-  visibleColumns: string[]
+  columnsVisible: string[]
   onColumnVisibilityChange: (value: string[]) => void
 }
 
 export const ColumnSelector: FC<ColumnSelectorProps> = ({
   columns,
-  visibleColumns: defaultVisibleColumns,
+  columnsVisible: defaultColumnsVisible,
   onColumnVisibilityChange,
 }) => {
   const [isOpen, setOpen] = useState(false)
 
   const selectableColumns = columns.filter((c) => c.hide !== undefined)
-  const [visibleColumns, setVisibleColumns] = useState(defaultVisibleColumns)
+  const [columnsVisible, setColumnsVisible] = useState(defaultColumnsVisible)
 
   const options = selectableColumns.map((column) => ({
     label: column.title,
@@ -55,7 +55,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   }))
 
   const apply = () => {
-    onColumnVisibilityChange(visibleColumns)
+    onColumnVisibilityChange(columnsVisible)
     setOpen(false)
   }
 
@@ -63,10 +63,10 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
 
   const all = () => {
     const resetColumn = columns.map((column) => column.id)
-    setVisibleColumns(resetColumn)
+    setColumnsVisible(resetColumn)
   }
 
-  const none = () => setVisibleColumns([])
+  const none = () => setColumnsVisible([])
 
   const content = (
     <PopoverContent width="12rem" overflow="hidden">
@@ -80,8 +80,8 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
           </ButtonTransparent>
         </Space>
         <CheckboxGroup
-          value={visibleColumns}
-          onChange={setVisibleColumns}
+          value={columnsVisible}
+          onChange={setColumnsVisible}
           options={options}
         />
         <Space reverse>

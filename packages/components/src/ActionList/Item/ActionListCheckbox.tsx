@@ -45,7 +45,7 @@ export const ActionListCheckbox: FC<ActionListCheckboxProps> = ({
 }) => {
   const handleCellOnClick = () => !disabled && onChange && onChange()
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
-    event.keyCode === 13 && event.currentTarget.click()
+    event.key === 'Enter' && event.currentTarget.click()
 
   return (
     <ItemTarget onClick={handleCellOnClick}>

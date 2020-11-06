@@ -25,8 +25,8 @@
  */
 import React, { FC, useState, useCallback, ReactNode } from 'react'
 import styled from 'styled-components'
+import { useIsTruncated } from '../utils/useIsTruncated'
 import { useTooltip } from '../Tooltip'
-import { useIsTextTruncated } from './useIsTextTruncated'
 
 export interface TruncateProps {
   children: ReactNode
@@ -40,7 +40,7 @@ export interface TruncateProps {
 export const Truncate: FC<TruncateProps> = ({ children }) => {
   const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
 
-  const isTruncated = useIsTextTruncated(domNode)
+  const isTruncated = useIsTruncated(domNode)
 
   const textRef = useCallback((node: HTMLDivElement) => {
     setDomNode(node)

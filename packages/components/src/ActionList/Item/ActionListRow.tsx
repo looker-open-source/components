@@ -49,10 +49,6 @@ export interface ActionListItemLayoutProps
   secondary?: ReactNode
   hasCheckbox?: boolean
   /**
-   * @default true
-   */
-  supportsRaised?: boolean
-  /**
    * Display checkbox as `th` instead of `td`
    * @default false
    */
@@ -73,11 +69,11 @@ const ActionListRowLayout = forwardRef(
     } = props
 
     const ColumnType = isHeaderRow ? 'th' : 'td'
-    const { columns, columnsToDisplay } = useContext(ActionListContext)
+    const { columns, columnsDisplayState } = useContext(ActionListContext)
     const getColumnSize = (index: number) => columns && columns[index].size
 
     const sizedChildren = Children.map(children, (child, index) => {
-      if (columnsToDisplay && !columnsToDisplay[index]) {
+      if (columnsDisplayState && !columnsDisplayState[index]) {
         return null
       } else if (isValidElement(child)) {
         return cloneElement(child, { size: getColumnSize(index) })
@@ -100,9 +96,9 @@ const ActionListRowLayout = forwardRef(
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        <ColumnType key="checkbox">{checkbox}</ColumnType>
+        <ColumnType>{checkbox}</ColumnType>
         {sizedChildren}
-        <ColumnType key="actions">{secondary}</ColumnType>
+        <ColumnType>{secondary}</ColumnType>
       </tr>
     )
   }
@@ -147,5 +143,3 @@ export const ActionListRow = styled(ActionListRowLayout)`
     }
   }
 `
-
-ActionListRow.defaultProps = { supportsRaised: true }

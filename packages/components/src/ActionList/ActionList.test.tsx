@@ -171,10 +171,10 @@ describe('ActionList', () => {
         })
       )
 
-      const listItemButton = getAllByText('My Actions Button')
+      const listItemButton = getAllByText('My Actions Button')[0]
       expect(queryByText('View Profile')).not.toBeInTheDocument()
 
-      fireEvent.click(listItemButton[0])
+      fireEvent.click(listItemButton)
       const viewProfileAction = getByText('View Profile')
       expect(viewProfileAction).toBeInTheDocument()
 

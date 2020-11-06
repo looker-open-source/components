@@ -35,7 +35,7 @@ describe('ColumnSelector', () => {
     const { getByText } = renderWithTheme(
       <ColumnSelector
         columns={columns}
-        visibleColumns={[]}
+        columnsVisible={[]}
         onColumnVisibilityChange={jest.fn()}
       />
     )
@@ -47,7 +47,7 @@ describe('ColumnSelector', () => {
     const { getByText } = renderWithTheme(
       <ColumnSelector
         columns={columns}
-        visibleColumns={[]}
+        columnsVisible={[]}
         onColumnVisibilityChange={jest.fn()}
       />
     )
@@ -56,24 +56,6 @@ describe('ColumnSelector', () => {
     fireEvent.click(columnButton)
 
     expect(getByText('Inventory')).toBeInTheDocument()
-
-    // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-
-  test('onClick displays popover of column options', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <ColumnSelector
-        columns={columns}
-        visibleColumns={[]}
-        onColumnVisibilityChange={jest.fn()}
-      />
-    )
-    const columnButton = getByText('Select columns to display')
-
-    expect(queryByText('Inventory')).not.toBeInTheDocument()
-    fireEvent.click(columnButton)
-    expect(queryByText('Inventory')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
