@@ -33,8 +33,6 @@ export * from './Column'
 export * from './Item'
 export * from './utils'
 
-export * from './Manager'
-
 /**
  * Legacy exports
  * NOTE: These will be removed in the not-too-distant future

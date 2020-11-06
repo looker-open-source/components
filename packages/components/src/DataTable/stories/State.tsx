@@ -29,48 +29,50 @@ import React from 'react'
 import { Icon } from '../../Icon'
 import { SpaceVertical } from '../../Layout'
 import { Heading } from '../../Text'
-import { ActionListManagerProps, ActionListManager } from '../Manager'
+import { DataTable, DataTableProps } from '../DataTable'
+import { columns } from '../../__mocks__/DataTable/columns'
 
-const customResultsDisplay = (
-  <SpaceVertical align="center">
-    <Icon size="xlarge" name="Beaker" color="key" />
-    <Heading>The mad scientists have nothing for you...</Heading>
-  </SpaceVertical>
-)
-
-const Template: Story<ActionListManagerProps> = ({ ...args }) => (
-  <ActionListManager {...args}>
+const Template: Story<DataTableProps> = ({ ...args }) => (
+  <DataTable columns={[]} {...args}>
     <p>Faux ActionList here...</p>
-  </ActionListManager>
+  </DataTable>
 )
 
-export const ManagerBasic = Template.bind({})
-ManagerBasic.args = {}
-ManagerBasic.parameters = {
-  storyshots: { disable: true },
-}
-
-export const ManagerLoading = Template.bind({})
-ManagerLoading.args = {
-  ...ManagerBasic.args,
-  isLoading: true,
+export const Loading = Template.bind({})
+Loading.args = {
+  columns,
+  state: 'loading',
 }
 /* Spinner animation timing may not be consistent */
-ManagerLoading.parameters = {
+Loading.parameters = {
   storyshots: { disable: true },
 }
 
-export const ManagerNoResults = Template.bind({})
-ManagerNoResults.args = {
-  ...ManagerBasic.args,
-  noResults: true,
+export const NoResults = Template.bind({})
+NoResults.args = {
+  ...Loading.args,
+  state: 'noResults',
 }
 
-export const ManagerNoResultsDisplay = Template.bind({})
-ManagerNoResultsDisplay.args = {
-  ...ManagerNoResults.args,
-  noResultsDisplay: customResultsDisplay,
+export const NoResultsDisplay = Template.bind({})
+NoResultsDisplay.args = {
+  ...NoResults.args,
+  noResultsDisplay: 'No faux items were found',
 }
-ManagerNoResultsDisplay.parameters = {
+NoResultsDisplay.parameters = {
+  storyshots: { disable: true },
+}
+
+export const NoResultsDisplayFancy = Template.bind({})
+NoResultsDisplayFancy.args = {
+  ...NoResults.args,
+  noResultsDisplay: (
+    <SpaceVertical align="center">
+      <Icon size="xlarge" name="Beaker" color="key" />
+      <Heading>The mad scientists have nothing for you...</Heading>
+    </SpaceVertical>
+  ),
+}
+NoResultsDisplayFancy.parameters = {
   storyshots: { disable: true },
 }

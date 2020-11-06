@@ -67,6 +67,8 @@ const data = [
   },
 ]
 
+const bestCheeseDiv = <div>Pepper Jack</div>
+
 const items = data.map(({ id, name, type }) => {
   const availableActions = (
     <>
@@ -462,5 +464,32 @@ describe('DataTable', () => {
       fireEvent.click(getByText('Clear Selection'))
       expect(onTotalClearAll).toHaveBeenCalledTimes(1)
     })
+  })
+
+  test('Does not render children if state="loading"', () => {
+    const { queryByText } = renderWithTheme(
+      <DataTable columns={[]} state="loading">
+        {bestCheeseDiv}
+      </DataTable>
+    )
+    expect(queryByText('Pepper Jack')).not.toBeInTheDocument()
+  })
+
+  test('Does not render children if state="noResults"', () => {
+    const { queryByText } = renderWithTheme(
+      <DataTable columns={[]} state="noResults">
+        {bestCheeseDiv}
+      </DataTable>
+    )
+    expect(queryByText('Pepper Jack')).not.toBeInTheDocument()
+  })
+
+  test('Renders custom no results message when noResultsDisplay prop has a value', () => {
+    const { getByText } = renderWithTheme(
+      <DataTable columns={[]} state="noResults" noResultsDisplay={'Cheddar'}>
+        {bestCheeseDiv}
+      </DataTable>
+    )
+    expect(getByText('Cheddar')).toBeInTheDocument()
   })
 })

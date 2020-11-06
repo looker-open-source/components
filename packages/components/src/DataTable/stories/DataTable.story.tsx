@@ -24,11 +24,11 @@
 
  */
 
-export * from './Interaction'
-export * from './Manager'
-export * from './Responsive'
-export * from './Sorting'
-
 export default {
   title: 'DataTable',
 }
+
+export * from './Interaction'
+export * from './Responsive'
+export * from './Sorting'
+export * from './State'

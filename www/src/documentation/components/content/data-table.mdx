@@ -140,15 +140,13 @@ Passing in a React element into the `indicator` prop will display said element l
 
 The `<DataTableAction>` component represents an actionable item on the rows of your `DataTable`. As noted above, you can supply each of your rows with actions by passing `<DataTableAction>` elements into the `actions` prop of the parent `<DataTableItem>` element.
 
-## ActionListManager
+## States
 
-<Props of="ActionListManager" />
+In the event that your page and `<DataTable>` render before data is available (i.e. before a Promise resolves), you can use the `state` prop to conditionally render a loading icon until your data is ready.
 
-In the event that your page and `<DataTable>` render before data is available (i.e. before a Promise resolves), you can use an `<ActionListManager>` component to conditionally render a loading icon until your data is ready.
+Passing "loading" into an `<DataTable>`'s `state` prop will render a `<Spinner>` icon.
 
-Passing "false" into an `<ActionListManager>`'s `isLoading` prop will render a `<Spinner>` icon. Once you pass in "true" into the `isLoading` prop, the `<ActionListManager>` will render its children instead.
-
-Additionally, you can render a "No Results" message using the `noResults` prop. When `noResults` is "true", the `<ActionListManager>` will display a "No Results" message in place of its children.
+Additionally, you can render a "No Results" message using the `state="noResults"` prop. When `state="noResults"` the `<DataTable>` will display a "No Results" message in place of its children.
 
 To customize the "No Results" message text, use the `noResultsDisplay` prop. Strings will be formatted as shown below, use JSX for custom formattng if you prefer.
 
@@ -157,15 +155,11 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
   const [isLoading, setIsLoading] = useState(true)
   setTimeout(() => setIsLoading(false), 5000)
 
-  // Change noResults to "true" to render the noResultsDisplay
+  // Change state to "noResults" to render the noResultsDisplay
   return (
-    <ActionListManager
-      isLoading={isLoading}
-      noResults={false}
-      noResultsDisplay={'No Cheese Here :('}
-    >
+    <DataTable state="loading" noResultsDisplay={'No Cheese Here :('}>
       Swiss
-    </ActionListManager>
+    </DataTable>
   )
 }
 ```
