@@ -75,7 +75,7 @@ The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-rela
 
 <Props of="DataTableItem" />
 
-The `<DataTableItem>` component represents a row of data in your Action List.
+The `<DataTableItem>` component represents a row of data in your DataTable.
 
 To define actions on a row, pass in `<DataTableAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
 
@@ -87,7 +87,7 @@ The `actionsTooltip` prop can be used to set the tooltip text of a row's actions
 
 <Props of="DataTableCell" />
 
-The `<DataTableCell>` component is equivalent to a data cell in your Action List. `<DataTableCell>` elements should always be children of an `<DataTableItem>` element (i.e. each row should contain some number of column elements).
+The `<DataTableCell>` component is equivalent to a data cell in your DataTable. `<DataTableCell>` elements should always be children of an `<DataTableItem>` element (i.e. each row should contain some number of column elements).
 
 In its simplest form, an `<DataTableCell>` element will display whatever child elements it has.
 
@@ -138,7 +138,7 @@ Passing in a React element into the `indicator` prop will display said element l
 
 <Props of="DataTableAction" />
 
-The `<DataTableAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<DataTableAction>` elements into the `actions` prop of the parent `<DataTableItem>` element.
+The `<DataTableAction>` component represents an actionable item on the rows of your `DataTable`. As noted above, you can supply each of your rows with actions by passing `<DataTableAction>` elements into the `actions` prop of the parent `<DataTableItem>` element.
 
 ## ActionListManager
 

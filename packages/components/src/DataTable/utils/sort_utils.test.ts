@@ -27,7 +27,7 @@
 import { DataTableColumns } from '../Column'
 import { stringComparator, doDefaultDataTableSort } from './sort_utils'
 
-describe('Action List Sort Utils', () => {
+describe('DataTable Sort Utils', () => {
   test('Default string comparison', () => {
     ;[
       ['Animal', 'Crossing'],

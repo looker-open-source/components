@@ -45,7 +45,7 @@ export interface DataTableProps {
    */
   onSort?: (id: string, sortDirection: 'asc' | 'desc') => void
   /**
-   * Options for select and select all behavior. Having a non-null select prop will auto-enable Action List select behavior
+   * Options for select and select all behavior. Having a non-null select prop will auto-enable select behavior
    */
   select?: SelectConfig
   /**
@@ -55,7 +55,7 @@ export interface DataTableProps {
    */
   headerRowId?: string
   /**
-   * Options for bulk actions. Having a non-null bulk prop will auto-enable an Action List's control bar
+   * Options for bulk actions. Having a non-null bulk prop will auto-enable the control bar
    */
   bulk?: BulkActionsConfig
   /**
@@ -125,7 +125,7 @@ export interface BulkActionsConfig {
    */
   pageCount: number
   /**
-   * The total number of items, both visible and nonvisible, in this Action List
+   * The total number of items, both visible and nonvisible
    * Primary purpose is to set the text of the Control Bar's primary action
    * Note: This should NOT include disabled items
    */
