@@ -24,37 +24,37 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { css } from 'styled-components'
+import { SpaceVertical } from '../../Layout/Space'
+import { DataTableCell, DataTableColumns } from '..'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+function filterUndefined<T>(t: T | undefined): t is T {
+  return t !== undefined
+}
+
+export const getNumericColumnIndices = (
+  columns: DataTableColumns,
+  visibleColumns: string[],
+  select?: boolean
+) =>
+  columns
+    .filter((c) => visibleColumns.includes(c.id) || c.hide === undefined)
+    .map((c, index) =>
+      c.type === 'number' ? (select ? index + 1 : index) : undefined
+    )
+    .filter(filterUndefined)
+
+export const numericColumnCSS = (columnIndices: number[]) =>
+  css`
+    ${columnIndices.map(
+      (columnIndex) =>
+        css`
+          ${DataTableCell}:nth-child(${columnIndex + 1}) {
+            text-align: right;
+            ${SpaceVertical} {
+              flex-direction: row-reverse;
+            }
+          }
+        `
+    )}
+  `

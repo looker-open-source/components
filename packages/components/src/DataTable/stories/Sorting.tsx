@@ -26,35 +26,54 @@
 
 import React from 'react'
 import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+  DataTableAction,
+  DataTableColumns,
+  DataTableDatum,
+  useDataTableSortManager,
+} from '..'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export const Sortable = () => {
+  const data = [
+    {
+      id: 1,
+      name: 'Lloyd Tabb',
+    },
+    {
+      id: 2,
+      name: 'Ben Porterfield',
+    },
+  ]
+
+  // Note: column objects must be tracked using state since their sortDirection properties will change
+  // depending on which column is sorted
+  const columns: DataTableColumns = [
+    {
+      canSort: true,
+      id: 'id',
+      title: 'ID',
+      type: 'number',
+    },
+    {
+      canSort: true,
+      id: 'name',
+      size: 'nowrap',
+      title: 'Name',
+      type: 'string',
+    },
+  ]
+
+  const generateActions = (item: DataTableDatum) => {
+    return (
+      <>
+        <DataTableAction onClick={() => alert(item.id)}>
+          Check id
+        </DataTableAction>
+        <DataTableAction onClick={() => alert(item.name)}>
+          Check name
+        </DataTableAction>
+      </>
+    )
+  }
+
+  return useDataTableSortManager(data, columns, generateActions)
+}

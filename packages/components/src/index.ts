@@ -25,13 +25,13 @@
  */
 
 export * from './Accordion'
-export * from './ActionList'
 export * from './Avatar'
 export * from './Badge'
 export * from './Button'
 export * from './Card'
 export * from './Chip'
 export * from './ChipButton'
+export * from './DataTable'
 export * from './Drawer'
 export * from './Divider'
 export * from './Form'

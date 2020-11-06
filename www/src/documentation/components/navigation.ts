@@ -187,13 +187,13 @@ const components: NavigationSection = {
     {
       children: [
         { path: 'accordion', title: 'Accordion' },
-        { path: 'action-list', title: 'ActionList' },
         { path: 'avatar', title: 'Avatar' },
         { path: 'badge', title: 'Badge' },
         { path: 'card', title: 'Card' },
         { path: 'calendar', title: 'Calendar' },
         { path: 'chip', title: 'Chip' },
         { path: 'color-wheel', title: 'ColorWheel' },
+        { path: 'data-table', title: 'DataTable' },
         { path: 'date-format', title: 'DateFormat' },
         { path: 'divider', title: 'Divider' },
         { path: 'icon', title: 'Icon' },

@@ -24,37 +24,33 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { useState } from 'react'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export const useDataTableSelectManager = (
+  selectableItems: string[],
+  selectedItems: string[] = []
+) => {
+  const [selections, setSelections] = useState<string[]>(selectedItems)
+
+  const onSelect = (selectionId: string) => {
+    /*
+      Note: In the event that selections includes the item being selected, we call filter only on selectableItems.
+      This is to avoid the situation where you have non-displayed items selected but only some displayed items.
+      Doing the above will mean you have selected items that cannot be unselected (i.e. there's no way to interact with non-displayed items).
+     */
+    setSelections(
+      selections.includes(selectionId)
+        ? selections.filter(
+            (itemId) =>
+              itemId !== selectionId && selectableItems.includes(itemId)
+          )
+        : [...selections, selectionId]
+    )
+  }
+
+  const onSelectAll = () => {
+    setSelections(selections.length ? [] : selectableItems)
+  }
+
+  return { onSelect, onSelectAll, selections, setSelections }
+}

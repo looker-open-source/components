@@ -24,37 +24,34 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import React, { ReactNode, useContext } from 'react'
+import { MenuItem, MenuContext } from '../../Menu'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
+  children?: ReactNode
+  detail?: ReactNode
+  icon?: IconNames
+  /**
+   * Determines if the DataTableAction is an <a/> or <button/> element
+   * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
+   * @default 'button'
+   */
+  itemRole?: 'link' | 'button'
+}
+
+/**
+ * MenuItem may undergo a refactor soon. Creating a proxy in the form of DataTableAction
+ * allows us to adapt to any changes to MenuItem or its interface.
+ * */
+export const DataTableAction = (props: DataTableActionProps) => {
+  const { setOpen } = useContext(MenuContext)
+  const handleActionClick = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    setOpen && setOpen(false)
+    props.onClick && props.onClick(event)
+  }
+  return <MenuItem {...props} onClick={handleActionClick} />
+}

@@ -24,37 +24,25 @@
 
  */
 
-import React from 'react'
-import {
-  Code,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableDataCell,
-} from '@looker/components'
+import { DataTable } from './DataTable'
+import { DataTableAction, DataTableItem } from './Item'
+import { DataTableCell, DataTableColumns } from './Column'
 
-export const SelectManagerParameterTable = () => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Parameter Name</TableHeaderCell>
-        <TableHeaderCell>Type</TableHeaderCell>
-        <TableHeaderCell>Description</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell pr="large">selectableItems</TableDataCell>
-        <TableDataCell pr="large">
-          <Code>string[]</Code>
-        </TableDataCell>
-        <TableDataCell>
-          An string[] array containing the id's of all selectable items. On a
-          paginated DataTable, this will usually only include visible item ids'.
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-)
+export * from './DataTable'
+export * from './Column'
+export * from './Item'
+export * from './utils'
+
+export * from './Manager'
+
+/**
+ * Legacy exports
+ * NOTE: These will be removed in the not-too-distant future
+ */
+export const ActionList = DataTable
+export const ActionListItem = DataTableItem
+export const ActionListItemAction = DataTableAction
+export const ActionListItemColumn = DataTableCell
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ActionListColumns extends DataTableColumns {}
