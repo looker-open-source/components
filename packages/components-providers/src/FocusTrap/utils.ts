@@ -24,6 +24,8 @@
 
  */
 
+// The following pulls heavily from https://github.com/focus-trap/focus-trap
+
 import { tabbable, FocusableElement } from 'tabbable'
 
 const isSelectableInput = (
@@ -47,7 +49,6 @@ const checkFocusLost = () => {
 }
 
 export const activateFocusTrap = (element: HTMLElement) => {
-  console.log(element)
   const nodeFocusedBeforeActivation = document.activeElement
   let firstTabbableNode: FocusableElement = element
   let lastTabbableNode: FocusableElement = element
@@ -146,7 +147,13 @@ export const activateFocusTrap = (element: HTMLElement) => {
 
     // If focus lands on the body, move it back to where it was before the trap
     if (checkFocusLost() && nodeFocusedBeforeActivation) {
-      ;(nodeFocusedBeforeActivation as HTMLElement).focus()
+      const elementToFocus = nodeFocusedBeforeActivation as HTMLElement
+      // When returning focus to the element focused prior to focus trap activation
+      // opening the tooltip at that moment is undesirable
+      elementToFocus.setAttribute('data-notooltip', 'true')
+      elementToFocus.focus()
+      // Clear the data attribute immediately so that tooltip will work the next time
+      elementToFocus.removeAttribute('data-notooltip')
     }
   }
 }

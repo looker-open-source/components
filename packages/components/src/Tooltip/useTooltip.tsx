@@ -27,7 +27,13 @@
 import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
 import { Transitions } from '@looker/design-tokens'
-import React, { MouseEvent, ReactNode, useMemo, useState } from 'react'
+import React, {
+  FocusEvent,
+  MouseEvent,
+  ReactNode,
+  useMemo,
+  useState,
+} from 'react'
 import {
   useAnimationState,
   useCallbackRef,
@@ -106,7 +112,7 @@ export interface UseTooltipResponseDom {
   'aria-describedby': string
   className: string
   onBlur: () => void
-  onFocus: () => void
+  onFocus: (e: FocusEvent) => void
   onMouseOut: (event: MouseEvent<HTMLElement>) => void
   onMouseOver: () => void
   /**
@@ -142,7 +148,11 @@ export function useTooltip({
   const element =
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
-  const handleOpen = () => setIsOpen(true)
+  const handleOpen = () => {
+    if (element && !element.dataset.notooltip) {
+      setIsOpen(true)
+    }
+  }
   const handleClose = () => {
     if (canClose && !canClose()) return
     setIsOpen(false)
