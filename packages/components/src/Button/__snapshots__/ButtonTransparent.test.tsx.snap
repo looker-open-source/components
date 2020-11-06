@@ -27,8 +27,8 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   white-space: nowrap;
   font-size: 0.875rem;
   height: 36px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .c0[disabled] {
@@ -76,7 +76,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 cFdPnf ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 fqEFDh"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 iARsUm ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 fqEFDh"
 >
   focus
 </button>

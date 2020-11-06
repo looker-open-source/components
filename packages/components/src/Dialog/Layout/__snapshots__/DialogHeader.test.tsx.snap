@@ -51,8 +51,8 @@ exports[`DialogHeader Snapshot 1`] = `
   font-size: 0.875rem;
   height: 36px;
   padding: 0rem;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .c3[disabled] {

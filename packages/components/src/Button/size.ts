@@ -98,7 +98,7 @@ export const buttonPadding = (
     case 'medium':
     case 'large':
     default:
-      return hasIcon ? 'medium' : '24px'
+      return hasIcon ? 'medium' : '1.5rem'
   }
 }
 
