@@ -26,14 +26,15 @@
 
 import noop from 'lodash/noop'
 import React, { Context, FC, useRef, useMemo } from 'react'
-import { ManagerContextProps, ElementMap, getActiveElement } from './utils'
+import { TrapStackContextProps, ElementMap } from './types'
+import { getActiveElement } from './utils'
 
-export interface ManagerProviderProps {
+export interface TrapStackProviderProps {
   activate: (element: HTMLElement) => () => void
-  TargetContext: Context<ManagerContextProps>
+  TargetContext: Context<TrapStackContextProps>
 }
 
-export const ManagerProvider: FC<ManagerProviderProps> = ({
+export const TrapStackProvider: FC<TrapStackProviderProps> = ({
   activate,
   TargetContext,
   children,

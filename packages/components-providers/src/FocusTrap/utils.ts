@@ -47,6 +47,7 @@ const checkFocusLost = () => {
 }
 
 export const activateFocusTrap = (element: HTMLElement) => {
+  console.log(element)
   const nodeFocusedBeforeActivation = document.activeElement
   let firstTabbableNode: FocusableElement = element
   let lastTabbableNode: FocusableElement = element

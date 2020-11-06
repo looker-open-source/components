@@ -25,13 +25,13 @@
  */
 
 import React, { createContext, FC } from 'react'
-import { ManagerContextProps, ManagerProvider } from '../Manager'
+import { TrapStackContextProps, TrapStackProvider } from '../TrapStack'
 import { activateFocusTrap } from './utils'
 
-export const FocusTrapContext = createContext<ManagerContextProps>({})
+export const FocusTrapContext = createContext<TrapStackContextProps>({})
 
 export const FocusTrapProvider: FC = (props) => (
-  <ManagerProvider
+  <TrapStackProvider
     activate={activateFocusTrap}
     TargetContext={FocusTrapContext}
     {...props}

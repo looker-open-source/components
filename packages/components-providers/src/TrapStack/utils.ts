@@ -23,6 +23,18 @@
  SOFTWARE.
 
  */
+import { ElementMap } from './types'
 
-export * from './ManagerProvider'
-export * from './utils'
+export const getActiveElement = (elementMap: ElementMap) => {
+  // Sort the elements according to dom position and return the last
+  // which we assume to be stacked on top since all components using Portal
+  // share a single zIndexFloor and use dom order to determine stacking
+  const elements = Object.values(elementMap)
+  if (elements.length === 0) return null
+
+  const sortedElements = elements.sort((elementA, elementB) => {
+    const relationship = elementA.compareDocumentPosition(elementB)
+    return relationship > 3 ? 1 : -1
+  })
+  return sortedElements[0] || null
+}
