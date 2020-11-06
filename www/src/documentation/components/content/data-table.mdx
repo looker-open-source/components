@@ -87,9 +87,9 @@ The `actionsTooltip` prop can be used to set the tooltip text of a row's actions
 
 <Props of="DataTableCell" />
 
-The `<DataTableCell>` component is equivalent to a data cell in your DataTable. `<DataTableCell>` elements should always be children of an `<DataTableItem>` element (i.e. each row should contain some number of column elements).
+The `<DataTableCell>` component is equivalent to a data cell in your DataTable. `<DataTableCell>` elements should always be children of a `<DataTableItem>` element (i.e. each row should contain some number of column elements).
 
-In its simplest form, an `<DataTableCell>` element will display whatever child elements it has.
+In its simplest form, a `<DataTableCell>` element will display whatever child elements it has.
 
 You can also create more advanced layouts within your `<DataTableCell>` by utilizing the optional `detail` and `indicator` props.
 
@@ -132,7 +132,7 @@ Passing in a React element into the `indicator` prop will display said element l
 }
 ```
 
-**Note:** By default, clicking on any element within an `<DataTableCell>` will trigger the `onClick` of the parent `<DataTableItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<DataTableCell>`'s `onClick`.
+**Note:** By default, clicking on any element within a `<DataTableCell>` will trigger the `onClick` of the parent `<DataTableItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<DataTableCell>`'s `onClick`.
 
 ## DataTableAction
 
@@ -144,7 +144,7 @@ The `<DataTableAction>` component represents an actionable item on the rows of y
 
 In the event that your page and `<DataTable>` render before data is available (i.e. before a Promise resolves), you can use the `state` prop to conditionally render a loading icon until your data is ready.
 
-Passing "loading" into an `<DataTable>`'s `state` prop will render a `<Spinner>` icon.
+Passing "loading" into a `<DataTable>`'s `state` prop will render a `<Spinner>` icon.
 
 Additionally, you can render a "No Results" message using the `state="noResults"` prop. When `state="noResults"` the `<DataTable>` will display a "No Results" message in place of its children.
 
@@ -257,7 +257,7 @@ If you want default sorting behavior, you can use the `doDefaultDataTableSort` h
 
 ## Selecting rows
 
-You can add row select behavior on an `<DataTable />` by passing a valid into the `select` prop.
+You can add row select behavior on a `<DataTable />` by passing a valid into the `select` prop.
 
 The following properties are **required** in the object passed into the `select` prop.
 
