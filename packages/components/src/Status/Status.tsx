@@ -86,7 +86,8 @@ const StatusLayout = forwardRef(
       color={intent}
       name={getIntentIcon(intent)}
       size={size}
-      title={getIntentLabel(intent)}
+      /* Don't specify title if Status is wrapped in tooltip */
+      title={!props['aria-describedby'] ? getIntentLabel(intent) : undefined}
     />
   )
 )

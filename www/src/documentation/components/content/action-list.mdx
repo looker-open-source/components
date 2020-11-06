@@ -35,16 +35,13 @@ The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-re
   const columns = [
     {
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
-      widthPercent: 20,
     },
     {
       id: 'name',
       title: 'Name',
       type: 'string',
-      widthPercent: 80,
     },
   ]
 
@@ -120,7 +117,6 @@ Passing in a React element into the `indicator` prop will display said element l
       id: 'name',
       title: 'Name',
       type: 'string',
-      widthPercent: 100,
     },
   ]
 
@@ -210,7 +206,6 @@ If you want default sorting behavior, you can use the `doDefaultActionListSort` 
     {
       canSort: true,
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       sortDirection: 'asc',
@@ -304,7 +299,6 @@ The following properties are **optional** in the object passed into the `select`
   const columns = [
     {
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       widthPercent: 20,
@@ -404,7 +398,6 @@ The `useActionListSelectManager` hook can be used to quickly create the standard
   const columns = [
     {
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       widthPercent: 20,
@@ -494,7 +487,6 @@ The `bulk` prop is used to configure an `ActionList`'s control bar. The object p
   const columns = [
     {
       id: 'id',
-      primaryKey: true,
       title: 'ID',
       type: 'number',
       widthPercent: 20,
@@ -597,7 +589,6 @@ ActionList plays nicely with [Truncate](/components/text/truncate), when you wis
   const columns = [
     {
       id: 'title',
-      primaryKey: true,
       title: 'Title',
       type: 'string',
       widthPercent: 20,

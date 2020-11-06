@@ -25,65 +25,22 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode } from 'react'
+import { reset } from '@looker/design-tokens'
+import React, { FC, ReactNode, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import { FieldFilter } from '../Form/Inputs/InputFilters'
-import { useID } from '../utils/useID'
-import { ActionListBulkControls } from './ActionListBulkControls'
-import { ActionListFilters } from './ActionListFilters'
-import {
-  ActionListHeader,
-  generateActionListHeaderColumns,
-} from './ActionListHeader'
-import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListRowColumns } from './ActionListRow'
+import { ActionListBulkControls } from './Bulk/ActionListBulkControls'
+import { ActionListFilters } from './Filters/ActionListFilters'
 import { ActionListContext } from './ActionListContext'
-import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
-import {
-  getPrimaryKeyColumnIndices,
-  primaryKeyColumnCSS,
-  getNumericColumnIndices,
-  numericColumnCSS,
-} from './utils/actionListFormatting'
 
-export type ActionListColumns = ActionListColumn[]
-export interface ActionListColumn {
-  title: ReactNode
-  /**
-   * A unique identifier for a given column
-   * Note: A column object's id should match a key in your data object template
-   */
-  id: string
-  /**
-   * Determines whether a given column is a primary key or not
-   * @default false
-   */
-  primaryKey?: boolean
-  /**
-   * In some locales, we may change horizontal alignment of 'number'
-   * @default 'string'
-   */
-  type?: 'string' | 'number'
-  /**
-   * Determines how much of a row's width this column should take up
-   */
-  widthPercent?: number
-  /**
-   * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
-   * Note: You must provide a onSort callback to the parent <ActionList/> component
-   * @default false
-   */
-  canSort?: boolean
-  sortDirection?: 'asc' | 'desc'
-}
+import { ColumnsProps } from './Column/column'
+import { ActionListTable } from './ActionListTable'
 
 export interface ActionListProps {
-  columns: ActionListColumns
+  children: ReactNode
+  columns: ColumnsProps
   className?: string
-  /**
-   * @default: true
-   */
-  header?: boolean | ReactNode
+
   /**
    * Sort function provided by the developer
    */
@@ -94,7 +51,8 @@ export interface ActionListProps {
   select?: SelectConfig
   /**
    * ID of the header row. Used for the aria-describedby of the select all checkbox.
-   * Note: If undefined, this will be auto-generated
+   * Note: If undefined, this will be auto-generated. Generally only explicitly specified
+   * in some limited test scenarios.
    */
   headerRowId?: string
   /**
@@ -107,9 +65,14 @@ export interface ActionListProps {
    **/
   filterConfig?: FilterConfig
   /**
-   * specify specific columns to be displayed
-   **/
-  canSelectDisplayedColumns?: boolean
+   * Which columns should be "stuck" to the edge of their frame when DataTable content overflows
+   *
+   * Default here a bit convoluted:
+   *  `select` is specified `firstColumnStuck` will default to `true`
+   *  `select` is not specified `firstColumnStuck` will default to `false`
+   *   Explicit specification of `firstColumnStuck` will always determine outcome
+   */
+  firstColumnStuck?: boolean
 }
 
 export interface SelectConfig {
@@ -170,18 +133,51 @@ export interface BulkActionsConfig {
   totalCount: number
 }
 
-export const ActionListLayout: FC<ActionListProps> = ({
-  bulk,
-  canSelectDisplayedColumns,
-  className,
-  children,
-  columns,
-  filterConfig,
-  header = true,
-  headerRowId,
-  onSort,
-  select,
-}) => {
+export const ActionListLayout: FC<ActionListProps> = (props) => {
+  const {
+    bulk,
+    className,
+    columns,
+    filterConfig,
+    firstColumnStuck: explicitFirstColumnStuck,
+    onSort,
+    select,
+  } = props
+  /**
+   * Extract columns that the user can specify visibility on
+   */
+  const columnsVisibleDefault = columns
+    .filter((c) => c.hide === false)
+    .map((c) => c.id)
+
+  /**
+   * An array of column IDs that should be displayed to the user
+   */
+  const [columnsVisible, setColumnsVisible] = useState(columnsVisibleDefault)
+
+  /**
+   * Array in which each entry represents the visibility status of every available column
+   * NOTE: Columns with `hide===undefined` are always visible
+   */
+  const columnsDisplayState = columns.map(
+    (c) => c.hide === undefined || columnsVisible.includes(c.id)
+  )
+
+  /**
+   * Deciding if the first column of the table should be stuck is slightly complex.
+   *
+   * 1. If the first column is hidden, FALSE (stops evaluating)
+   * 2. If the developer has explicitly specified firstColumnStuck use that value (stops evaluating)
+   * 3. Use whether `select` feature is active (TRUE|FALSE)
+   *
+   */
+  const firstColumnStuck =
+    columnsDisplayState[0] === false
+      ? false
+      : explicitFirstColumnStuck !== undefined
+      ? explicitFirstColumnStuck
+      : Boolean(select)
+
   const allSelected: MixedBoolean =
     select && select.pageItems.every((id) => select.selectedItems.includes(id))
       ? true
@@ -190,67 +186,40 @@ export const ActionListLayout: FC<ActionListProps> = ({
       ? 'mixed'
       : false
 
-  const guaranteedId = useID(headerRowId)
-
   const context = {
     allSelected,
     columns,
+    columnsDisplayState,
     onSort,
     select,
   }
 
-  const actionListHeader =
-    header === true ? (
-      <ActionListHeader id={guaranteedId}>
-        {generateActionListHeaderColumns(columns)}
-      </ActionListHeader>
-    ) : header === false ? null : (
-      <ActionListHeader id={guaranteedId}>{header}</ActionListHeader>
-    )
-
+  const filters = filterConfig && (
+    <ActionListFilters
+      columns={columns}
+      columnsVisible={columnsVisible}
+      onColumnVisibilityChange={setColumnsVisible}
+      {...filterConfig}
+    />
+  )
   return (
     <ActionListContext.Provider value={context}>
-      {(filterConfig || canSelectDisplayedColumns) && (
-        <ActionListFilters
-          {...filterConfig}
-          canSelectDisplayedColumns={canSelectDisplayedColumns}
-        />
-      )}
       <div className={className}>
-        {actionListHeader}
+        {filters}
         {bulk && select && select.selectedItems.length > 0 && (
           <ActionListBulkControls {...bulk} />
         )}
-        <div>{children}</div>
+        <ActionListTable
+          {...props}
+          columns={columns}
+          columnsVisible={columnsVisible}
+          firstColumnStuck={firstColumnStuck}
+        />
       </div>
     </ActionListContext.Provider>
   )
 }
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
-  ${ActionListRowColumns} {
-    align-items: center;
-    display: grid;
-    grid-template-columns: ${(props) =>
-      props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
-  }
-
-  ${/* sc-selector */ ActionListItemColumn}:first-child {
-    padding-left: ${({ select, theme }) =>
-      select ? theme.space.none : undefined};
-  }
-
-  ${/* sc-selector */ ActionListHeaderColumn}:first-child {
-    padding-left: ${({ select, theme }) =>
-      select ? theme.space.none : undefined};
-  }
-
-  ${/* sc-selector */ ActionListItemColumn},
-  ${/* sc-selector */ ActionListHeaderColumn} {
-    display: flex;
-    padding: ${(props) => props.theme.space.small};
-  }
-
-  ${({ columns }) => numericColumnCSS(getNumericColumnIndices(columns))}
-  ${({ columns }) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(columns))}
+  ${reset}
 `

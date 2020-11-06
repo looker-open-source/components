@@ -29,33 +29,28 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import {
   ActionList,
-  ActionListColumns,
+  ColumnsProps,
   ActionListItem,
   ActionListItemAction,
   ActionListItemColumn,
-  ActionListHeaderColumn,
 } from '.'
 
-const columns: ActionListColumns = [
+const columns: ColumnsProps = [
   {
     canSort: true,
     id: 'id',
-    primaryKey: true,
     title: 'ID',
     type: 'number',
-    widthPercent: 10,
   },
   {
     id: 'name',
     title: 'Name',
     type: 'string',
-    widthPercent: 45,
   },
   {
     id: 'role',
     title: 'Role',
     type: 'string',
-    widthPercent: 45,
   },
 ]
 
@@ -71,14 +66,6 @@ const data = [
     type: 'Programmer',
   },
 ]
-
-const header = (
-  <>
-    <ActionListHeaderColumn id="id">Foo</ActionListHeaderColumn>
-    <ActionListHeaderColumn id="name">Bar</ActionListHeaderColumn>
-    <ActionListHeaderColumn id="type">FooBar</ActionListHeaderColumn>
-  </>
-)
 
 const items = data.map(({ id, name, type }) => {
   const availableActions = (
@@ -98,18 +85,6 @@ const items = data.map(({ id, name, type }) => {
 
 const actionListWithGeneratedHeader = (
   <ActionList columns={columns}>{items}</ActionList>
-)
-
-const actionListWithProvidedHeader = (
-  <ActionList columns={columns} header={header}>
-    {items}
-  </ActionList>
-)
-
-const actionListWithNoHeader = (
-  <ActionList columns={columns} header={false}>
-    {items}
-  </ActionList>
 )
 
 const handleActionClick = jest.fn()
@@ -181,38 +156,8 @@ describe('ActionList', () => {
       expect(getByText('Game Designer')).toBeInTheDocument()
     })
 
-    test('Renders a provided header and list item', () => {
-      const { getByText, queryByText } = renderWithTheme(
-        actionListWithProvidedHeader
-      )
-
-      expect(queryByText('ID')).not.toBeInTheDocument()
-      expect(queryByText('Name')).not.toBeInTheDocument()
-      expect(queryByText('Role')).not.toBeInTheDocument()
-
-      expect(getByText('Foo')).toBeInTheDocument()
-      expect(getByText('Bar')).toBeInTheDocument()
-      expect(getByText('FooBar')).toBeInTheDocument()
-
-      expect(getByText('1')).toBeInTheDocument()
-      expect(getByText('Richard Garfield')).toBeInTheDocument()
-      expect(getByText('Game Designer')).toBeInTheDocument()
-    })
-
-    test('Renders no header if header prop value is false', () => {
-      const { getByText, queryByText } = renderWithTheme(actionListWithNoHeader)
-
-      expect(queryByText('ID')).not.toBeInTheDocument()
-      expect(queryByText('Name')).not.toBeInTheDocument()
-      expect(queryByText('Role')).not.toBeInTheDocument()
-
-      expect(getByText('1')).toBeInTheDocument()
-      expect(getByText('Richard Garfield')).toBeInTheDocument()
-      expect(getByText('Game Designer')).toBeInTheDocument()
-    })
-
     test('Renders action menu on button click and handles action click', () => {
-      const { getByText, queryByText } = renderWithTheme(
+      const { getAllByText, getByText, queryByText } = renderWithTheme(
         actionListWithClickableRows
       )
 
@@ -226,7 +171,7 @@ describe('ActionList', () => {
         })
       )
 
-      const listItemButton = getByText('My Actions Button')
+      const listItemButton = getAllByText('My Actions Button')[0]
       expect(queryByText('View Profile')).not.toBeInTheDocument()
 
       fireEvent.click(listItemButton)

@@ -26,7 +26,7 @@
 
 import React, { useState, FormEvent } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { filters } from '../../../__mocks__/sampleInputFilters'
+import { filters } from '../../../__mocks__/filters'
 import { InputText } from '../InputText'
 import { InputFilters, InputFiltersProps, FieldFilter } from './InputFilters'
 import { InputFilterEditorRenderProp } from './inputFilterEditor'
@@ -96,8 +96,8 @@ FilterSelected.args = {
   filters: [withValue, ...filters],
 }
 
-export const HideFilter = Template.bind({})
-HideFilter.args = {
+export const HideFilterIcon = Template.bind({})
+HideFilterIcon.args = {
   ...Basic.args,
   hideFilterIcon: true,
 }

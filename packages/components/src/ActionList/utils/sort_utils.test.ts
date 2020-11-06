@@ -24,7 +24,7 @@
 
  */
 
-import { ActionListColumns } from '../ActionList'
+import { ColumnsProps } from '../Column'
 import { stringComparator, doDefaultActionListSort } from './sort_utils'
 
 describe('Action List Sort Utils', () => {
@@ -51,21 +51,18 @@ describe('Action List Sort Utils', () => {
         name: 'Kobe',
       },
     ]
-    const columns: ActionListColumns = [
+    const columns: ColumnsProps = [
       {
         canSort: true,
         id: 'id',
-        primaryKey: true,
         title: 'ID',
         type: 'number',
-        widthPercent: 20,
       },
       {
         canSort: true,
         id: 'name',
         title: 'Name',
         type: 'string',
-        widthPercent: 80,
       },
     ]
 

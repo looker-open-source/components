@@ -24,7 +24,7 @@
 
  */
 
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import React from 'react'
 import { InlineInputText, InlineInputTextBase } from './InlineInputText'

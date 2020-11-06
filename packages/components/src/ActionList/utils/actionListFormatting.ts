@@ -25,37 +25,23 @@
  */
 
 import { css } from 'styled-components'
-import {
-  ActionListColumn,
-  ActionListHeaderColumn,
-  ActionListItemColumn,
-} from '..'
+import { SpaceVertical } from '../../Layout/Space'
+import { ColumnProps, ActionListItemColumn } from '..'
 
 function filterUndefined<T>(t: T | undefined): t is T {
   return t !== undefined
 }
 
-export const getPrimaryKeyColumnIndices = (columns: ActionListColumn[]) =>
+export const getNumericColumnIndices = (
+  columns: ColumnProps[],
+  visibleColumns: string[],
+  select?: boolean
+) =>
   columns
-    .map((column, index) => (column.primaryKey ? index : undefined))
-    .filter(filterUndefined)
-
-export const primaryKeyColumnCSS = (columnIndices: number[]) =>
-  css`
-    ${columnIndices.map(
-      (columnIndex) =>
-        css`
-          ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
-            color: ${({ theme }) => theme.colors.text5};
-            font-size: ${(props) => props.theme.fontSizes.small};
-          }
-        `
-    )}
-  `
-
-export const getNumericColumnIndices = (columns: ActionListColumn[]) =>
-  columns
-    .map((column, index) => (column.type === 'number' ? index : undefined))
+    .filter((c) => visibleColumns.includes(c.id) || c.hide === undefined)
+    .map((c, index) =>
+      c.type === 'number' ? (select ? index + 1 : index) : undefined
+    )
     .filter(filterUndefined)
 
 export const numericColumnCSS = (columnIndices: number[]) =>
@@ -63,9 +49,11 @@ export const numericColumnCSS = (columnIndices: number[]) =>
     ${columnIndices.map(
       (columnIndex) =>
         css`
-          ${ActionListItemColumn}:nth-child(${columnIndex + 1}),
-          ${ActionListHeaderColumn}:nth-child(${columnIndex + 1}) {
-            flex-direction: row-reverse;
+          ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
+            text-align: right;
+            ${SpaceVertical} {
+              flex-direction: row-reverse;
+            }
           }
         `
     )}

@@ -29,9 +29,9 @@ import styled from 'styled-components'
 import { Label } from '../Label/Label'
 import { Paragraph } from '../../Text'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
+import { Truncate } from '../../Truncate'
 import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
-
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
  * and can render a validation message.
@@ -54,7 +54,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   <label className={className} htmlFor={id}>
     <InputArea>{children}</InputArea>
     <Label as="span">
-      {label}
+      <Truncate>{label}</Truncate>
       {required && <RequiredStar />}
     </Label>
     <MessageArea id={`${id}-describedby`}>
