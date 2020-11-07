@@ -48,28 +48,28 @@ const checkFocusLost = () => {
     : true
 }
 
-export const activateFocusTrap = (element: HTMLElement) => {
+export const activateFocusTrap = (container: HTMLElement) => {
   const nodeFocusedBeforeActivation = document.activeElement
-  let firstTabbableNode: FocusableElement = element
-  let lastTabbableNode: FocusableElement = element
+  let firstTabbableNode: FocusableElement = container
+  let lastTabbableNode: FocusableElement = container
   let mostRecentlyFocusedNode: FocusableElement | null = null
 
   const getInitialFocusNode = () => {
     let node
-    if (element.contains(document.activeElement)) {
+    if (container.contains(document.activeElement)) {
       node = document.activeElement as HTMLElement
     } else {
       // Look for data-autofocus b/c React strips autofocus from dom
       // https://github.com/facebook/react/issues/11851
-      const autoFocusElement = element.querySelector(
+      const autoFocusElement = container.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
 
       // In the absence of autofocus, the surface will have initial focus
-      const surfaceElement = element.querySelector(
+      const surfaceElement = container.querySelector(
         '[data-overlay-surface="true"]'
       ) as HTMLElement
-      node = autoFocusElement || surfaceElement || element
+      node = autoFocusElement || surfaceElement || container
     }
 
     if (!node) {
@@ -82,7 +82,7 @@ export const activateFocusTrap = (element: HTMLElement) => {
   }
 
   const updateTabbableNodes = () => {
-    const tabbableNodes = tabbable(element)
+    const tabbableNodes = tabbable(container)
     firstTabbableNode = tabbableNodes[0] || getInitialFocusNode()
     lastTabbableNode =
       tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode()
@@ -103,7 +103,7 @@ export const activateFocusTrap = (element: HTMLElement) => {
   // In case focus escapes the trap for some strange reason, pull it back in.
   const checkFocusIn = (e: FocusEvent) => {
     // In Firefox when you Tab out of an iframe the Document is briefly focused.
-    if (element.contains(e.target as Node) || e.target instanceof Document) {
+    if (container.contains(e.target as Node) || e.target instanceof Document) {
       return
     }
     e.stopImmediatePropagation()

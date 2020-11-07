@@ -29,11 +29,12 @@ import { TrapStackContextProps, TrapStackProvider } from '../TrapStack'
 import { activateScrollLock } from './utils'
 
 export const ScrollLockContext = createContext<TrapStackContextProps>({})
+ScrollLockContext.displayName = 'ScrollLockContext'
 
 export const ScrollLockProvider: FC = (props) => (
   <TrapStackProvider
     activate={activateScrollLock}
-    TargetContext={ScrollLockContext}
+    context={ScrollLockContext}
     {...props}
   />
 )

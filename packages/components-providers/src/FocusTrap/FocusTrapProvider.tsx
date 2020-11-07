@@ -29,11 +29,12 @@ import { TrapStackContextProps, TrapStackProvider } from '../TrapStack'
 import { activateFocusTrap } from './utils'
 
 export const FocusTrapContext = createContext<TrapStackContextProps>({})
+FocusTrapContext.displayName = 'FocusTrapContext'
 
 export const FocusTrapProvider: FC = (props) => (
   <TrapStackProvider
     activate={activateFocusTrap}
-    TargetContext={FocusTrapContext}
+    context={FocusTrapContext}
     {...props}
   />
 )

@@ -31,16 +31,20 @@ import { getActiveElement } from './utils'
 
 export interface TrapStackProviderProps {
   activate: (element: HTMLElement) => () => void
-  TargetContext: Context<TrapStackContextProps>
+  context: Context<TrapStackContextProps>
 }
 
+/**
+ * Manages "trap" behavior (e.g. scroll lock & focus trap)
+ * in a stack of elements (e.g. layered Dialogs & Popovers)
+ */
 export const TrapStackProvider: FC<TrapStackProviderProps> = ({
   activate,
-  TargetContext,
+  context,
   children,
 }) => {
-  // stores all available scroll elements
-  // (map of ids to elements where scrolling is to be allowed)
+  // Stores all available trap elements
+  // (map of ids to elements that have traps)
   const registeredElementsRef = useRef<ElementMap>({})
   // stores the current element where scrolling is allowed
   // null if no scroll element is active
@@ -62,10 +66,12 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
     function enableCurrentElement() {
       const newElement = getElement()
       if (newElement !== activeElementRef.current) {
-        // Disable the existing scroll element and update the element
+        // Disable the existing element and update the element
+        // (whether there's a new element or not)
         activeElementRef.current = newElement
         deactivateRef.current()
-        // If there's a new element, activate a new scroll element
+        // If there's a new element, activate it and
+        // save the deactivate function that is returned
         if (newElement) {
           deactivateRef.current = activate(newElement)
         }
@@ -102,7 +108,5 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
     }
   }, [activate])
 
-  return (
-    <TargetContext.Provider value={value}>{children}</TargetContext.Provider>
-  )
+  return <context.Provider value={value}>{children}</context.Provider>
 }

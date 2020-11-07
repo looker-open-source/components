@@ -163,7 +163,7 @@ export const usePopover = ({
   cancelClickOutside,
 }: UsePopoverProps) => {
   const [scrollElement, scrollRef] = useScrollLock()
-  const [, focusRef] = useFocusTrap(focusTrap)
+  const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element

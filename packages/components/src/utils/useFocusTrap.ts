@@ -25,37 +25,8 @@
  */
 
 import { FocusTrapContext } from '@looker/components-providers'
-import { Ref, useContext, useEffect } from 'react'
-import { useID } from './useID'
-import { useCallbackRef } from './useCallbackRef'
+import { useTrapStack, UseTrapStackProps } from './useTrapStack'
 
-export function useFocusTrap<T extends HTMLElement = HTMLElement>(
-  enabled = true,
-  forwardedRef?: Ref<T>
-) {
-  const id = useID()
-
-  const [element, callbackRef] = useCallbackRef(forwardedRef)
-
-  const { addElement, removeElement } = useContext(FocusTrapContext)
-
-  useEffect(() => {
-    if (!addElement) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'FocusTrapContext is missing. Please wrap all @looker/components in a ComponentsProvider.'
-      )
-    }
-  }, [addElement])
-
-  useEffect(() => {
-    if (enabled && element) {
-      addElement?.(id, element)
-    }
-    return () => {
-      removeElement?.(id)
-    }
-  }, [enabled, id, addElement, removeElement, element])
-
-  return [element, callbackRef]
-}
+export const useFocusTrap = <T extends HTMLElement = HTMLElement>(
+  props: Omit<UseTrapStackProps<T>, 'context'> = {}
+) => useTrapStack({ context: FocusTrapContext, ...props })

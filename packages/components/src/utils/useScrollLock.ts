@@ -25,36 +25,8 @@
  */
 
 import { ScrollLockContext } from '@looker/components-providers'
-import { useContext, useEffect } from 'react'
-import { useCallbackRef, useID } from './'
+import { useTrapStack, UseTrapStackProps } from './useTrapStack'
 
-/**
- * Disable scrolling on the page except within a given element
- * returns an array containing the element and callback ref
- * @param forwardedRef optional ref to forward
- */
-export const useScrollLock: typeof useCallbackRef = (forwardedRef) => {
-  const id = useID()
-  const [element, callbackRef] = useCallbackRef(forwardedRef)
-  const { addElement, removeElement } = useContext(ScrollLockContext)
-
-  useEffect(() => {
-    if (!addElement) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'ScrollLockContext is missing. Please wrap all @looker/components in a ComponentsProvider.'
-      )
-    }
-  }, [addElement])
-
-  useEffect(() => {
-    if (element) {
-      addElement?.(id, element)
-    }
-    return () => {
-      removeElement?.(id)
-    }
-  }, [id, addElement, removeElement, element])
-
-  return [element, callbackRef]
-}
+export const useScrollLock = <T extends HTMLElement = HTMLElement>(
+  props: Omit<UseTrapStackProps<T>, 'context'> = {}
+) => useTrapStack({ context: ScrollLockContext, ...props })
