@@ -54,7 +54,12 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
 }: UseTrapStackProps<T>): [T | null, (node: T | null) => void] => {
   const id = useID()
   const [element, callbackRef] = useCallbackRef(ref)
-  const { addElement, removeElement } = useContext(context)
+  const {
+    addElement,
+    removeElement,
+    disableCurrentElement,
+    enableCurrentElement,
+  } = useContext(context)
 
   useEffect(() => {
     if (!addElement) {
@@ -66,13 +71,33 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
   }, [addElement, context])
 
   useEffect(() => {
-    if (!disabled && element) {
-      addElement?.(id, element)
+    if (element) {
+      // If the trap is disabled and there is an existing trap
+      // (e.g. a Popover or Dialog inside another Popover or Dialog)
+      // we need to manually disable the existing trap so that elements
+      // inside the new Popover/Dialog won't be "trapped out"
+      if (disabled) {
+        disableCurrentElement?.()
+      } else {
+        addElement?.(id, element)
+      }
     }
     return () => {
-      removeElement?.(id)
+      if (disabled) {
+        enableCurrentElement?.()
+      } else {
+        removeElement?.(id)
+      }
     }
-  }, [disabled, id, addElement, removeElement, element])
+  }, [
+    disabled,
+    id,
+    element,
+    addElement,
+    removeElement,
+    disableCurrentElement,
+    enableCurrentElement,
+  ])
 
   return [element, callbackRef]
 }
