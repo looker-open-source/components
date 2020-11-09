@@ -25,6 +25,11 @@
  */
 
 // The following pulls heavily from https://github.com/focus-trap/focus-trap
+// with the main differences being:
+// 1. Only need the activate/deactivate functions & associated utils –
+// multiple focus traps are managed with FocusTrapProvider
+// 2. No need for most of the configurable features
+// 3. The text of an input should not be selected on focus if it is readonly
 
 import { tabbable, isFocusable, FocusableElement } from 'tabbable'
 

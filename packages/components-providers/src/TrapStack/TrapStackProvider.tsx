@@ -46,10 +46,10 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
   // Stores all available trap elements
   // (map of ids to elements that have traps)
   const registeredTrapsRef = useRef<TrapMap>({})
-  // stores the current trap (element) where scrolling is allowed
+  // Stores the current trap (element) where scrolling is allowed
   // null if no trap is active
   const activeTrapRef = useRef<HTMLElement | null>(null)
-  // stores the callback to remove the trap behavior
+  // Stores the callback to remove the trap behavior
   const deactivateRef = useRef<() => void>(noop)
 
   // Create the context value

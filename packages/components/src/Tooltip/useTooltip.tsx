@@ -27,13 +27,7 @@
 import { Property } from 'csstype'
 import { Placement } from '@popperjs/core'
 import { Transitions } from '@looker/design-tokens'
-import React, {
-  FocusEvent,
-  MouseEvent,
-  ReactNode,
-  useMemo,
-  useState,
-} from 'react'
+import React, { MouseEvent, ReactNode, useMemo, useState } from 'react'
 import {
   useAnimationState,
   useCallbackRef,
@@ -112,7 +106,7 @@ export interface UseTooltipResponseDom {
   'aria-describedby': string
   className: string
   onBlur: () => void
-  onFocus: (e: FocusEvent) => void
+  onFocus: () => void
   onMouseOut: (event: MouseEvent<HTMLElement>) => void
   onMouseOver: () => void
   /**

@@ -25,7 +25,10 @@
  */
 
 import React, { useEffect, useContext } from 'react'
-import { ScrollLockContext } from '@looker/components-providers'
+import {
+  ScrollLockContext,
+  FocusTrapContext,
+} from '@looker/components-providers'
 import {
   Box,
   Button,
@@ -244,7 +247,7 @@ const DialogInner = () => {
     }
   }
   const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
-    ScrollLockContext
+    FocusTrapContext
   )
   const toggleFocusTrap = () => {
     if (activeTrapRef && activeTrapRef.current) {

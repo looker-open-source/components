@@ -96,13 +96,8 @@ export function useInputEvents<
 
   const handleBlur = useBlur(context)
 
-  function handleFocus(e: FocusEvent<HTMLInputElement>) {
-    const input = e.currentTarget
-    if (readOnly && input) {
-      window.requestAnimationFrame(() => {
-        input.selectionEnd = input.selectionStart = 0
-      })
-    } else if (selectOnClick) {
+  function handleFocus() {
+    if (!readOnly && selectOnClick) {
       selectOnClickRef.current = true
     }
 

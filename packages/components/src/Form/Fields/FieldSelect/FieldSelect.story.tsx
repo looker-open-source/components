@@ -326,6 +326,10 @@ export const SelectContent = () => {
   )
 }
 
+SelectContent.parameters = {
+  storyshots: { disable: true },
+}
+
 // Can't have usePopover at the top level of a story because it ends up at the same level
 // as ComponentsProvider and can't access FocusTrapContext or ScrollLockContext
 const SelectDemoInner = () => {
