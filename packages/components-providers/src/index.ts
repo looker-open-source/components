@@ -24,4 +24,5 @@
 
  */
 export * from './ComponentsProvider'
+export * from './ExtendComponentsProvider'
 export * from './ScrollLock'

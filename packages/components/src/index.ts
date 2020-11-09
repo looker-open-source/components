@@ -59,9 +59,9 @@ export * from './VisuallyHidden'
 
 export * from './utils'
 
-export { ComponentsProvider } from '@looker/components-providers'
+export {
+  ComponentsProvider,
+  ExtendComponentsThemeProvider,
+} from '@looker/components-providers'
 
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
 export { theme, Theme } from '@looker/design-tokens'
