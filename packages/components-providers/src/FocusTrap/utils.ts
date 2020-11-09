@@ -26,7 +26,7 @@
 
 // The following pulls heavily from https://github.com/focus-trap/focus-trap
 
-import { tabbable, FocusableElement } from 'tabbable'
+import { tabbable, isFocusable, FocusableElement } from 'tabbable'
 
 const isSelectableInput = (
   node: FocusableElement
@@ -72,7 +72,7 @@ export const activateFocusTrap = (container: HTMLElement) => {
       node = autoFocusElement || surfaceElement || container
     }
 
-    if (!node) {
+    if (!node || !isFocusable(node)) {
       throw new Error(
         'Your focus trap needs to have at least one focusable element'
       )
