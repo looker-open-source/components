@@ -23,13 +23,13 @@
  SOFTWARE.
 
  */
-import { ElementMap } from './types'
+import { TrapMap } from './types'
 
-export const getActiveElement = (elementMap: ElementMap) => {
-  // Sort the elements according to dom position and return the last
+export const getActiveTrap = (trapMap: TrapMap) => {
+  // Sort the trap elements according to dom position and return the last
   // which we assume to be stacked on top since all components using Portal
   // share a single zIndexFloor and use dom order to determine stacking
-  const elements = Object.values(elementMap)
+  const elements = Object.values(trapMap)
   if (elements.length === 0) return null
 
   const sortedElements = elements.sort((elementA, elementB) => {

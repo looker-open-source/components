@@ -43,9 +43,10 @@ import {
   Space,
   SpaceVertical,
   useToggle,
-} from '../'
+} from '../..'
+import { Popover, PopoverContent, usePopover } from '..'
 
-import { Popover, PopoverContent, usePopover } from './'
+export * from './OverflowExamples'
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -231,15 +232,25 @@ OverlayOpenDialog.parameters = {
 
 const DialogInner = () => {
   const {
-    activeElementRef,
-    disableCurrentElement,
-    enableCurrentElement,
+    activeTrapRef: activeLockRef,
+    disableCurrentTrap: disableCurrentLock,
+    enableCurrentTrap: enableCurrentLock,
   } = useContext(ScrollLockContext)
-  const handleClick = () => {
-    if (activeElementRef && activeElementRef.current) {
-      disableCurrentElement?.()
+  const toggleScrollLock = () => {
+    if (activeLockRef && activeLockRef.current) {
+      disableCurrentLock?.()
     } else {
-      enableCurrentElement?.()
+      enableCurrentLock?.()
+    }
+  }
+  const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
+    ScrollLockContext
+  )
+  const toggleFocusTrap = () => {
+    if (activeTrapRef && activeTrapRef.current) {
+      disableCurrentTrap?.()
+    } else {
+      enableCurrentTrap?.()
     }
   }
   function openAlert() {
@@ -252,7 +263,8 @@ const DialogInner = () => {
           Scroll lock can be disabled via ScrollLockContext but due to fixed
           positioning in Dialog, there will be a scrollbar jump.
         </Paragraph>
-        <Button onClick={handleClick}>Toggle Scroll Lock</Button>
+        <Button onClick={toggleScrollLock}>Toggle Scroll Lock</Button>
+        <Button onClick={toggleFocusTrap}>Toggle Focus Trap</Button>
         <Paragraph>Try opening the Select and picking an option:</Paragraph>
         <FieldSelect
           label="Default Value"

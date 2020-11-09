@@ -30,29 +30,29 @@ export interface TrapStackContextProps {
   /**
    * Stores the element for the active scroll lock (null if none are active)
    */
-  activeElementRef?: MutableRefObject<HTMLElement | null>
+  activeTrapRef?: MutableRefObject<HTMLElement | null>
   /**
    * @private
    */
-  addElement?: (id: string, element: HTMLElement) => void
+  addTrap?: (id: string, element: HTMLElement) => void
   /**
    * Disables the current scroll lock (no scroll lock will be enabled as a result)
    */
-  disableCurrentElement?: () => void
+  disableCurrentTrap?: () => void
   /**
    * Enables the scroll lock stacked on top
    */
-  enableCurrentElement?: () => void
+  enableCurrentTrap?: () => void
   /**
    * @private
    */
-  getElement?: (id: string) => HTMLElement | null
+  getTrap?: (id: string) => HTMLElement | null
   /**
    * @private
    */
-  removeElement?: (id: string) => void
+  removeTrap?: (id: string) => void
 }
 
-export interface ElementMap {
+export interface TrapMap {
   [key: string]: HTMLElement
 }

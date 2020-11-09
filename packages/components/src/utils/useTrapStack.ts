@@ -55,20 +55,20 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
   const id = useID()
   const [element, callbackRef] = useCallbackRef(ref)
   const {
-    addElement,
-    removeElement,
-    disableCurrentElement,
-    enableCurrentElement,
+    addTrap,
+    removeTrap,
+    disableCurrentTrap,
+    enableCurrentTrap,
   } = useContext(context)
 
   useEffect(() => {
-    if (!addElement) {
+    if (!addTrap) {
       // eslint-disable-next-line no-console
       console.warn(
         `${context.displayName} is missing. Please wrap all @looker/components in a ComponentsProvider.`
       )
     }
-  }, [addElement, context])
+  }, [addTrap, context])
 
   useEffect(() => {
     if (element) {
@@ -77,26 +77,26 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
       // we need to manually disable the existing trap so that elements
       // inside the new Popover/Dialog won't be "trapped out"
       if (disabled) {
-        disableCurrentElement?.()
+        disableCurrentTrap?.()
       } else {
-        addElement?.(id, element)
+        addTrap?.(id, element)
       }
     }
     return () => {
       if (disabled) {
-        enableCurrentElement?.()
+        enableCurrentTrap?.()
       } else {
-        removeElement?.(id)
+        removeTrap?.(id)
       }
     }
   }, [
     disabled,
     id,
     element,
-    addElement,
-    removeElement,
-    disableCurrentElement,
-    enableCurrentElement,
+    addTrap,
+    removeTrap,
+    disableCurrentTrap,
+    enableCurrentTrap,
   ])
 
   return [element, callbackRef]

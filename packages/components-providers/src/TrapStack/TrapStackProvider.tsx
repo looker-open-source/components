@@ -26,8 +26,8 @@
 
 import noop from 'lodash/noop'
 import React, { Context, FC, useRef, useMemo } from 'react'
-import { TrapStackContextProps, ElementMap } from './types'
-import { getActiveElement } from './utils'
+import { TrapStackContextProps, TrapMap } from './types'
+import { getActiveTrap } from './utils'
 
 export interface TrapStackProviderProps {
   activate: (element: HTMLElement) => () => void
@@ -45,66 +45,62 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
 }) => {
   // Stores all available trap elements
   // (map of ids to elements that have traps)
-  const registeredElementsRef = useRef<ElementMap>({})
-  // stores the current element where scrolling is allowed
-  // null if no scroll element is active
-  const activeElementRef = useRef<HTMLElement | null>(null)
-  // stores the callback to remove the scroll event listener & restore body styles
+  const registeredTrapsRef = useRef<TrapMap>({})
+  // stores the current trap (element) where scrolling is allowed
+  // null if no trap is active
+  const activeTrapRef = useRef<HTMLElement | null>(null)
+  // stores the callback to remove the trap behavior
   const deactivateRef = useRef<() => void>(noop)
 
-  // useMemo: this component probably won't re-render much, but if it does
-  // let's not cause unnecessary diffs from useFocusElement in Dialogs and Popovers
-  // since those components can be finicky if re-rendered at the wrong moment
+  // Create the context value
   const value = useMemo(() => {
-    function getElement(id?: string): HTMLElement | null {
-      const registeredElements = registeredElementsRef.current
-      return id
-        ? registeredElements[id] || null
-        : getActiveElement(registeredElements)
+    const getTrap = (id?: string): HTMLElement | null => {
+      const registeredTraps = registeredTrapsRef.current
+      return id ? registeredTraps[id] || null : getActiveTrap(registeredTraps)
     }
 
-    function enableCurrentElement() {
-      const newElement = getElement()
-      if (newElement !== activeElementRef.current) {
-        // Disable the existing element and update the element
-        // (whether there's a new element or not)
-        activeElementRef.current = newElement
+    const enableCurrentTrap = () => {
+      const newTrap = getTrap()
+      if (newTrap !== activeTrapRef.current) {
+        // Disable the existing trap and update the activeTrapRef
+        // (whether there's a new trap or not)
+        activeTrapRef.current = newTrap
         deactivateRef.current()
-        // If there's a new element, activate it and
+        // If there's a new trap, activate it and
         // save the deactivate function that is returned
-        if (newElement) {
-          deactivateRef.current = activate(newElement)
+        if (newTrap) {
+          deactivateRef.current = activate(newTrap)
         }
       }
     }
 
-    function disableCurrentElement() {
+    const disableCurrentTrap = () => {
       deactivateRef.current()
       deactivateRef.current = noop
-      activeElementRef.current = null
+      activeTrapRef.current = null
     }
 
-    function addElement(id: string, element: HTMLElement) {
-      registeredElementsRef.current[id] = element
-      enableCurrentElement()
+    const addTrap = (id: string, element: HTMLElement) => {
+      registeredTrapsRef.current[id] = element
+      enableCurrentTrap()
     }
 
-    function removeElement(id: string) {
-      const existingElement = getElement(id)
-      if (existingElement) {
-        const registeredElements = registeredElementsRef.current
-        delete registeredElements[id]
-        enableCurrentElement()
+    const removeTrap = (id: string) => {
+      const existingTrap = getTrap(id)
+      if (existingTrap) {
+        const registeredTraps = registeredTrapsRef.current
+        delete registeredTraps[id]
+        enableCurrentTrap()
       }
     }
 
     return {
-      activeElementRef,
-      addElement,
-      disableCurrentElement,
-      enableCurrentElement,
-      getElement,
-      removeElement,
+      activeTrapRef,
+      addTrap,
+      disableCurrentTrap,
+      enableCurrentTrap,
+      getTrap,
+      removeTrap,
     }
   }, [activate])
 
