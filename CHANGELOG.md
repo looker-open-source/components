@@ -14,7 +14,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-## [UNRELEASED]
+## [0.9.23]
 
 ### Added
 
@@ -25,11 +25,6 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
     - `develop` - disables "Docs" addon
     - `publish` - enables Typescript extraction and full `addon-essentials` support
 
-### Fixed
-
-- InlineInputText now supports disabled and readOnly props
-- InlineTextArea now supports disabled and readOnly props
-- `MenuItems` within the same `MenuList` align consistently when icons are used
 ## [0.9.19]
 
 ### Fixed
