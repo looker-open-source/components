@@ -47,7 +47,7 @@ afterEach(() => {
   jest.useRealTimers()
 })
 
-const FocusTrapComponent: FC = ({ children }) => {
+const Inner: FC = ({ children }) => {
   const [, ref] = useFocusTrap()
   const { value, setOff, toggle } = useToggle()
   return (
@@ -59,19 +59,27 @@ const FocusTrapComponent: FC = ({ children }) => {
   )
 }
 
+const FocusTrapComponent: FC = ({ children }) => {
+  return (
+    <FocusTrapProvider>
+      <Inner>{children}</Inner>
+    </FocusTrapProvider>
+  )
+}
+
+const Surface: FC = ({ children }) => (
+  <div tabIndex={-1} data-testid="surface" data-overlay-surface="true">
+    {children}
+  </div>
+)
+
 describe('useFocusTrap', () => {
   describe('initial focus', () => {
     test('focus starts on surface', async () => {
       render(
-        <FocusTrapProvider>
-          <FocusTrapComponent>
-            <div
-              tabIndex={-1}
-              data-testid="surface"
-              data-overlay-surface="true"
-            />
-          </FocusTrapComponent>
-        </FocusTrapProvider>
+        <FocusTrapComponent>
+          <Surface />
+        </FocusTrapComponent>
       )
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
@@ -83,17 +91,11 @@ describe('useFocusTrap', () => {
 
     test('focus starts on autoFocus element', async () => {
       renderWithTheme(
-        <FocusTrapProvider>
-          <FocusTrapComponent>
-            <div
-              tabIndex={-1}
-              data-testid="surface"
-              data-overlay-surface="true"
-            >
-              <FieldText label="Text field" autoFocus />
-            </div>
-          </FocusTrapComponent>
-        </FocusTrapProvider>
+        <FocusTrapComponent>
+          <Surface>
+            <FieldText label="Text field" autoFocus />
+          </Surface>
+        </FocusTrapComponent>
       )
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
@@ -104,11 +106,7 @@ describe('useFocusTrap', () => {
     })
 
     test('error without autoFocus or surface', async () => {
-      renderWithTheme(
-        <FocusTrapProvider>
-          <FocusTrapComponent />
-        </FocusTrapProvider>
-      )
+      renderWithTheme(<FocusTrapComponent />)
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
       act(() => {
@@ -126,15 +124,9 @@ describe('useFocusTrap', () => {
   describe('return focus', () => {
     test('focus returns to trigger', async () => {
       render(
-        <FocusTrapProvider>
-          <FocusTrapComponent>
-            <div
-              tabIndex={-1}
-              data-testid="surface"
-              data-overlay-surface="true"
-            />
-          </FocusTrapComponent>
-        </FocusTrapProvider>
+        <FocusTrapComponent>
+          <Surface />
+        </FocusTrapComponent>
       )
       const toggle = screen.getByText('toggle')
       toggle.focus()
@@ -150,15 +142,9 @@ describe('useFocusTrap', () => {
 
     test('focus does not return to trigger', async () => {
       render(
-        <FocusTrapProvider>
-          <FocusTrapComponent>
-            <div
-              tabIndex={-1}
-              data-testid="surface"
-              data-overlay-surface="true"
-            />
-          </FocusTrapComponent>
-        </FocusTrapProvider>
+        <FocusTrapComponent>
+          <Surface />
+        </FocusTrapComponent>
       )
       const toggle = screen.getByText('toggle')
       toggle.focus()
@@ -172,6 +158,58 @@ describe('useFocusTrap', () => {
       fireEvent.click(otherButton)
       otherButton.focus()
       expect(document.activeElement).toBe(otherButton)
+    })
+  })
+
+  describe('cycle focus when tabbing', () => {
+    const CycleFocus = () => (
+      <FocusTrapComponent>
+        <Surface>
+          <button>First</button>
+          <input type="text" />
+          <a href="#">Last</a>
+          <span>Not tabbable</span>
+        </Surface>
+      </FocusTrapComponent>
+    )
+
+    test('focus the first tabbable element after tabbing from the last', async () => {
+      render(<CycleFocus />)
+
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+
+      const last = screen.getByText('Last')
+      last.focus()
+      fireEvent.keyDown(last, { key: 'Tab' })
+      expect(document.activeElement).toBe(screen.getByText('First'))
+    })
+
+    test('focus the last tabbable element after shift-tabbing from the first', async () => {
+      render(<CycleFocus />)
+
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+
+      const first = screen.getByText('First')
+      first.focus()
+      fireEvent.keyDown(first, { key: 'Tab', shiftKey: true })
+      expect(document.activeElement).toBe(screen.getByText('Last'))
+    })
+
+    test('do nothing when not focused on first or last tabbable element', async () => {
+      render(<CycleFocus />)
+
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+
+      const input = screen.getByRole('textbox')
+      input.focus()
+      // In jsdom a keydown event doesn't actually move focus
+      // but useFocusTrap uses the keydown event to cycle focus on first & last
+      // because using focus/blur events would be "too late"
+      fireEvent.keyDown(input, { key: 'Tab' })
+      expect(document.activeElement).toBe(input)
     })
   })
 })
