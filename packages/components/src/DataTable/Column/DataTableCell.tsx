@@ -47,18 +47,6 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
   indicator,
   size,
 }) => {
-  const handleChildClick = (event) => event.stopPropagation()
-  console.log('children-type: ', children.type)
-
-  console.log(
-    'children-type.displayName: ',
-    children && children.type && children.type.displayName
-  )
-
-  const link =
-    (children && children.type && children.type === 'a') ||
-    (children && children.type && children.type.displayName === 'Link')
-
   let content =
     size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
 
@@ -91,11 +79,7 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
     )
   }
 
-  return (
-    <td className={className} onClick={link && handleChildClick}>
-      {content}
-    </td>
-  )
+  return <td className={className}>{content}</td>
 }
 
 export const DataTableCell = styled(DataTableCellLayout)`

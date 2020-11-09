@@ -87,14 +87,17 @@ const DataTableRowLayout = forwardRef(
     ) : (
       <div />
     )
-
     return (
       <tr
         ref={ref}
         className={className}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
-        onClick={onClick}
+        onClick={
+          event && (event.target as HTMLElement).tagName === 'A'
+            ? onClick
+            : undefined
+        }
       >
         <ColumnType>{checkbox}</ColumnType>
         {sizedChildren}
