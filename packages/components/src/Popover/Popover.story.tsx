@@ -321,7 +321,13 @@ export const Placement = () => {
   )
 }
 
-export const MovingTarget = () => {
+Placement.parameters = {
+  storyshots: { disable: true },
+}
+
+// Can't have usePopover at the top level of a story because it ends up at the same level
+// as ComponentsProvider and can't access FocusTrapContext or ScrollLockContext
+const MovingTargetInner = () => {
   const { value, toggle } = useToggle()
 
   const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
@@ -369,7 +375,9 @@ export const MovingTarget = () => {
   )
 }
 
-Placement.parameters = {
+export const MovingTarget = () => <MovingTargetInner />
+
+MovingTarget.parameters = {
   storyshots: { disable: true },
 }
 
