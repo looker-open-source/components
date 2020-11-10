@@ -25,7 +25,6 @@
  */
 
 import {
-  FocusEvent,
   MouseEvent as ReactMouseEvent,
   useRef,
   useContext,
