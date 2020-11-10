@@ -18,7 +18,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ### Fixed
 
-- update DataTable to support onClick of `Link/a tag` as text inside rows.
+- update DataTable to support onClick of `Link/Anchor` as text inside rows.
 
 ## [0.9.23]
 
