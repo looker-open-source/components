@@ -27,6 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
+import { Link } from '../Link'
 import {
   DataTable,
   DataTableAction,
@@ -64,6 +65,28 @@ const data = [
     id: 2,
     name: 'John Carmack',
     type: 'Programmer',
+  },
+  {
+    id: 3,
+    name: (
+      <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
+        Gouda
+      </a>
+    ),
+    type: 'semi-hard, artisan, brined, processed',
+  },
+  {
+    id: 4,
+    name: (
+      <Link
+        href="https://components.looker.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        American
+      </Link>
+    ),
+    type: 'semi-soft, processed',
   },
 ]
 
@@ -241,6 +264,7 @@ describe('DataTable', () => {
         {items}
       </DataTable>
     )
+
     const dataTableWithOnClickRowSelect = (
       <DataTable
         columns={columns}
@@ -278,6 +302,32 @@ describe('DataTable', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithSelectedItems)
       const checkbox = getAllByRole('checkbox')[1]
       expect((checkbox as HTMLInputElement).checked).toEqual(true)
+    })
+
+    test('selectedItems not selected if clicked on a anchor', () => {
+      const { getAllByRole, getByText } = renderWithTheme(dataTableWithSelect)
+
+      const Anchor = getByText('Gouda')
+
+      expect(Anchor).toBeInTheDocument()
+
+      fireEvent.click(Anchor)
+
+      const checkbox = getAllByRole('checkbox')[3]
+      expect((checkbox as HTMLInputElement).checked).toEqual(false)
+    })
+
+    test('selectedItems not selected if clicked on a link', () => {
+      const { getAllByRole, getByText } = renderWithTheme(dataTableWithSelect)
+
+      const link = getByText('American')
+
+      expect(link).toBeInTheDocument()
+
+      fireEvent.click(link)
+
+      const checkbox = getAllByRole('checkbox')[4]
+      expect((checkbox as HTMLInputElement).checked).toEqual(false)
     })
   })
 
