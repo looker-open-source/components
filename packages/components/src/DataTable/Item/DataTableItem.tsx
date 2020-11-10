@@ -54,7 +54,7 @@ export interface DataTableItemProps
    */
   disabled?: boolean
 
-  children: JSX.Element[]
+  children: JSX.Element | JSX.Element[]
 }
 
 const DataTableItemLayout: FC<DataTableItemProps> = ({

@@ -5,17 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED NEXT]
-
-### Added
-
-- `ExtendComponentsProvider`
-
 ## [UNRELEASED]
 
 ### Added
 
 - `ExtendComponentsProvider`
+
+### Fixed
+
+- `Avatar` will consistently maintain it's 1:1 aspect ratio within flex layouts
+- `CodeBlock` should now uses `overflow-y: auto` instead of `overflow-y: scroll`
+- `DataTable` with number columns now properly aligns the cell content
+- `DataTableHeaderCell` properly aligns sort direction icon when column `size` is specified
+- `DataTableItem` supports a single column
+- `DialogContent` now will only enter "overflow" state exactly once per render lifecycle
+- `DialogFooterLayout` is no longer exported
 
 ## [0.9.23]
 

@@ -194,10 +194,8 @@ export const Table = styled(TableLayout)`
     }
   }
 
-  ${({ columns, select, columnsVisible }) =>
-    numericColumnCSS(
-      getNumericColumnIndices(columns, columnsVisible, Boolean(select))
-    )}
+  ${({ columns, columnsVisible }) =>
+    numericColumnCSS(getNumericColumnIndices(columns, columnsVisible))}
 `
 
 const InterimState = styled.div`

@@ -56,8 +56,8 @@ export const Sortable = () => {
     {
       canSort: true,
       id: 'name',
-      size: 'nowrap',
-      title: 'Name',
+      size: 'large',
+      title: 'Name (really long title to help keep things short-ish)',
       type: 'string',
     },
   ]

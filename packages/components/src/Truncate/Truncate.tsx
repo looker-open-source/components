@@ -25,10 +25,11 @@
  */
 import React, { FC, useState, useCallback, ReactNode } from 'react'
 import styled from 'styled-components'
+import { width as widthHelper, WidthProps } from 'styled-system'
 import { useIsTruncated } from '../utils/useIsTruncated'
 import { useTooltip } from '../Tooltip'
 
-export interface TruncateProps {
+export interface TruncateProps extends WidthProps {
   children: ReactNode
 }
 
@@ -36,8 +37,7 @@ export interface TruncateProps {
  * Prevent text wrapping on long labels and instead render truncated text.
  * Renders a tooltip to view the entire text content on hover.
  **/
-
-export const Truncate: FC<TruncateProps> = ({ children }) => {
+export const Truncate: FC<TruncateProps> = ({ children, width = '100%' }) => {
   const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
 
   const isTruncated = useIsTruncated(domNode)
@@ -67,17 +67,17 @@ export const Truncate: FC<TruncateProps> = ({ children }) => {
   return (
     <>
       {tooltip}
-      <TextStyle {...domProps} ref={textRef}>
+      <TextStyle {...domProps} ref={textRef} width={width}>
         {children}
       </TextStyle>
     </>
   )
 }
 
-const TextStyle = styled.span`
+const TextStyle = styled.span<WidthProps>`
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${widthHelper}
   white-space: nowrap;
-  width: 100%;
 `

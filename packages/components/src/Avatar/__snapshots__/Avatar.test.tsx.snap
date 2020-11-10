@@ -53,6 +53,9 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   background: currentColor;
@@ -79,6 +82,9 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -214,6 +220,9 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   background: currentColor;
@@ -240,6 +249,9 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -362,6 +374,9 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -392,6 +407,9 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -522,6 +540,9 @@ exports[`Avatar AvatarIcon renders  1`] = `
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -613,6 +634,9 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   border: solid 1px currentColor;
@@ -694,6 +718,9 @@ exports[`Avatar AvatarUser shows initials if has broken url as avatar_url 1`] = 
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   background: currentColor;
@@ -745,6 +772,9 @@ exports[`Avatar AvatarUser shows initials if it has null as avatar_url  1`] = `
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   background: currentColor;
@@ -799,6 +829,9 @@ exports[`Avatar AvatarUser shows user profile picture if it has good avatar_url 
   align-items: center;
   border-radius: 100%;
   display: grid;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   justify-items: center;
   overflow: hidden;
   background: currentColor;

@@ -25,12 +25,21 @@
  */
 
 import styled, { css } from 'styled-components'
-import { minHeight, ResponsiveValue } from 'styled-system'
+import { height, ResponsiveValue } from 'styled-system'
 import { theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 import { dialogWidth, DialogWidth } from './dialogWidth'
 
-export type DialogPlacements = 'center' | 'cover' | 'top'
+export type DialogPlacementCenter = 'center'
+export type DialogPlacementCover = 'cover'
+export type DialogPlacementTop = 'top'
+
+export type DialogPlacements =
+  | DialogPlacementCenter
+  | DialogPlacementCover
+  | DialogPlacementTop
+
+export const dialogPlacements = ['center', 'cover', 'top']
 
 export interface DialogSurfaceProps {
   /**
@@ -57,11 +66,11 @@ export interface DialogSurfaceProps {
   width?: DialogWidth
 
   /**
-   * Explicitly specifying a minHeight will set the Surface to be the lesser of
-   * the specified height, the content height or the viewport height. Default will
-   * cause the Surface to auto-size to its content.
+   * Explicitly specifying a height will set the Surface to be the greater of
+   * the specified height, the content height but no greater than the viewport height.
+   * Default will cause the Surface to auto-size to its content.
    */
-  minHeight?: ResponsiveValue<string>
+  height?: ResponsiveValue<string>
 }
 
 const { space, breakpoints } = theme
@@ -110,7 +119,7 @@ export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
 
   ${dialogWidth}
   ${({ placement }) => placements[placement || 'center']}
-  ${minHeight}
+  ${height}
 
   @media screen and (min-width: ${breakpoints[0]}) {
     border-radius: ${({ theme }) => theme.radii.medium};
