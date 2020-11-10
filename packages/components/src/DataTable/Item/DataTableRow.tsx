@@ -82,18 +82,6 @@ const DataTableRowLayout = forwardRef(
       }
     })
 
-    // (event) => {
-    //   console.log('onClick: ', onClick)
-    //   console.log('tagName: ', (event.target as HTMLElement).tagName)
-    //   console.log(
-    //     'tagName is an a tag: ',
-    //     (event.target as HTMLElement).tagName !== 'A'
-    //   )
-    //   return (event.target as HTMLElement).tagName !== 'A'
-    //     ? onClick
-    //     : undefined
-    // }
-
     const checkbox = hasCheckbox ? (
       <DataTableCheckbox {...pick(props, checkListProps)} />
     ) : (

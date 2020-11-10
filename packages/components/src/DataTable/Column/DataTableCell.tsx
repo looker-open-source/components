@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC, ReactNode, cloneElement } from 'react'
+import React, { FC, ReactNode, cloneElement, ReactElement } from 'react'
 import styled from 'styled-components'
+import { has } from 'lodash'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
@@ -51,14 +52,11 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
     event.stopPropagation()
 
   const newChild =
-    (children && children.type === 'a') ||
-    (children && children.type && children.type.displayName === 'link')
-      ? cloneElement(children, {
+    has(children, 'props') && (children as ReactElement).props.href
+      ? cloneElement(children as ReactElement, {
           onClick: handleOnClick,
         })
       : children
-
-  console.log(children.type)
 
   let content =
     size && size !== 'nowrap' ? <Truncate>{newChild}</Truncate> : newChild
