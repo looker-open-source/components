@@ -24,9 +24,8 @@
 
  */
 
-import React, { FC, ReactNode, cloneElement, ReactElement } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { has } from 'lodash'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
@@ -48,18 +47,8 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
   indicator,
   size,
 }) => {
-  const handleOnClick = (event: MouseEvent | KeyboardEvent) =>
-    event.stopPropagation()
-
-  const newChild =
-    has(children, 'props') && (children as ReactElement).props.href
-      ? cloneElement(children as ReactElement, {
-          onClick: handleOnClick,
-        })
-      : children
-
   let content =
-    size && size !== 'nowrap' ? <Truncate>{newChild}</Truncate> : newChild
+    size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
 
   if (detail) {
     content = (
