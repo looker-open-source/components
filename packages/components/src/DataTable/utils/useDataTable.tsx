@@ -24,12 +24,28 @@
 
  */
 
-export default {
-  title: 'DataTable',
-}
+import React from 'react'
+import { DataTable } from '../DataTable'
+import { DataTableItem } from '../Item'
+import { DataTableCell, DataTableColumns } from '../Column'
+import { DataTableData } from '.'
 
-export * from './Interaction'
-export * from './Percentage'
-export * from './Responsive'
-export * from './Sorting'
-export * from './State'
+export const useDataTable = (
+  data: DataTableData,
+  columns: DataTableColumns
+) => {
+  const items = data.map((dataObj) => {
+    const defaultOrderColumn = columns[0].id
+    const id = dataObj[defaultOrderColumn]
+
+    return (
+      <DataTableItem id={id} key={id}>
+        {columns.map((column) => (
+          <DataTableCell key={column.id}>{dataObj[column.id]}</DataTableCell>
+        ))}
+      </DataTableItem>
+    )
+  })
+
+  return <DataTable columns={columns}>{items}</DataTable>
+}

@@ -24,12 +24,34 @@
 
  */
 
-export default {
-  title: 'DataTable',
-}
+import { DataTableColumns } from '../Column'
+import { useDataTable } from '../utils/useDataTable'
+import { data } from '../../__mocks__/DataTable/data'
 
-export * from './Interaction'
-export * from './Percentage'
-export * from './Responsive'
-export * from './Sorting'
-export * from './State'
+export const Percentage = () => {
+  const columns: DataTableColumns = [
+    {
+      id: 'id',
+      size: 10,
+      title: 'ID',
+    },
+    {
+      id: 'name',
+      size: 50,
+      title: 'Name',
+    },
+    {
+      id: 'status',
+      size: 20,
+      title: 'Status',
+    },
+    {
+      id: 'inventory',
+      size: 20,
+      title: 'Inventory',
+      type: 'number',
+    },
+  ]
+
+  return useDataTable(data, columns)
+}

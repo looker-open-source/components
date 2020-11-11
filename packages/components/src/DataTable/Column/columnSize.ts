@@ -38,12 +38,13 @@ export type DataTableColumnSize =
   | SizeLarge
   | 'auto'
   | 'nowrap'
+  | number
 
 export const sizeInfersTruncate = (size: DataTableColumnSize) =>
-  size && !['auto', 'nowrap'].includes(size)
+  size && typeof size !== 'number' && !['auto', 'nowrap'].includes(size)
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-export const columnSize = variant({
+const columnSizeVariants = variant({
   prop: 'size',
   variants: {
     small: {
@@ -63,6 +64,13 @@ export const columnSize = variant({
     },
   },
 })
+
+const percentWidth = (width: number) => `width: ${width}%;`
+
+export const columnSize = css<{ size?: DataTableColumnSize }>`
+  ${({ size }) =>
+    typeof size === 'number' ? percentWidth(size) : columnSizeVariants}
+`
 
 /**
  * Used on columns where no size is explicitly specified to keep content to `min-content` width
