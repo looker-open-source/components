@@ -165,7 +165,6 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           placeholder={inputLabel}
           onChange={onChange}
           width="100%"
-          my="xxxsmall"
           value={value}
         />
       </DialogContent>
