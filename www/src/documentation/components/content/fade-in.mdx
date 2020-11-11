@@ -1,0 +1,27 @@
+---
+title: FadeIn
+propsOf: FadeIn
+github: Animate
+---
+
+`FadeIn` renders an animated container to wrap around content that you want to fade in,
+with `duration` and `delay` props to customize the animation.
+
+```jsx
+;() => {
+  const { value, toggle } = useToggle(false)
+  return (
+    <>
+      <Button onClick={toggle}>Toggle Content</Button>
+      {value && (
+        <>
+          <FadeIn>This fades in.</FadeIn>
+          <FadeIn delay="complex" duration="intricate">
+            This fades in more slowly.
+          </FadeIn>
+        </>
+      )}
+    </>
+  )
+}
+```

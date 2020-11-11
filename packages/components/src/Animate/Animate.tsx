@@ -30,10 +30,17 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
-const animationKeys = ['duration', 'delay'] as const
-
 export type AnimationProps = {
-  [key in typeof animationKeys[number]]: Transitions
+  /**
+   * Adds a delay before the start of the animation
+   * @default none
+   */
+  delay: Transitions
+  /**
+   * Controls the duration of the animation
+   * @default quick
+   */
+  duration: Transitions
 }
 
 export type AnimateProps = AnimationProps &
@@ -41,16 +48,21 @@ export type AnimateProps = AnimationProps &
   CompatibleHTMLProps<HTMLDivElement>
 
 export const animateCSS = css<AnimationProps>`
-  animation-delay: ${({ delay = 'none', theme }) => theme.transitions[delay]};
+  animation-delay: ${({ delay = 'none', theme }) =>
+    `${theme.transitions[delay]}ms`};
+  animation-duration: ${({ duration = 'quick', theme }) =>
+    `${theme.transitions[duration]}ms`};
 `
 
 export const Animate = styled((props: AnimateProps) => (
-  <div {...omit(props, animationKeys)} />
+  <div {...omit(props, ['delay', 'duration'])} />
 ))`
   ${simpleLayoutCSS}
   ${animateCSS}
 `
 
 export const FadeIn = styled(Animate)`
+  animation-fill-mode: forwards;
   animation-name: ${fadeIn};
+  opacity: 0;
 `
