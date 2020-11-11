@@ -24,21 +24,33 @@
 
  */
 
-export type TransitionNone = 'none'
-export type TransitionRapid = 'rapid'
-export type TransitionQuick = 'quick'
-export type TransitionSimple = 'simple'
-export type TransitionModerate = 'moderate'
-export type TransitionComplex = 'complex'
-export type TransitionIntricate = 'intricate'
+import { CompatibleHTMLProps, fadeIn, Transitions } from '@looker/design-tokens'
+import omit from 'lodash/omit'
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
-export type Transitions =
-  | TransitionNone
-  | TransitionRapid
-  | TransitionQuick
-  | TransitionSimple
-  | TransitionModerate
-  | TransitionComplex
-  | TransitionIntricate
+const animationKeys = ['duration', 'delay'] as const
 
-export type TransitionRamp = Record<Transitions, number>
+export type AnimationProps = {
+  [key in typeof animationKeys[number]]: Transitions
+}
+
+export type AnimateProps = AnimationProps &
+  SimpleLayoutProps &
+  CompatibleHTMLProps<HTMLDivElement>
+
+export const animateCSS = css<AnimationProps>`
+  animation-delay: ${({ delay = 'none', theme }) => theme.transitions[delay]};
+`
+
+export const Animate = styled((props: AnimateProps) => (
+  <div {...omit(props, animationKeys)} />
+))`
+  ${simpleLayoutCSS}
+  ${animateCSS}
+`
+
+export const FadeIn = styled(Animate)`
+  animation-name: ${fadeIn};
+`
