@@ -66,9 +66,10 @@ export interface DialogSurfaceProps {
   width?: DialogWidth
 
   /**
-   * Explicitly specifying a height will set the Surface to be the greater of
-   * the specified height, the content height but no greater than the viewport height.
-   * Default will cause the Surface to auto-size to its content.
+   * Explicitly specifying a height will set the Surface to be the
+   * the specified height but no greater than the viewport height.
+   * Default will cause the Surface to auto-size to its content, again
+   * no larger than the viewport height.
    */
   height?: ResponsiveValue<string>
 }
