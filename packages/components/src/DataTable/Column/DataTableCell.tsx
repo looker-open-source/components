@@ -56,7 +56,7 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
         <span>{content}</span>
         {detail && (
           <Paragraph fontSize="xsmall" variant="subdued" truncate>
-            {detail}
+            <Truncate>{detail}</Truncate>
           </Paragraph>
         )}
       </SpaceVertical>

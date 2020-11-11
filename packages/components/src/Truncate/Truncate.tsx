@@ -74,10 +74,21 @@ export const Truncate: FC<TruncateProps> = ({ children, width = '100%' }) => {
   )
 }
 
+/**
+ * @a11y-TODO we should support :focus-visible emulation here if focus can be drawn by an anchor/link within
+ * the truncate children.
+ **/
+
 const TextStyle = styled.span<WidthProps>`
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   ${widthHelper}
   white-space: nowrap;
+
+  :focus-within {
+    a {
+      outline: none;
+    }
+  }
 `
