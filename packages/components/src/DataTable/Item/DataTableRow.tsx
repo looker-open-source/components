@@ -82,19 +82,23 @@ const DataTableRowLayout = forwardRef(
       }
     })
 
+    const handleOnClick = (event: React.MouseEvent<HTMLElement>) =>
+      event.target instanceof HTMLAnchorElement
+        ? undefined
+        : onClick && onClick(event)
+
     const checkbox = hasCheckbox ? (
       <DataTableCheckbox {...pick(props, checkListProps)} />
     ) : (
       <div />
     )
-
     return (
       <tr
         ref={ref}
         className={className}
         onKeyDown={onKeyDown}
         tabIndex={tabIndex}
-        onClick={onClick}
+        onClick={handleOnClick}
       >
         <ColumnType>{checkbox}</ColumnType>
         {sizedChildren}
