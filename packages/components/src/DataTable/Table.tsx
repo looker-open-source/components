@@ -88,17 +88,24 @@ export const densityTarget = '2.25rem' // 36px
  */
 const selectColumn = css<TableProps>`
   ${({ select }) =>
-    select &&
-    css`
-      &:first-child {
-        max-width: ${densityTarget};
-        min-width: ${densityTarget};
-        width: ${densityTarget};
-      }
-      &:nth-child(2) {
-        padding-left: ${({ theme }) => theme.space.xsmall};
-      }
-    `}
+    select
+      ? css`
+          &:first-child {
+            max-width: ${densityTarget};
+            min-width: ${densityTarget};
+            width: ${densityTarget};
+          }
+          &:nth-child(2) {
+            padding-left: ${({ theme }) => theme.space.xsmall};
+          }
+        `
+      : css`
+          /* stylelint-disable-next-line  */
+          &:first-child {
+            max-width: 0;
+            min-width: 0;
+          }
+        `}
 `
 
 /**
@@ -167,22 +174,18 @@ export const Table = styled(TableLayout)`
   th {
     height: ${densityTarget}; /* acts like min-height */
     padding: ${({ theme: { space } }) => `${space.xsmall}  ${space.medium}`};
+
+    :first-child,
+    :last-child {
+      padding: 0;
+    }
+
+    ${selectColumn}
+    ${actionsColumn}
   }
 
   tbody td {
     color: ${({ theme }) => theme.colors.text4};
-  }
-
-  tr {
-    td,
-    th {
-      &:first-child {
-        padding: 0;
-      }
-
-      ${selectColumn}
-      ${actionsColumn}
-    }
   }
 
   &.overflow {
@@ -194,10 +197,8 @@ export const Table = styled(TableLayout)`
     }
   }
 
-  ${({ columns, select, columnsVisible }) =>
-    numericColumnCSS(
-      getNumericColumnIndices(columns, columnsVisible, Boolean(select))
-    )}
+  ${({ columns, columnsVisible }) =>
+    numericColumnCSS(getNumericColumnIndices(columns, columnsVisible))}
 `
 
 const InterimState = styled.div`

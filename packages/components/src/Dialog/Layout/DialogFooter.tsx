@@ -38,7 +38,7 @@ export interface DialogFooterProps
   secondary?: ReactNode
 }
 
-export const DialogFooterLayout: FC<DialogFooterProps> = ({
+const DialogFooterLayout: FC<DialogFooterProps> = ({
   children,
   secondary,
   ...props

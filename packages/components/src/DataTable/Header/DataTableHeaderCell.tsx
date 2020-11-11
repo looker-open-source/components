@@ -64,7 +64,7 @@ const DataTableHeaderCellLayout = forwardRef(
         <Icon name={titleIcon} size="small" color="ui3" />
       </Tooltip>
     ) : size && sizeInfersTruncate(size) ? (
-      <Truncate>{title}</Truncate>
+      <Truncate width="auto">{title}</Truncate>
     ) : (
       title
     )
@@ -80,6 +80,7 @@ const DataTableHeaderCellLayout = forwardRef(
           {label}
           {sortDirection && (
             <Icon
+              size="small"
               name={sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
             ></Icon>
           )}
