@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Box } from '../../'
+import { Box } from '../../Layout'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'

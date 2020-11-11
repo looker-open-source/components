@@ -25,8 +25,11 @@
  */
 
 import React, { FC } from 'react'
-import { Box, ButtonOutline, Paragraph } from '../../'
-import { Popover, PopoverContent } from '../'
+import { ButtonOutline } from '../../Button'
+import { Box } from '../../Layout'
+import {Paragraph } from '../../Text'
+import { Popover } from '../Popover'
+import { PopoverContent } from '../PopoverContent'
 
 export const ContentOverflow: FC = ({ children }) => (
   <Box position="absolute" top="40%" left="40%">

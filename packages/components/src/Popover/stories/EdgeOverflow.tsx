@@ -25,8 +25,10 @@
  */
 
 import React, { FC } from 'react'
-import { Box, ButtonOutline } from '../../'
-import { Popover, PopoverContent } from '../'
+import { ButtonOutline } from '../../Button'
+import { Box } from '../../Layout'
+import { Popover } from '../Popover'
+import { PopoverContent } from '../PopoverContent'```
 
 interface Props {
   top?: number

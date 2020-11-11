@@ -47,7 +47,9 @@ import {
   SpaceVertical,
   useToggle,
 } from '../..'
-import { Popover, PopoverContent, usePopover } from '..'
+import { Popover } from '../Popover'
+import { PopoverContent } from '../PopoverContent'
+import { usePopover } from '../usePopover'
 
 export * from './OverflowExamples'
 
