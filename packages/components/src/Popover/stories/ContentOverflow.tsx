@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import { ButtonOutline } from '../../Button'
 import { Box } from '../../Layout'
-import {Paragraph } from '../../Text'
+import { Paragraph } from '../../Text'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../PopoverContent'
 
