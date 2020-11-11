@@ -69,13 +69,5 @@ const percentWidth = (width: number) => `width: ${width}%;`
 
 export const columnSize = css<{ size?: DataTableColumnSize }>`
   ${({ size }) =>
-    typeof size === 'number' ? percentWidth(size) : columnSizeVariants}
-`
-
-/**
- * Used on columns where no size is explicitly specified to keep content to `min-content` width
- */
-export const noColumnSize = css`
-  max-width: 0;
-  min-width: 0;
+    size && typeof size === 'number' ? percentWidth(size) : columnSizeVariants}
 `

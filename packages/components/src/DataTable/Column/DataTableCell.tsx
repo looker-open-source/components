@@ -30,7 +30,7 @@ import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
-import { columnSize, DataTableColumnSize, noColumnSize } from './columnSize'
+import { columnSize, DataTableColumnSize } from './columnSize'
 
 export interface DataTableCellProps {
   className?: string
@@ -83,7 +83,7 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
 }
 
 export const DataTableCell = styled(DataTableCellLayout)`
-  ${({ size }) => (size ? columnSize : noColumnSize)}
+  ${columnSize}
 
   a,
   ${Link} {
