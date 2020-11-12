@@ -62,3 +62,28 @@ ActionsAndPrimaryAction.args = {
   children: items,
   columns: mockColumns,
 }
+
+const noHiddenColumns = mockColumns.map((c) => {
+  return { ...c, hide: undefined }
+})
+
+export const ActionsAndPrimaryActionColumnStuck = Template.bind({})
+ActionsAndPrimaryActionColumnStuck.args = {
+  children: items,
+  columns: noHiddenColumns,
+  headerRowId: 'headerId',
+}
+
+export const ActionsColumnStuck = Template.bind({})
+ActionsColumnStuck.args = {
+  children: itemsActions,
+  columns: noHiddenColumns,
+  headerRowId: 'headerId',
+}
+
+export const PrimaryActionColumnStuck = Template.bind({})
+PrimaryActionColumnStuck.args = {
+  children: itemsPrimaryAction,
+  columns: noHiddenColumns,
+  headerRowId: 'headerId',
+}

@@ -28,6 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import { Link } from '../Link'
+import { IconButton } from '../Button/IconButton'
 import {
   DataTable,
   DataTableAction,
@@ -101,6 +102,55 @@ const items = data.map(({ id, name, type }) => {
 
   return (
     <DataTableItem key={id} id={String(id)} actions={availableActions}>
+      <DataTableCell>{id}</DataTableCell>
+      <DataTableCell>{name}</DataTableCell>
+      <DataTableCell>{type}</DataTableCell>
+    </DataTableItem>
+  )
+})
+
+const itemsPrimaryAction = data.map(({ id, name, type }) => {
+  const primaryAction = (
+    <IconButton
+      icon="Trash"
+      label="Trash It"
+      onClick={() => alert('Trash it')}
+    />
+  )
+
+  return (
+    <DataTableItem key={id} id={String(id)} primaryAction={primaryAction}>
+      <DataTableCell>{id}</DataTableCell>
+      <DataTableCell>{name}</DataTableCell>
+      <DataTableCell>{type}</DataTableCell>
+    </DataTableItem>
+  )
+})
+
+const itemsActionsPrimaryAction = data.map(({ id, name, type }) => {
+  const availableActions = (
+    <>
+      <DataTableAction>View Profile</DataTableAction>
+      <DataTableAction>edit Profile</DataTableAction>
+      <DataTableAction>comment Profile</DataTableAction>
+    </>
+  )
+
+  const primaryAction = (
+    <IconButton
+      icon="Trash"
+      label="Trash It"
+      onClick={() => alert('Trash it')}
+    />
+  )
+
+  return (
+    <DataTableItem
+      key={id}
+      id={String(id)}
+      actions={availableActions}
+      primaryAction={primaryAction}
+    >
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
       <DataTableCell>{type}</DataTableCell>
@@ -513,6 +563,48 @@ describe('DataTable', () => {
       expect(onTotalClearAll).toHaveBeenCalledTimes(0)
       fireEvent.click(getByText('Clear Selection'))
       expect(onTotalClearAll).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('Actions', () => {
+    const dataTableWithActions = (
+      <DataTable columns={columns} select={defaultSelectConfig}>
+        {items}
+      </DataTable>
+    )
+
+    const dataTableWithPrimaryAction = (
+      <DataTable columns={columns} select={defaultSelectConfig}>
+        {itemsPrimaryAction}
+      </DataTable>
+    )
+
+    const dataTableWithActionPrimaryAction = (
+      <DataTable columns={columns} select={defaultSelectConfig}>
+        {itemsActionsPrimaryAction}
+      </DataTable>
+    )
+
+    test('Displays Icon for Actions and PrimaryAction', () => {
+      const { getAllByText } = renderWithTheme(dataTableWithActionPrimaryAction)
+
+      expect(getAllByText('Trash It')[0]).toBeInTheDocument()
+      expect(getAllByText('Trash It')[0].closest('button')).toBeInTheDocument()
+
+      expect(getAllByText('Options')[0]).toBeInTheDocument()
+      expect(getAllByText('Options')[0].closest('button')).toBeInTheDocument()
+    })
+
+    test('Displays Icon for Actions', () => {
+      const { getAllByText } = renderWithTheme(dataTableWithActions)
+      expect(getAllByText('Options')[0]).toBeInTheDocument()
+      expect(getAllByText('Options')[0].closest('button')).toBeInTheDocument()
+    })
+
+    test('Displays Icon for PrimaryAction', () => {
+      const { getAllByText } = renderWithTheme(dataTableWithPrimaryAction)
+      expect(getAllByText('Trash It')[0]).toBeInTheDocument()
+      expect(getAllByText('Trash It')[0].closest('button')).toBeInTheDocument()
     })
   })
 

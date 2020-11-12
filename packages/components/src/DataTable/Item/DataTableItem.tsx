@@ -125,6 +125,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
 const ItemActionsLayout = styled.div`
   align-items: center;
   display: table;
+  margin-right: ${({ theme }) => theme.space.xxsmall};
   padding: ${({ theme }) => theme.space.xxsmall};
 `
 
