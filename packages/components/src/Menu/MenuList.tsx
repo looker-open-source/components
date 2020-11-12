@@ -29,7 +29,6 @@ import omit from 'lodash/omit'
 import React, {
   Ref,
   forwardRef,
-  useRef,
   useContext,
   useState,
   KeyboardEvent,
@@ -54,7 +53,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { useForkedRef, moveFocus } from '../utils'
+import { moveFocus, useForkedRef, useWindow } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -67,6 +66,7 @@ export interface MenuListProps
     MaxWidthProps,
     MinWidthProps,
     WidthProps {
+  children?: JSX.Element | JSX.Element[]
   compact?: boolean
 
   /**
@@ -105,11 +105,15 @@ export const MenuListInternal = forwardRef(
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const wrapperRef = useRef<HTMLDivElement | null>(null)
-    const ref = useForkedRef(forwardedRef, wrapperRef)
+    const { contents, element, ref } = useWindow({
+      children,
+      itemHeight: compact ? 32 : 40,
+      spacerTag: 'li',
+    })
+    const forkedRef = useForkedRef(forwardedRef, ref)
 
     function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, wrapperRef)
+      moveFocus(direction, initial, element)
     }
 
     const context = {
@@ -131,14 +135,14 @@ export const MenuListInternal = forwardRef(
     const menuList = (
       <MenuItemContext.Provider value={context}>
         <ul
-          ref={ref}
+          ref={forkedRef}
           tabIndex={-1}
           role="menu"
           id={id}
           aria-labelledby={id && `button-${id}`}
           {...omitStyledProps(omit(props, 'groupDividers'))}
         >
-          {children}
+          {contents}
         </ul>
       </MenuItemContext.Provider>
     )

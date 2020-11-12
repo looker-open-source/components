@@ -381,3 +381,32 @@ export const RealisticMenus = () => {
 RealisticMenus.parameters = {
   storyshots: { disable: true },
 }
+
+const array95 = Array.from(Array(95), (_, i) => String(i + 1))
+const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
+export const LongList = () => {
+  return (
+    <Space>
+      <Menu>
+        <MenuDisclosure>
+          <Button>Not Windowed (95)</Button>
+        </MenuDisclosure>
+        <MenuList>
+          {array95.map((item, i) => (
+            <MenuItem key={i}>{item}</MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
+      <Menu>
+        <MenuDisclosure>
+          <Button>Windowed (3k)</Button>
+        </MenuDisclosure>
+        <MenuList>
+          {array3000.map((item, i) => (
+            <MenuItem key={i}>{item}</MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
+    </Space>
+  )
+}

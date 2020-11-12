@@ -26,112 +26,82 @@
 
 import throttle from 'lodash/throttle'
 import React, { Children, useEffect, useMemo, useState } from 'react'
-import styled from 'styled-components'
 import {
   getWindowedListBoundaries,
   useCallbackRef,
   useMeasuredElement,
-} from '../utils'
+} from '.'
 
 export interface UseWindowProps {
-  length: number
+  children?: JSX.Element | JSX.Element[]
+  element?: HTMLElement
   itemHeight: number
   spacerTag?: 'div' | 'li' | 'tr'
 }
 
 export const useWindow = ({
-  length,
+  children,
+  element: propsElement,
   itemHeight,
   spacerTag = 'div',
 }: UseWindowProps) => {
+  const childArray = Children.toArray(children)
+  const childrenLength = childArray.length
+  const shouldWindow = childrenLength > 100
+
   const [scrollPosition, setScrollPosition] = useState(0)
-  const [element, ref] = useCallbackRef()
+  const [internalElement, ref] = useCallbackRef()
+  const element = propsElement || internalElement
   const { height } = useMeasuredElement(element)
 
   useEffect(() => {
-    // track scroll position and menu dom rectangle, and bubble up to context.
-    // used in InputTimeSelect for managing very long lists
-
     const scrollListener = throttle(() => {
       if (element) {
         setScrollPosition(element.scrollTop)
       }
     }, 50)
 
-    if (element) {
+    if (shouldWindow && element) {
       element.addEventListener('scroll', scrollListener)
       scrollListener()
     }
 
     return () => {
       element && element.removeEventListener('scroll', scrollListener)
-
       setScrollPosition(0)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [element])
+  }, [shouldWindow, element])
 
   const { start, end } = useMemo(
     () =>
       getWindowedListBoundaries({
         containerHeight: height,
         containerScrollPosition: scrollPosition,
+        enabled: shouldWindow,
         itemHeight,
-        length,
+        length: childrenLength,
       }),
-    [length, height, itemHeight, scrollPosition]
+    [childrenLength, height, itemHeight, scrollPosition, shouldWindow]
   )
 
   const Spacer = spacerTag
-  const afterLength = length ? length - 1 - end : 0
+  // after & before are spacers to make scrolling smooth
+  const afterLength = childrenLength ? childrenLength - 1 - end : 0
+  const after =
+    afterLength > 0 ? (
+      <Spacer style={{ height: `${afterLength * itemHeight}px` }} />
+    ) : null
+  const before =
+    start > 0 ? <Spacer style={{ height: `${start * itemHeight}px` }} /> : null
 
   return {
-    // after & before are spacers to make scrolling smooth
-    after:
-      afterLength > 0 ? (
-        <Spacer style={{ height: `${afterLength * itemHeight}px` }} />
-      ) : null,
-    before:
-      start > 0 ? (
-        <Spacer style={{ height: `${start * itemHeight}px` }} />
-      ) : null,
-    end,
+    contents: (
+      <>
+        {before}
+        {childArray.slice(start, end + 1)} {after}
+      </>
+    ),
+    element,
     ref,
-    start,
   }
 }
-
-export interface WindowProps extends Omit<UseWindowProps, 'length'> {
-  wrapperTag?: 'div' | 'ul' | 'tbody'
-  children: JSX.Element | JSX.Element[]
-  className: string
-}
-
-const WindowLayout = ({
-  wrapperTag = 'div',
-  children,
-  className,
-  ...props
-}: WindowProps) => {
-  const childArray = Children.toArray(children)
-  const { after, before, end, ref, start } = useWindow({
-    ...props,
-    length: childArray.length,
-  })
-  const itemsToRender = childArray.slice(start, end + 1)
-
-  const Wrapper = wrapperTag
-
-  return (
-    <Wrapper ref={ref} className={className}>
-      {before}
-      {itemsToRender}
-      {after}
-    </Wrapper>
-  )
-}
-
-export const Window = styled(WindowLayout)`
-  height: 200px;
-  overflow: auto;
-`

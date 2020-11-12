@@ -73,7 +73,7 @@ const TabListLayout = forwardRef(
     )
 
     function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, wrapperRef)
+      moveFocus(direction, initial, wrapperRef.current)
     }
 
     const context = {
