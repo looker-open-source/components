@@ -99,6 +99,6 @@ const itemBuilder = (actions?: ReactNode, primaryAction?: ReactNode) => {
 }
 
 export const items = itemBuilder(actions, primaryAction)
-export const itemsAction = itemBuilder(actions)
+export const itemsActions = itemBuilder(actions)
 export const itemsNoActions = itemBuilder()
-export const itemsPrimaryAction = itemBuilder(primaryAction)
+export const itemsPrimaryAction = itemBuilder(null, primaryAction)

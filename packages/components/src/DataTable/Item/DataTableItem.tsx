@@ -121,7 +121,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       ref={ref}
-      secondary={(actions || primaryAction) && itemActions}
+      secondary={itemActions}
       tabIndex={0}
     >
       {children}
@@ -131,7 +131,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
 
 const ItemActionsLayout = styled.div`
   align-items: center;
-  display: flex;
+  display: table;
   padding: ${({ theme }) => theme.space.xxsmall};
 `
 
