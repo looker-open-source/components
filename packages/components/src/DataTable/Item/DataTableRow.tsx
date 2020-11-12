@@ -87,6 +87,9 @@ const DataTableRowLayout = forwardRef(
         ? undefined
         : onClick && onClick(event)
 
+    const handleSecondaryClick = (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation()
+    }
     const checkbox = hasCheckbox ? (
       <DataTableCheckbox {...pick(props, checkListProps)} />
     ) : (
@@ -102,7 +105,7 @@ const DataTableRowLayout = forwardRef(
       >
         <ColumnType>{checkbox}</ColumnType>
         {sizedChildren}
-        <ColumnType>{secondary}</ColumnType>
+        <ColumnType onClick={handleSecondaryClick}>{secondary}</ColumnType>
       </tr>
     )
   }

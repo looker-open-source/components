@@ -31,7 +31,6 @@ import { IconButton } from '../../Button'
 import { Menu, MenuDisclosure, MenuList } from '../../Menu'
 import { DataTableContext } from '../DataTableContext'
 import { DataTableRow } from './DataTableRow'
-import { ItemTarget } from './ItemTarget'
 
 export interface DataTableItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -39,22 +38,30 @@ export interface DataTableItemProps
    *  The available actions for this item
    */
   actions?: ReactNode
+
   /**
    *  Sets the tooltip text and a hidden text label for the actions button (accessible to assistive technology)
    *  If unprovided by the user, a default string will be used instead
    *  @default 'Options'
    */
   actionsTooltip?: string
-  /**
-   *  The id of this item
-   */
-  id: string
+
+  children: JSX.Element[]
+
   /**
    * A boolean indicating whether this item is selectable or not (the item will appear greyed out if true)
    */
   disabled?: boolean
 
-  children: JSX.Element[]
+  /**
+   *  The id of this item
+   */
+  id: string
+
+  /**
+   *  The main action to be displayed separated.
+   */
+  primaryAction?: ReactNode
 }
 
 const DataTableItemLayout: FC<DataTableItemProps> = ({
@@ -65,6 +72,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   disabled,
   id,
   onClick,
+  primaryAction,
 }) => {
   const ref = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(DataTableContext)
@@ -77,10 +85,6 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
     ? handleOnSelect
     : onClick || undefined
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
-  }
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const isEventFromChild = event.currentTarget !== event.target
     if (event.keyCode === 13 && !isEventFromChild) {
@@ -88,15 +92,18 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
     }
   }
 
-  const itemActions = actions && (
-    <ItemTarget onClick={handleMenuClick}>
-      <Menu>
-        <MenuDisclosure tooltip={actionsTooltip}>
-          <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
-        </MenuDisclosure>
-        <MenuList>{actions}</MenuList>
-      </Menu>
-    </ItemTarget>
+  const itemActions = (
+    <ItemActionsLayout>
+      {primaryAction && <>{primaryAction}</>}
+      {actions && (
+        <Menu>
+          <MenuDisclosure tooltip={actionsTooltip}>
+            <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
+          </MenuDisclosure>
+          <MenuList>{actions}</MenuList>
+        </Menu>
+      )}
+    </ItemActionsLayout>
   )
 
   const onChange = select ? () => select.onSelect(id) : undefined
@@ -105,21 +112,27 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
 
   return (
     <DataTableRow
-      id={id}
+      checked={checked}
       className={className}
-      secondary={itemActions}
-      ref={ref}
+      disabled={disabled}
+      hasCheckbox={!!select}
+      id={id}
+      onChange={onChange}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      ref={ref}
+      secondary={(actions || primaryAction) && itemActions}
       tabIndex={0}
-      hasCheckbox={!!select}
-      onChange={onChange}
-      checked={checked}
-      disabled={disabled}
     >
       {children}
     </DataTableRow>
   )
 }
+
+const ItemActionsLayout = styled.div`
+  align-items: center;
+  display: flex;
+  padding: ${({ theme }) => theme.space.xxsmall};
+`
 
 export const DataTableItem = styled(DataTableItemLayout)``

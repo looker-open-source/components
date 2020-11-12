@@ -38,7 +38,7 @@ import { useSelectManager } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
-import { items } from './items'
+import { items, itemsActions, itemsPrimaryAction } from './items'
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
   bulk: boolean
@@ -134,6 +134,23 @@ export const FilterNoColumnSelector = Template.bind({})
 FilterNoColumnSelector.args = {
   ...Filters.args,
   columns: noHiddenColumns,
+}
+
+// export const Actions = Template.bind({})
+// Actions.args = {
+//   ...Basic.args,
+//   children: itemsActions,
+// }
+
+// export const PrimaryAction = Template.bind({})
+// PrimaryAction.args = {
+//   ...Basic.args,
+//   children: itemsPrimaryAction,
+// }
+
+export const ActionsAndPrimaryAction = Template.bind({})
+ActionsAndPrimaryAction.args = {
+  ...Basic.args,
 }
 
 export const Select = Template.bind({})
