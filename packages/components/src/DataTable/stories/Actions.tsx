@@ -24,13 +24,41 @@
 
  */
 
-export default {
-  title: 'DataTable',
+import { Story } from '@storybook/react/types-6-0'
+import React from 'react'
+import { DataTable, DataTableProps } from '../DataTable'
+import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
+import {
+  items,
+  itemsActions,
+  itemsNoActions,
+  itemsPrimaryAction,
+} from './items'
+
+const Template: Story<DataTableProps> = ({ ...args }) => {
+  return <DataTable {...args} />
 }
 
-export * from './Actions'
-export * from './Interaction'
-export * from './Percentage'
-export * from './Responsive'
-export * from './Sorting'
-export * from './State'
+export const Actions = Template.bind({})
+Actions.args = {
+  children: itemsActions,
+  columns: mockColumns,
+}
+
+export const NoActions = Template.bind({})
+NoActions.args = {
+  children: itemsNoActions,
+  columns: mockColumns,
+}
+
+export const PrimaryAction = Template.bind({})
+PrimaryAction.args = {
+  children: itemsPrimaryAction,
+  columns: mockColumns,
+}
+
+export const ActionsAndPrimaryAction = Template.bind({})
+ActionsAndPrimaryAction.args = {
+  children: items,
+  columns: mockColumns,
+}
