@@ -38,25 +38,22 @@ export interface DataTableItemProps
    *  The available actions for this item
    */
   actions?: ReactNode
-
   /**
    *  Sets the tooltip text and a hidden text label for the actions button (accessible to assistive technology)
    *  If unprovided by the user, a default string will be used instead
    *  @default 'Options'
    */
   actionsTooltip?: string
-
-  children: JSX.Element[]
-
+  /**
+   *  The id of this item
+   */
+  id: string
   /**
    * A boolean indicating whether this item is selectable or not (the item will appear greyed out if true)
    */
   disabled?: boolean
 
-  /**
-   *  The id of this item
-   */
-  id: string
+  children: JSX.Element | JSX.Element[]
   primaryAction?: ReactNode
 }
 
