@@ -373,7 +373,7 @@ export const InputChipsBaseInternal = forwardRef(
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
         validationType={validationType}
-        readOnly={readOnly || inputReadOnly}
+        readOnly={inputReadOnly}
         height="auto"
         {...props}
       >
