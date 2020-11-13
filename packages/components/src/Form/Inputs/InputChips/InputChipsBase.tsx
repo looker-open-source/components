@@ -373,7 +373,11 @@ export const InputChipsBaseInternal = forwardRef(
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
         validationType={validationType}
+<<<<<<< HEAD
         readOnly={readOnly || inputReadOnly}
+=======
+        readOnly={inputReadOnly}
+>>>>>>> 600914d3 (update Select SelectMulti and Combobox to not use readOnly and use inputReadOnly instead)
         height="auto"
         {...props}
       >

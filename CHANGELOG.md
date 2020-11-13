@@ -14,14 +14,6 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-## [UNRELEASED]
-
-### Fixed
-
-update Select SelectMulti and Combobox replace readOnly with inputReadOnly
-InputSearch now supports disabled and readOnly - updated docs and gatsby
-InputChips now supports disabled and readOnly - updated docs and gatsby
-
 ## [0.9.25]
 
 ### Changed
