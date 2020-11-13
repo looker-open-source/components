@@ -83,6 +83,7 @@ export interface InputSearchProps
    * @experimental
    */
   openOnClick?: boolean
+  readOnly?: boolean
 }
 
 const InputSearchLayout = forwardRef(
@@ -106,6 +107,7 @@ const InputSearchLayout = forwardRef(
       isLoading,
       hideSearchIcon,
       summary,
+      readOnly,
       changeOnSelect = true,
       clearOnClose = !changeOnSelect,
       ...props
@@ -180,6 +182,7 @@ const InputSearchLayout = forwardRef(
           onChange={handleInputChange}
           freeInput
           summary={summary}
+          readOnly={readOnly}
           ref={ref}
         />
         {!disabled && (options?.length || noOptionsLabel) && (
@@ -208,4 +211,11 @@ const InputSearchLayout = forwardRef(
 
 InputSearchLayout.displayName = 'InputSearch'
 
-export const InputSearch = styled(InputSearchLayout)``
+export const InputSearch = styled(InputSearchLayout)`
+  input {
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.colors.text1 : 'inherit'};
+    cursor: ${({ readOnly, disabled }) =>
+      readOnly || disabled ? 'not-allowed' : undefined};
+  }
+`
