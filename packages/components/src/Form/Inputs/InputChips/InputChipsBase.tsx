@@ -95,6 +95,7 @@ export interface InputChipsCommonProps
    * Format the value for display in the chip
    */
   formatChip?: (value: string) => string
+  inputReadOnly?: boolean
 }
 
 export interface InputChipsBaseProps
@@ -118,6 +119,7 @@ export const InputChipsBaseInternal = forwardRef(
       onKeyDown,
       onFocus,
       inputValue,
+      inputReadOnly,
       onInputChange,
       formatTextToCopy = joinValues,
       disabled,
@@ -365,6 +367,7 @@ export const InputChipsBaseInternal = forwardRef(
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
         validationType={validationType}
+        readOnly={inputReadOnly}
         height="auto"
         {...props}
       >
