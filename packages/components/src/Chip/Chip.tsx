@@ -89,7 +89,7 @@ const ChipStyle = styled.span<FocusVisibleProps>`
 
   &[disabled] {
     background: ${({ theme }) => theme.colors.neutralAccent};
-    border-color: ${({ theme }) => theme.colors.ui2};
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.ui2};
     color: ${({ theme }) => theme.colors.text1};
 
     &:hover {
@@ -146,7 +146,8 @@ const ChipJSX = forwardRef(
           {children}
         </ChipLabel>
         {readOnly ||
-          (!disabled && onDelete && (
+          disabled ||
+          (onDelete && (
             <IconButton
               disabled={disabled}
               icon="Close"
