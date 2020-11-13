@@ -129,6 +129,7 @@ export const InputChipsBaseInternal = forwardRef(
       summary,
       removeOnBackspace = true,
       formatChip,
+      readOnly,
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -322,13 +323,14 @@ export const InputChipsBaseInternal = forwardRef(
 
       return (
         <Chip
+          aria-selected={isSelected}
           disabled={disabled}
+          key={value}
+          onClick={handleChipClick(value)}
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
-          onClick={handleChipClick(value)}
-          key={value}
+          readOnly={readOnly}
           role="option"
-          aria-selected={isSelected}
           // Prevent the chip from receiving focus for better keyboard behavior
           tabIndex={disabled ? undefined : -1}
         >
@@ -347,11 +349,14 @@ export const InputChipsBaseInternal = forwardRef(
     return (
       <InputText
         disabled={disabled}
+        readOnly={readOnly}
         after={
           <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
-            showClear={isClearable && values.length > 0}
+            showClear={
+              isClearable && values.length > 0 && !disabled && !readOnly
+            }
             validationType={validationType}
             disabled={disabled}
             summary={summary}

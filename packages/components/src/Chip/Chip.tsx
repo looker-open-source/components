@@ -51,6 +51,7 @@ export interface ChipProps
   onDelete?: (
     e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
   ) => void
+  readOnly?: boolean
 }
 
 const ChipStyle = styled.span<FocusVisibleProps>`
@@ -88,7 +89,8 @@ const ChipStyle = styled.span<FocusVisibleProps>`
 
   &[disabled] {
     background: ${({ theme }) => theme.colors.neutralAccent};
-    color: ${({ theme }) => theme.colors.neutral};
+    border-color: ${({ theme }) => theme.colors.ui2};
+    color: ${({ theme }) => theme.colors.text1};
 
     &:hover {
       background: ${({ theme }) => theme.colors.neutralAccent};
@@ -111,6 +113,7 @@ const ChipJSX = forwardRef(
       onKeyUp,
       onKeyDown,
       prefix,
+      readOnly = false,
       truncate = true,
       ...props
     }: ChipProps,
@@ -142,16 +145,17 @@ const ChipJSX = forwardRef(
           {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
           {children}
         </ChipLabel>
-        {onDelete && !disabled && (
-          <IconButton
-            disabled={disabled}
-            icon="Close"
-            label="Delete"
-            ml="xsmall"
-            onClick={handleDelete}
-            size="xxsmall"
-          />
-        )}
+        {readOnly ||
+          (!disabled && onDelete && (
+            <IconButton
+              disabled={disabled}
+              icon="Close"
+              label="Delete"
+              ml="xsmall"
+              onClick={handleDelete}
+              size="xxsmall"
+            />
+          ))}
       </ChipStyle>
     )
   }
