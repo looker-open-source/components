@@ -34,7 +34,6 @@ Library updated to use Styled Components 5 & Typescript 3.9.x
 
 ### Fixed
 
-- update Select SelectMulti and Combobox replace readOnly with inputReadOnly
 - update DataTable to support onClick of `Link/Anchor` as text inside rows.
 
 ## [0.9.23]
