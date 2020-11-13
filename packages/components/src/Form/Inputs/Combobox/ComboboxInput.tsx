@@ -191,7 +191,7 @@ export const ComboboxInputInternal = forwardRef(
         after={
           <AdvancedInputControls
             validationType={validationType}
-            showClear={!!(isClearable && inputValue)}
+            showClear={!!(isClearable && inputValue) && !disabled && !readOnly}
             onClear={handleClear}
             isVisibleOptions={isVisible}
             disabled={disabled}
@@ -233,6 +233,12 @@ export const comboboxStyles = css<{ readOnly?: boolean }>`
 
 export const ComboboxInput = styled(ComboboxInputInternal)`
   ${comboboxStyles}
+
+  input {
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.colors.text1 : 'inherit'};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : undefined)};
+  }
 `
 
 ComboboxInput.defaultProps = {

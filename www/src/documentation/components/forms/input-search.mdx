@@ -67,15 +67,24 @@ Use the `autoResize` prop to allow the input's width to adjust to its current va
 }
 ```
 
-## Attributes
+## Disabled
 
-InputSearch supports `disabled` and `readOnly`
+Use the `disable` property to make an input field un-editable.
 
 ```jsx
 <SpaceVertical align="start">
-  <InputSearch disabled value="Disabled" />
-  <InputSearch readOnly value="Read Only" />
+  <InputSearch disabled />
+  <InputSearch disabled value="value Disabled" />
+  <InputSearch disabled placeholder="placeholder Disabled" />
 </SpaceVertical>
+```
+
+## ReadOnly property
+
+As the name suggests, readOnly makes the text un-editable.
+
+```jsx
+<InputSearch readOnly value="You can't change me." />
 ```
 
 ## Options (experimental)

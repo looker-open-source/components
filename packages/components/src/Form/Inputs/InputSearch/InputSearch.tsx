@@ -211,11 +211,4 @@ const InputSearchLayout = forwardRef(
 
 InputSearchLayout.displayName = 'InputSearch'
 
-export const InputSearch = styled(InputSearchLayout)`
-  input {
-    color: ${({ disabled, theme }) =>
-      disabled ? theme.colors.text1 : 'inherit'};
-    cursor: ${({ readOnly, disabled }) =>
-      readOnly || disabled ? 'not-allowed' : undefined};
-  }
-`
+export const InputSearch = styled(InputSearchLayout)``
