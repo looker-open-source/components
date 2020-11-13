@@ -19,6 +19,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 ### Fixed
 
 - update DataTable to support onClick of `Link/Anchor` as text inside rows.
+- InputSearch now supports disabled and readOnly
 
 ## [0.9.23]
 
