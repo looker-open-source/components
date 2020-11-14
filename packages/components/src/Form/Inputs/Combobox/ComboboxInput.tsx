@@ -235,6 +235,12 @@ export const comboboxStyles = css<{ inputReadOnly?: boolean }>`
 
 export const ComboboxInput = styled(ComboboxInputInternal)`
   ${comboboxStyles}
+
+  input {
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.colors.text1 : 'inherit'};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : undefined)};
+  }
 `
 
 ComboboxInput.defaultProps = {
