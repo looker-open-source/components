@@ -128,6 +128,7 @@ export const InputChipsBaseInternal = forwardRef(
       isVisibleOptions,
       showCaret = false,
       isClearable = true,
+      readOnly,
       summary,
       removeOnBackspace = true,
       formatChip,
@@ -328,6 +329,7 @@ export const InputChipsBaseInternal = forwardRef(
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
           onClick={handleChipClick(value)}
+          readOnly={readOnly}
           key={value}
           role="option"
           aria-selected={isSelected}
@@ -353,7 +355,9 @@ export const InputChipsBaseInternal = forwardRef(
           <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
-            showClear={isClearable && values.length > 0}
+            showClear={
+              isClearable && values.length > 0 && !disabled && !readOnly
+            }
             validationType={validationType}
             disabled={disabled}
             summary={summary}
@@ -367,7 +371,7 @@ export const InputChipsBaseInternal = forwardRef(
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
         validationType={validationType}
-        readOnly={inputReadOnly}
+        readOnly={readOnly || inputReadOnly}
         height="auto"
         {...props}
       >
