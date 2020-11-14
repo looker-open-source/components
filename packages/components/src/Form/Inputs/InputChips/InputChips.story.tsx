@@ -24,95 +24,73 @@
 
  */
 
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { InputSearch, InputSearchProps } from './InputSearch'
+import { InputChips, InputChipsProps } from './InputChips'
 
-const Template: Story<InputSearchProps> = (args) => <InputSearch {...args} />
+const chipValues = ['Looker', 'Google']
+
+const Template: Story<InputChipsProps> = ({ values = [], ...args }) => {
+  const [controlledChips, setControlledChips] = useState(values)
+  return (
+    <InputChips
+      {...args}
+      values={controlledChips}
+      onChange={setControlledChips}
+    />
+  )
+}
 
 export const Basic = Template.bind({})
 Basic.args = {}
 
+export const Values = Template.bind({})
+Values.args = {
+  values: chipValues,
+}
+
 export const Placeholder = Template.bind({})
 Placeholder.args = {
-  placeholder: 'Type your search',
-}
-export const Value = Template.bind({})
-Value.args = {
-  ...Placeholder.args,
-  value: 'Search term',
+  ...Values.args,
+  placeholder: 'Enter more chips here',
 }
 
 export const Summary = Template.bind({})
 Summary.args = {
-  ...Placeholder.args,
-  summary: '5/10 results',
-}
-
-export const DefaultValue = Template.bind({})
-DefaultValue.args = {
-  ...Placeholder.args,
-  defaultValue: 'Default search term',
-}
-
-export const NoIcon = Template.bind({})
-NoIcon.args = {
-  ...Placeholder.args,
-  hideSearchIcon: true,
+  ...Values.args,
+  summary: 'some more info here',
 }
 
 export const AutoResize = Template.bind({})
 AutoResize.args = {
+  ...Values.args,
   autoResize: true,
+  height: 36,
   maxWidth: 250,
-  placeholder: 'Resizes to fit value',
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
+export const DisabledWithValues = Template.bind({})
+DisabledWithValues.args = {
+  ...Values.args,
   disabled: true,
-  value: 'No Search.',
+}
+
+export const DisabledWithOutValues = Template.bind({})
+DisabledWithOutValues.args = {
+  ...Basic.args,
+  disabled: true,
 }
 
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
+  ...Values.args,
   readOnly: true,
-  value: 'Only read',
 }
 ReadOnly.parameters = {
   storyshots: { disable: true },
 }
 
-export const Advanced = () => {
-  const [value, setValue] = useState('')
-
-  const options = useMemo(() => {
-    const startingOptions = [
-      {
-        description: 'Really great description',
-        detail: 'so cool',
-        value: 'Foo',
-      },
-      { detail: 'got details?', value: 'Bar' },
-    ]
-    return startingOptions.filter(
-      (option) => option.value.toUpperCase().indexOf(value.toUpperCase()) > -1
-    )
-  }, [value])
-
-  return (
-    <InputSearch
-      value={value}
-      onChange={setValue}
-      options={options}
-      noOptionsLabel="Nothing matched your search"
-      isClearable={false}
-      autoFocus
-    />
-  )
-}
-
 export default {
-  component: InputSearch,
-  title: 'InputSearch',
+  component: InputChips,
+  title: 'InputChips',
 }
