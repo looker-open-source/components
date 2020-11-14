@@ -25,9 +25,12 @@
  */
 
 import React, { Children, cloneElement, FC, useRef, useState } from 'react'
+import styled from 'styled-components'
+import { TabPanels } from './TabPanels'
 
 export interface UseTabsProps {
   controlledIndex?: number
+  className?: string
   defaultIndex?: number
   index?: number
   isControlled?: boolean
@@ -57,8 +60,9 @@ export function useTabs(props?: UseTabsProps) {
   }
 }
 
-export const Tabs: FC<TabsProps> = ({
+const TabsLayout: FC<TabsProps> = ({
   children,
+  className,
   index: controlledIndex,
   defaultIndex,
   onChange,
@@ -90,5 +94,15 @@ export const Tabs: FC<TabsProps> = ({
     return cloneElement(child, tabs)
   })
 
-  return <>{clonedChildren}</>
+  return <div className={className}>{clonedChildren}</div>
 }
+
+export const Tabs = styled(TabsLayout)`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+
+  ${TabPanels} {
+    overflow: auto;
+  }
+`

@@ -28,7 +28,6 @@ import {
   CompatibleHTMLProps,
   SpaceProps,
   reset,
-  LayoutProps,
   layout,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
@@ -37,8 +36,10 @@ import styled from 'styled-components'
 import omit from 'lodash/omit'
 
 export interface DialogContentProps
-  extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+  extends CompatibleHTMLProps<HTMLDivElement> {
+  disableOverflow?: boolean
+  displayOverflowed?: boolean
+}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
@@ -47,11 +48,12 @@ interface DialogContentLayoutProps extends DialogContentProps {
 const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
+  displayOverflowed = false,
   renderedHeight,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
-  const [overflow, setOverflow] = useState(false)
+  const [overflow, setOverflow] = useState(displayOverflowed)
 
   useEffect(() => {
     /**
@@ -78,15 +80,15 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
 }
 
 const Inner = styled.div<SpaceProps>`
+  height: 100%;
   padding: 0 ${({ theme }) => theme.space.xlarge};
 `
 
 const DialogContentStyled = styled(DialogContentLayout)`
   ${reset}
   ${layout}
-
   flex: 1 1 auto;
-  overflow: auto;
+  overflow: ${({ disableOverflow }) => (disableOverflow ? 'hidden' : 'auto')};
 
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};

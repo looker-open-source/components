@@ -28,6 +28,7 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { DialogTabs, DialogTabsFooter } from '../../__mocks__/DialogTabs'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
@@ -77,6 +78,20 @@ PlacementTop.args = {
 export const PlacementCover = Template.bind({})
 PlacementCover.args = {
   ...MediumContent.args,
+  defaultOpen: true,
+  placement: 'cover',
+}
+
+export const DialogCoverTabs = Template.bind({})
+DialogCoverTabs.args = {
+  content: <DialogTabs />,
+  defaultOpen: true,
+  placement: 'cover',
+}
+
+export const DialogCoverTabsFooter = Template.bind({})
+DialogCoverTabsFooter.args = {
+  content: <DialogTabsFooter />,
   defaultOpen: true,
   placement: 'cover',
 }

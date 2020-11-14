@@ -25,21 +25,11 @@
  */
 
 import React from 'react'
-import { Paragraph } from '..'
+import { ConstitutionShort } from './Constitution'
 import { DialogLayout } from './DialogLayout'
 
 export const DialogMediumContent = () => (
   <DialogLayout title="The Constitution of the United States">
-    <Constitution />
+    <ConstitutionShort />
   </DialogLayout>
-)
-
-const Constitution = () => (
-  <Paragraph fontSize="medium">
-    We the People of the United States, in Order to form a more perfect Union,
-    establish Justice, insure domestic Tranquility, provide for the common
-    defense, promote the general Welfare, and secure the Blessings of Liberty to
-    ourselves and our Posterity, do ordain and establish this Constitution for
-    the United States of America.
-  </Paragraph>
 )
