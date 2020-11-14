@@ -27,7 +27,16 @@ Library updated to use Styled Components 5 & Typescript 3.9.x
 
 ### Fixed
 
-- Update DataTable to support onClick of `Link/Anchor` as text inside rows.
+- # Update DataTable to support onClick of `Link/Anchor` as text inside rows.
+
+## [UNRELEASED]
+
+### Fixed
+
+- update Select SelectMulti and Combobox replace readOnly with inputReadOnly
+- InputSearch now supports disabled and readOnly - documentation and gatsby updated
+- InputChips now supports disabled and readOnly - documentation and gatsby updated
+  > > > > > > > 8d256e21 (update test and added disabeld and readOnly to InputSearch and InputChisp plus gatsby and docs update)
 
 ## [0.9.24]
 
