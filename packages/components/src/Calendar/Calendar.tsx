@@ -37,50 +37,52 @@ import { dayPickerCss } from './dayPickerCss'
 import { CalendarNavDisabled } from './CalendarNavDisabled'
 
 export interface CalendarLocalization {
+  firstDayOfWeek: number
   months: string[]
   weekdaysShort: string[]
-  firstDayOfWeek: number
 }
 
 interface CalendarProps {
-  localization?: CalendarLocalization
-  selectedDates?: Date | Date[] | RangeModifier
-  onDayClick?: (day: Date) => void
   className?: string
-  size?: CalendarSize
-  showNextButton?: boolean
-  showPreviousButton?: boolean
+  disabled?: boolean
+  localization?: CalendarLocalization
+  onDayClick?: (day: Date) => void
+  onMonthChange?: (month: Date) => void
   onNextClick?: (date: Date) => void
   onNowClick?: (date: Date) => void
   onPrevClick?: (date: Date) => void
-  onMonthChange?: (month: Date) => void
+  readOnly?: boolean
+  selectedDates?: Date | Date[] | RangeModifier
+  showNextButton?: boolean
+  showPreviousButton?: boolean
+  size?: CalendarSize
   viewMonth?: Date
-  disabled?: boolean
 }
 
 const NoopComponent: FC = () => null
 
 const InternalCalendar: FC<CalendarProps> = ({
+  className,
+  disabled,
   localization = {},
   onDayClick,
-  className,
-  size,
-  showNextButton = true,
-  showPreviousButton = true,
   onMonthChange,
   onNextClick,
   onNowClick,
   onPrevClick,
-  viewMonth,
+  readOnly,
   selectedDates,
-  disabled,
+  showNextButton = true,
+  showPreviousButton = true,
+  size,
+  viewMonth,
 }) => {
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
   const disableCallback = (cb: Function = noop) => {
-    // allows provided callback to be circumvented by disabled prop
-    return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
+    // allows provided callback to be circumvented by disabled or readOnly prop
+    return (...args: any[]) => (disabled || readOnly ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
   }
 
   const formatMonthTitle = (month: Date) => {
@@ -97,8 +99,8 @@ const InternalCalendar: FC<CalendarProps> = ({
         onNextClick: disableCallback(onNextClick),
         onNowClick: disableCallback(onNowClick),
         onPrevClick: disableCallback(onPrevClick),
-        showNextButton: !disabled && showNextButton,
-        showPreviousButton: !disabled && showPreviousButton,
+        showNextButton: (!disabled || !readOnly) && showNextButton,
+        showPreviousButton: (!disabled || !readOnly) && showPreviousButton,
         size,
       }}
     >
@@ -172,19 +174,21 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     }
 
     &--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-      background-color: ${({ theme: { colors }, disabled }) =>
-        disabled ? colors.neutral : colors.key};
+      background-color: ${({ theme: { colors }, disabled, readOnly }) =>
+        disabled || readOnly ? colors.neutral : colors.key};
       position: static;
 
       &:hover {
-        background-color: ${({ theme: { colors }, disabled }) =>
-          disabled ? colors.neutralInteractive : colors.keyInteractive};
+        background-color: ${({ theme: { colors }, disabled, readOnly }) =>
+          disabled || readOnly
+            ? colors.neutralInteractive
+            : colors.keyInteractive};
       }
     }
 
     &:focus {
-      border-color: ${({ theme: { colors }, disabled }) =>
-        disabled ? 'transparent' : colors.keyBorder};
+      border-color: ${({ theme: { colors }, disabled, readOnly }) =>
+        disabled || readOnly ? 'transparent' : colors.keyBorder};
       border-width: 2px;
       outline: none;
     }
