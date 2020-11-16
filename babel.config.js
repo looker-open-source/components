@@ -39,6 +39,8 @@ module.exports = (api) => {
           '**/*.test.jsx',
           '**/*.test.ts',
           '**/*.test.tsx',
+          '**/*.story.*',
+          '**/stories/*',
           '__snapshots__',
           '__tests__',
         ],

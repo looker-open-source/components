@@ -25,7 +25,7 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1 c2"
@@ -68,7 +68,7 @@ exports[`DialogContent Snapshot 1`] = `
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1 c2"
