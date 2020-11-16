@@ -182,9 +182,11 @@ export const InputChipsBaseInternal = forwardRef(
       }
     }
     function deleteSelected() {
-      const newValues = difference(values, selectedValues)
-      onChange(newValues)
-      focusInput(internalRef)
+      if (!readOnly) {
+        const newValues = difference(values, selectedValues)
+        onChange(newValues)
+        focusInput(internalRef)
+      }
     }
 
     // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
@@ -248,7 +250,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       if (inputValue === '') {
-        if (e.key === 'Backspace' && removeOnBackspace) {
+        if (e.key === 'Backspace' && removeOnBackspace && !readOnly) {
           // If we hit backspace and there is no text left to delete, remove the last entry instead
           inputValue === '' && handleDeleteChip(values[values.length - 1])
         } else if (isCtrlCmdPressed(e) && e.key === 'a') {
