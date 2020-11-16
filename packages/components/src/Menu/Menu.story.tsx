@@ -403,7 +403,9 @@ export const LongList = () => {
         </MenuDisclosure>
         <MenuList>
           {array3000.map((item, i) => (
-            <MenuItem key={i}>{item}</MenuItem>
+            <MenuItem key={i} description="Description text">
+              {item}
+            </MenuItem>
           ))}
         </MenuList>
       </Menu>

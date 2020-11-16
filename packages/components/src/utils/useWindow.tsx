@@ -24,84 +24,127 @@
 
  */
 
+import meanBy from 'lodash/meanBy'
 import throttle from 'lodash/throttle'
-import React, { Children, useEffect, useMemo, useState } from 'react'
+import React, {
+  Children,
+  ReactChild,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import {
   getWindowedListBoundaries,
   useCallbackRef,
   useMeasuredElement,
 } from '.'
 
+export type ChildHeightFunction = (child: ReactChild) => number
+export type ChildHeight = ChildHeightFunction | number
+
 export interface UseWindowProps {
   children?: JSX.Element | JSX.Element[]
-  element?: HTMLElement
-  itemHeight: number
+  /** If possible, use a number for better performance.
+   * In lists where the item height will vary
+   * use a function to derive the height of each child using props, type, etc. */
+  childHeight: ChildHeight
   spacerTag?: 'div' | 'li' | 'tr'
 }
 
 export const useWindow = ({
   children,
-  element: propsElement,
-  itemHeight,
+  childHeight,
   spacerTag = 'div',
 }: UseWindowProps) => {
   const childArray = Children.toArray(children)
   const childrenLength = childArray.length
   const shouldWindow = childrenLength > 100
+  const [midWindow, setMidWindow] = useState(childrenLength / 2)
+
+  const avgItemHeights = useMemo(() => {
+    if (
+      !shouldWindow ||
+      typeof childHeight === 'number' ||
+      childrenLength === 0
+    ) {
+      return { above: 0, below: 0 }
+    }
+    return {
+      above: meanBy(childArray.slice(0, midWindow), (child) =>
+        childHeight(child as ReactChild)
+      ),
+      below: meanBy(childArray.slice(midWindow), (child) =>
+        childHeight(child as ReactChild)
+      ),
+    }
+  }, [midWindow, shouldWindow, childHeight, childrenLength, childArray])
+
+  const itemHeight = useMemo(() => {
+    if (typeof childHeight === 'number') return childHeight
+    return avgItemHeights
+  }, [childHeight, avgItemHeights])
 
   const [scrollPosition, setScrollPosition] = useState(0)
-  const [internalElement, ref] = useCallbackRef()
-  const element = propsElement || internalElement
-  const { height } = useMeasuredElement(element)
+  const [containerElement, ref] = useCallbackRef()
+  const { height } = useMeasuredElement(containerElement)
 
   useEffect(() => {
     const scrollListener = throttle(() => {
-      if (element) {
-        setScrollPosition(element.scrollTop)
+      if (containerElement) {
+        setScrollPosition(containerElement.scrollTop)
       }
     }, 50)
 
-    if (shouldWindow && element) {
-      element.addEventListener('scroll', scrollListener)
+    if (shouldWindow && containerElement) {
+      containerElement.addEventListener('scroll', scrollListener)
       scrollListener()
     }
 
     return () => {
-      element && element.removeEventListener('scroll', scrollListener)
+      containerElement &&
+        containerElement.removeEventListener('scroll', scrollListener)
       setScrollPosition(0)
     }
-  }, [shouldWindow, element])
+  }, [shouldWindow, containerElement])
 
-  const { start, end } = useMemo(
+  const { start, end, beforeHeight, afterHeight } = useMemo(
     () =>
       getWindowedListBoundaries({
-        containerHeight: height,
-        containerScrollPosition: scrollPosition,
         enabled: shouldWindow,
+        height,
         itemHeight,
         length: childrenLength,
+        scrollPosition,
       }),
     [childrenLength, height, itemHeight, scrollPosition, shouldWindow]
   )
 
+  const midPoint = Math.floor(start + (end - start) / 2)
+  const throttled = useRef(
+    throttle((newValue) => {
+      console.log(newValue)
+      setMidWindow(newValue)
+    }, 1000)
+  )
+  useEffect(() => throttled.current(midPoint), [midPoint])
+
   const Spacer = spacerTag
   // after & before are spacers to make scrolling smooth
-  const afterLength = childrenLength ? childrenLength - 1 - end : 0
-  const after =
-    afterLength > 0 ? (
-      <Spacer style={{ height: `${afterLength * itemHeight}px` }} />
-    ) : null
   const before =
-    start > 0 ? <Spacer style={{ height: `${start * itemHeight}px` }} /> : null
+    beforeHeight > 0 ? <Spacer style={{ height: `${beforeHeight}px` }} /> : null
+  const after =
+    afterHeight > 0 ? <Spacer style={{ height: `${afterHeight}px` }} /> : null
 
   return {
+    containerElement,
     contents: (
       <>
         {before}
-        {childArray.slice(start, end + 1)} {after}
+        {childArray.slice(start, end + 1)}
+        {after}
       </>
     ),
-    element,
     ref,
   }
 }

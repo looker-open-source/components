@@ -102,11 +102,11 @@ export function useWindowedOptions(
   let { start, end } = useMemo(
     () =>
       getWindowedListBoundaries({
-        containerHeight,
-        containerScrollPosition: listScrollPosition,
         enabled: windowedOptions,
+        height: containerHeight,
         itemHeight: optionHeight,
         length: flatOptions ? flatOptions.length : 0,
+        scrollPosition: listScrollPosition,
       }),
     [flatOptions, containerHeight, listScrollPosition, windowedOptions]
   )

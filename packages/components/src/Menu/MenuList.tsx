@@ -27,11 +27,14 @@
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
 import React, {
-  Ref,
   forwardRef,
+  isValidElement,
+  KeyboardEvent,
+  ReactChild,
+  Ref,
   useContext,
   useState,
-  KeyboardEvent,
+  useCallback,
 } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -105,15 +108,25 @@ export const MenuListInternal = forwardRef(
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const { contents, element, ref } = useWindow({
+    const childHeight = useCallback(
+      (child: ReactChild) => {
+        if (isValidElement(child) && child.props.description) {
+          return 52
+        }
+        return compact ? 32 : 40
+      },
+      [compact]
+    )
+
+    const { contents, containerElement, ref } = useWindow({
+      childHeight,
       children,
-      itemHeight: compact ? 32 : 40,
       spacerTag: 'li',
     })
     const forkedRef = useForkedRef(forwardedRef, ref)
 
     function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, element)
+      moveFocus(direction, initial, containerElement)
     }
 
     const context = {
