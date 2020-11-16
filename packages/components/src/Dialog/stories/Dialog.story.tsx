@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { DialogFooterLess } from '../../__mocks__/DialogFooterLess'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
@@ -65,6 +66,12 @@ export const Height = Template.bind({})
 Height.args = {
   ...MediumContent.args,
   height: '1000rem',
+}
+
+export const FooterLess = Template.bind({})
+FooterLess.args = {
+  content: <DialogFooterLess />,
+  defaultOpen: true,
 }
 
 export const PlacementTop = Template.bind({})

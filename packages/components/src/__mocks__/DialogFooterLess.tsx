@@ -24,29 +24,12 @@
 
  */
 
-import React, { FC, useContext } from 'react'
-import {
-  DialogContext,
-  DialogHeader,
-  DialogContent,
-  DialogFooter,
-  Button,
-  ButtonTransparent,
-} from '..'
+import React from 'react'
+import { DialogLayout } from '../Dialog/Layout'
+import { ConstitutionShort } from './Constitution'
 
-export const DialogLayout: FC<{ title: string }> = ({ title, children }) => {
-  const { closeModal } = useContext(DialogContext)
-
-  return (
-    <>
-      <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent>{children}</DialogContent>
-      <DialogFooter>
-        <Button onClick={closeModal}>Done Reading</Button>
-        <ButtonTransparent color="neutral" onClick={closeModal}>
-          Finish Later
-        </ButtonTransparent>
-      </DialogFooter>
-    </>
-  )
-}
+export const DialogFooterLess = () => (
+  <DialogLayout header="Dialog Sans-Footer">
+    <ConstitutionShort />
+  </DialogLayout>
+)

@@ -24,12 +24,28 @@
 
  */
 
-import React from 'react'
-import { DialogExampleLayout } from './DialogExampleLayout'
-import { Constitution } from './Constitution'
+import React, { FC, useContext } from 'react'
+import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..'
 
-export const DialogLongContent = () => (
-  <DialogExampleLayout header="The Constitution of the United States">
-    <Constitution />
-  </DialogExampleLayout>
-)
+export const DialogExampleLayout: FC<{ header: string }> = ({
+  header,
+  children,
+}) => {
+  const { closeModal } = useContext(DialogContext)
+
+  return (
+    <DialogLayout
+      header={header}
+      footer={
+        <>
+          <Button onClick={closeModal}>Done Reading</Button>
+          <ButtonTransparent color="neutral" onClick={closeModal}>
+            Finish Later
+          </ButtonTransparent>
+        </>
+      }
+    >
+      {children}
+    </DialogLayout>
+  )
+}

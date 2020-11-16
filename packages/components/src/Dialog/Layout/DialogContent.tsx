@@ -38,7 +38,14 @@ import omit from 'lodash/omit'
 
 export interface DialogContentProps
   extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+    CompatibleHTMLProps<HTMLDivElement> {
+  /**
+   * If the Dialog does not have a footer use this property to render padding
+   * at the bottom of the DialogContent.
+   * @default false
+   */
+  noFooter?: boolean
+}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
@@ -87,6 +94,7 @@ const DialogContentStyled = styled(DialogContentLayout)`
 
   flex: 1 1 auto;
   overflow: auto;
+  padding-bottom: ${({ noFooter, theme }) => noFooter && theme.space.large};
 
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
@@ -100,7 +108,7 @@ const DialogContentStyled = styled(DialogContentLayout)`
   }
 `
 
-export const DialogContent = (props: DialogContentProps) => {
+const DialogContentResize = (props: DialogContentProps) => {
   return (
     <ReactResizeDetector handleHeight>
       {(height: string) => (
@@ -109,3 +117,5 @@ export const DialogContent = (props: DialogContentProps) => {
     </ReactResizeDetector>
   )
 }
+
+export const DialogContent = styled(DialogContentResize)``
