@@ -89,14 +89,14 @@ exports[`Form with one child 1`] = `
   font-family: inherit;
 }
 
-.c6 .sc-fKgIGh {
+.c6 .sc-fKFyDc {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c6 .sc-fKgIGh input,
-.c6 .sc-fKgIGh span {
+.c6 .sc-fKFyDc input,
+.c6 .sc-fKFyDc span {
   padding: 0 0.5rem;
 }
 
@@ -157,13 +157,13 @@ exports[`Form with one child 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c1 .sc-iTVIwl {
+.c1 .sc-iUuytg {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c1 .sc-jcwofb {
+.c1 .sc-jcVebW {
   margin-top: 0.5rem;
 }
 

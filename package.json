@@ -84,7 +84,7 @@
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.14.0",
-    "styled-components": "^5.2.0",
+    "styled-components": "^5.2.1",
     "typescript": "^3.9.7",
     "webpack": "^4.44.2"
   },

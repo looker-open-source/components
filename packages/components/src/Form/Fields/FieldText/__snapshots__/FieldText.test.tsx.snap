@@ -73,14 +73,14 @@ exports[`A FieldText with default label 1`] = `
   font-family: inherit;
 }
 
-.c5 .sc-dIvqjp {
+.c5 .sc-dIUggk {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .sc-dIvqjp input,
-.c5 .sc-dIvqjp span {
+.c5 .sc-dIUggk input,
+.c5 .sc-dIUggk span {
   padding: 0 0.5rem;
 }
 
@@ -141,13 +141,13 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c0 .sc-cBoprd {
+.c0 .sc-cBNfnY {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .sc-hiKfjK {
+.c0 .sc-hiSbYr {
   margin-top: 0.5rem;
 }
 
@@ -256,14 +256,14 @@ exports[`A FieldText with label inline 1`] = `
   font-family: inherit;
 }
 
-.c5 .sc-dIvqjp {
+.c5 .sc-dIUggk {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .sc-dIvqjp input,
-.c5 .sc-dIvqjp span {
+.c5 .sc-dIUggk input,
+.c5 .sc-dIUggk span {
   padding: 0 0.5rem;
 }
 
@@ -328,7 +328,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .sc-cBoprd {
+.c0 .sc-cBNfnY {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -337,7 +337,7 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .sc-hiKfjK {
+.c0 .sc-hiSbYr {
   margin-top: 0.5rem;
 }
 

@@ -63,6 +63,9 @@ describe('Tooltip', () => {
 
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
@@ -77,6 +80,9 @@ describe('Tooltip', () => {
     )
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
@@ -95,10 +101,13 @@ describe('Tooltip', () => {
     const trigger = screen.getByText('Test')
 
     fireEvent.mouseOver(trigger)
+    runTimers()
+
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
+
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -130,11 +139,13 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    runTimers()
     expect(tooltip).toBeVisible()
 
     expect(tooltip).toHaveStyleRule('max-width: 20rem')
     expect(tooltip).toHaveStyleRule('text-align: right')
     fireEvent.mouseOut(trigger)
+    runTimers()
   })
 
   test('Render props version works', () => {
@@ -149,9 +160,14 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(trigger)
 
     const tooltip = screen.queryByText('Hello world')
+    expect(tooltip).not.toBeVisible()
+
+    runTimers()
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
+
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 })
