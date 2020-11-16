@@ -40,11 +40,11 @@ export interface DialogContentProps
   extends LayoutProps,
     CompatibleHTMLProps<HTMLDivElement> {}
 
-interface DialogContentLayout extends DialogContentProps {
+interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
 }
 
-const DialogContentLayout: FC<DialogContentLayout> = ({
+const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   renderedHeight,
@@ -68,7 +68,7 @@ const DialogContentLayout: FC<DialogContentLayout> = ({
 
   return (
     <div
-      className={`${className} ${overflow && 'overflow'}`}
+      className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
       {...omit(props, ['renderedHeight'])}
     >
