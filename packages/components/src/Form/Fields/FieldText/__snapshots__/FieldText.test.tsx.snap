@@ -73,14 +73,14 @@ exports[`A FieldText with default label 1`] = `
   font-family: inherit;
 }
 
-.c5 .sc-dIUggk {
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .sc-dIUggk input,
-.c5 .sc-dIUggk span {
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 input,
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -131,7 +131,7 @@ exports[`A FieldText with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .{
+.c0 .Field__MessageArea-m8c1e2-2 {
   grid-area: messages;
 }
 
@@ -141,18 +141,18 @@ exports[`A FieldText with default label 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c0 .sc-cBNfnY {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .sc-hiSbYr {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 
 <div
-  className="c0 "
+  className="c0 FieldText-rg64oz-0"
 >
   <label
     className="c1 c2"
@@ -165,7 +165,7 @@ exports[`A FieldText with default label 1`] = `
     className="c3 c4"
   >
     <div
-      className="c5 "
+      className="c5 FieldText-rg64oz-0"
       onMouseDown={[Function]}
     >
       <input
@@ -177,7 +177,7 @@ exports[`A FieldText with default label 1`] = `
     </div>
   </div>
   <div
-    className=""
+    className="Field__MessageArea-m8c1e2-2"
     id="FieldTextID-describedby"
   />
 </div>
@@ -256,14 +256,14 @@ exports[`A FieldText with label inline 1`] = `
   font-family: inherit;
 }
 
-.c5 .sc-dIUggk {
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 {
   height: 100%;
   max-width: 100%;
   width: 100%;
 }
 
-.c5 .sc-dIUggk input,
-.c5 .sc-dIUggk span {
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 input,
+.c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
 }
 
@@ -315,7 +315,7 @@ exports[`A FieldText with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .{
+.c0 .Field__MessageArea-m8c1e2-2 {
   grid-area: messages;
 }
 
@@ -328,7 +328,7 @@ exports[`A FieldText with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .sc-cBNfnY {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -337,12 +337,12 @@ exports[`A FieldText with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .sc-hiSbYr {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 
 <div
-  className="c0 "
+  className="c0 FieldText-rg64oz-0"
 >
   <label
     className="c1 c2"
@@ -355,7 +355,7 @@ exports[`A FieldText with label inline 1`] = `
     className="c3 c4"
   >
     <div
-      className="c5 "
+      className="c5 FieldText-rg64oz-0"
       onMouseDown={[Function]}
     >
       <input
@@ -367,7 +367,7 @@ exports[`A FieldText with label inline 1`] = `
     </div>
   </div>
   <div
-    className=""
+    className="Field__MessageArea-m8c1e2-2"
     id="FieldTextID-describedby"
   />
 </div>

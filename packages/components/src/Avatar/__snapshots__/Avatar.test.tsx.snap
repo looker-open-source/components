@@ -109,7 +109,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   width: 40px;
 }
 
-.c0 .{
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 {
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -117,7 +117,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
   width: 20px;
 }
 
-.c0 ..c5 {
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 .c5 {
   height: 14px;
   width: 14px;
 }
@@ -145,7 +145,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
     />
   </div>
   <div
-    className="c4"
+    className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
       aria-hidden={true}
@@ -276,7 +276,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   width: 40px;
 }
 
-.c0 .{
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 {
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -284,7 +284,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
   width: 20px;
 }
 
-.c0 ..c5 {
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 .c5 {
   height: 14px;
   width: 14px;
 }
@@ -312,7 +312,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
     />
   </div>
   <div
-    className="c4"
+    className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
       aria-hidden={true}
@@ -434,7 +434,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   width: 40px;
 }
 
-.c0 .{
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 {
   bottom: -4px;
   height: 20px;
   position: absolute;
@@ -442,7 +442,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
   width: 20px;
 }
 
-.c0 ..c2 {
+.c0 .AvatarCombo__AvatarIconSecondary-gekgjm-0 .c2 {
   height: 14px;
   width: 14px;
 }
@@ -471,7 +471,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
     </div>
   </div>
   <div
-    className="c4"
+    className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
       aria-hidden={true}

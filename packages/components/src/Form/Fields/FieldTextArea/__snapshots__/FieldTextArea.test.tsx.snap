@@ -9,7 +9,7 @@ exports[`A FieldTextArea with default label 1`] = `
   width: 100%;
 }
 
-.c5 .sc-iqHYGH {
+.c5 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -76,7 +76,7 @@ exports[`A FieldTextArea with default label 1`] = `
   grid-area: input;
 }
 
-.c0 .{
+.c0 .Field__MessageArea-m8c1e2-2 {
   grid-area: messages;
 }
 
@@ -86,18 +86,18 @@ exports[`A FieldTextArea with default label 1`] = `
   padding-bottom: 0.25rem;
 }
 
-.c0 .sc-citwmv {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
 }
 
-.c0 .sc-gWHgXt {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 
 <div
-  className="c0 "
+  className="c0 FieldTextArea-sc-1nmc8fy-0"
 >
   <label
     className="c1 c2"
@@ -110,7 +110,7 @@ exports[`A FieldTextArea with default label 1`] = `
     className="c3 c4"
   >
     <div
-      className="c5 "
+      className="c5 FieldTextArea-sc-1nmc8fy-0"
     >
       <textarea
         aria-describedby="FieldTextAreaID-describedby"
@@ -119,7 +119,7 @@ exports[`A FieldTextArea with default label 1`] = `
     </div>
   </div>
   <div
-    className=""
+    className="Field__MessageArea-m8c1e2-2"
     id="FieldTextAreaID-describedby"
   />
 </div>
@@ -134,7 +134,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   width: 100%;
 }
 
-.c5 .sc-iqHYGH {
+.c5 .Icon-sc-7y0t4i-0 {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -202,7 +202,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   grid-area: input;
 }
 
-.c0 .{
+.c0 .Field__MessageArea-m8c1e2-2 {
   grid-area: messages;
 }
 
@@ -215,7 +215,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   text-align: right;
 }
 
-.c0 .sc-citwmv {
+.c0 .Field__FieldDetail-m8c1e2-0 {
   grid-area: detail;
   justify-self: end;
   padding-left: 0.75rem;
@@ -224,12 +224,12 @@ exports[`A FieldTextArea with label inline 1`] = `
   align-self: center;
 }
 
-.c0 .sc-gWHgXt {
+.c0 .ValidationMessage-sc-13fefl2-0 {
   margin-top: 0.5rem;
 }
 
 <div
-  className="c0 "
+  className="c0 FieldTextArea-sc-1nmc8fy-0"
 >
   <label
     className="c1 c2"
@@ -242,7 +242,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     className="c3 c4"
   >
     <div
-      className="c5 "
+      className="c5 FieldTextArea-sc-1nmc8fy-0"
     >
       <textarea
         aria-describedby="FieldTextAreaID-describedby"
@@ -251,7 +251,7 @@ exports[`A FieldTextArea with label inline 1`] = `
     </div>
   </div>
   <div
-    className=""
+    className="Field__MessageArea-m8c1e2-2"
     id="FieldTextAreaID-describedby"
   />
 </div>
