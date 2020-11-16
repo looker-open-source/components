@@ -33,7 +33,7 @@ import { Heading } from '../Text'
 import { CalendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 
-const headingSizeMap = (size?: CalendarSize) => {
+export const headingSizeMap = (size?: CalendarSize) => {
   switch (size) {
     case 'small':
       return 'h6'

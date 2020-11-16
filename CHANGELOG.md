@@ -18,7 +18,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ### Fixed
 
-- update Select SelectMulti and Combobox replace readOnly with inputReadOnly
+- update `InputDate` and `InputDateRange` to support disabled and readOnly.
 - update DataTable to support onClick of `Link/Anchor` as text inside rows.
 
 ## [0.9.23]

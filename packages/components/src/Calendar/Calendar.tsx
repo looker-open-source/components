@@ -34,7 +34,7 @@ import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
-
+import { CalendarNavDisabled } from './CalendarNavDisabled'
 export interface CalendarLocalization {
   months: string[]
   weekdaysShort: string[]
@@ -55,6 +55,7 @@ interface CalendarProps {
   onMonthChange?: (month: Date) => void
   viewMonth?: Date
   disabled?: boolean
+  readOnly?: boolean
 }
 
 const NoopComponent: FC = () => null
@@ -73,6 +74,7 @@ const InternalCalendar: FC<CalendarProps> = ({
   viewMonth,
   selectedDates,
   disabled,
+  readOnly,
 }) => {
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
@@ -109,7 +111,7 @@ const InternalCalendar: FC<CalendarProps> = ({
         month={viewMonth}
         showOutsideDays={true}
         onDayClick={disableCallback(onDayClick)}
-        navbarElement={CalendarNav}
+        navbarElement={disabled ? CalendarNavDisabled : CalendarNav}
         captionElement={NoopComponent}
         modifiers={modifiers}
         onMonthChange={onMonthChange}
@@ -183,7 +185,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
 
     &:focus {
       border-color: ${({ theme: { colors }, disabled }) =>
-        disabled ? colors.neutralBorder : colors.keyBorder};
+        disabled ? 'transparent' : colors.keyBorder};
       border-width: 2px;
       outline: none;
     }
