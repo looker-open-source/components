@@ -68,7 +68,7 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
 
   return (
     <div
-      className={`${className} ${overflow ? 'overflow' : ''}`}
+      className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
       {...omit(props, ['renderedHeight'])}
     >

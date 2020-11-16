@@ -114,7 +114,6 @@ exports[`List numerically ordered marked as nomarker 1`] = `
 
 <ol
   class="c0"
-  data-testid="list"
   type="none"
 >
   <li

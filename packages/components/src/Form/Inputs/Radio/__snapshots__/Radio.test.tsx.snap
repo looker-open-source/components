@@ -274,33 +274,6 @@ exports[`Radio should accept disabled 1`] = `
   width: 6px;
 }
 
-.c3 input:checked + .c1 {
-  color: #6C43E0;
-}
-
-.c3 input:not(:checked) + .c1 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
-}
-
-.c3 input:focus + .c1 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 input:disabled + .c1 {
-  color: #939BA5;
-}
-
-.c3 input:disabled:not(:checked) + .c1 {
-  background: #F5F6F7;
-}
-
-.c3 input:disabled:not(:checked) + .c1::after {
-  background: #F5F6F7;
-}
-
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   height: 1rem;
@@ -425,33 +398,6 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 input:disabled:not(:checked) + .c1::after {
-  background: #F5F6F7;
-}
-
-.c3 input:checked + .c1 {
-  color: #6C43E0;
-}
-
-.c3 input:not(:checked) + .c1 {
-  background: #FFFFFF;
-  border-color: #DEE1E5;
-}
-
-.c3 input:focus + .c1 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 input:disabled + .c1 {
-  color: #939BA5;
-}
-
-.c3 input:disabled:not(:checked) + .c1 {
-  background: #F5F6F7;
-}
-
-.c3 input:disabled:not(:checked) + .c1::after {
   background: #F5F6F7;
 }
 
