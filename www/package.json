@@ -1,10 +1,10 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.9.24",
+  "version": "0.9.25",
   "devDependencies": {
-    "@looker/components": "^0.9.24",
-    "@looker/design-tokens": "^0.9.23",
+    "@looker/components": "^0.9.25",
+    "@looker/design-tokens": "^0.9.25",
     "@looker/icons": "^0.9.23",
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.19",
