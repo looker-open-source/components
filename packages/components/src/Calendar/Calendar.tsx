@@ -174,8 +174,8 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     }
 
     &--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-      background-color: ${({ theme: { colors }, disabled, readOnly }) =>
-        disabled || readOnly ? colors.neutral : colors.key};
+      background-color: ${({ theme: { colors }, disabled }) =>
+        disabled ? colors.neutral : colors.key};
       position: static;
 
       &:hover {

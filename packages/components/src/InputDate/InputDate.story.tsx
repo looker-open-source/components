@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { useState, ReactNode } from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DateFormat } from '../DateFormat'
 import { Space } from '../Layout/Space'
@@ -51,11 +51,22 @@ Disabled.args = {
   disabled: true,
 }
 
+export const DisabledWithValue = Template.bind({})
+DisabledWithValue.args = {
+  disabled: true,
+  value: new Date('February 3, 2009'),
+}
+
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
   readOnly: true,
 }
 
+export const ReadOnlyWithValue = Template.bind({})
+ReadOnlyWithValue.args = {
+  readOnly: true,
+  value: new Date('March 3, 2009'),
+}
 export const Controlled = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const handleChange = (date: Date) => {

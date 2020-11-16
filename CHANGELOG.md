@@ -16,6 +16,10 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ## [UNRELEASED]
 
+### Added
+
+- update InputDate and InputDateRange to support disabled and readOnly
+
 ### Fixed
 
 - update DataTable to support onClick of `Link/Anchor` as text inside rows.
