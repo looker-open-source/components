@@ -69,7 +69,7 @@ export function useInputEvents<
     disabled,
     // highlights all the text in the box on click when true
     selectOnClick = false,
-    readOnly = false,
+    inputReadOnly = false,
     // wrapped events
     onClick,
     onMouseDown,
@@ -98,7 +98,7 @@ export function useInputEvents<
 
   function handleFocus(e: FocusEvent<HTMLInputElement>) {
     const input = e.currentTarget
-    if (readOnly && input) {
+    if (inputReadOnly && input) {
       window.requestAnimationFrame(() => {
         input.selectionEnd = input.selectionStart = 0
       })
