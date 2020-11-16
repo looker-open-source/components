@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.25]
+
+### Changed
+
+Library updated to use Styled Components 5 & Typescript 3.9.x
+
+### Fixed
+
+- Update DataTable to support onClick of `Link/Anchor` as text inside rows.
+
 ## [0.9.24]
 
 ### Added

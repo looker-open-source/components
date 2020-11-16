@@ -14,7 +14,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-## [0.9.24]
+## [0.9.25]
 
 ### Changed
 
