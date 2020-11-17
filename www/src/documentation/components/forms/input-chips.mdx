@@ -171,12 +171,14 @@ When set to false, hitting the `Backspace` key while focused in the input will n
 Use the `disable` property to make an input field un-editable.
 
 ```jsx
-<InputChips disabled values={['disbled']} />
-<InputChips
-  placeholder="this is a disabled placeholder"
-  disabled
-  values={[]}
-/>
+<SpaceVertical>
+  <InputChips disabled values={['disbled']} />
+  <InputChips
+    placeholder="this is a disabled placeholder"
+    disabled
+    values={[]}
+  />
+</SpaceVertical>
 ```
 
 ## ReadOnly property
