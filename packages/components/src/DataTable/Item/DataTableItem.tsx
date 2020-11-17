@@ -54,7 +54,10 @@ export interface DataTableItemProps
   disabled?: boolean
 
   children: JSX.Element | JSX.Element[]
-  primaryAction?: ReactNode
+  /*
+   * A ReactNode (IconButton) that will be placed as a primary action on the right side of the row
+   */
+  actionPrimary?: ReactNode
 }
 
 const DataTableItemLayout: FC<DataTableItemProps> = ({
@@ -65,7 +68,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   disabled,
   id,
   onClick,
-  primaryAction,
+  actionPrimary,
 }) => {
   const ref = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(DataTableContext)
@@ -85,9 +88,9 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
     }
   }
 
-  const itemActions = (
-    <ItemActionsLayout>
-      {primaryAction && <>{primaryAction}</>}
+  const ItemActions = (actionPrimary || actions) && (
+    <div>
+      {actionPrimary}
       {actions && (
         <Menu>
           <MenuDisclosure tooltip={actionsTooltip}>
@@ -96,7 +99,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
           <MenuList>{actions}</MenuList>
         </Menu>
       )}
-    </ItemActionsLayout>
+    </div>
   )
 
   const onChange = select ? () => select.onSelect(id) : undefined
@@ -114,19 +117,12 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       ref={ref}
-      secondary={itemActions}
+      secondary={ItemActions}
       tabIndex={0}
     >
       {children}
     </DataTableRow>
   )
 }
-
-const ItemActionsLayout = styled.div`
-  align-items: center;
-  display: table;
-  margin-right: ${({ theme }) => theme.space.xxsmall};
-  padding: ${({ theme }) => theme.space.xxsmall};
-`
 
 export const DataTableItem = styled(DataTableItemLayout)``

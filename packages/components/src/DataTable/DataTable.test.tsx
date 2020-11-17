@@ -109,8 +109,8 @@ const items = data.map(({ id, name, type }) => {
   )
 })
 
-const itemsPrimaryAction = data.map(({ id, name, type }) => {
-  const primaryAction = (
+const itemsActionPrimary = data.map(({ id, name, type }) => {
+  const actionPrimary = (
     <IconButton
       icon="Trash"
       label="Trash It"
@@ -119,7 +119,7 @@ const itemsPrimaryAction = data.map(({ id, name, type }) => {
   )
 
   return (
-    <DataTableItem key={id} id={String(id)} primaryAction={primaryAction}>
+    <DataTableItem key={id} id={String(id)} actionPrimary={actionPrimary}>
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
       <DataTableCell>{type}</DataTableCell>
@@ -136,7 +136,7 @@ const itemsActionsPrimaryAction = data.map(({ id, name, type }) => {
     </>
   )
 
-  const primaryAction = (
+  const ActionPrimary = (
     <IconButton
       icon="Trash"
       label="Trash It"
@@ -149,7 +149,7 @@ const itemsActionsPrimaryAction = data.map(({ id, name, type }) => {
       key={id}
       id={String(id)}
       actions={availableActions}
-      primaryAction={primaryAction}
+      actionPrimary={ActionPrimary}
     >
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
@@ -575,7 +575,7 @@ describe('DataTable', () => {
 
     const dataTableWithPrimaryAction = (
       <DataTable columns={columns} select={defaultSelectConfig}>
-        {itemsPrimaryAction}
+        {itemsActionPrimary}
       </DataTable>
     )
 

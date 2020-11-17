@@ -87,7 +87,7 @@ const DataTableRowLayout = forwardRef(
         ? undefined
         : onClick && onClick(event)
 
-    const handleSecondaryClick = (event: React.MouseEvent<HTMLElement>) => {
+    const suppressClickPropagation = (event: React.MouseEvent<HTMLElement>) => {
       event.stopPropagation()
     }
     const checkbox = hasCheckbox ? (
@@ -105,7 +105,7 @@ const DataTableRowLayout = forwardRef(
       >
         <ColumnType>{checkbox}</ColumnType>
         {sizedChildren}
-        <ColumnType onClick={handleSecondaryClick}>{secondary}</ColumnType>
+        <ColumnType onClick={suppressClickPropagation}>{secondary}</ColumnType>
       </tr>
     )
   }
@@ -125,6 +125,12 @@ export const DataTableRow = styled(DataTableRowLayout)`
       border-right: 1px solid transparent; /* Keeps checkbox centered */
       height: 100%;
     }
+  }
+
+  td:last-of-type > div {
+    display: table;
+    margin-right: ${({ theme }) => theme.space.xxsmall};
+    padding: ${({ theme }) => theme.space.xxsmall};
   }
 
   &:hover {

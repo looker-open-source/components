@@ -42,11 +42,11 @@ const actions = (
   </>
 )
 
-const primaryAction = (
+const actionPrimary = (
   <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
 )
 
-const itemBuilder = (actions?: ReactNode, primaryAction?: ReactNode) => {
+const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
   return data.map(
     ({
       id,
@@ -68,7 +68,7 @@ const itemBuilder = (actions?: ReactNode, primaryAction?: ReactNode) => {
         disabled={disabled}
         id={id}
         key={id}
-        primaryAction={primaryAction}
+        actionPrimary={actionPrimary}
       >
         <DataTableCell detail={type}>{name}</DataTableCell>
         <DataTableCell>
@@ -98,7 +98,7 @@ const itemBuilder = (actions?: ReactNode, primaryAction?: ReactNode) => {
   )
 }
 
-export const items = itemBuilder(actions, primaryAction)
-export const itemsActions = itemBuilder(actions)
+export const items = itemBuilder(actions)
+export const itemsActionsActionPrimary = itemBuilder(actions, actionPrimary)
 export const itemsNoActions = itemBuilder()
-export const itemsPrimaryAction = itemBuilder(null, primaryAction)
+export const itemsActionPrimary = itemBuilder(null, actionPrimary)

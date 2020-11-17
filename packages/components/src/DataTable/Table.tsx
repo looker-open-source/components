@@ -160,9 +160,6 @@ const stickyColumns = css<TableProps>`
     ${edgeShadow('right')}
     position: sticky;
     right: 0;
-    > div {
-      display: flex;
-    }
   }
 `
 
