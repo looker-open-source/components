@@ -79,7 +79,8 @@ const InternalCalendar: FC<CalendarProps> = ({
 
   const disableCallback = (cb: Function = noop) => {
     // allows provided callback to be circumvented by disabled prop
-    return (...args: any[]) => (disabled ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
+    // eslint-disable-next-line node/no-callback-literal
+    return (...args: any[]) => (disabled ? noop() : cb(...args))
   }
 
   const formatMonthTitle = (month: Date) => {

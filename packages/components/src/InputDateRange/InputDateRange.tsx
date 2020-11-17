@@ -72,6 +72,7 @@ type Endpoint = 'to' | 'from'
 
 // Add or subtract given number of months to provided date
 const transformMonth = (
+  // eslint-disable-next-line default-param-last
   date: Date = new Date(Date.now()),
   monthDiff: number
 ) => {

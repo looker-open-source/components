@@ -35,9 +35,9 @@ describe('DataTable Sort Utils', () => {
       ['Samus', 'Link'],
       ['', '%(#&@'],
       ['1234', '10000'],
-    ].map((values) => {
+    ].map((values) =>
       expect(stringComparator(values[0], values[1])).toMatchSnapshot()
-    })
+    )
   })
 
   test('Default sort', () => {
@@ -89,10 +89,10 @@ describe('DataTable Sort Utils', () => {
       },
     ]
 
-    sets.map(({ id, sortDirection }) => {
+    sets.map(({ id, sortDirection }) =>
       expect(
         doDefaultDataTableSort(data, columns, id, sortDirection)
       ).toMatchSnapshot()
-    })
+    )
   })
 })

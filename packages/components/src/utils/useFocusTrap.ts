@@ -39,6 +39,7 @@ function checkFocusLost() {
 }
 
 export function useFocusTrap(
+  // eslint-disable-next-line default-param-last
   enabled = true,
   keepFocusWithin?: HTMLElement | null
 ) {

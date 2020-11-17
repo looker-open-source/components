@@ -35,8 +35,8 @@ describe('math_utils', () => {
       [25, 255],
       [32, 255],
       [96, 384],
-    ].map((values, index) => {
+    ].map((values, index) =>
       expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    })
+    )
   })
 })
