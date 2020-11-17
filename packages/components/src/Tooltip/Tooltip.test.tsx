@@ -107,6 +107,7 @@ describe('Tooltip', () => {
     expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
+
     expect(tooltip).not.toBeInTheDocument()
   })
 

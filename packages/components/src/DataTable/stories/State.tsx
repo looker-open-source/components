@@ -33,7 +33,7 @@ import { DataTable, DataTableProps } from '../DataTable'
 import { columns } from '../../__mocks__/DataTable/columns'
 
 const Template: Story<DataTableProps> = ({ ...args }) => (
-  <DataTable columns={[]} {...args}>
+  <DataTable {...args}>
     <p>Faux ActionList here...</p>
   </DataTable>
 )

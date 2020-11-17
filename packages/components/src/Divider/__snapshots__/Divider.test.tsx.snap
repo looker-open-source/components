@@ -5,12 +5,15 @@ exports[`A custom Divider 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   border: none;
   background-color: turquoise;
+}
+
+.c1 {
   height: 20px;
   width: 100%;
 }
 
 <hr
-  className="c0"
+  className="c0 c1"
   size="20px"
 />
 `;
@@ -20,12 +23,15 @@ exports[`Default Divider 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   border: none;
   background-color: #C1C6CC;
+}
+
+.c1 {
   height: 1px;
   width: 100%;
 }
 
 <hr
-  className="c0"
+  className="c0 c1"
   size="1px"
 />
 `;
@@ -35,12 +41,15 @@ exports[`Divider with a variant 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   border: none;
   background-color: #707781;
+}
+
+.c1 {
   height: 1px;
   width: 100%;
 }
 
 <hr
-  className="c0"
+  className="c0 c1"
   size="1px"
 />
 `;

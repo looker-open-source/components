@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-theme-editor",
   "license": "MIT",
-  "version": "0.9.24",
+  "version": "0.9.25",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,20 +16,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^0.9.24",
-    "@looker/design-tokens": "^0.9.23",
+    "@looker/components": "^0.9.25",
+    "@looker/design-tokens": "^0.9.25",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "@types/react": "^16.9.53",
-    "@types/styled-components": "^4.4.1",
+    "@types/react": "^16.9.56",
+    "@types/styled-components": "^5.1.4",
     "react": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.2.1"
   },
   "peerDependencies": {
     "react": "^16.11",
     "react-is": "^16.11",
-    "styled-components": "^4"
+    "styled-components": "^5"
   }
 }

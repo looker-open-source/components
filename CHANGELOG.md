@@ -14,11 +14,15 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-## [UNRELEASED]
+## [0.9.25]
+
+### Changed
+
+Library updated to use Styled Components 5 & Typescript 3.9.x
 
 ### Fixed
 
-- update DataTable to support onClick of `Link/Anchor` as text inside rows.
+- Update DataTable to support onClick of `Link/Anchor` as text inside rows.
 
 ## [0.9.23]
 
