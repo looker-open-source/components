@@ -25,84 +25,63 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Button } from '../Button'
-import { Popover, PopoverContent } from '../Popover'
 import { DateFormat } from '../DateFormat'
-import { InputDateRange, InputDateRangeProps } from './'
+import { Space } from '../Layout/Space'
+import { Box } from '../Layout/Box'
+import { Heading, Text } from '../Text'
+import { InputDate, InputDateProps } from './'
 
 export default {
-  component: InputDateRange,
-  title: 'InputDateRange',
+  component: InputDate,
+  title: 'InputDate',
 }
 
-const Template: Story<InputDateRangeProps> = (args) => (
-  <InputDateRange {...args} />
-)
+const Template: Story<InputDateProps> = (args) => <InputDate {...args} />
 
 export const Basic = Template.bind({})
-Basic.args = {
-  defaultValue: {
-    from: new Date('July 25, 2020'),
-    to: new Date('August 5, 2020'),
-  },
+Basic.args = {}
+
+export const Value = Template.bind({})
+Value.args = {
+  value: new Date('February 3, 2009'),
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
   disabled: true,
+}
+
+export const DisabledWithValue = Template.bind({})
+DisabledWithValue.args = {
+  disabled: true,
+  value: new Date('February 3, 2009'),
 }
 
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
   readOnly: true,
 }
 
+export const ReadOnlyWithValue = Template.bind({})
+ReadOnlyWithValue.args = {
+  readOnly: true,
+  value: new Date('March 3, 2009'),
+}
 export const Controlled = () => {
-  const startDate = new Date()
-  startDate.setDate(9)
-  const endDate = new Date()
-  endDate.setDate(15)
-
-  const [controlledDateRange, setControlledDateRange] = useState<any>()
-
-  const handleNextWeekClick = () => {
-    setControlledDateRange({
-      from: new Date('03/02/2020'),
-      to: new Date('03/09/2020'),
-    })
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  const handleChange = (date: Date) => {
+    setSelectedDate(date)
   }
-
   return (
-    <Popover
-      content={
-        <PopoverContent>
-          <Button onClick={handleNextWeekClick}>Next Week</Button>
-          <InputDateRange
-            value={controlledDateRange}
-            onChange={setControlledDateRange}
-          />
-        </PopoverContent>
-      }
-    >
-      <Button>
-        {controlledDateRange ? (
-          <>
-            <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
-            <DateFormat>{controlledDateRange.to}</DateFormat>
-          </>
-        ) : (
-          'Select Dates'
-        )}
-      </Button>
-    </Popover>
+    <Space gap="xxlarge">
+      <InputDate defaultValue={selectedDate} onChange={handleChange} />
+      <Box p="large" height="100%" borderLeft="1px solid #ccc">
+        <Heading>Selected:</Heading>
+        <Text variant="secondary">
+          <DateFormat>{selectedDate}</DateFormat>
+        </Text>
+      </Box>
+    </Space>
   )
 }
 

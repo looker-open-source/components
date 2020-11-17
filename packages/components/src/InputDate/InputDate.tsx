@@ -42,16 +42,17 @@ import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
 import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
 
 export interface InputDateProps extends SpaceProps, BorderProps {
-  defaultValue?: Date
-  value?: Date
-  onChange?: (date?: Date) => void
-  validationType?: ValidationType
-  onValidationFail?: (value: string) => void
-  localization?: CalendarLocalization
   dateStringLocale?: Locales
-  id?: string
-  ref?: Ref<HTMLInputElement>
+  defaultValue?: Date
   disabled?: boolean
+  id?: string
+  localization?: CalendarLocalization
+  onChange?: (date?: Date) => void
+  onValidationFail?: (value: string) => void
+  readOnly?: boolean
+  ref?: Ref<HTMLInputElement>
+  validationType?: ValidationType
+  value?: Date
 }
 
 const isDateInView = (value: Date, viewMonth: Date) => {
@@ -72,15 +73,16 @@ const isDateInView = (value: Date, viewMonth: Date) => {
 export const InputDate: FC<InputDateProps> = forwardRef(
   (
     {
-      onChange,
-      defaultValue,
-      localization,
       dateStringLocale,
-      validationType,
-      onValidationFail,
-      value,
-      id,
+      defaultValue,
       disabled,
+      localization,
+      id,
+      onChange,
+      onValidationFail,
+      readOnly,
+      validationType,
+      value,
     },
     ref: Ref<HTMLInputElement>
   ) => {
@@ -174,6 +176,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           id={id}
           ref={ref}
           disabled={disabled}
+          readOnly={readOnly}
           my="xxsmall"
         />
         <CalendarWrapper>
@@ -186,6 +189,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
             onNextClick={handleNavClick}
             onPrevClick={handleNavClick}
             disabled={disabled}
+            readOnly={readOnly}
           />
         </CalendarWrapper>
       </InputDateWrapper>
