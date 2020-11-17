@@ -20,6 +20,10 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 Library updated to use Styled Components 5 & Typescript 3.9.x
 
+### Added
+
+- update InputDate and InputDateRange to support disabled and readOnly
+
 ### Fixed
 
 - Update DataTable to support onClick of `Link/Anchor` as text inside rows.
