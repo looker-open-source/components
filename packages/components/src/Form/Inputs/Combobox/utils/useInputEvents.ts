@@ -68,7 +68,7 @@ export function useInputEvents<
     disabled,
     // highlights all the text in the box on click when true
     selectOnClick = false,
-    inputReadOnly = false,
+    readOnly = false,
     // wrapped events
     onClick,
     onMouseDown,
