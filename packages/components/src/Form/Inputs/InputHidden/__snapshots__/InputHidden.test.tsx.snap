@@ -2,14 +2,14 @@
 
 exports[`InputHidden default 1`] = `
 <input
-  className="InputHidden-sc-1b60boq-0"
+  className=""
   type="hidden"
 />
 `;
 
 exports[`InputHidden with a value 1`] = `
 <input
-  className="InputHidden-sc-1b60boq-0"
+  className=""
   type="hidden"
   value="Some value"
 />
@@ -17,7 +17,7 @@ exports[`InputHidden with a value 1`] = `
 
 exports[`InputHidden with name and id 1`] = `
 <input
-  className="InputHidden-sc-1b60boq-0"
+  className=""
   id="Bobby"
   name="Bob"
   type="hidden"

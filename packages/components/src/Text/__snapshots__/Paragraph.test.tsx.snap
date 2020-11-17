@@ -10,7 +10,7 @@ exports[`A Paragraph component aligned 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -29,7 +29,7 @@ exports[`A Paragraph component decorated 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="medium"
   textDecoration="line-through"
@@ -47,7 +47,7 @@ exports[`A Paragraph component resized 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="xxxxlarge"
 >
@@ -61,14 +61,11 @@ exports[`A Paragraph component text transformed 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   color: #262D33;
-}
-
-.c1 {
   text-transform: uppercase;
 }
 
 <p
-  className="c0 c1"
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -82,16 +79,13 @@ exports[`A Paragraph component truncated 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   color: #262D33;
-}
-
-.c1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 <p
-  className="c0 c1"
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -109,7 +103,7 @@ exports[`A Paragraph component weight 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="medium"
   fontWeight="bold"
@@ -124,9 +118,6 @@ exports[`A Paragraph component with multiline truncate 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   color: #262D33;
-}
-
-.c1 {
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -134,7 +125,7 @@ exports[`A Paragraph component with multiline truncate 1`] = `
 }
 
 <p
-  className="c0 c1"
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -148,14 +139,11 @@ exports[`A Paragraph component with variant 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   color: #262D33;
-}
-
-.c1 {
   color: #CC1F36;
 }
 
 <p
-  className="c0 c1"
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -173,7 +161,7 @@ exports[`A Paragraph component wrapped 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="medium"
 >
@@ -190,7 +178,7 @@ exports[`A default Paragraph component 1`] = `
 }
 
 <p
-  className="c0 "
+  className="c0"
   color="text"
   fontSize="medium"
 >

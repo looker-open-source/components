@@ -145,21 +145,21 @@ exports[`ButtonToggle controlled 1`] = `
 >
   <button
     aria-pressed="false"
-    class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    class="c2 c3"
     value="Apples"
   >
     Apples
   </button>
   <button
     aria-pressed="false"
-    class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    class="c2 c3"
     value="Oranges"
   >
     Oranges
   </button>
   <button
     aria-pressed="true"
-    class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    class="c2 c3"
     value="Bananas"
   >
     Bananas
