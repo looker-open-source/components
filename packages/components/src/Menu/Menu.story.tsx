@@ -409,6 +409,90 @@ export const LongList = () => {
           ))}
         </MenuList>
       </Menu>
+      <Menu>
+        <MenuDisclosure>
+          <Button>Explores</Button>
+        </MenuDisclosure>
+        <MenuList width={100}>
+          {exploreGroups.map(({ label, explores }) => (
+            <MenuGroup key={label} label={label}>
+              {explores.map((explore: Explore) => (
+                <MenuItem
+                  key={explore.label}
+                  detail={
+                    explore.description && (
+                      <Tooltip placement="right" content={explore.description}>
+                        <Icon
+                          name="CircleInfo"
+                          size={16}
+                          color="ui2"
+                          data-testid="ExploreInfoIcon"
+                          mr="small"
+                        />
+                      </Tooltip>
+                    )
+                  }
+                >
+                  {explore.label[0]}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+          ))}
+        </MenuList>
+      </Menu>
     </Space>
+  )
+}
+
+export const ReactWindow = () => {
+  const getHeight = useCallback((index: number) => {
+    return exploreGroups[index].explores.length * 40 + 24
+  }, [])
+  const [element, ref] = useCallbackRef()
+  const { height, width } = useMeasuredElement(element)
+
+  const Row = ({ index, style }: ListChildComponentProps) => {
+    const { label, explores } = exploreGroups[index]
+    return (
+      <MenuGroup style={style} key={label} label={label}>
+        {explores.map((explore: Explore) => (
+          <MenuItem
+            key={explore.label}
+            detail={
+              explore.description && (
+                <Tooltip placement="right" content={explore.description}>
+                  <Icon
+                    name="CircleInfo"
+                    size={16}
+                    color="ui2"
+                    data-testid="ExploreInfoIcon"
+                    mr="small"
+                  />
+                </Tooltip>
+              )
+            }
+          >
+            {explore.label.charAt(0)}
+          </MenuItem>
+        ))}
+      </MenuGroup>
+    )
+  }
+  return (
+    <Menu>
+      <MenuDisclosure>
+        <Button>Explores</Button>
+      </MenuDisclosure>
+      <MenuList width={100} ref={ref}>
+        <List
+          height={height || 260}
+          width={width}
+          itemCount={exploreGroups.length}
+          itemSize={getHeight}
+        >
+          {Row}
+        </List>
+      </MenuList>
+    </Menu>
   )
 }

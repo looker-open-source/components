@@ -27,6 +27,7 @@
 import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
 import React, {
+  Children,
   forwardRef,
   isValidElement,
   KeyboardEvent,
@@ -110,10 +111,16 @@ export const MenuListInternal = forwardRef(
 
     const childHeight = useCallback(
       (child: ReactChild) => {
-        if (isValidElement(child) && child.props.description) {
-          return 52
+        const baseHeight = compact ? 32 : 40
+        if (isValidElement(child)) {
+          if (child.props.description) {
+            return 52
+          }
+          if (child.type === MenuGroup && child.props.children) {
+            return Children.toArray(child.props.children).length * baseHeight
+          }
         }
-        return compact ? 32 : 40
+        return baseHeight
       },
       [compact]
     )
