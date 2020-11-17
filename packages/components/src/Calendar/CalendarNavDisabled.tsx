@@ -44,6 +44,7 @@ export const CalendarNavDisabled: FC<NavbarElementDisabledProps> = ({
     fontWeight="semiBold"
     fontFamily="body"
     textAlign="center"
+    py="xsmall"
   >
     {localeUtils.formatMonthTitle(month)}
   </Heading>
