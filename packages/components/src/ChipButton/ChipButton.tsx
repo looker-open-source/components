@@ -36,7 +36,7 @@ import { Chip } from '../Chip/Chip'
    *
 =   */
 
-export const ChipButton = styled(Chip).attrs({ role: 'button' })`
+export const ChipButton = styled(Chip).attrs(() => ({ role: 'button' }))`
   border: 1px solid ${({ theme }) => theme.colors.ui2};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.small};

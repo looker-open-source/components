@@ -27,7 +27,7 @@
 import { Box } from '@looker/components'
 import styled from 'styled-components'
 
-export default styled(Box).attrs({
+export default styled(Box).attrs(() => ({
   as: 'code',
   bg: 'ui1',
   borderRadius: 'small',
@@ -36,4 +36,4 @@ export default styled(Box).attrs({
   fontSize: 'small',
   lineHeight: 'medium',
   px: 'xxsmall',
-})``
+}))``
