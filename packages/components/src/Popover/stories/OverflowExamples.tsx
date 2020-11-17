@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Box } from '@looker/components'
+import { Box } from '../../Layout'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'
@@ -99,7 +99,6 @@ export const OverflowExamples = () => {
   )
 }
 
-export default {
-  component: OverflowExamples,
-  title: 'Overlays/Popover',
+OverflowExamples.parameters = {
+  storyshots: { disable: true },
 }

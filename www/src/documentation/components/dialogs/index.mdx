@@ -162,37 +162,30 @@ export function DailogUseContextDemo() {
 }
 ```
 
-`DialogContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Dialog's state. The context provides access to the following:
-
-- `closeModal`
-- `enableFocusTrap`
-- `disableFocusTrap`
-- `focusTrapEnabled`
-
-The `closeModal` method simply allows you to close the Dialog or Popover.
-
-The other methods and values above are for rare use when the focus trap behavior is interfering with the desired behavior, for example, a popover from another library nested inside of a `@looker/components` Popover or Dialog.
+`DialogContext` is a [React Context](https://reactjs.org/docs/context.html) that provides
+access to the `closeModal` function, which allows you to close the Dialog or Popover.
 
 ## Scroll Lock
 
 A key part of dialog usability is the scroll lock, which disables scrolling on any part of the page except within the dialog.
-When the `Dialog` component renders, it registers a scroll lock to the `ScrollLockContext` in `ComponentsProvider`, which manages competing scroll locks from other components.
+When the `Dialog` component renders, it registers its portal element to both the `ScrollLockContext` and `FocusTrapContext`
+in `ComponentsProvider`, which manage competing scroll locks and focus traps from other components.
 
-In rare cases, such as nesting a popover from another library inside a `Dialog`, you may need to temporarily disable the scroll lock:
+In rare cases, such as nesting a popover from another library inside a `Dialog`, you may need to temporarily disable these behaviors:
 
 ```js static
 import { ScrollLockContext } from '@looker/components-providers'
 import { useContext } from 'react'
 
-const { activeLockRef, disableCurrentLock, enableCurrentLock } = useContext(
+const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
   ScrollLockContext
 )
 
 function toggleScrollLock() {
-  if (activeLockRef && activeLockRef.current) {
-    disableCurrentLock()
+  if (activeTrapRef && activeTrapRef.current) {
+    disableCurrentTrap()
   } else {
-    enableCurrentLock()
+    enableCurrentTrap()
   }
 }
 ```

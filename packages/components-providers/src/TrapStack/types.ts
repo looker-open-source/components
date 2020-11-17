@@ -24,9 +24,35 @@
 
  */
 
-import { ScrollLockContext } from '@looker/components-providers'
-import { useTrapStack, UseTrapStackProps } from './useTrapStack'
+import { MutableRefObject } from 'react'
 
-export const useScrollLock = <T extends HTMLElement = HTMLElement>(
-  props: Omit<UseTrapStackProps<T>, 'context'> = {}
-) => useTrapStack({ context: ScrollLockContext, ...props })
+export interface TrapStackContextProps {
+  /**
+   * Stores the element for the active scroll lock (null if none are active)
+   */
+  activeTrapRef?: MutableRefObject<HTMLElement | null>
+  /**
+   * @private
+   */
+  addTrap?: (id: string, element: HTMLElement) => void
+  /**
+   * Disables the current scroll lock (no scroll lock will be enabled as a result)
+   */
+  disableCurrentTrap?: () => void
+  /**
+   * Enables the scroll lock stacked on top
+   */
+  enableCurrentTrap?: () => void
+  /**
+   * @private
+   */
+  getTrap?: (id: string) => HTMLElement | null
+  /**
+   * @private
+   */
+  removeTrap?: (id: string) => void
+}
+
+export interface TrapMap {
+  [key: string]: HTMLElement
+}

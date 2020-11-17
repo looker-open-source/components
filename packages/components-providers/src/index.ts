@@ -25,4 +25,6 @@
  */
 export * from './ComponentsProvider'
 export * from './ExtendComponentsProvider'
+export * from './FocusTrap'
 export * from './ScrollLock'
+export * from './TrapStack'

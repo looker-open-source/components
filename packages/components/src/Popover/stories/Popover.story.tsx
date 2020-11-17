@@ -25,7 +25,10 @@
  */
 
 import React, { useEffect, useContext } from 'react'
-import { ScrollLockContext } from '@looker/components-providers'
+import {
+  ScrollLockContext,
+  FocusTrapContext,
+} from '@looker/components-providers'
 import {
   Box,
   Button,
@@ -40,13 +43,15 @@ import {
   MenuItem,
   DialogContent,
   Paragraph,
-  Popover,
-  PopoverContent,
   Space,
   SpaceVertical,
-  usePopover,
   useToggle,
-} from '@looker/components'
+} from '../..'
+import { Popover } from '../Popover'
+import { PopoverContent } from '../PopoverContent'
+import { usePopover } from '../usePopover'
+
+export * from './OverflowExamples'
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -77,7 +82,7 @@ const options = [
 ]
 
 export default {
-  title: 'Overlays/Popover',
+  title: 'Popover',
 }
 
 export const PopoverFocusTrap = () => {
@@ -184,6 +189,10 @@ export const PopoverFocusTrap = () => {
   )
 }
 
+PopoverFocusTrap.parameters = {
+  storyshots: { disable: true },
+}
+
 export const OverlayOpenDialog = () => {
   const { value, setOn, setOff } = useToggle()
   return (
@@ -222,15 +231,31 @@ export const OverlayOpenDialog = () => {
   )
 }
 
+OverlayOpenDialog.parameters = {
+  storyshots: { disable: true },
+}
+
 const DialogInner = () => {
-  const { activeLockRef, disableCurrentLock, enableCurrentLock } = useContext(
-    ScrollLockContext
-  )
-  function handleClick() {
+  const {
+    activeTrapRef: activeLockRef,
+    disableCurrentTrap: disableCurrentLock,
+    enableCurrentTrap: enableCurrentLock,
+  } = useContext(ScrollLockContext)
+  const toggleScrollLock = () => {
     if (activeLockRef && activeLockRef.current) {
       disableCurrentLock?.()
     } else {
       enableCurrentLock?.()
+    }
+  }
+  const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
+    FocusTrapContext
+  )
+  const toggleFocusTrap = () => {
+    if (activeTrapRef && activeTrapRef.current) {
+      disableCurrentTrap?.()
+    } else {
+      enableCurrentTrap?.()
     }
   }
   function openAlert() {
@@ -243,7 +268,8 @@ const DialogInner = () => {
           Scroll lock can be disabled via ScrollLockContext but due to fixed
           positioning in Dialog, there will be a scrollbar jump.
         </Paragraph>
-        <Button onClick={handleClick}>Toggle Scroll Lock</Button>
+        <Button onClick={toggleScrollLock}>Toggle Scroll Lock</Button>
+        <Button onClick={toggleFocusTrap}>Toggle Focus Trap</Button>
         <Paragraph>Try opening the Select and picking an option:</Paragraph>
         <FieldSelect
           label="Default Value"
@@ -273,11 +299,19 @@ export const RenderProps = () => (
   </Popover>
 )
 
+RenderProps.parameters = {
+  storyshots: { disable: true },
+}
+
 export const RenderPropsSpread = () => (
   <Popover content={popoverContent}>
     {(props) => <button {...props}>Test</button>}
   </Popover>
 )
+
+RenderPropsSpread.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Placement = () => {
   const popoverContent = (
@@ -304,7 +338,13 @@ export const Placement = () => {
   )
 }
 
-export const MovingTarget = () => {
+Placement.parameters = {
+  storyshots: { disable: true },
+}
+
+// Can't have usePopover at the top level of a story because it ends up at the same level
+// as ComponentsProvider and can't access FocusTrapContext or ScrollLockContext
+const MovingTargetInner = () => {
   const { value, toggle } = useToggle()
 
   const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
@@ -352,6 +392,12 @@ export const MovingTarget = () => {
   )
 }
 
+export const MovingTarget = () => <MovingTargetInner />
+
+MovingTarget.parameters = {
+  storyshots: { disable: true },
+}
+
 export const MouseUp = () => {
   return (
     <SpaceVertical>
@@ -380,4 +426,8 @@ export const MouseUp = () => {
       </Space>
     </SpaceVertical>
   )
+}
+
+MouseUp.parameters = {
+  storyshots: { disable: true },
 }

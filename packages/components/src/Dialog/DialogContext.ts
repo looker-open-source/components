@@ -24,16 +24,11 @@
 
  */
 
-import { createContext, MutableRefObject } from 'react'
-import { FocusTrap } from 'focus-trap'
+import { createContext } from 'react'
 import noop from 'lodash/noop'
 
 export interface DialogContextProps {
   closeModal: () => void
-  enableFocusTrap?: () => void
-  disableFocusTrap?: () => void
-  focusTrapEnabled?: boolean
-  focusTrapRef?: MutableRefObject<FocusTrap | undefined>
 }
 
 const dialogContext: DialogContextProps = {

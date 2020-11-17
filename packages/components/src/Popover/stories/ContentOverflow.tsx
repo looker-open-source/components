@@ -25,27 +25,24 @@
  */
 
 import React, { FC } from 'react'
-import { Box, ButtonOutline, Popover, PopoverContent } from '@looker/components'
+import { ButtonOutline } from '../../Button'
+import { Box } from '../../Layout'
+import { Paragraph } from '../../Text'
+import { Popover } from '../Popover'
+import { PopoverContent } from '../PopoverContent'
 
-interface Props {
-  top?: number
-  left?: number
-  bottom?: number
-  right?: number
-}
-
-export const EdgeOverflow: FC<Props> = ({
-  children,
-  top,
-  left,
-  bottom,
-  right,
-}) => (
-  <Box position="absolute" top={top} left={left} bottom={bottom} right={right}>
+export const ContentOverflow: FC = ({ children }) => (
+  <Box position="absolute" top="40%" left="40%">
     <Popover
+      pin
+      placement="bottom"
       content={
-        <PopoverContent width="18rem" height="5rem">
-          There's stuff here... it hits the edge{' '}
+        <PopoverContent width="18rem">
+          <Paragraph>Stuff above spacer</Paragraph>
+          <Box height="60vh" bg="ui1">
+            Spacer
+          </Box>
+          <Paragraph>Content below spacer</Paragraph>
         </PopoverContent>
       }
     >

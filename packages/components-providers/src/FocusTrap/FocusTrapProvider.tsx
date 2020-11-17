@@ -24,9 +24,17 @@
 
  */
 
-import { ScrollLockContext } from '@looker/components-providers'
-import { useTrapStack, UseTrapStackProps } from './useTrapStack'
+import React, { createContext, FC } from 'react'
+import { TrapStackContextProps, TrapStackProvider } from '../TrapStack'
+import { activateFocusTrap } from './utils'
 
-export const useScrollLock = <T extends HTMLElement = HTMLElement>(
-  props: Omit<UseTrapStackProps<T>, 'context'> = {}
-) => useTrapStack({ context: ScrollLockContext, ...props })
+export const FocusTrapContext = createContext<TrapStackContextProps>({})
+FocusTrapContext.displayName = 'FocusTrapContext'
+
+export const FocusTrapProvider: FC = (props) => (
+  <TrapStackProvider
+    activate={activateFocusTrap}
+    context={FocusTrapContext}
+    {...props}
+  />
+)

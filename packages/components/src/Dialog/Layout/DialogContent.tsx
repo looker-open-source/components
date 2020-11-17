@@ -88,6 +88,11 @@ const DialogContentStyled = styled(DialogContentLayout)`
   flex: 1 1 auto;
   overflow: auto;
 
+  ${Inner} {
+    padding-bottom: ${({ theme }) => theme.space.xxxsmall};
+    padding-top: ${({ theme }) => theme.space.xxxsmall};
+  }
+
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
     border-top: 1px solid ${({ theme }) => theme.colors.ui2};
