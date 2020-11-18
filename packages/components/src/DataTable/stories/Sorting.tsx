@@ -24,16 +24,23 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   DataTableAction,
+  doDefaultDataTableSort,
+  DataTable,
   DataTableColumns,
-  DataTableDatum,
-  useDataTableSortManager,
+  DataTableItem,
+  DataTableCell,
 } from '..'
 
+interface MyDataShape {
+  id: number
+  name: string
+}
+
 export const Sortable = () => {
-  const data = [
+  const [data, setData] = useState<MyDataShape[]>([
     {
       id: 1,
       name: 'Lloyd Tabb',
@@ -42,11 +49,9 @@ export const Sortable = () => {
       id: 2,
       name: 'Ben Porterfield',
     },
-  ]
+  ])
 
-  // Note: column objects must be tracked using state since their sortDirection properties will change
-  // depending on which column is sorted
-  const columns: DataTableColumns = [
+  const [columns, setColumns] = useState<DataTableColumns>([
     {
       canSort: true,
       id: 'id',
@@ -60,20 +65,40 @@ export const Sortable = () => {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ])
 
-  const generateActions = (item: DataTableDatum) => {
-    return (
+  const items = data.map(({ id, name }) => {
+    const actions = (
       <>
-        <DataTableAction onClick={() => alert(item.id)}>
-          Check id
-        </DataTableAction>
-        <DataTableAction onClick={() => alert(item.name)}>
+        <DataTableAction onClick={() => alert(id)}>Check id</DataTableAction>
+        <DataTableAction onClick={() => alert(name)}>
           Check name
         </DataTableAction>
       </>
     )
+
+    return (
+      <DataTableItem actions={actions} id={String(id)} key={id}>
+        <DataTableCell>{id}</DataTableCell>
+        <DataTableCell>{name}</DataTableCell>
+      </DataTableItem>
+    )
+  })
+
+  const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
+    const { columns: sortedColumns, data: sortedData } = doDefaultDataTableSort(
+      data,
+      columns,
+      id,
+      sortDirection
+    )
+    setData(sortedData)
+    setColumns(sortedColumns)
   }
 
-  return useDataTableSortManager(data, columns, generateActions)
+  return (
+    <DataTable onSort={onSort} columns={columns}>
+      {items}
+    </DataTable>
+  )
 }
