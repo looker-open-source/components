@@ -24,23 +24,16 @@
 
  */
 
-import { reset, theme, omitStyledProps } from '@looker/design-tokens'
-import React, { FC, useContext, useEffect, useRef } from 'react'
+import { reset, omitStyledProps } from '@looker/design-tokens'
+import React, { FC, useContext, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
 const SurfaceLayout: FC<{ className?: string }> = (props) => {
-  const { closeModal, enableFocusTrap } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext)
 
   const ref = useRef<null | HTMLDivElement>(null)
-
-  useEffect(() => {
-    const t = setTimeout(() => {
-      enableFocusTrap && enableFocusTrap()
-    }, theme.transitions.moderate)
-    return () => clearTimeout(t)
-  }, [enableFocusTrap])
 
   useGlobalHotkeys('esc', closeModal, ref)
 

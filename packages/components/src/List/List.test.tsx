@@ -25,7 +25,11 @@
  */
 
 import React from 'react'
-import { createWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import {
+  createWithTheme,
+  renderWithTheme,
+  assertSnapshot,
+} from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { List } from './List'
 import { ListItem } from './ListItem'
@@ -33,54 +37,45 @@ import { ListItem } from './ListItem'
 import 'jest-styled-components'
 
 describe('List', () => {
-  test('Default, should be a ul', () => {
-    const component = createWithTheme(
+  test('Default, should be a ul', () =>
+    assertSnapshot(
       <List>
         <ListItem>🥑</ListItem>
         <ListItem>🍕</ListItem>
         <ListItem>🥨</ListItem>
       </List>
-    )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-  })
+    ))
 
-  test('bulleted', () => {
-    const component = createWithTheme(
+  test('bulleted', () =>
+    assertSnapshot(
       <List type="bullet">
         <ListItem>🥑</ListItem>
         <ListItem>🍕</ListItem>
         <ListItem>🥨</ListItem>
       </List>
-    )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-  })
+    ))
 
-  test('numerically ordered', () => {
-    const component = createWithTheme(
+  test('numerically ordered', () =>
+    assertSnapshot(
       <List type="number">
         <ListItem>🥑</ListItem>
         <ListItem>🍕</ListItem>
         <ListItem>🥨</ListItem>
       </List>
-    )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-  })
+    ))
 
   test('numerically ordered marked as nomarker', () => {
     renderWithTheme(
-      <List type="number" nomarker data-testid="list">
+      <List type="number" nomarker>
         <ListItem>🥑</ListItem>
         <ListItem>🍕</ListItem>
         <ListItem>🥨</ListItem>
       </List>
     )
 
-    const list = screen.getByTestId('list')
+    const list = screen.getByRole('list')
     expect(list).toBeInTheDocument()
-    expect(list).toHaveStyleRule('list-style-type', 'none')
+    expect(list).toHaveStyle('list-style-type: none;')
     // Padding unset due to default reset applied
     expect(list).toMatchSnapshot()
   })

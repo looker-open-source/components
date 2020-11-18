@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Changed
+
+- `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
+  - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
+  - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
+
+## [0.9.25]
+
+### Changed
+
+Library updated to use Styled Components 5 & Typescript 3.9.x
+
+### Fixed
+
+- Update DataTable to support onClick of `Link/Anchor` as text inside rows.
+
+## [0.9.24]
+
+### Added
+
+- `ExtendComponentsProvider`
+- `useDataTable` hook for simple `DataTable` rendering (used for testing)
+
+### Fixed
+
+- `Avatar` will consistently maintain it's 1:1 aspect ratio within flex layouts
+- `CodeBlock` should now uses `overflow-y: auto` instead of `overflow-y: scroll`
+- `DataTable` with number columns now properly aligns the cell content
+- `DataTableCell` truncates `description` appropriately now
+- `DataTableCell` with a link is presented properly when it gains focus via keyboard
+- `DataTableColumn` `width` again supports `number` for percentage-based column widths
+- `DataTableHeaderCell` properly aligns sort direction icon when column `size` is specified
+- `DataTableItem` supports a single column
+- `DialogContent` now will only enter "overflow" state exactly once per render lifecycle
+- `DialogFooterLayout` is no longer exported
+
 ## [0.9.23]
 
 ### Added

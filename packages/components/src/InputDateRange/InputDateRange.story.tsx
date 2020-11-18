@@ -46,6 +46,7 @@ Basic.args = {
     to: new Date('August 5, 2020'),
   },
 }
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   defaultValue: {
@@ -53,6 +54,15 @@ Disabled.args = {
     to: new Date('Jun 19, 2000'),
   },
   disabled: true,
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  defaultValue: {
+    from: new Date('Jun 7, 2000'),
+    to: new Date('Jun 19, 2000'),
+  },
+  readOnly: true,
 }
 
 export const Controlled = () => {

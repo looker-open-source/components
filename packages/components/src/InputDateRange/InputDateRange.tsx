@@ -56,16 +56,17 @@ import { useID } from '../utils/useID'
 import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
 
 export interface InputDateRangeProps {
-  value?: RangeModifier
+  disabled?: boolean
+  dateStringLocale?: Locales
   defaultValue?: RangeModifier
+  id?: string
+  localization?: CalendarLocalization
   onChange?: (range?: Partial<RangeModifier>) => void
   onValidationFail?: (value: string) => void
-  localization?: CalendarLocalization
-  dateStringLocale?: Locales
-  validationType?: ValidationType
-  id?: string
+  readOnly?: boolean
   ref?: Ref<HTMLDivElement>
-  disabled?: boolean
+  validationType?: ValidationType
+  value?: RangeModifier
 }
 
 type Endpoint = 'to' | 'from'
@@ -129,15 +130,16 @@ const isDateRangeInView = (
 export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
   (
     {
-      defaultValue = {},
-      localization,
       dateStringLocale,
+      defaultValue = {},
+      disabled,
+      id,
+      localization,
       onChange,
       onValidationFail,
+      readOnly,
       validationType,
       value,
-      id,
-      disabled,
     },
     ref: Ref<HTMLDivElement>
   ) => {
@@ -353,14 +355,15 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
                 new Date(Date.now()),
                 dateStringLocale
               )})`}
-              value={inputs.from.value}
-              onChange={handleTextInputChange}
-              onBlur={handleValidation}
-              data-testid="date-from-text-input"
-              id={fromID}
-              onFocus={partial(handleTextInputFocus, 'from')}
-              fontSize="small"
               disabled={disabled}
+              data-testid="date-from-text-input"
+              fontSize="small"
+              id={fromID}
+              onBlur={handleValidation}
+              onChange={handleTextInputChange}
+              onFocus={partial(handleTextInputFocus, 'from')}
+              readOnly={readOnly}
+              value={inputs.from.value}
             />
           </InputTextWrapper>
           <HyphenWrapper hasInputValues={!isEmpty(dateRange)}>
@@ -372,14 +375,15 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
                 new Date(Date.now()),
                 dateStringLocale
               )})`}
-              value={inputs.to.value}
-              onChange={handleTextInputChange}
-              onBlur={handleValidation}
+              disabled={disabled}
+              fontSize="small"
               data-testid="date-to-text-input"
               id={toID}
+              onBlur={handleValidation}
+              onChange={handleTextInputChange}
               onFocus={partial(handleTextInputFocus, 'to')}
-              fontSize="small"
-              disabled={disabled}
+              readOnly={readOnly}
+              value={inputs.to.value}
             />
           </InputTextWrapper>
           {(inputs.from.isValid && inputs.to.isValid) || (
@@ -397,28 +401,30 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         <MultiCalendarLayout>
           <CalendarWrapper>
             <Calendar
-              selectedDates={dateRange as RangeModifier}
-              onDayClick={handleCalendarClick}
+              disabled={disabled}
               localization={localization}
-              viewMonth={viewMonth}
+              onDayClick={handleCalendarClick}
+              onMonthChange={partial(handleMonthChange, 0)}
               onNowClick={handleNowClick}
               onPrevClick={handlePrevClick}
+              readOnly={readOnly}
+              selectedDates={dateRange as RangeModifier}
               showNextButton={false}
-              onMonthChange={partial(handleMonthChange, 0)}
-              disabled={disabled}
+              viewMonth={viewMonth}
             />
           </CalendarWrapper>
           <CalendarWrapper>
             <Calendar
-              selectedDates={dateRange as RangeModifier}
-              onDayClick={handleCalendarClick}
-              localization={localization}
-              viewMonth={viewNextMonth}
-              onNowClick={handleNowClick}
-              onNextClick={handleNextClick}
-              showPreviousButton={false}
-              onMonthChange={partial(handleMonthChange, -1)}
               disabled={disabled}
+              localization={localization}
+              onDayClick={handleCalendarClick}
+              onMonthChange={partial(handleMonthChange, -1)}
+              onNextClick={handleNextClick}
+              onNowClick={handleNowClick}
+              readOnly={readOnly}
+              selectedDates={dateRange as RangeModifier}
+              showPreviousButton={false}
+              viewMonth={viewNextMonth}
             />
           </CalendarWrapper>
         </MultiCalendarLayout>

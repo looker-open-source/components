@@ -30,6 +30,7 @@ import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
+import { dialogPlacements } from '../DialogSurface'
 
 export * from './Controlled'
 export * from './SaveChanges'
@@ -60,6 +61,12 @@ MediumContent.args = {
   defaultOpen: true,
 }
 
+export const Height = Template.bind({})
+Height.args = {
+  ...MediumContent.args,
+  height: '1000rem',
+}
+
 export const PlacementTop = Template.bind({})
 PlacementTop.args = {
   ...MediumContent.args,
@@ -82,10 +89,16 @@ LongContent.args = {
 
 export default {
   argTypes: {
+    placement: {
+      control: {
+        options: dialogPlacements,
+        type: 'select',
+      },
+    },
     width: {
       control: {
         options: Object.keys(dialogSizes),
-        type: 'radio',
+        type: 'select',
       },
     },
   },

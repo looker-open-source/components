@@ -54,16 +54,21 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   const [overflow, setOverflow] = useState(false)
 
   useEffect(() => {
-    const container = internalRef.current
+    /**
+     * Once you overflow, you never go back (tough luck chuck)
+     */
+    if (!overflow) {
+      const container = internalRef.current
 
-    if (container) {
-      setOverflow(container.offsetHeight < container.scrollHeight)
+      if (container) {
+        setOverflow(container.offsetHeight < container.scrollHeight)
+      }
     }
-  }, [renderedHeight])
+  }, [overflow, renderedHeight])
 
   return (
     <div
-      className={`${className} ${overflow ? 'overflow' : ''}`}
+      className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
       {...omit(props, ['renderedHeight'])}
     >
@@ -82,6 +87,11 @@ const DialogContentStyled = styled(DialogContentLayout)`
 
   flex: 1 1 auto;
   overflow: auto;
+
+  ${Inner} {
+    padding-bottom: ${({ theme }) => theme.space.xxxsmall};
+    padding-top: ${({ theme }) => theme.space.xxxsmall};
+  }
 
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};

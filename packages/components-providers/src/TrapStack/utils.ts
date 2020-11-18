@@ -23,34 +23,18 @@
  SOFTWARE.
 
  */
+import { TrapMap } from './types'
 
-import { createContext, MutableRefObject } from 'react'
+export const getActiveTrap = (trapMap: TrapMap) => {
+  // Sort the trap elements according to dom position and return the last
+  // which we assume to be stacked on top since all components using Portal
+  // share a single zIndexFloor and use dom order to determine stacking
+  const elements = Object.values(trapMap)
+  if (elements.length === 0) return null
 
-export interface ScrollLockContextProps {
-  /**
-   * Stores the element for the active scroll lock (null if none are active)
-   */
-  activeLockRef?: MutableRefObject<HTMLElement | null>
-  /**
-   * @private
-   */
-  addLock?: (id: string, element: HTMLElement) => void
-  /**
-   * Disables the current scroll lock (no scroll lock will be enabled as a result)
-   */
-  disableCurrentLock?: () => void
-  /**
-   * Enables the scroll lock stacked on top
-   */
-  enableCurrentLock?: () => void
-  /**
-   * @private
-   */
-  getLock?: (id: string) => HTMLElement | null
-  /**
-   * @private
-   */
-  removeLock?: (id: string) => void
+  const sortedElements = elements.sort((elementA, elementB) => {
+    const relationship = elementA.compareDocumentPosition(elementB)
+    return relationship > 3 ? 1 : -1
+  })
+  return sortedElements[0] || null
 }
-
-export const ScrollLockContext = createContext<ScrollLockContextProps>({})

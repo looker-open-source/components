@@ -29,6 +29,7 @@ export default {
 }
 
 export * from './Interaction'
+export * from './Percentage'
 export * from './Responsive'
 export * from './Sorting'
 export * from './State'

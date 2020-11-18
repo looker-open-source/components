@@ -24,34 +24,31 @@
 
  */
 
-import React, { FC } from 'react'
-import { Box, ButtonOutline, Popover, PopoverContent } from '@looker/components'
+import { generateTheme, ThemeCustomizations } from '@looker/design-tokens'
+import { ThemeContext, ThemeProvider } from 'styled-components'
+import React, { FC, useMemo, useContext } from 'react'
 
-interface Props {
-  top?: number
-  left?: number
-  bottom?: number
-  right?: number
+export interface ExtendComponentsTheme {
+  themeCustomizations?: ThemeCustomizations
 }
 
-export const EdgeOverflow: FC<Props> = ({
+/**
+ * This component is designed for making adjustments to the Theme without
+ * initializing an entire ComponentsProvider. ExtendComponentsThemeProvider
+ * will merge the themeCustomizations with the theme already established.
+ *
+ * This component is intended for use cases where a portion of page carries
+ * a different theme than the rest.
+ */
+export const ExtendComponentsThemeProvider: FC<ExtendComponentsTheme> = ({
   children,
-  top,
-  left,
-  bottom,
-  right,
-}) => (
-  <Box position="absolute" top={top} left={left} bottom={bottom} right={right}>
-    <Popover
-      content={
-        <PopoverContent width="18rem" height="5rem">
-          There's stuff here... it hits the edge{' '}
-        </PopoverContent>
-      }
-    >
-      <ButtonOutline iconAfter="ArrowDown" m="xxlarge">
-        {children}
-      </ButtonOutline>
-    </Popover>
-  </Box>
-)
+  themeCustomizations,
+}) => {
+  const parentTheme = useContext(ThemeContext)
+
+  const theme = useMemo(() => {
+    return generateTheme(parentTheme, themeCustomizations)
+  }, [parentTheme, themeCustomizations])
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+}

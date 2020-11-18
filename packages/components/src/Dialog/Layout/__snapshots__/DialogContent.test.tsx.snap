@@ -13,6 +13,11 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
   overflow: auto;
 }
 
+.c0 .c1 {
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+}
+
 .c0.overflow {
   border-bottom: 1px solid #DEE1E5;
   border-top: 1px solid #DEE1E5;
@@ -25,7 +30,7 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1 c2"
@@ -56,6 +61,11 @@ exports[`DialogContent Snapshot 1`] = `
   overflow: auto;
 }
 
+.c0 .c1 {
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+}
+
 .c0.overflow {
   border-bottom: 1px solid #DEE1E5;
   border-top: 1px solid #DEE1E5;
@@ -68,7 +78,7 @@ exports[`DialogContent Snapshot 1`] = `
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <div
     className="c1 c2"

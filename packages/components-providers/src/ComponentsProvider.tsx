@@ -30,41 +30,48 @@ import {
   GoogleFontsLoader,
   IEGlobalStyle,
   theme as defaultTheme,
-  ThemeCustomizations,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
+import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
+import { ExtendComponentsTheme } from './ExtendComponentsProvider'
 
-/**
- * Currently this is a simple pass-through to our ThemeProvider but it provides
- * the foundation of for hanging other context or setup code that might be needed
- * to stand-up @looker/components (a likely near-future candidate is i18next)
- */
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ComponentsProviderProps extends ThemeProviderProps {
+export interface ComponentsProviderProps
+  extends ThemeProviderProps,
+    ExtendComponentsTheme {
   /**
    * Prevent automatic injection of a basic CSS-reset into the DOM
    * @default true
    */
   globalStyle?: boolean
-
   /**
    * Load fonts from the Google Fonts CDN if not already available
    * @default false
    */
   loadGoogleFonts?: boolean
-
   /**
    * Enable style support for IE11
    * @default false
    */
   ie11Support?: boolean
-
-  themeCustomizations?: ThemeCustomizations
 }
 
+/**
+ * ComponentsProvider registers fundamental infrastructure for @looker/components to
+ * initialize its components. Most components assume that they will be wrapped in a
+ * <ComponentsProvider> to be able to successfully initialize.
+ *
+ * It provides a variety of features including
+ *   - ThemeProvider
+ *   - ScrollLockProvider
+ *
+ * Optionally, in also includes
+ *   - Internet Explorer 11 compatible styles
+ *   - Global style registration
+ *   - GoogleFont loading
+ *
+ */
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
@@ -82,7 +89,9 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
       {globalStyle && <GlobalStyle />}
       {loadGoogleFonts && <GoogleFontsLoader />}
       {ie11Support && <IEGlobalStyle />}
-      <ScrollLockProvider>{children}</ScrollLockProvider>
+      <FocusTrapProvider>
+        <ScrollLockProvider>{children}</ScrollLockProvider>
+      </FocusTrapProvider>
     </ThemeProvider>
   )
 }

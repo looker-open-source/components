@@ -1,15 +1,15 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.9.23",
+  "version": "0.9.25",
   "devDependencies": {
-    "@looker/components": "^0.9.23",
-    "@looker/design-tokens": "^0.9.23",
+    "@looker/components": "^0.9.25",
+    "@looker/design-tokens": "^0.9.25",
     "@looker/icons": "^0.9.23",
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.19",
     "@reach/router": "^1.3.3",
-    "@types/react": "^16.9.53",
+    "@types/react": "^16.9.56",
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-helmet": "^6.1.0",
     "babel-plugin-styled-components": "^1.11.1",
@@ -28,8 +28,8 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-is": "^16.13.1",
-    "react-live": "^2.2.2",
-    "styled-components": "^4.4.1"
+    "react-live": "^2.2.3",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "build": "gatsby build",

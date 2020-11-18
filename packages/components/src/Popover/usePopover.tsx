@@ -26,7 +26,6 @@
 
 import { Placement } from '@popperjs/core'
 import React, {
-  useContext,
   useEffect,
   useMemo,
   ReactNode,
@@ -164,16 +163,7 @@ export const usePopover = ({
   cancelClickOutside,
 }: UsePopoverProps) => {
   const [scrollElement, scrollRef] = useScrollLock()
-
-  const {
-    callbackRef: focusRef,
-    enable: enableFocusTrap,
-    isEnabled: focusTrapEnabled,
-    disable: disableFocusTrap,
-    trapRef: focusTrapRef,
-  } = useFocusTrap(controlledIsOpen && focusTrap)
-
-  const { focusTrapRef: parentFocusTrapRef } = useContext(DialogContext)
+  const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element
@@ -193,25 +183,6 @@ export const usePopover = ({
   )
 
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
-
-  useEffect(() => {
-    if (isOpen) {
-      if (focusTrap) {
-        // this will disable any parent focus trap
-        enableFocusTrap()
-      } else {
-        // need to manually disable any parent focus trap
-        parentFocusTrapRef &&
-          parentFocusTrapRef.current &&
-          parentFocusTrapRef.current.pause()
-      }
-    } else if (!focusTrap) {
-      // need to manually re-enable any parent focus trap
-      parentFocusTrapRef &&
-        parentFocusTrapRef.current &&
-        parentFocusTrapRef.current.unpause()
-    }
-  }, [focusTrap, parentFocusTrapRef, isOpen, enableFocusTrap])
 
   const handleOpen = (event: SyntheticEvent) => {
     setOpen(true)
@@ -272,10 +243,6 @@ export const usePopover = ({
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
-        disableFocusTrap,
-        enableFocusTrap,
-        focusTrapEnabled,
-        focusTrapRef,
       }}
     >
       <Portal ref={scrollRef}>
