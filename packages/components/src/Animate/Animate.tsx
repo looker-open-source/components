@@ -24,57 +24,45 @@
 
  */
 
-import { HTMLProps } from 'react'
-export {
-  border,
-  boxShadow,
-  color,
-  display,
-  flexbox,
-  fontSize,
-  height,
-  layout,
-  overflow,
-  padding,
-  position,
-  space,
-  size,
-  typography,
-  verticalAlign,
-  width,
-} from 'styled-system'
-export type {
-  BorderProps,
-  BorderRadiusProps,
-  BoxShadowProps,
-  DisplayProps,
-  FlexboxProps,
-  LayoutProps,
-  OverflowProps,
-  PaddingProps,
-  PositionProps,
-  SizeProps,
-  VerticalAlignProps,
-  WidthProps,
-} from 'styled-system'
+import { CompatibleHTMLProps, fadeIn, Transitions } from '@looker/design-tokens'
+import omit from 'lodash/omit'
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
-export type CompatibleHTMLProps<T> = Omit<
-  HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
->
+export type AnimationProps = {
+  /**
+   * Adds a delay before the start of the animation
+   * @default none
+   */
+  delay?: Transitions
+  /**
+   * Controls the duration of the animation
+   * @default quick
+   */
+  duration?: Transitions
+}
 
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export * from './transitions'
-export * from './color'
-export * from './size'
-export * from './space'
-export * from './typography'
+export type AnimateProps = AnimationProps &
+  SimpleLayoutProps &
+  CompatibleHTMLProps<HTMLDivElement>
 
-// Custom Extensions
-export * from './reset'
+export const animateCSS = css<AnimationProps>`
+  animation-delay: ${({ delay = 'none', theme }) =>
+    `${theme.transitions[delay]}ms`};
+  animation-duration: ${({ duration = 'quick', theme }) =>
+    `${theme.transitions[duration]}ms`};
+`
+
+export const Animate = styled((props: AnimateProps) => (
+  <div {...omit(props, ['delay', 'duration'])} />
+))`
+  ${simpleLayoutCSS}
+  ${animateCSS}
+`
+
+export const FadeIn = styled(Animate)`
+  animation-fill-mode: forwards;
+  animation-name: ${fadeIn};
+  opacity: 0;
+`

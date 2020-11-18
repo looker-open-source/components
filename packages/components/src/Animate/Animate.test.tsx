@@ -24,21 +24,16 @@
 
  */
 
-export type TransitionNone = 'none'
-export type TransitionRapid = 'rapid'
-export type TransitionQuick = 'quick'
-export type TransitionSimple = 'simple'
-export type TransitionModerate = 'moderate'
-export type TransitionComplex = 'complex'
-export type TransitionIntricate = 'intricate'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { FadeIn } from './Animate'
 
-export type Transitions =
-  | TransitionNone
-  | TransitionRapid
-  | TransitionQuick
-  | TransitionSimple
-  | TransitionModerate
-  | TransitionComplex
-  | TransitionIntricate
-
-export type TransitionRamp = Record<Transitions, number>
+describe('FadeIn', () => {
+  it('renders with defaults', () => {
+    assertSnapshot(<FadeIn />)
+  })
+  it('renders with delay and duration props', () => {
+    assertSnapshot(<FadeIn delay="intricate" duration="complex" />)
+  })
+})

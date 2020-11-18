@@ -99,7 +99,7 @@ export interface UseTooltipProps {
   /**
    * Delay
    */
-  delay?: keyof Transitions
+  delay?: Transitions
 }
 
 export interface UseTooltipResponseDom {

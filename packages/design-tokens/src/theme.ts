@@ -36,7 +36,7 @@ import {
   SizeRamp,
   Shadows,
   SpaceRamp,
-  Transitions,
+  TransitionRamp,
 } from './system'
 
 /**
@@ -75,7 +75,7 @@ export interface Theme {
   sizes: SizeRamp
   shadows: Shadows
   space: SpaceRamp
-  transitions: Transitions
+  transitions: TransitionRamp
   zIndexFloor: number
 }
 
