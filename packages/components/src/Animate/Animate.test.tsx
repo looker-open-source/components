@@ -24,45 +24,16 @@
 
  */
 
-import { CompatibleHTMLProps, fadeIn, Transitions } from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import 'jest-styled-components'
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import { assertSnapshot } from '@looker/components-test-utils'
+import { FadeIn } from './Animate'
 
-export type AnimationProps = {
-  /**
-   * Adds a delay before the start of the animation
-   * @default none
-   */
-  delay?: Transitions
-  /**
-   * Controls the duration of the animation
-   * @default quick
-   */
-  duration?: Transitions
-}
-
-export type AnimateProps = AnimationProps &
-  SimpleLayoutProps &
-  CompatibleHTMLProps<HTMLDivElement>
-
-export const animateCSS = css<AnimationProps>`
-  animation-delay: ${({ delay = 'none', theme }) =>
-    `${theme.transitions[delay]}ms`};
-  animation-duration: ${({ duration = 'quick', theme }) =>
-    `${theme.transitions[duration]}ms`};
-`
-
-export const Animate = styled((props: AnimateProps) => (
-  <div {...omit(props, ['delay', 'duration'])} />
-))`
-  ${simpleLayoutCSS}
-  ${animateCSS}
-`
-
-export const FadeIn = styled(Animate)`
-  animation-fill-mode: forwards;
-  animation-name: ${fadeIn};
-  opacity: 0;
-`
+describe('FadeIn', () => {
+  it('renders with defaults', () => {
+    assertSnapshot(<FadeIn />)
+  })
+  it('renders with delay and duration props', () => {
+    assertSnapshot(<FadeIn delay="intricate" duration="complex" />)
+  })
+})

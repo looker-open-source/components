@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FadeIn renders with defaults 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+  -webkit-animation-duration: 150ms;
+  animation-duration: 150ms;
+}
+
+.c1 {
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: lbWRkT;
+  animation-name: lbWRkT;
+  opacity: 0;
+}
+
+<div
+  className="c0 c1"
+/>
+`;
+
+exports[`FadeIn renders with delay and duration props 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+}
+
+.c1 {
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: lbWRkT;
+  animation-name: lbWRkT;
+  opacity: 0;
+}
+
+<div
+  className="c0 c1"
+/>
+`;
