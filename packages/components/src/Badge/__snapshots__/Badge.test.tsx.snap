@@ -3,6 +3,11 @@
 exports[`Badge renders all intents 1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -10,16 +15,10 @@ exports[`Badge renders all intents 1`] = `
   padding-right: 0.5rem;
   background: #e4f5eb;
   color: #146536;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="positive"
   size="medium"
 >
@@ -30,6 +29,11 @@ exports[`Badge renders all intents 1`] = `
 exports[`Badge renders all intents 2`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -37,16 +41,10 @@ exports[`Badge renders all intents 2`] = `
   padding-right: 0.5rem;
   background: #e0f0fb;
   color: #0061a1;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="inform"
   size="medium"
 >
@@ -57,6 +55,11 @@ exports[`Badge renders all intents 2`] = `
 exports[`Badge renders all intents 3`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -64,16 +67,10 @@ exports[`Badge renders all intents 3`] = `
   padding-right: 0.5rem;
   background: #edeeef;
   color: #525659;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="neutral"
   size="medium"
 >
@@ -84,6 +81,11 @@ exports[`Badge renders all intents 3`] = `
 exports[`Badge renders all intents 4`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -91,16 +93,10 @@ exports[`Badge renders all intents 4`] = `
   padding-right: 0.5rem;
   background: #fff4e0;
   color: #754d00;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="warn"
   size="medium"
 >
@@ -111,6 +107,11 @@ exports[`Badge renders all intents 4`] = `
 exports[`Badge renders all intents 5`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -118,16 +119,10 @@ exports[`Badge renders all intents 5`] = `
   padding-right: 0.5rem;
   background: #f8e4e6;
   color: #951727;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="critical"
   size="medium"
 >
@@ -138,6 +133,11 @@ exports[`Badge renders all intents 5`] = `
 exports[`Badge renders all sizes 1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -145,16 +145,10 @@ exports[`Badge renders all sizes 1`] = `
   padding-right: 0.5rem;
   background: #ede8fb;
   color: #4b20c3;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="key"
   size="medium"
 >
@@ -165,6 +159,11 @@ exports[`Badge renders all sizes 1`] = `
 exports[`Badge renders all sizes 2`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.6875rem;
   line-height: 16px;
@@ -172,16 +171,10 @@ exports[`Badge renders all sizes 2`] = `
   padding-right: 0.5rem;
   background: #ede8fb;
   color: #4b20c3;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="key"
   size="small"
 >
@@ -192,6 +185,11 @@ exports[`Badge renders all sizes 2`] = `
 exports[`Badge renders all sizes 3`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -199,16 +197,10 @@ exports[`Badge renders all sizes 3`] = `
   padding-right: 0.5rem;
   background: #ede8fb;
   color: #4b20c3;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="key"
   size="medium"
 >
@@ -219,6 +211,11 @@ exports[`Badge renders all sizes 3`] = `
 exports[`Badge renders all sizes 4`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  border-radius: 50px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 1rem;
   line-height: 32px;
@@ -226,16 +223,10 @@ exports[`Badge renders all sizes 4`] = `
   padding-right: 0.75rem;
   background: #ede8fb;
   color: #4b20c3;
-  border-radius: 50px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 <span
   className="c0"
-  fontWeight="semiBold"
   intent="key"
   size="large"
 >

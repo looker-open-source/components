@@ -66,12 +66,12 @@ const InternalSidebarGroup: FC<SidebarGroupProps> = ({
   )
 }
 
-const SidebarGroupHeading = styled(Heading).attrs({
+const SidebarGroupHeading = styled(Heading).attrs(() => ({
   as: 'h3',
   fontFamily: 'body',
   fontSize: 'small',
   fontWeight: 'semiBold',
-})`
+}))`
   button {
     align-items: center;
     all: inherit;

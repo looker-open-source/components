@@ -272,14 +272,14 @@ const isMultiPadding = css<ComboboxListInternalProps>`
   padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
 `
 
-export const ComboboxList = styled(ComboboxListInternal).attrs({
+export const ComboboxList = styled(ComboboxListInternal).attrs(() => ({
   isMulti: false,
-})`
+}))`
   ${isMultiPadding}
 `
 
-export const ComboboxMultiList = styled(ComboboxListInternal).attrs({
+export const ComboboxMultiList = styled(ComboboxListInternal).attrs(() => ({
   isMulti: true,
-})`
+}))`
   ${isMultiPadding}
 `
