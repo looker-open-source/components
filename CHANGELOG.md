@@ -34,7 +34,7 @@ Library updated to use Styled Components 5 & Typescript 3.9.x
 
 ### Fixed
 
-- update DataTable to support onClick of `Link/Anchor` as text inside rows.
+- Update DataTable to support onClick of `Link/Anchor` as text inside rows.
 
 ## [0.9.23]
 
