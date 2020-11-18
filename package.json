@@ -25,7 +25,7 @@
     "prepare": "yarn lerna run prepare  --stream",
     "prebuild": "yarn clean && yarn prepare",
     "build": "run-p -c build:*",
-    "build:es": "yarn lerna exec --scope '@looker/*' --stream 'BABEL_ENV=build babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --no-comments'",
+    "build:es": "yarn lerna exec --scope '@looker/*' --stream 'BABEL_ENV=production babel src --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --no-comments'",
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
     "prerelease": "yarn build",
     "release": "yarn lerna publish",

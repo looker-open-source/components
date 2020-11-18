@@ -30,45 +30,43 @@ module.exports = (api) => {
 
   const ignore = isTest ? [] : ['node_modules']
 
+  const plugins = [
+    ['babel-plugin-styled-components', { pure: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
+  ]
+
   return {
     env: {
-      build: {
+      development: {
+        ignore,
+        plugins,
+      },
+      production: {
         ignore: [
+          ...ignore,
           '**/*.d.ts',
           '**/*.test.js',
           '**/*.test.jsx',
           '**/*.test.ts',
           '**/*.test.tsx',
-          '**/*.story.*',
+          '**/*.story.tsx',
           '**/stories/*',
           '__snapshots__',
           '__tests__',
         ],
+        plugins,
       },
     },
-    ignore,
-    plugins: [
-      ['@babel/plugin-proposal-class-properties', { loose: true }],
-      '@babel/plugin-proposal-object-rest-spread',
-      'babel-plugin-styled-components',
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-nullish-coalescing-operator',
-    ],
 
     presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            esmodules: true,
-          },
-          useBuiltIns: false,
-        },
-      ],
+      ['@babel/preset-env', { modules: false }],
       [
         '@babel/preset-react',
         {
-          development: process.env.BABEL_ENV !== 'build',
+          development: process.env.BABEL_ENV !== 'production',
         },
       ],
       '@babel/preset-typescript',

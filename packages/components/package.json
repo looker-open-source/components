@@ -7,6 +7,7 @@
   "files": [
     "lib"
   ],
+"sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/looker-open-source/components",
