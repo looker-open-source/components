@@ -127,12 +127,6 @@ export const DataTableRow = styled(DataTableRowLayout)`
     }
   }
 
-  td:last-of-type > div {
-    display: table;
-    margin-right: ${({ theme }) => theme.space.xxsmall};
-    padding: ${({ theme }) => theme.space.xxsmall};
-  }
-
   &:hover {
     cursor: ${({ onClick }) => onClick && 'pointer'};
     outline: none;

@@ -119,10 +119,6 @@ const actionsColumn = css`
   &:last-child {
     padding: 0;
     width: 100%;
-
-    > div {
-      margin-left: auto;
-    }
   }
 `
 

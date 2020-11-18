@@ -31,6 +31,7 @@ import { IconButton } from '../../Button'
 import { Menu, MenuDisclosure, MenuList } from '../../Menu'
 import { DataTableContext } from '../DataTableContext'
 import { DataTableRow } from './DataTableRow'
+import { ItemTarget, ItemTargetGroup } from './ItemTarget'
 
 export interface DataTableItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -89,17 +90,19 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   }
 
   const ItemActions = (actionPrimary || actions) && (
-    <div>
-      {actionPrimary}
+    <ItemTargetGroup>
+      {actionPrimary && <ItemTarget>{actionPrimary}</ItemTarget>}
       {actions && (
-        <Menu>
-          <MenuDisclosure tooltip={actionsTooltip}>
-            <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
-          </MenuDisclosure>
-          <MenuList>{actions}</MenuList>
-        </Menu>
+        <ItemTarget>
+          <Menu>
+            <MenuDisclosure tooltip={actionsTooltip}>
+              <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
+            </MenuDisclosure>
+            <MenuList>{actions}</MenuList>
+          </Menu>
+        </ItemTarget>
       )}
-    </div>
+    </ItemTargetGroup>
   )
 
   const onChange = select ? () => select.onSelect(id) : undefined

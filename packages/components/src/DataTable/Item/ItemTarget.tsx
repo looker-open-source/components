@@ -45,3 +45,9 @@ export const ItemTarget = styled.div<ItemTargetProps>`
   min-width: ${({ size }) => size || densityTarget};
   width: ${({ size }) => size || densityTarget};
 `
+
+export const ItemTargetGroup = styled.div`
+  display: flex;
+  margin-left: auto;
+  width: fit-content;
+`
