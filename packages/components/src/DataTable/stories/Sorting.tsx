@@ -25,6 +25,7 @@
  */
 
 import React, { useState } from 'react'
+import { DateFormat } from '../../DateFormat'
 import {
   DataTableAction,
   doDefaultDataTableSort,
@@ -35,6 +36,7 @@ import {
 } from '..'
 
 interface MyDataShape {
+  createdDate: Date
   id: number
   name: string
 }
@@ -42,10 +44,12 @@ interface MyDataShape {
 export const Sortable = () => {
   const [data, setData] = useState<MyDataShape[]>([
     {
+      createdDate: new Date('01/01/2001'),
       id: 1,
       name: 'Lloyd Tabb',
     },
     {
+      createdDate: new Date('12/12/2012'),
       id: 2,
       name: 'Ben Porterfield',
     },
@@ -65,9 +69,16 @@ export const Sortable = () => {
       title: 'Name',
       type: 'string',
     },
+    {
+      canSort: true,
+      id: 'createdDate',
+      size: 'nowrap',
+      title: 'Created Date',
+      type: 'date',
+    },
   ])
 
-  const items = data.map(({ id, name }) => {
+  const items = data.map(({ id, name, createdDate }) => {
     const actions = (
       <>
         <DataTableAction onClick={() => alert(id)}>Check id</DataTableAction>
@@ -81,6 +92,9 @@ export const Sortable = () => {
       <DataTableItem actions={actions} id={String(id)} key={id}>
         <DataTableCell>{id}</DataTableCell>
         <DataTableCell>{name}</DataTableCell>
+        <DataTableCell>
+          <DateFormat>{createdDate}</DateFormat>
+        </DataTableCell>
       </DataTableItem>
     )
   })
