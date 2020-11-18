@@ -48,7 +48,7 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   // can use it anywhere else 😛. Another new trick for me and I'm excited
   // about this one too!
   const autoCompletePropRef = useRef(true)
-  const readOnlyPropRef = useRef(false)
+  const inputReadOnlyPropRef = useRef(false)
 
   const persistSelectionPropRef = useRef(false)
   const closeOnSelectPropRef = useRef(true)
@@ -62,11 +62,11 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
     closeOnSelectPropRef,
     freeInputPropRef,
     indicatorPropRef,
+    inputReadOnlyPropRef,
     isAutoScrollingRef,
     listRef,
     optionsRef,
     persistSelectionPropRef,
-    readOnlyPropRef,
     ref,
     windowedOptionsPropRef,
     wrapperElement,
