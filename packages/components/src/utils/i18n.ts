@@ -112,7 +112,7 @@ export const formatDateString = (
   date?: Date,
   locale: LocaleCodes = Locales.English,
   stringFormat = 'P',
-  timeZone?: string
+  timeZone: undefined | string = undefined
 ): string | '' => {
   if (!date) {
     return ''

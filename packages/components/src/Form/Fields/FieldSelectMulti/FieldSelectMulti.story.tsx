@@ -86,9 +86,7 @@ Error.args = {
   validationMessage: { message: 'validation Message', type: 'error' },
 }
 
-const emailValidator = new RegExp(
-  /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-)
+const emailValidator = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const emails = [
   { label: 'Good Looker', value: 'good.looker@google.com' },
   { label: 'Components Team', value: 'lookercomponents@google.com' },

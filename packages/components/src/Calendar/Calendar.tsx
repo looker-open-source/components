@@ -81,8 +81,9 @@ const InternalCalendar: FC<CalendarProps> = ({
   const modifiers = renderDateRange ? selectedDates : {}
 
   const disableCallback = (cb: Function = noop) => {
-    // allows provided callback to be circumvented by disabled or readOnly prop
-    return (...args: any[]) => (disabled || readOnly ? noop() : cb(...args)) // eslint-disable-line standard/no-callback-literal
+    // allows provided callback to be circumvented by disabled prop
+    // eslint-disable-next-line node/no-callback-literal
+    return (...args: any[]) => (disabled ? noop() : cb(...args))
   }
 
   const formatMonthTitle = (month: Date) => {

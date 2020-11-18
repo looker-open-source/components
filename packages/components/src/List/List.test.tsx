@@ -25,11 +25,7 @@
  */
 
 import React from 'react'
-import {
-  createWithTheme,
-  renderWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
+import { renderWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { List } from './List'
 import { ListItem } from './ListItem'

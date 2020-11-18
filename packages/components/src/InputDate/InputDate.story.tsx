@@ -68,8 +68,8 @@ ReadOnlyWithValue.args = {
   value: new Date('March 3, 2009'),
 }
 export const Controlled = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const handleChange = (date: Date) => {
+  const [selectedDate, setSelectedDate] = useState<undefined | Date>(new Date())
+  const handleChange = (date?: Date) => {
     setSelectedDate(date)
   }
   return (

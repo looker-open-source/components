@@ -51,9 +51,13 @@ export const generateFontFamilies = (
     ...pickBy(customFonts, identity),
   }
 
-  Object.entries(fontFamilies).map(([key, fontFace]) => {
-    fontFamilies[key] = fontFacesToFamily(fontFace, defaultFontFallbacks[key])
-  })
+  Object.entries(fontFamilies).map(
+    ([key, fontFace]) =>
+      (fontFamilies[key] = fontFacesToFamily(
+        fontFace,
+        defaultFontFallbacks[key]
+      ))
+  )
 
   return fontFamilies
 }
