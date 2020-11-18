@@ -176,31 +176,36 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
 
 ## Sorting
 
-You can implement sorting on a `<DataTable>` by passing a function into the optional `onSort` prop.
+You can implement sorting on a `<DataTable>` by passing a function into the optional `onSort` prop. In addition, sortable columns must have `canSort: true` on their corresponding column object.
 
-Clicking on the column header will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
+Clicking on the header of a sortable column will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
 
-**Note:** Only columns whose corresponding column objects have `canSort: true` will be sortable. In addition, if your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
+If your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
 
-The function passed into `onSort`, generally speaking, should perform these actions for proper sorting behavior:
+For default sort behavior, use the `doDefaultDataTableSort` helper function. The `doDefaultDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
 
-- Update the corresponding column object's `sortDirection`
-- Sort the collection representing your data
+**Note:** `doDefaultDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
 
-If you want default sorting behavior, you can use the `doDefaultDataTableSort` helper function. The `doDefaultDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+If using a custom `onSort`, make sure the function performs the following:
+
+- Updates the corresponding column object's `sortDirection`
+- Sorts the collection representing your data
 
 ```jsx
 ;() => {
   const [data, setData] = useState([
     {
+      createdDate: new Date('11/11/2001'),
       id: 1,
       name: 'Gorgonzola',
     },
     {
+      createdDate: new Date('03/15/2001'),
       id: 2,
       name: 'Cheddar',
     },
     {
+      createdDate: new Date('07/20/2001'),
       id: 3,
       name: `Blue`,
     },
@@ -212,15 +217,19 @@ If you want default sorting behavior, you can use the `doDefaultDataTableSort` h
       id: 'id',
       title: 'ID',
       type: 'number',
-      sortDirection: 'asc',
-      widthPercent: 20,
     },
     {
       canSort: true,
       id: 'name',
       title: 'Name',
       type: 'string',
-      widthPercent: 80,
+    },
+    {
+      canSort: true,
+      id: 'createdDate',
+      size: 'nowrap',
+      title: 'Created Date',
+      type: 'date',
     },
   ])
 
@@ -235,7 +244,7 @@ If you want default sorting behavior, you can use the `doDefaultDataTableSort` h
     setColumns(sortedColumns)
   }
 
-  const items = data.map(({ id, name }) => {
+  const items = data.map(({ id, name, createdDate }) => {
     actions = (
       <>
         <DataTableAction onClick={() => alert(`${name} selected!`)}>
@@ -253,6 +262,9 @@ If you want default sorting behavior, you can use the `doDefaultDataTableSort` h
       >
         <DataTableCell>{id}</DataTableCell>
         <DataTableCell>{name}</DataTableCell>
+        <DataTableCell>
+          <DateFormat>{createdDate}</DateFormat>
+        </DataTableCell>
       </DataTableItem>
     )
   })
