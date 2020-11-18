@@ -83,6 +83,7 @@ export interface InputSearchProps
    * @experimental
    */
   openOnClick?: boolean
+  readOnly?: boolean
 }
 
 const InputSearchLayout = forwardRef(
@@ -105,6 +106,7 @@ const InputSearchLayout = forwardRef(
       windowedOptions: windowedOptionsProp,
       isLoading,
       hideSearchIcon,
+      readOnly,
       summary,
       changeOnSelect = true,
       clearOnClose = !changeOnSelect,
@@ -177,6 +179,7 @@ const InputSearchLayout = forwardRef(
           isClearable={isClearable}
           autoComplete={false}
           autoResize={autoResize}
+          readOnly={readOnly}
           onChange={handleInputChange}
           freeInput
           summary={summary}

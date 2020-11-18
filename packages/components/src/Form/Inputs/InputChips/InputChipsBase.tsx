@@ -95,6 +95,7 @@ export interface InputChipsCommonProps
    * Format the value for display in the chip
    */
   formatChip?: (value: string) => string
+  inputReadOnly?: boolean
 }
 
 export interface InputChipsBaseProps
@@ -118,6 +119,7 @@ export const InputChipsBaseInternal = forwardRef(
       onKeyDown,
       onFocus,
       inputValue,
+      inputReadOnly,
       onInputChange,
       formatTextToCopy = joinValues,
       disabled,
@@ -126,6 +128,7 @@ export const InputChipsBaseInternal = forwardRef(
       isVisibleOptions,
       showCaret = false,
       isClearable = true,
+      readOnly,
       summary,
       removeOnBackspace = true,
       formatChip,
@@ -179,9 +182,11 @@ export const InputChipsBaseInternal = forwardRef(
       }
     }
     function deleteSelected() {
-      const newValues = difference(values, selectedValues)
-      onChange(newValues)
-      focusInput(internalRef)
+      if (!readOnly) {
+        const newValues = difference(values, selectedValues)
+        onChange(newValues)
+        focusInput(internalRef)
+      }
     }
 
     // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
@@ -245,7 +250,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       if (inputValue === '') {
-        if (e.key === 'Backspace' && removeOnBackspace) {
+        if (e.key === 'Backspace' && removeOnBackspace && !readOnly) {
           // If we hit backspace and there is no text left to delete, remove the last entry instead
           inputValue === '' && handleDeleteChip(values[values.length - 1])
         } else if (isCtrlCmdPressed(e) && e.key === 'a') {
@@ -326,6 +331,7 @@ export const InputChipsBaseInternal = forwardRef(
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
           onClick={handleChipClick(value)}
+          readOnly={readOnly}
           key={value}
           role="option"
           aria-selected={isSelected}
@@ -351,7 +357,9 @@ export const InputChipsBaseInternal = forwardRef(
           <AdvancedInputControls
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
-            showClear={isClearable && values.length > 0}
+            showClear={
+              isClearable && values.length > 0 && !disabled && !readOnly
+            }
             validationType={validationType}
             disabled={disabled}
             summary={summary}
@@ -359,25 +367,26 @@ export const InputChipsBaseInternal = forwardRef(
             onMouseDown={stopPropagation}
           />
         }
-        ref={ref}
-        value={inputValue}
+        height="auto"
         onChange={handleInputChange}
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
+        readOnly={readOnly || inputReadOnly}
+        ref={ref}
         validationType={validationType}
-        height="auto"
+        value={inputValue}
         {...props}
       >
         {chips}
         <HiddenInput
-          ref={hiddenInputRef}
-          onKeyDown={handleHiddenInputKeyDown}
-          onBlur={handleHiddenInputBlur}
-          value={formatTextToCopy(selectedValues)}
-          readOnly
-          tabIndex={-1}
-          disabled={disabled}
           data-testid="hidden-input"
+          disabled={disabled}
+          onBlur={handleHiddenInputBlur}
+          onKeyDown={handleHiddenInputKeyDown}
+          readOnly
+          ref={hiddenInputRef}
+          tabIndex={-1}
+          value={formatTextToCopy(selectedValues)}
         />
       </InputText>
     )
