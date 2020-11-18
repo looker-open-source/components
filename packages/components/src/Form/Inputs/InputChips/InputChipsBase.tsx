@@ -367,25 +367,26 @@ export const InputChipsBaseInternal = forwardRef(
             onMouseDown={stopPropagation}
           />
         }
-        ref={ref}
-        value={inputValue}
+        height="auto"
         onChange={handleInputChange}
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
-        validationType={validationType}
         readOnly={readOnly || inputReadOnly}
+        ref={ref}
+        validationType={validationType}
+        value={inputValue}
         {...props}
       >
         {chips}
         <HiddenInput
-          ref={hiddenInputRef}
-          onKeyDown={handleHiddenInputKeyDown}
-          onBlur={handleHiddenInputBlur}
-          value={formatTextToCopy(selectedValues)}
-          readOnly
-          tabIndex={-1}
-          disabled={disabled}
           data-testid="hidden-input"
+          disabled={disabled}
+          onBlur={handleHiddenInputBlur}
+          onKeyDown={handleHiddenInputKeyDown}
+          readOnly
+          ref={hiddenInputRef}
+          tabIndex={-1}
+          value={formatTextToCopy(selectedValues)}
         />
       </InputText>
     )
