@@ -38,8 +38,8 @@ export const stringComparator = (stringA: string, stringB: string) => {
 export type DataTableDatum = Record<string, any>
 export type DataTableData = DataTableDatum[]
 
-export const doDefaultDataTableSort = (
-  data: DataTableData,
+export const doDefaultDataTableSort = <T>(
+  data: T[],
   columns: DataTableColumns,
   id: string,
   sortDirection: 'asc' | 'desc'
@@ -58,7 +58,7 @@ export const doDefaultDataTableSort = (
       } else {
         sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
       }
-    } else if (targetColumn.type === 'string') {
+    } else {
       if (sortDirection === 'desc') {
         sortedData.sort((a, b) =>
           stringComparator(b[id] as string, a[id] as string)
