@@ -184,7 +184,9 @@ If your data is initially sorted on a specific column, you may want to default t
 
 For default sort behavior, use the `doDataTableSort` helper function. The `doDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
 
-**Note:** `doDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
+**Note:** `doDataTableSort` is a generic function. The returned data array will have the same type as the data array argument.
+
+`doDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
 
 If using a custom `onSort`, make sure the function performs the following:
 
