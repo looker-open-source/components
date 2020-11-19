@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
   - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
+- `doDefaultDataTableSort` improvements
+  - Suports "date" columns
+  - Infers "string" for columns without an explicit type property
+  - Is now a generic, and will properly set the type of the returned data to match the user's data shape
 
 ### Fixed
 
