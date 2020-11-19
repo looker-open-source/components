@@ -70,7 +70,7 @@ const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
         key={id}
         actionPrimary={actionPrimary}
       >
-        <DataTableCell detail={type}>{name}</DataTableCell>
+        <DataTableCell description={type}>{name}</DataTableCell>
         <DataTableCell>
           <Tooltip content={status}>
             <Status
