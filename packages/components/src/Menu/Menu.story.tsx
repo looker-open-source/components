@@ -413,12 +413,12 @@ export const LongList = () => {
         <MenuDisclosure>
           <Button>Explores</Button>
         </MenuDisclosure>
-        <MenuList width={100}>
-          {exploreGroups.map(({ label, explores }) => (
-            <MenuGroup key={label} label={label}>
-              {explores.map((explore: Explore) => (
+        <MenuList width={300}>
+          {exploreGroups.map(({ label, explores }, index) => (
+            <MenuGroup key={`${label}-${index}`} label={label}>
+              {explores.map((explore: Explore, index2) => (
                 <MenuItem
-                  key={explore.label}
+                  key={`${explore.label}-${index2}`}
                   detail={
                     explore.description && (
                       <Tooltip placement="right" content={explore.description}>
@@ -433,7 +433,7 @@ export const LongList = () => {
                     )
                   }
                 >
-                  {explore.label[0]}
+                  {explore.label}
                 </MenuItem>
               ))}
             </MenuGroup>
@@ -449,7 +449,7 @@ export const ReactWindow = () => {
     return exploreGroups[index].explores.length * 40 + 24
   }, [])
   const [element, ref] = useCallbackRef()
-  const { height, width } = useMeasuredElement(element)
+  const { height } = useMeasuredElement(element)
 
   const Row = ({ index, style }: ListChildComponentProps) => {
     const { label, explores } = exploreGroups[index]
@@ -478,15 +478,16 @@ export const ReactWindow = () => {
       </MenuGroup>
     )
   }
+
   return (
     <Menu>
       <MenuDisclosure>
         <Button>Explores</Button>
       </MenuDisclosure>
-      <MenuList width={100} ref={ref}>
+      <MenuList ref={ref}>
         <List
-          height={height || 260}
-          width={width}
+          height={height || 1000}
+          width={300}
           itemCount={exploreGroups.length}
           itemSize={getHeight}
         >

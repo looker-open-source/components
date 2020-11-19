@@ -34,6 +34,7 @@ import React, {
   ReactChild,
   Ref,
   useContext,
+  useEffect,
   useState,
   useCallback,
 } from 'react'
@@ -57,7 +58,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { moveFocus, useForkedRef, useWindow } from '../utils'
+import { moveFocus, useForkedRef, useWindowVariable } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -98,26 +99,43 @@ export interface MenuListProps
    * Allow the overlay to break out of the scroll parent
    */
   escapeWithReference?: boolean
+
+  /**
+   * Enable windowing for long lists (highly recommended to use width with this)
+   */
+  window?: boolean
 }
 
 export const MenuListInternal = forwardRef(
   (
-    { children, compact, disabled, pin, placement, ...props }: MenuListProps,
+    {
+      children,
+      compact,
+      disabled,
+      pin,
+      placement,
+      window,
+      ...props
+    }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
     const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const childHeight = useCallback(
+    const getChildHeight = useCallback(
       (child: ReactChild) => {
         const baseHeight = compact ? 32 : 40
         if (isValidElement(child)) {
           if (child.props.description) {
-            return 52
+            return baseHeight + 12
           }
           if (child.type === MenuGroup && child.props.children) {
-            return Children.toArray(child.props.children).length * baseHeight
+            // Get height of group items combined
+            const subListHeight =
+              Children.toArray(child.props.children).length * baseHeight
+            // Add group heading and padding
+            return subListHeight + 24 + 16
           }
         }
         return baseHeight
@@ -125,9 +143,18 @@ export const MenuListInternal = forwardRef(
       [compact]
     )
 
-    const { contents, containerElement, ref } = useWindow({
-      childHeight,
+    useEffect(() => {
+      if (process.env.NODE_ENV !== 'production' && window && !props.width) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'Defining a width is recommended for windowing to avoid width fluctuations.'
+        )
+      }
+    }, [window, props.width])
+    const { contents, containerElement, ref } = useWindowVariable({
       children,
+      enabled: window,
+      getChildHeight,
       spacerTag: 'li',
     })
     const forkedRef = useForkedRef(forwardedRef, ref)

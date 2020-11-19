@@ -24,31 +24,20 @@
 
  */
 
-import meanBy from 'lodash/meanBy'
 import throttle from 'lodash/throttle'
-import React, {
-  Children,
-  ReactChild,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { Children, useEffect, useMemo, useState } from 'react'
 import {
   getWindowedListBoundaries,
   useCallbackRef,
   useMeasuredElement,
 } from '.'
 
-export type ChildHeightFunction = (child: ReactChild) => number
-export type ChildHeight = ChildHeightFunction | number
-
 export interface UseWindowProps {
   children?: JSX.Element | JSX.Element[]
   /** If possible, use a number for better performance.
    * In lists where the item height will vary
    * use a function to derive the height of each child using props, type, etc. */
-  childHeight: ChildHeight
+  childHeight: number
   spacerTag?: 'div' | 'li' | 'tr'
 }
 
@@ -60,30 +49,6 @@ export const useWindow = ({
   const childArray = Children.toArray(children)
   const childrenLength = childArray.length
   const shouldWindow = childrenLength > 100
-  const [midWindow, setMidWindow] = useState(childrenLength / 2)
-
-  const avgItemHeights = useMemo(() => {
-    if (
-      !shouldWindow ||
-      typeof childHeight === 'number' ||
-      childrenLength === 0
-    ) {
-      return { above: 0, below: 0 }
-    }
-    return {
-      above: meanBy(childArray.slice(0, midWindow), (child) =>
-        childHeight(child as ReactChild)
-      ),
-      below: meanBy(childArray.slice(midWindow), (child) =>
-        childHeight(child as ReactChild)
-      ),
-    }
-  }, [midWindow, shouldWindow, childHeight, childrenLength, childArray])
-
-  const itemHeight = useMemo(() => {
-    if (typeof childHeight === 'number') return childHeight
-    return avgItemHeights
-  }, [childHeight, avgItemHeights])
 
   const [scrollPosition, setScrollPosition] = useState(0)
   const [containerElement, ref] = useCallbackRef()
@@ -113,21 +78,12 @@ export const useWindow = ({
       getWindowedListBoundaries({
         enabled: shouldWindow,
         height,
-        itemHeight,
+        itemHeight: childHeight,
         length: childrenLength,
         scrollPosition,
       }),
-    [childrenLength, height, itemHeight, scrollPosition, shouldWindow]
+    [childrenLength, height, childHeight, scrollPosition, shouldWindow]
   )
-
-  const midPoint = Math.floor(start + (end - start) / 2)
-  const throttled = useRef(
-    throttle((newValue) => {
-      console.log(newValue)
-      setMidWindow(newValue)
-    }, 1000)
-  )
-  useEffect(() => throttled.current(midPoint), [midPoint])
 
   const Spacer = spacerTag
   // after & before are spacers to make scrolling smooth
