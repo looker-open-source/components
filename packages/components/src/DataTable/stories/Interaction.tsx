@@ -38,7 +38,7 @@ import { useSelectManager } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
-import { items } from './items'
+import { items, itemsActionsActionPrimary, itemsActionPrimary } from './items'
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
   bulk: boolean
@@ -115,6 +115,10 @@ const Template: Story<DemoProps> = ({
   )
 }
 
+const TemplateAction: Story<DataTableProps> = ({ ...args }) => {
+  return <DataTable {...args} />
+}
+
 export const Basic = Template.bind({})
 Basic.args = {
   columns: mockColumns,
@@ -159,4 +163,16 @@ SelectBulkActiveItems.args = {
   ...Select.args,
   bulk: true,
   selectedItems: ['cheddar', 'gouda'],
+}
+
+export const ActionsAndPrimaryAction = TemplateAction.bind({})
+ActionsAndPrimaryAction.args = {
+  children: itemsActionsActionPrimary,
+  columns: mockColumns,
+}
+
+export const PrimaryAction = TemplateAction.bind({})
+PrimaryAction.args = {
+  children: itemsActionPrimary,
+  columns: mockColumns,
 }
