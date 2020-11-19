@@ -28,7 +28,7 @@ import React, { useState, ReactNode } from 'react'
 import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
 import { DataTableCell, DataTableColumns } from '../Column'
-import { doDefaultDataTableSort } from './sort_utils'
+import { doDataTableSort } from './sort_utils'
 import { DataTableDatum, DataTableData } from '.'
 
 export const useDataTableSortManager = (
@@ -40,7 +40,7 @@ export const useDataTableSortManager = (
   const [columns, setColumns] = useState(defaultColumns)
 
   const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
-    const { columns: sortedColumns, data: sortedData } = doDefaultDataTableSort(
+    const { columns: sortedColumns, data: sortedData } = doDataTableSort(
       data,
       columns,
       id,

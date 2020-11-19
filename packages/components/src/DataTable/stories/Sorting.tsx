@@ -28,7 +28,7 @@ import React, { useState } from 'react'
 import { DateFormat } from '../../DateFormat'
 import {
   DataTableAction,
-  doDefaultDataTableSort,
+  doDataTableSort,
   DataTable,
   DataTableColumns,
   DataTableItem,
@@ -100,7 +100,7 @@ export const Sortable = () => {
   })
 
   const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
-    const { columns: sortedColumns, data: sortedData } = doDefaultDataTableSort(
+    const { columns: sortedColumns, data: sortedData } = doDataTableSort(
       data,
       columns,
       id,

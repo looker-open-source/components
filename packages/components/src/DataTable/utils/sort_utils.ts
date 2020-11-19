@@ -44,7 +44,7 @@ export const dateComparator = (dateA: Date, dateB: Date) => {
 export type DataTableDatum = Record<string, any>
 export type DataTableData = DataTableDatum[]
 
-export const doDefaultDataTableSort = <T>(
+export const doDataTableSort = <T>(
   data: T[],
   columns: DataTableColumns,
   id: string,

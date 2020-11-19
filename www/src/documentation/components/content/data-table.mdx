@@ -182,9 +182,9 @@ Clicking on the header of a sortable column will lead to an `onSort` call, with 
 
 If your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
 
-For default sort behavior, use the `doDefaultDataTableSort` helper function. The `doDefaultDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+For default sort behavior, use the `doDataTableSort` helper function. The `doDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
 
-**Note:** `doDefaultDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
+**Note:** `doDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
 
 If using a custom `onSort`, make sure the function performs the following:
 
@@ -234,7 +234,7 @@ If using a custom `onSort`, make sure the function performs the following:
   ])
 
   const onSort = (id, sortDirection) => {
-    const { columns: sortedColumns, data: sortedData } = doDefaultDataTableSort(
+    const { columns: sortedColumns, data: sortedData } = doDataTableSort(
       data,
       columns,
       id,
