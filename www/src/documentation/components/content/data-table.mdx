@@ -91,11 +91,11 @@ The `<DataTableCell>` component is equivalent to a data cell in your DataTable. 
 
 In its simplest form, a `<DataTableCell>` element will display whatever child elements it has.
 
-You can also create more advanced layouts within your `<DataTableCell>` by utilizing the optional `detail` and `indicator` props.
+You can also create more advanced layouts within your `<DataTableCell>` by utilizing the optional `description` and `indicator` props.
 
-Passing in a React element into the `detail` prop will display said element underneath any child elements of your `<DataTableCell>`.
+Passing in a React element into the `description` prop will display said element underneath any child elements of your `<DataTableCell>`.
 
-Passing in a React element into the `indicator` prop will display said element left of any child elements (and any element passed into the `detail` prop).
+Passing in a React element into the `indicator` prop will display said element left of any child elements (and any element passed into the `description` prop).
 
 ```jsx
 ;() => {
@@ -123,7 +123,7 @@ Passing in a React element into the `indicator` prop will display said element l
   return (
     <DataTable columns={columns}>
       <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
-        <DataTableCell detail={link} indicator={indicator}>
+        <DataTableCell description={link} indicator={indicator}>
           Cheddar
         </DataTableCell>
       </DataTableItem>
