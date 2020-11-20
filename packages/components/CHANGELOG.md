@@ -7,11 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `FadeIn`
+
 ### Changed
 
+- DataTableCell used description instead of detail for consistency.
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
   - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
+
+### Fixed
+
+- update Select SelectMulti and Combobox replace readOnly with inputReadOnly
+- InputSearch now supports disabled and readOnly - documentation and gatsby updated
+- InputChips now supports disabled and readOnly - documentation and gatsby updated
 
 ## [0.9.25]
 

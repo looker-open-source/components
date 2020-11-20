@@ -25,11 +25,10 @@
  */
 
 import { Paragraph as LookerParagraph } from '@looker/components'
-import styled from 'styled-components'
+import React, { FC } from 'react'
 
-const Paragraph = styled(LookerParagraph).attrs({
-  lineHeight: 'medium',
-  mb: 'medium',
-})``
+const Paragraph: FC<{}> = (props) => (
+  <LookerParagraph lineHeight="medium" mb="medium" {...props} />
+)
 
 export default Paragraph

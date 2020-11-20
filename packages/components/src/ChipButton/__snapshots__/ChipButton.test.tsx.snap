@@ -12,6 +12,7 @@ exports[`ChipButton renders correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #F3F2FF;
+  border: 1px solid transparent;
   border-radius: 4px;
   color: #7a55e3;
   display: -webkit-inline-box;
@@ -43,7 +44,8 @@ exports[`ChipButton renders correctly 1`] = `
 
 .c0[disabled] {
   background: #F5F6F7;
-  color: #71767a;
+  border-color: #DEE1E5;
+  color: #939BA5;
 }
 
 .c0[disabled]:hover {

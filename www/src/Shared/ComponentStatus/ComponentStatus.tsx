@@ -49,7 +49,7 @@ const Status: FC<StatusProps> = (props) => {
   const { status } = props
   return (
     <Link href="/principles/support-levels">
-      <StatusFlag fontSize="small" {...props}>
+      <StatusFlag py="xsmall" fontSize="small" {...props}>
         <Box
           as="span"
           textAlign="center"
@@ -81,10 +81,10 @@ const statusBackground = (props: StatusProps) => {
 
 const StyledBox = styled(Box)``
 
-const StatusFlag = styled(Paragraph).attrs({ py: 'xsmall' })<StatusProps>`
+const StatusFlag = styled(Paragraph)<StatusProps>`
   ${statusBackground}
-  text-transform: capitalize;
   color: ${(props) => props.theme.colors.text};
+  text-transform: capitalize;
 
   &:hover {
     color: ${(props) => props.theme.colors.text3};

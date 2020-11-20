@@ -114,10 +114,7 @@ const SearchControlDivider = styled.div`
   width: 1px;
 `
 
-const CaretIcon = styled(Icon).attrs({
-  mr: 'xxsmall',
-  size: 20,
-})`
+const CaretIcon = styled(Icon).attrs(() => ({ mr: 'xxsmall', size: 20 }))`
   ${iconButtonColor}
   opacity: ${({ disabled }) => (disabled ? '0.75' : '1')};
 `

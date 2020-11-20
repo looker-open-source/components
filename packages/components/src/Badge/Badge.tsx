@@ -106,17 +106,18 @@ const badgeIntent = (intent: BadgeIntent) =>
     color: ${({ theme: { colors } }) => generateIntentShade(colors[intent])};
   `
 
-export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
+export const Badge = styled(BadgeLayout)`
   ${reset}
+
+  border-radius:50px;
+  display: inline-flex;
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 
   ${color}
   ${space}
   ${typography}
   ${size}
   ${({ intent }) => badgeIntent(intent || 'key')}
-
-  border-radius:50px;
-  display: inline-flex;
 `
 
 Badge.defaultProps = {
