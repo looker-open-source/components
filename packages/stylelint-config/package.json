@@ -18,7 +18,7 @@
     "yarn": ">=1.14.0"
   },
   "dependencies": {
-    "prettier": "^2.1.2",
+    "prettier": "2.2.0",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^3.0.0",

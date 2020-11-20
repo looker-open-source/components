@@ -29,9 +29,9 @@
   "devDependencies": {
     "@storybook/addon-storyshots": "^6.0.27",
     "@storybook/react": "^6.0.27",
-    "@types/lodash": "^4.14.162",
+    "@types/lodash": "^4.14.165",
     "@types/styled-components": "^5.1.4",
-    "csstype": "^3.0.3",
+    "csstype": "^3.0.5",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
