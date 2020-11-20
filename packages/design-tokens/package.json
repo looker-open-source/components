@@ -27,8 +27,8 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.0.27",
-    "@storybook/react": "^6.0.27",
+    "@storybook/addon-storyshots": "^6.1.1",
+    "@storybook/react": "^6.1.1",
     "@types/lodash": "^4.14.165",
     "@types/styled-components": "^5.1.4",
     "csstype": "^3.0.5",
