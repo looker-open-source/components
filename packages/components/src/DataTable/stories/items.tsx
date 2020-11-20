@@ -25,13 +25,14 @@
  */
 
 import React, { ReactNode } from 'react'
-import { data } from '../../__mocks__/DataTable/data'
+import { data as mockData, CheeseData } from '../../__mocks__/DataTable/data'
+import { Link } from '../../Link'
 import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
 import { DataTableItem, DataTableAction } from '../Item'
 
-const actions = (
+export const actions = (
   <>
     <DataTableAction onClick={() => alert(`Ordered!!`)}>Order</DataTableAction>
     <DataTableAction onClick={() => alert('Mmmm...')}>
@@ -41,7 +42,7 @@ const actions = (
   </>
 )
 
-const itemBuilder = (actions?: ReactNode) => {
+export const itemBuilder = (data: CheeseData[], actions?: ReactNode) => {
   return data.map(
     ({
       id,
@@ -59,7 +60,15 @@ const itemBuilder = (actions?: ReactNode) => {
       disabled,
     }) => (
       <DataTableItem actions={actions} disabled={disabled} id={id} key={id}>
-        <DataTableCell detail={type}>{name}</DataTableCell>
+        <DataTableCell detail={type}>
+          <Link
+            href="https://components.looker.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {name}
+          </Link>
+        </DataTableCell>
         <DataTableCell>
           <Tooltip content={status}>
             <Status
@@ -87,5 +96,5 @@ const itemBuilder = (actions?: ReactNode) => {
   )
 }
 
-export const items = itemBuilder(actions)
-export const itemsNoActions = itemBuilder()
+export const items = itemBuilder(mockData, actions)
+export const itemsNoActions = itemBuilder(mockData)

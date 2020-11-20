@@ -24,18 +24,27 @@
 
  */
 
-import React from 'react'
-import { Link } from '../../Link'
+export interface CheeseData {
+  id: string
+  disabled: boolean
+  name: string
+  status: string
+  inventory: number
+  color: string
+  origin: string
+  type?: string
+  calories?: number
+  fat?: number
+  protein?: number
+  calcium?: number
+  description: string
+}
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const row = {
   id: 'gouda',
   disabled: false,
-  name: (
-    <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
-      Gouda
-    </a>
-  ),
+  name: 'Gouda',
   status: 'Available',
   inventory: 569,
   color: 'yellow',
@@ -48,20 +57,12 @@ export const row = {
   description: `Gouda is a mild-flavored, yellow cow's milk cheese originating from the Netherlands. It is one of the most popular cheeses worldwide. The name is used today as a general term for numerous similar cheeses produced in the traditional Dutch manner. `,
 }
 
-export const data = [
+export const data: CheeseData[] = [
   row,
   {
     ...row,
     id: 'american',
-    name: (
-      <Link
-        href="https://components.looker.com/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        American
-      </Link>
-    ),
+    name: 'American',
     inventory: 0,
     origin: 'United States',
     type: 'semi-soft, processed',
