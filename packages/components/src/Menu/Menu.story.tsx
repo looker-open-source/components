@@ -24,14 +24,16 @@
 
  */
 
-import React, { useRef, useState } from 'react'
-import { Box, Space } from '../Layout'
+import React, { useMemo, useRef, useState } from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
 import { Dialog } from '../Dialog'
 import { Divider } from '../Divider'
+import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
+import { Box, Space, SpaceVertical } from '../Layout'
 import { Text, Paragraph } from '../Text'
+import { useToggle } from '../utils'
 import { Menu } from './Menu'
 import { MenuDisclosure } from './MenuDisclosure'
 import { MenuContext } from './MenuContext'
@@ -303,7 +305,7 @@ export const RealisticMenus = () => {
         <MenuList compact>
           <MenuGroup>
             <MenuItem icon="Refresh" detail="⌘⇧↵">
-              Clear cache & refresh
+              Clear cache &amp; refresh
             </MenuItem>
           </MenuGroup>
 
@@ -381,119 +383,117 @@ export const RealisticMenus = () => {
 RealisticMenus.parameters = {
   storyshots: { disable: true },
 }
+const getRandomInteger = (limit: number) => Math.floor(Math.random() * limit)
 
 const array95 = Array.from(Array(95), (_, i) => String(i + 1))
-const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
-export const LongList = () => {
+const array3000 = Array.from(Array(3000), (_, i) => {
+  const rand = getRandomInteger(15)
+  const description = rand % 3 === 0 ? 'Description' : undefined
+  return { description, label: String(i + 1) }
+})
+
+const preamble = `We the People of the United States, in Order to form a more perfect Union,
+establish Justice, insure domestic Tranquility, provide for the common
+defense, promote the general Welfare, and secure the Blessings of Liberty
+to ourselves and our Posterity, do ordain and establish this Constitution
+for the United States of America.`
+
+const getString = (lengthLimit = 30) => {
+  const startLimit = preamble.length - 50
+  const length = getRandomInteger(lengthLimit)
+  const startIndex = getRandomInteger(startLimit)
+  return preamble.substr(startIndex, length)
+}
+
+const getItems = (labelLength: number) => {
+  const num = getRandomInteger(8)
+  const itemsLength = Math.pow(num, 2)
+  return Array.from(Array(itemsLength), (_, i) => {
+    return {
+      label: `${i}: ${getString(labelLength)}`,
+    }
+  })
+}
+
+const getGroups = (labelLength: number) =>
+  Array.from(Array(100), (_, i) => ({
+    items: getItems(labelLength),
+    label: `${i}: ${getString()}`,
+  }))
+
+export const LongMenus = () => {
+  const { value, toggle } = useToggle(true)
+  const { value: longLabels, toggle: toggleLongLabels } = useToggle()
+  const groups = useMemo(() => {
+    return getGroups(longLabels ? 120 : 30)
+  }, [longLabels])
   return (
-    <Space>
-      <Menu>
-        <MenuDisclosure>
-          <Button>Not Windowed (95)</Button>
-        </MenuDisclosure>
-        <MenuList>
-          {array95.map((item, i) => (
-            <MenuItem key={i}>{item}</MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-      <Menu>
-        <MenuDisclosure>
-          <Button>Windowed (3k)</Button>
-        </MenuDisclosure>
-        <MenuList>
-          {array3000.map((item, i) => (
-            <MenuItem key={i} description="Description text">
-              {item}
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-      <Menu>
-        <MenuDisclosure>
-          <Button>Explores</Button>
-        </MenuDisclosure>
-        <MenuList width={300}>
-          {exploreGroups.map(({ label, explores }, index) => (
-            <MenuGroup key={`${label}-${index}`} label={label}>
-              {explores.map((explore: Explore, index2) => (
-                <MenuItem
-                  key={`${explore.label}-${index2}`}
-                  detail={
-                    explore.description && (
-                      <Tooltip placement="right" content={explore.description}>
-                        <Icon
-                          name="CircleInfo"
-                          size={16}
-                          color="ui2"
-                          data-testid="ExploreInfoIcon"
-                          mr="small"
-                        />
-                      </Tooltip>
-                    )
-                  }
-                >
-                  {explore.label}
-                </MenuItem>
-              ))}
-            </MenuGroup>
-          ))}
-        </MenuList>
-      </Menu>
-    </Space>
+    <SpaceVertical align="start" p="xlarge">
+      <FieldToggleSwitch
+        on={value}
+        label="Enable windowing"
+        onChange={toggle}
+      />
+      <Space>
+        <Menu>
+          <MenuDisclosure>
+            <Button>No windowing (95)</Button>
+          </MenuDisclosure>
+          <MenuList width={100}>
+            {array95.map((item, i) => (
+              <MenuItem key={i}>{item}</MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuDisclosure>
+            <Button>Fixed Windowing (3k)</Button>
+          </MenuDisclosure>
+          <MenuList width={100} windowing={!value ? 'none' : undefined}>
+            {array3000.map((item, i) => (
+              <MenuItem key={i}>{item.label}</MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuDisclosure>
+            <Button>Fixed Windowing (description)</Button>
+          </MenuDisclosure>
+          <MenuList width={100} windowing={!value ? 'none' : undefined}>
+            {array3000.map((item, i) => (
+              <MenuItem key={i} description={item.description}>
+                {item.label}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuDisclosure>
+            <Button>Variable Windowing (groups)</Button>
+          </MenuDisclosure>
+          <MenuList width={300} windowing={!value ? 'none' : undefined}>
+            {groups.map(({ label, items }, index) => (
+              <MenuGroup key={`${label}-${index}`} label={label}>
+                {items.map((item, index2) => (
+                  <MenuItem key={`${item.label}-${index2}`}>
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </MenuGroup>
+            ))}
+          </MenuList>
+        </Menu>
+        <FieldToggleSwitch
+          on={longLabels}
+          onChange={toggleLongLabels}
+          label="Use longer labels"
+          detail="The scrolling will become jittery"
+        />
+      </Space>
+    </SpaceVertical>
   )
 }
 
-export const ReactWindow = () => {
-  const getHeight = useCallback((index: number) => {
-    return exploreGroups[index].explores.length * 40 + 24
-  }, [])
-  const [element, ref] = useCallbackRef()
-  const { height } = useMeasuredElement(element)
-
-  const Row = ({ index, style }: ListChildComponentProps) => {
-    const { label, explores } = exploreGroups[index]
-    return (
-      <MenuGroup style={style} key={label} label={label}>
-        {explores.map((explore: Explore) => (
-          <MenuItem
-            key={explore.label}
-            detail={
-              explore.description && (
-                <Tooltip placement="right" content={explore.description}>
-                  <Icon
-                    name="CircleInfo"
-                    size={16}
-                    color="ui2"
-                    data-testid="ExploreInfoIcon"
-                    mr="small"
-                  />
-                </Tooltip>
-              )
-            }
-          >
-            {explore.label.charAt(0)}
-          </MenuItem>
-        ))}
-      </MenuGroup>
-    )
-  }
-
-  return (
-    <Menu>
-      <MenuDisclosure>
-        <Button>Explores</Button>
-      </MenuDisclosure>
-      <MenuList ref={ref}>
-        <List
-          height={height || 1000}
-          width={300}
-          itemCount={exploreGroups.length}
-          itemSize={getHeight}
-        >
-          {Row}
-        </List>
-      </MenuList>
-    </Menu>
-  )
+LongMenus.parameters = {
+  storyshots: { disable: true },
 }

@@ -35,8 +35,8 @@ import React, {
   Ref,
   useContext,
   useEffect,
+  useMemo,
   useState,
-  useCallback,
 } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -58,7 +58,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { moveFocus, useForkedRef, useWindowVariable } from '../utils'
+import { moveFocus, useForkedRef, useWindow } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -101,9 +101,33 @@ export interface MenuListProps
   escapeWithReference?: boolean
 
   /**
-   * Enable windowing for long lists (highly recommended to use width with this)
+   * Use windowing for long lists (strongly recommended to also define a width)
+   * 'none' - default with children are <= 100.
+   * 'variable' - default with children > 100, measures every child, lower performance
+   * 'fixed' - better performance, measures 1st child only
    */
-  window?: boolean
+  windowing?: 'fixed' | 'variable' | 'none'
+}
+
+const isMenuGroup = (child: ReactChild) => {
+  return isValidElement(child) && child.type === MenuGroup
+}
+
+const measureMenuChild = (child: ReactChild, compact?: boolean) => {
+  const baseHeight = compact ? 32 : 40
+  if (isValidElement(child)) {
+    if (child.props.description) {
+      return baseHeight + 12
+    }
+    if (isMenuGroup(child) && child.props.children) {
+      // Get height of group items combined
+      const subListHeight =
+        Children.toArray(child.props.children).length * baseHeight
+      // Add group heading and padding
+      return subListHeight + 24 + 16
+    }
+  }
+  return baseHeight
 }
 
 export const MenuListInternal = forwardRef(
@@ -114,7 +138,7 @@ export const MenuListInternal = forwardRef(
       disabled,
       pin,
       placement,
-      window,
+      windowing,
       ...props
     }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
@@ -123,38 +147,43 @@ export const MenuListInternal = forwardRef(
 
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
-    const getChildHeight = useCallback(
-      (child: ReactChild) => {
-        const baseHeight = compact ? 32 : 40
-        if (isValidElement(child)) {
-          if (child.props.description) {
-            return baseHeight + 12
-          }
-          if (child.type === MenuGroup && child.props.children) {
-            // Get height of group items combined
-            const subListHeight =
-              Children.toArray(child.props.children).length * baseHeight
-            // Add group heading and padding
-            return subListHeight + 24 + 16
-          }
-        }
-        return baseHeight
-      },
-      [compact]
-    )
+    const childArray = useMemo(() => Children.toArray(children), [children])
+    if (childArray.length > 100 && windowing !== 'none') {
+      const firstChild = childArray[0]
+      if (firstChild && isMenuGroup(firstChild as ReactChild)) {
+        windowing = 'variable'
+      } else {
+        windowing = 'fixed'
+      }
+    }
 
     useEffect(() => {
-      if (process.env.NODE_ENV !== 'production' && window && !props.width) {
+      if (
+        process.env.NODE_ENV !== 'production' &&
+        windowing !== 'none' &&
+        !props.width
+      ) {
         // eslint-disable-next-line no-console
         console.warn(
-          'Defining a width is recommended for windowing to avoid width fluctuations.'
+          `Defining a width is strongly recommended when using the window prop \
+to avoid width fluctuations during scrolling.`
         )
       }
-    }, [window, props.width])
-    const { contents, containerElement, ref } = useWindowVariable({
+    }, [windowing, props.width])
+
+    const childHeight = useMemo(() => {
+      if (windowing === 'fixed') {
+        return childArray[0]
+          ? measureMenuChild(childArray[0] as ReactChild, compact)
+          : 0
+      }
+      return (child: ReactChild) => measureMenuChild(child, compact)
+    }, [windowing, childArray, compact])
+
+    const { contents, containerElement, ref } = useWindow({
+      childHeight: childHeight,
       children,
-      enabled: window,
-      getChildHeight,
+      enabled: windowing !== 'none',
       spacerTag: 'li',
     })
     const forkedRef = useForkedRef(forwardedRef, ref)
