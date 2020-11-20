@@ -31,6 +31,7 @@ import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
 import { DataTableItem, DataTableAction } from '../Item'
+import { IconButton } from '../../Button/IconButton'
 
 export const actions = (
   <>
@@ -42,7 +43,15 @@ export const actions = (
   </>
 )
 
-export const itemBuilder = (data: CheeseData[], actions?: ReactNode) => {
+const actionPrimary = (
+  <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
+)
+
+const itemBuilder = (
+  data: CheeseData[],
+  actions?: ReactNode,
+  actionPrimary?: ReactNode
+) => {
   return data.map(
     ({
       id,
@@ -59,8 +68,14 @@ export const itemBuilder = (data: CheeseData[], actions?: ReactNode) => {
       status,
       disabled,
     }) => (
-      <DataTableItem actions={actions} disabled={disabled} id={id} key={id}>
-        <DataTableCell detail={type}>
+      <DataTableItem
+        actions={actions}
+        disabled={disabled}
+        id={id}
+        key={id}
+        actionPrimary={actionPrimary}
+      >
+        <DataTableCell description={type}>
           <Link
             href="https://components.looker.com/"
             target="_blank"
@@ -98,3 +113,9 @@ export const itemBuilder = (data: CheeseData[], actions?: ReactNode) => {
 
 export const items = itemBuilder(mockData, actions)
 export const itemsNoActions = itemBuilder(mockData)
+export const itemsActionsActionPrimary = itemBuilder(
+  mockData,
+  actions,
+  actionPrimary
+)
+export const itemsActionPrimary = itemBuilder(mockData, null, actionPrimary)
