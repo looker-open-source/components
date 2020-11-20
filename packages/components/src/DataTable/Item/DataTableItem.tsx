@@ -31,7 +31,7 @@ import { IconButton } from '../../Button'
 import { Menu, MenuDisclosure, MenuList } from '../../Menu'
 import { DataTableContext } from '../DataTableContext'
 import { DataTableRow } from './DataTableRow'
-import { ItemTarget } from './ItemTarget'
+import { ItemTarget, ItemTargetGroup } from './ItemTarget'
 
 export interface DataTableItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
@@ -55,6 +55,10 @@ export interface DataTableItemProps
   disabled?: boolean
 
   children: JSX.Element | JSX.Element[]
+  /*
+   * A ReactNode (IconButton) that will be placed as a primary action on the right side of the row
+   */
+  actionPrimary?: ReactNode
 }
 
 const DataTableItemLayout: FC<DataTableItemProps> = ({
@@ -65,6 +69,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   disabled,
   id,
   onClick,
+  actionPrimary,
 }) => {
   const ref = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(DataTableContext)
@@ -77,10 +82,6 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
     ? handleOnSelect
     : onClick || undefined
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
-  }
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const isEventFromChild = event.currentTarget !== event.target
     if (event.keyCode === 13 && !isEventFromChild) {
@@ -88,15 +89,20 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
     }
   }
 
-  const itemActions = actions && (
-    <ItemTarget onClick={handleMenuClick}>
-      <Menu>
-        <MenuDisclosure tooltip={actionsTooltip}>
-          <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
-        </MenuDisclosure>
-        <MenuList>{actions}</MenuList>
-      </Menu>
-    </ItemTarget>
+  const ItemActions = (actionPrimary || actions) && (
+    <ItemTargetGroup>
+      {actionPrimary && <ItemTarget>{actionPrimary}</ItemTarget>}
+      {actions && (
+        <ItemTarget>
+          <Menu>
+            <MenuDisclosure tooltip={actionsTooltip}>
+              <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
+            </MenuDisclosure>
+            <MenuList>{actions}</MenuList>
+          </Menu>
+        </ItemTarget>
+      )}
+    </ItemTargetGroup>
   )
 
   const onChange = select ? () => select.onSelect(id) : undefined
@@ -105,17 +111,17 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
 
   return (
     <DataTableRow
-      id={id}
+      checked={checked}
       className={className}
-      secondary={itemActions}
-      ref={ref}
+      disabled={disabled}
+      hasCheckbox={!!select}
+      id={id}
+      onChange={onChange}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      ref={ref}
+      secondary={ItemActions}
       tabIndex={0}
-      hasCheckbox={!!select}
-      onChange={onChange}
-      checked={checked}
-      disabled={disabled}
     >
       {children}
     </DataTableRow>

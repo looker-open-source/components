@@ -27,6 +27,6 @@
 import styled from 'styled-components'
 import { TextBase } from './TextBase'
 
-export const Code = styled(TextBase).attrs({ as: 'code' })``
+export const Code = styled(TextBase).attrs(() => ({ as: 'code' }))``
 
 Code.defaultProps = { color: 'text', fontFamily: 'code', fontSize: 'medium' }

@@ -75,6 +75,7 @@ export interface ComboboxInputCommonProps {
    * @default false
    */
   freeInput?: boolean
+  inputReadOnly?: boolean
 }
 
 export interface ComboboxInputProps
@@ -90,16 +91,17 @@ export const ComboboxInputInternal = forwardRef(
     const {
       // updates the value in the input when navigating w/ the keyboard
       autoComplete = true,
-      readOnly = false,
+      disabled,
+      freeInput,
+      inputReadOnly = false,
+      isClearable,
       // wrapped events
       onChange,
+      readOnly = false,
+      summary,
+      validationType,
       // might be controlled
       value: controlledValue,
-      validationType,
-      disabled,
-      isClearable,
-      freeInput,
-      summary,
       ...rest
     } = props
 
@@ -191,7 +193,7 @@ export const ComboboxInputInternal = forwardRef(
         after={
           <AdvancedInputControls
             validationType={validationType}
-            showClear={!!(isClearable && inputValue)}
+            showClear={!!(isClearable && inputValue) && !disabled && !readOnly}
             onClear={handleClear}
             isVisibleOptions={isVisible}
             disabled={disabled}
@@ -201,7 +203,7 @@ export const ComboboxInputInternal = forwardRef(
         }
         ref={ref}
         value={inputValue}
-        readOnly={readOnly}
+        readOnly={inputReadOnly || readOnly}
         onChange={wrappedOnChange}
         id={`listbox-${id}`}
         autoComplete="off"
@@ -219,9 +221,9 @@ export const ComboboxInputInternal = forwardRef(
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
-export const comboboxStyles = css<{ readOnly?: boolean }>`
-  ${({ readOnly }) =>
-    readOnly
+export const comboboxStyles = css<{ inputReadOnly?: boolean }>`
+  ${({ inputReadOnly }) =>
+    inputReadOnly
       ? css`
           cursor: default;
           input {

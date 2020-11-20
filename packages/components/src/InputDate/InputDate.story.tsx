@@ -38,28 +38,15 @@ export default {
 
 const Template: Story<InputDateProps> = (args) => <InputDate {...args} />
 
-export const Basic = Template.bind({})
-Basic.args = {}
-
 export const Value = Template.bind({})
 Value.args = {
   value: new Date('February 3, 2009'),
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  disabled: true,
 }
 
 export const DisabledWithValue = Template.bind({})
 DisabledWithValue.args = {
   disabled: true,
   value: new Date('February 3, 2009'),
-}
-
-export const ReadOnly = Template.bind({})
-ReadOnly.args = {
-  readOnly: true,
 }
 
 export const ReadOnlyWithValue = Template.bind({})

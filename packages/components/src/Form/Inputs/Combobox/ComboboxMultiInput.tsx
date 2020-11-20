@@ -112,6 +112,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     const {
       // updates the value in the input when navigating w/ the keyboard
       autoComplete = true,
+      inputReadOnly = false,
       readOnly = false,
 
       // wrapped events
@@ -256,6 +257,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       formatChip,
       formatTextToCopy,
       id: `listbox-${id}`,
+      inputReadOnly,
       inputValue,
       isVisibleOptions: isVisible,
       onChange: handleChange,

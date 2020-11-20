@@ -68,6 +68,21 @@ AutoResize.args = {
   placeholder: 'Resizes to fit value',
 }
 
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  value: 'No Search.',
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  value: 'Only read',
+}
+ReadOnly.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Advanced = () => {
   const [value, setValue] = useState('')
 

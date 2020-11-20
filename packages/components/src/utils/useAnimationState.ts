@@ -70,8 +70,8 @@ export interface AnimationStateConfig {
  */
 export const useAnimationState = (
   isOpen: boolean,
-  enter: keyof Transitions = 'moderate',
-  exit: keyof Transitions = 'moderate'
+  enter: Transitions = 'moderate',
+  exit: Transitions = 'moderate'
 ): UseAnimationStateReturn => {
   const [state, setState] = useState<AnimationStates>('exited')
   const timingEnter = transitions[enter]

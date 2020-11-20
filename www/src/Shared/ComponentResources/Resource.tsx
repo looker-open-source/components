@@ -30,14 +30,13 @@ import { Link, ListItem } from '@looker/components'
 
 const Resource: FC<{ url: string }> = ({ children, url }) => (
   <Link href={url} target="_blank" rel="noopener noreferrer">
-    <Style>{children}</Style>
+    <Style fontSize="small" py="xsmall">
+      {children}
+    </Style>
   </Link>
 )
 
-const Style = styled(ListItem).attrs({
-  fontSize: 'small',
-  py: 'xsmall',
-})`
+const Style = styled(ListItem)`
   align-items: center;
   color: ${(props) => props.theme.colors.text2};
   display: flex;
