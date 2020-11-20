@@ -56,7 +56,7 @@ import {
   ComponentsProvider,
   Confirm,
   ConfirmLayout,
-  doDefaultDataTableSort,
+  doDataTableSort,
   Dialog,
   DialogContent,
   DialogContext,
@@ -186,7 +186,7 @@ const otherLibraries = {
 }
 
 const hooks = {
-  doDefaultDataTableSort,
+  doDataTableSort,
   useConfirm,
   useDialog,
   useDrawer,

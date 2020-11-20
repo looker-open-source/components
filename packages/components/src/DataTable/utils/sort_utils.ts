@@ -35,11 +35,17 @@ export const stringComparator = (stringA: string, stringB: string) => {
   return 0
 }
 
+export const dateComparator = (dateA: Date, dateB: Date) => {
+  if (dateA < dateB) return -1
+  if (dateA > dateB) return 1
+  return 0
+}
+
 export type DataTableDatum = Record<string, any>
 export type DataTableData = DataTableDatum[]
 
-export const doDefaultDataTableSort = (
-  data: DataTableData,
+export const doDataTableSort = <T>(
+  data: T[],
   columns: DataTableColumns,
   id: string,
   sortDirection: 'asc' | 'desc'
@@ -54,19 +60,21 @@ export const doDefaultDataTableSort = (
   if (targetColumn) {
     if (targetColumn.type === 'number') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => (b[id] as number) - (a[id] as number))
+        sortedData.sort((a, b) => b[id] - a[id])
       } else {
-        sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
+        sortedData.sort((a, b) => a[id] - b[id])
       }
-    } else if (targetColumn.type === 'string') {
+    } else if (targetColumn.type === 'date') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) =>
-          stringComparator(b[id] as string, a[id] as string)
-        )
+        sortedData.sort((a, b) => dateComparator(b[id], a[id]))
       } else {
-        sortedData.sort((a, b) =>
-          stringComparator(a[id] as string, b[id] as string)
-        )
+        sortedData.sort((a, b) => dateComparator(a[id], b[id]))
+      }
+    } else {
+      if (sortDirection === 'desc') {
+        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
+      } else {
+        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
       }
     }
     targetColumn.sortDirection = sortDirection

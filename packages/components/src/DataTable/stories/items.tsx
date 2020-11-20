@@ -25,14 +25,15 @@
  */
 
 import React, { ReactNode } from 'react'
-import { data } from '../../__mocks__/DataTable/data'
+import { data as mockData, CheeseData } from '../../__mocks__/DataTable/data'
+import { Link } from '../../Link'
 import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
 import { DataTableItem, DataTableAction } from '../Item'
 import { IconButton } from '../../Button/IconButton'
 
-const actions = (
+export const actions = (
   <>
     <DataTableAction onClick={() => alert(`Ordered!!`)}>Order</DataTableAction>
     <DataTableAction onClick={() => alert('Mmmm...')}>
@@ -46,7 +47,11 @@ const actionPrimary = (
   <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
 )
 
-const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
+const itemBuilder = (
+  data: CheeseData[],
+  actions?: ReactNode,
+  actionPrimary?: ReactNode
+) => {
   return data.map(
     ({
       id,
@@ -70,7 +75,15 @@ const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
         key={id}
         actionPrimary={actionPrimary}
       >
-        <DataTableCell description={type}>{name}</DataTableCell>
+        <DataTableCell description={type}>
+          <Link
+            href="https://components.looker.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {name}
+          </Link>
+        </DataTableCell>
         <DataTableCell>
           <Tooltip content={status}>
             <Status
@@ -98,7 +111,11 @@ const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
   )
 }
 
-export const items = itemBuilder(actions)
-export const itemsActionsActionPrimary = itemBuilder(actions, actionPrimary)
-export const itemsNoActions = itemBuilder()
-export const itemsActionPrimary = itemBuilder(null, actionPrimary)
+export const items = itemBuilder(mockData, actions)
+export const itemsNoActions = itemBuilder(mockData)
+export const itemsActionsActionPrimary = itemBuilder(
+  mockData,
+  actions,
+  actionPrimary
+)
+export const itemsActionPrimary = itemBuilder(mockData, null, actionPrimary)

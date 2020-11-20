@@ -34,27 +34,58 @@ import {
   SelectConfig,
 } from '../DataTable'
 import { DataTableAction } from '../Item'
-import { useSelectManager } from '../utils'
+import { useSelectManager, doDataTableSort } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
-import { items, itemsActionsActionPrimary, itemsActionPrimary } from './items'
+import { DataTableColumns } from '../Column'
+import {
+  actions,
+  itemBuilder,
+  itemsActionsActionPrimary,
+  itemsActionPrimary,
+} from './items'
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
   bulk: boolean
+  columns: DataTableColumns
   filters: boolean
   select: boolean
+  sort: boolean
   selectedItems?: string[]
 }
 
 const Template: Story<DemoProps> = ({
   bulk,
+  columns,
   filters,
   select,
   selectedItems,
+  sort,
   ...args
 }) => {
+  /**
+   * Sorting on a DataTable story alters the shared column objects
+   * and deep-copying the column objects prevents states where
+   * sortDirection from a previous story persists on the new story
+   */
+  const cleanColumns = columns.map((c) => ({ ...c }))
+
   const allPageItems = data.map(({ id }) => id)
+  const [cheeseData, setCheeseData] = useState(data)
+  const [cheeseColumns, setCheeseColumns] = useState(cleanColumns)
+  const items = itemBuilder(cheeseData, actions)
+
+  const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
+    const { columns: sortedColumns, data: sortedData } = doDataTableSort(
+      cheeseData,
+      cheeseColumns,
+      id,
+      sortDirection
+    )
+    setCheeseData(sortedData)
+    setCheeseColumns(sortedColumns)
+  }
 
   const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
     allPageItems,
@@ -106,8 +137,10 @@ const Template: Story<DemoProps> = ({
   return (
     <DataTable
       bulk={bulk ? bulkActionsConfig : undefined}
+      columns={cheeseColumns}
       filterConfig={filters ? filterConfig : undefined}
       select={select ? selectConfig : undefined}
+      onSort={sort ? onSort : undefined}
       {...args}
     >
       {items}
@@ -123,6 +156,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   columns: mockColumns,
   headerRowId: 'headerId',
+  sort: true,
 }
 
 export const Filters = Template.bind({})
@@ -143,12 +177,6 @@ FilterNoColumnSelector.args = {
 export const Select = Template.bind({})
 Select.args = {
   ...Basic.args,
-  select: true,
-}
-
-export const SelectAndFilters = Template.bind({})
-SelectAndFilters.args = {
-  ...Filters.args,
   select: true,
 }
 
