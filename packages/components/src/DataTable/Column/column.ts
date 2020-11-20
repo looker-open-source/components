@@ -27,7 +27,7 @@
 import { IconNames } from '@looker/icons'
 import { DataTableColumnSize } from './columnSize'
 
-export type DataTableColumnType = 'string' | 'number'
+export type DataTableColumnType = 'string' | 'number' | 'date'
 export type DataTableColumnSortDirection = 'asc' | 'desc'
 export interface DataTableColumn {
   /**

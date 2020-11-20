@@ -25,7 +25,7 @@
  */
 
 import { DataTableColumns } from '../Column'
-import { stringComparator, doDefaultDataTableSort } from './sort_utils'
+import { stringComparator, doDataTableSort } from './sort_utils'
 
 describe('DataTable Sort Utils', () => {
   test('Default string comparison', () => {
@@ -91,7 +91,7 @@ describe('DataTable Sort Utils', () => {
 
     sets.map(({ id, sortDirection }) =>
       expect(
-        doDefaultDataTableSort(data, columns, id, sortDirection)
+        doDataTableSort(data, columns, id, sortDirection)
       ).toMatchSnapshot()
     )
   })
