@@ -49,8 +49,8 @@ test('FieldTime should accept detail and description attributes', () => {
   )
 
   const input = getByLabelText('Label')
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
+  expect(input).toHaveAttribute('detail')
+  expect(input).toHaveAttribute('description')
 })
 
 test('FieldTime should accept a disabled prop', () => {
@@ -64,7 +64,7 @@ test('FieldTime should accept a disabled prop', () => {
   )
 
   const input = getByLabelText('Disabled Label')
-  expect(input.getAttribute('disabled')).toBeDefined()
+  expect(input).toBeDisabled()
 })
 
 test('FieldTime should accept required attributes', () => {

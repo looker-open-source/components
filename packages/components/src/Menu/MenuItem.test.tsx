@@ -104,9 +104,9 @@ describe('MenuItem', () => {
     const item = getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
-    expect(item.getAttribute('target')).toBe('_blank')
-    expect(item.getAttribute('href')).toBe('https://google.com')
-    expect(item.getAttribute('rel')).toBe('noopener noreferrer')
+    expect(item).toHaveAttribute('target', '_blank')
+    expect(item).toHaveAttribute('href', 'https://google.com')
+    expect(item).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
   test('MenuItem - link with target="_blank" and passed-in rel prop value auto appends "noopener noreferrer" to rel prop value', () => {
@@ -124,9 +124,9 @@ describe('MenuItem', () => {
     const item = getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
-    expect(item.getAttribute('target')).toBe('_blank')
-    expect(item.getAttribute('href')).toBe('https://google.com')
-    expect(item.getAttribute('rel')).toBe('nogouda noopener noreferrer')
+    expect(item).toHaveAttribute('target', '_blank')
+    expect(item).toHaveAttribute('href', 'https://google.com')
+    expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer')
   })
 
   test('MenuItem - link without target="_blank" does not auto append "noopener noreferrer"', () => {
@@ -139,7 +139,7 @@ describe('MenuItem', () => {
     const item = getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
-    expect(item.getAttribute('href')).toBe('https://google.com')
-    expect(item.getAttribute('rel')).toBe('nogouda')
+    expect(item).toHaveAttribute('href', 'https://google.com')
+    expect(item).toHaveAttribute('rel', 'nogouda')
   })
 })

@@ -128,10 +128,10 @@ test('RadioGroup disabled all Radios', () => {
     <RadioGroup {...radioProps} disabled />
   )
 
-  expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Gouda') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Swiss') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Roquefort') as HTMLInputElement).disabled).toBe(true)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })
 
 test('RadioGroup disabled one specific Radio', () => {
@@ -146,6 +146,6 @@ test('RadioGroup disabled one specific Radio', () => {
     <RadioGroup {...radioProps} options={options} />
   )
 
-  expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(false)
-  expect((getByLabelText('Swiss') as HTMLInputElement).disabled).toBe(true)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
+  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
 })

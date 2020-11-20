@@ -39,22 +39,21 @@ describe('DialogHeader', () => {
     )
   })
 
-  test('Passes through DOM props', () => {
+  test('Passes through DOM props', async () => {
     renderWithTheme(
       <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
     )
-
-    expect(screen.findByLabelText('ARIA label')).toBeTruthy()
+    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
   })
 
-  test('Close visible by default', () => {
+  test('Close visible by default', async () => {
     renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(screen.findByText('Close')).toBeTruthy()
+    expect(await screen.findByText('Close')).toBeTruthy()
   })
 
-  test(`detail`, () => {
+  test(`detail`, async () => {
     renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
-    expect(screen.findByText('Hello world')).toBeTruthy()
+    expect(await screen.findByText('Hello world')).toBeTruthy()
     expect(screen.queryByLabelText('Close')).toBeNull()
   })
 

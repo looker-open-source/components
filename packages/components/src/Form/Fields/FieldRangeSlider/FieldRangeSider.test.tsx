@@ -41,15 +41,15 @@ describe('FieldRangeSlider', () => {
     )
 
     const input = screen.getByLabelText('👍')
-    expect(input.getAttribute('detail')).toBeDefined()
-    expect(input.getAttribute('description')).toBeDefined()
+    expect(input).toHaveAttribute('detail')
+    expect(input).toHaveAttribute('description')
   })
 
   test('should accept a disabled prop', () => {
     renderWithTheme(<FieldRangeSlider disabled id="test" label="Test Label" />)
 
     const input = screen.getByLabelText('Test Label')
-    expect(input.getAttribute('disabled')).toBeDefined()
+    expect(input).toBeDisabled()
   })
 
   test('should accept required attributes', () => {

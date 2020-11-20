@@ -40,8 +40,8 @@ test('FieldSlider should accept detail and description attributes', () => {
   )
 
   const input = getByLabelText('Label')
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
+  expect(input).toHaveAttribute('detail')
+  expect(input).toHaveAttribute('description')
 })
 
 test('FieldSlider should accept a disabled prop', () => {
@@ -50,7 +50,7 @@ test('FieldSlider should accept a disabled prop', () => {
   )
 
   const input = getByLabelText('Test Label')
-  expect(input.getAttribute('disabled')).toBeDefined()
+  expect(input).toBeDisabled()
 })
 
 test('FieldSlider should accept required attributes', () => {

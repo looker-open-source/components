@@ -66,8 +66,8 @@ test('FieldDate should accept detail and description attributes', () => {
   )
 
   const input = getByLabelText('Label')
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
+  expect(input).toHaveAttribute('detail')
+  expect(input).toHaveAttribute('description')
 })
 
 test('FieldDate should accept a disabled prop', () => {
@@ -81,7 +81,7 @@ test('FieldDate should accept a disabled prop', () => {
   )
 
   const input = getByLabelText('Disabled Label')
-  expect(input.getAttribute('disabled')).toBeDefined()
+  expect(input).toBeDisabled()
 })
 
 test('FieldDate should accept required attributes', () => {

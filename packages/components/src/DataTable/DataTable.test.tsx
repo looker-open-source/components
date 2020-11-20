@@ -351,7 +351,7 @@ describe('DataTable', () => {
     test('selectedItems determines if a checkbox is checked', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithSelectedItems)
       const checkbox = getAllByRole('checkbox')[1]
-      expect((checkbox as HTMLInputElement).checked).toEqual(true)
+      expect(checkbox as HTMLInputElement).toBeChecked()
     })
 
     test('selectedItems not selected if clicked on a anchor', () => {
@@ -364,7 +364,7 @@ describe('DataTable', () => {
       fireEvent.click(Anchor)
 
       const checkbox = getAllByRole('checkbox')[3]
-      expect((checkbox as HTMLInputElement).checked).toEqual(false)
+      expect(checkbox as HTMLInputElement).not.toBeChecked()
     })
 
     test('selectedItems not selected if clicked on a link', () => {
@@ -377,7 +377,7 @@ describe('DataTable', () => {
       fireEvent.click(link)
 
       const checkbox = getAllByRole('checkbox')[4]
-      expect((checkbox as HTMLInputElement).checked).toEqual(false)
+      expect(checkbox as HTMLInputElement).not.toBeChecked()
     })
   })
 
@@ -427,7 +427,7 @@ describe('DataTable', () => {
     test('Header checkbox is unchecked when selectedItems includes no row ids', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithNoItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
-      expect(headerCheckbox.checked).toEqual(false)
+      expect(headerCheckbox).not.toBeChecked()
     })
 
     test('Header checkbox is mixed when selectedItems includes some row ids', () => {
@@ -438,7 +438,7 @@ describe('DataTable', () => {
     test('Header checkbox is mixed when selectedItems includes all row ids', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithAllItemsSelected)
       const headerCheckbox = getAllByRole('checkbox')[0] as HTMLInputElement
-      expect(headerCheckbox.checked).toEqual(true)
+      expect(headerCheckbox).toBeChecked()
     })
   })
 

@@ -96,7 +96,7 @@ describe('InputColor', () => {
     renderWithTheme(<InputColor disabled value="green" />)
 
     // Find input, verify it's disabled
-    expect(screen.getByRole('textbox')).toHaveAttribute('disabled')
+    expect(screen.getByRole('textbox')).toBeDisabled()
 
     // Find swatch, verify clicking doesn't open Popover
     fireEvent.click(screen.getByTestId('swatch'))
