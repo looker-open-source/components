@@ -24,7 +24,7 @@
 
  */
 
-import { Transitions } from '../system'
+import { TransitionRamp } from '../system'
 
 const none = 0
 const rapid = 100
@@ -35,7 +35,7 @@ const complex = 400
 const intricate = 500
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-export const transitions: Transitions = {
+export const transitions: TransitionRamp = {
   none,
   rapid,
   quick,

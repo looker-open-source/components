@@ -24,13 +24,11 @@
 
  */
 
+import React, { FC } from 'react'
 import { ListItem } from '@looker/components'
-import styled from 'styled-components'
 
-const Li = styled(ListItem).attrs({
-  lineHeight: 'medium',
-  p: 'none',
-  pl: 'xxsmall',
-})``
+const Li: FC<{}> = (props) => (
+  <ListItem lineHeight="medium" p="none" pl="xxsmall" {...props} />
+)
 
 export default Li

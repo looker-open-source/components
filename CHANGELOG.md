@@ -18,6 +18,10 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 Now using Typescript 4.1 internally
 
+### MOVE TO @looker/components
+
+- DataTable PrimaryAction support
+
 ## [0.9.25]
 
 ### Changed

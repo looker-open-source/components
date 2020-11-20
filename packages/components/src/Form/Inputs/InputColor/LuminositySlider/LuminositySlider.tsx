@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 
-export const LuminositySlider = styled.input.attrs({ type: 'range' })`
+export const LuminositySlider = styled.input.attrs(() => ({ type: 'range' }))`
   appearance: none;
   background: transparent;
   width: ${({ width }) => width};

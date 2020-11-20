@@ -196,6 +196,7 @@ const components: NavigationSection = {
         { path: 'data-table', title: 'DataTable' },
         { path: 'date-format', title: 'DateFormat' },
         { path: 'divider', title: 'Divider' },
+        { path: 'fade-in', title: 'FadeIn' },
         { path: 'icon', title: 'Icon' },
         { path: 'list', title: 'List' },
         { path: 'message-bar', title: 'MessageBar' },

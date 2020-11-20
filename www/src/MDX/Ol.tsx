@@ -24,12 +24,11 @@
 
  */
 
+import React, { FC } from 'react'
 import { List } from '@looker/components'
-import styled from 'styled-components'
 
-export default styled(List).attrs({
-  lineHeight: 'medium',
-  mb: 'medium',
-  ml: 'xxlarge',
-  type: 'number',
-})``
+const Ol: FC<{}> = (props) => (
+  <List lineHeight="medium" mb="medium" ml="large" type="number" {...props} />
+)
+
+export default Ol

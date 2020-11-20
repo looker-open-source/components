@@ -530,11 +530,11 @@ const InputTimeInternal = forwardRef(
 
 const WarningIcon = styled(Icon)``
 
-const StyledInput = styled.input.attrs({
+const StyledInput = styled.input.attrs(() => ({
   maxLength: 2,
   placeholder: '--',
   type: 'text',
-})`
+}))`
   ${innerInputStyle}
   font-family: inherit;
   font-size: ${(props) => props.theme.fontSizes.small};

@@ -35,22 +35,22 @@ interface PropsProps {
 
 const Props = ({ of, interfaceName = `${of}` }: PropsProps) => {
   return (
-    <Layout>
+    <Layout mb="large" mt="small" py="small">
       <FlexItem>
-        Interface of <PropsCode>{interfaceName}</PropsCode>
+        Interface of <PropsCode fontSize="small">{interfaceName}</PropsCode>
       </FlexItem>
       <FlexItem ml="auto">🏗 Coming Soon</FlexItem>
     </Layout>
   )
 }
 
-const PropsCode = styled(Code).attrs({ fontSize: 'small' })`
+const PropsCode = styled(Code)`
   color: ${(props) => props.theme.colors.key};
 `
 
-const Layout = styled(Flex).attrs({ mb: 'large', mt: 'small', py: 'small' })`
-  border-top: 1px solid ${(props) => props.theme.colors.ui2};
+const Layout = styled(Flex)`
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  border-top: 1px solid ${(props) => props.theme.colors.ui2};
   color: ${(props) => props.theme.colors.text2};
   font-size: ${(props) => props.theme.fontSizes.small};
 `

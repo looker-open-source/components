@@ -35,14 +35,14 @@ import { columnSize, DataTableColumnSize } from './columnSize'
 export interface DataTableCellProps {
   className?: string
   children: ReactNode
-  detail?: ReactNode
+  description?: ReactNode
   indicator?: ReactNode
   size?: DataTableColumnSize
 }
 
 const DataTableCellLayout: FC<DataTableCellProps> = ({
   children,
-  detail,
+  description,
   className,
   indicator,
   size,
@@ -50,13 +50,13 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
   let content =
     size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
 
-  if (detail) {
+  if (description) {
     content = (
       <SpaceVertical gap="xxxsmall">
         <span>{content}</span>
-        {detail && (
+        {description && (
           <Paragraph fontSize="xsmall" variant="subdued" truncate>
-            <Truncate>{detail}</Truncate>
+            <Truncate>{description}</Truncate>
           </Paragraph>
         )}
       </SpaceVertical>

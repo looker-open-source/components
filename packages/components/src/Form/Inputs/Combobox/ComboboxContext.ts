@@ -64,7 +64,7 @@ export interface ComboboxContextProps<
   autoCompletePropRef?: MutableRefObject<boolean>
   persistSelectionPropRef?: MutableRefObject<boolean>
   closeOnSelectPropRef?: MutableRefObject<boolean>
-  readOnlyPropRef?: MutableRefObject<boolean>
+  inputReadOnlyPropRef?: MutableRefObject<boolean>
   windowedOptionsPropRef?: MutableRefObject<boolean>
   freeInputPropRef?: MutableRefObject<boolean>
   isAutoScrollingRef?: MutableRefObject<boolean>

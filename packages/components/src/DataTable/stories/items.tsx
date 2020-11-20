@@ -30,6 +30,7 @@ import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
 import { DataTableItem, DataTableAction } from '../Item'
+import { IconButton } from '../../Button/IconButton'
 
 const actions = (
   <>
@@ -41,7 +42,11 @@ const actions = (
   </>
 )
 
-const itemBuilder = (actions?: ReactNode) => {
+const actionPrimary = (
+  <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
+)
+
+const itemBuilder = (actions?: ReactNode, actionPrimary?: ReactNode) => {
   return data.map(
     ({
       id,
@@ -58,8 +63,14 @@ const itemBuilder = (actions?: ReactNode) => {
       status,
       disabled,
     }) => (
-      <DataTableItem actions={actions} disabled={disabled} id={id} key={id}>
-        <DataTableCell detail={type}>{name}</DataTableCell>
+      <DataTableItem
+        actions={actions}
+        disabled={disabled}
+        id={id}
+        key={id}
+        actionPrimary={actionPrimary}
+      >
+        <DataTableCell description={type}>{name}</DataTableCell>
         <DataTableCell>
           <Tooltip content={status}>
             <Status
@@ -88,4 +99,6 @@ const itemBuilder = (actions?: ReactNode) => {
 }
 
 export const items = itemBuilder(actions)
+export const itemsActionsActionPrimary = itemBuilder(actions, actionPrimary)
 export const itemsNoActions = itemBuilder()
+export const itemsActionPrimary = itemBuilder(null, actionPrimary)
