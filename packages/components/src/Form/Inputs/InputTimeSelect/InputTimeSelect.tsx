@@ -293,9 +293,10 @@ const InputTimeSelectLayout = forwardRef(
 
     const timeOptions = generateTimes(format, interval)
 
-    const [selectedOption, setSelectedOption] = useState<
-      MaybeComboboxOptionObject
-    >()
+    const [
+      selectedOption,
+      setSelectedOption,
+    ] = useState<MaybeComboboxOptionObject>()
 
     const [inputTextValue, setInputTextValue] = useState('')
 

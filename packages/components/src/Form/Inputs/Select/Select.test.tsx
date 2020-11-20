@@ -496,10 +496,9 @@ describe('Select / SelectMulti', () => {
   })
 
   describe('windowed options', () => {
-    const testArray: Array<[
-      string,
-      (longOptions: SelectOptionObject[]) => JSX.Element
-    ]> = [
+    const testArray: Array<
+      [string, (longOptions: SelectOptionObject[]) => JSX.Element]
+    > = [
       [
         'Select',
         (longOptions) => (

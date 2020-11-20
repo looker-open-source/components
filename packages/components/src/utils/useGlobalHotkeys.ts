@@ -140,9 +140,11 @@ export const useGlobalHotkeys = (
 ) => {
   if (containerRef.current) {
     const newCommand: Command = { cb, target: containerRef.current }
-    const commandSet = get(keyCommandCollection, keyCommand, new Set()) as Set<
-      Command
-    >
+    const commandSet = get(
+      keyCommandCollection,
+      keyCommand,
+      new Set()
+    ) as Set<Command>
     commandSet.add(newCommand)
     keyCommandCollection[keyCommand] = commandSet
   }

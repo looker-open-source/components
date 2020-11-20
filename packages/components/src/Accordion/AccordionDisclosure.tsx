@@ -125,9 +125,7 @@ interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
   focusVisible: boolean
 }
 
-export const AccordionDisclosureStyle = styled.div<
-  AccordionDisclosureStyleProps
->`
+export const AccordionDisclosureStyle = styled.div<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
