@@ -38,9 +38,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
   ],
   ignorePatterns: ['lib/', '*.d.ts', 'generated/', 'node_modules/'],
   overrides: [
@@ -52,18 +49,18 @@ module.exports = {
         'sort-keys': 'off',
       },
     },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
+      },
+    },
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true, // Allows for the parsing of JSX
-    },
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
-  },
   plugins: ['react-hooks', '@typescript-eslint', 'prettier', 'sort-keys-fix'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
     'import/default': 'off',
     'import/named': 'off',
     'import/no-extraneous-dependencies': 'error',
@@ -78,6 +75,7 @@ module.exports = {
     'sort-keys': 'off',
     'sort-keys-fix/sort-keys-fix': 'error',
   },
+
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use

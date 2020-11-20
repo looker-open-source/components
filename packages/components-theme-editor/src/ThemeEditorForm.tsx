@@ -63,7 +63,7 @@ export const ThemeEditorForm: FC<ThemeEditorFormProps> = ({
   }
 
   return (
-    <Fieldset legend={name}>
+    <Fieldset>
       <Fieldset>
         {coreColors.map((c) => (
           <ThemeFieldColor key={c} color={c} {...themeFieldColorProps} />

@@ -157,9 +157,9 @@ const ComboboxListInternal = forwardRef(
     }, [optionsRef, isVisible, windowedOptions, windowedOptionsPropRef])
 
     const handleKeyDown = useKeyDown()
-    const handleBlur = isMulti
-      ? useBlur(ComboboxMultiContext)
-      : useBlur(ComboboxContext)
+    const useBlurSingle = useBlur(ComboboxContext)
+    const useBlurMulti = useBlur(ComboboxMultiContext)
+    const handleBlur = isMulti ? useBlurMulti : useBlurSingle
 
     // This hook minimizes the use of getBoundingClientRect for performance reasons
     const widthProps = useListWidths({

@@ -15,20 +15,18 @@
   },
   "files": [
     "index.js",
-    "license-header.js",
-    "ts-workspaces.js"
-  ],
+    "license-header.js"  ],
   "engines": {
     "node": ">=10",
     "yarn": ">=1.14.0"
   },
   "dependencies": {
     "@types/vfile-message": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.5.0",
-    "@typescript-eslint/parser": "^3.10.1",
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.13.0",
-    "eslint-config-standard": "^16.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-header": "^3.1.0",
@@ -37,12 +35,12 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-standard": "^4.1.0",
     "prettier": "^2.1.2",
-    "typescript": "^3.9.7"
+    "typescript": "4.1.2"
   },
   "resolutions": {
     "minimist": ">=1.2.2"

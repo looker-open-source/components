@@ -25,11 +25,7 @@
  */
 
 module.exports = {
-  extends: [
-    '@looker/eslint-config',
-    '@looker/eslint-config/license-header',
-    '@looker/eslint-config/ts-workspaces',
-  ],
+  extends: ['@looker/eslint-config', '@looker/eslint-config/license-header'],
   overrides: [
     {
       files: ['www/**/*.ts', 'www/**/*.tsx'],

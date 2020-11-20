@@ -14,6 +14,10 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
+## [UNRELEASED]
+
+Now using Typescript 4.1 internally
+
 ## [0.9.25]
 
 ### Changed
