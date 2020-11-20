@@ -14,10 +14,11 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-
 ## [UNRELEASED]
 
-### Added
+Now using Typescript 4.1 internally
+
+### MOVE TO @looker/components
 
 - DataTable PrimaryAction support
 

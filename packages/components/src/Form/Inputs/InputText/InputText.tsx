@@ -119,6 +119,19 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+
+    const handleMouseDown = () => {
+      // set focus to input on mousedown of container to mimic natural input behavior
+      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      window.requestAnimationFrame(() => {
+        internalRef.current && internalRef.current.focus()
+      })
+    }
+
+    const onMouseDownWrapped = useWrapEvent(handleMouseDown, onMouseDown)
+
     if (before && iconBefore) {
       // eslint-disable-next-line no-console
       console.warn('Use before or iconBefore, but not both at the same time.')
@@ -131,20 +144,9 @@ const InputTextLayout = forwardRef(
       return null
     }
 
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-
-    function handleMouseDown() {
-      // set focus to input on mousedown of container to mimic natural input behavior
-      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
-      window.requestAnimationFrame(() => {
-        internalRef.current && internalRef.current.focus()
-      })
-    }
-
     const mouseHandlers = {
       onClick,
-      onMouseDown: useWrapEvent(handleMouseDown, onMouseDown),
+      onMouseDown: onMouseDownWrapped,
       onMouseEnter,
       onMouseLeave,
       onMouseOut,
