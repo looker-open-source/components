@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update Select SelectMulti and Combobox replace readOnly with inputReadOnly
 - InputSearch now supports disabled and readOnly - documentation and gatsby updated
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
+- `InputDate` removed stories that did not use `value` prop to avoid daily snapshot discrepancies
 
 ## [0.9.25]
 
