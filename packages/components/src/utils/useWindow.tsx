@@ -108,42 +108,34 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
     end = childHeightLadder.length - 1
   }
 
-  const bufferedTop = scrollTop - bufferHeight
-  const bufferedBottom = scrollBottom + bufferHeight
-  while (childHeightLadder[start + 1] < bufferedTop) {
+  const bufferedTop = Math.max(0, scrollTop - bufferHeight)
+  const bufferedBottom = Math.min(scrollBottom + bufferHeight, totalHeight)
+  while (childHeightLadder[start] < bufferedTop) {
     // move the top of the window down
     start += 1
   }
   if (start > 0) {
-    while (childHeightLadder[start - 1] > bufferedTop) {
+    while (childHeightLadder[start] > bufferedTop) {
       // move the top of the window up
       start -= 1
     }
   }
   if (end + 1 <= childHeightLadder.length) {
-    while (childHeightLadder[end + 1] < bufferedBottom) {
+    while (childHeightLadder[end] < bufferedBottom) {
       // move the bottom of the window down
       end += 1
     }
   }
-  while (childHeightLadder[end - 1] > bufferedBottom) {
+  while (childHeightLadder[end] > bufferedBottom) {
     // move the bottom of the window up
     end -= 1
-  }
-
-  // A single child may be taller than the buffer
-  if (
-    childHeightLadder[start] > bufferedTop &&
-    childHeightLadder[start - 1] < bufferedTop
-  ) {
-    start -= 1
   }
 
   return {
     afterHeight:
       end + 1 === childHeightLadder.length
         ? 0
-        : totalHeight - childHeightLadder[end],
+        : totalHeight - childHeightLadder[end + 1],
     beforeHeight: childHeightLadder[start],
     end,
     scrollBottom,
