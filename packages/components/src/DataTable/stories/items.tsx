@@ -47,7 +47,7 @@ const actionPrimary = (
   <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
 )
 
-const itemBuilder = (
+export const itemBuilder = (
   data: CheeseData[],
   actions?: ReactNode,
   actionPrimary?: ReactNode
