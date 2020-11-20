@@ -44,9 +44,9 @@ export interface ParagraphProps
     TruncateProps,
     Omit<CompatibleHTMLProps<HTMLParagraphElement>, 'wrap'> {}
 
-export const Paragraph = styled(TextBase).attrs(() => ({ as: 'p' }))<
-  ParagraphProps
->`
+export const Paragraph = styled(TextBase).attrs(() => ({
+  as: 'p',
+}))<ParagraphProps>`
   ${layout}
   ${textTransform}
   ${textVariant}

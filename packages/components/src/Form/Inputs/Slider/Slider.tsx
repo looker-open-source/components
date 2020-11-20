@@ -172,9 +172,9 @@ const SliderThumb = styled.div<SliderInputProps>`
   `}
 `
 
-const SliderInput = styled.input.attrs(() => ({ type: 'range' }))<
-  SliderInputProps
->`
+const SliderInput = styled.input.attrs(() => ({
+  type: 'range',
+}))<SliderInputProps>`
   background: transparent;
   display: block;
   height: 22px;
