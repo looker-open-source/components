@@ -48,9 +48,10 @@ describe('FieldRangeSlider', () => {
 
   test('should accept a disabled prop', () => {
     renderWithTheme(<FieldRangeSlider disabled id="test" label="Test Label" />)
-
-    const input = screen.getByLabelText('Test Label')
-    expect(input).toBeDisabled()
+    expect(screen.getAllByRole('slider')[0]).toHaveAttribute(
+      'aria-disabled',
+      'true'
+    )
   })
 
   test('should accept required attributes', () => {
