@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `MenuList` now supports windowing (virtualization)
 - Inline fields now support both `description` and `detail`
 - `DataTable` now supports `primaryAction`
 - `DataTableCell` used description instead of detail for consistency.
