@@ -123,10 +123,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 
   const labelComponent = (
-    <Label
-      htmlFor={ariaLabelOnly ? undefined : `describedby-${id}`}
-      id={`labelledby-${id}`}
-    >
+    <Label htmlFor={ariaLabelOnly ? undefined : id} id={`labelledby-${id}`}>
       {label}
       {required && <RequiredStar />}
     </Label>
