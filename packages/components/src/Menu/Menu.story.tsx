@@ -383,6 +383,7 @@ export const RealisticMenus = () => {
 RealisticMenus.parameters = {
   storyshots: { disable: true },
 }
+
 const getRandomInteger = (limit: number) => Math.floor(Math.random() * limit)
 
 const array95 = Array.from(Array(95), (_, i) => String(i + 1))

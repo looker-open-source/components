@@ -62,6 +62,7 @@ import { moveFocus, useForkedRef, useWindow } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
+import { MenuItem } from './MenuItem'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
@@ -71,7 +72,6 @@ export interface MenuListProps
     MaxWidthProps,
     MinWidthProps,
     WidthProps {
-  children?: JSX.Element | JSX.Element[]
   compact?: boolean
 
   /**
@@ -112,8 +112,11 @@ export interface MenuListProps
 const isMenuGroup = (child: ReactChild) => {
   return isValidElement(child) && child.type === MenuGroup
 }
+const isMenuItem = (child: ReactChild) => {
+  return isValidElement(child) && child.type === MenuItem
+}
 
-const measureMenuChild = (child: ReactChild, compact?: boolean) => {
+const getMenuChildHeight = (child: ReactChild, compact?: boolean) => {
   const baseHeight = compact ? 32 : 40
   if (isValidElement(child)) {
     if (child.props.description) {
@@ -123,8 +126,8 @@ const measureMenuChild = (child: ReactChild, compact?: boolean) => {
       // Get height of group items combined
       const subListHeight =
         Children.toArray(child.props.children).length * baseHeight
-      // Add group heading and padding
-      return subListHeight + 24 + 16
+      // Add group heading, padding and divider
+      return subListHeight + 24 + 16 + 1
     }
   }
   return baseHeight
@@ -150,16 +153,19 @@ export const MenuListInternal = forwardRef(
     const childArray = useMemo(() => Children.toArray(children), [children])
     if (childArray.length > 100 && windowing !== 'none') {
       const firstChild = childArray[0]
-      if (firstChild && isMenuGroup(firstChild as ReactChild)) {
+      if (isMenuGroup(firstChild as ReactChild)) {
         windowing = 'variable'
-      } else {
+      } else if (isMenuItem(firstChild as ReactChild)) {
         windowing = 'fixed'
+      } else {
+        windowing = 'none'
       }
     }
 
     useEffect(() => {
       if (
-        process.env.NODE_ENV !== 'production' &&
+        process.env.NODE_ENV === 'development' &&
+        windowing &&
         windowing !== 'none' &&
         !props.width
       ) {
@@ -174,15 +180,15 @@ to avoid width fluctuations during scrolling.`
     const childHeight = useMemo(() => {
       if (windowing === 'fixed') {
         return childArray[0]
-          ? measureMenuChild(childArray[0] as ReactChild, compact)
+          ? getMenuChildHeight(childArray[0] as ReactChild, compact)
           : 0
       }
-      return (child: ReactChild) => measureMenuChild(child, compact)
+      return (child: ReactChild) => getMenuChildHeight(child, compact)
     }, [windowing, childArray, compact])
 
     const { contents, containerElement, ref } = useWindow({
       childHeight: childHeight,
-      children,
+      children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
       spacerTag: 'li',
     })

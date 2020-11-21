@@ -32,12 +32,11 @@ import React, {
   useMemo,
   useReducer,
 } from 'react'
-import {
-  getWindowedListBoundaries,
-  useCallbackRef,
-  useMeasuredElement,
-  useScrollPosition,
-} from '.'
+
+import { getWindowedListBoundaries } from './getWindowedListBoundaries'
+import { useCallbackRef } from './useCallbackRef'
+import { useMeasuredElement } from './useMeasuredElement'
+import { useScrollPosition } from './useScrollPosition'
 
 interface WindowHeightState {
   start: number
@@ -103,7 +102,7 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   }
   if (
     !childHeightLadder[end] ||
-    afterHeight !== totalHeight - childHeightLadder[end]
+    afterHeight !== totalHeight - childHeightLadder[end + 1]
   ) {
     end = childHeightLadder.length - 1
   }
@@ -120,7 +119,7 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
       start -= 1
     }
   }
-  if (end + 1 <= childHeightLadder.length) {
+  if (end + 1 < childHeightLadder.length) {
     while (childHeightLadder[end] < bufferedBottom) {
       // move the bottom of the window down
       end += 1
