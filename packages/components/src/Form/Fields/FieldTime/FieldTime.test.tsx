@@ -26,6 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import { screen } from '@testing-library/react'
 import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
 import { FieldTime } from './FieldTime'
 
@@ -48,9 +49,8 @@ test('FieldTime should accept detail and description attributes', () => {
     />
   )
 
-  const input = getByLabelText('Label')
-  expect(input).toHaveAttribute('detail')
-  expect(input).toHaveAttribute('description')
+  expect(screen.getByText('5/50')).toBeInTheDocument()
+  expect(getByLabelText('Label')).toHaveDescription('this is the description')
 })
 
 test('FieldTime should accept a disabled prop', () => {

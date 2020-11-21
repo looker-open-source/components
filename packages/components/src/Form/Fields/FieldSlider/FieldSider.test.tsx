@@ -26,10 +26,11 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldSlider } from './FieldSlider'
 
 test('FieldSlider should accept detail and description attributes', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldSlider
       detail="5/50"
       description="this is the description"
@@ -39,9 +40,10 @@ test('FieldSlider should accept detail and description attributes', () => {
     />
   )
 
-  const input = getByLabelText('Label')
-  expect(input).toHaveAttribute('detail')
-  expect(input).toHaveAttribute('description')
+  expect(screen.getByText('5/50')).toBeInTheDocument()
+  expect(screen.getByLabelText('Label')).toHaveDescription(
+    'this is the description'
+  )
 })
 
 test('FieldSlider should accept a disabled prop', () => {

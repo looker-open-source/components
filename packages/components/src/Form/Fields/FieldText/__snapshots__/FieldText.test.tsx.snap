@@ -157,7 +157,7 @@ exports[`A FieldText with default label 1`] = `
   <label
     className="c1 c2"
     htmlFor="FieldTextID"
-    id="FieldTextID-labelledby"
+    id="labelledby-FieldTextID"
   >
     👍
   </label>
@@ -169,7 +169,7 @@ exports[`A FieldText with default label 1`] = `
       onMouseDown={[Function]}
     >
       <input
-        aria-describedby="FieldTextID-describedby"
+        aria-describedby="describedby-FieldTextID"
         className="c6"
         id="FieldTextID"
         type="text"
@@ -178,7 +178,7 @@ exports[`A FieldText with default label 1`] = `
   </div>
   <div
     className="Field__MessageArea-m8c1e2-2"
-    id="FieldTextID-describedby"
+    id="describedby-FieldTextID"
   />
 </div>
 `;
@@ -347,7 +347,7 @@ exports[`A FieldText with label inline 1`] = `
   <label
     className="c1 c2"
     htmlFor="FieldTextID"
-    id="FieldTextID-labelledby"
+    id="labelledby-FieldTextID"
   >
     👍
   </label>
@@ -359,7 +359,7 @@ exports[`A FieldText with label inline 1`] = `
       onMouseDown={[Function]}
     >
       <input
-        aria-describedby="FieldTextID-describedby"
+        aria-describedby="describedby-FieldTextID"
         className="c6"
         id="FieldTextID"
         type="text"
@@ -368,7 +368,7 @@ exports[`A FieldText with label inline 1`] = `
   </div>
   <div
     className="Field__MessageArea-m8c1e2-2"
-    id="FieldTextID-describedby"
+    id="describedby-FieldTextID"
   />
 </div>
 `;

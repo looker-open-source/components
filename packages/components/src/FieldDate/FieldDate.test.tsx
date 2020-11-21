@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldDate } from './FieldDate'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -55,7 +56,7 @@ test('FieldDate renders and displays label', () => {
 })
 
 test('FieldDate should accept detail and description attributes', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldDate
       defaultValue={new Date(Date.now())}
       description="this is the description"
@@ -65,9 +66,10 @@ test('FieldDate should accept detail and description attributes', () => {
     />
   )
 
-  const input = getByLabelText('Label')
-  expect(input).toHaveAttribute('detail')
-  expect(input).toHaveAttribute('description')
+  expect(screen.getByText('5/50')).toBeInTheDocument()
+  expect(screen.getByLabelText('Label')).toHaveDescription(
+    'this is the description'
+  )
 })
 
 test('FieldDate should accept a disabled prop', () => {

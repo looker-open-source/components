@@ -48,9 +48,10 @@ describe('FieldSelectMulti', () => {
       />
     )
 
-    const input = screen.getByLabelText('👍')
-    expect(input).toHaveAttribute('detail')
-    expect(input).toHaveAttribute('description')
+    expect(screen.getByText('5/50')).toBeInTheDocument()
+    expect(screen.getByLabelText('👍')).toHaveDescription(
+      'this is the description'
+    )
   })
 
   test('should accept a disabled prop', () => {
