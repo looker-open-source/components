@@ -24,15 +24,23 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
-export * from './CopyToClipboardButton'
-export * from './iconButtonColor'
+import React, { createRef } from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { CopyToClipboardButton } from './CopyToClipboardButton'
 
-export type { ButtonSizes } from './size'
+const Template: Story = () => {
+  const ref = createRef<HTMLTextAreaElement>()
+  return (
+    <>
+      <textarea ref={ref} defaultValue={'HI I AM A TEXT AREA'} />
+      <CopyToClipboardButton ref={ref} />
+    </>
+  )
+}
+
+export const Basic = Template.bind({})
+
+export default {
+  component: CopyToClipboardButton,
+  title: 'CopyToClipboardButton',
+}
