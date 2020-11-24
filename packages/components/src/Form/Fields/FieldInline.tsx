@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Label } from '../Label/Label'
@@ -74,7 +73,6 @@ const FieldDetail = styled(Span)`
   color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   padding-left: ${({ theme }) => theme.space.xsmall};
-  padding-top: ${({ theme: { space } }) => space.xxxsmall};
 `
 
 const FieldDescription = styled(Paragraph)`
@@ -92,18 +90,30 @@ export const FieldInline = styled(FieldInlineLayout)`
   grid-template-columns: auto auto auto auto;
   justify-content: start;
   line-height: ${({ theme }) => theme.lineHeights.small};
+  /* stylelint-disable */
+  display: -ms-grid;
+  -ms-grid-columns: auto auto auto auto;
+  /* stylelint enable */
 
   ${FieldDetail} {
     grid-area: detail;
+    /* stylelint-disable */
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 1;
+    /* stylelint enable */
   }
-
   ${InputArea} {
     grid-area: input;
     padding-left: ${({ theme: { space } }) => space.xsmall};
     padding-right: ${({ theme: { space } }) => space.xsmall};
     padding-top: ${({ theme: { space } }) => space.xxxsmall};
+    /* stylelint-disable */
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    -ms-grid-row: 1;
+    /* stylelint enable */
   }
-
   ${Label} {
     align-items: center;
     color: ${({ theme, disabled }) => disabled && theme.colors.text1};
@@ -112,9 +122,18 @@ export const FieldInline = styled(FieldInlineLayout)`
     font-weight: normal;
     grid-area: label;
     width: fit-content;
+    /* stylelint-disable */
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    -ms-grid-row: 1;
+    /* stylelint enable */
   }
-
   ${MessageArea} {
     grid-area: messages;
+    /* stylelint-disable */
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 2;
+    /* stylelint enable */
   }
 `
