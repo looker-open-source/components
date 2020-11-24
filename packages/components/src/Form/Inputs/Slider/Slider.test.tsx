@@ -69,7 +69,7 @@ test('Slider with name and id', () => {
 test('Slider input can be disabled', () => {
   const { getByTestId } = renderWithTheme(<Slider disabled />)
   const input = getByTestId('slider-input') as HTMLInputElement
-  expect(input.disabled).toEqual(true)
+  expect(input).toBeDisabled()
 })
 
 test('Accessibility: Slider with aria-labelledby and <label>', () => {

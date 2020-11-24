@@ -71,8 +71,8 @@ test('FieldDateRange should accept a disabled prop', () => {
   )
 
   const input = getAllByRole('textbox')
-  expect(input[0].getAttribute('disabled')).toBeDefined()
-  expect(input[1].getAttribute('disabled')).toBeDefined()
+  expect(input[0]).toBeDisabled()
+  expect(input[1]).toBeDisabled()
 })
 
 test('FieldDateRange should accept required attributes', () => {

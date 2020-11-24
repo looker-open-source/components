@@ -57,7 +57,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
       <Truncate>{label}</Truncate>
       {required && <RequiredStar />}
     </Label>
-    <MessageArea id={`${id}-describedby`}>
+    <MessageArea id={`describedby-${id}`}>
       {detail && (
         <Paragraph fontSize="xsmall" variant="secondary">
           {detail}

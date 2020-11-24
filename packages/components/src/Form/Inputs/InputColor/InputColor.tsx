@@ -189,7 +189,7 @@ export const InputColorComponent = forwardRef(
         {!hideInput && (
           <InputText
             {...props}
-            aria-describedby={`${id}-describedby`}
+            aria-describedby={`describedby-${id}`}
             id={inputID}
             ref={ref}
             disabled={disabled}

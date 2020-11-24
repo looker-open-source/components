@@ -42,6 +42,8 @@ import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
 import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
 
 export interface InputDateProps extends SpaceProps, BorderProps {
+  'aria-describedby'?: string
+  'aria-labelledby'?: string
   dateStringLocale?: Locales
   defaultValue?: Date
   disabled?: boolean
@@ -73,6 +75,8 @@ const isDateInView = (value: Date, viewMonth: Date) => {
 export const InputDate: FC<InputDateProps> = forwardRef(
   (
     {
+      'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
       dateStringLocale,
       defaultValue,
       disabled,
@@ -164,6 +168,8 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     return (
       <InputDateWrapper>
         <InputText
+          aria-describedby={ariaDescribedby}
+          aria-labelledby={ariaLabelledby}
           placeholder={`Date (${formatDateString(
             new Date(Date.now()),
             dateStringLocale

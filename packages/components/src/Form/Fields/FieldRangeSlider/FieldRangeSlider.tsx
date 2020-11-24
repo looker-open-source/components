@@ -47,8 +47,8 @@ const FieldRangeSliderComponent = forwardRef(
       >
         <RangeSlider
           {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
-          aria-labelledby={`${id}-labelledby`}
+          aria-describedby={`describedby-${id}`}
+          aria-labelledby={`labelledby-${id}`}
           id={id}
           ref={ref}
         />
