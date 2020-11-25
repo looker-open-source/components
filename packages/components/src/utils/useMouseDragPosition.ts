@@ -58,27 +58,43 @@ export function useMouseDragPosition(
     }
   }, 50)
 
+  const handleTouchMove = throttle((e: globalThis.TouchEvent) => {
+    // if (isMouseDown) {
+    const { pageX, clientX, pageY, clientY } = e.touches[0] // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
+    setMousePos({ x: pageX || clientX, y: pageY || clientY })
+    // }
+  }, 50)
+
+  const handleTouchStart = (e: globalThis.TouchEvent) => {
+    // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
+    const { pageX, clientX, pageY, clientY } = e.touches[0]
+    setIsMouseDown(true)
+    setMousePos({ x: pageX || clientX, y: pageY || clientY })
+  }
+
   const handleMouseLeave = () => {
     setIsMouseDown(false)
   }
 
-  useEffect(
-    () => {
-      targetRef && targetRef.addEventListener('mousedown', handleMouseDown)
-      window.addEventListener('mouseup', handleMouseUp)
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('handleMouseLeave', handleMouseLeave)
+  useEffect(() => {
+    targetRef && targetRef.addEventListener('mousedown', handleMouseDown)
+    targetRef && targetRef.addEventListener('touchstart', handleTouchStart)
+    window.addEventListener('touchmove', handleTouchMove)
+    window.addEventListener('touchend', handleMouseUp)
+    window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
 
-      return () => {
-        targetRef && targetRef.removeEventListener('mousedown', handleMouseDown)
-        window.removeEventListener('mouseup', handleMouseUp)
-        window.removeEventListener('mousemove', handleMouseMove)
-        window.removeEventListener('handleMouseLeave', handleMouseLeave)
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isMouseDown, targetRef]
-  )
+    return () => {
+      targetRef && targetRef.removeEventListener('mousedown', handleMouseDown)
+      targetRef && targetRef.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleMouseUp)
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [targetRef])
 
   return { isMouseDown, mousePos: mousePos }
 }

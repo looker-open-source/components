@@ -29,6 +29,8 @@ import React, {
   Ref,
   useState,
   KeyboardEvent,
+  MouseEvent,
+  TouchEvent,
   useRef,
   useEffect,
 } from 'react'
@@ -47,6 +49,7 @@ import startsWith from 'lodash/startsWith'
 import partial from 'lodash/partial'
 import map from 'lodash/map'
 import isEqual from 'lodash/isEqual'
+import has from 'lodash/has'
 import {
   useMeasuredElement,
   useMouseDragPosition,
@@ -288,7 +291,18 @@ export const InternalRangeSlider = forwardRef(
       }
     }
 
-    const handleMouseDown = partial(handleMouseEvent, false)
+    /*
+     * prevent keyboard events from firing when using a touch screen
+     */
+    const filterTouchEvents = (cb: Function) => (
+      e: MouseEvent | TouchEvent
+    ) => {
+      if (!has(e, 'touches')) {
+        cb(e)
+      }
+    }
+    const handleMouseDown = filterTouchEvents(partial(handleMouseEvent, false))
+    const handleTouchStart = partial(handleMouseEvent, false)
     const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
@@ -334,6 +348,8 @@ export const InternalRangeSlider = forwardRef(
       <div
         data-testid="range-slider-wrapper"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleBlur}
         className={className}
         id={id}
         ref={setContainerRef}
@@ -401,6 +417,8 @@ export const RangeSlider = styled(InternalRangeSlider)`
   ${space}
   ${typography}
   padding: 1.5rem 0 0.5rem;
+  touch-action: none;
+  user-select: none;
 `
 
 RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
