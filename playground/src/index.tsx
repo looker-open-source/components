@@ -26,14 +26,17 @@
 import React from 'react'
 import { render } from 'react-dom'
 import styled from 'styled-components'
-import { ComponentsProvider, RangeSlider } from '@looker/components'
+import { ComponentsProvider, RangeSlider, Grid } from '@looker/components'
 import 'core-js/stable'
 
 const App = () => {
   return (
     <ComponentsProvider loadGoogleFonts>
       <Wrapper>
-        <RangeSlider />
+        <Grid width="100%" columns={2}>
+          <RangeSlider />
+          <RangeSlider />
+        </Grid>
       </Wrapper>
     </ComponentsProvider>
   )

@@ -52,17 +52,13 @@ export function useMouseDragPosition(
   }
 
   const handleMouseMove = throttle((e: globalThis.MouseEvent) => {
-    if (isMouseDown) {
-      // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
-      setMousePos({ x: e.pageX || e.clientX, y: e.pageY || e.clientY })
-    }
+    // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
+    setMousePos({ x: e.pageX || e.clientX, y: e.pageY || e.clientY })
   }, 50)
 
   const handleTouchMove = throttle((e: globalThis.TouchEvent) => {
-    // if (isMouseDown) {
     const { pageX, clientX, pageY, clientY } = e.touches[0] // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
     setMousePos({ x: pageX || clientX, y: pageY || clientY })
-    // }
   }, 50)
 
   const handleTouchStart = (e: globalThis.TouchEvent) => {
