@@ -92,7 +92,7 @@ export function useMouseDragPosition(
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [targetRef])
+  }, [isMouseDown, targetRef])
 
   return { isMouseDown, mousePos: mousePos }
 }
