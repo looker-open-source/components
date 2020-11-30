@@ -24,5 +24,37 @@
 
  */
 
-export * from './Spinner'
-export * from './SpinnerWrapper'
+import React, { useEffect } from 'react'
+import { useCallbackRef, useMeasuredElement } from '@looker/components'
+
+const isDev = process.env.NODE_ENV === 'development'
+
+const postHeightMessage = (height: number) => {
+  // first parameter is the message to be passed
+  // second paramter is the domain of the parent
+  // in this case "*" has been used for demo sake (denoting no preference)
+  // in production always pass the target domain for which the message is intended
+  const { protocol, hostname } = window.location
+  const targetOrigin = `${protocol}//${hostname}${isDev ? ':8000' : ''}`
+  window.top.postMessage({ key: 'height', height }, targetOrigin)
+}
+
+export const IframeDecorator = (storyFn: any) => {
+  const [element, ref] = useCallbackRef()
+  const { height } = useCallbackRef(element)
+
+  useEffect(() => {
+    postHeightMessage(document.body.scrollHeight)
+  }, [height])
+
+  useEffect(() => {
+    const loading = document.getElementById('loading')
+    if (loading) loading.remove()
+  }, [])
+
+  return (
+    <div className="foobarLALALALA" ref={ref}>
+      {storyFn()}
+    </div>
+  )
+}

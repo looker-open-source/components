@@ -24,5 +24,11 @@
 
  */
 
-export * from './Spinner'
-export * from './SpinnerWrapper'
+import styled from 'styled-components'
+
+export const SpinnerWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: ${({ theme }) => theme.space.xlarge};
+`

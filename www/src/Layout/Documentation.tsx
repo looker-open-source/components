@@ -43,18 +43,10 @@ import {
 } from '@looker/components'
 import { Status } from '../components'
 import { Layout } from './Layout'
+import { PropsExamples } from './PropsExamples'
 
 const githubBase =
   'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
-
-const isDev = process.env.NODE_ENV === 'development'
-
-const storybookLink = (component: string) =>
-  isDev
-    ? `//${
-        window.location.hostname
-      }:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
-    : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
 
 interface DocQuery {
   data: {
@@ -125,7 +117,7 @@ const DocumentationLayout = (props: DocQuery) => {
             <TabPanel>{body}</TabPanel>
             {storybook && (
               <TabPanel>
-                <Iframe src={storybookLink(title)} />
+                <PropsExamples component={title} />
               </TabPanel>
             )}
           </TabPanels>

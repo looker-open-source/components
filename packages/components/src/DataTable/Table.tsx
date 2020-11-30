@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
-import { Spinner } from '../Spinner'
+import { Spinner, SpinnerWrapper } from '../Spinner'
 import { Heading } from '../Text'
 import { useCallbackRef, useIsTruncated } from '../utils'
 import {
@@ -60,9 +60,9 @@ export const TableLayout: FC<TableProps> = ({
     )
 
   const interimState = state && (
-    <InterimState>
+    <SpinnerWrapper>
       {state === 'loading' ? <Spinner /> : noResultsContent}
-    </InterimState>
+    </SpinnerWrapper>
   )
 
   return (
@@ -195,13 +195,6 @@ export const Table = styled(TableLayout)`
 
   ${({ columns, columnsVisible }) =>
     numericColumnCSS(getNumericColumnIndices(columns, columnsVisible))}
-`
-
-const InterimState = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: ${({ theme }) => theme.space.xlarge};
 `
 
 export const TableScroll = styled.div`
