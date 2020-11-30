@@ -51,7 +51,6 @@ const PageLayout: FC<PageProps> = ({ className, page }) => {
 
 export const Page = styled(PageLayout)`
   a {
-    border-radius: ${({ theme }) => theme.radii.medium};
     color: ${({ theme }) => theme.colors.link};
     display: block;
     padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xlarge}`};

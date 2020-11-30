@@ -74,6 +74,7 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   const results: Result[] = useFlexSearch(query, index, store)
 
   useEffect(() => {
+    // Tracking the search term & results
     const t = window.setTimeout(() => {
       if (query) {
         const noResults = results.length === 0 ? '-no-results' : ''
@@ -92,6 +93,7 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   const selectOption = (option?: SelectOptionObject) => {
     const gotoPage = () => option && navigate(option.value)
 
+    // Tracking the selected result
     if (window.ga) {
       trackCustomEvent({
         action: 'select',

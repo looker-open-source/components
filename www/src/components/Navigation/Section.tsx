@@ -52,7 +52,6 @@ export const Section: FC<SectionProps> = ({ section }) => {
         <Accordion
           key={child.path}
           indicatorColor="text1"
-          indicatorIcons={{ close: 'CaretUp', open: 'CaretDown' }}
           defaultOpen={currentPath.startsWith(`/components/${uri}`)}
         >
           <AccordionDisclosure px="xlarge">

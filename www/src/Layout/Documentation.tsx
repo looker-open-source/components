@@ -47,11 +47,13 @@ import { Layout } from './Layout'
 const githubBase =
   'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
 
-const isDev = false
+const isDev = process.env.NODE_ENV === 'development'
 
 const storybookLink = (component: string) =>
   isDev
-    ? `http://lukebowerman.c.googlers.com:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
+    ? `//${
+        window.location.hostname
+      }:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
     : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
 
 interface DocQuery {
