@@ -25,7 +25,7 @@
  */
 
 import { Box, Code, List, ListItem, Text } from '@looker/components'
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 
 const spacingTypes = [
@@ -122,51 +122,37 @@ const ListRender = (
   )
 }
 
-export class BoxSpacingRecipeTable extends Component<
-  {},
-  {
-    types: ColumnExample[]
-    sides: ColumnExample[]
-    sizes: ColumnExample[]
-  }
-> {
-  constructor(props: {}) {
-    super(props)
-    this.state = {
-      sides: spacingSides,
-      sizes: spacingSizes,
-      types: spacingTypes,
-    }
-  }
-
-  public render() {
-    return (
-      <SpacingTable>
-        <div>
-          {SpaceListHeader('1. Type')}
-          <List pl="none">
-            {this.state.types.map((col, i) => {
-              return ListRender(col.value, col.label, i)
-            })}
-          </List>
-        </div>
-        <div>
-          {SpaceListHeader('2. Side', '(optional)')}
-          <List pl="none">
-            {this.state.sides.map((col, i) => {
-              return ListRender(col.value, col.label, i, col.defaultLabel)
-            })}
-          </List>
-        </div>
-        <div>
-          {SpaceListHeader('3. Amount')}
-          <List pl="none">
-            {this.state.sizes.map((col, i) => {
-              return ListRender(col.value, col.label, i)
-            })}
-          </List>
-        </div>
-      </SpacingTable>
-    )
-  }
+interface BoxSpacingRecipeTableProps {
+  types: ColumnExample[]
+  sides: ColumnExample[]
+  sizes: ColumnExample[]
 }
+
+export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
+  types,
+  sides,
+  sizes,
+}) => (
+  <SpacingTable>
+    <div>
+      {SpaceListHeader('1. Type')}
+      <List pl="none">
+        {types.map((col, i) => ListRender(col.value, col.label, i))}
+      </List>
+    </div>
+    <div>
+      {SpaceListHeader('2. Side', '(optional)')}
+      <List pl="none">
+        {sides.map((col, i) =>
+          ListRender(col.value, col.label, i, col.defaultLabel)
+        )}
+      </List>
+    </div>
+    <div>
+      {SpaceListHeader('3. Amount')}
+      <List pl="none">
+        {sizes.map((col, i) => ListRender(col.value, col.label, i))}
+      </List>
+    </div>
+  </SpacingTable>
+)

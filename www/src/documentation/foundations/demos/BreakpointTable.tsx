@@ -24,7 +24,7 @@
 
  */
 
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 import {
   Code,
   Text,
@@ -79,15 +79,13 @@ export interface BreakpointExample {
   description: string
 }
 
-const TableLabel = (label: string, key: number) => {
-  return (
-    <TableHeaderCell key={key}>
-      <Text fontSize="small" fontWeight="semiBold">
-        {label}
-      </Text>
-    </TableHeaderCell>
-  )
-}
+const TableLabel = (label: string, key: number) => (
+  <TableHeaderCell key={key}>
+    <Text fontSize="small" fontWeight="semiBold">
+      {label}
+    </Text>
+  </TableHeaderCell>
+)
 
 const BreakpointRow = (
   slot: number,
@@ -95,50 +93,34 @@ const BreakpointRow = (
   rem: string,
   description: string,
   key: number
-) => {
-  return (
-    <TableRow key={key} style={{ verticalAlign: 'middle' }}>
-      <TableDataCell>{slot}</TableDataCell>
-      <TableDataCell>{starts}</TableDataCell>
-      <TableDataCell>
-        <Code>min-width: {rem}</Code>
-      </TableDataCell>
-      <TableDataCell>{description}</TableDataCell>
-    </TableRow>
-  )
+) => (
+  <TableRow key={key} style={{ verticalAlign: 'middle' }}>
+    <TableDataCell>{slot}</TableDataCell>
+    <TableDataCell>{starts}</TableDataCell>
+    <TableDataCell>
+      <Code>min-width: {rem}</Code>
+    </TableDataCell>
+    <TableDataCell>{description}</TableDataCell>
+  </TableRow>
+)
+
+interface BreakpointTableProps {
+  breakpoints: BreakpointExample[]
+  labels: string[]
 }
 
-export class BreakpointTable extends Component<
-  {},
-  {
-    breakpoints: BreakpointExample[]
-    labels: string[]
-  }
-> {
-  constructor(props: {}) {
-    super(props)
-    this.state = {
-      breakpoints: breakpointList,
-      labels: breakpointLabels,
-    }
-  }
-
-  public render() {
-    return (
-      <DocTable>
-        <TableHead>
-          <TableRow>
-            {this.state.labels.map((label, i) => {
-              return TableLabel(label, i)
-            })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.state.breakpoints.map((bp, i) => {
-            return BreakpointRow(bp.slot, bp.starts, bp.rem, bp.description, i)
-          })}
-        </TableBody>
-      </DocTable>
-    )
-  }
-}
+export const BreakpointTable: FC<BreakpointTableProps> = ({
+  breakpoints,
+  labels,
+}) => (
+  <DocTable>
+    <TableHead>
+      <TableRow>{labels.map((label, i) => TableLabel(label, i))}</TableRow>
+    </TableHead>
+    <TableBody>
+      {breakpoints.map((bp, i) =>
+        BreakpointRow(bp.slot, bp.starts, bp.rem, bp.description, i)
+      )}
+    </TableBody>
+  </DocTable>
+)
