@@ -52,7 +52,10 @@ export function useMouseDragPosition(
   }
 
   const handleStart = (e: globalThis.TouchEvent | globalThis.MouseEvent) => {
-    setIsMouseDown(true)
+    // update mouse down state AFTER mouse position state is updated
+    requestAnimationFrame(() => {
+      setIsMouseDown(true)
+    })
     updateMousePos(e)
   }
 

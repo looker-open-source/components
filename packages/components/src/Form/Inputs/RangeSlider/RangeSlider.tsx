@@ -203,7 +203,6 @@ export const InternalRangeSlider = forwardRef(
     const containerRect = useMeasuredElement(containerRef)
 
     const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
-    const prevMouseDown = usePreviousValue(isMouseDown)
 
     const minThumbRef = useRef<HTMLDivElement>(null)
     const maxThumbRef = useRef<HTMLDivElement>(null)
@@ -286,32 +285,21 @@ export const InternalRangeSlider = forwardRef(
           newPoint,
           maintainFocus ? focusedThumb : undefined
         )
+
         focusChangedPoint(newValue, newPoint)
         setValue(newValue)
       }
     }
 
-    /*
-     * prevent keyboard events from firing when using a touch screen
-     */
-    const filterTouchEvents = (cb: Function) => (
-      e: MouseEvent | TouchEvent
-    ) => {
-      if (!has(e, 'touches')) {
-        cb(e)
-      }
-    }
-    const handleMouseDown = filterTouchEvents(partial(handleMouseEvent, false))
-    const handleTouchStart = partial(handleMouseEvent, false)
-    const handleMouseDrag = partial(handleMouseEvent, true)
+    const handleMouseDown = partial(handleMouseEvent, false)
 
     /*
      * Only fire mouse drag event when mouse moves AFTER initial click
      */
     useEffect(
       () => {
-        if (isMouseDown && prevMouseDown) {
-          handleMouseDrag()
+        if (isMouseDown) {
+          handleMouseEvent(true)
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -348,7 +336,7 @@ export const InternalRangeSlider = forwardRef(
       <div
         data-testid="range-slider-wrapper"
         onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
+        onTouchStart={handleMouseDown}
         onTouchEnd={handleBlur}
         className={className}
         id={id}
