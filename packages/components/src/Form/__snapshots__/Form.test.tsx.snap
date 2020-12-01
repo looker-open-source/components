@@ -193,7 +193,7 @@ exports[`Form with one child 1`] = `
     <label
       className="c2 c3"
       htmlFor="text-field"
-      id="text-field-labelledby"
+      id="labelledby-text-field"
     >
       label
     </label>
@@ -205,7 +205,7 @@ exports[`Form with one child 1`] = `
         onMouseDown={[Function]}
       >
         <input
-          aria-describedby="text-field-describedby"
+          aria-describedby="describedby-text-field"
           className="c7"
           id="text-field"
           name="name"
@@ -215,7 +215,7 @@ exports[`Form with one child 1`] = `
     </div>
     <div
       className="Field__MessageArea-m8c1e2-2"
-      id="text-field-describedby"
+      id="describedby-text-field"
     />
   </div>
 </form>

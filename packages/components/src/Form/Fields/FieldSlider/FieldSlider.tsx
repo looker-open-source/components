@@ -46,7 +46,7 @@ const FieldSliderComponent = forwardRef(
       >
         <Slider
           {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
+          aria-describedby={`describedby-${id}`}
           id={id}
           ref={ref}
         />

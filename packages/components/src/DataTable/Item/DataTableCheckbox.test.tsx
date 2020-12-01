@@ -33,19 +33,19 @@ describe('DataTableCheckbox', () => {
   test('Renders checked', () => {
     const { getByRole } = renderWithTheme(<DataTableCheckbox checked />)
     const checkbox = getByRole('checkbox')
-    expect((checkbox as HTMLInputElement).checked).toEqual(true)
+    expect(checkbox as HTMLInputElement).toBeChecked()
   })
 
   test('Renders unchecked', () => {
     const { getByRole } = renderWithTheme(<DataTableCheckbox />)
     const checkbox = getByRole('checkbox')
-    expect((checkbox as HTMLInputElement).checked).toEqual(false)
+    expect(checkbox as HTMLInputElement).not.toBeChecked()
   })
 
   test('Renders disabled', () => {
     const { getByRole } = renderWithTheme(<DataTableCheckbox disabled />)
     const checkbox = getByRole('checkbox')
-    expect((checkbox as HTMLInputElement).disabled).toEqual(true)
+    expect(checkbox as HTMLInputElement).toBeDisabled()
   })
 
   test('Calls onChange callback', () => {

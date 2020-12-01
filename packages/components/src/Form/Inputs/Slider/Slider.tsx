@@ -44,6 +44,7 @@ export interface SliderProps
     Omit<InputProps, 'type'>,
     TypographyProps {
   'aria-labelledby'?: string
+  'aria-describedby'?: string
   max?: number
   min?: number
   step?: number
@@ -132,6 +133,7 @@ const SliderInternal = forwardRef(
           offsetPercent={fillPercent}
           value={displayValue}
           aria-labelledby={restProps['aria-labelledby']}
+          aria-describedby={restProps['aria-describedby']}
           data-testid="slider-input"
           ref={ref}
           onBlur={handleUnfocus}

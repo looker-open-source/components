@@ -268,7 +268,7 @@ exports[`Fieldset 1`] = `
         <label
           className="c5 c6"
           htmlFor="text-1"
-          id="text-1-labelledby"
+          id="labelledby-text-1"
         >
           one
         </label>
@@ -280,7 +280,7 @@ exports[`Fieldset 1`] = `
             onMouseDown={[Function]}
           >
             <input
-              aria-describedby="text-1-describedby"
+              aria-describedby="describedby-text-1"
               className="c10"
               id="text-1"
               name="name1"
@@ -290,7 +290,7 @@ exports[`Fieldset 1`] = `
         </div>
         <div
           className="Field__MessageArea-m8c1e2-2"
-          id="text-1-describedby"
+          id="describedby-text-1"
         />
       </div>
       <div
@@ -299,7 +299,7 @@ exports[`Fieldset 1`] = `
         <label
           className="c5 c6"
           htmlFor="text-2"
-          id="text-2-labelledby"
+          id="labelledby-text-2"
         >
           two
         </label>
@@ -311,7 +311,7 @@ exports[`Fieldset 1`] = `
             onMouseDown={[Function]}
           >
             <input
-              aria-describedby="text-2-describedby"
+              aria-describedby="describedby-text-2"
               className="c10"
               id="text-2"
               name="name2"
@@ -321,7 +321,7 @@ exports[`Fieldset 1`] = `
         </div>
         <div
           className="Field__MessageArea-m8c1e2-2"
-          id="text-2-describedby"
+          id="describedby-text-2"
         />
       </div>
       <div
@@ -330,7 +330,7 @@ exports[`Fieldset 1`] = `
         <label
           className="c5 c6"
           htmlFor="text-3"
-          id="text-3-labelledby"
+          id="labelledby-text-3"
         >
           three
         </label>
@@ -342,7 +342,7 @@ exports[`Fieldset 1`] = `
             onMouseDown={[Function]}
           >
             <input
-              aria-describedby="text-3-describedby"
+              aria-describedby="describedby-text-3"
               className="c10"
               id="text-3"
               name="nam3"
@@ -352,7 +352,7 @@ exports[`Fieldset 1`] = `
         </div>
         <div
           className="Field__MessageArea-m8c1e2-2"
-          id="text-3-describedby"
+          id="describedby-text-3"
         />
       </div>
     </div>
