@@ -95,20 +95,20 @@ test('CheckboxGroup can be checked and unchecked when user clicks', () => {
   fireEvent.click(checkbox)
 
   expect(handleChange).toHaveBeenCalledWith(['roquefort'])
-  expect((checkbox as HTMLInputElement).checked).toBe(true)
+  expect(checkbox as HTMLInputElement).toBeChecked()
 
   fireEvent.click(checkbox)
 
   expect(handleChange).toHaveBeenCalledWith(['roquefort'])
-  expect((checkbox as HTMLInputElement).checked).toBe(false)
+  expect(checkbox as HTMLInputElement).not.toBeChecked()
 })
 
 test('CheckboxGroup render a list of checkbox with defaultValue checked', () => {
   const { getByLabelText } = renderWithTheme(
     <CheckboxGroup {...checkboxProps} defaultValue={['cheddar']} />
   )
-  expect((getByLabelText('Cheddar') as HTMLInputElement).checked).toBe(true)
-  expect((getByLabelText('Gouda') as HTMLInputElement).checked).toBe(false)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeChecked()
+  expect(getByLabelText('Gouda') as HTMLInputElement).not.toBeChecked()
 })
 
 test('CheckboxGroup render a list of checkbox all unchecked after user clicked on defaultValue', () => {
@@ -117,7 +117,7 @@ test('CheckboxGroup render a list of checkbox all unchecked after user clicked o
   )
   const Cheddar = getByLabelText('Cheddar')
   fireEvent.click(Cheddar)
-  expect((getByLabelText('Cheddar') as HTMLInputElement).checked).toBe(false)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).not.toBeChecked()
 })
 
 test('CheckboxGroup disabled all checkbox', () => {
@@ -125,10 +125,10 @@ test('CheckboxGroup disabled all checkbox', () => {
     <CheckboxGroup {...checkboxProps} disabled />
   )
 
-  expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Gouda') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Swiss') as HTMLInputElement).disabled).toBe(true)
-  expect((getByLabelText('Roquefort') as HTMLInputElement).disabled).toBe(true)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
+  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })
 
 test('CheckboxGroup disabled one specific checkbox', () => {
@@ -143,6 +143,6 @@ test('CheckboxGroup disabled one specific checkbox', () => {
     <CheckboxGroup {...checkboxProps} options={options} />
   )
 
-  expect((getByLabelText('Cheddar') as HTMLInputElement).disabled).toBe(false)
-  expect((getByLabelText('Roquefort') as HTMLInputElement).disabled).toBe(true)
+  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
+  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })

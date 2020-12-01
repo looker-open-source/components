@@ -173,12 +173,12 @@ test('defaultValue highlights the correct dates in the Calendar', () => {
   const dayBefore = getByLabelText('Sun Jun 02 2019')
   const dayAfter = getByLabelText('Thu Jun 06 2019')
 
-  expect(dayOne.getAttribute('aria-selected')).toEqual('true')
-  expect(dayTwo.getAttribute('aria-selected')).toEqual('true')
-  expect(dayThree.getAttribute('aria-selected')).toEqual('true')
+  expect(dayOne).toHaveAttribute('aria-selected', 'true')
+  expect(dayTwo).toHaveAttribute('aria-selected', 'true')
+  expect(dayThree).toHaveAttribute('aria-selected', 'true')
 
-  expect(dayBefore.getAttribute('aria-selected')).toEqual('false')
-  expect(dayAfter.getAttribute('aria-selected')).toEqual('false')
+  expect(dayBefore).toHaveAttribute('aria-selected', 'false')
+  expect(dayAfter).toHaveAttribute('aria-selected', 'false')
 })
 
 test('validates FROM text input to match localized date format', () => {

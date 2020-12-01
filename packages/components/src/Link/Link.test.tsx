@@ -66,8 +66,8 @@ describe('Link', () => {
     )
 
     const link = screen.getByText('🥑')
-    expect(link.hasAttribute('id')).toBeTruthy()
-    expect(link.getAttribute('id')).toEqual('link-id')
+    expect(link).toHaveAttribute('id')
+    expect(link).toHaveAttribute('id', 'link-id')
   })
 
   test('target="_blank"', () => {
@@ -85,11 +85,10 @@ describe('Link', () => {
       </>
     )
 
-    expect(screen.getByText('🍕').getAttribute('rel')).toEqual('pizza')
-    expect(screen.getByText('🥑').getAttribute('rel')).toEqual(
-      'noopener noreferrer'
-    )
-    expect(screen.getByText('🍕🥑').getAttribute('rel')).toEqual(
+    expect(screen.getByText('🍕')).toHaveAttribute('rel', 'pizza')
+    expect(screen.getByText('🥑')).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(screen.getByText('🍕🥑')).toHaveAttribute(
+      'rel',
       'pizza noopener noreferrer'
     )
   })

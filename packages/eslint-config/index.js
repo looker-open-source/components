@@ -33,11 +33,13 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'standard',
+    'plugin:jest-dom/recommended',
+    'plugin:prettier/recommended',
     'plugin:react/recommended',
+    'plugin:testing-library/react',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
   ],
   ignorePatterns: ['lib/', '*.d.ts', 'generated/', 'node_modules/'],
   overrides: [
@@ -57,7 +59,14 @@ module.exports = {
     },
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  plugins: ['react-hooks', '@typescript-eslint', 'prettier', 'sort-keys-fix'],
+  plugins: [
+    '@typescript-eslint',
+    'jest-dom',
+    'prettier',
+    'react-hooks',
+    'sort-keys-fix',
+    'testing-library',
+  ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-use-before-define': 'off',

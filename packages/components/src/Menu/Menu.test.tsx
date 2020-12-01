@@ -134,7 +134,7 @@ describe('<Menu />', () => {
 
     const button = getByText('Cheese')
 
-    expect(button).toHaveAttribute('disabled')
+    expect(button).toBeDisabled()
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
 

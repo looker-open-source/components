@@ -55,8 +55,8 @@ const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
     >
       <RadioGroup
         {...omitFieldProps(props)}
-        aria-describedby={`${id}-describedby`}
-        aria-labelledby={`${id}-labelledby`}
+        aria-describedby={`describedby-${id}`}
+        aria-labelledby={`labelledby-${id}`}
         id={id}
         inline={props.inline || inputsInline}
         name={name || id}

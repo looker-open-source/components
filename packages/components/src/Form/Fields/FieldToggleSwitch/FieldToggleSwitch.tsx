@@ -52,7 +52,7 @@ const FieldToggleSwitchLayout = forwardRef(
       >
         <ToggleSwitch
           {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
+          aria-describedby={`describedby-${id}`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}

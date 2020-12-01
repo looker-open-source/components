@@ -102,7 +102,7 @@ exports[`A FieldTextArea with default label 1`] = `
   <label
     className="c1 c2"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labelledby"
+    id="labelledby-FieldTextAreaID"
   >
     👍
   </label>
@@ -113,14 +113,14 @@ exports[`A FieldTextArea with default label 1`] = `
       className="c5 FieldTextArea-sc-1nmc8fy-0"
     >
       <textarea
-        aria-describedby="FieldTextAreaID-describedby"
+        aria-describedby="describedby-FieldTextAreaID"
         id="FieldTextAreaID"
       />
     </div>
   </div>
   <div
     className="Field__MessageArea-m8c1e2-2"
-    id="FieldTextAreaID-describedby"
+    id="describedby-FieldTextAreaID"
   />
 </div>
 `;
@@ -234,7 +234,7 @@ exports[`A FieldTextArea with label inline 1`] = `
   <label
     className="c1 c2"
     htmlFor="FieldTextAreaID"
-    id="FieldTextAreaID-labelledby"
+    id="labelledby-FieldTextAreaID"
   >
     👍
   </label>
@@ -245,14 +245,14 @@ exports[`A FieldTextArea with label inline 1`] = `
       className="c5 FieldTextArea-sc-1nmc8fy-0"
     >
       <textarea
-        aria-describedby="FieldTextAreaID-describedby"
+        aria-describedby="describedby-FieldTextAreaID"
         id="FieldTextAreaID"
       />
     </div>
   </div>
   <div
     className="Field__MessageArea-m8c1e2-2"
-    id="FieldTextAreaID-describedby"
+    id="describedby-FieldTextAreaID"
   />
 </div>
 `;

@@ -51,7 +51,7 @@ const FieldTimeSelectComponent = forwardRef(
       >
         <InputTimeSelect
           {...omitFieldProps(props)}
-          aria-labelledby={`${id}-labelledby`}
+          aria-labelledby={`labelledby-${id}`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}

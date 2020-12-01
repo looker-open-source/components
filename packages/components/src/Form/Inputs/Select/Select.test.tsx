@@ -721,7 +721,7 @@ describe('Select / SelectMulti', () => {
     fireEvent.mouseDown(input)
     fireEvent.click(screen.getByText('FOO'))
 
-    expect(document.activeElement).toBe(input)
+    expect(input).toHaveFocus()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
