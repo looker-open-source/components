@@ -48,11 +48,20 @@ interface NavigationProps extends AsideProps {
   className?: string
 }
 
-function groupComponents(pages: NavigationPage[]) {
-  const groups = groupBy(
-    pages,
-    ({ path }) => path.replace('components/', '').split('/')[0]
-  )
+const getGroupName = (path: string) =>
+  path.replace('components/', '').split('/')[0]
+
+interface ComponentsGroups {
+  [key: string]: NavigationPage[]
+}
+const groupComponents = (pages: NavigationPage[]) => {
+  const groups = pages.reduce((acc: ComponentsGroups, page) => {
+    const { path } = page
+    if (path === 'components/') return acc
+    const groupName = getGroupName(path)
+    const group = acc[groupName] ? [...acc[groupName], page] : [page]
+    return { ...acc, [groupName]: group }
+  }, {})
 
   return map(groups, (group, groupKey) => {
     if (group.length === 1) {
