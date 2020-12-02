@@ -24,38 +24,60 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React from 'react'
-import { Placeholder } from './Placeholder'
+import { Story } from '@storybook/react/types-6-0'
+import React, { FC } from 'react'
+import { Box, BoxProps } from '../Box'
+import { Grid, GridProps } from './Grid'
 
 export default {
-  title: 'Layout/Grid',
+  component: Grid,
+  title: 'Grid',
 }
 
-export const Basic = () => (
-  <Grid>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
+const Placeholder: FC<BoxProps> = (props) => (
+  <Box
+    color="white"
+    bg="key"
+    justifyContent="center"
+    alignItems="center"
+    height="100%"
+    width="100%"
+    display="flex"
+    minHeight="3rem"
+    {...props}
+  />
 )
 
-export const Columns = () => (
-  <Grid columns={4}>
-    <Placeholder minHeight="5rem">A</Placeholder>
-    <Placeholder>B</Placeholder>
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
+const Template: Story<GridProps & { children: JSX.Element }> = ({
+  children,
+  ...args
+}) => <Grid {...args}>{children}</Grid>
 
-export const GapSize = () => (
-  <Grid gap="xxlarge">
-    <Placeholder>C</Placeholder>
-    <Placeholder>D</Placeholder>
-  </Grid>
-)
+export const Basic = Template.bind({})
+Basic.args = {
+  children: (
+    <>
+      <Placeholder minHeight="5rem">A</Placeholder>
+      <Placeholder>B</Placeholder>
+      <Placeholder>C</Placeholder>
+      <Placeholder>D</Placeholder>
+    </>
+  ),
+}
+
+export const Columns = Template.bind({})
+Columns.args = { ...Basic.args, columns: 4 }
+
+export const GapSize = Template.bind({})
+Columns.args = {
+  children: (
+    <>
+      <Placeholder>C</Placeholder>
+      <Placeholder>D</Placeholder>
+    </>
+  ),
+  gap: 'xxlarge',
+}
 
 export const VerticalGrid = () => (
   <Grid columns={4}>

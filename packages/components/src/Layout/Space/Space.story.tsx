@@ -24,52 +24,53 @@
 
  */
 
-import {
-  Button,
-  Space,
-  SpaceVertical,
-  Icon,
-  Paragraph,
-  Status,
-  IconButton,
-} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
+import { Button, IconButton } from '../../Button'
+import { Icon } from '../../Icon'
+import { Status } from '../../Status'
+import { Paragraph } from '../../Text'
+import { Space, SpaceHelperProps } from './Space'
+import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
 export default {
-  title: 'Layout/Space',
+  component: Space,
+  title: 'Space',
 }
 
-export const Basic = () => (
-  <Space>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </Space>
+interface WithChildren {
+  children: JSX.Element
+}
+
+const Template: Story<SpaceHelperProps & WithChildren> = (args) => (
+  <Space {...args} />
+)
+const TemplateVertical: Story<SpaceVerticalProps & WithChildren> = (args) => (
+  <SpaceVertical {...args} />
 )
 
-export const Reverse = () => (
-  <Space reverse>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </Space>
-)
+export const Basic = Template.bind({})
+Basic.args = {
+  children: (
+    <>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </>
+  ),
+}
 
-export const BasicSpaceVertical = () => (
-  <SpaceVertical>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </SpaceVertical>
-)
+export const Reverse = Template.bind({})
+Reverse.args = {
+  ...Basic.args,
+  reverse: true,
+}
 
-export const ReverseSpaceVertical = () => (
-  <SpaceVertical reverse>
-    <Button>Button A</Button>
-    <Button>Button B</Button>
-    <Button>Button C</Button>
-  </SpaceVertical>
-)
+export const BasicSpaceVertical = TemplateVertical.bind({})
+BasicSpaceVertical.args = { ...Basic.args }
+
+export const ReverseSpaceVertical = TemplateVertical.bind({})
+ReverseSpaceVertical.args = { ...Reverse.args }
 
 export const SpaceCrush = () => (
   <Space>
