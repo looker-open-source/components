@@ -49,7 +49,7 @@ import startsWith from 'lodash/startsWith'
 import partial from 'lodash/partial'
 import map from 'lodash/map'
 import isEqual from 'lodash/isEqual'
-import has from 'lodash/has'
+
 import {
   useMeasuredElement,
   useMouseDragPosition,
@@ -292,6 +292,7 @@ export const InternalRangeSlider = forwardRef(
     }
 
     const handleMouseDown = partial(handleMouseEvent, false)
+    const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
      * Only fire mouse drag event when mouse moves AFTER initial click
@@ -299,7 +300,7 @@ export const InternalRangeSlider = forwardRef(
     useEffect(
       () => {
         if (isMouseDown) {
-          handleMouseEvent(true)
+          handleMouseDrag()
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
