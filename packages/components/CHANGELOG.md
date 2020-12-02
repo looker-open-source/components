@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - InputSearch now supports disabled and readOnly - documentation and gatsby updated
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
 - `InputDate` removed stories that did not use `value` prop to avoid daily snapshot discrepancies
+- `RangeSlider` now supports touch events
 
 ## [0.9.25]
 
