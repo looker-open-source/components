@@ -24,23 +24,25 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React, { FC } from 'react'
+import { Button } from '../../Button'
+import { Divider } from '../../Divider'
+import { Link } from '../../Link'
+import { Status } from '../../Status'
+import { Tooltip } from '../../Tooltip'
 import {
-  Button,
-  Fieldset,
-  FieldText,
   FieldCheckbox,
   FieldCheckboxGroup,
   FieldRadioGroup,
-  Link,
-  Status,
-  Tooltip,
-  Divider,
-  Form,
-} from '@looker/components'
+  FieldText,
+} from '../Fields'
+import { Form } from '../Form'
+import { Fieldset, FieldsetProps } from './Fieldset'
 
 export default {
-  title: 'Forms/Fieldset',
+  component: Fieldset,
+  title: 'Fieldset',
 }
 
 const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
@@ -62,31 +64,26 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
   </>
 )
 
-export const Basic = () => (
-  <Form m="xxlarge" maxWidth="600px">
-    <Fieldset>
-      <Fields />
-    </Fieldset>
-  </Form>
-)
+const Template: Story<FieldsetProps> = (args) => {
+  return (
+    <Form m="xxlarge" maxWidth="600px">
+      <Fieldset {...args}>
+        <Fields />
+      </Fieldset>
+    </Form>
+  )
+}
 
-export const Inline = () => (
-  <Fieldset inline>
-    <Fields />
-  </Fieldset>
-)
+export const Basic = Template.bind({})
 
-export const Legend = () => (
-  <Fieldset legend="Standard Legend, Standard FieldText">
-    <Fields />
-  </Fieldset>
-)
+export const Inline = Template.bind({})
+Inline.args = { inline: true }
 
-export const InlineLegend = () => (
-  <Fieldset inline legend="Inline Legend, Inline FieldText">
-    <Fields />
-  </Fieldset>
-)
+export const Legend = Template.bind({})
+Legend.args = { legend: 'Standard Legend, Standard FieldText' }
+
+export const InlineLegend = Template.bind({})
+InlineLegend.args = { inline: true, legend: 'Inline Legend, Inline FieldText' }
 
 export const LegendInlineFields = () => (
   <Fieldset legend="Standard Legend, Inline FieldText">
@@ -198,7 +195,7 @@ export const Nesting = () => (
   </Fieldset>
 )
 
-export const fieldsHideLabel = () => (
+export const FieldsHideLabel = () => (
   <>
     <Fieldset fieldsHideLabel legend="This is the Legend 1">
       <FieldText label="First Label" />

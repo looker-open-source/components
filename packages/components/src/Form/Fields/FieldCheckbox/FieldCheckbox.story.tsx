@@ -24,8 +24,14 @@
 
  */
 
-import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import React, { useState } from 'react'
+import { List, ListItem } from '../../../List'
+import {
+  CheckboxTree,
+  MixedBoolean,
+  useMixedStateCheckbox,
+} from '../../Inputs/Checkbox'
 import { FieldCheckbox, FieldCheckboxProps } from './FieldCheckbox'
 
 const Template: Story<FieldCheckboxProps> = (args) => (
@@ -86,6 +92,78 @@ export const DetailDescriptionError = Template.bind({})
 DetailDescriptionError.args = {
   ...DetailDescription.args,
   validationMessage: { message: 'This is an error', type: 'error' },
+}
+
+export const MixedState = () => {
+  // Set up local state and child change handlers
+  const [parentState, setParentState] = useState<MixedBoolean>('mixed')
+  const [appleState, setAppleState] = useState<MixedBoolean>(true)
+  const [bananaState, setBananaState] = useState<MixedBoolean>(false)
+  const [avocadoState, setAvocadoState] = useState<MixedBoolean>(false)
+  const handleAppleChange = () => setAppleState(!appleState)
+  const handleBananaChange = () => setBananaState(!bananaState)
+  const handleAvocadoChange = () => setAvocadoState(!avocadoState)
+
+  // Establish checkbox hierarchy for use in custom hook
+  const fruitTree: CheckboxTree = {
+    children: [
+      { setState: setAppleState, state: appleState },
+      { setState: setBananaState, state: bananaState },
+      { setState: setAvocadoState, state: avocadoState },
+    ],
+    parent: {
+      setState: setParentState,
+      state: parentState,
+    },
+  }
+
+  // Sync parent/child states and get provided parent change handler
+  const handleParentChange = useMixedStateCheckbox(fruitTree)
+
+  return (
+    <>
+      <FieldCheckbox
+        id="fruit-parent"
+        name="fruit"
+        value="all-fruit"
+        onChange={handleParentChange}
+        checked={parentState}
+        label="Fruit"
+      />
+      <List pl="large">
+        <ListItem>
+          <FieldCheckbox
+            id="fruit-apple"
+            name="fruit"
+            value="apple"
+            label="🍏"
+            onChange={handleAppleChange}
+            checked={appleState}
+          />
+        </ListItem>
+        <ListItem>
+          <FieldCheckbox
+            id="fruit-banana"
+            name="fruit"
+            value="apple"
+            onChange={handleBananaChange}
+            checked={bananaState}
+            label="🍌"
+          />
+        </ListItem>
+        <ListItem>
+          <FieldCheckbox
+            id="fruit-avocado"
+            name="fruit"
+            value="apple"
+            onChange={handleAvocadoChange}
+            checked={avocadoState}
+            label="🥑"
+          />
+        </ListItem>
+      </List>
+    </>
+  )
 }
 
 export default {

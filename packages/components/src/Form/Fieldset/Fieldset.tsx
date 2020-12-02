@@ -78,7 +78,7 @@ export interface FieldsetProps
   fieldsHideLabel?: boolean
   /**
    * Amount of space between fields
-   * @default 'inline' ? medium' : 'small'
+   * @default medium
    */
   gap?: SpacingSizes
 }
