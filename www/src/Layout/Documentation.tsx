@@ -36,10 +36,10 @@ import {
   Tab,
   TabPanels,
   Heading,
-  Icon,
-  Link,
+  ButtonTransparent,
   Space,
-  Text,
+  Span,
+  Tooltip,
 } from '@looker/components'
 import { Status } from '../components'
 import { Layout } from './Layout'
@@ -93,29 +93,26 @@ const DocumentationLayout = (props: DocQuery) => {
               <Tab>Overview</Tab>
               <Tab>
                 Storybook{' '}
-                <Text
+                <Span
                   fontSize="xsmall"
                   variant="subdued"
                   fontWeight="normal"
                   lineHeight="normal"
                 >
                   Props &amp; Examples
-                </Text>
+                </Span>
               </Tab>
             </TabList>
           )}
-          <Space width="auto" ml="auto" my="medium" gap="xsmall">
-            <Link
-              fontSize="small"
-              href={`${githubBase}${github}`}
-              target="_blank"
+          <Tooltip content="GitHub">
+            <ButtonTransparent
+              ml="auto"
+              iconAfter="External"
+              onClick={() => window.open(`${githubBase}${github}`)}
             >
               View source
-            </Link>
-            <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
-              <Icon name="External" size=".75rem" /> Github
-            </Text>
-          </Space>
+            </ButtonTransparent>
+          </Tooltip>
         </CustomTabs>
         {storybook ? (
           <TabPanels {...tab} pt="none">
