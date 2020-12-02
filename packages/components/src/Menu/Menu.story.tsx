@@ -25,27 +25,23 @@
  */
 
 import React, { useRef, useState } from 'react'
-import {
-  Box,
-  Button,
-  Menu,
-  MenuDisclosure,
-  MenuList,
-  MenuItem,
-  Dialog,
-  MenuGroup,
-  Card,
-  Space,
-  Paragraph,
-  IconButton,
-  MenuContext,
-  Divider,
-  Text,
-  Icon,
-} from '@looker/components'
+import { Box, Space } from '../Layout'
+import { Button, IconButton } from '../Button'
+import { Card } from '../Card'
+import { Dialog } from '../Dialog'
+import { Divider } from '../Divider'
+import { Icon } from '../Icon'
+import { Text, Paragraph } from '../Text'
+import { Menu } from './Menu'
+import { MenuDisclosure } from './MenuDisclosure'
+import { MenuContext } from './MenuContext'
+import { MenuGroup } from './MenuGroup'
+import { MenuItem } from './MenuItem'
+import { MenuList } from './MenuList'
 
 export default {
-  title: 'Overlays/Menu',
+  component: Menu,
+  title: 'Menu',
 }
 
 const menuItems = (

@@ -53,6 +53,21 @@ import { usePopover } from '../usePopover'
 
 export * from './OverflowExamples'
 
+export default {
+  component: Popover,
+  title: 'Popover',
+}
+
+export const Basic = () => (
+  <Popover content={<PopoverContent>Some content</PopoverContent>}>
+    <Button>Open</Button>
+  </Popover>
+)
+
+Basic.parameters = {
+  storyshots: { disable: true },
+}
+
 const options = [
   { label: 'Apples', value: '1' },
   { label: 'Bananas', value: '2' },
@@ -80,10 +95,6 @@ const options = [
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
 ]
-
-export default {
-  title: 'Popover',
-}
 
 export const PopoverFocusTrap = () => {
   const { value, toggle } = useToggle(false)

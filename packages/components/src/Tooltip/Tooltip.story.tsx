@@ -74,6 +74,7 @@ PlacementRight.parameters = {
 export const PlacementLeft = Template.bind({})
 PlacementLeft.args = {
   ...Basic.args,
+  content: 'Left',
   placement: 'left',
 }
 PlacementLeft.parameters = {
