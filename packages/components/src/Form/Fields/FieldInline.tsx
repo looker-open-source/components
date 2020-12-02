@@ -91,7 +91,6 @@ const FieldDescription = styled(Paragraph)`
 const InputArea = styled.div`
   grid-column: 1;
   grid-row: 1;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
   padding-right: ${({ theme: { space } }) => space.xsmall};
   padding-top: ${({ theme: { space } }) => space.xxxsmall};
   /* stylelint-disable */
