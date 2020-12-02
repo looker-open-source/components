@@ -23,54 +23,53 @@
  SOFTWARE.
 
  */
-
-import {
-  ButtonGroup,
-  ButtonItem,
-  Space,
-  Box,
-  FieldToggleSwitch,
-  Divider,
-  ButtonToggle,
-} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 import React, { useEffect, useState, FormEvent } from 'react'
+import { Divider } from '../Divider'
+import { Box, Space } from '../Layout'
+import { FieldToggleSwitch } from '../Form'
+import { ButtonGroupOrToggleBaseProps } from './ButtonSet'
+import { ButtonGroup } from './ButtonGroup'
+import { ButtonItem } from './ButtonItem'
+import { ButtonToggle } from './ButtonToggle'
 
 export default {
+  component: ButtonGroup,
   title: 'ButtonGroup',
 }
 
-export const Basic = () => {
-  const [value, setValue] = useState<string[]>([])
-  return (
-    <ButtonGroup value={value} onChange={setValue}>
+const Template: Story<
+  ButtonGroupOrToggleBaseProps & { initialValues?: string[] }
+> = ({ initialValues = [], ...args }) => {
+  const [value, setValue] = useState<string[]>(initialValues)
+  return <ButtonGroup {...args} value={value} onChange={setValue} />
+}
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: (
+    <>
       <ButtonItem value="CA">California</ButtonItem>
       <ButtonItem value="AK">Alaska</ButtonItem>
       <ButtonItem value="UT">Utah</ButtonItem>
-    </ButtonGroup>
-  )
+    </>
+  ),
 }
 
-export const InitialValues = () => {
-  const [value, setValue] = useState<string[]>(['CA', 'AK'])
-
-  return (
-    <ButtonGroup value={value} onChange={setValue}>
-      <ButtonItem value="CA">California</ButtonItem>
-      <ButtonItem value="AK">Alaska</ButtonItem>
-      <ButtonItem value="UT">Utah</ButtonItem>
-    </ButtonGroup>
-  )
+export const InitialValues = Template.bind({})
+InitialValues.args = {
+  ...Basic.args,
+  initialValues: ['CA', 'AK'],
 }
 
-export const Options = () => {
-  const options = [
+export const Options = Template.bind({})
+Options.args = {
+  initialValues: ['Gouda'],
+  options: [
     { label: 'Smoked Gouda', value: 'Gouda' },
     { value: 'Cheddar' },
     { disabled: true, value: 'Swiss' },
-  ]
-
-  const [value, setValue] = useState<string[]>(['Gouda'])
-  return <ButtonGroup options={options} value={value} onChange={setValue} />
+  ],
 }
 
 const stateOptions = [
