@@ -23,14 +23,16 @@
  SOFTWARE.
 
  */
-import React, { FC, useState } from 'react'
-import { Button, Prompt, usePrompt } from '@looker/components'
+import React, { useState } from 'react'
+import { Button } from '../../Button'
+import { Prompt, usePrompt } from './Prompt'
 
 export default {
-  title: 'Overlays/Prompt',
+  component: Prompt,
+  title: 'Prompt',
 }
 
-export const Basic: FC = () => {
+export const Basic = () => {
   return (
     <Prompt
       cancelColor="neutral"
@@ -57,6 +59,10 @@ export const Basic: FC = () => {
   )
 }
 
+Basic.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Hook = () => {
   const [tracking, setTracking] = useState('pizza')
 
@@ -79,4 +85,8 @@ export const Hook = () => {
       <Button onClick={open}>usePrompt</Button>
     </>
   )
+}
+
+Hook.parameters = {
+  storyshots: { disable: true },
 }

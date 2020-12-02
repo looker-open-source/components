@@ -25,19 +25,16 @@
  */
 
 import React from 'react'
-import {
-  Button,
-  ButtonOutline,
-  Confirm,
-  Icon,
-  Link,
-  Paragraph,
-  Space,
-  SpaceVertical,
-} from '@looker/components'
+import { Button, ButtonOutline } from '../../Button'
+import { Icon } from '../../Icon'
+import { Space, SpaceVertical } from '../../Layout'
+import { Link } from '../../Link'
+import { Paragraph } from '../../Text'
+import { Confirm } from './Confirm'
 
 export default {
-  title: 'Overlays/Confirm',
+  component: Confirm,
+  title: 'Confirm',
 }
 
 export const Basic = () => {
@@ -54,6 +51,10 @@ export const Basic = () => {
       {(open) => <ButtonOutline onClick={open}>Do something</ButtonOutline>}
     </Confirm>
   )
+}
+
+Basic.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Critical = () => {
@@ -75,6 +76,10 @@ export const Critical = () => {
       )}
     </Confirm>
   )
+}
+
+Critical.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Rich = () => {
@@ -113,4 +118,8 @@ export const Rich = () => {
       {(open) => <Button onClick={open}>Do something fancy</Button>}
     </Confirm>
   )
+}
+
+Rich.parameters = {
+  storyshots: { disable: true },
 }
