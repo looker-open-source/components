@@ -25,23 +25,19 @@
  */
 
 import React, { useState } from 'react'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
-  Box,
-  Paragraph,
-  List,
-  ListItem,
-  Icon,
-  Fieldset,
-  FieldText,
-  Space,
-  Badge,
-} from '@looker/components'
 import styled from 'styled-components'
+import { Badge } from '../Badge'
+import { Box, Space } from '../Layout'
+import { Fieldset, FieldText } from '../Form'
+import { Icon } from '../Icon'
+import { List, ListItem } from '../List'
+import { Paragraph } from '../Text'
+import { Accordion } from './Accordion'
+import { AccordionContent } from './AccordionContent'
+import { AccordionDisclosure } from './AccordionDisclosure'
 
 export default {
+  component: Accordion,
   title: 'Accordion',
 }
 
@@ -73,7 +69,7 @@ export const DefaultOpen = () => (
 
 export const CustomizedIndicator = () => (
   <Accordion
-    indicatorSize="xxlarge"
+    indicatorSize="large"
     indicatorPosition="left"
     indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
   >

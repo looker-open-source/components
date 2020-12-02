@@ -24,21 +24,54 @@
 
  */
 
-import React, { FC, useState } from 'react'
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Space,
-} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import React, { useState } from 'react'
+import { Space } from '../Layout'
+import { Tab } from './Tab'
+import { TabList, TabListProps } from './TabList'
+import { TabPanel } from './TabPanel'
+import { TabPanels } from './TabPanels'
+import { Tabs } from './Tabs'
 
 export default {
-  title: 'Tabs/Controlled',
+  component: Tabs,
+  title: 'Tabs',
 }
 
-export const Controlled: FC = () => {
+interface DemoProps extends TabListProps {
+  tabCount: number
+  tabPrefix: string
+}
+
+const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
+  const tabs = new Array(tabCount).fill('tab')
+
+  return (
+    <Tabs>
+      <TabList {...args}>
+        {tabs.map((_k, index) => (
+          <Tab key={index}>
+            {tabPrefix} {index}
+          </Tab>
+        ))}
+      </TabList>
+      <TabPanels>
+        {tabs.map((_k, index) => (
+          <TabPanel key={index}>This is {index}</TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
+  )
+}
+
+export const Basic = Template.bind({})
+Basic.args = {
+  distribute: true,
+  tabCount: 20,
+  tabPrefix: 'My Awesome Tab',
+}
+
+export const Controlled = () => {
   const [currentTabIndex, setTab] = useState(0)
 
   return (
@@ -59,4 +92,8 @@ export const Controlled: FC = () => {
       </Tabs>
     </>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }

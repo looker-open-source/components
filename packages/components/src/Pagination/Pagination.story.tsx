@@ -24,28 +24,22 @@
 
  */
 
-import React from 'react'
-import { Badge, Space } from '@looker/components'
+import React, { useState } from 'react'
+import { Paragraph } from '../Text'
+import { Pagination } from './Pagination'
 
-export default {
-  title: 'Badge',
+export const Basic = () => {
+  const [currentPage, setCurrentPage] = useState(1)
+
+  return (
+    <>
+      <Paragraph>{`You're currently viewing page ${currentPage}`}</Paragraph>
+      <Pagination current={currentPage} pages={10} onChange={setCurrentPage} />
+    </>
+  )
 }
 
-export const Sizes = () => (
-  <Space around>
-    <Badge size="small">Small</Badge>
-    <Badge size="medium">Medium</Badge>
-    <Badge size="large">Large</Badge>
-  </Space>
-)
-
-export const Intents = () => (
-  <Space around>
-    <Badge intent="key">Key</Badge>
-    <Badge intent="positive">Positive</Badge>
-    <Badge intent="inform">Inform</Badge>
-    <Badge intent="neutral">Neutral</Badge>
-    <Badge intent="warn">Warn</Badge>
-    <Badge intent="critical">Critical</Badge>
-  </Space>
-)
+export default {
+  component: Pagination,
+  title: 'Pagination',
+}

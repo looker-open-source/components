@@ -25,26 +25,23 @@
  */
 
 import React from 'react'
-import {
-  Button,
-  Heading,
-  IconButton,
-  Icon,
-  Space,
-  SpaceVertical,
-} from '@looker/components'
+import { Button, IconButton } from '../Button'
+import { Space, SpaceVertical } from '../Layout'
+import { Heading } from '../Text'
+import { Icon } from './Icon'
 
 export default {
-  title: 'Icons',
+  component: Icon,
+  title: 'Icon',
 }
 
+export const Basic = () => <Icon name="Gear" />
+
 export const Accessibility = () => (
-  <>
-    <Space around>
-      <Icon name="Trash" title="It's a trash can" />
-      <Icon name="TrashOutline" />
-    </Space>
-  </>
+  <Space around>
+    <Icon name="Trash" title="It's a trash can" />
+    <Icon name="TrashOutline" />
+  </Space>
 )
 
 export const Sizes = () => (
@@ -61,41 +58,39 @@ export const Sizes = () => (
 )
 
 export const Artwork = () => (
-  <>
-    <Space around>
-      <Icon
-        artwork={
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-              fill="hotpink"
-            />
-          </svg>
-        }
-        name="GearOutline"
-        size="xxsmall"
-      />
-      <Icon
-        artwork={
-          <svg>
-            <rect
-              width="100"
-              height="100"
-              fill="rgb(0,0,255)"
-              strokeWidth="3"
-              stroke="rgb(0,0,0)"
-            />
-          </svg>
-        }
-      />
-    </Space>
-  </>
+  <Space around>
+    <Icon
+      artwork={
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+            fill="hotpink"
+          />
+        </svg>
+      }
+      name="GearOutline"
+      size="xxsmall"
+    />
+    <Icon
+      artwork={
+        <svg>
+          <rect
+            width="100"
+            height="100"
+            fill="rgb(0,0,255)"
+            strokeWidth="3"
+            stroke="rgb(0,0,0)"
+          />
+        </svg>
+      }
+    />
+  </Space>
 )
 
 export const IconsInsideComponents = () => (

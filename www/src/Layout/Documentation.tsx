@@ -63,6 +63,7 @@ interface DocQuery {
         github?: string
         status?: 'experimental' | 'stable' | 'deprecated'
         storybook?: boolean
+        storybookPath?: string
       }
     }
   }
@@ -70,7 +71,7 @@ interface DocQuery {
 
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { github, status, storybook, title } = mdx.frontmatter
+  const { github, status, storybook, storybookPath, title } = mdx.frontmatter
 
   const tab = useTabs()
   const body = <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -121,7 +122,7 @@ const DocumentationLayout = (props: DocQuery) => {
             <TabPanel>{body}</TabPanel>
             {storybook && (
               <TabPanel>
-                <PropsExamples component={title} />
+                <PropsExamples component={storybookPath || title} />
               </TabPanel>
             )}
           </TabPanels>
@@ -170,6 +171,7 @@ export const pageQuery = graphql`
         propsOf
         status
         storybook
+        storybookPath
         title
       }
     }

@@ -36,6 +36,7 @@ export * from './Flat.story'
 export * from './LongLabels.story'
 
 export default {
+  component: Tree,
   title: 'Tree',
 }
 

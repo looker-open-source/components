@@ -24,45 +24,42 @@
 
  */
 
-import { Chip, ChipButton, Heading, Space } from '@looker/components'
 import React, { useState } from 'react'
+import { ChipButton } from '../ChipButton'
+import { Space } from '../Layout'
+import { Chip } from './Chip'
 
 export default {
-  title: 'Chips',
+  component: Chip,
+  title: 'Chip',
 }
 
 export const ClickAndDelete = () => {
   const handleClick = () => alert('Clicked!')
   const handleDelete = () => alert('Deleted!')
   return (
-    <>
-      <Heading>Chip</Heading>
-      <Space>
-        <Chip onClick={handleClick}>Click Me</Chip>
-        <Chip disabled onClick={handleClick}>
-          Click Me (nothing happens)
-        </Chip>
-        <Chip onClick={handleClick} onDelete={handleDelete}>
-          Delete Me
-        </Chip>
-        <Chip disabled onClick={handleClick} onDelete={handleDelete}>
-          Delete Me (nothing happens)
-        </Chip>
-      </Space>
-    </>
+    <Space>
+      <Chip onClick={handleClick}>Click Me</Chip>
+      <Chip disabled onClick={handleClick}>
+        Click Me (nothing happens)
+      </Chip>
+      <Chip onClick={handleClick} onDelete={handleDelete}>
+        Delete Me
+      </Chip>
+      <Chip disabled onClick={handleClick} onDelete={handleDelete}>
+        Delete Me (nothing happens)
+      </Chip>
+    </Space>
   )
 }
 
-export const ChipPrefix = () => {
+export const Prefix = () => {
   return (
-    <>
-      <Heading>Prefix</Heading>
-      <Space>
-        <Chip>no prefix</Chip>
-        <Chip prefix="role">admin</Chip>
-        <Chip prefix="color">purple,purple:neat</Chip>
-      </Space>
-    </>
+    <Space>
+      <Chip>no prefix</Chip>
+      <Chip prefix="role">admin</Chip>
+      <Chip prefix="color">purple,purple:neat</Chip>
+    </Space>
   )
 }
 
@@ -70,21 +67,18 @@ export const ChipButtons = () => {
   const handleClick = () => alert('Clicked!')
   const handleDelete = () => alert('Deleted!')
   return (
-    <>
-      <Heading>ChipButton</Heading>
-      <Space>
-        <ChipButton onClick={handleClick}>Click Me</ChipButton>
-        <ChipButton disabled onClick={handleClick}>
-          Click Me (nothing happens)
-        </ChipButton>
-        <ChipButton onClick={handleClick} onDelete={handleDelete}>
-          Delete Me
-        </ChipButton>
-        <ChipButton disabled onClick={handleClick} onDelete={handleDelete}>
-          Delete Me (nothing happens)
-        </ChipButton>
-      </Space>
-    </>
+    <Space>
+      <ChipButton onClick={handleClick}>Click Me</ChipButton>
+      <ChipButton disabled onClick={handleClick}>
+        Click Me (nothing happens)
+      </ChipButton>
+      <ChipButton onClick={handleClick} onDelete={handleDelete}>
+        Delete Me
+      </ChipButton>
+      <ChipButton disabled onClick={handleClick} onDelete={handleDelete}>
+        Delete Me (nothing happens)
+      </ChipButton>
+    </Space>
   )
 }
 
@@ -97,15 +91,12 @@ export const Removable = () => {
     }
   }
   return (
-    <>
-      <Heading>Remove chips</Heading>
-      <Space>
-        {values.map((item) => (
-          <Chip onDelete={getDeleteHandler(item)} role="option" key={item}>
-            {item}
-          </Chip>
-        ))}
-      </Space>
-    </>
+    <Space>
+      {values.map((item) => (
+        <Chip onDelete={getDeleteHandler(item)} role="option" key={item}>
+          {item}
+        </Chip>
+      ))}
+    </Space>
   )
 }

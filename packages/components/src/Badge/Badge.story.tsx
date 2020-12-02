@@ -24,51 +24,71 @@
 
  */
 
-import React from 'react'
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabListProps,
-  TabPanel,
-  TabPanels,
-} from '@looker/components'
 import { Story } from '@storybook/react/types-6-0'
-
-interface DemoProps extends TabListProps {
-  tabCount: number
-  tabPrefix: string
-}
-
-const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
-  const tabs = new Array(tabCount).fill('tab')
-
-  return (
-    <Tabs>
-      <TabList {...args}>
-        {tabs.map((_k, index) => (
-          <Tab key={index}>
-            {tabPrefix} {index}
-          </Tab>
-        ))}
-      </TabList>
-      <TabPanels>
-        {tabs.map((_k, index) => (
-          <TabPanel key={index}>This is {index}</TabPanel>
-        ))}
-      </TabPanels>
-    </Tabs>
-  )
-}
-
-export const Primary = Template.bind({})
-Primary.args = {
-  distribute: true,
-  tabCount: 20,
-  tabPrefix: 'My Awesome Tab',
-}
+import React from 'react'
+import { Badge, BadgeProps } from './Badge'
 
 export default {
-  component: Tabs,
-  title: 'Tabs',
+  component: Badge,
+  title: 'Badge',
+}
+
+const Template: Story<BadgeProps> = (args) => <Badge {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Basic',
+}
+export const Small = Template.bind({})
+Small.args = {
+  children: 'Small',
+  size: 'small',
+}
+
+export const Medium = Template.bind({})
+Medium.args = {
+  children: 'Medium',
+  size: 'medium',
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  children: 'Large',
+  size: 'large',
+}
+
+export const Key = Template.bind({})
+Key.args = {
+  children: 'Key',
+  intent: 'key',
+}
+
+export const Positive = Template.bind({})
+Positive.args = {
+  children: 'Positive',
+  intent: 'positive',
+}
+
+export const Inform = Template.bind({})
+Inform.args = {
+  children: 'Inform',
+  intent: 'inform',
+}
+
+export const Neutral = Template.bind({})
+Neutral.args = {
+  children: 'Neutral',
+  intent: 'neutral',
+}
+
+export const Warn = Template.bind({})
+Warn.args = {
+  children: 'Warn',
+  intent: 'warn',
+}
+
+export const Critical = Template.bind({})
+Critical.args = {
+  children: 'Critical',
+  intent: 'critical',
 }
