@@ -26,19 +26,20 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { FieldTime } from './FieldTime'
 
 test('FieldTime renders and displays label', () => {
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldTime defaultValue="14:34" id="FieldTimeID" label="Test Label" />
   )
 
-  expect(wrapper.text()).toMatch(`Test Label`)
+  expect(screen.getByText('Test Label')).toBeInTheDocument()
 })
 
 test('FieldTime should accept detail and description attributes', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldTime
       defaultValue="14:34"
       description="this is the description"
@@ -48,13 +49,14 @@ test('FieldTime should accept detail and description attributes', () => {
     />
   )
 
-  const input = getByLabelText('Label')
-  expect(input.getAttribute('detail')).toBeDefined()
-  expect(input.getAttribute('description')).toBeDefined()
+  expect(screen.getByText('5/50')).toBeInTheDocument()
+  expect(screen.getAllByLabelText('Label')[0]).toHaveDescription(
+    'this is the description'
+  )
 })
 
 test('FieldTime should accept a disabled prop', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldTime
       defaultValue="14:34"
       disabled
@@ -63,12 +65,14 @@ test('FieldTime should accept a disabled prop', () => {
     />
   )
 
-  const input = getByLabelText('Disabled Label')
-  expect(input.getAttribute('disabled')).toBeDefined()
+  expect(screen.getAllByLabelText('Disabled Label')[0]).toHaveAttribute(
+    'aria-disabled',
+    'true'
+  )
 })
 
 test('FieldTime should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldTime
       defaultValue="14:34"
       id="FieldTimeID"
@@ -76,13 +80,13 @@ test('FieldTime should accept required attributes', () => {
       required
     />
   )
-  expect(getByText('required')).toBeVisible()
+  expect(screen.getByText('required')).toBeVisible()
 })
 
 test('FieldTime should display error message', () => {
   const errorMessage = 'This is an error'
 
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldTime
       defaultValue="14:34"
       id="FieldTimeID"
@@ -91,5 +95,5 @@ test('FieldTime should display error message', () => {
     />
   )
 
-  expect(getByText('This is an error')).toBeVisible()
+  expect(screen.getByText(errorMessage)).toBeVisible()
 })

@@ -84,9 +84,7 @@ describe('useFocusTrap', () => {
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
 
-      await waitFor(() =>
-        expect(document.activeElement).toBe(screen.getByTestId('surface'))
-      )
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
     })
 
     test('focus starts on autoFocus element', async () => {
@@ -101,7 +99,7 @@ describe('useFocusTrap', () => {
       fireEvent.click(toggle)
 
       await waitFor(() =>
-        expect(document.activeElement).toBe(screen.getByLabelText('Text field'))
+        expect(screen.getByLabelText('Text field')).toHaveFocus()
       )
     })
 
@@ -132,12 +130,10 @@ describe('useFocusTrap', () => {
       toggle.focus()
       fireEvent.click(toggle)
 
-      await waitFor(() =>
-        expect(document.activeElement).toBe(screen.getByTestId('surface'))
-      )
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
 
       fireEvent.click(toggle)
-      await waitFor(() => expect(document.activeElement).toBe(toggle))
+      await waitFor(() => expect(toggle).toHaveFocus())
     })
 
     test('focus does not return to trigger', async () => {
@@ -150,14 +146,12 @@ describe('useFocusTrap', () => {
       toggle.focus()
       fireEvent.click(toggle)
 
-      await waitFor(() =>
-        expect(document.activeElement).toBe(screen.getByTestId('surface'))
-      )
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
 
       const otherButton = screen.getByText('Another button')
       fireEvent.click(otherButton)
       otherButton.focus()
-      expect(document.activeElement).toBe(otherButton)
+      expect(otherButton).toHaveFocus()
     })
   })
 
@@ -182,7 +176,7 @@ describe('useFocusTrap', () => {
       const last = screen.getByText('Last')
       last.focus()
       fireEvent.keyDown(last, { key: 'Tab' })
-      expect(document.activeElement).toBe(screen.getByText('First'))
+      expect(screen.getByText('First')).toHaveFocus()
     })
 
     test('focus the last tabbable element after shift-tabbing from the first', async () => {
@@ -194,7 +188,7 @@ describe('useFocusTrap', () => {
       const first = screen.getByText('First')
       first.focus()
       fireEvent.keyDown(first, { key: 'Tab', shiftKey: true })
-      expect(document.activeElement).toBe(screen.getByText('Last'))
+      expect(screen.getByText('Last')).toHaveFocus()
     })
 
     test('do nothing when not focused on first or last tabbable element', async () => {
@@ -209,7 +203,7 @@ describe('useFocusTrap', () => {
       // but useFocusTrap uses the keydown event to cycle focus on first & last
       // because using focus/blur events would be "too late"
       fireEvent.keyDown(input, { key: 'Tab' })
-      expect(document.activeElement).toBe(input)
+      expect(input).toHaveFocus()
     })
   })
 })

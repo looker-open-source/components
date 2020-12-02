@@ -63,6 +63,8 @@ import {
 import { ValidationType } from '../../ValidationMessage'
 
 export interface InputTimeProps extends Omit<SimpleLayoutProps, 'size'> {
+  'aria-describedby'?: string
+  'aria-labelledby'?: string
   autoFocus?: boolean
   format?: TimeFormats
   defaultValue?: string
@@ -267,6 +269,8 @@ const InputTimeInternal = forwardRef(
     {
       className,
       defaultValue,
+      'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
       autoFocus,
       disabled,
       format = '12h',
@@ -471,6 +475,9 @@ const InputTimeInternal = forwardRef(
         onFocus={onFocus}
         onBlur={onBlur}
         aria-invalid={validationType === 'error' ? 'true' : undefined}
+        aria-describedby={ariaDescribedby}
+        aria-labelledby={ariaLabelledby}
+        aria-disabled={disabled}
       >
         <StyledInput
           id={id}

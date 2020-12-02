@@ -37,24 +37,24 @@ test('Accepts defaultChecked prop, and toggles value without change handler', ()
   const { getByRole } = renderWithTheme(<Checkbox defaultChecked />)
   const checkboxInput = getByRole('checkbox')
 
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+  expect(checkboxInput as HTMLInputElement).toBeChecked()
 
   fireEvent.click(checkboxInput)
 
   // toggled state:
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(false)
+  expect(checkboxInput as HTMLInputElement).not.toBeChecked()
 })
 
 test('Accepts checked prop, and is read only without a change handler', () => {
   const { getByRole } = renderWithTheme(<Checkbox checked />)
   const checkboxInput = getByRole('checkbox')
 
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+  expect(checkboxInput as HTMLInputElement).toBeChecked()
 
   fireEvent.click(checkboxInput)
 
   // unchanged state:
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+  expect(checkboxInput as HTMLInputElement).toBeChecked()
 })
 
 test('Triggers onChange handler', () => {
@@ -67,12 +67,12 @@ test('Triggers onChange handler', () => {
   const checkboxInput = getByRole('checkbox')
 
   expect(mockProps.onChange).not.toHaveBeenCalled()
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(false)
+  expect(checkboxInput as HTMLInputElement).not.toBeChecked()
 
   fireEvent.click(checkboxInput)
 
   expect(mockProps.onChange).toHaveBeenCalledTimes(1)
-  expect((checkboxInput as HTMLInputElement).checked).toEqual(true)
+  expect(checkboxInput as HTMLInputElement).toBeChecked()
 })
 
 test('Checkbox checked set to mixed', () => {

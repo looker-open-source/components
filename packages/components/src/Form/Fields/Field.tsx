@@ -123,7 +123,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 
   const labelComponent = (
-    <Label htmlFor={ariaLabelOnly ? undefined : id} id={`${id}-labelledby`}>
+    <Label htmlFor={ariaLabelOnly ? undefined : id} id={`labelledby-${id}`}>
       {label}
       {required && <RequiredStar />}
     </Label>
@@ -138,7 +138,7 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
       )}
       {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
-      <MessageArea id={`${id}-describedby`}>
+      <MessageArea id={`describedby-${id}`}>
         {fieldDescription}
         {fieldValidation}
       </MessageArea>

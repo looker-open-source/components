@@ -63,6 +63,7 @@ export interface RangeSliderProps
     WidthProps,
     TypographyProps {
   'aria-labelledby'?: string
+  'aria-describedby'?: string
   max?: number
   min?: number
   step?: number
@@ -176,6 +177,7 @@ export const InternalRangeSlider = forwardRef(
       disabled = false,
       readOnly: readOnlyProp = false,
       'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -343,7 +345,11 @@ export const InternalRangeSlider = forwardRef(
         id={id}
         ref={setContainerRef}
       >
-        <SliderTrack ref={ref} aria-labelledby={ariaLabelledby}>
+        <SliderTrack
+          ref={ref}
+          aria-labelledby={ariaLabelledby}
+          aria-describedby={ariaDescribedby}
+        >
           <SliderFill
             fillStart={minPos}
             fillWidth={fillWidth}

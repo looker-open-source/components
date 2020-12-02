@@ -46,8 +46,8 @@ const FieldSelectComponent = forwardRef(
       >
         <Select
           {...omitFieldProps(props)}
-          aria-describedby={`${id}-describedby`}
-          aria-labelledby={`${id}-labelledby`}
+          aria-describedby={`describedby-${id}`}
+          aria-labelledby={`labelledby-${id}`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}

@@ -103,7 +103,7 @@ describe('inputFilterEditor', () => {
       </>
     )
     const checkbox = getByLabelText('Gouda')
-    expect(checkbox.getAttribute('type')).toEqual('checkbox')
+    expect(checkbox).toHaveAttribute('type', 'checkbox')
   })
 
   test('displays RadioGroup when multiple = false', () => {
@@ -118,6 +118,6 @@ describe('inputFilterEditor', () => {
       </>
     )
     const radio = getByLabelText('Gouda')
-    expect(radio.getAttribute('type')).toEqual('radio')
+    expect(radio).toHaveAttribute('type', 'radio')
   })
 })

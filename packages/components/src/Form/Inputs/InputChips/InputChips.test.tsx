@@ -282,11 +282,11 @@ tag2`
     const input = screen.getByPlaceholderText('type here')
 
     fireEvent.mouseDown(chip)
-    expect(document.activeElement).not.toEqual(input)
+    expect(input).not.toHaveFocus()
 
     // Focus should move _after_ delete button is clicked
     fireEvent.click(deleteButton)
-    expect(document.activeElement).toEqual(input)
+    expect(input).toHaveFocus()
 
     rafSpy.mockRestore()
   })
@@ -308,11 +308,11 @@ tag2`
     const input = screen.getByPlaceholderText('type here')
 
     fireEvent.mouseDown(clear)
-    expect(document.activeElement).not.toEqual(input)
+    expect(input).not.toHaveFocus()
 
     // Focus should move _after_ clear button is clicked
     fireEvent.click(clear)
-    expect(document.activeElement).toEqual(input)
+    expect(input).toHaveFocus()
 
     rafSpy.mockRestore()
   })
@@ -348,7 +348,7 @@ tag2`
         key: 'ArrowLeft',
       })
       // Focus has moved to the hidden input
-      expect(document.activeElement).toBe(hiddenInput)
+      expect(hiddenInput).toHaveFocus()
       hasSelectedValues(['bar'])
 
       fireEvent.keyDown(hiddenInput, {
@@ -365,7 +365,7 @@ tag2`
         key: 'ArrowRight',
       })
       // Focus moves back to the main input
-      expect(document.activeElement).toBe(input)
+      expect(input).toHaveFocus()
       hasNoSelectedValues()
     })
 
@@ -397,7 +397,7 @@ tag2`
         shiftKey: true,
       })
       // Focus moves back to the main input
-      expect(document.activeElement).toBe(input)
+      expect(input).toHaveFocus()
       hasNoSelectedValues()
 
       // Move to the first value
@@ -510,10 +510,10 @@ tag2`
       const hiddenInput = screen.getByTestId('hidden-input')
 
       fireEvent.click(foo)
-      expect(document.activeElement).toEqual(hiddenInput)
+      expect(hiddenInput).toHaveFocus()
       fireEvent.keyDown(hiddenInput, { key: 'Delete' })
       expect(onChangeMock).toHaveBeenCalledWith(['bar'])
-      expect(document.activeElement).toEqual(input)
+      expect(input).toHaveFocus()
 
       fireEvent.click(bar)
       fireEvent.keyDown(hiddenInput, { key: 'Backspace' })

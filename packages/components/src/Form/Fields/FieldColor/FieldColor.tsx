@@ -46,7 +46,7 @@ const FieldColorComponent = forwardRef(
         <InputColor
           {...omitFieldProps(props)}
           id={id}
-          aria-describedby={`${id}-describedby`}
+          aria-describedby={`describedby-${id}`}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
