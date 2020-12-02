@@ -23,57 +23,75 @@
  SOFTWARE.
 
  */
+
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import {
-  Button,
-  FieldText,
-  FieldCheckbox,
-  FieldRadio,
-  FieldToggleSwitch,
-  Icon,
-  InputText,
-  Space,
-  Text,
-  Tooltip,
-  useToggle,
-  SpaceVertical,
-} from '@looker/components'
+import { Button } from '../../../Button'
+import { Icon } from '../../../Icon'
+import { Space, SpaceVertical } from '../../../Layout'
+import { Text } from '../../../Text'
+import { Tooltip } from '../../../Tooltip'
+import { useToggle } from '../../../utils'
+import { FieldCheckbox } from '../FieldCheckbox'
+import { FieldRadio } from '../FieldRadio'
+import { FieldToggleSwitch } from '../FieldToggleSwitch'
+import { FieldText, FieldTextProps } from './FieldText'
 
 export default {
-  title: 'Forms/Text',
+  component: FieldText,
+  title: 'FieldText',
 }
 
-export const Basic = () => <FieldText label="Text Input" />
-export const Detail = () => <FieldText label="Text Input" detail="0/50" />
-export const Description = () => (
-  <FieldText
-    label="Text Input"
-    description="Some important information about this field"
-  />
-)
-export const Inline = () => (
-  <FieldText label="Text Input" inline detail="Detail inline looks like this" />
-)
-export const Disabled = () => <FieldText label="Text Input" disabled />
-export const Required = () => <FieldText label="Text Input" required />
-export const Placeholder = () => (
-  <FieldText label="Text Input" placeholder="Placeholder text here" />
-)
-export const Value = () => <FieldText label="Text Input" value="Text here" />
-export const ValidationError = () => (
-  <FieldText
-    label="Text Input"
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
-)
-export const Before = () => <FieldText before="$" label="Dollars" />
-export const After = () => <FieldText after="%" label="Percent" />
-export const IconBefore = () => (
-  <FieldText iconBefore="GearOutline" label="Settings" />
-)
-export const IconAfter = () => (
-  <FieldText iconAfter="GearOutline" label="Settings" />
-)
+const Template: Story<FieldTextProps> = (args) => <FieldText {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = { label: 'Text Input' }
+
+export const Detail = Template.bind({})
+Detail.args = { ...Basic.args, detail: '0/50' }
+
+export const Description = Template.bind({})
+Description.args = {
+  ...Basic.args,
+  description: 'Some important information about this field',
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  ...Basic.args,
+  detail: 'Detail inline looks like this',
+  inline: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = { ...Basic.args, disabled: true }
+
+export const Required = Template.bind({})
+Required.args = { ...Basic.args, required: true }
+
+export const Placeholder = Template.bind({})
+Placeholder.args = { ...Basic.args, placeholder: 'Placeholder text here' }
+
+export const Value = Template.bind({})
+Value.args = { ...Basic.args, value: 'Text here' }
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const Before = Template.bind({})
+Before.args = { before: '$', label: 'Dollars' }
+
+export const After = Template.bind({})
+After.args = { after: '%', label: 'Percent' }
+
+export const IconBefore = Template.bind({})
+IconBefore.args = { iconBefore: 'GearOutline', label: 'Settings' }
+
+export const IconAfter = Template.bind({})
+IconAfter.args = { iconAfter: 'GearOutline', label: 'Settings' }
 
 export const Toggles = () => (
   <>
@@ -100,10 +118,14 @@ export const Toggles = () => (
   </>
 )
 
-export function AutoResize() {
+Toggles.parameters = {
+  storyshots: { disable: true },
+}
+
+export const AutoResize = () => {
   return (
     <Space alignItems="flex-end">
-      <InputText autoResize placeholder="Start typing to resize me" />
+      <FieldText autoResize placeholder="Start typing to resize me" />
       <FieldText
         label="I also resize"
         autoResize
@@ -121,7 +143,11 @@ export function AutoResize() {
   )
 }
 
-export function BeforeAfterValidation() {
+AutoResize.parameters = {
+  storyshots: { disable: true },
+}
+
+export const BeforeAfterValidation = () => {
   const { value, toggle } = useToggle(true)
   const validation = value
     ? { validationMessage: { message: 'Oops!', type: 'error' as 'error' } }
@@ -155,4 +181,8 @@ export function BeforeAfterValidation() {
       </Space>
     </SpaceVertical>
   )
+}
+
+BeforeAfterValidation.parameters = {
+  storyshots: { disable: true },
 }

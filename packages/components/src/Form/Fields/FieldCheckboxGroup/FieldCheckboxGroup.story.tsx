@@ -32,6 +32,7 @@ import {
 } from './FieldCheckboxGroup'
 
 export default {
+  component: FieldCheckboxGroup,
   title: 'FieldCheckboxGroup',
 }
 

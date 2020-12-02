@@ -23,29 +23,49 @@
  SOFTWARE.
 
  */
-import React from 'react'
 
-import { FieldTextArea, Fieldset, TextArea } from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
+import React from 'react'
+import { FieldTextArea, FieldTextAreaProps } from './FieldTextArea'
 
 export default {
-  title: 'Forms/TextArea',
+  component: FieldTextArea,
+  title: 'FieldTextArea',
 }
 
-export const Basic = () => <FieldTextArea label="Text Area" />
-export const Disabled = () => <FieldTextArea label="Text Area" disabled />
-export const Required = () => <FieldTextArea label="Text Area" required />
-export const Error = () => (
-  <FieldTextArea
-    label="Text Area"
-    validationMessage={{ message: 'Error Message', type: 'error' }}
-  />
+const Template: Story<FieldTextAreaProps> = (args) => (
+  <FieldTextArea {...args} />
 )
 
-export const Inline = () => <FieldTextArea label="Text Area" inline />
+export const Basic = Template.bind({})
+Basic.args = { label: 'Text Area' }
 
-export const Resize = () => (
-  <Fieldset>
-    <TextArea resize={false} placeholder="no resize" />
-    <TextArea resize="vertical" placeholder="resize vertically" />
-  </Fieldset>
-)
+export const Disabled = Template.bind({})
+Disabled.args = { ...Basic.args, disabled: true }
+
+export const Required = Template.bind({})
+Required.args = { ...Basic.args, required: true }
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  ...Basic.args,
+  inline: true,
+}
+
+export const NoResize = Template.bind({})
+NoResize.args = {
+  placeholder: 'no resize',
+  resize: false,
+}
+
+export const VerticalResize = Template.bind({})
+VerticalResize.args = {
+  placeholder: 'resize vertically',
+  resize: 'vertical',
+}

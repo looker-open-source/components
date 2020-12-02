@@ -75,7 +75,6 @@ export interface InputChipsControlProps {
   onChange: (values: string[]) => void
   /**
    * When the user selects and copies chips, what should the text be
-   * @default joinValues
    */
   formatTextToCopy?: (values: string[]) => string
   onClear?: () => void

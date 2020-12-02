@@ -23,43 +23,46 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+
+import { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
-import {
-  Button,
-  FieldTime,
-  InputTime,
-  Paragraph,
-  Space,
-  SpaceVertical,
-} from '@looker/components'
+import React, { useState } from 'react'
+import { Button } from '../../../Button'
+import { Space, SpaceVertical } from '../../../Layout'
+import { Paragraph } from '../../../Text'
+import { FieldTime, FieldTimeProps } from './FieldTime'
 
 export default {
-  title: 'Forms/Time',
+  component: FieldTime,
+  title: 'FieldTime',
 }
 
-export const Basic = () => (
-  <FieldTime defaultValue="14:34" format="12h" label="Label" />
-)
+const Template: Story<FieldTimeProps> = (args) => <FieldTime {...args} />
 
-export const Disabled = () => (
-  <FieldTime disabled label="Label" defaultValue="02:34" />
-)
+export const Basic = Template.bind({})
+Basic.args = { defaultValue: '14:34', format: '12h', label: 'Label' }
 
-export const Required = () => (
-  <FieldTime label="Label" defaultValue="14:34" required />
-)
+export const Disabled = Template.bind({})
+Disabled.args = { defaultValue: '02:34', disabled: true, label: 'Label' }
 
-export const ValidationError = () => (
-  <FieldTime
-    autoFocus
-    defaultValue="14:34"
-    description="this is the description is a very long one"
-    detail="detail"
-    label="Label"
-    validationMessage={{ message: 'validation Message', type: 'error' }}
-  />
-)
+export const Required = Template.bind({})
+Required.args = { defaultValue: '14:34', label: 'Label', required: true }
+
+export const Error = Template.bind({})
+Error.args = {
+  defaultValue: '14:34',
+  description: 'this is the description is a very long one',
+  detail: 'detail',
+  label: 'Label',
+  validationMessage: { message: 'validation Message', type: 'error' },
+}
+
+export const MilitaryTime = Template.bind({})
+MilitaryTime.args = {
+  defaultValue: '14:34',
+  format: '24h',
+  label: 'Label',
+}
 
 export const Controlled = () => {
   const [controlledTime, setControlledTime] = useState<string | undefined>(
@@ -75,18 +78,11 @@ export const Controlled = () => {
         <Button onClick={partial(setControlledTime, '16:32')}>4:32pm</Button>
       </Space>
 
-      <InputTime value={controlledTime} onChange={setControlledTime} />
+      <FieldTime value={controlledTime} onChange={setControlledTime} />
     </SpaceVertical>
   )
 }
 
-export const MilitaryTime = () => {
-  const [format24Time, setFormat24Time] = useState<string>()
-
-  return (
-    <>
-      <Paragraph>Selected: {format24Time}</Paragraph>
-      <InputTime format="24h" defaultValue="14:34" onChange={setFormat24Time} />
-    </>
-  )
+Controlled.parameters = {
+  storyshots: { disable: true },
 }

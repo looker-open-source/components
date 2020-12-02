@@ -1,6 +1,6 @@
-import { useCallbackRef, useMeasuredElement } from '@looker/components'
+import { useCallbackRef, useResize } from '@looker/components'
 import { addDecorator } from '@storybook/react'
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   ArgsTable,
   Primary,
@@ -9,15 +9,22 @@ import {
 } from '@storybook/addon-docs/blocks'
 import { componentsDecorator } from '../../packages/storybook-config/src/componentsDecorator'
 
-const postHeightMessage = (height) => {
+// Supports parent page (in Gatsby) resizing the iframe dynamically
+// to avoid scrolling
+// Note: resizing to a smaller height currently does not work due to a
+// min-height: 100vh on one of the wrapper divs
+const postHeightMessage = () => {
   const isDev = process.env.NODE_ENV === 'development'
-  // first parameter is the message to be passed
-  // second paramter is the domain of the parent
-  // in this case "*" has been used for demo sake (denoting no preference)
-  // in production always pass the target domain for which the message is intended
-  const { protocol, hostname } = window.location
-  const targetOrigin = `${protocol}//${hostname}${isDev ? ':8000' : ''}`
-  window.top.postMessage({ key: 'height', height }, targetOrigin)
+  const { protocol, hostname, search } = window.location
+  const urlParams = new URLSearchParams(search)
+  const isGatsby = urlParams.get('parent') === 'gatsby'
+  if (isGatsby) {
+    const targetOrigin = `${protocol}//${hostname}${isDev ? ':8000' : ''}`
+    window.top.postMessage(
+      { key: 'height', height: document.body.scrollHeight },
+      targetOrigin
+    )
+  }
 }
 
 export const parameters = {
@@ -25,12 +32,8 @@ export const parameters = {
   docs: {
     page: () => {
       const [element, ref] = useCallbackRef()
-      // height will update anytime the outer div is resized
-      // but we need to use body.scrollHeight to get the accurate measure
-      const { height } = useMeasuredElement(element)
-      useEffect(() => {
-        postHeightMessage(document.body.scrollHeight)
-      }, [height])
+      useResize(element, postHeightMessage)
+
       return (
         <div ref={ref}>
           <Primary />

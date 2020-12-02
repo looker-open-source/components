@@ -24,44 +24,34 @@
 
  */
 
-import React, {
-  useState,
-  SyntheticEvent,
-  Dispatch,
-  SetStateAction,
-} from 'react'
-import { FieldSlider, Slider } from '@looker/components'
+import { useLayoutEffect } from 'react'
+import ResizeObserver from 'resize-observer-polyfill'
 
-export default {
-  title: 'Forms/Slider',
-}
+/**
+ * Calls the provided handler function when the element is resized
+ * @param element the element to observe
+ * @param handler the function to call on resize
+ */
+export const useResize = (element: HTMLElement | null, handler: () => void) => {
+  useLayoutEffect(() => {
+    if (!element) {
+      return
+    }
 
-const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
-  return (event: SyntheticEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement
-    cb(parseInt(target.value, 10))
-  }
-}
+    const resizeObserver = new ResizeObserver(() => handler())
+    if (element) {
+      resizeObserver.observe((element as unknown) as HTMLElement)
+    }
 
-export const Basic = () => <Slider min={0} max={5} />
-export const Disabled = () => <Slider min={0} max={5} value={3} disabled />
-export const Steps = () => (
-  <FieldSlider label="Step" min={100} max={10000} step={100} />
-)
+    window.addEventListener('resize', handler)
 
-export const Controlled = () => {
-  const [value, setValue] = useState(8)
-  const onChange = handleEvent(setValue)
+    return () => {
+      if (!resizeObserver) {
+        return
+      }
 
-  return (
-    <FieldSlider
-      label="Controlled"
-      description="Min: 0, Max: 11"
-      min={0}
-      max={11}
-      value={value}
-      onChange={onChange}
-      aria-labelledby="test-id"
-    />
-  )
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', handler)
+    }
+  }, [handler, element])
 }

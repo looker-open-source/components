@@ -24,17 +24,58 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import {
-  FieldChips,
-  Grid,
-  InputChips,
-  Paragraph,
-  SpaceVertical,
-} from '@looker/components'
+import { Grid, SpaceVertical } from '../../../Layout'
+import { Paragraph } from '../../../Text'
+import { FieldChips, FieldChipsProps } from './FieldChips'
 
 export default {
-  title: 'Forms/Chips',
+  component: FieldChips,
+  title: 'FieldChips',
+}
+
+const Template: Story<FieldChipsProps & { initialValues: string[] }> = (
+  args
+) => {
+  const initialValues = args.initialValues || ['apples']
+  const [values, setValues] = useState<string[]>(initialValues)
+  console.log(values)
+
+  return <FieldChips {...args} values={values} onChange={setValues} />
+}
+
+export const Basic = Template.bind({})
+
+export const Truncate = Template.bind({})
+Truncate.args = {
+  initialValues: ['A very long token that will truncate'],
+  label: 'Truncate',
+  width: 250,
+}
+
+export const Overflow = Template.bind({})
+Overflow.args = {
+  initialValues: [
+    'California',
+    'Wyoming',
+    'Nevada',
+    'Wisconsin',
+    'Mississippi',
+    'Missouri',
+    'New York',
+    'New Jersey',
+  ],
+  label: 'Overflow',
+  maxHeight: 145,
+  width: 200,
+}
+
+export const AutoResize = Template.bind({})
+AutoResize.args = {
+  autoResize: true,
+  maxWidth: '50vw',
+  placeholder: 'Auto Resize',
 }
 
 export const FieldChipOptions = () => {
@@ -68,11 +109,8 @@ export const FieldChipOptions = () => {
   )
 }
 
-export const Basic = () => {
-  const [values, setValues] = useState<string[]>(['apples'])
-  const handleChange = (vals: string[]) => setValues(vals)
-
-  return <InputChips values={values} onChange={handleChange} />
+FieldChipOptions.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Controlled = () => {
@@ -82,7 +120,7 @@ export const Controlled = () => {
   const handleInputChange = (value: string) => setInputValue(value)
 
   return (
-    <InputChips
+    <FieldChips
       values={values}
       inputValue={inputValue}
       onChange={handleChange}
@@ -90,6 +128,10 @@ export const Controlled = () => {
       summary="summary"
     />
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }
 
 const emailValidator = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -113,7 +155,7 @@ export const ValidationDuplicate = () => {
 
   return (
     <SpaceVertical>
-      <InputChips
+      <FieldChips
         values={values}
         onChange={handleChange}
         placeholder="Email validation"
@@ -128,53 +170,6 @@ export const ValidationDuplicate = () => {
   )
 }
 
-export function Truncate() {
-  const [values, setValues] = useState<string[]>([
-    'A very long token that will truncate',
-  ])
-
-  return (
-    <FieldChips
-      label="Truncate"
-      width={250}
-      values={values}
-      onChange={setValues}
-    />
-  )
-}
-export function Overflow() {
-  const [values, setValues] = useState<string[]>([
-    'California',
-    'Wyoming',
-    'Nevada',
-    'Wisconsin',
-    'Mississippi',
-    'Missouri',
-    'New York',
-    'New Jersey',
-  ])
-
-  return (
-    <FieldChips
-      label="Overflow"
-      width={200}
-      maxHeight={145}
-      values={values}
-      onChange={setValues}
-    />
-  )
-}
-
-export function AutoResize() {
-  const [values, setValues] = useState<string[]>([])
-
-  return (
-    <InputChips
-      autoResize
-      maxWidth="50vw"
-      placeholder="Auto Resize"
-      values={values}
-      onChange={setValues}
-    />
-  )
+ValidationDuplicate.parameters = {
+  storyshots: { disable: true },
 }

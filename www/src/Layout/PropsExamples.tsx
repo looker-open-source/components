@@ -31,13 +31,12 @@ import styled from 'styled-components'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const storybookLink = (component: string) =>
-  isDev
-    ? `//${
-        window.location.hostname
-      }:3333/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
-    : `/storybook/iframe.html?id=${component.toLowerCase()}&viewMode=docs`
-
+const storybookLink = (component: string) => {
+  const page = `iframe.html?id=${component.toLowerCase()}&viewMode=docs&parent=gatsby`
+  return isDev
+    ? `//${window.location.hostname}:3333/${page}`
+    : `/storybook/${page}`
+}
 export interface PropsExamplesProps {
   component: string
 }

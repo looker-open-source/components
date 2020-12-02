@@ -70,9 +70,8 @@ interface DocQuery {
 
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { github, status, /* storybook, */ title } = mdx.frontmatter
+  const { github, status, storybook, title } = mdx.frontmatter
 
-  const storybook = true
   const tab = useTabs()
   const body = <MDXRenderer>{mdx.body}</MDXRenderer>
 
@@ -93,13 +92,18 @@ const DocumentationLayout = (props: DocQuery) => {
               <Tab>Overview</Tab>
               <Tab>
                 Storybook{' '}
-                <Text fontSize="xsmall" variant="subdued" fontWeight="normal">
+                <Text
+                  fontSize="xsmall"
+                  variant="subdued"
+                  fontWeight="normal"
+                  lineHeight="normal"
+                >
                   Props &amp; Examples
                 </Text>
               </Tab>
             </TabList>
           )}
-          <Space width="auto" ml="auto" gap="xsmall">
+          <Space width="auto" ml="auto" my="medium" gap="xsmall">
             <Link
               fontSize="small"
               href={`${githubBase}${github}`}
@@ -113,7 +117,7 @@ const DocumentationLayout = (props: DocQuery) => {
           </Space>
         </CustomTabs>
         {storybook ? (
-          <TabPanels {...tab}>
+          <TabPanels {...tab} pt="none">
             <TabPanel>{body}</TabPanel>
             {storybook && (
               <TabPanel>
@@ -139,7 +143,7 @@ const CustomTabs = styled(Space)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   display: flex;
-  margin-top: ${({ theme }) => theme.space.small};
+  margin: ${({ theme: { space } }) => `${space.small} 0 ${space.large}`};
   min-height: ${({ theme }) => theme.space.large};
 
   ${TabList} {
@@ -165,6 +169,7 @@ export const pageQuery = graphql`
         github
         propsOf
         status
+        storybook
         title
       }
     }

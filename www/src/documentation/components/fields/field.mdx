@@ -3,4 +3,33 @@ title: Field
 github: Form/Fields/Field
 ---
 
-@TODO - We should explain how you can compose your own `Field`
+`Field` is the container used in all `Field`- components to provide information,
+accessibity, and consistent layout and design to all inputs.
+
+Below is an example of how you might compose your own field.
+
+```jsx
+;() => {
+  const id = 'coolField'
+  const validation = { message: 'An error message', type: 'error' }
+  return (
+    <Field
+      id={id}
+      label="A combo field"
+      description="Please fill out both inputs"
+      detail="with 2 inputs"
+      validationMessage={validation}
+      width={300}
+    >
+      <Space gap="small">
+        <InputText id={id} aria-describedby={`${id}-describedby`} width={100} />
+        <InputText
+          id={id}
+          aria-describedby={`${id}-describedby`}
+          validationType={validation.type}
+        />
+      </Space>
+    </Field>
+  )
+}
+```

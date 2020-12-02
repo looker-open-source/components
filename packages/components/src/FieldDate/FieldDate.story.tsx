@@ -23,50 +23,43 @@
  SOFTWARE.
 
  */
-import React, { FC, useState, SyntheticEvent } from 'react'
+import { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
-import {
-  Button,
-  Grid,
-  Fieldset,
-  Popover,
-  FieldSelect,
-  InputText,
-  FieldSlider,
-  Paragraph,
-  PopoverContent,
-} from '@looker/components'
-import { Locales, LocaleCodes } from '@looker/components/src/utils/i18n'
-import { DateFormat } from '@looker/components/src/DateFormat'
-import { FieldDate } from '@looker/components/src/FieldDate'
-import { InputDate } from '@looker/components/src/InputDate'
+import React, { useState, SyntheticEvent } from 'react'
+import { Button } from '../Button'
+import { Grid } from '../Layout'
+import { Fieldset, FieldSelect, FieldSlider, FieldText } from '../Form'
+import { Popover, PopoverContent } from '../Popover'
+import { Paragraph } from '../Text'
+import { Locales, LocaleCodes } from '../utils/i18n'
+import { DateFormat } from '../DateFormat'
+import { FieldDate, FieldDateProps } from '../FieldDate'
 
 export default {
+  component: FieldDate,
   title: 'Forms/Date',
 }
 
-export const Basic = () => {
-  const [date, setDate] = useState<Date | undefined>()
+const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />
 
-  return (
-    <>
-      <Paragraph>
-        Selected: {date && new Intl.DateTimeFormat().format(date)}
-      </Paragraph>
-      <FieldDate label="Example" value={date} onChange={setDate} />
-    </>
-  )
+export const Basic = Template.bind({})
+Basic.args = { label: 'Example' }
+
+export const Disabled = Template.bind({})
+Disabled.args = { ...Basic.args, disabled: true }
+
+export const Required = Template.bind({})
+Required.args = { ...Basic.args, required: true }
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
 }
-
-export const Disabled = () => <FieldDate label="Example" disabled />
-export const Required = () => <FieldDate label="Example" required />
-export const Error = () => (
-  <FieldDate validationMessage={{ message: 'Error Message', type: 'error' }} />
-)
 
 type DayOfWeekNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-export const Controlled: FC = () => {
+export const Controlled = () => {
   const [controlledDate, setControlledDate] = useState<any>()
 
   function handleNextWeekClick() {
@@ -78,7 +71,7 @@ export const Controlled: FC = () => {
       content={
         <PopoverContent>
           <Button onClick={handleNextWeekClick}>Next Week</Button>
-          <InputDate value={controlledDate} onChange={setControlledDate} />
+          <FieldDate value={controlledDate} onChange={setControlledDate} />
         </PopoverContent>
       }
     >
@@ -95,7 +88,11 @@ export const Controlled: FC = () => {
   )
 }
 
-export const Localized: FC = () => {
+Controlled.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Localized = () => {
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
   const [locale, setLocale] = useState<Locales>(Locales.Italian)
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1)
@@ -163,7 +160,7 @@ export const Localized: FC = () => {
         )}
       </Paragraph>
 
-      <InputDate
+      <FieldDate
         onChange={setLocalizedDate}
         localization={localizationProps}
         dateStringLocale={locale as LocaleCodes}
@@ -207,7 +204,7 @@ export const Localized: FC = () => {
       <Grid>
         <Fieldset legend="Months">
           {months.map((month, key) => (
-            <InputText
+            <FieldText
               value={month}
               key={key}
               onChange={partial(handleMonthChange, key)}
@@ -216,7 +213,7 @@ export const Localized: FC = () => {
         </Fieldset>
         <Fieldset legend="Weekdays (short)">
           {weekdaysShort.map((weekday, key) => (
-            <InputText
+            <FieldText
               value={weekday}
               key={key}
               onChange={partial(handleWeekdaysShortChange, key)}
@@ -227,4 +224,8 @@ export const Localized: FC = () => {
       </Grid>
     </Fieldset>
   )
+}
+
+Localized.parameters = {
+  storyshots: { disable: true },
 }

@@ -24,22 +24,35 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import { FieldRangeSlider, Space, Button } from '@looker/components'
+import { Button } from '../../../Button'
+import { Space } from '../../../Layout'
+import { FieldRangeSlider, FieldRangeSliderProps } from './FieldRangeSlider'
 
 export default {
-  title: 'Forms/RangeSlider',
+  component: FieldRangeSlider,
+  title: 'FieldRangeSlider',
 }
 
-export const Basic = () => <FieldRangeSlider />
-export const Disabled = () => <FieldRangeSlider disabled />
-export const Steps = () => <FieldRangeSlider min={100} max={1000} step={50} />
-export const Floating = () => (
-  <FieldRangeSlider min={0.1} max={1.1} step={0.1} />
+const Template: Story<FieldRangeSliderProps> = (args) => (
+  <FieldRangeSlider {...args} />
 )
-export const ReadOnly = () => (
-  <FieldRangeSlider defaultValue={[3, 7]} readOnly />
-)
+
+export const Basic = Template.bind({})
+Basic.args = {}
+
+export const Disabled = Template.bind({})
+Disabled.args = { disabled: true }
+
+export const Steps = Template.bind({})
+Steps.args = { max: 1000, min: 100, step: 50 }
+
+export const Floating = Template.bind({})
+Floating.args = { max: 1.1, min: 0.1, step: 0.1 }
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = { defaultValue: [3, 7], readOnly: true }
 
 export const Controlled = () => {
   const [controlledValue, setControlledValue] = useState([30, 40])
@@ -63,4 +76,8 @@ export const Controlled = () => {
       </Space>
     </>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disabled: true },
 }
