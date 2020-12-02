@@ -23,29 +23,39 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
-import styled from 'styled-components'
-import { ComponentsProvider, RangeSlider, Grid } from '@looker/components'
+import {
+  ComponentsProvider,
+  FieldSelect,
+  FieldChips,
+  SpaceVertical,
+} from '@looker/components'
 import 'core-js/stable'
 
 const App = () => {
+  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   return (
     <ComponentsProvider loadGoogleFonts>
-      <Wrapper>
-        <Grid width="100%" columns={2}>
-          <RangeSlider />
-          <RangeSlider />
-        </Grid>
-      </Wrapper>
+      <SpaceVertical width={500} p="large">
+        <FieldSelect
+          label="Select value via click"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldChips
+          label="Select current values"
+          description="Then focus out of the field. Confirm values are deselected."
+          values={values}
+          onChange={setValues}
+        />
+      </SpaceVertical>
     </ComponentsProvider>
   )
 }
-
-const Wrapper = styled.div`
-  padding: 50px;
-`
-
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
 })
