@@ -24,16 +24,10 @@
 
  */
 
-import React from 'react'
-import {
-  Tab,
-  Tabs,
-  TabList,
-  TabListProps,
-  TabPanel,
-  TabPanels,
-} from '@looker/components'
+import React, { useState, FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Space } from '../Layout/Space'
+import { Tab, Tabs, TabList, TabListProps, TabPanel, TabPanels } from './'
 
 interface DemoProps extends TabListProps {
   tabCount: number
@@ -61,11 +55,34 @@ const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
   )
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Basic = Template.bind({})
+Basic.args = {
   distribute: true,
   tabCount: 20,
   tabPrefix: 'My Awesome Tab',
+}
+
+export const Controlled: FC = () => {
+  const [currentTabIndex, setTab] = useState(0)
+
+  return (
+    <>
+      <Space>
+        <button onClick={() => setTab(0)}>Go to A</button>
+        <button onClick={() => setTab(1)}>Go to B</button>
+      </Space>
+      <Tabs index={currentTabIndex} onChange={setTab}>
+        <TabList>
+          <Tab>A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
 }
 
 export default {
