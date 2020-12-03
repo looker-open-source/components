@@ -474,7 +474,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
     ${inputTextFocus}
   }
 
-  ${({ disabled }) => disabled && inputTextDisabled}
+  /* ${({ disabled }) => disabled && inputTextDisabled} */
 
   ${inputTextValidation}
 `
