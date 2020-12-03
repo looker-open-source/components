@@ -104,6 +104,7 @@ export const Checkbox = styled(CheckboxLayout)`
   ${space}
 
   height: 1rem;
+  margin: 0.19rem;
   position: relative;
   width: 1rem;
 

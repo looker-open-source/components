@@ -31,6 +31,10 @@ import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
+import { DialogHeader } from '../Layout/DialogHeader'
+import { Checkbox } from '../../Form/Inputs/Checkbox'
+import { DialogContent } from '../Layout/DialogContent'
+import { DialogFooter } from '../Layout/DialogFooter'
 
 export * from './Controlled'
 export * from './SaveChanges'
@@ -40,6 +44,23 @@ const Template: Story<DialogProps> = (args) => (
     <button>Open Dialog</button>
   </Dialog>
 )
+
+export const test = Template.bind({})
+test.args = {
+  content: (
+    <>
+      <DialogHeader>Header</DialogHeader>
+      <DialogContent>
+        The top line & bottom shadow should not be there.
+        <Checkbox checked />
+      </DialogContent>
+      <DialogFooter>Footer</DialogFooter>
+    </>
+  ),
+}
+test.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Basic = Template.bind({})
 Basic.args = {
