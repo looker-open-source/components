@@ -44,10 +44,10 @@ import { Icon } from '../Icon'
 import { ValidationType } from '../Form/ValidationMessage'
 import {
   inputCSS,
-  inputTextDisabled,
   inputTextHover,
   inputTextFocus,
   inputTextValidation,
+  inputTextDisabled,
 } from '../Form/Inputs/InputText'
 import { InlineInputTextBase } from '../Form/Inputs/InlineInputText'
 import { Calendar, CalendarLocalization } from '../Calendar'
@@ -474,9 +474,9 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
     ${inputTextFocus}
   }
 
-  /* ${({ disabled }) => disabled && inputTextDisabled} */
-
   ${inputTextValidation}
+
+  ${({ disabled }) => disabled && inputTextDisabled}
 `
 
 const IconWrapper = styled.div`
