@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Label } from '../Label/Label'
-import { Paragraph, Span } from '../../Text'
+import { Paragraph } from '../../Text'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
 import { Truncate } from '../../Truncate'
 import { FieldBaseProps } from './FieldBase'
@@ -70,7 +70,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   )
 }
 
-const FieldDetail = styled(Span)`
+const FieldDetail = styled(Paragraph)`
   color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   grid-column: 3;
