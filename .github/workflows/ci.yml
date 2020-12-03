@@ -1,0 +1,24 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - $default-branch
+  push:
+    branches:
+      - $default-branch
+
+jobs:
+  build:
+    name: lint build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: v1-npm-deps-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: v1-npm-deps-
+      - run: yarn run-p -c lint:css lint:es
+      - run: yarn build
+      - run: yarn workspace www build
+      - run: yarn workspace storybook build
