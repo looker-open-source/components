@@ -32,7 +32,7 @@ import React, {
   Ref,
 } from 'react'
 import { RangeModifier } from 'react-day-picker'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import partial from 'lodash/partial'
 import min from 'lodash/min'
@@ -456,6 +456,13 @@ interface InputTextGroupWrapperProps {
   validationType?: 'error'
 }
 
+const InputTextDisabled = css`
+  span {
+    align-self: center;
+  }
+  ${inputTextDisabled}
+`
+
 const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
   align-items: center;
@@ -476,7 +483,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
 
   ${inputTextValidation}
 
-  ${({ disabled }) => disabled && inputTextDisabled}
+  ${({ disabled }) => disabled && InputTextDisabled}
 `
 
 const IconWrapper = styled.div`
