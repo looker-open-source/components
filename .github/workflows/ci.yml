@@ -20,5 +20,6 @@ jobs:
           restore-keys: v1-npm-deps-
       - run: yarn run-p -c lint:css lint:es
       - run: yarn build
+      - run: yarn test
       - run: yarn workspace www build
       - run: yarn workspace storybook build
