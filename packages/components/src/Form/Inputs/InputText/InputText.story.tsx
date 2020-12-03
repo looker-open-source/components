@@ -46,6 +46,12 @@ Value.args = {
   value: 'A value',
 }
 
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  value: 'A value',
+}
+
 export const IconBefore = Template.bind({})
 IconBefore.args = {
   iconBefore: 'CircleInfo',
