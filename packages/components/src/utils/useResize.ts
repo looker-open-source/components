@@ -37,6 +37,7 @@ export const useResize = (element: HTMLElement | null, handler: () => void) => {
     if (!element) {
       return
     }
+    handler()
 
     const resizeObserver = new ResizeObserver(() => handler())
     if (element) {
