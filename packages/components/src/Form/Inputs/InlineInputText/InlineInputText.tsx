@@ -110,6 +110,7 @@ const StyledInput = styled.input`
 `
 
 const StyledText = styled.span`
+  align-self: center;
   color: transparent;
   line-height: inherit;
   /* max-width & overflow keep this span from blocking the x button
