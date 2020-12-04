@@ -47,6 +47,10 @@ export interface FieldBaseProps {
    */
   detail?: ReactNode
   /**
+   * notes and more info added to the bottom of the field
+   */
+  description?: ReactNode
+  /**
    *
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
