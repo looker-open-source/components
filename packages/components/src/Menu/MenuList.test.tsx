@@ -24,85 +24,100 @@
 
  */
 
+import { screen } from '@testing-library/react'
 import 'jest-styled-components'
 import * as React from 'react'
-import {
-  mountWithTheme,
-  shallowWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 
-test('Menu', () => {
-  const menu = shallowWithTheme(
-    <MenuList>
-      <MenuItem>boo!</MenuItem>
-      <MenuItem itemRole="link" href="test">
-        boo!
-      </MenuItem>
-    </MenuList>
-  )
+/* eslint-disable-next-line @typescript-eslint/unbound-method */
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
-  expect(menu).toMatchSnapshot()
-  expect(menu.find('div').find('a'))
-})
+describe('Menu', () => {
+  test('allocates space for MenuItem when a sibling has an icon', () => {
+    const { getByTestId } = renderWithTheme(
+      <MenuList>
+        <MenuItem icon="Calendar">Gouda</MenuItem>
+        <MenuItem id="cheddar">Cheddar</MenuItem>
+      </MenuList>
+    )
 
-test('Menu - composed', () => {
-  const menu = shallowWithTheme(
-    <MenuList>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-      </MenuGroup>
-    </MenuList>
-  )
+    getByTestId('menu-item-cheddar-icon-placeholder')
+  })
 
-  expect(menu).toMatchSnapshot()
-})
+  describe('windowing', () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
+      /* eslint-disable-next-line @typescript-eslint/unbound-method */
+      Element.prototype.getBoundingClientRect = jest.fn(() => {
+        return {
+          bottom: 0,
+          height: 342,
+          left: 0,
+          right: 0,
+          toJSON: jest.fn(),
+          top: 0,
+          width: 260,
+          x: 0,
+          y: 0,
+        }
+      })
+    })
 
-// Tests that wrapping MenuItem in another component doesn't break styling inheritance
-const WrappedMenuItem = () => <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+    afterEach(() => {
+      jest.runOnlyPendingTimers()
+      jest.useRealTimers()
+      jest.resetAllMocks()
+      /* eslint-disable-next-line @typescript-eslint/unbound-method */
+      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
+    })
 
-test('Menu - compact', () => {
-  const menu = mountWithTheme(
-    <MenuList compact>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup>
-        <WrappedMenuItem />
-      </MenuGroup>
-    </MenuList>
-  )
+    test('fixed', () => {
+      const arr3000 = Array.from(Array(3000), (_, i) => i)
+      renderWithTheme(
+        <MenuList>
+          {arr3000.map((num) => (
+            <MenuItem key={num}>{num}</MenuItem>
+          ))}
+        </MenuList>
+      )
 
-  expect(menu).toMatchSnapshot()
-})
+      expect(screen.getByText('0')).toBeVisible()
+      expect(screen.getByText('14')).toBeVisible()
+      expect(screen.queryByText('15')).not.toBeInTheDocument()
 
-test('Menu - allocates space for MenuItem when a sibling has an icon', () => {
-  const { getByTestId } = renderWithTheme(
-    <MenuList>
-      <MenuItem icon="Calendar">Gouda</MenuItem>
-      <MenuItem id="cheddar">Cheddar</MenuItem>
-    </MenuList>
-  )
+      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
+      expect(screen.getByTestId('after')).toHaveAttribute(
+        'style',
+        'height: 119400px;'
+      )
+    })
 
-  getByTestId('menu-item-cheddar-icon-placeholder')
+    test('variable', () => {
+      const arr200 = Array.from(Array(200), (_, i) => i)
+      renderWithTheme(
+        <MenuList>
+          {arr200.map((num) => (
+            <MenuGroup key={num}>
+              {Array.from(Array((num + 1) % 15), (_, i) => (
+                <MenuItem key={i}>{`${num}_${i}`}</MenuItem>
+              ))}
+            </MenuGroup>
+          ))}
+        </MenuList>
+      )
+
+      expect(screen.getByText('0_0')).toBeVisible()
+      expect(screen.getByText('6_6')).toBeVisible()
+      expect(screen.queryByText('7_0')).not.toBeInTheDocument()
+
+      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
+      expect(screen.getByTestId('after')).toHaveAttribute(
+        'style',
+        'height: 61993px;'
+      )
+    })
+  })
 })
