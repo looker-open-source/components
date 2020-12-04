@@ -45,23 +45,6 @@ const Template: Story<DialogProps> = (args) => (
   </Dialog>
 )
 
-export const test = Template.bind({})
-test.args = {
-  content: (
-    <>
-      <DialogHeader>Header</DialogHeader>
-      <DialogContent>
-        The top line & bottom shadow should not be there.
-        <Checkbox checked />
-      </DialogContent>
-      <DialogFooter>Footer</DialogFooter>
-    </>
-  ),
-}
-test.parameters = {
-  storyshots: { disable: true },
-}
-
 export const Basic = Template.bind({})
 Basic.args = {
   content: 'Simple Content',
@@ -106,6 +89,23 @@ export const LongContent = Template.bind({})
 LongContent.args = {
   content: <DialogLongContent />,
   defaultOpen: true,
+}
+
+export const withCheckbox = Template.bind({})
+withCheckbox.args = {
+  content: (
+    <>
+      <DialogHeader>Header</DialogHeader>
+      <DialogContent>
+        The top line & bottom shadow should not be there.
+        <Checkbox checked />
+      </DialogContent>
+      <DialogFooter>Footer</DialogFooter>
+    </>
+  ),
+}
+withCheckbox.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {

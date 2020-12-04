@@ -102,7 +102,6 @@ CheckboxLayout.displayName = 'CheckboxLayout'
 export const Checkbox = styled(CheckboxLayout)`
   ${reset}
   ${space}
-
   height: 1rem;
   margin: 0.19rem;
   position: relative;
@@ -112,8 +111,12 @@ export const Checkbox = styled(CheckboxLayout)`
     cursor: ${({ readOnly, disabled }) =>
       readOnly || disabled ? 'not-allowed' : undefined};
     height: 100%;
+    left: 0;
+    margin: 0;
     opacity: 0;
+    padding: 0;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 1;
   }
