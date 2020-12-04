@@ -67,6 +67,10 @@ export const DefaultOpen = () => (
   </Accordion>
 )
 
+DefaultOpen.parameters = {
+  storyshots: { disable: true },
+}
+
 export const CustomizedIndicator = () => (
   <Accordion
     indicatorSize="large"
@@ -101,6 +105,10 @@ export const Controlled = () => {
       </AccordionContent>
     </Accordion>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Nested = () => (
@@ -155,6 +163,10 @@ export const Nested = () => (
   </Accordion>
 )
 
+Nested.parameters = {
+  storyshots: { disable: true },
+}
+
 export const ApiExplorer = () => {
   const content = (
     <Box borderLeft="1px dotted" borderColor="ui2" ml="xsmall" pl="small">
@@ -193,6 +205,10 @@ export const ApiExplorer = () => {
       </Accordion>
     </Customized>
   )
+}
+
+ApiExplorer.parameters = {
+  storyshots: { disable: true },
 }
 
 const Customized = styled.div`

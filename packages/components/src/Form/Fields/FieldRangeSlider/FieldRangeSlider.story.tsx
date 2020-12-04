@@ -48,11 +48,23 @@ Disabled.args = { disabled: true }
 export const Steps = Template.bind({})
 Steps.args = { max: 1000, min: 100, step: 50 }
 
+Steps.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Floating = Template.bind({})
 Floating.args = { max: 1.1, min: 0.1, step: 0.1 }
 
+Floating.parameters = {
+  storyshots: { disable: true },
+}
+
 export const ReadOnly = Template.bind({})
 ReadOnly.args = { defaultValue: [3, 7], readOnly: true }
+
+ReadOnly.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Controlled = () => {
   const [controlledValue, setControlledValue] = useState([30, 40])
@@ -79,5 +91,5 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disabled: true },
+  storyshots: { disable: true },
 }

@@ -26,14 +26,14 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { DialogLongContent } from '../__mocks__/DialogLongContent'
-import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
-import { Dialog, DialogProps } from './Dialog'
-import { dialogSizes } from './dialogWidth'
-import { dialogPlacements } from './DialogSurface'
+import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { Dialog, DialogProps } from '../Dialog'
+import { dialogSizes } from '../dialogWidth'
+import { dialogPlacements } from '../DialogSurface'
 
-export * from './stories/Controlled'
-export * from './stories/SaveChanges'
+export * from './Controlled'
+export * from './SaveChanges'
 
 const Template: Story<DialogProps> = (args) => (
   <Dialog {...args}>

@@ -83,10 +83,10 @@ export const Legend = Template.bind({})
 Legend.args = { legend: 'Standard Legend, Standard FieldText' }
 
 export const InlineLegend = Template.bind({})
-InlineLegend.args = { inline: true, legend: 'Inline Legend, Inline FieldText' }
+InlineLegend.args = { inline: true, legend: 'Inline w/ Legend' }
 
 export const LegendInlineFields = () => (
-  <Fieldset legend="Standard Legend, Inline FieldText">
+  <Fieldset legend="Individual fields inline">
     <Fields inline />
   </Fieldset>
 )
@@ -175,6 +175,10 @@ export const AccordionAlt = () => {
   )
 }
 
+AccordionAlt.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Nesting = () => (
   <Fieldset gap="xxlarge">
     <Button fullWidth>Button A</Button>
@@ -195,19 +199,14 @@ export const Nesting = () => (
   </Fieldset>
 )
 
+Nesting.parameters = {
+  storyshots: { disable: true },
+}
+
 export const FieldsHideLabel = () => (
-  <>
-    <Fieldset fieldsHideLabel legend="This is the Legend 1">
-      <FieldText label="First Label" />
-      <FieldText label="Second Label" />
-      <FieldText label="Third Label" hideLabel={false} />
-    </Fieldset>
-    <Fieldset legend="This is the Legend 1">
-      <FieldText label="First Label" hideLabel />
-      <FieldText label="Second Label" />
-      <FieldText label="Third Label" />
-    </Fieldset>
-    <FieldText label="FieldText Label" hideLabel={false} />
-    <FieldText label="FieldText Label" hideLabel />
-  </>
+  <Fieldset fieldsHideLabel legend="This is the Legend 1">
+    <FieldText label="First Label" />
+    <FieldText label="Second Label" />
+    <FieldText label="Third Label" hideLabel={false} />
+  </Fieldset>
 )

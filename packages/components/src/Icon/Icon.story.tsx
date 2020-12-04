@@ -24,18 +24,36 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
-import { Icon } from './Icon'
+import { Icon, IconProps } from './Icon'
 
 export default {
   component: Icon,
   title: 'Icon',
 }
 
-export const Basic = () => <Icon name="Gear" />
+const Template: Story<IconProps> = (args) => <Icon {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  name: 'Gear',
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  ...Basic.args,
+  size: 'small',
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  ...Basic.args,
+  size: 'large',
+}
 
 export const Accessibility = () => (
   <Space around>
@@ -43,6 +61,10 @@ export const Accessibility = () => (
     <Icon name="TrashOutline" />
   </Space>
 )
+
+Accessibility.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Sizes = () => (
   <SpaceVertical>
@@ -56,6 +78,10 @@ export const Sizes = () => (
     </Space>
   </SpaceVertical>
 )
+
+Sizes.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Artwork = () => (
   <Space around>
@@ -93,6 +119,10 @@ export const Artwork = () => (
   </Space>
 )
 
+Artwork.parameters = {
+  storyshots: { disable: true },
+}
+
 export const IconsInsideComponents = () => (
   <SpaceVertical>
     <Space gap="xsmall">
@@ -129,6 +159,10 @@ export const IconsInsideComponents = () => (
     </Space>
   </SpaceVertical>
 )
+
+IconsInsideComponents.parameters = {
+  storyshots: { disable: true },
+}
 
 export const IconsPairedWithText = () => (
   <SpaceVertical>
@@ -203,3 +237,7 @@ export const IconsPairedWithText = () => (
     </Space>
   </SpaceVertical>
 )
+
+IconsPairedWithText.parameters = {
+  storyshots: { disable: true },
+}

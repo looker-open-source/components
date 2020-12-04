@@ -89,6 +89,10 @@ export const Basic = () => (
   </Menu>
 )
 
+Basic.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
   return (
@@ -99,6 +103,10 @@ export const Controlled = () => {
       <MenuList>{menuItems}</MenuList>
     </Menu>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }
 
 export const IconSpace = () => (
@@ -191,6 +199,10 @@ export const IconSpace = () => (
   </div>
 )
 
+IconSpace.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Hover = () => {
   const hoverRef = useRef<HTMLDivElement>(null)
   const [dialogIsOpen, setOpen] = useState(false)
@@ -234,6 +246,10 @@ export const Hover = () => {
       </Dialog>
     </Card>
   )
+}
+
+Hover.parameters = {
+  storyshots: { disable: true },
 }
 
 export const RealisticMenus = () => {
@@ -360,4 +376,8 @@ export const RealisticMenus = () => {
       </Menu>
     </Space>
   )
+}
+
+RealisticMenus.parameters = {
+  storyshots: { disable: true },
 }

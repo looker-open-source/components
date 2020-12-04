@@ -201,3 +201,7 @@ export const Wrapping = () => {
     </Space>
   )
 }
+
+Wrapping.parameters = {
+  storyshots: { disable: true },
+}

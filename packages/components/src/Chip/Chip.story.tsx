@@ -24,14 +24,44 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import { ChipButton } from '../ChipButton'
 import { Space } from '../Layout'
-import { Chip } from './Chip'
+import { Chip, ChipProps } from './Chip'
 
 export default {
   component: Chip,
   title: 'Chip',
+}
+
+const Template: Story<ChipProps & { text: string }> = ({ text, ...args }) => (
+  <Chip {...args}>{text}</Chip>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  text: 'Basic',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  text: 'Disabled',
+}
+
+export const Deletable = Template.bind({})
+Deletable.args = {
+  onDelete: () => {
+    //
+  },
+  text: 'Deletable',
+}
+
+export const Prefix = Template.bind({})
+Prefix.args = {
+  prefix: 'role',
+  text: 'admin',
 }
 
 export const ClickAndDelete = () => {
@@ -53,14 +83,8 @@ export const ClickAndDelete = () => {
   )
 }
 
-export const Prefix = () => {
-  return (
-    <Space>
-      <Chip>no prefix</Chip>
-      <Chip prefix="role">admin</Chip>
-      <Chip prefix="color">purple,purple:neat</Chip>
-    </Space>
-  )
+ClickAndDelete.parameters = {
+  storyshots: { disable: true },
 }
 
 export const ChipButtons = () => {
@@ -82,6 +106,10 @@ export const ChipButtons = () => {
   )
 }
 
+ChipButtons.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Removable = () => {
   const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   function getDeleteHandler(item: string) {
@@ -99,4 +127,8 @@ export const Removable = () => {
       ))}
     </Space>
   )
+}
+
+Removable.parameters = {
+  storyshots: { disable: true },
 }

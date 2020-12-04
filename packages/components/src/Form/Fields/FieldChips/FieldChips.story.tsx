@@ -40,12 +40,12 @@ const Template: Story<FieldChipsProps & { initialValues: string[] }> = (
 ) => {
   const initialValues = args.initialValues || ['apples']
   const [values, setValues] = useState<string[]>(initialValues)
-  console.log(values)
 
   return <FieldChips {...args} values={values} onChange={setValues} />
 }
 
 export const Basic = Template.bind({})
+Basic.args = { label: 'Basic' }
 
 export const Truncate = Template.bind({})
 Truncate.args = {
@@ -74,6 +74,7 @@ Overflow.args = {
 export const AutoResize = Template.bind({})
 AutoResize.args = {
   autoResize: true,
+  label: 'Auto Resize',
   maxWidth: '50vw',
   placeholder: 'Auto Resize',
 }

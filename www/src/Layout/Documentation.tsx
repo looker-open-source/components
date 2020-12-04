@@ -72,6 +72,7 @@ interface DocQuery {
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
   const { github, status, storybook, storybookPath, title } = mdx.frontmatter
+  const githubPath = github || `${title}/${title}.tsx`
 
   const tab = useTabs()
   const body = <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -108,7 +109,7 @@ const DocumentationLayout = (props: DocQuery) => {
             <ButtonTransparent
               ml="auto"
               iconAfter="External"
-              onClick={() => window.open(`${githubBase}${github}`)}
+              onClick={() => window.open(`${githubBase}${githubPath}`)}
             >
               View source
             </ButtonTransparent>
@@ -163,9 +164,7 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-        figma
         github
-        propsOf
         status
         storybook
         storybookPath

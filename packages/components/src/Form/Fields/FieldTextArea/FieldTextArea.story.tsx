@@ -63,9 +63,3 @@ NoResize.args = {
   placeholder: 'no resize',
   resize: false,
 }
-
-export const VerticalResize = Template.bind({})
-VerticalResize.args = {
-  placeholder: 'resize vertically',
-  resize: 'vertical',
-}

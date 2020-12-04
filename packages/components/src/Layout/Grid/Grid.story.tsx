@@ -69,7 +69,7 @@ export const Columns = Template.bind({})
 Columns.args = { ...Basic.args, columns: 4 }
 
 export const GapSize = Template.bind({})
-Columns.args = {
+GapSize.args = {
   children: (
     <>
       <Placeholder>C</Placeholder>
