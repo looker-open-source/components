@@ -37,13 +37,13 @@ import { FieldDate, FieldDateProps } from '../FieldDate'
 
 export default {
   component: FieldDate,
-  title: 'Forms/Date',
+  title: 'FieldDate',
 }
 
 const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />
 
 export const Basic = Template.bind({})
-Basic.args = { label: 'Example' }
+Basic.args = { defaultValue: new Date('July 25, 2020'), label: 'Example' }
 
 export const Disabled = Template.bind({})
 Disabled.args = { ...Basic.args, disabled: true }
