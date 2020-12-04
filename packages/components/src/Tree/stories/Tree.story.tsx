@@ -58,6 +58,7 @@ const Template: Story<TreeProps> = (args) => (
 export const Basic = Template.bind({})
 Basic.args = {
   defaultOpen: true,
+  indicatorPosition: 'left',
 }
 
 export const Border = Template.bind({})
