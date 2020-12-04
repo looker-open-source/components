@@ -32,7 +32,6 @@ import React, {
   useMemo,
   useReducer,
 } from 'react'
-
 import { getWindowedListBoundaries } from './getWindowedListBoundaries'
 import { useCallbackRef } from './useCallbackRef'
 import { useMeasuredElement } from './useMeasuredElement'
@@ -143,7 +142,9 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   }
 }
 
-export type ChildHeightFunction = (child: ReactChild) => number
+export type ChildHeightFunction = (child: ReactChild, index: number) => number
+
+export type WindowSpacerTag = 'div' | 'li' | 'tr'
 
 export interface UseWindowProps {
   enabled?: boolean
@@ -151,7 +152,7 @@ export interface UseWindowProps {
   /** Derive the height of each child using props, type, etc. */
   childHeight: number | ChildHeightFunction
   /** Tagname to use for the spacers above and below the window */
-  spacerTag?: 'div' | 'li' | 'tr'
+  spacerTag?: WindowSpacerTag
 }
 
 export const useWindow = ({
@@ -166,9 +167,9 @@ export const useWindow = ({
     let sum = 0
     const ladder: number[] = []
     if (typeof childHeight === 'function') {
-      childArray.forEach((child) => {
+      childArray.forEach((child, index) => {
         ladder.push(sum)
-        sum += childHeight(child as ReactChild)
+        sum += childHeight(child as ReactChild, index)
       })
     }
     return [sum, ladder]
@@ -222,9 +223,13 @@ export const useWindow = ({
   const Spacer = spacerTag
   // after & before are spacers to make scrolling smooth
   const before =
-    beforeHeight > 0 ? <Spacer style={{ height: `${beforeHeight}px` }} /> : null
+    beforeHeight > 0 ? (
+      <Spacer style={{ height: `${beforeHeight}px` }} data-testid="before" />
+    ) : null
   const after =
-    afterHeight > 0 ? <Spacer style={{ height: `${afterHeight}px` }} /> : null
+    afterHeight > 0 ? (
+      <Spacer style={{ height: `${afterHeight}px` }} data-testid="after" />
+    ) : null
 
   return {
     containerElement,
