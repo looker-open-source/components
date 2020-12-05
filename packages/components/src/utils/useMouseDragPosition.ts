@@ -89,6 +89,7 @@ export function useMouseDragPosition(
         window.removeEventListener('mouseleave', handleEnd)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMouseDown, targetRef])
 
   return { isMouseDown, mousePos: mousePos }

@@ -29,8 +29,6 @@ import React, {
   Ref,
   useState,
   KeyboardEvent,
-  MouseEvent,
-  TouchEvent,
   useRef,
   useEffect,
 } from 'react'
@@ -53,7 +51,6 @@ import isEqual from 'lodash/isEqual'
 import {
   useMeasuredElement,
   useMouseDragPosition,
-  usePreviousValue,
   useReadOnlyWarn,
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
