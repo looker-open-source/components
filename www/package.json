@@ -20,7 +20,7 @@
     "gatsby-plugin-styled-components": "^3.5.0",
     "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-plugin-typescript": "^2.7.0",
-    "gatsby-source-filesystem": "^2.6.0",
+    "gatsby-source-filesystem": "^2.7.0",
     "lodash": "^4.17.20",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.14.0",
