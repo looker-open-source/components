@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- update InputText and InlineInputText for disabled color on Safari.
 - update Select SelectMulti and Combobox replace readOnly with inputReadOnly
 - InputSearch now supports disabled and readOnly - documentation and gatsby updated
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
