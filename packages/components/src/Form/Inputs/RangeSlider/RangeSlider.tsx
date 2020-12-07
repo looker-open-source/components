@@ -47,10 +47,10 @@ import startsWith from 'lodash/startsWith'
 import partial from 'lodash/partial'
 import map from 'lodash/map'
 import isEqual from 'lodash/isEqual'
+
 import {
   useMeasuredElement,
   useMouseDragPosition,
-  usePreviousValue,
   useReadOnlyWarn,
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
@@ -202,7 +202,6 @@ export const InternalRangeSlider = forwardRef(
     const containerRect = useMeasuredElement(containerRef)
 
     const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
-    const prevMouseDown = usePreviousValue(isMouseDown)
 
     const minThumbRef = useRef<HTMLDivElement>(null)
     const maxThumbRef = useRef<HTMLDivElement>(null)
@@ -285,6 +284,7 @@ export const InternalRangeSlider = forwardRef(
           newPoint,
           maintainFocus ? focusedThumb : undefined
         )
+
         focusChangedPoint(newValue, newPoint)
         setValue(newValue)
       }
@@ -298,7 +298,7 @@ export const InternalRangeSlider = forwardRef(
      */
     useEffect(
       () => {
-        if (isMouseDown && prevMouseDown) {
+        if (isMouseDown) {
           handleMouseDrag()
         }
       },
@@ -336,6 +336,8 @@ export const InternalRangeSlider = forwardRef(
       <div
         data-testid="range-slider-wrapper"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleBlur}
         className={className}
         id={id}
         ref={setContainerRef}
@@ -407,6 +409,8 @@ export const RangeSlider = styled(InternalRangeSlider)`
   ${space}
   ${typography}
   padding: 1.5rem 0 0.5rem;
+  touch-action: none;
+  user-select: none;
 `
 
 RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
