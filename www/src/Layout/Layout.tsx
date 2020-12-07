@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   ComponentsProvider,
   Page,
@@ -42,10 +42,16 @@ export const Layout: FC = ({ children }) => {
   const [showNavigation, setNavigation] = useState(true)
   const toggleNavigation = () => setNavigation(!showNavigation)
 
-  const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>()
+  const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>(
+    JSON.parse(sessionStorage.getItem('custom_theme'))
+  )
+
+  useEffect(() => {
+    sessionStorage.setItem('custom_theme', JSON.stringify(customTheme))
+  }, [customTheme])
 
   return (
-    <ComponentsProvider loadGoogleFonts {...customTheme}>
+    <ComponentsProvider loadGoogleFonts themeCustomizations={customTheme}>
       <MDXProvider components={MDXComponents}>
         <Page>
           <Header height="4rem">

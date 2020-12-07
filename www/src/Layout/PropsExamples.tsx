@@ -24,7 +24,7 @@
 
  */
 
-import { Spinner, SpinnerWrapper } from '@looker/components'
+import { Flex, Spinner } from '@looker/components'
 import { height, HeightProps, omitStyledProps } from '@looker/design-tokens'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
@@ -61,9 +61,9 @@ export const PropsExamples = ({ component }: PropsExamplesProps) => {
     <>
       <Iframe height={height} src={storybookLink(component)} />
       {height === '0' && (
-        <SpinnerWrapper>
+        <Flex alignItems="center" justifyContent="center" padding="xlarge">
           <Spinner aria-label="Loading" />
-        </SpinnerWrapper>
+        </Flex>
       )}
     </>
   )
