@@ -86,6 +86,10 @@ LongList.args = {
   height: '100vh',
 }
 
+LongList.parameters = {
+  storyshots: false,
+}
+
 export default {
   component: MenuList,
   title: 'MenuList',

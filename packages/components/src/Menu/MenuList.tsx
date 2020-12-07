@@ -103,8 +103,8 @@ export interface MenuListProps
   /**
    * Use windowing for long lists (strongly recommended to also define a width)
    * 'none' - default with children are <= 100.
-   * 'variable' - default with children > 100, measures every child, lower performance
-   * 'fixed' - better performance, measures 1st child only
+   * 'variable' - default with children > 100 & first child is a MenuGroup
+   * 'fixed' - better performance, default when first child is a MenuItem
    */
   windowing?: 'fixed' | 'variable' | 'none'
 }
@@ -151,7 +151,7 @@ export const MenuListInternal = forwardRef(
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const childArray = useMemo(() => Children.toArray(children), [children])
-    if (childArray.length > 100 && windowing !== 'none') {
+    if (childArray.length > 100 && windowing === undefined) {
       const firstChild = childArray[0]
       if (isMenuGroup(firstChild as ReactChild)) {
         windowing = 'variable'
@@ -162,6 +162,7 @@ export const MenuListInternal = forwardRef(
       }
     }
 
+    // Warning for width prop
     useEffect(() => {
       if (
         process.env.NODE_ENV === 'development' &&
@@ -171,12 +172,13 @@ export const MenuListInternal = forwardRef(
       ) {
         // eslint-disable-next-line no-console
         console.warn(
-          `Defining a width is strongly recommended when using the window prop \
-to avoid width fluctuations during scrolling.`
+          `Define a width when using windowing to avoid width fluctuations during scrolling.`
         )
       }
     }, [windowing, props.width])
 
+    // childHeight will be a number (fixed windowing)
+    // or a function that takes an index and returns a number (variable windowing)
     const childHeight = useMemo(() => {
       if (windowing === 'fixed') {
         return childArray[0]
@@ -186,7 +188,7 @@ to avoid width fluctuations during scrolling.`
       return (child: ReactChild) => getMenuChildHeight(child, compact)
     }, [windowing, childArray, compact])
 
-    const { contents, containerElement, ref } = useWindow({
+    const { content, containerElement, ref } = useWindow({
       childHeight: childHeight,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
@@ -224,7 +226,7 @@ to avoid width fluctuations during scrolling.`
           aria-labelledby={id && `button-${id}`}
           {...omitStyledProps(omit(props, 'groupDividers'))}
         >
-          {contents}
+          {content}
         </ul>
       </MenuItemContext.Provider>
     )

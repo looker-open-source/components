@@ -68,14 +68,14 @@ const initialState = (length: number) => ({
 })
 const bufferHeight = 1000
 
-// For windowing lists with variable item height,
-// a reducer that derives the updated window
-// state from the previous state is more efficient
-// than starting from scratch every time
+// For windowing lists with variable item height, a reducer that derives
+// the updated state from the previous state is more efficient than
+// calculating from scratch every time. (In fact, calculating from scratch
+// erases most of the performance gain from windowing)
 
-// With scroll and resize events, we move up and down the "ladder"
-// of saved item heights from the previous window location
-// to discover the new window location and spacer heights
+// On scroll and resize events, the reducer checks up and down the "ladder"
+// of saved item heights from the previous window location to find
+// the new "window" start & end, and spacer heights
 const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   state,
   action
@@ -233,7 +233,7 @@ export const useWindow = ({
 
   return {
     containerElement,
-    contents: (
+    content: (
       <>
         {before}
         {childArray.slice(start, end + 1)}

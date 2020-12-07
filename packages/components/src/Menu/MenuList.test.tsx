@@ -35,7 +35,7 @@ import { MenuList } from './MenuList'
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
-describe('Menu', () => {
+describe('MenuList', () => {
   test('allocates space for MenuItem when a sibling has an icon', () => {
     const { getByTestId } = renderWithTheme(
       <MenuList>

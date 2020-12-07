@@ -41,7 +41,6 @@ export interface MenuGroupProps
 const MenuGroupLayout: FC<MenuGroupProps> = ({
   children,
   className,
-  style,
   compact,
   label,
 }) => {
@@ -64,7 +63,7 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
   }
 
   return (
-    <li className={className} style={style}>
+    <li className={className}>
       <MenuItemContext.Provider value={context}>
         {label && <MenuGroupLabel>{label}</MenuGroupLabel>}
         <List>{children}</List>

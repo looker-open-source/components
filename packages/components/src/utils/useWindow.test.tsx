@@ -68,7 +68,7 @@ const WindowedComponent = ({
   variable?: boolean
 }) => {
   const { value, toggle } = useToggle(true)
-  const { contents, ref } = useWindow({
+  const { content, ref } = useWindow({
     childHeight: variable ? getChildHeight : 87,
     children,
     enabled: value,
@@ -77,7 +77,7 @@ const WindowedComponent = ({
   return (
     <>
       <ul ref={ref} data-testid="list">
-        {contents}
+        {content}
       </ul>
       <button onClick={toggle}>toggle</button>
     </>
