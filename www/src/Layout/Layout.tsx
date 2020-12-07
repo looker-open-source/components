@@ -38,16 +38,27 @@ import MDXComponents from '../MDX'
 import { HeaderContent } from '../components/HeaderContent'
 import { Navigation } from '../components/Navigation'
 
+const storage =
+  typeof window !== 'undefined'
+    ? sessionStorage
+    : { getItem: () => '{}', setItem: () => undefined }
+
+const getThemeFromStorage: undefined | ThemeCustomizations = () =>
+  JSON.parse(storage.getItem('custom_theme'))
+
+const setThemeInStorage = (theme: ThemeCustomizations) =>
+  storage.setItem('custom_theme', JSON.stringify(theme))
+
 export const Layout: FC = ({ children }) => {
   const [showNavigation, setNavigation] = useState(true)
   const toggleNavigation = () => setNavigation(!showNavigation)
 
   const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>(
-    JSON.parse(sessionStorage.getItem('custom_theme'))
+    getThemeFromStorage()
   )
 
   useEffect(() => {
-    sessionStorage.setItem('custom_theme', JSON.stringify(customTheme))
+    setThemeInStorage(customTheme)
   }, [customTheme])
 
   return (
