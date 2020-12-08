@@ -30,7 +30,7 @@ import { Tree, TreeProps } from '../Tree'
 import { TreeItem } from '../TreeItem'
 
 const Template: Story<TreeProps> = (args) => (
-  <Tree label="thelook" icon="ExploreOutline" {...args}>
+  <Tree {...args} label="thelook" icon="ExploreOutline">
     <Tree label="Orders" icon="VisibilityOutline" defaultOpen branchFontWeight>
       <Tree label="Orders" icon="Table" defaultOpen branchFontWeight>
         <TreeItem icon="IdeDimension">ID</TreeItem>

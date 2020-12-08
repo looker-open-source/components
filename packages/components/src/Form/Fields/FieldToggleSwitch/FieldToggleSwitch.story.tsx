@@ -39,12 +39,12 @@ Basic.args = {
   name: 'thumbsUp',
 }
 
-export const Detail = Template.bind({})
-Detail.args = {
+export const DetailDescription = Template.bind({})
+DetailDescription.args = {
   ...Basic.args,
-  detail: 'Some exciting details that describe the use of this.',
+  description: 'describe something here.',
+  detail: '4/20',
 }
-
 export const Checked = Template.bind({})
 Checked.args = {
   ...Basic.args,
@@ -76,10 +76,9 @@ Error.args = {
   validationMessage: { message: 'This is an error', type: 'error' },
 }
 
-export const DetailError = Template.bind({})
-DetailError.args = {
-  ...Detail.args,
-  readOnly: true,
+export const DetailDescriptionError = Template.bind({})
+DetailDescriptionError.args = {
+  ...DetailDescription.args,
   validationMessage: { message: 'This is an error', type: 'error' },
 }
 
