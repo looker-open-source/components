@@ -151,15 +151,7 @@ describe('InputText', () => {
       `)
     })
 
-    test('focus input on click', () => {
-      renderWithTheme(<InputText after={<span>after</span>} />)
-      const after = screen.getByText('after')
-      userEvent.click(after)
-      jest.runOnlyPendingTimers()
-      expect(screen.getByRole('textbox')).toHaveFocus()
-    })
-
-    test('does not blur input on click', () => {
+    test('focus & blur behavior', () => {
       const handleBlur = jest.fn()
       const handleFocus = jest.fn()
       renderWithTheme(
