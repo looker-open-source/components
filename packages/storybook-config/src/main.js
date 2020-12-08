@@ -75,7 +75,7 @@ const mode = process.env.storybookBuildMode
 if (mode === 'fast') {
   config.typescript = { reactDocgen: false }
   config.addons = []
-} else if (mode === 'develop') {
+} else if (mode && mode.indexOf('develop') === 0) {
   /**
    *
    * TODO: Explore `webpack-react-docgen-typescript` + to load types from a pre-compiled build
@@ -90,7 +90,7 @@ if (mode === 'fast') {
    */
   addonEssentials.options = {
     ...addonEssentials.options,
-    docs: false,
+    docs: mode === 'develop-docs',
   }
 }
 

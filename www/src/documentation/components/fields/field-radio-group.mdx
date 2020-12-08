@@ -1,0 +1,107 @@
+---
+title: FieldRadioGroup
+github: Form/Fields/FieldRadioGroup
+---
+
+Groups of radios can be displayed with `FieldRadioGroup`
+
+There are two "inline" variations:
+
+- The `inline` prop will put the group label and all the inputs in one line (wrapping the inputs as necessary)
+- The `inputsInline` prop will stack the group label on top but keep all the inputs inline
+
+```jsx
+;() => {
+  const options = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  const optionsDisabled = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      disabled: true,
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  return (
+    <Grid>
+      <FieldRadioGroup
+        description="default layout"
+        label="Cheeses"
+        name="group1"
+        options={options}
+      />
+      <FieldRadioGroup
+        description=" inline layout"
+        inline
+        label="Cheeses"
+        name="group1"
+        options={options}
+      />
+      <FieldRadioGroup
+        description="Validation message and required"
+        label="Cheeses default layout"
+        name="group1"
+        options={options}
+        required
+        validationMessage={{
+          message: 'Select at least 1 cheese',
+          type: 'error',
+        }}
+      />
+      <FieldRadioGroup
+        description="Validation message and required"
+        inputsInline
+        label="Cheeses inline inputs layout"
+        name="group1"
+        options={options}
+        required
+        validationMessage={{
+          message: 'Select at least 1 cheese',
+          type: 'error',
+        }}
+      />
+      <FieldRadioGroup
+        description="everything is disabled"
+        disabled
+        label="Cheeses default layout"
+        name="group1"
+        options={options}
+      />
+      <FieldRadioGroup
+        description="everything is disabled"
+        disabled
+        inline
+        name="group1"
+        label="Cheeses inline layout"
+        options={options}
+      />
+      <FieldRadioGroup
+        description="only one Radio is disabled"
+        label="Cheeses default layout"
+        name="group1"
+        options={optionsDisabled}
+      />
+      <FieldRadioGroup
+        description="only one Radio is disabled"
+        inline
+        name="group1"
+        label="Cheeses inline layout"
+        options={optionsDisabled}
+      />
+    </Grid>
+  )
+}
+```

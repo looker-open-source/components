@@ -28,7 +28,7 @@ import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
 import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
 
-interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
+export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
    * Align items vertically within `Space`. `stretch` will cause items to stretch the full-width the `SpaceVertical`
    * @default 'stretch'

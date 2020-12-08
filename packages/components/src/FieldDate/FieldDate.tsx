@@ -36,10 +36,10 @@ import {
   pickFieldProps,
 } from '../Form/Fields/Field'
 
-export interface FieldInputDateProps extends FieldProps, InputDateProps {}
+export interface FieldDateProps extends FieldProps, InputDateProps {}
 
 const FieldDateComponent = forwardRef(
-  (props: FieldInputDateProps, ref: Ref<HTMLInputElement>) => {
+  (props: FieldDateProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (

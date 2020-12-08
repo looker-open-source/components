@@ -24,84 +24,75 @@
 
  */
 
-import React, { FC, useState } from 'react'
-import styled from 'styled-components'
-import sitemap from '../documentation/sitemap'
-import Page from './Page'
-import SidebarToggle from './SidebarToggle'
-import Navigation from './Navigation'
+import React, { FC, useEffect, useState } from 'react'
+import {
+  ComponentsProvider,
+  Page,
+  Section,
+  Header,
+  Layout as ComponentsLayout,
+} from '@looker/components'
+import { ThemeCustomizations } from '@looker/design-tokens'
+import { createGlobalStyle } from 'styled-components'
+import { MDXProvider } from '@mdx-js/react'
+import MDXComponents from '../MDX'
+import { HeaderContent } from '../components/HeaderContent'
+import { Navigation } from '../components/Navigation'
 
-const Layout: FC = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
-  const toggleFn = () => setSidebarOpen(!sidebarOpen)
+const storage =
+  typeof window !== 'undefined'
+    ? sessionStorage
+    : { getItem: () => '{}', setItem: () => undefined }
 
-  const sidebarHeaderHeight = '5rem'
+const getThemeFromStorage: undefined | ThemeCustomizations = () =>
+  JSON.parse(storage.getItem('custom_theme'))
 
-  return (
-    <Page>
-      <PageLayout open={sidebarOpen}>
-        <LayoutSidebar>
-          {sidebarOpen && (
-            <Navigation sitemap={sitemap} headerHeight={sidebarHeaderHeight} />
-          )}
-        </LayoutSidebar>
-        <SidebarDivider open={sidebarOpen}>
-          <SidebarToggle
-            isOpen={sidebarOpen}
-            onClick={toggleFn}
-            headerHeight={sidebarHeaderHeight}
-          />
-        </SidebarDivider>
-        <ContentArea>{children}</ContentArea>
-      </PageLayout>
-    </Page>
-  )
-}
+const setThemeInStorage = (theme: ThemeCustomizations) =>
+  storage.setItem('custom_theme', JSON.stringify(theme))
 
-interface SidebarStyleProps {
-  open: boolean
-}
+const GatsbyOverrides = createGlobalStyle`
+  body {
+    height: 100vh;
+  }
 
-export const PageLayout = styled.div<SidebarStyleProps>`
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: ${({ open }) =>
-    open ? '17.5rem 0 1fr' : '1.5rem 0 1fr'};
-  grid-template-areas: 'sidebar divider main';
-`
-
-const LayoutSidebar = styled.aside`
-  grid-area: sidebar;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 17.5rem;
-`
-
-const ContentArea = styled.div`
-  grid-area: main;
-`
-
-export const LayoutMain = styled.main`
-  max-width: 50rem;
-  overflow: auto;
-  margin: 0 auto;
-  padding: ${({ theme: { space } }) =>
-    `${space.xxlarge} ${space.xxxlarge} ${space.xxxxlarge}`};
-`
-
-const SidebarDivider = styled.div<SidebarStyleProps>`
-  transition: border 0.3s;
-  border-left: 1px solid
-    ${({ theme, open }) => (open ? theme.colors.ui2 : 'transparent')};
-  grid-area: divider;
-  overflow: visible;
-  position: relative;
-  &:hover {
-    border-left: 1px solid
-      ${({ theme, open }) => (open ? theme.colors.ui3 : theme.colors.ui2)};
+  #___gatsby,
+  #gatsby-focus-wrapper{
+    height: 100%;
   }
 `
 
-export default Layout
+export const Layout: FC = ({ children }) => {
+  const [showNavigation, setNavigation] = useState(true)
+  const toggleNavigation = () => setNavigation(!showNavigation)
+
+  const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>(
+    getThemeFromStorage()
+  )
+
+  useEffect(() => {
+    setThemeInStorage(customTheme)
+  }, [customTheme])
+
+  return (
+    <ComponentsProvider loadGoogleFonts themeCustomizations={customTheme}>
+      <GatsbyOverrides />
+      <MDXProvider components={MDXComponents}>
+        <Page>
+          <Header height="4rem">
+            <HeaderContent
+              updateTheme={updateTheme}
+              hasCustomTheme={Boolean(customTheme)}
+              toggleNavigation={toggleNavigation}
+            />
+          </Header>
+          <ComponentsLayout hasAside>
+            {showNavigation && <Navigation width="18rem" />}
+            <Section py="xlarge" px="xxxlarge" as="main">
+              {children}
+            </Section>
+          </ComponentsLayout>
+        </Page>
+      </MDXProvider>
+    </ComponentsProvider>
+  )
+}

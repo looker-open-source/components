@@ -48,7 +48,7 @@ export interface AccordionIndicatorProps {
 
   /**
    * Size of icon on disclosure
-   * @default 'large'
+   * @default 'small'
    */
   indicatorSize?: IconSize
 
@@ -60,7 +60,6 @@ export interface AccordionIndicatorProps {
 
   /**
    * Icons for disclosure indicator
-   * @default 'xsmall'
    */
   indicatorIcons?: IndicatorIcons
 }

@@ -23,8 +23,9 @@
  SOFTWARE.
 
  */
-import { useCallback, useLayoutEffect, useState } from 'react'
-import ResizeObserver from 'resize-observer-polyfill'
+
+import { useCallback, useState } from 'react'
+import { useResize } from './useResize'
 
 function measureElement(element?: HTMLElement | null) {
   if (!element) {
@@ -49,28 +50,7 @@ export const useMeasuredElement = (element: HTMLElement | null): ClientRect => {
     element && setRect(measureElement(element))
   }, [element])
 
-  useLayoutEffect(() => {
-    if (!element) {
-      return
-    }
-
-    handleResize()
-    const resizeObserver = new ResizeObserver(() => handleResize())
-    if (element) {
-      resizeObserver.observe((element as unknown) as HTMLElement)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      if (!resizeObserver) {
-        return
-      }
-
-      resizeObserver.disconnect()
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [handleResize, element])
+  useResize(element, handleResize)
 
   return rect
 }

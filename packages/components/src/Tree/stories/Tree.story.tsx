@@ -36,6 +36,7 @@ export * from './Flat.story'
 export * from './LongLabels.story'
 
 export default {
+  component: Tree,
   title: 'Tree',
 }
 
@@ -57,6 +58,7 @@ const Template: Story<TreeProps> = (args) => (
 export const Basic = Template.bind({})
 Basic.args = {
   defaultOpen: true,
+  indicatorPosition: 'left',
 }
 
 export const Border = Template.bind({})

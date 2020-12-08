@@ -29,6 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { InputText, InputTextProps } from './InputText'
 
 export default {
+  component: InputText,
   title: 'InputText',
 }
 

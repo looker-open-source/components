@@ -27,6 +27,7 @@
 import { Heading, HeadingProps } from '@looker/components'
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { maxTextWidth } from './styles'
 
 const generateHeadingAnchor = (children?: ReactNode) => {
   return (children as string).toLowerCase().replace(/\s/g, '-')
@@ -37,6 +38,7 @@ const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
     fontWeight: 'semiBold',
     id: generateHeadingAnchor(props.children),
     lineHeight: 'xlarge',
+    maxWidth: maxTextWidth,
     mb: 'medium',
   }
 })``

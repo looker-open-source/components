@@ -29,6 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { InlineTextArea, InlineTextAreaProps } from './InlineTextArea'
 
 export default {
+  component: InlineTextArea,
   title: 'InlineTextArea',
 }
 

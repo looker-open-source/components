@@ -31,10 +31,10 @@ import { useFormContext } from '../../Form'
 import { InputTime, InputTimeProps } from '../../Inputs/InputTime'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export interface FieldInputTimeProps extends FieldProps, InputTimeProps {}
+export interface FieldTimeProps extends FieldProps, InputTimeProps {}
 
 const FieldTimeComponent = forwardRef(
-  (props: FieldInputTimeProps, ref: Ref<HTMLInputElement>) => {
+  (props: FieldTimeProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
