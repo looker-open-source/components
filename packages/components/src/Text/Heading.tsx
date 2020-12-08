@@ -79,6 +79,7 @@ export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
 
 Heading.defaultProps = {
   as: 'h2',
+  color: 'text',
   fontFamily: 'brand',
   fontWeight: 'normal',
 }

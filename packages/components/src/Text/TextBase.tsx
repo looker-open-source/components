@@ -30,11 +30,11 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
   textColor,
   textDecoration,
   TextDecorationProps,
   TypographyProps,
-  shouldForwardProp,
 } from '@looker/design-tokens'
 import {
   fontSize,
