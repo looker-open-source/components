@@ -24,24 +24,18 @@
 
  */
 
-import React, { useState, FC } from 'react'
+import React, { useState } from 'react'
 import {
   ButtonTransparent,
-  HoverDisclosure,
   IconButton,
   Menu,
   MenuDisclosure,
   MenuList,
   MenuItem,
-  Space,
   Tooltip,
-  Truncate,
   usePopover,
-  Flex,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
-
-const Span: FC<any> = ({ children }) => <span>{children}</span>
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -58,25 +52,6 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
     setOpen: closeOverlay,
   })
 
-  const pivot = (
-    <Flex alignItems="center">
-      <IconButton
-        icon="Sync"
-        label="Pivot"
-        tooltipPlacement="top"
-        onClick={(event) => {
-          event.stopPropagation()
-          alert('Pivot')
-        }}
-        onKeyDown={(event) => {
-          event.stopPropagation()
-        }}
-      />
-    </Flex>
-  )
-
-  const TextWrapper = truncate ? Truncate : Span
-
   return (
     <>
       {popover}
@@ -89,6 +64,18 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
         <TreeItem
           detail={
             <>
+              <IconButton
+                icon="Sync"
+                label="Pivot"
+                tooltipPlacement="top"
+                onClick={(event) => {
+                  event.stopPropagation()
+                  alert('Pivot')
+                }}
+                onKeyDown={(event) => {
+                  event.stopPropagation()
+                }}
+              />
               <IconButton
                 ref={ref}
                 icon="Filter"
@@ -116,11 +103,9 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           onClick={() => alert('Clicked on cost!')}
           onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
           selected={!!overlay}
+          truncate={truncate}
         >
-          <Space between>
-            <TextWrapper>{children}</TextWrapper>
-            {!overlay ? <HoverDisclosure>{pivot}</HoverDisclosure> : pivot}
-          </Space>
+          {children}
         </TreeItem>
       </Menu>
     </>
@@ -133,7 +118,7 @@ const addButton = (
     iconBefore="Plus"
     onClick={() => alert('Hello Mouse')}
     onKeyDown={(event) => {
-      if (event.keyCode === 13) {
+      if (event.key === 'Enter') {
         event.preventDefault()
         alert('Hello Keyboard')
       }
