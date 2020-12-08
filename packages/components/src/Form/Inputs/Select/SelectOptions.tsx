@@ -169,12 +169,12 @@ const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
 `
 
 SelectOptionGroupTitle.defaultProps = {
+  color: 'subdued',
   fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
   px: 'xsmall',
   py: 'xxsmall',
-  color: 'subdued',
 }
 
 export const SelectOptionGroup = ({
