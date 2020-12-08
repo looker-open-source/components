@@ -26,7 +26,6 @@
 
 import React, { useState } from 'react'
 import {
-  ButtonTransparent,
   IconButton,
   Menu,
   MenuDisclosure,
@@ -34,8 +33,11 @@ import {
   MenuItem,
   Tooltip,
   usePopover,
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
 } from '../..'
-import { TreeItem, Tree, TreeGroup } from '..'
+import { TreeContext, TreeStyle, TreeItem, Tree, TreeGroup } from '..'
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -112,53 +114,44 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
   )
 }
 
-const addButton = (
-  <ButtonTransparent
-    size="xxsmall"
-    iconBefore="Plus"
-    onClick={() => alert('Hello Mouse')}
-    onKeyDown={(event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault()
-        alert('Hello Keyboard')
-      }
-    }}
-  >
-    Add
-  </ButtonTransparent>
+const treeStructure = (
+  <TreeContext.Provider value={{ depth: 1, detailAccessory: true }}>
+    <TreeStyle depth={0} hovered={false}>
+      <TreeGroup label="DIMENSIONS">
+        <Tree branchFontWeight label="Created">
+          <PickerItem>Created Date</PickerItem>
+          <PickerItem>Created Month</PickerItem>
+          <PickerItem>Created Year</PickerItem>
+        </Tree>
+        <PickerItem>City</PickerItem>
+        <PickerItem>Country</PickerItem>
+        <PickerItem>ID</PickerItem>
+      </TreeGroup>
+      <TreeGroup label="MEASURES" color="orange">
+        <Tree branchFontWeight label="My Measure Group">
+          <PickerItem>Count of IDs</PickerItem>
+          <PickerItem>Count of Cities</PickerItem>
+        </Tree>
+        <PickerItem>Sum</PickerItem>
+        <PickerItem>Max</PickerItem>
+      </TreeGroup>
+    </TreeStyle>
+  </TreeContext.Provider>
 )
 
 export const FieldPicker = () => (
-  <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
-    <TreeGroup label="DIMENSIONS">
-      <Tree branchFontWeight label="Hello">
-        <PickerItem />
-      </Tree>
-      <PickerItem />
-      <PickerItem />
-      <PickerItem />
-      <PickerItem>
-        Over a thousand types of cheese exist and are currently produced in
-        various countries. Their styles, textures and flavors depend on the
-        origin of the milk (including the animal's diet), whether they have been
-        pasteurized, the butterfat content, the bacteria and mold, the
-        processing, and how long they have been aged for.
-      </PickerItem>
-      <PickerItem truncate>
-        Herbs, spices, or wood smoke may be used as flavoring agents. The yellow
-        to red color of many cheeses is produced by adding annatto. Other
-        ingredients may be added to some cheeses, such as black pepper, garlic,
-        chives or cranberries.
-      </PickerItem>
-    </TreeGroup>
-    <TreeGroup label="MEASURES" color="orange">
-      <Tree branchFontWeight label="Hello">
-        <PickerItem />
-      </Tree>
-      <TreeItem>Name</TreeItem>
-      <PickerItem />
-      <PickerItem />
-      <PickerItem />
-    </TreeGroup>
-  </Tree>
+  <>
+    <Accordion defaultOpen>
+      <AccordionDisclosure px="large">Orders</AccordionDisclosure>
+      <AccordionContent>{treeStructure}</AccordionContent>
+    </Accordion>
+    <Accordion>
+      <AccordionDisclosure px="large">Order Items</AccordionDisclosure>
+      <AccordionContent>{treeStructure}</AccordionContent>
+    </Accordion>
+    <Accordion>
+      <AccordionDisclosure px="large">Users</AccordionDisclosure>
+      <AccordionContent>{treeStructure}</AccordionContent>
+    </Accordion>
+  </>
 )
