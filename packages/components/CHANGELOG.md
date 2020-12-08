@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Supports "date" columns
   - Infers "string" for columns without an explicit type property
   - Is now a generic, and will properly set the type of the returned data to match the user's data shape
+- `Tree`, `TreeItem` restrict `label` / `children` to type string, respectively
 
 ### Fixed
 
