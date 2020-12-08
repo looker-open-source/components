@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Select` / `SelectMulti` clicking on the caret icon opens the list when focused
 - `Tab` now displays properly in Safari
 - `Truncate` with `Link` inside will properly preserve text color from `Link`
 - update InputText and InlineInputText for disabled color on Safari.
