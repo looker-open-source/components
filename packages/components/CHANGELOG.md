@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Inline fields now support both `description` and `detail`
 - DataTableCell used description instead of detail for consistency.
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
@@ -21,14 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Supports "date" columns
   - Infers "string" for columns without an explicit type property
   - Is now a generic, and will properly set the type of the returned data to match the user's data shape
+- `Tree`, `TreeItem` restrict `label` / `children` to type string, respectively
 
 ### Fixed
 
 - `Tab` now displays properly in Safari
+- update InputText and InlineInputText for disabled color on Safari.
 - update Select SelectMulti and Combobox replace readOnly with inputReadOnly
 - InputSearch now supports disabled and readOnly - documentation and gatsby updated
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
 - `InputDate` removed stories that did not use `value` prop to avoid daily snapshot discrepancies
+- `RangeSlider` now supports touch events
 
 ## [0.9.25]
 

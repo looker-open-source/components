@@ -22,6 +22,7 @@ exports[`Default Swatch 1`] = `
   background: #F5F6F7;
   color: #939BA5;
   cursor: default;
+  -webkit-text-fill-color: #939BA5;
 }
 
 .c0:disabled:hover {
@@ -76,6 +77,7 @@ exports[`Swatch has a disabled state 1`] = `
   background: #F5F6F7;
   color: #939BA5;
   cursor: default;
+  -webkit-text-fill-color: #939BA5;
 }
 
 .c0:disabled:hover {
@@ -117,6 +119,7 @@ exports[`Swatch with hex value passed 1`] = `
   background: #F5F6F7;
   color: #939BA5;
   cursor: default;
+  -webkit-text-fill-color: #939BA5;
 }
 
 .c0:disabled:hover {
@@ -157,6 +160,7 @@ exports[`Swatch with width and height set 1`] = `
   background: #F5F6F7;
   color: #939BA5;
   cursor: default;
+  -webkit-text-fill-color: #939BA5;
 }
 
 .c0:disabled:hover {

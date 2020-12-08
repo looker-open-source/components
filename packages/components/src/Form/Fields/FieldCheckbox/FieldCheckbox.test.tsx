@@ -70,7 +70,6 @@ test('A FieldCheckbox with error has proper aria setup', () => {
   const input = screen.getByDisplayValue('example')
   const id = input.getAttribute('aria-describedby')
   expect(id).toBeDefined()
-
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(errorMessage)
+  expect(id).toEqual('describedby-test')
+  expect(container).toHaveTextContent(errorMessage)
 })
