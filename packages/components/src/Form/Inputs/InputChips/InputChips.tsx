@@ -89,7 +89,6 @@ export interface InputChipsProps
     InputChipsValidationProps {
   /**
    * How to convert a typed or pasted string into an array of values
-   * @default splitInputValue
    */
   parseInputValue?: (value: string) => string[]
 }

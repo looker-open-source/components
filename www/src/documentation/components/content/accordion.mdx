@@ -1,10 +1,7 @@
 ---
 title: Accordion
-github: Accordion
-propsOf: Accordion
+storybook: true
 ---
-
-import { Props } from '../../../Shared'
 
 `<Accordion>` hides and shows content on click like a collapsible section.
 
@@ -32,8 +29,6 @@ If you want your `<Accordion>` open by default, use the `defaultOpen` prop.
 
 ## AccordionDisclosure
 
-<Props of="AccordionDisclosure" />
-
 Clicking on an `<AccordionDisclosure>` controls the appearance of its sibling `<AccordionContent>`.
 
 The child of `<AccordionDisclosure>` is rendered as a label, and can be either be a `string` or a `ReactNode`.
@@ -51,8 +46,6 @@ The child of `<AccordionDisclosure>` is rendered as a label, and can be either b
 ```
 
 ## AccordionContent
-
-<Props of="AccordionDisclosure" />
 
 `<AccordionContent>` acts as the container for an `<Accordion>`'s content.
 

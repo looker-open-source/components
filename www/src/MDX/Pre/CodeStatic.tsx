@@ -63,10 +63,8 @@ const CodeStatic: FC<CodeStaticProps> = ({ code, language, ...props }) => {
 export default CodeStatic
 
 const PreWrapper = styled.pre`
-  ${({ theme: { lineHeights, radii, space } }) => `
-    border-radius: ${radii.medium}
-    padding: ${space.medium};
-    line-height: ${lineHeights.medium};
-    margin: ${lineHeights.medium} 0;
-  `}
+  border-radius: ${({ theme }) => theme.radii.medium};
+  line-height: ${({ theme }) => theme.lineHeights.medium};
+  margin: ${({ theme }) => theme.lineHeights.medium} 0;
+  padding: ${({ theme }) => theme.space.medium};
 `

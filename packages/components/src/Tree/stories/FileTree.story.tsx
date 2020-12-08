@@ -67,7 +67,10 @@ const Template: Story<TreeProps> = (args) => (
 export const FileTree = Template.bind({})
 FileTree.args = {
   defaultOpen: true,
+  indicatorPosition: 'left',
 }
 
 export const FileTreeClosed = Template.bind({})
-FileTreeClosed.args = {}
+FileTreeClosed.args = {
+  indicatorPosition: 'left',
+}

@@ -29,6 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { InlineInputText, InlineInputTextProps } from './InlineInputText'
 
 export default {
+  component: InlineInputText,
   title: 'InlineInputText',
 }
 

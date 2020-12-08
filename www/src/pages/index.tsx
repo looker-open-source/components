@@ -27,20 +27,18 @@
 import {
   Box,
   Code,
+  Grid,
   Flex,
-  FlexItem,
   Heading,
   Icon,
   Link,
-  Text,
   Paragraph,
+  Section,
 } from '@looker/components'
 import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
-import Layout from '../Layout'
-import { LayoutMain } from '../Layout/Layout'
+import { Layout } from '../Layout'
 
 export const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -60,49 +58,18 @@ export const useSiteMetadata = () => {
 const Intro = () => {
   const { title } = useSiteMetadata()
   return (
-    <Layout>
+    <>
       <Helmet title={title} />
-      <LayoutMain>
-        <Flex flexDirection="column" alignItems="center">
-          <FlexItem my="large">
-            <svg
-              width="49"
-              height="49"
-              viewBox="0 0 49 49"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <ellipse
-                cx="35.4822"
-                cy="13.5172"
-                rx="13.5178"
-                ry="13.5172"
-                fill="#4C33AA"
-              />
-              <ellipse
-                cx="21.9662"
-                cy="27.0345"
-                rx="21.9664"
-                ry="21.9654"
-                fill="#7E64E0"
-                fillOpacity="0.8"
-              />
-            </svg>
-          </FlexItem>
-          <Heading fontWeight="semiBold" fontSize="xxxxlarge">
+      <Layout>
+        <Section as="main" p="xxlarge">
+          <Heading as="h1" fontWeight="semiBold" textAlign="center" mb="large">
             Looker UI Components
           </Heading>
-          <Box my="large">
-            <Text fontSize="xlarge">
-              A collection of tools for building Looker data experiences.
-            </Text>
-          </Box>
-        </Flex>
-        <Box my="xlarge">
-          <Box height="8px" bg="#F4F6F7" />
-        </Box>
-        <Box>
-          <GridWrapper>
+          <Heading as="h2" textAlign="center" mb="xxxlarge">
+            A collection of tools for building Looker data experiences.
+          </Heading>
+
+          <Grid columns={3}>
             <Flex flexDirection="column" alignItems="center">
               <Box mb="medium">
                 <Flex
@@ -180,17 +147,11 @@ const Intro = () => {
                 Github repository.
               </Paragraph>
             </Flex>
-          </GridWrapper>
-        </Box>
-      </LayoutMain>
-    </Layout>
+          </Grid>
+        </Section>
+      </Layout>
+    </>
   )
 }
 
 export default Intro
-
-export const GridWrapper = styled.div`
-  display: grid;
-  grid-column-gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
-`

@@ -26,9 +26,17 @@
 
 import React, { FC } from 'react'
 import { List } from '@looker/components'
+import { maxTextWidth } from './styles'
 
 const Ul: FC<{}> = (props) => (
-  <List lineHeight="medium" mb="medium" ml="large" type="bullet" {...props} />
+  <List
+    lineHeight="medium"
+    mb="medium"
+    ml="large"
+    maxWidth={maxTextWidth}
+    type="bullet"
+    {...props}
+  />
 )
 
 export default Ul
