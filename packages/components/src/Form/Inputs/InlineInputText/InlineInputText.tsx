@@ -105,10 +105,12 @@ const StyledInput = styled.input`
 
   :disabled {
     color: ${(props) => props.theme.colors.text1};
+    -webkit-text-fill-color: ${(props) => props.theme.colors.text1};
   }
 `
 
 const StyledText = styled.span`
+  align-self: center;
   color: transparent;
   line-height: inherit;
   /* max-width & overflow keep this span from blocking the x button
