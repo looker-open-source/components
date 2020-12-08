@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - update InputText and InlineInputText for disabled color on Safari.
+- `TreeGroupLabel` is now properly aligned with sibling `TreeItems` and fits the standard vertical cadence (`24px`)
 - update Select SelectMulti and Combobox replace readOnly with inputReadOnly
 - InputSearch now supports disabled and readOnly - documentation and gatsby updated
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
