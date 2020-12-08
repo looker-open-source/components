@@ -122,12 +122,17 @@ const InputTextLayout = forwardRef(
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
-    const handleMouseDown = () => {
+    const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
       // set focus to input on mousedown of container to mimic natural input behavior
       // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      // if (document.activeElement === internalRef.current) {
+      // Avoid triggering the blur event
+      //   e.preventDefault()
+      // } else {
       window.requestAnimationFrame(() => {
         internalRef.current && internalRef.current.focus()
       })
+      // }
     }
 
     const onMouseDownWrapped = useWrapEvent(handleMouseDown, onMouseDown)

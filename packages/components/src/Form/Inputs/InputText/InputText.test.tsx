@@ -48,109 +48,116 @@ afterEach(() => {
   global.console = globalConsole
 })
 
-test('InputText default', () => {
-  assertSnapshot(<InputText />)
-})
+describe('InputText', () => {
+  test('default', () => {
+    assertSnapshot(<InputText />)
+  })
 
-test('InputText with name and id', () => {
-  assertSnapshot(<InputText name="Bob" id="Bobby" />)
-})
+  test('with name and id', () => {
+    assertSnapshot(<InputText name="Bob" id="Bobby" />)
+  })
 
-test('InputText should accept disabled', () => {
-  assertSnapshot(<InputText disabled />)
-})
+  test('should accept disabled', () => {
+    assertSnapshot(<InputText disabled />)
+  })
 
-test('InputText with a placeholder', () => {
-  assertSnapshot(<InputText placeholder="I am a placeholder" />)
-})
+  test('with a placeholder', () => {
+    assertSnapshot(<InputText placeholder="I am a placeholder" />)
+  })
 
-test('InputText should accept readOnly', () => {
-  assertSnapshot(<InputText readOnly />)
-})
+  test('should accept readOnly', () => {
+    assertSnapshot(<InputText readOnly />)
+  })
 
-test('InputText should accept required', () => {
-  assertSnapshot(<InputText required />)
-})
+  test('should accept required', () => {
+    assertSnapshot(<InputText required />)
+  })
 
-test('InputText with a value', () => {
-  assertSnapshot(<InputText value="Some value" />)
-})
+  test('with a value', () => {
+    assertSnapshot(<InputText value="Some value" />)
+  })
 
-test('InputText with aria-describedby', () => {
-  assertSnapshot(<InputText aria-describedby="some-id" />)
-})
+  test('with aria-describedby', () => {
+    assertSnapshot(<InputText aria-describedby="some-id" />)
+  })
+  test('autoResize', () => {
+    const { container, getByPlaceholderText, getByText } = renderWithTheme(
+      <InputText autoResize placeholder="resize me" />
+    )
+    expect(container.firstChild).toHaveStyleRule('width: auto')
+    expect(getByPlaceholderText('resize me')).toHaveStyleRule(
+      'position: absolute'
+    )
+    expect(getByText('resize me')).toBeVisible()
+  })
 
-test('InputText autoResize', () => {
-  const { container, getByPlaceholderText, getByText } = renderWithTheme(
-    <InputText autoResize placeholder="resize me" />
-  )
-  expect(container.firstChild).toHaveStyleRule('width: auto')
-  expect(getByPlaceholderText('resize me')).toHaveStyleRule(
-    'position: absolute'
-  )
-  expect(getByText('resize me')).toBeVisible()
-})
+  test('with an error validation', () => {
+    const { getAllByTitle, getByPlaceholderText } = renderWithTheme(
+      <InputText placeholder="Hello" validationType="error" />
+    )
 
-test('InputText with an error validation', () => {
-  const { getAllByTitle, getByPlaceholderText } = renderWithTheme(
-    <InputText placeholder="Hello" validationType="error" />
-  )
+    expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
+    expect(getAllByTitle('Validation Error')).toBeDefined()
+  })
 
-  expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-  expect(getAllByTitle('Validation Error')).toBeDefined()
-})
+  describe('before & after', () => {
+    test('ReactNode', () => {
+      const { getByText } = renderWithTheme(
+        <InputText before={<span>before</span>} after={<span>after</span>} />
+      )
 
-test('InputText with a before & after', () => {
-  const { getByText } = renderWithTheme(
-    <InputText before={<span>before</span>} after={<span>after</span>} />
-  )
+      expect(getByText('before')).toBeVisible()
+      expect(getByText('after')).toBeVisible()
+    })
 
-  expect(getByText('before')).toBeVisible()
-  expect(getByText('after')).toBeVisible()
-})
+    test('icons', () => {
+      const { getByTitle } = renderWithTheme(
+        <InputText
+          iconBefore="Favorite"
+          iconBeforeTitle="Before Title"
+          iconAfter="Account"
+          iconAfterTitle="After Title"
+        />
+      )
 
-test('InputText with an iconBefore & iconAfter', () => {
-  const { getByTitle } = renderWithTheme(
-    <InputText
-      iconBefore="Favorite"
-      iconBeforeTitle="Before Title"
-      iconAfter="Account"
-      iconAfterTitle="After Title"
-    />
-  )
+      expect(getByTitle('Before Title')).toBeInTheDocument()
+      expect(getByTitle('After Title')).toBeInTheDocument()
+    })
 
-  expect(getByTitle('Before Title')).toBeInTheDocument()
-  expect(getByTitle('After Title')).toBeInTheDocument()
-})
+    test('redundant ones should not render', () => {
+      const { queryByPlaceholderText } = renderWithTheme(
+        <>
+          <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
+          <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
+        </>
+      )
 
-test('InputText with redundant before/after props', () => {
-  const { queryByPlaceholderText } = renderWithTheme(
-    <>
-      <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
-      <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
-    </>
-  )
+      expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
+      expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+      expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "Use before or iconBefore, but not both at the same time.",
+          ],
+          Array [
+            "Use after or iconAfter, but not both at the same time.",
+          ],
+        ]
+      `)
+    })
 
-  expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
-  expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
-  expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-    Array [
-      Array [
-        "Use before or iconBefore, but not both at the same time.",
-      ],
-      Array [
-        "Use after or iconAfter, but not both at the same time.",
-      ],
-    ]
-  `)
-})
+    test('focus input on click', () => {
+      //
+    })
+  })
 
-test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+  test('Should trigger onChange handler', () => {
+    let counter = 0
+    const handleChange = () => counter++
 
-  const wrapper = mountWithTheme(<InputText onChange={handleChange} />)
+    const wrapper = mountWithTheme(<InputText onChange={handleChange} />)
 
-  wrapper.find('input').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+    wrapper.find('input').simulate('change', { target: { value: '' } })
+    expect(counter).toEqual(1)
+  })
 })
