@@ -68,8 +68,9 @@ const TabStyle = styled.button<TabProps>`
     selected ? theme.colors.text5 : theme.colors.text2};
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.brand};
-  /* this is necessary to avoid safari automatic margin */
+  /* Remove default margin button in Safari */
   margin: 0;
+
   &:active {
     border-bottom-color: ${({ selected, theme }) =>
       selected ? theme.colors.key : theme.colors.text2};
