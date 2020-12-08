@@ -33,6 +33,7 @@ import {
   Layout as ComponentsLayout,
 } from '@looker/components'
 import { ThemeCustomizations } from '@looker/design-tokens'
+import { createGlobalStyle } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import MDXComponents from '../MDX'
 import { HeaderContent } from '../components/HeaderContent'
@@ -49,6 +50,17 @@ const getThemeFromStorage: undefined | ThemeCustomizations = () =>
 const setThemeInStorage = (theme: ThemeCustomizations) =>
   storage.setItem('custom_theme', JSON.stringify(theme))
 
+const GatsbyOverrides = createGlobalStyle`
+  body {
+    height: 100vh;
+  }
+
+  #___gatsby,
+  #gatsby-focus-wrapper{
+    height: 100%;
+  }
+`
+
 export const Layout: FC = ({ children }) => {
   const [showNavigation, setNavigation] = useState(true)
   const toggleNavigation = () => setNavigation(!showNavigation)
@@ -63,6 +75,7 @@ export const Layout: FC = ({ children }) => {
 
   return (
     <ComponentsProvider loadGoogleFonts themeCustomizations={customTheme}>
+      <GatsbyOverrides />
       <MDXProvider components={MDXComponents}>
         <Page>
           <Header height="4rem">
