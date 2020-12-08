@@ -246,17 +246,7 @@ export const usePopover = ({
       }}
     >
       <Portal ref={scrollRef}>
-        <OverlaySurface
-          placement={placement}
-          ref={ref}
-          style={style}
-          backgroundColor="background"
-          border="1px solid"
-          borderColor="ui2"
-          borderRadius="medium"
-          boxShadow={3}
-          color="text5"
-        >
+        <OverlaySurface placement={placement} ref={ref} style={style}>
           <Box
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
             overflowY="auto"

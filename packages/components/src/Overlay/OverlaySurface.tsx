@@ -24,15 +24,7 @@
 
  */
 
-import {
-  reset,
-  border,
-  BorderProps,
-  boxShadow,
-  BoxShadowProps,
-  color,
-  fadeIn,
-} from '@looker/design-tokens'
+import { reset, fadeIn } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
   CSSProperties,
@@ -47,14 +39,7 @@ import styled from 'styled-components'
 import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 
-export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
-  color?: string
-  backgroundColor?: string
-  border?: string
-  borderColor?: string
-}
-
-export interface OverlaySurfaceProps extends SurfaceStyleProps {
+export interface OverlaySurfaceProps {
   children: ReactNode
   className?: string
   eventHandlers?: DOMAttributes<HTMLElement>
@@ -66,14 +51,7 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
 
 const OverlaySurfaceLayout = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
-    const {
-      children,
-      className,
-      eventHandlers,
-      placement,
-      style,
-      ...innerProps
-    } = props
+    const { children, className, eventHandlers, placement, style } = props
     const { closeModal } = useContext(DialogContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
@@ -90,9 +68,9 @@ const OverlaySurfaceLayout = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
-        <Inner tabIndex={-1} data-overlay-surface={true} {...innerProps}>
+        <OverlaySurfaceContentArea tabIndex={-1} data-overlay-surface={true}>
           {children}
-        </Inner>
+        </OverlaySurfaceContentArea>
       </div>
     )
   }
@@ -129,11 +107,13 @@ export const OverlaySurface = styled(OverlaySurfaceLayout)`
   }
 `
 
-const Inner = styled.div<SurfaceStyleProps>`
-  ${reset}
-  ${border}
-  ${boxShadow}
-  ${color}
+export const OverlaySurfaceContentArea = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-radius: ${({ theme }) => theme.radii.medium};
+  box-shadow: ${({ theme }) => theme.shadows[3]};
+  color: ${({ theme }) => theme.colors.text};
+
   &:focus {
     outline: none;
   }
