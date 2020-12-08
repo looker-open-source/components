@@ -131,6 +131,9 @@ const addButton = (
 export const FieldPicker = () => (
   <Tree defaultOpen detailAccessory detail={addButton} label="Custom Fields">
     <TreeGroup label="DIMENSIONS">
+      <Tree branchFontWeight label="Hello">
+        <PickerItem />
+      </Tree>
       <PickerItem />
       <PickerItem />
       <PickerItem />
@@ -149,7 +152,7 @@ export const FieldPicker = () => (
       </PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
-      <Tree branchAlign branchFontWeight label="Hello">
+      <Tree branchFontWeight label="Hello">
         <PickerItem />
       </Tree>
       <TreeItem>Name</TreeItem>
