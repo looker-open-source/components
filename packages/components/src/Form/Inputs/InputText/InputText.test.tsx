@@ -24,6 +24,8 @@
 
  */
 
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import 'jest-styled-components'
 import React from 'react'
 import {
@@ -38,12 +40,15 @@ const globalConsole = global.console
 const warnMock = jest.fn()
 
 beforeEach(() => {
+  jest.useFakeTimers()
   global.console = ({
     warn: warnMock,
   } as unknown) as Console
 })
 
 afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
   jest.resetAllMocks()
   global.console = globalConsole
 })
@@ -147,7 +152,39 @@ describe('InputText', () => {
     })
 
     test('focus input on click', () => {
-      //
+      renderWithTheme(<InputText after={<span>after</span>} />)
+      const after = screen.getByText('after')
+      userEvent.click(after)
+      jest.runOnlyPendingTimers()
+      expect(screen.getByRole('textbox')).toHaveFocus()
+    })
+
+    test('does not blur input on click', () => {
+      const handleBlur = jest.fn()
+      const handleFocus = jest.fn()
+      renderWithTheme(
+        <>
+          <InputText
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            after={<span>after</span>}
+          />
+          <button>click</button>
+        </>
+      )
+      const after = screen.getByText('after')
+      userEvent.click(after)
+      jest.runOnlyPendingTimers()
+      expect(handleFocus).toHaveBeenCalled()
+      expect(screen.getByRole('textbox')).toHaveFocus()
+
+      userEvent.click(after)
+      expect(handleBlur).not.toHaveBeenCalled()
+      expect(screen.getByRole('textbox')).toHaveFocus()
+
+      userEvent.click(screen.getByText('click'))
+      expect(handleBlur).toHaveBeenCalled()
+      expect(screen.getByRole('textbox')).not.toHaveFocus()
     })
   })
 

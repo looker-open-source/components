@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent } from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
@@ -342,6 +342,40 @@ describe('<Combobox/> with children', () => {
 
     getByPlaceholderText('Type here').focus()
     expect(getByRole('listbox')).toBeInTheDocument()
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox">
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('click caret to open', (_, jsx) => {
+    renderWithTheme(jsx)
+
+    screen.getByPlaceholderText('Type here').focus()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+
+    userEvent.click(screen.getByTestId('caret'))
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
