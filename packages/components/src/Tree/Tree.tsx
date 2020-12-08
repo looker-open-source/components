@@ -257,10 +257,13 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
   }
 
-  ${TreeGroupLabel},
+  ${TreeGroupLabel} {
+    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
+  }
+
   ${TreeItemLabel},
   & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 1, theme)}
+    ${({ depth, theme }) => generateIndent(depth + 2, theme)}
   }
 `
 
