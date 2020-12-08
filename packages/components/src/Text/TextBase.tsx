@@ -30,9 +30,10 @@ import {
   reset,
   space,
   SpaceProps,
-  TypographyProps,
+  textColor,
   textDecoration,
   TextDecorationProps,
+  TypographyProps,
 } from '@looker/design-tokens'
 import {
   fontSize,
@@ -47,6 +48,8 @@ export interface TextBaseProps
   extends SpaceProps,
     TextDecorationProps,
     TypographyProps {
+  color?: string
+
   /**
    * Should browser insert line breaks within words to prevent text from overflowing its content box
    * @default: false
@@ -65,6 +68,7 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${letterSpacing}
   ${lineHeight}
   ${textAlign}
+  ${textColor}
   ${space}
   ${color}
   ${textDecoration}

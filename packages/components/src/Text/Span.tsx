@@ -30,16 +30,13 @@ import {
   textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { textVariant, TextVariantProps } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'
 
 export interface SpanProps
   extends TextBaseProps,
     TextTransformProps,
-    TextVariantProps,
     Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
 
 export const Span = styled(TextBase)<SpanProps>`
-  ${textVariant}
   ${textTransform}
 `

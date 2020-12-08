@@ -27,9 +27,10 @@
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
 import { Colors, SpecifiableColors } from '../../system'
+import { generateColorAliases } from './aliases'
 import { generateBlendColors } from './blend'
-import { generateStatefulColors } from './stateful'
 import { generateDerivativeColors } from './derivatives'
+import { generateStatefulColors } from './stateful'
 
 export const generateColors = (
   themeColors: SpecifiableColors,
@@ -37,14 +38,16 @@ export const generateColors = (
 ): Colors => {
   const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
 
-  const derivatives = generateDerivativeColors(specifiable)
   const blends = generateBlendColors(specifiable)
+  const derivatives = generateDerivativeColors(specifiable)
   const statefulColors = generateStatefulColors(specifiable, derivatives)
+  const aliases = generateColorAliases(blends)
 
   return {
     ...specifiable,
     ...derivatives,
     ...blends,
     ...statefulColors,
+    ...aliases,
   }
 }

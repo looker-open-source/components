@@ -6,14 +6,12 @@ exports[`A <h1> Heading 1`] = `
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 2.25rem;
-}
-
-.c1 {
   color: #262D33;
 }
 
 <h1
-  className="c0 c1"
+  className="c0 "
+  color="text"
   fontFamily="brand"
   fontSize="xxlarge"
   fontWeight="normal"
@@ -28,14 +26,12 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
-}
-
-.c1 {
   color: #262D33;
 }
 
 <h1
-  className="c0 c1"
+  className="c0 "
+  color="text"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"
@@ -50,14 +46,12 @@ exports[`A Heading to bold 1`] = `
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.5rem;
-}
-
-.c1 {
   color: #262D33;
 }
 
 <h2
-  className="c0 c1"
+  className="c0 "
+  color="text"
   fontFamily="brand"
   fontSize="large"
   fontWeight="bold"
@@ -72,15 +66,16 @@ exports[`A Heading transformed 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
+  color: #262D33;
 }
 
 .c1 {
   text-transform: capitalize;
-  color: #262D33;
 }
 
 <h2
   className="c0 c1"
+  color="text"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"
@@ -95,10 +90,10 @@ exports[`A Heading truncated 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
+  color: #262D33;
 }
 
 .c1 {
-  color: #262D33;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -106,6 +101,7 @@ exports[`A Heading truncated 1`] = `
 
 <h2
   className="c0 c1"
+  color="text"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"
@@ -120,10 +116,10 @@ exports[`A Heading with multiline truncate 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
+  color: #262D33;
 }
 
 .c1 {
-  color: #262D33;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -132,6 +128,7 @@ exports[`A Heading with multiline truncate 1`] = `
 
 <h2
   className="c0 c1"
+  color="text"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"
@@ -146,14 +143,12 @@ exports[`A Heading with variant 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
-}
-
-.c1 {
-  color: #939BA5;
+  color: subdued;
 }
 
 <h2
-  className="c0 c1"
+  className="c0 "
+  color="subdued"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"
@@ -168,14 +163,12 @@ exports[`A default Heading 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.75rem;
-}
-
-.c1 {
   color: #262D33;
 }
 
 <h2
-  className="c0 c1"
+  className="c0 "
+  color="text"
   fontFamily="brand"
   fontSize="xlarge"
   fontWeight="normal"

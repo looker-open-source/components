@@ -147,16 +147,12 @@ exports[`A Paragraph component with variant 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
-}
-
-.c1 {
   color: #CC1F36;
 }
 
 <p
-  className="c0 c1"
-  color="text"
+  className="c0 "
+  color="critical"
   fontSize="medium"
 >
   Hello

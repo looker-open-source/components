@@ -47,10 +47,10 @@ Bold.args = {
   fontWeight: 'bold',
 }
 
-export const Variant = Template.bind({})
-Variant.args = {
+export const Color = Template.bind({})
+Color.args = {
   ...Basic.args,
-  variant: 'critical',
+  color: 'critical',
 }
 
 export const TextTransform = Template.bind({})

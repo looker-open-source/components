@@ -68,10 +68,10 @@ exports[`DialogHeader Snapshot 1`] = `
   font-weight: 600;
   line-height: 1.5rem;
   margin-right: 2rem;
+  color: #262D33;
 }
 
 .c2 {
-  color: #262D33;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -142,6 +142,7 @@ exports[`DialogHeader Snapshot 1`] = `
 >
   <h3
     className="c1 c2"
+    color="text"
     fontFamily="brand"
     fontSize="large"
     fontWeight="semiBold"

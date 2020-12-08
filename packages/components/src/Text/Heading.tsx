@@ -33,7 +33,6 @@ import {
   TextTransformProps,
 } from '@looker/design-tokens'
 import { TextBase, TextBaseProps } from './TextBase'
-import { TextVariantProps, textVariant } from './text_variant'
 import { TruncateProps, truncate } from './truncate'
 
 type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -41,7 +40,6 @@ type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export interface HeadingProps
   extends TextBaseProps,
     TextTransformProps,
-    TextVariantProps,
     TruncateProps,
     Omit<CompatibleHTMLProps<HTMLHeadingElement>, 'wrap'> {
   /** Heading level from h1-h6
@@ -76,13 +74,12 @@ export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
   lineHeight: props.lineHeight || headingLineHeight(props),
 }))<HeadingProps>`
   ${textTransform}
-  ${textVariant}
   ${truncate}
 `
 
 Heading.defaultProps = {
   as: 'h2',
+  color: 'text',
   fontFamily: 'brand',
   fontWeight: 'normal',
-  variant: 'default',
 }

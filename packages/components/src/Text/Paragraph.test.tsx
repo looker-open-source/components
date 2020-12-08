@@ -60,7 +60,7 @@ test('A Paragraph component weight', () => {
 
 test('A Paragraph component with variant', () => {
   const component = createWithTheme(
-    <Paragraph variant="critical">Hello</Paragraph>
+    <Paragraph color="critical">Hello</Paragraph>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
