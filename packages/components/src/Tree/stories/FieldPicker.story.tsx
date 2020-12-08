@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import {
   IconButton,
   Menu,
@@ -33,11 +33,9 @@ import {
   MenuItem,
   Tooltip,
   usePopover,
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
+  Badge,
 } from '../..'
-import { TreeContext, TreeStyle, TreeItem, Tree, TreeGroup } from '..'
+import { TreeItem, Tree, TreeGroup } from '..'
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -67,7 +65,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           detail={
             <>
               <IconButton
-                icon="Sync"
+                icon="Pivot"
                 label="Pivot"
                 tooltipPlacement="top"
                 onClick={(event) => {
@@ -114,44 +112,43 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
   )
 }
 
-const treeStructure = (
-  <TreeContext.Provider value={{ depth: 1, detailAccessory: true }}>
-    <TreeStyle depth={0} hovered={false}>
-      <TreeGroup label="DIMENSIONS">
-        <Tree branchFontWeight label="Created">
-          <PickerItem>Created Date</PickerItem>
-          <PickerItem>Created Month</PickerItem>
-          <PickerItem>Created Year</PickerItem>
-        </Tree>
-        <PickerItem>City</PickerItem>
-        <PickerItem>Country</PickerItem>
-        <PickerItem>ID</PickerItem>
-      </TreeGroup>
-      <TreeGroup label="MEASURES" color="orange">
-        <Tree branchFontWeight label="My Measure Group">
-          <PickerItem>Count of IDs</PickerItem>
-          <PickerItem>Count of Cities</PickerItem>
-        </Tree>
-        <PickerItem>Sum</PickerItem>
-        <PickerItem>Max</PickerItem>
-      </TreeGroup>
-    </TreeStyle>
-  </TreeContext.Provider>
+const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
+  children,
+  defaultOpen,
+}) => (
+  <Tree
+    defaultOpen={defaultOpen}
+    detail={<Badge intent="inform">1</Badge>}
+    detailAccessory
+    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
+    indicatorPosition="right"
+    label={children}
+  >
+    <TreeGroup label="DIMENSIONS">
+      <Tree branchFontWeight label="Created">
+        <PickerItem>Created Date</PickerItem>
+        <PickerItem>Created Month</PickerItem>
+        <PickerItem>Created Year</PickerItem>
+      </Tree>
+      <PickerItem>City</PickerItem>
+      <PickerItem>Country</PickerItem>
+      <PickerItem>ID</PickerItem>
+    </TreeGroup>
+    <TreeGroup label="MEASURES" color="orange">
+      <Tree branchFontWeight label="My Measure Group">
+        <PickerItem>Count of IDs</PickerItem>
+        <PickerItem>Count of Cities</PickerItem>
+      </Tree>
+      <PickerItem>Sum</PickerItem>
+      <PickerItem>Max</PickerItem>
+    </TreeGroup>
+  </Tree>
 )
 
 export const FieldPicker = () => (
   <>
-    <Accordion defaultOpen>
-      <AccordionDisclosure px="large">Orders</AccordionDisclosure>
-      <AccordionContent>{treeStructure}</AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionDisclosure px="large">Order Items</AccordionDisclosure>
-      <AccordionContent>{treeStructure}</AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionDisclosure px="large">Users</AccordionDisclosure>
-      <AccordionContent>{treeStructure}</AccordionContent>
-    </Accordion>
+    <ViewTree defaultOpen={true}>Orders</ViewTree>
+    <ViewTree>Orders Items</ViewTree>
+    <ViewTree>Users</ViewTree>
   </>
 )
