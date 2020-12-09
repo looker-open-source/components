@@ -89,10 +89,7 @@ describe('MenuList', () => {
       expect(screen.queryByText('15')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 119400px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 119400px;')
     })
 
     test('variable', () => {
@@ -114,10 +111,7 @@ describe('MenuList', () => {
       expect(screen.queryByText('7_0')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 61993px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 61993px;')
     })
   })
 })

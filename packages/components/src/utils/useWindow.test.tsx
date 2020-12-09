@@ -99,10 +99,7 @@ describe('useWindow', () => {
       expect(screen.queryByText('10')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 260130px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 260130px;')
     })
 
     test('updates window on scroll', () => {
@@ -125,14 +122,8 @@ describe('useWindow', () => {
       expect(screen.getByText('27')).toBeVisible()
       expect(screen.queryByText('28')).not.toBeInTheDocument()
 
-      expect(screen.getByTestId('before')).toHaveAttribute(
-        'style',
-        'height: 1044px;'
-      )
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 258564px;'
-      )
+      expect(screen.getByTestId('before')).toHaveStyle('height: 1044px;')
+      expect(screen.getByTestId('after')).toHaveStyle('height: 258564px;')
     })
 
     test('updates window on scroll (to end)', () => {
@@ -157,10 +148,7 @@ describe('useWindow', () => {
       expect(screen.getByText('2991')).toBeVisible()
       expect(screen.getByText('2999')).toBeVisible()
 
-      expect(screen.getByTestId('before')).toHaveAttribute(
-        'style',
-        'height: 260217px;'
-      )
+      expect(screen.getByTestId('before')).toHaveStyle('height: 260217px;')
       expect(screen.queryByTestId('after')).not.toBeInTheDocument()
     })
 
@@ -193,10 +181,7 @@ describe('useWindow', () => {
       expect(screen.queryByText('17')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 259521px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 259521px;')
     })
   })
 
@@ -214,10 +199,7 @@ describe('useWindow', () => {
       expect(screen.queryByText('36')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 357150px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 357150px;')
     })
 
     test('updates window on scroll', () => {
@@ -240,14 +222,8 @@ describe('useWindow', () => {
       expect(screen.getByText('58')).toBeVisible()
       expect(screen.queryByText('59')).not.toBeInTheDocument()
 
-      expect(screen.getByTestId('before')).toHaveAttribute(
-        'style',
-        'height: 513px;'
-      )
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 355609px;'
-      )
+      expect(screen.getByTestId('before')).toHaveStyle('height: 513px;')
+      expect(screen.getByTestId('after')).toHaveStyle('height: 355609px;')
     })
 
     test('updates window on scroll (to end)', () => {
@@ -272,10 +248,7 @@ describe('useWindow', () => {
       expect(screen.getByText('2993')).toBeVisible()
       expect(screen.getByText('2999')).toBeVisible()
 
-      expect(screen.getByTestId('before')).toHaveAttribute(
-        'style',
-        'height: 356988px;'
-      )
+      expect(screen.getByTestId('before')).toHaveStyle('height: 356988px;')
       expect(screen.queryByTestId('after')).not.toBeInTheDocument()
     })
 
@@ -308,10 +281,7 @@ describe('useWindow', () => {
       expect(screen.queryByText('45')).not.toBeInTheDocument()
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveAttribute(
-        'style',
-        'height: 356610px;'
-      )
+      expect(screen.getByTestId('after')).toHaveStyle('height: 356610px;')
     })
   })
 })
