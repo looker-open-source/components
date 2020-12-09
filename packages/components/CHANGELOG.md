@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Truncate` with `Link` inside will properly preserve text color from `Link`
 - update InputText and InlineInputText for disabled color on Safari.
 - `TreeGroupLabel` is now properly aligned with sibling `TreeItems` and fits the standard vertical cadence (`24px`)
 - update Select SelectMulti and Combobox replace readOnly with inputReadOnly
@@ -33,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - InputChips now supports disabled and readOnly - documentation and gatsby updated
 - `InputDate` removed stories that did not use `value` prop to avoid daily snapshot discrepancies
 - `RangeSlider` now supports touch events
+
+### Removed
+
+- `useTooltip` no longer supports `surfaceStyles` property
 
 ## [0.9.25]
 
