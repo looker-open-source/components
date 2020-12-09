@@ -63,12 +63,11 @@ const TreeGroupLayout: FC<TreeGroupProps> = ({
 )
 
 export const TreeGroupLabel = styled.div`
-  /* Border is here to get proper alignment with Tree and TreeItem text */
-  border: 1px transparent solid;
   font-size: ${({ theme }) => theme.fontSizes.xxsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  line-height: ${({ theme }) => theme.fontSizes.xsmall};
   padding: ${({ theme: { space } }) =>
-    `${space.xxsmall} ${space.xxsmall} ${space.xxxsmall}`};
+    `${space.xsmall} ${space.xxsmall} ${space.xxsmall}`};
 `
 
 const treeGroupLabel = (labelColor?: string) =>

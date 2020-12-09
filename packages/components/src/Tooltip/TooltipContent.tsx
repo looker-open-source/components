@@ -24,7 +24,6 @@
 
  */
 import styled from 'styled-components'
-import { Link } from '../Link'
 import { Paragraph } from '../Text'
 import { TooltipProps } from './Tooltip'
 export const TooltipContent = styled(Paragraph).attrs(
@@ -43,20 +42,6 @@ export const TooltipContent = styled(Paragraph).attrs(
   text-transform: none;
   white-space: normal;
   word-break: break-word;
-
-  ${Link} {
-    color: ${(props) => props.theme.colors.keyAccent};
-    text-decoration: underline;
-
-    &:focus,
-    &:hover {
-      color: ${(props) => props.theme.colors.keySubtle};
-    }
-
-    &:active {
-      color: ${(props) => props.theme.colors.keyText};
-    }
-  }
 `
 
 TooltipContent.defaultProps = { textAlign: 'center', width: '16rem' }

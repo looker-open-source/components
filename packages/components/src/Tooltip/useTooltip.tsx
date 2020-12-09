@@ -36,7 +36,6 @@ import {
   UsePopperProps,
   useForkedRef,
 } from '../utils'
-import { SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
@@ -82,6 +81,13 @@ export interface UseTooltipProps {
   id?: string
 
   /**
+   * Tooltip background and text color is inverted from the page default
+   * @default true
+   * @private
+   */
+  invert?: boolean
+
+  /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
   triggerElement?: HTMLElement | null
@@ -90,11 +96,6 @@ export interface UseTooltipProps {
    * If true, the useTooltip hook will return nothing
    */
   disabled?: boolean
-
-  /**
-   * Customizes the style of the tooltip
-   */
-  surfaceStyles?: SurfaceStyleProps
 
   /**
    * Delay
@@ -123,8 +124,8 @@ export function useTooltip({
   maxWidth = '30rem',
   textAlign,
   disabled,
-  surfaceStyles,
   id,
+  invert,
   triggerElement,
   placement: propsPlacement = 'bottom',
   delay = 'intricate',
@@ -209,12 +210,8 @@ export function useTooltip({
           placement={placement}
           ref={ref}
           style={style}
-          backgroundColor="inverse"
-          borderRadius="medium"
-          boxShadow={3}
           maxWidth={maxWidth}
-          color="inverseOn"
-          {...surfaceStyles}
+          invert={invert}
         >
           <TooltipContent
             role="tooltip"
