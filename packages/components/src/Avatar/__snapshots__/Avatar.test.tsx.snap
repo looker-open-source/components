@@ -132,7 +132,6 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
     <div
       aria-hidden={true}
       className="c2"
-      color="key"
     >
       JS
     </div>
@@ -300,7 +299,6 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
     <div
       aria-hidden={true}
       className="c2"
-      color="key"
     >
       JS
     </div>
@@ -709,7 +707,6 @@ exports[`Avatar AvatarUser shows initials if has broken url as avatar_url 1`] = 
   <div
     aria-hidden={true}
     className="c1"
-    color="key"
   >
     JS
   </div>
@@ -763,7 +760,6 @@ exports[`Avatar AvatarUser shows initials if it has null as avatar_url  1`] = `
   <div
     aria-hidden={true}
     className="c1"
-    color="key"
   >
     JS
   </div>
@@ -820,7 +816,6 @@ exports[`Avatar AvatarUser shows user profile picture if it has good avatar_url 
   <div
     aria-hidden={true}
     className="c1"
-    color="key"
   >
     JS
   </div>

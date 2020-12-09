@@ -31,6 +31,7 @@ import {
   CursorProps,
   flexbox,
   FlexboxProps,
+  shouldForwardProp,
   userSelect,
   UserSelectProps,
 } from '@looker/design-tokens'
@@ -43,7 +44,7 @@ export interface BoxProps
     CursorProps,
     UserSelectProps {}
 
-export const Box = styled.div<BoxProps>`
+export const Box = styled.div.withConfig({ shouldForwardProp })<BoxProps>`
   ${complexLayoutCSS}
   ${userSelect}
   ${flexbox}

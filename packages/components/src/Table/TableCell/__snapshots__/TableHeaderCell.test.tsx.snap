@@ -11,9 +11,6 @@ exports[`A <TableHeaderCell> should render 1`] = `
 
 <th
   className="c0"
-  color="ui4"
-  fontSize="xsmall"
-  fontWeight="semiBold"
 >
   1
 </th>

@@ -12,10 +12,6 @@ exports[`A Legend 1`] = `
 
 <legend
   className="c0"
-  color="text4"
-  fontFamily="brand"
-  fontSize="medium"
-  fontWeight="semiBold"
 >
   This is a legend
 </legend>

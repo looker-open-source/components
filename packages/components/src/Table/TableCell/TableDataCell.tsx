@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { TableCellProps, tableCellCSS } from './tableCell'
 
@@ -32,7 +32,9 @@ export interface TableDataCellProps
   extends TableCellProps,
     Omit<CompatibleHTMLProps<HTMLTableDataCellElement>, 'color'> {}
 
-export const TableDataCell = styled.td<TableDataCellProps>`
+export const TableDataCell = styled.td.withConfig({
+  shouldForwardProp,
+})<TableDataCellProps>`
   ${tableCellCSS}
 `
 

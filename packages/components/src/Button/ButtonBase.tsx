@@ -31,6 +31,7 @@ import {
   space,
   SpaceProps,
   StatefulColor,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
@@ -108,7 +109,9 @@ export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${space}
 `
 
-const ButtonOuter = styled.button<ButtonProps>`
+const ButtonOuter = styled.button.withConfig({
+  shouldForwardProp,
+})<ButtonProps>`
   ${({ color, focusVisible }) => buttonCSS(color || 'key', focusVisible)}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `

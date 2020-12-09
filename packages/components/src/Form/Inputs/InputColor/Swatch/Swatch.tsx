@@ -29,6 +29,7 @@ import {
   CompatibleHTMLProps,
   disabledSwatchColor,
   reset,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
 import {
@@ -62,7 +63,7 @@ const emptySwatch = `position: relative;
     transform: rotate(-45deg);
   }`
 
-export const Swatch = styled.div.attrs(() => {
+export const Swatch = styled.div.withConfig({ shouldForwardProp }).attrs(() => {
   return { 'data-testid': 'swatch' }
 })<SwatchProps>`
   ${reset}

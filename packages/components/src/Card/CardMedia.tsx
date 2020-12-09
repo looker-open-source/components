@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 
 export interface CardMediaProps
   extends BackgroundPositionProps,
@@ -34,7 +34,9 @@ export interface CardMediaProps
   image: string
 }
 
-export const CardMedia = styled.div<CardMediaProps>`
+export const CardMedia = styled.div.withConfig({
+  shouldForwardProp,
+})<CardMediaProps>`
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   ${backgroundPosition}

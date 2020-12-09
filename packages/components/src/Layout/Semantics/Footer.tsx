@@ -24,12 +24,15 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { headerFooterCSS, HeaderProps } from './Header'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FooterProps extends HeaderProps {}
 
-export const Footer = styled.footer<FooterProps>`
+export const Footer = styled.footer.withConfig({
+  shouldForwardProp,
+})<FooterProps>`
   ${headerFooterCSS}
 `

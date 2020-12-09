@@ -35,6 +35,7 @@ import {
   LayoutProps,
   position,
   layout,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 
@@ -45,7 +46,9 @@ export interface ListItemProps
     SpaceProps,
     TypographyProps {}
 
-export const ListItem = styled.li<ListItemProps>`
+export const ListItem = styled.li.withConfig({
+  shouldForwardProp,
+})<ListItemProps>`
   ${reset}
   ${typography}
   ${space}

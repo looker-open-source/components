@@ -24,7 +24,7 @@
 
  */
 
-import { quarterFade } from '@looker/design-tokens'
+import { quarterFade, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { color, ColorProps } from 'styled-system'
 
@@ -47,7 +47,9 @@ const markerStyle = (props: SpinnerMarkerProps) => {
   `
 }
 
-export const SpinnerMarker = styled.div<SpinnerMarkerProps>`
+export const SpinnerMarker = styled.div.withConfig({
+  shouldForwardProp,
+})<SpinnerMarkerProps>`
   ${color}
   ${markerStyle}
   height: 20%;

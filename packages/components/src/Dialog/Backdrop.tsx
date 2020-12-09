@@ -24,7 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
 import styled, { CSSObject } from 'styled-components'
 
@@ -38,9 +42,11 @@ export interface BackdropProps
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
-export const Backdrop = styled.div.attrs(() => ({
-  'data-testid': 'backdrop',
-}))`
+export const Backdrop = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs(() => ({
+    'data-testid': 'backdrop',
+  }))`
   ${reset}
   ${color}
 

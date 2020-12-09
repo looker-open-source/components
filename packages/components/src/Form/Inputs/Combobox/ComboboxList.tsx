@@ -34,6 +34,7 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
@@ -257,7 +258,9 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-const ComboboxUl = styled.ul<ComboboxListProps>`
+const ComboboxUl = styled.ul.withConfig({
+  shouldForwardProp,
+})<ComboboxListProps>`
   ${reset}
   ${typography}
   ${space}

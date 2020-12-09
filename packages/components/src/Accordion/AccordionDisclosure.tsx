@@ -40,6 +40,7 @@ import {
   padding,
   PaddingProps,
   pickStyledProps,
+  shouldForwardProp,
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
@@ -125,7 +126,9 @@ interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
   focusVisible: boolean
 }
 
-export const AccordionDisclosureStyle = styled.div<AccordionDisclosureStyleProps>`
+export const AccordionDisclosureStyle = styled.div.withConfig({
+  shouldForwardProp,
+})<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}

@@ -24,6 +24,7 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
@@ -35,7 +36,7 @@ export interface AsideProps extends SemanticLayoutBase {
   width?: string
 }
 
-export const Aside = styled.aside<AsideProps>`
+export const Aside = styled.aside.withConfig({ shouldForwardProp })<AsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};

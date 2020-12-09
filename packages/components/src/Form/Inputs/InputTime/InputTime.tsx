@@ -35,6 +35,7 @@ import React, {
   RefObject,
   SyntheticEvent,
 } from 'react'
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
 import add from 'lodash/add'
@@ -537,11 +538,13 @@ const InputTimeInternal = forwardRef(
 
 const WarningIcon = styled(Icon)``
 
-const StyledInput = styled.input.attrs(() => ({
-  maxLength: 2,
-  placeholder: '--',
-  type: 'text',
-}))`
+const StyledInput = styled.input
+  .withConfig({ shouldForwardProp })
+  .attrs(() => ({
+    maxLength: 2,
+    placeholder: '--',
+    type: 'text',
+  }))`
   ${innerInputStyle}
   font-family: inherit;
   font-size: ${(props) => props.theme.fontSizes.small};

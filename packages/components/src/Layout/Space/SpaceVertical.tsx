@@ -24,6 +24,7 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
 import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
@@ -71,7 +72,9 @@ const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
   }
 `
 
-export const SpaceVertical = styled.div<SpaceVerticalProps>`
+export const SpaceVertical = styled.div.withConfig({
+  shouldForwardProp,
+})<SpaceVerticalProps>`
   ${spaceCSS}
   ${align}
   ${flexGap}

@@ -24,6 +24,7 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
@@ -35,6 +36,8 @@ export const sectionCSS = css`
   flex: 1 0 auto;
 `
 
-export const Section = styled.section<SectionProps>`
+export const Section = styled.section.withConfig({
+  shouldForwardProp,
+})<SectionProps>`
   ${sectionCSS}
 `

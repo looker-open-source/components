@@ -31,6 +31,7 @@ import {
   BorderProps,
   typography,
   TypographyProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 
@@ -39,7 +40,9 @@ export interface TableRowProps
     TypographyProps,
     CompatibleHTMLProps<HTMLTableRowElement> {}
 
-export const TableRow = styled.tr<TableRowProps>`
+export const TableRow = styled.tr.withConfig({
+  shouldForwardProp,
+})<TableRowProps>`
   ${reset}
   ${border}
   ${typography}

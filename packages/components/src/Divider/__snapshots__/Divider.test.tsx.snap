@@ -14,7 +14,6 @@ exports[`A custom Divider 1`] = `
 
 <hr
   className="c0 c1"
-  size="20px"
 />
 `;
 
@@ -32,7 +31,6 @@ exports[`Default Divider 1`] = `
 
 <hr
   className="c0 c1"
-  size="1px"
 />
 `;
 
@@ -50,6 +48,5 @@ exports[`Divider with a variant 1`] = `
 
 <hr
   className="c0 c1"
-  size="1px"
 />
 `;

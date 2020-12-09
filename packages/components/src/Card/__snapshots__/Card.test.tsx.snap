@@ -27,9 +27,6 @@ exports[`A Card 1`] = `
 
 <div
   className="c0"
-  display="flex"
-  height="100%"
-  overflow="hidden"
 >
   🥑
 </div>
@@ -67,9 +64,6 @@ exports[`A raised Card 1`] = `
 
 <div
   className="c0"
-  display="flex"
-  height="100%"
-  overflow="hidden"
 >
   🥑
 </div>
@@ -116,9 +110,6 @@ exports[`A raised Card with a CardMedia block 1`] = `
 
 <div
   className="c0"
-  display="flex"
-  height="100%"
-  overflow="hidden"
 >
   <div
     className="c1"

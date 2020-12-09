@@ -26,7 +26,12 @@
 
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
-import { SpacingSizes, flexbox, FlexboxProps } from '@looker/design-tokens'
+import {
+  flexbox,
+  FlexboxProps,
+  SpacingSizes,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 
 export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
@@ -138,7 +143,9 @@ const verticalAlign = variant({
   },
 })
 
-export const Space = styled.div<SpaceHelperProps>`
+export const Space = styled.div.withConfig({
+  shouldForwardProp,
+})<SpaceHelperProps>`
   ${spaceCSS}
   ${({ stretch }) => !stretch && verticalAlign}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};

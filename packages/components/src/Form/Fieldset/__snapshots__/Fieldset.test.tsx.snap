@@ -246,21 +246,15 @@ exports[`Fieldset 1`] = `
 >
   <div
     className="c1"
-    width="100%"
   >
     <legend
       className="c2"
-      color="text4"
-      fontFamily="brand"
-      fontSize="medium"
-      fontWeight="semiBold"
     >
       Legend
     </legend>
     <div
       className="c3"
       role="group"
-      width="100%"
     >
       <div
         className="c4 FieldText-rg64oz-0"

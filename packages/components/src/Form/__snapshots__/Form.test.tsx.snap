@@ -185,7 +185,6 @@ exports[`Form with one child 1`] = `
 
 <form
   className="c0"
-  width="100%"
 >
   <div
     className="c1 FieldText-rg64oz-0"

@@ -75,11 +75,9 @@ exports[`DialogFooter with Button 1`] = `
 
 <footer
   className="c0 c1"
-  width="100%"
 >
   <div
     className="c2"
-    width="100%"
   >
     <button>
       Cancel
@@ -163,11 +161,9 @@ exports[`DialogFooter with DialogContext 1`] = `
 
 <footer
   className="c0 c1"
-  width="100%"
 >
   <div
     className="c2"
-    width="100%"
   >
     <button
       onClick={[Function]}

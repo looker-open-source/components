@@ -32,6 +32,7 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -63,11 +64,13 @@ const appearanceVariant = variant({
   },
 })
 
-export const DividerBase = styled.hr.attrs((props: DividerProps) => ({
-  appearance: props.appearance || 'default',
-  bg: props.customColor,
-  size: props.size || '1px',
-}))<DividerProps>`
+export const DividerBase = styled.hr
+  .withConfig({ shouldForwardProp })
+  .attrs((props: DividerProps) => ({
+    appearance: props.appearance || 'default',
+    bg: props.customColor,
+    size: props.size || '1px',
+  }))<DividerProps>`
   ${reset}
   ${position}
   ${space}

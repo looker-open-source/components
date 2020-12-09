@@ -120,7 +120,6 @@ exports[`FlexItem supports order  1`] = `
 
 <div
   className="c0"
-  order={1}
 />
 `;
 
@@ -135,6 +134,5 @@ exports[`FlexItem supports order  2`] = `
 
 <div
   className="c0"
-  order={-1}
 />
 `;

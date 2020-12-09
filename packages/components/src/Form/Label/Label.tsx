@@ -28,6 +28,7 @@ import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   reset,
+  shouldForwardProp,
   TypographyProps,
 } from '@looker/design-tokens'
 
@@ -35,7 +36,7 @@ export interface LabelProps
   extends TypographyProps,
     CompatibleHTMLProps<HTMLLabelElement> {}
 
-export const Label = styled.label<LabelProps>`
+export const Label = styled.label.withConfig({ shouldForwardProp })<LabelProps>`
   ${reset}
   color: ${({ theme: { colors } }) => colors.text4};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
