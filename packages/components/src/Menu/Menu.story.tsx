@@ -488,7 +488,7 @@ export const LongMenus = () => {
           on={longLabels}
           onChange={toggleLongLabels}
           label="Use longer labels"
-          detail="The scrolling will become jittery"
+          description="The scrolling will become jittery"
         />
       </Space>
     </SpaceVertical>
