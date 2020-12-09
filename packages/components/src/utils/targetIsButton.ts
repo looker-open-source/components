@@ -24,29 +24,24 @@
 
  */
 
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './moveFocus'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
+import { MouseEvent as ReactMouseEvent } from 'react'
+
+const checkForButton = (
+  element: Element,
+  containingAncestor: Element
+): boolean => {
+  if (element === containingAncestor) return false
+  if (!element.parentElement) return false
+  if (element.tagName === 'BUTTON') {
+    return true
+  }
+  return checkForButton(element.parentElement, containingAncestor)
+}
+/**
+ * Walks up the dom tree from an event's target to its currentTarget
+ * to determine whether a mousedown/click was located within a button
+ * @param e mouse event
+ */
+export const targetIsButton = (e: ReactMouseEvent<HTMLElement>) => {
+  return checkForButton(e.target as Element, e.currentTarget as Element)
+}

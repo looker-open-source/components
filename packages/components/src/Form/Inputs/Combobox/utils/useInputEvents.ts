@@ -31,7 +31,11 @@ import {
   useCallback,
   Context,
 } from 'react'
-import { useMouseDownClick, useWrapEvent } from '../../../../utils'
+import {
+  targetIsButton,
+  useMouseDownClick,
+  useWrapEvent,
+} from '../../../../utils'
 import { ComboboxInputProps } from '../ComboboxInput'
 import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
 import {
@@ -41,20 +45,6 @@ import {
 import { ComboboxActionType, ComboboxState } from './state'
 import { useBlur } from './useBlur'
 import { useKeyDown } from './useKeyDown'
-
-// Walks up the dom tree from an element to a containingAncestor checking for a button
-// Used for determining whether a mousedown/click should toggle the option list
-function checkForButton(
-  element: Element,
-  containingAncestor: Element
-): boolean {
-  if (element === containingAncestor) return false
-  if (!element.parentElement) return false
-  if (element.tagName === 'BUTTON') {
-    return true
-  }
-  return checkForButton(element.parentElement, containingAncestor)
-}
 
 export function useInputEvents<
   TProps extends
@@ -129,7 +119,7 @@ export function useInputEvents<
       // Without this, when clicking on a "clear" or "remove value" icon button
       // the list will flash open & closed (if closed)
       // or unnecessarily close (if open)
-      if (checkForButton(e.target as Element, e.currentTarget as Element)) {
+      if (targetIsButton(e)) {
         return
       }
       if (state === ComboboxState.IDLE) {

@@ -188,9 +188,10 @@ export const InputChipsBaseInternal = forwardRef(
       }
     }
 
-    // Prevent the default InputText behavior of moving focus to the internal input just after mousedown
-    // on Chip and clear button and instead focus after onChipDelete / onClear
-    // If mousedown/click is elsewhere on Chip, don't move focus b/c user is trying to select the Chip itself
+    // If mousedown is on the Chip, prevent moving focus to the input
+    // from the mousedown handler in InputChip
+    // The user is either trying to select the Chip itself
+    // or deleting the chip, which would be interrupted by moving focus
     function stopPropagation(e: SyntheticEvent) {
       e.stopPropagation()
     }
@@ -363,7 +364,6 @@ export const InputChipsBaseInternal = forwardRef(
             disabled={disabled}
             summary={summary}
             showCaret={showCaret}
-            onMouseDown={stopPropagation}
           />
         }
         height="auto"

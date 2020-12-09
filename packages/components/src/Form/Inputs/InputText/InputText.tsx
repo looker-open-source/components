@@ -45,7 +45,7 @@ import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
 import { Icon } from '../../../Icon'
 import { Span } from '../../../Text'
-import { useForkedRef, useWrapEvent } from '../../../utils'
+import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
 import { inputHeight } from '../height'
 
@@ -123,15 +123,20 @@ const InputTextLayout = forwardRef(
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
     const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-      // set focus to input on mousedown of container to mimic natural input behavior
-      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
-      if (document.activeElement === internalRef.current) {
-        // Avoid triggering the blur event
-        e.preventDefault()
-      } else {
-        setTimeout(() => {
-          internalRef.current && internalRef.current.focus()
-        }, 0)
+      // Avoid moving focus if the mousedown was inside a button
+      // because it will interrupt any onclick behavior
+      // (the button click handler should be responsible for moving focus)
+      if (!targetIsButton(e)) {
+        // set focus to input on mousedown of container to mimic natural input behavior
+        // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+        if (document.activeElement === internalRef.current) {
+          // Avoid triggering the blur event
+          e.preventDefault()
+        } else {
+          setTimeout(() => {
+            internalRef.current && internalRef.current.focus()
+          }, 0)
+        }
       }
     }
 
