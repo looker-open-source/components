@@ -61,7 +61,9 @@ export function useBlur<
     if (!e) {
       // handleBlur was called directly (via popover close)
       // only need to close the list
-      closeList(ComboboxActionType.ESCAPE)
+      if (state !== ComboboxState.IDLE) {
+        closeList(ComboboxActionType.ESCAPE)
+      }
       return
     }
     // we on want to close only if focus rests outside the select

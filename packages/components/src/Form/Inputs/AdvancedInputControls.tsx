@@ -91,6 +91,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
         <CaretIcon
           name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
           disabled={disabled}
+          data-testid="caret"
         />
       ),
     ])

@@ -38,8 +38,6 @@ export function useFocusManagement(lastActionType?: ComboboxActionType) {
   // of awkwardly at the beginning, unclear to my why ...
   useLayoutEffect(() => {
     if (
-      lastActionType === ComboboxActionType.NAVIGATE ||
-      lastActionType === ComboboxActionType.ESCAPE ||
       lastActionType === ComboboxActionType.SELECT_WITH_CLICK ||
       lastActionType === ComboboxActionType.INTERACT
     ) {

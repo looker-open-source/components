@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `Select` / `SelectMulti` / `InputTimeSelect` clicking on the caret icon toggles the list and focuses the field if it was not already focused
 - `Tab` now displays properly in Safari
 - `Truncate` with `Link` inside will properly preserve text color from `Link`
 - update InputText and InlineInputText for disabled color on Safari.

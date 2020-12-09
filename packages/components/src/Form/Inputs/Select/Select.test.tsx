@@ -719,7 +719,9 @@ describe('Select / SelectMulti', () => {
     renderWithTheme(<Component />)
     const input = screen.getByPlaceholderText('Search')
     fireEvent.mouseDown(input)
-    fireEvent.click(screen.getByText('FOO'))
+    const option = screen.getByText('FOO')
+    fireEvent.blur(input, { relatedTarget: option })
+    fireEvent.click(option)
 
     expect(input).toHaveFocus()
 
