@@ -30,7 +30,7 @@ export const indicatorDefaults: Required<AccordionIndicatorProps> = {
   indicatorGap: 'xsmall',
   indicatorIcons: {
     close: 'ArrowRight',
-    open: 'ArrowDown',
+    open: 'ArrowDropDown',
   },
   indicatorPosition: 'left',
   indicatorSize: 'xxsmall',
