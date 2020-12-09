@@ -39,12 +39,14 @@ export type IndicatorIcons = {
   open: IconNames
 }
 
+export type AccordionIndicatorPosition = undefined | 'left' | 'right'
+
 export interface AccordionIndicatorProps {
   /**
    * Determines where the disclosure indicator will sit on
    * @default 'right'
    */
-  indicatorPosition?: 'left' | 'right'
+  indicatorPosition?: AccordionIndicatorPosition
 
   /**
    * Size of icon on disclosure

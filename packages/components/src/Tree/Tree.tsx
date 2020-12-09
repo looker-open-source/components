@@ -24,23 +24,20 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { Theme, uiTransparencyBlend } from '@looker/design-tokens'
+import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
 import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
-  AccordionDisclosureStyle,
   AccordionProps,
-  AccordionIndicatorProps,
 } from '../Accordion'
 import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
-import { TreeItem, TreeItemLabel } from './TreeItem'
-import { TreeGroupLabel } from './TreeGroup'
 import { TreeContext } from './TreeContext'
+import { indicatorDefaults } from './treeUtils'
+import { TreeItemInner, TreeStyle } from './TreeStyle'
 
 export interface TreeProps
   extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'> {
@@ -91,15 +88,6 @@ export interface TreeProps
   dividers?: boolean
 }
 
-const indicatorProps: AccordionIndicatorProps = {
-  indicatorGap: 'xsmall',
-  indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
-  indicatorPosition: 'left',
-  indicatorSize: 'xxsmall',
-}
-
-export const TreeItemInner = styled(TreeItem)``
-
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
@@ -143,7 +131,7 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   const innerAccordion = (
-    <Accordion {...indicatorProps} {...restProps}>
+    <Accordion {...indicatorDefaults} {...restProps}>
       <AccordionDisclosure ref={disclosureRef} py="none">
         {treeItem}
       </AccordionDisclosure>
@@ -173,90 +161,5 @@ const TreeLayout: FC<TreeProps> = ({
     </TreeContext.Provider>
   )
 }
-
-const generateTreeBorder = (depth: number, theme: Theme) => {
-  const { space } = theme
-  const itemBorderSize = '1px'
-  const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = space[indicatorProps.indicatorSize as string]
-  const indicatorGapSize = space[indicatorProps.indicatorGap as string]
-  const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-  const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
-
-  return css`
-    background: linear-gradient(
-      90deg,
-      transparent calc(${borderSpacer} - 1px),
-      ${theme.colors.ui2},
-      transparent calc(${borderSpacer})
-    );
-  `
-}
-
-const generateIndent = (depth: number, theme: Theme) => {
-  const { space } = theme
-  const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = space[indicatorProps.indicatorSize as string]
-  const indicatorGapSize = space[indicatorProps.indicatorGap as string]
-  const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-
-  return css`
-    padding-left: calc(${indentCalculation});
-  `
-}
-
-interface TreeStyleProps {
-  border?: boolean
-  depth: number
-  hovered: boolean
-  branchFontWeight?: boolean
-  dividers?: boolean
-}
-
-export const dividersCSS = css`
-  ${TreeItem} {
-    margin-top: 1px;
-  }
-`
-
-export const TreeStyle = styled.div<TreeStyleProps>`
-  color: ${({ theme }) => theme.colors.text4};
-  flex-shrink: 2;
-  min-width: 0;
-
-  & > ${Accordion} {
-    & > ${AccordionContent} {
-      ${({ border, depth, theme }) =>
-        border && generateTreeBorder(depth, theme)}
-    }
-
-    & > ${AccordionDisclosureStyle} {
-      background-clip: padding-box;
-      background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
-      font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
-        branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
-      padding-right: ${({ theme }) => theme.space.xxsmall};
-      ${({ depth, theme }) => generateIndent(depth, theme)}
-    }
-  }
-
-  ${({ dividers }) => dividers && dividersCSS}
-
-  ${TreeItemInner} {
-    border-width: 0;
-    height: 100%;
-
-    & > ${TreeItemLabel} {
-      background-color: transparent;
-      padding-left: ${({ theme }) => theme.space.none};
-    }
-  }
-
-  ${TreeGroupLabel},
-  ${TreeItemLabel},
-  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 2, theme)}
-  }
-`
 
 export const Tree = styled(TreeLayout)``
