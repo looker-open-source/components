@@ -35,6 +35,7 @@ import {
   textDecoration,
   TextDecorationProps,
   TypographyProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import {
   fontSize,
