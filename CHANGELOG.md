@@ -16,11 +16,13 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ## [UNRELEASED]
 
-Now using Typescript 4.1 internally
+### Changed
 
-### MOVE TO @looker/components
+- Now using Typescript 4.1 internally
 
-- DataTable PrimaryAction support
+### Fixed
+
+- `image-snapshot-update` now correctly deletes all existing snapshots before running
 
 ## [0.9.25]
 

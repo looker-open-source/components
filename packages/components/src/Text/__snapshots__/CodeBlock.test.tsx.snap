@@ -6,6 +6,7 @@ exports[`A default CodeBlock component 1`] = `
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 1rem;
+  color: #262D33;
 }
 
 .c1 {
@@ -21,8 +22,6 @@ exports[`A default CodeBlock component 1`] = `
 
 <pre
   className="c0 c1"
-  fontFamily="code"
-  fontSize="small"
 >
   <code>
     Hello

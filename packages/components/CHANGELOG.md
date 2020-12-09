@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Inline fields now support both `description` and `detail`
-- DataTableCell used description instead of detail for consistency.
+- `DataTable` now supports `primaryAction`
+- `DataTableCell` used description instead of detail for consistency.
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
   - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
@@ -40,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `useTooltip` no longer supports `surfaceStyles` property
+- `Heading` & `Paragraph`, `Span`, `Text` no longer support `variant` (use `color` instead)
 
 ## [0.9.25]
 

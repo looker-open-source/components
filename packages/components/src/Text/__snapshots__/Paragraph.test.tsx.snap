@@ -11,8 +11,6 @@ exports[`A Paragraph component aligned 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>
@@ -30,8 +28,6 @@ exports[`A Paragraph component decorated 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="medium"
   textDecoration="line-through"
 >
   Hello
@@ -48,8 +44,6 @@ exports[`A Paragraph component resized 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="xxxxlarge"
 >
   Hello
 </p>
@@ -69,8 +63,6 @@ exports[`A Paragraph component text transformed 1`] = `
 
 <p
   className="c0 c1"
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>
@@ -92,8 +84,6 @@ exports[`A Paragraph component truncated 1`] = `
 
 <p
   className="c0 c1"
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>
@@ -110,9 +100,21 @@ exports[`A Paragraph component weight 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="medium"
-  fontWeight="bold"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component with color 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #CC1F36;
+}
+
+<p
+  className="c0 "
 >
   Hello
 </p>
@@ -135,29 +137,6 @@ exports[`A Paragraph component with multiline truncate 1`] = `
 
 <p
   className="c0 c1"
-  color="text"
-  fontSize="medium"
->
-  Hello
-</p>
-`;
-
-exports[`A Paragraph component with variant 1`] = `
-.c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-}
-
-.c1 {
-  color: #CC1F36;
-}
-
-<p
-  className="c0 c1"
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>
@@ -174,8 +153,6 @@ exports[`A Paragraph component wrapped 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>
@@ -191,8 +168,6 @@ exports[`A default Paragraph component 1`] = `
 
 <p
   className="c0 "
-  color="text"
-  fontSize="medium"
 >
   Hello
 </p>

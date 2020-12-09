@@ -62,7 +62,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
   }
 
   const selectedItemsText = (
-    <Span variant="secondary" fontSize="xsmall">
+    <Span color="secondary" fontSize="xsmall">
       {message}
     </Span>
   )

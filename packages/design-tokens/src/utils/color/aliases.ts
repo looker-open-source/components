@@ -24,41 +24,14 @@
 
  */
 
-import { variant } from 'styled-system'
+import { BlendColors, AliasColors } from '../../system'
 
-export type TextVariants =
-  | 'critical'
-  | 'default'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
-
-export interface TextVariantProps {
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
+export const generateColorAliases = ({
+  text1,
+  text2,
+}: BlendColors): AliasColors => {
+  return {
+    secondary: text2,
+    subdued: text1,
+  }
 }
-
-export const textVariant = variant({
-  prop: 'variant',
-  variants: {
-    critical: {
-      color: 'critical',
-    },
-    default: {
-      color: 'text5',
-    },
-    inverted: {
-      color: 'inverseOn',
-    },
-    positive: {
-      color: 'positive',
-    },
-    secondary: {
-      color: 'text2',
-    },
-    subdued: {
-      color: 'text1',
-    },
-  },
-})

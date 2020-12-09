@@ -11,9 +11,6 @@ exports[`A Code component aligned 1`] = `
 
 <code
   className="Code-sc-1b6zsy0-0 c0"
-  color="text"
-  fontFamily="code"
-  fontSize="medium"
 >
   Hello
 </code>
@@ -29,9 +26,6 @@ exports[`A Code component resized 1`] = `
 
 <code
   className="Code-sc-1b6zsy0-0 c0"
-  color="text"
-  fontFamily="code"
-  fontSize="xxxxlarge"
 >
   Hello
 </code>
@@ -48,10 +42,6 @@ exports[`A Code component weight 1`] = `
 
 <code
   className="Code-sc-1b6zsy0-0 c0"
-  color="text"
-  fontFamily="code"
-  fontSize="medium"
-  fontWeight="bold"
 >
   Hello
 </code>
@@ -67,9 +57,6 @@ exports[`A default Code component 1`] = `
 
 <code
   className="Code-sc-1b6zsy0-0 c0"
-  color="text"
-  fontFamily="code"
-  fontSize="medium"
 >
   Hello
 </code>

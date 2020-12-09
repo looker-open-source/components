@@ -24,54 +24,13 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Span, SpanProps } from './Span'
-
-const Template: Story<SpanProps> = (args) => <Span {...args} />
-
-export const Basic = Template.bind({})
-Basic.args = {
-  children: 'Span Text',
-}
-
-export const XXXXLarge = Template.bind({})
-XXXXLarge.args = {
-  ...Basic.args,
-  fontSize: 'xxxxlarge',
-}
-
-export const Bold = Template.bind({})
-Bold.args = {
-  ...Basic.args,
-  fontWeight: 'bold',
-}
-
-export const Color = Template.bind({})
-Color.args = {
-  ...Basic.args,
-  color: 'critical',
-}
-
-export const TextTransform = Template.bind({})
-TextTransform.args = {
-  ...Basic.args,
-  textTransform: 'uppercase',
-}
-
-export const Wrapped = Template.bind({})
-Wrapped.args = {
-  ...Basic.args,
-  breakword: true,
-}
-
-export const TextDecoration = Template.bind({})
-TextDecoration.args = {
-  ...Basic.args,
-  textDecoration: 'line-through',
-}
-
-export default {
-  component: Span,
-  title: 'Span',
+export interface AliasColors {
+  /**
+   * Semantic alias for `text1`
+   */
+  subdued: string
+  /**
+   * Semantic alias for `text2`
+   */
+  secondary: string
 }

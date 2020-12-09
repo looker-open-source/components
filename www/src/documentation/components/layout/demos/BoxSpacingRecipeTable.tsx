@@ -77,14 +77,14 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
     <Box mb="medium">
       <Text
         fontSize="medium"
-        variant="secondary"
+        color="secondary"
         textTransform="uppercase"
         fontWeight="semiBold"
       >
         {text}
       </Text>
       <Box as="span" ml="xsmall">
-        <Text fontSize="xsmall" variant="subdued">
+        <Text fontSize="xsmall" color="subdued">
           {defaultLabel}
         </Text>
       </Box>
@@ -113,7 +113,7 @@ const ListRender = (
       <Box ml="small" as="span">
         <Text fontSize="small">{label}</Text>
         <Box as="span" ml="xsmall">
-          <Text fontSize="xsmall" variant="subdued">
+          <Text fontSize="xsmall" color="subdued">
             {defaultLabel}
           </Text>
         </Box>
