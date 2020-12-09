@@ -95,7 +95,7 @@ const indicatorProps: AccordionIndicatorProps = {
   indicatorGap: 'xsmall',
   indicatorIcons: { close: 'ArrowRight', open: 'ArrowDown' },
   indicatorPosition: 'left',
-  indicatorSize: 'small',
+  indicatorSize: 'xxsmall',
 }
 
 export const TreeItemInner = styled(TreeItem)``
@@ -175,36 +175,29 @@ const TreeLayout: FC<TreeProps> = ({
 }
 
 const generateTreeBorder = (depth: number, theme: Theme) => {
-  const {
-    colors,
-    space: { xxsmall, xsmall, small },
-  } = theme
-
+  const { space } = theme
   const itemBorderSize = '1px'
-  const itemPaddingSize = xxsmall
-  const indicatorIconSize = small
-  const indicatorGapSize = xsmall
-  const depthSize = `${itemBorderSize} + ${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-  const borderSpacer = `(${small} / 2) + ${depthSize}`
+  const itemPaddingSize = space.xxsmall
+  const indicatorIconSize = space[indicatorProps.indicatorSize as string]
+  const indicatorGapSize = space[indicatorProps.indicatorGap as string]
+  const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+  const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
 
   return css`
     background: linear-gradient(
       90deg,
       transparent calc(${borderSpacer} - 1px),
-      ${colors.ui2},
+      ${theme.colors.ui2},
       transparent calc(${borderSpacer})
     );
   `
 }
 
 const generateIndent = (depth: number, theme: Theme) => {
-  const {
-    space: { xxsmall, xsmall, small },
-  } = theme
-
-  const itemPaddingSize = xxsmall
-  const indicatorIconSize = small
-  const indicatorGapSize = xsmall
+  const { space } = theme
+  const itemPaddingSize = space.xxsmall
+  const indicatorIconSize = space[indicatorProps.indicatorSize as string]
+  const indicatorGapSize = space[indicatorProps.indicatorGap as string]
   const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
 
   return css`
