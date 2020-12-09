@@ -85,7 +85,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
     <div className={className}>
       <Menu>
         <MenuDisclosure>
-          <Button iconAfter="ArrowDown" size="xsmall">
+          <Button iconAfter="ArrowDropDown" size="xsmall">
             Bulk Actions
           </Button>
         </MenuDisclosure>

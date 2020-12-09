@@ -87,7 +87,7 @@ const accordionIndicatorDefaults: AccordionIndicatorProps = {
   indicatorGap: 'xsmall',
   indicatorIcons: {
     close: 'ArrowRight',
-    open: 'ArrowDown',
+    open: 'ArrowDropDown',
   },
   indicatorPosition: 'left',
   indicatorSize: 'medium',

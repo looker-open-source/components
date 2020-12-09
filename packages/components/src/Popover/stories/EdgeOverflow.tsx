@@ -52,7 +52,7 @@ export const EdgeOverflow: FC<Props> = ({
         </PopoverContent>
       }
     >
-      <ButtonOutline iconAfter="ArrowDown" m="xxlarge">
+      <ButtonOutline iconAfter="ArrowDropDown" m="xxlarge">
         {children}
       </ButtonOutline>
     </Popover>
