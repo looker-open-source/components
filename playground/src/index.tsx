@@ -23,36 +23,15 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
-import {
-  ComponentsProvider,
-  FieldSelect,
-  FieldChips,
-  SpaceVertical,
-} from '@looker/components'
-import 'core-js/stable'
+import { ComponentsProvider } from '@looker/components'
+import { LongMenus } from '@looker/components/src/Menu/Menu.story'
 
 const App = () => {
-  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   return (
     <ComponentsProvider loadGoogleFonts>
-      <SpaceVertical width={500} p="large">
-        <FieldSelect
-          label="Select value via click"
-          options={[
-            { label: 'Cheddar', value: 'cheddar' },
-            { label: 'Gouda', value: 'gouda' },
-            { label: 'Swiss', value: 'swiss' },
-          ]}
-        />
-        <FieldChips
-          label="Select current values"
-          description="Then focus out of the field. Confirm values are deselected."
-          values={values}
-          onChange={setValues}
-        />
-      </SpaceVertical>
+      <LongMenus />
     </ComponentsProvider>
   )
 }

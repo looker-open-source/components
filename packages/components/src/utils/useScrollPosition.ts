@@ -24,31 +24,32 @@
 
  */
 
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './moveFocus'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useScrollPosition'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
-export * from './useWindow'
+import throttle from 'lodash/throttle'
+import { useEffect, useState } from 'react'
+
+/**
+ * Returns the scroll top position of an element
+ * @param element the element that is being scrolled
+ */
+export const useScrollPosition = (element: HTMLElement | null) => {
+  const [scrollPosition, setScrollPosition] = useState(0)
+  useEffect(() => {
+    const scrollListener = throttle(() => {
+      if (element) {
+        setScrollPosition(element.scrollTop)
+      }
+    }, 50)
+
+    if (element) {
+      element.addEventListener('scroll', scrollListener)
+      scrollListener()
+    }
+
+    return () => {
+      element && element.removeEventListener('scroll', scrollListener)
+      setScrollPosition(0)
+    }
+  }, [element])
+
+  return scrollPosition
+}

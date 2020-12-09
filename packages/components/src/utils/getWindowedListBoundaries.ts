@@ -46,35 +46,41 @@ export interface GetWindowedListBoundaryProps {
   /**
    * The height of the scrollable container
    */
-  containerHeight?: number
+  height?: number
   /**
    * The scroll position of the list in the container
    */
-  containerScrollPosition?: number
+  scrollPosition?: number
 }
+
+const initialResult = { afterHeight: 0, beforeHeight: 0, end: 0, start: 0 }
 
 export function getWindowedListBoundaries({
   buffer = 5,
-  containerHeight,
-  containerScrollPosition,
+  height,
+  scrollPosition,
   enabled = true,
   itemHeight,
   length,
 }: GetWindowedListBoundaryProps) {
-  if (!enabled) return { end: length - 1, start: 0 }
+  if (!enabled) return { ...initialResult, end: length - 1 }
 
-  if (containerScrollPosition === undefined || containerHeight === undefined)
+  if (scrollPosition === undefined || height === undefined)
     // scroll position and height probably undefined on initial render
     // best to render no list items before we have these values
-    return { end: 0, start: 0 }
+    return initialResult
 
-  const top = Math.floor(containerScrollPosition / itemHeight)
-  const bottom = Math.ceil(
-    (containerHeight + containerScrollPosition) / itemHeight
-  )
+  const top = Math.floor(scrollPosition / itemHeight)
+  const bottom = Math.ceil((height + scrollPosition) / itemHeight)
+
+  const start = top - buffer < 0 ? 0 : top - buffer
+  const end = bottom + buffer > length - 1 ? length - 1 : bottom + buffer
+  const afterLength = length - 1 - end
 
   return {
-    end: bottom + buffer > length - 1 ? length - 1 : bottom + buffer,
-    start: top - buffer < 0 ? 0 : top - buffer,
+    afterHeight: afterLength * itemHeight,
+    beforeHeight: start * itemHeight,
+    end,
+    start,
   }
 }

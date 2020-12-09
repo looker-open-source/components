@@ -79,6 +79,17 @@ Basic.args = {
   )),
 }
 
+const array200 = Array.from(Array(200), (_, i) => String(i + 1))
+export const LongList = Template.bind({})
+LongList.args = {
+  children: array200.map((item, i) => <MenuItem key={i}>{item}</MenuItem>),
+  height: '100vh',
+}
+
+LongList.parameters = {
+  storyshots: false,
+}
+
 export default {
   component: MenuList,
   title: 'MenuList',

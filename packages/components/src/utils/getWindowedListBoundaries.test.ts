@@ -29,18 +29,18 @@ import { getWindowedListBoundaries } from './getWindowedListBoundaries'
 describe('getWindowedListBoundaries', () => {
   test('returns entire length if enabled is false', () => {
     const result = getWindowedListBoundaries({
-      containerHeight: 446,
-      containerScrollPosition: 0,
       enabled: false,
+      height: 446,
       itemHeight: 57,
       length: 129,
+      scrollPosition: 0,
     })
 
     expect(result.start).toEqual(0)
     expect(result.end).toEqual(128)
   })
 
-  test('returns 0 0 if containerHeight and containerScrollPosition are missing', () => {
+  test('returns 0 0 if height and scrollPosition are missing', () => {
     const result = getWindowedListBoundaries({
       itemHeight: 31,
       length: 98,
@@ -52,10 +52,10 @@ describe('getWindowedListBoundaries', () => {
 
   test('top of list', () => {
     const result = getWindowedListBoundaries({
-      containerHeight: 1002,
-      containerScrollPosition: 0,
+      height: 1002,
       itemHeight: 16,
       length: 873,
+      scrollPosition: 0,
     })
 
     expect(result.start).toEqual(0)
@@ -64,10 +64,10 @@ describe('getWindowedListBoundaries', () => {
 
   test('middle of list', () => {
     const result = getWindowedListBoundaries({
-      containerHeight: 775,
-      containerScrollPosition: 922,
+      height: 775,
       itemHeight: 26,
       length: 1109,
+      scrollPosition: 922,
     })
 
     expect(result.start).toEqual(30)
@@ -76,10 +76,10 @@ describe('getWindowedListBoundaries', () => {
 
   test('end of list', () => {
     const result = getWindowedListBoundaries({
-      containerHeight: 300,
-      containerScrollPosition: 1200,
+      height: 300,
       itemHeight: 30,
       length: 50,
+      scrollPosition: 1200,
     })
 
     expect(result.start).toEqual(35)
@@ -89,10 +89,10 @@ describe('getWindowedListBoundaries', () => {
   test('top of list (custom buffer)', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
-      containerHeight: 1002,
-      containerScrollPosition: 0,
+      height: 1002,
       itemHeight: 16,
       length: 873,
+      scrollPosition: 0,
     })
 
     expect(result.start).toEqual(0)
@@ -102,10 +102,10 @@ describe('getWindowedListBoundaries', () => {
   test('middle of list (custom buffer)', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
-      containerHeight: 775,
-      containerScrollPosition: 922,
+      height: 775,
       itemHeight: 26,
       length: 1109,
+      scrollPosition: 922,
     })
 
     expect(result.start).toEqual(24)
@@ -115,10 +115,10 @@ describe('getWindowedListBoundaries', () => {
   test('end of list (custom buffer)', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
-      containerHeight: 300,
-      containerScrollPosition: 1200,
+      height: 300,
       itemHeight: 30,
       length: 50,
+      scrollPosition: 1200,
     })
 
     expect(result.start).toEqual(29)

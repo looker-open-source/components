@@ -33,7 +33,7 @@ import React, {
   useState,
   Ref,
 } from 'react'
-import { Box } from '../Layout'
+import { Flex } from '../Layout'
 import { Portal } from '../Portal'
 import { DialogContext } from '../Dialog'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
@@ -247,14 +247,16 @@ export const usePopover = ({
     >
       <Portal ref={scrollRef}>
         <OverlaySurface placement={placement} ref={ref} style={style}>
-          <Box
+          <Flex
+            flexDirection="column"
+            alignItems="flex-start"
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
             overflowY="auto"
             borderRadius="inherit"
             ref={contentContainerRef}
           >
             {content}
-          </Box>
+          </Flex>
         </OverlaySurface>
       </Portal>
     </DialogContext.Provider>
