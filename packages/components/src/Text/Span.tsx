@@ -40,3 +40,5 @@ export interface SpanProps
 export const Span = styled(TextBase)<SpanProps>`
   ${textTransform}
 `
+
+Span.defaultProps = { color: 'inherit' }

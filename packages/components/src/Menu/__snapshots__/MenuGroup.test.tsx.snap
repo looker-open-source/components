@@ -143,10 +143,6 @@ exports[`MenuGroup - JSX label 1`] = `
     />
     <h2
       className="c2 c3 "
-      color="text"
-      fontFamily="brand"
-      fontSize="small"
-      fontWeight="semiBold"
     >
       <div
         className="c4"
@@ -347,10 +343,6 @@ exports[`MenuGroup - label 1`] = `
     />
     <h2
       className="c2 c3 "
-      color="text"
-      fontFamily="brand"
-      fontSize="small"
-      fontWeight="semiBold"
     >
       Questions
     </h2>

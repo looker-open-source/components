@@ -11,10 +11,6 @@ exports[`A <h1> Heading 1`] = `
 
 <h1
   className="c0 "
-  color="text"
-  fontFamily="brand"
-  fontSize="xxlarge"
-  fontWeight="normal"
 >
   🥑
 </h1>
@@ -31,10 +27,6 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 
 <h1
   className="c0 "
-  color="text"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h1>
@@ -51,10 +43,6 @@ exports[`A Heading to bold 1`] = `
 
 <h2
   className="c0 "
-  color="text"
-  fontFamily="brand"
-  fontSize="large"
-  fontWeight="bold"
 >
   🥑
 </h2>
@@ -75,10 +63,6 @@ exports[`A Heading transformed 1`] = `
 
 <h2
   className="c0 c1"
-  color="text"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h2>
@@ -101,10 +85,6 @@ exports[`A Heading truncated 1`] = `
 
 <h2
   className="c0 c1"
-  color="text"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h2>
@@ -128,10 +108,6 @@ exports[`A Heading with multiline truncate 1`] = `
 
 <h2
   className="c0 c1"
-  color="text"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h2>
@@ -148,10 +124,6 @@ exports[`A Heading with variant 1`] = `
 
 <h2
   className="c0 "
-  color="subdued"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h2>
@@ -168,10 +140,6 @@ exports[`A default Heading 1`] = `
 
 <h2
   className="c0 "
-  color="text"
-  fontFamily="brand"
-  fontSize="xlarge"
-  fontWeight="normal"
 >
   🥑
 </h2>

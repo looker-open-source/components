@@ -25,6 +25,7 @@
  */
 
 import styled from 'styled-components'
+
 import {
   reset,
   space,
@@ -33,6 +34,7 @@ import {
   textDecoration,
   TextDecorationProps,
   TypographyProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import {
   fontSize,
@@ -56,9 +58,11 @@ export interface TextBaseProps
   breakword?: boolean
 }
 
-export const TextBase = styled.span.attrs((props: TypographyProps) => ({
-  lineHeight: props.lineHeight || props.fontSize,
-}))<TextBaseProps>`
+export const TextBase = styled.span
+  .withConfig({ shouldForwardProp })
+  .attrs((props: TextBaseProps) => ({
+    lineHeight: props.lineHeight || props.fontSize,
+  }))<TextBaseProps>`
   ${reset}
   /* fontFamily is handled by reset */
   ${fontSize}
@@ -72,3 +76,5 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${textDecoration}
   ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
 `
+
+TextBase.defaultProps = { color: 'text' }

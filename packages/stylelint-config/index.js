@@ -57,6 +57,16 @@ module.exports = {
     'number-no-trailing-zeros': true,
     'order/properties-alphabetical-order': true,
     'prettier/prettier': true,
+    /**
+     * Workaround until stylelint-processor-styled-components patched:
+     * https://github.com/styled-components/stylelint-processor-styled-components/pull/297
+     * */
+    'property-no-unknown': [
+      true,
+      {
+        ignoreProperties: 'should-forward-prop',
+      },
+    ],
     'selector-attribute-brackets-space-inside': 'never',
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
