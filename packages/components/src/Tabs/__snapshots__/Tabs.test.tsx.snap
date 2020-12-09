@@ -17,6 +17,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   color: #262D33;
   cursor: pointer;
   font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  margin: 0;
 }
 
 .c0:active {
@@ -73,6 +74,7 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   color: #707781;
   cursor: pointer;
   font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  margin: 0;
 }
 
 .c0:active {
