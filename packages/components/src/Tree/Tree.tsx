@@ -36,7 +36,7 @@ import { IconNames } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
-import { indicatorDefaults } from './treeUtils'
+import { indicatorDefaults } from './utils'
 import { TreeItemInner, TreeStyle } from './TreeStyle'
 
 export interface TreeProps

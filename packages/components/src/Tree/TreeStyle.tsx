@@ -33,7 +33,7 @@ import {
 } from '../Accordion'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
-import { generateIndent, generateTreeBorder } from './treeUtils'
+import { generateIndent, generateTreeBorder } from './utils'
 
 interface TreeStyleProps {
   border?: boolean

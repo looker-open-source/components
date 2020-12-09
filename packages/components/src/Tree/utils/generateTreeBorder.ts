@@ -26,17 +26,7 @@
 
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
-import { AccordionIndicatorProps } from '../Accordion'
-
-export const indicatorDefaults: Required<AccordionIndicatorProps> = {
-  indicatorGap: 'xsmall',
-  indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDown',
-  },
-  indicatorPosition: 'left',
-  indicatorSize: 'xxsmall',
-}
+import { indicatorDefaults } from './indicatorDefaults'
 
 export const generateTreeBorder = (depth: number, theme: Theme) => {
   const { space } = theme
@@ -56,19 +46,5 @@ export const generateTreeBorder = (depth: number, theme: Theme) => {
       ${theme.colors.ui2},
       transparent calc(${borderSpacer})
     );
-  `
-}
-
-export const generateIndent = (depth: number, theme: Theme) => {
-  const { space } = theme
-  const { indicatorSize, indicatorGap } = indicatorDefaults
-
-  const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = space[indicatorSize]
-  const indicatorGapSize = space[indicatorGap]
-  const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-
-  return css`
-    padding-left: calc(${indentCalculation});
   `
 }
