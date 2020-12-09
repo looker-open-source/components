@@ -205,7 +205,6 @@ exports[`Spinner A default spinner 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={30}
 >
   <div
     className="c1"
@@ -467,7 +466,6 @@ exports[`Spinner Spinner can be resized 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={200}
 >
   <div
     className="c1"
@@ -729,7 +727,6 @@ exports[`Spinner Spinner can change markger color 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={30}
 >
   <div
     className="c1"
@@ -1096,7 +1093,6 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={30}
 >
   <div
     className="c1"
@@ -1399,7 +1395,6 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={30}
 >
   <div
     className="c1"
@@ -1661,7 +1656,6 @@ exports[`Spinner Spinner speed can be set 1`] = `
 
 <div
   className="c0 Spinner-dvoyit-1"
-  size={30}
 >
   <div
     className="c1"

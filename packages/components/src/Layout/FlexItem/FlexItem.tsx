@@ -24,6 +24,7 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import {
   alignSelf,
@@ -44,7 +45,9 @@ export interface FlexItemProps
     FlexProps,
     OrderProps {}
 
-export const FlexItem = styled.div<FlexItemProps>`
+export const FlexItem = styled.div.withConfig({
+  shouldForwardProp,
+})<FlexItemProps>`
   ${complexLayoutCSS}
   ${alignSelf}
   ${flexBasis}

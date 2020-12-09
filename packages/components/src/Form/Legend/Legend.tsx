@@ -31,6 +31,7 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
@@ -40,7 +41,9 @@ export interface LegendProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLegendElement> {}
 
-export const Legend = styled.legend<LegendProps>`
+export const Legend = styled.legend.withConfig({
+  shouldForwardProp,
+})<LegendProps>`
   ${reset}
   ${color}
   ${space}

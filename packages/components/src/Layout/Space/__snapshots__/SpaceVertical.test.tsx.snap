@@ -35,7 +35,6 @@ exports[`SpaceVertical default 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -87,7 +86,6 @@ exports[`SpaceVertical reversed 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -139,7 +137,6 @@ exports[`SpaceVertical with specified gap 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑

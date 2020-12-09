@@ -24,6 +24,7 @@
 
  */
 
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { defaultGap, SpaceHelperProps } from '../Space'
 import { simpleLayoutCSS } from '../utils/simple'
@@ -36,7 +37,7 @@ export interface GridProps extends SpaceHelperProps {
   columns?: number
 }
 
-export const Grid = styled.div<GridProps>`
+export const Grid = styled.div.withConfig({ shouldForwardProp })<GridProps>`
   ${simpleLayoutCSS}
 
   display: grid;

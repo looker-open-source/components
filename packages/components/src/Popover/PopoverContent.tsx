@@ -31,12 +31,15 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import { layout, LayoutProps } from 'styled-system'
 
 interface PopoverContent extends SpaceProps, LayoutProps, FlexboxProps {}
 
-export const PopoverContent = styled.div<PopoverContent>`
+export const PopoverContent = styled.div.withConfig({
+  shouldForwardProp,
+})<PopoverContent>`
   ${reset}
   ${space}
   ${layout}

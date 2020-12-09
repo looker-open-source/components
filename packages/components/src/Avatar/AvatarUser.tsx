@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { omitStyledProps } from '@looker/design-tokens'
+import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
 import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarUserProps extends AvatarProps {
@@ -79,9 +79,11 @@ const AvatarPhoto = styled.object`
   width: 100%;
 `
 
-const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
-  bg: props.color,
-}))`
+const AvatarInitials = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs((props: AvatarUserProps) => ({
+    bg: props.color,
+  }))`
   color: ${({ theme }) => theme.colors.keyText};
 `
 

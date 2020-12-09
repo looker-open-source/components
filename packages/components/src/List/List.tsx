@@ -29,6 +29,7 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
   typography,
   TypographyProps,
   PositionProps,
@@ -75,10 +76,12 @@ const typeVariant = variant({
   },
 })
 
-export const List = styled.ul.attrs((props: ListProps) => ({
-  as: ['letter', 'number'].includes(String(props.type)) ? 'ol' : undefined,
-  type: props.nomarker ? 'none' : props.type,
-}))<ListProps>`
+export const List = styled.ul
+  .withConfig({ shouldForwardProp })
+  .attrs((props: ListProps) => ({
+    as: ['letter', 'number'].includes(String(props.type)) ? 'ol' : undefined,
+    type: props.nomarker ? 'none' : props.type,
+  }))<ListProps>`
   ${reset}
   ${typography}
   ${typeVariant}

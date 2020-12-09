@@ -31,6 +31,7 @@ import {
   SpaceProps,
   space,
   reset,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import range from 'lodash/range'
@@ -67,7 +68,7 @@ const SpinnerFactory: FC<SpinnerProps> = (props) => {
   )
 }
 
-const Style = styled.div<SpinnerProps>`
+const Style = styled.div.withConfig({ shouldForwardProp })<SpinnerProps>`
   ${reset}
   ${space}
   ${position}

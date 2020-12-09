@@ -23,7 +23,6 @@ exports[`Space around + gap (all you get is around) 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -63,7 +62,6 @@ exports[`Space around 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -103,7 +101,6 @@ exports[`Space between 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -165,7 +162,6 @@ exports[`Space default 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -205,7 +201,6 @@ exports[`Space evenly 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -267,7 +262,6 @@ exports[`Space reversed 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑
@@ -329,7 +323,6 @@ exports[`Space with specified gap 1`] = `
 
 <div
   className="c0"
-  width="100%"
 >
   <div>
     🥑

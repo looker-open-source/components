@@ -28,6 +28,7 @@ import {
   CompatibleHTMLProps,
   flexbox,
   FlexboxProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
@@ -40,7 +41,7 @@ export interface FlexProps
     Omit<ComplexLayoutProps, 'display'>,
     FlexboxProps {}
 
-export const Flex = styled.div<FlexProps>`
+export const Flex = styled.div.withConfig({ shouldForwardProp })<FlexProps>`
   ${complexLayoutCSS}
   ${flexbox}
   display: flex;

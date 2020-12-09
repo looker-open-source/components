@@ -9,6 +9,5 @@ exports[`A Table should render 1`] = `
 
 <table
   className="c0"
-  width="100%"
 />
 `;

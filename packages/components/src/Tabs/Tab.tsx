@@ -33,6 +33,7 @@ import {
   reset,
   space,
   SpaceProps,
+  shouldForwardProp,
   typography,
   TypographyProps,
   tabShadowColor,
@@ -51,7 +52,7 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const TabStyle = styled.button<TabProps>`
+const TabStyle = styled.button.withConfig({ shouldForwardProp })<TabProps>`
   ${reset}
   ${layout}
   ${space}

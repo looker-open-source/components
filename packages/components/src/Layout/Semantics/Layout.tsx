@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 import { Section } from './Section'
@@ -47,7 +47,7 @@ const hasAsideCSS = css`
   }
 `
 
-export const Layout = styled.div<LayoutProps>`
+export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   ${simpleLayoutCSS}
 
   display: flex;

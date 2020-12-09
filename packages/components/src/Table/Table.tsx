@@ -33,6 +33,7 @@ import {
   border,
   LayoutProps,
   layout,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 
@@ -42,7 +43,7 @@ export interface TableProps
     BorderProps,
     CompatibleHTMLProps<HTMLTableElement> {}
 
-export const Table = styled.table<TableProps>`
+export const Table = styled.table.withConfig({ shouldForwardProp })<TableProps>`
   ${reset}
   ${space}
   ${layout}

@@ -29,6 +29,7 @@ import {
   CompatibleHTMLProps,
   FlexboxProps,
   flexbox,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import { ComplexLayoutProps, complexLayoutCSS } from '../Layout/utils/complex'
 
@@ -37,7 +38,9 @@ export interface CardContentProps
     FlexboxProps,
     CompatibleHTMLProps<HTMLElement> {}
 
-export const CardContent = styled.div<CardContentProps>`
+export const CardContent = styled.div.withConfig({
+  shouldForwardProp,
+})<CardContentProps>`
   ${complexLayoutCSS}
   ${flexbox}
 `
