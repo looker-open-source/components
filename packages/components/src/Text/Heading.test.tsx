@@ -69,7 +69,7 @@ test('A Heading transformed', () => {
 })
 
 test('A Heading with variant', () => {
-  const component = createWithTheme(<Heading variant="subdued">🥑</Heading>)
+  const component = createWithTheme(<Heading color="subdued">🥑</Heading>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

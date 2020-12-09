@@ -25,14 +25,16 @@
  */
 
 import styled from 'styled-components'
+
 import {
-  color,
   reset,
   space,
   SpaceProps,
-  TypographyProps,
+  textColor,
   textDecoration,
   TextDecorationProps,
+  TypographyProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import {
   fontSize,
@@ -47,6 +49,8 @@ export interface TextBaseProps
   extends SpaceProps,
     TextDecorationProps,
     TypographyProps {
+  color?: string
+
   /**
    * Should browser insert line breaks within words to prevent text from overflowing its content box
    * @default: false
@@ -54,9 +58,11 @@ export interface TextBaseProps
   breakword?: boolean
 }
 
-export const TextBase = styled.span.attrs((props: TypographyProps) => ({
-  lineHeight: props.lineHeight || props.fontSize,
-}))<TextBaseProps>`
+export const TextBase = styled.span
+  .withConfig({ shouldForwardProp })
+  .attrs((props: TextBaseProps) => ({
+    lineHeight: props.lineHeight || props.fontSize,
+  }))<TextBaseProps>`
   ${reset}
   /* fontFamily is handled by reset */
   ${fontSize}
@@ -64,9 +70,11 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${fontWeight}
   ${letterSpacing}
   ${lineHeight}
-  ${textAlign}
   ${space}
-  ${color}
+  ${textAlign}
+  ${textColor}
   ${textDecoration}
   ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
 `
+
+TextBase.defaultProps = { color: 'text' }

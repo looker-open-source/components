@@ -24,19 +24,10 @@
 
  */
 
+import React, { useState, FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import React, { useState } from 'react'
-import { Space } from '../Layout'
-import { Tab } from './Tab'
-import { TabList, TabListProps } from './TabList'
-import { TabPanel } from './TabPanel'
-import { TabPanels } from './TabPanels'
-import { Tabs } from './Tabs'
-
-export default {
-  component: Tabs,
-  title: 'Tabs',
-}
+import { Space } from '../Layout/Space'
+import { Tab, Tabs, TabList, TabListProps, TabPanel, TabPanels } from './'
 
 interface DemoProps extends TabListProps {
   tabCount: number
@@ -71,7 +62,7 @@ Basic.args = {
   tabPrefix: 'My Awesome Tab',
 }
 
-export const Controlled = () => {
+export const Controlled: FC = () => {
   const [currentTabIndex, setTab] = useState(0)
 
   return (
@@ -94,6 +85,7 @@ export const Controlled = () => {
   )
 }
 
-Controlled.parameters = {
-  storyshots: { disable: true },
+export default {
+  component: Tabs,
+  title: 'Tabs',
 }

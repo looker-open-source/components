@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Inline fields now support both `description` and `detail`
-- DataTableCell used description instead of detail for consistency.
+- `DataTable` now supports `primaryAction`
+- `DataTableCell` used description instead of detail for consistency.
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
   - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
@@ -26,9 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem`
   - Restricts `children` to type string
   - Nested `TreeItem`s align with sibling `Tree` labels (as opposed to `Tree` indicators)
+- Changed usage of icon `ArrowDown` to use new name `ArrowDropDown`
 
 ### Fixed
 
+- `Tab` now displays properly in Safari
 - `Truncate` with `Link` inside will properly preserve text color from `Link`
 - update InputText and InlineInputText for disabled color on Safari.
 - `TreeGroupLabel` is now properly aligned with sibling `TreeItems` and fits the standard vertical cadence (`24px`)
@@ -41,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - `useTooltip` no longer supports `surfaceStyles` property
+- `Heading` & `Paragraph`, `Span`, `Text` no longer support `variant` (use `color` instead)
 
 ## [0.9.25]
 

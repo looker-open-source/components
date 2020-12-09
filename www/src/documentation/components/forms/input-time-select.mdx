@@ -59,14 +59,14 @@ Depending on readability preference, the time picker can format the labels in ei
         <Heading as="h3">12-hour</Heading>
         <Space>
           <InputTimeSelect format="12h" value={value} onChange={setValue} />
-          <Text variant="secondary">{value}</Text>
+          <Text color="secondary">{value}</Text>
         </Space>
       </SpaceVertical>
       <SpaceVertical gap="xsmall">
         <Heading as="h3">24-hour</Heading>
         <Space>
           <InputTimeSelect format="24h" value={value} onChange={setValue} />
-          <Text variant="secondary">{value}</Text>
+          <Text color="secondary">{value}</Text>
         </Space>
       </SpaceVertical>
     </Grid>
@@ -87,7 +87,7 @@ Consistent with all other inputs, `InputTimeSelect` accepts `value` and `onChang
   return (
     <Space>
       <InputTimeSelect value={value} onChange={setValue} />
-      <Text variant="secondary">{value}</Text>
+      <Text color="secondary">{value}</Text>
     </Space>
   )
 }

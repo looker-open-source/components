@@ -156,7 +156,7 @@ export function SelectOptionWithDescription({
       >
         <ComboboxOptionText />
       </Heading>
-      <Paragraph variant="subdued" fontSize="small">
+      <Paragraph color="subdued" fontSize="small">
         {description}
       </Paragraph>
     </Box>
@@ -169,12 +169,12 @@ const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
 `
 
 SelectOptionGroupTitle.defaultProps = {
+  color: 'subdued',
   fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
   px: 'xsmall',
   py: 'xxsmall',
-  variant: 'subdued',
 }
 
 export const SelectOptionGroup = ({
@@ -291,7 +291,7 @@ export function SelectOptions({
 
   const noOptions = (
     <EmptyListItem mb={0} px="medium" py="xlarge">
-      <Text variant="subdued">{noOptionsLabel}</Text>
+      <Text color="subdued">{noOptionsLabel}</Text>
     </EmptyListItem>
   )
 

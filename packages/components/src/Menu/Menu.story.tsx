@@ -167,7 +167,7 @@ export const IconSpace = () => (
           icon="Account"
           detail={
             <>
-              <Text fontSize="small" mr="xsmall" variant="secondary">
+              <Text fontSize="small" mr="xsmall" color="secondary">
                 Online
               </Text>
               <Icon
@@ -185,7 +185,7 @@ export const IconSpace = () => (
           icon="Account"
           detail={
             <>
-              <Text fontSize="small" mr="xsmall" variant="secondary">
+              <Text fontSize="small" mr="xsmall" color="secondary">
                 Offline
               </Text>
               <Icon name="Chat" verticalAlign="middle" size={16} />

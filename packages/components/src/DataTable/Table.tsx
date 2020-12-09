@@ -54,7 +54,7 @@ export const TableLayout: FC<TableProps> = ({
 
   const noResultsContent =
     typeof noResultsDisplay === 'string' ? (
-      <Heading variant="subdued">{noResultsDisplay}</Heading>
+      <Heading color="subdued">{noResultsDisplay}</Heading>
     ) : (
       noResultsDisplay
     )

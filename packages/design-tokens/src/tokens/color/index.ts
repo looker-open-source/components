@@ -36,6 +36,7 @@ import {
 } from '../../legacy/palette'
 import { IntentColors } from '../../system/color/specifiable'
 import { Colors, CoreColors, SpecifiableColors } from '../../system'
+import { generateColorAliases } from '../../utils/color/aliases'
 import { generateDerivativeColors } from '../../utils/color/derivatives'
 import { fallbackBlends, fallbackStateful } from './fallbacks'
 
@@ -72,10 +73,12 @@ const specifiableColors: SpecifiableColors = {
 }
 
 const derivedColors = generateDerivativeColors(specifiableColors)
+const aliasColors = generateColorAliases(fallbackBlends)
 
 export const colors: Colors = {
   ...specifiableColors,
   ...derivedColors,
   ...fallbackBlends,
   ...fallbackStateful,
+  ...aliasColors,
 }

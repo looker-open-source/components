@@ -124,7 +124,7 @@ In addition, `InputTime` will automatically check whether the provided `value` p
         onValidationFail={handleValidationFail}
       />
       {validationType === 'error' && (
-        <Text variant="critical">
+        <Text color="critical">
           Error: <Code fontSize="small">{value}</Code> is not a valid 24-hour
           time string
         </Text>

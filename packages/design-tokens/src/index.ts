@@ -24,6 +24,13 @@
 
  */
 
+import {
+  createShouldForwardProp,
+  props,
+} from '@styled-system/should-forward-prop'
+
+export const shouldForwardProp = createShouldForwardProp([...props])
+
 export * from './system'
 export * from './theme'
 export * from './GlobalStyle'
