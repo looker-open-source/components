@@ -1,0 +1,13 @@
+on: [push]
+name: "Image Snapshots"
+jobs:
+  image-snapshots:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: yarn install &> /dev/null
+      - run: yarn preimage-snapshots &> /dev/null
+      - run: yarn image-snapshots-only
