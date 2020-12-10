@@ -29,11 +29,10 @@ import React, {
   RefObject,
   isValidElement,
   cloneElement,
-  FC,
 } from 'react'
 import { useHovered } from '../utils'
 import { Breakpoint } from '../Breakpoint'
-import { useDialog, DialogRender, DialogHeader } from '../Dialog'
+import { useDialog, DialogRender, DialogHeader, DialogContent } from '../Dialog'
 import {
   usePopover,
   UsePopoverProps,
@@ -77,11 +76,16 @@ export const Popover = ({
   content,
   ...props
 }: PopoverProps) => {
-  const { domProps, isOpen, popover } = usePopover({ ...props, content })
+  const { domProps, isOpen, popover } = usePopover({
+    ...props,
+    content,
+  })
   const dialogProps = useDialog({
     content: (
       <>
-        <DialogHeader>{dialogHeader}</DialogHeader>
+        <DialogHeader borderBottom="1px solid" borderBottomColor="ui2">
+          {dialogHeader}
+        </DialogHeader>
         {content}
       </>
     ),

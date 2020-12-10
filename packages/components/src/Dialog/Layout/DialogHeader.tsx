@@ -28,6 +28,8 @@ import React, { FC, ReactNode, useContext } from 'react'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import {
+  BorderProps,
+  border,
   CompatibleHTMLProps,
   omitStyledProps,
   SpaceProps,
@@ -44,7 +46,8 @@ export interface DialogHeaderProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement>,
     FontSizeProps,
-    FontWeightProps {
+    FontWeightProps,
+    BorderProps {
   children: ReactNode
   /**
    * Don't include the "Close" option
@@ -113,6 +116,7 @@ const Detail = styled.div`
 export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}
   ${space}
+  ${border}
   align-items: center;
   display: flex;
   flex-shrink: 0;
