@@ -26,21 +26,17 @@
 
 interface HighlightColors {
   /**
-   * Used to highlight content
+   * Used to highlight / accent  content
    */
-  criticalHighlight: string
+  informAccent: string
   /**
-   * Used to highlight content
+   * Used to highlight / accent content
    */
-  informHighlight: string
+  positiveAccent: string
   /**
-   * Used to highlight content
+   * Used to highlight / accent  content
    */
-  positiveHighlight: string
-  /**
-   * Used to highlight content
-   */
-  warnHighlight: string
+  warnAccent: string
 }
 
 export interface DerivativeColors extends HighlightColors {

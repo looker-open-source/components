@@ -30,18 +30,16 @@ import { mixColors, mixScaledColors, textBlends } from './blend'
 
 export const generateDerivativeColors = ({
   background,
-  critical,
   inform,
   link,
   positive,
   text,
   warn,
 }: SpecifiableColors): DerivativeColors => {
-  const highlights = {
-    criticalHighlight: mixScaledColors(accentBlendScale, critical, background),
-    informHighlight: mixScaledColors(accentBlendScale, inform, background),
-    positiveHighlight: mixScaledColors(accentBlendScale, positive, background),
-    warnHighlight: mixScaledColors(accentBlendScale, warn, background),
+  const accents = {
+    informAccent: mixScaledColors(accentBlendScale, inform, background),
+    positiveAccent: mixScaledColors(accentBlendScale, positive, background),
+    warnAccent: mixScaledColors(accentBlendScale, warn, background),
   }
 
   return {
@@ -50,6 +48,6 @@ export const generateDerivativeColors = ({
     inverseOn: background,
     linkInteractive: generateInteractive(link),
     neutral: mixColors(textBlends[1], text, background),
-    ...highlights,
+    ...accents,
   }
 }
