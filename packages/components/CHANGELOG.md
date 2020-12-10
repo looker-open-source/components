@@ -28,7 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem`
   - Restricts `children` to type string
   - Nested `TreeItem`s align with sibling `Tree` labels (as opposed to `Tree` indicators)
+  - Sets background color to ui1 on hover, ui2 when selected or selected + hover
 - Changed usage of icon `ArrowDown` to use new name `ArrowDropDown`
+- `Combobox`, `ComboboxMulti`, `Select`, `SelectMulti` background color updates
+  - ui1 on hover
+  - keySubtle on selected
+  - keySubtle on selected + hover
 
 ### Fixed
 
