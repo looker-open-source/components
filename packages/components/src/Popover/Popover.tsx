@@ -31,6 +31,7 @@ import React, {
   cloneElement,
 } from 'react'
 import { useHovered } from '../utils'
+import { Breakpoint } from '../Breakpoint'
 import {
   usePopover,
   UsePopoverProps,
@@ -81,9 +82,9 @@ export const Popover = ({
   const triggerShown = isHovered || isOpen
 
   return (
-    <>
+    <Breakpoint>
       {popover}
       {triggerShown && children}
-    </>
+    </Breakpoint>
   )
 }
