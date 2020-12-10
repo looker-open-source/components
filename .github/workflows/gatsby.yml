@@ -1,7 +1,7 @@
 on: [push]
-name: "Gatsby (web site)"
 jobs:
   website:
+    name: "Gatsby (web site)"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

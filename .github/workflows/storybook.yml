@@ -1,7 +1,7 @@
 on: [push]
-name: "Storybook"
 jobs:
   storybook:
+    name: "Storybook"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
