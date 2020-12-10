@@ -126,6 +126,10 @@ export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 
+  @media screen and (max-width: ${breakpoints[1]}) {
+    overflow-y: auto;
+  }
+
   &.entering,
   &.exiting {
     opacity: 0.01;

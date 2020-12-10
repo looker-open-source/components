@@ -351,10 +351,10 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         >
           <InputTextWrapper inputLength={inputs.from.value.length}>
             <InlineInputTextBase
-              placeholder={`Date (${formatDateString(
+              placeholder={`${formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
-              )})`}
+              )}`}
               disabled={disabled}
               data-testid="date-from-text-input"
               fontSize="small"
@@ -371,10 +371,10 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           </HyphenWrapper>
           <InputTextWrapper inputLength={inputs.to.value.length}>
             <InlineInputTextBase
-              placeholder={`Date (${formatDateString(
+              placeholder={`${formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
-              )})`}
+              )}`}
               disabled={disabled}
               fontSize="small"
               data-testid="date-to-text-input"

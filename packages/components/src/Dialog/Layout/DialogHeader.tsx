@@ -37,6 +37,8 @@ import {
   reset,
   FontSizeProps,
   FontWeightProps,
+  PositionProps,
+  position,
 } from '@looker/design-tokens'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
@@ -47,7 +49,8 @@ export interface DialogHeaderProps
     CompatibleHTMLProps<HTMLElement>,
     FontSizeProps,
     FontWeightProps,
-    BorderProps {
+    BorderProps,
+    PositionProps {
   children: ReactNode
   /**
    * Don't include the "Close" option
@@ -117,9 +120,12 @@ export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}
   ${space}
   ${border}
+  ${position}
   align-items: center;
+  background: ${({ theme }) => theme.colors.background};
   display: flex;
   flex-shrink: 0;
+  z-index: 1;
 `
 
 DialogHeader.defaultProps = {

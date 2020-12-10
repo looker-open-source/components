@@ -32,7 +32,7 @@ import React, {
 } from 'react'
 import { useHovered } from '../utils'
 import { Breakpoint } from '../Breakpoint'
-import { useDialog, DialogRender, DialogHeader, DialogContent } from '../Dialog'
+import { useDialog, DialogRender, DialogHeader } from '../Dialog'
 import {
   usePopover,
   UsePopoverProps,
@@ -83,7 +83,15 @@ export const Popover = ({
   const dialogProps = useDialog({
     content: (
       <>
-        <DialogHeader borderBottom="1px solid" borderBottomColor="ui2">
+        <DialogHeader
+          borderBottom="1px solid"
+          borderBottomColor="ui2"
+          position="sticky"
+          top="0"
+          p="medium"
+          px="medium"
+          pr="medium"
+        >
           {dialogHeader}
         </DialogHeader>
         {content}

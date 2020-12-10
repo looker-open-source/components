@@ -28,6 +28,8 @@ import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
 import { DateFormat } from '../DateFormat'
+import { Tabs, Tab, TabList, TabPanels, TabPanel } from '../Tabs'
+import { Menu, MenuItem } from '../Menu'
 import { InputDateRange, InputDateRangeProps } from './'
 
 export default {
@@ -65,7 +67,7 @@ ReadOnly.args = {
   readOnly: true,
 }
 
-export const Controlled = () => {
+export const TimeframeFilter = () => {
   const startDate = new Date()
   startDate.setDate(9)
   const endDate = new Date()
@@ -73,31 +75,43 @@ export const Controlled = () => {
 
   const [controlledDateRange, setControlledDateRange] = useState<any>()
 
-  const handleNextWeekClick = () => {
-    setControlledDateRange({
-      from: new Date('03/02/2020'),
-      to: new Date('03/09/2020'),
-    })
-  }
-
   return (
     <Popover
       mobileDialog
       dialogHeader="Select Date"
       content={
         <PopoverContent>
-          <Button onClick={handleNextWeekClick}>Next Week</Button>
-          <InputDateRange
-            value={controlledDateRange}
-            onChange={setControlledDateRange}
-          />
+          <Tabs defaultIndex={1}>
+            <TabList>
+              <Tab>Preset</Tab>
+              <Tab>Custom</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Menu>
+                  <MenuItem>Today</MenuItem>
+                  <MenuItem>Yesterday</MenuItem>
+                  <MenuItem>Last 7 Days</MenuItem>
+                  <MenuItem>Last 14 Days</MenuItem>
+                  <MenuItem>Last 90 Days</MenuItem>
+                  <MenuItem>Year To Date</MenuItem>
+                </Menu>
+              </TabPanel>
+              <TabPanel>
+                <InputDateRange
+                  value={controlledDateRange}
+                  onChange={setControlledDateRange}
+                />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
         </PopoverContent>
       }
     >
       <Button>
         {controlledDateRange ? (
           <>
-            <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
+            <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;{' '}
             <DateFormat>{controlledDateRange.to}</DateFormat>
           </>
         ) : (
@@ -108,6 +122,6 @@ export const Controlled = () => {
   )
 }
 
-Controlled.parameters = {
+TimeframeFilter.parameters = {
   storyshots: { disable: true },
 }

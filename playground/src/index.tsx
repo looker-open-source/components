@@ -27,13 +27,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { Controlled } from '@looker/components/src/InputDateRange/InputDateRange.story'
+import { TimeframeFilter } from '@looker/components/src/InputDateRange/InputDateRange.story'
 
 const App = () => {
   return (
     <ComponentsProvider loadGoogleFonts>
       <PageWrapper>
-        <Controlled />
+        <TimeframeFilter />
       </PageWrapper>
     </ComponentsProvider>
   )
