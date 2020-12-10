@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `useTooltip` no longer supports `surfaceStyles` property
 - `Heading` & `Paragraph`, `Span`, `Text` no longer support `variant` (use `color` instead)
+- `ActionList` aliases to `DataTable`
 
 ## [0.9.25]
 
