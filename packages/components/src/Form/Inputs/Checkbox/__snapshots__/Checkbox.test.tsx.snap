@@ -32,6 +32,7 @@ exports[`Checkbox checked set to mixed 1`] = `
 
 .c0 input {
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -138,6 +139,7 @@ exports[`Checkbox should accept disabled & checked 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -236,6 +238,7 @@ exports[`Checkbox should accept disabled & checked="mixed" 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -343,6 +346,7 @@ exports[`Checkbox should accept disabled 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -440,6 +444,7 @@ exports[`Checkbox should accept readOnly & checked 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -536,6 +541,7 @@ exports[`Checkbox should accept readOnly & checked="mixed" 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -641,6 +647,7 @@ exports[`Checkbox should accept readOnly 1`] = `
 .c0 input {
   cursor: not-allowed;
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -735,6 +742,7 @@ exports[`Checkbox with aria-describedby 1`] = `
 
 .c0 input {
   height: 100%;
+  margin: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
