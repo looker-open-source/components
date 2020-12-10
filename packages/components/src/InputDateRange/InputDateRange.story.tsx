@@ -82,6 +82,8 @@ export const Controlled = () => {
 
   return (
     <Popover
+      mobileDialog
+      dialogHeader="Select Date"
       content={
         <PopoverContent>
           <Button onClick={handleNextWeekClick}>Next Week</Button>

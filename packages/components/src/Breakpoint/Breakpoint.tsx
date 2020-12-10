@@ -28,11 +28,13 @@ import React, { useContext, FC, ReactNode, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
+type Breakpoints = 0 | 1 | 2 | 3 | 4
+
 export interface BreakpointProps {
   children: ReactNode
   // TODO: should these be named slots?
-  from?: 0 | 1 | 2 | 3 | 4
-  to?: 0 | 1 | 2 | 3 | 4
+  from?: Breakpoints
+  to?: Breakpoints
 }
 
 function convertRemToPixels(rem: number) {

@@ -29,9 +29,11 @@ import React, {
   RefObject,
   isValidElement,
   cloneElement,
+  FC,
 } from 'react'
 import { useHovered } from '../utils'
 import { Breakpoint } from '../Breakpoint'
+import { useDialog, DialogRender, DialogHeader } from '../Dialog'
 import {
   usePopover,
   UsePopoverProps,
@@ -56,14 +58,35 @@ export interface PopoverProps extends UsePopoverProps {
    * The element which hovering on/off of will show/hide the triggering element
    */
   hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
+  /**
+   * Convert popover to full-screen dialog on mobile
+   * @default false
+   */
+  mobileDialog?: boolean
+  /**
+   * Populate dialog header content when mobileDialog is true
+   */
+  dialogHeader?: string
 }
 
 export const Popover = ({
   children,
   hoverDisclosureRef,
+  mobileDialog = false,
+  dialogHeader,
+  content,
   ...props
 }: PopoverProps) => {
-  const { domProps, isOpen, popover } = usePopover(props)
+  const { domProps, isOpen, popover } = usePopover({ ...props, content })
+  const dialogProps = useDialog({
+    content: (
+      <>
+        <DialogHeader>{dialogHeader}</DialogHeader>
+        {content}
+      </>
+    ),
+    height: '100vh',
+  })
 
   if (isValidElement(children)) {
     children = cloneElement(children, {
@@ -82,9 +105,16 @@ export const Popover = ({
   const triggerShown = isHovered || isOpen
 
   return (
-    <Breakpoint>
-      {popover}
-      {triggerShown && children}
-    </Breakpoint>
+    <>
+      <Breakpoint from={mobileDialog ? 1 : 0}>
+        {popover}
+        {triggerShown && children}
+      </Breakpoint>
+      {mobileDialog && (
+        <Breakpoint from={0} to={0}>
+          <DialogRender {...dialogProps}>{children}</DialogRender>
+        </Breakpoint>
+      )}
+    </>
   )
 }
