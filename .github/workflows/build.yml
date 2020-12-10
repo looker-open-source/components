@@ -1,7 +1,8 @@
 on: [push]
+name: "Build"
 jobs:
   build:
-    name: "Build (ES modules & Typescript)"
+    name: "ES modules & Typescript"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

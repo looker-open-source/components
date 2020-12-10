@@ -1,7 +1,8 @@
 on: [push]
+name: "Gatsby"
 jobs:
   website:
-    name: "Gatsby (web site)"
+    name: "Static site build"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

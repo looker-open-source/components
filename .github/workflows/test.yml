@@ -1,7 +1,8 @@
 on: [push]
+name: "Test suite"
 jobs:
   test:
-    name: "Test suite (Jest)"
+    name: "Jest"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

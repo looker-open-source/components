@@ -1,7 +1,8 @@
 on: [push]
+name: "Image Snapshots"
 jobs:
   image-snapshots:
-    name: "Image Snapshots"
+    name: "Storybook + Storyshots + Puppeteer"
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1

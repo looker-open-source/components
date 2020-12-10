@@ -1,4 +1,5 @@
 on: [push]
+name: "Lint"
 jobs:
   test:
     name: "Test suite (Jest)"
@@ -9,6 +10,11 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn install &> /dev/null
-      - run: yarn lint
+      - run: yarn lint:css
+        name: 'Stylelint'
+      - run: yarn lint:es
+        name: 'ESLint'
+      - run: yarn lint:ts
+        name: 'TSC'
     env:
       CI: true
