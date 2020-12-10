@@ -25,19 +25,31 @@
  */
 
 import { DerivativeColors, SpecifiableColors } from '../../system'
-import { generateInteractive } from './stateful'
-import { mixColors, textBlends } from './blend'
+import { accentBlendScale, generateInteractive } from './stateful'
+import { mixColors, mixScaledColors, textBlends } from './blend'
 
 export const generateDerivativeColors = ({
-  link,
-  text,
   background,
+  critical,
+  inform,
+  link,
+  positive,
+  text,
+  warn,
 }: SpecifiableColors): DerivativeColors => {
+  const highlights = {
+    criticalHighlight: mixScaledColors(accentBlendScale, critical, background),
+    informHighlight: mixScaledColors(accentBlendScale, inform, background),
+    positiveHighlight: mixScaledColors(accentBlendScale, positive, background),
+    warnHighlight: mixScaledColors(accentBlendScale, warn, background),
+  }
+
   return {
     field: background,
     inverse: text,
     inverseOn: background,
     linkInteractive: generateInteractive(link),
     neutral: mixColors(textBlends[1], text, background),
+    ...highlights,
   }
 }

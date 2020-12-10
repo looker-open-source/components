@@ -24,7 +24,26 @@
 
  */
 
-export interface DerivativeColors {
+interface HighlightColors {
+  /**
+   * Used to highlight content
+   */
+  criticalHighlight: string
+  /**
+   * Used to highlight content
+   */
+  informHighlight: string
+  /**
+   * Used to highlight content
+   */
+  positiveHighlight: string
+  /**
+   * Used to highlight content
+   */
+  warnHighlight: string
+}
+
+export interface DerivativeColors extends HighlightColors {
   /**
    * Default input background
    * Text input, select input

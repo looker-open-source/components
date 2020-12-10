@@ -39,13 +39,15 @@ import { mixScaledColors } from './blend'
 export const generateInteractive = (color: string) => lighten(0.04, color)
 export const generatePressed = (color: string) => darken(0.07, color)
 
+export const accentBlendScale = 16
+
 const generateStatefulColor = (
   background: string,
   color: string
 ): StatefulColorChoices => {
   return {
     subtle: mixScaledColors(10, color, background),
-    accent: mixScaledColors(16, color, background),
+    accent: mixScaledColors(accentBlendScale, color, background),
     focus: mixScaledColors(60, color, background),
     interactive: generateInteractive(color),
     pressed: generatePressed(color),
