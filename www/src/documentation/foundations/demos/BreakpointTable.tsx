@@ -110,8 +110,8 @@ interface BreakpointTableProps {
 }
 
 export const BreakpointTable: FC<BreakpointTableProps> = ({
-  breakpoints,
-  labels,
+  breakpoints = breakpointList,
+  labels = breakpointLabels,
 }) => (
   <DocTable>
     <TableHead>

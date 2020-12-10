@@ -42,15 +42,15 @@ export const FormValidationDemo: FC<{}> = () => {
   const [val2, setVal2] = useState('')
   const [validationErrors, setValidationErrors] = useState({})
 
-  const validate = () => {
+  const validate = (value1: string, value2: string) => {
     const errors: ValidationErrors = {}
-    if (val1.length > 5) {
+    if (value1.length >= 5) {
       errors.val1 = {
         message: 'Error! String greater than 5 characters.',
         type: 'error',
       }
     }
-    if (val2.length < 5) {
+    if (value2.length <= 5) {
       errors.val2 = {
         message: 'Error! String less than 5 characters.',
         type: 'error',
@@ -61,12 +61,12 @@ export const FormValidationDemo: FC<{}> = () => {
 
   const onChangeVal1 = (event: ChangeEvent<HTMLInputElement>) => {
     setVal1(event.currentTarget.value)
-    validate()
+    validate(event.currentTarget.value, val2)
   }
 
   const onChangeVal2 = (event: ChangeEvent<HTMLInputElement>) => {
     setVal2(event.currentTarget.value)
-    validate()
+    validate(val1, event.currentTarget.value)
   }
 
   return (

@@ -24,7 +24,7 @@
 
  */
 
-import { Box, Code, List, ListItem, Text } from '@looker/components'
+import { Box, Code, List, ListItem, Text, Heading } from '@looker/components'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
@@ -72,25 +72,6 @@ const SpacingTable = styled.div`
     }
   }
 `
-const SpaceListHeader = (text: string, defaultLabel?: string) => {
-  return (
-    <Box mb="medium">
-      <Text
-        fontSize="medium"
-        color="secondary"
-        textTransform="uppercase"
-        fontWeight="semiBold"
-      >
-        {text}
-      </Text>
-      <Box as="span" ml="xsmall">
-        <Text fontSize="xsmall" color="subdued">
-          {defaultLabel}
-        </Text>
-      </Box>
-    </Box>
-  )
-}
 
 const ListRender = (
   value: string,
@@ -129,19 +110,33 @@ interface BoxSpacingRecipeTableProps {
 }
 
 export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
-  types,
-  sides,
-  sizes,
+  types = spacingTypes,
+  sides = spacingSides,
+  sizes = spacingSizes,
 }) => (
   <SpacingTable>
     <div>
-      {SpaceListHeader('1. Type')}
+      <Heading
+        fontSize="medium"
+        color="secondary"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+      >
+        1. Type
+      </Heading>
       <List pl="none">
         {types.map((col, i) => ListRender(col.value, col.label, i))}
       </List>
     </div>
     <div>
-      {SpaceListHeader('2. Side', '(optional)')}
+      <Heading
+        fontSize="medium"
+        color="secondary"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+      >
+        2. Side
+      </Heading>
       <List pl="none">
         {sides.map((col, i) =>
           ListRender(col.value, col.label, i, col.defaultLabel)
@@ -149,7 +144,14 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
       </List>
     </div>
     <div>
-      {SpaceListHeader('3. Amount')}
+      <Heading
+        fontSize="medium"
+        color="secondary"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+      >
+        3. Amount
+      </Heading>
       <List pl="none">
         {sizes.map((col, i) => ListRender(col.value, col.label, i))}
       </List>
