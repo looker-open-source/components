@@ -91,6 +91,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         {...optionEvents}
         ref={ref}
         aria-selected={isActive}
+        isSelected={isSelected}
       >
         <ComboboxOptionIndicator
           indicator={indicator}
