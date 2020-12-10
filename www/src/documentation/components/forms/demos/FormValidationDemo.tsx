@@ -24,7 +24,7 @@
 
  */
 
-import React, { ChangeEvent, Component } from 'react'
+import React, { ChangeEvent, FC, useState } from 'react'
 import { FieldText, Form } from '@looker/components'
 
 interface ValidationErrors {
@@ -37,60 +37,52 @@ interface FormValidationState {
   validationErrors: ValidationErrors
 }
 
-export class FormValidationDemo extends Component<{}, FormValidationState> {
-  public state = {
-    val1: '',
-    val2: '',
-    validationErrors: {},
-  }
+export const FormValidationDemo: FC<{}> = () => {
+  const [val1, setVal1] = useState('')
+  const [val2, setVal2] = useState('')
+  const [validationErrors, setValidationErrors] = useState({})
 
-  public validate = () => {
+  const validate = (value1: string, value2: string) => {
     const errors: ValidationErrors = {}
-    if (this.state.val1.length > 5) {
+    if (value1.length >= 5) {
       errors.val1 = {
         message: 'Error! String greater than 5 characters.',
         type: 'error',
       }
     }
-    if (this.state.val2.length < 5) {
+    if (value2.length <= 5) {
       errors.val2 = {
         message: 'Error! String less than 5 characters.',
         type: 'error',
       }
     }
-    this.setState({ validationErrors: errors })
+    setValidationErrors(errors)
   }
 
-  public copyState(): FormValidationState {
-    return Object.assign({}, this.state)
+  const onChangeVal1 = (event: ChangeEvent<HTMLInputElement>) => {
+    setVal1(event.currentTarget.value)
+    validate(event.currentTarget.value, val2)
   }
 
-  public changeHandler(val: string, event: ChangeEvent<HTMLInputElement>) {
-    const stateCopy: FormValidationState = this.copyState()
-    if (val === 'val1') {
-      stateCopy[val] = event.target.value
-    } else if (val === 'val2') {
-      stateCopy[val] = event.target.value
-    }
-    this.setState(stateCopy, this.validate)
+  const onChangeVal2 = (event: ChangeEvent<HTMLInputElement>) => {
+    setVal2(event.currentTarget.value)
+    validate(val1, event.currentTarget.value)
   }
 
-  public render() {
-    return (
-      <Form validationMessages={this.state.validationErrors}>
-        <FieldText
-          name="val1"
-          value={this.state.val1}
-          label="A Field requiring less than 5 characters"
-          onChange={this.changeHandler.bind(this, 'val1')}
-        />
-        <FieldText
-          name="val2"
-          value={this.state.val2}
-          label="A Field requiring more than 5 characters"
-          onChange={this.changeHandler.bind(this, 'val2')}
-        />
-      </Form>
-    )
-  }
+  return (
+    <Form validationMessages={validationErrors}>
+      <FieldText
+        name="val1"
+        value={val1}
+        label="A Field requiring less than 5 characters"
+        onChange={onChangeVal1}
+      />
+      <FieldText
+        name="val2"
+        value={val2}
+        label="A Field requiring more than 5 characters"
+        onChange={onChangeVal2}
+      />
+    </Form>
+  )
 }
