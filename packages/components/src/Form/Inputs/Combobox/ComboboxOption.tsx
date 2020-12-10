@@ -209,7 +209,7 @@ export const comboboxOptionStyle = css`
   outline: none;
 
   &[aria-selected='true'] {
-    background-color: ${(props) => props.theme.colors.keySubtle};
+    background-color: ${(props) => props.theme.colors.ui1};
   }
 `
 
