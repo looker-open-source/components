@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `AliasColor` to support color aliases previously used via `variant` property
-- Added colors: `secondary` & `subtle`
+- Added colors: `secondary` & `subdued`
 - Added colors: `informAccent`, `positiveAccent`, & `warnAccent`
 
 ## [0.9.20]
