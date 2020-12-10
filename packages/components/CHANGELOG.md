@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - ui1 on hover
   - keySubtle on selected
   - keySubtle on selected + hover
+  - Removed checked icon on selected items
 
 ### Fixed
 
