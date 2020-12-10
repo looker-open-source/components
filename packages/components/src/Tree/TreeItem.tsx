@@ -258,7 +258,7 @@ interface TreeItemLabelProps {
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
   background-color: ${({ hovered, selected }) =>
-    hovered ? uiTransparencyBlend(2) : selected && uiTransparencyBlend(1)};
+    selected ? uiTransparencyBlend(2) : hovered && uiTransparencyBlend(1)};
   flex: 1;
   flex-shrink: 2;
   height: 100%;
