@@ -24,8 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Supports "date" columns
   - Infers "string" for columns without an explicit type property
   - Is now a generic, and will properly set the type of the returned data to match the user's data shape
+- `Tree` restricts `label` to type string
+- `TreeItem`
+  - Restricts `children` to type string
+  - Nested `TreeItem`s align with sibling `Tree` labels (as opposed to `Tree` indicators)
 - Changed usage of icon `ArrowDown` to use new name `ArrowDropDown`
-- `Tree`, `TreeItem` restrict `label` / `children` to type string, respectively
 
 ### Fixed
 
