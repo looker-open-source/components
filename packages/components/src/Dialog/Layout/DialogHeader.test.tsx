@@ -54,11 +54,11 @@ describe('DialogHeader', () => {
   test(`detail`, async () => {
     renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
     expect(await screen.findByText('Hello world')).toBeTruthy()
-    expect(screen.queryByLabelText('Close')).toBeNull()
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
   })
 
   test('hideClose', () => {
     renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
-    expect(screen.queryByLabelText('Close')).toBeNull()
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
   })
 })

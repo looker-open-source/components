@@ -81,8 +81,8 @@ test('<Prompt/> with defaults', async () => {
   expect(onSaveCallback).toHaveBeenCalledTimes(1)
 
   await waitForElementToBeRemoved(() => queryByText(requiredProps.inputLabel))
-  expect(queryByText(requiredProps.inputLabel)).toBeNull()
-  expect(queryByText(requiredProps.title)).toBeNull()
+  expect(queryByText(requiredProps.inputLabel)).not.toBeInTheDocument()
+  expect(queryByText(requiredProps.title)).not.toBeInTheDocument()
 })
 
 test('<Prompt/> with custom props', () => {

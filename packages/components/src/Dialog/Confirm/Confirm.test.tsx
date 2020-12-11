@@ -72,7 +72,7 @@ test('<Confirm/> with defaults', async () => {
 
   fireEvent.click(getByText('Cancel'))
   await waitForElementToBeRemoved(() => queryByText(requiredProps.title))
-  expect(queryByText(requiredProps.title)).toBeNull()
+  expect(queryByText(requiredProps.title)).not.toBeInTheDocument()
 })
 
 test('<Confirm/> with custom props', () => {

@@ -24,14 +24,14 @@
     "@styled-system/should-forward-prop": "5.1.5",
     "@types/styled-system": "^5.1.10",
     "lodash": "^4.17.20",
-    "polished": "^4.0.3",
+    "polished": "^4.0.5",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.1.1",
-    "@storybook/react": "^6.1.1",
+    "@storybook/addon-storyshots": "^6.1.10",
+    "@storybook/react": "^6.1.10",
     "@types/lodash": "^4.14.165",
-    "@types/styled-components": "^5.1.4",
+    "@types/styled-components": "^5.1.5",
     "csstype": "^3.0.5",
     "lodash": "^4.17.20",
     "react": "^16.14.0",

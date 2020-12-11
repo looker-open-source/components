@@ -138,7 +138,7 @@ describe('InputSearch', () => {
       renderWithTheme(<InputSearch options={options} placeholder="type here" />)
       const input = screen.getByPlaceholderText('type here')
       fireEvent.click(input)
-      expect(screen.queryAllByRole('option')).toHaveLength(0)
+      expect(screen.queryByRole('option')).not.toBeInTheDocument()
 
       fireEvent.change(input, { target: { value: 'F' } })
       expect(input).toHaveDisplayValue('F')
