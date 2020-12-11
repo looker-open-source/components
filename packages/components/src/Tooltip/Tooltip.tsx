@@ -24,7 +24,15 @@
 
  */
 
-import React, { cloneElement, FC, isValidElement, ReactNode } from 'react'
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  ReactNode,
+  Ref,
+} from 'react'
+import { UsePopoverResponseDom } from '../Popover'
+import { useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -33,7 +41,7 @@ import {
 
 type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
-export interface TooltipProps extends UseTooltipProps {
+export interface TooltipProps extends UseTooltipProps, UsePopoverResponseDom {
   content: ReactNode
   /**
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
@@ -48,31 +56,57 @@ function isRenderProp(
   return typeof children === 'function'
 }
 
-export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { domProps, tooltip } = useTooltip(props)
+export const Tooltip = forwardRef(
+  (
+    {
+      // Props from Popover
+      'aria-expanded': ariaExpanded,
+      'aria-haspopup': ariaHaspopup,
+      onClick,
 
-  let target = children
+      children,
+      ...props
+    }: TooltipProps,
 
-  if (isValidElement(children)) {
-    target = cloneElement(children, {
-      ...domProps,
-      className:
-        `${children.props.className || ''} ${domProps.className}`.trim() ||
-        undefined,
+    // ref from Popover
+    forwardedRef: Ref<any>
+  ) => {
+    const { domProps, tooltip } = useTooltip({
+      // ariaExpanded=true indicates an open Popover – disable the tooltip
+      disabled: ariaExpanded,
+      ...props,
     })
-  } else if (isRenderProp(children)) {
-    target = children(domProps)
-  } else {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Element "${typeof target}" can't be used as target for Tooltip`
+    const { ref: tooltipRef, ...restDomProps } = domProps
+    const ref = useForkedRef(tooltipRef, forwardedRef)
+
+    let target = children
+
+    if (isValidElement(children)) {
+      target = cloneElement(children, {
+        'aria-expanded': ariaExpanded,
+        'aria-haspopup': ariaHaspopup,
+        onClick,
+        ref,
+        ...restDomProps,
+        className:
+          `${children.props.className || ''} ${
+            restDomProps.className
+          }`.trim() || undefined,
+      })
+    } else if (isRenderProp(children)) {
+      target = children(domProps)
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Element "${typeof target}" can't be used as target for Tooltip`
+      )
+    }
+
+    return (
+      <>
+        {tooltip}
+        {target}
+      </>
     )
   }
-
-  return (
-    <>
-      {tooltip}
-      {target}
-    </>
-  )
-}
+)
