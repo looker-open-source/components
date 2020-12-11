@@ -145,15 +145,10 @@ export const ComboboxOptionWrapper = styled(ComboboxOptionWrapperInternal)`
   background-color: ${({ isSelected, theme }) =>
     isSelected && theme.colors.keySubtle};
 
-  &:hover {
+  &[aria-selected='true'] {
     background-color: ${({ isSelected, theme }) =>
       isSelected ? theme.colors.keyAccent : theme.colors.ui1};
   }
-
-  /** Essentially on hover and when "selected" */
-  /* &[aria-selected='true'] {
-    background-color: ${(props) => props.theme.colors.ui1};
-  } */
 `
 
 const ComboboxOptionInternal = forwardRef(
