@@ -28,13 +28,18 @@ import React, { useContext, FC, ReactNode, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
-type Breakpoints = 0 | 1 | 2 | 3 | 4
-
+type NamedBreakpoints = 'mobile' | 'tablet' | 'laptop' | 'desktop' | 'xl'
+const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
+  'mobile',
+  'tablet',
+  'laptop',
+  'desktop',
+  'xl',
+]
 export interface BreakpointProps {
   children: ReactNode
-  // TODO: should these be named slots?
-  from?: Breakpoints
-  to?: Breakpoints
+  from?: NamedBreakpoints
+  to?: NamedBreakpoints
 }
 
 function convertRemToPixels(rem: number) {
@@ -43,14 +48,16 @@ function convertRemToPixels(rem: number) {
 
 export const Breakpoint: FC<BreakpointProps> = ({
   children,
-  from = 0,
-  to = 4,
+  from = 'mobile',
+  to = 'xl',
 }) => {
   const [screenWidth, setScreenWidth] = useState(screen.width)
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
     convertRemToPixels(parseInt(b.replace('rem', '')))
   )
+  const fromIndex = NAMED_BREAKPOINTS.indexOf(from)
+  const toIndex = NAMED_BREAKPOINTS.indexOf(to)
 
   const handleResize = () => {
     setScreenWidth(screen.width)
@@ -58,8 +65,8 @@ export const Breakpoint: FC<BreakpointProps> = ({
 
   useResize(document.body, handleResize)
 
-  const screenMin = from > 0 ? breakpointPx[from - 1] : 0 // from: mobile is 0px to mobile breakpoint
-  const screenMax = to === breakpointPx.length - 1 ? Infinity : breakpointPx[to] // to: desktop is desktop breakpoint and above
+  const screenMin = from === 'mobile' ? 0 : breakpointPx[fromIndex - 1] // mobile screens start at 0px
+  const screenMax = to === 'xl' ? Infinity : breakpointPx[toIndex] // xl includes xl breakpoint and above
 
   return (
     <>{screenWidth > screenMin && screenWidth <= screenMax ? children : null}</>
