@@ -116,29 +116,34 @@ const PickerItem = ({
   )
 }
 
-const sampleTree = (
+// Wrapper for Tree and TreeItem elements that doesn't render an actual Tree
+const FauxTree: FC<{ children: ReactNode }> = ({ children }) => (
   <TreeStyle depth={-1} hovered={false}>
-    <TreeContext.Provider value={{ depth: 0 }}>
-      <TreeGroup label="DIMENSIONS">
-        <Tree branchFontWeight label="Created">
-          <PickerItem>Created Date</PickerItem>
-          <PickerItem>Created Month</PickerItem>
-          <PickerItem>Created Year</PickerItem>
-        </Tree>
-        <PickerItem>City</PickerItem>
-        <PickerItem>Country</PickerItem>
-        <PickerItem>ID</PickerItem>
-      </TreeGroup>
-      <TreeGroup label="MEASURES" color="orange">
-        <Tree branchFontWeight label="My Measure Group">
-          <PickerItem>Count of IDs</PickerItem>
-          <PickerItem>Count of Cities</PickerItem>
-        </Tree>
-        <PickerItem>Sum</PickerItem>
-        <PickerItem>Max</PickerItem>
-      </TreeGroup>
-    </TreeContext.Provider>
+    <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
   </TreeStyle>
+)
+
+const fields = (
+  <FauxTree>
+    <TreeGroup label="DIMENSIONS">
+      <Tree branchFontWeight label="Created">
+        <PickerItem>Created Date</PickerItem>
+        <PickerItem>Created Month</PickerItem>
+        <PickerItem>Created Year</PickerItem>
+      </Tree>
+      <PickerItem>City</PickerItem>
+      <PickerItem>Country</PickerItem>
+      <PickerItem>ID</PickerItem>
+    </TreeGroup>
+    <TreeGroup label="MEASURES" color="orange">
+      <Tree branchFontWeight label="My Measure Group">
+        <PickerItem>Count of IDs</PickerItem>
+        <PickerItem>Count of Cities</PickerItem>
+      </Tree>
+      <PickerItem>Sum</PickerItem>
+      <PickerItem>Max</PickerItem>
+    </TreeGroup>
+  </FauxTree>
 )
 
 const ViewAccordion: FC<{
@@ -159,9 +164,9 @@ const ViewAccordion: FC<{
 export const FieldPicker = () => (
   <>
     <ViewAccordion defaultOpen={true} label="Orders">
-      {sampleTree}
+      {fields}
     </ViewAccordion>
-    <ViewAccordion label="Order Items">{sampleTree}</ViewAccordion>
-    <ViewAccordion label="Users">{sampleTree}</ViewAccordion>
+    <ViewAccordion label="Order Items">{fields}</ViewAccordion>
+    <ViewAccordion label="Users">{fields}</ViewAccordion>
   </>
 )
