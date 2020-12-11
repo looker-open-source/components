@@ -119,13 +119,12 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
 
-  :hover,
-  &[aria-current='true'] {
+  &:hover {
     background: ${({ theme: { colors } }) => colors.ui1};
-    color: ${({ theme: { colors } }) => colors.text5};
   }
 
   &[aria-current='true'] {
+    background: ${({ theme: { colors } }) => colors.ui2};
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 
