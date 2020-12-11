@@ -24,7 +24,22 @@
 
  */
 
-export interface DerivativeColors {
+interface HighlightColors {
+  /**
+   * Used to highlight / accent  content
+   */
+  informAccent: string
+  /**
+   * Used to highlight / accent content
+   */
+  positiveAccent: string
+  /**
+   * Used to highlight / accent  content
+   */
+  warnAccent: string
+}
+
+export interface DerivativeColors extends HighlightColors {
   /**
    * Default input background
    * Text input, select input
