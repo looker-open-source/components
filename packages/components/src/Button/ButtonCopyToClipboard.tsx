@@ -91,9 +91,7 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
         {success}
       </ButtonOutline>
     ) : (
-      cloneElement(success, {
-        style: { ariaLive: 'polite' },
-      })
+      cloneElement(success, { 'aria-live': 'polite' })
     )
 
   return copied ? successButton : copyButton
