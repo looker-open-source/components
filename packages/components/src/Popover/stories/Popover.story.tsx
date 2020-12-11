@@ -50,6 +50,7 @@ import {
 import { Popover } from '../Popover'
 import { PopoverContent } from '../PopoverContent'
 import { usePopover } from '../usePopover'
+import { Tooltip } from '../../Tooltip'
 
 export * from './OverflowExamples'
 
@@ -65,6 +66,18 @@ export const Basic = () => (
 )
 
 Basic.parameters = {
+  storyshots: { disable: true },
+}
+
+export const NestedTooltip = () => (
+  <Popover content={<PopoverContent>Some content</PopoverContent>}>
+    <Tooltip content="Some tooltip">
+      <Button>Open</Button>
+    </Tooltip>
+  </Popover>
+)
+
+NestedTooltip.parameters = {
   storyshots: { disable: true },
 }
 
