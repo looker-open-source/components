@@ -126,18 +126,18 @@ test('updates text input value when day is clicked', () => {
   const startDate = getAllByText('2')[0] // the 2nd day of the month (left calendar)
   const endDate = getAllByText('15')[1] // the 15th day of the month (right calendar)
 
-  expect(fromInput.value).toEqual('')
-  expect(toInput.value).toEqual('')
+  expect(fromInput).toHaveValue('')
+  expect(toInput).toHaveValue('')
 
   fireEvent.click(startDate)
 
-  expect(fromInput.value).toEqual('02/02/2020')
-  expect(toInput.value).toEqual('02/02/2020')
+  expect(fromInput).toHaveValue('02/02/2020')
+  expect(toInput).toHaveValue('02/02/2020')
 
   fireEvent.click(endDate)
 
-  expect(fromInput.value).toEqual('02/02/2020')
-  expect(toInput.value).toEqual('03/15/2020')
+  expect(fromInput).toHaveValue('02/02/2020')
+  expect(toInput).toHaveValue('03/15/2020')
 })
 
 test('defaultValue prop fills TextInputs with correct dates', () => {
@@ -152,8 +152,8 @@ test('defaultValue prop fills TextInputs with correct dates', () => {
   const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
   const toInput = getByTestId('date-to-text-input') as HTMLInputElement
 
-  expect(fromInput.value).toEqual('06/03/2019')
-  expect(toInput.value).toEqual('06/09/2019')
+  expect(fromInput).toHaveValue('06/03/2019')
+  expect(toInput).toHaveValue('06/09/2019')
 })
 
 test('defaultValue highlights the correct dates in the Calendar', () => {

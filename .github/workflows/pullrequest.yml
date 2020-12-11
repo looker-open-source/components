@@ -20,7 +20,7 @@ jobs:
     env:
       CI: true
   build:
-    name: "ES modules & Typescript"
+    name: "Build: ES & Typescript"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -44,8 +44,8 @@ jobs:
       - run : yarn --silent
       - run: yarn workspace storybook build
   image-snapshots:
-    if: false # Disabled until snapshot issues can be resolved
     name: "Image Snapshots"
+    if: false # Disabled until snapshot issues can be resolved
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

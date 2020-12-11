@@ -97,12 +97,9 @@ describe('InputText', () => {
   })
 
   test('with an error validation', () => {
-    const { getAllByTitle, getByPlaceholderText } = renderWithTheme(
-      <InputText placeholder="Hello" validationType="error" />
-    )
-
-    expect(getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-    expect(getAllByTitle('Validation Error')).toBeDefined()
+    renderWithTheme(<InputText placeholder="Hello" validationType="error" />)
+    expect(screen.getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
+    expect(screen.getByTitle('Validation Error')).toBeInTheDocument()
   })
 
   describe('before & after', () => {

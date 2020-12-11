@@ -69,12 +69,12 @@ test('updates text input value when day is clicked', () => {
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
   const input = getByTestId('text-input') as HTMLInputElement
-  expect(input.value).toEqual('')
+  expect(input).toHaveValue('')
 
   const date = getByText('15') // the 15th day of the month
   fireEvent.click(date)
 
-  expect(input.value).toEqual('02/15/2020')
+  expect(input).toHaveValue('02/15/2020')
 })
 
 test('fills TextInput with value, and updates when props.value changes', () => {
@@ -84,7 +84,7 @@ test('fills TextInput with value, and updates when props.value changes', () => {
   }
   const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
   const input = getByTestId('text-input') as HTMLInputElement
-  expect(input.value).toEqual('06/03/2019')
+  expect(input).toHaveValue('06/03/2019')
 })
 
 test('fills TextInput with defaultValue', () => {
@@ -94,7 +94,7 @@ test('fills TextInput with defaultValue', () => {
   }
   const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
   const input = getByTestId('text-input') as HTMLInputElement
-  expect(input.value).toEqual('06/03/2019')
+  expect(input).toHaveValue('06/03/2019')
 })
 
 test('validates text input to match localized date format', () => {

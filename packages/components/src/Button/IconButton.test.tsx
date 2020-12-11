@@ -97,8 +97,8 @@ describe('IconButton', () => {
     const label = 'Mark as my Favorite'
     renderWithTheme(<IconButton label={label} icon="Favorite" />)
 
-    const notTooltip = screen.getAllByText(label)
-    expect(notTooltip).toHaveLength(1) // accessibility text
+    const notTooltip = screen.getByText(label)
+    expect(notTooltip).toBeInTheDocument() // accessibility text
 
     const icon = screen.getByText(label)
     fireEvent.mouseOver(icon)

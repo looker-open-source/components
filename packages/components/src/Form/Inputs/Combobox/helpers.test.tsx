@@ -65,7 +65,7 @@ describe('Combobox helpers', () => {
 
     closeCombobox()
 
-    expect(screen.queryByText('Foo')).toBeNull()
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
   })
 
   test('getComboboxOptions returns the expected number of options for an open Combobox', () => {

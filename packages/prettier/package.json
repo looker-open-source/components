@@ -18,7 +18,7 @@
     "index.json"
   ],
   "dependencies": {
-    "prettier": ">=2.2.0"
+    "prettier": ">=2.2.1"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }
