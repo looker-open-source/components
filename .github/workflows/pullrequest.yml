@@ -1,0 +1,55 @@
+on: [push]
+name: "CI"
+jobs:
+  lint:
+    name: "Lint: ESLint + Prettier, Stylelint, Typescript"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn lint
+  test:
+    name: "Tests: Jest + RTL"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn test
+    env:
+      CI: true
+  build:
+    name: "ES modules & Typescript"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn build
+  gatsby:
+    name: "Gatsby"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn workspace www build
+  storybook:
+    name: "Storybook"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn workspace storybook build
+  image-snapshots:
+    if: false # Disabled until snapshot issues can be resolved
+    name: "Image Snapshots"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn preimage-snapshots &> /dev/null
+      - run: yarn image-snapshots-only
