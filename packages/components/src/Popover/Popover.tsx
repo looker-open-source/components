@@ -61,9 +61,9 @@ export interface PopoverProps extends UsePopoverProps {
    * Convert popover to full-screen dialog on mobile
    * @default false
    */
-  mobileDialog?: boolean
+  renderMobileDialog?: boolean
   /**
-   * Populate dialog header content when mobileDialog is true
+   * Populate dialog header content when renderMobileDialog is true
    */
   dialogHeader?: string
 }
@@ -71,7 +71,7 @@ export interface PopoverProps extends UsePopoverProps {
 export const Popover = ({
   children,
   hoverDisclosureRef,
-  mobileDialog = false,
+  renderMobileDialog = false,
   dialogHeader,
   content,
   ...props
@@ -118,11 +118,11 @@ export const Popover = ({
 
   return (
     <>
-      <Breakpoint from={mobileDialog ? 1 : 0}>
+      <Breakpoint from={renderMobileDialog ? 1 : 0}>
         {popover}
         {triggerShown && children}
       </Breakpoint>
-      {mobileDialog && (
+      {renderMobileDialog && (
         <Breakpoint from={0} to={0}>
           <DialogRender {...dialogProps}>{children}</DialogRender>
         </Breakpoint>
