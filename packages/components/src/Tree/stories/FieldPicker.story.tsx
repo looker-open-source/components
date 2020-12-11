@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import {
   IconButton,
   Menu,
@@ -33,9 +33,14 @@ import {
   MenuItem,
   Tooltip,
   usePopover,
-  Badge,
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
+  FlexItem,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
+import { TreeContext } from '../TreeContext'
+import { TreeStyle } from '../TreeStyle'
 
 const PickerItem = ({
   children = 'Cost',
@@ -111,43 +116,52 @@ const PickerItem = ({
   )
 }
 
-const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
-  children,
-  defaultOpen,
-}) => (
-  <Tree
-    defaultOpen={defaultOpen}
-    detail={<Badge intent="inform">1</Badge>}
-    detailAccessory={false}
-    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
-    indicatorPosition="right"
-    label={children}
-  >
-    <TreeGroup label="DIMENSIONS">
-      <Tree branchFontWeight label="Created">
-        <PickerItem>Created Date</PickerItem>
-        <PickerItem>Created Month</PickerItem>
-        <PickerItem>Created Year</PickerItem>
-      </Tree>
-      <PickerItem selected>City</PickerItem>
-      <PickerItem>Country</PickerItem>
-      <PickerItem>ID</PickerItem>
-    </TreeGroup>
-    <TreeGroup label="MEASURES" color="orange">
-      <Tree branchFontWeight label="My Measure Group">
-        <PickerItem>Count of IDs</PickerItem>
-        <PickerItem>Count of Cities</PickerItem>
-      </Tree>
-      <PickerItem>Sum</PickerItem>
-      <PickerItem>Max</PickerItem>
-    </TreeGroup>
-  </Tree>
+const sampleTree = (
+  <TreeStyle depth={-1} hovered={false}>
+    <TreeContext.Provider value={{ depth: 0 }}>
+      <TreeGroup label="DIMENSIONS">
+        <Tree branchFontWeight label="Created">
+          <PickerItem>Created Date</PickerItem>
+          <PickerItem>Created Month</PickerItem>
+          <PickerItem>Created Year</PickerItem>
+        </Tree>
+        <PickerItem>City</PickerItem>
+        <PickerItem>Country</PickerItem>
+        <PickerItem>ID</PickerItem>
+      </TreeGroup>
+      <TreeGroup label="MEASURES" color="orange">
+        <Tree branchFontWeight label="My Measure Group">
+          <PickerItem>Count of IDs</PickerItem>
+          <PickerItem>Count of Cities</PickerItem>
+        </Tree>
+        <PickerItem>Sum</PickerItem>
+        <PickerItem>Max</PickerItem>
+      </TreeGroup>
+    </TreeContext.Provider>
+  </TreeStyle>
+)
+
+const ViewAccordion: FC<{
+  children: ReactNode
+  defaultOpen?: boolean
+  label: string
+}> = ({ children, defaultOpen, label }) => (
+  <Accordion defaultOpen={defaultOpen} indicatorSize="xxsmall">
+    <AccordionDisclosure px="4px" py="0" height="24px" color="text4">
+      <FlexItem flex="1" fontSize="xsmall" lineHeight="xsmall">
+        {label}
+      </FlexItem>
+    </AccordionDisclosure>
+    <AccordionContent>{children}</AccordionContent>
+  </Accordion>
 )
 
 export const FieldPicker = () => (
   <>
-    <ViewTree defaultOpen={true}>Orders</ViewTree>
-    <ViewTree>Orders Items</ViewTree>
-    <ViewTree>Users</ViewTree>
+    <ViewAccordion defaultOpen={true} label="Orders">
+      {sampleTree}
+    </ViewAccordion>
+    <ViewAccordion label="Order Items">{sampleTree}</ViewAccordion>
+    <ViewAccordion label="Users">{sampleTree}</ViewAccordion>
   </>
 )

@@ -51,7 +51,7 @@ const dividersCSS = css`
 export const TreeItemInner = styled(TreeItem)``
 
 export const TreeStyle = styled.div<TreeStyleProps>`
-  color: ${({ theme }) => theme.colors.text4};
+  color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
   min-width: 0;
 
