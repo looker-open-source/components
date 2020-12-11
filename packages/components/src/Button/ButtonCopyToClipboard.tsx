@@ -84,14 +84,19 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
         {children}
       </ButtonOutline>
     ) : (
-      cloneElement(children, { onClick: clickCopyButton })
+      cloneElement(children, {
+        onClick: clickCopyButton,
+        ref: buttonRef,
+      })
     )
 
   const successButton =
     typeof success === 'string' ? (
       <SuccessButton iconBefore="Check">{success}</SuccessButton>
     ) : (
-      success
+      cloneElement(success, {
+        style: { pointerEvents: 'none' },
+      })
     )
 
   return copied ? successButton : copyButton

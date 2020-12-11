@@ -68,6 +68,9 @@ const Template3: Story = () => {
 export const Basic = Template.bind({})
 
 export const LabelStyled = Template2.bind({})
+LabelStyled.parameters = {
+  storyshots: { disable: true },
+}
 
 export const ComponentStyled = Template3.bind({})
 
