@@ -28,6 +28,7 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
+  MouseEvent,
   ReactNode,
   Ref,
 } from 'react'
@@ -41,7 +42,9 @@ import {
 
 type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
-export interface TooltipProps extends UseTooltipProps, UsePopoverResponseDom {
+export interface TooltipProps
+  extends UseTooltipProps,
+    Partial<UsePopoverResponseDom> {
   content: ReactNode
   /**
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
@@ -85,7 +88,11 @@ export const Tooltip = forwardRef(
       target = cloneElement(children, {
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
-        onClick,
+        onClick: (e: MouseEvent<HTMLElement>) => {
+          // Popover onClick will be rare – don't clobber child's onClick
+          onClick?.(e)
+          children.props.onClick?.(e)
+        },
         ref,
         ...restDomProps,
         className:

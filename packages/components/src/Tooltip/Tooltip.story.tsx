@@ -28,6 +28,7 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
+import { Popover, PopoverContent } from '../Popover'
 import { Tooltip, TooltipProps } from './Tooltip'
 
 const Template: Story<TooltipProps> = (args) => (
@@ -122,6 +123,18 @@ export const LargeTrigger = () => (
 )
 
 LargeTrigger.parameters = {
+  storyshots: { disable: true },
+}
+
+export const NestedInPopover = () => (
+  <Popover content={<PopoverContent>Some content</PopoverContent>}>
+    <Tooltip content="Some tooltip">
+      <Button>Open</Button>
+    </Tooltip>
+  </Popover>
+)
+
+NestedInPopover.parameters = {
   storyshots: { disable: true },
 }
 
