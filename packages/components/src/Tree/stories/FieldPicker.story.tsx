@@ -68,7 +68,13 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
                 icon="Pivot"
                 label="Pivot"
                 tooltipPlacement="top"
-                onClick={() => alert('Pivot')}
+                onClick={(event) => {
+                  event.stopPropagation()
+                  alert('Pivot')
+                }}
+                onKeyDown={(event) => {
+                  event.stopPropagation()
+                }}
               />
               <IconButton
                 ref={ref}
@@ -93,10 +99,9 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
               </MenuDisclosure>
             </>
           }
-          detailAccessory={true}
           detailHoverDisclosure={!overlay}
-          onClick={() => alert(`Clicked on ${children}!`)}
-          onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
+          onClick={() => alert('Clicked on cost!')}
+          onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
           selected={!!overlay}
           truncate={truncate}
         >
@@ -114,7 +119,7 @@ const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
   <Tree
     defaultOpen={defaultOpen}
     detail={<Badge intent="inform">1</Badge>}
-    detailAccessory={false}
+    detailAccessory
     indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
     indicatorPosition="right"
     label={children}
