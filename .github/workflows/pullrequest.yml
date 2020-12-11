@@ -1,67 +1,55 @@
 on: [push]
 name: "CI"
 jobs:
-  dependencies:
-    name: "Install Dependencies"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
   lint:
-    needs: dependencies
     name: "Lint: ESLint + Prettier, Stylelint, Typescript"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn lint
   test:
-    needs: dependencies
     name: "Tests: Jest + RTL"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn test
     env:
       CI: true
   build:
-    needs: dependencies
     name: "ES modules & Typescript"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn build
   gatsby:
-    needs: dependencies
     name: "Gatsby"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn workspace www build
   storybook:
-    needs: dependencies
     name: "Storybook"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn workspace storybook build
   image-snapshots:
     if: false # Disabled until snapshot issues can be resolved
-    name: "Storybook + Storyshots + Puppeteer"
+    name: "Image Snapshots"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --frozen-lockfile --silent
+      - run : yarn --silent
       - run: yarn preimage-snapshots &> /dev/null
       - run: yarn image-snapshots-only
