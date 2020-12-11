@@ -40,6 +40,7 @@ import {
   Space,
   Truncate,
   Badge,
+  Box,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 import { TreeContext } from '../TreeContext'
@@ -139,10 +140,6 @@ const fields = (
       <PickerItem>ID</PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
-      <Tree branchFontWeight label="My Measure Group">
-        <PickerItem>Count of IDs</PickerItem>
-        <PickerItem>Count of Cities</PickerItem>
-      </Tree>
       <PickerItem>Sum</PickerItem>
       <PickerItem>Max</PickerItem>
     </TreeGroup>
@@ -154,7 +151,11 @@ const ViewAccordion: FC<{
   defaultOpen?: boolean
   label: string
 }> = ({ children, defaultOpen, label }) => (
-  <Accordion defaultOpen={defaultOpen} indicatorSize="xxsmall">
+  <Accordion
+    defaultOpen={defaultOpen}
+    indicatorSize="xxsmall"
+    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
+  >
     <AccordionDisclosure px="4px" py="0" height="24px" color="text4">
       <FlexItem flex="1" fontSize="xsmall" lineHeight="xsmall">
         <Space between>
@@ -168,11 +169,11 @@ const ViewAccordion: FC<{
 )
 
 export const FieldPicker = () => (
-  <>
+  <Box p="medium">
     <ViewAccordion defaultOpen={true} label="Orders">
       {fields}
     </ViewAccordion>
     <ViewAccordion label="Order Items">{fields}</ViewAccordion>
     <ViewAccordion label="Users">{fields}</ViewAccordion>
-  </>
+  </Box>
 )
