@@ -123,7 +123,7 @@ export const Popover = ({
         {popover}
         {triggerShown && children}
       </Breakpoint>
-      {/* if renderMobileDialog is true, render render Dialog on mobile instead */}
+      {/* if renderMobileDialog is true, render Dialog on mobile instead */}
       {renderMobileDialog && (
         <Breakpoint from={'mobile'} to={'mobile'}>
           <DialogRender {...dialogProps}>{children}</DialogRender>
