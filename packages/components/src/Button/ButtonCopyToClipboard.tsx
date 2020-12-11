@@ -24,7 +24,6 @@
 
  */
 import React, { useRef, useState, FC, cloneElement } from 'react'
-import styled from 'styled-components'
 import { ButtonOutline } from './ButtonOutline'
 
 /**
@@ -43,14 +42,10 @@ export interface CopyToClipboardProps {
   children?: string | JSX.Element
   /**
    * button's successfully copied label | a JSX element to replace the button
-   * @default 'Copied!'
+   * @default 'Copied'
    */
   success?: string | JSX.Element
 }
-
-const SuccessButton = styled(ButtonOutline)`
-  pointer-events: none;
-`
 
 export const CopyToClipboard: FC<CopyToClipboardProps> = ({
   children = 'Copy to Clipboard',
@@ -92,10 +87,12 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
 
   const successButton =
     typeof success === 'string' ? (
-      <SuccessButton iconBefore="Check">{success}</SuccessButton>
+      <ButtonOutline aria-live="polite" iconBefore="Check">
+        {success}
+      </ButtonOutline>
     ) : (
       cloneElement(success, {
-        style: { pointerEvents: 'none' },
+        style: { ariaLive: 'polite' },
       })
     )
 

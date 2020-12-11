@@ -26,53 +26,34 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { CopyToClipboard } from './ButtonCopyToClipboard'
+import { CopyToClipboard, CopyToClipboardProps } from './ButtonCopyToClipboard'
 import { Button } from './Button'
 
-const Template: Story = () => {
-  const content = 'here is some text to be copied'
-  return (
-    <>
-      <textarea defaultValue={content}></textarea>
-      <CopyToClipboard content={content} />
-    </>
-  )
-}
-
-const Template2: Story = () => {
-  const content = 'here is some text to be copied'
-  const children = 'Copy Something'
-  const success = 'it was copied'
-  return (
-    <>
-      <textarea defaultValue={content}></textarea>
-      <CopyToClipboard content={content} success={success}>
-        {children}
-      </CopyToClipboard>
-    </>
-  )
-}
-
-const Template3: Story = () => {
-  const content = 'here is some text to be copied'
-  return (
-    <>
-      <textarea defaultValue={content}></textarea>
-      <CopyToClipboard content={content} success={<Button>Success</Button>}>
-        <Button>Copy stuff</Button>
-      </CopyToClipboard>
-    </>
-  )
-}
+const Template: Story<CopyToClipboardProps> = (args) => (
+  <CopyToClipboard {...args} />
+)
 
 export const Basic = Template.bind({})
+Basic.args = {
+  content: 'here is some text to be copied',
+}
 
-export const LabelStyled = Template2.bind({})
+export const LabelStyled = Template.bind({})
+LabelStyled.args = {
+  ...Basic.args,
+  children: 'Copy Something',
+  success: 'it was copied',
+}
 LabelStyled.parameters = {
   storyshots: { disable: true },
 }
 
-export const ComponentStyled = Template3.bind({})
+export const ComponentStyled = Template.bind({})
+ComponentStyled.args = {
+  ...Basic.args,
+  children: <Button>Copy stuff</Button>,
+  success: <Button>Success</Button>,
+}
 
 export default {
   component: CopyToClipboard,

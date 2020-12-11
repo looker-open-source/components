@@ -32,12 +32,7 @@ import { Button } from './'
 
 const CopyToClipboardComponent = () => {
   const content = 'here is some text to be copied'
-  return (
-    <>
-      <textarea defaultValue={content}></textarea>
-      <CopyToClipboard content={content} />
-    </>
-  )
+  return <CopyToClipboard content={content} />
 }
 
 describe('CopyToClipboard', () => {
@@ -53,12 +48,9 @@ describe('CopyToClipboard', () => {
   it('renders the CopyToClipboard with different string values as children and success', () => {
     const content = 'here is some text to be copied'
     const { getByText } = renderWithTheme(
-      <>
-        <textarea defaultValue={content}></textarea>
-        <CopyToClipboard content={content} success="it was copied">
-          copy something
-        </CopyToClipboard>
-      </>
+      <CopyToClipboard content={content} success="it was copied">
+        copy something
+      </CopyToClipboard>
     )
     const copyButton = getByText('copy something')
     expect(copyButton).toBeVisible()
@@ -69,12 +61,9 @@ describe('CopyToClipboard', () => {
   it('renders the CopyToClipboard with different components as children and success', () => {
     const content = 'here is some text to be copied'
     const { getByText } = renderWithTheme(
-      <>
-        <textarea defaultValue={content}></textarea>
-        <CopyToClipboard content={content} success={<Button>Success</Button>}>
-          <Button>Copy stuff</Button>
-        </CopyToClipboard>
-      </>
+      <CopyToClipboard content={content} success={<Button>Success</Button>}>
+        <Button>Copy stuff</Button>
+      </CopyToClipboard>
     )
     const copyButton = getByText('Copy stuff')
     expect(copyButton).toBeVisible()
