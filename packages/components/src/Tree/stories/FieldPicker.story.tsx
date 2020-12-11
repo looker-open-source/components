@@ -40,7 +40,6 @@ import {
   Space,
   Truncate,
   Badge,
-  Box,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 import { TreeContext } from '../TreeContext'
@@ -169,11 +168,11 @@ const ViewAccordion: FC<{
 )
 
 export const FieldPicker = () => (
-  <Box p="medium">
+  <>
     <ViewAccordion defaultOpen={true} label="Orders">
       {fields}
     </ViewAccordion>
     <ViewAccordion label="Order Items">{fields}</ViewAccordion>
     <ViewAccordion label="Users">{fields}</ViewAccordion>
-  </Box>
+  </>
 )

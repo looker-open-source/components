@@ -86,6 +86,5 @@ export const AccordionDisclosureLayout = styled(Layout)`
       indicatorPosition === 'left'
         ? `margin-right: ${space[indicatorGap]};`
         : `margin-left: ${space[indicatorGap]};`}
-    width: ${({ indicatorSize, theme: { space } }) => space[indicatorSize]};
   }
 `
