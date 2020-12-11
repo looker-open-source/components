@@ -3,12 +3,13 @@ name: "Image Snapshots"
 jobs:
   image-snapshots:
     name: "Storybook + Storyshots + Puppeteer"
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - run: yarn install &> /dev/null
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
       - run: yarn preimage-snapshots &> /dev/null
       - run: yarn image-snapshots-only

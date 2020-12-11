@@ -1,0 +1,62 @@
+on: [push]
+name: "CI"
+jobs:
+  lint:
+    name: "Lint: ESLint + Prettier, Stylelint, Typescript"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
+      - run: yarn lint
+    env:
+      CI: true
+  test:
+    name: "Tests: Jest + RTL"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
+      - run: yarn test
+    env:
+      CI: true
+  build:
+    name: "ES modules & Typescript"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
+      - run: yarn build
+  gatsby:
+    name: "Gatsby (docs site)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
+      - run: yarn workspace www build
+  storybook:
+    name: "static build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --frozen-lockfile --silent
+      - run: yarn workspace storybook build
