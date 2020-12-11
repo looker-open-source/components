@@ -957,7 +957,7 @@ describe('Select', () => {
     const input = screen.getByPlaceholderText('Select a visualization')
     fireEvent.click(input)
     expect(screen.getAllByTestId('option-icon')).toHaveLength(3)
-    expect(screen.getAllByTestId('option-icon-placeholder')).toHaveLength(1)
+    expect(screen.getByTestId('option-icon-placeholder')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Column'))
     const inputIcon = screen.getByTestId('input-icon')
