@@ -1,0 +1,47 @@
+---
+title: CopyToClipboard
+github: Button/ButtonCopyToClipboard.tsx
+storybook: true
+---
+
+`CopyToClipboard` button copies a string pass as `content` prop to clipboard.
+
+```jsx
+;() => {
+  const content = 'here is some text to be copied'
+  return <CopyToClipboard content={content} />
+}
+```
+
+### Change Label
+
+`CopyToClipboard` offers props `children` and `success` both can be used to change the labels on the button by passing a string.
+
+```jsx
+;() => {
+  const content = 'here is some text to be copied'
+  const children = 'Copy Something'
+  const success = 'it was copied'
+
+  return (
+    <CopyToClipboard content={content} success={success}>
+      {children}
+    </CopyToClipboard>
+  )
+}
+```
+
+### Add Component
+
+`CopyToClipboard` offers props `children` and `success` both can be used to change the component displayed.
+
+```jsx
+;() => {
+  const content = 'here is some text to be copied'
+  return (
+    <CopyToClipboard content={content} success={<Button>Success</Button>}>
+      <Button>Copy stuff</Button>
+    </CopyToClipboard>
+  )
+}
+```
