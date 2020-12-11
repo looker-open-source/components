@@ -28,9 +28,9 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-  MouseEvent,
   ReactNode,
   Ref,
+  SyntheticEvent,
 } from 'react'
 import { UsePopoverResponseDom } from '../Popover'
 import { useForkedRef } from '../utils'
@@ -51,6 +51,16 @@ export interface TooltipProps
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
   children: ReactNode | TooltipRenderProp
+}
+
+const mergeHandlers = <E extends SyntheticEvent>(
+  newHandler?: (e: E) => void,
+  existingHandler?: (e: E) => void
+) => (event: E) => {
+  existingHandler?.(event)
+  if (!event.defaultPrevented) {
+    newHandler?.(event)
+  }
 }
 
 function isRenderProp(
@@ -79,7 +89,15 @@ export const Tooltip = forwardRef(
       disabled: ariaExpanded,
       ...props,
     })
-    const { ref: tooltipRef, ...restDomProps } = domProps
+    const {
+      className,
+      onBlur,
+      onFocus,
+      onMouseOut,
+      onMouseOver,
+      ref: tooltipRef,
+      ...restDomProps
+    } = domProps
     const ref = useForkedRef(tooltipRef, forwardedRef)
 
     let target = children
@@ -88,17 +106,15 @@ export const Tooltip = forwardRef(
       target = cloneElement(children, {
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
-        onClick: (e: MouseEvent<HTMLElement>) => {
-          // Popover onClick will be rare – don't clobber child's onClick
-          onClick?.(e)
-          children.props.onClick?.(e)
-        },
+        onBlur: mergeHandlers(onBlur, children.props.onBlur),
+        onClick: mergeHandlers(onClick, children.props.onClick),
+        onFocus: mergeHandlers(onFocus, children.props.onFocus),
+        onMouseOut: mergeHandlers(onMouseOut, children.props.onMouseOut),
+        onMouseOver: mergeHandlers(onMouseOver, children.props.onMouseOver),
         ref,
         ...restDomProps,
         className:
-          `${children.props.className || ''} ${
-            restDomProps.className
-          }`.trim() || undefined,
+          `${children.props.className || ''} ${className}`.trim() || undefined,
       })
     } else if (isRenderProp(children)) {
       target = children(domProps)
