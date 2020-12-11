@@ -37,7 +37,11 @@ import {
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 
-const PickerItem = ({ children = 'Cost', truncate = false }) => {
+const PickerItem = ({
+  children = 'Cost',
+  selected = false,
+  truncate = false,
+}) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -97,7 +101,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
           detailHoverDisclosure={!overlay}
           onClick={() => alert(`Clicked on ${children}!`)}
           onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
-          selected={!!overlay}
+          selected={selected}
           truncate={truncate}
         >
           {children}
@@ -125,7 +129,7 @@ const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
         <PickerItem>Created Month</PickerItem>
         <PickerItem>Created Year</PickerItem>
       </Tree>
-      <PickerItem>City</PickerItem>
+      <PickerItem selected>City</PickerItem>
       <PickerItem>Country</PickerItem>
       <PickerItem>ID</PickerItem>
     </TreeGroup>

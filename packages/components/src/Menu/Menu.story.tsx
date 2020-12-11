@@ -498,3 +498,11 @@ export const LongMenus = () => {
 LongMenus.parameters = {
   storyshots: { disable: true },
 }
+
+export const MenuItemCurrent = () => (
+  <MenuList width={100}>
+    <MenuItem>Gouda</MenuItem>
+    <MenuItem current>Swiss</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
+  </MenuList>
+)
