@@ -24,23 +24,7 @@
 
  */
 
-import { DataTable } from './DataTable'
-import { DataTableAction, DataTableItem } from './Item'
-import { DataTableCell, DataTableColumns } from './Column'
-
 export * from './DataTable'
 export * from './Column'
 export * from './Item'
 export * from './utils'
-
-/**
- * Legacy exports
- * NOTE: These will be removed in the not-too-distant future
- */
-export const ActionList = DataTable
-export const ActionListItem = DataTableItem
-export const ActionListItemAction = DataTableAction
-export const ActionListItemColumn = DataTableCell
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ActionListColumns extends DataTableColumns {}
