@@ -145,7 +145,7 @@ export const ComboboxOptionWrapper = styled(ComboboxOptionWrapperInternal)`
   background-color: ${({ isSelected, theme }) =>
     isSelected && theme.colors.keySubtle};
 
-  &:hover {
+  &[aria-selected='true'] {
     background-color: ${({ isSelected, theme }) =>
       isSelected ? theme.colors.keyAccent : theme.colors.ui1};
   }
