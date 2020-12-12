@@ -16,7 +16,7 @@
     "@looker/components-theme-editor": "^0.9.26",
     "@looker/design-tokens": "^0.9.26",
     "@looker/icons": "^0.9.26",
-    "@storybook/react": "^6.1.10",
+    "@storybook/react": "^6.1.11",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

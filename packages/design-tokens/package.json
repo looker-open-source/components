@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@storybook/addon-storyshots": "^6.1.10",
-    "@storybook/react": "^6.1.10",
+    "@storybook/react": "^6.1.11",
     "@types/lodash": "^4.14.165",
     "@types/styled-components": "^5.1.5",
     "csstype": "^3.0.5",
