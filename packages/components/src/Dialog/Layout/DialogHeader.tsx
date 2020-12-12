@@ -114,7 +114,6 @@ export const DialogHeader = styled(DialogHeaderLayout)`
   ${reset}
   ${space}
   align-items: center;
-  background: ${({ theme }) => theme.colors.background};
   display: flex;
   flex-shrink: 0;
 `
