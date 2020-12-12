@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.9.25",
+  "version": "0.9.26",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@looker/components-providers": "^0.9.25",
+    "@looker/components-providers": "^0.9.26",
     "@testing-library/react": "^11.2.2",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.19",

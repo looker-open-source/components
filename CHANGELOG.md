@@ -14,7 +14,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 - [Design Tokens](./packages/design-tokens/CHANGELOG.md)
 - [Icons](./packages/icons/CHANGELOG.md)
 
-## [UNRELEASED]
+## [0.9.26]
 
 ### Changed
 
@@ -22,7 +22,7 @@ NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package ha
 
 ### Fixed
 
-- `image-snapshot-update` now correctly deletes all existing snapshots before running
+- `image-snapshot-update` package script now correctly deletes all existing snapshots before running
 
 ## [0.9.25]
 
