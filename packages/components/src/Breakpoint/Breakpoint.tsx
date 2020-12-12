@@ -29,7 +29,7 @@ import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
 type NamedBreakpoints = 'mobile' | 'tablet' | 'laptop' | 'desktop' | 'xl'
-const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
+export const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
   'mobile',
   'tablet',
   'laptop',

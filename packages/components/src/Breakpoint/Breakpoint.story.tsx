@@ -23,12 +23,29 @@
  SOFTWARE.
 
  */
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Breakpoint, BreakpointProps } from './Breakpoint'
 
-export * from './CalendarPropTable'
-export * from './DateFormatTable'
-export * from './IconList'
-export * from './LocaleTable'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './TimeFormatTable'
-export * from './NamedBreakpointTable'
+export default {
+  component: Breakpoint,
+  title: 'Breakpoint',
+}
+
+const Template: Story<BreakpointProps> = (args) => <Breakpoint {...args} />
+
+export const RenderAll = Template.bind({})
+RenderAll.args = {
+  children: 'Render me everywhere',
+}
+
+export const RenderOnMobile = Template.bind({})
+RenderOnMobile.args = {
+  children: 'Render on mobile',
+  from: 'mobile',
+  to: 'mobile',
+}
+
+RenderOnMobile.parameters = {
+  viewport: { defaultViewport: { height: 300, width: 300 } },
+}

@@ -24,11 +24,39 @@
 
  */
 
-export * from './CalendarPropTable'
-export * from './DateFormatTable'
-export * from './IconList'
-export * from './LocaleTable'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './TimeFormatTable'
-export * from './NamedBreakpointTable'
+import React, { useContext } from 'react'
+import zip from 'lodash/zip'
+import {
+  NAMED_BREAKPOINTS,
+  Table,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '@looker/components'
+import { ThemeContext } from 'styled-components'
+import { Locales } from '@looker/components/src/utils/i18n'
+
+export const NamedBreakpointTable = () => {
+  const theme = useContext(ThemeContext)
+
+  return (
+    <Table mb="large">
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Size</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {zip(NAMED_BREAKPOINTS, theme.breakpoints).map((pair) => (
+          <TableRow key={pair[0]}>
+            <TableDataCell>{pair[0]}</TableDataCell>
+            <TableDataCell>{pair[1]}</TableDataCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  )
+}

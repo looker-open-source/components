@@ -1,0 +1,26 @@
+---
+title: Breakpoint
+storybook: true
+---
+
+The `Breakpoint` component is used to render content at a desired screen size. We support five named breakpoints as follows:
+
+import { NamedBreakpointTable } from './demos'
+
+<NamedBreakpointTable />
+
+## From, To
+
+You can specify a range of screensizes using the `from`, and `to` props. Default values are `mobile` and `xl`, respectively.
+
+Resize the screen to watch the values change.
+
+```jsx
+  <Breakpoint from="mobile" to="mobile">
+    Mobile Only
+  </Breakpoint>
+  <Breakpoint from="tablet" to="desktop">
+    Tablet, Laptop, and Desktop
+  </Breakpoint>
+  <Breakpoint from="xl">Only large screens</Breakpoint>
+```

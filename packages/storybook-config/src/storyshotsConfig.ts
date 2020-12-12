@@ -36,6 +36,16 @@ export const storyshotsConfig = (pkg: string) => {
     framework: 'react',
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
+        const { viewport } = context.parameters
+        if (viewport) {
+          const defaultViewport = viewport.viewports[viewport.defaultViewport]
+          await page.setViewport({
+            height: parseInt(defaultViewport.styles.height, 10),
+            width: parseInt(defaultViewport.styles.width, 10),
+          })
+          await page.waitFor(500)
+        }
+
         ;(context as any).clip = await page.evaluate(() => {
           const backdrop = document.querySelector(
             '#modal-root [data-testid="backdrop"]'
