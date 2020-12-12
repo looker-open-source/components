@@ -24,7 +24,7 @@
 
  */
 import React, { useRef, useState, FC, cloneElement } from 'react'
-import { ButtonOutline } from './ButtonOutline'
+import { ButtonOutline } from '../Button/ButtonOutline'
 
 /**
  * This component allows user to copy contents from the, passed in ref, to the clipboard.

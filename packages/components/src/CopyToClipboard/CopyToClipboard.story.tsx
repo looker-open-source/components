@@ -26,8 +26,8 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { CopyToClipboard, CopyToClipboardProps } from './ButtonCopyToClipboard'
-import { Button } from './Button'
+import { Button } from '../Button/Button'
+import { CopyToClipboard, CopyToClipboardProps } from './CopyToClipboard'
 
 const Template: Story<CopyToClipboardProps> = (args) => (
   <CopyToClipboard {...args} />

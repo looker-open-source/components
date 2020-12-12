@@ -27,8 +27,8 @@
 import { act, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { CopyToClipboard } from './ButtonCopyToClipboard'
-import { Button } from './'
+import { Button } from '../Button'
+import { CopyToClipboard } from './CopyToClipboard'
 
 const CopyToClipboardComponent = () => {
   const content = 'here is some text to be copied'
