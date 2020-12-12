@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/looker-open-source/eslint-config.git"
   },
-  "version": "0.9.25",
+  "version": "0.9.26",
   "bugs": {
     "url": "https://github.com/looker-open-source/eslint-config/issues"
   },
@@ -15,7 +15,8 @@
   },
   "files": [
     "index.js",
-    "license-header.js"  ],
+    "license-header.js"
+  ],
   "engines": {
     "node": ">=10",
     "yarn": ">=1.14.0"
