@@ -26,23 +26,28 @@
 
 import {
   CompatibleHTMLProps,
-  SpaceProps,
+  PaddingProps,
+  padding,
   reset,
   LayoutProps,
   layout,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 
 export interface DialogContentProps
   extends LayoutProps,
+    PaddingProps,
     CompatibleHTMLProps<HTMLDivElement> {}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
 }
+
+const paddingProps = ['p', 'pt', 'pb', 'pr', 'pl', 'px', 'py']
 
 const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
@@ -70,16 +75,34 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
     <div
       className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
-      {...omit(props, ['renderedHeight'])}
+      {...omit(props, [...paddingProps, 'renderedHeight'])}
     >
-      <Inner>{children}</Inner>
+      <Inner overflowed={overflow} {...pick(props, paddingProps)}>
+        {children}
+      </Inner>
     </div>
   )
 }
 
-const Inner = styled.div<SpaceProps>`
-  padding: 0 ${({ theme }) => theme.space.xlarge};
+interface InnerProps extends PaddingProps {
+  overflowed: boolean
+}
+
+const Inner = styled.div<InnerProps>`
+  ${padding}
+  ${({ overflowed, theme }) =>
+    overflowed
+      ? css`
+          padding-bottom: ${theme.space.large};
+          padding-top: ${theme.space.large};
+        `
+      : ''}
 `
+
+Inner.defaultProps = {
+  px: ['medium', 'xlarge'],
+  py: 'xxxsmall',
+}
 
 const DialogContentStyled = styled(DialogContentLayout)`
   ${reset}
@@ -88,20 +111,10 @@ const DialogContentStyled = styled(DialogContentLayout)`
   flex: 1 1 auto;
   overflow: auto;
 
-  ${Inner} {
-    padding-bottom: ${({ theme }) => theme.space.xxxsmall};
-    padding-top: ${({ theme }) => theme.space.xxxsmall};
-  }
-
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
     border-top: 1px solid ${({ theme }) => theme.colors.ui2};
     box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-
-    ${Inner} {
-      padding-bottom: ${({ theme }) => theme.space.large};
-      padding-top: ${({ theme }) => theme.space.large};
-    }
   }
 `
 
