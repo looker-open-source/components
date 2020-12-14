@@ -159,7 +159,9 @@ const itemsActionsPrimaryAction = data.map(({ id, name, type }) => {
 })
 
 const dataTableWithGeneratedHeader = (
-  <DataTable columns={columns}>{items}</DataTable>
+  <DataTable caption="this is a table's caption" columns={columns}>
+    {items}
+  </DataTable>
 )
 
 const handleActionClick = jest.fn()
@@ -189,7 +191,9 @@ const clickableItems = data.map(({ id, name, type }) => {
 })
 
 const dataTableWithClickableRows = (
-  <DataTable columns={columns}>{clickableItems}</DataTable>
+  <DataTable caption="this is a table's caption" columns={columns}>
+    {clickableItems}
+  </DataTable>
 )
 
 const onSelect = jest.fn()
@@ -282,7 +286,11 @@ describe('DataTable', () => {
   describe('Sorting', () => {
     const onSort = jest.fn()
     const dataTableWithSort = (
-      <DataTable columns={columns} onSort={onSort}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        onSort={onSort}
+      >
         {items}
       </DataTable>
     )
@@ -310,13 +318,18 @@ describe('DataTable', () => {
 
   describe('Selecting', () => {
     const dataTableWithSelect = (
-      <DataTable columns={columns} select={defaultSelectConfig}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
         {items}
       </DataTable>
     )
 
     const dataTableWithOnClickRowSelect = (
       <DataTable
+        caption="this is a table's caption"
         columns={columns}
         select={{ ...defaultSelectConfig, onClickRowSelect: true }}
       >
@@ -325,6 +338,7 @@ describe('DataTable', () => {
     )
     const dataTableWithSelectedItems = (
       <DataTable
+        caption="this is a table's caption"
         columns={columns}
         select={{
           ...defaultSelectConfig,
@@ -383,13 +397,18 @@ describe('DataTable', () => {
 
   describe('Selecting All', () => {
     const dataTableWithNoItemsSelected = (
-      <DataTable columns={columns} select={defaultSelectConfig}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
         {items}
       </DataTable>
     )
 
     const dataTableWithSomeItemsSelected = (
       <DataTable
+        caption="this is a table's caption"
         columns={columns}
         select={{
           ...defaultSelectConfig,
@@ -402,6 +421,7 @@ describe('DataTable', () => {
 
     const dataTableWithAllItemsSelected = (
       <DataTable
+        caption="this is a table's caption"
         columns={columns}
         select={{
           ...defaultSelectConfig,
@@ -468,6 +488,7 @@ describe('DataTable', () => {
     test('Control bar is visible when bulk prop is provided and selectedItems prop has length > 0', () => {
       const { getByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           bulk={bulk}
           select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
@@ -484,6 +505,7 @@ describe('DataTable', () => {
     test('Control bar is not visible when bulk prop is not provided', () => {
       const { queryByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
         >
@@ -497,6 +519,7 @@ describe('DataTable', () => {
     test('Control bar is not visible when selectedItems.length < 0', () => {
       const { queryByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           bulk={bulk}
           select={{ ...defaultSelectConfig, selectedItems: [] }}
@@ -511,6 +534,7 @@ describe('DataTable', () => {
     test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {
       const { getByText, queryByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           bulk={bulk}
           select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
@@ -533,6 +557,7 @@ describe('DataTable', () => {
     test('Pressing "Select all X Results" button triggers onTotalSelectAll', () => {
       const { getByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           bulk={bulk}
           select={{ ...defaultSelectConfig, selectedItems: ['1'] }}
@@ -549,6 +574,7 @@ describe('DataTable', () => {
     test('Pressing "Clear Selection" button triggers onTotalClearAll', () => {
       const { getByText } = renderWithTheme(
         <DataTable
+          caption="this is a table's caption"
           columns={columns}
           bulk={bulk}
           select={{
@@ -568,19 +594,31 @@ describe('DataTable', () => {
 
   describe('Actions', () => {
     const dataTableWithActions = (
-      <DataTable columns={columns} select={defaultSelectConfig}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
         {items}
       </DataTable>
     )
 
     const dataTableWithPrimaryAction = (
-      <DataTable columns={columns} select={defaultSelectConfig}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
         {itemsActionPrimary}
       </DataTable>
     )
 
     const dataTableWithActionPrimaryAction = (
-      <DataTable columns={columns} select={defaultSelectConfig}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
         {itemsActionsPrimaryAction}
       </DataTable>
     )
@@ -610,7 +648,11 @@ describe('DataTable', () => {
 
   test('Does not render children if state="loading"', () => {
     const { queryByText } = renderWithTheme(
-      <DataTable columns={[]} state="loading">
+      <DataTable
+        caption="this is a table's caption"
+        columns={[]}
+        state="loading"
+      >
         {bestCheeseDiv}
       </DataTable>
     )
@@ -619,7 +661,11 @@ describe('DataTable', () => {
 
   test('Does not render children if state="noResults"', () => {
     const { queryByText } = renderWithTheme(
-      <DataTable columns={[]} state="noResults">
+      <DataTable
+        caption="this is a table's caption"
+        columns={[]}
+        state="noResults"
+      >
         {bestCheeseDiv}
       </DataTable>
     )
@@ -628,7 +674,12 @@ describe('DataTable', () => {
 
   test('Renders custom no results message when noResultsDisplay prop has a value', () => {
     const { getByText } = renderWithTheme(
-      <DataTable columns={[]} state="noResults" noResultsDisplay={'Cheddar'}>
+      <DataTable
+        caption="this is a table's caption"
+        columns={[]}
+        state="noResults"
+        noResultsDisplay={'Cheddar'}
+      >
         {bestCheeseDiv}
       </DataTable>
     )

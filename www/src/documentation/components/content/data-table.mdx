@@ -13,6 +13,8 @@ The `<DataTable>` component, like `<Table>`, displays tabular data. However, unl
 
 The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-related components. It must receive an array of type `DataTableColumn` in its `columns` prop. That array should contain objects that describe the columns in your `<DataTable>`.
 
+For accessibility `<DataTable>` needs the `caption` prop to be supported with a description of what the table represents.
+
 ```jsx
 ;() => {
   const data = [
@@ -65,7 +67,11 @@ The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-rela
     )
   })
 
-  return <DataTable columns={columns}>{items}</DataTable>
+  return (
+    <DataTable caption="this is a table's caption" columns={columns}>
+      {items}
+    </DataTable>
+  )
 }
 ```
 
@@ -115,7 +121,7 @@ Passing in a React element into the `indicator` prop will display said element l
   ]
 
   return (
-    <DataTable columns={columns}>
+    <DataTable caption="this is a table's caption" columns={columns}>
       <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
         <DataTableCell description={link} indicator={indicator}>
           Cheddar
@@ -157,7 +163,7 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
 
   // Change state to "noResults" to render the noResultsDisplay
   return (
-    <DataTable columns={columns}>
+    <DataTable caption="this is a table's caption" columns={columns}>
       <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
         <DataTableCell>Cheddar</DataTableCell>
       </DataTableItem>
@@ -264,7 +270,11 @@ If using a custom `onSort`, make sure the function performs the following:
   })
 
   return (
-    <DataTable onSort={onSort} columns={columns}>
+    <DataTable
+      caption="this is a table's caption"
+      onSort={onSort}
+      columns={columns}
+    >
       {items}
     </DataTable>
   )
@@ -362,6 +372,7 @@ The following properties are **optional** in the object passed into the `select`
   return (
     <>
       <DataTable
+        caption="this is a table's caption"
         columns={columns}
         select={{
           selectedItems: selections,
@@ -448,6 +459,8 @@ The `useSelectManager` hook can be used to quickly create the standard building 
 
   return (
     <DataTable
+      caption="this is a table's caption"
+      columns={columns}
       select={{
         onClickRowSelect: true,
         onSelect,
@@ -455,7 +468,6 @@ The `useSelectManager` hook can be used to quickly create the standard building 
         selectedItems: selections,
         pageItems: allSelectableItems,
       }}
-      columns={columns}
     >
       {items}
     </DataTable>
@@ -559,6 +571,7 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
       <Box width="100%" mb="10px">
         <DataTable
           bulk={bulkActionsConfig}
+          caption="this is a table's caption"
           select={{
             onClickRowSelect: true,
             onSelect,
@@ -606,7 +619,7 @@ DataTable plays nicely with [Truncate](/components/text/truncate), when you wish
   ]
 
   return (
-    <DataTable columns={columns}>
+    <DataTable caption="this is a table's caption" columns={columns}>
       <DataTableItem key="cheddar" id="cheddar">
         <DataTableCell>Cheddar</DataTableCell>
         <DataTableCell>

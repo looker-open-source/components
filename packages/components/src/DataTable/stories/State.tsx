@@ -40,6 +40,7 @@ const Template: Story<DataTableProps> = ({ ...args }) => (
 
 export const Loading = Template.bind({})
 Loading.args = {
+  caption: "this is a table's caption",
   columns,
   state: 'loading',
 }

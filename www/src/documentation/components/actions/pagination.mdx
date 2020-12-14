@@ -96,7 +96,9 @@ One application of the `<Pagination/>` component is to paginate a data table, li
   return (
     <Flex flexDirection="column" alignItems="center">
       <Box width="100%" mb="10px">
-        <DataTable columns={columns}>{items}</DataTable>
+        <DataTable caption="this is a table's caption" columns={columns}>
+          {items}
+        </DataTable>
       </Box>
       <Pagination
         current={currentPage}

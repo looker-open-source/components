@@ -38,10 +38,12 @@ import { DataTableHeader } from './Header/DataTableHeader'
 import { edgeShadow } from './utils/edgeShadow'
 
 export interface TableProps extends DataTableProps {
+  caption: string
   columnsVisible: string[]
 }
 
 export const TableLayout: FC<TableProps> = ({
+  caption,
   children,
   className,
   columnsVisible,
@@ -69,6 +71,7 @@ export const TableLayout: FC<TableProps> = ({
     <>
       <TableScroll ref={ref}>
         <table className={overflow ? `${className} overflow` : className}>
+          <caption>{caption}</caption>
           <thead>
             <DataTableHeader id={headerRowId} />
           </thead>

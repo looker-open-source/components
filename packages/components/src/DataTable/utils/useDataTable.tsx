@@ -47,5 +47,9 @@ export const useDataTable = (
     )
   })
 
-  return <DataTable columns={columns}>{items}</DataTable>
+  return (
+    <DataTable caption="this is a table's caption" columns={columns}>
+      {items}
+    </DataTable>
+  )
 }
