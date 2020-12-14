@@ -30,20 +30,20 @@ import {
   NamedBreakpoints,
   NAMED_BREAKPOINTS,
 } from '@looker/design-tokens'
+import isArray from 'lodash/isArray'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
 export interface BreakpointProps {
   children: ReactNode
-  show: [NamedBreakpoints] | [NamedBreakpoints, NamedBreakpoints]
+  show: NamedBreakpoints | [NamedBreakpoints, NamedBreakpoints]
 }
 
 export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   // Define screen size range.
-  // If they pass a single value, e.g. ['mobile'], it should be equivalent to
+  // If they pass a single value, e.g. 'mobile', it should be equivalent to
   // "from mobile, to mobile"
-  const from = show[0] || 'mobile'
-  const to = show.length === 1 ? from : show[1] || 'xl'
+  const [from = 'mobile', to = 'xl'] = isArray(show) ? show : [show, show]
   const [screenWidth, setScreenWidth] = useState(screen.width)
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>

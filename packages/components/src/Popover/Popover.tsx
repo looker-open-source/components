@@ -109,13 +109,13 @@ export const Popover = ({
   return (
     <>
       {/* if renderMobileDialog is true, only render standard popover for `tablet` and larger */}
-      <Breakpoint show={[renderMobileDialog ? 'tablet' : 'mobile', 'xl']}>
+      <Breakpoint show={[renderMobileDialog ? 'tablet' : 'mobile', undefined]}>
         {popover}
         {triggerShown && children}
       </Breakpoint>
       {/* if renderMobileDialog is true, render Dialog on mobile instead */}
       {renderMobileDialog && (
-        <Breakpoint show={['mobile']}>
+        <Breakpoint show="mobile">
           <DialogRender {...dialogProps}>{children}</DialogRender>
         </Breakpoint>
       )}
