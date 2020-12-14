@@ -25,6 +25,7 @@
  */
 
 import React, { useContext, FC, ReactNode, useState } from 'react'
+import { convertRemToPx } from '@looker/design-tokens'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
@@ -35,6 +36,7 @@ type NamedBreakpoints =
   | 'laptop'
   | 'desktop'
   | 'xl'
+
 export const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
   'mobile',
   'tablet',
@@ -47,10 +49,6 @@ export interface BreakpointProps {
   show: [NamedBreakpoints] | [NamedBreakpoints, NamedBreakpoints]
 }
 
-function convertRemToPixels(rem: number) {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
-}
-
 export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   // Define screen size range.
   // If they pass a single value, e.g. ['mobile'], it should be equivalent to
@@ -60,7 +58,7 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   const [screenWidth, setScreenWidth] = useState(screen.width)
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
-    convertRemToPixels(parseInt(b.replace('rem', '')))
+    convertRemToPx(parseInt(b.replace('rem', '')))
   )
   const fromIndex = NAMED_BREAKPOINTS.indexOf(from)
   const toIndex = NAMED_BREAKPOINTS.indexOf(to)

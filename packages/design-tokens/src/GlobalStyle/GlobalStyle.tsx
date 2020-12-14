@@ -26,10 +26,12 @@
 
 import { css, createGlobalStyle } from 'styled-components'
 
+export const BASE_FONT_SIZE = 16
+
 export const reset = css`
   html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: ${BASE_FONT_SIZE}px;
   }
 
   *,

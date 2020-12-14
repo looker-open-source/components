@@ -24,5 +24,5 @@
 
  */
 
-export { GlobalStyle } from './GlobalStyle'
+export { GlobalStyle, BASE_FONT_SIZE } from './GlobalStyle'
 export { IEGlobalStyle } from './IE'
