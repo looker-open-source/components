@@ -646,6 +646,22 @@ describe('DataTable', () => {
     })
   })
 
+  describe('Accessibility', () => {
+    const dataTableWithActions = (
+      <DataTable
+        caption="this is a table's caption"
+        columns={columns}
+        select={defaultSelectConfig}
+      >
+        {items}
+      </DataTable>
+    )
+    test('Table has caption', () => {
+      const { getByText } = renderWithTheme(dataTableWithActions)
+      expect(getByText("this is a table's caption")).toBeInTheDocument()
+    })
+  })
+
   test('Does not render children if state="loading"', () => {
     const { queryByText } = renderWithTheme(
       <DataTable

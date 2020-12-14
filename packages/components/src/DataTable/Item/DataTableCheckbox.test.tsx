@@ -59,4 +59,21 @@ describe('DataTableCheckbox', () => {
     fireEvent.click(checkbox)
     expect(onChange).toHaveBeenCalledTimes(2)
   })
+  test('Renders aria-label when checked', () => {
+    const { getByRole } = renderWithTheme(<DataTableCheckbox checked />)
+    const checkbox = getByRole('checkbox')
+    expect(checkbox as HTMLInputElement).toHaveAttribute(
+      'aria-label',
+      'Select none'
+    )
+  })
+
+  test('Renders aria-label when unchecked', () => {
+    const { getByRole } = renderWithTheme(<DataTableCheckbox />)
+    const checkbox = getByRole('checkbox')
+    expect(checkbox as HTMLInputElement).toHaveAttribute(
+      'aria-label',
+      'Select all rows'
+    )
+  })
 })
