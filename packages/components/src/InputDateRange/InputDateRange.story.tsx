@@ -78,7 +78,7 @@ export const TimeframeFilter = () => {
   return (
     <Popover
       renderMobileDialog
-      dialogHeader="Select Date"
+      label="Select Date"
       content={
         <PopoverContent>
           <Tabs defaultIndex={1}>

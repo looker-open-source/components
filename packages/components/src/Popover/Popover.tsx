@@ -65,14 +65,14 @@ export interface PopoverProps extends UsePopoverProps {
   /**
    * Populate dialog header content when renderMobileDialog is true
    */
-  dialogHeader?: string
+  label?: string
 }
 
 export const Popover = ({
   children,
   hoverDisclosureRef,
   renderMobileDialog = false,
-  dialogHeader,
+  label,
   content,
   ...props
 }: PopoverProps) => {
@@ -83,7 +83,7 @@ export const Popover = ({
   const dialogProps = useDialog({
     content: (
       <>
-        <DialogHeader>{dialogHeader}</DialogHeader>
+        <DialogHeader>{label}</DialogHeader>
         <DialogContent px="none">{content}</DialogContent>
       </>
     ),
@@ -109,13 +109,13 @@ export const Popover = ({
   return (
     <>
       {/* if renderMobileDialog is true, only render standard popover for `tablet` and larger */}
-      <Breakpoint from={renderMobileDialog ? 'tablet' : 'mobile'}>
+      <Breakpoint show={[renderMobileDialog ? 'tablet' : 'mobile', 'xl']}>
         {popover}
         {triggerShown && children}
       </Breakpoint>
       {/* if renderMobileDialog is true, render Dialog on mobile instead */}
       {renderMobileDialog && (
-        <Breakpoint from={'mobile'} to={'mobile'}>
+        <Breakpoint show={['mobile']}>
           <DialogRender {...dialogProps}>{children}</DialogRender>
         </Breakpoint>
       )}

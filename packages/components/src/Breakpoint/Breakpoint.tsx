@@ -28,7 +28,13 @@ import React, { useContext, FC, ReactNode, useState } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
-type NamedBreakpoints = 'mobile' | 'tablet' | 'laptop' | 'desktop' | 'xl'
+type NamedBreakpoints =
+  | undefined
+  | 'mobile'
+  | 'tablet'
+  | 'laptop'
+  | 'desktop'
+  | 'xl'
 export const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
   'mobile',
   'tablet',
@@ -38,19 +44,19 @@ export const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
 ]
 export interface BreakpointProps {
   children: ReactNode
-  from?: NamedBreakpoints
-  to?: NamedBreakpoints
+  show: [NamedBreakpoints] | [NamedBreakpoints, NamedBreakpoints]
 }
 
 function convertRemToPixels(rem: number) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
 }
 
-export const Breakpoint: FC<BreakpointProps> = ({
-  children,
-  from = 'mobile',
-  to = 'xl',
-}) => {
+export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
+  // Define screen size range.
+  // If they pass a single value, e.g. ['mobile'], it should be equivalent to
+  // "from mobile, to mobile"
+  const from = show[0] || 'mobile'
+  const to = show.length === 1 ? from : show[1] || 'xl'
   const [screenWidth, setScreenWidth] = useState(screen.width)
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
