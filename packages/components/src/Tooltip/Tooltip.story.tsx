@@ -24,10 +24,13 @@
 
  */
 
-import React from 'react'
+import React, { FormEvent, SyntheticEvent, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
+import { FieldToggleSwitch } from '../Form'
+import { Space, SpaceVertical } from '../Layout'
+import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
 import { Tooltip, TooltipProps } from './Tooltip'
 
@@ -126,13 +129,46 @@ LargeTrigger.parameters = {
   storyshots: { disable: true },
 }
 
-export const NestedInPopover = () => (
-  <Popover content={<PopoverContent>Some content</PopoverContent>}>
-    <Tooltip content="Some tooltip">
-      <Button>Open</Button>
-    </Tooltip>
-  </Popover>
-)
+export const NestedInPopover = () => {
+  const [prevent, setPrevent] = useState(false)
+  function handleChange(e: FormEvent<HTMLInputElement>) {
+    setPrevent(e.currentTarget.checked)
+  }
+
+  const [lastEvent, setLastEvent] = useState('N/A')
+  const getHandler = (text: string) => (e: SyntheticEvent) => {
+    setLastEvent(text)
+    if (prevent) {
+      e.preventDefault()
+    }
+  }
+
+  const handlers = {
+    onBlur: getHandler('blur'),
+    onClick: getHandler('click'),
+    onFocus: getHandler('focus'),
+    onMouseOut: getHandler('mouse out'),
+    onMouseOver: getHandler('mouse over'),
+  }
+
+  return (
+    <SpaceVertical p="large">
+      <Text>Last event: {lastEvent}</Text>
+      <Space>
+        <Popover content={<PopoverContent>Some content</PopoverContent>}>
+          <Tooltip content="Some tooltip">
+            <Button {...handlers}>Open</Button>
+          </Tooltip>
+        </Popover>
+        <FieldToggleSwitch
+          on={prevent}
+          onChange={handleChange}
+          label="Prevent default"
+        />
+      </Space>
+    </SpaceVertical>
+  )
+}
 
 NestedInPopover.parameters = {
   storyshots: { disable: true },

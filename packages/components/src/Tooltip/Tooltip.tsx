@@ -103,18 +103,32 @@ export const Tooltip = forwardRef(
     let target = children
 
     if (isValidElement(children)) {
+      const handlers = {
+        onBlur,
+        onClick,
+        onFocus,
+        onMouseOut,
+        onMouseOver,
+      }
+
+      const mergedHandlers = Object.keys(handlers).reduce(
+        (acc: Partial<typeof handlers>, key) => {
+          return {
+            ...acc,
+            [key]: mergeHandlers(handlers[key], children.props[key]),
+          }
+        },
+        {}
+      )
+
       target = cloneElement(children, {
+        ...mergedHandlers,
+        ...restDomProps,
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
-        onBlur: mergeHandlers(onBlur, children.props.onBlur),
-        onClick: mergeHandlers(onClick, children.props.onClick),
-        onFocus: mergeHandlers(onFocus, children.props.onFocus),
-        onMouseOut: mergeHandlers(onMouseOut, children.props.onMouseOut),
-        onMouseOver: mergeHandlers(onMouseOver, children.props.onMouseOver),
-        ref,
-        ...restDomProps,
         className:
           `${children.props.className || ''} ${className}`.trim() || undefined,
+        ref,
       })
     } else if (isRenderProp(children)) {
       target = children(domProps)
