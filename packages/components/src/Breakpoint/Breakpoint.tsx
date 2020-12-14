@@ -25,25 +25,14 @@
  */
 
 import React, { useContext, FC, ReactNode, useState } from 'react'
-import { convertRemToPx } from '@looker/design-tokens'
+import {
+  convertRemToPx,
+  NamedBreakpoints,
+  NAMED_BREAKPOINTS,
+} from '@looker/design-tokens'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
-type NamedBreakpoints =
-  | undefined
-  | 'mobile'
-  | 'tablet'
-  | 'laptop'
-  | 'desktop'
-  | 'xl'
-
-export const NAMED_BREAKPOINTS: NamedBreakpoints[] = [
-  'mobile',
-  'tablet',
-  'laptop',
-  'desktop',
-  'xl',
-]
 export interface BreakpointProps {
   children: ReactNode
   show: [NamedBreakpoints] | [NamedBreakpoints, NamedBreakpoints]

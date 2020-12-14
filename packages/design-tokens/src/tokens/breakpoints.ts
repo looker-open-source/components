@@ -32,4 +32,26 @@
  * 1201px and more — Extra large screens, TV. (90rem +)
  **/
 
+type MOBILE = 'mobile'
+type TABLET = 'tablet'
+type LAPTOP = 'laptop'
+type DESKTOP = 'desktop'
+type XL = 'xl'
+
+export type NamedBreakpoints =
+  | undefined
+  | MOBILE
+  | TABLET
+  | LAPTOP
+  | DESKTOP
+  | XL
+
 export const breakpoints = ['30rem', '48rem', '64rem', '75rem', '90rem']
+
+export const NAMED_BREAKPOINTS: [MOBILE, TABLET, LAPTOP, DESKTOP, XL] = [
+  'mobile',
+  'tablet',
+  'laptop',
+  'desktop',
+  'xl',
+]

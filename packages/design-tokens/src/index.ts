@@ -41,4 +41,5 @@ export { palette } from './legacy'
 
 // Useful external utilities
 export { transitions } from './tokens/transitions'
+export * from './tokens/breakpoints'
 export * from './utils'
