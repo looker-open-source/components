@@ -38,7 +38,6 @@ import {
   AccordionDisclosure,
   Space,
   Truncate,
-  Text,
   Badge,
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
@@ -119,7 +118,7 @@ const PickerItem = ({
 
 const fields = (
   <TreeArtificial>
-    <TreeGroup label="DIMENSIONS">
+    <TreeGroup label="DIMENSIONS" labelColor="text1">
       <Tree branchFontWeight label="Created">
         <PickerItem>Created Date</PickerItem>
         <PickerItem>Created Month</PickerItem>
