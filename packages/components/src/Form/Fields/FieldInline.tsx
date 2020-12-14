@@ -92,7 +92,6 @@ const InputArea = styled.div`
   grid-column: 1;
   grid-row: 1;
   padding-right: ${({ theme: { space } }) => space.xsmall};
-  padding-top: ${({ theme: { space } }) => space.xxxsmall};
   /* stylelint-disable */
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
@@ -113,6 +112,7 @@ const MessageArea = styled.div`
 `
 
 export const FieldInline = styled(FieldInlineLayout)`
+  align-items: center;
   display: grid;
   grid-template-columns: auto auto auto auto;
   justify-content: start;
