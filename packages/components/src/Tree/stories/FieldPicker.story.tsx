@@ -146,11 +146,9 @@ const ViewAccordion: FC<{
     indicatorSize="xxsmall"
     indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
   >
-    <AccordionDisclosure px="4px" py="0" height="24px" color="text4">
+    <AccordionDisclosure px="xxsmall" py="none" fontSize="xsmall">
       <Space between>
-        <Text fontSize="xsmall">
-          <Truncate>{label}</Truncate>
-        </Text>
+        <Truncate>{label}</Truncate>
         <Badge intent="inform">1</Badge>
       </Space>
     </AccordionDisclosure>
