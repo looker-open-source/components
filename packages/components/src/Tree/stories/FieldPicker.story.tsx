@@ -41,7 +41,7 @@ import {
   Text,
   Badge,
 } from '../..'
-import { Tree, TreeIndentManager, TreeItem, TreeGroup } from '..'
+import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
 
 const PickerItem = ({
   children = 'Cost',
@@ -118,7 +118,7 @@ const PickerItem = ({
 }
 
 const fields = (
-  <TreeIndentManager treeDepth={0} treeItemDepth={1}>
+  <TreeArtificial>
     <TreeGroup label="DIMENSIONS">
       <Tree branchFontWeight label="Created">
         <PickerItem>Created Date</PickerItem>
@@ -133,7 +133,7 @@ const fields = (
       <PickerItem>Sum</PickerItem>
       <PickerItem>Max</PickerItem>
     </TreeGroup>
-  </TreeIndentManager>
+  </TreeArtificial>
 )
 
 const ViewAccordion: FC<{

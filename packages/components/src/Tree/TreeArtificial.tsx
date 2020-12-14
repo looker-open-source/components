@@ -24,33 +24,16 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { TreeContext } from './TreeContext'
 import { TreeStyle } from './TreeStyle'
 
-interface TreeIndentManagerProps {
-  treeDepth: number
-  treeItemDepth: number
-}
 /**
- *  Wrapper for Tree and TreeItem elements that doesn't render an actual Tree
+ *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
+ *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
  * */
-export const TreeIndentManager: FC<TreeIndentManagerProps> = ({
-  children,
-  treeDepth,
-  treeItemDepth,
-}) => {
-  /**
-   * Because TreeStyle adds 2 to its depth prop value to calculate child TreeItem
-   * indent, we need to subtract 2 to get the proper child TreeItem depth.
-   * */
-  const calculatedTreeItemDepth = treeItemDepth - 2
-
-  return (
-    <TreeStyle depth={calculatedTreeItemDepth}>
-      <TreeContext.Provider value={{ depth: treeDepth }}>
-        {children}
-      </TreeContext.Provider>
-    </TreeStyle>
-  )
-}
+export const TreeArtificial: FC<{ children: ReactNode }> = ({ children }) => (
+  <TreeStyle depth={-1}>
+    <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
+  </TreeStyle>
+)

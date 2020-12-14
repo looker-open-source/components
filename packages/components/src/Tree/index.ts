@@ -25,6 +25,6 @@
  */
 
 export * from './Tree'
-export * from './TreeIndentManager'
+export * from './TreeArtificial'
 export * from './TreeItem'
 export * from './TreeGroup'
