@@ -68,20 +68,26 @@ const DataTableHeaderCellLayout = forwardRef(
     ) : (
       title
     )
-
     return (
       <th
         className={className}
         onClick={handleClick}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
+        aria-sort={
+          sortDirection === 'asc'
+            ? 'ascending'
+            : sortDirection === 'desc'
+            ? 'descending'
+            : 'none'
+        }
       >
         <Space gap="xxsmall" reverse={type === 'number'}>
           {label}
           {sortDirection && (
             <Icon
-              size="small"
               name={sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+              size="small"
             ></Icon>
           )}
         </Space>

@@ -169,6 +169,9 @@ export const Table = styled(TableLayout)`
   line-height: 1;
   width: 100%;
 
+  caption {
+    display: none;
+  }
   td,
   th {
     height: ${densityTarget}; /* acts like min-height */

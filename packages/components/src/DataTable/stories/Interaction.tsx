@@ -48,6 +48,7 @@ import {
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
   bulk: boolean
+  caption: string
   columns: DataTableColumns
   filters: boolean
   select: boolean
@@ -57,6 +58,7 @@ interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
 
 const Template: Story<DemoProps> = ({
   bulk,
+  caption,
   columns,
   filters,
   select,

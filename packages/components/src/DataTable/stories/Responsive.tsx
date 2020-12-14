@@ -33,10 +33,15 @@ import { data } from '../../__mocks__/DataTable/data'
 import { items, itemsNoActions } from './items'
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
+  caption: string
   select: boolean
 }
 
-const Template: Story<DemoProps> = ({ select: selectActive, ...args }) => {
+const Template: Story<DemoProps> = ({
+  caption,
+  select: selectActive,
+  ...args
+}) => {
   const allPageItems = data.map(({ id }) => id)
 
   const { onSelect, onSelectAll, selections } = useSelectManager(allPageItems)
