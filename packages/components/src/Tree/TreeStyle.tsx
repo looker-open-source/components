@@ -37,7 +37,7 @@ import { generateIndent, generateTreeBorder } from './utils'
 interface TreeStyleProps {
   border?: boolean
   depth: number
-  hovered: boolean
+  hovered?: boolean
   branchFontWeight?: boolean
   dividers?: boolean
 }

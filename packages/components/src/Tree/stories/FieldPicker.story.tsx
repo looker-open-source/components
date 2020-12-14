@@ -121,7 +121,7 @@ const PickerItem = ({
 
 // Wrapper for Tree and TreeItem elements that doesn't render an actual Tree
 const FauxTree: FC<{ children: ReactNode }> = ({ children }) => (
-  <TreeStyle depth={-1} hovered={false}>
+  <TreeStyle depth={-1}>
     <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
   </TreeStyle>
 )
