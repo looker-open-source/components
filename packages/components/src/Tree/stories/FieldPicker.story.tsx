@@ -125,7 +125,7 @@ const fields = (
         <PickerItem>Created Month</PickerItem>
         <PickerItem>Created Year</PickerItem>
       </Tree>
-      <PickerItem>City</PickerItem>
+      <PickerItem selected>City</PickerItem>
       <PickerItem>Country</PickerItem>
       <PickerItem>ID</PickerItem>
     </TreeGroup>
