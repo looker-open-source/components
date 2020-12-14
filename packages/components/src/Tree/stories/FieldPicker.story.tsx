@@ -37,7 +37,11 @@ import {
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
 
-const PickerItem = ({ children = 'Cost', truncate = false }) => {
+const PickerItem = ({
+  children = 'Cost',
+  selected = false,
+  truncate = false,
+}) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -68,13 +72,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
                 icon="Pivot"
                 label="Pivot"
                 tooltipPlacement="top"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  alert('Pivot')
-                }}
-                onKeyDown={(event) => {
-                  event.stopPropagation()
-                }}
+                onClick={() => alert('Pivot')}
               />
               <IconButton
                 ref={ref}
@@ -99,10 +97,11 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
               </MenuDisclosure>
             </>
           }
+          detailAccessory={true}
           detailHoverDisclosure={!overlay}
-          onClick={() => alert('Clicked on cost!')}
-          onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
-          selected={!!overlay}
+          onClick={() => alert(`Clicked on ${children}!`)}
+          onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
+          selected={selected}
           truncate={truncate}
         >
           {children}
@@ -119,7 +118,7 @@ const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
   <Tree
     defaultOpen={defaultOpen}
     detail={<Badge intent="inform">1</Badge>}
-    detailAccessory
+    detailAccessory={false}
     indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
     indicatorPosition="right"
     label={children}
@@ -130,7 +129,7 @@ const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
         <PickerItem>Created Month</PickerItem>
         <PickerItem>Created Year</PickerItem>
       </Tree>
-      <PickerItem>City</PickerItem>
+      <PickerItem selected>City</PickerItem>
       <PickerItem>Country</PickerItem>
       <PickerItem>ID</PickerItem>
     </TreeGroup>

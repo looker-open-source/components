@@ -44,7 +44,7 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { Icon } from '../../../Icon'
+import omit from 'lodash/omit'
 import { ReplaceText, Span } from '../../../Text'
 import { useForkedRef } from '../../../utils'
 import { makeHash } from './utils/makeHash'
@@ -113,14 +113,18 @@ export interface ComboboxOptionProps
   children?: ReactNode
 }
 
-export const ComboboxOptionWrapper = forwardRef(
+interface ComboboxOptionWrapperProps extends ComboboxOptionProps {
+  isSelected?: boolean
+}
+
+const ComboboxOptionWrapperInternal = forwardRef(
   (
-    { children, label, value, ...rest }: ComboboxOptionProps,
+    { children, label, value, ...rest }: ComboboxOptionWrapperProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => (
     <OptionContext.Provider value={{ label, value }}>
       <li
-        {...omitStyledProps(rest)}
+        {...omit(omitStyledProps(rest), 'isSelected')}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
@@ -135,7 +139,17 @@ export const ComboboxOptionWrapper = forwardRef(
   )
 )
 
-ComboboxOptionWrapper.displayName = 'ComboboxOptionWrapper'
+ComboboxOptionWrapperInternal.displayName = 'ComboboxOptionWrapper'
+
+export const ComboboxOptionWrapper = styled(ComboboxOptionWrapperInternal)`
+  background-color: ${({ isSelected, theme }) =>
+    isSelected && theme.colors.keySubtle};
+
+  &[aria-selected='true'] {
+    background-color: ${({ isSelected, theme }) =>
+      isSelected ? theme.colors.keyAccent : theme.colors.ui1};
+  }
+`
 
 const ComboboxOptionInternal = forwardRef(
   (
@@ -180,14 +194,13 @@ const ComboboxOptionInternal = forwardRef(
         {...optionEvents}
         ref={ref}
         aria-selected={isActive}
+        isSelected={isSelected}
       >
         <ComboboxOptionIndicator
           indicator={indicator}
           isActive={isActive}
           isSelected={isSelected}
-        >
-          {isSelected && <Icon name="Check" size="xsmall" mr={0} />}
-        </ComboboxOptionIndicator>
+        />
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
@@ -207,10 +220,6 @@ export const comboboxOptionStyle = css`
   align-items: stretch;
   cursor: default;
   outline: none;
-
-  &[aria-selected='true'] {
-    background-color: ${(props) => props.theme.colors.keySubtle};
-  }
 `
 
 export const ComboboxOption = styled(ComboboxOptionInternal)`
