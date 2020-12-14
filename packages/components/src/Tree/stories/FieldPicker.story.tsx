@@ -41,9 +41,7 @@ import {
   Text,
   Badge,
 } from '../..'
-import { TreeItem, Tree, TreeGroup } from '..'
-import { TreeContext } from '../TreeContext'
-import { TreeStyle } from '../TreeStyle'
+import { Tree, TreeIndentManager, TreeItem, TreeGroup } from '..'
 
 const PickerItem = ({
   children = 'Cost',
@@ -119,15 +117,8 @@ const PickerItem = ({
   )
 }
 
-// Wrapper for Tree and TreeItem elements that doesn't render an actual Tree
-const FauxTree: FC<{ children: ReactNode }> = ({ children }) => (
-  <TreeStyle depth={-1}>
-    <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
-  </TreeStyle>
-)
-
 const fields = (
-  <FauxTree>
+  <TreeIndentManager treeDepth={0} treeItemDepth={1}>
     <TreeGroup label="DIMENSIONS">
       <Tree branchFontWeight label="Created">
         <PickerItem>Created Date</PickerItem>
@@ -142,7 +133,7 @@ const fields = (
       <PickerItem>Sum</PickerItem>
       <PickerItem>Max</PickerItem>
     </TreeGroup>
-  </FauxTree>
+  </TreeIndentManager>
 )
 
 const ViewAccordion: FC<{

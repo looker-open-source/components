@@ -24,8 +24,33 @@
 
  */
 
-export * from './Tree'
-export * from './TreeIndentManager'
-export * from './TreeItem'
-export * from './TreeGroup'
-export * from './TreeContext'
+import React, { FC } from 'react'
+import { TreeContext } from './TreeContext'
+import { TreeStyle } from './TreeStyle'
+
+interface TreeIndentManagerProps {
+  treeDepth: number
+  treeItemDepth: number
+}
+/**
+ *  Wrapper for Tree and TreeItem elements that doesn't render an actual Tree
+ * */
+export const TreeIndentManager: FC<TreeIndentManagerProps> = ({
+  children,
+  treeDepth,
+  treeItemDepth,
+}) => {
+  /**
+   * Because TreeStyle adds 2 to its depth prop value to calculate child TreeItem
+   * indent, we need to subtract 2 to get the proper child TreeItem depth.
+   * */
+  const calculatedTreeItemDepth = treeItemDepth - 2
+
+  return (
+    <TreeStyle depth={calculatedTreeItemDepth}>
+      <TreeContext.Provider value={{ depth: treeDepth }}>
+        {children}
+      </TreeContext.Provider>
+    </TreeStyle>
+  )
+}
