@@ -36,9 +36,9 @@ import {
   Accordion,
   AccordionContent,
   AccordionDisclosure,
-  FlexItem,
   Space,
   Truncate,
+  Text,
   Badge,
 } from '../..'
 import { TreeItem, Tree, TreeGroup } from '..'
@@ -157,7 +157,9 @@ const ViewAccordion: FC<{
   >
     <AccordionDisclosure px="4px" py="0" height="24px" color="text4">
       <Space between>
-        <Text fontSize="xsmall"><Truncate>{label}</Truncate></Text>
+        <Text fontSize="xsmall">
+          <Truncate>{label}</Truncate>
+        </Text>
         <Badge intent="inform">1</Badge>
       </Space>
     </AccordionDisclosure>
