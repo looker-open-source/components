@@ -25,6 +25,7 @@
  */
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
 
 export default {
@@ -41,11 +42,28 @@ RenderAll.args = {
 
 export const RenderOnMobile = Template.bind({})
 RenderOnMobile.args = {
-  children: 'Render on mobile',
-  from: 'mobile',
-  to: 'mobile',
+  children:
+    'Render on mobile. Shrink viewport to less than mobile breakpoint to view text.',
+  show: 'mobile',
 }
 
 RenderOnMobile.parameters = {
-  viewport: { defaultViewport: { height: 300, width: 300 } },
+  viewport: {
+    defaultViewport: 'mobile1',
+    viewports: MINIMAL_VIEWPORTS,
+  },
+}
+
+export const RenderOnTabletAndAbove = Template.bind({})
+RenderOnMobile.args = {
+  children:
+    'Renders on tablet and above. Enlarge viewport to wider than mobile breakpoint to view.',
+  show: ['tablet', undefined],
+}
+
+RenderOnTabletAndAbove.parameters = {
+  viewport: {
+    defaultViewport: 'tablet',
+    viewports: MINIMAL_VIEWPORTS,
+  },
 }

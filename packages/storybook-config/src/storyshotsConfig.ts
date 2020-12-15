@@ -37,13 +37,20 @@ export const storyshotsConfig = (pkg: string) => {
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
         const { viewport } = context.parameters
+        const pageViewport = page.viewport()
         if (viewport) {
           const defaultViewport = viewport.viewports[viewport.defaultViewport]
           await page.setViewport({
             height: parseInt(defaultViewport.styles.height, 10),
             width: parseInt(defaultViewport.styles.width, 10),
           })
-          await page.waitFor(500)
+          await page.waitForTimeout(500)
+        } else if (pageViewport.width !== 800 || pageViewport.height !== 600) {
+          await page.setViewport({
+            height: 600,
+            width: 800,
+          })
+          await page.waitForTimeout(500)
         }
 
         ;(context as any).clip = await page.evaluate(() => {
@@ -58,6 +65,7 @@ export const storyshotsConfig = (pkg: string) => {
           return { height, width, x, y }
         })
       },
+
       getMatchOptions({ context: { kind, story } }) {
         return {
           customSnapshotIdentifier: story,
