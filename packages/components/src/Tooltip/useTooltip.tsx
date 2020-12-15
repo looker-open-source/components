@@ -144,7 +144,7 @@ export function useTooltip({
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const handleOpen = () => {
-    if (element && !element.dataset.notooltip) {
+    if (!element || !element.dataset.notooltip) {
       setIsOpen(true)
     }
   }
