@@ -108,8 +108,10 @@ export interface MenuListProps
   windowing?: 'fixed' | 'variable' | 'none'
 }
 
+const getBaseHeight = (compact?: boolean) => (compact ? 32 : 40)
+
 const getMenuItemHeight = (child: ReactChild, compact?: boolean) => {
-  const baseHeight = compact ? 32 : 40
+  const baseHeight = getBaseHeight(compact)
   if (isValidElement(child) && child.props.description) {
     return baseHeight + 12
   }
@@ -117,7 +119,7 @@ const getMenuItemHeight = (child: ReactChild, compact?: boolean) => {
 }
 
 const getMenuGroupHeight = (child: ReactChild, compact?: boolean) => {
-  const baseHeight = compact ? 32 : 40
+  const baseHeight = getBaseHeight(compact)
   if (isValidElement(child) && child.props.children) {
     // Get height of group items combined
     const subListHeight =
