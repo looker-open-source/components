@@ -29,12 +29,12 @@ import { Theme } from '@looker/design-tokens'
 import { indicatorDefaults } from './indicatorDefaults'
 
 export const generateTreeBorder = (depth: number, theme: Theme) => {
-  const { space } = theme
+  const { sizes, space } = theme
   const { indicatorSize, indicatorGap } = indicatorDefaults
 
   const itemBorderSize = '1px'
   const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = space[indicatorSize]
+  const indicatorIconSize = sizes[indicatorSize]
   const indicatorGapSize = space[indicatorGap]
   const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
   const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`

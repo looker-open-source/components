@@ -24,7 +24,16 @@
 
  */
 
-export * from './Tree'
-export * from './TreeArtificial'
-export * from './TreeItem'
-export * from './TreeGroup'
+import React, { FC, ReactNode } from 'react'
+import { TreeContext } from './TreeContext'
+import { TreeStyle } from './TreeStyle'
+
+/**
+ *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
+ *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
+ * */
+export const TreeArtificial: FC<{ children: ReactNode }> = ({ children }) => (
+  <TreeStyle depth={-1}>
+    <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
+  </TreeStyle>
+)
