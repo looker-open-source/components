@@ -26,6 +26,7 @@
 
 import zip from 'lodash/zip'
 import startCase from 'lodash/startCase'
+import { convertRemToPx } from '../utils/convertRemToPx'
 
 /**
  * 320px — 480px: Mobile devices. (20rem - 30rem)
@@ -75,12 +76,12 @@ export const VIEWPORT_MAP: ViewportMap = zip(
   NAMED_BREAKPOINTS,
   breakpoints
 ).reduce((map, [name, size]: [NamedBreakpoints, string | undefined]) => {
-  const sizeNum = parseInt(size || '', 10)
-  const width = `${sizeNum}rem`
+  const sizePx = convertRemToPx(parseInt(size || '', 10))
+  const width = `${sizePx}px`
   const height =
-    sizeNum < parseInt(breakpoints[2])
-      ? `${sizeNum * 2}rem`
-      : `${sizeNum * 0.55}rem`
+    sizePx < convertRemToPx(parseInt(breakpoints[2]))
+      ? `${sizePx * 2}px`
+      : `${sizePx * 0.55}px`
   return {
     ...map,
     [name as string]: {
