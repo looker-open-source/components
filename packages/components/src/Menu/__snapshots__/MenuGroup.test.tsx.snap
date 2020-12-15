@@ -77,7 +77,6 @@ exports[`MenuGroup - JSX label 1`] = `
   min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
-  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -89,6 +88,7 @@ exports[`MenuGroup - JSX label 1`] = `
 .c6 button:focus,
 .c6 a:focus {
   color: inherit;
+  position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -276,7 +276,6 @@ exports[`MenuGroup - label 1`] = `
   min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
-  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -288,6 +287,7 @@ exports[`MenuGroup - label 1`] = `
 .c5 button:focus,
 .c5 a:focus {
   color: inherit;
+  position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -449,7 +449,6 @@ exports[`MenuGroup 1`] = `
   min-height: 40px;
   outline: none;
   padding: 0.5rem 1rem;
-  position: relative;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -461,6 +460,7 @@ exports[`MenuGroup 1`] = `
 .c2 button:focus,
 .c2 a:focus {
   color: inherit;
+  position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
 }

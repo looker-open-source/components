@@ -448,6 +448,22 @@ export const LongMenus = () => {
         </Menu>
         <Menu>
           <MenuDisclosure>
+            <Button>No windowing (groups)</Button>
+          </MenuDisclosure>
+          <MenuList width={100}>
+            {groups.slice(0, 5).map(({ label, items }, index) => (
+              <MenuGroup key={`${label}-${index}`} label={label}>
+                {items.map((item, index2) => (
+                  <MenuItem key={`${item.label}-${index2}`}>
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </MenuGroup>
+            ))}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuDisclosure>
             <Button>Fixed Windowing (3k)</Button>
           </MenuDisclosure>
           <MenuList width={100} windowing={!value ? 'none' : undefined}>
@@ -472,7 +488,7 @@ export const LongMenus = () => {
           <MenuDisclosure>
             <Button>Variable Windowing (groups)</Button>
           </MenuDisclosure>
-          <MenuList width={300} windowing={!value ? 'none' : undefined}>
+          <MenuList width={300} windowing={!value ? 'none' : 'variable'}>
             {groups.map(({ label, items }, index) => (
               <MenuGroup key={`${label}-${index}`} label={label}>
                 {items.map((item, index2) => (
