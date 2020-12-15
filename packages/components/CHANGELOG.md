@@ -15,7 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Tooltip` can now be nested directly inside a `Popover`
 - `AccordionDisclosure` now supports `SimpleLayoutProps`
-- `Tree` uses text5 as text color
+- `Tree`
+  - Uses text5 as text color
+  - Accepts ReactNode for `label` prop
+- `TreeItem` accepts ReactNode for `children` prop
 
 ### Fixed
 
