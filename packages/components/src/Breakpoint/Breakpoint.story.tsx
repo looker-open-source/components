@@ -32,8 +32,8 @@ import {
   backgroundColor,
   TextColorProps,
   textColor,
+  VIEWPORT_MAP,
 } from '@looker/design-tokens'
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 import styled from 'styled-components'
 import { Card, CardContent, CardMedia } from '../Card'
 import { Heading, Paragraph, Span } from '../Text'
@@ -174,8 +174,8 @@ export const MobileUI = Template.bind({})
 
 MobileUI.parameters = {
   viewport: {
-    defaultViewport: 'mobile1',
-    viewports: MINIMAL_VIEWPORTS,
+    defaultViewport: 'mobile',
+    viewports: VIEWPORT_MAP,
   },
 }
 
@@ -184,7 +184,7 @@ export const TabletUI = Template.bind({})
 TabletUI.parameters = {
   viewport: {
     defaultViewport: 'tablet',
-    viewports: MINIMAL_VIEWPORTS,
+    viewports: VIEWPORT_MAP,
   },
 }
 
@@ -193,6 +193,6 @@ export const DesktopUI = Template.bind({})
 DesktopUI.parameters = {
   viewport: {
     defaultViewport: 'desktop',
-    viewports: MINIMAL_VIEWPORTS,
+    viewports: VIEWPORT_MAP,
   },
 }

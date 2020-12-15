@@ -24,6 +24,9 @@
 
  */
 
+import zip from 'lodash/zip'
+import startCase from 'lodash/startCase'
+
 /**
  * 320px — 480px: Mobile devices. (20rem - 30rem)
  * 481px — 768px: iPads, Tablets. (30rem - 48rem)
@@ -55,3 +58,35 @@ export const NAMED_BREAKPOINTS: [MOBILE, TABLET, LAPTOP, DESKTOP, XL] = [
   'desktop',
   'xl',
 ]
+
+/*
+ * ViewportMap is used to integrate our custom breakpoints into storybook
+ */
+export interface Viewport {
+  name: string
+  styles: { height: string; width: string }
+  type: 'desktop' | 'mobile' | 'tablet' | 'other'
+}
+export interface ViewportMap {
+  [key: string]: Viewport
+}
+
+export const VIEWPORT_MAP: ViewportMap = zip(
+  NAMED_BREAKPOINTS,
+  breakpoints
+).reduce((map, [name, size]: [NamedBreakpoints, string | undefined]) => {
+  const sizeNum = parseInt(size || '', 10)
+  const width = `${sizeNum}rem`
+  const height =
+    sizeNum < parseInt(breakpoints[2])
+      ? `${sizeNum * 2}rem`
+      : `${sizeNum * 0.55}rem`
+  return {
+    ...map,
+    [name as string]: {
+      name: startCase(name),
+      styles: { height, width },
+      type: name,
+    },
+  }
+}, {})
