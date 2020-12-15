@@ -25,7 +25,22 @@
  */
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import {
+  SpaceProps,
+  space,
+  BackgroundColorProps,
+  backgroundColor,
+  TextColorProps,
+  textColor,
+} from '@looker/design-tokens'
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
+import styled from 'styled-components'
+import { Card, CardContent, CardMedia } from '../Card'
+import { Heading, Paragraph, Span } from '../Text'
+import { Grid, Box } from '../Layout'
+import { Icon } from '../Icon'
+import { IconButton } from '../Button'
+import { InputSearch } from '../Form'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
 
 export default {
@@ -33,37 +48,151 @@ export default {
   title: 'Breakpoint',
 }
 
-const Template: Story<BreakpointProps> = (args) => <Breakpoint {...args} />
+interface NavHeaderProps
+  extends SpaceProps,
+    BackgroundColorProps,
+    TextColorProps {}
 
-export const RenderAll = Template.bind({})
-RenderAll.args = {
-  children: 'Render me everywhere',
+const NavHeader = styled.div<NavHeaderProps>`
+  ${space}
+  ${backgroundColor}
+  ${textColor}
+`
+
+const MobileHeaderGrid = styled.div`
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+`
+
+const LargeHeaderGrid = styled.div`
+  align-items: center;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: auto auto 1fr;
+`
+
+const CustomIcon = styled(Icon)`
+  height: 20px;
+  width: 70px;
+`
+
+const Link = styled.a<TextColorProps>`
+  ${textColor}
+`
+
+const NatureCard = () => (
+  <Card raised>
+    <CardMedia
+      image="https://placeimg.com/630/480/nature"
+      title="A Scenic Valley"
+    />
+    <CardContent>
+      <Span
+        fontSize="xsmall"
+        textTransform="uppercase"
+        fontWeight="semiBold"
+        color="subdued"
+      >
+        Explore
+      </Span>
+      <Heading as="h4" fontSize="medium" fontWeight="semiBold" truncate>
+        Best Scenic Hikes
+      </Heading>
+      <Paragraph fontSize="small">
+        Looking for a new place to trailblaze? Make sure it has a great view!
+      </Paragraph>
+    </CardContent>
+  </Card>
+)
+
+const Template: Story<BreakpointProps> = () => {
+  return (
+    <>
+      <Breakpoint show="mobile">
+        <NavHeader backgroundColor="ui1" p="small">
+          <MobileHeaderGrid>
+            <CustomIcon name="LookerLogo" color="key" />
+            <IconButton icon="Hamburger" label="navigation" />
+          </MobileHeaderGrid>
+        </NavHeader>
+        <Box p="small">
+          <NatureCard />
+          <NatureCard />
+          <NatureCard />
+          <NatureCard />
+        </Box>
+      </Breakpoint>
+
+      <Breakpoint show={['tablet', undefined]}>
+        <NavHeader backgroundColor="ui5" p="medium">
+          <LargeHeaderGrid>
+            <CustomIcon name="LookerLogo" color="text1" />
+            <nav>
+              <Grid columns={4}>
+                <Link href="#" color="text1">
+                  Product
+                </Link>
+                <Link href="#" color="text1">
+                  Platform
+                </Link>
+                <Link href="#" color="text1">
+                  Solutions
+                </Link>
+                <Link href="#" color="text1">
+                  Learn
+                </Link>
+              </Grid>
+            </nav>
+            <InputSearch placeholder="Search" />
+          </LargeHeaderGrid>
+        </NavHeader>
+        <Box p="medium">
+          <Breakpoint show={['tablet', 'laptop']}>
+            <Grid columns={2}>
+              <NatureCard />
+              <NatureCard />
+              <NatureCard />
+              <NatureCard />
+            </Grid>
+          </Breakpoint>
+          <Breakpoint show={['desktop', undefined]}>
+            <Grid columns={4}>
+              <NatureCard />
+              <NatureCard />
+              <NatureCard />
+              <NatureCard />
+            </Grid>
+          </Breakpoint>
+        </Box>
+      </Breakpoint>
+    </>
+  )
 }
 
-export const RenderOnMobile = Template.bind({})
-RenderOnMobile.args = {
-  children:
-    'Render on mobile. Shrink viewport to less than mobile breakpoint to view text.',
-  show: 'mobile',
-}
+export const MobileUI = Template.bind({})
 
-RenderOnMobile.parameters = {
+MobileUI.parameters = {
   viewport: {
     defaultViewport: 'mobile1',
     viewports: MINIMAL_VIEWPORTS,
   },
 }
 
-export const RenderOnTabletAndAbove = Template.bind({})
-RenderOnTabletAndAbove.args = {
-  children:
-    'Renders on tablet and above. Enlarge viewport to wider than mobile breakpoint to view.',
-  show: ['tablet', undefined],
-}
+export const TabletUI = Template.bind({})
 
-RenderOnTabletAndAbove.parameters = {
+TabletUI.parameters = {
   viewport: {
     defaultViewport: 'tablet',
+    viewports: MINIMAL_VIEWPORTS,
+  },
+}
+
+export const DesktopUI = Template.bind({})
+
+DesktopUI.parameters = {
+  viewport: {
+    defaultViewport: 'desktop',
     viewports: MINIMAL_VIEWPORTS,
   },
 }
