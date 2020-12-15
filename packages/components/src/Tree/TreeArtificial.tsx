@@ -24,21 +24,16 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
+import React, { FC, ReactNode } from 'react'
+import { TreeContext } from './TreeContext'
+import { TreeStyle } from './TreeStyle'
 
-export interface TabPanelProps {
-  className?: string
-  selected?: boolean
-}
-
-const TabPanelLayout: FC<TabPanelProps> = ({ children, className, selected }) =>
-  selected ? (
-    <div className={className} tabIndex={0}>
-      {children}
-    </div>
-  ) : null
-
-export const TabPanel = styled(TabPanelLayout)`
-  outline: none;
-`
+/**
+ *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
+ *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
+ * */
+export const TreeArtificial: FC<{ children: ReactNode }> = ({ children }) => (
+  <TreeStyle depth={-1}>
+    <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
+  </TreeStyle>
+)

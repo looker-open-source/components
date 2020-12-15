@@ -25,7 +25,6 @@
  */
 
 import styled, { css } from 'styled-components'
-import { uiTransparencyBlend } from '@looker/design-tokens'
 import {
   Accordion,
   AccordionContent,
@@ -38,7 +37,7 @@ import { generateIndent, generateTreeBorder } from './utils'
 interface TreeStyleProps {
   border?: boolean
   depth: number
-  hovered: boolean
+  hovered?: boolean
   branchFontWeight?: boolean
   dividers?: boolean
 }
@@ -52,7 +51,7 @@ const dividersCSS = css`
 export const TreeItemInner = styled(TreeItem)``
 
 export const TreeStyle = styled.div<TreeStyleProps>`
-  color: ${({ theme }) => theme.colors.text4};
+  color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
   min-width: 0;
 
@@ -64,7 +63,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
-      background-color: ${({ hovered }) => hovered && uiTransparencyBlend(2)};
+      background-color: ${({ hovered, theme: { colors } }) =>
+        hovered && colors.ui1};
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
         branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
       padding-right: ${({ theme }) => theme.space.xxsmall};

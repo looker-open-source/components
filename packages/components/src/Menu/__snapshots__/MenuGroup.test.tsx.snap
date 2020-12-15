@@ -98,13 +98,12 @@ exports[`MenuGroup - JSX label 1`] = `
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6:hover,
-.c6[aria-current='true'] {
+.c6:hover {
   background: #F5F6F7;
-  color: #262D33;
 }
 
 .c6[aria-current='true'] {
+  background: #DEE1E5;
   font-weight: 600;
 }
 
@@ -298,13 +297,12 @@ exports[`MenuGroup - label 1`] = `
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5:hover,
-.c5[aria-current='true'] {
+.c5:hover {
   background: #F5F6F7;
-  color: #262D33;
 }
 
 .c5[aria-current='true'] {
+  background: #DEE1E5;
   font-weight: 600;
 }
 
@@ -472,13 +470,12 @@ exports[`MenuGroup 1`] = `
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c2:hover,
-.c2[aria-current='true'] {
+.c2:hover {
   background: #F5F6F7;
-  color: #262D33;
 }
 
 .c2[aria-current='true'] {
+  background: #DEE1E5;
   font-weight: 600;
 }
 

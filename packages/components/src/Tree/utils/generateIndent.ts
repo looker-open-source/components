@@ -29,11 +29,11 @@ import { Theme } from '@looker/design-tokens'
 import { indicatorDefaults } from './indicatorDefaults'
 
 export const generateIndent = (depth: number, theme: Theme) => {
-  const { space } = theme
+  const { sizes, space } = theme
   const { indicatorSize, indicatorGap } = indicatorDefaults
 
   const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = space[indicatorSize]
+  const indicatorIconSize = sizes[indicatorSize]
   const indicatorGapSize = space[indicatorGap]
   const indentCalculation = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
 

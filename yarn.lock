@@ -5175,10 +5175,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-copy-to-clipboard@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-4.3.0.tgz#8e07becb4f11cfced4bd36038cb5bdf5c2658be5"
-  integrity sha512-iideNPRyroENqsOFh1i2Dv3zkviYS9r/9qD9Uh3Z9NNoAAqqa2x53i7iGndGNnJFIo20wIu7Hgh77tx1io8bgw==
+"@types/react-copy-to-clipboard@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.0.tgz#38b035ca0c28334d3e0efaf3f319b81eea9690cd"
+  integrity sha512-faUg6Kx3Dfv0MBIcs+xzIptlRtjEVSaNjqyC14YAp4UwSiTHghnKtBOt9ERRTZZJfoJgnw10tomVaqG86GzdAw==
   dependencies:
     "@types/react" "*"
 
@@ -5224,15 +5224,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "16.9.53"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.53.tgz#40cd4f8b8d6b9528aedd1fff8fcffe7a112a3d23"
-  integrity sha512-4nW60Sd4L7+WMXH1D6jCdVftuW7j4Za6zdp6tJ33Rqv0nk1ZAmQKML9ZLD4H0dehA3FZxXR/GM8gXplf82oNGw==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/react@^16.9.56":
+"@types/react@*", "@types/react@^16.9.56":
   version "16.9.56"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.56.tgz#ea25847b53c5bec064933095fc366b1462e2adf0"
   integrity sha512-gIkl4J44G/qxbuC6r2Xh+D3CGZpJ+NdWTItAPmZbR5mUS+JQ8Zvzpl0ea5qT/ZT3ZNTUcDKUVqV3xBE8wv/DyQ==

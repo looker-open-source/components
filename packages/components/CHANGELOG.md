@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `CopyToClipboard` component
+- `TreeArtificial`
+
+### Changed
+
+- `Tooltip` can now be nested directly inside a `Popover`
+- `AccordionDisclosure` now supports `SimpleLayoutProps`
+- `Tree`
+  - Uses text5 as text color
+  - Accepts ReactNode for `label` prop
+- `TreeItem` accepts ReactNode for `children` prop
+
+### Fixed
+
+- `FieldInline` positioning correction correction. Affects:
+  - `FieldCheckbox`
+  - `FieldCheckboxGroup`
+  - `FieldRadio`
+  - `FieldRadioGroup`
+  - `FieldToggleSwitch`
+- `TabPanel` is tabbable
+- `Tree` allocates enough space for indicator icon
 
 ## [0.9.26]
 
@@ -34,7 +55,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TreeItem`
   - Restricts `children` to type string
   - Nested `TreeItem`s align with sibling `Tree` labels (as opposed to `Tree` indicators)
+  - Sets background color to ui1 on hover, ui2 when selected or selected + hover
 - Changed usage of icon `ArrowDown` to use new name `ArrowDropDown`
+- `Combobox`, `ComboboxMulti`, `Select`, `SelectMulti` background color updates
+  - ui1 on hover
+  - keySubtle on selected
+  - keySubtle on selected + hover
 
 ### Fixed
 

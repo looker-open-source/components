@@ -41,7 +41,6 @@ import {
   CompatibleHTMLProps,
   SpacingSizes,
   TextColorProps,
-  uiTransparencyBlend,
 } from '@looker/design-tokens'
 import Omit from 'lodash/omit'
 import noop from 'lodash/noop'
@@ -59,7 +58,7 @@ import { TreeContext } from './TreeContext'
 export interface TreeItemProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
-  children: string
+  children: ReactNode
   className?: string
   /**
    * Supplementary element that appears right of the TreeItem's label
@@ -257,8 +256,8 @@ interface TreeItemLabelProps {
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
-  background-color: ${({ hovered, selected }) =>
-    hovered ? uiTransparencyBlend(2) : selected && uiTransparencyBlend(1)};
+  background-color: ${({ hovered, selected, theme: { colors } }) =>
+    selected ? colors.ui2 : hovered && colors.ui1};
   flex: 1;
   flex-shrink: 2;
   height: 100%;
