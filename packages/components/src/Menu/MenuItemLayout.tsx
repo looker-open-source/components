@@ -85,7 +85,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
         space: { xxsmall, xsmall, medium },
       },
     }) => (compact ? `${xxsmall} ${medium}` : `${xsmall} ${medium}`)};
-    position: relative;
     text-align: left;
     text-decoration: none;
     width: 100%;
@@ -93,6 +92,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     &:hover,
     &:focus {
       color: inherit;
+      position: relative;
       text-decoration: none;
     }
   }
