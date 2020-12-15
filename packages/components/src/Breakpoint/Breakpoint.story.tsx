@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React, { FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import {
   SpaceProps,
@@ -81,10 +81,13 @@ const Link = styled.a<TextColorProps>`
   ${textColor}
 `
 
-const NatureCard = () => (
+const NatureCard: FC<{ backgroundColor?: string }> = ({
+  backgroundColor = 'ui1',
+}) => (
   <Card raised>
     <CardMedia
-      image="https://placeimg.com/630/480/nature"
+      backgroundColor={backgroundColor}
+      image="#"
       title="A Scenic Valley"
     />
     <CardContent>
@@ -116,16 +119,16 @@ const Template: Story<BreakpointProps> = () => {
             <IconButton icon="Hamburger" label="navigation" />
           </MobileHeaderGrid>
         </NavHeader>
-        <Box p="small">
-          <NatureCard />
-          <NatureCard />
-          <NatureCard />
-          <NatureCard />
-        </Box>
+        <Grid p="small" columns={1}>
+          <NatureCard backgroundColor="criticalFocus" />
+          <NatureCard backgroundColor="keyFocus" />
+          <NatureCard backgroundColor="secondary" />
+          <NatureCard backgroundColor="inform" />
+        </Grid>
       </Breakpoint>
 
       <Breakpoint show={['tablet', undefined]}>
-        <NavHeader backgroundColor="ui5" p="medium">
+        <NavHeader backgroundColor="inverse" p="medium">
           <LargeHeaderGrid>
             <CustomIcon name="LookerLogo" color="text1" />
             <nav>
@@ -150,18 +153,21 @@ const Template: Story<BreakpointProps> = () => {
         <Box p="medium">
           <Breakpoint show={['tablet', 'laptop']}>
             <Grid columns={2}>
-              <NatureCard />
-              <NatureCard />
-              <NatureCard />
-              <NatureCard />
+              <NatureCard backgroundColor="criticalFocus" />
+              <NatureCard backgroundColor="keyFocus" />
+              <NatureCard backgroundColor="secondary" />
+              <NatureCard backgroundColor="inform" />
             </Grid>
           </Breakpoint>
           <Breakpoint show={['desktop', undefined]}>
-            <Grid columns={4}>
-              <NatureCard />
-              <NatureCard />
-              <NatureCard />
-              <NatureCard />
+            <Grid columns={2}>
+              <NatureCard backgroundColor="criticalFocus" />
+              <Grid columns={2}>
+                <NatureCard backgroundColor="keyFocus" />
+                <NatureCard backgroundColor="secondary" />
+                <NatureCard backgroundColor="inform" />
+                <NatureCard backgroundColor="warn" />
+              </Grid>
             </Grid>
           </Breakpoint>
         </Box>
