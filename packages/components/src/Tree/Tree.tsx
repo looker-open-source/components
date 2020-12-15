@@ -70,7 +70,7 @@ export interface TreeProps
    * Text label of the Tree
    * Note: This is a required prop
    */
-  label: string
+  label: ReactNode
   /**
    * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
    * @default false
