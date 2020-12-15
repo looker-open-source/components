@@ -44,13 +44,15 @@ import {
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
     Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
-    CompatibleHTMLProps<HTMLElement> {
+    CompatibleHTMLProps<HTMLElement>,
+    SimpleLayoutProps {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
@@ -149,6 +151,7 @@ AccordionDisclosureStyle.defaultProps = {
 
 export const AccordionDisclosure = styled(AccordionDisclosureInternal)`
   ${typography}
+  ${simpleLayoutCSS}
 `
 
 AccordionDisclosure.defaultProps = {
