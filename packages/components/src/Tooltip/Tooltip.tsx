@@ -28,6 +28,7 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
+  ReactElement,
   ReactNode,
   Ref,
   SyntheticEvent,
@@ -47,10 +48,12 @@ export interface TooltipProps
     Partial<UsePopoverResponseDom> {
   content: ReactNode
   /**
-   * Component to wrap. The HOC will listen for mouse events on this component, maintain the
-   * state of isOpen accordingly, and pass that state into the children or "trigger" element
+   * Component to receive tooltip behavior or render prop function that
+   * receives tooltip props and returns a component
    */
-  children: ReactNode | TooltipRenderProp
+  children:
+    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
+    | TooltipRenderProp
 }
 
 const mergeHandlers = <E extends SyntheticEvent>(
@@ -100,7 +103,7 @@ export const Tooltip = forwardRef(
     } = domProps
     const ref = useForkedRef(tooltipRef, forwardedRef)
 
-    let target = children
+    let target: ReactNode = children
 
     if (isValidElement(children)) {
       const handlers = {
