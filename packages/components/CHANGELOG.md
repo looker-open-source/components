@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.9.27]
 
 ### Added
 
@@ -14,22 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `Tooltip` can now be nested directly inside a `Popover`
 - `AccordionDisclosure` now supports `SimpleLayoutProps`
-- `Tree`
-  - Uses text5 as text color
-  - Accepts ReactNode for `label` prop
-- `TreeItem` accepts ReactNode for `children` prop
 - `Combobox`, `ComboboxMulti`, `Select`, `SelectMulti` background color updates
   - ui1 on hover
   - keySubtle on selected
   - keySubtle on selected + hover
+- `Tooltip` can now be nested directly inside a `Popover`
+- `Tree`
+  - Uses text5 as text color
+  - Accepts ReactNode for `label` prop
+- `TreeItem`
+  - accepts ReactNode for `children` prop
+  - background color to ui1 on hover, ui2+itemSelectedColor when selected or selected + hover
 
 ### Fixed
 
-- `MenuList` unnecessary windowing
-- `MenuGroup` sticky group label stacking on top of items
-- `Tooltip` shows on an input with `autoFocus` on first mount
 - `FieldInline` positioning correction correction. Affects:
   - `FieldCheckbox`
   - `FieldCheckboxGroup`
@@ -38,8 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `FieldToggleSwitch`
 - `TabPanel` is tabbable
 - `Tree` allocates enough space for indicator icon
-- `TreeItem`
-- Sets background color to ui1 on hover, ui2 when selected or selected + hover
 
 ## [0.9.26]
 
