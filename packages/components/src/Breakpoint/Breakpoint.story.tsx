@@ -55,7 +55,7 @@ RenderOnMobile.parameters = {
 }
 
 export const RenderOnTabletAndAbove = Template.bind({})
-RenderOnMobile.args = {
+RenderOnTabletAndAbove.args = {
   children:
     'Renders on tablet and above. Enlarge viewport to wider than mobile breakpoint to view.',
   show: ['tablet', undefined],
