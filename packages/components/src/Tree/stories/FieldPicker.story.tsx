@@ -44,6 +44,7 @@ import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
 
 const PickerItem = ({
   children = 'Cost',
+  disabled = false,
   selected = false,
   truncate = false,
 }) => {
@@ -104,6 +105,7 @@ const PickerItem = ({
           }
           detailAccessory={true}
           detailHoverDisclosure={!overlay}
+          disabled={disabled}
           onClick={() => alert(`Clicked on ${children}!`)}
           onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
           selected={selected}
@@ -125,7 +127,7 @@ const fields = (
         <PickerItem>Created Year</PickerItem>
       </Tree>
       <PickerItem selected>City</PickerItem>
-      <PickerItem>Country</PickerItem>
+      <PickerItem disabled>Country</PickerItem>
       <PickerItem>ID</PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
