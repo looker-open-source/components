@@ -647,18 +647,58 @@ describe('DataTable', () => {
   })
 
   describe('Accessibility', () => {
-    const dataTableWithActions = (
-      <DataTable
-        caption="this is a table's caption"
-        columns={columns}
-        select={defaultSelectConfig}
-      >
-        {items}
-      </DataTable>
-    )
+    const columns: DataTableColumns = [
+      {
+        canSort: true,
+        id: 'id',
+        title: 'ID',
+        type: 'number',
+      },
+      {
+        canSort: true,
+        id: 'name',
+        sortDirection: 'asc',
+        title: 'Name',
+        type: 'string',
+      },
+      {
+        canSort: true,
+        id: 'role',
+        sortDirection: 'desc',
+        title: 'Role',
+        type: 'string',
+      },
+    ]
     test('Table has caption', () => {
-      const { getByText } = renderWithTheme(dataTableWithActions)
+      const { getByText } = renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          select={defaultSelectConfig}
+        >
+          {items}
+        </DataTable>
+      )
       expect(getByText("this is a table's caption")).toBeInTheDocument()
+    })
+
+    test('Table has aria-sort', () => {
+      const { getByText } = renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          select={defaultSelectConfig}
+        >
+          {items}
+        </DataTable>
+      )
+      const idTH = getByText('ID').closest('th')
+      const nameTH = getByText('Name').closest('th')
+      const roleTH = getByText('Role').closest('th')
+
+      expect(idTH).toHaveAttribute('aria-sort', 'none')
+      expect(nameTH).toHaveAttribute('aria-sort', 'ascending')
+      expect(roleTH).toHaveAttribute('aria-sort', 'descending')
     })
   })
 

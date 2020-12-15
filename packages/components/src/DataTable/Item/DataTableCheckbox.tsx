@@ -49,8 +49,14 @@ export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
   return (
     <ItemTarget onClick={handleCellOnClick}>
       <Checkbox
-        aria-describedby={id}
-        aria-label={checked ? 'Select none' : 'Select all rows'}
+        aria-labelledby={id}
+        aria-label={
+          id !== 'headerId'
+            ? undefined
+            : checked
+            ? 'Select none'
+            : 'Select all rows'
+        }
         checked={checked}
         disabled={disabled}
         onKeyDown={handleOnKeyDown}

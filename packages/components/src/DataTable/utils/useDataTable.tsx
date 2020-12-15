@@ -41,7 +41,9 @@ export const useDataTable = (
     return (
       <DataTableItem id={id} key={id}>
         {columns.map((column) => (
-          <DataTableCell key={column.id}>{dataObj[column.id]}</DataTableCell>
+          <DataTableCell key={column.id} role="foo">
+            {dataObj[column.id]}
+          </DataTableCell>
         ))}
       </DataTableItem>
     )
