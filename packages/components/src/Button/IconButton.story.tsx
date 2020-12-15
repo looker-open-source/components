@@ -24,12 +24,8 @@
 
  */
 
-import React, { FormEvent, useState } from 'react'
+import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { iconNameList, IconNames } from '@looker/icons'
-import { FieldToggleSwitch, InputText } from '../Form'
-import { Icon } from '../Icon'
-import { Space, SpaceVertical } from '../Layout'
 import { IconButton, IconButtonProps } from './IconButton'
 
 export default {
@@ -107,34 +103,4 @@ export const ToggleOff = Template.bind({})
 ToggleOff.args = {
   ...Basic.args,
   toggle: false,
-}
-
-export const PerformanceTest = () => {
-  const [show, setShow] = useState(0)
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    setShow(e.currentTarget.value.length % 2)
-  }
-
-  const [buttons, setButtons] = useState(true)
-  const handleToggle = (e: FormEvent<HTMLInputElement>) => {
-    setButtons(e.currentTarget.checked)
-  }
-  return (
-    <SpaceVertical p="large" align="start">
-      <FieldToggleSwitch on={buttons} onChange={handleToggle} label="Buttons" />
-      <InputText onChange={handleChange} width={200} />
-      <Space flexWrap="wrap">
-        {iconNameList.map((name: string, index: number) => {
-          if (index % 2 === show) {
-            return buttons ? (
-              <IconButton key={name} icon={name as IconNames} label="Test" />
-            ) : (
-              <Icon name={name as IconNames} />
-            )
-          }
-          return null
-        })}
-      </Space>
-    </SpaceVertical>
-  )
 }
