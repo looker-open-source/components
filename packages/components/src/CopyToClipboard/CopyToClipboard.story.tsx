@@ -24,45 +24,38 @@
 
  */
 
-export * from './Accordion'
-export * from './Animate'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './CopyToClipboard'
-export * from './DataTable'
-export * from './Drawer'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './Dialog'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './Truncate'
-export * from './VisuallyHidden'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Button } from '../Button/Button'
+import { CopyToClipboard, CopyToClipboardProps } from './CopyToClipboard'
 
-export * from './utils'
+const Template: Story<CopyToClipboardProps> = (args) => (
+  <CopyToClipboard {...args} />
+)
 
-export {
-  ComponentsProvider,
-  ExtendComponentsThemeProvider,
-} from '@looker/components-providers'
+export const Basic = Template.bind({})
+Basic.args = {
+  content: 'here is some text to be copied',
+}
 
-export { theme, Theme } from '@looker/design-tokens'
+export const LabelStyled = Template.bind({})
+LabelStyled.args = {
+  ...Basic.args,
+  children: 'Copy Something',
+  success: 'it was copied',
+}
+LabelStyled.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ComponentStyled = Template.bind({})
+ComponentStyled.args = {
+  ...Basic.args,
+  children: <Button>Copy stuff</Button>,
+  success: <Button>Success</Button>,
+}
+
+export default {
+  component: CopyToClipboard,
+  title: 'CopyToClipboard',
+}
