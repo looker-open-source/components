@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `TreeArtificial`
+
+### Changed
+
+- `AccordionDisclosure` now supports `SimpleLayoutProps`
+- `Tree` uses text5 as text color
+
 ### Fixed
 
 - `FieldInline` positioning correction correction. Affects:
@@ -15,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `FieldRadio`
   - `FieldRadioGroup`
   - `FieldToggleSwitch`
+- `Tree` allocates enough space for indicator icon
 
 ## [0.9.26]
 
