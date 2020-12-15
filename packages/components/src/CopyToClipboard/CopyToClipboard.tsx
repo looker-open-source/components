@@ -55,32 +55,32 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = ({
   const [copied, setCopied] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  // const clickCopyButton = () => {
-  //   const textField = document.createElement('textarea')
-  //   textField.value = content
+  const clickCopyButton = () => {
+    const textField = document.createElement('textarea')
+    textField.value = content
 
-  //   if (buttonRef.current) {
-  //     buttonRef.current.appendChild(textField)
-  //     textField.select()
-  //     document.execCommand('copy')
-  //     textField.remove()
-  //     setCopied(true)
-  //     setTimeout(() => setCopied(false), 2500)
-  //   }
-  // }
+    if (buttonRef.current) {
+      buttonRef.current.appendChild(textField)
+      textField.select()
+      document.execCommand('copy')
+      textField.remove()
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    }
+  }
 
   const copyButton =
     typeof children === 'string' ? (
       <ButtonOutline
         iconBefore="Clipboard"
-        // onClick={clickCopyButton}
+        onClick={clickCopyButton}
         ref={buttonRef}
       >
         {children}
       </ButtonOutline>
     ) : (
       cloneElement(children, {
-        // onClick: clickCopyButton,
+        onClick: clickCopyButton,
         ref: buttonRef,
       })
     )
