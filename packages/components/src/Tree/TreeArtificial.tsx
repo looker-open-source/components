@@ -33,7 +33,7 @@ import { TreeStyle } from './TreeStyle'
  *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
  * */
 export const TreeArtificial: FC<{ children: ReactNode }> = ({ children }) => (
-  <TreeStyle depth={-1}>
+  <TreeStyle depth={-1} dividers>
     <TreeContext.Provider value={{ depth: 0 }}>{children}</TreeContext.Provider>
   </TreeStyle>
 )

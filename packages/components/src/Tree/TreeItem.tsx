@@ -39,6 +39,7 @@ import styled from 'styled-components'
 import {
   color,
   CompatibleHTMLProps,
+  itemSelectedColor,
   SpacingSizes,
   TextColorProps,
 } from '@looker/design-tokens'
@@ -257,7 +258,7 @@ interface TreeItemLabelProps {
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
   background-color: ${({ hovered, selected, theme: { colors } }) =>
-    selected ? colors.ui2 : hovered && colors.ui1};
+    selected ? itemSelectedColor(colors.ui2) : hovered && colors.ui1};
   flex: 1;
   flex-shrink: 2;
   height: 100%;
