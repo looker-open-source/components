@@ -25,6 +25,7 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { VIEWPORT_MAP } from '@looker/design-tokens'
 import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
 import { DateFormat } from '../DateFormat'
@@ -65,6 +66,22 @@ ReadOnly.args = {
     to: new Date('Jun 19, 2000'),
   },
   readOnly: true,
+}
+
+export const MobileUI = Template.bind({})
+ReadOnly.args = {
+  defaultValue: {
+    from: new Date('Jun 7, 2000'),
+    to: new Date('Jun 19, 2000'),
+  },
+  readOnly: true,
+}
+
+MobileUI.parameters = {
+  viewport: {
+    defaultViewport: 'mobile',
+    viewports: VIEWPORT_MAP,
+  },
 }
 
 export const TimeframeFilter = () => {

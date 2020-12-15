@@ -28,6 +28,8 @@ import path from 'path'
 import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
 import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
 
+const storybookDefaultViewport = { height: 600, width: 800 }
+
 export const storyshotsConfig = (pkg: string) => {
   const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
 
@@ -36,6 +38,7 @@ export const storyshotsConfig = (pkg: string) => {
     framework: 'react',
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
+        // override viewport for responsive design tests
         const { viewport } = context.parameters
         const pageViewport = page.viewport()
         if (viewport) {
@@ -46,10 +49,7 @@ export const storyshotsConfig = (pkg: string) => {
           })
           await page.waitForTimeout(500)
         } else if (pageViewport.width !== 800 || pageViewport.height !== 600) {
-          await page.setViewport({
-            height: 600,
-            width: 800,
-          })
+          await page.setViewport(storybookDefaultViewport)
           await page.waitForTimeout(500)
         }
 
