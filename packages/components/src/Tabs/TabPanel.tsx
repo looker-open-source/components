@@ -25,10 +25,20 @@
  */
 
 import React, { FC } from 'react'
+import styled from 'styled-components'
 
 export interface TabPanelProps {
+  className?: string
   selected?: boolean
 }
 
-export const TabPanel: FC<TabPanelProps> = ({ children, selected }) =>
-  selected ? <>{children}</> : null
+const TabPanelLayout: FC<TabPanelProps> = ({ children, className, selected }) =>
+  selected ? (
+    <div className={className} tabIndex={0}>
+      {children}
+    </div>
+  ) : null
+
+export const TabPanel = styled(TabPanelLayout)`
+  outline: none;
+`
