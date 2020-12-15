@@ -101,6 +101,7 @@ export const Tooltip = forwardRef(
       ref: tooltipRef,
       ...restDomProps
     } = domProps
+
     const ref = useForkedRef(tooltipRef, forwardedRef)
 
     let target: ReactNode = children
