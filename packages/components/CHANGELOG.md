@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `Tooltip` shows on an input with `autoFocus` on first mount
 - `FieldInline` positioning correction correction. Affects:
   - `FieldCheckbox`
   - `FieldCheckboxGroup`

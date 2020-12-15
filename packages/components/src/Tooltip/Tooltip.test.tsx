@@ -25,7 +25,7 @@
  */
 
 import 'jest-styled-components'
-import React, { useState } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
@@ -212,33 +212,5 @@ describe('Tooltip', () => {
     expect(mockHandlers.onBlur).toHaveBeenCalled()
 
     fireEvent.click(document)
-  })
-
-  test('with nested autoFocus input', () => {
-    const AutoFocusInput = () => {
-      const [show, setShow] = useState(false)
-      return (
-        <>
-          <Button onClick={() => setShow(true)}>Click</Button>
-          {show && (
-            <Tooltip
-              content="See what happens when you scroll"
-              placement="right"
-            >
-              <div>
-                <input type="text" autoFocus />
-              </div>
-            </Tooltip>
-          )}
-        </>
-      )
-    }
-
-    renderWithTheme(<AutoFocusInput />)
-    fireEvent.click(screen.getByText('Click'))
-    runTimers()
-    expect(screen.getByRole('tooltip')).toBeVisible()
-
-    fireEvent.blur(screen.getByRole('textbox'))
   })
 })
