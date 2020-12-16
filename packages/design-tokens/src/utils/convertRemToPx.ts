@@ -24,8 +24,6 @@
 
  */
 
-import { BASE_FONT_SIZE } from '../GlobalStyle'
-
 export const convertRemToPx = (rem: number) => {
-  return rem * BASE_FONT_SIZE
+  return rem * 16
 }
