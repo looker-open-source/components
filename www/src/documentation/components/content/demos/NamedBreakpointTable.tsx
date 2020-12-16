@@ -25,9 +25,9 @@
  */
 
 import React, { useContext } from 'react'
-import zip from 'lodash/zip'
+import toPairs from 'lodash/toPairs'
+import { BreakpointRamp } from '@looker/design-tokens'
 import {
-  NAMED_BREAKPOINTS,
   Table,
   TableBody,
   TableDataCell,
@@ -50,7 +50,7 @@ export const NamedBreakpointTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {zip(NAMED_BREAKPOINTS, theme.breakpoints).map((pair) => (
+        {toPairs(BreakpointRamp).map((pair) => (
           <TableRow key={pair[0]}>
             <TableDataCell>{pair[0]}</TableDataCell>
             <TableDataCell>{pair[1]}</TableDataCell>

@@ -28,7 +28,7 @@ import React, { useContext, FC, useState } from 'react'
 import {
   convertRemToPx,
   NamedBreakpoints,
-  NAMED_BREAKPOINTS,
+  BreakpointRamp,
 } from '@looker/design-tokens'
 import isArray from 'lodash/isArray'
 import { ThemeContext } from 'styled-components'
@@ -51,8 +51,9 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   const breakpointPx = theme.breakpoints.map((b: string) =>
     convertRemToPx(parseInt(b.replace('rem', '')))
   )
-  const fromIndex = NAMED_BREAKPOINTS.indexOf(from)
-  const toIndex = NAMED_BREAKPOINTS.indexOf(to)
+  console.log(BreakpointRamp[from])
+  const fromIndex = theme.breakpoints.indexOf(BreakpointRamp[from])
+  const toIndex = theme.breakpoints.indexOf(BreakpointRamp[to])
 
   const handleResize = () => {
     setScreenWidth(document.body.clientWidth)

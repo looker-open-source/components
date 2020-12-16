@@ -24,7 +24,7 @@
 
  */
 
-import zip from 'lodash/zip'
+import toPairs from 'lodash/toPairs'
 import startCase from 'lodash/startCase'
 import { convertRemToPx } from '../utils/convertRemToPx'
 
@@ -42,23 +42,19 @@ type LAPTOP = 'laptop'
 type DESKTOP = 'desktop'
 type XL = 'xl'
 
-export type NamedBreakpoints =
-  | undefined
-  | MOBILE
-  | TABLET
-  | LAPTOP
-  | DESKTOP
-  | XL
+export type NamedBreakpoints = MOBILE | TABLET | LAPTOP | DESKTOP | XL
 
 export const breakpoints = ['30rem', '48rem', '64rem', '75rem', '90rem']
 
-export const NAMED_BREAKPOINTS: [MOBILE, TABLET, LAPTOP, DESKTOP, XL] = [
-  'mobile',
-  'tablet',
-  'laptop',
-  'desktop',
-  'xl',
-]
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const BreakpointRamp: Record<NamedBreakpoints, string> = {
+  mobile: breakpoints[0],
+  tablet: breakpoints[1],
+  laptop: breakpoints[2],
+  desktop: breakpoints[3],
+  xl: breakpoints[4],
+}
+/* eslint-enable sort-keys-fix/sort-keys-fix */
 
 /*
  * ViewportMap is used to integrate our custom breakpoints into storybook
@@ -72,22 +68,22 @@ export interface ViewportMap {
   [key: string]: Viewport
 }
 
-export const VIEWPORT_MAP: ViewportMap = zip(
-  NAMED_BREAKPOINTS,
-  breakpoints
-).reduce((map, [name, size]: [NamedBreakpoints, string | undefined]) => {
-  const sizePx = convertRemToPx(parseInt(size || '', 10))
-  const width = `${sizePx}px`
-  const height =
-    sizePx < convertRemToPx(parseInt(breakpoints[2]))
-      ? `${sizePx * 2}px`
-      : `${sizePx * 0.55}px`
-  return {
-    ...map,
-    [name as string]: {
-      name: startCase(name),
-      styles: { height, width },
-      type: name,
-    },
-  }
-}, {})
+export const VIEWPORT_MAP: ViewportMap = toPairs(BreakpointRamp).reduce(
+  (map, [name, size]) => {
+    const sizePx = convertRemToPx(parseInt(size || '', 10))
+    const width = `${sizePx}px`
+    const height =
+      sizePx < convertRemToPx(parseInt(breakpoints[2]))
+        ? `${sizePx * 2}px`
+        : `${sizePx * 0.55}px`
+    return {
+      ...map,
+      [name as string]: {
+        name: startCase(name),
+        styles: { height, width },
+        type: name,
+      },
+    }
+  },
+  {}
+)
