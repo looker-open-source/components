@@ -53,8 +53,8 @@ export const VIEWPORT_MAP: ViewportMap = toPairs(BreakpointRamp).reduce(
     // larger viewports should have a widescreen ratio
     const height =
       sizePx < convertRemToPx(parseInt(breakpoints[2]))
-        ? `${sizePx * 2.16}px`
-        : `${sizePx * 0.55}px`
+        ? `${Math.round(sizePx * 2.16)}px`
+        : `${Math.round(sizePx * 0.55)}px`
 
     return {
       ...map,

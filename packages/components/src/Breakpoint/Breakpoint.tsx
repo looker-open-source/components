@@ -51,7 +51,7 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   const breakpointPx = theme.breakpoints.map((b: string) =>
     convertRemToPx(parseInt(b.replace('rem', '')))
   )
-  console.log(BreakpointRamp[from])
+
   const fromIndex = theme.breakpoints.indexOf(BreakpointRamp[from])
   const toIndex = theme.breakpoints.indexOf(BreakpointRamp[to])
 
