@@ -24,30 +24,46 @@
 
  */
 
-/**
- * 320px — 480px: Mobile devices. (20rem - 30rem)
- * 481px — 768px: iPads, Tablets. (30rem - 48rem)
- * 769px — 1024px: Small screens, laptops. (48rem - 64rem)
- * 1025px — 1200px: Desktops, large screens. (64rem - 75rem)
- * 1201px and more — Extra large screens, TV. (90rem +)
- **/
+import toPairs from 'lodash/toPairs'
+import startCase from 'lodash/startCase'
+import {
+  convertRemToPx,
+  BreakpointRamp,
+  breakpoints,
+} from '@looker/design-tokens'
 
-type MOBILE = 'mobile'
-type TABLET = 'tablet'
-type LAPTOP = 'laptop'
-type DESKTOP = 'desktop'
-type XL = 'xl'
-
-export type NamedBreakpoints = MOBILE | TABLET | LAPTOP | DESKTOP | XL
-
-export const breakpoints = ['30rem', '48rem', '64rem', '75rem', '90rem']
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-export const BreakpointRamp: Record<NamedBreakpoints, string> = {
-  mobile: breakpoints[0],
-  tablet: breakpoints[1],
-  laptop: breakpoints[2],
-  desktop: breakpoints[3],
-  xl: breakpoints[4],
+/*
+ * ViewportMap is used to integrate our custom breakpoints into storybook
+ */
+export interface Viewport {
+  name: string
+  styles: { height: string; width: string }
+  type: 'desktop' | 'mobile' | 'tablet' | 'other'
 }
-/* eslint-enable sort-keys-fix/sort-keys-fix */
+export interface ViewportMap {
+  [key: string]: Viewport
+}
+
+export const VIEWPORT_MAP: ViewportMap = toPairs(BreakpointRamp).reduce(
+  (map, [name, size]) => {
+    const sizePx = convertRemToPx(parseInt(size || '', 10))
+    const width = `${sizePx}px`
+
+    // for tablets and smaller, the height should be roughly twice the width
+    // larger viewports should have a widescreen ratio
+    const height =
+      sizePx < convertRemToPx(parseInt(breakpoints[2]))
+        ? `${sizePx * 2.16}px`
+        : `${sizePx * 0.55}px`
+
+    return {
+      ...map,
+      [name as string]: {
+        name: startCase(name),
+        styles: { height, width },
+        type: name,
+      },
+    }
+  },
+  {}
+)
