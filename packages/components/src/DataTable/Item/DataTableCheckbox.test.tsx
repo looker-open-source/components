@@ -84,4 +84,14 @@ describe('DataTableCheckbox', () => {
     const checkbox = getByRole('checkbox')
     expect(checkbox as HTMLInputElement).not.toHaveAttribute('aria-label')
   })
+
+  test('Renders aria-labelledby with primary column value passed as id', () => {
+    const { container } = renderWithTheme(
+      <DataTableCheckbox id="primaryColumn" />
+    )
+    expect(container.firstChild).toHaveAttribute(
+      'aria-labelledby',
+      'primaryColumn'
+    )
+  })
 })

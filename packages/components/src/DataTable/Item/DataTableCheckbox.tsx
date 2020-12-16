@@ -47,9 +47,8 @@ export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
     event.key === 'Enter' && event.currentTarget.click()
   return (
-    <ItemTarget onClick={handleCellOnClick}>
+    <ItemTarget aria-labelledby={id} onClick={handleCellOnClick}>
       <Checkbox
-        aria-labelledby={id}
         aria-label={
           id !== 'headerId'
             ? undefined

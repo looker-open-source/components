@@ -682,6 +682,27 @@ describe('DataTable', () => {
       expect(getByText("this is a table's caption")).toBeInTheDocument()
     })
 
+    test('Table has role=rowheader for first column elements', () => {
+      const { getByText } = renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          select={defaultSelectConfig}
+        >
+          {items}
+        </DataTable>
+      )
+      const name1 = getByText('Richard Garfield')
+      const id1 = getByText('1')
+      const name2 = getByText('John Carmack')
+      const id2 = getByText('2')
+
+      expect(name1).not.toHaveAttribute('role', 'rowheader')
+      expect(id1).toHaveAttribute('role', 'rowheader')
+      expect(name2).not.toHaveAttribute('role', 'rowheader')
+      expect(id2).toHaveAttribute('role', 'rowheader')
+    })
+
     test('Table has aria-sort', () => {
       const { getByText } = renderWithTheme(
         <DataTable
