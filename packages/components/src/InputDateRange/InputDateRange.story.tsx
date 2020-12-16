@@ -25,7 +25,7 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { VIEWPORT_MAP } from '@looker/design-tokens'
+import { VIEWPORT_MAP } from '../utils-storybook'
 import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
 import { DateFormat } from '../DateFormat'
