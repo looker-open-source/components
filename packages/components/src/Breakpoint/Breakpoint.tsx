@@ -24,7 +24,7 @@
 
  */
 
-import React, { useContext, FC, ReactNode, useState } from 'react'
+import React, { useContext, FC, useState } from 'react'
 import {
   convertRemToPx,
   NamedBreakpoints,
@@ -35,7 +35,9 @@ import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'
 
 export interface BreakpointProps {
-  children: ReactNode
+  /*
+   * Define a single screen size or range of screen sizes to render the children.
+   */
   show: NamedBreakpoints | [NamedBreakpoints, NamedBreakpoints]
 }
 

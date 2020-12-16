@@ -31,6 +31,8 @@ import {
   reset,
   LayoutProps,
   layout,
+  omitStyledProps,
+  pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
@@ -46,8 +48,6 @@ export interface DialogContentProps
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
 }
-
-const paddingProps = ['p', 'pt', 'pb', 'pr', 'pl', 'px', 'py']
 
 const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
@@ -75,9 +75,9 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
     <div
       className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
-      {...omit(props, [...paddingProps, 'renderedHeight'])}
+      {...omit(omitStyledProps(props), ['renderedHeight'])}
     >
-      <Inner overflowed={overflow} {...pick(props, paddingProps)}>
+      <Inner overflowed={overflow} {...pickStyledProps(props)}>
         {children}
       </Inner>
     </div>
@@ -98,11 +98,6 @@ const Inner = styled.div<InnerProps>`
         `
       : ''}
 `
-
-Inner.defaultProps = {
-  px: ['medium', 'xlarge'],
-  py: 'xxxsmall',
-}
 
 const DialogContentStyled = styled(DialogContentLayout)`
   ${reset}
@@ -126,4 +121,9 @@ export const DialogContent = (props: DialogContentProps) => {
       )}
     </ReactResizeDetector>
   )
+}
+
+DialogContent.defaultProps = {
+  px: ['medium', 'xlarge'],
+  py: 'xxxsmall',
 }
