@@ -38,7 +38,7 @@ export interface BreakpointProps {
   /*
    * Define a single screen size or range of screen sizes to render the children.
    */
-  show: NamedBreakpoints | [NamedBreakpoints, NamedBreakpoints]
+  show: NamedBreakpoints | [NamedBreakpoints?, NamedBreakpoints?]
 }
 
 export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
