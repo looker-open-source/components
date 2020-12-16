@@ -37,6 +37,7 @@ import { generateIndent, generateTreeBorder } from './utils'
 interface TreeStyleProps {
   border?: boolean
   depth: number
+  disabled?: boolean
   hovered?: boolean
   branchFontWeight?: boolean
   dividers?: boolean
@@ -63,8 +64,10 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
-      background-color: ${({ hovered, theme: { colors } }) =>
-        hovered && colors.ui1};
+      background-color: ${({ disabled, hovered, theme: { colors } }) =>
+        disabled ? 'none' : hovered && colors.ui1};
+      color: ${({ disabled, theme: { colors } }) =>
+        disabled ? colors.text1 : colors.text5};
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
         branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
       padding-right: ${({ theme }) => theme.space.xxsmall};

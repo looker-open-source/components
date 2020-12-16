@@ -45,7 +45,7 @@ const Template: Story<TreeProps> = (args) => (
     <Tree label="Orders" defaultOpen>
       <TreeItem>ID</TreeItem>
       <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
+      <Tree disabled label="Created" defaultOpen>
         <TreeItem>Created Date</TreeItem>
         <TreeItem>Created Month</TreeItem>
         <TreeItem>Created Year</TreeItem>

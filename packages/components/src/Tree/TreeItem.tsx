@@ -79,7 +79,7 @@ export interface TreeItemProps
    */
   detailHoverDisclosure?: boolean
   /**
-   * If true, then the element will have a "disabled" presentation which consists of:
+   * If true, then the TreeItem will have a "disabled" presentation which consists of:
    * - lighter text (text1)
    * - different cursor (not-allowed)
    * - no bg color on hover
@@ -105,7 +105,7 @@ export interface TreeItemProps
    */
   onMetaEnter?: () => void
   /**
-   * Determines if this TreeItem is in a selected state or not
+   * If true, then the TreeItem will have an opaque, ui2 background
    */
   selected?: boolean
   /**
