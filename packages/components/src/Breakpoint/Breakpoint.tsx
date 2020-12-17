@@ -46,7 +46,9 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   // If they pass a single value, e.g. 'mobile', it should be equivalent to
   // "from mobile, to mobile"
   const [from = 'mobile', to = 'xl'] = isArray(show) ? show : [show, show]
-  const [screenWidth, setScreenWidth] = useState(document.body.clientWidth)
+  const [screenWidth, setScreenWidth] = useState(
+    document && document.body.clientWidth
+  )
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
     convertRemToPx(parseInt(b.replace('rem', '')))
@@ -56,10 +58,10 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   const toIndex = theme.breakpoints.indexOf(BreakpointRamp[to])
 
   const handleResize = () => {
-    setScreenWidth(document.body.clientWidth)
+    setScreenWidth(document && document.body.clientWidth)
   }
 
-  useResize(document.body, handleResize)
+  useResize(document && document.body, handleResize)
 
   const screenMin = from === 'mobile' ? 0 : breakpointPx[fromIndex - 1] // mobile screens start at 0px
   const screenMax = to === 'xl' ? Infinity : breakpointPx[toIndex] // xl includes xl breakpoint and above
