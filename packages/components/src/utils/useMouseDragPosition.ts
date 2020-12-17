@@ -26,7 +26,6 @@
 
 import { useState, useEffect } from 'react'
 import throttle from 'lodash/throttle'
-import get from 'lodash/get'
 
 interface MouseState {
   mousePos: { x: number; y: number }
@@ -43,54 +42,43 @@ export function useMouseDragPosition(
   const [isMouseDown, setIsMouseDown] = useState(false)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
-  const updateMousePos = (e: globalThis.TouchEvent | globalThis.MouseEvent) => {
-    // use e.touches[0] for touch events, or simply e for mouse events
-    const event = get(e, 'touches[0]', e)
-    // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
-    const { pageX, clientX, pageY, clientY } = event
-    setMousePos({ x: pageX || clientX, y: pageY || clientY })
+  const handleMouseDown = (e: globalThis.MouseEvent) => {
+    setMousePos({ x: e.pageX, y: e.pageY })
+    setIsMouseDown(true)
   }
 
-  const handleStart = (e: globalThis.TouchEvent | globalThis.MouseEvent) => {
-    // update mouse down state AFTER mouse position state is updated
-    requestAnimationFrame(() => {
-      setIsMouseDown(true)
-    })
-    updateMousePos(e)
-  }
-
-  const handleMove = throttle(updateMousePos, 50)
-
-  const handleEnd = () => {
+  const handleMouseUp = () => {
     setIsMouseDown(false)
   }
 
-  useEffect(() => {
-    targetRef && targetRef.addEventListener('mousedown', handleStart)
-    targetRef && targetRef.addEventListener('touchstart', handleStart)
-
+  const handleMouseMove = throttle((e: globalThis.MouseEvent) => {
     if (isMouseDown) {
-      window.addEventListener('touchmove', handleMove)
-      window.addEventListener('touchend', handleEnd)
-      window.addEventListener('mouseup', handleEnd)
-      window.addEventListener('mousemove', handleMove)
-      window.addEventListener('mouseleave', handleEnd)
+      // e.clientX and e.clientY fallbacks are included for testing purposes. jsDOM doesn't support pageX/pageY attributes
+      setMousePos({ x: e.pageX || e.clientX, y: e.pageY || e.clientY })
     }
+  }, 50)
 
-    return () => {
-      targetRef && targetRef.removeEventListener('mousedown', handleStart)
-      targetRef && targetRef.removeEventListener('touchstart', handleStart)
+  const handleMouseLeave = () => {
+    setIsMouseDown(false)
+  }
 
-      if (isMouseDown) {
-        window.removeEventListener('touchmove', handleMove)
-        window.removeEventListener('touchend', handleEnd)
-        window.removeEventListener('mouseup', handleEnd)
-        window.removeEventListener('mousemove', handleMove)
-        window.removeEventListener('mouseleave', handleEnd)
+  useEffect(
+    () => {
+      targetRef && targetRef.addEventListener('mousedown', handleMouseDown)
+      window.addEventListener('mouseup', handleMouseUp)
+      window.addEventListener('mousemove', handleMouseMove)
+      window.addEventListener('handleMouseLeave', handleMouseLeave)
+
+      return () => {
+        targetRef && targetRef.removeEventListener('mousedown', handleMouseDown)
+        window.removeEventListener('mouseup', handleMouseUp)
+        window.removeEventListener('mousemove', handleMouseMove)
+        window.removeEventListener('handleMouseLeave', handleMouseLeave)
       }
-    }
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMouseDown, targetRef])
+    [isMouseDown, targetRef]
+  )
 
   return { isMouseDown, mousePos: mousePos }
 }
