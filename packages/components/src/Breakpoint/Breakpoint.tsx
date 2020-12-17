@@ -47,7 +47,7 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   // "from mobile, to mobile"
   const [from = 'mobile', to = 'xl'] = isArray(show) ? show : [show, show]
   const [screenWidth, setScreenWidth] = useState(
-    document && document.body.clientWidth
+    document ? document.body.clientWidth : 800
   )
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
@@ -58,7 +58,10 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   const toIndex = theme.breakpoints.indexOf(BreakpointRamp[to])
 
   const handleResize = () => {
-    setScreenWidth(document && document.body.clientWidth)
+    if (document) {
+      // document is not available in server side rendering
+      setScreenWidth(document.body.clientWidth)
+    }
   }
 
   useResize(document && document.body, handleResize)
