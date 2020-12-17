@@ -38,7 +38,6 @@ import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
-import pick from 'lodash/pick'
 
 export interface DialogContentProps
   extends LayoutProps,
