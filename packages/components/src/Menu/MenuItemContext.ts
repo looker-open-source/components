@@ -26,16 +26,6 @@
 
 import { createContext, KeyboardEvent } from 'react'
 
-export interface MenuContextProps {
-  disabled?: boolean
-  id?: string
-  showDisclosure?: boolean
-  isOpen?: boolean
-  setOpen?: (isOpen: boolean) => void
-  triggerElement?: HTMLElement | null
-  triggerCallbackRef?: (node: HTMLElement | null) => void
-}
-
 export interface MenuItemContextProps {
   compact?: boolean
   renderIconPlaceholder?: boolean
@@ -44,8 +34,6 @@ export interface MenuItemContextProps {
   handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
-const menuContext: MenuContextProps = {}
 const menuItemContext: MenuItemContextProps = {}
 
-export const MenuContext = createContext(menuContext)
 export const MenuItemContext = createContext(menuItemContext)

@@ -56,6 +56,11 @@ export interface UsePopoverProps {
   content: ReactNode
 
   /**
+   * Disable the popover
+   */
+  disabled?: boolean
+
+  /**
    * When true, display Surface and it's contained content
    * @default false
    */
@@ -152,6 +157,7 @@ export interface UsePopoverResponseDom {
 export const usePopover = ({
   canClose,
   content,
+  disabled,
   pin = false,
   isOpen: controlledIsOpen = false,
   onClose,
@@ -239,7 +245,7 @@ export const usePopover = ({
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
-  const popover = !openWithoutElem && isOpen && (
+  const popover = !disabled && !openWithoutElem && isOpen && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -265,7 +271,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': true,
+      'aria-haspopup': !disabled,
       onClick: handleOpen,
       ref: callbackRef,
     },

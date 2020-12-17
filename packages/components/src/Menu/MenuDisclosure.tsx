@@ -35,7 +35,7 @@ import React, {
 } from 'react'
 import { Placement } from '@popperjs/core'
 import { useTooltip } from '../Tooltip'
-import { MenuContext } from './MenuContext'
+import { MenuContext } from './MenuItemContext'
 
 export interface MenuDisclosureProps {
   /**

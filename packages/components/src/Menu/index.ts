@@ -25,7 +25,7 @@
  */
 
 export * from './Menu'
-export * from './MenuContext'
+export * from './MenuItemContext'
 export * from './MenuDisclosure'
 export * from './MenuList'
 export * from './MenuGroup'

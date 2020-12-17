@@ -26,7 +26,8 @@
 
 import React, { FC, RefObject, useRef, useState } from 'react'
 import { useCallbackRef, useHovered, useID } from '../utils'
-import { MenuContext } from './MenuContext'
+import { Popover, PopoverProps } from '../Popover'
+import { MenuList } from './MenuList'
 
 export interface MenuProps {
   /**
@@ -76,5 +77,5 @@ export const Menu: FC<MenuProps> = ({
     triggerElement,
   }
 
-  return <MenuContext.Provider value={context}>{children}</MenuContext.Provider>
+  return <Popover>{children}</Popover>
 }

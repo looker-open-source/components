@@ -35,7 +35,7 @@ import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { Tooltip } from '../Tooltip'
-import { MenuContext, MenuItemContext } from './MenuContext'
+import { MenuContext, MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
