@@ -134,6 +134,10 @@ export const ClickOutside = () => {
   )
 }
 
+ClickOutside.arguments = {
+  storyshots: { disable: true },
+}
+
 export default {
   argTypes: {
     placement: {
