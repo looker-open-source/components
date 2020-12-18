@@ -108,6 +108,32 @@ withCheckbox.parameters = {
   storyshots: { disable: true },
 }
 
+export const ClickOutside = () => {
+  return (
+    <>
+      <input
+        type="text"
+        style={{
+          position: 'absolute',
+          right: '0',
+          top: '0',
+          zIndex: 100,
+        }}
+      />
+      <Dialog
+        content={
+          <>
+            <button>button 1</button>
+            <button>button 2</button>
+          </>
+        }
+      >
+        <button>Open Dialog</button>
+      </Dialog>
+    </>
+  )
+}
+
 export default {
   argTypes: {
     placement: {
