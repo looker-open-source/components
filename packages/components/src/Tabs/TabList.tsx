@@ -126,7 +126,11 @@ const distributeCSS = css`
   }
 `
 
-export const TabList = styled(TabListLayout)`
+export const TabList = styled(TabListLayout).attrs(
+  ({ fontSize = 'small' }) => ({
+    fontSize,
+  })
+)`
   ${reset}
   ${padding}
   ${fontSize}
@@ -143,7 +147,3 @@ export const TabList = styled(TabListLayout)`
 
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `
-
-TabList.defaultProps = {
-  fontSize: 'small',
-}

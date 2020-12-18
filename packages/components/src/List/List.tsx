@@ -78,9 +78,9 @@ const typeVariant = variant({
 
 export const List = styled.ul
   .withConfig({ shouldForwardProp })
-  .attrs((props: ListProps) => ({
-    as: ['letter', 'number'].includes(String(props.type)) ? 'ol' : undefined,
-    type: props.nomarker ? 'none' : props.type,
+  .attrs<ListProps>(({ type = 'none', nomarker }) => ({
+    as: ['letter', 'number'].includes(type) ? 'ol' : undefined,
+    type: nomarker ? 'none' : type || 'none',
   }))<ListProps>`
   ${reset}
   ${typography}
@@ -90,5 +90,3 @@ export const List = styled.ul
   ${position}
   ${layout}
 `
-
-List.defaultProps = { type: 'none' }

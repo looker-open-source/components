@@ -31,7 +31,7 @@ import { Icon, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
 import { IconPlaceholder, ListItemDetail, ListItem } from '../../../List'
-import { Heading, Paragraph, Text } from '../../../Text'
+import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
   ComboboxContext,
@@ -163,19 +163,26 @@ export function SelectOptionWithDescription({
   )
 }
 
-const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
+const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(
+  ({
+    color = 'subdued',
+    fontFamily = 'body',
+    fontSize = 'xxsmall',
+    fontWeight = 'semiBold',
+    px = 'xsmall',
+    py = 'xxsmall',
+  }) => ({
+    color,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    px,
+    py,
+  })
+)<{ isMulti?: boolean }>`
   display: flex;
   padding-top: ${({ theme }) => theme.space.xxsmall};
 `
-
-SelectOptionGroupTitle.defaultProps = {
-  color: 'subdued',
-  fontFamily: 'body',
-  fontSize: 'xxsmall',
-  fontWeight: 'semiBold',
-  px: 'xsmall',
-  py: 'xxsmall',
-}
 
 export const SelectOptionGroup = ({
   options,

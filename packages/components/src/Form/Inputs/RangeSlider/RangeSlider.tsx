@@ -404,7 +404,12 @@ export const InternalRangeSlider = forwardRef(
 
 InternalRangeSlider.displayName = 'InternalRangeSlider'
 
-export const RangeSlider = styled(InternalRangeSlider)`
+export const RangeSlider = styled(InternalRangeSlider).attrs<RangeSliderProps>(
+  ({ fontSize = 'small', lineHeight = 'xsmall' }) => ({
+    fontSize,
+    lineHeight,
+  })
+)<RangeSliderProps>`
   ${reset}
   ${space}
   ${typography}
@@ -412,8 +417,6 @@ export const RangeSlider = styled(InternalRangeSlider)`
   touch-action: none;
   user-select: none;
 `
-
-RangeSlider.defaultProps = { fontSize: 'small', lineHeight: 'xsmall' }
 
 const SliderTrack = styled.div`
   background: ${({ theme }) => theme.colors.ui2};

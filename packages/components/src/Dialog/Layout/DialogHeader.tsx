@@ -68,7 +68,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   hideClose,
   detail,
   fontSize,
-  fontWeight,
+  fontWeight = 'semiBold',
   ...props
 }) => {
   const { closeModal } = useContext(DialogContext)
@@ -79,8 +79,8 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
       <Heading
         as="h3"
         mr="xlarge"
-        fontSize={fontSize || undefined}
-        fontWeight={fontWeight || 'semiBold'}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
         style={{ gridArea: 'text' }}
         truncate
       >
@@ -110,16 +110,16 @@ const Detail = styled.div`
   margin-left: auto;
 `
 
-export const DialogHeader = styled(DialogHeaderLayout)`
+export const DialogHeader = styled(DialogHeaderLayout).attrs(
+  ({ p = 'large', pr = 'medium', px = 'xlarge' }) => ({
+    p,
+    pr,
+    px,
+  })
+)`
   ${reset}
   ${space}
   align-items: center;
   display: flex;
   flex-shrink: 0;
 `
-
-DialogHeader.defaultProps = {
-  p: 'large',
-  pr: 'medium',
-  px: 'xlarge',
-}

@@ -170,15 +170,20 @@ const AccordionLayout: FC<AccordionProps> = ({
   )
 }
 
-export const Accordion = styled(AccordionLayout)`
+export const Accordion = styled(AccordionLayout).attrs<AccordionProps>(
+  ({
+    indicatorGap = accordionContextDefaults.indicatorGap,
+    indicatorPosition = accordionContextDefaults.indicatorPosition,
+    indicatorSize = accordionContextDefaults.indicatorSize,
+    width = '100%',
+  }) => ({
+    indicatorGap,
+    indicatorPosition,
+    indicatorSize,
+    width,
+  })
+)<AccordionProps>`
   ${AccordionDisclosure}, ${AccordionContent} {
     ${simpleLayoutCSS}
   }
 `
-
-Accordion.defaultProps = {
-  indicatorGap: accordionContextDefaults.indicatorGap,
-  indicatorPosition: accordionContextDefaults.indicatorPosition,
-  indicatorSize: accordionContextDefaults.indicatorSize,
-  width: '100%',
-}

@@ -51,11 +51,11 @@ const DialogFooterLayout: FC<DialogFooterProps> = ({
   )
 }
 
-export const DialogFooter = styled(DialogFooterLayout)`
+export const DialogFooter = styled(DialogFooterLayout).attrs(
+  ({ px = 'xlarge', py = 'large' }) => ({
+    px,
+    py,
+  })
+)<DialogFooterProps>`
   flex-shrink: 0;
 `
-
-DialogFooter.defaultProps = {
-  px: 'xlarge',
-  py: 'large',
-}

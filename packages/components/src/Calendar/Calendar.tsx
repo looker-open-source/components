@@ -30,7 +30,7 @@ import has from 'lodash/has'
 import noop from 'lodash/noop'
 import { reset, calendarMixColor } from '@looker/design-tokens'
 import { inputTextFocus } from '../Form/Inputs/InputText'
-import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
+import { calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
@@ -55,7 +55,6 @@ interface CalendarProps {
   selectedDates?: Date | Date[] | RangeModifier
   showNextButton?: boolean
   showPreviousButton?: boolean
-  size?: CalendarSize
   viewMonth?: Date
 }
 
@@ -74,7 +73,6 @@ const InternalCalendar: FC<CalendarProps> = ({
   selectedDates,
   showNextButton = true,
   showPreviousButton = true,
-  size,
   viewMonth,
 }) => {
   const renderDateRange = selectedDates && has(selectedDates, 'from')
@@ -102,7 +100,7 @@ const InternalCalendar: FC<CalendarProps> = ({
         onPrevClick: disableCallback(onPrevClick),
         showNextButton: (!disabled || !readOnly) && showNextButton,
         showPreviousButton: (!disabled || !readOnly) && showPreviousButton,
-        size,
+        size: 'medium',
       }}
     >
       <DayPicker
@@ -123,7 +121,9 @@ const InternalCalendar: FC<CalendarProps> = ({
 }
 
 /* stylelint-disable max-nesting-depth, no-descending-specificity */
-export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
+export const Calendar = styled(InternalCalendar).attrs(() => ({
+  size: 'medium',
+}))`
   ${reset}
   ${dayPickerCss}
   ${calendarSpacing}
@@ -252,5 +252,3 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     }
   }
 `
-
-Calendar.defaultProps = { size: 'medium' }

@@ -81,7 +81,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onKeyUp,
     target,
     tooltip,
-    tooltipPlacement,
+    tooltipPlacement = 'left',
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
@@ -200,7 +200,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       className={className}
     >
       {tooltip ? (
-        <Tooltip placement={tooltipPlacement || 'left'} content={tooltip}>
+        <Tooltip placement={tooltipPlacement} content={tooltip}>
           {menuItemContent}
         </Tooltip>
       ) : (

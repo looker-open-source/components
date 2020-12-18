@@ -51,13 +51,13 @@ export const InlineTextAreaLayout = forwardRef(
       className,
       onChange,
       underlineOnlyOnHover,
-      value: valueProp,
+      value: valueProp = '',
       placeholder,
       ...props
     }: InlineTextAreaProps,
     ref: Ref<HTMLTextAreaElement>
   ) => {
-    const [value, setValueChange] = useState(valueProp || '')
+    const [value, setValueChange] = useState(valueProp)
 
     const displayValue = isFunction(onChange) ? valueProp : value
 

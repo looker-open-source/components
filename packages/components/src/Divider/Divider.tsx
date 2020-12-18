@@ -66,11 +66,13 @@ const appearanceVariant = variant({
 
 export const DividerBase = styled.hr
   .withConfig({ shouldForwardProp })
-  .attrs((props: DividerProps) => ({
-    appearance: props.appearance || 'default',
-    bg: props.customColor,
-    size: props.size || '1px',
-  }))<DividerProps>`
+  .attrs<DividerProps>(
+    ({ appearance = 'default', customColor, size = '1px' }) => ({
+      appearance,
+      bg: customColor,
+      size,
+    })
+  )<DividerProps>`
   ${reset}
   ${position}
   ${space}

@@ -127,8 +127,6 @@ const CodeSandbox = ({
   )
 }
 
-// CodeSandbox.defaultProps = { live: true, language: 'jsx' }
-
 export default CodeSandbox
 
 interface LiveProps {
