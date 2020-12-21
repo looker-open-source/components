@@ -25,45 +25,17 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Tree, TreeProps, TreeItem } from '..'
+import { TreeItem, Tree } from '..'
 
-export * from './BorderRadius.story'
-export * from './ColorfulTree.story'
-export * from './DisabledAndSelected.story'
-export * from './FieldPicker.story'
-export * from './FileTree.story'
-export * from './Flat.story'
-export * from './LongLabels.story'
-
-export default {
-  component: Tree,
-  title: 'Tree',
-}
-
-const Template: Story<TreeProps> = (args) => (
-  <Tree {...args} label="Orders">
-    <Tree label="Orders" defaultOpen>
-      <TreeItem>ID</TreeItem>
-      <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
-      </Tree>
+export const DisabledAndSelected = () => (
+  <>
+    <Tree disabled label="Disabled Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
     </Tree>
-  </Tree>
+    <Tree selected label="Selected Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
+    </Tree>
+  </>
 )
-
-export const Basic = Template.bind({})
-Basic.args = {
-  defaultOpen: true,
-  indicatorPosition: 'left',
-}
-
-export const Border = Template.bind({})
-Border.args = {
-  ...Basic.args,
-  border: true,
-}
