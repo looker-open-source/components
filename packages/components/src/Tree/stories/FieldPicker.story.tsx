@@ -42,12 +42,7 @@ import {
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
 
-const PickerItem = ({
-  children = 'Cost',
-  disabled = false,
-  selected = false,
-  truncate = false,
-}) => {
+const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -105,10 +100,8 @@ const PickerItem = ({
           }
           detailAccessory={true}
           detailHoverDisclosure={!overlay}
-          disabled={disabled}
           onClick={() => alert(`Clicked on ${children}!`)}
           onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
-          selected={selected}
           truncate={truncate}
         >
           {children}

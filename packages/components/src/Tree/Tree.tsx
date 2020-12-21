@@ -71,6 +71,7 @@ export interface TreeProps
   disabled?: boolean
   /**
    * If true, then the Tree will have an opaque, ui2 background
+   * @default false
    */
   selected?: boolean
   /**

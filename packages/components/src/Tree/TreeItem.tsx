@@ -106,6 +106,7 @@ export interface TreeItemProps
   onMetaEnter?: () => void
   /**
    * If true, then the TreeItem will have an opaque, ui2 background
+   * @default false
    */
   selected?: boolean
   /**
