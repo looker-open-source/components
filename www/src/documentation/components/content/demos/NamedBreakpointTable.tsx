@@ -26,7 +26,7 @@
 
 import React, { useContext } from 'react'
 import toPairs from 'lodash/toPairs'
-import { BreakpointRamp } from '@looker/design-tokens'
+import { BreakpointRamp, convertRemToPx } from '@looker/design-tokens'
 import {
   Table,
   TableBody,
@@ -35,18 +35,15 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { ThemeContext } from 'styled-components'
-import { Locales } from '@looker/components/src/utils/i18n'
 
 export const NamedBreakpointTable = () => {
-  const theme = useContext(ThemeContext)
-
   return (
     <Table mb="large">
       <TableHead>
         <TableRow>
           <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Size</TableHeaderCell>
+          <TableHeaderCell>Width (REM)</TableHeaderCell>
+          <TableHeaderCell>Width (PX)</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -54,6 +51,9 @@ export const NamedBreakpointTable = () => {
           <TableRow key={pair[0]}>
             <TableDataCell>{pair[0]}</TableDataCell>
             <TableDataCell>{pair[1]}</TableDataCell>
+            <TableDataCell>
+              {convertRemToPx(parseInt(pair[1] as string, 10))}px
+            </TableDataCell>
           </TableRow>
         ))}
       </TableBody>
