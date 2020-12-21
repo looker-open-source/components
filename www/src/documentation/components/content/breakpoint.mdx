@@ -3,7 +3,9 @@ title: Breakpoint
 storybook: true
 ---
 
-The `Breakpoint` component is used to render content at a desired screen size. While css breakpoints or styled-system responsive values should cover the vast majority of use cases, this component is provided to facilitate larger markup or behaviors tailored to the device.
+The `Breakpoint` component is used to render content at desired screen sizes.
+
+While we recommend using css breakpoints or styled-system when possible, this component is provided to facilitate larger markup or behavior changes tailored to the device.
 
 We support five named breakpoints as follows:
 
@@ -11,18 +13,30 @@ import { NamedBreakpointTable } from './demos'
 
 <NamedBreakpointTable />
 
-## From, To
+## Rendering content on a range of devices
 
-You can specify a range of screensizes using the `from`, and `to` props. Default values are `mobile` and `xl`, respectively.
-
-Resize the screen to watch the values change.
+Use the `show` prop to specify either a string name of a single device (e.g. `'mobile'`), or a 2-length tuple to define a range of devices (`['mobile', 'desktop']` &ndash; "render from mobile to desktop").
 
 ```jsx
-  <Breakpoint from="mobile" to="mobile">
-    Mobile Only
-  </Breakpoint>
-  <Breakpoint from="tablet" to="desktop">
-    Tablet, Laptop, and Desktop
-  </Breakpoint>
-  <Breakpoint from="xl">Only large screens</Breakpoint>
+<Paragraph mb="small">Resize window to watch content change:</Paragraph>
+<Breakpoint show={['mobile', 'laptop']}>
+  <Box bg="criticalAccent" p="large">
+    Render on Mobile, Tablet, and Laptop (0-1024px)
+  </Box>
+</Breakpoint>
+<Breakpoint show={['desktop', 'xl']}>
+  <Box bg="keyAccent" p="large">
+    Desktop and xl screens (1025px and larger)
+  </Box>
+</Breakpoint>
+<Breakpoint show="desktop">
+  <Box bg="positiveAccent" p="large" mt="small">
+    Show on desktop only (1025-1200px)
+  </Box>
+</Breakpoint>
+<Breakpoint show="xl">
+  <Box bg="informAccent" p="large" mt="small">
+    Show on XL only (>1200px)
+  </Box>
+</Breakpoint>
 ```

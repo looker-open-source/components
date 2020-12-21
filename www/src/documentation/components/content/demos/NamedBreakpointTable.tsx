@@ -47,15 +47,32 @@ export const NamedBreakpointTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {toPairs(BreakpointRamp).map((pair) => (
-          <TableRow key={pair[0]}>
-            <TableDataCell>{pair[0]}</TableDataCell>
-            <TableDataCell>{pair[1]}</TableDataCell>
-            <TableDataCell>
-              {convertRemToPx(parseInt(pair[1] as string, 10))}px
-            </TableDataCell>
-          </TableRow>
-        ))}
+        {toPairs(BreakpointRamp).map(([name, width], i, array) => {
+          const [, prevWidth] = array[i - 1] || ['xs', '0rem']
+          const isLastBreakpoint = i + 1 === array.length
+
+          const prevWidthRem = `${parseInt(prevWidth as string, 10) + 1}rem`
+          const widthPx = `${convertRemToPx(parseInt(width as string, 10))}px`
+          const prevWidthPx = `${
+            convertRemToPx(parseInt(prevWidth as string, 10)) + 1
+          }px`
+
+          return (
+            <TableRow key={name}>
+              <TableDataCell>{name}</TableDataCell>
+              <TableDataCell>
+                {isLastBreakpoint
+                  ? `>= ${prevWidthRem}`
+                  : `${prevWidthRem} \u2013 ${width}`}
+              </TableDataCell>
+              <TableDataCell>
+                {isLastBreakpoint
+                  ? `>= ${prevWidthPx}`
+                  : `${prevWidthPx} \u2013 ${widthPx}`}
+              </TableDataCell>
+            </TableRow>
+          )
+        })}
       </TableBody>
     </Table>
   )
