@@ -34,13 +34,16 @@ export interface DividerVerticalProps extends DividerProps {
 }
 
 export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
-  ({ height = '1rem', mx = 'xsmall', my = 'xsmall', stretch }) => {
-    if (height && stretch) {
+  (props) => {
+    if (props.height && props.stretch) {
       // eslint-disable-next-line no-console
       console.warn(
         'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
       )
     }
+
+    const { height = '1rem', mx = 'xsmall', my = 'xsmall' } = props
+
     return {
       'data-testid': 'DividerVertical',
       height,
