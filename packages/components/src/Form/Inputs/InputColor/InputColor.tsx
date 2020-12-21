@@ -96,7 +96,7 @@ export const InputColorComponent = forwardRef(
       onFocus,
       onBlur,
       value,
-      defaultValue,
+      defaultValue = '',
       disabled,
       readOnly,
       ...props
@@ -108,9 +108,7 @@ export const InputColorComponent = forwardRef(
     const initialColor = getColorFromText(value || defaultValue)
 
     const [color, setColor] = useState<SimpleHSV | undefined>(initialColor)
-    const [inputTextValue, setInputTextValue] = useState(
-      value || defaultValue || ''
-    )
+    const [inputTextValue, setInputTextValue] = useState(value || defaultValue)
     const [isFocused, setIsFocused] = useState(false)
 
     const handleFocus = () => setIsFocused(true)
@@ -169,7 +167,6 @@ export const InputColorComponent = forwardRef(
           max={100}
           step={1}
           value={get(color, 'v', 1) * 100}
-          width={colorWheelSize}
           onChange={handleSliderChange}
         />
       </PopoverContent>

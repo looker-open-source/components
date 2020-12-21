@@ -128,9 +128,12 @@ interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
   focusVisible: boolean
 }
 
-export const AccordionDisclosureStyle = styled.div.withConfig({
-  shouldForwardProp,
-})<AccordionDisclosureStyleProps>`
+export const AccordionDisclosureStyle = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<AccordionDisclosureProps>(({ px = 'none', py = 'xsmall' }) => ({
+    px,
+    py,
+  }))<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
@@ -144,17 +147,13 @@ export const AccordionDisclosureStyle = styled.div.withConfig({
   width: 100%;
 `
 
-AccordionDisclosureStyle.defaultProps = {
-  px: 'none',
-  py: 'xsmall',
-}
-
-export const AccordionDisclosure = styled(AccordionDisclosureInternal)`
+export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
+  (props) => ({
+    fontSize: 'small',
+    fontWeight: 'semiBold',
+    ...props,
+  })
+)`
   ${typography}
   ${simpleLayoutCSS}
 `
-
-AccordionDisclosure.defaultProps = {
-  fontSize: 'small',
-  fontWeight: 'semiBold',
-}

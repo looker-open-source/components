@@ -58,7 +58,31 @@ const raised = (props: CardProps) =>
     }
   `
 
-export const Card = styled.div.withConfig({ shouldForwardProp })<CardProps>`
+export const Card = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<CardProps>(
+    ({
+      bg = 'background',
+      border = '1px solid',
+      borderColor = 'ui3',
+      borderRadius = 'medium',
+      display = 'flex',
+      flexDirection = 'column',
+      height = '100%',
+      minWidth = '200px',
+      overflow = 'hidden',
+    }) => ({
+      bg,
+      border,
+      borderColor,
+      borderRadius,
+      display,
+      flexDirection,
+      height,
+      minWidth,
+      overflow,
+    })
+  )<CardProps>`
   ${complexLayoutCSS}
   ${flexbox}
 
@@ -70,15 +94,3 @@ export const Card = styled.div.withConfig({ shouldForwardProp })<CardProps>`
 
   ${raised}
 `
-
-Card.defaultProps = {
-  bg: 'background',
-  border: '1px solid',
-  borderColor: 'ui3',
-  borderRadius: 'medium',
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-  minWidth: '200px',
-  overflow: 'hidden',
-}

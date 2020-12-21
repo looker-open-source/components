@@ -143,9 +143,12 @@ const verticalAlign = variant({
   },
 })
 
-export const Space = styled.div.withConfig({
-  shouldForwardProp,
-})<SpaceHelperProps>`
+export const Space = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<SpaceHelperProps>(({ alignItems = 'center', width = '100%' }) => ({
+    alignItems,
+    width,
+  }))<SpaceHelperProps>`
   ${spaceCSS}
   ${({ stretch }) => !stretch && verticalAlign}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
@@ -155,5 +158,3 @@ export const Space = styled.div.withConfig({
   ${({ evenly }) => evenly && 'justify-content: space-evenly;'}
   ${({ around, between, evenly }) => !around && !between && !evenly && flexGap}
 `
-
-Space.defaultProps = { alignItems: 'center', width: '100%' }

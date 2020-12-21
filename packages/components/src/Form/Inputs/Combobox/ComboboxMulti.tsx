@@ -150,8 +150,8 @@ export const ComboboxMultiInternal = forwardRef(
 
 ComboboxMultiInternal.displayName = 'ComboboxMultiInternal'
 
-export const ComboboxMulti = styled(ComboboxMultiInternal)``
-
-ComboboxMulti.defaultProps = {
-  display: 'flex',
-}
+export const ComboboxMulti = styled(ComboboxMultiInternal).attrs(
+  ({ display = 'flex' }) => ({
+    display,
+  })
+)``

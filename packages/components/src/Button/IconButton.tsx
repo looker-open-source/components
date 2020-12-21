@@ -235,7 +235,11 @@ const outlineCSS = (props: IconButtonProps) => {
   `
 }
 
-export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
+export const IconButton = styled(IconButtonComponent).attrs(
+  ({ type = 'button' }) => ({
+    type,
+  })
+)<IconButtonProps>`
   ${reset}
   ${space}
   /* remove padding applied to transparent buttons, so icon size is preserved correctly */
@@ -251,5 +255,3 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
     pointer-events: none;
   }
 `
-
-IconButton.defaultProps = { type: 'button' }

@@ -26,7 +26,10 @@
 
 import styled from 'styled-components'
 
-export const LuminositySlider = styled.input.attrs(() => ({ type: 'range' }))`
+export const LuminositySlider = styled.input.attrs(({ width = '100%' }) => ({
+  type: 'range',
+  width,
+}))`
   appearance: none;
   background: transparent;
   width: ${({ width }) => width};
@@ -115,5 +118,3 @@ export const LuminositySlider = styled.input.attrs(() => ({ type: 'range' }))`
     background-image: linear-gradient(to right, #000, #fff);
   }
 `
-
-LuminositySlider.defaultProps = { width: '100%' }

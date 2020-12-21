@@ -252,7 +252,11 @@ const dividersStyle = ({ groupDividers = true }: MenuListProps) =>
     }
   `
 
-export const MenuList = styled(MenuListInternal)`
+export const MenuList = styled(MenuListInternal).attrs(
+  ({ minWidth = '12rem' }) => ({
+    minWidth,
+  })
+)`
   ${reset}
 
   ${height}
@@ -269,5 +273,3 @@ export const MenuList = styled(MenuListInternal)`
   user-select: none;
   ${dividersStyle}
 `
-
-MenuList.defaultProps = { minWidth: '12rem' }

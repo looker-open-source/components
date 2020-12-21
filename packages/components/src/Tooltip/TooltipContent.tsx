@@ -24,24 +24,24 @@
 
  */
 import styled from 'styled-components'
-import { Paragraph } from '../Text'
+import { Paragraph, ParagraphProps } from '../Text'
 import { TooltipProps } from './Tooltip'
-export const TooltipContent = styled(Paragraph).attrs(
-  (props: TooltipProps) => ({
+
+export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
+  ({ textAlign = 'center', width }) => ({
     color: 'inherit',
     fontSize: 'xsmall',
     lineHeight: 'xsmall',
     m: 'none',
-    maxWidth: props.width,
+    maxWidth: width,
     p: 'xsmall',
-    width: 'auto',
+    textAlign,
+    width: width || '16rem',
   })
-)`
+)<ParagraphProps>`
   hyphens: auto;
   overflow-wrap: anywhere;
   text-transform: none;
   white-space: normal;
   word-break: break-word;
 `
-
-TooltipContent.defaultProps = { textAlign: 'center', width: '16rem' }

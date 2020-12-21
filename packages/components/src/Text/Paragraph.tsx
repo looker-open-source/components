@@ -42,12 +42,15 @@ export interface ParagraphProps
     TruncateProps,
     Omit<CompatibleHTMLProps<HTMLParagraphElement>, 'wrap'> {}
 
-export const Paragraph = styled(TextBase).attrs(() => ({
-  as: 'p',
-}))<ParagraphProps>`
+export const Paragraph = styled(TextBase).attrs<ParagraphProps>(
+  ({ color = 'text', fontSize = 'medium', lineHeight }) => ({
+    as: 'p',
+    color,
+    fontSize,
+    lineHeight: lineHeight || fontSize,
+  })
+)<ParagraphProps>`
   ${layout}
   ${textTransform}
   ${truncate}
 `
-
-Paragraph.defaultProps = { fontSize: 'medium' }

@@ -71,7 +71,13 @@ interface DocQuery {
 
 const DocumentationLayout = (props: DocQuery) => {
   const { mdx, site } = props.data
-  const { github, status, storybook, storybookPath, title } = mdx.frontmatter
+  const {
+    github,
+    status = 'stable',
+    storybook,
+    storybookPath,
+    title,
+  } = mdx.frontmatter
   const githubPath = github || `${title}/${title}.tsx`
 
   const tab = useTabs()
@@ -85,7 +91,7 @@ const DocumentationLayout = (props: DocQuery) => {
           <Heading as="h1" fontSize="xxxxxlarge">
             {title}
           </Heading>
-          <Status status={status || 'stable'} />
+          <Status status={status} />
         </Space>
 
         <CustomTabs>

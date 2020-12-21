@@ -267,7 +267,19 @@ const SliderValueWrapper = styled.div`
   width: calc(100% - 30px);
 `
 
-export const Slider = styled(SliderInternal)<SliderProps>`
+export const Slider = styled(SliderInternal).attrs(
+  ({
+    fontSize = 'small',
+    lineHeight = 'xsmall',
+    mt = 'medium',
+    width = '100%',
+  }) => ({
+    fontSize,
+    lineHeight,
+    mt,
+    width,
+  })
+)<SliderProps>`
   ${reset}
   ${space}
   ${width}
@@ -276,9 +288,3 @@ export const Slider = styled(SliderInternal)<SliderProps>`
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = {
-  fontSize: 'small',
-  lineHeight: 'xsmall',
-  mt: 'medium',
-  width: '100%',
-}

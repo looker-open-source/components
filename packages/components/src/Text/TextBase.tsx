@@ -58,11 +58,9 @@ export interface TextBaseProps
   breakword?: boolean
 }
 
-export const TextBase = styled.span
-  .withConfig({ shouldForwardProp })
-  .attrs((props: TextBaseProps) => ({
-    lineHeight: props.lineHeight || props.fontSize,
-  }))<TextBaseProps>`
+export const TextBase = styled.span.withConfig({
+  shouldForwardProp,
+})<TextBaseProps>`
   ${reset}
   /* fontFamily is handled by reset */
   ${fontSize}
@@ -76,5 +74,3 @@ export const TextBase = styled.span
   ${textDecoration}
   ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
 `
-
-TextBase.defaultProps = { color: 'text' }

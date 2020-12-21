@@ -25,8 +25,19 @@
  */
 
 import styled from 'styled-components'
-import { TextBase } from './TextBase'
+import { TextBase, TextBaseProps } from './TextBase'
 
-export const Code = styled(TextBase).attrs(() => ({ as: 'code' }))``
-
-Code.defaultProps = { fontFamily: 'code', fontSize: 'medium' }
+export const Code = styled(TextBase).attrs<TextBaseProps>(
+  ({
+    color = 'text',
+    fontFamily = 'code',
+    fontSize = 'medium',
+    lineHeight,
+  }) => ({
+    as: 'code',
+    color,
+    fontFamily,
+    fontSize,
+    lineHeight: lineHeight || fontSize,
+  })
+)<TextBaseProps>``

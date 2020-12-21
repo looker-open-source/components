@@ -94,7 +94,13 @@ const AvatarLayout: FC<AvatarIconProps> = ({
   )
 }
 
-export const AvatarIcon = styled(AvatarLayout)`
+export const AvatarIcon = styled(AvatarLayout).attrs(
+  ({ bg = 'background', color = 'keyFocus', size = 'small' }) => ({
+    bg,
+    color,
+    size,
+  })
+)`
   ${avatarCSS}
   ${({ role }) => role === 'button' && 'cursor: pointer;'}
   border: solid 1px currentColor;
@@ -103,9 +109,3 @@ export const AvatarIcon = styled(AvatarLayout)`
     ${size}
   }
 `
-
-AvatarIcon.defaultProps = {
-  bg: 'background',
-  color: 'keyFocus',
-  size: 'small',
-}
