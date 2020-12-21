@@ -113,6 +113,7 @@ const TreeLayout: FC<TreeProps> = ({
   branchFontWeight,
   truncate,
   dividers,
+  selected,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -167,6 +168,7 @@ const TreeLayout: FC<TreeProps> = ({
         border={hasBorder}
         depth={depth}
         disabled={disabled}
+        selected={selected}
         hovered={isHovered}
         dividers={dividers}
         branchFontWeight={branchFontWeight}
