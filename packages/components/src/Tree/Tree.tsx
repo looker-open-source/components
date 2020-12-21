@@ -65,7 +65,6 @@ export interface TreeProps
   /**
    * If true, then the Tree will have a "disabled" presentation which consists of:
    * - lighter text (text1)
-   * - different cursor (not-allowed)
    * - no bg color on hover
    * @default false
    */
