@@ -9,7 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Breakpoint` component
 - `Tree / TreeItem` disabled and selected states
+
+### Changed
+
+- `Popover` accepts new `renderMobileDialog` and `label` props
+- `DialogHeader` uses responsive padding values
+- `DialogContent` allows padding to be customized
+- `CardMedia` supports background color props
+
+### Fixed
+
+- DialogSurface now renders `aria-labelledby` attribute
 
 ## [0.9.29]
 
