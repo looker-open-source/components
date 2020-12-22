@@ -7,8 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --silent
-      - run: yarn lint
+      - run : yarn
+      - run: yarn lint:ts
+        name: 'Typescript'
+      - run: yarn lint:es
+        name: 'ESLint'
+      - run: yarn lint:css
+        name: 'Stylelint'
   test:
     name: "Tests: Jest + RTL"
     runs-on: ubuntu-latest

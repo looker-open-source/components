@@ -33,15 +33,23 @@ export interface DividerVerticalProps extends DividerProps {
   stretch?: boolean
 }
 
-export const DividerVertical = styled(DividerBase).attrs(
-  (props: DividerVerticalProps) => {
+export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
+  (props) => {
     if (props.height && props.stretch) {
       // eslint-disable-next-line no-console
       console.warn(
         'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
       )
     }
-    return { 'data-testid': 'DividerVertical', height: props.height || '1rem' }
+
+    const { height = '1rem', mx = 'xsmall', my = 'xsmall' } = props
+
+    return {
+      'data-testid': 'DividerVertical',
+      height,
+      mx,
+      my,
+    }
   }
 )<DividerVerticalProps>`
   ${space}
@@ -50,8 +58,3 @@ export const DividerVertical = styled(DividerBase).attrs(
   ${({ height, stretch }) =>
     stretch ? `align-self: stretch;` : `height: ${height};`}
 `
-
-DividerVertical.defaultProps = {
-  mx: 'xxsmall',
-  my: 'xsmall',
-}

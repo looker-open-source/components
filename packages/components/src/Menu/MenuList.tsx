@@ -62,7 +62,6 @@ import { moveFocus, useForkedRef, useWindow } from '../utils'
 import { usePopover } from '../Popover'
 import { MenuContext, MenuItemContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
-import { MenuItem } from './MenuItem'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
@@ -109,26 +108,24 @@ export interface MenuListProps
   windowing?: 'fixed' | 'variable' | 'none'
 }
 
-const isMenuGroup = (child: ReactChild) => {
-  return isValidElement(child) && child.type === MenuGroup
-}
-const isMenuItem = (child: ReactChild) => {
-  return isValidElement(child) && child.type === MenuItem
+const getBaseHeight = (compact?: boolean) => (compact ? 32 : 40)
+
+const getMenuItemHeight = (child: ReactChild, compact?: boolean) => {
+  const baseHeight = getBaseHeight(compact)
+  if (isValidElement(child) && child.props.description) {
+    return baseHeight + 12
+  }
+  return baseHeight
 }
 
-const getMenuChildHeight = (child: ReactChild, compact?: boolean) => {
-  const baseHeight = compact ? 32 : 40
-  if (isValidElement(child)) {
-    if (child.props.description) {
-      return baseHeight + 12
-    }
-    if (isMenuGroup(child) && child.props.children) {
-      // Get height of group items combined
-      const subListHeight =
-        Children.toArray(child.props.children).length * baseHeight
-      // Add group heading, padding and divider
-      return subListHeight + 24 + 16 + 1
-    }
+const getMenuGroupHeight = (child: ReactChild, compact?: boolean) => {
+  const baseHeight = getBaseHeight(compact)
+  if (isValidElement(child) && child.props.children) {
+    // Get height of group items combined
+    const subListHeight =
+      Children.toArray(child.props.children).length * baseHeight
+    // Add group heading, padding and divider
+    return subListHeight + 24 + 16 + 1
   }
   return baseHeight
 }
@@ -151,11 +148,9 @@ export const MenuListInternal = forwardRef(
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const childArray = useMemo(() => Children.toArray(children), [children])
-    if (childArray.length > 100 && windowing === undefined) {
-      const firstChild = childArray[0]
-      if (isMenuGroup(firstChild as ReactChild)) {
-        windowing = 'variable'
-      } else if (isMenuItem(firstChild as ReactChild)) {
+
+    if (windowing === undefined) {
+      if (childArray.length > 100) {
         windowing = 'fixed'
       } else {
         windowing = 'none'
@@ -182,10 +177,10 @@ export const MenuListInternal = forwardRef(
     const childHeight = useMemo(() => {
       if (windowing === 'fixed') {
         return childArray[0]
-          ? getMenuChildHeight(childArray[0] as ReactChild, compact)
+          ? getMenuItemHeight(childArray[0] as ReactChild, compact)
           : 0
       }
-      return (child: ReactChild) => getMenuChildHeight(child, compact)
+      return (child: ReactChild) => getMenuGroupHeight(child, compact)
     }, [windowing, childArray, compact])
 
     const { content, containerElement, ref } = useWindow({
@@ -257,7 +252,11 @@ const dividersStyle = ({ groupDividers = true }: MenuListProps) =>
     }
   `
 
-export const MenuList = styled(MenuListInternal)`
+export const MenuList = styled(MenuListInternal).attrs(
+  ({ minWidth = '12rem' }) => ({
+    minWidth,
+  })
+)`
   ${reset}
 
   ${height}
@@ -274,5 +273,3 @@ export const MenuList = styled(MenuListInternal)`
   user-select: none;
   ${dividersStyle}
 `
-
-MenuList.defaultProps = { minWidth: '12rem' }

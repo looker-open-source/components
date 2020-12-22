@@ -41,19 +41,25 @@ export interface LegendProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLegendElement> {}
 
-export const Legend = styled.legend.withConfig({
-  shouldForwardProp,
-})<LegendProps>`
+export const Legend = styled.legend
+  .withConfig({ shouldForwardProp })
+  .attrs<LegendProps>(
+    ({
+      color = 'text4',
+      fontFamily = 'brand',
+      fontSize = 'medium',
+      fontWeight = 'semiBold',
+      p = 'none',
+    }) => ({
+      color,
+      fontFamily,
+      fontSize,
+      fontWeight,
+      p,
+    })
+  )<LegendProps>`
   ${reset}
   ${color}
   ${space}
   ${typography}
 `
-
-Legend.defaultProps = {
-  color: 'text4',
-  fontFamily: 'brand',
-  fontSize: 'medium',
-  fontWeight: 'semiBold',
-  padding: 'none',
-}

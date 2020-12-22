@@ -239,7 +239,13 @@ const MessageBarContent = styled.div`
   padding: 0 ${({ theme: { space } }) => space.large};
 `
 
-export const MessageBar = styled(MessageBarLayout)`
+export const MessageBar = styled(MessageBarLayout).attrs(
+  ({ px = 'medium', py = 'small', width = '100%' }) => ({
+    px,
+    py,
+    width,
+  })
+)`
   ${simpleLayoutCSS}
 
   align-items: center;
@@ -249,9 +255,3 @@ export const MessageBar = styled(MessageBarLayout)`
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
-
-MessageBar.defaultProps = {
-  px: 'medium',
-  py: 'small',
-  width: '100%',
-}

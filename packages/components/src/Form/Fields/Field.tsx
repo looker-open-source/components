@@ -29,7 +29,7 @@ import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { Paragraph, Span } from '../../Text'
+import { Paragraph, Text } from '../../Text'
 import { FieldsetContext } from '../Fieldset'
 import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
@@ -146,11 +146,11 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
   )
 }
 
-const FieldDetail = styled(Span)``
-
-FieldDetail.defaultProps = {
+const FieldDetail = styled(Text).attrs(() => ({
+  color: 'inherit',
   fontSize: 'xsmall',
-}
+  lineHeight: 'xsmall',
+}))``
 
 const InputArea = styled.div`
   /* Workaround for Chip's truncate styling breaking flexbox layout in FieldChips */

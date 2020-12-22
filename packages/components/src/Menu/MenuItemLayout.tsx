@@ -85,7 +85,6 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
         space: { xxsmall, xsmall, medium },
       },
     }) => (compact ? `${xxsmall} ${medium}` : `${xsmall} ${medium}`)};
-    position: relative;
     text-align: left;
     text-decoration: none;
     width: 100%;
@@ -93,6 +92,7 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
     &:hover,
     &:focus {
       color: inherit;
+      position: relative;
       text-decoration: none;
     }
   }
@@ -119,13 +119,12 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
 
-  :hover,
-  &[aria-current='true'] {
+  &:hover {
     background: ${({ theme: { colors } }) => colors.ui1};
-    color: ${({ theme: { colors } }) => colors.text5};
   }
 
   &[aria-current='true'] {
+    background: ${({ theme: { colors } }) => colors.ui2};
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 

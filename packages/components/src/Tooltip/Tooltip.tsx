@@ -24,7 +24,17 @@
 
  */
 
-import React, { cloneElement, FC, isValidElement, ReactNode } from 'react'
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  ReactElement,
+  ReactNode,
+  Ref,
+  SyntheticEvent,
+} from 'react'
+import { UsePopoverResponseDom } from '../Popover'
+import { useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -33,13 +43,27 @@ import {
 
 type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
-export interface TooltipProps extends UseTooltipProps {
+export interface TooltipProps
+  extends UseTooltipProps,
+    Partial<UsePopoverResponseDom> {
   content: ReactNode
   /**
-   * Component to wrap. The HOC will listen for mouse events on this component, maintain the
-   * state of isOpen accordingly, and pass that state into the children or "trigger" element
+   * Component to receive tooltip behavior or render prop function that
+   * receives tooltip props and returns a component
    */
-  children: ReactNode | TooltipRenderProp
+  children:
+    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
+    | TooltipRenderProp
+}
+
+const mergeHandlers = <E extends SyntheticEvent>(
+  newHandler?: (e: E) => void,
+  existingHandler?: (e: E) => void
+) => (event: E) => {
+  existingHandler?.(event)
+  if (!event.defaultPrevented) {
+    newHandler?.(event)
+  }
 }
 
 function isRenderProp(
@@ -48,31 +72,82 @@ function isRenderProp(
   return typeof children === 'function'
 }
 
-export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
-  const { domProps, tooltip } = useTooltip(props)
+export const Tooltip = forwardRef(
+  (
+    {
+      // Props from Popover
+      'aria-expanded': ariaExpanded,
+      'aria-haspopup': ariaHaspopup,
+      onClick,
 
-  let target = children
+      children,
+      ...props
+    }: TooltipProps,
 
-  if (isValidElement(children)) {
-    target = cloneElement(children, {
-      ...domProps,
-      className:
-        `${children.props.className || ''} ${domProps.className}`.trim() ||
-        undefined,
+    // ref from Popover
+    forwardedRef: Ref<any>
+  ) => {
+    const { domProps, tooltip } = useTooltip({
+      // ariaExpanded=true indicates an open Popover – disable the tooltip
+      disabled: ariaExpanded,
+      ...props,
     })
-  } else if (isRenderProp(children)) {
-    target = children(domProps)
-  } else {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Element "${typeof target}" can't be used as target for Tooltip`
+    const {
+      className,
+      onBlur,
+      onFocus,
+      onMouseOut,
+      onMouseOver,
+      ref: tooltipRef,
+      ...restDomProps
+    } = domProps
+
+    const ref = useForkedRef(tooltipRef, forwardedRef)
+
+    let target: ReactNode = children
+
+    if (isValidElement(children)) {
+      const handlers = {
+        onBlur,
+        onClick,
+        onFocus,
+        onMouseOut,
+        onMouseOver,
+      }
+
+      const mergedHandlers = Object.keys(handlers).reduce(
+        (acc: Partial<typeof handlers>, key) => {
+          return {
+            ...acc,
+            [key]: mergeHandlers(handlers[key], children.props[key]),
+          }
+        },
+        {}
+      )
+
+      target = cloneElement(children, {
+        ...mergedHandlers,
+        ...restDomProps,
+        'aria-expanded': ariaExpanded,
+        'aria-haspopup': ariaHaspopup,
+        className:
+          `${children.props.className || ''} ${className}`.trim() || undefined,
+        ref,
+      })
+    } else if (isRenderProp(children)) {
+      target = children(domProps)
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Element "${typeof target}" can't be used as target for Tooltip`
+      )
+    }
+
+    return (
+      <>
+        {tooltip}
+        {target}
+      </>
     )
   }
-
-  return (
-    <>
-      {tooltip}
-      {target}
-    </>
-  )
-}
+)

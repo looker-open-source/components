@@ -33,18 +33,23 @@ const generateHeadingAnchor = (children?: ReactNode) => {
   return (children as string).toLowerCase().replace(/\s/g, '-')
 }
 
-const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
-  return {
-    fontWeight: 'semiBold',
-    id: generateHeadingAnchor(props.children),
-    lineHeight: 'xlarge',
+const StyledHeading = styled(Heading).attrs<HeadingProps>(
+  ({
+    children,
+    fontWeight = 'semiBold',
+    lineHeight = 'xlarge',
+    mb = 'medium',
+  }) => ({
+    fontWeight,
+    id: generateHeadingAnchor(children),
+    lineHeight,
     maxWidth: maxTextWidth,
-    mb: 'medium',
-  }
-})``
+    mb,
+  })
+)``
 
 export const h1: FC = ({ children }) => (
-  <StyledHeading as="h1" fontSize="xxlarge" fontWeight="light">
+  <StyledHeading as="h1" fontSize="xxlarge" fontWeight="normal">
     {children}
   </StyledHeading>
 )

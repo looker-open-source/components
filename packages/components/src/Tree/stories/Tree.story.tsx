@@ -30,6 +30,7 @@ import { Tree, TreeProps, TreeItem } from '..'
 
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
+export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
 export * from './Flat.story'

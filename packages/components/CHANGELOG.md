@@ -9,22 +9,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Tree / TreeItem` disabled and selected states
+
+## [0.9.29]
+
+### Fixed
+
+- Clicking outside a focus trap deactivates it
+
+## [0.9.28]
+
+### Removed
+
+- Reverted: `RangeSlider` now supports touch events
+
+## [0.9.27]
+
+### Added
+
+- `CopyToClipboard` component
+- `TreeArtificial` + dividers enabled by default
+
+### Changed
+
+- `AccordionDisclosure` now supports `SimpleLayoutProps`
+- `Combobox`, `ComboboxMulti`, `Select`, `SelectMulti` background color updates
+  - ui1 on hover
+  - keySubtle on selected
+  - keySubtle on selected + hover
+- `Tooltip` can now be nested directly inside a `Popover`
+- `Tree`
+  - Uses text5 as text color
+  - Accepts ReactNode for `label` prop
+- `TreeItem`
+  - accepts ReactNode for `children` prop
+  - background color to ui1 on hover, ui2+itemSelectedColor when selected or selected + hover
+
+### Fixed
+
+- `FieldInline` positioning correction correction. Affects:
+  - `FieldCheckbox`
+  - `FieldCheckboxGroup`
+  - `FieldRadio`
+  - `FieldRadioGroup`
+  - `FieldToggleSwitch`
+- `TabPanel` is tabbable
+- `Tree` allocates enough space for indicator icon
+
+## [0.9.26]
+
+### Added
+
 - `FadeIn`
 
 ### Changed
 
-- `MenuList` now supports windowing (virtualization)
-- Inline fields now support both `description` and `detail`
-- `DataTable` now supports `primaryAction`
-- `DataTableCell` used description instead of detail for consistency.
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
+- `DataTable` now supports `primaryAction`
+- `DataTableCell` used description instead of detail for consistency.
+- `FieldCheckbox`, `FieldToggleSwitch` & `FieldRadio` now support `description` and `detail`
+- `MenuList` now supports windowing (virtualization)
   - `ScrollLockContext` properties keys have changed to match those on `FocusTrapContext`
 - `doDataTableSort` renamed from `doDefaultDataTableSort` and received improvements
   - Supports "date" columns
   - Infers "string" for columns without an explicit type property
   - Is now a generic, and will properly set the type of the returned data to match the user's data shape
-- `Tree` restricts `label` to type string
+- `Tree` restricts `label` to string
 - `TreeItem`
   - Restricts `children` to type string
   - Nested `TreeItem`s align with sibling `Tree` labels (as opposed to `Tree` indicators)
@@ -35,20 +86,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Checkbox`'s internal input no longer overflows margin
 - `Select` / `SelectMulti` / `InputTimeSelect` clicking on the caret icon toggles the list and focuses the field if it was not already focused
 - `Tab` now displays properly in Safari
-- `Truncate` with `Link` inside will properly preserve text color from `Link`
-- update InputText and InlineInputText for disabled color on Safari.
 - `TreeGroupLabel` is now properly aligned with sibling `TreeItems` and fits the standard vertical cadence (`24px`)
-- update Select SelectMulti and Combobox replace readOnly with inputReadOnly
-- InputSearch now supports disabled and readOnly - documentation and gatsby updated
-- InputChips now supports disabled and readOnly - documentation and gatsby updated
+- `Truncate` with `Link` inside will properly preserve text color from `Link`
+- `InputText` & `InlineInputText` for disabled color on Safari.
+- `Select`, `SelectMulti` and `Combobox` replace `readOnly` with `inputReadOnly`
+- `InputSearch` now supports `disabled` and `readOnly`
+- `InputChips` now supports `disabled` and `readOnly`
 - `InputDate` removed stories that did not use `value` prop to avoid daily snapshot discrepancies
 - `RangeSlider` now supports touch events
 
 ### Removed
 
-- `useTooltip` no longer supports `surfaceStyles` property
+- `ActionList` aliases to `DataTable` removed
 - `Heading` & `Paragraph`, `Span`, `Text` no longer support `variant` (use `color` instead)
-- `ActionList` aliases to `DataTable`
+- `useTooltip` no longer supports `surfaceStyles` property
 
 ## [0.9.25]
 

@@ -75,7 +75,12 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'vertical' : resize
 
-export const TextArea = styled(TextAreaLayout)`
+export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
+  ({ resize = 'vertical', minHeight = '6.25rem' }) => ({
+    minHeight,
+    resize,
+  })
+)<TextAreaProps>`
   height: fit-content;
   position: relative;
   width: 100%;
@@ -108,10 +113,5 @@ export const TextArea = styled(TextAreaLayout)`
     ${inputTextValidation}
   }
 `
-
-TextArea.defaultProps = {
-  minHeight: '6.25rem',
-  resize: 'vertical',
-}
 
 TextArea.displayName = 'TextArea'

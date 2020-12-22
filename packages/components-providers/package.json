@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "0.9.25",
+  "version": "0.9.29",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.9.25",
+    "@looker/design-tokens": "^0.9.27",
     "lodash": "^4.17.20",
     "tabbable": "^5.1.4"
   },

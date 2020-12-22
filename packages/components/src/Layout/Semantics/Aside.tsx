@@ -36,7 +36,11 @@ export interface AsideProps extends SemanticLayoutBase {
   width?: string
 }
 
-export const Aside = styled.aside.withConfig({ shouldForwardProp })<AsideProps>`
+export const Aside = styled.aside
+  .withConfig({ shouldForwardProp })
+  .attrs<AsideProps>(({ width = '12rem' }) => ({
+    width,
+  }))<AsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};
@@ -44,5 +48,3 @@ export const Aside = styled.aside.withConfig({ shouldForwardProp })<AsideProps>`
   min-width: ${({ width }) => width};
   width: 0;
 `
-
-Aside.defaultProps = { width: '12rem' }

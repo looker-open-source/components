@@ -46,6 +46,8 @@ const mapStatusToIntent = (status: StatusLabels) => {
 }
 
 export const Status: FC<StatusProps> = ({ status }) => {
+  status = status || 'stable'
+
   return (
     <Link to="/develop/support-levels">
       <Badge intent={mapStatusToIntent(status)}>{status.toUpperCase()}</Badge>

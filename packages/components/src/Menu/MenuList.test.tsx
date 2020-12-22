@@ -95,7 +95,7 @@ describe('MenuList', () => {
     test('variable', () => {
       const arr200 = Array.from(Array(200), (_, i) => i)
       renderWithTheme(
-        <MenuList>
+        <MenuList windowing="variable">
           {arr200.map((num) => (
             <MenuGroup key={num}>
               {Array.from(Array((num + 1) % 15), (_, i) => (

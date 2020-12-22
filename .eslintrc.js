@@ -34,5 +34,13 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-restricted-properties': [
+      2,
+      {
+        message:
+          'Specifying static properties such as defaultProps can break tree shaking. Use default parameter values instead. See http://es6-features.org/#DefaultParameterValues.',
+        property: 'defaultProps',
+      },
+    ],
   },
 }

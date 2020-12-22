@@ -81,23 +81,19 @@ const AvatarPhoto = styled.object`
 
 const AvatarInitials = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs((props: AvatarUserProps) => ({
-    bg: props.color,
-  }))`
+  .attrs<AvatarUserProps>(({ color }) => ({ bg: color }))<AvatarUserProps>`
   color: ${({ theme }) => theme.colors.keyText};
 `
 
-export const AvatarUser = styled(AvatarLayout).attrs((props) => ({
-  size: props.size || 'small',
-}))`
+export const AvatarUser = styled(AvatarLayout).attrs(
+  ({ color = 'key', size = 'small' }) => ({
+    color,
+    size,
+  })
+)`
   ${avatarCSS}
   ${({ role }) => role === 'button' && 'cursor: pointer;'}
 
   background: currentColor;
   position: relative;
 `
-
-AvatarUser.defaultProps = {
-  color: 'key',
-  size: 'small',
-}

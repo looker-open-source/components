@@ -105,6 +105,16 @@ export const activateFocusTrap = (container: HTMLElement) => {
       node.select()
     }
   }
+
+  // This needs to be done on mousedown and touchstart instead of click
+  // so that it precedes the focus event.
+  const checkPointerDown = function (e: MouseEvent | TouchEvent) {
+    if (!container.contains(e.target as Node)) {
+      // immediately deactivate the trap
+      deactivate()
+    }
+  }
+
   // In case focus escapes the trap for some strange reason, pull it back in.
   const checkFocusIn = (e: FocusEvent) => {
     // In Firefox when you Tab out of an iframe the Document is briefly focused.
@@ -135,6 +145,14 @@ export const activateFocusTrap = (container: HTMLElement) => {
   }
 
   document.addEventListener('focusin', checkFocusIn, true)
+  document.addEventListener('mousedown', checkPointerDown, {
+    capture: true,
+    passive: false,
+  })
+  document.addEventListener('touchstart', checkPointerDown, {
+    capture: true,
+    passive: false,
+  })
   document.addEventListener('keydown', checkKey, {
     capture: true,
     passive: false,
@@ -145,9 +163,11 @@ export const activateFocusTrap = (container: HTMLElement) => {
   }, 0)
 
   // Deactivate function
-  return () => {
+  const deactivate = () => {
     clearTimeout(t)
     document.removeEventListener('focusin', checkFocusIn, true)
+    document.removeEventListener('mousedown', checkPointerDown, true)
+    document.removeEventListener('touchstart', checkPointerDown, true)
     document.removeEventListener('keydown', checkKey, true)
 
     // If focus lands on the body, move it back to where it was before the trap
@@ -161,4 +181,5 @@ export const activateFocusTrap = (container: HTMLElement) => {
       elementToFocus.removeAttribute('data-notooltip')
     }
   }
+  return deactivate
 }

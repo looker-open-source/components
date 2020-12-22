@@ -26,16 +26,12 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import {
-  tableSectionCSS,
-  tableSectionDefaults,
-  TableSectionProps,
-} from './tableSection'
+import { tableSectionCSS, TableSectionProps } from './tableSection'
 
-export const TableBody = styled.tbody.withConfig({
-  shouldForwardProp,
-})<TableSectionProps>`
+export const TableBody = styled.tbody
+  .withConfig({ shouldForwardProp })
+  .attrs<TableSectionProps>(({ textAlign = 'left' }) => ({
+    textAlign,
+  }))<TableSectionProps>`
   ${tableSectionCSS}
 `
-
-TableBody.defaultProps = tableSectionDefaults

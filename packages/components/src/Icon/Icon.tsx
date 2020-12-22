@@ -96,7 +96,12 @@ const IconLayout = forwardRef(
 
 IconLayout.displayName = 'IconLayout'
 
-export const Icon = styled(IconLayout)<IconProps>`
+export const Icon = styled(IconLayout).attrs<IconProps>(
+  ({ display = 'inline-flex', size = 'medium' }) => ({
+    display,
+    size,
+  })
+)<IconProps>`
   ${sizeSimpleLayoutCSS}
   ${color}
   align-items: center;
@@ -107,5 +112,3 @@ export const Icon = styled(IconLayout)<IconProps>`
     width: 100%;
   }
 `
-
-Icon.defaultProps = { display: 'inline-flex', size: 'medium' }

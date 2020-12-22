@@ -25,10 +25,11 @@
  */
 
 import 'jest-styled-components'
-import React from 'react'
+import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
+import { Popover } from '../Popover'
 import { Tooltip } from './Tooltip'
 
 describe('Tooltip', () => {
@@ -169,5 +170,75 @@ describe('Tooltip', () => {
 
     runTimers()
     expect(tooltip).not.toBeInTheDocument()
+  })
+
+  test('nested in a Popover', () => {
+    const mockHandlers = {
+      onBlur: jest.fn(),
+      onClick: jest.fn(),
+      onFocus: jest.fn(),
+      onMouseOut: jest.fn(),
+      onMouseOver: jest.fn(),
+    }
+
+    renderWithTheme(
+      <Popover content="Some popover">
+        <Tooltip content="Some tooltip">
+          <Button {...mockHandlers}>Open</Button>
+        </Tooltip>
+      </Popover>
+    )
+
+    const button = screen.getByText('Open')
+
+    fireEvent.focus(button)
+    expect(mockHandlers.onFocus).toHaveBeenCalled()
+
+    runTimers()
+    expect(screen.getByText('Some tooltip')).toBeVisible()
+
+    fireEvent.click(button)
+    expect(screen.getByText('Some popover')).toBeVisible()
+    expect(screen.queryByText('Some tooltip')).not.toBeInTheDocument()
+    expect(mockHandlers.onClick).toHaveBeenCalled()
+
+    fireEvent.mouseOut(button)
+    expect(mockHandlers.onMouseOut).toHaveBeenCalled()
+    fireEvent.mouseOver(button)
+    expect(mockHandlers.onMouseOver).toHaveBeenCalled()
+    expect(screen.queryByText('Some tooltip')).not.toBeInTheDocument()
+
+    fireEvent.blur(button)
+    expect(mockHandlers.onBlur).toHaveBeenCalled()
+
+    fireEvent.click(document)
+  })
+
+  test('with nested autoFocus input', () => {
+    const AutoFocusInput = () => {
+      const [show, setShow] = useState(false)
+      return (
+        <>
+          <Button onClick={() => setShow(true)}>Click</Button>
+          {show && (
+            <Tooltip
+              content="See what happens when you scroll"
+              placement="right"
+            >
+              <div>
+                <input type="text" autoFocus />
+              </div>
+            </Tooltip>
+          )}
+        </>
+      )
+    }
+
+    renderWithTheme(<AutoFocusInput />)
+    fireEvent.click(screen.getByText('Click'))
+    runTimers()
+    expect(screen.getByRole('tooltip')).toBeVisible()
+
+    fireEvent.blur(screen.getByRole('textbox'))
   })
 })

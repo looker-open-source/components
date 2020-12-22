@@ -109,10 +109,10 @@ export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${space}
 `
 
-const ButtonOuter = styled.button.withConfig({
-  shouldForwardProp,
-})<ButtonProps>`
-  ${({ color, focusVisible }) => buttonCSS(color || 'key', focusVisible)}
+const ButtonOuter = styled.button
+  .withConfig({ shouldForwardProp })
+  .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
+  ${({ color, focusVisible }) => buttonCSS(color, focusVisible)}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
 

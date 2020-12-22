@@ -51,10 +51,10 @@ export interface ExtendedDateTimeFormatOptions
 
 export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
-  date,
+  date = true,
   format = 'medium',
   locale = Locales.English,
-  time,
+  time = true,
   timeZone,
 }) => {
   const repetitions = {
@@ -83,10 +83,4 @@ export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   } catch (error) {
     return <>{error}</>
   }
-}
-
-DateTimeFormat.defaultProps = {
-  date: true,
-  format: 'medium',
-  time: true,
 }

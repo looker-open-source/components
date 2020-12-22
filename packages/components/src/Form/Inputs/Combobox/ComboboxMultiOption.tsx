@@ -36,7 +36,6 @@ import {
   ComboboxMultiContextProps,
 } from './ComboboxContext'
 import {
-  comboboxOptionDefaultProps,
   ComboboxOptionProps,
   comboboxOptionStyle,
   ComboboxOptionWrapper,
@@ -91,6 +90,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         {...optionEvents}
         ref={ref}
         aria-selected={isActive}
+        isSelected={isSelected}
       >
         <ComboboxOptionIndicator
           indicator={indicator}
@@ -108,10 +108,22 @@ const ComboboxMultiOptionInternal = forwardRef(
 
 ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
-export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
+export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal).attrs(
+  ({
+    color = 'text4',
+    display = 'flex',
+    fontSize = 'small',
+    lineHeight = 'small',
+    px = 'xsmall',
+    py = 'xxsmall',
+  }) => ({
+    color,
+    display,
+    fontSize,
+    lineHeight,
+    px,
+    py,
+  })
+)`
   ${comboboxOptionStyle}
 `
-
-ComboboxMultiOption.defaultProps = {
-  ...comboboxOptionDefaultProps,
-}

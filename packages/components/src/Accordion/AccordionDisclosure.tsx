@@ -44,13 +44,15 @@ import {
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
     Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
-    CompatibleHTMLProps<HTMLElement> {
+    CompatibleHTMLProps<HTMLElement>,
+    SimpleLayoutProps {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
@@ -126,9 +128,12 @@ interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
   focusVisible: boolean
 }
 
-export const AccordionDisclosureStyle = styled.div.withConfig({
-  shouldForwardProp,
-})<AccordionDisclosureStyleProps>`
+export const AccordionDisclosureStyle = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<AccordionDisclosureProps>(({ px = 'none', py = 'xsmall' }) => ({
+    px,
+    py,
+  }))<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
@@ -142,16 +147,13 @@ export const AccordionDisclosureStyle = styled.div.withConfig({
   width: 100%;
 `
 
-AccordionDisclosureStyle.defaultProps = {
-  px: 'none',
-  py: 'xsmall',
-}
-
-export const AccordionDisclosure = styled(AccordionDisclosureInternal)`
+export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
+  (props) => ({
+    fontSize: 'small',
+    fontWeight: 'semiBold',
+    ...props,
+  })
+)`
   ${typography}
+  ${simpleLayoutCSS}
 `
-
-AccordionDisclosure.defaultProps = {
-  fontSize: 'small',
-  fontWeight: 'semiBold',
-}

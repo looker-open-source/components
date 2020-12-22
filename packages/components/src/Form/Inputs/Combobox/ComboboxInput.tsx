@@ -233,10 +233,10 @@ export const comboboxStyles = css<{ inputReadOnly?: boolean }>`
       : ''}
 `
 
-export const ComboboxInput = styled(ComboboxInputInternal)`
+export const ComboboxInput = styled(ComboboxInputInternal).attrs(
+  ({ width = '100%' }) => ({
+    width,
+  })
+)`
   ${comboboxStyles}
 `
-
-ComboboxInput.defaultProps = {
-  width: '100%',
-}

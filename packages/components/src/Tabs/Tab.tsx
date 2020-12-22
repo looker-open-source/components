@@ -169,11 +169,16 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
 
 TabJSX.displayName = 'TabJSX'
 
-export const Tab = styled(TabJSX)``
-
-Tab.defaultProps = {
-  fontSize: 'small',
-  fontWeight: 'medium',
-  pb: 'small',
-  pt: 'xsmall',
-}
+export const Tab = styled(TabJSX).attrs(
+  ({
+    fontSize = 'small',
+    fontWeight = 'medium',
+    pb = 'small',
+    pt = 'xsmall',
+  }) => ({
+    fontSize,
+    fontWeight,
+    pb,
+    pt,
+  })
+)``

@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import {
   IconButton,
   Menu,
@@ -33,9 +33,14 @@ import {
   MenuItem,
   Tooltip,
   usePopover,
+  Accordion,
+  AccordionContent,
+  AccordionDisclosure,
+  Space,
+  Truncate,
   Badge,
 } from '../..'
-import { TreeItem, Tree, TreeGroup } from '..'
+import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -68,13 +73,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
                 icon="Pivot"
                 label="Pivot"
                 tooltipPlacement="top"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  alert('Pivot')
-                }}
-                onKeyDown={(event) => {
-                  event.stopPropagation()
-                }}
+                onClick={() => alert('Pivot')}
               />
               <IconButton
                 ref={ref}
@@ -99,10 +98,10 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
               </MenuDisclosure>
             </>
           }
+          detailAccessory={true}
           detailHoverDisclosure={!overlay}
-          onClick={() => alert('Clicked on cost!')}
-          onMetaEnter={() => alert("Cmd + Enter'ed on cost!")}
-          selected={!!overlay}
+          onClick={() => alert(`Clicked on ${children}!`)}
+          onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
           truncate={truncate}
         >
           {children}
@@ -112,19 +111,9 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
   )
 }
 
-const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
-  children,
-  defaultOpen,
-}) => (
-  <Tree
-    defaultOpen={defaultOpen}
-    detail={<Badge intent="inform">1</Badge>}
-    detailAccessory
-    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
-    indicatorPosition="right"
-    label={children}
-  >
-    <TreeGroup label="DIMENSIONS">
+const fields = (
+  <TreeArtificial>
+    <TreeGroup label="DIMENSIONS" labelColor="text1">
       <Tree branchFontWeight label="Created">
         <PickerItem>Created Date</PickerItem>
         <PickerItem>Created Month</PickerItem>
@@ -135,20 +124,38 @@ const ViewTree: FC<{ children: string; defaultOpen?: boolean }> = ({
       <PickerItem>ID</PickerItem>
     </TreeGroup>
     <TreeGroup label="MEASURES" color="orange">
-      <Tree branchFontWeight label="My Measure Group">
-        <PickerItem>Count of IDs</PickerItem>
-        <PickerItem>Count of Cities</PickerItem>
-      </Tree>
       <PickerItem>Sum</PickerItem>
       <PickerItem>Max</PickerItem>
     </TreeGroup>
-  </Tree>
+  </TreeArtificial>
+)
+
+const ViewAccordion: FC<{
+  children: ReactNode
+  defaultOpen?: boolean
+  label: string
+}> = ({ children, defaultOpen, label }) => (
+  <Accordion
+    defaultOpen={defaultOpen}
+    indicatorSize="xxsmall"
+    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
+  >
+    <AccordionDisclosure px="xxsmall" py="none" fontSize="xsmall">
+      <Space between>
+        <Truncate>{label}</Truncate>
+        <Badge intent="inform">1</Badge>
+      </Space>
+    </AccordionDisclosure>
+    <AccordionContent>{children}</AccordionContent>
+  </Accordion>
 )
 
 export const FieldPicker = () => (
   <>
-    <ViewTree defaultOpen={true}>Orders</ViewTree>
-    <ViewTree>Orders Items</ViewTree>
-    <ViewTree>Users</ViewTree>
+    <ViewAccordion defaultOpen={true} label="Orders">
+      {fields}
+    </ViewAccordion>
+    <ViewAccordion label="Order Items">{fields}</ViewAccordion>
+    <ViewAccordion label="Users">{fields}</ViewAccordion>
   </>
 )

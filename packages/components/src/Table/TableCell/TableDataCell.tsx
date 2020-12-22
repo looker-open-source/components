@@ -32,18 +32,18 @@ export interface TableDataCellProps
   extends TableCellProps,
     Omit<CompatibleHTMLProps<HTMLTableDataCellElement>, 'color'> {}
 
-export const TableDataCell = styled.td.withConfig({
-  shouldForwardProp,
-})<TableDataCellProps>`
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const TableDataCell = styled.td
+  .withConfig({ shouldForwardProp })
+  .attrs<TableDataCellProps>(
+    ({ borderColor = 'ui2', borderTop = 'solid 1px' }) => ({
+      borderTop,
+      borderColor,
+      /**
+       * It's important that `borderColor` go after `borderTop`,
+       *   otherwise borderColor is inferred to black
+       **/
+    })
+  )<TableDataCellProps>`
   ${tableCellCSS}
 `
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-TableDataCell.defaultProps = {
-  borderTop: 'solid 1px',
-  borderColor: 'ui2',
-  /**
-   * It's important that `borderColor` go after `borderTop`,
-   *   otherwise borderColor is inferred to black
-   **/
-}
