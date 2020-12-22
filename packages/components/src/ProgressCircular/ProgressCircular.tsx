@@ -48,7 +48,7 @@ export interface ProgressCircularProps {
    */
   progress?: number
   /**
-   * Accessible label for Circular Progress
+   * Accessible label
    */
   label?: string
 }

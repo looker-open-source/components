@@ -34,14 +34,14 @@ const Template: Story<ProgressCircularProps> = (args) => (
 
 export const Indeterminate = Template.bind({})
 Indeterminate.args = {
-  determainate: false,
+  determinate: false,
   progress: 0,
   size: 'large',
 }
 
 export const Determinate = Template.bind({})
 Determinate.args = {
-  determainate: true,
+  determinate: true,
   progress: 0.5,
   size: 'large',
 }
