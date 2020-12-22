@@ -84,7 +84,7 @@ export const itemBuilder = (
             {name}
           </Link>
         </DataTableCell>
-        <DataTableCell aria-label={`${status} icon`}>
+        <DataTableCell>
           <Tooltip content={status}>
             <Status
               intent={
@@ -94,6 +94,7 @@ export const itemBuilder = (
                   ? 'warn'
                   : 'positive'
               }
+              label={status}
               size="xsmall"
             />
           </Tooltip>

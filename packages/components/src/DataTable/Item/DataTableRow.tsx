@@ -66,7 +66,6 @@ const DataTableRowLayout = forwardRef(
       onClick,
       onKeyDown,
       secondary,
-      tabIndex,
     } = props
 
     const ColumnType = isHeaderRow ? 'th' : 'td'

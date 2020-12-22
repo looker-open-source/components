@@ -36,8 +36,8 @@ import { DataTableFilters } from './Filters/DataTableFilters'
 import { Table } from './Table'
 
 export interface DataTableProps {
-  caption: string
   children: ReactNode
+  caption: string
   columns: DataTableColumns
   className?: string
 
@@ -148,8 +148,8 @@ export interface BulkActionsConfig {
 export const DataTableLayout: FC<DataTableProps> = (props) => {
   const {
     bulk,
-    caption,
     className,
+    caption,
     columns,
     filterConfig,
     firstColumnStuck: explicitFirstColumnStuck,

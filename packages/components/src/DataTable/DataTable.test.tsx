@@ -669,18 +669,21 @@ describe('DataTable', () => {
         type: 'string',
       },
     ]
-    // test('Table has caption', () => {
-    //   const { getByText } = renderWithTheme(
-    //     <DataTable
-    //       caption="this is a table's caption"
-    //       columns={columns}
-    //       select={defaultSelectConfig}
-    //     >
-    //       {items}
-    //     </DataTable>
-    //   )
-    //   expect(getByText("this is a table's caption")).toBeInTheDocument()
-    // })
+    test('Table has aria-label', () => {
+      const { getByRole } = renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          select={defaultSelectConfig}
+        >
+          {items}
+        </DataTable>
+      )
+      expect(getByRole('table')).toHaveAttribute(
+        'aria-label',
+        "this is a table's caption"
+      )
+    })
 
     test('Table has role=rowheader for first column elements', () => {
       const { getByText } = renderWithTheme(

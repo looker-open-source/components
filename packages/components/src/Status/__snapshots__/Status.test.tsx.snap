@@ -31,24 +31,28 @@ exports[`critical Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
-  className="c0 c1"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={false}
+    className="c0 c1"
   >
-    <title>
-      Error
-    </title>
-    <path
-      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>
+        Error
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -83,24 +87,28 @@ exports[`inform Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
-  className="c0 c1"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={false}
+    className="c0 c1"
   >
-    <title>
-      Inform
-    </title>
-    <path
-      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>
+        Inform
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -135,21 +143,25 @@ exports[`neutral status 1`] = `
 }
 
 <div
-  aria-hidden={true}
-  className="c0 c1"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={true}
+    className="c0 c1"
   >
-    <path
-      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -184,24 +196,28 @@ exports[`positive Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
-  className="c0 c1"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={false}
+    className="c0 c1"
   >
-    <title>
-      Success
-    </title>
-    <path
-      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>
+        Success
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -236,23 +252,27 @@ exports[`warn Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
-  className="c0 c1"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 22 19"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={false}
+    className="c0 c1"
   >
-    <title>
-      Warning
-    </title>
-    <path
-      d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
