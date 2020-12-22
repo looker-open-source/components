@@ -63,7 +63,8 @@ export interface PopoverProps extends UsePopoverProps {
    */
   renderMobileDialog?: boolean
   /**
-   * Populate dialog header content when renderMobileDialog is true
+   * Aria label string used to describe the popover content.
+   * It is also rendered as dialog header content when renderMobileDialog is true
    */
   label?: string
 }
