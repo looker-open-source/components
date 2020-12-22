@@ -52,6 +52,8 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   renderedHeight,
+  px = ['medium', 'xlarge'],
+  py = 'xxxsmall',
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
@@ -76,7 +78,7 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
       ref={internalRef}
       {...omit(omitStyledProps(props), ['renderedHeight'])}
     >
-      <Inner overflowed={overflow} {...pickStyledProps(props)}>
+      <Inner px={px} py={py} overflowed={overflow} {...pickStyledProps(props)}>
         {children}
       </Inner>
     </div>
@@ -120,9 +122,4 @@ export const DialogContent = (props: DialogContentProps) => {
       )}
     </ReactResizeDetector>
   )
-}
-
-DialogContent.defaultProps = {
-  px: ['medium', 'xlarge'],
-  py: 'xxxsmall',
 }
