@@ -72,7 +72,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   )
 }
 
-const TextAreaResize = (resize?: TextAreaResize) =>
+const textAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'vertical' : resize
 
 export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
@@ -96,7 +96,7 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     ${inputCSS}
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
-    resize: ${(props) => TextAreaResize(props.resize)};
+    resize: ${(props) => textAreaResize(props.resize)};
     width: 100%;
 
     &:hover {

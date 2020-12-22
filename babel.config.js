@@ -25,10 +25,10 @@
  */
 
 module.exports = (api) => {
-  const isTest = api.env('test')
+  // const isTest = api.env('test')
   api.cache(true)
 
-  const ignore = isTest ? [] : ['node_modules']
+  // const ignore = isTest ? [] : ['node_modules']
 
   const plugins = [
     ['babel-plugin-styled-components', { pure: true }],
@@ -40,13 +40,9 @@ module.exports = (api) => {
 
   return {
     env: {
-      development: {
-        ignore,
-        plugins,
-      },
       production: {
         ignore: [
-          ...ignore,
+          'node_modules',
           '**/*.d.ts',
           '**/*.test.js',
           '**/*.test.jsx',
@@ -58,17 +54,25 @@ module.exports = (api) => {
           '__tests__',
         ],
         plugins,
+        presets: [
+          ['@babel/preset-env', { modules: false }],
+          '@babel/preset-react',
+          '@babel/preset-typescript',
+        ],
       },
     },
-
+    plugins,
     presets: [
-      ['@babel/preset-env', { modules: false }],
       [
-        '@babel/preset-react',
+        '@babel/preset-env',
         {
-          development: process.env.BABEL_ENV !== 'production',
+          targets: {
+            esmodules: true,
+          },
+          useBuiltIns: false,
         },
       ],
+      ['@babel/preset-react', { development: true }],
       '@babel/preset-typescript',
     ],
   }

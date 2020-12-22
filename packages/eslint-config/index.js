@@ -75,6 +75,7 @@ module.exports = {
     'import/order': 'error',
     indentation: 'off',
     'no-console': 'warn',
+    'no-undef': 'off', // Not needed with TS around
     'prettier/prettier': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
