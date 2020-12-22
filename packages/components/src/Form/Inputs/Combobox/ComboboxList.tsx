@@ -41,6 +41,7 @@ import {
 import React, {
   forwardRef,
   Ref,
+  useCallback,
   useContext,
   useLayoutEffect,
   useEffect,
@@ -49,6 +50,7 @@ import styled, { css } from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
+import { useResize } from '../../../utils'
 import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -212,6 +214,12 @@ const ComboboxListInternal = forwardRef(
       popperInstanceRef.current && popperInstanceRef.current.update()
     }, [popperInstanceRef, valueLength])
 
+    const resizeListener = useCallback(() => {
+      setListClientRect?.(contentContainer?.getBoundingClientRect())
+    }, [setListClientRect, contentContainer])
+
+    useResize(contentContainer, resizeListener)
+
     useEffect(() => {
       // track scroll position and menu dom rectangle, and bubble up to context.
       // used in InputTimeSelect for managing very long lists
@@ -229,22 +237,14 @@ const ComboboxListInternal = forwardRef(
         }
       }, 50)
 
-      const resizeListener = throttle(() => {
-        if (contentContainer && setListClientRect) {
-          setListClientRect(contentContainer.getBoundingClientRect())
-        }
-      }, 50)
-
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
         scrollListener()
-        window.addEventListener('resize', resizeListener)
       }
 
       return () => {
         contentContainer &&
           contentContainer.removeEventListener('scroll', scrollListener)
-        window.removeEventListener('resize', resizeListener)
 
         setListScrollPosition && setListScrollPosition(0)
         setListClientRect && setListClientRect(undefined)
@@ -268,6 +268,7 @@ const ComboboxUl = styled.ul.withConfig({
   margin: 0;
   max-height: 30rem;
   outline: none;
+  position: relative;
   ${layout}
 `
 
