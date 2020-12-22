@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Tree / TreeItem` disabled and selected states
 
+### Fixed
+
+- Erratic scrolling after dynamic list resize in all `Combobox`-based components
+
 ## [0.9.29]
 
 ### Fixed
