@@ -64,7 +64,10 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
     }
   }
 
-  useResize(document && document.body, handleResize)
+  useResize(
+    typeof document === 'undefined' ? null : document.body,
+    handleResize
+  )
 
   const screenMin = from === 'mobile' ? 0 : breakpointPx[fromIndex - 1] // mobile screens start at 0px
   const screenMax = to === 'xl' ? Infinity : breakpointPx[toIndex] // xl includes xl breakpoint and above

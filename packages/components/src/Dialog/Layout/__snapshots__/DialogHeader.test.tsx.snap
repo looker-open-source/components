@@ -150,6 +150,7 @@ exports[`DialogHeader Snapshot 1`] = `
 >
   <h3
     className="c1 c2"
+    id="dialog-header"
     style={
       Object {
         "gridArea": "text",
