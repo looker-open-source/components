@@ -79,12 +79,12 @@ Dialogs break out of the standard application flow and UI to present new informa
 
 ```jsx
 ;() => {
-  const { open, dialog } = useDialog({ content: 'My Neat Dialog' })
+  const { dialog, setOpen } = useDialog({ content: 'My Neat Dialog' })
 
   return (
     <>
       {dialog}
-      <ButtonOutline onClick={open}>Open Dialog</ButtonOutline>
+      <ButtonOutline onClick={setOpen}>Open Dialog</ButtonOutline>
     </>
   )
 }
