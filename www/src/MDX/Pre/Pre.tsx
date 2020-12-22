@@ -27,8 +27,8 @@
 import { Language } from 'prism-react-renderer'
 import React from 'react'
 
-import CodeSandbox from './CodeSandbox'
-import CodeStatic from './CodeStatic'
+import { CodeSandbox } from './CodeSandbox'
+import { CodeStatic } from './CodeStatic'
 
 interface PreProps {
   children: {
@@ -43,7 +43,7 @@ interface PreProps {
   }
 }
 
-const Pre = ({ children }: PreProps) => {
+export const Pre = ({ children }: PreProps) => {
   const { className } = children.props
   const trimmedClassName = className
     ? className.replace(/language-/, '')
@@ -58,5 +58,3 @@ const Pre = ({ children }: PreProps) => {
     return <CodeSandbox code={code} language={language} />
   }
 }
-
-export default Pre

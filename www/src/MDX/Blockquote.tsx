@@ -27,7 +27,7 @@
 import styled from 'styled-components'
 import { maxTextWidth } from './styles'
 
-const Blockquote = styled.blockquote`
+export const Blockquote = styled.blockquote`
   font-weight: 300;
   max-width: ${maxTextWidth};
   ${({ theme: { fontSizes, lineHeights, space, colors, radii } }) => `
@@ -43,5 +43,3 @@ const Blockquote = styled.blockquote`
     font-weight: 600;
   }
 `
-
-export default Blockquote

@@ -56,7 +56,7 @@ const transformCode = (code: string) => {
   }
 }
 
-const CodeSandbox = ({
+export const CodeSandbox = ({
   code,
   language,
   editorVisible = true,
@@ -126,8 +126,6 @@ const CodeSandbox = ({
     </SandboxWrapper>
   )
 }
-
-export default CodeSandbox
 
 interface LiveProps {
   code: string
