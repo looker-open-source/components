@@ -91,7 +91,7 @@ describe('DataTableCheckbox', () => {
     )
     expect(container.firstChild).toHaveAttribute(
       'aria-labelledby',
-      'primaryColumn'
+      'rowheader-primaryColumn'
     )
   })
 })

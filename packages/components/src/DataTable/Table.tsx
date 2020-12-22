@@ -70,8 +70,10 @@ export const TableLayout: FC<TableProps> = ({
   return (
     <>
       <TableScroll ref={ref}>
-        <table className={overflow ? `${className} overflow` : className}>
-          <caption>{caption}</caption>
+        <table
+          aria-label={caption}
+          className={overflow ? `${className} overflow` : className}
+        >
           <thead>
             <DataTableHeader id={headerRowId} />
           </thead>
@@ -169,12 +171,6 @@ export const Table = styled(TableLayout)`
   line-height: 1;
   width: 100%;
 
-  caption {
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    width: 1px;
-  }
   td,
   th {
     height: ${densityTarget}; /* acts like min-height */
