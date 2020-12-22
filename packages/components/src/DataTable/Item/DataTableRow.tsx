@@ -61,6 +61,7 @@ const DataTableRowLayout = forwardRef(
       className,
       hasCheckbox,
       children,
+      id,
       isHeaderRow,
       onClick,
       onKeyDown,
@@ -77,7 +78,10 @@ const DataTableRowLayout = forwardRef(
         return null
       } else if (isValidElement(child)) {
         const size = getColumnSize(index)
-        const cellProps = index === 0 ? { role: 'rowheader', size } : { size }
+        const cellProps =
+          index === 0
+            ? { id: `rowheader-${id}`, role: 'rowheader', size }
+            : { size }
         return cloneElement(child, cellProps)
       } else {
         return child
@@ -94,18 +98,20 @@ const DataTableRowLayout = forwardRef(
     }
     const checkbox = hasCheckbox ? (
       <DataTableCheckbox {...pick(props, checkListProps)} />
-    ) : (
-      <div />
-    )
+    ) : undefined
     return (
       <tr
         ref={ref}
         className={className}
         onKeyDown={onKeyDown}
-        tabIndex={tabIndex}
+        // tabIndex={tabIndex}
         onClick={handleOnClick}
       >
-        <ColumnType>{checkbox}</ColumnType>
+        {hasCheckbox ? (
+          <ColumnType>{checkbox}</ColumnType>
+        ) : (
+          <ColumnType aria-hidden="true" />
+        )}
         {sizedChildren}
         <ColumnType onClick={suppressClickPropagation}>{secondary}</ColumnType>
       </tr>

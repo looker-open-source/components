@@ -50,7 +50,7 @@ export const useDataTable = (
   })
 
   return (
-    <DataTable caption="this is a table's caption" columns={columns}>
+    <DataTable caption="DataTable useDataTable" columns={columns}>
       {items}
     </DataTable>
   )

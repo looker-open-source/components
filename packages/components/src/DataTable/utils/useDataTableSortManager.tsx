@@ -70,7 +70,7 @@ export const useDataTableSortManager = (
 
   return (
     <DataTable
-      caption="this is a table's caption"
+      caption="DataTable Sort Manager"
       columns={columns}
       onSort={onSort}
     >

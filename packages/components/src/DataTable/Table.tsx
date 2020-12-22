@@ -170,7 +170,10 @@ export const Table = styled(TableLayout)`
   width: 100%;
 
   caption {
-    display: none;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
   }
   td,
   th {

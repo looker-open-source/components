@@ -68,7 +68,7 @@ For accessibility `<DataTable>` needs the `caption` prop to be supported with a 
   })
 
   return (
-    <DataTable caption="this is a table's caption" columns={columns}>
+    <DataTable caption="this is the table's caption" columns={columns}>
       {items}
     </DataTable>
   )
@@ -121,7 +121,7 @@ Passing in a React element into the `indicator` prop will display said element l
   ]
 
   return (
-    <DataTable caption="this is a table's caption" columns={columns}>
+    <DataTable caption="this is the table's caption" columns={columns}>
       <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
         <DataTableCell description={link} indicator={indicator}>
           Cheddar
@@ -163,7 +163,7 @@ To customize the "No Results" message text, use the `noResultsDisplay` prop. Str
 
   // Change state to "noResults" to render the noResultsDisplay
   return (
-    <DataTable caption="this is a table's caption" columns={columns}>
+    <DataTable caption="this is the table's caption" columns={columns}>
       <DataTableItem id={'cheddar'} onClick={() => alert(`Row clicked`)}>
         <DataTableCell>Cheddar</DataTableCell>
       </DataTableItem>
@@ -271,7 +271,7 @@ If using a custom `onSort`, make sure the function performs the following:
 
   return (
     <DataTable
-      caption="this is a table's caption"
+      caption="this is the table's caption"
       onSort={onSort}
       columns={columns}
     >
@@ -372,7 +372,7 @@ The following properties are **optional** in the object passed into the `select`
   return (
     <>
       <DataTable
-        caption="this is a table's caption"
+        caption="this is the table's caption"
         columns={columns}
         select={{
           selectedItems: selections,
@@ -459,7 +459,7 @@ The `useSelectManager` hook can be used to quickly create the standard building 
 
   return (
     <DataTable
-      caption="this is a table's caption"
+      caption="this is the table's caption"
       columns={columns}
       select={{
         onClickRowSelect: true,
@@ -571,7 +571,7 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
       <Box width="100%" mb="10px">
         <DataTable
           bulk={bulkActionsConfig}
-          caption="this is a table's caption"
+          caption="this is the table's caption"
           select={{
             onClickRowSelect: true,
             onSelect,
@@ -619,7 +619,7 @@ DataTable plays nicely with [Truncate](/components/text/truncate), when you wish
   ]
 
   return (
-    <DataTable caption="this is a table's caption" columns={columns}>
+    <DataTable caption="this is the table's caption" columns={columns}>
       <DataTableItem key="cheddar" id="cheddar">
         <DataTableCell>Cheddar</DataTableCell>
         <DataTableCell>

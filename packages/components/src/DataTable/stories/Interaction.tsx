@@ -139,7 +139,7 @@ const Template: Story<DemoProps> = ({
   return (
     <DataTable
       bulk={bulk ? bulkActionsConfig : undefined}
-      caption="this is a table's caption"
+      caption="DataTable Interactions"
       columns={cheeseColumns}
       filterConfig={filters ? filterConfig : undefined}
       select={select ? selectConfig : undefined}

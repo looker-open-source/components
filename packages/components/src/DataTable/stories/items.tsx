@@ -69,11 +69,11 @@ export const itemBuilder = (
       disabled,
     }) => (
       <DataTableItem
+        actionPrimary={actionPrimary}
         actions={actions}
         disabled={disabled}
         id={id}
         key={id}
-        actionPrimary={actionPrimary}
       >
         <DataTableCell description={type}>
           <Link
@@ -84,10 +84,9 @@ export const itemBuilder = (
             {name}
           </Link>
         </DataTableCell>
-        <DataTableCell>
+        <DataTableCell aria-label={`${status} icon`}>
           <Tooltip content={status}>
             <Status
-              size="xsmall"
               intent={
                 status === 'Out of Stock'
                   ? 'critical'
@@ -95,6 +94,7 @@ export const itemBuilder = (
                   ? 'warn'
                   : 'positive'
               }
+              size="xsmall"
             />
           </Tooltip>
         </DataTableCell>
