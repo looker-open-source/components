@@ -24,7 +24,7 @@
 
  */
 
-interface ProgressConsants {
+interface ProgressConstants {
   /**
    * Amount of the circle the arc takes up
    */
@@ -51,7 +51,7 @@ interface ProgressConsants {
   timingFunction: string
 }
 
-export const progressCircularConstants: ProgressConsants = {
+export const progressCircularConstants: ProgressConstants = {
   arcSize: 270,
   arcStartRotationInterval: 216,
   arcTime: 1333,
