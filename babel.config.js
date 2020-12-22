@@ -25,10 +25,7 @@
  */
 
 module.exports = (api) => {
-  // const isTest = api.env('test')
   api.cache(true)
-
-  // const ignore = isTest ? [] : ['node_modules']
 
   const plugins = [
     ['babel-plugin-styled-components', { pure: true }],
@@ -61,6 +58,7 @@ module.exports = (api) => {
         ],
       },
     },
+    ignore: ['node_modules'],
     plugins,
     presets: [
       [
