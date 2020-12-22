@@ -36,7 +36,7 @@ import {
   HSLColor,
 } from 'd3-color'
 import { hsv, HSVColor } from 'd3-hsv'
-import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
+import { SimpleHSV } from '../../ColorWheel/color_wheel_utils'
 import { toPercent } from './math_utils'
 import { namedColors } from './named_colors'
 

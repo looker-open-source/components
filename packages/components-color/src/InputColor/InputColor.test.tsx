@@ -30,7 +30,6 @@ import React, { FormEvent, useState } from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
-import { Button } from '../../../Button'
 import { InputColor } from './InputColor'
 
 describe('InputColor', () => {
@@ -65,7 +64,7 @@ describe('InputColor', () => {
       }
       return (
         <>
-          <Button onClick={handleClick}>Turn yellow</Button>
+          <button onClick={handleClick}>Turn yellow</button>
           <InputColor
             value={value}
             onChange={handleChange}

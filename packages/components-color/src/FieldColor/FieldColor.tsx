@@ -26,10 +26,15 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import { InputColor, InputColorProps } from '../../Inputs/InputColor/InputColor'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+  useFormContext,
+  useID,
+} from '@looker/components'
+import { InputColor, InputColorProps } from '../InputColor'
 
 export interface FieldColorProps extends FieldProps, InputColorProps {}
 

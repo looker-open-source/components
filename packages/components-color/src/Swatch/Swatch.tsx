@@ -26,18 +26,18 @@
 
 import styled from 'styled-components'
 import {
+  inputCSS,
+  inputHeight,
+  inputTextDisabled,
+  inputTextHover,
+} from '@looker/components'
+import {
   CompatibleHTMLProps,
   disabledSwatchColor,
   reset,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
-import {
-  inputCSS,
-  inputTextHover,
-  inputTextDisabled,
-} from '../../../Inputs/InputText'
-import { inputHeight } from '../../height'
 
 export interface SwatchProps
   extends WidthProps,

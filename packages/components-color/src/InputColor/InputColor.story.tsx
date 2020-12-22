@@ -54,30 +54,3 @@ ReadOnly.args = {
   ...ColorChosen.args,
   readOnly: true,
 }
-
-// import React, { useState } from 'react'
-
-// export default { title: 'Forms/Color' }
-
-// export const ControlledColor = () => {
-//   const [color, setColor] = useState('red')
-
-//   function handleChange(value: string) {
-//     setColor(value)
-//   }
-
-//   function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
-//     setColor(e.currentTarget.value)
-//   }
-
-//   return (
-//     <>
-//       <FieldSelect
-//         options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
-//         value={color}
-//         onChange={handleChange}
-//       />
-//       <FieldColor value={color} onChange={handleColorChange} />
-//     </>
-//   )
-// }

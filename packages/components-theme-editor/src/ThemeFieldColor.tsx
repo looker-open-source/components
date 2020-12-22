@@ -24,7 +24,7 @@
 
  */
 
-import { FieldColor } from '@looker/components'
+import { FieldColor } from '@looker/components-color'
 import capitalize from 'lodash/capitalize'
 import React, { FC, FormEvent } from 'react'
 import { SpecifiableColors } from '@looker/design-tokens/src'

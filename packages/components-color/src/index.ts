@@ -24,7 +24,7 @@
 
  */
 
-export * from './InputColor'
 export * from './ColorWheel'
-export * from './LuminositySlider'
+export * from './FieldColor'
+export * from './InputColor'
 export * from './Swatch'
