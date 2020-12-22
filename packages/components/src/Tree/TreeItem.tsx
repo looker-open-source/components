@@ -79,6 +79,14 @@ export interface TreeItemProps
    */
   detailHoverDisclosure?: boolean
   /**
+   * If true, then the TreeItem will have a "disabled" presentation which consists of:
+   * - lighter text (text1)
+   * - different cursor (not-allowed)
+   * - no bg color on hover
+   * @default false
+   */
+  disabled?: boolean
+  /**
    * Gap size of the internal Space component
    * @default 'xsmall'
    */
@@ -97,7 +105,8 @@ export interface TreeItemProps
    */
   onMetaEnter?: () => void
   /**
-   * Determines if this TreeItem is in a selected state or not
+   * If true, then the TreeItem will have an opaque, ui2 background
+   * @default false
    */
   selected?: boolean
   /**
@@ -109,6 +118,7 @@ export interface TreeItemProps
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
+  disabled,
   gapSize = 'xsmall',
   onMetaEnter = noop,
   selected,
@@ -215,7 +225,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         tabIndex={isTreeItemTabbable}
         {...restProps}
       >
-        <TreeItemLabel gap={gapSize} hovered={isHovered} selected={selected}>
+        <TreeItemLabel
+          gap={gapSize}
+          disabled={disabled}
+          hovered={isHovered}
+          selected={selected}
+        >
           {props.icon && (
             <PrimaryIcon name={props.icon} size={defaultIconSize} />
           )}
@@ -251,14 +266,22 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
 `
 
 interface TreeItemLabelProps {
+  disabled?: boolean
   hovered: boolean
   selected?: boolean
 }
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
-  background-color: ${({ hovered, selected, theme: { colors } }) =>
-    selected ? itemSelectedColor(colors.ui2) : hovered && colors.ui1};
+  background-color: ${({ disabled, hovered, selected, theme: { colors } }) =>
+    disabled
+      ? 'none'
+      : selected
+      ? itemSelectedColor(colors.ui2)
+      : hovered && colors.ui1};
+  color: ${({ disabled, theme: { colors } }) =>
+    disabled ? colors.text1 : colors.text5};
+  cursor: ${({ disabled }) => disabled && 'not-allowed'};
   flex: 1;
   flex-shrink: 2;
   height: 100%;

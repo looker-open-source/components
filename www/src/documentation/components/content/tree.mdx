@@ -67,6 +67,21 @@ Use the `border` prop if you would like to have vertical lines expand from your 
 </Tree>
 ```
 
+Use the `selected` prop to display a light grey background on your `Tree`.
+
+Use the `disabled` prop to present your `Tree` in a disabled state. Note that using `disabled` will not change any `Tree` behavior like opening and closing on click.
+
+```jsx
+<Tree selected label="Orders" icon="Table" defaultOpen>
+  <Tree disabled label="Created" defaultOpen>
+    <TreeItem>Created Date</TreeItem>
+    <TreeItem>Created Month</TreeItem>
+    <TreeItem>Created Year</TreeItem>
+    <TreeItem>Created Quarter</TreeItem>
+  </Tree>
+</Tree>
+```
+
 ## Truncating Tree Items & Labels
 
 Occasionally tree item labels will wrap to a second line when the text content is very long, or the available space is very narrow. The text content will wrap by default, but if that is undesirable you can use the `truncate` prop to limit text content to a single line.
@@ -175,6 +190,8 @@ Use the `icon` prop to display an icon left of the `TreeItem`'s content.
 Use the `gapSize` prop to control the distance between elements in your `TreeItem`.
 
 Use the `selected` prop to display a light grey background on a given `TreeItem`.
+
+Use the `disabled` prop to present your `TreeItem` in a disabled state.
 
 Use the `onClick` prop to trigger a callback on click or when pressing the "Enter" key on a focused `TreeItem`.
 
