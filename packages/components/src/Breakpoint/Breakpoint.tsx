@@ -47,7 +47,7 @@ export const Breakpoint: FC<BreakpointProps> = ({ children, show }) => {
   // "from mobile, to mobile"
   const [from = 'mobile', to = 'xl'] = isArray(show) ? show : [show, show]
   const [screenWidth, setScreenWidth] = useState(
-    typeof document !== undefined ? document.body.clientWidth : 800
+    typeof document === 'undefined' ? 800 : document.body.clientWidth
   )
   const theme = useContext(ThemeContext)
   const breakpointPx = theme.breakpoints.map((b: string) =>
