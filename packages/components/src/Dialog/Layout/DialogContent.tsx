@@ -36,7 +36,7 @@ import {
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import omit from 'lodash/omit'
 
 export interface DialogContentProps
@@ -75,9 +75,9 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
       ref={internalRef}
       {...omit(omitStyledProps(props), ['renderedHeight'])}
     >
-      <Inner 
-        px={['medium', 'xlarge']} 
-        py={overflow ? 'large' : 'xxxsmall'} 
+      <Inner
+        px={['medium', 'xlarge']}
+        py={overflow ? 'large' : 'xxxsmall'}
         {...pickStyledProps(props)}
       >
         {children}
