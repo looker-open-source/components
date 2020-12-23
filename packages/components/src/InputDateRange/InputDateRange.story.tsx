@@ -94,7 +94,6 @@ export const TimeframeFilter = () => {
 
   return (
     <Popover
-      renderMobileDialog
       label="Select Date"
       content={
         <PopoverContent>

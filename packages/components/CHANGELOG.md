@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `Popover` accepts new `renderMobileDialog` and `label` props
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
 

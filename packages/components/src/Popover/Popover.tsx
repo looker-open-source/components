@@ -31,8 +31,6 @@ import React, {
   cloneElement,
 } from 'react'
 import { useHovered } from '../utils'
-import { Breakpoint } from '../Breakpoint'
-import { useDialog, DialogRender, DialogHeader, DialogContent } from '../Dialog'
 import {
   usePopover,
   UsePopoverProps,
@@ -57,39 +55,14 @@ export interface PopoverProps extends UsePopoverProps {
    * The element which hovering on/off of will show/hide the triggering element
    */
   hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
-  /**
-   * Convert popover to full-screen dialog on mobile
-   * @default false
-   */
-  renderMobileDialog?: boolean
-  /**
-   * Aria label string used to describe the popover content.
-   * It is also rendered as dialog header content when renderMobileDialog is true
-   */
-  label?: string
 }
 
 export const Popover = ({
   children,
   hoverDisclosureRef,
-  renderMobileDialog = false,
-  label,
-  content,
   ...props
 }: PopoverProps) => {
-  const { domProps, isOpen, popover } = usePopover({
-    ...props,
-    content,
-  })
-  const dialogProps = useDialog({
-    content: (
-      <>
-        <DialogHeader>{label}</DialogHeader>
-        <DialogContent px="none">{content}</DialogContent>
-      </>
-    ),
-    height: '100vh',
-  })
+  const { domProps, isOpen, popover } = usePopover(props)
 
   if (isValidElement(children)) {
     children = cloneElement(children, {
@@ -109,17 +82,8 @@ export const Popover = ({
 
   return (
     <>
-      {/* if renderMobileDialog is true, only render standard popover for `tablet` and larger */}
-      <Breakpoint show={[renderMobileDialog ? 'tablet' : 'mobile', undefined]}>
-        {popover}
-        {triggerShown && children}
-      </Breakpoint>
-      {/* if renderMobileDialog is true, render Dialog on mobile instead */}
-      {renderMobileDialog && (
-        <Breakpoint show="mobile">
-          <DialogRender {...dialogProps}>{children}</DialogRender>
-        </Breakpoint>
-      )}
+      {popover}
+      {triggerShown && children}
     </>
   )
 }
