@@ -123,6 +123,9 @@ export interface TreeItemProps
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
+  brand: propsBrand,
+  detailAccessory: propsDetailAccessory,
+  detailHoverDisclosure: propsDetailHoverDisclosure,
   disabled,
   gapSize = 'xsmall',
   onMetaEnter = noop,
@@ -142,23 +145,17 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     onKeyDown = noop,
     onKeyUp = noop,
     ...restProps
-  } = Omit(props, [
-    'color',
-    'detail',
-    'detailAccessory',
-    'detailHoverDisclosure',
-    'icon',
-  ])
+  } = Omit(props, ['color', 'detail', 'icon'])
 
-  const brand = undefinedCoalesce([props.brand, treeContext.brand])
+  const brand = undefinedCoalesce([propsBrand, treeContext.brand])
 
   const detailAccessory = undefinedCoalesce([
-    props.detailAccessory,
+    propsDetailAccessory,
     treeContext.detailAccessory,
   ])
 
   const detailHoverDisclosure = undefinedCoalesce([
-    props.detailHoverDisclosure,
+    propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
   ])
 
