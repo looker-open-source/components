@@ -26,17 +26,21 @@
 
 import { Theme } from '@looker/design-tokens'
 
-interface TreeState {
+interface BackgroundStyleProps {
+  brand?: boolean
   disabled?: boolean
   hovered?: boolean
   selected?: boolean
+  theme: Theme
 }
 
-export const getBackgroundColor = (
-  brand: boolean,
-  { disabled, hovered, selected }: TreeState,
-  { colors }: Theme
-) => {
+export const getBackgroundColor = ({
+  brand,
+  disabled,
+  hovered,
+  selected,
+  theme: { colors },
+}: BackgroundStyleProps) => {
   const brandColors = {
     all: colors.keyAccent,
     hovered: colors.ui1,
@@ -49,9 +53,9 @@ export const getBackgroundColor = (
   }
   const stateColors = brand ? brandColors : defaultColors
 
-  if (disabled) return 'none'
+  if (disabled) return colors.background
   if (selected && hovered) return stateColors.all
   if (selected) return stateColors.selected
   if (hovered) return stateColors.hovered
-  return 'none'
+  return colors.background
 }
