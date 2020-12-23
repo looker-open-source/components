@@ -35,7 +35,7 @@ import React, {
   useState,
   Fragment,
 } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   color,
   CompatibleHTMLProps,
@@ -281,17 +281,16 @@ interface TreeItemLabelProps {
   selected?: boolean
 }
 
-export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
-  align-items: center;
-  background-color: ${({ brand, disabled, hovered, selected, theme }) => {
-    if (selected && !brand) return itemSelectedColor(theme.colors.ui2)
+const getLabelBackground = css<TreeItemLabelProps>`
+  background-color: ${(props) =>
+    props.selected && props.brand
+      ? itemSelectedColor(props.theme.colors.ui2)
+      : getBackgroundColor(props)};
+`
 
-    return getBackgroundColor(
-      Boolean(brand),
-      { disabled, hovered, selected },
-      theme
-    )
-  }};
+export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
+  ${getLabelBackground}
+  align-items: center;
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
