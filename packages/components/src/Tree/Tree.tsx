@@ -98,10 +98,16 @@ export interface TreeProps
    * @default false
    */
   dividers?: boolean
+  /**
+   * Replace normal grey selected and selected + hover color with brand colors
+   * @default false
+   */
+  brand?: boolean
 }
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
+  brand: propsBrand,
   children,
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
@@ -121,6 +127,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const hasBrandColoring = undefinedCoalesce([propsBrand, treeContext.brand])
   const hasDetailHoverDisclosure = undefinedCoalesce([
     propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
@@ -158,6 +165,7 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        brand: hasBrandColoring,
         depth: depth + 1,
         detailAccessory: hasDetailAccessory,
         detailHoverDisclosure: hasDetailHoverDisclosure,
@@ -166,6 +174,7 @@ const TreeLayout: FC<TreeProps> = ({
       <TreeStyle
         className={className}
         border={hasBorder}
+        brand={hasBrandColoring}
         depth={depth}
         disabled={disabled}
         selected={selected}
