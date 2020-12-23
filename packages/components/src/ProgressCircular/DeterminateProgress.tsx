@@ -27,10 +27,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CircleContainer } from './ProgessSvg'
-import { calculateProgressSizes, ProgressCircularSizeProps } from './size'
+import {
+  progressCircularSVG,
+  ProgressCircularSizes,
+} from './progress-circular-size'
 
 interface DeterminateSpinnerProps {
-  size: ProgressCircularSizeProps
+  size: ProgressCircularSizes
   progress?: number
 }
 
@@ -38,17 +41,14 @@ export const DeterminateProgress: FC<DeterminateSpinnerProps> = ({
   size,
   progress = 0,
 }) => {
-  const { half, radius, dashArray } = {
-    ...calculateProgressSizes(size, true),
-  }
-  const stroke = size.stroke
+  const { stroke, half, radius, dashArray } = progressCircularSVG({ size })
 
   const progressOffset = (1 - progress) * (2 * Math.PI * radius)
 
   return (
     <DeterminateContainer>
       <CircleContainer
-        viewBox={`0 0 ${size.dimensions} ${size.dimensions}`}
+        viewBox={`0 0 ${half * 2} ${half * 2}`}
         xmlns="http://www.w3.org/2000/svg"
       >
         <DeterminateTrack cx={half} cy={half} r={radius} strokeWidth={stroke} />

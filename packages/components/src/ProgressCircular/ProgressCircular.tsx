@@ -29,10 +29,9 @@ import styled from 'styled-components'
 import { IndeterminateProgress } from './IndeterminateProgress'
 import { DeterminateProgress } from './DeterminateProgress'
 import {
+  progressCircularSize,
   ProgressCircularSizes,
-  lookupSpinnerSize,
-  ProgressCircularSizeProps,
-} from './size'
+} from './progress-circular-size'
 
 export interface ProgressCircularProps {
   /**
@@ -42,7 +41,7 @@ export interface ProgressCircularProps {
   /**
    * If a determaniate progress
    */
-  determainate?: boolean
+  determinate?: boolean
   /**
    * The current progress of the determainte progress between 0 and 1
    */
@@ -55,16 +54,14 @@ export interface ProgressCircularProps {
 
 export const ProgressCircular: FC<ProgressCircularProps> = ({
   size = 'large',
-  determainate,
+  determinate,
   progress,
   label,
   ...props
 }) => {
-  const spinnerSize: ProgressCircularSizeProps = lookupSpinnerSize(size)
-
   return (
     <ProgressContainter
-      size={spinnerSize}
+      size={size}
       role="progressbar"
       aria-label={label || undefined}
       aria-valuemin={0}
@@ -72,20 +69,17 @@ export const ProgressCircular: FC<ProgressCircularProps> = ({
       aria-valuenow={progress || undefined}
       {...props}
     >
-      {determainate ? (
-        <DeterminateProgress size={spinnerSize} progress={progress} />
+      {determinate ? (
+        <DeterminateProgress size={size} progress={progress} />
       ) : (
-        <IndeterminateProgress size={spinnerSize} />
+        <IndeterminateProgress size={size} />
       )}
     </ProgressContainter>
   )
 }
 
-const ProgressContainter = styled.div<{ size: ProgressCircularSizeProps }>`
-  direction: ltr;
+const ProgressContainter = styled.div<{ size: ProgressCircularSizes }>`
+  ${progressCircularSize}
   display: inline-flex;
-  height: ${(props) => props.size.dimensions}px;
   position: relative;
-  transition: opacity 250ms;
-  width: ${(props) => props.size.dimensions}px;
 `
