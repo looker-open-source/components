@@ -30,6 +30,7 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
+import { TreeBackgroundStyleProps } from './Tree'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import {
@@ -38,13 +39,9 @@ import {
   treeBackgroundColor,
 } from './utils'
 
-interface TreeStyleProps {
+interface TreeStyleProps extends TreeBackgroundStyleProps {
   border?: boolean
-  brand?: boolean
   depth: number
-  disabled?: boolean
-  hovered?: boolean
-  selected?: boolean
   branchFontWeight?: boolean
   dividers?: boolean
 }

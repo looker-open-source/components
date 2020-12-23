@@ -55,6 +55,7 @@ import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
 import { treeBackgroundColor } from './utils'
+import { TreeBackgroundStyleProps } from './Tree'
 
 export interface TreeItemProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
@@ -270,14 +271,7 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
     focusVisible && theme.colors.keyFocus};
 `
 
-interface TreeItemLabelProps {
-  brand?: boolean
-  disabled?: boolean
-  hovered: boolean
-  selected?: boolean
-}
-
-export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
+export const TreeItemLabel = styled(Space)<TreeBackgroundStyleProps>`
   ${treeBackgroundColor}
   align-items: center;
   color: ${({ disabled, theme: { colors } }) =>

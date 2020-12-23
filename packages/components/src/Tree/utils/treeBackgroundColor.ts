@@ -26,14 +26,7 @@
 
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-
-interface BackgroundStyleProps {
-  brand?: boolean
-  disabled?: boolean
-  hovered?: boolean
-  selected?: boolean
-  theme: Theme
-}
+import { TreeBackgroundStyleProps } from '../Tree'
 
 export const treeBackgroundColor = ({
   brand,
@@ -41,7 +34,7 @@ export const treeBackgroundColor = ({
   hovered,
   selected,
   theme: { colors },
-}: BackgroundStyleProps) => {
+}: TreeBackgroundStyleProps & { theme: Theme }) => {
   const brandColors = {
     all: colors.keySubtle,
     hovered: colors.ui1,
