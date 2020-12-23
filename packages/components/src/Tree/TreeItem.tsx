@@ -35,11 +35,10 @@ import React, {
   useState,
   Fragment,
 } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import {
   color,
   CompatibleHTMLProps,
-  itemSelectedColor,
   SpacingSizes,
   TextColorProps,
 } from '@looker/design-tokens'
@@ -55,7 +54,7 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
-import { getBackgroundColor } from './utils'
+import { treeBackgroundColor } from './utils'
 
 export interface TreeItemProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
@@ -281,15 +280,8 @@ interface TreeItemLabelProps {
   selected?: boolean
 }
 
-const getLabelBackground = css<TreeItemLabelProps>`
-  background-color: ${(props) =>
-    props.selected && !props.brand
-      ? itemSelectedColor(props.theme.colors.ui2)
-      : getBackgroundColor(props)};
-`
-
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
-  ${getLabelBackground}
+  ${treeBackgroundColor}
   align-items: center;
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};

@@ -24,7 +24,8 @@
 
  */
 
-import { Theme } from '@looker/design-tokens'
+import { itemSelectedColor, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
 
 interface BackgroundStyleProps {
   brand?: boolean
@@ -34,7 +35,7 @@ interface BackgroundStyleProps {
   theme: Theme
 }
 
-export const getBackgroundColor = ({
+export const treeBackgroundColor = ({
   brand,
   disabled,
   hovered,
@@ -42,20 +43,25 @@ export const getBackgroundColor = ({
   theme: { colors },
 }: BackgroundStyleProps) => {
   const brandColors = {
-    all: colors.keyAccent,
+    all: colors.keySubtle,
     hovered: colors.ui1,
     selected: colors.keySubtle,
   }
   const defaultColors = {
-    all: colors.ui2,
+    all: itemSelectedColor(colors.ui2),
     hovered: colors.ui1,
-    selected: colors.ui2,
+    selected: itemSelectedColor(colors.ui2),
   }
   const stateColors = brand ? brandColors : defaultColors
+  let renderedColor
 
-  if (disabled) return colors.background
-  if (selected && hovered) return stateColors.all
-  if (selected) return stateColors.selected
-  if (hovered) return stateColors.hovered
-  return colors.background
+  if (disabled) renderedColor = colors.background
+  else if (selected && hovered) renderedColor = stateColors.all
+  else if (selected) renderedColor = stateColors.selected
+  else if (hovered) renderedColor = stateColors.hovered
+  else renderedColor = colors.background
+
+  return css`
+    background-color: ${renderedColor};
+  `
 }

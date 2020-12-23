@@ -32,7 +32,11 @@ import {
 } from '../Accordion'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
-import { generateIndent, generateTreeBorder, getBackgroundColor } from './utils'
+import {
+  generateIndent,
+  generateTreeBorder,
+  treeBackgroundColor,
+} from './utils'
 
 interface TreeStyleProps {
   border?: boolean
@@ -65,8 +69,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
 
     & > ${AccordionDisclosureStyle} {
+      ${treeBackgroundColor}
       background-clip: padding-box;
-      background-color: ${getBackgroundColor};
       color: ${({ disabled, theme: { colors } }) =>
         disabled ? colors.text1 : colors.text5};
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
