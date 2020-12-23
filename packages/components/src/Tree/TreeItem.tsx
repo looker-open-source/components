@@ -283,7 +283,7 @@ interface TreeItemLabelProps {
 
 const getLabelBackground = css<TreeItemLabelProps>`
   background-color: ${(props) =>
-    props.selected && props.brand
+    props.selected && !props.brand
       ? itemSelectedColor(props.theme.colors.ui2)
       : getBackgroundColor(props)};
 `
