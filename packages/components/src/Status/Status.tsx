@@ -76,21 +76,19 @@ export const getIntentLabel = (intent?: StatusIntent) => {
 
 const StatusLayout = forwardRef(
   (
-    { className, intent, label, size = 'medium', ...props }: StatusProps,
+    { className, intent, size = 'medium', ...props }: StatusProps,
     ref: Ref<HTMLInputElement>
   ) => (
-    <div role="img" aria-label={label || undefined}>
-      <Icon
-        {...props}
-        className={className}
-        ref={ref}
-        color={intent}
-        name={getIntentIcon(intent)}
-        size={size}
-        /* Don't specify title if Status is wrapped in tooltip */
-        title={!props['aria-describedby'] ? getIntentLabel(intent) : undefined}
-      />
-    </div>
+    <Icon
+      {...props}
+      className={className}
+      ref={ref}
+      color={intent}
+      name={getIntentIcon(intent)}
+      size={size}
+      /* Don't specify title if Status is wrapped in tooltip */
+      title={!props['aria-describedby'] ? getIntentLabel(intent) : undefined}
+    />
   )
 )
 

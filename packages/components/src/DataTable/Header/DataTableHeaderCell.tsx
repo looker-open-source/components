@@ -78,7 +78,6 @@ const DataTableHeaderCellLayout = forwardRef(
             : 'none'
         }
         className={className}
-        aria-label={title}
         onClick={handleClick}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}

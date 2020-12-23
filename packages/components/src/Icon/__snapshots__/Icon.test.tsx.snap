@@ -24,21 +24,25 @@ exports[`Icon Default 1`] = `
 }
 
 <div
-  aria-hidden={true}
-  className="c0"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={true}
+    className="c0"
   >
-    <path
-      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -66,21 +70,25 @@ exports[`Icon Explicit size - integer as pixels 1`] = `
 }
 
 <div
-  aria-hidden={true}
-  className="c0"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={true}
+    className="c0"
   >
-    <path
-      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -108,21 +116,25 @@ exports[`Icon Explicit size - string 1`] = `
 }
 
 <div
-  aria-hidden={true}
-  className="c0"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={true}
+    className="c0"
   >
-    <path
-      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;
 
@@ -150,20 +162,24 @@ exports[`Icon Styled system size 1`] = `
 }
 
 <div
-  aria-hidden={true}
-  className="c0"
+  role="img"
 >
-  <svg
-    fill="currentColor"
-    height="100%"
-    viewBox="0 0 24 24"
-    width="100%"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    aria-hidden={true}
+    className="c0"
   >
-    <path
-      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+    <svg
       fill="currentColor"
-    />
-  </svg>
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 </div>
 `;

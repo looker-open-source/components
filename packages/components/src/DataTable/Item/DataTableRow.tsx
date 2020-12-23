@@ -103,7 +103,6 @@ const DataTableRowLayout = forwardRef(
         ref={ref}
         className={className}
         onKeyDown={onKeyDown}
-        // tabIndex={tabIndex}
         onClick={handleOnClick}
       >
         {hasCheckbox ? (
