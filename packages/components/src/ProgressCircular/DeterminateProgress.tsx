@@ -27,10 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CircleContainer } from './ProgessSvg'
-import {
-  progressCircularSVG,
-  ProgressCircularSizes,
-} from './progress-circular-size'
+import { progressCircularSVG, ProgressCircularSizes } from './size'
 
 interface DeterminateSpinnerProps {
   size: ProgressCircularSizes
