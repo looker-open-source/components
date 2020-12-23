@@ -286,7 +286,11 @@ export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   background-color: ${({ brand, disabled, hovered, selected, theme }) => {
     if (selected && !brand) return itemSelectedColor(theme.colors.ui2)
 
-    return getBackgroundColor(brand, { disabled, hovered, selected }, theme)
+    return getBackgroundColor(
+      Boolean(brand),
+      { disabled, hovered, selected },
+      theme
+    )
   }};
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};
