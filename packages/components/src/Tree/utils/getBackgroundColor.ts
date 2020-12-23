@@ -24,46 +24,34 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Tree, TreeProps, TreeItem } from '..'
+import { Theme } from '@looker/design-tokens'
 
-export * from './BorderRadius.story'
-export * from './ColorfulTree.story'
-export * from './DisabledAndSelected.story'
-export * from './FieldPicker.story'
-export * from './FileTree.story'
-export * from './Flat.story'
-export * from './LongLabels.story'
-
-export default {
-  component: Tree,
-  title: 'Tree',
+interface TreeState {
+  brand?: boolean
+  disabled?: boolean
+  hovered?: boolean
+  selected?: boolean
 }
 
-const Template: Story<TreeProps> = (args) => (
-  <Tree brand selected {...args} label="Orders">
-    <Tree label="Orders" defaultOpen>
-      <TreeItem>ID</TreeItem>
-      <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
-      </Tree>
-    </Tree>
-  </Tree>
-)
+export const getBackgroundColor = (
+  { brand, disabled, hovered, selected }: TreeState,
+  { colors }: Theme
+) => {
+  const brandColors = {
+    all: colors.keyAccent,
+    hovered: colors.ui1,
+    selected: colors.keySubtle,
+  }
+  const defaultColors = {
+    all: colors.ui2,
+    hovered: colors.ui1,
+    selected: colors.ui2,
+  }
+  const stateColors = brand ? brandColors : defaultColors
 
-export const Basic = Template.bind({})
-Basic.args = {
-  defaultOpen: true,
-  indicatorPosition: 'left',
-}
-
-export const Border = Template.bind({})
-Border.args = {
-  ...Basic.args,
-  border: true,
+  if (disabled) return 'none'
+  if (selected && hovered) return stateColors.all
+  if (selected) return stateColors.selected
+  if (hovered) return stateColors.hovered
+  return 'none'
 }
