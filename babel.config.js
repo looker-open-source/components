@@ -24,53 +24,47 @@
 
  */
 
+const ignore = [
+  '**/*.d.ts',
+  '**/*.test.js',
+  '**/*.test.jsx',
+  '**/*.test.ts',
+  '**/*.test.tsx',
+  '**/*.story.tsx',
+  '**/stories/*',
+  '__snapshots__',
+  '__tests__',
+]
+
+const plugins = [
+  ['babel-plugin-styled-components', { pure: true }],
+  ['@babel/plugin-proposal-class-properties', { loose: true }],
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
+]
+
+const presets = [
+  ['@babel/preset-env', { modules: false }],
+  '@babel/preset-react',
+  '@babel/preset-typescript',
+]
+
 module.exports = (api) => {
   api.cache(true)
 
-  const plugins = [
-    ['babel-plugin-styled-components', { pure: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: true }],
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-optional-chaining',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
-  ]
-
   return {
     env: {
-      production: {
-        ignore: [
-          'node_modules',
-          '**/*.d.ts',
-          '**/*.test.js',
-          '**/*.test.jsx',
-          '**/*.test.ts',
-          '**/*.test.tsx',
-          '**/*.story.tsx',
-          '**/stories/*',
-          '__snapshots__',
-          '__tests__',
-        ],
+      build: {
+        ignore,
         plugins,
-        presets: [
-          ['@babel/preset-env', { modules: false }],
-          '@babel/preset-react',
-          '@babel/preset-typescript',
-        ],
+        presets,
       },
     },
-    ignore: ['node_modules'],
     plugins,
     presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            esmodules: true,
-          },
-          useBuiltIns: false,
-        },
-      ],
-      ['@babel/preset-react', { development: true }],
+      ['@babel/preset-env', { targets: { esmodules: true } }],
+      '@babel/preset-react',
       '@babel/preset-typescript',
     ],
   }
