@@ -67,7 +67,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
       background-color: ${({ brand, disabled, hovered, selected, theme }) =>
-        getBackgroundColor({ brand, disabled, hovered, selected }, theme)};
+        getBackgroundColor(brand, { disabled, hovered, selected }, theme)};
       color: ${({ disabled, theme: { colors } }) =>
         disabled ? colors.text1 : colors.text5};
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
