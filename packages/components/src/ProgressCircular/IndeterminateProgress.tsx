@@ -26,28 +26,27 @@
 
 import React, { FC } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { calculateProgressSizes, ProgressCircularSizeProps } from './size'
+import { progressCircularSVG, ProgressCircularSizes } from './size'
 import { progressCircularConstants } from './constants'
 import { CircleContainer } from './ProgessSvg'
 
 interface IndeterminateSpinnerProps {
-  size: ProgressCircularSizeProps
+  size: ProgressCircularSizes
 }
 
 export const IndeterminateProgress: FC<IndeterminateSpinnerProps> = ({
   size,
 }) => {
-  const { half, radius, dashArray, dashOffset } = {
-    ...calculateProgressSizes(size, false),
-  }
-  const stroke = size.stroke
+  const { stroke, half, radius, dashArray, dashOffset } = progressCircularSVG({
+    size,
+  })
 
   return (
     <IndeterminateContainer>
       <IndeterminateSpinner>
         <CircleClipper>
           <LeftCircleContainer
-            viewBox={`0 0 ${size.dimensions} ${size.dimensions}`}
+            viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle
@@ -62,7 +61,7 @@ export const IndeterminateProgress: FC<IndeterminateSpinnerProps> = ({
         </CircleClipper>
         <GapPatch>
           <CircleContainer
-            viewBox={`0 0 ${size.dimensions} ${size.dimensions}`}
+            viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle
@@ -77,7 +76,7 @@ export const IndeterminateProgress: FC<IndeterminateSpinnerProps> = ({
         </GapPatch>
         <CircleClipper>
           <RightCircleContainer
-            viewBox={`0 0 ${size.dimensions} ${size.dimensions}`}
+            viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle

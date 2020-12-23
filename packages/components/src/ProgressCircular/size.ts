@@ -24,6 +24,7 @@
 
  */
 
+import { variant } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
@@ -37,35 +38,56 @@ export type ProgressCircularSizes =
   | SizeMedium
   | SizeLarge
 
-export interface ProgressCircularSizeProps {
-  dimensions: number
-  stroke: number
-}
-
-export const lookupSpinnerSize = (size: ProgressCircularSizes) => {
-  switch (size) {
-    case 'medium':
-      return { dimensions: 36, stroke: 3 }
-    case 'small':
-      return { dimensions: 24, stroke: 2.5 }
-    case 'xsmall':
-      return { dimensions: 20, stroke: 2 }
-    case 'large':
-    default:
-      return { dimensions: 48, stroke: 4 }
-  }
-}
-
-export const calculateProgressSizes = (
-  size: ProgressCircularSizeProps,
-  determinate: boolean
-) => {
-  const half = size.dimensions / 2
-
+const calculateValues = (half: number) => {
   return {
     dashArray: half * 4.7,
-    dashOffset: determinate ? half * 4.7 : half * 2.3,
+    dashOffset: half * 2.3,
     half: half,
     radius: half / 1.34,
   }
 }
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const progressCircularSVG = variant({
+  prop: 'size',
+  variants: {
+    xsmall: {
+      stroke: 2,
+      ...calculateValues(10),
+    },
+    small: {
+      stroke: 3,
+      ...calculateValues(12),
+    },
+    medium: {
+      stroke: 3,
+      ...calculateValues(18),
+    },
+    large: {
+      stroke: 4,
+      ...calculateValues(24),
+    },
+  },
+})
+
+export const progressCircularSize = variant({
+  prop: 'size',
+  variants: {
+    xsmall: {
+      height: '20px',
+      width: '20px',
+    },
+    small: {
+      height: '24px',
+      width: '24px',
+    },
+    medium: {
+      height: '36px',
+      width: '36px',
+    },
+    large: {
+      height: '48px',
+      width: '48px',
+    },
+  },
+})
