@@ -26,8 +26,8 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { ReactNode, useContext } from 'react'
-import { MenuItem, MenuContext } from '../../Menu'
+import React, { ReactNode } from 'react'
+import { MenuItem } from '../../Menu'
 
 export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
   children?: ReactNode
@@ -45,13 +45,6 @@ export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
  * MenuItem may undergo a refactor soon. Creating a proxy in the form of DataTableAction
  * allows us to adapt to any changes to MenuItem or its interface.
  * */
-export const DataTableAction = (props: DataTableActionProps) => {
-  const { setOpen } = useContext(MenuContext)
-  const handleActionClick = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
-    setOpen && setOpen(false)
-    props.onClick && props.onClick(event)
-  }
-  return <MenuItem {...props} onClick={handleActionClick} />
-}
+export const DataTableAction = (props: DataTableActionProps) => (
+  <MenuItem {...props} />
+)

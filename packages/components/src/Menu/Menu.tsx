@@ -24,58 +24,68 @@
 
  */
 
-import React, { FC, RefObject, useRef, useState } from 'react'
-import { useCallbackRef, useHovered, useID } from '../utils'
-import { Popover, PopoverProps } from '../Popover'
-import { MenuList } from './MenuList'
+import React, { cloneElement, FC, ReactElement } from 'react'
+import { useID } from '../utils'
+import { Popover, PopoverProps, UsePopoverResponseDom } from '../Popover'
+import { MenuList, MenuListProps } from './MenuList'
 
-export interface MenuProps {
-  /**
-   * Disables the Menu, passed to child of MenuDisclosure
-   */
-  disabled?: boolean
-
-  /**
-   * The element which hovering on/off of will show/hide the disclosure element
-   */
-  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
-
-  id?: string
-
-  /**
-   * Initial state of Menu (or use for controlled menu)
-   * @default false
-   */
-  isOpen?: boolean
-  /**
-   * Use for controlled menu
-   */
-  setOpen?: (isOpen: boolean) => void
+export interface MenuProps
+  extends Omit<PopoverProps, 'children'>,
+    Omit<MenuListProps, 'children' | 'content'> {
+  children: ReactElement<UsePopoverResponseDom & { 'aria-controls': string }>
 }
 
 export const Menu: FC<MenuProps> = ({
   children,
-  disabled,
-  hoverDisclosureRef,
+  content,
   id: propsID,
-  isOpen: controlledIsOpen = false,
-  setOpen: controlledSetOpen,
+
+  // Popover props
+  canClose,
+  cancelClickOutside,
+  disabled,
+  focusTrap,
+  hoverDisclosureRef,
+  isOpen,
+  onClose,
+  pin,
+  placement,
+  setOpen,
+  triggerElement,
+  triggerToggle,
+
+  // List props
+  ...props
 }) => {
-  const isControlled = useRef(controlledSetOpen !== undefined)
-  const [isOpen, setOpen] = useState(controlledIsOpen)
-  const [triggerElement, triggerCallbackRef] = useCallbackRef()
-  const [showDisclosure] = useHovered(hoverDisclosureRef)
   const id = useID(propsID)
+  const list = (
+    <MenuList id={id} {...props}>
+      {content}
+    </MenuList>
+  )
+  children = cloneElement(children, {
+    'aria-controls': id,
+  })
 
-  const context = {
-    disabled,
-    id,
-    isOpen: isControlled.current ? controlledIsOpen : isOpen,
-    setOpen: isControlled.current ? controlledSetOpen : setOpen,
-    showDisclosure,
-    triggerCallbackRef,
-    triggerElement,
-  }
-
-  return <Popover>{children}</Popover>
+  return (
+    <Popover
+      content={list}
+      {...{
+        canClose,
+        cancelClickOutside,
+        disabled,
+        focusTrap,
+        hoverDisclosureRef,
+        isOpen,
+        onClose,
+        pin,
+        placement,
+        setOpen,
+        triggerElement,
+        triggerToggle,
+      }}
+    >
+      {children}
+    </Popover>
+  )
 }

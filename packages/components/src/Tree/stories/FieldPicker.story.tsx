@@ -28,11 +28,9 @@ import React, { FC, ReactNode, useState } from 'react'
 import {
   IconButton,
   Menu,
-  MenuDisclosure,
-  MenuList,
   MenuItem,
   Tooltip,
-  usePopover,
+  Popover,
   Accordion,
   AccordionContent,
   AccordionDisclosure,
@@ -49,65 +47,55 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
     overlay === 'menu' ? setOverlay(undefined) : setOverlay('menu')
   const togglePopover = () =>
     overlay === 'popover' ? setOverlay(undefined) : setOverlay('popover')
-  const closeOverlay = () => setOverlay(undefined)
-
-  const { popover, ref } = usePopover({
-    content: 'hello world',
-    isOpen: overlay === 'popover',
-    setOpen: closeOverlay,
-  })
 
   return (
-    <>
-      {popover}
-      <Menu isOpen={overlay === 'menu'} setOpen={closeOverlay}>
-        <MenuList compact>
-          <MenuItem>Brie</MenuItem>
-          <MenuItem>Cheddar</MenuItem>
-          <MenuItem>Gouda</MenuItem>
-        </MenuList>
-        <TreeItem
-          detail={
-            <>
-              <IconButton
-                icon="Pivot"
-                label="Pivot"
-                tooltipPlacement="top"
-                onClick={() => alert('Pivot')}
-              />
-              <IconButton
-                ref={ref}
-                icon="Filter"
-                label="Filter"
-                tooltipPlacement="top"
-                onClick={togglePopover}
-              />
-              <Tooltip
-                placement="top"
-                content="Some exciting info or something"
-              >
-                <IconButton icon="CircleInfoOutline" label="Info" />
-              </Tooltip>
-              <MenuDisclosure>
-                <IconButton
-                  onClick={toggleMenu}
-                  icon="DotsVert"
-                  label="Options"
-                  tooltipPlacement="top"
-                />
-              </MenuDisclosure>
-            </>
-          }
-          detailAccessory={true}
-          detailHoverDisclosure={!overlay}
-          onClick={() => alert(`Clicked on ${children}!`)}
-          onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
-          truncate={truncate}
-        >
-          {children}
-        </TreeItem>
-      </Menu>
-    </>
+    <TreeItem
+      detail={
+        <>
+          <IconButton
+            icon="Pivot"
+            label="Pivot"
+            tooltipPlacement="top"
+            onClick={() => alert('Pivot')}
+          />
+          <Popover
+            content="hello world"
+            isOpen={overlay === 'popover'}
+            setOpen={togglePopover}
+          >
+            <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
+          </Popover>
+          <Tooltip placement="top" content="Some exciting info or something">
+            <IconButton icon="CircleInfoOutline" label="Info" />
+          </Tooltip>
+          <Menu
+            isOpen={overlay === 'menu'}
+            setOpen={toggleMenu}
+            compact
+            content={
+              <>
+                <MenuItem>Brie</MenuItem>
+                <MenuItem>Cheddar</MenuItem>
+                <MenuItem>Gouda</MenuItem>
+              </>
+            }
+          >
+            <IconButton
+              icon="DotsVert"
+              label="Options"
+              tooltipPlacement="top"
+            />
+          </Menu>
+        </>
+      }
+      detailAccessory={true}
+      detailHoverDisclosure={!overlay}
+      onClick={() => alert(`Clicked on ${children}!`)}
+      onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
+      truncate={truncate}
+    >
+      {children}
+    </TreeItem>
   )
 }
 

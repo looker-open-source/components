@@ -38,8 +38,6 @@ import {
   FieldToggleSwitch,
   Heading,
   Menu,
-  MenuDisclosure,
-  MenuList,
   MenuItem,
   DialogContent,
   Paragraph,
@@ -47,6 +45,7 @@ import {
   SpaceVertical,
   useToggle,
 } from '../..'
+import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../PopoverContent'
 import { usePopover } from '../usePopover'
@@ -227,13 +226,10 @@ export const OverlayOpenDialog = () => {
         <DialogInner />
       </Dialog>
       <Heading>Menu Opening a Dialog</Heading>
-      <Menu>
-        <MenuDisclosure tooltip="Select your favorite kind">
+      <Menu content={<MenuItem onClick={setOn}>Open Dialog</MenuItem>}>
+        <Tooltip content="Select your favorite kind">
           <Button mt="medium">Open Menu</Button>
-        </MenuDisclosure>
-        <MenuList>
-          <MenuItem onClick={setOn}>Open Dialog</MenuItem>
-        </MenuList>
+        </Tooltip>
       </Menu>
       <Heading>Opening a Dialog Directly</Heading>
       <Button onClick={setOn}>Open Dialog</Button>

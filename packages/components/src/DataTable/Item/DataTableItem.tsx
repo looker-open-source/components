@@ -28,7 +28,8 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
 import { IconButton } from '../../Button'
-import { Menu, MenuDisclosure, MenuList } from '../../Menu'
+import { Menu } from '../../Menu'
+import { Tooltip } from '../../Tooltip'
 import { DataTableContext } from '../DataTableContext'
 import { DataTableRow } from './DataTableRow'
 import { ItemTarget, ItemTargetGroup } from './ItemTarget'
@@ -94,11 +95,10 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
       {actionPrimary && <ItemTarget>{actionPrimary}</ItemTarget>}
       {actions && (
         <ItemTarget>
-          <Menu>
-            <MenuDisclosure tooltip={actionsTooltip}>
+          <Menu content={actions}>
+            <Tooltip content={actionsTooltip}>
               <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
-            </MenuDisclosure>
-            <MenuList>{actions}</MenuList>
+            </Tooltip>
           </Menu>
         </ItemTarget>
       )}

@@ -145,6 +145,7 @@ const useOpenWithoutElement = (
 }
 
 export interface UsePopoverResponseDom {
+  disabled?: boolean
   onClick: (event: SyntheticEvent) => void
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
@@ -272,6 +273,7 @@ export const usePopover = ({
     domProps: {
       'aria-expanded': isOpen,
       'aria-haspopup': !disabled,
+      disabled,
       onClick: handleOpen,
       ref: callbackRef,
     },

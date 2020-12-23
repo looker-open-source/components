@@ -30,12 +30,13 @@ import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
+import { DialogContext } from '../Dialog'
 import { IconPlaceholder, ListItemDetail } from '../List'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon } from '../Icon'
 import { Tooltip } from '../Tooltip'
-import { MenuContext, MenuItemContext } from './MenuItemContext'
+import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
@@ -93,7 +94,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onBlur && onBlur(event)
   }
 
-  const { setOpen } = useContext(MenuContext)
+  const { closeModal } = useContext(DialogContext)
   const {
     renderIconPlaceholder,
     setRenderIconPlaceholder,
@@ -105,8 +106,8 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     setFocusVisible(false)
     onClick && onClick(event)
     // Close the Menu (unless event has preventDefault in onClick)
-    if (setOpen && !event.defaultPrevented) {
-      setOpen(false)
+    if (closeModal && !event.defaultPrevented) {
+      closeModal()
     }
   }
 
