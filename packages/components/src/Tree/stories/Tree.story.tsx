@@ -42,7 +42,7 @@ export default {
 }
 
 const Template: Story<TreeProps> = (args) => (
-  <Tree brand selected {...args} label="Orders">
+  <Tree {...args} label="Orders">
     <Tree label="Orders" defaultOpen>
       <TreeItem>ID</TreeItem>
       <TreeItem>Status</TreeItem>
