@@ -41,7 +41,6 @@ import omit from 'lodash/omit'
 
 export interface DialogContentProps
   extends LayoutProps,
-    PaddingProps,
     CompatibleHTMLProps<HTMLDivElement> {}
 
 interface DialogContentLayoutProps extends DialogContentProps {
@@ -52,8 +51,6 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   renderedHeight,
-  px = ['medium', 'xlarge'],
-  py = 'xxxsmall',
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
@@ -78,26 +75,19 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
       ref={internalRef}
       {...omit(omitStyledProps(props), ['renderedHeight'])}
     >
-      <Inner px={px} py={py} overflowed={overflow} {...pickStyledProps(props)}>
+      <Inner 
+        px={['medium', 'xlarge']} 
+        py={overflow ? 'large' : 'xxxsmall'} 
+        {...pickStyledProps(props)}
+      >
         {children}
       </Inner>
     </div>
   )
 }
 
-interface InnerProps extends PaddingProps {
-  overflowed: boolean
-}
-
-const Inner = styled.div<InnerProps>`
+const Inner = styled.div<PaddingProps>`
   ${padding}
-  ${({ overflowed, theme }) =>
-    overflowed
-      ? css`
-          padding-bottom: ${theme.space.large};
-          padding-top: ${theme.space.large};
-        `
-      : ''}
 `
 
 const DialogContentStyled = styled(DialogContentLayout)`
