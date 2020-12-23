@@ -55,6 +55,7 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
+import { getBackgroundColor } from './utils'
 
 export interface TreeItemProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
@@ -113,6 +114,11 @@ export interface TreeItemProps
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
+  /**
+   * Replace normal grey selected and selected + hover color with brand colors
+   * @default false
+   */
+  brand?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
@@ -144,6 +150,8 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     'detailHoverDisclosure',
     'icon',
   ])
+
+  const brand = undefinedCoalesce([props.brand, treeContext.brand])
 
   const detailAccessory = undefinedCoalesce([
     props.detailAccessory,
@@ -226,9 +234,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         {...restProps}
       >
         <TreeItemLabel
-          gap={gapSize}
+          brand={brand}
           disabled={disabled}
           hovered={isHovered}
+          gap={gapSize}
           selected={selected}
         >
           {props.icon && (
@@ -266,6 +275,7 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
 `
 
 interface TreeItemLabelProps {
+  brand?: boolean
   disabled?: boolean
   hovered: boolean
   selected?: boolean
@@ -273,12 +283,11 @@ interface TreeItemLabelProps {
 
 export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
   align-items: center;
-  background-color: ${({ disabled, hovered, selected, theme: { colors } }) =>
-    disabled
-      ? 'none'
-      : selected
-      ? itemSelectedColor(colors.ui2)
-      : hovered && colors.ui1};
+  background-color: ${({ brand, disabled, hovered, selected, theme }) => {
+    if (selected && !brand) return itemSelectedColor(theme.colors.ui2)
+
+    return getBackgroundColor({ brand, disabled, hovered, selected }, theme)
+  }};
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};
   cursor: ${({ disabled }) => disabled && 'not-allowed'};

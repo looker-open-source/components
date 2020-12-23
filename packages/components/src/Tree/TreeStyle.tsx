@@ -32,7 +32,7 @@ import {
 } from '../Accordion'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
-import { generateIndent, generateTreeBorder } from './utils'
+import { generateIndent, generateTreeBorder, getBackgroundColor } from './utils'
 
 interface TreeStyleProps {
   border?: boolean
@@ -66,28 +66,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     & > ${AccordionDisclosureStyle} {
       background-clip: padding-box;
-      background-color: ${({
-        brand,
-        disabled,
-        hovered,
-        selected,
-        theme: { colors },
-      }) => {
-        const states = brand
-          ? {
-              all: 'keyAccent',
-              hovered: 'ui1',
-              selected: 'keySubtle',
-            }
-          : { all: 'ui2', hovered: 'ui1', selected: 'ui2' }
-
-        if (disabled) return 'none'
-        if (selected && hovered) return colors[states.all]
-        if (selected) return colors[states.selected]
-        if (hovered) return colors[states.hovered]
-
-        return 'none'
-      }};
+      background-color: ${({ brand, disabled, hovered, selected, theme }) =>
+        getBackgroundColor({ brand, disabled, hovered, selected }, theme)};
       color: ${({ disabled, theme: { colors } }) =>
         disabled ? colors.text1 : colors.text5};
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
