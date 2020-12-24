@@ -24,59 +24,15 @@
 
  */
 
-import { HTMLProps } from 'react'
-export {
-  border,
-  boxShadow,
-  color,
-  display,
-  flexbox,
-  fontSize,
-  height,
-  layout,
-  overflow,
-  padding,
-  position,
-  space,
-  size,
-  typography,
-  verticalAlign,
-  width,
-} from 'styled-system'
-export type {
-  BackgroundColorProps,
-  BorderProps,
-  BorderRadiusProps,
-  BoxShadowProps,
-  DisplayProps,
-  FlexboxProps,
-  LayoutProps,
-  OverflowProps,
-  PaddingProps,
-  PositionProps,
-  SizeProps,
-  TextColorProps,
-  VerticalAlignProps,
-  WidthProps,
-} from 'styled-system'
+import { system } from 'styled-system'
 
-export type CompatibleHTMLProps<T> = Omit<
-  HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
->
+export interface TextColorProps {
+  color?: string
+}
 
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export * from './transitions'
-export * from './color'
-export * from './size'
-export * from './space'
-export * from './typography'
-
-// Custom Extensions
-export * from './reset'
+export const textColor = system({
+  color: {
+    property: 'color',
+    scale: 'colors',
+  },
+})
