@@ -58,7 +58,8 @@ import { treeBackgroundColor } from './utils'
 import { TreeBackgroundStyleProps } from './Tree'
 
 export interface TreeItemProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
+  extends TreeBackgroundStyleProps,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
   children: ReactNode
   className?: string
@@ -80,14 +81,6 @@ export interface TreeItemProps
    */
   detailHoverDisclosure?: boolean
   /**
-   * If true, then the TreeItem will have a "disabled" presentation which consists of:
-   * - lighter text (text1)
-   * - different cursor (not-allowed)
-   * - no bg color on hover
-   * @default false
-   */
-  disabled?: boolean
-  /**
    * Gap size of the internal Space component
    * @default 'xsmall'
    */
@@ -106,19 +99,9 @@ export interface TreeItemProps
    */
   onMetaEnter?: () => void
   /**
-   * If true, then the TreeItem will have an opaque, ui2 background
-   * @default false
-   */
-  selected?: boolean
-  /**
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
-  /**
-   * Replace normal grey selected and selected + hover color with brand colors
-   * @default false
-   */
-  brand?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
