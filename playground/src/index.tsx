@@ -24,29 +24,17 @@
 
  */
 import React from 'react'
-import styled from 'styled-components'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { TimeframeFilter } from '@looker/components/src/InputDateRange/InputDateRange.story'
+import { LongMenus } from '@looker/components/src/Menu/Menu.story'
 
 const App = () => {
   return (
     <ComponentsProvider loadGoogleFonts>
-      <PageWrapper>
-        <TimeframeFilter />
-      </PageWrapper>
+      <LongMenus />
     </ComponentsProvider>
   )
 }
-
-const PageWrapper = styled.div`
-  box-sizing: border-box;
-  * {
-    box-sizing: border-box;
-  }
-  padding: 30px;
-`
-
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.getElementById('container'))
 })
