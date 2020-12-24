@@ -26,6 +26,7 @@
 
 import { HTMLProps } from 'react'
 export {
+  backgroundColor,
   border,
   boxShadow,
   color,
@@ -39,6 +40,7 @@ export {
   position,
   space,
   size,
+  textColor,
   typography,
   verticalAlign,
   width,
@@ -48,6 +50,7 @@ export type {
   BorderProps,
   BorderRadiusProps,
   BoxShadowProps,
+  ColorProps,
   DisplayProps,
   FlexboxProps,
   LayoutProps,
