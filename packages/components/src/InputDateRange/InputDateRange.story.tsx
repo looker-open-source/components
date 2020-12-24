@@ -69,7 +69,7 @@ ReadOnly.args = {
 }
 
 export const MobileUI = Template.bind({})
-ReadOnly.args = {
+MobileUI.args = {
   defaultValue: {
     from: new Date('Jun 7, 2000'),
     to: new Date('Jun 19, 2000'),
@@ -94,7 +94,6 @@ export const TimeframeFilter = () => {
 
   return (
     <Popover
-      label="Select Date"
       content={
         <PopoverContent>
           <Tabs defaultIndex={1}>
