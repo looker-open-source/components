@@ -18,7 +18,7 @@
     "@looker/icons": "^0.9.26",
     "@storybook/react": "^6.1.10",
     "lodash": "^4.17.20",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": "5.2.1"

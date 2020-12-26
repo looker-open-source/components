@@ -28,7 +28,7 @@
     "lodash": "^4.17.20",
     "polished": "^4.0.5",
     "prism-react-renderer": "^1.1.1",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",

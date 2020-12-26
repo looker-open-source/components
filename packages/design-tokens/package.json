@@ -34,7 +34,7 @@
     "@types/styled-components": "^5.1.5",
     "csstype": "^3.0.5",
     "lodash": "^4.17.20",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": "^5.2.1"
