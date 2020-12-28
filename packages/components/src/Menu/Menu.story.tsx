@@ -24,14 +24,21 @@
 
  */
 
-import React, { forwardRef, Ref, useMemo, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  MouseEvent,
+  Ref,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
-import { Dialog } from '../Dialog'
+import { Dialog, DialogContent, DialogFooter, DialogHeader } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
-import { Box, Space, SpaceVertical } from '../Layout'
+import { Space, SpaceVertical } from '../Layout'
 import { Text, Paragraph } from '../Text'
 import { useToggle } from '../utils'
 import { Menu } from './Menu'
@@ -89,6 +96,12 @@ export const Basic = () => (
 Basic.parameters = {
   storyshots: { disable: true },
 }
+
+export const IsOpen = () => (
+  <Menu content={menuItems} isOpen={true}>
+    <Button>Defaults to Open</Button>
+  </Menu>
+)
 
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
@@ -232,7 +245,7 @@ export const Hover = () => {
       </Space>
 
       <Dialog isOpen={dialogIsOpen} onClose={close}>
-        <Box p="large">Alert icon should be hidden now.</Box>
+        <DialogContent>Alert icon should be hidden now.</DialogContent>
       </Dialog>
     </Card>
   )
@@ -499,5 +512,40 @@ export const LongMenus = () => {
 }
 
 LongMenus.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithDialog = () => {
+  const { value, setOn, setOff } = useToggle()
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setOn()
+  }
+  return (
+    <>
+      <Menu
+        content={
+          <>
+            <MenuItem onClick={setOn}>Open Dialog</MenuItem>
+            <MenuItem onClick={handleClick}>
+              Open Dialog, keep Menu open
+            </MenuItem>
+          </>
+        }
+      >
+        <Button>Menu with Dialog</Button>
+      </Menu>
+      <Dialog isOpen={value} onClose={setOff}>
+        <DialogHeader>A Dialog</DialogHeader>
+        <DialogContent>Dialog must be placed outside of Menu</DialogContent>
+        <DialogFooter>
+          <Button onClick={setOff}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}
+
+WithDialog.parameters = {
   storyshots: { disable: true },
 }
