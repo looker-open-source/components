@@ -33,10 +33,10 @@ export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
     fontSize: 'xsmall',
     lineHeight: 'xsmall',
     m: 'none',
-    maxWidth: width,
+    maxWidth: width || '16rem',
     p: 'xsmall',
     textAlign,
-    width: width || '16rem',
+    width: 'auto',
   })
 )<ParagraphProps>`
   hyphens: auto;
