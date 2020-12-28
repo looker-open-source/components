@@ -82,7 +82,6 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
         fontSize={fontSize}
         fontWeight={fontWeight}
         style={{ gridArea: 'text' }}
-        id="dialog-header"
         truncate
       >
         {children}

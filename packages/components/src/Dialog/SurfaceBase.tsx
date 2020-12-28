@@ -52,7 +52,6 @@ export const surfaceTransition = () => css`
 `
 
 export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
-  'aria-labelledby': 'dialog-header',
   'aria-modal': true,
   role: 'dialog',
 }))`

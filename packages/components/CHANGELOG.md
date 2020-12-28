@@ -20,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
-- DialogSurface now renders `aria-labelledby` attribute
 
 ## [0.9.29]
 
