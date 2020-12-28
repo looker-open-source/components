@@ -24,32 +24,19 @@
 
  */
 
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './mergeHandlers'
-export * from './moveFocus'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useScrollPosition'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
-export * from './useWindow'
+import { SyntheticEvent } from 'react'
+
+/**
+ * Merges 2 optional event handlers
+ * @param newHandler called 2nd, if the 1st does not call preventDefault()
+ * @param existingHandler called 1st, use preventDefault() to avoid calling the 2nd
+ */
+export const mergeHandlers = <E extends SyntheticEvent>(
+  newHandler?: (e: E) => void,
+  existingHandler?: (e: E) => void
+) => (event: E) => {
+  existingHandler?.(event)
+  if (!event.defaultPrevented) {
+    newHandler?.(event)
+  }
+}

@@ -25,12 +25,14 @@
  */
 
 import React, {
+  forwardRef,
   ReactNode,
+  Ref,
   RefObject,
   isValidElement,
   cloneElement,
 } from 'react'
-import { useHovered } from '../utils'
+import { mergeHandlers, useForkedRef, useHovered } from '../utils'
 import {
   usePopover,
   UsePopoverProps,
@@ -57,33 +59,40 @@ export interface PopoverProps extends UsePopoverProps {
   hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
 }
 
-export const Popover = ({
-  children,
-  hoverDisclosureRef,
-  ...props
-}: PopoverProps) => {
-  const { domProps, isOpen, popover } = usePopover(props)
+export const Popover = forwardRef(
+  (
+    { children, hoverDisclosureRef, ...props }: PopoverProps,
+    forwardedRef: Ref<any>
+  ) => {
+    const { domProps, isOpen, popover } = usePopover(props)
 
-  if (isValidElement(children)) {
-    children = cloneElement(children, {
-      ...domProps,
-    })
-  } else if (isRenderProp(children)) {
-    children = children(domProps)
-  } else {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Element "${typeof children}" can't be used as target for Popover`
+    const { onClick, ref: popoverRef, ...restDomProps } = domProps
+
+    const ref = useForkedRef(popoverRef, forwardedRef)
+
+    if (isValidElement(children)) {
+      children = cloneElement(children, {
+        ...restDomProps,
+        onClick: mergeHandlers(onClick, children.props.onClick),
+        ref,
+      })
+    } else if (isRenderProp(children)) {
+      children = children(domProps)
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Element "${typeof children}" can't be used as target for Popover`
+      )
+    }
+
+    const [isHovered] = useHovered(hoverDisclosureRef)
+    const triggerShown = isHovered || isOpen
+
+    return (
+      <>
+        {popover}
+        {triggerShown && children}
+      </>
     )
   }
-
-  const [isHovered] = useHovered(hoverDisclosureRef)
-  const triggerShown = isHovered || isOpen
-
-  return (
-    <>
-      {popover}
-      {triggerShown && children}
-    </>
-  )
-}
+)

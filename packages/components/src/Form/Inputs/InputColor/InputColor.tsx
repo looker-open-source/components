@@ -35,7 +35,7 @@ import React, {
 import styled from 'styled-components'
 import get from 'lodash/get'
 import { useID, useWrapEvent } from '../../../utils'
-import { usePopover, PopoverContent } from '../../../Popover'
+import { Popover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
 import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
@@ -172,17 +172,15 @@ export const InputColorComponent = forwardRef(
       </PopoverContent>
     )
 
-    const { popover, domProps } = usePopover({ content })
-
     return (
       <div className={className}>
-        <Swatch
-          color={color ? hsv2hex(color) : undefined}
-          disabled={disabled}
-          readOnly={readOnly}
-          {...domProps}
-        />
-        {!disabled && !readOnly && popover}
+        <Popover content={content} disabled={disabled || readOnly}>
+          <Swatch
+            color={color ? hsv2hex(color) : undefined}
+            disabled={disabled}
+            readOnly={readOnly}
+          />
+        </Popover>
         {!hideInput && (
           <InputText
             {...props}

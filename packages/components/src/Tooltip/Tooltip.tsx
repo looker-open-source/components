@@ -31,10 +31,9 @@ import React, {
   ReactElement,
   ReactNode,
   Ref,
-  SyntheticEvent,
 } from 'react'
 import { UsePopoverResponseDom } from '../Popover'
-import { useForkedRef } from '../utils'
+import { mergeHandlers, useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -54,16 +53,6 @@ export interface TooltipProps
   children:
     | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
     | TooltipRenderProp
-}
-
-const mergeHandlers = <E extends SyntheticEvent>(
-  newHandler?: (e: E) => void,
-  existingHandler?: (e: E) => void
-) => (event: E) => {
-  existingHandler?.(event)
-  if (!event.defaultPrevented) {
-    newHandler?.(event)
-  }
 }
 
 function isRenderProp(

@@ -24,68 +24,88 @@
 
  */
 
-import React, { cloneElement, FC, ReactElement } from 'react'
+import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
 import { useID } from '../utils'
 import { Popover, PopoverProps, UsePopoverResponseDom } from '../Popover'
 import { MenuList, MenuListProps } from './MenuList'
 
+export interface MenuDomProps extends UsePopoverResponseDom {
+  'aria-controls': string
+  disabled?: boolean
+}
+
 export interface MenuProps
   extends Omit<PopoverProps, 'children'>,
     Omit<MenuListProps, 'children' | 'content'> {
-  children: ReactElement<UsePopoverResponseDom & { 'aria-controls': string }>
+  /**
+   * A ReactElement that accepts dom props
+   */
+  children: ReactElement<MenuDomProps>
+  /**
+   * The ref to be passed to the list element (`ref` is passed to the triggering element)
+   */
+  listRef?: Ref<HTMLUListElement>
 }
 
-export const Menu: FC<MenuProps> = ({
-  children,
-  content,
-  id: propsID,
+export const Menu = forwardRef(
+  (
+    {
+      children,
+      content,
+      id: propsID,
+      disabled,
+      listRef,
 
-  // Popover props
-  canClose,
-  cancelClickOutside,
-  disabled,
-  focusTrap,
-  hoverDisclosureRef,
-  isOpen,
-  onClose,
-  pin,
-  placement,
-  setOpen,
-  triggerElement,
-  triggerToggle,
+      // Popover props to pass through
+      canClose,
+      cancelClickOutside,
+      focusTrap,
+      hoverDisclosureRef,
+      isOpen,
+      onClose,
+      pin,
+      placement,
+      setOpen,
+      triggerElement,
+      triggerToggle,
 
-  // List props
-  ...props
-}) => {
-  const id = useID(propsID)
-  const list = (
-    <MenuList id={id} {...props}>
-      {content}
-    </MenuList>
-  )
-  children = cloneElement(children, {
-    'aria-controls': id,
-  })
+      // List props to pass through
+      ...props
+    }: MenuProps,
+    ref: Ref<any>
+  ) => {
+    const id = useID(propsID)
+    const list = (
+      <MenuList id={id} {...props} ref={listRef}>
+        {content}
+      </MenuList>
+    )
+    children = cloneElement(children, {
+      'aria-controls': id,
+      disabled,
+    })
 
-  return (
-    <Popover
-      content={list}
-      {...{
-        canClose,
-        cancelClickOutside,
-        disabled,
-        focusTrap,
-        hoverDisclosureRef,
-        isOpen,
-        onClose,
-        pin,
-        placement,
-        setOpen,
-        triggerElement,
-        triggerToggle,
-      }}
-    >
-      {children}
-    </Popover>
-  )
-}
+    return (
+      <Popover
+        content={list}
+        disabled={disabled}
+        ref={ref}
+        {...{
+          canClose,
+          cancelClickOutside,
+          focusTrap,
+          hoverDisclosureRef,
+          isOpen,
+          onClose,
+          pin,
+          placement,
+          setOpen,
+          triggerElement,
+          triggerToggle,
+        }}
+      >
+        {children}
+      </Popover>
+    )
+  }
+)
