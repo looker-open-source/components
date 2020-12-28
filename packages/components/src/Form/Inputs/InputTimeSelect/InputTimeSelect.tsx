@@ -326,7 +326,7 @@ const InputTimeSelectLayout = forwardRef(
         50,
         { trailing: false }
       ),
-      []
+      [handleChange]
     )
 
     const handleTextInputChange = (e: SyntheticEvent) => {
