@@ -26,15 +26,15 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { CircleContainer } from './ProgessSvg'
+import { CircleContainer } from './ProgressSvg'
 import { progressCircularSVG, ProgressCircularSizes } from './size'
 
-interface DeterminateSpinnerProps {
+interface DeterminateProgressProps {
   size: ProgressCircularSizes
   progress?: number
 }
 
-export const DeterminateProgress: FC<DeterminateSpinnerProps> = ({
+export const DeterminateProgress: FC<DeterminateProgressProps> = ({
   size,
   progress = 0,
 }) => {

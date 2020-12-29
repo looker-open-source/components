@@ -23,30 +23,4 @@
  SOFTWARE.
 
  */
-
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { ProgressCircular, ProgressCircularProps } from './ProgressCircular'
-
-const Template: Story<ProgressCircularProps> = (args) => (
-  <ProgressCircular {...args} />
-)
-
-export const Indeterminate = Template.bind({})
-Indeterminate.args = {
-  determinate: false,
-  progress: 0,
-  size: 'large',
-}
-
-export const Determinate = Template.bind({})
-Determinate.args = {
-  determinate: true,
-  progress: 0.5,
-  size: 'large',
-}
-
-export default {
-  component: ProgressCircular,
-  title: 'ProgressCircular',
-}
+export * from './ProgressCircular'

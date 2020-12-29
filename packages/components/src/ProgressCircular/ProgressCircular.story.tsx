@@ -24,38 +24,36 @@
 
  */
 
-interface ProgressConstants {
-  /**
-   * Amount of the circle the arc takes up
-   */
-  arcSize: number
-  /**
-   * How much the start location of the arc should rotate each time
-   */
-  arcStartRotationInterval: number
-  /**
-   * Amount of time it takes to expand and contract arc
-   */
-  arcTime: number
-  /**
-   * Rotation position of the arcs that correspond to their fully contracted state
-   */
-  baseAngle: number
-  /**
-   * Amount of time for indicator to disappear
-   */
-  shrinkTime: number
-  /**
-   * Animation timing for CircularProgress
-   */
-  timingFunction: string
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { ProgressCircular, ProgressCircularProps } from './ProgressCircular'
+
+const Template: Story<ProgressCircularProps> = (args) => (
+  <ProgressCircular {...args} />
+)
+
+export const Indeterminate = Template.bind({})
+Indeterminate.args = {
+  determinate: false,
+  progress: 0,
+  size: 'large',
 }
 
-export const progressCircularConstants: ProgressConstants = {
-  arcSize: 270,
-  arcStartRotationInterval: 216,
-  arcTime: 1333,
-  baseAngle: 135,
-  shrinkTime: 4,
-  timingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+export const Determinate = Template.bind({})
+Determinate.args = {
+  determinate: true,
+  progress: 0.5,
+  size: 'large',
 }
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export default {
+  component: ProgressCircular,
+  title: 'ProgressCircular',
+  argTypes: {
+    progress: {
+      control: { type: 'range', min: 0, max: 1, step: 0.1 },
+    },
+  },
+}
+/* eslint-enabled sort-keys-fix/sort-keys-fix */

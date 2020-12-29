@@ -36,11 +36,11 @@ export interface ProgressCircularProps {
    */
   size?: ProgressCircularSizes
   /**
-   * If a determaniate progress
+   * If a determinate progress
    */
   determinate?: boolean
   /**
-   * The current progress of the determainte progress between 0 and 1
+   * The current progress of the determinate progress between 0 and 1
    */
   progress?: number
   /**
@@ -57,7 +57,7 @@ export const ProgressCircular: FC<ProgressCircularProps> = ({
   ...props
 }) => {
   return (
-    <ProgressContainter
+    <ProgressContainer
       size={size}
       role="progressbar"
       aria-label={label || undefined}
@@ -66,16 +66,16 @@ export const ProgressCircular: FC<ProgressCircularProps> = ({
       aria-valuenow={progress || undefined}
       {...props}
     >
-      {determinate ? (
+      {progress ? (
         <DeterminateProgress size={size} progress={progress} />
       ) : (
         <IndeterminateProgress size={size} />
       )}
-    </ProgressContainter>
+    </ProgressContainer>
   )
 }
 
-const ProgressContainter = styled.div<{ size: ProgressCircularSizes }>`
+const ProgressContainer = styled.div<{ size: ProgressCircularSizes }>`
   ${progressCircularSize}
   display: inline-flex;
   position: relative;
