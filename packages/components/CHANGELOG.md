@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- `MenuDisclosure` is no longer used with the updated `Menu` structure
+- `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
 
 ## [0.9.30]
 
