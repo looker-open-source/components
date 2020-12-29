@@ -99,24 +99,6 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-export const WithTooltip = () => {
-  const { value, toggle } = useToggle()
-  return (
-    <Space>
-      <Menu content={menuItems} disabled={value}>
-        <Tooltip content="Open the menu" placement="right">
-          <Button>Menu with Tooltip</Button>
-        </Tooltip>
-      </Menu>
-      <FieldToggleSwitch on={value} onChange={toggle} label="Disabled" />
-    </Space>
-  )
-}
-
-WithTooltip.parameters = {
-  storyshots: { disable: true },
-}
-
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
   return (
@@ -561,5 +543,23 @@ export const WithDialog = () => {
 }
 
 WithDialog.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithTooltip = () => {
+  const { value, toggle } = useToggle()
+  return (
+    <Space>
+      <Menu content={menuItems} disabled={value}>
+        <Tooltip content="Open the menu" placement="right">
+          <Button>Menu with Tooltip</Button>
+        </Tooltip>
+      </Menu>
+      <FieldToggleSwitch on={value} onChange={toggle} label="Disabled" />
+    </Space>
+  )
+}
+
+WithTooltip.parameters = {
   storyshots: { disable: true },
 }
