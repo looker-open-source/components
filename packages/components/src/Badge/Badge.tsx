@@ -106,7 +106,12 @@ const badgeIntent = (intent: BadgeIntent) =>
     color: ${({ theme: { colors } }) => generateIntentShade(colors[intent])};
   `
 
-export const Badge = styled(BadgeLayout)`
+export const Badge = styled(BadgeLayout).attrs(
+  ({ intent = 'key', size = 'medium' }) => ({
+    intent,
+    size,
+  })
+)`
   ${reset}
 
   border-radius:50px;
@@ -117,10 +122,5 @@ export const Badge = styled(BadgeLayout)`
   ${space}
   ${typography}
   ${size}
-  ${({ intent }) => badgeIntent(intent || 'key')}
+  ${({ intent }) => badgeIntent(intent)}
 `
-
-Badge.defaultProps = {
-  intent: 'key',
-  size: 'medium',
-}

@@ -63,6 +63,18 @@ export interface TreeProps
    */
   detailAccessory?: boolean
   /**
+   * If true, then the Tree will have a "disabled" presentation which consists of:
+   * - lighter text (text1)
+   * - no bg color on hover
+   * @default false
+   */
+  disabled?: boolean
+  /**
+   * If true, then the Tree will have an opaque, ui2 background
+   * @default false
+   */
+  selected?: boolean
+  /**
    * Icon element that appears between the Tree indicator and the Tree label
    */
   icon?: IconNames
@@ -94,12 +106,14 @@ const TreeLayout: FC<TreeProps> = ({
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
   detailAccessory: propsDetailAccessory,
+  disabled,
   icon,
   label,
   className,
   branchFontWeight,
   truncate,
   dividers,
+  selected,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
@@ -120,6 +134,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeItem = (
     <TreeItemInner
+      color={disabled ? 'text1' : 'text5'}
       detail={detail}
       detailAccessory={hasDetailAccessory}
       detailHoverDisclosure={hasDetailHoverDisclosure}
@@ -152,6 +167,8 @@ const TreeLayout: FC<TreeProps> = ({
         className={className}
         border={hasBorder}
         depth={depth}
+        disabled={disabled}
+        selected={selected}
         hovered={isHovered}
         dividers={dividers}
         branchFontWeight={branchFontWeight}

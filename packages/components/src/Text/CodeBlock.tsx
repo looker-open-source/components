@@ -43,7 +43,19 @@ const CodeBlockLayout: FC<CodeBlockProps> = ({
   </TextBase>
 )
 
-export const CodeBlock = styled(CodeBlockLayout)`
+export const CodeBlock = styled(CodeBlockLayout).attrs(
+  ({
+    border = '1px solid',
+    borderColor = 'ui2',
+    fontSize = 'small',
+    p = 'medium',
+  }) => ({
+    border,
+    borderColor,
+    fontSize,
+    p,
+  })
+)`
   ${border}
   color: ${({ theme }) => theme.colors.text};
   overflow-y: auto;
@@ -52,10 +64,3 @@ export const CodeBlock = styled(CodeBlockLayout)`
     font-family: inherit;
   }
 `
-
-CodeBlock.defaultProps = {
-  border: '1px solid',
-  borderColor: 'ui2',
-  fontSize: 'small',
-  p: 'medium',
-}

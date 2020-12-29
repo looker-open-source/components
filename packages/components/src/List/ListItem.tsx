@@ -46,9 +46,11 @@ export interface ListItemProps
     SpaceProps,
     TypographyProps {}
 
-export const ListItem = styled.li.withConfig({
-  shouldForwardProp,
-})<ListItemProps>`
+export const ListItem = styled.li
+  .withConfig({ shouldForwardProp })
+  .attrs<ListItemProps>(({ mb = 'xxsmall' }) => ({
+    mb,
+  }))<ListItemProps>`
   ${reset}
   ${typography}
   ${space}
@@ -56,5 +58,3 @@ export const ListItem = styled.li.withConfig({
   ${position}
   ${layout}
 `
-
-ListItem.defaultProps = { mb: 'xxsmall' }

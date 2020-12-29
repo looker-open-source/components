@@ -24,27 +24,18 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import React from 'react'
+import { TreeItem, Tree } from '..'
 
-export interface AsideProps extends SemanticLayoutBase {
-  /**
-   * Specify width of aside
-   * @default '12rem'
-   */
-  width?: string
-}
-
-export const Aside = styled.aside
-  .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(({ width = '12rem' }) => ({
-    width,
-  }))<AsideProps>`
-  ${semanticLayoutCSS}
-
-  flex: 0 0 ${({ width }) => width};
-  max-width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
-  width: 0;
-`
+export const DisabledAndSelected = () => (
+  <>
+    <Tree disabled label="Disabled Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
+    </Tree>
+    <Tree selected label="Selected Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
+    </Tree>
+  </>
+)

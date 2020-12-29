@@ -30,6 +30,9 @@ import { Span, SpanProps } from './Span'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextProps extends SpanProps {}
 
-export const Text = styled(Span)<TextProps>``
-
-Text.defaultProps = { fontSize: 'medium' }
+export const Text = styled(Span).attrs<TextProps>(
+  ({ color = 'text', fontSize = 'medium' }) => ({
+    color,
+    fontSize,
+  })
+)<TextProps>``

@@ -222,19 +222,25 @@ export const comboboxOptionStyle = css`
   outline: none;
 `
 
-export const ComboboxOption = styled(ComboboxOptionInternal)`
+export const ComboboxOption = styled(ComboboxOptionInternal).attrs(
+  ({
+    color = 'text4',
+    display = 'flex',
+    fontSize = 'small',
+    lineHeight = 'small',
+    px = 'xsmall',
+    py = 'xxsmall',
+  }) => ({
+    color,
+    display,
+    fontSize,
+    lineHeight,
+    px,
+    py,
+  })
+)`
   ${comboboxOptionStyle}
 `
-export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
-  color: 'text4',
-  display: 'flex',
-  fontSize: 'small',
-  lineHeight: 'small',
-  px: 'xsmall',
-  py: 'xxsmall',
-}
-
-ComboboxOption.defaultProps = comboboxOptionDefaultProps
 
 export function ComboboxOptionTextInternal({
   highlightText = true,

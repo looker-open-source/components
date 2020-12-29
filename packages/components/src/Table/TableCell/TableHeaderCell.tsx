@@ -32,14 +32,14 @@ export interface TableHeaderCellProps
   extends TableCellProps,
     CompatibleHTMLProps<HTMLTableHeaderCellElement> {}
 
-export const TableHeaderCell = styled.th.withConfig({
-  shouldForwardProp,
-})<TableHeaderCellProps>`
+export const TableHeaderCell = styled.th
+  .withConfig({ shouldForwardProp })
+  .attrs<TableHeaderCellProps>(
+    ({ color = 'ui4', fontSize = 'xsmall', fontWeight = 'semiBold' }) => ({
+      color,
+      fontSize,
+      fontWeight,
+    })
+  )<TableHeaderCellProps>`
   ${tableCellCSS}
 `
-
-TableHeaderCell.defaultProps = {
-  color: 'ui4',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
-}

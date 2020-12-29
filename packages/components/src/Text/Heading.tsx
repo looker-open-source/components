@@ -48,8 +48,8 @@ export interface HeadingProps
   as?: HeadingLevels
 }
 
-const headingLevelFontSize = (props: HeadingProps) => {
-  switch (props.as) {
+const headingLevelFontSize = (as: HeadingLevels) => {
+  switch (as) {
     case 'h1':
       return 'xxlarge'
     case 'h3':
@@ -66,19 +66,28 @@ const headingLevelFontSize = (props: HeadingProps) => {
   }
 }
 
-const headingLineHeight = (props: HeadingProps): ResponsiveValue<FontSizes> =>
-  props.fontSize ? props.fontSize : headingLevelFontSize(props)
+const headingLineHeight = (
+  as: HeadingLevels,
+  fontSize?: ResponsiveValue<FontSizes>
+): ResponsiveValue<FontSizes> => fontSize || headingLevelFontSize(as)
 
-export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
-  fontSize: props.fontSize || headingLevelFontSize(props),
-  lineHeight: props.lineHeight || headingLineHeight(props),
-}))<HeadingProps>`
+export const Heading = styled(TextBase).attrs<HeadingProps>(
+  ({
+    as = 'h2',
+    color = 'text',
+    fontFamily = 'brand',
+    fontSize,
+    fontWeight = 'normal',
+    lineHeight,
+  }) => ({
+    as,
+    color,
+    fontFamily,
+    fontSize: fontSize || headingLevelFontSize(as),
+    fontWeight,
+    lineHeight: lineHeight || headingLineHeight(as, fontSize),
+  })
+)<HeadingProps>`
   ${textTransform}
   ${truncate}
 `
-
-Heading.defaultProps = {
-  as: 'h2',
-  fontFamily: 'brand',
-  fontWeight: 'normal',
-}

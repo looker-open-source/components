@@ -62,7 +62,12 @@ const placement = variant({
 })
 /* eslint-enable sort-keys-fix/sort-keys-fix */
 
-export const DrawerSurface = styled(SurfaceBase)<DrawerSurfaceProps>`
+export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
+  ({ placement = 'right', width = 'small' }) => ({
+    placement,
+    width,
+  })
+)<DrawerSurfaceProps>`
   /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
   height: 100%;
   position: absolute;
@@ -79,8 +84,3 @@ export const DrawerSurface = styled(SurfaceBase)<DrawerSurfaceProps>`
     );
   }
 `
-
-DrawerSurface.defaultProps = {
-  placement: 'right',
-  width: 'small',
-}

@@ -63,9 +63,16 @@ const emptySwatch = `position: relative;
     transform: rotate(-45deg);
   }`
 
-export const Swatch = styled.div.withConfig({ shouldForwardProp }).attrs(() => {
-  return { 'data-testid': 'swatch' }
-})<SwatchProps>`
+export const Swatch = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<SwatchProps>(
+    ({ color = 'transparent', height = inputHeight, width = inputHeight }) => ({
+      color,
+      'data-testid': 'swatch',
+      height,
+      width,
+    })
+  )<SwatchProps>`
   ${reset}
 
   ${inputCSS}
@@ -86,9 +93,3 @@ export const Swatch = styled.div.withConfig({ shouldForwardProp }).attrs(() => {
 
   ${(props) => props.color === 'transparent' && emptySwatch}
 `
-
-Swatch.defaultProps = {
-  color: 'transparent',
-  height: inputHeight,
-  width: inputHeight,
-}

@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   Combobox,
   ComboboxMulti,
@@ -47,6 +47,16 @@ const CustomIndicator: FC<OptionIndicatorProps> = ({
 }
 
 export const ComboboxDemo = () => {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      setLoading(false)
+    }, 4000)
+    return () => {
+      window.clearTimeout(t)
+    }
+  }, [])
+
   const [option, setOption] = useState({ value: 'Bananas' })
   const handleChange = (newOption: any) => {
     setOption(newOption)
@@ -63,11 +73,32 @@ export const ComboboxDemo = () => {
         <Combobox width={300} value={option} onChange={handleChange}>
           <ComboboxInput />
           <ComboboxList>
-            <ComboboxOption value="Apples" />
-            <ComboboxOption value="Oranges" />
-            <ComboboxOption value="Grapes" />
-            <ComboboxOption value="Bananas" />
-            <ComboboxOption value="Pineapples" />
+            {loading ? (
+              <ComboboxOption value="Loading..." />
+            ) : (
+              <>
+                <ComboboxOption value="Apples" />
+                <ComboboxOption value="Oranges" />
+                <ComboboxOption value="Grapes" />
+                <ComboboxOption value="Bananas" />
+                <ComboboxOption value="Pineapples" />
+                <ComboboxOption value="Apples2" />
+                <ComboboxOption value="Oranges2" />
+                <ComboboxOption value="Grapes2" />
+                <ComboboxOption value="Bananas2" />
+                <ComboboxOption value="Pineapples2" />
+                <ComboboxOption value="Apples3" />
+                <ComboboxOption value="Oranges3" />
+                <ComboboxOption value="Grapes3" />
+                <ComboboxOption value="Bananas3" />
+                <ComboboxOption value="Pineapples3" />
+                <ComboboxOption value="Apples4" />
+                <ComboboxOption value="Oranges4" />
+                <ComboboxOption value="Grapes4" />
+                <ComboboxOption value="Bananas4" />
+                <ComboboxOption value="Pineapples4" />
+              </>
+            )}
           </ComboboxList>
         </Combobox>
         <ComboboxMulti

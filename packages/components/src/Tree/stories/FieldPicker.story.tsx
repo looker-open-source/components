@@ -42,11 +42,7 @@ import {
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
 
-const PickerItem = ({
-  children = 'Cost',
-  selected = false,
-  truncate = false,
-}) => {
+const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -106,7 +102,6 @@ const PickerItem = ({
           detailHoverDisclosure={!overlay}
           onClick={() => alert(`Clicked on ${children}!`)}
           onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
-          selected={selected}
           truncate={truncate}
         >
           {children}
@@ -124,7 +119,7 @@ const fields = (
         <PickerItem>Created Month</PickerItem>
         <PickerItem>Created Year</PickerItem>
       </Tree>
-      <PickerItem selected>City</PickerItem>
+      <PickerItem>City</PickerItem>
       <PickerItem>Country</PickerItem>
       <PickerItem>ID</PickerItem>
     </TreeGroup>

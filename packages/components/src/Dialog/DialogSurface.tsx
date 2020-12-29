@@ -113,13 +113,20 @@ const placements = {
   `,
 }
 
-export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
+const defaultDialogSurfacePlacement = 'center'
+
+export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
+  ({ placement = defaultDialogSurfacePlacement, width = 'medium' }) => ({
+    placement,
+    width,
+  })
+)<DialogSurfaceProps>`
   box-shadow: ${({ theme }) => theme.shadows[5]};
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${dialogWidth}
-  ${({ placement }) => placements[placement || 'center']}
+  ${({ placement }) => placements[placement || defaultDialogSurfacePlacement]}
   ${height}
 
   @media screen and (min-width: ${breakpoints[0]}) {
@@ -132,7 +139,3 @@ export const DialogSurface = styled(SurfaceBase)<DialogSurfaceProps>`
     transform: translateY(100%);
   }
 `
-
-DialogSurface.defaultProps = {
-  width: 'medium',
-}

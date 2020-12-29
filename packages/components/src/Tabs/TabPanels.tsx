@@ -74,11 +74,11 @@ const Layout: FC<TabPanelsProps> = ({
   )
 }
 
-export const TabPanels = styled(Layout)`
+export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
+  pt,
+}))`
   ${reset}
   ${flexbox}
   ${layout}
   ${space}
 `
-
-TabPanels.defaultProps = { pt: 'large' }

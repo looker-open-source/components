@@ -68,7 +68,11 @@ const SpinnerFactory: FC<SpinnerProps> = (props) => {
   )
 }
 
-const Style = styled.div.withConfig({ shouldForwardProp })<SpinnerProps>`
+const Style = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<SpinnerProps>(({ size = '30' }) => ({
+    size,
+  }))<SpinnerProps>`
   ${reset}
   ${space}
   ${position}
@@ -77,9 +81,5 @@ const Style = styled.div.withConfig({ shouldForwardProp })<SpinnerProps>`
   position: relative;
   width: ${(props) => props.size}px;
 `
-
-Style.defaultProps = {
-  size: 30,
-}
 
 export const Spinner = styled(SpinnerFactory)``

@@ -37,13 +37,13 @@ import { layout, LayoutProps } from 'styled-system'
 
 interface PopoverContent extends SpaceProps, LayoutProps, FlexboxProps {}
 
-export const PopoverContent = styled.div.withConfig({
-  shouldForwardProp,
-})<PopoverContent>`
+export const PopoverContent = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<PopoverContent>(({ p = 'small' }) => ({
+    p,
+  }))<PopoverContent>`
   ${reset}
   ${space}
   ${layout}
   ${flexbox}
 `
-
-PopoverContent.defaultProps = { p: 'small' }

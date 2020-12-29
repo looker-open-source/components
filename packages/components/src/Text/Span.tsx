@@ -37,8 +37,10 @@ export interface SpanProps
     TextTransformProps,
     Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
 
-export const Span = styled(TextBase)<SpanProps>`
+export const Span = styled(TextBase).attrs<SpanProps>(
+  ({ fontSize, lineHeight }) => ({
+    lineHeight: lineHeight || fontSize,
+  })
+)<SpanProps>`
   ${textTransform}
 `
-
-Span.defaultProps = { color: 'inherit' }

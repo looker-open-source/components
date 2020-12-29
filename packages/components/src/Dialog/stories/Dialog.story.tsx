@@ -134,7 +134,7 @@ export const ClickOutside = () => {
   )
 }
 
-ClickOutside.arguments = {
+ClickOutside.parameters = {
   storyshots: { disable: true },
 }
 

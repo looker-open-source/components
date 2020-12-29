@@ -72,13 +72,14 @@ const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
   }
 `
 
-export const SpaceVertical = styled.div.withConfig({
-  shouldForwardProp,
-})<SpaceVerticalProps>`
+export const SpaceVertical = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<SpaceVerticalProps>(({ align = 'stretch', width = '100%' }) => ({
+    align,
+    width,
+  }))<SpaceVerticalProps>`
   ${spaceCSS}
   ${align}
   ${flexGap}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
 `
-
-SpaceVertical.defaultProps = { align: 'stretch', width: '100%' }

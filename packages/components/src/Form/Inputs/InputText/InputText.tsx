@@ -304,7 +304,12 @@ export const inputCSS = css`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-export const InputText = styled(InputTextLayout)<InputTextProps>`
+export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
+  ({ height = inputHeight, type = 'text' }) => ({
+    height,
+    type,
+  })
+)<InputTextProps>`
   ${reset}
 
   align-items: center;
@@ -343,8 +348,3 @@ export const InputText = styled(InputTextLayout)<InputTextProps>`
   ${(props) => (props.disabled ? inputTextDisabled : '')}
   ${inputTextValidation}
 `
-
-InputText.defaultProps = {
-  height: inputHeight,
-  type: 'text',
-}

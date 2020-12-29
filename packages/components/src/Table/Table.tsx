@@ -43,7 +43,11 @@ export interface TableProps
     BorderProps,
     CompatibleHTMLProps<HTMLTableElement> {}
 
-export const Table = styled.table.withConfig({ shouldForwardProp })<TableProps>`
+export const Table = styled.table
+  .withConfig({ shouldForwardProp })
+  .attrs<TableProps>(({ width = '100%' }) => ({
+    width,
+  }))<TableProps>`
   ${reset}
   ${space}
   ${layout}
@@ -51,5 +55,3 @@ export const Table = styled.table.withConfig({ shouldForwardProp })<TableProps>`
 
   border-collapse: collapse;
 `
-
-Table.defaultProps = { width: '100%' }

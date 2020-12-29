@@ -105,7 +105,7 @@ const FieldsetLayout = forwardRef(
       accordion,
       className,
       inline,
-      gap,
+      gap = 'medium',
       legend,
       fieldsHideLabel,
       children,
@@ -131,7 +131,7 @@ const FieldsetLayout = forwardRef(
 
     const content = (
       <LayoutComponent
-        gap={gap || 'medium'}
+        gap={gap}
         ref={ref}
         role="group"
         align="start"
@@ -178,7 +178,9 @@ const FieldsetLayout = forwardRef(
 
 FieldsetLayout.displayName = 'FieldsetLayout'
 
-export const Fieldset = styled(FieldsetLayout)`
+export const Fieldset = styled(FieldsetLayout).attrs(({ width = '100%' }) => ({
+  width,
+}))`
   ${simpleLayoutCSS}
 
   ${AccordionContent} {
@@ -199,5 +201,3 @@ export const Fieldset = styled(FieldsetLayout)`
     padding: ${({ theme: { space } }) => space.xxsmall} 0;
   }
 `
-
-Fieldset.defaultProps = { width: '100%' }
