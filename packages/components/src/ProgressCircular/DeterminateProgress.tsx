@@ -48,7 +48,6 @@ export const DeterminateProgress: FC<DeterminateProgressProps> = ({
         viewBox={`0 0 ${half * 2} ${half * 2}`}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <DeterminateTrack cx={half} cy={half} r={radius} strokeWidth={stroke} />
         <DeterminateCircle
           cx={half}
           cy={half}
@@ -69,9 +68,9 @@ const DeterminateContainer = styled.div`
   width: 100%;
 `
 
-const DeterminateTrack = styled.circle`
-  stroke: transparent;
-`
+// const DeterminateTrack = styled.circle`
+//   stroke: transparent;
+// `
 
 const DeterminateCircle = styled.circle`
   stroke: ${(props) => props.theme.colors.key};

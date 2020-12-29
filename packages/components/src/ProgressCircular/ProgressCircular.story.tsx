@@ -31,28 +31,35 @@ import { ProgressCircular, ProgressCircularProps } from './ProgressCircular'
 const Template: Story<ProgressCircularProps> = (args) => (
   <ProgressCircular {...args} />
 )
-
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const Indeterminate = Template.bind({})
 Indeterminate.args = {
-  determinate: false,
-  progress: 0,
   size: 'large',
+  // determinate: false,
+  // progress: ,
 }
 
 export const Determinate = Template.bind({})
 Determinate.args = {
-  determinate: true,
-  progress: 0.5,
   size: 'large',
+  progress: 0.5,
 }
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+Determinate.argTypes = {
+  progress: {
+    control: { type: 'range', min: 0, max: 1, step: 0.1 },
+  },
+}
+
 export default {
   component: ProgressCircular,
   title: 'ProgressCircular',
   argTypes: {
-    progress: {
-      control: { type: 'range', min: 0, max: 1, step: 0.1 },
+    size: {
+      control: {
+        type: 'select',
+        options: ['xsmall', 'small', 'medium', 'large'],
+      },
     },
   },
 }

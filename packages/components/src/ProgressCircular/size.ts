@@ -56,7 +56,7 @@ export const progressCircularSVG = variant({
       ...calculateValues(10),
     },
     small: {
-      stroke: 3,
+      stroke: 2.5,
       ...calculateValues(12),
     },
     medium: {

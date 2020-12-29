@@ -33,14 +33,11 @@ import { progressCircularSize, ProgressCircularSizes } from './size'
 export interface ProgressCircularProps {
   /**
    * Size of spinner
+   * @default large
    */
   size?: ProgressCircularSizes
   /**
-   * If a determinate progress
-   */
-  determinate?: boolean
-  /**
-   * The current progress of the determinate progress between 0 and 1
+   * The current progress of a determinable progress, between 0 and 1
    */
   progress?: number
   /**
@@ -51,7 +48,6 @@ export interface ProgressCircularProps {
 
 export const ProgressCircular: FC<ProgressCircularProps> = ({
   size = 'large',
-  determinate,
   progress,
   label,
   ...props
@@ -66,7 +62,7 @@ export const ProgressCircular: FC<ProgressCircularProps> = ({
       aria-valuenow={progress || undefined}
       {...props}
     >
-      {progress ? (
+      {progress !== undefined ? (
         <DeterminateProgress size={size} progress={progress} />
       ) : (
         <IndeterminateProgress size={size} />
