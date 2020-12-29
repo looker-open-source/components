@@ -57,6 +57,7 @@ export interface UseTooltipProps {
   placement?: Placement
   /**
    * Content to display inside the tooltip. Can be a string or JSX.
+   * If not defined, the Tooltip will not render.
    */
   content?: ReactNode
   /**
@@ -93,11 +94,6 @@ export interface UseTooltipProps {
   triggerElement?: HTMLElement | null
 
   /**
-   * If true, the useTooltip hook will return nothing
-   */
-  disabled?: boolean
-
-  /**
    * Delay
    */
   delay?: Transitions
@@ -123,7 +119,6 @@ export function useTooltip({
   width,
   maxWidth = '30rem',
   textAlign,
-  disabled,
   id,
   invert,
   triggerElement,
@@ -201,7 +196,7 @@ export function useTooltip({
   const guaranteedId = useID(id)
 
   const popper =
-    renderDOM && content && !disabled ? (
+    renderDOM && content ? (
       <Portal>
         <TooltipSurface
           aria-busy={busy ? true : undefined}

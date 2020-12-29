@@ -174,7 +174,7 @@ export const InputColorComponent = forwardRef(
 
     return (
       <div className={className}>
-        <Popover content={content} disabled={disabled || readOnly}>
+        <Popover content={disabled || readOnly ? undefined : content}>
           <Swatch
             color={color ? hsv2hex(color) : undefined}
             disabled={disabled}

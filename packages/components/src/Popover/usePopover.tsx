@@ -50,15 +50,10 @@ import { useVerticalSpace } from './useVerticalSpace'
 
 export interface UsePopoverProps {
   /**
-   * Content to rendered within the Popover surface.
-   * @required
+   * Content to render within the Popover surface.
+   * If not defined, the Popover will not render.
    */
-  content: ReactNode
-
-  /**
-   * Disable the popover (will not be passed to the trigger)
-   */
-  disabled?: boolean
+  content?: ReactNode
 
   /**
    * When true, display Surface and it's contained content
@@ -157,7 +152,6 @@ export interface UsePopoverResponseDom {
 export const usePopover = ({
   canClose,
   content,
-  disabled,
   pin = false,
   isOpen: controlledIsOpen = false,
   onClose,
@@ -245,7 +239,7 @@ export const usePopover = ({
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
-  const popover = !disabled && !openWithoutElem && isOpen && (
+  const popover = content && !openWithoutElem && isOpen && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -271,7 +265,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': !disabled,
+      'aria-haspopup': !!content,
       onClick: handleOpen,
       ref: callbackRef,
     },

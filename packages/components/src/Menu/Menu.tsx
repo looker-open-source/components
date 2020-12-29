@@ -75,7 +75,7 @@ export const Menu = forwardRef(
     ref: Ref<any>
   ) => {
     const id = useID(propsID)
-    const list = (
+    const list = content && (
       <MenuList id={id} {...props} ref={listRef}>
         {content}
       </MenuList>
@@ -87,8 +87,7 @@ export const Menu = forwardRef(
 
     return (
       <Popover
-        content={list}
-        disabled={disabled}
+        content={disabled ? undefined : list}
         ref={ref}
         {...{
           canClose,

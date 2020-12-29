@@ -163,8 +163,7 @@ const IconButtonComponent = forwardRef(
       },
       tooltip,
     } = useTooltip({
-      content: label,
-      disabled: tooltipDisabled || hasOuterTooltip,
+      content: tooltipDisabled || hasOuterTooltip ? undefined : label,
       id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
       textAlign: tooltipTextAlign,

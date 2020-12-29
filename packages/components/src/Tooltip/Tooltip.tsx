@@ -32,8 +32,8 @@ import React, {
   ReactNode,
   Ref,
 } from 'react'
-import { UsePopoverResponseDom } from '../Popover'
-import { mergeHandlers, useForkedRef } from '../utils'
+import { MenuDomProps } from '../Menu'
+import { mergeHandlers, undefinedCoalesce, useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -42,16 +42,13 @@ import {
 
 type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
-export interface TooltipProps
-  extends UseTooltipProps,
-    Partial<UsePopoverResponseDom> {
-  content: ReactNode
+export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
   /**
    * Component to receive tooltip behavior or render prop function that
    * receives tooltip props and returns a component
    */
   children:
-    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
+    | ReactElement<UseTooltipResponseDom & MenuDomProps>
     | TooltipRenderProp
 }
 
@@ -64,12 +61,15 @@ function isRenderProp(
 export const Tooltip = forwardRef(
   (
     {
-      // Props from Popover
+      // Props from Popover or Menu
+      'aria-controls': ariaControls,
       'aria-expanded': ariaExpanded,
       'aria-haspopup': ariaHaspopup,
+      disabled,
       onClick,
 
       children,
+      content,
       ...props
     }: TooltipProps,
 
@@ -78,7 +78,7 @@ export const Tooltip = forwardRef(
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip
-      disabled: ariaExpanded,
+      content: ariaExpanded ? undefined : content,
       ...props,
     })
     const {
@@ -117,10 +117,17 @@ export const Tooltip = forwardRef(
       target = cloneElement(children, {
         ...mergedHandlers,
         ...restDomProps,
+        // Menu
+        'aria-controls': ariaControls,
+        // Popover
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
+        // Tooltip
         className:
           `${children.props.className || ''} ${className}`.trim() || undefined,
+        // Menu
+        disabled: undefinedCoalesce([children.props.disabled, disabled]),
+
         ref,
       })
     } else if (isRenderProp(children)) {

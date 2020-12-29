@@ -40,6 +40,7 @@ import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
 import { Space, SpaceVertical } from '../Layout'
 import { Text, Paragraph } from '../Text'
+import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
 import { Menu } from './Menu'
 import { MenuGroup } from './MenuGroup'
@@ -58,6 +59,7 @@ const menuItems = (
         detail="detail"
         description="this is the description"
         icon="LogoRings"
+        tooltip="Some tooltip"
       >
         Looker
       </MenuItem>
@@ -97,11 +99,23 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-export const IsOpen = () => (
-  <Menu content={menuItems} isOpen={true}>
-    <Button>Defaults to Open</Button>
-  </Menu>
-)
+export const WithTooltip = () => {
+  const { value, toggle } = useToggle()
+  return (
+    <Space>
+      <Menu content={menuItems} disabled={value}>
+        <Tooltip content="Open the menu" placement="right">
+          <Button>Menu with Tooltip</Button>
+        </Tooltip>
+      </Menu>
+      <FieldToggleSwitch on={value} onChange={toggle} label="Disabled" />
+    </Space>
+  )
+}
+
+WithTooltip.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
