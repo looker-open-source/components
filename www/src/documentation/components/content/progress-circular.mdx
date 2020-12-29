@@ -1,10 +1,61 @@
 ---
 title: ProgressCircular
 storybook: true
+status: experimental
 ---
 
+The `ProgressCircular` helps express an unspecified wait time or displays the length of a process
+
+## Showing an unknown wait time
+
+If the time a process takes is not known or detectable, use the default `ProgressCircular` behavior.
+
 ```jsx
-<SpaceVertical gap="xsmall">
+<Space justifyContent="center">
   <ProgressCircular />
-</SpaceVertical>
+</Space>
+```
+
+## Indicating a known wait time
+
+If the time a process takes can be determined, you can use the `progress` prop to indicate how far along the process has progressed. The `progress` prop accepts a number from `0` to `1`, where `0` is 0% complete and `1` is 100% complete.
+
+```jsx
+;() => {
+  const options = [
+    { value: '0', label: '0%' },
+    { value: '.25', label: '25%' },
+    { value: '.50', label: '50%' },
+    { value: '.75', label: '75%' },
+    { value: '1', label: '100%' },
+  ]
+
+  const [progress, setProgress] = useState(options[2].value)
+
+  return (
+    <SpaceVertical>
+      <ProgressCircular progress={progress} />
+      <Space>
+        <ButtonToggle
+          value={progress}
+          options={options}
+          onChange={setProgress}
+        />
+      </Space>
+    </SpaceVertical>
+  )
+}
+```
+
+## Size
+
+`ProgressCircular` is available in four sizes, `xsmall`, `small`, `medium`, and `large`.
+
+```jsx
+<Space justifyContent="center">
+  <ProgressCircular size="xsmall" />
+  <ProgressCircular size="small" />
+  <ProgressCircular size="medium" />
+  <ProgressCircular />
+</Space>
 ```
