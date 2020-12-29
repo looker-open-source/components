@@ -30,7 +30,7 @@ import {
   SizeMedium,
   SizeSmall,
   SizeXSmall,
-} from '@looker/design-tokens/src'
+} from '@looker/design-tokens'
 
 export type ProgressCircularSizes =
   | SizeXSmall
