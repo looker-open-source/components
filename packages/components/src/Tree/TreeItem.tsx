@@ -190,7 +190,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <TreeItemDetail detailAccessory={detailAccessory} ref={detailRef}>
+      <TreeItemDetail detailAccessory={!!detailAccessory} ref={detailRef}>
         {props.detail}
       </TreeItemDetail>
     </HoverDisclosure>
