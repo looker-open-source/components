@@ -128,6 +128,7 @@ export const IconButtonStyle = styled.button.withConfig({
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
     const {
+      'aria-expanded': ariaExpanded,
       className,
       icon,
       id,
@@ -163,7 +164,9 @@ const IconButtonComponent = forwardRef(
       },
       tooltip,
     } = useTooltip({
-      content: tooltipDisabled || hasOuterTooltip ? undefined : label,
+      // ariaExpanded indicates an open Popover or Menu – don't show the tooltip
+      content:
+        tooltipDisabled || hasOuterTooltip || ariaExpanded ? undefined : label,
       id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
       textAlign: tooltipTextAlign,
@@ -182,6 +185,7 @@ const IconButtonComponent = forwardRef(
     return (
       <ButtonBase
         aria-describedby={ariaDescribedBy}
+        aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
         ref={actualRef}
         p="none"
