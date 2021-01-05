@@ -39,12 +39,15 @@ export const generateTreeBorder = (depth: number, theme: Theme) => {
   const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
   const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
 
+  const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
+  const postBorderStop = `calc(${borderSpacer})`
+
   return css`
     background: linear-gradient(
       90deg,
-      transparent calc(${borderSpacer} - 2px),
-      ${theme.colors.ui2},
-      transparent calc(${borderSpacer})
+      transparent ${preBorderStop},
+      ${theme.colors.ui2} ${preBorderStop} ${postBorderStop},
+      transparent ${postBorderStop}
     );
   `
 }
