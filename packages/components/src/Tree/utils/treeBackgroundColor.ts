@@ -24,22 +24,37 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { AccordionDisclosureStyle } from '../..'
-import { TreeItem, Tree, TreeItemLabel } from '..'
+import { itemSelectedColor, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { TreeBackgroundStyleProps } from '../Tree'
 
-export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
-    <TreeItem selected>Created Date</TreeItem>
-    <TreeItem selected>Created Month</TreeItem>
-    <TreeItem selected>Created Year</TreeItem>
-    <TreeItem selected>Created Quarter</TreeItem>
-  </BorderRadiusOverrideTree>
-)
-
-const BorderRadiusOverrideTree = styled(Tree)`
-  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
-    border-radius: ${({ theme }) => theme.radii.medium};
+export const treeBackgroundColor = ({
+  brand,
+  disabled,
+  hovered,
+  selected,
+  theme: { colors },
+}: TreeBackgroundStyleProps & { theme: Theme }) => {
+  const brandColors = {
+    all: colors.keySubtle,
+    hovered: colors.ui1,
+    selected: colors.keySubtle,
   }
-`
+  const defaultColors = {
+    all: itemSelectedColor(colors.ui2),
+    hovered: colors.ui1,
+    selected: itemSelectedColor(colors.ui2),
+  }
+  const stateColors = brand ? brandColors : defaultColors
+  let renderedColor
+
+  if (disabled) return
+  else if (selected && hovered) renderedColor = stateColors.all
+  else if (selected) renderedColor = stateColors.selected
+  else if (hovered) renderedColor = stateColors.hovered
+  else return
+
+  return css`
+    background-color: ${renderedColor};
+  `
+}

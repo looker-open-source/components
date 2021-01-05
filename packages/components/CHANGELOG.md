@@ -9,7 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Tree / TreeItem` disabled and selected states
+- `Tree / TreeItem`
+  - disabled and selected states
+  - `brand` prop
+  - `treeBackgroundColor` util function
+
+### Changed
+
+- `Tree` now uses the same `selected` color as `TreeItem`
 
 ### Fixed
 

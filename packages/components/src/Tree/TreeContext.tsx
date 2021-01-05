@@ -28,6 +28,7 @@ import { createContext } from 'react'
 
 export interface TreeContextProps {
   border?: boolean
+  brand?: boolean
   depth?: number
   detailHoverDisclosure?: boolean
   detailAccessory?: boolean

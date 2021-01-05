@@ -39,8 +39,32 @@ import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { TreeItemInner, TreeStyle } from './TreeStyle'
 
+export interface TreeBackgroundStyleProps {
+  /**
+   * Replace the normal grey selected and selected + hovered color with brand colors
+   * @default false
+   */
+  brand?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a "disabled" presentation.
+   * @default false
+   */
+  disabled?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a light background color
+   * @default false
+   */
+  hovered?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a darker background color
+   * @default false
+   */
+  selected?: boolean
+}
+
 export interface TreeProps
-  extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'> {
+  extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'>,
+    Omit<TreeBackgroundStyleProps, 'hovered'> {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false
@@ -62,18 +86,6 @@ export interface TreeProps
    * @default false
    */
   detailAccessory?: boolean
-  /**
-   * If true, then the Tree will have a "disabled" presentation which consists of:
-   * - lighter text (text1)
-   * - no bg color on hover
-   * @default false
-   */
-  disabled?: boolean
-  /**
-   * If true, then the Tree will have an opaque, ui2 background
-   * @default false
-   */
-  selected?: boolean
   /**
    * Icon element that appears between the Tree indicator and the Tree label
    */
@@ -102,6 +114,7 @@ export interface TreeProps
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
+  brand: propsBrand,
   children,
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
@@ -121,6 +134,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const hasBrandColoring = undefinedCoalesce([propsBrand, treeContext.brand])
   const hasDetailHoverDisclosure = undefinedCoalesce([
     propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
@@ -158,6 +172,7 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        brand: hasBrandColoring,
         depth: depth + 1,
         detailAccessory: hasDetailAccessory,
         detailHoverDisclosure: hasDetailHoverDisclosure,
@@ -166,6 +181,7 @@ const TreeLayout: FC<TreeProps> = ({
       <TreeStyle
         className={className}
         border={hasBorder}
+        brand={hasBrandColoring}
         depth={depth}
         disabled={disabled}
         selected={selected}
