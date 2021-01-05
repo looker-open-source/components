@@ -29,7 +29,7 @@ import {
   props,
 } from '@styled-system/should-forward-prop'
 
-import { lighten } from 'polished'
+import lighten from 'polished/lib/color/lighten'
 export const itemSelectedColor = (color: string) => lighten(0.04, color)
 
 export const shouldForwardProp = createShouldForwardProp([...props])

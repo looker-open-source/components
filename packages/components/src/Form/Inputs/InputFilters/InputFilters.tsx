@@ -35,38 +35,8 @@ import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
-import {
-  inputFilterEditor,
-  InputFilterEditorRenderProp,
-} from './inputFilterEditor'
-
-export interface FieldFilterOptions {
-  /* specify the field value */
-  field: string
-  /* text to be displayed in drop-down, optional, `field` is used if not specified */
-  label?: string
-  /**
-   * ability to select multiple filter options
-   * @default false
-   */
-  multiple?: boolean
-  /* list of options to filter by */
-  options?: string[]
-}
-
-export interface FieldFilter extends FieldFilterOptions {
-  editor?: InputFilterEditorRenderProp
-  formatValue?: (value: string) => string
-  /* filter value/expression */
-  value?: string
-}
-
-export interface InputFiltersProps {
-  className?: string
-  filters: FieldFilter[]
-  hideFilterIcon?: boolean
-  onChange: (filters: FieldFilter[]) => void
-}
+import { inputFilterEditor } from './inputFilterEditor'
+import { InputFiltersProps } from './types'
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,

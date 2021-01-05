@@ -21,8 +21,10 @@ storybook-static
 www/public
 
 # lerna
-/packages/*/lib
 /packages/*/dist
+/packages/*/esm
+/packages/*/lib
+/packages/*/types
 
 # misc
 .DS_Store

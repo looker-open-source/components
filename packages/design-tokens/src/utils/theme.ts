@@ -26,6 +26,7 @@
 
 import { Theme } from '../theme'
 import { FontFamilyChoices, SpecifiableColors } from '../system'
+import { defaultFontFallbacks } from '../tokens/typography/font_families'
 import { generateFontFamilies } from '../utils/typography'
 import { generateColors } from './color'
 
@@ -51,7 +52,11 @@ export const generateTheme = (
   }
 
   const fonts = customizations.fontFamilies
-    ? generateFontFamilies(theme.fonts, customizations.fontFamilies)
+    ? generateFontFamilies(
+        theme.fonts,
+        defaultFontFallbacks,
+        customizations.fontFamilies
+      )
     : theme.fonts
 
   const colors = customizations.colors

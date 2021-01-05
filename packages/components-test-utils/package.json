@@ -2,11 +2,11 @@
   "name": "@looker/components-test-utils",
   "license": "MIT",
   "version": "0.9.29",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/index.cjs.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "files": [
-    "lib"
+    "lib", "esm", "types"
   ],
   "sideEffects": false,
   "repository": {

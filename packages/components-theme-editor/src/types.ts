@@ -36,3 +36,8 @@ export interface ThemeEditableProps {
   colors?: Partial<SpecifiableColors>
   fontFamilies?: Partial<FontFamilyChoices>
 }
+
+export interface ThemeEditorProps {
+  hasCustomTheme: boolean
+  updateTheme: (customTheme?: ThemeEditableProps) => void
+}

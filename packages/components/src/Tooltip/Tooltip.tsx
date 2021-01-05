@@ -28,33 +28,13 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactElement,
   ReactNode,
   Ref,
   SyntheticEvent,
 } from 'react'
-import { UsePopoverResponseDom } from '../Popover'
 import { useForkedRef } from '../utils'
-import {
-  useTooltip,
-  UseTooltipProps,
-  UseTooltipResponseDom,
-} from './useTooltip'
-
-type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
-
-export interface TooltipProps
-  extends UseTooltipProps,
-    Partial<UsePopoverResponseDom> {
-  content: ReactNode
-  /**
-   * Component to receive tooltip behavior or render prop function that
-   * receives tooltip props and returns a component
-   */
-  children:
-    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
-    | TooltipRenderProp
-}
+import { TooltipProps, TooltipRenderProp } from './types'
+import { useTooltip } from './useTooltip'
 
 const mergeHandlers = <E extends SyntheticEvent>(
   newHandler?: (e: E) => void,

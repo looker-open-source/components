@@ -44,13 +44,14 @@ import {
 } from '@looker/design-tokens'
 import React, { FC, useContext, useState } from 'react'
 import { ThemeContext } from 'styled-components'
-import { ThemeEditorProps } from './ThemeEditor'
+import { ThemeEditableProps } from './types'
 import { FauxDashboard } from './Examples/Dashboard'
 import { ThemeEditorForm } from './ThemeEditorForm'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ThemeEditorContentProps
-  extends Omit<ThemeEditorProps, 'hasCustomTheme'> {}
+export interface ThemeEditorContentProps {
+  updateTheme: (customTheme?: ThemeEditableProps) => void
+}
 
 export const ThemeEditorContent: FC<ThemeEditorContentProps> = ({
   updateTheme,

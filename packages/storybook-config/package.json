@@ -1,5 +1,5 @@
 {
-  "name": "@looker/storybook-config",
+  "name": "storybook-config",
   "version": "0.9.29",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -45,7 +45,7 @@ const plugins = [
 ]
 
 const presets = [
-  ['@babel/preset-env', { modules: false }],
+  // ['@babel/preset-env', { modules: false }],
   '@babel/preset-react',
   '@babel/preset-typescript',
 ]
@@ -55,17 +55,43 @@ module.exports = (api) => {
 
   return {
     env: {
-      build: {
+      cjs: {
         ignore,
         plugins,
-        presets,
+        presets: [
+          [
+            '@babel/env',
+            {
+              corejs: 3,
+              targets: {
+                node: 6,
+              },
+              useBuiltIns: 'usage',
+            },
+          ],
+          ...presets,
+        ],
+      },
+      esm: {
+        ignore,
+        plugins,
+        presets: [
+          [
+            '@babel/env',
+            {
+              corejs: 3,
+              modules: false,
+              useBuiltIns: 'usage',
+            },
+          ],
+          ...presets,
+        ],
       },
     },
     plugins,
     presets: [
       ['@babel/preset-env', { targets: { esmodules: true } }],
-      '@babel/preset-react',
-      '@babel/preset-typescript',
+      ...presets,
     ],
   }
 }

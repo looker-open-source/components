@@ -26,10 +26,10 @@
 
 import styled from 'styled-components'
 import React, { FC } from 'react'
+import { densityTarget } from '@looker/design-tokens'
 import { DividerVertical } from '../../Divider'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
-import { FilterConfig } from '../DataTable'
-import { densityTarget } from '../Table'
+import { FilterConfig } from '../types'
 import { DataTableColumns } from '../Column'
 import { ItemTarget } from '../Item/ItemTarget'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'

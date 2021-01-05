@@ -24,6 +24,7 @@
 
  */
 
+import { densityTarget } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
@@ -33,7 +34,7 @@ import {
   getNumericColumnIndices,
   numericColumnCSS,
 } from './utils/dataTableFormatting'
-import { DataTableProps } from './DataTable'
+import { DataTableProps } from './types'
 import { DataTableHeader } from './Header/DataTableHeader'
 import { edgeShadow } from './utils/edgeShadow'
 
@@ -79,8 +80,6 @@ export const TableLayout: FC<TableProps> = ({
     </>
   )
 }
-
-export const densityTarget = '2.25rem' // 36px
 
 /**
  * Apply specialized styling to the first column if `select` mode is active
