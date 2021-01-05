@@ -42,7 +42,7 @@ export const generateTreeBorder = (depth: number, theme: Theme) => {
   return css`
     background: linear-gradient(
       90deg,
-      transparent calc(${borderSpacer} - 1px),
+      transparent calc(${borderSpacer} - 2px),
       ${theme.colors.ui2},
       transparent calc(${borderSpacer})
     );
