@@ -48,11 +48,11 @@ export const treeBackgroundColor = ({
   const stateColors = brand ? brandColors : defaultColors
   let renderedColor
 
-  if (disabled) renderedColor = 'none'
+  if (disabled) return
   else if (selected && hovered) renderedColor = stateColors.all
   else if (selected) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered
-  else renderedColor = 'none'
+  else return
 
   return css`
     background-color: ${renderedColor};
