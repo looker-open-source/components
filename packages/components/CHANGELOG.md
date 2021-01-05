@@ -13,9 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `InputText` issue moving cursor and selecting text when input is already focused
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
+
+## [0.9.30]
+
+### Fixed
+
+- `InputText` issue moving cursor and selecting text when input is already focused
 
 ## [0.9.29]
 
