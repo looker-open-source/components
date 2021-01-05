@@ -64,7 +64,7 @@ export interface TreeBackgroundStyleProps {
 
 export interface TreeProps
   extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'>,
-    Omit<TreeBackgroundStyleProps, 'hovered' | 'theme'> {
+    Omit<TreeBackgroundStyleProps, 'hovered'> {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false
