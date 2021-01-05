@@ -80,17 +80,22 @@ const IconLayout = forwardRef(
     }
     const Glyph = name ? Glyphs[name] : 'div'
     const value = artwork || (
-      <Glyph width="100%" height="100%" fill="currentColor" title={title} />
+      <Glyph
+        aria-hidden={title === undefined && true}
+        width="100%"
+        height="100%"
+        fill="currentColor"
+        title={title}
+      />
     )
     return (
-      <div aria-label={label || undefined} role="img">
-        <div
-          aria-hidden={title === undefined && true}
-          ref={ref}
-          {...omitStyledProps(props)}
-        >
-          {value}
-        </div>
+      <div
+        aria-label={label || undefined}
+        role="img"
+        ref={ref}
+        {...omitStyledProps(props)}
+      >
+        {value}
       </div>
     )
   }
