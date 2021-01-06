@@ -24,14 +24,43 @@
 
  */
 
-import { AccordionIndicatorProps } from '../../Accordion'
+import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import {
+  MaxWidthProps,
+  MinWidthProps,
+  SpaceProps,
+  WidthProps,
+} from 'styled-system'
+import { ButtonSizeProps, ButtonSizes } from './size'
 
-export const indicatorDefaults: Required<AccordionIndicatorProps> = {
-  indicatorGap: 'xxsmall',
-  indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDropDown',
-  },
-  indicatorPosition: 'left',
-  indicatorSize: 'xxsmall',
+export interface ButtonIconProps {
+  iconBefore?: IconNames | undefined
+  iconAfter?: IconNames | undefined
+}
+
+export interface ButtonBaseProps
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    ButtonSizeProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
+    SpaceProps {
+  type?: 'button' | 'submit' | 'reset'
+
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "key"
+   */
+  color?: StatefulColor
+
+  focusVisible?: boolean
+}
+
+export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
+  size?: ButtonSizes
+  /**
+   * If true, the button's width will be set to 100%.
+   */
+  fullWidth?: boolean
 }

@@ -24,14 +24,43 @@
 
  */
 
-import { AccordionIndicatorProps } from '../../Accordion'
+import { ReactNode } from 'react'
 
-export const indicatorDefaults: Required<AccordionIndicatorProps> = {
-  indicatorGap: 'xxsmall',
-  indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDropDown',
-  },
-  indicatorPosition: 'left',
-  indicatorSize: 'xxsmall',
+export interface InputFilterEditorProps {
+  closeEditor: () => void
+  filterOptions: FieldFilterOptions
+  onChange: (value?: string) => void
+  value?: string
+}
+
+export type InputFilterEditorRenderProp = (
+  props: InputFilterEditorProps
+) => ReactNode
+
+export interface FieldFilterOptions {
+  /* specify the field value */
+  field: string
+  /* text to be displayed in drop-down, optional, `field` is used if not specified */
+  label?: string
+  /**
+   * ability to select multiple filter options
+   * @default false
+   */
+  multiple?: boolean
+  /* list of options to filter by */
+  options?: string[]
+}
+
+export interface FieldFilter extends FieldFilterOptions {
+  editor?: InputFilterEditorRenderProp
+  formatValue?: (value: string) => string
+  /* filter value/expression */
+  value?: string
+}
+
+export interface InputFiltersProps {
+  className?: string
+  filters: FieldFilter[]
+  hideFilterIcon?: boolean
+  onChange: (filters: FieldFilter[]) => void
 }

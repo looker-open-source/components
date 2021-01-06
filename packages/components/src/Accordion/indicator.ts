@@ -24,14 +24,38 @@
 
  */
 
-import { AccordionIndicatorProps } from '../../Accordion'
+import { SpacingSizes } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import { IconSize } from '../Icon'
 
-export const indicatorDefaults: Required<AccordionIndicatorProps> = {
-  indicatorGap: 'xxsmall',
-  indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDropDown',
-  },
-  indicatorPosition: 'left',
-  indicatorSize: 'xxsmall',
+export type IndicatorIcons = {
+  close: IconNames
+  open: IconNames
+}
+
+export type AccordionIndicatorPosition = undefined | 'left' | 'right'
+
+export interface AccordionIndicatorProps {
+  /**
+   * Determines where the disclosure indicator will sit on
+   * @default 'right'
+   */
+  indicatorPosition?: AccordionIndicatorPosition
+
+  /**
+   * Size of icon on disclosure
+   * @default 'small'
+   */
+  indicatorSize?: IconSize
+
+  /**
+   * Space between label and indicator within disclosure
+   * @default 'xsmall'
+   */
+  indicatorGap?: SpacingSizes
+
+  /**
+   * Icons for disclosure indicator
+   */
+  indicatorIcons?: IndicatorIcons
 }
