@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tree` now uses the same `selected` color as `TreeItem`
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
+- `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
 
 ### Fixed
 

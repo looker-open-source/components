@@ -472,7 +472,6 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   display: grid;
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
-  margin: ${({ theme: { space } }) => space.xxsmall} 0;
   padding: 0 ${({ theme: { space } }) => space.small};
   width: 100%;
   &:hover {
