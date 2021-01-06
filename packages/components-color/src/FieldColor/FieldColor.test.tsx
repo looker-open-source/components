@@ -29,8 +29,6 @@ import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent, useState } from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-
-import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
 
 describe('FieldColor', () => {
@@ -111,7 +109,7 @@ describe('FieldColor', () => {
       }
       return (
         <>
-          <Button onClick={handleClick}>Turn yellow</Button>
+          <button onClick={handleClick}>Turn yellow</button>
           <FieldColor
             value={value}
             onChange={handleChange}

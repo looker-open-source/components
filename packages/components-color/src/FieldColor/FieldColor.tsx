@@ -24,18 +24,42 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldChips'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+  useFormContext,
+  useID,
+} from '@looker/components'
+import { InputColor, InputColorProps } from '../InputColor'
+
+export interface FieldColorProps extends FieldProps, InputColorProps {}
+
+const FieldColorComponent = forwardRef(
+  (props: FieldColorProps, ref: Ref<HTMLInputElement>) => {
+    const id = useID(props.id)
+    const validationMessage = useFormContext(props)
+    return (
+      <Field
+        id={id}
+        validationMessage={validationMessage}
+        {...pickFieldProps(props)}
+      >
+        <InputColor
+          {...omitFieldProps(props)}
+          id={id}
+          aria-describedby={`describedby-${id}`}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldColorComponent.displayName = 'FieldColorComponent'
+
+export const FieldColor = styled(FieldColorComponent)``

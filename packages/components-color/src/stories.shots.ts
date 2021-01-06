@@ -24,18 +24,19 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldChips'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import path from 'path'
+import initStoryshots from '@storybook/addon-storyshots'
+
+/**
+ * Yes, we intentionally break the dependency graph for `@looker/storybook-config`
+ * It's okay because this code will never ship in the library (it's just to enable
+ * Storybook generation)
+ *
+ * Don't add a package dependency to @looker/storybook-config because it will create a
+ * looped dependency and make everybody's life terrible.
+ */
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { storyshotsConfig } from '@looker/storybook-config'
+
+initStoryshots(storyshotsConfig(path.resolve(__dirname, '../')))

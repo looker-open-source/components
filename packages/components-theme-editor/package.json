@@ -7,6 +7,7 @@
   "files": [
     "lib"
   ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/looker-open-source/components",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "@looker/components": "^0.9.29",
+    "@looker/components-color": "^0.9.29",
     "@looker/design-tokens": "^0.9.27",
     "lodash": "^4.17.20"
   },

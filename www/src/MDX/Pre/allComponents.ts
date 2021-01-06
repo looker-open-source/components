@@ -52,7 +52,6 @@ import {
   Chip,
   Code,
   CodeBlock,
-  ColorWheel,
   ComponentsProvider,
   Confirm,
   ConfirmLayout,
@@ -71,7 +70,6 @@ import {
   FieldCheckbox,
   FieldCheckboxGroup,
   FieldChips,
-  FieldColor,
   FieldRadio,
   FieldRadioGroup,
   FieldRangeSlider,
@@ -94,7 +92,6 @@ import {
   InlineInputText,
   InlineTextArea,
   InputChips,
-  InputColor,
   InputFilters,
   InputHidden,
   InputSearch,
@@ -161,6 +158,7 @@ import {
   useToggle,
   VisuallyHidden,
 } from '@looker/components'
+import { ColorWheel, FieldColor, InputColor } from '@looker/components-color'
 
 import { Calendar } from '@looker/components/src/Calendar'
 
@@ -225,7 +223,6 @@ export const allComponents = {
   Chip,
   Code,
   CodeBlock,
-  ColorWheel,
   ComponentsProvider,
   Confirm,
   ConfirmLayout,

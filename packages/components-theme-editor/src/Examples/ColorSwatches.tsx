@@ -24,7 +24,9 @@
 
  */
 
-import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
+import { Heading, Card, SpaceVertical } from '@looker/components'
+import { Swatch } from '@looker/components-color'
+import { Theme } from '@looker/design-tokens'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import omit from 'lodash/omit'

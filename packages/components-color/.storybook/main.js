@@ -24,7 +24,5 @@
 
  */
 
-export * from './InputColor'
-export * from './ColorWheel'
-export * from './LuminositySlider'
-export * from './Swatch'
+const main = require('../../storybook-config/src/main')
+module.exports = main

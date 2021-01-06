@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `ColorWheel`, `FieldColor`, & `InputColor` moved to new package `@looker/components-color`
 - `Tree` now uses the same `selected` color as `TreeItem`
 
 ### Fixed

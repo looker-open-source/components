@@ -24,37 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import { InputColor, InputColorProps } from '../../Inputs/InputColor/InputColor'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
-
-export interface FieldColorProps extends FieldProps, InputColorProps {}
-
-const FieldColorComponent = forwardRef(
-  (props: FieldColorProps, ref: Ref<HTMLInputElement>) => {
-    const id = useID(props.id)
-    const validationMessage = useFormContext(props)
-    return (
-      <Field
-        id={id}
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
-        <InputColor
-          {...omitFieldProps(props)}
-          id={id}
-          aria-describedby={`describedby-${id}`}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
-    )
-  }
-)
-
-FieldColorComponent.displayName = 'FieldColorComponent'
-
-export const FieldColor = styled(FieldColorComponent)``
+export * from './ColorWheel'
+export * from './FieldColor'
+export * from './InputColor'
+export * from './Swatch'

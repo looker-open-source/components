@@ -34,14 +34,19 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import { useID, useWrapEvent } from '../../../utils'
-import { usePopover, PopoverContent } from '../../../Popover'
-import { InputText, InputTextProps } from '../InputText'
-import { useFormContext } from '../../Form'
-import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
-import { ColorWheel } from './ColorWheel'
-import { LuminositySlider } from './LuminositySlider'
-import { Swatch } from './Swatch'
+import {
+  InputText,
+  InputTextProps,
+  PopoverContent,
+  useFormContext,
+  usePopover,
+  useID,
+  useWrapEvent,
+} from '@looker/components'
+import { HueSaturation, SimpleHSV } from '../ColorWheel/color_wheel_utils'
+import { ColorWheel } from '../ColorWheel'
+import { LuminositySlider } from '../LuminositySlider'
+import { Swatch } from '../Swatch'
 import {
   hsv2hex,
   simpleHSVtoFormattedColorString,
