@@ -100,18 +100,16 @@ const containerRotate = keyframes`
   }
 `
 
-const spinnerRotateAnimations = () => {
-  let animationString = ''
-  for (let i = 1; i < 9; i++) {
-    animationString += `${i * 12.5}% {
-      transform: rotate(${i * 0.5 * progressCircularConstants.arcSize}deg)
-    }`
-  }
-  return animationString
-}
+const spinnerRotateAnimations = () =>
+  [...Array(9)].map(
+    (_, i) =>
+      `${i * 12.5}% {transform: rotate(${
+        i * 0.5 * progressCircularConstants.arcSize
+      }deg)}`
+  )
 
 const spinnerKeyFrames = keyframes`
-  ${spinnerRotateAnimations()}
+  ${spinnerRotateAnimations().join('\n')}
 `
 
 const containerAnimation = () => {

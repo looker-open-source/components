@@ -6,9 +6,9 @@ status: experimental
 
 The `ProgressCircular` helps express an unspecified wait time or displays the length of a process
 
-## Showing an unknown wait time
+## Showing a generic loading state
 
-If the time a process takes is not known or detectable, use the default `ProgressCircular` behavior.
+To show a generic loading state or process, use the default `ProgressCircular` behavior.
 
 ```jsx
 <Space justifyContent="center">
@@ -16,9 +16,9 @@ If the time a process takes is not known or detectable, use the default `Progres
 </Space>
 ```
 
-## Indicating a known wait time
+## Rendering defined async progress
 
-If the time a process takes can be determined, you can use the `progress` prop to indicate how far along the process has progressed. The `progress` prop accepts a number from `0` to `1`, where `0` is 0% complete and `1` is 100% complete.
+If the process has known steps to completion, you can use the `progress` prop to indicate a more precise loading state. The `progress` prop accepts a number from `0` to `1`, where `0` is 0% complete and `1` is 100% complete.
 
 ```jsx
 ;() => {

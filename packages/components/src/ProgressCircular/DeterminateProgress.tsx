@@ -68,10 +68,6 @@ const DeterminateContainer = styled.div`
   width: 100%;
 `
 
-// const DeterminateTrack = styled.circle`
-//   stroke: transparent;
-// `
-
 const DeterminateCircle = styled.circle`
   stroke: ${(props) => props.theme.colors.key};
   transition: stroke-dashoffset 500ms;

@@ -35,20 +35,19 @@ const Template: Story<ProgressCircularProps> = (args) => (
 export const Indeterminate = Template.bind({})
 Indeterminate.args = {
   size: 'large',
-  // determinate: false,
-  // progress: ,
+}
+Indeterminate.argTypes = {
+  progress: {
+    table: {
+      disable: true,
+    },
+  },
 }
 
 export const Determinate = Template.bind({})
 Determinate.args = {
   size: 'large',
   progress: 0.5,
-}
-
-Determinate.argTypes = {
-  progress: {
-    control: { type: 'range', min: 0, max: 1, step: 0.1 },
-  },
 }
 
 export default {
@@ -60,6 +59,9 @@ export default {
         type: 'select',
         options: ['xsmall', 'small', 'medium', 'large'],
       },
+    },
+    progress: {
+      control: { type: 'range', min: 0, max: 1, step: 0.1 },
     },
   },
 }
