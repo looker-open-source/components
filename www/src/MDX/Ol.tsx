@@ -28,7 +28,7 @@ import React, { FC } from 'react'
 import { List } from '@looker/components'
 import { maxTextWidth } from './styles'
 
-const Ol: FC<{}> = (props) => (
+export const Ol: FC<{}> = (props) => (
   <List
     lineHeight="medium"
     mb="medium"
@@ -38,5 +38,3 @@ const Ol: FC<{}> = (props) => (
     {...props}
   />
 )
-
-export default Ol
