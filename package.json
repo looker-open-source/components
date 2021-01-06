@@ -91,6 +91,7 @@
     "webpack": "^4.44.2"
   },
   "resolutions": {
+    "axios": ">= 0.21.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "highlight.js": "10.4.1",
     "node-fetch": "2.6.1",
