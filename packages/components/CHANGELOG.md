@@ -10,16 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `Breakpoint` component
-- `Tree / TreeItem` disabled and selected states
+- `Tree / TreeItem`
+  - disabled and selected states
+  - `brand` prop
+  - `treeBackgroundColor` util function
 
 ### Changed
 
+- `Tree` now uses the same `selected` color as `TreeItem`
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
 
 ### Fixed
 
+- `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
+
+## [0.9.30]
+
+### Fixed
+
+- `InputText` issue moving cursor and selecting text when input is already focused
 
 ## [0.9.29]
 

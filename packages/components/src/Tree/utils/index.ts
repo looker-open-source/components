@@ -27,3 +27,4 @@
 export * from './generateIndent'
 export * from './generateTreeBorder'
 export * from './indicatorDefaults'
+export * from './treeBackgroundColor'
