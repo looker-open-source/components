@@ -27,7 +27,6 @@
 export * from './FieldCheckbox'
 export * from './FieldCheckboxGroup'
 export * from './FieldChips'
-export * from './FieldColor'
 export * from './FieldRadio'
 export * from './FieldRadioGroup'
 export * from './FieldRangeSlider'

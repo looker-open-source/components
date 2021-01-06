@@ -52,11 +52,11 @@ export interface FormProps
   onSubmit?: FormEventHandler<HTMLFormElement>
 }
 
-export interface FormContext {
+export interface FormContextProps {
   validationMessages?: ValidationMessages
 }
 
-export const FormContext = createContext<FormContext>({})
+export const FormContext = createContext<FormContextProps>({})
 
 export const Form = forwardRef(
   (props: FormProps, ref: Ref<HTMLFormElement>) => (

@@ -93,11 +93,11 @@ const accordionIndicatorDefaults: AccordionIndicatorProps = {
   indicatorSize: 'medium',
 }
 
-export interface FieldsetContext {
+export interface FieldsetContextProps {
   fieldsHideLabel?: boolean
 }
 
-export const FieldsetContext = createContext<FieldsetContext>({})
+export const FieldsetContext = createContext<FieldsetContextProps>({})
 
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {

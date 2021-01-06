@@ -24,7 +24,7 @@
 
  */
 
-import { FontFamilyChoices } from '../../system'
+import { FontFamilyChoices, FontFamilyFallbacks } from '../../system'
 import { generateFontFamilies } from '../../utils/typography'
 
 const sansSerifFontFallbacks = [
@@ -39,7 +39,7 @@ const sansSerifFontFallbacks = [
   'sans-serif',
 ]
 
-export const defaultFontFallbacks = {
+export const defaultFontFallbacks: FontFamilyFallbacks = {
   body: sansSerifFontFallbacks,
   brand: sansSerifFontFallbacks,
   code: [
@@ -58,4 +58,7 @@ export const defaultFonts: FontFamilyChoices = {
   code: "'Roboto Mono'",
 }
 
-export const fontFamilies = generateFontFamilies(defaultFonts)
+export const fontFamilies = generateFontFamilies(
+  defaultFonts,
+  defaultFontFallbacks
+)
