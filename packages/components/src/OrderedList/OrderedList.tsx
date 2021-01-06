@@ -66,7 +66,7 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 export interface OrderedListProps
-  extends CompatibleHTMLProps<HTMLOListElement>,
+  extends CompatibleHTMLProps<HTMLElement>,
     PositionProps,
     LayoutProps,
     SpaceProps,
@@ -96,9 +96,20 @@ const typeVariant = variant({
   },
 })
 
-export const OrderedList = styled.ol.withConfig({
-  shouldForwardProp,
-})<OrderedListProps>`
+/**
+ * We hit a weird issue with styled components when trying to use a styled.ol
+ *
+ * TLDR: The "type" prop only accepts undefined when trying to use a styled.ol
+ * so using a styled.div + attrs and as works around this.
+ */
+export const OrderedList = styled.div
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs<OrderedListProps>(({ type = 'none' }) => ({
+    as: 'ol',
+    type,
+  }))<OrderedListProps>`
   ${reset}
   ${typography}
   ${typeVariant}
