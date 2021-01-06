@@ -111,7 +111,7 @@ const Detail = styled.div`
 `
 
 export const DialogHeader = styled(DialogHeaderLayout).attrs(
-  ({ p = 'large', pr = 'medium', px = 'xlarge' }) => ({
+  ({ p = ['medium', 'large'], pr = 'medium', px = ['medium', 'xlarge'] }) => ({
     p,
     pr,
     px,

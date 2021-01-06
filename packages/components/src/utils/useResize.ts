@@ -25,6 +25,7 @@
  */
 
 import { useLayoutEffect } from 'react'
+import throttle from 'lodash/throttle'
 import ResizeObserver from 'resize-observer-polyfill'
 
 /**
@@ -34,25 +35,27 @@ import ResizeObserver from 'resize-observer-polyfill'
  */
 export const useResize = (element: HTMLElement | null, handler: () => void) => {
   useLayoutEffect(() => {
+    const throttledHandler = throttle(handler, 100)
+
     if (!element) {
       return
     }
-    handler()
 
-    const resizeObserver = new ResizeObserver(() => handler())
+    throttledHandler()
+
+    const resizeObserver = new ResizeObserver(() => throttledHandler())
+
     if (element) {
       resizeObserver.observe((element as unknown) as HTMLElement)
     }
 
-    window.addEventListener('resize', handler)
+    window.addEventListener('resize', throttledHandler)
 
     return () => {
-      if (!resizeObserver) {
-        return
+      window.removeEventListener('resize', throttledHandler)
+      if (resizeObserver) {
+        resizeObserver.disconnect()
       }
-
-      resizeObserver.disconnect()
-      window.removeEventListener('resize', handler)
     }
   }, [handler, element])
 }

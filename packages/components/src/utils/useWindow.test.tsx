@@ -30,6 +30,7 @@ import { ChildHeightFunction, useWindow, useToggle } from './'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
+jest.mock('lodash/throttle', () => (fn: any) => fn)
 
 beforeEach(() => {
   jest.useFakeTimers()

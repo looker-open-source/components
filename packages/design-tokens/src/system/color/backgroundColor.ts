@@ -24,11 +24,11 @@
 
  */
 
-export * from './CalendarPropTable'
-export * from './DateFormatTable'
-export * from './IconList'
-export * from './LocaleTable'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './TimeFormatTable'
-export * from './NamedBreakpointTable'
+import { system } from 'styled-system'
+
+export const backgroundColor = system({
+  backgroundColor: {
+    property: 'backgroundColor',
+    scale: 'colors',
+  },
+})
