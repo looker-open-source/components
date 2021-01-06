@@ -77,9 +77,10 @@ const DataTableRowLayout = forwardRef(
         return null
       } else if (isValidElement(child)) {
         const size = getColumnSize(index)
-        const cellProps = isHeaderRow
-          ? { id: `rowheader-${id}`, role: 'rowheader', size }
-          : { size }
+        const cellProps =
+          index === 0
+            ? { id: `rowheader-${id}`, role: 'rowheader', size }
+            : { size }
         return cloneElement(child, cellProps)
       } else {
         return child
