@@ -32,6 +32,7 @@ import { doDataTableSort } from './sort_utils'
 import { DataTableDatum, DataTableData } from '.'
 
 export const useDataTableSortManager = (
+  caption: string,
   defaultData: DataTableData,
   defaultColumns: DataTableColumns,
   generateActions: (item: DataTableDatum) => ReactNode
@@ -69,11 +70,7 @@ export const useDataTableSortManager = (
   })
 
   return (
-    <DataTable
-      caption="DataTable Sort Manager"
-      columns={columns}
-      onSort={onSort}
-    >
+    <DataTable caption={caption} columns={columns} onSort={onSort}>
       {items}
     </DataTable>
   )
