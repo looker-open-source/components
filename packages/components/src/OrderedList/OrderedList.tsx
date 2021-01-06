@@ -23,6 +23,31 @@
  SOFTWARE.
 
  */
+/*
+
+ MIT License
+
+ Copyright (c) 2020 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
 
 import {
   CompatibleHTMLProps,
@@ -40,8 +65,8 @@ import {
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
-export interface UnorderedListProps
-  extends CompatibleHTMLProps<HTMLUListElement>,
+export interface OrderedListProps
+  extends CompatibleHTMLProps<HTMLOListElement>,
     PositionProps,
     LayoutProps,
     SpaceProps,
@@ -51,25 +76,29 @@ export interface UnorderedListProps
    *
    * @default 'none'
    */
-  type?: 'none' | 'bullet'
+  type?: 'none' | 'number' | 'letter'
 }
 
 const typeVariant = variant({
   prop: 'type',
   variants: {
-    bullet: {
-      listStyleType: 'disc',
+    letter: {
+      listStyleType: 'upper-alpha',
       pl: 'medium',
     },
     none: {
       listStyleType: 'none',
     },
+    number: {
+      listStyleType: 'decimal',
+      pl: 'medium',
+    },
   },
 })
 
-export const UnorderedList = styled.ul.withConfig({
+export const OrderedList = styled.ol.withConfig({
   shouldForwardProp,
-})<UnorderedListProps>`
+})<OrderedListProps>`
   ${reset}
   ${typography}
   ${typeVariant}

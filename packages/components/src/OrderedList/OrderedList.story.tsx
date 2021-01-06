@@ -24,61 +24,40 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  reset,
-  space,
-  SpaceProps,
-  shouldForwardProp,
-  typography,
-  TypographyProps,
-  PositionProps,
-  LayoutProps,
-  position,
-  layout,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
-import { variant } from 'styled-system'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { OrderedList, OrderedListProps } from '.'
 
-export interface UnorderedListProps
-  extends CompatibleHTMLProps<HTMLUListElement>,
-    PositionProps,
-    LayoutProps,
-    SpaceProps,
-    TypographyProps {
-  /**
-   * Specify the type of marker to place next to list items.
-   *
-   * @default 'none'
-   */
-  type?: 'none' | 'bullet'
+export default {
+  component: OrderedList,
+  title: 'OrderedList',
 }
 
-const typeVariant = variant({
-  prop: 'type',
-  variants: {
-    bullet: {
-      listStyleType: 'disc',
-      pl: 'medium',
-    },
-    none: {
-      listStyleType: 'none',
-    },
-  },
-})
+const Template: Story<OrderedListProps> = (args) => (
+  <OrderedList {...args}>
+    <li>Gouda</li>
+    <li>Swiss</li>
+    <li>Pepper Jack</li>
+  </OrderedList>
+)
 
-export const UnorderedList = styled.ul.withConfig({
-  shouldForwardProp,
-})<UnorderedListProps>`
-  ${reset}
-  ${typography}
-  ${typeVariant}
-  ${space}
+export const Basic = Template.bind({})
+Basic.parameters = {
+  storyshots: { disable: true },
+}
 
-  ${position}
-  ${layout}
+export const Number = Template.bind({})
+Number.args = {
+  type: 'number',
+}
+Number.parameters = {
+  storyshots: { disable: true },
+}
 
-  li {
-    margin-bottom: ${({ theme }) => theme.space.xxsmall};
-  }
-`
+export const Letter = Template.bind({})
+Letter.args = {
+  type: 'letter',
+}
+Letter.parameters = {
+  storyshots: { disable: true },
+}
