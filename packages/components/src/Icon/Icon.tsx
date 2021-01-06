@@ -82,17 +82,17 @@ const IconLayout = forwardRef(
     const value = artwork || (
       <Glyph
         aria-hidden={title === undefined && true}
-        width="100%"
-        height="100%"
         fill="currentColor"
+        height="100%"
         title={title}
+        width="100%"
       />
     )
     return (
       <div
         aria-label={label || undefined}
-        role="img"
         ref={ref}
+        role="img"
         {...omitStyledProps(props)}
       >
         {value}
