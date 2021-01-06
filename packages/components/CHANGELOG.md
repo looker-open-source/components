@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - disabled and selected states
   - `brand` prop
   - `treeBackgroundColor` util function
+- `UnorderedList`, `OrderedList`
 
 ### Changed
 
