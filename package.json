@@ -41,7 +41,7 @@
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
     "lint:es": "eslint 'packages/**/*.ts{,x}' 'playground/**/*.ts{,x}'   'storybook/**/*.ts{,x}' 'www/**/*.ts{,x}' 'www/**/*.mdx' --cache",
     "lint:ts": "tsc",
-    "next-lint:check-circular": "madge packages/*/src --circular --extensions ts,tsx",
+    "lint:circular": "madge packages/*/src --circular --extensions ts,tsx",
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest",
     "storybook": "yarn workspace storybook develop",
