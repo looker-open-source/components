@@ -30,7 +30,7 @@ import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
 import { DateFormat } from '../DateFormat'
 import { Tabs, Tab, TabList, TabPanels, TabPanel } from '../Tabs'
-import { Menu, MenuItem } from '../Menu'
+import { MenuList, MenuItem } from '../Menu'
 import { InputDateRange, InputDateRangeProps } from './'
 
 export default {
@@ -103,14 +103,14 @@ export const TimeframeFilter = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Menu>
+                <MenuList>
                   <MenuItem>Today</MenuItem>
                   <MenuItem>Yesterday</MenuItem>
                   <MenuItem>Last 7 Days</MenuItem>
                   <MenuItem>Last 14 Days</MenuItem>
                   <MenuItem>Last 90 Days</MenuItem>
                   <MenuItem>Year To Date</MenuItem>
-                </Menu>
+                </MenuList>
               </TabPanel>
               <TabPanel>
                 <InputDateRange
