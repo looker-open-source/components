@@ -28,7 +28,7 @@ import { Paragraph as LookerParagraph } from '@looker/components'
 import React, { FC } from 'react'
 import { maxTextWidth } from './styles'
 
-const Paragraph: FC<{}> = (props) => (
+export const Paragraph: FC<{}> = (props) => (
   <LookerParagraph
     lineHeight="medium"
     mb="medium"
@@ -36,5 +36,3 @@ const Paragraph: FC<{}> = (props) => (
     {...props}
   />
 )
-
-export default Paragraph

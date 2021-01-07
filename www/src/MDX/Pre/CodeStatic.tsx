@@ -35,7 +35,11 @@ interface CodeStaticProps {
   className?: string
 }
 
-const CodeStatic: FC<CodeStaticProps> = ({ code, language, ...props }) => {
+export const CodeStatic: FC<CodeStaticProps> = ({
+  code,
+  language,
+  ...props
+}) => {
   const outerClassName = props.className
 
   return (
@@ -59,8 +63,6 @@ const CodeStatic: FC<CodeStaticProps> = ({ code, language, ...props }) => {
     </Highlight>
   )
 }
-
-export default CodeStatic
 
 const PreWrapper = styled.pre`
   border-radius: ${({ theme }) => theme.radii.medium};

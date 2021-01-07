@@ -27,10 +27,8 @@
 import { Divider } from '@looker/components'
 import styled from 'styled-components'
 
-const Hr = styled(Divider).attrs(() => ({
+export const Hr = styled(Divider).attrs(() => ({
   mx: 'auto',
   my: 'xxlarge',
   width: '50%',
 }))``
-
-export default Hr
