@@ -5,210 +5,6 @@ exports[`MenuGroup - JSX label 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
 }
 
-.c5 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
-}
-
-.c3 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.25rem;
-  padding-left: 1rem;
-  color: #262D33;
-}
-
-.c1 {
-  background: #FFFFFF;
-  box-shadow: none;
-  margin-bottom: 0.25rem;
-  position: -webkit-sticky;
-  position: sticky;
-  top: -1px;
-}
-
-.c1 .c2 {
-  color: #343C42;
-}
-
-.c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
-  padding: 0.5rem 0;
-}
-
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 400;
-  list-style-type: none;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c6 button,
-.c6 a {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: inherit;
-  font-weight: inherit;
-  min-height: 40px;
-  outline: none;
-  padding: 0.5rem 1rem;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  width: 100%;
-}
-
-.c6 button:hover,
-.c6 a:hover,
-.c6 button:focus,
-.c6 a:focus {
-  color: inherit;
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6 .Icon-sc-7y0t4i-0 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c6:hover {
-  background: #F5F6F7;
-}
-
-.c6[aria-current='true'] {
-  background: #DEE1E5;
-  font-weight: 600;
-}
-
-.c6[disabled] {
-  color: #939BA5;
-}
-
-.c6[disabled] button,
-.c6[disabled] a {
-  cursor: not-allowed;
-}
-
-.c6[disabled]:hover {
-  background: #FFFFFF;
-  color: #939BA5;
-}
-
-.c7 .Icon-sc-7y0t4i-0 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-<li
-  className="c0"
->
-  <div
-    className="c1"
-  >
-    <div
-      style={
-        Object {
-          "height": "0",
-        }
-      }
-    />
-    <h2
-      className="c2 c3 "
-    >
-      <div
-        className="c4"
-      >
-        Questions
-      </div>
-    </h2>
-  </div>
-  <ul
-    className="c5"
-    type="none"
-  >
-    <li
-      className="c6 c7"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        role="menuitem"
-      >
-        <span>
-          what?
-        </span>
-      </button>
-    </li>
-    <li
-      className="c6 c7"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        role="menuitem"
-      >
-        <span>
-          who?
-        </span>
-      </button>
-    </li>
-    <li
-      className="c6 c7"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-    >
-      <button
-        role="menuitem"
-      >
-        <span>
-          where?
-        </span>
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - label 1`] = `
-.c4 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
-}
-
 .c3 {
   font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 0.875rem;
@@ -342,13 +138,14 @@ exports[`MenuGroup - label 1`] = `
     <h2
       className="c2 c3 "
     >
-      Questions
+      <div
+        className="c4"
+      >
+        Questions
+      </div>
     </h2>
   </div>
-  <ul
-    className="c4"
-    type="none"
-  >
+  <ul>
     <li
       className="c5 c6"
       onBlur={[Function]}
@@ -398,10 +195,27 @@ exports[`MenuGroup - label 1`] = `
 </li>
 `;
 
-exports[`MenuGroup 1`] = `
+exports[`MenuGroup - label 1`] = `
+.c3 {
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding-left: 1rem;
+  color: #262D33;
+}
+
 .c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
+  background: #FFFFFF;
+  box-shadow: none;
+  margin-bottom: 0.25rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+}
+
+.c1 .c2 {
+  color: #343C42;
 }
 
 .c0 {
@@ -410,7 +224,7 @@ exports[`MenuGroup 1`] = `
   padding: 0.5rem 0;
 }
 
-.c2 {
+.c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -426,8 +240,8 @@ exports[`MenuGroup 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c2 button,
-.c2 a {
+.c4 button,
+.c4 a {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -455,45 +269,45 @@ exports[`MenuGroup 1`] = `
   width: 100%;
 }
 
-.c2 button:hover,
-.c2 a:hover,
-.c2 button:focus,
-.c2 a:focus {
+.c4 button:hover,
+.c4 a:hover,
+.c4 button:focus,
+.c4 a:focus {
   color: inherit;
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 .Icon-sc-7y0t4i-0 {
+.c4 .Icon-sc-7y0t4i-0 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c2:hover {
+.c4:hover {
   background: #F5F6F7;
 }
 
-.c2[aria-current='true'] {
+.c4[aria-current='true'] {
   background: #DEE1E5;
   font-weight: 600;
 }
 
-.c2[disabled] {
+.c4[disabled] {
   color: #939BA5;
 }
 
-.c2[disabled] button,
-.c2[disabled] a {
+.c4[disabled] button,
+.c4[disabled] a {
   cursor: not-allowed;
 }
 
-.c2[disabled]:hover {
+.c4[disabled]:hover {
   background: #FFFFFF;
   color: #939BA5;
 }
 
-.c3 .Icon-sc-7y0t4i-0 {
+.c5 .Icon-sc-7y0t4i-0 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -502,12 +316,174 @@ exports[`MenuGroup 1`] = `
 <li
   className="c0"
 >
-  <ul
+  <div
     className="c1"
-    type="none"
   >
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c2 c3 "
+    >
+      Questions
+    </h2>
+  </div>
+  <ul>
     <li
-      className="c2 c3"
+      className="c4 c5"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+    >
+      <button
+        role="menuitem"
+      >
+        <span>
+          what?
+        </span>
+      </button>
+    </li>
+    <li
+      className="c4 c5"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+    >
+      <button
+        role="menuitem"
+      >
+        <span>
+          who?
+        </span>
+      </button>
+    </li>
+    <li
+      className="c4 c5"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+    >
+      <button
+        role="menuitem"
+      >
+        <span>
+          where?
+        </span>
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup 1`] = `
+.c0 {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  list-style-type: none;
+  padding: 0.5rem 0;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 400;
+  list-style-type: none;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 button,
+.c1 a {
+  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  min-height: 40px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  width: 100%;
+}
+
+.c1 button:hover,
+.c1 a:hover,
+.c1 button:focus,
+.c1 a:focus {
+  color: inherit;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 .Icon-sc-7y0t4i-0 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #F5F6F7;
+}
+
+.c1[aria-current='true'] {
+  background: #DEE1E5;
+  font-weight: 600;
+}
+
+.c1[disabled] {
+  color: #939BA5;
+}
+
+.c1[disabled] button,
+.c1[disabled] a {
+  cursor: not-allowed;
+}
+
+.c1[disabled]:hover {
+  background: #FFFFFF;
+  color: #939BA5;
+}
+
+.c2 .Icon-sc-7y0t4i-0 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+<li
+  className="c0"
+>
+  <ul>
+    <li
+      className="c1 c2"
       onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}

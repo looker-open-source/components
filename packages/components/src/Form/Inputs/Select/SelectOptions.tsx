@@ -27,10 +27,10 @@
 import { IconNames, iconNameList } from '@looker/icons'
 import React, { createContext, ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Icon, IconProps } from '../../../Icon'
+import { Icon, IconPlaceholder, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { IconPlaceholder, ListItemDetail, ListItem } from '../../../List'
+import { ListItemDetail } from '../../../List/ListItemDetail'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -287,7 +287,7 @@ export function SelectOptions({
 
   if (isLoading) {
     return (
-      <EmptyListItem mb={0} px="medium" py="xlarge">
+      <EmptyListItem>
         <Spinner size={30} aria-label="Loading" />
       </EmptyListItem>
     )
@@ -297,7 +297,7 @@ export function SelectOptions({
   const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
-    <EmptyListItem mb={0} px="medium" py="xlarge">
+    <EmptyListItem>
       <Text color="subdued">{noOptionsLabel}</Text>
     </EmptyListItem>
   )
@@ -399,7 +399,8 @@ function SelectCreateOption({
   )
 }
 
-const EmptyListItem = styled(ListItem)`
+const EmptyListItem = styled.li`
   display: flex;
   justify-content: center;
+  padding: ${({ theme }) => `${theme.space.xlarge} ${theme.space.medium}`};
 `

@@ -26,17 +26,16 @@
 
 import { MessageBar } from '@looker/components'
 import * as headings from './Headings'
-import { Blockquote } from './Blockquote'
-import { Code } from './Code'
-import { Hr } from './Hr'
-import { Li } from './Li'
-import { Link } from './Link'
-import { Ol } from './Ol'
-import { Paragraph } from './Paragraph'
-import { Pre } from './Pre'
-import { Ul } from './Ul'
+import Blockquote from './Blockquote'
+import Code from './Code'
+import Hr from './Hr'
+import Link from './Link'
+import Ol from './Ol'
+import Paragraph from './Paragraph'
+import Pre from './Pre'
+import Ul from './Ul'
 
-export const MDXComponents = {
+const MDXComponents = {
   ...headings,
   Code,
   MessageBar,
@@ -44,7 +43,6 @@ export const MDXComponents = {
   blockquote: Blockquote,
   hr: Hr,
   inlineCode: Code,
-  li: Li,
   ol: Ol,
   p: Paragraph,
   pre: Pre,
