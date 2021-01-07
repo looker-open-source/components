@@ -77,6 +77,13 @@ export interface OrderedListProps
    * @default 'none'
    */
   type?: 'none' | 'number' | 'letter'
+  /**
+   * By default, an xxsmall margin-bottom is added to each child li
+   * If true, that margin-bottom will not be added
+   *
+   * @default false
+   */
+  dense?: boolean
 }
 
 const typeVariant = variant({
@@ -119,6 +126,6 @@ export const OrderedList = styled.div
   ${layout}
 
   li {
-    margin-bottom: ${({ theme }) => theme.space.xxsmall};
+    margin-bottom: ${({ dense, theme }) => !dense && theme.space.xxsmall};
   }
 `

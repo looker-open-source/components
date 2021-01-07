@@ -35,7 +35,7 @@ import {
 } from '../../../Dialog'
 import { Icon } from '../../../Icon'
 import { Space, SpaceVertical } from '../../../Layout'
-import { List, ListItem } from '../../../List'
+import { UnorderedList } from '../../../UnorderedList'
 import { Heading, Text } from '../../../Text'
 import { parseOption } from '../../Inputs/Combobox'
 import { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
@@ -341,13 +341,13 @@ export const SelectMultiDemo = () => {
         closeOnSelect
       />
       <Heading as="h4">Kitchen Sink</Heading>
-      <List>
-        <ListItem>Option descriptions</ListItem>
-        <ListItem>isFilterable</ListItem>
-        <ListItem>showCreate</ListItem>
-        <ListItem>formatCreateLabel</ListItem>
-        <ListItem>removeOnBackspace</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Option descriptions</li>
+        <li>isFilterable</li>
+        <li>showCreate</li>
+        <li>formatCreateLabel</li>
+        <li>removeOnBackspace</li>
+      </UnorderedList>
       <FieldSelectMulti
         options={newOptions}
         placeholder="Search fruits"
