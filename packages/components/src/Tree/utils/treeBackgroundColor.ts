@@ -26,7 +26,7 @@
 
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../Tree'
+import { TreeBackgroundStyleProps } from '../types'
 
 export const treeBackgroundColor = ({
   brand,

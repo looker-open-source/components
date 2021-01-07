@@ -55,7 +55,7 @@ import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
 import { treeBackgroundColor } from './utils'
-import { TreeBackgroundStyleProps } from './Tree'
+import { TreeBackgroundStyleProps } from './types'
 
 export interface TreeItemProps
   extends TreeBackgroundStyleProps,
