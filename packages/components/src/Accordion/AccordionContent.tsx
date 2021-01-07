@@ -26,10 +26,10 @@
 
 import React, { useContext, FC } from 'react'
 import styled from 'styled-components'
-
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 
-export interface AccordionContentProps {
+export interface AccordionContentProps extends SimpleLayoutProps {
   className?: string
 }
 
@@ -53,4 +53,6 @@ const AccordionContentLayout: FC<AccordionContentProps> = ({
   ) : null
 }
 
-export const AccordionContent = styled(AccordionContentLayout)``
+export const AccordionContent = styled(AccordionContentLayout)`
+  ${simpleLayoutCSS}
+`

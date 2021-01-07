@@ -37,8 +37,6 @@ import {
   TypographyProps,
   typography,
   CompatibleHTMLProps,
-  padding,
-  PaddingProps,
   pickStyledProps,
   shouldForwardProp,
   TextColorProps,
@@ -124,16 +122,13 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
 
 AccordionDisclosureInternal.displayName = 'AccordionDisclosureInternal'
 
-interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
+interface AccordionDisclosureStyleProps extends TextColorProps {
   focusVisible: boolean
 }
 
-export const AccordionDisclosureStyle = styled.div
-  .withConfig({ shouldForwardProp })
-  .attrs<AccordionDisclosureProps>(({ px = 'none', py = 'xsmall' }) => ({
-    px,
-    py,
-  }))<AccordionDisclosureStyleProps>`
+export const AccordionDisclosureStyle = styled.div.withConfig({
+  shouldForwardProp,
+})<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
   ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
@@ -142,15 +137,16 @@ export const AccordionDisclosureStyle = styled.div
   outline: 1px solid transparent;
   outline-color: ${({ focusVisible, theme }) =>
     focusVisible && theme.colors.keyFocus};
-  ${padding}
   text-align: left;
   width: 100%;
 `
 
 export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
-  (props) => ({
+  ({ px = 'none', py = 'xsmall', ...props }) => ({
     fontSize: 'small',
     fontWeight: 'semiBold',
+    px,
+    py,
     ...props,
   })
 )`

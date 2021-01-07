@@ -28,11 +28,8 @@ import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { IconNames, IconSize } from '../Icon'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
 import { AccordionContext, accordionContextDefaults } from './AccordionContext'
-import { AccordionContent } from './AccordionContent'
-import { AccordionDisclosure } from './AccordionDisclosure'
 
 export type IndicatorIcons = {
   close: IconNames
@@ -112,8 +109,7 @@ export const AccordionControlPropKeys = [
 
 export interface AccordionProps
   extends AccordionControlProps,
-    AccordionIndicatorProps,
-    SimpleLayoutProps {
+    AccordionIndicatorProps {
   children: ReactNode
   className?: string
   /**
@@ -175,15 +171,9 @@ export const Accordion = styled(AccordionLayout).attrs<AccordionProps>(
     indicatorGap = accordionContextDefaults.indicatorGap,
     indicatorPosition = accordionContextDefaults.indicatorPosition,
     indicatorSize = accordionContextDefaults.indicatorSize,
-    width = '100%',
   }) => ({
     indicatorGap,
     indicatorPosition,
     indicatorSize,
-    width,
   })
-)<AccordionProps>`
-  ${AccordionDisclosure}, ${AccordionContent} {
-    ${simpleLayoutCSS}
-  }
-`
+)<AccordionProps>``
