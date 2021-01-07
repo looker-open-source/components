@@ -1,0 +1,36 @@
+---
+title: UnorderedList
+storybook: true
+---
+
+The `UnorderedList` component renders a `ul` element. Its children should be `li` elements.
+
+```jsx
+<UnorderedList>
+  <li>Swiss</li>
+  <li>Gouda</li>
+  <li>Pepper Jack</li>
+</UnorderedList>
+```
+
+## Types
+
+Use the `type` prop to set the `UnorderedList`'s marker type.
+
+`UnorderedList`s be of type "none" (default) or "bullet".
+
+```jsx
+<>
+  <UnorderedList>
+    <li>Swiss</li>
+    <li>Gouda</li>
+    <li>Pepper Jack</li>
+  </UnorderedList>
+  <Divider />
+  <UnorderedList type="bullet">
+    <li>Swiss</li>
+    <li>Gouda</li>
+    <li>Pepper Jack</li>
+  </UnorderedList>
+</>
+```
