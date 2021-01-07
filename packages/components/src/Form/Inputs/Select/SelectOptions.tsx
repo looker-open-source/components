@@ -27,10 +27,10 @@
 import { IconNames, iconNameList } from '@looker/icons'
 import React, { createContext, ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Icon, IconProps } from '../../../Icon'
+import { Icon, IconPlaceholder, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { IconPlaceholder, ListItemDetail, ListItem } from '../../../List'
+import { ListItemDetail, ListItem } from '../../../List'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
