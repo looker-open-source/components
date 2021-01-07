@@ -30,7 +30,6 @@ import styled from 'styled-components'
 import { Icon, IconPlaceholder, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ListItemDetail } from '../../../List'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -85,6 +84,13 @@ const StyledIcon = styled(Icon)`
   height: ${({ theme }) => theme.lineHeights.small};
 `
 
+export const ComboboxOptionDetail = styled.div`
+  color: ${({ theme: { colors } }) => colors.text1};
+  margin-left: auto;
+  margin-right: ${({ theme: { space } }) => space.medium};
+  padding-left: ${({ theme: { space } }) => space.large};
+`
+
 interface OptionLayoutProps {
   option: SelectOptionObject
   scrollIntoView?: boolean
@@ -115,7 +121,7 @@ const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
         ) : (
           <ComboboxOptionText />
         )}
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
+        {detail && <ComboboxOptionDetail>{detail}</ComboboxOptionDetail>}
       </ComboboxOption>
     )
   }
@@ -136,7 +142,7 @@ const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
         ) : (
           <ComboboxOptionText />
         )}
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
+        {detail && <ComboboxOptionDetail>{detail}</ComboboxOptionDetail>}
       </ComboboxMultiOption>
     )
   }
