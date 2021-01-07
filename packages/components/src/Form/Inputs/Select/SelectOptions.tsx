@@ -293,7 +293,7 @@ export function SelectOptions({
 
   if (isLoading) {
     return (
-      <EmptyListItem mb={0} px="medium" py="xlarge">
+      <EmptyListItem>
         <Spinner size={30} aria-label="Loading" />
       </EmptyListItem>
     )
@@ -303,7 +303,7 @@ export function SelectOptions({
   const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
-    <EmptyListItem mb={0} px="medium" py="xlarge">
+    <EmptyListItem>
       <Text color="subdued">{noOptionsLabel}</Text>
     </EmptyListItem>
   )
@@ -408,4 +408,5 @@ function SelectCreateOption({
 const EmptyListItem = styled.li`
   display: flex;
   justify-content: center;
+  padding: ${({ theme }) => `${theme.space.xlarge} ${theme.space.medium}`};
 `
