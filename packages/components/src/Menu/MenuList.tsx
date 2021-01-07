@@ -30,7 +30,6 @@ import React, {
   Children,
   forwardRef,
   isValidElement,
-  KeyboardEvent,
   ReactChild,
   Ref,
   useEffect,
@@ -57,7 +56,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { moveFocus, useForkedRef, useWindow } from '../utils'
+import { useArrowKeyNav, useWindow } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuGroup } from './MenuGroup'
 
@@ -137,6 +136,10 @@ export const MenuListInternal = forwardRef(
       pin,
       placement,
       windowing,
+
+      onBlur,
+      onFocus,
+      onKeyDown,
       ...props
     }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
@@ -179,30 +182,23 @@ export const MenuListInternal = forwardRef(
       return (child: ReactChild) => getMenuGroupHeight(child, compact)
     }, [windowing, childArray, compact])
 
-    const { content, containerElement, ref } = useWindow({
+    const { content, ref } = useWindow({
       childHeight: childHeight,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
+      ref: forwardedRef,
       spacerTag: 'li',
     })
-    const forkedRef = useForkedRef(forwardedRef, ref)
 
-    function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, containerElement)
-    }
+    const navProps = useArrowKeyNav({
+      onBlur,
+      onFocus,
+      onKeyDown,
+      ref,
+    })
 
     const context = {
       compact,
-      handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
-        e.preventDefault()
-        handleArrowKey(1, 0)
-        return false
-      },
-      handleArrowUp: (e: KeyboardEvent<HTMLLIElement>) => {
-        e.preventDefault()
-        handleArrowKey(-1, -1)
-        return false
-      },
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }
@@ -210,10 +206,9 @@ export const MenuListInternal = forwardRef(
     return (
       <MenuItemContext.Provider value={context}>
         <ul
-          ref={forkedRef}
-          tabIndex={-1}
           role="menu"
           {...omitStyledProps(omit(props, 'groupDividers'))}
+          {...navProps}
         >
           {content}
         </ul>
