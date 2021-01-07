@@ -43,7 +43,6 @@ export const edgeShadow = (placement: 'left' | 'right' = 'left', depth = 4) => {
   }
 
   const shadow = `${`${shadowReverse}${depth}px`} 0 ${depth}px -${depth}px rgba( 0, 0, 0, 0.25) inset`
-
   return css`
     &${pseudo} {
       box-shadow: ${shadow};

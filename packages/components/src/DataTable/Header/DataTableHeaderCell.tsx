@@ -61,16 +61,22 @@ const DataTableHeaderCellLayout = forwardRef(
 
     const label = titleIcon ? (
       <Tooltip content={title}>
-        <Icon name={titleIcon} size="small" color="ui3" />
+        <Icon color="ui3" label={title} name={titleIcon} size="small" />
       </Tooltip>
     ) : size && sizeInfersTruncate(size) ? (
       <Truncate width="auto">{title}</Truncate>
     ) : (
       title
     )
-
     return (
       <th
+        aria-sort={
+          sortDirection === 'asc'
+            ? 'ascending'
+            : sortDirection === 'desc'
+            ? 'descending'
+            : 'none'
+        }
         className={className}
         onClick={handleClick}
         ref={ref}
@@ -80,8 +86,8 @@ const DataTableHeaderCellLayout = forwardRef(
           {label}
           {sortDirection && (
             <Icon
-              size="small"
               name={sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+              size="small"
             ></Icon>
           )}
         </Space>

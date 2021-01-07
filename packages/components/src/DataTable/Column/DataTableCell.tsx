@@ -26,15 +26,15 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
 import { columnSize, DataTableColumnSize } from './columnSize'
 
-export interface DataTableCellProps {
-  className?: string
-  children: ReactNode
+export interface DataTableCellProps
+  extends CompatibleHTMLProps<HTMLTableDataCellElement> {
   description?: ReactNode
   indicator?: ReactNode
   size?: DataTableColumnSize
@@ -43,9 +43,9 @@ export interface DataTableCellProps {
 const DataTableCellLayout: FC<DataTableCellProps> = ({
   children,
   description,
-  className,
   indicator,
   size,
+  ...props
 }) => {
   let content =
     size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
@@ -78,8 +78,7 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
       </Space>
     )
   }
-
-  return <td className={className}>{content}</td>
+  return <td {...props}>{content}</td>
 }
 
 export const DataTableCell = styled(DataTableCellLayout)`

@@ -71,7 +71,7 @@ export type { IconNames }
 
 const IconLayout = forwardRef(
   (
-    { artwork = undefined, title, name, ...props }: IconProps,
+    { artwork = undefined, label, name, title, ...props }: IconProps,
     ref: Ref<HTMLDivElement>
   ) => {
     if ((artwork && name) || (!artwork && !name)) {
@@ -80,12 +80,19 @@ const IconLayout = forwardRef(
     }
     const Glyph = name ? Glyphs[name] : 'div'
     const value = artwork || (
-      <Glyph width="100%" height="100%" fill="currentColor" title={title} />
+      <Glyph
+        aria-hidden={title === undefined && true}
+        fill="currentColor"
+        height="100%"
+        title={title}
+        width="100%"
+      />
     )
     return (
       <div
+        aria-label={label || undefined}
         ref={ref}
-        aria-hidden={title === undefined && true}
+        role="img"
         {...omitStyledProps(props)}
       >
         {value}

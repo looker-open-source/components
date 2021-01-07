@@ -24,10 +24,11 @@ exports[`Icon Default 1`] = `
 }
 
 <div
-  aria-hidden={true}
   className="c0"
+  role="img"
 >
   <svg
+    aria-hidden={true}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -66,10 +67,11 @@ exports[`Icon Explicit size - integer as pixels 1`] = `
 }
 
 <div
-  aria-hidden={true}
   className="c0"
+  role="img"
 >
   <svg
+    aria-hidden={true}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -108,10 +110,11 @@ exports[`Icon Explicit size - string 1`] = `
 }
 
 <div
-  aria-hidden={true}
   className="c0"
+  role="img"
 >
   <svg
+    aria-hidden={true}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -150,10 +153,11 @@ exports[`Icon Styled system size 1`] = `
 }
 
 <div
-  aria-hidden={true}
   className="c0"
+  role="img"
 >
   <svg
+    aria-hidden={true}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"

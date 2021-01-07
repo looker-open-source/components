@@ -53,5 +53,5 @@ export const Percentage = () => {
     },
   ]
 
-  return useDataTable(data, columns)
+  return useDataTable(data, columns, 'Cheese inventory')
 }

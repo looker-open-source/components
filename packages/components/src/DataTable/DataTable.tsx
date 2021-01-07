@@ -37,6 +37,7 @@ import { Table } from './Table'
 
 export interface DataTableProps {
   children: ReactNode
+  caption: string
   columns: DataTableColumns
   className?: string
 
@@ -148,6 +149,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
   const {
     bulk,
     className,
+    caption,
     columns,
     filterConfig,
     firstColumnStuck: explicitFirstColumnStuck,
@@ -223,6 +225,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
         )}
         <Table
           {...props}
+          caption={caption}
           columns={columns}
           columnsVisible={columnsVisible}
           firstColumnStuck={firstColumnStuck}
