@@ -43,15 +43,22 @@ export const edgeShadow = (placement: 'left' | 'right' = 'left', depth = 4) => {
   }
 
   const shadow = `${`${shadowReverse}${depth}px`} 0 ${depth}px -${depth}px rgba( 0, 0, 0, 0.25) inset`
+
+  /**
+   * NOTE: In Safari for reasons we can't entirely explain the `::after`` pseudo element
+   * is obscured by a black area unless it's moved at least 11px
+   **/
+  const position = depth + 7
+
   return css`
     &${pseudo} {
       box-shadow: ${shadow};
       content: ' ';
       height: 100%;
       position: absolute;
-      ${`${relativeTo}: -${depth}px;`}
+      ${`${relativeTo}: -${position}px;`}
       top: 0;
-      width: ${depth}px;
+      width: ${position}px;
     }
   `
 }

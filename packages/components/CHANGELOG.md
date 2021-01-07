@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ProgressCircular` component
 - `UnorderedList`, `OrderedList`
 
-
 ### Changed
 
 - `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
@@ -28,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `DataTable` overflow shadow now works properly in Safari
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
 
