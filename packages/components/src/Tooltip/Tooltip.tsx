@@ -33,7 +33,7 @@ import React, {
   Ref,
 } from 'react'
 import { MenuDomProps } from '../Menu'
-import { mergeHandlers, undefinedCoalesce, useForkedRef } from '../utils'
+import { mergeHandlers, useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -69,7 +69,6 @@ export const Tooltip = forwardRef(
       onClick,
 
       children,
-      content,
       ...props
     }: TooltipProps,
 
@@ -78,7 +77,7 @@ export const Tooltip = forwardRef(
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip
-      content: ariaExpanded ? undefined : content,
+      disabled: disabled || ariaExpanded,
       ...props,
     })
     const {
@@ -125,9 +124,6 @@ export const Tooltip = forwardRef(
         // Tooltip
         className:
           `${children.props.className || ''} ${className}`.trim() || undefined,
-        // Menu
-        disabled: undefinedCoalesce([children.props.disabled, disabled]),
-
         ref,
       })
     } else if (isRenderProp(children)) {

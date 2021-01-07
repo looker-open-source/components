@@ -31,7 +31,6 @@ import { MenuList, MenuListProps } from './MenuList'
 
 export interface MenuDomProps extends UsePopoverResponseDom {
   'aria-controls': string
-  disabled?: boolean
 }
 
 export interface MenuProps
@@ -53,12 +52,12 @@ export const Menu = forwardRef(
       children,
       content,
       id: propsID,
-      disabled,
       listRef,
 
       // Popover props to pass through
       canClose,
       cancelClickOutside,
+      disabled,
       focusTrap,
       hoverDisclosureRef,
       isOpen,
@@ -80,18 +79,16 @@ export const Menu = forwardRef(
         {content}
       </MenuList>
     )
-    children = cloneElement(children, {
-      'aria-controls': id,
-      disabled,
-    })
+    children = cloneElement(children, { 'aria-controls': id })
 
     return (
       <Popover
-        content={disabled ? undefined : list}
+        content={list}
         ref={ref}
         {...{
           canClose,
           cancelClickOutside,
+          disabled,
           focusTrap,
           hoverDisclosureRef,
           isOpen,

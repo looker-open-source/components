@@ -552,7 +552,7 @@ export const WithTooltip = () => {
     <Space>
       <Menu content={menuItems} disabled={value}>
         <Tooltip content="Open the menu" placement="right">
-          <Button>Menu with Tooltip</Button>
+          <Button disabled={value}>Menu with Tooltip</Button>
         </Tooltip>
       </Menu>
       <FieldToggleSwitch on={value} onChange={toggle} label="Disabled" />

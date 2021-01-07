@@ -164,9 +164,9 @@ const IconButtonComponent = forwardRef(
       },
       tooltip,
     } = useTooltip({
-      // ariaExpanded indicates an open Popover or Menu – don't show the tooltip
-      content:
-        tooltipDisabled || hasOuterTooltip || ariaExpanded ? undefined : label,
+      content: label,
+      // ariaExpanded = true indicates an open Popover or Menu – don't show the tooltip
+      disabled: tooltipDisabled || hasOuterTooltip || ariaExpanded === true,
       id: id ? `${id}-tooltip` : undefined,
       placement: tooltipPlacement,
       textAlign: tooltipTextAlign,

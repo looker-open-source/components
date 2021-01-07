@@ -8,9 +8,9 @@ storybook: true
 
 **Note:** The direct child of `Menu` should be able to accept the following props. TypeScript currently doesn't support the enforcement of this.
 
-- `disabled`
-- `onClick` – toggles the menu
-- `ref` - used for popover placement
+- `onClick` for toggling the menu
+- `ref` for popover placement
+- aria attributes for accessibility
 
 ```jsx
 <Space>
@@ -34,7 +34,7 @@ storybook: true
       </>
     }
   >
-    <Button>Disabled Cheese</Button>
+    <Button disabled>Disabled Cheese</Button>
   </Menu>
 </Space>
 ```

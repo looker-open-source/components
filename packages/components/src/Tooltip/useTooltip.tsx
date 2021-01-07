@@ -94,6 +94,11 @@ export interface UseTooltipProps {
   triggerElement?: HTMLElement | null
 
   /**
+   * If true, the useTooltip hook will return nothing
+   */
+  disabled?: boolean
+
+  /**
    * Delay
    */
   delay?: Transitions
@@ -119,6 +124,7 @@ export function useTooltip({
   width,
   maxWidth = '30rem',
   textAlign,
+  disabled,
   id,
   invert,
   triggerElement,
@@ -139,7 +145,7 @@ export function useTooltip({
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const handleOpen = () => {
-    if (!element || !element.dataset.notooltip) {
+    if (!disabled && (!element || !element.dataset.notooltip)) {
       setIsOpen(true)
     }
   }
@@ -196,7 +202,7 @@ export function useTooltip({
   const guaranteedId = useID(id)
 
   const popper =
-    renderDOM && content ? (
+    renderDOM && content && !disabled ? (
       <Portal>
         <TooltipSurface
           aria-busy={busy ? true : undefined}

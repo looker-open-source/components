@@ -124,7 +124,8 @@ describe('<Menu />', () => {
     fireEvent.click(document)
   })
 
-  test('Disabled Menu does not open when clicked and has disabled prop', () => {
+  test('Disabled Menu does not open when clicked', () => {
+    // Using div here to more clearly test disabled prop on Menu
     const { getByText, queryByText } = renderWithTheme(
       <Menu
         disabled={true}
@@ -135,17 +136,15 @@ describe('<Menu />', () => {
           </>
         }
       >
-        <Button>Cheese</Button>
+        <div>Cheese</div>
       </Menu>
     )
 
-    const button = getByText('Cheese')
-
-    expect(button).toBeDisabled()
+    const trigger = getByText('Cheese')
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
 
-    fireEvent.click(button)
+    fireEvent.click(trigger)
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
 
