@@ -223,6 +223,7 @@ export const allComponents = {
   Chip,
   Code,
   CodeBlock,
+  ColorWheel,
   ComponentsProvider,
   Confirm,
   ConfirmLayout,

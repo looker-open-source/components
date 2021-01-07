@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/components"
+    "directory": "packages/components-color"
   },
   "scripts": {
     "storybook": "export storybookBuildMode=develop && start-storybook  -c .storybook -p 3301  --host 0.0.0.0",
