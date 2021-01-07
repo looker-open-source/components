@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import { Icon, IconPlaceholder, IconProps } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
-import { ListItemDetail, ListItem } from '../../../List'
+import { ListItemDetail } from '../../../List'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -399,7 +399,7 @@ function SelectCreateOption({
   )
 }
 
-const EmptyListItem = styled(ListItem)`
+const EmptyListItem = styled.li`
   display: flex;
   justify-content: center;
 `
