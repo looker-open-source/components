@@ -24,48 +24,4 @@
 
  */
 
-export * from './Accordion'
-export * from './Animate'
-export * from './Avatar'
-export * from './Badge'
-export * from './Button'
-export * from './Breakpoint'
-export * from './Card'
-export * from './Chip'
-export * from './ChipButton'
-export * from './CopyToClipboard'
-export * from './DataTable'
-export * from './Dialog'
-export * from './Divider'
-export * from './Drawer'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './MessageBar'
-export * from './PageSize'
-export * from './Pagination'
-export * from './Popover'
-export * from './Portal'
-export * from './OrderedList'
-export * from './Spinner'
-export * from './Status'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './Tree'
-export * from './Truncate'
 export * from './UnorderedList'
-export * from './VisuallyHidden'
-
-export * from './utils'
-
-export {
-  ComponentsProvider,
-  ExtendComponentsThemeProvider,
-} from '@looker/components-providers'
-
-export { theme, Theme } from '@looker/design-tokens'

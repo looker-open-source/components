@@ -1,0 +1,42 @@
+---
+title: OrderedList
+storybook: true
+---
+
+The `OrderedList` component renders an `ol` element. Its children should be `li` elements.
+
+```jsx
+<OrderedList>
+  <li>Swiss</li>
+  <li>Gouda</li>
+  <li>Pepper Jack</li>
+</OrderedList>
+```
+
+## Types
+
+Use the `type` prop to set the `OrderedList`'s marker type.
+
+`OrderedList`s be of type "none" (default) or "number" or "letter".
+
+```jsx
+<>
+  <OrderedList>
+    <li>Swiss</li>
+    <li>Gouda</li>
+    <li>Pepper Jack</li>
+  </OrderedList>
+  <Divider />
+  <OrderedList type="number">
+    <li>Swiss</li>
+    <li>Gouda</li>
+    <li>Pepper Jack</li>
+  </OrderedList>
+  <Divider />
+  <OrderedList type="letter">
+    <li>Swiss</li>
+    <li>Gouda</li>
+    <li>Pepper Jack</li>
+  </OrderedList>
+</>
+```
