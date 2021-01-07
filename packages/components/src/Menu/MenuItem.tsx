@@ -31,6 +31,7 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
+import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
@@ -62,13 +63,6 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   tooltip?: string
   tooltipPlacement?: Placement
 }
-
-const MenuItemDetail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  margin-left: auto;
-  margin-right: ${({ theme: { space } }) => space.medium};
-  padding-left: ${({ theme: { space } }) => space.large};
-`
 
 const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const {
@@ -190,7 +184,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
           </Paragraph>
         )}
       </span>
-      {detail && <MenuItemDetail>{detail}</MenuItemDetail>}
+      {detail && <ListItemDetail>{detail}</ListItemDetail>}
     </Component>
   )
 
