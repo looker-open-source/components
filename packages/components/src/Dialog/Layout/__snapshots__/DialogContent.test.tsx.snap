@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogContent Snapshot - No overflow 1`] = `
-.c2 {
-  padding: 0 2rem;
+.c1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
 }
 
 .c0 {
@@ -13,27 +16,24 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
   overflow: auto;
 }
 
-.c0 .c1 {
-  padding-bottom: 0.125rem;
-  padding-top: 0.125rem;
-}
-
 .c0.overflow {
   border-bottom: 1px solid #DEE1E5;
   border-top: 1px solid #DEE1E5;
   box-shadow: inset 0 -4px 4px -4px #DEE1E5;
 }
 
-.c0.overflow .c1 {
-  padding-bottom: 1.25rem;
-  padding-top: 1.25rem;
+@media screen and (min-width:30rem) {
+  .c1 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
   >
     <div
       style={
@@ -49,8 +49,11 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
 `;
 
 exports[`DialogContent Snapshot 1`] = `
-.c2 {
-  padding: 0 2rem;
+.c1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
 }
 
 .c0 {
@@ -61,27 +64,24 @@ exports[`DialogContent Snapshot 1`] = `
   overflow: auto;
 }
 
-.c0 .c1 {
-  padding-bottom: 0.125rem;
-  padding-top: 0.125rem;
-}
-
 .c0.overflow {
   border-bottom: 1px solid #DEE1E5;
   border-top: 1px solid #DEE1E5;
   box-shadow: inset 0 -4px 4px -4px #DEE1E5;
 }
 
-.c0.overflow .c1 {
-  padding-bottom: 1.25rem;
-  padding-top: 1.25rem;
+@media screen and (min-width:30rem) {
+  .c1 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
   >
     Stuff
   </div>

@@ -351,10 +351,10 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         >
           <InputTextWrapper inputLength={inputs.from.value.length}>
             <InlineInputTextBase
-              placeholder={`Date (${formatDateString(
+              placeholder={`${formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
-              )})`}
+              )}`}
               disabled={disabled}
               data-testid="date-from-text-input"
               fontSize="small"
@@ -371,10 +371,10 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           </HyphenWrapper>
           <InputTextWrapper inputLength={inputs.to.value.length}>
             <InlineInputTextBase
-              placeholder={`Date (${formatDateString(
+              placeholder={formatDateString(
                 new Date(Date.now()),
                 dateStringLocale
-              )})`}
+              )}
               disabled={disabled}
               fontSize="small"
               data-testid="date-to-text-input"
@@ -439,15 +439,25 @@ const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
   color: ${({ theme, hasInputValues }) =>
     hasInputValues ? theme.colors.text3 : theme.colors.text1};
 `
-
 const InputDateRangeWrapper = styled.div`
   width: 100%;
+
+  /* stylelint-disable media-feature-name-no-unknown */
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints[1]}) {
+    display: grid;
+    justify-items: center;
+  }
 `
 
 const MultiCalendarLayout = styled.div`
   display: inline-grid;
   grid-column-gap: ${({ theme }) => theme.space.large};
+  grid-row-gap: ${({ theme }) => theme.space.medium};
   grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints[1]}) {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
 `
 
 interface InputTextGroupWrapperProps {
@@ -459,13 +469,11 @@ interface InputTextGroupWrapperProps {
 const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
   align-items: center;
-  display: inline-grid;
+  display: grid;
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
-  margin: ${({ theme: { space } }) => space.xxsmall} 0;
   padding: 0 ${({ theme: { space } }) => space.small};
   width: 100%;
-
   &:hover {
     ${inputTextHover}
   }

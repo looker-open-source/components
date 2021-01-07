@@ -183,7 +183,6 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           ref={ref}
           disabled={disabled}
           readOnly={readOnly}
-          my="xxsmall"
         />
         <CalendarWrapper>
           <Calendar

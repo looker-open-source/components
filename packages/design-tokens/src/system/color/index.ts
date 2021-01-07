@@ -51,3 +51,5 @@ export type { ColorProps } from 'styled-system'
 
 export type { TextColorProps } from './textColor'
 export { textColor } from './textColor'
+
+export { backgroundColor } from './backgroundColor'

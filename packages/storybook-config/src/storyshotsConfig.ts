@@ -28,6 +28,8 @@ import path from 'path'
 import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
 import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
 
+const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
+
 export const storyshotsConfig = (pkg: string) => {
   const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
 
@@ -36,6 +38,25 @@ export const storyshotsConfig = (pkg: string) => {
     framework: 'react',
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
+        // override viewport for responsive design tests
+        const { viewport } = context.parameters
+        const pageViewport = page.viewport()
+
+        if (viewport) {
+          const defaultViewport = viewport.viewports[viewport.defaultViewport]
+          await page.setViewport({
+            height: parseInt(defaultViewport.styles.height, 10),
+            width: parseInt(defaultViewport.styles.width, 10),
+          })
+          await page.waitForTimeout(500)
+        } else if (
+          pageViewport.width !== STORYBOOK_DEFAULT_VIEWPORT.width ||
+          pageViewport.height !== STORYBOOK_DEFAULT_VIEWPORT.height
+        ) {
+          await page.setViewport(STORYBOOK_DEFAULT_VIEWPORT)
+          await page.waitForTimeout(500)
+        }
+
         ;(context as any).clip = await page.evaluate(() => {
           const backdrop = document.querySelector(
             '#modal-root [data-testid="backdrop"]'
@@ -48,6 +69,7 @@ export const storyshotsConfig = (pkg: string) => {
           return { height, width, x, y }
         })
       },
+
       getMatchOptions({ context: { kind, story } }) {
         return {
           customSnapshotIdentifier: story,

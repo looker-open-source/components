@@ -44,6 +44,7 @@ export {
   width,
 } from 'styled-system'
 export type {
+  BackgroundColorProps,
   BorderProps,
   BorderRadiusProps,
   BoxShadowProps,

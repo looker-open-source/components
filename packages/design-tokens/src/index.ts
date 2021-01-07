@@ -43,18 +43,6 @@ export * from './GoogleFontsLoader'
 export { palette } from './legacy'
 
 // Useful external utilities
-export * from './utils/animations'
-export * from './utils/omit'
-export * from './utils/pick'
-export { generateTheme } from './utils/theme'
-export type { ThemeCustomizations } from './utils/theme'
-
 export { transitions } from './tokens/transitions'
-export * from './utils/helpers'
-export { pickSpecifiableColors } from './utils/color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './utils/color/blend'
-export { generatePressed, generateInteractive } from './utils/color/stateful'
+export * from './tokens/breakpoints'
+export * from './utils'
