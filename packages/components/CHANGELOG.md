@@ -17,9 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ProgressCircular` component
 - `UnorderedList`, `OrderedList`
 
-
 ### Changed
 
+- `IconPlaceholder` moved to `Icon`
 - `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
 - `Tree` now uses the same `selected` color as `TreeItem`
 - `DialogHeader` uses responsive padding values
@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `List`, `ListItem`, `ListItemDetail`
 - `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
 
 ## [0.9.30]
