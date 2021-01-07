@@ -36,12 +36,12 @@ import {
   ComboboxMultiContextProps,
 } from './ComboboxContext'
 import {
-  ComboboxOptionProps,
   comboboxOptionStyle,
   ComboboxOptionWrapper,
   ComboboxOptionText,
 } from './ComboboxOption'
 import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
+import { ComboboxOptionProps } from './types'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'

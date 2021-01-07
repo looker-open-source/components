@@ -35,7 +35,7 @@ import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
-import { SelectOptionObject, SelectOptionProps } from './SelectOptions'
+import { SelectOptionObject, SelectOptionProps } from './types'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 

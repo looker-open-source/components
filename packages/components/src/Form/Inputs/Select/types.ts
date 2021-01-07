@@ -23,29 +23,32 @@
  SOFTWARE.
 
  */
-export interface ComboboxOptionObject {
+
+import { IconNames } from '@looker/icons'
+import { ReactNode } from 'react'
+import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
+import { IconProps } from '../../../Icon'
+
+export type SelectOptionIcon = IconNames | IconProps['artwork']
+
+export interface SelectOptionObject
+  extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
+  description?: string | ReactNode
   /**
-   * Additional data associated with the option, will be passed to onChange.
+   * Supplementary element that appears right of the option's label
    */
-  label?: string
+  detail?: ReactNode
   /**
-   * The value to match against when suggesting.
+   * Icon shown to the left of the option label in the list and input when selected
+   * Use an IconName, or inline svg for a custom icon
    */
-  value: string
+  icon?: SelectOptionIcon
 }
 
-export type MaybeComboboxOptionObject = ComboboxOptionObject | undefined
-export type ComboboxOptionType =
-  | MaybeComboboxOptionObject
-  | ComboboxOptionObject[]
-
-export type ComboboxCallback<
-  TOption extends ComboboxOptionType = MaybeComboboxOptionObject
-> = (option: TOption) => void
-
-export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>
-
-export interface ComboboxOptionStatuses {
-  isActive: boolean
-  isSelected: boolean
+export interface SelectOptionGroupProps {
+  options: SelectOptionObject[]
+  label?: string | ReactNode
 }
+
+export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps

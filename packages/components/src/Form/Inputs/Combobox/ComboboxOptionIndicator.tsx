@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, {
   cloneElement,
   FC,
@@ -33,36 +32,20 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { ComboboxOptionObject, ComboboxOptionStatuses } from './types'
 import {
   ComboboxContext,
   ComboboxMultiContext,
   OptionContext,
 } from './ComboboxContext'
-
-export type OptionIndicatorProps = Partial<ComboboxOptionStatuses> &
-  ComboboxOptionObject
-
-export type ComboboxOptionIndicatorFunction = (
-  indicatorProps: OptionIndicatorProps
-) => ReactNode
+import {
+  ComboboxOptionIndicatorFunction,
+  ComboboxOptionIndicatorProps,
+} from './types'
 
 function isIndicatorFunction(
   children: ReactNode | ComboboxOptionIndicatorFunction
 ): children is ComboboxOptionIndicatorFunction {
   return typeof children === 'function'
-}
-
-export interface ComboboxOptionIndicatorProps
-  extends Partial<ComboboxOptionStatuses>,
-    CompatibleHTMLProps<HTMLDivElement> {
-  /**
-   * Customize the area to the left of the label, which by default
-   * renders a check mark for the selected option or a spacer
-   * Use a ReactNode, function component or render-prop-style function, or false to remove
-   */
-  indicator?: ReactNode | ComboboxOptionIndicatorFunction
-  isMulti?: boolean
 }
 
 const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({

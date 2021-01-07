@@ -36,12 +36,11 @@ import {
   useMouseDownClick,
   useWrapEvent,
 } from '../../../../utils'
-import { ComboboxInputProps } from '../ComboboxInput'
-import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
 import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
+import { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
 import { ComboboxActionType, ComboboxState } from './state'
 import { useBlur } from './useBlur'
 import { useKeyDown } from './useKeyDown'

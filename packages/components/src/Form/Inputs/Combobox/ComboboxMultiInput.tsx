@@ -43,14 +43,12 @@ import {
   InputChips,
   InputChipsBase,
   InputChipsBaseProps,
-  InputChipsCommonProps,
-  InputChipsInputControlProps,
-  InputChipsValidationProps,
   joinValues,
   splitInputValue,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
-import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
+import { comboboxStyles } from './ComboboxInput'
+import { ComboboxMultiInputProps } from './types'
 import { getComboboxText, formatOptionAsString, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {
@@ -60,20 +58,6 @@ import {
 } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputPropRefs } from './utils/useInputPropRefs'
-
-export interface ComboboxMultiInputProps
-  extends Omit<InputChipsCommonProps, 'autoComplete'>,
-    InputChipsValidationProps,
-    ComboboxInputCommonProps,
-    Partial<InputChipsInputControlProps> {
-  onClear?: () => void
-  /**
-   * Allows inputting of values (whether found in options or not) via typing or pasting
-   * Use validate, onValidationFail, and onDuplicate for validation on typed or pasted values
-   * @default false
-   */
-  freeInput?: boolean
-}
 
 function parseInputValue(value: string) {
   try {
