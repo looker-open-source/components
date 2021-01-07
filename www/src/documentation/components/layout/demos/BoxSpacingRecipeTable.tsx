@@ -24,7 +24,7 @@
 
  */
 
-import { Box, Code, List, ListItem, Text, Heading } from '@looker/components'
+import { Box, Code, Text, Heading, UnorderedList } from '@looker/components'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
@@ -80,7 +80,7 @@ const ListRender = (
   defaultLabel?: string
 ) => {
   return (
-    <ListItem key={key}>
+    <li key={key}>
       <Box
         px="small"
         as="span"
@@ -99,7 +99,7 @@ const ListRender = (
           </Text>
         </Box>
       </Box>
-    </ListItem>
+    </li>
   )
 }
 
@@ -124,9 +124,9 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
       >
         1. Type
       </Heading>
-      <List pl="none">
+      <UnorderedList pl="none">
         {types.map((col, i) => ListRender(col.value, col.label, i))}
-      </List>
+      </UnorderedList>
     </div>
     <div>
       <Heading
@@ -137,11 +137,11 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
       >
         2. Side
       </Heading>
-      <List pl="none">
+      <UnorderedList pl="none">
         {sides.map((col, i) =>
           ListRender(col.value, col.label, i, col.defaultLabel)
         )}
-      </List>
+      </UnorderedList>
     </div>
     <div>
       <Heading
@@ -152,9 +152,9 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
       >
         3. Amount
       </Heading>
-      <List pl="none">
+      <UnorderedList pl="none">
         {sizes.map((col, i) => ListRender(col.value, col.label, i))}
-      </List>
+      </UnorderedList>
     </div>
   </SpacingTable>
 )

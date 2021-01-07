@@ -25,5 +25,3 @@
  */
 
 export * from './ListItemDetail'
-export * from './List'
-export * from './ListItem'
