@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
 - `Tree` now uses the same `selected` color as `TreeItem`
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
@@ -29,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
+
+### Removed
+
+- `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
 
 ## [0.9.30]
 

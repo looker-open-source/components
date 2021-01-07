@@ -33,7 +33,6 @@ import React, {
   KeyboardEvent,
   ReactChild,
   Ref,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -59,8 +58,7 @@ import {
   omitStyledProps,
 } from '@looker/design-tokens'
 import { moveFocus, useForkedRef, useWindow } from '../utils'
-import { usePopover } from '../Popover'
-import { MenuContext, MenuItemContext } from './MenuContext'
+import { MenuItemContext } from './MenuItemContext'
 import { MenuGroup } from './MenuGroup'
 
 export interface MenuListProps
@@ -143,8 +141,6 @@ export const MenuListInternal = forwardRef(
     }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
-
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const childArray = useMemo(() => Children.toArray(children), [children])
@@ -211,36 +207,18 @@ export const MenuListInternal = forwardRef(
       setRenderIconPlaceholder,
     }
 
-    const menuList = (
+    return (
       <MenuItemContext.Provider value={context}>
         <ul
           ref={forkedRef}
           tabIndex={-1}
           role="menu"
-          id={id}
-          aria-labelledby={id && `button-${id}`}
           {...omitStyledProps(omit(props, 'groupDividers'))}
         >
           {content}
         </ul>
       </MenuItemContext.Provider>
     )
-
-    const isMenu = isOpen !== undefined
-    const { popover } = usePopover({
-      content: menuList,
-      isOpen,
-      pin,
-      placement,
-      setOpen,
-      triggerElement,
-    })
-
-    if (disabled) return null
-
-    if (isMenu) return popover || null
-
-    return menuList
   }
 )
 

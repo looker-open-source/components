@@ -30,17 +30,21 @@ import React, { useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
-import { Menu, MenuDisclosure, MenuItem, MenuList } from './'
+import { Tooltip } from '../Tooltip'
+import { Menu, MenuItem } from './'
 
 const menu = (
-  <Menu>
-    <MenuDisclosure tooltip="Select your favorite kind">
+  <Menu
+    content={
+      <>
+        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </>
+    }
+  >
+    <Tooltip content="Select your favorite kind">
       <Button>Cheese</Button>
-    </MenuDisclosure>
-    <MenuList>
-      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-    </MenuList>
+    </Tooltip>
   </Menu>
 )
 
@@ -85,16 +89,17 @@ describe('<Menu />', () => {
         e.preventDefault()
       }
       return (
-        <Menu>
-          <MenuDisclosure tooltip="Select your favorite kind">
-            <Button>Cheese</Button>
-          </MenuDisclosure>
-          <MenuList>
-            <MenuItem icon="FavoriteOutline" onClick={handleClick}>
-              Gouda
-            </MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-          </MenuList>
+        <Menu
+          content={
+            <>
+              <MenuItem icon="FavoriteOutline" onClick={handleClick}>
+                Gouda
+              </MenuItem>
+              <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+            </>
+          }
+        >
+          <Button>Cheese</Button>
         </Menu>
       )
     }
@@ -119,26 +124,27 @@ describe('<Menu />', () => {
     fireEvent.click(document)
   })
 
-  test('Disabled Menu does not open when clicked and has disabled prop', () => {
+  test('Disabled Menu does not open when clicked', () => {
+    // Using div here to more clearly test disabled prop on Menu
     const { getByText, queryByText } = renderWithTheme(
-      <Menu disabled={true}>
-        <MenuDisclosure tooltip="Select your favorite kind">
-          <Button>Cheese</Button>
-        </MenuDisclosure>
-        <MenuList>
-          <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-          <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-        </MenuList>
+      <Menu
+        disabled={true}
+        content={
+          <>
+            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+          </>
+        }
+      >
+        <div>Cheese</div>
       </Menu>
     )
 
-    const button = getByText('Cheese')
-
-    expect(button).toBeDisabled()
+    const trigger = getByText('Cheese')
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
 
-    fireEvent.click(button)
+    fireEvent.click(trigger)
 
     expect(queryByText('Swiss')).not.toBeInTheDocument()
 
@@ -147,14 +153,16 @@ describe('<Menu />', () => {
 
   test('Starting with Menu open', () => {
     const { getByText } = renderWithTheme(
-      <Menu isOpen={true}>
-        <MenuDisclosure tooltip="Select your favorite kind">
-          <Button>Cheese</Button>
-        </MenuDisclosure>
-        <MenuList>
-          <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-          <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-        </MenuList>
+      <Menu
+        isOpen={true}
+        content={
+          <>
+            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+          </>
+        }
+      >
+        <Button>Cheese</Button>
       </Menu>
     )
 
@@ -163,19 +171,21 @@ describe('<Menu />', () => {
     fireEvent.click(document)
   })
 
-  test('MenuDisclosure is shown/hidden on hover of hoverDisclosureRef', () => {
+  test('Trigger is shown/hidden on hover of hoverDisclosureRef', () => {
     const Component = () => {
       const hoverRef = useRef<HTMLDivElement>(null)
       return (
         <div ref={hoverRef}>
-          <Menu hoverDisclosureRef={hoverRef}>
-            <MenuDisclosure tooltip="Select your favorite kind">
-              <Button>Cheese</Button>
-            </MenuDisclosure>
-            <MenuList>
-              <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-              <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-            </MenuList>
+          <Menu
+            hoverDisclosureRef={hoverRef}
+            content={
+              <>
+                <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+                <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+              </>
+            }
+          >
+            <Button>Cheese</Button>
           </Menu>
           Some text in the div
         </div>

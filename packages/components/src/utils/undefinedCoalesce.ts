@@ -24,6 +24,6 @@
 
  */
 
-export const undefinedCoalesce = (arr: any[]) => {
+export const undefinedCoalesce = <T>(arr: T[]) => {
   return arr.find((element) => element !== undefined)
 }

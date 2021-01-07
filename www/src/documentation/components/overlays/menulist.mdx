@@ -1,0 +1,72 @@
+---
+title: MenuList
+storybook: true
+---
+
+`MenuList` displays a list of choices.
+
+## Focus & Keyboard Controls
+
+When a `MenuList` is focused the `up` and `down` arrow keys will move focus through the menu items within the list.
+
+```jsx
+<MenuList>
+  <MenuItem onClick={() => alert('Hello world!')}>Gouda</MenuItem>
+  <MenuItem>Cheddar</MenuItem>
+  <MenuItem>Swiss</MenuItem>
+</MenuList>
+```
+
+## Menu Item Spacing
+
+A `MenuList` accepts a `compact` prop that will make the spacing between the `MenuItems` smaller.
+
+```jsx
+<MenuList compact>
+  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon="Validate">Validate</MenuItem>
+  <MenuItem icon="ChartPie">Pizza</MenuItem>
+</MenuList>
+```
+
+## Windowing
+
+If a `MenuList` contains more than 100 children it will use windowing to display
+only the visible items for performance reasons. Windowing uses the item height to calculate
+positioning for natural scrolling behavior.
+
+The windowing mode defaults to `fixed`, meaning all children are assumed to have a fixed height.
+This is the most efficient mode, but scrolling will be distorted if the list is grouped.
+When a `MenuList` contains over 100 `MenuGroup`s, manually setting `windowing` to `variable`
+will allow the height to be derived for each group and scrolling will be smooth.
+
+## MenuGroup
+
+`MenuGroup` is a way to group together similar collections of `MenuItem`s.
+
+It supports an optional `label` prop to place a heading above the `MenuItem`s. When placed within a scrolling container the label will stick to the top edge while the `MenuGroup` is visible.
+
+```jsx
+<MenuList>
+  <MenuGroup>
+    <MenuItem icon="LogoRings">Looker</MenuItem>
+    <MenuItem icon="Validate">Validate</MenuItem>
+    <MenuItem icon="ChartPie">Pizza!</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Cheeses">
+    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mozzarella</MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Meats">
+    <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+    <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+    <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Vegetables">
+    <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+    <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
+  </MenuGroup>
+</MenuList>
+```

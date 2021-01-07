@@ -57,6 +57,7 @@ export interface UseTooltipProps {
   placement?: Placement
   /**
    * Content to display inside the tooltip. Can be a string or JSX.
+   * If not defined, the Tooltip will not render.
    */
   content?: ReactNode
   /**
@@ -144,7 +145,7 @@ export function useTooltip({
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const handleOpen = () => {
-    if (!element || !element.dataset.notooltip) {
+    if (!disabled && (!element || !element.dataset.notooltip)) {
       setIsOpen(true)
     }
   }

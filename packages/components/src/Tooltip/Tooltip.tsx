@@ -31,10 +31,9 @@ import React, {
   ReactElement,
   ReactNode,
   Ref,
-  SyntheticEvent,
 } from 'react'
-import { UsePopoverResponseDom } from '../Popover'
-import { useForkedRef } from '../utils'
+import { MenuDomProps } from '../Menu'
+import { mergeHandlers, useForkedRef } from '../utils'
 import {
   useTooltip,
   UseTooltipProps,
@@ -43,27 +42,14 @@ import {
 
 type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
-export interface TooltipProps
-  extends UseTooltipProps,
-    Partial<UsePopoverResponseDom> {
-  content: ReactNode
+export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
   /**
    * Component to receive tooltip behavior or render prop function that
    * receives tooltip props and returns a component
    */
   children:
-    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
+    | ReactElement<UseTooltipResponseDom & MenuDomProps>
     | TooltipRenderProp
-}
-
-const mergeHandlers = <E extends SyntheticEvent>(
-  newHandler?: (e: E) => void,
-  existingHandler?: (e: E) => void
-) => (event: E) => {
-  existingHandler?.(event)
-  if (!event.defaultPrevented) {
-    newHandler?.(event)
-  }
 }
 
 function isRenderProp(
@@ -75,9 +61,11 @@ function isRenderProp(
 export const Tooltip = forwardRef(
   (
     {
-      // Props from Popover
+      // Props from Popover or Menu
+      'aria-controls': ariaControls,
       'aria-expanded': ariaExpanded,
       'aria-haspopup': ariaHaspopup,
+      disabled,
       onClick,
 
       children,
@@ -89,7 +77,7 @@ export const Tooltip = forwardRef(
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip
-      disabled: ariaExpanded,
+      disabled: disabled || ariaExpanded,
       ...props,
     })
     const {
@@ -128,8 +116,12 @@ export const Tooltip = forwardRef(
       target = cloneElement(children, {
         ...mergedHandlers,
         ...restDomProps,
+        // Menu
+        'aria-controls': ariaControls,
+        // Popover
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
+        // Tooltip
         className:
           `${children.props.className || ''} ${className}`.trim() || undefined,
         ref,

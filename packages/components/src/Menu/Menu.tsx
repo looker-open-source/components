@@ -24,57 +24,84 @@
 
  */
 
-import React, { FC, RefObject, useRef, useState } from 'react'
-import { useCallbackRef, useHovered, useID } from '../utils'
-import { MenuContext } from './MenuContext'
+import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
+import { useID } from '../utils'
+import { Popover, PopoverProps, UsePopoverResponseDom } from '../Popover'
+import { MenuList, MenuListProps } from './MenuList'
 
-export interface MenuProps {
-  /**
-   * Disables the Menu, passed to child of MenuDisclosure
-   */
-  disabled?: boolean
-
-  /**
-   * The element which hovering on/off of will show/hide the disclosure element
-   */
-  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
-
-  id?: string
-
-  /**
-   * Initial state of Menu (or use for controlled menu)
-   * @default false
-   */
-  isOpen?: boolean
-  /**
-   * Use for controlled menu
-   */
-  setOpen?: (isOpen: boolean) => void
+export interface MenuDomProps extends UsePopoverResponseDom {
+  'aria-controls': string
 }
 
-export const Menu: FC<MenuProps> = ({
-  children,
-  disabled,
-  hoverDisclosureRef,
-  id: propsID,
-  isOpen: controlledIsOpen = false,
-  setOpen: controlledSetOpen,
-}) => {
-  const isControlled = useRef(controlledSetOpen !== undefined)
-  const [isOpen, setOpen] = useState(controlledIsOpen)
-  const [triggerElement, triggerCallbackRef] = useCallbackRef()
-  const [showDisclosure] = useHovered(hoverDisclosureRef)
-  const id = useID(propsID)
+export interface MenuProps
+  extends Omit<PopoverProps, 'children'>,
+    Omit<MenuListProps, 'children' | 'content'> {
+  /**
+   * A ReactElement that accepts dom props
+   */
+  children: ReactElement<MenuDomProps>
+  /**
+   * The ref to be passed to the list element (`ref` is passed to the triggering element)
+   */
+  listRef?: Ref<HTMLUListElement>
+}
 
-  const context = {
-    disabled,
-    id,
-    isOpen: isControlled.current ? controlledIsOpen : isOpen,
-    setOpen: isControlled.current ? controlledSetOpen : setOpen,
-    showDisclosure,
-    triggerCallbackRef,
-    triggerElement,
+export const Menu = forwardRef(
+  (
+    {
+      children,
+      content,
+      id: propsID,
+      listRef,
+
+      // Popover props to pass through
+      canClose,
+      cancelClickOutside,
+      disabled,
+      focusTrap,
+      hoverDisclosureRef,
+      isOpen,
+      onClose,
+      pin,
+      placement,
+      setOpen,
+      triggerElement,
+      triggerToggle,
+
+      // List props to pass through
+      ...props
+    }: MenuProps,
+    ref: Ref<any>
+  ) => {
+    const id = useID(propsID)
+    const list = content && (
+      <MenuList id={id} {...props} ref={listRef}>
+        {content}
+      </MenuList>
+    )
+    children = cloneElement(children, { 'aria-controls': id })
+
+    return (
+      <Popover
+        content={list}
+        ref={ref}
+        {...{
+          canClose,
+          cancelClickOutside,
+          disabled,
+          focusTrap,
+          hoverDisclosureRef,
+          isOpen,
+          onClose,
+          pin,
+          placement,
+          setOpen,
+          triggerElement,
+          triggerToggle,
+        }}
+      >
+        {children}
+      </Popover>
+    )
   }
-
-  return <MenuContext.Provider value={context}>{children}</MenuContext.Provider>
-}
+)

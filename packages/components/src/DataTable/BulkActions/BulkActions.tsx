@@ -28,7 +28,7 @@ import React, { ReactNode, FC, useContext } from 'react'
 import styled from 'styled-components'
 import { Button, ButtonTransparent } from '../../Button'
 import { Space } from '../../Layout'
-import { Menu, MenuDisclosure, MenuList } from '../../Menu'
+import { Menu } from '../../Menu'
 import { Span } from '../../Text'
 import { DataTableContext } from '../DataTableContext'
 
@@ -83,13 +83,10 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
 
   return (
     <div className={className}>
-      <Menu>
-        <MenuDisclosure>
-          <Button iconAfter="ArrowDropDown" size="xsmall">
-            Bulk Actions
-          </Button>
-        </MenuDisclosure>
-        <MenuList>{actions}</MenuList>
+      <Menu content={actions}>
+        <Button iconAfter="ArrowDropDown" size="xsmall">
+          Bulk Actions
+        </Button>
       </Menu>
       <Space gap="small" justifyContent="center">
         {selectedItemsText}

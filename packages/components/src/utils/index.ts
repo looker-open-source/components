@@ -27,6 +27,7 @@
 export * from './getNextFocusTarget'
 export * from './getWindowedListBoundaries'
 export * from './HoverDisclosure'
+export * from './mergeHandlers'
 export * from './moveFocus'
 export * from './targetIsButton'
 export * from './undefinedCoalesce'

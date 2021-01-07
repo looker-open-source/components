@@ -24,28 +24,19 @@
 
  */
 
-import { createContext, KeyboardEvent } from 'react'
+import { SyntheticEvent } from 'react'
 
-export interface MenuContextProps {
-  disabled?: boolean
-  id?: string
-  showDisclosure?: boolean
-  isOpen?: boolean
-  setOpen?: (isOpen: boolean) => void
-  triggerElement?: HTMLElement | null
-  triggerCallbackRef?: (node: HTMLElement | null) => void
+/**
+ * Merges 2 optional event handlers
+ * @param newHandler called 2nd, if the 1st does not call preventDefault()
+ * @param existingHandler called 1st, use preventDefault() to avoid calling the 2nd
+ */
+export const mergeHandlers = <E extends SyntheticEvent>(
+  newHandler?: (e: E) => void,
+  existingHandler?: (e: E) => void
+) => (event: E) => {
+  existingHandler?.(event)
+  if (!event.defaultPrevented) {
+    newHandler?.(event)
+  }
 }
-
-export interface MenuItemContextProps {
-  compact?: boolean
-  renderIconPlaceholder?: boolean
-  setRenderIconPlaceholder?: (state: boolean) => void
-  handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
-  handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
-}
-
-const menuContext: MenuContextProps = {}
-const menuItemContext: MenuItemContextProps = {}
-
-export const MenuContext = createContext(menuContext)
-export const MenuItemContext = createContext(menuItemContext)

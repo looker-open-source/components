@@ -24,27 +24,16 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
-import React, { ReactNode } from 'react'
-import { MenuItem } from '../../Menu'
+import { createContext, KeyboardEvent } from 'react'
 
-export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
-  children?: ReactNode
-  detail?: ReactNode
-  icon?: IconNames
-  /**
-   * Determines if the DataTableAction is an <a/> or <button/> element
-   * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
-   * @default 'button'
-   */
-  itemRole?: 'link' | 'button'
+export interface MenuItemContextProps {
+  compact?: boolean
+  renderIconPlaceholder?: boolean
+  setRenderIconPlaceholder?: (state: boolean) => void
+  handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
+  handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
-/**
- * MenuItem may undergo a refactor soon. Creating a proxy in the form of DataTableAction
- * allows us to adapt to any changes to MenuItem or its interface.
- * */
-export const DataTableAction = (props: DataTableActionProps) => (
-  <MenuItem {...props} />
-)
+const menuItemContext: MenuItemContextProps = {}
+
+export const MenuItemContext = createContext(menuItemContext)

@@ -28,7 +28,7 @@ import React, { FC, ReactNode, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { List } from '../List'
-import { MenuItemContext } from './MenuContext'
+import { MenuItemContext } from './MenuItemContext'
 import { MenuGroupLabel } from './MenuGroupLabel'
 
 export interface MenuGroupProps
