@@ -42,22 +42,13 @@ const Template: Story<OrderedListProps> = (args) => (
 )
 
 export const Basic = Template.bind({})
-Basic.parameters = {
-  storyshots: { disable: true },
-}
 
 export const Number = Template.bind({})
 Number.args = {
   type: 'number',
 }
-Number.parameters = {
-  storyshots: { disable: true },
-}
 
 export const Letter = Template.bind({})
 Letter.args = {
   type: 'letter',
-}
-Letter.parameters = {
-  storyshots: { disable: true },
 }

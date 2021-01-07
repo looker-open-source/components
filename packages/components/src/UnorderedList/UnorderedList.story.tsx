@@ -42,14 +42,8 @@ const Template: Story<UnorderedListProps> = (args) => (
 )
 
 export const Basic = Template.bind({})
-Basic.parameters = {
-  storyshots: { disable: true },
-}
 
 export const Bullet = Template.bind({})
 Bullet.args = {
   type: 'bullet',
-}
-Bullet.parameters = {
-  storyshots: { disable: true },
 }
