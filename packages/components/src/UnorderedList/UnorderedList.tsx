@@ -52,13 +52,6 @@ export interface UnorderedListProps
    * @default 'none'
    */
   type?: 'none' | 'bullet'
-  /**
-   * By default, an xxsmall margin-bottom is added to each child li
-   * If true, that margin-bottom will not be added
-   *
-   * @default false
-   */
-  dense?: boolean
 }
 
 const typeVariant = variant({
@@ -86,6 +79,6 @@ export const UnorderedList = styled.ul.withConfig({
   ${layout}
 
   li {
-    margin-bottom: ${({ dense, theme }) => !dense && theme.space.xxsmall};
+    margin-bottom: ${({ theme }) => theme.space.xxsmall};
   }
 `
