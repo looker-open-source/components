@@ -272,7 +272,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': content && !disabled,
+      'aria-haspopup': content ? !disabled : false,
       onClick: handleOpen,
       ref: callbackRef,
     },
