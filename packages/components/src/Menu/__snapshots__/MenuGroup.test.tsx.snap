@@ -7,7 +7,6 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c5 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
 }
 
 .c3 {
@@ -152,7 +151,6 @@ exports[`MenuGroup - JSX label 1`] = `
   </div>
   <ul
     className="c5"
-    type="none"
   >
     <li
       className="c6 c7"
@@ -206,7 +204,6 @@ exports[`MenuGroup - JSX label 1`] = `
 exports[`MenuGroup - label 1`] = `
 .c4 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
 }
 
 .c3 {
@@ -347,7 +344,6 @@ exports[`MenuGroup - label 1`] = `
   </div>
   <ul
     className="c4"
-    type="none"
   >
     <li
       className="c5 c6"
@@ -401,7 +397,6 @@ exports[`MenuGroup - label 1`] = `
 exports[`MenuGroup 1`] = `
 .c1 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
-  list-style-type: none;
 }
 
 .c0 {
@@ -504,7 +499,6 @@ exports[`MenuGroup 1`] = `
 >
   <ul
     className="c1"
-    type="none"
   >
     <li
       className="c2 c3"
