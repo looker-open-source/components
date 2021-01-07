@@ -30,6 +30,7 @@ import { DataTableColumns } from './Column'
 
 export interface DataTableProps {
   children: ReactNode
+  caption: string
   columns: DataTableColumns
   className?: string
 

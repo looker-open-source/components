@@ -38,6 +38,11 @@ const isNodeInOrAfter = (nodeA: Node, nodeB: Node) => {
 
 export interface UsePopoverToggleProps {
   /**
+   * If true, the Popover will not render
+   */
+  disabled?: boolean
+
+  /**
    * When true, display Surface and it's contained content
    * @default false
    */

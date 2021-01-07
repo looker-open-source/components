@@ -28,7 +28,9 @@ import { Transitions } from '@looker/design-tokens/src'
 import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
 import { MouseEvent, ReactElement, ReactNode } from 'react'
-import { UsePopoverResponseDom } from '../Popover'
+import { MenuDomProps } from '../Menu'
+
+// import { UsePopoverResponseDom } from '../Popover'
 
 export type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
 
@@ -108,15 +110,13 @@ export interface UseTooltipResponseDom {
    */
   ref: (node: HTMLElement | null) => void
 }
-export interface TooltipProps
-  extends UseTooltipProps,
-    Partial<UsePopoverResponseDom> {
+export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
   content: ReactNode
   /**
    * Component to receive tooltip behavior or render prop function that
    * receives tooltip props and returns a component
    */
   children:
-    | ReactElement<UseTooltipResponseDom & UsePopoverResponseDom>
+    | ReactElement<UseTooltipResponseDom & MenuDomProps>
     | TooltipRenderProp
 }

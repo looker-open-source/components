@@ -32,6 +32,7 @@ import React, {
   Ref,
 } from 'react'
 import { useForkedRef } from '../utils'
+import { mergeHandlers } from '../utils/mergeHandlers'
 import { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
 
