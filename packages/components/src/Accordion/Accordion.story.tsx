@@ -30,7 +30,7 @@ import { Badge } from '../Badge'
 import { Box, Space } from '../Layout'
 import { Fieldset, FieldText } from '../Form'
 import { Icon } from '../Icon'
-import { List, ListItem } from '../List'
+import { UnorderedList } from '../UnorderedList'
 import { Paragraph } from '../Text'
 import { Accordion } from './Accordion'
 import { AccordionContent } from './AccordionContent'
@@ -115,50 +115,50 @@ export const Nested = () => (
   <Accordion m="xlarge" pl="xlarge" indicatorPosition="left" defaultOpen>
     <AccordionDisclosure>Hello World</AccordionDisclosure>
     <AccordionContent>
-      <List>
-        <ListItem>Cheddar</ListItem>
-        <ListItem>Cheddar</ListItem>
-        <ListItem>Cheddar</ListItem>
-        <ListItem>
+      <UnorderedList>
+        <li>Cheddar</li>
+        <li>Cheddar</li>
+        <li>Cheddar</li>
+        <li>
           <Accordion indicatorPosition="left" defaultOpen>
             <AccordionDisclosure>Hello World</AccordionDisclosure>
             <AccordionContent>
-              <List>
-                <ListItem>Cheddar</ListItem>
-                <ListItem>Cheddar</ListItem>
-                <ListItem>Cheddar</ListItem>
-                <ListItem>
+              <UnorderedList>
+                <li>Cheddar</li>
+                <li>Cheddar</li>
+                <li>Cheddar</li>
+                <li>
                   <Accordion indicatorPosition="left" defaultOpen>
                     <AccordionDisclosure>Hello World</AccordionDisclosure>
                     <AccordionContent>
-                      <List>
-                        <ListItem>Cheddar</ListItem>
-                        <ListItem>Cheddar</ListItem>
-                        <ListItem>Cheddar</ListItem>
-                        <ListItem>
+                      <UnorderedList>
+                        <li>Cheddar</li>
+                        <li>Cheddar</li>
+                        <li>Cheddar</li>
+                        <li>
                           <Accordion indicatorPosition="left" defaultOpen>
                             <AccordionDisclosure>
                               Hello World
                             </AccordionDisclosure>
                             <AccordionContent>
-                              <List>
-                                <ListItem>Cheddar</ListItem>
-                                <ListItem>Cheddar</ListItem>
-                                <ListItem>Cheddar</ListItem>
-                                <ListItem>Cheddar</ListItem>
-                              </List>
+                              <UnorderedList>
+                                <li>Cheddar</li>
+                                <li>Cheddar</li>
+                                <li>Cheddar</li>
+                                <li>Cheddar</li>
+                              </UnorderedList>
                             </AccordionContent>
                           </Accordion>
-                        </ListItem>
-                      </List>
+                        </li>
+                      </UnorderedList>
                     </AccordionContent>
                   </Accordion>
-                </ListItem>
-              </List>
+                </li>
+              </UnorderedList>
             </AccordionContent>
           </Accordion>
-        </ListItem>
-      </List>
+        </li>
+      </UnorderedList>
     </AccordionContent>
   </Accordion>
 )
@@ -170,23 +170,23 @@ Nested.parameters = {
 export const ApiExplorer = () => {
   const content = (
     <Box borderLeft="1px dotted" borderColor="ui2" ml="xsmall" pl="small">
-      <List fontSize="small">
-        <ListItem>
+      <UnorderedList fontSize="small">
+        <li>
           <Badge intent="inform">GET</Badge> Search Favorites
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <Badge intent="inform">GET</Badge> Get Favorites
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <Badge intent="critical">GET</Badge> Delete Favorite
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <Badge intent="positive">GET</Badge> Create Favorite
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <Badge intent="warn">POST</Badge> Update Content
-        </ListItem>
-      </List>
+        </li>
+      </UnorderedList>
     </Box>
   )
 

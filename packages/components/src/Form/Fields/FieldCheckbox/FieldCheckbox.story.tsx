@@ -26,7 +26,7 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import { List, ListItem } from '../../../List'
+import { UnorderedList } from '../../../UnorderedList'
 import {
   CheckboxTree,
   MixedBoolean,
@@ -130,8 +130,8 @@ export const MixedState = () => {
         checked={parentState}
         label="Fruit"
       />
-      <List pl="large">
-        <ListItem>
+      <UnorderedList pl="large">
+        <li>
           <FieldCheckbox
             id="fruit-apple"
             name="fruit"
@@ -140,8 +140,8 @@ export const MixedState = () => {
             onChange={handleAppleChange}
             checked={appleState}
           />
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <FieldCheckbox
             id="fruit-banana"
             name="fruit"
@@ -150,8 +150,8 @@ export const MixedState = () => {
             checked={bananaState}
             label="🍌"
           />
-        </ListItem>
-        <ListItem>
+        </li>
+        <li>
           <FieldCheckbox
             id="fruit-avocado"
             name="fruit"
@@ -160,8 +160,8 @@ export const MixedState = () => {
             checked={avocadoState}
             label="🥑"
           />
-        </ListItem>
-      </List>
+        </li>
+      </UnorderedList>
     </>
   )
 }
