@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Accordion` no longer accepts `SimpleLayoutProps`
+- `AccordionContent` accepts `SimpleLayoutProps`
 - `IconPlaceholder` moved to `Icon`
 - `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
 - `Tree` now uses the same `selected` color as `TreeItem`
@@ -28,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `TreeStyle` bug where `TreeGroup` would increase / decrease indent based on currently hovered parent `Tree`
 - `DataTable` overflow shadow now works properly in Safari
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
