@@ -32,7 +32,7 @@ import {
 } from '../Accordion'
 import { TreeBackgroundStyleProps } from './Tree'
 import { TreeItem, TreeItemLabel } from './TreeItem'
-import { TreeGroupLabel } from './TreeGroup'
+import { TreeGroup, TreeGroupLabel } from './TreeGroup'
 import {
   generateIndent,
   generateTreeBorder,
@@ -89,9 +89,17 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
   }
 
-  ${TreeGroupLabel},
-  ${TreeItemLabel},
-  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
+  &
+    > ${Accordion}
+    > ${AccordionContent}
+    > ${TreeGroup}
+    > ${TreeGroupLabel},
+    ${TreeItemLabel},
+    &
+    > ${Accordion}
+    > ${AccordionContent}
+    > ${TreeItem}
+    > ${TreeItemLabel} {
     ${({ depth, theme }) => generateIndent(depth + 2, theme)}
   }
 `
