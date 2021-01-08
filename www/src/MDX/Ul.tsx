@@ -28,7 +28,7 @@ import React, { FC } from 'react'
 import { UnorderedList } from '@looker/components'
 import { maxTextWidth } from './styles'
 
-const Ul: FC<{}> = (props) => (
+export const Ul: FC<{}> = (props) => (
   <UnorderedList
     lineHeight="medium"
     mb="medium"
