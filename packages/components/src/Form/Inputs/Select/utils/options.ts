@@ -29,7 +29,7 @@ import {
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
-} from '../SelectOptions'
+} from '../types'
 
 export function flattenOptions(options: SelectOptionProps[]) {
   return options.reduce(

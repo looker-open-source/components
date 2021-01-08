@@ -27,7 +27,7 @@
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
 import { FontFamilyChoices } from '../system'
-import { defaultFontFallbacks } from '../tokens/typography/font_families'
+import { FontFamilyFallbacks } from '../system/typography/font_families'
 
 export const fontFacesToFamily = (
   faces: string[] | string,
@@ -44,6 +44,7 @@ export const fontFacesToFamily = (
 
 export const generateFontFamilies = (
   defaultFonts: FontFamilyChoices,
+  fallbacks: FontFamilyFallbacks,
   customFonts?: Partial<FontFamilyChoices>
 ) => {
   const fontFamilies: FontFamilyChoices = {
@@ -53,10 +54,7 @@ export const generateFontFamilies = (
 
   Object.entries(fontFamilies).map(
     ([key, fontFace]) =>
-      (fontFamilies[key] = fontFacesToFamily(
-        fontFace,
-        defaultFontFallbacks[key]
-      ))
+      (fontFamilies[key] = fontFacesToFamily(fontFace, fallbacks[key]))
   )
 
   return fontFamilies

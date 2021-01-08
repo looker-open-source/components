@@ -27,7 +27,7 @@
 import { IconNames, iconNameList } from '@looker/icons'
 import React, { createContext, ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Icon, IconPlaceholder, IconProps } from '../../../Icon'
+import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
 import { ListItemDetail } from '../../../List/ListItemDetail'
@@ -38,39 +38,19 @@ import {
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
-  ComboboxOptionIndicatorProps,
   ComboboxOptionIndicator,
-  ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
+import {
+  SelectOptionGroupProps,
+  SelectOptionIcon,
+  SelectOptionObject,
+  SelectOptionProps,
+} from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
 export const SelectOptionsContext = createContext({ hasIcons: false })
-
-export type SelectOptionIcon = IconNames | IconProps['artwork']
-
-export interface SelectOptionObject
-  extends ComboboxOptionObject,
-    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
-  description?: string | ReactNode
-  /**
-   * Supplementary element that appears right of the option's label
-   */
-  detail?: ReactNode
-  /**
-   * Icon shown to the left of the option label in the list and input when selected
-   * Use an IconName, or inline svg for a custom icon
-   */
-  icon?: SelectOptionIcon
-}
-
-export interface SelectOptionGroupProps {
-  options: SelectOptionObject[]
-  label?: string | ReactNode
-}
-
-export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
 function isIconName(icon?: SelectOptionIcon): icon is IconNames {
   return typeof icon === 'string' && iconNameList.includes(icon)

@@ -24,37 +24,43 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../types'
+import { ReactNode } from 'react'
 
-export const treeBackgroundColor = ({
-  brand,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: TreeBackgroundStyleProps & { theme: Theme }) => {
-  const brandColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const defaultColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = brand ? brandColors : defaultColors
-  let renderedColor
+export interface InputFilterEditorProps {
+  closeEditor: () => void
+  filterOptions: FieldFilterOptions
+  onChange: (value?: string) => void
+  value?: string
+}
 
-  if (disabled) return
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else return
+export type InputFilterEditorRenderProp = (
+  props: InputFilterEditorProps
+) => ReactNode
 
-  return css`
-    background-color: ${renderedColor};
-  `
+export interface FieldFilterOptions {
+  /* specify the field value */
+  field: string
+  /* text to be displayed in drop-down, optional, `field` is used if not specified */
+  label?: string
+  /**
+   * ability to select multiple filter options
+   * @default false
+   */
+  multiple?: boolean
+  /* list of options to filter by */
+  options?: string[]
+}
+
+export interface FieldFilter extends FieldFilterOptions {
+  editor?: InputFilterEditorRenderProp
+  formatValue?: (value: string) => string
+  /* filter value/expression */
+  value?: string
+}
+
+export interface InputFiltersProps {
+  className?: string
+  filters: FieldFilter[]
+  hideFilterIcon?: boolean
+  onChange: (filters: FieldFilter[]) => void
 }

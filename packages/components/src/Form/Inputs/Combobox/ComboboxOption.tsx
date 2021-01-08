@@ -30,19 +30,14 @@
 import {
   CompatibleHTMLProps,
   color,
-  ColorProps,
   flexbox,
-  FlexboxProps,
   layout,
-  LayoutProps,
   reset,
   space,
-  SpaceProps,
   typography,
-  TypographyProps,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useContext, Ref, ReactNode } from 'react'
+import React, { forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import { ReplaceText, Span } from '../../../Text'
@@ -54,64 +49,14 @@ import {
   ComboboxContextProps,
   ComboboxMultiContext,
 } from './ComboboxContext'
+import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
+import { ComboboxOptionProps, HighlightTextProps } from './types'
 import { ComboboxData } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
-import {
-  ComboboxOptionIndicator,
-  ComboboxOptionIndicatorProps,
-} from './ComboboxOptionIndicator'
 import { useOptionScroll } from './utils/useOptionScroll'
-
-export interface ComboboxOptionObject {
-  /**
-   * Additional data associated with the option, will be passed to onChange.
-   */
-  label?: string
-  /**
-   * The value to match against when suggesting.
-   */
-  value: string
-  /**
-   * Highlight and Scroll to this option if it appears in a long list.
-   */
-  scrollIntoView?: boolean
-}
-
-export interface HighlightTextProps {
-  /**
-   * Highlight the matching option text as the user types into the input
-   * @default true
-   */
-  highlightText?: boolean
-}
-
-export interface ComboboxOptionProps
-  extends ComboboxOptionObject,
-    Pick<ComboboxOptionIndicatorProps, 'indicator'>,
-    HighlightTextProps,
-    ColorProps,
-    FlexboxProps,
-    LayoutProps,
-    SpaceProps,
-    TypographyProps,
-    Omit<CompatibleHTMLProps<HTMLLIElement>, 'data' | 'value'> {
-  /**
-   * Optional. If omitted, the `value` will be used as the children like:
-   * `<ComboboxOption value="Seattle, Tacoma, Washington" />`. But if you need
-   * to control a bit more, you can put whatever children you want, but make
-   * sure to render a `ComboboxOptionText` as well, so the value is still
-   * displayed with the text highlighting on the matched portions.
-   *
-   * @example
-   *   <ComboboxOption value="Apple" />
-   *     🍎 <ComboboxOptionText />
-   *   </ComboboxOption>
-   */
-  children?: ReactNode
-}
 
 interface ComboboxOptionWrapperProps extends ComboboxOptionProps {
   isSelected?: boolean

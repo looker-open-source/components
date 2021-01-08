@@ -24,37 +24,31 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../types'
+import { IconNames } from '@looker/icons'
+import { ReactNode } from 'react'
+import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
+import { IconProps } from '../../../Icon'
 
-export const treeBackgroundColor = ({
-  brand,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: TreeBackgroundStyleProps & { theme: Theme }) => {
-  const brandColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const defaultColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = brand ? brandColors : defaultColors
-  let renderedColor
+export type SelectOptionIcon = IconNames | IconProps['artwork']
 
-  if (disabled) return
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else return
-
-  return css`
-    background-color: ${renderedColor};
-  `
+export interface SelectOptionObject
+  extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
+  description?: string | ReactNode
+  /**
+   * Supplementary element that appears right of the option's label
+   */
+  detail?: ReactNode
+  /**
+   * Icon shown to the left of the option label in the list and input when selected
+   * Use an IconName, or inline svg for a custom icon
+   */
+  icon?: SelectOptionIcon
 }
+
+export interface SelectOptionGroupProps {
+  options: SelectOptionObject[]
+  label?: string | ReactNode
+}
+
+export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps

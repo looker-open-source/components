@@ -24,37 +24,38 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../types'
+import { SpacingSizes } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import { IconSize } from '../Icon'
 
-export const treeBackgroundColor = ({
-  brand,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: TreeBackgroundStyleProps & { theme: Theme }) => {
-  const brandColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const defaultColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = brand ? brandColors : defaultColors
-  let renderedColor
+export type IndicatorIcons = {
+  close: IconNames
+  open: IconNames
+}
 
-  if (disabled) return
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else return
+export type AccordionIndicatorPosition = undefined | 'left' | 'right'
 
-  return css`
-    background-color: ${renderedColor};
-  `
+export interface AccordionIndicatorProps {
+  /**
+   * Determines where the disclosure indicator will sit on
+   * @default 'right'
+   */
+  indicatorPosition?: AccordionIndicatorPosition
+
+  /**
+   * Size of icon on disclosure
+   * @default 'small'
+   */
+  indicatorSize?: IconSize
+
+  /**
+   * Space between label and indicator within disclosure
+   * @default 'xsmall'
+   */
+  indicatorGap?: SpacingSizes
+
+  /**
+   * Icons for disclosure indicator
+   */
+  indicatorIcons?: IndicatorIcons
 }

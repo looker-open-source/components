@@ -29,7 +29,7 @@
 
 import xorWith from 'lodash/xorWith'
 import { Reducer, useReducer, useRef } from 'react'
-import { ComboboxOptionObject } from '../ComboboxOption'
+import { ComboboxOptionObject } from '../types'
 import { getComboboxText } from './getComboboxText'
 import { parseOption } from './parseOption'
 

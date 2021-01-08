@@ -24,37 +24,7 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../types'
-
-export const treeBackgroundColor = ({
-  brand,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: TreeBackgroundStyleProps & { theme: Theme }) => {
-  const brandColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const defaultColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = brand ? brandColors : defaultColors
-  let renderedColor
-
-  if (disabled) return
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else return
-
-  return css`
-    background-color: ${renderedColor};
-  `
+declare module '@styled-system/props' {
+  export function omit(props: any): {}
+  export function pick(props: any): {}
 }

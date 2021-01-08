@@ -34,9 +34,12 @@ import { FontSizeProps } from './font_sizes'
 import { FontWeightProps } from './font_weights'
 import { LineHeightProps } from './line_heights'
 
+export const densityTarget = '2.25rem' // 36px
+
 export type {
   FontFamilies,
   FontFamilyChoices,
+  FontFamilyFallbacks,
   FontFamilyProps,
 } from './font_families'
 export { fontFamilies } from './font_families'

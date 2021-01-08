@@ -32,7 +32,7 @@ import {
   BulkActionsConfig,
   FilterConfig,
   SelectConfig,
-} from '../DataTable'
+} from '../'
 import { DataTableAction } from '../Item'
 import { useSelectManager, doDataTableSort } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'

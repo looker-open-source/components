@@ -14,6 +14,8 @@ jobs:
         name: 'ESLint'
       - run: yarn lint:css
         name: 'Stylelint'
+      - run: yarn lint:circular
+        name: 'Madge'
   test:
     name: "Tests: Jest + RTL"
     runs-on: ubuntu-latest

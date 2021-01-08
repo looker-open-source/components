@@ -24,7 +24,7 @@
 
  */
 
-import { ComboboxOptionObject } from '../ComboboxOption'
+import { ComboboxOptionObject } from '../types'
 
 export function getComboboxText(
   value?: string | ComboboxOptionObject,

@@ -26,8 +26,9 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Tree, TreeProps } from '../Tree'
+import { Tree } from '../Tree'
 import { TreeItem } from '../TreeItem'
+import { TreeProps } from '../types'
 
 const Template: Story<TreeProps> = (args) => (
   <Tree {...args} label="thelook" icon="ExploreOutline">

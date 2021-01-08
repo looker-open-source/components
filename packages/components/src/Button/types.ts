@@ -23,29 +23,44 @@
  SOFTWARE.
 
  */
-export interface ComboboxOptionObject {
-  /**
-   * Additional data associated with the option, will be passed to onChange.
-   */
-  label?: string
-  /**
-   * The value to match against when suggesting.
-   */
-  value: string
+
+import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import {
+  MaxWidthProps,
+  MinWidthProps,
+  SpaceProps,
+  WidthProps,
+} from 'styled-system'
+import { ButtonSizeProps, ButtonSizes } from './size'
+
+export interface ButtonIconProps {
+  iconBefore?: IconNames | undefined
+  iconAfter?: IconNames | undefined
 }
 
-export type MaybeComboboxOptionObject = ComboboxOptionObject | undefined
-export type ComboboxOptionType =
-  | MaybeComboboxOptionObject
-  | ComboboxOptionObject[]
+export interface ButtonBaseProps
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    ButtonSizeProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
+    SpaceProps {
+  type?: 'button' | 'submit' | 'reset'
 
-export type ComboboxCallback<
-  TOption extends ComboboxOptionType = MaybeComboboxOptionObject
-> = (option: TOption) => void
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "key"
+   */
+  color?: StatefulColor
 
-export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>
+  focusVisible?: boolean
+}
 
-export interface ComboboxOptionStatuses {
-  isActive: boolean
-  isSelected: boolean
+export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
+  size?: ButtonSizes
+  /**
+   * If true, the button's width will be set to 100%.
+   */
+  fullWidth?: boolean
 }

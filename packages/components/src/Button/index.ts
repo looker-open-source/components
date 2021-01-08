@@ -33,5 +33,6 @@ export * from './ButtonToggle'
 export * from './ButtonTransparent'
 export * from './IconButton'
 export * from './iconButtonColor'
+export * from './types'
 
 export type { ButtonSizes } from './size'

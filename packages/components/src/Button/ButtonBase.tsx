@@ -26,57 +26,17 @@
 
 import {
   buttonShadow,
-  CompatibleHTMLProps,
   reset,
   space,
-  SpaceProps,
   StatefulColor,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  minWidth,
-  MinWidthProps,
-  maxWidth,
-  MaxWidthProps,
-  WidthProps,
-  width,
-} from 'styled-system'
-import {
-  buttonSize,
-  ButtonSizes,
-  ButtonSizeProps,
-  buttonIconSizeMap,
-  buttonPadding,
-} from './size'
-import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
-
-export interface ButtonBaseProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    ButtonSizeProps,
-    MaxWidthProps,
-    MinWidthProps,
-    WidthProps,
-    SpaceProps {
-  type?: 'button' | 'submit' | 'reset'
-
-  /**
-   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "key"
-   */
-  color?: StatefulColor
-
-  focusVisible?: boolean
-}
-
-export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
-  size?: ButtonSizes
-  /**
-   * If true, the button's width will be set to 100%.
-   */
-  fullWidth?: boolean
-}
+import { minWidth, maxWidth, width } from 'styled-system'
+import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
+import { ButtonIcon, buttonIcon } from './icon'
+import { ButtonProps } from './types'
 
 export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${reset}

@@ -28,11 +28,6 @@ import React, { FC } from 'react'
 import { Box, Heading, Code } from '@looker/components'
 import styled from 'styled-components'
 
-export interface BorderExample {
-  name: string
-  bgColor: string
-}
-
 export interface BorderType {
   color: string
   label: string

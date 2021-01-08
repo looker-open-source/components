@@ -32,7 +32,6 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react'
-import { ComboboxOptionIndicatorProps } from './ComboboxOptionIndicator'
 import {
   ComboboxData,
   ComboboxMultiData,
@@ -43,6 +42,7 @@ import {
 import {
   ComboboxCallback,
   ComboboxMultiCallback,
+  ComboboxOptionIndicatorProps,
   ComboboxOptionObject,
 } from './types'
 
