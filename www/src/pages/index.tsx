@@ -98,7 +98,7 @@ const Intro = () => {
                 Install
               </Heading>
               <Paragraph fontSize="small">
-                Visit <Link href="/getting-started/">Getting Started</Link> for
+                Visit <Link href="/develop/">Getting Started</Link> for
                 instructions on installing{' '}
                 <Code fontSize="small">@looker/components</Code>
               </Paragraph>
