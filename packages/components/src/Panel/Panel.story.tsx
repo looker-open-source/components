@@ -24,36 +24,57 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import React, { useState } from 'react'
+// import { Story } from '@storybook/react/types-6-0'
 import { MenuGroup, MenuList, MenuItem } from '../Menu'
-import { Panel } from './'
+import { Page, Aside, Section } from '../Layout'
+import { Panel } from './Panel'
+import { Panels } from './Panels'
 
 export default {
   component: Panel,
   title: 'Panel',
 }
 
-const content = () => (
-  <MenuList>
-    <MenuItem icon="ArrowRight">DCL</MenuItem>
-    <MenuItem icon="ArrowRight">Internal Issues</MenuItem>
-    <MenuItem icon="ArrowRight">Licence</MenuItem>
-  </MenuList>
-)
+export const Basic = () => {
+  const [explore, setExplore] = useState(false)
+  const toggleExplore = () => setExplore(!explore)
 
-export const Basic = () => (
-  <MenuList>
-    <MenuGroup label="Looker">
-      <Panel direction="left" title="Explore" content={content}>
-        <MenuItem icon="ExploreOutline">Explore</MenuItem>
-      </Panel>
-      <MenuItem icon="Code">Develop</MenuItem>
-      <MenuItem icon="Group">Admin</MenuItem>
-    </MenuGroup>
-  </MenuList>
-)
+  return (
+    <Page hasAside>
+      <Aside width="12rem">
+        <Panels>
+          <MenuList>
+            <MenuGroup label="Looker">
+              <MenuItem onClick={toggleExplore} icon="ExploreOutline">
+                Explore
+              </MenuItem>
+              <Panel title="Develop" content={'content fro display...'}>
+                <MenuItem icon="Code">Develop</MenuItem>
+              </Panel>
+              <MenuItem icon="Group">Admin</MenuItem>
+            </MenuGroup>
+          </MenuList>
 
+          <Panel
+            isOpen={explore}
+            setOpen={setExplore}
+            direction="left"
+            title="Explore"
+            content={
+              <MenuList>
+                <MenuItem icon="ArrowRight">DCL</MenuItem>
+                <MenuItem icon="ArrowRight">Internal Issues</MenuItem>
+                <MenuItem icon="ArrowRight">Licence</MenuItem>
+              </MenuList>
+            }
+          />
+        </Panels>
+      </Aside>
+      <Section>Main stuff here...</Section>
+    </Page>
+  )
+}
 Basic.parameters = {
   storyshots: { disable: true },
 }

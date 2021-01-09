@@ -24,42 +24,26 @@
 
  */
 
-import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
-import { UsePanelResponseDom, usePanel, UsePanelProps } from './usePanel'
+import styled, { css } from 'styled-components'
 
-export type PanelRenderProp = (props: UsePanelResponseDom) => ReactNode
+const surfaceTransition = () => css`
+  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
+`
 
-export interface PanelProps extends Omit<UsePanelProps, 'content'> {
-  children?: PanelRenderProp | ReactNode
-  content: ReactNode
-}
+export const PanelSurface = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
+  width: 100%;
 
-const isRenderProp = (
-  children: ReactNode | PanelRenderProp
-): children is PanelRenderProp => typeof children === 'function'
-
-export const Panel: FC<PanelProps> = ({ children, content, ...props }) => {
-  const { domProps, panel } = usePanel({ content, ...props })
-
-  if (children === undefined) {
-    return <>{panel}</>
-  } else if (isValidElement(children)) {
-    children = cloneElement(children, {
-      ...domProps,
-    })
-  } else if (isRenderProp(children)) {
-    children = children(domProps)
-  } else {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Element "${typeof children}" can't be used as target for Drawer`
-    )
+  &.entering,
+  &.exiting {
+    opacity: 0.01;
+    transform: translateX(100%);
   }
-
-  return (
-    <>
-      {children}
-      {panel}
-    </>
-  )
-}
+`
