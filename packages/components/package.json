@@ -23,7 +23,7 @@
     "@looker/components-providers": "^0.9.29",
     "@looker/design-tokens": "^0.9.27",
     "@looker/icons": "^0.9.26",
-    "@popperjs/core": "^2.5.4",
+    "@popperjs/core": "^2.6.0",
     "d3-color": "^2.0.0",
     "d3-hsv": "^0.1.0",
     "date-fns": "^2.16.1",
