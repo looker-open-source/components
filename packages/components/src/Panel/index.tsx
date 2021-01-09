@@ -25,4 +25,3 @@
  */
 
 export * from './Panel'
-export * from './usePanel'
