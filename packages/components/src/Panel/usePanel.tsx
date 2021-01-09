@@ -23,10 +23,133 @@
  SOFTWARE.
 
  */
-import { UseDialogBaseProps, useDialog } from '../Dialog/useDialog'
-import { DrawerSurface, DrawerSurfaceProps } from '../Drawer/DrawerSurface'
 
-export interface UsePanelProps extends UseDialogBaseProps, DrawerSurfaceProps {}
+import React, { ReactNode, useState } from 'react'
+import { Heading } from '../Text'
+import { useAnimationState, useControlWarn } from '../utils'
+import { PanelSurface } from './PanelSurface'
 
-export const usePanel = ({ ...props }: UsePanelProps) =>
-  useDialog({ Surface: DrawerSurface, ...props })
+export interface UsePanelProps {
+  /**
+   * Specify a callback to be called before || each time trying to close Panel.
+   * This allows for use-cases where the user might lose work
+   * (think common "Save before closing warning" type flow)
+   */
+  canClose?: () => boolean
+
+  /**
+   * Element that will be displayed as Panel
+   */
+  content: ReactNode
+
+  /**
+   * Panel will be displayed immediately when rendered.
+   * NOTE: Once rendered, changes to this value will be ignored. This property cannot
+   * be used treat this component as "controlled"
+   * @default false
+   */
+  defaultOpen?: boolean
+
+  /**
+   * Edge of the screen from which the panel will enter
+   * Future options 'right' | 'up' | 'down'
+   * @default 'left'
+   */
+  direction?: 'left'
+
+  /**
+   * Dialog will be displayed immediately when rendered.
+   * @default undefined
+   */
+  isOpen?: boolean
+
+  /**
+   * Specify a callback to be called each time this Dialog is closed
+   */
+  onClose?: () => void
+
+  /**
+   * Optional, for a controlled version of the component
+   */
+  setOpen?: (open: boolean) => void
+
+  /**
+   * Value displayed as Panel header clickable to close Panel
+   */
+  title: string
+}
+
+export interface UsePanelResponseDom {
+  onClick: () => void
+  role: string
+  'aria-expanded': boolean
+}
+
+export interface UsePanelResponse {
+  isOpen: boolean
+  setOpen: (open: boolean) => void
+  panel: ReactNode
+  domProps: UsePanelResponseDom
+}
+
+export const usePanel = ({
+  content,
+  title,
+  defaultOpen = false,
+  isOpen: controlledIsOpen,
+  canClose,
+  onClose,
+  setOpen: controlledSetOpen,
+}: UsePanelProps): UsePanelResponse => {
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
+  const isControlled = useControlWarn({
+    controllingProps: ['setOpen'],
+    isControlledCheck: () => controlledSetOpen !== undefined,
+    name: 'usePanel',
+  })
+
+  if (Boolean(onClose) && Boolean(controlledSetOpen)) {
+    // eslint-disable-next-line no-console
+    throw new Error(
+      'usePanel does not support setting both `setOpen` and `onClose`. Use just `setOpen`'
+    )
+  }
+
+  const isOpen = isControlled ? controlledIsOpen || false : uncontrolledIsOpen
+
+  const { busy, className, renderDOM } = useAnimationState(
+    isOpen,
+    defaultOpen ? 'none' : undefined
+  )
+
+  const setOpen =
+    isControlled && controlledSetOpen
+      ? controlledSetOpen
+      : setUncontrolledIsOpen
+
+  const handleOpen = () => setOpen(true)
+
+  const handleClose = () => {
+    if (canClose && !canClose()) return
+    setOpen(false)
+    onClose && onClose()
+  }
+
+  const panel = renderDOM && (
+    <PanelSurface aria-busy={busy ? true : undefined} className={className}>
+      <Heading onClick={handleClose}>{title}</Heading>
+      {content}
+    </PanelSurface>
+  )
+
+  return {
+    domProps: {
+      'aria-expanded': isOpen,
+      onClick: handleOpen,
+      role: 'button',
+    },
+    isOpen,
+    panel,
+    setOpen,
+  }
+}
