@@ -47,7 +47,7 @@
     "@types/d3-color": "^2.0.1",
     "@types/d3-hsv": "^0.1.4",
     "@types/lodash": "^4.14.167",
-    "@types/react": "^16.9.56",
+    "@types/react": "^17.0.0",
     "@types/react-dom": "^16.9.9",
     "@types/react-resize-detector": "^5.0.0",
     "@types/styled-components": "^5.1.5",

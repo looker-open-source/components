@@ -13,7 +13,7 @@
     "@storybook/addon-essentials": "^6.1.10",
     "@storybook/addon-storyshots": "^6.1.10",
     "@storybook/addon-storyshots-puppeteer": "^6.1.10",
-    "@types/react": "^16.9.56",
+    "@types/react": "^17.0.0",
     "babel-loader": "^8.2.2",
     "babel-loader-exclude-node-modules-except": "^1.0.3",
     "react": "^16.14.0",
