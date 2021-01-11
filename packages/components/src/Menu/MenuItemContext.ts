@@ -24,14 +24,12 @@
 
  */
 
-import { createContext, KeyboardEvent } from 'react'
+import { createContext } from 'react'
 
 export interface MenuItemContextProps {
   compact?: boolean
   renderIconPlaceholder?: boolean
   setRenderIconPlaceholder?: (state: boolean) => void
-  handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
-  handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
 const menuItemContext: MenuItemContextProps = {}
