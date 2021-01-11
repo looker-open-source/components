@@ -595,3 +595,13 @@ export const ArrowKeyNavigation = () => (
 ArrowKeyNavigation.parameters = {
   storyshots: { disable: true },
 }
+
+export const NestedMenu = () => (
+  <Menu content={<MenuItem submenu={menuItems}>Sub Menu</MenuItem>}>
+    <Button>Open Nested Menu</Button>
+  </Menu>
+)
+
+NestedMenu.parameters = {
+  storyshots: { disable: true },
+}

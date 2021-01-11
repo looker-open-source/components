@@ -27,18 +27,28 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
+import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import React, {
+  FC,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
+import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
+import { MenuList } from './MenuList'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   iconArtwork?: ReactNode
@@ -61,6 +71,11 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    *
    */
   itemRole?: 'link' | 'button'
+  /**
+   * A list of menu items that will open to the right when the user hovers
+   * or hits the right arrow key
+   */
+  submenu?: ReactNode
   tooltip?: string
   tooltipPlacement?: Placement
 }
@@ -81,10 +96,29 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onBlur,
     onClick,
     onKeyUp,
+    submenu,
     target,
     tooltip,
     tooltipPlacement = 'left',
   } = props
+
+  const [isOpen, setOpen] = useState(false)
+  const listRef = useRef<HTMLUListElement>(null)
+
+  const { popover, domProps } = usePopover({
+    content: <MenuList ref={listRef}>{submenu}</MenuList>,
+    disabled: submenu === undefined,
+    isOpen,
+    pin: true,
+    placement: 'right-start',
+    setOpen,
+  })
+  const handleMouseOver = () => {
+    setOpen(true)
+  }
+  const handleMouseOut = () => {
+    setOpen(false)
+  }
 
   const [isFocusVisible, setFocusVisible] = useState(false)
   const {
@@ -180,6 +214,9 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
       className={className}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      {...omit(domProps, 'onClick')}
     >
       {tooltip ? (
         <Tooltip placement={tooltipPlacement} content={tooltip}>
@@ -188,6 +225,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       ) : (
         menuItemContent
       )}
+      {popover}
     </MenuItemLayout>
   )
 }

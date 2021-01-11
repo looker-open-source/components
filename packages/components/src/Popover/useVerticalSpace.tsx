@@ -27,6 +27,22 @@
 import { useEffect, CSSProperties, useState } from 'react'
 import { Placement } from '@popperjs/core'
 
+const topPlacements: Placement[] = [
+  'top',
+  'top-start',
+  'top-end',
+  'right-end',
+  'left-end',
+]
+
+const bottomPlacements: Placement[] = [
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right-start',
+  'left-start',
+]
+
 export const useVerticalSpace = (
   element: HTMLElement | null,
   pin: boolean,
@@ -37,8 +53,8 @@ export const useVerticalSpace = (
 ) => {
   const [spaceTop, setSpaceTop] = useState(0)
   const [spaceBottom, setSpaceBottom] = useState(0)
-  const placementIsBottom = placement && placement.includes('bottom')
-  const placementIsTop = placement && placement.includes('top')
+  const placementIsBottom = placement && bottomPlacements.includes(placement)
+  const placementIsTop = placement && topPlacements.includes(placement)
 
   useEffect(() => {
     const getVerticalSpace = () => {
