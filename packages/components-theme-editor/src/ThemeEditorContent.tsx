@@ -30,9 +30,7 @@ import {
   ButtonOutline,
   ButtonTransparent,
   ComponentsProvider,
-  DialogHeader,
-  DialogFooter,
-  DialogContent,
+  DialogLayout,
   DialogContext,
   Layout,
   Section,
@@ -82,35 +80,39 @@ export const ThemeEditorContent: FC<ThemeEditorContentProps> = ({
     updateTheme({ colors: colors, fontFamilies: fonts })
   }
 
-  return (
+  const footer = (
     <>
-      <DialogHeader>Customize Theme</DialogHeader>
-      <DialogContent>
-        <Layout hasAside>
-          <Aside width="16rem">
-            <ThemeEditorForm
-              onChange={setThemeCustomizations}
-              theme={themeCustomizations}
-            />
-          </Aside>
-          <Section pl="xxlarge">
-            <Box border="1px solid" borderColor="ui2">
-              <ComponentsProvider
-                globalStyle={false}
-                themeCustomizations={themeCustomizations}
-              >
-                <FauxDashboard />
-              </ComponentsProvider>
-            </Box>
-          </Section>
-        </Layout>
-      </DialogContent>
-      <DialogFooter
-        secondary={<ButtonOutline onClick={reset}>Reset Theme</ButtonOutline>}
-      >
-        <Button onClick={saveChanges}>Apply Changes</Button>
-        <ButtonTransparent onClick={cancel}>Cancel</ButtonTransparent>
-      </DialogFooter>
+      <Button onClick={saveChanges}>Apply Changes</Button>
+      <ButtonTransparent onClick={cancel}>Cancel</ButtonTransparent>
     </>
+  )
+
+  return (
+    <DialogLayout
+      footer={footer}
+      footerSecondary={
+        <ButtonOutline onClick={reset}>Reset Theme</ButtonOutline>
+      }
+      header="Customize Theme"
+    >
+      <Layout hasAside>
+        <Aside width="16rem">
+          <ThemeEditorForm
+            onChange={setThemeCustomizations}
+            theme={themeCustomizations}
+          />
+        </Aside>
+        <Section pl="xxlarge">
+          <Box border="1px solid" borderColor="ui2">
+            <ComponentsProvider
+              globalStyle={false}
+              themeCustomizations={themeCustomizations}
+            >
+              <FauxDashboard />
+            </ComponentsProvider>
+          </Box>
+        </Section>
+      </Layout>
+    </DialogLayout>
   )
 }

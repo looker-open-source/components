@@ -25,13 +25,7 @@
  */
 
 import React, { FormEvent, useState } from 'react'
-import {
-  useConfirm,
-  Dialog,
-  DialogHeader,
-  DialogContent,
-  DialogFooter,
-} from '..'
+import { useConfirm, Dialog, DialogLayout } from '..'
 import { Button, Form, FieldText, ButtonTransparent } from '../..'
 
 /**
@@ -87,31 +81,29 @@ export const SaveChanges = () => {
   const handleChange = (event: FormEvent<HTMLInputElement>) =>
     setName(event.currentTarget.value)
 
+  const footer = (
+    <>
+      <Button onClick={handleSave}>Save</Button>
+      <ButtonTransparent onClick={handleCancel}>Cancel</ButtonTransparent>
+    </>
+  )
+
   return (
     <>
       <Dialog
         isOpen={isOpen}
         onClose={handleCancel}
         content={
-          <>
-            <DialogHeader hideClose>Edit Name</DialogHeader>
-            <DialogContent>
-              <Form onSubmit={handleSave}>
-                <FieldText
-                  label="Name"
-                  onChange={handleChange}
-                  value={name}
-                  description='Enter name, then click "Cancel" to trigger confirmation'
-                />
-              </Form>
-            </DialogContent>
-            <DialogFooter>
-              <Button onClick={handleSave}>Save</Button>
-              <ButtonTransparent onClick={handleCancel}>
-                Cancel
-              </ButtonTransparent>
-            </DialogFooter>
-          </>
+          <DialogLayout footer={footer} header="Edit Name">
+            <Form onSubmit={handleSave}>
+              <FieldText
+                label="Name"
+                onChange={handleChange}
+                value={name}
+                description='Enter name, then click "Cancel" to trigger confirmation'
+              />
+            </Form>
+          </DialogLayout>
         }
       />
       <button onClick={() => setIsOpen(true)}>Tell us your name...</button>
