@@ -1,0 +1,228 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2020 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+import { Placement } from '@popperjs/core'
+import React, {
+  Children,
+  forwardRef,
+  isValidElement,
+  KeyboardEvent,
+  ReactChild,
+  ReactNode,
+  Ref,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+import styled from 'styled-components'
+import {
+  MaxHeightProps,
+  MinHeightProps,
+  HeightProps,
+  height,
+  minHeight,
+  maxHeight,
+  width,
+  WidthProps,
+  MaxWidthProps,
+  MinWidthProps,
+  minWidth,
+  maxWidth,
+} from 'styled-system'
+import {
+  CompatibleHTMLProps,
+  reset,
+  omitStyledProps,
+} from '@looker/design-tokens'
+import { moveFocus, useForkedRef, useWindow } from '../utils'
+import { ListItemContext } from './ListItemContext'
+import { ListLabel } from './ListLabel'
+
+export interface ListProps
+  extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'>,
+    MaxHeightProps,
+    MinHeightProps,
+    HeightProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps {
+  compact?: boolean
+
+  /** Label displayed above the child list */
+  label?: ReactNode
+
+  /**
+   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
+   * end. This value comes directly from popper.js. See
+   * https://popper.js.org/popper-documentation.html#Popper.placements for more
+   * info.
+   * @default bottom
+   */
+  placement?: Placement
+
+  /**
+   * By default List will reposition itself if they overflow the widow.
+   * You can use the pin property to override this behavior.
+   */
+  pin?: boolean
+
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
+
+  /**
+   * Use windowing for long lists (strongly recommended to also define a width)
+   * 'none' - default with children are <= 100.
+   * 'fixed' - better performance, default when first child is a ListItem
+   */
+  windowing?: 'fixed' | 'none'
+}
+
+const getBaseHeight = (compact?: boolean) => (compact ? 32 : 40)
+
+const getListItemHeight = (child: ReactChild, compact?: boolean) => {
+  const baseHeight = getBaseHeight(compact)
+  if (isValidElement(child) && child.props.description) {
+    return baseHeight + 12
+  }
+  return baseHeight
+}
+
+export const ListInternal = forwardRef(
+  (
+    {
+      children,
+      compact,
+      disabled,
+      label,
+      pin,
+      placement,
+      windowing,
+      ...props
+    }: ListProps,
+    forwardedRef: Ref<HTMLUListElement>
+  ) => {
+    const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
+
+    const childArray = useMemo(() => Children.toArray(children), [children])
+
+    if (windowing === undefined) {
+      if (childArray.length > 100) {
+        windowing = 'fixed'
+      } else {
+        windowing = 'none'
+      }
+    }
+
+    // Warning for width prop
+    useEffect(() => {
+      if (
+        process.env.NODE_ENV === 'development' &&
+        windowing &&
+        windowing !== 'none' &&
+        !props.width
+      ) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `Define a width when using windowing to avoid width fluctuations during scrolling.`
+        )
+      }
+    }, [windowing, props.width])
+
+    // childHeight will be a number (fixed windowing)
+    // or a function that takes an index and returns a number (variable windowing)
+    const childHeight = useMemo(() => {
+      if (windowing === 'fixed') {
+        return childArray[0]
+          ? getListItemHeight(childArray[0] as ReactChild, compact)
+          : 0
+      }
+      return getBaseHeight(compact)
+    }, [windowing, childArray, compact])
+
+    const { content, containerElement, ref } = useWindow({
+      childHeight: childHeight,
+      children: children as JSX.Element | JSX.Element[],
+      enabled: windowing !== 'none',
+      spacerTag: 'li',
+    })
+    const forkedRef = useForkedRef(forwardedRef, ref)
+
+    function handleArrowKey(direction: number, initial: number) {
+      moveFocus(direction, initial, containerElement)
+    }
+
+    const context = {
+      compact,
+      handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(1, 0)
+        return false
+      },
+      handleArrowUp: (e: KeyboardEvent<HTMLLIElement>) => {
+        e.preventDefault()
+        handleArrowKey(-1, -1)
+        return false
+      },
+      renderIconPlaceholder,
+      setRenderIconPlaceholder,
+    }
+
+    return (
+      <ListItemContext.Provider value={context}>
+        <ul
+          ref={forkedRef}
+          tabIndex={-1}
+          role="list"
+          {...omitStyledProps(props)}
+        >
+          {label && <ListLabel>{label}</ListLabel>}
+          {content}
+        </ul>
+      </ListItemContext.Provider>
+    )
+  }
+)
+
+export const List = styled(ListInternal).attrs(({ minWidth = '12rem' }) => ({
+  minWidth,
+}))`
+  ${reset}
+
+  ${height}
+  ${minHeight}
+  ${maxHeight}
+  ${minWidth}
+  ${maxWidth}
+  ${width}
+
+  border-radius: inherit;
+  list-style: none;
+  outline: none;
+  overflow: auto;
+  user-select: none;
+`
