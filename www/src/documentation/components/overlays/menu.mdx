@@ -173,13 +173,12 @@ controlled via state values – or use the hook version.
       </Space>
       {confirm}
       <Dialog isOpen={value} onClose={setOff}>
-        <DialogHeader>Update Note</DialogHeader>
-        <DialogContent>
+        <DialogLayout
+          footer={<Button onClick={setOff}>Close</Button>}
+          header="Update Note"
+        >
           <InputText value={note} onChange={handleChange} />
-        </DialogContent>
-        <DialogFooter>
-          <Button onClick={setOff}>Close</Button>
-        </DialogFooter>
+        </DialogLayout>
       </Dialog>
     </>
   )
