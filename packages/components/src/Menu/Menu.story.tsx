@@ -34,7 +34,7 @@ import React, {
 } from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '../Dialog'
+import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
@@ -241,7 +241,7 @@ export const Hover = () => {
       </Space>
 
       <Dialog isOpen={dialogIsOpen} onClose={close}>
-        <DialogContent>Alert icon should be hidden now.</DialogContent>
+        <DialogLayout>Alert icon should be hidden now.</DialogLayout>
       </Dialog>
     </Card>
   )
@@ -532,11 +532,12 @@ export const WithDialog = () => {
         <Button>Menu with Dialog</Button>
       </Menu>
       <Dialog isOpen={value} onClose={setOff}>
-        <DialogHeader>A Dialog</DialogHeader>
-        <DialogContent>Dialog must be placed outside of Menu</DialogContent>
-        <DialogFooter>
-          <Button onClick={setOff}>Close</Button>
-        </DialogFooter>
+        <DialogLayout
+          footer={<Button onClick={setOff}>Close</Button>}
+          header="A Dialog"
+        >
+          Dialog must be placed outside of Menu
+        </DialogLayout>
       </Dialog>
     </>
   )

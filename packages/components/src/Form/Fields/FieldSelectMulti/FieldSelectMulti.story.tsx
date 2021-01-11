@@ -27,12 +27,7 @@
 import { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Button } from '../../../Button'
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-} from '../../../Dialog'
+import { Dialog, DialogLayout } from '../../../Dialog'
 import { Icon } from '../../../Icon'
 import { Space, SpaceVertical } from '../../../Layout'
 import { UnorderedList } from '../../../UnorderedList'
@@ -283,8 +278,7 @@ export const SelectMultiDemo = () => {
   return (
     <SpaceVertical p="large" width={400}>
       <Dialog isOpen={isOpen} onClose={handleClose}>
-        <DialogHeader>SelectMulti in a Dialog</DialogHeader>
-        <DialogContent>
+        <DialogLayout header="SelectMulti in a Dialog">
           <FieldSelectMulti
             options={newOptions1k}
             placeholder="Select Brands"
@@ -296,8 +290,7 @@ export const SelectMultiDemo = () => {
             freeInput
             autoFocus
           />
-        </DialogContent>
-        <DialogFooter />
+        </DialogLayout>
       </Dialog>
       <Button onClick={handleClick}>Open</Button>
       <Heading>FieldSelectMulti</Heading>

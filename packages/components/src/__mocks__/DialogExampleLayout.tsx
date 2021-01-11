@@ -25,28 +25,27 @@
  */
 
 import React, { FC, useContext } from 'react'
-import {
-  DialogContext,
-  DialogHeader,
-  DialogContent,
-  DialogFooter,
-  Button,
-  ButtonTransparent,
-} from '..'
+import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..'
 
-export const DialogLayout: FC<{ title: string }> = ({ title, children }) => {
+export const DialogExampleLayout: FC<{ header: string }> = ({
+  header,
+  children,
+}) => {
   const { closeModal } = useContext(DialogContext)
 
   return (
-    <>
-      <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent>{children}</DialogContent>
-      <DialogFooter>
-        <Button onClick={closeModal}>Done Reading</Button>
-        <ButtonTransparent color="neutral" onClick={closeModal}>
-          Finish Later
-        </ButtonTransparent>
-      </DialogFooter>
-    </>
+    <DialogLayout
+      header={header}
+      footer={
+        <>
+          <Button onClick={closeModal}>Done Reading</Button>
+          <ButtonTransparent color="neutral" onClick={closeModal}>
+            Finish Later
+          </ButtonTransparent>
+        </>
+      }
+    >
+      {children}
+    </DialogLayout>
   )
 }
