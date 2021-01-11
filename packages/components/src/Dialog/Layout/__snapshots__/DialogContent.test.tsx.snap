@@ -4,8 +4,8 @@ exports[`DialogContent Snapshot - No overflow 1`] = `
 .c1 {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
 }
 
 .c0 {
@@ -52,8 +52,8 @@ exports[`DialogContent Snapshot 1`] = `
 .c1 {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
 }
 
 .c0 {
