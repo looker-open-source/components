@@ -86,6 +86,12 @@ export const ListItemLayout = styled(ListItemWrapper)`
     font-weight: inherit;
     min-height: ${({ height }) => `${height}px`};
     outline: none;
+    /*
+      TODO: Currently "small" / "compact" ListItems are at 44px with a description
+      instead of the desired 48px. We could either manually set the py to 6px like
+      in the design specs or add "heightWithDescription" to our getListItemDimensions
+      return objects.
+     */
     padding: ${({ px, py, theme }) => `${theme.space[py]} ${theme.space[px]}`};
     text-align: left;
     text-decoration: none;
