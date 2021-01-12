@@ -24,42 +24,26 @@
 
  */
 
-import { DensityRamp } from '../List'
-import { ListItemDimensions } from '../ListItemDimensions'
+import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
+import { IconSize } from '../Icon'
 
-export const getListItemDimensions = (
-  density: DensityRamp
-): ListItemDimensions => {
-  switch (density) {
-    case 'small':
-      return {
-        height: 32,
-        iconGap: 'small',
-        iconSize: 'small',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: 'xxsmall',
-      }
-    case 'medium':
-      return {
-        height: 36,
-        iconGap: 'small',
-        iconSize: 'small',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: 'xsmall',
-      }
-    default:
-      return {
-        height: 36,
-        iconGap: 'small',
-        iconSize: 'small',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: 'xsmall',
-      }
-  }
+export interface ListItemDimensions {
+  height: number
+  px: SpacingSizes
+  py: SpacingSizes
+  iconGap: SpacingSizes
+  iconSize: IconSize
+  labelFontSize: FontSizes
+  labelLineHeight: LineHeights
 }
+
+export const listItemDimensionKeys = [
+  'height',
+  'px',
+  'py',
+  'iconGap',
+  'iconSize',
+  'labelFontSize',
+  'labelLineHeight',
+  'detailFontSize',
+]

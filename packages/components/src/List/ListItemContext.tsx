@@ -25,7 +25,7 @@
  */
 
 import { createContext } from 'react'
-import { ListItemDimensions } from './ListItemLayout'
+import { ListItemDimensions } from './ListItemDimensions'
 
 export interface ListItemContextProps {
   itemDimensions: ListItemDimensions

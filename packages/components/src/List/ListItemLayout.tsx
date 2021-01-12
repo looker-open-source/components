@@ -25,37 +25,11 @@
  */
 
 import omit from 'lodash/omit'
-import {
-  reset,
-  CompatibleHTMLProps,
-  FontSizes,
-  LineHeights,
-  SpacingSizes,
-} from '@looker/design-tokens'
+import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { Icon, IconSize } from '../Icon'
-
-export interface ListItemDimensions {
-  height: number
-  px: SpacingSizes
-  py: SpacingSizes
-  iconGap: SpacingSizes
-  iconSize: IconSize
-  labelFontSize: FontSizes
-  labelLineHeight: LineHeights
-}
-
-export const listItemDimensionKeys = [
-  'height',
-  'px',
-  'py',
-  'iconGap',
-  'iconSize',
-  'labelFontSize',
-  'labelLineHeight',
-  'detailFontSize',
-]
+import { Icon } from '../Icon'
+import { ListItemDimensions, listItemDimensionKeys } from './ListItemDimensions'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLLIElement>,
