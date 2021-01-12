@@ -119,7 +119,8 @@ export const MenuItemLayout = styled(MenuItemWrapper)`
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
 
-  &:hover {
+  &:hover,
+  &[aria-expanded='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
   }
 

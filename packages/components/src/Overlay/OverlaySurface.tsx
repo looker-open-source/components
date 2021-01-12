@@ -117,3 +117,13 @@ export const OverlaySurfaceContentArea = styled.div`
     outline: none;
   }
 `
+
+export const NestedSurface = styled(OverlaySurface)`
+  &[data-placement] {
+    padding: 0;
+  }
+  ${OverlaySurfaceContentArea} {
+    border-radius: ${({ theme }) => theme.radii.xsmall};
+    box-shadow: ${({ theme }) => theme.shadows[1]};
+  }
+`

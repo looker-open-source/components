@@ -43,6 +43,7 @@ import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
+import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
@@ -126,6 +127,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     pin: true,
     placement: 'right-start',
     setOpen: change,
+    surface: NestedSurface,
   })
 
   const [isFocusVisible, setFocusVisible] = useState(false)
