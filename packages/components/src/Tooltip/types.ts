@@ -24,7 +24,7 @@
 
  */
 
-import { Transitions } from '@looker/design-tokens/src'
+import { Transitions } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
 import { MouseEvent, ReactElement, ReactNode } from 'react'
