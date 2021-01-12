@@ -597,7 +597,40 @@ ArrowKeyNavigation.parameters = {
 }
 
 export const NestedMenu = () => (
-  <Menu content={<MenuItem submenu={menuItems}>Sub Menu</MenuItem>}>
+  <Menu
+    content={
+      <>
+        <MenuItem
+          submenu={
+            <>
+              <MenuItem>Sub Item</MenuItem>
+              <MenuItem>Another Sub Item</MenuItem>
+              <MenuItem>Third Sub Item</MenuItem>
+              <MenuItem>4th Sub Item</MenuItem>
+              <MenuItem>Fifth Sub Item</MenuItem>
+            </>
+          }
+        >
+          Sub Menu
+        </MenuItem>
+        <MenuItem submenu={<MenuItem>Sub Item 2</MenuItem>}>
+          Sub Menu 2
+        </MenuItem>
+        <MenuItem submenu={<MenuItem>Sub Item 3</MenuItem>}>
+          Sub Menu 3
+        </MenuItem>
+        <MenuItem submenu={<MenuItem>Sub Item 4</MenuItem>}>
+          Sub Menu 4
+        </MenuItem>
+        <MenuItem submenu={<MenuItem>Sub Item 5</MenuItem>}>
+          Sub Menu 5
+        </MenuItem>
+        <MenuItem submenu={<MenuItem>Sub Item 6</MenuItem>}>
+          Sub Menu 6
+        </MenuItem>
+      </>
+    }
+  >
     <Button>Open Nested Menu</Button>
   </Menu>
 )

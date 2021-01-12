@@ -46,6 +46,7 @@ import { Icon, IconPlaceholder } from '../Icon'
 import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
+import { useDelayToggle } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 import { MenuList } from './MenuList'
@@ -102,23 +103,30 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     tooltipPlacement = 'left',
   } = props
 
-  const [isOpen, setOpen] = useState(false)
+  const { value, delayOff, delayOn, setOff, setOn, change } = useDelayToggle(
+    300
+  )
   const listRef = useRef<HTMLUListElement>(null)
 
+  const itemHandlers = submenu
+    ? { onMouseEnter: delayOn, onMouseLeave: delayOff }
+    : {}
+  const listHandlers = submenu
+    ? { onMouseEnter: setOn, onMouseLeave: setOff }
+    : {}
+
   const { popover, domProps } = usePopover({
-    content: <MenuList ref={listRef}>{submenu}</MenuList>,
+    content: (
+      <MenuList ref={listRef} {...listHandlers}>
+        {submenu}
+      </MenuList>
+    ),
     disabled: submenu === undefined,
-    isOpen,
+    isOpen: value,
     pin: true,
     placement: 'right-start',
-    setOpen,
+    setOpen: change,
   })
-  const handleMouseOver = () => {
-    setOpen(true)
-  }
-  const handleMouseOut = () => {
-    setOpen(false)
-  }
 
   const [isFocusVisible, setFocusVisible] = useState(false)
   const {
@@ -205,28 +213,29 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   )
 
   return (
-    <MenuItemLayout
-      aria-current={current && 'true'}
-      compact={compact}
-      disabled={disabled}
-      focusVisible={isFocusVisible}
-      onBlur={handleOnBlur}
-      onClick={disabled ? undefined : handleOnClick}
-      onKeyUp={handleOnKeyUp}
-      className={className}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-      {...omit(domProps, 'onClick')}
-    >
-      {tooltip ? (
-        <Tooltip placement={tooltipPlacement} content={tooltip}>
-          {menuItemContent}
-        </Tooltip>
-      ) : (
-        menuItemContent
-      )}
+    <>
+      <MenuItemLayout
+        aria-current={current && 'true'}
+        compact={compact}
+        disabled={disabled}
+        focusVisible={isFocusVisible}
+        onBlur={handleOnBlur}
+        onClick={disabled ? undefined : handleOnClick}
+        onKeyUp={handleOnKeyUp}
+        className={className}
+        {...itemHandlers}
+        {...omit(domProps, 'onClick')}
+      >
+        {tooltip ? (
+          <Tooltip placement={tooltipPlacement} content={tooltip}>
+            {menuItemContent}
+          </Tooltip>
+        ) : (
+          menuItemContent
+        )}
+      </MenuItemLayout>
       {popover}
-    </MenuItemLayout>
+    </>
   )
 }
 
