@@ -17,6 +17,7 @@
   "files": [
     "index.json"
   ],
+  "sideEffects": false,
   "dependencies": {
     "prettier": ">=2.2.1"
   },
