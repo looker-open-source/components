@@ -55,18 +55,18 @@ interface WindowHeightPayloadObject {
 }
 
 interface WindowHeightAction {
-  type: 'CHANGE' | 'RESET'
-  payload: number | WindowHeightPayloadObject
+  type: 'CHANGE'
+  payload: WindowHeightPayloadObject
 }
 
-const initialState = (length: number) => ({
+const initialState = {
   afterHeight: 0,
   beforeHeight: 0,
-  end: length - 1,
+  end: 0,
   scrollBottom: 0,
   scrollTop: 0,
   start: 0,
-})
+}
 const bufferHeight = 1000
 
 // For windowing lists with variable item height, a reducer that derives
@@ -81,11 +81,6 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   state,
   action
 ) => {
-  // RESET (if disabled after being enabled)
-  if (typeof action.payload === 'number') {
-    return initialState(action.payload)
-  }
-
   let { beforeHeight, afterHeight, start, end } = state
   const {
     scrollPosition,
@@ -183,10 +178,7 @@ export const useWindow = <E extends HTMLElement = HTMLElement>({
   const scrollPosition = useScrollPosition(containerElement)
 
   // For variable childHeight
-  const [variable, dispatch] = useReducer(
-    reducer,
-    initialState(childArray.length)
-  )
+  const [variable, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     // If using fixed childHeight, totalHeight will be 0
     if (totalHeight > 0) {
@@ -200,8 +192,6 @@ export const useWindow = <E extends HTMLElement = HTMLElement>({
           },
           type: 'CHANGE',
         })
-      } else {
-        dispatch({ payload: childHeightLadder.length, type: 'RESET' })
       }
     }
   }, [enabled, childHeightLadder, height, scrollPosition, totalHeight])
@@ -236,12 +226,14 @@ export const useWindow = <E extends HTMLElement = HTMLElement>({
 
   return {
     containerElement,
-    content: (
+    content: enabled ? (
       <>
         {before}
         {childArray.slice(start, end + 1)}
         {after}
       </>
+    ) : (
+      childArray
     ),
     ref: callbackRef,
   }
