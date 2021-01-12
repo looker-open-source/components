@@ -57,7 +57,7 @@ export const Basic = () => {
               <MenuItem onClick={toggleExplore} icon="ExploreOutline">
                 Explore
               </MenuItem>
-              <Panel title="Develop" content={'content fro display...'}>
+              <Panel title="Develop" content={'content from display...'}>
                 <MenuItem icon="Code">Develop</MenuItem>
               </Panel>
               <MenuItem icon="Group">Admin</MenuItem>
