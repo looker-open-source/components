@@ -188,10 +188,13 @@ describe('useWindow', () => {
 
   describe('variable', () => {
     test('returns placeholders and children in "window"', () => {
+      const mockRef = jest.fn()
       render(
         <WindowedComponent variable>
           {arr3000.map((num) => (
-            <li key={num}>{num}</li>
+            <li key={num} ref={mockRef}>
+              {num}
+            </li>
           ))}
         </WindowedComponent>
       )
@@ -201,6 +204,10 @@ describe('useWindow', () => {
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
       expect(screen.getByTestId('after')).toHaveStyle('height: 357150px;')
+
+      // Tests for a bug where all list items are initially rendered
+      // before the container is measured and then only the necessary items are rendered
+      expect(mockRef).toHaveBeenCalledTimes(36)
     })
 
     test('updates window on scroll', () => {
