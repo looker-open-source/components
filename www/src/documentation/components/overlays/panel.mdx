@@ -1,0 +1,54 @@
+---
+title: Panel
+storybook: true
+---
+
+`<Panel />` component displays with animation a secondery menu that should be
+passed as the prop `content`. The `Panel Heading` can be defined as a string or
+a ReachNode and will be displayed above the main `content`.
+
+```jsx
+;() => {
+  const title = (
+    <>
+      <Icon color="inform" name="ArrowBackward" mr="small" />
+      Explore
+    </>
+  )
+
+  return (
+    <Page hasAside>
+      <Aside width="12rem">
+        <Panels>
+          <MenuList>
+            <MenuGroup label="Looker">
+              <MenuItem onClick={toggleExplore} icon="ExploreOutline">
+                Explore
+              </MenuItem>
+              <Panel title="Develop" content={'content fro display...'}>
+                <MenuItem icon="Code">Develop</MenuItem>
+              </Panel>
+              <MenuItem icon="Group">Admin</MenuItem>
+            </MenuGroup>
+          </MenuList>
+
+          <Panel
+            isOpen={explore}
+            setOpen={setExplore}
+            direction="left"
+            title={title}
+            content={
+              <MenuList>
+                <MenuItem icon="ArrowRight">DCL</MenuItem>
+                <MenuItem icon="ArrowRight">Internal Issues</MenuItem>
+                <MenuItem icon="ArrowRight">Licence</MenuItem>
+              </MenuList>
+            }
+          />
+        </Panels>
+      </Aside>
+      <Section>Main stuff here...</Section>
+    </Page>
+  )
+}
+```
