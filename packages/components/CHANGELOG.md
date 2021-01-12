@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `treeBackgroundColor` util function
 - `ProgressCircular` component
 - `UnorderedList`, `OrderedList`
+- updated allComponents.ts to have Aside, Footer, Header, Layout, Page, Section
 
 ### Changed
 

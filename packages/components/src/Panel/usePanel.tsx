@@ -137,7 +137,9 @@ export const usePanel = ({
 
   const panel = renderDOM && (
     <PanelSurface aria-busy={busy ? true : undefined} className={className}>
-      <Heading onClick={handleClose}>{title}</Heading>
+      <Heading style={{ cursor: 'pointer' }} onClick={handleClose}>
+        {title}
+      </Heading>
       {content}
     </PanelSurface>
   )
