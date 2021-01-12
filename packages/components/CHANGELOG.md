@@ -45,9 +45,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - `treeBackgroundColor` util function
 - `UnorderedList`, `OrderedList`
 - updated allComponents.ts to have Aside, Footer, Header, Layout, Page, Section
+<<<<<<< HEAD
 - `DialogLayout` component
 - `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions
 - `List`, `ListItem`
+=======
+>>>>>>> ea207d1e (documentation added to Panel's component)
 
 #### Experimental
 
