@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, transitions } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
 import omit from 'lodash/omit'
@@ -108,8 +108,15 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   tooltipPlacement = 'left',
   ...props
 }) => {
+  const {
+    compact: contextCompact,
+    renderIconPlaceholder,
+    setRenderIconPlaceholder,
+  } = useContext(MenuItemContext)
+  const compact = propCompact === undefined ? contextCompact : propCompact
+
   const { value, delayOff, delayOn, setOff, setOn, change } = useDelayToggle(
-    300
+    transitions.simple
   )
 
   const itemHandlers = {
@@ -140,7 +147,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const { popover, domProps } = usePopover({
     content: (
-      <MenuList data-autofocus="true" {...listHandlers}>
+      <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
         {submenu}
       </MenuList>
     ),
@@ -152,13 +159,13 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     surface: NestedSurface,
   })
 
+  detail = submenu ? (
+    <Icon color="text1" name="ArrowRight" size={compact ? 'small' : 'medium'} />
+  ) : (
+    detail
+  )
+
   const [isFocusVisible, setFocusVisible] = useState(false)
-  const {
-    compact: contextCompact,
-    renderIconPlaceholder,
-    setRenderIconPlaceholder,
-  } = useContext(MenuItemContext)
-  const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
