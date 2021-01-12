@@ -29,7 +29,14 @@ import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import React, {
+  FC,
+  KeyboardEvent,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+} from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
@@ -75,43 +82,61 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   tooltipPlacement?: Placement
 }
 
-const MenuItemInternal: FC<MenuItemProps> = (props) => {
-  const {
-    children,
-    className,
-    compact: propCompact,
-    current,
-    description,
-    detail,
-    disabled,
-    href,
-    icon,
-    iconArtwork,
-    itemRole,
-    onBlur,
-    onClick,
-    onKeyUp,
-    onMouseEnter,
-    onMouseLeave,
-    submenu,
-    target,
-    tooltip,
-    tooltipPlacement = 'left',
-  } = props
+const noop = () => undefined
 
+const MenuItemInternal: FC<MenuItemProps> = ({
+  children,
+  className,
+  compact: propCompact,
+  current,
+  description,
+  detail,
+  disabled,
+  href,
+  icon,
+  iconArtwork,
+  itemRole,
+  onBlur,
+  onClick,
+  onKeyDown,
+  onKeyUp,
+  onMouseEnter,
+  onMouseLeave,
+  submenu,
+  target,
+  tooltip,
+  tooltipPlacement = 'left',
+  ...props
+}) => {
   const { value, delayOff, delayOn, setOff, setOn, change } = useDelayToggle(
     300
   )
 
-  const noop = () => undefined
   const itemHandlers = {
+    onKeyDown: useWrapEvent(
+      submenu
+        ? (e: KeyboardEvent<HTMLLIElement>) => {
+            if (e.key === 'ArrowRight') {
+              setOn()
+            }
+          }
+        : noop,
+      onKeyDown
+    ),
     onMouseEnter: useWrapEvent(submenu ? delayOn : noop, onMouseEnter),
     onMouseLeave: useWrapEvent(submenu ? delayOff : noop, onMouseLeave),
   }
-  const listHandlers = {
-    onMouseEnter: useWrapEvent(submenu ? setOn : noop, onMouseEnter),
-    onMouseLeave: useWrapEvent(submenu ? setOff : noop, onMouseLeave),
-  }
+  const listHandlers = submenu
+    ? {
+        onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
+          if (e.key === 'ArrowLeft') {
+            setOff()
+          }
+        },
+        onMouseEnter: setOn,
+        onMouseLeave: setOff,
+      }
+    : {}
 
   const { popover, domProps } = usePopover({
     content: (
@@ -222,6 +247,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
         onClick={disabled ? undefined : handleOnClick}
         onKeyUp={handleOnKeyUp}
         className={className}
+        {...props}
         {...itemHandlers}
         {...omit(domProps, 'onClick')}
       >
