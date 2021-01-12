@@ -31,7 +31,7 @@ import { PanelSurface } from './PanelSurface'
 
 export interface UsePanelProps {
   /**
-   * Specify a callback to be called before || each time trying to close Panel.
+   * Specify a callback to be called before each time trying to close Panel.
    * This allows for use-cases where the user might lose work
    * (think common "Save before closing warning" type flow)
    */
@@ -52,7 +52,7 @@ export interface UsePanelProps {
 
   /**
    * Edge of the screen from which the panel will enter
-   * Future options 'right' | 'up' | 'down'
+   * TODO: 'right' | 'up' | 'down'
    * @default 'left'
    */
   direction?: 'left'
@@ -76,7 +76,7 @@ export interface UsePanelProps {
   /**
    * Value displayed as Panel header clickable to close Panel
    */
-  title: string
+  title: string | ReactNode
 }
 
 export interface UsePanelResponseDom {

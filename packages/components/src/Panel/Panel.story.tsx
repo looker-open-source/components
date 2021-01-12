@@ -28,6 +28,7 @@ import React, { useState } from 'react'
 // import { Story } from '@storybook/react/types-6-0'
 import { MenuGroup, MenuList, MenuItem } from '../Menu'
 import { Page, Aside, Section } from '../Layout'
+import { Icon } from '../Icon'
 import { Panel } from './Panel'
 import { Panels } from './Panels'
 
@@ -39,6 +40,13 @@ export default {
 export const Basic = () => {
   const [explore, setExplore] = useState(false)
   const toggleExplore = () => setExplore(!explore)
+
+  const title = (
+    <>
+      <Icon color="inform" name="ArrowBackward" mr="small" />
+      Explore
+    </>
+  )
 
   return (
     <Page hasAside>
@@ -60,7 +68,7 @@ export const Basic = () => {
             isOpen={explore}
             setOpen={setExplore}
             direction="left"
-            title="Explore"
+            title={title}
             content={
               <MenuList>
                 <MenuItem icon="ArrowRight">DCL</MenuItem>
