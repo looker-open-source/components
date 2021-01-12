@@ -9,6 +9,8 @@ a ReachNode and will be displayed above the main `content`.
 
 ```jsx
 ;() => {
+  const [explore, setExplore] = useState(false)
+  const toggleExplore = () => setExplore(!explore)
   const title = (
     <>
       <Icon color="inform" name="ArrowBackward" mr="small" />

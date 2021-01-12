@@ -79,6 +79,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - `brand` prop
   - `treeBackgroundColor` util function
 - `UnorderedList`, `OrderedList`
+- updated allComponents.ts to have Aside, Footer, Header, Layout, Page, Section
 
 #### Experimental
 
