@@ -37,7 +37,6 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:testing-library/react',
-    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
   ],
@@ -76,6 +75,7 @@ module.exports = {
     'import/order': 'error',
     indentation: 'off',
     'no-console': 'warn',
+    'no-undef': 'off', // Not needed with TS around
     'prettier/prettier': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',

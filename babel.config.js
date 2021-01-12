@@ -24,54 +24,70 @@
 
  */
 
-module.exports = (api) => {
-  const isTest = api.env('test')
-  api.cache(true)
+const ignore = [
+  '**/*.d.ts',
+  '**/*.test.js',
+  '**/*.test.jsx',
+  '**/*.test.ts',
+  '**/*.test.tsx',
+  '**/*.story.tsx',
+  '**/stories/*',
+  '__snapshots__',
+  '__tests__',
+]
 
-  const ignore = isTest ? [] : ['node_modules']
+const plugins = [
+  ['babel-plugin-styled-components', { pure: true }],
+  ['@babel/plugin-proposal-class-properties', { loose: true }],
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
+]
+
+const presets = ['@babel/preset-react', '@babel/preset-typescript']
+
+module.exports = (api) => {
+  api.cache(true)
 
   return {
     env: {
-      build: {
-        ignore: [
-          '**/*.d.ts',
-          '**/*.test.js',
-          '**/*.test.jsx',
-          '**/*.test.ts',
-          '**/*.test.tsx',
-          '**/*.story.*',
-          '**/stories/*',
-          '__snapshots__',
-          '__tests__',
+      cjs: {
+        ignore,
+        plugins,
+        presets: [
+          [
+            '@babel/env',
+            {
+              corejs: 3,
+              targets: {
+                node: 6,
+              },
+              useBuiltIns: 'usage',
+            },
+          ],
+          ...presets,
+        ],
+      },
+      esm: {
+        ignore,
+        plugins,
+        presets: [
+          [
+            '@babel/env',
+            {
+              corejs: 3,
+              modules: false,
+              useBuiltIns: 'usage',
+            },
+          ],
+          ...presets,
         ],
       },
     },
-    ignore,
-    plugins: [
-      ['@babel/plugin-proposal-class-properties', { loose: true }],
-      '@babel/plugin-proposal-object-rest-spread',
-      'babel-plugin-styled-components',
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-nullish-coalescing-operator',
-    ],
-
+    plugins,
     presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            esmodules: true,
-          },
-          useBuiltIns: false,
-        },
-      ],
-      [
-        '@babel/preset-react',
-        {
-          development: process.env.BABEL_ENV !== 'build',
-        },
-      ],
-      '@babel/preset-typescript',
+      ['@babel/preset-env', { targets: { esmodules: true } }],
+      ...presets,
     ],
   }
 }
