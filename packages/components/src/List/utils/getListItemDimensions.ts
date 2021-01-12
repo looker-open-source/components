@@ -24,8 +24,7 @@
 
  */
 
-import { DensityRamp } from '../List'
-import { ListItemDimensions } from '../ListItemDimensions'
+import { DensityRamp, ListItemDimensions } from '../types'
 
 export const getListItemDimensions = (
   density: DensityRamp

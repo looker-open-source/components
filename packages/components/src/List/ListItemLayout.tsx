@@ -29,7 +29,7 @@ import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
-import { ListItemDimensions, listItemDimensionKeys } from './ListItemDimensions'
+import { ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLLIElement>,

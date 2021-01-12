@@ -60,9 +60,7 @@ import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListLabel } from './ListLabel'
 import { getListItemDimensions } from './utils/getListItemDimensions'
-
-// -1 | 0 | 1
-export type DensityRamp = 'small' | 'medium' | 'large'
+import { DensityRamp } from './types'
 
 export interface ListProps
   extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'>,
