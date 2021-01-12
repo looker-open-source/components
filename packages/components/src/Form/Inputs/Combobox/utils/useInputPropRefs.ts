@@ -24,8 +24,7 @@
 
  */
 import { Context, useContext, useLayoutEffect } from 'react'
-import { ComboboxInputProps } from '../ComboboxInput'
-import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
+import { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
 import {
   ComboboxContextProps,
   ComboboxMultiContextProps,

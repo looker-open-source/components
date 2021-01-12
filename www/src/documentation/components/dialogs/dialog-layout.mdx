@@ -1,0 +1,27 @@
+---
+title: Dialog Layout
+storybook: true
+storybookPath: DialogLayout
+---
+
+The `DialogLayout` component manages the dialog layout components below to easily meet design-system expectations.
+
+This component composes `DialogHeader`, `DialogContent` and `DialogFooter` as needed.
+
+```jsx
+<Box bg="ui1">
+  <DialogLayout header="Dialog Header" footer="DialogFooter">
+    This some content in the dialog.
+  </DialogLayout>
+</Box>
+```
+
+In cases where a `footer` or `header` is not specified the `DialogLayout` will automatically manage applying padding and close controls appropriately.
+
+```jsx
+<Box bg="ui1">
+  <DialogLayout header="Dialog Header">
+    This some content in the dialog.
+  </DialogLayout>
+</Box>
+```

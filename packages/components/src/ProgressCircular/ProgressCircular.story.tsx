@@ -43,6 +43,9 @@ Indeterminate.argTypes = {
     },
   },
 }
+Indeterminate.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Determinate = Template.bind({})
 Determinate.args = {

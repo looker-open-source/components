@@ -28,6 +28,7 @@ import React, {
   Children,
   ReactChild,
   Reducer,
+  Ref,
   useEffect,
   useMemo,
   useReducer,
@@ -146,21 +147,23 @@ export type ChildHeightFunction = (child: ReactChild, index: number) => number
 
 export type WindowSpacerTag = 'div' | 'li' | 'tr'
 
-export interface UseWindowProps {
+export interface UseWindowProps<E extends HTMLElement> {
   enabled?: boolean
   children?: JSX.Element | JSX.Element[]
   /** Derive the height of each child using props, type, etc. */
   childHeight: number | ChildHeightFunction
   /** Tagname to use for the spacers above and below the window */
   spacerTag?: WindowSpacerTag
+  ref?: Ref<E>
 }
 
-export const useWindow = ({
+export const useWindow = <E extends HTMLElement = HTMLElement>({
   children,
   enabled,
   childHeight,
+  ref,
   spacerTag = 'div',
-}: UseWindowProps) => {
+}: UseWindowProps<E>) => {
   const childArray = useMemo(() => Children.toArray(children), [children])
 
   const [totalHeight, childHeightLadder] = useMemo(() => {
@@ -175,7 +178,7 @@ export const useWindow = ({
     return [sum, ladder]
   }, [childHeight, childArray])
 
-  const [containerElement, ref] = useCallbackRef()
+  const [containerElement, callbackRef] = useCallbackRef<E>(ref)
   const { height } = useMeasuredElement(containerElement)
   const scrollPosition = useScrollPosition(containerElement)
 
@@ -240,6 +243,6 @@ export const useWindow = ({
         {after}
       </>
     ),
-    ref,
+    ref: callbackRef,
   }
 }

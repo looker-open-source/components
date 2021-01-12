@@ -31,10 +31,8 @@ import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
-import { DialogHeader } from '../Layout/DialogHeader'
+import { DialogLayout } from '../Layout'
 import { Checkbox } from '../../Form/Inputs/Checkbox'
-import { DialogContent } from '../Layout/DialogContent'
-import { DialogFooter } from '../Layout/DialogFooter'
 
 export * from './Controlled'
 export * from './SaveChanges'
@@ -94,14 +92,10 @@ LongContent.args = {
 export const withCheckbox = Template.bind({})
 withCheckbox.args = {
   content: (
-    <>
-      <DialogHeader>Header</DialogHeader>
-      <DialogContent>
-        The top line & bottom shadow should not be there.
-        <Checkbox checked />
-      </DialogContent>
-      <DialogFooter>Footer</DialogFooter>
-    </>
+    <DialogLayout footer="Footer" header="Header">
+      The top line & bottom shadow should not be there.
+      <Checkbox checked />
+    </DialogLayout>
   ),
 }
 withCheckbox.parameters = {

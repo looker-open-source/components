@@ -24,7 +24,39 @@
 
  */
 
-export * from './IconPlaceholder'
-export * from './ListItemDetail'
-export * from './List'
-export * from './ListItem'
+export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
+  Array.from(
+    ref.querySelectorAll(
+      'a,button:not(:disabled),[tabindex="0"],[tabindex="-1"]:not(:disabled)'
+    )
+  )
+
+/**
+ * Returns the next focusable inside an element in a given direction
+ * @param direction 1 for forward -1 for reverse
+ * @param element the container element
+ */
+export const getNextFocus = (direction: 1 | -1, element: HTMLElement) => {
+  const tabStops = getTabStops(element)
+
+  if (tabStops.length > 0) {
+    const fallback =
+      direction === 1 ? tabStops[0] : tabStops[tabStops.length - 1]
+    if (
+      document.activeElement &&
+      tabStops.includes(document.activeElement as HTMLElement)
+    ) {
+      const next =
+        tabStops.findIndex((el) => el === document.activeElement) + direction
+
+      if (next === tabStops.length || !tabStops[next]) {
+        // Reached the end of tab stops for this direction
+        return fallback
+      }
+
+      return tabStops[next]
+    }
+    return fallback
+  }
+  return null
+}

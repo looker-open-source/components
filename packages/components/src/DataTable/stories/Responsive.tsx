@@ -26,7 +26,7 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { DataTable, DataTableProps } from '../DataTable'
+import { DataTable, DataTableProps } from '../'
 import { useSelectManager } from '../utils/useSelectManager'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'

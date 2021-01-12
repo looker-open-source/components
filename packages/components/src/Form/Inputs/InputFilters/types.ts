@@ -24,30 +24,43 @@
 
  */
 
-const getTabStops = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll('a,button:not(:disabled),[tabindex="0"]'))
+import { ReactNode } from 'react'
 
-export const moveFocus = (
-  direction: number,
-  initial: number,
-  element?: HTMLElement | null
-) => {
-  if (element) {
-    const tabStops = getTabStops(element)
+export interface InputFilterEditorProps {
+  closeEditor: () => void
+  filterOptions: FieldFilterOptions
+  onChange: (value?: string) => void
+  value?: string
+}
 
-    if (
-      document.activeElement &&
-      tabStops.includes(document.activeElement as HTMLElement)
-    ) {
-      const next =
-        tabStops.findIndex((f) => f === document.activeElement) + direction
+export type InputFilterEditorRenderProp = (
+  props: InputFilterEditorProps
+) => ReactNode
 
-      if (next === tabStops.length) return
-      if (!tabStops[next]) return
-      tabStops[next].focus()
-    } else {
-      tabStops.slice(initial)[0].focus()
-    }
-  }
-  return false
+export interface FieldFilterOptions {
+  /* specify the field value */
+  field: string
+  /* text to be displayed in drop-down, optional, `field` is used if not specified */
+  label?: string
+  /**
+   * ability to select multiple filter options
+   * @default false
+   */
+  multiple?: boolean
+  /* list of options to filter by */
+  options?: string[]
+}
+
+export interface FieldFilter extends FieldFilterOptions {
+  editor?: InputFilterEditorRenderProp
+  formatValue?: (value: string) => string
+  /* filter value/expression */
+  value?: string
+}
+
+export interface InputFiltersProps {
+  className?: string
+  filters: FieldFilter[]
+  hideFilterIcon?: boolean
+  onChange: (filters: FieldFilter[]) => void
 }

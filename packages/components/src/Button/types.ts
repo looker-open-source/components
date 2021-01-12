@@ -24,29 +24,43 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
 import {
-  DialogContext,
-  DialogHeader,
-  DialogContent,
-  DialogFooter,
-  Button,
-  ButtonTransparent,
-} from '..'
+  MaxWidthProps,
+  MinWidthProps,
+  SpaceProps,
+  WidthProps,
+} from 'styled-system'
+import { ButtonSizeProps, ButtonSizes } from './size'
 
-export const DialogLayout: FC<{ title: string }> = ({ title, children }) => {
-  const { closeModal } = useContext(DialogContext)
+export interface ButtonIconProps {
+  iconBefore?: IconNames | undefined
+  iconAfter?: IconNames | undefined
+}
 
-  return (
-    <>
-      <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent>{children}</DialogContent>
-      <DialogFooter>
-        <Button onClick={closeModal}>Done Reading</Button>
-        <ButtonTransparent color="neutral" onClick={closeModal}>
-          Finish Later
-        </ButtonTransparent>
-      </DialogFooter>
-    </>
-  )
+export interface ButtonBaseProps
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    ButtonSizeProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
+    SpaceProps {
+  type?: 'button' | 'submit' | 'reset'
+
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "key"
+   */
+  color?: StatefulColor
+
+  focusVisible?: boolean
+}
+
+export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
+  size?: ButtonSizes
+  /**
+   * If true, the button's width will be set to 100%.
+   */
+  fullWidth?: boolean
 }

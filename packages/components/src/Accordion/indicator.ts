@@ -24,11 +24,38 @@
 
  */
 
-import { createContext, KeyboardEvent } from 'react'
+import { SpacingSizes } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
+import { IconSize } from '../Icon'
 
-export interface TabContextProps {
-  handleArrowLeft?: (e: KeyboardEvent<HTMLButtonElement>) => void
-  handleArrowRight?: (e: KeyboardEvent<HTMLButtonElement>) => void
+export type IndicatorIcons = {
+  close: IconNames
+  open: IconNames
 }
 
-export const TabContext = createContext<TabContextProps>({})
+export type AccordionIndicatorPosition = undefined | 'left' | 'right'
+
+export interface AccordionIndicatorProps {
+  /**
+   * Determines where the disclosure indicator will sit on
+   * @default 'right'
+   */
+  indicatorPosition?: AccordionIndicatorPosition
+
+  /**
+   * Size of icon on disclosure
+   * @default 'small'
+   */
+  indicatorSize?: IconSize
+
+  /**
+   * Space between label and indicator within disclosure
+   * @default 'xsmall'
+   */
+  indicatorGap?: SpacingSizes
+
+  /**
+   * Icons for disclosure indicator
+   */
+  indicatorIcons?: IndicatorIcons
+}

@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref, useContext, useState } from 'react'
+import React, { forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -38,7 +38,6 @@ import {
   TypographyProps,
   tabShadowColor,
 } from '@looker/design-tokens'
-import { TabContext } from './TabContext'
 
 export interface TabProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
@@ -104,7 +103,6 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     disabled,
     index,
     onBlur,
-    onKeyDown,
     onKeyUp,
     onSelect,
     selected,
@@ -113,23 +111,9 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
-  const { handleArrowLeft, handleArrowRight } = useContext(TabContext)
-
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     setFocusVisible(true)
     onKeyUp && onKeyUp(event)
-  }
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    switch (event.key) {
-      case 'ArrowLeft':
-        handleArrowLeft && handleArrowLeft(event)
-        break
-      case 'ArrowRight':
-        handleArrowRight && handleArrowRight(event)
-        break
-    }
-    onKeyDown && onKeyDown(event)
   }
 
   const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
@@ -153,13 +137,12 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
       focusVisible={isFocusVisible}
       id={`tab-${index}`}
       onBlur={handleOnBlur}
-      onKeyDown={handleOnKeyDown}
       onClick={onClick}
       onKeyUp={handleOnKeyUp}
       ref={ref}
       role="tab"
       selected={selected}
-      tabIndex={selected ? 0 : -1}
+      tabIndex={-1}
       {...restProps}
     >
       {children}

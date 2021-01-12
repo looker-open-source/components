@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+
 - `Panel` component
+- `Tabs` and `Menu` arrow key navigation persists the last focused item
 - `Breakpoint` component
 - `Tree / TreeItem`
   - disabled and selected states
@@ -18,9 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ProgressCircular` component
 - `UnorderedList`, `OrderedList`
 - updated allComponents.ts to have Aside, Footer, Header, Layout, Page, Section
+- `DialogLayout` component
+- `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions
 
 ### Changed
 
+- `IconPlaceholder` moved to `Icon`
 - `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
 - `Tree` now uses the same `selected` color as `TreeItem`
 - `DialogHeader` uses responsive padding values
@@ -29,11 +34,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `DataTable` overflow shadow now works properly in Safari
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
 
 ### Removed
 
+- `List`, `ListItem`, `ListItemDetail`
 - `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
 
 ## [0.9.30]

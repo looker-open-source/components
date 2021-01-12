@@ -29,8 +29,9 @@ import React from 'react'
 import { Icon } from '../../Icon'
 import { SpaceVertical } from '../../Layout'
 import { Heading } from '../../Text'
-import { DataTable, DataTableProps } from '../DataTable'
+import { DataTable } from '../DataTable'
 import { columns } from '../../__mocks__/DataTable/columns'
+import { DataTableProps } from '../types'
 
 const Template: Story<DataTableProps> = ({ ...args }) => (
   <DataTable {...args}>

@@ -37,7 +37,7 @@ import { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { Label, InputText } from '../../Form'
 import { VisuallyHidden } from '../../VisuallyHidden'
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '..'
+import { Dialog, DialogLayout } from '..'
 
 export type PromptCallback = (close: () => void) => void
 
@@ -151,10 +151,20 @@ export const PromptDialog: FC<PromptDialogProps> = ({
     }
   }
 
+  const footer = (
+    <>
+      <Button disabled={!hasValue} type="submit" onClick={onSubmit} color="key">
+        {saveLabel}
+      </Button>
+      <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
+        {cancelLabel}
+      </ButtonTransparent>
+    </>
+  )
+
   return (
     <Dialog width="30rem" isOpen={isOpen} onClose={cancel}>
-      <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent>
+      <DialogLayout header={title} footer={footer} footerSecondary={secondary}>
         <VisuallyHidden>
           <Label htmlFor="promptInput">{inputLabel}</Label>
         </VisuallyHidden>
@@ -167,20 +177,7 @@ export const PromptDialog: FC<PromptDialogProps> = ({
           width="100%"
           value={value}
         />
-      </DialogContent>
-      <DialogFooter secondary={secondary}>
-        <Button
-          disabled={!hasValue}
-          type="submit"
-          onClick={onSubmit}
-          color="key"
-        >
-          {saveLabel}
-        </Button>
-        <ButtonTransparent type="reset" color={cancelColor} onClick={cancel}>
-          {cancelLabel}
-        </ButtonTransparent>
-      </DialogFooter>
+      </DialogLayout>
     </Dialog>
   )
 }

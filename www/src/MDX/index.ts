@@ -29,7 +29,6 @@ import * as headings from './Headings'
 import { Blockquote } from './Blockquote'
 import { Code } from './Code'
 import { Hr } from './Hr'
-import { Li } from './Li'
 import { Link } from './Link'
 import { Ol } from './Ol'
 import { Paragraph } from './Paragraph'
@@ -44,7 +43,6 @@ export const MDXComponents = {
   blockquote: Blockquote,
   hr: Hr,
   inlineCode: Code,
-  li: Li,
   ol: Ol,
   p: Paragraph,
   pre: Pre,

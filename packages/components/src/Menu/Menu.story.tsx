@@ -34,12 +34,13 @@ import React, {
 } from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '../Dialog'
+import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
 import { Space, SpaceVertical } from '../Layout'
-import { Text, Paragraph } from '../Text'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
+import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
 import { Menu } from './Menu'
@@ -241,7 +242,7 @@ export const Hover = () => {
       </Space>
 
       <Dialog isOpen={dialogIsOpen} onClose={close}>
-        <DialogContent>Alert icon should be hidden now.</DialogContent>
+        <DialogLayout>Alert icon should be hidden now.</DialogLayout>
       </Dialog>
     </Card>
   )
@@ -532,11 +533,12 @@ export const WithDialog = () => {
         <Button>Menu with Dialog</Button>
       </Menu>
       <Dialog isOpen={value} onClose={setOff}>
-        <DialogHeader>A Dialog</DialogHeader>
-        <DialogContent>Dialog must be placed outside of Menu</DialogContent>
-        <DialogFooter>
-          <Button onClick={setOff}>Close</Button>
-        </DialogFooter>
+        <DialogLayout
+          footer={<Button onClick={setOff}>Close</Button>}
+          header="A Dialog"
+        >
+          Dialog must be placed outside of Menu
+        </DialogLayout>
       </Dialog>
     </>
   )
@@ -561,5 +563,35 @@ export const WithTooltip = () => {
 }
 
 WithTooltip.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ArrowKeyNavigation = () => (
+  <SpaceVertical align="start">
+    <Button>Above</Button>
+    <Heading>Menu</Heading>
+    <MenuList>
+      <MenuItem>1</MenuItem>
+      <MenuItem>2</MenuItem>
+      <MenuItem>3</MenuItem>
+    </MenuList>
+    <Heading>Tabs</Heading>
+    <Tabs>
+      <TabList>
+        <Tab>1</Tab>
+        <Tab>2</Tab>
+        <Tab>3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>One</TabPanel>
+        <TabPanel>Two</TabPanel>
+        <TabPanel>Three</TabPanel>
+      </TabPanels>
+    </Tabs>
+    <Button>Below</Button>
+  </SpaceVertical>
+)
+
+ArrowKeyNavigation.parameters = {
   storyshots: { disable: true },
 }

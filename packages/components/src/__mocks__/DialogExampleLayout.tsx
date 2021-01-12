@@ -23,29 +23,29 @@
  SOFTWARE.
 
  */
-export interface ComboboxOptionObject {
-  /**
-   * Additional data associated with the option, will be passed to onChange.
-   */
-  label?: string
-  /**
-   * The value to match against when suggesting.
-   */
-  value: string
-}
 
-export type MaybeComboboxOptionObject = ComboboxOptionObject | undefined
-export type ComboboxOptionType =
-  | MaybeComboboxOptionObject
-  | ComboboxOptionObject[]
+import React, { FC, useContext } from 'react'
+import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..'
 
-export type ComboboxCallback<
-  TOption extends ComboboxOptionType = MaybeComboboxOptionObject
-> = (option: TOption) => void
+export const DialogExampleLayout: FC<{ header: string }> = ({
+  header,
+  children,
+}) => {
+  const { closeModal } = useContext(DialogContext)
 
-export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>
-
-export interface ComboboxOptionStatuses {
-  isActive: boolean
-  isSelected: boolean
+  return (
+    <DialogLayout
+      header={header}
+      footer={
+        <>
+          <Button onClick={closeModal}>Done Reading</Button>
+          <ButtonTransparent color="neutral" onClick={closeModal}>
+            Finish Later
+          </ButtonTransparent>
+        </>
+      }
+    >
+      {children}
+    </DialogLayout>
+  )
 }

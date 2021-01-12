@@ -1,46 +1,6 @@
 ---
-title: Dialog Layout
-storybook: true
-storybookPath: DialogContent
+title: Dialog Footer
 ---
-
-## DialogContent
-
-Using the `DialogContent` component quickly gives your content consistent spacing inside a dialog component as well as managing overflow of content of the dialog is taller than the viewport.
-
-DialogContent supports all [`Box`](/src-documentation-components-box) properties.
-
-```jsx
-<DialogContent>
-  <Box height="2rem" bg="rebeccapurple" />
-</DialogContent>
-```
-
-If content overflows the component's height an visual indicator of content that extends beyond the visible edges is added (border on top and shadow on the bottom).
-
-```jsx
-<Box height="10rem" display="flex" bg="white" p="large">
-  <DialogContent>
-    <Paragraph>Scroll down here...</Paragraph>
-    <Box height="6rem" bg="rebeccapurple" />
-  </DialogContent>
-</Box>
-```
-
-## DialogHeader
-
-`DialogHeader` is attached to the top of dialog and provides a button to close the containing Dialog. Uses the `DialogContext` to get access to the `close` callback.
-
-DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
-
-- `hideClose` property remove the "close" `IconButton`
-- `detail` property allows the developer to specify a ReactNode that will replace the "close" `IconButton`
-
-```jsx
-<DialogHeader>This is a DialogHeader</DialogHeader>
-```
-
-## DialogFooter
 
 `DialogFooter` is attached to the bottom of dialog. Generally, the terminal action for a dialog as well as an option to abandon the process done via the dialog are available within this component. This component is generally used in combination with the `DialogContext.Provider` to get access to the `DialogContext.close()` method.
 

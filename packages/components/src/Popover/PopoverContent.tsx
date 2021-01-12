@@ -35,14 +35,14 @@ import {
 } from '@looker/design-tokens'
 import { layout, LayoutProps } from 'styled-system'
 
-interface PopoverContent extends SpaceProps, LayoutProps, FlexboxProps {}
+interface PopoverContentProps extends SpaceProps, LayoutProps, FlexboxProps {}
 
 export const PopoverContent = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<PopoverContent>(({ p = 'small' }) => ({
+  .attrs<PopoverContentProps>(({ p = 'small' }) => ({
     p,
-  }))<PopoverContent>`
-  ${reset}
+  }))<PopoverContentProps>`
+ ${reset}
   ${space}
   ${layout}
   ${flexbox}

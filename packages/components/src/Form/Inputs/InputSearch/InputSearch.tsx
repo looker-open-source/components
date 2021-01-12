@@ -27,10 +27,8 @@
 import React, { forwardRef, Ref, FormEvent, useState } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../../../utils'
-import { SelectProps } from '../Select'
-
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
-import { SelectOptionObject, SelectOptions } from '../Select/SelectOptions'
+import { SelectProps, SelectOptionObject, SelectOptions } from '../Select'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,

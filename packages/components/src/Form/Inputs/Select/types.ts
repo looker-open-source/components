@@ -24,37 +24,31 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  reset,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-  PositionProps,
-  LayoutProps,
-  position,
-  layout,
-  shouldForwardProp,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+import { IconNames } from '@looker/icons'
+import { ReactNode } from 'react'
+import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
+import { IconProps } from '../../../Icon'
 
-export interface ListItemProps
-  extends CompatibleHTMLProps<HTMLLIElement>,
-    PositionProps,
-    LayoutProps,
-    SpaceProps,
-    TypographyProps {}
+export type SelectOptionIcon = IconNames | IconProps['artwork']
 
-export const ListItem = styled.li
-  .withConfig({ shouldForwardProp })
-  .attrs<ListItemProps>(({ mb = 'xxsmall' }) => ({
-    mb,
-  }))<ListItemProps>`
-  ${reset}
-  ${typography}
-  ${space}
+export interface SelectOptionObject
+  extends ComboboxOptionObject,
+    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
+  description?: string | ReactNode
+  /**
+   * Supplementary element that appears right of the option's label
+   */
+  detail?: ReactNode
+  /**
+   * Icon shown to the left of the option label in the list and input when selected
+   * Use an IconName, or inline svg for a custom icon
+   */
+  icon?: SelectOptionIcon
+}
 
-  ${position}
-  ${layout}
-`
+export interface SelectOptionGroupProps {
+  options: SelectOptionObject[]
+  label?: string | ReactNode
+}
+
+export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps

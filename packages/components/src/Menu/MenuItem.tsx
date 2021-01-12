@@ -31,10 +31,10 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
-import { IconPlaceholder, ListItemDetail } from '../List'
+import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
-import { Icon } from '../Icon'
+import { Icon, IconPlaceholder } from '../Icon'
 import { Tooltip } from '../Tooltip'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
@@ -86,7 +86,11 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
-  const { compact: contextCompact } = useContext(MenuItemContext)
+  const {
+    compact: contextCompact,
+    renderIconPlaceholder,
+    setRenderIconPlaceholder,
+  } = useContext(MenuItemContext)
   const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
@@ -95,12 +99,6 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
 
   const { closeModal } = useContext(DialogContext)
-  const {
-    renderIconPlaceholder,
-    setRenderIconPlaceholder,
-    handleArrowDown,
-    handleArrowUp,
-  } = useContext(MenuItemContext)
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -108,17 +106,6 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     // Close the Menu (unless event has preventDefault in onClick)
     if (closeModal && !event.defaultPrevented) {
       closeModal()
-    }
-  }
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
-    switch (event.key) {
-      case 'ArrowUp':
-        handleArrowUp && handleArrowUp(event)
-        break
-      case 'ArrowDown':
-        handleArrowDown && handleArrowDown(event)
-        break
     }
   }
 
@@ -174,7 +161,13 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       : props.rel
 
   const menuItemContent = (
-    <Component href={href} rel={rel} role="menuitem" target={target}>
+    <Component
+      href={href}
+      rel={rel}
+      role="menuitem"
+      target={target}
+      tabIndex={-1}
+    >
       {renderedIcon}
       <span>
         {children}
@@ -197,7 +190,6 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
-      onKeyDown={handleOnKeyDown}
       className={className}
     >
       {tooltip ? (

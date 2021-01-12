@@ -96,6 +96,12 @@ NoIcons.args = {
   icons: false,
 }
 
+export const NoLabel = Template.bind({})
+NoLabel.args = {
+  ...Basic.args,
+  label: undefined,
+}
+
 export default {
   component: MenuGroup,
   title: 'MenuGroup',

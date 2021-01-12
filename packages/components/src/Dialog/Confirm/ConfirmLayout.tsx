@@ -26,7 +26,7 @@
 import React, { FC, ReactElement } from 'react'
 import { ButtonProps } from '../../Button'
 import { Paragraph } from '../../Text'
-import { DialogContent, DialogFooter, DialogHeader } from '../Layout'
+import { DialogLayout } from '../Layout'
 
 interface ConfirmLayoutProps {
   /**
@@ -55,19 +55,20 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
   title,
 }) => {
   return (
-    <>
-      <DialogHeader hideClose>{title}</DialogHeader>
-      <DialogContent>
-        {typeof message === 'string' ? (
-          <Paragraph breakword>{message}</Paragraph>
-        ) : (
-          message
-        )}
-      </DialogContent>
-      <DialogFooter>
-        {primaryButton}
-        {secondaryButton}
-      </DialogFooter>
-    </>
+    <DialogLayout
+      header={title}
+      footer={
+        <>
+          {primaryButton}
+          {secondaryButton}
+        </>
+      }
+    >
+      {typeof message === 'string' ? (
+        <Paragraph breakword>{message}</Paragraph>
+      ) : (
+        message
+      )}
+    </DialogLayout>
   )
 }

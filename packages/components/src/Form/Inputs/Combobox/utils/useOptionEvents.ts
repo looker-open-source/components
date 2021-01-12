@@ -32,8 +32,11 @@ import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
-import { ComboboxOptionProps } from '../ComboboxOption'
-import { ComboboxCallback, ComboboxMultiCallback } from '../types'
+import {
+  ComboboxCallback,
+  ComboboxMultiCallback,
+  ComboboxOptionProps,
+} from '../types'
 import { ComboboxActionType, ComboboxMultiData } from './state'
 
 export function useOptionEvents<

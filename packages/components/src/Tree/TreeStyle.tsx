@@ -30,7 +30,7 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
-import { TreeBackgroundStyleProps } from './Tree'
+import { TreeBackgroundStyleProps } from './types'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import {

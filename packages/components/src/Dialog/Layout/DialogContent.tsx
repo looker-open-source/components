@@ -41,7 +41,20 @@ import omit from 'lodash/omit'
 
 export interface DialogContentProps
   extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+    CompatibleHTMLProps<HTMLDivElement> {
+  /**
+   * If the Dialog does not have a footer use this property to manually render padding
+   * at the bottom of the DialogContent. (`hasFooter={false}`)
+   * @default true
+   */
+  hasFooter?: boolean
+  /**
+   * If the Dialog does not have a header use this property to manually render padding
+   * at the top of the DialogContent. (`hasHeader={false}`)
+   * @default true
+   */
+  hasHeader?: boolean
+}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
@@ -51,6 +64,8 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   renderedHeight,
+  hasFooter,
+  hasHeader,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
@@ -77,7 +92,8 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
     >
       <Inner
         px={['medium', 'xlarge']}
-        py={overflow ? 'large' : 'xxxsmall'}
+        pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
+        pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
         {...pickStyledProps(props)}
       >
         {children}

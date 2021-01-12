@@ -115,7 +115,9 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c3 {
+  margin-bottom: -0.5rem;
   margin-left: auto;
+  margin-top: -0.5rem;
 }
 
 .c0 {

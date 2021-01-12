@@ -75,11 +75,11 @@ slice of a color wheel, and should be handled outside the color wheel component.
       <Card raised>
         <CardContent>
           <Heading as="h2">HSV values</Heading>
-          <List>
-            <ListItem>Hue: {color.h.toFixed(0)}</ListItem>
-            <ListItem>Saturation: {color.s.toFixed(1)}</ListItem>
-            <ListItem>Value: {color.v}</ListItem>
-          </List>
+          <UnorderedList>
+            <li>Hue: {color.h.toFixed(0)}</li>
+            <li>Saturation: {color.s.toFixed(1)}</li>
+            <li>Value: {color.v}</li>
+          </UnorderedList>
         </CardContent>
       </Card>
     </Flex>
