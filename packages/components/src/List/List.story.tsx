@@ -50,28 +50,38 @@ const listItems = (
   </>
 )
 
-const Template: Story<ListProps> = (args) => (
+const Template: Story<ListProps> = (args) => <List {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: listItems,
+}
+
+const array200 = Array.from(Array(200), (_, i) => String(i + 1))
+export const LongList = Template.bind({})
+LongList.args = {
+  children: array200.map((item, i) => <ListItem key={i}>{item}</ListItem>),
+  height: '100vh',
+}
+
+export const Densities = (
   <>
-    <List label="large" density="large" {...args}>
+    <List label="large" density="large">
       {listItems}
     </List>
     <Divider />
-    <List label="medium" {...args}>
+    <List label="medium">{listItems}</List>
+    <Divider />
+    <List label="small" density="small">
       {listItems}
     </List>
     <Divider />
-    <List label="small" density="small" {...args}>
+    <List label="xsmall" density="xsmall">
       {listItems}
     </List>
     <Divider />
-    <List label="xsmall" density="xsmall" {...args}>
-      {listItems}
-    </List>
-    <Divider />
-    <List label="xxsmall" density="xxsmall" {...args}>
+    <List label="xxsmall" density="xxsmall">
       {listItems}
     </List>
   </>
 )
-
-export const Basic = Template.bind({})
