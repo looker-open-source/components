@@ -33,7 +33,6 @@ export const getListItemDimensions = (
   switch (density) {
     case 'small':
       return {
-        detailFontSize: 'xxsmall',
         height: 32,
         iconGap: 'small',
         iconSize: 'small',
@@ -44,7 +43,6 @@ export const getListItemDimensions = (
       }
     case 'medium':
       return {
-        detailFontSize: 'xxsmall',
         height: 36,
         iconGap: 'small',
         iconSize: 'small',
@@ -55,7 +53,6 @@ export const getListItemDimensions = (
       }
     default:
       return {
-        detailFontSize: 'xxsmall',
         height: 36,
         iconGap: 'small',
         iconSize: 'small',

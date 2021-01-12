@@ -44,7 +44,6 @@ export interface ListItemDimensions {
   iconSize: IconSize
   labelFontSize: FontSizes
   labelLineHeight: LineHeights
-  detailFontSize: FontSizes
 }
 
 export const listItemDimensionKeys = [
