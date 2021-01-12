@@ -28,6 +28,7 @@ import styled from 'styled-components'
 
 export const ListItemDetail = styled.div`
   color: ${({ theme: { colors } }) => colors.text1};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
   margin-left: auto;
   padding-left: ${({ theme: { space } }) => space.xsmall};
 `
