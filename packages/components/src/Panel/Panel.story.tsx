@@ -43,7 +43,7 @@ export const Basic = () => {
 
   const title = (
     <>
-      <Icon color="inform" name="ArrowBackward" mr="small" />
+      <Icon color="inform" name="ArrowBackward" m="xsmall" />
       Explore
     </>
   )
