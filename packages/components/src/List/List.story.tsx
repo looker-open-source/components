@@ -34,34 +34,42 @@ export default {
   title: 'List',
 }
 
+const listItems = (
+  <>
+    <ListItem
+      icon="Calendar"
+      detail="Somerset"
+      description="relatively hard, off-white cheese"
+    >
+      Cheddar
+    </ListItem>
+    <ListItem icon="Pivot" detail="Netherlands">
+      Gouda
+    </ListItem>
+    <ListItem>Swiss</ListItem>
+  </>
+)
+
 const Template: Story<ListProps> = (args) => (
   <>
-    <List label="Medium List" {...args}>
-      <ListItem
-        icon="Calendar"
-        detail="Somerset"
-        description="relatively hard, off-white cheese"
-      >
-        Cheddar
-      </ListItem>
-      <ListItem icon="Pivot" detail="Netherlands">
-        Gouda
-      </ListItem>
-      <ListItem>Swiss</ListItem>
+    <List label="large" density="large" {...args}>
+      {listItems}
     </List>
     <Divider />
-    <List label="Small List" density="small" {...args}>
-      <ListItem
-        icon="Calendar"
-        detail="Somerset"
-        description="relatively hard, off-white cheese"
-      >
-        Cheddar
-      </ListItem>
-      <ListItem icon="Pivot" detail="Netherlands">
-        Gouda
-      </ListItem>
-      <ListItem>Swiss</ListItem>
+    <List label="medium" {...args}>
+      {listItems}
+    </List>
+    <Divider />
+    <List label="small" density="small" {...args}>
+      {listItems}
+    </List>
+    <Divider />
+    <List label="xsmall" density="xsmall" {...args}>
+      {listItems}
+    </List>
+    <Divider />
+    <List label="xxsmall" density="xxsmall" {...args}>
+      {listItems}
     </List>
   </>
 )

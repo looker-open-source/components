@@ -176,7 +176,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       <span>
         {renderedChildren}
         {description && (
-          <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+          <Paragraph color="text2" fontSize="xsmall">
             {description}
           </Paragraph>
         )}

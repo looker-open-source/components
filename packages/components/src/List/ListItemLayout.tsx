@@ -31,7 +31,7 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { ListItemDimensions, listItemDimensionKeys } from './types'
 
-export interface ListItemProps
+export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ListItemDimensions {
   focusVisible?: boolean
@@ -42,7 +42,7 @@ export interface ListItemProps
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
 const ListItemWrapper = forwardRef(
-  (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
+  (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
         {...omit(props, 'compact', 'focusVisible', [...listItemDimensionKeys])}
@@ -84,7 +84,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    min-height: ${({ height }) => height};
+    min-height: ${({ height }) => `${height}px`};
     outline: none;
     padding: ${({ px, py, theme }) => `${theme.space[py]} ${theme.space[px]}`};
     text-align: left;

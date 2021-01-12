@@ -40,15 +40,35 @@ export const getListItemDimensions = (
         px: 'medium',
         py: 'xxsmall',
       }
-    case 'medium':
+    case 'xsmall':
       return {
-        height: 36,
-        iconGap: 'small',
-        iconSize: 'small',
+        height: 28,
+        iconGap: 'xsmall',
+        iconSize: 'xsmall',
         labelFontSize: 'small',
         labelLineHeight: 'small',
         px: 'medium',
-        py: 'xsmall',
+        py: 'xxsmall',
+      }
+    case 'xxsmall':
+      return {
+        height: 24,
+        iconGap: 'xsmall',
+        iconSize: 'xxsmall',
+        labelFontSize: 'xsmall',
+        labelLineHeight: 'xsmall',
+        px: 'medium',
+        py: 'xxsmall',
+      }
+    case 'large':
+      return {
+        height: 48,
+        iconGap: 'medium',
+        iconSize: 'medium',
+        labelFontSize: 'medium',
+        labelLineHeight: 'medium',
+        px: 'medium',
+        py: 'small',
       }
     default:
       return {

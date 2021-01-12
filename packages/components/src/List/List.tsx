@@ -110,7 +110,7 @@ export interface ListProps
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
-    return height + 12
+    return height + 16
   }
   return height
 }
