@@ -93,24 +93,11 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     itemDimensions,
     renderIconPlaceholder,
     setRenderIconPlaceholder,
-    handleArrowDown,
-    handleArrowUp,
   } = useContext(ListItemContext)
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
-  }
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
-    switch (event.key) {
-      case 'ArrowUp':
-        handleArrowUp && handleArrowUp(event)
-        break
-      case 'ArrowDown':
-        handleArrowDown && handleArrowDown(event)
-        break
-    }
   }
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
@@ -178,7 +165,13 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     )
 
   const listItemContent = (
-    <Component href={href} rel={rel} role="listitem" target={target}>
+    <Component
+      href={href}
+      rel={rel}
+      role="listitem"
+      target={target}
+      tabIndex={-1}
+    >
       {renderedIcon}
       <span>
         {renderedChildren}
@@ -200,7 +193,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
-      onKeyDown={handleOnKeyDown}
       className={className}
       {...itemDimensions}
     >

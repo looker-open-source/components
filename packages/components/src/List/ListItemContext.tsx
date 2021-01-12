@@ -24,15 +24,13 @@
 
  */
 
-import { createContext, KeyboardEvent } from 'react'
+import { createContext } from 'react'
 import { ListItemDimensions } from './ListItemLayout'
 
 export interface ListItemContextProps {
   itemDimensions: ListItemDimensions
   renderIconPlaceholder?: boolean
   setRenderIconPlaceholder?: (state: boolean) => void
-  handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
-  handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
 const listItemContext: ListItemContextProps = {

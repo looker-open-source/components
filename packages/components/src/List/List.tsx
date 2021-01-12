@@ -29,7 +29,6 @@ import React, {
   Children,
   forwardRef,
   isValidElement,
-  KeyboardEvent,
   ReactChild,
   ReactNode,
   Ref,
@@ -57,7 +56,7 @@ import {
   reset,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { moveFocus, useForkedRef, useWindow } from '../utils'
+import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListLabel } from './ListLabel'
 import { getListItemDimensions } from './utils/getListItemDimensions'
@@ -128,6 +127,9 @@ export const ListInternal = forwardRef(
       pin,
       placement,
       windowing,
+      onBlur,
+      onFocus,
+      onKeyDown,
       ...props
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
@@ -175,29 +177,22 @@ export const ListInternal = forwardRef(
       return height
     }, [windowing, childArray, itemDimensions.height])
 
-    const { content, containerElement, ref } = useWindow({
+    const { content, ref } = useWindow({
       childHeight: childHeight,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
+      ref: forwardedRef,
       spacerTag: 'li',
     })
-    const forkedRef = useForkedRef(forwardedRef, ref)
 
-    function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, containerElement)
-    }
+    const navProps = useArrowKeyNav({
+      onBlur,
+      onFocus,
+      onKeyDown,
+      ref,
+    })
 
     const context = {
-      handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
-        e.preventDefault()
-        handleArrowKey(1, 0)
-        return false
-      },
-      handleArrowUp: (e: KeyboardEvent<HTMLLIElement>) => {
-        e.preventDefault()
-        handleArrowKey(-1, -1)
-        return false
-      },
       itemDimensions,
       renderIconPlaceholder,
       setRenderIconPlaceholder,
@@ -205,12 +200,7 @@ export const ListInternal = forwardRef(
 
     return (
       <ListItemContext.Provider value={context}>
-        <ul
-          ref={forkedRef}
-          tabIndex={-1}
-          role="list"
-          {...omitStyledProps(props)}
-        >
+        <ul tabIndex={-1} role="list" {...omitStyledProps(props)} {...navProps}>
           {label && <ListLabel>{label}</ListLabel>}
           {content}
         </ul>
