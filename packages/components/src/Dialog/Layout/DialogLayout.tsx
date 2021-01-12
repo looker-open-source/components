@@ -30,7 +30,7 @@ import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
 import { DialogHeader } from './DialogHeader'
 
-export interface DialogLayout {
+export interface DialogLayoutProps {
   /**
    * Content to be displayed in footer
    */
@@ -66,7 +66,7 @@ export interface DialogLayout {
 /**
  *
  */
-export const DialogLayout: FC<DialogLayout> = ({
+export const DialogLayout: FC<DialogLayoutProps> = ({
   children,
   footer,
   footerSecondary,
