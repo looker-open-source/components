@@ -29,14 +29,7 @@ import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, {
-  FC,
-  ReactNode,
-  useContext,
-  useState,
-  useEffect,
-  useRef,
-} from 'react'
+import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
@@ -47,7 +40,7 @@ import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
-import { useDelayToggle } from '../utils'
+import { useDelayToggle, useWrapEvent } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 import { MenuList } from './MenuList'
@@ -98,6 +91,8 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onBlur,
     onClick,
     onKeyUp,
+    onMouseEnter,
+    onMouseLeave,
     submenu,
     target,
     tooltip,
@@ -107,18 +102,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const { value, delayOff, delayOn, setOff, setOn, change } = useDelayToggle(
     300
   )
-  const listRef = useRef<HTMLUListElement>(null)
 
-  const itemHandlers = submenu
-    ? { onMouseEnter: delayOn, onMouseLeave: delayOff }
-    : {}
-  const listHandlers = submenu
-    ? { onMouseEnter: setOn, onMouseLeave: setOff }
-    : {}
+  const noop = () => undefined
+  const itemHandlers = {
+    onMouseEnter: useWrapEvent(submenu ? delayOn : noop, onMouseEnter),
+    onMouseLeave: useWrapEvent(submenu ? delayOff : noop, onMouseLeave),
+  }
+  const listHandlers = {
+    onMouseEnter: useWrapEvent(submenu ? setOn : noop, onMouseEnter),
+    onMouseLeave: useWrapEvent(submenu ? setOff : noop, onMouseLeave),
+  }
 
   const { popover, domProps } = usePopover({
     content: (
-      <MenuList ref={listRef} {...listHandlers}>
+      <MenuList data-autofocus="true" {...listHandlers}>
         {submenu}
       </MenuList>
     ),
