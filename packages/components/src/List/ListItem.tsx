@@ -40,7 +40,6 @@ import { ListItemLayout } from './ListItemLayout'
 
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
   iconArtwork?: ReactNode
-  compact?: boolean
   /**
    * Indicates the ListItem is checked
    */
@@ -67,7 +66,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
     className,
-    compact: propCompact,
     current,
     description,
     detail,
@@ -85,8 +83,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
-  const { compact: contextCompact } = useContext(ListItemContext)
-  const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -94,6 +90,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   }
 
   const {
+    itemDimensions,
     renderIconPlaceholder,
     setRenderIconPlaceholder,
     handleArrowDown,
@@ -135,14 +132,15 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         artwork={iconArtwork}
         color="text1"
         name={icon}
-        size={compact ? 'small' : 'medium'}
-        mr="xsmall"
+        size={itemDimensions.iconSize}
+        mr={itemDimensions.iconGap}
       />
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
           data-testid={`list-item-${renderedIconID}-icon-placeholder`}
-          size={compact ? 'small' : 'medium'}
+          size={itemDimensions.iconSize}
+          iconGap={itemDimensions.iconGap}
         />
       )
     )
@@ -167,11 +165,23 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         : noTabNab
       : props.rel
 
+  const renderedChildren =
+    typeof children === 'string' ? (
+      <Paragraph
+        fontSize={itemDimensions.labelFontSize}
+        lineHeight={itemDimensions.labelLineHeight}
+      >
+        {children}
+      </Paragraph>
+    ) : (
+      children
+    )
+
   const listItemContent = (
     <Component href={href} rel={rel} role="listitem" target={target}>
       {renderedIcon}
       <span>
-        {children}
+        {renderedChildren}
         {description && (
           <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
             {description}
@@ -185,7 +195,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   return (
     <ListItemLayout
       aria-current={current && 'true'}
-      compact={compact}
       disabled={disabled}
       focusVisible={isFocusVisible}
       onBlur={handleOnBlur}
@@ -193,6 +202,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       onKeyUp={handleOnKeyUp}
       onKeyDown={handleOnKeyDown}
       className={className}
+      {...itemDimensions}
     >
       {tooltip ? (
         <Tooltip placement={tooltipPlacement} content={tooltip}>

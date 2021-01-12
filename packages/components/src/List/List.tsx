@@ -60,6 +60,10 @@ import {
 import { moveFocus, useForkedRef, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListLabel } from './ListLabel'
+import { getListItemDimensions } from './utils/getListItemDimensions'
+
+// -1 | 0 | 1
+export type DensityRamp = 'small' | 'medium' | 'large'
 
 export interface ListProps
   extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'>,
@@ -69,7 +73,12 @@ export interface ListProps
     MaxWidthProps,
     MinWidthProps,
     WidthProps {
-  compact?: boolean
+  /**
+   * Determines how dense a list should be by affecting child ListItem
+   * size and spacing.
+   * @default medium
+   */
+  density?: DensityRamp
 
   /** Label displayed above the child list */
   label?: ReactNode
@@ -102,21 +111,18 @@ export interface ListProps
   windowing?: 'fixed' | 'none'
 }
 
-const getBaseHeight = (compact?: boolean) => (compact ? 32 : 40)
-
-const getListItemHeight = (child: ReactChild, compact?: boolean) => {
-  const baseHeight = getBaseHeight(compact)
+const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
-    return baseHeight + 12
+    return height + 12
   }
-  return baseHeight
+  return height
 }
 
 export const ListInternal = forwardRef(
   (
     {
       children,
-      compact,
+      density,
       disabled,
       label,
       pin,
@@ -129,6 +135,8 @@ export const ListInternal = forwardRef(
     const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
 
     const childArray = useMemo(() => Children.toArray(children), [children])
+
+    const itemDimensions = getListItemDimensions(density || 'medium')
 
     if (windowing === undefined) {
       if (childArray.length > 100) {
@@ -158,11 +166,14 @@ export const ListInternal = forwardRef(
     const childHeight = useMemo(() => {
       if (windowing === 'fixed') {
         return childArray[0]
-          ? getListItemHeight(childArray[0] as ReactChild, compact)
+          ? getListItemHeight(
+              childArray[0] as ReactChild,
+              itemDimensions.height
+            )
           : 0
       }
-      return getBaseHeight(compact)
-    }, [windowing, childArray, compact])
+      return height
+    }, [windowing, childArray, itemDimensions.height])
 
     const { content, containerElement, ref } = useWindow({
       childHeight: childHeight,
@@ -177,7 +188,6 @@ export const ListInternal = forwardRef(
     }
 
     const context = {
-      compact,
       handleArrowDown: (e: KeyboardEvent<HTMLLIElement>) => {
         e.preventDefault()
         handleArrowKey(1, 0)
@@ -188,6 +198,7 @@ export const ListInternal = forwardRef(
         handleArrowKey(-1, -1)
         return false
       },
+      itemDimensions,
       renderIconPlaceholder,
       setRenderIconPlaceholder,
     }

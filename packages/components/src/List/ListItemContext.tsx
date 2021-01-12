@@ -25,15 +25,19 @@
  */
 
 import { createContext, KeyboardEvent } from 'react'
+import { ListItemDimensions } from './ListItemLayout'
 
 export interface ListItemContextProps {
-  compact?: boolean
+  itemDimensions: ListItemDimensions
   renderIconPlaceholder?: boolean
   setRenderIconPlaceholder?: (state: boolean) => void
   handleArrowUp?: (e: KeyboardEvent<HTMLLIElement>) => void
   handleArrowDown?: (e: KeyboardEvent<HTMLLIElement>) => void
 }
 
-const listItemContext: ListItemContextProps = {}
+const listItemContext: ListItemContextProps = {
+  // List will pass a default itemDimensions object if user does not provide density value
+  itemDimensions: {} as any,
+}
 
 export const ListItemContext = createContext(listItemContext)

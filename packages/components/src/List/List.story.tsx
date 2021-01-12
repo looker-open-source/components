@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Divider } from '..'
 import { List, ListProps, ListItem } from '.'
 
 export default {
@@ -34,14 +35,35 @@ export default {
 }
 
 const Template: Story<ListProps> = (args) => (
-  <List {...args}>
-    <ListItem>Cheddar</ListItem>
-    <ListItem>Gouda</ListItem>
-    <ListItem>Swiss</ListItem>
-  </List>
+  <>
+    <List label="Medium List" {...args}>
+      <ListItem
+        icon="Calendar"
+        detail="Somerset"
+        description="relatively hard, off-white cheese"
+      >
+        Cheddar
+      </ListItem>
+      <ListItem icon="Pivot" detail="Netherlands">
+        Gouda
+      </ListItem>
+      <ListItem>Swiss</ListItem>
+    </List>
+    <Divider />
+    <List label="Small List" density="small" {...args}>
+      <ListItem
+        icon="Calendar"
+        detail="Somerset"
+        description="relatively hard, off-white cheese"
+      >
+        Cheddar
+      </ListItem>
+      <ListItem icon="Pivot" detail="Netherlands">
+        Gouda
+      </ListItem>
+      <ListItem>Swiss</ListItem>
+    </List>
+  </>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  label: 'Cheese List',
-}

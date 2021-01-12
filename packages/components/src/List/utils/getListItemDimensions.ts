@@ -24,20 +24,45 @@
 
  */
 
-import { CompatibleHTMLProps, size, SizeProps } from '@looker/design-tokens'
-import omit from 'lodash/omit'
-import React from 'react'
-import styled from 'styled-components'
+import { DensityRamp } from '../List'
+import { ListItemDimensions } from '../ListItemLayout'
 
-export interface IconPlaceholderProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    SizeProps {
-  iconGap?: string
+export const getListItemDimensions = (
+  density: DensityRamp
+): ListItemDimensions => {
+  switch (density) {
+    case 'small':
+      return {
+        detailFontSize: 'xxsmall',
+        height: 32,
+        iconGap: 'small',
+        iconSize: 'small',
+        labelFontSize: 'small',
+        labelLineHeight: 'small',
+        px: 'medium',
+        py: 'xxsmall',
+      }
+    case 'medium':
+      return {
+        detailFontSize: 'xxsmall',
+        height: 36,
+        iconGap: 'small',
+        iconSize: 'small',
+        labelFontSize: 'small',
+        labelLineHeight: 'small',
+        px: 'medium',
+        py: 'xsmall',
+      }
+    default:
+      return {
+        detailFontSize: 'xxsmall',
+        height: 36,
+        iconGap: 'small',
+        iconSize: 'small',
+        labelFontSize: 'small',
+        labelLineHeight: 'small',
+        px: 'medium',
+        py: 'xsmall',
+      }
+  }
 }
-
-export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
-  <div aria-hidden {...omit(props, 'iconGap')} />
-))`
-  ${size}
-  margin-right: ${({ iconGap = 'xsmall', theme }) => theme.space[iconGap]};
-`

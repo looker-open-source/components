@@ -25,13 +25,42 @@
  */
 
 import omit from 'lodash/omit'
-import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  reset,
+  CompatibleHTMLProps,
+  FontSizes,
+  LineHeights,
+  SpacingSizes,
+} from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { Icon } from '../Icon'
+import { Icon, IconSize } from '../Icon'
 
-export interface ListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
-  compact?: boolean
+export interface ListItemDimensions {
+  height: number
+  px: SpacingSizes
+  py: SpacingSizes
+  iconGap: SpacingSizes
+  iconSize: IconSize
+  labelFontSize: FontSizes
+  labelLineHeight: LineHeights
+  detailFontSize: FontSizes
+}
+
+export const listItemDimensionKeys = [
+  'height',
+  'px',
+  'py',
+  'iconGap',
+  'iconSize',
+  'labelFontSize',
+  'labelLineHeight',
+  'detailFontSize',
+]
+
+export interface ListItemProps
+  extends CompatibleHTMLProps<HTMLLIElement>,
+    ListItemDimensions {
   focusVisible?: boolean
 }
 
@@ -41,7 +70,12 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
  */
 const ListItemWrapper = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
-    return <li {...omit(props, 'compact', 'focusVisible')} ref={ref} />
+    return (
+      <li
+        {...omit(props, 'compact', 'focusVisible', [...listItemDimensionKeys])}
+        ref={ref}
+      />
+    )
   }
 )
 
@@ -77,14 +111,9 @@ export const ListItemLayout = styled(ListItemWrapper)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    min-height: ${({ compact }) => (compact ? '32px' : '40px')};
+    min-height: ${({ height }) => height};
     outline: none;
-    padding: ${({
-      compact,
-      theme: {
-        space: { xxsmall, xsmall, medium },
-      },
-    }) => (compact ? `${xxsmall} ${medium}` : `${xsmall} ${medium}`)};
+    padding: ${({ px, py, theme }) => `${theme.space[py]} ${theme.space[px]}`};
     text-align: left;
     text-decoration: none;
     width: 100%;
