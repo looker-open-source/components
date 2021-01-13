@@ -26,6 +26,7 @@
 
 import { createContext } from 'react'
 import { ListItemDimensions } from './types'
+import { density0 } from './utils'
 
 export interface ListItemContextProps {
   itemDimensions: ListItemDimensions
@@ -34,8 +35,11 @@ export interface ListItemContextProps {
 }
 
 const listItemContext: ListItemContextProps = {
-  // List will pass a default itemDimensions object if user does not provide density value
-  itemDimensions: {} as any,
+  /**
+   * List will pass a default itemDimensions object if user does not provide density value
+   * ListItems that do not have a parent List will use this default density dimensions object
+   *  */
+  itemDimensions: { ...density0 },
 }
 
 export const ListItemContext = createContext(listItemContext)

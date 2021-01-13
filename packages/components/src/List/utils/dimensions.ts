@@ -24,28 +24,45 @@
 
  */
 
-import { DensityRamp, ListItemDimensions } from '../types'
-import {
-  density0,
-  densityP1,
-  densityN1,
-  densityN2,
-  densityN3,
-} from './dimensions'
+import { ListItemDimensions } from '../types'
 
-export const getListItemDimensions = (
-  density: DensityRamp
-): ListItemDimensions => {
-  switch (density) {
-    case -1:
-      return { ...densityN1 }
-    case -2:
-      return { ...densityN2 }
-    case -3:
-      return { ...densityN3 }
-    case 1:
-      return { ...densityP1 }
-    default:
-      return { ...density0 }
-  }
+export const density0: ListItemDimensions = {
+  height: 36,
+  iconGap: 'small',
+  iconSize: 'small',
+  labelFontSize: 'small',
+  labelLineHeight: 'small',
+  px: 'medium',
+  py: 'xsmall',
+}
+
+// Positive density values
+export const densityP1: ListItemDimensions = {
+  ...density0,
+  height: 48,
+  iconSize: 'medium',
+  labelFontSize: 'medium',
+  labelLineHeight: 'medium',
+  py: 'small',
+}
+
+// Negative density values
+export const densityN1: ListItemDimensions = {
+  ...density0,
+  height: 32,
+  py: '0.375rem',
+}
+export const densityN2: ListItemDimensions = {
+  ...densityN1,
+  height: 28,
+  iconGap: 'xsmall',
+  iconSize: 'xsmall',
+  py: 'xxsmall',
+}
+export const densityN3: ListItemDimensions = {
+  ...densityN2,
+  height: 24,
+  iconSize: 'xxsmall',
+  labelFontSize: 'xxsmall',
+  labelLineHeight: 'xsmall',
 }
