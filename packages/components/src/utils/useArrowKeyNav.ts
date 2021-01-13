@@ -114,18 +114,27 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   }
 
   const handleFocus = (e: FocusEvent<E>) => {
-    setFocusInside(true)
-    // When focus lands on the container
-    if (e.target === internalRef.current) {
-      // Check if there's a previously focused item that is still rendered
-      if (focusedItem && internalRef.current.contains(focusedItem)) {
-        focusedItem.focus()
-      } else {
-        const toFocus = getNextFocus(1, internalRef.current)
-        if (toFocus) {
-          // No need to update focusedItem with this since it's the default
-          toFocus.focus()
+    if (internalRef.current) {
+      // When focus lands on the container
+      if (e.target === internalRef.current) {
+        setFocusInside(true)
+        // Check if there's a previously focused item that is still rendered
+        if (focusedItem && internalRef.current.contains(focusedItem)) {
+          focusedItem.focus()
+        } else {
+          const toFocus = getNextFocus(1, internalRef.current)
+          if (toFocus) {
+            // No need to update focusedItem with this since it's the default
+            toFocus.focus()
+          }
         }
+      } else if (
+        // A submenu focus event will "bubble" up to the menu via React Portal
+        // but we don't want to remove tabIndex={0} in this case
+        internalRef.current.compareDocumentPosition(e.target) &
+        Node.DOCUMENT_POSITION_CONTAINED_BY
+      ) {
+        setFocusInside(true)
       }
     }
   }

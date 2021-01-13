@@ -59,6 +59,7 @@ import {
 import { useArrowKeyNav, useWindow } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuGroup } from './MenuGroup'
+import { SubmenuProvider } from './SubmenuProvider'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
@@ -204,15 +205,17 @@ export const MenuListInternal = forwardRef(
     }
 
     return (
-      <MenuItemContext.Provider value={context}>
-        <ul
-          role="menu"
-          {...omitStyledProps(omit(props, 'groupDividers'))}
-          {...navProps}
-        >
-          {content}
-        </ul>
-      </MenuItemContext.Provider>
+      <SubmenuProvider>
+        <MenuItemContext.Provider value={context}>
+          <ul
+            role="menu"
+            {...omitStyledProps(omit(props, 'groupDividers'))}
+            {...navProps}
+          >
+            {content}
+          </ul>
+        </MenuItemContext.Provider>
+      </SubmenuProvider>
     )
   }
 )

@@ -41,7 +41,7 @@ export const useResize = (element: HTMLElement | null, handler: () => void) => {
       return
     }
 
-    throttledHandler()
+    handler()
 
     const resizeObserver = new ResizeObserver(() => throttledHandler())
 

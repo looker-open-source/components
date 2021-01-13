@@ -41,16 +41,16 @@ import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
-import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
 import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
-import { useDelayToggle, useWrapEvent } from '../utils'
+import { useID, useWrapEvent } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 import { MenuList } from './MenuList'
+import { SubmenuContext } from './SubmenuProvider'
 
 export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   iconArtwork?: ReactNode
@@ -115,33 +115,50 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   } = useContext(MenuItemContext)
   const compact = propCompact === undefined ? contextCompact : propCompact
 
-  const { value, delayOff, delayOn, setOff, setOn, change } = useDelayToggle(
-    transitions.simple
-  )
+  const id = useID(props.id)
+  const { value, change, delayChange } = useContext(SubmenuContext)
 
   const itemHandlers = {
     onKeyDown: useWrapEvent(
       submenu
         ? (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'ArrowRight') {
-              setOn()
+              change(id)
             }
           }
         : noop,
       onKeyDown
     ),
-    onMouseEnter: useWrapEvent(submenu ? delayOn : noop, onMouseEnter),
-    onMouseLeave: useWrapEvent(submenu ? delayOff : noop, onMouseLeave),
+    onMouseEnter: useWrapEvent(
+      submenu
+        ? () => {
+            delayChange(id, transitions.simple)
+          }
+        : noop,
+      onMouseEnter
+    ),
+    onMouseLeave: useWrapEvent(
+      submenu
+        ? () => {
+            delayChange('', transitions.simple)
+          }
+        : noop,
+      onMouseLeave
+    ),
   }
   const listHandlers = submenu
     ? {
         onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
           if (e.key === 'ArrowLeft') {
-            setOff()
+            change('')
           }
         },
-        onMouseEnter: setOn,
-        onMouseLeave: setOff,
+        onMouseEnter: () => {
+          change(id)
+        },
+        onMouseLeave: () => {
+          change('')
+        },
       }
     : {}
 
@@ -152,11 +169,13 @@ const MenuItemInternal: FC<MenuItemProps> = ({
       </MenuList>
     ),
     disabled: submenu === undefined,
-    isOpen: value,
+    isOpen: value === id,
     pin: true,
     placement: 'right-start',
-    setOpen: change,
+    scrollLock: false,
+    setOpen: () => change(''),
     surface: NestedSurface,
+    triggerToggle: false,
   })
 
   detail = submenu ? (
@@ -177,8 +196,10 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
-    // Close the Menu (unless event has preventDefault in onClick)
-    if (closeModal && !event.defaultPrevented) {
+    // Close the Menu
+    // unless event has preventDefault in onClick
+    // or unless it has a submenu and no onClick
+    if (closeModal && !event.defaultPrevented && (!submenu || onClick)) {
       closeModal()
     }
   }
@@ -194,8 +215,6 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     }
   }, [icon, setRenderIconPlaceholder])
 
-  const renderedIconID = useID(props.id)
-
   const renderedIcon =
     icon || iconArtwork ? (
       <Icon
@@ -208,7 +227,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
-          data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+          data-testid={`menu-item-${id}-icon-placeholder`}
           size={compact ? 'small' : 'medium'}
         />
       )

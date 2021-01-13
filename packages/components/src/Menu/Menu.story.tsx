@@ -596,44 +596,59 @@ ArrowKeyNavigation.parameters = {
   storyshots: { disable: true },
 }
 
-export const NestedMenu = () => (
-  <Menu
-    content={
-      <>
-        <MenuItem
-          submenu={
-            <>
-              <MenuItem>Sub Item</MenuItem>
-              <MenuItem>Another Sub Item</MenuItem>
-              <MenuItem>Third Sub Item</MenuItem>
-              <MenuItem>4th Sub Item</MenuItem>
-              <MenuItem>Fifth Sub Item</MenuItem>
-            </>
-          }
-        >
-          Sub Menu
-        </MenuItem>
-        <MenuItem submenu={<MenuItem>Sub Item 2</MenuItem>}>
-          Sub Menu 2
-        </MenuItem>
-        <MenuItem submenu={<MenuItem>Sub Item 3</MenuItem>}>
-          Sub Menu 3
-        </MenuItem>
-        <MenuItem submenu={<MenuItem>Sub Item 4</MenuItem>}>
-          Sub Menu 4
-        </MenuItem>
-        <MenuItem submenu={<MenuItem>Sub Item 5</MenuItem>}>
-          Sub Menu 5
-        </MenuItem>
-        <MenuItem submenu={<MenuItem>Sub Item 6</MenuItem>}>
-          Sub Menu 6
-        </MenuItem>
-      </>
-    }
-  >
-    <Button>Open Nested Menu</Button>
-  </Menu>
-)
+export const NestedMenu = () => {
+  const getOnClick = (text: string) => () => {
+    alert(`You clicked ${text}`)
+  }
+  return (
+    <Menu
+      content={
+        <>
+          <MenuGroup>
+            <MenuItem icon="Edit" onClick={getOnClick('Edit')}>
+              Edit
+            </MenuItem>
+            <MenuItem icon="Download" onClick={getOnClick('Download')}>
+              Download
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup label="Sub Menus">
+            <MenuItem
+              submenu={
+                <>
+                  <MenuItem>Sub Item</MenuItem>
+                  <MenuItem>Another Sub Item</MenuItem>
+                  <MenuItem>Third Sub Item</MenuItem>
+                  <MenuItem>4th Sub Item</MenuItem>
+                  <MenuItem>Fifth Sub Item</MenuItem>
+                </>
+              }
+            >
+              Sub Menu
+            </MenuItem>
+            <MenuItem submenu={<MenuItem>Sub Item 2</MenuItem>}>
+              Sub Menu 2
+            </MenuItem>
+            <MenuItem submenu={<MenuItem>Sub Item 3</MenuItem>}>
+              Sub Menu 3
+            </MenuItem>
+            <MenuItem submenu={<MenuItem>Sub Item 4</MenuItem>}>
+              Sub Menu 4
+            </MenuItem>
+            <MenuItem submenu={<MenuItem>Sub Item 5</MenuItem>}>
+              Sub Menu 5
+            </MenuItem>
+            <MenuItem submenu={<MenuItem>Sub Item 6</MenuItem>}>
+              Sub Menu 6
+            </MenuItem>
+          </MenuGroup>
+        </>
+      }
+    >
+      <Button>Open Nested Menu</Button>
+    </Menu>
+  )
+}
 
 NestedMenu.parameters = {
   storyshots: { disable: true },

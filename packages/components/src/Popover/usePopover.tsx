@@ -92,6 +92,12 @@ export interface UsePopoverProps extends UsePopoverToggleProps {
   focusTrap?: boolean
 
   /**
+   * Whether to lock scrolling outside the popover
+   * @default true
+   */
+  scrollLock?: boolean
+
+  /**
    * Custom surface component to render the content in
    * @private
    */
@@ -135,10 +141,11 @@ export const usePopover = ({
   triggerElement,
   triggerToggle = true,
   focusTrap = true,
+  scrollLock = true,
   cancelClickOutside,
   surface,
 }: UsePopoverProps) => {
-  const [scrollElement, scrollRef] = useScrollLock()
+  const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
   const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
