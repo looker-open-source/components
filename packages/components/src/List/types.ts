@@ -32,7 +32,7 @@ export type DensityRamp = -3 | -2 | -1 | 0 | 1
 export interface ListItemDimensions {
   height: number
   px: SpacingSizes
-  py: SpacingSizes
+  py: SpacingSizes | '0.375rem'
   iconGap: SpacingSizes
   iconSize: IconSize
   labelFontSize: FontSizes

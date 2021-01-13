@@ -92,8 +92,8 @@ export const ListItemLayout = styled(ListItemWrapper)`
       in the design specs or add "heightWithDescription" to our getListItemDimensions
       return objects.
      */
-    padding: ${({ height, px, py, theme }) =>
-      `${height === 32 ? '0.375rem' : theme.space[py]} ${theme.space[px]}`};
+    padding: ${({ px, py, theme }) =>
+      `${py === '0.375rem' ? py : theme.space[py]} ${theme.space[px]}`};
     text-align: left;
     text-decoration: none;
     width: 100%;

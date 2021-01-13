@@ -38,7 +38,7 @@ export const getListItemDimensions = (
         labelFontSize: 'small',
         labelLineHeight: 'small',
         px: 'medium',
-        py: 'xxsmall',
+        py: '0.375rem',
       }
     case -2:
       return {
