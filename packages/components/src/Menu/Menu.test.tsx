@@ -25,7 +25,13 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  act,
+  fireEvent,
+  waitForElementToBeRemoved,
+  screen,
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -211,5 +217,79 @@ describe('<Menu />', () => {
     expect(queryByText('Gouda')).toBeInTheDocument()
 
     fireEvent.click(document)
+  })
+
+  describe('MenuItem submenu', () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
+    })
+    afterEach(() => {
+      jest.runOnlyPendingTimers()
+      jest.useRealTimers()
+    })
+
+    test('toggle on hover', () => {
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem submenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      const button = screen.getByText('Cheese')
+      userEvent.click(button)
+
+      const parent = screen.getByText('Gouda')
+      userEvent.hover(parent)
+
+      act(() => {
+        jest.runOnlyPendingTimers()
+      })
+
+      const child = screen.getByText('Swiss')
+      expect(child).toBeVisible()
+
+      userEvent.unhover(parent)
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
+      userEvent.hover(child)
+
+      act(() => {
+        jest.runOnlyPendingTimers()
+      })
+      expect(screen.getByText('Swiss')).toBeVisible()
+
+      userEvent.unhover(child)
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+
+      fireEvent.click(document)
+    })
+
+    test('toggle on arrow keys', () => {
+      renderWithTheme(
+        <Menu
+          isOpen
+          content={
+            <MenuItem submenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      const parent = screen.getByText('Gouda')
+      fireEvent.keyDown(parent, { key: 'ArrowRight' })
+
+      const child = screen.getByText('Swiss')
+      expect(child).toBeVisible()
+      fireEvent.keyDown(child, { key: 'ArrowLeft' })
+
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+      fireEvent.click(document)
+    })
   })
 })
