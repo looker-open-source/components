@@ -101,7 +101,7 @@ describe('MenuItem', () => {
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = getByRole('link')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -121,7 +121,7 @@ describe('MenuItem', () => {
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = getByRole('link')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -136,7 +136,7 @@ describe('MenuItem', () => {
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = getByRole('link')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')

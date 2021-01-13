@@ -165,13 +165,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     )
 
   const listItemContent = (
-    <Component
-      href={href}
-      rel={rel}
-      role="listitem"
-      target={target}
-      tabIndex={-1}
-    >
+    <Component href={href} rel={rel} target={target} tabIndex={-1}>
       {renderedIcon}
       <span>
         {renderedChildren}
