@@ -161,22 +161,10 @@ export const ListInternal = forwardRef(
       }
     }, [windowing, props.width])
 
-    // childHeight will be a number (fixed windowing)
-    // or a function that takes an index and returns a number (variable windowing)
-    const childHeight = useMemo(() => {
-      if (windowing === 'fixed') {
-        return childArray[0]
-          ? getListItemHeight(
-              childArray[0] as ReactChild,
-              itemDimensions.height
-            )
-          : 0
-      }
-      return height
-    }, [windowing, childArray, itemDimensions.height])
-
     const { content, ref } = useWindow({
-      childHeight: childHeight,
+      childHeight: childArray[0]
+        ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
+        : 0,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
       ref: forwardedRef,
