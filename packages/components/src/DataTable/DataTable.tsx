@@ -28,6 +28,7 @@ import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import React, { FC, useState } from 'react'
 import { MixedBoolean } from '../Form'
+import { useArrowKeyNav, useWindow } from '../utils'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
 import { DataTableFilters } from './Filters/DataTableFilters'
@@ -105,9 +106,11 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     />
   )
 
+  const navProps = useArrowKeyNav({ axis: 'both' })
+
   return (
     <DataTableContext.Provider value={context}>
-      <div className={className}>
+      <div className={className} {...navProps}>
         {filters}
         {bulk && select && select.selectedItems.length > 0 && (
           <BulkActions {...bulk} />
