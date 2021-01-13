@@ -26,6 +26,7 @@
 
 import { DensityRamp, ListItemDimensions } from '../types'
 
+// TODO: Create a base object then spread that base object onto other cases
 export const getListItemDimensions = (
   density: DensityRamp
 ): ListItemDimensions => {
