@@ -26,60 +26,60 @@
 
 import { DensityRamp, ListItemDimensions } from '../types'
 
-// TODO: Create a base object then spread that base object onto other cases
+const density0: ListItemDimensions = {
+  height: 36,
+  iconGap: 'small',
+  iconSize: 'small',
+  labelFontSize: 'small',
+  labelLineHeight: 'small',
+  px: 'medium',
+  py: 'xsmall',
+}
+
+// Positive density values
+const densityP1: ListItemDimensions = {
+  ...density0,
+  height: 48,
+  iconSize: 'medium',
+  labelFontSize: 'medium',
+  labelLineHeight: 'medium',
+  py: 'small',
+}
+
+// Negative density values
+const densityN1: ListItemDimensions = {
+  ...density0,
+  height: 32,
+  py: '0.375rem',
+}
+const densityN2: ListItemDimensions = {
+  ...densityN1,
+  height: 28,
+  iconGap: 'xsmall',
+  iconSize: 'xsmall',
+  py: 'xxsmall',
+}
+const densityN3: ListItemDimensions = {
+  ...densityN2,
+  height: 24,
+  iconSize: 'xxsmall',
+  labelFontSize: 'xxsmall',
+  labelLineHeight: 'xsmall',
+}
+
 export const getListItemDimensions = (
   density: DensityRamp
 ): ListItemDimensions => {
   switch (density) {
     case -1:
-      return {
-        height: 32,
-        iconGap: 'small',
-        iconSize: 'small',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: '0.375rem',
-      }
+      return densityN1
     case -2:
-      return {
-        height: 28,
-        iconGap: 'xsmall',
-        iconSize: 'xsmall',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: 'xxsmall',
-      }
+      return densityN2
     case -3:
-      return {
-        height: 24,
-        iconGap: 'xsmall',
-        iconSize: 'xxsmall',
-        labelFontSize: 'xsmall',
-        labelLineHeight: 'xsmall',
-        px: 'medium',
-        py: 'xxsmall',
-      }
+      return densityN3
     case 1:
-      return {
-        height: 48,
-        iconGap: 'medium',
-        iconSize: 'medium',
-        labelFontSize: 'medium',
-        labelLineHeight: 'medium',
-        px: 'medium',
-        py: 'small',
-      }
+      return densityP1
     default:
-      return {
-        height: 36,
-        iconGap: 'small',
-        iconSize: 'small',
-        labelFontSize: 'small',
-        labelLineHeight: 'small',
-        px: 'medium',
-        py: 'xsmall',
-      }
+      return density0
   }
 }
