@@ -45,7 +45,7 @@ const ListItemWrapper = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(props, 'compact', 'focusVisible', [...listItemDimensionKeys])}
+        {...omit(props, 'focusVisible', [...listItemDimensionKeys])}
         ref={ref}
       />
     )
