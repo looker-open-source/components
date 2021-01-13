@@ -28,10 +28,19 @@ storybook: true
     },
   ]
 
+  const [controlledFilters, setControlledFilters] = useState(filters)
+
   return (
     <SpaceVertical>
-      <InputFilters filters={filters} />
-      <InputFilters filters={filters} hideFilterIcon />
+      <InputFilters
+        onChange={setControlledFilters}
+        filters={controlledFilters}
+      />
+      <InputFilters
+        onChange={setControlledFilters}
+        filters={controlledFilters}
+        hideFilterIcon
+      />
     </SpaceVertical>
   )
 }
