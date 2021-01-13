@@ -27,7 +27,7 @@
 import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
 import { IconSize } from '..'
 
-export type DensityRamp = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large'
+export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
 export interface ListItemDimensions {
   height: number

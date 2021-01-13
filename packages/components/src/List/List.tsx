@@ -136,7 +136,9 @@ export const ListInternal = forwardRef(
 
     const childArray = useMemo(() => Children.toArray(children), [children])
 
-    const itemDimensions = getListItemDimensions(density || 'medium')
+    const itemDimensions = getListItemDimensions(
+      density !== undefined ? density : 0
+    )
 
     if (windowing === undefined) {
       if (childArray.length > 100) {

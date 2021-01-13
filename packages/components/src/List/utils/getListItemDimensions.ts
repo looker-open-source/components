@@ -30,7 +30,7 @@ export const getListItemDimensions = (
   density: DensityRamp
 ): ListItemDimensions => {
   switch (density) {
-    case 'small':
+    case -1:
       return {
         height: 32,
         iconGap: 'small',
@@ -40,7 +40,7 @@ export const getListItemDimensions = (
         px: 'medium',
         py: 'xxsmall',
       }
-    case 'xsmall':
+    case -2:
       return {
         height: 28,
         iconGap: 'xsmall',
@@ -50,7 +50,7 @@ export const getListItemDimensions = (
         px: 'medium',
         py: 'xxsmall',
       }
-    case 'xxsmall':
+    case -3:
       return {
         height: 24,
         iconGap: 'xsmall',
@@ -60,7 +60,7 @@ export const getListItemDimensions = (
         px: 'medium',
         py: 'xxsmall',
       }
-    case 'large':
+    case 1:
       return {
         height: 48,
         iconGap: 'medium',

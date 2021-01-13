@@ -64,23 +64,23 @@ LongList.args = {
   height: '100vh',
 }
 
-export const Densities = (
+export const Density = () => (
   <>
-    <List label="large" density="large">
+    <List label="1" density={1}>
       {listItems}
     </List>
     <Divider />
-    <List label="medium">{listItems}</List>
+    <List label="0">{listItems}</List>
     <Divider />
-    <List label="small" density="small">
+    <List label="-1" density={-1}>
       {listItems}
     </List>
     <Divider />
-    <List label="xsmall" density="xsmall">
+    <List label="-2" density={-2}>
       {listItems}
     </List>
     <Divider />
-    <List label="xxsmall" density="xxsmall">
+    <List label="-3" density={-3}>
       {listItems}
     </List>
   </>
