@@ -78,7 +78,11 @@ const DataTableCellLayout: FC<DataTableCellProps> = ({
       </Space>
     )
   }
-  return <td {...props}>{content}</td>
+  return (
+    <td tabIndex={-1} {...props}>
+      {content}
+    </td>
+  )
 }
 
 export const DataTableCell = styled(DataTableCellLayout)`
@@ -92,5 +96,8 @@ export const DataTableCell = styled(DataTableCellLayout)`
       color: ${({ theme }) => theme.colors.link};
       text-decoration: underline;
     }
+  }
+  :focus {
+    border: 1px solid ${({ theme }) => theme.colors.key};
   }
 `

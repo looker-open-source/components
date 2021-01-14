@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added keyboard accessibility to `DataTable`
 - `Tabs` and `Menu` arrow key navigation persists the last focused item
 - `Breakpoint` component
 - `Tree / TreeItem`
