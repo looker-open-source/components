@@ -38,7 +38,7 @@ import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
-import { Space, SpaceVertical } from '../Layout'
+import { Flex, Space, SpaceVertical } from '../Layout'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
@@ -600,53 +600,57 @@ export const NestedMenu = () => {
   const getOnClick = (text: string) => () => {
     alert(`You clicked ${text}`)
   }
+
+  const submenu = (
+    <>
+      <MenuItem>Sub Item</MenuItem>
+      <MenuItem>Another Sub Item</MenuItem>
+      <MenuItem>Third Sub Item</MenuItem>
+      <MenuItem>4th Sub Item</MenuItem>
+      <MenuItem>Fifth Sub Item</MenuItem>
+    </>
+  )
+  const content = (
+    <>
+      <MenuGroup>
+        <MenuItem icon="Edit" onClick={getOnClick('Edit')}>
+          Edit
+        </MenuItem>
+        <MenuItem icon="Download" onClick={getOnClick('Download')}>
+          Download
+        </MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Sub Menus">
+        <MenuItem onClick={getOnClick('Sub Menu')} submenu={submenu}>
+          Sub Menu
+        </MenuItem>
+        <MenuItem submenu={submenu}>Sub Menu - no onClick</MenuItem>
+        <MenuItem icon="Favorite" onClick={getOnClick('Favorite')}>
+          Favorite
+        </MenuItem>
+        <MenuItem submenu={submenu}>Sub Menu 3</MenuItem>
+      </MenuGroup>
+    </>
+  )
   return (
-    <Menu
-      content={
-        <>
-          <MenuGroup>
-            <MenuItem icon="Edit" onClick={getOnClick('Edit')}>
-              Edit
-            </MenuItem>
-            <MenuItem icon="Download" onClick={getOnClick('Download')}>
-              Download
-            </MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Sub Menus">
-            <MenuItem
-              submenu={
-                <>
-                  <MenuItem>Sub Item</MenuItem>
-                  <MenuItem>Another Sub Item</MenuItem>
-                  <MenuItem>Third Sub Item</MenuItem>
-                  <MenuItem>4th Sub Item</MenuItem>
-                  <MenuItem>Fifth Sub Item</MenuItem>
-                </>
-              }
-            >
-              Sub Menu
-            </MenuItem>
-            <MenuItem submenu={<MenuItem>Sub Item 2</MenuItem>}>
-              Sub Menu 2
-            </MenuItem>
-            <MenuItem submenu={<MenuItem>Sub Item 3</MenuItem>}>
-              Sub Menu 3
-            </MenuItem>
-            <MenuItem submenu={<MenuItem>Sub Item 4</MenuItem>}>
-              Sub Menu 4
-            </MenuItem>
-            <MenuItem submenu={<MenuItem>Sub Item 5</MenuItem>}>
-              Sub Menu 5
-            </MenuItem>
-            <MenuItem submenu={<MenuItem>Sub Item 6</MenuItem>}>
-              Sub Menu 6
-            </MenuItem>
-          </MenuGroup>
-        </>
-      }
-    >
-      <Button>Open Nested Menu</Button>
-    </Menu>
+    <Flex height="100vh" flexDirection="column" justifyContent="space-between">
+      <Space between>
+        <Menu content={content}>
+          <Button>Nested Menu</Button>
+        </Menu>
+        <Menu content={content}>
+          <Button>Right-aligned</Button>
+        </Menu>
+      </Space>
+      <Space between>
+        <Menu content={content}>
+          <Button>Bottom-left-aligned</Button>
+        </Menu>
+        <Menu content={content}>
+          <Button>Bottom-right-aligned</Button>
+        </Menu>
+      </Space>
+    </Flex>
   )
 }
 

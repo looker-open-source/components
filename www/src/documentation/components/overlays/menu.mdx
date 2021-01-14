@@ -78,6 +78,41 @@ The `escapeWithReference` and `pin` props allow you to enforce the placement to 
 </Menu>
 ```
 
+## Nested Menu
+
+Add `submenu` to a `MenuItem` to create a nested menu.
+
+```jsx
+<Menu
+  content={
+    <>
+      <MenuItem
+        submenu={
+          <>
+            <MenuItem>Camembert</MenuItem>
+            <MenuItem>Comté</MenuItem>
+          </>
+        }
+      >
+        French
+      </MenuItem>
+      <MenuItem
+        submenu={
+          <>
+            <MenuItem>Gouda</MenuItem>
+            <MenuItem>Limburger</MenuItem>
+          </>
+        }
+      >
+        Dutch
+      </MenuItem>
+    </>
+  }
+>
+  <Button>Cheese</Button>
+</Menu>
+```
+
 ## Controlled Menu
 
 Control the state of the menu with the React `useState` hook.
