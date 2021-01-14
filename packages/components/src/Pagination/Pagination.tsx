@@ -60,7 +60,7 @@ const PaginationLayout: FC<PaginationProps> = ({
         label="First page of results"
         icon="DoubleChevronLeft"
         onClick={first}
-        disabled={current <= 2}
+        disabled={current === 1}
       />
       <PaginationButton
         label="Previous page of results"
@@ -82,7 +82,7 @@ const PaginationLayout: FC<PaginationProps> = ({
         label="Last page of results"
         icon="DoubleChevronRight"
         onClick={last}
-        disabled={pages - current <= 1}
+        disabled={pages - current === 0}
       />
     </Flex>
   )
