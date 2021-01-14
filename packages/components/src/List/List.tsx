@@ -30,25 +30,10 @@ import React, {
   isValidElement,
   ReactChild,
   Ref,
-  useEffect,
   useMemo,
   useState,
 } from 'react'
 import styled from 'styled-components'
-import {
-  MaxHeightProps,
-  MinHeightProps,
-  HeightProps,
-  height,
-  minHeight,
-  maxHeight,
-  width,
-  WidthProps,
-  MaxWidthProps,
-  MinWidthProps,
-  minWidth,
-  maxWidth,
-} from 'styled-system'
 import {
   CompatibleHTMLProps,
   reset,
@@ -60,13 +45,7 @@ import { getListItemDimensions } from './utils/getListItemDimensions'
 import { DensityRamp } from './types'
 
 export interface ListProps
-  extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'>,
-    MaxHeightProps,
-    MinHeightProps,
-    HeightProps,
-    MaxWidthProps,
-    MinWidthProps,
-    WidthProps {
+  extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
   /**
    * Determines how dense a list should be by affecting child ListItem
    * size and spacing.
@@ -119,21 +98,6 @@ export const ListInternal = forwardRef(
       }
     }
 
-    // Warning for width prop
-    useEffect(() => {
-      if (
-        process.env.NODE_ENV === 'development' &&
-        windowing &&
-        windowing !== 'none' &&
-        !props.width
-      ) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `Define a width when using windowing to avoid width fluctuations during scrolling.`
-        )
-      }
-    }, [windowing, props.width])
-
     const { content, ref } = useWindow({
       childHeight: childArray[0]
         ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
@@ -167,17 +131,8 @@ export const ListInternal = forwardRef(
   }
 )
 
-export const List = styled(ListInternal).attrs(({ minWidth = '12rem' }) => ({
-  minWidth,
-}))`
+export const List = styled(ListInternal)`
   ${reset}
-
-  ${height}
-  ${minHeight}
-  ${maxHeight}
-  ${minWidth}
-  ${maxWidth}
-  ${width}
 
   list-style: none;
 `
