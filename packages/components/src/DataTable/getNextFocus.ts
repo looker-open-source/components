@@ -27,6 +27,17 @@
 export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
   Array.from(ref.querySelectorAll('td[tabindex="-1"],a,button'))
 
+const isTableCell = (
+  element: Element
+): element is HTMLTableCellElement | HTMLTableHeaderCellElement => {
+  return ['TD', 'TH'].includes(element.tagName)
+}
+const isTableRow = (
+  element: Element | null
+): element is HTMLTableRowElement => {
+  return element ? element.tagName === 'TR' : false
+}
+
 /**
  * Returns the next focusable inside an element in a given direction
  * @param direction 1 for forward -1 for reverse
@@ -39,17 +50,20 @@ export const getNextFocus = (
 ) => {
   const tabStops = getTabStops(element)
 
-  if (tabStops.length > 0) {
+  if (
+    document.activeElement &&
+    tabStops.includes(document.activeElement as HTMLElement)
+  ) {
     const element = document.activeElement
-    if (vertical) {
-      const cellIndex = element && element.cellIndex
+    if (vertical && isTableCell(element)) {
+      const cellIndex = element.cellIndex
       if (direction === -1) {
         // Up Arrow
         const rowAbove =
           element &&
           element.parentElement &&
           element.parentElement.previousElementSibling
-        if (rowAbove != null) {
+        if (isTableRow(rowAbove)) {
           return rowAbove.cells[cellIndex]
         }
       } else if (direction === 1) {
@@ -58,21 +72,15 @@ export const getNextFocus = (
           element &&
           element.parentElement &&
           element.parentElement.nextElementSibling
-        if (rowBelow != null) {
+        if (isTableRow(rowBelow)) {
           return rowBelow.cells[cellIndex]
         }
       }
     }
+    const next =
+      tabStops.findIndex((el) => el === document.activeElement) + direction
 
-    if (
-      document.activeElement &&
-      tabStops.includes(document.activeElement as HTMLElement)
-    ) {
-      const next =
-        tabStops.findIndex((el) => el === document.activeElement) + direction
-
-      return tabStops[next]
-    }
+    return tabStops[next]
   }
   return null
 }

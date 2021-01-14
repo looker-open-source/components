@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import { useArrowKeyNav } from '../utils'
 import { BulkActions } from './BulkActions'
@@ -48,9 +48,6 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     select,
   } = props
 
-  const ref = useCallback((node) => {
-    node?.focus()
-  }, [])
   /**
    * Extract columns that the user can specify visibility on
    */
@@ -114,7 +111,6 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
   const navProps = useArrowKeyNav({
     axis: 'both',
     getNextFocus: getNextFocus,
-    ref,
   })
 
   return (
