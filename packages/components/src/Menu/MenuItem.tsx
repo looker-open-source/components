@@ -172,7 +172,6 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     ),
     disabled: submenu === undefined,
     isOpen: value === id,
-    pin: true,
     placement: 'right-start',
     scrollLock: false,
     setOpen: closeSubmenu,
