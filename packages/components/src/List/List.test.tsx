@@ -97,8 +97,9 @@ describe('List', () => {
        * (3000 - 16) * 36px
        * (total ListItems - displayed ListItems) * default ListItem height
        */
+      const height = (3000 - 16) * 36        
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 107424px;')
+      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
     })
   })
 })
