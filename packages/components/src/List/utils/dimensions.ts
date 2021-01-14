@@ -66,3 +66,12 @@ export const densityN3: ListItemDimensions = {
   labelFontSize: 'xxsmall',
   labelLineHeight: 'xsmall',
 }
+
+// Lookup object
+export const densities = {
+  '-1': densityN1,
+  '-2': densityN2,
+  '-3': densityN3,
+  '0': density0,
+  '1': densityP1,
+}

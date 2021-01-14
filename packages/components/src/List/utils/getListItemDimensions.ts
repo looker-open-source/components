@@ -25,27 +25,8 @@
  */
 
 import { DensityRamp, ListItemDimensions } from '../types'
-import {
-  density0,
-  densityP1,
-  densityN1,
-  densityN2,
-  densityN3,
-} from './dimensions'
+import { densities } from './dimensions'
 
 export const getListItemDimensions = (
   density: DensityRamp
-): ListItemDimensions => {
-  switch (density) {
-    case -1:
-      return { ...densityN1 }
-    case -2:
-      return { ...densityN2 }
-    case -3:
-      return { ...densityN3 }
-    case 1:
-      return { ...densityP1 }
-    default:
-      return { ...density0 }
-  }
-}
+): ListItemDimensions => densities[density]
