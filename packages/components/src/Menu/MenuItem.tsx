@@ -161,7 +161,13 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       : props.rel
 
   const menuItemContent = (
-    <Component href={href} rel={rel} target={target} tabIndex={-1}>
+    <Component
+      href={href}
+      rel={rel}
+      role="menuitem"
+      target={target}
+      tabIndex={-1}
+    >
       {renderedIcon}
       <span>
         {children}

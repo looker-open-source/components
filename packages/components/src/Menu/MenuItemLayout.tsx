@@ -41,13 +41,7 @@ export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
  */
 const MenuItemWrapper = forwardRef(
   (props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
-    return (
-      <li
-        {...omit(props, 'compact', 'focusVisible')}
-        role="menuitem"
-        ref={ref}
-      />
-    )
+    return <li {...omit(props, 'compact', 'focusVisible')} ref={ref} />
   }
 )
 
