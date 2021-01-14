@@ -24,11 +24,14 @@
 
  */
 
-export const createSafeRel = (rel: string | undefined) => {
+export const createSafeRel = (
+  rel: string | undefined,
+  target: string | undefined
+) => {
   /**
    * `target="_blank" can be used to reverse tab-nab
    * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
    */
   const noTabNab = 'noopener noreferrer'
-  return rel ? `${rel} ${noTabNab}` : noTabNab
+  return target === '_blank' ? (rel ? `${rel} ${noTabNab}` : noTabNab) : rel
 }

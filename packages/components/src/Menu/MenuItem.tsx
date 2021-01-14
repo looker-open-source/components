@@ -152,7 +152,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const menuItemContent = (
     <Component
       href={href}
-      rel={target === '_blank' ? createSafeRel(props.rel) : props.rel}
+      rel={createSafeRel(props.rel, props.target)}
       role="menuitem"
       target={target}
       tabIndex={-1}

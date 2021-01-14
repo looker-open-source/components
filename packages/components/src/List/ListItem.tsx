@@ -150,7 +150,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const listItemContent = (
     <Component
       href={href}
-      rel={target === '_blank' ? createSafeRel(props.rel) : props.rel}
+      rel={createSafeRel(props.rel, props.target)}
       role="listitem"
       target={target}
       tabIndex={-1}
