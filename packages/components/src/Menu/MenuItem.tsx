@@ -24,35 +24,26 @@
 
  */
 
-import { CompatibleHTMLProps, transitions } from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
-import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, {
-  FC,
-  KeyboardEvent,
-  ReactNode,
-  useContext,
-  useState,
-  useEffect,
-} from 'react'
+import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
 import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
-import { NestedSurface } from '../Overlay/OverlaySurface'
-import { usePopover } from '../Popover'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
-import { useID, useWrapEvent } from '../utils'
+import { useID } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
-import { MenuList } from './MenuList'
-import { SubmenuContext } from './SubmenuProvider'
+import { useSubmenu, UseSubmenuProps } from './useSubmenu'
 
-export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
+export interface MenuItemProps
+  extends CompatibleHTMLProps<HTMLLIElement>,
+    Pick<UseSubmenuProps, 'submenu'> {
   iconArtwork?: ReactNode
   compact?: boolean
   /**
@@ -73,16 +64,9 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
    *
    */
   itemRole?: 'link' | 'button'
-  /**
-   * A list of menu items that will open to the right when the user hovers
-   * or hits the right arrow key
-   */
-  submenu?: ReactNode
   tooltip?: string
   tooltipPlacement?: Placement
 }
-
-const noop = () => undefined
 
 const MenuItemInternal: FC<MenuItemProps> = ({
   children,
@@ -116,67 +100,18 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   const compact = propCompact === undefined ? contextCompact : propCompact
 
   const id = useID(props.id)
-  const { value, change, delayChange } = useContext(SubmenuContext)
-  const openSubmenu = () => change(id)
-  const closeSubmenu = () => change('')
 
-  const itemHandlers = {
-    onKeyDown: useWrapEvent(
-      submenu
-        ? (e: KeyboardEvent<HTMLLIElement>) => {
-            if (e.key === 'ArrowRight') {
-              openSubmenu()
-            }
-          }
-        : noop,
-      onKeyDown
-    ),
-    onMouseEnter: useWrapEvent(
-      submenu
-        ? (e) => {
-            delayChange(id, transitions.simple)
-            // Focus the button so that when the submenu closes, focus trap will
-            // return focus here instead of the first item in the list
-            const button = e.currentTarget.querySelector('button')
-            button?.focus()
-          }
-        : noop,
-      onMouseEnter
-    ),
-    onMouseLeave: useWrapEvent(
-      submenu
-        ? () => {
-            delayChange('', transitions.simple)
-          }
-        : noop,
-      onMouseLeave
-    ),
-  }
-  const listHandlers = submenu
-    ? {
-        onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
-          if (e.key === 'ArrowLeft') {
-            closeSubmenu()
-          }
-        },
-        onMouseEnter: openSubmenu,
-        onMouseLeave: closeSubmenu,
-      }
-    : {}
-
-  const { popover, domProps } = usePopover({
-    content: (
-      <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
-        {submenu}
-      </MenuList>
-    ),
-    disabled: submenu === undefined,
-    isOpen: value === id,
-    placement: 'right-start',
-    scrollLock: false,
-    setOpen: closeSubmenu,
-    surface: NestedSurface,
-    triggerToggle: false,
+  const {
+    popover,
+    domProps: { onClick: wrappedOnClick, ...submenuProps },
+  } = useSubmenu({
+    compact,
+    id,
+    onClick,
+    onKeyDown,
+    onMouseEnter,
+    onMouseLeave,
+    submenu,
   })
 
   detail = submenu ? (
@@ -196,11 +131,11 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
-    onClick && onClick(event)
+    wrappedOnClick(event)
     // Close the Menu
     // unless event has preventDefault in onClick
     // or unless it has a submenu and no onClick
-    if (closeModal && !event.defaultPrevented && (!submenu || onClick)) {
+    if (closeModal && !event.defaultPrevented) {
       closeModal()
     }
   }
@@ -275,8 +210,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
         onKeyUp={handleOnKeyUp}
         className={className}
         {...props}
-        {...itemHandlers}
-        {...omit(domProps, 'onClick')}
+        {...submenuProps}
       >
         {tooltip ? (
           <Tooltip placement={tooltipPlacement} content={tooltip}>

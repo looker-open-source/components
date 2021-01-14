@@ -291,5 +291,37 @@ describe('<Menu />', () => {
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
       fireEvent.click(document)
     })
+
+    test('toggle on click', () => {
+      const onClick = jest.fn()
+      renderWithTheme(
+        <Menu
+          isOpen
+          content={
+            <>
+              <MenuItem submenu={<MenuItem>Camembert</MenuItem>}>
+                French
+              </MenuItem>
+              <MenuItem onClick={onClick} submenu={<MenuItem>Gouda</MenuItem>}>
+                Dutch
+              </MenuItem>
+            </>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // If the parent MenuItem doesn't have an onClick,
+      // click opens the submenu and doesn't close the parent Menu
+      fireEvent.click(screen.getByText('French'))
+      expect(screen.getByText('Camembert')).toBeVisible()
+
+      // If the parent MenuItem has an onClick, click doesn't open the submenu
+      // and the parent Menu is closed after
+      fireEvent.click(screen.getByText('Dutch'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    })
   })
 })

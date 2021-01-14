@@ -514,7 +514,7 @@ LongMenus.parameters = {
 
 export const WithDialog = () => {
   const { value, setOn, setOff } = useToggle()
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     e.preventDefault()
     setOn()
   }
@@ -603,11 +603,13 @@ export const NestedMenu = () => {
 
   const submenu = (
     <>
-      <MenuItem>Sub Item</MenuItem>
-      <MenuItem>Another Sub Item</MenuItem>
-      <MenuItem>Third Sub Item</MenuItem>
-      <MenuItem>4th Sub Item</MenuItem>
-      <MenuItem>Fifth Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Sub Item')}>Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Another Sub Item')}>
+        Another Sub Item
+      </MenuItem>
+      <MenuItem onClick={getOnClick('Third Sub Item')}>Third Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('4th Sub Item')}>4th Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Fifth Sub Item')}>Fifth Sub Item</MenuItem>
     </>
   )
   const content = (
@@ -621,10 +623,10 @@ export const NestedMenu = () => {
         </MenuItem>
       </MenuGroup>
       <MenuGroup label="Sub Menus">
+        <MenuItem submenu={submenu}>Sub Menu</MenuItem>
         <MenuItem onClick={getOnClick('Sub Menu')} submenu={submenu}>
-          Sub Menu
+          Sub Menu - with onClick
         </MenuItem>
-        <MenuItem submenu={submenu}>Sub Menu - no onClick</MenuItem>
         <MenuItem icon="Favorite" onClick={getOnClick('Favorite')}>
           Favorite
         </MenuItem>
