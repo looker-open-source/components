@@ -69,24 +69,24 @@ test('First page and previous page buttons are disabled when current === 1', () 
   expect(onPageChange).toHaveBeenCalledTimes(2)
 })
 
-test('First page button is disabled when current === 2', () => {
+test('First page button is enabled when current === 2', () => {
   const { getByText } = renderWithTheme(
     <Pagination current={2} pages={10} onChange={onPageChange} />
   )
   fireEvent.click(getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(0)
-
-  fireEvent.click(getByText('Previous page of results'))
   expect(onPageChange).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(getByText('Next page of results'))
+  fireEvent.click(getByText('Previous page of results'))
   expect(onPageChange).toHaveBeenCalledTimes(2)
 
-  fireEvent.click(getByText('Last page of results'))
+  fireEvent.click(getByText('Next page of results'))
   expect(onPageChange).toHaveBeenCalledTimes(3)
+
+  fireEvent.click(getByText('Last page of results'))
+  expect(onPageChange).toHaveBeenCalledTimes(4)
 })
 
-test('Last page button is disabled when current === (pages - 1)', () => {
+test('Last page button is enable when current === (pages - 1)', () => {
   const { getByText } = renderWithTheme(
     <Pagination current={9} pages={10} onChange={onPageChange} />
   )
@@ -100,7 +100,7 @@ test('Last page button is disabled when current === (pages - 1)', () => {
   expect(onPageChange).toHaveBeenCalledTimes(3)
 
   fireEvent.click(getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(3)
+  expect(onPageChange).toHaveBeenCalledTimes(4)
 })
 
 test('Last page and next page buttons are disabled when current === pages', () => {
