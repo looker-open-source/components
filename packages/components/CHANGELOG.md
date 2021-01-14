@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
 - `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
+- `Pagination` component now enables first and last page of results at same thresholds for previous and next
 
 ### Fixed
 
