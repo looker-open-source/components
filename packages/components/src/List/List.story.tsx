@@ -63,6 +63,10 @@ LongList.args = {
   children: array200.map((item, i) => <ListItem key={i}>{item}</ListItem>),
 }
 
+LongList.parameters = {
+  storyshots: false,
+}
+
 export const Density = () => (
   <>
     <List density={1}>{listItems}</List>
