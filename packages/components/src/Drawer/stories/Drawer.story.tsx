@@ -49,18 +49,21 @@ export const Open = Template.bind({})
 Open.args = {
   defaultOpen: true,
 }
+Open.parameters = { docs: { disable: true } }
 
 export const PlacementLeft = Template.bind({})
 PlacementLeft.args = {
   defaultOpen: true,
   placement: 'left',
 }
+PlacementLeft.parameters = { docs: { disable: true } }
 
 export const Width = Template.bind({})
 Width.args = {
   ...Open.args,
   width: '50rem',
 }
+Width.parameters = { docs: { disable: true } }
 
 export default {
   argTypes: {
