@@ -117,13 +117,15 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const id = useID(props.id)
   const { value, change, delayChange } = useContext(SubmenuContext)
+  const openSubmenu = () => change(id)
+  const closeSubmenu = () => change('')
 
   const itemHandlers = {
     onKeyDown: useWrapEvent(
       submenu
         ? (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'ArrowRight') {
-              change(id)
+              openSubmenu()
             }
           }
         : noop,
@@ -131,8 +133,12 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     ),
     onMouseEnter: useWrapEvent(
       submenu
-        ? () => {
+        ? (e) => {
             delayChange(id, transitions.simple)
+            // Focus the button so that when the submenu closes, focus trap will
+            // return focus here instead of the first item in the list
+            const button = e.currentTarget.querySelector('button')
+            button?.focus()
           }
         : noop,
       onMouseEnter
@@ -150,15 +156,11 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     ? {
         onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
           if (e.key === 'ArrowLeft') {
-            change('')
+            closeSubmenu()
           }
         },
-        onMouseEnter: () => {
-          change(id)
-        },
-        onMouseLeave: () => {
-          change('')
-        },
+        onMouseEnter: openSubmenu,
+        onMouseLeave: closeSubmenu,
       }
     : {}
 
@@ -173,7 +175,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     pin: true,
     placement: 'right-start',
     scrollLock: false,
-    setOpen: () => change(''),
+    setOpen: closeSubmenu,
     surface: NestedSurface,
     triggerToggle: false,
   })
