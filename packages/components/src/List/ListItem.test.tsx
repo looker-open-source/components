@@ -95,13 +95,13 @@ describe('ListItem', () => {
   })
 
   test('has rel="noopener noreferrer" when it has target="_blank" and no passed-in rel prop value', () => {
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ListItem itemRole="link" href="https://google.com" target="_blank">
         Link
       </ListItem>
     )
 
-    const item = getAllByRole('listitem')[1]
+    const item = getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -110,7 +110,7 @@ describe('ListItem', () => {
   })
 
   test('auto appends "noopener noreferrer" to rel prop value when itemRole="link", target="_blank" and rel is not undefined', () => {
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ListItem
         itemRole="link"
         href="https://google.com"
@@ -121,7 +121,7 @@ describe('ListItem', () => {
       </ListItem>
     )
 
-    const item = getAllByRole('listitem')[1]
+    const item = getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -130,13 +130,13 @@ describe('ListItem', () => {
   })
 
   test('does not auto append "noopener noreferrer" to link without target="_blank"', () => {
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ListItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
       </ListItem>
     )
 
-    const item = getAllByRole('listitem')[1]
+    const item = getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')

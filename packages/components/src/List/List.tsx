@@ -188,7 +188,7 @@ export const ListInternal = forwardRef(
 
     return (
       <ListItemContext.Provider value={context}>
-        <ul tabIndex={-1} role="list" {...omitStyledProps(props)} {...navProps}>
+        <ul tabIndex={-1} {...omitStyledProps(props)} {...navProps}>
           {label && <ListLabel>{label}</ListLabel>}
           {content}
         </ul>

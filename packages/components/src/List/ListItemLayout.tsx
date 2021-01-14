@@ -47,6 +47,7 @@ const ListItemWrapper = forwardRef(
       <li
         {...omit(props, 'focusVisible', [...listItemDimensionKeys])}
         ref={ref}
+        role="none"
       />
     )
   }
