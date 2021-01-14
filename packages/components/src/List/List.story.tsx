@@ -61,7 +61,6 @@ const array200 = Array.from(Array(200), (_, i) => String(i + 1))
 export const LongList = Template.bind({})
 LongList.args = {
   children: array200.map((item, i) => <ListItem key={i}>{item}</ListItem>),
-  height: '100vh',
 }
 
 export const Density = () => (
