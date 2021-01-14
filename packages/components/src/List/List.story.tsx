@@ -66,22 +66,14 @@ LongList.args = {
 
 export const Density = () => (
   <>
-    <List label="1" density={1}>
-      {listItems}
-    </List>
+    <List density={1}>{listItems}</List>
     <Divider />
-    <List label="0">{listItems}</List>
+    <List>{listItems}</List>
     <Divider />
-    <List label="-1" density={-1}>
-      {listItems}
-    </List>
+    <List density={-1}>{listItems}</List>
     <Divider />
-    <List label="-2" density={-2}>
-      {listItems}
-    </List>
+    <List density={-2}>{listItems}</List>
     <Divider />
-    <List label="-3" density={-3}>
-      {listItems}
-    </List>
+    <List density={-3}>{listItems}</List>
   </>
 )

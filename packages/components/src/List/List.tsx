@@ -29,7 +29,6 @@ import React, {
   forwardRef,
   isValidElement,
   ReactChild,
-  ReactNode,
   Ref,
   useEffect,
   useMemo,
@@ -57,7 +56,6 @@ import {
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
-import { ListLabel } from './ListLabel'
 import { getListItemDimensions } from './utils/getListItemDimensions'
 import { DensityRamp } from './types'
 
@@ -75,9 +73,6 @@ export interface ListProps
    * @default medium
    */
   density?: DensityRamp
-
-  /** Label displayed above the child list */
-  label?: ReactNode
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width)
@@ -100,7 +95,6 @@ export const ListInternal = forwardRef(
       children,
       density,
       disabled,
-      label,
       windowing,
       onBlur,
       onFocus,
@@ -166,7 +160,6 @@ export const ListInternal = forwardRef(
     return (
       <ListItemContext.Provider value={context}>
         <ul tabIndex={-1} {...omitStyledProps(props)} {...navProps}>
-          {label && <ListLabel>{label}</ListLabel>}
           {content}
         </ul>
       </ListItemContext.Provider>
