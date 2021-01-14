@@ -36,6 +36,7 @@ import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
 import { Tooltip } from '../Tooltip'
+import { createSafeRel } from '../List/utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
 
@@ -148,22 +149,10 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   }
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
-  /**
-   * `target="_blank" can be used to reverse tab-nab
-   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
-   */
-  const noTabNab = 'noopener noreferrer'
-  const rel =
-    target === '_blank'
-      ? props.rel
-        ? `${props.rel} ${noTabNab}`
-        : noTabNab
-      : props.rel
-
   const menuItemContent = (
     <Component
       href={href}
-      rel={rel}
+      rel={target === '_blank' ? createSafeRel(props.rel) : props.rel}
       role="menuitem"
       target={target}
       tabIndex={-1}

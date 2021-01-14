@@ -24,6 +24,11 @@
 
  */
 
-export * from './createSafeRel'
-export * from './dimensions'
-export * from './getListItemDimensions'
+export const createSafeRel = (rel: string | undefined) => {
+  /**
+   * `target="_blank" can be used to reverse tab-nab
+   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+   */
+  const noTabNab = 'noopener noreferrer'
+  return rel ? `${rel} ${noTabNab}` : noTabNab
+}

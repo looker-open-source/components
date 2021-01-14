@@ -35,6 +35,7 @@ import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
+import { createSafeRel } from './utils'
 
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
   iconArtwork?: ReactNode
@@ -134,18 +135,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   }
   const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
-  /**
-   * `target="_blank" can be used to reverse tab-nab
-   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
-   */
-  const noTabNab = 'noopener noreferrer'
-  const rel =
-    target === '_blank'
-      ? props.rel
-        ? `${props.rel} ${noTabNab}`
-        : noTabNab
-      : props.rel
-
   const renderedChildren =
     typeof children === 'string' ? (
       <Paragraph
@@ -161,7 +150,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const listItemContent = (
     <Component
       href={href}
-      rel={rel}
+      rel={target === '_blank' ? createSafeRel(props.rel) : props.rel}
       role="listitem"
       target={target}
       tabIndex={-1}
