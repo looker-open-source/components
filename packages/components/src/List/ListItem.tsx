@@ -29,12 +29,10 @@ import { IconNames } from '@looker/icons'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
-import { Placement } from '@popperjs/core'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
-import { Tooltip } from '../Tooltip'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 
@@ -58,8 +56,6 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    *
    */
   itemRole?: 'link' | 'button'
-  tooltip?: string
-  tooltipPlacement?: Placement
 }
 
 const ListItemInternal: FC<ListItemProps> = (props) => {
@@ -78,8 +74,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
-    tooltip,
-    tooltipPlacement = 'left',
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
@@ -196,13 +190,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       className={className}
       {...itemDimensions}
     >
-      {tooltip ? (
-        <Tooltip placement={tooltipPlacement} content={tooltip}>
-          {listItemContent}
-        </Tooltip>
-      ) : (
-        listItemContent
-      )}
+      {listItemContent}
     </ListItemLayout>
   )
 }

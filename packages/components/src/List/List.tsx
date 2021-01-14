@@ -24,7 +24,6 @@
 
  */
 
-import { Placement } from '@popperjs/core'
 import React, {
   Children,
   forwardRef,
@@ -81,26 +80,6 @@ export interface ListProps
   label?: ReactNode
 
   /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popper.js. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
-
-  /**
-   * By default List will reposition itself if they overflow the widow.
-   * You can use the pin property to override this behavior.
-   */
-  pin?: boolean
-
-  /**
-   * Allow the overlay to break out of the scroll parent
-   */
-  escapeWithReference?: boolean
-
-  /**
    * Use windowing for long lists (strongly recommended to also define a width)
    * 'none' - default with children are <= 100.
    * 'fixed' - better performance, default when first child is a ListItem
@@ -122,8 +101,6 @@ export const ListInternal = forwardRef(
       density,
       disabled,
       label,
-      pin,
-      placement,
       windowing,
       onBlur,
       onFocus,
@@ -209,9 +186,5 @@ export const List = styled(ListInternal).attrs(({ minWidth = '12rem' }) => ({
   ${maxWidth}
   ${width}
 
-  border-radius: inherit;
   list-style: none;
-  outline: none;
-  overflow: auto;
-  user-select: none;
 `
