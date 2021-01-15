@@ -26,7 +26,7 @@
 
 import omit from 'lodash/omit'
 import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { ListItemDimensions, listItemDimensionKeys } from './types'
@@ -34,6 +34,7 @@ import { ListItemDimensions, listItemDimensionKeys } from './types'
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ListItemDimensions {
+  description?: ReactNode
   focusVisible?: boolean
 }
 
@@ -125,6 +126,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
   `}
 
   ${Icon} {
+    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
     transition: color
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }

@@ -171,6 +171,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   return (
     <ListItemLayout
       aria-current={current && 'true'}
+      description={description}
       disabled={disabled}
       focusVisible={isFocusVisible}
       onBlur={handleOnBlur}
@@ -184,8 +185,4 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   )
 }
 
-export const ListItem = styled(ListItemInternal)`
-  ${Icon} {
-    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
-  }
-`
+export const ListItem = styled(ListItemInternal)``
