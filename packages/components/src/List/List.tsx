@@ -54,6 +54,12 @@ export interface ListProps
   density?: DensityRamp
 
   /**
+   * If true, all ListItem children without an icon will reserve space for an icon
+   * for alignment purposes.
+   */
+  iconGutter?: boolean
+
+  /**
    * Use windowing for long lists (strongly recommended to also define a width)
    * 'none' - default with children are <= 100.
    * 'fixed' - better performance, default when first child is a ListItem
@@ -74,6 +80,7 @@ export const ListInternal = forwardRef(
       children,
       density,
       disabled,
+      iconGutter = false,
       windowing,
       onBlur,
       onFocus,
@@ -116,9 +123,8 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      iconGutter,
       itemDimensions,
-      renderIconPlaceholder,
-      setRenderIconPlaceholder,
     }
 
     return (

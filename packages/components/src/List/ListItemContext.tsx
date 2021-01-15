@@ -30,11 +30,11 @@ import { density0 } from './utils'
 
 export interface ListItemContextProps {
   itemDimensions: ItemDimensions
-  renderIconPlaceholder?: boolean
-  setRenderIconPlaceholder?: (state: boolean) => void
+  iconGutter: boolean
 }
 
 const listItemContext: ListItemContextProps = {
+  iconGutter: false,
   /**
    * List will pass a default itemDimensions object if user does not provide density value
    * ListItems that do not have a parent List will use this default density dimensions object

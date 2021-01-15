@@ -57,6 +57,12 @@ Basic.args = {
   children: listItems,
 }
 
+export const IconGutter = Template.bind({})
+IconGutter.args = {
+  ...Basic.args,
+  iconGutter: true,
+}
+
 const array200 = Array.from(Array(200), (_, i) => String(i + 1))
 export const LongList = Template.bind({})
 LongList.args = {
@@ -69,14 +75,22 @@ LongList.parameters = {
 
 export const Density = () => (
   <>
-    <List density={1}>{listItems}</List>
+    <List iconGutter density={1}>
+      {listItems}
+    </List>
     <Divider />
-    <List>{listItems}</List>
+    <List iconGutter>{listItems}</List>
     <Divider />
-    <List density={-1}>{listItems}</List>
+    <List iconGutter density={-1}>
+      {listItems}
+    </List>
     <Divider />
-    <List density={-2}>{listItems}</List>
+    <List iconGutter density={-2}>
+      {listItems}
+    </List>
     <Divider />
-    <List density={-3}>{listItems}</List>
+    <List iconGutter density={-3}>
+      {listItems}
+    </List>
   </>
 )

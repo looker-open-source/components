@@ -84,11 +84,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onBlur && onBlur(event)
   }
 
-  const {
-    itemDimensions,
-    renderIconPlaceholder,
-    setRenderIconPlaceholder,
-  } = useContext(ListItemContext)
+  const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -99,12 +95,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onKeyUp && onKeyUp(event)
     setFocusVisible(true)
   }
-
-  useEffect(() => {
-    if (isFunction(setRenderIconPlaceholder)) {
-      icon && setRenderIconPlaceholder(true)
-    }
-  }, [icon, setRenderIconPlaceholder])
 
   const renderedIconID = useID(props.id)
 
@@ -118,7 +108,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         mr={itemDimensions.iconGap}
       />
     ) : (
-      renderIconPlaceholder && (
+      iconGutter && (
         <IconPlaceholder
           data-testid={`list-item-${renderedIconID}-icon-placeholder`}
           size={itemDimensions.iconSize}
