@@ -36,7 +36,6 @@ import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
 
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
-  iconArtwork?: ReactNode
   /**
    * Indicates the ListItem is checked
    */
@@ -45,17 +44,24 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    * optional extra description
    */
   description?: ReactNode
+  /**
+   * Detail element placed right of the item children
+   */
   detail?: ReactNode
+  /**
+   * Optional icon placed left of the item children
+   */
   icon?: IconNames
+  /**
+   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
+   */
+  iconArtwork?: ReactNode
   /**
    * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-   * - Use **'none'** for all other items
-   * @default 'none'
-   *
    */
-  itemRole?: 'link' | 'button' | 'none'
+  itemRole?: 'link' | 'button'
 }
 
 const ListItemInternal: FC<ListItemProps> = (props) => {
