@@ -46,7 +46,7 @@ import { Layout } from './Layout'
 import { PropsExamples } from './PropsExamples'
 
 const githubBase =
-  'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
+  'https://github.com/looker-open-source/components/blob/main/packages/components/src/'
 
 interface DocQuery {
   data: {

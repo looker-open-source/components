@@ -1,0 +1,52 @@
+name: Looker Components release (Pull Request)
+
+# This workflow creates or updates (if already exists) a pull request with new
+# version bump on every commit to main.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**/*.ts'
+      - 'packages/**/*.tsx'
+      - '**/package*.json'
+
+jobs:
+  release-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Fetch all tags
+        run: |
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Bump version
+        run: |
+          yarn bumpversion
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: Release"
+          author: Cloud Looker Components <cloud-looker-components@google.com>
+          title: "chore: Release"
+          body: |
+            This PR was opened by [release][1] GitHub action.
+            When you're ready to do a release, you can merge this pull request and the NPM packages
+            will automatically be published to NPM.
+            If you're not ready to do a release yet, that's fine, whenever you
+            add more commits to main, this PR will be updated.
+            [1]: http://github.com/looker-open-source/components/tree/main/.github/workflows/release-pull-request.yml
+          branch: chore/release
