@@ -24,9 +24,8 @@
 
  */
 
-import { DensityRamp, ListItemDimensions } from '../types'
+import { DensityRamp, ItemDimensions } from '../types'
 import { densities } from './dimensions'
 
-export const getListItemDimensions = (
-  density: DensityRamp
-): ListItemDimensions => densities[density]
+export const getItemDimensions = (density: DensityRamp): ItemDimensions =>
+  densities[density]

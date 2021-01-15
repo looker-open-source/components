@@ -29,11 +29,11 @@ import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
-import { ListItemDimensions, listItemDimensionKeys } from './types'
+import { ItemDimensions, itemDimensionKeys } from './types'
 
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    ListItemDimensions {
+    ItemDimensions {
   description?: ReactNode
   focusVisible?: boolean
 }
@@ -46,7 +46,7 @@ const ListItemWrapper = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(props, 'focusVisible', [...listItemDimensionKeys])}
+        {...omit(props, 'focusVisible', [...itemDimensionKeys])}
         ref={ref}
         role="none"
       />
@@ -89,10 +89,8 @@ export const ListItemLayout = styled(ListItemWrapper)`
     min-height: ${({ height }) => `${height}px`};
     outline: none;
     /*
-      TODO: Currently "small" / "compact" ListItems are at 44px with a description
-      instead of the desired 48px. We could either manually set the py to 6px like
-      in the design specs or add "heightWithDescription" to our getListItemDimensions
-      return objects.
+      This override gets density = -1 ListItems to the desired 48px min height.
+      Without it, density = -1 ListItems would be at 44px.
      */
     padding: ${({ px, py, theme }) =>
       `${py === '0.375rem' ? py : theme.space[py]} ${theme.space[px]}`};

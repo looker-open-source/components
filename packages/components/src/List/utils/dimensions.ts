@@ -24,9 +24,9 @@
 
  */
 
-import { ListItemDimensions } from '../types'
+import { ItemDimensions } from '../types'
 
-export const density0: ListItemDimensions = {
+export const density0: ItemDimensions = {
   height: 36,
   iconGap: 'small',
   iconSize: 'small',
@@ -37,7 +37,7 @@ export const density0: ListItemDimensions = {
 }
 
 // Positive density values
-export const densityP1: ListItemDimensions = {
+export const densityPositive1: ItemDimensions = {
   ...density0,
   height: 48,
   iconSize: 'medium',
@@ -47,20 +47,20 @@ export const densityP1: ListItemDimensions = {
 }
 
 // Negative density values
-export const densityN1: ListItemDimensions = {
+export const densityNegative1: ItemDimensions = {
   ...density0,
   height: 32,
-  py: '0.375rem',
+  py: '0.375rem', // Note: We could get this value with "calc(${theme.xxsmall} + ${theme.xxxsmall})"
 }
-export const densityN2: ListItemDimensions = {
-  ...densityN1,
+export const densityNegative2: ItemDimensions = {
+  ...densityNegative1,
   height: 28,
   iconGap: 'xsmall',
   iconSize: 'xsmall',
   py: 'xxsmall',
 }
-export const densityN3: ListItemDimensions = {
-  ...densityN2,
+export const densityNegative3: ItemDimensions = {
+  ...densityNegative2,
   height: 24,
   iconSize: 'xxsmall',
   labelFontSize: 'xxsmall',
@@ -69,9 +69,9 @@ export const densityN3: ListItemDimensions = {
 
 // Lookup object
 export const densities = {
-  '-1': densityN1,
-  '-2': densityN2,
-  '-3': densityN3,
+  '-1': densityNegative1,
+  '-2': densityNegative2,
+  '-3': densityNegative3,
   '0': density0,
-  '1': densityP1,
+  '1': densityPositive1,
 }

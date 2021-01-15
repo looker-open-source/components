@@ -26,4 +26,4 @@
 
 export * from './createSafeRel'
 export * from './dimensions'
-export * from './getListItemDimensions'
+export * from './getItemDimensions'

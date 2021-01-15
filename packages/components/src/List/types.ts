@@ -29,7 +29,7 @@ import { IconSize } from '..'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
-export interface ListItemDimensions {
+export interface ItemDimensions {
   height: number
   px: SpacingSizes
   py: SpacingSizes | '0.375rem'
@@ -39,7 +39,7 @@ export interface ListItemDimensions {
   labelLineHeight: LineHeights
 }
 
-export const listItemDimensionKeys = [
+export const itemDimensionKeys = [
   'height',
   'px',
   'py',

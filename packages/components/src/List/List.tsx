@@ -41,7 +41,7 @@ import {
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
-import { getListItemDimensions } from './utils/getListItemDimensions'
+import { getItemDimensions } from './utils'
 import { DensityRamp } from './types'
 
 export interface ListProps
@@ -86,7 +86,7 @@ export const ListInternal = forwardRef(
 
     const childArray = useMemo(() => Children.toArray(children), [children])
 
-    const itemDimensions = getListItemDimensions(
+    const itemDimensions = getItemDimensions(
       density !== undefined ? density : 0
     )
 

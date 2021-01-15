@@ -25,11 +25,11 @@
  */
 
 import { createContext } from 'react'
-import { ListItemDimensions } from './types'
+import { ItemDimensions } from './types'
 import { density0 } from './utils'
 
 export interface ListItemContextProps {
-  itemDimensions: ListItemDimensions
+  itemDimensions: ItemDimensions
   renderIconPlaceholder?: boolean
   setRenderIconPlaceholder?: (state: boolean) => void
 }
