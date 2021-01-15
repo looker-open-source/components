@@ -26,12 +26,10 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
+import React, { FC, ReactNode, useContext, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
-import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
@@ -96,8 +94,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     setFocusVisible(true)
   }
 
-  const renderedIconID = useID(props.id)
-
   const renderedIcon =
     icon || iconArtwork ? (
       <Icon
@@ -110,7 +106,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     ) : (
       iconGutter && (
         <IconPlaceholder
-          data-testid={`list-item-${renderedIconID}-icon-placeholder`}
           size={itemDimensions.iconSize}
           iconGap={itemDimensions.iconGap}
         />

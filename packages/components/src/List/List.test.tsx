@@ -35,17 +35,6 @@ import { List } from './List'
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
 describe('List', () => {
-  test('allocates space for ListItem when a sibling has an icon', () => {
-    const { getByTestId } = renderWithTheme(
-      <List>
-        <ListItem icon="Calendar">Gouda</ListItem>
-        <ListItem id="cheddar">Cheddar</ListItem>
-      </List>
-    )
-
-    getByTestId('list-item-cheddar-icon-placeholder')
-  })
-
   describe('windowing', () => {
     beforeEach(() => {
       jest.useFakeTimers()
