@@ -31,8 +31,8 @@
 // 2. No need for most of the configurable features
 // 3. The text of an input should not be selected on focus if it is readonly
 
-import { Trap } from '@looker/components-providers'
 import { tabbable, isFocusable, FocusableElement } from 'tabbable'
+import { Trap } from '../TrapStack/types'
 
 const isSelectableInput = (
   node: FocusableElement
