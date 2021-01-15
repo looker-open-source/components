@@ -136,6 +136,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
       renderIconPlaceholder && (
         <IconPlaceholder
           data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+          mr="xsmall"
           size={compact ? 'small' : 'medium'}
         />
       )

@@ -107,7 +107,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       iconGutter && (
         <IconPlaceholder
           size={itemDimensions.iconSize}
-          iconGap={itemDimensions.iconGap}
+          mr={itemDimensions.iconGap}
         />
       )
     )

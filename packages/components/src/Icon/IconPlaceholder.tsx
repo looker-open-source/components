@@ -24,20 +24,25 @@
 
  */
 
-import { CompatibleHTMLProps, size, SizeProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  size,
+  SizeProps,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React from 'react'
 import styled from 'styled-components'
 
 export interface IconPlaceholderProps
   extends CompatibleHTMLProps<HTMLDivElement>,
-    SizeProps {
-  iconGap?: string
-}
+    SizeProps,
+    SpaceProps {}
 
 export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
   <div aria-hidden {...omit(props, 'iconGap')} />
 ))`
   ${size}
-  margin-right: ${({ iconGap = 'xsmall', theme }) => theme.space[iconGap]};
+  ${space}
 `
