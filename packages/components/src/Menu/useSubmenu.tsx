@@ -34,6 +34,7 @@ import { MenuList } from './MenuList'
 import { SubmenuContext } from './SubmenuProvider'
 
 export interface UseSubmenuProps
+  // Pick the events that need to be wrapped with various handlers from MenuItem's props.
   extends Pick<
     CompatibleHTMLProps<HTMLLIElement>,
     'onClick' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
@@ -59,11 +60,15 @@ export const useSubmenu = ({
   submenu,
 }: UseSubmenuProps) => {
   const { value, change, delayChange } = useContext(SubmenuContext)
+  // Show the submenu by updating the context with the id for this one
+  // Hide it by updating the context to an empty string
   const openSubmenu = () => change(id)
   const closeSubmenu = () => change('')
 
   const itemHandlers = {
     onClick: useWrapEvent((e: MouseEvent<HTMLLIElement>) => {
+      // If there's an onClick in MenuItem props, that wins
+      // Otherwise preventDefault to keep the parent Menu open
       if (submenu && !onClick) {
         openSubmenu()
         e.preventDefault()
@@ -82,6 +87,9 @@ export const useSubmenu = ({
     onMouseEnter: useWrapEvent(
       submenu
         ? (e) => {
+            // Use a delay for mouse enter/leave so that the user has time to
+            // move their mouse from the parent item to the submenu
+            // potentially hovering other items with submenus in between
             delayChange(id, transitions.simple)
             // Focus the button so that when the submenu closes, focus trap will
             // return focus here instead of the first item in the list
@@ -119,11 +127,17 @@ export const useSubmenu = ({
       </MenuList>
     ),
     disabled: submenu === undefined,
+    // The submenu is only open if the current id matches the one stored in context
     isOpen: value === id,
     placement: 'right-start',
+    // For long menus, the user may need to scroll away
+    // The resulting mouseleave will close the submenu
     scrollLock: false,
+    // Since domProps.onClick is not being used, setOpen only needs to close
+    // (on click outside or esc key)
     setOpen: closeSubmenu,
     surface: NestedSurface,
+    // Clicking on the MenuItem again should not close the submenu
     triggerToggle: false,
   })
 

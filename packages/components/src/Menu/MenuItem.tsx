@@ -103,7 +103,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const {
     popover,
-    domProps: { onClick: wrappedOnClick, ...submenuProps },
+    domProps: { onClick: submenuOnClick, ...submenuProps },
   } = useSubmenu({
     compact,
     id,
@@ -131,10 +131,9 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
-    wrappedOnClick(event)
-    // Close the Menu
-    // unless event has preventDefault in onClick
-    // or unless it has a submenu and no onClick
+    // submenuOnClick wraps onClick from props
+    submenuOnClick(event)
+    // Close the Menu unless event has preventDefault
     if (closeModal && !event.defaultPrevented) {
       closeModal()
     }
@@ -220,6 +219,9 @@ const MenuItemInternal: FC<MenuItemProps> = ({
           menuItemContent
         )}
       </MenuItemLayout>
+      {/* Keep submenu popover outside of MenuItemLayout to prevent its events
+       from bubbling up to the MenuItem (especially onClick)
+       due to React Portal event bubbling */}
       {popover}
     </>
   )

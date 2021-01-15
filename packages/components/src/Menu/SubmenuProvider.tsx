@@ -35,6 +35,8 @@ const submenuContext: UseDelayedStateReturn<string> = {
 
 export const SubmenuContext = createContext(submenuContext)
 
+// Stores the id for the current submenu to prevent them
+// from competing with each other (e.g. from hover vs arrow key)
 export const SubmenuProvider: FC = ({ children }) => {
   const submenuProps = useDelayedState<string>('')
   return (
