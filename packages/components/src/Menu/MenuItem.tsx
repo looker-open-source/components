@@ -92,6 +92,8 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   tooltipPlacement = 'left',
   ...props
 }) => {
+  const [isFocusVisible, setFocusVisible] = useState(false)
+
   const {
     compact: contextCompact,
     renderIconPlaceholder,
@@ -119,8 +121,6 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   ) : (
     detail
   )
-
-  const [isFocusVisible, setFocusVisible] = useState(false)
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
