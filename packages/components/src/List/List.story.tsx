@@ -24,10 +24,12 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Divider } from '..'
-import { List, ListProps, ListItem } from '.'
+import { Grid } from '../Layout'
+import { DensityRamp } from './types'
+import { List, ListProps } from './List'
+import { ListItem } from './ListItem'
 
 export default {
   component: List,
@@ -36,16 +38,13 @@ export default {
 
 const listItems = (
   <>
-    <ListItem
-      icon="Calendar"
-      detail="Somerset"
-      description="relatively hard, off-white cheese"
-    >
+    <ListItem icon="Calendar" description="Orange-y">
       Cheddar
     </ListItem>
     <ListItem icon="Pivot" detail="Netherlands">
       Gouda
     </ListItem>
+    <ListItem current>Mozzarella</ListItem>
     <ListItem>Swiss</ListItem>
   </>
 )
@@ -73,24 +72,18 @@ LongList.parameters = {
   storyshots: false,
 }
 
+const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
+  <List iconGutter density={density}>
+    {listItems}
+  </List>
+)
+
 export const Density = () => (
-  <>
-    <List iconGutter density={1}>
-      {listItems}
-    </List>
-    <Divider />
-    <List iconGutter>{listItems}</List>
-    <Divider />
-    <List iconGutter density={-1}>
-      {listItems}
-    </List>
-    <Divider />
-    <List iconGutter density={-2}>
-      {listItems}
-    </List>
-    <Divider />
-    <List iconGutter density={-3}>
-      {listItems}
-    </List>
-  </>
+  <Grid columns={5}>
+    <DensityExample density={1} />
+    <DensityExample />
+    <DensityExample density={-1} />
+    <DensityExample density={-2} />
+    <DensityExample density={-3} />
+  </Grid>
 )
