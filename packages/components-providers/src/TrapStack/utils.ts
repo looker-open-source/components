@@ -32,8 +32,8 @@ export const getActiveTrap = (trapMap: TrapMap) => {
   const elements = Object.values(trapMap)
   if (elements.length === 0) return null
 
-  const sortedElements = elements.sort((elementA, elementB) => {
-    const relationship = elementA.compareDocumentPosition(elementB)
+  const sortedElements = elements.sort((trapA, trapB) => {
+    const relationship = trapA.element.compareDocumentPosition(trapB.element)
     return relationship > 3 ? 1 : -1
   })
   return sortedElements[0] || null

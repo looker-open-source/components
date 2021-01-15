@@ -27,28 +27,24 @@
 import { FocusTrapProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React, { FC } from 'react'
 import { FieldText } from '../Form/Fields'
 import { useFocusTrap, useToggle } from './'
 
-// const globalConsole = global.console
-// const warnMock = jest.fn()
-
 beforeEach(() => {
-  // global.console = ({
-  //   warn: warnMock,
-  // } as unknown) as Console
   jest.useFakeTimers()
 })
 afterEach(() => {
-  // jest.resetAllMocks()
-  // global.console = globalConsole
   jest.runOnlyPendingTimers()
   jest.useRealTimers()
 })
 
-const Inner: FC = ({ children }) => {
-  const [, ref] = useFocusTrap()
+const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
+  children,
+  clickOutsideDeactivates,
+}) => {
+  const [, ref] = useFocusTrap({ options: { clickOutsideDeactivates } })
   const { value, setOff, toggle } = useToggle()
   return (
     <>
@@ -59,10 +55,15 @@ const Inner: FC = ({ children }) => {
   )
 }
 
-const FocusTrapComponent: FC = ({ children }) => {
+const FocusTrapComponent: FC<{ clickOutsideDeactivates?: boolean }> = ({
+  children,
+  clickOutsideDeactivates,
+}) => {
   return (
     <FocusTrapProvider>
-      <Inner>{children}</Inner>
+      <Inner clickOutsideDeactivates={clickOutsideDeactivates}>
+        {children}
+      </Inner>
     </FocusTrapProvider>
   )
 }
@@ -204,6 +205,44 @@ describe('useFocusTrap', () => {
       // because using focus/blur events would be "too late"
       fireEvent.keyDown(input, { key: 'Tab' })
       expect(input).toHaveFocus()
+    })
+  })
+
+  describe('click outside', () => {
+    test('does not deactivate by default', async () => {
+      render(
+        <>
+          <FocusTrapComponent>
+            <Surface />
+          </FocusTrapComponent>
+          <button>outside</button>
+        </>
+      )
+      userEvent.click(screen.getByText('toggle'))
+
+      const surface = screen.getByTestId('surface')
+      await waitFor(() => expect(surface).toHaveFocus())
+
+      userEvent.click(screen.getByText('outside'))
+      expect(surface).toHaveFocus()
+    })
+    test('with clickOutsideDeactivates', async () => {
+      render(
+        <>
+          <FocusTrapComponent clickOutsideDeactivates>
+            <Surface />
+          </FocusTrapComponent>
+          <button>outside</button>
+        </>
+      )
+      userEvent.click(screen.getByText('toggle'))
+
+      const surface = screen.getByTestId('surface')
+      await waitFor(() => expect(surface).toHaveFocus())
+
+      const outside = screen.getByText('outside')
+      userEvent.click(outside)
+      expect(outside).toHaveFocus()
     })
   })
 })

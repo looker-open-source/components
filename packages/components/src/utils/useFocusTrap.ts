@@ -27,6 +27,10 @@
 import { FocusTrapContext } from '@looker/components-providers'
 import { useTrapStack, UseTrapStackProps } from './useTrapStack'
 
-export const useFocusTrap = <T extends HTMLElement = HTMLElement>(
-  props: Omit<UseTrapStackProps<T>, 'context'> = {}
+export interface UseFocusTrapOptions {
+  clickOutsideDeactivates?: boolean
+}
+
+export const useFocusTrap = <E extends HTMLElement = HTMLElement>(
+  props: Omit<UseTrapStackProps<E, UseFocusTrapOptions>, 'context'> = {}
 ) => useTrapStack({ context: FocusTrapContext, ...props })
