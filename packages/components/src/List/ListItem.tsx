@@ -51,10 +51,11 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-   * @default 'button'
+   * - Use **'none'** for all other items
+   * @default 'none'
    *
    */
-  itemRole?: 'link' | 'button'
+  itemRole?: 'link' | 'button' | 'none'
 }
 
 const ListItemInternal: FC<ListItemProps> = (props) => {
@@ -118,7 +119,12 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
+  const Component =
+    !disabled && itemRole === 'link'
+      ? 'a'
+      : itemRole === 'button'
+      ? 'button'
+      : 'div'
 
   const renderedChildren =
     typeof children === 'string' ? (
