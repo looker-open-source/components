@@ -89,8 +89,6 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    const [renderIconPlaceholder, setRenderIconPlaceholder] = useState(false)
-
     const childArray = useMemo(() => Children.toArray(children), [children])
 
     const itemDimensions = getItemDimensions(
