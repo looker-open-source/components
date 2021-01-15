@@ -62,23 +62,6 @@ describe('ListItem', () => {
     expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
   })
 
-  test('is a button when disabled', () => {
-    const callbackFn = jest.fn()
-
-    renderWithTheme(
-      <ListItem
-        disabled={true}
-        href="https://google.com"
-        onClick={callbackFn}
-        target="_blank"
-      >
-        Item
-      </ListItem>
-    )
-    const item = screen.getByText('Item')
-    expect(item.closest('button')).toBeInTheDocument()
-  })
-
   test('is not clickable when disabled', () => {
     const callbackFn = jest.fn()
 
