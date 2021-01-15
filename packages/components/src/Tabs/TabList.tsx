@@ -24,14 +24,7 @@
 
  */
 
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  KeyboardEvent,
-  useRef,
-  Ref,
-} from 'react'
+import React, { Children, cloneElement, forwardRef, Ref } from 'react'
 import {
   fontSize,
   FontSizeProps,
@@ -40,8 +33,7 @@ import {
   reset,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { moveFocus, useForkedRef } from '../utils'
-import { TabContext } from './TabContext'
+import { useArrowKeyNav } from '../utils'
 import { Tab } from '.'
 
 export interface TabListProps extends PaddingProps, FontSizeProps {
@@ -57,9 +49,6 @@ const TabListLayout = forwardRef(
     { children, selectedIndex, onSelectTab, className }: TabListProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const wrapperRef = useRef<HTMLDivElement>(null)
-    const forkedRef = useForkedRef(wrapperRef, ref)
-
     const clonedChildren = Children.map(
       children,
       (child: JSX.Element, index: number) => {
@@ -72,34 +61,12 @@ const TabListLayout = forwardRef(
       }
     )
 
-    function handleArrowKey(direction: number, initial: number) {
-      moveFocus(direction, initial, wrapperRef.current)
-    }
-
-    const context = {
-      handleArrowLeft: (e: KeyboardEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        handleArrowKey(-1, -1)
-        return false
-      },
-      handleArrowRight: (e: KeyboardEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        handleArrowKey(1, 0)
-        return false
-      },
-    }
+    const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
 
     return (
-      <TabContext.Provider value={context}>
-        <div
-          aria-label="Tabs"
-          className={className}
-          ref={forkedRef}
-          role="tablist"
-        >
-          {clonedChildren}
-        </div>
-      </TabContext.Provider>
+      <div aria-label="Tabs" className={className} role="tablist" {...navProps}>
+        {clonedChildren}
+      </div>
     )
   }
 )

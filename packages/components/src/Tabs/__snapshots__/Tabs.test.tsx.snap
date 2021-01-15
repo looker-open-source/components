@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
-
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c0 {
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
@@ -50,7 +48,7 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   class="c0 Tab-eojndt-1"
   id="tab-0"
   role="tab"
-  tabindex="0"
+  tabindex="-1"
 >
   tab1
 </button>

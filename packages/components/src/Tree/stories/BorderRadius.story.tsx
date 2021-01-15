@@ -30,17 +30,16 @@ import { AccordionDisclosureStyle } from '../..'
 import { TreeItem, Tree, TreeItemLabel } from '..'
 
 export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree label="Created" defaultOpen dividers>
-    <TreeItem>Created Date</TreeItem>
-    <TreeItem>Created Month</TreeItem>
-    <TreeItem>Created Year</TreeItem>
-    <TreeItem>Created Quarter</TreeItem>
+  <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
+    <TreeItem selected>Created Date</TreeItem>
+    <TreeItem selected>Created Month</TreeItem>
+    <TreeItem selected>Created Year</TreeItem>
+    <TreeItem selected>Created Quarter</TreeItem>
   </BorderRadiusOverrideTree>
 )
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${AccordionDisclosureStyle}, ${TreeItemLabel} {
-    background: ${({ theme }) => theme.colors.ui2};
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 `

@@ -32,7 +32,7 @@ import {
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
-} from '../SelectOptions'
+} from '../types'
 
 export const optionHeight = 28
 

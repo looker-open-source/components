@@ -31,10 +31,11 @@ exports[`critical Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
   className="c0 c1"
+  role="img"
 >
   <svg
+    aria-hidden={false}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -83,10 +84,11 @@ exports[`inform Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
   className="c0 c1"
+  role="img"
 >
   <svg
+    aria-hidden={false}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -135,10 +137,11 @@ exports[`neutral status 1`] = `
 }
 
 <div
-  aria-hidden={true}
   className="c0 c1"
+  role="img"
 >
   <svg
+    aria-hidden={true}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -184,10 +187,11 @@ exports[`positive Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
   className="c0 c1"
+  role="img"
 >
   <svg
+    aria-hidden={false}
     fill="currentColor"
     height="100%"
     viewBox="0 0 24 24"
@@ -236,10 +240,11 @@ exports[`warn Status 1`] = `
 }
 
 <div
-  aria-hidden={false}
   className="c0 c1"
+  role="img"
 >
   <svg
+    aria-hidden={false}
     fill="currentColor"
     height="100%"
     viewBox="0 0 22 19"

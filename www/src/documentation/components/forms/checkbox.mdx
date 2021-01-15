@@ -62,36 +62,36 @@ This may not be sufficient for your own use case, but it may provide a good star
   const handleParentChange = useMixedStateCheckbox(fruitTree)
 
   return (
-    <List>
-      <ListItem>
+    <UnorderedList>
+      <li>
         <FieldCheckbox
           label="All Fruit"
           value="all-fruit"
           onChange={handleParentChange}
           checked={parentState}
         />
-      </ListItem>
-      <ListItem>
-        <List pl="large">
-          <ListItem>
+      </li>
+      <li>
+        <UnorderedList pl="large">
+          <li>
             <FieldCheckbox
               label="🍏"
               value="apple"
               onChange={handleAppleChange}
               checked={appleState}
             />
-          </ListItem>
-          <ListItem>
+          </li>
+          <li>
             <FieldCheckbox
               value="apple"
               onChange={handleBananaChange}
               checked={bananaState}
               label="🍌"
             />
-          </ListItem>
-        </List>
-      </ListItem>
-    </List>
+          </li>
+        </UnorderedList>
+      </li>
+    </UnorderedList>
   )
 }
 ```

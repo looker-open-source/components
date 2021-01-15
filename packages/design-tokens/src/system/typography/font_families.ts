@@ -33,6 +33,7 @@ type Code = 'code'
 export type FontFamilies = Body | Brand | Code
 
 export type FontFamilyChoices = Record<FontFamilies, string>
+export type FontFamilyFallbacks = Record<FontFamilies, string[]>
 
 export const fontFamilies: Array<keyof FontFamilyChoices> = [
   'body',

@@ -26,10 +26,13 @@
 
 import {
   CompatibleHTMLProps,
-  SpaceProps,
+  PaddingProps,
+  padding,
   reset,
   LayoutProps,
   layout,
+  omitStyledProps,
+  pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
@@ -38,7 +41,20 @@ import omit from 'lodash/omit'
 
 export interface DialogContentProps
   extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+    CompatibleHTMLProps<HTMLDivElement> {
+  /**
+   * If the Dialog does not have a footer use this property to manually render padding
+   * at the bottom of the DialogContent. (`hasFooter={false}`)
+   * @default true
+   */
+  hasFooter?: boolean
+  /**
+   * If the Dialog does not have a header use this property to manually render padding
+   * at the top of the DialogContent. (`hasHeader={false}`)
+   * @default true
+   */
+  hasHeader?: boolean
+}
 
 interface DialogContentLayoutProps extends DialogContentProps {
   renderedHeight: string
@@ -48,6 +64,8 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
   children,
   className,
   renderedHeight,
+  hasFooter,
+  hasHeader,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
@@ -70,15 +88,22 @@ const DialogContentLayout: FC<DialogContentLayoutProps> = ({
     <div
       className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
-      {...omit(props, ['renderedHeight'])}
+      {...omit(omitStyledProps(props), ['renderedHeight'])}
     >
-      <Inner>{children}</Inner>
+      <Inner
+        px={['medium', 'xlarge']}
+        pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
+        pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
+        {...pickStyledProps(props)}
+      >
+        {children}
+      </Inner>
     </div>
   )
 }
 
-const Inner = styled.div<SpaceProps>`
-  padding: 0 ${({ theme }) => theme.space.xlarge};
+const Inner = styled.div<PaddingProps>`
+  ${padding}
 `
 
 const DialogContentStyled = styled(DialogContentLayout)`
@@ -88,20 +113,10 @@ const DialogContentStyled = styled(DialogContentLayout)`
   flex: 1 1 auto;
   overflow: auto;
 
-  ${Inner} {
-    padding-bottom: ${({ theme }) => theme.space.xxxsmall};
-    padding-top: ${({ theme }) => theme.space.xxxsmall};
-  }
-
   &.overflow {
     border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
     border-top: 1px solid ${({ theme }) => theme.colors.ui2};
     box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-
-    ${Inner} {
-      padding-bottom: ${({ theme }) => theme.space.large};
-      padding-top: ${({ theme }) => theme.space.large};
-    }
   }
 `
 

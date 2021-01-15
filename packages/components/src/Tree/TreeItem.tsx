@@ -39,7 +39,6 @@ import styled from 'styled-components'
 import {
   color,
   CompatibleHTMLProps,
-  itemSelectedColor,
   SpacingSizes,
   TextColorProps,
 } from '@looker/design-tokens'
@@ -55,9 +54,12 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { TreeContext } from './TreeContext'
+import { treeBackgroundColor } from './utils'
+import { TreeBackgroundStyleProps } from './types'
 
 export interface TreeItemProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
+  extends TreeBackgroundStyleProps,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
   children: ReactNode
   className?: string
@@ -79,14 +81,6 @@ export interface TreeItemProps
    */
   detailHoverDisclosure?: boolean
   /**
-   * If true, then the TreeItem will have a "disabled" presentation which consists of:
-   * - lighter text (text1)
-   * - different cursor (not-allowed)
-   * - no bg color on hover
-   * @default false
-   */
-  disabled?: boolean
-  /**
    * Gap size of the internal Space component
    * @default 'xsmall'
    */
@@ -105,11 +99,6 @@ export interface TreeItemProps
    */
   onMetaEnter?: () => void
   /**
-   * If true, then the TreeItem will have an opaque, ui2 background
-   * @default false
-   */
-  selected?: boolean
-  /**
    * Prevent text wrapping on long labels and instead render truncated text
    **/
   truncate?: boolean
@@ -118,6 +107,9 @@ export interface TreeItemProps
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
+  brand: propsBrand,
+  detailAccessory: propsDetailAccessory,
+  detailHoverDisclosure: propsDetailHoverDisclosure,
   disabled,
   gapSize = 'xsmall',
   onMetaEnter = noop,
@@ -137,21 +129,17 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     onKeyDown = noop,
     onKeyUp = noop,
     ...restProps
-  } = Omit(props, [
-    'color',
-    'detail',
-    'detailAccessory',
-    'detailHoverDisclosure',
-    'icon',
-  ])
+  } = Omit(props, ['color', 'detail', 'icon'])
+
+  const brand = undefinedCoalesce([propsBrand, treeContext.brand])
 
   const detailAccessory = undefinedCoalesce([
-    props.detailAccessory,
+    propsDetailAccessory,
     treeContext.detailAccessory,
   ])
 
   const detailHoverDisclosure = undefinedCoalesce([
-    props.detailHoverDisclosure,
+    propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
   ])
 
@@ -202,7 +190,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const detail = (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <TreeItemDetail detailAccessory={detailAccessory} ref={detailRef}>
+      <TreeItemDetail detailAccessory={!!detailAccessory} ref={detailRef}>
         {props.detail}
       </TreeItemDetail>
     </HoverDisclosure>
@@ -226,9 +214,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         {...restProps}
       >
         <TreeItemLabel
-          gap={gapSize}
+          brand={brand}
           disabled={disabled}
           hovered={isHovered}
+          gap={gapSize}
           selected={selected}
         >
           {props.icon && (
@@ -265,20 +254,9 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
     focusVisible && theme.colors.keyFocus};
 `
 
-interface TreeItemLabelProps {
-  disabled?: boolean
-  hovered: boolean
-  selected?: boolean
-}
-
-export const TreeItemLabel = styled(Space)<TreeItemLabelProps>`
+export const TreeItemLabel = styled(Space)<TreeBackgroundStyleProps>`
+  ${treeBackgroundColor}
   align-items: center;
-  background-color: ${({ disabled, hovered, selected, theme: { colors } }) =>
-    disabled
-      ? 'none'
-      : selected
-      ? itemSelectedColor(colors.ui2)
-      : hovered && colors.ui1};
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};
   cursor: ${({ disabled }) => disabled && 'not-allowed'};

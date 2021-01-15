@@ -47,6 +47,15 @@ globalAny.IntersectionObserver = observeMock
 // js-dom doesn't do scrollIntoView
 Element.prototype.scrollIntoView = jest.fn()
 
+// Ensure jest viewport has real dimensions to support responsively rendering content
+Object.defineProperty(document.body, 'clientWidth', {
+  value: 800, // match storyshots default viewport
+})
+
+Object.defineProperty(document.body, 'clientHeight', {
+  value: 600, // match storyshots default viewport
+})
+
 /**
  * Throw a hard-error if an underlying library (e.g.: React) is throwing console.error
  * Inspired by: https://github.com/facebook/jest/issues/6121#issuecomment-529591574

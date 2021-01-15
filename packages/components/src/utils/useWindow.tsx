@@ -28,6 +28,7 @@ import React, {
   Children,
   ReactChild,
   Reducer,
+  Ref,
   useEffect,
   useMemo,
   useReducer,
@@ -54,18 +55,18 @@ interface WindowHeightPayloadObject {
 }
 
 interface WindowHeightAction {
-  type: 'CHANGE' | 'RESET'
-  payload: number | WindowHeightPayloadObject
+  type: 'CHANGE'
+  payload: WindowHeightPayloadObject
 }
 
-const initialState = (length: number) => ({
+const initialState = {
   afterHeight: 0,
   beforeHeight: 0,
-  end: length - 1,
+  end: 0,
   scrollBottom: 0,
   scrollTop: 0,
   start: 0,
-})
+}
 const bufferHeight = 1000
 
 // For windowing lists with variable item height, a reducer that derives
@@ -80,11 +81,6 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   state,
   action
 ) => {
-  // RESET (if disabled after being enabled)
-  if (typeof action.payload === 'number') {
-    return initialState(action.payload)
-  }
-
   let { beforeHeight, afterHeight, start, end } = state
   const {
     scrollPosition,
@@ -146,21 +142,23 @@ export type ChildHeightFunction = (child: ReactChild, index: number) => number
 
 export type WindowSpacerTag = 'div' | 'li' | 'tr'
 
-export interface UseWindowProps {
+export interface UseWindowProps<E extends HTMLElement> {
   enabled?: boolean
   children?: JSX.Element | JSX.Element[]
   /** Derive the height of each child using props, type, etc. */
   childHeight: number | ChildHeightFunction
   /** Tagname to use for the spacers above and below the window */
   spacerTag?: WindowSpacerTag
+  ref?: Ref<E>
 }
 
-export const useWindow = ({
+export const useWindow = <E extends HTMLElement = HTMLElement>({
   children,
   enabled,
   childHeight,
+  ref,
   spacerTag = 'div',
-}: UseWindowProps) => {
+}: UseWindowProps<E>) => {
   const childArray = useMemo(() => Children.toArray(children), [children])
 
   const [totalHeight, childHeightLadder] = useMemo(() => {
@@ -175,15 +173,12 @@ export const useWindow = ({
     return [sum, ladder]
   }, [childHeight, childArray])
 
-  const [containerElement, ref] = useCallbackRef()
+  const [containerElement, callbackRef] = useCallbackRef<E>(ref)
   const { height } = useMeasuredElement(containerElement)
   const scrollPosition = useScrollPosition(containerElement)
 
   // For variable childHeight
-  const [variable, dispatch] = useReducer(
-    reducer,
-    initialState(childArray.length)
-  )
+  const [variable, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     // If using fixed childHeight, totalHeight will be 0
     if (totalHeight > 0) {
@@ -197,8 +192,6 @@ export const useWindow = ({
           },
           type: 'CHANGE',
         })
-      } else {
-        dispatch({ payload: childHeightLadder.length, type: 'RESET' })
       }
     }
   }, [enabled, childHeightLadder, height, scrollPosition, totalHeight])
@@ -233,13 +226,15 @@ export const useWindow = ({
 
   return {
     containerElement,
-    content: (
+    content: enabled ? (
       <>
         {before}
         {childArray.slice(start, end + 1)}
         {after}
       </>
+    ) : (
+      childArray
     ),
-    ref,
+    ref: callbackRef,
   }
 }

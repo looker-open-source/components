@@ -25,83 +25,18 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useRef } from 'react'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
-  AccordionProps,
-} from '../Accordion'
-import { IconNames } from '../Icon'
+import React, { FC, useContext, useRef } from 'react'
+import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { TreeItemInner, TreeStyle } from './TreeStyle'
-
-export interface TreeProps
-  extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'> {
-  /**
-   * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
-   * @default false
-   */
-  border?: boolean
-  /**
-   * Supplementary element that appears right of the Tree's label
-   * Note: The detail container will stop propagation of events. Place your element(s) in the label
-   *  prop if you'd like clicks on them to bubble.
-   */
-  detail?: ReactNode
-  /**
-   * If true, then the detail elements on Trees and TreeItems will only appear on hover
-   * @default false
-   */
-  detailHoverDisclosure?: boolean
-  /**
-   * If true, the detail elements of child TreeItems will appear outside of the grey background on hover
-   * @default false
-   */
-  detailAccessory?: boolean
-  /**
-   * If true, then the Tree will have a "disabled" presentation which consists of:
-   * - lighter text (text1)
-   * - no bg color on hover
-   * @default false
-   */
-  disabled?: boolean
-  /**
-   * If true, then the Tree will have an opaque, ui2 background
-   * @default false
-   */
-  selected?: boolean
-  /**
-   * Icon element that appears between the Tree indicator and the Tree label
-   */
-  icon?: IconNames
-  /**
-   * Text label of the Tree
-   * Note: This is a required prop
-   */
-  label: ReactNode
-  /**
-   * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
-   * @default false
-   */
-  branchFontWeight?: boolean
-  /**
-   * Prevent text wrapping on long labels and instead render truncated text
-   **/
-  truncate?: boolean
-  /**
-   * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
-   * items that are in a "selected" or active state have visual separation.
-   * @default false
-   */
-  dividers?: boolean
-}
+import { TreeProps } from './types'
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
+  brand: propsBrand,
   children,
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
@@ -121,6 +56,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const hasBrandColoring = undefinedCoalesce([propsBrand, treeContext.brand])
   const hasDetailHoverDisclosure = undefinedCoalesce([
     propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
@@ -158,6 +94,7 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        brand: hasBrandColoring,
         depth: depth + 1,
         detailAccessory: hasDetailAccessory,
         detailHoverDisclosure: hasDetailHoverDisclosure,
@@ -166,6 +103,7 @@ const TreeLayout: FC<TreeProps> = ({
       <TreeStyle
         className={className}
         border={hasBorder}
+        brand={hasBrandColoring}
         depth={depth}
         disabled={disabled}
         selected={selected}

@@ -24,7 +24,7 @@
 
  */
 
-import { ComboboxOptionObject } from '../ComboboxOption'
+import { ComboboxOptionObject } from '../types'
 
 export function formatOptionAsString(option: ComboboxOptionObject) {
   if (option.label && option.label !== option.value) {

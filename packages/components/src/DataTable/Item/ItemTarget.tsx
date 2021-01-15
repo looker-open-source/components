@@ -24,8 +24,8 @@
 
  */
 
+import { densityTarget } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { densityTarget } from '../Table'
 
 export interface ItemTargetProps {
   disabled?: boolean

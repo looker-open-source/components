@@ -24,19 +24,26 @@
 
  */
 
-import React, { useMemo, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  MouseEvent,
+  Ref,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
-import { Dialog } from '../Dialog'
+import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
-import { Box, Space, SpaceVertical } from '../Layout'
-import { Text, Paragraph } from '../Text'
+import { Space, SpaceVertical } from '../Layout'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
+import { Heading, Text, Paragraph } from '../Text'
+import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
 import { Menu } from './Menu'
-import { MenuDisclosure } from './MenuDisclosure'
-import { MenuContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
@@ -53,6 +60,7 @@ const menuItems = (
         detail="detail"
         description="this is the description"
         icon="LogoRings"
+        tooltip="Some tooltip"
       >
         Looker
       </MenuItem>
@@ -83,11 +91,8 @@ const menuItems = (
 )
 
 export const Basic = () => (
-  <Menu>
-    <MenuDisclosure tooltip="Select your favorite kind">
-      <Button>Basic Menu</Button>
-    </MenuDisclosure>
-    <MenuList>{menuItems}</MenuList>
+  <Menu content={menuItems}>
+    <Button>Basic Menu</Button>
   </Menu>
 )
 
@@ -98,11 +103,8 @@ Basic.parameters = {
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
   return (
-    <Menu isOpen={isOpen} setOpen={setOpen}>
-      <MenuDisclosure tooltip="Select your favorite kind">
-        <Button>Controlled Menu</Button>
-      </MenuDisclosure>
-      <MenuList>{menuItems}</MenuList>
+    <Menu content={menuItems} isOpen={isOpen} setOpen={setOpen}>
+      <Button>Controlled Menu</Button>
     </Menu>
   )
 }
@@ -113,14 +115,15 @@ Controlled.parameters = {
 
 export const IconSpace = () => (
   <div>
-    <Menu>
-      <MenuDisclosure>
-        <Button>Icon Space Preserved</Button>
-      </MenuDisclosure>
-      <MenuList>
-        <MenuItem icon="User">Hello</MenuItem>
-        <MenuItem>World</MenuItem>
-      </MenuList>
+    <Menu
+      content={
+        <>
+          <MenuItem icon="User">Hello</MenuItem>
+          <MenuItem>World</MenuItem>
+        </>
+      }
+    >
+      <Button>Icon Space Preserved</Button>
     </Menu>
 
     <Divider />
@@ -205,6 +208,19 @@ IconSpace.parameters = {
   storyshots: { disable: true },
 }
 
+const MenuIcons = forwardRef(
+  ({ open, ...props }: { open: () => void }, ref: Ref<HTMLButtonElement>) => {
+    return (
+      <>
+        <IconButton icon="AddAlerts" label="Add Alert" onClick={open} />
+        <IconButton icon="DotsVert" label="More Options" ref={ref} {...props} />
+      </>
+    )
+  }
+)
+
+MenuIcons.displayName = 'MenuIcons'
+
 export const Hover = () => {
   const hoverRef = useRef<HTMLDivElement>(null)
   const [dialogIsOpen, setOpen] = useState(false)
@@ -219,32 +235,14 @@ export const Hover = () => {
         </Paragraph>
 
         <div>
-          <Menu hoverDisclosureRef={hoverRef}>
-            <MenuContext.Consumer>
-              {({ showDisclosure, isOpen }) =>
-                (showDisclosure || isOpen) && (
-                  <IconButton
-                    icon="AddAlerts"
-                    label="Add Alert"
-                    onClick={open}
-                  />
-                )
-              }
-            </MenuContext.Consumer>
-            <MenuDisclosure>
-              <IconButton
-                icon="DotsVert"
-                label="More Options"
-                aria-haspopup="true"
-              />
-            </MenuDisclosure>
-            <MenuList compact>{menuItems}</MenuList>
+          <Menu content={menuItems} hoverDisclosureRef={hoverRef} compact>
+            <MenuIcons open={open} />
           </Menu>
         </div>
       </Space>
 
       <Dialog isOpen={dialogIsOpen} onClose={close}>
-        <Box p="large">Alert icon should be hidden now.</Box>
+        <DialogLayout>Alert icon should be hidden now.</DialogLayout>
       </Dialog>
     </Card>
   )
@@ -257,124 +255,131 @@ Hover.parameters = {
 export const RealisticMenus = () => {
   return (
     <Space gap="xxlarge">
-      <Menu>
-        <MenuDisclosure>
-          <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
-            Icon Space Preserved
-          </IconButton>
-        </MenuDisclosure>
-        <MenuList>
-          <MenuGroup>
-            <MenuItem
-              description="some description"
-              icon="Refresh"
-              detail="⌘⇧↵"
-            >
-              Clear cache & refresh
-            </MenuItem>
-          </MenuGroup>
+      <Menu
+        content={
+          <>
+            <MenuGroup>
+              <MenuItem
+                description="some description"
+                icon="Refresh"
+                detail="⌘⇧↵"
+              >
+                Clear cache & refresh
+              </MenuItem>
+            </MenuGroup>
 
-          <MenuGroup label="Options">
-            <MenuItem icon="EditOutline" detail="⌘⇧E">
-              Edit dashboard
-            </MenuItem>
-            <MenuItem description="some description">Get LookMl</MenuItem>
-            <MenuItem icon="Undo" detail="A longer detail">
-              Revert to original dashboard
-            </MenuItem>
-          </MenuGroup>
+            <MenuGroup label="Options">
+              <MenuItem icon="EditOutline" detail="⌘⇧E">
+                Edit dashboard
+              </MenuItem>
+              <MenuItem description="some description">Get LookMl</MenuItem>
+              <MenuItem icon="Undo" detail="A longer detail">
+                Revert to original dashboard
+              </MenuItem>
+            </MenuGroup>
 
-          <MenuGroup>
-            <MenuItem icon="Download" detail="⌥⇧D">
-              Edit dashboard
-            </MenuItem>
-          </MenuGroup>
+            <MenuGroup>
+              <MenuItem icon="Download" detail="⌥⇧D">
+                Edit dashboard
+              </MenuItem>
+            </MenuGroup>
 
-          <MenuGroup>
-            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
-          </MenuGroup>
-        </MenuList>
+            <MenuGroup>
+              <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+            </MenuGroup>
+          </>
+        }
+      >
+        <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+          Icon Space Preserved
+        </IconButton>
       </Menu>
 
-      <Menu>
-        <MenuDisclosure>
-          <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
-            Icon Space Preserved
-          </IconButton>
-        </MenuDisclosure>
-        <MenuList compact>
-          <MenuGroup>
-            <MenuItem icon="Refresh" detail="⌘⇧↵">
-              Clear cache &amp; refresh
-            </MenuItem>
-          </MenuGroup>
+      <Menu
+        compact
+        content={
+          <>
+            <MenuGroup>
+              <MenuItem icon="Refresh" detail="⌘⇧↵">
+                Clear cache &amp; refresh
+              </MenuItem>
+            </MenuGroup>
 
-          <MenuGroup label="Options">
-            <MenuItem icon="EditOutline" detail="⌘⇧E">
-              Edit dashboard
-            </MenuItem>
-            <MenuItem>Get LookMl</MenuItem>
-            <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
-          </MenuGroup>
+            <MenuGroup label="Options">
+              <MenuItem icon="EditOutline" detail="⌘⇧E">
+                Edit dashboard
+              </MenuItem>
+              <MenuItem>Get LookMl</MenuItem>
+              <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
+            </MenuGroup>
 
-          <MenuGroup>
-            <MenuItem
-              description="some description"
-              icon="Download"
-              detail="⌥⇧D"
-            >
-              Edit dashboard
-            </MenuItem>
-          </MenuGroup>
+            <MenuGroup>
+              <MenuItem
+                description="some description"
+                icon="Download"
+                detail="⌥⇧D"
+              >
+                Edit dashboard
+              </MenuItem>
+            </MenuGroup>
 
-          <MenuGroup>
-            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
-          </MenuGroup>
-        </MenuList>
+            <MenuGroup>
+              <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+            </MenuGroup>
+          </>
+        }
+      >
+        <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+          Icon Space Preserved
+        </IconButton>
       </Menu>
 
-      <Menu>
-        <MenuDisclosure>
-          <IconButton label="IDE actions" size="medium" icon="DotsVert" />
-        </MenuDisclosure>
-        <MenuList compact>
-          <MenuGroup>
-            <MenuItem icon="EditOutline">Rename</MenuItem>
-            <MenuItem description="some description" icon="TrashOutline">
-              Delete
-            </MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Create">
-            <MenuItem icon="FolderNew">Folder</MenuItem>
-            <MenuItem icon="ExploreOutline">Model</MenuItem>
-            <MenuItem icon="IdeFileView">New Item</MenuItem>
-            <MenuItem icon="IdeFileView">View</MenuItem>
-            <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
-            <MenuItem icon="IdeFileDocument">Document</MenuItem>
-            <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
-          </MenuGroup>
-        </MenuList>
+      <Menu
+        compact
+        content={
+          <>
+            <MenuGroup>
+              <MenuItem icon="EditOutline">Rename</MenuItem>
+              <MenuItem description="some description" icon="TrashOutline">
+                Delete
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Create">
+              <MenuItem icon="FolderNew">Folder</MenuItem>
+              <MenuItem icon="ExploreOutline">Model</MenuItem>
+              <MenuItem icon="IdeFileView">New Item</MenuItem>
+              <MenuItem icon="IdeFileView">View</MenuItem>
+              <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
+              <MenuItem icon="IdeFileDocument">Document</MenuItem>
+              <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
+            </MenuGroup>
+          </>
+        }
+      >
+        <IconButton label="IDE actions" size="medium" icon="DotsVert" />
       </Menu>
 
-      <Menu>
-        <MenuDisclosure>
-          <IconButton label="Menu No Icons" size="medium" icon="DotsVert" />
-        </MenuDisclosure>
-        <MenuList compact>
-          <MenuGroup>
-            <MenuItem>Rename</MenuItem>
-            <MenuItem>Delete</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Create">
-            <MenuItem>Folder</MenuItem>
-            <MenuItem>Model</MenuItem>
-            <MenuItem>New Item</MenuItem>
-            <MenuItem>View</MenuItem>
-            <MenuItem>Dasbhaord</MenuItem>
-            <MenuItem>Document</MenuItem>
-            <MenuItem>Generic LookML file</MenuItem>
-          </MenuGroup>
-        </MenuList>
+      <Menu
+        compact
+        content={
+          <>
+            <MenuGroup>
+              <MenuItem>Rename</MenuItem>
+              <MenuItem>Delete</MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Create">
+              <MenuItem>Folder</MenuItem>
+              <MenuItem>Model</MenuItem>
+              <MenuItem>New Item</MenuItem>
+              <MenuItem>View</MenuItem>
+              <MenuItem>Dasbhaord</MenuItem>
+              <MenuItem>Document</MenuItem>
+              <MenuItem>Generic LookML file</MenuItem>
+            </MenuGroup>
+          </>
+        }
+      >
+        <IconButton label="Menu No Icons" size="medium" icon="DotsVert" />
       </Menu>
     </Space>
   )
@@ -436,69 +441,61 @@ export const LongMenus = () => {
         onChange={toggle}
       />
       <Space>
-        <Menu>
-          <MenuDisclosure>
-            <Button>No windowing (95)</Button>
-          </MenuDisclosure>
-          <MenuList width={100}>
-            {array95.map((item, i) => (
-              <MenuItem key={i}>{item}</MenuItem>
-            ))}
-          </MenuList>
+        <Menu
+          content={array95.map((item, i) => (
+            <MenuItem key={i}>{item}</MenuItem>
+          ))}
+        >
+          <Button>No windowing (95)</Button>
         </Menu>
-        <Menu>
-          <MenuDisclosure>
-            <Button>No windowing (groups)</Button>
-          </MenuDisclosure>
-          <MenuList width={100}>
-            {groups.slice(0, 5).map(({ label, items }, index) => (
-              <MenuGroup key={`${label}-${index}`} label={label}>
-                {items.map((item, index2) => (
-                  <MenuItem key={`${item.label}-${index2}`}>
-                    {item.label}
-                  </MenuItem>
-                ))}
-              </MenuGroup>
-            ))}
-          </MenuList>
+        <Menu
+          width={100}
+          content={groups.slice(0, 5).map(({ label, items }, index) => (
+            <MenuGroup key={`${label}-${index}`} label={label}>
+              {items.map((item, index2) => (
+                <MenuItem key={`${item.label}-${index2}`}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+          ))}
+        >
+          <Button>No windowing (groups)</Button>
         </Menu>
-        <Menu>
-          <MenuDisclosure>
-            <Button>Fixed Windowing (3k)</Button>
-          </MenuDisclosure>
-          <MenuList width={100} windowing={!value ? 'none' : undefined}>
-            {array3000.map((item, i) => (
-              <MenuItem key={i}>{item.label}</MenuItem>
-            ))}
-          </MenuList>
+        <Menu
+          width={100}
+          windowing={!value ? 'none' : undefined}
+          content={array3000.map((item, i) => (
+            <MenuItem key={i}>{item.label}</MenuItem>
+          ))}
+        >
+          <Button>Fixed Windowing (3k)</Button>
         </Menu>
-        <Menu>
-          <MenuDisclosure>
-            <Button>Fixed Windowing (description)</Button>
-          </MenuDisclosure>
-          <MenuList width={100} windowing={!value ? 'none' : undefined}>
-            {array3000.map((item, i) => (
-              <MenuItem key={i} description={item.description}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </MenuList>
+        <Menu
+          width={100}
+          windowing={!value ? 'none' : undefined}
+          content={array3000.map((item, i) => (
+            <MenuItem key={i} description={item.description}>
+              {item.label}
+            </MenuItem>
+          ))}
+        >
+          <Button>Fixed Windowing (description)</Button>
         </Menu>
-        <Menu>
-          <MenuDisclosure>
-            <Button>Variable Windowing (groups)</Button>
-          </MenuDisclosure>
-          <MenuList width={300} windowing={!value ? 'none' : 'variable'}>
-            {groups.map(({ label, items }, index) => (
-              <MenuGroup key={`${label}-${index}`} label={label}>
-                {items.map((item, index2) => (
-                  <MenuItem key={`${item.label}-${index2}`}>
-                    {item.label}
-                  </MenuItem>
-                ))}
-              </MenuGroup>
-            ))}
-          </MenuList>
+        <Menu
+          width={300}
+          windowing={!value ? 'none' : 'variable'}
+          content={groups.map(({ label, items }, index) => (
+            <MenuGroup key={`${label}-${index}`} label={label}>
+              {items.map((item, index2) => (
+                <MenuItem key={`${item.label}-${index2}`}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+          ))}
+        >
+          <Button>Variable Windowing (groups)</Button>
         </Menu>
         <FieldToggleSwitch
           on={longLabels}
@@ -512,5 +509,89 @@ export const LongMenus = () => {
 }
 
 LongMenus.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithDialog = () => {
+  const { value, setOn, setOff } = useToggle()
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setOn()
+  }
+  return (
+    <>
+      <Menu
+        content={
+          <>
+            <MenuItem onClick={setOn}>Open Dialog</MenuItem>
+            <MenuItem onClick={handleClick}>
+              Open Dialog, keep Menu open
+            </MenuItem>
+          </>
+        }
+      >
+        <Button>Menu with Dialog</Button>
+      </Menu>
+      <Dialog isOpen={value} onClose={setOff}>
+        <DialogLayout
+          footer={<Button onClick={setOff}>Close</Button>}
+          header="A Dialog"
+        >
+          Dialog must be placed outside of Menu
+        </DialogLayout>
+      </Dialog>
+    </>
+  )
+}
+
+WithDialog.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithTooltip = () => {
+  const { value, toggle } = useToggle()
+  return (
+    <Space>
+      <Menu content={menuItems} disabled={value}>
+        <Tooltip content="Open the menu" placement="right">
+          <Button disabled={value}>Menu with Tooltip</Button>
+        </Tooltip>
+      </Menu>
+      <FieldToggleSwitch on={value} onChange={toggle} label="Disabled" />
+    </Space>
+  )
+}
+
+WithTooltip.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ArrowKeyNavigation = () => (
+  <SpaceVertical align="start">
+    <Button>Above</Button>
+    <Heading>Menu</Heading>
+    <MenuList>
+      <MenuItem>1</MenuItem>
+      <MenuItem>2</MenuItem>
+      <MenuItem>3</MenuItem>
+    </MenuList>
+    <Heading>Tabs</Heading>
+    <Tabs>
+      <TabList>
+        <Tab>1</Tab>
+        <Tab>2</Tab>
+        <Tab>3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>One</TabPanel>
+        <TabPanel>Two</TabPanel>
+        <TabPanel>Three</TabPanel>
+      </TabPanels>
+    </Tabs>
+    <Button>Below</Button>
+  </SpaceVertical>
+)
+
+ArrowKeyNavigation.parameters = {
   storyshots: { disable: true },
 }

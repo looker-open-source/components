@@ -32,7 +32,8 @@ import { DataTableData } from '.'
 
 export const useDataTable = (
   data: DataTableData,
-  columns: DataTableColumns
+  columns: DataTableColumns,
+  caption: string
 ) => {
   const items = data.map((dataObj) => {
     const defaultOrderColumn = columns[0].id
@@ -47,5 +48,9 @@ export const useDataTable = (
     )
   })
 
-  return <DataTable columns={columns}>{items}</DataTable>
+  return (
+    <DataTable caption={caption} columns={columns}>
+      {items}
+    </DataTable>
+  )
 }

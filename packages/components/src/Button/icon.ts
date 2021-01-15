@@ -24,15 +24,9 @@
 
  */
 
-import { IconNames } from '@looker/icons'
 import styled, { css } from 'styled-components'
 import { Icon } from '../Icon'
-import { ButtonProps } from './ButtonBase'
-
-export interface ButtonIconProps {
-  iconBefore?: IconNames | undefined
-  iconAfter?: IconNames | undefined
-}
+import { ButtonProps } from './types'
 
 export const iconMargins = (props: ButtonProps) => {
   const spacing = { inner: '0', outer: '0' }

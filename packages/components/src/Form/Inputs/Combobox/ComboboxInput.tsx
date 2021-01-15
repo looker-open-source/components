@@ -38,53 +38,15 @@ import React, {
 } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputText, InputTextProps } from '../InputText'
+import { InputText } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
+import { ComboboxInputProps } from './types'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputPropRefs } from './utils/useInputPropRefs'
-
-export interface ComboboxInputCommonProps {
-  /**
-   * If true, when the user clicks inside the text box the current value will
-   * be selected. Use this if the user is likely to delete all the text anyway
-   * (like the URL bar in browsers).
-   *
-   * However, if the user is likely to want to tweak the value, leave this
-   * false, like a google search--the user is likely wanting to edit their
-   * search, not replace it completely.
-   */
-  selectOnClick?: boolean
-  /**
-   * Determines if the value in the input changes or not as the user navigates
-   * with the keyboard. If true, the value changes, if false the value doesn't
-   * change.
-   *
-   * Set this to false when you don't really need the value from the input but
-   * want to populate some other state (like the recipient selector in an email client).
-   * But if your input is more like a normal `<input type="text"/>`, then leave
-   * the `true` default.
-   */
-  autoComplete?: boolean
-  isClearable?: boolean
-  /**
-   * Makes the inputted value the source of truth, whether it matches an option or not
-   * @default false
-   */
-  freeInput?: boolean
-  inputReadOnly?: boolean
-}
-
-export interface ComboboxInputProps
-  extends Omit<InputTextProps, 'autoComplete' | 'value' | 'defaultValue'>,
-    ComboboxInputCommonProps {
-  value?: string
-  defaultValue?: string
-  summary?: string
-}
 
 export const ComboboxInputInternal = forwardRef(
   (props: ComboboxInputProps, forwardedRef: Ref<HTMLInputElement>) => {

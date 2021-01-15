@@ -25,7 +25,6 @@
  */
 
 import React, { FC, ReactNode, useContext } from 'react'
-import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -52,11 +51,6 @@ export interface DialogHeaderProps
    */
   hideClose?: boolean
   /**
-   * Specify an icon to be used for close. Defaults to `Close`
-   */
-  closeIcon?: IconNames
-
-  /**
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
    */
   detail?: ReactNode
@@ -64,7 +58,6 @@ export interface DialogHeaderProps
 
 const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
-  closeIcon = 'Close',
   hideClose,
   detail,
   fontSize,
@@ -97,7 +90,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
               size="medium"
               onClick={closeModal}
               label="Close"
-              icon={closeIcon}
+              icon="Close"
             />
           </Detail>
         )
@@ -107,11 +100,13 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
 }
 
 const Detail = styled.div`
+  margin-bottom: -${({ theme }) => theme.space.xsmall};
   margin-left: auto;
+  margin-top: -${({ theme }) => theme.space.xsmall};
 `
 
 export const DialogHeader = styled(DialogHeaderLayout).attrs(
-  ({ p = 'large', pr = 'medium', px = 'xlarge' }) => ({
+  ({ p = ['medium', 'large'], pr = 'medium', px = ['medium', 'xlarge'] }) => ({
     p,
     pr,
     px,

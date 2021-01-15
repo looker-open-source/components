@@ -13,6 +13,7 @@
   "files": [
     "index.js"
   ],
+  "sideEffects": false,
   "engines": {
     "node": ">=10",
     "yarn": ">=1.14.0"

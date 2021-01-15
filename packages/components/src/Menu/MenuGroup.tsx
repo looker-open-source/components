@@ -27,8 +27,7 @@
 import React, { FC, ReactNode, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { List } from '../List'
-import { MenuItemContext } from './MenuContext'
+import { MenuItemContext } from './MenuItemContext'
 import { MenuGroupLabel } from './MenuGroupLabel'
 
 export interface MenuGroupProps
@@ -66,7 +65,7 @@ const MenuGroupLayout: FC<MenuGroupProps> = ({
     <li className={className}>
       <MenuItemContext.Provider value={context}>
         {label && <MenuGroupLabel>{label}</MenuGroupLabel>}
-        <List>{children}</List>
+        <ul>{children}</ul>
       </MenuItemContext.Provider>
     </li>
   )

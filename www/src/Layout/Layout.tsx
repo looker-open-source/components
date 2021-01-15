@@ -35,7 +35,7 @@ import {
 import { ThemeCustomizations } from '@looker/design-tokens'
 import { createGlobalStyle } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
-import MDXComponents from '../MDX'
+import { MDXComponents } from '../MDX'
 import { HeaderContent } from '../components/HeaderContent'
 import { Navigation } from '../components/Navigation'
 

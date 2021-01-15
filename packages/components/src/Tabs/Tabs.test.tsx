@@ -27,7 +27,6 @@
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import {
-  assertSnapshotShallow,
   mountWithTheme,
   renderWithTheme,
   shallowWithTheme,
@@ -39,23 +38,6 @@ import { TabList } from './TabList'
 import { TabPanel } from './TabPanel'
 import { TabPanels } from './TabPanels'
 import { Tabs, useTabs } from './Tabs'
-
-test('Tabs snapshot works as expected', () => {
-  assertSnapshotShallow(
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-        <Tab disabled>tab3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-        <TabPanel>this is tab3 content</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-})
 
 test('shows the correct number of navigation tabs', () => {
   const tabs = shallowWithTheme(

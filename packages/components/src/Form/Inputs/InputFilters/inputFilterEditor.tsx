@@ -24,20 +24,9 @@
 
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { CheckboxGroup, RadioGroup } from '../OptionsGroup'
-import { FieldFilterOptions } from './InputFilters'
-
-export interface InputFilterEditorProps {
-  closeEditor: () => void
-  filterOptions: FieldFilterOptions
-  onChange: (value?: string) => void
-  value?: string
-}
-
-export type InputFilterEditorRenderProp = (
-  props: InputFilterEditorProps
-) => ReactNode
+import { InputFilterEditorRenderProp } from './types'
 
 export const inputFilterEditor: InputFilterEditorRenderProp = ({
   closeEditor,

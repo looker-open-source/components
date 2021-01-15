@@ -35,11 +35,7 @@ import {
   ComboboxOptionIndicatorProps,
   ComboboxProps,
 } from '../Combobox'
-import {
-  SelectOptionObject,
-  SelectOptions,
-  SelectOptionsBaseProps,
-} from './SelectOptions'
+import { SelectOptions, SelectOptionsBaseProps } from './SelectOptions'
 import { SelectInputIcon } from './SelectInputIcon'
 import {
   omitAriaAndValidationProps,
@@ -47,6 +43,7 @@ import {
 } from './utils/ariaProps'
 import { getOption, getFirstOption } from './utils/options'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
+import { SelectOptionObject } from './types'
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,

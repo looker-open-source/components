@@ -28,8 +28,8 @@ import React, { useState, FormEvent } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/filters'
 import { InputText } from '../InputText'
-import { InputFilters, InputFiltersProps, FieldFilter } from './InputFilters'
-import { InputFilterEditorRenderProp } from './inputFilterEditor'
+import { InputFilterEditorRenderProp } from './types'
+import { InputFilters, InputFiltersProps, FieldFilter } from './'
 
 const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   const [controlledFilters, setControlledFilters] = useState(filters)

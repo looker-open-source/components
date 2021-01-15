@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
-import { AccordionIndicatorProps } from './Accordion'
+import { AccordionIndicatorProps } from './indicator'
 
 interface AccordionDisclosureLayoutProps
   extends Required<AccordionIndicatorProps> {

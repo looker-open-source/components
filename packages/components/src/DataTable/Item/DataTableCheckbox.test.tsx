@@ -59,4 +59,39 @@ describe('DataTableCheckbox', () => {
     fireEvent.click(checkbox)
     expect(onChange).toHaveBeenCalledTimes(2)
   })
+  test('Renders aria-label when checked if id = headerId', () => {
+    const { getByRole } = renderWithTheme(
+      <DataTableCheckbox id="headerId" checked />
+    )
+    const checkbox = getByRole('checkbox')
+    expect(checkbox as HTMLInputElement).toHaveAttribute(
+      'aria-label',
+      'Select none'
+    )
+  })
+
+  test('Renders aria-label when unchecked if id = headerId', () => {
+    const { getByRole } = renderWithTheme(<DataTableCheckbox id="headerId" />)
+    const checkbox = getByRole('checkbox')
+    expect(checkbox as HTMLInputElement).toHaveAttribute(
+      'aria-label',
+      'Select all rows'
+    )
+  })
+
+  test('no aria-label if id != headerId', () => {
+    const { getByRole } = renderWithTheme(<DataTableCheckbox id="idValue" />)
+    const checkbox = getByRole('checkbox')
+    expect(checkbox as HTMLInputElement).not.toHaveAttribute('aria-label')
+  })
+
+  test('Renders aria-labelledby with primary column value passed as id', () => {
+    const { container } = renderWithTheme(
+      <DataTableCheckbox id="primaryColumn" />
+    )
+    expect(container.firstChild).toHaveAttribute(
+      'aria-labelledby',
+      'rowheader-primaryColumn'
+    )
+  })
 })

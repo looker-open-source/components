@@ -24,6 +24,7 @@
 
  */
 
+import { densityTarget } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
@@ -33,15 +34,17 @@ import {
   getNumericColumnIndices,
   numericColumnCSS,
 } from './utils/dataTableFormatting'
-import { DataTableProps } from './DataTable'
+import { DataTableProps } from './types'
 import { DataTableHeader } from './Header/DataTableHeader'
 import { edgeShadow } from './utils/edgeShadow'
 
 export interface TableProps extends DataTableProps {
+  caption: string
   columnsVisible: string[]
 }
 
 export const TableLayout: FC<TableProps> = ({
+  caption,
   children,
   className,
   columnsVisible,
@@ -68,7 +71,10 @@ export const TableLayout: FC<TableProps> = ({
   return (
     <>
       <TableScroll ref={ref}>
-        <table className={overflow ? `${className} overflow` : className}>
+        <table
+          aria-label={caption}
+          className={overflow ? `${className} overflow` : className}
+        >
           <thead>
             <DataTableHeader id={headerRowId} />
           </thead>
@@ -79,8 +85,6 @@ export const TableLayout: FC<TableProps> = ({
     </>
   )
 }
-
-export const densityTarget = '2.25rem' // 36px
 
 /**
  * Apply specialized styling to the first column if `select` mode is active

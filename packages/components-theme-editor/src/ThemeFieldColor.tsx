@@ -27,7 +27,7 @@
 import { FieldColor } from '@looker/components'
 import capitalize from 'lodash/capitalize'
 import React, { FC, FormEvent } from 'react'
-import { SpecifiableColors } from '@looker/design-tokens/src'
+import { SpecifiableColors } from '@looker/design-tokens'
 
 export interface ThemeFieldColorProps {
   color: string

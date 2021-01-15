@@ -9,12 +9,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Tree / TreeItem` disabled and selected states
+- `Tabs` and `Menu` arrow key navigation persists the last focused item
+- `Breakpoint` component
+- `Tree / TreeItem`
+  - disabled and selected states
+  - `brand` prop
+  - `treeBackgroundColor` util function
+- `ProgressCircular` component
+- `UnorderedList`, `OrderedList`
+- `DialogLayout` component
+- `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions
+
+### Changed
+
+- `IconPlaceholder` moved to `Icon`
+- `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
+- `Tree` now uses the same `selected` color as `TreeItem`
+- `DialogHeader` uses responsive padding values
+- `CardMedia` supports background color props
+- `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
+- `Pagination` component now enables first and last page of results at same thresholds for previous and next
 
 ### Fixed
 
+- `MenuList` windowing initial render performance
+- `DataTable` overflow shadow now works properly in Safari
 - `TooltipContent` default width is back to `'auto'`
 - Erratic scrolling after dynamic list resize in all `Combobox`-based components
+
+### Removed
+
+- `List`, `ListItem`, `ListItemDetail`
+- `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
+
+## [0.9.30]
+
+### Fixed
+
+- `InputText` issue moving cursor and selecting text when input is already focused
 
 ## [0.9.29]
 
@@ -69,6 +101,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update DataTable for accessibility
 - `ComponentsProvider` now includes `FocusTrapContext` to manage all focus traps for `Dialog` and `Popover`
   - Where previously `DialogContext` properties `enableFocusTrap`, `disableFocusTrap`, and `focusTrapEnabled` could previously be used to take control of a focus trap, now use `FocusTrapContext` properties `enableCurrentTrap`, `disableCurrentTrap`, and `activeTrapRef` to do so.
 - `DataTable` now supports `primaryAction`

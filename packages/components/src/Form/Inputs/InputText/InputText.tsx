@@ -126,7 +126,8 @@ const InputTextLayout = forwardRef(
       // Avoid moving focus if the mousedown was inside a button
       // because it will interrupt any onclick behavior
       // (the button click handler should be responsible for moving focus)
-      if (!targetIsButton(e)) {
+      // Also no need to do anything if mousedown was on the input itself
+      if (!targetIsButton(e) && e.target !== internalRef.current) {
         // set focus to input on mousedown of container to mimic natural input behavior
         // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
         if (document.activeElement === internalRef.current) {

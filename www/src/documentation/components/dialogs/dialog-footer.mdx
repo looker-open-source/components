@@ -1,0 +1,57 @@
+---
+title: Dialog Footer
+---
+
+`DialogFooter` is attached to the bottom of dialog. Generally, the terminal action for a dialog as well as an option to abandon the process done via the dialog are available within this component. This component is generally used in combination with the `DialogContext.Provider` to get access to the `DialogContext.close()` method.
+
+DialogFooter supports all [`Box`](/src-documentation-components-box) properties.
+
+```jsx
+<DialogFooter>
+  <Button>Save Changes</Button>
+</DialogFooter>
+<Divider />
+<DialogFooter>
+  <Button>Save Changes</Button>
+  <ButtonTransparent>Cancel</ButtonTransparent>
+</DialogFooter>
+<Divider />
+<DialogFooter
+  secondary={
+    <ButtonOutline iconBefore="Plus">
+      Create Item
+    </ButtonOutline>
+  }
+>
+  <Button>Save Changes</Button>
+  <ButtonTransparent>Cancel</ButtonTransparent>
+</DialogFooter>
+<Divider />
+<DialogFooter
+  secondary={
+    <React.Fragment>
+      <ButtonOutline iconBefore="Plus">
+        Create Item
+      </ButtonOutline>
+      <ButtonOutline iconBefore="Plus">
+        Yet Another
+      </ButtonOutline>
+    </React.Fragment>
+  }
+>
+  <Button>Save Changes</Button>
+  <ButtonTransparent>Cancel</ButtonTransparent>
+</DialogFooter>
+<Divider />
+<DialogContent>
+  <Box bg="lavender" p="medium">
+    Example content
+  </Box>
+</DialogContent>
+<DialogFooter>
+  <Button size="xsmall">Save Changes</Button>
+  <ButtonTransparent size="xsmall">
+    Cancel
+  </ButtonTransparent>
+</DialogFooter>
+```

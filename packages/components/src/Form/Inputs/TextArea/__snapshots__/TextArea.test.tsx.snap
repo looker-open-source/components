@@ -385,10 +385,11 @@ exports[`TextArea with an error validation 1`] = `
     id="TextAreaID"
   />
   <div
-    aria-hidden={true}
     className="c1 c2"
+    role="img"
   >
     <svg
+      aria-hidden={true}
       fill="currentColor"
       height="100%"
       viewBox="0 0 24 24"

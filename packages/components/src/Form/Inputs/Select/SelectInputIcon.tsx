@@ -28,7 +28,8 @@ import { IconNames } from '@looker/icons'
 import React, { ReactNode, useContext } from 'react'
 import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
-import { getSelectOptionIconProps, SelectOptionProps } from './SelectOptions'
+import { getSelectOptionIconProps } from './SelectOptions'
+import { SelectOptionProps } from './types'
 import { flattenOptions } from './utils/options'
 
 export function getOptionIcon(

@@ -35,7 +35,8 @@ import {
 } from '../Combobox'
 import { InputChipsValidationProps } from '../InputChips'
 import { SelectBaseProps } from './Select'
-import { SelectOptionObject, SelectOptions } from './SelectOptions'
+import { SelectOptions } from './SelectOptions'
+import { SelectOptionObject } from './types'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,

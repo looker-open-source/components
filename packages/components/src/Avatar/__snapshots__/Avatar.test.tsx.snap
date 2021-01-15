@@ -147,10 +147,11 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
     className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
-      aria-hidden={true}
       className="c5 c6"
+      role="img"
     >
       <svg
+        aria-hidden={true}
         fill="currentColor"
         height="100%"
         viewBox="0 0 24 24"
@@ -314,10 +315,11 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
     className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
-      aria-hidden={true}
       className="c5 c6"
+      role="img"
     >
       <svg
+        aria-hidden={true}
         fill="currentColor"
         height="100%"
         viewBox="0 0 24 24"
@@ -454,10 +456,11 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
     className="c1"
   >
     <div
-      aria-hidden={true}
       className="c2 c3"
+      role="img"
     >
       <svg
+        aria-hidden={true}
         fill="currentColor"
         height="100%"
         viewBox="0 0 24 24"
@@ -475,10 +478,11 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
     className="AvatarCombo__AvatarIconSecondary-gekgjm-0 c4"
   >
     <div
-      aria-hidden={true}
       className="c2 c3"
+      role="img"
     >
       <svg
+        aria-hidden={true}
         fill="currentColor"
         height="100%"
         viewBox="0 0 24 24"
@@ -558,10 +562,11 @@ exports[`Avatar AvatarIcon renders  1`] = `
   className="c0"
 >
   <div
-    aria-hidden={true}
     className="c1 c2"
+    role="img"
   >
     <svg
+      aria-hidden={true}
       fill="currentColor"
       height="100%"
       viewBox="0 0 24 24"
@@ -638,10 +643,11 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
   className="c0"
 >
   <div
-    aria-hidden={true}
     className="c1 c2"
+    role="img"
   >
     <svg
+      aria-hidden={true}
       fill="currentColor"
       height="100%"
       viewBox="0 0 24 24"

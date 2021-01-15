@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- `CenterFocus`
+### Aded
+- `WarningOutline`,`CenterFocus`
 
 ## [0.9.26]
 

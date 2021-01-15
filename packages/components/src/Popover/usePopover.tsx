@@ -45,39 +45,19 @@ import {
   useScrollLock,
   useForkedRef,
 } from '../utils'
-import { usePopoverToggle } from './usePopoverToggle'
+import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
-export interface UsePopoverProps {
+export interface UsePopoverProps extends UsePopoverToggleProps {
   /**
-   * Content to rendered within the Popover surface.
-   * @required
+   * Content to render within the Popover surface.
    */
   content: ReactNode
-
-  /**
-   * When true, display Surface and it's contained content
-   * @default false
-   */
-  isOpen?: boolean
 
   /**
    * Specify a callback to be called each time this Popover is closed
    */
   onClose?: () => void
-
-  /**
-   * Specify a callback to be called before trying to close the Popover. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Popover is closed
-   */
-  canClose?: () => boolean
-
-  /**
-   * Optional, for a controlled version of the component
-   */
-  setOpen?: (open: boolean) => void
-
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -106,22 +86,10 @@ export interface UsePopoverProps {
   triggerElement?: HTMLElement | null
 
   /**
-   * Whether to close the popover when the toggle is clicked again
-   * @default true
-   */
-  triggerToggle?: boolean
-
-  /**
    * Whether to trap focus within the popover
    * @default true
    */
   focusTrap?: boolean
-
-  /**
-   * Whether to honor the first click outside the popover
-   * @default false
-   */
-  cancelClickOutside?: boolean
 }
 
 const useOpenWithoutElement = (
@@ -152,6 +120,7 @@ export interface UsePopoverResponseDom {
 export const usePopover = ({
   canClose,
   content,
+  disabled,
   pin = false,
   isOpen: controlledIsOpen = false,
   onClose,
@@ -185,7 +154,9 @@ export const usePopover = ({
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
   const handleOpen = (event: SyntheticEvent) => {
-    setOpen(true)
+    if (!disabled) {
+      setOpen(true)
+    }
     event.stopPropagation()
     event.preventDefault()
   }
@@ -239,7 +210,7 @@ export const usePopover = ({
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
-  const popover = !openWithoutElem && isOpen && (
+  const popover = content && !openWithoutElem && isOpen && !disabled && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
@@ -265,7 +236,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': true,
+      'aria-haspopup': content ? !disabled : false,
       onClick: handleOpen,
       ref: callbackRef,
     },

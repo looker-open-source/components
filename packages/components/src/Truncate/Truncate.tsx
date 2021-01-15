@@ -50,8 +50,7 @@ export const Truncate: FC<TruncateProps> = ({ children, width = '100%' }) => {
    * only render tooltip if text actually overflows
    */
   const { tooltip, domProps } = useTooltip({
-    content: children,
-    disabled: !isTruncated,
+    content: isTruncated ? children : undefined,
     invert: false,
     placement: 'top-start',
     textAlign: 'left',

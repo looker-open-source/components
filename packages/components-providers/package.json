@@ -2,11 +2,13 @@
   "name": "@looker/components-providers",
   "license": "MIT",
   "version": "0.9.29",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "files": [
-    "lib"
+    "cjs", "esm", "types"
   ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/looker-open-source/components",
@@ -21,7 +23,7 @@
     "tabbable": "^5.1.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.167",
     "@types/react": "^16.9.56",
     "@types/styled-components": "^5.1.5",
     "react": "^16.14.0",

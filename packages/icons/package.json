@@ -2,11 +2,13 @@
   "name": "@looker/icons",
   "license": "MIT",
   "version": "0.9.26",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "files": [
-    "lib"
+    "cjs", "esm", "types"
   ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/looker-open-source/components",

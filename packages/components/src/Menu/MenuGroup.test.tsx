@@ -26,74 +26,47 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 
-import { Box } from '../Layout'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 
-test('MenuGroup', () => {
-  assertSnapshot(
-    <MenuGroup>
-      <MenuItem>who!</MenuItem>
-    </MenuGroup>
-  )
-})
-
-test('MenuGroup - label', () => {
-  assertSnapshot(
-    <MenuGroup label="Questions">
-      <MenuItem>what?</MenuItem>
-      <MenuItem>who?</MenuItem>
-      <MenuItem>where?</MenuItem>
-    </MenuGroup>
-  )
-})
-
-test('MenuGroup - JSX label', () => {
-  assertSnapshot(
-    <MenuGroup label={<Box>Questions</Box>}>
-      <MenuItem>what?</MenuItem>
-      <MenuItem>who?</MenuItem>
-      <MenuItem>where?</MenuItem>
-    </MenuGroup>
-  )
-})
-
-test('MenuGroup - indents MenuItem with no icon when a sibling within the same group has an icon', () => {
-  const { getByTestId } = renderWithTheme(
-    <MenuGroup>
-      <MenuItem icon="Calendar">Gouda</MenuItem>
-      <MenuItem id="cheddar">Cheddar</MenuItem>
-    </MenuGroup>
-  )
-
-  getByTestId('menu-item-cheddar-icon-placeholder')
-})
-
-test('MenuGroup - indents MenuItem with no icon when a sibling outside of the group has an icon', () => {
-  const { getByTestId } = renderWithTheme(
-    <MenuList>
-      <MenuItem icon="Calendar">Gouda</MenuItem>
+describe('MenuGroup', () => {
+  test('indents MenuItem with no icon when a sibling within the same group has an icon', () => {
+    const { getByTestId } = renderWithTheme(
       <MenuGroup>
+        <MenuItem icon="Calendar">Gouda</MenuItem>
         <MenuItem id="cheddar">Cheddar</MenuItem>
       </MenuGroup>
-    </MenuList>
-  )
+    )
 
-  getByTestId('menu-item-cheddar-icon-placeholder')
-})
+    getByTestId('menu-item-cheddar-icon-placeholder')
+  })
 
-test('MenuGroup - does not indent MenuItems with no icon if all siblings do not have icons', () => {
-  const { queryByTestId } = renderWithTheme(
-    <MenuGroup>
-      <MenuItem>Gouda</MenuItem>
-      <MenuItem id="cheddar">Cheddar</MenuItem>
-    </MenuGroup>
-  )
+  test('indents MenuItem with no icon when a sibling outside of the group has an icon', () => {
+    const { getByTestId } = renderWithTheme(
+      <MenuList>
+        <MenuItem icon="Calendar">Gouda</MenuItem>
+        <MenuGroup>
+          <MenuItem id="cheddar">Cheddar</MenuItem>
+        </MenuGroup>
+      </MenuList>
+    )
 
-  expect(
-    queryByTestId('menu-item-cheddar-icon-placeholder')
-  ).not.toBeInTheDocument()
+    getByTestId('menu-item-cheddar-icon-placeholder')
+  })
+
+  test('does not indent MenuItems with no icon if all siblings do not have icons', () => {
+    const { queryByTestId } = renderWithTheme(
+      <MenuGroup>
+        <MenuItem>Gouda</MenuItem>
+        <MenuItem id="cheddar">Cheddar</MenuItem>
+      </MenuGroup>
+    )
+
+    expect(
+      queryByTestId('menu-item-cheddar-icon-placeholder')
+    ).not.toBeInTheDocument()
+  })
 })

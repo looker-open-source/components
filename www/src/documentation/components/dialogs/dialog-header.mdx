@@ -1,0 +1,14 @@
+---
+title: Dialog Header
+---
+
+`DialogHeader` is attached to the top of dialog and provides a button to close the containing Dialog. Uses the `DialogContext` to get access to the `close` callback.
+
+DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
+
+- `hideClose` property remove the "close" `IconButton`
+- `detail` property allows the developer to specify a ReactNode that will replace the "close" `IconButton`
+
+```jsx
+<DialogHeader>This is a DialogHeader</DialogHeader>
+```

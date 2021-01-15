@@ -32,7 +32,7 @@ import {
   BulkActionsConfig,
   FilterConfig,
   SelectConfig,
-} from '../DataTable'
+} from '../'
 import { DataTableAction } from '../Item'
 import { useSelectManager, doDataTableSort } from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
@@ -48,6 +48,7 @@ import {
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
   bulk: boolean
+  caption: string
   columns: DataTableColumns
   filters: boolean
   select: boolean
@@ -57,6 +58,7 @@ interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
 
 const Template: Story<DemoProps> = ({
   bulk,
+  caption,
   columns,
   filters,
   select,
@@ -137,6 +139,7 @@ const Template: Story<DemoProps> = ({
   return (
     <DataTable
       bulk={bulk ? bulkActionsConfig : undefined}
+      caption="DataTable Interactions"
       columns={cheeseColumns}
       filterConfig={filters ? filterConfig : undefined}
       select={select ? selectConfig : undefined}

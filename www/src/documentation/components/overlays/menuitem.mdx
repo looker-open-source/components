@@ -1,0 +1,121 @@
+---
+title: MenuItem
+storybook: true
+---
+
+`MenuItem` is an list item containing a button for triggering actions from with in a [`Menu`](menu) or [`MenuList`](menulist).
+
+For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
+**Note:** If using the props `itemRole` don't use the prop `disabled` As it is bad-form and defeats the purpose.
+
+An icon can optionally be assigned to each item via the `icon` property.
+
+**Note:** `itemRole="link"` and `disabled` cannot be combined (use `itemRole="button" if you need to offer a disabled`MenuItem`)
+
+```jsx
+<MenuList>
+  <MenuItem icon="Home">Home</MenuItem>
+  <MenuItem
+    itemRole="link"
+    target="_blank"
+    icon="Public"
+    href="https://google.com"
+  >
+    Away
+  </MenuItem>
+</MenuList>
+```
+
+## Detail & Description
+
+Use the `detail` and/or `description` prop to provide extra explanatory information on a given item.
+
+```jsx
+<MenuList>
+  <MenuItem detail="⌘⇧↵" description="this is the description" icon="LogoRings">
+    Looker
+  </MenuItem>
+  <MenuItem description="this is the description" icon="Validate">
+    Validate
+  </MenuItem>
+  <MenuItem detail="⌘⇧↵" icon="ChartPie">
+    Pizza
+  </MenuItem>
+</MenuList>
+ <Divider />
+  <MenuList>
+    <MenuItem description="this is the description"icon="Home">Home</MenuItem>
+    <MenuItem
+      detail="⌘⇧↵"
+      href="https://google.com"
+      itemRole="link"
+      icon="Public"
+      target="_blank"
+    >
+      Away
+    </MenuItem>
+  </MenuList>
+```
+
+## Tooltip
+
+To implement Tooltip on MenuItem, pass a string value to the `tooltip` prop.
+You can change the tooltip position by setting `tooltipPlacement` to one of `bottom`, `left`, `right` or`top`. Tooltips will render to the`left` by default.
+
+```jsx
+<MenuList>
+  <MenuItem tooltip="It is gouda!">Gouda</MenuItem>
+  <MenuItem
+    tooltip="I have a Swiss Cheese joke, but it's full of holes."
+    tooltipPlacement="right"
+  >
+    Swiss
+  </MenuItem>
+</MenuList>
+```
+
+## Icon
+
+```jsx
+<MenuList>
+  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon="Validate">Validate</MenuItem>
+  <MenuItem icon="ChartPie">Pizza</MenuItem>
+</MenuList>
+```
+
+## Artwork
+
+```jsx
+<MenuItem
+  iconArtwork={
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+        fill="#7FFFD4"
+      />
+    </svg>
+  }
+>
+  Artwork
+</MenuItem>
+```
+
+**Note:** If a `MenuItem` does not have an icon, but its sibling(s) does have an icon, the `MenuItem` without an icon will automatically allocate space on the left-hand side to align its text up with its sibling(s). This behavior applies to the `MenuItem` children of `MenuList` and `MenuGroup` elements.
+
+```jsx
+<MenuList>
+  <MenuItem icon="LogoRings">Cheddar</MenuItem>
+  <MenuItem>Gouda</MenuItem>
+  <MenuItem icon="ChartPie">Swiss</MenuItem>
+</MenuList>
+```
+
+## Disabled
+
+Use the `disabled` to indicate an option that is not currently available.
+
+```jsx
+<MenuItem icon="Beaker" disabled>Disabled</MenuItem>
+<MenuItem icon="Beaker">Enabled</MenuItem>
+```

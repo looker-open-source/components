@@ -32,7 +32,7 @@ import { FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
-import { Tooltip, TooltipProps } from './Tooltip'
+import { Tooltip, TooltipProps } from './'
 
 const Template: Story<TooltipProps> = (args) => (
   <Tooltip {...args}>

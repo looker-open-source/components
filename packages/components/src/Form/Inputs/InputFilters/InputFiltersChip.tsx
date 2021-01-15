@@ -25,7 +25,7 @@
  */
 import React, { FC, forwardRef, Ref } from 'react'
 import { Chip, ChipProps } from '../../../Chip'
-import { FieldFilter } from './InputFilters'
+import { FieldFilter } from './types'
 
 interface InputFiltersChipProps
   extends Omit<ChipProps, 'children' | 'onDelete'> {
