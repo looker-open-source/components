@@ -31,8 +31,6 @@ import {
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
-import React from 'react'
 import styled from 'styled-components'
 
 export interface IconPlaceholderProps
@@ -40,9 +38,12 @@ export interface IconPlaceholderProps
     SizeProps,
     SpaceProps {}
 
-export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
-  <div aria-hidden {...omit(props, 'iconGap')} />
-))`
+export const IconPlaceholder = styled.div.attrs<IconPlaceholderProps>(
+  ({ mr = 'xsmall' }) => ({
+    'aria-hidden': true,
+    mr,
+  })
+)<IconPlaceholderProps>`
   ${size}
   ${space}
 `

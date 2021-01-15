@@ -84,11 +84,7 @@ const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
         data-testid="option-icon"
       />
     ) : hasIcons ? (
-      <IconPlaceholder
-        size="small"
-        data-testid="option-icon-placeholder"
-        mr="xsmall"
-      />
+      <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
     ) : null
 
     return (
