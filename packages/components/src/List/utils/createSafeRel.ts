@@ -24,11 +24,14 @@
 
  */
 
-import styled from 'styled-components'
-
-export const ListItemDetail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
-  margin-left: auto;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
-`
+export const createSafeRel = (
+  rel: string | undefined,
+  target: string | undefined
+) => {
+  /**
+   * `target="_blank" can be used to reverse tab-nab
+   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+   */
+  const noTabNab = 'noopener noreferrer'
+  return target === '_blank' ? (rel ? `${rel} ${noTabNab}` : noTabNab) : rel
+}

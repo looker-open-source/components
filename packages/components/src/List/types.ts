@@ -24,11 +24,28 @@
 
  */
 
-import styled from 'styled-components'
+import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
+import { IconSize } from '..'
 
-export const ListItemDetail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
-  margin-left: auto;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
-`
+export type DensityRamp = -3 | -2 | -1 | 0 | 1
+
+export interface ItemDimensions {
+  height: number
+  px: SpacingSizes
+  py: SpacingSizes | '0.375rem'
+  iconGap: SpacingSizes
+  iconSize: IconSize
+  labelFontSize: FontSizes
+  labelLineHeight: LineHeights
+}
+
+export const itemDimensionKeys = [
+  'height',
+  'px',
+  'py',
+  'iconGap',
+  'iconSize',
+  'labelFontSize',
+  'labelLineHeight',
+  'detailFontSize',
+]

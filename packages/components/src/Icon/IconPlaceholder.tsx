@@ -24,16 +24,26 @@
 
  */
 
-import { CompatibleHTMLProps, size, SizeProps } from '@looker/design-tokens'
-import React from 'react'
+import {
+  CompatibleHTMLProps,
+  size,
+  SizeProps,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
 
-export type IconPlaceholderProps = CompatibleHTMLProps<HTMLDivElement> &
-  SizeProps
+export interface IconPlaceholderProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SizeProps,
+    SpaceProps {}
 
-export const IconPlaceholder = styled((props: IconPlaceholderProps) => (
-  <div aria-hidden {...props} />
-))`
+export const IconPlaceholder = styled.div.attrs<IconPlaceholderProps>(
+  ({ mr = 'xsmall' }) => ({
+    'aria-hidden': true,
+    mr,
+  })
+)<IconPlaceholderProps>`
   ${size}
-  margin-right: ${({ theme }) => theme.space.xsmall};
+  ${space}
 `

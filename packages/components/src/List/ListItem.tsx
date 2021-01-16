@@ -26,50 +26,48 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState, useEffect } from 'react'
-import { Placement } from '@popperjs/core'
-import { DialogContext } from '../Dialog'
+import React, { FC, ReactNode, useContext, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
-import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
-import { Tooltip } from '../Tooltip'
-import { createSafeRel } from '../List/utils'
-import { MenuItemContext } from './MenuItemContext'
-import { MenuItemLayout } from './MenuItemLayout'
+import { ListItemContext } from './ListItemContext'
+import { ListItemLayout } from './ListItemLayout'
+import { createSafeRel } from './utils'
 
-export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
-  iconArtwork?: ReactNode
-  compact?: boolean
+export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
   /**
-   * Indicates the MenuItem is checked
+   * Indicates the ListItem is checked
    */
   current?: boolean
   /*
    * optional extra description
    */
   description?: ReactNode
+  /**
+   * Detail element placed right of the item children
+   */
   detail?: ReactNode
+  /**
+   * Optional icon placed left of the item children
+   */
   icon?: IconNames
   /**
-   * Sets the correct accessible role for the MenuItem:
+   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
+   */
+  iconArtwork?: ReactNode
+  /**
+   * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-   * @default 'button'
-   *
    */
   itemRole?: 'link' | 'button'
-  tooltip?: string
-  tooltipPlacement?: Placement
 }
 
-const MenuItemInternal: FC<MenuItemProps> = (props) => {
+const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
     className,
-    compact: propCompact,
     current,
     description,
     detail,
@@ -82,32 +80,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
-    tooltip,
-    tooltipPlacement = 'left',
   } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
-  const {
-    compact: contextCompact,
-    renderIconPlaceholder,
-    setRenderIconPlaceholder,
-  } = useContext(MenuItemContext)
-  const compact = propCompact === undefined ? contextCompact : propCompact
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
 
-  const { closeModal } = useContext(DialogContext)
+  const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
-    // Close the Menu (unless event has preventDefault in onClick)
-    if (closeModal && !event.defaultPrevented) {
-      closeModal()
-    }
   }
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
@@ -115,28 +101,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     setFocusVisible(true)
   }
 
-  useEffect(() => {
-    if (isFunction(setRenderIconPlaceholder)) {
-      icon && setRenderIconPlaceholder(true)
-    }
-  }, [icon, setRenderIconPlaceholder])
-
-  const renderedIconID = useID(props.id)
-
   const renderedIcon =
     icon || iconArtwork ? (
       <Icon
         artwork={iconArtwork}
         color="text1"
         name={icon}
-        size={compact ? 'small' : 'medium'}
-        mr="xsmall"
+        size={itemDimensions.iconSize}
+        mr={itemDimensions.iconGap}
       />
     ) : (
-      renderIconPlaceholder && (
+      iconGutter && (
         <IconPlaceholder
-          data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
-          size={compact ? 'small' : 'medium'}
+          size={itemDimensions.iconSize}
+          mr={itemDimensions.iconGap}
         />
       )
     )
@@ -144,24 +122,41 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   if (disabled && itemRole === 'link') {
     // eslint-disable-next-line no-console
     console.warn(
-      'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled MenuItem'
+      'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
+  const Component =
+    !disabled && itemRole === 'link'
+      ? 'a'
+      : itemRole === 'button'
+      ? 'button'
+      : 'div'
 
-  const menuItemContent = (
+  const renderedChildren =
+    typeof children === 'string' ? (
+      <Paragraph
+        fontSize={itemDimensions.labelFontSize}
+        lineHeight={itemDimensions.labelLineHeight}
+      >
+        {children}
+      </Paragraph>
+    ) : (
+      children
+    )
+
+  const listItemContent = (
     <Component
       href={href}
       rel={createSafeRel(props.rel, props.target)}
-      role="menuitem"
+      role="listitem"
       target={target}
       tabIndex={-1}
     >
       {renderedIcon}
       <span>
-        {children}
+        {renderedChildren}
         {description && (
-          <Paragraph color="text2" fontSize="xsmall" mt="xxsmall">
+          <Paragraph color="text2" fontSize="xsmall">
             {description}
           </Paragraph>
         )}
@@ -171,29 +166,20 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   )
 
   return (
-    <MenuItemLayout
+    <ListItemLayout
       aria-current={current && 'true'}
-      compact={compact}
+      description={description}
       disabled={disabled}
       focusVisible={isFocusVisible}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
       className={className}
+      {...itemDimensions}
     >
-      {tooltip ? (
-        <Tooltip placement={tooltipPlacement} content={tooltip}>
-          {menuItemContent}
-        </Tooltip>
-      ) : (
-        menuItemContent
-      )}
-    </MenuItemLayout>
+      {listItemContent}
+    </ListItemLayout>
   )
 }
 
-export const MenuItem = styled(MenuItemInternal)`
-  ${Icon} {
-    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
-  }
-`
+export const ListItem = styled(ListItemInternal)``
