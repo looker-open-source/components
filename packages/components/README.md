@@ -34,4 +34,4 @@ Working on the components package? This package includes a `develop` script to m
 
 ### Documenting Components in WWW
 
-To begin documenting a new component, you must first import it into [allComponents.ts](/looker-open-source/components/blob/master/packages/www/src/MDX/Pre/allComponents.ts), and attach it the `allComponents` object. This allows Gatsby to automatically add your component to the global javascript scope for use in mdx documentation.
+To begin documenting a new component, you must first import it into [allComponents.ts](/looker-open-source/components/blob/main/packages/www/src/MDX/Pre/allComponents.ts), and attach it the `allComponents` object. This allows Gatsby to automatically add your component to the global javascript scope for use in mdx documentation.
