@@ -25,13 +25,49 @@
  */
 
 import { CompatibleHTMLProps, transitions } from '@looker/design-tokens'
+import { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
-import React, { KeyboardEvent, MouseEvent, ReactNode, useContext } from 'react'
+import React, {
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
+  useContext,
+  useRef,
+} from 'react'
 import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
 import { MenuList } from './MenuList'
 import { SubmenuContext } from './SubmenuProvider'
+
+interface MousePosition {
+  x: number
+  y: number
+}
+
+const movingTowardPlacement = (
+  newPos: MousePosition,
+  prevPos?: MousePosition,
+  placement?: Placement
+) => {
+  if (!prevPos || !placement) return false
+  switch (placement) {
+    case 'right-start':
+      // Moving right & down
+      return newPos.x > prevPos.x && newPos.y > prevPos.y
+    case 'right-end':
+      // Moving right & up
+      return newPos.x > prevPos.x && newPos.y < prevPos.y
+    case 'left-start':
+      // Moving left & down
+      return newPos.x < prevPos.x && newPos.y > prevPos.y
+    case 'left-end':
+      // Moving left & up
+      return newPos.x < prevPos.x && newPos.y < prevPos.y
+    default:
+      return false
+  }
+}
 
 export interface UseSubmenuProps
   // Pick the events that need to be wrapped with various handlers from MenuItem's props.
@@ -59,9 +95,11 @@ export const useSubmenu = ({
   onMouseLeave,
   submenu,
 }: UseSubmenuProps) => {
-  const { value, change, delayChange } = useContext(SubmenuContext)
+  const mousePosition = useRef<MousePosition>()
+  const { value, change, delayChange, waitChange } = useContext(SubmenuContext)
   // Show the submenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
+  const isOpen = value === id
   const openSubmenu = () => change(id)
   const closeSubmenu = () => change('')
 
@@ -86,27 +124,45 @@ export const useSubmenu = ({
     ),
     onMouseEnter: useWrapEvent(
       submenu
-        ? (e) => {
-            // Use a delay for mouse enter/leave so that the user has time to
-            // move their mouse from the parent item to the submenu
-            // potentially hovering other items with submenus in between
-            delayChange(id, transitions.simple)
-            // Focus the button so that when the submenu closes, focus trap will
-            // return focus here instead of the first item in the list
-            const button = e.currentTarget.querySelector('button')
-            button?.focus()
+        ? () => {
+            // Use waitChange since there may be a delay on the close of the previous submenu
+            waitChange(id)
           }
         : noop,
       onMouseEnter
     ),
     onMouseLeave: useWrapEvent(
       submenu
-        ? () => {
-            delayChange('', transitions.simple)
+        ? (e: MouseEvent<HTMLLIElement>) => {
+            if (isOpen) {
+              // If the mouse is moving toward the submenu
+              // keep it open for long enough to get there
+              if (
+                movingTowardPlacement(
+                  { x: e.pageX, y: e.pageY },
+                  mousePosition.current,
+                  popperInstanceRef.current?.state.placement
+                )
+              ) {
+                delayChange('', transitions.complex)
+              } else {
+                change('')
+              }
+              mousePosition.current = undefined
+            }
           }
         : noop,
       onMouseLeave
     ),
+    onMouseMove: (e: MouseEvent<HTMLElement>) => {
+      if (isOpen && !mousePosition.current) {
+        // Focus the button so that when the submenu closes, focus trap will
+        // return focus here instead of the first item in the list
+        const button = e.currentTarget.querySelector('button')
+        button?.focus()
+      }
+      mousePosition.current = { x: e.pageX, y: e.pageY }
+    },
   }
   const listHandlers = submenu
     ? {
@@ -120,7 +176,7 @@ export const useSubmenu = ({
       }
     : {}
 
-  const { popover, domProps } = usePopover({
+  const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
       <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
         {submenu}
@@ -128,7 +184,7 @@ export const useSubmenu = ({
     ),
     disabled: submenu === undefined,
     // The submenu is only open if the current id matches the one stored in context
-    isOpen: value === id,
+    isOpen,
     placement: 'right-start',
     // For long menus, the user may need to scroll away
     // The resulting mouseleave will close the submenu

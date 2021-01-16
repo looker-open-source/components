@@ -31,6 +31,7 @@ const submenuContext: UseDelayedStateReturn<string> = {
   change: () => undefined,
   delayChange: () => undefined,
   value: '',
+  waitChange: () => undefined,
 }
 
 export const SubmenuContext = createContext(submenuContext)

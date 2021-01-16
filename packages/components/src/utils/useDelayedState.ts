@@ -37,7 +37,7 @@ interface DelayedStateState<T> extends DelayedStateBase<T> {
 }
 
 interface DelayedStateAction<T> {
-  type: 'CHANGE' | 'DELAY_CHANGE'
+  type: 'CHANGE' | 'DELAY_CHANGE' | 'WAIT_CHANGE'
   payload?: Partial<DelayedStateBase<T>>
 }
 
@@ -48,11 +48,22 @@ const reducer = <T>(
   { type, payload = {} }: DelayedStateAction<T>
 ): DelayedStateState<T> => {
   switch (type) {
+    // Update state directly to a new value or
+    // move futureValue to value and clear the delay
     case 'CHANGE':
       return {
         delay: false,
         futureValue: undefined,
         value: undefinedCoalesce([payload.value, state.futureValue]) as T,
+      }
+    // If there's a current delay, update the futureValue
+    // so as not to clobber the current value
+    // Otherwise update state directly
+    case 'WAIT_CHANGE':
+      return {
+        delay: state.delay,
+        futureValue: state.delay ? payload.value : undefined,
+        value: state.delay ? state.value : payload.value || state.value,
       }
     case 'DELAY_CHANGE':
       // If value is already false, no need to turn on the delay
@@ -69,8 +80,13 @@ export interface UseDelayedStateReturn<T> {
   change: (value: T) => void
   delayChange: (value: T, delay?: number) => void
   value: T
+  waitChange: (value: T) => void
 }
 
+/**
+ * Extension of useState that provides dispatchers to delay the state update
+ * @param initialValue
+ */
 export function useDelayedState<T>(initialValue: T): UseDelayedStateReturn<T> {
   const [{ delay, value }, dispatch] = useReducer<DelayReducer<T>>(reducer, {
     delay: false,
@@ -83,6 +99,11 @@ export function useDelayedState<T>(initialValue: T): UseDelayedStateReturn<T> {
   const delayChange = useCallback(
     (newValue: T, delay?: number) =>
       dispatch({ payload: { delay, value: newValue }, type: 'DELAY_CHANGE' }),
+    []
+  )
+  const waitChange = useCallback(
+    (newValue: T) =>
+      dispatch({ payload: { value: newValue }, type: 'WAIT_CHANGE' }),
     []
   )
 
@@ -98,5 +119,5 @@ export function useDelayedState<T>(initialValue: T): UseDelayedStateReturn<T> {
     }
   }, [delay])
 
-  return { change, delayChange, value }
+  return { change, delayChange, value, waitChange }
 }
