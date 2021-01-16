@@ -24,11 +24,8 @@
 
  */
 
-import styled from 'styled-components'
+import { DensityRamp, ItemDimensions } from '../types'
+import { densities } from './dimensions'
 
-export const ListItemDetail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
-  margin-left: auto;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
-`
+export const getItemDimensions = (density: DensityRamp): ItemDimensions =>
+  densities[density]
