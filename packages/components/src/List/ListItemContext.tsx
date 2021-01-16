@@ -24,11 +24,22 @@
 
  */
 
-import styled from 'styled-components'
+import { createContext } from 'react'
+import { ItemDimensions } from './types'
+import { density0 } from './utils'
 
-export const ListItemDetail = styled.div`
-  color: ${({ theme: { colors } }) => colors.text1};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
-  margin-left: auto;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
-`
+export interface ListItemContextProps {
+  itemDimensions: ItemDimensions
+  iconGutter: boolean
+}
+
+const listItemContext: ListItemContextProps = {
+  iconGutter: false,
+  /**
+   * List will pass a default itemDimensions object if user does not provide density value
+   * ListItems that do not have a parent List will use this default density dimensions object
+   *  */
+  itemDimensions: { ...density0 },
+}
+
+export const ListItemContext = createContext(listItemContext)

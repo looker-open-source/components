@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated allComponents.ts to have Aside, Footer, Header, Layout, Page, Section
 - `DialogLayout` component
 - `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions
+- `List`, `ListItem`
 
 ### Changed
 
@@ -31,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DialogHeader` uses responsive padding values
 - `CardMedia` supports background color props
 - `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
+- `ListItemDetail` has smaller font and less padding-left
 - `Pagination` component now enables first and last page of results at same thresholds for previous and next
 
 ### Fixed
