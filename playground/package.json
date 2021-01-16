@@ -29,7 +29,7 @@
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
     "babel-loader-exclude-node-modules-except": "^1.0.3",
-    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-plugin": "^4.5.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.2.0",
