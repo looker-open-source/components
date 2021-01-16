@@ -56,18 +56,21 @@ Open.args = {
   ...Basic.args,
   defaultOpen: true,
 }
+Open.parameters = { docs: { disable: true } }
 
 export const MediumContent = Template.bind({})
 MediumContent.args = {
   content: <DialogMediumContent />,
   defaultOpen: true,
 }
+MediumContent.parameters = { docs: { disable: true } }
 
 export const Height = Template.bind({})
 Height.args = {
   ...MediumContent.args,
   height: '1000rem',
 }
+Height.parameters = { docs: { disable: true } }
 
 export const PlacementTop = Template.bind({})
 PlacementTop.args = {
@@ -75,6 +78,7 @@ PlacementTop.args = {
   defaultOpen: true,
   placement: 'top',
 }
+PlacementTop.parameters = { docs: { disable: true } }
 
 export const PlacementCover = Template.bind({})
 PlacementCover.args = {
@@ -82,12 +86,14 @@ PlacementCover.args = {
   defaultOpen: true,
   placement: 'cover',
 }
+PlacementCover.parameters = { docs: { disable: true } }
 
 export const LongContent = Template.bind({})
 LongContent.args = {
   content: <DialogLongContent />,
   defaultOpen: true,
 }
+LongContent.parameters = { docs: { disable: true } }
 
 export const withCheckbox = Template.bind({})
 withCheckbox.args = {
@@ -99,6 +105,7 @@ withCheckbox.args = {
   ),
 }
 withCheckbox.parameters = {
+  docs: { disable: true },
   storyshots: { disable: true },
 }
 
@@ -129,6 +136,7 @@ export const ClickOutside = () => {
 }
 
 ClickOutside.parameters = {
+  docs: { disable: true },
   storyshots: { disable: true },
 }
 
