@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/looker-open-source/components.svg?branch=master)](https://travis-ci.com/looker-open-source/components)
+[![Build Status](https://travis-ci.com/looker-open-source/components.svg?branch=main)](https://travis-ci.com/looker-open-source/components)
 
 This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online on our web site.
 
@@ -62,7 +62,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 
 Storybook is a tool used to develop, demonstrate and document components in isolation.
 
-- **yarn storybook** starts master Storybook (includes all stories)
+- **yarn storybook** starts Storybook (includes all stories)
 - **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
 - **yarn image-snapshots** takes image-snapshots of all stories within packages/\*\*
   - `preimage-snapshots` is a yarn task that runs `storybooks-build` task before capturing image snapshots.
@@ -83,25 +83,6 @@ We follow a [semantic versioning scheme](https://semver.org/). That means:
 1.  API changes are only allowed in major version changes.
 1.  Backwards compatible API changes can occur in minor version changes.
 1.  Bug fixes occur in patch version changes.
-
-### Update Changelog & Version
-
-1.  Update CHANGELOG
-1.  Open PR for change review
-1.  Merge PR
-1.  Pull latest master
-1.  `yarn release`
-
-#### Undoing a failed release
-
-Sometimes the release process will fail mid-way (generally due to NPM authentication issues).
-
-Follow these instructions if you run into a case where you have a "failed" release and need to unwind it to try again. Usually the complexity lies in the case where Lerna has updated package hashes and pushed tags but authentication to NPM failed.
-
-1. Get the release commit hash `git log` to see if there's a commit and if so get the commit hash
-1. Revert the release commit `git revert YOURHASHHERE`
-1. Delete the local tag `git tag -d v0.0.0` (insert appropriate version number)
-1. Delete the remote tag `git push --delete origin v0.0.0`
 
 ### 4. Tooling
 
@@ -144,9 +125,9 @@ Code in this project is written in Typescript and the core team uses VSCode as o
 
 #### VS Code
 
-A [settings.json](https://github.com/looker-open-source/components/blob/master/.vscode/settings.json) file is checked into the repository, which contains some required settings for VS Code.
+A [settings.json](https://github.com/looker-open-source/components/blob/main/.vscode/settings.json) file is checked into the repository, which contains some required settings for VS Code.
 
-Additionally a simplistic [launch.json](https://github.com/looker-open-source/components/blob/master/.vscode/launch.json) file is also included which should allow developers to quickly run and debug tests locally, through the Jest test runner. [This file is based off of the recommendations here](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests).
+Additionally a simplistic [launch.json](https://github.com/looker-open-source/components/blob/main/.vscode/launch.json) file is also included which should allow developers to quickly run and debug tests locally, through the Jest test runner. [This file is based off of the recommendations here](https://github.com/Microsoft/vscode-recipes/tree/main/debugging-jest-tests).
 
 ##### Running Tests
 
