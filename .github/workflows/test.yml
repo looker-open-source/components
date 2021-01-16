@@ -1,6 +1,36 @@
-on: [push]
-name: "CI"
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
 jobs:
+  conventional-commit-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v1.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Configure which scopes are allowed.
+          scopes: |
+            - components
+            - components-providers
+            - components-test-utils
+            - components-theme-editor
+            - design-tokens
+            - eslint-config
+            - icons
+            - prettier
+            - stylelint-config
+            - app:www
+            - app:storybook
+          # Configure that a scope must always be provided.
+          requireScope: true
   lint:
     name: "Lint: ESLint + Prettier, Stylelint, Typescript"
     runs-on: ubuntu-latest
