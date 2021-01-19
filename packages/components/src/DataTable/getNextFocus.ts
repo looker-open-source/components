@@ -25,7 +25,9 @@
  */
 
 export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll('td[tabindex="-1"],a,button'))
+  Array.from(
+    ref.querySelectorAll('td[tabindex="-1"],th[tabindex="-1"],a,button,input')
+  )
 
 const isTableCell = (
   element: Element
@@ -63,18 +65,14 @@ export const getNextFocus = (
           element &&
           element.parentElement &&
           element.parentElement.previousElementSibling
-        if (isTableRow(rowAbove)) {
-          return rowAbove.cells[cellIndex]
-        }
+        return isTableRow(rowAbove) ? rowAbove.cells[cellIndex] : cellIndex
       } else if (direction === 1) {
         // Down Arrow
         const rowBelow =
           element &&
           element.parentElement &&
           element.parentElement.nextElementSibling
-        if (isTableRow(rowBelow)) {
-          return rowBelow.cells[cellIndex]
-        }
+        return isTableRow(rowBelow) ? rowBelow.cells[cellIndex] : cellIndex
       }
     }
     const next =

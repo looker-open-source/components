@@ -78,6 +78,7 @@ export const itemBuilder = (
         <DataTableCell description={type}>
           <Link
             href="https://components.looker.com/"
+            tabIndex={-1}
             target="_blank"
             rel="noreferrer"
           >

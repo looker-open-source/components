@@ -95,7 +95,12 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
       {actions && (
         <ItemTarget>
           <Menu content={actions}>
-            <IconButton icon="DotsVert" size="small" label={actionsTooltip} />
+            <IconButton
+              icon="DotsVert"
+              label={actionsTooltip}
+              size="small"
+              tabIndex={-1}
+            />
           </Menu>
         </ItemTarget>
       )}

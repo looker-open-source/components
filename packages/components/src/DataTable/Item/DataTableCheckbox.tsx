@@ -59,6 +59,7 @@ export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
         checked={checked}
         disabled={disabled}
         onKeyDown={handleOnKeyDown}
+        tabIndex={-1}
       />
     </ItemTarget>
   )
