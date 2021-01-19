@@ -29,6 +29,7 @@ jobs:
             - stylelint-config
             - app:www
             - app:storybook
+            - deps
           # Configure that a scope must always be provided.
           requireScope: true
   lint:
