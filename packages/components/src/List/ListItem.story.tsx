@@ -29,54 +29,55 @@ import { Story } from '@storybook/react/types-6-0'
 
 import { ListItem, ListItemProps } from './ListItem'
 
-const Template: Story<ListItemProps> = (args) => (
-  <ListItem {...args}>Menu Item</ListItem>
-)
+const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
 export const Basic = Template.bind({})
+Basic.args = {
+  children: 'List Item',
+}
 
 export const Icon = Template.bind({})
 Icon.args = {
-  ...Basic,
+  ...Basic.args,
   icon: 'User',
 }
 
 export const Detail = Template.bind({})
 Detail.args = {
-  ...Basic,
+  ...Basic.args,
   detail: 'A Detail',
 }
 
 export const IconAndDetail = Template.bind({})
 IconAndDetail.args = {
-  ...Basic,
+  ...Basic.args,
   detail: 'A Detail',
   icon: 'User',
 }
 
 export const Description = Template.bind({})
 Description.args = {
-  ...Basic,
+  ...Basic.args,
   description: 'A description',
 }
 
 export const IconAndDescription = Template.bind({})
 IconAndDescription.args = {
-  ...Basic,
+  ...Basic.args,
   description: 'A description',
   icon: 'User',
 }
 
 export const DetailAndDescription = Template.bind({})
 DetailAndDescription.args = {
-  ...Basic,
+  ...Basic.args,
   description: 'A description',
   detail: 'A detail',
 }
 
 export const IconAndDetailAndDescription = Template.bind({})
 IconAndDetailAndDescription.args = {
-  ...Basic,
+  ...Basic.args,
   description: 'A description',
   detail: 'A detail',
   icon: 'User',
@@ -84,7 +85,7 @@ IconAndDetailAndDescription.args = {
 
 export const Current = Template.bind({})
 Current.args = {
-  ...Basic,
+  ...Basic.args,
   current: true,
 }
 
