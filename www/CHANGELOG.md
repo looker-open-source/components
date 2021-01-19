@@ -9,14 +9,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * Correct import path issues DialogLayout interface name conflict ([88f099e](https://github.com/looker-open-source/components/commit/88f099eacf361a83be9149e0ac541b9184d03547))
-* Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
-
-
-
-
-
-## [0.9.16]
-
-### Preview / Experimental
-
-- Experimental: `@looker/components-theme-editor` package
