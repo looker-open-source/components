@@ -245,25 +245,27 @@ describe('<Menu />', () => {
       const parent = screen.getByText('Gouda')
       userEvent.hover(parent)
 
-      act(() => {
-        jest.runOnlyPendingTimers()
-      })
-
       const child = screen.getByText('Swiss')
       expect(child).toBeVisible()
 
-      userEvent.unhover(parent)
+      // Hovering in the direction of the submenu (ie right & down)
+      // triggers a delay to give the user time to get to the submenu
+      fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
+      fireEvent.mouseLeave(parent, { screenX: 9, screenY: 7 })
       act(() => {
         jest.advanceTimersByTime(100)
       })
       userEvent.hover(child)
-
-      act(() => {
-        jest.runOnlyPendingTimers()
-      })
       expect(screen.getByText('Swiss')).toBeVisible()
 
       userEvent.unhover(child)
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+
+      userEvent.hover(parent)
+      // If not hovering out in the direction of the submenu
+      // it closes immediately
+      fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
+      fireEvent.mouseLeave(parent, { screenX: 8, screenY: 6 })
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
 
       fireEvent.click(document)
@@ -289,7 +291,15 @@ describe('<Menu />', () => {
       fireEvent.keyDown(child, { key: 'ArrowLeft' })
 
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
-      fireEvent.click(document)
+
+      fireEvent.keyDown(parent, { key: 'ArrowRight' })
+      const child2 = screen.getByText('Swiss')
+      expect(child2).toBeVisible()
+
+      // Escape key closes the child & parent menus
+      fireEvent.keyDown(child2, { key: 'Escape' })
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+      expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
     })
 
     test('toggle on click', () => {

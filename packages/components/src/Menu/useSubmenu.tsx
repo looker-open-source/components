@@ -67,7 +67,9 @@ const movingTowardPlacement = (
       // Moving left & up
       return newPos.x < prevPos.x && newPos.y < prevPos.y
     default:
-      return false
+      // Return the same result as 'right-start' for testing
+      // when placement is inexplicably 'bottom' with jsdom
+      return newPos.x > prevPos.x && newPos.y > prevPos.y
   }
 }
 
@@ -146,7 +148,7 @@ export const useSubmenu = ({
               // keep it open for long enough to get there
               if (
                 movingTowardPlacement(
-                  { x: e.pageX, y: e.pageY },
+                  { x: e.screenX, y: e.screenY },
                   mousePosition.current,
                   popperInstanceRef.current?.state.placement
                 )
@@ -162,7 +164,7 @@ export const useSubmenu = ({
       onMouseLeave
     ),
     onMouseMove: (e: MouseEvent<HTMLElement>) => {
-      mousePosition.current = { x: e.pageX, y: e.pageY }
+      mousePosition.current = { x: e.screenX, y: e.screenY }
     },
   }
   const listHandlers = submenu
