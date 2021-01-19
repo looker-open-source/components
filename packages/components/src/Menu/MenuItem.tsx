@@ -179,7 +179,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   const menuItemContent = (
     <Component
       href={href}
-      rel={createSafeRel(props.rel, props.target)}
+      rel={createSafeRel(props.rel, target)}
       role="menuitem"
       target={target}
       tabIndex={-1}
