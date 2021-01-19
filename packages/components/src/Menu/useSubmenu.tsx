@@ -32,8 +32,10 @@ import React, {
   MouseEvent,
   ReactNode,
   useContext,
+  useEffect,
   useRef,
 } from 'react'
+import { DialogContext } from '../Dialog'
 import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
@@ -96,7 +98,11 @@ export const useSubmenu = ({
   submenu,
 }: UseSubmenuProps) => {
   const mousePosition = useRef<MousePosition>()
+  const focusRef = useRef<Element | null>(null)
   const { value, change, delayChange, waitChange } = useContext(SubmenuContext)
+
+  const { closeModal } = useContext(DialogContext)
+
   // Show the submenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
   const isOpen = value === id
@@ -124,9 +130,10 @@ export const useSubmenu = ({
     ),
     onMouseEnter: useWrapEvent(
       submenu
-        ? () => {
+        ? (e: MouseEvent<HTMLLIElement>) => {
             // Use waitChange since there may be a delay on the close of the previous submenu
             waitChange(id)
+            focusRef.current = e.currentTarget
           }
         : noop,
       onMouseEnter
@@ -155,20 +162,19 @@ export const useSubmenu = ({
       onMouseLeave
     ),
     onMouseMove: (e: MouseEvent<HTMLElement>) => {
-      if (isOpen && !mousePosition.current) {
-        // Focus the button so that when the submenu closes, focus trap will
-        // return focus here instead of the first item in the list
-        const button = e.currentTarget.querySelector('button')
-        button?.focus()
-      }
       mousePosition.current = { x: e.pageX, y: e.pageY }
     },
   }
   const listHandlers = submenu
     ? {
         onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
-          if (e.key === 'ArrowLeft') {
-            closeSubmenu()
+          switch (e.key) {
+            case 'ArrowLeft':
+              closeSubmenu()
+              break
+            case 'Escape':
+              closeModal()
+              break
           }
         },
         onMouseEnter: openSubmenu,
@@ -196,6 +202,15 @@ export const useSubmenu = ({
     // Clicking on the MenuItem again should not close the submenu
     triggerToggle: false,
   })
+
+  useEffect(() => {
+    if (isOpen && focusRef.current) {
+      // Focus the menu item so that when the submenu closes, focus trap will
+      // return focus here instead of the first item in the list
+      const button = focusRef.current.querySelector('a,button') as HTMLElement
+      button?.focus()
+    }
+  }, [isOpen])
 
   return {
     domProps: { ...itemHandlers, ...omit(domProps, 'onClick') },
