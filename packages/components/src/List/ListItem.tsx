@@ -125,12 +125,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-  const Component =
-    !disabled && itemRole === 'link'
-      ? 'a'
-      : itemRole === 'button'
-      ? 'button'
-      : 'div'
+  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   const renderedChildren =
     typeof children === 'string' ? (

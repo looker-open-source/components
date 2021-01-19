@@ -75,8 +75,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
     color ${transitions.quick}ms ${easings.ease}`};
 
   button,
-  a,
-  & > div {
+  a {
     ${reset}
     align-items: center;
     background: transparent;
@@ -110,8 +109,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
   ${({ focusVisible, theme: { colors } }) =>
     focusVisible &&
     `&:focus-within button:after,
-  &:focus-within a:after,
-  &:focus-within div:after {
+  &:focus-within a:after {
     content: '';
     display:block;
     border: solid 2px ${colors.keyFocus};
