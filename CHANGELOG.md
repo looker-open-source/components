@@ -1,18 +1,7 @@
-# Changelog
+# Change Log
 
 All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-NOTE: This is the CHANGELOG for the @looker/components MONOREPO. Each package has a package-specific CHANGELOG as well. Review the Github release notes for a roll-up of all CHANGELOG changes across the monorepo.
-
-- [Components](./packages/components/CHANGELOG.md)
-- [Components Providers](./packages/components-providers/CHANGELOG.md)
-- [Components Test Utilities](./packages/components-providers/CHANGELOG.md)
-- [Components Theme Editor](./packages/theme-editor/CHANGELOG.md)
-- [Design Tokens](./packages/design-tokens/CHANGELOG.md)
-- [Icons](./packages/icons/CHANGELOG.md)
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.9.26]
 
