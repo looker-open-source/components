@@ -44,4 +44,4 @@ jobs:
       - name: Publish to NPM registry with canary tag
         run: npx lerna publish from-package --yes --dist-tag canary
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
