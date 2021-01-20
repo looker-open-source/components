@@ -58,18 +58,49 @@ export const getNextFocus = (
         const cellIndex = element.cellIndex
         if (direction === -1) {
           // Up Arrow
-          const rowAbove =
-            element &&
-            element.parentElement &&
-            element.parentElement.previousElementSibling
-          return isTableRow(rowAbove) ? rowAbove.cells[cellIndex] : null
+          const rowAbove = element && element.parentElement
+          if (rowAbove && rowAbove.previousElementSibling === null) {
+            return isTableRow(
+              rowAbove &&
+                rowAbove.parentElement &&
+                rowAbove.parentElement.previousElementSibling &&
+                rowAbove.parentElement.previousElementSibling.firstElementChild
+            )
+              ? rowAbove &&
+                  rowAbove.parentElement &&
+                  rowAbove.parentElement.previousElementSibling &&
+                  rowAbove.parentElement.previousElementSibling
+                    .firstElementChild &&
+                  (rowAbove.parentElement.previousElementSibling
+                    .firstElementChild as HTMLTableRowElement).cells[cellIndex]
+              : null
+          } else if (rowAbove) {
+            return isTableRow(rowAbove.previousElementSibling)
+              ? rowAbove.previousElementSibling.cells[cellIndex]
+              : null
+          }
         } else if (direction === 1) {
           // Down Arrow
-          const rowBelow =
-            element &&
-            element.parentElement &&
-            element.parentElement.nextElementSibling
-          return isTableRow(rowBelow) ? rowBelow.cells[cellIndex] : null
+          const rowBelow = element && element.parentElement
+          if (rowBelow && rowBelow.nextElementSibling === null) {
+            return isTableRow(
+              rowBelow &&
+                rowBelow.parentElement &&
+                rowBelow.parentElement.nextElementSibling &&
+                rowBelow.parentElement.nextElementSibling.firstElementChild
+            )
+              ? rowBelow &&
+                  rowBelow.parentElement &&
+                  rowBelow.parentElement.nextElementSibling &&
+                  rowBelow.parentElement.nextElementSibling.firstElementChild &&
+                  (rowBelow.parentElement.nextElementSibling
+                    .firstElementChild as HTMLTableRowElement).cells[cellIndex]
+              : null
+          } else if (rowBelow) {
+            return isTableRow(rowBelow.nextElementSibling)
+              ? rowBelow.nextElementSibling.cells[cellIndex]
+              : null
+          }
         }
       }
       const next =
