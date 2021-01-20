@@ -21,21 +21,30 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
       - name: Fetch all tags
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
       - name: Install dependencies
         run: |
           yarn install
+
       - name: Build packages
         run: |
           yarn build
+
       - name: Create canary release
         run: |
           npx lerna version prerelease --conventional-commits --no-git-tag-version --no-push --preid canary --yes --exact
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "chore: Publish"
+
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to NPM registry with canary tag
         run: npx lerna publish from-package --yes --dist-tag canary
         env:

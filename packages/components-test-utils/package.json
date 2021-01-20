@@ -1,12 +1,14 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.9.29",
+  "version": "0.10.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "types/index.d.ts",
   "files": [
-    "cjs", "esm", "types"
+    "cjs",
+    "esm",
+    "types"
   ],
   "sideEffects": false,
   "repository": {
@@ -18,7 +20,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@looker/components-providers": "^0.9.29",
+    "@looker/components-providers": "^0.10.0",
     "@testing-library/react": "^11.2.2",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.19",

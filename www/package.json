@@ -1,12 +1,12 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.9.29",
+  "version": "0.10.0",
   "devDependencies": {
-    "@looker/components": "^0.9.29",
-    "@looker/components-theme-editor": "^0.9.29",
-    "@looker/design-tokens": "^0.9.27",
-    "@looker/icons": "^0.9.26",
+    "@looker/components": "^0.10.0",
+    "@looker/components-theme-editor": "^0.10.0",
+    "@looker/design-tokens": "^0.10.0",
+    "@looker/icons": "^0.10.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@reach/router": "^1.3.3",

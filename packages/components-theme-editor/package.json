@@ -1,12 +1,14 @@
 {
   "name": "@looker/components-theme-editor",
   "license": "MIT",
-  "version": "0.9.29",
+  "version": "0.10.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "types/index.d.ts",
   "files": [
-    "cjs", "esm", "types"
+    "cjs",
+    "esm",
+    "types"
   ],
   "sideEffects": false,
   "repository": {
@@ -18,8 +20,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^0.9.29",
-    "@looker/design-tokens": "^0.9.27",
+    "@looker/components": "^0.10.0",
+    "@looker/design-tokens": "^0.10.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
