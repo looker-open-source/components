@@ -33,8 +33,7 @@
     "clean:build": "rm -Rf packages/*/cjs packages/*/esm packages/*/types",
     "clean:legacy": "rm -Rf packages/*/lib packages/*/dist",
     "clean:storybook": "rm -Rf packages/*/storybook-static ",
-    "clean:docs": "rm -Rf docs/static www/.cache www/public",
-    "deploy": "./config/deploy.sh",
+    "clean:docs": "rm -Rf docs www/.cache www/public",
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -46,12 +45,12 @@
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest",
     "storybook": "yarn workspace storybook develop",
-    "storybook-docs": "yarn workspace storybook develop-docs",
-    "storybooks-build": "yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
     "preimage-snapshots": "export storybookBuildMode=fast && yarn storybooks-build && yarn clean:build && yarn prepare",
     "image-snapshots-only": "yarn jest --config jest-image-snapshots.config.js",
     "image-snapshots": "yarn image-snapshots-only",
-    "image-snapshots-update": "rm -rf packages/*/snapshots && yarn image-snapshots"
+    "image-snapshots-update": "rm -rf packages/*/snapshots && yarn image-snapshots",
+    "website-canary": "./config/website-canary.sh",
+    "website-latest": "./config/website-latest.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

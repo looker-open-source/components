@@ -27,6 +27,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix,@typescript-eslint/camelcase */
 
 module.exports = {
+  pathPrefix: 'VERSION',
   flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: 'Looker UI Components',
