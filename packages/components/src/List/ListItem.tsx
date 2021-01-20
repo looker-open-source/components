@@ -27,11 +27,16 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState } from 'react'
+import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
-import { undefinedCoalesce } from '../utils'
+import {
+  HoverDisclosureContext,
+  HoverDisclosure,
+  undefinedCoalesce,
+  useHovered,
+} from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
@@ -56,6 +61,11 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    */
   detailAccessory?: boolean
   /**
+   * If true, the detail element will only appear on hover
+   * @default false
+   */
+  detailHoverDisclosure?: boolean
+  /**
    * Optional icon placed left of the item children
    */
   icon?: IconNames
@@ -77,8 +87,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     className,
     current,
     description,
-    detail,
+    detail: propsDetail,
     detailAccessory: propsDetailAccessory,
+    detailHoverDisclosure: propsDetailHoverDisclosure,
     disabled,
     href,
     icon,
@@ -92,6 +103,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const {
     detailAccessory: contextDetailAccessory,
+    detailHoverDisclosure: contextDetailHoverDisclosure,
     iconGutter,
     itemDimensions,
   } = useContext(ListItemContext)
@@ -101,7 +113,15 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     contextDetailAccessory,
   ])
 
+  const detailHoverDisclosure = undefinedCoalesce([
+    propsDetailHoverDisclosure,
+    contextDetailHoverDisclosure,
+  ])
+
   const [isFocusVisible, setFocusVisible] = useState(false)
+
+  const itemRef = useRef<HTMLLIElement>(null)
+  const [isHovered] = useHovered(itemRef)
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -156,6 +176,14 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       children
     )
 
+  const detail = propsDetail && (
+    <HoverDisclosure visible={!detailHoverDisclosure}>
+      <ListItemDetail pr={detailAccessory ? itemDimensions.px : '0'}>
+        {propsDetail}
+      </ListItemDetail>
+    </HoverDisclosure>
+  )
+
   const listItemContent = (
     <>
       <Component
@@ -174,31 +202,30 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
             </Paragraph>
           )}
         </span>
-        {detail && !detailAccessory && (
-          <ListItemDetail>{detail}</ListItemDetail>
-        )}
+        {!detailAccessory && detail}
       </Component>
-      {detail && detailAccessory && (
-        <ListItemDetail pr={itemDimensions.px}>{detail}</ListItemDetail>
-      )}
+      {detailAccessory && detail}
     </>
   )
 
   return (
-    <ListItemLayout
-      aria-current={current && 'true'}
-      description={description}
-      detailAccessory={detailAccessory}
-      disabled={disabled}
-      focusVisible={isFocusVisible}
-      onBlur={handleOnBlur}
-      onClick={disabled ? undefined : handleOnClick}
-      onKeyUp={handleOnKeyUp}
-      className={className}
-      {...itemDimensions}
-    >
-      {listItemContent}
-    </ListItemLayout>
+    <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
+      <ListItemLayout
+        aria-current={current && 'true'}
+        description={description}
+        detailAccessory={detailAccessory}
+        disabled={disabled}
+        focusVisible={isFocusVisible}
+        onBlur={handleOnBlur}
+        onClick={disabled ? undefined : handleOnClick}
+        onKeyUp={handleOnKeyUp}
+        className={className}
+        ref={itemRef}
+        {...itemDimensions}
+      >
+        {listItemContent}
+      </ListItemLayout>
+    </HoverDisclosureContext.Provider>
   )
 }
 

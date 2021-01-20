@@ -93,3 +93,21 @@ DetailAccessory.args = {
   ...Basic.args,
   detailAccessory: true,
 }
+
+const detailListItems = (
+  <>
+    <ListItem detail="American">Cheddar</ListItem>
+    <ListItem detail="Netherlands">Gouda</ListItem>
+    <ListItem detail="Italian">Mozzarella</ListItem>
+  </>
+)
+
+export const DetailHoverDisclosure = Template.bind({})
+DetailHoverDisclosure.args = {
+  ...DetailAccessory.args,
+  children: detailListItems,
+  detailHoverDisclosure: true,
+}
+DetailHoverDisclosure.parameters = {
+  storyshots: { disable: true },
+}

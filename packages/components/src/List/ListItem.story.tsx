@@ -56,6 +56,17 @@ DetailAccessory.args = {
   detailAccessory: true,
 }
 
+export const DetailHoverDisclosure = Template.bind({})
+DetailHoverDisclosure.args = {
+  ...DetailAccessory.args,
+  detailAccessory: false,
+  detailHoverDisclosure: true,
+}
+
+DetailHoverDisclosure.parameters = {
+  storyshots: { disable: true },
+}
+
 export const IconAndDetail = Template.bind({})
 IconAndDetail.args = {
   ...Basic.args,

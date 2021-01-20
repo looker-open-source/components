@@ -60,6 +60,12 @@ export interface ListProps
   detailAccessory?: boolean
 
   /**
+   * If true, child ListItems' detail elements will only appear on hover
+   * @default false
+   */
+  detailHoverDisclosure?: boolean
+
+  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
@@ -85,7 +91,8 @@ export const ListInternal = forwardRef(
     {
       children,
       density,
-      detailAccessory,
+      detailAccessory = false,
+      detailHoverDisclosure = false,
       disabled,
       iconGutter = false,
       windowing,
@@ -128,7 +135,8 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
-      detailAccessory: !!detailAccessory,
+      detailAccessory,
+      detailHoverDisclosure,
       iconGutter,
       itemDimensions,
     }
