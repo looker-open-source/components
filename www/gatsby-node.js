@@ -48,7 +48,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 const isComponentSlug = (slug) => {
-  const inComponents = slug.includes('/components')
+  const inComponents = slug.startsWith('/components')
   const isMain = slug === '/components/'
   return inComponents && !isMain
 }

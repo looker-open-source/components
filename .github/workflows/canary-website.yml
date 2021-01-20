@@ -38,5 +38,4 @@ jobs:
           CLEAN: false # Don't remove deleted files from the deploy branch
           FOLDER: docs # The folder the action should deploy.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SINGLE_COMMIT: true
-          TARGET_FOLDER: docs
+          # SINGLE_COMMIT: true
