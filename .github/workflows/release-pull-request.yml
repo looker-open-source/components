@@ -21,15 +21,19 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
       - name: Fetch all tags
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
       - name: Install dependencies
         run: |
           yarn install
+
       - name: Bump version
         run: |
           yarn bumpversion
+
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:

@@ -1,12 +1,14 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "0.9.26",
+  "version": "0.10.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "types/index.d.ts",
   "files": [
-    "cjs", "esm", "types"
+    "cjs",
+    "esm",
+    "types"
   ],
   "sideEffects": false,
   "repository": {
