@@ -45,4 +45,5 @@ jobs:
           CLEAN_EXCLUDE: '["v", "/index.html"]'
           FOLDER: docs # The folder the action should deploy.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SINGLE_COMMIT: true
           TARGET_FOLDER: docs
