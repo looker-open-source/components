@@ -25,13 +25,16 @@ jobs:
       - name: Fetch all tags
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
       - name: Install dependencies
         run: |
           yarn install
+
       - name: Read version created by Lerna.js
         id: lerna_version
         run: |
           echo "::set-output name=version::v$(npm run version --silent)"
+
       - name: Check if release tag is already created
         id: vars
         run: |
@@ -42,9 +45,11 @@ jobs:
             echo "New release already created, exiting."
             exit 1
           fi
+
       - name: Build packages
         run: |
           yarn build
+
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -55,7 +60,10 @@ jobs:
             See CHANGELOG file to see what's changed in new release.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+
       - name: Publish to NPM registry
         run: npx lerna publish from-package --yes
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
