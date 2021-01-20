@@ -22,8 +22,7 @@
     "yarn": ">=1.14.0"
   },
   "scripts": {
-    "prepare": "yarn lerna run prepare  --stream",
-    "prebuild": "yarn clean && yarn prepare",
+    "prebuild": "yarn clean && yarn lerna run prebuild  --stream",
     "build": "run-p -c build:*",
     "build:cjs": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name cjs --root-mode upward --out-dir cjs --source-maps --extensions .ts,.tsx --no-comments'",
     "build:esm": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name esm --root-mode upward --out-dir esm --source-maps --extensions .ts,.tsx --no-comments'",
@@ -33,7 +32,8 @@
     "clean:build": "rm -Rf packages/*/cjs packages/*/esm packages/*/types",
     "clean:legacy": "rm -Rf packages/*/lib packages/*/dist",
     "clean:storybook": "rm -Rf packages/*/storybook-static ",
-    "clean:docs": "rm -Rf docs www/.cache www/public",
+    "clean:docs": "find docs -type f ! -name 'index.html' -delete",
+    "clean:gatsby": "rm -Rf www/.cache www/public",
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",

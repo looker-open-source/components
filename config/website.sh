@@ -6,6 +6,7 @@ VERSION=$1
 rm -rf docs/$VERSION
 
 # Build Gatsby, then move contents to public folder for publishing
+git checkout HEAD -- www/gatsby-config.js
 sed -i -e "s/VERSION/$VERSION/g" www/gatsby-config.js
 yarn workspace www build
 mv www/public docs/$VERSION
