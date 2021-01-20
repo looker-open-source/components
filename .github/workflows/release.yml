@@ -61,9 +61,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM registry
         run: npx lerna publish from-package --yes
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}

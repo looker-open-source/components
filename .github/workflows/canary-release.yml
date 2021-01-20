@@ -41,7 +41,9 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -am "chore: Publish"
 
-      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM registry with canary tag
         run: npx lerna publish from-package --yes --dist-tag canary
