@@ -37,7 +37,6 @@ export interface ListItemLayoutProps
   description?: ReactNode
   detailAccessory?: boolean
   focusVisible?: boolean
-  hasDetail?: boolean
 }
 
 /**
@@ -98,9 +97,9 @@ export const ListItemLayout = styled(ListItemWrapper)`
      The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
      Without it, density = -1 ListItems would be at 44px.
      */
-    padding: ${({ hasDetail, px: propsPx, py: propsPy, theme }) => {
+    padding: ${({ detailAccessory, px: propsPx, py: propsPy, theme }) => {
       const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
-      const pr = hasDetail ? '0' : theme.space[propsPx]
+      const pr = detailAccessory ? '0' : theme.space[propsPx]
       const pb = pt
       const pl = theme.space[propsPx]
 

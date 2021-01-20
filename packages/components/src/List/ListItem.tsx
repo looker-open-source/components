@@ -175,7 +175,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
           )}
         </span>
         {detail && !detailAccessory && (
-          <ListItemDetail pr={itemDimensions.px}>{detail}</ListItemDetail>
+          <ListItemDetail>{detail}</ListItemDetail>
         )}
       </Component>
       {detail && detailAccessory && (
@@ -191,7 +191,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       detailAccessory={detailAccessory}
       disabled={disabled}
       focusVisible={isFocusVisible}
-      hasDetail={!!detail}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
