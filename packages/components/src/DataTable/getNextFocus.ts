@@ -24,10 +24,7 @@
 
  */
 
-export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(
-    ref.querySelectorAll('td[tabindex="-1"],th[tabindex="-1"],a,button,input')
-  )
+import { getTabStops } from '../utils'
 
 const isTableCell = (
   element: Element
@@ -51,34 +48,36 @@ export const getNextFocus = (
   vertical?: boolean
 ) => {
   const tabStops = getTabStops(element)
-
-  if (
-    document.activeElement &&
-    tabStops.includes(document.activeElement as HTMLElement)
-  ) {
-    const element = document.activeElement
-    if (vertical && isTableCell(element)) {
-      const cellIndex = element.cellIndex
-      if (direction === -1) {
-        // Up Arrow
-        const rowAbove =
-          element &&
-          element.parentElement &&
-          element.parentElement.previousElementSibling
-        return isTableRow(rowAbove) ? rowAbove.cells[cellIndex] : cellIndex
-      } else if (direction === 1) {
-        // Down Arrow
-        const rowBelow =
-          element &&
-          element.parentElement &&
-          element.parentElement.nextElementSibling
-        return isTableRow(rowBelow) ? rowBelow.cells[cellIndex] : cellIndex
+  if (tabStops.length > 0) {
+    if (
+      document.activeElement &&
+      tabStops.includes(document.activeElement as HTMLElement)
+    ) {
+      const element = document.activeElement
+      if (vertical && isTableCell(element)) {
+        const cellIndex = element.cellIndex
+        if (direction === -1) {
+          // Up Arrow
+          const rowAbove =
+            element &&
+            element.parentElement &&
+            element.parentElement.previousElementSibling
+          return isTableRow(rowAbove) ? rowAbove.cells[cellIndex] : null
+        } else if (direction === 1) {
+          // Down Arrow
+          const rowBelow =
+            element &&
+            element.parentElement &&
+            element.parentElement.nextElementSibling
+          return isTableRow(rowBelow) ? rowBelow.cells[cellIndex] : null
+        }
       }
-    }
-    const next =
-      tabStops.findIndex((el) => el === document.activeElement) + direction
+      const next =
+        tabStops.findIndex((el) => el === document.activeElement) + direction
 
-    return tabStops[next]
+      return tabStops[next]
+    }
+    return tabStops[0]
   }
   return null
 }

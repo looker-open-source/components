@@ -108,7 +108,7 @@ const DataTableRowLayout = forwardRef(
             <DataTableCheckbox {...pick(props, checkListProps)} />
           </ColumnType>
         ) : (
-          <ColumnType aria-hidden="true" tabIndex={-1} />
+          <ColumnType aria-hidden="true" />
         )}
         {sizedChildren}
         <ColumnType onClick={suppressClickPropagation} tabIndex={-1}>

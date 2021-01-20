@@ -28,13 +28,11 @@ import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import React, { FC, useState } from 'react'
 import { MixedBoolean } from '../Form'
-import { useArrowKeyNav } from '../utils'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
 import { DataTableFilters } from './Filters/DataTableFilters'
 import { Table } from './Table'
 import { DataTableProps } from './types'
-import { getNextFocus } from './getNextFocus'
 
 export const DataTableLayout: FC<DataTableProps> = (props) => {
   const {
@@ -108,14 +106,9 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     />
   )
 
-  const navProps = useArrowKeyNav({
-    axis: 'both',
-    getNextFocus: getNextFocus,
-  })
-
   return (
     <DataTableContext.Provider value={context}>
-      <div className={className} {...navProps}>
+      <div className={className}>
         {filters}
         {bulk && select && select.selectedItems.length > 0 && (
           <BulkActions {...bulk} />
