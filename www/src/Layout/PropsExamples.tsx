@@ -28,6 +28,7 @@ import { Flex, Spinner } from '@looker/components'
 import { height, HeightProps, omitStyledProps } from '@looker/design-tokens'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { withPrefix } from 'gatsby'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -35,7 +36,7 @@ const storybookLink = (component: string) => {
   const page = `iframe.html?id=${component.toLowerCase()}-&viewMode=docs&parent=gatsby`
   return isDev
     ? `//${window.location.hostname}:3333/${page}`
-    : `/storybook/${page}`
+    : withPrefix(`/storybook/${page}`)
 }
 export interface PropsExamplesProps {
   component: string

@@ -52,7 +52,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
         <Accordion
           key={child.path}
           indicatorColor="text1"
-          defaultOpen={currentPath.startsWith(`/components/${uri}`)}
+          defaultOpen={currentPath.includes(`/components/${uri}`)}
         >
           <AccordionDisclosure px="xlarge">
             <Heading variant="secondary" as="h4" fontFamily="body">
