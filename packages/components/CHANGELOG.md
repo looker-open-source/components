@@ -5,69 +5,44 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.10.0](https://github.com/looker-open-source/components/compare/v0.9.29...v0.10.0) (2021-01-19)
 
-
 ### Bug Fixes
 
-* Correct import path issues DialogLayout interface name conflict ([88f099e](https://github.com/looker-open-source/components/commit/88f099eacf361a83be9149e0ac541b9184d03547))
-* MenuList windowing initial render performance ([a56ac29](https://github.com/looker-open-source/components/commit/a56ac29067cd25ef31a64d63c9bd742de927fb32))
-* Pagination component now enables first and last page of results at same thresholds for previous and next ([#1781](https://github.com/looker-open-source/components/issues/1781)) ([f7d666a](https://github.com/looker-open-source/components/commit/f7d666a01fa42a992c0368c7f56e0311293d5cc8))
-* Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
-
+- `DialogLayout` - corrected import path issues interface name conflict ([88f099e](https://github.com/looker-open-source/components/commit/88f099eacf361a83be9149e0ac541b9184d03547))
+- `MenuList` windowing initial render performance ([a56ac29](https://github.com/looker-open-source/components/commit/a56ac29067cd25ef31a64d63c9bd742de927fb32))
+- `DataTable` overflow shadow now works properly in Safari
+- `MenuList` windowing initial render performance
+- `Pagination` component now enables first and last page of results at same thresholds for previous and next ([#1781](https://github.com/looker-open-source/components/issues/1781)) ([f7d666a](https://github.com/looker-open-source/components/commit/f7d666a01fa42a992c0368c7f56e0311293d5cc8))
+- `TooltipContent` default width is back to `'auto'`
+- Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
+- Erratic scrolling after dynamic list resize in all `Combobox`-based components
 
 ### Features
 
-* Add DialogLayout component to manage dialog setup ([bfa94b3](https://github.com/looker-open-source/components/commit/bfa94b3ea75603caf47d184f63b356e666af57c0))
-* Arrow key navigation persists selected item (Menu, Tabs) ([#1761](https://github.com/looker-open-source/components/issues/1761)) ([dc2400f](https://github.com/looker-open-source/components/commit/dc2400f6c4237e326f7ccd4a1eb4c93d962d900b))
-* DialogContent hasFooter & hasHeader support ([8039da2](https://github.com/looker-open-source/components/commit/8039da25d1646e8d50ee900e6243a3e3e44ea6ca))
-* DialogHeader no longer supports `closeIcon` ([bca25d3](https://github.com/looker-open-source/components/commit/bca25d38959c7af27a6019063a9b7e7ee9294d8d))
-* List and ListItem ([#1773](https://github.com/looker-open-source/components/issues/1773)) ([ee1e14b](https://github.com/looker-open-source/components/commit/ee1e14b122b5db1716c2d3b2ae6ad6abc1507192))
-
-
-### BREAKING CHANGES
-
-* `DialogHeader` no longer supports `closeIcon` (always "Close")
-
-
-
-
-
-## [UNRELEASED]
-
-### Added
-
-- `Tabs` and `Menu` arrow key navigation persists the last focused item
 - `Breakpoint` component
+- `CardMedia` supports background color props
+- `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions ([8039da2](https://github.com/looker-open-source/components/commit/8039da25d1646e8d50ee900e6243a3e3e44ea6ca))
+- `DialogLayout` component to manage dialog setup ([bfa94b3](https://github.com/looker-open-source/components/commit/bfa94b3ea75603caf47d184f63b356e666af57c0))
+- `DialogHeader` uses responsive padding values
+- `ListItemDetail` has smaller font and less padding-left
+- `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
+- `Menu` & `Tabs` - arrow key navigation persists the last focused item ([#1761](https://github.com/looker-open-source/components/issues/1761)) ([dc2400f](https://github.com/looker-open-source/components/commit/dc2400f6c4237e326f7ccd4a1eb4c93d962d900b))
+- `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
+- `Pagination` component now enables first and last page of results at same thresholds for previous and next
+- `ProgressCircular` component
+- `Tree` now uses the same `selected` color as `TreeItem`
 - `Tree / TreeItem`
   - disabled and selected states
   - `brand` prop
   - `treeBackgroundColor` util function
-- `ProgressCircular` component
 - `UnorderedList`, `OrderedList`
-- `DialogLayout` component
-- `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions
-- `List`, `ListItem`
 
-### Changed
+#### Experimental
 
-- `IconPlaceholder` moved to `Icon`
-- `Menu` structure now follows `Popover` structure: `content` prop accepts the items and `children` is the trigger element
-- `Tree` now uses the same `selected` color as `TreeItem`
-- `DialogHeader` uses responsive padding values
-- `CardMedia` supports background color props
-- `InputDate` & `InputDateRange` vertial margin removed to be consistent with other inputs
-- `ListItemDetail` has smaller font and less padding-left
-- `Pagination` component now enables first and last page of results at same thresholds for previous and next
+- `List` and `ListItem` ([#1773](https://github.com/looker-open-source/components/issues/1773)) ([ee1e14b](https://github.com/looker-open-source/components/commit/ee1e14b122b5db1716c2d3b2ae6ad6abc1507192))
 
-### Fixed
+### BREAKING CHANGES
 
-- `MenuList` windowing initial render performance
-- `DataTable` overflow shadow now works properly in Safari
-- `TooltipContent` default width is back to `'auto'`
-- Erratic scrolling after dynamic list resize in all `Combobox`-based components
-
-### Removed
-
-- `List`, `ListItem`, `ListItemDetail`
+- `DialogHeader` no longer supports `closeIcon` (always "Close") ([bca25d3](https://github.com/looker-open-source/components/commit/bca25d38959c7af27a6019063a9b7e7ee9294d8d))
 - `MenuDisclosure` and `MenuContext` are no longer used with the updated `Menu` structure
 
 ## [0.9.30]
