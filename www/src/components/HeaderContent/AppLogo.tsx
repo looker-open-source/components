@@ -25,12 +25,13 @@
  */
 
 import { DividerVertical, Heading, Space } from '@looker/components'
+import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import logo from './logo.png'
 
 const AppLogoLayout: FC<{ className?: string }> = (props) => (
-  <a href="/" {...props}>
+  <Link to="/" {...props}>
     <Space gap="small">
       <img src={logo} alt="Looker" />
       <DividerVertical stretch my="none" mx="none" />
@@ -38,7 +39,7 @@ const AppLogoLayout: FC<{ className?: string }> = (props) => (
         Components
       </Heading>
     </Space>
-  </a>
+  </Link>
 )
 
 export const AppLogo = styled(AppLogoLayout)`

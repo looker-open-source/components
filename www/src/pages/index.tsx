@@ -31,11 +31,10 @@ import {
   Flex,
   Heading,
   Icon,
-  Link,
   Paragraph,
   Section,
 } from '@looker/components'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Layout } from '../Layout'

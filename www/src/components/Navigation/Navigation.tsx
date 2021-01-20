@@ -73,9 +73,12 @@ const groupComponents = (pages: NavigationPage[]) => {
   }).sort((a, b) => (a.title > b.title ? 1 : b.title > a.title ? -1 : 0))
 }
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const NavigationLayout: FC<NavigationProps> = (props) => {
   const location = useLocation()
-  const sectionPath = location.pathname.split('/')[1]
+  // In production mode site is deployed into a folder (`components/v1.0.0`, `components/latest`, etc...)
+  const sectionPath = location.pathname.split('/')[isDev ? 1 : 3]
   const title = startCase(sectionPath)
   const pages = useSitemap()[sectionPath]
 
