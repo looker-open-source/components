@@ -103,10 +103,13 @@ export const getNextFocus = (
           }
         }
       }
+      // check if tabStops[next] is in the same table row as document.activeElement and return null if it isn't.
       const next =
         tabStops.findIndex((el) => el === document.activeElement) + direction
-
-      return tabStops[next]
+      return tabStops[next].closest('tr') ===
+        document.activeElement.closest('tr')
+        ? tabStops[next]
+        : null
     }
     return tabStops[0]
   }
