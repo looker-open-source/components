@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
+import { IconButton } from '../Button'
 import { ListItem, ListItemProps } from './ListItem'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
@@ -46,6 +47,13 @@ export const Detail = Template.bind({})
 Detail.args = {
   ...Basic.args,
   detail: 'A Detail',
+}
+
+export const DetailAccessory = Template.bind({})
+DetailAccessory.args = {
+  ...Basic.args,
+  detail: <IconButton icon="Pivot" label="Pivot" />,
+  detailAccessory: true,
 }
 
 export const IconAndDetail = Template.bind({})

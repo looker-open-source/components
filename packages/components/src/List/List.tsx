@@ -53,6 +53,13 @@ export interface ListProps
   density?: DensityRamp
 
   /**
+   * If true, child ListItems' detail elements will appear outside of the item's grey background on hover
+   * In addition, if true, events will not propagate from the detail container
+   * @default false
+   */
+  detailAccessory?: boolean
+
+  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
@@ -78,6 +85,7 @@ export const ListInternal = forwardRef(
     {
       children,
       density,
+      detailAccessory,
       disabled,
       iconGutter = false,
       windowing,
@@ -120,6 +128,7 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      detailAccessory: !!detailAccessory,
       iconGutter,
       itemDimensions,
     }

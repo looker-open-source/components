@@ -35,7 +35,9 @@ export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ItemDimensions {
   description?: ReactNode
+  detailAccessory?: boolean
   focusVisible?: boolean
+  hasDetail?: boolean
 }
 
 /**
@@ -46,7 +48,9 @@ const ListItemWrapper = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(props, 'focusVisible', [...itemDimensionKeys])}
+        {...omit(props, 'detailAccessory', 'focusVisible', [
+          ...itemDimensionKeys,
+        ])}
         ref={ref}
         role="none"
       />
@@ -65,8 +69,11 @@ export const ListItemLayoutGrid = styled.div``
 export const ListItemLayout = styled(ListItemWrapper)`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text5};
+  display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
+  height: ${({ description, height }) =>
+    description ? height + 16 : height}px;
   list-style-type: none;
   outline: none;
   text-decoration: none;
@@ -74,8 +81,8 @@ export const ListItemLayout = styled(ListItemWrapper)`
     `background ${transitions.quick}ms ${easings.ease},
     color ${transitions.quick}ms ${easings.ease}`};
 
-  button,
-  a {
+  & > button,
+  & > a {
     ${reset}
     align-items: center;
     background: transparent;
@@ -86,20 +93,28 @@ export const ListItemLayout = styled(ListItemWrapper)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
-    min-height: ${({ height }) => `${height}px`};
     outline: none;
-    /*
-      This override gets density = -1 ListItems to the desired 48px min height.
-      Without it, density = -1 ListItems would be at 44px.
+    /**
+     The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
+     Without it, density = -1 ListItems would be at 44px.
      */
-    padding: ${({ px, py, theme }) =>
-      `${py === '0.375rem' ? py : theme.space[py]} ${theme.space[px]}`};
+    padding: ${({ hasDetail, px: propsPx, py: propsPy, theme }) => {
+      const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
+      const pr = hasDetail ? '0' : theme.space[propsPx]
+      const pb = pt
+      const pl = theme.space[propsPx]
+
+      return `${pt} ${pr} ${pb} ${pl}`
+    }};
+
     text-align: left;
     text-decoration: none;
     width: 100%;
 
     &:hover,
     &:focus {
+      background: ${({ detailAccessory, theme: { colors } }) =>
+        detailAccessory && colors.ui1};
       color: inherit;
       position: relative;
       text-decoration: none;
@@ -130,7 +145,9 @@ export const ListItemLayout = styled(ListItemWrapper)`
   }
 
   &:hover {
-    background: ${({ theme: { colors } }) => colors.ui1};
+    /* stylelint-disable */
+    background: ${({ detailAccessory, theme: { colors } }) =>
+      !detailAccessory && colors.ui1};
   }
 
   &[aria-current='true'] {

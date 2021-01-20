@@ -29,11 +29,13 @@ import { ItemDimensions } from './types'
 import { density0 } from './utils'
 
 export interface ListItemContextProps {
+  detailAccessory: boolean
   itemDimensions: ItemDimensions
   iconGutter: boolean
 }
 
 const listItemContext: ListItemContextProps = {
+  detailAccessory: false,
   iconGutter: false,
   /**
    * List will pass a default itemDimensions object if user does not provide density value

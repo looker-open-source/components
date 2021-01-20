@@ -87,3 +87,9 @@ export const Density = () => (
     <DensityExample density={-3} />
   </Grid>
 )
+
+export const DetailAccessory = Template.bind({})
+DetailAccessory.args = {
+  ...Basic.args,
+  detailAccessory: true,
+}

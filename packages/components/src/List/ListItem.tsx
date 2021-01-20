@@ -31,6 +31,7 @@ import React, { FC, ReactNode, useContext, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
+import { undefinedCoalesce } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
@@ -48,6 +49,12 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    * Detail element placed right of the item children
    */
   detail?: ReactNode
+  /**
+   * If true, the detail elements will appear outside of the item's grey background on hover
+   * In addition, if true, events will not propagate from the detail container
+   * @default false
+   */
+  detailAccessory?: boolean
   /**
    * Optional icon placed left of the item children
    */
@@ -71,6 +78,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     current,
     description,
     detail,
+    detailAccessory: propsDetailAccessory,
     disabled,
     href,
     icon,
@@ -82,14 +90,23 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     target,
   } = props
 
+  const {
+    detailAccessory: contextDetailAccessory,
+    iconGutter,
+    itemDimensions,
+  } = useContext(ListItemContext)
+
+  const detailAccessory = undefinedCoalesce([
+    propsDetailAccessory,
+    contextDetailAccessory,
+  ])
+
   const [isFocusVisible, setFocusVisible] = useState(false)
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
-
-  const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -140,32 +157,41 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     )
 
   const listItemContent = (
-    <Component
-      href={href}
-      rel={createSafeRel(props.rel, props.target)}
-      role="listitem"
-      target={target}
-      tabIndex={-1}
-    >
-      {renderedIcon}
-      <span>
-        {renderedChildren}
-        {description && (
-          <Paragraph color="text2" fontSize="xsmall">
-            {description}
-          </Paragraph>
+    <>
+      <Component
+        href={href}
+        rel={createSafeRel(props.rel, props.target)}
+        role="listitem"
+        target={target}
+        tabIndex={-1}
+      >
+        {renderedIcon}
+        <span>
+          {renderedChildren}
+          {description && (
+            <Paragraph color="text2" fontSize="xsmall">
+              {description}
+            </Paragraph>
+          )}
+        </span>
+        {detail && !detailAccessory && (
+          <ListItemDetail pr={itemDimensions.px}>{detail}</ListItemDetail>
         )}
-      </span>
-      {detail && <ListItemDetail>{detail}</ListItemDetail>}
-    </Component>
+      </Component>
+      {detail && detailAccessory && (
+        <ListItemDetail pr={itemDimensions.px}>{detail}</ListItemDetail>
+      )}
+    </>
   )
 
   return (
     <ListItemLayout
       aria-current={current && 'true'}
       description={description}
+      detailAccessory={detailAccessory}
       disabled={disabled}
       focusVisible={isFocusVisible}
+      hasDetail={!!detail}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
       onKeyUp={handleOnKeyUp}
