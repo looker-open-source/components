@@ -30,10 +30,10 @@ jobs:
         run: |
           yarn install
 
-      - name: Read version created by Lerna.js
+      - name: Read version created by Lerna
         id: lerna_version
         run: |
-          echo "::set-output name=version::v$(npm run version --silent)"
+          echo "::set-output name=version::v$(sed -nE 's/^\s*\"version\": \"(.*?)\",$/\1/p' lerna.json)"
 
       - name: Check if release tag is already created
         id: vars
