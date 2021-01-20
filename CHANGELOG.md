@@ -9,10 +9,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
 
-### BREAKING CHANGES
-
-- `DialogHeader` no longer supports `closeIcon` (always "Close")
-
 ## [0.9.26]
 
 ### Changed
