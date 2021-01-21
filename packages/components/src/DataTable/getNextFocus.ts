@@ -26,15 +26,50 @@
 
 import { getTabStops } from '../utils'
 
+// Type guards
+const isTableHeaderCell = (
+  element: Element
+): element is HTMLTableHeaderCellElement => element.tagName === 'TH'
+
 const isTableCell = (
   element: Element
-): element is HTMLTableCellElement | HTMLTableHeaderCellElement => {
-  return ['TD', 'TH'].includes(element.tagName)
-}
-const isTableRow = (
+): element is HTMLTableCellElement | HTMLTableHeaderCellElement =>
+  isTableHeaderCell(element) || element.tagName === 'TD'
+
+const isTableRow = (element?: Element | null): element is HTMLTableRowElement =>
+  element ? element.tagName === 'TR' : false
+
+// Returns the table cell containing the focused element (button, link, input)
+// or the focused element itself, if it's a table cell
+const getCell = (
   element: Element | null
-): element is HTMLTableRowElement => {
-  return element ? element.tagName === 'TR' : false
+): HTMLTableHeaderCellElement | HTMLTableDataCellElement | null => {
+  if (element === null || isTableCell(element)) return element
+  return getCell(element.parentElement)
+}
+
+// Returns the cell above/below (or a focusable element in the cell)
+const getTargetCell = (
+  targetRow: HTMLTableRowElement,
+  cellIndex: number
+): HTMLElement | null => {
+  const targetCell = targetRow.cells[cellIndex]
+  // Do not use targetCell.tabIndex !== -1
+  // it will return true if tabindex is not set
+  if (targetCell.getAttribute('tabindex') !== '-1') {
+    return targetCell.querySelector('[tabindex="-1"]')
+  }
+  return targetCell
+}
+
+// Returns the cell/focusable element above/below
+// if it's in another section (thead or tbody)
+const getCellInFirstRow = (cellIndex: number, section?: Element | null) => {
+  const firstRow = section?.querySelector('tr')
+  if (firstRow) {
+    return getTargetCell(firstRow, cellIndex)
+  }
+  return null
 }
 
 /**
@@ -46,7 +81,7 @@ export const getNextFocus = (
   direction: 1 | -1,
   element: HTMLElement,
   vertical?: boolean
-) => {
+): HTMLElement | null => {
   const tabStops = getTabStops(element)
   if (tabStops.length > 0) {
     if (
@@ -54,62 +89,49 @@ export const getNextFocus = (
       tabStops.includes(document.activeElement as HTMLElement)
     ) {
       const element = document.activeElement
-      if (vertical && isTableCell(element)) {
-        const cellIndex = element.cellIndex
-        if (direction === -1) {
-          // Up Arrow
-          const rowAbove = element && element.parentElement
-          if (rowAbove && rowAbove.previousElementSibling === null) {
-            return isTableRow(
-              rowAbove &&
-                rowAbove.parentElement &&
-                rowAbove.parentElement.previousElementSibling &&
-                rowAbove.parentElement.previousElementSibling.firstElementChild
-            )
-              ? rowAbove &&
-                  rowAbove.parentElement &&
-                  rowAbove.parentElement.previousElementSibling &&
-                  rowAbove.parentElement.previousElementSibling
-                    .firstElementChild &&
-                  (rowAbove.parentElement.previousElementSibling
-                    .firstElementChild as HTMLTableRowElement).cells[cellIndex]
-              : null
-          } else if (rowAbove) {
-            return isTableRow(rowAbove.previousElementSibling)
-              ? rowAbove.previousElementSibling.cells[cellIndex]
-              : null
-          }
-        } else if (direction === 1) {
-          // Down Arrow
-          const rowBelow = element && element.parentElement
-          if (rowBelow && rowBelow.nextElementSibling === null) {
-            return isTableRow(
-              rowBelow &&
-                rowBelow.parentElement &&
-                rowBelow.parentElement.nextElementSibling &&
-                rowBelow.parentElement.nextElementSibling.firstElementChild
-            )
-              ? rowBelow &&
-                  rowBelow.parentElement &&
-                  rowBelow.parentElement.nextElementSibling &&
-                  rowBelow.parentElement.nextElementSibling.firstElementChild &&
-                  (rowBelow.parentElement.nextElementSibling
-                    .firstElementChild as HTMLTableRowElement).cells[cellIndex]
-              : null
-          } else if (rowBelow) {
-            return isTableRow(rowBelow.nextElementSibling)
-              ? rowBelow.nextElementSibling.cells[cellIndex]
-              : null
+      if (vertical) {
+        const cell = getCell(element)
+        const currentRow = cell?.parentElement
+        if (cell && isTableRow(currentRow)) {
+          const cellIndex = cell.cellIndex
+          if (direction === -1) {
+            // Up Arrow
+            if (isTableHeaderCell(element)) {
+              // Currently only supporting one table header row,
+              // do nothing on up arrow
+              return null
+            }
+            const previousRow = currentRow.previousElementSibling
+            if (isTableRow(previousRow)) {
+              return getTargetCell(previousRow, cellIndex)
+            }
+            // If there's no previous row, go to the header row
+            const thead = currentRow.parentElement?.previousElementSibling
+            return getCellInFirstRow(cellIndex, thead)
+          } else if (direction === 1) {
+            // Down Arrow
+            if (isTableHeaderCell(element)) {
+              // Currently only supporting one table header row,
+              // look for the first tr in tbody
+              const tbody = currentRow.parentElement?.nextElementSibling
+              return getCellInFirstRow(cellIndex, tbody)
+            }
+            const nextRow = currentRow.nextElementSibling
+            if (isTableRow(nextRow)) {
+              return getTargetCell(nextRow, cellIndex)
+            }
+            return null
           }
         }
+      } else {
+        // check if tabStops[next] is in the same table row as document.activeElement and return null if it isn't.
+        const next =
+          tabStops.findIndex((el) => el === document.activeElement) + direction
+        return tabStops[next]?.closest('tr') ===
+          document.activeElement.closest('tr')
+          ? tabStops[next]
+          : null
       }
-      // check if tabStops[next] is in the same table row as document.activeElement and return null if it isn't.
-      const next =
-        tabStops.findIndex((el) => el === document.activeElement) + direction
-      return tabStops[next].closest('tr') ===
-        document.activeElement.closest('tr')
-        ? tabStops[next]
-        : null
     }
     return tabStops[0]
   }
