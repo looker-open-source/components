@@ -24,13 +24,14 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { forwardRef, Ref, ReactNode, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
+import { useForkedRef } from '../../utils'
 import { columnSize, DataTableColumnSize } from './columnSize'
 
 export interface DataTableCellProps
@@ -40,50 +41,64 @@ export interface DataTableCellProps
   size?: DataTableColumnSize
 }
 
-const DataTableCellLayout: FC<DataTableCellProps> = ({
-  children,
-  description,
-  indicator,
-  size,
-  ...props
-}) => {
-  let content =
-    size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
+const DataTableCellLayout = forwardRef(
+  (props: DataTableCellProps, forwardedRef: Ref<HTMLElement>) => {
+    const { children, description, indicator, size } = props
 
-  if (description) {
-    content = (
-      <SpaceVertical gap="xxxsmall">
-        <span>{content}</span>
-        {description && (
-          <Paragraph fontSize="xsmall" color="subdued" truncate>
-            <Truncate>{description}</Truncate>
-          </Paragraph>
-        )}
-      </SpaceVertical>
-    )
+    let content =
+      size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
 
-    if (indicator) {
+    const ref = useRef<HTMLTableDataCellElement>(null)
+    const forkedRef = useForkedRef(ref, forwardedRef)
+
+    useEffect(() => {
+      const element = ref?.current
+      const button = element?.querySelector('button')
+      const link = element?.querySelector('a')
+      const input = element?.querySelector('input')
+
+      button?.setAttribute('tabIndex', '-1')
+      link?.setAttribute('tabIndex', '-1')
+      input?.setAttribute('tabIndex', '-1')
+    })
+
+    if (description) {
+      content = (
+        <SpaceVertical gap="xxxsmall">
+          <span>{content}</span>
+          {description && (
+            <Paragraph fontSize="xsmall" color="subdued" truncate>
+              <Truncate>{description}</Truncate>
+            </Paragraph>
+          )}
+        </SpaceVertical>
+      )
+
+      if (indicator) {
+        content = (
+          <Space gap="xsmall">
+            {indicator}
+            {content}
+          </Space>
+        )
+      }
+    } else if (indicator) {
       content = (
         <Space gap="xsmall">
           {indicator}
-          {content}
+          <span>{content}</span>
         </Space>
       )
     }
-  } else if (indicator) {
-    content = (
-      <Space gap="xsmall">
-        {indicator}
-        <span>{content}</span>
-      </Space>
+    return (
+      <td ref={forkedRef} tabIndex={-1} {...props}>
+        {content}
+      </td>
     )
   }
-  return (
-    <td tabIndex={-1} {...props}>
-      {content}
-    </td>
-  )
-}
+)
+
+DataTableCellLayout.displayName = 'DataTableCellLayout'
 
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}

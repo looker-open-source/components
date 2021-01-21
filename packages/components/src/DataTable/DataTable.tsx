@@ -26,15 +26,13 @@
 
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC, useState } from 'react'
 import { MixedBoolean } from '../Form'
-import { useArrowKeyNav } from '../utils'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
 import { DataTableFilters } from './Filters/DataTableFilters'
 import { Table } from './Table'
 import { DataTableProps } from './types'
-import { getNextFocus } from './getNextFocus'
 
 export const DataTableLayout: FC<DataTableProps> = (props) => {
   const {
@@ -48,9 +46,6 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     select,
   } = props
 
-  const ref = useCallback((node) => {
-    node?.focus()
-  }, [])
   /**
    * Extract columns that the user can specify visibility on
    */
@@ -110,12 +105,6 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
       {...filterConfig}
     />
   )
-
-  const navProps = useArrowKeyNav({
-    axis: 'both',
-    getNextFocus: getNextFocus,
-    ref,
-  })
 
   return (
     <DataTableContext.Provider value={context}>
