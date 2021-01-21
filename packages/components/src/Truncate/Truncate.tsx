@@ -27,6 +27,7 @@ import React, { FC, useState, useCallback, ReactNode } from 'react'
 import styled from 'styled-components'
 import { width as widthHelper, WidthProps } from 'styled-system'
 import {
+  textColor,
   TypographyProps,
   typography,
   CompatibleHTMLProps,
@@ -89,6 +90,7 @@ const TextStyle = styled.span<WidthProps>`
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${textColor}
   ${typography}
   ${widthHelper}
   white-space: nowrap;

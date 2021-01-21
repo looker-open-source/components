@@ -192,6 +192,21 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       children
     )
 
+  const renderedDescription =
+    typeof children === 'string' ? (
+      truncate ? (
+        <Truncate color="text2" fontSize="xsmall">
+          {description}
+        </Truncate>
+      ) : (
+        <Paragraph color="text2" fontSize="xsmall">
+          {description}
+        </Paragraph>
+      )
+    ) : (
+      description
+    )
+
   const detail = propsDetail && (
     <HoverDisclosure visible={!detailHoverDisclosure}>
       <ListItemDetail pr={detailAccessory ? itemDimensions.px : '0'}>
@@ -215,11 +230,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         {renderedIcon}
         <FlexItem>
           {renderedChildren}
-          {description && (
-            <Paragraph color="text2" fontSize="xsmall">
-              {description}
-            </Paragraph>
-          )}
+          {renderedDescription}
         </FlexItem>
         {!detailAccessory && detail}
       </Component>
