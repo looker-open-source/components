@@ -20,7 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "node bin/build.js"
+    "prebuild": "node bin/build.js"
   },
   "devDependencies": {
     "@svgr/babel-plugin-add-jsx-attribute": "^5.4.0",

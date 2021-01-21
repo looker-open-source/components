@@ -1,4 +1,4 @@
-name: Release web site
+name: Publish web site
 
 # This workflow does the following if repo does not have git tag that was updated in lerna.json
 #  - creates release git tag
@@ -8,10 +8,10 @@ name: Release web site
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'lerna.json'
+    tags:
+      - 'v*'
+  release:
+    types: [published]
 
 jobs:
   release-website:
