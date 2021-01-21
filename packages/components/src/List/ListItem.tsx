@@ -30,6 +30,8 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
+import { Truncate } from '../Truncate'
+import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
 import {
   HoverDisclosureContext,
@@ -79,6 +81,10 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
    */
   itemRole?: 'link' | 'button'
+  /**
+   * If true, text children and description will be truncated if text overflows
+   */
+  truncate?: boolean
 }
 
 const ListItemInternal: FC<ListItemProps> = (props) => {
@@ -99,6 +105,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onClick,
     onKeyUp,
     target,
+    truncate,
   } = props
 
   const {
@@ -166,12 +173,21 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const renderedChildren =
     typeof children === 'string' ? (
-      <Paragraph
-        fontSize={itemDimensions.labelFontSize}
-        lineHeight={itemDimensions.labelLineHeight}
-      >
-        {children}
-      </Paragraph>
+      truncate ? (
+        <Truncate
+          fontSize={itemDimensions.labelFontSize}
+          lineHeight={itemDimensions.labelLineHeight}
+        >
+          {children}
+        </Truncate>
+      ) : (
+        <Paragraph
+          fontSize={itemDimensions.labelFontSize}
+          lineHeight={itemDimensions.labelLineHeight}
+        >
+          {children}
+        </Paragraph>
+      )
     ) : (
       children
     )
@@ -194,14 +210,14 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         tabIndex={-1}
       >
         {renderedIcon}
-        <span>
+        <FlexItem>
           {renderedChildren}
           {description && (
             <Paragraph color="text2" fontSize="xsmall">
               {description}
             </Paragraph>
           )}
-        </span>
+        </FlexItem>
         {!detailAccessory && detail}
       </Component>
       {detailAccessory && detail}
