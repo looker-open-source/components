@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/looker-open-source/components.svg?branch=main)](https://travis-ci.com/looker-open-source/components)
+![Test Suite](https://github.com/looker-open-source/components/workflows/Test/badge.svg?branch=main)
 
 This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online on our web site.
 
@@ -62,11 +62,12 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 
 Storybook is a tool used to develop, demonstrate and document components in isolation.
 
-- **yarn storybook** starts Storybook (includes all stories)
+- **yarn storybook** starts Storybook (includes stories from all packages)
+- **yarn storybook docs** starts Storybook in "Docs" mode
 - **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
 - **yarn image-snapshots** takes image-snapshots of all stories within packages/\*\*
   - `preimage-snapshots` is a yarn task that runs `storybooks-build` task before capturing image snapshots.
-- **yarn storybooks-build** builds all packages/\* storybooks for publishing and/or image-snapshot testing.
+  - `image-snapshots-update` will remove and rebuild all existing snapshots if you have an _expected_ change.
 
 ### Workspace Commands
 
@@ -83,6 +84,7 @@ We follow a [semantic versioning scheme](https://semver.org/). That means:
 1.  API changes are only allowed in major version changes.
 1.  Backwards compatible API changes can occur in minor version changes.
 1.  Bug fixes occur in patch version changes.
+1.  Publishing and release processes are handled by our CI/CD workflows
 
 ### 4. Tooling
 

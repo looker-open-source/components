@@ -1,4 +1,4 @@
-name: Web Site (canary)
+name: Canary
 
 # This workflow creates or updates (if already exists) a pull request with new
 # version bump on every commit to main.
@@ -11,9 +11,9 @@ on:
       - 'packages/**/*.ts'
       - 'packages/**/*.tsx'
       - 'www/src/**/'
-
+      - '!lerna.json'
 jobs:
-  canary-website:
+  website:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -26,6 +26,28 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
+
+      - name: Build packages
+        run: |
+          yarn build
+
+      - name: Create canary release
+        run: |
+          yarn lerna version prerelease --conventional-commits --no-git-tag-version --no-push --preid canary --yes --exact
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "chore: Publish"
+
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM registry with canary tag
+        run: yarn lerna publish from-package --yes --dist-tag canary
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - run: git reset --hard
 
       - name: Build web site
         run: |

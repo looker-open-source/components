@@ -1,4 +1,4 @@
-name: Release
+name: Release & Publish NPM Packages
 
 # This workflow does the following if repo does not have git tag that was updated in lerna.json
 #  - creates release git tag
@@ -67,4 +67,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM registry
-        run: npx lerna publish from-package --yes
+        run: yarn lerna publish from-package --yes
