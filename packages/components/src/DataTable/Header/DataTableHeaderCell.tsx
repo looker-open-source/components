@@ -30,6 +30,7 @@ import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'
 import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
+import { useClickable } from '../../utils'
 import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
 import { DataTableColumn } from '../Column'
 
@@ -53,11 +54,12 @@ const DataTableHeaderCellLayout = forwardRef(
   ) => {
     const { onSort } = useContext(DataTableContext)
 
-    const handleClick = () => {
+    const onClick = () => {
       if (onSort && canSort) {
         onSort(id, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
+    const clickableProps = useClickable({ onClick })
 
     const label = titleIcon ? (
       <Tooltip content={title}>
@@ -78,10 +80,10 @@ const DataTableHeaderCellLayout = forwardRef(
             : 'none'
         }
         className={className}
-        onClick={handleClick}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
         tabIndex={-1}
+        {...clickableProps}
       >
         <Space gap="xxsmall" reverse={type === 'number'}>
           {label}
