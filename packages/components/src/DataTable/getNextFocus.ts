@@ -56,10 +56,8 @@ const getTargetCell = (
   const targetCell = targetRow.cells[cellIndex]
   // Do not use targetCell.tabIndex !== -1
   // it will return true if tabindex is not set
-  if (targetCell.getAttribute('tabindex') !== '-1') {
-    return targetCell.querySelector('[tabindex="-1"]')
-  }
-  return targetCell
+  const focusableElementInside = targetCell.querySelector('[tabindex="-1"]')
+  return (focusableElementInside as HTMLElement) || targetCell
 }
 
 // Returns the cell/focusable element above/below
@@ -96,7 +94,7 @@ export const getNextFocus = (
           const cellIndex = cell.cellIndex
           if (direction === -1) {
             // Up Arrow
-            if (isTableHeaderCell(element)) {
+            if (isTableHeaderCell(cell)) {
               // Currently only supporting one table header row,
               // do nothing on up arrow
               return null
@@ -110,7 +108,7 @@ export const getNextFocus = (
             return getCellInFirstRow(cellIndex, thead)
           } else if (direction === 1) {
             // Down Arrow
-            if (isTableHeaderCell(element)) {
+            if (isTableHeaderCell(cell)) {
               // Currently only supporting one table header row,
               // look for the first tr in tbody
               const tbody = currentRow.parentElement?.nextElementSibling
