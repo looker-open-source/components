@@ -27,7 +27,6 @@
 import { padding, PaddingProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 
-// Add PaddingProps to this, and make padding-left default value xsmall
 export const ListItemDetail = styled.div.attrs<PaddingProps>((props) => ({
   ...props,
   pl: props.pl || 'xsmall',

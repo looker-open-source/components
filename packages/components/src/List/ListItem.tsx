@@ -204,6 +204,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     <>
       <Component
         href={href}
+        onBlur={handleOnBlur}
+        onClick={disabled ? undefined : handleOnClick}
+        onKeyUp={handleOnKeyUp}
         rel={createSafeRel(props.rel, props.target)}
         role="listitem"
         target={target}
@@ -232,9 +235,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         detailAccessory={detailAccessory}
         disabled={disabled}
         focusVisible={isFocusVisible}
-        onBlur={handleOnBlur}
-        onClick={disabled ? undefined : handleOnClick}
-        onKeyUp={handleOnKeyUp}
         className={className}
         ref={itemRef}
         {...itemDimensions}

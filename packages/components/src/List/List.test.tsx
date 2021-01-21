@@ -24,7 +24,7 @@
 
  */
 
-import { screen } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -64,7 +64,12 @@ describe('List', () => {
 
     test('fixed', () => {
       const arr3000 = Array.from(Array(3000), (_, i) => i)
-      renderWithTheme(
+      const {
+        getByTestId,
+        getByText,
+        queryByTestId,
+        queryByText,
+      } = renderWithTheme(
         <List>
           {arr3000.map((num) => (
             <ListItem key={num}>{num}</ListItem>
@@ -77,9 +82,9 @@ describe('List', () => {
        * 6 + 360px / 36px
        * (buffer elements) + (ul height from mock / default ListItem height)
        */
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('15')).toBeVisible()
-      expect(screen.queryByText('16')).not.toBeInTheDocument()
+      expect(getByText('0')).toBeVisible()
+      expect(getByText('15')).toBeVisible()
+      expect(queryByText('16')).not.toBeInTheDocument()
 
       /**
        * We expect the after container to have height: 107424px based on the math below:
@@ -87,8 +92,81 @@ describe('List', () => {
        * (total ListItems - displayed ListItems) * default ListItem height
        */
       const height = (3000 - 16) * 36
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+      expect(queryByTestId('before')).not.toBeInTheDocument()
+      expect(getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+    })
+  })
+
+  describe('detailAccessory', () => {
+    test("Clicks on child ListItems' detail elements do not trigger ListItem onClick when List detailAccessory === true", () => {
+      const onClick = jest.fn()
+      const { getByText } = renderWithTheme(
+        <List detailAccessory>
+          <ListItem detail="Detail" onClick={onClick}>
+            Dimension
+          </ListItem>
+        </List>
+      )
+      fireEvent.click(getByText('Dimension'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+      fireEvent.click(getByText('Detail'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+    })
+
+    test("Clicks on child ListItems' detail elements trigger ListItem onClick when List detailAccessory === false", () => {
+      const onClick = jest.fn()
+      const { getByText } = renderWithTheme(
+        <List detailAccessory={false}>
+          <ListItem detail="Detail" onClick={onClick}>
+            Dimension
+          </ListItem>
+        </List>
+      )
+      fireEvent.click(getByText('Dimension'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+      fireEvent.click(getByText('Detail'))
+      expect(onClick).toHaveBeenCalledTimes(2)
+    })
+
+    test('Child ListItem detailAccessory value overrides parent detailAccessory value', () => {
+      const onClick = jest.fn()
+      const { getByText } = renderWithTheme(
+        <List detailAccessory>
+          <ListItem detail="Detail" detailAccessory={false} onClick={onClick}>
+            Dimension
+          </ListItem>
+        </List>
+      )
+      fireEvent.click(getByText('Dimension'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+      fireEvent.click(getByText('Detail'))
+      expect(onClick).toHaveBeenCalledTimes(2)
+    })
+  })
+
+  describe('detailHoverDisclosure', () => {
+    test('Child ListItems hide and show their detail element on hover when parent List detailHoverDisclosure === true', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <List detailHoverDisclosure>
+          <ListItem detail="Detail">Label</ListItem>
+        </List>
+      )
+
+      expect(queryByText('Detail')).not.toBeInTheDocument()
+      fireEvent.mouseEnter(getByText('Label'), { bubbles: true })
+      expect(queryByText('Detail')).toBeInTheDocument()
+    })
+
+    test('Child ListItem detailHoverDisclosure value overrides parent detailHoverDisclosure value', () => {
+      const { getByText } = renderWithTheme(
+        <List detailHoverDisclosure>
+          <ListItem detail="Detail" detailHoverDisclosure={false}>
+            Label
+          </ListItem>
+        </List>
+      )
+
+      getByText('Detail')
     })
   })
 })
