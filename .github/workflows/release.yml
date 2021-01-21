@@ -1,4 +1,4 @@
-name: NPM packages
+name: Release & Publish NPM Packages
 
 # This workflow does the following if repo does not have git tag that was updated in lerna.json
 #  - creates release git tag

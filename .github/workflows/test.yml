@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn
+      - run: yarn prebuild
       - run: yarn lint:ts
         name: 'Typescript'
       - run: yarn lint:es
@@ -49,6 +50,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn workspace www build
   storybook:
     name: "Storybook"
@@ -58,6 +60,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn workspace storybook build
   image-snapshots:
     name: "Image Snapshots"
@@ -67,5 +70,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn preimage-snapshots &> /dev/null
       - run: yarn image-snapshots-only

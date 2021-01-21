@@ -43,6 +43,7 @@
     "lint:ts": "tsc",
     "lint:circular": "madge packages/*/src --circular --extensions ts,tsx",
     "lint-staged": "yarn exec lint-staged",
+    "pretest": "yarn lerna run prebuild  --stream",
     "test": "yarn jest",
     "storybook": "yarn workspace storybook develop",
     "storybook-docs": "yarn workspace storybook develop-docs",

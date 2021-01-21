@@ -1,4 +1,4 @@
-name: Canary build
+name: Canary
 
 # This workflow creates or updates (if already exists) a pull request with new
 # version bump on every commit to main.
