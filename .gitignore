@@ -14,7 +14,9 @@ node_modules
 .eslintcache
 
 # code-gen
-docs/v*/**
+docs/v*
+docs/latest
+docs/canary
 packages/icons/src/generated
 playground/dist
 storybook-static

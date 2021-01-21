@@ -5,33 +5,9 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened, synchronize, reopened]
 
 jobs:
-  conventional-commit-check:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: amannn/action-semantic-pull-request@v1.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # Configure which scopes are allowed.
-          scopes: |
-            - components
-            - components-providers
-            - components-test-utils
-            - components-theme-editor
-            - design-tokens
-            - eslint-config
-            - icons
-            - prettier
-            - stylelint-config
-            - app:www
-            - app:storybook
-            - deps
-          # Configure that a scope must always be provided.
-          requireScope: true
   lint:
     name: "Lint: ESLint + Prettier, Stylelint, Typescript"
     runs-on: ubuntu-latest
@@ -39,6 +15,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn
+      - run: yarn prebuild
       - run: yarn lint:ts
         name: 'Typescript'
       - run: yarn lint:es
@@ -68,18 +45,22 @@ jobs:
   gatsby:
     name: "Gatsby"
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn workspace www build
   storybook:
     name: "Storybook"
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn workspace storybook build
   image-snapshots:
     name: "Image Snapshots"
@@ -89,5 +70,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
+      - run: yarn prebuild
       - run: yarn preimage-snapshots &> /dev/null
       - run: yarn image-snapshots-only
