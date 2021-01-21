@@ -6,11 +6,13 @@ VERSION=$1
 rm -rf docs/$VERSION
 
 # Build Gatsby, then move contents to public folder for publishing
-git checkout HEAD -- www/gatsby-config.js
 sed -i -e "s/VERSION/$VERSION/g" www/gatsby-config.js
 yarn workspace www build
+git checkout HEAD -- www/gatsby-config.js
 mv www/public docs/$VERSION
 
 # Build Storybooks
-yarn workspace storybook build
-mv storybook/storybook-static docs/$VERSION/storybook
+
+# @TODO Check if storybook is already built and re-use
+[ -d "storybook/storybook-static" ] && yarn workspace storybook build
+cp -r storybook/storybook-static docs/$VERSION/storybook
