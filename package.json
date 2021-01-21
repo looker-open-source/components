@@ -47,7 +47,7 @@
     "test": "yarn jest",
     "storybook": "yarn workspace storybook develop",
     "storybook-docs": "yarn workspace storybook develop-docs",
-    "preimage-snapshots": "export storybookBuildMode=fast && yarn storybooks-build && yarn clean:build && yarn prepare",
+    "preimage-snapshots": "export storybookBuildMode=fast && yarn workspace storybook build && yarn clean:build && yarn prepare",
     "image-snapshots-only": "yarn jest --config jest-image-snapshots.config.js",
     "image-snapshots": "yarn image-snapshots-only",
     "image-snapshots-update": "rm -rf packages/*/snapshots && yarn image-snapshots",
