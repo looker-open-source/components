@@ -11,6 +11,7 @@ on:
       - 'packages/**/*.ts'
       - 'packages/**/*.tsx'
       - '**/package*.json'
+      - '!lerna.json'
 
 jobs:
   release-pull-request:
