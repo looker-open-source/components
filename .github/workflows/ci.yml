@@ -67,7 +67,7 @@ jobs:
       - run: yarn workspace storybook build
   image-snapshots:
     name: "Image Snapshots"
-    if: false # Disabled until snapshot issues can be resolved
+    if: true # Disabled until snapshot issues can be resolved
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
