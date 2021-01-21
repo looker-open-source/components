@@ -209,7 +209,10 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const detail = propsDetail && (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <ListItemDetail pr={detailAccessory ? itemDimensions.px : '0'}>
+      <ListItemDetail
+        pr={detailAccessory ? itemDimensions.px : '0'}
+        py={itemDimensions.py}
+      >
         {propsDetail}
       </ListItemDetail>
     </HoverDisclosure>
