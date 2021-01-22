@@ -30,99 +30,95 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from '../Icon'
-import { Aside, Page, Section } from '../Layout'
-import { MenuGroup, MenuItem, MenuList } from '../Menu'
 import { Panel, Panels } from './'
 
 describe('Panel', () => {
-  const PanelExample = () => {
-    const [explore, setExplore] = useState(false)
-    const toggleExplore = () => setExplore(!explore)
+  const ControlledPanel = () => {
+    const [option, setOption] = useState(false)
+    const toggleOption = () => setOption(!option)
 
     const title = (
       <>
         <Icon color="inform" name="ArrowBackward" m="xsmall" />
-        return to explore
+        return to main option
       </>
     )
 
     return (
-      <Page hasAside>
-        <Aside width="12rem">
-          <Panels>
-            <MenuList>
-              <MenuGroup label="Looker">
-                <MenuItem onClick={toggleExplore} icon="ExploreOutline">
-                  Explore
-                </MenuItem>
-                <Panel title="Develop" content={'content from display...'}>
-                  <MenuItem icon="Code">Develop</MenuItem>
-                </Panel>
-                <MenuItem icon="Group">Admin</MenuItem>
-              </MenuGroup>
-            </MenuList>
-
-            <Panel
-              isOpen={explore}
-              setOpen={setExplore}
-              direction="left"
-              title={title}
-              content={
-                <MenuList>
-                  <MenuItem icon="ArrowRight">DCL</MenuItem>
-                  <MenuItem icon="ArrowRight">Internal Issues</MenuItem>
-                  <MenuItem icon="ArrowRight">Licence</MenuItem>
-                </MenuList>
-              }
-            />
-          </Panels>
-        </Aside>
-        <Section>Main stuff here...</Section>
-      </Page>
+      <Panels>
+        <ul>
+          <li onClick={toggleOption}>Option 1</li>
+          <li>Option 2</li>
+          <li>Option 3</li>
+        </ul>
+        <Panel
+          isOpen={option}
+          setOpen={setOption}
+          direction="left"
+          title={title}
+          content={
+            <ul>
+              <li>Panel 1</li>
+              <li>Panel 2</li>
+              <li>Panel 3</li>
+            </ul>
+          }
+        />
+      </Panels>
     )
   }
 
-  test('opens content prop if passed as parent of the clickable item to trigger Panel', () => {
-    const { getByText } = renderWithTheme(<PanelExample />)
+  const UncontrolledPanel = () => (
+    <Panels>
+      <ul>
+        <li>Option A</li>
+        <Panel title="More Options" content={'Panel content'}>
+          <li>Option B</li>
+        </Panel>
+      </ul>
+    </Panels>
+  )
+  test('uncontrolled Panel displays content prop', () => {
+    const { getByText } = renderWithTheme(<UncontrolledPanel />)
 
-    const dev = getByText('Develop')
-    expect(dev).toBeInTheDocument()
+    const liElement = getByText('Option B')
+    expect(liElement).toBeInTheDocument()
 
-    fireEvent.click(dev)
+    fireEvent.click(liElement)
 
     // Find content
-    expect(getByText(/content from display/)).toBeInTheDocument()
+    expect(getByText('Panel content')).toBeInTheDocument()
   })
 
-  test('opens content prop if passed as a separated component from the clickable trigger', () => {
-    const { getByText } = renderWithTheme(<PanelExample />)
+  test('controlled Panel displays content', () => {
+    const { getByText } = renderWithTheme(<ControlledPanel />)
 
-    const explore = getByText('Explore')
-    expect(explore).toBeInTheDocument()
+    const liElement = getByText('Option 1')
+    expect(liElement).toBeInTheDocument()
 
-    fireEvent.click(explore)
+    fireEvent.click(liElement)
 
     // Find content
-    expect(getByText('DCL')).toBeInTheDocument()
-    expect(getByText('Internal Issues')).toBeInTheDocument()
-    expect(getByText('Licence')).toBeInTheDocument()
+    expect(getByText('Panel 1')).toBeInTheDocument()
+    expect(getByText('Panel 3')).toBeInTheDocument()
   })
 
-  test('returns to main menu when title is clicked', () => {
-    const { getByText } = renderWithTheme(<PanelExample />)
+  test('returns to previous display if title prop is clicked', () => {
+    const { getByText } = renderWithTheme(<ControlledPanel />)
 
-    const explore = getByText('Explore')
-    expect(explore).toBeInTheDocument()
+    const liElement = getByText('Option 1')
+    expect(liElement).toBeInTheDocument()
 
-    fireEvent.click(explore)
+    fireEvent.click(liElement)
 
     // Find content
-    expect(getByText('DCL')).toBeInTheDocument()
+    expect(getByText('Panel 1')).toBeInTheDocument()
 
-    const returnToExplore = getByText('return to explore')
+    const returnToExplore = getByText('return to main option')
 
     fireEvent.click(returnToExplore)
 
-    expect(getByText('Looker')).toBeInTheDocument()
+    expect(getByText('Option 1')).toBeInTheDocument()
+    expect(getByText('Option 2')).toBeInTheDocument()
   })
 })
