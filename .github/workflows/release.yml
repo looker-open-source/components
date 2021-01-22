@@ -3,6 +3,7 @@ name: Release & Publish NPM Packages
 # This workflow does the following if repo does not have git tag that was updated in lerna.json
 #  - creates release git tag
 #  - publishes packages to NPM with latest tag
+#  - publishes version documentation to web site and aliases /latest to release version
 #
 # This workflow is expected to run after merge of release pull requested created by release-pull-request workflow.
 
@@ -20,6 +21,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
         with:
+          persist-credentials: false
           ref: main
           fetch-depth: 0
 
@@ -68,3 +70,16 @@ jobs:
 
       - name: Publish to NPM registry
         run: yarn lerna publish from-package --yes
+
+      - name: Build web site
+        run: |
+          yarn website-latest
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          BRANCH: docs # The branch the action should deploy to.
+          CLEAN: false # Automatically remove deleted files from the deploy branch
+          FOLDER: docs # The folder the action should deploy.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # SINGLE_COMMIT: true

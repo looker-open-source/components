@@ -11,8 +11,8 @@ on:
       - 'packages/**/*.ts'
       - 'packages/**/*.tsx'
       - '**/package*.json'
-      - '!lerna.json'
-
+    tags-ignore:
+      - v*
 jobs:
   release-pull-request:
     runs-on: ubuntu-latest
