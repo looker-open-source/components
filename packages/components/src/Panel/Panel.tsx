@@ -26,6 +26,7 @@
 
 import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
 import { UsePanelResponseDom, usePanel, UsePanelProps } from './usePanel'
+import { PanelHeader } from './HeaderPanel'
 
 export type PanelRenderProp = (props: UsePanelResponseDom) => ReactNode
 
@@ -63,3 +64,10 @@ export const Panel: FC<PanelProps> = ({ children, content, ...props }) => {
     </>
   )
 }
+
+// <PanelHeader
+// direction={direction}
+// handleClose={handleClose}
+// title={title}
+// />
+// <div>{content}</div>

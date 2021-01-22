@@ -25,9 +25,9 @@
  */
 
 import React, { ReactNode, useState } from 'react'
-import { Heading } from '../Text'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelSurface } from './PanelSurface'
+import { PanelHeader } from './'
 
 export interface UsePanelProps {
   /**
@@ -93,13 +93,14 @@ export interface UsePanelResponse {
 }
 
 export const usePanel = ({
-  content,
-  title,
-  defaultOpen = false,
-  isOpen: controlledIsOpen,
   canClose,
+  content,
+  defaultOpen = false,
+  direction,
+  isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
+  title,
 }: UsePanelProps): UsePanelResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
@@ -137,10 +138,12 @@ export const usePanel = ({
 
   const panel = renderDOM && (
     <PanelSurface aria-busy={busy ? true : undefined} className={className}>
-      <Heading style={{ cursor: 'pointer' }} onClick={handleClose}>
-        {title}
-      </Heading>
-      {content}
+      <PanelHeader
+        direction={direction}
+        handleClose={handleClose}
+        title={title}
+      />
+      <div>{content}</div>
     </PanelSurface>
   )
 
