@@ -39,6 +39,7 @@ export interface TruncateProps
   extends TypographyProps,
     WidthProps,
     CompatibleHTMLProps<HTMLSpanElement> {
+  color?: string
   children: ReactNode
 }
 
@@ -86,7 +87,7 @@ export const Truncate: FC<TruncateProps> = ({
  * the truncate children.
  **/
 
-const TextStyle = styled.span<WidthProps>`
+const TextStyle = styled.span<TruncateProps>`
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
