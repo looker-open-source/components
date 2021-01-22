@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -11,11 +11,11 @@
     "build": "build-storybook -c .storybook"
   },
   "dependencies": {
-    "@looker/components": "^0.10.1",
-    "@looker/components-providers": "^0.10.1",
-    "@looker/components-theme-editor": "^0.10.1",
-    "@looker/design-tokens": "^0.10.1",
-    "@looker/icons": "^0.10.1",
+    "@looker/components": "^0.10.2",
+    "@looker/components-providers": "^0.10.2",
+    "@looker/components-theme-editor": "^0.10.2",
+    "@looker/design-tokens": "^0.10.2",
+    "@looker/icons": "^0.10.2",
     "@storybook/react": "^6.1.10",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
