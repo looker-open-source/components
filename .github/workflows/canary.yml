@@ -11,7 +11,9 @@ on:
       - 'packages/**/*.ts'
       - 'packages/**/*.tsx'
       - 'www/src/**/'
-      - '!lerna.json'
+      - '**/package*.json'
+    tags-ignore:
+      - v*
 
 jobs:
   canary:
