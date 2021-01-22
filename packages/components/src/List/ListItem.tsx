@@ -130,17 +130,17 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const itemRef = useRef<HTMLLIElement>(null)
   const [isHovered] = useHovered(itemRef)
 
-  const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
+  const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
 
-  const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
+  const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
   }
 
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     onKeyUp && onKeyUp(event)
     setFocusVisible(true)
   }
