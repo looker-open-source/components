@@ -244,7 +244,9 @@ describe('<Menu />', () => {
 
       const parent = screen.getByText('Gouda')
       userEvent.hover(parent)
-
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
       const child = screen.getByText('Swiss')
       expect(child).toBeVisible()
 
