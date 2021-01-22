@@ -12,8 +12,9 @@ on:
       - 'packages/**/*.tsx'
       - 'www/src/**/'
       - '!lerna.json'
+
 jobs:
-  website:
+  canary:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -49,11 +50,11 @@ jobs:
 
       - run: git reset --hard
 
-      - name: Build web site
+      - name: Build documentation
         run: |
           yarn website-canary
 
-      - name: Deploy 🚀
+      - name: Deploy canary documentation
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           BRANCH: docs # The branch the action should deploy to.
