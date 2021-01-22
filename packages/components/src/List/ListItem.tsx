@@ -33,12 +33,7 @@ import { Paragraph } from '../Text'
 import { Truncate } from '../Truncate'
 import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
-import {
-  HoverDisclosureContext,
-  HoverDisclosure,
-  undefinedCoalesce,
-  useHovered,
-} from '../utils'
+import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
@@ -94,8 +89,8 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     current,
     description,
     detail: propsDetail,
-    detailAccessory: propsDetailAccessory,
-    detailHoverDisclosure: propsDetailHoverDisclosure,
+    detailAccessory,
+    detailHoverDisclosure,
     disabled,
     href,
     icon,
@@ -108,22 +103,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     truncate,
   } = props
 
-  const {
-    detailAccessory: contextDetailAccessory,
-    detailHoverDisclosure: contextDetailHoverDisclosure,
-    iconGutter,
-    itemDimensions,
-  } = useContext(ListItemContext)
-
-  const detailAccessory = undefinedCoalesce([
-    propsDetailAccessory,
-    contextDetailAccessory,
-  ])
-
-  const detailHoverDisclosure = undefinedCoalesce([
-    propsDetailHoverDisclosure,
-    contextDetailHoverDisclosure,
-  ])
+  const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
