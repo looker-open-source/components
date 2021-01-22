@@ -23,13 +23,13 @@ storybook-static
 www/public
 
 # lerna
-/packages/*/cjs
-/packages/*/esm
-/packages/*/types
+/packages/*/lib
 
 # deprecated but useful for folks with older builds
 /packages/*/dist
-/packages/*/lib
+/packages/*/esm
+/packages/*/cjs
+/packages/*/types
 
 # misc
 .DS_Store

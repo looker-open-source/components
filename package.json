@@ -24,8 +24,8 @@
   "scripts": {
     "prebuild": "yarn clean && yarn lerna run prebuild  --stream",
     "build": "run-p -c build:*",
-    "build:cjs": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name cjs --root-mode upward --out-dir cjs --source-maps --extensions .ts,.tsx --no-comments'",
-    "build:esm": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name esm --root-mode upward --out-dir esm --source-maps --extensions .ts,.tsx --no-comments'",
+    "build:cjs": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name cjs --root-mode upward --out-dir lib/cjs --source-maps --extensions .ts,.tsx --no-comments'",
+    "build:esm": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name esm --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --no-comments'",
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
     "bumpversion": "yarn lerna version --conventional-commits --no-git-tag-version --no-push --yes",
     "clean": "run-p -c clean:*",

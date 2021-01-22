@@ -2,9 +2,9 @@
   "name": "@looker/components-providers",
   "license": "MIT",
   "version": "0.10.0",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "cjs",
     "esm",
