@@ -59,7 +59,7 @@ import {
 import { useArrowKeyNav, useWindow } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuGroup } from './MenuGroup'
-import { SubmenuProvider } from './SubmenuProvider'
+import { NestedMenuProvider } from './NestedMenuProvider'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
@@ -205,7 +205,7 @@ export const MenuListInternal = forwardRef(
     }
 
     return (
-      <SubmenuProvider>
+      <NestedMenuProvider>
         <MenuItemContext.Provider value={context}>
           <ul
             role="menu"
@@ -215,7 +215,7 @@ export const MenuListInternal = forwardRef(
             {content}
           </ul>
         </MenuItemContext.Provider>
-      </SubmenuProvider>
+      </NestedMenuProvider>
     )
   }
 )

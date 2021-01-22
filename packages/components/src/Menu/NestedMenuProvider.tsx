@@ -27,22 +27,22 @@
 import React, { FC, createContext } from 'react'
 import { useDelayedState, UseDelayedStateReturn } from '../utils'
 
-const submenuContext: UseDelayedStateReturn<string> = {
+const nestedMenuContext: UseDelayedStateReturn<string> = {
   change: () => undefined,
   delayChange: () => undefined,
   value: '',
   waitChange: () => undefined,
 }
 
-export const SubmenuContext = createContext(submenuContext)
+export const NestedMenuContext = createContext(nestedMenuContext)
 
-// Stores the id for the current submenu to prevent them
+// Stores the id for the current nestedMenu to prevent them
 // from competing with each other (e.g. from hover vs arrow key)
-export const SubmenuProvider: FC = ({ children }) => {
-  const submenuProps = useDelayedState<string>('')
+export const NestedMenuProvider: FC = ({ children }) => {
+  const nestedMenuProps = useDelayedState<string>('')
   return (
-    <SubmenuContext.Provider value={submenuProps}>
+    <NestedMenuContext.Provider value={nestedMenuProps}>
       {children}
-    </SubmenuContext.Provider>
+    </NestedMenuContext.Provider>
   )
 }

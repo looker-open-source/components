@@ -219,7 +219,7 @@ describe('<Menu />', () => {
     fireEvent.click(document)
   })
 
-  describe('MenuItem submenu', () => {
+  describe('MenuItem nestedMenu', () => {
     beforeEach(() => {
       jest.useFakeTimers()
     })
@@ -232,7 +232,7 @@ describe('<Menu />', () => {
       renderWithTheme(
         <Menu
           content={
-            <MenuItem submenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+            <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
           }
         >
           <Button>Cheese</Button>
@@ -248,8 +248,8 @@ describe('<Menu />', () => {
       const child = screen.getByText('Swiss')
       expect(child).toBeVisible()
 
-      // Hovering in the direction of the submenu (ie right & down)
-      // triggers a delay to give the user time to get to the submenu
+      // Hovering in the direction of the nestedMenu (ie right & down)
+      // triggers a delay to give the user time to get to the nestedMenu
       fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
       fireEvent.mouseLeave(parent, { screenX: 9, screenY: 7 })
       act(() => {
@@ -262,7 +262,7 @@ describe('<Menu />', () => {
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
 
       userEvent.hover(parent)
-      // If not hovering out in the direction of the submenu
+      // If not hovering out in the direction of the nestedMenu
       // it closes immediately
       fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
       fireEvent.mouseLeave(parent, { screenX: 8, screenY: 6 })
@@ -276,7 +276,7 @@ describe('<Menu />', () => {
         <Menu
           isOpen
           content={
-            <MenuItem submenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+            <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
           }
         >
           <Button>Cheese</Button>
@@ -309,10 +309,13 @@ describe('<Menu />', () => {
           isOpen
           content={
             <>
-              <MenuItem submenu={<MenuItem>Camembert</MenuItem>}>
+              <MenuItem nestedMenu={<MenuItem>Camembert</MenuItem>}>
                 French
               </MenuItem>
-              <MenuItem onClick={onClick} submenu={<MenuItem>Gouda</MenuItem>}>
+              <MenuItem
+                onClick={onClick}
+                nestedMenu={<MenuItem>Gouda</MenuItem>}
+              >
                 Dutch
               </MenuItem>
             </>
@@ -323,11 +326,11 @@ describe('<Menu />', () => {
       )
 
       // If the parent MenuItem doesn't have an onClick,
-      // click opens the submenu and doesn't close the parent Menu
+      // click opens the nestedMenu and doesn't close the parent Menu
       fireEvent.click(screen.getByText('French'))
       expect(screen.getByText('Camembert')).toBeVisible()
 
-      // If the parent MenuItem has an onClick, click doesn't open the submenu
+      // If the parent MenuItem has an onClick, click doesn't open the nestedMenu
       // and the parent Menu is closed after
       fireEvent.click(screen.getByText('Dutch'))
       expect(onClick).toHaveBeenCalledTimes(1)

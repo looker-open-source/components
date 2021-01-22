@@ -601,7 +601,7 @@ export const NestedMenu = () => {
     alert(`You clicked ${text}`)
   }
 
-  const submenu = (
+  const nestedMenu = (
     <>
       <MenuItem onClick={getOnClick('Sub Item')}>Sub Item</MenuItem>
       <MenuItem onClick={getOnClick('Another Sub Item')}>
@@ -623,14 +623,14 @@ export const NestedMenu = () => {
         </MenuItem>
       </MenuGroup>
       <MenuGroup label="Sub Menus">
-        <MenuItem submenu={submenu}>Sub Menu</MenuItem>
-        <MenuItem onClick={getOnClick('Sub Menu')} submenu={submenu}>
+        <MenuItem nestedMenu={nestedMenu}>Sub Menu</MenuItem>
+        <MenuItem onClick={getOnClick('Sub Menu')} nestedMenu={nestedMenu}>
           Sub Menu - with onClick
         </MenuItem>
         <MenuItem icon="Favorite" onClick={getOnClick('Favorite')}>
           Favorite
         </MenuItem>
-        <MenuItem submenu={submenu}>Sub Menu 3</MenuItem>
+        <MenuItem nestedMenu={nestedMenu}>Sub Menu 3</MenuItem>
       </MenuGroup>
     </>
   )

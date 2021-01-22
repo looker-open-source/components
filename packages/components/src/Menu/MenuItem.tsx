@@ -39,11 +39,11 @@ import { createSafeRel } from '../List/utils'
 import { useID } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
-import { useSubmenu, UseSubmenuProps } from './useSubmenu'
+import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    Pick<UseSubmenuProps, 'submenu'> {
+    Pick<UseNestedMenuProps, 'nestedMenu'> {
   iconArtwork?: ReactNode
   compact?: boolean
   /**
@@ -86,7 +86,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   onKeyUp,
   onMouseEnter,
   onMouseLeave,
-  submenu,
+  nestedMenu,
   target,
   tooltip,
   tooltipPlacement = 'left',
@@ -105,18 +105,22 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const {
     popover,
-    domProps: { onClick: submenuOnClick, ...submenuProps },
-  } = useSubmenu({
+    domProps: { onClick: nestedMenuOnClick, ...nestedMenuProps },
+  } = useNestedMenu({
     compact,
     id,
+    nestedMenu,
     onClick,
     onKeyDown,
     onMouseEnter,
     onMouseLeave,
-    submenu,
   })
 
-  detail = submenu ? (
+  if (detail && nestedMenu) {
+    // eslint-disable-next-line no-console
+    console.warn('The detail prop is not supported when nestedMenu is used.')
+  }
+  detail = nestedMenu ? (
     <Icon color="text1" name="ArrowRight" size={compact ? 'small' : 'medium'} />
   ) : (
     detail
@@ -131,8 +135,8 @@ const MenuItemInternal: FC<MenuItemProps> = ({
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
-    // submenuOnClick wraps onClick from props
-    submenuOnClick(event)
+    // nestedMenuOnClick wraps onClick from props
+    nestedMenuOnClick(event)
     // Close the Menu unless event has preventDefault
     if (closeModal && !event.defaultPrevented) {
       closeModal()
@@ -209,7 +213,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
         onKeyUp={handleOnKeyUp}
         className={className}
         {...props}
-        {...submenuProps}
+        {...nestedMenuProps}
       >
         {tooltip ? (
           <Tooltip placement={tooltipPlacement} content={tooltip}>
@@ -219,7 +223,7 @@ const MenuItemInternal: FC<MenuItemProps> = ({
           menuItemContent
         )}
       </MenuItemLayout>
-      {/* Keep submenu popover outside of MenuItemLayout to prevent its events
+      {/* Keep nestedMenu popover outside of MenuItemLayout to prevent its events
        from bubbling up to the MenuItem (especially onClick)
        due to React Portal event bubbling */}
       {popover}

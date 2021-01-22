@@ -36,11 +36,11 @@ import React, {
   useRef,
 } from 'react'
 import { DialogContext } from '../Dialog'
-import { NestedSurface } from '../Overlay/OverlaySurface'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
 import { MenuList } from './MenuList'
-import { SubmenuContext } from './SubmenuProvider'
+import { NestedMenuContext } from './NestedMenuProvider'
+import { NestedMenuSurface } from './NestedMenuSurface'
 
 interface MousePosition {
   x: number
@@ -73,7 +73,7 @@ const movingTowardPlacement = (
   }
 }
 
-export interface UseSubmenuProps
+export interface UseNestedMenuProps
   // Pick the events that need to be wrapped with various handlers from MenuItem's props.
   extends Pick<
     CompatibleHTMLProps<HTMLLIElement>,
@@ -83,68 +83,74 @@ export interface UseSubmenuProps
   compact?: boolean
   /**
    * A list of menu items that will open to the right when the user hovers
-   * or hits the right arrow key
+   * or hits the right arrow key. Only supports one level of nesting.
    */
-  submenu?: ReactNode
+  nestedMenu?: ReactNode
 }
 
 const noop = () => undefined
 
-export const useSubmenu = ({
+export const useNestedMenu = ({
   compact,
   id,
   onClick,
   onKeyDown,
   onMouseEnter,
   onMouseLeave,
-  submenu,
-}: UseSubmenuProps) => {
+  nestedMenu,
+}: UseNestedMenuProps) => {
   const mousePosition = useRef<MousePosition>()
   const focusRef = useRef<Element | null>(null)
-  const { value, change, delayChange, waitChange } = useContext(SubmenuContext)
+  const { value, change, delayChange, waitChange } = useContext(
+    NestedMenuContext
+  )
 
   const { closeModal } = useContext(DialogContext)
 
-  // Show the submenu by updating the context with the id for this one
+  // Show the nestedMenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
   const isOpen = value === id
-  const openSubmenu = () => change(id)
-  const closeSubmenu = () => change('')
+  const openNestedMenu = () => change(id)
+  const closeNestedMenu = () => change('')
 
   const itemHandlers = {
     onClick: useWrapEvent((e: MouseEvent<HTMLLIElement>) => {
       // If there's an onClick in MenuItem props, that wins
       // Otherwise preventDefault to keep the parent Menu open
-      if (submenu && !onClick) {
-        openSubmenu()
+      if (nestedMenu && !onClick) {
+        openNestedMenu()
         e.preventDefault()
       }
     }, onClick),
     onKeyDown: useWrapEvent(
-      submenu
+      nestedMenu
         ? (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'ArrowRight') {
-              openSubmenu()
+              openNestedMenu()
             }
           }
         : noop,
       onKeyDown
     ),
     onMouseEnter: useWrapEvent(
-      submenu
+      nestedMenu
         ? (e: MouseEvent<HTMLLIElement>) => {
-            // Use waitChange since there may be a delay on the close of the previous submenu
-            waitChange(id)
+            // Use waitChange since there may be a delay on the close of the previous nestedMenu
+            if (value === '') {
+              delayChange(id, 100)
+            } else {
+              waitChange(id)
+            }
             focusRef.current = e.currentTarget
           }
         : noop,
       onMouseEnter
     ),
     onMouseLeave: useWrapEvent(
-      submenu
+      nestedMenu
         ? (e: MouseEvent<HTMLLIElement>) => {
             if (isOpen) {
-              // If the mouse is moving toward the submenu
+              // If the mouse is moving toward the nestedMenu
               // keep it open for long enough to get there
               if (
                 movingTowardPlacement(
@@ -158,6 +164,8 @@ export const useSubmenu = ({
                 change('')
               }
               mousePosition.current = undefined
+            } else {
+              change('')
             }
           }
         : noop,
@@ -167,47 +175,47 @@ export const useSubmenu = ({
       mousePosition.current = { x: e.screenX, y: e.screenY }
     },
   }
-  const listHandlers = submenu
+  const listHandlers = nestedMenu
     ? {
         onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
           switch (e.key) {
             case 'ArrowLeft':
-              closeSubmenu()
+              closeNestedMenu()
               break
             case 'Escape':
               closeModal()
               break
           }
         },
-        onMouseEnter: openSubmenu,
-        onMouseLeave: closeSubmenu,
+        onMouseEnter: openNestedMenu,
+        onMouseLeave: closeNestedMenu,
       }
     : {}
 
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
       <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
-        {submenu}
+        {nestedMenu}
       </MenuList>
     ),
-    disabled: submenu === undefined,
-    // The submenu is only open if the current id matches the one stored in context
+    disabled: nestedMenu === undefined,
+    // The nestedMenu is only open if the current id matches the one stored in context
     isOpen,
     placement: 'right-start',
     // For long menus, the user may need to scroll away
-    // The resulting mouseleave will close the submenu
+    // The resulting mouseleave will close the nestedMenu
     scrollLock: false,
     // Since domProps.onClick is not being used, setOpen only needs to close
     // (on click outside or esc key)
-    setOpen: closeSubmenu,
-    surface: NestedSurface,
-    // Clicking on the MenuItem again should not close the submenu
+    setOpen: closeNestedMenu,
+    surface: NestedMenuSurface,
+    // Clicking on the MenuItem again should not close the nestedMenu
     triggerToggle: false,
   })
 
   useEffect(() => {
     if (isOpen && focusRef.current) {
-      // Focus the menu item so that when the submenu closes, focus trap will
+      // Focus the menu item so that when the nestedMenu closes, focus trap will
       // return focus here instead of the first item in the list
       const button = focusRef.current.querySelector('a,button') as HTMLElement
       button?.focus()
