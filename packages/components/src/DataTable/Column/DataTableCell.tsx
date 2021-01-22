@@ -37,6 +37,7 @@ import { columnSize, DataTableColumnSize } from './columnSize'
 export interface DataTableCellProps
   extends CompatibleHTMLProps<HTMLTableDataCellElement> {
   description?: ReactNode
+  focusVisible?: boolean
   indicator?: ReactNode
   size?: DataTableColumnSize
 }
@@ -52,14 +53,12 @@ const DataTableCellLayout = forwardRef(
     const forkedRef = useForkedRef(ref, forwardedRef)
 
     useEffect(() => {
-      const element = ref?.current
-      const button = element?.querySelector('button')
-      const link = element?.querySelector('a')
-      const input = element?.querySelector('input')
-
-      button?.setAttribute('tabIndex', '-1')
-      link?.setAttribute('tabIndex', '-1')
-      input?.setAttribute('tabIndex', '-1')
+      const element = ref?.current?.querySelectorAll('a, button, input')
+      if (element) {
+        element.forEach((activeElement) =>
+          activeElement.setAttribute('tabIndex', '-1')
+        )
+      }
     })
 
     if (description) {
@@ -103,6 +102,9 @@ DataTableCellLayout.displayName = 'DataTableCellLayout'
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
 
+  /*${({ focusVisible, theme: { colors } }) =>
+    focusVisible && `border: 1px solid ${colors.key};`}
+    outline: none;*/
   a,
   ${Link} {
     color: inherit;

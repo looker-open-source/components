@@ -82,8 +82,8 @@ const DataTableHeaderCellLayout = forwardRef(
         className={className}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
-        tabIndex={-1}
         {...clickableProps}
+        tabIndex={-1}
       >
         <Space gap="xxsmall" reverse={type === 'number'}>
           {label}
