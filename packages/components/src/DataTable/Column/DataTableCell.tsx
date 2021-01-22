@@ -24,7 +24,14 @@
 
  */
 
-import React, { forwardRef, Ref, ReactNode, useEffect, useRef } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
@@ -44,7 +51,27 @@ export interface DataTableCellProps
 
 const DataTableCellLayout = forwardRef(
   (props: DataTableCellProps, forwardedRef: Ref<HTMLElement>) => {
-    const { children, description, indicator, size } = props
+    const { children, description, indicator, onBlur, onKeyUp, size } = props
+
+    const [isFocusVisible, setFocusVisible] = useState(false)
+
+    const handleOnKeyUp = (
+      event: React.KeyboardEvent<HTMLTableDataCellElement>
+    ) => {
+      setFocusVisible(true)
+      onKeyUp && onKeyUp(event)
+    }
+
+    const handleOnBlur = (
+      event: React.FocusEvent<HTMLTableDataCellElement>
+    ) => {
+      setFocusVisible(false)
+      onBlur && onBlur(event)
+    }
+
+    const onClick = () => {
+      setFocusVisible(false)
+    }
 
     let content =
       size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
@@ -90,7 +117,15 @@ const DataTableCellLayout = forwardRef(
       )
     }
     return (
-      <td ref={forkedRef} tabIndex={-1} {...props}>
+      <td
+        focusVisible={isFocusVisible}
+        onBlur={handleOnBlur}
+        onClick={onClick}
+        onKeyUp={handleOnKeyUp}
+        ref={forkedRef}
+        tabIndex={-1}
+        {...props}
+      >
         {content}
       </td>
     )
@@ -102,19 +137,20 @@ DataTableCellLayout.displayName = 'DataTableCellLayout'
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
 
-  /*${({ focusVisible, theme: { colors } }) =>
+  ${({ focusVisible, theme: { colors } }) =>
     focusVisible && `border: 1px solid ${colors.key};`}
-    outline: none;*/
+
   a,
   ${Link} {
     color: inherit;
     :hover,
     :focus {
       color: ${({ theme }) => theme.colors.link};
+      outline: none;
       text-decoration: underline;
     }
   }
   :focus {
-    border: 1px solid ${({ theme }) => theme.colors.key};
+    outline: none;
   }
 `

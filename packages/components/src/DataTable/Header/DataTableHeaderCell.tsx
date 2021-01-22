@@ -107,4 +107,7 @@ export const DataTableHeaderCell = styled(DataTableHeaderCellLayout)`
   color: ${(props) => props.theme.colors.text5};
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
   text-align: left;
+  :focus {
+    outline: none;
+  }
 `
