@@ -29,7 +29,7 @@ import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { Paragraph } from '../Text'
+import { Paragraph, Text } from '../Text'
 import { Truncate } from '../Truncate'
 import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
@@ -154,11 +154,13 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedChildren =
     typeof children === 'string' ? (
       truncate ? (
-        <Truncate
-          fontSize={itemDimensions.labelFontSize}
-          lineHeight={itemDimensions.labelLineHeight}
-        >
-          {children}
+        <Truncate>
+          <Text
+            fontSize={itemDimensions.labelFontSize}
+            lineHeight={itemDimensions.labelLineHeight}
+          >
+            {children}
+          </Text>
         </Truncate>
       ) : (
         <Paragraph
@@ -175,8 +177,10 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedDescription =
     typeof children === 'string' ? (
       truncate ? (
-        <Truncate color="text2" fontSize="xsmall">
-          {description}
+        <Truncate>
+          <Text color="text2" fontSize="xsmall">
+            {description}
+          </Text>
         </Truncate>
       ) : (
         <Paragraph color="text2" fontSize="xsmall">
