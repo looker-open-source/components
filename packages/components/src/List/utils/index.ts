@@ -26,4 +26,5 @@
 
 export * from './createSafeRel'
 export * from './dimensions'
+export * from './getItemBackgroundColor'
 export * from './getItemDimensions'

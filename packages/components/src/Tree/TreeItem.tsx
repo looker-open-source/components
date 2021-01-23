@@ -53,12 +53,12 @@ import {
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
+import { getItemBackgroundColor } from '../List/utils'
+import { ItemBackgroundColorProps } from '../List/types'
 import { TreeContext } from './TreeContext'
-import { treeBackgroundColor } from './utils'
-import { TreeBackgroundStyleProps } from './types'
 
 export interface TreeItemProps
-  extends TreeBackgroundStyleProps,
+  extends ItemBackgroundColorProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
   children: ReactNode
@@ -254,8 +254,8 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
     focusVisible && theme.colors.keyFocus};
 `
 
-export const TreeItemLabel = styled(Space)<TreeBackgroundStyleProps>`
-  ${treeBackgroundColor}
+export const TreeItemLabel = styled(Space)<ItemBackgroundColorProps>`
+  ${getItemBackgroundColor}
   align-items: center;
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};

@@ -49,3 +49,26 @@ export const itemDimensionKeys = [
   'labelLineHeight',
   'detailFontSize',
 ]
+
+export interface ItemBackgroundColorProps {
+  /**
+   * Replace the normal grey selected and selected + hovered color with brand colors
+   * @default false
+   */
+  brand?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a "disabled" presentation.
+   * @default false
+   */
+  disabled?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a light background color
+   * @default false
+   */
+  hovered?: boolean
+  /**
+   * If true, the Tree/TreeItem will have a darker background color
+   * @default false
+   */
+  selected?: boolean
+}
