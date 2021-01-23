@@ -102,10 +102,16 @@ IconAndDetailAndDescription.args = {
   icon: 'User',
 }
 
-export const Current = Template.bind({})
-Current.args = {
+export const Selected = Template.bind({})
+Selected.args = {
   ...Basic.args,
   selected: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Basic.args,
+  disabled: true,
 }
 
 export const Link = () => {
