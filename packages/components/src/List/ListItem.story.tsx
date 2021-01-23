@@ -105,7 +105,7 @@ IconAndDetailAndDescription.args = {
 export const Current = Template.bind({})
 Current.args = {
   ...Basic.args,
-  current: true,
+  selected: true,
 }
 
 export const Link = () => {

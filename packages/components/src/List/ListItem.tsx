@@ -39,10 +39,6 @@ import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
 
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
-  /**
-   * Indicates the ListItem is checked
-   */
-  current?: boolean
   /*
    * optional description
    */
@@ -77,6 +73,10 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    */
   itemRole?: 'link' | 'button'
   /**
+   * Indicates the ListItem is checked
+   */
+  selected?: boolean
+  /**
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
@@ -86,7 +86,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
     className,
-    current,
     description,
     detail: propsDetail,
     detailAccessory,
@@ -99,6 +98,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onBlur,
     onClick,
     onKeyUp,
+    selected,
     target,
     truncate,
   } = props
@@ -108,7 +108,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const [isFocusVisible, setFocusVisible] = useState(false)
 
   const itemRef = useRef<HTMLLIElement>(null)
-  const [isHovered] = useHovered(itemRef)
+  const [hovered] = useHovered(itemRef)
 
   const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
@@ -193,10 +193,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const detail = propsDetail && (
     <HoverDisclosure visible={!detailHoverDisclosure}>
-      <ListItemDetail
-        pr={detailAccessory ? itemDimensions.px : '0'}
-        py={itemDimensions.py}
-      >
+      <ListItemDetail pr={detailAccessory ? itemDimensions.px : '0'}>
         {propsDetail}
       </ListItemDetail>
     </HoverDisclosure>
@@ -226,13 +223,14 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   )
 
   return (
-    <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <ListItemLayout
-        aria-current={current && 'true'}
         description={description}
         detailAccessory={detailAccessory}
         disabled={disabled}
         focusVisible={isFocusVisible}
+        hovered={hovered}
+        selected={selected}
         className={className}
         ref={itemRef}
         {...itemDimensions}

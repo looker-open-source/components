@@ -48,11 +48,11 @@ export const getItemBackgroundColor = ({
   const stateColors = brand ? brandColors : defaultColors
   let renderedColor
 
-  if (disabled) return
+  if (disabled) renderedColor = 'transparent'
   else if (selected && hovered) renderedColor = stateColors.all
   else if (selected) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered
-  else return
+  else renderedColor = 'transparent'
 
   return css`
     background-color: ${renderedColor};

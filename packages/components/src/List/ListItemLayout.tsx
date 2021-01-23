@@ -29,10 +29,16 @@ import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
-import { ItemDimensions, itemDimensionKeys } from './types'
+import {
+  ItemBackgroundColorProps,
+  ItemDimensions,
+  itemDimensionKeys,
+} from './types'
+import { getItemBackgroundColor } from './utils'
 
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
+    Omit<ItemBackgroundColorProps, 'brand'>,
     ItemDimensions {
   description?: ReactNode
   detailAccessory?: boolean
@@ -47,9 +53,14 @@ const ListItemWrapper = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(props, 'detailAccessory', 'focusVisible', [
-          ...itemDimensionKeys,
-        ])}
+        {...omit(
+          props,
+          'detailAccessory',
+          'focusVisible',
+          'hovered',
+          'selected',
+          [...itemDimensionKeys]
+        )}
         ref={ref}
         role="none"
       />
@@ -83,8 +94,9 @@ export const ListItemLayout = styled(ListItemWrapper)`
   & > button,
   & > a {
     ${reset}
+    ${getItemBackgroundColor}
+
     align-items: center;
-    background: transparent;
     border: none;
     color: inherit;
     cursor: pointer;
@@ -112,8 +124,6 @@ export const ListItemLayout = styled(ListItemWrapper)`
 
     &:hover,
     &:focus {
-      background: ${({ detailAccessory, theme: { colors } }) =>
-        detailAccessory && colors.ui1};
       color: inherit;
       position: relative;
       text-decoration: none;
@@ -143,12 +153,6 @@ export const ListItemLayout = styled(ListItemWrapper)`
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
 
-  &:hover {
-    /* stylelint-disable */
-    background: ${({ detailAccessory, theme: { colors } }) =>
-      !detailAccessory && colors.ui1};
-  }
-
   &[aria-current='true'] {
     background: ${({ theme: { colors } }) => colors.ui2};
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
@@ -157,8 +161,8 @@ export const ListItemLayout = styled(ListItemWrapper)`
   &[disabled] {
     color: ${({ theme: { colors } }) => colors.text1};
 
-    button,
-    a {
+    & > button,
+    & > a {
       cursor: not-allowed;
     }
 
