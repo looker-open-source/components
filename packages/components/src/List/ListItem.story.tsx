@@ -49,21 +49,25 @@ Detail.args = {
   detail: 'A Detail',
 }
 
-export const DetailAccessory = Template.bind({})
-DetailAccessory.args = {
+export const Accessory = Template.bind({})
+Accessory.args = {
   ...Basic.args,
-  detail: <IconButton icon="Pivot" label="Pivot" />,
-  detailAccessory: true,
+  detail: {
+    content: <IconButton icon="Pivot" label="Pivot" />,
+    options: { accessory: true },
+  },
 }
 
-export const DetailHoverDisclosure = Template.bind({})
-DetailHoverDisclosure.args = {
-  ...DetailAccessory.args,
-  detailAccessory: false,
-  detailHoverDisclosure: true,
+export const HoverDisclosure = Template.bind({})
+HoverDisclosure.args = {
+  ...Basic.args,
+  detail: {
+    content: <IconButton icon="Pivot" label="Pivot" />,
+    options: { hoverDisclosure: true },
+  },
 }
 
-DetailHoverDisclosure.parameters = {
+HoverDisclosure.parameters = {
   storyshots: { disable: true },
 }
 

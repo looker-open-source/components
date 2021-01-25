@@ -130,10 +130,13 @@ describe('ListItem', () => {
     expect(item).toHaveAttribute('rel', 'nogouda')
   })
 
-  test('does not trigger onClick on detail click when detailAccessory === true', () => {
+  test('does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
-      <ListItem detail="Detail" detailAccessory onClick={onClick}>
+      <ListItem
+        detail={{ content: 'Detail', options: { accessory: true } }}
+        onClick={onClick}
+      >
         Dimension
       </ListItem>
     )
@@ -143,10 +146,13 @@ describe('ListItem', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
-  test('triggers onClick on detail click when detailAccessory === false', () => {
+  test('triggers onClick on detail click when accessory === false', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
-      <ListItem detail="Detail" detailAccessory={false} onClick={onClick}>
+      <ListItem
+        detail={{ content: 'Detail', options: { accessory: false } }}
+        onClick={onClick}
+      >
         Dimension
       </ListItem>
     )
@@ -158,7 +164,9 @@ describe('ListItem', () => {
 
   test('hides and shows detail when detailHoverDisclosure === true', () => {
     const { getByText, queryByText } = renderWithTheme(
-      <ListItem detail="Detail" detailHoverDisclosure>
+      <ListItem
+        detail={{ content: 'Detail', options: { hoverDisclosure: true } }}
+      >
         Label
       </ListItem>
     )

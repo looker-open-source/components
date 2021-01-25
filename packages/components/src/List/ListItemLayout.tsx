@@ -40,8 +40,8 @@ export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     Omit<ItemBackgroundColorProps, 'brand'>,
     ItemDimensions {
+  accessory?: boolean
   description?: ReactNode
-  detailAccessory?: boolean
   focusVisible?: boolean
 }
 
@@ -53,14 +53,9 @@ const ListItemWrapper = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(
-          props,
-          'detailAccessory',
-          'focusVisible',
-          'hovered',
-          'selected',
-          [...itemDimensionKeys]
-        )}
+        {...omit(props, 'accessory', 'focusVisible', 'hovered', 'selected', [
+          ...itemDimensionKeys,
+        ])}
         ref={ref}
         role="none"
       />
@@ -109,9 +104,9 @@ export const ListItemLayout = styled(ListItemWrapper)`
      The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
      Without it, density = -1 ListItems would be at 44px.
      */
-    padding: ${({ detailAccessory, px: propsPx, py: propsPy, theme }) => {
+    padding: ${({ accessory, px: propsPx, py: propsPy, theme }) => {
       const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
-      const pr = detailAccessory ? '0' : theme.space[propsPx]
+      const pr = accessory ? '0' : theme.space[propsPx]
       const pb = pt
       const pl = theme.space[propsPx]
 

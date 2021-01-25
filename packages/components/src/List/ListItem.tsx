@@ -50,26 +50,42 @@ const TruncateWrapper: FC<{
   </Truncate>
 )
 
+interface DetailOptions {
+  /**
+   * If true, the detail will appear outside of the item's grey background on hover
+   * In addition, if true, events originating from the detail will not bubble to the item's handlers
+   * @default false
+   */
+  accessory?: boolean
+  /**
+   * If true, the detail will only appear on hover
+   * @default false
+   */
+  hoverDisclosure?: boolean
+}
+
+interface DetailObject {
+  /**
+   * Detail element displayed right of the label element
+   */
+  content: ReactNode
+  /**
+   * Options that affect detail behavior
+   */
+  options: DetailOptions
+}
+
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
   /*
-   * optional description
+   * optional extra description
    */
   description?: ReactNode
   /**
-   * Detail element placed right of the item children
+   * Detail element placed right of the item children. Prop value can take one of two forms:
+   * 1. ReactNode
+   * 2. Object with content and options properties
    */
-  detail?: ReactNode
-  /**
-   * If true, the detail elements will appear outside of the item's grey background on hover
-   * In addition, if true, events will not propagate from the detail container
-   * @default false
-   */
-  detailAccessory?: boolean
-  /**
-   * If true, the detail element will only appear on hover
-   * @default false
-   */
-  detailHoverDisclosure?: boolean
+  detail?: ReactNode | DetailObject
   /**
    * Optional icon placed left of the item children
    */
@@ -99,9 +115,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     children,
     className,
     description,
-    detail: propsDetail,
-    detailAccessory,
-    detailHoverDisclosure,
+    detail,
     disabled,
     href,
     icon,
@@ -186,10 +200,20 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       description
     )
 
-  const detail = propsDetail && (
-    <HoverDisclosure visible={!detailHoverDisclosure}>
-      <ListItemDetail pr={detailAccessory ? itemDimensions.px : '0'}>
-        {propsDetail}
+  let accessory, hoverDisclosure, detailContent
+
+  if (typeof detail === 'object' && detail && 'options' in detail) {
+    accessory = detail.options.accessory
+    detailContent = detail.content
+    hoverDisclosure = detail.options.hoverDisclosure
+  } else {
+    detailContent = detail
+  }
+
+  const renderedDetail = detail && (
+    <HoverDisclosure visible={!hoverDisclosure}>
+      <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
+        {detailContent}
       </ListItemDetail>
     </HoverDisclosure>
   )
@@ -211,9 +235,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
           {renderedChildren}
           {renderedDescription}
         </FlexItem>
-        {!detailAccessory && detail}
+        {!accessory && renderedDetail}
       </ContentContainer>
-      {detailAccessory && detail}
+      {accessory && renderedDetail}
     </>
   )
 
@@ -221,7 +245,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <ListItemLayout
         description={description}
-        detailAccessory={detailAccessory}
+        accessory={accessory}
         disabled={disabled}
         focusVisible={isFocusVisible}
         hovered={hovered}
