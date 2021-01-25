@@ -305,7 +305,7 @@ describe('<Menu />', () => {
       expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
     })
 
-    test('toggle on click', () => {
+    test.only('toggle on click', () => {
       const onClick = jest.fn()
       renderWithTheme(
         <Menu
@@ -333,8 +333,14 @@ describe('<Menu />', () => {
       fireEvent.click(screen.getByText('French'))
       expect(screen.getByText('Camembert')).toBeVisible()
 
+      // If the the nestedMenu was already opened via hover, click closes both Menus
+      // (userEvent.click fires 'mouseenter' first)
+      userEvent.click(screen.getByText('French'))
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+
       // If the parent MenuItem has an onClick, click doesn't open the nestedMenu
       // and the parent Menu is closed after
+      userEvent.click(screen.getByText('Cheese'))
       fireEvent.click(screen.getByText('Dutch'))
       expect(onClick).toHaveBeenCalledTimes(1)
       expect(screen.queryByRole('menu')).not.toBeInTheDocument()

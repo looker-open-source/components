@@ -117,7 +117,7 @@ export const useNestedMenu = ({
     onClick: useWrapEvent((e: MouseEvent<HTMLLIElement>) => {
       // If there's an onClick in MenuItem props, that wins
       // Otherwise preventDefault to keep the parent Menu open
-      if (nestedMenu && !onClick) {
+      if (nestedMenu && !onClick && !isOpen) {
         openNestedMenu()
         e.preventDefault()
       }
