@@ -143,23 +143,14 @@ export function SelectOptionWithDescription({
   )
 }
 
-const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(
-  ({
-    color = 'subdued',
-    fontFamily = 'body',
-    fontSize = 'xxsmall',
-    fontWeight = 'semiBold',
-    px = 'xsmall',
-    py = 'xxsmall',
-  }) => ({
-    color,
-    fontFamily,
-    fontSize,
-    fontWeight,
-    px,
-    py,
-  })
-)<{ isMulti?: boolean }>`
+const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
+  color: 'subdued',
+  fontFamily: 'body',
+  fontSize: 'xxsmall',
+  fontWeight: 'semiBold',
+  px: 'xsmall',
+  py: 'xxsmall',
+}))<{ isMulti?: boolean }>`
   display: flex;
   padding-top: ${({ theme }) => theme.space.xxsmall};
 `
