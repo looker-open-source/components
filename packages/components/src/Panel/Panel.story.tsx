@@ -26,11 +26,10 @@
 
 import React, { useState } from 'react'
 // import { Story } from '@storybook/react/types-6-0'
-import { MenuGroup, MenuList, MenuItem } from '../Menu'
-import { Page, Aside, Section } from '../Layout'
+import { MenuItem, MenuGroup, MenuList } from '../Menu'
+import { Aside, Page, Section } from '../Layout'
 import { Icon } from '../Icon'
-import { Panel } from './Panel'
-import { Panels } from './Panels'
+import { Panel, Panels, usePanel } from './'
 
 export default {
   component: Panel,
@@ -84,5 +83,37 @@ export const Basic = () => {
   )
 }
 Basic.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Hook = () => {
+  const [isOpen, setOpen] = useState(false)
+  const open = () => setOpen(true)
+  const canClose = () => true
+
+  const { panel } = usePanel({
+    canClose,
+    content: 'Panel content',
+    direction: 'left',
+    isOpen,
+    setOpen,
+    title: 'Panel Hook',
+  })
+
+  return (
+    <>
+      {panel}
+      <MenuList>
+        <MenuGroup>
+          <MenuItem onClick={open} icon="Check">
+            Option A
+          </MenuItem>
+          <MenuItem icon="Check">Option B</MenuItem>
+        </MenuGroup>
+      </MenuList>
+    </>
+  )
+}
+Hook.parameters = {
   storyshots: { disable: true },
 }

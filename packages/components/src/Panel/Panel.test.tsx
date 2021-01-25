@@ -30,9 +30,37 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from '../Icon'
-import { Panel, Panels } from './'
+import { MenuGroup, MenuItem, MenuList } from '../Menu'
+import { Panel, Panels, usePanel } from './'
 
 describe('Panel', () => {
+  const UsePanelHook = () => {
+    const [isOpen, setOpen] = useState(false)
+    const open = () => setOpen(true)
+
+    const { panel } = usePanel({
+      content: 'Panel content',
+      direction: 'left',
+      isOpen,
+      setOpen,
+      title: 'Panel Hook',
+    })
+
+    return (
+      <>
+        {panel}
+        <MenuList>
+          <MenuGroup>
+            <MenuItem onClick={open} icon="Check">
+              Option A
+            </MenuItem>
+            <MenuItem icon="Check">Option B</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </>
+    )
+  }
+
   const ControlledPanel = () => {
     const [option, setOption] = useState(false)
     const toggleOption = () => setOption(!option)
@@ -78,6 +106,7 @@ describe('Panel', () => {
       </ul>
     </Panels>
   )
+
   test('uncontrolled Panel displays content prop', () => {
     const { getByText } = renderWithTheme(<UncontrolledPanel />)
 
@@ -120,5 +149,32 @@ describe('Panel', () => {
 
     expect(getByText('Option 1')).toBeInTheDocument()
     expect(getByText('Option 2')).toBeInTheDocument()
+  })
+
+  test('usePanel hook render', async () => {
+    const { debug, getByText } = renderWithTheme(<UsePanelHook />)
+
+    // const panelHook = getByText('Option B')
+    expect(getByText('Option A')).toBeInTheDocument()
+    expect(getByText('Option B')).toBeInTheDocument()
+
+    fireEvent.click(getByText('Option B'))
+
+    debug()
+
+    // // Open Drawer
+    // const link = screen.getByText('Open Drawer')
+    // fireEvent.click(link)
+    // runTimers()
+    // expect(
+    //   screen.queryByText('The Constitution of the United States')
+    // ).toBeInTheDocument()
+
+    // // Close the Drawer
+    // const doneButton = screen.getByText('Done Reading')
+    // fireEvent.click(doneButton)
+    // await waitForElementToBeRemoved(() =>
+    //   screen.getByText('The Constitution of the United States')
+    // )
   })
 })

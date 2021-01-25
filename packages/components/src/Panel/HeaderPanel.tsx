@@ -64,4 +64,5 @@ const PanelHeaderLayout: FC<HeaderPanelProps> = ({
 
 export const PanelHeader = styled(PanelHeaderLayout)`
   cursor: pointer;
+  display: inline-flex;
 `

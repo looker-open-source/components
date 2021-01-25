@@ -54,3 +54,40 @@ a ReachNode and will be displayed above the main `content`.
   )
 }
 ```
+
+# usePanel
+
+We provide a custom hook that returns the opener function and rendered panel.
+
+```jsx
+;() => {
+  const [isOpen, setOpen] = useState(false)
+  const open = () => setOpen(!isOpen)
+
+  const content = 'Panel content...'
+  const direction = 'left'
+  const title = 'Panel Hook'
+
+  const { panel } = usePanel({
+    content,
+    direction,
+    isOpen,
+    setOpen,
+    title,
+  })
+
+  return (
+    <>
+      {panel}
+      <MenuList>
+        <MenuGroup>
+          <MenuItem onClick={open} icon="Check">
+            Option A
+          </MenuItem>
+          <MenuItem icon="Check">Option B</MenuItem>
+        </MenuGroup>
+      </MenuList>
+    </>
+  )
+}
+```
