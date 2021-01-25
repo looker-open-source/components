@@ -25,13 +25,29 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Text } from './Text'
+import { Story } from '@storybook/react/types-6-0'
+import { Text, TextProps } from './Text'
 
-test('Text has default fontSize', () => {
-  renderWithTheme(<Text>Hello</Text>)
-  expect(screen.getByText('Hello')).toHaveStyleRule('font-size', '1rem')
-  expect(screen.getByText('Hello')).toHaveStyleRule('line-height', '1.5rem')
-  expect(screen.getByText('Hello')).toHaveStyleRule('color', undefined)
-})
+const Template: Story<TextProps> = (args) => <Text {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Text Example',
+}
+
+export const Nesting = () => (
+  <div style={{ color: '#c00' }}>
+    <Text>This text should be red</Text>
+  </div>
+)
+
+export const LineHeight = () => (
+  <div style={{ border: '1px solid #000' }}>
+    <Text>This text should be 1.5rem line height</Text>
+  </div>
+)
+
+export default {
+  component: Text,
+  title: 'Text',
+}
