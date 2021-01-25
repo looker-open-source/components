@@ -305,7 +305,7 @@ describe('<Menu />', () => {
       expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
     })
 
-    test.only('toggle on click', () => {
+    test('toggle on click', () => {
       const onClick = jest.fn()
       renderWithTheme(
         <Menu
