@@ -188,7 +188,6 @@ export const useNestedMenu = ({
           }
         },
         onMouseEnter: openNestedMenu,
-        onMouseLeave: closeNestedMenu,
       }
     : {}
 

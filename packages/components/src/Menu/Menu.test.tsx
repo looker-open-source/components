@@ -261,7 +261,8 @@ describe('<Menu />', () => {
       expect(screen.getByText('Swiss')).toBeVisible()
 
       userEvent.unhover(child)
-      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+      // Nested menu remains open when hovered out
+      expect(screen.getByText('Swiss')).toBeVisible()
 
       userEvent.hover(parent)
       // If not hovering out in the direction of the nestedMenu

@@ -109,7 +109,7 @@ export const OverlaySurface = styled(OverlaySurfaceLayout)`
 
 export const OverlaySurfaceContentArea = styled.div`
   background: ${({ theme }) => theme.colors.background};
-  border-radius: ${({ theme }) => theme.radii.small};
+  border-radius: ${({ theme }) => theme.radii.medium};
   box-shadow: ${({ theme }) => theme.shadows[3]};
   color: ${({ theme }) => theme.colors.text};
 
