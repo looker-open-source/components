@@ -61,10 +61,13 @@ describe('useClickable', () => {
     expect(wrapper).toHaveTextContent('focusVisible: false')
     fireEvent.focus(wrapper)
     expect(wrapper).toHaveTextContent('focusVisible: false')
-    fireEvent.keyUp(wrapper, { key: 'Tab' })
+    fireEvent.keyUp(wrapper, { key: 'ArrowUp' })
     expect(wrapper).toHaveTextContent('focusVisible: true')
     fireEvent.blur(wrapper)
     expect(wrapper).toHaveTextContent('focusVisible: false')
+    fireEvent.focus(wrapper)
+    fireEvent.keyUp(wrapper, { key: 'Tab' })
+    expect(wrapper).toHaveTextContent('focusVisible: true')
   })
 
   describe('tabIndex', () => {
