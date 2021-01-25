@@ -31,8 +31,8 @@ import { Span, SpanProps } from './Span'
 export interface TextProps extends SpanProps {}
 
 export const Text = styled(Span).attrs<TextProps>(
-  ({ color = 'text', fontSize = 'medium' }) => ({
-    color,
+  ({ fontSize = 'medium', lineHeight }) => ({
     fontSize,
+    lineHeight: lineHeight || fontSize,
   })
 )<TextProps>``
