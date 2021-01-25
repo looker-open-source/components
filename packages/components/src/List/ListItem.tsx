@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
@@ -37,6 +37,18 @@ import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
+
+const TruncateWrapper: FC<{
+  color?: string
+  fontSize?: FontSizes
+  lineHeight?: FontSizes
+}> = ({ children, color, fontSize, lineHeight }) => (
+  <Truncate>
+    <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
+      {children}
+    </Text>
+  </Truncate>
+)
 
 export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
   /*
@@ -149,44 +161,27 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-  const Component = !disabled && itemRole === 'link' ? 'a' : 'button'
+
+  const ContentContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
+  const TextWrapper = truncate ? TruncateWrapper : Paragraph
 
   const renderedChildren =
     typeof children === 'string' ? (
-      truncate ? (
-        <Truncate>
-          <Text
-            fontSize={itemDimensions.labelFontSize}
-            lineHeight={itemDimensions.labelLineHeight}
-          >
-            {children}
-          </Text>
-        </Truncate>
-      ) : (
-        <Paragraph
-          fontSize={itemDimensions.labelFontSize}
-          lineHeight={itemDimensions.labelLineHeight}
-        >
-          {children}
-        </Paragraph>
-      )
+      <TextWrapper
+        fontSize={itemDimensions.labelFontSize}
+        lineHeight={itemDimensions.labelLineHeight}
+      >
+        {children}
+      </TextWrapper>
     ) : (
       children
     )
 
   const renderedDescription =
     typeof children === 'string' ? (
-      truncate ? (
-        <Truncate>
-          <Text color="text2" fontSize="xsmall">
-            {description}
-          </Text>
-        </Truncate>
-      ) : (
-        <Paragraph color="text2" fontSize="xsmall">
-          {description}
-        </Paragraph>
-      )
+      <TextWrapper color="text2" fontSize="xsmall">
+        {description}
+      </TextWrapper>
     ) : (
       description
     )
@@ -201,7 +196,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const listItemContent = (
     <>
-      <Component
+      <ContentContainer
         href={href}
         onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}
@@ -217,7 +212,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
           {renderedDescription}
         </FlexItem>
         {!detailAccessory && detail}
-      </Component>
+      </ContentContainer>
       {detailAccessory && detail}
     </>
   )
