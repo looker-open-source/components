@@ -26,13 +26,11 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: |
-          yarn install
+      - uses: c-hive/gha-yarn-cache@v1
+      - run: yarn install
 
       - name: Build packages
-        run: |
-          yarn build
+        run: yarn build
 
       - name: Create canary release
         run: |

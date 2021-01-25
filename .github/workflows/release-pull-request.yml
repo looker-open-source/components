@@ -24,16 +24,13 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch all tags
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
-      - name: Install dependencies
-        run: |
-          yarn install
+      - uses: c-hive/gha-yarn-cache@v1
+      - run: yarn install
 
       - name: Bump version
-        run: |
-          yarn bumpversion
+        run: yarn bumpversion
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v3

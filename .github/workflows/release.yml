@@ -26,12 +26,10 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch all tags
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
-      - name: Install dependencies
-        run: |
-          yarn install
+      - uses: c-hive/gha-yarn-cache@v1
+      - run: yarn install
 
       - name: Read version created by Lerna
         id: lerna_version
@@ -50,8 +48,7 @@ jobs:
           fi
 
       - name: Build packages
-        run: |
-          yarn build
+        run: yarn build
 
       - name: Create release
         id: create_release
