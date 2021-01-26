@@ -37,8 +37,10 @@ describe('Panel', () => {
   const UsePanelHook = () => {
     const [isOpen, setOpen] = useState(false)
     const open = () => setOpen(true)
+    const canClose = () => true
 
     const { panel } = usePanel({
+      canClose,
       content: 'Panel content',
       direction: 'left',
       isOpen,
@@ -151,30 +153,18 @@ describe('Panel', () => {
     expect(getByText('Option 2')).toBeInTheDocument()
   })
 
-  test('usePanel hook render', async () => {
-    const { debug, getByText } = renderWithTheme(<UsePanelHook />)
+  test('usePanel hook works as expected', () => {
+    const { getByText } = renderWithTheme(<UsePanelHook />)
 
-    // const panelHook = getByText('Option B')
     expect(getByText('Option A')).toBeInTheDocument()
     expect(getByText('Option B')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Option B'))
+    fireEvent.click(getByText('Option A'))
 
-    debug()
+    expect(getByText('Panel content')).toBeInTheDocument()
 
-    // // Open Drawer
-    // const link = screen.getByText('Open Drawer')
-    // fireEvent.click(link)
-    // runTimers()
-    // expect(
-    //   screen.queryByText('The Constitution of the United States')
-    // ).toBeInTheDocument()
+    fireEvent.click(getByText('Close Panel Hook navigation'))
 
-    // // Close the Drawer
-    // const doneButton = screen.getByText('Done Reading')
-    // fireEvent.click(doneButton)
-    // await waitForElementToBeRemoved(() =>
-    //   screen.getByText('The Constitution of the United States')
-    // )
+    expect(getByText('Option A')).toBeInTheDocument()
   })
 })

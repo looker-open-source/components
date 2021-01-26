@@ -96,7 +96,7 @@ export const usePanel = ({
   canClose,
   content,
   defaultOpen = false,
-  direction,
+  direction = 'left',
   isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
